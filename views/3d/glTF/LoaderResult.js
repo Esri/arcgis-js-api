@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/assignHelper"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.makeMaterialParameters=function(e){return void 0===e&&(e={}),r({color:[1,1,1],opacity:1,alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1,castShadows:!0,receiveShadows:!0,receiveAmbientOcclustion:!0,textureColor:null,textureNormal:null,textureOcclusion:null,textureEmissive:null,textureMetallicRoughness:null,emissiveFactor:[0,0,0],metallicFactor:1,roughnessFactor:1,colorMixMode:"multiply"},e)},t.makeTextureSource=function(e,t){return void 0===t&&(t={}),{data:e,parameters:r({wrap:r({s:10497,t:10497},t.wrap),noUnpackFlip:!0,mipmap:!1},t)}}}));
+define(["require","exports","tslib"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.makeMaterialParameters=function(e){return void 0===e&&(e={}),r.__assign({color:[1,1,1],opacity:1,alphaMode:"OPAQUE",alphaCutoff:.5,doubleSided:!1,castShadows:!0,receiveShadows:!0,receiveAmbientOcclustion:!0,textureColor:null,textureNormal:null,textureOcclusion:null,textureEmissive:null,textureMetallicRoughness:null,emissiveFactor:[0,0,0],metallicFactor:1,roughnessFactor:1,colorMixMode:"multiply"},e)},t.makeTextureSource=function(e,t){return void 0===t&&(t={}),{data:e,parameters:r.__assign({wrap:r.__assign({s:10497,t:10497},t.wrap),noUnpackFlip:!0,mipmap:!1},t)}}}));

@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Atributy prvku",
+  "empty": "- prázdné -",
+  "validationErrors": {
+    "cannotBeNull": "Zadejte hodnotu.",
+    "outsideRange": "Hodnota by měla být mezi {min} a {max}",
+    "invalidCodedValue": "Hodnota by měla být jednou z uvedených hodnot.",
+    "invalidType": "Neplatná hodnota",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

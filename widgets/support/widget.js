@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./decorators","./jsxFactory","./widgetUtils","./shim/SVGElement"],(function(e,t,n,o,r){function i(e){for(var n in e)t.hasOwnProperty(n)||(t[n]=e[n])}Object.defineProperty(t,"__esModule",{value:!0}),i(n),i(o),i(r),t.isWidget=function(e){return e&&"function"==typeof e.render},t.hasDomNode=function(e){return e&&"function"==typeof e.postMixInProperties&&"function"==typeof e.buildRendering&&"function"==typeof e.postCreate&&"function"==typeof e.startup}}));
+define(["require","exports","tslib","./decorators","./jsxFactory","./widgetUtils","./shim/SVGElement"],(function(t,e,o,n,r,i){Object.defineProperty(e,"__esModule",{value:!0}),o.__exportStar(n,e),o.__exportStar(r,e),o.__exportStar(i,e),e.isWidget=function(t){return t&&"function"==typeof t.render},e.hasDomNode=function(t){return t&&"function"==typeof t.postMixInProperties&&"function"==typeof t.buildRendering&&"function"==typeof t.postCreate&&"function"==typeof t.startup}}));

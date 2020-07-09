@@ -10,23 +10,29 @@ uniform bool u_isFloatTexture;
 // true if y axis needs to be flipped
 uniform bool u_flipY;
 
-// true if geometric transformformation is needed
-uniform bool u_applyTransform;
-
 // opacity
 uniform float u_opacity;
 
 // resampling method
 uniform int u_resampling;
 
+// source image size
+uniform vec2 u_srcImageSize;
+
+#ifdef APPLY_PROJECTION
 #include <raster/common/projection.glsl>
+#endif
+
+#ifdef BICUBIC
+#include <filtering/bicubic.glsl>
+#endif
 
 vec2 getPixelLocation(vec2 coords) {
   vec2 targetLocation = u_flipY ? vec2(coords.s, 1.0 - coords.t) : coords;
-  if (!u_applyTransform) {
-    return targetLocation;
-  }
-  return projectPixelLocation(targetLocation);
+#ifdef APPLY_PROJECTION
+  targetLocation = projectPixelLocation(targetLocation);
+#endif
+  return targetLocation;
 }
 
 bool isOutside(vec2 coords){
@@ -38,9 +44,10 @@ bool isOutside(vec2 coords){
 }
 
 vec4 getPixel(vec2 pixelLocation) {
-  return texture2D(u_image, pixelLocation);
-  // nearest
-  // if (u_resampling == 0) {
-  //   return texture2D(u_image, pixelLocation);
-  // }
+#ifdef BICUBIC
+  vec4 color = sampleBicubicBSpline(u_image, pixelLocation, u_srcImageSize);
+#else
+  vec4 color = texture2D(u_image, pixelLocation);
+#endif
+  return color;
 }

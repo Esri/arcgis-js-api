@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/maybe","../../../../support/elevationInfoUtils"],(function(e,o,n,r,t){Object.defineProperty(o,"__esModule",{value:!0}),o.canMoveZ=function(e,o){return void 0===o&&(o=t.getGraphicEffectiveElevationInfo(e)),"on-the-ground"!==o.mode&&!(r.isNone(e.geometry)||!e.geometry.hasZ)},o.disableDisplayOnGrab=function(e,o){var n=null,t=e.events.on("grab-changed",(function(t){r.isSome(n)&&(n.remove(),n=null),"start"===t.action?(n=e.disableDisplay(),o&&o(t)):o&&o(t)}));return{remove:function(){r.isSome(n)&&n.remove(),t.remove()}}}}));
+define(["require","exports","../../../../core/maybe","../../../../support/elevationInfoUtils"],(function(e,o,n,r){Object.defineProperty(o,"__esModule",{value:!0}),o.canMoveZ=function(e,o){return void 0===o&&(o=r.getGraphicEffectiveElevationInfo(e)),"on-the-ground"!==o.mode&&!(n.isNone(e.geometry)||!e.geometry.hasZ)},o.disableDisplayOnGrab=function(e,o){var r=null,t=e.events.on("grab-changed",(function(t){n.isSome(r)&&(r.remove(),r=null),"start"===t.action?(r=e.disableDisplay(),o&&o(t)):o&&o(t)}));return{remove:function(){n.isSome(r)&&r.remove(),t.remove()}}}}));

@@ -1,0 +1,51 @@
+@import "BuildingLevelPicker";
+@import "BuildingPhasePicker";
+@import "BuildingDisciplinesTree";
+
+@mixin buildingExplorer() {
+  $base: "esri-building-explorer";
+  $loading-container: "#{$base}__loading-container";
+  $section: "#{$base}__section";
+  $panel--error: "#{$base}__panel--error";
+
+  .#{$base} {
+    position: relative;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    width: $panel-width;
+    max-width: 100%;
+    max-height: calc(100vh - #{$side-spacing--double});
+    padding: $side-spacing;
+
+    .esri-widget__heading {
+      font-weight: $font-weight;
+    }
+  }
+
+  .#{$loading-container} {
+    text-align: center;
+
+    calcite-loader {
+      box-sizing: content-box;
+    }
+  }
+
+  .#{$section}:not(:last-child) {
+    margin-bottom: $side-spacing--double;
+  }
+
+  .#{$panel--error} {
+    color: $font-color--error;
+    margin: 0;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+}
+
+@if $include_BuildingExplorer==true {
+  @include buildingLevelPicker();
+  @include buildingPhasePicker();
+  @include buildingDisciplinesTree();
+  @include buildingExplorer();
+}

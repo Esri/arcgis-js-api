@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "צורת ישות",
+  "empty": "- ריק -",
+  "validationErrors": {
+    "cannotBeNull": "הזן ערך",
+    "outsideRange": "הערך צריך להיות בין {min} ל-{max}",
+    "invalidCodedValue": "הערך אמור להיות אחד מהערכים שברשימה.",
+    "invalidType": "ערך לא חוקי",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

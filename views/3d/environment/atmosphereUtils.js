@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0}),t.computeInnerAltitudeFade=function(e){return Math.min(1,Math.max(0,(e-1e5)/9e5))},t.INNER_ATMOSPHERE_DEPTH=1e4}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../engine","./webgl/WGLContainer"],(function(e,r,t,n,s,p){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r.prototype.prepareRenderPasses=function(r){var t=this,n=r.registerRenderPass({name:"bitmap",brushes:[s.brushes.Bitmap],target:function(){return t.children}});return e.prototype.prepareRenderPasses.call(this,r).concat([n])},r}(p.default);r.BitmapContainer=a}));
+define(["require","exports","tslib","../engine","./webgl/WGLContainer"],(function(e,r,t,n,s){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(r,e),r.prototype.prepareRenderPasses=function(r){var s=this,a=r.registerRenderPass({name:"bitmap",brushes:[n.brushes.Bitmap],target:function(){return s.children}});return t.__spreadArrays(e.prototype.prepareRenderPasses.call(this,r),[a])},r.prototype.createRenderParams=function(r){return t.__assign(t.__assign({},e.prototype.createRenderParams.call(this,r)),{blendMode:this.blendMode})},r}(s.default);r.BitmapContainer=a}));

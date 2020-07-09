@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Добавить закладку",
+  "goToBookmark": "Перейти к закладке",
+  "noBookmarksHeading": "Нет закладок",
+  "noBookmarksDescription": "Добавьте закладки на карту, и они появятся здесь.",
+  "title": "Заголовок",
+  "addPlaceholder": "Введите заголовок закладки",
+  "addingBookmark": "Добавление закладки",
+  "widgetLabel": "Закладки"
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/Warning","../../PointCloudClassBreaksRenderer","../../PointCloudRGBRenderer","../../PointCloudStretchRenderer","../../PointCloudUniqueValueRenderer"],(function(e,r,n,o,t,u,d){Object.defineProperty(r,"__esModule",{value:!0});var i={pointCloudClassBreaksRenderer:o,pointCloudRGBRenderer:t,pointCloudStretchRenderer:u,pointCloudUniqueValueRenderer:d};function l(e){return e&&i[e.type]||null}r.read=function(e,r,o){var t=l(e);if(t){var u=new t;return u.read(e,o),u}return o&&o.messages&&e&&o.messages.push(new n("renderer:unsupported","Renderers of type '"+(e.type||"unknown")+"' are not supported",{definition:e,context:o})),null},r.fromJSON=function(e){var r=l(e);return r?r.fromJSON(e):null}}));

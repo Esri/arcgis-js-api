@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Edges3D"],(function(e,r,t,o,s,p){return function(e){function r(r){var t=e.call(this,r)||this;return t.type="solid",t}var p;return t(r,e),p=r,r.prototype.clone=function(){return new p(this.cloneProperties())},o([s.property({type:["solid"]})],r.prototype,"type",void 0),r=p=o([s.subclass("esri.symbols.support.SolidEdges3D")],r)}(s.declared(p))}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./Edges3D"],(function(e,r,t,o,s){return function(e){function r(r){var t=e.call(this,r)||this;return t.type="solid",t}var s;return t.__extends(r,e),s=r,r.prototype.clone=function(){return new s(this.cloneProperties())},t.__decorate([o.property({type:["solid"]})],r.prototype,"type",void 0),r=s=t.__decorate([o.subclass("esri.symbols.support.SolidEdges3D")],r)}(s)}));

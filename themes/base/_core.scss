@@ -16,6 +16,8 @@ $include_BasemapGallery: $include_widgets !default;
 $include_BasemapLayerList: $include_widgets !default;
 $include_BasemapToggle: $include_widgets !default;
 $include_Bookmarks: $include_widgets !default;
+$include_BuildingExplorer: $include_widgets !default;
+$include_ButtonMenu: $include_widgets !default;
 $include_ClassedColorSlider: $include_widgets !default;
 $include_ClassedSizeSlider: $include_widgets !default;
 $include_Compass: $include_widgets !default;
@@ -30,6 +32,7 @@ $include_DistanceMeasurement2D: $include_widgets !default;
 $include_Editor: $include_widgets !default;
 $include_Expand: $include_widgets !default;
 $include_Feature: $include_widgets !default;
+$include_FeatureContent: $include_widgets !default;
 $include_FeatureForm: $include_widgets !default;
 $include_FeatureTable: $include_widgets !default;
 $include_FeatureTemplates: $include_widgets !default;
@@ -57,13 +60,15 @@ $include_Slice: $include_widgets !default;
 $include_Slider: $include_widgets !default;
 $include_Spinner: $include_widgets !default;
 $include_Swipe: $include_widgets !default;
+$include_TableList: $include_widgets !default;
 $include_TimePicker: $include_widgets !default;
 $include_TimeSlider: $include_widgets !default;
 $include_Zoom: $include_widgets !default;
 
 $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icons/style.scss
+$calcite-fonts-path: "../base/fonts/fonts/";
 
-@import "fonts/avenir-next/avenir-next.scss";
+@import "fonts/fonts.scss";
 @import "icons/style.scss";
 
 @import "color";
@@ -88,6 +93,8 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/BasemapLayerList";
 @import "widgets/BasemapToggle";
 @import "widgets/Bookmarks";
+@import "widgets/BuildingExplorer";
+@import "widgets/ButtonMenu";
 @import "widgets/ClassedColorSlider";
 @import "widgets/ClassedSizeSlider";
 @import "widgets/ColorSizeSlider";
@@ -102,6 +109,7 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/Editor";
 @import "widgets/Expand";
 @import "widgets/Feature";
+@import "widgets/FeatureContent";
 @import "widgets/FeatureForm";
 @import "widgets/FeatureTable";
 @import "widgets/Grid";
@@ -130,6 +138,7 @@ $icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icon
 @import "widgets/Spinner";
 @import "widgets/Swipe";
 @import "widgets/FeatureTemplates";
+@import "widgets/TableList";
 @import "widgets/TimePicker";
 @import "widgets/TimeSlider";
 @import "widgets/Zoom";

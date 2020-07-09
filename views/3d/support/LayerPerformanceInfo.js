@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../layers/support/PerformanceInfoLayerView","../terrain/terrainUtils"],(function(e,r,a,t){return function(e,r){if(this.layer=null,this.memory=0,this.displayedNumberOfFeatures=0,this.maximumNumberOfFeatures=null,this.totalNumberOfFeatures=null,this.layer=e.layer,this.memory=t.isSurfaceLayerView(e)?r.basemapTerrain.getUsedMemoryForLayerView(e):e.getUsedMemory(),a.isPerformanceInfoLayerView(e)){var i=e.performanceInfo;this.displayedNumberOfFeatures=i.displayedNumberOfFeatures,this.maximumNumberOfFeatures=i.maximumNumberOfFeatures,this.totalNumberOfFeatures=i.totalNumberOfFeatures}}}));

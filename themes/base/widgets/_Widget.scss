@@ -461,6 +461,9 @@
     .esri-component > .esri-widget--panel,
     .esri-component.esri-widget--panel {
       width: $panel-width;
+      .esri-widget--panel { // widget--panel inside another widget--panel
+        width: auto;
+      }
     }
   }
 

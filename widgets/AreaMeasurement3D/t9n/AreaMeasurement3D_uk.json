@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Вимірювання площі",
+  "hint": "Почніть вимірювання, клацнувши на сцені для розміщення першої точки",
+  "unsupported": "Вимірювання 3D-областей підтримується тільки в SceneView.",
+  "perimeterLength": "Периметр",
+  "area": "Площа",
+  "unit": "Одиниця",
+  "notApplicable": "немає даних",
+  "newMeasurement": "Нове вимірювання",
+  "units": {
+    "metric": "Метричний",
+    "imperial": "Британська система",
+    "square-kilometers": "Квадратні кілометри",
+    "square-meters": "Квадратні метри",
+    "square-miles": "Квадратні милі",
+    "square-inches": "Квадратні дюйми",
+    "square-feet": "Квадратні фути",
+    "square-yards": "Квадратні ярди",
+    "square-us-feet": "Квадратні фути (США)",
+    "acres": "Акри",
+    "ares": "Ари",
+    "hectares": "Гектари"
+  }
+}

@@ -37,14 +37,8 @@
  * view.ui.add(navigationToggle, "top-right");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/NavigationToggle/nls/NavigationToggle";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -56,9 +50,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.NavigationToggle
 import NavigationToggleViewModel = require("esri/widgets/NavigationToggle/NavigationToggleViewModel");
 
+// esri.widgets.NavigationToggle.t9n
+import NavigationToggleMessages from "esri/widgets/NavigationToggle/t9n/NavigationToggle";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
@@ -78,7 +75,7 @@ const CSS = {
 type LayoutMode = "vertical" | "horizontal";
 
 @subclass("esri.widgets.NavigationToggle")
-class NavigationToggle extends declared(Widget) {
+class NavigationToggle extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -98,8 +95,8 @@ class NavigationToggle extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -135,8 +132,10 @@ class NavigationToggle extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layout
@@ -153,7 +152,7 @@ class NavigationToggle extends declared(Widget) {
    *
    * @name layout
    * @instance
-   * @type {string}
+   * @type {"vertical" | "horizontal"}
    * @default vertical
    *
    * @example
@@ -174,6 +173,25 @@ class NavigationToggle extends declared(Widget) {
 
     this._set("layout", value);
   }
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/NavigationToggle/t9n/NavigationToggle")
+  messages: NavigationToggleMessages = null;
 
   //----------------------------------
   //  view
@@ -246,6 +264,7 @@ class NavigationToggle extends declared(Widget) {
     };
 
     const tabIndex = disabled ? -1 : 0;
+    const title = this.messages.toggle;
 
     return (
       <div
@@ -254,8 +273,8 @@ class NavigationToggle extends declared(Widget) {
         onclick={this._toggle}
         onkeydown={this._toggle}
         tabIndex={tabIndex}
-        aria-label={i18n.toggle}
-        title={i18n.toggle}
+        aria-label={title}
+        title={title}
       >
         <div class={this.classes(CSS.button, CSS.panButton, panButtonClasses)}>
           <span class={CSS.panIcon} />

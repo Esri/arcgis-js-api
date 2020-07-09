@@ -38,17 +38,12 @@
  * @see {@link module:esri/views/ui/DefaultUI}
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/DistanceMeasurement2D/nls/DistanceMeasurement2D";
-
 // esri.core
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { SystemOrLengthUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -60,9 +55,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.DistanceMeasurement2D
 import DistanceMeasurement2DViewModel = require("esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel");
 
+// esri.widgets.DistanceMeasurement2D.t9n
+import DistanceMeasurement2DMessages from "esri/widgets/DistanceMeasurement2D/t9n/DistanceMeasurement2D";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -97,7 +95,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.DistanceMeasurement2D")
-class DistanceMeasurement2D extends declared(Widget) {
+class DistanceMeasurement2D extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -117,8 +115,8 @@ class DistanceMeasurement2D extends declared(Widget) {
    * });
    * view.ui.add(measurementWidget, "top-right");
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -168,8 +166,29 @@ class DistanceMeasurement2D extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/DistanceMeasurement2D/t9n/DistanceMeasurement2D")
+  messages: DistanceMeasurement2DMessages = null;
 
   //----------------------------------
   //  unit
@@ -177,8 +196,6 @@ class DistanceMeasurement2D extends declared(Widget) {
 
   /**
    * Unit system (imperial, metric) or specific unit used for displaying the distance values.
-   *
-   * **Possible Values:** metric | imperial | inches | feet | us-feet | yards | miles | nautical-miles | meters | kilometers
    *
    * @name unit
    * @instance
@@ -299,7 +316,7 @@ class DistanceMeasurement2D extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const { id, viewModel, visible } = this;
+    const { id, messages, viewModel, visible } = this;
     const { active, isSupported, measurementLabel, state, unit, unitOptions } = viewModel;
 
     const isDisabled = state === "disabled";
@@ -309,13 +326,13 @@ class DistanceMeasurement2D extends declared(Widget) {
     const hintNode =
       active && isReady ? (
         <section key="hint" class={CSS.hint}>
-          <p class={CSS.hintText}>{i18n.hint}</p>
+          <p class={CSS.hintText}>{messages.hint}</p>
         </section>
       ) : null;
 
     const unsupportedNode = !isSupported ? (
       <section key="unsupported" class={CSS.panelError}>
-        <p>{i18n.unsupported}</p>
+        <p>{messages.unsupported}</p>
       </section>
     ) : null;
 
@@ -337,7 +354,7 @@ class DistanceMeasurement2D extends declared(Widget) {
 
     const measurementNode = isMeasuring ? (
       <section key="measurement" class={CSS.measurement}>
-        {measurementLabelNode(i18n.distance, measurementLabel, "distance")}
+        {measurementLabelNode(messages.distance, measurementLabel, "distance")}
       </section>
     ) : null;
 
@@ -346,7 +363,7 @@ class DistanceMeasurement2D extends declared(Widget) {
     const unitsNode = isMeasuring ? (
       <section key="units" class={CSS.units}>
         <label class={CSS.unitsLabel} for={unitsId}>
-          {i18n.unit}
+          {messages.unit}
         </label>
         <div class={CSS.unitsSelectWrapper}>
           <select
@@ -358,7 +375,7 @@ class DistanceMeasurement2D extends declared(Widget) {
           >
             {unitOptions.map((unitOption) => (
               <option key={unitOption} value={unitOption}>
-                {i18n.units[unitOption]}
+                {messages.units[unitOption]}
               </option>
             ))}
           </select>
@@ -380,10 +397,10 @@ class DistanceMeasurement2D extends declared(Widget) {
             class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
-            title={i18n.newMeasurement}
-            aria-label={i18n.newMeasurement}
+            title={messages.newMeasurement}
+            aria-label={messages.newMeasurement}
           >
-            {i18n.newMeasurement}
+            {messages.newMeasurement}
           </button>
         </div>
       ) : null;
@@ -413,7 +430,7 @@ class DistanceMeasurement2D extends declared(Widget) {
    */
   @accessibleHandler()
   private _newMeasurement(): void {
-    this.viewModel.newMeasurement();
+    ignoreAbortErrors(this.viewModel.start());
   }
 
   /**

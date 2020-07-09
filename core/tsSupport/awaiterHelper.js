@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["../promiseUtils"],(function(n){return function(t,e,c,u){var i=null;return n.create((function(c,o){function r(n){try{f(u.next(n))}catch(n){o(n)}}function a(n){try{f(u.throw(n))}catch(n){o(n)}}function f(t){t.done?(i=n.when(t.value)).then(c,o):(i=n.when(t.value)).then(r,a)}f((u=u.apply(t,e||[])).next())}),(function(n){i&&i.cancel&&i.cancel(n)}))}}));
+define(["../Logger","../deprecate"],(function(e,r){return r.deprecated(e.getLogger("esri.core.tsSupport.awaiterHelper"),"helpers from esri.core.tsSupport are no longer required",{replacement:"use helpers from TSLib by enabling the TypeScript compiler importHelpers option",version:"4.16",see:"https://github.com/Microsoft/tslib#readme"}),function(e,r,t,n){return new(t||(t=Promise))((function(o,i){function c(e){try{u(n.next(e))}catch(e){i(e)}}function p(e){try{u(n.throw(e))}catch(e){i(e)}}function u(e){var r;e.done?o(e.value):(r=e.value,r instanceof t?r:new t((function(e){e(r)}))).then(c,p)}u((n=n.apply(e,r||[])).next())}))}}));

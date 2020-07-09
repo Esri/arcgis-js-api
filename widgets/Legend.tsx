@@ -55,20 +55,13 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Legend/nls/Legend";
-
 // esri.core
 import Collection = require("esri/core/Collection");
 import Handles = require("esri/core/Handles");
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.core.accessorSupport.decorators
 import { cast } from "esri/core/accessorSupport/decorators/cast";
@@ -91,11 +84,17 @@ import Classic = require("esri/widgets/Legend/styles/Classic");
 // esri.widgets.Legend.support
 import ActiveLayerInfo = require("esri/widgets/Legend/support/ActiveLayerInfo");
 
+// esri.widgets.Legend.t9n
+import LegendMessages from "esri/widgets/Legend/t9n/Legend";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
+  base: "esri-legend",
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
   widgetIcon: "esri-icon-layer-list"
 };
 
@@ -103,7 +102,7 @@ type StyleType = Card["type"] | Classic["type"];
 type LegendStyle = Card | Classic;
 
 @subclass("esri.widgets.Legend")
-class Legend extends declared(Widget) {
+class Legend extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -123,11 +122,11 @@ class Legend extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own(
       watchUtils.on(this, "activeLayerInfos", "change", () =>
         this._refreshActiveLayerInfos(this.activeLayerInfos)
@@ -192,7 +191,9 @@ class Legend extends declared(Widget) {
   //----------------------------------
 
   /**
-   * Indicates whether to show the {@link module:esri/Basemap} layers in the Legend.
+   * Indicates whether to show the {@link module:esri/Basemap} layers in the Legend. If you set this property to
+   * `true` and specify [layerInfos](#layerInfos), the basemap layers you want included in the legend must also be
+   * specified in `layerInfos`.
    *
    * @name basemapLegendVisible
    * @instance
@@ -220,6 +221,13 @@ class Legend extends declared(Widget) {
   @aliasOf("viewModel.groundLegendVisible")
   @renderable()
   groundLegendVisible = false;
+
+  //----------------------------------
+  //  keepCacheOnDestroy
+  //----------------------------------
+
+  @aliasOf("viewModel.keepCacheOnDestroy")
+  keepCacheOnDestroy = false;
 
   //----------------------------------
   //  respectLayerVisibility
@@ -283,16 +291,20 @@ class Legend extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layerInfos
   //----------------------------------
 
   /**
-   * Specifies a subset of the layers to display in the legend.
-   * If this property is not set, all layers in the map will display in the legend.
+   * Specifies a subset of the layers to display in the legend. This includes any [basemap layers](#basemapLegendVisible)
+   * you want to be visible in the legend.
+   * If this property is not set, all layers in the map will display in the legend, including
+   * basemap layers if [basemapLegendVisible](#basemapLegendVisible) is `true`.
    * Objects in this array are defined with the properties listed below.
    *
    * @name layerInfos
@@ -303,15 +315,31 @@ class Legend extends declared(Widget) {
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
    * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-   * @todo doc later \@property {boolean} [defaultSymbol=true] - When `false`, the default symbol for the renderer will
-   * not display in the legend. Only applicable to
-   * {@link module:esri/layers/FeatureLayer}.
    * @todo doc later \@property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
    *                                    even if they are visible in the map.
    */
   @aliasOf("viewModel.layerInfos")
   @renderable()
   layerInfos: LayerInfo[] = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Legend/t9n/Legend")
+  messages: LegendMessages = null;
 
   //----------------------------------
   //  style
@@ -427,7 +455,13 @@ class Legend extends declared(Widget) {
   //-------------------------------------------------------------------
 
   render(): VNode {
-    return this.style.render();
+    return (
+      <div
+        class={this.classes(CSS.base, CSS.widget, this.style instanceof Classic ? CSS.panel : null)}
+      >
+        {this.style.render()}
+      </div>
+    );
   }
 
   //--------------------------------------------------------------------------

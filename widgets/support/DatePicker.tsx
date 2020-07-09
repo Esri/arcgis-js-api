@@ -10,21 +10,17 @@
  * @see module:esri/widgets/support/TimePicker
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate"/>
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends"/>
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/nls/DatePicker";
-
 // esri
 import { formatDate } from "esri/../intl";
-import moment = require("esri/../moment");
 
 // esri.core
 import { eventKey } from "esri/../core/events";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+
+// esri.intl
+import { loadMoment } from "esri/../intl/moment";
 
 // esri.widgets
 import Widget = require("esri/Widget");
@@ -33,7 +29,10 @@ import Widget = require("esri/Widget");
 import DatePickerViewModel = require("esri/widgets/DatePickerViewModel");
 import { VNode } from "esri/widgets/interfaces";
 import Popover = require("esri/widgets/Popover");
-import { accessibleHandler, isRTL, renderable, storeNode, tsx } from "esri/widgets/widget";
+import { accessibleHandler, isRTL, messageBundle, renderable, storeNode, tsx } from "esri/widgets/widget";
+
+// esri.widgets.support.t9n
+import DatePickerMessages from "esri/widgets/t9n/DatePicker";
 
 const CSS = {
   base: "esri-date-picker",
@@ -81,7 +80,8 @@ const DAY_PICKER_NAVIGATION_KEYS = [
   "PageUp"
 ];
 
-type Moment = moment.Moment;
+type Moment = typeof import("moment");
+type MomentInstance = ReturnType<Moment>;
 
 interface DayLabel {
   name: string;
@@ -92,7 +92,7 @@ interface DayLabel {
 const supportsOnFocusOut = "onfocusout" in HTMLElement.prototype;
 
 @subclass("esri.widgets.support.DatePicker")
-class DatePicker extends declared(Widget) {
+class DatePicker extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -113,8 +113,16 @@ class DatePicker extends declared(Widget) {
    *   value: "2019-12-25", // value that will initially display
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
+  }
+
+  async loadLocale(): Promise<void> {
+    this._moment = await loadMoment();
+
+    if (this._isOpen) {
+      this._activeDate = this._moment(this._activeDate.toDate());
+    }
   }
 
   destroy(): void {
@@ -127,7 +135,7 @@ class DatePicker extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _activeDate: Moment = null;
+  private _activeDate: ReturnType<typeof import("moment")> = null;
 
   private _calendarNode: HTMLElement = null;
 
@@ -142,6 +150,8 @@ class DatePicker extends declared(Widget) {
 
   private _isOpen = false;
 
+  private _moment: Moment;
+
   private _rootNode: HTMLElement = null;
 
   //--------------------------------------------------------------------------
@@ -151,6 +161,42 @@ class DatePicker extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.15
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/support/t9n/DatePicker")
+  messages: DatePickerMessages = null;
+
+  //----------------------------------
   //  value
   //----------------------------------
 
@@ -158,10 +204,10 @@ class DatePicker extends declared(Widget) {
    * The input value for the widget.
    * @name value
    * @instance
-   * @type {*}
+   * @type {Date}
    */
   @aliasOf("viewModel.value")
-  value: Moment = null;
+  value: Date = null;
 
   //----------------------------------
   //  commitOnMonthChange
@@ -175,6 +221,7 @@ class DatePicker extends declared(Widget) {
    * @default false
    * @type {boolean}
    */
+  @property()
   commitOnMonthChange: boolean = false;
 
   //----------------------------------
@@ -205,7 +252,7 @@ class DatePicker extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const date = formatDate(this.viewModel.value.valueOf(), DATE_PICKER_FORMAT);
+    const date = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
     const isOpen = this._isOpen;
     const calendarToggleClasses = {
       [CSS.openIcon]: !isOpen,
@@ -262,7 +309,7 @@ class DatePicker extends declared(Widget) {
 
   private _renderCalendar(): VNode {
     const activeDate = this._activeDate;
-    const userDate = this.get<Moment>("viewModel.value");
+    const userDate = this._moment(this.viewModel.value);
 
     return (
       <div
@@ -300,20 +347,22 @@ class DatePicker extends declared(Widget) {
     ? this._handleDatePickerBlurOrFocusOut
     : null;
 
-  private _renderMonthPicker(activeDate: Moment): VNode {
+  private _renderMonthPicker(activeDate: MomentInstance): VNode {
     const rtl = isRTL();
     const prevIconClass = rtl ? CSS.nextIcon : CSS.previousIcon;
     const nextIconClass = rtl ? CSS.previousIcon : CSS.nextIcon;
 
-    const options = moment.months().map((month, index) => {
+    const options = this._moment.months().map((month, index) => {
       const sameMonth = activeDate.month() === index;
       return <option selected={sameMonth}>{month}</option>;
     });
 
+    const { messages } = this;
+
     return (
       <div class={CSS.monthPicker}>
         <div
-          aria-label={i18n.goToPreviousMonth}
+          aria-label={messages.goToPreviousMonth}
           bind={this}
           class={CSS.button}
           onblur={this._handleDatePickerBlur}
@@ -322,7 +371,7 @@ class DatePicker extends declared(Widget) {
           onkeydown={this._setPreviousMonth}
           role="button"
           tabIndex={0}
-          title={i18n.goToPreviousMonth}
+          title={messages.goToPreviousMonth}
         >
           <span aria-hidden="true" class={prevIconClass} />
         </div>
@@ -339,7 +388,7 @@ class DatePicker extends declared(Widget) {
           {options}
         </select>
         <div
-          aria-label={i18n.goToNextMonth}
+          aria-label={messages.goToNextMonth}
           bind={this}
           class={CSS.button}
           onblur={this._handleDatePickerBlur}
@@ -348,7 +397,7 @@ class DatePicker extends declared(Widget) {
           onkeydown={this._setNextMonth}
           role="button"
           tabIndex={0}
-          title={i18n.goToNextMonth}
+          title={messages.goToNextMonth}
         >
           <span aria-hidden="true" class={nextIconClass} />
         </div>
@@ -356,8 +405,8 @@ class DatePicker extends declared(Widget) {
     );
   }
 
-  private _renderDayPicker(activeDate: Moment, selectedDate: Moment): VNode {
-    const firstDayOfWeek = activeDate.clone().day(moment.localeData().firstDayOfWeek());
+  private _renderDayPicker(activeDate: MomentInstance, selectedDate: MomentInstance): VNode {
+    const firstDayOfWeek = activeDate.clone().day(this._moment.localeData().firstDayOfWeek());
     const dayLabels = this._getWeekLabels(firstDayOfWeek);
     const activeDescendantId = this._getDayId(activeDate);
 
@@ -394,7 +443,7 @@ class DatePicker extends declared(Widget) {
     );
   }
 
-  private _getDayId(date: Moment): string {
+  private _getDayId(date: MomentInstance): string {
     return `${this.id}__${formatDate(date.valueOf(), DATE_PICKER_FORMAT)}`;
   }
 
@@ -402,7 +451,7 @@ class DatePicker extends declared(Widget) {
     node.focus();
   }
 
-  private _getWeekLabels(firstDayOfWeek: moment.Moment): DayLabel[] {
+  private _getWeekLabels(firstDayOfWeek: MomentInstance): DayLabel[] {
     const dayLetters: DayLabel[] = [];
     const fullDayNameFormat = { weekday: "long" };
     const abbreviatedDayNameFormat = { weekday: "narrow" };
@@ -453,7 +502,7 @@ class DatePicker extends declared(Widget) {
       const yearOrMonth = ctrlKey ? "year" : "month";
       activeDate.endOf(yearOrMonth);
     } else if (key === "Enter" || key === " ") {
-      this.viewModel.value = activeDate.clone();
+      this.viewModel.value = activeDate.toDate();
       this._closedByUserAction = true;
       this._close();
     }
@@ -462,8 +511,8 @@ class DatePicker extends declared(Widget) {
     event.stopPropagation();
   }
 
-  private _renderMonth(activeDate: Moment, selectedDate: Moment): VNode {
-    const today = moment();
+  private _renderMonth(activeDate: MomentInstance, selectedDate: MomentInstance): VNode {
+    const today = this._moment();
     const startOfMonth = activeDate.clone().startOf("month");
     const endOfMonth = activeDate.clone().endOf("month");
 
@@ -520,17 +569,18 @@ class DatePicker extends declared(Widget) {
     return weeks;
   }
 
-  private _renderYearPicker(activeDate: Moment): VNode {
+  private _renderYearPicker(activeDate: MomentInstance): VNode {
     const yearFormat = { year: "numeric" };
     const date = activeDate.clone();
     const currYear = formatDate(date.valueOf(), yearFormat);
     const nextYear = formatDate(date.add(1, "year").valueOf(), yearFormat);
     const prevYear = formatDate(date.subtract(2, "year").valueOf(), yearFormat);
+    const { messages } = this;
 
     return (
       <div class={CSS.yearPicker}>
         <div
-          aria-label={i18n.goToPreviousYear}
+          aria-label={messages.goToPreviousYear}
           bind={this}
           class={CSS.year}
           onblur={this._handleDatePickerBlur}
@@ -538,7 +588,7 @@ class DatePicker extends declared(Widget) {
           onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setPreviousYear}
           tabIndex={0}
-          title={i18n.goToPreviousYear}
+          title={messages.goToPreviousYear}
         >
           {prevYear}
         </div>
@@ -546,7 +596,7 @@ class DatePicker extends declared(Widget) {
           {currYear}
         </div>
         <div
-          aria-label={i18n.goToNextYear}
+          aria-label={messages.goToNextYear}
           bind={this}
           class={CSS.year}
           onblur={this._handleDatePickerBlur}
@@ -554,7 +604,7 @@ class DatePicker extends declared(Widget) {
           onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setNextYear}
           tabIndex={0}
-          title={i18n.goToNextYear}
+          title={messages.goToNextYear}
         >
           {nextYear}
         </div>
@@ -569,7 +619,7 @@ class DatePicker extends declared(Widget) {
       return;
     }
 
-    this._open(this.viewModel.value.clone());
+    this._open(this.viewModel.value);
   }
 
   private _setMonth(event: Event): void {
@@ -577,7 +627,7 @@ class DatePicker extends declared(Widget) {
     const month: string = select.value;
     this._activeDate.month(month);
     if (this.commitOnMonthChange) {
-      this.viewModel.value = this._activeDate;
+      this.viewModel.value = this._activeDate.toDate();
     }
   }
 
@@ -587,8 +637,8 @@ class DatePicker extends declared(Widget) {
     this._calendarPopover.open = false;
   }
 
-  private _open(activeDate: Moment): void {
-    this._activeDate = activeDate;
+  private _open(activeDate: Date): void {
+    this._activeDate = this._moment(activeDate);
     this._isOpen = true;
     this._calendarPopover.open = true;
   }
@@ -597,7 +647,7 @@ class DatePicker extends declared(Widget) {
   private _setPreviousMonth(): void {
     this._activeDate.subtract(1, "month");
     if (this.commitOnMonthChange) {
-      this.viewModel.value = this._activeDate;
+      this.viewModel.value = this._activeDate.toDate();
     }
   }
 
@@ -605,7 +655,7 @@ class DatePicker extends declared(Widget) {
   private _setNextMonth(): void {
     this._activeDate.add(1, "month");
     if (this.commitOnMonthChange) {
-      this.viewModel.value = this._activeDate;
+      this.viewModel.value = this._activeDate.toDate();
     }
   }
 
@@ -622,7 +672,7 @@ class DatePicker extends declared(Widget) {
   @accessibleHandler()
   private _handleSelectedDate(event: Event): void {
     const div = event.target as HTMLDivElement;
-    this.viewModel.value = moment(div.getAttribute("data-iso-date"));
+    this.viewModel.value = this._moment(div.getAttribute("data-iso-date")).toDate();
     this._closedByUserAction = true;
     this._close();
   }

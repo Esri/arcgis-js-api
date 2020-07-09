@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/assignHelper","@dojo/framework/shim/WeakMap","./locale"],(function(e,r,t,a,n){Object.defineProperty(r,"__esModule",{value:!0});var o={ar:"ar-u-nu-latn"},i=new a.default,u={};function l(e){var r=e||u;if(!i.has(r)){var t=n.getLocale(),a=o[n.getLocale()]||t;i.set(r,new Intl.NumberFormat(a,e))}return i.get(r)}n.onLocaleChange((function(){i=new a.default,u={}})),r.getFormatter=l,r.convertNumberFormatToIntlOptions=function(e){void 0===e&&(e={});var r={};return null!=e.digitSeparator&&(r.useGrouping=e.digitSeparator),null!=e.places&&(r.minimumFractionDigits=r.maximumFractionDigits=e.places),r},r.formatNumber=function(e,r){return l(r).format(e)}}));
+define(["require","exports","@dojo/framework/shim/WeakMap","./locale"],(function(e,r,t,a){Object.defineProperty(r,"__esModule",{value:!0});var n={ar:"ar-u-nu-latn"},o=new t.default,i={};function u(e){var r=e||i;if(!o.has(r)){var t=a.getLocale(),u=n[a.getLocale()]||t;o.set(r,new Intl.NumberFormat(u,e))}return o.get(r)}a.beforeLocaleChange((function(){o=new t.default,i={}})),r.getFormatter=u,r.convertNumberFormatToIntlOptions=function(e){void 0===e&&(e={});var r={};return null!=e.digitSeparator&&(r.useGrouping=e.digitSeparator),null!=e.places&&(r.minimumFractionDigits=r.maximumFractionDigits=e.places),r},r.formatNumber=function(e,r){return u(r).format(e)}}));

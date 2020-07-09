@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/Error","../support/projectionUtils","./TilingScheme"],(function(e,i,t,n,l){Object.defineProperty(i,"__esModule",{value:!0}),i.isInsideExtent=function(){return!0},i.tiltToExtentEdge=function(){return 0},i.checkIfTileInfoSupportedForViewSR=function(e,i){var r=e.lods.length-1;if(e.spatialReference.isWebMercator){if(!l.makeWebMercatorAuxiliarySphere(r).compatibleWith(e))return new t("tilingscheme:incompatible-global-web-mercator","The tiling scheme is not compatible with the ArcGIS Online Web Mercator tiling scheme")}else{if(!n.canProjectToWGS84ComparableLonLat(e.spatialReference))return new t("tilingscheme:global-unsupported-spatial-reference","The tiling scheme spatial reference is not supported in global scenes");if(!l.makeGCSWithTileSize(e.spatialReference,e.size[0],r).compatibleWith(e))return e.spatialReference.isWGS84?new t("tilingscheme:incompatible-global-wgs84","The tiling scheme is not compatible with the ArcGIS Online WGS84 tiling scheme"):new t("tilingscheme:incompatible-global","The tiling scheme is not compatible with the ArcGIS Online tiling scheme")}if(i&&!e.spatialReference.equals(i))return new t("tilingscheme:spatial-reference-mismatch","The tiling scheme does not match the spatial reference of the global scene")}}));

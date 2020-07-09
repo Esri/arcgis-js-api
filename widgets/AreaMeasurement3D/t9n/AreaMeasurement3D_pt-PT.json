@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Area Measurement",
+  "hint": "Comece a medir clicando na cena para colocar o seu primeiro ponto",
+  "unsupported": "A medição de área 3D só é suportada em SceneView.",
+  "perimeterLength": "Perímetro",
+  "area": "Área",
+  "unit": "Unidade",
+  "notApplicable": "n/d",
+  "newMeasurement": "Nova Medição",
+  "units": {
+    "metric": "Métrico",
+    "imperial": "Imperial",
+    "square-kilometers": "Quilómetros Quadrados",
+    "square-meters": "Metros Quadrados",
+    "square-miles": "Milhas Quadradas",
+    "square-inches": "Polegadas Quadradas",
+    "square-feet": "Pés Quadrados",
+    "square-yards": "Jardas Quadradas",
+    "square-us-feet": "Pés Quadrados (EUA)",
+    "acres": "Acres",
+    "ares": "Ares",
+    "hectares": "Hectares"
+  }
+}

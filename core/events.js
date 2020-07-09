@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports"],(function(e,n){function r(e){return e&&("function"==typeof e.on||"function"==typeof e.addEventListener)}function t(e,n,t){if(!r(e))throw new TypeError("target is not a Evented or EventTarget object");if("on"in e)return e.on(n,t);if(Array.isArray(n)){for(var o=n.slice(),i=0,a=o;i<a.length;i++){var c=a[i];e.addEventListener(c,t)}return{remove:function(){for(var n=0,r=o;n<r.length;n++){var i=r[n];e.removeEventListener(i,t)}}}}return e.addEventListener(n,t),{remove:function(){e.removeEventListener(n,t)}}}Object.defineProperty(n,"__esModule",{value:!0}),n.isEventTarget=r,n.on=t,n.once=function(e,n,o){if(!r(e))throw new TypeError("target is not a Evented or EventTarget object");if("once"in e)return e.once(n,o);var i=t(e,n,(function(n){i.remove(),o.call(e,n)}));return{remove:function(){i.remove()}}},n.pausable=function(e,n,r){var o=!1,i=t(e,n,(function(n){o||r.call(e,n)}));return{resume:function(){o=!1},pause:function(){o=!0},remove:function(){i.remove()}}},n.ieKeyNormalizationMap={Win:"Meta",Scroll:"ScrollLock",Spacebar:" ",Down:"ArrowDown",Left:"ArrowLeft",Right:"ArrowRight",Up:"ArrowUp",Del:"Delete",Apps:"ContextMenu",Esc:"Escape",Multiply:"*",Add:"+",Subtract:"-",Decimal:".",Divide:"/"},n.eventKey=function(e){var r=e.key;return n.ieKeyNormalizationMap[r]||r}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-(window.webpackJsonpEsriAmCharts=window.webpackJsonpEsriAmCharts||[]).push([[4],{15:function(n,i){},16:function(n,i){},6:function(n,i){}}]);
+(window.webpackJsonpEsriAmCharts=window.webpackJsonpEsriAmCharts||[]).push([[4],{111:function(n,i){},201:function(n,i){},202:function(n,i){}}]);

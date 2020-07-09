@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 /* eslint-env worker */
 
@@ -51,8 +51,8 @@ var INVOKE = 6;
 var ABORT = 7;
 
 function createAbortError() {
-  var error = new Error("AbortError");
-  error.dojoType = "cancel";
+  var error = new Error("Aborted");
+  error.name = "AbortError";
   return error;
 }
 
@@ -70,54 +70,47 @@ function receiveMessage(event) {
 function invokeStaticMessage(methodName, data, options) {
   // Deferred has already been loaded at this point
   var signal = options && options.signal;
-  var Deferred = require("dojo/Deferred");
   var jobId = globalId++;
 
-  var abort = function() {
-    var outJob = outgoing.get(jobId);
+  return new Promise(function(resolve, reject) {
+    if (signal) {
+      if (signal.aborted) {
+        return reject(createAbortError());
+      }
 
-    if (!outJob) {
-      return;
+      signal.addEventListener("abort", function() {
+        var outJob = outgoing.get(jobId);
+
+        if (!outJob) {
+          return;
+        }
+
+        outgoing.delete(jobId);
+
+        // post a cancel message in order to cancel on the main thread
+        self.postMessage({
+          type: ABORT,
+          jobId: jobId
+        });
+
+        reject(createAbortError());
+      });
     }
 
-    outgoing.delete(jobId);
+    outgoing.set(jobId, {
+      resolve: resolve,
+      reject: reject
+    });
 
-    // post a cancel message in order to cancel on the main thread
+    // post to main thread
     self.postMessage({
-      type: ABORT,
-      jobId: jobId
+      type: INVOKE,
+      jobId: jobId,
+      methodName: methodName,
+      abortable: signal != null,
+      data: data
     });
-
-    outJob.reject(createAbortError());
-  };
-
-  // TODO promise-migration: just use Promise and rely on signal
-  var deferred = new Deferred(abort);
-
-  if (signal) {
-    if (signal.aborted) {
-      return deferred.reject(createAbortError());
-    }
-
-    signal.addEventListener("abort", function() {
-      abort();
-      deferred.reject(createAbortError());
-    });
-  }
-
-  outgoing.set(jobId, deferred);
-
-  // post to main thread
-  self.postMessage({
-    type: INVOKE,
-    jobId: jobId,
-    methodName: methodName,
-    // TODO promise migration: change to abortable: signal != null
-    abortable: true,
-    data: data
   });
-
-  return deferred.promise;
 }
 
 function messageHandler(event /* FmkMessageEvent */) {
@@ -138,6 +131,7 @@ function messageHandler(event /* FmkMessageEvent */) {
         return;
       }
 
+      configured = true;
       self.dojoConfig = configuration.loaderConfig;
       self.importScripts(configuration.loaderUrl);
 
@@ -145,18 +139,10 @@ function messageHandler(event /* FmkMessageEvent */) {
         require.config(configuration.loaderConfig);
       }
 
-      require(["esri/config"], function(esriConfig) {
-        for (var name in configuration.esriConfig) {
-          if (Object.prototype.hasOwnProperty.call(configuration.esriConfig, name)) {
-            esriConfig[name] = configuration.esriConfig[name];
-          }
-        }
-        self.postMessage({
-          type: CONFIGURED
-        });
+      self.esriConfig = configuration.esriConfig;
+      self.postMessage({
+        type: CONFIGURED
       });
-
-      configured = true;
       break;
 
     // Loads a module

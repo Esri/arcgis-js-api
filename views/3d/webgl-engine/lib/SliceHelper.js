@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../support/geometryUtils"],(function(e,n,t){var r=t.boundedPlane.create();return function(){function e(){this._worldPlane=r}return Object.defineProperty(e.prototype,"isEnabled",{get:function(){return this.plane!==r},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"plane",{get:function(){return this._worldPlane},set:function(e){this._worldPlane=e||r},enumerable:!0,configurable:!0}),e}()}));

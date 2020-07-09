@@ -274,6 +274,9 @@ $relationship_column_size: 85px;
     display: flex;
     align-items: center;
   }
+  .esri-legend--card__size-ramp-preview {
+    display: flex;
+  }
   .esri-legend--card__ramp-label {
     white-space: nowrap;
     margin: 0 0.5em;

@@ -6,7 +6,7 @@
   "properties": {
     "bandIds": {
       "type": "array",
-      "description": "An array of bandIds that are visible, can specify bands to export or rearrange band order(from image service).",
+      "description": "An array of bandIds that are visible for a multispectral dataset. It can specify bands to export or rearrange band order(from image service).",
       "items": {
         "type": "integer"
       }
@@ -161,7 +161,7 @@
     },
     "popupInfo": {
       "type": "object",
-      "description": "A popupInfo object defining the content of popup windows when you click or query a feature.",
+      "description": "A popupInfo object defining the content of popup windows when you click on the image.",
       "$ref": "popupInfo_schema.json"
     },
     "refreshInterval": {

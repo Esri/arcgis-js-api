@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0});var o={divisor:0};r.glLayout=function(e,r){void 0===r&&(r={}),r=t({},o,r);var n=e.stride;return e.fieldNames.filter((function(r){var t=e.fields.get(r).optional;return!(t&&t.glPadding)})).map((function(t){var o=e.fields.get(t),u=o.constructor.ElementCount,f=function(e){var r=i[e];if(r)return r;throw new Error("BufferType not supported in WebGL")}(o.constructor.ElementType),a=o.offset,s=!(!o.optional||!o.optional.glNormalized);return{name:t,stride:n,count:u,type:f,offset:a,normalized:s,divisor:r.divisor}}))};var i={u8:5121,u16:5123,u32:5125,i8:5120,i16:5122,i32:5124,f32:5126}}));
+define(["require","exports","tslib"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0});var i={divisor:0};r.glLayout=function(e,r){void 0===r&&(r={}),r=t.__assign(t.__assign({},i),r);var o=e.stride;return e.fieldNames.filter((function(r){var t=e.fields.get(r).optional;return!(t&&t.glPadding)})).map((function(t){var i=e.fields.get(t),u=i.constructor.ElementCount,s=function(e){var r=n[e];if(r)return r;throw new Error("BufferType not supported in WebGL")}(i.constructor.ElementType),a=i.offset,f=!(!i.optional||!i.optional.glNormalized);return{name:t,stride:o,count:u,type:s,offset:a,normalized:f,divisor:r.divisor}}))};var n={u8:5121,u16:5123,u32:5125,i8:5120,i16:5122,i32:5124,f32:5126}}));

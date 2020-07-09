@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this,e)||this;return t.layerId=null,t.subLayerIds=null,t.title=null,t}return t(e,r),o([s.property({json:{write:!0}})],e.prototype,"layerId",void 0),o([s.property({json:{write:!0}})],e.prototype,"subLayerIds",void 0),o([s.property({json:{write:!0}})],e.prototype,"title",void 0),e=o([s.subclass("esri/tasks/support/LegendLayer")],e)}(s.declared(p.JSONSupport))}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,t,o,s){return function(e){function r(r){var t=e.call(this,r)||this;return t.layerId=null,t.subLayerIds=null,t.title=null,t}return t.__extends(r,e),t.__decorate([s.property({json:{write:!0}})],r.prototype,"layerId",void 0),t.__decorate([s.property({json:{write:!0}})],r.prototype,"subLayerIds",void 0),t.__decorate([s.property({json:{write:!0}})],r.prototype,"title",void 0),r=t.__decorate([s.subclass("esri/tasks/support/LegendLayer")],r)}(o.JSONSupport)}));

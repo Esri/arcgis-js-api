@@ -37,13 +37,6 @@
  * view.ui.add(ccWidget, "bottom-left");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/CoordinateConversion/nls/CoordinateConversion";
-
 // esri.core
 import Collection = require("esri/core/Collection");
 import { eventKey } from "esri/core/events";
@@ -51,13 +44,16 @@ import global = require("esri/core/global");
 import Logger = require("esri/core/Logger");
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
 import Point = require("esri/geometry/Point");
 
 // esri.symbols
 import PictureMarkerSymbol = require("esri/symbols/PictureMarkerSymbol");
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -74,10 +70,13 @@ import CoordinateViewModel = require("esri/widgets/CoordinateConversion/Coordina
 import Conversion = require("esri/widgets/CoordinateConversion/support/Conversion");
 import Format = require("esri/widgets/CoordinateConversion/support/Format");
 
+// esri.widgets.CoordinateConversion.t9n
+import CoordinateConversionMessages from "esri/widgets/CoordinateConversion/t9n/CoordinateConversion";
+
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
 
@@ -135,7 +134,7 @@ const CSS: any = {
 const logger = Logger.getLogger("esri.widgets.CoordinateConversion");
 
 @subclass("esri.widgets.CoordinateConversion")
-class CoordinateConversion extends declared(Widget) {
+class CoordinateConversion extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -156,8 +155,8 @@ class CoordinateConversion extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -257,8 +256,46 @@ class CoordinateConversion extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/CoordinateConversion/t9n/CoordinateConversion")
+  messages: CoordinateConversionMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  mode
@@ -267,15 +304,13 @@ class CoordinateConversion extends declared(Widget) {
   /**
    * Describes the current mode of the widget.
    *
-   * **Possible Values:** live | capture
-   *
    * * While in `live` mode, the widget will update as the cursor moves.
    * * While in `capture` mode, the widget will update on mouse click and display a graphic
    * marking the current location.
    *
    * @name mode
    * @instance
-   * @type {string}
+   * @type {"live" | "capture"}
    * @default live
    * @since 4.7
    */
@@ -291,11 +326,9 @@ class CoordinateConversion extends declared(Widget) {
    * Determines whether the widget should expand up or down.  If set to `auto`
    * the widget will be oriented based on its position in the view.
    *
-   * **Possible Values:** auto | expand-up | expand-down
-   *
    * @name orientation
    * @instance
-   * @type {string}
+   * @type {"auto" | "expand-up" | "expand-down"}
    * @default auto
    * @since 4.7
    */
@@ -422,7 +455,7 @@ class CoordinateConversion extends declared(Widget) {
     const state = this.get("viewModel.state"),
       noBasemapAlert =
         state === "disabled" ? (
-          <div key={"esri-coordinate__no-basemap"}>{i18n.noBasemap}</div>
+          <div key={"esri-coordinate__no-basemap"}>{this.messages.noBasemap}</div>
         ) : null,
       inputForm = !noBasemapAlert && this._inputVisible ? this._renderInputForm() : null,
       settings = !noBasemapAlert && this._settingsVisible ? this._renderSettings() : null,
@@ -503,7 +536,7 @@ class CoordinateConversion extends declared(Widget) {
     } else {
       event.clipboardData.setData("text/plain", coordinate);
     }
-    this._showPopup(i18n.copySuccessMessage);
+    this._showPopup(this.messages.copySuccessMessage);
     event.preventDefault();
   }
 
@@ -526,7 +559,7 @@ class CoordinateConversion extends declared(Widget) {
         })
         .catch((error: Error) => {
           logger.error(error);
-          this._showPopup(i18n.invalidCoordinate);
+          this._showPopup(this.messages.invalidCoordinate);
           this._badInput = true;
         });
     } else {
@@ -542,7 +575,7 @@ class CoordinateConversion extends declared(Widget) {
       if (this._goToEnabled) {
         vm.goToLocation(result).catch((error) => {
           logger.warn(error);
-          this._showPopup(i18n.locationOffBasemap);
+          this._showPopup(this.messages.locationOffBasemap);
         });
       }
       return result;
@@ -613,16 +646,19 @@ class CoordinateConversion extends declared(Widget) {
   }
 
   private _renderConversion(conversion: Conversion, index: number): VNode {
+    const { messages } = this;
     const widgetId = this.id,
       rowId = `${widgetId}__list-item-${index}`,
-      rowLabel = `${conversion.format.name} ${i18n.conversionOutputSuffix}`,
+      rowLabel = `${conversion.format.name} ${messages.conversionOutputSuffix}`,
       firstRow = index === 0,
       rowVisible = firstRow || this._expanded,
       tools = firstRow
         ? this._renderFirstConversion(conversion)
         : this._renderTools(index, conversion, rowId),
       displayedCoordinate =
-        firstRow && !conversion.displayCoordinate ? i18n.noLocation : conversion.displayCoordinate,
+        firstRow && !conversion.displayCoordinate
+          ? messages.noLocation
+          : conversion.displayCoordinate,
       displayOutput = (
         <div
           aria-label={displayedCoordinate}
@@ -652,12 +688,12 @@ class CoordinateConversion extends declared(Widget) {
       >
         <select
           aria-controls={rowId}
-          aria-label={i18n.selectFormat}
+          aria-label={messages.selectFormat}
           class={this.classes(CSS.esriSelect, CSS.rowSelect)}
           bind={this}
           data-index={index}
           onchange={this._addConversion}
-          title={i18n.selectFormat}
+          title={messages.selectFormat}
         >
           <option aria-label={conversion.format.name} selected title={conversion.format.name}>
             {conversion.format.name.toUpperCase()}
@@ -673,7 +709,7 @@ class CoordinateConversion extends declared(Widget) {
   private _renderCopyButton(conversion: Conversion): VNode {
     return (
       <li
-        aria-label={i18nCommon.copy}
+        aria-label={this.messagesCommon.copy}
         bind={this}
         class={this.classes(CSS.widgetButton, CSS.rowButton)}
         data-conversion={conversion}
@@ -682,7 +718,7 @@ class CoordinateConversion extends declared(Widget) {
         oncopy={this._onCopy}
         role="button"
         tabindex="0"
-        title={i18nCommon.copy}
+        title={this.messagesCommon.copy}
       >
         <span aria-hidden="true" class={CSS.copyButton} />
       </li>
@@ -697,8 +733,10 @@ class CoordinateConversion extends declared(Widget) {
       [CSS.collapseButton]: this._expanded
     };
 
-    const modeTitle = this.mode === "live" ? i18n.captureMode : i18n.liveMode,
-      buttonTitle = !this._expanded ? i18nCommon.expand : i18nCommon.collapse,
+    const { messages, messagesCommon } = this;
+
+    const modeTitle = this.mode === "live" ? messages.captureMode : messages.liveMode,
+      buttonTitle = !this._expanded ? messagesCommon.expand : messagesCommon.collapse,
       copyButton =
         conversion.displayCoordinate && this.mode === "capture"
           ? this._renderCopyButton(conversion)
@@ -755,6 +793,8 @@ class CoordinateConversion extends declared(Widget) {
       [CSS.rejectInput]: this._badInput
     };
 
+    const { messages, messagesCommon } = this;
+
     return (
       <div
         aria-labelledby={headerId}
@@ -764,30 +804,30 @@ class CoordinateConversion extends declared(Widget) {
       >
         <div class={CSS.sectionHeading}>
           <div
-            aria-label={i18nCommon.back}
+            aria-label={messagesCommon.back}
             bind={this}
             class={this.classes(CSS.widgetButton, CSS.backButton)}
             onclick={this._toggleInputVisibility}
             onkeydown={this._toggleInputVisibility}
             role="button"
             tabindex="0"
-            title={i18nCommon.back}
+            title={messagesCommon.back}
           >
             <span aria-hidden="true" class={CSS.leftArrow} />
           </div>
           <h4 class={CSS.header} id={headerId}>
-            {i18n.inputCoordTitle}
+            {messages.inputCoordTitle}
           </h4>
         </div>
 
         <div class={CSS.inputFormGroup}>
           <select
             aria-controls={inputId}
-            aria-label={i18n.selectFormat}
+            aria-label={messages.selectFormat}
             bind={this}
             class={this.classes(CSS.esriSelect, CSS.rowSelect)}
             onchange={this._setInputFormat}
-            title={i18n.selectFormat}
+            title={messages.selectFormat}
           >
             {options}
           </select>
@@ -802,35 +842,35 @@ class CoordinateConversion extends declared(Widget) {
             data-node-ref="_coordinateInput"
             id={inputId}
             onkeydown={this._processUserInput}
-            placeholder={i18n.inputCoordTitle}
+            placeholder={messages.inputCoordTitle}
             role="textbox"
             spellcheck={false}
-            title={i18n.inputCoordTitle}
+            title={messages.inputCoordTitle}
             type="text"
           />
         </div>
 
         <div class={CSS.inputFormGroup}>
-          <label aria-label={i18n.goTo}>
+          <label aria-label={messages.goTo}>
             <input
               bind={this}
               checked={this._goToEnabled}
               onclick={this._toggleGoTo}
-              title={i18n.goTo}
+              title={messages.goTo}
               type="checkbox"
             />
-            {i18n.goTo}
+            {messages.goTo}
           </label>
 
           <button
-            aria-label={i18n.convert}
+            aria-label={messages.convert}
             bind={this}
             class={this.classes(CSS.convertButton, CSS.button)}
             onclick={this._processUserInput}
-            title={i18n.convert}
+            title={messages.convert}
             type="button"
           >
-            {i18n.convert}
+            {messages.convert}
           </button>
         </div>
       </div>
@@ -846,18 +886,20 @@ class CoordinateConversion extends declared(Widget) {
         .map((conversion, index) => this._renderConversion(conversion, index))
         .toArray();
 
+    const { messages } = this;
+
     const mainTools = this._expanded ? (
       <div class={CSS.conversionRow}>
         <select
           aria-controls={listId}
-          aria-label={i18n.addConversion}
+          aria-label={messages.addConversion}
           bind={this}
           class={this.classes(CSS.esriSelect, CSS.primarySelect)}
           onchange={this._addConversion}
-          title={i18n.addConversion}
+          title={messages.addConversion}
         >
           <option disabled selected value="">
-            {i18n.addConversion}
+            {messages.addConversion}
           </option>
           {coordinateOptions}
         </select>
@@ -928,7 +970,8 @@ class CoordinateConversion extends declared(Widget) {
   }
 
   private _renderPrimaryTools(): VNode {
-    const modeTitle = this.mode === "live" ? i18n.captureMode : i18n.liveMode;
+    const { messages } = this;
+    const modeTitle = this.mode === "live" ? messages.captureMode : messages.liveMode;
 
     return (
       <ul class={CSS.toolDisplay}>
@@ -939,7 +982,7 @@ class CoordinateConversion extends declared(Widget) {
           onkeydown={this._toggleInputVisibility}
           role="button"
           tabindex="0"
-          title={i18n.inputCoordTitle}
+          title={messages.inputCoordTitle}
         >
           <span aria-hidden="true" class={CSS.editButton} />
         </li>
@@ -963,7 +1006,7 @@ class CoordinateConversion extends declared(Widget) {
           onkeydown={this._toggleSettingsVisibility}
           role="button"
           tabindex="0"
-          title={i18n.settingsTitle}
+          title={messages.settingsTitle}
         >
           <span aria-hidden="true" class={CSS.settingsButton} />
         </li>
@@ -983,6 +1026,8 @@ class CoordinateConversion extends declared(Widget) {
 
     const displayPattern = format.get<string>("currentPattern");
 
+    const { messages, messagesCommon } = this;
+
     return (
       <div
         aria-labelledby={headerId}
@@ -997,24 +1042,24 @@ class CoordinateConversion extends declared(Widget) {
             onkeydown={this._toggleSettingsVisibility}
             role="button"
             tabindex="0"
-            title={i18nCommon.back}
+            title={messagesCommon.back}
           >
             <span aria-hidden="true" class={CSS.leftArrow} />
           </div>
           <h4 class={CSS.header} id={headerId}>
-            {i18n.settingsTitle}
+            {messages.settingsTitle}
           </h4>
         </div>
 
         <div class={CSS.settingsFormGroup}>
-          <label for={patternId}>{i18n.changeCoordinateDisplay}</label>
+          <label for={patternId}>{messages.changeCoordinateDisplay}</label>
 
           <select
-            aria-label={i18n.selectFormat}
+            aria-label={messages.selectFormat}
             class={CSS.esriSelect}
             bind={this}
             onchange={this._setSettingsFormat}
-            title={i18n.selectFormat}
+            title={messages.selectFormat}
           >
             {options}
           </select>
@@ -1027,7 +1072,7 @@ class CoordinateConversion extends declared(Widget) {
               id={patternId}
               oninput={this._updateCurrentPattern}
               spellcheck={false}
-              title={i18n.changeCoordinateDisplay}
+              title={messages.changeCoordinateDisplay}
               type="text"
               value={displayPattern}
             />
@@ -1040,7 +1085,7 @@ class CoordinateConversion extends declared(Widget) {
               onkeydown={this._setDefaultPattern}
               role="button"
               tabindex="0"
-              title={i18n.defaultPattern}
+              title={messages.defaultPattern}
             >
               <span aria-hidden="true" class={CSS.refresh} />
             </div>
@@ -1049,7 +1094,7 @@ class CoordinateConversion extends declared(Widget) {
 
         <div class={CSS.settingsFormGroup}>
           <label>
-            {i18nCommon.preview}
+            {messagesCommon.preview}
             <div class={CSS.previewCoordinate} id={previewId} tabindex="0">
               {this._previewConversion.displayCoordinate}
             </div>
@@ -1064,13 +1109,14 @@ class CoordinateConversion extends declared(Widget) {
       conversion.displayCoordinate && this.mode === "capture"
         ? this._renderCopyButton(conversion)
         : null;
+    const { messages } = this;
 
     return (
       <ul class={CSS.toolDisplay} role="listitem">
         {copyButton}
         <li
           aria-controls={rowId}
-          aria-label={i18n.removeConversion}
+          aria-label={messages.removeConversion}
           bind={this}
           class={this.classes(CSS.widgetButton, CSS.rowButton)}
           data-index={index}
@@ -1079,7 +1125,7 @@ class CoordinateConversion extends declared(Widget) {
           onkeydown={this._removeConversion}
           tabindex="0"
           role="button"
-          title={i18n.removeConversion}
+          title={messages.removeConversion}
         >
           <span aria-hidden="true" class={CSS.removeConversion} />
         </li>

@@ -8,6 +8,12 @@
       "$ref": "rasterClassBreaksRenderer_schema.json"
     },
     {
+      "$ref": "rasterColormapRenderer_schema.json"
+    },
+    {
+      "$ref": "rasterShadedReliefRenderer_schema.json"
+    },
+    {
       "$ref": "rasterStretchRenderer_schema.json"
     },
     {

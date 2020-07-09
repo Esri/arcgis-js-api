@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../core/has","../core/maybe","../core/promiseUtils"],(function(e,r,n,o,t){function i(){try{return new DOMException("Aborted","AbortError")}catch(r){var e=new Error;return e.name="AbortError",e}}Object.defineProperty(r,"__esModule",{value:!0}),r.loadImageAsync=function(e,r,a,c){return void 0===a&&(a=!1),t.create((function(d,s){if(t.isAborted(c))s(i());else{var u=function(){f(),s(new Error("Unable to load "+r))},l=function(){var r=e;f(),d(r)},v=function(){if(e){var r=e;f(),r.src="",s(i())}},f=function(){n("esri-image-decode")||(e.removeEventListener("error",u),e.removeEventListener("load",l)),u=null,l=null,e=null,o.isSome(c)&&c.removeEventListener("abort",v),v=null,a&&URL.revokeObjectURL(r)};o.isSome(c)&&c.addEventListener("abort",v),n("esri-image-decode")?e.decode().then(l,u):(e.addEventListener("error",u),e.addEventListener("load",l))}}))}}));

@@ -7,17 +7,17 @@
  * @private
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
 // esri.core
 import { byId, remove } from "esri/../core/domUtils";
 
 // esri.core.accessorSupport
-import { declared, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.libs.maquette
 import { VNode as MaquetteVNode } from "esri/../libs/maquette/index";
+
+// esri.libs.popper
+import { createPopper } from "esri/../libs/popper/index";
 
 // esri.widgets
 import Widget = require("esri/Widget");
@@ -63,24 +63,27 @@ const CSS = {
   open: "esri-popover--open"
 };
 
+const BASE_Z_INDEX = 1000;
+
 const CORE_STYLES = {
-  position: "absolute",
-  top: "-9999px",
+  "position": "absolute",
+  "top": "-9999px",
 
   // we consider dir for the initial value to avoid scroll-related artifacts
-  left: `${(isRTL() ? 1 : -1) * 9999}px`,
+  "left": `${(isRTL() ? 1 : -1) * 9999}px`,
 
   "z-index": ""
 };
 
-const BASE_Z_INDEX = 1000;
-
 type PopoverParams = Partial<
-  Pick<Popover, "owner" | "open" | "placement" | "anchorElement" | "renderContentFunction">
+  Pick<
+    Popover,
+    "owner" | "offset" | "open" | "placement" | "anchorElement" | "renderContentFunction"
+  >
 >;
 
 @subclass("esri.widgets.support.Popover")
-class Popover<W extends Widget = Widget> extends declared(Widget) {
+class Popover<W extends Widget = Widget> extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -94,12 +97,15 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: PopoverParams) {
-    super(params);
+  constructor(params?: PopoverParams, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   initialize(): void {
-    this._projector.append(document.body, this.render as () => MaquetteVNode);
+    this.when(() => {
+      this._projector.append(document.body, this.render as () => MaquetteVNode);
+      this._renderAttached = true;
+    });
   }
 
   destroy(): void {
@@ -107,8 +113,19 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
     this.anchorElement = null;
     this.renderContentFunction = null;
 
-    this._projector.detach(this.render as () => MaquetteVNode);
-    remove(this._rootNode);
+    if (this._renderAttached) {
+      this._projector.detach(this.render as () => MaquetteVNode);
+      this._renderAttached = false;
+    }
+
+    if (this._rootNode) {
+      remove(this._rootNode);
+      this._rootNode = null;
+    }
+
+    if (this.popper) {
+      this.popper.destroy();
+    }
   }
 
   //--------------------------------------------------------------------------
@@ -118,6 +135,7 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   private _rootNode: HTMLElement;
+  private _renderAttached: boolean = false;
 
   //--------------------------------------------------------------------------
   //
@@ -153,6 +171,23 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
    */
   @property()
   set container(_value: HTMLElement) {}
+
+  //----------------------------------
+  //  offset
+  //----------------------------------
+
+  /**
+   * This property is used to offset the popover from the anchor element.
+   * It takes two values, skidding and distance, to allow displacement of the popover.
+   *
+   * @name offset
+   * @type [number, number]
+   * @instance
+   * @private
+   */
+  @property()
+  @renderable()
+  offset = [0, 0];
 
   //----------------------------------
   //  open
@@ -260,6 +295,8 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private popper: ReturnType<typeof createPopper>;
+
   private _afterRootCreate = (node: HTMLElement): void => {
     this._rootNode = node;
     this._updatePosition(node);
@@ -269,8 +306,6 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
     const { open, renderContentFunction } = this;
 
     if (!open || !renderContentFunction) {
-      node.style.top = CORE_STYLES.top;
-      node.style.left = CORE_STYLES.left;
       node.style.zIndex = CORE_STYLES["z-index"];
       return;
     }
@@ -280,96 +315,21 @@ class Popover<W extends Widget = Widget> extends declared(Widget) {
       return;
     }
 
-    const { placement } = this;
-
-    const {
-      left: anchorLeft,
-      height: anchorHeight,
-      width: anchorWidth,
-      top: anchorTop
-    } = anchor.getBoundingClientRect();
+    const { offset, placement } = this;
 
     const contentNode = node.firstElementChild as HTMLElement;
-    const contentStyles = getComputedStyle(contentNode);
-    const yMargin =
-      parseInt(contentStyles.marginTop, 10) + parseInt(contentStyles.marginBottom, 10);
-    const xMargin =
-      parseInt(contentStyles.marginLeft, 10) + parseInt(contentStyles.marginRight, 10);
-    const contentHeight = contentNode.offsetHeight + yMargin;
-    const contentWidth = contentNode.offsetWidth + xMargin;
+    this.popper = createPopper(anchor, contentNode, {
+      placement,
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset
+          }
+        }
+      ]
+    });
 
-    let left: number;
-    let top: number;
-
-    if (placement.indexOf("top") > -1) {
-      top = anchorTop - contentHeight;
-
-      if (placement === "top-start") {
-        left = anchorLeft;
-      } else if (placement === "top-end") {
-        left = anchorLeft + anchorWidth - contentWidth;
-      } else {
-        left = anchorLeft + anchorWidth / 2 - contentWidth / 2;
-      }
-    }
-
-    if (placement.indexOf("bottom") > -1) {
-      top = anchorTop + anchorHeight;
-
-      if (placement === "bottom-start") {
-        left = anchorLeft;
-      } else if (placement === "bottom-end") {
-        left = anchorLeft + anchorWidth - contentWidth;
-      } else {
-        left = anchorLeft + anchorWidth / 2 - contentWidth / 2;
-      }
-    }
-
-    if (placement.indexOf("left") > -1) {
-      left = anchorLeft - contentWidth;
-
-      if (placement === "left-start") {
-        top = anchorTop;
-      } else if (placement === "left-end") {
-        top = anchorTop + anchorHeight - contentHeight;
-      } else {
-        top = anchorTop + anchorHeight / 2 - contentHeight / 2;
-      }
-    }
-
-    if (placement.indexOf("right") > -1) {
-      left = anchorLeft + anchorWidth;
-
-      if (placement === "right-start") {
-        top = anchorTop;
-      } else if (placement === "right-end") {
-        top = anchorTop + anchorHeight - contentHeight;
-      } else {
-        top = anchorTop + anchorHeight / 2 - contentHeight / 2;
-      }
-    }
-
-    const { clientWidth: viewportWidth, clientHeight: viewportHeight } = document.documentElement;
-
-    if (left < 0) {
-      left = anchorLeft;
-    } else if (left + contentWidth > viewportWidth) {
-      const delta = left + contentWidth - viewportWidth;
-      left -= delta;
-    }
-
-    if (top < 0) {
-      top = anchorTop + anchorHeight;
-    } else if (top + contentHeight > viewportHeight) {
-      const delta = top + contentHeight - viewportHeight;
-      top -= delta;
-    }
-
-    const scrollingElement = document.scrollingElement || document.documentElement;
-    const { scrollLeft, scrollTop } = scrollingElement;
-
-    node.style.top = `${top + scrollTop}px`;
-    node.style.left = `${left + scrollLeft}px`;
     node.style.zIndex = `${BASE_Z_INDEX}`;
   };
 

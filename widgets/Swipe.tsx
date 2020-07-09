@@ -37,18 +37,11 @@
  * @see module:esri/widgets/Swipe/SwipeViewModel
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Swipe/nls/Swipe";
-
 // esri.core
 import { eventKey } from "esri/core/events";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.core.libs.pep
 import PEP = require("esri/core/libs/pep/pep");
@@ -59,13 +52,16 @@ import MapView = require("esri/views/MapView");
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
 
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+
 // esri.widgets.Swipe
 import { LayerCollection, Direction, VisibleElements } from "esri/widgets/Swipe/interfaces";
 import SwipeViewModel = require("esri/widgets/Swipe/SwipeViewModel");
 
-// esri.widgets.support
-import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx } from "esri/widgets/support/widget";
+// esri.widgets.Swipe.t9n
+import SwipeMessages from "esri/widgets/Swipe/t9n/Swipe";
 
 const CSS = {
   base: "esri-swipe",
@@ -94,7 +90,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 @subclass("esri.widgets.Swipe")
-class Swipe extends declared(Widget) {
+class Swipe extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -108,8 +104,8 @@ class Swipe extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this._onContainerPointerDown = this._onContainerPointerDown.bind(this);
     this._onContainerPointerMove = this._onContainerPointerMove.bind(this);
@@ -182,9 +178,11 @@ class Swipe extends declared(Widget) {
    * @type {String}
    */
 
-  @property()
+  @property({
+    aliasOf: { source: "messages.dragLabel", overridable: true }
+  })
   @renderable()
-  dragLabel = i18n.dragLabel;
+  dragLabel: string = undefined;
 
   //----------------------------------
   //  iconClass
@@ -213,8 +211,10 @@ class Swipe extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  leadingLayers
@@ -235,6 +235,25 @@ class Swipe extends declared(Widget) {
 
   @aliasOf("viewModel.leadingLayers")
   leadingLayers: LayerCollection = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Swipe/t9n/Swipe")
+  messages: SwipeMessages = null;
 
   //----------------------------------
   //  position
@@ -376,6 +395,31 @@ class Swipe extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  render(): VNode {
+    const { state, direction } = this.viewModel;
+
+    const disabled = state === "disabled" || this.disabled;
+
+    const rootClasses = {
+      [CSS.disabled]: disabled,
+      [CSS.baseDisabled]: disabled,
+      [CSS.vertical]: direction === "vertical",
+      [CSS.horizontal]: direction === "horizontal"
+    };
+
+    return (
+      <div class={this.classes(CSS.base, CSS.widget, rootClasses)}>
+        {state === "disabled" ? null : this.renderContainer()}
+      </div>
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
   protected renderHandle(): VNode {
     const { direction } = this.viewModel;
     const { visibleElements } = this;
@@ -440,25 +484,6 @@ class Swipe extends declared(Widget) {
         class={CSS.container}
       >
         {contentNodes}
-      </div>
-    );
-  }
-
-  render(): VNode {
-    const { state, direction } = this.viewModel;
-
-    const disabled = state === "disabled" || this.disabled;
-
-    const rootClasses = {
-      [CSS.disabled]: disabled,
-      [CSS.baseDisabled]: disabled,
-      [CSS.vertical]: direction === "vertical",
-      [CSS.horizontal]: direction === "horizontal"
-    };
-
-    return (
-      <div class={this.classes(CSS.base, CSS.widget, rootClasses)}>
-        {state === "disabled" ? null : this.renderContainer()}
       </div>
     );
   }

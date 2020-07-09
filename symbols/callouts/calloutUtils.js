@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./Callout3D","./LineCallout3D"],(function(e,t,r,n){function l(e){if(!e)return!1;var t=e.verticalOffset;return!!t&&!(t.screenLength<=0||t.maxWorldLength<=0)}function i(e,t,r){if(!e)return e;switch(e.type){case"line":var l=new n;return l.read(e,r),l}}Object.defineProperty(t,"__esModule",{value:!0}),t.hasVisibleVerticalOffset=l,t.hasVisibleCallout=function(e){if(!e)return!1;if(!e.supportsCallout||!e.supportsCallout())return!1;var t=e.callout;return!!t&&(!!t.visible&&!!l(e))},t.isCalloutSupport=function(e){return"point-3d"===e.type||"label-3d"===e.type},t.read=i,t.calloutProperty={types:{key:"type",base:r,typeMap:{line:n}},json:{read:i,write:!0}}}));

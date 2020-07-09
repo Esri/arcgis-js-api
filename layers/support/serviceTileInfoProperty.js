@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/assignHelper","./TileInfo"],(function(e,r,n,i){function l(e,r,l,o){if(!e)return null;var t=r.minScale,u=r.maxScale,a=r.minLOD,f=r.maxLOD;if(null!=a&&null!=f)return o&&o.ignoreMinMaxLOD?i.fromJSON(e):i.fromJSON(n({},e,{lods:e.lods.filter((function(e){var r=e.level;return null!=r&&r>=a&&r<=f}))}));if(0!==t&&0!==u){var c=function(e){return Math.round(1e4*e)/1e4},s=t?c(t):1/0,m=u?c(u):-1/0;return i.fromJSON(n({},e,{lods:e.lods.filter((function(e){var r=c(e.scale);return r<=s&&r>=m}))}))}return i.fromJSON(e)}Object.defineProperty(r,"__esModule",{value:!0}),r.serviceTileInfoProperty={type:i,json:{origins:{service:{read:{source:["tileInfo","minScale","maxScale","minLOD","maxLOD"],reader:l}}}}},r.readServiceTileInfo=l}));
+define(["require","exports","tslib","./TileInfo"],(function(e,r,n,i){function l(e,r,l,o){if(!e)return null;var a=r.minScale,t=r.maxScale,s=r.minLOD,u=r.maxLOD;if(null!=s&&null!=u)return o&&o.ignoreMinMaxLOD?i.fromJSON(e):i.fromJSON(n.__assign(n.__assign({},e),{lods:e.lods.filter((function(e){var r=e.level;return null!=r&&r>=s&&r<=u}))}));if(0!==a&&0!==t){var f=function(e){return Math.round(1e4*e)/1e4},c=a?f(a):1/0,m=t?f(t):-1/0;return i.fromJSON(n.__assign(n.__assign({},e),{lods:e.lods.filter((function(e){var r=f(e.scale);return r<=c&&r>=m}))}))}return i.fromJSON(e)}Object.defineProperty(r,"__esModule",{value:!0}),r.serviceTileInfoProperty={type:i,json:{origins:{service:{read:{source:["tileInfo","minScale","maxScale","minLOD","maxLOD"],reader:l}}}}},r.readServiceTileInfo=l}));

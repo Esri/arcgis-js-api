@@ -16,10 +16,13 @@
  *   position: "bottom-left"
  * });
  * ```
- * The slicing shape is always a plane. When you click a surface or object in your scene,
- * you create a slice with either a horizontal or vertical plane. The slice hides any
- * content in front of the surface. The handles on the sides
- * of the plane can be used to adjust the size, rotation and position of the slice plane.
+ *
+ * The slicing shape is always a {@link module:esri/widgets/Slice/SlicePlane plane}.
+ * By default, the plane is either horizontal or vertical. To allow a tilt angle for the
+ * plane, set {@link module:esri/widgets/Slice/SliceViewModel#tiltEnabled SliceViewModel.tiltEnabled} to `true`.
+ * The slice hides any content in front of the surface. The handles on the sides
+ * of the plane can be used to adjust the size, heading, tilt and position of the slice plane. The {@link module:esri/widgets/Slice/SlicePlane} can be set or retrieved using
+ * {@link module:esri/widgets/Slice/SliceViewModel#shape SliceViewModel.shape}.
  *
  * Once a slice is created, layers can be excluded from the slice. For example, to look at
  * interior elements inside a {@link module:esri/layers/BuildingSceneLayer}, the windows or
@@ -39,17 +42,12 @@
  * @see module:esri/widgets/Slice/SliceViewModel
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Slice/nls/Slice";
-
 // esri.core
 import Collection = require("esri/core/Collection");
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import Layer = require("esri/layers/Layer");
@@ -66,9 +64,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Slice
 import SliceViewModel = require("esri/widgets/Slice/SliceViewModel");
 
+// esri.widgets.Slice.t9n
+import SliceMessages from "esri/widgets/Slice/t9n/Slice";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -94,7 +95,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Slice")
-class Slice extends declared(Widget) {
+class Slice extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -114,8 +115,8 @@ class Slice extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -137,7 +138,29 @@ class Slice extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Slice/t9n/Slice")
+  messages: SliceMessages = null;
 
   //----------------------------------
   //  view
@@ -223,6 +246,7 @@ class Slice extends declared(Widget) {
     const isExcludeMode = this.viewModel.layersMode === "exclude";
 
     const buttonClasses = [CSS.button, isDisabled && CSS.buttonDisabled];
+    const { messages } = this;
 
     const newSliceNode =
       (!isActive || isSlicing) && !isExcludeMode ? (
@@ -230,10 +254,10 @@ class Slice extends declared(Widget) {
           disabled={isDisabled}
           class={this.classes(CSS.clearButton, ...buttonClasses)}
           bind={this}
-          onclick={this._newSlice}
+          onclick={this._onNewSliceClick}
           key="esri-slice__clear"
         >
-          {i18n.newSlice}
+          {messages.newSlice}
         </button>
       ) : null;
 
@@ -247,7 +271,7 @@ class Slice extends declared(Widget) {
           }}
           key="esri-slice__exclude"
         >
-          {i18n.excludeLayer}
+          {messages.excludeLayer}
         </button>
       ) : null;
 
@@ -261,16 +285,16 @@ class Slice extends declared(Widget) {
           }}
           key="esri-slice__cancel-exclude"
         >
-          {i18n.cancel}
+          {messages.cancel}
         </button>
       ) : null;
 
     let hintText = null;
     if (isActive) {
       if (isExcludeMode) {
-        hintText = i18n.excludeHint;
+        hintText = messages.excludeHint;
       } else if (isReady) {
-        hintText = i18n.hint;
+        hintText = messages.hint;
       }
     }
 
@@ -290,7 +314,7 @@ class Slice extends declared(Widget) {
                 return false;
               }}
               class={CSS.layerIncludeButton}
-              title={i18n.includeLayer}
+              title={messages.includeLayer}
             />
             {l.title}
           </li>
@@ -307,9 +331,9 @@ class Slice extends declared(Widget) {
               return false;
             }}
             class={CSS.layerIncludeButton}
-            title={i18n.includeLayer}
+            title={messages.includeLayer}
           />
-          {i18n.ground}
+          {messages.ground}
         </li>
       );
     }
@@ -317,14 +341,14 @@ class Slice extends declared(Widget) {
     const layerListNode =
       !isExcludeMode && isSlicing && layerListItemNodes.length > 0 ? (
         <div class={CSS.layerList} key="esri-slice__settings">
-          <h3 class={CSS.layerListHeading}>{i18n.excludedLayers}</h3>
+          <h3 class={CSS.layerListHeading}>{messages.excludedLayers}</h3>
           <ul>{layerListItemNodes}</ul>
         </div>
       ) : null;
 
     const unsupportedNode = (
       <div class={CSS.panelError} key="esri-slice__unsupported">
-        <p>{i18n.unsupported}</p>
+        <p>{messages.unsupported}</p>
       </div>
     );
 
@@ -355,9 +379,8 @@ class Slice extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  @accessibleHandler()
-  private _newSlice(): void {
-    this.viewModel.newSlice();
+  private _onNewSliceClick(): void {
+    ignoreAbortErrors(this.viewModel.removeSliceAndStart());
   }
 }
 

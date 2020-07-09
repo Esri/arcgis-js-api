@@ -1,0 +1,25 @@
+{
+  "widgetLabel": "Sirgjooneline mõõtmine",
+  "hint": "Mõõtmise alustamiseks klõpsake stseeni, kuhu soovite asetada oma esimese punkti",
+  "unsupported": "3D-sirgjoonemõõtmist toetab ainult SceneView.",
+  "distance": "Vahemaa",
+  "direct": "Otse",
+  "horizontal": "Horisontaalne",
+  "vertical": "Vertikaalne",
+  "unit": "Ühik",
+  "newMeasurement": "Uus mõõtmine",
+  "units": {
+    "metric": "Meetriline",
+    "imperial": "Briti",
+    "kilometers": "Kilomeetrit",
+    "meters": "Meetrit",
+    "miles": "Miili",
+    "inches": "Tolli",
+    "feet": "Jalga",
+    "yards": "Jardi",
+    "nautical-miles": "Meremiili",
+    "us-feet": "Jalga (USA)",
+    "degrees-minutes-seconds": "DMS",
+    "degrees": "Kraadi"
+  }
+}

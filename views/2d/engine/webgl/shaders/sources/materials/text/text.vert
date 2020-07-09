@@ -1,5 +1,6 @@
 precision highp float;
 
+#include <materials/utils.glsl>
 #include <materials/vcommon.glsl>
 #include <materials/text/common.glsl>
 
@@ -26,20 +27,21 @@ void main()
 {
   INIT;
 
-  float a_bitSet    = a_aux.w;
-  float a_fontSize  = a_texFontSize.z;
-  vec2  a_offset    = a_vertexOffset * OFFSET_PRECISION;
-  vec3  in_pos      = vec3(floor(a_pos * 0.5), 1.0);
-  float fontSize    = getTextSize(a_offset, a_fontSize, a_aux.z * a_aux.z / 256.0);
-  float scaleFactor = fontSize / a_fontSize;
-  float fontScale   = fontSize / SDF_FONT_SIZE;
-  vec3  offset      = getRotation() * vec3(scaleFactor * a_offset, 0.0);
+  float a_bitSet      = a_aux.w;
+  float a_fontSize    = a_texFontSize.z;
+  vec2  a_offset      = a_vertexOffset * OFFSET_PRECISION;
+  vec3  in_pos        = vec3(a_pos * POSITION_PRECISION, 1.0);
+  float fontSize      = getTextSize(a_offset, a_fontSize, a_aux.z * a_aux.z / 256.0);
+  float scaleFactor   = fontSize / a_fontSize;
+  float fontScale     = fontSize / SDF_FONT_SIZE;
+  vec3  offset        = getRotation() * vec3(scaleFactor * a_offset, 0.0);
+  mat3  extrudeMatrix = getBit(a_bitSet, 0) == 1.0 ? u_displayViewMat3 : u_displayMat3;
 
-  v_color   = u_isHalo * a_haloColor + (1.0 - u_isHalo) * getColor(a_color, a_bitSet, 0);
-  v_opacity = getOpacity(a_bitSet, 0);
+  v_color   = u_isHalo * a_haloColor + (1.0 - u_isHalo) * getColor(a_color, a_bitSet, 1);
+  v_opacity = getOpacity();
   v_id      = norm(a_id);
   v_tex     = a_texCoords / u_mosaicSize;
-  v_pos     = u_dvsMat3 * in_pos + u_displayMat3 * offset;
+  v_pos     = u_dvsMat3 * in_pos + extrudeMatrix * offset;
 
   v_edgeDistanceOffset = u_isHalo * OUTLINE_SCALE * a_texFontSize.w / fontScale / MAX_SDF_DISTANCE;
   v_antialiasingWidth  = 0.105 * SDF_FONT_SIZE / fontSize / u_pixelRatio;

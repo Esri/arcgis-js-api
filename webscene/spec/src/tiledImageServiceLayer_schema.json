@@ -4,9 +4,31 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "description": "An ArcGIS Tiled Image Service layer displays content from an ArcGIS Server Image service that has been cached (tiled).",
   "properties": {
+    "bandIds": {
+      "type": "array",
+      "description": "An array of bandIds that are visible for a multispectral dataset. It can specify bands to export or rearrange band order(from image service).",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1
+    },
+    "disablePopup": {
+      "type": "boolean",
+      "description": "Indicates whether to allow a client to ignore popups defined by the service item."
+    },
     "id": {
       "type": "string",
       "description": "A unique identifying string for the layer."
+    },
+    "interpolation": {
+      "type": "string",
+      "description": "String indicating the interpolation type.",
+      "enum": [
+        "RSP_BilinearInterpolation",
+        "RSP_CubicConvolution",
+        "RSP_Majority",
+        "RSP_NearestNeighbor"
+      ]
     },
     "isReference": {
       "type": "boolean",
@@ -15,6 +37,32 @@
     "itemId": {
       "type": "string",
       "description": "Optional string containing the item ID of the service if it's registered on ArcGIS Online or your organization's portal."
+    },
+    "layerDefinition": {
+      "allOf": [
+        {
+          "$ref": "layerDefinition_schema.json"
+        },
+        {
+          "properties": {
+            "drawingInfo": {
+              "allOf": [
+                {
+                  "$ref": "drawingInfo_schema.json"
+                },
+                {
+                  "properties": {
+                    "renderer": {},
+                    "transparency": {}
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "layerType": {
       "type": "string",
@@ -42,12 +90,25 @@
       "description": "A number representing the minimum scale at which the layer will be visible. The number is the scale's denominator.",
       "minimum": 0
     },
+    "multidimensionalDefinition": {
+      "type": "array",
+      "description": "An array of objects representing a slice from multidimensional data.",
+      "items": {
+        "type": "object",
+        "$ref": "multidimensionalDefinition_schema.json"
+      }
+    },
     "opacity": {
       "type": "number",
       "description": "The degree of transparency applied to the layer on the client side, where 0 is full transparency and 1 is no transparency.",
       "minimum": 0,
       "maximum": 1,
       "default": 1
+    },
+    "popupInfo": {
+      "type": "object",
+      "description": "A popupInfo object defining the content of popup windows when you click on the image.",
+      "$ref": "popupInfo_schema.json"
     },
     "refreshInterval": {
       "type": "number",
@@ -68,7 +129,8 @@
     },
     "visibility": {
       "type": "boolean",
-      "description": "Boolean property determining whether the layer is initially visible in the web scene."
+      "description": "Boolean property determining whether the layer is initially visible.",
+      "default": true
     }
   },
   "required": [

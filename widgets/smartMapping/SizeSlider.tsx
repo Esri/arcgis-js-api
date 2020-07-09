@@ -10,7 +10,7 @@
  * ![SizeSlider with annotations](../../assets/img/apiref/widgets/sliders/sizeslider-labels.png "SizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/size#createContinuousRenderer createContinuousRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
  * method.
  *
  * ```js
@@ -67,15 +67,8 @@
  * @see [SizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/SizeSlider.tsx)
  * @see [SizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_SizeSlider.scss)
  * @see module:esri/widgets/smartMapping/SizeSlider/SizeSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/size sizeRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/size sizeRendererCreator}
  */
-
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/SizeSlider/nls/SizeSlider";
 
 // esri
 import Color = require("esri/../Color");
@@ -84,13 +77,7 @@ import Color = require("esri/../Color");
 import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { ContinuousRendererResult } from "esri/../renderers/smartMapping/creators/size";
-
-// esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables
 import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
@@ -98,11 +85,20 @@ import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
 // esri.renderers.visualVariables.support
 import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
 
+// esri.smartMapping.renderers
+import { ContinuousRendererResult } from "esri/../smartMapping/renderers/size";
+
+// esri.smartMapping.statistics
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.SizeSlider
 import SizeSliderViewModel = require("esri/widgets/SizeSlider/SizeSliderViewModel");
+
+// esri.widgets.smartMapping.SizeSlider.t9n
+import SizeSliderMessages from "esri/widgets/SizeSlider/t9n/SizeSlider";
 
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
@@ -110,7 +106,7 @@ import { getPathForSizeStops, getSizesFromVariable, getFillFromColor } from "esr
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-size-slider",
@@ -141,7 +137,7 @@ interface SizeSliderStyle {
 }
 
 @subclass("esri.widgets.smartMapping.SizeSlider")
-class SizeSlider extends declared(SmartMappingSliderBase) {
+class SizeSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -167,8 +163,8 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
    *   ]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -202,7 +198,29 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/SizeSlider/t9n/SizeSlider")
+  messages: SizeSliderMessages = null;
 
   //----------------------------------
   //  stops
@@ -309,8 +327,8 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a SizeSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/size~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/size#createContinuousRenderer createContinuousRenderer}
+   * {@link module:esri/smartMapping/renderers/size~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
    * method.
    *
    * This method sets the slider [stops](#stops), [min](#min), [max](#maxDataValue),
@@ -320,11 +338,11 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
    * @method fromRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/size~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/size#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/size~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    * @return {module:esri/widgets/smartMapping/SizeSlider} Returns a SizeSlider instance. This will not render until you assign
    *   it a valid [container](#container).
@@ -399,19 +417,19 @@ class SizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties of a SizeSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/size~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/size#createContinuousRenderer createContinuousRenderer}
+   * {@link module:esri/smartMapping/renderers/size~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
    * method. This method is useful for cases when the app allows the end user to switch data variables
    * used to render the data.
    *
    * @method updateFromRendererResult
    * @instance
    *
-   * @param {module:esri/renderers/smartMapping/creators/size~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/size#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/size~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example

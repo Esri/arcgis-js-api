@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./math/vec3Inline"],(function(e,n,i){Object.defineProperty(n,"__esModule",{value:!0}),n.vec3Inline=i}));

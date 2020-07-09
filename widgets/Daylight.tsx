@@ -74,25 +74,14 @@
  * @see {@link module:esri/views/SceneView#environment SceneView.environment}
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-/// <amd-dependency path="esri/core/tsSupport/generatorHelper" name="__generator"/>
-/// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Daylight/nls/Daylight";
-
 // esri.core
 import { findIndex } from "esri/core/arrayUtils";
 import Logger = require("esri/core/Logger");
+import { Maybe, isSome } from "esri/core/maybe";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, declared, property, aliasOf, cast } from "esri/core/accessorSupport/decorators";
-
-// esri.intl
-import { loadMoment } from "esri/intl/moment";
+import { subclass, property, aliasOf, cast } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import SceneView = require("esri/views/SceneView");
@@ -102,26 +91,32 @@ import { DateOrSeason, Season } from "esri/widgets/interfaces";
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Daylight
-import * as dayUtils from "esri/widgets/Daylight/daylightUtils";
+import {
+  getGMTOffsets,
+  GMTOffset,
+  formatSliderLabel,
+  ORDERED_SEASONS
+} from "esri/widgets/Daylight/daylightUtils";
 import DaylightViewModel = require("esri/widgets/Daylight/DaylightViewModel");
 
 // esri.widgets.Daylight.support
 import SliderWithDropdown = require("esri/widgets/Daylight/support/SliderWithDropdown");
 
-// esri.widgets.Slider
-import { ThumbChangeEvent, ThumbDragEvent } from "esri/widgets/Slider/interfaces";
+// esri.widgets.Daylight.t9n
+import DaylightMessages from "esri/widgets/Daylight/t9n/Daylight";
 
 // esri.widgets.support
 import DatePicker = require("esri/widgets/support/DatePicker");
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, renderable } from "esri/widgets/support/widget";
+import { tsx, renderable, messageBundle } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-daylight",
   button: "esri-button",
   checkbox: "esri-daylight__checkbox",
   checked: "esri-icon-checkbox-checked",
-  container: "esri-daylight__container",
+  dayContainer: "esri-daylight__container esri-daylight__day-container",
+  dateContainer: "esri-daylight__container esri-daylight__date-container",
   header: "esri-widget__heading",
   interactive: "esri-interactive",
   label: " esri-widget__anchor",
@@ -142,13 +137,6 @@ const CSS = {
   panelError: "esri-daylight__panel--error"
 };
 
-// Hemispheres have opposite seasons
-const enum Hemisphere {
-  north,
-  south
-}
-const DEFAULT_HEMISPHERE: Hemisphere = Hemisphere.north;
-
 interface VisibleElements {
   playButtons: boolean;
   shadowsToggle: boolean;
@@ -162,18 +150,12 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   timezone: true
 };
 
-const GMTOffsets = dayUtils.getGMTOffsets();
-
 const logger = Logger.getLogger("esri.widgets.Daylight");
-
-const momentPromise = loadMoment();
 
 const DEFAULT_DATE_OR_SEASON: DateOrSeason = "date";
 
-const seasons: Season[] = ["spring", "summer", "fall", "winter"];
-
 @subclass("esri.widgets.Daylight")
-class Daylight extends declared(Widget) {
+class Daylight extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -195,57 +177,81 @@ class Daylight extends declared(Widget) {
    *
    * view.ui.add(daylightWidget, "top-right");
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
   //
-  //  Variables
+  //  Public Properties
   //
   //--------------------------------------------------------------------------
 
-  private readonly _timeSlider: SliderWithDropdown<dayUtils.GMTOffset> = new SliderWithDropdown({
-    labelFormatFunction: dayUtils.formatSliderLabel,
-    inputFormatFunction: dayUtils.formatSliderLabel,
-    container: "sliderDiv",
-    min: 0, // Midnight
-    max: 23 * 60 + 59, // Just before the next midnight,
-    steps: 5,
-    values: [0], // Represents the time of day expressed in minutes
-    labelInputsEnabled: false,
-    visibleElements: {
-      labels: true
-    },
-    tickConfigs: [
-      {
-        mode: "position",
-        values: [0, 6 * 60, 12 * 60, 18 * 60, 23 * 60 + 59], // Every 6 hours, in minutes, stopping just before 24 hours
-        labelsVisible: true,
-        tickCreatedFunction: this._onPrimaryTickCreated.bind(this)
-      },
-      {
-        mode: "position",
-        values: [2 * 60, 4 * 60, 8 * 60, 10 * 60, 14 * 60, 16 * 60, 20 * 60, 22 * 60], // Every 2 hours, in minutes, skipping primary
-        tickCreatedFunction: this._onSecondaryTickCreated.bind(this)
-      }
-    ],
-    items: GMTOffsets,
-    currentIndex: findIndex(GMTOffsets, (offset) => offset.abbr === 0),
-    buttonTooltip: i18n.chooseTimezone
-  });
+  @property({
+    readOnly: true,
+    dependsOn: ["messages"]
+  })
+  get gmtOffsets(): Maybe<GMTOffset[]> {
+    return this.messages ? getGMTOffsets(this.messages) : null;
+  }
 
-  private readonly _datePicker: DatePicker = new DatePicker({ commitOnMonthChange: true });
+  /**
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Daylight/t9n/Daylight")
+  messages: DaylightMessages;
 
-  //--------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  //--------------------------------------------------------------------------
+  /**
+   * Controls the speed of the daytime and date animation.
+   *
+   * @name playSpeedMultiplier
+   * @instance
+   * @type {number}
+   * @default 1.0
+   * @example
+   * // Plays the daylight animation at half of the default speed
+   * daylightWidget.playSpeedMultiplier = 0.5;
+   */
+  @aliasOf("viewModel.playSpeedMultiplier")
+  playSpeedMultiplier: number = 1;
 
-  //----------------------------------
-  //  view
-  //----------------------------------
+  /**
+   * Sets steps, or intervals, on the time slider to restrict the times
+   * of the day that can be selected when dragging the thumb. All values are in
+   * minutes, where `0` is midnight and `23 * 60 + 59` is just before midnight
+   * the following day.
+   *
+   * If an array of numbers is passed to this property, the slider thumbs may
+   * only be moved to the times specified in the array.
+   *
+   * If a single number is set, then steps are set for the entire day at an
+   * interval of `timeSliderSteps` minutes. For example, if a value of `60` is
+   * set here, dragging the slider will allow selecting each of 24 hours of the day.
+   *
+   * @name timeSliderSteps
+   * @instance
+   * @type {number | number[]}
+   * @since 4.16
+   * @default 5
+   *
+   * @example
+   * // set steps at an interval of 60. So the
+   * // slider thumb snaps at each hour of the day.
+   * daylightWidget.timeSliderSteps = 60;
+   *
+   * @example
+   * // Set steps at specific times.
+   * daylightWidget.timeSliderSteps = [60, 100, 120, 160];
+   */
+  @aliasOf("_timeSlider.steps")
+  timeSliderSteps: number | number[] = 5;
 
   /**
    * A reference to the {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
@@ -256,10 +262,6 @@ class Daylight extends declared(Widget) {
    */
   @aliasOf("viewModel.view")
   view: SceneView = null;
-
-  //----------------------------------
-  //  viewModel
-  //----------------------------------
 
   /**
    * The view model for the Daylight widget. This is a class that contains all the logic
@@ -277,32 +279,11 @@ class Daylight extends declared(Widget) {
   @renderable([
     "viewModel.directShadowsEnabled",
     "viewModel.timeSliderPosition",
+    "viewModel.currentSeason",
     "viewModel.localDate",
     "viewModel.utcOffset"
   ])
   viewModel: DaylightViewModel = new DaylightViewModel();
-
-  //----------------------------------
-  //  playSpeedMultiplier
-  //----------------------------------
-
-  /**
-   * Controls the speed of the daytime and date animation.
-   *
-   * @name playSpeedMultiplier
-   * @instance
-   * @type {number}
-   * @default 1.0
-   * @example
-   * // Plays the daylight animation at half of the default speed
-   * daylightWidget.playSpeedMultiplier = 0.5;
-   */
-  @aliasOf("viewModel.playSpeedMultiplier")
-  playSpeedMultiplier: number = 1;
-
-  //----------------------------------
-  //  visibleElements
-  //----------------------------------
 
   /**
    * The visible elements that are displayed within the widget.
@@ -346,15 +327,11 @@ class Daylight extends declared(Widget) {
     return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
   }
 
-  //----------------------------------
-  //  dateOrSeason
-  //----------------------------------
-
   /**
    * Controls whether the widget displays a date or a season picker. When the date picker
    * is set, the user selects the date from a calendar. The season picker allows the user
    * to choose a season from a drop-down list. Each season uses a fixed date corresponding to
-   * the Northern equinoxes and solstices.
+   * the equinoxes and solstices of 2014.
    *
    * @name dateOrSeason
    * @instance
@@ -379,13 +356,46 @@ class Daylight extends declared(Widget) {
   @renderable()
   dateOrSeason: DateOrSeason = DEFAULT_DATE_OR_SEASON;
 
+  //--------------------------------------------------------------------------
+  //
+  //  Private Properties
+  //
+  //--------------------------------------------------------------------------
+
   @property()
   @renderable()
-  private _currentHemisphere = DEFAULT_HEMISPHERE;
+  private _timeSlider = new SliderWithDropdown<GMTOffset>({
+    viewModel: this.viewModel.timeSliderViewModel,
+    labelFormatFunction: formatSliderLabel,
+    inputFormatFunction: formatSliderLabel,
+    min: 0, // Midnight
+    max: 23 * 60 + 59, // Just before the next midnight,
+    steps: this.timeSliderSteps ?? 5,
+    values: [0], // Represents the time of day expressed in minutes
+    labelInputsEnabled: false,
+    visibleElements: { labels: true },
+    tickConfigs: [
+      {
+        mode: "position",
+        values: [0, 6 * 60, 12 * 60, 18 * 60, 23 * 60 + 59], // Every 6 hours, in minutes, stopping just before 24 hours
+        labelsVisible: true,
+        tickCreatedFunction: this._onPrimaryTickCreated.bind(this)
+      },
+      {
+        mode: "position",
+        values: [2 * 60, 4 * 60, 8 * 60, 10 * 60, 14 * 60, 16 * 60, 20 * 60, 22 * 60], // Every 2 hours, in minutes, skipping primary
+        tickCreatedFunction: this._onSecondaryTickCreated.bind(this)
+      }
+    ],
+    items: []
+  });
 
-  @property({ aliasOf: "viewModel.currentSeason" })
+  @property()
   @renderable()
-  private _currentSeason: string;
+  private _datePicker: DatePicker = new DatePicker({
+    viewModel: this.viewModel.datePickerViewModel,
+    commitOnMonthChange: true
+  });
 
   //--------------------------------------------------------------------------
   //
@@ -399,60 +409,31 @@ class Daylight extends declared(Widget) {
       return;
     }
 
-    // Enforce season date if created with season option
-    if (this.dateOrSeason === "season") {
-      watchUtils.when(this.viewModel, "view", () => {
-        this.viewModel.enforceSeasonDate();
-      });
-    }
-
     this.own(
-      // Set time from slider position
-      this._timeSlider.on(
-        ["thumb-change", "thumb-drag"],
-        (event: ThumbChangeEvent | ThumbDragEvent) => {
-          this._stopPlay();
-          this.viewModel.timeSliderPosition = event.value;
-        }
-      ),
-      // Set timezone from slider dropdown
-      this._timeSlider.watch("currentItem", (offset: dayUtils.GMTOffset) => {
-        this.viewModel.utcOffset = offset.abbr;
+      // Keep the sub-component view models up-to-date.
+      watchUtils.init(this.viewModel, "datePickerViewModel", (vm) => {
+        this._datePicker.viewModel = vm;
       }),
-      // show timezone dropdown
-      this._timeSlider.watch("open", () => this._stopPlay()),
-      // Set slider position from view time
-      this.viewModel.watch("timeSliderPosition", (value: number) => {
-        this._timeSlider.viewModel.setValue(0, value);
+      watchUtils.init(this.viewModel, "timeSliderViewModel", (vm) => {
+        this._timeSlider.viewModel = vm;
       }),
-      // Set view date from date picker date
-      this._datePicker.watch("value", (date) => {
-        this.viewModel.dayPlaying = false;
-        this.viewModel.localDate = date.toDate();
+
+      // Keep the time slider updated.
+      watchUtils.init(this, "messages", () => {
+        this._timeSlider.buttonTooltip = this.messages.chooseTimezone;
       }),
-      // Set date picker date from view date
-      this.viewModel.watch("localDate", async (value) => {
-        // DatePicker doesn't perform equality checks before assignment
-        if (this._datePicker.value.valueOf() !== value.getTime()) {
-          const moment = await momentPromise;
-          this._datePicker.set("value", moment(value));
+      watchUtils.init(this, "visibleElements", () => {
+        this._timeSlider.showDropDown = this.visibleElements.timezone;
+      }),
+
+      watchUtils.init(this, "gmtOffsets", (offsets: Maybe<GMTOffset[]>) => {
+        if (isSome(offsets)) {
+          this._timeSlider.items = offsets;
         }
       }),
+
       // Set timezone from view camera tracking
-      this.viewModel.watch("utcOffset", (newOffsetAbbr) => {
-        const currentOffset = this._timeSlider.currentItem;
-        if (!currentOffset || currentOffset.abbr !== newOffsetAbbr) {
-          const offsets = GMTOffsets;
-          const index = findIndex(offsets, (offset) => offset.abbr === newOffsetAbbr);
-          if (index >= 0) {
-            this._timeSlider.currentIndex = index;
-          }
-        }
-      }),
-      // Change hemisphere when appropriate
-      this.viewModel.watch("view.camera.position.latitude", (value: number) => {
-        this._currentHemisphere = value >= 0 ? Hemisphere.north : Hemisphere.south;
-      })
+      watchUtils.init(this, ["viewModel.utcOffset", "gmtOffsets"], () => this._onUTCOffsetChange())
     );
   }
 
@@ -466,7 +447,7 @@ class Daylight extends declared(Widget) {
 
     return isSupported ? (
       <div class={this.classes(CSS.base, CSS.widget)}>
-        <h3 class={CSS.header}>{i18n.title}</h3>
+        <h3 class={CSS.header}>{this.messages.title}</h3>
         {this.renderTimeOptions()}
         {this.visibleElements.datePicker
           ? this.dateOrSeason === "date"
@@ -478,7 +459,7 @@ class Daylight extends declared(Widget) {
     ) : (
       <div class={this.classes(CSS.base, CSS.widget)}>
         <div key="daylight__unsupported" class={CSS.panelError}>
-          <p>{i18n.unsupported}</p>
+          <p>{this.messages.unsupported}</p>
         </div>
       </div>
     );
@@ -507,20 +488,18 @@ class Daylight extends declared(Widget) {
       [CSS.sliderDateOff]: !this.visibleElements.datePicker
     };
 
-    this._timeSlider.showDropDown = this.visibleElements.timezone;
-
     return (
       <div
-        class={this.classes(CSS.container, dynamicShadowStateClasses, dynamicDateStateClasses)}
+        class={this.classes(CSS.dayContainer, dynamicShadowStateClasses, dynamicDateStateClasses)}
         key="daylight-time-options"
       >
         {this._timeSlider.render()}
         {this.visibleElements.playButtons ? (
           <button
-            bind={this}
-            onclick={this._playDay}
-            aria-label={i18n.playDay}
-            title={i18n.playDay}
+            bind={this.viewModel}
+            onclick={this.viewModel.toggleDayPlaying}
+            aria-label={this.messages.playDay}
+            title={this.messages.playDay}
             role="button"
             class={this.classes(CSS.button, CSS.playPauseButton, dynamicPlayDayClasses)}
           >
@@ -541,14 +520,14 @@ class Daylight extends declared(Widget) {
     };
 
     return (
-      <div class={CSS.container} key="daylight-date-options">
+      <div class={CSS.dateContainer} key="daylight-date-options">
         {this._datePicker.render()}
         {this.visibleElements.playButtons ? (
           <button
-            bind={this}
-            aria-label={i18n.playYear}
-            title={i18n.playYear}
-            onclick={this._playYear}
+            bind={this.viewModel}
+            onclick={this.viewModel.toggleYearPlaying}
+            aria-label={this.messages.playYear}
+            title={this.messages.playYear}
             role="button"
             class={this.classes(CSS.button, CSS.playPauseButton, dynamicPlayYearClasses)}
           >
@@ -573,22 +552,22 @@ class Daylight extends declared(Widget) {
     return (
       <div class={CSS.shadow} key="daylight-shadow-options">
         <button
-          bind={this}
+          bind={this.viewModel}
+          onclick={this.viewModel.toggleDirectShadows}
           name={shadowId}
           class={this.classes(CSS.button, CSS.checkbox, dynamicShadowsClasses)}
-          onclick={this._toggleDirectShadows}
-          aria-label={i18n.directShadow}
-          title={i18n.directShadow}
+          aria-label={this.messages.directShadow}
+          title={this.messages.directShadow}
         />
         <label
-          bind={this}
+          bind={this.viewModel}
+          onclick={this.viewModel.toggleDirectShadows}
           for={shadowId}
-          onclick={this._toggleDirectShadows}
           class={this.classes(CSS.label, CSS.interactive)}
-          aria-label={i18n.directShadow}
-          title={i18n.directShadow}
+          aria-label={this.messages.directShadow}
+          title={this.messages.directShadow}
         >
-          {i18n.directShadow}
+          {this.messages.directShadow}
         </label>
       </div>
     );
@@ -598,48 +577,36 @@ class Daylight extends declared(Widget) {
     return (
       <select
         bind={this}
-        onchange={this._changeSeason}
+        onchange={this._onSeasonChange}
         class={this.classes(CSS.select, CSS.seasonPicker)}
-        key={`daylight-season-${this._currentHemisphere}`}
-        value={this._currentSeason}
-        aria-label={i18n.season}
+        value={this.viewModel.currentSeason}
+        aria-label={this.messages.season}
       >
-        {seasons.map((season, idx, arr) => (
-          <option value={season}>
-            {
-              // Swap season labels in southern hemisphere
-              i18n[
-                this._currentHemisphere === Hemisphere.north ? season : arr[(idx + 2) % arr.length]
-              ]
-            }
-          </option>
+        {ORDERED_SEASONS.map((season) => (
+          <option value={season}>{this.messages[season]}</option>
         ))}
       </select>
     );
   }
 
-  private _toggleDirectShadows(): void {
-    this._stopPlay();
-    this.viewModel.directShadowsEnabled = !this.viewModel.directShadowsEnabled;
+  private _onSeasonChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    this.viewModel.currentSeason = select.value as Season;
   }
 
-  private _playDay(): void {
-    this.viewModel.yearPlaying = false;
-    this.viewModel.dayPlaying = !this.viewModel.dayPlaying;
-  }
+  private _onUTCOffsetChange(): void {
+    const currentViewUtcOffset = this.viewModel.utcOffset;
+    const timeSliderUtcOffset = this._timeSlider.currentItem?.abbr;
+    const allOffsets = this.gmtOffsets;
+    if (!isSome(allOffsets) || timeSliderUtcOffset === currentViewUtcOffset) {
+      return;
+    }
 
-  private _playYear(): void {
-    this.viewModel.dayPlaying = false;
-    this.viewModel.yearPlaying = !this.viewModel.yearPlaying;
-  }
-
-  private _stopPlay(): void {
-    this.viewModel.yearPlaying = this.viewModel.dayPlaying = false;
-  }
-
-  private _changeSeason(event: Event): void {
-    this._stopPlay();
-    this.viewModel.changeSeason(event);
+    // Update the time slider based on the view's UTC offset.
+    const index = findIndex(allOffsets, ({ abbr }) => abbr === currentViewUtcOffset);
+    if (index > -1) {
+      this._timeSlider.currentIndex = index;
+    }
   }
 
   private _onPrimaryTickCreated(
@@ -650,11 +617,13 @@ class Daylight extends declared(Widget) {
     tickElement.className +=
       " esri-interactive esri-widget__anchor " + CSS.tick + " " + CSS.labelledTick;
     labelElement.className += " esri-interactive esri-widget__anchor";
-    const gotToTime = () => {
+
+    const goToTime = () => {
       this.viewModel.timeSliderPosition = value;
-      this._stopPlay();
     };
-    tickElement.onclick = labelElement.onclick = gotToTime;
+
+    tickElement.onclick = goToTime;
+    labelElement.onclick = goToTime;
 
     const timeString = labelElement.innerText;
     if (timeString.indexOf(" ") !== -1) {
@@ -667,11 +636,9 @@ class Daylight extends declared(Widget) {
 
   private _onSecondaryTickCreated(value: number, tickElement: HTMLElement): void {
     tickElement.className += " esri-interactive esri-widget__anchor " + CSS.tick;
-    const gotToTime = () => {
-      this._stopPlay();
+    tickElement.onclick = () => {
       this.viewModel.timeSliderPosition = value;
     };
-    tickElement.onclick = gotToTime;
   }
 }
 

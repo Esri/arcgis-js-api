@@ -71,10 +71,10 @@ void main()
   float z         = 2.0 * step(baseWidth, 0.0); // Clip if width is zero
   vec2  dist      = getDist(a_offset, halfWidth);
   vec3  offset    = u_displayViewMat3 * vec3(dist, 0.0);
-  vec3  pos       = u_dvsMat3 * vec3(a_pos.xy, 1.0) + offset;
+  vec3  pos       = u_dvsMat3 * vec3(a_pos * POSITION_PRECISION, 1.0) + offset;
 
   v_color         = getColor(a_color, a_bitSet, 0);
-  v_opacity       = getOpacity(a_bitSet, 0);
+  v_opacity       = getOpacity();
   v_lineHalfWidth = halfWidth;
   v_id            = norm(a_id);
   v_normal        = a_offsetAndNormal.zw * SCALE;

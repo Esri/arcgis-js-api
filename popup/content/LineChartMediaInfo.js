@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./mixins/ChartMediaInfo","./support/chartMediaInfoUtils"],(function(e,t,r,n,o,i,a){return function(e){function t(t){var r=e.call(this,t)||this;return r.type="line-chart",r}var i;return r(t,e),i=t,t.prototype.clone=function(){return new i({title:this.title,caption:this.caption,value:this.value?this.value.clone():null})},n([o.property({type:["line-chart"],readOnly:!0,json:{type:["linechart"],read:!1,write:a.chartTypeKebabDict.write}})],t.prototype,"type",void 0),t=i=n([o.subclass("esri.popup.content.LineChartMediaInfo")],t)}(o.declared(i))}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./mixins/ChartMediaInfo","./support/chartMediaInfoUtils"],(function(t,e,r,i,n,o){return function(t){function e(e){var r=t.call(this,e)||this;return r.type="line-chart",r}var n;return r.__extends(e,t),n=e,e.prototype.clone=function(){return new n({title:this.title,caption:this.caption,value:this.value?this.value.clone():null})},r.__decorate([i.property({type:["line-chart"],readOnly:!0,json:{type:["linechart"],read:!1,write:o.chartTypeKebabDict.write}})],e.prototype,"type",void 0),e=n=r.__decorate([i.subclass("esri.popup.content.LineChartMediaInfo")],e)}(n)}));

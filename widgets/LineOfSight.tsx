@@ -48,17 +48,11 @@
  * @see [Sample - Line of sight widget](../sample-code/widgets-line-of-sight/index.html)
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/LineOfSight/nls/LineOfSight";
-
 // esri.core
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import SceneView = require("esri/views/SceneView");
@@ -69,9 +63,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.LineOfSight
 import LineOfSightViewModel = require("esri/widgets/LineOfSight/LineOfSightViewModel");
 
+// esri.widgets.LineOfSight.t9n
+import LineOfSightMessages from "esri/widgets/LineOfSight/t9n/LineOfSight";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -92,7 +89,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.LineOfSight")
-class LineOfSight extends declared(Widget) {
+class LineOfSight extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -112,8 +109,8 @@ class LineOfSight extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor() {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -121,6 +118,42 @@ class LineOfSight extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.14
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/LineOfSight/t9n/LineOfSight")
+  messages: LineOfSightMessages = null;
 
   //----------------------------------
   //  view
@@ -235,7 +268,7 @@ class LineOfSight extends declared(Widget) {
   private renderUnsupportedMessage(): VNode {
     return (
       <div class={CSS.panelError} key="esri-line-of-sight__unsupported">
-        <p>{i18n.unsupported}</p>
+        <p>{this.messages.unsupported}</p>
       </div>
     );
   }
@@ -243,7 +276,7 @@ class LineOfSight extends declared(Widget) {
   private renderHint(): VNode {
     return (
       <div class={CSS.hint} key="esri-line-of-sight__hint">
-        <p class={CSS.hintText}>{i18n.hint}</p>
+        <p class={CSS.hintText}>{this.messages.hint}</p>
       </div>
     );
   }
@@ -251,7 +284,7 @@ class LineOfSight extends declared(Widget) {
   private renderNewAnalysisButton(): VNode {
     return this.renderButton(
       this.onNewAnalysis,
-      i18n.newAnalysis,
+      this.messages.newAnalysis,
       CSS.newAnalysisButton,
       "esri-line-of-sight__new-button"
     );
@@ -260,7 +293,7 @@ class LineOfSight extends declared(Widget) {
   private renderDoneButton(): VNode {
     return this.renderButton(
       this.onDone,
-      i18n.done,
+      this.messages.done,
       CSS.secondaryButton,
       "esri-line-of-sight__done-button"
     );
@@ -269,7 +302,7 @@ class LineOfSight extends declared(Widget) {
   private renderContinueButton(): VNode {
     return this.renderButton(
       this.onContinue,
-      i18n.continueAnalysis,
+      this.messages.continueAnalysis,
       CSS.secondaryButton,
       "esri-line-of-sight__continue-button"
     );

@@ -83,7 +83,7 @@
   }
 
   .esri-feature-form__group-label {
-    font-weight: bolder;
+    font-weight: $font-weight--bolder;
     margin-bottom: $cap-spacing--half;
   }
 
@@ -98,12 +98,21 @@
     .esri-feature-form__label {
       margin-top: $cap-spacing;
       margin-bottom: 0;
+      transition: opacity 250ms, margin 250ms;
+    }
+
+    &-header {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
     }
   }
 
   .esri-feature-form__group--sequential {
-    .esri-feature-form__label {
-      transition: opacity 250ms, margin 250ms;
+    &:not(.esri-feature-form__group--collapsed) {
+      .esri-feature-form__group-header {
+        cursor: auto;
+      }
     }
   }
 
@@ -112,8 +121,6 @@
   }
 
   .esri-feature-form__group--collapsed {
-    cursor: pointer;
-
     .esri-feature-form__label {
       pointer-events: none;
       opacity: 0;

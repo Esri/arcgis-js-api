@@ -25,9 +25,12 @@
 
   .esri-daylight {
     padding: $cap-spacing;
-    min-width: 350px;
+    width: 350px;
+
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+    flex-basis: auto;
     justify-content: space-between;
 
     .esri-widget__anchor {
@@ -90,13 +93,14 @@
 
       .esri-daylight__play-pause-button {
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.125);
-        margin-left: 2 * $cap-spacing;
+        margin-left: $side-spacing;
         border-radius: 50%;
         width: 35px;
         height: 35px;
         flex-grow: 0;
         padding: 4px;
         fill: $background-color;
+        flex-shrink: 0; // prevent buttons shrinking when the widget shrinks.
 
         &.esri-icon-play:before {
           content: none;
@@ -146,25 +150,25 @@
       width: auto;
       padding: inherit;
       min-height: auto;
-      margin-right: $cap-spacing--half;
+      margin-right: $side-spacing--half;
       background-color: transparent;
       border: none;
       color: $button-color;
     }
 
     .esri-daylight__shadow-container {
-      margin: $cap-spacing--half 0 $cap-spacing--half 0;
+      margin: $side-spacing--half 0 $side-spacing--half 0;
       display: flex;
       flex-direction: row;
       align-items: center;
     }
 
     .esri-slider--date-on .esri-slider {
-      padding: 20px 24px 50px 24px;
+      padding: 20px $side-spacing 50px $side-spacing;
     }
 
     .esri-slider--date-off .esri-slider {
-      padding: 20px 24px 40px 24px;
+      padding: 20px $side-spacing 40px $side-spacing;
     }
 
     .esri-slider--shadow-on .esri-slider__thumb {
@@ -182,6 +186,8 @@
 }
 
 @mixin sliderWithDropdown() {
+  $timezone-dropdown-z-index: 999; // Just below the `Popover` widget
+
   .esri-slider-with-dropdown__box {
     text-align: center;
 
@@ -265,6 +271,7 @@
     text-align: left;
     white-space: inherit;
     font-size: $font-size--small;
+    z-index: 5; // Above the rest of the widget.
   }
 
   .esri-slider-with-dropdown__list-item {
@@ -298,13 +305,13 @@ html[dir="rtl"] {
   .esri-daylight {
     .esri-daylight__container {
       .esri-daylight__play-pause-button {
-        margin-right: 2 * $cap-spacing;
+        margin-right: $side-spacing;
         margin-left: 0;
       }
     }
 
     .esri-daylight__checkbox {
-      margin-left: $cap-spacing--half;
+      margin-left: $side-spacing--half;
       margin-right: 0;
     }
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../Camera"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){this.thresholdScale=1,this._camera=new r.default,this._worldSpaceRadius=e,this._thresholds=t.map((function(e){return e}))}return e.prototype.updateCamera=function(e){this._camera.copyFrom(e)},e.prototype.selectLevel=function(e,t){for(var r=this._camera.computeScreenPixelSizeAt(e),o=this._worldSpaceRadius*t/r,a=this._thresholds,i=-1,n=0;n<a.length;++n)o>=a[n]*this.thresholdScale&&(i=n);return i},e}();t.LevelSelector=o}));

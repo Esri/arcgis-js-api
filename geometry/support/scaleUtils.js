@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../core/unitUtils"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0});function n(e,t){return e/(r.getMetersPerUnitForSR(t)*r.inchesPerMeter*96)}t.getScale=function(e,t){var n=t||e.extent,i=e.width,o=r.getMetersPerUnitForSR(n&&n.spatialReference);return n&&i?n.width/i*o*r.inchesPerMeter*96:0},t.getResolutionForScale=n,t.getScaleForResolution=function(e,t){return e*(r.getMetersPerUnitForSR(t)*r.inchesPerMeter*96)},t.getExtentForScale=function(e,t){var r=e.extent,i=e.width,o=n(t,r.spatialReference);return r.clone().expand(o*i/r.width)}}));

@@ -1,0 +1,25 @@
+{
+  "widgetLabel": "Direct Line Measurement",
+  "hint": "Start to measure by clicking in the scene to place your first point",
+  "unsupported": "3D direct line measurement is only supported in SceneView.",
+  "distance": "Distance",
+  "direct": "Direct",
+  "horizontal": "Horizontal",
+  "vertical": "Vertical",
+  "unit": "Unit",
+  "newMeasurement": "New measurement",
+  "units": {
+    "metric": "Metric",
+    "imperial": "Imperial",
+    "kilometers": "Kilometers",
+    "meters": "Meters",
+    "miles": "Miles",
+    "inches": "Inches",
+    "feet": "Feet",
+    "yards": "Yards",
+    "nautical-miles": "Nautical miles",
+    "us-feet": "Feet (US)",
+    "degrees-minutes-seconds": "DMS",
+    "degrees": "Degrees"
+  }
+}

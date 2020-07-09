@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Collection","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterAuthoringInfo","./BuildingFilterAuthoringInfoBlock"],(function(e,r,o,t,n,i,c,p,l){var u=n.ofType(l);return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="checkbox",r}var n;return o(r,e),n=r,r.prototype.clone=function(){return new n({filterBlocks:i.clone(this.filterBlocks)})},t([c.property({type:["checkbox"]})],r.prototype,"type",void 0),t([c.property({type:u,json:{write:!0}})],r.prototype,"filterBlocks",void 0),r=n=t([c.subclass("esri.layers.support.BuildingFilterAuthoringInfoCheckbox")],r)}(c.declared(p))}));
+define(["require","exports","tslib","../../core/Collection","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterAuthoringInfo","./BuildingFilterAuthoringInfoBlock"],(function(e,o,r,t,i,n,c,l){var p=t.ofType(l);return function(e){function o(){var o=null!==e&&e.apply(this,arguments)||this;return o.type="checkbox",o}var t;return r.__extends(o,e),t=o,o.prototype.clone=function(){return new t({filterBlocks:i.clone(this.filterBlocks)})},r.__decorate([n.property({type:["checkbox"]})],o.prototype,"type",void 0),r.__decorate([n.property({type:p,json:{write:!0}})],o.prototype,"filterBlocks",void 0),o=t=r.__decorate([n.subclass("esri.layers.support.BuildingFilterAuthoringInfoCheckbox")],o)}(c)}));

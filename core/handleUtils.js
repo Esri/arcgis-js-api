@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./maybe","./accessorSupport/utils"],(function(e,n,r,t){function o(e){return{remove:t.once(e||function(){})}}Object.defineProperty(n,"__esModule",{value:!0}),n.handlesGroup=function(e){return o((function(){return e.forEach((function(e){return r.isSome(e)&&e.remove()}))}))},n.makeHandle=o,n.refHandle=function(e){return o((function(){var n=e();r.isSome(n)&&n.remove()}))},n.destroyHandle=function(e){return o((function(){return e.destroy()}))},n.timeoutHandle=function(e,n){var r=setTimeout(e,n);return{remove:function(){return clearTimeout(r)}}}}));
+define(["require","exports","./maybe"],(function(e,n,r){function t(e){return{remove:function(){e&&(e(),e=null)}}}Object.defineProperty(n,"__esModule",{value:!0}),n.handlesGroup=function(e){return t((function(){return e.forEach((function(e){return r.isSome(e)&&e.remove()}))}))},n.makeHandle=t,n.refHandle=function(e){return t((function(){var n=e();r.isSome(n)&&n.remove()}))},n.destroyHandle=function(e){return t((function(){return e.destroy()}))},n.timeoutHandle=function(e,n){var r=setTimeout(e,n);return{remove:function(){return clearTimeout(r)}}}}));

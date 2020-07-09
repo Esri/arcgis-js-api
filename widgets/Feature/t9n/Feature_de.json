@@ -1,0 +1,14 @@
+{
+  "widgetLabel": "Feature",
+  "attach": "Anlagen",
+  "fields": "Felder",
+  "fieldsSummary": "Liste der Attribute und Werte",
+  "media": "Medien",
+  "next": "Nächstes",
+  "noTitle": "Ohne Titel",
+  "previous": "Vorheriges",
+  "lastEdited": "Zuletzt bearbeitet am {date}.",
+  "lastCreated": "Erstellt am {date}.",
+  "lastEditedByUser": "Zuletzt bearbeitet von {user} am {date}.",
+  "lastCreatedByUser": "Erstellt von {user} am {date}."
+}

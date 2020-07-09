@@ -28,18 +28,14 @@
  * view.ui.add(homeWidget, "top-left");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Home/nls/Home";
-
 // esri
 import Viewpoint = require("esri/Viewpoint");
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -51,10 +47,13 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Home
 import HomeViewModel = require("esri/widgets/Home/HomeViewModel");
 
+// esri.widgets.Home.t9n
+import HomeMessages from "esri/widgets/Home/t9n/Home";
+
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-home esri-widget--button esri-widget",
@@ -69,7 +68,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Home")
-class Home extends declared(Widget) {
+class Home extends Widget {
   /**
    * Fires when the [go()](#go) method is called.
    *
@@ -104,8 +103,8 @@ class Home extends declared(Widget) {
    *   viewpoint: new Viewpoint()
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -120,6 +119,25 @@ class Home extends declared(Widget) {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  homeTitle
+  //----------------------------------
+
+  /**
+   * @todo document.
+   */
+  @property({
+    readOnly: true,
+    dependsOn: ["viewModel.state", "messages", "messagesCommon"]
+  })
+  @renderable()
+  get homeTitle(): string {
+    const state = this.viewModel?.state;
+    const { messagesCommon, messages } = this;
+
+    return state === "going-home" ? messagesCommon.cancel : messages.title;
+  }
 
   //----------------------------------
   //  iconClass
@@ -148,8 +166,46 @@ class Home extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Home/t9n/Home")
+  messages: HomeMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  view
@@ -251,16 +307,12 @@ class Home extends declared(Widget) {
   }
 
   render(): VNode {
-    const state = this.get("viewModel.state");
+    const state = this.viewModel?.state;
+    const { homeTitle } = this;
+
     const rootClasses = {
       [CSS.disabled]: state === "disabled"
     };
-    const iconClasses = {
-      [CSS.loadingIcon]: state === "going-home",
-      [CSS.rotatingIcon]: state === "going-home"
-    };
-
-    const title = state === "going-home" ? i18nCommon.cancel : i18n.title;
 
     return (
       <div
@@ -270,13 +322,36 @@ class Home extends declared(Widget) {
         tabIndex={0}
         onclick={this._go}
         onkeydown={this._go}
-        aria-label={title}
-        title={title}
+        aria-label={homeTitle}
+        title={homeTitle}
       >
-        <span aria-hidden="true" class={this.classes(CSS.homeIcon, iconClasses)} />
-        <span class={CSS.text}>{i18n.button}</span>
+        {this.renderIcon()}
+        {this.renderText()}
       </div>
     );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  protected renderIcon(): VNode {
+    const state = this.viewModel?.state;
+
+    const iconClasses = {
+      [CSS.loadingIcon]: state === "going-home",
+      [CSS.rotatingIcon]: state === "going-home"
+    };
+
+    return <span aria-hidden="true" class={this.classes(CSS.homeIcon, iconClasses)} />;
+  }
+
+  protected renderText(): VNode {
+    const { messages } = this;
+
+    return <span class={CSS.text}>{messages.button}</span>;
   }
 
   //--------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Oblik geoobjekta",
+  "empty": "- prazno -",
+  "validationErrors": {
+    "cannotBeNull": "Unesite vrijednost",
+    "outsideRange": "Vrijednost bi trebala biti između {min} i {max}",
+    "invalidCodedValue": "Vrijednost bi trebala biti jedna od navedenih vrijednosti.",
+    "invalidType": "Nije važeća vrijednost",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

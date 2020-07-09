@@ -61,24 +61,16 @@
  *
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-/// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/generatorHelper" name="__generator"/>
-
 // @dojo.framework.shim
 import "@dojo/framework/shim/Promise";
 
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Measurement/nls/Measurement";
-
 // esri.core
 import { neverReached } from "esri/core/compilerUtils";
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { SystemOrAreaUnit, SystemOrLengthUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -95,9 +87,12 @@ import Widget = require("esri/widgets/Widget");
 import { MeasurementComponentType } from "esri/widgets/Measurement/interfaces";
 import MeasurementViewModel = require("esri/widgets/Measurement/MeasurementViewModel");
 
+// esri.widgets.Measurement.t9n
+import MeasurementMessages from "esri/widgets/Measurement/t9n/Measurement";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-measurement",
@@ -128,7 +123,7 @@ function isAreaMeasurement(
 }
 
 @subclass("esri.widgets.Measurement")
-class Measurement extends declared(Widget) {
+class Measurement extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -142,11 +137,11 @@ class Measurement extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: MeasurementProperties) {
-    super(params);
+  constructor(params?: MeasurementProperties, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     if (this.activeWidget) {
       this.viewModel.set("activeViewModel", this.activeWidget.viewModel);
     }
@@ -304,8 +299,10 @@ class Measurement extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   // ----------------------------------
   //  linearUnit
@@ -331,6 +328,25 @@ class Measurement extends declared(Widget) {
    */
   @aliasOf("viewModel.linearUnit")
   linearUnit: SystemOrLengthUnit = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Measurement/t9n/Measurement")
+  messages: MeasurementMessages = null;
 
   //----------------------------------
   //  view
@@ -429,7 +445,7 @@ class Measurement extends declared(Widget) {
    */
   startMeasurement(): void {
     const { activeViewModel } = this.viewModel;
-    activeViewModel && activeViewModel.newMeasurement();
+    activeViewModel && ignoreAbortErrors(activeViewModel.start());
   }
 
   //--------------------------------------------------------------------------
@@ -498,7 +514,9 @@ class Measurement extends declared(Widget) {
       if (!widget) {
         return null;
       }
-      widget.viewModel.newMeasurement();
+
+      await widget.viewModel.start();
+
       this._widgets.set(activeTool, widget);
     }
     return widget;

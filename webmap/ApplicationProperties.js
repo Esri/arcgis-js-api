@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","../webdoc/applicationProperties/Viewing"],(function(e,r,o,t,i,n,p,c){return function(e){function r(r){var o=e.call(this,r)||this;return o.editing=null,o.offline=null,o.viewing=null,o}var i;return o(r,e),i=r,r.prototype.clone=function(){return new i(n.clone({editing:this.editing,offline:this.offline,viewing:this.viewing}))},t([p.property({json:{write:!0}})],r.prototype,"editing",void 0),t([p.property({json:{write:!0}})],r.prototype,"offline",void 0),t([p.property({type:c,json:{write:!0}})],r.prototype,"viewing",void 0),r=i=t([p.subclass("esri.webmap.ApplicationProperties")],r)}(p.declared(i.JSONSupport))}));
+define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","../webdoc/applicationProperties/Viewing"],(function(e,i,t,o,r,n,p){return function(e){function i(i){var t=e.call(this,i)||this;return t.editing=null,t.offline=null,t.viewing=null,t}var o;return t.__extends(i,e),o=i,i.prototype.clone=function(){return new o(r.clone({editing:this.editing,offline:this.offline,viewing:this.viewing}))},t.__decorate([n.property({json:{write:!0}})],i.prototype,"editing",void 0),t.__decorate([n.property({json:{write:!0}})],i.prototype,"offline",void 0),t.__decorate([n.property({type:p,json:{write:!0}})],i.prototype,"viewing",void 0),i=o=t.__decorate([n.subclass("esri.webmap.ApplicationProperties")],i)}(o.JSONSupport)}));

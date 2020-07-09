@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f32","../../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,t,o,r,i){Object.defineProperty(t,"__esModule",{value:!0});var c=function(){function e(e){this._low=r.vec3f32.create(),this._high=r.vec3f32.create(),e&&this.set(e)}return Object.defineProperty(e.prototype,"low",{get:function(){return this._low},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"high",{get:function(){return this._high},enumerable:!0,configurable:!0}),e.prototype.set=function(e){var t=this._low,r=this._high;o.vec3.copy(t,e),o.vec3.sub(r,e,t)},e.prototype.setElements=function(e,t,r){o.vec3.set(n,e,t,r),this.set(n)},e.prototype.get=function(e){return o.vec3.add(e,this._low,this._high)},e.prototype.getLowScaled=function(e){return o.vec3.scale(e,this._low,1)},e}();t.TwoVectorPosition=c;var n=i.vec3f64.create()}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,n){function t(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=function(){return function(e,n){return{value:(r=e[n],function(e){for(var n=[],a=1;a<arguments.length;a++)n[a-1]=arguments[a];t(e)?"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),e.stopPropagation(),e.target.click()):r.call.apply(r,[this,e].concat(n))})};var r}}}));
+define(["require","exports","tslib"],(function(e,n,r){function t(e){var n=e.type;return e instanceof KeyboardEvent||"keyup"===n||"keydown"===n||"keypress"===n}Object.defineProperty(n,"__esModule",{value:!0}),n.accessibleHandler=function(){return function(e,n){if(!e[n])throw new TypeError("Cannot auto bind undefined function '"+n+"'");return{value:(o=e[n],function(e){for(var n=[],a=1;a<arguments.length;a++)n[a-1]=arguments[a];t(e)?"Enter"!==e.key&&" "!==e.key||(e.preventDefault(),e.stopPropagation(),e.target.click()):o.call.apply(o,r.__spreadArrays([this,e],n))})};var o}}}));

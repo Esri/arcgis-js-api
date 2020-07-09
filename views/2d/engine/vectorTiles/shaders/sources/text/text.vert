@@ -2,6 +2,7 @@ attribute vec2 a_pos;
 attribute vec2 a_vertexOffset;
 attribute vec4 a_tex;
 attribute vec4 a_levelInfo;
+attribute vec4 a_visInfo;
 
 uniform lowp vec4 u_color; // always defined as halo does not support data driven but text does
 #ifdef DD
@@ -82,9 +83,13 @@ const float sdfFontScale = 1.0 / 24.0;
 void main()
 {
   mediump float a_labelMinLevel = a_levelInfo[0];
-  mediump float a_angle        = a_levelInfo[1];
+  mediump float a_angle        = a_levelInfo[1]; // main label angle (from the symbol anchor)
   mediump float a_minLevel    = a_levelInfo[2];
   mediump float a_maxLevel    = a_levelInfo[3];
+
+  // the angle range that would display this vertex upright
+  mediump float a_visMinAngle    = a_visInfo[0];
+  mediump float a_visMaxAngle    = a_visInfo[1];
 
   // if the given vertex should not be visible simply clip it by adding it a value that will push it outside the clipping plane
   mediump float delta_z = 0.0;
@@ -93,8 +98,17 @@ void main()
   //delta_z += a_visible ? 0.0 : 1.0;
 
   // If the label rotates with the map, and if the rotated label is upside down, hide it
-  mediump float rotated = mod(a_angle + u_mapRotation, 256.0);
-  delta_z += (1.0 - step(u_keepUpright, 0.0)) * step(64.0, rotated) * (1.0 - step(192.0, rotated)); //ie. z += (flip > 0) && (64 <= rotated) && (rotated < 192)
+  // combine the label angle with the map rotation
+  mediump float angle = mod(a_angle + u_mapRotation, 256.0);
+  // hide the label if not in the visible range (the test is different if the range overlaps 0)
+  if (a_visMinAngle < a_visMaxAngle)
+  {
+    delta_z += (1.0 - step(u_keepUpright, 0.0)) * (step(a_visMaxAngle, angle) + (1.0 - step(a_visMinAngle, angle))); // a_visMaxAngle <= angle || angle < a_visMinAngle
+  }
+  else
+  {
+    delta_z += (1.0 - step(u_keepUpright, 0.0)) * (step(a_visMaxAngle, angle) * (1.0 - step(a_visMinAngle, angle))); // a_visMaxAngle <= angle && angle < a_visMinAngle
+  }
 
   // u_level is the current service level adjusted for the change in font size
   delta_z += 1.0 - step(a_minLevel, u_level); // Test if (level < minLevel)

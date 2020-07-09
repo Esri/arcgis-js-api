@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./accessorSupport/decorators"],(function(e,r,t,i,n){Object.defineProperty(r,"__esModule",{value:!0});var o=0;r.IdentifiableMixin=function(e){return function(e){function r(){for(var r=[],t=0;t<arguments.length;t++)r[t]=arguments[t];var i=e.apply(this,r)||this;return Object.defineProperty(i,"uid",{writable:!1,configurable:!1,value:Date.now().toString(16)+"-object-"+o++}),i}return t(r,e),r=i([n.subclass("esri.core.Identifiable")],r)}(n.declared(e))};var a=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r=i([n.subclass("esri.core.Identifiable")],r)}(n.declared(r.IdentifiableMixin((function(){}))));r.Identifiable=a}));
+define(["require","exports","tslib","./accessorSupport/decorators"],(function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var r=0;t.IdentifiableMixin=function(e){return function(e){function t(){for(var t=[],i=0;i<arguments.length;i++)t[i]=arguments[i];var n=e.apply(this,t)||this;return Object.defineProperty(n,"uid",{writable:!1,configurable:!1,value:Date.now().toString(16)+"-object-"+r++}),n}return i.__extends(t,e),t=i.__decorate([n.subclass("esri.core.Identifiable")],t)}(e)};var o=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return i.__extends(t,e),t=i.__decorate([n.subclass("esri.core.Identifiable")],t)}(t.IdentifiableMixin((function(){})));t.Identifiable=o}));

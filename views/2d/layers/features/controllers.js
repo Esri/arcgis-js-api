@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/tsSupport/generatorHelper","../../../../core/tsSupport/awaiterHelper","../../../../core/Error","../../../../core/promiseUtils"],(function(e,r,t,o,n,l,c){Object.defineProperty(r,"__esModule",{value:!0}),r.loadControllerModule=function(r){switch(r){case"on-demand":return c.create((function(r){return e(["./controllers/OnDemandController"],r)}));case"stream":return c.create((function(r){return e(["./controllers/StreamController"],r)}));default:return c.reject(new l("mapview-controller:bad-type","Unable to create controller for unknown type: "+r))}}}));
+define(["require","exports","../../../../core/Error","../../../../core/promiseUtils","@dojo/framework/shim/Promise"],(function(e,r,o,n){Object.defineProperty(r,"__esModule",{value:!0}),r.loadControllerModule=function(r){switch(r){case"on-demand":return new Promise((function(r,o){e(["./controllers/OnDemandController"],r,o)}));case"stream":return new Promise((function(r,o){e(["./controllers/StreamController"],r,o)}));default:return n.reject(new o("mapview-controller:bad-type","Unable to create controller for unknown type: "+r))}}}));

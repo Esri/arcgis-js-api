@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../intersectionUtils"],(function(e,r,t,i,n){Object.defineProperty(r,"__esModule",{value:!0}),r.applySurfaceCollisionConstraint=function(e,r,i){void 0===i&&(i=0);var l=e.state.constraints;if(!l.collision.enabled)return!1;var o=n.surfaceElevationBelowEye(e,r),a=e.renderCoordsHelper.getAltitude(r.eye),s=o+l.collision.elevationMargin;if(a>=s)return!1;var v=t.vec3.length(r.eye);if(t.vec3.subtract(c,r.center,r.eye),e.renderCoordsHelper.setAltitude(s,r.eye),1===i)t.vec3.add(r.center,r.eye,c);else if(2===i){var d=(v-a+s)/v;t.vec3.scale(r.center,r.center,d)}return r.markViewDirty(),!0};var c=i.vec3f64.create()}));

@@ -53,23 +53,6 @@
   }
 }
 
-@mixin mediaImgMaxWidth($max_width) {
-  .esri-feature {
-    .esri-feature__media-item {
-      img {
-        max-width: #{$max_width}px;
-      }
-    }
-    .esri-feature--media-pagination-visible {
-      .esri-feature__media-item {
-        img {
-          max-width: #{($max_width - 60)}px;
-        }
-      }
-    }
-  }
-}
-
 @mixin popupHeight_BasedOnViewSize($height) {
   $pageMenuHeight: $height - 50;
   .esri-popup__main-container {
@@ -86,9 +69,12 @@
   /* For Firefox */
   white-space: pre-wrap;
   word-break: break-all;
-
-  /* For Chrome and IE */
+  /**
+  * IE should ignore these.
+  * Modern browsers should override break-all.
+  */
   word-wrap: break-word;
+  word-break: break-word;
 }
 
 @mixin measurementWidgetStyles($selector) {
@@ -115,7 +101,7 @@
     h1 &__header-title {
       font: {
         size: $font-size__header-text;
-        weight: $font-weight__bold;
+        weight: $font-weight--bold;
       }
       padding: 8px 0;
       margin: 0;
@@ -162,7 +148,7 @@
         }
 
         &-value {
-          font-weight: $font-weight__bold;
+          font-weight: $font-weight--bold;
         }
       }
     }
@@ -426,5 +412,69 @@
     width: $looping-progress-bar-width;
     z-index: 0;
     animation: looping-progresss-bar-ani $looping-progress-bar-params;
+  }
+}
+
+/**
+ * Adds the base styles for an arrow facing down.
+ */
+@mixin arrowButton() {
+  $size: 18px;
+  $icon-size: 10px;
+  $padding: ($size - $icon-size) / 2;
+
+  font-size: $icon-size;
+  line-height: $icon-size;
+
+  width: $size;
+  height: $size;
+  padding: $padding;
+
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  text-align: center;
+
+  border: none;
+  background: none;
+
+  appearance: none;
+
+  @extend [class^="esri-icon-"];
+  @extend .esri-icon-left;
+
+  &:hover:not(:disabled) {
+    background: $background-color--hover;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  &.esri-arrow-down {
+    transform: rotate(-90deg);
+  }
+
+  &.esri-arrow-up {
+    transform: rotate(90deg);
+  }
+
+  &.esri-arrow-left {
+    transform: rotate(0deg);
+  }
+
+  &.esri-arrow-right {
+    transform: rotate(180deg);
+  }
+}
+
+/**
+* Styles for Sortable
+*/
+@mixin sortableChosen($selector) {
+  transition: background-color 125ms ease-in-out;
+  &.#{$selector} {
+    background-color: $background-color--active;
+    opacity: $opacity--sortable;
   }
 }

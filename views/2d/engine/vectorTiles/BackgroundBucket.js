@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","./Bucket"],(function(e,t,n,r){return function(e){function t(t,n){return e.call(this,t,n)||this}return n(t,e),t.prototype.processFeatures=function(){},t.prototype.assignBufferInfo=function(){},t}(r)}));
+define(["require","exports","tslib","./Bucket"],(function(t,e,n,r){return function(t){function e(e,n){return t.call(this,e,n)||this}return n.__extends(e,t),e.prototype.processFeatures=function(){},e.prototype.assignBufferInfo=function(){},e}(r)}));

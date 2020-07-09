@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define([],(function(){return function(e,r){return Object.defineProperty?Object.defineProperty(e,"raw",{value:r}):(e.raw=r,e)}}));
+define(["../Logger","../deprecate"],(function(e,r){return r.deprecated(e.getLogger("esri.core.tsSupport.makeTemplateObjectHelper"),"helpers from esri.core.tsSupport are no longer required",{replacement:"use helpers from TSLib by enabling the TypeScript compiler importHelpers option",version:"4.16",see:"https://github.com/Microsoft/tslib#readme"}),function(e,r){return Object.defineProperty?Object.defineProperty(e,"raw",{value:r}):(e.raw=r,e)}}));

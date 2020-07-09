@@ -53,10 +53,10 @@ void main()
   vec2  a_placementDir     = unpack_u8_nf32(a_refSymbolAndPlacementOffset.zw);
   float a_refSymbolSize    = a_refSymbolAndPlacementOffset.y;
   float fontSize           = a_texAndSize.z;
-  float haloSize           = a_texAndSize.w * OUTLINE_SCALE; // 0.125px precision
+  float haloSize           = a_texAndSize.w * OUTLINE_SCALE;
 
-  vec2  vertexOffset = a_vertexOffset * OFFSET_PRECISION; // 0.0625px precision
-  vec3  pos          = vec3(floor(a_pos * 0.5) * OFFSET_PRECISION, 1.0);
+  vec2  vertexOffset = a_vertexOffset * OFFSET_PRECISION;
+  vec3  pos          = vec3(a_pos * POSITION_PRECISION, 1.0);
   float z            = getZ(a_minZoom, glyphMaxZoom, glyphAngle);
   float fontScale    = fontSize / SDF_FONT_SIZE;
   float halfSize     = getSize(a_refSymbolSize) / 2.0;

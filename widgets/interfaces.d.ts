@@ -13,6 +13,9 @@ import { Maybe } from "../core/maybe";
 // esri.layers
 import Layer = require("../layers/Layer");
 
+// esri.renderers.support
+import { RelationshipFocus } from "../renderers/support/AuthoringInfo";
+
 // esri.symbols.support
 import { FillDescriptor } from "../symbols/support/interfaces";
 
@@ -79,6 +82,7 @@ export interface SearchProperties {
 export interface SearchResult {
   extent: Maybe<Extent>;
   feature: Graphic;
+  target: Graphic;
   name: string;
   key: string;
   sourceIndex: number;
@@ -114,9 +118,10 @@ export interface SuggestionCandidate {
 }
 
 export interface SourcesHandler {
-  (
-    options: { sources: Collection<SupportedSearchSource>; defaultSources: Collection<SupportedSearchSource> }
-  ): Collection<SupportedSearchSource>;
+  (options: {
+    sources: Collection<SupportedSearchSource>;
+    defaultSources: Collection<SupportedSearchSource>;
+  }): Collection<SupportedSearchSource>;
 }
 
 type MapUnitType = "metric" | "non-metric";
@@ -264,7 +269,7 @@ interface OpacityRampElement {
 
 interface SizeRampElement {
   type: "size-ramp";
-  title: RampTitle | string;
+  title: ClusterTitle | RampTitle | string;
   infos: SizeRampStop[];
 }
 
@@ -278,7 +283,7 @@ interface HeatmapRampElement {
 interface RelationshipRampElement {
   type: "relationship-ramp";
   numClasses: number;
-  focus: string;
+  focus: RelationshipFocus;
   colors: FillDescriptor[][];
   labels: RelationshipLabels;
   rotation: number;
@@ -296,6 +301,10 @@ interface RendererTitle {
 interface DotDensityTitle {
   value: number;
   unit?: string;
+}
+
+interface ClusterTitle {
+  showCount: boolean;
 }
 
 interface RampTitle {
@@ -431,3 +440,8 @@ export type MeasurementViewModel =
 export type DateOrSeason = "date" | "season";
 
 export type Season = "spring" | "summer" | "fall" | "winter";
+
+export interface SeasonConfig {
+  dayOfMonth: number;
+  month: number;
+}

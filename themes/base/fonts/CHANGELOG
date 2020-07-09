@@ -1,0 +1,66 @@
+## v1.4.1
+
+### Fixed
+- :wrench: Fix metrics/alignment for medium weight (#13)
+
+## v1.4.0
+
+### Added
+- `$calcite-fonts-display` allows customizing font loading strategies via the `font-display` property
+
+## v1.3.2
+
+### Fixed
+- :wrench: Fix baseline alignment of text in Microsoft Edge (#11)
+
+## v1.3.1
+
+### Fixed
+- :wrench: Fix medium weight of basic subset (files were incorrectly subsetted)
+
+## v1.3.0
+
+### Added
+- :new: **Avenir Next Medium** now available as `500` weight
+
+### Fixed
+- :wrench: Thai files fixed in Microsoft Edge (OpenType turned on)
+
+## v1.2.0
+
+### Added
+
+- Added a separate css file which will be deployed to the CDN
+
+## v1.1.2
+
+### Fixed
+
+- Fixed Arabic language rendering of Helvetica Neue Arabic and removed temporary Segoe UI fix
+
+## v1.1.1
+
+### Fixed
+
+- Arabic languages on Windows now use Segoe UI instead of Helvetica Neue Arabic (#5)
+
+## v1.1.0
+
+### Added
+
+- styles can now be imported with SASS + configurable font path
+
+## v1.0.1
+
+### Fixed
+
+- commented out plain text in CSS file
+- disable Thai (needed for proper rendering of all languages in Microsoft Edge)
+- update Hebrew woff and woff2 files to include opentype support
+
+## v1.0.0
+
+### Added
+
+- added all subset font files
+- added `font-face` rules for every language

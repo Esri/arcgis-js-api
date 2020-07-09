@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,r,o,t,p,s){Object.defineProperty(r,"__esModule",{value:!0});var c=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.x=0,r.y=0,r.z=0,r}var p;return o(r,e),p=r,r.prototype.clone=function(){return new p({x:this.x,y:this.y,z:this.z})},t([s.property({type:Number})],r.prototype,"x",void 0),t([s.property({type:Number})],r.prototype,"y",void 0),t([s.property({type:Number})],r.prototype,"z",void 0),r=p=t([s.subclass("esri.symbols.support.Symbol3DAnchorPosition3D")],r)}(s.declared(p));r.Symbol3DAnchorPosition3D=c,r.default=c}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,o,r,t,p){Object.defineProperty(o,"__esModule",{value:!0});var s=function(e){function o(){var o=null!==e&&e.apply(this,arguments)||this;return o.x=0,o.y=0,o.z=0,o}var t;return r.__extends(o,e),t=o,o.prototype.clone=function(){return new t({x:this.x,y:this.y,z:this.z})},r.__decorate([p.property({type:Number})],o.prototype,"x",void 0),r.__decorate([p.property({type:Number})],o.prototype,"y",void 0),r.__decorate([p.property({type:Number})],o.prototype,"z",void 0),o=t=r.__decorate([p.subclass("esri.symbols.support.Symbol3DAnchorPosition3D")],o)}(t);o.Symbol3DAnchorPosition3D=s,o.default=s}));

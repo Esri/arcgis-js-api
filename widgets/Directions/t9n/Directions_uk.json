@@ -1,0 +1,80 @@
+{
+  "widgetLabel": "Напрямки",
+  "advancedOptions": "Розширені опції",
+  "disclaimer": "Користування здійснюється відповідно до {esriTerms}.",
+  "esriTerms": "Умови використання Esri",
+  "travelMode": "Режим подорожі",
+  "viewActive": "Клацання по карті додає зупинку",
+  "showStop": "Показати цю зупинку",
+  "addStopTitle": "Додати нову зупинку",
+  "addStop": "Додати зупинку",
+  "primaryCosts": "Основні витрати",
+  "secondaryCosts": "Вторинні витрати",
+  "removeStop": "Видалити зупинку",
+  "reverseStops": "Змінити порядок зупинок на зворотний",
+  "dndHandle": "Перетягуйте, щоб змінювати порядок відвідування",
+  "serviceTime": "Час сервісу",
+  "serviceDistance": "Відстань сервісу",
+  "leaveNow": "Відправитися зараз",
+  "departBy": "Відправитися до",
+  "departureTime": "Час відправлення",
+  "zoomToRoute": "Масштабуватися на маршрут",
+  "printDescription": "Роздрукувати напрямки",
+  "gmt": "GMT",
+  "stop": "Зупинка",
+  "stopLabelTemplate": "Зупинка {number} ({label})",
+  "unlocated": "Невизначене місце розташування",
+  "searchFieldPlaceholder": "Скористайтесь пошуком або клацніть на карті",
+  "viewlessSearchFieldPlaceholder": "Пошук",
+  "directionsPlaceholder": "Ваш маршрут з'явиться тут.",
+  "etaTemplate": "{time} {gmt}",
+  "eta": "Оціночний час прибуття",
+  "distanceTemplate": "{distance} {units}",
+  "cumulativeCosts": "Сукупна вартість",
+  "intermediateCosts": "Проміжна вартість",
+  "optimizeRoute": "Оптимізувати маршрут",
+  "optimizingRoute": "Оптимізування маршруту",
+  "clearRoute": "Очистити маршрут",
+  "signInRequired": "Необхідно увійти в систему",
+  "time": {
+    "min": "хв",
+    "hr": "год"
+  },
+  "units": {
+    "kilometers": {
+      "name": "кілометр(ів)",
+      "abbr": "км"
+    },
+    "meters": {
+      "name": "метр(ів)",
+      "abbr": "м"
+    },
+    "miles": {
+      "name": "миля(-ль)",
+      "abbr": "милі"
+    },
+    "feet": {
+      "name": "фути",
+      "abbr": "фути"
+    },
+    "yards": {
+      "name": "ярд(ів)",
+      "abbr": "ярди"
+    },
+    "nauticalMiles": {
+      "name": "морська миля(-ль)",
+      "abbr": "морські милі"
+    }
+  },
+  "traffic": {
+    "average": "типово",
+    "none": "Немає інформації про рух",
+    "heavy": "Інтенсивний рух",
+    "light": "Неінтенсивний рух"
+  },
+  "errors": {
+    "unableToLoadServiceMetadata": "Не вдалося завантажити маршрутний сервіс. Це може бути викликано недоступністю сервісу.",
+    "unableToRoute": "Не вдалося побудувати маршрут між зупинками.",
+    "unknownError": "Здається, виникла помилка."
+  }
+}

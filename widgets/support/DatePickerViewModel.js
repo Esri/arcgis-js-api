@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/accessorSupport/decorators","./MomentElementViewModel"],(function(e,r,t,o,s,c){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return o(r,e),r=t([s.subclass("esri.widgets.support.DatePickerViewModel")],r)}(s.declared(c))}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./MomentElementViewModel"],(function(e,t,r,o,s){return function(e){function t(t){return e.call(this,t)||this}return r.__extends(t,e),t=r.__decorate([o.subclass("esri.widgets.support.DatePickerViewModel")],t)}(s)}));

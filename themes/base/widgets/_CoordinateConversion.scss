@@ -36,7 +36,7 @@
     flex: 1 1 auto;
     min-height: 2em;
     padding: 0.5em;
-    word-break: break-all;
+    @include wordbreak();
   }
   .esri-coordinate-conversion__display:hover,
   .esri-coordinate-conversion__select-row:hover {

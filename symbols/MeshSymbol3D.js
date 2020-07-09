@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Collection","../core/lang","../core/accessorSupport/decorators","./FillSymbol3DLayer","./Symbol3D"],(function(e,r,o,t,l,s,n,y,i){var p=l.ofType({base:null,key:"type",typeMap:{fill:y}});return function(e){function r(r){var o=e.call(this,r)||this;return o.symbolLayers=new p,o.type="mesh-3d",o}var l;return o(r,e),l=r,r.prototype.clone=function(){return new l({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},t([n.property({type:p})],r.prototype,"symbolLayers",void 0),t([n.enumeration.serializable()({MeshSymbol3D:"mesh-3d"})],r.prototype,"type",void 0),r=l=t([n.subclass("esri.symbols.MeshSymbol3D")],r)}(n.declared(i))}));
+define(["require","exports","tslib","../core/Collection","../core/lang","../core/accessorSupport/decorators","./FillSymbol3DLayer","./Symbol3D"],(function(e,o,t,r,s,l,n,y){var i=r.ofType({base:null,key:"type",typeMap:{fill:n}});return function(e){function o(o){var t=e.call(this,o)||this;return t.symbolLayers=new i,t.type="mesh-3d",t}var r;return t.__extends(o,e),r=o,o.prototype.clone=function(){return new r({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},t.__decorate([l.property({type:i})],o.prototype,"symbolLayers",void 0),t.__decorate([l.enumeration({MeshSymbol3D:"mesh-3d"})],o.prototype,"type",void 0),o=r=t.__decorate([l.subclass("esri.symbols.MeshSymbol3D")],o)}(y)}));

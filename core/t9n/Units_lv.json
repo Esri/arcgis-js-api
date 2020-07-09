@@ -1,0 +1,197 @@
+{
+  "measures": {
+    "length": "Garums",
+    "area": "Laukums",
+    "volume": "Apjoms",
+    "angle": "Leņķis"
+  },
+  "units": {
+    "millimeters": {
+      "singular": "milimetrs",
+      "plural": "milimetri",
+      "abbr": "mm"
+    },
+    "centimeters": {
+      "singular": "centimetrs",
+      "plural": "centimetri",
+      "abbr": "cm"
+    },
+    "decimeters": {
+      "singular": "decimetrs",
+      "plural": "decimetri",
+      "abbr": "dm"
+    },
+    "meters": {
+      "singular": "m.",
+      "plural": "m.",
+      "abbr": "m"
+    },
+    "kilometers": {
+      "singular": "kilometrs",
+      "plural": "kilometri",
+      "abbr": "km"
+    },
+    "inches": {
+      "singular": "colla",
+      "plural": "collas",
+      "abbr": "in"
+    },
+    "feet": {
+      "singular": "pēda",
+      "plural": "pēdas",
+      "abbr": "pēdas"
+    },
+    "yards": {
+      "singular": "jards",
+      "plural": "jardi",
+      "abbr": "jardi"
+    },
+    "miles": {
+      "singular": "jūdze",
+      "plural": "jūdzes",
+      "abbr": "jūdzes"
+    },
+    "nautical-miles": {
+      "singular": "jūras jūdze",
+      "plural": "jūras jūdzes",
+      "abbr": "jj"
+    },
+    "us-feet": {
+      "singular": "pēda (ASV)",
+      "plural": "pēdas (ASV)",
+      "abbr": "pēdas"
+    },
+    "square-millimeters": {
+      "singular": "kvadrātmilimetrs",
+      "plural": "kvadrātmilimetri",
+      "abbr": "mm²"
+    },
+    "square-centimeters": {
+      "singular": "kvadrātcentimetrs",
+      "plural": "kvadrātcentimetri",
+      "abbr": "cm²"
+    },
+    "square-decimeters": {
+      "singular": "kvadrātdecimetrs",
+      "plural": "kvadrātdecimetri",
+      "abbr": "dm²"
+    },
+    "square-meters": {
+      "singular": "kvadrātmetrs",
+      "plural": "kvadrātmetri",
+      "abbr": "m²"
+    },
+    "square-kilometers": {
+      "singular": "kvadrātkilometrs",
+      "plural": "kvadrātkilometri",
+      "abbr": "km²"
+    },
+    "square-inches": {
+      "singular": "kvadrātcolla",
+      "plural": "kvadrātcollas",
+      "abbr": "in²"
+    },
+    "square-feet": {
+      "singular": "kvadrātpēda",
+      "plural": "kvadrātpēdas",
+      "abbr": "ft²"
+    },
+    "square-yards": {
+      "singular": "kvadrātjards",
+      "plural": "kvadrātjardi",
+      "abbr": "yd²"
+    },
+    "square-miles": {
+      "singular": "kvadrātjūdze",
+      "plural": "kvadrātjūdzes",
+      "abbr": "jūdz²"
+    },
+    "square-us-feet": {
+      "singular": "kvadrātpēda (ASV)",
+      "plural": "kvadrātpēdas (ASV)",
+      "abbr": "ft²"
+    },
+    "acres": {
+      "singular": "akrs",
+      "plural": "akri",
+      "abbr": "akrs"
+    },
+    "ares": {
+      "singular": "ārs",
+      "plural": "āri",
+      "abbr": "a"
+    },
+    "hectares": {
+      "singular": "hektārs",
+      "plural": "hektāri",
+      "abbr": "ha"
+    },
+    "liters": {
+      "singular": "litrs",
+      "plural": "litri",
+      "abbr": "l"
+    },
+    "cubic-millimeters": {
+      "singular": "kubikmilimetrs",
+      "plural": "kubikmilimetri",
+      "abbr": "mm³"
+    },
+    "cubic-centimeters": {
+      "singular": "kubikcentimetrs",
+      "plural": "kubikcentimetri",
+      "abbr": "cm³"
+    },
+    "cubic-decimeters": {
+      "singular": "kubikdecimetrs",
+      "plural": "kubikdecimetri",
+      "abbr": "dm³"
+    },
+    "cubic-meters": {
+      "singular": "kubikmetrs",
+      "plural": "kubikmetri",
+      "abbr": "m³"
+    },
+    "cubic-kilometers": {
+      "singular": "kubikkilometrs",
+      "plural": "kubikkilometri",
+      "abbr": "km³"
+    },
+    "cubic-inches": {
+      "singular": "kubikcolla",
+      "plural": "kubikcollas",
+      "abbr": "in³"
+    },
+    "cubic-feet": {
+      "singular": "kubikpēda",
+      "plural": "kubikpēdas",
+      "abbr": "ft³"
+    },
+    "cubic-yards": {
+      "singular": "kubikjards",
+      "plural": "kubikjardi",
+      "abbr": "yd³"
+    },
+    "cubic-miles": {
+      "singular": "kubikjūdze",
+      "plural": "kubikjūdzes",
+      "abbr": "mi³"
+    },
+    "radians": {
+      "singular": "radiāns",
+      "plural": "radiāni",
+      "abbr": ""
+    },
+    "degrees": {
+      "singular": "grāds",
+      "plural": "grādi",
+      "abbr": "°"
+    },
+    "bytes": {
+      "B": "{fileSize} B",
+      "kB": "{fileSize} KB",
+      "MB": "{fileSize} MB",
+      "GB": "{fileSize} GB",
+      "TB": "{fileSize} TB"
+    }
+  }
+}

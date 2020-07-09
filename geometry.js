@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./core/jsonMap","./core/accessorSupport/ensureType","./geometry/Extent","./geometry/Geometry","./geometry/Multipoint","./geometry/Point","./geometry/Polygon","./geometry/Polyline","./geometry/SpatialReference","./geometry/support/jsonUtils"],(function(e,o,t,r,i,n,y,p,l,m,s,u){Object.defineProperty(o,"__esModule",{value:!0}),o.Extent=i,o.BaseGeometry=n,o.Multipoint=y,o.Point=p,o.Polygon=l,o.Polyline=m,o.SpatialReference=s,o.isGeometry=function(e){return e instanceof n},o.fromJSON=u.fromJSON,o.typeKebabDictionary=t.strict()({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon",esriGeometryEnvelope:"extent",mesh:"mesh"}),o.isFeatureGeometryType=function(e){return"point"===e||"multipoint"===e||"polyline"===e||"polygon"===e},o.featureGeometryTypeKebabDictionary=t.strict()({esriGeometryPoint:"point",esriGeometryMultipoint:"multipoint",esriGeometryPolyline:"polyline",esriGeometryPolygon:"polygon"}),o.geometryTypes={base:n,key:"type",typeMap:{extent:i,multipoint:y,point:p,polyline:m,polygon:l}},o.ensureType=r.ensureOneOfType(o.geometryTypes)}));

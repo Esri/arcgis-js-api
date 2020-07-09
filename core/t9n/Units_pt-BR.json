@@ -1,0 +1,197 @@
+{
+  "measures": {
+    "length": "Comprimento",
+    "area": "Área",
+    "volume": "Volume",
+    "angle": "Ângulo"
+  },
+  "units": {
+    "millimeters": {
+      "singular": "milímetro",
+      "plural": "milímetros",
+      "abbr": "mm"
+    },
+    "centimeters": {
+      "singular": "centímetro",
+      "plural": "Centímetros",
+      "abbr": "cm"
+    },
+    "decimeters": {
+      "singular": "decímetro",
+      "plural": "decímetros",
+      "abbr": "dm"
+    },
+    "meters": {
+      "singular": "metro",
+      "plural": "metros",
+      "abbr": "m"
+    },
+    "kilometers": {
+      "singular": "quilômetro",
+      "plural": "quilômetros",
+      "abbr": "km"
+    },
+    "inches": {
+      "singular": "polegada",
+      "plural": "polegadas",
+      "abbr": "pol"
+    },
+    "feet": {
+      "singular": "pé",
+      "plural": "pés",
+      "abbr": "pés"
+    },
+    "yards": {
+      "singular": "jarda",
+      "plural": "jardas",
+      "abbr": "jd"
+    },
+    "miles": {
+      "singular": "milha",
+      "plural": "milhas",
+      "abbr": "milhas"
+    },
+    "nautical-miles": {
+      "singular": "milhas náuticas",
+      "plural": "milhas náuticas",
+      "abbr": "mn"
+    },
+    "us-feet": {
+      "singular": "pé (US)",
+      "plural": "pés (US)",
+      "abbr": "pés"
+    },
+    "square-millimeters": {
+      "singular": "Milímetro quadrado",
+      "plural": "Milímetros quadrados",
+      "abbr": "mm²"
+    },
+    "square-centimeters": {
+      "singular": "centímetro quadrado",
+      "plural": "centímetros quadrados",
+      "abbr": "cm²"
+    },
+    "square-decimeters": {
+      "singular": "decímetro quadrado",
+      "plural": "decímetros quadrados",
+      "abbr": "dm²"
+    },
+    "square-meters": {
+      "singular": "metro quadrados",
+      "plural": "metros quadrados",
+      "abbr": "m²"
+    },
+    "square-kilometers": {
+      "singular": "quilômetro quadrado",
+      "plural": "quilômetros quadrados",
+      "abbr": "km²"
+    },
+    "square-inches": {
+      "singular": "polegada quadrada",
+      "plural": "polegadas quadradas",
+      "abbr": "in²"
+    },
+    "square-feet": {
+      "singular": "pés quadrados",
+      "plural": "pés quadrados",
+      "abbr": "ft²"
+    },
+    "square-yards": {
+      "singular": "jarda quadrada",
+      "plural": "jardas quadradas",
+      "abbr": "yd²"
+    },
+    "square-miles": {
+      "singular": "Milhas Quadradas",
+      "plural": "milhas quadradas",
+      "abbr": "mi²"
+    },
+    "square-us-feet": {
+      "singular": "pés quadrados (US)",
+      "plural": "pé quadrado (US)",
+      "abbr": "ft²"
+    },
+    "acres": {
+      "singular": "acre",
+      "plural": "acres",
+      "abbr": "acre"
+    },
+    "ares": {
+      "singular": "are (área)",
+      "plural": "ares",
+      "abbr": "a"
+    },
+    "hectares": {
+      "singular": "hectare",
+      "plural": "hectares",
+      "abbr": "ha"
+    },
+    "liters": {
+      "singular": "litro",
+      "plural": "litros",
+      "abbr": "l"
+    },
+    "cubic-millimeters": {
+      "singular": "milímetro cúbico",
+      "plural": "milímetros cúbicos",
+      "abbr": "mm³"
+    },
+    "cubic-centimeters": {
+      "singular": "centímetro cúbico",
+      "plural": "centímetros cúbicos",
+      "abbr": "cm³"
+    },
+    "cubic-decimeters": {
+      "singular": "decímetro cúbico",
+      "plural": "decímetros cúbicos",
+      "abbr": "dm³"
+    },
+    "cubic-meters": {
+      "singular": "metro cúbico",
+      "plural": "metros cúbicos",
+      "abbr": "m³"
+    },
+    "cubic-kilometers": {
+      "singular": "quilômetro cúbico",
+      "plural": "quilômetros cúbicos",
+      "abbr": "km³"
+    },
+    "cubic-inches": {
+      "singular": "polegada cúbica",
+      "plural": "polegadas cúbicas",
+      "abbr": "in³"
+    },
+    "cubic-feet": {
+      "singular": "pé cúbico",
+      "plural": "pés cúbicos",
+      "abbr": "ft³"
+    },
+    "cubic-yards": {
+      "singular": "jarda cúbica",
+      "plural": "jardas cúbicas",
+      "abbr": "yd³"
+    },
+    "cubic-miles": {
+      "singular": "milha cúbica",
+      "plural": "milhas cúbicas",
+      "abbr": "mi³"
+    },
+    "radians": {
+      "singular": "radiano",
+      "plural": "radianos",
+      "abbr": ""
+    },
+    "degrees": {
+      "singular": "grau",
+      "plural": "graus",
+      "abbr": "°"
+    },
+    "bytes": {
+      "B": "{fileSize} B",
+      "kB": "{fileSize} kB",
+      "MB": "{fileSize} MB",
+      "GB": "{fileSize} GB",
+      "TB": "{fileSize} TB"
+    }
+  }
+}

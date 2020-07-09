@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/jsonMap","../core/accessorSupport/decorators","./SimpleLineSymbol","./Symbol"],(function(e,t,r,o,l,p,i,s){var n=new l.default({esriSFS:"simple-fill",esriPFS:"picture-fill"});return function(e){function t(t){var r=e.call(this,t)||this;return r.outline=null,r.type=null,r}return r(t,e),t.prototype.hash=function(){return this.type+"."+(this.outline&&this.outline.hash())},o([p.property({type:i,json:{default:null,write:!0}})],t.prototype,"outline",void 0),o([p.property({type:n.apiValues,readOnly:!0,json:{type:n.jsonValues}})],t.prototype,"type",void 0),t=o([p.subclass("esri.symbols.FillSymbol")],t)}(p.declared(s))}));
+define(["require","exports","tslib","../core/jsonMap","../core/accessorSupport/decorators","./SimpleLineSymbol","./Symbol"],(function(e,t,o,r,l,i,n){var s=new r.default({esriSFS:"simple-fill",esriPFS:"picture-fill"});return function(e){function t(t){var o=e.call(this,t)||this;return o.outline=null,o.type=null,o}return o.__extends(t,e),t.prototype.hash=function(){return this.type+"."+(this.outline&&this.outline.hash())},o.__decorate([l.property({type:i,json:{default:null,write:!0}})],t.prototype,"outline",void 0),o.__decorate([l.property({type:s.apiValues,readOnly:!0,json:{type:s.jsonValues}})],t.prototype,"type",void 0),t=o.__decorate([l.subclass("esri.symbols.FillSymbol")],t)}(n)}));

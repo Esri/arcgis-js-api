@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../renderers/support/HeatmapColorStop"],(function(o,r,e){Object.defineProperty(r,"__esModule",{value:!0}),r.getHeatmapRampStops=function(o){var r=o.colorStops,t=r.length-1;if(r&&r[0]){var a=r[t];a&&1!==a.ratio&&((r=r.slice(0)).push(new e.HeatmapColorStop({ratio:1,color:a.color})),t++)}return r.map((function(o,r){var e="";return 0===r?e="low":r===t&&(e="high"),{color:o.color,label:e,ratio:o.ratio}})).reverse()}}));
+define(["require","exports","../../../renderers/support/HeatmapColorStop"],(function(r,e,o){Object.defineProperty(e,"__esModule",{value:!0}),e.getHeatmapRampStops=function(r){var e=r.colorStops,t=e.length-1;if(e&&e[0]){var a=e[t];a&&1!==a.ratio&&((e=e.slice(0)).push(new o({ratio:1,color:a.color})),t++)}return e.map((function(r,e){var o="";return 0===e?o="low":e===t&&(o="high"),{color:r.color,label:o,ratio:r.ratio}})).reverse()}}));

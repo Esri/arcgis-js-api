@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../moment","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,t,r,o,p,s,u){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.value=p(),t}return o(t,e),t.prototype.castValue=function(e){return p(e)},r([u.property()],t.prototype,"state",void 0),r([u.property()],t.prototype,"value",void 0),r([u.cast("value")],t.prototype,"castValue",null),t=r([u.subclass("esri.widgets.support.MomentElementViewModel")],t)}(u.declared(s))}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,t,r,o,s){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.state="ready",t.value=new Date,t}return r.__extends(t,e),r.__decorate([s.property()],t.prototype,"state",void 0),r.__decorate([s.property()],t.prototype,"value",void 0),t=r.__decorate([s.subclass("esri.widgets.support.MomentElementViewModel")],t)}(o)}));

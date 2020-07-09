@@ -44,17 +44,8 @@
  * view.ui.add(editor, "top-right");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-
 // @dojo.framework.shim
 import Map from "@dojo/framework/shim/Map";
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Editor/nls/Editor";
-import * as i18nTemplates from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
 
 // esri
 import { Polygon, Polyline } from "esri/geometry";
@@ -68,13 +59,16 @@ import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init, on, watch, whenNot } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
 
 // esri.layers.support
 import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -100,18 +94,31 @@ import {
   WorkflowType
 } from "esri/widgets/Editor/interfaces";
 
+// esri.widgets.Editor.t9n
+import EditorMessages from "esri/widgets/Editor/t9n/Editor";
+
 // esri.widgets.FeatureTemplates
 import { ItemList } from "esri/widgets/FeatureTemplates/ItemList";
+
+// esri.widgets.FeatureTemplates.t9n
+import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureTemplates";
 
 // esri.widgets.Sketch.support
 import { CreateEvent } from "esri/widgets/Sketch/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, isRTL, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  isRTL,
+  messageBundle,
+  renderable,
+  tsx,
+  vmEvent
+} from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-editor esri-widget",
+  base: "esri-editor esri-widget esri-widget--panel",
   header: "esri-editor__header",
   scroller: "esri-editor__scroller",
   content: "esri-editor__content",
@@ -205,7 +212,7 @@ type EditorParams = Partial<
 >;
 
 @subclass("esri.widgets.Editor")
-class Editor extends declared(HandleOwnerMixin(Widget)) {
+class Editor extends HandleOwnerMixin(Widget) {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -226,8 +233,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * });
    *
    */
-  constructor(params?: EditorParams) {
-    super(params);
+  constructor(params?: EditorParams, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this._handleSave = this._handleSave.bind(this);
     this._handleBack = this._handleBack.bind(this);
@@ -240,7 +247,9 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     this._handleAttachmentDelete = this._handleAttachmentDelete.bind(this);
   }
 
-  postInitialize(): void {
+  initialize(): void {
+    const { messages, messagesCommon } = this;
+
     this.own([
       init(this, "viewModel", (viewModel) => {
         this._featureForm.viewModel = viewModel ? viewModel.featureFormViewModel : null;
@@ -270,11 +279,11 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
       on(this, "viewModel.activeWorkflow", "cancel-request", ({ controller }) => {
         this._prompt = {
-          title: i18n.cancelRequestTitle,
-          message: i18n.cancelRequestWarningMessage,
+          title: messages.cancelRequestTitle,
+          message: messages.cancelRequestWarningMessage,
           options: [
             {
-              label: i18nCommon.form.no,
+              label: messagesCommon.form.no,
               type: "neutral",
               action: () => {
                 controller.deny();
@@ -282,7 +291,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
               }
             },
             {
-              label: i18nCommon.form.yes,
+              label: messagesCommon.form.yes,
               type: "negative",
               action: () => {
                 controller.allow();
@@ -306,29 +315,25 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         this.viewModel.sketchViewModel.set(defaults.sketch);
       }),
 
-      watch<EsriError>(
-        this,
-        "_attachments.error",
-        (error): void => {
-          if (!error) {
-            return;
-          }
-
-          this._prompt = {
-            title: i18n.errorWarningTitle,
-            message: error.message,
-            options: [
-              {
-                label: i18nCommon.form.ok,
-                type: "neutral",
-                action: () => {
-                  this._prompt = null;
-                }
-              }
-            ]
-          };
+      watch<EsriError>(this, "_attachments.error", (error): void => {
+        if (!error) {
+          return;
         }
-      ),
+
+        this._prompt = {
+          title: messages.errorWarningTitle,
+          message: error.message,
+          options: [
+            {
+              label: messagesCommon.form.ok,
+              type: "neutral",
+              action: () => {
+                this._prompt = null;
+              }
+            }
+          ]
+        };
+      }),
 
       watch<FailedOperation[]>(this, "viewModel.failures", (failures) => {
         if (!failures) {
@@ -338,11 +343,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         const [{ error, retry, cancel }] = failures;
 
         this._prompt = {
-          title: i18n.errorWarningTitle,
-          message: substitute(i18n.errorWarningMessageTemplate, { errorMessage: error.message }),
+          title: messages.errorWarningTitle,
+          message: substitute(messages.errorWarningMessageTemplate, {
+            errorMessage: error.message
+          }),
           options: [
             {
-              label: i18n.retry,
+              label: messages.retry,
               type: "positive",
               action: () => {
                 retry();
@@ -350,7 +357,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
               }
             },
             {
-              label: i18n.ignore,
+              label: messages.ignore,
               type: "neutral",
               action: () => {
                 cancel();
@@ -595,8 +602,10 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layerInfos
@@ -617,6 +626,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    * @example
    * const editor = new Editor({
    *   layerInfos: [{
+   *     view: view,
    *     layer: featureLayer, // pass in the feature layer
    *     fieldConfig: [ // Specify which fields to configure
    *       {
@@ -637,6 +647,59 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
    */
   @aliasOf("viewModel.layerInfos")
   layerInfos: LayerInfo[] = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Editor/t9n/Editor")
+  messages: EditorMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
+
+  //----------------------------------
+  //  messagesFeatureTemplates
+  //----------------------------------
+
+  /**
+   * @name messagesFeatureTemplates
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/FeatureTemplates/t9n/FeatureTemplates")
+  messagesTemplates: FeatureTemplatesMessages = null;
 
   //----------------------------------
   //  supportingWidgetDefaults
@@ -897,7 +960,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   protected renderTemplates(): VNode {
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.selectTemplate, true)}
+        {this.renderHeader(this.messages.selectTemplate, true)}
         <div key="content" class={CSS.content}>
           {this._featureTemplates.render()}
         </div>
@@ -912,8 +975,9 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     const disabled =
       (workflow.type === "update" && !workflow.data.edits.modified) ||
       (featureFormViewModel.inputFields.length > 0 && !featureFormViewModel.valid);
-
-    const primaryButtonLabel = workflow.type === "create" ? i18nCommon.add : i18nCommon.update;
+    const { messages, messagesCommon } = this;
+    const primaryButtonLabel =
+      workflow.type === "create" ? messagesCommon.add : messagesCommon.update;
 
     const controls: ControlButton[] = [
       {
@@ -933,7 +997,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
       if (workflow.data.editableItem.supports.indexOf("delete") > -1) {
         controls.push({
-          label: i18nCommon.delete,
+          label: messagesCommon.delete,
           type: "tertiary",
           clickHandler: this._handleDelete
         });
@@ -950,11 +1014,11 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
             {featureFormViewModel.inputFields.length > 0
               ? this._featureForm.render()
               : this.renderMessage(
-                  substitute(i18n.clickToFinishTemplate, { button: primaryButtonLabel })
+                  substitute(messages.clickToFinishTemplate, { button: primaryButtonLabel })
                 )}
             {showAttachments ? (
               <div key="attachments">
-                <div>{i18n.attachments}</div>
+                <div>{messages.attachments}</div>
                 {this._attachments.render()}
               </div>
             ) : null}
@@ -966,10 +1030,10 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   protected renderAttachmentAdding(): VNode {
-    const { _attachments } = this;
+    const { _attachments, messages, messagesCommon } = this;
     const controls: ControlButton[] = [
       {
-        label: _attachments.submitting ? i18nCommon.cancel : i18nCommon.add,
+        label: _attachments.submitting ? messagesCommon.cancel : messagesCommon.add,
         disabled: _attachments.submitting || !_attachments.selectedFile,
         type: "primary",
         clickHandler: this._handleAttachmentAdd
@@ -978,7 +1042,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.addAttachment, true, _attachments.submitting)}
+        {this.renderHeader(messages.addAttachment, true, _attachments.submitting)}
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
           {_attachments.render()}
         </div>
@@ -988,16 +1052,16 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   protected renderAttachmentEditing(): VNode {
-    const { _attachments } = this;
+    const { _attachments, messages, messagesCommon } = this;
     const controls: ControlButton[] = [
       {
-        label: i18nCommon.update,
+        label: messagesCommon.update,
         disabled: _attachments.submitting || !_attachments.selectedFile,
         type: "primary",
         clickHandler: this._handleAttachmentUpdate
       },
       {
-        label: i18nCommon.delete,
+        label: messagesCommon.delete,
         disabled: _attachments.submitting,
         type: "tertiary",
         clickHandler: this._handleAttachmentDelete
@@ -1006,7 +1070,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.editAttachment, true, _attachments.submitting)}
+        {this.renderHeader(messages.editAttachment, true, _attachments.submitting)}
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
           {_attachments.render()}
         </div>
@@ -1016,11 +1080,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   protected renderFeatureUpdating(): VNode {
+    const { messages } = this;
+
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.selectFeature, true)}
+        {this.renderHeader(messages.selectFeature, true)}
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
-          {this.renderMessage(i18n.selectFeatureToEdit)}
+          {this.renderMessage(messages.selectFeatureToEdit)}
         </div>
       </div>
     );
@@ -1031,7 +1097,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   }
 
   protected renderFeatureCreation(): VNode {
-    const { viewModel } = this;
+    const { messages, viewModel } = this;
     const sketchVM = viewModel.sketchViewModel;
     const workflow = viewModel.activeWorkflow as CreateWorkflow;
     const layer = workflow.data.creationInfo.layer;
@@ -1042,7 +1108,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.placeFeature, true)}
+        {this.renderHeader(messages.placeFeature, true)}
         <div key="content" class={this.classes(CSS.content, CSS.scroller)}>
           {this.renderMessage(tip)}
         </div>
@@ -1142,11 +1208,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     breadcrumb: boolean = false,
     preventBack: boolean = false
   ): VNode {
+    const { messagesCommon } = this;
+
     return (
       <header class={CSS.header} key="header">
         {breadcrumb ? (
           <div
-            aria-label={i18nCommon.back}
+            aria-label={messagesCommon.back}
             class={this.classes(
               CSS.backButton,
               CSS.interactive,
@@ -1158,7 +1226,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
             onkeydown={this._handleHeaderClickOrKeyDown}
             role="button"
             tabIndex={0}
-            title={i18nCommon.back}
+            title={messagesCommon.back}
           >
             <span aria-hidden="true" class={isRTL() ? CSS.rightArrowIcon : CSS.leftArrowIcon} />
           </div>
@@ -1177,12 +1245,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
   };
 
   protected renderLanding(): VNode {
+    const { messages } = this;
     const { allowedWorkflows, canCreate, canUpdate } = this.viewModel;
     const arrowIconClass = isRTL() ? CSS.leftArrowIcon : CSS.rightArrowIcon;
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">
-        {this.renderHeader(i18n.widgetLabel)}
+        {this.renderHeader(messages.widgetLabel)}
         <div key="content" class={CSS.content} role="group">
           <div class={CSS.modeSelection} key="mode-selection">
             {allowedWorkflows.indexOf("update") > -1 ? (
@@ -1198,7 +1267,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
                 role="button"
                 tabIndex={!canUpdate ? -1 : 0}
               >
-                <span class={CSS.featureListName}>{i18n.editFeature}</span>
+                <span class={CSS.featureListName}>{messages.editFeature}</span>
                 <span
                   aria-hidden="true"
                   class={this.classes(CSS.featureListIcon, arrowIconClass)}
@@ -1217,7 +1286,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
                 role="button"
                 tabIndex={!canCreate ? -1 : 0}
               >
-                <span class={CSS.featureListName}>{i18n.addFeature}</span>
+                <span class={CSS.featureListName}>{messages.addFeature}</span>
                 <span
                   aria-hidden="true"
                   class={this.classes(CSS.featureListIcon, arrowIconClass)}
@@ -1232,12 +1301,14 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
   protected renderFeatureList(): VNode {
     const {
+      messages,
+      messagesTemplates,
       viewModel: { editableItems, activeWorkflow }
     } = this;
 
     const workflow = activeWorkflow as UpdateWorkflow;
     const candidates = workflow.data.candidates;
-    const title = substitute(i18n.multipleFeaturesTemplate, { total: candidates.length });
+    const title = substitute(messages.multipleFeaturesTemplate, { total: candidates.length });
 
     type Item = { label: string; id: string; data: any };
 
@@ -1263,8 +1334,8 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
         return (
           match.supports.indexOf("update") > -1 &&
           (!lowerCasedFilter ||
-            (label.toLowerCase().indexOf(lowerCasedFilter) > -1 ||
-              title.toLowerCase().indexOf(lowerCasedFilter) > -1))
+            label.toLowerCase().indexOf(lowerCasedFilter) > -1 ||
+            title.toLowerCase().indexOf(lowerCasedFilter) > -1)
         );
       })
       .forEach((item) => {
@@ -1297,9 +1368,9 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
             filterText: this._filterText,
             items: sortedAndGrouped,
             messages: {
-              filterPlaceholder: i18nTemplates.filterPlaceholder,
-              noItems: i18nTemplates.noItems,
-              noMatches: i18nTemplates.noMatches
+              filterPlaceholder: messagesTemplates.filterPlaceholder,
+              noItems: messagesTemplates.noItems,
+              noMatches: messagesTemplates.noMatches
             },
             onItemMouseEnter: ({ data: feature }) => this._setCandidateFeature(feature),
             onItemMouseLeave: () => this._setCandidateFeature(null),
@@ -1336,13 +1407,15 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
     geometryType: FeatureLayer["geometryType"],
     graphicInProgress: Graphic
   ): string {
+    const { messages } = this;
+
     if (geometryType === "point") {
-      return i18n.tips.clickToAddPoint;
+      return messages.tips.clickToAddPoint;
     }
 
     if (geometryType === "polygon" || geometryType === "polyline") {
       if (!graphicInProgress) {
-        return i18n.tips.clickToStart;
+        return messages.tips.clickToStart;
       }
 
       const geometry = graphicInProgress.geometry as Polygon | Polyline;
@@ -1350,13 +1423,13 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
       const [segment] = geometry[segmentProperty];
 
       if (geometryType === "polygon" && segment < 4) {
-        return i18n.tips.clickToContinue;
+        return messages.tips.clickToContinue;
       }
 
-      return i18n.tips.clickToContinueThenDoubleClickToEnd;
+      return messages.tips.clickToContinueThenDoubleClickToEnd;
     }
 
-    return i18n.tips.clickToAddFeature;
+    return messages.tips.clickToAddFeature;
   }
 
   private _getLabel(feature: Graphic): string {
@@ -1368,23 +1441,25 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
     return (
       (displayField && `${attributes[displayField]}`) ||
-      substitute(i18n.untitledFeatureTemplate, { id: attributes[objectIdField] })
+      substitute(this.messages.untitledFeatureTemplate, { id: attributes[objectIdField] })
     );
   }
 
   @accessibleHandler()
   private _handleDelete(): void {
+    const { messages, messagesCommon } = this;
+
     this._prompt = {
-      title: i18n.deleteWarningTitle,
-      message: i18n.deleteWarningMessage,
+      title: messages.deleteWarningTitle,
+      message: messages.deleteWarningMessage,
       options: [
         {
-          label: i18n.keepFeature,
+          label: messages.keepFeature,
           type: "neutral",
           action: () => (this._prompt = null)
         },
         {
-          label: i18nCommon.delete,
+          label: messagesCommon.delete,
           type: "positive",
           action: () => {
             this.viewModel.deleteFeatureFromWorkflow();
@@ -1417,17 +1492,19 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
   @accessibleHandler()
   private _handleAttachmentDelete(): void {
+    const { messages, messagesCommon } = this;
+
     this._prompt = {
-      title: i18n.deleteAttachmentWarningTitle,
-      message: i18n.deleteAttachmentWarningMessage,
+      title: messages.deleteAttachmentWarningTitle,
+      message: messages.deleteAttachmentWarningMessage,
       options: [
         {
-          label: i18n.keepAttachment,
+          label: messages.keepAttachment,
           type: "neutral",
           action: () => (this._prompt = null)
         },
         {
-          label: i18nCommon.delete,
+          label: messagesCommon.delete,
           type: "positive",
           action: () => {
             const { _attachments } = this;
@@ -1466,6 +1543,7 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
 
   @accessibleHandler()
   private _handleBack(): void {
+    const { messages } = this;
     const { activeWorkflow: workflow } = this.viewModel;
     const { stepId, data, type } = workflow;
 
@@ -1483,10 +1561,10 @@ class Editor extends declared(HandleOwnerMixin(Widget)) {
       (stepId === "editing-existing-feature" && data.edits.modified)
     ) {
       const message =
-        type === "create" ? i18n.cancelAddWarningMessage : i18n.cancelEditWarningMessage;
-      const title = type === "create" ? i18n.cancelAddTitle : i18n.cancelEditTitle;
-      const continueOption = type === "create" ? i18n.continueAdding : i18n.continueEditing;
-      const discardOption = type === "create" ? i18n.discardFeature : i18n.discardEdits;
+        type === "create" ? messages.cancelAddWarningMessage : messages.cancelEditWarningMessage;
+      const title = type === "create" ? messages.cancelAddTitle : messages.cancelEditTitle;
+      const continueOption = type === "create" ? messages.continueAdding : messages.continueEditing;
+      const discardOption = type === "create" ? messages.discardFeature : messages.discardEdits;
 
       this._prompt = {
         title,

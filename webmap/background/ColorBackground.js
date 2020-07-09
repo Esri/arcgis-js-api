@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/tsSupport/assignHelper","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],(function(r,o,e,t,c,p,n,s,u){return function(r){function o(o){var e=r.call(this,o)||this;return e.color=new p([0,0,0,1]),e}var c;return e(o,r),c=o,o.prototype.clone=function(){return new c(s.clone({color:this.color}))},t([u.property({type:p,json:{write:!0}})],o.prototype,"color",void 0),o=c=t([u.subclass("esri.webmap.background.ColorBackground")],o)}(u.declared(n.JSONSupport))}));
+define(["require","exports","tslib","../../Color","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],(function(o,r,e,t,c,n,p){return function(o){function r(r){var e=o.call(this,r)||this;return e.color=new t([0,0,0,1]),e}var c;return e.__extends(r,o),c=r,r.prototype.clone=function(){return new c(n.clone({color:this.color}))},e.__decorate([p.property({type:t,json:{write:!0}})],r.prototype,"color",void 0),r=c=e.__decorate([p.subclass("esri.webmap.background.ColorBackground")],r)}(c.JSONSupport)}));

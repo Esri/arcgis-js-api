@@ -1,5 +1,8 @@
 const float C_DEG_TO_RAD = 3.14159265359 / 180.0;
+const float C_256_TO_RAD = 3.14159265359 / 128.0;
 const float SIGNED_BYTE_TO_UNSIGNED = 128.0;
+
+const float POSITION_PRECISION = 1.0 / 8.0;
 
 // markers
 const float SOFT_EDGE_RATIO = 1.0; // use blur here if needed

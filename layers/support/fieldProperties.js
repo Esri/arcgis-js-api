@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","@dojo/framework/shim/array","../../core/Logger","./Field","./fieldUtils"],(function(e,i,r,t,l,s){Object.defineProperty(i,"__esModule",{value:!0});var d=t.getLogger("esri.layers.support.fieldProperties");i.defineFieldProperties=function(){return{fields:{type:[l],value:null},outFields:{type:[String],dependsOn:["fields"],json:{read:!1},set:function(e){this._userOutFields=e,this.notifyChange("outFields")},get:function(){var e=this._userOutFields;if(!e||!e.length)return null;if(r.includes(e,"*"))return["*"];if(!this.fields)return e;for(var i=0,t=e;i<t.length;i++){var l=t[i];s.hasField(this.fields,l)||d.error("field-attributes-layer:invalid-field","Invalid field "+l+" found in outFields",{layer:this,outFields:e})}return s.fixFields(this.fields,e)}}}}}));

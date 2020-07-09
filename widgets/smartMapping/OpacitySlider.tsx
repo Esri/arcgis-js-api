@@ -10,7 +10,7 @@
  * ![OpacitySlider with annotations](../../assets/img/apiref/widgets/sliders/opacityslider-labels.png "OpacitySlider with annotations")
  *
  * The [fromVisualVariableResult](#fromVisualVariableResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/opacity#createVisualVariable createVisualVariable}
+ * from the result of the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
  * method.
  *
  * ```js
@@ -68,30 +68,23 @@
  * @see [OpacitySlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/OpacitySlider.tsx)
  * @see [OpacitySlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_OpacitySlider.scss)
  * @see module:esri/widgets/smartMapping/OpacitySlider/OpacitySliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/opacity opacityVariableCreator}
+ * @see {@link module:esri/smartMapping/renderers/opacity opacityVariableCreator}
  */
-
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/OpacitySlider/nls/OpacitySlider";
 
 // esri
 import Color = require("esri/../Color");
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { VisualVariableResult } from "esri/../renderers/smartMapping/creators/opacity";
-
-// esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
 import OpacityStop = require("esri/../renderers/visualVariables/support/OpacityStop");
+
+// esri.smartMapping.renderers
+import { VisualVariableResult } from "esri/../smartMapping/renderers/opacity";
+
+// esri.smartMapping.statistics
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -99,12 +92,15 @@ import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 // esri.widgets.smartMapping.OpacitySlider
 import OpacitySliderViewModel = require("esri/widgets/OpacitySlider/OpacitySliderViewModel");
 
+// esri.widgets.smartMapping.OpacitySlider.t9n
+import OpacitySliderMessages from "esri/widgets/OpacitySlider/t9n/OpacitySlider";
+
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-opacity-slider",
@@ -126,7 +122,7 @@ interface OpacitySliderStyle {
 }
 
 @subclass("esri.widgets.smartMapping.OpacitySlider")
-class OpacitySlider extends declared(SmartMappingSliderBase) {
+class OpacitySlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -148,8 +144,8 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
    *   stops: response.visualVariable.stops,  // opacity visual variable generated from the opacityVariableCreator
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     // For SVG fills
     this._rampFillId = `${this.id}-ramp-fill`;
@@ -185,7 +181,29 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/OpacitySlider/t9n/OpacitySlider")
+  messages: OpacitySliderMessages = null;
 
   //----------------------------------
   //  stops
@@ -287,8 +305,8 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create an OpacitySlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/opacity~VisualVariableResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/opacity#createVisualVariable createVisualVariable}
+   * {@link module:esri/smartMapping/renderers/opacity~VisualVariableResult result} of
+   * the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
    * method.
    *
    * This method sets the slider [stops](#stops), [min](#min), [max](#maxDataValue),
@@ -298,11 +316,11 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
    * @method fromVisualVariableResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/opacity~VisualVariableResult} visualVariableResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/opacity#createVisualVariable createVisualVariable}
+   * @param {module:esri/smartMapping/renderers/opacity~VisualVariableResult} visualVariableResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    * @return {module:esri/widgets/smartMapping/OpacitySlider} Returns an OpacitySlider instance. This will not render until you assign
    *   it a valid [container](#container).
@@ -376,19 +394,19 @@ class OpacitySlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties of an OpacitySlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/opacity~VisualVariableResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/opacity#createVisualVariable createVisualVariable}
+   * {@link module:esri/smartMapping/renderers/opacity~VisualVariableResult result} of
+   * the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
    * method. This method is useful for cases when the app allows the end user to switch data variables
    * used to render the data.
    *
    * @method updateFromVisualVariableResult
    * @instance
    *
-   * @param {module:esri/renderers/smartMapping/creators/opacity~VisualVariableResult} visualVariableResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/opacity#createVisualVariable createVisualVariable}
+   * @param {module:esri/smartMapping/renderers/opacity~VisualVariableResult} visualVariableResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example

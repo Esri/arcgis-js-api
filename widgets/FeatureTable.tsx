@@ -1,27 +1,30 @@
 /**
- * This widget provides an interactive tabular view of each feature's attributes in a feature layer.
- * When working with a large dataset, the table loads additional features as the user scrolls. Users can
- * select rows (features) within the table.
+ * This widget provides an interactive tabular view of each feature's attributes in a feature layer. In addition, it also works
+ * with standalone tables that are not associated with underlying geometries.
+ * When working with a large dataset, the table loads additional features as the user scrolls.
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  * * Not supported in Internet Explorer 11.
- * * Editing is currently not supported.
+ * * Editing date fields is not yet supported. This will be added in a future release.
  * * Viewing related records is currently not supported.
  * * Viewing attachments is currently not supported, although if a feature contains
  * attachments, the total count per feature will display.
- * * Selecting features from a map and having it reflected in the table is
- * currently not implemented but will be in an upcoming release.
+ * * Visible features from a map and having only these rows reflected in the table is
+ * currently not implemented but will be in an upcoming release. Although it is
+ * possible to select rows within the table and have their corresponding feature selected.
+ * * Currently, if a map feature falls outside what is currently being viewed,
+ * it still displays within the feature table. Restricting the rows to match visible features
+ * is in current development plans.
  * * [Dark themed](../guide/styling/#themes) CSS is currently not supported.
- * * Customizing date strings via the FeatureTable API is currently not supported.
  * :::
  *
  * The following image displays the standalone `FeatureTable` widget
  * without any associated map.
- * ![standalone featuretable widget](../../assets/img/guide/whats-new/415/featuretable-standalone.png)
+ * ![standalone featuretable widget](../../assets/img/apiref/widgets/featuretable/featuretable-standalone.png)
  *
  * The following image displays the `FeatureTable` widget with an associated map.
- * ![standalone featuretable widget](../../assets/img/guide/whats-new/415/featuretable-map.png)
+ * ![standalone featuretable widget](../../assets/img/apiref/widgets/featuretable/featuretable-map.png)
  *
  *
  *
@@ -32,33 +35,34 @@
  *
  * @see [FeatureTable.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable.tsx)
  * @see [FeatureTable.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureTable.scss)
- * @see [Sample - FeatureTable Widget](../sample-code/widgets-featuretable/index.html)
- * @see [Sample - FeatureTable widget using a map](../sample-code/widgets-featuretable-map/index.html)
  * @see module:esri/widgets/FeatureTable/FeatureTableViewModel
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
+ * @see [Sample - FeatureTable Widget](../sample-code/widgets-featuretable/index.html)
+ * @see [Sample - FeatureTable widget using a map](../sample-code/widgets-featuretable-map/index.html)
+ * @see [Sample - FeatureTable with editing enabled](../sample-code/widgets-featuretable-editing/index.html)
+ * @see [Sample - FeatureTable with popup interaction](../sample-code/widgets-featuretable-popup-interaction/index.html)
+ *
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/FeatureTable/nls/FeatureTable";
-
 // esri
-import { substitute } from "esri/intl";
+import { loadMessageBundle, onLocaleChange, substitute } from "esri/intl";
 
 // esri.core
+import Collection = require("esri/core/Collection");
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { CollectionChangeEvent } from "esri/core/interfaces";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
+
+// esri.views
+import MapView = require("esri/views/MapView");
+import SceneView = require("esri/views/SceneView");
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
@@ -70,15 +74,27 @@ import FieldConfig = require("esri/widgets/FeatureForm/FieldConfig");
 import FeatureTableViewModel = require("esri/widgets/FeatureTable/FeatureTableViewModel");
 
 // esri.widgets.FeatureTable.Grid
+import Column = require("esri/widgets/FeatureTable/Grid/Column");
 import Grid = require("esri/widgets/FeatureTable/Grid/Grid");
-import { Direction } from "esri/widgets/FeatureTable/Grid/interfaces";
+import { State } from "esri/widgets/FeatureTable/Grid/interfaces";
+
+// esri.widgets.FeatureTable.Grid.support
+import ButtonMenu = require("esri/widgets/FeatureTable/Grid/support/ButtonMenu");
+import ButtonMenuItem = require("esri/widgets/FeatureTable/Grid/support/ButtonMenuItem");
+import {
+  ButtonMenuConfig,
+  ButtonMenuItemClickFunctionParams
+} from "esri/widgets/FeatureTable/Grid/support/interfaces";
 
 // esri.widgets.FeatureTable.support
-import { FeatureData, State } from "esri/widgets/FeatureTable/support/interfaces";
+import { FeatureData } from "esri/widgets/FeatureTable/support/interfaces";
+
+// esri.widgets.FeatureTable.t9n
+import FeatureTableMessages from "esri/widgets/FeatureTable/t9n/FeatureTable";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { /* accessibleHandler, isRTL, */ renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   header: true,
@@ -97,32 +113,16 @@ const CSS = {
   content: "esri-feature-table__content",
   loader: "esri-feature-table__loader",
   loaderContainer: "esri-feature-table__loader-container",
-
-  // menu
   menuContainer: "esri-feature-table__menu",
-  menuAnchor: "esri-feaute-table__menu-anchor",
-  menuContent: "esri-feature-table__menu-content",
-  menuAccordion: "esri-feature-table__menu-accordion",
-  menuAccordionSub: "esri-feature-table__menu-accordion-sub",
-  menuItem: "esri-feature-table__menu-item",
-  menuItemLabel: "esri-feature-table__menu-item-label",
-  menuItemLabelContent: "esri-feature-table__menu-item-label__content",
-  menuInput: "esri-feature-table__menu-input",
-  menuItemIcon: "esri-feature-table__menu-item__icon",
-  menuItemInput: "esri-feature-table__menu-item__input",
 
-  // icons
-  button: "esri-feature-table__button",
-  buttonSelected: "esri-feature-table__button--selected",
-  menuIcon: "esri-icon-menu",
-  tableIcon: "esri-icon-table",
-  menuItemGroup: "esri-icon-right",
-  checkmark: "esri-icon-check-mark",
+  // Icons
+  menuIcon: "esri-icon-handle-horizontal",
+  menuItemGroupOpenedIcon: "esri-icon-down",
+  menuItemGroupClosedIcon: "esri-icon-right",
+  checkmarkIcon: "esri-icon-check-mark",
 
   // common
-  widget: "esri-widget",
-  input: "esri-input",
-  select: "esri-select"
+  widget: "esri-widget"
 };
 
 interface VisibleElements {
@@ -142,11 +142,21 @@ interface FeatureTableEvents {
 }
 
 type FeatureTableParams = Partial<
-  Pick<FeatureTable, "attachmentsEnabled" | "layer" | "viewModel" | "visibleElements">
+  Pick<
+    FeatureTable,
+    | "attachmentsEnabled"
+    | "container"
+    | "editingEnabled"
+    | "fieldConfigs"
+    | "layer"
+    | "menuConfig"
+    | "viewModel"
+    | "visibleElements"
+  >
 >;
 
 @subclass("esri.widgets.FeatureTable")
-class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents> {
+class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -179,6 +189,10 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
    * applicable, an array of related {@link module:esri/Graphic features} associated with the
    * row (feature) removed from the feature table selection.
    *
+   * @see [Sample - FeatureTable widget with a map](../sample-code/widgets-featuretable-map/index.html)
+   * @see [Sample - FeatureTable with editing enabled](../sample-code/widgets-featuretable-editing/index.html)
+   * @see [Sample - FeatureTable with popup interaction](../sample-code/widgets-featuretable-popup-interaction/index.html)
+   *
    * @example
    * // This function will fire each time a row (feature) is either added
    * // or removed from the feature table's selection
@@ -196,19 +210,26 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
    *                              that may be passed into the constructor.
    *
    * @example
-   * // Typical usage for FeatureTable widget. This will recognize all fields in the layer.
+   * // Typical usage for FeatureTable widget. This will recognize all fields in the layer if none are set.
    * const featureTable = new FeatureTable({
+   *   view: view, // The view property must be set for the select/highlight to work
    *   layer: featureLayer,
    *   container: "tableDiv"
    * });
    *
    */
-  constructor(params?: FeatureTableParams) {
-    super(params);
+  constructor(params?: FeatureTableParams, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
+    const loadMessages = async (): Promise<void> =>
+      (this.messages = await loadMessageBundle("esri/widgets/FeatureTable/t9n/FeatureTable"));
+
+    loadMessages();
+
     this.handles.add([
+      onLocaleChange(loadMessages),
       watchUtils.on(this, "grid.selectedItems", "change", (event) =>
         this._onSelectionChange(event as CollectionChangeEvent)
       ),
@@ -216,8 +237,32 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
         this,
         ["viewModel.store.querying", "viewModel.store.syncing", "grid.size"],
         () => this.scheduleRender()
-      )
+      ),
+      watchUtils.on(this, "viewModel.columns", "change", () => this._updateMenuItems()),
+      watchUtils.watch(this, "menuConfig", () => this._updateMenuItems()),
+      watchUtils.watch(this, "messages", () => {
+        this._menu.label = this.messages?.options;
+        this._updateMenuItems();
+      })
     ]);
+
+    this._menu = new ButtonMenu({
+      label: this.messages?.options,
+      iconClass: CSS.menuIcon,
+      ...this.menuConfig
+    });
+
+    const { attachmentsEnabled, relatedRecordsEnabled } = this;
+
+    this.viewModel?.store?.set({
+      attachmentsEnabled,
+      relatedRecordsEnabled
+    });
+  }
+
+  destroy(): void {
+    this.clearSelection();
+    this.handles.removeAll();
   }
 
   //--------------------------------------------------------------------------
@@ -225,6 +270,64 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   // Type definitions
   //
   //--------------------------------------------------------------------------
+
+  //--------------------------------------------------------------------------
+  //
+  // ButtonMenuConfig typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * The configurable options to customize either the feature table or {@link module:esri/widgets/FeatureTable/FieldColumn column} menu via the [menuConfig](#menuConfig)
+   * property.
+   *
+   * @typedef module:esri/widgets/FeatureTable~ButtonMenuConfig
+   *
+   * @property {HTMLElement} [container] - The DOM Element containing the menu.
+   * @property {boolean} [iconClass] - Adds a CSS class to the menu button's DOM node.<br></br>
+   * ![menu items iconClass](../../assets/img/apiref/widgets/featuretable/button-menu-icon-class.png)
+   * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem[]} [items] - An array of {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem ButtonMenuItems}.
+   * The following image shows the default menu with two additional items.<br></br>
+   * ![ButtonMenuItems array](../../assets/img/apiref/widgets/featuretable/custom-menu-items.png)
+   * @property {boolean} [open] - Indicates if the menu content is visible. Default is `false`.
+   * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel} [viewModel] - The associated viewModel for the {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenu}.
+   *
+   * @see [menuConfig](#menuConfig)
+   * @see [FieldColumn.menuConfig](../api-reference/esri-widgets-FeatureTable-FieldColumn.html#menuConfig)
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenu
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
+   * @see module:esri/widgets/FeatureTable/FieldColumnConfig
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  // ButtonMenuItemConfig typedef
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * The configurable options to customize either the feature table or column menu via the [menuConfig](#menuConfig)
+   * item property.
+   *
+   * @typedef module:esri/widgets/FeatureTable~ButtonMenuItemConfig
+   *
+   * @property {boolean} [autoCloseMenu] - Indicates whether to automatically close the menu's item.
+   * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem~ButtonMenuItemClickFunction} [clickFunction] - A function that executes on the ButtonMenuItem's `click` event.
+   * @property {string} [iconClass] - Adds a CSS class to the menu button's DOM node.
+   * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem[]} [items]- An array of individual menu items.
+   * @property {string} [label] - The label of the menu item. This can be used in conjunction with the [iconClass](#iconClass) property.
+   * @property {boolean} [open] - Indicates if the menu content is visible.
+   * @property {boolean} [selectionEnabled] - Indicates whether a toggled state should be applied to individual menu items.
+   * @property {boolean} [selected] - Indicates whether the menu item is selected.
+   *
+   * @see {@link module:esri/widgets/FeatureTable/FieldColumn#getMenuItems FieldColumn.getMenuItems()}
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenu
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
+   * @see module:esri/widgets/FeatureTable/FieldColumnConfig
+   * @see module:esri/widgets/FeatureTable/Grid/Column
+   */
 
   //--------------------------------------------------------------------------
   //
@@ -255,7 +358,7 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   //
   //--------------------------------------------------------------------------
 
-  private _menuActive: boolean = false;
+  private _menu: ButtonMenu = null;
 
   //--------------------------------------------------------------------------
   //
@@ -284,11 +387,87 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   attachmentsEnabled: boolean = null;
 
   //----------------------------------
+  //  columnReorderingEnabled - virtual doc from GridVM
+  //----------------------------------
+
+  /**
+   * When 'true', columns can be reordered by dragging a column's header.
+   *
+   * @name columnReorderingEnabled
+   * @type {boolean}
+   * @default true
+   * @instance
+   * @since 4.16
+   */
+
+  //----------------------------------
+  //  columns
+  //----------------------------------
+
+  /**
+   * A collection of {@link module:esri/widgets/FeatureTable/Grid/Column columns} within the table.
+   *
+   * @name columns
+   * @type {module:esri/core/Collection<module:esri/widgets/FeatureTable/FieldColumn>}
+   * @autocast { "value": "Object[]" }
+   * @instance
+   * @since 4.16
+   */
+  @aliasOf("viewModel.columns")
+  readonly columns: Collection<Column> = new Collection();
+
+  //----------------------------------
+  //  editingEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether editing is enabled on the data within the feature table. Double-clicking in
+   * a cell will enable editing for that value.
+   *
+   * Editing permissions can be broken down with the following levels of priority:
+   *
+   * 1. {@link module:esri/layers/support/Field Field} - This is derived
+   * from the {@link module:esri/layers/FeatureLayer}. It takes what is set in the
+   * {@link module:esri/layers/support/Field#editable Field.editable} property. This
+   * must always be `true` for editing to be enabled. This can be overriden using a
+   * {@link module:esri/widgets/FeatureTable/FieldColumnConfig field column configuration}.
+   * 2. {@link module:esri/widgets/FeatureTable/FieldColumnConfig Config} - The editable
+   * permissions on a field can be configured by setting the
+   * {@link module:esri/widgets/FeatureTable/FieldColumnConfig#editable editable} property
+   * of the {@link module:esri/widgets/FeatureTable/FieldColumnConfig}.
+   * 3. {@link module:esri/widgets/FeatureTable} - The {@link module:esri/widgets/FeatureTable#editingEnabled editingEnabled}
+   * property must be set on the table in order for any type of editing to be enabled.
+   *
+   * For example, if table editing is disabled in the widget, i.e. `enableEditing` is not set,
+   * it is still possible to enable editing for a specific column by setting the
+   * {@link module:esri/widgets/FeatureTable/FieldColumnConfig#editable editable} property. Vice versa
+   * is also true, if table editing is enabled, a field configuration can be used to disable editing
+   * for a specific column.
+   *
+   * ::: esri-md class="panel trailer-1"
+   * Ultimately, if the service's field is not editable, it is not possible to override its permissions
+   * using one of the options above.
+   * :::
+   *
+   * ![featuretable editing](../../assets/img/apiref/widgets/featuretable/editing.png)
+   *
+   * @name editingEnabled
+   * @type {boolean}
+   * @instance
+   * @default false
+   * @since 4.16
+   * @see [Sample - FeatureTable with editing enabled]
+   *
+   */
+  @aliasOf("viewModel.editingEnabled")
+  editingEnabled: boolean = null;
+
+  //----------------------------------
   //  fieldConfigs
   //----------------------------------
 
   /**
-   * An array of individual configuration objects.  This is where you can specify what fields to
+   * An array of individual field configuration objects. This is where you can specify what fields to
    * display and how you wish to display them.
    *
    * When not set, all fields except for `CreationDate`, `Creator`, `EditDate`, `Editor`, and `GlobalID`
@@ -322,6 +501,23 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   grid: Grid = null;
 
   //----------------------------------
+  //  highlightOnRowSelectEnabled
+  //----------------------------------
+  /**
+   * Indicates whether to highlight the associated feature when a row is selected.
+   *
+   * @name highlightOnRowSelectEnabled
+   * @type {boolean}
+   * @instance
+   * @default true
+   * @since 4.16
+   *
+   */
+
+  @aliasOf("viewModel.highlightOnRowSelectEnabled")
+  highlightOnRowSelectEnabled: boolean = true;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -332,8 +528,10 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -350,6 +548,62 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
    */
   @aliasOf("viewModel.layer")
   layer: FeatureLayer = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle.
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/FeatureTable/t9n/FeatureTable")
+  messages: FeatureTableMessages = null;
+
+  //----------------------------------
+  //  menuConfig
+  //----------------------------------
+
+  /**
+   * Set this object to customize the feature table's menu content.
+   *
+   * ![default and custom feature table menus](../../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
+   *
+   * @name menuConfig
+   * @type {module:esri/widgets/FeatureTable~ButtonMenuConfig}
+   * @instance
+   * @since 4.16
+   *
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenu
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
+   * @see [Sample - FeatureTable with editing enabled](../sample-code/widgets-featuretable-editing/index.html)
+   *
+   */
+  @property()
+  menuConfig: ButtonMenuConfig = null;
+
+  //----------------------------------
+  //  pageSize - virtual doc from GridVM
+  //----------------------------------
+
+  /**
+   * The default page size used when displaying rows (features) within the table. By default,
+   * the page loads the first 50 rows (features).
+   *
+   * @name pageSize
+   * @type {number}
+   * @default 50
+   * @instance
+   * @since 4.16
+   */
 
   //----------------------------------
   //  relatedRecordsEnabled
@@ -376,8 +630,6 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   /**
    * The state of the widget.
    *
-   * **Possible Values:** disabled | loading | ready
-   *
    * @name state
    * @type {"disabled" | "loading" | "ready"}
    * @instance
@@ -386,6 +638,22 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
    */
   @aliasOf("viewModel.state")
   state: State;
+
+  //----------------------------------
+  //  view
+  //----------------------------------
+
+  /**
+   * A reference to the {@link module:esri/views/MapView}. This property must be set for
+   * the select/highlight in the map to work.
+   *
+   * @name view
+   * @instance
+   * @type {module:esri/views/MapView}
+   *
+   */
+  @aliasOf("viewModel.view")
+  view: MapView | SceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -405,6 +673,8 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   @property()
   @renderable([
     "viewModel.attachmentsEnabled",
+    "viewModel.columns",
+    "viewModel.editingEnabled",
     "viewModel.layer",
     "viewModel.relatedRecordsEnabled",
     "viewModel.state"
@@ -450,35 +720,198 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   //
   //--------------------------------------------------------------------------
 
+  //----------------------------------
+  //  clearHighlights
+  //----------------------------------
+
+  /**
+   * This clears any highlighted features. Take note that the associated rows are not deselected.
+   *
+   * @method clearHighlights
+   * @instance
+   * @since 4.16
+   *
+   */
+  @aliasOf("viewModel.clearHighlights")
+  clearHighlights(): void {}
+
+  //----------------------------------
+  //  clearSelection
+  //----------------------------------
+
+  /**
+   * Clears the current selection within the table.
+   *
+   * @method clearSelection
+   * @instance
+   * @since 4.16
+   *
+   */
+  @aliasOf("viewModel.clearSelection")
+  clearSelection(): void {}
+
+  //----------------------------------
+  //  deselectRows
+  //----------------------------------
+
+  /**
+   * Unselects the specified rows within the table.
+   *
+   * @method deselectRows
+   * @instance
+   * @since 4.16
+   * @see [Sample - FeatureTable with popup interaction](../sample-code/widgets-featuretable-popup-interaction/index.html)
+   *
+   * @param {number | module:esri/Graphic | Array<number | module:esri/Graphic>} params - The
+   * selection parameters to deselect within the feature table.
+   *
+   */
+  @aliasOf("viewModel.deselectRows")
+  deselectRows(): void {}
+
+  //----------------------------------
+  //  findColumn - virtual doc from GridVM
+  //----------------------------------
+
+  /**
+   * Finds the specified column within the feature table.
+   *
+   * @method findColumn
+   * @instance
+   * @since 4.16
+   *
+   * @param {string} fieldName - The `fieldName` of the column to find.
+   *
+   */
+
+  //----------------------------------
+  //  hideColumn
+  //----------------------------------
+
+  /**
+   * Hides the specified column from the feature table.
+   *
+   * @method hideColumn
+   * @instance
+   * @since 4.16
+   *
+   * @param {string} fieldName - The `fieldName` of the column to hide.
+   *
+   */
+  hideColumn(fieldName: string): void {
+    this.grid?.hideColumn(fieldName);
+  }
+
+  //----------------------------------
+  //  refresh
+  //----------------------------------
+
+  /**
+   *
+   * Refreshes the table contents.
+   *
+   * @method refresh
+   * @instance
+   * @since 4.16
+   *
+   */
+  @aliasOf("viewModel.refresh")
+  refresh(): void {}
+
+  //----------------------------------
+  //  showAllColumns - virtual doc from GridVM
+  //----------------------------------
+
+  /**
+   * Shows all the columns in the table.
+   *
+   * @method showAllColumns
+   * @instance
+   * @since 4.16
+   *
+   */
+
+  //----------------------------------
+  //  showColumn
+  //----------------------------------
+
+  /**
+   * Shows the specified column within the feature table.
+   *
+   * @method showColumn
+   * @instance
+   * @since 4.16
+   *
+   * @param {string} fieldName - The `fieldName` of the column to show.
+   *
+   */
+  showColumn(fieldName: string): void {
+    this.grid?.showColumn(fieldName);
+  }
+
+  //----------------------------------
+  //  sortColumn
+  //----------------------------------
+
+  /**
+   * Sorts the column.
+   *
+   * * **Possible Values**
+   *
+   * Value | Description |
+   * ----- | ----------- |
+   * asc | Sorts the column in ascending order.
+   * desc | Sorts the column in descending order.
+   *
+   * @method sortColumn
+   * @instance
+   * @since 4.16
+   *
+   * @param {string} path - The specified field name to sort.
+   * @param {"asc" | "desc"} direction - The direction to sort.
+   *
+   */
+  @aliasOf("viewModel.sortColumn")
+  sortColumn(): void {}
+
+  //----------------------------------
+  //  selectRows
+  //----------------------------------
+
+  /**
+   * Selects the specified rows within the table.
+   *
+   * @method selectRows
+   * @instance
+   * @since 4.16
+   * @see [Sample - FeatureTable with popup interaction](../sample-code/widgets-featuretable-popup-interaction/index.html)
+   *
+   * @param {number | module:esri/Graphic | Array<number | module:esri/Graphic>} params - The
+   * selection parameters to select within the feature table.
+   *
+   */
+  @aliasOf("viewModel.selectRows")
+  selectRows(): void {}
+
+  //----------------------------------
+  //  render
+  //----------------------------------
+
+  /**
+   *
+   * @todo - we don't generally doc the render method for the widgets
+   * @method render
+   * @instance
+   * @ignore
+   *
+   */
   render(): VNode {
     return (
       <div bind={this} class={this.classes(CSS.base, CSS.widget)}>
         {this.visibleElements.header ? this._renderHeader() : null}
-        <div class={CSS.content}>
-          {this.state !== "disabled" && this.grid && this.grid.render()}
-        </div>
+        <div class={CSS.content}>{this.state !== "disabled" && this.grid?.render()}</div>
       </div>
     );
-  }
-
-  sortColumn(fieldName: string, direction: Direction): void {
-    this.viewModel && this.viewModel.sortColumn(fieldName, direction);
-  }
-
-  showColumn(fieldName: string): void {
-    this.grid && this.grid.showColumn(fieldName);
-  }
-
-  hideColumn(fieldName: string): void {
-    this.grid && this.grid.hideColumn(fieldName);
-  }
-
-  clearSelection(): void {
-    this.grid && this.grid.clearSelection();
-  }
-
-  refresh(): void {
-    this.grid && this.grid.refresh();
   }
 
   //--------------------------------------------------------------------------
@@ -486,30 +919,6 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   //  Private Methods
   //
   //--------------------------------------------------------------------------
-
-  _selectRow(objectId: number): void {
-    const { viewModel } = this;
-
-    if (!viewModel) {
-      return;
-    }
-
-    const { store } = viewModel;
-    const index = store && store.getIndexForObjectId(objectId);
-    this.grid && this.grid.selectRow(index);
-  }
-
-  _deselectRow(objectId: number): void {
-    const { viewModel } = this;
-
-    if (!viewModel) {
-      return;
-    }
-
-    const { store } = viewModel;
-    const index = store && store.getIndexForObjectId(objectId);
-    this.grid && this.grid.deselectRow(index);
-  }
 
   private _renderHeader(): VNode {
     return (
@@ -533,6 +942,7 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
     const {
       grid,
       layer: { title },
+      messages,
       viewModel: { size: count }
     } = this;
 
@@ -540,7 +950,7 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
       return "";
     }
 
-    return substitute(i18n.header, {
+    return substitute(messages.header, {
       title,
       count,
       selected: grid.selectedItems.length || 0
@@ -563,142 +973,12 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
   //--------------------------------------------------------------------------
 
   private _renderMenu(): VNode {
-    if (!this.visibleElements.menu) {
-      return undefined;
-    }
-
-    return (
-      <div class={CSS.menuContainer} key="menu">
-        <div class={CSS.menuAnchor}>
-          {this._renderMenuButton()}
-          {this._renderMenuContent()}
-        </div>
-      </div>
-    );
-  }
-
-  private _renderMenuButton(): VNode {
-    const title = i18n.menu;
-    const menuButtonClasses = this.classes([
-      CSS.button,
-      CSS.menuIcon,
-      this._menuActive ? CSS.buttonSelected : null
-    ]);
-
-    return (
-      <button
-        aria-label={title}
-        bind={this}
-        class={menuButtonClasses}
-        title={title}
-        selected={this._menuActive}
-        onclick={this._onMenuButtonClick}
-      />
-    );
-  }
-
-  private _renderMenuContent(): VNode {
-    const {
-      menuItems: { clearSelection, refreshData, toggleColumns }
-    } = this.visibleElements;
-
-    return (
-      <div class={CSS.menuContent} bind={this} hidden={!this._menuActive}>
-        <ul class={CSS.menuAccordion} role="menu">
-          {clearSelection ? this._renderMenuItem(i18n.clearSelection, this.clearSelection) : null}
-          {refreshData ? this._renderMenuItem(i18n.refreshData, this.refresh) : null}
-          {toggleColumns ? this._renderColumnToggleMenuItemGroup() : null}
-        </ul>
-      </div>
-    );
-  }
-
-  private _renderMenuItem(label: string, callback: () => void): VNode {
-    return (
-      <li class={CSS.menuItem} role="menuitem">
-        <button bind={this} onclick={callback} class={this.classes(CSS.button, CSS.menuItemLabel)}>
-          <span class={CSS.menuItemLabelContent}>{label}</span>
-        </button>
-      </li>
-    );
-  }
-
-  private _renderColumnToggleMenuItemGroup(): VNode {
-    const groupId = `${this.id}-menu-group`;
-
-    return (
-      <li class={CSS.menuItem} role="menuitem">
-        <input class={CSS.menuInput} type="checkbox" name={groupId} id={groupId} />
-        <label class={CSS.menuItemLabel} for={groupId}>
-          <span
-            class={this.classes(CSS.menuItemLabelContent, CSS.menuItemGroup)}
-            aria-hidden={true}
-          />
-          <span class={CSS.menuItemLabelContent}>{i18n.toggleColumns}</span>
-        </label>
-
-        {this._renderColumnToggleMenuItem()}
-      </li>
-    );
-  }
-
-  private _renderColumnToggleMenuItem(): VNode {
-    const {
-      id,
-      viewModel: { columns }
-    } = this;
-
-    return (
-      <ul class={CSS.menuAccordionSub}>
-        {columns &&
-          columns.items.map(({ header, hidden, path }) => {
-            const key = `${id}-menu-item-${path}`;
-
-            return (
-              <li key={key} class={CSS.menuItem}>
-                <a class={CSS.menuItemLabel}>
-                  <input
-                    class={CSS.menuItemInput}
-                    type="checkbox"
-                    name={key}
-                    id={key}
-                    checked={!hidden}
-                    onchange={({ target }) =>
-                      this._onColumnCheckboxChange(path, target as HTMLInputElement)
-                    }
-                  />
-                  <label
-                    for={key}
-                    class={this.classes(CSS.menuItemIcon, hidden ? null : CSS.checkmark)}
-                  />
-                  <label class={CSS.menuItemLabel} for={key}>
-                    {header || path}
-                  </label>
-                </a>
-              </li>
-            );
-          })}
-      </ul>
-    );
+    return <div class={CSS.menuContainer}>{this._menu.render()}</div>;
   }
 
   //--------------------------------------------------------------------------
   //  Events
   //--------------------------------------------------------------------------
-
-  private _onColumnCheckboxChange(path: string, input: HTMLInputElement): void {
-    const checked = input && input.checked;
-
-    if (checked) {
-      this.showColumn(path);
-    } else {
-      this.hideColumn(path);
-    }
-  }
-
-  private _onMenuButtonClick(): void {
-    this._menuActive = !this._menuActive;
-  }
 
   private _onSelectionChange(event: CollectionChangeEvent): void {
     const { added, removed } = event;
@@ -707,6 +987,79 @@ class FeatureTable extends declared(HandleOwnerMixin(Widget))<FeatureTableEvents
       added: [...added] as FeatureData[],
       removed: [...removed] as FeatureData[]
     });
+  }
+
+  private _updateMenuItems(): void {
+    const configItems = this.menuConfig?.items;
+    const defaultItems = this._getDefaultMenuItems();
+    const items = [];
+
+    defaultItems?.length && items.push(...defaultItems);
+    configItems?.length && items.push(...configItems);
+
+    items.length && this._menu?.set("items", items);
+  }
+
+  private _getDefaultMenuItems(): ButtonMenuItem[] {
+    const { messages, viewModel, visibleElements } = this;
+    const { menuItems } = visibleElements;
+    const items = [];
+
+    menuItems?.clearSelection &&
+      items.push(
+        new ButtonMenuItem({
+          selectionEnabled: false,
+          label: messages?.clearSelection,
+          clickFunction: () => this.clearSelection()
+        })
+      );
+
+    menuItems?.refreshData &&
+      items.push(
+        new ButtonMenuItem({
+          selectionEnabled: false,
+          label: messages?.refreshData,
+          clickFunction: () => this.refresh()
+        })
+      );
+
+    menuItems?.toggleColumns &&
+      items.push(
+        new ButtonMenuItem({
+          iconClass: CSS.menuItemGroupClosedIcon,
+          label: messages?.toggleColumns,
+          clickFunction: this._toggleMenuItemSelectedIcon,
+          items: viewModel?.columns?.items.map(
+            ({ header, hidden, path }) =>
+              new ButtonMenuItem({
+                label: header || path,
+                selected: !hidden,
+                selectionEnabled: true,
+                iconClass: CSS.checkmarkIcon,
+                clickFunction: () => this._toggleColumnFromMenuItem(path)
+              })
+          )
+        })
+      );
+
+    return items.length ? items : null;
+  }
+
+  private _toggleMenuItemSelectedIcon({ item }: ButtonMenuItemClickFunctionParams): void {
+    item?.set(
+      "iconClass",
+      item?.selected ? CSS.menuItemGroupOpenedIcon : CSS.menuItemGroupClosedIcon
+    );
+  }
+
+  private _toggleColumnFromMenuItem(path: string): void {
+    const col = this.viewModel?.findColumn(path);
+
+    if (col?.hidden) {
+      this.showColumn(path);
+    } else {
+      this.hideColumn(path);
+    }
   }
 }
 

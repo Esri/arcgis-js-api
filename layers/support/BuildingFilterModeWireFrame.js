@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterMode","../../symbols/edges/utils"],(function(e,r,t,o,s,i,n,p){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="wire-frame",r.edges=null,r}var n;return t(r,e),n=r,r.prototype.clone=function(){return new n({edges:s.clone(this.edges)})},o([i.enumeration.serializable()({wireFrame:"wire-frame"})],r.prototype,"type",void 0),o([i.property(p.symbol3dEdgesProperty)],r.prototype,"edges",void 0),r=n=o([i.subclass("esri.layers.support.BuildingFilterModeWireFrame")],r)}(i.declared(n))}));
+define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","./BuildingFilterMode","../../symbols/edges/utils"],(function(e,r,t,o,i,s,n){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="wire-frame",r.edges=null,r}var s;return t.__extends(r,e),s=r,r.prototype.clone=function(){return new s({edges:o.clone(this.edges)})},t.__decorate([i.enumeration({wireFrame:"wire-frame"})],r.prototype,"type",void 0),t.__decorate([i.property(n.symbol3dEdgesProperty)],r.prototype,"edges",void 0),r=s=t.__decorate([i.subclass("esri.layers.support.BuildingFilterModeWireFrame")],r)}(s)}));

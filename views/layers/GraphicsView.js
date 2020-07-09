@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators"],(function(e,r,o,p,t){Object.defineProperty(r,"__esModule",{value:!0}),r.GraphicsView=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.graphics=null,r.renderer=null,r.view=null,r}return o(r,e),p([t.property()],r.prototype,"graphics",void 0),p([t.property()],r.prototype,"renderer",void 0),p([t.property()],r.prototype,"updating",void 0),p([t.property()],r.prototype,"view",void 0),r=p([t.subclass("esri.views.layers.GraphicsView")],r)}(t.declared(e))}}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(e,r,t,o){Object.defineProperty(r,"__esModule",{value:!0}),r.GraphicsView=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.graphics=null,r.renderer=null,r.view=null,r}return t.__extends(r,e),t.__decorate([o.property()],r.prototype,"graphics",void 0),t.__decorate([o.property()],r.prototype,"renderer",void 0),t.__decorate([o.property()],r.prototype,"updating",void 0),t.__decorate([o.property()],r.prototype,"view",void 0),r=t.__decorate([o.subclass("esri.views.layers.GraphicsView")],r)}(e)}}));

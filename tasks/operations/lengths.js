@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../core/jsonMap"],(function(e,n,i){Object.defineProperty(n,"__esModule",{value:!0});var r=new i.default({preserveShape:"preserve-shape"});n.lengthsToRESTParameters=function(e){var n=e.toJSON(),i=n.polylines,t=n.lengthUnit,o=n.geodesic,l=n.calculationType,s={};s.polylines=JSON.stringify(i);var a=e.polylines[0].spatialReference;return s.sr=a.wkid?a.wkid:JSON.stringify(a.toJSON()),t&&(s.lengthUnit=t),o&&(s.geodesic=o),l&&(s.calculationType=r.toJSON(l)),s}}));

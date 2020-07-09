@@ -32,13 +32,6 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/BasemapToggle/nls/BasemapToggle";
-
 // esri
 import Basemap = require("esri/Basemap");
 
@@ -47,7 +40,7 @@ import { deprecatedProperty } from "esri/core/deprecate";
 import Logger = require("esri/core/Logger");
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -59,9 +52,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.BasemapToggle
 import BasemapToggleViewModel = require("esri/widgets/BasemapToggle/BasemapToggleViewModel");
 
+// esri.widgets.BasemapToggle.t9n
+import BasemapToggleMessages from "esri/widgets/BasemapToggle/t9n/BasemapToggle";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS: any = {
   base: "esri-basemap-toggle esri-widget",
@@ -95,7 +91,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 @subclass("esri.widgets.BasemapToggle")
-class BasemapToggle extends declared(Widget) {
+class BasemapToggle extends Widget {
   /**
    * Fires after the [toggle()](#toggle) method is called.
    *
@@ -132,8 +128,8 @@ class BasemapToggle extends declared(Widget) {
    *   nextBasemap: "satellite"
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -169,8 +165,29 @@ class BasemapToggle extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/BasemapToggle/t9n/BasemapToggle")
+  messages: BasemapToggleMessages = null;
 
   //----------------------------------
   //  nextBasemap
@@ -337,7 +354,7 @@ class BasemapToggle extends declared(Widget) {
         onclick={this._toggle}
         onkeydown={this._toggle}
         tabIndex={0}
-        title={i18n.widgetLabel}
+        title={this.label}
       >
         <div class={this.classes(CSS.container, CSS.secondaryBasemapImage)}>
           <div class={CSS.image} styles={getThumbnailStyles(activeBasemap)} />

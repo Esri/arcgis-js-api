@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../support/buffer/InterleavedLayout"],(function(e,o,r){Object.defineProperty(o,"__esModule",{value:!0}),o.createVertexBufferLayout=function(e){var o=r.newLayout().vec3f("position");return e.normals&&o.vec2i16("normalCompressed",{glNormalized:!0}),1===e.textureCoordinates?o.vec2f("uv0"):2===e.textureCoordinates&&(o.vec2f("uv0"),o.vec4u16("uvRegion",{glNormalized:!0})),e.colors&&o.vec4u8("color",{glNormalized:!0}),o.alignTo(4)}}));

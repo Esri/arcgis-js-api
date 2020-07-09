@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],(function(e,n,o,t){Object.defineProperty(n,"__esModule",{value:!0});var i=function(e){function n(n,o){var t=e.call(this,!0)||this;return t.view=n,t._canZoom=!0,t.registerIncoming("mouse-wheel",o,(function(e){return t._handleMouseWheel(e)})),t}return o(n,e),n.prototype._handleMouseWheel=function(e){var n=this;if(this.view.navigation.mouseWheelZoomEnabled&&(e.preventDefault(),e.stopPropagation(),this._canZoom)){var o=this.view.mapViewNavigation,t=e.data,i=t.x,a=t.y,r=t.deltaY,u=1/Math.pow(.6,1/60*r),s=o.zoom(u,[i,a]);s&&(this._canZoom=!1,s.catch((function(){})).then((function(){n._canZoom=!0,o.end()})))}},n}(t.InputHandler);n.MouseWheelZoom=i}));
+define(["require","exports","tslib","../../../input/InputHandler"],(function(e,n,t,o){Object.defineProperty(n,"__esModule",{value:!0});var i=function(e){function n(n,t){var o=e.call(this,!0)||this;return o.view=n,o._canZoom=!0,o.registerIncoming("mouse-wheel",t,(function(e){return o._handleMouseWheel(e)})),o}return t.__extends(n,e),n.prototype._handleMouseWheel=function(e){var n=this;if(this.view.navigation.mouseWheelZoomEnabled&&(e.preventDefault(),e.stopPropagation(),this._canZoom)){var t=this.view.mapViewNavigation,o=e.data,i=o.x,a=o.y,r=o.deltaY,u=1/Math.pow(.6,1/60*r),s=t.zoom(u,[i,a]);s&&(this._canZoom=!1,s.catch((function(){})).then((function(){n._canZoom=!0,t.end()})))}},n}(o.InputHandler);n.MouseWheelZoom=i}));

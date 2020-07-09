@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./DepthRange"],(function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e){this._objects=e}return e.prototype.submit=function(e,t){this._objects.preSubmit(t);for(var i=this._objects.visibleObjects,n=0;n<i.length;n++){var r=i[n];r.renderable.material.submit(e,r)}},e.prototype.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?i.computeDepthRange(e,this._objects.visibleObjects):null},e}();t.RenderSubmitSystem=n}));

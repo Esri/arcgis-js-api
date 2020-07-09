@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler"],(function(e,n,t,r){Object.defineProperty(n,"__esModule",{value:!0});var o=function(e){function n(n,t){var r=e.call(this,!0)||this;return r.key=n,r.registerIncoming("key-down",t,(function(e){return r._handleKeyDown(e)})),r}return t(n,e),n.prototype._handleKeyDown=function(e){e.data.key===this.key&&(this.activate(),e.stopPropagation())},n}(r.InputHandler);n.SingleKey=o}));
+define(["require","exports","tslib","../../../input/InputHandler"],(function(e,n,t,i){Object.defineProperty(n,"__esModule",{value:!0});var r=function(e){function n(n,t){var i=e.call(this,!0)||this;return i.key=n,i.registerIncoming("key-down",t,(function(e){return i._handleKeyDown(e)})),i}return t.__extends(n,e),n.prototype._handleKeyDown=function(e){e.data.key===this.key&&(this.activate(),e.stopPropagation())},n}(i.InputHandler);n.SingleKey=r}));

@@ -88,8 +88,8 @@ float getVVUnitValue(float sizeValue, float fallback) {
 
 #ifdef VV_OPACITY
 const int VV_OPACITY_N = 8;
-float getVVOpacity(float opacityValue, float isOpacityLocked) {
-  if (isNan(opacityValue) || isOpacityLocked == 1.0) {
+float getVVOpacity(float opacityValue) {
+  if (isNan(opacityValue)) {
     return 1.0;
   }
 

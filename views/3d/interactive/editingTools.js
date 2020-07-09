@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./editingTools/graphicMove3D/GraphicMove3DTool","./editingTools/graphicReshape3D/GraphicReshape3DTool","./editingTools/graphicTransform3D/GraphicTransform3DTool"],(function(o,e,r,i,a){Object.defineProperty(e,"__esModule",{value:!0}),e.GraphicMove3DTool=r.GraphicMove3DTool,e.GraphicReshape3DTool=i.GraphicReshape3DTool,e.GraphicTransform3DTool=a.GraphicTransform3DTool}));
+define(["require","exports","./editingTools/draw/DrawGraphicTool","./editingTools/draw/DrawOperation","./editingTools/moveGraphic/GraphicMoveTool","./editingTools/reshapeGraphic/GraphicReshapeTool","./editingTools/transformGraphic/GraphicTransformTool"],(function(o,r,a,e,i,p,T){Object.defineProperty(r,"__esModule",{value:!0}),r.DrawGraphicTool=a.DrawGraphicTool,r.DrawOperation=e.DrawOperation,r.GraphicMoveTool=i.GraphicMoveTool,r.GraphicReshapeTool=p.GraphicReshapeTool,r.GraphicTransformTool=T.GraphicTransformTool}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../Utils"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(e,r,t){this.data=e,this.stride=r,this.vertexCount=t}return e.decode=function(r){return new e(t.allocateTypedArrayBufferwithData(r.data,r.stride),r.stride,r.vertexCount)},e.fromVertexVector=function(r){return new e(t.allocateTypedArrayBufferwithData(r.data.buffer(),r.stride),r.stride,r.vertexCount)},e}();r.default=n;var f=function(){function e(e,r,t){this.geometryType=e,this.indexBuffer=new Uint32Array(r),this.namedBuffers=t}return e.decode=function(r){var t=r.geometryType,f=r.indexBuffer,o={};for(var i in r.namedBuffers)o[i]=n.decode(r.namedBuffers[i]);return new e(t,f,o)},e.fromVertexVectors=function(r){var t=r.geometryType,f=r.indexVector.buffer(),o={};for(var i in r.namedVectors)o[i]=n.fromVertexVector(r.namedVectors[i]);return new e(t,f,o)},e}();r.VertexBuffers=f}));

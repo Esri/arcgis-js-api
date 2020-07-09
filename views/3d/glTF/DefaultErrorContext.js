@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/Error","../../../core/Logger"],(function(r,e,o,t){Object.defineProperty(e,"__esModule",{value:!0});var n=t.getLogger("esri.views.3d.glTF"),p=function(){function r(){}return r.prototype.error=function(r){throw new o("gltf-loader-error",r)},r.prototype.errorUnsupported=function(r){throw new o("gltf-loader-unsupported-feature",r)},r.prototype.errorUnsupportedIf=function(r,e){r&&this.errorUnsupported(e)},r.prototype.assert=function(r,e){r||this.error(e)},r.prototype.warn=function(r){n.warn(r)},r.prototype.warnUnsupported=function(r){this.warn("[Unsupported Feature] "+r)},r.prototype.warnUnsupportedIf=function(r,e){r&&this.warnUnsupported(e)},r}();e.DefaultErrorContext=p}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./PointSizeAlgorithm"],(function(e,t,r,o,l,p){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type="splat",t.scaleFactor=1,t}var p;return r(t,e),p=t,t.prototype.clone=function(){return new p({scaleFactor:this.scaleFactor})},o([l.enumeration.serializable()({pointCloudSplatAlgorithm:"splat"})],t.prototype,"type",void 0),o([l.property({type:Number,value:1,nonNullable:!0,json:{write:!0}})],t.prototype,"scaleFactor",void 0),t=p=o([l.subclass("esri.renderers.support.pointCloud.PointSizeSplatAlgorithm")],t)}(l.declared(p.default));t.PointSizeSplatAlgorithm=a,t.default=a}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./PointSizeAlgorithm"],(function(e,t,o,r,a){Object.defineProperty(t,"__esModule",{value:!0});var l=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.type="splat",t.scaleFactor=1,t}var a;return o.__extends(t,e),a=t,t.prototype.clone=function(){return new a({scaleFactor:this.scaleFactor})},o.__decorate([r.enumeration({pointCloudSplatAlgorithm:"splat"})],t.prototype,"type",void 0),o.__decorate([r.property({type:Number,value:1,nonNullable:!0,json:{write:!0}})],t.prototype,"scaleFactor",void 0),t=a=o.__decorate([r.subclass("esri.renderers.support.pointCloud.PointSizeSplatAlgorithm")],t)}(a.default);t.PointSizeSplatAlgorithm=l,t.default=l}));

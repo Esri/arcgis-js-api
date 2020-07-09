@@ -12,6 +12,17 @@
       height: 100%;
       width: 100%;
     }
+
+    .esri-column__sorter {
+      flex-grow: 1;
+      margin: 0 5px;
+      overflow: auto;
+    }
+
+    .esri-column__menu-container {
+      display: inline-block;
+      margin: 0 5px;
+    }
   }
 }
 

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../cim/CIMSymbolRasterizer"],(function(e,t,a,r,i){Object.defineProperty(t,"__esModule",{value:!0});var n=new i(null,!0);t.previewCIMSymbol=function(e,t){return void 0===t&&(t={}),r(this,void 0,void 0,(function(){var r,i,o,u,c,s,h,l,m;return a(this,(function(a){switch(a.label){case 0:return r=t.size,i=t.maxSize,o=t.feature,u=t.fieldMap,c=Math.min(r||22,i||120),s=3,[4,n.rasterizeCIMSymbolAsync(e,o,u,{targetSize:c*s})];case 1:return h=a.sent(),(l=document.createElement("canvas")).width=h.imageData.width,l.height=h.imageData.height,l.getContext("2d").putImageData(h.imageData,0,0),(m=new Image(l.width/s,l.height/s)).src=l.toDataURL(),[2,m]}}))}))}}));
+define(["require","exports","tslib","../cim/CIMSymbolRasterizer"],(function(e,t,a,i){Object.defineProperty(t,"__esModule",{value:!0});var r=new i.CIMSymbolRasterizer(null,!0);t.previewCIMSymbol=function(e,t){return void 0===t&&(t={}),a.__awaiter(this,void 0,void 0,(function(){var i,n,o,s,l,m,d,u,c,y,h;return a.__generator(this,(function(a){switch(a.label){case 0:return i=t.size,n=t.maxSize,o=t.feature,s=t.fieldMap,l=t.geometryType,m=t.style,d=Math.min(i||22,n||120),u=3,e&&e.data&&e.data.symbol&&"CIMPointSymbol"!==e.data.symbol.type&&(u=1),[4,r.rasterizeCIMSymbolAsync(e,o,s,l,{targetSize:d*u,style:m})];case 1:return c=a.sent(),(y=document.createElement("canvas")).width=c.imageData.width,y.height=c.imageData.height,y.getContext("2d").putImageData(c.imageData,0,0),(h=new Image(y.width/u,y.height/u)).src=y.toDataURL(),[2,h]}}))}))}}));

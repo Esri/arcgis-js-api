@@ -10,6 +10,7 @@
  * @see [Feature.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Feature.scss)
  * @see [Sample - Feature widget](../sample-code/widgets-feature/index.html)
  * @see [Sample - Feature widget in a side panel](../sample-code/widgets-feature-sidepanel/index.html)
+ * @see [Sample - Feature widget - Query graphics from multiple layerViews](../sample-code/widgets-feature-multiplelayers/index.html)
  * @see module:esri/widgets/Feature/FeatureViewModel
  * @see module:esri/widgets/Popup
  * @see module:esri/views/ui/DefaultUI
@@ -39,15 +40,6 @@
  *
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-/// <amd-dependency path="esri/core/tsSupport/generatorHelper" name="__generator"/>
-/// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Feature/nls/Feature";
-
 // esri
 import { SpatialReference } from "esri/geometry";
 import Graphic = require("esri/Graphic");
@@ -60,14 +52,13 @@ import { throttle } from "esri/core/throttle";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.popup
 import { Content as ContentElement } from "esri/popup/content";
-import FieldInfo = require("esri/popup/FieldInfo");
 
 // esri.popup.content
-import FieldsContent = require("esri/popup/content/FieldsContent");
+import Customcontent = require("esri/popup/content/CustomContent");
 import ImageMediaInfo = require("esri/popup/content/ImageMediaInfo");
 import MediaContent = require("esri/popup/content/MediaContent");
 import TextContent = require("esri/popup/content/TextContent");
@@ -86,21 +77,33 @@ import Attachments = require("esri/widgets/Attachments");
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Feature
+import FeatureContent = require("esri/widgets/Feature/FeatureContent");
+import FeatureFields = require("esri/widgets/Feature/FeatureFields");
 import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
+
+// esri.widgets.Feature.support
+import { FeatureContentMixin } from "esri/widgets/Feature/support/FeatureContentMixin";
+import { shouldOpenInNewTab } from "esri/widgets/Feature/support/featureUtils";
+
+// esri.widgets.Feature.t9n
+import type FeatureMessages from "esri/widgets/Feature/t9n/Feature";
 
 // esri.widgets.support
 import { AM4Charts, PieChart, XYChart, AM4Tooltip, AM4Core } from "esri/widgets/support/chartTypes";
 import { loadChartsModule } from "esri/widgets/support/chartUtils";
 import { VNode } from "esri/widgets/support/interfaces";
-import * as uriUtils from "esri/widgets/support/uriUtils";
-import { accessibleHandler, isWidget, hasDomNode, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, renderable, tsx, messageBundle } from "esri/widgets/support/widget";
 import { isRTL } from "esri/widgets/support/widgetUtils";
+
+// esri.widgets.support.t9n
+import UriUtilsMessages from "esri/widgets/support/t9n/uriUtils";
 
 type ChartOptions = {
   chartDiv: HTMLDivElement;
   contentElementIndex: number;
   type: MediaInfoChartType;
   value: ChartMediaInfoValue;
+  mediaInfo: MediaInfo;
   chartsModule: AM4Charts;
 };
 
@@ -181,8 +184,10 @@ const DEFAULT_VISIBLE_ELEMENTS = {
   lastEditedInfo: true
 };
 
+type ContentWidget = Attachments | FeatureContent | FeatureFields;
+
 @subclass("esri.widgets.Feature")
-class Feature extends declared(Widget) {
+class Feature extends FeatureContentMixin(Widget) {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -197,15 +202,15 @@ class Feature extends declared(Widget) {
    *                                that may be passed into the constructor.
    */
 
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own(
       watchUtils.init(this, "viewModel.content", () => {
         this._setupMediaRefreshTimers();
-        this._setupAttachmentWidgets();
+        this._setupContentWidgets();
       }),
       watchUtils.init(this, "viewModel.graphic", () => this._disposeCharts())
     );
@@ -215,7 +220,7 @@ class Feature extends declared(Widget) {
     this._clearMediaRefreshTimers();
     this._activeMediaMap.clear();
     this._activeMediaMap = null;
-    this._destroyAttachmentWidgets();
+    this._destroyContentWidgets();
     this._disposeCharts();
   }
 
@@ -240,7 +245,7 @@ class Feature extends declared(Widget) {
     RENDER_CHART_THROTTLE_INTERVAL_IN_MS
   );
 
-  private _attachmentsWidgets: Attachments[] = [];
+  private _contentWidgets: ContentWidget[] = [];
 
   //--------------------------------------------------------------------------
   //
@@ -310,9 +315,15 @@ class Feature extends declared(Widget) {
   /**
    * Enables automatic creation of a popup template for layers that have popups enabled but no
    * popupTemplate defined. Automatic popup templates are supported for layers that
-   * support the `createPopupTemplate` method. (Supported for {@link module:esri/layers/FeatureLayer}, {@link module:esri/layers/GeoJSONLayer},
-   * {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/PointCloudLayer},
-   * {@link module:esri/layers/StreamLayer} and {@link module:esri/layers/ImageryLayer}).
+   * support the `createPopupTemplate` method. (Supported for
+   * {@link module:esri/layers/FeatureLayer},
+   * {@link module:esri/layers/GeoJSONLayer},
+   * {@link module:esri/layers/SceneLayer},
+   * {@link module:esri/layers/CSVLayer},
+   * {@link module:esri/layers/OGCFeatureLayer}
+   * {@link module:esri/layers/PointCloudLayer},
+   * {@link module:esri/layers/StreamLayer}, and
+   * {@link module:esri/layers/ImageryLayer}).
    *
    * @name defaultPopupTemplateEnabled
    * @instance
@@ -335,8 +346,44 @@ class Feature extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Feature/t9n/Feature")
+  messages: FeatureMessages = null;
+
+  //----------------------------------
+  //  messagesURIUtils
+  //----------------------------------
+
+  /**
+   * @name messagesURIUtils
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/support/t9n/uriUtils")
+  messagesURIUtils: UriUtilsMessages = null;
 
   //----------------------------------
   //  spatialReference
@@ -471,7 +518,12 @@ class Feature extends declared(Widget) {
   @property({
     type: FeatureViewModel
   })
-  @renderable(["viewModel.waitingForContent", "viewModel.content", "viewModel.lastEditInfo"])
+  @renderable([
+    "viewModel.waitingForContent",
+    "viewModel.content",
+    "viewModel.lastEditInfo",
+    "viewModel.contentVMs"
+  ])
   viewModel = new FeatureViewModel();
 
   //--------------------------------------------------------------------------
@@ -481,26 +533,13 @@ class Feature extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const loadingNode = (
-      <div key={"loading-container"} class={CSS.loadingSpinnerContainer}>
-        <span class={this.classes(CSS.iconLoading, CSS.spinner)} />
-      </div>
-    );
-
-    const { visibleElements } = this;
-    const { waitingForContent, title } = this.viewModel;
-
-    const titleNode = visibleElements.title ? <h4 class={CSS.title} innerHTML={title} /> : null;
-
-    const contentNode = !!visibleElements.content ? (
-      <div class={CSS.main}>{[this._renderContent(), this._renderLastEditInfo()]}</div>
-    ) : null;
+    const { waitingForContent } = this.viewModel;
 
     return (
       <div class={this.classes(CSS.base, CSS.esriWidget)}>
         <div class={CSS.container}>
-          {titleNode}
-          {waitingForContent ? loadingNode : contentNode}
+          {this.renderTitle()}
+          {waitingForContent ? this.renderLoading() : this.renderContentContainer()}
         </div>
       </div>
     );
@@ -545,6 +584,383 @@ class Feature extends declared(Widget) {
 
   //--------------------------------------------------------------------------
   //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  protected renderLoading(): VNode {
+    return (
+      <div key={"loading-container"} class={CSS.loadingSpinnerContainer}>
+        <span class={this.classes(CSS.iconLoading, CSS.spinner)} />
+      </div>
+    );
+  }
+
+  protected renderContentContainer(): VNode {
+    const { visibleElements } = this;
+
+    return !!visibleElements.content ? (
+      <div class={CSS.main}>{[this.renderContent(), this.renderLastEditInfo()]}</div>
+    ) : null;
+  }
+
+  protected renderTitle(): VNode {
+    const { visibleElements, title } = this;
+
+    return visibleElements.title ? <h4 class={CSS.title} innerHTML={title} /> : null;
+  }
+
+  protected renderContent(): VNode {
+    const content = this.viewModel.content;
+    const contentKey = "content";
+
+    if (!content) {
+      return null;
+    }
+
+    if (Array.isArray(content)) {
+      return content.length ? (
+        <div key={`${contentKey}-content-elements`}>
+          {content.map(this.renderContentElement, this)}
+        </div>
+      ) : null;
+    }
+
+    if (typeof content === "string") {
+      const contentWidget = this._contentWidgets[0];
+
+      if (!contentWidget || contentWidget.destroyed) {
+        return null;
+      }
+
+      return <div key={`${contentKey}-content`}>{contentWidget.render()}</div>;
+    }
+
+    return this.renderNodeContent(content);
+  }
+
+  protected renderContentElement(
+    contentElement: ContentElement,
+    contentElementIndex: number
+  ): VNode {
+    const { visibleElements } = this;
+
+    if (
+      typeof visibleElements.content !== "boolean" &&
+      !visibleElements.content[contentElement.type]
+    ) {
+      return null;
+    }
+
+    switch (contentElement.type) {
+      case "attachments":
+        return this.renderAttachments(contentElementIndex);
+      case "custom":
+        return this.renderCustom(contentElement, contentElementIndex);
+      case "fields":
+        return this.renderFields(contentElementIndex);
+      case "media":
+        return this.renderMedia(contentElement, contentElementIndex);
+      case "text":
+        return this.renderText(contentElement, contentElementIndex);
+      default:
+        return null;
+    }
+  }
+
+  protected renderAttachments(contentElementIndex: number): VNode {
+    const attachmentsWidget = this._contentWidgets[contentElementIndex] as Attachments;
+
+    if (!attachmentsWidget || attachmentsWidget.destroyed) {
+      return null;
+    }
+
+    const { state, attachmentInfos } = attachmentsWidget.viewModel;
+    const displaySection = state === "loading" || attachmentInfos.length > 0;
+
+    return displaySection ? (
+      <div
+        key={this._buildKey("attachments-element", contentElementIndex)}
+        class={this.classes(CSS.attachments, CSS.contentElement)}
+      >
+        <h2>{this.messages.attach}</h2>
+        {attachmentsWidget.render()}
+      </div>
+    ) : null;
+  }
+
+  protected renderCustom(contentElement: Customcontent, contentElementIndex: number): VNode {
+    const { creator } = contentElement;
+    const contentWidget = this._contentWidgets[contentElementIndex] as FeatureContent;
+
+    if (!contentWidget || contentWidget.destroyed) {
+      return null;
+    }
+
+    return creator ? (
+      <div key={this._buildKey("custom-element", contentElementIndex)} class={CSS.contentElement}>
+        {contentWidget.render()}
+      </div>
+    ) : null;
+  }
+
+  protected renderFields(contentElementIndex: number): VNode {
+    const contentWidget = this._contentWidgets[contentElementIndex] as FeatureFields;
+
+    if (!contentWidget || contentWidget.destroyed) {
+      return null;
+    }
+
+    return (
+      <div key={this._buildKey("fields-element", contentElementIndex)} class={CSS.contentElement}>
+        {contentWidget.render()}
+      </div>
+    );
+  }
+
+  protected renderMediaInfoType(options: {
+    total: number;
+    mediaInfo: MediaInfo;
+    contentElementIndex: number;
+    activeMediaIndex: number;
+  }): VNode {
+    const { mediaInfo, total, contentElementIndex, activeMediaIndex } = options;
+
+    if (!mediaInfo) {
+      return null;
+    }
+
+    const { title = "", altText = "" } = mediaInfo;
+
+    if (mediaInfo.type === "image") {
+      const info = mediaInfo;
+      const { value, refreshInterval } = info;
+      const { sourceURL, linkURL } = value;
+      const linkOpenInNewTab = shouldOpenInNewTab(linkURL);
+      const linkTarget = linkOpenInNewTab ? "_blank" : "_self";
+      const linkRel = linkTarget === "_blank" ? "noreferrer" : "";
+      const refreshIntervalInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
+      const timestamp = refreshIntervalInfo ? refreshIntervalInfo.timestamp : 0;
+      const imgSrc = refreshIntervalInfo ? refreshIntervalInfo.sourceURL : sourceURL;
+
+      const imageNode = (
+        <img
+          alt={altText || title}
+          /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
+          key={this._buildKey(
+            mediaInfo.type,
+            total,
+            contentElementIndex,
+            activeMediaIndex,
+            timestamp
+          )}
+          src={imgSrc}
+        />
+      );
+
+      const linkNode = linkURL ? (
+        <a title={title} href={linkURL} rel={linkRel} target={linkTarget}>
+          {imageNode}
+        </a>
+      ) : null;
+
+      return linkNode ? linkNode : imageNode;
+    }
+    if (mediaInfo.type.indexOf("chart") !== -1) {
+      return (
+        <div
+          key={this._buildKey(mediaInfo.type, total, contentElementIndex, activeMediaIndex)}
+          bind={this}
+          data-media-info={mediaInfo}
+          data-content-element-index={contentElementIndex}
+          class={CSS.mediaChart}
+          afterCreate={this._getChartDependencies}
+          afterRemoved={this._disposeChartByNode}
+        />
+      );
+    }
+    return undefined;
+  }
+
+  protected renderMediaInfo(options: {
+    total: number;
+    mediaInfo: MediaInfo;
+    contentElementIndex: number;
+    activeMediaIndex: number;
+  }): VNode {
+    const { total, mediaInfo, contentElementIndex, activeMediaIndex } = options;
+
+    if (!mediaInfo) {
+      return null;
+    }
+
+    const titleNode = mediaInfo.title ? (
+      <div
+        key={this._buildKey("media-title", mediaInfo.type, total, contentElementIndex)}
+        class={CSS.mediaItemTitle}
+        innerHTML={mediaInfo.title}
+      />
+    ) : null;
+
+    const captionNode = mediaInfo.caption ? (
+      <div
+        key={this._buildKey("media-caption", mediaInfo.type, total, contentElementIndex)}
+        class={CSS.mediaItemCaption}
+        innerHTML={mediaInfo.caption}
+      />
+    ) : null;
+
+    return (
+      <div
+        key={this._buildKey("media-container", mediaInfo.type, total, contentElementIndex)}
+        class={CSS.mediaItemContainer}
+      >
+        {titleNode}
+        {captionNode}
+        <div
+          key={this._buildKey("media-item-container", mediaInfo.type, total, contentElementIndex)}
+          class={CSS.mediaItem}
+        >
+          {this.renderMediaInfoType({
+            total,
+            mediaInfo,
+            contentElementIndex,
+            activeMediaIndex
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  protected renderMediaPageButton(
+    direction: MediaPageDirection,
+    contentElementIndex: number
+  ): VNode {
+    const isPrevious = direction === "previous";
+    const title = isPrevious ? this.messages.previous : this.messages.next;
+    const buttonClasses = isPrevious
+      ? this.classes(CSS.btn, CSS.mediaPrevious)
+      : this.classes(CSS.btn, CSS.mediaNext);
+    const LTRIconClasses = isPrevious
+      ? this.classes(CSS.icon, CSS.mediaPreviousIconLTR, CSS.iconLeftTriangleArrow)
+      : this.classes(CSS.icon, CSS.mediaNextIconLTR, CSS.iconRightTriangleArrow);
+    const RTLIconClasses = isPrevious
+      ? this.classes(CSS.icon, CSS.mediaPreviousIconRTL, CSS.iconRightTriangleArrow)
+      : this.classes(CSS.icon, CSS.mediaNextIconRTL, CSS.iconLeftTriangleArrow);
+    const keyName = isPrevious ? "media-previous" : "media-next";
+    const buttonClick = isPrevious ? this._previousClick : this._nextClick;
+
+    return (
+      <div
+        key={this._buildKey(keyName, contentElementIndex)}
+        title={title}
+        tabIndex={0}
+        role="button"
+        class={buttonClasses}
+        data-content-element-index={contentElementIndex}
+        bind={this}
+        onkeydown={buttonClick}
+        onclick={buttonClick}
+      >
+        <span aria-hidden="true" class={LTRIconClasses} />
+        <span aria-hidden="true" class={RTLIconClasses} />
+        <span class={CSS.iconText}>{title}</span>
+      </div>
+    );
+  }
+
+  protected renderMedia(contentElement: MediaContent, contentElementIndex: number): VNode {
+    const mediaInfos = contentElement.mediaInfos?.filter(Boolean);
+    const total = mediaInfos?.length || 0;
+    const mediaClasses = {
+      [CSS.showMediaPagination]: total > 1
+    };
+
+    const previousButtonNode = this.renderMediaPageButton("previous", contentElementIndex);
+    const nextButtonNode = this.renderMediaPageButton("next", contentElementIndex);
+
+    let activeMediaIndex = this._activeMediaMap.get(contentElementIndex);
+    if (isNaN(activeMediaIndex)) {
+      this._activeMediaMap.set(contentElementIndex, 0);
+      activeMediaIndex = 0;
+    }
+
+    return total ? (
+      <div
+        key={this._buildKey("media-element", contentElementIndex)}
+        data-content-element-index={contentElementIndex}
+        bind={this}
+        onkeyup={this._handleMediaKeyup}
+        class={this.classes(CSS.media, CSS.contentElement, mediaClasses)}
+      >
+        <div
+          key={this._buildKey("media-element-container", contentElementIndex)}
+          class={CSS.mediaContainer}
+        >
+          {previousButtonNode}
+          {this.renderMediaInfo({
+            total,
+            mediaInfo: mediaInfos[activeMediaIndex],
+            contentElementIndex,
+            activeMediaIndex
+          })}
+          {nextButtonNode}
+        </div>
+      </div>
+    ) : null;
+  }
+
+  protected renderLastEditInfo(): VNode {
+    const { visibleElements, messages } = this;
+    const { lastEditInfo } = this.viewModel;
+
+    if (!lastEditInfo || !visibleElements.lastEditedInfo) {
+      return null;
+    }
+
+    const { date, user } = lastEditInfo;
+
+    const nlsString =
+      lastEditInfo.type === "edit"
+        ? user
+          ? messages.lastEditedByUser
+          : messages.lastEdited
+        : user
+        ? messages.lastCreatedByUser
+        : messages.lastCreated;
+
+    const text = substitute(nlsString, {
+      date,
+      user
+    });
+
+    return (
+      <div key={"edit-info-element"} class={this.classes(CSS.lastEditedInfo, CSS.contentElement)}>
+        {text}
+      </div>
+    );
+  }
+
+  protected renderText(contentElement: TextContent, contentElementIndex: number): VNode {
+    const hasText = contentElement.text;
+    const contentWidget = this._contentWidgets[contentElementIndex];
+
+    if (!contentWidget || contentWidget.destroyed) {
+      return null;
+    }
+
+    return hasText ? (
+      <div
+        key={this._buildKey("text-element", contentElementIndex)}
+        class={this.classes(CSS.contentElement, CSS.text)}
+      >
+        {contentWidget.render()}
+      </div>
+    ) : null;
+  }
+
+  //--------------------------------------------------------------------------
+  //
   //  Private Methods
   //
   //--------------------------------------------------------------------------
@@ -561,178 +977,6 @@ class Feature extends declared(Widget) {
     this._chartUIds.clear();
     this._contentElementCharts.forEach((chart) => chart.dispose());
     this._contentElementCharts.clear();
-  }
-
-  private _renderContent(): VNode {
-    const content = this.viewModel.content;
-    const contentKey = "content";
-
-    if (!content) {
-      return null;
-    }
-
-    if (typeof content === "string") {
-      return <div key={`${contentKey}-string`} innerHTML={content} />;
-    }
-
-    if (isWidget(content)) {
-      return <div key={`${contentKey}-widget`}>{content.render()}</div>;
-    }
-
-    if (content instanceof HTMLElement) {
-      return (
-        <div key={`${contentKey}-html-element`} bind={content} afterCreate={this._attachToNode} />
-      );
-    }
-
-    if (hasDomNode(content)) {
-      return (
-        <div key={`${contentKey}-dijit`} bind={content.domNode} afterCreate={this._attachToNode} />
-      );
-    }
-
-    if (Array.isArray(content)) {
-      return content.length ? (
-        <div key={`${contentKey}-content-elements`}>
-          {content.map(this._renderContentElement, this)}
-        </div>
-      ) : null;
-    }
-
-    return null;
-  }
-
-  private _renderContentElement(
-    contentElement: ContentElement,
-    contentElementIndex: number
-  ): VNode {
-    const { visibleElements } = this;
-
-    if (
-      typeof visibleElements.content !== "boolean" &&
-      !visibleElements.content[contentElement.type]
-    ) {
-      return null;
-    }
-
-    switch (contentElement.type) {
-      case "attachments":
-        return this._renderAttachments(contentElementIndex);
-      case "fields":
-        return this._renderFields(contentElement, contentElementIndex);
-      case "media":
-        return this._renderMedia(contentElement, contentElementIndex);
-      case "text":
-        return this._renderText(contentElement, contentElementIndex);
-      default:
-        return null;
-    }
-  }
-
-  private _renderAttachments(contentElementIndex: number): VNode {
-    const attachmentsWidget = this._attachmentsWidgets[contentElementIndex];
-
-    if (!attachmentsWidget || attachmentsWidget.destroyed) {
-      return null;
-    }
-
-    const { state, attachmentInfos } = attachmentsWidget.viewModel;
-    const displaySection = state === "loading" || attachmentInfos.length > 0;
-
-    return displaySection ? (
-      <div
-        key={this._buildKey("attachments-element", contentElementIndex)}
-        class={this.classes(CSS.attachments, CSS.contentElement)}
-      >
-        <h2>{i18n.attach}</h2>
-        {attachmentsWidget.render()}
-      </div>
-    ) : null;
-  }
-
-  private _forceLTR(value: number | string): string {
-    /*
-     * We use "&lrm;" when displaying numeric attribute field
-     * values. We can use it to force LTR text direction - regardless of whether
-     * the page is in LTR or RTL mode. Even in LTR mode, a number can be surrounded
-     * by English or RTL scripts - but we need the number to be displayed in LTR
-     * direction.
-     * When not forced, minus sign of negative numbers is displayed after
-     * the number - we want to avoid this.
-     */
-    return `&lrm;${value}`;
-  }
-
-  private _renderFieldInfo(fieldInfo: FieldInfo, contentElementIndex: number): VNode {
-    const { formattedAttributes } = this.viewModel;
-    const availableFormattedAttributes = formattedAttributes
-      ? formattedAttributes.content[contentElementIndex] || formattedAttributes.global
-      : null;
-    const fieldName = fieldInfo.fieldName;
-    const fieldLabel = fieldInfo.label || fieldName;
-    const fieldValue = availableFormattedAttributes
-      ? availableFormattedAttributes[fieldName] == null
-        ? ""
-        : availableFormattedAttributes[fieldName]
-      : "";
-    const isDateField = !!(fieldInfo.format && fieldInfo.format.dateFormat);
-    const isNumericField = typeof fieldValue === "number" && !isDateField;
-    const formattedFieldValue = isNumericField
-      ? this._forceLTR(fieldValue)
-      : uriUtils.autoLink(fieldValue);
-    const valueCellClasses = {
-      [CSS.fieldDataDate]: isDateField
-    };
-
-    return (
-      <tr key={this._buildKey("fields-element-info-row", contentElementIndex)}>
-        <th
-          key={this._buildKey("fields-element-info-row-header", contentElementIndex)}
-          class={CSS.fieldHeader}
-          innerHTML={fieldLabel}
-        />
-        <td
-          key={this._buildKey("fields-element-info-row-data", contentElementIndex)}
-          class={this.classes(CSS.fieldData, valueCellClasses)}
-          innerHTML={formattedFieldValue}
-        />
-      </tr>
-    );
-  }
-
-  private _renderFields(contentElement: FieldsContent, contentElementIndex: number): VNode {
-    const fieldInfos = contentElement.fieldInfos;
-
-    return fieldInfos ? (
-      <div
-        key={this._buildKey("fields-element", contentElementIndex)}
-        class={this.classes(CSS.fields, CSS.contentElement)}
-      >
-        <table
-          class={CSS.esriTable}
-          summary={i18n.fieldsSummary}
-          key={this._buildKey("fields-element-table", contentElementIndex)}
-        >
-          <tbody key={this._buildKey("fields-element-table-body", contentElementIndex)}>
-            {fieldInfos.map((fieldInfo) => this._renderFieldInfo(fieldInfo, contentElementIndex))}
-          </tbody>
-        </table>
-      </div>
-    ) : null;
-  }
-
-  private _shouldOpenInNewTab(url: string = ""): boolean {
-    if (!url) {
-      return undefined;
-    }
-    // Returns false if the given url uses "mailto" or "tel" protocol.
-    // This is to prevent adding blank target to such links, thereby
-    // preventing browsers from opening a blank tab enroute to opening the
-    // appropriate desktop application.
-    // Refs:
-    // https://code.google.com/p/chromium/issues/detail?id=144126
-    const startsWithMailToOrTelProtocolRE = /^(?:mailto:|tel:)/;
-    return !startsWithMailToOrTelProtocolRE.test(url.trim().toLowerCase());
   }
 
   private _clearMediaRefreshTimers(): void {
@@ -785,33 +1029,57 @@ class Feature extends declared(Widget) {
     this._setRefreshTimeout(contentElementIndex, mediaInfo);
   }
 
-  private _destroyAttachmentWidgets(): void {
-    this._attachmentsWidgets.forEach(
-      (attachmentsWidget) =>
-        attachmentsWidget && !attachmentsWidget.destroyed && attachmentsWidget.destroy()
+  private _destroyContentWidgets(): void {
+    this._contentWidgets.forEach(
+      (contentWidget) => contentWidget && !contentWidget.destroyed && contentWidget.destroy()
     );
-    this._attachmentsWidgets = [];
+    this._contentWidgets = [];
   }
 
-  private _setupAttachmentWidgets(): void {
-    this._destroyAttachmentWidgets();
+  private _setupContentWidgets(): void {
+    this._destroyContentWidgets();
+
+    this._activeMediaMap.clear();
 
     const content = this.get<ContentElement[]>("viewModel.content");
+    const { contentVMs } = this.viewModel;
 
-    if (!Array.isArray(content)) {
-      return;
-    }
+    if (Array.isArray(content)) {
+      content.forEach((contentElement, contentElementIndex) => {
+        if (contentElement.type === "attachments") {
+          this._contentWidgets[contentElementIndex] = new Attachments({
+            displayType: contentElement.displayType,
+            viewModel: contentVMs[contentElementIndex]
+          });
+        }
 
-    const { attachmentsViewModel } = this.viewModel;
+        if (contentElement.type === "fields") {
+          this._contentWidgets[contentElementIndex] = new FeatureFields({
+            viewModel: contentVMs[contentElementIndex]
+          });
+        }
 
-    content.forEach((contentElement, contentElementIndex) => {
-      if (contentElement.type === "attachments") {
-        this._attachmentsWidgets[contentElementIndex] = new Attachments({
-          displayType: contentElement.displayType,
-          viewModel: attachmentsViewModel
+        if (contentElement.type === "text") {
+          this._contentWidgets[contentElementIndex] = new FeatureContent({
+            viewModel: contentVMs[contentElementIndex]
+          });
+        }
+
+        if (contentElement.type === "custom") {
+          this._contentWidgets[contentElementIndex] = new FeatureContent({
+            viewModel: contentVMs[contentElementIndex]
+          });
+        }
+      }, this);
+    } else {
+      const viewModel = contentVMs[0];
+
+      if (viewModel && !viewModel.destroyed) {
+        this._contentWidgets[0] = new FeatureContent({
+          viewModel
         });
       }
-    }, this);
+    }
 
     this.scheduleRender();
   }
@@ -854,58 +1122,6 @@ class Feature extends declared(Widget) {
     this._refreshTimers.set(contentElementIndex, timerId);
   }
 
-  private _renderMediaInfoType(options: {
-    mediaInfo: MediaInfo;
-    contentElementIndex: number;
-    activeMediaIndex: number;
-  }): VNode {
-    const { mediaInfo, contentElementIndex, activeMediaIndex } = options;
-    const { title = "" } = mediaInfo;
-
-    if (mediaInfo.type === "image") {
-      const info = mediaInfo;
-      const { value, refreshInterval } = info;
-      const { sourceURL, linkURL } = value;
-      const linkOpenInNewTab = this._shouldOpenInNewTab(linkURL);
-      const linkTarget = linkOpenInNewTab ? "_blank" : "_self";
-      const linkRel = linkTarget === "_blank" ? "noreferrer" : "";
-      const refreshIntervalInfo = refreshInterval ? this._mediaInfo.get(contentElementIndex) : null;
-      const timestamp = refreshIntervalInfo ? refreshIntervalInfo.timestamp : 0;
-      const imgSrc = refreshIntervalInfo ? refreshIntervalInfo.sourceURL : sourceURL;
-
-      const imageNode = (
-        <img
-          alt={title}
-          /* unique key is needed to redraw image node when refreshInterval is defined for a mediaInfo. */
-          key={this._buildKey("media-image", contentElementIndex, activeMediaIndex, timestamp)}
-          src={imgSrc}
-        />
-      );
-
-      const linkNode = linkURL ? (
-        <a title={title} href={linkURL} rel={linkRel} target={linkTarget}>
-          {imageNode}
-        </a>
-      ) : null;
-
-      return linkNode ? linkNode : imageNode;
-    }
-    if (mediaInfo.type.indexOf("chart") !== -1) {
-      return (
-        <div
-          key={this._buildKey("media-chart", contentElementIndex, activeMediaIndex)}
-          bind={this}
-          data-media-info={mediaInfo}
-          data-content-element-index={contentElementIndex}
-          class={CSS.mediaChart}
-          afterCreate={this._getChartDependencies}
-          afterRemoved={this._disposeChartByNode}
-        />
-      );
-    }
-    return undefined;
-  }
-
   private _getChartDependencies(chartDiv: HTMLDivElement): void {
     const mediaInfo = chartDiv["data-media-info"] as MediaChartInfo;
     const contentElementIndex = chartDiv["data-content-element-index"] as number;
@@ -919,6 +1135,7 @@ class Feature extends declared(Widget) {
     loadChartsModule().then((amCharts4Index) =>
       this._renderChartThrottled({
         chartDiv,
+        mediaInfo,
         contentElementIndex,
         type,
         value,
@@ -1089,7 +1306,14 @@ class Feature extends declared(Widget) {
   }
 
   private _renderChart(options: ChartOptions): void {
-    const { type, contentElementIndex, value, chartsModule: amCharts4Index, chartDiv } = options;
+    const {
+      type,
+      mediaInfo,
+      contentElementIndex,
+      value,
+      chartsModule: amCharts4Index,
+      chartDiv
+    } = options;
     const { am4core } = amCharts4Index;
 
     am4core.useTheme(amCharts4Index.am4themes_animated);
@@ -1100,93 +1324,12 @@ class Feature extends declared(Widget) {
     this._chartUIds.set(chart.uid, chart);
     this._contentElementCharts.set(contentElementIndex, chart);
     chartDiv.setAttribute("data-chart-uid", chart.uid);
+    chartDiv.setAttribute("aria-label", mediaInfo.altText || mediaInfo.title);
 
     chart.data = value.series.map((entry) => ({
       x: entry.tooltip,
       y: entry.y
     }));
-  }
-
-  private _renderMediaInfo(options: {
-    mediaInfo: MediaInfo;
-    contentElementIndex: number;
-    activeMediaIndex: number;
-  }): VNode {
-    const { mediaInfo, contentElementIndex, activeMediaIndex } = options;
-    const mediaTypeNode = this._renderMediaInfoType({
-      mediaInfo,
-      contentElementIndex,
-      activeMediaIndex
-    });
-
-    const titleNode = mediaInfo.title ? (
-      <div
-        key={this._buildKey("media-title", contentElementIndex)}
-        class={CSS.mediaItemTitle}
-        innerHTML={mediaInfo.title}
-      />
-    ) : null;
-
-    const captionNode = mediaInfo.caption ? (
-      <div
-        key={this._buildKey("media-caption", contentElementIndex)}
-        class={CSS.mediaItemCaption}
-        innerHTML={mediaInfo.caption}
-      />
-    ) : null;
-
-    return (
-      <div
-        key={this._buildKey("media-container", contentElementIndex)}
-        class={CSS.mediaItemContainer}
-      >
-        {titleNode}
-        {captionNode}
-        <div
-          key={this._buildKey("media-item-container", contentElementIndex)}
-          class={CSS.mediaItem}
-        >
-          {mediaTypeNode}
-        </div>
-      </div>
-    );
-  }
-
-  private _renderMediaPageButton(
-    direction: MediaPageDirection,
-    contentElementIndex: number
-  ): VNode {
-    const isPrevious = direction === "previous";
-    const title = isPrevious ? i18n.previous : i18n.next;
-    const buttonClasses = isPrevious
-      ? this.classes(CSS.btn, CSS.mediaPrevious)
-      : this.classes(CSS.btn, CSS.mediaNext);
-    const LTRIconClasses = isPrevious
-      ? this.classes(CSS.icon, CSS.mediaPreviousIconLTR, CSS.iconLeftTriangleArrow)
-      : this.classes(CSS.icon, CSS.mediaNextIconLTR, CSS.iconRightTriangleArrow);
-    const RTLIconClasses = isPrevious
-      ? this.classes(CSS.icon, CSS.mediaPreviousIconRTL, CSS.iconRightTriangleArrow)
-      : this.classes(CSS.icon, CSS.mediaNextIconRTL, CSS.iconLeftTriangleArrow);
-    const keyName = isPrevious ? "media-previous" : "media-next";
-    const buttonClick = isPrevious ? this._previousClick : this._nextClick;
-
-    return (
-      <div
-        key={this._buildKey(keyName, contentElementIndex)}
-        title={title}
-        tabIndex={0}
-        role="button"
-        class={buttonClasses}
-        data-content-element-index={contentElementIndex}
-        bind={this}
-        onkeydown={buttonClick}
-        onclick={buttonClick}
-      >
-        <span aria-hidden="true" class={LTRIconClasses} />
-        <span aria-hidden="true" class={RTLIconClasses} />
-        <span class={CSS.iconText}>{title}</span>
-      </div>
-    );
   }
 
   private _handleMediaKeyup(event: KeyboardEvent): void {
@@ -1203,103 +1346,6 @@ class Feature extends declared(Widget) {
       event.stopPropagation();
       this.nextMedia(elementIndex);
     }
-  }
-
-  private _renderMedia(contentElement: MediaContent, contentElementIndex: number): VNode {
-    const mediaInfos = contentElement.mediaInfos as MediaInfo[];
-    const total = (mediaInfos && mediaInfos.length) || 0;
-    const mediaClasses = {
-      [CSS.showMediaPagination]: total > 1
-    };
-
-    const previousButtonNode = this._renderMediaPageButton("previous", contentElementIndex);
-    const nextButtonNode = this._renderMediaPageButton("next", contentElementIndex);
-
-    let activeMediaIndex = this._activeMediaMap.get(contentElementIndex);
-    if (isNaN(activeMediaIndex)) {
-      this._activeMediaMap.set(contentElementIndex, 0);
-      activeMediaIndex = 0;
-    }
-
-    return total ? (
-      <div
-        key={this._buildKey("media-element", contentElementIndex)}
-        data-content-element-index={contentElementIndex}
-        bind={this}
-        onkeyup={this._handleMediaKeyup}
-        class={this.classes(CSS.media, CSS.contentElement, mediaClasses)}
-      >
-        <div
-          key={this._buildKey("media-element-container", contentElementIndex)}
-          class={CSS.mediaContainer}
-        >
-          {previousButtonNode}
-          {this._renderMediaInfo({
-            mediaInfo: mediaInfos[activeMediaIndex],
-            contentElementIndex,
-            activeMediaIndex
-          })}
-          {nextButtonNode}
-        </div>
-      </div>
-    ) : null;
-  }
-
-  private _renderLastEditInfo(): VNode {
-    const { visibleElements } = this;
-    const { lastEditInfo } = this.viewModel;
-
-    if (!lastEditInfo || !visibleElements.lastEditedInfo) {
-      return null;
-    }
-
-    const { date, user } = lastEditInfo;
-
-    const nlsString =
-      lastEditInfo.type === "edit"
-        ? user
-          ? i18n.lastEditedByUser
-          : i18n.lastEdited
-        : user
-        ? i18n.lastCreatedByUser
-        : i18n.lastCreated;
-
-    const text = substitute(nlsString, {
-      date,
-      user
-    });
-
-    return (
-      <div key={"edit-info-element"} class={this.classes(CSS.lastEditedInfo, CSS.contentElement)}>
-        {text}
-      </div>
-    );
-  }
-
-  private _addTargetToAnchors = (element: HTMLDivElement): void => {
-    element.querySelectorAll("a").forEach((anchorEl) => {
-      if (this._shouldOpenInNewTab(anchorEl.href) && !anchorEl.hasAttribute("target")) {
-        anchorEl.setAttribute("target", "_blank");
-      }
-    });
-  };
-
-  private _renderText(contentElement: TextContent, contentElementIndex: number): VNode {
-    const hasText = contentElement.text;
-
-    return hasText ? (
-      <div
-        key={this._buildKey("text-element", contentElementIndex)}
-        innerHTML={contentElement.text}
-        afterCreate={this._addTargetToAnchors}
-        class={this.classes(CSS.text, CSS.contentElement)}
-      />
-    ) : null;
-  }
-
-  private _attachToNode(this: HTMLElement, node: HTMLElement): void {
-    const content = this;
-    node.appendChild(content);
   }
 
   private _setContentElementMedia(contentElementIndex: number, pagedMediaIndex: number): void {

@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "要素形式",
+  "empty": "- 空 -",
+  "validationErrors": {
+    "cannotBeNull": "请输入一个值",
+    "outsideRange": "值应该介于 {min} 到 {max}",
+    "invalidCodedValue": "值应为下列某个值。",
+    "invalidType": "非有效值",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

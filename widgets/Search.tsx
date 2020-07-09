@@ -7,7 +7,9 @@
  *
  * By default, the Search widget sets the view on the [Search result](#SearchResult). The level of detail (LOD)
  * at the center of the view depends on the data source, with higher quality data sources returning extents closer to the
- * `feature` obtained from the search.
+ * `feature` obtained from the search. To manually define the scale of the view at the Search result, use the `zoomScale` property
+ * of the {@link module:esri/widgets/Search/LocatorSearchSource#zoomScale LocatorSearchSource}
+ * or {@link module:esri/widgets/Search/LayerSearchSource#zoomScale LayerSearchSource}.
  *
  * ![search](../../assets/img/apiref/widgets/search.png)
  *
@@ -39,15 +41,8 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
 // @dojo.framework.shim
 import { from } from "@dojo/framework/shim/array";
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Search/nls/Search";
 
 // esri
 import Graphic = require("esri/Graphic");
@@ -63,10 +58,13 @@ import { escapeRegExpString } from "esri/core/string";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.portal
 import Portal = require("esri/portal/Portal");
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -88,10 +86,20 @@ import Widget = require("esri/widgets/Widget");
 import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer");
 import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
 
+// esri.widgets.Search.t9n
+import SearchMessages from "esri/widgets/Search/t9n/Search";
+
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, storeNode, tsx, vmEvent } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  messageBundle,
+  renderable,
+  storeNode,
+  tsx,
+  vmEvent
+} from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-search esri-widget",
@@ -150,7 +158,7 @@ const CSS = {
 const regexContainsHTML = /<[a-z/][\s\S]*>/i;
 
 @subclass("esri.widgets.Search")
-class Search extends declared(Widget) {
+class Search extends Widget {
   /**
    * The result object returned from a [search()](#search).
    *
@@ -160,6 +168,8 @@ class Search extends declared(Widget) {
    * the data source, with higher quality data sources returning extents closer to the `feature` obtained from the search.
    * @property {module:esri/Graphic} feature - The resulting feature or location obtained from the search.
    * @property {string} name - The name of the result.
+   * @property {module:esri/Graphic} target - The target of the result, which is a {@link module:esri/Graphic} used
+   * for either {@link module:esri/views/MapView#goTo MapView goTo()} or {@link module:esri/views/SceneView#goTo SceneView goTo()} navigation.
    */
 
   /**
@@ -355,8 +365,8 @@ class Search extends declared(Widget) {
    *   sources: [ ... ]
    * });
    */
-  constructor(value?: any) {
-    super(value);
+  constructor(value?: any, parentNode?: string | Element) {
+    super(value, parentNode);
 
     this.own(
       watchUtils.watch(this, "searchTerm", (value) => {
@@ -369,20 +379,16 @@ class Search extends declared(Widget) {
         }
       }),
       watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges()),
-      watchUtils.init(this, ["viewModel.popupTemplate", "viewModel.popupTemplate.content"], () => {
-        const content = this.get("viewModel.popupTemplate.content");
-        const defaultVMContent = "{Match_addr}";
-
-        // use search result renderer widget
-        if (content === defaultVMContent) {
-          this.viewModel.popupTemplate.content = this._renderSearchResultsContent.bind(this);
+      watchUtils.init(
+        this,
+        "viewModel.defaultPopupTemplate",
+        (defaultPopupTemplate: PopupTemplate) => {
+          if (defaultPopupTemplate) {
+            defaultPopupTemplate.content = this._renderSearchResultsContent.bind(this);
+          }
         }
-      })
+      )
     );
-  }
-
-  postInitialize(): void {
-    this.viewModel.load().catch(() => {});
   }
 
   destroy(): void {
@@ -422,6 +428,32 @@ class Search extends declared(Widget) {
   private _suggestController: AbortController;
 
   private _searchController: AbortController;
+
+  private _locateFailed: boolean = null;
+
+  @property({ dependsOn: ["viewModel.searchTerm"] })
+  @renderable()
+  protected get displayedSearchTerm(): string {
+    return `${this.viewModel.searchTerm}`.trim();
+  }
+
+  @property({
+    readOnly: true,
+    dependsOn: ["id"]
+  })
+  @renderable()
+  protected get suggestionsMenuId(): string {
+    return `${this.id}-suggest-menu`;
+  }
+
+  @property({
+    readOnly: true,
+    dependsOn: ["id"]
+  })
+  @renderable()
+  protected get sourceMenuId(): string {
+    return `${this.id}-source-menu`;
+  }
 
   //--------------------------------------------------------------------------
   //
@@ -659,8 +691,10 @@ class Search extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  locationEnabled
@@ -723,6 +757,44 @@ class Search extends declared(Widget) {
    */
   @aliasOf("viewModel.maxSuggestions")
   maxSuggestions: number = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Search/t9n/Search")
+  messages: SearchMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * The widget's common message bundle
+   *
+   * @instance
+   * @name messagesCommon
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  minSuggestCharacters
@@ -932,7 +1004,7 @@ class Search extends declared(Widget) {
    *     singleLineFieldName: "SingleLine",
    *     outFields: ["Addr_type"],
    *     name: "ArcGIS World Geocoding Service",
-   *     placeholder: i18n.placeholder,
+   *     placeholder: "Adresse",
    *     resultSymbol: {
    *        type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
    *        url: this.basePath + "/images/search/search-symbol-32.png",
@@ -1239,36 +1311,163 @@ class Search extends declared(Widget) {
   }
 
   render(): VNode {
-    const vm = this.viewModel;
-
-    const {
-      activeSourceIndex,
-      suggestions,
-      maxInputLength,
-      placeholder,
-      searchTerm,
-      searchAllEnabled,
-      allSources
-    } = vm;
-
-    const sourceName = this._getSourceName(activeSourceIndex);
-
-    const trimmedSearchTerm = `${searchTerm}`.trim();
-
-    const { activeMenu, id } = this;
-
     const { state } = this.viewModel;
 
-    const suggestionsMenuId = `${this.id}-suggest-menu`;
+    const baseClasses = {
+      [CSS.disabled]: state === "disabled",
+      [CSS.esriWidgetDisabled]: this.disabled
+    };
 
-    const clearButtonNode = searchTerm ? (
+    return (
+      <div class={this.classes(CSS.base, baseClasses)}>
+        {state === "loading" ? this.renderLoader() : this.renderContainer()}
+      </div>
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+  protected renderSubmitButton(): VNode {
+    const { messages } = this;
+
+    return (
+      <div
+        key="esri-search__submit-button"
+        bind={this}
+        role="button"
+        title={messages.searchButtonTitle}
+        class={this.classes(CSS.submitButton, CSS.button)}
+        tabindex="0"
+        onclick={this._handleSearchButtonClick}
+        onkeydown={this._handleSearchButtonClick}
+      >
+        <span aria-hidden="true" role="presentation" class={CSS.searchIcon} />
+        <span class={CSS.fallbackText}>{messages.searchButtonTitle}</span>
+      </div>
+    );
+  }
+
+  protected renderWarningMenu(): VNode {
+    return (
+      <div key="esri-search__error-menu" class={this.classes(CSS.menu, CSS.warningMenu)}>
+        <div class={CSS.warningMenuBody}>{this.renderWarning()}</div>
+      </div>
+    );
+  }
+
+  protected renderSourceMenuButton(): VNode {
+    const { messages, activeMenu, sourceMenuId } = this;
+    const { activeSourceIndex, allSources } = this.viewModel;
+
+    return allSources.length > 1 ? (
+      <div
+        key="esri-search__source-menu-button"
+        bind={this}
+        role="button"
+        title={messages.searchIn}
+        aria-haspopup="true"
+        aria-expanded={activeMenu === "source"}
+        aria-controls={sourceMenuId}
+        class={this.classes(CSS.sourcesButton, CSS.button)}
+        tabindex="0"
+        onkeydown={this._handleSourceMenuButtonKeydown}
+        onclick={this._handleSourcesMenuToggleClick}
+        onkeyup={this._handleSourceMenuButtonKeyup}
+        onblur={this._sourcesButtonBlur}
+        afterCreate={storeNode}
+        data-node-ref="_sourceMenuButtonNode"
+      >
+        <span aria-hidden="true" role="presentation" class={CSS.dropdownIcon} />
+        <span aria-hidden="true" role="presentation" class={CSS.dropupIcon} />
+        <span class={CSS.sourceName}>{this._getSourceName(activeSourceIndex)}</span>
+      </div>
+    ) : null;
+  }
+
+  protected renderSourcesList(): VNode {
+    const { allSources, searchAllEnabled } = this.viewModel;
+
+    return allSources.length > 1 ? (
+      <ul
+        id={this.sourceMenuId}
+        role="menu"
+        bind={this}
+        afterCreate={storeNode}
+        data-node-ref="_sourceListNode"
+        class={CSS.menuList}
+      >
+        {searchAllEnabled ? this.renderSource(SearchViewModel.ALL_INDEX) : null}
+        {allSources.map((_source, sourceIndex) => this.renderSource(sourceIndex)).toArray()}
+      </ul>
+    ) : null;
+  }
+
+  protected renderSourcesMenu(): VNode {
+    const { allSources } = this.viewModel;
+
+    return allSources.length > 1 ? (
+      <div
+        tabIndex={0}
+        key="esri-search__source-menu"
+        class={this.classes(CSS.menu, CSS.sourcesMenu)}
+      >
+        {this.renderSourcesList()}
+      </div>
+    ) : null;
+  }
+
+  protected renderLoader(): VNode {
+    const { messages, messagesCommon } = this;
+
+    return (
+      <div role="presentation" class={CSS.loader} key="base-loader">
+        <span aria-hidden="true" role="presentation" class={CSS.loaderAnimation} />
+        <span class={CSS.fallbackText}>{messages.searchButtonTitle}</span>
+        <span class={CSS.loaderText}>{messagesCommon.loading}</span>
+      </div>
+    );
+  }
+
+  protected renderContainer(): VNode {
+    const { allSources, state } = this.viewModel;
+    const { activeMenu } = this;
+
+    const containerNodeClasses = {
+      [CSS.hasMultipleSources]: allSources.length > 1,
+      [CSS.isLoading]: state === "loading",
+      [CSS.isSearching]: state === "searching",
+      [CSS.showWarning]: activeMenu === "warning",
+      [CSS.showSources]: activeMenu === "source",
+      [CSS.showSuggestions]: activeMenu === "suggestion"
+    };
+
+    return (
+      <div
+        role="presentation"
+        class={this.classes(containerNodeClasses, CSS.container)}
+        key="base-container"
+      >
+        {this.renderSourceMenuButton()}
+        {this.renderSourcesMenu()}
+        {this.renderInputContainer()}
+        {this.renderSubmitButton()}
+        {this.renderWarningMenu()}
+      </div>
+    );
+  }
+
+  protected renderClearButton(): VNode {
+    return this.searchTerm ? (
       <div
         key="esri-search__clear-button"
         bind={this}
         role="button"
         class={this.classes(CSS.clearButton, CSS.button)}
         tabindex="0"
-        title={i18n.clearButtonTitle}
+        title={this.messages.clearButtonTitle}
         onfocus={this._clearButtonFocus}
         onclick={this._handleClearButtonClick}
         onkeydown={this._handleClearButtonClick}
@@ -1276,10 +1475,13 @@ class Search extends declared(Widget) {
         <span aria-hidden="true" class={CSS.clearIcon} />
       </div>
     ) : null;
+  }
 
-    const showLocationOption = this.locationEnabled && !trimmedSearchTerm;
+  protected renderLocationGroup(): VNode {
+    const { messages, locationEnabled, displayedSearchTerm } = this;
+    const showLocationOption = locationEnabled && !displayedSearchTerm;
 
-    const locationSuggestGroupNode = showLocationOption ? (
+    return showLocationOption ? (
       <ul
         role="presentation"
         key={`esri-search__suggestion-list-current-location`}
@@ -1295,51 +1497,24 @@ class Search extends declared(Widget) {
           tabindex="-1"
         >
           <span aria-hidden="true" role="presentation" class={CSS.locate} />{" "}
-          {i18n.useCurrentLocation}
+          {messages.useCurrentLocation}
         </li>
       </ul>
     ) : null;
+  }
 
-    const showMultipleSourceResults =
-      allSources.length > 1 && activeSourceIndex === SearchViewModel.ALL_INDEX;
+  protected renderInput(): VNode {
+    const { locationEnabled, displayedSearchTerm, messages, suggestionsMenuId } = this;
+    const { maxInputLength, placeholder, searchTerm, suggestionCount } = this.viewModel;
 
-    const suggestionsGroupNode = suggestions
-      ? suggestions.map((suggestResults) => {
-          const { sourceIndex } = suggestResults;
-          const suggestResultCount = suggestResults.results.length;
-          const suggestHeaderNode =
-            suggestResultCount && showMultipleSourceResults
-              ? this._getSuggestionHeaderNode(sourceIndex)
-              : null;
+    const showLocationOption = locationEnabled && !displayedSearchTerm;
+    const hasSuggestions = showLocationOption || suggestionCount;
 
-          const results = suggestResults.results as SuggestResult[];
-
-          const suggestItemsNodes = results.map((suggestion, suggestionIndex) =>
-            this._getSuggestionNode(suggestion, suggestionIndex)
-          );
-
-          const suggestionListContainerNode = suggestResultCount ? (
-            <ul
-              role="presentation"
-              key={`esri-search__suggestion-list-${sourceIndex}`}
-              class={this.classes(CSS.menuList, CSS.suggestionList)}
-            >
-              {suggestItemsNodes}
-            </ul>
-          ) : null;
-
-          return [suggestHeaderNode, suggestionListContainerNode];
-        })
-      : null;
-
-    const hasSuggestions =
-      showLocationOption || (suggestionsGroupNode && suggestionsGroupNode.length);
-
-    const inputNode = (
+    return (
       <input
         bind={this}
         placeholder={placeholder}
-        aria-label={i18n.searchButtonTitle}
+        aria-label={messages.searchButtonTitle}
         maxlength={maxInputLength}
         autocomplete="off"
         type="text"
@@ -1363,8 +1538,10 @@ class Search extends declared(Widget) {
         title={searchTerm ? "" : placeholder}
       />
     );
+  }
 
-    const formNode = (
+  protected renderForm(): VNode {
+    return (
       <form
         key="esri-search__form"
         bind={this}
@@ -1372,11 +1549,48 @@ class Search extends declared(Widget) {
         onsubmit={this._formSubmit}
         role="search"
       >
-        {inputNode}
+        {this.renderInput()}
       </form>
     );
+  }
 
-    const suggestionsMenuNode = hasSuggestions ? (
+  protected renderSuggestList(suggestResults: SearchResults<SuggestResult>): VNode {
+    const { sourceIndex } = suggestResults;
+    const suggestResultCount = suggestResults.results.length;
+
+    const results = suggestResults.results;
+
+    return suggestResultCount ? (
+      <ul
+        role="presentation"
+        key={`esri-search__suggestion-list-${sourceIndex}`}
+        class={this.classes(CSS.menuList, CSS.suggestionList)}
+      >
+        {results.map((suggestion, suggestionIndex) =>
+          this.renderSuggestion(suggestion, suggestionIndex)
+        )}
+      </ul>
+    ) : null;
+  }
+
+  protected renderSuggestionsGroup(): VNode[][] {
+    const { suggestions } = this.viewModel;
+
+    return suggestions
+      ? suggestions.map((suggestResults) => [
+          this.renderSuggestionHeader(suggestResults),
+          this.renderSuggestList(suggestResults)
+        ])
+      : null;
+  }
+
+  protected renderSuggestionsMenu(): VNode {
+    const { activeMenu, displayedSearchTerm, locationEnabled, suggestionsMenuId } = this;
+    const { suggestionCount } = this.viewModel;
+    const showLocationOption = locationEnabled && !displayedSearchTerm;
+    const hasSuggestions = showLocationOption || suggestionCount;
+
+    return hasSuggestions ? (
       <div
         id={suggestionsMenuId}
         aria-expanded={activeMenu === "suggestion"}
@@ -1387,155 +1601,157 @@ class Search extends declared(Widget) {
         afterCreate={storeNode}
         data-node-ref="_suggestionListNode"
       >
-        {locationSuggestGroupNode}
-        {suggestionsGroupNode}
+        {this.renderLocationGroup()}
+        {this.renderSuggestionsGroup()}
       </div>
     ) : null;
+  }
 
-    const inputContainerNode = (
+  protected renderInputContainer(): VNode {
+    return (
       <div key="esri-search__input-container" class={CSS.inputContainer}>
-        {formNode}
-        {suggestionsMenuNode}
-        {clearButtonNode}
+        {this.renderForm()}
+        {this.renderSuggestionsMenu()}
+        {this.renderClearButton()}
       </div>
     );
+  }
 
-    const submitButtonNode = (
-      <div
-        key="esri-search__submit-button"
+  protected renderSuggestionHeader(suggestResults: SearchResults<SuggestResult>): VNode {
+    const { allSources, activeSourceIndex } = this.viewModel;
+    const { sourceIndex } = suggestResults;
+    const suggestResultCount = suggestResults.results.length;
+
+    const showMultipleSourceResults =
+      allSources.length > 1 && activeSourceIndex === SearchViewModel.ALL_INDEX;
+
+    return suggestResultCount && showMultipleSourceResults ? (
+      <div key={`esri-search__suggestion-header-${sourceIndex}`} class={CSS.menuHeader}>
+        {this._getSourceName(sourceIndex)}
+      </div>
+    ) : null;
+  }
+
+  protected renderSuggestion(suggestion: SuggestResult, suggestionIndex: number): VNode {
+    const { messages } = this;
+    const { searchTerm } = this.viewModel;
+    if (searchTerm) {
+      const { text } = suggestion;
+      const resultText = text || (messages.untitledResult as string);
+      const containsHTML = regexContainsHTML.test(resultText);
+      const matches: VNode[] = [];
+      if (containsHTML) {
+        matches.push(<div innerHTML={resultText} />);
+      } else {
+        const resultParts = this._splitResult(resultText, searchTerm);
+        const searchTermLC = searchTerm.toLowerCase();
+        resultParts.forEach((part, partIndex) => {
+          if (part && part.length) {
+            if (part.toLowerCase() === searchTermLC) {
+              matches.push(<strong key={partIndex}>{part}</strong>);
+            } else {
+              matches.push(part);
+            }
+          }
+        });
+      }
+
+      return (
+        <li
+          bind={this}
+          onclick={this._handleSuggestionClick}
+          onkeydown={this._handleSuggestionClick}
+          onkeyup={this._handleSuggestionKeyup}
+          key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
+          data-suggestion={suggestion}
+          role="menuitem"
+          class={CSS.menuItem}
+          tabindex="-1"
+        >
+          {matches}
+        </li>
+      );
+    }
+
+    return undefined;
+  }
+
+  protected renderSource(sourceIndex: number): VNode {
+    const { activeSourceIndex } = this.viewModel;
+
+    const itemClasses = {
+      [CSS.menuItemActive]: sourceIndex === activeSourceIndex
+    };
+
+    return (
+      <li
         bind={this}
-        role="button"
-        title={i18n.searchButtonTitle}
-        class={this.classes(CSS.submitButton, CSS.button)}
-        tabindex="0"
-        onclick={this._handleSearchButtonClick}
-        onkeydown={this._handleSearchButtonClick}
+        key={`esri-search__source-${sourceIndex}`}
+        onclick={this._handleSourceClick}
+        onkeydown={this._handleSourceClick}
+        onkeyup={this._handleSourceKeyup}
+        data-source-index={sourceIndex}
+        role="menuitem"
+        class={this.classes(CSS.source, CSS.menuItem, itemClasses)}
+        tabindex="-1"
       >
-        <span aria-hidden="true" role="presentation" class={CSS.searchIcon} />
-        <span class={CSS.fallbackText}>{i18n.searchButtonTitle}</span>
-      </div>
+        {this._getSourceName(sourceIndex)}
+      </li>
     );
+  }
 
-    const notFoundText = trimmedSearchTerm
-      ? substitute(i18n.noResultsFoundForValue, {
+  protected renderNoResultsWarning(searchTerm: string): VNode {
+    const { messages } = this;
+
+    const notFoundText = searchTerm
+      ? substitute(messages.noResultsFoundForValue, {
           value: `"${searchTerm}"`
         })
-      : i18n.noResultsFound;
+      : messages.noResultsFound;
 
-    const warningNode =
-      vm.get("selectedSuggestion.location") || trimmedSearchTerm ? (
-        <div key="esri-search__no_results">
-          <div class={CSS.warningMenuHeader}>{i18n.noResults}</div>
-          <div class={CSS.warningMenuText}>{notFoundText}</div>
-        </div>
-      ) : null;
-
-    const emptySearchTermNode =
-      !vm.get("selectedSuggestion.location") && !trimmedSearchTerm ? (
-        <div key="esri-search__empty-search">
-          <span aria-hidden="true" class={CSS.noticeIcon} />
-          <span class={CSS.noValueText}>{i18n.emptyValue}</span>
-        </div>
-      ) : null;
-
-    const errorMenuNode = (
-      <div key="esri-search__error-menu" class={this.classes(CSS.menu, CSS.warningMenu)}>
-        <div class={CSS.warningMenuBody}>
-          {warningNode}
-          {emptySearchTermNode}
-        </div>
+    return (
+      <div key="esri-search__no_results">
+        <div class={CSS.warningMenuHeader}>{messages.noResults}</div>
+        <div class={CSS.warningMenuText}>{notFoundText}</div>
       </div>
     );
+  }
 
-    const hasMultipleSources = allSources.length > 1;
-    const sourceList = allSources && allSources.toArray();
-    const allItemNode = searchAllEnabled ? this._getSourceNode(SearchViewModel.ALL_INDEX) : null;
-    const sourceMenuId = `${id}-source-menu`;
+  protected renderEmptySearchWarning(): VNode {
+    const { messages } = this;
 
-    const sourceMenuButtonNode = hasMultipleSources ? (
-      <div
-        key="esri-search__source-menu-button"
-        bind={this}
-        role="button"
-        title={i18n.searchIn}
-        aria-haspopup="true"
-        aria-expanded={activeMenu === "source"}
-        aria-controls={sourceMenuId}
-        class={this.classes(CSS.sourcesButton, CSS.button)}
-        tabindex="0"
-        onkeydown={this._handleSourceMenuButtonKeydown}
-        onclick={this._handleSourcesMenuToggleClick}
-        onkeyup={this._handleSourceMenuButtonKeyup}
-        onblur={this._sourcesButtonBlur}
-        afterCreate={storeNode}
-        data-node-ref="_sourceMenuButtonNode"
-      >
-        <span aria-hidden="true" role="presentation" class={CSS.dropdownIcon} />
-        <span aria-hidden="true" role="presentation" class={CSS.dropupIcon} />
-        <span class={CSS.sourceName}>{sourceName}</span>
+    return (
+      <div key="esri-search__empty-search">
+        <span aria-hidden="true" class={CSS.noticeIcon} />
+        <span class={CSS.noValueText}>{messages.emptyValue}</span>
       </div>
-    ) : null;
+    );
+  }
 
-    const sourcesListNode = hasMultipleSources ? (
-      <ul
-        id={sourceMenuId}
-        role="menu"
-        bind={this}
-        afterCreate={storeNode}
-        data-node-ref="_sourceListNode"
-        class={CSS.menuList}
-      >
-        {allItemNode}
-        {sourceList.map((_source, sourceIndex) => this._getSourceNode(sourceIndex))}
-      </ul>
-    ) : null;
+  protected renderLocateWarning(): VNode {
+    const { messages } = this;
 
-    const sourcesMenuNode = hasMultipleSources ? (
-      <div
-        tabIndex={0}
-        key="esri-search__source-menu"
-        class={this.classes(CSS.menu, CSS.sourcesMenu)}
-      >
-        {sourcesListNode}
+    return (
+      <div key="esri-search__locate-error">
+        <span aria-hidden="true" class={CSS.noticeIcon} />
+        <span class={CSS.noValueText}>{messages.locateError}</span>
       </div>
-    ) : null;
+    );
+  }
 
-    const containerNodeClasses = {
-      [CSS.hasMultipleSources]: hasMultipleSources,
-      [CSS.isLoading]: state === "loading",
-      [CSS.isSearching]: state === "searching",
-      [CSS.showWarning]: activeMenu === "warning",
-      [CSS.showSources]: activeMenu === "source",
-      [CSS.showSuggestions]: activeMenu === "suggestion"
-    };
+  protected renderWarning(): VNode {
+    const { displayedSearchTerm, _locateFailed } = this;
+    const { viewModel } = this;
 
-    const baseClasses = {
-      [CSS.disabled]: state === "disabled",
-      [CSS.esriWidgetDisabled]: this.disabled
-    };
+    if (_locateFailed) {
+      return this.renderLocateWarning();
+    }
 
-    const contentNode =
-      state === "loading" ? (
-        <div role="presentation" class={CSS.loader} key="base-loader">
-          <span aria-hidden="true" role="presentation" class={CSS.loaderAnimation} />
-          <span class={CSS.fallbackText}>{i18n.searchButtonTitle}</span>
-          <span class={CSS.loaderText}>{i18nCommon.loading}</span>
-        </div>
-      ) : (
-        <div
-          role="presentation"
-          class={this.classes(containerNodeClasses, CSS.container)}
-          key="base-container"
-        >
-          {sourceMenuButtonNode}
-          {sourcesMenuNode}
-          {inputContainerNode}
-          {submitButtonNode}
-          {errorMenuNode}
-        </div>
-      );
+    if (viewModel.selectedSuggestion?.location || displayedSearchTerm) {
+      return this.renderNoResultsWarning(displayedSearchTerm);
+    }
 
-    return <div class={this.classes(CSS.base, baseClasses)}>{contentNode}</div>;
+    return this.renderEmptySearchWarning();
   }
 
   //--------------------------------------------------------------------------
@@ -1554,7 +1770,10 @@ class Search extends declared(Widget) {
     _handles.remove(handleKey);
 
     allSources.forEach((source) =>
-      _handles.add(watchUtils.watch(source, "name", () => this.scheduleRender()), handleKey)
+      _handles.add(
+        watchUtils.watch(source, "name", () => this.scheduleRender()),
+        handleKey
+      )
     );
   }
 
@@ -1629,7 +1848,10 @@ class Search extends declared(Widget) {
 
     this.viewModel
       .searchNearby({ signal })
-      .catch()
+      .catch(() => {
+        this._locateFailed = true;
+        this.activeMenu = "warning";
+      })
       .then(() => {
         this._searchController = null;
       });
@@ -1684,6 +1906,7 @@ class Search extends declared(Widget) {
       this._searchController.abort();
       this._searchController = null;
     }
+    this._locateFailed = false;
   }
 
   private _handleInputKeydown(event: KeyboardEvent): void {
@@ -1906,95 +2129,21 @@ class Search extends declared(Widget) {
   }
 
   private _getSourceName(sourceIndex: number): string {
+    const { messages } = this;
     const vm = this.viewModel;
     const { allSources } = vm;
     const source = allSources.getItemAt(sourceIndex);
     return sourceIndex === SearchViewModel.ALL_INDEX
-      ? i18n.all
+      ? messages.all
       : source
-      ? source.name || i18n.untitledSource
-      : i18n.untitledSource;
-  }
-
-  private _getSuggestionHeaderNode(sourceIndex: number): VNode {
-    const name = this._getSourceName(sourceIndex);
-    return (
-      <div key={`esri-search__suggestion-header-${sourceIndex}`} class={CSS.menuHeader}>
-        {name}
-      </div>
-    );
+      ? source.name || messages.untitledSource
+      : messages.untitledSource;
   }
 
   private _splitResult(input: string, needle: string): string[] {
     const escapedNeedle = escapeRegExpString(needle);
     const matches = input.replace(new RegExp(`(^|)(${escapedNeedle})(|$)`, "ig"), "$1|$2|$3");
     return matches.split("|");
-  }
-
-  private _getSuggestionNode(suggestion: SuggestResult, suggestionIndex: number): VNode {
-    const vm = this.viewModel;
-    const { searchTerm } = vm;
-    if (searchTerm) {
-      const { text } = suggestion;
-      const resultText = text || (i18n.untitledResult as string);
-      const containsHTML = regexContainsHTML.test(resultText);
-      const matches: VNode[] = [];
-      if (containsHTML) {
-        matches.push(<div innerHTML={resultText} />);
-      } else {
-        const resultParts = this._splitResult(resultText, searchTerm);
-        const searchTermLC = searchTerm.toLowerCase();
-        resultParts.forEach((part, partIndex) => {
-          if (part && part.length) {
-            if (part.toLowerCase() === searchTermLC) {
-              matches.push(<strong key={partIndex}>{part}</strong>);
-            } else {
-              matches.push(part);
-            }
-          }
-        });
-      }
-
-      return (
-        <li
-          bind={this}
-          onclick={this._handleSuggestionClick}
-          onkeydown={this._handleSuggestionClick}
-          onkeyup={this._handleSuggestionKeyup}
-          key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
-          data-suggestion={suggestion}
-          role="menuitem"
-          class={CSS.menuItem}
-          tabindex="-1"
-        >
-          {matches}
-        </li>
-      );
-    }
-
-    return undefined;
-  }
-
-  private _getSourceNode(sourceIndex: number): VNode {
-    const itemClasses = {
-      [CSS.menuItemActive]: sourceIndex === this.viewModel.activeSourceIndex
-    };
-
-    return (
-      <li
-        bind={this}
-        key={`esri-search__source-${sourceIndex}`}
-        onclick={this._handleSourceClick}
-        onkeydown={this._handleSourceClick}
-        onkeyup={this._handleSourceKeyup}
-        data-source-index={sourceIndex}
-        role="menuitem"
-        class={this.classes(CSS.source, CSS.menuItem, itemClasses)}
-        tabindex="-1"
-      >
-        {this._getSourceName(sourceIndex)}
-      </li>
-    );
   }
 
   private _renderSearchResultsContent(): SearchResultRenderer {

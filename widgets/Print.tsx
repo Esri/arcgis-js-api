@@ -4,6 +4,9 @@
  * which can be configured with custom layout templates. One is provided that shows the map only, while another provides a layout with legend, etc.
  * The Print widget works with the {@link module:esri/tasks/PrintTask} which generates a printer-ready version of the map.
  *
+ * The Print widget has two required properties:
+ * [view](#view) (reference to the MapView) and [printServiceUrl](#printServiceUrl) (URL of the REST endpoint of the Export Web Map Task).
+ *
  * By default, the Print widget prints a localized date for all {@link module:esri/tasks/support/PrintTemplate#layout layouts}
  * except `map-only`. This can be customized using the `customTextElements` property of
  * {@link module:esri/tasks/support/PrintTemplate#layoutOptions PrintTemplate.layoutOptions}.
@@ -14,15 +17,19 @@
  * No support
  *
  * * There is no current support for printing {@link module:esri/views/SceneView SceneViews}. Instead, see {@link module:esri/views/SceneView#takeScreenshot SceneView.takeScreenshot()}.
+ * * There is no current support for printing {@link module:esri/layers/Layer#blendMode layer blending}. Instead, see {@link module:esri/views/MapView#takeScreenshot MapView.takeScreenshot()}.
  * * There is no current support for printing {@link module:esri/views/layers/FeatureLayerView#highlight highlighted features}. Instead, see {@link module:esri/views/MapView#takeScreenshot MapView.takeScreenshot()}.
  * * There is no current support for printing {@link module:esri/layers/ImageryLayer ImageryLayers} when a {@link module:esri/layers/ImageryLayer#pixelFilter pixelFilter}
  * is defined.
+ * * There is no current support for printing legend items for layers that are sent as a client-side image in the printout.
  *
  * Versioned support
  *
+ * * {@link module:esri/symbols/CIMSymbol} cannot be printed with any Printing Service published with ArcMap.
  * * {@link module:esri/layers/support/LabelClass Labels} currently cannot be printed as part of a FeatureLayer with ArcGIS Server 10.5.1 or any Printing Service published with ArcMap.
  * * {@link module:esri/layers/ImageryLayer} cannot be printed with ArcGIS Server 10.5.1 or earlier, or any Printing Service published with ArcMap.
  * * {@link module:esri/layers/VectorTileLayer} printing requires ArcGIS Server 10.5.1 or later.
+ * * Printing layers rendered with the {@link module:esri/renderers/DotDensityRenderer} will create a client-side image of the layer in the printout with ArcGIS Server 10.8.0 or earlier.
  * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
  * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
@@ -30,7 +37,6 @@
  *
  * Behavior notes
  *
- * * Printing layers rendered with the {@link module:esri/renderers/DotDensityRenderer} will create a client-side image of the layer in the printout.
  * * Printing layers using {@link module:esri/layers/FeatureLayer#featureReduction clustering} will create a client-side image of the layer in the printout.
  * * The print server does not directly print [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) symbols. Rather, they are converted to {@link module:esri/symbols/PictureMarkerSymbol PictureMarkerSymbols} for display.
  * * If the application and the print service are on the same origin, the name of the downloadable file can be customized with the {@link module:esri/widgets/Print/TemplateOptions#fileName fileName}
@@ -51,20 +57,18 @@
  * @see [Export Web Map Task (Geoprocessing service) [REST doc]](https://developers.arcgis.com/rest/services-reference/export-web-map-task.htm)
  *
  * @example
- * var print = new Print({
- *   view: view
+ * const print = new Print({
+ *   view: view,
+ *   // specify your own print service
+ *   printServiceUrl:
+ *      "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
  * });
+ *
  * // Adds widget below other elements in the top left corner of the view
  * view.ui.add(print, {
  *   position: "top-left"
  * });
  */
-
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Print/nls/Print";
 
 // esri.core
 import Collection = require("esri/core/Collection");
@@ -75,7 +79,7 @@ import * as urlUtils from "esri/core/urlUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.tasks.support
 import PrintTemplate = require("esri/tasks/support/PrintTemplate");
@@ -91,9 +95,12 @@ import FileLink = require("esri/widgets/Print/FileLink");
 import PrintViewModel = require("esri/widgets/Print/PrintViewModel");
 import TemplateOptions = require("esri/widgets/Print/TemplateOptions");
 
+// esri.widgets.Print.t9n
+import type PrintMessages from "esri/widgets/Print/t9n/Print";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -190,7 +197,7 @@ const invalidFormatWarningMessage =
   "User sets an invalid format, resetting it to the default valid one...";
 
 @subclass("esri.widgets.Print")
-class Print extends declared(Widget) {
+class Print extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -211,13 +218,13 @@ class Print extends declared(Widget) {
    *   printServiceUrl: "https://www.example.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this._focusOnTabChange = this._focusOnTabChange.bind(this);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own([
       watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
         const { format, layout } = this.templateOptions;
@@ -433,6 +440,18 @@ class Print extends declared(Widget) {
   allowedLayouts: any = null;
 
   //----------------------------------
+  //  error
+  //----------------------------------
+
+  /**
+   * The Error object returned if an error occurred while fetching information from service
+   * @type {EsriError}
+   * @ignore
+   */
+  @aliasOf("viewModel.error")
+  error: EsriError;
+
+  //----------------------------------
   //  exportedLinks
   //----------------------------------
 
@@ -474,8 +493,27 @@ class Print extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Print/t9n/Print")
+  messages: PrintMessages;
 
   //----------------------------------
   //  templateOptions
@@ -504,18 +542,6 @@ class Print extends declared(Widget) {
     type: TemplateOptions
   })
   templateOptions: TemplateOptions = new TemplateOptions();
-
-  //----------------------------------
-  //  error
-  //----------------------------------
-
-  /**
-   * The Error object returned if an error occurred while fetching information from service
-   * @type {EsriError}
-   * @ignore
-   */
-  @aliasOf("viewModel.error")
-  error: EsriError;
 
   //----------------------------------
   //  printServiceUrl
@@ -595,6 +621,7 @@ class Print extends declared(Widget) {
 
     const exportDisabled = this.get<PrintViewModel["state"]>("viewModel.state") !== "ready";
     const titleOrFileNameSection = this.renderTitleOrFileNameSection();
+    const messages = this.messages;
 
     const fileFormatMenuItems =
       this.get<string[]>("viewModel.templatesInfo.format.choiceList") || [];
@@ -610,13 +637,13 @@ class Print extends declared(Widget) {
           );
         })
       ) : (
-        <option key="format-default-option">{i18n.formatDefaultOption}</option>
+        <option key="format-default-option">{messages.formatDefaultOption}</option>
       );
 
     const fileFormatSection = (
       <div class={CSS.formSectionContainer}>
         <label>
-          {i18n.fileFormatTitle}
+          {messages.fileFormatTitle}
           <select
             class={CSS.select}
             onchange={this._updateFromOption}
@@ -634,7 +661,7 @@ class Print extends declared(Widget) {
       layoutMenuItems.length > 0 ? (
         layoutMenuItems.map((layoutMenuItem) => {
           const selected = layoutMenuItem === layout;
-          const label = i18n[layoutMenuItem] || layoutMenuItem;
+          const label = messages[layoutMenuItem] || layoutMenuItem;
 
           return (
             <option key={layoutMenuItem} selected={selected} value={layoutMenuItem}>
@@ -643,13 +670,13 @@ class Print extends declared(Widget) {
           );
         })
       ) : (
-        <option key="layout-default-option">{i18n.layoutDefaultOption}</option>
+        <option key="layout-default-option">{messages.layoutDefaultOption}</option>
       );
 
     const pageSetupSection = (
       <div class={CSS.formSectionContainer}>
         <label>
-          {i18n.layoutTitle}
+          {messages.layoutTitle}
           <select
             class={CSS.select}
             onchange={this._updateFromOption}
@@ -665,7 +692,7 @@ class Print extends declared(Widget) {
     const dpiSection = (
       <div class={CSS.formSectionContainer}>
         <label>
-          {i18n.dpi}
+          {messages.dpi}
           <input
             type="number"
             class={this.classes(CSS.inputText, CSS.input)}
@@ -691,11 +718,11 @@ class Print extends declared(Widget) {
             onchange={this._toggleInputValue}
             bind={this}
           />
-          {i18n.scale}
+          {messages.scale}
         </label>
         <div class={CSS.scaleInputContainer}>
           <input
-            aria-label={i18n.scaleLabel}
+            aria-label={messages.scaleLabel}
             aria-valuenow={`${scale}`}
             role="spinbutton"
             type="number"
@@ -709,7 +736,7 @@ class Print extends declared(Widget) {
           />
           <button
             role="button"
-            aria-label={i18n.reset}
+            aria-label={messages.reset}
             class={this.classes(CSS.widgetButton, CSS.refreshButton, CSS.iconRefresh)}
             tabIndex={0}
             onclick={this._resetToCurrentScale}
@@ -727,7 +754,7 @@ class Print extends declared(Widget) {
         {scaleSection}
         <div class={this.classes(CSS.authorInfoContainer, CSS.formSectionContainer)}>
           <label>
-            {i18n.author}
+            {messages.author}
             <input
               type="text"
               value={author}
@@ -741,7 +768,7 @@ class Print extends declared(Widget) {
         </div>
         <div class={this.classes(CSS.copyrightInfoContainer, CSS.formSectionContainer)}>
           <label>
-            {i18n.copyright}
+            {messages.copyright}
             <input
               type="text"
               class={this.classes(CSS.inputText, CSS.input)}
@@ -764,7 +791,7 @@ class Print extends declared(Widget) {
               onchange={this._toggleInputValue}
               bind={this}
             />
-            {i18n.legend}
+            {messages.legend}
           </label>
         </div>
       </div>
@@ -787,7 +814,7 @@ class Print extends declared(Widget) {
               checked={attributionEnabled}
               bind={this}
             />
-            {i18n.attribution}
+            {messages.attribution}
           </label>
         </div>
       </div>
@@ -810,7 +837,7 @@ class Print extends declared(Widget) {
 
         <div class={this.classes(CSS.panelContainer, CSS.advancedOptionsSection)}>
           <button
-            aria-label={i18n.advancedOptions}
+            aria-label={messages.advancedOptions}
             aria-expanded={this._advancedOptionsVisibleForLayout ? "true" : "false"}
             role="button"
             class={CSS.advancedOptionsButton}
@@ -836,7 +863,7 @@ class Print extends declared(Widget) {
                 aria-hidden="true"
                 class={this.classes(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)}
               />
-              <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
+              <span class={CSS.advancedOptionsButtonTitle}>{messages.advancedOptions}</span>
             </div>
           </button>
           {advancedSectionForLayout}
@@ -857,7 +884,7 @@ class Print extends declared(Widget) {
           <div class={this.classes(CSS.sizeContainer, CSS.formSectionContainer)}>
             <div class={CSS.widthContainer}>
               <label>
-                {i18n.width}
+                {messages.width}
                 <input
                   type="text"
                   class={this.classes(CSS.inputText, CSS.input)}
@@ -871,7 +898,7 @@ class Print extends declared(Widget) {
             </div>
             <div class={CSS.heightContainer}>
               <label>
-                {i18n.height}
+                {messages.height}
                 <input
                   type="text"
                   class={this.classes(CSS.inputText, CSS.input)}
@@ -885,7 +912,7 @@ class Print extends declared(Widget) {
             </div>
             <button
               role="button"
-              aria-label={i18n.swap}
+              aria-label={messages.swap}
               class={this.classes(CSS.widgetButton, CSS.swapButton, CSS.iconSwap)}
               onclick={this._switchInput}
               tabIndex={0}
@@ -894,7 +921,7 @@ class Print extends declared(Widget) {
           </div>
           <div class={this.classes(CSS.panelContainer, CSS.advancedOptionsSection)}>
             <button
-              aria-label={i18n.advancedOptions}
+              aria-label={messages.advancedOptions}
               aria-expanded={this._advancedOptionsVisibleForMapOnly ? "true" : "false"}
               role="button"
               class={CSS.advancedOptionsButton}
@@ -920,7 +947,7 @@ class Print extends declared(Widget) {
                   aria-hidden="true"
                   class={this.classes(CSS.iconDownArrow, CSS.advancedOptionsButtonIconOpened)}
                 />
-                <span class={CSS.advancedOptionsButtonTitle}>{i18n.advancedOptions}</span>
+                <span class={CSS.advancedOptionsButtonTitle}>{messages.advancedOptions}</span>
               </div>
             </button>
             {advancedSectionForMapOnly}
@@ -938,7 +965,9 @@ class Print extends declared(Widget) {
     const isSceneView = this.get("view") != null && this.get("view.type") !== "2d";
 
     const errorPanel = (
-      <div class={CSS.panelError}>{isSceneView ? i18n.sceneViewError : i18n.serviceError}</div>
+      <div class={CSS.panelError}>
+        {isSceneView ? messages.sceneViewError : messages.serviceError}
+      </div>
     );
 
     const normalPanel = (
@@ -960,7 +989,7 @@ class Print extends declared(Widget) {
             tabIndex={0}
             aria-selected={`${this._layoutTabSelected}`}
           >
-            {i18n.layoutTab}
+            {messages.layoutTab}
           </li>
           <li
             afterCreate={this._focusOnTabChange}
@@ -972,14 +1001,14 @@ class Print extends declared(Widget) {
             tabIndex={0}
             aria-selected={`${!this._layoutTabSelected}`}
           >
-            {i18n.mapOnlyTab}
+            {messages.mapOnlyTab}
           </li>
         </ul>
 
         {panel}
 
         <button
-          aria-label={i18n.exportDescription}
+          aria-label={messages.exportDescription}
           role="button"
           class={this.classes(CSS.printButton, CSS.button, exportButtonClasses)}
           disabled={exportDisabled}
@@ -987,18 +1016,17 @@ class Print extends declared(Widget) {
           onclick={this._handlePrintMap}
           bind={this}
         >
-          {i18n.export}
+          {messages.export}
         </button>
         <div
           class={CSS.exportedFilesContainer}
           afterUpdate={this._scrollExportIntoView}
-          onclick={this._removeLink}
           bind={this}
         >
-          <h3 class={this.classes(CSS.exportedFilesTitle, CSS.header)}>{i18n.exportText}</h3>
+          <h3 class={this.classes(CSS.exportedFilesTitle, CSS.header)}>{messages.exportText}</h3>
           {exportedLinksArray.length > 0 ? null : (
             <div>
-              <div>{i18n.exportHint}</div>
+              <div>{messages.exportHint}</div>
             </div>
           )}
 
@@ -1010,7 +1038,7 @@ class Print extends declared(Widget) {
     const printWidgetPanel = (
       <div>
         <div class={CSS.printWidgetContainer}>
-          <header class={CSS.headerTitle}>{i18n.export}</header>
+          <header class={CSS.headerTitle}>{messages.export}</header>
           {this.error || !this.printServiceUrl || isSceneView || !this.view
             ? errorPanel
             : normalPanel}
@@ -1029,7 +1057,7 @@ class Print extends declared(Widget) {
   }
 
   protected renderTitleOrFileNameSection(): VNode {
-    const { templateOptions } = this;
+    const { templateOptions, messages } = this;
 
     let label: string;
     let placeholder: string;
@@ -1037,13 +1065,13 @@ class Print extends declared(Widget) {
     let propName: Extract<keyof TemplateOptions, "fileName" | "title">;
 
     if (this._layoutTabSelected) {
-      label = i18n.title;
-      placeholder = i18n.titlePlaceHolder;
+      label = messages.title;
+      placeholder = messages.titlePlaceHolder;
       value = templateOptions.title;
       propName = "title";
     } else {
-      label = i18n.fileName;
-      placeholder = i18n.fileNamePlaceHolder;
+      label = messages.fileName;
+      placeholder = messages.fileNamePlaceHolder;
       value = templateOptions.fileName;
       propName = "fileName";
     }
@@ -1098,7 +1126,7 @@ class Print extends declared(Widget) {
   }
 
   private _createFileLink(template: PrintTemplate, fileName: string): FileLink {
-    const titleText = fileName || i18n.untitled;
+    const titleText = fileName || this.messages.untitled;
     const lowercaseFormat = template.format.toLowerCase();
     const extension = lowercaseFormat.indexOf("png") > -1 ? "png" : lowercaseFormat;
     const fileNameWithExtension = titleText + extension;
@@ -1194,8 +1222,9 @@ class Print extends declared(Widget) {
           state: "ready"
         });
       })
-      .catch(() => {
+      .catch((error: EsriError) => {
         link.set({
+          error,
           state: "error"
         });
       })
@@ -1258,73 +1287,88 @@ class Print extends declared(Widget) {
     }
   }
 
-  private _removeLink(e: Event): void {
-    const target = e.target as Element;
+  private _removeLink = (e: MouseEvent): void => {
+    const target = e.currentTarget as HTMLElement;
     const item = target["data-item"] as FileLink;
 
     if (item && item.state === "error") {
       this.exportedLinks.remove(item);
     }
-  }
+  };
 
   private _renderExportedLink(exportedLinksArray: FileLink[]): VNode {
+    const messages = this.messages;
+
     return exportedLinksArray.map((exportedLink) => {
+      const {
+        error: linkError,
+        url: linkUrl,
+        formattedName: linkName,
+        state: linkState
+      } = exportedLink;
+
+      const hasError = linkState === "error";
+      const pending = linkState === "pending";
+      const ready = linkState === "ready";
+
       const anchorClasses = {
-        [CSS.anchorDisabled]: exportedLink.state === "pending" || exportedLink.state === "error"
+        [CSS.anchorDisabled]: pending || hasError
       };
 
-      let url = exportedLink.url === "" ? null : exportedLink.url;
+      let url = linkUrl || null;
 
       if (url) {
         url = urlUtils.addProxy(url);
       }
 
-      const sameOrigin = urlUtils.hasSameOrigin(exportedLink.url, location.href);
+      const sameOrigin = urlUtils.hasSameOrigin(linkUrl, location.href);
 
       const iconClasses = {
-        [CSS.iconSpinner]: exportedLink.state === "pending",
-        [CSS.rotate]: exportedLink.state === "pending",
-        [CSS.iconDownload]: sameOrigin && exportedLink.state === "ready",
-        [CSS.iconLaunchLink]: !sameOrigin && exportedLink.state === "ready",
-        [CSS.iconError]: exportedLink.state === "error",
-        [CSS.exportedFileError]: exportedLink.state === "error"
+        [CSS.iconSpinner]: pending,
+        [CSS.rotate]: pending,
+        [CSS.iconDownload]: sameOrigin && ready,
+        [CSS.iconLaunchLink]: !sameOrigin && ready,
+        [CSS.iconError]: hasError,
+        [CSS.exportedFileError]: hasError
       };
 
       const linkTitleClasses = {
-        [CSS.exportedFileError]: exportedLink.state === "error"
+        [CSS.exportedFileError]: hasError
       };
 
       let itemDescriptiveStatus: string;
 
-      if (exportedLink.state === "pending") {
-        itemDescriptiveStatus = i18n.pending;
-      } else if (exportedLink.state === "ready") {
-        itemDescriptiveStatus = i18n.ready;
+      if (pending) {
+        itemDescriptiveStatus = messages.pending;
+      } else if (ready) {
+        itemDescriptiveStatus = messages.ready;
       } else {
-        itemDescriptiveStatus = i18n.error;
+        itemDescriptiveStatus = messages.errorMessage;
       }
+
+      const tooltip = hasError ? linkError.message : "";
 
       return (
         <div
           aria-label={itemDescriptiveStatus}
-          key={exportedLink.formattedName}
           class={CSS.exportedFile}
+          data-item={exportedLink}
+          key={linkName}
+          onclick={this._removeLink}
+          title={tooltip}
         >
           <a
-            aria-label={`${exportedLink.formattedName}. ${i18n.linkReady}`}
-            download={exportedLink.formattedName}
+            aria-label={`${linkName}. ${messages.linkReady}`}
+            download={linkName}
             href={url}
             rel="noreferrer"
             tabIndex={0}
             target="_blank"
             class={this.classes(CSS.exportedFileLink, anchorClasses)}
           >
-            <span data-item={exportedLink} class={this.classes(iconClasses)} />
-            <span
-              data-item={exportedLink}
-              class={this.classes(CSS.exportedFileLinkTitle, linkTitleClasses)}
-            >
-              {exportedLink.formattedName}
+            <span class={this.classes(iconClasses)} />
+            <span class={this.classes(CSS.exportedFileLinkTitle, linkTitleClasses)}>
+              {linkName}
             </span>
           </a>
         </div>

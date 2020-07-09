@@ -1,0 +1,80 @@
+{
+  "widgetLabel": "Arah",
+  "advancedOptions": "Opsi lanjutan",
+  "disclaimer": "Gunakan sesuai dengan {esriTerms}.",
+  "esriTerms": "Ketentuan Penggunaan Esri",
+  "travelMode": "Mode Perjalanan",
+  "viewActive": "Klik peta menambahkan sebuah pemberhentian",
+  "showStop": "Tampilkan pemberhentian ini",
+  "addStopTitle": "Tambahkan pemberhentian baru",
+  "addStop": "Tambahkan pemberhentian",
+  "primaryCosts": "Biaya utama",
+  "secondaryCosts": "Biaya sekunder",
+  "removeStop": "Hapus perhentian",
+  "reverseStops": "Balikkan perhentian",
+  "dndHandle": "Geser untuk mengubah urutan mengunjungi",
+  "serviceTime": "Waktu layanan",
+  "serviceDistance": "Jarak layanan",
+  "leaveNow": "Tinggalkan Sekarang",
+  "departBy": "Berangkat pada",
+  "departureTime": "Waktu keberangkatan",
+  "zoomToRoute": "Zoom ke rute",
+  "printDescription": "Cetak arah",
+  "gmt": "GMT",
+  "stop": "Perhentian",
+  "stopLabelTemplate": "Perhentian {number} ({label})",
+  "unlocated": "Tidak memilki lokasi",
+  "searchFieldPlaceholder": "Cari atau klik pada peta",
+  "viewlessSearchFieldPlaceholder": "Cari",
+  "directionsPlaceholder": "Rute Anda akan muncul di sini.",
+  "etaTemplate": "{time} {gmt}",
+  "eta": "Perkiraan waktu kedatangan",
+  "distanceTemplate": "{distance} {units}",
+  "cumulativeCosts": "Biaya kumulatif",
+  "intermediateCosts": "Biaya menengah",
+  "optimizeRoute": "Optimalkan rute",
+  "optimizingRoute": "Mengoptimalkan rute",
+  "clearRoute": "Bersihkan rute",
+  "signInRequired": "Harus masuk",
+  "time": {
+    "min": "menit",
+    "hr": "jam"
+  },
+  "units": {
+    "kilometers": {
+      "name": "kilometer",
+      "abbr": "km"
+    },
+    "meters": {
+      "name": "meter",
+      "abbr": "m"
+    },
+    "miles": {
+      "name": "mil",
+      "abbr": "mi"
+    },
+    "feet": {
+      "name": "kaki",
+      "abbr": "kaki"
+    },
+    "yards": {
+      "name": "yard",
+      "abbr": "yard"
+    },
+    "nauticalMiles": {
+      "name": "mil laut",
+      "abbr": "nm"
+    }
+  },
+  "traffic": {
+    "average": "biasanya",
+    "none": "Tidak ada info lalu lintas",
+    "heavy": "Lalu lintas padat",
+    "light": "Lalu lintas lengang"
+  },
+  "errors": {
+    "unableToLoadServiceMetadata": "Tidak dapat memuat layanan rute. Ini mungkin kedaluwarsa karena layanan tidak lagi dapat diakses.",
+    "unableToRoute": "Tidak dapat merutekan ke antara pemberhentian.",
+    "unknownError": "Sepertinya ada kesalahan."
+  }
+}

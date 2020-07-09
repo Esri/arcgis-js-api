@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Dodaj obeleživač",
+  "goToBookmark": "Idi na obeleživač",
+  "noBookmarksHeading": "Nema obeleživača",
+  "noBookmarksDescription": "Dodajte obeleživače svojoj mapi i oni će se pojaviti ovde.",
+  "title": "Naslov",
+  "addPlaceholder": "Unesi naslov obeleživača",
+  "addingBookmark": "Dodavanje obeleživača",
+  "widgetLabel": "Obeleživači"
+}

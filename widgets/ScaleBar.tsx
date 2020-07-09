@@ -34,18 +34,12 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/ScaleBar/nls/ScaleBar";
-
 // esri.core
 import { createScreenPoint } from "esri/core/screenUtils";
 import { watch, whenTrue } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -57,9 +51,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.ScaleBar
 import ScaleBarViewModel = require("esri/widgets/ScaleBar/ScaleBarViewModel");
 
+// esri.widgets.ScaleBar.t9n
+import ScaleBarMessages from "esri/widgets/ScaleBar/t9n/ScaleBar";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 type ScaleBarStyle = "line" | "ruler";
 type ScaleBarUnit = MapUnitType | "dual";
@@ -90,7 +87,7 @@ function double(value: number): number {
 }
 
 @subclass("esri.widgets.ScaleBar")
-class ScaleBar extends declared(Widget) {
+class ScaleBar extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -110,11 +107,11 @@ class ScaleBar extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own([
       whenTrue(this, "view.stationary", () => this.scheduleRender()),
 
@@ -144,8 +141,29 @@ class ScaleBar extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/ScaleBar/t9n/ScaleBar")
+  messages: ScaleBarMessages = null;
 
   //----------------------------------
   //  style
@@ -303,7 +321,8 @@ class ScaleBar extends declared(Widget) {
 
   private _renderRuler(scaleBarProps: ScaleBarProperties): VNode {
     const length = double(Math.round(scaleBarProps.length));
-    const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+    const { messages } = this;
+    const unit = messages[scaleBarProps.unit] || messages.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 
     return (
@@ -326,7 +345,8 @@ class ScaleBar extends declared(Widget) {
   }
 
   private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): VNode {
-    const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+    const { messages } = this;
+    const unit = messages[scaleBarProps.unit] || messages.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
     const labelContainerClasses = {
       [CSS.topLabelContainer]: labelPosition === "top",

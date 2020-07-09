@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/assignHelper","../../../../core/promiseUtils"],(function(e,r,o,s){Object.defineProperty(r,"__esModule",{value:!0}),r.loadProcessorModule=function(r){return"heatmap"===r?s.create((function(r){return e(["./processors/HeatmapProcessor"],r)})):s.create((function(r){return e(["./processors/SymbolProcessor"],r)}))}}));
+define(["require","exports","@dojo/framework/shim/Promise"],(function(e,o){Object.defineProperty(o,"__esModule",{value:!0}),o.loadProcessorModule=function(o){return new Promise("heatmap"===o?function(o,r){e(["./processors/HeatmapProcessor"],o,r)}:function(o,r){e(["./processors/SymbolProcessor"],o,r)})}}));

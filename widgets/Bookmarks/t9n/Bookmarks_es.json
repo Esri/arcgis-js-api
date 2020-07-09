@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Agregar marcador",
+  "goToBookmark": "Ir a marcador",
+  "noBookmarksHeading": "Sin marcadores",
+  "noBookmarksDescription": "Agregue marcadores a su mapa y aparecerán aquí.",
+  "title": "Título",
+  "addPlaceholder": "Introducir un título de marcador",
+  "addingBookmark": "Agregando marcador",
+  "widgetLabel": "Marcadores"
+}

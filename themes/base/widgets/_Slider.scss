@@ -3,6 +3,7 @@
   $slider-anchor-thickness: 1px !default;
   $slider-tick-thickness: 1px !default;
   $slider-tick-length: 5px !default;
+  $slider-ticks-z-index: 0;
 
   $slider-thumb-size: 16px !default;
   $slider-thumb-offset: ($slider-thumb-size/2) - 1 !default;
@@ -40,6 +41,17 @@
     .esri-slider__segment {
       &:hover {
         cursor: default;
+      }
+    }
+
+    .esri-slider {
+      &--horizontal,
+      &--vertical {
+        .esri-slider__segment--interactive {
+          &:hover {
+            cursor: default;
+          }
+        }
       }
     }
   }
@@ -233,6 +245,7 @@
     touch-action: none;
     width: $slider-thumb-size;
     transition: transform 125ms ease-in-out;
+    z-index: $slider-ticks-z-index + 1; // Make sure the thumb goes on top of the ticks
 
     &:hover {
       transform: scale($slider-thumb-hover-scale);
@@ -265,7 +278,7 @@
   .esri-slider__label-input {
     position: relative;
     width: 100%;
-    z-index: 1;
+    z-index: $slider-ticks-z-index + 1;
   }
 
   .esri-slider__extra-content {
@@ -299,6 +312,7 @@
     display: inline-block;
     height: 100%;
     position: absolute;
+    z-index: $slider-ticks-z-index;
   }
   .esri-slider__tick {
     background: $border-color--contrast;
@@ -315,6 +329,7 @@
     .esri-slider__min,
     .esri-slider__tick-label {
       direction: rtl;
+      unicode-bidi: plaintext;
     }
   }
 }

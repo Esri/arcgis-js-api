@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Ytmätning",
+  "hint": "Börja mäta genom att klicka i scenen för att placera den första punkten",
+  "unsupported": "3D-areamätning stöds bara i SceneView.",
+  "perimeterLength": "Omkrets",
+  "area": "Område",
+  "unit": "Enhet",
+  "notApplicable": "saknas",
+  "newMeasurement": "Ny mätning",
+  "units": {
+    "metric": "Metriska",
+    "imperial": "Imperial",
+    "square-kilometers": "Kvadratkilometer",
+    "square-meters": "Kvadratmeter",
+    "square-miles": "Square miles",
+    "square-inches": "Kvadrattum",
+    "square-feet": "Kvadratfot",
+    "square-yards": "Square yards",
+    "square-us-feet": "Kvadratfot (USA)",
+    "acres": "Tunnland",
+    "ares": "Ar",
+    "hectares": "Hektar"
+  }
+}

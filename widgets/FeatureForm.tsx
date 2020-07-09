@@ -27,7 +27,7 @@
  * @see [Sample - Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
  * @see [Sample - Advanced Attribute Editing](../sample-code/editing-featureform-fieldvisibility/index.html)
  * @see module:esri/widgets/FeatureForm/FeatureFormViewModel
- * @see module:esri/widgets/FeatureForm/FieldConfig
+ * @see module:esri/form/FormTemplate
  * @see module:esri/widgets/FeatureForm/InputField
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
@@ -35,26 +35,26 @@
  * @example
  * var featureForm = new FeatureForm({
  *   container: "formDiv",
- *   feature: graphic
+ *   feature: graphic,
+ *   formTemplate: template
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/FeatureForm/nls/FeatureForm";
-
-// dojo.date
-import { format, parse } from "dojo/date/locale";
-
 // esri
 import Graphic = require("esri/Graphic");
-import moment = require("esri/moment");
+import { getLocale } from "esri/intl";
+
+// esri.core
+import { closest } from "esri/core/domUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.form
+import FormTemplate = require("esri/form/FormTemplate");
+
+// esri.intl
+import { loadMoment } from "esri/intl/moment";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
@@ -73,9 +73,12 @@ import InputField = require("esri/widgets/FeatureForm/InputField");
 import InputFieldGroup = require("esri/widgets/FeatureForm/InputFieldGroup");
 import { Attributes } from "esri/widgets/FeatureForm/interfaces";
 
+// esri.widgets.FeatureForm.t9n
+import FeatureFormMessages from "esri/widgets/FeatureForm/t9n/FeatureForm";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 interface FormattedDateParts {
   date: string;
@@ -91,6 +94,8 @@ interface InProgressEdit {
   value: string;
   input: HTMLInputElement;
 }
+
+type DateFieldValue = Exclude<FieldValue, string>;
 
 const CSS = {
   base: "esri-feature-form",
@@ -110,6 +115,7 @@ const CSS = {
 
   group: "esri-feature-form__group",
   groupLabel: "esri-feature-form__group-label",
+  groupHeader: "esri-feature-form__group-header",
   groupDescription: "esri-feature-form__group-description",
   groupCollapsed: "esri-feature-form__group--collapsed",
   groupSequential: "esri-feature-form__group--sequential",
@@ -122,12 +128,13 @@ const CSS = {
   widget: "esri-widget",
   panel: "esri-widget--panel",
   input: "esri-input",
-  select: "esri-select"
+  select: "esri-select",
+  heading: "esri-widget__heading"
 };
 
 const defaultDateFormat = {
-  datePattern: "M/d/y",
-  timePattern: "h:mm:ss a"
+  datePattern: "L",
+  timePattern: "LTS"
 };
 
 function isGroupField(value: any): value is InputFieldGroup {
@@ -135,7 +142,7 @@ function isGroupField(value: any): value is InputFieldGroup {
 }
 
 @subclass("esri.widgets.FeatureForm")
-class FeatureForm extends declared(Widget) {
+class FeatureForm extends Widget {
   /**
    * Fires when a field value is updated.
    *
@@ -202,20 +209,12 @@ class FeatureForm extends declared(Widget) {
    * const featureForm = new FeatureForm({
    *   container: "formDiv", // HTML div
    *   feature: graphic, // Pass in feature
-   *   // Configure fields to display
-   *   fieldConfig: [ // Autocasts as FieldConfig
-   *     {
-   *       name: "Incident_desc",
-   *       label: "Description"
-   *     },
-   *     {
-   *       name: "Incident_Address",
-   *       label: "Contact"
-   *      }]
+   *   // Specify the form's template for how it is configured
+   *   formTemplate: template
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this._handleFormKeyDown = this._handleFormKeyDown.bind(this);
     this._handleInputBlur = this._handleInputBlur.bind(this);
@@ -228,7 +227,11 @@ class FeatureForm extends declared(Widget) {
     this._afterScrollerCreateOrUpdate = this._afterScrollerCreateOrUpdate.bind(this);
   }
 
-  postInitialize(): void {
+  protected async loadLocale(): Promise<void> {
+    this._moment = await loadMoment();
+  }
+
+  initialize(): void {
     this.own(
       this.watch("feature", () => {
         const groupOrInput = this._getFocusableInput("forward");
@@ -261,11 +264,39 @@ class FeatureForm extends declared(Widget) {
 
   private _activeInputName: string = null;
 
+  private _moment: typeof import("moment") = null;
+
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  description
+  //----------------------------------
+
+  /**
+   * The description of the form. If this is not set, it
+   * defaults to what is set within the {@link module:esri/form/FormTemplate}.
+   *
+   * This property was added at 4.16 to provide parity with the {@link module:esri/form/FormTemplate FormTemplate}.
+   * The preferred way to set this property is via
+   * the form template's {@link module:esri/form/FormTemplate#description description} property.
+   * The `description` property on the {@link module:esri/widgets/FeatureForm form} or its
+   * {@link module:esri/widgets/FeatureForm/FeatureFormViewModel view model} will eventually
+   * be deprecated in a later release in favor of the setting it within the form
+   * {@link module:esri/form/FormTemplate template}.
+   *
+   * @name description
+   * @instance
+   * @type {string}
+   * @since 4.16
+   */
+
+  @aliasOf("viewModel.description")
+  @renderable()
+  description: string = null;
 
   //----------------------------------
   //  feature
@@ -304,8 +335,16 @@ class FeatureForm extends declared(Widget) {
    * display and how you wish to display them. It is possible to configure individual
    * or {@link module:esri/widgets/FeatureForm/FieldGroupConfig grouped fields}. For an example of individual field configurations,
    * please refer to the [Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
-   * sample. For an example of grouped field configurations, please refer to the
-   * [Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html) sample.
+   * sample.
+   *
+   * Starting with version 4.16, the preferred way to set the field or grouped field configurations is via
+   * {@link module:esri/form/elements/FieldElement FieldElement(s)} or {@link module:esri/form/elements/GroupElement GroupElement(s)}
+   * set within the form's {@link module:esri/widgets/FeatureForm#formTemplate template}.
+   *
+   * Currently, the field configuration settings take precedence over any {@link module:esri/form/elements/FieldElement FieldElement(s)}
+   * that may be set within the form's {@link module:esri/form/FormTemplate template}. The `fieldConfigs` property
+   * will be fully deprecated at a future release in favor of setting elements within the form's {@link module:esri/form/FormTemplate template}.
+   *
    *
    * ::: esri-md class="panel trailer-1"
    * When not set, all fields except for `editor`, `globalID`, `objectID`, and system maintained area and length fields will be included.
@@ -316,6 +355,7 @@ class FeatureForm extends declared(Widget) {
    * @type {module:esri/widgets/FeatureForm/FieldConfig[] | module:esri/widgets/FeatureForm/FieldGroupConfig[]}
    * @instance
    * @autocast
+   * @deprecated since version 4.16. Use {@link module:esri/form/elements/FieldElement esri/form/elements/FieldElement} and/or {@link module:esri/form/elements/GroupElement GroupElement} instead.
    *
    * @example
    * // Individual field configurations without grouping
@@ -368,13 +408,55 @@ class FeatureForm extends declared(Widget) {
   fieldConfig: FieldConfig[] = null;
 
   //----------------------------------
+  //  formTemplate
+  //----------------------------------
+
+  /**
+   * The associated {@link module:esri/form/FormTemplate template} used for the form.
+   *
+   *
+   * The {@link module:esri/form/FormTemplate formTemplate} is where you configure
+   * how the form should display. Properties, i.e. `title`, `description`, `fieldConfigs`, etc,
+   * set directly within the {@link module:esri/widgets/FeatureForm} take precedence
+   * over any similar properties set within the `formTemplate`. This will change in a future release
+   * as the preferred way to set the form's properties is via it's {@link module:esri/widgets/FeatureForm#formTemplate template}.
+   *
+   *
+   * @name formTemplate
+   * @type {module:esri/form/FormTemplate}
+   * @instance
+   * @since 4.16
+   * @autocast
+   * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
+   * @see [Sample - Advanced Attribute Editing](../sample-code/editing-featureform-fieldvisibility/index.html)
+   *
+   * @example
+   * // Create the Form template and pass in elements
+   * const formTemplate = new FormTemplate({
+   *   title: "Inspector report",
+   *   description: "Enter all relevant information below",
+   *   elements: [groupElement] // Add all elements to the template
+   * });
+   *
+   * // Add a new feature form with grouped fields
+   * const form = new FeatureForm({
+   *   container: "form",
+   *   groupDisplay: "sequential", // only display one group at a time
+   *   formTemplate: formTemplate // set it to template created above
+   * });
+   */
+
+  @aliasOf("viewModel.formTemplate")
+  formTemplate: FormTemplate = null;
+
+  //----------------------------------
   //  groupDisplay
   //----------------------------------
 
   /**
    * Defines how groups will be displayed to the user.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -382,7 +464,7 @@ class FeatureForm extends declared(Widget) {
    * sequential | A single group will be expanded at a time.
    *
    * @name groupDisplay
-   * @type {string}
+   * @type {"all" | "sequential"}
    * @default all
    * @instance
    * @since 4.10
@@ -404,8 +486,10 @@ class FeatureForm extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -431,6 +515,25 @@ class FeatureForm extends declared(Widget) {
   layer: FeatureLayer = null;
 
   //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/FeatureForm/t9n/FeatureForm")
+  messages: FeatureFormMessages = null;
+
+  //----------------------------------
   //  strict
   //----------------------------------
 
@@ -448,6 +551,31 @@ class FeatureForm extends declared(Widget) {
    */
   @aliasOf("viewModel.strict")
   strict: boolean = null;
+
+  //----------------------------------
+  //  title
+  //----------------------------------
+
+  /**
+   * The title of the form. If this is not set, it
+   * defaults to what is set within the {@link module:esri/form/FormTemplate}.
+   *
+   * This property was added at 4.16 to provide parity with the {@link module:esri/form/FormTemplate FormTemplate}.
+   * The preferred way to set this property is via
+   * the form template's {@link module:esri/form/FormTemplate#title title} property.
+   * The `title` property on the {@link module:esri/widgets/FeatureForm form} or its
+   * {@link module:esri/widgets/FeatureForm/FeatureFormViewModel view model} will eventually
+   * be deprecated in a later release in favor of the setting it within the form
+   * {@link module:esri/form/FormTemplate template}.
+   *
+   * @name title
+   * @instance
+   * @type {string}
+   * @since 4.16
+   */
+  @aliasOf("viewModel.title")
+  @renderable()
+  title: string = null;
 
   //----------------------------------
   //  viewModel
@@ -540,6 +668,18 @@ class FeatureForm extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   protected renderForm(): VNode {
+    const titleNode = this.title ? (
+      <h1 class={CSS.heading} key="title">
+        {this.title}
+      </h1>
+    ) : null;
+
+    const descriptionNode = this.description ? (
+      <h2 class={CSS.heading} key="description">
+        {this.description}
+      </h2>
+    ) : null;
+
     return (
       <form
         class={CSS.form}
@@ -547,6 +687,8 @@ class FeatureForm extends declared(Widget) {
         onsubmit={this._handleSubmit}
         onkeydown={this._handleFormKeyDown}
       >
+        {titleNode}
+        {descriptionNode}
         {this.renderFields()}
       </form>
     );
@@ -565,10 +707,10 @@ class FeatureForm extends declared(Widget) {
   }
 
   protected renderGroup(inputFieldGroup: InputFieldGroup, index: number): VNode {
-    const { description, label, inputFields: inputs } = inputFieldGroup;
+    const { description, label, inputFields: inputs, state } = inputFieldGroup;
 
     const activeInput = this.viewModel.findField(this._activeInputName);
-    const isGroupActive = activeInput && activeInput.group === inputFieldGroup;
+    const isGroupActive = !!(activeInput && activeInput.group === inputFieldGroup);
 
     const id = `${this.id}_group_${index}`;
     const labelId = `${this.id}_group-label_${index}`;
@@ -581,37 +723,61 @@ class FeatureForm extends declared(Widget) {
     ) : null;
 
     const sequential = this.groupDisplay === "sequential";
-    const ariaExpanded = !sequential ? undefined : isGroupActive ? "true" : "false";
+    const groupExpanded = !sequential ? state === "expanded" : isGroupActive;
 
     return (
       <fieldset
+        aria-expanded={groupExpanded.toString()}
+        aria-labelledby={labelId}
+        aria-describedby={description ? descriptionId : ""}
         class={this.classes(
           CSS.group,
           sequential ? CSS.groupSequential : null,
-          !sequential || isGroupActive ? null : CSS.groupCollapsed,
+          groupExpanded ? null : CSS.groupCollapsed,
           isGroupActive ? CSS.groupActive : null
         )}
-        aria-expanded={ariaExpanded}
-        aria-labelledby={labelId}
-        aria-describedby={description ? descriptionId : ""}
         data-group={inputFieldGroup}
         id={id}
         key={index}
         onclick={this._handleGroupClick}
       >
-        <div class={CSS.groupLabel} id={labelId}>
-          {label}
+        <div class={CSS.groupHeader}>
+          <div class={CSS.groupLabel} id={labelId}>
+            {label}
+          </div>
+          {descriptionNode}
         </div>
-        {descriptionNode}
         {inputs.map((inputField) => this.renderLabeledField(inputField))}
       </fieldset>
     );
   }
 
-  private _getFocusableInput(direction: "forward" | "backward", input?: InputField): InputField {
+  private _getFocusableInput(
+    direction: "forward" | "backward",
+    inputOrGroup?: InputField | InputFieldGroup
+  ): InputField {
     const inputs = this.viewModel._allInputFields;
     const allInputs = direction === "forward" ? inputs : inputs.slice().reverse();
-    const searchStartIndex = input ? allInputs.indexOf(input) + 1 : 0;
+
+    let searchStartIndex: number;
+
+    if (!inputOrGroup) {
+      searchStartIndex = 0;
+    } else if (isGroupField(inputOrGroup)) {
+      searchStartIndex = allInputs.indexOf(inputOrGroup.inputFields[0]);
+    } else {
+      let referenceInput: InputField;
+
+      if (!this._isFieldInClosedCollapsibleGroup(inputOrGroup)) {
+        referenceInput = inputOrGroup;
+      } else {
+        const { inputFields } = inputOrGroup.group;
+        referenceInput =
+          direction === "forward" ? inputFields[inputFields.length - 1] : inputFields[0];
+      }
+
+      searchStartIndex = allInputs.indexOf(referenceInput) + 1;
+    }
 
     for (let i = searchStartIndex; i < allInputs.length; i++) {
       const current = allInputs[i];
@@ -662,14 +828,14 @@ class FeatureForm extends declared(Widget) {
       inputField.editorType === "rich-text" ? (
       <textarea {...props} />
     ) : type === "date" ? (
-      this.renderDateInputField(value, props)
+      this.renderDateInputField(value as DateFieldValue, props)
     ) : (
       <input type={type === "text" ? "text" : "number"} {...props} />
     );
   }
 
   protected renderDateInputField(
-    value: FieldValue,
+    value: DateFieldValue,
     props: ReturnType<FeatureForm["getCommonInputProps"]>
   ): VNode {
     const { date: dateFormatHint, time: timeFormatHint } = this._formatDate(0);
@@ -677,6 +843,7 @@ class FeatureForm extends declared(Widget) {
     const dateFormatHintId = `${commonHintId}-date`;
     const timeFormatHintId = `${commonHintId}-time`;
     const inputField = props["data-field"];
+    const { date, time } = this._formatDate(value);
 
     return (
       <div key={`${props.key}-date`} class={CSS.dateInputContainer}>
@@ -688,7 +855,7 @@ class FeatureForm extends declared(Widget) {
             {...props}
             data-date-part="date"
             class={this.classes(props.class, CSS.inputDate)}
-            value={this._formatDate(value as number).date}
+            value={date}
           />
           <div class={CSS.dateFormatHint} id={dateFormatHintId}>
             {dateFormatHint}
@@ -702,7 +869,7 @@ class FeatureForm extends declared(Widget) {
             {...props}
             data-date-part="time"
             class={this.classes(props.class, CSS.inputTime)}
-            value={this._formatDate(value as number).time}
+            value={time}
           />
           <div class={CSS.dateFormatHint} id={timeFormatHintId}>
             {timeFormatHint}
@@ -796,32 +963,33 @@ class FeatureForm extends declared(Widget) {
   // tslint:disable-next-line:typedef
   protected getCommonInputProps(inputField: InputField) {
     const { viewModel } = this;
-    const { editable, name, required, maxLength, hint, type, valid } = inputField;
+    const { editable, name, required, maxLength, minLength, hint, type, valid } = inputField;
     const value = viewModel.getValue(name);
     const disabled = !editable;
 
     return {
-      afterCreate: this._afterScrollerCreateOrUpdate,
-      afterUpdate: this._afterScrollerCreateOrUpdate,
+      "afterCreate": this._afterScrollerCreateOrUpdate,
+      "afterUpdate": this._afterScrollerCreateOrUpdate,
       "aria-invalid": valid ? "false" : "true",
-      class: this.classes(
+      "class": this.classes(
         CSS.input,
         CSS.inputField,
         disabled ? CSS.inputDisabled : null,
         !valid ? CSS.inputInvalid : null
       ),
-      key: name,
-      maxlength: maxLength > -1 ? `${maxLength}` : "",
+      "key": name,
+      "minlength": minLength > -1 ? `${minLength}` : "",
+      "maxlength": maxLength > -1 ? `${maxLength}` : "",
       ...this._getNumberFieldConstraints(inputField),
       disabled,
-      value: value == null ? "" : `${value}`,
+      "value": value == null ? "" : `${value}`,
       "data-field": inputField,
-      onfocus: this._handleInputFocus,
-      onblur: this._handleInputBlur,
-      onkeydown: this._handleInputKeyDown,
-      onmousedown: type === "number" ? this._handleNumberInputMouseDown : null,
+      "onfocus": this._handleInputFocus,
+      "onblur": this._handleInputBlur,
+      "onkeydown": this._handleInputKeyDown,
+      "onmousedown": type === "number" ? this._handleNumberInputMouseDown : null,
       required,
-      title: hint
+      "title": hint
     };
   }
 
@@ -830,6 +998,16 @@ class FeatureForm extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _isFieldInClosedCollapsibleGroup(
+    inputOrGroup: InputField | InputFieldGroup
+  ): inputOrGroup is InputField {
+    return (
+      this.groupDisplay === "all" &&
+      !isGroupField(inputOrGroup) &&
+      inputOrGroup?.group?.state === "collapsed"
+    );
+  }
 
   private _handleNumberInputMouseDown({ target }: Event): void {
     const input = target as HTMLInputElement;
@@ -884,10 +1062,7 @@ class FeatureForm extends declared(Widget) {
 
     const nextInputField: InputField = maybeNextInput && maybeNextInput["data-field"];
 
-    if (inputField.type === "date") {
-      const part = input.getAttribute("data-date-part") as keyof FormattedDateParts;
-      this._activeDateEdit = { ...this._activeDateEdit, [part]: { value: input.value, input } };
-    }
+    this._syncDateEditsBeforeValueCommit(input);
 
     const willEditSameDate =
       nextInputField &&
@@ -924,19 +1099,22 @@ class FeatureForm extends declared(Widget) {
       if (dateEdits) {
         const { input } = dateEdits;
         input.value = clearDate ? "" : dateValue;
-        this._updateFieldValue(input);
       }
 
       if (timeEdits) {
         const { input } = timeEdits;
         input.value = clearDate ? "" : timeValue;
-        this._updateFieldValue(input);
       }
 
       this._activeDateEdit = null;
-    } else {
-      this._updateFieldValue(input);
+
+      if (dateEdits && timeEdits) {
+        this._updateDateFieldValue(dateEdits.input, timeEdits.input);
+        return;
+      }
     }
+
+    this._updateFieldValue(input);
   }
 
   private _getDateEditValue(inputField: InputField, part: "date" | "time"): string {
@@ -956,7 +1134,7 @@ class FeatureForm extends declared(Widget) {
 
     if (!date) {
       // if invalid, use previous value
-      return this._formatDate(inputField.value as number)[part];
+      return this._formatDate(inputField.value as DateFieldValue)[part];
     }
 
     return this._formatDate(date.getTime())[part];
@@ -965,18 +1143,19 @@ class FeatureForm extends declared(Widget) {
   private _handleInputKeyDown(event: KeyboardEvent): void {
     const { key, altKey, ctrlKey, metaKey, shiftKey } = event;
 
+    const input = event.target as HTMLInputElement;
+    const inputField = input["data-field"] as InputField;
+
     if (key === "Tab") {
-      const input = event.target as HTMLInputElement;
-      const inputField = input["data-field"] as InputField;
       const direction = shiftKey ? "backward" : "forward";
       const datePart = input.getAttribute("data-date-part") as keyof FormattedDateParts;
+      this._syncDateEditsBeforeValueCommit(input);
 
-      const movingToOtherInputField = !(
+      const movingToRelatedDateOrTimeInputField =
         (direction === "backward" && datePart === "time") ||
-        (direction === "forward" && datePart === "date")
-      );
+        (direction === "forward" && datePart === "date");
 
-      if (!movingToOtherInputField) {
+      if (movingToRelatedDateOrTimeInputField) {
         return;
       }
 
@@ -998,8 +1177,6 @@ class FeatureForm extends declared(Widget) {
     }
 
     if (key !== "Enter") {
-      const input = event.target as HTMLInputElement;
-      const inputField = input["data-field"] as InputField;
       const { type } = inputField.field;
 
       const isInt = type === "integer" || type === "small-integer";
@@ -1021,8 +1198,28 @@ class FeatureForm extends declared(Widget) {
       return;
     }
 
+    if (this._isFieldInClosedCollapsibleGroup(inputField)) {
+      inputField.group.state = "expanded";
+      return;
+    }
+
     this._updateFieldValue(event.target as HTMLInputElement);
     this.scheduleRender();
+  }
+
+  private _syncDateEditsBeforeValueCommit(input: HTMLInputElement): void {
+    const inputField: InputField = input["data-field"] as InputField;
+
+    if (inputField.type !== "date") {
+      return;
+    }
+
+    const datePart = input.getAttribute("data-date-part") as keyof FormattedDateParts;
+
+    this._activeDateEdit = {
+      ...this._activeDateEdit,
+      [datePart]: { value: input.value, input }
+    };
   }
 
   private _updateFieldValue(input: HTMLInputElement | HTMLSelectElement): void {
@@ -1030,15 +1227,21 @@ class FeatureForm extends declared(Widget) {
     this.viewModel.setValue(inputField.name, this._parseValue(input));
   }
 
-  private _parseValue(input: HTMLInputElement | HTMLSelectElement): string | number | null {
+  /**
+   * This method helps process changes to both date and time as one edit.
+   *
+   * @private
+   */
+  private _updateDateFieldValue(dateInput: HTMLInputElement, timeInput: HTMLInputElement): void {
+    const inputField: InputField = dateInput["data-field"]; // only need one since both refer to the same field
+    this.viewModel.setValue(inputField.name, this._parseDateTimeValue(dateInput, timeInput));
+  }
+
+  private _parseValue(input: HTMLInputElement | HTMLSelectElement): FieldValue {
     const inputField: InputField = input["data-field"];
     const valueAsText = input.value;
 
-    const { required, type } = inputField;
-
-    if (!required && valueAsText === "") {
-      return null;
-    }
+    const { type } = inputField;
 
     if (type === "number") {
       return parseFloat(valueAsText);
@@ -1049,8 +1252,6 @@ class FeatureForm extends declared(Widget) {
         return null;
       }
 
-      const part = input.getAttribute("data-date-part") as keyof FormattedDateParts;
-
       // coded-values get passed as numbers
       const utcDate = Number(valueAsText);
 
@@ -1058,11 +1259,14 @@ class FeatureForm extends declared(Widget) {
         return utcDate;
       }
 
+      const part = input.getAttribute("data-date-part") as keyof FormattedDateParts;
       const parsed = this._parseDate(valueAsText, part);
 
       if (!parsed) {
         return null;
       }
+
+      const moment = this._moment;
 
       const latest = moment(parsed);
 
@@ -1097,6 +1301,34 @@ class FeatureForm extends declared(Widget) {
     return valueAsText;
   }
 
+  private _parseDateTimeValue(
+    dateInput: HTMLInputElement | HTMLSelectElement,
+    timeInput?: HTMLInputElement
+  ): FieldValue {
+    const dateValueAsText = dateInput.value;
+    const timeValueAsText = timeInput.value;
+
+    if (!dateValueAsText || !timeValueAsText) {
+      return null;
+    }
+
+    const parsedDate = this._parseDate(dateValueAsText, "date");
+    const parsedTime = this._parseDate(timeValueAsText, "time");
+
+    if (!parsedDate || !parsedTime) {
+      return null;
+    }
+
+    const latestDate = this._moment(parsedDate);
+    const latestTime = this._moment(parsedTime);
+
+    latestDate.hour(latestTime.hour());
+    latestDate.minutes(latestTime.minutes());
+    latestDate.seconds(latestTime.seconds());
+
+    return latestDate.valueOf();
+  }
+
   private _handleOptionChange(event: Event): void {
     this._updateFieldValue(event.target as HTMLSelectElement);
     this.scheduleRender();
@@ -1104,15 +1336,33 @@ class FeatureForm extends declared(Widget) {
 
   protected _handleGroupClick(event: Event): void {
     const fieldSet = event.currentTarget as HTMLFieldSetElement;
-    const ariaExpanded = fieldSet.getAttribute("aria-expanded");
+    const group = fieldSet["data-group"] as InputFieldGroup;
+    const expanded = group.state === "expanded";
+    const sequential = this.groupDisplay === "sequential";
 
-    // ignore clicks if group is not collapsible or already expanded
-    if (ariaExpanded !== "false") {
+    const clickedOnExpandedGroupInputFieldArea =
+      expanded && !closest(event.target as HTMLElement, `.${CSS.groupHeader}`);
+
+    if (clickedOnExpandedGroupInputFieldArea) {
       return;
     }
 
-    const group = fieldSet["data-group"] as InputFieldGroup;
-    this._activeInputName = group.inputFields[0].name;
+    this._activeInputName = this._getFocusableInput("forward", group)?.name;
+
+    if (sequential) {
+      if (expanded) {
+        // skip if already expanded
+        return;
+      }
+
+      this.viewModel.inputFields.forEach((fieldOrGroup) => {
+        if (isGroupField(fieldOrGroup) && fieldOrGroup !== group) {
+          fieldOrGroup.state = "collapsed";
+        }
+      });
+    }
+
+    group.state = expanded ? "collapsed" : "expanded";
     this._fieldFocusNeeded = true;
 
     this.scheduleRender();
@@ -1128,16 +1378,16 @@ class FeatureForm extends declared(Widget) {
     }
   }
 
-  private _formatDate(dateUTC: number): FormattedDateParts {
+  private _formatDate(dateUTC: DateFieldValue): FormattedDateParts {
     if (dateUTC == null) {
       return { date: "", time: "" };
     }
 
-    const date = new Date(dateUTC);
+    const date = this._moment(dateUTC);
 
     return {
-      date: format(date, { selector: "date", ...defaultDateFormat }),
-      time: format(date, { selector: "time", ...defaultDateFormat })
+      date: date.format(defaultDateFormat.datePattern),
+      time: date.format(defaultDateFormat.timePattern)
     };
   }
 
@@ -1146,7 +1396,14 @@ class FeatureForm extends declared(Widget) {
       return null;
     }
 
-    return parse(dateString, { selector: part, ...defaultDateFormat });
+    const parsed = this._moment(
+      dateString,
+      part === "date" ? defaultDateFormat.datePattern : defaultDateFormat.timePattern,
+      getLocale(),
+      false
+    );
+
+    return parsed.isValid() ? parsed.toDate() : null;
   }
 }
 

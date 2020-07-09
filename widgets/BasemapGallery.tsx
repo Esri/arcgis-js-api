@@ -30,13 +30,8 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/BasemapGallery/nls/BasemapGallery";
-
 // esri
+import { getAssetUrl } from "esri/assets";
 import Basemap = require("esri/Basemap");
 
 // esri.core
@@ -46,7 +41,7 @@ import { CollectionChangeEvent } from "esri/core/interfaces";
 import { on, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -62,11 +57,14 @@ import { BasemapsSource } from "esri/widgets/BasemapGallery/interfaces";
 // esri.widgets.BasemapGallery.support
 import BasemapGalleryItem = require("esri/widgets/BasemapGallery/support/BasemapGalleryItem");
 
+// esri.widgets.BasemapGallery.t9n
+import BasemapGalleryMessages from "esri/widgets/BasemapGallery/t9n/BasemapGallery";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
-const DEFAULT_BASEMAP_IMAGE = require.toUrl("../themes/base/images/basemap-toggle-64.svg");
+const DEFAULT_BASEMAP_IMAGE = getAssetUrl("esri/themes/base/images/basemap-toggle-64.svg");
 
 const CSS = {
   base: "esri-basemap-gallery esri-widget esri-widget--panel-height-only",
@@ -88,7 +86,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.BasemapGallery")
-class BasemapGallery extends declared(Widget) {
+class BasemapGallery extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -108,30 +106,25 @@ class BasemapGallery extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     const handles = this._handles;
 
     this.own([
       on<CollectionChangeEvent<BasemapGalleryItem>>(this, "viewModel.items", "change", (event) => {
         const key = "basemap-gallery-item-changes";
         const { added, moved } = event;
-
         handles.remove(key);
-
         handles.add(
           [...added, ...moved].map((item) => item.watch("state", () => this.scheduleRender())),
           key
         );
-
         this.scheduleRender();
       }),
-
       handles,
-
       whenOnce(this, "source", () => this.viewModel.load())
     ]);
   }
@@ -209,8 +202,29 @@ class BasemapGallery extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/BasemapGallery/t9n/BasemapGallery")
+  messages: BasemapGalleryMessages = null;
 
   //----------------------------------
   //  source
@@ -299,7 +313,7 @@ class BasemapGallery extends declared(Widget) {
       </ul>
     ) : (
       <div class={CSS.emptyMessage} key="esri-basemap-gallery__empty-message">
-        <h2 class={CSS.header}>{i18n.noBasemaps}</h2>
+        <h2 class={CSS.header}>{this.messages.noBasemaps}</h2>
       </div>
     );
 

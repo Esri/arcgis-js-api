@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../Ground","../core/Logger","../core/accessorSupport/ensureType"],(function(e,r,o,a,i){Object.defineProperty(r,"__esModule",{value:!0});var n=a.getLogger("esri.support.groundUtils");r.groundElevationLayers={"world-elevation":{id:"worldElevation",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer",layerType:"ArcGISTiledElevationServiceLayer"},"world-topobathymetry":{id:"worldTopoBathymetry",url:"//elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/TopoBathy3D/ImageServer",layerType:"ArcGISTiledElevationServiceLayer"}},r.ensureType=function(e){var a;if("string"==typeof e)if(e in r.groundElevationLayers){var t=r.groundElevationLayers[e];a=new o({resourceInfo:{data:{layers:[t]}}})}else n.warn("Unable to find ground definition for: "+e+'. Try "world-elevation"');else a=i.default(o,e);return a}}));

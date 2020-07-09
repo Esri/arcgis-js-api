@@ -10,13 +10,23 @@
   .esri-layer-list__list {
     list-style: none;
     margin: 0 0 0 $side-spacing;
-    padding: 0;
+    padding: $cap-spacing--eighth $side-spacing--eighth;
+    &:empty {
+      min-height: $list-item-height;
+    }
+    @include sortableChosen("esri-layer-list--chosen");
+  }
+  .esri-layer-list__list,
+  .esri-layer-list__item {
+    &.esri-layer-list--chosen .esri-layer-list__item {
+      background-color: transparent;
+    }
   }
   .esri-layer-list__item--has-children {
     padding-bottom: $cap-spacing--half;
   }
   .esri-layer-list__item--has-children .esri-layer-list__list:not([hidden]) {
-    animation: esri-layer-list-reveal 375ms ease-in-out;
+    animation: esri-fade-in 375ms ease-in-out;
   }
   .esri-layer-list__list[hidden] {
     display: none;
@@ -47,6 +57,7 @@
     list-style: none;
     margin: $cap-spacing--quarter 0;
     padding: 0;
+    @include sortableChosen("esri-layer-list--chosen");
   }
   .esri-layer-list__item-container {
     border-left: $border-size--active solid transparent;
@@ -97,10 +108,6 @@
   .esri-layer-list--new-ui {
     .esri-layer-list__item-toggle-icon {
       visibility: hidden;
-      color: $interactive-font-color--disabled;
-    }
-    .esri-layer-list__item--invisible .esri-layer-list__item-toggle-icon {
-      color: inherit;
     }
     // show icon on focus of toggle/label
     .esri-layer-list__item-toggle:focus .esri-layer-list__item-toggle-icon,
@@ -189,7 +196,7 @@
     animation: esri-fade-in 250ms ease-in-out;
   }
   .esri-layer-list__item-actions-section {
-    animation: esri-layer-list-reveal 375ms ease-in-out;
+    animation: esri-fade-in 375ms ease-in-out;
   }
   .esri-layer-list__item-actions[hidden] {
     display: none;
@@ -346,20 +353,6 @@
     .esri-layer-list__item-error-message [class*="esri-icon-"] {
       margin-right: 0;
       margin-left: 0.3rem;
-    }
-  }
-
-  //////////////////////////////
-  // ANIMATION
-  @keyframes esri-layer-list-reveal {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 }

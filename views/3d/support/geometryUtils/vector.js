@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3"],(function(e,t,n,c){Object.defineProperty(t,"__esModule",{value:!0}),t.projectPoint=function(e,t,n){var o=c.vec3.dot(e,t)/c.vec3.dot(e,e);return c.vec3.scale(n,e,o)},t.projectPointSignedLength=function(e,t){return c.vec3.dot(e,t)/c.vec3.length(e)},t.angle=function(e,t){var o=c.vec3.dot(e,t)/(c.vec3.length(e)*c.vec3.length(t));return-n.acosClamped(o)}}));
+define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,c,t,r,n){Object.defineProperty(c,"__esModule",{value:!0}),c.projectPoint=function(e,c,t){var n=r.vec3.dot(e,c)/r.vec3.dot(e,e);return r.vec3.scale(t,e,n)},c.projectPointSignedLength=function(e,c){return r.vec3.dot(e,c)/r.vec3.length(e)},c.angle=function(e,c){var n=r.vec3.dot(e,c)/(r.vec3.length(e)*r.vec3.length(c));return-t.acosClamped(n)},c.angleAroundAxis=function(e,c,n){r.vec3.normalize(o,e),r.vec3.normalize(v,c);var a=r.vec3.dot(o,v),i=t.acosClamped(a),l=r.vec3.cross(o,o,v);return r.vec3.dot(l,n)<0?2*Math.PI-i:i};var o=n.vec3f64.create(),v=n.vec3f64.create()}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../layers/support/MemoryManagedLayerView","./LayerPerformanceInfo","../terrain/terrainUtils"],(function(e,r,o,t,a){return function(e){var r=this;this.totalMemory=0,this.usedMemory=0,this.quality=1,this.load=0,this.terrainMemory=0,this.edgesMemory=0,this.layerPerformanceInfos=new Array;var s=e.resourceController.memoryController;this.totalMemory=1024*s.maxMemory*1024,this.usedMemory=Math.round(s.usedMemory*this.totalMemory),this.quality=s.memoryFactor,this.load=e.resourceController.scheduler.load,this.terrainMemory=e.basemapTerrain?e.basemapTerrain.getUsedMemory():0;var i=e._stage&&e._stage.renderView&&e._stage.renderView.edgeView;this.edgesMemory=i?i.getUsedMemory():0,e.allLayerViews.items.forEach((function(s){(o.isMemoryManagedLayerView(s)||a.isSurfaceLayerView(s))&&r.layerPerformanceInfos.push(new t(s,e))})),this.layerPerformanceInfos.sort((function(e,r){return r.memory-e.memory}))}}));

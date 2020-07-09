@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(t,o,r,e,p,n){return function(t){function o(o){var r=t.call(this,o)||this;return r.tooltip=null,r.x=null,r.y=null,r}var p;return r(o,t),p=o,o.prototype.clone=function(){return new p({tooltip:this.tooltip,x:this.x,y:this.y})},e([n.property()],o.prototype,"tooltip",void 0),e([n.property()],o.prototype,"x",void 0),e([n.property()],o.prototype,"y",void 0),o=p=e([n.subclass("esri.popup.content.support.ChartMediaInfoValueSeries")],o)}(n.declared(p))}));
+define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(t,o,e,r,p){return function(t){function o(o){var e=t.call(this,o)||this;return e.tooltip=null,e.x=null,e.y=null,e}var r;return e.__extends(o,t),r=o,o.prototype.clone=function(){return new r({tooltip:this.tooltip,x:this.x,y:this.y})},e.__decorate([p.property()],o.prototype,"tooltip",void 0),e.__decorate([p.property()],o.prototype,"x",void 0),e.__decorate([p.property()],o.prototype,"y",void 0),o=r=e.__decorate([p.subclass("esri.popup.content.support.ChartMediaInfoValueSeries")],o)}(r)}));

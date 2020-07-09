@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,t,r,o,p,i){return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return o(t,e),r([i.property({type:Boolean,json:{write:!0}})],t.prototype,"timeDataCumulative",void 0),r([i.property({type:Number,json:{write:!0}})],t.prototype,"timeOffset",void 0),r([i.property({type:String,json:{write:!0}})],t.prototype,"timeOffsetUnits",void 0),r([i.property({type:Boolean,json:{write:!0}})],t.prototype,"useTime",void 0),t=r([i.subclass("esri.layers.support.LayerTimeOptions")],t)}(i.declared(p.JSONSupport))}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,t,r,o,p){return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),r.__decorate([p.property({type:Boolean,json:{write:!0}})],t.prototype,"timeDataCumulative",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],t.prototype,"timeOffset",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],t.prototype,"timeOffsetUnits",void 0),r.__decorate([p.property({type:Boolean,json:{write:!0}})],t.prototype,"useTime",void 0),t=r.__decorate([p.subclass("esri.layers.support.LayerTimeOptions")],t)}(o.JSONSupport)}));

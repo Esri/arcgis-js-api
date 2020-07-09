@@ -10,7 +10,7 @@
  * ![ClassedSizeSlider with annotations](../../assets/img/apiref/widgets/sliders/classedsizeslider-labels.png "ClassedSizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/size#createClassBreaksRenderer createClassBreaksRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer}
  * method.
  *
  * ```js
@@ -67,16 +67,9 @@
  * @see [ClassedSizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedSizeSlider.tsx)
  * @see [ClassedSizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ClassedSizeSlider.scss)
  * @see module:esri/widgets/smartMapping/ClassedSizeSlider/ClassedSizeSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/size sizeRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/size sizeRendererCreator}
  * @see module:esri/renderers/ClassBreaksRenderer
  */
-
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/ClassedSizeSlider/nls/ClassedSizeSlider";
 
 // esri
 import Color = require("esri/../Color");
@@ -85,16 +78,16 @@ import Color = require("esri/../Color");
 import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { ClassBreaksRendererResult } from "esri/../renderers/smartMapping/creators/color";
-
-// esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.support
 import ClassBreakInfo = require("esri/../renderers/support/ClassBreakInfo");
+
+// esri.smartMapping.renderers
+import { ClassBreaksRendererResult } from "esri/../smartMapping/renderers/color";
+
+// esri.smartMapping.statistics
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -103,12 +96,15 @@ import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 import ClassedSizeSliderViewModel = require("esri/widgets/ClassedSizeSlider/ClassedSizeSliderViewModel");
 import { SizeBreak } from "esri/widgets/ClassedSizeSlider/interfaces";
 
+// esri.widgets.smartMapping.ClassedSizeSlider.t9n
+import ClassedSizeSliderMessages from "esri/widgets/ClassedSizeSlider/t9n/ClassedSizeSlider";
+
 // esri.widgets.smartMapping.support
 import { getFillFromColor } from "esri/widgets/support/utils";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-classed-size-slider",
@@ -134,7 +130,7 @@ interface ClassedSizeSliderStyle {
 }
 
 @subclass("esri.widgets.smartMapping.ClassedSizeSlider")
-class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
+class ClassedSizeSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -148,8 +144,8 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                            that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -219,7 +215,29 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/ClassedSizeSlider/t9n/ClassedSizeSlider")
+  messages: ClassedSizeSliderMessages = null;
 
   //----------------------------------
   //  style
@@ -290,16 +308,16 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a ClassedSizeSlider widget from the result
-   * of the {@link module:esri/renderers/smartMapping/creators/size#createClassBreaksRenderer createClassBreaksRenderer()} method.
+   * of the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer()} method.
    *
    * @method fromRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/size~ClassBreaksRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/size#createClassBreaksRenderer createClassBreaksRenderer}
+   * @param {module:esri/smartMapping/renderers/size~ClassBreaksRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @return {module:esri/widgets/smartMapping/ClassedSizeSlider} Returns a ClassedSizeSlider instance. This will not render until you assign
@@ -441,16 +459,16 @@ class ClassedSizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties a ClassedSizeSlider from the result
-   * of the {@link module:esri/renderers/smartMapping/creators/size#createClassBreaksRenderer createClassBreaksRenderer()} method.
+   * of the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer()} method.
    *
    * @method updateClassBreakInfos
    * @instance
    *
-   * @param {module:esri/renderers/smartMapping/creators/size~ClassBreaksRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/size#createClassBreaksRenderer createClassBreaksRenderer}
+   * @param {module:esri/smartMapping/renderers/size~ClassBreaksRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example

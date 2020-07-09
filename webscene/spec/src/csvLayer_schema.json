@@ -86,7 +86,7 @@
     },
     "showLabels": {
       "type": "boolean",
-      "description": "Labels will display if this property is set to `true` and the layer also has a [labelingInfo](labelingInfo.md) property associated with it. This property can get stored in the web scene config.",
+      "description": "Labels will display if this property is set to `true` and the layer also has a [labelingInfo](labelingInfo.md) property associated with it.",
       "default": false
     },
     "showLegend": {

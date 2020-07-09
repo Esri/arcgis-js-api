@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../core/jsonMap","../../geometry/support/jsonUtils"],(function(e,t,o,s){Object.defineProperty(t,"__esModule",{value:!0});var r=new o.default({esriGeometryOffsetBevelled:"bevelled",esriGeometryOffsetMitered:"mitered",esriGeometryOffsetRounded:"rounded"}),f=new o.default({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});t.offsetToRESTParameters=function(e){var t=e.toJSON(),o=t.geometries,i=t.bevelRatio,n=t.offsetDistance,a=t.offsetHow,l=t.offsetUnit,d={bevelRatio:i,offsetDistance:n};return o&&o.length&&(d.geometries=JSON.stringify({geometryType:s.getJsonType(o[0]),geometries:o}),d.sr=JSON.stringify(o[0].spatialReference)),a&&(d.offsetHow=r.toJSON(a)),l&&(d.offsetUnit=f.toJSON(l)),d}}));

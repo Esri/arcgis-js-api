@@ -1,0 +1,4 @@
+{
+  "widgetLabel": "Histogram",
+  "barLabel": "Çubuk sayımı: {count}. Çubuk minimum veri değeri: {minValue}. Çubuk maksimum veri değeri: {maxValue}"
+}

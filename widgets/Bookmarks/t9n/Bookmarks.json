@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Add bookmark",
+  "goToBookmark": "Go to bookmark",
+  "noBookmarksHeading": "No bookmarks",
+  "noBookmarksDescription": "Add bookmarks to your map and they will appear here.",
+  "title": "Title",
+  "addPlaceholder": "Enter bookmark title",
+  "addingBookmark": "Adding bookmark",
+  "widgetLabel": "Bookmarks"
+}

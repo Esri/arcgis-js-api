@@ -56,6 +56,7 @@ $border: 1px solid $border-color;
     border: $border;
     border-color: transparent;
     border-radius: $border-radius;
+    color: $interactive-font-color;
     text-align: unset;
     text-decoration: none;
     padding: $cap-spacing--half $side-spacing--half;
@@ -197,7 +198,7 @@ $border: 1px solid $border-color;
     .esri-attachments__filename {
       flex: 1 0 0%;
       cursor: pointer;
-      word-break: break-all;
+      @include wordbreak();
     }
     .esri-attachments__item-chevron-icon {
       cursor: pointer;

@@ -140,7 +140,7 @@ $search_width: 240px !default;
     padding: 0.8em 1em;
   }
   .esri-search__warning-header {
-    font-weight: bold;
+    font-weight: $font-weight--bold;
     margin-bottom: 5px;
   }
 

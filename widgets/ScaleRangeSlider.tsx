@@ -22,7 +22,7 @@
  * const scaleRangeSlider = new ScaleRangeSlider({
  *   view: view,
  *   layer: featureLayer,  // scale range of this layer sets initial minScale and maxScale
- *   region: "mx",  // preview thumbnail will be of Mexico
+ *   region: "MX",  // preview thumbnail will be of Mexico
  * });
  * view.ui.add(scaleRangeSlider, "bottom-left");
  *
@@ -31,13 +31,6 @@
  *   featureLayer[name] = value;
  * });
  */
-
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate"/>
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends"/>
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-
-// dojo
-import i18n = require("dojo/i18n!esri/widgets/ScaleRangeSlider/nls/ScaleRangeSlider");
 
 // esri
 import { formatNumber, substitute } from "esri/intl";
@@ -50,7 +43,7 @@ import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init, whenTrue } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -69,10 +62,20 @@ import {
 import ScaleRanges = require("esri/widgets/ScaleRangeSlider/ScaleRanges");
 import ScaleRangeSliderViewModel = require("esri/widgets/ScaleRangeSlider/ScaleRangeSliderViewModel");
 
+// esri.widgets.ScaleRangeSlider.t9n
+import ScaleRangeSliderMessages from "esri/widgets/ScaleRangeSlider/t9n/ScaleRangeSlider";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import Popover = require("esri/widgets/support/Popover");
-import { accessibleHandler, isRTL, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  isRTL,
+  messageBundle,
+  renderable,
+  storeNode,
+  tsx
+} from "esri/widgets/support/widget";
 
 interface ScaleMenuProps {
   type: ScaleType;
@@ -149,8 +152,15 @@ const parseScale = (scaleText: string): number => {
   return parseFloat(scaleValue);
 };
 
+type ScaleRangeSliderParams = Partial<
+  Pick<
+    ScaleRangeSlider,
+    "layer" | "region" | "minScale" | "minScaleLimit" | "maxScale" | "maxScaleLimit" | "view"
+  >
+>;
+
 @subclass("esri.widgets.ScaleRangeSlider")
-class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
+class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -164,18 +174,11 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    */
-  constructor(
-    params?: Partial<
-      Pick<
-        ScaleRangeSlider,
-        "layer" | "region" | "minScale" | "minScaleLimit" | "maxScale" | "maxScaleLimit" | "view"
-      >
-    >
-  ) {
-    super(params);
+  constructor(params?: ScaleRangeSliderParams, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own([
       init(
         this,
@@ -253,6 +256,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
     owner: this,
     placement: "top",
     anchorElement: () => (this._activeThumb === 0 ? this._minThumbNode : this._maxThumbNode),
+    offset: [0, 16],
     renderContentFunction: this.renderScalePreview
   });
 
@@ -481,9 +485,10 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    * @type {String}
    */
-
-  @property()
-  label = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -537,6 +542,25 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
     aliasOf: "viewModel.maxScaleLimit"
   })
   maxScaleLimit: number = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/ScaleRangeSlider/t9n/ScaleRangeSlider")
+  messages: ScaleRangeSliderMessages = null;
 
   //----------------------------------
   //  minScale
@@ -676,12 +700,15 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
       _interactive,
       _slider,
       label,
+      messages,
       view,
       viewModel: { scaleRanges, state }
     } = this;
 
-    const minLabel = i18n.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(_slider.values[0]).id];
-    const maxLabel = i18n.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(_slider.values[1]).id];
+    const minLabel =
+      messages.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(_slider.values[0]).id];
+    const maxLabel =
+      messages.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(_slider.values[1]).id];
 
     _slider.layout = isRTL() ? "horizontal-reversed" : "horizontal";
 
@@ -736,7 +763,6 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
     });
   }
 
-  @accessibleHandler()
   private _handleScaleMenuToggleClick = (event: Event): void => {
     const currentTarget = event.currentTarget as HTMLButtonElement;
     const type = currentTarget.getAttribute("data-type") as ScaleType;
@@ -805,7 +831,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
 
   protected renderScaleMenu({ map, min, max, type }: ScaleMenuProps): VNode {
     const scaleRanges = ScaleRanges.fromScaleRange({ minScale: min, maxScale: max });
-    const scaleLabels = i18n.featuredScaleLabels;
+    const scaleLabels = this.messages.featuredScaleLabels;
     const recommendedScaleLabelToValue = ScaleRanges.RecommendedScales;
 
     const recommended = Object.keys(recommendedScaleLabelToValue)
@@ -819,7 +845,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
         })
       );
 
-    const { _customMaxScale, _customMinScale } = this;
+    const { _customMaxScale, _customMinScale, messages } = this;
     const customScale = type === "max" ? _customMaxScale : _customMinScale;
 
     return (
@@ -837,7 +863,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
           <ul class={CSS.scaleMenuList} afterCreate={this._afterMenuListCreate}>
             {this.renderScaleMenuItem({
               scaleValue: customScale,
-              scaleLabel: i18n.featuredScaleLabels.custom,
+              scaleLabel: messages.featuredScaleLabels.custom,
               valueVisible: false,
               handleNamedScaleSelect: this._handleScaleSelection,
               handleCustomScaleSelect: this._handleCustomScaleEntry
@@ -845,7 +871,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
             {map != null
               ? this.renderScaleMenuItem({
                   scaleValue: map,
-                  scaleLabel: i18n.featuredScaleLabels.current,
+                  scaleLabel: messages.featuredScaleLabels.current,
                   valueVisible: true,
                   handleNamedScaleSelect: this._handleRecommendedScaleClick
                 })
@@ -988,6 +1014,7 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
   protected renderCurrentScaleIndicator(): VNode {
     const {
       _slider,
+      messages,
       view,
       viewModel: { scaleRanges }
     } = this;
@@ -995,8 +1022,8 @@ class ScaleRangeSlider extends declared(HandleOwnerMixin(Widget)) {
     const mapScale = scaleRanges.clampScale(view.scale);
     const sliderTick = this.viewModel.mapScaleToSlider(mapScale);
     const leftOffsetRatio = sliderTick / _slider.max;
-    const scaleLabel = i18n.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(sliderTick).id];
-    const currentScaleLabel = substitute(i18n.currentScaleTooltip, { scaleLabel });
+    const scaleLabel = messages.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(sliderTick).id];
+    const currentScaleLabel = substitute(messages.currentScaleTooltip, { scaleLabel });
 
     return (
       <div class={CSS.scaleIndicatorContainer} key="scale-indicator">

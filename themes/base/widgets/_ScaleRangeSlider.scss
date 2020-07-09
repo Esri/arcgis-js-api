@@ -69,7 +69,7 @@
   }
 
   .esri-scale-range-slider__scale-menu-toggle--active {
-    font-weight: $font-weight__bold;
+    font-weight: $font-weight--bold;
   }
 
   .esri-scale-range-slider__scale-menu-toggle-icon {
@@ -82,7 +82,6 @@
     flex-direction: column;
     background-color: $background-color;
     padding: $cap-spacing--half $side-spacing--half;
-    margin: $cap-spacing 0;
     @include defaultBoxShadow();
   }
 

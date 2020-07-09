@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./Util"],(function(e,t,r){function o(e){return t=e.data,r.getFirstObjectValue(t.indices).length>=1;var t}Object.defineProperty(t,"__esModule",{value:!0}),t.splitRenderGeometryChangeSetByMaterial=function(e){for(var t=new Map,r=null,n=null,a=function(e){if(e===r)return n;var o=t.get(e);return o||(o={toAdd:[],numToAdd:-1,toRemove:[],numToRemove:-1,toUpdate:[],numToUpdate:-1},t.set(e,o)),r=e,n=o,o},d=0;d<e.numToAdd;d++){if(o(u=e.toAdd[d]))a(u.material).toAdd.push(u)}for(d=0;d<e.numToRemove;d++){var u;if(o(u=e.toRemove[d]))a(u.material).toRemove.push(u)}for(d=0;d<e.numToUpdate;d++){var i=e.toUpdate[d];if(o(i.renderGeometry))a(i.renderGeometry.material).toUpdate.push(i)}return t}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./factories/mat4f64"],(function(e,t,f){Object.defineProperty(t,"__esModule",{value:!0}),t.mat4f64=f}));

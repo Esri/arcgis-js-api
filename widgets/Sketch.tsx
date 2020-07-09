@@ -165,23 +165,16 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Sketch/nls/Sketch";
-
 // esri
 import { substitute } from "esri/intl";
 import Graphic = require("esri/widgets/../Graphic");
 
 // esri.core
 import Collection = require("esri/core/Collection");
-import { createSetFromValues } from "esri/core/SetUtils";
+import { SetFromValues } from "esri/core/SetUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
+import { aliasOf, subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import GraphicsLayer = require("esri/widgets/../layers/GraphicsLayer");
@@ -209,9 +202,12 @@ import {
   UpdateTool
 } from "esri/widgets/Sketch/support/interfaces";
 
+// esri.widgets.Sketch.t9n
+import SketchMessages from "esri/widgets/Sketch/t9n/Sketch";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { isRTL, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { isRTL, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   // sketch classes
@@ -257,7 +253,7 @@ interface SketchEvents {
 }
 
 @subclass("esri.widgets.Sketch")
-class Sketch extends declared(Widget)<SketchEvents> {
+class Sketch extends Widget<SketchEvents> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -298,7 +294,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @property {module:esri/Graphic} graphic - The graphic that is being created.
    * @property {"start" | "active" | "complete" | "cancel"} state - The current state of the event.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -337,7 +333,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated.
    * @property {"start" | "active" | "complete"} state - The state of the event.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -514,7 +510,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @property {"move-start" | "move" | "move-stop"} type - Returns information indicating the stage of the move operation.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -546,7 +542,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @property {"reshape-start" | "reshape" | "reshape-stop"} type - Returns information indicating the stage of the reshape operation.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -574,7 +570,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @property {"rotate-start" | "rotate" | "rotate-stop"} type - Returns information indicating the stage of the rotate operation.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -613,7 +609,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *
    * @property {"scale-start" | "scale" | "scale-stop"} type - Returns information indicating the stage of the scale operation.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -639,11 +635,11 @@ class Sketch extends declared(Widget)<SketchEvents> {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own([
       this.viewModel.on("create", () => this.scheduleRender()),
       this.viewModel.on("update", () => this.scheduleRender()),
@@ -702,10 +698,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
         return null;
       }
 
-      const validTools = ["point", "polyline", "polygon", "rectangle", "circle"];
-      const validToolsSet = createSetFromValues(validTools);
-
-      return tools.filter((toolName) => validToolsSet.has(toolName)) as CreateTool[];
+      const validTools = SetFromValues(["point", "polyline", "polygon", "rectangle", "circle"]);
+      return tools.filter((toolName) => validTools.has(toolName)) as CreateTool[];
     }
   })
   @renderable()
@@ -735,7 +729,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * Defines the default behavior once the [create](#create) operation is completed. By default, the user will be
    * able to continuously create graphics with same geometry types.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -763,8 +757,8 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @instance
    * @since 4.14
    *
-   * @property {string} [mode] - Create operation mode how the graphic can be created.
-   * **Possible Values:**
+   * @property {"hybrid" | "freehand" | "click"} [mode] - Create operation mode how the graphic can be created.
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -833,8 +827,10 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -875,6 +871,25 @@ class Sketch extends declared(Widget)<SketchEvents> {
 
     this._set("layout", value);
   }
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Sketch/t9n/Sketch")
+  messages: SketchMessages = null;
 
   //----------------------------------
   //  state
@@ -962,7 +977,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @param {"hybrid" | "freehand" | "click"} [createOptions.mode] - Specifies how the graphic can be created. The create mode applies only when creating
    * `polygon`, `polyline`, `rectangle` and `circle` geometries.
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -1004,7 +1019,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
    * @param {Object} [updateOptions] - Update options for the graphics to be updated.
    * @param {"transform" | "reshape" | "move"} [updateOptions.tool] - Name of the update tool. Specifies the update operation for the selected graphics. The provided tool will become the [activeTool](#activeTool).
    *
-   * **Possible Values:**
+   * **Possible Values**
    *
    * Value | Description |
    * ----- | ----------- |
@@ -1190,10 +1205,13 @@ class Sketch extends declared(Widget)<SketchEvents> {
   protected renderFeatureCount(): VNode {
     const {
       layout,
+      messages,
       updateGraphics: { length: count }
     } = this;
 
-    const countLabel = substitute(count === 1 ? i18n.featureCount : i18n.featuresCount, { count });
+    const countLabel = substitute(count === 1 ? messages.featureCount : messages.featuresCount, {
+      count
+    });
 
     return (
       <div class={CSS.featureCountBadge} aria-label={countLabel}>
@@ -1203,7 +1221,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderDeleteButton(): VNode {
-    const title = i18n.deleteFeature;
+    const title = this.messages.deleteFeature;
 
     return (
       <button
@@ -1221,7 +1239,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderTransformButton(): VNode {
-    const title = i18n.transform;
+    const title = this.messages.transform;
     const classes = [CSS.button, CSS.panIcon];
     const defaultTool = this.viewModel.defaultUpdateOptions.tool;
     const isActive = !!(this.activeTool === "transform" || this.activeTool === "move");
@@ -1242,7 +1260,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderReshapeButton(): VNode {
-    const title = i18n.reshape;
+    const title = this.messages.reshape;
     const classes = [CSS.button, CSS.cursorIcon];
     const defaultTool = this.viewModel.defaultUpdateOptions.tool;
     const isDisabled = this.updateGraphics.length > 1;
@@ -1290,7 +1308,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderPointButton(): VNode {
-    const title = i18n.drawPoint;
+    const title = this.messages.drawPoint;
     const classes = [CSS.button, CSS.pointIcon];
 
     if (this.activeTool === "point") {
@@ -1308,7 +1326,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderPolygonButton(): VNode {
-    const title = i18n.drawPolygon;
+    const title = this.messages.drawPolygon;
     const classes = [CSS.button, CSS.polygonIcon];
 
     if (this.activeTool === "polygon") {
@@ -1327,7 +1345,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderPolylineButton(): VNode {
-    const title = i18n.drawPolyline;
+    const title = this.messages.drawPolyline;
     const classes = [CSS.button, CSS.polylineIcon];
 
     if (this.activeTool === "polyline") {
@@ -1346,7 +1364,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderCircleButton(): VNode {
-    const title = i18n.drawCircle;
+    const title = this.messages.drawCircle;
     const classes = [CSS.button, CSS.circleIcon];
 
     if (this.activeTool === "circle") {
@@ -1365,7 +1383,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderRectangleButton(): VNode {
-    const title = i18n.drawRectangle;
+    const title = this.messages.drawRectangle;
     const classes = [CSS.button, CSS.rectangleIcon];
 
     if (this.activeTool === "rectangle") {
@@ -1388,7 +1406,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderUndoButton(): VNode {
-    const title = i18n.undo;
+    const title = this.messages.undo;
     const isDisabled = !this.viewModel.canUndo();
     const icon = isRTL() ? CSS.redoIcon : CSS.undoIcon;
 
@@ -1405,7 +1423,7 @@ class Sketch extends declared(Widget)<SketchEvents> {
   }
 
   protected renderRedoButton(): VNode {
-    const title = i18n.redo;
+    const title = this.messages.redo;
     const isDisabled = !this.viewModel.canRedo();
     const icon = isRTL() ? CSS.undoIcon : CSS.redoIcon;
 

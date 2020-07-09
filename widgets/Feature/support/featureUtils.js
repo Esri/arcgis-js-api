@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0}),r.getSourceLayer=function(e){if(e)return e.get("sourceLayer")||e.get("layer")}}));
+define(["require","exports","tslib"],(function(e,n,t){Object.defineProperty(n,"__esModule",{value:!0}),n.getSourceLayer=function(e){if(e)return e.get("sourceLayer")||e.get("layer")},n.graphicCallback=function(e,n){return t.__awaiter(this,void 0,void 0,(function(){return t.__generator(this,(function(t){return[2,"function"==typeof e?e.call(null,n):e]}))}))},n.shouldOpenInNewTab=function(e){if(void 0===e&&(e=""),e){return!/^(?:mailto:|tel:)/.test(e.trim().toLowerCase())}};var r=/^\s*expression\//i;function i(e){return r.test(e)}n.isExpressionField=i,n.getFieldInfoLabel=function(e,n){var t=function(e,n){if(!i(n)||!e)return null;var t,o=n.replace(r,"").toLowerCase();return e.some((function(e){return e.name.toLowerCase()===o&&(t=e,!0)})),t}(n,null==e?void 0:e.fieldName);return t?t.title||null:e?e.label||e.fieldName:null}}));

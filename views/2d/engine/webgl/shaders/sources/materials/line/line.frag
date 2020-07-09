@@ -51,7 +51,9 @@ void main()
 #elif defined(PATTERN) && !defined(HIGHLIGHT)  // When we render the highlight, we want to treat the line as if it was solid
   // we need to calculate the relative portion of the line texture along the line given the accumulated distance along the line
   // The computed value should is anumber btween 0 and 1 which will later be used to interpolate btween the BR and TL values
-  mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * v_lineHalfWidth) / v_patternSize.x, 1.0);
+  mediump float lineHalfWidth = v_lineHalfWidth;  
+  mediump float adjustedPatternWidth = v_patternSize.x * 2.0 * lineHalfWidth / v_patternSize.y; // scale the width by the height of the line
+  mediump float relativeTexX = mod((u_zoomFactor * v_accumulatedDistance + v_normal.x * lineHalfWidth) / adjustedPatternWidth, 1.0);
 
   // in order to calculate the texture coordinates prependicular to the line (Y axis), we use the interpolated normal values
   // which range from -1.0 to 1.0. On the line's centerline, the value of the interpolated normal is 0.0, however the relative
@@ -60,12 +62,14 @@ void main()
   //              | -> line-width / 2
   //      - - - - - - - - - - - - - -
   //              | -> line-width / 2
-  //      ---------------------------- (BR)--> right edge of line. Interpolatedf normal is -1.0
-
-  mediump float relativeTexY = 0.5 + (v_normal.y * v_lineHalfWidth / v_patternSize.y);
+  //      ---------------------------- (BR)--> right edge of line. Interpolatedf normal is -1.0  
+  
+  mediump float relativeTexY = 0.5 + 0.5 * v_normal.y;  
 
   // claculate the actual texture coordinates by interpolating between the TL/BR pattern coordinates
-  mediump vec2 texCoord = mix(v_tlbr.xy, v_tlbr.zw, vec2(relativeTexX, relativeTexY));
+  // notice the swap of the x and y coordinates. This is on purpose, in order to transpose the 
+  // pattern so that it'll look like in Pro.
+  mediump vec2 texCoord = mix(v_tlbr.xy, v_tlbr.zw, vec2(relativeTexY, relativeTexX));
 
   // get the color from the texture
   lowp vec4 color = texture2D(u_texture, texCoord);

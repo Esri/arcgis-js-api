@@ -38,17 +38,12 @@
  * @see {@link module:esri/views/ui/DefaultUI}
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/DirectLineMeasurement3D/nls/DirectLineMeasurement3D";
-
 // esri.core
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { SystemOrLengthUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -60,9 +55,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.DirectLineMeasurement3D
 import DirectLineMeasurement3DViewModel = require("esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel");
 
+// esri.widgets.DirectLineMeasurement3D.t9n
+import DirectLineMeasurement3DMessages from "esri/widgets/DirectLineMeasurement3D/t9n/DirectLineMeasurement3D";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -98,7 +96,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.DirectLineMeasurement3D")
-class DirectLineMeasurement3D extends declared(Widget) {
+class DirectLineMeasurement3D extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -118,8 +116,8 @@ class DirectLineMeasurement3D extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -198,8 +196,29 @@ class DirectLineMeasurement3D extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/DirectLineMeasurement3D/t9n/DirectLineMeasurement3D")
+  messages: DirectLineMeasurement3DMessages = null;
 
   //----------------------------------
   //  viewModel
@@ -269,17 +288,18 @@ class DirectLineMeasurement3D extends declared(Widget) {
     const isReady = this.viewModel.state === "ready";
     const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
     const measurement = this.viewModel.measurement;
+    const { messages } = this;
 
     const hintNode =
       isActive && isReady ? (
         <section key="esri-direct-line-measurement-3d__hint" class={CSS.hint}>
-          <p class={CSS.hintText}>{i18n.hint}</p>
+          <p class={CSS.hintText}>{messages.hint}</p>
         </section>
       ) : null;
 
     const unsupportedNode = !isSupported ? (
       <section key="esri-direct-line-measurement-3d__unsupported" class={CSS.panelError}>
-        <p>{i18n.unsupported}</p>
+        <p>{messages.unsupported}</p>
       </section>
     ) : null;
 
@@ -311,9 +331,9 @@ class DirectLineMeasurement3D extends declared(Widget) {
 
     const measurementNode = isMeasuring ? (
       <section key="esri-direct-line-measurement-3d__measurement" class={CSS.measurement}>
-        {measurementLabelNode(i18n.direct, measurement.directDistance, "direct")}
-        {measurementLabelNode(i18n.horizontal, measurement.horizontalDistance, "horizontal")}
-        {measurementLabelNode(i18n.vertical, measurement.verticalDistance, "vertical")}
+        {measurementLabelNode(messages.direct, measurement.directDistance, "direct")}
+        {measurementLabelNode(messages.horizontal, measurement.horizontalDistance, "horizontal")}
+        {measurementLabelNode(messages.vertical, measurement.verticalDistance, "vertical")}
       </section>
     ) : null;
 
@@ -321,7 +341,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
 
     const unitsLabelNode = (
       <label class={CSS.unitsLabel} for={unitsId}>
-        {i18n.unit}
+        {messages.unit}
       </label>
     );
 
@@ -331,11 +351,11 @@ class DirectLineMeasurement3D extends declared(Widget) {
           {this.viewModel.unitOptions.map((unit) =>
             unit === this.viewModel.unit ? (
               <option key={unit} value={unit} selected>
-                {i18n.units[unit]}
+                {messages.units[unit]}
               </option>
             ) : (
               <option key={unit} value={unit}>
-                {i18n.units[unit]}
+                {messages.units[unit]}
               </option>
             )
           )}
@@ -365,7 +385,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
             bind={this}
             onclick={this._newMeasurement}
           >
-            {i18n.newMeasurement}
+            {messages.newMeasurement}
           </button>
         </div>
       ) : null;
@@ -395,7 +415,7 @@ class DirectLineMeasurement3D extends declared(Widget) {
 
   @accessibleHandler()
   private _newMeasurement(): void {
-    this.viewModel.newMeasurement();
+    ignoreAbortErrors(this.viewModel.start());
   }
 
   @accessibleHandler()

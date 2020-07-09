@@ -51,10 +51,9 @@ vec4 getColor(in vec4 a_color, in float a_bitSet, int index) {
 #endif
 }
 
-float getOpacity(in float a_bitSet, in int index) {
-#ifdef VV_OPACITY
-  float isOpacityLocked = getBit(a_bitSet, index); 
-  return getVVOpacity(VV_ADATA[ATTR_VV_OPACITY], isOpacityLocked);
+float getOpacity() {
+#ifdef VV_OPACITY  
+  return getVVOpacity(VV_ADATA[ATTR_VV_OPACITY]);
 #else
   return 1.0;
 #endif

@@ -82,6 +82,7 @@
       "enum": [
         "classedColor",
         "classedSize",
+        "dotDensity",
         "predominance",
         "relationship",
         "univariateColorSize"

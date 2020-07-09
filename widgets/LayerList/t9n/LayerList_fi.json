@@ -1,0 +1,7 @@
+{
+  "widgetLabel": "Karttatasot",
+  "noItemsToDisplay": "Näytettäviä kohteita ei ole.",
+  "layerInvisibleAtScale": "Ei ole näkyvissä nykyisessä mittakaavassa",
+  "layerError": "Virhe karttatason lataamisessa",
+  "untitledLayer": "Nimeämätön karttataso"
+}

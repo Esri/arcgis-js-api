@@ -28,57 +28,6 @@
   .esri-feature__main-container {
     line-height: normal;
   }
-  // GENERAL
-  .esri-feature h1,
-  .esri-feature h2,
-  .esri-feature h3,
-  .esri-feature h4,
-  .esri-feature h5,
-  .esri-feature h6 {
-    margin: 0.5em 0 0.5em 0;
-    letter-spacing: 0;
-    font-weight: $font-weight__heading;
-    line-height: 1.3em;
-  }
-  .esri-feature h1 {
-    font-size: $font-size__h1;
-  }
-  .esri-feature h2 {
-    font-size: $font-size__h2;
-  }
-  .esri-feature h3,
-  .esri-feature h4,
-  .esri-feature h5,
-  .esri-feature h6 {
-    font-size: $font-size__lt-h2;
-  }
-  .esri-feature p {
-    font-size: $font-size;
-    line-height: 1.3em;
-    margin: 0 0 1.2em;
-  }
-  .esri-feature img {
-    max-width: 100%;
-    max-height: 100%;
-    image-orientation: from-image;
-  }
-  .esri-feature figcaption {
-    font-size: $font-size--small;
-    font-style: italic;
-    padding: 0;
-    margin: 0.2em 0 0;
-    display: block;
-  }
-  .esri-feature ul {
-    margin-bottom: 1rem;
-  }
-  .esri-feature a {
-    color: $interactive-font-color;
-    &:hover,
-    &:focus {
-      color: $interactive-font-color--hover;
-    }
-  }
 
   .esri-feature__content-element {
     padding: 0 $side-spacing--half $cap-spacing--double;
@@ -116,7 +65,8 @@
   .esri-feature__media-container .esri-feature__button {
     justify-content: center;
     align-items: center;
-    flex: 0 1 15%;
+    flex: 0 0 $button-width;
+    width: $button-width;
     font-size: 20px;
     color: $interactive-font-color;
     display: none;
@@ -126,18 +76,24 @@
     color: $interactive-font-color--hover;
   }
   .esri-feature__media-item {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     margin-top: $cap-spacing--half;
+    
+  }
+  .esri-feature__media-item-container {
+    width: 100%;
+    img {
+      max-width: 100%;
+    }
   }
   .esri-feature__media-chart {
     background-color: #fff;
     //  Dimensions on containing div are required
     //  for Chart library to know how big to make the chart.
-    min-width: 250px;
     width: 100%;
     height: 250px;
   }
@@ -149,42 +105,14 @@
     display: flex;
   }
   .esri-feature--media-pagination-visible .esri-feature__media-item-container {
-    flex: 0 0 70%;
+    flex: 0 1 auto;
   }
   .esri-feature--media-pagination-visible .esri-feature__media-summary {
     display: flex;
   }
-  .esri-feature--media-pagination-visible .esri-feature__media-chart {
-    //  Accounts for media items being smaller
-    //  when there are pagination buttons.
-    height: 225px;
-  }
   .esri-feature__last-edited-info {
     font-size: $font-size--small;
     padding-top: $cap-spacing--half;
-  } //  SCREEN SIZES
-  .esri-view-width-xlarge {
-    @include mediaImgMaxWidth(380);
-  }
-
-  .esri-view-width-large {
-    @include mediaImgMaxWidth(280);
-  }
-
-  .esri-view-width-medium {
-    @include mediaImgMaxWidth(240);
-  }
-
-  .esri-view-width-small {
-    @include mediaImgMaxWidth(225);
-  }
-
-  .esri-view-width-xsmall {
-    @include mediaImgMaxWidth(180);
-  }
-
-  .esri-view-width-xsmall .esri-docked {
-    @include mediaImgMaxWidth(300);
   }
 
   //  RTL

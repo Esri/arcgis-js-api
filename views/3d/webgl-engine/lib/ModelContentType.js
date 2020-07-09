@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports"],(function(e,n){Object.defineProperty(n,"__esModule",{value:!0}),n.allModelContentTypes=[0,1,2,3,4],n.modelContentTypes={LAYER:0,OBJECT:1,GEOMETRY:2,MATERIAL:3,TEXTURE:4}}));

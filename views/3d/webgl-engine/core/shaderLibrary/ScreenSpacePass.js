@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/tsSupport/makeTemplateObjectHelper","../shaderModules/interfaces"],(function(e,i,n,o){var t;Object.defineProperty(i,"__esModule",{value:!0}),i.ScreenSpacePass=function(e){e.attributes.add("position","vec2"),e.varyings.add("uv","vec2"),e.vertex.code.add(o.glsl(t||(t=n(["\n    void main(void) {\n      gl_Position = vec4(position, 0.0, 1.0);\n      uv = position * 0.5 + vec2(0.5);\n    } \n  "],["\n    void main(void) {\n      gl_Position = vec4(position, 0.0, 1.0);\n      uv = position * 0.5 + vec2(0.5);\n    } \n  "]))))}}));
+define(["require","exports","tslib","../shaderModules/interfaces"],(function(e,i,n,o){var t;Object.defineProperty(i,"__esModule",{value:!0}),i.ScreenSpacePass=function(e){e.attributes.add("position","vec2"),e.varyings.add("uv","vec2"),e.vertex.code.add(o.glsl(t||(t=n.__makeTemplateObject(["\n    void main(void) {\n      gl_Position = vec4(position, 0.0, 1.0);\n      uv = position * 0.5 + vec2(0.5);\n    } \n  "],["\n    void main(void) {\n      gl_Position = vec4(position, 0.0, 1.0);\n      uv = position * 0.5 + vec2(0.5);\n    } \n  "]))))}}));

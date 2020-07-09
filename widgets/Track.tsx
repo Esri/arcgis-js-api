@@ -41,17 +41,11 @@
  * view.ui.add(trackWidget, "top-left");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Track/nls/Track";
-
 // esri
 import Graphic = require("esri/Graphic");
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -60,13 +54,16 @@ import SceneView = require("esri/views/SceneView");
 // esri.widgets
 import Widget = require("esri/widgets/Widget");
 
-// esri.widgets.Track
-import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
-
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+
+// esri.widgets.Track
+import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
+
+// esri.widgets.Track.t9n
+import TrackMessages from "esri/widgets/Track/t9n/Track";
 
 const CSS = {
   base: "esri-track esri-widget--button esri-widget",
@@ -84,7 +81,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Track")
-class Track extends declared(Widget) {
+class Track extends Widget {
   /**
    * Fires after the [start()](#start) method is called and a position is found.
    *
@@ -119,8 +116,8 @@ class Track extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -224,8 +221,29 @@ class Track extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Track/t9n/Track")
+  messages: TrackMessages = null;
 
   //----------------------------------
   //  scale
@@ -385,7 +403,8 @@ class Track extends declared(Widget) {
       [CSS.loading]: state === "waiting"
     };
 
-    const text = isTracking ? i18n.stopTracking : i18n.startTracking;
+    const { messages } = this;
+    const text = isTracking ? messages.stopTracking : messages.startTracking;
 
     return (
       <div

@@ -20,7 +20,7 @@
   }
 
   .esri-attribution__sources {
-    font-weight: 300;
+    font-weight: $font-weight--light;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -34,7 +34,7 @@
   }
 
   .esri-attribution__powered-by {
-    font-weight: 400;
+    font-weight: $font-weight;
     padding: 0 5px;
     text-align: right;
     white-space: nowrap;

@@ -1,7 +1,10 @@
 @mixin bookmarks() {
   $bookmarks-height--loading: 150px !default;
   .esri-bookmarks {
-    background-color: $background-color;
+    background-color: transparent;
+    .esri-widget__content--empty {
+      background-color: $background-color--offset;
+    }
   }
 
   .esri-bookmarks__loader-container {
@@ -35,7 +38,7 @@
     position: relative;
     display: flex;
     border-color: transparent;
-    background-color: transparent;
+    background-color: $background-color;
     transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
     overflow: hidden;
     &:hover {

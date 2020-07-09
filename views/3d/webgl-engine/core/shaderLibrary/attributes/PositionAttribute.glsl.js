@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],(function(e,t,o,i){var n;Object.defineProperty(t,"__esModule",{value:!0}),t.PositionAttribute=function(e){e.attributes.add("position","vec3"),e.vertex.code.add(i.glsl(n||(n=o(["\n    vec3 positionModel() { return position; }\n  "],["\n    vec3 positionModel() { return position; }\n  "]))))}}));
+define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,t,i,o){var n;Object.defineProperty(t,"__esModule",{value:!0}),t.PositionAttribute=function(e){e.attributes.add("position","vec3"),e.vertex.code.add(o.glsl(n||(n=i.__makeTemplateObject(["\n    vec3 positionModel() { return position; }\n  "],["\n    vec3 positionModel() { return position; }\n  "]))))}}));

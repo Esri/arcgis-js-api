@@ -29,13 +29,6 @@
  * @see module:esri/widgets/Slider/SliderViewModel
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Slider/nls/Slider";
-
 // esri
 import { substitute } from "esri/intl";
 
@@ -46,7 +39,7 @@ import Logger = require("esri/core/Logger");
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.core.libs.pep
 import PEP = require("esri/core/libs/pep/pep");
@@ -60,6 +53,8 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Slider
 import {
   Bounds,
+  InputCreatedFunction,
+  InputType,
   LabelInfos,
   SegmentDragEvent,
   ThumbChangeEvent,
@@ -70,6 +65,9 @@ import {
 } from "esri/widgets/Slider/interfaces";
 import SliderViewModel = require("esri/widgets/Slider/SliderViewModel");
 
+// esri.widgets.Slider.t9n
+import SliderMessages from "esri/widgets/Slider/t9n/Slider";
+
 // esri.widgets.support
 import {
   InputFormatFunction,
@@ -77,7 +75,7 @@ import {
   LabelFormatFunction,
   VNode
 } from "esri/widgets/support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-slider",
@@ -183,7 +181,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 @subclass(declaredClass)
-class Slider extends declared(Widget)<SliderEvents> {
+class Slider extends Widget<SliderEvents> {
   //-----------------------------------------------------------s---------------
   //
   //  Lifecycle
@@ -261,8 +259,8 @@ class Slider extends declared(Widget)<SliderEvents> {
    *   values: [ 50 ]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this._observer = new ResizeObserver(() => this.scheduleRender());
 
@@ -280,6 +278,14 @@ class Slider extends declared(Widget)<SliderEvents> {
     this._onTrackPointerDown = this._onTrackPointerDown.bind(this);
   }
 
+  destroy(): void {
+    // widget could be destroyed while dragging thumb
+    document.removeEventListener("pointerup", this._onLabelPointerUp);
+    document.removeEventListener("pointermove", this._onLabelPointerMove);
+    document.removeEventListener("pointerup", this._onAnchorPointerUp);
+    document.removeEventListener("pointermove", this._onAnchorPointerMove);
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Variables
@@ -288,7 +294,7 @@ class Slider extends declared(Widget)<SliderEvents> {
 
   private _activeLabelInputIndex: number = null;
 
-  private _anchorElements: HTMLElement[] = null;
+  private _anchorElements: HTMLElement[] = [];
 
   private _baseNode: HTMLElement = null;
 
@@ -312,7 +318,7 @@ class Slider extends declared(Widget)<SliderEvents> {
 
   private _segmentDragStartInfo: SegmentDragStartInfo = null;
 
-  private _segmentElements: HTMLElement[] = null;
+  private _segmentElements: HTMLElement[] = [];
 
   private _thumbElements: HTMLElement[] = [];
 
@@ -384,64 +390,43 @@ class Slider extends declared(Widget)<SliderEvents> {
   draggableSegmentsEnabled = true;
 
   //----------------------------------
-  //  label
+  //  inputCreatedFunction
   //----------------------------------
 
   /**
-   * The widget's default label. This label displays when it is
-   * used within another widget, such as the {@link module:esri/widgets/Expand}
-   * or {@link module:esri/widgets/LayerList} widgets.
+   * Function that executes each time an input element is created. It allows the developer to validate
+   * a user's manually entered slider thumb values. This function should be set to the
+   * [inputCreatedFunction](#inputCreatedFunction) property.
    *
-   * @name label
-   * @instance
-   * @type {string}
-   */
-  @property()
-  label: string = i18n.widgetLabel;
-
-  /**
-   * Function used to format labels. This function should be set to the
-   * [labelFormatFunction](#labelFormatFunction) property. It fires
-   * each time a label is created or updated on the slider.
+   * @callback module:esri/widgets/Slider~InputCreatedFunction
    *
-   * @callback module:esri/widgets/Slider~LabelFormatter
-   *
-   * @param {number} value - The value of the thumb to be labeled.
-   * @param {"average" | "min" | "max" | "tick" | "value"} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
-   * @param {number} [index] - The index of the thumb (or [value](#values)).
-   *
-   * @return {string} The formatted value of the label.
+   * @param {HTMLInputElement} inputElement - The HTMLInputElement allowing the user to manually input
+   *   slider thumb values. You can customize this element to validate user input, for example by setting
+   *   the `type` and `pattern` attributes.
+   * @param {"max" | "min" | "thumb"} type - The type of input created.
+   * @param {number} [thumbIndex] - The index of the thumb corresponding to the input element.
    */
 
-  //----------------------------------
-  //  labelFormatFunction
-  //----------------------------------
-
   /**
-   * A function used to format labels. Overrides the default label formatter.
+   * A function that provides the developer with access to the input elements when
+   * [rangeLabelInputsEnabled](#rangeLabelInputsEnabled) and/or [labelInputsEnabled](#labelInputsEnabled) are set to `true`.
+   * This allows the developer to customize the input elements corresponding to slider min/max and thumb values
+   * to validate user input. For example, you can access input elements and customize them with `type` and `pattern` attributes.
    *
-   * By default labels are formatted in the following way:
-   *
-   * - When the data range is less than `10` (`(max - min) < 10`), labels
-   *   are rounded based on the value set in the [precision](#precision) property.
-   * - When the data range is larger than `10`, [labels](#labels) display with a precision of
-   *   no more than two decimal places, though actual slider thumb values will maintain the
-   *   precision specified in [precision](#precision).
-   *
-   * Use this property to override the behavior defined above.
-   *
-   * @name labelFormatFunction
+   * @name inputCreatedFunction
    * @instance
-   * @type {module:esri/widgets/Slider~LabelFormatter}
+   * @type {module:esri/widgets/Slider~InputCreatedFunction}
+   * @see [labelInputsEnabled](#labelInputsEnabled)
+   * @see [rangeLabelInputsEnabled](#rangeLabelInputsEnabled)
+   *
    * @example
-   * // For thumb values, rounds each label to whole numbers.
-   * // Note the actual value of the thumb continues to be stored
-   * // based on the indicated data `precision` despite this formatting
-   * slider.labelFormatFunction = function(value, type) {
-   *   return (type === "value") ? value.toFixed(0) : value;
-   * }
+   * // Sets the slider thumb inputs as number inputs
+   * slider.inputCreatedFunction = function(input, type, index){
+   *   input.setAttribute("type", "number");
+   *   input.setAttribute("pattern", "[0-9]*");
+   * };
    */
-  @aliasOf("viewModel.labelFormatFunction") labelFormatFunction: LabelFormatFunction = null;
+  @property() inputCreatedFunction: InputCreatedFunction = null;
 
   //----------------------------------
   //  inputFormatFunction
@@ -547,6 +532,24 @@ class Slider extends declared(Widget)<SliderEvents> {
   @aliasOf("viewModel.inputParseFunction") inputParseFunction: InputParseFunction = null;
 
   //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label. This label displays when it is
+   * used within another widget, such as the {@link module:esri/widgets/Expand}
+   * or {@link module:esri/widgets/LayerList} widgets.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
   //  labelInputsEnabled
   //----------------------------------
 
@@ -567,6 +570,50 @@ class Slider extends declared(Widget)<SliderEvents> {
    */
   @property()
   labelInputsEnabled = false;
+
+  /**
+   * Function used to format labels. This function should be set to the
+   * [labelFormatFunction](#labelFormatFunction) property. It fires
+   * each time a label is created or updated on the slider.
+   *
+   * @callback module:esri/widgets/Slider~LabelFormatter
+   *
+   * @param {number} value - The value of the thumb to be labeled.
+   * @param {"average" | "min" | "max" | "tick" | "value"} [type] - The label type. Valid types include `average`, `min`, `max`, `tick`, and `value`.
+   * @param {number} [index] - The index of the thumb (or [value](#values)).
+   *
+   * @return {string} The formatted value of the label.
+   */
+
+  //----------------------------------
+  //  labelFormatFunction
+  //----------------------------------
+
+  /**
+   * A function used to format labels. Overrides the default label formatter.
+   *
+   * By default labels are formatted in the following way:
+   *
+   * - When the data range is less than `10` (`(max - min) < 10`), labels
+   *   are rounded based on the value set in the [precision](#precision) property.
+   * - When the data range is larger than `10`, [labels](#labels) display with a precision of
+   *   no more than two decimal places, though actual slider thumb values will maintain the
+   *   precision specified in [precision](#precision).
+   *
+   * Use this property to override the behavior defined above.
+   *
+   * @name labelFormatFunction
+   * @instance
+   * @type {module:esri/widgets/Slider~LabelFormatter}
+   * @example
+   * // For thumb values, rounds each label to whole numbers.
+   * // Note the actual value of the thumb continues to be stored
+   * // based on the indicated data `precision` despite this formatting
+   * slider.labelFormatFunction = function(value, type) {
+   *   return (type === "value") ? value.toFixed(0) : value;
+   * }
+   */
+  @aliasOf("viewModel.labelFormatFunction") labelFormatFunction: LabelFormatFunction = null;
 
   //----------------------------------
   //  labels
@@ -698,6 +745,25 @@ class Slider extends declared(Widget)<SliderEvents> {
    * });
    */
   @aliasOf("viewModel.max") max: number = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Slider/t9n/Slider")
+  messages: SliderMessages = null;
 
   //----------------------------------
   //  min
@@ -1342,14 +1408,17 @@ class Slider extends declared(Widget)<SliderEvents> {
   //--------------------------------------------------------------------------
 
   protected renderContent(): VNode {
+    const { max, min } = this;
+
+    // Check for invalid range configuration
+    if (!isSome(min) || !isSome(max) || min > max) {
+      return undefined;
+    }
+
     return [this.renderMin(), this.renderSliderContainer(), this.renderMax()];
   }
 
   protected renderSliderContainer(): VNode {
-    if (!isSome(this.min) || !isSome(this.max)) {
-      return undefined;
-    }
-
     return (
       <div key="slider-container" bind={this} class={CSS.contentElement}>
         {this.renderTrackElement()}
@@ -1379,7 +1448,6 @@ class Slider extends declared(Widget)<SliderEvents> {
       return undefined;
     }
 
-    this._segmentElements = [];
     const numberOfSegments = this.values.length + 1;
     const nodes: VNode[] = [];
 
@@ -1391,7 +1459,7 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   protected renderSegmentElement(index: number): VNode {
-    const { _trackHeight, _trackWidth, draggableSegmentsEnabled, state, values } = this;
+    const { _trackHeight, _trackWidth, draggableSegmentsEnabled, id, state, values } = this;
     const isHorizontal = this._isHorizontalLayout();
     const trackMax = isHorizontal ? _trackWidth : _trackHeight;
 
@@ -1450,11 +1518,13 @@ class Slider extends declared(Widget)<SliderEvents> {
     return (
       <div
         afterCreate={this._afterSegmentCreate}
+        afterRemoved={this._afterSegmentRemoved}
         bind={this}
         class={segmentClasses}
         data-max-thumb-index={maxThumbIndex}
         data-min-thumb-index={minThumbIndex}
         data-segment-index={index}
+        key={`${id}-segment-${index}`}
         style={style}
         touch-action={"none"}
       />
@@ -1467,12 +1537,6 @@ class Slider extends declared(Widget)<SliderEvents> {
     if (!values || !values.length) {
       return undefined;
     }
-
-    // Remove all current elements from the reference properties
-    // Ensures anchor positions are always up-to-date after a visibility change
-    this._anchorElements = [];
-    this._thumbElements = [];
-    this._labelElements = [];
 
     // (#8319, #21529, #22693) Calculate and store z-indices
     // This prevents issues with handles getting stuck at the slider ends
@@ -1520,12 +1584,13 @@ class Slider extends declared(Widget)<SliderEvents> {
     const label = this.labels.values[index];
     const style = this._getStyleForAnchor(value, index, isDragging || lastMoved);
     const { min, max } = this.viewModel.getBoundsForValueAtIndex(index);
+    const { messages } = this;
 
     const ariaValueText =
       values.length === 2
         ? index === 0
-          ? substitute(i18n.rangeMinimum, { value })
-          : substitute(i18n.rangeMaximum, { value })
+          ? substitute(messages.rangeMinimum, { value })
+          : substitute(messages.rangeMaximum, { value })
         : label;
 
     const ariaControls =
@@ -1541,8 +1606,9 @@ class Slider extends declared(Widget)<SliderEvents> {
       <div
         afterCreate={this._afterAnchorCreate}
         afterUpdate={this._afterAnchorUpdate}
+        afterRemoved={this._afterAnchorRemoved}
         aria-controls={ariaControls}
-        aria-label={i18n.sliderValue}
+        aria-label={messages.sliderValue}
         aria-labelledby={labelsVisible ? `${id}-label-${index}` : null}
         aria-orientation={layout}
         aria-valuemax={max.toString()}
@@ -1554,6 +1620,7 @@ class Slider extends declared(Widget)<SliderEvents> {
         data-thumb-index={index}
         data-value={value}
         id={`${id}-handle-${index}`}
+        key={`${id}-handle-${index}`}
         onkeydown={this._onAnchorKeyDown}
         touch-action={"none"}
         role={"slider"}
@@ -1562,6 +1629,7 @@ class Slider extends declared(Widget)<SliderEvents> {
       >
         <span
           afterCreate={this._afterThumbCreate}
+          afterRemoved={this._afterThumbRemoved}
           bind={this}
           class={CSS.thumbElement}
           data-thumb-index={index}
@@ -1585,10 +1653,12 @@ class Slider extends declared(Widget)<SliderEvents> {
     return (
       <span
         afterCreate={this._afterLabelCreate}
+        afterRemoved={this._afterLabelRemoved}
         aria-hidden={!labelsVisible}
         bind={this}
         class={classes}
         data-thumb-index={index}
+        key={`${id}-label-${index}`}
         id={`${id}-label-${index}`}
         role={labelInputsEnabled ? "button" : null}
         touch-action={"none"}
@@ -1604,9 +1674,11 @@ class Slider extends declared(Widget)<SliderEvents> {
     return (
       <input
         afterCreate={this._afterInputCreate}
-        aria-label={i18n.sliderValue}
+        aria-label={this.messages.sliderValue}
         bind={this}
         class={CSS.labelInput}
+        data-input-type={"thumb"}
+        data-input-index={index}
         required={true}
         tabIndex={0}
         type={"text"}
@@ -1669,9 +1741,10 @@ class Slider extends declared(Widget)<SliderEvents> {
     return (
       <input
         afterCreate={this._afterInputCreate}
-        aria-label={i18n.maximumValue}
+        aria-label={this.messages.maximumValue}
         bind={this}
         class={CSS.rangeInput}
+        data-input-type={"max"}
         required={true}
         tabIndex={0}
         type={"text"}
@@ -1686,9 +1759,10 @@ class Slider extends declared(Widget)<SliderEvents> {
     return (
       <input
         afterCreate={this._afterInputCreate}
-        aria-label={i18n.minimumValue}
+        aria-label={this.messages.minimumValue}
         bind={this}
         class={CSS.rangeInput}
+        data-input-type={"min"}
         required={true}
         tabIndex={0}
         type={"text"}
@@ -1879,6 +1953,16 @@ class Slider extends declared(Widget)<SliderEvents> {
     element.addEventListener("pointerdown", this._onSegmentPointerDown);
   }
 
+  private _afterSegmentRemoved(element: HTMLElement): void {
+    const index = this._segmentElements.indexOf(element, 0);
+
+    if (index > -1) {
+      this._segmentElements.splice(index, 1);
+    }
+
+    element.removeEventListener("pointerdown", this._onSegmentPointerDown);
+  }
+
   private _afterAnchorCreate(element: HTMLElement): void {
     this._anchorElements.push(element);
 
@@ -1896,8 +1980,6 @@ class Slider extends declared(Widget)<SliderEvents> {
   }
 
   private _afterAnchorUpdate(element: HTMLElement): void {
-    this._anchorElements.push(element);
-
     if (isSome(this._focusedAnchorIndex)) {
       const index = element["data-thumb-index"];
 
@@ -1908,8 +1990,26 @@ class Slider extends declared(Widget)<SliderEvents> {
     }
   }
 
+  private _afterAnchorRemoved(element: HTMLElement): void {
+    const index = this._anchorElements.indexOf(element, 0);
+
+    if (index > -1) {
+      this._anchorElements.splice(index, 1);
+    }
+
+    element.removeEventListener("pointerdown", this._onAnchorPointerDown);
+  }
+
   private _afterThumbCreate(element: HTMLElement): void {
     this._thumbElements.push(element);
+  }
+
+  private _afterThumbRemoved(element: HTMLElement): void {
+    const index = this._thumbElements.indexOf(element, 0);
+
+    if (index > -1) {
+      this._thumbElements.splice(index, 1);
+    }
   }
 
   private _afterLabelCreate(element: HTMLElement): void {
@@ -1920,9 +2020,27 @@ class Slider extends declared(Widget)<SliderEvents> {
     element.addEventListener("pointerup", this._onLabelPointerUp);
   }
 
+  private _afterLabelRemoved(element: HTMLElement): void {
+    const index = this._labelElements.indexOf(element, 0);
+
+    if (index > -1) {
+      this._labelElements.splice(index, 1);
+    }
+
+    element.removeEventListener("pointerdown", this._onLabelPointerDown);
+    element.removeEventListener("pointerup", this._onLabelPointerUp);
+  }
+
   private _afterInputCreate(element: HTMLInputElement): void {
     element.focus();
     element.select();
+
+    if (this.inputCreatedFunction) {
+      const type = element.getAttribute("data-input-type") as InputType;
+      const index = type === "thumb" ? element["data-input-index"] : null;
+
+      this.inputCreatedFunction(element, type, index);
+    }
   }
 
   private _afterTickLineCreate(element: HTMLElement): void {
@@ -2060,8 +2178,6 @@ class Slider extends declared(Widget)<SliderEvents> {
   // Logic related to handle movement via interaction
   // - Stores information about the target handle and wires up additional event listeners
   private _onAnchorPointerDown(event: PointerEvent): void {
-    event.preventDefault();
-
     if (this._isDisabled()) {
       return;
     }
@@ -2073,6 +2189,8 @@ class Slider extends declared(Widget)<SliderEvents> {
     if (index === undefined) {
       return;
     }
+
+    event.preventDefault();
 
     this._anchorElements[index] && this._anchorElements[index].focus();
 
@@ -2093,13 +2211,13 @@ class Slider extends declared(Widget)<SliderEvents> {
 
   // Logic related to handle movement while dragging
   private _onAnchorPointerMove(event: PointerEvent): void {
-    event.preventDefault();
-
     // Prevent movement on this node if an input is active
     // Also allows text selection on the input
     if (this.state === "editing" || !this._dragStartInfo) {
       return;
     }
+
+    event.preventDefault();
 
     const {
       values,
@@ -2149,14 +2267,14 @@ class Slider extends declared(Widget)<SliderEvents> {
   // Logic related to finished handle movement
   // - Cleans up temporary variables and removes related event listeners
   private _onAnchorPointerUp(event: PointerEvent): void {
-    event.preventDefault();
-
     document.removeEventListener("pointerup", this._onAnchorPointerUp);
     document.removeEventListener("pointermove", this._onAnchorPointerMove);
 
     if (!this._dragStartInfo) {
       return;
     }
+
+    event.preventDefault();
 
     const { index } = this._dragStartInfo;
     const dragged = this._dragged;
@@ -2520,6 +2638,13 @@ class Slider extends declared(Widget)<SliderEvents> {
     const value = this._parseInputValue(inputValue, "value", index);
     const oldValue = values[index];
 
+    // Range validation
+    const { min: boundMin, max: boundMax } = this.viewModel.getBoundsForValueAtIndex(index);
+
+    if (value < boundMin || value > boundMax) {
+      return;
+    }
+
     viewModel.setValue(index, value);
 
     const newValue = this.values[index];
@@ -2597,7 +2722,13 @@ class Slider extends declared(Widget)<SliderEvents> {
     }
 
     const oldValue = this.max;
-    this.viewModel.set("max", this._parseInputValue(value, "max"));
+    const newValue = this._parseInputValue(value, "max");
+
+    if (newValue <= this.min) {
+      return;
+    }
+
+    this.viewModel.set("max", newValue);
 
     if (this.max !== oldValue) {
       this._emitMaxChangeEvent({ oldValue, value: this.max });
@@ -2632,12 +2763,19 @@ class Slider extends declared(Widget)<SliderEvents> {
     this._isMinInputActive = false;
     this.notifyChange("state");
 
+    // No value
     if (!value) {
       return;
     }
 
     const oldValue = this.min;
-    this.viewModel.set("min", this._parseInputValue(value, "min"));
+    const newValue = this._parseInputValue(value, "min");
+
+    if (newValue >= this.max) {
+      return;
+    }
+
+    this.viewModel.set("min", newValue);
 
     if (this.min !== oldValue) {
       this._emitMinChangeEvent({ oldValue, value: this.min });
@@ -2787,9 +2925,19 @@ class Slider extends declared(Widget)<SliderEvents> {
 
   // Returns anchor style with appropriate position and z-index
   private _getStyleForAnchor(value: number, index: number, isActive: boolean): string {
+    const position = this._getPositionStyleForElement(value);
+
+    // (#27906) Avoid setting z-index in single handle case
+    // Since this is the most common slider configuration
+    // ... this addresses the issue of the handle appearing
+    // ... on "top" of floating panels/dialogs/popups in simple apps
+    // Z-index is still required for multi-handle cases
+    if (this.values.length === 1) {
+      return `${position}`;
+    }
+
     const zIndex = this._zIndices[index];
     const adjustedZ = isActive ? this._zIndexOffset + zIndex : zIndex;
-    const position = this._getPositionStyleForElement(value);
 
     return `${position}; z-index: ${adjustedZ}`;
   }

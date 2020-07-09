@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/ObjectPool"],(function(o,n,r){return function(){function o(o){this.lodInfo=o,this.spans=[]}return o.prototype.release=function(){},o.prototype.forEach=function(o,n){var r=this.spans,e=this.lodInfo,t=e.level;if(0!==r.length)for(var l=0,i=r;l<i.length;l++)for(var f=i[l],c=f.row,s=f.colFrom,a=f.colTo,u=s;u<=a;u++)o.call(n,t,c,e.normalizeCol(u),e.getWorldForColumn(u))},o.pool=new r(o,!0),o}()}));
+define(["require","exports","../../../core/ObjectPool"],(function(o,n,t){return function(){function o(){this.spans=[]}return o.prototype.acquire=function(o){this.lodInfo=o},o.prototype.release=function(){this.lodInfo=null,this.spans.length=0},o.prototype.forEach=function(o,n){var t=this.spans,e=this.lodInfo,r=e.level;if(0!==t.length)for(var l=0,i=t;l<i.length;l++)for(var f=i[l],s=f.row,c=f.colFrom,u=f.colTo,a=c;a<=u;a++)o.call(n,r,s,e.normalizeCol(a),e.getWorldForColumn(a))},o.pool=new t(o),o}()}));

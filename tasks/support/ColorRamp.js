@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p,s){return function(r){function e(e){var t=r.call(this,e)||this;return t.type=null,t}return t(e,r),o([s.property({readOnly:!0,json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=o([s.subclass("esri.tasks.support.ColorRamp")],e)}(s.declared(p.JSONSupport))}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p){return function(r){function e(e){var t=r.call(this,e)||this;return t.type=null,t}return t.__extends(e,r),t.__decorate([p.property({readOnly:!0,json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=t.__decorate([p.subclass("esri.tasks.support.ColorRamp")],e)}(o.JSONSupport)}));

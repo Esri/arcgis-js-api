@@ -33,21 +33,21 @@ void main()
 {
   INIT;
 
-  vec2  a_size   = a_sizeAndOutlineWidth.xy * a_sizeAndOutlineWidth.xy / 256.0;
+  vec2  a_size   = a_sizeAndOutlineWidth.xy * a_sizeAndOutlineWidth.xy / 128.0;
   vec2  a_offset = a_vertexOffset / 16.0;
-  float a_outlineSize = a_sizeAndOutlineWidth.z * a_sizeAndOutlineWidth.z / 256.0;
+  float a_outlineSize = a_sizeAndOutlineWidth.z * a_sizeAndOutlineWidth.z / 128.0;
   float a_bitSet = a_bitSetAndDistRatio.z;
 
-  vec2 v_size = getMarkerSize(a_offset, a_size, a_outlineSize, a_sizeAndOutlineWidth.w * a_sizeAndOutlineWidth.w / 256.0, a_bitSet);
+  vec2 v_size = getMarkerSize(a_offset, a_size, a_outlineSize, a_sizeAndOutlineWidth.w * a_sizeAndOutlineWidth.w / 128.0, a_bitSet);
   vec2 v_tex      = a_texCoords / u_mosaicSize; // texture coords and transparency
 
   // MG: We should try and unify the bitset, here isColorLocked is the second bit.
   // Somewhat ugly to have to pass the index to getColor
   v_color    = getColor(a_color, a_bitSet, 1);
-  v_opacity  = getOpacity(a_bitSet, 1);
+  v_opacity  = getOpacity();
   v_id       = norm(a_id);
   v_filters  = getFilterFlags();
-  v_pos      = u_dvsMat3 * vec3(a_pos, 1.0) + getOffset(a_offset, a_bitSet);
+  v_pos      = u_dvsMat3 * vec3(a_pos * POSITION_PRECISION, 1.0) + getOffset(a_offset, a_bitSet);
   v_sizeTex  = vec4(v_size.xy, v_tex.xy); // Pack for iPhone
 
 #ifdef SDF

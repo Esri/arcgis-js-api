@@ -14,7 +14,7 @@ $background-color--inverse: $Calcite_Gray_650 !default;
 
 // Hover
 $interactive-font-color--hover: offset-foreground-color($interactive-font-color, 25%) !default;
-$background-color--hover: offset-background-color($background-color, 6%) !default;
+$background-color--hover: offset-background-color($background-color, 4.75%) !default;
 $border-color--hover: offset-foreground-color($interactive-font-color, 50%) !default;
 
 // Active
@@ -22,8 +22,8 @@ $border-color--active: $Calcite_Highlight_Blue_350 !default;
 $background-color--active: $Calcite_Highlight_Blue_100 !default;
 
 // Offset
-$background-color--offset: offset-background-color($background-color, 4%);
-$background-color--offset-subtle: offset-background-color($background-color, 2.75%);
+$background-color--offset: offset-background-color($background-color, 4.75%);
+$background-color--offset-subtle: offset-background-color($background-color, 3.5%);
 
 // Buttons
 $button-color: $Calcite_Highlight_Blue_350 !default;
@@ -35,6 +35,7 @@ $button-color--inverse: $interactive-font-color--inverse !default;
 $heading-color: $font-color !default;
 $background-color--overlay: rgba(0, 0, 0, 0.7) !default;
 $opacity--disabled: 0.4 !default;
+$opacity--sortable: 0.75 !default;
 $interactive-font-color--disabled: rgba($interactive-font-color, $opacity--disabled) !default;
 $font-color--placeholder: rgba($font-color, $opacity--disabled) !default;
 $border-color: rgba($interactive-font-color, 0.3) !default;

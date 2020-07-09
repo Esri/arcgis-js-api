@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Ploto matavimas",
+  "hint": "Spustelėkite norimoje scenos vietoje",
+  "unsupported": "Dvimatis ploto matavimas palaikomas tik scenos peržiūroje.",
+  "perimeterLength": "Perimetras",
+  "area": "Plotas",
+  "unit": "Matavimo vienetai",
+  "notApplicable": "netaikoma",
+  "newMeasurement": "Naujas matavimas",
+  "units": {
+    "metric": "Metriniai",
+    "imperial": "Imperiniai",
+    "square-kilometers": "Kvadratiniai kilometrai",
+    "square-meters": "Kvadratiniai metrai",
+    "square-miles": "Kvadratinės mylios",
+    "square-inches": "Kvadratiniai coliai",
+    "square-feet": "Kvadratinės pėdos",
+    "square-yards": "Kvadratiniai jardai",
+    "square-us-feet": "Kvadratinės pėdos (JAV)",
+    "acres": "Akrai",
+    "ares": "Arai",
+    "hectares": "Hektarai"
+  }
+}

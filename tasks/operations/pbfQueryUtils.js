@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","./pbfFeatureServiceParser"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.parsePBFFeatureQuery=function(e,r){var u=t.parseFeatureQuery(e,r).queryResult.featureResult;if(u&&u.features&&u.features.length&&u.objectIdFieldName)for(var a=u.objectIdFieldName,s=0,f=u.features;s<f.length;s++){var i=f[s];i.attributes&&(i.objectId=i.attributes[a])}return u}}));

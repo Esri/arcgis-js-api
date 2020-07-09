@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/Accessor","../../../../core/Handles","../../../../core/accessorSupport/decorators","./disposeMembers"],(function(e,r,t,o,s,n,p,c){Object.defineProperty(r,"__esModule",{value:!0});var d=function(e){function r(r){var t=e.call(this,r)||this;return t.handles=new n,t}return t(r,e),r.prototype.destroy=function(){c.default(this,"handles")},o([p.property({constructOnly:!0})],r.prototype,"renderCoordsHelper",void 0),o([p.property({constructOnly:!0})],r.prototype,"surface",void 0),o([p.property({constructOnly:!0})],r.prototype,"state",void 0),r=o([p.subclass("esri.views.3d.support.PointOfInterest")],r)}(p.declared(s));r.PointOfInterest=d,r.default=d}));
+define(["require","exports","tslib","../../../../core/Accessor","../../../../core/Handles","../../../../core/accessorSupport/decorators","./disposeMembers"],(function(e,t,r,o,s,n,c){Object.defineProperty(t,"__esModule",{value:!0});var d=function(e){function t(t){var r=e.call(this,t)||this;return r.handles=new s,r}return r.__extends(t,e),t.prototype.destroy=function(){c.default(this,"handles")},r.__decorate([n.property({constructOnly:!0})],t.prototype,"renderCoordsHelper",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"surface",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"state",void 0),t=r.__decorate([n.subclass("esri.views.3d.support.PointOfInterest")],t)}(o);t.PointOfInterest=d,t.default=d}));

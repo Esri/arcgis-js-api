@@ -18,7 +18,7 @@ vec4 colorize(vec4 currentPixel, bool isFloat) {
     // colormap lookup
     vec2 clrPosition = vec2((clrIndex + 0.5) / (u_colormapMaxIndex + 1.0), 0.0);
     vec4 color = texture2D(u_colormap, clrPosition);
-    result = vec4(color.rgb, color.a * u_opacity);
+    result = vec4(color.rgb, 1.0) * color.a * u_opacity;
   }
   return result;
 }

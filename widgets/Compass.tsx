@@ -41,14 +41,9 @@
  * @see module:esri/views/SceneView
  * @see module:esri/Camera
  */
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Compass/nls/Compass";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -61,10 +56,13 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Compass
 import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
 
+// esri.widgets.Compass.t9n
+import CompassMessages from "esri/widgets/Compass/t9n/Compass";
+
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-compass esri-widget--button esri-widget",
@@ -80,7 +78,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Compass")
-class Compass extends declared(Widget) {
+class Compass extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -95,8 +93,8 @@ class Compass extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -139,8 +137,29 @@ class Compass extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Compass/t9n/Compass")
+  messages: CompassMessages = null;
 
   //----------------------------------
   //  view
@@ -216,6 +235,8 @@ class Compass extends declared(Widget) {
       [CSS.rotationIcon]: !showingCompass
     };
 
+    const { messages } = this;
+
     return (
       <div
         bind={this}
@@ -224,15 +245,15 @@ class Compass extends declared(Widget) {
         onkeydown={this._reset}
         role="button"
         tabIndex={tabIndex}
-        aria-label={i18n.reset}
-        title={i18n.reset}
+        aria-label={messages.reset}
+        title={messages.reset}
       >
         <span
           aria-hidden="true"
           class={this.classes(CSS.icon, dynamicIconClasses)}
           styles={this._toRotationTransform(orientation)}
         />
-        <span class={CSS.text}>{i18n.reset}</span>
+        <span class={CSS.text}>{messages.reset}</span>
       </div>
     );
   }

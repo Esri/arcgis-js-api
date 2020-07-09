@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./Domain"],(function(e,r,t,o,n,i){return function(e){function r(r){var t=e.call(this,r)||this;return t.type="inherited",t}var i;return t(r,e),i=r,r.prototype.clone=function(){return new i},o([n.enumeration.serializable()({inherited:"inherited"})],r.prototype,"type",void 0),r=i=o([n.subclass("esri.layers.support.InheritedDomain")],r)}(n.declared(i))}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./Domain"],(function(e,r,t,n,o){return function(e){function r(r){var t=e.call(this,r)||this;return t.type="inherited",t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o},t.__decorate([n.enumeration({inherited:"inherited"})],r.prototype,"type",void 0),r=o=t.__decorate([n.subclass("esri.layers.support.InheritedDomain")],r)}(o)}));

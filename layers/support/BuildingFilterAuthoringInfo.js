@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p,n){return function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.type=null,e}return t(e,r),o([n.property({type:String,readOnly:!0,json:{write:!0}})],e.prototype,"type",void 0),e=o([n.subclass("esri.layers.support.BuildingFilterAuthoringInfo")],e)}(n.declared(p.JSONSupport))}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,n){return function(r){function e(){var e=null!==r&&r.apply(this,arguments)||this;return e.type=null,e}return t.__extends(e,r),t.__decorate([n.property({type:String,readOnly:!0,json:{write:!0}})],e.prototype,"type",void 0),e=t.__decorate([n.subclass("esri.layers.support.BuildingFilterAuthoringInfo")],e)}(o.JSONSupport)}));

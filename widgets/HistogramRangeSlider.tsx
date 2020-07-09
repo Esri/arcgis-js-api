@@ -22,13 +22,6 @@
  * @see module:esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/HistogramRangeSlider/nls/HistogramRangeSlider";
-
 // esri
 import Color = require("esri/Color");
 
@@ -36,7 +29,7 @@ import Color = require("esri/Color");
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 import { Integer } from "esri/core/accessorSupport/ensureType";
 
 // esri.renderers.smartMapping.statistics
@@ -54,12 +47,15 @@ import { BarCreatedFunction, DataLineInfos, DataLineCreatedFunction } from "esri
 import HistogramRangeSliderViewModel = require("esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel");
 import { RangeType } from "esri/widgets/HistogramRangeSlider/interfaces";
 
+// esri.widgets.HistogramRangeSlider.t9n
+import HistogramRangeSliderMessages from "esri/widgets/HistogramRangeSlider/t9n/HistogramRangeSlider";
+
 // esri.widgets.smartMapping.support
 import { getDeviationValues } from "esri/widgets/smartMapping/support/utils";
 
 // esri.widgets.support
 import { LabelFormatFunction, VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-histogram-range-slider",
@@ -76,7 +72,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.HistogramRangeSlider")
-class HistogramRangeSlider extends declared(Widget) {
+class HistogramRangeSlider extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -154,11 +150,11 @@ class HistogramRangeSlider extends declared(Widget) {
    *   values: [ 50, 150 ]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     const { average, bins, hasTimeData, max, min, viewModel } = this;
 
     this._updateBarFill = this._updateBarFill.bind(this);
@@ -281,9 +277,9 @@ class HistogramRangeSlider extends declared(Widget) {
   /**
    * The statistical average of the data in the histogram. You would typically
    * get this value from the `avg` property of
-   * {@link module:esri/renderers/smartMapping/statistics/summaryStatistics#SummaryStatisticsResult SummaryStatisticsResult},
+   * {@link module:esri/smartMapping/statistics/summaryStatistics#SummaryStatisticsResult SummaryStatisticsResult},
    * which is the result of the
-   * {@link module:esri/renderers/smartMapping/statistics/summaryStatistics} function.
+   * {@link module:esri/smartMapping/statistics/summaryStatistics} function.
    *
    * When set, this value will render on the histogram with a line and an average symbol.
    *
@@ -338,7 +334,7 @@ class HistogramRangeSlider extends declared(Widget) {
   /**
    * An array of objects representing each bin in the histogram. This
    * information is typically returned from the
-   * {@link module:esri/renderers/smartMapping/statistics/histogram} function.
+   * {@link module:esri/smartMapping/statistics/histogram} function.
    *
    * @name bins
    * @instance
@@ -529,7 +525,10 @@ class HistogramRangeSlider extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  labelFormatFunction
@@ -586,6 +585,25 @@ class HistogramRangeSlider extends declared(Widget) {
    */
 
   @aliasOf("viewModel.max") max: number = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/HistogramRangeSlider/t9n/HistogramRangeSlider")
+  messages: HistogramRangeSliderMessages = null;
 
   //----------------------------------
   //  min

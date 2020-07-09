@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports"],(function(n,t){function e(n,t){return Math.sqrt(n*n+t*t)}Object.defineProperty(t,"__esModule",{value:!0}),t.sub=function(n,t,e){return n[0]=t[0]-e[0],n[1]=t[1]-e[1],n},t.len=e,t.normalize=function(n){var t=e(n[0],n[1]);n[0]/=t,n[1]/=t},t.dist=function(n,t){return e(n[0]-t[0],n[1]-t[1])},t.isFunction=function(n){return"function"==typeof n},t.getLimitCosine=function(n){return 1/Math.max(n,1)}}));
+define(["require","exports"],(function(n,i){function t(n,i){return Math.sqrt(n*n+i*i)}Object.defineProperty(i,"__esModule",{value:!0}),i.sub=function(n,i,t){return n[0]=i[0]-t[0],n[1]=i[1]-t[1],n},i.len=t,i.normalize=function(n){var i=t(n[0],n[1]);n[0]/=i,n[1]/=i},i.dist=function(n,i){return t(n[0]-i[0],n[1]-i[1])},i.isFunction=function(n){return"function"==typeof n},i.getLimitCosine=function(n){return 1/Math.max(n,1)},i.isExtent=function(n){return void 0!==n.xmin&&void 0!==n.ymin&&void 0!==n.xmax&&void 0!==n.ymax},i.isMultipoint=function(n){return void 0!==n.points},i.isPoint=function(n){return void 0!==n.x&&void 0!==n.y},i.isPolyline=function(n){return void 0!==n.paths},i.isPolygon=function(n){return void 0!==n.rings}}));

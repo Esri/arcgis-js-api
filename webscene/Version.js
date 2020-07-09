@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/extendsHelper","../core/Version"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(r,t){return e.call(this,r,t,"webscene")||this}return t(r,e),Object.defineProperty(r.prototype,"supportsGround",{get:function(){return this.since(1,8)},enumerable:!0,configurable:!0}),Object.defineProperty(r.prototype,"supportsVisibleElevationLayersInSlides",{get:function(){return this.lessThan(1,8)},enumerable:!0,configurable:!0}),r}(n.Version);r.Version=o,r.default=o}));
+define(["require","exports","tslib","../core/Version"],(function(e,n,r,t){Object.defineProperty(n,"__esModule",{value:!0});var i=function(e){function n(n,r){return e.call(this,n,r,"webscene")||this}return r.__extends(n,e),Object.defineProperty(n.prototype,"supportsGround",{get:function(){return this.since(1,8)},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"supportsVisibleElevationLayersInSlides",{get:function(){return this.lessThan(1,8)},enumerable:!0,configurable:!0}),n}(t.Version);n.Version=i,n.default=i}));

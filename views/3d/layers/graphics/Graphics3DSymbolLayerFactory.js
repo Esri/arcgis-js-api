@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer","./Graphics3DWaterSymbolLayer"],(function(e,r,a,l,t,y,o,i,c,s,p,u){Object.defineProperty(r,"__esModule",{value:!0});var n=a.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");r.make=function(e,r,a,l){var t=f[e.type]&&f[e.type][r.type]||d[r.type];return t?new t(e,r,a,l):(n.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)};var d={icon:t.default,object:i.default,line:y.default,path:c.default,fill:s.default,extrude:l.default,text:p.default,water:u.default};r.setSymbolClass=function(e,r){d[e]=r};var f={"mesh-3d":{fill:o.default}}}));

@@ -2,7 +2,7 @@
  * Renders a histogram to visualize the spread of a dataset based on [bins](#bins) representing buckets, or sub-ranges, of
  * data. Each {@link module:esri/widgets/Histogram~Bin bin} is defined by a minimum and maximum value and a total count.
  *
- * You can generate the underlying histogram's bins with the {@link module:esri/renderers/smartMapping/statistics/histogram}
+ * You can generate the underlying histogram's bins with the {@link module:esri/smartMapping/statistics/histogram}
  * module. In this scenario, you can use the [fromHistogramResult()](#fromHistogramResult) helper method to conveniently
  * create the histogram from the result object.
  *
@@ -40,15 +40,8 @@
  * @module esri/widgets/Histogram
  * @since 4.12
  *
- * @see module:esri/renderers/smartMapping/statistics/histogram
+ * @see module:esri/smartMapping/statistics/histogram
  */
-
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Histogram/nls/Histogram";
 
 // esri
 import { substitute } from "esri/intl";
@@ -57,7 +50,7 @@ import { substitute } from "esri/intl";
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.statistics
 import { Bin, HistogramResult } from "esri/renderers/smartMapping/statistics/interfaces";
@@ -74,9 +67,12 @@ import {
   State
 } from "esri/widgets/Histogram/interfaces";
 
+// esri.widgets.Histogram.t9n
+import HistogramMessages from "esri/widgets/Histogram/t9n/Histogram";
+
 // esri.widgets.support
 import { LabelFormatFunction, VNode } from "esri/widgets/support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-histogram",
@@ -121,7 +117,7 @@ type HistogramParams = Partial<
 >;
 
 @subclass("esri.widgets.Histogram")
-class Histogram extends declared(Widget) {
+class Histogram extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -164,8 +160,8 @@ class Histogram extends declared(Widget) {
    *   average: 44
    * });
    */
-  constructor(params?: HistogramParams) {
-    super(params);
+  constructor(params?: HistogramParams, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -191,9 +187,9 @@ class Histogram extends declared(Widget) {
   /**
    * The statistical average of the data in the histogram. You would typically
    * get this value from the `avg` property of
-   * {@link module:esri/renderers/smartMapping/statistics/summaryStatistics#SummaryStatisticsResult SummaryStatisticsResult},
+   * {@link module:esri/smartMapping/statistics/summaryStatistics#SummaryStatisticsResult SummaryStatisticsResult},
    * which is the result of the
-   * {@link module:esri/renderers/smartMapping/statistics/summaryStatistics} function.
+   * {@link module:esri/smartMapping/statistics/summaryStatistics} function.
    *
    * When set, this value will render on the histogram with a symbol indicating it is the average.
    *
@@ -201,7 +197,7 @@ class Histogram extends declared(Widget) {
    * @instance
    * @type {number}
    *
-   * @see {@link module:esri/renderers/smartMapping/statistics/summaryStatistics}
+   * @see {@link module:esri/smartMapping/statistics/summaryStatistics}
    *
    * @example
    * // sets result returned from a smart mapping method
@@ -274,7 +270,7 @@ class Histogram extends declared(Widget) {
   /**
    * An array of objects representing each bin in the histogram. This
    * information is typically returned from the
-   * {@link module:esri/renderers/smartMapping/statistics/histogram} function.
+   * {@link module:esri/smartMapping/statistics/histogram} function.
    *
    * @name bins
    * @instance
@@ -392,7 +388,10 @@ class Histogram extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   /**
    * Function used to format labels. This function should be set to the
@@ -473,6 +472,25 @@ class Histogram extends declared(Widget) {
   @aliasOf("viewModel.max") max: number = null;
 
   //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Histogram/t9n/Histogram")
+  messages: HistogramMessages = null;
+
+  //----------------------------------
   //  min
   //----------------------------------
 
@@ -501,11 +519,9 @@ class Histogram extends declared(Widget) {
   /**
    * The state of the widget.
    *
-   * **Possible Values:** ready | disabled
-   *
    * @name state
    * @instance
-   * @type {string}
+   * @type {"ready" | "disabled"}
    * @readonly
    */
   @aliasOf("viewModel.state") state: State = null;
@@ -543,17 +559,17 @@ class Histogram extends declared(Widget) {
 
   /**
    * A convenience function used to create a Histogram widget instance from the result of
-   * the {@link module:esri/renderers/smartMapping/statistics/histogram} statistics
+   * the {@link module:esri/smartMapping/statistics/histogram} statistics
    * function.
    *
    * @method fromHistogramResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} result -
-   *   The result of the {@link module:esri/renderers/smartMapping/statistics/histogram} statistics
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} result -
+   *   The result of the {@link module:esri/smartMapping/statistics/histogram} statistics
    *   function used to generate a histogram for a field or expression from a layer.
    * @return {module:esri/widgets/Histogram} The histogram instance representing the histogram
-   *   returned from {@link module:esri/renderers/smartMapping/statistics/histogram}.
+   *   returned from {@link module:esri/smartMapping/statistics/histogram}.
    *
    * @example
    * var colorParams = {
@@ -674,6 +690,7 @@ class Histogram extends declared(Widget) {
       bins,
       layout,
       max,
+      messages,
       viewModel: { range }
     } = this;
 
@@ -687,7 +704,7 @@ class Histogram extends declared(Widget) {
         ? [0, diffMax * (totalHeight / range)]
         : [totalWidth - barWidth - diffMax * (totalWidth / range), totalHeight - barHeight];
 
-    const ariaLabel = substitute(i18n.barLabel, { count, maxValue, minValue });
+    const ariaLabel = substitute(messages.barLabel, { count, maxValue, minValue });
 
     return (
       <rect

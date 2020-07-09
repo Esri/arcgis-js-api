@@ -10,9 +10,6 @@ uniform vec2 u_transformGridSize;
 // target image size
 uniform vec2 u_targetImageSize;
 
-// source image size
-uniform vec2 u_srcImageSize;
-
 vec2 projectPixelLocation(vec2 coords) {
   // pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]
   vec2 index_image = floor(coords * u_targetImageSize);

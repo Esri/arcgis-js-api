@@ -77,6 +77,13 @@
     list-style: none;
     margin: 0 0 0 $side-spacing;
     padding: 0;
+    @include sortableChosen("esri-basemap-layer-list--chosen");
+  }
+  .esri-basemap-layer-list__list,
+  .esri-basemap-layer-list__item {
+    &.esri-basemap-layer-list--chosen .esri-basemap-layer-list__item {
+      background-color: transparent;
+    }
   }
   .esri-basemap-layer-list__item--has-children {
     padding-bottom: $cap-spacing--half;
@@ -113,6 +120,7 @@
     list-style: none;
     margin: $cap-spacing--quarter 0;
     padding: 0;
+    @include sortableChosen("esri-basemap-layer-list--chosen");
   }
   .esri-basemap-layer-list__item-container {
     border-left: $border-size--active solid transparent;

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../../core/Error","../../../../core/Logger","./enums","./Utils"],(function(e,s,i,l,r,a){Object.defineProperty(s,"__esModule",{value:!0});var n=l.getLogger("esri.views.2d.engine.webgl");s.getTypeOfSizeVisualVariable=function(e){return a.isNumber(e.minDataValue)&&a.isNumber(e.maxDataValue)&&null!=e.minSize&&null!=e.maxSize?r.WGLVVFlag.SIZE_MINMAX_VALUE:(e.expression&&"view.scale"===e.expression||e.valueExpression&&"$view.scale"===e.valueExpression)&&Array.isArray(e.stops)?r.WGLVVFlag.SIZE_SCALE_STOPS:(null!=e.field||e.expression&&"view.scale"!==e.expression||e.valueExpression&&"$view.scale"!==e.valueExpression)&&(Array.isArray(e.stops)||"levels"in e&&e.levels)?r.WGLVVFlag.SIZE_FIELD_STOPS:(null!=e.field||e.expression&&"view.scale"!==e.expression||e.valueExpression&&"$view.scale"!==e.valueExpression)&&null!=e.valueUnit?r.WGLVVFlag.SIZE_UNIT_VALUE:(n.error(new i("mapview-bad-type","Found invalid size VisualVariable",e)),r.WGLVVFlag.NONE)}}));

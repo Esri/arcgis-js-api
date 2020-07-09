@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/decorateHelper","../../core/tsSupport/declareExtendsHelper","../../core/accessorSupport/decorators","./MomentElementViewModel"],(function(e,r,t,o,s,c){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return o(r,e),r=t([s.subclass("esri.widgets.support.TimePickerViewModel")],r)}(s.declared(c))}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./MomentElementViewModel"],(function(e,r,t,i,o){return function(e){function r(r){return e.call(this,r)||this}return t.__extends(r,e),r=t.__decorate([i.subclass("esri.widgets.support.TimePickerViewModel")],r)}(o)}));

@@ -10,24 +10,17 @@
  * @see module:esri/widgets/support/DatePicker
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate"/>
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends"/>
-
-// Intl.DateTimeFormatOptions
-import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/nls/TimePicker";
-
 // esri
 import { formatDate } from "esri/../intl";
-import moment = require("esri/../moment");
 
 // esri.core
 import { eventKey } from "esri/../core/events";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+
+// esri.intl
+import { loadMoment } from "esri/../intl/moment";
 
 // esri.widgets
 import Widget = require("esri/Widget");
@@ -35,9 +28,16 @@ import Widget = require("esri/Widget");
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
 import TimePickerViewModel = require("esri/widgets/TimePickerViewModel");
-import { renderable, tsx } from "esri/widgets/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/widget";
 
-type Moment = moment.Moment;
+// esri.widgets.support.t9n
+import TimePickerMessages from "esri/widgets/t9n/TimePicker";
+
+// Intl.DateTimeFormatOptions
+import DateTimeFormatOptions = Intl.DateTimeFormatOptions;
+
+type Moment = typeof import("moment");
+type MomentInstance = ReturnType<Moment>;
 
 type TimeEditPart = "hours" | "minutes" | "meridiem";
 
@@ -65,12 +65,12 @@ const TIME_PICKER_NAVIGATION_KEYS = ["ArrowDown", "ArrowLeft", "ArrowRight", "Ar
  * @private
  * @returns {boolean}
  */
-function isMeridiem(time: Moment): boolean {
+function isMeridiem(time: MomentInstance): boolean {
   return formatDate(time.valueOf(), dateFormatOptions).indexOf(" ") > -1; // "<time> <meridiem>" or "<time>"
 }
 
 @subclass("esri.widgets.support.TimePicker")
-class TimePicker extends declared(Widget) {
+class TimePicker extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -91,8 +91,12 @@ class TimePicker extends declared(Widget) {
    *   value: "20130208T0809" // This will display time as 8:09 AM
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
+  }
+
+  async loadLocale(): Promise<void> {
+    this._moment = await loadMoment();
   }
 
   //--------------------------------------------------------------------------
@@ -103,13 +107,51 @@ class TimePicker extends declared(Widget) {
 
   private _activePart: TimeEditPart;
 
-  private _activeTime: Moment = null;
+  private _activeTime: MomentInstance = null;
+
+  private _moment: Moment;
 
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.15
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/support/t9n/TimePicker")
+  messages: TimePickerMessages = null;
 
   //----------------------------------
   //  value
@@ -120,10 +162,10 @@ class TimePicker extends declared(Widget) {
    *
    * @name value
    * @instance
-   * @type {*}
+   * @type {Date}
    */
   @aliasOf("viewModel.value")
-  value: Moment = null;
+  value: Date = null;
 
   //----------------------------------
   //  viewModel
@@ -159,7 +201,7 @@ class TimePicker extends declared(Widget) {
       <div class={CSS.base}>
         <input
           afterUpdate={this._handleInputUpdate}
-          aria-label={i18n.inputTitle}
+          aria-label={this.messages.inputTitle}
           bind={this}
           class={this.classes(CSS.timePickerInput, CSS.input)}
           onblur={this._handleInputBlur}
@@ -182,7 +224,7 @@ class TimePicker extends declared(Widget) {
 
   private _handleInputBlur(): void {
     if (this._activeTime.isValid()) {
-      this.viewModel.value = this._activeTime;
+      this.viewModel.value = this._activeTime.toDate();
     }
 
     this._activeTime = null;
@@ -229,7 +271,7 @@ class TimePicker extends declared(Widget) {
 
   private _handleInputFocus(event: FocusEvent): void {
     this._activePart = "hours";
-    this._activeTime = this.viewModel.value.clone().startOf("minute");
+    this._activeTime = this._moment(this.viewModel.value).startOf("minute");
 
     this._selectPart(event.target as HTMLInputElement, "hours");
   }
@@ -330,7 +372,7 @@ class TimePicker extends declared(Widget) {
     return partsInOrder[nextPartIndex];
   }
 
-  private _setTime(time: Moment, activePart: TimeEditPart, duration: number): void {
+  private _setTime(time: MomentInstance, activePart: TimeEditPart, duration: number): void {
     if (activePart === "hours") {
       const hourUpperLimit = isMeridiem(time) ? 12 : 24;
       const hours = `${time.hour() % hourUpperLimit}`;
@@ -360,7 +402,7 @@ class TimePicker extends declared(Widget) {
 
   private _handleInputPaste(event: ClipboardEvent): void {
     const content = event.clipboardData.getData("text/plain");
-    const parsed = moment(content);
+    const parsed = this._moment(content);
 
     if (parsed.isValid()) {
       this._activeTime = parsed;
@@ -376,7 +418,7 @@ class TimePicker extends declared(Widget) {
     this._shift(direction, this._activeTime, this._activePart);
   }
 
-  private _shift(direction: "up" | "down", time: Moment, part: TimeEditPart): void {
+  private _shift(direction: "up" | "down", time: MomentInstance, part: TimeEditPart): void {
     if (!direction || !time || !part) {
       return;
     }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/tsSupport/extendsHelper","./AsyncWorkerQueue"],(function(e,r,t,u){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e){function r(r,t,u,n,l){var s=e.call(this,n)||this;return s.url=r,s.options=t,s.docType=u,s.key=l,s.result=null,s.status=1,s.request=null,s.abortController=null,s.resolvers=new Array,s.startTime=0,s}return t(r,e),r}(u.BaseTask);r.default=n}));
+define(["require","exports","tslib","./AsyncWorkerQueue"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0});var u=function(e){function r(r,t,n,u,l){var s=e.call(this,u)||this;return s.url=r,s.options=t,s.docType=n,s.key=l,s.result=null,s.status=1,s.request=null,s.abortController=null,s.resolvers=new Array,s.startTime=0,s}return t.__extends(r,e),r}(n.BaseTask);r.default=u}));

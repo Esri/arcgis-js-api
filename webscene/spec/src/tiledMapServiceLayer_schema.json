@@ -78,7 +78,8 @@
     },
     "refreshInterval": {
       "type": "number",
-      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled."
+      "description": "Refresh interval of the layer in minutes. Non-zero value indicates automatic layer refresh at the specified interval. Value of 0 indicates auto refresh is not enabled.",
+      "default": 0
     },
     "showLegend": {
       "type": "boolean",

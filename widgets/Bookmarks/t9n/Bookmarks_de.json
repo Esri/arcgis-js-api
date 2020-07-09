@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Lesezeichen hinzufügen",
+  "goToBookmark": "Zum Lesezeichen wechseln",
+  "noBookmarksHeading": "Keine Lesezeichen",
+  "noBookmarksDescription": "Einer Karte hinzugefügte Lesezeichen werden hier angezeigt.",
+  "title": "Titel",
+  "addPlaceholder": "Lesezeichentitel eingeben",
+  "addingBookmark": "Lesezeichen wird hinzugefügt",
+  "widgetLabel": "Lesezeichen"
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./object","@dojo/framework/shim/string"],(function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});var a=/\{([^\}]+)\}/g;t.endsWith=n.endsWith,t.startsWith=n.startsWith,t.padEnd=n.padEnd,t.padStart=n.padStart,t.replace=function(e,t){return e.replace(a,"object"==typeof t?function(e,n){return r.getDeepValue(n,t)}:function(e,r){return t(r)})},t.escapeRegExpString=function(e,t){return e.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,(function(e){return t&&-1!==t.indexOf(e)?e:"\\"+e}))},t.numericHash=function(e){for(var t=0,r=0;r<e.length;r++)t=(t<<5)-t+e.charCodeAt(r),t|=0;return t}}));
+define(["require","exports","./object","@dojo/framework/shim/string"],(function(e,t,n,r){Object.defineProperty(t,"__esModule",{value:!0});var u=/\{([^\}]+)\}/g;function i(e){return null==e?"":e}t.endsWith=r.endsWith,t.startsWith=r.startsWith,t.padEnd=r.padEnd,t.padStart=r.padStart,t.includes=r.includes,t.replace=function(e,t){return e.replace(u,"object"==typeof t?function(e,r){return i(n.getDeepValue(r,t))}:function(e,n){return i(t(n))})},t.escapeRegExpString=function(e,t){return e.replace(/([\.$?*|{}\(\)\[\]\\\/\+\-^])/g,(function(e){return t&&-1!==t.indexOf(e)?e:"\\"+e}))},t.numericHash=function(e){for(var t=0,n=0;n<e.length;n++)t=(t<<5)-t+e.charCodeAt(n),t|=0;return t}}));

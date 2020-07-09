@@ -25,15 +25,11 @@
  * view.ui.add(layerListExpand, "top-right");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Expand/nls/Expand";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -45,6 +41,9 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Expand
 import ExpandViewModel = require("esri/widgets/Expand/ExpandViewModel");
 
+// esri.widgets.Expand.t9n
+import ExpandMessages from "esri/widgets/Expand/t9n/Expand";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import {
@@ -53,7 +52,8 @@ import {
   hasDomNode,
   renderable,
   tsx,
-  DomNodeOwner
+  DomNodeOwner,
+  messageBundle
 } from "esri/widgets/support/widget";
 
 type ContentSource = string | HTMLElement | Widget | DomNodeOwner;
@@ -81,7 +81,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Expand")
-class Expand extends declared(Widget) {
+class Expand extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -95,8 +95,36 @@ class Expand extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  //--------------------------------------------------------------------------
+
+  @property({
+    readOnly: true,
+    dependsOn: ["id"]
+  })
+  @renderable()
+  protected get contentId(): string {
+    return `${this.id}_controls_content`;
+  }
+
+  @property({
+    readOnly: true,
+    dependsOn: ["expanded", "messagesCommon", "collapseTooltip", "expandTooltip"]
+  })
+  @renderable()
+  protected get expandTitle(): string {
+    const { expanded, messagesCommon, collapseTooltip, expandTooltip } = this;
+
+    return expanded
+      ? collapseTooltip || messagesCommon.collapse
+      : expandTooltip || messagesCommon.expand;
   }
 
   //--------------------------------------------------------------------------
@@ -340,8 +368,46 @@ class Expand extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Expand/t9n/Expand")
+  messages: ExpandMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  mode
@@ -360,7 +426,7 @@ class Expand extends declared(Widget) {
    * @instance
    * @since 4.7
    * @default "auto"
-   * @type {string}
+   * @type {"auto" | "floating" | "drawer"}
    */
   @property()
   @renderable()
@@ -436,53 +502,7 @@ class Expand extends declared(Widget) {
   }
 
   render(): VNode {
-    const expanded = this.viewModel.expanded;
     const { mode } = this;
-    const expandTooltip = this.expandTooltip || i18nCommon.expand;
-    const collapseTooltip = this.collapseTooltip || i18nCommon.collapse;
-    const title = expanded ? collapseTooltip : expandTooltip;
-    const collapseIconClass = this.collapseIconClass;
-    const expandIconClass = this.expandIconClass;
-
-    const expandIconClasses = {
-      [CSS.iconExpanded]: expanded,
-      [collapseIconClass]: expanded,
-      [expandIconClass]: !expanded
-    };
-    if (collapseIconClass === expandIconClass) {
-      expandIconClasses[collapseIconClass] = true;
-    }
-
-    const containerExpanded = {
-      [CSS.containerExpanded]: expanded
-    };
-
-    const contentClasses = {
-      [CSS.contentExpanded]: expanded
-    };
-
-    const maskClasses = {
-      [CSS.expandMaskExpanded]: expanded
-    };
-
-    const iconNumber = this.iconNumber;
-
-    const badgeNumberNode =
-      iconNumber && !expanded ? (
-        <span key={"expand__icon-number"} class={CSS.iconNumber}>
-          {iconNumber}
-        </span>
-      ) : null;
-
-    const expandedBadgeNumberNode =
-      iconNumber && expanded ? (
-        <span
-          key={"expand__expand-icon-number"}
-          class={this.classes(CSS.iconNumber, CSS.iconNumberExpanded)}
-        >
-          {iconNumber}
-        </span>
-      ) : null;
 
     const baseClasses = {
       [CSS.modeAuto]: mode === "auto",
@@ -490,50 +510,136 @@ class Expand extends declared(Widget) {
       [CSS.modeFloating]: mode === "floating"
     };
 
-    const contentId = `${this.id}_controls_content`;
-
     return (
       <div class={this.classes(CSS.base, baseClasses)}>
-        <div bind={this} onclick={this._toggle} class={this.classes(CSS.expandMask, maskClasses)} />
-        <div class={this.classes(CSS.container, containerExpanded)}>
-          <div class={CSS.panel}>
-            <div
-              bind={this}
-              onclick={this._toggle}
-              onkeydown={this._toggle}
-              aria-controls={contentId}
-              aria-expanded={expanded ? "true" : "false"}
-              title={title}
-              role="button"
-              tabindex="0"
-              class={CSS.button}
-            >
-              {badgeNumberNode}
-              <span aria-hidden="true" class={this.classes(CSS.icon, expandIconClasses)} />
-              <span class={CSS.text}>{title}</span>
-            </div>
-            {expandedBadgeNumberNode}
-          </div>
-          <div id={contentId} role="region" class={this.classes(CSS.content, contentClasses)}>
-            {this._renderContent()}
-          </div>
-        </div>
+        {this.renderMask()}
+        {this.renderContainer()}
       </div>
     );
   }
 
   //--------------------------------------------------------------------------
   //
-  //  Private Methods
+  //  Protected Methods
   //
   //--------------------------------------------------------------------------
 
-  @accessibleHandler()
-  private _toggle(): void {
-    this.toggle();
+  protected renderContainer(): VNode {
+    const { expanded } = this;
+
+    const containerExpanded = {
+      [CSS.containerExpanded]: expanded
+    };
+
+    return (
+      <div class={this.classes(CSS.container, containerExpanded)}>
+        {this.renderPanel()}
+        {this.renderContent()}
+      </div>
+    );
   }
 
-  private _renderContent(): VNode {
+  protected renderMask(): VNode {
+    const { expanded } = this;
+
+    const maskClasses = {
+      [CSS.expandMaskExpanded]: expanded
+    };
+
+    return (
+      <div bind={this} onclick={this._toggle} class={this.classes(CSS.expandMask, maskClasses)} />
+    );
+  }
+
+  protected renderBadgeNumber(): VNode {
+    const { expanded, iconNumber } = this;
+
+    return iconNumber && !expanded ? (
+      <span key={"expand__icon-number"} class={CSS.iconNumber}>
+        {iconNumber}
+      </span>
+    ) : null;
+  }
+
+  protected renderPanelNumber(): VNode {
+    const { iconNumber, expanded } = this;
+
+    return iconNumber && expanded ? (
+      <span
+        key={"expand__expand-icon-number"}
+        class={this.classes(CSS.iconNumber, CSS.iconNumberExpanded)}
+      >
+        {iconNumber}
+      </span>
+    ) : null;
+  }
+
+  protected renderIcon(): VNode {
+    const { collapseIconClass, expandIconClass, expanded } = this;
+
+    const expandIconClasses = {
+      [CSS.iconExpanded]: expanded,
+      [collapseIconClass]: expanded,
+      [expandIconClass]: !expanded
+    };
+
+    if (collapseIconClass === expandIconClass) {
+      expandIconClasses[collapseIconClass] = true;
+    }
+
+    return <span aria-hidden="true" class={this.classes(CSS.icon, expandIconClasses)} />;
+  }
+
+  protected renderTitle(): VNode {
+    return <span class={CSS.text}>{this.expandTitle}</span>;
+  }
+
+  protected renderExpandButton(): VNode {
+    const { expanded, expandTitle, contentId } = this;
+
+    return (
+      <div
+        bind={this}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
+        aria-controls={contentId}
+        aria-expanded={expanded ? "true" : "false"}
+        title={expandTitle}
+        role="button"
+        tabindex="0"
+        class={CSS.button}
+      >
+        {this.renderBadgeNumber()}
+        {this.renderIcon()}
+        {this.renderTitle()}
+      </div>
+    );
+  }
+
+  protected renderPanel(): VNode {
+    return (
+      <div class={CSS.panel}>
+        {this.renderExpandButton()}
+        {this.renderPanelNumber()}
+      </div>
+    );
+  }
+
+  protected renderContent(): VNode {
+    const { expanded, contentId } = this;
+
+    const contentClasses = {
+      [CSS.contentExpanded]: expanded
+    };
+
+    return (
+      <div id={contentId} role="region" class={this.classes(CSS.content, contentClasses)}>
+        {this.renderContentContainer()}
+      </div>
+    );
+  }
+
+  protected renderContentContainer(): VNode {
     const content = this.content;
 
     if (typeof content === "string") {
@@ -553,6 +659,16 @@ class Expand extends declared(Widget) {
     }
 
     return null;
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
+  @accessibleHandler()
+  private _toggle(): void {
+    this.toggle();
   }
 
   private _attachToNode(this: HTMLElement, node: HTMLElement): void {

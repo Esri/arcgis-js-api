@@ -20,37 +20,506 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define("require exports ../kernel module ../geometry/Geometry ../geometry/Polygon ../geometry/Polyline ../geometry/Point ../geometry/Extent ../geometry/Multipoint ../workers/WorkerClient ../core/promiseUtils".split(" "),function(B,Q,K,L,t,C,D,z,E,F,M,k){function N(b){if(void 0===z.fromJson){if(void 0!==b.x&&void 0!==b.y)return new z(b);if(void 0!==b.paths)return new D(b);if(void 0!==b.rings)return new C(b);if(void 0!==b.points)return new F(b);if(void 0!==b.xmin&&void 0!==
-b.ymin&&void 0!==b.xmax&&void 0!==b.ymax)return new E(b)}else{if(void 0!==b.x&&void 0!==b.y)return z.fromJson(b);if(void 0!==b.paths)return D.fromJson(b);if(void 0!==b.rings)return C.fromJson(b);if(void 0!==b.points)return F.fromJson(b);if(void 0!==b.xmin&&void 0!==b.ymin&&void 0!==b.xmax&&void 0!==b.ymax)return E.fromJson(b)}}function r(b,a){var e;if(null==b||void 0===b)return b;if("number"===typeof b)return b;var c=b.toString();if(""===c)return null;if(2==a){if(e=O[c],void 0!==e)return e}else if(0==
-a){e=G[c];if(void 0!==e)return e;e=H[b];if(void 0!==e)return e}else if(3==a&&(e=G[c],void 0!==e))return e;if(1==a&&(e=H[b],void 0!==e))return e;if(!0===/^\d+$/.test(c))return parseInt(c);throw Error("Unrecognised Unit Type");}function x(b){if(void 0!==b&&null!==b)switch(b){case "loxodrome":return 1;case "great-elliptic":return 2;case "normal-section":return 3;case "shape-preserving":return 4}return 0}function h(b){if(null===b||void 0===b)return null;if(u)switch(b.type){case "point":return{x:b.x,y:b.y,
-z:b.z,m:b.m};case "multipoint":return{points:b.points,hasZ:b.hasZ,hasM:b.hasM};case "polyline":return{paths:b.paths,hasZ:b.hasZ,hasM:b.hasM};case "polygon":return{rings:b.rings,hasZ:b.hasZ,hasM:b.hasM};case "extent":return{xmin:b.xmin,ymin:b.ymin,xmax:b.xmax,ymax:b.ymax,zmin:b.zmin,zmax:b.zmax,mmin:b.mmin,mmax:b.mmax}}else switch(b.type){case "point":return{x:b.x,y:b.y};case "multipoint":return{points:b.points};case "polyline":return{paths:b.paths};case "polygon":return{rings:b.rings};case "extent":return{xmin:b.xmin,
-ymin:b.ymin,xmax:b.xmax,ymax:b.ymax}}return null}function p(b,a){if(null===b)return null;var e=N(b);u?e.set("spatialReference",a):e.setSpatialReference(a);return e}function n(b){return null==b||void 0===b?null:-1!=b.wkid&&null!==b.wkid&&void 0!==b.wkid?{wkid:b.wkid}:""!==b.wkt&&void 0!==b.wkt&&null!==b.wkt?{wkt:b.wkt}:null}function y(b,a,e){return k.create(function(c,d){var f=a.spatialReference;m.a({action:b,geoma:h(a),geomb:h(e),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?
-d(Error(a.error.message)):c(p(a.result,f))},function(a){d(a)})})}function q(b,a,e){return k.create(function(c,d){m.a({action:b,geoma:h(a),geomb:h(e),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?d(Error(a.error.message)):c(a.result)},function(a){d(a)})})}var u=0==K.version.indexOf("4."),I;(function(b){b[b.Linear=0]="Linear";b[b.Angular=1]="Angular";b[b.Area=2]="Area";b[b.LinearOrAngular=3]="LinearOrAngular"})(I||(I={}));var G={feet:9002,kilometers:9036,meters:9001,miles:9035,
-"nautical-miles":9030,yards:9096},O={acres:109402,ares:109463,hectares:109401,"square-feet":109405,"square-kilometers":109414,"square-meters":109404,"square-miles":109413,"square-yards":109442},H={degrees:9102,radians:9101},P=function(){function b(){this.c=!0;this.i=null}b.prototype.A=function(a){var b=this;this.i=new M;this.i.setWorker(this.l(),function(){b.c=!1;a()})};b.prototype.l=function(){return B.B?B.B("./geometryenginewebworker"):L.id.replace(/\/[^\/]*$/ig,"/")+"./geometryenginewebworker"};
-return b}(),m=function(){function b(){}b.a=function(a){return k.create(function(e,c){b.h.push({task:a,d:{resolve:e,reject:c}});b.f()})};b.f=function(){if(0<b.h.length){for(var a=null,e=0;e<b.b.length;e++)if(!1===b.b[e].c){a=b.b[e];break}null===a&&b.b.length<b.g&&(e=new P,b.b.push(e),e.A(function(){b.f()}));if(null!==a){var c=this.h.shift();a.c=!0;a.i.postMessage(c.task).then(function(e){a.c=!1;try{c.d.resolve(e)}catch(f){}b.f()},function(e){a.c=!1;try{c.d.reject(e)}catch(f){}b.f()})}}};b.b=[];b.h=
-[];b.g=4;return b}();return function(){function b(){}b._removeAllWorkers=function(){m.b=[]};b._setMaxWorkers=function(a){b._removeAllWorkers();m.g=a};b._getMaxWorkers=function(){return m.g};b._getNumWorkers=function(){return m.b.length};b.extendedSpatialReferenceInfo=function(a){return k.create(function(b,c){m.a({action:"extendedspatialreferenceinfo",spatialReference:n(a)}).then(function(a){0===a.status?c(Error(a.error.message)):b(a.result)},function(a){c(a)})})};b.equals=function(a,b){return null===
-a&&null!==b||null===b&&null!==a?!1:q("equals",a,b)};b.intersects=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("intersects",a,b)};b.touches=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("touches",a,b)};b.within=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("within",a,b)};b.disjoint=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("disjoint",
-a,b)};b.overlaps=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("overlaps",a,b)};b.crosses=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("crosses",a,b)};b.contains=function(a,b){if(null===a||null===b)throw Error("Illegal Argument Exception");return q("contains",a,b)};b.isSimple=function(a){return q("issimple",a,null)};b.clip=function(a,b){return y("clip",a,b)};b.simplify=function(a){return k.create(function(b,c){var d=
-a.spatialReference;m.a({action:"simplify",geoma:h(a),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?c(Error(a.error.message)):b(p(a.result,d))},function(a){c(a)})})};b.rotate=function(a,b,c){return k.create(function(d,f){var g=a.spatialReference;if(void 0===c||null===c)switch(a.type){case "point":c=a;break;case "extent":c=u?a.get("center"):a.getCenter();break;default:c=u?a.get("extent").get("center"):a.getExtent().getCenter()}m.a({action:"rotate",geoma:h(a),spatialReference:n(a.spatialReference),
-angle:b,rotpt:h(c)}).then(function(a){0===a.status?f(Error(a.error.message)):d(p(a.result,g))},function(a){f(a)})})};b.flipHorizontal=function(a,b){return k.create(function(c,d){var f=a.spatialReference;if(void 0===b||null===b)switch(a.type){case "point":b=a;break;case "extent":b=u?a.get("center"):a.getCenter();break;default:b=u?a.get("extent").get("center"):a.getExtent().getCenter()}m.a({action:"fliph",geoma:h(a),spatialReference:n(a.spatialReference),flippt:h(b)}).then(function(a){0===a.status?
-d(Error(a.error.message)):c(p(a.result,f))},function(a){d(a)})})};b.flipVertical=function(a,b){return k.create(function(c,d){var f=a.spatialReference;if(void 0===b||null===b)switch(a.type){case "point":b=a;break;case "extent":b=u?a.get("center"):a.getCenter();break;default:b=u?a.get("extent").get("center"):a.getExtent().getCenter()}m.a({action:"flipv",geoma:h(a),spatialReference:n(a.spatialReference),flippt:h(b)}).then(function(a){0===a.status?d(Error(a.error.message)):c(p(a.result,f))},function(a){d(a)})})};
-b.distance=function(a,b,c){return k.create(function(d,f){m.a({action:"distance",geoma:h(a),geomb:h(b),spatialReference:n(a.spatialReference),distanceunits:r(c,3)}).then(function(a){0===a.status?f(Error(a.error.message)):d(a.result)},function(a){f(a)})})};b.relate=function(a,b,c){return k.create(function(d,f){m.a({action:"relate",geoma:h(a),geomb:h(b),relation:c,spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?f(Error(a.error.message)):d(a.result)},function(a){f(a)})})};b.nearestCoordinate=
-function(a,b,c){return k.create(function(d,f){var g=a.spatialReference;m.a({action:"nearestcoord",geoma:h(a),geomb:h(b),spatialReference:n(a.spatialReference),testinterior:void 0===c?!0:c}).then(function(a){0===a.status?f(Error(a.error.message)):(a.result.coordinate=p(a.result.coordinate,g),d(a.result))},function(a){f(a)})})};b.nearestVertex=function(a,b){return k.create(function(c,d){var f=a.spatialReference;m.a({action:"nearestvertex",geoma:h(a),geomb:h(b),spatialReference:n(a.spatialReference)}).then(function(a){0===
-a.status?d(Error(a.error.message)):(a.result.coordinate=p(a.result.coordinate,f),c(a.result))},function(a){d(a)})})};b.nearestVertices=function(a,b,c,d){return k.create(function(f,g){var l=a.spatialReference;m.a({action:"nearestvertices",geoma:h(a),geomb:h(b),spatialReference:n(a.spatialReference),searchradius:c,maxreturn:d}).then(function(a){if(0===a.status)g(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b].coordinate=p(a.result[b].coordinate,l);f(a.result)}},function(a){g(a)})})};
-b.cut=function(a,b){return k.create(function(c,d){var f=a.spatialReference;m.a({action:"cut",geoma:h(a),geomb:h(b),spatialReference:n(a.spatialReference)}).then(function(a){if(0===a.status)d(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],f);c(a.result)}},function(a){d(a)})})};b.generalize=function(a,b,c,d){return k.create(function(f,g){var l=a.spatialReference;m.a({action:"generalize",geoma:h(a),maxdeviation:b,removedegenerateparts:c,maxdeviationunit:r(d,
-3),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?g(Error(a.error.message)):f(p(a.result,l))},function(a){g(a)})})};b.densify=function(a,b,c){return k.create(function(d,f){var g=a.spatialReference;m.a({action:"densify",geoma:h(a),maxsegmentlength:b,maxsegmentlengthunit:r(c,3),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?f(Error(a.error.message)):d(p(a.result,g))},function(a){f(a)})})};b.geodesicDensify=function(a,b,c,d){void 0===d&&(d=0);return k.create(function(f,
-g){var l=a.spatialReference;m.a({action:"geodensify",geoma:h(a),maxsegmentlength:b,maxsegmentlengthunit:r(c,3),spatialReference:n(a.spatialReference),curveType:d}).then(function(a){0===a.status?g(Error(a.error.message)):f(p(a.result,l))},function(a){g(a)})})};b.intersect=function(a,e){return a instanceof t?y("intersect",a,e):b.u(a,e)};b.u=function(a,b){return k.create(function(c,d){for(var f=[],g=0;g<a.length;g++)f.push(h(a[g]));var l=b.spatialReference;m.a({action:"intersectmany",geom:h(b),geometries:f,
-spatialReference:n(b.spatialReference)}).then(function(a){if(0===a.status)d(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],l);c(a.result)}},function(a){d(a)})})};b.difference=function(a,e){return a instanceof t?y("difference",a,e):b.s(a,e)};b.s=function(a,b){return k.create(function(c,d){for(var f=[],g=0;g<a.length;g++)f.push(h(a[g]));var l=b.spatialReference;m.a({action:"differencemany",geom:h(b),geometries:f,spatialReference:n(b.spatialReference)}).then(function(a){if(0===
-a.status)d(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],l);c(a.result)}},function(a){d(a)})})};b.symmetricDifference=function(a,e){return a instanceof t?y("symdifference",a,e):b.w(a,e)};b.w=function(a,b){return k.create(function(c,d){for(var f=[],g=0;g<a.length;g++)f.push(h(a[g]));var l=b.spatialReference;m.a({action:"symdifferencemany",geom:h(b),geometries:f,spatialReference:n(b.spatialReference)}).then(function(a){if(0===a.status)d(Error(a.error.message));
-else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],l);c(a.result)}},function(a){d(a)})})};b.union=function(a,b){void 0===b&&(b=null);return k.create(function(c,d){var f=[];if(null===a)c(null);else if(a instanceof t&&(a=[a],null!==b&&a.push(b)),0===a.length)c(null);else{for(var g=0;g<a.length;g++)f.push(h(a[g]));var l=a[0].spatialReference;m.a({action:"unionmany",geometries:f,spatialReference:n(l)}).then(function(a){0===a.status?d(Error(a.error.message)):c(p(a.result,l))},function(a){d(a)})}})};
-b.buffer=function(a,e,c,d){void 0===d&&(d=!1);if(a instanceof t)return k.create(function(b,f){var d=a.spatialReference;m.a({action:"buffer",geoma:h(a),spatialReference:n(a.spatialReference),distance:e,unit:r(c,3),geodesic:!1,geodesicmaxdeviation:NaN,geodesiccurvetype:0}).then(function(a){0===a.status?f(Error(a.error.message)):b(p(a.result,d))},function(a){f(a)})});if("[object Array]"!==Object.prototype.toString.call(e)){for(var f=[],g=0;g<a.length;g++)f.push(e);e=f}if(e.length!=a.length){if(0==e.length)throw Error("Illegal Argument Exception");
-for(var f=[],l=0,g=0;g<a.length;g++)void 0===e[g]?f.push(l):(f.push(e[g]),l=e[g]);e=f}return b.j(a,e,c,!1,d,"geodesic",NaN)};b.geodesicBuffer=function(a,e,c,d,f,g){if(a instanceof t)return k.create(function(b,g){void 0===f&&(f=NaN);var l=a.spatialReference;m.a({action:"buffer",geoma:h(a),spatialReference:n(a.spatialReference),distance:e,unit:r(c,0),geodesic:!0,geodesicmaxdeviation:f,geodesiccurvetype:x(d)}).then(function(a){0===a.status?g(Error(a.error.message)):b(p(a.result,l))},function(a){g(a)})});
-if("[object Array]"!==Object.prototype.toString.call(e)){for(var l=[],v=0;v<a.length;v++)l.push(e);e=l}if(e.length!=a.length){if(0==e.length)throw Error("Illegal Argument Exception");for(var l=[],w=0,v=0;v<a.length;v++)void 0===e[v]?l.push(w):(l.push(e[v]),w=e[v]);e=l}return b.j(a,e,c,!0,d,f,g)};b.j=function(a,b,c,d,f,g,l){return k.create(function(k,w){var q=[];void 0===l&&(l=NaN);if(null===a)k(null);else if(0===a.length)k(null);else{for(var A=0;A<a.length;A++)q.push(h(a[A]));c=d?r(c,0):r(c,3);var J=
-a[0].spatialReference;m.a({action:"buffermany",geometries:q,spatialReference:n(J),distances:b,tounionresults:f,unit:c,geodesic:d,geodesicmaxdeviation:l,geodesiccurvetype:x(g)}).then(function(a){if(0===a.status)w(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],J);k(a.result)}},function(a){w(a)})}})};b.convexHull=function(a,e){void 0===e&&(e=!1);return a instanceof t?k.create(function(b,e){var f=a.spatialReference;m.a({action:"convexhull",geoma:h(a),spatialReference:n(a.spatialReference)}).then(function(a){0===
-a.status?e(Error(a.error.message)):b(p(a.result,f))},function(a){e(a)})}):b.o(a,e)};b.o=function(a,b){return k.create(function(c,d){for(var f=[],g=0;g<a.length;g++)f.push(h(a[g]));var l=0<a.length?a[0].spatialReference:null;m.a({action:"convexhullmany",geometries:f,merge:b}).then(function(a){if(0===a.status)d(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],l);c(a.result)}},function(a){d(a)})})};b.offset=function(a,e,c,d,f,g){var l=0;if(null!=d&&void 0!=d)switch(d){case "round":l=
-0;break;case "bevel":l=1;break;case "miter":l=2;break;case "square":l=3}return a instanceof t?k.create(function(b,d){var k=a.spatialReference;m.a({action:"offset",geoma:h(a),spatialReference:n(a.spatialReference),distance:e,joins:l,bevelratio:f,flattenerror:g,offsetunit:r(c,3)}).then(function(a){0===a.status?d(Error(a.error.message)):b(p(a.result,k))},function(a){d(a)})}):b.v(a,e,c,l,f,g)};b.v=function(a,b,c,d,f,g){return k.create(function(l,k){for(var q=[],t=0;t<a.length;t++)q.push(h(a[t]));var u=
-0<a.length?a[0].spatialReference:null;m.a({action:"offsetmany",geometries:q,spatialReference:n(u),distance:b,joins:d,bevelratio:f,offsetunit:r(c,3),flattenerror:g}).then(function(a){if(0===a.status)k(Error(a.error.message));else{for(var b=0;b<a.result.length;b++)a.result[b]=p(a.result[b],u);l(a.result)}},function(a){k(a)})})};b.planarArea=function(a,b){return k.create(function(c,d){m.a({action:"area",geoma:h(a),unit:r(b,2),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?d(Error(a.error.message)):
-c(a.result)},function(a){d(a)})})};b.planarLength=function(a,b){return k.create(function(c,d){m.a({action:"length",geoma:h(a),unit:r(b,3),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?d(Error(a.error.message)):c(a.result)},function(a){d(a)})})};b.geodesicArea=function(a,b,c){return k.create(function(d,f){m.a({action:"geodesicarea",geoma:h(a),unit:r(b,2),geodesiccurvetype:x(c),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?f(Error(a.error.message)):
-d(a.result)},function(a){f(a)})})};b.geodesicLength=function(a,b,c){return k.create(function(d,f){m.a({action:"geodesiclength",geoma:h(a),unit:r(b,0),geodesiccurvetype:x(c),spatialReference:n(a.spatialReference)}).then(function(a){0===a.status?f(Error(a.error.message)):d(a.result)},function(a){f(a)})})};return b}()});
+define(["require", "exports", "tslib", "../geometry", "../core/workers"], function (require, exports, tslib_1, geometry_1, workers_1) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function getSpatialReference(geometry) {
+        var _a;
+        return Array.isArray(geometry) ? (_a = geometry[0]) === null || _a === void 0 ? void 0 : _a.spatialReference : geometry === null || geometry === void 0 ? void 0 : geometry.spatialReference;
+    }
+    function toJSON(obj) {
+        return !obj ? obj : Array.isArray(obj) ? obj.map(toJSON) : obj.toJSON ? obj.toJSON() : obj;
+    }
+    function fromJSON(geometry) {
+        if (Array.isArray(geometry)) {
+            return geometry.map(function (geometry) { return geometry_1.fromJSON(geometry); });
+        }
+        return geometry_1.fromJSON(geometry);
+    }
+    /**
+     * Normalizes geometry parameters into an array of parameters.
+     * Normizalizing before sending to the worker since TypeScript `Parameters` doesn't detect multiple overloads.
+     */
+    function toGeomArray(geometry1, geometry2) {
+        var geometries;
+        if (Array.isArray(geometry1)) {
+            geometries = geometry1;
+        }
+        else {
+            geometries = [];
+            geometries.push(geometry1);
+            if (geometry2 != null) {
+                geometries.push(geometry2);
+            }
+        }
+        return geometries;
+    }
+    var connPromise;
+    function startWorker() {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            return tslib_1.__generator(this, function (_a) {
+                if (!connPromise) {
+                    connPromise = workers_1.open("geometryEngineWorker", {
+                        strategy: "distributed"
+                    });
+                }
+                return [2 /*return*/, connPromise];
+            });
+        });
+    }
+    function invoke(operation, parameters) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var connection;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, startWorker()];
+                    case 1:
+                        connection = _a.sent();
+                        return [2 /*return*/, connection.invoke("executeGEOperation", {
+                                operation: operation,
+                                parameters: toJSON(parameters)
+                            })];
+                }
+            });
+        });
+    }
+    function extendedSpatialReferenceInfo(spatialReference) {
+        return invoke("extendedSpatialReferenceInfo", [spatialReference]);
+    }
+    exports.extendedSpatialReferenceInfo = extendedSpatialReferenceInfo;
+    function clip(geometry, extent) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("clip", [getSpatialReference(geometry), geometry, extent])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.clip = clip;
+    function cut(geometry, cutter) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("cut", [getSpatialReference(geometry), geometry, cutter])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.cut = cut;
+    function contains(geometry1, geometry2) {
+        return invoke("contains", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.contains = contains;
+    function crosses(geometry1, geometry2) {
+        return invoke("crosses", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.crosses = crosses;
+    function distance(geometry1, geometry2, distanceUnit) {
+        return invoke("distance", [getSpatialReference(geometry1), geometry1, geometry2, distanceUnit]);
+    }
+    exports.distance = distance;
+    function equals(geometry1, geometry2) {
+        return invoke("equals", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.equals = equals;
+    function intersects(geometry1, geometry2) {
+        return invoke("intersects", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.intersects = intersects;
+    function touches(geometry1, geometry2) {
+        return invoke("touches", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.touches = touches;
+    function within(geometry1, geometry2) {
+        return invoke("within", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.within = within;
+    function disjoint(geometry1, geometry2) {
+        return invoke("disjoint", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.disjoint = disjoint;
+    function overlaps(geometry1, geometry2) {
+        return invoke("overlaps", [getSpatialReference(geometry1), geometry1, geometry2]);
+    }
+    exports.overlaps = overlaps;
+    function relate(geometry1, geometry2, relation) {
+        return invoke("relate", [getSpatialReference(geometry1), geometry1, geometry2, relation]);
+    }
+    exports.relate = relate;
+    function isSimple(geometry) {
+        return invoke("isSimple", [getSpatialReference(geometry), geometry]);
+    }
+    exports.isSimple = isSimple;
+    function simplify(geometry) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("simplify", [getSpatialReference(geometry), geometry])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.simplify = simplify;
+    function convexHull(geometry, merge) {
+        if (merge === void 0) { merge = false; }
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("convexHull", [getSpatialReference(geometry), geometry, merge])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.convexHull = convexHull;
+    function difference(geometry, subtractor) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("difference", [getSpatialReference(geometry), geometry, subtractor])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.difference = difference;
+    function symmetricDifference(leftGeometry, rightGeometry) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("symmetricDifference", [getSpatialReference(leftGeometry), leftGeometry, rightGeometry])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.symmetricDifference = symmetricDifference;
+    function intersect(geometry, intersector) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("intersect", [getSpatialReference(geometry), geometry, intersector])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.intersect = intersect;
+    function union(geometry1, geometry2) {
+        if (geometry2 === void 0) { geometry2 = null; }
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var geometries, result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        geometries = toGeomArray(geometry1, geometry2);
+                        return [4 /*yield*/, invoke("union", [getSpatialReference(geometries), geometries])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.union = union;
+    function offset(geometry, distance, offsetUnit, joinType, bevelRatio, flattenError) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("offset", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            distance,
+                            offsetUnit,
+                            joinType,
+                            bevelRatio,
+                            flattenError
+                        ])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.offset = offset;
+    function buffer(geometry, distance, unit, toUnionResults) {
+        if (toUnionResults === void 0) { toUnionResults = false; }
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var params, result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        params = [
+                            getSpatialReference(geometry),
+                            geometry,
+                            distance,
+                            unit,
+                            toUnionResults
+                        ];
+                        return [4 /*yield*/, invoke("buffer", params)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.buffer = buffer;
+    function geodesicBuffer(geometry, distance, unit, geodesicCurveTypeOrUnion, geodesicCurveTypeOrMaxDeviation, geodesicMaxDeviation) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var params, result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        params = [
+                            getSpatialReference(geometry),
+                            geometry,
+                            distance,
+                            unit,
+                            geodesicCurveTypeOrUnion,
+                            geodesicCurveTypeOrMaxDeviation,
+                            geodesicMaxDeviation
+                        ];
+                        return [4 /*yield*/, invoke("geodesicBuffer", params)];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.geodesicBuffer = geodesicBuffer;
+    function nearestCoordinate(geometry, inputPoint, testPolygonInterior) {
+        if (testPolygonInterior === void 0) { testPolygonInterior = true; }
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("nearestCoordinate", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            inputPoint,
+                            testPolygonInterior
+                        ])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, tslib_1.__assign(tslib_1.__assign({}, result), { coordinate: geometry_1.Point.fromJSON(result.coordinate) })];
+                }
+            });
+        });
+    }
+    exports.nearestCoordinate = nearestCoordinate;
+    function nearestVertex(geometry, inputPoint) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("nearestVertex", [getSpatialReference(geometry), geometry, inputPoint])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, tslib_1.__assign(tslib_1.__assign({}, result), { coordinate: geometry_1.Point.fromJSON(result.coordinate) })];
+                }
+            });
+        });
+    }
+    exports.nearestVertex = nearestVertex;
+    function nearestVertices(geometry, inputPoint, searchRadius, maxVertexCountToReturn) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var results;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("nearestVertices", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            inputPoint,
+                            searchRadius,
+                            maxVertexCountToReturn
+                        ])];
+                    case 1:
+                        results = _a.sent();
+                        return [2 /*return*/, results.map(function (result) { return (tslib_1.__assign(tslib_1.__assign({}, result), { coordinate: geometry_1.Point.fromJSON(result.coordinate) })); })];
+                }
+            });
+        });
+    }
+    exports.nearestVertices = nearestVertices;
+    function getCenter(geometry) {
+        if ("xmin" in geometry) {
+            return geometry.center;
+        }
+        if ("x" in geometry) {
+            return geometry;
+        }
+        return geometry.extent.center;
+    }
+    function rotate(geometry, angle, rotateOrigin) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var spatialReference, result, _a, _b;
+            return tslib_1.__generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (geometry == null) {
+                            throw new Error("Illegal Argument Exception");
+                        }
+                        spatialReference = geometry.spatialReference;
+                        rotateOrigin = rotateOrigin !== null && rotateOrigin !== void 0 ? rotateOrigin : getCenter(geometry);
+                        _b = (_a = geometry.constructor).fromJSON;
+                        return [4 /*yield*/, invoke("rotate", [spatialReference, geometry, angle, rotateOrigin])];
+                    case 1:
+                        result = _b.apply(_a, [_c.sent()]);
+                        result.spatialReference = spatialReference;
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    }
+    exports.rotate = rotate;
+    function flipHorizontal(geometry, flipOrigin) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var spatialReference, result, _a, _b;
+            return tslib_1.__generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (geometry == null) {
+                            throw new Error("Illegal Argument Exception");
+                        }
+                        spatialReference = geometry.spatialReference;
+                        flipOrigin = flipOrigin !== null && flipOrigin !== void 0 ? flipOrigin : getCenter(geometry);
+                        _b = (_a = geometry.constructor).fromJSON;
+                        return [4 /*yield*/, invoke("flipHorizontal", [spatialReference, geometry, flipOrigin])];
+                    case 1:
+                        result = _b.apply(_a, [_c.sent()]);
+                        result.spatialReference = spatialReference;
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    }
+    exports.flipHorizontal = flipHorizontal;
+    function flipVertical(geometry, flipOrigin) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var spatialReference, result, _a, _b;
+            return tslib_1.__generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        if (geometry == null) {
+                            throw new Error("Illegal Argument Exception");
+                        }
+                        spatialReference = geometry.spatialReference;
+                        flipOrigin = flipOrigin !== null && flipOrigin !== void 0 ? flipOrigin : getCenter(geometry);
+                        _b = (_a = geometry.constructor).fromJSON;
+                        return [4 /*yield*/, invoke("flipVertical", [spatialReference, geometry, flipOrigin])];
+                    case 1:
+                        result = _b.apply(_a, [_c.sent()]);
+                        result.spatialReference = spatialReference;
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    }
+    exports.flipVertical = flipVertical;
+    function generalize(geometry, maxDeviation, removeDegenerateParts, maxDeviationUnit) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("generalize", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            maxDeviation,
+                            removeDegenerateParts,
+                            maxDeviationUnit
+                        ])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.generalize = generalize;
+    function densify(geometry, maxSegmentLength, maxSegmentLengthUnit) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("densify", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            maxSegmentLength,
+                            maxSegmentLengthUnit
+                        ])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.densify = densify;
+    function geodesicDensify(geometry, maxSegmentLength, maxSegmentLengthUnit, curveType) {
+        if (curveType === void 0) { curveType = 0; }
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var result;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, invoke("geodesicDensify", [
+                            getSpatialReference(geometry),
+                            geometry,
+                            maxSegmentLength,
+                            maxSegmentLengthUnit,
+                            curveType
+                        ])];
+                    case 1:
+                        result = _a.sent();
+                        return [2 /*return*/, fromJSON(result)];
+                }
+            });
+        });
+    }
+    exports.geodesicDensify = geodesicDensify;
+    function planarArea(geometry, unit) {
+        return invoke("planarArea", [getSpatialReference(geometry), geometry, unit]);
+    }
+    exports.planarArea = planarArea;
+    function planarLength(geometry, unit) {
+        return invoke("planarLength", [getSpatialReference(geometry), geometry, unit]);
+    }
+    exports.planarLength = planarLength;
+    function geodesicArea(geometry, unit, geodesicCurveType) {
+        return invoke("geodesicArea", [getSpatialReference(geometry), geometry, unit, geodesicCurveType]);
+    }
+    exports.geodesicArea = geodesicArea;
+    function geodesicLength(geometry, unit, geodesicCurveType) {
+        return invoke("geodesicLength", [getSpatialReference(geometry), geometry, unit, geodesicCurveType]);
+    }
+    exports.geodesicLength = geodesicLength;
+});

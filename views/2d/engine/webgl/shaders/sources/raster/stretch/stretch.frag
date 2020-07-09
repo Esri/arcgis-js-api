@@ -29,9 +29,6 @@ uniform float u_gamma[3];
 // gamma corrections
 uniform float u_gammaCorrection[3];
 
-// true to apply colormap for single band texture
-uniform bool u_applyColormap;
-
 #include <raster/lut/colorize.glsl>
 
 float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
@@ -51,7 +48,7 @@ float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutp
 	  if (gamma > 1.0) {
       tempf -= pow(1.0 / outRange, relativeVal * gammaCorrection);
     }
-    stretchedVal = floor(tempf * outRange * pow(relativeVal, 1.0 / gamma)) + minOutput;
+    stretchedVal = (tempf * outRange * pow(relativeVal, 1.0 / gamma) + minOutput) / 255.0;
   } else {
     stretchedVal = minOutput + (val - minCutOff) * factor;
   }
@@ -73,15 +70,15 @@ void main() {
 
   if (u_bandCount == 1) {
     float grayVal = stretchOneValue(currentPixel.r, u_minCutOff[0], u_maxCutOff[0], u_minOutput, u_maxOutput, u_factor[0], u_useGamma, u_gamma[0], u_gammaCorrection[0]);
-    if (u_applyColormap) {
-      gl_FragColor = colorize(vec4(grayVal, grayVal, grayVal, currentPixel.a), true);
-    } else {
-      gl_FragColor = vec4(grayVal, grayVal, grayVal, currentPixel.a);
-    }
+#ifdef APPLY_COLORMAP
+      gl_FragColor = colorize(vec4(grayVal, grayVal, grayVal, currentPixel.a * u_opacity), !u_useGamma);
+#else
+      gl_FragColor = vec4(grayVal, grayVal, grayVal, 1.0) * currentPixel.a * u_opacity;
+#endif
   } else {
     float redVal = stretchOneValue(currentPixel.r, u_minCutOff[0], u_maxCutOff[0], u_minOutput, u_maxOutput, u_factor[0], u_useGamma, u_gamma[0], u_gammaCorrection[0]);
     float greenVal = stretchOneValue(currentPixel.g, u_minCutOff[1], u_maxCutOff[1], u_minOutput, u_maxOutput, u_factor[1], u_useGamma, u_gamma[1], u_gammaCorrection[1]);
     float blueVal = stretchOneValue(currentPixel.b, u_minCutOff[2], u_maxCutOff[2], u_minOutput, u_maxOutput, u_factor[2], u_useGamma, u_gamma[2], u_gammaCorrection[2]);
-    gl_FragColor = vec4(redVal, greenVal, blueVal, currentPixel.a);
+    gl_FragColor = vec4(redVal, greenVal, blueVal, 1.0) * currentPixel.a * u_opacity;
   }
 }

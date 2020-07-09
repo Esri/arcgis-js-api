@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/Accessor","../core/accessorSupport/decorators"],(function(r,e,t,o,c,p){return function(r){function e(e){var t=r.call(this,e)||this;return t.created=null,t.rating=null,t}return t(e,r),o([p.property()],e.prototype,"created",void 0),o([p.property()],e.prototype,"rating",void 0),e=o([p.subclass("esri.portal.PortalRating")],e)}(p.declared(c))}));
+define(["require","exports","tslib","../core/Accessor","../core/accessorSupport/decorators"],(function(r,e,t,o,c){return function(r){function e(e){var t=r.call(this,e)||this;return t.created=null,t.rating=null,t}return t.__extends(e,r),t.__decorate([c.property()],e.prototype,"created",void 0),t.__decorate([c.property()],e.prototype,"rating",void 0),e=t.__decorate([c.subclass("esri.portal.PortalRating")],e)}(o)}));

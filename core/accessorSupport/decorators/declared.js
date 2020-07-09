@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../declare"],(function(e,t,r){function o(e){var t=Object.getPrototypeOf(e.prototype),r=e._meta&&e._meta.bases,o=e._meta&&e._meta.parents;if(t&&r&&o&&!(o.length<=1))for(var n=1;n<r.length;n++){var i=r[n],c=i.__accessorMetadata__&&i.__accessorMetadata__.properties,s=t;if(t=Object.getPrototypeOf(t),-1!==o.indexOf(i))for(var f=0,p=Object.getOwnPropertyNames(i.prototype);f<p.length;f++){var _=p[f];if("initialized"!==_&&"constructed"!==_&&"destroyed"!==_&&!(c&&_ in c)){var d=Object.getOwnPropertyDescriptor(i.prototype,_);a(d)&&Object.defineProperty(s,_,d)}}}}function a(e){return e&&!(!e.get&&!e.set)}Object.defineProperty(t,"__esModule",{value:!0}),t.declared=function(e){var t=function(){return this||{}};if(arguments.length>1){for(var a=[],n=0;n<arguments.length;n++)a.push(arguments[n]);o(e=r(a))}return t.__bases__=[e],t}}));
+define(["require","exports","../../deprecate","../../has","../../Logger"],(function(e,r,t,n,s){Object.defineProperty(r,"__esModule",{value:!0}),r.declared=function(e){for(var r=[],o=1;o<arguments.length;o++)r[o-1]=arguments[o];if(r.length>0)throw new Error("Multi-inheritance unsupported since 4.16");return n("esri-deprecation-warnings")&&t.deprecated(s.getLogger("esri.core.accessorSupport.decorators"),"'extends declared(superclass)' syntax",{version:"4.16",see:"https://arcg.is/T8fr4"}),e}}));

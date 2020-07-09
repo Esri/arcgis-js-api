@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../layers/support/layerSourceUtils","../../layers/support/layerUtils"],(function(e,r,i,n){Object.defineProperty(r,"__esModule",{value:!0}),r.findToFindRESTParameters=function(e){var r=e.toJSON(),s=r.contains,o=r.dynamicLayers,t=r.geometryPrecision,a=r.layerDefinitions,l=r.layerIds,f=r.maxAllowableOffset,u=r.outSR,y=r.returnGeometry,c=r.searchFields,d={contains:s,returnGeometry:y,geometryPrecision:t,maxAllowableOffset:f,searchText:r.searchText};if(l&&(d.layers=l.join(",")),c&&(d.searchFields=c.join(",")),u&&(d.sr=u.wkid||JSON.stringify(u)),a){for(var p=[],v=0;v<a.length;v++){var h=a[v];p[h.id]=h.definitionExpression}d.layerDefs=n.serializeLayerDefinitions(p)}if(o&&o.length){var m=[],x=function(e){var r=o[e],n=r.id;if(!r.subLayerIds&&l&&-1!==l.indexOf(n)){var s={id:n};s.source=r.source&&i.sourceToJSON(r.source);var t=null;if(a&&a.length){var f=a.filter((function(e){return e.id===n}))[0];t=f&&f.definitionExpression}t&&(s.definitionExpression=t),m.push(s)}};for(v=0;v<o.length;v++)x(v);var g=JSON.stringify(m);"[]"===g&&(g="[{}]"),d.dynamicLayers=g}return d}}));

@@ -1,0 +1,151 @@
+@mixin buildingDisciplinesNode() {
+  $base: "esri-building-disciplines-tree-node";
+  $root: "#{$base}--root";
+  $leaf: "#{$base}--leaf";
+  $label: "#{$base}__label";
+  $checkbox: "#{$base}__checkbox";
+  $checkbox--checked: "#{$base}__checkbox--checked";
+  $checkbox--indeterminate: "#{$base}__checkbox--indeterminate";
+  $collapse-toggle: "#{$base}__collapse-toggle";
+  $collapse-toggle--collapsed: "#{$base}__collapse-toggle--collapsed";
+  $children: "#{$base}__children";
+
+  $collapse-toggle-size: 18px;
+  $collapse-toggle-icon-size: 10px;
+
+  $checkbox-size: 14px;
+  $checkbox-border-size: 1px;
+  $checkbox-icon-size: 10px;
+
+  $max-levels: 5;
+  $indent-size: $side-spacing--three-quarters;
+
+  @for $level from 1 through $max-levels {
+    .#{$base}--level-#{$level} {
+      $padding: $indent-size * ($level - 1);
+
+      padding-left: $padding;
+
+      &.#{$leaf} {
+        padding-left: $padding + $collapse-toggle-size;
+      }
+    }
+  }
+
+  .#{$label} {
+    display: flex;
+    flex-direction: row;
+
+    font-size: $font-size;
+    font-weight: $font-weight--light;
+
+    padding-top: $side-spacing--quarter;
+    padding-bottom: $side-spacing--quarter;
+
+    cursor: pointer;
+
+    align-items: center;
+  }
+
+  .#{$collapse-toggle} {
+    font-size: $collapse-toggle-icon-size;
+    line-height: $collapse-toggle-icon-size;
+
+    display: inline-block;
+
+    width: $collapse-toggle-size;
+    height: $collapse-toggle-size;
+    margin: 0;
+    padding: ($collapse-toggle-size - $collapse-toggle-icon-size) / 2;
+
+    transition: transform 0.1s ease-in-out;
+
+    border: none;
+    background: none;
+
+    flex-shrink: 0;
+    appearance: none;
+
+    &:not(.#{$collapse-toggle--collapsed}) {
+      transform: rotate(90deg);
+    }
+  }
+
+  .#{$checkbox} {
+    font-size: $checkbox-icon-size;
+    line-height: $checkbox-icon-size;
+
+    display: inline-block;
+
+    width: $checkbox-size;
+    height: $checkbox-size;
+    margin: 0;
+    margin-right: $side-spacing--half;
+    padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) / 2;
+
+    transition: all 0.1s ease-in-out;
+
+    border: solid 1px $border-color;
+    background: none;
+
+    flex-shrink: 0;
+    appearance: none;
+
+    &:before {
+      color: $interactive-font-color--inverse;
+    }
+  }
+
+  .#{$checkbox--indeterminate} {
+    &:before {
+      color: $interactive-font-color;
+    }
+  }
+
+  .#{$checkbox--checked} {
+    background: $border-color--active;
+    border-color: $border-color--active;
+
+    &:before {
+      color: $interactive-font-color--inverse;
+    }
+  }
+
+  html[dir="rtl"] {
+    .#{$checkbox} {
+      margin-right: 0;
+      margin-left: $side-spacing--half;
+    }
+
+    .#{$collapse-toggle} {
+      transform: rotate(180deg);
+
+      &:not(.#{$collapse-toggle--collapsed}) {
+        transform: rotate(90deg);
+      }
+    }
+
+    @for $level from 1 through $max-levels {
+      .#{$base}--level-#{$level} {
+        $padding: $indent-size * ($level - 1);
+
+        padding-left: 0;
+        padding-right: $padding;
+
+        &.#{$leaf} {
+          padding-left: 0;
+          padding-right: $padding + $collapse-toggle-size;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Adds all the styles for the "Categories & Disciplines" tree used in the building explorer.
+ */
+@mixin buildingDisciplinesTree() {
+  $base: "esri-building-disciplines-tree";
+
+  @include buildingDisciplinesNode();
+}

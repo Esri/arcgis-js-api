@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Elementu forma",
+  "empty": "- tukšs -",
+  "validationErrors": {
+    "cannotBeNull": "Lūdzu ievadiet vērtību",
+    "outsideRange": "Vērtībai jābūt diapazonā no {min} līdz {max}",
+    "invalidCodedValue": "Vērtībai jāatbilst kādai no uzskaitītajām vērtībām.",
+    "invalidType": "Nav derīga vērtība",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

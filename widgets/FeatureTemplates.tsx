@@ -31,15 +31,8 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
 // @dojo.framework.shim
 import IntersectionObserver from "@dojo/framework/shim/IntersectionObserver";
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/FeatureTemplates/nls/FeatureTemplates";
 
 // esri.core
 import { deprecatedProperty } from "esri/core/deprecate";
@@ -48,7 +41,7 @@ import Logger = require("esri/core/Logger");
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
@@ -63,9 +56,12 @@ import { ItemList } from "esri/widgets/FeatureTemplates/ItemList";
 import TemplateItem = require("esri/widgets/FeatureTemplates/TemplateItem");
 import TemplateItemGroup = require("esri/widgets/FeatureTemplates/TemplateItemGroup");
 
+// esri.widgets.FeatureTemplates.t9n
+import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureTemplates";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-feature-templates",
@@ -99,7 +95,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 @subclass("esri.widgets.FeatureTemplates")
-class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
+class FeatureTemplates extends HandleOwnerMixin(Widget) {
   /**
    * The filter used when setting the [filterFunction](#filterFunction)
    * property. It takes an object containing a {@link module:esri/widgets/FeatureTemplates/TemplateItem#label name}
@@ -252,15 +248,15 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    *   layers: layers
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this.renderItemIcon = this.renderItemIcon.bind(this);
     this._afterItemCreateOrUpdate = this._afterItemCreateOrUpdate.bind(this);
     this._afterItemRemoved = this._afterItemRemoved.bind(this);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     const nameBasedFilter: Filter = ({ label }) =>
       !this.filterText || label.toLowerCase().indexOf(this.filterText.toLowerCase()) > -1;
 
@@ -450,8 +446,10 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layers
@@ -491,6 +489,25 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
    */
   @aliasOf("viewModel.layers")
   layers: FeatureLayer[] = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/FeatureTemplates/t9n/FeatureTemplates")
+  messages: FeatureTemplatesMessages = null;
 
   //----------------------------------
   //  viewModel
@@ -555,12 +572,13 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
   render(): VNode {
     const {
       filterText,
+      messages,
       viewModel: { items, state }
     } = this;
     const filterEnabled = this.visibleElements.filter;
 
     return (
-      <div class={this.classes(CSS.base, CSS.widget)} aria-label={i18n.widgetLabel}>
+      <div class={this.classes(CSS.base, CSS.widget)} aria-label={messages.widgetLabel}>
         {state === "loading"
           ? this.renderLoader()
           : state === "ready"
@@ -570,9 +588,9 @@ class FeatureTemplates extends declared(HandleOwnerMixin(Widget)) {
               filterText,
               items,
               messages: {
-                filterPlaceholder: i18n.filterPlaceholder,
-                noItems: i18n.noItems,
-                noMatches: i18n.noMatches
+                filterPlaceholder: messages.filterPlaceholder,
+                noItems: messages.noItems,
+                noMatches: messages.noMatches
               },
               filterEnabled,
               onItemSelect: (item) => {

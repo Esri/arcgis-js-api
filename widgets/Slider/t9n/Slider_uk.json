@@ -1,0 +1,8 @@
+{
+  "widgetLabel": "Повзунок",
+  "maximumValue": "Максимальне значення",
+  "minimumValue": "Мінімальне значення",
+  "rangeMaximum": "Максимум діапазону: {value}",
+  "rangeMinimum": "Мінімум діапазону: {value}",
+  "sliderValue": "Значення повзунка"
+}

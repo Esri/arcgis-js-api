@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./extensions/aliasedProperty","./extensions/computedProperty","./extensions/serializableProperty"],(function(e,t,r,a,o){Object.defineProperty(t,"__esModule",{value:!0});var s=[r.default,a.default,o.default];t.processPrototypeMetadatas=function(e,t){for(var r=0,a=s;r<a.length;r++){var o=a[r];if(o.processPrototypePropertyMetadata)for(var n in e){var i=e[n];o.processPrototypePropertyMetadata(n,i,e,t)}}},t.processClassMetadatas=function(e,t){for(var r=0,a=s;r<a.length;r++){var o=a[r];if(o.processClassPropertyMetadata)for(var n in e){var i=e[n];o.processClassPropertyMetadata(n,i,e,t)}}},t.instanceCreated=function(e,t){for(var r=Object.getOwnPropertyNames(t),a=0,o=s;a<o.length;a++){var n=o[a];n.instanceCreated&&n.instanceCreated(e,t,r)}}}));
+define(["require","exports","./extensions/computedProperty","./extensions/serializableProperty"],(function(e,r,t,a){Object.defineProperty(r,"__esModule",{value:!0});var o=[t.default,a.default];r.processPrototypeMetadatas=function(e,r){for(var t=0,a=o;t<a.length;t++){var s=a[t];if(s.processPrototypePropertyMetadata)for(var n in e){var p=e[n];s.processPrototypePropertyMetadata(n,p,e,r)}}},r.processClassMetadatas=function(e,r){for(var t=0,a=o;t<a.length;t++){var s=a[t];if(s.processClassPropertyMetadata)for(var n in e){var p=e[n];s.processClassPropertyMetadata(n,p,e,r)}}},r.instanceCreated=function(e,r){for(var t=Object.getOwnPropertyNames(r),a=0,s=o;a<s.length;a++){var n=s[a];n.instanceCreated&&n.instanceCreated(e,r,t)}}}));

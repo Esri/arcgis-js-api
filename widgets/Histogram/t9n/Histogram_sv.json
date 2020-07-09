@@ -1,0 +1,4 @@
+{
+  "widgetLabel": "Histogram",
+  "barLabel": "Stapelantal: {count}. Stapelns minsta datavärde: {minValue}. Stapelns högsta datavärde: {maxValue}"
+}

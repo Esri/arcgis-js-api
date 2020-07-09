@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../has","../Logger","./get"],(function(e,t,r,o,s){Object.defineProperty(t,"__esModule",{value:!0});var n=o.getLogger("esri.core.accessorSupport.set");function a(e,t,o){if(e&&t)if("object"==typeof t)for(var i=0,f=Object.getOwnPropertyNames(t);i<f.length;i++){a(e,l=f[i],t[l])}else{if("_"===t[0])return;if(-1!==t.indexOf(".")){var c=t.split("."),l=c.splice(c.length-1,1)[0];return void a(s.default(e,c),l,o)}if(r("dojo-debug-messages")){var u=e.__accessor__;null==u||u.metadatas[t]||n.warn("setting unknown property '"+t+"' on instance of "+u.host.declaredClass)}e[t]=o}}t.set=a,t.default=a}));
+define(["require","exports","../has","../Logger","./get"],(function(e,t,r,s,o){Object.defineProperty(t,"__esModule",{value:!0});var n=s.getLogger("esri.core.accessorSupport.set");function a(e,t,s){if(e&&t)if("object"==typeof t)for(var i=0,f=Object.getOwnPropertyNames(t);i<f.length;i++){a(e,l=f[i],t[l])}else{if(-1!==t.indexOf(".")){var c=t.split("."),l=c.splice(c.length-1,1)[0];return void a(o.default(e,c),l,s)}if(r("esri-debug-messages")){var g=e.__accessor__;null==g||g.metadatas[t]||n.warn("setting unknown property '"+t+"' on instance of "+g.host.declaredClass)}e[t]=s}}t.set=a,t.default=a}));

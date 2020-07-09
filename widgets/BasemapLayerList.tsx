@@ -26,14 +26,6 @@
  * });
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/BasemapLayerList/nls/BasemapLayerList";
-
 // esri.core
 import Collection = require("esri/core/Collection");
 import { deprecatedProperty } from "esri/core/deprecate";
@@ -44,7 +36,7 @@ import Logger = require("esri/core/Logger");
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
 import Layer = require("esri/layers/Layer");
@@ -56,6 +48,9 @@ import Sortable = require("esri/libs/sortablejs/Sortable");
 import ActionButton = require("esri/support/actions/ActionButton");
 import ActionToggle = require("esri/support/actions/ActionToggle");
 
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
+
 // esri.views
 import MapView = require("esri/views/MapView");
 import SceneView = require("esri/views/SceneView");
@@ -65,22 +60,22 @@ import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.BasemapLayerList
 import BasemapLayerListViewModel = require("esri/widgets/BasemapLayerList/BasemapLayerListViewModel");
-import {
-  Action,
-  BasemapItemType,
-  BasemapLayerListParams,
-  Actions,
-  ListItemModifier,
-  Sections
-} from "esri/widgets/BasemapLayerList/interfaces";
+import { BasemapItemType, BasemapLayerListParams } from "esri/widgets/BasemapLayerList/interfaces";
+
+// esri.widgets.BasemapLayerList.t9n
+import BasemapLayerListMessages from "esri/widgets/BasemapLayerList/t9n/BasemapLayerList";
 
 // esri.widgets.LayerList
+import { Action, Actions, ListItemModifier, Sections } from "esri/widgets/LayerList/interfaces";
 import ListItem = require("esri/widgets/LayerList/ListItem");
 import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
 
+// esri.widgets.LayerList.support
+import { findSelectedItem } from "esri/widgets/LayerList/support/layerListUtils";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const ListItemCollection = Collection.ofType<ListItem>(ListItem);
 
@@ -148,6 +143,7 @@ const CSS = {
   childOpened: "esri-basemap-layer-list__child-toggle-icon--opened",
   childClosed: "esri-basemap-layer-list__child-toggle-icon--closed",
   childClosed_RTL: "esri-basemap-layer-list__child-toggle-icon--closed-rtl",
+  sortableChosen: "esri-basemap-layer-list--chosen",
 
   // common
   button: "esri-button",
@@ -213,15 +209,19 @@ function closeItemActions(item: ListItem): void {
 const logger = Logger.getLogger("esri.widgets.BasemapLayerList");
 
 interface VisibleElements {
+  baseLayers?: boolean;
+  referenceLayers?: boolean;
   statusIndicators?: boolean;
 }
 
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  baseLayers: true,
+  referenceLayers: true,
   statusIndicators: true
 };
 
 @subclass("esri.widgets.BasemapLayerList")
-class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
+class BasemapLayerList extends HandleOwnerMixin(Widget) {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -240,11 +240,11 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    *   view: view
    * });
    */
-  constructor(params?: BasemapLayerListParams) {
-    super(params);
+  constructor(params?: BasemapLayerListParams, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     const { baseItems, referenceItems } = this;
 
     this.own([
@@ -404,8 +404,46 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/BasemapLayerList/t9n/BasemapLayerList")
+  messages: BasemapLayerListMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  multipleSelectionEnabled
@@ -457,6 +495,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @name baseItems
    * @instance
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   * @readonly
    */
   @aliasOf("viewModel.baseItems")
   @renderable()
@@ -472,6 +511,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @name referenceItems
    * @instance
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   * @readonly
    */
   @aliasOf("viewModel.referenceItems")
   @renderable()
@@ -488,7 +528,6 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @name selectedItems
    * @instance
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
-   * @readonly
    */
   @property()
   @renderable()
@@ -568,6 +607,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
    * @typedef module:esri/widgets/BasemapLayerList~VisibleElements
    *
    * @property {boolean} [statusIndicators] - Indicates whether to the status indicators will be displayed. Default is `true`.
+   * @property {boolean} [baseLayers] - Indicates whether to the base layers will be displayed. Default is `true`.
+   * @property {boolean} [referenceLayers] - Indicates whether to the reference layers will be displayed. Default is `true`.
    */
 
   /**
@@ -621,12 +662,731 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
       [CSS.disabled]: state === "disabled"
     };
 
+    const referenceSectionNode = this.renderReferenceSection();
+    const baseSectionNode = this.renderBaseSection();
+    const dividerNode =
+      referenceSectionNode && baseSectionNode ? <hr class={CSS.horizontalRule} /> : null;
+
     return (
       <div class={this.classes(CSS.base, baseClasses)}>
-        {this._renderTitleContainer()}
-        {this._renderReferenceSection()}
-        {this._renderBaseSection()}
+        {this.renderTitleContainer()}
+        {referenceSectionNode}
+        {dividerNode}
+        {baseSectionNode}
       </div>
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  protected renderEditingInput(): VNode {
+    const { messages } = this;
+    const { basemapTitle } = this.viewModel;
+
+    return (
+      <label class={CSS.editingInput}>
+        {messages.basemapTitle}
+        <input
+          bind={this}
+          class={CSS.input}
+          title={messages.basemapTitle}
+          aria-label={messages.basemapTitle}
+          placeholder={messages.basemapTitle}
+          type="text"
+          role="textbox"
+          value={basemapTitle}
+          afterCreate={this._storeEditTitleInput}
+          afterUpdate={this._focusEditElement}
+        />
+      </label>
+    );
+  }
+
+  protected renderCancelButton(): VNode {
+    const { messagesCommon } = this;
+
+    return (
+      <button
+        title={messagesCommon.cancel}
+        aria-label={messagesCommon.cancel}
+        type="button"
+        bind={this}
+        class={this.classes(CSS.button, CSS.buttonTertiary)}
+        onclick={this._toggleEditingTitle}
+      >
+        {messagesCommon.cancel}
+      </button>
+    );
+  }
+
+  protected renderSubmitButton(): VNode {
+    const { messagesCommon } = this;
+
+    return (
+      <button
+        title={messagesCommon.form.submit}
+        aria-label={messagesCommon.form.submit}
+        type="button"
+        bind={this}
+        class={CSS.button}
+        onclick={this._formSubmit}
+      >
+        {messagesCommon.form.ok}
+      </button>
+    );
+  }
+
+  protected renderEditingForm(): VNode {
+    return (
+      <div class={CSS.editingCard}>
+        <form bind={this} onsubmit={this._formSubmit}>
+          {this.renderEditingInput()}
+          <div class={CSS.editingActions}>
+            {this.renderCancelButton()}
+            {this.renderSubmitButton()}
+          </div>
+        </form>
+      </div>
+    );
+  }
+
+  protected renderBasemapTitle(): VNode {
+    const { basemapTitle } = this.viewModel;
+
+    return <h2 class={this.classes(CSS.heading, CSS.mainHeading)}>{basemapTitle}</h2>;
+  }
+
+  protected renderEditTitleButton(): VNode {
+    const { _editingTitle, editingEnabled, messagesCommon } = this;
+
+    return editingEnabled && !_editingTitle ? (
+      <button
+        bind={this}
+        class={CSS.editButton}
+        title={messagesCommon.edit}
+        aria-label={messagesCommon.edit}
+        onclick={this._toggleEditingTitle}
+        afterCreate={this._storeEditTitleButton}
+        afterUpdate={this._focusEditElement}
+        data-node-ref="_editButtonNode"
+      >
+        <span aria-hidden="true" class={this.classes(CSS.iconEdit, CSS.editButtonIcon)} />
+      </button>
+    ) : null;
+  }
+
+  protected renderTitleContainer(): VNode {
+    return (
+      <div class={CSS.titleContainer}>
+        {this._editingTitle ? this.renderEditingForm() : this.renderBasemapTitle()}
+        {this.renderEditTitleButton()}
+      </div>
+    );
+  }
+
+  protected renderNoLayersInfo(text: string, key: string): VNode {
+    return (
+      <div key={key} class={CSS.noItems}>
+        {text}
+      </div>
+    );
+  }
+
+  protected renderList(items: ListItem[], key: BasemapItemType): VNode {
+    const { messages } = this;
+    const afterRemoved =
+      key === "reference" ? this._destroyReferenceSortable : this._destroyBaseSortable;
+
+    return (
+      <ul
+        key={key}
+        aria-label={messages.widgetLabel}
+        role={this.editingEnabled && items.length ? "listbox" : undefined}
+        afterCreate={this._sortNodeCreated}
+        afterRemoved={afterRemoved}
+        data-node-ref={key}
+        bind={this}
+        class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
+      >
+        {items.map((item) =>
+          this.renderItem({ item, parent: null, itemType: key, isOnlyChild: items.length === 1 })
+        )}
+      </ul>
+    );
+  }
+
+  protected renderBaseHeader(): VNode {
+    return (
+      <h3 key="base-heading" class={this.classes(CSS.heading, CSS.listHeading)}>
+        {this.messages.baseHeading}
+      </h3>
+    );
+  }
+
+  protected renderBaseSection(): VNode {
+    const { baseItems, messages, visibleElements } = this;
+
+    if (!visibleElements.baseLayers) {
+      return null;
+    }
+
+    const validBaseItems = this._getItems(baseItems);
+
+    const key = "base";
+
+    return [
+      this.renderBaseHeader(),
+      [
+        validBaseItems.length === 0 ? this.renderNoLayersInfo(messages.noBaseLayers, key) : null,
+        this.renderList(validBaseItems, key)
+      ]
+    ];
+  }
+
+  protected renderReferenceHeader(): VNode {
+    return (
+      <h3 key="reference-heading" class={this.classes(CSS.heading, CSS.listHeading)}>
+        {this.messages.referenceHeading}
+      </h3>
+    );
+  }
+
+  protected renderReferenceSection(): VNode {
+    const { referenceItems, messages, visibleElements } = this;
+
+    if (!visibleElements.referenceLayers) {
+      return null;
+    }
+
+    const validReferenceItems = this._getItems(referenceItems);
+
+    const key = "reference";
+
+    return [
+      this.renderReferenceHeader(),
+      [
+        validReferenceItems.length === 0
+          ? this.renderNoLayersInfo(messages.noReferenceLayers, key)
+          : null,
+        this.renderList(validReferenceItems, key)
+      ]
+    ];
+  }
+
+  protected renderChildrenToggle(item: ListItem, listUid: string): VNode {
+    const { messagesCommon } = this;
+    const { children } = item;
+    const hasError = !!item.error;
+    const hasChildren = !!children.length && !hasError;
+
+    const childToggleClasses = {
+      [CSS.childToggleOpen]: item.open
+    };
+
+    const toggleChildrenTitle = item.open ? messagesCommon.collapse : messagesCommon.expand;
+
+    return hasChildren ? (
+      <span
+        onclick={this._toggleChildrenClick}
+        onkeydown={this._toggleChildrenClick}
+        data-item={item}
+        key={`toggle-children`}
+        class={this.classes(CSS.childToggle, childToggleClasses)}
+        tabindex="0"
+        role="button"
+        aria-controls={listUid}
+        aria-label={toggleChildrenTitle}
+        title={toggleChildrenTitle}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.childClosed, CSS.iconRightArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childOpened, CSS.iconDownArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
+      </span>
+    ) : null;
+  }
+
+  protected renderError(item: ListItem): VNode {
+    return item.error ? (
+      <div key={`error`} class={CSS.errorMessage} role="alert">
+        <span>{this.messages.layerError}</span>
+      </div>
+    ) : null;
+  }
+
+  protected renderActionsMenuIcon(item: ListItem, actionsUid: string): VNode {
+    const { messagesCommon } = this;
+
+    const actionsMenuClasses = {
+      [CSS.actionsMenuItemActive]: item.actionsOpen
+    };
+
+    const actionsMenuTitle = item.actionsOpen ? messagesCommon.close : messagesCommon.open;
+
+    return (
+      <div
+        key={`actions-menu-toggle`}
+        data-item={item}
+        bind={this}
+        onclick={this._toggleActionsOpen}
+        onkeydown={this._toggleActionsOpen}
+        class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
+        tabindex="0"
+        role="button"
+        aria-controls={actionsUid}
+        aria-label={actionsMenuTitle}
+        title={actionsMenuTitle}
+      >
+        <span aria-hidden="true" class={CSS.iconEllipses} />
+      </div>
+    );
+  }
+
+  protected renderActionsMenu(
+    item: ListItem,
+    fitleredSections: Sections,
+    actionsCount: number,
+    actionsUid: string
+  ): VNode {
+    const { panel } = item;
+
+    const panelActionNode = panel && panel.visible ? this.renderPanelButton(panel) : null;
+
+    const singleAction = actionsCount === 1 && this._getSingleActionButton(fitleredSections);
+
+    const singleActionNode = singleAction
+      ? this.renderAction({ item, action: singleAction, singleAction: true })
+      : null;
+
+    const actionsMenuIcon =
+      !singleAction && actionsCount ? this.renderActionsMenuIcon(item, actionsUid) : null;
+
+    return actionsMenuIcon || panelActionNode || singleAction ? (
+      <div key={`actions-menu`} class={CSS.actionsMenu}>
+        {panelActionNode}
+        {singleActionNode}
+        {actionsMenuIcon}
+      </div>
+    ) : null;
+  }
+
+  protected renderChildList(item: ListItem, listUid: string): VNode {
+    const { editingEnabled } = this;
+    const { visibilityMode, children } = item;
+    const hasError = !!item.error;
+    const hasChildren = !!children.length && !hasError;
+
+    const { exclusive, inherited } = VISIBILITY_MODES;
+
+    const childClasses = {
+      [CSS.listExclusive]: visibilityMode === exclusive,
+      [CSS.listInherited]: visibilityMode === inherited,
+      [CSS.listIndependent]: visibilityMode !== inherited && visibilityMode !== exclusive
+    };
+
+    return hasChildren ? (
+      <ul
+        bind={this}
+        key={`list-items`}
+        id={listUid}
+        data-group={item.uid}
+        data-item={item}
+        afterCreate={this._sortNodeCreated}
+        afterUpdate={this._sortNodeCreated}
+        class={this.classes(CSS.list, childClasses)}
+        aria-expanded={item.open ? "true" : "false"}
+        role={editingEnabled ? "listbox" : visibilityMode === exclusive ? "radiogroup" : "group"}
+        hidden={item.open ? null : true}
+      >
+        {children?.map((childItem) => this.renderItem({ item: childItem, parent: item })).toArray()}
+      </ul>
+    ) : null;
+  }
+
+  protected renderItemContent(item: ListItem, parent: ListItem, titleKey: string): VNode[] {
+    const { id } = this;
+    const uid = `${id}_${item.uid}`;
+    const actionsUid = `${uid}_actions`;
+    const listUid = `${uid}__list`;
+
+    const { panel } = item;
+
+    const filteredSections = this._filterActions(item.actionsSections);
+    const actionsCount = this._countActions(filteredSections);
+
+    return [
+      <div key={`list-item-container`} class={CSS.itemContainer}>
+        {this.renderChildrenToggle(item, listUid)}
+        {this.renderLabel(item, parent, titleKey)}
+        {this.renderActionsMenu(item, filteredSections, actionsCount, actionsUid)}
+      </div>,
+      this.renderError(item),
+      actionsCount ? this.renderActionsSections(item, filteredSections, actionsUid) : null,
+      panel && panel.open ? panel.render() : null,
+      this.renderChildList(item, listUid)
+    ];
+  }
+
+  protected renderItem({
+    item,
+    parent,
+    itemType,
+    isOnlyChild
+  }: {
+    item: ListItem;
+    parent: ListItem;
+    itemType?: BasemapItemType;
+    isOnlyChild?: boolean;
+  }): VNode {
+    const { _newUI, id, editingEnabled, selectedItems, visibleElements } = this;
+    const { children } = item;
+
+    const uid = `${id}_${item.uid}`;
+    const titleKey = `${uid}__title`;
+
+    const hasError = !!item.error;
+    const hasChildren = !!children.length && !hasError;
+
+    const itemClasses = {
+      [CSS.itemChildren]: hasChildren,
+      [CSS.itemError]: !!hasError,
+      [CSS.itemUpdating]: item.updating && !parent && visibleElements.statusIndicators,
+      [CSS.itemInvisible]: _newUI && !item.visible,
+      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
+      [CSS.itemSelectable]: editingEnabled
+    };
+
+    if (editingEnabled) {
+      const itemProps = {
+        [SORT_DATA_ATTR]: item.layer?.uid
+      };
+
+      return (
+        <li
+          key={`item-with-selection-${item.uid}`}
+          bind={this}
+          afterCreate={this._focusListItem}
+          afterUpdate={this._focusListItem}
+          class={this.classes(CSS.item, itemClasses, { [CSS.itemOnlyChild]: isOnlyChild })}
+          aria-labelledby={titleKey}
+          onclick={this._toggleSelection}
+          onkeydown={this._selectionKeydown}
+          data-item-type={itemType}
+          data-item={item}
+          tabIndex={0}
+          aria-selected={findSelectedItem(item, selectedItems) ? "true" : "false"}
+          role="option"
+          {...itemProps}
+        >
+          {this.renderItemContent(item, parent, titleKey)}
+        </li>
+      );
+    }
+
+    return (
+      <li
+        key={`item-no-selection-${item.uid}`}
+        bind={this}
+        afterCreate={this._focusListItem}
+        afterUpdate={this._focusListItem}
+        class={this.classes(CSS.item, itemClasses)}
+        aria-labelledby={titleKey}
+      >
+        {this.renderItemContent(item, parent, titleKey)}
+      </li>
+    );
+  }
+
+  protected renderItemTitle(item: ListItem, titleKey: string): VNode {
+    const { messages } = this;
+
+    const title = item.title || messages.untitledLayer;
+    const label = !item.visibleAtCurrentScale
+      ? `${title} (${messages.layerInvisibleAtScale})`
+      : title;
+
+    return (
+      <span
+        key="layer-title-container"
+        id={titleKey}
+        title={label}
+        aria-label={label}
+        class={CSS.title}
+      >
+        {title}
+      </span>
+    );
+  }
+
+  protected renderItemToggleIcon(item: ListItem, parent: ListItem): VNode {
+    const { _newUI } = this;
+    const { exclusive } = VISIBILITY_MODES;
+    const parentVisibilityMode = parent && parent.visibilityMode;
+
+    const toggleIconClasses = {
+      [CSS.toggleVisibleIcon]: _newUI,
+      [CSS.toggleIcon]: _newUI && parentVisibilityMode !== exclusive,
+      [CSS.radioIcon]: _newUI && parentVisibilityMode === exclusive,
+      [CSS.iconRadioSelected]: parentVisibilityMode === exclusive && item.visible,
+      [CSS.iconRadioUnselected]: parentVisibilityMode === exclusive && !item.visible,
+      [CSS.iconVisible]: parentVisibilityMode !== exclusive && item.visible,
+      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
+    };
+
+    return (
+      <span key="item-toggle-icon" class={this.classes(toggleIconClasses)} aria-hidden="true" />
+    );
+  }
+
+  protected renderItemToggle(item: ListItem, parent: ListItem, titleKey: string): VNode {
+    const { editingEnabled } = this;
+    const { exclusive } = VISIBILITY_MODES;
+    const parentVisibilityMode = parent && parent.visibilityMode;
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
+
+    if (editingEnabled) {
+      return (
+        <span
+          key="item-toggle-selection-enabled"
+          class={CSS.toggleVisible}
+          bind={this}
+          onclick={this._toggleVisibility}
+          onkeydown={this._toggleVisibility}
+          data-item={item}
+          data-parent-visibility={parentVisibilityMode}
+          tabIndex={0}
+          aria-checked={item.visible ? "true" : "false"}
+          role={toggleRole}
+          aria-labelledby={titleKey}
+        >
+          {this.renderItemToggleIcon(item, parent)}
+        </span>
+      );
+    }
+    return (
+      <span key="item-toggle" class={CSS.toggleVisible}>
+        {this.renderItemToggleIcon(item, parent)}
+      </span>
+    );
+  }
+
+  protected renderItemError(item: ListItem): VNode {
+    return !!item.error ? (
+      <span key="notice-triangle" aria-hidden="true" class={CSS.iconNoticeTriangle} />
+    ) : null;
+  }
+
+  protected renderLabel(item: ListItem, parent: ListItem, titleKey: string): VNode {
+    const { editingEnabled, _newUI } = this;
+    const { inherited, exclusive } = VISIBILITY_MODES;
+    const parentVisibilityMode = parent?.visibilityMode;
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
+
+    const labelContentNodes = [
+      this.renderItemToggle(item, parent, titleKey),
+      this.renderItemTitle(item, titleKey)
+    ];
+
+    if (_newUI) {
+      labelContentNodes.reverse();
+    }
+
+    const labelNode = !editingEnabled ? (
+      <div
+        key={`item-label-with-selection-${item.uid}`}
+        class={CSS.label}
+        bind={this}
+        onclick={this._toggleVisibility}
+        onkeydown={this._toggleVisibility}
+        data-item={item}
+        data-parent-visibility={parentVisibilityMode}
+        tabIndex={0}
+        aria-checked={item.visible ? "true" : "false"}
+        role={toggleRole}
+        aria-labelledby={titleKey}
+      >
+        {labelContentNodes}
+      </div>
+    ) : (
+      <div key={`item-label-no-selection-${item.uid}`} class={CSS.label}>
+        {labelContentNodes}
+      </div>
+    );
+
+    return parentVisibilityMode === inherited || !!item.error ? (
+      <div key={`item-label-container-${item.uid}`} class={CSS.label}>
+        {this.renderItemError(item)}
+        {this.renderItemTitle(item, titleKey)}
+      </div>
+    ) : (
+      labelNode
+    );
+  }
+
+  protected renderPanelButton(panel: ListItemPanel): VNode {
+    const { className, open, title, image } = panel;
+
+    const actionClass = !image && !className ? CSS.iconDefaultAction : className;
+
+    const iconStyles = this._getIconImageStyles(panel);
+
+    const buttonClasses = {
+      [CSS.actionsMenuItemActive]: open
+    };
+
+    const iconClasses = {
+      [CSS.actionImage]: !!iconStyles["background-image"]
+    };
+
+    if (actionClass) {
+      iconClasses[actionClass] = !!actionClass;
+    }
+
+    return (
+      <div
+        key={panel}
+        bind={this}
+        data-panel={panel}
+        onclick={this._triggerPanel}
+        onkeydown={this._triggerPanel}
+        class={this.classes(CSS.actionsMenuItem, buttonClasses)}
+        role="button"
+        tabindex="0"
+        title={title}
+        aria-label={title}
+      >
+        <span class={this.classes(iconClasses)} styles={iconStyles} />
+      </div>
+    );
+  }
+
+  protected renderActionsSections(
+    item: ListItem,
+    actionsSections: Sections,
+    actionsUid: string
+  ): VNode {
+    const actionSectionsArray = actionsSections.toArray();
+
+    const actionSection = actionSectionsArray.map((actionSection) => (
+      <ul key={actionSection} class={CSS.actionsList}>
+        {this.renderActionSection(item, actionSection)}
+      </ul>
+    ));
+
+    return (
+      <div
+        role="group"
+        aria-expanded={item.actionsOpen ? "true" : "false"}
+        key={`actions-section`}
+        id={actionsUid}
+        class={CSS.actions}
+        hidden={item.actionsOpen ? null : true}
+      >
+        {actionSection}
+      </div>
+    );
+  }
+
+  protected renderActionSection(item: ListItem, actionSection: Actions): VNode {
+    const actionSectionArray = actionSection && actionSection.toArray();
+    return actionSectionArray.map((action) => this.renderAction({ item, action }));
+  }
+
+  protected renderActionIcon(action: Action): VNode {
+    const { active, className } = action;
+    const iconStyles = this._getIconImageStyles(action);
+
+    const actionClass =
+      action.type === "button" && !action.image && !className ? CSS.iconDefaultAction : className;
+
+    const iconClasses = {
+      [CSS.actionImage]: !active && !!iconStyles["background-image"],
+      [CSS.iconLoading]: active,
+      [CSS.rotating]: active
+    };
+
+    if (actionClass && !active) {
+      iconClasses[actionClass] = true;
+    }
+
+    return (
+      <span
+        key="action-icon"
+        aria-hidden="true"
+        class={this.classes(CSS.actionIcon, iconClasses)}
+        styles={iconStyles}
+      />
+    );
+  }
+
+  protected renderActionTitle(title: string, singleAction: boolean): VNode {
+    return !singleAction ? (
+      <span key="action-title" class={CSS.actionTitle}>
+        {title}
+      </span>
+    ) : null;
+  }
+
+  protected renderAction(options: {
+    item: ListItem;
+    action: Action;
+    singleAction?: boolean;
+  }): VNode {
+    const { item, action, singleAction } = options;
+    const { active, disabled, title } = action;
+
+    const buttonClasses = {
+      [CSS.actionsMenuItem]: singleAction && action.type === "button",
+      [CSS.action]: active || (!singleAction && action.type !== "toggle"),
+      [CSS.actionToggle]: !active && action.type === "toggle",
+      [CSS.actionToggleOn]: !active && action.type === "toggle" && action.value,
+      [CSS.disabledElement]: disabled
+    };
+
+    const actionContentNodes = [
+      this.renderActionIcon(action),
+      this.renderActionTitle(title, singleAction)
+    ];
+
+    if (singleAction) {
+      return (
+        <div
+          bind={this}
+          data-item={item}
+          data-action={action}
+          role="button"
+          key={action}
+          onclick={this._triggerAction}
+          onkeydown={this._triggerAction}
+          classes={buttonClasses}
+          tabindex="0"
+          title={title}
+          aria-label={title}
+        >
+          {actionContentNodes}
+        </div>
+      );
+    }
+
+    return (
+      <li
+        bind={this}
+        data-item={item}
+        data-action={action}
+        key={action}
+        onclick={this._triggerAction}
+        onkeydown={this._triggerAction}
+        classes={buttonClasses}
+        tabindex="0"
+        role="button"
+        title={title}
+        aria-label={title}
+      >
+        {actionContentNodes}
+      </li>
     );
   }
 
@@ -636,10 +1396,14 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   //
   //--------------------------------------------------------------------------
 
+  private _filterActions(actionSections: Sections): Sections {
+    return actionSections.map((section) => section.filter((action) => action.visible));
+  }
+
   private _destroyReferenceSortable(): void {
     const { _sortableReferenceLayers } = this;
 
-    _sortableReferenceLayers && _sortableReferenceLayers.destroy();
+    _sortableReferenceLayers?.el && _sortableReferenceLayers.destroy();
 
     this._sortableReferenceLayersNode = null;
   }
@@ -647,7 +1411,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
   private _destroyBaseSortable(): void {
     const { _sortableBaseLayers } = this;
 
-    _sortableBaseLayers && _sortableBaseLayers.destroy();
+    _sortableBaseLayers?.el && _sortableBaseLayers.destroy();
 
     this._sortableBaseLayersNode = null;
   }
@@ -704,110 +1468,6 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     this._toggleEditingTitle();
   }
 
-  private _renderTitleContainer(): VNode {
-    const { _editingTitle, editingEnabled } = this;
-    const { basemapTitle } = this.viewModel;
-
-    const titleHeaderNode = _editingTitle ? (
-      <div class={CSS.editingCard}>
-        <form bind={this} onsubmit={this._formSubmit}>
-          <label class={CSS.editingInput}>
-            {i18n.basemapTitle}
-            <input
-              bind={this}
-              class={CSS.input}
-              title={i18n.basemapTitle}
-              aria-label={i18n.basemapTitle}
-              placeholder={i18n.basemapTitle}
-              type="text"
-              role="textbox"
-              value={basemapTitle}
-              afterCreate={this._storeEditTitleInput}
-              afterUpdate={this._focusEditElement}
-            />
-          </label>
-          <div class={CSS.editingActions}>
-            <button
-              title={i18nCommon.cancel}
-              aria-label={i18nCommon.cancel}
-              type="button"
-              bind={this}
-              class={this.classes(CSS.button, CSS.buttonTertiary)}
-              onclick={this._toggleEditingTitle}
-            >
-              {i18nCommon.cancel}
-            </button>
-            <button
-              title={i18nCommon.form.submit}
-              aria-label={i18nCommon.form.submit}
-              type="button"
-              bind={this}
-              class={CSS.button}
-              onclick={this._formSubmit}
-            >
-              {i18nCommon.form.ok}
-            </button>
-          </div>
-        </form>
-      </div>
-    ) : (
-      <h2 class={this.classes(CSS.heading, CSS.mainHeading)}>{basemapTitle}</h2>
-    );
-
-    const editTitleButtonNode =
-      editingEnabled && !_editingTitle ? (
-        <button
-          bind={this}
-          class={CSS.editButton}
-          title={i18nCommon.edit}
-          aria-label={i18nCommon.edit}
-          onclick={this._toggleEditingTitle}
-          afterCreate={this._storeEditTitleButton}
-          afterUpdate={this._focusEditElement}
-          data-node-ref="_editButtonNode"
-        >
-          <span aria-hidden="true" class={this.classes(CSS.iconEdit, CSS.editButtonIcon)} />
-        </button>
-      ) : null;
-
-    return (
-      <div class={CSS.titleContainer}>
-        {titleHeaderNode}
-        {editTitleButtonNode}
-      </div>
-    );
-  }
-
-  private _renderNoLayersInfo(text: string, key: string): VNode {
-    return (
-      <div key={key} class={CSS.noItems}>
-        {text}
-      </div>
-    );
-  }
-
-  private _renderList(items: ListItem[], key: BasemapItemType): VNode {
-    const afterRemoved =
-      key === "reference" ? this._destroyReferenceSortable : this._destroyBaseSortable;
-
-    return (
-      <ul
-        key={key}
-        aria-label={i18n.widgetLabel}
-        role={this.editingEnabled && items.length ? "listbox" : undefined}
-        afterCreate={this._sortNodeCreated}
-        afterRemoved={afterRemoved}
-        data-node-ref={key}
-        bind={this}
-        class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
-      >
-        {items.map((item) =>
-          this._renderItem({ item, parent: null, itemType: key, isOnlyChild: items.length === 1 })
-        )}
-      </ul>
-    );
-  }
-
   private _itemMovedList(event: Sortable.SortableEvent): void {
     const itemElement = event.item;
     const listItem = itemElement["data-item"];
@@ -843,7 +1503,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         disabled,
         onSort: () =>
           this._sortLayersToItems({ type: "base", itemIds: sortableBaseLayers.toArray() }),
-        onAdd: (event) => this._itemMovedList(event)
+        onAdd: (event) => this._itemMovedList(event),
+        chosenClass: CSS.sortableChosen
       });
 
       this._sortableBaseLayers = sortableBaseLayers;
@@ -872,7 +1533,8 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
             type: "reference",
             itemIds: sortableReferenceLayers.toArray()
           }),
-        onAdd: (event) => this._itemMovedList(event)
+        onAdd: (event) => this._itemMovedList(event),
+        chosenClass: CSS.sortableChosen
       });
 
       this._sortableReferenceLayers = sortableReferenceLayers;
@@ -898,260 +1560,15 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     this._toggleSorting();
   }
 
-  private _renderBaseSection(): VNode {
-    const { baseItems } = this;
-
-    const validBaseItems = this._getItems(baseItems);
-
-    const headerNode = (
-      <h3 class={this.classes(CSS.heading, CSS.listHeading)}>{i18n.baseHeading}</h3>
-    );
-
-    const key = "base";
-
-    const listNode = this._renderList(validBaseItems, key);
-
-    const noLayersInfoNode =
-      validBaseItems.length === 0 ? this._renderNoLayersInfo(i18n.noBaseLayers, key) : null;
-
-    const contentNode = [noLayersInfoNode, listNode];
-
-    const hrNode = <hr class={CSS.horizontalRule} />;
-
-    return [hrNode, headerNode, contentNode];
-  }
-
-  private _renderReferenceSection(): VNode {
-    const { referenceItems } = this;
-
-    const validReferenceItems = this._getItems(referenceItems);
-
-    const headerNode = (
-      <h3 class={this.classes(CSS.heading, CSS.listHeading)}>{i18n.referenceHeading}</h3>
-    );
-
-    const key = "reference";
-
-    const listNode = this._renderList(validReferenceItems, key);
-
-    const noLayersInfoNode =
-      validReferenceItems.length === 0
-        ? this._renderNoLayersInfo(i18n.noReferenceLayers, key)
-        : null;
-
-    const contentNode = [noLayersInfoNode, listNode];
-
-    return [headerNode, contentNode];
-  }
-
   private _getItems(items: Collection<ListItem>): ListItem[] {
     return items.toArray().filter((item) => this.errorsVisible || !item.error);
   }
 
-  private _getSingleActionButton(item: ListItem): ActionButton {
-    return item.actionsSections
+  private _getSingleActionButton(sections: Sections): ActionButton {
+    return sections
       .reduce((item) => item)
       .filter((item) => item && item.type === "button")
       .getItemAt(0) as ActionButton;
-  }
-
-  private _renderItem({
-    item,
-    parent,
-    itemType,
-    isOnlyChild
-  }: {
-    item: ListItem;
-    parent: ListItem;
-    itemType?: BasemapItemType;
-    isOnlyChild?: boolean;
-  }): VNode {
-    const widgetId = this.id;
-    const uid = `${widgetId}_${item.uid}`;
-    const actionsUid = `${uid}_actions`;
-    const listUid = `${uid}__list`;
-    const titleKey = `${uid}__title`;
-
-    const { _newUI } = this;
-
-    const childrenLen = item.children.length;
-    const hasError = !!item.error;
-    const hasChildren = !!childrenLen && !hasError;
-    const errorMessage = hasError ? i18n.layerError : "";
-
-    const { visibilityMode } = item;
-
-    const childItems = item.children && item.children.toArray();
-
-    const { exclusive, inherited } = VISIBILITY_MODES;
-
-    const childClasses = {
-      [CSS.listExclusive]: visibilityMode === exclusive,
-      [CSS.listInherited]: visibilityMode === inherited,
-      [CSS.listIndependent]: visibilityMode !== inherited && visibilityMode !== exclusive
-    };
-
-    const itemClasses = {
-      [CSS.itemChildren]: hasChildren,
-      [CSS.itemError]: !!hasError,
-      [CSS.itemUpdating]: item.updating && !parent && this.visibleElements.statusIndicators,
-      [CSS.itemInvisible]: _newUI && !item.visible,
-      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
-      [CSS.itemSelectable]: this.editingEnabled
-    };
-
-    const actionsCount = this._countActions(item.actionsSections);
-
-    const { panel } = item;
-
-    const contentNode = panel && panel.open ? panel.render() : null;
-
-    const contentActionNode = panel && panel.visible ? this._renderPanelButton(panel) : null;
-
-    const actionsMenuClasses = {
-      [CSS.actionsMenuItemActive]: item.actionsOpen
-    };
-
-    const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
-
-    const singleAction = actionsCount === 1 && this._getSingleActionButton(item);
-    const singleActionNode = singleAction
-      ? this._renderAction({ item, action: singleAction, singleAction: true })
-      : null;
-
-    const actionsMenuIcon =
-      !singleAction && actionsCount ? (
-        <div
-          key={`actions-menu-toggle`}
-          data-item={item}
-          bind={this}
-          onclick={this._toggleActionsOpen}
-          onkeydown={this._toggleActionsOpen}
-          class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
-          tabindex="0"
-          role="button"
-          aria-controls={actionsUid}
-          aria-label={actionsMenuTitle}
-          title={actionsMenuTitle}
-        >
-          <span aria-hidden="true" class={CSS.iconEllipses} />
-        </div>
-      ) : null;
-
-    const actionsMenu =
-      actionsMenuIcon || contentActionNode || singleActionNode ? (
-        <div key={`esri-basemap-layer-list__actions-menu`} class={CSS.actionsMenu}>
-          {contentActionNode}
-          {singleActionNode}
-          {actionsMenuIcon}
-        </div>
-      ) : null;
-
-    const actions = actionsCount
-      ? this._renderActionsSections(item, item.actionsSections, actionsUid)
-      : null;
-
-    const children: VNode = hasChildren ? (
-      <ul
-        key={`esri-basemap-layer-list__list-items`}
-        id={listUid}
-        class={this.classes(CSS.list, childClasses)}
-        aria-expanded={item.open ? "true" : "false"}
-        role={visibilityMode === exclusive ? "radiogroup" : "group"}
-        hidden={item.open ? null : true}
-      >
-        {childItems.map((childItem) => this._renderItem({ item: childItem, parent: item }))}
-      </ul>
-    ) : null;
-
-    const childToggleClasses = {
-      [CSS.childToggleOpen]: item.open
-    };
-
-    const toggleChildrenTitle = item.open ? i18nCommon.collapse : i18nCommon.expand;
-
-    const toggleChildren = hasChildren ? (
-      <span
-        onclick={this._toggleChildrenClick}
-        onkeydown={this._toggleChildrenClick}
-        data-item={item}
-        key={`esri-basemap-layer-list__toggle-children`}
-        class={this.classes(CSS.childToggle, childToggleClasses)}
-        tabindex="0"
-        role="button"
-        aria-controls={listUid}
-        aria-label={toggleChildrenTitle}
-        title={toggleChildrenTitle}
-      >
-        <span aria-hidden="true" class={this.classes(CSS.childClosed, CSS.iconRightArrow)} />
-        <span aria-hidden="true" class={this.classes(CSS.childOpened, CSS.iconDownArrow)} />
-        <span aria-hidden="true" class={this.classes(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
-      </span>
-    ) : null;
-
-    const itemLabel = this._createLabelNode(item, parent, titleKey);
-
-    const errorBlock = hasError ? (
-      <div key={`esri-basemap-layer-list__error`} class={CSS.errorMessage} role="alert">
-        <span>{errorMessage}</span>
-      </div>
-    ) : null;
-
-    const isSelected = this.selectedItems.indexOf(item) > -1;
-
-    const sortDataAttrValue = !parent ? item.get<string>("layer.uid") : null;
-
-    const sortProps = {
-      [SORT_DATA_ATTR]: sortDataAttrValue
-    };
-
-    const itemContainerNode = (
-      <div key={`esri-basemap-layer-list__list-item-container`} class={CSS.itemContainer}>
-        {toggleChildren}
-        {itemLabel}
-        {actionsMenu}
-      </div>
-    );
-
-    if (this.editingEnabled) {
-      return (
-        <li
-          key={item}
-          bind={this}
-          onclick={this._toggleSelection}
-          onkeydown={this._selectionKeydown}
-          data-item={item}
-          data-item-type={itemType}
-          tabIndex={0}
-          aria-labelledby={titleKey}
-          afterCreate={this._focusListItem}
-          afterUpdate={this._focusListItem}
-          class={this.classes(CSS.item, itemClasses, { [CSS.itemOnlyChild]: isOnlyChild })}
-          aria-selected={isSelected ? "true" : "false"}
-          role="option"
-          {...sortProps}
-        >
-          {itemContainerNode}
-          {errorBlock}
-          {actions}
-          {contentNode}
-          {children}
-        </li>
-      );
-    }
-
-    return (
-      <li
-        key={item}
-        class={this.classes(CSS.item, itemClasses, { [CSS.itemOnlyChild]: isOnlyChild })}
-      >
-        {itemContainerNode}
-        {errorBlock}
-        {actions}
-        {contentNode}
-        {children}
-      </li>
-    );
   }
 
   private _sortLayersToItems({
@@ -1195,9 +1612,9 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
       return;
     }
 
-    const uid = element.dataset[SORT_DATASET_ID];
+    const item = element["data-item"] as ListItem;
 
-    if (uid === _focusSortUid) {
+    if (item.layer?.uid === _focusSortUid) {
       element.focus();
       this._focusSortUid = null;
     }
@@ -1228,7 +1645,11 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         ? _sortableReferenceLayers
         : null;
 
-    const isSelected = selectedItems.indexOf(item) > -1;
+    if (!sortable) {
+      return;
+    }
+
+    const isSelected = findSelectedItem(item, selectedItems);
     const items = sortable.toArray();
     const target = event.target as HTMLElement;
     const index = items.indexOf(target.dataset[SORT_DATASET_ID]);
@@ -1250,14 +1671,14 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
           to: "base",
           newIndex: transferIndex
         });
-        this._focusSortUid = item.get("layer.uid");
+        this._focusSortUid = item.layer?.uid;
         this.scheduleRender();
         return;
       }
 
       if (exceedsItemsLength && itemType === "reference") {
         const focusItem = baseItems.getItemAt(0);
-        this._focusSortUid = focusItem && focusItem.get("layer.uid");
+        this._focusSortUid = focusItem?.layer?.uid;
         this.scheduleRender();
         return;
       }
@@ -1272,7 +1693,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         this._sortLayersToItems({ type: itemType, itemIds: sortable.toArray() });
       }
 
-      this._focusSortUid = items[newIndex];
+      this._focusSortUid = item.layer?.uid;
       this.scheduleRender();
       return;
     }
@@ -1295,14 +1716,14 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
           to: "reference",
           newIndex: transferIndex
         });
-        this._focusSortUid = item.get("layer.uid");
+        this._focusSortUid = item.layer?.uid;
         this.scheduleRender();
         return;
       }
 
       if (isLessThanStartIndex && itemType === "base") {
         const focusItem = referenceItems.getItemAt(referenceItems.length - 1);
-        this._focusSortUid = focusItem && focusItem.get("layer.uid");
+        this._focusSortUid = focusItem?.layer?.uid;
         this.scheduleRender();
         return;
       }
@@ -1317,148 +1738,16 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
         this._sortLayersToItems({ type: itemType, itemIds: sortable.toArray() });
       }
 
-      this._focusSortUid = items[newIndex];
+      this._focusSortUid = item.layer?.uid;
       this.scheduleRender();
     }
   }
 
-  private _createLabelNode(item: ListItem, parent: ListItem, titleKey: string): VNode {
-    const { editingEnabled, _newUI } = this;
-    const { exclusive, inherited } = VISIBILITY_MODES;
-    const parentVisibilityMode = parent && parent.visibilityMode;
-
-    const toggleIconClasses = {
-      [CSS.toggleVisibleIcon]: _newUI,
-      [CSS.toggleIcon]: _newUI && parentVisibilityMode !== exclusive,
-      [CSS.radioIcon]: _newUI && parentVisibilityMode === exclusive,
-      [CSS.iconRadioSelected]: parentVisibilityMode === exclusive && item.visible,
-      [CSS.iconRadioUnselected]: parentVisibilityMode === exclusive && !item.visible,
-      [CSS.iconVisible]: parentVisibilityMode !== exclusive && !_newUI && item.visible,
-      [CSS.iconInvisible]: parentVisibilityMode !== exclusive && (_newUI || !item.visible)
-    };
-
-    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
-    const title = item.title || i18n.untitledLayer;
-    const label = !item.visibleAtCurrentScale ? `${title} (${i18n.layerInvisibleAtScale})` : title;
-    const titleNode = (
-      <span
-        key="layer-title-container"
-        id={titleKey}
-        title={label}
-        aria-label={label}
-        class={CSS.title}
-      >
-        {title}
-      </span>
-    );
-
-    const visibilityIconNode = <span class={this.classes(toggleIconClasses)} aria-hidden="true" />;
-
-    const iconNode = editingEnabled ? (
-      <span
-        key="label-icon"
-        class={CSS.toggleVisible}
-        bind={this}
-        onclick={this._toggleVisibility}
-        onkeydown={this._toggleVisibility}
-        data-item={item}
-        data-parent-visibility={parentVisibilityMode}
-        tabIndex={0}
-        aria-checked={item.visible ? "true" : "false"}
-        role={toggleRole}
-        aria-labelledby={titleKey}
-      >
-        {visibilityIconNode}
-      </span>
-    ) : (
-      <span key="label-icon" class={CSS.toggleVisible}>
-        {visibilityIconNode}
-      </span>
-    );
-
-    const labelContentNodes = [iconNode, titleNode];
-
-    if (_newUI) {
-      labelContentNodes.reverse();
-    }
-
-    const labelNode = editingEnabled ? (
-      <div key="label" class={CSS.label}>
-        {labelContentNodes}
-      </div>
-    ) : (
-      <div
-        key="label"
-        class={CSS.label}
-        bind={this}
-        onclick={this._toggleVisibility}
-        onkeydown={this._toggleVisibility}
-        data-item={item}
-        data-parent-visibility={parentVisibilityMode}
-        tabIndex={0}
-        aria-checked={item.visible ? "true" : "false"}
-        role={toggleRole}
-        aria-labelledby={titleKey}
-      >
-        {labelContentNodes}
-      </div>
-    );
-
-    const hasError = !!item.error;
-
-    const errorIconNode = hasError ? (
-      <span key="notice-triangle" aria-hidden="true" class={CSS.iconNoticeTriangle} />
-    ) : null;
-
-    return parentVisibilityMode === inherited || hasError ? (
-      <div key={item} class={CSS.label}>
-        {errorIconNode}
-        {titleNode}
-      </div>
-    ) : (
-      labelNode
-    );
-  }
-
-  private _renderPanelButton(panel: ListItemPanel): VNode {
-    const { className, open, title, image } = panel;
-
-    const actionClass = !image && !className ? CSS.iconDefaultAction : className;
-
-    const iconStyles = this._getIconImageStyles(panel);
-
-    const buttonClasses = {
-      [CSS.actionsMenuItemActive]: open
-    };
-
-    const iconClasses = {
-      [CSS.actionImage]: !!iconStyles["background-image"]
-    };
-
-    if (actionClass) {
-      iconClasses[actionClass] = !!actionClass;
-    }
-
-    return (
-      <div
-        key={panel}
-        bind={this}
-        data-panel={panel}
-        onclick={this._triggerPanel}
-        onkeydown={this._triggerPanel}
-        class={this.classes(CSS.actionsMenuItem, buttonClasses)}
-        role="button"
-        tabindex="0"
-        title={title}
-        aria-label={title}
-      >
-        <span class={this.classes(iconClasses)} styles={iconStyles} />
-      </div>
-    );
-  }
-
   private _watchActionSectionChanges(actionSection: Actions, key: string): void {
-    this.handles.add(actionSection.on("change", () => this.scheduleRender()), key);
+    this.handles.add(
+      actionSection.on("change", () => this.scheduleRender()),
+      key
+    );
 
     actionSection.forEach((action) => this._renderOnActionChanges(action, key));
   }
@@ -1550,125 +1839,6 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     items.forEach((item) => this._renderOnItemChanges(item, key));
 
     this.scheduleRender();
-  }
-
-  private _renderActionsSections(
-    item: ListItem,
-    actionsSections: Sections,
-    actionsUid: string
-  ): VNode {
-    const actionSectionsArray = actionsSections.toArray();
-
-    const actionSection = actionSectionsArray.map((actionSection) => (
-      <ul key={actionSection} class={CSS.actionsList}>
-        {this._renderActionSection(item, actionSection)}
-      </ul>
-    ));
-
-    return (
-      <div
-        role="group"
-        aria-expanded={item.actionsOpen ? "true" : "false"}
-        key={`esri-basemap-layer-list__actions-section`}
-        id={actionsUid}
-        class={CSS.actions}
-        hidden={item.actionsOpen ? null : true}
-      >
-        {actionSection}
-      </div>
-    );
-  }
-
-  private _renderActionSection(item: ListItem, actionSection: Actions): VNode {
-    const actionSectionArray = actionSection && actionSection.toArray();
-    return actionSectionArray.map((action) => this._renderAction({ item, action }));
-  }
-
-  private _renderAction(options: {
-    item: ListItem;
-    action: Action;
-    singleAction?: boolean;
-  }): VNode {
-    const { item, action, singleAction } = options;
-    const iconStyles = this._getIconImageStyles(action);
-
-    const { active, className, disabled, title } = action;
-
-    const actionClass =
-      action.type === "button" && !action.image && !className ? CSS.iconDefaultAction : className;
-
-    const buttonClasses = {
-      [CSS.actionsMenuItem]: singleAction && action.type === "button",
-      [CSS.action]: !singleAction && action.type !== "toggle",
-      [CSS.actionToggle]: action.type === "toggle",
-      [CSS.actionToggleOn]: action.type === "toggle" && action.value,
-      [CSS.disabledElement]: disabled
-    };
-
-    const iconClasses = {
-      [CSS.actionImage]: !active && !!iconStyles["background-image"],
-      [CSS.iconLoading]: active,
-      [CSS.rotating]: active
-    };
-
-    if (actionClass) {
-      iconClasses[actionClass] = true;
-    }
-
-    const iconNode = (
-      <span
-        key="action-icon"
-        aria-hidden="true"
-        class={this.classes(CSS.actionIcon, iconClasses)}
-        styles={iconStyles}
-      />
-    );
-
-    const titleNode = !singleAction ? (
-      <span key="action-title" class={CSS.actionTitle}>
-        {title}
-      </span>
-    ) : null;
-
-    const actionContentNodes = [iconNode, titleNode];
-
-    if (singleAction) {
-      return (
-        <div
-          bind={this}
-          data-item={item}
-          data-action={action}
-          role={item.actionsOpen ? "button" : null}
-          key={action}
-          onclick={this._triggerAction}
-          onkeydown={this._triggerAction}
-          classes={buttonClasses}
-          tabindex="0"
-          title={title}
-          aria-label={title}
-        >
-          {actionContentNodes}
-        </div>
-      );
-    }
-
-    return (
-      <li
-        bind={this}
-        data-item={item}
-        data-action={action}
-        key={action}
-        onclick={this._triggerAction}
-        onkeydown={this._triggerAction}
-        classes={buttonClasses}
-        tabindex="0"
-        role={item.actionsOpen ? "button" : null}
-        title={title}
-        aria-label={title}
-      >
-        {actionContentNodes}
-      </li>
-    );
   }
 
   private _countActions(actionSections: Sections): number {
@@ -1763,13 +1933,13 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
     const allowMultipleSelected = multipleSelectionEnabled && (event.metaKey || event.ctrlKey);
     const node = event.currentTarget as Element;
     const item = node["data-item"] as ListItem;
-    const found = selectedItems.indexOf(item) > -1;
+    const found = findSelectedItem(item, selectedItems);
 
     const { length } = selectedItems;
     const singleMatch = found && length === 1;
 
     if (allowMultipleSelected) {
-      found ? selectedItems.remove(item) : selectedItems.add(item);
+      found ? selectedItems.remove(found) : selectedItems.add(item);
       return;
     }
 
@@ -1779,7 +1949,7 @@ class BasemapLayerList extends declared(HandleOwnerMixin(Widget)) {
       return;
     }
 
-    found ? selectedItems.remove(item) : selectedItems.add(item);
+    found ? selectedItems.remove(found) : selectedItems.add(item);
   }
 }
 

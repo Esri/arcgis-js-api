@@ -41,15 +41,6 @@
  * @see [ArcGIS REST API - Attachment Infos (Feature Service)](https://developers.arcgis.com/rest/services-reference/attachment-infos-feature-service-.htm)
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/generatorHelper" name="__generator"/>
-/// <amd-dependency path="esri/core/tsSupport/awaiterHelper" name="__awaiter"/>
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Attachments/nls/Attachments";
-
 // esri
 import Graphic = require("esri/Graphic");
 
@@ -59,7 +50,10 @@ import { formatFileSize } from "esri/core/unitFormatUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.layers.support
 import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
@@ -74,9 +68,12 @@ import { AttachmentsDisplay, Abilities } from "esri/widgets/Attachments/interfac
 // esri.widgets.Attachments.support
 import * as attachmentUtils from "esri/widgets/Attachments/support/attachmentUtils";
 
+// esri.widgets.Attachments.t9n
+import type AttachmentsMessages from "esri/widgets/Attachments/t9n/Attachments";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { isRTL, renderable, tsx, storeNode, discardNode } from "esri/widgets/support/widget";
+import { isRTL, renderable, tsx, storeNode, discardNode, messageBundle } from "esri/widgets/support/widget";
 
 interface VisibleElements {
   addButton?: boolean;
@@ -157,7 +154,7 @@ const CSS = {
 const WINDOW_CSS = window["CSS"];
 
 @subclass("esri.widgets.Attachments")
-class Attachments extends declared(Widget) {
+class Attachments extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -172,11 +169,11 @@ class Attachments extends declared(Widget) {
    *                              that may be passed into the constructor.
    */
 
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own(
       watchUtils.on(this, "viewModel.attachmentInfos", "change", () => this.scheduleRender()),
       watchUtils.init(this, "viewModel.mode", () => this._modeChanged())
@@ -283,8 +280,44 @@ class Attachments extends declared(Widget) {
    * @name label
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Attachments/t9n/Attachments")
+  messages: AttachmentsMessages = null;
+
+  //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
 
   //----------------------------------
   //  selectedFile
@@ -445,7 +478,7 @@ class Attachments extends declared(Widget) {
         this._set("submitting", false);
         this._set(
           "error",
-          new EsriError("attachments:add-attachment", i18n.addErrorMessage, error)
+          new EsriError("attachments:add-attachment", this.messages.addErrorMessage, error)
         );
         throw error;
       });
@@ -480,7 +513,7 @@ class Attachments extends declared(Widget) {
         this._set("submitting", false);
         this._set(
           "error",
-          new EsriError("attachments:delete-attachment", i18n.deleteErrorMessage, error)
+          new EsriError("attachments:delete-attachment", this.messages.deleteErrorMessage, error)
         );
         throw error;
       });
@@ -515,7 +548,7 @@ class Attachments extends declared(Widget) {
         this._set("submitting", false);
         this._set(
           "error",
-          new EsriError("attachments:update-attachment", i18n.updateErrorMessage, error)
+          new EsriError("attachments:update-attachment", this.messages.updateErrorMessage, error)
         );
         throw error;
       });
@@ -527,9 +560,9 @@ class Attachments extends declared(Widget) {
 
     return (
       <div class={this.classes(CSS.base, CSS.esriWidget)}>
-        {submitting ? this._renderProgressBar() : null}
-        {state === "loading" ? this._renderLoading() : this._renderAttachments()}
-        {this._renderErrorMessage()}
+        {submitting ? this.renderProgressBar() : null}
+        {state === "loading" ? this.renderLoading() : this.renderAttachments()}
+        {this.renderErrorMessage()}
       </div>
     );
   }
@@ -540,7 +573,7 @@ class Attachments extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  protected _renderErrorMessage(): VNode {
+  protected renderErrorMessage(): VNode {
     const { error, visibleElements } = this;
 
     return error && visibleElements.errorMessage ? (
@@ -550,17 +583,17 @@ class Attachments extends declared(Widget) {
     ) : null;
   }
 
-  protected _renderAttachments(): VNode {
+  protected renderAttachments(): VNode {
     const { mode, activeAttachmentInfo } = this.viewModel;
 
     return mode === "add"
-      ? this._renderAddForm()
+      ? this.renderAddForm()
       : mode === "edit"
-      ? this._renderDetailsForm(activeAttachmentInfo)
-      : this._renderAttachmentContainer();
+      ? this.renderDetailsForm(activeAttachmentInfo)
+      : this.renderAttachmentContainer();
   }
 
-  protected _renderLoading(): VNode {
+  protected renderLoading(): VNode {
     return (
       <div class={CSS.loaderContainer} key="loader">
         <div class={CSS.loader} />
@@ -568,13 +601,13 @@ class Attachments extends declared(Widget) {
     );
   }
 
-  protected _renderProgressBar(): VNode {
+  protected renderProgressBar(): VNode {
     return this.visibleElements.progressBar ? (
       <div class={CSS.progressBar} key="progress-bar" />
     ) : null;
   }
 
-  protected _renderAddForm(): VNode {
+  protected renderAddForm(): VNode {
     const { submitting, selectedFile } = this;
     const disabled = submitting || !selectedFile;
     const cancelButtonNode = this.visibleElements.cancelAddButton ? (
@@ -591,7 +624,7 @@ class Attachments extends declared(Widget) {
           submitting && CSS.buttonDisabled
         )}
       >
-        {i18n.cancel}
+        {this.messages.cancel}
       </button>
     ) : null;
     const submitButtonNode = this.visibleElements.addSubmitButton ? (
@@ -608,7 +641,7 @@ class Attachments extends declared(Widget) {
           }
         )}
       >
-        {i18n.add}
+        {this.messages.add}
       </button>
     ) : null;
     const fileNameNode = selectedFile ? (
@@ -627,7 +660,7 @@ class Attachments extends declared(Widget) {
         <fieldset class={CSS.fileFieldset}>
           {fileNameNode}
           <label class={this.classes(CSS.fileLabel, CSS.esriButton, CSS.esriButtonSecondary)}>
-            {selectedFile ? i18n.changeFile : i18n.selectFile}
+            {selectedFile ? this.messages.changeFile : this.messages.selectFile}
             <input
               class={CSS.fileInput}
               type="file"
@@ -649,7 +682,7 @@ class Attachments extends declared(Widget) {
     );
   }
 
-  protected _renderDetailsForm(attachmentInfo: AttachmentInfo): VNode {
+  protected renderDetailsForm(attachmentInfo: AttachmentInfo): VNode {
     const { visibleElements, viewModel, selectedFile, submitting } = this;
     const { contentType, size, url } = attachmentInfo;
     const { abilities } = viewModel;
@@ -673,7 +706,7 @@ class Attachments extends declared(Widget) {
             }
           )}
         >
-          {i18n.delete}
+          {this.messages.delete}
         </button>
       ) : null;
 
@@ -687,7 +720,7 @@ class Attachments extends declared(Widget) {
             [CSS.buttonDisabled]: disabled
           })}
         >
-          {i18n.update}
+          {this.messages.update}
         </button>
       ) : null;
 
@@ -708,7 +741,7 @@ class Attachments extends declared(Widget) {
           }
         )}
       >
-        {i18n.cancel}
+        {this.messages.cancel}
       </button>
     ) : null;
     const fileNameNode = selectedFile ? (
@@ -721,7 +754,7 @@ class Attachments extends declared(Widget) {
         <fieldset key="file" class={CSS.fileFieldset}>
           {fileNameNode}
           <label class={this.classes(CSS.fileLabel, CSS.esriButton, CSS.esriButtonSecondary)}>
-            {i18n.changeFile}
+            {this.messages.changeFile}
             <input
               class={CSS.fileInput}
               type="file"
@@ -735,7 +768,7 @@ class Attachments extends declared(Widget) {
 
     const fileSizeNode = (
       <fieldset key="size" class={CSS.metadataFieldset}>
-        <label>{formatFileSize(size)}</label>
+        <label>{formatFileSize(this.messagesUnits, size)}</label>
       </fieldset>
     );
 
@@ -769,7 +802,7 @@ class Attachments extends declared(Widget) {
     return (
       <div key="edit-form-container" class={CSS.formNode}>
         <a class={CSS.itemLink} href={url} rel="noreferrer" target="_blank" alt={name}>
-          {this._renderImageMask({
+          {this.renderImageMask({
             attachmentInfo,
             size: 400
           })}
@@ -787,7 +820,7 @@ class Attachments extends declared(Widget) {
     );
   }
 
-  protected _renderImageMask({
+  protected renderImageMask({
     attachmentInfo,
     size
   }: {
@@ -827,7 +860,7 @@ class Attachments extends declared(Widget) {
     );
   }
 
-  protected _renderAttachmentInfo({
+  protected renderAttachmentInfo({
     attachmentInfo,
     displayType
   }: {
@@ -837,7 +870,7 @@ class Attachments extends declared(Widget) {
     const { viewModel } = this;
     const { abilities } = viewModel;
     const { name, url } = attachmentInfo;
-    const imageMaskNode = this._renderImageMask({
+    const imageMaskNode = this.renderImageMask({
       attachmentInfo,
       size: displayType === "list" ? 48 : 400
     });
@@ -851,7 +884,7 @@ class Attachments extends declared(Widget) {
 
     const labelNode = (
       <label class={CSS.itemLabel}>
-        <span class={CSS.itemFilename}>{name || i18n.noTitle}</span>
+        <span class={CSS.itemFilename}>{name || this.messages.noTitle}</span>
         {chevronNode}
       </label>
     );
@@ -863,8 +896,8 @@ class Attachments extends declared(Widget) {
         key="details-button"
         bind={this}
         class={CSS.itemButton}
-        title={i18n.attachmentDetails}
-        aria-label={i18n.attachmentDetails}
+        title={this.messages.attachmentDetails}
+        aria-label={this.messages.attachmentDetails}
         data-attachment-info-id={attachmentInfo.id}
         onclick={() => this._startEditAttachment(attachmentInfo)}
       >
@@ -883,7 +916,7 @@ class Attachments extends declared(Widget) {
     );
   }
 
-  protected _renderAttachmentContainer(): VNode {
+  protected renderAttachmentContainer(): VNode {
     const { displayType, viewModel, visibleElements } = this;
     const { attachmentInfos, abilities } = viewModel;
 
@@ -902,21 +935,21 @@ class Attachments extends declared(Widget) {
           class={this.classes(CSS.esriButton, CSS.esriButtonTertiary, CSS.addAttachmentButton)}
         >
           <span aria-hidden="true" class={this.classes(CSS.itemAddIcon, CSS.iconPlus)} />
-          {i18n.add}
+          {this.messages.add}
         </button>
       ) : null;
 
     const attachmentsListNode = hasAttachments ? (
       <ul class={CSS.items}>
         {attachmentInfos.toArray().map((attachmentInfo) =>
-          this._renderAttachmentInfo({
+          this.renderAttachmentInfo({
             attachmentInfo,
             displayType
           })
         )}
       </ul>
     ) : (
-      <div class={CSS.empty}>{i18n.noAttachments}</div>
+      <div class={CSS.empty}>{this.messages.noAttachments}</div>
     );
 
     return (

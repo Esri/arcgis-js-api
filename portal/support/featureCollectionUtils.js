@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/generatorHelper","../../core/tsSupport/awaiterHelper","../PortalItem","./portalItemUtils"],(function(e,t,r,o,n,a){function u(e,t,u,i){return o(this,void 0,void 0,(function(){var o;return r(this,(function(r){switch(r.label){case 0:return e.layerType&&"ArcGISFeatureLayer"===e.layerType?e.url?[2,!1]:e.featureCollectionType&&e.featureCollectionType===u?[2,!0]:e.itemId?[4,(o=new n({id:e.itemId,portal:t})).load()]:[3,2]:[2,!1];case 1:return r.sent(),[2,"Feature Collection"===o.type&&a.hasTypeKeyword(o,i)];case 2:return[2,!1]}}))}))}Object.defineProperty(t,"__esModule",{value:!0}),t.isMapNotesLayer=function(e,t){return u(e,t,"notes","Map Notes")},t.isRouteLayer=function(e,t){return u(e,t,"route","Route Layer")}}));
+define(["require","exports","tslib","../PortalItem","./portalItemUtils"],(function(e,t,r,o,n){function a(e,t,a,i){return r.__awaiter(this,void 0,void 0,(function(){var u;return r.__generator(this,(function(r){switch(r.label){case 0:return e.layerType&&"ArcGISFeatureLayer"===e.layerType?e.url?[2,!1]:e.featureCollectionType&&e.featureCollectionType===a?[2,!0]:e.itemId?[4,(u=new o({id:e.itemId,portal:t})).load()]:[3,2]:[2,!1];case 1:return r.sent(),[2,"Feature Collection"===u.type&&n.hasTypeKeyword(u,i)];case 2:return[2,!1]}}))}))}Object.defineProperty(t,"__esModule",{value:!0}),t.isMapNotesLayer=function(e,t){return a(e,t,"notes","Map Notes")},t.isRouteLayer=function(e,t){return a(e,t,"route","Route Layer")}}));

@@ -33,14 +33,8 @@
  * view.ui.add(fullscreen, "top-right");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Fullscreen/nls/Fullscreen";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -52,9 +46,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Fullscreen
 import FullscreenViewModel = require("esri/widgets/Fullscreen/FullscreenViewModel");
 
+// esri.widgets.Fullscreen.t9n
+import FullscreenMessages from "esri/widgets/Fullscreen/t9n/Fullscreen";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-fullscreen esri-widget--button esri-widget",
@@ -68,7 +65,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Fullscreen")
-class Fullscreen extends declared(Widget) {
+class Fullscreen extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -82,8 +79,8 @@ class Fullscreen extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -108,6 +105,24 @@ class Fullscreen extends declared(Widget) {
   element: HTMLElement = null;
 
   //----------------------------------
+  //  fullscreenTitle
+  //----------------------------------
+
+  /**
+   * @todo document.
+   */
+  @property({
+    readOnly: true,
+    dependsOn: ["viewModel.state", "messages"]
+  })
+  @renderable()
+  get fullscreenTitle(): string {
+    const state = this.viewModel?.state;
+
+    return state === "active" ? this.messages.exit : state === "ready" ? this.messages.enter : "";
+  }
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -118,8 +133,29 @@ class Fullscreen extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Fullscreen/t9n/Fullscreen")
+  messages: FullscreenMessages = null;
 
   //----------------------------------
   //  view
@@ -164,18 +200,12 @@ class Fullscreen extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const state = this.get("viewModel.state");
+    const state = this.viewModel?.state;
+    const { fullscreenTitle } = this;
 
     const rootClasses = {
       [CSS.disabled]: state === "disabled" || state === "feature-unsupported"
     };
-
-    const iconClasses = {
-      [CSS.enter]: state === "ready" || state === "disabled" || state === "feature-unsupported",
-      [CSS.exit]: state === "active"
-    };
-
-    const title = state === "active" ? i18n.exit : state === "ready" ? i18n.enter : "";
 
     return (
       <div
@@ -185,13 +215,34 @@ class Fullscreen extends declared(Widget) {
         tabIndex={0}
         onclick={this._toggle}
         onkeydown={this._toggle}
-        aria-label={title}
-        title={title}
+        aria-label={fullscreenTitle}
+        title={fullscreenTitle}
       >
-        <span class={this.classes(CSS.icon, iconClasses)} aria-hidden="true" />
-        <span class={CSS.text}>{title}</span>
+        {this.renderIcon()}
+        {this.renderTitle()}
       </div>
     );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  protected renderIcon(): VNode {
+    const state = this.viewModel?.state;
+
+    const iconClasses = {
+      [CSS.enter]: state === "ready" || state === "disabled" || state === "feature-unsupported",
+      [CSS.exit]: state === "active"
+    };
+
+    return <span class={this.classes(CSS.icon, iconClasses)} aria-hidden="true" />;
+  }
+
+  protected renderTitle(): VNode {
+    return <span class={CSS.text}>{this.fullscreenTitle}</span>;
   }
 
   //--------------------------------------------------------------------------

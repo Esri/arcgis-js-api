@@ -52,8 +52,11 @@
  * its [timeExtent](#timeExtent) property. For example, when the TimeSlider's [timeExtent](#timeExtent) is updated,
  * you may want to update the {@link module:esri/views/layers/support/FeatureFilter#timeExtent timeExtent}
  * property of client-side {@link module:esri/views/layers/FeatureLayerView#filter filters} and
- * {@link module:esri/views/layers/FeatureLayerView#effect effects} on a {@link module:esri/views/layers/FeatureLayerView#filter},
- * {@link module:esri/views/layers/CSVLayerView#filter}, or {@link module:esri/views/layers/GeoJSONLayerView#filter}.
+ * {@link module:esri/views/layers/FeatureLayerView#effect effects} on a
+ * {@link module:esri/views/layers/FeatureLayerView#filter},
+ * {@link module:esri/views/layers/CSVLayerView#filter},
+ * {@link module:esri/views/layers/GeoJSONLayerView#filter} or
+ * {@link module:esri/views/layers/OGCFeatureLayerView#filter}.
  * A {@link module:esri/views/layers/support/FeatureFilter} can be used to filter out data that is not included in the current timeExtent,
  * and a {@link module:esri/views/layers/support/FeatureEffect} can be used to apply a visual effect to features that
  * are included in or excluded from the current timeExtent. The {@link module:esri/views/layers/support/FeatureEffect} can only be used in a
@@ -110,14 +113,6 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign"/>
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/TimeSlider/nls/TimeSlider";
-
 // esri
 import TimeExtent = require("esri/TimeExtent");
 import TimeInterval = require("esri/TimeInterval");
@@ -131,15 +126,19 @@ import { on } from "esri/core/events";
 import { clamp } from "esri/core/mathUtils";
 import { Maybe, isSome } from "esri/core/maybe";
 import { throttle } from "esri/core/throttle";
+import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.intl
 import { convertDateFormatToIntlOptions, formatDate } from "esri/intl/date";
 
 // esri.layers.support
 import { offsetDate, truncateDate } from "esri/layers/support/timeUtils";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -152,13 +151,16 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Slider
 import { TickConfig } from "esri/widgets/Slider/interfaces";
 
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+
 // esri.widgets.TimeSlider
 import { Stops, TimeSliderMode } from "esri/widgets/TimeSlider/interfaces";
 import TimeSliderViewModel = require("esri/widgets/TimeSlider/TimeSliderViewModel");
 
-// esri.widgets.support
-import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+// esri.widgets.TimeSlider.t9n
+import TimeSliderMessages from "esri/widgets/TimeSlider/t9n/TimeSlider";
 
 const CSS = {
   widgetIcon: "esri-icon-time-clock",
@@ -166,6 +168,7 @@ const CSS = {
   esriWidget: "esri-widget",
   esriWidgetButton: "esri-widget--button",
   esriButtonDisabled: "esri-button--disabled",
+  esriDisabled: "esri-disabled",
 
   timeSlider: "esri-time-slider",
   timeSliderMode: "esri-time-slider__mode--", // + mode (eg "instant", "time-extent")
@@ -373,12 +376,14 @@ const TickFormats = new Collection<TickFormat>([
 type TimeSliderProperties = Partial<
   Pick<
     TimeSlider,
+    | "disabled"
     | "effectiveStops"
     | "fullTimeExtent"
     | "loop"
     | "mode"
     | "playRate"
     | "stops"
+    | "tickConfigs"
     | "timeVisible"
     | "values"
     | "view"
@@ -386,10 +391,10 @@ type TimeSliderProperties = Partial<
   >
 >;
 
-type Layout = "wide" | "compact";
+type Layout = "auto" | "compact" | "wide";
 
 @subclass("esri.widgets.TimeSlider")
-class TimeSlider extends declared(Widget) {
+class TimeSlider extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -459,11 +464,11 @@ class TimeSlider extends declared(Widget) {
    */
 
   /**
-   * Specifies number of stops for the time slider widget. The time slider stops are divided into
-   * evenly spaced stops.
+   * Divides the time slider's [fullTimeExtent](#fullTimeExtent) or _timeExtent_ (if specified) into _count_ equal parts.
+   * A stop will be placed at the start and end of each division resulting in _count + 1_ [effectiveStops](#effectiveStops).
    *
-   * @property {number} count - Specifies number of stops count.
-   * @property {module:esri/TimeExtent} [timeExtent] - A period of time with definitive start and end dates. The time slider widget's [fullTimeExtent](#fullTimeExtent) will be used if this property is not specified.
+   * @property {number} count - Number of evenly spaced divisions.
+   * @property {module:esri/TimeExtent} [timeExtent] - The time period to divide. If unspecified, the time slider's [fullTimeExtent](#fullTimeExtent) will be used.
    *
    * @typedef {Object} module:esri/widgets/TimeSlider~StopsByCount
    *
@@ -493,36 +498,30 @@ class TimeSlider extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: TimeSliderProperties) {
-    super(params);
+  constructor(params?: TimeSliderProperties, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
-    this._slider = new Slider({
-      precision: 0,
-      visibleElements: {
-        rangeLabels: false
-      },
-      rangeLabelInputsEnabled: false
-    });
-
-    const throttledResize = throttle(() => this.scheduleRender(), RESIZE_THROTTLE_INTERVAL);
-
+  initialize(): void {
     this.own([
       this._slider.watch("values", (newValues) => {
-        this.set("values", newValues.map((value) => new Date(value)));
+        const oldValues = this.values?.map((date) => date.getTime());
+        if (!equals(newValues, oldValues)) {
+          this.set(
+            "values",
+            newValues.map((value) => new Date(value))
+          );
+        }
       }),
-      on(window, "resize", throttledResize),
-      this.watch("effectiveStops", () => {
-        this._updateSliderSteps();
-      }),
-      this.watch(["stops", "fullTimeExtent"], () => {
-        this._createDefaultValues();
-      })
+      on(
+        window,
+        "resize",
+        throttle(() => this.scheduleRender(), RESIZE_THROTTLE_INTERVAL)
+      ),
+      init(this, "effectiveStops", () => this._updateSliderSteps()),
+      init(this, ["stops", "fullTimeExtent"], () => this._createDefaultValues())
     ]);
 
-    this._updateSliderSteps();
-    this._createDefaultValues();
     this._validateTimeExtent();
   }
 
@@ -538,7 +537,13 @@ class TimeSlider extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _slider: Slider = null;
+  private _slider: Slider = new Slider({
+    precision: 0,
+    visibleElements: {
+      rangeLabels: false
+    },
+    rangeLabelInputsEnabled: false
+  });
   private _tickFormat: TickFormat = null;
 
   //--------------------------------------------------------------------------
@@ -546,6 +551,33 @@ class TimeSlider extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  disabled
+  //----------------------------------
+
+  /**
+   * When `true`, sets the widget to a disabled state so the user cannot interact with it.
+   *
+   * @name disabled
+   * @instance
+   * @type {Boolean}
+   * @since 4.16
+   * @default false
+   *
+   * @example
+   * // Create a timeslider widget that is initially disabled.
+   * const timeSlider = new TimeSlider({
+   *   container: "timeSliderDiv",
+   *   fullTimeExtent: {
+   *     start: new Date(2000, 5, 1),
+   *     end: new Date(2010, 0, 1)
+   *   },
+   *   disabled: true
+   * });
+   */
+  @property()
+  disabled = false;
 
   //----------------------------------
   //  effectiveStops
@@ -637,6 +669,28 @@ class TimeSlider extends declared(Widget) {
   iconClass: string = CSS.widgetIcon;
 
   //----------------------------------
+  //  interactive
+  //----------------------------------
+
+  /**
+   * Convenience property to determine if the widget is interactive.
+   *
+   * @name interactive
+   * @instance
+   * @type {Boolean}
+   * @readonly
+   * @ignore
+   */
+  @property({
+    dependsOn: ["disabled", "viewModel.state"],
+    readOnly: true
+  })
+  @renderable()
+  get interactive(): boolean {
+    return !this.disabled && this.viewModel && this.viewModel.state !== "disabled";
+  }
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -647,8 +701,46 @@ class TimeSlider extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  layout
+  //----------------------------------
+
+  /**
+   * Determines the layout used by the TimeSlider widget.
+   *
+   * Possible values are listed below:
+   * | Value   | Description |
+   * | ---     | --- |
+   * | auto    | Automatically uses the "compact" layout when the widget width is less than 858 pixels. Otherwise the "wide" layout it used. |
+   * | compact | Widget elements are oriented vertically. This layout is better suited to narrower widths. |
+   * | wide    | Widget elements are oriented laterally. This thinner design is better suited to wide applications. |
+   *
+   * @name layout
+   * @since 4.16
+   * @instance
+   * @type {"auto" | "compact" | "wide" }
+   * @default auto
+   * @example
+   * timeSlider.layout = "compact";
+   */
+  @property({
+    value: "auto"
+  })
+  @renderable()
+  set layout(value: Layout) {
+    const layouts: Layout[] = ["auto", "compact", "wide"];
+
+    if (layouts.indexOf(value) === -1) {
+      value = "auto";
+    }
+
+    this._set("layout", value);
+  }
 
   //----------------------------------
   //  loop
@@ -673,6 +765,42 @@ class TimeSlider extends declared(Widget) {
    */
   @aliasOf("viewModel.loop")
   loop = true;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/TimeSlider/t9n/TimeSlider")
+  messages: TimeSliderMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  playRate
@@ -815,6 +943,65 @@ class TimeSlider extends declared(Widget) {
    */
   @aliasOf("viewModel.stops")
   stops: Stops = { count: 10 };
+
+  //----------------------------------
+  //  tickConfigs
+  //----------------------------------
+
+  /**
+   * When set, overrides the default TimeSlider ticks labelling system.
+   * Please refer to {@link module:esri/widgets/Slider~TickConfig} for detailed documentation
+   * on how to configure tick placement, style, and behavior.
+   *
+   * @name tickConfigs
+   * @instance
+   * @type {module:esri/widgets/Slider~TickConfig[]}
+   * @default null
+   * @since 4.16
+   *
+   * @example
+   * // By default in "en-US" the TimeSlider will display ticks with "2010, 2011, 2012, etc".
+   * // Overwrite TimeSlider tick configuration so that labels display "'10, '12, '14, etc" in red.
+   * const timeSlider = new TimeSlider({
+   *   container: "timeSliderDiv",
+   *   fullTimeExtent: {
+   *     start: new Date(2010, 0, 1),
+   *     end: new Date(2020, 0, 1)
+   *   },
+   *   tickConfigs: [{
+   *     mode: "position",
+   *     values: [
+   *       new Date(2010, 0, 1), new Date(2012, 0, 1), new Date(2014, 0, 1),
+   *       new Date(2016, 0, 1), new Date(2018, 0, 1), new Date(2020, 0, 1)
+   *     ].map((date) => date.getTime()),
+   *     labelsVisible: true,
+   *     labelFormatFunction: (value) => {
+   *       const date = new Date(value);
+   *       return `'${date.getUTCFullYear() - 2000}`;
+   *     },
+   *     tickCreatedFunction: (value, tickElement, labelElement) => {
+   *       tickElement.classList.add("custom-ticks");
+   *       labelElement.classList.add("custom-labels");
+   *     }
+   *   }]
+   * };
+   *
+   * @example
+   * // this CSS goes with the snippet above.
+   * #timeSlider .custom-ticks {
+   *   background-color: red;
+   *   width: 1px;
+   *   height: 8px;
+   * }
+   * #timeSlider .custom-labels {
+   *   font-family: Georgia, 'Times New Roman', Times, serif;
+   *   font-size: 15px;
+   *   color: red;
+   * }
+   */
+  @property()
+  @renderable()
+  tickConfigs: TickConfig[] = null;
 
   //----------------------------------
   //  timeExtent
@@ -1066,66 +1253,74 @@ class TimeSlider extends declared(Widget) {
 
   render(): VNode {
     const {
-      domNode,
-      fullTimeExtent,
-      mode,
       _slider,
+      domNode,
       effectiveStops,
+      fullTimeExtent,
+      interactive,
+      mode,
+      tickConfigs,
       timeVisible,
       values,
-      viewModel
+      viewModel,
+      messagesCommon
     } = this;
 
     if (fullTimeExtent != null) {
       const { start, end } = fullTimeExtent;
 
-      if (start == null || end == null) {
-        return undefined;
-      }
-      const startTime = start.getTime();
-      const endTime = end.getTime();
+      if (start != null && end != null) {
+        const startTime = start.getTime();
+        const endTime = end.getTime();
 
-      const fullTimeExtentChanged = _slider.min !== startTime || _slider.max !== endTime;
-      if (fullTimeExtentChanged) {
-        _slider.min = startTime;
-        _slider.max = endTime;
-      }
+        const fullTimeExtentChanged = _slider.min !== startTime || _slider.max !== endTime;
+        if (fullTimeExtentChanged) {
+          _slider.min = startTime;
+          _slider.max = endTime;
+        }
 
-      const sliderWidth = _slider.trackElement ? _slider.trackElement.offsetWidth : 400;
-      const millisecondsPerPixel = (endTime - startTime) / sliderWidth;
-
-      const tickFormat = TickFormats.find((tickFormat) => {
-        const duration = tickFormat.minor.toMilliseconds();
-        return duration > MINIMUM_MINOR_TICK_SPACING * millisecondsPerPixel;
-      });
-
-      const tickFormatChanged = this._tickFormat !== tickFormat && tickFormat != null;
-      if (tickFormatChanged) {
-        this._tickFormat = tickFormat;
-      }
-
-      if (fullTimeExtentChanged || tickFormatChanged) {
-        const minorValues = this._getTickPositions(tickFormat.minor);
-        const minor: TickConfig = {
-          mode: "position",
-          values: minorValues,
-          labelsVisible: false,
-          tickCreatedFunction: (_value, tick) => {
-            tick.classList.add(CSS.sliderMinorTick);
+        if (tickConfigs != null) {
+          if (_slider.tickConfigs !== tickConfigs) {
+            _slider.tickConfigs = tickConfigs;
           }
-        };
+        } else {
+          const sliderWidth = _slider.trackElement ? _slider.trackElement.offsetWidth : 400;
+          const millisecondsPerPixel = (endTime - startTime) / sliderWidth;
 
-        const majorValues = this._getTickPositions(tickFormat.major);
-        const major: TickConfig = {
-          mode: "position",
-          values: majorValues,
-          labelsVisible: true,
-          tickCreatedFunction: (_value, tick) => {
-            tick.classList.add(CSS.sliderMajorTick);
-          },
-          labelFormatFunction: (value) => formatDate(value, tickFormat.format)
-        };
-        _slider.tickConfigs = [minor, major];
+          const tickFormat = TickFormats.find((tickFormat) => {
+            const duration = tickFormat.minor.toMilliseconds();
+            return duration > MINIMUM_MINOR_TICK_SPACING * millisecondsPerPixel;
+          });
+
+          const tickFormatChanged = this._tickFormat !== tickFormat && tickFormat != null;
+          if (tickFormatChanged) {
+            this._tickFormat = tickFormat;
+          }
+
+          if (fullTimeExtentChanged || tickFormatChanged) {
+            const minorValues = this._getTickPositions(tickFormat.minor);
+            const minor: TickConfig = {
+              mode: "position",
+              values: minorValues,
+              labelsVisible: false,
+              tickCreatedFunction: (_value, tick) => {
+                tick.classList.add(CSS.sliderMinorTick);
+              }
+            };
+
+            const majorValues = this._getTickPositions(tickFormat.major);
+            const major: TickConfig = {
+              mode: "position",
+              values: majorValues,
+              labelsVisible: true,
+              tickCreatedFunction: (_value, tick) => {
+                tick.classList.add(CSS.sliderMajorTick);
+              },
+              labelFormatFunction: (value) => formatDate(value, tickFormat.format)
+            };
+            _slider.tickConfigs = [minor, major];
+          }
+        }
       }
     }
 
@@ -1133,6 +1328,8 @@ class TimeSlider extends declared(Widget) {
     if (!equals(_slider.values, thumbs)) {
       _slider.values = thumbs;
     }
+
+    _slider.disabled = !interactive;
 
     const fullStart: Maybe<Date> = fullTimeExtent && fullTimeExtent.start;
     const fullStartDate: Maybe<string> = isSome(fullStart) ? this._formateDate(fullStart) : null;
@@ -1167,13 +1364,13 @@ class TimeSlider extends declared(Widget) {
     const { state } = viewModel;
     const isReady = state === "ready";
     const isPlaying = state === "playing";
-    const isDisabled = state === "disabled" || effectiveStops.length === 0;
+    const isDisabled = !interactive || effectiveStops.length === 0;
 
     const play = (
       <div class={CSS.animation}>
         <button
           aria-disabled={isDisabled ? "true" : "false"}
-          aria-label={isPlaying ? i18nCommon.control.stop : i18nCommon.control.play}
+          aria-label={isPlaying ? messagesCommon.control.stop : messagesCommon.control.play}
           bind={this}
           class={this.classes(
             CSS.esriWidgetButton,
@@ -1181,7 +1378,7 @@ class TimeSlider extends declared(Widget) {
             isDisabled && CSS.esriButtonDisabled
           )}
           disabled={isDisabled}
-          title={isPlaying ? i18nCommon.control.stop : i18nCommon.control.play}
+          title={isPlaying ? messagesCommon.control.stop : messagesCommon.control.play}
           onclick={this._playOrStopClick}
         >
           <div
@@ -1195,7 +1392,7 @@ class TimeSlider extends declared(Widget) {
     );
 
     const time = (
-      <div class={CSS.timeExtent}>
+      <div class={this.classes(CSS.timeExtent, !interactive && CSS.esriButtonDisabled)}>
         {isSome(timeExtentStartDate) && (
           <div key="start-date-group" class={CSS.timeExtentGroup}>
             <div key="start-date" class={CSS.timeExtentDate}>
@@ -1230,7 +1427,7 @@ class TimeSlider extends declared(Widget) {
     );
 
     const min = (
-      <div class={CSS.min}>
+      <div class={this.classes(CSS.min, !interactive && CSS.esriButtonDisabled)}>
         {isSome(fullStartDate) && (
           <div key="min-date" class={CSS.minDate}>
             {fullStartDate}
@@ -1243,7 +1440,7 @@ class TimeSlider extends declared(Widget) {
     const slider = <div class={CSS.slider}>{_slider.render()}</div>;
 
     const max = (
-      <div class={CSS.max}>
+      <div class={this.classes(CSS.max, !interactive && CSS.esriButtonDisabled)}>
         {isSome(fullEndDate) && (
           <div key="max-date" class={CSS.maxDate}>
             {fullEndDate}
@@ -1257,7 +1454,7 @@ class TimeSlider extends declared(Widget) {
       <div class={CSS.previous}>
         <button
           aria-disabled={isDisabled ? "true" : "false"}
-          aria-label={i18nCommon.pagination.previous}
+          aria-label={messagesCommon.pagination.previous}
           bind={this}
           class={this.classes(
             CSS.esriWidgetButton,
@@ -1265,7 +1462,7 @@ class TimeSlider extends declared(Widget) {
             (isPlaying || isDisabled) && CSS.esriButtonDisabled
           )}
           disabled={isDisabled}
-          title={i18nCommon.pagination.previous}
+          title={messagesCommon.pagination.previous}
           onclick={this._previousClick}
         >
           <div class={CSS.previousIcon} />
@@ -1277,7 +1474,7 @@ class TimeSlider extends declared(Widget) {
       <div class={CSS.next}>
         <button
           aria-disabled={isDisabled ? "true" : "false"}
-          aria-label={i18nCommon.pagination.next}
+          aria-label={messagesCommon.pagination.next}
           bind={this}
           class={this.classes(
             CSS.esriWidgetButton,
@@ -1285,7 +1482,7 @@ class TimeSlider extends declared(Widget) {
             (isPlaying || isDisabled) && CSS.esriButtonDisabled
           )}
           disabled={isDisabled}
-          title={i18nCommon.pagination.next}
+          title={messagesCommon.pagination.next}
           onclick={this._nextClick}
         >
           <div class={CSS.nextIcon} />
@@ -1293,7 +1490,12 @@ class TimeSlider extends declared(Widget) {
       </div>
     );
 
-    const layout: Layout = domNode.clientWidth < MINIMUM_WIDE_LAYOUT_WIDTH ? "compact" : "wide";
+    const layout: Exclude<Layout, "auto"> =
+      this.layout === "auto"
+        ? domNode.clientWidth < MINIMUM_WIDE_LAYOUT_WIDTH
+          ? "compact"
+          : "wide"
+        : this.layout;
 
     const timeSlider = (
       <div
@@ -1301,7 +1503,8 @@ class TimeSlider extends declared(Widget) {
           CSS.timeSlider,
           CSS.esriWidget,
           `${CSS.timeSliderMode}${mode}`,
-          `${CSS.timeSliderLayout}${layout}`
+          `${CSS.timeSliderLayout}${layout}`,
+          !interactive && CSS.esriDisabled
         )}
       >
         {layout === "wide" && (
@@ -1368,7 +1571,9 @@ class TimeSlider extends declared(Widget) {
 
   private _updateSliderSteps(): void {
     this._slider.steps =
-      this.effectiveStops.length > 0 ? this.effectiveStops.map((date) => date.getTime()) : null;
+      this.effectiveStops && this.effectiveStops.length > 0
+        ? this.effectiveStops.map((date) => date.getTime())
+        : null;
   }
 
   private _validateTimeExtent(): void {

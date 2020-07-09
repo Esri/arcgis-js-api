@@ -1,5 +1,6 @@
 @mixin histogram() {
   .esri-histogram {
+    direction: ltr;
     width: 100%;
     height: 100%;
   }
@@ -26,6 +27,8 @@
     stroke: black;
     font-size: 12px;
     stroke-width: 0;
+    direction: ltr;
+    unicode-bidi: plaintext;
   }
 
   .esri-histogram__average-data-line {
@@ -35,6 +38,12 @@
   .esri-histogram__average-symbol {
     font-family: "Georgia, serif";
     font-style: italic;
+  }
+  
+  [dir="rtl"] {
+    .esri-histogram {
+      direction: rtl;
+    }
   }
 }
 @if $include_Histogram == true {

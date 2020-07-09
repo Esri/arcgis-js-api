@@ -6,10 +6,6 @@
  * @noconstructor
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign"/>
-
 // esri
 import Color = require("esri/../Color");
 
@@ -18,7 +14,7 @@ import { isSome } from "esri/../core/maybe";
 import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import Histogram = require("esri/Histogram");
@@ -61,7 +57,7 @@ const CSS = {
 type State = "ready" | "disabled";
 
 @subclass("esri.widgets.smartMapping.SmartMappingSliderBase")
-export abstract class SmartMappingSliderBase extends declared(Widget) {
+export abstract class SmartMappingSliderBase extends Widget {
   /**
    * Fires when a user changes the [max](#max) of the slider.
    *
@@ -147,8 +143,8 @@ export abstract class SmartMappingSliderBase extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                            that may be passed into the constructor.
    */
-  constructor(props?: any) {
-    super(props);
+  constructor(props?: any, parentNode?: string | Element) {
+    super(props, parentNode);
 
     const slider = this.slider;
 
@@ -179,7 +175,7 @@ export abstract class SmartMappingSliderBase extends declared(Widget) {
     this._onMinZoomCapPointerDown = this._onMinZoomCapPointerDown.bind(this);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     const { histogramConfig = {}, viewModel } = this;
     const { labelFormatFunction, max, min } = viewModel;
     const params = this.getParamsFromHistogramConfig(histogramConfig);
@@ -251,7 +247,7 @@ export abstract class SmartMappingSliderBase extends declared(Widget) {
    *   example, you can use this function to color bins that match the colors on the slider's track.
    * @property {module:esri/widgets/Histogram~Bin[]} [bins] - The bins of the histogram. This is
    *   an array of objects indicating the range and count of data in each bin. This value is
-   *   typically retrieved from the {@link module:esri/renderers/smartMapping/statistics/histogram}
+   *   typically retrieved from the {@link module:esri/smartMapping/statistics/histogram}
    *   function.
    * @property {Object[]} [dataLines] - When set, renders lines on the histogram that indicate important or
    *   meaningful values to the end user.
@@ -274,14 +270,14 @@ export abstract class SmartMappingSliderBase extends declared(Widget) {
 
   /**
    * The {@link module:esri/widgets/Histogram} associated with the data represented on the slider. The bins are typically
-   * generated using the {@link module:esri/renderers/smartMapping/statistics/histogram}
+   * generated using the {@link module:esri/smartMapping/statistics/histogram}
    * statistics function.
    *
    * @name histogramConfig
    * @instance
    * @type {module:esri/widgets/smartMapping/SmartMappingSliderBase~HistogramConfig}
    *
-   * @see module:esri/renderers/smartMapping/statistics/histogram
+   * @see module:esri/smartMapping/statistics/histogram
    * @see module:esri/widgets/Histogram
    *
    * @example

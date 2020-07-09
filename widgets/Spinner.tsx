@@ -1,12 +1,9 @@
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
 // esri.core
 import * as promiseUtils from "esri/core/promiseUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
 import Point = require("esri/geometry/Point");
@@ -37,18 +34,18 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Spinner")
-class Spinner extends declared(Widget) {
+class Spinner extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own([
       watchUtils.watch<boolean>(this, "visible", (visible) => this._visibleChange(visible))
     ]);

@@ -1,0 +1,8 @@
+{
+  "widgetLabel": "Schuifregelaar",
+  "maximumValue": "Maximumwaarde",
+  "minimumValue": "Minimumwaarde",
+  "rangeMaximum": "Maximumbereik: {value}",
+  "rangeMinimum": "Minimumbereik: {value}",
+  "sliderValue": "Schuifregelaar waarde"
+}

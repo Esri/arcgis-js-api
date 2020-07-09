@@ -12,7 +12,7 @@
   }
   .esri-print__header-title {
     font-size: $font-size__header-text;
-    font-weight: $font-weight__bold;
+    font-weight: $font-weight--bold;
     padding: 0 0 $cap-spacing;
     margin: 0 auto 0 0;
   }
@@ -147,7 +147,7 @@
     margin-top: 0.15em;
   }
   .esri-print__exported-file-link-title {
-    word-break: break-all;
+    @include wordbreak();
   }
   .esri-print__exported-file-link {
     color: $interactive-font-color;

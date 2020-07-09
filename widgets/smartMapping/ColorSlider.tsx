@@ -10,7 +10,7 @@
  * ![ColorSlider with annotations](../../assets/img/apiref/widgets/sliders/colorslider-2-labels.png "ColorSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/color#createContinuousRenderer createContinuousRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
  * method.
  *
  * ```js
@@ -70,27 +70,20 @@
  * @see [ColorSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ColorSlider.tsx)
  * @see [ColorSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ColorSlider.scss)
  * @see module:esri/widgets/smartMapping/ColorSlider/ColorSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/color colorRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/color colorRendererCreator}
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/ColorSlider/nls/ColorSlider";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { ContinuousRendererResult } from "esri/../renderers/smartMapping/creators/color";
-
-// esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
 import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
+
+// esri.smartMapping.renderers
+import { ContinuousRendererResult } from "esri/../smartMapping/renderers/color";
+
+// esri.smartMapping.statistics
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -98,12 +91,15 @@ import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 // esri.widgets.smartMapping.ColorSlider
 import ColorSliderViewModel = require("esri/widgets/ColorSlider/ColorSliderViewModel");
 
+// esri.widgets.smartMapping.ColorSlider.t9n
+import ColorSliderMessages from "esri/widgets/ColorSlider/t9n/ColorSlider";
+
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-slider",
@@ -119,7 +115,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.smartMapping.ColorSlider")
-class ColorSlider extends declared(SmartMappingSliderBase) {
+class ColorSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -143,8 +139,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
    *   stops: rendererResponse.visualVariable.stops
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this.viewModel && this.viewModel.set("thumbsConstrained", false);
 
@@ -208,7 +204,29 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/ColorSlider/t9n/ColorSlider")
+  messages: ColorSliderMessages = null;
 
   //----------------------------------
   //  primaryHandleEnabled
@@ -308,8 +326,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a ColorSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/color~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/color#createContinuousRenderer createContinuousRenderer}
+   * {@link module:esri/smartMapping/renderers/color~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
    * method.
    *
    * This method sets the slider [stops](#stops), [min](#min), [max](#maxDataValue),
@@ -319,11 +337,11 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
    * @method fromRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/color~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/color#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/color~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @return {module:esri/widgets/smartMapping/ColorSlider} Returns a ColorSlider instance. This will not render until you assign
@@ -404,8 +422,8 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties of a ColorSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/color~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/color#createContinuousRenderer createContinuousRenderer}
+   * {@link module:esri/smartMapping/renderers/color~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
    * method. This method is useful for cases when the app allows the end user to switch data variables
    * used to render the data.
    *
@@ -414,11 +432,11 @@ class ColorSlider extends declared(SmartMappingSliderBase) {
    *
    * @see [fromRendererResult()](#fromRendererResult)
    *
-   * @param {module:esri/renderers/smartMapping/creators/color~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/color#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/color~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example

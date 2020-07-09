@@ -10,7 +10,7 @@
     },
     "isReference": {
       "type": "boolean",
-      "description": "Applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
+      "description": "This property is applicable if used as a baseMapLayer. A boolean value indicating whether or not the baseMapLayer draws on top (true) of other layers, including operationalLayers , or below (false)."
     },
     "itemId": {
       "type": "string",
@@ -56,7 +56,8 @@
     },
     "visibility": {
       "type": "boolean",
-      "description": "Boolean property determining whether the layer is initially visible in the web scene."
+      "description": "Boolean property determining whether the layer is initially visible.",
+      "default": true
     }
   },
   "required": [

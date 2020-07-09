@@ -127,6 +127,7 @@
     display: block;
     transition: background-color 125ms ease-in-out;
     @include wordbreak();
+
     &:hover {
       background-color: $background-color--hover;
     }

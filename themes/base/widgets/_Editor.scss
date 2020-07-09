@@ -52,6 +52,7 @@
     display: flex;
     align-items: center;
     align-self: stretch;
+    font-size: $font-size__h2;
     margin-left: $side-spacing;
     margin-right: $side-spacing;
   }
@@ -254,9 +255,6 @@
   }
 
   .esri-ui {
-    .esri-editor {
-      width: $panel-width;
-    }
     .esri-editor__scroller {
       max-height: ($panel-max-height--medium / 2);
     }

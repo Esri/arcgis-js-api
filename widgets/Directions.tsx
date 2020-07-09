@@ -39,18 +39,10 @@
  *
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-/// <amd-dependency path="esri/core/tsSupport/assignHelper" name="__assign" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Directions/nls/Directions";
-
 // esri
+import { getAssetUrl } from "esri/assets";
 import Graphic = require("esri/Graphic");
 import { formatDate, formatNumber, substitute } from "esri/intl";
-import moment = require("esri/moment");
 
 // esri.core
 import Collection = require("esri/core/Collection");
@@ -60,7 +52,10 @@ import { PausableHandle } from "esri/core/interfaces";
 import { init, on as watchOn, watch, when, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.intl
+import { loadMoment } from "esri/intl/moment";
 
 // esri.libs.sortablejs
 import Sortable = require("esri/libs/sortablejs/Sortable");
@@ -68,13 +63,16 @@ import Sortable = require("esri/libs/sortablejs/Sortable");
 // esri.symbols
 import Symbol = require("esri/symbols/Symbol");
 
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
+
 // esri.tasks.support
 import RouteResultsContainer = require("esri/tasks/support/RouteResultsContainer");
 
 // esri.views
 import MapView = require("esri/views/MapView");
 import SceneView = require("esri/views/SceneView");
-import { Cursor } from "esri/views/View";
+import View = require("esri/views/View");
 
 // esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "esri/widgets/interfaces";
@@ -97,12 +95,15 @@ import { Maneuver, PlaceholderStop, StopSymbols } from "esri/widgets/Directions/
 import { toIconName } from "esri/widgets/Directions/support/maneuverUtils";
 import RouteSections = require("esri/widgets/Directions/support/RouteSections");
 
+// esri.widgets.Directions.t9n
+import DirectionsMessages from "esri/widgets/Directions/t9n/Directions";
+
 // esri.widgets.support
 import DatePicker = require("esri/widgets/support/DatePicker");
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
 import TimePicker = require("esri/widgets/support/TimePicker");
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
 const DEPART_BY = "depart-by";
@@ -135,7 +136,6 @@ const CSS = {
   stopHandle: "esri-directions__stop-handle",
   stopInput: "esri-directions__stop-input",
   stopOptions: "esri-directions__stop-options",
-  stopUnderline: "esri-directions__stop-underline",
   stopHandleIcon: "esri-directions__stop-handle-icon",
   verticalSplitter: "esri-directions__vertical-splitter",
   stopRow: "esri-directions__stop-row",
@@ -180,7 +180,7 @@ const CSS = {
   lastStopIcon: "esri-icon-radio-checked",
   handleIcon: "esri-icon-handle-vertical",
   addStopIcon: "esri-icon-plus",
-  removeStopIcon: "esri-icon-close",
+  removeStopIcon: "esri-icon-trash",
   reverseStopIcon: "esri-icon-up-down-arrows",
   openIcon: "esri-icon-right-triangle-arrow",
   closeIcon: "esri-icon-down-arrow",
@@ -203,7 +203,7 @@ const REGISTRY_KEYS = {
   awaitingViewClickStop: "awaiting-view-click-stop"
 };
 
-const MANEUVER_ICON_DIR = require.toUrl("../themes/base/images/maneuvers/");
+const MANEUVER_ICON_DIR = getAssetUrl("esri/themes/base/images/maneuvers/");
 
 function getFirstResult(response: SearchResponse<SearchResults<SearchResult>>): SearchResult {
   return response.results[0].results[0];
@@ -239,7 +239,7 @@ const defaultDelayInMs = 100;
 const viewClickDelayInMs = 500;
 
 @subclass("esri.widgets.Directions")
-class Directions extends declared(Widget) {
+class Directions extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -254,11 +254,15 @@ class Directions extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  async loadLocale(): Promise<void> {
+    this._moment = await loadMoment();
+  }
+
+  initialize(): void {
     this.own([
       init(this, "viewModel.lastRoute", () => {
         this._routeSections.routePath = this.get<Graphic[]>("viewModel.directionLines");
@@ -347,9 +351,11 @@ class Directions extends declared(Widget) {
 
   private _handles = new Handles<any>();
 
+  private _moment: typeof import("moment");
+
   private _newPlaceholderStop: PlaceholderStop = null;
 
-  private _previousCursor: Cursor;
+  private _previousCursor: View.Cursor;
 
   private _routeSections: RouteSections = new RouteSections();
 
@@ -403,8 +409,10 @@ class Directions extends declared(Widget) {
    * @instance
    * @type {string}
    */
-  @property()
-  label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  lastRoute
@@ -460,6 +468,44 @@ class Directions extends declared(Widget) {
    */
   @aliasOf("viewModel.maxStops")
   maxStops: number = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/Directions/t9n/Directions")
+  messages: DirectionsMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * The widget's common message bundle.
+   *
+   * @instance
+   * @name messagesCommon
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  routeServiceUrl
@@ -682,16 +728,16 @@ class Directions extends declared(Widget) {
   private _renderSignIn(): VNode {
     return (
       <div key="sign-in" class={CSS.signInContent}>
-        <h2 class={this.classes(CSS.heading, CSS.contentTitle)}>{i18n.widgetLabel}</h2>
+        <h2 class={this.classes(CSS.heading, CSS.contentTitle)}>{this.messages.widgetLabel}</h2>
         {this._renderPlaceholder()}
-        <h3 class={CSS.heading}>{i18n.signInRequired}</h3>
+        <h3 class={CSS.heading}>{this.messages.signInRequired}</h3>
         <button
           class={this.classes(CSS.button, CSS.buttonSecondary, CSS.signInButton)}
           tabIndex={0}
           onclick={this._handleSignInClick}
           bind={this}
         >
-          {i18nCommon.auth.signIn}
+          {this.messagesCommon.auth.signIn}
         </button>
       </div>
     );
@@ -709,7 +755,7 @@ class Directions extends declared(Widget) {
     }
 
     const { selectedTravelMode: travelMode } = this.viewModel;
-    const title = travelMode.name || i18n.travelMode;
+    const title = travelMode.name || this.messages.travelMode;
 
     return (
       <select
@@ -748,7 +794,8 @@ class Directions extends declared(Widget) {
 
   private _renderDepartureTimeControls(): VNode {
     const startTimeIsNow = this._departureTime === NOW;
-    const title = i18n.departureTime;
+    const { messages } = this;
+    const title = messages.departureTime;
 
     return (
       <div class={CSS.departureTime} key="esri-directions__departure-time-controls" role="group">
@@ -760,10 +807,10 @@ class Directions extends declared(Widget) {
           title={title}
         >
           <option value={NOW} selected={startTimeIsNow}>
-            {i18n.leaveNow}
+            {messages.leaveNow}
           </option>
           <option value={DEPART_BY} selected={!startTimeIsNow}>
-            {i18n.departBy}
+            {messages.departBy}
           </option>
         </select>
         {startTimeIsNow ? null : this._renderTimeControls()}
@@ -773,6 +820,14 @@ class Directions extends declared(Widget) {
 
   private _renderStops(): VNode {
     const stops = this._stops;
+    let activeSearchMenuZIndices = 0;
+
+    stops.forEach((stop) => {
+      if (this._acquireSearch(stop).activeMenu !== "none") {
+        activeSearchMenuZIndices += 1;
+      }
+    });
+
     const rows: any[] = stops.toArray().map((stop, i) => {
       const numStops = stops.length;
       const newRow = i > 1 && !stop.result;
@@ -805,8 +860,9 @@ class Directions extends declared(Widget) {
 
       const search = this._acquireSearch(stop);
 
-      const { removeStop: removeStopTitle, reverseStops: reverseStopsTitle, unlocated } = i18n;
-      const label = substitute(i18n.stopLabelTemplate, {
+      const { messages } = this;
+      const { removeStop: removeStopTitle, reverseStops: reverseStopsTitle, unlocated } = messages;
+      const label = substitute(messages.stopLabelTemplate, {
         number: i + 1,
         label: stop.result ? stop.result.name : unlocated
       });
@@ -818,6 +874,10 @@ class Directions extends declared(Widget) {
         !!stop.result &&
         search.selectedResult === stop.result;
 
+      const rowStyles = {
+        zIndex: search.activeMenu !== "none" ? `${activeSearchMenuZIndices--}` : ""
+      };
+
       return (
         <li
           aria-label={label}
@@ -827,6 +887,7 @@ class Directions extends declared(Widget) {
           id={stopListItemId}
           key={i}
           data-stop-index={i}
+          styles={rowStyles}
         >
           <div class={CSS.stopHandle}>
             <span
@@ -837,6 +898,7 @@ class Directions extends declared(Widget) {
                 CSS.stopHandleIcon,
                 CSS.interactiveStopIcon
               )}
+              onpointerdown={this._handleDragHandlePointerDown}
             />
             <div
               bind={this}
@@ -855,10 +917,7 @@ class Directions extends declared(Widget) {
               />
             </div>
           </div>
-          <div class={CSS.stopInput}>
-            {search.render()}
-            <div class={CSS.stopUnderline} />
-          </div>
+          <div class={CSS.stopInput}>{search.render()}</div>
           <div class={CSS.stopOptions} role="group">
             <div
               aria-label={removeStopTitle}
@@ -910,7 +969,7 @@ class Directions extends declared(Widget) {
       return stop.result && search.selectedResult === stop.result;
     });
     const exceededMaxStops = this._stops.length >= this.maxStops;
-    const addStopTitle = i18n.addStop;
+    const addStopTitle = this.messages.addStop;
 
     const addStop =
       stops.length >= 2 && allStopsValid && !exceededMaxStops ? (
@@ -950,6 +1009,9 @@ class Directions extends declared(Widget) {
       onEnd: this._handleStopInputDragEnd
     });
   };
+
+  private _handleDragHandlePointerDown = (): void =>
+    this._stops.forEach((stop) => (this._acquireSearch(stop).activeMenu = "none"));
 
   @accessibleHandler()
   private _handleStopIconClick(event: Event): void {
@@ -1051,7 +1113,7 @@ class Directions extends declared(Widget) {
 
     this._handles.add(
       init(search, "searchTerm", (term) => {
-        view.cursor = term.length === 0 ? ("copy" as Cursor) : previousCursor;
+        view.cursor = term.length === 0 ? ("copy" as View.Cursor) : previousCursor;
       }),
       REGISTRY_KEYS.awaitingViewClickStop
     );
@@ -1191,10 +1253,10 @@ class Directions extends declared(Widget) {
   }
 
   private _updateDepartureTime(): void {
-    const date = this._datePicker.value;
-    const time = this._timePicker.value;
+    const date = this._moment(this._datePicker.value);
+    const time = this._moment(this._timePicker.value);
 
-    const joinedTime = moment({
+    const joinedTime = this._moment({
       date: date.date(),
       month: date.month(),
       year: date.year(),
@@ -1219,12 +1281,9 @@ class Directions extends declared(Widget) {
   }
 
   private _renderDisclaimer(): VNode {
-    const link = `<a class="${
-      CSS.anchor
-    }" href="http://www.esri.com/legal/software-license" rel="noreferrer" target="_blank">${
-      i18n.esriTerms
-    }</a>`;
-    const disclaimer = substitute(i18n.disclaimer, { esriTerms: link });
+    const { messages } = this;
+    const link = `<a class="${CSS.anchor}" href="http://www.esri.com/legal/software-license" rel="noreferrer" target="_blank">${messages.esriTerms}</a>`;
+    const disclaimer = substitute(messages.disclaimer, { esriTerms: link });
 
     return <div class={CSS.disclaimer} innerHTML={disclaimer} key="esri-directions__disclaimer" />;
   }
@@ -1249,7 +1308,9 @@ class Directions extends declared(Widget) {
       <div class={CSS.warningCard} role="alert">
         <div class={CSS.warningHeader}>
           <span class={CSS.warningIcon} aria-hidden="true" />
-          <div class={this.classes(CSS.heading, CSS.warningHeading)}>{i18nCommon.warning}</div>
+          <div class={this.classes(CSS.heading, CSS.warningHeading)}>
+            {this.messagesCommon.warning}
+          </div>
         </div>
         <div class={CSS.warningMessage}>{this._getErrorMessage()}</div>
       </div>
@@ -1282,7 +1343,9 @@ class Directions extends declared(Widget) {
     return (
       <div key="esri-directions__placeholder" class={CSS.emptyContent}>
         {this._renderPlaceholder()}
-        <h3 class={this.classes(CSS.message, CSS.heading)}>{i18n.directionsPlaceholder}</h3>
+        <h3 class={this.classes(CSS.message, CSS.heading)}>
+          {this.messages.directionsPlaceholder}
+        </h3>
       </div>
     );
   }
@@ -1306,13 +1369,13 @@ class Directions extends declared(Widget) {
     return (
       <div class={CSS.routeActions}>
         <button
-          aria-label={i18n.clearRoute}
+          aria-label={this.messages.clearRoute}
           class={this.classes(CSS.clearRouteButton, CSS.button, CSS.buttonTertiary)}
           tabIndex={0}
           onclick={this._handleClearRouteClick}
           bind={this}
         >
-          {i18n.clearRoute}
+          {this.messages.clearRoute}
         </button>
       </div>
     );
@@ -1351,7 +1414,7 @@ class Directions extends declared(Widget) {
           let sectionHeader: VNode;
 
           if (multiSectionRoute && !last) {
-            const title = open ? i18nCommon.open : i18nCommon.close;
+            const title = open ? this.messagesCommon.open : this.messagesCommon.close;
 
             sectionHeader = (
               <header
@@ -1413,18 +1476,20 @@ class Directions extends declared(Widget) {
     const arriveTime = new Date(last.attributes.arriveTimeUTC);
 
     const costSummary = this._costSummary.set({
-      directionsViewModel: this.viewModel
+      directionsViewModel: this.viewModel,
+      messages: this.messages
     });
 
-    const title = i18n.zoomToRoute;
+    const { messages } = this;
+    const title = messages.zoomToRoute;
     const time = formatDate(arriveTime, etaTimeFormatOptions);
-    const eta = substitute(i18n.etaTemplate, {
+    const eta = substitute(messages.etaTemplate, {
       time: `<strong>${time}</strong>`,
       gmt: `${formatGMTOffset(arriveTime)}`
     });
-    const primaryCostsTitle = i18n.primaryCosts;
-    const secondaryCostsTitle = i18n.secondaryCosts;
-    const etaTitle = i18n.eta;
+    const primaryCostsTitle = messages.primaryCosts;
+    const secondaryCostsTitle = messages.secondaryCosts;
+    const etaTitle = messages.eta;
 
     return (
       <div
@@ -1464,17 +1529,18 @@ class Directions extends declared(Widget) {
   }
 
   private _getErrorMessage(): string {
+    const { messages } = this;
     const { error } = this.viewModel;
 
     if (error.name === "directions-view-model:unable-to-route") {
-      return i18n.errors.unableToRoute;
+      return messages.errors.unableToRoute;
     }
 
     if (error.name === "directions-view-model:service-metadata-unavailable") {
-      return i18n.errors.unableToLoadServiceMetadata;
+      return messages.errors.unableToLoadServiceMetadata;
     }
 
-    return i18n.errors.unknownError;
+    return messages.errors.unknownError;
   }
 
   private _normalizeSearchSources(search: Search): void {
@@ -1483,12 +1549,7 @@ class Directions extends declared(Widget) {
   }
 
   private _overrideDefaultSources(search: Search): void {
-    const placeholder = search.view
-      ? i18n.searchFieldPlaceholder
-      : i18n.viewlessSearchFieldPlaceholder;
-
     search.viewModel.defaultSources.forEach((source) => {
-      source.placeholder = placeholder;
       source.autoNavigate = false;
     });
   }
@@ -1573,13 +1634,15 @@ class Directions extends declared(Widget) {
     const { attributes } = maneuver;
     const distanceUnits = this.get<string>("viewModel.routeParameters.directionsLengthUnits");
 
-    const length = formatDistance(attributes.length, { toUnits: distanceUnits });
+    const { messages } = this;
+    const length = formatDistance(messages, attributes.length, { toUnits: distanceUnits });
     const time = formatTime(attributes.time);
 
     const associatedStop: Graphic = getAssociatedStop(maneuver);
 
     if (useSpatiallyLocalTime(maneuver, this.get("viewModel.routeParameters.startTime"))) {
       intermediateCosts = toSpatiallyLocalTimeString(
+        messages,
         attributes.arriveTimeUTC,
         attributes.ETA,
         this._departureTime === NOW
@@ -1631,17 +1694,17 @@ class Directions extends declared(Widget) {
             <div class={CSS.horizontalSplitter} />
             <div
               id={cumulativeCostsId}
-              aria-label={i18n.cumulativeCosts}
+              aria-label={messages.cumulativeCosts}
               class={CSS.cumulativeCost}
               innerHTML={cumulativeCosts}
-              title={i18n.cumulativeCosts}
+              title={messages.cumulativeCosts}
             />
             <div
               id={intermediateCostsId}
-              aria-label={i18n.intermediateCosts}
+              aria-label={messages.intermediateCosts}
               class={CSS.intermediateCost}
               innerHTML={intermediateCosts}
-              title={i18n.intermediateCosts}
+              title={messages.intermediateCosts}
             />
           </div>
         </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/extendsHelper"],(function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(){}return e.prototype.writeMesh=function(e,t,n,r,o){},e.prototype.bindFeature=function(e,t,n){},e}();t.default=r}));
+define(["require","exports","../../../../../../core/maybe","../../../../../../geometry/support/jsonUtils","../../../../../../symbols/cim/effects/CIMEffectHelper"],(function(e,t,r,o,f){Object.defineProperty(t,"__esModule",{value:!0});var i=function(){function e(){}return e.prototype.writeMesh=function(e,t,i,s,n){if(r.isSome(this.effects)){var c=f.CIMEffectHelper.executeEffects(this.effects,n.geometry),p=f.CIMEffectHelper.next(c);for(i=o.getJsonType(p);p;)this.writeMeshWithGeometry(e,t,i,s,n,p),p=f.CIMEffectHelper.next(c),i=o.getJsonType(p)}else this.writeMeshWithGeometry(e,t,i,s,n,n.geometry)},e.prototype.writeMeshWithGeometry=function(e,t,r,o,f,i){},e.prototype.bindFeature=function(e,t,r){},e}();t.default=i}));

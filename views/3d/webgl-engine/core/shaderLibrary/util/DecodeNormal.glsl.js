@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../../core/tsSupport/makeTemplateObjectHelper","../../shaderModules/interfaces"],(function(e,n,r,a){var f;Object.defineProperty(n,"__esModule",{value:!0}),n.DecodeNormal=function(e){var n=a.glsl(f||(f=r(["\n    vec3 decodeNormal(vec2 f) {\n      float z = 1.0 - abs(f.x) - abs(f.y);\n      return vec3(f + sign(f) * min(z, 0.0), z);\n    }\n  "],["\n    vec3 decodeNormal(vec2 f) {\n      float z = 1.0 - abs(f.x) - abs(f.y);\n      return vec3(f + sign(f) * min(z, 0.0), z);\n    }\n  "])));e.fragment.code.add(n),e.vertex.code.add(n)}}));
+define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,n,a,f){var r;Object.defineProperty(n,"__esModule",{value:!0}),n.DecodeNormal=function(e){var n=f.glsl(r||(r=a.__makeTemplateObject(["\n    vec3 decodeNormal(vec2 f) {\n      float z = 1.0 - abs(f.x) - abs(f.y);\n      return vec3(f + sign(f) * min(z, 0.0), z);\n    }\n  "],["\n    vec3 decodeNormal(vec2 f) {\n      float z = 1.0 - abs(f.x) - abs(f.y);\n      return vec3(f + sign(f) * min(z, 0.0), z);\n    }\n  "])));e.fragment.code.add(n),e.vertex.code.add(n)}}));

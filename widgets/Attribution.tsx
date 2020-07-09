@@ -28,17 +28,11 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/Attribution/nls/Attribution";
-
 // esri.core
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -50,9 +44,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Attribution
 import AttributionViewModel = require("esri/widgets/Attribution/AttributionViewModel");
 
+// esri.widgets.Attribution.t9n
+import AttributionMessages from "esri/widgets/Attribution/t9n/Attribution";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-attribution esri-widget",
@@ -69,7 +66,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Attribution")
-class Attribution extends declared(Widget) {
+class Attribution extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -83,11 +80,11 @@ class Attribution extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize(): void {
+  initialize(): void {
     this.own(watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender()));
   }
 
@@ -181,8 +178,29 @@ class Attribution extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Attribution/t9n/Attribution")
+  messages: AttributionMessages = null;
 
   //----------------------------------
   //  view
@@ -237,29 +255,35 @@ class Attribution extends declared(Widget) {
         onclick={this._toggleState}
         onkeydown={this._toggleState}
       >
-        {this._renderSourcesNode()}
-        <div class={CSS.poweredBy}>
-          Powered by{" "}
-          <a
-            class={this.classes(CSS.link, CSS.anchor)}
-            href="http://www.esri.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Esri
-          </a>
-        </div>
+        {this.renderSourcesNode()}
+        {this.renderPoweredBy()}
       </div>
     );
   }
 
   //--------------------------------------------------------------------------
   //
-  //  Private Methods
+  //  Protected Methods
   //
   //--------------------------------------------------------------------------
 
-  private _renderSourcesNode(): VNode {
+  protected renderPoweredBy(): VNode {
+    return (
+      <div class={CSS.poweredBy}>
+        Powered by{" "}
+        <a
+          class={this.classes(CSS.link, CSS.anchor)}
+          href="http://www.esri.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Esri
+        </a>
+      </div>
+    );
+  }
+
+  protected renderSourcesNode(): VNode {
     const isOpen = this._isOpen;
     const interactive = this._isInteractive();
     const sourceTabIndex = interactive ? 0 : -1;
@@ -283,6 +307,12 @@ class Attribution extends declared(Widget) {
       />
     );
   }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
 
   private _afterSourcesNodeCreate(element: Element): void {
     this._prevSourceNodeHeight = element.clientWidth;

@@ -10,7 +10,7 @@
  * ![HeatmapSlider with annotations](../../assets/img/apiref/widgets/sliders/heatmapslider-labels.png "HeatmapSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/heatmap#createRenderer createRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/heatmap#createRenderer createRenderer}
  * method.
  *
  * ```js
@@ -57,24 +57,17 @@
  * @see [HeatmapSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/HeatmapSlider.tsx)
  * @see [HeatmapSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_HeatmapSlider.scss)
  * @see module:esri/widgets/smartMapping/HeatmapSlider/HeatmapSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/heatmap heatmapRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/heatmap heatmapRendererCreator}
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/HeatmapSlider/nls/HeatmapSlider";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { HeatmapRendererResult } from "esri/../renderers/smartMapping/creators/heatmap";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.support
-import { HeatmapColorStop } from "esri/../renderers/support/HeatmapColorStop";
+import HeatmapColorStop = require("esri/../renderers/support/HeatmapColorStop");
+
+// esri.smartMapping.renderers
+import { HeatmapRendererResult } from "esri/../smartMapping/renderers/heatmap";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -82,9 +75,12 @@ import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 // esri.widgets.smartMapping.HeatmapSlider
 import HeatmapSliderViewModel = require("esri/widgets/HeatmapSlider/HeatmapSliderViewModel");
 
+// esri.widgets.smartMapping.HeatmapSlider.t9n
+import HeatmapSliderMessages from "esri/widgets/HeatmapSlider/t9n/HeatmapSlider";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-heatmap-slider",
@@ -99,7 +95,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.smartMapping.HeatmapSlider")
-class HeatmapSlider extends declared(SmartMappingSliderBase) {
+class HeatmapSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -168,12 +164,13 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    *   ]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     this.slider.set({
       visibleElements: {
-        labels: false
+        labels: false,
+        rangeLabels: true
       },
       labelInputsEnabled: false,
       rangeLabelInputsEnabled: false
@@ -209,7 +206,29 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
    * @type {string}
    * @readonly
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/HeatmapSlider/t9n/HeatmapSlider")
+  messages: HeatmapSliderMessages = null;
 
   //----------------------------------
   //  stops
@@ -280,15 +299,15 @@ class HeatmapSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a HeatmapSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/heatmap~HeatmapRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/heatmap#createRenderer heatmapRendererCreator.createRenderer()}
+   * {@link module:esri/smartMapping/renderers/heatmap~HeatmapRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/heatmap#createRenderer heatmapRendererCreator.createRenderer()}
    * method.
    *
    * @method fromHeatmapRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/heatmap~HeatmapRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/heatmap#createRenderer heatmapRendererCreator.createRenderer()}
+   * @param {module:esri/smartMapping/renderers/heatmap~HeatmapRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/heatmap#createRenderer heatmapRendererCreator.createRenderer()}
    *   method.
    *
    * @return {module:esri/widgets/smartMapping/HeatmapSlider} Returns a HeatmapSlider instance. This will not render until you assign

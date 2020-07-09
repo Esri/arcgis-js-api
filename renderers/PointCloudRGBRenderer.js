@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/assignHelper","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","../core/accessorSupport/decorators","./PointCloudRenderer"],(function(e,r,o,t,n,i,p,l){return function(e){function r(r){var o=e.call(this,r)||this;return o.type="point-cloud-rgb",o.field=null,o}var l;return t(r,e),l=r,r.prototype.clone=function(){return new l(o({},this.cloneProperties(),{field:i.clone(this.field)}))},n([p.enumeration.serializable()({pointCloudRGBRenderer:"point-cloud-rgb"})],r.prototype,"type",void 0),n([p.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),r=l=n([p.subclass("esri.renderers.PointCloudRGBRenderer")],r)}(p.declared(l))}));
+define(["require","exports","tslib","../core/lang","../core/accessorSupport/decorators","./PointCloudRenderer"],(function(e,r,o,t,n,i){return function(e){function r(r){var o=e.call(this,r)||this;return o.type="point-cloud-rgb",o.field=null,o}var i;return o.__extends(r,e),i=r,r.prototype.clone=function(){return new i(o.__assign(o.__assign({},this.cloneProperties()),{field:t.clone(this.field)}))},o.__decorate([n.enumeration({pointCloudRGBRenderer:"point-cloud-rgb"})],r.prototype,"type",void 0),o.__decorate([n.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),r=i=o.__decorate([n.subclass("esri.renderers.PointCloudRGBRenderer")],r)}(i)}));

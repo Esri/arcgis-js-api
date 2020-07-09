@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],(function(e,o,r,t,p,a,n){return function(e){function o(o){var r=e.call(this,o)||this;return r.browserTouchPanEnabled=!0,r.gamepad=new n,r.momentumEnabled=!0,r.mouseWheelZoomEnabled=!0,r}return r(o,e),t([a.property({type:Boolean})],o.prototype,"browserTouchPanEnabled",void 0),t([a.property({type:n,nonNullable:!0})],o.prototype,"gamepad",void 0),t([a.property({type:Boolean})],o.prototype,"momentumEnabled",void 0),t([a.property({type:Boolean})],o.prototype,"mouseWheelZoomEnabled",void 0),o=t([a.subclass("esri.views.navigation.Navigation")],o)}(a.declared(p))}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators","./gamepad/GamepadSettings"],(function(e,o,t,r,a,n){return function(e){function o(o){var t=e.call(this,o)||this;return t.browserTouchPanEnabled=!0,t.gamepad=new n,t.momentumEnabled=!0,t.mouseWheelZoomEnabled=!0,t}return t.__extends(o,e),t.__decorate([a.property({type:Boolean})],o.prototype,"browserTouchPanEnabled",void 0),t.__decorate([a.property({type:n,nonNullable:!0})],o.prototype,"gamepad",void 0),t.__decorate([a.property({type:Boolean})],o.prototype,"momentumEnabled",void 0),t.__decorate([a.property({type:Boolean})],o.prototype,"mouseWheelZoomEnabled",void 0),o=t.__decorate([a.subclass("esri.views.navigation.Navigation")],o)}(r)}));

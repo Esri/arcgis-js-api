@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/accessorSupport/decorators"],(function(t,e,r,o,p,n){return function(t){function e(e){return t.call(this,e)||this}var p;return r(e,t),p=e,e.prototype.clone=function(){return new p({name:this.name,path:this.path,title:this.title})},o([n.property({json:{write:!0}})],e.prototype,"name",void 0),o([n.property({json:{write:!0}})],e.prototype,"path",void 0),o([n.property({json:{write:!0}})],e.prototype,"title",void 0),e=p=o([n.subclass("esri.webscene.TransportationNetwork")],e)}(n.declared(p.JSONSupport))}));
+define(["require","exports","tslib","../core/JSONSupport","../core/accessorSupport/decorators"],(function(t,e,r,o,n){return function(t){function e(e){return t.call(this,e)||this}var o;return r.__extends(e,t),o=e,e.prototype.clone=function(){return new o({name:this.name,path:this.path,title:this.title})},r.__decorate([n.property({json:{write:!0}})],e.prototype,"name",void 0),r.__decorate([n.property({json:{write:!0}})],e.prototype,"path",void 0),r.__decorate([n.property({json:{write:!0}})],e.prototype,"title",void 0),e=o=r.__decorate([n.subclass("esri.webscene.TransportationNetwork")],e)}(o.JSONSupport)}));

@@ -54,18 +54,14 @@
  * view.ui.add(locateWidget, "top-right");
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18nCommon from "dojo/i18n!esri/nls/common";
-import * as i18n from "dojo/i18n!esri/widgets/Locate/nls/Locate";
-
 // esri
 import Graphic = require("esri/Graphic");
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -77,10 +73,13 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.Locate
 import LocateViewModel = require("esri/widgets/Locate/LocateViewModel");
 
+// esri.widgets.Locate.t9n
+import LocateMessages from "esri/widgets/Locate/t9n/Locate";
+
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-locate esri-widget--button esri-widget",
@@ -97,7 +96,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Locate")
-class Locate extends declared(Widget) {
+class Locate extends Widget {
   /**
    * Fires after the [locate()](#locate) method is called and succeeds.
    *
@@ -136,8 +135,8 @@ class Locate extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -240,8 +239,46 @@ class Locate extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/Locate/t9n/Locate")
+  messages: LocateMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  scale
@@ -394,7 +431,7 @@ class Locate extends declared(Widget) {
       [CSS.locate]: !isLocating
     };
 
-    const title = state === "locating" ? i18nCommon.cancel : i18n.title;
+    const title = state === "locating" ? this.messagesCommon.cancel : this.messages.title;
 
     return (
       <div
@@ -409,7 +446,7 @@ class Locate extends declared(Widget) {
         title={title}
       >
         <span aria-hidden="true" class={this.classes(CSS.icon, iconClasses)} />
-        <span class={CSS.text}>{i18n.title}</span>
+        <span class={CSS.text}>{this.messages.title}</span>
       </div>
     );
   }

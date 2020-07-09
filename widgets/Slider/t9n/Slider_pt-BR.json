@@ -1,0 +1,8 @@
+{
+  "widgetLabel": "Controle deslizante",
+  "maximumValue": "Valor Máximo",
+  "minimumValue": "Valor Mínimo",
+  "rangeMaximum": "Intervalo máximo: {value}",
+  "rangeMinimum": "Intervalo mínimo: {value}",
+  "sliderValue": "Valor de controle deslizante"
+}

@@ -188,7 +188,7 @@
       }
 
       &-date {
-        font-weight: $font-weight__bold;
+        font-weight: $font-weight--bold;
         color: $highlight-color;
       }
 
@@ -198,7 +198,7 @@
 
       &-separator {
         font-size: $font-size__h2;
-        font-weight: $font-weight__bold;
+        font-weight: $font-weight--bold;
         line-height: $font-size__h2;
       }
     }
@@ -213,7 +213,7 @@
       line-height: $font-size__body;
 
       &-date {
-        font-weight: $font-weight__bold;
+        font-weight: $font-weight--bold;
       }
     }
 

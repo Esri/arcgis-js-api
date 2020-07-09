@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Forma obiectului spațial",
+  "empty": "- gol -",
+  "validationErrors": {
+    "cannotBeNull": "Introduceţi o valoare",
+    "outsideRange": "Valoarea trebuie să fie între {min} și {max}",
+    "invalidCodedValue": "Valoarea trebuie să fie una dintre valorile listate.",
+    "invalidType": "Nu este o valoare valabilă",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

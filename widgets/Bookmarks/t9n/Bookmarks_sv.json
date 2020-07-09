@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Lägg till bokmärke",
+  "goToBookmark": "Gå till bokmärke",
+  "noBookmarksHeading": "Inga bokmärken",
+  "noBookmarksDescription": "Lägg till bokmärken på kartan så visas de här.",
+  "title": "Titel",
+  "addPlaceholder": "Ange bokmärkets titel",
+  "addingBookmark": "Lägger till bokmärke",
+  "widgetLabel": "Bokmärken"
+}

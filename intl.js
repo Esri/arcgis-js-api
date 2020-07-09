@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","./intl/date","./intl/number","./intl/substitute"],(function(t,e,o,r,n){Object.defineProperty(e,"__esModule",{value:!0}),e.formatDate=o.formatDate,e.convertDateFormatToIntlOptions=o.convertDateFormatToIntlOptions,e.formatNumber=r.formatNumber,e.convertNumberFormatToIntlOptions=r.convertNumberFormatToIntlOptions,e.substitute=n.substitute}));
+define(["require","exports","./intl/date","./intl/number","./intl/substitute","./intl/locale","./intl/messages"],(function(e,t,o,n,a,l,s){Object.defineProperty(t,"__esModule",{value:!0}),t.formatDate=o.formatDate,t.convertDateFormatToIntlOptions=o.convertDateFormatToIntlOptions,t.formatNumber=n.formatNumber,t.convertNumberFormatToIntlOptions=n.convertNumberFormatToIntlOptions,t.substitute=a.substitute,t.getLocale=l.getLocale,t.setLocale=l.setLocale,t.onLocaleChange=l.onLocaleChange,t.prefersRTL=l.prefersRTL,t.loadMessageBundle=s.loadMessageBundle,t.getKnownMessageBundleLocale=s.getKnownMessageBundleLocale}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../webgl-engine/lib/Object3DStateSet"],(function(t,e,i){Object.defineProperty(e,"__esModule",{value:!0});var s=function(){function t(t,e){this.stateType=t,this.objectIdField=e,this.objectStateSet=new i.Object3DStateSet,this.ids=new Set,this.paused=!1}return t.prototype.hasGraphic=function(t){if(this.objectIdField){var e=t.graphic.attributes[this.objectIdField];return this.ids.has(e)}return this.ids.has(t.graphic.uid)},t}();e.Graphics3DObjectStateSet=s}));

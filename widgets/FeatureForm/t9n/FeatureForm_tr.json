@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Detay formu",
+  "empty": "- boş -",
+  "validationErrors": {
+    "cannotBeNull": "Bir değer girin",
+    "outsideRange": "Değer {min} ve {max} arasında olmalıdır",
+    "invalidCodedValue": "Değer listelenen değerlerden biri olmalıdır.",
+    "invalidType": "Geçerli bir değer değil",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/promiseUtils"],(function(e,i,r){Object.defineProperty(i,"__esModule",{value:!0});var t=function(){function e(e,i,r){this._relativePath=i,this._moduleRequire=r,this._module=e}return e.prototype.get=function(){return this._module},e.prototype.reload=function(){var e=this,i=this._moduleRequire.toUrl(this._relativePath);return i=i.slice(i.indexOf("esri/")),this._recursivelyInvalidateModuleCache(i),r.create((function(i){e._moduleRequire([e._relativePath],(function(r){e._module=r,i()}))}))},e.prototype._recursivelyInvalidateModuleCache=function(e){if(-1!==e.search("shader")||-1!==e.search("shading")){var i=this._moduleRequire.modules,r=i[e];if(r){var t=r.deps;delete i[e];for(var o=0,u=t;o<u.length;o++){var a=u[o];"esri"===a.pid&&this._recursivelyInvalidateModuleCache(a.mid)}}}},e}();i.ReloadableShaderModule=t}));
+define(["require","exports","tslib"],(function(e,t,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){this._module=e,this._loadModule=t}return e.prototype.get=function(){return this._module},e.prototype.reload=function(){return o.__awaiter(this,void 0,void 0,(function(){var e;return o.__generator(this,(function(t){switch(t.label){case 0:return e=this,[4,this._loadModule()];case 1:return e._module=t.sent(),[2,this._module]}}))}))},e}();t.ReloadableShaderModule=r}));

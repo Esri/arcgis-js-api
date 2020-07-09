@@ -1,0 +1,10 @@
+{
+  "addBookmark": "เพิ่มบุ๊กมาร์ก",
+  "goToBookmark": "ไปที่บุ๊กมาร์ก",
+  "noBookmarksHeading": "ไม่มีบุ๊กมาร์ก",
+  "noBookmarksDescription": "เพิ่มบุ๊กมาร์กลงในแผนที่ของคุณ จากนั้นบุ๊กมาร์กจะปรากฏขึ้นที่นี่",
+  "title": "ชื่อ",
+  "addPlaceholder": "ป้อนชื่อบุ๊กมาร์ก",
+  "addingBookmark": "กำลังเพิ่มบุ๊กมาร์ก",
+  "widgetLabel": "บุ๊คมาร์ค"
+}

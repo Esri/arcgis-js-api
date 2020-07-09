@@ -1,0 +1,11 @@
+{
+  "widgetLabel": "Feature-Form",
+  "empty": "- leer -",
+  "validationErrors": {
+    "cannotBeNull": "Geben Sie einen Wert ein",
+    "outsideRange": "Wert sollte zwischen {min} und {max} liegen",
+    "invalidCodedValue": "Der Wert sollte einem der aufgeführten Werte entsprechen.",
+    "invalidType": "Kein gültiger Wert",
+    "tooShort": "This field requires a minimum of {min} characters"
+  }
+}

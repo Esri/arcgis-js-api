@@ -38,17 +38,12 @@
  * @see {@link module:esri/views/ui/DefaultUI}
  */
 
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/AreaMeasurement2D/nls/AreaMeasurement2D";
-
 // esri.core
+import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { SystemOrAreaUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
 import MapView = require("esri/views/MapView");
@@ -60,9 +55,12 @@ import Widget = require("esri/widgets/Widget");
 // esri.widgets.AreaMeasurement2D
 import AreaMeasurement2DViewModel = require("esri/widgets/AreaMeasurement2D/AreaMeasurement2DViewModel");
 
+// esri.widgets.AreaMeasurement2D.t9n
+import AreaMeasurement2DMessages from "esri/widgets/AreaMeasurement2D/t9n/AreaMeasurement2D";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
@@ -97,7 +95,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.AreaMeasurement2D")
-class AreaMeasurement2D extends declared(Widget) {
+class AreaMeasurement2D extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -117,8 +115,8 @@ class AreaMeasurement2D extends declared(Widget) {
    * });
    * view.ui.add(measurementWidget, "top-right");
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -168,8 +166,29 @@ class AreaMeasurement2D extends declared(Widget) {
    * @instance
    * @type {string}
    */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
   @property()
-  label: string = i18n.widgetLabel;
+  @renderable()
+  @messageBundle("esri/widgets/AreaMeasurement2D/t9n/AreaMeasurement2D")
+  messages: AreaMeasurement2DMessages = null;
 
   //----------------------------------
   //  unit
@@ -303,17 +322,18 @@ class AreaMeasurement2D extends declared(Widget) {
     const isDisabled = state === "disabled";
     const isReady = state === "ready";
     const isMeasuring = state === "measuring" || state === "measured";
+    const { messages } = this;
 
     const hintNode =
       active && isReady ? (
         <section key="hint" class={CSS.hint}>
-          <p class={CSS.hintText}>{i18n.hint}</p>
+          <p class={CSS.hintText}>{messages.hint}</p>
         </section>
       ) : null;
 
     const unsupportedNode = !isSupported ? (
       <section key="unsupported" class={CSS.panelError}>
-        <p>{i18n.unsupported}</p>
+        <p>{messages.unsupported}</p>
       </section>
     ) : null;
 
@@ -335,8 +355,8 @@ class AreaMeasurement2D extends declared(Widget) {
 
     const measurementNode = isMeasuring ? (
       <section key="measurement" class={CSS.measurement}>
-        {measurementLabelNode(i18n.area, measurementLabel.area, "area")}
-        {measurementLabelNode(i18n.perimeter, measurementLabel.perimeter, "perimeter")}
+        {measurementLabelNode(messages.area, measurementLabel.area, "area")}
+        {measurementLabelNode(messages.perimeter, measurementLabel.perimeter, "perimeter")}
       </section>
     ) : null;
 
@@ -345,7 +365,7 @@ class AreaMeasurement2D extends declared(Widget) {
     const unitsNode = (
       <section key="units" class={CSS.units}>
         <label class={CSS.unitsLabel} for={unitsId}>
-          {i18n.unit}
+          {messages.unit}
         </label>
         <div class={CSS.unitsSelectWrapper}>
           <select
@@ -357,7 +377,7 @@ class AreaMeasurement2D extends declared(Widget) {
           >
             {unitOptions.map((unitOption) => (
               <option key={unitOption} value={unitOption}>
-                {i18n.units[unitOption]}
+                {messages.units[unitOption]}
               </option>
             ))}
           </select>
@@ -379,10 +399,10 @@ class AreaMeasurement2D extends declared(Widget) {
             class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
-            title={i18n.newMeasurement}
-            aria-label={i18n.newMeasurement}
+            title={messages.newMeasurement}
+            aria-label={messages.newMeasurement}
           >
-            {i18n.newMeasurement}
+            {messages.newMeasurement}
           </button>
         </div>
       ) : null;
@@ -412,7 +432,7 @@ class AreaMeasurement2D extends declared(Widget) {
    */
   @accessibleHandler()
   private _newMeasurement(): void {
-    this.viewModel.newMeasurement();
+    ignoreAbortErrors(this.viewModel.start());
   }
 
   /**

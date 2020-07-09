@@ -22,7 +22,7 @@
  * ![ColorSizeSlider with annotations](../../assets/img/apiref/widgets/sliders/colorsizeslider-labels.png "ColorSizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer createContinuousRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer createContinuousRenderer}
  * method.
  *
  * ```js
@@ -78,27 +78,14 @@
  * @see [ColorSizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ColorSizeSlider.tsx)
  * @see [ColorSizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ColorSizeSlider.scss)
  * @see module:esri/widgets/smartMapping/ColorSizeSlider/ColorSizeSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/univariateColorSize univariateColorSizeRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/univariateColorSize univariateColorSizeRendererCreator}
  */
-
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/ColorSizeSlider/nls/ColorSizeSlider";
 
 // esri.core
 import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { RendererResult } from "esri/../renderers/smartMapping/creators/univariateColorSize";
-
-// esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables
 import ColorVariable = require("esri/../renderers/visualVariables/ColorVariable");
@@ -109,11 +96,20 @@ import ColorSizeStop = require("esri/../renderers/visualVariables/support/ColorS
 import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
 import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
 
+// esri.smartMapping.renderers
+import { RendererResult } from "esri/../smartMapping/renderers/univariateColorSize";
+
+// esri.smartMapping.statistics
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ColorSizeSlider
 import ColorSizeSliderViewModel = require("esri/widgets/ColorSizeSlider/ColorSizeSliderViewModel");
+
+// esri.widgets.smartMapping.ColorSizeSlider.t9n
+import ColorSizeSliderMessages from "esri/widgets/ColorSizeSlider/t9n/ColorSizeSlider";
 
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
@@ -121,7 +117,7 @@ import { getPathForSizeStops } from "esri/widgets/support/utils";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-size-slider",
@@ -139,7 +135,7 @@ const CSS = {
 type VisualVariable = ColorVariable | SizeVariable;
 
 @subclass("esri.widgets.smartMapping.ColorSizeSlider")
-class ColorSizeSlider extends declared(SmartMappingSliderBase) {
+class ColorSizeSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -163,8 +159,8 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    *   ]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -208,7 +204,29 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/ColorSizeSlider/t9n/ColorSizeSlider")
+  messages: ColorSizeSliderMessages = null;
 
   /**
    * Defines the object specification for each [stops](#stops).
@@ -235,7 +253,7 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    *
    * Use the [fromRendererResult()](#fromRendererResult)
    * method to conveniently construct these stops from a renderer generated from
-   * the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer univariateColorSize}
+   * the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize}
    * smart mapping module.
    *
    * Use [updateVisualVariables()](#updateVisualVariables) to update the renderer's
@@ -298,8 +316,8 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a ColorSizeSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/univariateColorSize~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+   * {@link module:esri/smartMapping/renderers/univariateColorSize~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
    * method.
    *
    * This method sets the slider [stops](#stops), [min](#maxm), [max](#maxDataValue),
@@ -309,11 +327,11 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
    * @method fromRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/univariateColorSize~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/univariateColorSize~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @return {module:esri/widgets/smartMapping/ColorSizeSlider} Returns a ColorSizeSlider instance. This will not render until you assign
@@ -392,18 +410,18 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties of a ColorSizeSlider widget instance from the
-   * {@link module:esri/renderers/smartMapping/creators/univariateColorSize~ContinuousRendererResult result} of
-   * the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+   * {@link module:esri/smartMapping/renderers/univariateColorSize~ContinuousRendererResult result} of
+   * the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
    * method.
    *
    * @method updateFromRendererResult
    * @instance
    *
-   * @param {module:esri/renderers/smartMapping/creators/univariateColorSize~ContinuousRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer createContinuousRenderer}
+   * @param {module:esri/smartMapping/renderers/univariateColorSize~ContinuousRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer createContinuousRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example
@@ -475,7 +493,7 @@ class ColorSizeSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the visual variables of a renderer generated with the
-   * {@link module:esri/renderers/smartMapping/creators/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+   * {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
    * method with the values obtained from the slider. This method is useful for cases when the app allows the end user to switch data variables
    * used to render the data.
    *

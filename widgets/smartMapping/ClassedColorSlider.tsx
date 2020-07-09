@@ -10,7 +10,7 @@
  * ![ClassedColorSlider with annotations](../../assets/img/apiref/widgets/sliders/classedcolorslider-labels.png "ClassedColorSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
- * from the result of the {@link module:esri/renderers/smartMapping/creators/color#createClassBreaksRenderer createClassBreaksRenderer}
+ * from the result of the {@link module:esri/smartMapping/renderers/color#createClassBreaksRenderer createClassBreaksRenderer}
  * method.
  *
  * ```js
@@ -67,28 +67,21 @@
  * @see [ClassedColorSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedColorSlider.tsx)
  * @see [ClassedColorSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ClassedColorSlider.scss)
  * @see module:esri/widgets/smartMapping/ClassedColorSlider/ClassedColorSliderViewModel
- * @see {@link module:esri/renderers/smartMapping/creators/color colorRendererCreator}
+ * @see {@link module:esri/smartMapping/renderers/color colorRendererCreator}
  * @see module:esri/renderers/ClassBreaksRenderer
  */
 
-/// <amd-dependency path="esri/../core/tsSupport/assignHelper" name="__assign" />
-/// <amd-dependency path="esri/../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/../core/tsSupport/decorateHelper" name="__decorate" />
-
-// dojo
-import * as i18n from "dojo/i18n!esri/widgets/ClassedColorSlider/nls/ClassedColorSlider";
-
 // esri.core.accessorSupport
-import { aliasOf, declared, property, subclass } from "esri/../core/accessorSupport/decorators";
-
-// esri.renderers.smartMapping.creators
-import { ClassBreaksRendererResult } from "esri/../renderers/smartMapping/creators/color";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.statistics
 import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.support
 import ClassBreakInfo = require("esri/../renderers/support/ClassBreakInfo");
+
+// esri.smartMapping.renderers
+import { ClassBreaksRendererResult } from "esri/../smartMapping/renderers/color";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -97,9 +90,12 @@ import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 import ClassedColorSliderViewModel = require("esri/widgets/ClassedColorSlider/ClassedColorSliderViewModel");
 import { ColorBreak } from "esri/widgets/ClassedColorSlider/interfaces";
 
+// esri.widgets.smartMapping.ClassedColorSlider.t9n
+import ClassedColorSliderMessages from "esri/widgets/ClassedColorSlider/t9n/ClassedColorSlider";
+
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-classed-color-slider",
@@ -115,7 +111,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.smartMapping.ClassedColorSlider")
-class ClassedColorSlider extends declared(SmartMappingSliderBase) {
+class ClassedColorSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -152,8 +148,8 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
    *   }]
    * });
    */
-  constructor(params?: any) {
-    super(params);
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -229,7 +225,29 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
    * @instance
    * @type {string}
    */
-  @property() label: string = i18n.widgetLabel;
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/widgets/smartMapping/ClassedColorSlider/t9n/ClassedColorSlider")
+  messages: ClassedColorSliderMessages = null;
 
   //----------------------------------
   //  viewModel
@@ -266,16 +284,16 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to create a ClassedColorSlider widget from the result
-   * of the {@link module:esri/renderers/smartMapping/creators/color#createClassBreaksRenderer createClassBreaksRenderer()} method.
+   * of the {@link module:esri/smartMapping/renderers/color#createClassBreaksRenderer createClassBreaksRenderer()} method.
    *
    * @method fromRendererResult
    * @static
    *
-   * @param {module:esri/renderers/smartMapping/creators/color~ClassBreaksRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/color#createClassBreaksRenderer createClassBreaksRenderer}
+   * @param {module:esri/smartMapping/renderers/color~ClassBreaksRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/color#createClassBreaksRenderer createClassBreaksRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @return {module:esri/widgets/smartMapping/ClassedColorSlider} Returns a ClassedColorSlider instance. This will not render until you assign
@@ -394,16 +412,16 @@ class ClassedColorSlider extends declared(SmartMappingSliderBase) {
 
   /**
    * A convenience function used to update the properties a ClassedColorSlider from the result
-   * of the {@link module:esri/renderers/smartMapping/creators/color#createClassBreaksRenderer createClassBreaksRenderer()} method.
+   * of the {@link module:esri/smartMapping/renderers/color#createClassBreaksRenderer createClassBreaksRenderer()} method.
    *
    * @method updateFromRendererResult
    * @instance
    *
-   * @param {module:esri/renderers/smartMapping/creators/color~ClassBreaksRendererResult} rendererResult -
-   *   The result object from the {@link module:esri/renderers/smartMapping/creators/color#createClassBreaksRenderer createClassBreaksRenderer}
+   * @param {module:esri/smartMapping/renderers/color~ClassBreaksRendererResult} rendererResult -
+   *   The result object from the {@link module:esri/smartMapping/renderers/color#createClassBreaksRenderer createClassBreaksRenderer}
    *   method.
-   * @param {module:esri/renderers/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
-   *   The result histogram object from the {@link module:esri/renderers/smartMapping/statistics/histogram#histogram histogram}
+   * @param {module:esri/smartMapping/statistics/histogram~HistogramResult} [histogramResult] -
+   *   The result histogram object from the {@link module:esri/smartMapping/statistics/histogram#histogram histogram}
    *   method.
    *
    * @example

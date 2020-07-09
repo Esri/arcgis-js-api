@@ -11,6 +11,12 @@
   .esri-date-picker__calendar {
     @include defaultBoxShadow();
     padding: $section_margin;
+
+    .esri-widget--button {
+      // Prevent scroll/zoom which can happen when quickly tapping button.
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action
+      touch-action: none;
+    }
   }
 
   .esri-date-picker__day-picker,

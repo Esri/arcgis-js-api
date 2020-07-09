@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.15/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
 
 define(["require","exports","../../../../../core/arrayUtils"],(function(e,o,n){function r(e){var o=[];return e.components.forEach((function(e){o.push(e.geometry)})),n.unique(o)}Object.defineProperty(o,"__esModule",{value:!0}),o.materialsFromLodResources=function(e){var o=[];return e.levels.forEach((function(e){e.components.forEach((function(e){o.push(e.material)}))})),n.unique(o)},o.texturesFromLodResources=function(e){var o=[];return e.levels.forEach((function(e){e.components.forEach((function(e){e.textures&&o.push.apply(o,e.textures)}))})),n.unique(o)},o.geometriesFromLodLevelResources=r,o.geometriesFromLodResources=function(e){var o=[];return e.levels.forEach((function(e){e.components.forEach((function(e){o.push(e.geometry)}))})),n.unique(o)},o.computeFaceCount=function(e){var o=0;return r(e).forEach((function(e){o+=e.data.indexCount/3})),o}}));

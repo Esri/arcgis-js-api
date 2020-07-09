@@ -1,0 +1,10 @@
+{
+  "addBookmark": "Lisää kirjanmerkki",
+  "goToBookmark": "Siirry kirjanmerkkiin",
+  "noBookmarksHeading": "Ei kirjanmerkkejä",
+  "noBookmarksDescription": "Lisää kirjanmerkkejä karttaasi, ja ne näkyvät tässä.",
+  "title": "Otsikko",
+  "addPlaceholder": "Anna kirjanmerkin otsikko",
+  "addingBookmark": "Lisätään kirjanmerkkiä",
+  "widgetLabel": "Kirjanmerkit"
+}

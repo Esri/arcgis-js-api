@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Területmérés",
+  "hint": "A mérést úgy kell elkezdeni, hogy bele kell kattintani a 3D térképbe az első pont elhelyezéséhez.",
+  "unsupported": "A 3D terület mérését csak a SceneView támogatja.",
+  "perimeterLength": "Kerület",
+  "area": "Terület",
+  "unit": "Mértékegység",
+  "notApplicable": "–",
+  "newMeasurement": "Új mérés",
+  "units": {
+    "metric": "Metrikus",
+    "imperial": "Angolszász",
+    "square-kilometers": "Négyzetkilométer",
+    "square-meters": "Négyzetméter",
+    "square-miles": "Négyzetmérföld",
+    "square-inches": "Négyzethüvelyk",
+    "square-feet": "Négyzetláb",
+    "square-yards": "Négyzetyard",
+    "square-us-feet": "Négyzetláb (USA)",
+    "acres": "acre",
+    "ares": "ár",
+    "hectares": "hektár"
+  }
+}
