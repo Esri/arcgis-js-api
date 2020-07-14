@@ -1,6 +1,6 @@
 {
   "name": "arcgis-js-api",
-  "version": "4.16.0",
+  "version": "4.16.1",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
   "types": "index.d.ts",
   "license": "SEE LICENSE IN copyright.txt",
