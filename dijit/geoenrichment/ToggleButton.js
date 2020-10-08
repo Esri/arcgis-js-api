@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/Stateful","dojo/on","dojo/dom-construct","dojo/dom-class"],(function(e,t,d,o,s){return e(t,{domNode:null,checked:!1,disabled:!1,mode:"toggle",constructor:function(e,t,s){var i=(t=t||{}).class;i=(i?i+" ":"")+"esriGEToggleButton",this.checked=!!t.checked,this.mode=t.mode||"toggle",this.domNode=o.create("div",{class:i},e,s),this._updateClass(),d(this.domNode,"click",function(e){this.disabled||(e.checked=this.toggle(),this.onClick(e))}.bind(this))},postscript:function(){},_checkedSetter:function(e){this.checked=!!e,this._updateClass()},_modeSetter:function(e){this.mode=e,this._updateClass()},_disabledSetter:function(e){this.disabled=e,this._updateClass()},_updateClass:function(){s[this.checked?"add":"remove"](this.domNode,"checked"),s["toggle"===this.mode?"remove":"add"](this.domNode,"switch"),s[this.disabled?"add":"remove"](this.domNode,"disabled")},onClick:function(e){},toggle:function(){return this.set("checked",!this.checked),this.checked}})}));
+define(["dojo/_base/declare","dojo/Stateful","dojo/on","dojo/dom-construct","dojo/dom-class"],(function(e,t,d,o,s){return e(t,{domNode:null,checked:!1,disabled:!1,mode:"toggle",constructor:function(e,t,s){var c=(t=t||{}).class;c=(c?c+" ":"")+"esriGEToggleButton",this.checked=!!t.checked,this.mode=t.mode||"toggle",this.domNode=o.create("div",{class:c},e,s),this._updateClass(),d(this.domNode,"click",function(e){this.disabled||(e.checked=this.toggle(),this.onClick(e))}.bind(this))},postscript:function(){},_checkedSetter:function(e){this.checked=!!e,this._updateClass()},_modeSetter:function(e){this.mode=e,this._updateClass()},_disabledSetter:function(e){this.disabled=e,this._updateClass()},_updateClass:function(){s.remove(this.domNode,"checked unchecked switch toggle"),s.add(this.domNode,"toggle"===this.mode?"toggle":"switch"),s.add(this.domNode,this.checked?"checked":"unchecked"),s[this.disabled?"add":"remove"](this.domNode,"disabled")},onClick:function(e){},toggle:function(){return this.set("checked",!this.checked),this.checked}})}));

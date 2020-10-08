@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({relationalDS:"リレーショナル",spatialDS:"Spatiotemporal",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"ビッグ データ ファイル共有の出力テンプレート"});
+define({relationalDS:"リレーショナル",spatialDS:"時空間",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"ビッグ データ ファイル共有の出力テンプレート"});

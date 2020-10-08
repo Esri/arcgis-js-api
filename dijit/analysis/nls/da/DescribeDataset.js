@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg et datasæt, der skal beskrives",describeDataLabel:"Forstå dine data ved at oprette et (valgfrit)",sampleLayer:"Eksempellag",extentLayer:"Udstrækningslag",noOfFeaturesLabel:"Antal objekter, der skal medtages",outputLayerName:"Navn på resultatlag",resultName:"Beskriv data i ${layerName}",itemDescription:"Vektorlag genereret ud fra kørsel af Beskriv datasæt på ${layerName}. ",itemTags:"Analyseresultat, DescribeDataset, ${layerName}",itemSnippet:"Vektorlag genereret ud fra Beskriv datasæt."});

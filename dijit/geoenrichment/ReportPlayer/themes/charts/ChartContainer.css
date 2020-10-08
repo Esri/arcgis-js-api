@@ -38,8 +38,7 @@
 
 .esriGEReportPlayer_chartContainer .chartContainer_chartIcon {
     position: absolute;
-    background-size: contain;
-    cursor: pointer;
+    background-size: contain; 
 }
 
 

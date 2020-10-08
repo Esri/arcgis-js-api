@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige kiht, kust peatuskohti otsida",selectTracksLabel:"Valige radade tuvastamiseks vähemalt üks väli",defineDistanceLabel:"Määratlege ruumiline otsinguvahemaa",distMethodLabel:"Valige vahemaa arvutamiseks kasutatav meetod",temporalSearchLabel:"Määratlege ajaline otsinguvahemik",outputDwellLabel:"Peatuskohtade väljund on",outputLayerName:"Otsi peatuskohti kihis ${inputLayerName}",meanCenters:"Tsentraalpunktid",convexHulls:"Kumerad katted",dwellFeatures:"Peatusobjektid",allFeatures:"Kõik objektid",itemDescription:"Objektikiht loodi kihi ${inputLayerName} peatuskohtade otsingu põhjal.",itemTags:"Analüüsitulemused, peatuskohtade otsing, ${inputLayerName}",itemSnippet:"Objektikiht loodi peatuskohtade otsingu põhjal",timeIntervalSplit:"Analüüsi andmeid ajaintervallidega (valikuline)",timeBoundaryValidationMsg:"Ajaintervall peab olema pikem kui ajaline otsinguvahemik."});

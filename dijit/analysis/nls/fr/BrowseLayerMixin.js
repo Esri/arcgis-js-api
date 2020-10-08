@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({defaultAnaysisLayerTitle:"Choisir une couche d'analyse du Living Atlas",customAnalysisLayerTitle:"Choisir une couche d'analyse",searchPlaceholderText:"Parcourir les couches d’analyse du Living Atlas",searchCustomPlaceholderText:"Parcourir les couches d’analyse",mainActionTitle:"Sélectionner",customActionName:"Sélectionner et ajouter à la carte",customeSectionName:"Couches d'analyse Living Atlas",Categories:"Catégories",boundaries:"Limites",places:"Lieux",boundariesAndPlaces:"Frontières et lieux",hexbins:"Groupes hexadécimaux",transportation:"Transport",point:"Couches de points",line:"Couches de polylignes",polygon:"Couches de polygones",pointFilterName:"Point",lineFilterName:"Polyligne",polygonFilterName:"Surface",multiPointFilterName:"Points multiples",geometryFilterName:"Géométrie",featureLayerName:"Couche d'entités",tableLayerName:"Tableau",itemTypeFilterName:"Type d'élément",instantFilterName:"Instant",intervalFilterName:"Intervalle",timeFilterName:"Durée",edit:"Mise à jour",boundaryLayers:"Couches de contours Esri",customAnalysisGroupName:"Groupes d'analyse de l’organisation"});
+define({defaultAnaysisLayerTitle:"Choisir une couche d’analyse du Living Atlas",customAnalysisLayerTitle:"Choisir une couche d’analyse",searchPlaceholderText:"Parcourir les couches d’analyse du Living Atlas",searchCustomPlaceholderText:"Parcourir les couches d’analyse",mainActionTitle:"Sélectionner",customActionName:"Sélectionner et ajouter à la carte",customeSectionName:"Couches d’analyse Living Atlas",Categories:"Catégories",boundaries:"Limites",places:"Lieux",boundariesAndPlaces:"Frontières et lieux",hexbins:"Groupes hexadécimaux",transportation:"Transport",point:"Couches de points",line:"Couches de polylignes",polygon:"Couches de polygones",pointFilterName:"Point",lineFilterName:"Polyligne",polygonFilterName:"Polygone",multiPointFilterName:"Points multiples",geometryFilterName:"Géométrie",featureLayerName:"Couche d’entités",tableLayerName:"Tableau",itemTypeFilterName:"Type d’élément",instantFilterName:"Instant",intervalFilterName:"Intervalle",timeFilterName:"Durée",edit:"Mise à jour",boundaryLayers:"Couches de limites Esri",customAnalysisGroupName:"Groupes d’analyse de l’organisation"});

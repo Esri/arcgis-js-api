@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Voorspellen met het gebruik van trendraster",outputLayerName:"${layername}_voorspellen",variablesLabel:"Variabele(n) kiezen die voorspeld worden",variablesListLabel:"Variabelen [Dimension Info] (Beschrijving)",dimensionDefinitionLabel:"Kies de gebruikte methode om voorspelde dimensiewaarden op te geven",dimensionValuesLabel:"Geef dimensiewaarde(n) voor voorspelling op",dimensionIntervalLabel:"Geef dimensie-interval voor voorspelling op",intervalValueLabel:"Specificeer het aantal stappen tussen de start- en eindwaarden",intervalUnitLabel:"Kies de eenheid die wordt gebruikt voor de tijdwaarde-interval",startLabel:"Startwaarde",endLabel:"Eindwaarde",byValueLabel:"Per waarde",byIntervalLabel:"Per interval",hours:"Uren",days:"Dagen",weeks:"Weken",months:"Maanden",years:"Jaren",custom:"Aangepast",itemDescription:"Analyse Imageservice gegenereerd vanuit Voorspellen met gebruik van trendraster",itemTags:"Rasteranalyseresultaat, voorspellen met behulp van trendraster, ${layername}",itemSnippet:"Analyse Imageservice gegenereerd vanuit Gebruik trendraster voorspellen"});

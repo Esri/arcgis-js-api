@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({clustersLabel:"Etsi klusterit karttatasolle ${inputLayerName}.",chooseLayerLabel:"Valitse karttataso, jolle klusterit etsitään",minClusterPtsLabel:"Klusteriksi laskettavien pisteiden minimimäärä",minClustersPtsGAXLbl:"Klusteriksi määritettävien pisteiden minimimäärä",limitSearchLabel:"Rajoita hakualue arvoon (valinnainen)",limitSearchReqLabel:"Rajoita hakualue arvoon",outputLayerName:"Etsi klustereita karttatasolle ${inputLayerName}",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Etsi pisteklusterit -ratkaisu karttatasolle ${inputLayerName}.",itemTags:"Analyysin tulos, Etsi pisteklusterit, ${inputLayerName}",itemSnippet:"Kohdekarttataso, joka on luotu Etsi pisteklusterit -toiminnon avulla",chooseClusteringMethod:"Valitse käytettävä klusterointimenetelmä",dbscanLabel:"Määritetty etäisyys (DBSCAN)",hdbscanLabel:"Itsestään mukautuva (HDBSCAN)",useTimeToFindCLusters:"Käytä aikaa klustereiden etsimiseen",limitSearchDurLabel:"Rajoita haun kesto arvoon"});

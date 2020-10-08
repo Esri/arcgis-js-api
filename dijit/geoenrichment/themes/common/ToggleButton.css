@@ -3,7 +3,6 @@
 
 
 .esriGEToggleButton {
-    background-image: url("./images/toggle/toggleOff.svg");
     background-repeat: no-repeat;
     display: inline-block;
     width: 32px;
@@ -11,37 +10,42 @@
     cursor: pointer;
 }
 
-.dj_rtl .esriGEToggleButton {
-    background-image: url("./images/toggle/toggleOnWhite.svg");
-}
-
-.esriGEToggleButton.disabled {
-    background-image: url("./images/toggle/toggleOffDisabled.svg");
-    cursor: default;
-}
-
-.dj_rtl .esriGEToggleButton.disabled {
-    background-image: url("./images/toggle/toggleOnWhiteDisabled.svg");
-}
-
-
-
-.esriGEToggleButton.checked,
-.dj_rtl .esriGEToggleButton.switch:not(.checked) {
-    background-image: url("./images/toggle/toggleOn.svg");
-}
-
-    .esriGEToggleButton.checked.disabled,
-    .dj_rtl .esriGEToggleButton.switch:not(.checked).disabled {
-        background-image: url("./images/toggle/toggleOnDisabled.svg");
+    .esriGEToggleButton.disabled {
+        cursor: default;
     }
 
-.esriGEToggleButton.switch:not(.checked),
-.dj_rtl .esriGEToggleButton.checked {
-    background-image: url("./images/toggle/toggleOffDark.svg");
-}
+    
 
-.esriGEToggleButton.switch:not(.checked).disabled,
-.dj_rtl .esriGEToggleButton.checked.disabled {
-    background-image: url("./images/toggle/toggleOffDarkDisabled.svg");
-}
+    .esriGEToggleButton.toggle.unchecked {
+        background-image: url("./images/toggle/toggleOff.svg");
+    }
+
+        .esriGEToggleButton.toggle.unchecked.disabled {
+            background-image: url("./images/toggle/toggleOffDisabled.svg");
+        }
+
+    .esriGEToggleButton.toggle.checked {
+        background-image: url("./images/toggle/toggleOn.svg");
+    }
+
+        .esriGEToggleButton.toggle.checked.disabled {
+            background-image: url("./images/toggle/toggleOnDisabled.svg");
+        }
+
+    
+
+    .esriGEToggleButton.switch.unchecked {
+        background-image: url("./images/toggle/toggleOffDark.svg");
+    }
+
+        .esriGEToggleButton.switch.unchecked.disabled {
+            background-image: url("./images/toggle/toggleOffDarkDisabled.svg");
+        }
+
+    .esriGEToggleButton.switch.checked {
+        background-image: url("./images/toggle/toggleOn.svg");
+    }
+
+        .esriGEToggleButton.switch.checked.disabled {
+            background-image: url("./images/toggle/toggleOnDisabled.svg");
+        }

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","../../plots/waffle/Waffle","../../plots/_TouchPlotEvents","../ChartPlots","./_SeriesCalculator"],(function(e,a,t,l,o,r){return{configureChart:function(r){var n=a.mixin({type:e([t,l]),labelFunc:function(e){return ChartDataLabelBuilder.formatDataLabel(e,r.visualProperties)},animate:r.viewModel.isAnimationAllowed()});r.chart.addPlot(o.PRIMARY,n)},calcSeries:function(e){return r.calcSeries(e)}}}));

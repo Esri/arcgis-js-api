@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({color:"#666666",theme:{axis:{stroke:{color:"#666666"},tick:{color:"#666666",fontColor:"#666666"}}},female:{fill:"#f279ca"},line:{fill:"#F7F7F7",stroke:{color:"#666666"}},highlight:"#CECECE"});

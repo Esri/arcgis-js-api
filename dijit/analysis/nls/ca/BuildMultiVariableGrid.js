@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({binsLabel:"Trieu el tipus de bins que s'utilitzaran per crear la quadrícula de diverses variables",layersAttrLabel:"Trieu les capes i variables d'entrada que voleu incloure a la quadrícula",itemDescription:"Capa d'entitats generada en executar Crea una quadrícula de diverses variables.",itemTags:"Resultat de l'anàlisi, Crea una quadrícula de diverses variables",itemSnippet:"Capa d'entitats generada amb Crea una quadrícula de diverses variables",addVariables:"Afegeix variables"});

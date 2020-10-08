@@ -18,8 +18,66 @@
 }
 
 .dijitTooltip.esriGETooltip .dijitTooltipConnector {
+    position: absolute;
     opacity: 0;
+    width: 16px;
+    height: 14px;
 }
+
+.dijitTooltipBelow.esriGETooltip {
+    padding-top: 13px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+    .dijitTooltipBelow.esriGETooltip .dijitTooltipConnector {
+        top: 0;
+        left: 3px;
+        background-position: -31px 0;
+        width: 16px;
+        height: 14px;
+    }
+
+.dijitTooltipAbove.esriGETooltip {
+    padding-bottom: 13px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+    .dijitTooltipAbove.esriGETooltip .dijitTooltipConnector {
+        bottom: 0;
+        left: 3px;
+        background-position: -15px 0;
+        width: 16px;
+        height: 14px;
+    }
+
+.dijitTooltipABRight.esriGETooltip .dijitTooltipConnector {
+    left: auto;
+    right: 3px;
+}
+
+.dijitTooltipLeft.esriGETooltip {
+    padding-right: 14px;
+}
+
+    .dijitTooltipLeft.esriGETooltip .dijitTooltipConnector {
+        right: 0;
+        background-position: 0 0;
+        width: 16px;
+        height: 14px;
+    }
+
+.dijitTooltipRight.esriGETooltip {
+    padding-left: 14px;
+}
+
+    .dijitTooltipRight.esriGETooltip .dijitTooltipConnector {
+        left: 0;
+        background-position: -48px 0;
+        width: 16px;
+        height: 14px;
+    }
 
 
 

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite sloj za opis",summaryTypes:"Tipovi rezimea",centralFeature:"Centralni geoobjekat",meanCenter:"Prosečna vrednost x i y ose svih geoobjekata u ispitivanoj oblasti",medianCenter:"Srednja vrednost centra",ellipse:"Elipsa",weightBy:"Ponderisano po (opciono)",groupBy:"Grupiši na osnovu (opciono)",resultLayerName:"Naziv sloja sa rezultatima",outputLayerName:"Opiši distribuciju ${layerName}",none:"Ništa",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Sumiraj centar i disperziju na ${layerName}. ",itemTags:"Rezultati analize, sumiraj centar i disperziju, ${layerName}",itemSnippet:"Sloj geoobjekata nastao od rešenja Sumiraj centar i disperziju"});

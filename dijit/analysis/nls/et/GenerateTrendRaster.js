@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({toolDefine:"Trendi rastri loomine",outputLayerName:"${layername}_trend",dimensionLabel:"Valige mõõde, mida mööda muutuja trendi analüüsitakse",variablesLabel:"Valige trendi analüüsimiseks muutuja(d)",variablesListLabel:"Muutujad [Mõõtmeteave] (Kirjeldus)",trendLineTypeLabel:"Valige joone tüüp, mille abil sobitatakse muutujate väärtused piki mõõdet",linear:"Lineaarne",harmonic:"Harmooniline",polynomial:"Polünoomne",cycleLength:"Määrake harmoonilise tsükli pikkus",cycleUnit:"Määrake harmoonilise tsükli pikkuse ajaühik",years:"Aastat",days:"Päeva",frequencyLabel:"Määrake sagedusarv harmoonilise trendi sobitamiseks",polynomialOrderLabel:"Määrake polünoomi järjekorranumber trendi sobitamiseks",modelStatistics:"Valige trendi rastrisse kaasatud mudeli statistika",rmse:"RMSE",r2:"R ruudus",slopePValue:"Kaldeteguri P-väärtus",ignoreNodataLabel:"Eira arvutuses puuduvaid väärtusi",ignore:"Eira",analysisLayerLabel:"Valige mitmemõõtmeline pildikiht trendi analüüsimiseks",itemDescription:"Analüüsipõhine pilditeenus loodi trendi rastri genereerimise kaudu",itemTags:"Rasteranalüüsi tulemus, trendi rastri loomine, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus loodi trendi rastri genereerimise kaudu"});
+define({toolDefine:"Trendi rastri loomine",outputLayerName:"${layername}_trend",dimensionLabel:"Valige mõõde, mida mööda muutuja trendi analüüsitakse",variablesLabel:"Valige trendi analüüsimiseks muutuja(d)",variablesListLabel:"Muutujad [Mõõtmeteave] (Kirjeldus)",trendLineTypeLabel:"Valige joone tüüp, mille abil sobitatakse muutujate väärtused piki mõõdet",linear:"Lineaarne",harmonic:"Harmooniline",polynomial:"Polünoomne",mannKendall:"Mann-Kendall",seasonalKendall:"Hooajaline-Kendall",seasonalPeriod:"Määra hooajalise perioodi pikkuse ajaühik",cycleLength:"Määrake harmoonilise tsükli pikkus",cycleUnit:"Määrake harmoonilise tsükli pikkuse ajaühik",years:"Aastat",days:"Päeva",months:"Kuud",frequencyLabel:"Määrake sagedusarv harmoonilise trendi sobitamiseks",polynomialOrderLabel:"Määrake polünoomi järjekorranumber trendi sobitamiseks",modelStatistics:"Valige trendi rastrisse kaasatud mudeli statistika",rmse:"RMSE",r2:"R ruudus",slopePValue:"Kaldeteguri P-väärtus",ignoreNodataLabel:"Eira arvutuses puuduvaid väärtusi",ignore:"Eira",analysisLayerLabel:"Valige mitmemõõtmeline pildikiht trendi analüüsimiseks",itemDescription:"Analüüsipõhine pilditeenus loodi trendi rastri genereerimise kaudu",itemTags:"Rasteranalüüsi tulemus, trendi rastri loomine, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus loodi trendi rastri genereerimise kaudu"});

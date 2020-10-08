@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Valige Living Atlas analüüsikiht",customAnalysisLayerTitle:"Vali analüüsikiht",searchPlaceholderText:"Otsi Living Atlas analüüsikihte",searchCustomPlaceholderText:"Otsi analüüsikihte",mainActionTitle:"Vali",customActionName:"Vali ja lisa kaardile",customeSectionName:"Living Atlase analüüsikihid",Categories:"Kategooriad",boundaries:"Piirid",places:"Kohad",boundariesAndPlaces:"Piirid ja kohad",hexbins:"Kuusnurksalved",transportation:"Transport",point:"Punktikihid",line:"Murdjoonekihid",polygon:"Polügoonkihid",pointFilterName:"Punkt",lineFilterName:"Joon",polygonFilterName:"Polügoon",multiPointFilterName:"Mitmekordsed punktid",geometryFilterName:"Geomeetria",featureLayerName:"Objektikiht",tableLayerName:"Tabel",itemTypeFilterName:"Üksuse tüüp",instantFilterName:"Jooksev",intervalFilterName:"Intervall",timeFilterName:"Aeg",edit:"Muuda",boundaryLayers:"Esri piiride kihid",customAnalysisGroupName:"Organisatsiooni analüüsigrupp"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/animation/Animator","esri/dijit/geoenrichment/ReportPlayer/ReportPlayerState"],(function(n,e){return{animateNumber:function(i,t,o){e.isAnimationSuspended||(i.set("value","0"),i.__numberAnimation&&i.__numberAnimation.stop(),i.__numberAnimation=n.animateProperty({duration:375,properties:{p:{start:0,end:t,easing:"quadOut"}},progressFunction:function(n,e,r){i.domNode&&i.set("value",o(t*r))},endFunction:function(){delete i.__numberAnimation}}))}}}));

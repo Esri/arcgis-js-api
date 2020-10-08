@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define([],(function(){return{_ommitableValues:{opacity:1,"stroke-opacity":1,"fill-opacity":1,rx:0,ry:0},buildElement:function(i,a,r){var t=[i];for(var o in a){var e=a[o],l=this._ommitableValues[o];if(void 0===l||e!==l){if("clipParams"===o){if(!e)continue;o="clip-path",e="url(#"+e.clipId+")"}void 0!==e&&t.push(o+'="'+e+'"')}}var n="<"+t.join(" ");return n+=r?">"+r+"</"+i+">":"/>"}}}));
+define([],(function(){return{_ommitableValues:{opacity:1,"stroke-opacity":1,"fill-opacity":1,rx:0,ry:0},buildElement:function(i,t,a){var r="<"+i;for(var e in t){var l=t[e],o=this._ommitableValues[e];if(void 0===o||l!==o){if("clipParams"===e){if(!l)continue;e="clip-path",l="url(#"+l.clipId+")"}void 0!==l&&(r+=" "+e+'="'+l+'"')}}return r+=a?">"+a+"</"+i+">":"/>"}}}));

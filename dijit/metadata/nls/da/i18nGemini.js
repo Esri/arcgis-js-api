@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({documentTypes:{data:{caption:"GEMINI (Data)",description:""},service:{caption:"GEMINI (Service)",description:""}},LanguageCode:{eng:"Engelsk",cym:"Walisisk",gle:"Gælisk (irsk)",gla:"Gælisk (skotsk)",cor:"Kornisk",sco:"Ulster-skotter"},verticalCRS:{reference:"Reference (f.eks. urn:ogc:def:crs:EPSG::5701 )"}});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["../../kernel","dijit/form/Select","dojo/_base/array","dojo/_base/declare","dojo/_base/lang","dojo/dom-class","dojo/has"],(function(e,t,n,i,o,s,a){var l=i("esri.dijit.SymbolStyler.IconSelect",[t],{baseClass:"esriIconSelect dijitSelect dijitValidationTextBox",_extraIconClass:null,addIconOptions:function(e,t){t=t||"";var i=n.map(e,(function(e){return{value:e,iconClass:t+" "+e}}));this.addOption(i)},_getMenuItemForOption:function(e){var t=this.inherited(arguments);return t.set("iconClass",e.iconClass),t},_setValueAttr:function(e){this.inherited(arguments);var t=this.containerNode;s.remove(t,this._getAllIconClasses()),s.add(t,this.get("selectedOptions").iconClass)},_getAllIconClasses:function(){return n.map(this.options,(function(e){return e.iconClass}))}});return a("extend-esri")&&o.setObject("dijit.SymbolStyler.IconSelect",l,e),l}));

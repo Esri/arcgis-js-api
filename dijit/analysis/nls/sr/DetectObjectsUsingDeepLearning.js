@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Definiši objekte pomoću detaljnog učenja",outputLayerName:"${layername}_detected",modelLabel:"Odaberite model detaljnog učenja koji se koristi za otkrivanje objekata",modelArgsLabel:"Navedite argumente modela detaljnog učenja",nameLabel:"Naziv",valueLabel:"Vrednost",removeDuplicatesLable:"Ukloni duplirane geoobjekte iz izlaza (opciono)",queryModelArgsMsg:"Izvršavanje upita za argumente modela...",queryModelArgsErrMsg:"Neuspešan upit argumenata modela.",nonMaxSuppressionLabel:"Sprečavanje koje nije maksimalno",options:"Opcije",confidenceLabel:"Polje rezultata pouzdanosti",classValueLabel:"Polje vrednosti klase",maxOverlapLabel:"Maksimalni odnos preklapanja",numberOnlyMsg:"Dozvoljene su samo brojčane vrednosti.",analysisLayerLabel:"Odaberite snimak koji se koristi za otkrivanje objekata",itemDescription:"Servis za analizu snimaka nastao iz funkcije Otkrij objekte pomoću detaljnog učenja",itemTags:"Rezultat rasterske analize, Otkrij objekte pomoću detaljnog učenja, ${layername}",itemSnippet:"Servis za analizu snimaka nastao iz funkcije Otkrij objekte pomoću detaljnog učenja"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/aspect","esri/dijit/geoenrichment/when","../../../infographics/InfographicTypes"],(function(t,n,e){var o={provideAreaDetailsSettings:function(o){var r=o.getInfographic();return r&&r.getType()===e.AREA_DETAILS?n(r.getContentInitPromise(),(function(){var e=r.getInnerInfographic();return n(e.getUpdatePromise(),(function(){if(!e.getNumItemsTotal())return null;var r={hasTitle:e.hasTitle(),filter:{getNumItemsTotal:function(){return e.getNumItemsTotal()},getNumItemsShown:function(){return e.getNumItemsShown()},onContentUpdated:function(){}}};return t.after(o,"fromJson",(function(){var i=o.getInfographic();n(i.getContentInitPromise(),(function(){e=i.getInnerInfographic(),t.after(e,"onContentUpdated",(function(){r.filter.onContentUpdated()}))}))})),t.after(e,"onContentUpdated",(function(){r.filter.onContentUpdated()})),r}))})):null}};return o}));

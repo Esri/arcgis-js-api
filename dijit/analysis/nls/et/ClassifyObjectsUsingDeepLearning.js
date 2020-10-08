@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Objektide klassifitseerimine süvaõppe teel",inputFeaturesLabel:"Valige objektidele objektikiht (valikuline)",outputLayerName:"${layername}_klassifitseeritudObjektid",modelLabel:"Valige objektide klassifitseerimisel kasutatav süvaõppemudel",modelArgsLabel:"Määrake süvaõppemudeli argumendid",classLabelFieldLabel:"Määrake klassi sildivälja nimi (valikuline)",processingModeLabel:"Töötlusrežiim",processAsMosaicLabel:"Töödelge mosaiikpildiga",processAsItemsLabel:"Töödelge kõiki rastriobjekte eraldi",queryModelArgsMsg:"Tehakse mudeli argumentide päringut...",queryModelArgsErrMsg:"Mudeli argumentide päring nurjus.",valueLabel:"Väärtus",nameLabel:"Nimi",analysisLayerLabel:"Valige objektide klassifitseerimiseks kasutatav pilt",itemDescription:"Analüüsipõhine pilditeenus, mis on genereeritud objektide klassifitseerimisel süvaõppe teel",itemTags:"Rasteranalüüsi tulemus, objektide klassifitseerimine süvaõppe teel, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus, mis on genereeritud objektide klassifitseerimisel süvaõppe teel"});

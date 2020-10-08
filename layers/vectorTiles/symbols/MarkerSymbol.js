@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["../core/declare","../core/screenUtils","./Symbol"],(function(e,t,r){return e(r,{declaredClass:"esri.symbols.MarkerSymbol",properties:{angle:{value:0,json:{read:function(e){return e&&-1*e},write:function(e,t){t.angle=e&&-1*e}}},type:{},xoffset:{value:0,cast:t.toPt,json:{write:!0}},yoffset:{value:0,cast:t.toPt,json:{write:!0}},size:{value:9,cast:function(e){return"auto"===e?e:t.toPt(e)},json:{write:!0}}}})}));

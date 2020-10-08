@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({binsLabel:"Escolha o tipo de caixas que será utilizado para construir a grade de múltiplas variáveis",layersAttrLabel:"Escolha variáveis e camadas de entrada que você gostaria de incluir na grade",itemDescription:"Camada de feição gerada a partir da execução de Construir Grade de Múltiplas Variáveis.",itemTags:"Resultado da Análise, Construir Grade de Múltiplas Variáveis",itemSnippet:"Camada de feição gerada de Construir Grade de Múltiplas Variáveis.",addVariables:"Adicionar Variáveis"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Velg punktgeoobjektene som skal berikes",chooseMVgridLyrLabel:"Velg det multivariable rutenettet du vil berike fra",chooseVariables:"Velg variablene du vil legge til",outputLayerName:"Beriket ${inputFeatures} fra ${gridLayer}",itemDescription:"Geoobjektlag generert ved å kjøre løsningen for å berike fra multivariabelt rutenett for ${inputFeatures}.",itemTags:"Analyseresultat, Berik fra multivariabelt rutenett, ${inputFeatures}, ${gridLayer}",itemSnippet:"Geoobjektlag generert av Berik fra multivariabelt rutenett."});

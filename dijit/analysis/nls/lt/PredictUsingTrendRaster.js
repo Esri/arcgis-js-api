@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Prognozuoti naudojant tendencijų rastrą",outputLayerName:"${layername}_predict",variablesLabel:"Pasirinkti kintamąjį (kintamuosius), kuris (kurie) bus prognozuojamas (prognozuojami)",variablesListLabel:"Kintamųjų [matmens informacija] (aprašas)",dimensionDefinitionLabel:"Pasirinkti prognozės matmenų reikšmių pateikimo metodą",dimensionValuesLabel:"Nurodyti matmenų reikšmę (reikšmes), kurią (kurias) prognozuoti",dimensionIntervalLabel:"Nurodyti prognozės matmens intervalą",intervalValueLabel:"Nurodyti žingsnių tarp pradžios ir pabaigos reikšmių skaičių",intervalUnitLabel:"Pasirinkti matavimo vienetą, kuris bus naudojamas laiko reikšmės intervalui",startLabel:"Pradžios reikšmė",endLabel:"Pabaigos reikšmė",byValueLabel:"Pagal reikšmę",byIntervalLabel:"Pagal intervalą",hours:"Valandos",days:"Dienos",weeks:"Savaitės",months:"Mėnesiai",years:"Metai",custom:"Adaptuotas",itemDescription:"Analizės vaizdo paslauga, sugeneruota panaudojus Prognozuoti naudojant tendencijų rastrą",itemTags:"Rastro analizės rezultatas, Prognozuoti naudojant tendencijų rastrą, ${layername}",itemSnippet:"Analizės vaizdo paslauga, sugeneruota panaudojus Prognozuoti naudojant tendencijų rastrą"});

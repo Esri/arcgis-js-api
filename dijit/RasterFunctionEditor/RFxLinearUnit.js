@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dijit/_WidgetBase","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dojo/text!./templates/RFxLinearUnit.html","dojo/_base/declare"],(function(t,e,i,s,n){return n([t,e,i],{declaredClass:"esri.widgets.ToolModeler.RasterFunctionEditor.ArgumentEditors.RFxLinearUnit",templateString:s,value:"0 Meters",constructor:function(){this.inherited(arguments)},postCreate:function(){this.inherited(arguments),this._populateControls(),this._setValues()},_populateControls:function(){this.unitType.set("store",this.enumStore),this.unitType.set("value","Meters"),this.unitValue.set("value","")},_setValues:function(t){var e=t||this.value;e&&(e=e.split(" "),this.unitValue.set("value",parseFloat(e[0])),this.unitType.set("value",e[1]))},_getValueAttr:function(){if(this.unitValue&&this.unitType&&!isNaN(this.unitValue.value))return this.unitValue.value+" "+this.unitType.value}})}));

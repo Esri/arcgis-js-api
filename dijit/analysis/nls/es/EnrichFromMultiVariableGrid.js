@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Elegir las entidades de puntos que desea enriquecer",chooseMVgridLyrLabel:"Elegir la cuadrícula multivariable con la que se va a enriquecer",chooseVariables:"Elegir las variables que desea agregar",outputLayerName:"Se han enriquecido ${inputFeatures} de ${gridLayer}",itemDescription:"Capa de entidades generada al ejecutar la solución Enriquecer con cuadrícula multivariable en ${inputFeatures}.",itemTags:"Resultado de análisis, Enriquecer con cuadrícula multivariable, ${inputFeatures}, ${gridLayer}",itemSnippet:"Capa de entidades generada a partir de Enriquecer con cuadrícula multivariable."});

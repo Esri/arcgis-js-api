@@ -23,14 +23,14 @@
     </tr>
     <tr data-dojo-attach-point="_liveTrafficCtrlRow">
       <td colspan="3">
-        <div class="esriLeadingMargin2 longInput" value="0" data-dojo-props="intermediateChanges:true,showButtons:false,minimum:0, maximum:12,discreteValues:49" data-dojo-attach-point="_liveTimeSlider" data-dojo-attach-event="onChange:_handleLiveTimeSliderChange" type="range" data-dojo-type="dijit/form/HorizontalSlider">
-          <div data-dojo-type="dijit/form/HorizontalRule"  style="width:86%" data-dojo-props="container: 'topDecoration',count: 13,style: 'height: 0.55em;'"></div>
+        <div class="esriLeadingMargin2 longInput" value="0" data-dojo-props="intermediateChanges:true,showButtons:false,minimum:0, maximum:4,discreteValues:49" data-dojo-attach-point="_liveTimeSlider" data-dojo-attach-event="onChange:_handleLiveTimeSliderChange" type="range" data-dojo-type="dijit/form/HorizontalSlider">
+          <div data-dojo-type="dijit/form/HorizontalRule"  style="width:86%" data-dojo-props="container: 'topDecoration',count: 17,style: 'height: 0.55em;'"></div>
            <ol data-dojo-type="dijit/form/HorizontalRuleLabels"  data-dojo-attach-point="_liveTimeRuleLabels" data-dojo-props="container: 'bottomDecoration', count:5" style="margin-top:5px;height: 1em;">
               <li>${i18n.nowLabel}</li>
+              <li>+1</li>
+              <li>+2</li>
               <li>+3</li>
-              <li>+6</li>
-              <li>+9</li>
-              <li>+12 ${i18n.hoursSmall}</li>
+              <li>+4 ${i18n.hoursSmall}</li>
             </ol>
         </div>
          <!-- create rules and labels below horizontal slider -->

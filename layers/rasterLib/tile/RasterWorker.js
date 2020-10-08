@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["require","exports","module","dojo/Deferred","dojo/promise/all","../../PixelBlock","../../rasterFormats/rasterCodec","../function/rasterFunctionHelper","../renderer/rasterRendererHelper","../raster/RasterInfo"],(function(e,r,t,s,n,i,o,a,c,p){return function(){function e(e){this.processingSettings={}}return e.prototype.setLayer=function(e){var r=new s,t=e.layerId;return this.processingSettings[t]=this.processingSettings[t]||{},e.raster&&(this.processingSettings[t].raster=e.raster,e.raster.rasterInfo&&(this.processingSettings[t].raster.rasterInfo=new p(e.raster.rasterInfo))),this.processingSettings[t].bandCount=e.bandCount,this.processingSettings[t].useWebGL=!1,r.resolve(),r.promise},e.prototype.setRasterFunction=function(e){var r,t=new s,n=e.layerId,i=e.data;return this.processingSettings[n]=this.processingSettings[n]||{},i?(r=a.create(i),this.processingSettings[n].rasterFunction=r,this.processingSettings[n].rasterFunction.setProcessingContext(this.processingSettings[n])):this.processingSettings[n].rasterFunction=null,t.resolve(),t.promise},e.prototype.setRasterRenderer=function(e){var r=new s,t=e.layerId,n=e.data;return this.processingSettings[t]=this.processingSettings[t]||{},n?(this.processingSettings[t].rasterRenderer=c.create(n),this.processingSettings[t].rasterRenderer.bind({layer:this.processingSettings[t]})):this.processingSettings[t].rasterRenderer=null,r.resolve(),r.promise},e.prototype.processTileData=function(e){return this.decode(e).then(function(e){this.process(e).then(function(e){this.render(e)}.bind(this))}.bind(this))},e.prototype.decode=function(e){var r=e.encodedData,t=e.decodeParams;return o.decode(r,t)},e.prototype.process=function(e){var r,t=new s,n=this.processingSettings[e.layerId].rasterFunction;return n&&e&&(r=n.read(e)),t.resolve(r||e),t.promise},e.prototype.render=function(e){var r,t=new s,n=this.processingSettings[e.layerId].rasterRenderer;return n&&e&&(r=n.draw(e)),t.resolve(r||e),t.promise},e}()}));

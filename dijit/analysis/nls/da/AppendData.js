@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg lag, der skal tilknyttes til",inputWarningLabel:"Advarsel: Det lag du føjer til vil blive ændret.",inputHostedLayerWarning:'Det valgte lag var ikke et "hosted" vektorlag. Vælg et "hosted" vektorlag, der skal tilknyttes til.',appendLayerLabel:"Vælg lag, der skal tilknyttes",filterLabel:"Tilknyt alle objekter, eller definér et undersæt (valgfrit)",fieldMappingLabel:"Vælg, hvordan felter skal tilknyttes (valgfrit)",inputField:"Inputfelt",appendValue:"Tilknyt værdi",expression:"Udtryk"});

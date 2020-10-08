@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../geometry/Point"],(function(e,s,t,n,a){var d=e(null,{declaredClass:"esri.tasks.AddressCandidate",constructor:function(e){s.mixin(this,e),this.location=new a(this.location)}});return t("extend-esri")&&s.setObject("tasks.AddressCandidate",d,n),d}));

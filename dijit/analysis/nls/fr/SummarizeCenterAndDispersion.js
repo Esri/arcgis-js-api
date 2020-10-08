@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir une couche à décrire",summaryTypes:"Types récapitulatifs",centralFeature:"Entité centrale",meanCenter:"Centre moyen",medianCenter:"Centre médian",ellipse:"Ellipse",weightBy:"Pondérer par (facultatif)",groupBy:"Regrouper par (facultatif)",resultLayerName:"Nom de la couche de résultat",outputLayerName:"Décrire la distribution de ${layerName}",none:"Aucun",itemDescription:"Couche d’entités générée en exécutant la solution Synthétiser le centre et la dispersion sur ${layerName}. ",itemTags:"Résultat d’analyse, Synthétiser le centre et la dispersion, ${layerName}",itemSnippet:"Couche d’entités générée avec Synthétiser le centre et la dispersion"});

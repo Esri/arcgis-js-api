@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/dom-class","esri/dijit/geoenrichment/utils/ColorUtil","../themes/BackgroundThemeUtil"],(function(e,o,r){var n={setUpDDPanelBackgroundColor:function(n){var a=n.viewModel.getStaticInfographicDefaultStyles(n.theme),t=n.viewModel.getDocumentDefaultStyles(n.theme);[n.infographicJson&&n.infographicJson.style.backgroundColor,a&&a.backgroundColor,t.backgroundColor].some((function(r){if(r&&!o.isTransparent(r))return n.node.style.backgroundColor=r,e.remove(n.node,"playerThemeDark playerThemeLight"),e.add(n.node,o.isLightColor(r)?"playerThemeLight":"playerThemeDark"),!0}))||r.renderThemeBackgroundImage(n.node,t.backgroundImage)}};return n}));

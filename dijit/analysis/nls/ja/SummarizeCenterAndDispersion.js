@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"説明するレイヤーを選択",summaryTypes:"サマリー タイプ",centralFeature:"中心フィーチャ",meanCenter:"地理的中心",medianCenter:"地理的中間地点",ellipse:"楕円",weightBy:"重み付け (オプション)",groupBy:"グループ化 (オプション)",resultLayerName:"結果レイヤー名",outputLayerName:"${layerName} の分布の説明",none:"なし",itemDescription:"${layerName} に対して [中心と分散の集計] を実行して生成されたフィーチャ レイヤー。 ",itemTags:"解析結果、中心と分散の集計、${layerName}",itemSnippet:"[中心と分散の集計] から生成されたフィーチャ レイヤー"});

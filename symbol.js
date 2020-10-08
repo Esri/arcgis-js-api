@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["./symbols/Symbol","./symbols/MarkerSymbol","./symbols/SimpleMarkerSymbol","./symbols/PictureMarkerSymbol","./symbols/LineSymbol","./symbols/SimpleLineSymbol","./symbols/CartographicLineSymbol","./symbols/FillSymbol","./symbols/SimpleFillSymbol","./symbols/PictureFillSymbol","./symbols/Font","./symbols/TextSymbol","./symbols/jsonUtils"],(function(l,o,m,b,y,s,i,S,e,r,n,t,a){return{Symbol:l,MarkerSymbol:o,SimpleMarkerSymbol:m,PictureMarkerSymbol:b,LineSymbol:y,SimpleLineSymbol:s,CartographicLineSymbol:i,FillSymbol:S,SimpleFillSymbol:e,PictureFillSymbol:r,Font:n,TextSymbol:t,jsonUtils:a}}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/dom-construct","./Empty","./Section"],(function(e,n,t){var c={createSection:function(n,c,o){return new t(n,c?e.create("div",null,c,o):void 0)},createEmptySection:function(t,c,o){return new n(t,c?e.create("div",null,c,o):void 0)}};return c}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolte vrstvu směru odtoku",pourPointLayerLabel:"Zvolte rastrovou vrstvu nebo vrstvu prvků uzávěrového profilu",pourPointField:"Zvolte pole uzávěrového profilu",resultLayerName:"Název výsledné vrstvy",outputLayerName:"Povodí ${layername}",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Souhrn středové hodnoty a rozptýlení pro ${inputLayername}. ",itemTags:"Výsledek analýzy, Povodí, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Povodí."});

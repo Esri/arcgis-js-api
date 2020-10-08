@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختر طبقة لوصفها",summaryTypes:"أنواع الملخص",centralFeature:"المعلم المركزي",meanCenter:"مركز الوسط",medianCenter:"المركز المتوسط",ellipse:"قطع ناقص",weightBy:"الوزن بواسطة (اختياري)",groupBy:"تجميع بواسطة (اختياري)",resultLayerName:"اسم طبقة النتيجة",outputLayerName:"وصف توزيع ${layerName}",none:"لا شيء",itemDescription:'طبقة المعالم المُنشأة من تشغيل مركز "تلخيص" والتشتيت في " لـ ${layerName}. ',itemTags:'نتيجة التحليل، مركز "التلخيص" والتشتيت، ${layerName}',itemSnippet:'طبقة المعالم المُنشأة من مركز "تلخيص" والتشتيت'});

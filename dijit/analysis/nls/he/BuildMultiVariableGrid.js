@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({binsLabel:"בחר את סוג רכיבי ה-Bin שישמשו לבניית הגריד מרובה המשתנים",layersAttrLabel:"בחר את שכבות הקלט והמשתנים שברצונך לכלול בגריד",itemDescription:"שכבת הישויות נוצרה מהפעלה של 'בנה גריד מרובה משתנים'.",itemTags:"תוצאת הניתוח, בנה גריד מרובה משתנים",itemSnippet:"שכבת הישויות נוצרה באמצעות 'בנה גריד מרובה משתנים'",addVariables:"הוסף משתנים"});

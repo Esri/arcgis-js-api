@@ -153,19 +153,32 @@
             <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="longInput esriLeadingMargin1" data-dojo-props="trim:true" data-dojo-attach-point="_frequencyValue" value=""></input>
           </td>
         </tr>
+        <tr data-dojo-attach-point="_seasonalPeriodLabelRow" class="esriLeadingMargin1" style="display:none;">
+          <td colspan="2">
+            <label data-dojo-attach-point="_seasonalPeriodLabel">${i18n.seasonalPeriod}</label>
+          </td>
+          <td class="shortTextInput">
+            <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="seasonalPeriod"></a>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="_seasonalPeriodValueRow" style="display:none;">
+          <td colspan="3">
+            <select class="longInput esriLeadingMargin1" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_seasonalPeriodSelect"></select>
+          </td>
+        </tr>
         <tr>
           <td colspan="3" class="clear"></td>
         </tr>
-        <tr>
+        <tr data-dojo-attach-point="_modelStatisticsLabelRow">
           <td colspan="2">
-            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
-            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_modelStatisticsLabel">${i18n.modelStatistics}</label>
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_modelStatisticsLabel">${i18n.threeLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.modelStatistics}</label>
           </td>
           <td class="shortTextInput">
             <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="modelStatistics"></a>
           </td>
         </tr>
-        <tr>
+        <tr data-dojo-attach-point="_modelStatisticsValueRow">
           <td colspan="3">
             <label class="esriLeadingMargin2 esriSelectLabel">
               <input type="radio" data-dojo-attach-point="_rmseCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" checked value="true" />
@@ -188,8 +201,8 @@
         </tr>
         <tr>
           <td colspan="2">
-            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
-            <label class="esriAnalysisStepsLabel" data-dojo-attach-point="_ignoreNodataLabel">${i18n.ignoreNodataLabel}</label>
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_ignoreNodataLabel">${i18n.fourLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.ignoreNodataLabel}</label>
           </td>
           <td>
             <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="ignoreNodata"></a>
@@ -208,7 +221,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fiveLabel}</label>
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel" data-dojo-attach-point="_outputLayerLabel">${i18n.fiveLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">

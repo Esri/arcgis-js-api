@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți strat tematic pe care să adăugați",inputWarningLabel:"Avertizare: Stratul tematic pe care îl anexați va fi modificat.",inputHostedLayerWarning:"Stratul tematic selectat nu a fost un strat tematic de obiecte spațiale găzduit. Vă rugăm să selectați un strat tematic de obiecte spațiale găzduit, pentru anexare.",appendLayerLabel:"Alegeți strat tematic pe care să adăugați",filterLabel:"Adăugați toate caracteristicile sau definiți un subset (opțional)",fieldMappingLabel:"Alegeți modul de adăugare a câmpurilor (opțional)",inputField:"Câmp de intrare",appendValue:"Adăugați valoare",expression:"Expresie"});

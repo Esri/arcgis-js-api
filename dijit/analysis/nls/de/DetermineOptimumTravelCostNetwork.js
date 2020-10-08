@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Raster- oder Feature-Position-Layer auswählen, zwischen denen Reisepfade ermittelt werden sollen",inputCostRasterLabel:"Reisekosten-Raster-Layer auswählen",outputOptimumNetworkName:"Name des Polylinien-Ergebnis-Layers mit den optimalen Pfaden",outputNeighborNetworkName:"Name des Polylinien-Ergebnis-Layers mit benachbarten Pfaden (optional)",outputLayerName:"Optimale Reisekosten bestimmen für ${layername}",itemDescription:"Über 'Optimales Reisekosten-Netzwerk bestimmen' für ${layerName} erstellter Feature-Layer. ",itemTags:"Analyseergebnis, Optimales Reisekosten-Netzwerk bestimmen, ${layername} ${fieldname}",itemSnippet:"Über 'Optimales Reisekosten-Netzwerk bestimmen' erstellter Feature-Layer."});

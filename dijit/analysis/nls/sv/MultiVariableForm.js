@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({distToNearest:"Avstånd till närmaste",attrOfInterest:"Närmastes attribut",summaryNearby:"Översikt över närmaste",summaryIntersecting:"Översikt över korsande",distToNearestLabel:"Avståndet från klassens centrum till närmaste geoobjekt i indatalagret",attrOfInterestLabel:"Värdet i ett visst fält i närmaste geoobjekt från indatalagret",summaryNearbyLabel:"En siffra som beräknas på alla hittade geoobjekt med angivet avstånd från klassens centrum",summaryIntersectingLabel:"En siffra som beräknas på alla geoobjekt som skär klassen",maxDistancefromCtr:"Maximalt avstånd från klassens centrum",fieldToIncude:"Fält som ska ingå",statstoCalculate:"Statistik som ska beräknas",summFeatuesWithin:"Summera geoobjekt inom",smallMaxDistErrorMsg:"Maximalt avstånd från klassens centrum måste vara större än klassens storlek.",smallSumFeaturesErrorMsg:"Maximalt avstånd från klassens centrum måste vara större än klassens storlek."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../kernel","dojo/i18n!../nls/i18nArcGIS"],(function(e,i,t,s,o){var r=e(null,{i18nArcGIS:o,codeListPrefix:"http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#",inspireCodeListPrefix:"http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#",constructor:function(e){i.mixin(this,e)}});return t("extend-esri")&&i.setObject("dijit.metadata.context.DescriptorMixin",r,s),r}));

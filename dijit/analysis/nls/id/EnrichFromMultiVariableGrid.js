@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Pilih fitur titik untuk diperkaya",chooseMVgridLyrLabel:"Pilih multi-variable grid untuk diperkaya",chooseVariables:"Pilih variabel yang akan ditambahkan",outputLayerName:"${inputFeatures} yang diperkaya dari ${gridLayer}",itemDescription:"Feature layer yang dibuat dari menjalankan solusi Perkaya dari Multi-Variable Grid untuk ${inputFeatures}.",itemTags:"Hasil Analisis, Perkaya dari Multi-Variable Grid, ${inputFeatures}, ${gridLayer}",itemSnippet:"Feature layer yang dibuat dari Perkaya dari Multi-Variable Grid."});

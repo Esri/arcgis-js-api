@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({modifiedTitle:"Klasifikasi dan Regresi Berbasis Hutan - ${goal}",train:"Latih",trainAndPredict:"Latih dan Prediksi",selectGoal:"Apa yang ingin Anda lakukan?",trainGoal:"Latih sebuah model untuk menilai kinerja model",trainAndPredictGoal:"Latih sebuah model dan prediksikan nilai",inFeaturesLabel:"Pilih layer pelatihan",variablePredictLabel:"Pilih kolom untuk prediksi",categorical:"Kategoris",chooseExplanatoryField:"Pilih satu kolom penjelas atau lebih",chooseFeaturesToPredict:"Pilih sebuah layer untuk memprediksikan nilai",chooseExplainMatch:"Pilih bagaimana kolom penjelas dicocokkan",options:"Opsi",advancedForestOptions:"Opsi hutan lanjutan",numberOfTrees:"Jumlah pohon",minimumLeafSize:"Ukuran daun minimal",maximumTreeDepth:"Kedalaman pohon maksimal",sampleSize:"Data tersedia per pohon (%)",randomVariables:"Jumlah variabel yang dijadikan sampel secara acak",variableConstraintMsg:"Harus antara 1 dan jumlah variabel penjelas.",validationOptions:"Opsi validasi",percentageForValidation:"Data pelatihan dikecualikan untuk validasi (%)",outputLayerName:"FBCR ${inFeaturesName}",itemDescription:"Feature layer dibuat dari menjalankan solusi Klasifikasi dan Regresi Berbasis Hutan ${goal}.",itemTags:"Hasil Analisis, Klasifikasi dan Regresi Berbasis Hutan, ${inFeaturesName}, ${goal}",itemSnippet:"Feature layer dibuat dari Klasifikasi dan Regresi Berbasis Hutan (${goal})"});

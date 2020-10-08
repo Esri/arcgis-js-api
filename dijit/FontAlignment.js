@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["require","dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","dojo/_base/array","dojo/query","dojo/dom-class","dijit/_Widget","dijit/_TemplatedMixin","dijit/_WidgetsInTemplateMixin","dojo/text!./templates/FontAlignment.html"],(function(e,t,n,i,o,a,l,d,r,s,u,c){var m=t([r,s,u],{declaredClass:"esri.dijit.FontAlignment",templateString:c,widgetsInTemplate:!0,value:null,_imageUrl:e.toUrl("./images/positionSprite.png"),destroy:function(){this.inherited(arguments)},setValue:function(e){this.value=e;var t=l("button",this.domNode);a.forEach(t,(function(t){t.value===e?d.add(t,"selectedFontAlignment"):d.remove(t,"selectedFontAlignment")}))},getValue:function(){return this.value},changeValue:function(e){var t=l("button",this.domNode);a.forEach(t,(function(e){d.remove(e,"selectedFontAlignment")})),d.add(e.currentTarget,"selectedFontAlignment"),this.value=e.currentTarget.value,this.emit("change",{value:this.value})}});return i("extend-esri")&&n.setObject("dijit.FontAlignment",m,o),m}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({chooseShape:"Odaberite oblik",defineExtent:"Definiraj obuhvat",defineBin:"Definiraj veličinu ćelije određivanjem",area:"Poligona",distance:"Udaljenosti",resultLayerName:"Naziva sloja rezultata",hexagon:"Šesterokut",transverseHexagon:"Poprečni šesterokut",square:"Kvadrat",triangle:"Trokut",diamond:"Romb",sameAsDisplay:"Isto kao zaslon",emptyBinSize:"Veličina ćelije ne može biti prazna",currentExtent:"trenutačni obuhvat",intersectExtent:"Zadrži samo presijecajuće teselacije",outputLayerName:"Generiraj teselacije na sloju ${extentLayerName}",itemDescription:"Upotrijebljen je obuhvat iz sloja ${extentLayerName}.",itemTags:"Rezultat analize, funkcija Generiraj teselacije, sloj ${extentLayerName}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Generiraj teselacije."});

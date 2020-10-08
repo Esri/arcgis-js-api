@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocesiranje",_featureAction_ReceiveFeatureSet:"Podesi kao unos od ",requiredInfo:"je obavezno.",drawnOnMap:"Rezultat je nacrtan na mapi.",noToolConfig:"Nema dostupnih unapred konfigurisanih zadataka geoprocesiranja.",useUrlForGPInput:"URL",useUploadForGPInput:"Otpremi datoteku",useImageServiceLayer:"Sloj usluga za sliku",useBrowseLayerPortal:"Pregled / Izbor sa portala",selectFileToUpload:"Izaberite datoteku...",rasterFormat:"Format rasterskih podataka",noFileSelected:"Nema izabrane datoteke!",uploadSuccess:"Uspešno otpremanje datoteke!",showLayerContent:"Prikaži sadržaj sloja",invalidUrl:"Nevažeća URL adresa servisa geoobjekata",urlPlaceholder:"URL adresa seta geoobjekata",addShapefile:"Dodaj datoteku „shapefile“",generateShapefileError:"Generiši grešku datoteke „shapefile“, proverite: ",cleared:"Rezultat je obrisan.",enlargeView:"Uveličaj prikaz",exportOutput:"Izvezi",emptyResult:"Rezultat je prazan.",useSelectedFeatureset:"Koristite rezultujući geoobjekat/geoobjekte.",closeSelectedFeatureset:"Obrišite i koristite konfigurisanu opciju unosa."});

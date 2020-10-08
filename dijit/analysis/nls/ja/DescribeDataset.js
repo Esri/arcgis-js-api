@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"説明するデータセットの選択",describeDataLabel:"次のレイヤーの作成によるデータの理解 (オプション)",sampleLayer:"サンプル レイヤー",extentLayer:"エクステント レイヤー",noOfFeaturesLabel:"含めるフィーチャの数",outputLayerName:"結果レイヤー名",resultName:"${layerName} のデータの説明",itemDescription:"${layerName} に対して [データセットの説明] を実行して生成されたフィーチャ レイヤー。 ",itemTags:"解析結果、データセットの説明、${layerName}",itemSnippet:"[データセットの説明] から生成されたフィーチャ レイヤー。"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite sloj na koji se dodaje",inputWarningLabel:"Upozorenje: Sloj kojem dodajete će biti izmenjen.",inputHostedLayerWarning:"Selektovani sloj nije hostovani sloj geoobjekata. Selektujte hostovani sloj geoobjekata za dodavanje.",appendLayerLabel:"Odaberite sloj na koji se dodaje",filterLabel:"Dodajte sve geoobjekte ili definišite podskup (opciono)",fieldMappingLabel:"Odaberite kako se dodaju polja (opciono)",inputField:"Polje unosa",appendValue:"Dodaj vrednost",expression:"Izraz"});

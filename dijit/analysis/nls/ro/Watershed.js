@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți stratul direcției de curgere",pourPointLayerLabel:"Alegeți rasterul punctului de curgere sau stratul tematic de obiecte spațiale",pourPointField:"Alegeți câmpul punctului de curgere",resultLayerName:"Nume strat tematic rezultat",outputLayerName:"Bazinul hidrografic din ${layername}",itemDescription:"Strat tematic de obiecte spațiale generat de rularea instrumentului Centru de rezumare și dispersare pe ${layerName}. ",itemTags:"Rezultatul analizei, bazinul hidrografic, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat de bazinul hidrografic."});

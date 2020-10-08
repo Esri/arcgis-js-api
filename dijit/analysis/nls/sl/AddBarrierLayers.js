@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({addBarriers:"Izberi sloje ovire",pointBarrier:"Točkovne ovire",lineBarrier:"Linijske ovire",polygonBarrier:"Poligonske ovire",choosePointBarrier:"Izberi sloj točkovne ovire",chooseLineBarrier:"Izberi sloj linijske ovire",choosePolygonBarrier:"Izberi sloj poligonske ovire",selectPointBarrier:"Izberi točkovne ovire",selectLineBarrier:"Izberi linijske ovire",selectPolygonBarrier:"Izberi poligonske ovire"});

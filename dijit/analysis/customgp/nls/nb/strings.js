@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprosessering",_featureAction_ReceiveFeatureSet:"Angi som inndata for ",requiredInfo:"er påkrevd.",drawnOnMap:"Resultatet tegnes på kartet.",noToolConfig:"Ingen forhåndskonfigurert geoprosesseringsoppgave tilgjengelig.",useUrlForGPInput:"URL",useUploadForGPInput:"Last opp fil",useImageServiceLayer:"Bildetjenestelag",useBrowseLayerPortal:"Bla gjennom / velg fra portal",selectFileToUpload:"Velg fil...",rasterFormat:"Rasterdataformat",noFileSelected:"Ingen fil er valgt!",uploadSuccess:"Filen er lastet opp.",showLayerContent:"Vis laginnhold",invalidUrl:"Ugyldig geoobjektstjeneste-URL",urlPlaceholder:"geoobjektsett-URL",addShapefile:"Legg til shapefil",generateShapefileError:"Generer shapefilfeil. Kontroller: ",cleared:"Resultatet er fjernet.",enlargeView:"Forstørr visningen",exportOutput:"Eksporter",emptyResult:"Resultatet er tomt.",useSelectedFeatureset:"Bruk resulterende geoobjekt(er).",closeSelectedFeatureset:"Fjern og bruk det konfigurerte inndataalternativet."});

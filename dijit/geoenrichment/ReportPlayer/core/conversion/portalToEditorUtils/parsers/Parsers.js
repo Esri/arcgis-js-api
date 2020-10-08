@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/Deferred","require"],(function(e,r){var i,t={},n={};return t.initialize=function(){return i?i.promise:(i=new e,r(["./DocumentParser","./ChartConverterPtoE","./InfographicConverterPtoE","./SectionParser","./FieldParser","./FilterParser","./SortingParser","../../../supportClasses/templateJsonUtils/fieldInfo/utils"],(function(e,r,t,o,s,a,c,f){n.document=e,n.chart=r,n.infographic=t,n.section=o,n.field=s,n.filter=a,n.sorting=c,f.init().then(i.resolve)})),i.promise)},t.getParser=function(e){return n[e]},t}));

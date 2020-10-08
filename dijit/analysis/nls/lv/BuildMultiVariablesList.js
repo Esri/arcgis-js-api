@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Izvēlieties ievades slāni",addAVar:"Pievienot mainīgo vērtību",distToNearest:"Attālums līdz vistuvākajam",attrOfInterest:"Vistuvākā atribūts",summaryNearby:"Tuvāk esošā kopsavilkums",summaryIntersecting:"Šķērsojumu kopsavilkums",distToNearestLabel:"Attālums no nodalījuma centra līdz vistuvākajam elementam ievades slānī",attrOfInterestLabel:"Vērtība no norādītā lauka no vistuvākā elementa ievades slānī",summaryNearbyLabel:"Atrasts visu elementu statistikas aprēķins ar nodalījuma centram norādīto attālumu",summaryIntersectingLabel:"Aprēķinātā statistika visiem elementiem, kas šķērso nodalījumu",maxDistancefromCtr:"Maksimālais attālums no nodalījuma centra",fieldToIncude:"Iekļaujamais lauks",statstoCalculate:"Aprēķināmā statistika",summFeatuesWithin:"Apkopot elementus šeit:",layerChangeWarnMsg:"Mainot ievades slāni, pievienotās mainīgās vērtības šim ievades slānim tiks noņemtas",validationErrorMsg:"Novērsiet validācijas kļūdas, pirms pievienot jaunu mainīgo vērtību",atleastOneVarMsg:"Pievienojiet šim izvēlētajam slānim vismaz vienu mainīgo vērtību"});

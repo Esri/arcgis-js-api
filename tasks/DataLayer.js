@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","../geometry/jsonUtils","./SpatialRelationship"],(function(e,t,a,l,n,s,r){var i=e(null,{declaredClass:"esri.tasks.DataLayer",name:null,where:null,geometry:null,spatialRelationship:null,toJson:function(){var e={type:"layer",layerName:this.name,where:this.where,spatialRel:this.spatialRelationship},t=this.geometry;return t&&(e.geometryType=s.getJsonType(t),e.geometry=t.toJson()),n.filter(e,(function(e){if(null!==e)return!0}))}});return t.mixin(i,r),a("extend-esri")&&t.setObject("tasks.DataLayer",i,l),i}));

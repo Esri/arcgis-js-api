@@ -324,3 +324,7 @@
   .hidden {
     display: none;
   }
+
+  .esri-rfx-factor-function-editor .dgrid-scroller {
+    margin-top: 0;
+  }

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({clustersLabel:"Znajdź klastry dla warstwy ${inputLayerName}.",chooseLayerLabel:"Wybierz warstwę, dla której mają zostać znalezione klastry",minClusterPtsLabel:"Minimalna liczba punktów, które są uznawane za klaster",minClustersPtsGAXLbl:"Minimalna liczba punktów stanowiąca zaczepienie klastra",limitSearchLabel:"Ogranicz zakres wyszukiwania do (opcjonalnie)",limitSearchReqLabel:"Ogranicz zakres wyszukiwania do",outputLayerName:"Znajdź klastry dla warstwy ${inputLayerName}",itemDescription:"Warstwa obiektowa utworzona w wyniku uruchomienia narzędzia Znajdź klastry punktów dla warstwy ${inputLayerName}.",itemTags:"Wynik analizy, Znajdź klastry punktów, ${inputLayerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Znajdź klastry punktów",chooseClusteringMethod:"Wybierz metodę klastrowania do użycia",dbscanLabel:"Zdefiniowana odległość (DBSCAN)",hdbscanLabel:"Automatyczne dostosowanie (HDBSCAN)",useTimeToFindCLusters:"Użyj czasu, aby znaleźć klastry",limitSearchDurLabel:"Ogranicz czas trwania wyszukiwania do"});

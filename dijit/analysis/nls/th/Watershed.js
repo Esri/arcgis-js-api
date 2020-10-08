@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกชั้นข้อมูลทิศทางการไหล",pourPointLayerLabel:"เลือกชั้นข้อมูลแรสเตอร์หรือฟีเจอร์จุดไหลเท",pourPointField:"เลือกฟิลด์จุดไหลเท",resultLayerName:"ชื่อของชั้นข้อมูลผลลัพธ์",outputLayerName:"ลุ่มน้ำของ ${layername}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้สรุปศูนย์กลางและการกระจายใน ${layerName} ",itemTags:"ผลการวิเคราะห์, ลุ่มน้ำ, ${layername} ${fieldname}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากลุ่มน้ำ"});

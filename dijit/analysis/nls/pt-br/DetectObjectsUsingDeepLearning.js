@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Definir Objetos Utilizando Aprendizado Detalhado",outputLayerName:"${layername}_detected",modelLabel:"Escolha modelo de aprendizado detalhado utilizado para detectar objetos",modelArgsLabel:"Especifique os parâmetros do modelo de aprendizado detalhado",nameLabel:"Nome",valueLabel:"Valor",removeDuplicatesLable:"Remova feições duplicadas a partir da saída (opcional)",queryModelArgsMsg:"Consultando parâmetros de modelo...",queryModelArgsErrMsg:"Falha ao consultar parâmetros do modelo.",nonMaxSuppressionLabel:"Sem supressão máxima",options:"Opções",confidenceLabel:"Campo de pontuação de confiança",classValueLabel:"Campo de valor de classe",maxOverlapLabel:"Nível de sobreposição máximo",numberOnlyMsg:"Somente valores numéricos são permitidos.",analysisLayerLabel:"Escolher imagem utilizada para detectar objetos",itemDescription:"Serviço de Imagem de Análise gerada a partir de Detectar Objetos Utilizando Aprendizado Detalhado",itemTags:"Resultado de Análise Raster, Detectar Objetos Utilizando Aprendizado Detalhado, ${layername}",itemSnippet:"Serviço de Imagem de Análise gerada a partir de Detectar Objetos Utilizando Aprendizado Detalhado"});

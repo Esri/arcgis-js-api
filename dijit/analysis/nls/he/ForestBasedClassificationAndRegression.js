@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({modifiedTitle:"סיווג ורגרסיה על בסיס יער - ${goal}",train:"אימון",trainAndPredict:"אימון וחיזוי",selectGoal:"מה ברצונך לעשות?",trainGoal:"אימון המודל לצורך הערכת ביצועי המודל",trainAndPredictGoal:"אימון מודל וחיזוי ערכים",inFeaturesLabel:"בחר שכבה לאימון",variablePredictLabel:"בחר את השדה לחיזוי",categorical:"מוחלט",chooseExplanatoryField:"בחר לפחות שדה מסביר אחד",chooseFeaturesToPredict:"בחר שכבה לחיזוי ערכים",chooseExplainMatch:"בחר את אופן התאמת השדות המסבירים",options:"אפשרויות",advancedForestOptions:"אפשרויות מתקדמות של יער",numberOfTrees:"מספר העצים",minimumLeafSize:"גודל עלה מינימלי",maximumTreeDepth:"עומק עץ מקסימלי",sampleSize:"הנתונים הזמינים לכל עץ (%)",randomVariables:"מספר אקראי של משתני דגימה",variableConstraintMsg:"חייב להיות בין 1 לבין מספר המשתנים המסבירים.",validationOptions:"אפשרויות אימות",percentageForValidation:"נתוני אימון שלא נכללו לצורך אימות (%)",outputLayerName:"FBCR ${inFeaturesName}‎",itemDescription:"שכבת ישויות נוצרה מהרצת פתרונות של סיווג ורגרסיה על בסיס יער ${goal}.",itemTags:"תוצאת הניתוח, סיווג ורגרסיה על בסיס יער, ${inFeaturesName}, ${goal}",itemSnippet:"שכבת ישויות שנוצרה מהרצת סיווג ורגרסיה על בסיס יער ${goal}"});

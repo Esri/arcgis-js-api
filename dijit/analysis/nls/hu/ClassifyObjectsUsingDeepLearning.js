@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Objektumok osztályozása Deep Learning használatával",inputFeaturesLabel:"Válassza ki az objektumok vektoros rétegét (opcionális)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Válassza ki az objektumok osztályozásához használt deep learning modellt",modelArgsLabel:"Adja meg a deep learning modell argumentumait",classLabelFieldLabel:"Határoza meg az osztálycímke mezőnevét (opcionális)",processingModeLabel:"Feldolgozó mód",processAsMosaicLabel:"Feldolgozás mozaikos képként",processAsItemsLabel:"Valamennyi raszteres elem külön-külön feldolgozása",queryModelArgsMsg:"Modell argumentumainak lekérdezése...",queryModelArgsErrMsg:"Nem sikerült a modell argumentumainak lekérdezése.",valueLabel:"Érték",nameLabel:"Név",analysisLayerLabel:"Válassza ki az objektumok osztályozására szolgáló képet",itemDescription:"Deep Learning használatával történő objektumosztályozásból létrehozott elemzési raszteres szolgáltatás",itemTags:"Raszteres elemzés végeredménye, Objektumok osztályozása deep learning használatával, ${layername}",itemSnippet:"Deep Learning használatával történő objektumosztályozásból létrehozott elemzési raszteres szolgáltatás"});

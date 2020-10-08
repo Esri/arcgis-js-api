@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define(["../dom-style","../ElementBuilder","../StyleParser","esri/dijit/geoenrichment/utils/SVGUtil"],(function(t,e,i,r){function u(t){return Math.round(100*t)/100}return{drawSVG:function(s,l,n){var a=t.toPixelValue(s,s.getAttribute("x")),b=t.toPixelValue(s,s.getAttribute("y"));s.setAttribute("x",u(a+l.box.x)+"px"),s.setAttribute("y",u(b+l.box.y)+"px");var o=s.getAttribute("style")||"";if(o){s.setAttribute("style","");var y=i.parseStyleString(o);y.width&&s.setAttribute("width",y.width),y.height&&s.setAttribute("height",y.height)}var x=e.buildElement("g",{opacity:l.style.opacity,clipParams:n,transform:l.style.transform},r.getOuterHTML(s));return s.setAttribute("x",a+"px"),s.setAttribute("y",b+"px"),s.setAttribute("style",o),x}}}));
+define(["../dom-style","../ElementBuilder","../StyleParser","esri/dijit/geoenrichment/utils/SVGUtil"],(function(t,e,r,i){function u(t){return Math.round(100*t)/100}return{drawSVG:function(s,l,n){var a=t.toPixelValue(s,s.getAttribute("x")),b=t.toPixelValue(s,s.getAttribute("y")),o=u(a+l.box.x),y=u(b+l.box.y);s.setAttribute("x","0px"),s.setAttribute("y","0px");var x=s.getAttribute("style")||"";if(x){s.setAttribute("style","");var d=r.parseStyleString(x);d.width&&s.setAttribute("width",d.width),d.height&&s.setAttribute("height",d.height)}var g,h=i.getOuterHTML(s);(o||y)&&(g=e.buildElement("g",{transform:"translate("+o+" "+y+")"},h));var A=e.buildElement("g",{opacity:l.style.opacity,clipParams:n,transform:l.style.transform},g||h);return s.setAttribute("x",a+"px"),s.setAttribute("y",b+"px"),s.setAttribute("style",x),A}}}));

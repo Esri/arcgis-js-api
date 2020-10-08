@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({modifiedTitle:"الانحدار الخطي المعمم - ${goal}",fit:"ملاءمة",fitAndPredict:"الملاءمة والتنبؤ",selectGoal:"ما تود فعله؟",fitGoal:"ملاءمة نموذج لتقييم أداء النموذج",fitAndPredictGoal:"ملاءمة نموذج والتنبؤ بالقيم",inputLayerLabel:"اختيار طبقة لإنشاء نموذج من",chooseDependentField:"اختيار حقل لنمذجته",chooseDataType:"اختيار نوع بيانات الذي تقوم بنمذجتها.",continuousData:"مستمر",binaryData:"ثنائي",countData:"العدد",chooseExplanatoryField:"اختيار الحقول التوضيحية",chooseFeaturesToPredict:"اختيار طبقة للتنبؤ بالقيم من أجل",chooseExplainMatch:"اختيار كيفية تطابق الحقول التوضيحية",outputLayerName:"GLR ${inputLayerName}",itemDescription:"طبقة المعلم المنشأة من تشغيل حلول الانحدار الخطي المعمم ${goal}.",itemTags:"نتيجة التحليل، الانحدار الخطي المعمم، ${inputLayerName}، ${goal}",itemSnippet:"طبقة المعلم المنشأة من الانحدار الخطي المعمم ${goal}"});

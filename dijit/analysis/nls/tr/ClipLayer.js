@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kırpılacak detayları seçin",filterSelectLabel:"Tüm detayları kırp veya bir alt küme tanımla (isteğe bağlı)",targetArea:"Kırpılacak alanı seçin",outputLayerName:"${inputLayerName} katmanını ${clipLayerName} katmanına kırp",itemDescription:"Detay katmanı Kırpma çözümlerinin çalıştırılmasıyla oluşturuldu. ${inputLayerName} katmanından detaylar ${clipLayerName} katmanına kırpıldı.",itemTags:"Analiz Sonucu, Kırpma Katmanı, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Detay katmanı, Katmanı Kırp ile oluşturuldu"});

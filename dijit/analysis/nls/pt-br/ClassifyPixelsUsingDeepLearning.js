@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Classificar Pixels Utilizando Aprendizado Detalhado",outputLayerName:"${layername}_classified",modelLabel:"Escolha modelo de aprendizado detalhado utilizado para classificar pixels",modelArgsLabel:"Especifique os parâmetros do modelo de aprendizado detalhado",nameLabel:"Nome",valueLabel:"Valor",queryModelArgsMsg:"Consultando parâmetros de modelo...",queryModelArgsErrMsg:"Falha ao consultar parâmetros do modelo.",analysisLayerLabel:"Escolher imagem utilizada para classificar pixels",itemDescription:"Serviço de Imagem de Análise gerada a partir de Classificar Pixels Utilizando Aprendizado Detalhado",itemTags:"Resultado de Análise Raster, Classificar Pixels Utilizando Aprendizado Detalhado, ${layername}",itemSnippet:"Serviço de Imagem de Análise gerada a partir de Classificar Pixels Utilizando Aprendizado Detalhado"});

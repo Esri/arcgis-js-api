@@ -111,7 +111,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Centang  <b>Gunakan Lalu Lintas</b> untuk menemukan rute tercepat berdasarkan waktu mulai dan kondisi lalu lintas berubah yang diberikan. Dengan juga memilih opsi <b>Lalu lintas langsung</b>, waktu keberangkatan dari asal ditetapkan ke waktu saat ini, dan kecepatan lalu lintas saat ini serta yang diprediksikan direferensikan dari sensor dan umpan untuk membuat rute. Kecepatan lalu lintas yang diprediksikan dihitung dengan mereferensikan kecepatan lalu lintas langsung, riwayat kecepatan, dan peristiwa saat ini seperti misalnya cuaca. Kecepatan lalu lintas diprediksi 12 jam ke depan, sehingga Anda dapat menggerakkan bilah geser untuk menentukan waktu keberangkatan terlebih dahulu hingga  12 jam. </p>
+                        <p>Centang  <b>Gunakan Lalu Lintas</b> untuk menemukan rute tercepat berdasarkan waktu mulai dan kondisi lalu lintas berubah yang diberikan. Dengan juga memilih opsi <b>Lalu lintas langsung</b>, waktu keberangkatan dari asal ditetapkan ke waktu saat ini, dan kecepatan lalu lintas saat ini serta yang diprediksikan direferensikan dari sensor dan umpan untuk membuat rute. Kecepatan lalu lintas yang diprediksikan dihitung dengan mereferensikan kecepatan lalu lintas langsung, riwayat kecepatan, dan peristiwa saat ini seperti misalnya cuaca. Kecepatan lalu lintas diprediksikan 4 jam ke depan, sehingga Anda dapat menggeser panel geser untuk mengatur waktu keberangkatan ke depan hingga  4 jam. </p>
                         <p>Gunakan pengaturan lalu lintas langsung ini untuk menemukan waktu mengemudi untuk keberangkatan sekarang, berangkat dalam satu jam dari sekarang, dan seterusnya.
                         </p>
                     </li>
@@ -137,6 +137,8 @@
         <hr/>
         <div>
             <p> Satu atau lebih fitur yang bertindak sebagai pembatas sementara (penghalang) saat melakukan perjalanan di jalan mendasar. Anda dapat menentukan penghalang menggunakan fitur titik, garis, atau poligon.
+            </p>
+            <p>  <b>Pilih layer penghalang</b> tersedia saat mode perjalanan digunakan sebagai parameter <b>Ukur</b>. Jika <b>Jarak garis</b> digunakan, <b>Pilih layer penghalang</b> akan dinonaktifkan.
             </p>
             <p>Penghalang titik dapat merepresentasikan pohon tumbang, kecelakaan, tiang listrik tumbang, atau apa pun yang memblokir lalu lintas secara menyeluruh pada posisi tertentu di sepanjang jalan. Perjalanan diperbolehkan di jalan tetapi tidak melewati penghalang. Anda dapat menemukan hingga 250 fitur untuk bertindak sebagai penghalang titik.
             </p>
@@ -169,7 +171,7 @@
         <div>
             <p>Ini adalah nama feature layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Jika feature layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain. Feature layer akan berisi layer untuk masing-masing berikut: rute, asal yang belum ditentukan, dan tujuan yang belum ditentukan ketika beberapa asal tidak dapat dihubungkan dengan tujuannya.
             </p>
-            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individu dengan anggota lain di organisasi Anda atau untuk memodifikasi rute lebih lanjut dengan menggunakan tombol <b>Arah</b> pada penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, yang ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
+            <p>Jika Anda pilih  <b>Sertakan layer rute</b>, masing-masing rute dari hasil juga disimpan sebagai layer rute. Layer rute menyertakan seluruh informasi untuk rute tertentu seperti perhentian yang ditetapkan ke rute juga arah perjalanan. Membuat layer rute bermanfaat jika Anda ingin membagikan rute individual dengan anggota lain dalam organisasi Anda atau untuk lebih lanjut memodifikasi rute menggunakan tombol <b>Arah</b> dalam penampil peta. Layer rute menggunakan nama yang diberikan untuk feature layer sebagai awalan dan nama rute yang dihasilkan sebagai bagian dari analisis, yang ditambahkan untuk membuat nama unik untuk masing-masing layer rute.
             </p>
             <p>Jumlah maksimum layer rute yang dapat dibuat adalah 1.000. Jika hasil berisi lebih dari 1.000 rute dan  <b>Sertakan layer rute</b> dicentang, maka alat hanya akan membuat feature service output.
             </p>

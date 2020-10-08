@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Pilih Layer Analisis Living Atlas",customAnalysisLayerTitle:"Piilih Layer Analisis",searchPlaceholderText:"Cari layer analisis Living Atlas",searchCustomPlaceholderText:"Cari layer analisis",mainActionTitle:"Pilih",customActionName:"Pilih dan tambahkan ke peta",customeSectionName:"Layer Analisis Living Atlas",Categories:"Kategori",boundaries:"Batas",places:"Tempat",boundariesAndPlaces:"Batas dan Tempat",hexbins:"Hexbin",transportation:"Transportasi",point:"Layer Titik",line:"Layer Polyline",polygon:"Layer Poligon",pointFilterName:"Titik",lineFilterName:"Polyline",polygonFilterName:"Poligon",multiPointFilterName:"Multi Titik",geometryFilterName:"Geometri",featureLayerName:"Feature Layer",tableLayerName:"Tabel",itemTypeFilterName:"Jenis item",instantFilterName:"Instan",intervalFilterName:"Interval",timeFilterName:"Waktu",edit:"Edit",boundaryLayers:"Layer Batas Esri",customAnalysisGroupName:"Grup Analisis Organisasi"});

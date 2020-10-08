@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({distToNearest:"Attālums līdz vistuvākajam",attrOfInterest:"Atribūts līdz vistuvākajam",summaryNearby:"Kopsavilkums līdz tuvāk esošajam",summaryIntersecting:"Šķērsojumu kopsavilkums",distToNearestLabel:"Attālums no nodalījuma centra līdz vistuvākajam elementam ievades slānī",attrOfInterestLabel:"Vērtība no norādītā lauka no vistuvākā elementa ievades slānī",summaryNearbyLabel:"Atrasts visu elementu statistikas aprēķins ar nodalījuma centra norādīto attālumu",summaryIntersectingLabel:"Aprēķinātā statistika visiem elementiem, kas šķērso nodalījumu",maxDistancefromCtr:"Maksimālais attālums no nodalījuma centra",fieldToIncude:"Iekļaujamais lauks",statstoCalculate:"Aprēķināmā statistika",summFeatuesWithin:"Apkopot elementus:",smallMaxDistErrorMsg:"Maksimālajam attālumam no nodalījuma centra jābūt lielākam par nodalījuma lielumu.",smallSumFeaturesErrorMsg:"Maksimālajam attālumam no nodalījuma centra jābūt lielākam par nodalījuma lielumu."});

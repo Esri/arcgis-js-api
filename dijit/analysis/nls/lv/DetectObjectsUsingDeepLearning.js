@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Funkcija Definēt objektus, izmantojot Deep Learning",outputLayerName:"${layername}_detected",modelLabel:"Izvēlieties deep learning modeli, objektu noteikšanai",modelArgsLabel:"Norādiet Deep Learning modeļa argumentus",nameLabel:"Vārds/nosaukums",valueLabel:"Vērtība",removeDuplicatesLable:"Noņemt elementu dublikātus no izvades (pēc izvēles)",queryModelArgsMsg:"Notiek modeļa argumentu vaicājumu izveide...",queryModelArgsErrMsg:"Neizdevās veikt modeļa argumentu vaicājumus.",nonMaxSuppressionLabel:"Slāpēšana (suppression) nav maksimāla",options:"Iespējas",confidenceLabel:"Ticamības rezultāta lauks",classValueLabel:"Klases vērtību lauks",maxOverlapLabel:"Maksimālā pārklājuma attiecība",numberOnlyMsg:"Ir atļautas tikai skaitliskas vērtības.",analysisLayerLabel:"Izvēlieties objektu noteikšanai izmantoto attēlu",itemDescription:"Analīzes attēla serviss, kas ģenerēts no funkcijas Noteikt objektus, izmantojot Deep Learning",itemTags:"Rastra analīzes rezultāts, Noteikt objektus, izmantojot Deep Learning, ${layername}",itemSnippet:"Analīzes attēla serviss, kas ģenerēts no funkcijas Noteikt objektus, izmantojot Deep Learning"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Kies analyselaag Levende Atlas",customAnalysisLayerTitle:"Analyselaag kiezen",searchPlaceholderText:"Analyselagen Levende Atlas zoeken",searchCustomPlaceholderText:"Analyselagen zoeken",mainActionTitle:"Selecteren",customActionName:"Selecteren en toevoegen aan kaart",customeSectionName:"Analyselagen Levende Atlas",Categories:"Categorieën",boundaries:"Grenzen",places:"Plaatsen",boundariesAndPlaces:"Grenzen en plaatsen",hexbins:"Hexbins",transportation:"Transport",point:"Puntlagen",line:"Polylijnlagen",polygon:"Polygoonlagen",pointFilterName:"Punt",lineFilterName:"Polylijn",polygonFilterName:"Vlak",multiPointFilterName:"Multi-punten",geometryFilterName:"Geometrie",featureLayerName:"Objectlaag",tableLayerName:"Tabel",itemTypeFilterName:"Itemtype",instantFilterName:"Direct",intervalFilterName:"Interval",timeFilterName:"Tijd",edit:"Bewerken",boundaryLayers:"Grenslagen van Esri",customAnalysisGroupName:"Analysegroep van de organisatie"});

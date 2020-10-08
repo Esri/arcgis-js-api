@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Çok Boyutlu Rasterı Kümele",outputLayerName:"${layername}_kümelenmiş",dimensionLabel:"Kümelenecekler boyunca boyutu seçin",variablesLabel:"Kümelenecek değişkenleri seçin",variablesListLabel:"Değişkenler [Boyut Bilgisi] (Açıklama)",aggregationMethodLabel:"Kümeleme yöntemini seçin",aggregationFunctionLabel:"Raster fonksiyonu şablonunu seçin",aggregationDefinitionLabel:"Kümeleme tanımını seçin",intervalKeywordLabel:"Anahtar sözcük aralığını seçin",intervalValueLabel:"Değer aralığı",intervalUnitLabel:"Birim",intervalRangesLabel:"Aralıkları tanımla",ignoreNodataLabel:"Hesaplamadaki eksik değerleri yoksay",ignore:"Yoksay",intervalKeyword:"Aralık Anahtar Sözcüğü",intervalValue:"Aralık Değeri",intervalRanges:"Aralık Değer Grubu Aralıkları",all:"Tümü",hourly:"Saatlik",daily:"Günlük",weekly:"Haftalık",monthly:"Aylık",quarterly:"Çeyreklik",recurringDaily:"Her gün tekrarlanır",recurringWeekly:"Haftada bir tekrarlanır",recurringMonthly:"Ayda bir tekrarlanır",recurringQuarterly:"Üç ayda bir tekrarlanır",yearly:"Yıllık",hours:"Saat",days:"Gün",weeks:"Hafta",months:"Ay",years:"Yıl",custom:"Özel",minimumValueLabel:"Minimum değer",maximumValueLabel:"Maksimum değer",analysisLayerLabel:"Kümelenecek çok boyutlu görüntü katmanını seçin",itemDescription:"Çok Boyutlu Rasterı Kümele ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analizi Sonucu, Çok Boyutlu Rasterı Kümele, ${layername}",itemSnippet:"Çok Boyutlu Rasterı Kümele ile oluşturulan Analiz Görüntü Servisi"});

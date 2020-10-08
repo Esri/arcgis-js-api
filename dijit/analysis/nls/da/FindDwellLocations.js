@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg det lag, der skal findes boliger i",selectTracksLabel:"Vælg ét eller flere felter for at identificere spor",defineDistanceLabel:"Definer den spatiale søgeafstand",distMethodLabel:"Vælg metoden til at beregne afstand",temporalSearchLabel:"Definer det tidsmæssige søgeområde",outputDwellLabel:"Output boliger som",outputLayerName:"Find boliger for ${inputLayerName}",meanCenters:"Middel-centre",convexHulls:'Konveks "hull"',dwellFeatures:"Bolig-objekter",allFeatures:"Alle objekter",itemDescription:"Vektorlag genereret ud fra kørsel af Find boliger-løsningen for ${inputLayerName}.",itemTags:"Analyseresultat, Find boliger, ${inputLayerName}",itemSnippet:"Vektorlag genereret ud fra Find boliger",timeIntervalSplit:"Analysér data med tidsintervaller (valgfri)",timeBoundaryValidationMsg:"Tidsintervallet skal være større end det tidsmæssige søgeområde."});

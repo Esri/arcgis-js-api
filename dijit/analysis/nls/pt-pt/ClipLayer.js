@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher elementos a recortar",filterSelectLabel:"Recortar todos os elementos ou definir um subconjunto (opcional)",targetArea:"Escolher área a recortar para",outputLayerName:"Recortar ${inputLayerName} para ${clipLayerName}",itemDescription:"Camada de elementos gerada através da execução da solução Recortar. Elementos de ${inputLayerName} foram recortados para ${clipLayerName}.",itemTags:"Resultado da análise, Camada do recorte, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Camada de elementos gerada a partir de Camada de recorte"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({distToNearest:"Distância até ao Mais Próximo",attrOfInterest:"Atributo de Mais Próximo",summaryNearby:"Resumo de Próximo",summaryIntersecting:"Resumo de Interseção",distToNearestLabel:"A distância do centro da caixa até ao elemento mais próximo na camada de entrada",attrOfInterestLabel:"O valor de um campo especificado desde o elemento mais próximo a partir da camada de entrada",summaryNearbyLabel:"Uma estatística calculada para todos os elementos encontrada com a distância definida a partir do centro da caixa",summaryIntersectingLabel:"Uma estatística calculada para todos os elementos que intersetam a caixa",maxDistancefromCtr:"Distância máxima a partir do centro da caixa",fieldToIncude:"Campo para incluir",statstoCalculate:"Estatística para calcular",summFeatuesWithin:"Resumir elementos contidos em",smallMaxDistErrorMsg:"A distância máxima a partir do centro da caixa tem de ser superior ao tamanho da caixa.",smallSumFeaturesErrorMsg:"A distância máxima a partir do centro da caixa tem de ser superior ao tamanho da caixa."});

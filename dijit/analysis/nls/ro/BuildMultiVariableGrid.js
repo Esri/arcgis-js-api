@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({binsLabel:"Alegeți un tip de containere care vor fi utilizate pentru a construi o grilă cu variabile multiple",layersAttrLabel:"Alegeți straturi tematice de intrare și variabile pe care ați dori să le includeți în grilă",itemDescription:"Strat tematic de obiecte spațiale din rularea opțiunii Construire grilă cu variabile multiple.",itemTags:"Rezultatul analizei, Construire grilă cu variabile multiple",itemSnippet:"Strat tematic de obiecte spațiale generat din grila de construcție cu variabile multiple",addVariables:"Adăugați variabile"});

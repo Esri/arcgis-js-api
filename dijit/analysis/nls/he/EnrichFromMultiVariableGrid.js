@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"בחר את הישויות הנקודתיות שברצונך להעשיר",chooseMVgridLyrLabel:"בחר את הגריד מרובה-המשתנים שלפיו ברצונך לבצע את ההעשרה",chooseVariables:"בחר את המשתנים להוספה",outputLayerName:"Enriched ${inputFeatures} מ- ${gridLayer}",itemDescription:"שכבת ישויות שנוצרה מהרצה של 'העשרה מפתרון של גריד מרובה-משתנים' עבור ${inputFeatures}.",itemTags:"תוצאת הניתוח, העשרה מגריד מרובה-משתנים, ${inputFeatures}, ${gridLayer}",itemSnippet:"שכבת הישויות שנוצרה באמצעות 'העשרה מגריד מרובה-משתנים'."});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({binsLabel:"Selecione o tipo de caixas que serão utilizadas para construir a grelha multivariável",layersAttrLabel:"Selecione camadas de entrada e variáveis que pretende incluir na grelha",itemDescription:"Camada de elementos gerada a partir da execução de Construir Grelha Multivariável.",itemTags:"Resultado de Análise, Construir Grelha Multivariável",itemSnippet:"Camada de elementos gerada a partir de Construir Grelha Multivariável.",addVariables:"Adicionar variáveis"});

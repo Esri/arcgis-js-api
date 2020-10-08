@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({_widgetLabel:"Coğrafi İşlem",_featureAction_ReceiveFeatureSet:"Şunun girdisi olarak ayarla: ",requiredInfo:"gereklidir.",drawnOnMap:"Sonuç haritada çizilidir.",noToolConfig:"Önceden yapılandırılmış coğrafi işlem görevi yok.",useUrlForGPInput:"URL",useUploadForGPInput:"Dosya yükle",useImageServiceLayer:"Görüntü servis katmanı",useBrowseLayerPortal:"Portala Gözat / Portaldan Seç",selectFileToUpload:"Dosya seç...",rasterFormat:"Raster veri formatı",noFileSelected:"Dosya seçilmedi!",uploadSuccess:"Dosya yükleme başarılı!",showLayerContent:"Katman içeriğini göster",invalidUrl:"Geçersiz detay servisi url’si",urlPlaceholder:"detay kümesi URL'si",addShapefile:"Shapefile Ekle",generateShapefileError:"Shapefile hatası oluştu, kontrol edin: ",cleared:"Sonuç silindi.",enlargeView:"Görünümü genişlet",exportOutput:"Dışa Aktar",emptyResult:"Sonuç boş.",useSelectedFeatureset:"Sonuçta ortaya çıkan detayları kullan.",closeSelectedFeatureset:"Temizle ve yapılandırılmış girdi seçeneğini kullan."});

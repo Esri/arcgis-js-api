@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Aggreger flerdimensjonalt raster",outputLayerName:"${layername}_aggregated",dimensionLabel:"Velg dimensjonen det skal aggregeres langs",variablesLabel:"Velg variabelen(e) som skal aggregeres",variablesListLabel:"Variabler [Dimension Info] (Beskrivelse)",aggregationMethodLabel:"Velg aggregeringsmetode",aggregationFunctionLabel:"Velg en rasterfunksjonsmal",aggregationDefinitionLabel:"Velg aggregeringsdefinisjon",intervalKeywordLabel:"Velg nøkkelordintervall",intervalValueLabel:"Verdiintervall",intervalUnitLabel:"Enhet",intervalRangesLabel:"Definer områder",ignoreNodataLabel:"Ignorer manglende verdier i beregningen",ignore:"Ignorer",intervalKeyword:"Intervallnøkkelord",intervalValue:"Intervallverdi",intervalRanges:"Intervallområder",all:"Alt",hourly:"Hver time",daily:"Daglig",weekly:"Ukentlig",monthly:"Månedlig",quarterly:"Kvartalsvis",recurringDaily:"Daglig",recurringWeekly:"Ukentlig",recurringMonthly:"Månedlig",recurringQuarterly:"Kvartalsvis",yearly:"Årlig",hours:"Timer",days:"Dager",weeks:"Uker",months:"Måneder",years:"År",custom:"Tilpasset",minimumValueLabel:"Minimumsverdi",maximumValueLabel:"Maksimumsverdi",analysisLayerLabel:"Velg flerdimensjonalt bildelag som skal aggregeres",itemDescription:"Analysebildetjeneste generert fra Aggreger flerdimensjonalt raster",itemTags:"Rasteranalyseresultat, Aggreger flerdimensjonalt raster,  ${layername}",itemSnippet:"Analysebildetjeneste generert fra Aggreger flerdimensjonalt raster"});

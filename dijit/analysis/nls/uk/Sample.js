@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Зразок",outputLayerName:"${layername}_взяття вибірки",locationLayer:"Вибрати шар місця розташування",uniqueIDField:"Вказати поле унікального ідентифікатора",acquisitionDefinition:"Вказати інформацію щодо отримання даних про місце розташування (додатково)",acquisitionDimension:"Вказати -вимір (-и) та формат інформації про отримання (додатково)",buffer:"Вказати поле або значення буферної відстані",formatOptions:"Опції формату",dimensionField:"Поле або значення виміру",dimensionFieldOrValue:"Поле або значення виміру",relativeDaysBefore:"Відносне значення до",relativeDaysAfter:"Відносне значення після",singleFieldOrValue:"Окреме поле або значення",singleFieldWithRelativeValues:"Окреме поле або значення з відносними значеннями",startEndFieldsOrValues:"Початкові або кінцеві поля чи значення",startFieldOrValue:"Початкове поле або значення",endFieldOrValue:"Кінцеве поле або значення",statisticsType:"Вибрати тип статистики",percentile:"Процентиль",percentileValue:"Процентильне значення",resample:"Вказати метод перерахування",nearest:"Найближчий",bilinear:"Білінійній",cubic:"Кубічний",outputLayout:"Вказати вихідне компонування",layoutRow:"Вибіркові значення відображаються у рядку",layoutColumn:"Вибіркові значення відображаються у стовпці",outputType:"Вказати тип вихідних даних",features:"Об’єкти",table:"Таблиця",removeLayer:"Вилучити шар",dimensionError:"Не вдалося завантажити інформацію про вимір Всі змінні поминні мати однаковий вимір(-и)",analysisLayerLabel:"Вибрати щар(-и) зображень для вибірки",itemDescription:"Аналітичний сервіс зображень, згенерований з вибірки",itemTags:"Результат растрового аналізу, вибірка ${layername}",itemSnippet:"Аналітичний сервс зображень, згенерований з вибірки"});

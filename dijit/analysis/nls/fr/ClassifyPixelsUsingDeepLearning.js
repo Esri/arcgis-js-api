@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({toolDefine:"Classer des pixels à l’aide de l’apprentissage en profondeur",outputLayerName:"${layername}_classée",modelLabel:"Choisir le modèle d’apprentissage profond utilisé pour classer les pixels",modelArgsLabel:"Spécifier les arguments du modèle d’apprentissage profond",nameLabel:"Nom",valueLabel:"Valeur",queryModelArgsMsg:"Interrogation des arguments du modèle...",queryModelArgsErrMsg:"Échec de l’interrogation des arguments du modèle.",analysisLayerLabel:"Choisir l’image utilisée pour classer les pixels",itemDescription:"Service d’imagerie d’analyse généré avec Classer les pixels à l’aide de l’apprentissage profond",itemTags:"Résultat d’analyse raster, Classer les pixels à l’aide de l’apprentissage profond, ${layername}",itemSnippet:"Service d’imagerie d’analyse généré avec Classer les pixels à l’aide de l’apprentissage profond"});
+define({toolDefine:"Classer des pixels à l’aide du Deep Learning",outputLayerName:"${layername}_classée",modelLabel:"Choisir le modèle de Deep Learning utilisé pour classer les pixels",modelArgsLabel:"Spécifier les arguments du modèle de Deep Learning",nameLabel:"Nom",valueLabel:"Valeur",queryModelArgsMsg:"Interrogation des arguments du modèle...",queryModelArgsErrMsg:"Échec de l’interrogation des arguments du modèle.",analysisLayerLabel:"Choisir l’image utilisée pour classer les pixels",itemDescription:"Service d’imagerie d’analyse généré avec Classer les pixels à l’aide du Deep Learning",itemTags:"Résultat d’analyse raster, Classer les pixels à l’aide du Deep Learning, ${layername}",itemSnippet:"Service d’imagerie d’analyse généré avec Classer les pixels à l’aide du Deep Learning"});

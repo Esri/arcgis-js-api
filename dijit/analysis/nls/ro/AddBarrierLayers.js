@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({addBarriers:"Selectare straturi tematice tip barieră",pointBarrier:"Bariere punctuale",lineBarrier:"Bariere liniare",polygonBarrier:"Bariere poligonale",choosePointBarrier:"Alegere strat tematic tip barieră punctuală",chooseLineBarrier:"Alegere strat tematic tip barieră liniară",choosePolygonBarrier:"Alegere strat tematic tip barieră poligonală",selectPointBarrier:"Selectare bariere punctuale",selectLineBarrier:"Selectare bariere liniare",selectPolygonBarrier:"Selectare bariere poligonale"});

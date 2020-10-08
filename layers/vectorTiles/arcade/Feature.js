@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["require","exports","esri/arcade/Feature"],(function(e,t,i){return i.prototype.repurposeFromGraphicLikeObject=function(e,t,i){void 0===i&&(i=null),null===t&&(t={}),this.attributes=t,this.geometry=e,this._layer=i,this._layer?this._datesfixed=!1:this._datesfixed=!0},i}));

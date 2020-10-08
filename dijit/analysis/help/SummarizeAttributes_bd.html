@@ -40,12 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="largesize">
         <h2>Summarize Attributes</h2><p/>
         <h2><img src="./images/GUID-F64B533F-B0BB-4519-9F31-BCF814084999-web.png" alt="Summarize Attributes diagram"></h2>
         <hr/>
     <p> This tool summarizes all the matching values in one or more fields and calculates statistics on them. The
-most basic statistic is the count of features that have been summarized together, but you can calculate more advanced statistics as well.
+most basic statistic is the count of features that have been summarized together, but you can calculate more advanced statistics as well. 
+You can optionally chose to summarize into time steps, or summarize all features without grouping them.
     </p>
     <p>For example, suppose you have point features of store locations with a field representing the  <i>DISTRICT_MANAGER_NAME</i>, and you want to summarize coffee sales by manager. You can specify the field <i>DISTRICT_MANAGER_NAME</i> as the field to dissolve on, and all rows of data representing individual managers will be summarized. This means all store locations that are managed by <pre>Manager1</pre> will be summarized into one row, with summary statistics calculated. In this instance, statistics like the count of the number of stores and the sum of <i>TOTAL_SALES</i> for all stores that <pre>Manager1</pre> manages would be calculated, as well as for any other manager listed in the <i>DISTRICT_MANAGER_NAME</i> field.
     </p>
@@ -110,7 +111,58 @@ most basic statistic is the count of features that have been summarized together
                     <li>Any&mdash;This statistic is a random sample of a string value in the specified field.
                     </li>
                 </ul>
-                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic. 
+                All statistics are calculated on nonnull values. The resulting layer will contain a new field for each statistic calculated. Any number of statistics can be added by choosing an attribute and statistic.
+            </p>
+        </div>
+    </div>
+    <div id="timeSlicing">
+        <div><h2>Summarize using time steps (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>If time is enabled on the input layer and it is of type instant, you can  analyze using time stepping.  There are three parameters you can set when you use time:
+                <ul>
+                    <li> <b>Time step interval</b>
+                    </li>
+                    <li> <b>How often to repeat the time step</b>
+                    </li>
+                    <li> <b>Time to align the time steps to</b>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to <code>1 week</code>. 
+            </p>
+            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeInterval">
+        <div><h2>Time step interval</h2></div>
+        <hr/>
+        <div>
+            <p>The interval of time used for generating time steps.  <b>Time step interval</b> can be used alone or with the <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameter.
+            </p>
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeStep">
+        <div><h2>How often to repeat the time step</h2></div>
+        <hr/>
+        <div>
+            <p> The step used for calculating a time step. <b>How often to repeat the time step</b> can be used alone, with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
+            </p>
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            </p>
+        </div>
+    </div>
+    <div id="timeReference">
+        <div><h2>Time to align time steps to</h2></div>
+        <hr/>
+        <div>
+            <p>The date and time used to align time slicing. Time stepping will start at and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
+            </p>
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
             </p>
         </div>
     </div>

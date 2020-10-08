@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Välj dataset att beskriva",describeDataLabel:"Förstå dina data genom att skapa ett (valfritt)",sampleLayer:"Exempellager",extentLayer:"Utbredningslager",noOfFeaturesLabel:"Antal geoobjekt som inkluderas",outputLayerName:"Resultatlagrets namn",resultName:"Beskriv data för ${layerName}",itemDescription:"Geoobjektlager skapat från körning av Beskriv dataset på ${layerName}. ",itemTags:"Analysresultat, Beskriv dataset, ${layerName}",itemSnippet:"Geoobjektlager skapat från Beskriv dataset."});

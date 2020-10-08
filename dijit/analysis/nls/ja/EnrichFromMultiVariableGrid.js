@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"情報を付加するポイント フィーチャの選択",chooseMVgridLyrLabel:"情報付加に使用する多変数グリッドの選択",chooseVariables:"追加する変数の選択",outputLayerName:"${gridLayer} から ${inputFeatures} に情報を付加しました",itemDescription:"${inputFeatures} に対して [多変数グリッドから情報付加 (Enrich From Multi-Variable Grid)] ソリューションを実行して生成されたフィーチャ レイヤー。",itemTags:"解析結果、多変数グリッドから情報付加 (Enrich From Multi-Variable Grid)、${inputFeatures}、${gridLayer}",itemSnippet:"[多変数グリッドから情報付加] から生成されたフィーチャ レイヤー。"});

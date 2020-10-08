@@ -2981,6 +2981,25 @@
           ]
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["horizontal_factor"],
+          "triggerArguments": ["in_horizontal_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        },
+        {
+          "argumentNames": ["vertical_factor"],
+          "triggerArguments": ["in_vertical_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        }
+      ]
     }
   },
   "PathBackLink": {
@@ -3166,6 +3185,25 @@
           ]
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["horizontal_factor"],
+          "triggerArguments": ["in_horizontal_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        },
+        {
+          "argumentNames": ["vertical_factor"],
+          "triggerArguments": ["in_vertical_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        }
+      ]
     }
   },
   "PathAllocation": {
@@ -3367,6 +3405,25 @@
           ]
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["horizontal_factor"],
+          "triggerArguments": ["in_horizontal_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        },
+        {
+          "argumentNames": ["vertical_factor"],
+          "triggerArguments": ["in_vertical_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        }
+      ]
     }
   },
   "EucDistance": {
@@ -4404,6 +4461,12 @@
               "inputArgs": [
                 {
                   "required": true,
+                  "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+                  "hidden": false,
+                  "allowScalar": true
+                },
+                {
+                  "required": true,
                   "displayName": "${rasterFunctions.rfxArgs.trueRasterName}",
                   "hidden": false,
                   "allowScalar": true
@@ -4411,12 +4474,6 @@
                 {
                   "required": true,
                   "displayName": "${rasterFunctions.rfxArgs.falseRasterName}",
-                  "hidden": false,
-                  "allowScalar": true
-                },
-                {
-                  "required": true,
-                  "displayName": "${rasterFunctions.rfxArgs.raster3Name}",
                   "hidden": false,
                   "allowScalar": true
                 }
@@ -4433,7 +4490,7 @@
                 },
                 {
                   "required": true,
-                  "displayName": "${rasterFunctions.rfxArgs.raster2Name}",
+                  "displayName": "${rasterFunctions.rfxArgs.falseRasterName}",
                   "hidden": false,
                   "allowScalar": true
                 }
@@ -6403,6 +6460,25 @@
           ]
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["horizontal_factor"],
+          "triggerArguments": ["in_horizontal_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        },
+        {
+          "argumentNames": ["vertical_factor"],
+          "triggerArguments": ["in_vertical_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        }
+      ]
     }
   },
   "DistanceAccumulation": {
@@ -6592,6 +6668,25 @@
           ]
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["horizontal_factor"],
+          "triggerArguments": ["in_horizontal_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        },
+        {
+          "argumentNames": ["vertical_factor"],
+          "triggerArguments": ["in_vertical_raster"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFactorFunctionEditor"
+          }
+        }
+      ]
     }
   },
   "Shrink": {

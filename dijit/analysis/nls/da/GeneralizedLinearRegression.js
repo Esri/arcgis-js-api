@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generaliseret lineær regression - ${goal}",fit:"Tilpas",fitAndPredict:"Tilpas og forudsig",selectGoal:"Hvad vil du gerne gøre?",fitGoal:"Tilpas en model for at vurdere modelydelsen",fitAndPredictGoal:"Tilpas en model, og forudsig værdier",inputLayerLabel:"Vælg et lag, som en model skal genereres ud fra",chooseDependentField:"Vælg det felt, der skal modelleres",chooseDataType:"Vælg den type data, som du modellerer",continuousData:"Kontinuerlig",binaryData:"Binær",countData:"Tælling",chooseExplanatoryField:"Vælg forklarende felter",chooseFeaturesToPredict:"Vælg et lag, som der skal forudsiges værdier for",chooseExplainMatch:"Vælg, hvordan forklarende felter skal matches",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Vektorlag, der genereres ud fra kørsel af Generaliseret lineær regression ${goal}-løsningerne.",itemTags:"Analyseresultat, Generaliseret lineær regression, ${inputLayerName}, ${goal}",itemSnippet:"Vektorlag, der genereres ud fra kørsel af Generaliseret lineær regression (${goal})"});

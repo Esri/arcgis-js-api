@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({toolDefine:"Trend Rasterı Oluştur",outputLayerName:"${layername}_trend",dimensionLabel:"Analiz edilecek değişken trendi boyunca boyut seçin",variablesLabel:"Trendi analiz etmek için değişkenleri seçin",variablesListLabel:"Değişkenler [Boyut Bilgisi] (Açıklama)",trendLineTypeLabel:"Boyut boyunca değişken değerlere uyacak çizgi türünü seçin",linear:"Çizgisel",harmonic:"Harmonik",polynomial:"Polinom",cycleLength:"Harmonik döngünün uzunluğunu belirtin",cycleUnit:"Harmonik döngü uzunluğunun zaman birimini seçin",years:"Yıl",days:"Günler",frequencyLabel:"Harmonik trendin uyacağı sıklık sayısını belirtin",polynomialOrderLabel:"Trendin uyacağı polinominal derece sayısını belirtin",modelStatistics:"Trend rasterına dahil edilecek model istatistiklerini seçin",rmse:"RMSE",r2:"R-kare",slopePValue:"Eğim katsayısının P değeri",ignoreNodataLabel:"Hesaplamadaki eksik değerleri yoksay",ignore:"Yoksay",analysisLayerLabel:"Trendi analiz etmek için çok boyutlu görüntü katmanı seçin",itemDescription:"Trend Rasterı Oluştur ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analizi Sonucu, Trend Rasterı Oluştur, ${layername}",itemSnippet:"Trend Rasterı Oluştur ile oluşturulan Analiz Görüntü Servisi"});
+define({toolDefine:"Trend Rasterı Oluştur",outputLayerName:"${layername}_trend",dimensionLabel:"Analiz edilecek değişken trendi boyunca boyut seçin",variablesLabel:"Trendi analiz etmek için değişkenleri seçin",variablesListLabel:"Değişkenler [Boyut Bilgisi] (Açıklama)",trendLineTypeLabel:"Boyut boyunca değişken değerlere uyacak çizgi türünü seçin",linear:"Çizgisel",harmonic:"Harmonik",polynomial:"Polinom",mannKendall:"Mann-Kendall",seasonalKendall:"Mevsimsel-Kendall",seasonalPeriod:"Mevsimsel dönemin uzunluğu için zaman birimini belirt",cycleLength:"Harmonik döngünün uzunluğunu belirtin",cycleUnit:"Harmonik döngü uzunluğunun zaman birimini seçin",years:"Yıl",days:"Günler",months:"Aylar",frequencyLabel:"Harmonik trendin uyacağı sıklık sayısını belirtin",polynomialOrderLabel:"Trendin uyacağı polinominal derece sayısını belirtin",modelStatistics:"Trend rasterına dahil edilecek model istatistiklerini seçin",rmse:"RMSE",r2:"R-kare",slopePValue:"Eğim katsayısının P değeri",ignoreNodataLabel:"Hesaplamadaki eksik değerleri yoksay",ignore:"Yoksay",analysisLayerLabel:"Trendi analiz etmek için çok boyutlu görüntü katmanı seçin",itemDescription:"Trend Rasterı Oluştur ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analizi Sonucu, Trend Rasterı Oluştur, ${layername}",itemSnippet:"Trend Rasterı Oluştur ile oluşturulan Analiz Görüntü Servisi"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({chooseShape:"Choisir une forme",defineExtent:"Définir l'étendue",defineBin:"Définir la taille du groupe en spécifiant",area:"Superficie",distance:"Distance",resultLayerName:"Nom de la couche de résultat",hexagon:"Hexagone",transverseHexagon:"Hexagone transversal",square:"Carré",triangle:"Triangle",diamond:"Losange",sameAsDisplay:"Identique à l'affichage",emptyBinSize:"Vous devez indiquer la taille du groupe",currentExtent:"étendue actuelle",intersectExtent:"Converser uniquement les tessellations d’intersection",outputLayerName:"Générer des tessellations sur ${extentLayerName}",itemDescription:"L’étendue de ${extentLayerName} a été utilisée.",itemTags:"Résultat d’analyse, Générer des tessellations, ${extentLayerName}",itemSnippet:"Couche d’entités générée avec Générer des tessellations"});
+define({chooseShape:"Choisir une forme",defineExtent:"Définir l’étendue",defineBin:"Définir la taille du groupe en spécifiant",area:"Superficie",distance:"Distance",resultLayerName:"Nom de la couche de résultat",hexagon:"Hexagone",transverseHexagon:"Hexagone transversal",square:"Carré",triangle:"Triangle",diamond:"Losange",sameAsDisplay:"Identique à l’affichage",emptyBinSize:"Vous devez indiquer la taille du groupe",currentExtent:"étendue actuelle",intersectExtent:"Converser uniquement les tessellations d’intersection",outputLayerName:"Générer des tessellations sur ${extentLayerName}",itemDescription:"L’étendue de ${extentLayerName} a été utilisée.",itemTags:"Résultat d’analyse, Générer des tessellations, ${extentLayerName}",itemSnippet:"Couche d’entités générée avec Générer des tessellations"});

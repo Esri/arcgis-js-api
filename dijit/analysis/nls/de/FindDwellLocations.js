@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define({inputLayerLabel:"Den Layer auswählen, in dem nach Verweilorten gesucht werden soll",selectTracksLabel:"Mindestens ein Feld zum Identifizieren von Tracks auswählen",defineDistanceLabel:"Räumliche Suchentfernung definieren",distMethodLabel:"Methode zum Berechnen der Entfernung auswählen",temporalSearchLabel:"Zeitlichen Suchbereich definieren",outputDwellLabel:"Verweilorte ausgeben als",outputLayerName:"Für ${inputLayerName} nach Verweilorten suchen",meanCenters:"Mittelwerte für Mittelpunkte",convexHulls:"Konvexe Hüllen",dwellFeatures:"Verweilfeatures",allFeatures:"Alle Features",itemDescription:"Über 'Verweilorte suchen' für ${inputLayerName} erstellter Feature-Layer.",itemTags:"Analyseergebnis, Verweilorte suchen, ${inputLayerName}",itemSnippet:'Aus "Verweilorte suchen" erstellter Feature-Layer',timeIntervalSplit:"Daten mit Zeitintervallen analysieren (optional)",timeBoundaryValidationMsg:"Das Zeitintervall muss größer als der zeitliche Suchbereich sein."});
+define({inputLayerLabel:"Den Layer auswählen, in dem nach Verweilorten gesucht werden soll",selectTracksLabel:"Mindestens ein Feld zum Identifizieren von Tracks auswählen",defineDistanceLabel:"Räumliche Suchentfernung definieren",distMethodLabel:"Methode zum Berechnen der Entfernung auswählen",temporalSearchLabel:"Zeitlichen Suchbereich definieren",outputDwellLabel:"Verweilorte ausgeben als",outputLayerName:"Für ${inputLayerName} nach Verweilorten suchen",meanCenters:"Mittelwerte für Mittelpunkte",convexHulls:"Konvexe Hüllen",dwellFeatures:"Verweil-Features",allFeatures:"Alle Features",itemDescription:"Über 'Verweilorte suchen' für ${inputLayerName} erstellter Feature-Layer.",itemTags:"Analyseergebnis, Verweilorte suchen, ${inputLayerName}",itemSnippet:'Aus "Verweilorte suchen" erstellter Feature-Layer',timeIntervalSplit:"Daten mit Zeitintervallen analysieren (optional)",timeBoundaryValidationMsg:"Das Zeitintervall muss größer als der zeitliche Suchbereich sein."});

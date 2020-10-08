@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({chooseShape:"Izberi obliko",defineExtent:"Določi obseg",defineBin:"Določi velikost celice z določitvijo",area:"Površina",distance:"Razdalja",resultLayerName:"Ime sloja z rezultati",hexagon:"Šestkotnik",transverseHexagon:"Prečni šesterokotnik",square:"Kvadrat",triangle:"Trikotnik",diamond:"Romb",sameAsDisplay:"Enako kot prikaz",emptyBinSize:"Velikost celice ne sme biti prazna",currentExtent:"trenutni obseg",intersectExtent:"Ohrani samo teselacije, ki se sekajo",outputLayerName:"Teselacije ustvari na ${extentLayerName}",itemDescription:"Uporabljeno je bilo obseg iz ${extentLayerName}.",itemTags:"Rezultati analize, ustvari teselacije, ${extentLayerName}",itemSnippet:"Geoobjektni sloj, ki je ustvarjen z orodjem Ustvari teselacije"});

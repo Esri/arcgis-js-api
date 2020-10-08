@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/Tabs","../../iso/gmd/dataQuality/Quality","../../iso/gmd/distribution/Distribution","../gmd/metadataEntity/MetadataSection","../srv/ServiceIdentification","dojo/text!./templates/ServiceRoot.html","../../../../../kernel"],(function(e,t,i,a,o,r,d,s,n,m,c,l){var b=e(a,{templateString:c});return i("extend-esri")&&t.setObject("dijit.metadata.types.inspire.base.ServiceRoot",b,l),b}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define("require exports esri/kernel esri/geometry/Geometry esri/geometry/Polygon esri/geometry/Polyline esri/geometry/Point esri/geometry/Extent esri/geometry/Multipoint".split(" "),function(xa,ya,sa,ia,ja,ka,ga,la,ma){function ca(c){if(void 0===ga.fromJson){if(void 0!==c.x&&void 0!==c.y)return new ga(c);if(void 0!==c.paths)return new ka(c);if(void 0!==c.rings)return new ja(c);if(void 0!==c.points)return new ma(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==c.xmax&&void 0!==c.ymax)return new la(c)}else{if(void 0!==
 c.x&&void 0!==c.y)return ga.fromJson(c);if(void 0!==c.paths)return ka.fromJson(c);if(void 0!==c.rings)return ja.fromJson(c);if(void 0!==c.points)return ma.fromJson(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==c.xmax&&void 0!==c.ymax)return la.fromJson(c)}}function W(c){if(void 0===ga.fromJson){if(void 0!==c.x&&void 0!==c.y)return new ga(c);if(void 0!==c.paths)return new ka(c);if(void 0!==c.rings)return new ja(c);if(void 0!==c.points)return new ma(c);if(void 0!==c.xmin&&void 0!==c.ymin&&void 0!==

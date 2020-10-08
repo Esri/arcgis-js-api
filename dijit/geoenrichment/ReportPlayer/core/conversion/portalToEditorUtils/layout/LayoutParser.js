@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./GraphicReportSectionsParser","./ClassicReportSectionsParser"],(function(e,r,s){var t={parseReportXML:function(t){t.log(t.file.data);var a=e.parseXml(t.file.data);t.parsers.getParser("document").parseDocument(a,t),t.report.isGraphicReport?(t.templateJson.sectionsTables=[],r.parseSectionsGraphic(a,t)):(t.templateJson.sections=[],s.parseSectionsClassic(a,t))}};return t}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pasirinkite elementus, kuriuos norite iškirpti.",filterSelectLabel:"Iškirpkite visus elementus arba apibrėžkite poaibį (neprivaloma)",targetArea:"Pasirinkite plotą, į kurį norite iškirpti",outputLayerName:"Iškirpti ${inputLayerName} į ${clipLayerName}",itemDescription:"Elementų sluoksnis sukurtas paleidus Iškirpimo sprendimą. Elementai iš ${inputLayerName} buvo iškirpti į ${clipLayerName}.",itemTags:"Analizės rezultatas, Iškirpimo sluoksnis, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Elementų sluoksnis sukurtas naudojant Iškirpimo sluoksnį"});

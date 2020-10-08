@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["../../declare","../../geometry/jsonUtils","../../geometry/Geometry","./StudyArea"],(function(e,t,o,r){return e("esri.tasks.geoenrichment.GeometryStudyArea",[r],{geometry:null,constructor:function(e){e&&e.geometry&&(e.geometry instanceof o?this.geometry=e.geometry:this.geometry=t.fromJson(e.geometry))},toJson:function(){var e=this.inherited(arguments);return e.geometry=this.geometry.toJson(),e},getGeomType:function(){return this.geometry.type}})}));

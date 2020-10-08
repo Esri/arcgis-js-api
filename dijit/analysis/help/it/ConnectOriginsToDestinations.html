@@ -109,7 +109,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Selezionare  <b>Usa traffico</b> per trovare gli itinerari pi&ugrave; veloci in base a un orario di partenza specifico e a condizioni di traffico variabili. Inoltre, selezionando l'opzione <b>Traffico in tempo reale</b>, l'orario di partenza dai punti di origine viene impostato sull'ora corrente e le velocit&agrave; di traffico corrente e previsto in futuro fanno riferimento a sensori e feed per creare gli itinerari. Le velocit&agrave; di traffico previsto vengono calcolate facendo riferimento a velocit&agrave; di traffico in tempo reale, velocit&agrave; storiche ed eventi correnti (ad esempio condizioni meteorologiche). Le velocit&agrave; di traffico sono previste con 12 ore di anticipo, quindi &egrave; possibile spostare il cursore per impostare l'orario di partenza fino a  12 ore in avanti. </p>
+                        <p>Selezionare  <b>Usa traffico</b> per trovare gli itinerari pi&ugrave; veloci in base a un orario di partenza specifico e a condizioni di traffico variabili. Inoltre, selezionando l'opzione <b>Traffico in tempo reale</b>, l'orario di partenza dai punti di origine viene impostato sull'ora corrente e le velocit&agrave; di traffico corrente e previsto in futuro fanno riferimento a sensori e feed per creare gli itinerari. Le velocit&agrave; di traffico previsto vengono calcolate facendo riferimento a velocit&agrave; di traffico in tempo reale, velocit&agrave; storiche ed eventi correnti (ad esempio condizioni meteorologiche). Le velocit&agrave; di traffico sono previste con 4 ore di anticipo, quindi &egrave; possibile spostare il cursore per impostare l'orario di partenza fino a  4 ore in avanti. </p>
                         <p>Utilizzare queste impostazioni del traffico in tempo reale per individuare i tempi di percorrenza partendo adesso, tra un'ora da adesso e cos&igrave; via.
                         </p>
                     </li>
@@ -135,6 +135,8 @@
         <hr/>
         <div>
             <p> Una o pi&ugrave; feature che agiscono come restrizioni temporanee (barriere) mentre si viaggia sulle strade sottostanti. &Egrave; possibile specificare le barriere utilizzando feature puntuali, lineari o poligonali.
+            </p>
+            <p>  <b>Seleziona i layer delle barriere</b> &egrave; disponibile quando si usa una modalit&agrave; viaggio come parametro di <b>Misura</b>. Se viene utilizzato <b>Distanza in linea</b>, <b>Seleziona i layer delle barriere</b> verr&agrave; disattivato.
             </p>
             <p>Una barriera puntuale pu&ograve; essere un albero caduto, un incidente, una linea elettrica fuori uso o qualsiasi elemento che blocchi completamente il traffico in un punto specifico sulla strada. &Egrave; possibile viaggiare sulla strada ma non &egrave; possibile attraversare la barriera. &Egrave; possibile specificare fino a 250 feature affinch&eacute; fungano da barriere puntuali.
             </p>
@@ -167,7 +169,7 @@
         <div>
             <p>Nome del Feature Layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Se il Feature Layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome. Il Feature Layer conterr&agrave; un layer per ciascuno dei seguenti elementi: itinerari, origini non assegnate e destinazioni non assegnate quando alcune origini non possono essere collegate alle rispettive destinazioni.
             </p>
-            <p>Se si seleziona  <b>Includi layer percorso</b>, anche ogni percorso incluso nei risultati viene salvato come layer percorso. Un layer percorso include tutte le informazioni relative a un percorso specifico, ad esempio le fermate assegnate al percorso e le direzioni di viaggio. La creazione di Route Layer &egrave; utile se si desidera condividere i singoli percorsi con altri membri dell&rsquo;organizzazione oppure modificare i percorsi utilizzando il pulsante <b>Direzioni</b> in Map Viewer. I layer percorso utilizzano il nome fornito per il feature layer come prefisso, mentre il nome percorso generato nell'ambito dell'analisi viene aggiunto per creare un nome univoco per ogni layer percorso.
+            <p>Se si seleziona  <b>Includi layer percorso</b>, anche ogni percorso incluso nei risultati viene salvato come layer percorso. Un layer percorso include tutte le informazioni relative a un percorso specifico, ad esempio le fermate assegnate al percorso e le direzioni di viaggio. La creazione di Route Layer &egrave; utile se si desidera condividere i singoli percorsi con altri membri dell'organizzazione oppure modificare i percorsi utilizzando il pulsante <b>Direzioni</b> in Map Viewer. I layer percorso utilizzano il nome fornito per il feature layer come prefisso, mentre il nome percorso generato nell'ambito dell'analisi viene aggiunto per creare un nome univoco per ogni layer percorso.
             </p>
             <p>Il numero massimo di layer percorso che &egrave; possibile creare &egrave;  1.000. Se il risultato contiene pi&ugrave; di  1.000 percorsi e l'opzione  <b>Includi layer percorso</b> &egrave; selezionata, lo strumento crea solo il feature service di output.
             </p>

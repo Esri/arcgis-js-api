@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกชุดข้อมูลที่จะบรรยาย",describeDataLabel:"ทำความเข้าใจข้อมูลของคุณโดยการสร้าง (ไม่บังคับ)",sampleLayer:"ชั้นข้อมูลตัวอย่าง",extentLayer:"ชั้นข้อมูลขอบเขต",noOfFeaturesLabel:"จำนวนฟีเจอร์ที่จะรวมด้วย",outputLayerName:"ชื่อของชั้นข้อมูลผลลัพธ์",resultName:"บรรยายข้อมูลของ ${layerName}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างจากการเรียกใช้งานชุดข้อมูลการบรรยาย ${layerName} ",itemTags:"ผลการวิเคราะห์, ชุดข้อมูลการบรรยาย, ${layerName}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างจากชุดข้อมูลการบรรยาย"});

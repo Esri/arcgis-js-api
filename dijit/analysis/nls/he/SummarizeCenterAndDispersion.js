@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבה לתיאור",summaryTypes:"סוגי סיכום",centralFeature:"ישות מרכזית",meanCenter:"מרכז ממוצע",medianCenter:"מרכז חציוני",ellipse:"אליפסה",weightBy:"שקלל לפי (אופציונלי)",groupBy:"קבץ לפי (אופציונלי)",resultLayerName:"שם שכבת התוצאה",outputLayerName:"תאר את ההתפלגות של ‎${layerName}‎",none:"ללא",itemDescription:"שכבת הישויות נוצרה מהרצת סיכום המרכז והפיזור בשכבה ‎${layerName}‎. ",itemTags:"תוצאת ניתוח, סיכום מרכז ופיזור, ‎${layerName}‎",itemSnippet:"שכבת הישויות נוצרה מסיכום המרכז והפיזור"});

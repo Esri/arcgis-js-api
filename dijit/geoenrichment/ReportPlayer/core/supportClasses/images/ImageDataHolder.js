@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define([],(function(){var e={},n={},r={};return e.putImageData=function(e,t){if("string"==typeof e&&t){var a=e.toLowerCase();r[a]=e,n[a]=t}else console.error("Invalid image filename or data!")},e.getImageData=function(e){return"string"!=typeof e?null:n[e.toLowerCase()]},e.findFileNameByData=function(e){for(var t in n)if(e===n[t])return r[t];return null},e}));
+define(["esri/dijit/geoenrichment/utils/CacheUtil"],(function(e){var t={};function a(){return e.get("ImageDataHolder.imageData")}function n(){return e.get("ImageDataHolder.fileNameToOriginal")}return t.putImageData=function(e,t){if("string"==typeof e&&t){var r=e.toLowerCase();n()[r]=e,a()[r]=t}else console.error("Invalid image filename or data!")},t.getImageData=function(e){return"string"!=typeof e?null:a()[e.toLowerCase()]},t.findFileNameByData=function(e){var t=a();for(var r in t)if(e===t[r])return n()[r];return null},t}));

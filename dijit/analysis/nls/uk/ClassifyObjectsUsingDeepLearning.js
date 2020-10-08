@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Класифікувати об'єкти, використовуючи глибоке навчання",inputFeaturesLabel:"Вибрати векторний шар для об'ктів (необов'язково)",outputLayerName:"${layername}_класифіковані об'єкти",modelLabel:"Вибрати модель глибокого навчання, використовувану для класифікації об'єктів",modelArgsLabel:"Вказати аргументи моделі глибокого навчання",classLabelFieldLabel:"Визначити ім'я поля напису класу (необов'язково)",processingModeLabel:"Режим обробки",processAsMosaicLabel:"Обробити як мозаїчне зображення",processAsItemsLabel:"Обробити всі елементи растру окремо",queryModelArgsMsg:"Запит аргументів моделі...",queryModelArgsErrMsg:"Не вдалося запитати аргументи моделі",valueLabel:"Значення",nameLabel:"Назва",analysisLayerLabel:"Вибрати зображення, використовуване для класифікації об'єктів",itemDescription:"Аналітичний сервіс зображень, згенерований з «Класифікувати об'єкти, використовуючи глибоке навчання»",itemTags:"Результат аналізу растру, Класифікувати об'кти, використовуючи глибоке навчання, ${layername}",itemSnippet:"Аналітичний сервіс зображень, згенерований з «Класифікувати об'єкти, використовуючи глибоке навчання»"});

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel"],(function(e,s,l,r){var i=e(null,{declaredClass:"esri.renderer.SymbolAger",getAgedSymbol:function(e,s){},_setSymbolSize:function(e,s){switch(e.type){case"simplemarkersymbol":e.setSize(s);break;case"picturemarkersymbol":e.setWidth(s),e.setHeight(s);break;case"simplelinesymbol":case"cartographiclinesymbol":e.setWidth(s);break;case"simplefillsymbol":case"picturefillsymbol":e.outline&&e.outline.setWidth(s)}}});return l("extend-esri")&&s.setObject("renderer.SymbolAger",i,r),i}));

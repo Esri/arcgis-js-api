@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valitse rasteri tai kohdesijainnin karttataso polkujen määrittämiseksi seuraavien välillä:",inputCostRasterLabel:"Valitse matkakustannusten rasterikarttataso",outputOptimumNetworkName:"Tuloksena oleva optimaalisten polkujen taiteviivakarttatason nimi",outputNeighborNetworkName:"Tuloksena oleva viereisten polkujen taiteviivakarttatason nimi (valinnainen)",outputLayerName:"Määritä karttatason ${layername} optimaalinen matkakustannus",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Määritä optimaalinen matkakuluverkko -toiminto karttatasossa ${layerName}. ",itemTags:"Analyysitulos, Määritä optimaalinen matkakuluverkko, ${layername} ${fieldname}",itemSnippet:"Kohdekarttataso, joka on luotu Määritä optimaalinen matkakuluverkko -toiminnolla."});

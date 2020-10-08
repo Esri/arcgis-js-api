@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define([],(function(){var n={NONE:"None",LEFT:"Left",RIGHT:"Right",TOP:"Top",BOTTOM:"Bottom",isSupported:function(t){for(var r in n)if(n[r]===t)return!0;return!1},toSupportedValue:function(t){return n.isSupported(t)?t:n.NONE},isOnSide:function(t){return t===n.LEFT||t===n.RIGHT}};return n}));

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({distToNearest:"Távolság a legközelebbitől",attrOfInterest:"A legközelebbi attribútuma",summaryNearby:"Szomszédsági statisztika",summaryIntersecting:"Metszési statisztika",distToNearestLabel:"A gyűjtő közepe és a bemenő réteg legközelebbi vektoros eleme közötti távolság",attrOfInterestLabel:"A bemenő réteg legközelebbi vektoros eleme meghatározott mezőjének értéke",summaryNearbyLabel:"A gyűjtő közepétől mért meghatározott távolságon belül levő összes vektoros elem statisztikai értéke",summaryIntersectingLabel:"A gyűjtőt átmetsző összes vektoros elem kiszámított statisztikai értéke",maxDistancefromCtr:"Maximális távolság a gyűjtő közepétől",fieldToIncude:"Tartalmazni kívánt mező",statstoCalculate:"Kiszámítandó statisztika",summFeatuesWithin:"Vektoros elemek összegzése a következőn belül:",smallMaxDistErrorMsg:"A gyűjtő közepétől mért maximális távolságnak nagyobbnak kell lennie, mint a gyűjtő mérete.",smallSumFeaturesErrorMsg:"A gyűjtő közepétől mért maximális távolságnak nagyobbnak kell lennie, mint a gyűjtő mérete."});

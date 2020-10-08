@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите слой, в котором нужно найти простои",selectTracksLabel:"Выберите одно или более полей для идентификации треков",defineDistanceLabel:"Задайте расстояние пространственного поиска",distMethodLabel:"Выберите метод вычисления расстояния",temporalSearchLabel:"Задайте диапазон поиска по времени",outputDwellLabel:"Выгрузить локации простоев как",outputLayerName:"Найти кластеры простоев для ${inputLayerName}",meanCenters:"Усредненные центры",convexHulls:"Выпуклые оболочки",dwellFeatures:"Объекты простоев",allFeatures:"Всех объектов",itemDescription:"Векторный слой, созданный с помощью решения Поиск местоположений простоев для ${inputLayerName}.",itemTags:"Результаты анализа, Поиск местоположений простоев, ${inputLayerName}",itemSnippet:"Векторный слой, созданный в результате работы Поиск местоположений простоев",timeIntervalSplit:"Анализ данных с временными интервалами (дополнительно)",timeBoundaryValidationMsg:"Временной интервал должен быть больше, чем временной диапазон поиска."});

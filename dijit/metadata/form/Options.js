@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../base/Templated","../base/OptionsMixin","dojo/text!./templates/Options.html","../../../kernel"],(function(e,t,i,n,o,s,a){var d=e([n,o],{_isGxeOptions:!0,templateString:s,postCreate:function(){this.inherited(arguments)},fetchOptionWidgets:function(){return this.inherited(arguments)}});return i("extend-esri")&&t.setObject("dijit.metadata.form.Options",d,a),d}));

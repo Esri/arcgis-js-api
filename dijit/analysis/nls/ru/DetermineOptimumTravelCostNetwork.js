@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите растровый или векторный слой местоположений для вычисления маршрутов движения",inputCostRasterLabel:"Выберите растровый слой стоимости перемещения",outputOptimumNetworkName:"Имя итогового полилинейного слоя оптимальных путей",outputNeighborNetworkName:"Имя итогового полилинейного слоя соседних путей (дополнительно)",outputLayerName:"Определить оптимальную стоимость перемещения для ${layername}",itemDescription:"Векторный слой, созданный инструментом Определить оптимальную стоимость перемещения по сети для ${layerName}. ",itemTags:"Результат анализа, Определить оптимальную стоимость перемещения по сети, ${layername} ${fieldname}",itemSnippet:"Векторный слой, полученный инструментом Определить оптимальную стоимость перемещения по сети."});

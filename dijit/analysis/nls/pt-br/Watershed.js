@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher camada de direção do fluxo",pourPointLayerLabel:"Escolher camada de feição ou raster do ponto de escoamento",pourPointField:"Escolher campo do ponto de escoamento",resultLayerName:"Nome da camada resultante",outputLayerName:"Vertente de ${layername}",itemDescription:"Camada de feição gerada a partir da execução de Resumir centro e dispersão em ${layerName}. ",itemTags:"Resultado da Análise, Vertente, ${layername}, ${fieldname}",itemSnippet:"Camada de feição gerada de Vertente."});

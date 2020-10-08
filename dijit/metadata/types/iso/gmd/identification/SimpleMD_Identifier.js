@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/InputText","../../../../form/iso/AbstractObject","../../../../form/iso/GcoElement","dojo/text!./templates/SimpleMD_Identifier.html","../../../../../../kernel"],(function(e,t,i,o,r,n,a,d,m,s){var l=e(o,{templateString:m});return i("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmd.identification.SimpleMD_Identifier",l,s),l}));

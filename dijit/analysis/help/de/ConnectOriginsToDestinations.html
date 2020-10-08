@@ -94,13 +94,13 @@
         </div>
     </div>
     <div id="measurementType">
-        <div><h2>Messen</h2></div>
+        <div><h2>Maß</h2></div>
         <hr/>
         <div>
             
             <p>Legen Sie fest, ob Startpunkte unter Verwendung einer geradlinigen Entfernung oder eines Reisemodus mit Zielen verbunden werden sollen. Die Ausgaberoute folgt Stra&szlig;en und Gehwegen, wobei alle geltenden Verkehrsregeln wie Einbahnstra&szlig;en und unzul&auml;ssige Wendepunkte ber&uuml;cksichtigt werden. Die verf&uuml;gbaren Reisemodi werden vom Administrator Ihrer Organisation bestimmt.  
             </p>
-            <p>Bei Auswahl von  <b>Fahrzeit</b>, <b>Fahrzeit auf Landstra&szlig;en</b> oder <b>Lkw-Fahrzeit</b> werden Optionen zum Messen der Fahrzeit bereitgestellt.
+            <p>Bei Auswahl von  <b>Fahrzeit (Driving Time)</b>, <b>Reisezeit (Landstra&szlig;en) (Rural Driving Time)</b> oder <b>Lkw-Fahrzeit (Trucking Time)</b> werden Optionen zum Messen der Fahrzeit bereitgestellt.
                 <ul>
                     <li>
                         <p>Deaktivieren Sie  <b>Verkehrsdaten verwenden</b>, um die schnellsten Routen basierend auf festgelegten Geschwindigkeiten zu suchen.
@@ -109,7 +109,7 @@
                         </p>
                     </li>
                     <li>
-                        <p>Aktivieren Sie die Option  <b>Verkehrsdaten verwenden</b>, um die schnellsten Routen basierend auf einer angegebenen Startzeit und sich &auml;ndernden Verkehrsbedingungen zu suchen. Wenn Sie au&szlig;erdem die Option <b>Live-Verkehrsdaten</b> ausw&auml;hlen, wird die Abfahrtzeit von den Startpunkten auf die aktuelle Uhrzeit festgelegt und aktuelle und vorhergesagte Fahrgeschwindigkeiten werden von Sensoren und Feeds referenziert, um die Routen zu erstellen. Die vorhergesagten Fahrgeschwindigkeiten werden berechnet, indem Geschwindigkeitsdaten des Live-Verkehrs und aktuelle Ereignisse wie das Wetter referenziert werden. Fahrgeschwindigkeiten werden f&uuml;r die n&auml;chsten 12 Stunden vorhergesagt, damit Sie die Abfahrtzeit mit dem Schieberegler auf bis zu  12 Stunden im Voraus einstellen k&ouml;nnen. </p>
+                        <p>Aktivieren Sie die Option  <b>Verkehrsdaten verwenden</b>, um die schnellsten Routen basierend auf einer angegebenen Startzeit und sich &auml;ndernden Verkehrsbedingungen zu suchen. Wenn Sie au&szlig;erdem die Option <b>Live-Verkehrsdaten</b> ausw&auml;hlen, wird die Abfahrtzeit von den Startpunkten auf die aktuelle Uhrzeit festgelegt und aktuelle und vorhergesagte Fahrgeschwindigkeiten werden von Sensoren und Feeds referenziert, um die Routen zu erstellen. Die vorhergesagten Fahrgeschwindigkeiten werden berechnet, indem Geschwindigkeitsdaten des Live-Verkehrs und aktuelle Ereignisse wie das Wetter referenziert werden. Fahrgeschwindigkeiten werden f&uuml;r die n&auml;chsten 4 Stunden vorhergesagt, damit Sie die Abfahrtzeit mit dem Schieberegler auf bis zu  4 Stunden im Voraus einstellen k&ouml;nnen. </p>
                         <p>Verwenden Sie diese Einstellungen, um die Fahrzeiten zu ermitteln, wenn Sie zum aktuellen Zeitpunkt, in einer Stunde ab dem aktuellen Zeitpunkt usw. abfahren.
                         </p>
                     </li>
@@ -127,7 +127,7 @@
             <p>Beachten Sie, dass Zeit vergeht und Verkehrslagen sich &auml;ndern, w&auml;hrend sich ein Fahrzeug vom Startpunkt wegbewegt. Das Werkzeug &quot;Startpunkte mit Zielen verbinden&quot; ber&uuml;cksichtigt diese Unterschiede, wenn Sie die Option  <b>Verkehrsdaten verwenden</b> aktivieren. Allerdings unterst&uuml;tzen nicht alle Regionen Verkehrsdaten. 
 Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um zu ermitteln, ob dies f&uuml;r Ihr Einzugsgebiet zutrifft.
             </p>
-            <p>F&uuml;r die  <b>Lkw-Fahrzeit</b> k&ouml;nnen dynamische, auf den Verkehrsbedingungen basierende Reisegeschwindigkeiten bis maximal zur gesetzlichen H&ouml;chstgeschwindigkeit f&uuml;r Lkw zugrunde gelegt werden. Wenn beispielsweise die dynamische Geschwindigkeit f&uuml;r eine Stra&szlig;e auf Grundlage der Live-Verkehrsdaten bei 100&nbsp;km/h liegt, die zul&auml;ssige H&ouml;chstgeschwindigkeit f&uuml;r Lkw auf dieser Stra&szlig;e jedoch 80&nbsp;km/h betr&auml;gt, werden in der Berechnung f&uuml;r diese Stra&szlig;e 80&nbsp;km/h zugrunde gelegt.
+            <p>F&uuml;r  <b>Lkw-Fahrzeit (Trucking Time)</b> k&ouml;nnen dynamische, auf den Verkehrsbedingungen basierende Reisegeschwindigkeiten bis maximal zur gesetzlichen H&ouml;chstgeschwindigkeit f&uuml;r Lkw zugrunde gelegt werden. Wenn beispielsweise die dynamische Geschwindigkeit f&uuml;r eine Stra&szlig;e auf Grundlage der Live-Verkehrsdaten bei 100&nbsp;km/h liegt, die zul&auml;ssige H&ouml;chstgeschwindigkeit f&uuml;r Lkw auf dieser Stra&szlig;e jedoch 80&nbsp;km/h betr&auml;gt, werden in der Berechnung f&uuml;r diese Stra&szlig;e 80&nbsp;km/h zugrunde gelegt.
             </p>
         </div>
     </div>
@@ -136,6 +136,8 @@ Klicken Sie in dem Werkzeug auf den Link <b>Verf&uuml;gbarkeit anzeigen</b>, um 
         <hr/>
         <div>
             <p> Mindestens ein Feature, das als vor&uuml;bergehende Einschr&auml;nkung (also Barriere) bei der Fahrt auf den zugrunde liegenden Stra&szlig;en fungiert Sie k&ouml;nnen die Barrieren anhand von Punkt-, Linien- oder Polygon-Features angeben.
+            </p>
+            <p>  <b>Barriere-Layer ausw&auml;hlen</b> ist verf&uuml;gbar, wenn f&uuml;r den Parameter <b>Ma&szlig;</b> ein Reisemodus verwendet wird. Wird <b>Gerade Linie</b> verwendet, wird <b>Barriere-Layer ausw&auml;hlen</b> deaktiviert.
             </p>
             <p>Eine Punkt-Barriere kann zum Modellieren eines umgefallenen Baumes, eines Unfalls, einer herabh&auml;ngenden Stromleitung oder eines beliebigen anderen Objekts, das den Verkehr an einer bestimmten Position auf der Stra&szlig;e blockiert, verwendet werden. Die Fahrt auf der Stra&szlig;e ist zul&auml;ssig, jedoch nicht die Fahrt durch die Barriere. Sie k&ouml;nnen bis zu 250&nbsp;Features, die als Punkt-Barrieren fungieren, hinzuf&uuml;gen.
             </p>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 201 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.33/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
 define({toolDefine:"Καθορισμός αντικειμένων μέσω βαθιάς μάθησης",outputLayerName:"${layername}_detected",modelLabel:"Επιλογή μοντέλου βαθιάς μάθησης που θα χρησιμοποιείται για την ανίχνευση αντικειμένων",modelArgsLabel:"Καθορισμός ορισμάτων μοντέλου βαθιάς μάθησης",nameLabel:"Όνομα",valueLabel:"Τιμή",removeDuplicatesLable:"Κατάργηση διπλότυπων στοιχείων από το εξαγόμενο αποτέλεσμα (προαιρετικά)",queryModelArgsMsg:"Εξέταση ορισμάτων μοντέλου...",queryModelArgsErrMsg:"Απέτυχε η υποβολή ερωτήματος για ορίσματα μοντέλου.",nonMaxSuppressionLabel:"Μη μέγιστη εξάλειψη",options:"Επιλογές",confidenceLabel:"Πεδίο βαθμού αξιοπιστίας",classValueLabel:"Πεδίο τιμής κατηγορίας",maxOverlapLabel:"Μέγιστος λόγος επικάλυψης",numberOnlyMsg:"Επιτρέπονται μόνο αριθμικές τιμές.",analysisLayerLabel:"Επιλογή εικόνας που θα χρησιμοποιείται για την ανίχνευση αντικειμένων",itemDescription:"Image service ανάλυσης που θα δημιουργείται από το εργαλείο «Ανίχνευση Αντικειμένων Μέσω Βαθιάς Μάθησης»",itemTags:"Αποτέλεσμα ανάλυσης raster, Ανίχνευση Αντικειμένων Μέσω Βαθιάς Μάθησης, ${layername}",itemSnippet:"Image service ανάλυσης που θα δημιουργείται από το εργαλείο «Ανίχνευση Αντικειμένων Μέσω Βαθιάς Μάθησης»"});
