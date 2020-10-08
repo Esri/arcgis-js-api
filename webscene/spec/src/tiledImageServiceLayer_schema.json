@@ -1,7 +1,7 @@
 {
   "title": "Tiled Image Service Layer (ArcGISTiledImageServiceLayer)",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "An ArcGIS Tiled Image Service layer displays content from an ArcGIS Server Image service that has been cached (tiled).",
   "properties": {
     "bandIds": {

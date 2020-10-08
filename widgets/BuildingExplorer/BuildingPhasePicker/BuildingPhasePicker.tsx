@@ -176,6 +176,7 @@ class BuildingPhasePicker extends Widget {
           onclick={this._onArrowLeftClick}
           aria-label={previousPhaseLabel}
           title={previousPhaseLabel}
+          type="button"
         />
 
         <div
@@ -195,6 +196,7 @@ class BuildingPhasePicker extends Widget {
           onclick={this._onArrowRightClick}
           aria-label={nextPhaseLabel}
           title={nextPhaseLabel}
+          type="button"
         />
       </div>
     );
@@ -254,6 +256,7 @@ class BuildingPhasePicker extends Widget {
         aria-label={label}
         title={label}
         onclick={() => this.viewModel.select(phase)}
+        type="button"
       >
         {phase}
       </button>

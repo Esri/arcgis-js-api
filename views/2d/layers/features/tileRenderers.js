@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","@dojo/framework/shim/Promise"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0}),r.createOrReuseTileRenderer=function(r,t){return n.__awaiter(this,void 0,void 0,(function(){return n.__generator(this,(function(n){switch(n.label){case 0:if(!r)return[2,null];switch(r.type){case"class-breaks":case"simple":case"unique-value":case"dot-density":case"dictionary":return[3,1];case"heatmap":return[3,3]}return[3,5];case 1:return[4,new Promise((function(r,n){e(["./tileRenderers/SymbolTileRenderer"],r,n)}))];case 2:return[2,new(n.sent().default)(t)];case 3:return[4,new Promise((function(r,n){e(["./tileRenderers/HeatmapTileRenderer"],r,n)}))];case 4:return[2,new(n.sent().default)(t)];case 5:return[2]}}))}))}}));
+define(["require","exports","tslib","@dojo/framework/shim/Promise"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.createOrReuseTileRenderer=void 0,r.createOrReuseTileRenderer=function(r,n){return t.__awaiter(this,void 0,void 0,(function(){return t.__generator(this,(function(t){switch(t.label){case 0:if(!r)return[2,null];switch(r.type){case"class-breaks":case"simple":case"unique-value":case"dot-density":case"dictionary":return[3,1];case"heatmap":return[3,3]}return[3,5];case 1:return[4,new Promise((function(r,t){e(["./tileRenderers/SymbolTileRenderer"],r,t)}))];case 2:return[2,new(t.sent().default)(n)];case 3:return[4,new Promise((function(r,t){e(["./tileRenderers/HeatmapTileRenderer"],r,t)}))];case 4:return[2,new(t.sent().default)(n)];case 5:return[2]}}))}))}}));

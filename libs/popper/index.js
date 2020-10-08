@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","@dojo/framework/shim/array","@dojo/framework/shim/object","./core","@dojo/framework/shim/Promise"],(function(e,r,o,t,i,n){Object.defineProperty(r,"__esModule",{value:!0}),o.__exportStar(n,r),"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:i.assign,writable:!0,configurable:!0}),Array.prototype.find||Object.defineProperty(Array.prototype,"find",{value:function(e,r){return t.find(this,e,r)},configurable:!0,writable:!0})}));
+define(["require","exports","tslib","@dojo/framework/shim/array","@dojo/framework/shim/object","./core","@dojo/framework/shim/Promise"],(function(e,r,o,t,i,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),o.__exportStar(n,r),"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:i.assign,writable:!0,configurable:!0}),Array.prototype.find||Object.defineProperty(Array.prototype,"find",{value:function(e,r){return t.find(this,e,r)},configurable:!0,writable:!0})}));

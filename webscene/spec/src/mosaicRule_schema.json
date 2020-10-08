@@ -1,7 +1,7 @@
 {
   "title": "mosaicRule",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The image service uses a mosaic rule to mosaick multiple rasters on the fly. The mosaic rule parameter is used by many image service operations, for example, export image and identify operations.",
   "properties": {
     "ascending": {

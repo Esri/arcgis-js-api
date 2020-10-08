@@ -36,5 +36,14 @@
   "verticesCount": "{count} taitepistettä",
   "deleteFeature": "Poista kohde",
   "deleteVertex": "Poista taitepiste",
-  "duplicate": "Tee kopio"
+  "duplicate": "Tee kopio",
+  "selectCircle": "Valitse ympyrällä",
+  "selectFeature": "Valitse kohde",
+  "selectFeatures": "Valitse kohteet",
+  "selectLasso": "Valitse lassolla",
+  "selectLine": "Valitse viivalla",
+  "selectMarquee": "Valitse peittoalueella",
+  "selectPolygon": "Valitse alueella",
+  "selectRectangle": "Valitse suorakulmiolla",
+  "clearSelection": "Tyhjennä valinnat"
 }

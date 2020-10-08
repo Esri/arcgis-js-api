@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../core/Error"],(function(e,r,o){Object.defineProperty(r,"__esModule",{value:!0});var n="webscene:failed-to-copy-embedded-resources";r.createCopyError=function(){return new o(n,"Copying of embedded resources is currently not supported")},r.isCopyError=function(e){return e&&e.name===n},r.createSchemaValidationError=function(e){return new o("webscene:schema-validation","Failed to save webscene due to schema validation errors. See 'details.errors' for more detailed information",{errors:e})},r.isSchemaValidationError=function(e){return e&&"webscene:schema-validation"===e.name}}));
+define(["require","exports","../core/Error"],(function(e,r,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.isSchemaValidationError=r.createSchemaValidationError=r.isCopyError=r.createCopyError=void 0;var i="webscene:failed-to-copy-embedded-resources";r.createCopyError=function(){return new o(i,"Copying of embedded resources is currently not supported")},r.isCopyError=function(e){return e&&e.name===i},r.createSchemaValidationError=function(e){return new o("webscene:schema-validation","Failed to save webscene due to schema validation errors. See 'details.errors' for more detailed information",{errors:e})},r.isSchemaValidationError=function(e){return e&&"webscene:schema-validation"===e.name}}));

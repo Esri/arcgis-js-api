@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,c,t,r,n){Object.defineProperty(c,"__esModule",{value:!0}),c.projectPoint=function(e,c,t){var n=r.vec3.dot(e,c)/r.vec3.dot(e,e);return r.vec3.scale(t,e,n)},c.projectPointSignedLength=function(e,c){return r.vec3.dot(e,c)/r.vec3.length(e)},c.angle=function(e,c){var n=r.vec3.dot(e,c)/(r.vec3.length(e)*r.vec3.length(c));return-t.acosClamped(n)},c.angleAroundAxis=function(e,c,n){r.vec3.normalize(o,e),r.vec3.normalize(v,c);var a=r.vec3.dot(o,v),i=t.acosClamped(a),l=r.vec3.cross(o,o,v);return r.vec3.dot(l,n)<0?2*Math.PI-i:i};var o=n.vec3f64.create(),v=n.vec3f64.create()}));
+define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,t,c,n,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.angleAroundAxis=t.angle=t.projectPointSignedLength=t.projectPoint=void 0,t.projectPoint=function(e,t,c){var r=n.vec3.dot(e,t)/n.vec3.dot(e,e);return n.vec3.scale(c,e,r)},t.projectPointSignedLength=function(e,t){return n.vec3.dot(e,t)/n.vec3.length(e)},t.angle=function(e,t){var r=n.vec3.dot(e,t)/(n.vec3.length(e)*n.vec3.length(t));return-c.acosClamped(r)},t.angleAroundAxis=function(e,t,r){n.vec3.normalize(o,e),n.vec3.normalize(i,t);var v=n.vec3.dot(o,i),a=c.acosClamped(v),l=n.vec3.cross(o,o,i);return n.vec3.dot(l,r)<0?2*Math.PI-a:a};var o=r.vec3f64.create(),i=r.vec3f64.create()}));

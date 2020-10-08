@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/statistics/summaryStatisticsForAge"],(function(t,e,r,s,i){var a=s.getLogger("esri.renderers.smartMapping.statistics.summaryStatisticsForAge");return r.deprecatedModule(a,"esri/renderers/smartMapping/statistics/summaryStatisticsForAge",{replacement:"esri/smartMapping/statistics/summaryStatisticsForAge"}),i}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/statistics/summaryStatisticsForAge"],(function(t,s,e,r,i){"use strict";var a=r.getLogger("esri.renderers.smartMapping.statistics.summaryStatisticsForAge");return e.deprecatedModule(a,"esri/renderers/smartMapping/statistics/summaryStatisticsForAge",{replacement:"esri/smartMapping/statistics/summaryStatisticsForAge"}),i}));

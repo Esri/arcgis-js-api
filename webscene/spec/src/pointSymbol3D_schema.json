@@ -1,7 +1,7 @@
 {
   "title": "PointSymbol3D",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "PointSymbol3D is used to render features with Point geometry in a 3D SceneView.",
   "properties": {
     "callout": {

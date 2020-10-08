@@ -1,7 +1,7 @@
 {
   "title": "Transportation Network",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The transportation network used for routing in the scene.",
   "properties": {
     "name": {

@@ -731,12 +731,12 @@ class Editor extends HandleOwnerMixin(Widget) {
   //----------------------------------
 
   /**
-   * A reference to the {@link module:esri/views/MapView}. This view
+   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. This view
    * provides the editable layers for the Editor widget.
    *
    * @name view
    * @instance
-   * @type {module:esri/views/MapView}
+   * @type {module:esri/views/MapView | module:esri/views/SceneView}
    *
    */
   @aliasOf("viewModel.view")
@@ -1197,6 +1197,7 @@ class Editor extends HandleOwnerMixin(Widget) {
         disabled={props.disabled}
         key={props.key}
         onclick={props.clickHandler}
+        type="button"
       >
         {props.label}
       </button>
@@ -1343,7 +1344,7 @@ class Editor extends HandleOwnerMixin(Widget) {
 
         if (!grouped.has(layer)) {
           grouped.set(layer, {
-            id: layer.id,
+            id: `${layer.id}`,
             label: layer.title,
             items: [item]
           });

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0}),t.getElevationAtPoint=function(e,t,n){return e.getElevation(t.x,t.y,t.z||0,t.spatialReference,n)}}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getElevationAtPoint=void 0,t.getElevationAtPoint=function(e,t,i){return void 0===i&&(i="ground"),e.getElevation(t.x,t.y,t.z||0,t.spatialReference,i)}}));

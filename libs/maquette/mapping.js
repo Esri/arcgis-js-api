@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0}),r.createMapping=function(e,r,n){var t=[],a=[];return{results:a,map:function(i){for(var l=i.map(e),f=a.slice(),o=0,u=0;u<i.length;u++){var c=i[u],g=l[u];if(g===t[o])a[u]=f[o],n(c,f[o],u),o++;else{for(var p=!1,s=1;s<t.length+1;s++){var v=(o+s)%t.length;if(t[v]===g){a[u]=f[v],n(i[u],f[v],u),o=v+1,p=!0;break}}p||(a[u]=r(c,u))}}a.length=i.length,t=l}}}}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.createMapping=void 0,r.createMapping=function(e,r,t){var n=[],a=[];return{results:a,map:function(i){for(var l=i.map(e),f=a.slice(),o=0,u=0;u<i.length;u++){var c=i[u],p=l[u];if(p===n[o])a[u]=f[o],t(c,f[o],u),o++;else{for(var s=!1,g=1;g<n.length+1;g++){var v=(o+g)%n.length;if(n[v]===p){a[u]=f[v],t(i[u],f[v],u),o=v+1,s=!0;break}}s||(a[u]=r(c,u))}}a.length=i.length,n=l}}}}));

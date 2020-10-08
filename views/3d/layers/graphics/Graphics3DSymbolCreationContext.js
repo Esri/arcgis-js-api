@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,l){Object.defineProperty(l,"__esModule",{value:!0});var n=function(){this.sharedResources=null,this.streamDataRequester=null,this.elevationProvider=null,this.renderer=null,this.stage=null,this.clippingExtent=null,this.renderCoordsHelper=null,this.overlaySR=null,this.layer=null,this.layerView=null,this.localOriginFactory=null,this.featureExpressionInfoContext=null,this.screenSizePerspectiveEnabled=!0,this.slicePlaneEnabled=!1,this.physicalBasedRenderingEnabled=!1,this.isAsync=!1};l.Graphics3DSymbolCreationContext=n;var i=function(){};l.Graphics3DSymbolLayerCreationContext=i}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Graphics3DSymbolLayerCreationContext=t.Graphics3DSymbolCreationContext=void 0;var i=function(){this.sharedResources=null,this.streamDataRequester=null,this.elevationProvider=null,this.renderer=null,this.stage=null,this.clippingExtent=null,this.renderCoordsHelper=null,this.overlaySR=null,this.layer=null,this.layerView=null,this.localOriginFactory=null,this.featureExpressionInfoContext=null,this.screenSizePerspectiveEnabled=!0,this.slicePlaneEnabled=!1,this.physicalBasedRenderingEnabled=!1,this.isAsync=!1};t.Graphics3DSymbolCreationContext=i;var n=function(){};t.Graphics3DSymbolLayerCreationContext=n}));

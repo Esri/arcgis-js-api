@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../core/Logger","../core/accessorSupport/decorators","./actions/ActionButton"],(function(t,r,o,e,s,n){var i=e.getLogger("esri.support.Action");return function(t){function r(r){var o=t.call(this,r)||this;return i.warn("DEPRECATED: 'esri/support/Action' -- use 'esri/support/actions/ActionButton' instead."),o}return o.__extends(r,t),r=o.__decorate([s.subclass("esri.support.Action")],r)}(n)}));
+define(["require","exports","tslib","../core/Logger","../core/accessorSupport/decorators","./actions/ActionButton"],(function(t,r,e,o,s,n){"use strict";var i=o.getLogger("esri.support.Action");return function(t){function r(r){var e=t.call(this,r)||this;return i.warn("DEPRECATED: 'esri/support/Action' -- use 'esri/support/actions/ActionButton' instead."),e}return e.__extends(r,t),r=e.__decorate([s.subclass("esri.support.Action")],r)}(n)}));

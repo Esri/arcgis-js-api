@@ -24,8 +24,6 @@
   "stop": "Stoppen",
   "stopLabelTemplate": "Stop {number} ({label})",
   "unlocated": "Locatie onbekend",
-  "searchFieldPlaceholder": "Zoek of klik op de kaart",
-  "viewlessSearchFieldPlaceholder": "Zoeken",
   "directionsPlaceholder": "Uw route wordt hier weergegeven.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Geschatte aankomsttijd",

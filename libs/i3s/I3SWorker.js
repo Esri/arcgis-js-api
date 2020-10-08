@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../assets","../../core/has","../../core/promiseUtils","@dojo/framework/shim/Promise"],(function(e,n,r,t,i){function o(e){return r.getAssetUrl("esri/libs/i3s/"+e)}var s;Object.defineProperty(n,"__esModule",{value:!0}),n.getWorkerModule=function(){if(!s){var n=t("esri-wasm")?new Promise((function(n,r){e(["./i3s"],n,r)})):new Promise((function(n,r){e(["./i3s_nowasm"],n,r)}));s=i.create((function(e){return n.then((function(n){var r=n({locateFile:o,onRuntimeInitialized:function(){return e(r)}});delete r.then}))})).catch((function(e){return i.reject(e)}))}return s}}));
+define(["require","exports","../../assets","../../core/has","../../core/promiseUtils","@dojo/framework/shim/Promise"],(function(e,r,t,n,i){"use strict";function o(e){return t.getAssetUrl("esri/libs/i3s/"+e)}var s;Object.defineProperty(r,"__esModule",{value:!0}),r.getWorkerModule=void 0,r.getWorkerModule=function(){if(!s){var r=n("esri-wasm")?new Promise((function(r,t){e(["./i3s"],r,t)})):new Promise((function(r,t){e(["./i3s_nowasm"],r,t)}));s=i.create((function(e){return r.then((function(r){var t=r({locateFile:o,onRuntimeInitialized:function(){return e(t)}});delete t.then}))})).catch((function(e){return i.reject(e)}))}return s}}));

@@ -6,6 +6,6 @@
     "outsideRange": "Az értéknek {min} és {max} között kell lennie",
     "invalidCodedValue": "Az érték a listában szereplő értékek egyike lehet.",
     "invalidType": "Nem érvényes érték",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "A mező tartalma legalább {min} karakter terjedelmű kell legyen"
   }
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(t,e,o,n,r){return function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.rotationEnabled=!0,e}var n;return o.__extends(e,t),n=e,e.prototype.constrain=function(t,e){return this.enabled&&e?(this.rotationEnabled||(t.rotation=e.rotation),t):t},e.prototype.clone=function(){return new n({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},o.__decorate([r.property()],e.prototype,"enabled",void 0),o.__decorate([r.property()],e.prototype,"rotationEnabled",void 0),e=n=o.__decorate([r.subclass("esri.views.2d.constraints.RotationConstraint")],e)}(n)}));
+define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(t,e,o,r,n){"use strict";return function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.enabled=!0,e.rotationEnabled=!0,e}var r;return o.__extends(e,t),r=e,e.prototype.constrain=function(t,e){return this.enabled&&e?(this.rotationEnabled||(t.rotation=e.rotation),t):t},e.prototype.clone=function(){return new r({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},o.__decorate([n.property()],e.prototype,"enabled",void 0),o.__decorate([n.property()],e.prototype,"rotationEnabled",void 0),e=r=o.__decorate([n.subclass("esri.views.2d.constraints.RotationConstraint")],e)}(r)}));

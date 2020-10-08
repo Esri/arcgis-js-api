@@ -36,5 +36,14 @@
   "verticesCount": "{count} Vertis",
   "deleteFeature": "Detayı sil",
   "deleteVertex": "Düğüm noktasını sil",
-  "duplicate": "Çoğalt"
+  "duplicate": "Çoğalt",
+  "selectCircle": "Daireyle seç",
+  "selectFeature": "Detay seç",
+  "selectFeatures": "Detayları seç",
+  "selectLasso": "Kement ile seç",
+  "selectLine": "Çizgiyle seç",
+  "selectMarquee": "Kayan yazı ile seç",
+  "selectPolygon": "Alana göre seç",
+  "selectRectangle": "Dikdörtgenle seç",
+  "clearSelection": "Seçimi temizle"
 }

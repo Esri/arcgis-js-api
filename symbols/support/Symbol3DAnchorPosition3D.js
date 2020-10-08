@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,o,r,t,p){Object.defineProperty(o,"__esModule",{value:!0});var s=function(e){function o(){var o=null!==e&&e.apply(this,arguments)||this;return o.x=0,o.y=0,o.z=0,o}var t;return r.__extends(o,e),t=o,o.prototype.clone=function(){return new t({x:this.x,y:this.y,z:this.z})},r.__decorate([p.property({type:Number})],o.prototype,"x",void 0),r.__decorate([p.property({type:Number})],o.prototype,"y",void 0),r.__decorate([p.property({type:Number})],o.prototype,"z",void 0),o=t=r.__decorate([p.subclass("esri.symbols.support.Symbol3DAnchorPosition3D")],o)}(t);o.Symbol3DAnchorPosition3D=s,o.default=s}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,o,r,t,s){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.Symbol3DAnchorPosition3D=void 0;var i=function(e){function o(){var o=null!==e&&e.apply(this,arguments)||this;return o.x=0,o.y=0,o.z=0,o}var t;return r.__extends(o,e),t=o,o.prototype.clone=function(){return new t({x:this.x,y:this.y,z:this.z})},r.__decorate([s.property({type:Number})],o.prototype,"x",void 0),r.__decorate([s.property({type:Number})],o.prototype,"y",void 0),r.__decorate([s.property({type:Number})],o.prototype,"z",void 0),o=t=r.__decorate([s.subclass("esri.symbols.support.Symbol3DAnchorPosition3D")],o)}(t);o.Symbol3DAnchorPosition3D=i,o.default=i}));

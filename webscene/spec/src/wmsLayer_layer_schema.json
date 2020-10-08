@@ -1,7 +1,7 @@
 {
   "title": "WMSLayer layer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A layer object may allow overrides on popup content and drawing behavior for individual layers of a web service.",
   "properties": {
     "legendUrl": {

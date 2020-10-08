@@ -8,9 +8,9 @@
     "currentLevel": "レベル: {{value}}"
   },
   "phase": {
-    "title": "構築フェーズ",
-    "nextPhase": "次の構築フェーズを選択",
-    "previousPhase": "前の構築フェーズを選択",
+    "title": "建設フェーズ",
+    "nextPhase": "次の建設フェーズを選択",
+    "previousPhase": "前の建設フェーズを選択",
     "currentPhase": "フェーズ: {{value}}"
   },
   "disciplines": {

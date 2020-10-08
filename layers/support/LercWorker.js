@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../core/promiseUtils","./rasterFormats/LercCodec","@dojo/framework/shim/Promise"],(function(e,r,o,t){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){}return e.prototype._decode=function(e){var r=t.decode(e.buffer,e.options);return o.resolve({result:r,transferList:[r.pixelData.buffer]})},e}();r.default=function(){return new n}}));
+define(["require","exports","../../core/promiseUtils","./rasterFormats/LercCodec","@dojo/framework/shim/Promise"],(function(e,r,t,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){}return e.prototype._decode=function(e){var r=o.decode(e.buffer,e.options);return t.resolve({result:r,transferList:[r.pixelData.buffer]})},e}();r.default=function(){return new n}}));

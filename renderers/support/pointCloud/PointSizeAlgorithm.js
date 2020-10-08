@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/jsonMap","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,t,o,r,i,p){Object.defineProperty(t,"__esModule",{value:!0}),t.typeKebabDictionary=new r.default({pointCloudFixedSizeAlgorithm:"fixed-size",pointCloudSplatAlgorithm:"splat"});var n=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(r,e),o.__decorate([p.property({type:t.typeKebabDictionary.apiValues,readOnly:!0,nonNullable:!0,json:{type:t.typeKebabDictionary.jsonValues,read:!1,write:t.typeKebabDictionary.write}})],r.prototype,"type",void 0),r=o.__decorate([p.subclass("esri.renderers.support.pointCloud.PointSizeAlgorithm")],r)}(i.JSONSupport);t.PointSizeAlgorithm=n,t.default=n}));
+define(["require","exports","tslib","../../../core/jsonMap","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,t,o,i,r,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.PointSizeAlgorithm=t.typeKebabDictionary=void 0,t.typeKebabDictionary=new i.default({pointCloudFixedSizeAlgorithm:"fixed-size",pointCloudSplatAlgorithm:"splat"});var p=function(e){function i(){return null!==e&&e.apply(this,arguments)||this}return o.__extends(i,e),o.__decorate([n.property({type:t.typeKebabDictionary.apiValues,readOnly:!0,nonNullable:!0,json:{type:t.typeKebabDictionary.jsonValues,read:!1,write:t.typeKebabDictionary.write}})],i.prototype,"type",void 0),i=o.__decorate([n.subclass("esri.renderers.support.pointCloud.PointSizeAlgorithm")],i)}(r.JSONSupport);t.PointSizeAlgorithm=p,t.default=p}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/ObjectPool","./TileAgent"],(function(e,n,t,r,o){return function(e){function n(){var n=e.call(this)||this;return n._scaleRangeEnabled=!0,n}return t.__extends(n,e),Object.defineProperty(n.prototype,"_desiredMinLevelDelta",{get:function(){return 0},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"_loadingLevelDelta",{get:function(){return 8},enumerable:!0,configurable:!0}),n.Pool=new r(n),n}(o.TileAgent)}));
+define(["require","exports","tslib","./TileAgent"],(function(e,t,n,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=function(e){function t(){var t=e.call(this)||this;return t._scaleRangeEnabled=!0,t}return n.__extends(t,e),Object.defineProperty(t.prototype,"_desiredMinLevelDelta",{get:function(){return 0},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"_loadingLevelDelta",{get:function(){return 8},enumerable:!1,configurable:!0}),t}(r.TileAgent);t.default=i}));

@@ -33,7 +33,7 @@
  * @see module:esri/layers/FeatureLayer
  *
  * @example
- * var featureForm = new FeatureForm({
+ * const featureForm = new FeatureForm({
  *   container: "formDiv",
  *   feature: graphic,
  *   formTemplate: template
@@ -110,6 +110,7 @@ const CSS = {
   errorMessage: "esri-feature-form__field-error-message",
   description: "esri-feature-form__description-text",
   dateInputPart: "esri-feature-form__date-input-part",
+  loneDateInputPart: "esri-feature-form__date-input-part--lone",
   dateInputContainer: "esri-feature-form__date-input-container",
   dateFormatHint: "esri-feature-form__date-format-hint",
 
@@ -827,7 +828,7 @@ class FeatureForm extends Widget {
     return (type === "text" && inputField.editorType === "text-area") ||
       inputField.editorType === "rich-text" ? (
       <textarea {...props} />
-    ) : type === "date" ? (
+    ) : inputField.editorType === "datetime-picker" || type === "date" ? (
       this.renderDateInputField(value as DateFieldValue, props)
     ) : (
       <input type={type === "text" ? "text" : "number"} {...props} />
@@ -843,11 +844,12 @@ class FeatureForm extends Widget {
     const dateFormatHintId = `${commonHintId}-date`;
     const timeFormatHintId = `${commonHintId}-time`;
     const inputField = props["data-field"];
+    const { includeTime } = inputField;
     const { date, time } = this._formatDate(value);
 
     return (
       <div key={`${props.key}-date`} class={CSS.dateInputContainer}>
-        <div class={CSS.dateInputPart}>
+        <div class={this.classes(CSS.dateInputPart, !includeTime ? CSS.loneDateInputPart : null)}>
           <input
             aria-label={inputField.label}
             aria-describedby={dateFormatHintId}
@@ -861,20 +863,22 @@ class FeatureForm extends Widget {
             {dateFormatHint}
           </div>
         </div>
-        <div class={CSS.dateInputPart}>
-          <input
-            aria-describedby={timeFormatHintId}
-            aria-label={inputField.label}
-            type="text"
-            {...props}
-            data-date-part="time"
-            class={this.classes(props.class, CSS.inputTime)}
-            value={time}
-          />
-          <div class={CSS.dateFormatHint} id={timeFormatHintId}>
-            {timeFormatHint}
+        {includeTime ? (
+          <div class={CSS.dateInputPart} key="time-input">
+            <input
+              aria-describedby={timeFormatHintId}
+              aria-label={inputField.label}
+              type="text"
+              {...props}
+              data-date-part="time"
+              class={this.classes(props.class, CSS.inputTime)}
+              value={time}
+            />
+            <div class={CSS.dateFormatHint} id={timeFormatHintId}>
+              {timeFormatHint}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     );
   }
@@ -923,9 +927,13 @@ class FeatureForm extends Widget {
     const inputField = props["data-field"];
 
     // only show empty option if existing value not previously set
-    if (!inputField.required && inputField.value == null) {
+    if (!inputField.required) {
       // "" is treated as null
-      options.unshift(<option value={""} key="empty-option" />);
+      options.unshift(
+        <option value={""} key="empty-option">
+          {this.messages.empty}
+        </option>
+      );
     }
 
     return (
@@ -1153,7 +1161,7 @@ class FeatureForm extends Widget {
 
       const movingToRelatedDateOrTimeInputField =
         (direction === "backward" && datePart === "time") ||
-        (direction === "forward" && datePart === "date");
+        (direction === "forward" && datePart === "date" && inputField.includeTime);
 
       if (movingToRelatedDateOrTimeInputField) {
         return;

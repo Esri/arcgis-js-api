@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/BidiEngine"],(function(e,i,r){Object.defineProperty(i,"__esModule",{value:!0});var n=new r.default;i.bidiText=function(e){return n.hasBidiChar(e)?(i="rtl"===n.checkContextual(e)?"IDNNN":"ICNNN",[n.bidiTransform(e,i,"VLYSN"),!0]):[e,!1];var i}}));
+define(["require","exports","../../../../../core/BidiEngine"],(function(e,i,r){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.bidiText=void 0;var t=new r.default;i.bidiText=function(e){return t.hasBidiChar(e)?(i="rtl"===t.checkContextual(e)?"IDNNN":"ICNNN",[t.bidiTransform(e,i,"VLYSN"),!0]):[e,!1];var i}}));

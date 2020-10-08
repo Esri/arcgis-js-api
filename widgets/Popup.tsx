@@ -55,10 +55,8 @@
 import "@dojo/framework/shim/Promise";
 
 // esri
-import { SpatialReference } from "esri/geometry";
 import Graphic = require("esri/Graphic");
 import { substitute } from "esri/intl";
-import EsriMap = require("esri/Map");
 
 // esri.core
 import Collection = require("esri/core/Collection");
@@ -93,6 +91,9 @@ import Feature = require("esri/widgets/Feature");
 import Spinner = require("esri/widgets/Spinner");
 import Widget = require("esri/widgets/Widget");
 
+// esri.widgets.Feature
+import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
+
 // esri.widgets.Feature.support
 import { FeatureContentMixin } from "esri/widgets/Feature/support/FeatureContentMixin";
 
@@ -103,6 +104,8 @@ import {
   DockOptions,
   DockOptionsBreakpoint,
   DockPosition,
+  PositionValue,
+  PositionResult,
   PopupOpenOptions,
   PopupOutsideViewOptions,
   PopupPosition,
@@ -321,7 +324,7 @@ class Popup extends FeatureContentMixin(Widget) {
         this._positionContainer()
       ),
 
-      watchUtils.watch(this, ["viewModel.visible", "dockEnabled"], () =>
+      watchUtils.watch(this, ["viewModel.active", "dockEnabled"], () =>
         this._toggleScreenLocationEnabled()
       ),
 
@@ -331,15 +334,12 @@ class Popup extends FeatureContentMixin(Widget) {
         }
       }),
 
-      watchUtils.watch<Graphic[]>(this, "viewModel.features", () => this._updateFeatureWidgets()),
-
       watchUtils.watch(
         this,
         [
           "viewModel.view.padding",
           "viewModel.view.size",
-          "viewModel.visible",
-          "viewModel.waitingForResult",
+          "viewModel.active",
           "viewModel.location",
           "alignment"
         ],
@@ -367,10 +367,6 @@ class Popup extends FeatureContentMixin(Widget) {
         this._displaySpinnerThrottled();
       }),
 
-      watchUtils.watch(this, ["featureWidgets", "viewModel.selectedFeatureIndex"], () =>
-        this._updateFeatureWidget()
-      ),
-
       watchUtils.watch<string>(this, "selectedFeatureWidget.viewModel.title", (title) =>
         this._setTitleFromFeatureWidget(title)
       ),
@@ -387,7 +383,7 @@ class Popup extends FeatureContentMixin(Widget) {
       watchUtils.whenFalse(this, "collapsed", () => {
         if (
           this.viewModel?.view?.widthBreakpoint !== "xsmall" ||
-          !this.visible ||
+          !this.viewModel.active ||
           !this.collapseEnabled
         ) {
           return;
@@ -402,7 +398,7 @@ class Popup extends FeatureContentMixin(Widget) {
   }
 
   destroy(): void {
-    this._destroyFeatureWidgets();
+    this._destroySelectedFeatureWidget();
     this._destroySpinner();
     this._handles && this._handles.destroy();
     this._handles = null;
@@ -441,6 +437,8 @@ class Popup extends FeatureContentMixin(Widget) {
   private _pointerOffsetInPx = 16;
 
   private _spinner: Spinner = null;
+
+  private _feature: Feature = null;
 
   private _displaySpinnerThrottled = throttle(
     () => this._displaySpinner(),
@@ -512,12 +510,14 @@ class Popup extends FeatureContentMixin(Widget) {
 
   @property({
     readOnly: true,
-    dependsOn: ["visible", "viewModel.featureCount", "visibleElements.featureNavigation"]
+    dependsOn: ["viewModel.active", "viewModel.featureCount", "visibleElements.featureNavigation"]
   })
   @renderable()
   protected get featureNavigationVisible(): boolean {
     return (
-      this.visible && this.viewModel.featureCount > 1 && this.visibleElements.featureNavigation
+      this.viewModel.active &&
+      this.viewModel.featureCount > 1 &&
+      this.visibleElements.featureNavigation
     );
   }
 
@@ -532,11 +532,11 @@ class Popup extends FeatureContentMixin(Widget) {
 
   @property({
     readOnly: true,
-    dependsOn: ["featureNavigationVisible", "featureMenuOpen", "visible"]
+    dependsOn: ["featureNavigationVisible", "featureMenuOpen"]
   })
   @renderable()
   protected get featureMenuVisible(): boolean {
-    return this.featureNavigationVisible && this.featureMenuOpen && this.visible;
+    return this.featureNavigationVisible && this.featureMenuOpen;
   }
 
   @property({
@@ -699,14 +699,14 @@ class Popup extends FeatureContentMixin(Widget) {
    */
 
   @property({
-    dependsOn: ["viewModel.visible"]
+    dependsOn: ["viewModel.active"]
   })
   @renderable()
   set actionsMenuOpen(value: boolean) {
     this._set("actionsMenuOpen", !!value);
   }
   get actionsMenuOpen(): boolean {
-    return this.viewModel.visible ? this._get("actionsMenuOpen") : false;
+    return this.viewModel.active ? this._get("actionsMenuOpen") : false;
   }
 
   //----------------------------------
@@ -885,7 +885,7 @@ class Popup extends FeatureContentMixin(Widget) {
    */
   @property({
     readOnly: true,
-    dependsOn: ["dockEnabled", "alignment", "visible"]
+    dependsOn: ["dockEnabled", "alignment", "viewModel.active"]
   })
   @renderable()
   get currentAlignment(): Alignment {
@@ -906,10 +906,10 @@ class Popup extends FeatureContentMixin(Widget) {
    */
   @property({
     readOnly: true,
-    dependsOn: ["viewModel.view.ready", "dockEnabled", "dockOptions", "visible"]
+    dependsOn: ["viewModel.view.ready", "dockEnabled", "dockOptions", "viewModel.active"]
   })
   @renderable()
-  get currentDockPosition(): DockPosition {
+  get currentDockPosition(): PositionResult {
     return this._getCurrentDockPosition();
   }
 
@@ -952,6 +952,10 @@ class Popup extends FeatureContentMixin(Widget) {
    * bottom-left | bottom-left | bottom 100%
    * bottom-center | bottom-center | bottom 100%
    * bottom-right | bottom-right | bottom 100%
+   *
+   * ::: esri-md class="panel trailer-1"
+   * If viewing the popup in a mobile  UI, the default dock position is bottom 100%.
+   * :::
    *
    * @example
    * view.popup.dockOptions = {
@@ -1190,19 +1194,6 @@ class Popup extends FeatureContentMixin(Widget) {
   location: Point = null;
 
   //----------------------------------
-  //  featureWidgets
-  //----------------------------------
-
-  /**
-   * @private
-   */
-  @property({
-    readOnly: true
-  })
-  @renderable()
-  featureWidgets: Feature[] = [];
-
-  //----------------------------------
   //  label
   //----------------------------------
 
@@ -1339,10 +1330,31 @@ class Popup extends FeatureContentMixin(Widget) {
    * @readonly
    */
   @property({
-    readOnly: true
+    readOnly: true,
+    dependsOn: ["viewModel.selectedFeatureViewModel", "visibleElements"]
   })
   @renderable()
-  selectedFeatureWidget: Feature = null;
+  get selectedFeatureWidget(): Feature {
+    const { _feature, visibleElements } = this;
+    const { selectedFeatureViewModel } = this.viewModel;
+    const modifiedVisibleElements = { ...visibleElements, ...{ title: false } };
+
+    if (!selectedFeatureViewModel) {
+      return null;
+    }
+
+    if (_feature) {
+      _feature.viewModel = selectedFeatureViewModel;
+      _feature.visibleElements = modifiedVisibleElements;
+    } else {
+      this._feature = new Feature({
+        viewModel: selectedFeatureViewModel,
+        visibleElements: modifiedVisibleElements
+      });
+    }
+
+    return this._feature;
+  }
 
   //----------------------------------
   //  spinnerEnabled
@@ -1432,6 +1444,7 @@ class Popup extends FeatureContentMixin(Widget) {
    */
   @property({ type: PopupViewModel })
   @renderable([
+    "viewModel.active",
     "viewModel.view.widthBreakpoint",
     "viewModel.allActions",
     "viewModel.screenLocation",
@@ -1512,10 +1525,10 @@ class Popup extends FeatureContentMixin(Widget) {
    *
    */
   blur(): void {
-    const { visible } = this;
+    const { active } = this.viewModel;
 
-    if (!visible) {
-      logger.warn("Popup cannot be blurred while visible is false");
+    if (!active) {
+      logger.warn("Popup can only be blurred when currently active.");
     }
 
     this._blurContainer = true;
@@ -1607,10 +1620,10 @@ class Popup extends FeatureContentMixin(Widget) {
    *
    */
   focus(): void {
-    const { visible } = this;
+    const { active } = this.viewModel;
 
-    if (!visible) {
-      logger.warn("Popup cannot be focused while visible is false");
+    if (!active) {
+      logger.warn("Popup can only be focused when currently active.");
     }
 
     this._focusContainer = true;
@@ -1755,18 +1768,19 @@ class Popup extends FeatureContentMixin(Widget) {
     const {
       actionsMenuOpen,
       dockEnabled,
-      visible,
       featureMenuVisible,
       dividedActions,
       currentAlignment,
       currentDockPosition
     } = this;
 
+    const { active } = this.viewModel;
+
     const { menuActions } = dividedActions;
 
-    const actionsMenuVisible = visible && menuActions.length > 1 && actionsMenuOpen;
-    const docked = visible && dockEnabled;
-    const shadowed = visible && !dockEnabled;
+    const actionsMenuVisible = active && menuActions.length > 1 && actionsMenuOpen;
+    const docked = active && dockEnabled;
+    const shadowed = active && !dockEnabled;
 
     const layerTitle = this.selectedFeature?.layer?.title;
     const layerId = this.selectedFeature?.layer?.id;
@@ -1800,7 +1814,7 @@ class Popup extends FeatureContentMixin(Widget) {
         afterCreate={this._positionContainer}
         afterUpdate={this._positionContainer}
       >
-        {visible ? [this.renderMainContainer(), this.renderPointer()] : null}
+        {active ? [this.renderMainContainer(), this.renderPointer()] : null}
       </div>
     );
   }
@@ -1811,7 +1825,13 @@ class Popup extends FeatureContentMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  protected renderLoadingContainer(): VNode {
+  protected renderLoadingIcon(): VNode {
+    return (
+      <span aria-hidden="true" class={this.classes(CSS.icon, CSS.iconLoading, CSS.rotating)} />
+    );
+  }
+
+  protected renderNavigationLoading(): VNode {
     const { messagesCommon } = this;
 
     return !!this.viewModel.pendingPromisesCount ? (
@@ -1822,7 +1842,7 @@ class Popup extends FeatureContentMixin(Widget) {
         aria-label={messagesCommon.loading}
         title={messagesCommon.loading}
       >
-        <span aria-hidden="true" class={this.classes(CSS.icon, CSS.iconLoading, CSS.rotating)} />
+        {this.renderLoadingIcon()}
       </div>
     ) : null;
   }
@@ -1920,7 +1940,7 @@ class Popup extends FeatureContentMixin(Widget) {
     return this.featureNavigationVisible
       ? [
           this.renderPreviousButton(),
-          this.renderLoadingContainer() || this.renderFeatureMenuButton(),
+          this.renderNavigationLoading() || this.renderFeatureMenuButton(),
           this.renderNextButton()
         ]
       : null;
@@ -2180,11 +2200,11 @@ class Popup extends FeatureContentMixin(Widget) {
   }
 
   protected renderFeatureMenuContainer(): VNode {
-    const { featureWidgets, messages } = this;
-    const { selectedFeatureIndex } = this.viewModel;
+    const { messages } = this;
+    const { featureViewModels } = this.viewModel;
 
     const infoText = substitute(messages.selectedFeatures, {
-      total: featureWidgets.length
+      total: featureViewModels.length
     });
 
     return (
@@ -2195,7 +2215,7 @@ class Popup extends FeatureContentMixin(Widget) {
           afterCreate={this._featureMenuViewportNodeUpdated}
           afterUpdate={this._featureMenuViewportNodeUpdated}
         >
-          {this.renderFeatureMenu(featureWidgets, selectedFeatureIndex)}
+          {this.renderFeatureMenu()}
         </nav>
       </section>
     );
@@ -2239,9 +2259,6 @@ class Popup extends FeatureContentMixin(Widget) {
       currentDockPosition === "bottom-center" ||
       currentDockPosition === "bottom-right";
 
-    const featuremenuContainerNode = this.renderFeatureMenuContainer();
-    const footerNode = this.renderFooter();
-
     const mainContainerClasses = {
       [CSS.shadow]: dockEnabled,
       [CSS.isCollapsible]: collapsible,
@@ -2260,12 +2277,12 @@ class Popup extends FeatureContentMixin(Widget) {
         afterCreate={this._mainContainerNodeUpdated}
         afterUpdate={this._mainContainerNodeUpdated}
       >
-        {showButtonsTop ? footerNode : null}
-        {showButtonsTop ? featuremenuContainerNode : null}
+        {showButtonsTop ? this.renderFooter() : null}
+        {showButtonsTop ? this.renderFeatureMenuContainer() : null}
         {this.renderHeader()}
         {this.renderContentContainer()}
-        {showButtonsBottom ? footerNode : null}
-        {showButtonsBottom ? featuremenuContainerNode : null}
+        {showButtonsBottom ? this.renderFooter() : null}
+        {showButtonsBottom ? this.renderFeatureMenuContainer() : null}
       </div>
     );
   }
@@ -2372,13 +2389,10 @@ class Popup extends FeatureContentMixin(Widget) {
     return action.visible ? baseNode : null;
   }
 
-  protected renderFeatureMenuItem(
-    featureWidget: Feature,
-    featureWidgetIndex: number,
-    selectedFeatureIndex: number
-  ): VNode {
+  protected renderFeatureMenuItem(featureVM: FeatureViewModel, featureVMIndex: number): VNode {
     const { messages, messagesCommon } = this;
-    const isSelectedFeature = featureWidgetIndex === selectedFeatureIndex;
+    const { selectedFeatureIndex, selectedFeatureViewModel } = this.viewModel;
+    const isSelectedFeature = featureVM === selectedFeatureViewModel;
 
     const itemClasses = {
       [CSS.featureMenuSelected]: isSelectedFeature
@@ -2393,7 +2407,7 @@ class Popup extends FeatureContentMixin(Widget) {
       />
     ) : null;
 
-    const titleNode = <span innerHTML={featureWidget.title || messagesCommon.untitled} />;
+    const titleNode = <span innerHTML={featureVM.title || messagesCommon.untitled} />;
 
     return (
       <li
@@ -2402,7 +2416,7 @@ class Popup extends FeatureContentMixin(Widget) {
         key={buildKey(`feature-menu-feature-${selectedFeatureIndex}`)}
         class={this.classes(itemClasses, CSS.featureMenuItem)}
         bind={this}
-        data-feature-index={featureWidgetIndex}
+        data-feature-index={featureVMIndex}
         onkeyup={this._handleFeatureMenuItemKeyup}
         onclick={this._selectFeature}
         onkeydown={this._selectFeature}
@@ -2415,10 +2429,11 @@ class Popup extends FeatureContentMixin(Widget) {
     );
   }
 
-  protected renderFeatureMenu(featureWidgets: Feature[], selectedFeatureIndex: number): VNode {
+  protected renderFeatureMenu(): VNode {
     const { featureMenuId } = this;
+    const { featureViewModels } = this.viewModel;
 
-    return featureWidgets.length > 1 ? (
+    return featureViewModels.length > 1 ? (
       <ol
         class={CSS.featureMenuList}
         id={featureMenuId}
@@ -2428,9 +2443,7 @@ class Popup extends FeatureContentMixin(Widget) {
         onkeyup={this._handleFeatureMenuKeyup}
         role="menu"
       >
-        {featureWidgets.map((featureWidget, featureWidgetIndex) =>
-          this.renderFeatureMenuItem(featureWidget, featureWidgetIndex, selectedFeatureIndex)
-        )}
+        {featureViewModels.map((featureVM, index) => this.renderFeatureMenuItem(featureVM, index))}
       </ol>
     ) : null;
   }
@@ -2766,71 +2779,15 @@ class Popup extends FeatureContentMixin(Widget) {
     this.featureMenuOpen = false;
   }
 
-  private _updateFeatureWidget(): void {
-    const { featureWidgets } = this;
+  private _destroySelectedFeatureWidget(): void {
+    const { _feature } = this;
 
-    const { selectedFeatureIndex } = this.viewModel;
-    const newSelectedFeatureWidget = featureWidgets[selectedFeatureIndex] || null;
-
-    this._set("selectedFeatureWidget", newSelectedFeatureWidget);
-  }
-
-  private _destroyFeatureWidgets(): void {
-    this.featureWidgets.forEach(
-      (featureWidget) => featureWidget && !featureWidget.destroyed && featureWidget.destroy()
-    );
-    this._set("featureWidgets", []);
-  }
-
-  private async _updateFeatureWidgets(): Promise<void> {
-    const { features, featureWidgets } = this;
-
-    if (!features || !features.length) {
-      this._destroyFeatureWidgets();
-      return;
+    if (_feature) {
+      _feature.viewModel = null;
+      _feature && !_feature.destroyed && _feature.destroy();
     }
 
-    const Feature = await import("./Feature");
-    const featureWidgetsCopy = featureWidgets.slice(0);
-    const newFeatureWidgets: Feature[] = [];
-
-    features.forEach((feature, featureIndex) => {
-      if (!feature) {
-        return;
-      }
-
-      let foundWidget: Feature = null;
-
-      featureWidgetsCopy.some((featureWidget, featureWidgetIndex) => {
-        if (featureWidget && featureWidget.graphic === feature) {
-          foundWidget = featureWidget;
-          featureWidgetsCopy.splice(featureWidgetIndex, 1);
-        }
-
-        return !!foundWidget;
-      });
-
-      if (foundWidget) {
-        newFeatureWidgets[featureIndex] = foundWidget;
-      } else {
-        const featureWidget = new Feature({
-          defaultPopupTemplateEnabled: this.defaultPopupTemplateEnabled,
-          graphic: feature,
-          spatialReference: this.get<SpatialReference>("view.spatialReference"),
-          map: this.get<EsriMap>("view.map")
-        });
-
-        featureWidget.visibleElements = { ...featureWidget.visibleElements, ...{ title: false } };
-
-        newFeatureWidgets[featureIndex] = featureWidget;
-      }
-    });
-
-    featureWidgetsCopy.forEach(
-      (featureWidget) => featureWidget && !featureWidget.destroyed && featureWidget.destroy()
-    );
-
-    this._set("featureWidgets", newFeatureWidgets);
+    this._feature = null;
   }
 
   private _isScreenLocationWithinView(
@@ -2873,7 +2830,11 @@ class Popup extends FeatureContentMixin(Widget) {
     return false;
   }
 
-  private _determineCurrentAlignment(): Alignment {
+  private _calculateAutoAlignment(alignment: PositionValue): Exclude<PositionValue, "auto"> {
+    if (alignment !== "auto") {
+      return alignment;
+    }
+
     const {
       _pointerOffsetInPx: pointerOffset,
       _containerNode: containerNode,
@@ -2958,20 +2919,20 @@ class Popup extends FeatureContentMixin(Widget) {
       : "top-center";
   }
 
-  private _getCurrentAlignment(): Alignment {
-    const { alignment, dockEnabled, visible } = this;
+  private _callCurrentAlignment(alignment: Alignment): PositionValue {
+    return typeof alignment === "function" ? alignment.call(this) : alignment;
+  }
 
-    if (dockEnabled || !visible) {
+  private _getCurrentAlignment(): PositionResult {
+    const { alignment, dockEnabled } = this;
+
+    if (dockEnabled || !this.viewModel.active) {
       return null;
     }
 
-    const currentAlignment =
-      alignment === "auto"
-        ? this._determineCurrentAlignment()
-        : typeof alignment === "function"
-        ? alignment.call(this)
-        : alignment;
-    return currentAlignment;
+    return this._calculatePositionResult(
+      this._calculateAutoAlignment(this._callCurrentAlignment(alignment))
+    );
   }
 
   private _setCurrentAlignment(): void {
@@ -2982,27 +2943,42 @@ class Popup extends FeatureContentMixin(Widget) {
     this._set("currentDockPosition", this._getCurrentDockPosition());
   }
 
-  private _getDockPosition(): DockPosition {
-    const dockPosition = this.get<DockPosition>("dockOptions.position");
-    const position =
-      dockPosition === "auto"
-        ? this._determineCurrentDockPosition()
-        : typeof dockPosition === "function"
-        ? dockPosition.call(this)
-        : dockPosition;
-    return position;
+  private _calculatePositionResult(position: PositionValue): PositionResult {
+    const values = ["left", "right"];
+
+    if (widgetUtils.isRTL()) {
+      values.reverse();
+    }
+
+    return position
+      .replace(/leading/gi, values[0])
+      .replace(/trailing/gi, values[1]) as PositionResult;
   }
 
-  private _getCurrentDockPosition(): DockPosition {
-    return this.dockEnabled && this.visible ? this._getDockPosition() : null;
+  private _callDockPosition(dockPosition: DockPosition): PositionValue {
+    return typeof dockPosition === "function" ? dockPosition.call(this) : dockPosition;
   }
 
-  private _wouldDockTo(): DockPosition {
+  private _getDockPosition(): PositionResult {
+    return this._calculatePositionResult(
+      this._calculateAutoDockPosition(this._callDockPosition(this.dockOptions?.position))
+    );
+  }
+
+  private _getCurrentDockPosition(): PositionResult {
+    return this.dockEnabled && this.viewModel.active ? this._getDockPosition() : null;
+  }
+
+  private _wouldDockTo(): PositionResult {
     return !this.dockEnabled ? this._getDockPosition() : null;
   }
 
-  private _determineCurrentDockPosition(): string {
-    const view = this.get<MapView | SceneView>("viewModel.view");
+  private _calculateAutoDockPosition(dockPosition: PositionValue): Exclude<PositionValue, "auto"> {
+    if (dockPosition !== "auto") {
+      return dockPosition;
+    }
+
+    const view = this.viewModel?.view;
     const defaultDockPosition = widgetUtils.isRTL() ? "top-left" : "top-right";
 
     if (!view) {
@@ -3011,7 +2987,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
     const viewPadding = view.padding || { left: 0, right: 0, top: 0, bottom: 0 };
     const viewWidth = view.width - viewPadding.left - viewPadding.right;
-    const breakpoints = view.get<Breakpoints>("breakpoints");
+    const { breakpoints } = view;
 
     if (breakpoints && viewWidth <= breakpoints.xsmall) {
       return "bottom-center";
@@ -3325,13 +3301,13 @@ class Popup extends FeatureContentMixin(Widget) {
   }
 
   private _toggleScreenLocationEnabled(): void {
-    const { dockEnabled, visible, viewModel } = this;
+    const { dockEnabled, viewModel } = this;
 
     if (!viewModel) {
       return;
     }
 
-    const screenLocationEnabled = visible && !dockEnabled;
+    const screenLocationEnabled = viewModel.active && !dockEnabled;
     viewModel.screenLocationEnabled = screenLocationEnabled;
   }
 

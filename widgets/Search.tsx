@@ -41,9 +41,6 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-// @dojo.framework.shim
-import { from } from "@dojo/framework/shim/array";
-
 // esri
 import Graphic = require("esri/Graphic");
 import { substitute } from "esri/intl";
@@ -93,7 +90,7 @@ import SearchMessages from "esri/widgets/Search/t9n/Search";
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
 import {
-  accessibleHandler,
+  keepMenuItemWithinView,
   messageBundle,
   renderable,
   storeNode,
@@ -142,6 +139,7 @@ const CSS = {
   menuList: "esri-menu__list",
   menuItem: "esri-menu__list-item",
   menuItemActive: "esri-menu__list-item--active",
+  menuItemFocus: "esri-menu__list-item--focus",
   menuHeader: "esri-menu__header",
   loadingIcon: "esri-icon-loading-indicator esri-rotating",
   searchIcon: "esri-icon-search",
@@ -411,9 +409,13 @@ class Search extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  private _activeMenuItemIndex = -1;
+
   private _handles = new Handles();
 
   private _inputNode: HTMLInputElement = null;
+
+  private _menuItemCount = 0;
 
   private _sourceMenuButtonNode: HTMLDivElement = null;
 
@@ -443,7 +445,7 @@ class Search extends Widget {
   })
   @renderable()
   protected get suggestionsMenuId(): string {
-    return `${this.id}-suggest-menu`;
+    return this._buildId("suggest-menu");
   }
 
   @property({
@@ -452,7 +454,7 @@ class Search extends Widget {
   })
   @renderable()
   protected get sourceMenuId(): string {
-    return `${this.id}-source-menu`;
+    return this._buildId("source-menu");
   }
 
   //--------------------------------------------------------------------------
@@ -1334,19 +1336,16 @@ class Search extends Widget {
     const { messages } = this;
 
     return (
-      <div
-        key="esri-search__submit-button"
+      <button
+        aria-label={messages.searchButtonTitle}
         bind={this}
-        role="button"
-        title={messages.searchButtonTitle}
         class={this.classes(CSS.submitButton, CSS.button)}
-        tabindex="0"
+        key="esri-search__submit-button"
         onclick={this._handleSearchButtonClick}
-        onkeydown={this._handleSearchButtonClick}
+        title={messages.searchButtonTitle}
       >
         <span aria-hidden="true" role="presentation" class={CSS.searchIcon} />
-        <span class={CSS.fallbackText}>{messages.searchButtonTitle}</span>
-      </div>
+      </button>
     );
   }
 
@@ -1362,17 +1361,19 @@ class Search extends Widget {
     const { messages, activeMenu, sourceMenuId } = this;
     const { activeSourceIndex, allSources } = this.viewModel;
 
+    const activeDescendantId =
+      activeMenu === "source" ? this._buildId("source-item", activeSourceIndex) : null;
+
     return allSources.length > 1 ? (
-      <div
+      <button
+        aria-activedescendant={activeDescendantId}
         key="esri-search__source-menu-button"
         bind={this}
-        role="button"
         title={messages.searchIn}
         aria-haspopup="true"
         aria-expanded={activeMenu === "source"}
         aria-controls={sourceMenuId}
         class={this.classes(CSS.sourcesButton, CSS.button)}
-        tabindex="0"
         onkeydown={this._handleSourceMenuButtonKeydown}
         onclick={this._handleSourcesMenuToggleClick}
         onkeyup={this._handleSourceMenuButtonKeyup}
@@ -1383,7 +1384,7 @@ class Search extends Widget {
         <span aria-hidden="true" role="presentation" class={CSS.dropdownIcon} />
         <span aria-hidden="true" role="presentation" class={CSS.dropupIcon} />
         <span class={CSS.sourceName}>{this._getSourceName(activeSourceIndex)}</span>
-      </div>
+      </button>
     ) : null;
   }
 
@@ -1409,11 +1410,7 @@ class Search extends Widget {
     const { allSources } = this.viewModel;
 
     return allSources.length > 1 ? (
-      <div
-        tabIndex={0}
-        key="esri-search__source-menu"
-        class={this.classes(CSS.menu, CSS.sourcesMenu)}
-      >
+      <div key="esri-search__source-menu" class={this.classes(CSS.menu, CSS.sourcesMenu)}>
         {this.renderSourcesList()}
       </div>
     ) : null;
@@ -1461,25 +1458,23 @@ class Search extends Widget {
 
   protected renderClearButton(): VNode {
     return this.searchTerm ? (
-      <div
-        key="esri-search__clear-button"
+      <button
         bind={this}
-        role="button"
         class={this.classes(CSS.clearButton, CSS.button)}
-        tabindex="0"
-        title={this.messages.clearButtonTitle}
-        onfocus={this._clearButtonFocus}
+        key="esri-search__clear-button"
         onclick={this._handleClearButtonClick}
-        onkeydown={this._handleClearButtonClick}
+        onfocus={this._clearButtonFocus}
+        title={this.messages.clearButtonTitle}
       >
         <span aria-hidden="true" class={CSS.clearIcon} />
-      </div>
+      </button>
     ) : null;
   }
 
   protected renderLocationGroup(): VNode {
     const { messages, locationEnabled, displayedSearchTerm } = this;
     const showLocationOption = locationEnabled && !displayedSearchTerm;
+    const focused = this._activeMenuItemIndex === 0;
 
     return showLocationOption ? (
       <ul
@@ -1489,12 +1484,10 @@ class Search extends Widget {
       >
         <li
           bind={this}
+          data-current-location-item={true}
           onclick={this._handleUseCurrentLocationClick}
-          onkeydown={this._handleUseCurrentLocationClick}
-          onkeyup={this._handleSuggestionKeyup}
           role="menuitem"
-          class={CSS.menuItem}
-          tabindex="-1"
+          class={this.classes(CSS.menuItem, focused ? CSS.menuItemFocus : null)}
         >
           <span aria-hidden="true" role="presentation" class={CSS.locate} />{" "}
           {messages.useCurrentLocation}
@@ -1504,28 +1497,36 @@ class Search extends Widget {
   }
 
   protected renderInput(): VNode {
-    const { locationEnabled, displayedSearchTerm, messages, suggestionsMenuId } = this;
+    const {
+      _activeMenuItemIndex,
+      activeMenu,
+      locationEnabled,
+      displayedSearchTerm,
+      messages,
+      suggestionsMenuId
+    } = this;
     const { maxInputLength, placeholder, searchTerm, suggestionCount } = this.viewModel;
 
     const showLocationOption = locationEnabled && !displayedSearchTerm;
     const hasSuggestions = showLocationOption || suggestionCount;
+    const activeDescendantId =
+      activeMenu === "suggestion" ? this._buildId("suggestion-item", _activeMenuItemIndex) : null;
 
     return (
       <input
+        aria-activedescendant={activeDescendantId}
         bind={this}
         placeholder={placeholder}
         aria-label={messages.searchButtonTitle}
         maxlength={maxInputLength}
         autocomplete="off"
         type="text"
-        tabindex="0"
         class={this.classes(CSS.esriInput, CSS.input)}
         aria-autocomplete="list"
         value={searchTerm}
         aria-haspopup="true"
         aria-owns={hasSuggestions ? suggestionsMenuId : null}
         role="textbox"
-        onkeydown={this._handleInputKeydown}
         onkeyup={this._handleInputKeyup}
         onclick={this._handleInputClick}
         oninput={this._handleInputPaste}
@@ -1566,9 +1567,7 @@ class Search extends Widget {
         key={`esri-search__suggestion-list-${sourceIndex}`}
         class={this.classes(CSS.menuList, CSS.suggestionList)}
       >
-        {results.map((suggestion, suggestionIndex) =>
-          this.renderSuggestion(suggestion, suggestionIndex)
-        )}
+        {results.map((suggestion) => this.renderSuggestion(suggestion, this._menuItemCount++))}
       </ul>
     ) : null;
   }
@@ -1589,6 +1588,7 @@ class Search extends Widget {
     const { suggestionCount } = this.viewModel;
     const showLocationOption = locationEnabled && !displayedSearchTerm;
     const hasSuggestions = showLocationOption || suggestionCount;
+    this._menuItemCount = 0;
 
     return hasSuggestions ? (
       <div
@@ -1633,11 +1633,11 @@ class Search extends Widget {
   }
 
   protected renderSuggestion(suggestion: SuggestResult, suggestionIndex: number): VNode {
-    const { messages } = this;
+    const { _activeMenuItemIndex, messages } = this;
     const { searchTerm } = this.viewModel;
     if (searchTerm) {
       const { text } = suggestion;
-      const resultText = text || (messages.untitledResult as string);
+      const resultText = text || messages.untitledResult;
       const containsHTML = regexContainsHTML.test(resultText);
       const matches: VNode[] = [];
       if (containsHTML) {
@@ -1656,17 +1656,17 @@ class Search extends Widget {
         });
       }
 
+      const focused = _activeMenuItemIndex === suggestionIndex;
+
       return (
         <li
           bind={this}
+          id={this._buildId("suggestion-item", suggestionIndex)}
           onclick={this._handleSuggestionClick}
-          onkeydown={this._handleSuggestionClick}
-          onkeyup={this._handleSuggestionKeyup}
-          key={`esri-search__suggestion$-{sourceIndex}_${suggestionIndex}`}
+          key={`esri-search__suggestion_${suggestionIndex}`}
           data-suggestion={suggestion}
           role="menuitem"
-          class={CSS.menuItem}
-          tabindex="-1"
+          class={this.classes(CSS.menuItem, focused ? CSS.menuItemFocus : null)}
         >
           {matches}
         </li>
@@ -1677,23 +1677,24 @@ class Search extends Widget {
   }
 
   protected renderSource(sourceIndex: number): VNode {
-    const { activeSourceIndex } = this.viewModel;
+    const { activeSourceIndex, searchAllEnabled } = this.viewModel;
 
     const itemClasses = {
-      [CSS.menuItemActive]: sourceIndex === activeSourceIndex
+      [CSS.menuItemActive]: sourceIndex === activeSourceIndex,
+      [CSS.menuItemFocus]:
+        sourceIndex ===
+        (searchAllEnabled ? this._activeMenuItemIndex - 1 : this._activeMenuItemIndex)
     };
 
     return (
       <li
         bind={this}
         key={`esri-search__source-${sourceIndex}`}
+        id={this._buildId("source-item", sourceIndex)}
         onclick={this._handleSourceClick}
-        onkeydown={this._handleSourceClick}
-        onkeyup={this._handleSourceKeyup}
         data-source-index={sourceIndex}
         role="menuitem"
         class={this.classes(CSS.source, CSS.menuItem, itemClasses)}
-        tabindex="-1"
       >
         {this._getSourceName(sourceIndex)}
       </li>
@@ -1760,6 +1761,10 @@ class Search extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  private _buildId(type: string, index?: number): string {
+    return `${this.id}-${type}${index === undefined ? "" : `-${index}`}`;
+  }
+
   private _watchSourceChanges(): void {
     const {
       _handles,
@@ -1777,54 +1782,35 @@ class Search extends Widget {
     );
   }
 
-  private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
-    const key = eventKey(event);
-
-    if (key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home") {
-      event.preventDefault();
-      event.stopPropagation();
-      this.activeMenu = "source";
-      return;
-    }
-
-    this._handleSourcesMenuToggleClick(event);
-  }
-
-  @accessibleHandler()
-  private _handleSourcesMenuToggleClick(event: KeyboardEvent | MouseEvent): void {
+  private _handleSourcesMenuToggleClick(): void {
     const isSourceActive = this.activeMenu === "source";
-    this.activeMenu = isSourceActive ? "none" : "source";
-
-    this.renderNow();
 
     if (isSourceActive) {
-      this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
+      const list = this._sourceListNode.getElementsByTagName("li");
+      const item = list[this._activeMenuItemIndex];
+      this._setSourceFromMenuItem(item);
+
       return;
     }
 
-    const list = this._sourceListNode ? this._sourceListNode.getElementsByTagName("li") : null;
+    this.activeMenu = "source";
+    this.renderNow();
 
-    if (!list) {
-      return;
-    }
-
-    const key = eventKey(event as KeyboardEvent);
-    const focusNode = key === "End" ? list[list.length - 1] : list[0];
-    focusNode && focusNode.focus();
+    this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
+    this._activeMenuItemIndex = this.searchAllEnabled
+      ? this.activeSourceIndex + 1
+      : this.activeSourceIndex;
   }
 
-  @accessibleHandler()
   private _handleClearButtonClick(): void {
     this.viewModel.clear();
     this._focus();
   }
 
-  @accessibleHandler()
   private _handleSearchButtonClick(): void {
     this.search();
   }
 
-  @accessibleHandler()
   private _handleSuggestionClick(event: Event): void {
     const node = event.currentTarget as HTMLElement;
     const suggestResult = node["data-suggestion"] as SuggestResult;
@@ -1834,8 +1820,11 @@ class Search extends Widget {
     }
   }
 
-  @accessibleHandler()
   private _handleUseCurrentLocationClick(): void {
+    this._useCurrentLocation();
+  }
+
+  private _useCurrentLocation(): void {
     this._focus("none");
 
     this._cancelSuggest();
@@ -1857,10 +1846,12 @@ class Search extends Widget {
       });
   }
 
-  @accessibleHandler()
   private _handleSourceClick(event: Event): void {
-    const node = event.currentTarget as HTMLElement;
-    const sourceIndex = node["data-source-index"] as number;
+    this._setSourceFromMenuItem(event.currentTarget as HTMLElement);
+  }
+
+  private _setSourceFromMenuItem(item: HTMLElement): void {
+    const sourceIndex = item["data-source-index"] as number;
     this.viewModel.activeSourceIndex = sourceIndex;
     this._focus("none");
   }
@@ -1909,14 +1900,6 @@ class Search extends Widget {
     this._locateFailed = false;
   }
 
-  private _handleInputKeydown(event: KeyboardEvent): void {
-    const key = eventKey(event);
-
-    if (key === "Tab" || key === "Escape" || (event.shiftKey && key === "Tab")) {
-      this._cancelSuggest();
-    }
-  }
-
   private _handleInputKeyup(event: KeyboardEvent): void {
     const key = eventKey(event);
 
@@ -1926,12 +1909,7 @@ class Search extends Widget {
       key === "Copy" ||
       key === "ArrowLeft" ||
       key === "ArrowRight" ||
-      key === "Enter" ||
       key === "Shift";
-
-    const list = this._suggestionListNode
-      ? this._suggestionListNode.getElementsByTagName("li")
-      : null;
 
     if (isIgnorableKey) {
       return;
@@ -1944,18 +1922,41 @@ class Search extends Widget {
         this.activeMenu = "none";
       }
 
+      this._activeMenuItemIndex = -1;
       return;
     }
 
-    if ((key === "ArrowUp" || key === "ArrowDown") && list) {
-      this.activeMenu = "suggestion";
-      event.stopPropagation();
-      event.preventDefault();
-      this._cancelSuggest();
-      const focusIndex = key === "ArrowUp" ? list.length - 1 : 0;
-      const focusNode = list[focusIndex];
-      focusNode && focusNode.focus();
-      return;
+    const isNavigationKey =
+      key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown";
+
+    const list = this._suggestionListNode.getElementsByTagName("li");
+
+    if (list.length > 0) {
+      if (this.activeMenu !== "suggestion") {
+        this.activeMenu = "suggestion";
+      }
+
+      if (isNavigationKey) {
+        event.preventDefault();
+        this._cancelSuggest();
+        this.handleItemNavigation(key, list, this._suggestionListNode);
+        return;
+      }
+
+      const item = list[this._activeMenuItemIndex];
+
+      if (key === "Enter" && item) {
+        const suggestResult = item["data-suggestion"] as SuggestResult;
+
+        if (suggestResult) {
+          this._focus();
+          this.search(suggestResult);
+        } else if (item["data-current-location-item"]) {
+          this._useCurrentLocation();
+        }
+
+        return;
+      }
     }
 
     if (!this.viewModel.searchTerm) {
@@ -1963,6 +1964,36 @@ class Search extends Widget {
     }
 
     this.suggest();
+  }
+
+  private handleItemNavigation(
+    key: string,
+    items: HTMLCollectionOf<HTMLLIElement>,
+    scroller: HTMLElement
+  ): void {
+    const originalIndex = this._activeMenuItemIndex;
+
+    if (key === "Home") {
+      this._activeMenuItemIndex = 0;
+    }
+
+    if (key === "End") {
+      this._activeMenuItemIndex = items.length - 1;
+    }
+
+    if (key === "ArrowUp") {
+      this._activeMenuItemIndex =
+        this._activeMenuItemIndex === 0 ? items.length - 1 : this._activeMenuItemIndex - 1;
+    }
+
+    if (key === "ArrowDown") {
+      this._activeMenuItemIndex =
+        this._activeMenuItemIndex === items.length - 1 ? 0 : this._activeMenuItemIndex + 1;
+    }
+
+    if (originalIndex !== this._activeMenuItemIndex) {
+      keepMenuItemWithinView(items[this._activeMenuItemIndex], scroller);
+    }
   }
 
   private _scrollToTopSuggestion(): void {
@@ -1989,90 +2020,21 @@ class Search extends Widget {
     this.suggest();
   }
 
+  private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
+    const key = eventKey(event);
+
+    if (key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home") {
+      event.preventDefault();
+    }
+  }
+
   private _handleSourceMenuButtonKeyup(event: KeyboardEvent): void {
     const key = eventKey(event);
+    const isNavigationKey =
+      key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home";
 
-    if (key !== "ArrowUp" && key !== "ArrowDown" && key !== "Home" && key !== "End") {
-      return;
-    }
-
-    event.stopPropagation();
-    event.preventDefault();
-
-    const list = this._sourceListNode ? this._sourceListNode.getElementsByTagName("li") : null;
-
-    if (!list) {
-      return;
-    }
-
-    const cursorIndex = key === "ArrowUp" || key === "End" ? list.length - 1 : 0;
-    const focusNode = list[cursorIndex];
-    focusNode && focusNode.focus();
-  }
-
-  private _handleSourceKeyup(event: KeyboardEvent): void {
-    const node = event.target as HTMLLIElement;
-    const list = this._sourceListNode
-      ? from(this._sourceListNode.getElementsByTagName("li"))
-      : null;
-    const key = eventKey(event);
-
-    if (key === "Escape") {
-      this._focus("none");
-      this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
-      return;
-    }
-
-    if (list) {
-      const itemIndex = list.indexOf(node);
-
-      if (key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown") {
-        event.stopPropagation();
-        event.preventDefault();
-      }
-
-      if (key === "Home") {
-        const homeFocusNode = list[0];
-        homeFocusNode && homeFocusNode.focus();
-        return;
-      }
-
-      if (key === "End") {
-        const endFocusNode = list[list.length - 1];
-        endFocusNode && endFocusNode.focus();
-        return;
-      }
-
-      if (key === "ArrowUp") {
-        const previousItemIndex = itemIndex - 1;
-        const previousFocusNode =
-          previousItemIndex < 0 ? this._sourceMenuButtonNode : list[previousItemIndex];
-        previousFocusNode && previousFocusNode.focus();
-        return;
-      }
-
-      if (key === "ArrowDown") {
-        const nextItemIndex = itemIndex + 1;
-        const nextFocusNode =
-          nextItemIndex >= list.length ? this._sourceMenuButtonNode : list[nextItemIndex];
-        nextFocusNode && nextFocusNode.focus();
-      }
-    }
-  }
-
-  private _handleSuggestionKeyup(event: KeyboardEvent): void {
-    const node = event.target as HTMLLIElement;
-    const list = this._suggestionListNode
-      ? from(this._suggestionListNode.getElementsByTagName("li"))
-      : null;
-    const itemIndex = list.indexOf(node);
-    const key = eventKey(event);
-
-    this._cancelSuggest();
-
-    if (key === "Backspace" || key === "Delete") {
-      this._focus();
-      return;
+    if (isNavigationKey) {
+      event.preventDefault();
     }
 
     if (key === "Escape") {
@@ -2080,41 +2042,25 @@ class Search extends Widget {
       return;
     }
 
-    if (list) {
-      if (key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown") {
-        event.stopPropagation();
-        event.preventDefault();
+    const list = this._sourceListNode.getElementsByTagName("li");
+
+    if (list.length === 0) {
+      return;
+    }
+
+    if (isNavigationKey) {
+      if (this.activeMenu !== "source") {
+        this.activeMenu = "source";
       }
 
-      if (key === "Home") {
-        const homeFocusNode = list[0];
-        homeFocusNode && homeFocusNode.focus();
-      }
-
-      if (key === "End") {
-        const endFocusNode = list[list.length - 1];
-        endFocusNode && endFocusNode.focus();
-      }
-
-      if (key === "ArrowUp") {
-        const previousItemIndex = itemIndex - 1;
-        const previousFocusNode =
-          previousItemIndex < 0 ? list[list.length - 1] : list[previousItemIndex];
-        previousFocusNode && previousFocusNode.focus();
-        return;
-      }
-
-      if (key === "ArrowDown") {
-        const nextItemIndex = itemIndex + 1;
-        const nextFocusNode = nextItemIndex >= list.length ? list[0] : list[nextItemIndex];
-        nextFocusNode && nextFocusNode.focus();
-        return;
-      }
+      this.handleItemNavigation(key, list, this._sourceListNode.parentElement);
+      return;
     }
   }
 
   private _focus(activeMenu?: ActiveMenu): void {
     this.focus();
+    this._activeMenuItemIndex = -1;
 
     if (!activeMenu) {
       return;
@@ -2125,7 +2071,10 @@ class Search extends Widget {
 
   private _formSubmit(event: Event): void {
     event.preventDefault();
-    this.search();
+
+    if (this._activeMenuItemIndex === -1) {
+      this.search();
+    }
   }
 
   private _getSourceName(sourceIndex: number): string {

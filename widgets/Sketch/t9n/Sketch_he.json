@@ -36,5 +36,14 @@
   "verticesCount": "{count} נקודות מפנה",
   "deleteFeature": "מחק ישות",
   "deleteVertex": "מחק נקודת מפנה",
-  "duplicate": "שכפול"
+  "duplicate": "שכפול",
+  "selectCircle": "בחירה לפי מעגל",
+  "selectFeature": "בחר ישות",
+  "selectFeatures": "בחר ישויות",
+  "selectLasso": "בחירה לפי לאסו",
+  "selectLine": "בחירה לפי קו",
+  "selectMarquee": "בחר לפי כתובית",
+  "selectPolygon": "בחירה לפי פוליגון",
+  "selectRectangle": "בחר בעזרת מלבן",
+  "clearSelection": "נקה בחירה"
 }

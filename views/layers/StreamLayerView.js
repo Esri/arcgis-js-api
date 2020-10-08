@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./support/FeatureFilter"],(function(e,r,t,o,n){Object.defineProperty(r,"__esModule",{value:!0}),r.StreamLayerView=function(e){return function(e){function r(){for(var r=[],t=0;t<arguments.length;t++)r[t]=arguments[t];var o=e.apply(this,r)||this;return o.connectionError=null,o.connectionStatus="disconnected",o.filter=null,o}return t.__extends(r,e),t.__decorate([o.property({readOnly:!0})],r.prototype,"connectionError",void 0),t.__decorate([o.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],r.prototype,"connectionStatus",void 0),t.__decorate([o.property({type:n})],r.prototype,"filter",void 0),r=t.__decorate([o.subclass("esri.layers.mixins.StreamLayerView")],r)}(e)}}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./support/FeatureFilter"],(function(e,r,t,o,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.StreamLayerView=void 0,r.StreamLayerView=function(e){return function(e){function r(){for(var r=[],t=0;t<arguments.length;t++)r[t]=arguments[t];var o=e.apply(this,r)||this;return o.connectionError=null,o.connectionStatus="disconnected",o.filter=null,o}return t.__extends(r,e),t.__decorate([o.property({readOnly:!0})],r.prototype,"connectionError",void 0),t.__decorate([o.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],r.prototype,"connectionStatus",void 0),t.__decorate([o.property({type:n})],r.prototype,"filter",void 0),r=t.__decorate([o.subclass("esri.layers.mixins.StreamLayerView")],r)}(e)}}));

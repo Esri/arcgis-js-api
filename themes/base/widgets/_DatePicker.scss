@@ -38,7 +38,7 @@
   }
 
   .esri-date-picker__date {
-    margin: 0 $cap-spacing 0 0;
+    margin: 0 $cap-spacing--double 0 0;
   }
 
   .esri-date-picker__calendar-toggle {
@@ -118,14 +118,31 @@
     cursor: auto;
   }
 
+  .esri-date-picker__input {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+  }
+
+  .esri-date-picker__text-input.esri-input {
+    margin: 0;
+    padding-left: $side-spacing--double;
+    border: none;
+  }
+
+  .esri-date-picker__icon--leading {
+    position: absolute;
+    left: $side-spacing--half;
+  }
+
   html[dir="rtl"] {
     .esri-date-picker__calendar {
-      left: auto;
       right: 0;
     }
 
     .esri-date-picker__date {
-      margin: 0 0 0 $cap-spacing;
+      margin: 0 0 0 $cap-spacing--double;
     }
 
     .esri-date-picker__day-item:first-child {
@@ -134,6 +151,16 @@
 
     .esri-date-picker__day-item:last-child {
       border-left: $cell_border;
+    }
+
+    .esri-date-picker__text-input.esri-input {
+      padding-left: unset;
+      padding-right: $side-spacing--double;
+    }
+
+    .esri-date-picker__icon--leading {
+      left: unset;
+      right: $side-spacing--half;
     }
   }
 }

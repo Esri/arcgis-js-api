@@ -36,5 +36,14 @@
   "verticesCount": "{count} Verteks",
   "deleteFeature": "Hapus fitur",
   "deleteVertex": "Hapus verteks",
-  "duplicate": "Duplikasi"
+  "duplicate": "Duplikasi",
+  "selectCircle": "Pilih berdasarkan lingkaran",
+  "selectFeature": "Pilih fitur",
+  "selectFeatures": "Pilih fitur",
+  "selectLasso": "Pilih menurut laso",
+  "selectLine": "Pilih berdasarkan garis",
+  "selectMarquee": "Pilih berdasarkan marquee",
+  "selectPolygon": "Pilih berdasarkan poligon",
+  "selectRectangle": "Pilih berdasarkan persegi",
+  "clearSelection": "Hapus pilihan"
 }

@@ -15,6 +15,7 @@ import { formatDate } from "esri/../intl";
 
 // esri.core
 import { eventKey } from "esri/../core/events";
+import Logger = require("esri/../core/Logger");
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
@@ -26,6 +27,7 @@ import { loadMoment } from "esri/../intl/moment";
 import Widget = require("esri/Widget");
 
 // esri.widgets.support
+import { parseDateIntoParts } from "esri/widgets/datePickerUtils";
 import DatePickerViewModel = require("esri/widgets/DatePickerViewModel");
 import { VNode } from "esri/widgets/interfaces";
 import Popover = require("esri/widgets/Popover");
@@ -33,6 +35,9 @@ import { accessibleHandler, isRTL, messageBundle, renderable, storeNode, tsx } f
 
 // esri.widgets.support.t9n
 import DatePickerMessages from "esri/widgets/t9n/DatePicker";
+
+// moment
+import { MomentInputObject } from "moment";
 
 const CSS = {
   base: "esri-date-picker",
@@ -52,20 +57,27 @@ const CSS = {
   monthDropdown: "esri-date-picker__month-dropdown",
   date: "esri-date-picker__date",
   datePickerToggle: "esri-date-picker__calendar-toggle",
+  dateInput: "esri-date-picker__input",
+  dateTextInput: "esri-date-picker__text-input",
+  leadingIcon: "esri-date-picker__icon--leading",
 
   // icons
-  openIcon: "esri-icon-down-arrow",
-  closeIcon: "esri-icon-up-arrow",
   previousIcon: "esri-icon-left",
   nextIcon: "esri-icon-right",
+  calendarIcon: "esri-icon-calendar",
 
   // common
   widget: "esri-widget",
   button: "esri-widget--button",
+  input: "esri-input",
   select: "esri-select"
 };
 
-const DATE_PICKER_FORMAT = { year: "numeric", month: "2-digit", day: "2-digit" };
+const DATE_PICKER_FORMAT = {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+};
 
 const DAY_PICKER_NAVIGATION_KEYS = [
   " ",
@@ -80,6 +92,10 @@ const DAY_PICKER_NAVIGATION_KEYS = [
   "PageUp"
 ];
 
+const declaredClass = "esri.widgets.support.DatePicker";
+
+const logger = Logger.getLogger(declaredClass);
+
 type Moment = typeof import("moment");
 type MomentInstance = ReturnType<Moment>;
 
@@ -91,7 +107,9 @@ interface DayLabel {
 // IE11 needs onfocusout for `relatedTarget` event property, else we can use blur
 const supportsOnFocusOut = "onfocusout" in HTMLElement.prototype;
 
-@subclass("esri.widgets.support.DatePicker")
+const supportsFormatToParts = "formatToParts" in Intl.DateTimeFormat.prototype;
+
+@subclass(declaredClass)
 class DatePicker extends Widget {
   //--------------------------------------------------------------------------
   //
@@ -115,6 +133,8 @@ class DatePicker extends Widget {
    */
   constructor(params?: any, parentNode?: string | Element) {
     super(params, parentNode);
+
+    this._toggle = this._toggle.bind(this);
   }
 
   async loadLocale(): Promise<void> {
@@ -152,6 +172,8 @@ class DatePicker extends Widget {
 
   private _moment: Moment;
 
+  private _requestDayPickerFocusOnCreate = false;
+
   private _rootNode: HTMLElement = null;
 
   //--------------------------------------------------------------------------
@@ -159,6 +181,23 @@ class DatePicker extends Widget {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  dateInputEnabled
+  //----------------------------------
+
+  /**
+   * When true, enables text input for dates
+   *
+   * @since 4.17
+   * @name dateInputEnabled
+   * @instance
+   * @type {boolean}
+   * @private
+   */
+  @property()
+  @renderable()
+  dateInputEnabled = false;
 
   //----------------------------------
   //  label
@@ -252,13 +291,6 @@ class DatePicker extends Widget {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const date = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
-    const isOpen = this._isOpen;
-    const calendarToggleClasses = {
-      [CSS.openIcon]: !isOpen,
-      [CSS.closeIcon]: isOpen
-    };
-
     return (
       <div
         afterCreate={storeNode}
@@ -266,19 +298,56 @@ class DatePicker extends Widget {
         class={this.classes(CSS.base, CSS.widget)}
         data-node-ref="_rootNode"
       >
-        <div
-          afterUpdate={this._focusSelectedOrClosed}
-          aria-pressed={isOpen.toString()}
+        {supportsFormatToParts && this.dateInputEnabled
+          ? this.renderInputAndButtonMode()
+          : this.renderButtonOnlyMode()}
+      </div>
+    );
+  }
+
+  protected renderButtonOnlyMode(): VNode {
+    const date = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
+    const { _isOpen: open, messages } = this;
+
+    return (
+      <div
+        afterUpdate={this._focusSelectedOrClosed}
+        aria-controls={open ? this._getCalendarId() : null}
+        aria-expanded={open.toString()}
+        aria-haspopup="true"
+        aria-label={messages.setDate}
+        aria-pressed={open.toString()}
+        class={this.classes(CSS.button, CSS.select, CSS.datePickerToggle)}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
+        role="button"
+        tabIndex={0}
+      >
+        <span class={CSS.date}>{date}</span>
+      </div>
+    );
+  }
+
+  protected renderInputAndButtonMode(): VNode {
+    const date = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
+    const { _isOpen: open, messages } = this;
+
+    return (
+      <div class={this.classes(CSS.dateInput)}>
+        <input
+          aria-controls={open ? this._getCalendarId() : null}
+          aria-haspopup="true"
+          aria-label={messages.setDate}
           bind={this}
-          class={this.classes(CSS.button, CSS.datePickerToggle)}
-          onclick={this._toggle}
-          onkeydown={this._toggle}
-          role="button"
-          tabIndex={0}
-        >
-          <span class={CSS.date}>{date}</span>
-          <span aria-hidden="true" class={this.classes(calendarToggleClasses)} />
-        </div>
+          class={this.classes(CSS.dateTextInput, CSS.input)}
+          key="date-input"
+          onblur={this._handleDateInputBlur}
+          onfocus={this._handleDateInputFocus}
+          onkeydown={this._handleDateInputKeyDown}
+          type="text"
+          value={date}
+        />
+        <span aria-hidden="true" class={this.classes(CSS.leadingIcon, CSS.calendarIcon)} />
       </div>
     );
   }
@@ -288,6 +357,47 @@ class DatePicker extends Widget {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _handleDateInputKeyDown(event: KeyboardEvent): void {
+    if (event.key === "Enter") {
+      this._handleDateText(event);
+    }
+  }
+
+  private _handleDateInputBlur(event: FocusEvent): void {
+    this._handleDatePickerBlurOrFocusOut(event);
+
+    if (!this._isOpen) {
+      this._handleDateText(event);
+    }
+  }
+
+  private _handleDateInputFocus(): void {
+    this._open(this.viewModel.value, false);
+  }
+
+  private _handleDateText(event: Event): void {
+    const input = event.currentTarget as HTMLInputElement;
+    let momentDateInput: MomentInputObject;
+
+    try {
+      momentDateInput = parseDateIntoParts(input.value, DATE_PICKER_FORMAT);
+    } catch (error) {
+      logger.warn(error);
+      input.value = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
+      return;
+    }
+
+    const date = this._moment(momentDateInput);
+
+    if (!date.isValid()) {
+      input.value = formatDate(this.viewModel.value, DATE_PICKER_FORMAT);
+      return;
+    }
+
+    this.viewModel.value = date.toDate();
+    this._activeDate = date;
+  }
 
   private _focusSelectedOrClosed(node: HTMLElement): void {
     if (this._closedByUserAction) {
@@ -317,6 +427,7 @@ class DatePicker extends Widget {
         bind={this}
         class={this.classes(CSS.datePicker, CSS.widget)}
         data-node-ref="_calendarNode"
+        id={this._getCalendarId()}
         key="esri-date-picker__calendar"
         onkeydown={this._handleDatePickerKeydown}
       >
@@ -325,6 +436,10 @@ class DatePicker extends Widget {
         {this._renderYearPicker(activeDate)}
       </div>
     );
+  }
+
+  private _getCalendarId(): string {
+    return `date-picker__calendar--${this.id}`;
   }
 
   private _handleDatePickerBlurOrFocusOut(event: FocusEvent): void {
@@ -377,6 +492,7 @@ class DatePicker extends Widget {
         </div>
         <select
           aria-live="assertive"
+          aria-label={messages.selectMonth}
           bind={this}
           class={this.classes(CSS.monthDropdown, CSS.select)}
           id={`${this.id}__month-picker`}
@@ -384,6 +500,7 @@ class DatePicker extends Widget {
           onchange={this._setMonth}
           onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setMonth}
+          title={messages.selectMonth}
         >
           {options}
         </select>
@@ -448,7 +565,10 @@ class DatePicker extends Widget {
   }
 
   private _handleDayPickerCreate(node: HTMLElement): void {
-    node.focus();
+    if (this._requestDayPickerFocusOnCreate) {
+      this._requestDayPickerFocusOnCreate = false;
+      node.focus();
+    }
   }
 
   private _getWeekLabels(firstDayOfWeek: MomentInstance): DayLabel[] {
@@ -637,10 +757,11 @@ class DatePicker extends Widget {
     this._calendarPopover.open = false;
   }
 
-  private _open(activeDate: Date): void {
+  private _open(activeDate: Date, focused: boolean = true): void {
     this._activeDate = this._moment(activeDate);
     this._isOpen = true;
     this._calendarPopover.open = true;
+    this._requestDayPickerFocusOnCreate = focused;
   }
 
   @accessibleHandler()

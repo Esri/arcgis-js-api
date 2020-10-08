@@ -1,7 +1,7 @@
 {
   "title": "Raster Shaded Relief Renderer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "This renderer produces a grayscale or a colored 3D representation of a shaded relief. This renderer can be used on either layers of type: [ImageServiceLayer](imageServiceLayer.md) or [TiledImageServiceLayer](tiledImageServiceLayer.md).",
   "properties": {
     "altitude": {

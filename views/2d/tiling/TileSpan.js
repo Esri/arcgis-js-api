@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(o,i){return function(o,i,r){this.row=o,this.colFrom=i,this.colTo=r}}));
+define(["require","exports"],(function(t,i){"use strict";return function(t,i,o){this.row=t,this.colFrom=i,this.colTo=o}}));

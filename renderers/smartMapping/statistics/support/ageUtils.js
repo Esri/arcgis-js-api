@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../core/deprecate","../../../../core/Logger","../../../../smartMapping/statistics/support/ageUtils"],(function(e,t,r,s,i,a){Object.defineProperty(t,"__esModule",{value:!0});var p=i.getLogger("esri.renderers.smartMapping.statistics.support.ageUtils");s.deprecatedModule(p,"esri/renderers/smartMapping/statistics/support/ageUtils",{replacement:"esri/smartMapping/statistics/support/ageUtils"}),r.__exportStar(a,t)}));
+define(["require","exports","tslib","../../../../core/deprecate","../../../../core/Logger","../../../../smartMapping/statistics/support/ageUtils"],(function(e,t,s,r,i,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var p=i.getLogger("esri.renderers.smartMapping.statistics.support.ageUtils");r.deprecatedModule(p,"esri/renderers/smartMapping/statistics/support/ageUtils",{replacement:"esri/smartMapping/statistics/support/ageUtils"}),s.__exportStar(a,t)}));

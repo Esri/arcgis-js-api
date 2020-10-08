@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/lang","../../../geometry/support/jsonUtils","../CIMCursor"],(function(e,n,t,r,i){Object.defineProperty(n,"__esModule",{value:!0});var o=function(){function e(){}return e.local=function(){return null===e.instance&&(e.instance=new e),e.instance},e.prototype.execute=function(e,n,t){return new u(e,n,t)},e.instance=null,e}();n.EffectReverse=o;var u=function(){function e(e,n,t){this._inputGeometries=e,this._reverse=void 0===n.reverse||n.reverse}return e.prototype.next=function(){for(var e=this._inputGeometries.next();e;){if(!this._reverse)return e;if(r.isPolyline(e)){var n=t.clone(e);return i.reverseMultipath(n.paths),n}e=this._inputGeometries.next()}return null},e}()}));
+define(["require","exports","../../../core/lang","../../../geometry/support/jsonUtils","../CIMCursor"],(function(e,t,n,r,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.EffectReverse=void 0;var o=function(){function e(){}return e.local=function(){return null===e.instance&&(e.instance=new e),e.instance},e.prototype.execute=function(e,t,n){return new s(e,t,n)},e.instance=null,e}();t.EffectReverse=o;var s=function(){function e(e,t,n){this._inputGeometries=e,this._reverse=void 0===t.reverse||t.reverse}return e.prototype.next=function(){for(var e=this._inputGeometries.next();e;){if(!this._reverse)return e;if(r.isPolyline(e)){var t=n.clone(e);return i.reverseMultipath(t.paths),t}e=this._inputGeometries.next()}return null},e}()}));

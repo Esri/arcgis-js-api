@@ -6,6 +6,6 @@
     "outsideRange": "De waarde moet liggen tussen {min} en {max}",
     "invalidCodedValue": "Waarde moet een van de vermelde waarden zijn.",
     "invalidType": "Geen geldige waarde",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Dit veld vereist een minimum van {min} tekens"
   }
 }

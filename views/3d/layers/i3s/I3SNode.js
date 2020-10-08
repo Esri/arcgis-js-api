@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../core/libs/gl-matrix-2/vec4f64"],(function(e,r,t,i){Object.defineProperty(r,"__esModule",{value:!0});var n=function(e,r){this.id=e,this.mbs=r,this.isComputedObb=!1,this.renderMbs=i.vec4f64.fromArray([0,0,0,-1])};r.NodeBase=n;var o=function(e){function r(r,t,i,n,o,s,u,c,a,d){var l=e.call(this,r,i)||this;return l.index=t,l.childCount=n,l.level=o,l.resources=s,l.version=u,l.lodMetric=c,l.maxError=a,l.numFeatures=d,l.failed=!1,l.cacheState=0,l.vertexCount=0,l.memory=0,l}return t.__extends(r,e),r}(n);r.Node=o}));
+define(["require","exports","tslib","../../../../core/libs/gl-matrix-2/vec4f64"],(function(e,i,r,t){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.Node=i.NodeBase=void 0;var o=function(e,i){this.id=e,this.mbs=i,this.renderMbs=t.vec4f64.fromArray([0,0,0,-1]),this.imModificationImpact=4};i.NodeBase=o;var s=function(e){function i(i,r,t,o,s,n,a,c,d,u){var f=e.call(this,i,t)||this;return f.index=r,f.childCount=o,f.level=s,f.resources=n,f.version=a,f.lodMetric=c,f.maxError=d,f.numFeatures=u,f.failed=!1,f.hasModifications=!1,f.cacheState=0,f.vertexCount=0,f.memory=0,f}return r.__extends(i,e),i}(o);i.Node=s}));

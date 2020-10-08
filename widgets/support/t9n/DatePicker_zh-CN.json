@@ -1,4 +1,6 @@
 {
+  "setDate": "设置日期",
+  "selectMonth": "选择月份",
   "goToPreviousMonth": "转到上一月",
   "goToNextMonth": "转到下一月",
   "goToPreviousYear": "转到上一年",

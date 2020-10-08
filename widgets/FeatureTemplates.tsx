@@ -31,9 +31,6 @@
  * });
  */
 
-// @dojo.framework.shim
-import IntersectionObserver from "@dojo/framework/shim/IntersectionObserver";
-
 // esri.core
 import { deprecatedProperty } from "esri/core/deprecate";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
@@ -45,6 +42,9 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 
 // esri.layers
 import FeatureLayer = require("esri/layers/FeatureLayer");
+
+// esri.libs.intersection-observer
+import "../libs/intersection-observer/intersection-observer";
 
 // esri.widgets
 import Widget = require("esri/widgets/Widget");

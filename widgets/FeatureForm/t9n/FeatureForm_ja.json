@@ -6,6 +6,6 @@
     "outsideRange": "値は {min} ～ {max} である必要があります",
     "invalidCodedValue": "値は、リストされた値の 1 つである必要があります 。",
     "invalidType": "有効な値ではありません",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "このフィールドには最低 {min} 文字が必要です"
   }
 }

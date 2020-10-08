@@ -126,6 +126,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
               title={this.buttonTooltip}
               aria-expanded={this.isDropdownOpen}
               aria-haspopup="listbox"
+              type="button"
             >
               {this.currentItem ? this.currentItem.name + " " : ""}
             </button>

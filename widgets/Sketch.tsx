@@ -39,8 +39,8 @@
  * Left-drag | Adds a vertex for each pointer move. |
  * F | Adds a vertex to the polyline or polygon graphic. |
  * C | Completes the polyline or polygon graphic sketch. |
- * Z | Incrementally undo actions recorded in the stack. |
- * R | Incrementally redo actions recorded in the stack. |
+ * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
+ * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
  * Spacebar+Left-drag | Pan the view while creating a polyline or polygon graphic.
  * Left-click on the first vertex | Completes the polygon graphic sketch. |
  *
@@ -69,8 +69,8 @@
  * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-box-move.gif" width="400px"> |
  * Drag rotate handle | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-rotate.gif" width="400px"> |
  * Drag scale handle | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-scale.gif" width="400px"> |
- * Z | Incrementally undo actions recorded in the stack. | <img alt="Undo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
- * R | Incrementally redo actions recorded in the stack. | <img alt="Redo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
+ * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Undo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
+ * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Redo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
  * Left-click on view (not the graphic) | Complete the graphic update. | <img alt="Sketch update complete" src="../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif" width="400px"> |
  * Press `Delete` key | Remove the selected graphic(s) from the [layer](#layer). | <img alt="Sketch delete graphic" src="../../assets/img/apiref/widgets/sketch/sketch-delete-graphic.gif" width="400px">
  *
@@ -393,6 +393,7 @@ class Sketch extends Widget<SketchEvents> {
 
   /**
    * Fires in response to redo action during creation of a new graphic or updating existing graphics.
+   * The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic.
    *
    * @event module:esri/widgets/Sketch#redo
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
@@ -402,6 +403,7 @@ class Sketch extends Widget<SketchEvents> {
 
   /**
    * Fires in response to undo action during creation of a new graphic or updating existing graphics.
+   * The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic.
    *
    * @event module:esri/widgets/Sketch#undo
    * @property {module:esri/Graphic[]} graphics - An array of graphics that are being updated or created.
@@ -1116,6 +1118,7 @@ class Sketch extends Widget<SketchEvents> {
   /**
    * Incrementally undo actions recorded in the stack. Calling this method will fire the
    * [undo](#event-undo) event.
+   * The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic.
    *
    * @method undo
    * @instance
@@ -1127,6 +1130,7 @@ class Sketch extends Widget<SketchEvents> {
   /**
    * Incrementally redo actions recorded in the stack. Calling this method will fire the
    * [redo](#event-redo) event.
+   * The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic.
    *
    * @method redo
    * @instance
@@ -1230,6 +1234,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(CSS.button, CSS.resetIcon)}
         onclick={this.delete}
         title={title}
+        type="button"
       />
     );
   }
@@ -1255,6 +1260,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateTransformTool}
         title={title}
+        type="button"
       />
     );
   }
@@ -1321,6 +1327,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateCreatePoint}
         title={title}
+        type="button"
       />
     );
   }
@@ -1340,6 +1347,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateCreatePolygon}
         title={title}
+        type="button"
       />
     );
   }
@@ -1359,6 +1367,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateCreatePolyline}
         title={title}
+        type="button"
       />
     );
   }
@@ -1378,6 +1387,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateCreateCircle}
         title={title}
+        type="button"
       />
     );
   }
@@ -1397,6 +1407,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         onclick={this._activateCreateRectangle}
         title={title}
+        type="button"
       />
     );
   }
@@ -1418,6 +1429,7 @@ class Sketch extends Widget<SketchEvents> {
         disabled={isDisabled}
         onclick={this.undo}
         title={title}
+        type="button"
       />
     );
   }
@@ -1435,6 +1447,7 @@ class Sketch extends Widget<SketchEvents> {
         disabled={isDisabled}
         onclick={this.redo}
         title={title}
+        type="button"
       />
     );
   }

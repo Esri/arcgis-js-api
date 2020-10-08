@@ -1,7 +1,7 @@
 {
   "title": "Raster Colormap Renderer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A value/color look up table used for rendering raster data only.",
   "properties": {
     "colormapInfos": {

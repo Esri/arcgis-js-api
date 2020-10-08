@@ -36,5 +36,14 @@
   "verticesCount": "{count} knekkpunkter",
   "deleteFeature": "Slett geoobjekt",
   "deleteVertex": "Slett knekkpunkt",
-  "duplicate": "Dupliser"
+  "duplicate": "Dupliser",
+  "selectCircle": "Velg etter sirkel",
+  "selectFeature": "Velg geoobjekt",
+  "selectFeatures": "Velg geoobjekter",
+  "selectLasso": "Velg med lasso",
+  "selectLine": "Velg etter linje",
+  "selectMarquee": "Velg etter markering",
+  "selectPolygon": "Velg etter polygon",
+  "selectRectangle": "Velg etter rektangel",
+  "clearSelection": "Tøm utvalg"
 }

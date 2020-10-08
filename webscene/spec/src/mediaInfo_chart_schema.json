@@ -1,9 +1,13 @@
 {
   "title": "mediaInfo chart",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Defines a chart to be displayed in a popup window.",
   "properties": {
+    "altText": {
+      "type": "string",
+      "description": "A string providing the alternate text for the media."
+    },
     "caption": {
       "type": "string",
       "description": "A string caption describing the media."
@@ -39,6 +43,7 @@
           "mediaInfo": {
             "title": "Chart stats",
             "type": "barchart",
+            "altText": "This chart shows statistics",
             "caption": "For a better idea...",
             "value": {
               "fields": [

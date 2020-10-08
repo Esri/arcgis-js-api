@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./mixins/ChartMediaInfo","./support/chartMediaInfoUtils"],(function(t,e,r,i,o,n){return function(t){function e(e){var r=t.call(this,e)||this;return r.type="pie-chart",r}var o;return r.__extends(e,t),o=e,e.prototype.clone=function(){return new o({title:this.title,caption:this.caption,value:this.value?this.value.clone():null})},r.__decorate([i.property({type:["pie-chart"],readOnly:!0,json:{type:["piechart"],read:!1,write:n.chartTypeKebabDict.write}})],e.prototype,"type",void 0),e=o=r.__decorate([i.subclass("esri.popup.content.PieChartMediaInfo")],e)}(o)}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","./mixins/ChartMediaInfo","./support/chartMediaInfoUtils"],(function(t,e,r,i,o,a){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.type="pie-chart",r}var o;return r.__extends(e,t),o=e,e.prototype.clone=function(){return new o({altText:this.altText,title:this.title,caption:this.caption,value:this.value?this.value.clone():null})},r.__decorate([i.property({type:["pie-chart"],readOnly:!0,json:{type:["piechart"],read:!1,write:a.chartTypeKebabDict.write}})],e.prototype,"type",void 0),e=o=r.__decorate([i.subclass("esri.popup.content.PieChartMediaInfo")],e)}(o)}));

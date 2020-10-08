@@ -315,6 +315,19 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   //----------------------------------
 
   /**
+   * Function definition for the [baseListItemCreatedFunction](#baseListItemCreatedFunction)
+   * and [referenceListItemCreatedFunction](#referenceListItemCreatedFunction) properties.
+   * See the example snippets in the documentations for those properties for more details.
+   *
+   * @callback module:esri/widgets/BasemapLayerList~ListItemCreatedHandler
+   * @param {Object} event - An object containing a list item created by the LayerList.
+   * @param {module:esri/widgets/LayerList/ListItem} event.item - A list item
+   *   created by the LayerList. You can modify the properties of this item to customize
+   *   the text, actions, panel content, and visibility of the list item. See the
+   *   documentation for the [listItemCreatedFunction](#listItemCreatedFunction) for more details.
+   */
+
+  /**
    * Specifies a function that accesses each {@link module:esri/widgets/LayerList/ListItem} representing a base layer.
    * Each list item's modifiable properties can be updated within. Actions can be added to list items
    * using the {@link module:esri/widgets/LayerList/ListItem#actionsSections actionsSections}
@@ -322,7 +335,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    *
    * @name baseListItemCreatedFunction
    * @instance
-   * @type {function}
+   * @type {module:esri/widgets/BasemapLayerList~ListItemCreatedHandler}
    *
    * @example
    *
@@ -479,7 +492,23 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    *
    * @name referenceListItemCreatedFunction
    * @instance
-   * @type {function}
+   * @type {module:esri/widgets/BasemapLayerList~ListItemCreatedHandler}
+   *
+   * @example
+   *
+   * var bmLayerList = new BasemapLayerList({
+   *   view: view,
+   *   editingEnabled: true,
+   *   referenceListItemCreatedFunction: function(event){
+   *     referenceListItem = event.item;
+   *     if(referenceListItem.title === "World Imagery_01_reference_layer"){
+   *       // clean up title
+   *       referenceListItem.title = "Reference layer";
+   *       // open the baseList item
+   *       referenceListItem.open = true;
+   *     }
+   *   }
+   * })
    */
   @aliasOf("viewModel.referenceListItemCreatedFunction")
   @renderable()

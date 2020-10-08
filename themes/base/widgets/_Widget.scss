@@ -149,6 +149,7 @@
     &__list-item:first-child {
       border-top: none;
     }
+    &__list-item--focus,
     &__list-item:hover,
     &__list-item:focus {
       background-color: $background-color--hover;
@@ -461,7 +462,8 @@
     .esri-component > .esri-widget--panel,
     .esri-component.esri-widget--panel {
       width: $panel-width;
-      .esri-widget--panel { // widget--panel inside another widget--panel
+      .esri-widget--panel {
+        // widget--panel inside another widget--panel
         width: auto;
       }
     }
@@ -568,8 +570,6 @@
       opacity: 1;
     }
   }
-
-  @include loopingProgressBar($looping_progress_bar_width);
 
   .esri-rotating {
     animation: esri-rotate 1250ms infinite linear;

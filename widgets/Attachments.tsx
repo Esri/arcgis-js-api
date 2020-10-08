@@ -900,6 +900,7 @@ class Attachments extends Widget {
         aria-label={this.messages.attachmentDetails}
         data-attachment-info-id={attachmentInfo.id}
         onclick={() => this._startEditAttachment(attachmentInfo)}
+        type="button"
       >
         {imageAndLabelNodes}
       </button>
@@ -933,6 +934,7 @@ class Attachments extends Widget {
           bind={this}
           onclick={() => this._startAddAttachment()}
           class={this.classes(CSS.esriButton, CSS.esriButtonTertiary, CSS.addAttachmentButton)}
+          type="button"
         >
           <span aria-hidden="true" class={this.classes(CSS.itemAddIcon, CSS.iconPlus)} />
           {this.messages.add}

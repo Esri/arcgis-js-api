@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/size"],(function(e,r,s,o,i){var g=o.getLogger("esri.renderers.smartMapping.symbology.size");return s.deprecatedModule(g,"esri/renderers/smartMapping/symbology/size",{replacement:"esri/smartMapping/symbology/size"}),i}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/size"],(function(e,r,s,i,o){"use strict";var g=i.getLogger("esri.renderers.smartMapping.symbology.size");return s.deprecatedModule(g,"esri/renderers/smartMapping/symbology/size",{replacement:"esri/smartMapping/symbology/size"}),o}));

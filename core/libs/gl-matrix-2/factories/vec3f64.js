@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(n,r){function e(){return[0,0,0]}function t(n,r,e){return[n,r,e]}function u(){return[0,0,0]}function o(){return t(1,1,1)}function i(){return t(1,0,0)}function f(){return t(0,1,0)}function c(){return t(0,0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.clone=function(n){return[n[0],n[1],n[2]]},r.fromValues=t,r.fromArray=function(n){for(var r=[0,0,0],e=Math.min(3,n.length),t=0;t<e;++t)r[t]=n[t];return r},r.createView=function(n,r){return new Float64Array(n,r,3)},r.zeros=u,r.ones=o,r.unitX=i,r.unitY=f,r.unitZ=c,r.ZEROS=[0,0,0],r.ONES=o(),r.UNIT_X=i(),r.UNIT_Y=f(),r.UNIT_Z=c()}));
+define(["require","exports"],(function(n,r){"use strict";function e(){return[0,0,0]}function t(n,r,e){return[n,r,e]}function u(){return[0,0,0]}function o(){return t(1,1,1)}function i(){return t(1,0,0)}function c(){return t(0,1,0)}function f(){return t(0,0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.UNIT_Z=r.UNIT_Y=r.UNIT_X=r.ONES=r.ZEROS=r.unitZ=r.unitY=r.unitX=r.ones=r.zeros=r.createView=r.fromArray=r.fromValues=r.clone=r.create=void 0,r.create=e,r.clone=function(n){return[n[0],n[1],n[2]]},r.fromValues=t,r.fromArray=function(n){for(var r=[0,0,0],e=Math.min(3,n.length),t=0;t<e;++t)r[t]=n[t];return r},r.createView=function(n,r){return new Float64Array(n,r,3)},r.zeros=u,r.ones=o,r.unitX=i,r.unitY=c,r.unitZ=f,r.ZEROS=[0,0,0],r.ONES=o(),r.UNIT_X=i(),r.UNIT_Y=c(),r.UNIT_Z=f()}));

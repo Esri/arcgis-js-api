@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0}),r.bytesToUTF8=function(e,r){for(var n=0,o="",t=0,f=0,i=e.length;n<i;)(t=(f=e[n++])>>4)<8?t=1:15===t?(t=4,f=(7&f)<<18|(63&e[n++])<<12|(63&e[n++])<<6|63&e[n++]):14===t?(t=3,f=(15&f)<<12|(63&e[n++])<<6|63&e[n++]):(t=2,f=(31&f)<<6|63&e[n++]),(0!==f||r)&&(o+=String.fromCharCode(f));return o}}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.bytesToUTF8=void 0,r.bytesToUTF8=function(e,r){for(var t=0,o="",n=0,i=0,u=e.length;t<u;)(n=(i=e[t++])>>4)<8?n=1:15===n?(n=4,i=(7&i)<<18|(63&e[t++])<<12|(63&e[t++])<<6|63&e[t++]):14===n?(n=3,i=(15&i)<<12|(63&e[t++])<<6|63&e[t++]):(n=2,i=(31&i)<<6|63&e[t++]),(0!==i||r)&&(o+=String.fromCharCode(i));return o}}));

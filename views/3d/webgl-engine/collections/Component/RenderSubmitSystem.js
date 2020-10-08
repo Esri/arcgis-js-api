@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./DepthRange"],(function(e,t,i){Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e){this._objects=e}return e.prototype.submit=function(e,t){this._objects.preSubmit(t);for(var i=this._objects.visibleObjects,n=0;n<i.length;n++){var r=i[n];r.renderable.material.submit(e,r)}},e.prototype.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?i.computeDepthRange(e,this._objects.visibleObjects):null},e}();t.RenderSubmitSystem=n}));
+define(["require","exports","./DepthRange"],(function(e,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.RenderSubmitSystem=void 0;var s=function(){function e(e){this._objects=e}return e.prototype.submit=function(e,t){this._objects.preSubmit(t);for(var i=this._objects.visibleObjects,s=0;s<i.length;s++){var r=i[s];r.renderable.material.submit(e,r)}},e.prototype.queryShadowCasterDepthRange=function(e){return this._objects.visibleObjects.length?i.computeDepthRange(e,this._objects.visibleObjects):null},e}();t.RenderSubmitSystem=s}));

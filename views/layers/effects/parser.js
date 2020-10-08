@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+
+define(["require","exports","../../../colorUtils","../../../core/Error","./effects","./grammar"],(function(e,r,t,a,n,o){"use strict";function u(e){try{switch(e.name){case"grayscale":case"sepia":case"saturate":case"invert":case"brightness":case"contrast":return function(e){var r=1;c(e.parameters,1),1===e.parameters.length&&(r=p(e.parameters[0]));return new n.ColorMatrixEffect(e.name,r)}(e);case"opacity":return function(e){var r=1;c(e.parameters,1),1===e.parameters.length&&(r=p(e.parameters[0]));return new n.OpacityEffect(r)}(e);case"hue-rotate":return function(e){var r=0;c(e.parameters,1),1===e.parameters.length&&(function(e){if("quantity"!==e.type||(0!==e.value||null!==e.unit)&&null==l[e.unit])throw new a("effect:type-error","Expected <angle>, Actual: "+s(e),{term:e})}(t=e.parameters[0]),r=t.value*l[t.unit]||0);var t;return new n.HueRotateEffect(r)}(e);case"radial-blur":case"blur":return function(e){var r=0;c(e.parameters,1),1===e.parameters.length&&f(r=h(e.parameters[0]),e.parameters[0]);return new n.BlurEffect(e.name,r)}(e);case"drop-shadow":return function(e){for(var r,t=[],o=0,u=e.parameters;o<u.length;o++){var c=u[o];if("color"===c.type){if(t.length&&Object.freeze(t),r)throw new a("effect:type-error","Accepts only one color",{});r=w(c)}else{var s=h(c);if(Object.isFrozen(t))throw new a("effect:type-error","<length> parameters not consecutive",{lengths:t});t.push(s),3===t.length&&f(s,c)}}if(t.length<2||t.length>3)throw new a("effect:type-error","Expected <length>{2,3}, Actual: <length>{"+t.length+"}",{lengths:t});return new n.DropShadowEffect(t[0],t[1],t[2]||0,r||v("black"))}(e);case"bloom":return function(e){var r=1,t=0,a=0;c(e.parameters,3),e.parameters[0]&&(r=p(e.parameters[0]));e.parameters[1]&&f(t=h(e.parameters[1]),e.parameters[1]);e.parameters[2]&&(a=p(e.parameters[2]));return new n.BloomEffect(r,t,a)}(e)}}catch(r){throw r.details.filter=e,r}throw new a("effect:unknown-effect","Effect '"+e.name+"' is not supported",{effect:e})}function c(e,r){if(e.length>r)throw new a("effect:type-error","Function supports up to "+r+" parameters, Actual: "+e.length,{parameters:e})}function s(e){return"color"===e.type?"<color>":i[e.unit]?"<length>":l[e.unit]?"<angle>":"%"===e.unit?"<percentage>":"<double>"}function f(e,r){if(e<0)throw new a("effect:type-error","Negative values are not allowed, Actual: "+e,{term:r})}Object.defineProperty(r,"__esModule",{value:!0}),r.parse=void 0,r.parse=function(e){var r;try{r=e?o.parse(e):[]}catch(r){return{input:e,parsedFunctions:[],effects:[],error:new a("effect:invalid-syntax","Invalid filter syntax",{input:e,error:r})}}var t={input:e,parsedFunctions:r,effects:[],error:null};try{for(var n=0,c=r;n<c.length;n++){var s=c[n];t.effects.push(u(s))}}catch(e){t.effects.length=0,t.error=e}return t};var l={deg:1,grad:.9,rad:180/Math.PI,turn:360};var i={px:1,cm:96/2.54,mm:96/2.54/10,in:96,pc:16,pt:96/73};function p(e){!function(e){if("quantity"!==e.type||null!==e.unit&&"%"!==e.unit)throw new a("effect:type-error","Expected <double> or <percentage>, Actual: "+s(e),{term:e})}(e);var r=e.value;return f(r,e),"%"===e.unit?.01*r:r}function m(e){return function(e){if("quantity"!==e.type||null!==e.unit)throw new a("effect:type-error","Expected <double>, Actual: "+s(e),{term:e})}(e),f(e.value,e),e.value}function h(e){return function(e){if("quantity"!==e.type||(0!==e.value||null!==e.unit)&&null==i[e.unit])throw new a("effect:type-error","Expected <length>, Actual: "+s(e),{term:e})}(e),e.value*i[e.unit]||0}function w(e){switch(e.colorType){case"hex":return t.hex2rgba(e.value);case"named":return v(e.value);case"function":return function(e){if(c(e.parameters,4),g.test(e.name))return[p(e.parameters[0]),p(e.parameters[1]),p(e.parameters[2]),e.parameters[3]?p(e.parameters[3]):1];if(y.test(e.name))return t.hsla2rgba(m(e.parameters[0]),p(e.parameters[1]),p(e.parameters[2]),e.parameters[3]?p(e.parameters[3]):1);throw new a("effect:syntax-error","Invalid color function '"+e.name+"'",{colorFunction:e})}(e.value)}}function v(e){var r=t.getNamedColorCopy(e);if(!r)throw new a("effect:unknown-color","color '"+e+"' isn't valid",{namedColor:e});return r}var g=/^rgba?/i,y=/^hsla?/i}));

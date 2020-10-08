@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+
+define(["require","exports","../../../core/Error","../../../geometry/Extent","./xmlUtilities"],(function(e,t,r,i,a){"use strict";function n(e){return e.indexOf("?")===e.length-1?e.substring(0,e.length-1):e}function o(e){for(var t={},r=0;r<e.childNodes.length;r++){var n=e.childNodes[r];if(1===n.nodeType){var l=a.getNodeNameIgnoreNS(n).toLowerCase();switch(l){case"title":case"abstract":t[l]=a.getElementValue(n);break;case"identifier":t.id=a.getElementValue(n);break;case"wgs84boundingbox":var s=a.getSpaceDelimitedNumericValues(n,"LowerCorner"),m=a.getSpaceDelimitedNumericValues(n,"UpperCorner");t.lonLatEnvelope=new i({xmin:s[0],ymin:s[1],xmax:m[0],ymax:m[1],spatialReference:{wkid:4326}});break;case"coveragesummary":t.coverageSummaries=t.coverageSummaries||[],t.coverageSummaries.push(o(n))}}}return t}function l(e,t){if(e.coverageSummaries)for(var r=0;r<e.coverageSummaries.length;r++)e.coverageSummaries[r].abstract=e.coverageSummaries[r].abstract||e.abstract,e.coverageSummaries[r].lonLatEnvelope=e.coverageSummaries[r].lonLatEnvelope||e.lonLatEnvelope,e.coverageSummaries[r].title=e.coverageSummaries[r].title||e.title,l(e.coverageSummaries[r],t);null!=e.id&&t.push(e)}function s(e){var t=a.getElement(e.querySelector("Operation[name=GetCapabilities]"),"Get").getAttribute("xlink:href")||"",r=a.getElement(e.querySelector("Operation[name=DescribeCoverage]"),"Get").getAttribute("xlink:href")||"",i=a.getElement(e.querySelector("Operation[name=GetCoverage]"),"Get").getAttribute("xlink:href")||"";return{getCapabilities:n(t),describeCoverage:n(r),getCoverage:n(i)}}Object.defineProperty(t,"__esModule",{value:!0}),t.parseCapabilities=void 0,t.parseCapabilities=function(e,t){void 0===t&&(t=null);var m=null;m="string"==typeof e?(new DOMParser).parseFromString(e,"text/xml"):e;var u,g=m.documentElement.getAttribute("version"),c=(g||t||"1.0.0").slice(0,3);if("2.0"===c)u=function(e){for(var t=a.getElement(e,"ServiceIdentification"),r=a.getElementValue(t,"Title"),n=a.getElementValues(t,"ServiceTypeVersion"),o=a.getElementValues(t,"Profile"),l=s(a.getElement(e,"OperationsMetadata")),m=a.getElements(e,"Contents/CoverageSummary"),u=[],g=0;g<m.length;g++){var c=m[g],p=a.getElementValue(c,"CoverageId"),v=a.getElement(c,"WGS84BoundingBox"),d=void 0;if(v){var f=a.getSpaceDelimitedNumericValues(v,"LowerCorner"),E=a.getSpaceDelimitedNumericValues(v,"UpperCorner");d=new i({xmin:f[0],ymin:f[1],xmax:E[0],ymax:E[1],spatialReference:{wkid:4326}})}u.push({id:p,lonLatEnvelope:d})}var S=a.getElement(e,"ServiceMetadata");return{name:r,supportedVersions:n,supportedFormats:a.getElementValues(S,"formatSupported"),supportedInterpolations:a.getElementValues(S,"interpolationSupported"),onlineResources:l,profiles:o,coverages:u}}(m);else if("1.1"===c)u=function(e){for(var t=a.getElementValue(e,"ServiceIdentification/Title"),r=a.getElementValues(e,"ServiceIdentification/ServiceTypeVersion"),i=s(a.getElement(e,"OperationsMetadata")),n=[],m=a.getElement(e,"Contents"),u=0;u<m.childNodes.length;u++){var g=m.childNodes[u];1===g.nodeType&&(a.isSameTagIgnoreNS(g,"CoverageSummary")&&l(o(g),n))}return{name:t,onlineResources:i,coverages:n,supportedVersions:r,supportedFormats:a.getElementValues(m,"SupportedFormat")}}(m);else{if("1.0"!==c)throw new r("wcsraster:parsecapabilities","the capabilities version is not supported");u=function(e){for(var t,r,o,l=a.getElementValue(e,"Service/name"),s=a.getElement(e,"Capability"),m=null!==(t=a.getElement(s,"GetCapabilities/Get/OnlineResource").getAttribute("xlink:href"))&&void 0!==t?t:"",u=null!==(r=a.getElement(s,"DescribeCoverage/Get/OnlineResource").getAttribute("xlink:href"))&&void 0!==r?r:"",g=null!==(o=a.getElement(s,"GetCoverage/Get/OnlineResource").getAttribute("xlink:href"))&&void 0!==o?o:"",c={getCapabilities:n(m),describeCoverage:n(u),getCoverage:n(g)},p=a.getElements(e,"CoverageOfferingBrief"),v=[],d=0;d<p.length;d++){var f=p[d],E=a.getElementValue(f,"name"),S=a.getElements(f,"pos"),b=a.getSpaceDelimitedNumericValues(S[0]),x=a.getSpaceDelimitedNumericValues(S[1]),C=new i({xmin:b[0],ymin:b[1],xmax:x[0],ymax:x[1],spatialReference:{wkid:4326}});v.push({id:E,lonLatEnvelope:C})}return{name:l,onlineResources:c,coverages:v,supportedVersions:["1.0.0"]}}(m)}return u.capabilitiesVersion=g,u}}));

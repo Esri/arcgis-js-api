@@ -36,5 +36,14 @@
   "verticesCount": "{count} Вершини",
   "deleteFeature": "Видалити об'єкт",
   "deleteVertex": "Видалити вершину",
-  "duplicate": "Дублювати"
+  "duplicate": "Дублювати",
+  "selectCircle": "Вибрати за колом",
+  "selectFeature": "Вибрати об’єкт",
+  "selectFeatures": "Вибрати об’єкти",
+  "selectLasso": "Вибрати за лассо",
+  "selectLine": "Вибрати за лінією",
+  "selectMarquee": "Вибрати за рухомим рядком",
+  "selectPolygon": "Вибрати за полігоном",
+  "selectRectangle": "Вибрати за прямокутником",
+  "clearSelection": "Очистити вибір"
 }

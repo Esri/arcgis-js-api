@@ -24,8 +24,6 @@
   "stop": "Διακοπή",
   "stopLabelTemplate": "Διακοπή {number} ({label})",
   "unlocated": "Δεν έχει καθοριστεί τοποθεσία.",
-  "searchFieldPlaceholder": "Αναζήτηση ή κλικ στον χάρτη",
-  "viewlessSearchFieldPlaceholder": "Αναζήτηση",
   "directionsPlaceholder": "Η διαδρομή σας θα εμφανίζεται εδώ.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Εκτιμώμενη ώρα άφιξης",

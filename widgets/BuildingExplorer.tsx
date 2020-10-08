@@ -109,6 +109,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 interface ConstructionParameters {
   view: SceneView;
   viewModel?: BuildingExplorerViewModel;
+  toggleSiblingsVisibility?: boolean;
 }
 
 const BASE = "esri-building-explorer";
@@ -165,6 +166,9 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
         this._levelPicker.messages = this.messages?.level;
         this._phasePicker.messages = this.messages?.phase;
         this._disciplinesTree.messages = this.messages?.disciplines;
+      }),
+      watchUtils.init(this, "toggleSiblingsVisibility", () => {
+        this._disciplinesTree.toggleSiblingsVisibility = this.toggleSiblingsVisibility;
       })
     ]);
   }
@@ -310,6 +314,16 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
+  /**
+   * If true, when toggling a toggling a sublayer while the CTRL key is pressed,
+   * we'll toggle also the siblings.
+   *
+   * @ignore
+   */
+  @property({ nonNullable: true })
+  @renderable()
+  toggleSiblingsVisibility: boolean = false;
+
   //--------------------------------------------------------------------------
   //
   //  Private Properties
@@ -342,6 +356,8 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    *
    * @private
    */
+  @property()
+  @renderable()
   private _disciplinesTree = new BuildingDisciplinesTree();
 
   //--------------------------------------------------------------------------

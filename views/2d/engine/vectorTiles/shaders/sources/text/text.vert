@@ -1,8 +1,8 @@
 attribute vec2 a_pos;
 attribute vec2 a_vertexOffset;
-attribute vec4 a_tex;
+attribute vec4 a_texAngleRange;
 attribute vec4 a_levelInfo;
-attribute vec4 a_visInfo;
+attribute float a_opacityInfo;
 
 uniform lowp vec4 u_color; // always defined as halo does not support data driven but text does
 #ifdef DD
@@ -41,27 +41,17 @@ uniform mediump float u_level;
 // indicate whether the current set of iconst should be kept upright when the map is rotated
 uniform lowp float u_keepUpright;
 
-// the rate of the change in the opacity (fade) of the icons
-uniform mediump float u_fadeSpeed;
-
-// the low level we transition (to/from)
-uniform mediump float u_minfadeLevel;
-
-// the high level we transition (to/from)
-uniform mediump float u_maxfadeLevel;
-
-// the amount of fade given teh current time past the last recorded level
-uniform mediump float u_fadeChange;
-
 // the opacity of the layer given by the painter
 uniform mediump float u_opacity;
+
+uniform mediump float u_fadeDuration;
 
 // the interpolated texture coordinate value to be used by the fragment shader in order to sample the sprite texture
 varying lowp vec2 v_tex;
 
 // the calculated transparency to be applied by the fragment shader. It is incorporating both the fade as well as the
 // opacity of the layer given by the painter
-varying lowp float v_transparency;
+varying lowp float v_opacity;
 
 // the vertex offsets are given in integers, therefore in order to maintain a reasonable precision we multiply the values
 // by 8 and then at the shader divide by the same number
@@ -80,16 +70,26 @@ uniform lowp float u_halo; // needed to avoid using the color attribute for halo
 
 const float sdfFontScale = 1.0 / 24.0;
 
+// timing information
+uniform highp float u_time;
+
 void main()
 {
-  mediump float a_labelMinLevel = a_levelInfo[0];
-  mediump float a_angle        = a_levelInfo[1]; // main label angle (from the symbol anchor)
+  // Animated decluttering
+  float modded = mod(a_opacityInfo, 128.0);
+  float targetOpacity = (a_opacityInfo - modded) / 128.0;
+  float startOpacity = modded / 127.0;
+  float interpolatedOpacity = clamp(startOpacity + 2.0 * (targetOpacity - 0.5) * u_time / u_fadeDuration, 0.0, 1.0);
+  v_opacity = u_opacity * interpolatedOpacity;
+
+  mediump float a_angle       = a_levelInfo[1]; // main label angle (from the symbol anchor)
   mediump float a_minLevel    = a_levelInfo[2];
   mediump float a_maxLevel    = a_levelInfo[3];
+  mediump vec2 a_tex           = a_texAngleRange.xy;
 
   // the angle range that would display this vertex upright
-  mediump float a_visMinAngle    = a_visInfo[0];
-  mediump float a_visMaxAngle    = a_visInfo[1];
+  mediump float a_visMinAngle    = a_texAngleRange.z;
+  mediump float a_visMaxAngle    = a_texAngleRange.w;
 
   // if the given vertex should not be visible simply clip it by adding it a value that will push it outside the clipping plane
   mediump float delta_z = 0.0;
@@ -114,24 +114,8 @@ void main()
   delta_z += 1.0 - step(a_minLevel, u_level); // Test if (level < minLevel)
   delta_z += step(a_maxLevel, u_level); // Test if (maxLevel <= level)
 
-  // calculate the alpha given the change in the fade and the fade-speed
-  mediump float alpha = u_fadeSpeed != 0.0 ? clamp((u_fadeChange - a_labelMinLevel) / u_fadeSpeed, 0.0, 1.0) : 1.0;
-
-  // if the speed is positive we are zooming in and therefore we need to 'fade-in'. Else we need to 'fade-out'
-  v_transparency = (u_fadeSpeed >= 0.0 ? alpha : 1.0 - alpha);
-
-  // now deal with the min/max fade-levels. If we exceeded the level we simply snap to 0 or 1
-  if (u_maxfadeLevel < a_labelMinLevel)
-  {
-    v_transparency = 0.0;
-  }
-  if (u_minfadeLevel >= a_labelMinLevel)
-  {
-    v_transparency = 1.0;
-  }
-
   // if label has been faded out, clip it
-  delta_z += step(v_transparency, 0.0);
+  delta_z += step(v_opacity, 0.0);
 
   v_tex = a_tex.xy / u_mosaicSize;
 

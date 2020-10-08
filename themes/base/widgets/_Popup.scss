@@ -90,7 +90,6 @@
     animation: popup-intro-animation-up 200ms ease-in-out;
   }
   .esri-popup__main-container {
-    outline: none;
     pointer-events: auto;
     position: relative;
     z-index: $main-z;

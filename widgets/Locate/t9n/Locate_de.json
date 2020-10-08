@@ -1,5 +1,5 @@
 {
-  "widgetLabel": "Suchen",
+  "widgetLabel": "Eigene Position suchen",
   "title": "Eigenen Standort suchen",
   "currentLocation": "Aktueller Standort",
   "timestamp": "Zeitstempel",
@@ -8,6 +8,6 @@
   "accuracy": "Genauigkeit",
   "altitude": "Höhe",
   "altitudeAccuracy": "Genauigkeit der Höhe",
-  "heading": "Überschrift",
+  "heading": "Kurs",
   "speed": "Geschwindigkeit"
 }

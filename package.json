@@ -1,6 +1,6 @@
 {
   "name": "arcgis-js-api",
-  "version": "4.16.2",
+  "version": "4.17.0",
   "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
   "types": "index.d.ts",
   "license": "SEE LICENSE IN copyright.txt",
@@ -16,14 +16,11 @@
   ],
   "dependencies": {
     "@dojo/framework": "5.0.4",
-    "dojo": "Esri/dojo#v1.14.2/esri-3.28.0",
-    "dojo-dstore": "1.1.2",
-    "dojox": "Esri/dojox#v1.14.2/esri-3.28.0",
     "intersection-observer": "0.5.1",
     "maquette-css-transitions": "1.1.1",
     "maquette-jsx": "3.0.1",
     "moment": "2.24.0",
-    "tslib": "1.11.2"
+    "tslib": "1.13.0"
   },
   "homepage": "https://developers.arcgis.com/javascript",
   "dojoBuild": "esri.profile.js"

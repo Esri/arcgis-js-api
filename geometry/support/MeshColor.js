@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,o,t,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(r){return e.call(this,r)||this}return o.__extends(r,e),r.prototype.clone=function(){throw new Error("not implemented")},o.__decorate([n.property({readOnly:!0,json:{read:!1,write:{isRequired:!0,ignoreOrigin:!0,enabled:!0}}})],r.prototype,"type",void 0),r=o.__decorate([n.subclass("esri.geometry.support.MeshColor")],r)}(t.JSONSupport);r.MeshColor=i,r.default=i}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,o,t,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.MeshColor=void 0;var i=function(e){function r(r){return e.call(this,r)||this}return o.__extends(r,e),r.prototype.clone=function(){throw new Error("not implemented")},o.__decorate([n.property({readOnly:!0,json:{read:!1,write:{isRequired:!0,ignoreOrigin:!0,enabled:!0}}})],r.prototype,"type",void 0),r=o.__decorate([n.subclass("esri.geometry.support.MeshColor")],r)}(t.JSONSupport);r.MeshColor=i,r.default=i}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","./AlgorithmicColorRamp","./ColorRamp"],(function(o,r,t,e,p,a,c){return function(o){function r(r){var t=o.call(this,r)||this;return t.colorRamps=null,t.type="multipart",t}var c;return t.__extends(r,o),c=r,r.prototype.clone=function(){return new c({colorRamps:e.clone(this.colorRamps)})},t.__decorate([p.property({type:[a],json:{write:!0}})],r.prototype,"colorRamps",void 0),t.__decorate([p.property({type:["multipart"]})],r.prototype,"type",void 0),r=c=t.__decorate([p.subclass("esri.tasks.support.MultipartColorRamp")],r)}(c)}));
+define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","./AlgorithmicColorRamp","./ColorRamp"],(function(r,o,t,e,p,s,c){"use strict";return function(r){function o(o){var t=r.call(this,o)||this;return t.colorRamps=null,t.type="multipart",t}var c;return t.__extends(o,r),c=o,o.prototype.clone=function(){return new c({colorRamps:e.clone(this.colorRamps)})},t.__decorate([p.property({type:[s],json:{write:!0}})],o.prototype,"colorRamps",void 0),t.__decorate([p.property({type:["multipart"]})],o.prototype,"type",void 0),o=c=t.__decorate([p.subclass("esri.tasks.support.MultipartColorRamp")],o)}(c)}));

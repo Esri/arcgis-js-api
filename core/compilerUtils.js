@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./has"],(function(e,n,r){Object.defineProperty(n,"__esModule",{value:!0}),n.neverReached=function(e){r("esri-debug-messages")&&console.error("Should never be reached (uncaught value "+e+")",(new Error).stack)},n.neverReachedSilent=function(e){},n.typeCast=function(e){return function(){return e}},n.tuple=function(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];return e}}));
+define(["require","exports","./has"],(function(e,n,r){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.tuple=n.typeCast=n.neverReachedSilent=n.neverReached=void 0,n.neverReached=function(e){r("esri-debug-messages")&&console.error("Should never be reached (uncaught value "+e+")",(new Error).stack)},n.neverReachedSilent=function(e){},n.typeCast=function(e){return function(){return e}},n.tuple=function(){for(var e=[],n=0;n<arguments.length;n++)e[n]=arguments[n];return e}}));

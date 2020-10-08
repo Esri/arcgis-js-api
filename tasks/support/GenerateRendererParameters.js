@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","./ClassificationDefinition"],(function(e,t,r,i,o,n){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.classificationDefinition=null,t.where=null,t}return r.__extends(t,e),r.__decorate([o.property({type:n,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],t.prototype,"classificationDefinition",void 0),r.__decorate([o.property({type:String,json:{write:!0}})],t.prototype,"where",void 0),t=r.__decorate([o.subclass("esri.tasks.support.GenerateRendererParameters")],t)}(i.JSONSupport)}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","./ClassificationDefinition"],(function(e,t,r,i,o,s){"use strict";return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.classificationDefinition=null,t.where=null,t}return r.__extends(t,e),r.__decorate([o.property({type:s,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],t.prototype,"classificationDefinition",void 0),r.__decorate([o.property({type:String,json:{write:!0}})],t.prototype,"where",void 0),t=r.__decorate([o.subclass("esri.tasks.support.GenerateRendererParameters")],t)}(i.JSONSupport)}));

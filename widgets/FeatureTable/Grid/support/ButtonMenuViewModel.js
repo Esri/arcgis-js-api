@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../core/Accessor","../../../../core/accessorSupport/decorators","../../../../core/accessorSupport/decorators/cast","./ButtonMenuItem"],(function(e,t,r,o,n,s,c){return function(e){function t(t){var r=e.call(this,t)||this;return r.items=null,r.open=!1,r}return r.__extends(t,e),t.prototype.castItems=function(e){return e?e.map((function(e){return e instanceof c?e:new c(e)})):null},r.__decorate([n.property()],t.prototype,"items",void 0),r.__decorate([s.cast("items")],t.prototype,"castItems",null),r.__decorate([n.property()],t.prototype,"open",void 0),t=r.__decorate([n.subclass("esri.widgets.FeatureTable.Grid.support.ButtonMenuViewModel")],t)}(o)}));
+define(["require","exports","tslib","../../../../core/Accessor","../../../../core/accessorSupport/decorators","../../../../core/accessorSupport/decorators/cast","./ButtonMenuItem"],(function(e,t,r,o,s,n,c){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.items=null,r.open=!1,r}return r.__extends(t,e),t.prototype.castItems=function(e){return e?e.map((function(e){return e instanceof c?e:new c(e)})):null},r.__decorate([s.property()],t.prototype,"items",void 0),r.__decorate([n.cast("items")],t.prototype,"castItems",null),r.__decorate([s.property()],t.prototype,"open",void 0),t=r.__decorate([s.subclass("esri.widgets.FeatureTable.Grid.support.ButtonMenuViewModel")],t)}(o)}));

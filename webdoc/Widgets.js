@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","./widgets/Range","./widgets/TimeSlider"],(function(e,r,t,o,i,n,p,s){return function(e){function r(r){var t=e.call(this,r)||this;return t.range=null,t.timeSlider=null,t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o(i.clone({range:this.range,timeSlider:this.timeSlider}))},t.__decorate([n.property({type:p,json:{write:!0}})],r.prototype,"range",void 0),t.__decorate([n.property({type:s,json:{write:!0}})],r.prototype,"timeSlider",void 0),r=o=t.__decorate([n.subclass("esri.webdoc.Widgets")],r)}(o.JSONSupport)}));
+define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","./widgets/Range","./widgets/TimeSlider"],(function(e,r,t,o,i,n,s,c){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.range=null,t.timeSlider=null,t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o(i.clone({range:this.range,timeSlider:this.timeSlider}))},t.__decorate([n.property({type:s,json:{write:!0}})],r.prototype,"range",void 0),t.__decorate([n.property({type:c,json:{write:!0}})],r.prototype,"timeSlider",void 0),r=o=t.__decorate([n.subclass("esri.webdoc.Widgets")],r)}(o.JSONSupport)}));

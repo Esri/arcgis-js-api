@@ -36,5 +36,14 @@
   "verticesCount": "{count} 个折点",
   "deleteFeature": "删除要素",
   "deleteVertex": "删除折点",
-  "duplicate": "重复"
+  "duplicate": "重复",
+  "selectCircle": "按圆选择",
+  "selectFeature": "选择要素",
+  "selectFeatures": "选择要素",
+  "selectLasso": "按套索选择",
+  "selectLine": "按线选择",
+  "selectMarquee": "按选取框选择",
+  "selectPolygon": "按面选择",
+  "selectRectangle": "按矩形选择",
+  "clearSelection": "清除选择内容"
 }

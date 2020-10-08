@@ -1,7 +1,7 @@
 {
   "title": "AuthoringInfo Field",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Contains information about an attribute field relating to Relationship renderers.",
   "properties": {
     "classBreakInfos": {
@@ -14,6 +14,10 @@
     "field": {
       "type": "string",
       "description": "Attribute field used for renderer."
+    },
+    "label": {
+      "type": "string",
+      "description": "The label used to describe the field or attribute in the legend."
     },
     "normalizationField": {
       "type": "string",

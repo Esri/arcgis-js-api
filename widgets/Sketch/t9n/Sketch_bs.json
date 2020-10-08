@@ -36,5 +36,14 @@
   "verticesCount": "{count} vrhova",
   "deleteFeature": "Izbriši geoobjekt",
   "deleteVertex": "Izbriši vrh",
-  "duplicate": "Dupliciraj"
+  "duplicate": "Dupliciraj",
+  "selectCircle": "Odaberi prema krugu",
+  "selectFeature": "Odaberite geoobjekt",
+  "selectFeatures": "Odaberi geoobjekte",
+  "selectLasso": "Odaberite lasom",
+  "selectLine": "Odaberi prema liniji",
+  "selectMarquee": "Odaberi prema pomičnom tekstu",
+  "selectPolygon": "Odaberi prema poligonu",
+  "selectRectangle": "Odaberi prema pravokutniku",
+  "clearSelection": "Očisti odabir"
 }

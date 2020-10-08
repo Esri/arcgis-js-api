@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,t,o,n){Object.defineProperty(r,"__esModule",{value:!0});var a=function(e){function r(r){var t=e.call(this,r)||this;return t.minValue=0,t.maxValue=0,t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o({minValue:this.minValue,maxValue:this.maxValue})},t.__decorate([n.property({type:Number,json:{write:!0}})],r.prototype,"minValue",void 0),t.__decorate([n.property({type:Number,json:{write:!0}})],r.prototype,"maxValue",void 0),r=o=t.__decorate([n.subclass("esri.renderer.support.AuthoringInfoClassBreakInfo")],r)}(o.JSONSupport);r.AuthoringInfoClassBreakInfo=a,r.default=a}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,o,t,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.AuthoringInfoClassBreakInfo=void 0;var a=function(e){function r(r){var o=e.call(this,r)||this;return o.minValue=0,o.maxValue=0,o}var t;return o.__extends(r,e),t=r,r.prototype.clone=function(){return new t({minValue:this.minValue,maxValue:this.maxValue})},o.__decorate([n.property({type:Number,json:{write:!0}})],r.prototype,"minValue",void 0),o.__decorate([n.property({type:Number,json:{write:!0}})],r.prototype,"maxValue",void 0),r=t=o.__decorate([n.subclass("esri.renderer.support.AuthoringInfoClassBreakInfo")],r)}(t.JSONSupport);r.AuthoringInfoClassBreakInfo=a,r.default=a}));

@@ -6,6 +6,6 @@
     "outsideRange": "Vrednost bi trebalo da bude između: {min} i {max}",
     "invalidCodedValue": "Vrednost bi trebalo da bude jedna od navedenih vrednosti.",
     "invalidType": "Nije važeća vrednost",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Ovo polje zahteva minimalno {min} karaktera"
   }
 }

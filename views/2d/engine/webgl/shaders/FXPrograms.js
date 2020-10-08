@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./sources/resolver"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.integrateProgram={name:"integrate",shaders:{vertexShader:t.resolveIncludes("fx/integrate.vert"),fragmentShader:t.resolveIncludes("fx/integrate.frag")},attributes:{a_position:0}}}));
+define(["require","exports","./sources/resolver"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.integrateProgram=void 0,r.integrateProgram={name:"integrate",shaders:{vertexShader:t.resolveIncludes("fx/integrate.vert"),fragmentShader:t.resolveIncludes("fx/integrate.frag")},attributes:{a_position:0}}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../draw/PolylineDrawAction"],(function(e,i,n){Object.defineProperty(i,"__esModule",{value:!0}),i.PolylineDrawAction=n.PolylineDrawAction}));
+define(["require","exports","../../draw/PolylineDrawAction"],(function(e,n,r){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),Object.defineProperty(n,"PolylineDrawAction",{enumerable:!0,get:function(){return r.PolylineDrawAction}})}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./lang","./Logger","./Message"],(function(e,t,r,s,n,i){var a=function(e){function t(r,s,n){var i=e.call(this,r,s,n)||this;return i instanceof t?i:new t(r,s,n)}return r.__extends(t,e),t.prototype.toJSON=function(){if(null!=this.details)try{var e=s.clone(this.details);return{name:this.name,message:this.message,details:e}}catch(e){throw n.getLogger("esri.core.Error").error(e),e}return{name:this.name,message:this.message,details:this.details}},t.fromJSON=function(e){return new t(e.name,e.message,e.details)},t}(i);return a.prototype.type="error",a}));
+define(["require","exports","tslib","./lang","./Logger","./Message"],(function(e,t,r,n,s,i){"use strict";var o=function(e){function t(r,n,s){var i=e.call(this,r,n,s)||this;return i instanceof t?i:new t(r,n,s)}return r.__extends(t,e),t.prototype.toJSON=function(){if(null!=this.details)try{return{name:this.name,message:this.message,details:JSON.parse(JSON.stringify(this.details,(function(e,t){if(t&&"object"==typeof t&&"function"==typeof t.toJSON)return t;try{return n.clone(t)}catch(e){return"[object]"}})))}}catch(e){throw s.getLogger("esri.core.Error").error(e),e}return{name:this.name,message:this.message,details:this.details}},t.fromJSON=function(e){return new t(e.name,e.message,e.details)},t}(i);return o.prototype.type="error",o}));

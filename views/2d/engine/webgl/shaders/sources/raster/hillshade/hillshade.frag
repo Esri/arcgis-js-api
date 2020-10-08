@@ -55,12 +55,12 @@ vec3 hsv2rgb(vec3 c) {
   return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
 
-vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
+vec4 overlay(float val, float minValue, float maxValue, float hillshade) {
   val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
-  vec4 rgb = colorize(vec4(val, val, val, 1.0), false);
+  vec4 rgb = colorize(vec4(val, val, val, 1.0), 255.0);
   vec3 hsv = rgb2hsv(rgb.xyz);
   hsv.z = hillshade;
-  return vec4(hsv2rgb(hsv) * alpha, alpha);
+  return vec4(hsv2rgb(hsv), 1.0) * rgb.a;
 }
 
 void main() {
@@ -144,9 +144,8 @@ void main() {
   // set color
   float alpha = getNeighborHoodAlpha(va.a, vb.a, vc.a, vd.a, ve.a, vf.a, vg.a, vh.a, vi.a);
 #ifdef APPLY_COLORMAP
-  gl_FragColor = overlay(ve.r, u_minValue, u_maxValue, hillshade, alpha);
+  gl_FragColor = overlay(ve.r, u_minValue, u_maxValue, hillshade) * alpha * u_opacity;
 #else
-  hillshade *= alpha;
-  gl_FragColor = vec4(hillshade, hillshade, hillshade, alpha);
+  gl_FragColor = vec4(hillshade, hillshade, hillshade, 1.0) * alpha * u_opacity;
 #endif
 }

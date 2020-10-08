@@ -1,4 +1,6 @@
 {
+  "setDate": "Angiv dato",
+  "selectMonth": "Vælg måned",
   "goToPreviousMonth": "Gå til forrige måned",
   "goToNextMonth": "Gå til næste måned",
   "goToPreviousYear": "Gå til forrige år",

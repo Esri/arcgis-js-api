@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./math/vec4"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.vec4=t}));
+define(["require","exports","./math/vec4"],(function(e,t,c){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.vec4=void 0,t.vec4=c}));

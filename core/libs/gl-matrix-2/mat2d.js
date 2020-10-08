@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./math/mat2d"],(function(e,t,d){Object.defineProperty(t,"__esModule",{value:!0}),t.mat2d=d}));
+define(["require","exports","./math/mat2d"],(function(e,t,d){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.mat2d=void 0,t.mat2d=d}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./contains"],(function(n,o,t){Object.defineProperty(o,"__esModule",{value:!0}),o.polygonIntersectsPoint=function(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)},o.polygonIntersectsMultipoint=function(n,o,e,r,i,s){for(var u,l=(u=s,i?u?4:3:u?3:2),c=r.coords,f=r.lengths,p=0,g=0;p<f.length;p++,g+=l)if(t.polygonContainsCoords(n,o,e,c[g],c[g+1]))return!0;return!1}}));
+define(["require","exports","./contains"],(function(n,o,t){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.polygonIntersectsMultipoint=o.polygonIntersectsPoint=void 0,o.polygonIntersectsPoint=function(n,o,e,r){return t.polygonContainsPoint(n,o,e,r)},o.polygonIntersectsMultipoint=function(n,o,e,r,i,s){for(var l,u=(l=s,i?l?4:3:l?3:2),c=r.coords,p=r.lengths,g=0,f=0;g<p.length;g++,f+=u)if(t.polygonContainsCoords(n,o,e,c[f],c[f+1]))return!0;return!1}}));

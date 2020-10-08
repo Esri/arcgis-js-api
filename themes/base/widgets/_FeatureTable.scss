@@ -20,6 +20,7 @@
       .esri-column__menu-container.esri-button-menu {
         height: 28px;
         width: 28px;
+        position: inherit;
 
         .esri-button-menu__button {
           height: 26px;
@@ -33,6 +34,10 @@
     height: 40px;
     padding: 4px;
     width: 40px;
+
+    .esri-button-menu {
+      bottom: auto;
+    }
   }
 
   .esri-feature-table__header {
@@ -72,7 +77,67 @@
     font-size: 0.9em;
   }
 
-  .esri-field-column__cell-input-container {
+  .esri-field-column__cell__date-input-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .esri-field-column__cell__date-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .esri-date-picker {
+      flex: 1 1 0;
+
+      .esri-date-picker__text-input.esri-input {
+        width: 100%;
+      }
+
+      .esri-date-picker__calendar-toggle {
+        height: 26px;
+      }
+    }
+
+    .esri-time-picker {
+      display: inline-flex;
+      flex: 1 1 0;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .esri-field-column__button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: $button-color;
+    display: flex;
+    font-size: $icon-size;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 125ms ease-in-out;
+    width: 26px;
+
+    &:disabled {
+      cursor: default;
+      color: $interactive-font-color--disabled;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+      color: $interactive-font-color--hover;
+      cursor: pointer;
+    }
+  }
+
+  .esri-field-column__cell__input-container {
     display: flex;
     top: 0;
     left: 0;

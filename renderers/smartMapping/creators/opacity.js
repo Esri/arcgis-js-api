@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/opacity"],(function(e,r,t,a,p,i){Object.defineProperty(r,"__esModule",{value:!0});var o=p.getLogger("esri.renderers.smartMapping.creators.opacity");a.deprecatedModule(o,"esri/renderers/smartMapping/creators/opacity",{replacement:"esri/smartMapping/renderers/opacity"}),t.__exportStar(i,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/opacity"],(function(e,r,t,a,p,s){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i=p.getLogger("esri.renderers.smartMapping.creators.opacity");a.deprecatedModule(i,"esri/renderers/smartMapping/creators/opacity",{replacement:"esri/smartMapping/renderers/opacity"}),t.__exportStar(s,r)}));

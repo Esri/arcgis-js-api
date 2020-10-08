@@ -16,7 +16,7 @@
  * @example
  * // Create a map with an initial basemap
  * var map = new Map({
- *   basemap: "streets",  // The initial basemap to toggle from
+ *   basemap: "streets-vector",  // The initial basemap to toggle from
  *   ground: "world-elevation"
  * });
  *
@@ -27,7 +27,7 @@
  * });
  *
  * var basemapToggle = new BasemapToggle({
- *   view: view,  // The view that provides access to the map's "streets" basemap
+ *   view: view,  // The view that provides access to the map's "streets-vector" basemap
  *   nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
  * });
  */

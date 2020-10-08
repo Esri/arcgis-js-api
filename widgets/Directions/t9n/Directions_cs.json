@@ -24,8 +24,6 @@
   "stop": "Zastavit",
   "stopLabelTemplate": "Zastávka {number} ({label})",
   "unlocated": "Neumístěna",
-  "searchFieldPlaceholder": "Hledat nebo kliknout na mapu",
-  "viewlessSearchFieldPlaceholder": "Hledat",
   "directionsPlaceholder": "Vaše trasa se zobrazí zde.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Odhadovaný čas příjezdu",

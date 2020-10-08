@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,o,r,t,s){Object.defineProperty(o,"__esModule",{value:!0});var n=function(e){function o(){var o=null!==e&&e.apply(this,arguments)||this;return o.x=0,o.y=0,o}var t;return r.__extends(o,e),t=o,o.prototype.clone=function(){return new t({x:this.x,y:this.y})},r.__decorate([s.property({type:Number})],o.prototype,"x",void 0),r.__decorate([s.property({type:Number})],o.prototype,"y",void 0),o=t=r.__decorate([s.subclass("esri.symbols.support.Symbol3DAnchorPosition2D")],o)}(t);o.Symbol3DAnchorPosition2D=n,o.default=n}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(o,e,r,t,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.Symbol3DAnchorPosition2D=void 0;var i=function(o){function e(){var e=null!==o&&o.apply(this,arguments)||this;return e.x=0,e.y=0,e}var t;return r.__extends(e,o),t=e,e.prototype.clone=function(){return new t({x:this.x,y:this.y})},r.__decorate([s.property({type:Number})],e.prototype,"x",void 0),r.__decorate([s.property({type:Number})],e.prototype,"y",void 0),e=t=r.__decorate([s.subclass("esri.symbols.support.Symbol3DAnchorPosition2D")],e)}(t);e.Symbol3DAnchorPosition2D=i,e.default=i}));

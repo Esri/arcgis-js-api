@@ -9,21 +9,21 @@
           "id": "14bad5e952b-layer7",
           "listMode": "show",
           "title": "IconsAndLabelsDefault",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer"
         },
         {
           "id": "14bad5e9414-layer6",
           "listMode": "show",
           "title": "IconsDefaultNoZService",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer"
         },
         {
           "id": "14bad5e9537-layer9",
           "listMode": "show",
           "title": "Icons RTG no Shape.Z",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -98,7 +98,7 @@
           "id": "148b34513f3-layer3",
           "listMode": "show",
           "title": "IconsAndLabels RTG Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -168,7 +168,7 @@
           "id": "148b3451405-layer5",
           "listMode": "show",
           "title": "IconsAndLabels ABS NoOffset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -237,7 +237,7 @@
           "id": "IconsAndLabelsOnTheGround",
           "listMode": "show",
           "title": "IconsAndLabels OTG",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -306,7 +306,7 @@
           "id": "148b3451485-layer8",
           "listMode": "show",
           "title": "ObjectsAndLabels ABS Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FP__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -378,14 +378,14 @@
           "id": "LinesDefault",
           "listMode": "show",
           "title": "LinesDefault",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer"
         },
         {
           "id": "LinesOnTheGroundNoOffset",
           "listMode": "show",
           "title": "Lines OTG",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -420,7 +420,7 @@
           "id": "RTG no Shape.z",
           "listMode": "show",
           "title": "Lines RTG no Shape.z",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -462,7 +462,7 @@
           "id": "LinesRelativeToGroundOffset",
           "listMode": "show",
           "title": "Lines RTG Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -498,7 +498,7 @@
           "id": "LinesRelativeToGroundNoOffset",
           "listMode": "show",
           "title": "Lines RTG NoOffset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -533,7 +533,7 @@
           "id": "LinesAbsoluteHeightNoOffset",
           "listMode": "show",
           "title": "Lines ABS NoOffset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -568,7 +568,7 @@
           "id": "LinesAbsoluteHeightOffset",
           "listMode": "show",
           "title": "Lines ABS Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -604,7 +604,7 @@
           "id": "14bad5e95e6-layer20",
           "listMode": "show",
           "title": "Tubes RTG",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -648,14 +648,14 @@
           "id": "AreaOnTheGroundNoOffset",
           "listMode": "show",
           "title": "AreaDefault",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer"
         },
         {
           "id": "14bad5e9816-layer22",
           "listMode": "show",
           "title": "Area RTG Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {
@@ -700,7 +700,7 @@
           "id": "14bad5e98ca-layer23",
           "listMode": "show",
           "title": "Area ABS Offset",
-          "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
+          "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FA__3857__CH_Fiesch__Paraglide_NoZ/FeatureServer/0",
           "layerType": "ArcGISFeatureLayer",
           "layerDefinition": {
             "elevationInfo": {

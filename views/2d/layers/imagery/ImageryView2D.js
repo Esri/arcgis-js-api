@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+
+define(["require","exports","tslib","../../../../Graphic","../../../../core/Logger","../../../../core/promiseUtils","../../../../core/screenUtils","../../../../core/accessorSupport/decorators","../../../../layers/support/rasterFunctions/pixelUtils","../../engine/BitmapContainer","../../engine/Container","../../engine/ImageryBitmapSource","../LayerView2D","../support/ExportStrategy","../../../layers/LayerView"],(function(e,t,r,i,n,o,a,p,l,s,u,c,y,d,h){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var g=n.getLogger("esri.views.2d.layers.imagery.ImageryView2D"),m=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.container=new u.Container,t.type="Imagery",t._bitmapView=null,t}return r.__extends(t,e),Object.defineProperty(t.prototype,"updating",{get:function(){var e;return null===(e=this.strategy)||void 0===e?void 0:e.updating},enumerable:!1,configurable:!0}),t.prototype.update=function(e){this.strategy.update(e).catch((function(e){o.isAbortError(e)||g.error(e)}))},t.prototype.detach=function(){this.strategy.destroy(),this._bitmapView.removeAllChildren(),this.container.removeAllChildren()},t.prototype.hitTest=function(e,t){if(this.suspended)return o.resolve(null);var r=this.view.toMap(a.createScreenPoint(e,t));return o.resolve(new i({attributes:{},geometry:r,layer:this.layer}))},t.prototype.attach=function(){var e=this,t=this.layer.version>=10,r=this.layer.version>=10.1?this.layer.imageMaxHeight:2048,i=this.layer.version>=10.1?this.layer.imageMaxWidth:2048;this._bitmapView=new s.BitmapContainer,this.strategy=new d({container:this._bitmapView,imageNormalizationSupported:t,imageMaxHeight:r,imageMaxWidth:i,fetchSource:this._fetchImage.bind(this),requestUpdate:function(){return e.requestUpdate()}})},t.prototype.moveStart=function(){},t.prototype.viewChange=function(){},t.prototype.moveEnd=function(){},t.prototype.install=function(e){this.container.addChild(this._bitmapView),e.addChild(this.container)},t.prototype.uninstall=function(e){this.container.removeChild(this._bitmapView),e.removeChild(this.container)},t.prototype.redraw=function(){var e=this;this.strategy.updateExports((function(t){t.source instanceof HTMLImageElement?t.requestRender():e.layer.applyRenderer({pixelBlock:t.source.pixelBlock}).then((function(r){var i=t.source;i.pixelBlock=r.pixelBlock,i.filter=function(t){return e.layer.applyFilter(t)},e.container.requestRender()}))}))},t.prototype.isUpdating=function(){return this.strategy.updating||this.updateRequested},t.prototype.getPixelData=function(){if(this.updating)return null;var e=this.strategy.container.children;if(1===e.length&&e[0].source)return{extent:e[0].source.extent,pixelBlock:e[0].source.originalPixelBlock};if(e.length>1){var t=this.view.extent,r=e.map((function(e){return e.source})).filter((function(e){return e.extent&&e.extent.intersects(t)})).map((function(e){return{extent:e.extent,pixelBlock:e.originalPixelBlock}})),i=l.mosaicPixelData(r,t);return i?{extent:i.extent,pixelBlock:i.pixelBlock}:null}return null},t.prototype._fetchImage=function(e,t,r,i){var n=this;return(i=i||{}).timeExtent=this.timeExtent,i.requestAsImageElement=!0,this.layer.fetchImage(e,t,r,i).then((function(e){return e.imageElement?e.imageElement:n.layer.applyRenderer(e.pixelData,{signal:i.signal}).then((function(t){var r=new c.default(t.pixelBlock,t.extent.clone(),e.pixelData.pixelBlock);return r.filter=function(e){return n.layer.applyFilter(e)},r}))}))},r.__decorate([p.property()],t.prototype,"container",void 0),r.__decorate([p.property()],t.prototype,"layer",void 0),r.__decorate([p.property()],t.prototype,"strategy",void 0),r.__decorate([p.property()],t.prototype,"timeExtent",void 0),r.__decorate([p.property({dependsOn:["strategy.updating"]})],t.prototype,"updating",null),r.__decorate([p.enumeration({imagery:"Imagery"})],t.prototype,"type",void 0),t=r.__decorate([p.subclass("esri.views.2d.layers.imagery.ImageryView2D")],t)}(y.LayerView2DMixin(h));t.default=m}));

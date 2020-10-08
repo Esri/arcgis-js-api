@@ -71,7 +71,9 @@ void main() {
   if (u_bandCount == 1) {
     float grayVal = stretchOneValue(currentPixel.r, u_minCutOff[0], u_maxCutOff[0], u_minOutput, u_maxOutput, u_factor[0], u_useGamma, u_gamma[0], u_gammaCorrection[0]);
 #ifdef APPLY_COLORMAP
-      gl_FragColor = colorize(vec4(grayVal, grayVal, grayVal, currentPixel.a * u_opacity), !u_useGamma);
+      // TODO refactor u_useGamma
+      vec4 result = colorize(vec4(grayVal, grayVal, grayVal, 1.0), u_useGamma ? 255.0 : 1.0);
+      gl_FragColor = vec4(result.xyz, 1.0) * result.a * currentPixel.a * u_opacity;
 #else
       gl_FragColor = vec4(grayVal, grayVal, grayVal, 1.0) * currentPixel.a * u_opacity;
 #endif

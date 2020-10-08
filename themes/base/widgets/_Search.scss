@@ -1,5 +1,17 @@
 $search_width: 240px !default;
 
+@mixin clearBorders($exception-side: "", $exception-value: "") {
+  $border-sides: top, right, bottom, left;
+
+  @each $border-side in $border-sides {
+    @if $border-side == $exception-side {
+      border-#{$exception-side}: $exception-value;
+    } @else {
+      border-#{$border-side}: none;
+    }
+  }
+}
+
 @mixin search() {
   .esri-search {
     width: $search_width;
@@ -83,15 +95,16 @@ $search_width: 240px !default;
     align-self: flex-end;
   }
   .esri-search__submit-button {
-    border-left: solid 1px $border-color;
+    @include clearBorders(left, solid 1px $border-color);
   }
   .esri-search__sources-button {
-    border-right: solid 1px $border-color;
+    @include clearBorders(right, solid 1px $border-color);
   }
   .esri-search__sources-button--up {
     display: none;
   }
   .esri-search__clear-button {
+    @include clearBorders();
     align-self: flex-end;
     display: flex;
   }

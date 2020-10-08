@@ -6,6 +6,6 @@
     "outsideRange": "Wartość powinna mieścić się w granicach {min} i {max}",
     "invalidCodedValue": "Wartość powinna być równa jednej z wyszczególnionych wartości.",
     "invalidType": "Nieprawidłowa wartość",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "To pole musi zawierać co najmniej następującą liczbę znaków: {min}"
   }
 }

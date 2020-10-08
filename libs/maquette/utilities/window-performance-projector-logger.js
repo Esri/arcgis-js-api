@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){if(Object.defineProperty(r,"__esModule",{value:!0}),window.performance&&window.performance.measure){var n,o=window.performance;r.windowPerformanceProjectorLogger=function(e){switch(o.mark(e),e){case"domEventProcessed":o.measure("eventHandler","domEvent","domEventProcessed");break;case"renderDone":o.measure("renderCycle","renderStart","renderDone");break;case"rendered":o.measure("render",n,"rendered");break;case"patched":o.measure("diff+patch","rendered","patched")}n=e}}else r.windowPerformanceProjectorLogger=function(){}}));
+define(["require","exports"],(function(e,r){"use strict";if(Object.defineProperty(r,"__esModule",{value:!0}),r.windowPerformanceProjectorLogger=void 0,window.performance&&window.performance.measure){var n,o=window.performance;r.windowPerformanceProjectorLogger=function(e){switch(o.mark(e),e){case"domEventProcessed":o.measure("eventHandler","domEvent","domEventProcessed");break;case"renderDone":o.measure("renderCycle","renderStart","renderDone");break;case"rendered":o.measure("render",n,"rendered");break;case"patched":o.measure("diff+patch","rendered","patched")}n=e}}else r.windowPerformanceProjectorLogger=function(){}}));

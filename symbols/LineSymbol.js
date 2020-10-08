@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../core/screenUtils","../core/accessorSupport/decorators","./Symbol"],(function(e,t,r,o,i,s){return function(e){function t(t){var r=e.call(this,t)||this;return r.type="simple-line",r.width=.75,r}return r.__extends(t,e),t.prototype.hash=function(){return this.type+"."+this.width},r.__decorate([i.enumeration({esriSLS:"simple-line"})],t.prototype,"type",void 0),r.__decorate([i.property({type:Number,cast:o.toPt,json:{write:!0}})],t.prototype,"width",void 0),t=r.__decorate([i.subclass("esri.symbols.LineSymbol")],t)}(s)}));
+define(["require","exports","tslib","../core/screenUtils","../core/accessorSupport/decorators","./Symbol"],(function(e,t,r,o,i,s){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.type="simple-line",r.width=.75,r}return r.__extends(t,e),t.prototype.hash=function(){return this.type+"."+this.width},r.__decorate([i.enumeration({esriSLS:"simple-line"},{readOnly:!0})],t.prototype,"type",void 0),r.__decorate([i.property({type:Number,cast:o.toPt,json:{write:!0}})],t.prototype,"width",void 0),t=r.__decorate([i.subclass("esri.symbols.LineSymbol")],t)}(s)}));

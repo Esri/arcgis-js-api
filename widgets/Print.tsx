@@ -11,6 +11,9 @@
  * except `map-only`. This can be customized using the `customTextElements` property of
  * {@link module:esri/tasks/support/PrintTemplate#layoutOptions PrintTemplate.layoutOptions}.
  *
+ * For more information about printing with the `MAP_ONLY` layout, please see
+ * {@link module:esri/tasks/support/PrintTemplate#exportOptions exportOptions}.
+ *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
@@ -196,8 +199,27 @@ const invalidLayoutWarningMessage =
 const invalidFormatWarningMessage =
   "User sets an invalid format, resetting it to the default valid one...";
 
+function dimensionsFromDPI(dpi: number): Pick<PrintTemplate["exportOptions"], "width" | "height"> {
+  const dpiUnitToWidth = 8.3333;
+  const dpiUnitToHeight = 11.4583;
+
+  return {
+    width: Math.round(dpi * dpiUnitToWidth),
+    height: Math.round(dpi * dpiUnitToHeight)
+  };
+}
+
+interface PrintEvent {
+  link: FileLink;
+}
+
+interface PrintEvents {
+  submit: PrintEvent;
+  complete: PrintEvent;
+}
+
 @subclass("esri.widgets.Print")
-class Print extends Widget {
+class Print extends Widget<PrintEvents> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -444,7 +466,7 @@ class Print extends Widget {
   //----------------------------------
 
   /**
-   * The Error object returned if an error occurred while fetching information from service
+   * The Error object returned if an error occurred while fetching information from service.
    * @type {EsriError}
    * @ignore
    */
@@ -456,9 +478,45 @@ class Print extends Widget {
   //----------------------------------
 
   /**
-   * @todo doc
-   * @type {module:esri/core/Collection<module:esri/widgets/Print/FileLink>}
-   * @ignore
+   * The collection of links exported from the Print widget.
+   *
+   * @since 4.17
+   * @name exportedLinks
+   * @instance
+   * @readonly
+   * @type {module:esri/core/Collection<module:esri/widgets/Print~FileLink>}
+   *
+   * @example
+   * require([
+   *   "esri/widgets/Print",
+   *   "esri/config"
+   * ], function(Print, esriConfig) {
+   *
+   *   // ...
+   *
+   *   view.when(function () {
+   *     print = new Print({
+   *       view: view,
+   *       // specify your own print service
+   *       printServiceUrl:
+   *         "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+   *     });
+   *
+   *     // Add widget to the top right corner of the view
+   *     view.ui.add(print, "top-right");
+   *
+   *     // use a requestInterceptor to monitor the print widget
+   *     // for print completion
+   *     esriConfig.request.interceptors.push({
+   *       // set the `urls` property to the URL of the print service so that this
+   *       // interceptor only applies to requests made to the print service URL
+   *       urls: print.printServiceUrl,
+   *       // use the AfterInterceptorCallback to interogate the exportedLinks property
+   *       after: function(response) {
+   *         console.log("exportedLinks: ", print.exportedLinks.items[0]);
+   *       }
+   *     });
+   *   });
    */
   @property({
     type: FileLinkCollection
@@ -600,6 +658,102 @@ class Print extends Widget {
 
   //--------------------------------------------------------------------------
   //
+  //  Type definitions
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Represents an exported map request from the result of the Print widget.
+   * Successful exports will have a URL that links to the printout. Failed ones will have information on what went wrong.
+   *
+   * @typedef module:esri/widgets/Print~FileLink
+   *
+   * @property {number} count - The location of the FileLink element in the array.
+   * @property {String} error - The {@link module:esri/core/Error error} from the Print widget, if any.
+   * @property {String} extension - The {@link module:esri/widgets/Print/TemplateOptions#format file} type of the print-out.
+   * @property {String} name - The {@link module:esri/widgets/Print/TemplateOptions#fileName fileName}
+   * or {@link module:esri/widgets/Print/TemplateOptions#title title} of the print-out.
+   * @property {String} state - The state of the print-out. Either `"ready"` or `"pending"` or `"error"`.
+   * @property {String} url - The [printServiceUrl](#printServiceUrl) of the print-out.
+   *
+   * @example
+   * require([
+   *   "esri/widgets/Print",
+   *   "esri/config"
+   * ], function(Print, esriConfig) {
+   *
+   *   // ...
+   *
+   *   view.when(function () {
+   *     print = new Print({
+   *       view: view,
+   *       // specify your own print service
+   *       printServiceUrl:
+   *         "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+   *     });
+   *
+   *     // Add widget to the top right corner of the view
+   *     view.ui.add(print, "top-right");
+   *
+   *     // use a requestInterceptor to monitor the print widget
+   *     // for print completion
+   *     esriConfig.request.interceptors.push({
+   *       // set the `urls` property to the URL of the print service so that this
+   *       // interceptor only applies to requests made to the print service URL
+   *       urls: print.printServiceUrl,
+   *       // use the AfterInterceptorCallback to interogate the exportedLinks property
+   *       after: function(response) {
+   *         console.log("exportedLinks: ", print.exportedLinks.items[0]);
+   *       }
+   *     });
+   *   });
+   */
+
+  //--------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Fires when a print request has been completed and returns its results.
+   * This event will fire whether an export succeeds or fails.
+   *
+   * @since 4.17
+   * @event module:esri/widgets/Print#complete
+   * @property {Object} results - An object representing the results of the print.
+   * @property {module:esri/core/Collection<module:esri/widgets/Print~FileLink>} results.link - Represents an
+   * exported map request from the result of the Print widget.
+   *
+   * @example
+   * const printWidget = new Print();
+   *
+   * printWidget.on("complete", function(results){
+   *   // The results are stored in the results object
+   *   console.log("Results of the print: ", results.link);
+   * });
+   */
+
+  /**
+   * Fires when an export request begins, and returns a reference to the exported [link](#FileLink).
+   *
+   * @since 4.17
+   * @event module:esri/widgets/Print#submit
+   * @property {Object} results - An object representing the results of submitting the print.
+   * @property {module:esri/core/Collection<module:esri/widgets/Print~FileLink>} results.link - Represents an
+   * exported map request from the result of the Print widget.
+   *
+   * @example
+   * const printWidget = new Print();
+   *
+   * printWidget.on("submit", function(results){
+   *   // The results are stored in the event object
+   *   console.log("Results of submitting the print: ", results.link);
+   * });
+   */
+
+  //--------------------------------------------------------------------------
+  //
   //  Public Methods
   //
   //--------------------------------------------------------------------------
@@ -697,7 +851,7 @@ class Print extends Widget {
             type="number"
             class={this.classes(CSS.inputText, CSS.input)}
             data-input-name="dpi"
-            oninput={this._updateInputValue}
+            onchange={this._handleDPIChange}
             value={`${dpi}`}
             min="1"
             tabIndex={0}
@@ -729,13 +883,13 @@ class Print extends Widget {
             class={this.classes(CSS.inputText, CSS.input, CSS.scaleInput)}
             tabIndex={0}
             data-input-name="scale"
-            oninput={this._updateInputValue}
+            onchange={this._updateInputValue}
             disabled={!scaleEnabled}
             value={`${scale}`}
             bind={this}
           />
           <button
-            role="button"
+            type="button"
             aria-label={messages.reset}
             class={this.classes(CSS.widgetButton, CSS.refreshButton, CSS.iconRefresh)}
             tabIndex={0}
@@ -761,7 +915,7 @@ class Print extends Widget {
               class={this.classes(CSS.inputText, CSS.input)}
               tabIndex={0}
               data-input-name="author"
-              oninput={this._updateInputValue}
+              onchange={this._updateInputValue}
               bind={this}
             />
           </label>
@@ -775,7 +929,7 @@ class Print extends Widget {
               tabIndex={0}
               value={copyright}
               data-input-name="copyright"
-              oninput={this._updateInputValue}
+              onchange={this._updateInputValue}
               bind={this}
             />
           </label>
@@ -839,10 +993,10 @@ class Print extends Widget {
           <button
             aria-label={messages.advancedOptions}
             aria-expanded={this._advancedOptionsVisibleForLayout ? "true" : "false"}
-            role="button"
             class={CSS.advancedOptionsButton}
             onclick={this._showAdvancedOptions}
             bind={this}
+            type="button"
           >
             <div class={CSS.advancedOptionsButtonContainer}>
               <span
@@ -886,7 +1040,7 @@ class Print extends Widget {
               <label>
                 {messages.width}
                 <input
-                  type="text"
+                  type="number"
                   class={this.classes(CSS.inputText, CSS.input)}
                   data-input-name="width"
                   onchange={this._updateInputValue}
@@ -900,7 +1054,7 @@ class Print extends Widget {
               <label>
                 {messages.height}
                 <input
-                  type="text"
+                  type="number"
                   class={this.classes(CSS.inputText, CSS.input)}
                   data-input-name="height"
                   onchange={this._updateInputValue}
@@ -911,7 +1065,7 @@ class Print extends Widget {
               </label>
             </div>
             <button
-              role="button"
+              type="button"
               aria-label={messages.swap}
               class={this.classes(CSS.widgetButton, CSS.swapButton, CSS.iconSwap)}
               onclick={this._switchInput}
@@ -923,7 +1077,7 @@ class Print extends Widget {
             <button
               aria-label={messages.advancedOptions}
               aria-expanded={this._advancedOptionsVisibleForMapOnly ? "true" : "false"}
-              role="button"
+              type="button"
               class={CSS.advancedOptionsButton}
               onclick={this._showAdvancedOptions}
               bind={this}
@@ -1009,7 +1163,7 @@ class Print extends Widget {
 
         <button
           aria-label={messages.exportDescription}
-          role="button"
+          type="button"
           class={this.classes(CSS.printButton, CSS.button, exportButtonClasses)}
           disabled={exportDisabled}
           tabIndex={0}
@@ -1087,7 +1241,7 @@ class Print extends Widget {
             class={this.classes(CSS.inputText, CSS.input)}
             value={value}
             data-input-name={propName}
-            oninput={this._updateInputValue}
+            onchange={this._updateInputValue}
             bind={this}
           />
         </label>
@@ -1203,6 +1357,17 @@ class Print extends Widget {
     this.templateOptions[targetProperty] = target.value;
   }
 
+  private _handleDPIChange(event: Event): void {
+    this._updateInputValue(event);
+
+    const dpi = (event.currentTarget as HTMLInputElement).valueAsNumber;
+    const { height, width } = dimensionsFromDPI(dpi);
+    const { templateOptions } = this;
+
+    templateOptions["height"] = height;
+    templateOptions["width"] = width;
+  }
+
   private _handlePrintMap(): void {
     this._pendingExportScroll = true;
     const { templateOptions } = this;
@@ -1213,6 +1378,7 @@ class Print extends Widget {
     const link = this._createFileLink(template, fileName);
 
     this.exportedLinks.add(link);
+    this.emit("submit", { link });
 
     this.viewModel
       .print(template)
@@ -1228,7 +1394,10 @@ class Print extends Widget {
           state: "error"
         });
       })
-      .then(() => this.scheduleRender());
+      .then(() => {
+        this.emit("complete", { link });
+        this.scheduleRender();
+      });
   }
 
   private _updateFromOption(e: Event): void {

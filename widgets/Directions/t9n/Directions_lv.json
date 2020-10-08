@@ -24,8 +24,6 @@
   "stop": "Pietura",
   "stopLabelTemplate": "Pietura {number} ({label})",
   "unlocated": "Nav piešķirts",
-  "searchFieldPlaceholder": "Meklējiet vai noklikšķiniet kartē",
-  "viewlessSearchFieldPlaceholder": "Meklēt",
   "directionsPlaceholder": "Jūsu maršruts tiks parādīts šeit.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Prognozētais pienākšanas laiks",

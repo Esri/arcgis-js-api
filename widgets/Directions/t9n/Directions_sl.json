@@ -24,8 +24,6 @@
   "stop": "Postanek",
   "stopLabelTemplate": "Postanek {number} ({label})",
   "unlocated": "Nelociran",
-  "searchFieldPlaceholder": "Išči ali klikni na karto",
-  "viewlessSearchFieldPlaceholder": "Išči",
   "directionsPlaceholder": "Vaša pot se bo prikazala tukaj.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Predviden čas prihoda",

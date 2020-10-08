@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/dotDensity"],(function(e,r,o,t,s){var n=t.getLogger("esri.renderers.smartMapping.symbology.dotDensity");return o.deprecatedModule(n,"esri/renderers/smartMapping/symbology/dotDensity",{replacement:"esri/smartMapping/symbology/dotDensity"}),s}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/dotDensity"],(function(e,r,t,s,o){"use strict";var i=s.getLogger("esri.renderers.smartMapping.symbology.dotDensity");return t.deprecatedModule(i,"esri/renderers/smartMapping/symbology/dotDensity",{replacement:"esri/smartMapping/symbology/dotDensity"}),o}));

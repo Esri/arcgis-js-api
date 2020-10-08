@@ -723,5 +723,15 @@
   content: "\e90b";
   color: inherit;
 }
-
-
+.esri-icon-legend:before {
+  content: "\e90c";
+  color: inherit;
+}
+.esri-icon-sliders:before {
+  content: "\e90d";
+  color: inherit;
+}
+.esri-icon-sliders-horizontal:before {
+  content: "\e90e";
+  color: inherit;
+}

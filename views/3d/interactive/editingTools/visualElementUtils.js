@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/maybe","./lineGraphicVisualElementUtils","./pointGraphicVisualElementUtils"],(function(e,t,l,n,i){Object.defineProperty(t,"__esModule",{value:!0}),t.createVisualElements=function(e){switch(l.unwrap(e.graphic.geometry).type){case"point":return i.createVisualElements(e);case"polygon":case"polyline":return n.createVisualElements(e);default:return null}}}));
+define(["require","exports","../../../../core/maybe","./lineGraphicVisualElementUtils","./pointGraphicVisualElementUtils"],(function(e,t,i,l,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.createVisualElements=void 0,t.createVisualElements=function(e){switch(i.unwrap(e.graphic.geometry).type){case"point":return n.createVisualElements(e);case"polygon":case"polyline":return l.createVisualElements(e);default:return null}}}));

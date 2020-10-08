@@ -36,5 +36,14 @@
   "verticesCount": "Liczba wierzchołków: {count}",
   "deleteFeature": "Usuń obiekt",
   "deleteVertex": "Usuń wierzchołek",
-  "duplicate": "Duplikuj"
+  "duplicate": "Duplikuj",
+  "selectCircle": "Wybierz okręgiem",
+  "selectFeature": "Wybierz obiekt",
+  "selectFeatures": "Wybierz obiekty",
+  "selectLasso": "Wybierz za pomocą narzędzia lasso",
+  "selectLine": "Wybierz linią",
+  "selectMarquee": "Wybierz ramką",
+  "selectPolygon": "Wybierz poligonem",
+  "selectRectangle": "Wybierz prostokątem",
+  "clearSelection": "Wyczyść selekcję"
 }

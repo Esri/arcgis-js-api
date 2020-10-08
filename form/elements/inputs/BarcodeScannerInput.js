@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(e,r,t,n,o){return function(e){function r(r){var t=e.call(this,r)||this;return t.type="barcode-scanner",t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o},t.__decorate([n.property({type:["barcode-scanner"],json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o=t.__decorate([n.subclass("esri.form.elements.inputs.BarcodeScannerInput")],r)}(o)}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(e,r,t,n,o){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.type="barcode-scanner",t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o},t.__decorate([n.property({type:["barcode-scanner"],json:{read:!1,write:!0}})],r.prototype,"type",void 0),r=o=t.__decorate([n.subclass("esri.form.elements.inputs.BarcodeScannerInput")],r)}(o)}));

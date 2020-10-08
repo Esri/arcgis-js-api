@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var i=function(e,t,i,h){void 0===e&&(e=null),void 0===t&&(t={}),this.localId=0,this.geohashIndexed=!1,this.geohashX=0,this.geohashY=0,this.geometry=e,t&&(this.attributes=t),i&&(this.centroid=i),null!=h&&(this.objectId=h)};t.default=i}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t,o,s){void 0===e&&(e=null),void 0===t&&(t={}),this.displayId=0,this.geohashIndexed=!1,this.geohashX=0,this.geohashY=0,this.geometry=e,t&&(this.attributes=t),o&&(this.centroid=o),null!=s&&(this.objectId=s)}return Object.defineProperty(e.prototype,"hasGeometry",{get:function(){return!(!this.geometry||!this.geometry.coords||!this.geometry.coords.length)},enumerable:!1,configurable:!0}),e.prototype.weakClone=function(){var t=new e(this.geometry,this.attributes,this.centroid,this.objectId);return t.displayId=this.displayId,t.geohashIndexed=this.geohashIndexed,t.geohashX=this.geohashX,t.geohashY=this.geohashY,t},e}();t.default=o}));

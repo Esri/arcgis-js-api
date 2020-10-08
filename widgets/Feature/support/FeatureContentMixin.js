@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","../../support/widget"],(function(e,t,n,o,r){Object.defineProperty(t,"__esModule",{value:!0}),t.FeatureContentMixin=function(e){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.renderNodeContent=function(e){return r.isWidget(e)&&!e.destroyed?r.tsx("div",{key:e},e.render()):e instanceof HTMLElement?r.tsx("div",{key:e,bind:e,afterCreate:t._attachToNode}):r.hasDomNode(e)?r.tsx("div",{key:e,bind:e.domNode,afterCreate:t._attachToNode}):null},t}return n.__extends(t,e),t.prototype._attachToNode=function(e){e.appendChild(this)},t=n.__decorate([o.subclass("esri.widgets.Feature.ContentMixin")],t)}(e)}}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","../../support/widget"],(function(e,t,n,o,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.FeatureContentMixin=void 0,t.FeatureContentMixin=function(e){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.renderNodeContent=function(e){return r.isWidget(e)&&!e.destroyed?r.tsx("div",{key:e},e.render()):e instanceof HTMLElement?r.tsx("div",{key:e,bind:e,afterCreate:t._attachToNode}):r.hasDomNode(e)?r.tsx("div",{key:e,bind:e.domNode,afterCreate:t._attachToNode}):null},t}return n.__extends(t,e),t.prototype._attachToNode=function(e){e.appendChild(this)},t=n.__decorate([o.subclass("esri.widgets.Feature.ContentMixin")],t)}(e)}}));

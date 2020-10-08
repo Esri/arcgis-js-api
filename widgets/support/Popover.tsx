@@ -9,6 +9,8 @@
 
 // esri.core
 import { byId, remove } from "esri/../core/domUtils";
+import { isNone, isSome, Maybe } from "esri/../core/maybe";
+import { init } from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
 import { property, subclass } from "esri/../core/accessorSupport/decorators";
@@ -24,7 +26,7 @@ import Widget = require("esri/Widget");
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
-import { isRTL, renderable, tsx } from "esri/widgets/widget";
+import { renderable, tsx } from "esri/widgets/widget";
 
 type NodeReference = HTMLElement | string;
 type GetNodeReferenceFunction = () => NodeReference;
@@ -63,16 +65,9 @@ const CSS = {
   open: "esri-popover--open"
 };
 
-const BASE_Z_INDEX = 1000;
-
 const CORE_STYLES = {
-  "position": "absolute",
-  "top": "-9999px",
-
-  // we consider dir for the initial value to avoid scroll-related artifacts
-  "left": `${(isRTL() ? 1 : -1) * 9999}px`,
-
-  "z-index": ""
+  "position": "fixed",
+  "z-index": "1000"
 };
 
 type PopoverParams = Partial<
@@ -106,6 +101,11 @@ class Popover<W extends Widget = Widget> extends Widget {
       this._projector.append(document.body, this.render as () => MaquetteVNode);
       this._renderAttached = true;
     });
+
+    this.own(
+      init(this, ["open", "anchorElement"], () => this._buildPopper()),
+      init(this, ["placement", "offset"], () => this._setPopperOptions())
+    );
   }
 
   destroy(): void {
@@ -118,13 +118,16 @@ class Popover<W extends Widget = Widget> extends Widget {
       this._renderAttached = false;
     }
 
-    if (this._rootNode) {
+    if (isSome(this._rootNode)) {
       remove(this._rootNode);
       this._rootNode = null;
     }
 
-    if (this.popper) {
-      this.popper.destroy();
+    this._contentNode = null;
+
+    if (isSome(this._popper)) {
+      this._popper.destroy();
+      this._popper = null;
     }
   }
 
@@ -134,8 +137,13 @@ class Popover<W extends Widget = Widget> extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private _rootNode: HTMLElement;
+  private _popper: Maybe<ReturnType<typeof createPopper>> = null;
+
+  private _contentNode: Maybe<HTMLElement> = null;
+
   private _renderAttached: boolean = false;
+
+  private _rootNode: Maybe<HTMLElement> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -279,12 +287,13 @@ class Popover<W extends Widget = Widget> extends Widget {
 
     return (
       <div
+        afterCreate={this._afterRootCreate}
         class={this.classes(CSS.base, open ? CSS.open : null)}
         styles={CORE_STYLES}
-        afterCreate={this._afterRootCreate}
-        afterUpdate={this._updatePosition}
       >
-        {open && renderContentFunction && renderContentFunction.call(owner)}
+        <div afterCreate={this._afterContentCreate} afterUpdate={this._updatePosition}>
+          {open && renderContentFunction?.call(owner)}
+        </div>
       </div>
     );
   }
@@ -295,18 +304,32 @@ class Popover<W extends Widget = Widget> extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private popper: ReturnType<typeof createPopper>;
-
   private _afterRootCreate = (node: HTMLElement): void => {
     this._rootNode = node;
-    this._updatePosition(node);
   };
 
-  private _updatePosition = (node: HTMLElement): void => {
-    const { open, renderContentFunction } = this;
+  private _afterContentCreate = (node: HTMLElement): void => {
+    this._contentNode = node;
+  };
 
-    if (!open || !renderContentFunction) {
-      node.style.zIndex = CORE_STYLES["z-index"];
+  private _updatePosition = (): void => {
+    if (isSome(this._popper)) {
+      this._popper.update();
+    }
+  };
+
+  private _buildPopper(): void {
+    if (isSome(this._popper)) {
+      this._popper.destroy();
+      this._popper = null;
+    }
+
+    const node = this._contentNode;
+    if (isNone(node)) {
+      return;
+    }
+
+    if (!this.open || !this.renderContentFunction) {
       return;
     }
 
@@ -315,27 +338,27 @@ class Popover<W extends Widget = Widget> extends Widget {
       return;
     }
 
-    const { offset, placement } = this;
+    this._popper = createPopper(anchor, node);
+    this._setPopperOptions();
+  }
 
-    const contentNode = node.firstElementChild as HTMLElement;
-    this.popper = createPopper(anchor, contentNode, {
+  private _setPopperOptions(): void {
+    const { placement, offset, _popper } = this;
+
+    if (isNone(_popper)) {
+      return;
+    }
+
+    _popper.setOptions({
       placement,
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset
-          }
-        }
-      ]
+      modifiers: [{ name: "offset", options: { offset } }]
     });
 
-    node.style.zIndex = `${BASE_Z_INDEX}`;
-  };
+    _popper.forceUpdate();
+  }
 
   private _getAnchor(): HTMLElement | null {
     const { anchorElement } = this;
-
     return byId(typeof anchorElement === "function" ? anchorElement() : anchorElement);
   }
 }

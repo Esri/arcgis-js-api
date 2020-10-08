@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0}),r.ShaderStageTypes=[0,1,2]}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.ShaderStageTypes=void 0,r.ShaderStageTypes=[0,1,2]}));

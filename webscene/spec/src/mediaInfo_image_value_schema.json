@@ -1,7 +1,7 @@
 {
   "title": "mediaInfo image value",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The value object contains information for popup windows about how images should be retrieved.",
   "properties": {
     "linkURL": {

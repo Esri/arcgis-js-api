@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,r,t,o,s){return new(function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.SCHEDULER_LOG_SLOW_TASKS=!1,r}return t.__extends(r,e),t.__decorate([s.property()],r.prototype,"SCHEDULER_LOG_SLOW_TASKS",void 0),r=t.__decorate([s.subclass("esri.views.support.DebugFlags")],r)}(o))}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,r,t,s,o){"use strict";return new(function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.SCHEDULER_LOG_SLOW_TASKS=!1,r}return t.__extends(r,e),t.__decorate([o.property()],r.prototype,"SCHEDULER_LOG_SLOW_TASKS",void 0),r=t.__decorate([o.subclass("esri.views.support.DebugFlags")],r)}(s))}));

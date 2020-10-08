@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../input/InputHandler","../../../input/handlers/support"],(function(t,e,i,n,a){Object.defineProperty(e,"__esModule",{value:!0});var o=function(t){function e(e,i){var n=t.call(this,!0)||this;return n.view=e,n.registerIncoming("double-click",i,(function(t){return n._handleDoubleClick(t,i)})),n}return i.__extends(e,t),e.prototype._handleDoubleClick=function(t,e){a.eventMatchesPointerAction(t.data,"primary")&&(t.stopPropagation(),e?this.view.mapViewNavigation.zoomOut([t.data.x,t.data.y]):this.view.mapViewNavigation.zoomIn([t.data.x,t.data.y]))},e}(n.InputHandler);e.DoubleClickZoom=o}));
+define(["require","exports","tslib","../../../input/InputHandler","../../../input/handlers/support"],(function(t,e,i,n,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.DoubleClickZoom=void 0;var a=function(t){function e(e,i){var n=t.call(this,!0)||this;return n.view=e,n.registerIncoming("double-click",i,(function(t){return n._handleDoubleClick(t,i)})),n}return i.__extends(e,t),e.prototype._handleDoubleClick=function(t,e){o.eventMatchesPointerAction(t.data,"primary")&&(t.stopPropagation(),e?this.view.mapViewNavigation.zoomOut([t.data.x,t.data.y]):this.view.mapViewNavigation.zoomIn([t.data.x,t.data.y]))},e}(n.InputHandler);e.DoubleClickZoom=a}));

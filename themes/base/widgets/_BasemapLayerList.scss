@@ -89,7 +89,7 @@
     padding-bottom: $cap-spacing--half;
   }
   .esri-basemap-layer-list__item--has-children .esri-basemap-layer-list__list:not([hidden]) {
-    animation: esri-basemap-layer-list-reveal 375ms ease-in-out;
+    animation: esri-fade-in 375ms ease-in-out;
   }
   .esri-basemap-layer-list__list[hidden] {
     display: none;
@@ -171,7 +171,6 @@
   .esri-basemap-layer-list--new-ui {
     .esri-basemap-layer-list__item-toggle-icon {
       visibility: hidden;
-      color: $interactive-font-color--disabled;
     }
     .esri-basemap-layer-list__item--invisible .esri-basemap-layer-list__item-toggle-icon {
       color: inherit;
@@ -263,7 +262,7 @@
     animation: esri-fade-in 250ms ease-in-out;
   }
   .esri-basemap-layer-list__item-actions-section {
-    animation: esri-basemap-layer-list-reveal 375ms ease-in-out;
+    animation: esri-fade-in 375ms ease-in-out;
   }
   .esri-basemap-layer-list__item-actions[hidden] {
     display: none;
@@ -432,20 +431,6 @@
     .esri-basemap-layer-list__item-error-message [class*="esri-icon-"] {
       margin-right: 0;
       margin-left: 0.3rem;
-    }
-  }
-
-  //////////////////////////////
-  // ANIMATION
-  @keyframes esri-basemap-layer-list-reveal {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 }

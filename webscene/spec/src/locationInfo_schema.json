@@ -1,7 +1,7 @@
 {
   "title": "locationInfo",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Defines how location information will be retrieved from a [CSV](csvLayer.md) file referenced through the web, ie. referenced by URL.",
   "properties": {
     "latitudeFieldName": {

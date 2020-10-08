@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(t,e,r,o,n){return function(t){function e(e){var r=t.call(this,e)||this;return r.type="radio-buttons",r}var n;return r.__extends(e,t),n=e,e.prototype.clone=function(){return new n},r.__decorate([o.property({type:["radio-buttons"],json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=n=r.__decorate([o.subclass("esri.form.elements.inputs.RadioButtonsInput")],e)}(n)}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(t,e,r,o,n){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.type="radio-buttons",r}var n;return r.__extends(e,t),n=e,e.prototype.clone=function(){return new n},r.__decorate([o.property({type:["radio-buttons"],json:{read:!1,write:!0}})],e.prototype,"type",void 0),e=n=r.__decorate([o.subclass("esri.form.elements.inputs.RadioButtonsInput")],e)}(n)}));

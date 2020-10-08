@@ -7,7 +7,7 @@
   "all": "Tout",
   "allPlaceholder": "Rechercher une adresse ou un lieu",
   "emptyValue": "Entrez un terme de recherche.",
-  "locateError": "Impossible de récupérer l’emplacement actuel.",
+  "locateError": "Impossible de récupérer la localisation actuelle.",
   "untitledResult": "Sans titre",
   "untitledSource": "Source sans titre",
   "noResults": "Aucun résultat",
@@ -17,5 +17,5 @@
   "hideMoreResults": "Masquer",
   "searchResult": "Résultat de la recherche",
   "moreResultsHeader": "Plus de résultats",
-  "useCurrentLocation": "Utiliser l’emplacement actuel"
+  "useCurrentLocation": "Utiliser la localisation actuelle"
 }

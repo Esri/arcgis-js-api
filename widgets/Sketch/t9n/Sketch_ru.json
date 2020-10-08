@@ -36,5 +36,14 @@
   "verticesCount": "{count} вершин",
   "deleteFeature": "Удалить объект",
   "deleteVertex": "Удалить вершину",
-  "duplicate": "Дублировать"
+  "duplicate": "Дублировать",
+  "selectCircle": "Выбрать окружностью",
+  "selectFeature": "Выбрать объект",
+  "selectFeatures": "Выбирать объекты",
+  "selectLasso": "Выбрать лассо",
+  "selectLine": "Выбрать линией",
+  "selectMarquee": "Выбрать маркером",
+  "selectPolygon": "Выбрать полигоном",
+  "selectRectangle": "Выбрать прямоугольником",
+  "clearSelection": "Очистить выборку"
 }

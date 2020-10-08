@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../CIMCursor","../CIMOperators"],(function(e,r,n,t){Object.defineProperty(r,"__esModule",{value:!0});var o=function(){function e(){}return e.getPlacement=function(e,r,o){var u=t.getPlacementOperator(r);if(!u)return null;var c=n.cloneAndDecodeGeometry(e);return u.execute(c,r,o)},e}();r.CIMMarkerPlacementHelper=o}));
+define(["require","exports","../CIMCursor","../CIMOperators"],(function(e,r,t,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.CIMMarkerPlacementHelper=void 0;var o=function(){function e(){}return e.getPlacement=function(e,r,o){var u=n.getPlacementOperator(r);if(!u)return null;var c=t.cloneAndDecodeGeometry(e);return u.execute(c,r,o)},e}();r.CIMMarkerPlacementHelper=o}));

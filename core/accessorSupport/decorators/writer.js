@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../object","./property"],(function(e,r,t,o){Object.defineProperty(r,"__esModule",{value:!0}),r.writer=function(e,r,i){var n,p;return void 0===r?(p=e,n=[void 0]):"string"!=typeof r?(p=e,n=[void 0],i=r):(p=r,n=Array.isArray(e)?e:[e]),function(e,r){var a=e.constructor.prototype;n.forEach((function(n){var u=o.propertyJSONMeta(e,n,p);u.write&&"object"!=typeof u.write&&(u.write={}),i&&t.setDeepValue("write.target",i,u),t.setDeepValue("write.writer",a[r],u)}))}}}));
+define(["require","exports","../../object","./property"],(function(e,r,t,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.writer=void 0,r.writer=function(e,r,o){var n,p;return void 0===r?(p=e,n=[void 0]):"string"!=typeof r?(p=e,n=[void 0],o=r):(p=r,n=Array.isArray(e)?e:[e]),function(e,r){var u=e.constructor.prototype;n.forEach((function(n){var a=i.propertyJSONMeta(e,n,p);a.write&&"object"!=typeof a.write&&(a.write={}),o&&t.setDeepValue("write.target",o,a),t.setDeepValue("write.writer",u[r],a)}))}}}));

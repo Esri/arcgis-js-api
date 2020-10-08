@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(n,r){function e(){return[0,0]}function t(n,r){return[n,r]}function u(){return[0,0]}function o(){return t(1,1)}function i(){return t(1,0)}function f(){return t(0,1)}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.clone=function(n){return[n[0],n[1]]},r.fromValues=t,r.fromArray=function(n){for(var r=[0,0],e=Math.min(2,n.length),t=0;t<e;++t)r[t]=n[t];return r},r.createView=function(n,r){return new Float64Array(n,r,2)},r.zeros=u,r.ones=o,r.unitX=i,r.unitY=f,r.ZEROS=[0,0],r.ONES=o(),r.UNIT_X=i(),r.UNIT_Y=f()}));
+define(["require","exports"],(function(e,n){"use strict";function r(){return[0,0]}function t(e,n){return[e,n]}function u(){return[0,0]}function o(){return t(1,1)}function i(){return t(1,0)}function c(){return t(0,1)}Object.defineProperty(n,"__esModule",{value:!0}),n.UNIT_Y=n.UNIT_X=n.ONES=n.ZEROS=n.unitY=n.unitX=n.ones=n.zeros=n.createView=n.fromArray=n.fromValues=n.clone=n.create=void 0,n.create=r,n.clone=function(e){return[e[0],e[1]]},n.fromValues=t,n.fromArray=function(e){for(var n=[0,0],r=Math.min(2,e.length),t=0;t<r;++t)n[t]=e[t];return n},n.createView=function(e,n){return new Float64Array(e,n,2)},n.zeros=u,n.ones=o,n.unitX=i,n.unitY=c,n.ZEROS=[0,0],n.ONES=o(),n.UNIT_X=i(),n.UNIT_Y=c()}));

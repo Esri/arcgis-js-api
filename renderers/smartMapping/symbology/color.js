@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/color"],(function(e,r,o,s,g){var a=s.getLogger("esri.renderers.smartMapping.symbology.color");return o.deprecatedModule(a,"esri/renderers/smartMapping/symbology/color",{replacement:"esri/smartMapping/symbology/color"}),g}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/color"],(function(e,r,o,s,g){"use strict";var t=s.getLogger("esri.renderers.smartMapping.symbology.color");return o.deprecatedModule(t,"esri/renderers/smartMapping/symbology/color",{replacement:"esri/smartMapping/symbology/color"}),g}));

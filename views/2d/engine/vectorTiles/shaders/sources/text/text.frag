@@ -2,7 +2,7 @@ uniform lowp sampler2D u_texture;
 uniform mediump float u_edgeDistance;
 
 varying lowp vec2 v_tex;
-varying lowp float v_transparency;
+varying lowp float v_opacity;
 varying lowp vec4 v_color;
 varying mediump float v_edgeWidth;
 varying mediump float v_edgeDistance;
@@ -21,7 +21,7 @@ void main()
   lowp float dist = texture2D(u_texture, v_tex).a;
 
   // use a smooth-step in order to calculate the geometry of the shape given by the distance field
-  mediump float alpha = smoothstep(v_edgeDistance - v_edgeWidth, v_edgeDistance + v_edgeWidth, dist) * v_transparency;
+  mediump float alpha = smoothstep(v_edgeDistance - v_edgeWidth, v_edgeDistance + v_edgeWidth, dist) * v_opacity;
 
   gl_FragColor = alpha * v_color;
 

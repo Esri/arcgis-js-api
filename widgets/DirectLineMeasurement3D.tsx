@@ -384,6 +384,7 @@ class DirectLineMeasurement3D extends Widget {
             class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
+            type="button"
           >
             {messages.newMeasurement}
           </button>

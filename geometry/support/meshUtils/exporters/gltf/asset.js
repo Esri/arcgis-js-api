@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,n){Object.defineProperty(n,"__esModule",{value:!0});var t=function(){function e(){this.copyright="",this.defaultScene=0,this.generator="",this._scenes=[]}return e.prototype.addScene=function(e){if(this._scenes.indexOf(e)>=0)throw new Error("Scene already added");this._scenes.push(e)},e.prototype.removeScene=function(e){var n=this._scenes.indexOf(e);n>=0&&this._scenes.splice(n,1)},e.prototype.forEachScene=function(e){this._scenes.forEach(e)},e}();n.Asset=t}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Asset=void 0;var s=function(){function e(){this.copyright="",this.defaultScene=0,this.generator="",this._scenes=[]}return e.prototype.addScene=function(e){if(this._scenes.indexOf(e)>=0)throw new Error("Scene already added");this._scenes.push(e)},e.prototype.removeScene=function(e){var t=this._scenes.indexOf(e);t>=0&&this._scenes.splice(t,1)},e.prototype.forEachScene=function(e){this._scenes.forEach(e)},e}();t.Asset=s}));

@@ -6,6 +6,6 @@
     "outsideRange": "Nilai harus di antara {min} dan {max}",
     "invalidCodedValue": "Nilai harus salah satu dari nilai yang dicantumkan.",
     "invalidType": "Bukan nilai yang valid",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Kolom ini memerlukan minimal {min} karakter"
   }
 }

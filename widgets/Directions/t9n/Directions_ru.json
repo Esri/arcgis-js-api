@@ -24,8 +24,6 @@
   "stop": "Остановка",
   "stopLabelTemplate": "Остановка {number} ({label})",
   "unlocated": "Не размещено",
-  "searchFieldPlaceholder": "Найдите или щелкните на карте",
-  "viewlessSearchFieldPlaceholder": "Поиск",
   "directionsPlaceholder": "Ваш маршрут будет отображен здесь.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Предполагаемое время прибытия",

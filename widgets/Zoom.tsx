@@ -80,12 +80,12 @@ class Zoom extends Widget {
 
   initialize(): void {
     this._zoomInButton = new IconButton({
-      action: this.zoomIn,
+      action: this.zoomIn.bind(this),
       iconClass: CSS.zoomInIcon
     });
 
     this._zoomOutButton = new IconButton({
-      action: this.zoomOut,
+      action: this.zoomOut.bind(this),
       iconClass: CSS.zoomOutIcon
     });
   }
@@ -256,16 +256,18 @@ class Zoom extends Widget {
    *
    * @method
    */
-  @aliasOf("viewModel.zoomIn")
-  zoomIn(): void {}
+  zoomIn(): void {
+    return this.viewModel.zoomIn();
+  }
 
   /**
    * Zooms the view out by an LOD factor of 2.
    *
    * @method
    */
-  @aliasOf("viewModel.zoomOut")
-  zoomOut(): void {}
+  zoomOut(): void {
+    return this.viewModel.zoomOut();
+  }
 }
 
 export = Zoom;

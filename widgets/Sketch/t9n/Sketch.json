@@ -36,5 +36,14 @@
   "verticesCount": "{count} Vertices",
   "deleteFeature": "Delete feature",
   "deleteVertex": "Delete vertex",
-  "duplicate": "Duplicate"
+  "duplicate": "Duplicate",
+  "selectCircle": "Select by circle",
+  "selectFeature": "Select feature",
+  "selectFeatures": "Select features",
+  "selectLasso": "Select by lasso",
+  "selectLine": "Select by line",
+  "selectMarquee": "Select by marquee",
+  "selectPolygon": "Select by polygon",
+  "selectRectangle": "Select by rectangle",
+  "clearSelection": "Clear selection"
 }

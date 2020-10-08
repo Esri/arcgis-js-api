@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/promiseUtils","../../../tasks/operations/pbfQueryUtils"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0});var i=function(){function e(){}return e.prototype._parseFeatureQuery=function(e){var r=n.parsePBFFeatureQuery(e.buffer,e.options),i=r;if(r.spatialReference=i.spatialReference.toJSON(),i.fields)for(var o=0;o<i.fields.length;o++)i.fields[o]=i.fields[o].toJSON();return t.resolve(i)},e}();r.default=function(){return new i}}));
+define(["require","exports","tslib","../../../core/promiseUtils","../../../tasks/operations/pbfDehydratedFeatureSet","../../../tasks/operations/pbfQueryUtils"],(function(e,t,r,n,s,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=function(){function e(){}return e.prototype._parseFeatureQuery=function(e){var t=i.parsePBFFeatureQuery(e.buffer,new s.DehydratedFeatureSetParserContext(e.options)),a=r.__assign(r.__assign({},t),{spatialReference:t.spatialReference.toJSON(),fields:t.fields?t.fields.map((function(e){return e.toJSON()})):void 0});return n.resolve(a)},e}();t.default=function(){return new a}}));

@@ -213,8 +213,9 @@ class Compass extends Widget {
    *
    * @method
    */
-  @aliasOf("viewModel.reset")
-  reset(): void {}
+  reset(): void {
+    return this.viewModel.reset();
+  }
 
   render(): VNode {
     const { orientation, state } = this.viewModel;

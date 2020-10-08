@@ -24,8 +24,6 @@
   "stop": "Dừng",
   "stopLabelTemplate": "Điểm dừng {number} ({label})",
   "unlocated": "Chưa định vị",
-  "searchFieldPlaceholder": "Tìm kiếm hoặc bấm vào bản đồ",
-  "viewlessSearchFieldPlaceholder": "Tìm kiếm",
   "directionsPlaceholder": "Tuyến đường của bạn sẽ xuất hiện ở đây.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Thời gian đến dự kiến",

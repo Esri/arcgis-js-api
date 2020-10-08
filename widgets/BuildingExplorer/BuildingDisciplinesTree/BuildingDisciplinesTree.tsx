@@ -17,7 +17,9 @@ import BuildingDisciplinesNode = require("esri/widgets/BuildingDisciplinesNode")
 import { VNode } from "esri/../support/interfaces";
 import { tsx, renderable } from "esri/../support/widget";
 
-interface ConstructionParameters {}
+interface ConstructionParameters {
+  toggleSiblingsVisibility?: boolean;
+}
 
 interface Messages {
   expand: string;
@@ -67,7 +69,7 @@ class BuildingDisciplinesTree extends Widget {
         this._updateChildWidgets,
         this._updateChildWidgets
       ),
-      watchUtils.init(this, "messages", this._updateChildWidgets)
+      watchUtils.init(this, ["messages", "toggleSiblingsVisibility"], this._updateChildWidgets)
     );
   }
 
@@ -106,6 +108,16 @@ class BuildingDisciplinesTree extends Widget {
   @property()
   @renderable()
   messages: Messages = DEFAULT_MESSAGES;
+
+  /**
+   * If true, when toggling a toggling a sublayer while the CTRL key is pressed,
+   * we'll toggle also the siblings.
+   *
+   * @ignore
+   */
+  @property({ nonNullable: true })
+  @renderable()
+  toggleSiblingsVisibility: boolean = false;
 
   //--------------------------------------------------------------------------
   //
@@ -155,7 +167,14 @@ class BuildingDisciplinesTree extends Widget {
     this._childWidgets = this.viewModel.root.children
       .toArray()
       .reverse() // Match the order used in the `LayerList` widget.
-      .map((node) => new BuildingDisciplinesNode({ node, messages: this.messages }));
+      .map(
+        (node) =>
+          new BuildingDisciplinesNode({
+            node,
+            messages: this.messages,
+            toggleSiblingsVisibility: this.toggleSiblingsVisibility
+          })
+      );
   };
 
   /**

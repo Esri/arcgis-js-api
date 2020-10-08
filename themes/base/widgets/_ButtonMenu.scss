@@ -1,7 +1,7 @@
 @mixin buttonMenu() {
   .esri-button-menu {
-    width: 32px;
-    height: 32px;
+    width: $button-width;
+    height: $button-height;
 
     .esri-button-menu__button {
       align-items: center;
@@ -10,11 +10,11 @@
       color: $interactive-font-color;
       display: flex;
       font-size: $icon-size;
-      height: 32px;
+      height: $button-height;
       justify-content: center;
       text-align: center;
       transition: background-color 125ms ease-in-out;
-      width: 32px;
+      width: $button-width;
 
       &:disabled {
         cursor: default;
@@ -42,7 +42,8 @@
   }
 
   .esri-button-menu__content {
-    @include defaultBoxShadow();
+    border-radius: $border-radius;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.33);
     background-color: $background-color;
     max-height: 250px;
     min-width: 200px;
@@ -52,13 +53,14 @@
     .esri-button-menu__item-wrapper,
     .esri-button-menu__embedded-content-wrapper {
       list-style: none;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
     }
   }
 
   .esri-button-menu__item {
     display: block;
-    padding: 0 6px;
+    padding: 0;
 
     .esri-button-menu__item-label {
       align-items: center;
@@ -68,15 +70,14 @@
       font-family: $font-family;
       font-weight: $font-weight;
       font-size: $font-size;
-      justify-content: left;
+      justify-content: flex-start;
       margin: 0;
-      padding: 2px 0;
+      padding: $cap-spacing $side-spacing;
       position: relative;
       text-decoration: none;
-      width: 100%;
 
       .esri-button-menu__item-label-content {
-        padding: 0 4px;
+        padding: 0 $side-spacing--half;
         width: auto;
       }
 

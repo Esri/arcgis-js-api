@@ -36,5 +36,14 @@
   "verticesCount": "{count} koordinatpunkter",
   "deleteFeature": "Slet objekt",
   "deleteVertex": "Slet koordinatpunkt",
-  "duplicate": "Dobbelt forekomst"
+  "duplicate": "Dobbelt forekomst",
+  "selectCircle": "Vælg efter cirkel",
+  "selectFeature": "Vælg objekt",
+  "selectFeatures": "Vælg objekter",
+  "selectLasso": "Vælg efter lasso",
+  "selectLine": "Vælg efter linje",
+  "selectMarquee": "Vælg efter område",
+  "selectPolygon": "Vælg efter polygon",
+  "selectRectangle": "Vælg efter rektangel",
+  "clearSelection": "Ryd markering"
 }

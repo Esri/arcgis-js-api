@@ -24,8 +24,6 @@
   "stop": "停止",
   "stopLabelTemplate": "停靠點 {number} ({label})",
   "unlocated": "未配置的",
-  "searchFieldPlaceholder": "搜尋或按一下地圖",
-  "viewlessSearchFieldPlaceholder": "搜尋",
   "directionsPlaceholder": "您的路線會出現在這裡。",
   "etaTemplate": "{time} {gmt}",
   "eta": "估計的到達時間",

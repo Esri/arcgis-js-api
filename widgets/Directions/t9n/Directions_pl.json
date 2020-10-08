@@ -24,8 +24,6 @@
   "stop": "Stop",
   "stopLabelTemplate": "Przystanek: {number} ({label})",
   "unlocated": "Niezlokalizowany",
-  "searchFieldPlaceholder": "Wyszukaj lub kliknij mapę",
-  "viewlessSearchFieldPlaceholder": "Wyszukaj",
   "directionsPlaceholder": "Tu pojawi się Twoja trasa.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Przewidywany czas przyjazdu",

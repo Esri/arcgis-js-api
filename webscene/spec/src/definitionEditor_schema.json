@@ -1,7 +1,7 @@
 {
   "title": "definitionEditor",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The definitionEditor stores interactive filters at the same level as layerDefinition.",
   "properties": {
     "inputs": {

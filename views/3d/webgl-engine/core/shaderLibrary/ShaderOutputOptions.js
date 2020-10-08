@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/arrayUtils"],(function(t,e,u){Object.defineProperty(e,"__esModule",{value:!0}),e.ShaderOutputTypes=[{output:0,name:"color"},{output:1,name:"depth"},{output:2,name:"normal"},{output:3,name:"depthShadowMap"},{output:4,name:"highlight"},{output:5,name:"draped"},{output:6,name:"occlusion"}],e.getShaderOutputID=function(t,n){return t+"_"+u.find(e.ShaderOutputTypes,(function(t){return t.output===n})).name}}));
+define(["require","exports","../../../../../core/arrayUtils"],(function(t,e,u){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.getShaderOutputID=e.ShaderOutputTypes=void 0,e.ShaderOutputTypes=[{output:0,name:"color"},{output:1,name:"depth"},{output:2,name:"normal"},{output:3,name:"depthShadowMap"},{output:4,name:"highlight"},{output:5,name:"draped"},{output:6,name:"occlusion"}],e.getShaderOutputID=function(t,o){return t+"_"+u.find(e.ShaderOutputTypes,(function(t){return t.output===o})).name}}));

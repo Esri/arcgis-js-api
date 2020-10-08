@@ -484,6 +484,13 @@ class Legend extends Widget {
     );
     this._handles.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
 
+    const childrenChangeHandle = watchUtils.on(activeLayerInfo, "children", "change", () => {
+      activeLayerInfo.children.forEach((childActiveLayerInfo) =>
+        this._renderOnActiveLayerInfoChange(childActiveLayerInfo)
+      );
+    });
+    this._handles.add(childrenChangeHandle, `children_${activeLayerInfo.layer.uid}`);
+
     activeLayerInfo.children.forEach((childActiveLayerInfo) =>
       this._renderOnActiveLayerInfoChange(childActiveLayerInfo)
     );

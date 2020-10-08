@@ -1,7 +1,7 @@
 {
   "title": "LineSymbol3DLayer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "LineSymbol3DLayer renders Polyline geometries using a flat 2D line with a LineSymbol3D in a 3D SceneView.",
   "properties": {
     "cap": {

@@ -1,7 +1,7 @@
 {
   "title": "ExtrudeSymbol3DLayer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "ExtrudeSymbol3DLayer is used to render Polygon geometries by extruding them upward from the ground, creating a 3D volumetric object.",
   "properties": {
     "castShadows": {

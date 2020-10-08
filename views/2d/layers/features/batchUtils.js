@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/promiseUtils"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.executeForEachAsync=function(e,t,o){var n,i=null!==(n=null==o?void 0:o.batchSize)&&void 0!==n?n:100,c=r.createResolver(),l=0,u=function(){for(var n=Date.now(),a=!1,s=0;!a&&s<500;){try{for(o&&r.throwIfAborted(o);l<Math.min(l+i,e.length);l++)t(e[l])}catch(e){c.reject(e)}s=Date.now()-n,a=l>=e.length}a?c.resolve():setTimeout(u,0)};return u(),c.promise}}));
+define(["require","exports","../../../../core/promiseUtils"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.executeForEachAsync=void 0,t.executeForEachAsync=function(e,t,o){var n,c=null!==(n=null==o?void 0:o.batchSize)&&void 0!==n?n:100,i=r.createResolver(),u=0,s=function(){for(var n=Date.now(),a=!1,l=0;!a&&l<500;){try{for(o&&r.throwIfAborted(o);u<Math.min(u+c,e.length);u++)t(e[u])}catch(e){i.reject(e)}l=Date.now()-n,a=u>=e.length}a?i.resolve():setTimeout(s,0)};return s(),i.promise}}));

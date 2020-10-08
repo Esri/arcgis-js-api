@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./types"],(function(e,t,o){Object.defineProperty(t,"__esModule",{value:!0}),t.AlphaMode=o.AlphaMode,t.ComponentType=o.ComponentType,t.TargetBuffer=o.TargetBuffer,t.DataType=o.DataType,t.MeshMode=o.MeshMode,t.BufferOutputType=o.BufferOutputType,t.ImageOutputType=o.ImageOutputType,t.FilterMode=o.FilterMode,t.ColorMode=o.ColorMode}));
+define(["require","exports","./types"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),Object.defineProperty(t,"AlphaMode",{enumerable:!0,get:function(){return r.AlphaMode}}),Object.defineProperty(t,"ComponentType",{enumerable:!0,get:function(){return r.ComponentType}}),Object.defineProperty(t,"TargetBuffer",{enumerable:!0,get:function(){return r.TargetBuffer}}),Object.defineProperty(t,"DataType",{enumerable:!0,get:function(){return r.DataType}}),Object.defineProperty(t,"MeshMode",{enumerable:!0,get:function(){return r.MeshMode}}),Object.defineProperty(t,"BufferOutputType",{enumerable:!0,get:function(){return r.BufferOutputType}}),Object.defineProperty(t,"ImageOutputType",{enumerable:!0,get:function(){return r.ImageOutputType}}),Object.defineProperty(t,"FilterMode",{enumerable:!0,get:function(){return r.FilterMode}}),Object.defineProperty(t,"ColorMode",{enumerable:!0,get:function(){return r.ColorMode}})}));

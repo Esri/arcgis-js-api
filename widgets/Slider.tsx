@@ -8,6 +8,8 @@
  *
  * ![Slider with annotations](../../assets/img/apiref/widgets/sliders/slider-labels.png "Slider with annotations")
  *
+ * At a minimum, the slider's [container](#container) or parent container must have a `width` set in CSS for it to render.
+ *
  * @module esri/widgets/Slider
  * @since 4.12
  *
@@ -2134,13 +2136,22 @@ class Slider extends Widget<SliderEvents> {
       if (isSome(steps)) {
         this._toStep(index, this._isReversedLayout() ? direction * -1 : direction);
       } else {
+        const { precision } = this;
         const currentPosition = this._getPositionOfElement(anchor);
-        const pixelOffset = this._isHorizontalLayout() ? direction : direction * -1;
-        const newPosition = currentPosition + pixelOffset;
-        const finalPosition =
-          this.precision === 0
-            ? this._positionFromValue(this._valueFromPosition(newPosition) + pixelOffset)
-            : newPosition;
+        const currentValue = this._valueFromPosition(currentPosition);
+        const offset = this._isHorizontalLayout() ? direction : direction * -1;
+        let finalPosition: number;
+
+        // #30098 - Account for precision
+        // For precise cases, a single pixel causes rounding issues
+        // Use the actual value and increment accordingly
+        if (precision === 0) {
+          finalPosition = this._positionFromValue(currentValue + offset);
+        } else if (precision === 1) {
+          finalPosition = this._positionFromValue(currentValue + offset * 0.1);
+        } else {
+          finalPosition = currentPosition + offset;
+        }
 
         this._toPosition(index, finalPosition);
       }

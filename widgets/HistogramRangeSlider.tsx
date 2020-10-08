@@ -11,6 +11,8 @@
  *
  * ![HistogramRangeSlider with annotations](../../assets/img/apiref/widgets/sliders/histogramrangeslider-labels.png "HistogramRangeSlider with annotations")
  *
+ * At a minimum, the slider's [container](#container) or parent container must have a `width` set in CSS for it to render.
+ *
  * @module esri/widgets/HistogramRangeSlider
  * @since 4.12
  *

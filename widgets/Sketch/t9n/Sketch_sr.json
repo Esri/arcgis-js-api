@@ -36,5 +36,14 @@
   "verticesCount": "{count} temena",
   "deleteFeature": "Obriši geoobjekat",
   "deleteVertex": "Obriši teme",
-  "duplicate": "Dupliraj"
+  "duplicate": "Dupliraj",
+  "selectCircle": "Selektuj pomoću kruga",
+  "selectFeature": "Izaberite geoobjekat",
+  "selectFeatures": "Selektujte geoobjekte",
+  "selectLasso": "Selektujte pomoću lasa",
+  "selectLine": "Selektuj pomoću linije",
+  "selectMarquee": "Selektuj po pokrivaču",
+  "selectPolygon": "Selektuj pomoću poligona",
+  "selectRectangle": "Selektuj pomoću pravougaonika",
+  "clearSelection": "Izbriši izbor"
 }

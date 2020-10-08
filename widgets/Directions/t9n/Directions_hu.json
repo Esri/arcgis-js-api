@@ -24,8 +24,6 @@
   "stop": "Megálló",
   "stopLabelTemplate": "Megálló {number} ({label})",
   "unlocated": "Nincs megkeresve",
-  "searchFieldPlaceholder": "Keresse meg, vagy kattintson a térképre",
-  "viewlessSearchFieldPlaceholder": "Keresés",
   "directionsPlaceholder": "Az Ön útvonala fog itt megjelenni.",
   "etaTemplate": "{time} {gmt}",
   "eta": "A megérkezés becsült időpontja",

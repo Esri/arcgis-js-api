@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,o){Object.defineProperty(o,"__esModule",{value:!0});var u=["blur","change","click","dblclick","focus","input","keydown","keypress","keyup","load","mousedown","mouseenter","mouseleave","mousemove","mouseout","mouseover","mouseup","mousewheel","scroll","submit","touchcancel","touchend","touchmove","touchstart"];o.domEvents=function(e){var o={};return u.forEach((function(u){o["on"+u]=function(o){e.emit.call(e,u,o)}})),o},o.isVNodeEvent=function(e){return!!u[e]}}));
+define(["require","exports"],(function(e,o){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.isVNodeEvent=o.domEvents=void 0;var u=["blur","change","click","dblclick","focus","input","keydown","keypress","keyup","load","mousedown","mouseenter","mouseleave","mousemove","mouseout","mouseover","mouseup","mousewheel","scroll","submit","touchcancel","touchend","touchmove","touchstart"];o.domEvents=function(e){var o={};return u.forEach((function(u){o["on"+u]=function(o){e.emit.call(e,u,o)}})),o},o.isVNodeEvent=function(e){return!!u[e]}}));

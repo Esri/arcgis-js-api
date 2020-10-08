@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,i){Object.defineProperty(i,"__esModule",{value:!0});var o=function(e,i){void 0===e&&(e=[]),void 0===i&&(i=[]),this.lengths=e,this.coords=i};i.default=o}));
+define(["require","exports"],(function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(t,e,r){void 0===t&&(t=[]),void 0===e&&(e=[]),void 0===r&&(r=!1),this.lengths=t,this.coords=e,this.hasIndeterminateRingOrder=r}return Object.defineProperty(t.prototype,"isPoint",{get:function(){return 0===this.lengths.length},enumerable:!1,configurable:!0}),t.prototype.forEachVertex=function(t){var e=0;this.lengths.length||t(this.coords[0],this.coords[1]);for(var r=0;r<this.lengths.length;r++){for(var n=this.lengths[r],i=0;i<n;i++){t(this.coords[2*(i+e)],this.coords[2*(i+e)+1])}e+=n}},t.prototype.clone=function(){return new t(this.lengths.slice(),this.coords.slice(),this.hasIndeterminateRingOrder)},t}();e.default=r}));

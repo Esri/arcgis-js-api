@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../core/Evented","../../../../core/accessorSupport/decorators"],(function(e,r,t,o,p){Object.defineProperty(r,"__esModule",{value:!0});var i=function(e){function r(r){var t=e.call(this,r)||this;return t.tracking=!1,t.displaying=!1,t.isDraped=!1,t}return t.__extends(r,e),t.__decorate([p.property({constructOnly:!0})],r.prototype,"graphic",void 0),t.__decorate([p.property()],r.prototype,"tracking",void 0),t.__decorate([p.property()],r.prototype,"displaying",void 0),t.__decorate([p.property()],r.prototype,"isDraped",void 0),r=t.__decorate([p.subclass("esri.views.3d.layers.graphics.GraphicState")],r)}(o.EventedAccessor);r.GraphicState=i}));
+define(["require","exports","tslib","../../../../core/Evented","../../../../core/accessorSupport/decorators"],(function(e,r,t,o,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.GraphicState=void 0;var p=function(e){function r(r){var t=e.call(this,r)||this;return t.tracking=!1,t.displaying=!1,t.isDraped=!1,t}return t.__extends(r,e),t.__decorate([i.property({constructOnly:!0})],r.prototype,"graphic",void 0),t.__decorate([i.property()],r.prototype,"tracking",void 0),t.__decorate([i.property()],r.prototype,"displaying",void 0),t.__decorate([i.property()],r.prototype,"isDraped",void 0),r=t.__decorate([i.subclass("esri.views.3d.layers.graphics.GraphicState")],r)}(o.EventedAccessor);r.GraphicState=p}));

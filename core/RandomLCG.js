@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(t,e){return function(){function t(t){void 0===t&&(t=1),this._seed=t}return Object.defineProperty(t.prototype,"seed",{set:function(e){this._seed=null==e?Math.random()*t._m:e},enumerable:!0,configurable:!0}),t.prototype.getInt=function(){return this._seed=(t._a*this._seed+t._c)%t._m,this._seed},t.prototype.getFloat=function(){return this.getInt()/(t._m-1)},t.prototype.getIntRange=function(t,e){return Math.round(this.getFloatRange(t,e))},t.prototype.getFloatRange=function(e,n){var o=n-e,r=this.getInt()/t._m;return e+Math.floor(r*o)},t._m=2147483647,t._a=48271,t._c=0,t}()}));
+define(["require","exports"],(function(t,e){"use strict";return function(){function t(t){void 0===t&&(t=1),this._seed=t}return Object.defineProperty(t.prototype,"seed",{set:function(e){this._seed=null==e?Math.random()*t._m:e},enumerable:!1,configurable:!0}),t.prototype.getInt=function(){return this._seed=(t._a*this._seed+t._c)%t._m,this._seed},t.prototype.getFloat=function(){return this.getInt()/(t._m-1)},t.prototype.getIntRange=function(t,e){return Math.round(this.getFloatRange(t,e))},t.prototype.getFloatRange=function(e,n){var o=n-e,r=this.getInt()/t._m;return e+Math.floor(r*o)},t._m=2147483647,t._a=48271,t._c=0,t}()}));

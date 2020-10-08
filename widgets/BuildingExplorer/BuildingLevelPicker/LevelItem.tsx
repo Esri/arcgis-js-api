@@ -179,6 +179,7 @@ export class LevelItem extends Widget {
           aria-label={this.label}
           title={this.label}
           tabIndex={-1}
+          type="button"
         />
       </div>
     );

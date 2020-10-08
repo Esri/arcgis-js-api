@@ -17,5 +17,6 @@ void main() {
   }
   vec4 currentPixel = getPixel(pixelLocation);
   // we use float texture here
-  gl_FragColor = colorize(currentPixel, true);
+  vec4 result = colorize(currentPixel, 1.0);
+  gl_FragColor = vec4(result.xyz, 1.0) * result.a * u_opacity;
 }

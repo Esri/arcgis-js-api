@@ -10,7 +10,7 @@ uniform mediump float u_outlineSize;
 varying mediump vec2 v_tex;
 // the calculated transparency to be applied by the fragment shader. It is incorporating both the fade as well as the
 // opacity of the layer given by the painter
-varying lowp float v_transparency;
+varying lowp float v_opacity;
 
 varying mediump vec2 v_size;
 
@@ -63,14 +63,14 @@ void main()
     outlinePixelColor *= clamp(0.5 - (abs(dist) - clampedOutlineSize), 0.0, 1.0);
 
     // finally combine the outline and the fill colors
-    gl_FragColor = v_transparency * mixColors(fillPixelColor, outlinePixelColor);
+    gl_FragColor = v_opacity * mixColors(fillPixelColor, outlinePixelColor);
   }
   else {
-    gl_FragColor = v_transparency * fillPixelColor;
+    gl_FragColor = v_opacity * fillPixelColor;
   }
 #else // not an SDF
   lowp vec4 texColor = texture2D(u_texture, v_tex);
-  gl_FragColor = v_transparency * texColor;
+  gl_FragColor = v_opacity * texColor;
 #endif // SDF
 
 #ifdef ID

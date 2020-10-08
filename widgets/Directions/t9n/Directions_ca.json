@@ -24,8 +24,6 @@
   "stop": "Parada",
   "stopLabelTemplate": "Parada {number} ({label})",
   "unlocated": "Sense localitzar",
-  "searchFieldPlaceholder": "Cerqueu o feu clic al mapa",
-  "viewlessSearchFieldPlaceholder": "Cerca",
   "directionsPlaceholder": "La ruta es mostrarà aquí.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Hora estimada d'arribada",

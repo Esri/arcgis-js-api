@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./SingleKey"],(function(e,t,i,n){Object.defineProperty(t,"__esModule",{value:!0});var o=function(e){function t(t,i,n){var o=e.call(this,i,n)||this;return o.view=t,o.key=i,o}return i.__extends(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0}).catch((function(){}))},t}(n.SingleKey);t.SingleKeyResetTilt=o}));
+define(["require","exports","tslib","./SingleKey"],(function(e,t,i,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.SingleKeyResetTilt=void 0;var o=function(e){function t(t,i,n){var o=e.call(this,i,n)||this;return o.view=t,o.key=i,o}return i.__extends(t,e),t.prototype.activate=function(){this.view.goTo({tilt:0}).catch((function(){}))},t}(n.SingleKey);t.SingleKeyResetTilt=o}));

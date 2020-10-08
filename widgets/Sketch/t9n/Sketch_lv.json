@@ -36,5 +36,14 @@
   "verticesCount": "{count} virsotnes",
   "deleteFeature": "Izdzēst elementu",
   "deleteVertex": "Dzēst virsotni",
-  "duplicate": "Dublēt"
+  "duplicate": "Dublēt",
+  "selectCircle": "Atlasīt pēc apļa",
+  "selectFeature": "Atlasīt elementu",
+  "selectFeatures": "Atlasīt elementus",
+  "selectLasso": "Atlasīt pēc laso",
+  "selectLine": "Atlasīt pēc līnijas",
+  "selectMarquee": "Atlasīt pēc ierāmējuma",
+  "selectPolygon": "Atlasīt pēc laukuma",
+  "selectRectangle": "Atlasīt pēc taisnstūra",
+  "clearSelection": "Notīrīt izvēli"
 }

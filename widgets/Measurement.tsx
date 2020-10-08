@@ -457,37 +457,42 @@ class Measurement extends Widget {
   private async _createWidget(activeTool: MeasurementComponentType): Promise<MeasurementWidget> {
     const { areaUnit, linearUnit, view } = this;
     switch (activeTool) {
-      case "area":
+      case "area": {
         const { type } = view;
         switch (type) {
-          case "2d":
+          case "2d": {
             const AreaMeasurement2D = await import("./AreaMeasurement2D");
             return new AreaMeasurement2D({
               view,
               unit: areaUnit
             });
-          case "3d":
+          }
+          case "3d": {
             const AreaMeasurement3D = await import("./AreaMeasurement3D");
             return new AreaMeasurement3D({
               view,
               unit: areaUnit
             });
+          }
           default:
             neverReached(type);
             return null;
         }
-      case "distance":
+      }
+      case "distance": {
         const DistanceMeasurement2D = await import("./DistanceMeasurement2D");
         return new DistanceMeasurement2D({
           view,
           unit: linearUnit
         });
-      case "direct-line":
+      }
+      case "direct-line": {
         const DirectLineMeasurement3D = await import("./DirectLineMeasurement3D");
         return new DirectLineMeasurement3D({
           view,
           unit: linearUnit
         });
+      }
       default:
         neverReached(activeTool);
         return null;

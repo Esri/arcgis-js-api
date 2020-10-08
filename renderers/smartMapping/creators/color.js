@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/color"],(function(e,r,o,t,a,s){Object.defineProperty(r,"__esModule",{value:!0});var p=a.getLogger("esri.renderers.smartMapping.creators.color");t.deprecatedModule(p,"esri/renderers/smartMapping/creators/color",{replacement:"esri/smartMapping/renderers/color"}),o.__exportStar(s,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/color"],(function(e,r,o,t,s,a){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var c=s.getLogger("esri.renderers.smartMapping.creators.color");t.deprecatedModule(c,"esri/renderers/smartMapping/creators/color",{replacement:"esri/smartMapping/renderers/color"}),o.__exportStar(a,r)}));

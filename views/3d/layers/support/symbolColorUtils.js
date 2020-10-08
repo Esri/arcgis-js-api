@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/mathUtils","../../../../core/maybe"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0}),r.parseColorMixMode=function(e){switch(e){case"multiply":return 1;case"ignore":return 2;case"replace":return 3;case"tint":return 4;default:return 1}},r.encodeSymbolColor=function(e,r,i){if(n.isNone(e)||2===r)return i[0]=255,i[1]=255,i[2]=255,void(i[3]=255);var l=t.clamp(Math.round(e[3]*a),0,a),d=0===l||4===r?0:3===r?u:c;i[0]=t.clamp(Math.round(e[0]*o),0,o),i[1]=t.clamp(Math.round(e[1]*o),0,o),i[2]=t.clamp(Math.round(e[2]*o),0,o),i[3]=l+d};var o=255,a=85,u=a,c=2*a}));
+define(["require","exports","../../../../core/mathUtils","../../../../core/maybe"],(function(e,r,o,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.encodeSymbolColor=r.parseColorMixMode=void 0,r.parseColorMixMode=function(e){switch(e){case"multiply":return 1;case"ignore":return 2;case"replace":return 3;case"tint":return 4;default:return 1}},r.encodeSymbolColor=function(e,r,i){if(t.isNone(e)||2===r)return i[0]=255,i[1]=255,i[2]=255,void(i[3]=255);var l=o.clamp(Math.round(e[3]*a),0,a),d=0===l||4===r?0:3===r?c:u;i[0]=o.clamp(Math.round(e[0]*n),0,n),i[1]=o.clamp(Math.round(e[1]*n),0,n),i[2]=o.clamp(Math.round(e[2]*n),0,n),i[3]=l+d};var n=255,a=85,c=a,u=2*a}));

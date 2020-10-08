@@ -256,6 +256,7 @@ class Slice extends Widget {
           bind={this}
           onclick={this._onNewSliceClick}
           key="esri-slice__clear"
+          type="button"
         >
           {messages.newSlice}
         </button>
@@ -270,6 +271,7 @@ class Slice extends Widget {
             this.viewModel.enterExcludeLayerMode();
           }}
           key="esri-slice__exclude"
+          type="button"
         >
           {messages.excludeLayer}
         </button>
@@ -284,6 +286,7 @@ class Slice extends Widget {
             this.viewModel.exitExcludeLayerMode();
           }}
           key="esri-slice__cancel-exclude"
+          type="button"
         >
           {messages.cancel}
         </button>

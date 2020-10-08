@@ -14,7 +14,7 @@ import { Maybe } from "../core/maybe";
 import Layer = require("../layers/Layer");
 
 // esri.renderers.support
-import { RelationshipFocus } from "../renderers/support/AuthoringInfo";
+import AuthoringInfo = require("../renderers/support/AuthoringInfo");
 
 // esri.symbols.support
 import { FillDescriptor } from "../symbols/support/interfaces";
@@ -220,7 +220,7 @@ type LegendElement =
   | SizeRampElement
   | HeatmapRampElement
   | RelationshipRampElement;
-type SymbolTableElementType = ImageSymbolTableElementInfo | SymbolTableElementInfo;
+type SymbolTableElementType = ImageSymbolTableElementInfo | SymbolTableElementInfo | LegendElement;
 
 interface SymbolTableElement {
   type: "symbol-table";
@@ -283,7 +283,7 @@ interface HeatmapRampElement {
 interface RelationshipRampElement {
   type: "relationship-ramp";
   numClasses: number;
-  focus: RelationshipFocus;
+  focus: AuthoringInfo.RelationshipFocus;
   colors: FillDescriptor[][];
   labels: RelationshipLabels;
   rotation: number;

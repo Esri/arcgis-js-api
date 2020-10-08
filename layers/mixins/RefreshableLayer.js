@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(e,r,t,n){Object.defineProperty(r,"__esModule",{value:!0}),r.RefreshableLayer=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.refreshInterval=0,r}return t.__extends(r,e),r.prototype.refresh=function(){this.emit("refresh")},t.__decorate([n.property({type:Number,cast:function(e){return e>=.1?e:e<=0?0:.1},json:{write:!0,origins:{"web-document":{write:!0}}}})],r.prototype,"refreshInterval",void 0),r=t.__decorate([n.subclass("esri.layers.mixins.RefreshableLayer")],r)}(e)}}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(e,r,t,s){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.RefreshableLayer=void 0,r.RefreshableLayer=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.refreshInterval=0,r}return t.__extends(r,e),r.prototype.refresh=function(){this.emit("refresh")},t.__decorate([s.property({type:Number,cast:function(e){return e>=.1?e:e<=0?0:.1},json:{write:!0,origins:{"web-document":{write:!0}}}})],r.prototype,"refreshInterval",void 0),r=t.__decorate([s.subclass("esri.layers.mixins.RefreshableLayer")],r)}(e)}}));

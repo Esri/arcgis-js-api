@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","./support/RelatedRecordsInfoFieldOrder"],(function(e,r,o,t,s,d,l){return function(e){function r(r){var o=e.call(this,r)||this;return o.showRelatedRecords=null,o.orderByFields=null,o}var t;return o.__extends(r,e),t=r,r.prototype.clone=function(){return new t({showRelatedRecords:this.showRelatedRecords,orderByFields:this.orderByFields?s.clone(this.orderByFields):null})},o.__decorate([d.property({type:Boolean,json:{write:!0}})],r.prototype,"showRelatedRecords",void 0),o.__decorate([d.property({type:[l],json:{write:!0}})],r.prototype,"orderByFields",void 0),r=t=o.__decorate([d.subclass("esri.popup.RelatedRecordsInfo")],r)}(t.JSONSupport)}));
+define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","./support/RelatedRecordsInfoFieldOrder"],(function(e,r,o,t,s,d,l){"use strict";return function(e){function r(r){var o=e.call(this,r)||this;return o.showRelatedRecords=null,o.orderByFields=null,o}var t;return o.__extends(r,e),t=r,r.prototype.clone=function(){return new t({showRelatedRecords:this.showRelatedRecords,orderByFields:this.orderByFields?s.clone(this.orderByFields):null})},o.__decorate([d.property({type:Boolean,json:{write:!0}})],r.prototype,"showRelatedRecords",void 0),o.__decorate([d.property({type:[l],json:{write:!0}})],r.prototype,"orderByFields",void 0),r=t=o.__decorate([d.subclass("esri.popup.RelatedRecordsInfo")],r)}(t.JSONSupport)}));

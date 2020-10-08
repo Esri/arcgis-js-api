@@ -318,6 +318,7 @@ class LineOfSight extends Widget {
         bind={this}
         onclick={onClick}
         key={key}
+        type="button"
       >
         {label}
       </button>

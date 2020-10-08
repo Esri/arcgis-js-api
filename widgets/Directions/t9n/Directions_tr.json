@@ -24,8 +24,6 @@
   "stop": "Dur",
   "stopLabelTemplate": "Durak {number} ({label})",
   "unlocated": "Konumlanmamış",
-  "searchFieldPlaceholder": "Arama yapın veya haritada tıklayın",
-  "viewlessSearchFieldPlaceholder": "Arama",
   "directionsPlaceholder": "Rotanız burada görünecektir.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Tahmini varış süresi",

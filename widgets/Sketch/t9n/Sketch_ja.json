@@ -13,8 +13,8 @@
   "drawPolygon": "ポリゴンを描画",
   "drawPolyline": "ポリラインの描画",
   "drawMultipoint": "マルチポイントの描画",
-  "drawCircle": "円を描画します。",
-  "drawRectangle": "四角形を描画します。",
+  "drawCircle": "円の描画",
+  "drawRectangle": "四角形の描画",
   "clearDrawing": "描画の消去",
   "completeDrawing": "描画の完了",
   "pauseDrawing": "描画の一時停止",
@@ -36,5 +36,14 @@
   "verticesCount": "{count} 頂点",
   "deleteFeature": "フィーチャの削除",
   "deleteVertex": "頂点の削除",
-  "duplicate": "複製"
+  "duplicate": "複製",
+  "selectCircle": "円による選択",
+  "selectFeature": "フィーチャの選択",
+  "selectFeatures": "フィーチャの選択",
+  "selectLasso": "なげなわによる選択",
+  "selectLine": "ラインによる選択",
+  "selectMarquee": "マーキーによる選択",
+  "selectPolygon": "ポリゴンによる選択",
+  "selectRectangle": "四角形による選択",
+  "clearSelection": "選択の解除"
 }

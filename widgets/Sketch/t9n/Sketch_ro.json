@@ -36,5 +36,14 @@
   "verticesCount": "{count} vertexuri",
   "deleteFeature": "Ștergere obiect spațial",
   "deleteVertex": "Ștergere vertex",
-  "duplicate": "Duplicare"
+  "duplicate": "Duplicare",
+  "selectCircle": "Selectaţi prin trasare cerc",
+  "selectFeature": "Selectare obiect spațial",
+  "selectFeatures": "Selectare obiecte spaţiale",
+  "selectLasso": "Selectare prin trasare lasou",
+  "selectLine": "Selectaţi prin trasare linie",
+  "selectMarquee": "Selectare prin text defilant",
+  "selectPolygon": "Selectaţi prin trasare poligon",
+  "selectRectangle": "Selectaţi prin trasare dreptunghi",
+  "clearSelection": "Golire selecție"
 }

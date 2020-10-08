@@ -24,8 +24,6 @@
   "stop": "Stopp",
   "stopLabelTemplate": "Stopp {number} ({label})",
   "unlocated": "Ikke plassert",
-  "searchFieldPlaceholder": "Søk eller klikk på kartet",
-  "viewlessSearchFieldPlaceholder": "Søk",
   "directionsPlaceholder": "Ruten vises her.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Beregnet ankomsttid",

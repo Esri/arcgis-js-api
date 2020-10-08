@@ -36,5 +36,14 @@
   "verticesCount": "버텍스 {count}개",
   "deleteFeature": "피처 삭제",
   "deleteVertex": "버텍스 삭제",
-  "duplicate": "복제"
+  "duplicate": "복제",
+  "selectCircle": "원으로 선택",
+  "selectFeature": "피처 선택",
+  "selectFeatures": "피처 선택",
+  "selectLasso": "라쏘로 선택",
+  "selectLine": "라인으로 선택",
+  "selectMarquee": "마퀴로 선택",
+  "selectPolygon": "폴리곤으로 선택",
+  "selectRectangle": "사각형으로 선택",
+  "clearSelection": "선택 해제"
 }

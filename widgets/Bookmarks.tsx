@@ -1,7 +1,9 @@
 /**
  * The Bookmarks widget allows end users to quickly navigate to a particular area of interest.
  * It displays a list of {@link module:esri/webmap/Bookmark bookmarks},
- * which typically are defined inside the {@link module:esri/WebMap#bookmarks WebMap}.
+ * which are typically defined inside the {@link module:esri/WebMap#bookmarks WebMap}.
+ *
+ * ![bookmarks](../../assets/img/apiref/widgets/bookmarks.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -22,12 +24,17 @@
 
 // esri.core
 import Collection = require("esri/core/Collection");
+import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles = require("esri/core/Handles");
+import Logger = require("esri/core/Logger");
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.libs.sortablejs
 import Sortable = require("esri/libs/sortablejs/Sortable");
@@ -38,6 +45,9 @@ import CommonMessages from "esri/t9n/common";
 // esri.views
 import MapView = require("esri/views/MapView");
 
+// esri.webdoc.support
+import Thumbnail from "esri/webdoc/support/Thumbnail";
+
 // esri.webmap
 import Bookmark = require("esri/webmap/Bookmark");
 
@@ -45,11 +55,16 @@ import Bookmark = require("esri/webmap/Bookmark");
 import Widget = require("esri/widgets/Widget");
 
 // esri.widgets.Bookmarks
+import BookmarksUserState = require("esri/widgets/Bookmarks/BookmarksUserState");
 import BookmarksViewModel = require("esri/widgets/Bookmarks/BookmarksViewModel");
 import { BookmarkCreationOptions } from "esri/widgets/Bookmarks/interfaces";
 
 // esri.widgets.Bookmarks.t9n
 import BookmarksMessages from "esri/widgets/Bookmarks/t9n/Bookmarks";
+
+// esri.widgets.FeatureTable.Grid.support
+import ButtonMenu = require("esri/widgets/FeatureTable/Grid/support/ButtonMenu");
+import ButtonMenuItem = require("esri/widgets/FeatureTable/Grid/support/ButtonMenuItem");
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
@@ -61,6 +76,7 @@ function moveItem(data: any[], from: number, to: number): void {
 }
 
 const SORT_GROUP_NAME = "bookmarks";
+
 const SORT_DATA_ATTR = "data-bookmark-uid";
 
 const CSS = {
@@ -95,6 +111,7 @@ const CSS = {
   addBookmarkIcon: "esri-bookmarks__add-bookmark-icon",
 
   authoringCard: "esri-bookmarks__authoring-card",
+  authoringContainer: "esri-bookmarks__authoring-container",
   authoringForm: "esri-bookmarks__authoring-form",
   authoringLabel: "esri-bookmarks__authoring-label",
   authoringActions: "esri-bookmarks__authoring-actions",
@@ -111,6 +128,10 @@ const CSS = {
   iconHandle: "esri-icon-handle-vertical",
   iconPlus: "esri-icon-plus",
   iconEdit: "esri-icon-edit",
+  iconHandleHorizontal: "esri-icon-handle-horizontal",
+  iconRefresh: "esri-icon-refresh",
+  iconLink: "esri-icon-link",
+  iconRemove: "esri-icon-erase",
   widgetIcon: "esri-icon-bookmark",
   header: "esri-widget__heading",
   loading: "esri-icon-loading-indicator",
@@ -127,7 +148,13 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   thumbnail: true
 };
 
-@subclass("esri.widgets.Bookmarks")
+const HTTPS_URL_RE = /^https:\/\/.*/i;
+
+const declaredClass = "esri.widgets.Bookmarks";
+
+const logger = Logger.getLogger(declaredClass);
+
+@subclass(declaredClass)
 class Bookmarks extends Widget {
   //--------------------------------------------------------------------------
   //
@@ -142,6 +169,7 @@ class Bookmarks extends Widget {
    *
    * @property {module:esri/webmap/Bookmark} bookmark - The bookmark selected by the user.
    *
+   * @deprecated since version 4.17. Use [bookmark-select](#event-bookmark-select) instead.
    * @example
    * const bookmarksWidget = new Bookmarks({
    *   view: view
@@ -158,6 +186,48 @@ class Bookmarks extends Widget {
    * bookmarksWidget.on("select-bookmark", function(event){
    *   bookmarksExpand.expanded = false;
    * });
+   */
+
+  /**
+   * Fires when a {@link module:esri/webmap/Bookmark} is selected.
+   *
+   * @event module:esri/widgets/Bookmarks#bookmark-select
+   *
+   * @property {module:esri/webmap/Bookmark} bookmark - The bookmark selected by the user.
+   *
+   * @since 4.17
+   * @example
+   * const bookmarksWidget = new Bookmarks({
+   *   view: view
+   * });
+   *
+   * const bookmarksExpand = new Expand({
+   *   view: view,
+   *   content: bookmarksWidget
+   * });
+   * view.ui.add(bookmarksExpand, "top-right");
+   *
+   * // collapses the associated Expand instance
+   * // when the user selects a bookmark
+   * bookmarksWidget.on("bookmark-select", function(event){
+   *   bookmarksExpand.expanded = false;
+   * });
+   */
+
+  /**
+   * Fires when a {@link module:esri/webmap/Bookmark} is edited.
+   *
+   * @event module:esri/widgets/Bookmarks#bookmark-edit
+   *
+   * @property {module:esri/webmap/Bookmark} bookmark - The edited bookmark.
+   * @since 4.17
+   *
+   * @example
+   * // once an edit has been made, enable the "Save Webmap" button
+   * //    to allow the user to save their changes
+   * bookmarksWidget.on("bookmark-edit", function(event){
+   *    saveBtn.disabled = false;
+   * }
    */
 
   //--------------------------------------------------------------------------
@@ -189,6 +259,7 @@ class Bookmarks extends Widget {
     this._destroySortable();
     this._handles.destroy();
     this._handles = null;
+    this._editMenu.destroy();
   }
 
   //--------------------------------------------------------------------------
@@ -203,6 +274,8 @@ class Bookmarks extends Widget {
 
   private _editInputNode: HTMLInputElement = null;
 
+  private _urlEditInputNode: HTMLInputElement = null;
+
   private _addBookmarkButtonNode: HTMLButtonElement = null;
 
   private _focusAddBookmarkButton = false;
@@ -211,13 +284,7 @@ class Bookmarks extends Widget {
 
   private _focusAddInputBox = false;
 
-  private _addBookmark = false;
-
-  private _editBookmark: Bookmark = null;
-
-  private _invalidEntry = false;
-
-  private _creatingBookmark = false;
+  private _focusUrlEditInputBox = false;
 
   private _sortable: Sortable = null;
 
@@ -228,6 +295,67 @@ class Bookmarks extends Widget {
   private _selectedSortUid: string = null;
 
   private _sortableSavedItems: string[] = null;
+
+  @property({
+    type: BookmarksUserState
+  })
+  @renderable(["state", "editedBookmark", "loading", "validationState"])
+  private _userState: BookmarksUserState = null;
+
+  @property({
+    readOnly: true,
+    dependsOn: ["messages", "_userState.editedBookmark.thumbnail.url"]
+  })
+  get _editMenuItems(): ButtonMenuItem[] {
+    const { messages, _userState } = this;
+    const thumbnailUrl = _userState?.editedBookmark?.thumbnail?.url;
+
+    const refreshThumbnail = new ButtonMenuItem({
+      label: messages?.menu.refreshThumbnail,
+      iconClass: CSS.iconRefresh,
+      clickFunction: () => this._refreshThumbnail()
+    });
+
+    const enterThumbnailUrl = new ButtonMenuItem({
+      label: HTTPS_URL_RE.test(thumbnailUrl)
+        ? messages?.menu.editImageUrl
+        : messages?.menu.useImageUrl,
+      iconClass: CSS.iconLink,
+      clickFunction: () => this._startUseImageUrl()
+    });
+
+    const removeThumbnail = thumbnailUrl
+      ? new ButtonMenuItem({
+          label: messages?.menu.removeThumbnail,
+          iconClass: CSS.iconRemove,
+          clickFunction: () => this._removeThumbnail()
+        })
+      : null;
+
+    return [refreshThumbnail, enterThumbnailUrl, removeThumbnail].filter(Boolean);
+  }
+
+  @property({
+    readOnly: true,
+    dependsOn: ["messages", "_editMenuItems"]
+  })
+  get _editMenu(): ButtonMenu {
+    const { _editMenuItems, messages } = this;
+
+    const currentEditMenu = this._get("_editMenu");
+    if (currentEditMenu) {
+      currentEditMenu.destroy();
+    }
+
+    const editMenu = new ButtonMenu({
+      iconClass: CSS.iconHandleHorizontal,
+      label: messages?.menu.label
+    });
+
+    editMenu.items = _editMenuItems;
+
+    return editMenu;
+  }
 
   //--------------------------------------------------------------------------
   //
@@ -256,11 +384,11 @@ class Bookmarks extends Widget {
    *    view: view,
    *    editingEnabled: true,
    *    // whenever a new bookmark is created, a 100x100 px
-   *    // screenshot of the view will be taken and the extent
-   *    // of the view will not be set as the extent of the new bookmark
+   *    // screenshot of the view will be taken and the rotation, scale, and extent
+   *    // of the view will not be set as the viewpoint of the new bookmark
    *    bookmarkCreationOptions: {
    *      takeScreenshot: true,
-   *      captureExtent: false,
+   *      captureViewpoint: false,
    *      screenshotSettings: {
    *        width: 100,
    *        height: 100
@@ -269,8 +397,18 @@ class Bookmarks extends Widget {
    * });
    *
    */
-  @property()
-  bookmarkCreationOptions: BookmarkCreationOptions = null;
+  @property({
+    value: null
+  })
+  set bookmarkCreationOptions(value: BookmarkCreationOptions) {
+    if (typeof value.captureExtent !== "undefined") {
+      deprecatedProperty(logger, "bookmarkCreationOptions.captureExtent", {
+        replacement: "bookmarkCreationOptions.captureViewpoint",
+        version: "4.17"
+      });
+    }
+    this._set("bookmarkCreationOptions", value);
+  }
 
   //----------------------------------
   //  bookmarks
@@ -308,11 +446,23 @@ class Bookmarks extends Widget {
   //----------------------------------
 
   /**
-   * Indicates whether the widget is able to be edited.
+   * Indicates whether the bookmarks are able to be edited.
    * When `true`, allows bookmarks to be added, edited,
-   * reordered, or deleted from within the widget. Any
-   * edits made will only be shown locally and will not
-   * be saved.
+   * reordered, or deleted from within the widget.
+   *
+   * ![bookmarks-editing1](../../assets/img/apiref/widgets/bookmarks-editing1.png)
+   *
+   * When the "edit" icon is clicked, the scale, rotation, and extent of the view will update to match the bookmark's viewpoint.
+   * The following form opens to allow the user to edit the bookmark's title, thumbnail, and viewpoint.
+   *
+   * ![bookmarks-editing2](../../assets/img/apiref/widgets/bookmarks-editing2.png)
+   *
+   * **Since 4.17:** The thumbnail can be "refreshed" (updated to a screenshot of the view's current extent), added from a URL (HTTPS protocol required), or removed.
+   * When the "Save" button is clicked, the bookmark's viewpoint is updated to match the current scale, rotation, and extent of the view.
+   *
+   * Any edits made will only be shown locally and will not
+   * be saved. See `{@link module:esri/WebMap#save WebMap.save()}` or `{@link module:esri/WebMap#saveAs WebMap.saveAs()}`
+   * if you want to save the edits to your webmap.
    *
    * @name editingEnabled
    * @instance
@@ -398,6 +548,23 @@ class Bookmarks extends Widget {
   messagesCommon: CommonMessages = null;
 
   //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -428,7 +595,7 @@ class Bookmarks extends Widget {
    */
   @property({ type: BookmarksViewModel })
   @renderable(["activeBookmark", "state", "bookmarks"])
-  @vmEvent(["select-bookmark"])
+  @vmEvent(["select-bookmark", "bookmark-edit", "bookmark-select"])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
   //----------------------------------
@@ -484,10 +651,7 @@ class Bookmarks extends Widget {
    */
   @property()
   endAddBookmark(): void {
-    this._invalidEntry = false;
-    this._addBookmark = false;
-    this._creatingBookmark = false;
-    this.scheduleRender();
+    this._userState = null;
   }
 
   /**
@@ -521,8 +685,9 @@ class Bookmarks extends Widget {
    */
   @property()
   startAddBookmark(): void {
-    this._editBookmark = null;
-    this._addBookmark = true;
+    this._userState = new BookmarksUserState({
+      state: "add"
+    });
     this._focusAddInputBox = true;
     this.scheduleRender();
   }
@@ -548,9 +713,9 @@ class Bookmarks extends Widget {
       <div class={CSS.noBookmarksContainer} key="no-bookmarks">
         <span aria-hidden="true" class={this.classes(CSS.noBookmarksIcon, CSS.widgetIcon)} />
         <h1 class={this.classes(CSS.header, CSS.noBookmarksHeader)}>
-          {messages.noBookmarksHeading}
+          {messages?.noBookmarksHeading}
         </h1>
-        <p class={CSS.noBookmarksDescription}>{messages.noBookmarksDescription}</p>
+        <p class={CSS.noBookmarksDescription}>{messages?.noBookmarksDescription}</p>
       </div>
     );
   }
@@ -559,7 +724,7 @@ class Bookmarks extends Widget {
     return (
       <div key="adding-bookmark" class={CSS.addingBookmark}>
         <span aria-hidden="true" class={this.classes(CSS.loading, CSS.rotating)} />
-        {this.messages.addingBookmark}
+        {this.messages?.addingBookmark}
       </div>
     );
   }
@@ -569,23 +734,34 @@ class Bookmarks extends Widget {
       return null;
     }
 
+    const { _userState, editingEnabled } = this;
+
     return bookmarks
       .map((bookmark) =>
-        this.editingEnabled && this._editBookmark && bookmark && this._editBookmark === bookmark
-          ? this.renderEditingBookmark(bookmark)
+        editingEnabled &&
+        bookmark &&
+        _userState &&
+        (_userState.state === "edit" || _userState.state === "edit-thumbnail") &&
+        _userState.bookmark === bookmark
+          ? _userState.state === "edit-thumbnail"
+            ? this.renderEditingBookmarkUrl(_userState.editedBookmark)
+            : this.renderEditingBookmark(_userState.editedBookmark)
           : this.renderBookmark(bookmark)
       )
       .toArray();
   }
 
   protected renderBookmarksContainer(bookmarks: Collection<Bookmark>): VNode {
-    const addBookmark =
-      this.editingEnabled && !this._addBookmark ? this.renderAddBookmarkButton() : null;
+    const { _userState, editingEnabled } = this;
 
-    const creatingBookmark = this.editingEnabled
-      ? this._creatingBookmark
+    const isInAddState = _userState?.state === "add";
+
+    const addBookmark = editingEnabled && !isInAddState ? this.renderAddBookmarkButton() : null;
+
+    const creatingBookmark = editingEnabled
+      ? isInAddState && _userState.loading
         ? this.renderAddBookmarkLoading()
-        : this._addBookmark
+        : _userState?.state === "add"
         ? this.renderAddingBookmark()
         : null
       : null;
@@ -593,7 +769,7 @@ class Bookmarks extends Widget {
     return [
       <ul
         key="bookmark-list"
-        aria-label={this.messages.widgetLabel}
+        aria-label={this.messages?.widgetLabel}
         class={this.classes(CSS.bookmarkList, { [CSS.bookmarkListSortable]: this.editingEnabled })}
         afterCreate={this._sortNodeCreated}
         afterRemoved={this._destroySortable}
@@ -617,9 +793,10 @@ class Bookmarks extends Widget {
           afterUpdate={this._storeAddBookmarkButton}
           data-node-ref="_addBookmarkButtonNode"
           bind={this}
+          type="button"
         >
           <span aria-hidden="true" class={this.classes(CSS.addBookmarkIcon, CSS.iconPlus)} />
-          {this.messages.addBookmark}
+          {this.messages?.addBookmark}
         </button>
       </div>
     ) : null;
@@ -645,12 +822,13 @@ class Bookmarks extends Widget {
     return (
       <div key="edit-container">
         <button
-          title={messagesCommon.edit}
-          aria-label={messagesCommon.edit}
+          title={messagesCommon?.edit}
+          aria-label={messagesCommon?.edit}
           data-bookmark={bookmark}
           onclick={this._showEditBookmarkForm}
           bind={this}
           class={CSS.bookmarkEditButton}
+          type="button"
         >
           <span aria-hidden="true" class={CSS.iconEdit} />
         </button>
@@ -674,13 +852,17 @@ class Bookmarks extends Widget {
         afterUpdate={this._focusDragHandle}
         onblur={this._dragHandleBlur}
         aria-pressed={this._selectedSortUid === bookmark.uid ? "true" : "false"}
-        aria-label={messagesCommon.dragHandleLabel}
-        title={messagesCommon.dragHandleTitle}
+        aria-label={messagesCommon?.dragHandleLabel}
+        title={messagesCommon?.dragHandleTitle}
         {...sortProps}
       >
         <span aria-hidden="true" class={this.classes(CSS.bookmarkDragHandleIcon, CSS.iconHandle)} />
       </div>
     );
+  }
+
+  protected renderBookmarkImageIcon(): VNode {
+    return <span aria-hidden="true" class={this.classes(CSS.bookmarkIcon, CSS.widgetIcon)} />;
   }
 
   protected renderBookmarkImage(bookmark: Bookmark): VNode {
@@ -691,19 +873,19 @@ class Bookmarks extends Widget {
 
     return visibleElements.thumbnail && imageSource ? (
       <img src={imageSource} alt="" class={CSS.bookmarkImage} />
-    ) : (
-      <span aria-hidden="true" class={this.classes(CSS.bookmarkIcon, CSS.widgetIcon)} />
-    );
+    ) : null;
   }
 
   protected renderBookmarkButton(bookmark: Bookmark): VNode {
     const { messagesCommon } = this;
     const { name } = bookmark;
 
-    const title = name || messagesCommon.untitled;
+    const title = name || messagesCommon?.untitled;
 
     const imageContainerNode = (
-      <div class={CSS.bookmarkImageContainer}>{this.renderBookmarkImage(bookmark)}</div>
+      <div class={CSS.bookmarkImageContainer}>
+        {this.renderBookmarkImage(bookmark) || this.renderBookmarkImageIcon()}
+      </div>
     );
 
     return (
@@ -713,6 +895,7 @@ class Bookmarks extends Widget {
         bind={this}
         data-bookmark={bookmark}
         onclick={this._goToBookmark}
+        type="button"
       >
         {imageContainerNode}
         <span class={CSS.bookmarkName}>{title}</span>
@@ -743,35 +926,55 @@ class Bookmarks extends Widget {
   }
 
   protected renderEditingBookmarkName(bookmark: Bookmark): VNode {
-    const { messages } = this;
+    const { messages, _userState } = this;
+    const invalid = _userState.validationState === "name-required";
 
     return (
       <label class={CSS.authoringLabel}>
-        {messages.title}
+        {messages?.title}
+        {invalid ? <strong>{messages?.invalidTitle}</strong> : null}
         <input
           required
           bind={this}
-          class={this.classes(CSS.esriInput, this._invalidEntry ? CSS.authoringInputInvalid : null)}
+          class={this.classes(CSS.esriInput, invalid ? CSS.authoringInputInvalid : null)}
           type="text"
           value={bookmark.name}
           afterCreate={this._storeEditInput}
           afterUpdate={this._focusEditInput}
           data-bookmark={bookmark}
           data-node-ref="_editInputNode"
-          placeholder={messages.addPlaceholder}
+          placeholder={messages?.titlePlaceholder}
         />
       </label>
     );
   }
 
-  protected renderEditingBookmarkActions(bookmark: Bookmark): VNode {
+  protected renderEditingBookmarkUrlActions(): VNode {
     const { messagesCommon } = this;
 
     return (
       <div class={CSS.authoringActions}>
         <input
           type="button"
-          value={messagesCommon.delete}
+          value={messagesCommon?.back}
+          class={this.classes(CSS.esriButton, CSS.esriButtonTertiary)}
+          onclick={this._closeUrlEditBookmarkForm}
+          bind={this}
+        />
+        <input class={CSS.esriButton} type="submit" value={messagesCommon?.add} />
+      </div>
+    );
+  }
+
+  protected renderEditingBookmarkActions(): VNode {
+    const { messagesCommon } = this;
+    const { bookmark } = this._userState;
+
+    return (
+      <div class={CSS.authoringActions}>
+        <input
+          type="button"
+          value={messagesCommon?.delete}
           class={this.classes(CSS.esriButton, CSS.esriButtonTertiary, CSS.authoringDeleteButton)}
           data-bookmark={bookmark}
           onclick={this._deleteBookmark}
@@ -779,13 +982,53 @@ class Bookmarks extends Widget {
         />
         <input
           type="button"
-          value={messagesCommon.cancel}
+          value={messagesCommon?.cancel}
           class={this.classes(CSS.esriButton, CSS.esriButtonTertiary)}
           onclick={this._closeEditBookmarkForm}
           bind={this}
         />
-        <input class={CSS.esriButton} type="submit" value={messagesCommon.save} />
+        <input class={CSS.esriButton} type="submit" value={messagesCommon?.save} />
       </div>
+    );
+  }
+
+  protected renderEditingBookmarkUrlInput(bookmark: Bookmark): VNode {
+    const { messages, _userState } = this;
+
+    const url = bookmark.thumbnail?.url;
+    const value = HTTPS_URL_RE.test(url) ? url : null;
+    const invalid = _userState.validationState === "absolute-url-required";
+
+    return (
+      <label class={CSS.authoringLabel}>
+        {invalid ? <strong>{messages?.invalidImageUrl}</strong> : null}
+        <input
+          required
+          bind={this}
+          class={this.classes(CSS.esriInput, invalid ? CSS.authoringInputInvalid : null)}
+          type="text"
+          value={value}
+          afterCreate={this._storeUrlEditInput}
+          afterUpdate={this._focusUrlEditInput}
+          data-bookmark={bookmark}
+          data-node-ref="_urlEditInputNode"
+          title={messages?.imageUrlTooltip}
+          placeholder={messages?.imageUrlPlaceholder}
+        />
+      </label>
+    );
+  }
+
+  protected renderEditingBookmarkUrl(bookmark: Bookmark): VNode {
+    const liProps = { [SORT_DATA_ATTR]: bookmark.uid };
+
+    return (
+      <li key="edit-bookmark-url-form" class={CSS.authoringCard} {...liProps}>
+        <form class={CSS.authoringForm} onsubmit={this._editBookmarkUrlSubmit} bind={this}>
+          {this.renderEditingBookmarkUrlInput(bookmark)}
+          {this.renderEditingBookmarkUrlActions()}
+        </form>
+      </li>
     );
   }
 
@@ -795,29 +1038,37 @@ class Bookmarks extends Widget {
     return (
       <li key="edit-bookmark-form" class={CSS.authoringCard} {...liProps}>
         <form class={CSS.authoringForm} onsubmit={this._editBookmarkSubmit} bind={this}>
-          {this.renderEditingBookmarkName(bookmark)}
-          {this.renderEditingBookmarkActions(bookmark)}
+          <div class={CSS.authoringContainer}>
+            <div class={CSS.bookmarkImageContainer}>
+              {this.renderBookmarkImage(bookmark)}
+              {this._editMenu.render()}
+            </div>
+            {this.renderEditingBookmarkName(bookmark)}
+          </div>
+          {this.renderEditingBookmarkActions()}
         </form>
       </li>
     );
   }
 
   protected renderAddingBookmarkName(): VNode {
-    const { messages } = this;
+    const { _userState, messages } = this;
+    const invalid = _userState.validationState === "name-required";
 
     return (
       <label class={CSS.authoringLabel}>
-        {messages.title}
+        {messages?.title}
+        {invalid ? <strong>{messages?.invalidTitle}</strong> : null}
         <input
           required
           bind={this}
-          class={this.classes(CSS.esriInput, this._invalidEntry ? CSS.authoringInputInvalid : null)}
+          class={this.classes(CSS.esriInput, invalid ? CSS.authoringInputInvalid : null)}
           type="text"
           afterCreate={this._storeAddInput}
           afterUpdate={this._focusAddInput}
           data-node-ref="_addInputNode"
           value=""
-          placeholder={messages.addPlaceholder}
+          placeholder={messages?.titlePlaceholder}
         />
       </label>
     );
@@ -830,12 +1081,12 @@ class Bookmarks extends Widget {
       <div class={this.classes(CSS.authoringActions)}>
         <input
           type="button"
-          value={messagesCommon.cancel}
+          value={messagesCommon?.cancel}
           class={this.classes(CSS.esriButton, CSS.esriButtonTertiary, CSS.authoringCancelButton)}
           onclick={this._endAddBookmark.bind(this)}
           bind={this}
         />
-        <input class={CSS.esriButton} type="submit" value={messagesCommon.add} />
+        <input class={CSS.esriButton} type="submit" value={messagesCommon?.add} />
       </div>
     );
   }
@@ -1035,33 +1286,37 @@ class Bookmarks extends Widget {
     const node = event.currentTarget as Element;
     const bookmark = node["data-bookmark"] as Bookmark;
 
-    this._addBookmark = false;
     this._focusEditInputBox = true;
-    this._editBookmark = bookmark;
+    this._userState = new BookmarksUserState({
+      bookmark,
+      state: "edit"
+    });
+    this.viewModel.goTo(bookmark);
     this.scheduleRender();
   }
 
+  private _closeUrlEditBookmarkForm(): void {
+    this._focusEditInputBox = true;
+    this._userState.state = "edit";
+  }
+
   private _closeEditBookmarkForm(): void {
-    this._invalidEntry = false;
-    this._editBookmark = null;
-    this.scheduleRender();
+    this._userState = null;
   }
 
   private _addBookmarkSubmit(event: Event): void {
     event.preventDefault();
 
-    const { _addInputNode, bookmarkCreationOptions } = this;
+    const { _addInputNode, _userState, bookmarkCreationOptions } = this;
 
     const name = _addInputNode && _addInputNode.value.trim();
 
     if (!name) {
-      this._invalidEntry = true;
-      this.scheduleRender();
+      _userState.validationState = "name-required";
       return;
     }
 
-    this._creatingBookmark = true;
-    this.scheduleRender();
+    _userState.loading = true;
 
     this.viewModel.createBookmark(bookmarkCreationOptions).then((bookmark) => {
       bookmark.name = name;
@@ -1072,22 +1327,33 @@ class Bookmarks extends Widget {
     });
   }
 
+  private async _editBookmarkAndClose(
+    bookmark: Bookmark,
+    options: BookmarkCreationOptions
+  ): Promise<void> {
+    await this.viewModel.editBookmark(bookmark, options);
+
+    this._closeEditBookmarkForm();
+  }
+
   private _editBookmarkSubmit(event: Event): void {
     event.preventDefault();
 
-    const { _editInputNode, _editBookmark } = this;
+    const { _editInputNode, _userState } = this;
 
     const name = _editInputNode && _editInputNode.value.trim();
 
     if (!name) {
-      this._invalidEntry = true;
-      this.scheduleRender();
+      _userState.validationState = "name-required";
       return;
     }
 
-    _editBookmark.name = name;
+    _userState.bookmark.name = name;
+    _userState.bookmark.thumbnail = _userState.editedBookmark.thumbnail;
 
-    this._closeEditBookmarkForm();
+    this._editBookmarkAndClose(_userState.bookmark, {
+      takeScreenshot: false
+    });
   }
 
   private _storeAddBookmarkButton(node: HTMLButtonElement): void {
@@ -1106,6 +1372,19 @@ class Bookmarks extends Widget {
     this._addInputNode = node;
 
     this._focusAddInput();
+  }
+
+  private _storeUrlEditInput(node: HTMLInputElement): void {
+    this._urlEditInputNode = node;
+
+    this._focusUrlEditInput();
+  }
+
+  private _focusUrlEditInput(): void {
+    if (this._urlEditInputNode && this._focusUrlEditInputBox) {
+      this._focusUrlEditInputBox = false;
+      this._urlEditInputNode.focus();
+    }
   }
 
   private _focusAddInput(): void {
@@ -1144,6 +1423,64 @@ class Bookmarks extends Widget {
     this._closeEditBookmarkForm();
 
     this.viewModel.goTo(bookmark);
+  }
+
+  private async _refreshThumbnail(): Promise<void> {
+    const { _userState, _editMenu, viewModel, bookmarkCreationOptions } = this;
+
+    _userState.validationState = undefined;
+
+    await viewModel.editBookmark(this._userState.editedBookmark, {
+      ...bookmarkCreationOptions,
+      ...{
+        takeScreenshot: true,
+        captureExtent: false,
+        captureViewpoint: false,
+        captureRotation: false,
+        captureScale: false
+      }
+    });
+
+    _editMenu.open = false;
+    this._focusEditInputBox = true;
+    this.scheduleRender();
+  }
+
+  private _removeThumbnail(): void {
+    const { _userState, _editMenu } = this;
+
+    _userState.editedBookmark.thumbnail = null;
+    _userState.validationState = undefined;
+
+    _editMenu.open = false;
+    this._focusEditInputBox = true;
+    this.scheduleRender();
+  }
+
+  private _startUseImageUrl(): void {
+    this._userState.state = "edit-thumbnail";
+    this._editMenu.open = false;
+    this._focusUrlEditInputBox = true;
+    this.scheduleRender();
+  }
+
+  private _editBookmarkUrlSubmit(event: Event): void {
+    event.preventDefault();
+
+    const { _urlEditInputNode, _userState } = this;
+
+    const url = _urlEditInputNode.value;
+
+    if (!HTTPS_URL_RE.test(url)) {
+      _userState.validationState = "absolute-url-required";
+      return;
+    }
+
+    if (url) {
+      _userState.editedBookmark.thumbnail = new Thumbnail({ url });
+    }
+
+    this._closeUrlEditBookmarkForm();
   }
 }
 

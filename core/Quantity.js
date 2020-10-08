@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./unitUtils"],(function(t,n,i){return function(){function t(t,n){this.measure=i.measureForUnit(n),this.value=t,this.unit=n}return Object.defineProperty(t.prototype,"isBaseUnit",{get:function(){return i.isBaseUnit(this.unit)},enumerable:!0,configurable:!0}),t.prototype.toUnit=function(n){return new t(i.convertUnit(this.value,this.unit,n),n)},t.prototype.toBaseUnit=function(){return this.toUnit(i.baseUnitForUnit(this.unit))},t}()}));
+define(["require","exports","./unitUtils"],(function(t,n,i){"use strict";return function(){function t(t,n){this.measure=i.measureForUnit(n),this.value=t,this.unit=n}return Object.defineProperty(t.prototype,"isBaseUnit",{get:function(){return i.isBaseUnit(this.unit)},enumerable:!1,configurable:!0}),t.prototype.toUnit=function(n){return new t(i.convertUnit(this.value,this.unit,n),n)},t.prototype.toBaseUnit=function(){return this.toUnit(i.baseUnitForUnit(this.unit))},t}()}));

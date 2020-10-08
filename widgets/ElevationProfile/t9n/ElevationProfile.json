@@ -1,0 +1,24 @@
+{
+  "widgetLabel": "Elevation Profile",
+  "distanceLabel": "Distance ({units})",
+  "elevationLabel": "Elevation ({units})",
+  "newProfile": "New Profile",
+  "noPath": "No path. Draw a path in order to generate an elevation profile.",
+  "noStats": "No stats",
+  "generatingStats": "Generating stats...",
+  "elevationStats": {
+    "label": "Elevation",
+    "min": "Min",
+    "max": "Max",
+    "avg": "Avg",
+    "gain": "Gain",
+    "loss": "Loss"
+  },
+  "slopeStats": {
+    "label": "Slope",
+    "maxPositive": "Max Positive",
+    "maxNegative": "Max Negative",
+    "avgPositive": "Avg Positive",
+    "avgNegative": "Avg Negative"
+  }
+}

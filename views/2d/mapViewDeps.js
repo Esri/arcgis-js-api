@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./LabelManager","./layers/graphics/GraphicsView2D","./navigation/MapViewNavigation","./magnifier/MagnifierView2D"],(function(e,a,i,r,n,t){Object.defineProperty(a,"__esModule",{value:!0}),a.LabelManager=i.default,a.GraphicsView2D=r.default,a.MapViewNavigation=n.default,a.MagnifierView2D=t.default}));
+define(["require","exports","./engine/Stage","./LabelManager","./layers/graphics/GraphicsView2D","./navigation/MapViewNavigation","./magnifier/MagnifierView2D"],(function(e,t,n,r,i,a,u){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),Object.defineProperty(t,"Stage",{enumerable:!0,get:function(){return n.Stage}}),Object.defineProperty(t,"LabelManager",{enumerable:!0,get:function(){return r.default}}),Object.defineProperty(t,"GraphicsView2D",{enumerable:!0,get:function(){return i.default}}),Object.defineProperty(t,"MapViewNavigation",{enumerable:!0,get:function(){return a.default}}),Object.defineProperty(t,"MagnifierView2D",{enumerable:!0,get:function(){return u.default}})}));

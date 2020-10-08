@@ -1,7 +1,7 @@
 {
   "title": "KML Layer (KML)",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Keyhole Markup Language (KML) is an XML-based format for storing geographic data and associated content and is an official Open Geospatial Consortium (OGC) standard. KML is a common format for sharing geographic data with non-GIS users as it can be easily delivered on the Internet.",
   "properties": {
     "id": {

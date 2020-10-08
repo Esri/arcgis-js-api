@@ -24,8 +24,6 @@
   "stop": "Зупинка",
   "stopLabelTemplate": "Зупинка {number} ({label})",
   "unlocated": "Невизначене місце розташування",
-  "searchFieldPlaceholder": "Скористайтесь пошуком або клацніть на карті",
-  "viewlessSearchFieldPlaceholder": "Пошук",
   "directionsPlaceholder": "Ваш маршрут з'явиться тут.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Оціночний час прибуття",

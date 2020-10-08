@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(e,o,r,t){Object.defineProperty(o,"__esModule",{value:!0}),o.GoToMixin=function(e){return function(e){function o(){for(var o=[],r=0;r<arguments.length;r++)o[r]=arguments[r];var t=e.apply(this,o)||this;return t.goToOverride=null,t.view=null,t}return r.__extends(o,e),o.prototype.callGoTo=function(e){var o=this.view;return this.goToOverride?this.goToOverride(o,e):o.goTo(e.target,e.options)},r.__decorate([t.property()],o.prototype,"goToOverride",void 0),r.__decorate([t.property()],o.prototype,"view",void 0),o=r.__decorate([t.subclass("esri.widgets.support.GoTo")],o)}(e)}}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(o,e,r,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.GoToMixin=void 0,e.GoToMixin=function(o){return function(o){function e(){for(var e=[],r=0;r<arguments.length;r++)e[r]=arguments[r];var t=o.apply(this,e)||this;return t.goToOverride=null,t.view=null,t}return r.__extends(e,o),e.prototype.callGoTo=function(o){var e=this.view;return this.goToOverride?this.goToOverride(e,o):e.goTo(o.target,o.options)},r.__decorate([t.property()],e.prototype,"goToOverride",void 0),r.__decorate([t.property()],e.prototype,"view",void 0),e=r.__decorate([t.subclass("esri.widgets.support.GoTo")],e)}(o)}}));

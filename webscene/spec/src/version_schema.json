@@ -1,7 +1,7 @@
 {
   "title": "version",
   "type": "string",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Root element in the web scene specifying a string value indicating the web scene version.",
   "enum": [
     "1.8",
@@ -16,14 +16,15 @@
     "1.17",
     "1.18",
     "1.19",
-    "1.20"
+    "1.20",
+    "1.21"
   ],
   "esriDocumentation": {
     "examples": [
       {
         "title": "version",
         "code": {
-          "version": "1.20"
+          "version": "1.21"
         }
       }
     ]

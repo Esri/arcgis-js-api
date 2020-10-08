@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(t,e){return function(){function t(){this.vertexData=new Map,this.vertexCount=0,this.indexData=[]}return t.prototype.clear=function(){this.vertexData.clear(),this.vertexCount=0,this.indexData=[]},t.prototype.update=function(t,e,i){for(var n in t)this.vertexData.set(n,t[n]);for(var n in this.vertexData)null===t[n]&&this.vertexData.delete(n);this.vertexCount=e,this.indexData=i},t}()}));
+define(["require","exports"],(function(t,e){"use strict";return function(){function t(){this.vertexData=new Map,this.vertexCount=0,this.indexData=[]}return t.prototype.clear=function(){this.vertexData.clear(),this.vertexCount=0,this.indexData=[]},t.prototype.update=function(t,e,i){for(var r in t)this.vertexData.set(r,t[r]);for(var r in this.vertexData)null===t[r]&&this.vertexData.delete(r);this.vertexCount=e,this.indexData=i},t}()}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(n,r){function e(n,r){return{near:n,far:r}}function t(n,r,e){return n.near=r,n.far=e,n}Object.defineProperty(r,"__esModule",{value:!0}),r.create=e,r.empty=function(n){return n?t(n,1/0,-1/0):e(1/0,-1/0)},r.set=t,r.union=function(n,r,e){return void 0===e&&(e=n),e.near=Math.min(n.near,r.near),e.far=Math.max(n.far,r.far),e},r.within=function(n,r){return n.near<=r&&r<=n.far}}));
+define(["require","exports"],(function(e,n){"use strict";function r(e,n){return{near:e,far:n}}function t(e,n,r){return e.near=n,e.far=r,e}Object.defineProperty(n,"__esModule",{value:!0}),n.within=n.union=n.set=n.empty=n.create=void 0,n.create=r,n.empty=function(e){return e?t(e,1/0,-1/0):r(1/0,-1/0)},n.set=t,n.union=function(e,n,r){return void 0===r&&(r=e),r.near=Math.min(e.near,n.near),r.far=Math.max(e.far,n.far),r},n.within=function(e,n){return e.near<=n&&n<=e.far}}));

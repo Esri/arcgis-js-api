@@ -1,7 +1,7 @@
 {
-  "title": "WebTiledLayer",
+  "title": "Web Tiled Layer (WebTiledLayer)",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A tile layer is a derived from a set of web-accessible tiles which reside on a server. The tiles are accessed by a direct URL request from the web browser. Because the tiles in a tile layer are not available as a service, they must be in a specific format for a web app such as the ArcGIS.com scene viewer to display the layer on a scene.",
   "properties": {
     "copyright": {
@@ -106,12 +106,9 @@
           "operationalLayers": [
             {
               "layerType": "WebTiledLayer",
-              "templateUrl": "http://{subDomain}.tile.stamen.com/toner/{level}/{col}/{row}.png",
+              "title": "OpenCycleMap",
+              "copyright": "Map tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. Data by <a href=\"http://openstreetmap.org/\">OpenStreetMap</a>, under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\">CC BY SA</a>.",
               "id": "1583e1976e9-layer-0",
-              "listMode": "show",
-              "opacity": 1,
-              "title": "Layer",
-              "visibility": true,
               "fullExtent": {
                 "xmin": -20037508.342787,
                 "ymin": -20037508.34278,
@@ -244,7 +241,6 @@
               },
               "minScale": 0,
               "maxScale": 0,
-              "copyright": "Map tiles by <a href=\"http://stamen.com/\">Stamen Design</a>, under <a href=\"http://creativecommons.org/licenses/by/3.0\">CC BY 3.0</a>. Data by <a href=\"http://openstreetmap.org/\">OpenStreetMap</a>, under <a href=\"http://creativecommons.org/licenses/by-sa/3.0\">CC BY SA</a>.",
               "subDomains": [
                 "a",
                 "b",

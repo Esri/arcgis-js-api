@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/Loadable","../../../core/accessorSupport/decorators"],(function(e,r,o,t,p){return function(e){function r(r){return e.call(this,r)||this}return o.__extends(r,e),o.__decorate([p.property()],r.prototype,"geometryType",void 0),o.__decorate([p.property()],r.prototype,"objectIdField",void 0),o.__decorate([p.property()],r.prototype,"supportsSQLExpression",void 0),o.__decorate([p.property()],r.prototype,"hasQueryEngine",void 0),o.__decorate([p.property()],r.prototype,"minScale",void 0),o.__decorate([p.property()],r.prototype,"maxScale",void 0),o.__decorate([p.property()],r.prototype,"fullExtent",void 0),r=o.__decorate([p.subclass("esri.smartMapping.support.adapters.LayerAdapter")],r)}(t)}));
+define(["require","exports","tslib","../../../core/Loadable","../../../core/accessorSupport/decorators"],(function(e,r,t,o,p){"use strict";return function(e){function r(r){return e.call(this,r)||this}return t.__extends(r,e),t.__decorate([p.property({constructOnly:!0})],r.prototype,"layer",void 0),t.__decorate([p.property()],r.prototype,"geometryType",void 0),t.__decorate([p.property()],r.prototype,"objectIdField",void 0),t.__decorate([p.property()],r.prototype,"supportsSQLExpression",void 0),t.__decorate([p.property()],r.prototype,"hasQueryEngine",void 0),t.__decorate([p.property()],r.prototype,"minScale",void 0),t.__decorate([p.property()],r.prototype,"maxScale",void 0),t.__decorate([p.property()],r.prototype,"fullExtent",void 0),r=t.__decorate([p.subclass("esri.smartMapping.support.adapters.LayerAdapter")],r)}(o)}));

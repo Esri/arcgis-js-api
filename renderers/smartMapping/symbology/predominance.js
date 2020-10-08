@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/predominance"],(function(e,r,n,o,a){var p=o.getLogger("esri.renderers.smartMapping.symbology.predominance");return n.deprecatedModule(p,"esri/renderers/smartMapping/symbology/predominance",{replacement:"esri/smartMapping/symbology/predominance"}),a}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/symbology/predominance"],(function(e,r,n,o,a){"use strict";var p=o.getLogger("esri.renderers.smartMapping.symbology.predominance");return n.deprecatedModule(p,"esri/renderers/smartMapping/symbology/predominance",{replacement:"esri/smartMapping/symbology/predominance"}),a}));

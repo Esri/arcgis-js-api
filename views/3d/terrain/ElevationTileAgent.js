@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/ObjectPool","./TerrainConst","./TileAgent"],(function(e,t,n,r,i,l){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._scaleRangeEnabled=!1,t}return n.__extends(t,e),Object.defineProperty(t.prototype,"_desiredMinLevelDelta",{get:function(){return i.ELEVATION_DESIRED_RESOLUTION_LEVEL-(this.tile.vlevel-this.tile.lij[0])},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_loadingLevelDelta",{get:function(){return 0},enumerable:!0,configurable:!0}),t.Pool=new r(t),t}(l.TileAgent)}));
+define(["require","exports","tslib","./TerrainConst","./TileAgent"],(function(e,t,n,r,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var l=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._scaleRangeEnabled=!1,t}return n.__extends(t,e),Object.defineProperty(t.prototype,"_desiredMinLevelDelta",{get:function(){return r.ELEVATION_DESIRED_RESOLUTION_LEVEL-(this.tile.vlevel-this.tile.lij[0])},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"_loadingLevelDelta",{get:function(){return 0},enumerable:!1,configurable:!0}),t}(i.TileAgent);t.default=l}));

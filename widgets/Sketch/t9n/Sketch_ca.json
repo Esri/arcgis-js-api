@@ -36,5 +36,14 @@
   "verticesCount": "{count} vèrtexs",
   "deleteFeature": "Suprimeix l'entitat",
   "deleteVertex": "Suprimeix el vèrtex",
-  "duplicate": "Duplica"
+  "duplicate": "Duplica",
+  "selectCircle": "Seleccioneu per cercle",
+  "selectFeature": "Seleccioneu una entitat",
+  "selectFeatures": "Seleccioneu entitats",
+  "selectLasso": "Seleccioneu per llaç",
+  "selectLine": "Seleccioneu per línia",
+  "selectMarquee": "Seleccioneu per franja lliscant",
+  "selectPolygon": "Seleccioneu per polígon",
+  "selectRectangle": "Seleccioneu per rectangle",
+  "clearSelection": "Esborra la selecció"
 }

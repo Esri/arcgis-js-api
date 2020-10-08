@@ -1,7 +1,7 @@
 {
   "title": "Integrated Mesh Layer (IntegratedMeshLayer)",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "An integrated mesh can represent built and natural 3D features, such as building walls, trees, valleys, and cliffs, with realistic textures and includes elevation information.",
   "properties": {
     "id": {

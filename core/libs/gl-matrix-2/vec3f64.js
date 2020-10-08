@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./factories/vec3f64"],(function(e,f,r){Object.defineProperty(f,"__esModule",{value:!0}),f.vec3f64=r}));
+define(["require","exports","./factories/vec3f64"],(function(e,c,f){"use strict";Object.defineProperty(c,"__esModule",{value:!0}),c.vec3f64=void 0,c.vec3f64=f}));

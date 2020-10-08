@@ -4,7 +4,7 @@
       "id": "Paraglide_Track_Lines",
       "listMode": "show",
       "title": "Paraglide Track Lines",
-      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+      "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -38,7 +38,7 @@
       "id": "148b3f6788a-layer5",
       "listMode": "show",
       "title": "Paraglide Track Cylinders",
-      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
+      "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/arcgis/rest/services/FL__3857__CH_Fiesch__Paraglide_Z/FeatureServer/0",
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {

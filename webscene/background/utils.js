@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./Background","./ColorBackground"],(function(e,r,n,o){Object.defineProperty(r,"__esModule",{value:!0});var t,a={base:n,key:"type",typeMap:{color:o}};r.backgroundProperty={types:a,json:{read:(t=a,function(e,r,n){if(!e)return e;for(var o in t.typeMap)if(e.type===o){var a=new t.typeMap[o];return a.read(e,n),a}}),write:{overridePolicy:function(e,r,n){return{enabled:!n||!n.isPresentation}}}}}}));
+define(["require","exports","./Background","./ColorBackground"],(function(e,r,o,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.backgroundProperty=void 0;var n,a={base:o,key:"type",typeMap:{color:t}};r.backgroundProperty={types:a,json:{read:(n=a,function(e,r,o){if(!e)return e;for(var t in n.typeMap)if(e.type===t){var a=new n.typeMap[t];return a.read(e,o),a}}),write:{overridePolicy:function(e,r,o){return{enabled:!o||!o.isPresentation}}}}}}));

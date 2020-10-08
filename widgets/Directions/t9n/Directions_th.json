@@ -24,8 +24,6 @@
   "stop": "หยุด",
   "stopLabelTemplate": "หยุด {number} ({label})",
   "unlocated": "ระบุตำแหน่งที่ตั้งไม่ได้",
-  "searchFieldPlaceholder": "ค้นหา หรือคลิกที่แผนที่",
-  "viewlessSearchFieldPlaceholder": "ค้นหา",
   "directionsPlaceholder": "เส้นทางของคุณจะปรากฏที่นี่",
   "etaTemplate": "{time} {gmt}",
   "eta": "เวลาที่คาดว่าจะมาถึงโดยประมาณ",

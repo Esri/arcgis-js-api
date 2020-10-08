@@ -36,5 +36,14 @@
   "verticesCount": "{count} viršūnės (-ių)",
   "deleteFeature": "Ištrinti elementą",
   "deleteVertex": "Ištrinti viršūnę",
-  "duplicate": "Dubliuoti"
+  "duplicate": "Dubliuoti",
+  "selectCircle": "Pasirinkti pagal apskritimą",
+  "selectFeature": "Pasirinkti elementą",
+  "selectFeatures": "Išrinkti elementus",
+  "selectLasso": "Pažymėti apibrėžiant",
+  "selectLine": "Pasirinkti pagal liniją",
+  "selectMarquee": "Pasirinkti pagal stačiakampį žymėjimą",
+  "selectPolygon": "Pasirinkti pagal poligoną",
+  "selectRectangle": "Pažymėti apibrėžiant stačiakampį",
+  "clearSelection": "Valyti išranką"
 }

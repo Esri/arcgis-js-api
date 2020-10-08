@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/accessorSupport/decorators","../FeatureForm/FieldConfig"],(function(e,o,r,t,i){return function(e){function o(o){var r=e.call(this,o)||this;return r.direction=null,r.menuConfig=null,r.sortable=!0,r.visible=!0,r}return r.__extends(o,e),r.__decorate([t.property()],o.prototype,"direction",void 0),r.__decorate([t.property()],o.prototype,"menuConfig",void 0),r.__decorate([t.property()],o.prototype,"sortable",void 0),r.__decorate([t.property()],o.prototype,"visible",void 0),o=r.__decorate([t.subclass("esri.widgets.FeatureTable.FieldColumnConfig")],o)}(i)}));
+define(["require","exports","tslib","../../core/accessorSupport/decorators","../FeatureForm/FieldConfig"],(function(e,o,r,t,i){"use strict";return function(e){function o(o){var r=e.call(this,o)||this;return r.direction=null,r.formatFunction=null,r.menuConfig=null,r.sortable=!0,r.visible=!0,r}return r.__extends(o,e),r.__decorate([t.property()],o.prototype,"direction",void 0),r.__decorate([t.property()],o.prototype,"formatFunction",void 0),r.__decorate([t.property()],o.prototype,"menuConfig",void 0),r.__decorate([t.property()],o.prototype,"sortable",void 0),r.__decorate([t.property()],o.prototype,"visible",void 0),o=r.__decorate([t.subclass("esri.widgets.FeatureTable.FieldColumnConfig")],o)}(i)}));

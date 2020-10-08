@@ -36,5 +36,14 @@
   "verticesCount": "{count} lomových bodů",
   "deleteFeature": "Odstranit prvek",
   "deleteVertex": "Odstranit lomový bod",
-  "duplicate": "Duplicity"
+  "duplicate": "Duplikovat",
+  "selectCircle": "Výběr kružnicí",
+  "selectFeature": "Vybrat prvek",
+  "selectFeatures": "Vybrat prvky",
+  "selectLasso": "Výběr lasem",
+  "selectLine": "Výběr linií",
+  "selectMarquee": "Výběr běžícím textem",
+  "selectPolygon": "Výběr polygonem",
+  "selectRectangle": "Výběr obdélníkem",
+  "clearSelection": "Zrušit výběr"
 }

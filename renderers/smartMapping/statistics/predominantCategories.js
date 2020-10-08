@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/statistics/predominantCategories"],(function(e,r,t,i,s){var a=i.getLogger("esri.renderers.smartMapping.statistics.predominantCategories");return t.deprecatedModule(a,"esri/renderers/smartMapping/statistics/predominantCategories",{replacement:"esri/smartMapping/statistics/predominantCategories"}),s}));
+define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/statistics/predominantCategories"],(function(e,r,t,s,i){"use strict";var a=s.getLogger("esri.renderers.smartMapping.statistics.predominantCategories");return t.deprecatedModule(a,"esri/renderers/smartMapping/statistics/predominantCategories",{replacement:"esri/smartMapping/statistics/predominantCategories"}),i}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,n){Object.defineProperty(n,"__esModule",{value:!0}),n.dotProduct=function(e,n){for(var t=0,r=0;r<e.length;r++)t+=e[r]*n[r];return t},n.elementwiseProduct=function(e,n,t){(t=t||e).length=e.length;for(var r=0;r<e.length;r++)t[r]=e[r]*n[r];return t},n.scalarProduct=function(e,n,t){(t=t||e).length=e.length;for(var r=0;r<e.length;r++)t[r]=e[r]*n;return t},n.add=function(e,n,t){(t=t||e).length=e.length;for(var r=0;r<e.length;r++)t[r]=e[r]+n[r];return t}}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.add=t.scalarProduct=t.elementwiseProduct=t.dotProduct=void 0,t.dotProduct=function(e,t){for(var r=0,n=0;n<e.length;n++)r+=e[n]*t[n];return r},t.elementwiseProduct=function(e,t,r){(r=r||e).length=e.length;for(var n=0;n<e.length;n++)r[n]=e[n]*t[n];return r},t.scalarProduct=function(e,t,r){(r=r||e).length=e.length;for(var n=0;n<e.length;n++)r[n]=e[n]*t;return r},t.add=function(e,t,r){(r=r||e).length=e.length;for(var n=0;n<e.length;n++)r[n]=e[n]+t[n];return r}}));

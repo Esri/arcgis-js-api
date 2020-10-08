@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../core/arrayUtils","../../../renderers/visualVariables/SizeVariable"],(function(e,l,a,i){Object.defineProperty(l,"__esModule",{value:!0});l.getClusterSizeVariable=function(e,l){if(!(e&&"visualVariables"in e&&e.visualVariables))return null;var r=a.find(e.visualVariables,(function(e){return"size"===e.type})),n=function(e,l){var a=e.featuresTilingScheme.getClosestInfoForScale(e.scale).level;return l.levels?l.levels[a]:null}(l,r);return n?new i({field:r.field,minSize:n[2].size,minDataValue:n[2].value,maxSize:n[3].size,maxDataValue:n[3].value}):null}}));
+define(["require","exports","../../../core/arrayUtils","../../../renderers/visualVariables/SizeVariable"],(function(e,i,l,a){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.getClusterSizeVariable=void 0;i.getClusterSizeVariable=function(e,i){if(!(e&&"visualVariables"in e&&e.visualVariables))return null;var r=l.find(e.visualVariables,(function(e){return"size"===e.type})),u=function(e,i){var l=e.featuresTilingScheme.getClosestInfoForScale(e.scale).level;return i.levels?i.levels[l]:null}(i,r);return u?new a({field:r.field,minSize:u[2].size,minDataValue:u[2].value,maxSize:u[3].size,maxDataValue:u[3].value}):null}}));

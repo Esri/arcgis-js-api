@@ -50,6 +50,7 @@ const CSS = {
   noLevel: `${CONTAINER}--no-level`,
   animateLevel: `${CONTAINER}--animate-level`,
   levelsContainer: `${CONTAINER}__levels-container`,
+  innerLevelsContainer: `${CONTAINER}__inner-levels-container`,
   labelContainer: `${CONTAINER}__label-container`,
   arrowUp: `${CONTAINER}__arrow-up`,
   arrowDown: `${CONTAINER}__arrow-down`
@@ -163,12 +164,30 @@ class BuildingLevelPicker extends Widget {
   private _numLevels: number;
 
   /**
-   * The height of the levels container.
+   * The height of the levels container when no level is hovered.
    */
   @property({ readOnly: true, dependsOn: ["_numLevels", "_levelHeight"] })
   @renderable()
-  private get _levelsContainerHeight(): number {
-    return Math.round(this._levelHeight * this._numLevels) + constants.LEVELS_PADDING * 2;
+  private get _levelsHeight(): number {
+    return Math.round(this._levelHeight * this._numLevels);
+  }
+
+  /**
+   * When mouse/pointer hovers the level picker, some levels expand. This stores
+   * the size of the levels when expanded.
+   */
+  @property()
+  @renderable()
+  private _expandedLevelsHeight: number = undefined;
+
+  /**
+   * Margin we need to apply to the levels in order to compensate for their
+   * expansion such that they are still properly aligned.
+   */
+  @property({ readOnly: true, dependsOn: ["_expandedLevelsHeight", "_levelsHeight"] })
+  @renderable()
+  private get _expandedLevelsMargin(): number {
+    return Math.round((this._expandedLevelsHeight - this._levelsHeight) / 2);
   }
 
   /**
@@ -259,6 +278,14 @@ class BuildingLevelPicker extends Widget {
     const numLevels = this._levelWidgets.length;
     const items = numLevels > 1 ? this._levelWidgets.map((l) => l.render()) : null;
 
+    // Larger padding, compensated by a negative margin. Visually, levels will
+    // get the right padding, but they'll have "more space" without being clipped.
+    const padding = constants.LEVELS_PADDING * constants.LEVELS_MARGIN_FACTOR;
+    const outterMargin = -padding / constants.LEVELS_MARGIN_FACTOR;
+
+    const innerHeight = this._levelsHeight;
+    const outterHeight = innerHeight + padding * 2;
+
     return (
       <div
         bind={this}
@@ -274,12 +301,24 @@ class BuildingLevelPicker extends Widget {
         <div
           bind={this}
           class={CSS.levelsContainer}
-          styles={{ height: `${this._levelsContainerHeight}px` }}
+          styles={{
+            height: `${outterHeight}px`,
+            marginTop: `${outterMargin}px`,
+            marginBottom: `${outterMargin}px`
+          }}
           onfocus={this._onFocus}
           afterCreate={storeNode}
           data-node-ref="_levelsContainer"
         >
-          {items}
+          <div
+            styles={{
+              height: `${innerHeight}px`,
+              margin: `${constants.LEVELS_PADDING - this._expandedLevelsMargin}px 0 0 0`
+            }}
+            class={CSS.innerLevelsContainer}
+          >
+            {items}
+          </div>
         </div>
       </div>
     );
@@ -304,6 +343,7 @@ class BuildingLevelPicker extends Widget {
           onclick={this._onArrowUpClick}
           aria-label={nextLabel}
           title={nextLabel}
+          type="button"
         />
         {this._labelWidget.render()}
         <button
@@ -313,6 +353,7 @@ class BuildingLevelPicker extends Widget {
           onclick={this._onArrowDownClick}
           aria-label={previousLabel}
           title={previousLabel}
+          type="button"
         />
       </div>
     );
@@ -489,33 +530,41 @@ class BuildingLevelPicker extends Widget {
 
     if (isSome(this._containerPosTop)) {
       // We are interested in getting a normalized position from 0 to 1 where
-      // 0 is the top of the container plus the padding and 1 is at the bottom
-      // of the continer minus the padding. That is the area where our levels
-      // are positioned. Note that we also need to remove the padding from the
-      // full height of the container before we normalize.
+      // 0 is the top of the levels and 1 the bottom. In order to achieve that
+      // we need to offset our `event.clientY` by the top of our container, the
+      // padding and the top margin we apply to the levels in order to center
+      // them when they're expanded.
       //
-      // +---------+  <- containerTop (px)
-      // | padding |
-      // +---------+  <- normalized position === 0
-      // |    h    |
-      // |    e    |
-      // |    i    |
-      // |    g    |  <- event.clientY (px)
-      // |    h    |
-      // |    t    |
-      // +---------+  <- normalized position === 1
-      // | padding |
-      // +---------+
+      // +---------------+  <- containerTop (px)
+      // |    padding    |
+      // +---------------+
+      // | +-----------+ |
+      // | | marginTop | |
+      // | +-----------+ |  <- normalized position === 0
+      // | |     h     | |
+      // | |     e     | |
+      // | |     i     | |  <- event.clientY (px)
+      // | |     g     | |
+      // | |     h     | |
+      // | |     t     | |
+      // | +-----------+ |  <- normalized position === 1
+      // +---------------+
+      // |    padding    |
+      // +---------------+
 
-      const padding = constants.LEVELS_PADDING;
       const containerTop = this._containerPosTop;
-      const height = this._levelsContainerHeight - padding * 2;
+      const padding = constants.LEVELS_PADDING * constants.LEVELS_MARGIN_FACTOR;
+      const marginTop = this._expandedLevelsMargin;
 
-      let pos = (event.clientY - padding - containerTop) / height;
+      let height = this._levelsHeight;
+      let offset = containerTop + padding + marginTop;
 
-      // Because of crazy CSS with 3D transforms and borders and so on, we need
-      // to push everything slightly in order for the gaussian scaling effect
-      // of levels to match with the mouse/pointer.
+      // Make sure levels are biggest when hovering their middle rather their bottom/top
+      const halfLevelHeight = this._levelHeight / 2;
+      offset += halfLevelHeight;
+      height -= halfLevelHeight;
+
+      let pos = (event.clientY - offset) / height;
       pos += constants.LEVELS_POINTER_ADJUSTMENT;
 
       this._normalizedPointerPosition = pos;
@@ -525,15 +574,25 @@ class BuildingLevelPicker extends Widget {
   };
 
   private _onPointerPositionChange(): void {
+    let expandedLevelsHeight = 0;
+
+    // Update the size of each level while also updating our total expanded height.
     this._levelWidgets.forEach((widget: LevelItem, index: number) => {
       const { width, height } = this._getLevelWidgetSize(index);
       widget.height = height;
       widget.width = width;
+      expandedLevelsHeight += height;
     });
 
-    // We could almost make the hovered level a computed property. However, we can set it by focusing on a level so
-    // we need to assign here.
+    // We could almost make the hovered level a computed property.
+    // However, we can set it by focusing on a level so we need to assign here.
     this._hoveredLevel = this._levelClosestToPointer;
+
+    // Only update when there is a significant change to avoid flickering.
+    const oldHeight = this._expandedLevelsHeight;
+    if (oldHeight == null || Math.abs(oldHeight - expandedLevelsHeight) > 30) {
+      this._expandedLevelsHeight = expandedLevelsHeight;
+    }
   }
 
   /**

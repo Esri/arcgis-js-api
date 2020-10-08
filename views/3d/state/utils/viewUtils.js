@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,r,t,c,i){Object.defineProperty(r,"__esModule",{value:!0}),r.viewAngle=function(e,r,i){e.worldUpAtPosition(r,o),c.vec3.subtract(a,i,r);var l=c.vec3.length(a);return 0===l?0:t.acosClamped(c.vec3.dot(a,o)/l)};var o=i.vec3f64.create(),a=i.vec3f64.create()}));
+define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,t,r,c,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.viewAngle=void 0,t.viewAngle=function(e,t,i){e.worldUpAtPosition(t,o),c.vec3.subtract(v,i,t);var l=c.vec3.length(v);return 0===l?0:r.acosClamped(c.vec3.dot(v,o)/l)};var o=i.vec3f64.create(),v=i.vec3f64.create()}));

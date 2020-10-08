@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../../../core/has","../../shaderModules/interfaces"],(function(e,t,u,n,r){var d;Object.defineProperty(t,"__esModule",{value:!0}),t.HeaderComment=function(e,t){var o=r.glsl(d||(d=u.__makeTemplateObject(["\n  /*\n  *  ","\n  *  ","\n  */\n  "],["\n  /*\n  *  ","\n  *  ","\n  */\n  "])),t.name,0===t.output?"RenderOutput: Color":1===t.output?"RenderOutput: Depth":3===t.output?"RenderOutput: Shadow":2===t.output?"RenderOutput: Normal":4===t.output?"RenderOutput: Highlight":"");n("esri-validate-shaders")&&(e.fragment.code.add(o),e.vertex.code.add(o))}}));
+define(["require","exports","tslib","../../../../../../core/has","../../shaderModules/interfaces"],(function(e,t,u,n,r){"use strict";var d;Object.defineProperty(t,"__esModule",{value:!0}),t.HeaderComment=void 0,t.HeaderComment=function(e,t){var o=r.glsl(d||(d=u.__makeTemplateObject(["\n  /*\n  *  ","\n  *  ","\n  */\n  "],["\n  /*\n  *  ","\n  *  ","\n  */\n  "])),t.name,0===t.output?"RenderOutput: Color":1===t.output?"RenderOutput: Depth":3===t.output?"RenderOutput: Shadow":2===t.output?"RenderOutput: Normal":4===t.output?"RenderOutput: Highlight":"");n("esri-validate-shaders")&&(e.fragment.code.add(o),e.vertex.code.add(o))}}));

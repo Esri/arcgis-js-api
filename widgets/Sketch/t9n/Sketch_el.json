@@ -36,5 +36,14 @@
   "verticesCount": "{count} Κορυφές",
   "deleteFeature": "Διαγραφή στοιχείου",
   "deleteVertex": "Διαγραφή κορυφής",
-  "duplicate": "Δημιουργία αντιγράφου"
+  "duplicate": "Δημιουργία αντιγράφου",
+  "selectCircle": "Επιλογή με κύκλο",
+  "selectFeature": "Επιλογή στοιχείου",
+  "selectFeatures": "Επιλογή στοιχείων",
+  "selectLasso": "Επιλογή με λάσο",
+  "selectLine": "Επιλογή με γραμμή",
+  "selectMarquee": "Επιλογή με κυλιόμενο μήνυμα",
+  "selectPolygon": "Επιλογή με πολύγωνο",
+  "selectRectangle": "Επιλέξτε με ορθογώνιο πλαίσιο",
+  "clearSelection": "Απαλοιφή επιλογών"
 }

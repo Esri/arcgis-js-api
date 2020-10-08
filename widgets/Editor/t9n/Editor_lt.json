@@ -39,7 +39,7 @@
   "cancelRequestWarningMessage": "Buvo pateikta užklausa atšaukti darbo eigą.",
   "errorWarningTitle": "Oi, įvyko klaida",
   "errorWarningMessageTemplate": "Pakeitimų nepavyko įrašyti: {errorMessage}",
-  "clickToFinishTemplate": "Spustelėkite {button}, kad užbaigtumėt.",
+  "clickToFinishTemplate": "Spustelėkite {button}, kad užbaigtumėte.",
   "tips": {
     "clickToStart": "Paspauskite ant žemėlapio, jei norite pradėti piešimą.",
     "clickToContinue": "Paspauskite ant žemėlapio piešimui tęsti.",

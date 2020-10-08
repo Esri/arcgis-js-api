@@ -1,7 +1,7 @@
 {
   "title": "ClassBreaks Renderer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A class breaks renderer symbolizes based on the value of some numeric attribute. The classBreakInfo define the values at which the symbology changes.",
   "properties": {
     "authoringInfo": {

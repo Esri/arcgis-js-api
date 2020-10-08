@@ -97,7 +97,7 @@
   }
 
   .#{$base} {
-    position: relative;
+    position: absolute;
     left: 50%;
 
     transform: translate(-50%, -50%);
@@ -172,6 +172,7 @@
 @mixin buildingLevelPicker() {
   $container: "esri-building-level-picker";
   $levels-container: "#{$container}__levels-container";
+  $levels-inner-container: "#{$container}__inner-levels-container";
   $label-container: "#{$container}__label-container";
   $no-level: "#{$container}--no-level";
   $arrow-up: "#{$container}__arrow-up";
@@ -216,6 +217,10 @@
 
     justify-content: flex-start;
     align-items: center;
+  }
+
+  .#{$levels-inner-container} {
+    transition: margin 0.3s;
   }
 
   .#{$label-container} {

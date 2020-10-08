@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../Graphic","../../core/JSONSupport","../../core/accessorSupport/decorators","./DirectionsFeatureSet"],(function(t,e,r,o,p,s,i){return function(t){function e(e){var r=t.call(this,e)||this;return r.directions=null,r.route=null,r.routeName=null,r.stops=null,r}return r.__extends(e,t),r.__decorate([s.property({type:i,json:{write:!0}})],e.prototype,"directions",void 0),r.__decorate([s.property({type:o,json:{write:!0}})],e.prototype,"route",void 0),r.__decorate([s.property({type:String,json:{write:!0}})],e.prototype,"routeName",void 0),r.__decorate([s.property({type:[o],json:{write:!0}})],e.prototype,"stops",void 0),e=r.__decorate([s.subclass("esri.tasks.support.RouteResult")],e)}(p.JSONSupport)}));
+define(["require","exports","tslib","../../Graphic","../../core/JSONSupport","../../core/accessorSupport/decorators","./DirectionsFeatureSet"],(function(t,e,r,o,p,s,i){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.directions=null,r.route=null,r.routeName=null,r.stops=null,r}return r.__extends(e,t),r.__decorate([s.property({type:i,json:{write:!0}})],e.prototype,"directions",void 0),r.__decorate([s.property({type:o,json:{write:!0}})],e.prototype,"route",void 0),r.__decorate([s.property({type:String,json:{write:!0}})],e.prototype,"routeName",void 0),r.__decorate([s.property({type:[o],json:{write:!0}})],e.prototype,"stops",void 0),e=r.__decorate([s.subclass("esri.tasks.support.RouteResult")],e)}(p.JSONSupport)}));

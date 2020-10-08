@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(e,r,o,t,n){return function(e){function r(r){var o=e.call(this,r)||this;return o.maneuvers=[],o.name=null,o.open=!1,o}return o.__extends(r,e),o.__decorate([n.property()],r.prototype,"maneuvers",void 0),o.__decorate([n.property()],r.prototype,"name",void 0),o.__decorate([n.property()],r.prototype,"open",void 0),r=o.__decorate([n.subclass("esri.widgets.Directions.support.RouteSection")],r)}(t)}));
+define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(e,r,o,t,s){"use strict";return function(e){function r(r){var o=e.call(this,r)||this;return o.maneuvers=[],o.name=null,o.open=!1,o}return o.__extends(r,e),o.__decorate([s.property()],r.prototype,"maneuvers",void 0),o.__decorate([s.property()],r.prototype,"name",void 0),o.__decorate([s.property()],r.prototype,"open",void 0),r=o.__decorate([s.subclass("esri.widgets.Directions.support.RouteSection")],r)}(t)}));

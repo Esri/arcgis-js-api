@@ -30,7 +30,7 @@ void main()
   v_color     = getColor(a_color, a_bitSet, 0);
   v_opacity   = getOpacity(); 
   v_id        = norm(a_id);
-  v_pos       = u_dvsMat3 * vec3(a_pos * POSITION_PRECISION, 1.);
+  v_pos       = u_dvsMat3 * vec3(a_pos * FILL_POSITION_PRECISION, 1.);
   v_flags     = getFilterFlags();
    
 #ifdef PATTERN  
@@ -51,7 +51,7 @@ void main()
   vec2 symbolOffset = (a_aux1.zw - SIGNED_BYTE_TO_UNSIGNED) / vec2(width, height);
 
   // calculate the texture coordinates of the current vertex. It will of course get interpolated.
-  v_tileTextureCoord = (patternMatrix * vec3(a_pos * POSITION_PRECISION, 1.0)).xy - symbolOffset;
+  v_tileTextureCoord = (patternMatrix * vec3(a_pos * FILL_POSITION_PRECISION, 1.0)).xy - symbolOffset;
   v_tlbr = a_tlbr / u_mosaicSize.xyxy;
 
 #elif defined(DOT_DENSITY)
@@ -61,7 +61,7 @@ void main()
 
   v_dotThresholds[0] = dotThreshold(ddAttributeData0, u_dotValue, u_tileDotsOverArea);
   v_dotThresholds[1] = dotThreshold(ddAttributeData1, u_dotValue, u_tileDotsOverArea);
-  v_dotTextureCoords = (a_pos * POSITION_PRECISION + 0.5) / size;
+  v_dotTextureCoords = (a_pos * FILL_POSITION_PRECISION + 0.5) / size;
 #endif
 
   gl_Position = vec4(applyFilter(v_color, v_pos, v_flags), 1.0);

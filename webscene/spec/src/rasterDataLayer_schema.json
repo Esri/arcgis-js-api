@@ -1,7 +1,7 @@
 {
   "title": "Raster Data Layer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A layer for displaying raster data. This layer only applies to offline data.",
   "properties": {
     "copyright": {

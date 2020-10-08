@@ -1,5 +1,5 @@
 {
-  "widgetLabel": "Croquis",
+  "widgetLabel": "Dessin",
   "move": "Déplacer",
   "pan": "Déplacer",
   "reset": "Réinitialiser",
@@ -36,5 +36,14 @@
   "verticesCount": "{count} sommets",
   "deleteFeature": "Supprimer une entité",
   "deleteVertex": "Supprimer un sommet",
-  "duplicate": "Dupliquer"
+  "duplicate": "Dupliquer",
+  "selectCircle": "Sélectionner par cercle",
+  "selectFeature": "Sélectionner une entité",
+  "selectFeatures": "Sélectionner des entités",
+  "selectLasso": "Sélectionner par lasso",
+  "selectLine": "Sélectionner par ligne",
+  "selectMarquee": "Sélectionner par marque",
+  "selectPolygon": "Sélectionner par polygone",
+  "selectRectangle": "Sélectionner par rectangle",
+  "clearSelection": "Effacer la sélection"
 }

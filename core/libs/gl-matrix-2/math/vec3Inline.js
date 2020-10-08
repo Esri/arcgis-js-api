@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(n,e){Object.defineProperty(e,"__esModule",{value:!0}),e.add=function(n,e,t){n[0]=e[0]+t[0],n[1]=e[1]+t[1],n[2]=e[2]+t[2]},e.subtract=function(n,e,t){n[0]=e[0]-t[0],n[1]=e[1]-t[1],n[2]=e[2]-t[2]},e.scale=function(n,e,t){n[0]=e[0]*t,n[1]=e[1]*t,n[2]=e[2]*t},e.normalize=function(n,e){var t=e[0]*e[0]+e[1]*e[1]+e[2]*e[2];t>0&&(t=1/Math.sqrt(t),n[0]=e[0]*t,n[1]=e[1]*t,n[2]=e[2]*t)},e.cross=function(n,e,t){n[0]=e[1]*t[2]-e[2]*t[1],n[1]=e[2]*t[0]-e[0]*t[2],n[2]=e[0]*t[1]-e[1]*t[0]}}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.cross=t.normalize=t.scale=t.subtract=t.add=void 0,t.add=function(e,t,n){e[0]=t[0]+n[0],e[1]=t[1]+n[1],e[2]=t[2]+n[2]},t.subtract=function(e,t,n){e[0]=t[0]-n[0],e[1]=t[1]-n[1],e[2]=t[2]-n[2]},t.scale=function(e,t,n){e[0]=t[0]*n,e[1]=t[1]*n,e[2]=t[2]*n},t.normalize=function(e,t){var n=t[0]*t[0]+t[1]*t[1]+t[2]*t[2];n>0&&(n=1/Math.sqrt(n),e[0]=t[0]*n,e[1]=t[1]*n,e[2]=t[2]*n)},t.cross=function(e,t,n){e[0]=t[1]*n[2]-t[2]*n[1],e[1]=t[2]*n[0]-t[0]*n[2],e[2]=t[0]*n[1]-t[1]*n[0]}}));

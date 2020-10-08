@@ -24,8 +24,6 @@
   "stop": "Mjesto zaustavljanja",
   "stopLabelTemplate": "Mjesto zaustavljanja {number} ({label})",
   "unlocated": "Nelocirano",
-  "searchFieldPlaceholder": "Potraži ili klikni na karti",
-  "viewlessSearchFieldPlaceholder": "Potraži",
   "directionsPlaceholder": "Ovdje će se pojaviti vaša ruta.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Procijenjeno vrijeme dolaska",

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./MomentumEstimator"],(function(t,e,o,a){Object.defineProperty(e,"__esModule",{value:!0});var i=function(t){function e(e,o,a,i){return void 0===e&&(e=3),void 0===o&&(o=.01),void 0===a&&(a=.95),void 0===i&&(i=12),t.call(this,e,o,a,i)||this}return o.__extends(e,t),e.prototype.add=function(e,o){if(this.value.hasLastValue){for(var a=this.value.lastValue,i=e-a;i>Math.PI;)i-=2*Math.PI;for(;i<-Math.PI;)i+=2*Math.PI;e=a+i}t.prototype.add.call(this,e,o)},e}(a.MomentumEstimator);e.RotationMomentumEstimator=i}));
+define(["require","exports","tslib","./MomentumEstimator"],(function(t,o,e,i){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.RotationMomentumEstimator=void 0;var a=function(t){function o(o,e,i,a){return void 0===o&&(o=3),void 0===e&&(e=.01),void 0===i&&(i=.95),void 0===a&&(a=12),t.call(this,o,e,i,a)||this}return e.__extends(o,t),o.prototype.add=function(o,e){if(this.value.hasLastValue){for(var i=this.value.lastValue,a=o-i;a>Math.PI;)a-=2*Math.PI;for(;a<-Math.PI;)a+=2*Math.PI;o=i+a}t.prototype.add.call(this,o,e)},o}(i.MomentumEstimator);o.RotationMomentumEstimator=a}));

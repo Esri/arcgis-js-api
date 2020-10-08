@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../deprecate","../../has","../../Logger"],(function(e,r,t,n,s){Object.defineProperty(r,"__esModule",{value:!0}),r.declared=function(e){for(var r=[],o=1;o<arguments.length;o++)r[o-1]=arguments[o];if(r.length>0)throw new Error("Multi-inheritance unsupported since 4.16");return n("esri-deprecation-warnings")&&t.deprecated(s.getLogger("esri.core.accessorSupport.decorators"),"'extends declared(superclass)' syntax",{version:"4.16",see:"https://arcg.is/T8fr4"}),e}}));
+define(["require","exports","../../deprecate","../../has","../../Logger"],(function(e,r,t,s,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.declared=void 0,r.declared=function(e){for(var r=[],o=1;o<arguments.length;o++)r[o-1]=arguments[o];if(r.length>0)throw new Error("Multi-inheritance unsupported since 4.16");return s("esri-deprecation-warnings")&&t.deprecated(n.getLogger("esri.core.accessorSupport.decorators"),"'extends declared(superclass)' syntax",{version:"4.16",see:"https://arcg.is/T8fr4"}),e}}));

@@ -1,7 +1,7 @@
 {
   "title": "format",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The format object can be used with numerical or date fields to provide more detail about how values should be formatted for display.",
   "properties": {
     "dateFormat": {

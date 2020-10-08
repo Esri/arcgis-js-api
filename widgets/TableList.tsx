@@ -1,25 +1,56 @@
 /**
- * The TableList widget allows users to display a list of table layers.
+ * The TableList widget provides a way to display a list of tables associated with a {@link module:esri/Map}.
+ * It is meant to be used with {@link module:esri/layers/FeatureLayer feature layer} tables.
  *
- * The {@link module:esri/widgets/TableList/ListItem ListItem} API provides access to each table's layers, allows
+ * If a web map contains feature layer tables, they will display within the widget. Tables can also be added to the web map's
+ * {@link module:esri/WebMap#tables tables} collection. Any tables referenced in the [map](#map)
+ * property will display in the widget. If unsure of whether the
+ * layer is a table, check the feature layer's {@link module:esri/layers/FeatureLayer#isTable isTable} property.
+ *
+ * The {@link module:esri/widgets/TableList/ListItem ListItem} API provides access to each table, allows
  * the developer to configure actions related to the table, and allows the developer to add content to the item related to the table.
  *
+ * ::: esri-md class="panel trailer-1"
+ * **Known Limitations**
+ * The TableList widget is not supported with {@link module:esri/WebScene web scenes}.
+ * :::
+ *
+ * ![tablelist widget](../../assets/img/apiref/widgets/tablelist-widget.png)
+ *
  * @module esri/widgets/TableList
- * @since 4.16
+ * @since 4.17
  *
  * @see [TableList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TableList.tsx)
  * @see [TableList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TableList.scss)
  * @see module:esri/widgets/TableList/TableListViewModel
+ * @see {@link module:esri/WebMap#tables WebMap.tables}
+ * @see [Sample - Toggle table visibility using TableList Widget](../sample-code/widgets-tablelist/index.html)
  *
  * @example
- * var tableList = new TableList({
- *   map: map,
- *   selectionEnabled: true
+ * const tableList = new TableList({
+ *   map: map, // takes any tables associated with the map and displays in widget
+ *   selectionEnabled: true,
+ *   listItemCreatedFunction: function(event) {
+ *     let item = event.item;
+ *     item.actionsSections = [
+ *       {
+ *         title: "Show table",
+ *         className: "esri-icon-table",
+ *         id: "table",
+ *         type: "toggle"
+ *       },
+ *       {
+ *        title: "Layer information",
+ *        className: "esri-icon-description",
+ *        id: "information"
+ *       }
+ *     ]
  * });
  */
 
 // esri
 import WebMap = require("esri/WebMap");
+import WebScene = require("esri/WebScene");
 
 // esri.core
 import Collection = require("esri/core/Collection");
@@ -31,7 +62,7 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import FeatureLayer = require("esri/layers/FeatureLayer");
+import Layer = require("esri/layers/Layer");
 
 // esri.libs.sortablejs
 import Sortable = require("esri/libs/sortablejs/Sortable");
@@ -128,6 +159,29 @@ function closeItemActions(item: ListItem): void {
   }
 }
 
+/**
+ * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action}
+ * or {@link module:esri/support/actions/ActionToggle action toggle}
+ * inside the TableList widget. This event may be used to define a
+ * custom function to execute when particular actions are clicked.
+ *
+ * @event module:esri/widgets/TableList#trigger-action
+ * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
+ * @property {module:esri/widgets/TableList/ListItem} item - An item associated with the action.
+ *
+ * @example
+ * tableList.on("trigger-action", function (event) {
+ *   let item = event.item;
+ *   // Capture the action id.
+ *   let id = event.action.id;
+ *
+ *   if (id === "information") {
+ *     window.open(item.layer.url);
+ *   }
+ * });
+ *
+ */
+
 @subclass("esri.widgets.TableList")
 class TableList extends Widget {
   //--------------------------------------------------------------------------
@@ -144,9 +198,9 @@ class TableList extends Widget {
    *                                that may be passed into the constructor.
    *
    * @example
-   * // typical usage
-   * var tableList = new TableList({
-   *   map: map.view
+   * // Typical usage
+   * const tableList = new TableList({
+   *   map: map
    * });
    */
 
@@ -245,15 +299,14 @@ class TableList extends Widget {
    * @param {Object} event - An object containing a list item created by the TableList.
    * @param {module:esri/widgets/TableList/ListItem} event.item - A list item
    *   created by the TableList. You can modify the properties of this item to customize
-   *   the text, actions, panel content, and visibility of the list item. See the
+   *   the text, actions, and visibility of the list item. See the
    *   documentation for the [listItemCreatedFunction](#listItemCreatedFunction) for more details.
    */
 
   /**
    * Specifies a function that accesses each {@link module:esri/widgets/TableList/ListItem}.
-   * Each list item can be modified
-   * according to its modifiable properties. Actions can be added to list items
-   * using the {@link module:esri/widgets/TableList/ListItem#actionsSections actionsSections}
+   * Each list item can be modified according to its modifiable properties. Actions can be added
+   * to list items using the {@link module:esri/widgets/TableList/ListItem#actionsSections actionsSections}
    * property of the ListItem.
    *
    * @name listItemCreatedFunction
@@ -261,11 +314,11 @@ class TableList extends Widget {
    * @type {module:esri/widgets/TableList~ListItemCreatedHandler}
    *
    * @example
-   * var tableList = new TableList({
+   * const tableList = new TableList({
    *   map: map,
    *   selectionEnabled: true,
    *   listItemCreatedFunction: function(event) {
-   *     var item = event.item;
+   *     let item = event.item;
    *     item.actionsSections = [
    *       [
    *         {
@@ -287,16 +340,37 @@ class TableList extends Widget {
   //----------------------------------
 
   /**
-   * An instance of a {@link module:esri/Map Map} object to display in the view. A view may only display one map at a time.
-   * On the other hand, one {@link module:esri/Map Map} may be viewed by multiple {@link module:esri/views/MapView MapViews} and/or
-   * {@link module:esri/views/SceneView SceneViews} simultaneously.
+   * A reference to a {@link module:esri/WebMap web map} containing the tables. Set this property
+   * to access the underlying tables within the map.
    *
    * @name map
    * @instance
-   * @type {module:esri/Map}
+   * @type {module:esri/WebMap}
+   * @see {@link module:esri/WebMap#tables WebMap.tables}
+   *
+   * @example
+   * Layer.fromPortalItem({
+   *   // Loads a layer (table) from a portal item
+   *   portalItem: { // autocasts new PortalItem()
+   *     id: "add portal item id"
+   *   }
+   * }).then(function(layer) {
+   *   // Load the layer
+   *   layer.load().then(function() {
+   *     // Check if the layer is a table
+   *     if (layer.isTable) {
+   *       webmap.tables.add(layer);
+   *       console.log(webmap.tables);
+   *     }
+   *   });
+   * });
+   *
+   * const tableList = new TableList({
+   *   map: webmap //  web map contains tables collection
+   * });
    */
   @aliasOf("viewModel.map")
-  map: WebMap = null;
+  map: WebMap | WebScene = null;
 
   //----------------------------------
   //  messages
@@ -339,7 +413,7 @@ class TableList extends Widget {
   //----------------------------------
 
   /**
-   * Indicates whether more than one list item can be selected by a user at a single time.
+   * Indicates whether more than one {@link module:esri/widgets/TableList/ListItem list item} can be selected by a user at a single time.
    * [SelectionEnabled](#selectionEnabled) must be set to `true` for this property to have an effect on the widget.
    *
    * Selected items are available in the [selectedItems](#selectedItems) property.
@@ -364,7 +438,7 @@ class TableList extends Widget {
   //----------------------------------
 
   /**
-   * Indicates whether list items may be selected by the user.
+   * Indicates whether {@link module:esri/widgets/TableList/ListItem list items} may be selected by the user.
    * Selected items can by reordered in the list by drag and drop
    * using the mouse or touch screen as well as with arrows on the keyboard.
    *
@@ -407,7 +481,7 @@ class TableList extends Widget {
   //----------------------------------
 
   /**
-   * The collection of items displayed within the widget.
+   * The collection of table {@link module:esri/widgets/TableList/ListItem}s displayed within the widget.
    *
    * @name tableItems
    * @instance
@@ -449,7 +523,8 @@ class TableList extends Widget {
 
   /**
    * Triggers the [trigger-action](#event-trigger-action) event and executes
-   * the given {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle}.
+   * the given {@link module:esri/support/actions/ActionButton action} or
+   * {@link module:esri/support/actions/ActionToggle action toggle}.
    *
    * @param {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} - The action to execute.
    * @param {module:esri/widgets/TableList/ListItem} - An item associated with the action.
@@ -831,13 +906,13 @@ class TableList extends Widget {
   }
 
   private _sortTablesToItems(itemIds: string[]): void {
-    const tables = this.get<Collection<FeatureLayer>>("map.tables");
+    const tables = this.map?.tables;
 
     if (!tables) {
       return;
     }
 
-    tables.sort((a: FeatureLayer, b: FeatureLayer) => {
+    tables.sort((a: Layer, b: Layer) => {
       const aIndex = itemIds.indexOf(a.uid);
       const bIndex = itemIds.indexOf(b.uid);
 

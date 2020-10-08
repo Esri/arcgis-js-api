@@ -24,8 +24,6 @@
   "stop": "Interrompi",
   "stopLabelTemplate": "Interrompi {numero} ({etichetta})",
   "unlocated": "Non posizionati",
-  "searchFieldPlaceholder": "Cerca o clicca sulla mappa",
-  "viewlessSearchFieldPlaceholder": "Cerca",
   "directionsPlaceholder": "Il percorso apparirà qui.",
   "etaTemplate": "{ora} {gmt}",
   "eta": "Tempo di arrivo stimato",

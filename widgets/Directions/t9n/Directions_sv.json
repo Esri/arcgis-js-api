@@ -24,8 +24,6 @@
   "stop": "Stoppa",
   "stopLabelTemplate": "Stopp {number} ({label})",
   "unlocated": "Olokaliserat",
-  "searchFieldPlaceholder": "Sök eller klicka på kartan",
-  "viewlessSearchFieldPlaceholder": "Sök",
   "directionsPlaceholder": "Ruttkartan visas här.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Beräknad ankomsttid",

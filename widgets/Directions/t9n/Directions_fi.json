@@ -24,8 +24,6 @@
   "stop": "Pysähdys",
   "stopLabelTemplate": "Pysähdys {number} ({label})",
   "unlocated": "Paikantamaton",
-  "searchFieldPlaceholder": "Etsi tai napsauta karttaa",
-  "viewlessSearchFieldPlaceholder": "Etsi",
   "directionsPlaceholder": "Reittisi näkyy tässä.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Arvioitu saapumisaika",

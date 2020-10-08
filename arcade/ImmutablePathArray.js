@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./ImmutableArray","./ImmutablePointArray"],(function(t,e,i,n,s){return function(t){function e(e,i,n,s,a){var h=t.call(this,e)||this;return h._lazyPath=[],h._hasZ=!1,h._hasM=!1,h._hasZ=n,h._hasM=s,h._spRef=i,h._cacheId=a,h}return i.__extends(e,t),e.prototype.get=function(t){if(void 0===this._lazyPath[t]){var e=this._elements[t];if(void 0===e)return;this._lazyPath[t]=new s(e,this._spRef,this._hasZ,this._hasM,this._cacheId,t)}return this._lazyPath[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()},e}(n)}));
+define(["require","exports","tslib","./ImmutableArray","./ImmutablePointArray"],(function(t,e,i,s,n){"use strict";return function(t){function e(e,i,s,n,a){var h=t.call(this,e)||this;return h._lazyPath=[],h._hasZ=!1,h._hasM=!1,h._hasZ=s,h._hasM=n,h._spRef=i,h._cacheId=a,h}return i.__extends(e,t),e.prototype.get=function(t){if(void 0===this._lazyPath[t]){var e=this._elements[t];if(void 0===e)return;this._lazyPath[t]=new n(e,this._spRef,this._hasZ,this._hasM,this._cacheId,t)}return this._lazyPath[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()},e}(s)}));

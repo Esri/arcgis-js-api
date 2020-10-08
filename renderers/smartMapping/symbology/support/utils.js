@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../smartMapping/symbology/support/utils"],(function(e,t,p){Object.defineProperty(t,"__esModule",{value:!0}),t.getBasemapTheme=p.getBasemapTheme}));
+define(["require","exports","../../../../smartMapping/symbology/support/utils"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),Object.defineProperty(t,"getBasemapTheme",{enumerable:!0,get:function(){return r.getBasemapTheme}})}));

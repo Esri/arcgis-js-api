@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,o,r,n){var t;Object.defineProperty(o,"__esModule",{value:!0}),o.CameraSpace=function(e){e.fragment.uniforms.add("projInfo","vec4"),e.fragment.uniforms.add("zScale","vec2"),e.fragment.code.add(n.glsl(t||(t=r.__makeTemplateObject(["\n    vec3 reconstructPosition(vec2 fragCoord, float depth) {\n      return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);\n    }\n  "],["\n    vec3 reconstructPosition(vec2 fragCoord, float depth) {\n      return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);\n    }\n  "]))))}}));
+define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,r,o,n){"use strict";var t;Object.defineProperty(r,"__esModule",{value:!0}),r.CameraSpace=void 0,r.CameraSpace=function(e){e.fragment.uniforms.add("projInfo","vec4"),e.fragment.uniforms.add("zScale","vec2"),e.fragment.code.add(n.glsl(t||(t=o.__makeTemplateObject(["\n    vec3 reconstructPosition(vec2 fragCoord, float depth) {\n      return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);\n    }\n  "],["\n    vec3 reconstructPosition(vec2 fragCoord, float depth) {\n      return vec3((fragCoord * projInfo.xy + projInfo.zw) * (zScale.x * depth + zScale.y), depth);\n    }\n  "]))))}}));

@@ -1,15 +1,15 @@
 {
   "streets": "Ielas",
-  "satellite": "Attēli",
-  "hybrid": "Attēli ar nosaukumiem",
-  "terrain": "Reljefs ar nosaukumiem",
+  "satellite": "Attēlu",
+  "hybrid": "Attēlu ar informāciju",
+  "terrain": "Reljefs ar informāciju",
   "topo": "Topogrāfiskā",
-  "gray": "Gaiši pelēka pamatne",
-  "dark-gray": "Tumši pelēka pamatne",
-  "oceans": "Okeāni",
+  "gray": "Gaiši pelēka",
+  "dark-gray": "Tumši pelēka",
+  "oceans": "Okeānu",
   "national-geographic": "National Geographic",
   "osm": "OpenStreetMap",
-  "streets-night-vector": "Pasaules ielu karte (nakts)",
-  "streets-relief-vector": "Pasaules ielu karte (ar reljefu)",
-  "streets-navigation-vector": "Pasaules navigācijas karte"
+  "streets-night-vector": "Pasaules ielu (nakts)",
+  "streets-relief-vector": "Pasaules ielu (ar reljefu)",
+  "streets-navigation-vector": "Pasaules navigācijas"
 }

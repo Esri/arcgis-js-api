@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../inputs/BarcodeScannerInput","../inputs/ComboBoxInput","../inputs/DateTimePickerInput","../inputs/Input","../inputs/RadioButtonsInput","../inputs/TextAreaInput","../inputs/TextBoxInput"],(function(t,e,n,p,u,o,i,a,r){Object.defineProperty(e,"__esModule",{value:!0}),e.types={base:o,key:"type",typeMap:{"barcode-scanner":n,"combo-box":p,"datetime-picker":u,"radio-buttons":i,"text-area":a,"text-box":r}}}));
+define(["require","exports","../inputs/BarcodeScannerInput","../inputs/ComboBoxInput","../inputs/DateTimePickerInput","../inputs/Input","../inputs/RadioButtonsInput","../inputs/TextAreaInput","../inputs/TextBoxInput"],(function(t,e,n,p,u,i,o,s,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.types=void 0,e.types={base:i,key:"type",typeMap:{"barcode-scanner":n,"combo-box":p,"datetime-picker":u,"radio-buttons":o,"text-area":s,"text-box":r}}}));

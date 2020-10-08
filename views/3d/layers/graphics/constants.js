@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec4f64"],(function(e,E,f){Object.defineProperty(E,"__esModule",{value:!0}),E.defaultIconElevationOffset=1,E.SUSPEND_RESUME_EXTENT_OPTIMISM=1.2,E.TRANSPARENT_UNIT=f.vec4f64.ZEROS,E.WHITE_UNIT=f.vec4f64.ONES}));
+define(["require","exports","../../../../core/libs/gl-matrix-2/vec4f64"],(function(e,E,T){"use strict";Object.defineProperty(E,"__esModule",{value:!0}),E.WHITE_UNIT=E.TRANSPARENT_UNIT=E.SUSPEND_RESUME_EXTENT_OPTIMISM=E.defaultIconElevationOffset=void 0,E.defaultIconElevationOffset=1,E.SUSPEND_RESUME_EXTENT_OPTIMISM=1.2,E.TRANSPARENT_UNIT=T.vec4f64.ZEROS,E.WHITE_UNIT=T.vec4f64.ONES}));

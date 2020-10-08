@@ -1,7 +1,7 @@
 {
   "title": "Query Table DataSource",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Query table data source is a layer/table that is defined by a SQL query.",
   "properties": {
     "geometryType": {

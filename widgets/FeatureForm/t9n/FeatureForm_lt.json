@@ -6,6 +6,6 @@
     "outsideRange": "Reikšmė turi būti nuo {min} iki {max}",
     "invalidCodedValue": "Reikšmė turi būti viena iš šių nurodytų reikšmių.",
     "invalidType": "Netinkama reikšmė",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Lauko ilgis turi būti mažiausiai tiek simbolių: {min}"
   }
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./dom","./h","./projector","./cache","./mapping"],(function(e,r,c,a,o,t,p){Object.defineProperty(r,"__esModule",{value:!0}),r.dom=c.dom,r.h=a.h,r.createProjector=o.createProjector,r.createCache=t.createCache,r.createMapping=p.createMapping}));
+define(["require","exports","./dom","./h","./projector","./cache","./mapping"],(function(e,r,t,n,c,o,u){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"dom",{enumerable:!0,get:function(){return t.dom}}),Object.defineProperty(r,"h",{enumerable:!0,get:function(){return n.h}}),Object.defineProperty(r,"createProjector",{enumerable:!0,get:function(){return c.createProjector}}),Object.defineProperty(r,"createCache",{enumerable:!0,get:function(){return o.createCache}}),Object.defineProperty(r,"createMapping",{enumerable:!0,get:function(){return u.createMapping}})}));

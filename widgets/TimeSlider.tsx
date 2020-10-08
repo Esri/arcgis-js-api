@@ -124,7 +124,6 @@ import { neverReached } from "esri/core/compilerUtils";
 import EsriError = require("esri/core/Error");
 import { on } from "esri/core/events";
 import { clamp } from "esri/core/mathUtils";
-import { Maybe, isSome } from "esri/core/maybe";
 import { throttle } from "esri/core/throttle";
 import { init } from "esri/core/watchUtils";
 
@@ -208,6 +207,13 @@ const CSS = {
 const MINIMUM_MINOR_TICK_SPACING = 3; // pixels
 const RESIZE_THROTTLE_INTERVAL = 100; // milliseconds
 const MINIMUM_WIDE_LAYOUT_WIDTH = 858;
+
+type LabelType = "min" | "max" | "extent";
+type Layout = "auto" | "compact" | "wide";
+
+interface DateLabelFormatter {
+  (value: Date | Date[], type: LabelType, element: Element, layout: Exclude<Layout, "auto">): void;
+}
 
 interface TickFormat {
   minor: TimeInterval;
@@ -391,8 +397,6 @@ type TimeSliderProperties = Partial<
   >
 >;
 
-type Layout = "auto" | "compact" | "wide";
-
 @subclass("esri.widgets.TimeSlider")
 class TimeSlider extends Widget {
   //--------------------------------------------------------------------------
@@ -400,6 +404,27 @@ class TimeSlider extends Widget {
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
+
+  /**
+   * This function is used by the [labelFormatFunction](#labelFormatFunction)
+   * property to specify custom formatting and styling of the min, max and
+   * extent labels.
+   *
+   * @callback module:esri/widgets/TimeSlider~DateLabelFormatter
+   *
+   * @param {Date | Date[]} value - The date(s) that the corresponding label represents. When the label
+   *     type is `min` or `max` a single date value will be parsed. When the
+   *     type is `extent` value will be an array of dates. The array will
+   *     contain one date if the [mode](#mode) is `instant`,
+   *     `cumulative-from-start` or `cumulative-from-end` and two dates if
+   *     the [mode](#mode) is `time-window`.
+   * @param {"min" | "max" | "extent"} [type] - The label type that you want to format.
+   * @param {HTMLElement} [element] - The HTML element corresponding to the label type. You can add or modify the
+   *     default style of individual labels by adding CSS classes to this element.
+   *     You can also add custom behavior to labels by attaching event listeners.
+   *     to individual elements.
+   * @param {"compact" | "wide"} [layout] - The current TimeSlider [layout](#layout).
+   */
 
   /**
    * Specifies an array of dates for the time slider widget. Can be used to create irregularly spaced stops.
@@ -464,7 +489,7 @@ class TimeSlider extends Widget {
    */
 
   /**
-   * Divides the time slider's [fullTimeExtent](#fullTimeExtent) or _timeExtent_ (if specified) into _count_ equal parts.
+   * Divides the time slider's [fullTimeExtent](#fullTimeExtent) into equal parts.
    * A stop will be placed at the start and end of each division resulting in _count + 1_ [effectiveStops](#effectiveStops).
    *
    * @property {number} count - Number of evenly spaced divisions.
@@ -518,15 +543,13 @@ class TimeSlider extends Widget {
         "resize",
         throttle(() => this.scheduleRender(), RESIZE_THROTTLE_INTERVAL)
       ),
-      init(this, "effectiveStops", () => this._updateSliderSteps()),
-      init(this, ["stops", "fullTimeExtent"], () => this._createDefaultValues())
+      init(this, "effectiveStops", () => this._updateSliderSteps())
     ]);
 
     this._validateTimeExtent();
   }
 
   destroy(): void {
-    this.view = null;
     this._slider.destroy();
     this._tickFormat = null;
   }
@@ -707,6 +730,68 @@ class TimeSlider extends Widget {
   label: string = undefined;
 
   //----------------------------------
+  //  labelFormatFunction
+  //----------------------------------
+
+  /**
+   * A function used to specify custom formatting and styling of the min, max, and extent labels of the TimeSlider.
+   * Please refer to [DateLabelFormatter](#DateLabelFormatter) for more detailed information on how to configure the style and format of the labels.
+   *
+   * The image below demonstrates how the date format, color, size, and font family of the label can be customized.
+   * The code for this specific configuration is shown in the following example.
+   *
+   * ![timeslider-custom-labels](../../assets/img/apiref/widgets/timeslider-custom-labels.png)
+   *
+   * @name labelFormatFunction
+   * @instance
+   * @type {module:esri/widgets/TimeSlider~DateLabelFormatter}
+   * @since 4.17
+   * @default null
+   *
+   * @example
+   * // The following example customizes the text and styling of the min, max and extent labels.
+   * // Specifically:
+   * // 1) min/max labels
+   * //    - short date format with en-us locale (e.g. "9/1/2020", "9/2/2020", "9/3/2020" etc)
+   * //    - use 'Orbitron' font, magenta color and 16pt size
+   * // 2) extent label
+   * //    - display accumulated days (e.g. "Day 0", "Day 1", "Day 2" etc)
+   * //    - use 'Orbitron' font, red color and 22pt size
+   * const timeSlider = new TimeSlider({
+   *   container: "timeSlider",
+   *   fullTimeExtent: {
+   *     start: new Date(2020, 8, 1),
+   *     end: new Date(2020, 8, 8)
+   *   },
+   *   stops: {
+   *     interval: {
+   *       value: 1,
+   *       unit: "days"
+   *     }
+   *   },
+   *   mode: "instant",
+   *   labelFormatFunction: (value, type, element, layout) => {
+   *     const normal = new Intl.DateTimeFormat('en-us');
+   *     switch (type) {
+   *       case "min":
+   *       case "max":
+   *         element.setAttribute("style", "font-family: 'Orbitron', sans-serif; font-size: 16px; color: magenta;");
+   *         element.innerText = normal.format(value);
+   *         break;
+   *       case "extent":
+   *         const start = timeSlider.fullTimeExtent.start;
+   *         const days = (value[0].getTime() - start.getTime()) / 1000 / 3600 / 24;
+   *         element.setAttribute(`style`, `font-family: 'Orbitron', sans-serif; font-size: 22px; color: red;`);
+   *         element.innerText = `Day ${days}`;
+   *         break;
+   *     }
+   *   }
+   * });
+   */
+  @property()
+  labelFormatFunction: DateLabelFormatter = null;
+
+  //----------------------------------
   //  layout
   //----------------------------------
 
@@ -752,7 +837,7 @@ class TimeSlider extends Widget {
    * @name loop
    * @instance
    * @type {Boolean}
-   * @default true
+   * @default false
    *
    * @example
    * // Start a time slider animation that advances every second
@@ -764,7 +849,7 @@ class TimeSlider extends Widget {
    * timeSlider.play();
    */
   @aliasOf("viewModel.loop")
-  loop = true;
+  loop = false;
 
   //----------------------------------
   //  messages
@@ -803,6 +888,44 @@ class TimeSlider extends Widget {
   messagesCommon: CommonMessages = null;
 
   //----------------------------------
+  //  mode
+  //----------------------------------
+
+  /**
+   * The time slider mode. This property is used for defining if the temporal data will be displayed
+   * cumulatively up to a point in time, a single instant in time, or within a time range. See
+   * the following table for possible values.
+   *
+   * Possible Values       | Description   | Example |
+   * ----------------------|-------------- | ------- |
+   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [values](#values) property to an array with one date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
+   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [values](#values) property to an array with two dates. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
+   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [values](#values) property to have one date, which is the end date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
+   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [values](#values) property to have one date, which is the start date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
+   *
+   * @name mode
+   * @instance
+   * @type {"instant" | "time-window" | "cumulative-from-start" | "cumulative-from-end"}
+   * @default "time-window"
+   * @see {@link module:esri/widgets/TimeSlider#timeExtent timeExtent}
+   * @example
+   * // Create a single thumbed time slider that includes all historic content.
+   * const timeSlider = new TimeSlider({
+   *   container: "timeSliderDiv",
+   *   view: view,
+   *   mode: "cumulative-from-start",
+   *   fullTimeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2010, 0, 1)
+   *   },
+   *   values: [new Date(2001, 0, 1)] //end date
+   * });
+   */
+  @aliasOf("viewModel.mode")
+  @renderable()
+  mode: TimeSliderMode = "time-window";
+
+  //----------------------------------
   //  playRate
   //----------------------------------
 
@@ -825,43 +948,6 @@ class TimeSlider extends Widget {
    */
   @aliasOf("viewModel.playRate")
   playRate: number = 1000;
-
-  //----------------------------------
-  //  mode
-  //----------------------------------
-
-  /**
-   * The time slider mode. This property is used for defining if the temporal data will be displayed
-   * cumulatively up to a point in time, a single instant in time, or within a time range. See
-   * the following table for possible values.
-   *
-   * Possible Values       | Description   | Example |
-   * ----------------------|-------------- | ------- |
-   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [values](#values) property to an array with one date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
-   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [values](#values) property to an array with two dates. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
-   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [values](#values) property to have one date, which is the end date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
-   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [values](#values) property to have one date, which is the start date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
-   *
-   * @name mode
-   * @instance
-   * @type {"instant" | "time-window" | "cumulative-from-start" | "cumulative-from-end"}
-   * @default "time-window"
-   * @example
-   * // Create a single thumbed time slider that includes all historic content.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   view: view,
-   *   mode: "cumulative-from-start",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 0, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   values: [new Date(2001, 0, 1)] //end date
-   * });
-   */
-  @aliasOf("viewModel.mode")
-  @renderable()
-  mode: TimeSliderMode = "time-window";
 
   //----------------------------------
   //  stops
@@ -1010,6 +1096,14 @@ class TimeSlider extends Widget {
   /**
    * The current time extent of the time slider. This property can be watched for
    * updates and used to update the time extent property in queries and/or the layer filters and effects.
+   * The following table shows the `timeExtent` values returned for each [mode](#mode).
+   *
+   * | Mode    | The timeExtent value |
+   * | ------- | -------------------- |
+   * | `time-window` | `{start: startDate, end: endDate}` |
+   * | `instant` | `{start: sameDate, end: sameDate}` |
+   * | `cumulative-from-start` | `{start: null, end: endDate}` |
+   * | `cumulative-from-end` | `{start: startDate, end: null}` |
    *
    * @name timeExtent
    * @instance
@@ -1258,12 +1352,12 @@ class TimeSlider extends Widget {
       effectiveStops,
       fullTimeExtent,
       interactive,
+      messagesCommon,
       mode,
       tickConfigs,
       timeVisible,
       values,
-      viewModel,
-      messagesCommon
+      viewModel
     } = this;
 
     if (fullTimeExtent != null) {
@@ -1284,7 +1378,7 @@ class TimeSlider extends Widget {
             _slider.tickConfigs = tickConfigs;
           }
         } else {
-          const sliderWidth = _slider.trackElement ? _slider.trackElement.offsetWidth : 400;
+          const sliderWidth = _slider.trackElement?.offsetWidth ?? 400;
           const millisecondsPerPixel = (endTime - startTime) / sliderWidth;
 
           const tickFormat = TickFormats.find((tickFormat) => {
@@ -1324,47 +1418,36 @@ class TimeSlider extends Widget {
       }
     }
 
-    const thumbs = values ? values.map((date) => date.getTime()) : null;
+    const thumbs = values?.map((date) => date.getTime());
     if (!equals(_slider.values, thumbs)) {
       _slider.values = thumbs;
     }
 
     _slider.disabled = !interactive;
 
-    const fullStart: Maybe<Date> = fullTimeExtent && fullTimeExtent.start;
-    const fullStartDate: Maybe<string> = isSome(fullStart) ? this._formateDate(fullStart) : null;
-    const fullStartTime: Maybe<string> =
-      timeVisible && isSome(fullStart) ? this._formateTime(fullStart) : null;
+    const fullStart = fullTimeExtent?.start;
+    const fullEnd = fullTimeExtent?.end;
 
-    const fullEnd: Maybe<Date> = fullTimeExtent && fullTimeExtent.end;
-    const fullEndDate: Maybe<string> = isSome(fullEnd) ? this._formateDate(fullEnd) : null;
-    const fullEndTime: Maybe<string> =
-      timeVisible && isSome(fullEnd) ? this._formateTime(fullEnd) : null;
+    const valueLength = values?.length ?? 0;
 
-    let timeExtentStartDate: Maybe<string> = null;
-    let timeExtentStartTime: Maybe<string> = null;
-    let timeExtentEndDate: Maybe<string> = null;
-    let timeExtentEndTime: Maybe<string> = null;
-
-    if (values && values.length > 0) {
-      const date = values[0];
-      timeExtentStartDate = this._formateDate(date);
-      if (timeVisible) {
-        timeExtentStartTime = this._formateTime(date);
-      }
-    }
-    if (mode === "time-window" && values && values.length > 1) {
-      const date = values[1];
-      timeExtentEndDate = this._formateDate(date);
-      if (timeVisible) {
-        timeExtentEndTime = this._formateTime(date);
-      }
-    }
+    const timeExtentStartDate = valueLength && this._formatDate(values[0]);
+    const timeExtentStartTime = valueLength && timeVisible && this._formatTime(values[0]);
+    const timeExtentEndDate =
+      valueLength > 1 && mode === "time-window" && this._formatDate(values[1]);
+    const timeExtentEndTime =
+      valueLength > 1 && mode === "time-window" && timeVisible && this._formatTime(values[1]);
 
     const { state } = viewModel;
     const isReady = state === "ready";
     const isPlaying = state === "playing";
     const isDisabled = !interactive || effectiveStops.length === 0;
+
+    const layout: Exclude<Layout, "auto"> =
+      this.layout === "auto"
+        ? domNode.clientWidth < MINIMUM_WIDE_LAYOUT_WIDTH
+          ? "compact"
+          : "wide"
+        : this.layout;
 
     const play = (
       <div class={CSS.animation}>
@@ -1380,6 +1463,7 @@ class TimeSlider extends Widget {
           disabled={isDisabled}
           title={isPlaying ? messagesCommon.control.stop : messagesCommon.control.play}
           onclick={this._playOrStopClick}
+          type="button"
         >
           <div
             class={this.classes(
@@ -1391,62 +1475,112 @@ class TimeSlider extends Widget {
       </div>
     );
 
-    const time = (
-      <div class={this.classes(CSS.timeExtent, !interactive && CSS.esriButtonDisabled)}>
-        {isSome(timeExtentStartDate) && (
+    const timeContent = this.labelFormatFunction ? (
+      <div
+        key="extent"
+        bind={this}
+        class={CSS.timeExtentDate}
+        data-type="extent"
+        data-layout={layout}
+        data-date={values}
+        afterCreate={this._createLabel}
+        afterUpdate={this._createLabel}
+      ></div>
+    ) : (
+      [
+        timeExtentStartDate && (
           <div key="start-date-group" class={CSS.timeExtentGroup}>
             <div key="start-date" class={CSS.timeExtentDate}>
               {timeExtentStartDate}
             </div>
-            {isSome(timeExtentStartTime) && (
+            {timeExtentStartTime && (
               <div key="start-time" class={CSS.timeExtentTime}>
                 {timeExtentStartTime}
               </div>
             )}
           </div>
-        )}
-        {isSome(timeExtentEndDate) && (
+        ),
+        timeExtentEndDate && (
           <div key="separator" class={CSS.timeExtentSeparator}>
             –
           </div>
-        )}
-
-        {isSome(timeExtentStartDate) && (
+        ),
+        timeExtentStartDate && (
           <div key="end-date-group" class={CSS.timeExtentGroup}>
             <div key="end-date" class={CSS.timeExtentDate}>
               {timeExtentEndDate}
             </div>
-            {isSome(timeExtentEndTime) && (
+            {timeExtentEndTime && (
               <div key="end-time" class={CSS.timeExtentTime}>
                 {timeExtentEndTime}
               </div>
             )}
           </div>
-        )}
+        )
+      ]
+    );
+
+    const time = (
+      <div class={this.classes(CSS.timeExtent, !interactive && CSS.esriButtonDisabled)}>
+        {[timeContent]}
       </div>
+    );
+
+    const minContent = this.labelFormatFunction ? (
+      <div
+        key="min-date"
+        bind={this}
+        class={CSS.minDate}
+        data-date={fullStart}
+        data-type="min"
+        data-layout={layout}
+        afterCreate={this._createLabel}
+        afterUpdate={this._createLabel}
+      ></div>
+    ) : (
+      [
+        fullStart && (
+          <div key="min-date" class={CSS.minDate}>
+            {this._formatDate(fullStart)}
+          </div>
+        ),
+        fullStart && timeVisible && <div key="min-time">{this._formatTime(fullStart)}</div>
+      ]
     );
 
     const min = (
       <div class={this.classes(CSS.min, !interactive && CSS.esriButtonDisabled)}>
-        {isSome(fullStartDate) && (
-          <div key="min-date" class={CSS.minDate}>
-            {fullStartDate}
-          </div>
-        )}
-        {isSome(fullStartTime) && <div key="min-time">{fullStartTime}</div>}
+        {[minContent]}
       </div>
     );
 
     const slider = <div class={CSS.slider}>{_slider.render()}</div>;
 
+    const maxContent = this.labelFormatFunction ? (
+      <div
+        key="max-date"
+        bind={this}
+        class={CSS.maxDate}
+        data-date={fullEnd}
+        data-type="max"
+        data-layout={layout}
+        afterCreate={this._createLabel}
+        afterUpdate={this._createLabel}
+      ></div>
+    ) : (
+      [
+        fullEnd && (
+          <div key="max-date" class={CSS.maxDate}>
+            {this._formatDate(fullEnd)}
+          </div>
+        ),
+        fullEnd && timeVisible && <div key="max-time">{this._formatTime(fullEnd)}</div>
+      ]
+    );
+
     const max = (
       <div class={this.classes(CSS.max, !interactive && CSS.esriButtonDisabled)}>
-        {isSome(fullEndDate) && (
-          <div key="max-date" class={CSS.maxDate}>
-            {fullEndDate}
-          </div>
-        )}
-        {isSome(fullEndTime) && <div key="max-time">{fullEndTime}</div>}
+        {[maxContent]}
       </div>
     );
 
@@ -1464,6 +1598,7 @@ class TimeSlider extends Widget {
           disabled={isDisabled}
           title={messagesCommon.pagination.previous}
           onclick={this._previousClick}
+          type="button"
         >
           <div class={CSS.previousIcon} />
         </button>
@@ -1484,18 +1619,12 @@ class TimeSlider extends Widget {
           disabled={isDisabled}
           title={messagesCommon.pagination.next}
           onclick={this._nextClick}
+          type="button"
         >
           <div class={CSS.nextIcon} />
         </button>
       </div>
     );
-
-    const layout: Exclude<Layout, "auto"> =
-      this.layout === "auto"
-        ? domNode.clientWidth < MINIMUM_WIDE_LAYOUT_WIDTH
-          ? "compact"
-          : "wide"
-        : this.layout;
 
     const timeSlider = (
       <div
@@ -1532,16 +1661,11 @@ class TimeSlider extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private _createDefaultValues(): void {
-    // If no preset time extent then set to the first stop(s).
-    const { fullTimeExtent, effectiveStops, mode, values } = this;
-    if (fullTimeExtent && effectiveStops && mode && !values) {
-      if (mode === "time-window") {
-        this.values = effectiveStops.length > 1 ? [effectiveStops[0], effectiveStops[1]] : null;
-      } else {
-        this.values = effectiveStops.length > 0 ? [effectiveStops[0]] : null;
-      }
-    }
+  private _createLabel(element: Element): void {
+    const type = element.getAttribute("data-type") as LabelType;
+    const layout = element.getAttribute("data-layout") as Exclude<Layout, "auto">;
+    const dates = element["data-date"] as Date | Date[];
+    this.labelFormatFunction(dates, type, element, layout);
   }
 
   private _getTickPositions(interval: TimeInterval): number[] {
@@ -1561,11 +1685,11 @@ class TimeSlider extends Widget {
     return values;
   }
 
-  private _formateDate(date: Date): string {
+  private _formatDate(date: Date): string {
     return formatDate(date, convertDateFormatToIntlOptions("short-date"));
   }
 
-  private _formateTime(date: Date): string {
+  private _formatTime(date: Date): string {
     return formatDate(date, convertDateFormatToIntlOptions("long-time"));
   }
 

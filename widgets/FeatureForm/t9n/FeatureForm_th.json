@@ -6,6 +6,6 @@
     "outsideRange": "ค่าควรอยู่ระหว่าง {min} และ {max}",
     "invalidCodedValue": "ค่าควรเป็นหนึ่งในค่าที่แสดงในรายการ",
     "invalidType": "ไม่ใช่ค่าที่ถูกต้อง",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "ฟิลด์นี้ต้องการอย่างน้อย {min} อักขระ"
   }
 }

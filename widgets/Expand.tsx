@@ -1,6 +1,17 @@
 /**
  * The Expand widget acts as a clickable button for opening a widget.
  *
+ * ::: esri-md class="panel trailer-1"
+ * If adding a {@link module:esri/widgets/Slider}, {@link module:esri/widgets/HistogramRangeSlider},
+ * or {@link module:esri/widgets/TimeSlider} as [content](#content) to the Expand widget, the container
+ * or parent container of the widget must have a `width` set in CSS for it to render inside the Expand widget.
+ *
+ * If setting the width on the slider's container, then set the `slider.container` as the content of the
+ * expand rather than the slider itself.
+ *
+ * `expand.content = slider.container`
+ * :::
+ *
  * @module esri/widgets/Expand
  * @since 4.3
  *
@@ -201,6 +212,17 @@ class Expand extends Widget {
 
   /**
    * The content to display within the expanded Expand widget.
+   *
+   * ::: esri-md class="panel trailer-1"
+   * If adding a {@link module:esri/widgets/Slider}, {@link module:esri/widgets/HistogramRangeSlider},
+   * or {@link module:esri/widgets/TimeSlider} as content to the Expand widget, the container
+   * or parent container of the widget must have a `width` set in CSS for it to render inside the Expand widget.
+   *
+   * If setting the width on the slider's container (rather than a parent container), then set the
+   * `slider.container` as the content of the expand rather than the slider itself.
+   *
+   * `expand.content = slider.container`
+   * :::
    *
    * @example
    * // A. specify content with a widget

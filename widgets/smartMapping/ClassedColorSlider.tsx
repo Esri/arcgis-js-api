@@ -56,7 +56,7 @@
  *
  * slider.on(["thumb-change", "thumb-drag"], function() {
  *   const renderer = layer.renderer.clone();
- *   renderer.classBreaks = slider.updateClassBreakInfos( renderer.classBreaks );
+ *   renderer.classBreakInfos = slider.updateClassBreakInfos( renderer.classBreakInfos );
  *   layer.renderer = renderer;
  * });
  * ```
@@ -381,7 +381,7 @@ class ClassedColorSlider extends SmartMappingSliderBase {
    * @example
    * slider.on(["thumb-change", "thumb-drag"], function() {
    *   const renderer = layer.renderer.clone();
-   *   renderer.classBreaks = slider.updateClassBreakInfos( renderer.classBreaks );
+   *   renderer.classBreakInfos = slider.updateClassBreakInfos( renderer.classBreakInfos );
    *   layer.renderer = renderer;
    * });
    */

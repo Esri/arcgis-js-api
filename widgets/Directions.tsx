@@ -45,6 +45,7 @@ import Graphic = require("esri/Graphic");
 import { formatDate, formatNumber, substitute } from "esri/intl";
 
 // esri.core
+import { find } from "esri/core/arrayUtils";
 import Collection = require("esri/core/Collection");
 import { on, pausable } from "esri/core/events";
 import Handles = require("esri/core/Handles");
@@ -238,6 +239,12 @@ function formatGMTOffset(date: Date): string {
 const defaultDelayInMs = 100;
 const viewClickDelayInMs = 500;
 
+function isPointerOnSuggestion(event: PointerEvent): boolean {
+  return !!find(event.composedPath?.(), (el: HTMLElement) =>
+    el.classList?.contains("esri-search__suggestions-list")
+  );
+}
+
 @subclass("esri.widgets.Directions")
 class Directions extends Widget {
   //--------------------------------------------------------------------------
@@ -284,7 +291,11 @@ class Directions extends Widget {
         }
 
         if (value) {
+          const pointerDownUpHandle = this._prepPointerDownUpClick();
           const viewClickHandle = this._prepViewClick();
+
+          pointerDownUpHandle.pause();
+          viewClickHandle.pause();
 
           this._handles.add(
             [
@@ -294,11 +305,13 @@ class Directions extends Widget {
                 () => (this._autoStopRemovalDelay = viewClickDelayInMs)
               ),
               on(value.surface, "mouseup", () => (this._autoStopRemovalDelay = defaultDelayInMs)),
+              pointerDownUpHandle,
               viewClickHandle
             ],
             this.view.surface
           );
 
+          this._pointerDownUpHandle = pointerDownUpHandle;
           this._viewClickHandle = viewClickHandle;
         }
       }),
@@ -354,6 +367,10 @@ class Directions extends Widget {
   private _moment: typeof import("moment");
 
   private _newPlaceholderStop: PlaceholderStop = null;
+
+  private _pointerDownUpHandle: PausableHandle;
+
+  private _pointerPressedSearchSuggestionStop: PlaceholderStop = null;
 
   private _previousCursor: View.Cursor;
 
@@ -736,6 +753,7 @@ class Directions extends Widget {
           tabIndex={0}
           onclick={this._handleSignInClick}
           bind={this}
+          type="button"
         >
           {this.messagesCommon.auth.signIn}
         </button>
@@ -1044,7 +1062,11 @@ class Directions extends Widget {
     const stop = this._stops.getItemAt(stopIndex);
 
     if (newPlaceholderStop === stop) {
-      this._acquireSearch(stop).focus();
+      const search = this._acquireSearch(stop);
+      search.when(() => {
+        this.renderNow();
+        search.focus();
+      });
     }
 
     this._newPlaceholderStop = null;
@@ -1058,6 +1080,7 @@ class Directions extends Widget {
       !!search.selectedResult && !!stop.result && search.selectedResult === stop.result;
 
     if (unchanged) {
+      this._pointerDownUpHandle.pause();
       return;
     }
 
@@ -1067,6 +1090,7 @@ class Directions extends Widget {
       (search.selectedResult !== stop.result || (!search.selectedResult && !stop.result))
     ) {
       search.search();
+      this._pointerDownUpHandle.pause();
       return;
     }
 
@@ -1083,6 +1107,12 @@ class Directions extends Widget {
         this._viewClickHandle.pause();
 
         if (search.viewModel.state === "searching") {
+          this._pointerDownUpHandle.pause();
+          return;
+        }
+
+        if (this._pointerPressedSearchSuggestionStop) {
+          // blur caused by pointer down interaction, we'll wait for pointer up to decide whether to remove or not
           return;
         }
 
@@ -1100,6 +1130,8 @@ class Directions extends Widget {
   }
 
   private _handleStopInputFocus(search: Search, stop: PlaceholderStop): void {
+    this._pointerDownUpHandle.resume();
+
     if (this._handles.has(REGISTRY_KEYS.awaitingViewClickStop)) {
       return;
     }
@@ -1145,6 +1177,42 @@ class Directions extends Widget {
     };
   }
 
+  private _prepPointerDownUpClick(): PausableHandle {
+    const pointerDownHandle = pausable(document, "pointerdown", (event: PointerEvent) => {
+      this._pointerPressedSearchSuggestionStop = isPointerOnSuggestion(event)
+        ? this._activeStop
+        : null;
+    });
+
+    const pointerUpHandle = pausable(document, "pointerup", (event: PointerEvent) => {
+      this._pointerDownUpHandle.pause();
+      const pointerOnSuggestion = isPointerOnSuggestion(event);
+      const activeStop = this._activeStop;
+
+      if (!pointerOnSuggestion && activeStop === this._pointerPressedSearchSuggestionStop) {
+        this._removeStop(activeStop);
+      }
+
+      this.scheduleRender();
+      this._pointerPressedSearchSuggestionStop = pointerOnSuggestion ? this._activeStop : null;
+    });
+
+    return {
+      remove(): void {
+        pointerUpHandle.remove();
+        pointerDownHandle.remove();
+      },
+      pause(): void {
+        pointerUpHandle.pause();
+        pointerDownHandle.pause();
+      },
+      resume(): void {
+        // only resume the first step of a pointer down/up interaction
+        pointerDownHandle.resume();
+      }
+    };
+  }
+
   private _handleViewClick(event: any): void {
     const input = this._stopsToSearches.get(this._activeStop);
 
@@ -1173,6 +1241,7 @@ class Directions extends Widget {
   }
 
   private _addNewPlaceholder(): void {
+    this._pointerDownUpHandle.pause();
     if (this._newPlaceholderStop) {
       return;
     }
@@ -1374,6 +1443,7 @@ class Directions extends Widget {
           tabIndex={0}
           onclick={this._handleClearRouteClick}
           bind={this}
+          type="button"
         >
           {this.messages.clearRoute}
         </button>

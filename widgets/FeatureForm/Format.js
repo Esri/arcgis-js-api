@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/date","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,a,p){return function(r){function e(e){var t=r.call(this,e)||this;return t.digitSeparator=!1,t.format=null,t.places=null,t}return t.__extends(e,r),t.__decorate([p.property()],e.prototype,"digitSeparator",void 0),t.__decorate([p.property({json:{read:{source:"dateFormat",reader:o.fromJSON}}})],e.prototype,"format",void 0),t.__decorate([p.property()],e.prototype,"places",void 0),e=t.__decorate([p.subclass("esri.widgets.FeatureForm.Format")],e)}(a.JSONSupport)}));
+define(["require","exports","tslib","../../core/date","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,a,p){"use strict";return function(r){function e(e){var t=r.call(this,e)||this;return t.digitSeparator=!1,t.dateFormat=null,t.places=null,t}return t.__extends(e,r),t.__decorate([p.property()],e.prototype,"digitSeparator",void 0),t.__decorate([p.property({json:{read:{source:"dateFormat",reader:o.fromJSON}}})],e.prototype,"dateFormat",void 0),t.__decorate([p.property()],e.prototype,"places",void 0),e=t.__decorate([p.subclass("esri.widgets.FeatureForm.Format")],e)}(a.JSONSupport)}));

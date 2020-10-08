@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../jsonMap","./property"],(function(e,n,r,o){Object.defineProperty(n,"__esModule",{value:!0}),n.enumeration=function(e,n){void 0===n&&(n={ignoreUnknown:!0});var t=e instanceof r.JSONMap?e:new r.JSONMap(e,n);return o.property({type:n&&n.ignoreUnknown?t.apiValues:String,json:{type:t.jsonValues,read:{reader:t.read},write:{writer:t.write}}})}}));
+define(["require","exports","../../jsonMap","./property"],(function(e,n,r,o){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.enumeration=void 0,n.enumeration=function(e,n){void 0===n&&(n={ignoreUnknown:!0});var i=e instanceof r.JSONMap?e:new r.JSONMap(e,n);return o.property({type:(null==n?void 0:n.ignoreUnknown)?i.apiValues:String,readOnly:null==n?void 0:n.readOnly,json:{type:i.jsonValues,read:(null==n||!n.readOnly)&&{reader:i.read},write:{writer:i.write}}})}}));

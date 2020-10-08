@@ -1,7 +1,7 @@
 {
   "title": "popupElement fields",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Configures fields in popup elements.",
   "properties": {
     "fieldInfos": {

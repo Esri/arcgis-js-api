@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){function o(e,r,o){for(var n=0;n<o;++n)r[2*n]=e[n],r[2*n+1]=e[n]-r[2*n]}Object.defineProperty(r,"__esModule",{value:!0}),r.encodeDouble=function(e,r){a[0]=e,a[1]=e-a[0],r[0]=a[0],r[1]=a[1]},r.encodeDoubleArray=o,r.decodeDoubleArray=function(e,r,o){for(var n=0;n<o;++n)r[n]=e[2*n]+e[2*n+1]},r.encodeDoubleArraySplit=function(e,r,u,t){for(var c=0;c<t;++c)n[0]=e[c],o(n,a,1),r[c]=a[0],u[c]=a[1]};var n=new Float64Array(1),a=new Float32Array(2)}));
+define(["require","exports"],(function(e,o){"use strict";function r(e,o,r){for(var n=0;n<r;++n)o[2*n]=e[n],o[2*n+1]=e[n]-o[2*n]}Object.defineProperty(o,"__esModule",{value:!0}),o.encodeDoubleArraySplit=o.decodeDoubleArray=o.encodeDoubleArray=o.encodeDouble=void 0,o.encodeDouble=function(e,o){u[0]=e,u[1]=e-u[0],o[0]=u[0],o[1]=u[1]},o.encodeDoubleArray=r,o.decodeDoubleArray=function(e,o,r){for(var n=0;n<r;++n)o[n]=e[2*n]+e[2*n+1]},o.encodeDoubleArraySplit=function(e,o,a,c){for(var d=0;d<c;++d)n[0]=e[d],r(n,u,1),o[d]=u[0],a[d]=u[1]};var n=new Float64Array(1),u=new Float32Array(2)}));

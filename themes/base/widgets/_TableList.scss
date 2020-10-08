@@ -127,7 +127,7 @@
     animation: esri-fade-in 250ms ease-in-out;
   }
   .esri-table-list__item-actions-section {
-    animation: esri-table-list-reveal 375ms ease-in-out;
+    animation: esri-fade-in 375ms ease-in-out;
   }
   .esri-table-list__item-actions[hidden] {
     display: none;
@@ -271,20 +271,6 @@
     .esri-table-list__item-error-message [class*="esri-icon-"] {
       margin-right: 0;
       margin-left: 0.3rem;
-    }
-  }
-
-  //////////////////////////////
-  // ANIMATION
-  @keyframes esri-table-list-reveal {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 }

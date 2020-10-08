@@ -24,8 +24,6 @@
   "stop": "Perhentian",
   "stopLabelTemplate": "Perhentian {number} ({label})",
   "unlocated": "Tidak memilki lokasi",
-  "searchFieldPlaceholder": "Cari atau klik pada peta",
-  "viewlessSearchFieldPlaceholder": "Cari",
   "directionsPlaceholder": "Rute Anda akan muncul di sini.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Perkiraan waktu kedatangan",

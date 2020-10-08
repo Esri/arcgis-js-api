@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../core/arrayUtils"],(function(e,n,r){Object.defineProperty(n,"__esModule",{value:!0}),n.getExifValue=function(e){var n=e.exifInfo,t=e.exifName,a=e.tagName;if(!n||!t||!a)return null;var u=r.find(n,(function(e){return e.name===t}));return u?function(e){var n=e.tagName,t=e.tags;if(!t||!n)return null;var a=r.find(t,(function(e){return e.name===n}));return a&&a.value||null}({tagName:a,tags:u.tags}):null}}));
+define(["require","exports","../../core/arrayUtils"],(function(e,n,r){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.getExifValue=void 0,n.getExifValue=function(e){var n=e.exifInfo,t=e.exifName,a=e.tagName;if(!n||!t||!a)return null;var u=r.find(n,(function(e){return e.name===t}));return u?function(e){var n=e.tagName,t=e.tags;if(!t||!n)return null;var a=r.find(t,(function(e){return e.name===n}));return a&&a.value||null}({tagName:a,tags:u.tags}):null}}));

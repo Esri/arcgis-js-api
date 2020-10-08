@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/Accessor","../../../core/Collection","../../../core/accessorSupport/decorators","./GamepadInputDevice"],(function(e,o,t,r,n,c,p){return function(e){function o(){for(var o=[],t=0;t<arguments.length;t++)o[t]=arguments[t];var r=e.apply(this,o)||this;return r.devices=new n,r.enabledFocusMode="document",r}return t.__extends(o,e),t.__decorate([c.property({type:n.ofType(p),readOnly:!0})],o.prototype,"devices",void 0),t.__decorate([c.property({type:["document","view","none"]})],o.prototype,"enabledFocusMode",void 0),o=t.__decorate([c.subclass("esri.views.input.gamepad.GamepadSettings")],o)}(r)}));
+define(["require","exports","tslib","../../../core/Accessor","../../../core/Collection","../../../core/accessorSupport/decorators","./GamepadInputDevice"],(function(e,o,t,r,c,n,s){"use strict";return function(e){function o(){for(var o=[],t=0;t<arguments.length;t++)o[t]=arguments[t];var r=e.apply(this,o)||this;return r.devices=new c,r.enabledFocusMode="document",r}return t.__extends(o,e),t.__decorate([n.property({type:c.ofType(s),readOnly:!0})],o.prototype,"devices",void 0),t.__decorate([n.property({type:["document","view","none"]})],o.prototype,"enabledFocusMode",void 0),o=t.__decorate([n.subclass("esri.views.input.gamepad.GamepadSettings")],o)}(r)}));

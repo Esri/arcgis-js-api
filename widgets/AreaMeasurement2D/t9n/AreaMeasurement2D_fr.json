@@ -3,12 +3,12 @@
   "hint": "Commencez les mesures en cliquant sur la carte pour placer le premier point",
   "unsupported": "La mesure de la zone 2D est uniquement prise en charge dans la vue cartographique.",
   "perimeter": "Périmètre",
-  "area": "Zone",
+  "area": "Surface",
   "newMeasurement": "Nouvelle mesure",
   "mode": "Mode",
   "modes": {
     "auto": "Automatique",
-    "planar": "plane",
+    "planar": "Planaire",
     "geodesic": "Géodésique"
   },
   "unit": "Unité",
@@ -22,7 +22,7 @@
     "square-feet": "Pieds carrés",
     "square-yards": "Yards carrés",
     "square-us-feet": "Pieds carrés (États-Unis)",
-    "acres": "Ares",
+    "acres": "Acres",
     "ares": "Ares",
     "hectares": "Hectares"
   }

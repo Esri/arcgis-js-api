@@ -1,7 +1,7 @@
 {
   "title": "ColorInfo Visual Variable",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The colorInfo visual variable defines how a continuous color ramp is applied to features based on the values of a numeric field attribute.",
   "properties": {
     "field": {

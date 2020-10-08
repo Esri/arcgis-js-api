@@ -24,8 +24,6 @@
   "stop": "停止",
   "stopLabelTemplate": "ストップ {number} ({label})",
   "unlocated": "未配置(U)",
-  "searchFieldPlaceholder": "検索またはマップをクリック",
-  "viewlessSearchFieldPlaceholder": "検索",
   "directionsPlaceholder": "ルートはここに表示されます。",
   "etaTemplate": "{time} {gmt}",
   "eta": "推定到着時間",

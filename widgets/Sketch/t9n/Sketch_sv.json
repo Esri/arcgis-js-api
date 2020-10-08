@@ -36,5 +36,14 @@
   "verticesCount": "{count} brytpunkter",
   "deleteFeature": "Ta bort objekt",
   "deleteVertex": "Ta bort brytpunkt",
-  "duplicate": "Duplicera"
+  "duplicate": "Duplicera",
+  "selectCircle": "Välj med cirkel",
+  "selectFeature": "Välj geoobjekt",
+  "selectFeatures": "Välj geoobjekt",
+  "selectLasso": "Välj med lasso",
+  "selectLine": "Välj med linje",
+  "selectMarquee": "Välj med remsa",
+  "selectPolygon": "Välj med polygon",
+  "selectRectangle": "Välj med rektangel",
+  "clearSelection": "Rensa markering"
 }

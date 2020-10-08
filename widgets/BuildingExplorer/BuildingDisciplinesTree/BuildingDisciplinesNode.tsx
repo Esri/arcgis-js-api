@@ -17,6 +17,7 @@ import { tsx, renderable, isRTL } from "esri/../support/widget";
 interface ConstructionParameters {
   node: LayerTreeNode;
   messages?: Messages;
+  toggleSiblingsVisibility?: boolean;
 }
 
 interface Messages {
@@ -78,7 +79,7 @@ class BuildingDisciplinesNode extends Widget {
         this._updateChildWidgets,
         this._updateChildWidgets
       ),
-      this.watch("messages", this._updateChildWidgets)
+      this.watch(["messages", "toggleSiblingsVisibility"], this._updateChildWidgets)
     );
   }
 
@@ -111,6 +112,15 @@ class BuildingDisciplinesNode extends Widget {
   @property()
   @renderable()
   messages: Messages = DEFAULT_MESSAGES;
+
+  /**
+   * If true, when toggling a toggling a sublayer while the CTRL key is pressed,
+   * we'll toggle also the siblings.
+   *
+   * @ignore
+   */
+  @property({ nonNullable: true })
+  toggleSiblingsVisibility: boolean = false;
 
   //--------------------------------------------------------------------------
   //
@@ -194,6 +204,7 @@ class BuildingDisciplinesNode extends Widget {
         aria-checked={checked ? "true" : "false"}
         aria-label={label}
         title={label}
+        type="button"
       ></button>
     );
   }
@@ -273,11 +284,16 @@ class BuildingDisciplinesNode extends Widget {
    *
    * @private
    */
-  private _onCheckboxToggle(event: Event): void {
+  private _onCheckboxToggle(event: MouseEvent): void {
     event.preventDefault();
     event.stopPropagation();
 
-    this.node.toggleVisibility();
+    const toggleAll = event.metaKey || event.ctrlKey;
+    if (toggleAll && this.toggleSiblingsVisibility) {
+      this.node.toggleAllSiblingsVisibility();
+    } else {
+      this.node.toggleVisibility();
+    }
   }
 
   /**
@@ -303,7 +319,14 @@ class BuildingDisciplinesNode extends Widget {
     this._childWidgets = this.node.children
       .toArray()
       .reverse() // Match the order used in the `LayerList` widget.
-      .map((node) => new BuildingDisciplinesNode({ node, messages: this.messages }));
+      .map(
+        (node) =>
+          new BuildingDisciplinesNode({
+            node,
+            messages: this.messages,
+            toggleSiblingsVisibility: this.toggleSiblingsVisibility
+          })
+      );
   };
 
   /**

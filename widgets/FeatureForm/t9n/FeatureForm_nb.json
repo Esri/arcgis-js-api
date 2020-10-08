@@ -6,6 +6,6 @@
     "outsideRange": "Verdien må være mellom {min} og {max}",
     "invalidCodedValue": "Verdien må være en av de oppførte verdiene.",
     "invalidType": "Ikke en gyldig verdi",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Dette feltet må ha minst {min} tegn"
   }
 }

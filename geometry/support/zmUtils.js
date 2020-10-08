@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,a){Object.defineProperty(a,"__esModule",{value:!0}),a.updateSupportFromPoint=function(e,a,r){void 0===r&&(r=!1);var h=e.hasM,s=e.hasZ;Array.isArray(a)?4!==a.length||h||s?3===a.length&&r&&!h?(s=!0,h=!1):3===a.length&&h&&s&&(h=!1,s=!1):(h=!0,s=!0):(s=!s&&a.hasZ&&(!h||a.hasM),h=!h&&a.hasM&&(!s||a.hasZ)),e.hasZ=s,e.hasM=h}}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.updateSupportFromPoint=void 0,t.updateSupportFromPoint=function(e,t,r){void 0===r&&(r=!1);var a=e.hasM,o=e.hasZ;Array.isArray(t)?4!==t.length||a||o?3===t.length&&r&&!a?(o=!0,a=!1):3===t.length&&a&&o&&(a=!1,o=!1):(a=!0,o=!0):(o=!o&&t.hasZ&&(!a||t.hasM),a=!a&&t.hasM&&(!o||t.hasZ)),e.hasZ=o,e.hasM=a}}));

@@ -67,8 +67,13 @@
     display: flex;
     flex-direction: column;
 
-    &:first-child .esri-feature-form__input {
+    // only want to hide the border if there date/time inputs are side-by-side
+    &:nth-last-child(2) .esri-feature-form__input {
       border-right: none;
+    }
+
+    &--lone {
+      width: 100%;
     }
   }
 

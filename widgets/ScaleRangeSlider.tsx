@@ -34,7 +34,7 @@
 
 // esri
 import { formatNumber, substitute } from "esri/intl";
-import { AllLayers } from "esri/layers";
+import { Layer } from "esri/layers";
 
 // esri.core
 import { closest } from "esri/core/domUtils";
@@ -505,7 +505,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: "viewModel.layer"
   })
-  layer: AllLayers = null;
+  layer: Layer = null;
 
   //----------------------------------
   //  maxScale
@@ -916,6 +916,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
         key={`${type}-scale-menu-toggle`}
         onclick={this._handleScaleMenuToggleClick}
         disabled={!_interactive}
+        type="button"
       >
         {label}
         <span class={this.classes(CSS.scaleMenuToggleIcon, CSS.expandIcon)} aria-hidden="true" />

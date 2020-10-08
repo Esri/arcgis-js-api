@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./MemoryBuffer"],(function(e,t,r,n){Object.defineProperty(t,"__esModule",{value:!0});var u=function(e){function t(){return e.call(this,12)||this}return r.__extends(t,e),t.prototype.add=function(e,t,r){var n=this.array;n.push(e),n.push(t),n.push(r)},t}(n);t.TriangleIndexBuffer=u;var i=function(e){function t(){return e.call(this,4)||this}return r.__extends(t,e),t.prototype.add=function(e){this.array.push(e)},t}(n);t.PointElementMemoryBuffer=i}));
+define(["require","exports","tslib","./MemoryBuffer"],(function(e,r,t,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.PointElementMemoryBuffer=r.TriangleIndexBuffer=void 0;var u=function(e){function r(){return e.call(this,12)||this}return t.__extends(r,e),r.prototype.add=function(e,r,t){var n=this.array;n.push(e),n.push(r),n.push(t)},r}(n);r.TriangleIndexBuffer=u;var i=function(e){function r(){return e.call(this,4)||this}return t.__extends(r,e),r.prototype.add=function(e){this.array.push(e)},r}(n);r.PointElementMemoryBuffer=i}));

@@ -1,7 +1,7 @@
 {
   "title": "Filter mode x-ray",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Draw elements of this filter block in x-ray mode. `x-ray` renders elements semi-transparent with white color.",
   "properties": {
     "type": {

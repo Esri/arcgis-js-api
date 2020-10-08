@@ -500,7 +500,7 @@ class Daylight extends Widget {
             onclick={this.viewModel.toggleDayPlaying}
             aria-label={this.messages.playDay}
             title={this.messages.playDay}
-            role="button"
+            type="button"
             class={this.classes(CSS.button, CSS.playPauseButton, dynamicPlayDayClasses)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -528,7 +528,7 @@ class Daylight extends Widget {
             onclick={this.viewModel.toggleYearPlaying}
             aria-label={this.messages.playYear}
             title={this.messages.playYear}
-            role="button"
+            type="button"
             class={this.classes(CSS.button, CSS.playPauseButton, dynamicPlayYearClasses)}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -558,6 +558,7 @@ class Daylight extends Widget {
           class={this.classes(CSS.button, CSS.checkbox, dynamicShadowsClasses)}
           aria-label={this.messages.directShadow}
           title={this.messages.directShadow}
+          type="button"
         />
         <label
           bind={this.viewModel}

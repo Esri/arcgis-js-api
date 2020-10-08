@@ -400,6 +400,7 @@ class AreaMeasurement2D extends Widget {
             bind={this}
             onclick={this._newMeasurement}
             title={messages.newMeasurement}
+            type="button"
             aria-label={messages.newMeasurement}
           >
             {messages.newMeasurement}

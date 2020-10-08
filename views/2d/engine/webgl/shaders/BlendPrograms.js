@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./sources/resolver"],(function(e,r,n){Object.defineProperty(r,"__esModule",{value:!0});var t=function(e){return"#define "+function(e){return e.replace("-","_").toUpperCase()}(e)+"\n"};r.blend={name:"blend",attributes:{a_pos:0,a_tex:1},shaders:function(e){return{vertexShader:t(e)+n.resolveIncludes("blend/blend.vert"),fragmentShader:t(e)+n.resolveIncludes("blend/blend.frag")}}}}));
+define(["require","exports","./sources/resolver"],(function(e,r,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.blend=void 0;var t=function(e){return"#define "+function(e){return e.replace("-","_").toUpperCase()}(e)+"\n"};r.blend={name:"blend",attributes:{a_pos:0,a_tex:1},shaders:function(e){return{vertexShader:t(e)+n.resolveIncludes("blend/blend.vert"),fragmentShader:t(e)+n.resolveIncludes("blend/blend.frag")}}}}));

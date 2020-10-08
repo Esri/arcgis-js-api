@@ -1,7 +1,7 @@
 {
   "title": "WaterSymbol3DLayer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Symbol Layer that describes a water appearance on surfaces in a SceneView.",
   "properties": {
     "color": {

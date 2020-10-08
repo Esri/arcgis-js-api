@@ -1,7 +1,7 @@
 {
   "title": "heightModelInfo",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "An object that defines the characteristics of the vertical coordinate system used by the web scene.",
   "properties": {
     "heightModel": {

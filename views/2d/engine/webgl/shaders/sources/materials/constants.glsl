@@ -4,6 +4,9 @@ const float SIGNED_BYTE_TO_UNSIGNED = 128.0;
 
 const float POSITION_PRECISION = 1.0 / 8.0;
 
+// Needed for now, need clipper than can work on opt geometries
+const float FILL_POSITION_PRECISION = 1.0 / 1.0;
+
 // markers
 const float SOFT_EDGE_RATIO = 1.0; // use blur here if needed
 

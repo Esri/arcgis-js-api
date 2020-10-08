@@ -24,8 +24,6 @@
   "stop": "停靠点",
   "stopLabelTemplate": "停靠点 {number} ({label})",
   "unlocated": "未定位",
-  "searchFieldPlaceholder": "搜索或单击地图",
-  "viewlessSearchFieldPlaceholder": "搜索",
   "directionsPlaceholder": "您的路径将显示在此处。",
   "etaTemplate": "{time} {gmt}",
   "eta": "预计到达时间",

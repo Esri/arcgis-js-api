@@ -1,17 +1,15 @@
 {
   "title": "FillSymbol3DLayer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "FillSymbol3DLayer is used to render the surfaces of flat 2D Polygon geometries and 3D volumetric meshes in a SceneView.",
   "properties": {
     "castShadows": {
       "type": "boolean",
-      "description": "Boolean to control the shadow casting behaviour of the rendered geometries.",
+      "description": "Boolean to control the shadow casting behaviour of the rendered geometries (only applies to MeshSymbol3D).",
       "default": true
     },
     "edges": {
-      "type": "object",
-      "description": "Specifies an edge visualization style. Only affects MeshSymbol3D.",
       "$ref": "edges_schema.json"
     },
     "enable": {
@@ -21,7 +19,12 @@
       "$ref": "materialColorMixMode_schema.json"
     },
     "outline": {
+      "type": "object",
+      "description": "The outline of the symbol layer (only applies to PolygonSymbol3D).",
       "$ref": "outline_schema.json"
+    },
+    "pattern": {
+      "$ref": "polygonPattern_schema.json"
     },
     "type": {
       "type": "string",

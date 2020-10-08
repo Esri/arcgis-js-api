@@ -1,0 +1,25 @@
+// COPYRIGHT © 2020 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+
+define(["require","exports","tslib","../../../../core/Evented","../../../../core/maybe","../../../../core/libs/rbush/rbush","../../../../geometry/support/aaBoundingBox","./Store2D"],(function(t,e,r,n,a,o,s,i){"use strict";function u(t){return(4294901760&t)>>>16}function d(t){return 65535&t}Object.defineProperty(e,"__esModule",{value:!0}),e.FeatureStore2D=e.featureAdapter=void 0,e.featureAdapter={getObjectId:function(t){return t.getObjectId()},getAttributes:function(t){return t.readAttributes()},getAttribute:function(t,e){return t.readAttribute(e)},cloneWithGeometry:function(t,e){return t},getGeometry:function(t){return t.readHydratedGeometry()},getCentroid:function(t,e){return t.readCentroid()}};var c=function(t){function i(r,a){var s=t.call(this,r,a)||this;return s.featureAdapter=e.featureAdapter,s.events=new n,s._featureSetsByInstance=new Map,s._objectIdToDisplayId=new Map,s._spatialIndexInvalid=!0,s._index=o(9,(function(t){return{minX:s._storage.getXMin(t),minY:s._storage.getYMin(t),maxX:s._storage.getXMax(t),maxY:s._storage.getYMax(t)}})),s}return r.__extends(i,t),Object.defineProperty(i.prototype,"storeStatistics",{get:function(){return{featureCount:0,vertexCount:0}},enumerable:!1,configurable:!0}),i.prototype.onTileData=function(t,e,r){if(a.isNone(e.addOrUpdate))return e;this._featureSetsByInstance.set(e.addOrUpdate.instance,e.addOrUpdate),this._storage=r,e.addOrUpdate._storage=r;for(var n,o,s=e.addOrUpdate.getCursor();s.next();){var i=s.getObjectId(),u=(n=s.instance,o=s.getIndex(),n<<16|o),d=this._objectIdToDisplayId.get(i);d||(d=r.createDisplayId(),this._objectIdToDisplayId.set(i,d),this._spatialIndexInvalid=!0),s.setDisplayId(d),r.setInstanceId(d,u),this.setComputedAttributes(r,s,d,t.scale)}return"update"===e.type&&(this._spatialIndexInvalid=!0),this.events.emit("changed"),e},i.prototype.forEach=function(t){var e=this;this._objectIdToDisplayId.forEach((function(r){var n=e._storage.getInstanceId(r),a=e._lookupFeature(n);t(a)}))},i.prototype.forEachUnsafe=function(t){var e=this;this._objectIdToDisplayId.forEach((function(r){var n=e._storage.getInstanceId(r),a=u(n),o=d(n),s=e._getFeatureSet(a);s.setIndex(o),t(s)}))},i.prototype.forEachInBounds=function(t,e){for(var r=0,n=this._searchIndex(t);r<n.length;r++){var o=n[r],s=this.lookupFeatureByDisplayId(o,this._storage);e(a.unwrap(s))}},i.prototype.forEachBounds=function(t,e,r){this._rebuildIndex();for(var n=[0,0,0,0],a=0,o=t;a<o.length;a++){var i=o[a].getDisplayId();n[0]=this._storage.getXMin(i),n[1]=this._storage.getYMin(i),n[2]=this._storage.getXMax(i),n[3]=this._storage.getYMax(i),e(s.fromRect(r,n))}},i.prototype.sweepFeatures=function(t,e){var r=this;this._objectIdToDisplayId.forEach((function(n,a){t.has(n)||(e.releaseDisplayId(n),r._objectIdToDisplayId.delete(a))})),this.events.emit("changed")},i.prototype.sweepFeatureSets=function(t){var e=this;this._featureSetsByInstance.forEach((function(r,n){t.has(n)||e._featureSetsByInstance.delete(n)}))},i.prototype.lookupObjectId=function(t,e){var r=this.lookupFeatureByDisplayId(t,e);return a.isNone(r)?null:r.getObjectId()},i.prototype.lookupDisplayId=function(t){return this._objectIdToDisplayId.get(t)},i.prototype.lookupFeatureByDisplayId=function(t,e){var r=e.getInstanceId(t);return this._lookupFeature(r)},i.prototype.lookupByDisplayIdUnsafe=function(t){var e=this._storage.getInstanceId(t),r=u(e),n=d(e),a=this._getFeatureSet(r);return a?(a.setIndex(n),a):null},i.prototype.hasInstance=function(t){return this._featureSetsByInstance.has(t)},i.prototype._rebuildIndex=function(){var t=this;if(this._spatialIndexInvalid){this._index.clear();var e=[];this._objectIdToDisplayId.forEach((function(r){var n=t._storage.getInstanceId(r);t._storage.setBounds(r,t._lookupFeature(n))&&e.push(r)})),this._index.load(e),this._spatialIndexInvalid=!1}},i.prototype._lookupFeature=function(t){var e=u(t),r=d(t),n=this._getFeatureSet(e);if(!n)return null;var a=n.getCursor();return a.setIndex(r),a},i.prototype._getFeatureSet=function(t){return this._featureSetsByInstance.get(t)},i.prototype._searchIndex=function(t){this._rebuildIndex();var e={minX:t[0],minY:t[1],maxX:t[2],maxY:t[3]};return this._index.search(e)},i}(i.Store2D);e.FeatureStore2D=c}));

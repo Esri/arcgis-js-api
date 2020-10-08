@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../Graphic","../../../../core/accessorSupport/decorators"],(function(t,e,o,r,i){Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){function e(e){return t.call(this,e)||this}var r;return o.__extends(e,t),r=e,e.prototype.clone=function(){return new r(this.cloneProperties())},e.prototype.cloneProperties=function(){var e=this.pointCloudMetadata;return o.__assign(o.__assign({},t.prototype.cloneProperties.call(this)),{pointCloudMetadata:e})},o.__decorate([i.property({constructOnly:!0})],e.prototype,"pointCloudMetadata",void 0),e=r=o.__decorate([i.subclass("esri.views.3d.layers.i3s.PointGraphic")],e)}(r);e.PointGraphic=n}));
+define(["require","exports","tslib","../../../../Graphic","../../../../core/accessorSupport/decorators"],(function(t,e,o,r,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.PointGraphic=void 0;var n=function(t){function e(e){return t.call(this,e)||this}var r;return o.__extends(e,t),r=e,e.prototype.clone=function(){return new r(this.cloneProperties())},e.prototype.cloneProperties=function(){var e=this.pointCloudMetadata;return o.__assign(o.__assign({},t.prototype.cloneProperties.call(this)),{pointCloudMetadata:e})},o.__decorate([i.property({constructOnly:!0})],e.prototype,"pointCloudMetadata",void 0),e=r=o.__decorate([i.subclass("esri.views.3d.layers.i3s.PointGraphic")],e)}(r);e.PointGraphic=n}));

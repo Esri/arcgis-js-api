@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","../engine/BitmapTileContainer"],(function(e,i,t,r,n){Object.defineProperty(i,"__esModule",{value:!0}),i.BitmapTileLayerView2D=function(e){return function(e){function i(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(i,e),i.prototype.attach=function(){this.view.timeline.record(this.layer.title+" (BitmapTileLayer) Attach"),this._bitmapView=new n.BitmapTileContainer(this._tileInfoView),this.container.addChild(this._bitmapView)},i.prototype.detach=function(){this.container.removeChild(this._bitmapView),this._bitmapView.removeAllChildren()},i=t.__decorate([r.subclass("esri.views.2d.layers.BitmapTileLayerView2D")],i)}(e)}}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","../engine/BitmapTileContainer"],(function(e,i,t,r,n){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.BitmapTileLayerView2D=void 0,i.BitmapTileLayerView2D=function(e){return function(e){function i(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(i,e),i.prototype.attach=function(){this.view.timeline.record(this.layer.title+" (BitmapTileLayer) Attach"),this._bitmapView=new n.BitmapTileContainer(this._tileInfoView),this.container.addChild(this._bitmapView)},i.prototype.detach=function(){this.container.removeChild(this._bitmapView),this._bitmapView.removeAllChildren()},i=t.__decorate([r.subclass("esri.views.2d.layers.BitmapTileLayerView2D")],i)}(e)}}));

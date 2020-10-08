@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./content/AttachmentsContent","./content/Content","./content/CustomContent","./content/FieldsContent","./content/MediaContent","./content/TextContent"],(function(t,e,n,o,s,C,c,i){Object.defineProperty(e,"__esModule",{value:!0}),e.AttachmentsContent=n,e.BaseContent=o,e.CustomContent=s,e.FieldsContent=C,e.MediaContent=c,e.TextContent=i,e.isContent=function(t){return t instanceof o},e.types={base:null,key:"type",typeMap:{attachment:n,custom:s,fields:C,media:c,text:i}}}));
+define(["require","exports","./content/AttachmentsContent","./content/Content","./content/CustomContent","./content/FieldsContent","./content/MediaContent","./content/TextContent"],(function(t,e,n,o,s,C,i,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.persistableTypes=e.isContent=e.TextContent=e.MediaContent=e.FieldsContent=e.CustomContent=e.BaseContent=e.AttachmentsContent=void 0,e.AttachmentsContent=n,e.BaseContent=o,e.CustomContent=s,e.FieldsContent=C,e.MediaContent=i,e.TextContent=a,e.isContent=function(t){return t instanceof o},e.persistableTypes={base:null,key:"type",typeMap:{attachment:n,media:i,text:a,field:C}}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../ScreenSpacePass","../../shaderModules/interfaces","../../shaderModules/ShaderBuilder"],(function(e,r,o,n,a,l){var t;Object.defineProperty(r,"__esModule",{value:!0}),r.build=function(){var e=new l.ShaderBuilder;return e.include(n.ScreenSpacePass),e.fragment.uniforms.add("tex","sampler2D"),e.fragment.uniforms.add("color","vec4"),e.fragment.code.add(a.glsl(t||(t=o.__makeTemplateObject(["\n    void main() {\n      vec4 texColor = texture2D(tex, uv);\n      gl_FragColor = texColor * color;\n    }\n  "],["\n    void main() {\n      vec4 texColor = texture2D(tex, uv);\n      gl_FragColor = texColor * color;\n    }\n  "])))),e}}));
+define(["require","exports","tslib","../ScreenSpacePass","../../shaderModules/interfaces","../../shaderModules/ShaderBuilder"],(function(e,r,o,n,t,a){"use strict";var l;Object.defineProperty(r,"__esModule",{value:!0}),r.build=void 0,r.build=function(){var e=new a.ShaderBuilder;return e.include(n.ScreenSpacePass),e.fragment.uniforms.add("tex","sampler2D"),e.fragment.uniforms.add("color","vec4"),e.fragment.code.add(t.glsl(l||(l=o.__makeTemplateObject(["\n    void main() {\n      vec4 texColor = texture2D(tex, uv);\n      gl_FragColor = texColor * color;\n    }\n  "],["\n    void main() {\n      vec4 texColor = texture2D(tex, uv);\n      gl_FragColor = texColor * color;\n    }\n  "])))),e}}));

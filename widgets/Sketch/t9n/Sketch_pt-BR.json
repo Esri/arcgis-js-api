@@ -36,5 +36,14 @@
   "verticesCount": "{count} Vértices",
   "deleteFeature": "Excluir feição",
   "deleteVertex": "Excluir vértice",
-  "duplicate": "Duplicado"
+  "duplicate": "Duplicado",
+  "selectCircle": "Selecionar por círculo",
+  "selectFeature": "Selecionar feição",
+  "selectFeatures": "Selecionar feições",
+  "selectLasso": "Selecionar por laço",
+  "selectLine": "Selecionar por linha",
+  "selectMarquee": "Selecione por marquise",
+  "selectPolygon": "Selecionar por polígono",
+  "selectRectangle": "Selecionar por retângulo",
+  "clearSelection": "Limpar seleção"
 }

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/global"],(function(e,r,o){Object.defineProperty(r,"__esModule",{value:!0}),r.removeLoadedShaderModules=function(){var e,r=null===(e=o.require)||void 0===e?void 0:e.modules;if(r)for(var l=0,d=Object.keys(r);l<d.length;l++){var i=d[l];-1!==i.search(".glsl")&&delete r[i]}}}));
+define(["require","exports","../../../../core/global"],(function(e,o,r){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.removeLoadedShaderModules=void 0,o.removeLoadedShaderModules=function(){var e,o=null===(e=r.require)||void 0===e?void 0:e.modules;if(o)for(var d=0,l=Object.keys(o);d<l.length;d++){var i=l[d];-1!==i.search(".glsl")&&delete o[i]}}}));

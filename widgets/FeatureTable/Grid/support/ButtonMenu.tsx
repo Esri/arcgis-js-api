@@ -13,12 +13,23 @@
  *
  * ![default and custom feature table menus](../../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
  *
- * @beta
+ * The table below details accessibility keys that can be used when working with the menu.
+ *
+ * | Action | Menu behavior |
+ * | ------|-------------- |
+ * | `Enter/Return` | Open the focused menu button |
+ * | `Enter/Return` | Selects the menu {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenu items} if focused |
+ * | `Enter/Return` | Opens any child {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenu items} (sub-menu) and focuses its container |
+ * | `Tab` | Focuses the first child {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenu item} in a sub-menu. |
+ * | Arrow keys | Provides scrolling through menus with a fixed height |
+ * | `Esc` | Closes the menu at any time |
+ * | (Editing specific) `Enter/Return/Spacebar` | Enables a focused cell to enable the edit workflow |
+ *
  * @module esri/widgets/FeatureTable/Grid/support/ButtonMenu
  * @amdalias ButtonMenu
  * @since 4.16
  *
- * @see [ButtonMenu.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ButtonMenu.tsx)
+ * @see [ButtonMenu.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable/Grid/support/ButtonMenu.tsx)
  * @see [ButtonMenu.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ButtonMenu.scss)
  * @see [Sample - FeatureTable Widget](../sample-code/widgets-featuretable/index.html)
  * @see [Sample - FeatureTable widget using a map](../sample-code/widgets-featuretable-map/index.html)
@@ -308,7 +319,8 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
         title={label}
         selected={open}
         onclick={this._toggleOpen}
-        tabIndex={0}
+        tabindex="0"
+        type="button"
       />
     );
   }
@@ -364,10 +376,12 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
         for={itemId}
         key={itemId}
         onkeydown={(event) => this._handleMenuItemKeydown(event, item)}
+        onclick={(event) => this._handleMenuItemInteraction(event, item)}
         role="menuitem"
-        tabindex="-1"
+        tabindex="0"
       >
         <input
+          disabled={true}
           checked={item.selected}
           class={CSS.checkbox}
           id={itemId}
@@ -380,7 +394,6 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
           class={this.classes(CSS.button, CSS.itemLabel)}
           for={itemId}
           id={labelId}
-          onclick={(event) => this._handleMenuItemInteraction(event, item)}
         >
           <span class={this.classes(CSS.icon, item.iconClass)} aria-hidden={true} />
           <span class={CSS.itemLabelContent}>{item.label}</span>
@@ -416,6 +429,9 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
     item.open = !!(item.selected && item.items);
     item.autoCloseMenu && this.set("open", false);
     item.clickFunction && item.clickFunction({ event, item });
+
+    // Prevent sub-menu items from firing duplicate events
+    event.stopPropagation();
   }
 
   private _handleMenuItemKeydown(event: KeyboardEvent, item: ButtonMenuItem): void {

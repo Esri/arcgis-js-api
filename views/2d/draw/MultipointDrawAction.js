@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../draw/MultipointDrawAction"],(function(r,e,i){return i}));
+define(["require","exports","../../draw/MultipointDrawAction"],(function(r,t,e){"use strict";return e}));

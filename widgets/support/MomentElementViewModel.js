@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,t,r,o,s){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.state="ready",t.value=new Date,t}return r.__extends(t,e),r.__decorate([s.property()],t.prototype,"state",void 0),r.__decorate([s.property()],t.prototype,"value",void 0),t=r.__decorate([s.subclass("esri.widgets.support.MomentElementViewModel")],t)}(o)}));
+define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators"],(function(e,t,r,o,s){"use strict";return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.state="ready",t.value=new Date,t}return r.__extends(t,e),r.__decorate([s.property()],t.prototype,"state",void 0),r.__decorate([s.property()],t.prototype,"value",void 0),t=r.__decorate([s.subclass("esri.widgets.support.MomentElementViewModel")],t)}(o)}));

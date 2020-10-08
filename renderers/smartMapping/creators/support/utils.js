@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../smartMapping/renderers/support/utils"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.createSymbol=t.createSymbol,r.getSizeRangeForAxis=t.getSizeRangeForAxis}));
+define(["require","exports","../../../../smartMapping/renderers/support/utils"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"createSymbol",{enumerable:!0,get:function(){return t.createSymbol}}),Object.defineProperty(r,"getSizeRangeForAxis",{enumerable:!0,get:function(){return t.getSizeRangeForAxis}})}));

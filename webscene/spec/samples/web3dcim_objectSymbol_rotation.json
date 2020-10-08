@@ -4,7 +4,7 @@
       "id": "heading15",
       "listMode": "show",
       "title": "15° heading",
-      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
+      "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/ArcGIS/rest/services/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {
@@ -44,7 +44,7 @@
       "id": "visvarrotationinfo",
       "listMode": "show",
       "title": "rotationInfo visualVariables",
-      "url": "http://zrh-arcgis-server.esri.com/server/rest/services/Hosted/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
+      "url": "https://servicesqa.arcgis.com/SdQnSRS214Ul5Jv5/ArcGIS/rest/services/F__3857__NL_Rotterdam__Drivers/FeatureServer/0",
       "layerType": "ArcGISFeatureLayer",
       "layerDefinition": {
         "elevationInfo": {

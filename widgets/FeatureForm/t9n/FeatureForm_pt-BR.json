@@ -6,6 +6,6 @@
     "outsideRange": "O valor deve estar entre {min} e {max}",
     "invalidCodedValue": "O valor deve ser um dos valores listados.",
     "invalidType": "Não é um valor válido",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Este campo requer um mínimo de {min} caracteres"
   }
 }

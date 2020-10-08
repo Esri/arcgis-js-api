@@ -6,6 +6,6 @@
     "outsideRange": "La valeur doit être comprise entre {min} et {max}",
     "invalidCodedValue": "La valeur doit figurer dans la liste des valeurs répertoriées.",
     "invalidType": "Pas une valeur valide",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Ce champ nécessite au minimum {min} caractères"
   }
 }

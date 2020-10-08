@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/location"],(function(e,r,t,a,o,n){Object.defineProperty(r,"__esModule",{value:!0});var i=o.getLogger("esri.renderers.smartMapping.creators.location");a.deprecatedModule(i,"esri/renderers/smartMapping/creators/location",{replacement:"esri/smartMapping/renderers/location"}),t.__exportStar(n,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/location"],(function(e,r,t,a,o,s){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i=o.getLogger("esri.renderers.smartMapping.creators.location");a.deprecatedModule(i,"esri/renderers/smartMapping/creators/location",{replacement:"esri/smartMapping/renderers/location"}),t.__exportStar(s,r)}));

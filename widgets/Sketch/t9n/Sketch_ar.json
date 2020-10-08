@@ -36,5 +36,14 @@
   "verticesCount": "{count} نقاط قممية",
   "deleteFeature": "حذف المعلم",
   "deleteVertex": "حذف الرأس",
-  "duplicate": "تكرار"
+  "duplicate": "تكرار",
+  "selectCircle": "تحديد بواسطة دائرة",
+  "selectFeature": "حدد المعلم",
+  "selectFeatures": "اختر معالم",
+  "selectLasso": "حدد بواسطة lasso",
+  "selectLine": "تحديد بواسطة خط",
+  "selectMarquee": "تحديد حسب النص المتحرك",
+  "selectPolygon": "تحديد بواسطة مضلع",
+  "selectRectangle": "تحديد بواسطة مستطيل",
+  "clearSelection": "مسح التحديد"
 }

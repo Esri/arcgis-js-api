@@ -24,8 +24,6 @@
   "stop": "إيقاف تشغيل",
   "stopLabelTemplate": "إيقاف {number} ({label})",
   "unlocated": "غير موقع",
-  "searchFieldPlaceholder": "ابحث في الخريطة أو انقر عليها",
-  "viewlessSearchFieldPlaceholder": "بحث",
   "directionsPlaceholder": "سوف يظهر المسار الخاص بك هنا.",
   "etaTemplate": "{time} {gmt}",
   "eta": "الوقت المقدر للوصول",

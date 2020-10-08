@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,r,t,o,n){return function(e){function r(r){var t=e.call(this,r)||this;return t.type=null,t}return t.__extends(r,e),t.__decorate([n.property()],r.prototype,"type",void 0),r=t.__decorate([n.subclass("esri.form.elements.inputs.Input")],r)}(o.JSONSupport)}));
+define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,t,r,o,s){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.type=null,r}return r.__extends(t,e),r.__decorate([s.property()],t.prototype,"type",void 0),t=r.__decorate([s.subclass("esri.form.elements.inputs.Input")],t)}(o.JSONSupport)}));

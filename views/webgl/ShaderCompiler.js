@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,t){return function(){function e(e){this.readFile=e}return e.prototype.resolveIncludes=function(e){return this.resolve(e)},e.prototype.resolve=function(e,t){var r=this;if(void 0===t&&(t=new Map),t.has(e))return t.get(e);var n=this.read(e);if(!n)throw new Error("cannot find shader file "+e);for(var i=/^[^\S\n]*#include\s+<(\S+)>[^\S\n]?/gm,o=i.exec(n),s=[];null!=o;)s.push({path:o[1],start:o.index,length:o[0].length}),o=i.exec(n);var a=0,u="";return s.forEach((function(e){u+=n.slice(a,e.start),u+=t.has(e.path)?"":r.resolve(e.path,t),a=e.start+e.length})),u+=n.slice(a),t.set(e,u),u},e.prototype.read=function(e){return this.readFile(e)},e}()}));
+define(["require","exports"],(function(e,t){"use strict";return function(){function e(e){this.readFile=e}return e.prototype.resolveIncludes=function(e){return this.resolve(e)},e.prototype.resolve=function(e,t){var r=this;if(void 0===t&&(t=new Map),t.has(e))return t.get(e);var n=this.read(e);if(!n)throw new Error("cannot find shader file "+e);for(var i=/^[^\S\n]*#include\s+<(\S+)>[^\S\n]?/gm,o=i.exec(n),s=[];null!=o;)s.push({path:o[1],start:o.index,length:o[0].length}),o=i.exec(n);var a=0,u="";return s.forEach((function(e){u+=n.slice(a,e.start),u+=t.has(e.path)?"":r.resolve(e.path,t),a=e.start+e.length})),u+=n.slice(a),t.set(e,u),u},e.prototype.read=function(e){return this.readFile(e)},e}()}));

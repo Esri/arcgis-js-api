@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/jsonMap","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,t,r,o,i,l){var n=o.strict()({pointCloudValueFilter:"value",pointCloudBitfieldFilter:"bitfield",pointCloudReturnFilter:"return"});return function(e){function t(t){var r=e.call(this,t)||this;return r.field=null,r.type=null,r}return r.__extends(t,e),t.prototype.clone=function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},r.__decorate([l.property({type:String,json:{write:{enabled:!0,isRequired:!0}}})],t.prototype,"field",void 0),r.__decorate([l.property({readOnly:!0,type:n.apiValues,nonNullable:!0,json:{read:!1,write:n.write}})],t.prototype,"type",void 0),t=r.__decorate([l.subclass("esri.layers.pointCloudFilters.PointCloudFilter")],t)}(i.JSONSupport)}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(e,r,t,o,n){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.field=null,t.type=null,t}return t.__extends(r,e),r.prototype.clone=function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},t.__decorate([n.property({type:String,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"field",void 0),t.__decorate([n.property({readOnly:!0,nonNullable:!0,json:{read:!1}})],r.prototype,"type",void 0),r=t.__decorate([n.subclass("esri.layers.pointCloudFilters.PointCloudFilter")],r)}(o.JSONSupport)}));

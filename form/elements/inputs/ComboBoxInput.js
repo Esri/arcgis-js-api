@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(e,o,t,r,n){return function(e){function o(o){var t=e.call(this,o)||this;return t.type="combo-box",t}var n;return t.__extends(o,e),n=o,o.prototype.clone=function(){return new n},t.__decorate([r.property({type:["combo-box"],json:{read:!1,write:!0}})],o.prototype,"type",void 0),o=n=t.__decorate([r.subclass("esri.form.elements.inputs.ComboBoxInput")],o)}(n)}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(e,t,o,r,n){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.type="combo-box",o}var n;return o.__extends(t,e),n=t,t.prototype.clone=function(){return new n},o.__decorate([r.property({type:["combo-box"],json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=n=o.__decorate([r.subclass("esri.form.elements.inputs.ComboBoxInput")],t)}(n)}));

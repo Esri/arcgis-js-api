@@ -36,5 +36,14 @@
   "verticesCount": "{count} käänupunkt(i)",
   "deleteFeature": "Kustuta objekt",
   "deleteVertex": "Kustuta käänupunkt",
-  "duplicate": "Duplikaat"
+  "duplicate": "Duplikaat",
+  "selectCircle": "Vali ringi järgi",
+  "selectFeature": "Vali objekt",
+  "selectFeatures": "Vali objektid",
+  "selectLasso": "Vali lassoga",
+  "selectLine": "Vali joone järgi",
+  "selectMarquee": "Vali sildi järgi",
+  "selectPolygon": "Vali polügooni järgi",
+  "selectRectangle": "Vali ristkülikuga",
+  "clearSelection": "Tühista valik"
 }

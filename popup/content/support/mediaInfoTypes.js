@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../BarChartMediaInfo","../ColumnChartMediaInfo","../ImageMediaInfo","../LineChartMediaInfo","../PieChartMediaInfo","../mixins/MediaInfo"],(function(e,a,i,t,n,r,o,d){Object.defineProperty(a,"__esModule",{value:!0}),a.types={base:d,key:"type",defaultKeyValue:"image",typeMap:{"bar-chart":i,"column-chart":t,"line-chart":r,"pie-chart":o,image:n}},a.default=a.types}));
+define(["require","exports","../BarChartMediaInfo","../ColumnChartMediaInfo","../ImageMediaInfo","../LineChartMediaInfo","../PieChartMediaInfo","../mixins/MediaInfo"],(function(e,a,t,i,r,n,o,d){"use strict";Object.defineProperty(a,"__esModule",{value:!0}),a.types=void 0,a.types={base:d,key:"type",defaultKeyValue:"image",typeMap:{"bar-chart":t,"column-chart":i,"line-chart":n,"pie-chart":o,image:r}},a.default=a.types}));

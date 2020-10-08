@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../arrayUtils","../lang"],(function(t,e,n,o){Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(){this._values=new Map}return t.prototype.clone=function(e){var n=new t;return this._values.forEach((function(t,r){e&&e.has(r)||n.set(r,o.clone(t))})),n},t.prototype.get=function(t){return this._values.get(t)},t.prototype.originOf=function(){return 6},t.prototype.keys=function(){return n.keysOfMap(this._values)},t.prototype.set=function(t,e){this._values.set(t,e)},t.prototype.delete=function(t){this._values.delete(t)},t.prototype.has=function(t){return this._values.has(t)},t.prototype.forEach=function(t){this._values.forEach(t)},t}();e.Store=r}));
+define(["require","exports","../arrayUtils","../lang"],(function(t,e,o,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.Store=void 0;var r=function(){function t(){this._values=new Map}return t.prototype.clone=function(e){var o=new t;return this._values.forEach((function(t,r){e&&e.has(r)||o.set(r,n.clone(t))})),o},t.prototype.get=function(t){return this._values.get(t)},t.prototype.originOf=function(){return 6},t.prototype.keys=function(){return o.keysOfMap(this._values)},t.prototype.set=function(t,e){this._values.set(t,e)},t.prototype.delete=function(t){this._values.delete(t)},t.prototype.has=function(t){return this._values.has(t)},t.prototype.forEach=function(t){this._values.forEach(t)},t}();e.Store=r}));

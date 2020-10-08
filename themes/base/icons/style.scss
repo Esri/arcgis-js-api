@@ -1,18 +1,19 @@
 @import "variables";
 
 @font-face {
-  font-family: 'CalciteWebCoreIcons';
+  font-family: "#{$icomoon-font-family}";
   src:
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.ttf?iz9r4h') format('truetype'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.woff?iz9r4h') format('woff'),
-    url('#{$icomoon-font-path}/CalciteWebCoreIcons.svg?iz9r4h#CalciteWebCoreIcons') format('svg');
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?avpuei") format("truetype"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?avpuei") format("woff"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?avpuei##{$icomoon-font-family}") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="esri-icon-"], [class*=" esri-icon-"] {
+[class^="esri-icon-"],
+[class*=" esri-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'CalciteWebCoreIcons' !important;
+  font-family: "#{$icomoon-font-family}" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,8 +26,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@function unicode($str) {
-  @return unquote("\"") + $str + unquote("\"");
+@function unicode($str) {	
+  @return unquote("\"") + $str + unquote("\"");	
 }
 
 .esri-icon-close {
@@ -1076,6 +1077,24 @@
 .esri-icon-measure-area {
   &:before {
     content: unicode($esri-icon-measure-area);
+    color: $fill-color;
+  }
+}
+.esri-icon-legend {
+  &:before {
+    content: unicode($esri-icon-legend);
+    color: $fill-color;
+  }
+}
+.esri-icon-sliders {
+  &:before {
+    content: unicode($esri-icon-sliders);
+    color: $fill-color;
+  }
+}
+.esri-icon-sliders-horizontal {
+  &:before {
+    content: unicode($esri-icon-sliders-horizontal);
     color: $fill-color;
   }
 }

@@ -24,8 +24,6 @@
   "stop": "Lõpeta",
   "stopLabelTemplate": "Lõpeta {number} ({label})",
   "unlocated": "Lokeerimata",
-  "searchFieldPlaceholder": "Otsi või klõpsa kaardil",
-  "viewlessSearchFieldPlaceholder": "Otsi",
   "directionsPlaceholder": "Teie marsruut kuvatakse siin.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Eeldatav saabumisaeg",

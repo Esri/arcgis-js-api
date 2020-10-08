@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
 define(["require","exports"],function(){function W(c){if("number"===typeof c)return r.$c.vh(c);if(null==c)return null;if(null!=ia[c])return r.$c.vh(ia[c]);throw Error("Unrecognised Unit Type");}function ja(c){if("number"===typeof c)return r.$c.vh(c);if(null==c)return null;if(null!=ka[c])return r.$c.vh(ka[c]);throw Error("Unrecognised Unit Type");}function fa(c){if(c)switch(c){case "loxodrome":return 1;case "great-elliptic":return 2;case "normal-section":return 3;case "shape-preserving":return 4}return 0}
 function R(c,n,h,b){if(null==h||h.u())return null;switch(h.G()){case r.po.Point:return c.exportPoint(n,h,b);case r.po.Polygon:return c.exportPolygon(n,h,b);case r.po.Polyline:return c.exportPolyline(n,h,b);case r.po.MultiPoint:return c.exportMultipoint(n,h,b);case r.po.Envelope:return c.exportExtent(n,h,b)}return null}function ga(c,n,h,b){if(h.G()!==r.po.Point)throw Error("Geometry not Point");return c.exportPoint(n,h,b)}function G(c,n,h){return c.convertToGEGeometry(n,h)}function J(c){var n=c.wkid;

@@ -21,7 +21,7 @@
     "showSublayer": "Rādīt apakšslāni"
   },
   "failed": "Neizdevās ielādēt datus rīkā Building explorer.",
-  "unsupported": "Rīku Building Explorer ēku izpēti atbalsta tikai SceneView.",
+  "unsupported": "Building Explore atbalsta tikai SceneView.",
   "noData": "Logrīkam nav pievienots neviens slānis.",
   "widgetLabel": "Building Explorer"
 }

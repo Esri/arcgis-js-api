@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e,r,t){for(var n=0,i=r.length;n<i;n++){var l=r[n];Array.isArray(l)?o(e,l,t):null!=l&&!1!==l&&("string"==typeof l&&(l={vnodeSelector:"",properties:void 0,children:void 0,text:l.toString(),domNode:null}),t.push(l))}};r.h=function(e,r,t){if(Array.isArray(r))t=r,r=void 0;else if(r&&("string"==typeof r||r.hasOwnProperty("vnodeSelector"))||t&&("string"==typeof t||t.hasOwnProperty("vnodeSelector")))throw new Error("h called with invalid arguments");var n,i;return t&&1===t.length&&"string"==typeof t[0]?n=t[0]:t&&(o(e,t,i=[]),0===i.length&&(i=void 0)),{vnodeSelector:e,properties:r,children:i,text:""===n?void 0:n,domNode:null}}}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.h=void 0;var t=function(e,r,o){for(var n=0,i=r.length;n<i;n++){var d=r[n];Array.isArray(d)?t(e,d,o):null!=d&&!1!==d&&("string"==typeof d&&(d={vnodeSelector:"",properties:void 0,children:void 0,text:d.toString(),domNode:null}),o.push(d))}};r.h=function(e,r,o){if(Array.isArray(r))o=r,r=void 0;else if(r&&("string"==typeof r||r.hasOwnProperty("vnodeSelector"))||o&&("string"==typeof o||o.hasOwnProperty("vnodeSelector")))throw new Error("h called with invalid arguments");var n,i;return o&&1===o.length&&"string"==typeof o[0]?n=o[0]:o&&(t(e,o,i=[]),0===i.length&&(i=void 0)),{vnodeSelector:e,properties:r,children:i,text:""===n?void 0:n,domNode:null}}}));

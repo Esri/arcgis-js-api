@@ -36,5 +36,14 @@
   "verticesCount": "{count} Stützpunkte",
   "deleteFeature": "Feature löschen",
   "deleteVertex": "Stützpunkt löschen",
-  "duplicate": "Duplikat"
+  "duplicate": "Duplikat",
+  "selectCircle": "Mit Kreis auswählen",
+  "selectFeature": "Feature auswählen",
+  "selectFeatures": "Features auswählen",
+  "selectLasso": "Mit Lasso auswählen",
+  "selectLine": "Mit Linie auswählen",
+  "selectMarquee": "Mit Rahmen auswählen",
+  "selectPolygon": "Mit Polygon auswählen",
+  "selectRectangle": "Mit Rechteck auswählen",
+  "clearSelection": "Auswahl aufheben"
 }

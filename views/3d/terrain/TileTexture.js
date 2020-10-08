@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e){this._texture=e,this._refCount=1}return e.prototype.retain=function(){++this._refCount},e.prototype.release=function(){--this._refCount,0===this._refCount&&this._texture.dispose()},Object.defineProperty(e.prototype,"texture",{get:function(){return this._texture},enumerable:!0,configurable:!0}),e.prototype.generateMipmap=function(){this._texture.generateMipmap()},Object.defineProperty(e.prototype,"descriptor",{get:function(){return this._texture.descriptor},enumerable:!0,configurable:!0}),e}();t.TileTexture=r}));
+define(["require","exports"],(function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.TileTexture=void 0;var r=function(){function e(e){this._texture=e,this._refCount=1}return e.prototype.retain=function(){++this._refCount},e.prototype.release=function(){--this._refCount,0===this._refCount&&this._texture.dispose()},Object.defineProperty(e.prototype,"texture",{get:function(){return this._texture},enumerable:!1,configurable:!0}),e.prototype.generateMipmap=function(){this._texture.generateMipmap()},Object.defineProperty(e.prototype,"descriptor",{get:function(){return this._texture.descriptor},enumerable:!1,configurable:!0}),e}();t.TileTexture=r}));

@@ -1,0 +1,121 @@
+@mixin elevationProfile() {
+  $width: 600px;
+  $height: 320px;
+  $chart-height: 150px;
+  $stats-height: 70px;
+  $progress-bar-height: 3px;
+
+  .esri-elevation-profile {
+    &.esri-component.esri-widget--panel {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+
+      width: $width;
+      height: $height;
+      padding: $cap-spacing $side-spacing;
+    }
+
+    &__progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: $progress-bar-height;
+      background-color: $border-color--active;
+
+      transition: opacity 500ms ease-in-out, width 200ms ease-in-out;
+
+      opacity: 0;
+
+      &--visible {
+        opacity: 1;
+        transition: opacity 100ms ease-in-out, width 200ms ease-in-out;
+      }
+    }
+
+    &__header-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: $cap-spacing;
+    }
+
+    &__header {
+      flex-shrink: 0;
+      flex-grow: 1;
+    }
+
+    &__new-profile-button {
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    &__no-path-container {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__chart-container {
+      width: 100%;
+      height: $chart-height;
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
+  }
+
+  .esri-elevation-profile-stats {
+    font-size: $font-size--small;
+    display: table;
+    margin-top: $cap-spacing;
+    height: $stats-height;
+    align-items: center;
+
+    &--no-stats {
+      display: flex;
+      font-size: $font-size;
+      flex-shrink: 0;
+      flex-grow: 0;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__elevation-stats,
+    &__slope-stats {
+      display: table-row;
+
+      > label {
+        display: table-cell;
+        vertical-align: middle;
+        font-weight: $font-weight--medium;
+        margin-right: $side-spacing;
+      }
+    }
+
+    &__stat {
+      display: table-cell;
+      margin-right: $side-spacing--three-quarters;
+
+      align-items: flex-start;
+      flex-shrink: 0;
+
+      > label {
+        font-weight: $font-weight--medium;
+        line-height: 0.8em;
+      }
+    }
+
+    &__stat-value {
+      font-weight: $font-weight--regular;
+      line-height: 0.8em;
+    }
+  }
+}
+
+@if $include_ElevationProfile == true {
+  @include elevationProfile();
+}

@@ -1,7 +1,7 @@
 {
   "title": "Web Map Tile Service Info",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Object defines and provides information about layers in a [WMTSLayer](webTiledLayer.md) service.",
   "properties": {
     "customLayerParameters": {

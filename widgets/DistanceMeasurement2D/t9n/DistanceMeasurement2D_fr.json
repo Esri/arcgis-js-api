@@ -7,7 +7,7 @@
   "mode": "Mode",
   "modes": {
     "auto": "Automatique",
-    "planar": "plane",
+    "planar": "Planaire",
     "geodesic": "Géodésique"
   },
   "unit": "Unité",
@@ -16,7 +16,7 @@
     "imperial": "Impériales",
     "kilometers": "Kilomètres",
     "meters": "Mètres",
-    "miles": "Milles",
+    "miles": "Miles",
     "inches": "Pouces",
     "feet": "Pieds",
     "yards": "Yards",

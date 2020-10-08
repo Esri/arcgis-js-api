@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../core/compilerUtils"],(function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphicResultMessage=function(e){switch(e){case 0:break;case 1:return"not owned by a graphics layer";case 2:return"no geometry";case 3:return"the geometry type is not supported";case 4:return"the elevation mode is not supported";case 5:return"the symbol type is not supported";default:r.neverReached(e)}return""}}));
+define(["require","exports","../../../../core/compilerUtils"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.isSupportedGraphicResultMessage=void 0,t.isSupportedGraphicResultMessage=function(e){switch(e){case 0:break;case 1:return"not owned by a graphics layer";case 2:return"no geometry";case 3:return"the geometry type is not supported";case 4:return"the elevation mode is not supported";case 5:return"the symbol type is not supported";default:r.neverReached(e)}return""}}));

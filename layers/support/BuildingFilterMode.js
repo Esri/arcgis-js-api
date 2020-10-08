@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,p){return function(r){function e(){return null!==r&&r.apply(this,arguments)||this}return t.__extends(e,r),t.__decorate([p.property({readOnly:!0,json:{read:!1}})],e.prototype,"type",void 0),e=t.__decorate([p.subclass("esri.layers.support.BuildingFilterMode")],e)}(o.JSONSupport)}));
+define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators"],(function(r,e,t,o,s){"use strict";return function(r){function e(){return null!==r&&r.apply(this,arguments)||this}return t.__extends(e,r),t.__decorate([s.property({readOnly:!0,json:{read:!1}})],e.prototype,"type",void 0),e=t.__decorate([s.subclass("esri.layers.support.BuildingFilterMode")],e)}(o.JSONSupport)}));

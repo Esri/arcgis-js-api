@@ -24,8 +24,6 @@
   "stop": "Stabdyti",
   "stopLabelTemplate": "Sustojimas {number} ({label})",
   "unlocated": "Nerasta",
-  "searchFieldPlaceholder": "Ieškokite arba spustelėkite žemėlapyje",
-  "viewlessSearchFieldPlaceholder": "Ieškoti",
   "directionsPlaceholder": "Čia bus rodomas jūsų maršrutas.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Numatomas atvykimo laikas",

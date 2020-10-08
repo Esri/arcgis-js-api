@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../layers/support/fieldUtils"],(function(e,i,r,l){Object.defineProperty(i,"__esModule",{value:!0}),i.defineFieldProperties=function(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,dependsOn:["layer.fields","layer.outFields","requiredFields"],get:function(){var e=this.layer,i=this.layer.fields,d=this.requiredFields;return e.outFields?l.fixFields(i,r.__spreadArrays(l.unpackFieldNames(i,e.outFields),d)):l.fixFields(i,d)}}}}}));
+define(["require","exports","tslib","../../../../layers/support/fieldUtils"],(function(e,i,r,d){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.defineFieldProperties=void 0,i.defineFieldProperties=function(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,dependsOn:["layer.fields","layer.outFields","requiredFields"],get:function(){var e=this.layer,i=this.layer.fields,l=this.requiredFields;return e.outFields?d.fixFields(i,r.__spreadArrays(d.unpackFieldNames(i,e.outFields),l)):d.fixFields(i,l)}}}}}));

@@ -273,6 +273,10 @@
         width: $toggle-handle-size;
       }
     }
+    &.esri-disabled-element {
+      pointer-events: none;
+      opacity: $opacity--disabled;
+    }
   }
   .esri-layer-list__action-toggle--on .esri-layer-list__item-action-icon {
     // Toggle on
@@ -353,6 +357,16 @@
     .esri-layer-list__item-error-message [class*="esri-icon-"] {
       margin-right: 0;
       margin-left: 0.3rem;
+    }
+    .esri-layer-list__item-container {
+      border-left: none;
+      border-right: $border-size--active solid transparent;
+    }
+    .esri-layer-list__item[aria-selected="true"] > .esri-layer-list__item-container {
+      border-right-color: $border-color--active;
+      &:hover {
+        border-right-color: $border-color--active;
+      }
     }
   }
 }

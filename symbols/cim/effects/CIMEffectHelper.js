@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../CIMCursor","../CIMEffects","../CIMOperators"],(function(e,r,t,n,o){Object.defineProperty(r,"__esModule",{value:!0});var f=function(){function e(){}return e.executeEffects=function(e,r){for(var f=t.cloneAndDecodeGeometry(r),c=new n.SimpleGeometryCursor(f),u=0,i=e;u<i.length;u++){var a=i[u],d=o.getEffectOperator(a);d&&(c=d.execute(c,a,96/72))}return c},e.next=function(e){var r=e.next();return t.deltaEncodeGeometry(r),r},e}();r.CIMEffectHelper=f}));
+define(["require","exports","../CIMCursor","../CIMEffects","../CIMOperators"],(function(e,r,t,n,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.CIMEffectHelper=void 0;var f=function(){function e(){}return e.executeEffects=function(e,r){for(var f=t.cloneAndDecodeGeometry(r),c=new n.SimpleGeometryCursor(f),u=0,i=e;u<i.length;u++){var s=i[u],a=o.getEffectOperator(s);a&&(c=a.execute(c,s,96/72))}return c},e.next=function(e){var r=e.next();return t.deltaEncodeGeometry(r),r},e}();r.CIMEffectHelper=f}));

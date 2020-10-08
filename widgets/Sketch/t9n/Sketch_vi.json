@@ -36,5 +36,14 @@
   "verticesCount": "{count} Đỉnh",
   "deleteFeature": "Xóa đối tượng",
   "deleteVertex": "Xóa đỉnh",
-  "duplicate": "Bản sao"
+  "duplicate": "Bản sao",
+  "selectCircle": "Chọn theo hình tròn",
+  "selectFeature": "Chọn đối tượng",
+  "selectFeatures": "Chọn các đối tượng",
+  "selectLasso": "Chọn theo lasso",
+  "selectLine": "Chọn theo đường thẳng",
+  "selectMarquee": "Chọn theo marquee",
+  "selectPolygon": "Chọn theo hình đa giác",
+  "selectRectangle": "Chọn theo hình chữ nhật",
+  "clearSelection": "Xóa lựa chọn"
 }

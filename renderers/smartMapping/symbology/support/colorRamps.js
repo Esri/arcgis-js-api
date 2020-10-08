@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../../core/deprecate","../../../../core/Logger","../../../../smartMapping/symbology/support/colorRamps"],(function(e,r,o,p,s,t){Object.defineProperty(r,"__esModule",{value:!0});var a=s.getLogger("esri.renderers.smartMapping.symbology.support.colorRamps");p.deprecatedModule(a,"esri/renderers/smartMapping/symbology/support/colorRamps",{replacement:"esri/smartMapping/symbology/support/colorRamps"}),o.__exportStar(t,r)}));
+define(["require","exports","tslib","../../../../core/deprecate","../../../../core/Logger","../../../../smartMapping/symbology/support/colorRamps"],(function(e,r,o,p,s,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var a=s.getLogger("esri.renderers.smartMapping.symbology.support.colorRamps");p.deprecatedModule(a,"esri/renderers/smartMapping/symbology/support/colorRamps",{replacement:"esri/smartMapping/symbology/support/colorRamps"}),o.__exportStar(t,r)}));

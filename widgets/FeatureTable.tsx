@@ -6,7 +6,7 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  * * Not supported in Internet Explorer 11.
- * * Editing date fields is not yet supported. This will be added in a future release.
+ * * Number and date formatting is not yet supported but will be added in a future release.
  * * Viewing related records is currently not supported.
  * * Viewing attachments is currently not supported, although if a feature contains
  * attachments, the total count per feature will display.
@@ -800,6 +800,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    */
   hideColumn(fieldName: string): void {
     this.grid?.hideColumn(fieldName);
+    this._updateMenuItems();
   }
 
   //----------------------------------
@@ -847,6 +848,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    */
   showColumn(fieldName: string): void {
     this.grid?.showColumn(fieldName);
+    this._updateMenuItems();
   }
 
   //----------------------------------

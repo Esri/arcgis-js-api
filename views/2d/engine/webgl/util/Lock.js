@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/promiseUtils"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){this._resolver=null}return e.prototype.isHeld=function(){return!!this._resolver},e.prototype.acquire=function(){var e=this;return this._resolver?this._resolver.promise.then((function(){return e.acquire()})):(this._resolver=t.createResolver(),t.resolve())},e.prototype.release=function(){var e=this._resolver;this._resolver=null,e.resolve()},e}();r.default=n,r.withLock=function(e,r,t){return e.acquire().then((function(){return r(t)})).then((function(){return e.release()})).catch((function(r){throw e.release(),r}))}}));
+define(["require","exports","../../../../../core/promiseUtils"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.withLock=void 0;var o=function(){function e(){this._resolver=null}return e.prototype.isHeld=function(){return!!this._resolver},e.prototype.acquire=function(){var e=this;return this._resolver?this._resolver.promise.then((function(){return e.acquire()})):(this._resolver=t.createResolver(),t.resolve())},e.prototype.release=function(){var e=this._resolver;this._resolver=null,e.resolve()},e}();r.default=o,r.withLock=function(e,r,t){return e.acquire().then((function(){return r(t)})).then((function(){return e.release()})).catch((function(r){throw e.release(),r}))}}));

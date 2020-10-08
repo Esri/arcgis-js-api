@@ -243,8 +243,9 @@ class NavigationToggle extends Widget {
    * @method toggle
    * @instance
    */
-  @aliasOf("viewModel.toggle")
-  toggle(): void {}
+  toggle(): void {
+    return this.viewModel.toggle();
+  }
 
   render(): VNode {
     const disabled = this.get<string>("viewModel.state") === "disabled";

@@ -1,7 +1,7 @@
 {
   "title": "StyleSymbolReference",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The StyleSymbolReference is used to reference a symbol from a portal styleItem",
   "properties": {
     "name": {

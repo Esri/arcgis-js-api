@@ -1,7 +1,7 @@
 {
   "title": "Filter Type",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The file authoring information for a filter, including the filter type and its value settings.",
   "properties": {
     "filterType": {

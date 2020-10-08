@@ -1,7 +1,7 @@
 {
   "title": "polylineGeometry",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Contains an array of paths and a spatialReference.",
   "properties": {
     "hasM": {

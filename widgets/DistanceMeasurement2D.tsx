@@ -399,6 +399,7 @@ class DistanceMeasurement2D extends Widget {
             onclick={this._newMeasurement}
             title={messages.newMeasurement}
             aria-label={messages.newMeasurement}
+            type="button"
           >
             {messages.newMeasurement}
           </button>

@@ -347,7 +347,8 @@ class Classic extends Widget {
       ? this.messages[stop.label] +
           ": " +
           intl.formatNumber(stop.value, {
-            style: "decimal"
+            style: "decimal",
+            notation: stop.value.toString().indexOf("e") > -1 ? "scientific" : "standard"
           })
       : "";
   }

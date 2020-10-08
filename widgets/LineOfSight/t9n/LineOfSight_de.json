@@ -1,7 +1,7 @@
 {
-  "widgetLabel": "Sichtlinie",
+  "widgetLabel": "Sichtbarkeitslinie",
   "hint": "Beginnen Sie mit der Analyse, indem Sie in die Szene klicken und den Beobachterpunkt und mindestens ein Ziel platzieren",
-  "unsupported": "Sichtlinie wird nur in SceneView unterstützt.",
+  "unsupported": "Sichtbarkeitslinie wird nur in SceneView unterstützt.",
   "done": "Fertig",
   "newAnalysis": "Neue Analyse",
   "continueAnalysis": "Analyse fortsetzen"

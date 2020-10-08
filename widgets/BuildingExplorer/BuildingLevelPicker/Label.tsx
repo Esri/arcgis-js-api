@@ -141,6 +141,7 @@ export class Label extends Widget implements LabelCtrParams {
           class={this.classes(CSS.clearButton, CSS.iconClose)}
           disabled={!this.active}
           onclick={this.onClear}
+          type="button"
         ></button>
       </div>
     );

@@ -1,7 +1,7 @@
 {
   "title": "Raster DataSource",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Raster data source is a file-based raster that resides in a registered raster workspace.",
   "properties": {
     "dataSourceName": {

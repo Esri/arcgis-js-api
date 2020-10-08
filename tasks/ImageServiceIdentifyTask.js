@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../request","../core/maybe","../core/accessorSupport/decorators","../geometry/support/normalizeUtils","./Task","./support/ImageServiceIdentifyResult"],(function(e,r,t,n,s,i,o,a,u){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(r,e),r.prototype.execute=function(e,r){var i=this,a=e.geometry?[e.geometry]:[];return o.normalizeCentralMeridian(a).then((function(o){var a=e.toJSON(),u=o&&o[0];s.isSome(u)&&(a.geometry=JSON.stringify(u.toJSON()));var c=i._encode(t.__assign(t.__assign({f:"json"},i.parsedUrl.query),a)),p=t.__assign(t.__assign({query:c},i.requestOptions),r);return n(i.parsedUrl.path+"/identify",p)})).then((function(e){return u.fromJSON(e.data)}))},r=t.__decorate([i.subclass("esri.tasks.ImageServiceIdentifyTask")],r)}(a)}));
+define(["require","exports","tslib","../core/accessorSupport/decorators","../rest/imageServiceIdentify","./Task"],(function(e,t,r,i,s,n){"use strict";return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),t.prototype.execute=function(e,t){return s.imageServiceIdentify(this.url,e,t)},t=r.__decorate([i.subclass("esri.tasks.ImageServiceIdentifyTask")],t)}(n)}));

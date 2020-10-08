@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./editingTools/draw/DrawGraphicTool","./editingTools/draw/DrawOperation","./editingTools/moveGraphic/GraphicMoveTool","./editingTools/reshapeGraphic/GraphicReshapeTool","./editingTools/transformGraphic/GraphicTransformTool"],(function(o,r,a,e,i,p,T){Object.defineProperty(r,"__esModule",{value:!0}),r.DrawGraphicTool=a.DrawGraphicTool,r.DrawOperation=e.DrawOperation,r.GraphicMoveTool=i.GraphicMoveTool,r.GraphicReshapeTool=p.GraphicReshapeTool,r.GraphicTransformTool=T.GraphicTransformTool}));
+define(["require","exports","./editingTools/draw/DrawGraphicTool","./editingTools/draw/DrawOperation","./editingTools/moveGraphic/GraphicMoveTool","./editingTools/reshapeGraphic/GraphicReshapeTool","./editingTools/transformGraphic/GraphicTransformTool"],(function(e,r,o,i,n,a,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),Object.defineProperty(r,"DrawGraphicTool",{enumerable:!0,get:function(){return o.DrawGraphicTool}}),Object.defineProperty(r,"DrawOperation",{enumerable:!0,get:function(){return i.DrawOperation}}),Object.defineProperty(r,"GraphicMoveTool",{enumerable:!0,get:function(){return n.GraphicMoveTool}}),Object.defineProperty(r,"GraphicReshapeTool",{enumerable:!0,get:function(){return a.GraphicReshapeTool}}),Object.defineProperty(r,"GraphicTransformTool",{enumerable:!0,get:function(){return t.GraphicTransformTool}})}));

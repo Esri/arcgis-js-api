@@ -36,5 +36,14 @@
   "verticesCount": "{Count} 個頂點",
   "deleteFeature": "刪除圖徵",
   "deleteVertex": "刪除頂點",
-  "duplicate": "複製"
+  "duplicate": "複製",
+  "selectCircle": "按圓形選擇",
+  "selectFeature": "選擇圖徵",
+  "selectFeatures": "選擇圖徵",
+  "selectLasso": "按套索選擇",
+  "selectLine": "按線條選擇",
+  "selectMarquee": "按選取框選擇",
+  "selectPolygon": "按多邊形選擇",
+  "selectRectangle": "按矩形選擇",
+  "clearSelection": "清除所選內容"
 }

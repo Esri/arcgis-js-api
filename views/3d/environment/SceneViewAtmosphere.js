@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(e,t,r,o,n){Object.defineProperty(t,"__esModule",{value:!0});var i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}var o;return r.__extends(t,e),o=t,Object.defineProperty(t.prototype,"quality",{set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)},enumerable:!0,configurable:!0}),t.prototype.clone=function(){return new o({quality:this.quality})},r.__decorate([n.property({type:["low","high"],value:"low"})],t.prototype,"quality",null),t=o=r.__decorate([n.subclass("esri.views.3d.environment.SceneViewAtmosphere")],t)}(o);t.SceneViewAtmosphere=i,t.default=i}));
+define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(e,t,r,o,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.SceneViewAtmosphere=void 0;var n=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}var o;return r.__extends(t,e),o=t,Object.defineProperty(t.prototype,"quality",{set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)},enumerable:!1,configurable:!0}),t.prototype.clone=function(){return new o({quality:this.quality})},r.__decorate([i.property({type:["low","high"],value:"low"})],t.prototype,"quality",null),t=o=r.__decorate([i.subclass("esri.views.3d.environment.SceneViewAtmosphere")],t)}(o);t.SceneViewAtmosphere=n,t.default=n}));

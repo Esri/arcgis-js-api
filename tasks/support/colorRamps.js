@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./AlgorithmicColorRamp","./ColorRamp","./MultipartColorRamp"],(function(e,t,r,o,l){Object.defineProperty(t,"__esModule",{value:!0}),t.types={key:"type",base:o,typeMap:{algorithmic:r,multipart:l}},t.fromJSON=function(e){return e&&e.type?"algorithmic"===e.type?r.fromJSON(e):"multipart"===e.type?l.fromJSON(e):null:null}}));
+define(["require","exports","./AlgorithmicColorRamp","./ColorRamp","./MultipartColorRamp"],(function(t,e,r,o,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.fromJSON=e.types=void 0,e.types={key:"type",base:o,typeMap:{algorithmic:r,multipart:i}},e.fromJSON=function(t){return t&&t.type?"algorithmic"===t.type?r.fromJSON(t):"multipart"===t.type?i.fromJSON(t):null:null}}));

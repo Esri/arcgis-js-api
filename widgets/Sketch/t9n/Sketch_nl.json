@@ -36,5 +36,14 @@
   "verticesCount": "{count} Vertices",
   "deleteFeature": "Object verwijderen",
   "deleteVertex": "Vertex verwijderen",
-  "duplicate": "Dupliceren"
+  "duplicate": "Dupliceren",
+  "selectCircle": "Selecteren op cirkel",
+  "selectFeature": "Object selecteren",
+  "selectFeatures": "Objecten selecteren",
+  "selectLasso": "Selecteren op lasso",
+  "selectLine": "Selecteren op lijn",
+  "selectMarquee": "Selecteren op marquee",
+  "selectPolygon": "Selecteren op polygoon",
+  "selectRectangle": "Selecteren op rechthoek",
+  "clearSelection": "Selectie wissen"
 }

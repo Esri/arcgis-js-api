@@ -6,6 +6,6 @@
     "outsideRange": "Valoarea trebuie să fie între {min} și {max}",
     "invalidCodedValue": "Valoarea trebuie să fie una dintre valorile listate.",
     "invalidType": "Nu este o valoare valabilă",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "Acest câmp trebuie să aibă minimum {min} caractere"
   }
 }

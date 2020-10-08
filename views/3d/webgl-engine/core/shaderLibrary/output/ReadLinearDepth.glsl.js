@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,r,a,n,t){function i(e){e.include(n.RgbaFloatEncoding),e.fragment.code.add(t.glsl(l||(l=a.__makeTemplateObject(["\n    float linearDepthFromTexture(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "],["\n    float linearDepthFromTexture(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "]))))}var l;Object.defineProperty(r,"__esModule",{value:!0}),r.ReadLinearDepth=i,function(e){e.bindUniforms=function(e,r){e.setUniform2fv("nearFar",r.nearFar)}}(i=r.ReadLinearDepth||(r.ReadLinearDepth={}))}));
+define(["require","exports","tslib","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,r,a,n,t){"use strict";var l;Object.defineProperty(r,"__esModule",{value:!0}),r.ReadLinearDepth=void 0,r.ReadLinearDepth=function(e){e.fragment.include(n.RgbaFloatEncoding),e.fragment.code.add(t.glsl(l||(l=a.__makeTemplateObject(["\n    float linearDepthFromTexture(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "],["\n    float linearDepthFromTexture(sampler2D depthTex, vec2 uv, vec2 nearFar) {\n      return -(rgba2float(texture2D(depthTex, uv)) * (nearFar[1] - nearFar[0]) + nearFar[0]);\n    }\n  "]))))}}));

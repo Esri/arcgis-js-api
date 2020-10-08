@@ -1,7 +1,7 @@
 {
   "title": "Raster Data Elevation Layer",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "RasterDataElevationLayer is a single-band raster layer used for rendering elevation.",
   "properties": {
     "id": {

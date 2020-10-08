@@ -1,7 +1,7 @@
 {
   "title": "initialState",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "An object that provides information about the initial environment settings and viewpoint of the web scene.",
   "properties": {
     "environment": {

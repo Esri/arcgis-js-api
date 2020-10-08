@@ -1,6 +1,6 @@
 {
   "title": "colorStop",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "A colorStop object describes the renderer's color ramp with more specificity than just colors.",
   "properties": {
     "color": {

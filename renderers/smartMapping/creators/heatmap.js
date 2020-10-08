@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/heatmap"],(function(e,r,a,t,p,s){Object.defineProperty(r,"__esModule",{value:!0});var n=p.getLogger("esri.renderers.smartMapping.creators.heatmap");t.deprecatedModule(n,"esri/renderers/smartMapping/creators/heatmap",{replacement:"esri/smartMapping/renderers/heatmap"}),a.__exportStar(s,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/heatmap"],(function(e,r,a,t,p,s){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var i=p.getLogger("esri.renderers.smartMapping.creators.heatmap");t.deprecatedModule(i,"esri/renderers/smartMapping/creators/heatmap",{replacement:"esri/smartMapping/renderers/heatmap"}),a.__exportStar(s,r)}));

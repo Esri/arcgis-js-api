@@ -6,6 +6,6 @@
     "outsideRange": "값은 {min}에서 {max} 사이여야 함",
     "invalidCodedValue": "값은 나열된 값 중 하나여야 합니다.",
     "invalidType": "유효한 값이 아님",
-    "tooShort": "This field requires a minimum of {min} characters"
+    "tooShort": "이 필드에는 최소 {min}자가 필요합니다."
   }
 }

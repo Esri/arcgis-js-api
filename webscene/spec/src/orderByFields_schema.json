@@ -1,7 +1,7 @@
 {
   "title": "orderByFields",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Object indicating the field display order for the related records and whether they should be sorted in ascending or descending order.",
   "properties": {
     "field": {

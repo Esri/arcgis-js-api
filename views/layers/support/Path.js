@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./ClipArea"],(function(e,r,t,o,n){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="path",r.path=[],r}return t.__extends(r,e),Object.defineProperty(r.prototype,"version",{get:function(){return(this._get("version")||0)+1},enumerable:!0,configurable:!0}),t.__decorate([o.property({type:[[[Number]]],json:{write:!0}})],r.prototype,"path",void 0),t.__decorate([o.property({readOnly:!0,dependsOn:["path"]})],r.prototype,"version",null),r=t.__decorate([o.subclass("esri.views.layers.support.Path")],r)}(n)}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./ClipArea"],(function(e,r,t,o,n){"use strict";return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.type="path",r.path=[],r}return t.__extends(r,e),Object.defineProperty(r.prototype,"version",{get:function(){return(this._get("version")||0)+1},enumerable:!1,configurable:!0}),t.__decorate([o.property({type:[[[Number]]],json:{write:!0}})],r.prototype,"path",void 0),t.__decorate([o.property({readOnly:!0,dependsOn:["path"]})],r.prototype,"version",null),r=t.__decorate([o.subclass("esri.views.layers.support.Path")],r)}(n)}));

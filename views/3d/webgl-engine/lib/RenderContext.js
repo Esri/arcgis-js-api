@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,t){var s=function(){function e(e,t,s,r,n,h){this.camera=null,this.pass=0,this.slot=0,this.highlightDepthTexture=null,this.renderOccludedMask=i,this.hasOccludees=!1,this.rctx=e,this.offscreenRenderingHelper=t,this.scenelightingData=s,this.shadowMap=r,this.ssaoHelper=n,this.sliceHelper=h}return e.prototype.resetRenderOccludedMask=function(){this.renderOccludedMask=i},Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return 4===this.pass},enumerable:!0,configurable:!0}),e}(),i=13;return s}));
+define(["require","exports","./Camera"],(function(e,t,s){"use strict";var i=function(){function e(e,t,i,n,a,h){this.camera=null,this.lastFrameCamera=new s.default,this.pass=0,this.slot=0,this.highlightDepthTexture=null,this.renderOccludedMask=r,this.hasOccludees=!1,this.rctx=e,this.offscreenRenderingHelper=t,this.scenelightingData=i,this.shadowMap=n,this.ssaoHelper=a,this.sliceHelper=h}return e.prototype.resetRenderOccludedMask=function(){this.renderOccludedMask=r},Object.defineProperty(e.prototype,"isHighlightPass",{get:function(){return 4===this.pass},enumerable:!1,configurable:!0}),e}(),r=13;return i}));

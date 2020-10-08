@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../support/buffer/InterleavedLayout"],(function(e,o,r){Object.defineProperty(o,"__esModule",{value:!0}),o.createVertexBufferLayout=function(e){var o=r.newLayout().vec3f("position");return e.normals&&o.vec2i16("normalCompressed",{glNormalized:!0}),1===e.textureCoordinates?o.vec2f("uv0"):2===e.textureCoordinates&&(o.vec2f("uv0"),o.vec4u16("uvRegion",{glNormalized:!0})),e.colors&&o.vec4u8("color",{glNormalized:!0}),o.alignTo(4)}}));
+define(["require","exports","../../../support/buffer/InterleavedLayout"],(function(e,r,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.createVertexBufferLayout=void 0,r.createVertexBufferLayout=function(e){var r=o.newLayout().vec3f("position");return e.normals&&r.vec2i16("normalCompressed",{glNormalized:!0}),1===e.textureCoordinates?r.vec2f("uv0"):2===e.textureCoordinates&&(r.vec2f("uv0"),r.vec4u16("uvRegion",{glNormalized:!0})),e.colors&&r.vec4u8("color",{glNormalized:!0}),r.alignTo(4)}}));

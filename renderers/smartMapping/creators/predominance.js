@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/predominance"],(function(e,r,n,a,p,t){Object.defineProperty(r,"__esModule",{value:!0});var i=p.getLogger("esri.renderers.smartMapping.creators.predominance");a.deprecatedModule(i,"esri/renderers/smartMapping/creators/predominance",{replacement:"esri/smartMapping/renderers/predominance"}),n.__exportStar(t,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/predominance"],(function(e,r,n,a,t,p){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var s=t.getLogger("esri.renderers.smartMapping.creators.predominance");a.deprecatedModule(s,"esri/renderers/smartMapping/creators/predominance",{replacement:"esri/smartMapping/renderers/predominance"}),n.__exportStar(p,r)}));

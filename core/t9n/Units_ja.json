@@ -29,17 +29,17 @@
     "kilometers": {
       "singular": "キロメートル",
       "plural": "キロメートル",
-      "abbr": "キロメートル"
+      "abbr": "km"
     },
     "inches": {
       "singular": "インチ",
       "plural": "インチ",
-      "abbr": "内"
+      "abbr": "in"
     },
     "feet": {
       "singular": "フィート",
       "plural": "フィート",
-      "abbr": "フィート"
+      "abbr": "ft"
     },
     "yards": {
       "singular": "ヤード",
@@ -49,7 +49,7 @@
     "miles": {
       "singular": "マイル",
       "plural": "マイル",
-      "abbr": "マイル"
+      "abbr": "mi"
     },
     "nautical-miles": {
       "singular": "海里",
@@ -59,7 +59,7 @@
     "us-feet": {
       "singular": "フィート (米国)",
       "plural": "フィート (米国)",
-      "abbr": "フィート"
+      "abbr": "ft"
     },
     "square-millimeters": {
       "singular": "平方ミリメートル",

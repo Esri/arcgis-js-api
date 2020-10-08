@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/Evented"],(function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(){this.events=new n,this.interactive=!0,this.selectable=!1,this.cursor=null,this.grabbable=!0}return t.prototype.intersectionDistance=function(t,e){return 0},t.prototype.attach=function(){},t.prototype.detach=function(){},t}();e.DrawManipulator=r}));
+define(["require","exports","../../../../../core/Evented"],(function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.DrawManipulator=void 0;var r=function(){function t(){this.events=new n,this.interactive=!0,this.selectable=!1,this.cursor=null,this.grabbable=!0}return t.prototype.intersectionDistance=function(t,e){return 0},t.prototype.attach=function(){},t.prototype.detach=function(){},t}();e.DrawManipulator=r}));

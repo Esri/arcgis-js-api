@@ -1,7 +1,7 @@
 {
   "title": "geometry",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Please refer to the links below for objects which define the JSON formats of geometry and spatial reference objects.",
   "oneOf": [
     {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","./ObjectPool"],(function(t,e,o,r){Object.defineProperty(e,"__esModule",{value:!0});var s=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._set=new Set,e}return o.__extends(e,t),e.prototype.destroy=function(){t.prototype.destroy.call(this),this._set=null},e.prototype.acquire=function(){for(var e=[],o=0;o<arguments.length;o++)e[o]=arguments[o];var r=t.prototype.acquire.apply(this,e);return this._set.delete(r),r},e.prototype.release=function(e){e&&!this._set.has(e)&&(t.prototype.release.call(this,e),this._set.add(e))},e.prototype._dispose=function(e){this._set.delete(e),t.prototype._dispose.call(this,e)},e}(r);e.ReentrantObjectPool=s}));
+define(["require","exports","tslib","./maybe","./ObjectPool"],(function(t,e,o,s,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.ReentrantObjectPool=void 0;var i=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._set=new Set,e}return o.__extends(e,t),e.prototype.destroy=function(){t.prototype.destroy.call(this),this._set=s.nullifyNonnullableForDispose(this._set)},e.prototype.acquire=function(){for(var e=[],o=0;o<arguments.length;o++)e[o]=arguments[o];var s=t.prototype.acquire.apply(this,e);return this._set.delete(s),s},e.prototype.release=function(e){e&&!this._set.has(e)&&(t.prototype.release.call(this,e),this._set.add(e))},e.prototype._dispose=function(e){this._set.delete(e),t.prototype._dispose.call(this,e)},e}(r);e.ReentrantObjectPool=i}));

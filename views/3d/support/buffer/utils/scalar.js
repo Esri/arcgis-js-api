@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports"],(function(e,r){Object.defineProperty(r,"__esModule",{value:!0}),r.copy=function(e,r,t){for(var n=e.typedBuffer,d=e.typedBufferStride,f=r.typedBuffer,u=r.typedBufferStride,o=t?t.count:r.count,c=(t&&t.dstIndex?t.dstIndex:0)*d,i=(t&&t.srcIndex?t.srcIndex:0)*u,p=0;p<o;++p)n[c]=f[i],c+=d,i+=u},r.makeDense=function(e,r){var t=e.count;r||(r=new e.TypedArrayConstructor(t));for(var n=0;n<t;n++)r[n]=e.get(n);return r}}));
+define(["require","exports"],(function(e,r){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.makeDense=r.copy=void 0,r.copy=function(e,r,t){for(var n=e.typedBuffer,d=e.typedBufferStride,o=r.typedBuffer,u=r.typedBufferStride,f=t?t.count:r.count,c=(t&&t.dstIndex?t.dstIndex:0)*d,s=(t&&t.srcIndex?t.srcIndex:0)*u,i=0;i<f;++i)n[c]=o[s],c+=d,s+=u},r.makeDense=function(e,r){var t=e.count;r||(r=new e.TypedArrayConstructor(t));for(var n=0;n<t;n++)r[n]=e.get(n);return r}}));

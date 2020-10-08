@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../geometry/Circle","../../../../../support/elevationInfoUtils"],(function(e,r,t,i,n,o){Object.defineProperty(r,"__esModule",{value:!0}),r.isSupportedGraphic=function(e){if("graphics"!==e.layer.type)return 1;var r=e.geometry;if(i.isNone(r))return 2;var a=r.type;switch(a){case"polygon":if(r instanceof n)return 3;break;case"polyline":break;case"point":case"multipoint":case"extent":case"mesh":return 3;default:return t.neverReached(a),3}return"on-the-ground"!==o.getGraphicEffectiveElevationMode(e)&&o.hasGraphicFeatureExpressionInfo(e)?4:0}}));
+define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../geometry/Circle","../../../../../support/elevationInfoUtils"],(function(e,r,t,i,o,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.isSupportedGraphic=void 0,r.isSupportedGraphic=function(e){if("graphics"!==e.layer.type)return 1;var r=e.geometry;if(i.isNone(r))return 2;var a=r.type;switch(a){case"polygon":if(r instanceof o)return 3;break;case"polyline":break;case"point":case"multipoint":case"extent":case"mesh":return 3;default:return t.neverReached(a),3}return"on-the-ground"!==n.getGraphicEffectiveElevationMode(e)&&n.hasGraphicFeatureExpressionInfo(e)?4:0}}));

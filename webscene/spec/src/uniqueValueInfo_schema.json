@@ -1,7 +1,7 @@
 {
   "title": "uniqueValueInfo",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "Info item for the Unique Value Renderer. Its symbol gets selected if the feature's field matches its value.",
   "properties": {
     "description": {

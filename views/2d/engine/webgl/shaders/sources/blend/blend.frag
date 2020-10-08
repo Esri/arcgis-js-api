@@ -1,6 +1,7 @@
 precision mediump float;
 uniform sampler2D u_layerTexture;
 uniform lowp float u_opacity;
+uniform lowp float u_inFadeOpacity;
 
 #ifndef NORMAL
 uniform sampler2D u_backbufferTexture;
@@ -152,14 +153,18 @@ void main() {
   #ifdef SOURCE_IN
     // co = as x Cs x ab
     // o = as x ab
-    gl_FragColor = vec4(as * Cs * ab, as * ab);
+    vec4 color = vec4(as * Cs * ab, as * ab);
+    vec4 fadeColor = (1.0 - u_opacity) * u_inFadeOpacity * vec4(ab * Cb, ab);
+    gl_FragColor = color + fadeColor;
   #endif
 
 
   #ifdef DESTINATION_IN
     // co = ab x Cb x as
     // o = ab x as
-    gl_FragColor = vec4(ab * Cb * as, ab * as);
+    vec4 color = vec4(ab * Cb * as, ab * as);
+    vec4 fadeColor = (1.0 - u_opacity) * u_inFadeOpacity * vec4(ab * Cb, ab);
+    gl_FragColor = color + fadeColor;
   #endif
 
   #ifdef SOURCE_OUT

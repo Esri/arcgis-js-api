@@ -36,5 +36,14 @@
   "verticesCount": "{count} csomópont",
   "deleteFeature": "Vektoros elem törlése",
   "deleteVertex": "Csomópont törlése",
-  "duplicate": "Másolat"
+  "duplicate": "Másolat",
+  "selectCircle": "Kijelölés körrel",
+  "selectFeature": "Vektoros elem kijelölése",
+  "selectFeatures": "Vektoros elemek kiválasztása",
+  "selectLasso": "Kijelölés lasszóval",
+  "selectLine": "Kijelölés vonallal",
+  "selectMarquee": "Kijelölés szegőléccel",
+  "selectPolygon": "Kijelölés polygonnal",
+  "selectRectangle": "Kijelölés téglalappal",
+  "clearSelection": "Kijelölés megszüntetése"
 }

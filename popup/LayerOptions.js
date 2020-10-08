@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../core/JSONSupport","../core/accessorSupport/decorators"],(function(o,r,t,e,s){return function(o){function r(r){var t=o.call(this,r)||this;return t.returnTopmostRaster=null,t.showNoDataRecords=null,t}var e;return t.__extends(r,o),e=r,r.prototype.clone=function(){return new e({showNoDataRecords:this.showNoDataRecords,returnTopmostRaster:this.returnTopmostRaster})},t.__decorate([s.property({type:Boolean,json:{write:!0}})],r.prototype,"returnTopmostRaster",void 0),t.__decorate([s.property({type:Boolean,json:{write:!0}})],r.prototype,"showNoDataRecords",void 0),r=e=t.__decorate([s.subclass("esri.popup.LayerOptions")],r)}(e.JSONSupport)}));
+define(["require","exports","tslib","../core/JSONSupport","../core/accessorSupport/decorators"],(function(o,t,r,e,s){"use strict";return function(o){function t(t){var r=o.call(this,t)||this;return r.returnTopmostRaster=null,r.showNoDataRecords=null,r}var e;return r.__extends(t,o),e=t,t.prototype.clone=function(){return new e({showNoDataRecords:this.showNoDataRecords,returnTopmostRaster:this.returnTopmostRaster})},r.__decorate([s.property({type:Boolean,json:{write:!0}})],t.prototype,"returnTopmostRaster",void 0),r.__decorate([s.property({type:Boolean,json:{write:!0}})],t.prototype,"showNoDataRecords",void 0),t=e=r.__decorate([s.subclass("esri.popup.LayerOptions")],t)}(e.JSONSupport)}));

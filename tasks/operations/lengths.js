@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../core/jsonMap"],(function(e,n,i){Object.defineProperty(n,"__esModule",{value:!0});var r=new i.default({preserveShape:"preserve-shape"});n.lengthsToRESTParameters=function(e){var n=e.toJSON(),i=n.polylines,t=n.lengthUnit,o=n.geodesic,l=n.calculationType,s={};s.polylines=JSON.stringify(i);var a=e.polylines[0].spatialReference;return s.sr=a.wkid?a.wkid:JSON.stringify(a.toJSON()),t&&(s.lengthUnit=t),o&&(s.geodesic=o),l&&(s.calculationType=r.toJSON(l)),s}}));
+define(["require","exports","../../core/jsonMap"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.lengthsToRESTParameters=void 0;var i=new r.default({preserveShape:"preserve-shape"});t.lengthsToRESTParameters=function(e){var t=e.toJSON(),r=t.polylines,n=t.lengthUnit,s=t.geodesic,o=t.calculationType,a={};a.polylines=JSON.stringify(r);var l=e.polylines[0].spatialReference;return a.sr=l.wkid?l.wkid:JSON.stringify(l.toJSON()),n&&(a.lengthUnit=n),s&&(a.geodesic=s),o&&(a.calculationType=i.toJSON(o)),a}}));

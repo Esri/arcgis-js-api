@@ -36,5 +36,14 @@
   "verticesCount": "{count} เวอร์เท็กซ์",
   "deleteFeature": "ลบข้อมูลนี้",
   "deleteVertex": "ลบจุดที่เชื่อมระหว่างเส้น",
-  "duplicate": "ทำซ้ำกัน"
+  "duplicate": "ทำซ้ำกัน",
+  "selectCircle": "เลือกตามวงกลม",
+  "selectFeature": "เลือกฟีเจอร์",
+  "selectFeatures": "เลือกฟีเจอร์",
+  "selectLasso": "เลือกโดยใช้การวาด",
+  "selectLine": "เลือกตามเส้น",
+  "selectMarquee": "เลือกตามตัวอักษรวิ่ง",
+  "selectPolygon": "เลือกตามรูปหลายเหลี่ยม",
+  "selectRectangle": "เลือกตามสี่เหลี่ยมผืนผ้า",
+  "clearSelection": "ล้างการเลือก"
 }

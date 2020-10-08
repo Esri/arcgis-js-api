@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./types","./utils/mat3","./utils/mat4","./utils/scalar","./utils/vec2","./utils/vec3","./utils/vec4"],(function(e,t,u,r,l,n,c,i,a){Object.defineProperty(t,"__esModule",{value:!0}),t.mat3=r,t.mat4=l,t.scalar=n,t.vec2=c,t.vec3=i,t.vec4=a,t.createBuffer=function(e,t){return new e(new ArrayBuffer(t*e.ElementCount*u.elementTypeSize(e.ElementType)))}}));
+define(["require","exports","./types","./utils/mat3","./utils/mat4","./utils/scalar","./utils/vec2","./utils/vec3","./utils/vec4"],(function(e,t,c,r,u,a,i,l,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.createBuffer=t.mat4=t.mat3=t.vec4=t.vec3=t.vec2=t.scalar=void 0,t.mat3=r,t.mat4=u,t.scalar=a,t.vec2=i,t.vec3=l,t.vec4=s,t.createBuffer=function(e,t){return new e(new ArrayBuffer(t*e.ElementCount*c.elementTypeSize(e.ElementType)))}}));

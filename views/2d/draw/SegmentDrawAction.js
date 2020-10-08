@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","../../draw/SegmentDrawAction"],(function(e,n,t){Object.defineProperty(n,"__esModule",{value:!0}),n.SegmentDrawAction=t.SegmentDrawAction}));
+define(["require","exports","../../draw/SegmentDrawAction"],(function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),Object.defineProperty(t,"SegmentDrawAction",{enumerable:!0,get:function(){return n.SegmentDrawAction}})}));

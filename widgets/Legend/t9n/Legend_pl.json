@@ -23,6 +23,7 @@
   "band0": "pasmo_0",
   "band1": "pasmo_1",
   "band2": "pasmo_2",
+  "band3": "band_3",
   "red": "Czerwony",
   "green": "Zielony",
   "blue": "Niebieski",

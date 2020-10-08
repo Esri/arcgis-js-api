@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","@dojo/framework/shim/Promise"],(function(e,r,t){Object.defineProperty(r,"__esModule",{value:!0}),r.parseWhereClause=function(r,n){return t.__awaiter(this,void 0,void 0,(function(){return t.__generator(this,(function(t){switch(t.label){case 0:return[4,new Promise((function(r,t){e(["./sql/WhereClause"],r,t)}))];case 1:return[2,t.sent().WhereClause.create(r,n)]}}))}))}}));
+define(["require","exports","tslib","@dojo/framework/shim/Promise"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.parseWhereClause=void 0,r.parseWhereClause=function(r,s){return t.__awaiter(this,void 0,void 0,(function(){return t.__generator(this,(function(t){switch(t.label){case 0:return[4,new Promise((function(r,t){e(["./sql/WhereClause"],r,t)}))];case 1:return[2,t.sent().WhereClause.create(r,s)]}}))}))}}));

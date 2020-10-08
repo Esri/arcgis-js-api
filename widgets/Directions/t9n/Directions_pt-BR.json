@@ -24,8 +24,6 @@
   "stop": "Parar",
   "stopLabelTemplate": "Parar {number} ({label})",
   "unlocated": "Não Localizado",
-  "searchFieldPlaceholder": "Pesquise ou clique no mapa",
-  "viewlessSearchFieldPlaceholder": "Pesquisar",
   "directionsPlaceholder": "Sua rota aparecerá aqui.",
   "etaTemplate": "{time} {gmt}",
   "eta": "Tempo de chegada estimado",

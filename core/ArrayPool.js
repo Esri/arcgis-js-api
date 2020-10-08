@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","./ObjectPool"],(function(e,r,n){var o=Array.prototype.splice;function t(e){e.length=0}var i=function(){function e(e,r){void 0===e&&(e=50),void 0===r&&(r=50),this._pool=new n(Array,void 0,t,r,e)}return e.prototype.acquire=function(){return this._pool.acquire()},e.prototype.copy=function(e){var r=this.acquire();return e.unshift(0,0),o.apply(r,e),e.splice(0,2),r},e.prototype.release=function(e){this._pool.release(e)},e.prototype.prune=function(){this._pool.prune(0)},e.acquire=function(){return u.acquire()},e.copy=function(e){return u.copy(e)},e.release=function(e){return u.release(e)},e.prune=function(){u.prune()},e}(),u=new i(100);return i}));
+define(["require","exports","./ObjectPool"],(function(e,r,n){"use strict";var t=Array.prototype.splice;function o(e){e.length=0}var i=function(){function e(e,r){void 0===e&&(e=50),void 0===r&&(r=50),this._pool=new n(Array,void 0,o,r,e)}return e.prototype.acquire=function(){return this._pool.acquire()},e.prototype.copy=function(e){var r=this.acquire();return e.unshift(0,0),t.apply(r,e),e.splice(0,2),r},e.prototype.release=function(e){this._pool.release(e)},e.prototype.prune=function(){this._pool.prune(0)},e.acquire=function(){return u.acquire()},e.copy=function(e){return u.copy(e)},e.release=function(e){return u.release(e)},e.prune=function(){u.prune()},e}(),u=new i(100);return i}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../Graphic","../../core/Accessor","../../core/accessorSupport/decorators","../../geometry/Point"],(function(e,t,o,r,i,c,n){return function(e){function t(t){var o=e.call(this,t)||this;return o.location=null,o.intersectedLocation=null,o.intersectedGraphic=null,o.visible=void 0,o}return o.__extends(t,e),o.__decorate([c.property({type:n})],t.prototype,"location",void 0),o.__decorate([c.property({type:n})],t.prototype,"intersectedLocation",void 0),o.__decorate([c.property({type:r})],t.prototype,"intersectedGraphic",void 0),o.__decorate([c.property({type:Boolean})],t.prototype,"visible",void 0),t=o.__decorate([c.subclass("esri.widgets.lineOfSight.LineOfSightTarget")],t)}(i)}));
+define(["require","exports","tslib","../../Graphic","../../core/Accessor","../../core/accessorSupport/decorators","../../geometry/Point"],(function(e,t,o,r,i,c,n){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.location=null,o.intersectedLocation=null,o.intersectedGraphic=null,o.visible=void 0,o}return o.__extends(t,e),o.__decorate([c.property({type:n})],t.prototype,"location",void 0),o.__decorate([c.property({type:n})],t.prototype,"intersectedLocation",void 0),o.__decorate([c.property({type:r})],t.prototype,"intersectedGraphic",void 0),o.__decorate([c.property({type:Boolean})],t.prototype,"visible",void 0),t=o.__decorate([c.subclass("esri.widgets.lineOfSight.LineOfSightTarget")],t)}(i)}));

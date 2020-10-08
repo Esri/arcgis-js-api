@@ -24,8 +24,6 @@
   "stop": "עצור",
   "stopLabelTemplate": "עצירה {number} ‏({label})",
   "unlocated": "לא נמצא",
-  "searchFieldPlaceholder": "חפש או לחץ על המפה",
-  "viewlessSearchFieldPlaceholder": "חיפוש",
   "directionsPlaceholder": "המסלול שלך יופיע כאן.",
   "etaTemplate": "{time} {gmt}",
   "eta": "שעת הגעה משוערת",

@@ -36,5 +36,14 @@
   "verticesCount": "{count} lomnih točk",
   "deleteFeature": "Izbriši geoobjekt",
   "deleteVertex": "Izbriši lomno točko",
-  "duplicate": "Podvoji"
+  "duplicate": "Podvoji",
+  "selectCircle": "Izberi s krogom",
+  "selectFeature": "Izberi geoobjekt",
+  "selectFeatures": "Izberi geoobjekte",
+  "selectLasso": "Izberi z lasom",
+  "selectLine": "Izberi z linijo",
+  "selectMarquee": "Izberi po potujočem napisu",
+  "selectPolygon": "Izberi s poligonom",
+  "selectRectangle": "Izberi s pravokotnikom",
+  "clearSelection": "Počisti izbiro"
 }

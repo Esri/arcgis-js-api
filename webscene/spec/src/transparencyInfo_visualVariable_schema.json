@@ -1,7 +1,7 @@
 {
   "title": "TransparencyInfo Visual Variable",
   "type": "object",
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "description": "The transparencyInfo visual variable defines the transparency, or opacity, of each feature's symbol based on a numeric attribute field value.",
   "properties": {
     "field": {

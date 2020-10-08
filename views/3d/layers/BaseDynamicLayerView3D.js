@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./DynamicLayerView3D"],(function(e,r,s,i,n){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s.__extends(r,e),r=s.__decorate([i.subclass("esri.views.3d.layers.BaseDynamicLayerView3D")],r)}(n)}));
+define(["require","exports","tslib","../../../core/accessorSupport/decorators","./DynamicLayerView3D"],(function(e,r,s,t,i){"use strict";return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return s.__extends(r,e),r=s.__decorate([t.subclass("esri.views.3d.layers.BaseDynamicLayerView3D")],r)}(i)}));

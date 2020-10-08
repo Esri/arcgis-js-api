@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/4.16/esri/copyright.txt for details.
+// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
 
-define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/univariateColorSize"],(function(e,r,a,i,t,o){Object.defineProperty(r,"__esModule",{value:!0});var n=t.getLogger("esri.renderers.smartMapping.creators.univariateColorSize");i.deprecatedModule(n,"esri/renderers/smartMapping/creators/univariateColorSize",{replacement:"esri/smartMapping/renderers/univariateColorSize"}),a.__exportStar(o,r)}));
+define(["require","exports","tslib","../../../core/deprecate","../../../core/Logger","../../../smartMapping/renderers/univariateColorSize"],(function(e,r,i,a,t,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var s=t.getLogger("esri.renderers.smartMapping.creators.univariateColorSize");a.deprecatedModule(s,"esri/renderers/smartMapping/creators/univariateColorSize",{replacement:"esri/smartMapping/renderers/univariateColorSize"}),i.__exportStar(o,r)}));

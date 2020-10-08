@@ -24,8 +24,6 @@
   "stop": "일시 정지",
   "stopLabelTemplate": "중지: {number}({label})",
   "unlocated": "할당되지 않은",
-  "searchFieldPlaceholder": "검색 또는 맵 클릭",
-  "viewlessSearchFieldPlaceholder": "검색",
   "directionsPlaceholder": "경로가 여기에 나타납니다.",
   "etaTemplate": "{time} {gmt}",
   "eta": "도착 예상 시간",
