@@ -13,15 +13,15 @@
  */
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/../core/accessorSupport/decorators";
+import { property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
 import { SearchResult, SearchResults, SupportedSearchSource } from "esri/interfaces";
-import Popup = require("esri/Popup");
-import Widget = require("esri/Widget");
+import Popup from "esri/Popup";
+import Widget from "esri/Widget";
 
 // esri.widgets.Search
-import SearchViewModel = require("esri/widgets/SearchViewModel");
+import SearchViewModel from "esri/widgets/SearchViewModel";
 
 // esri.widgets.Search.t9n
 import SearchMessages from "esri/widgets/t9n/Search";
@@ -337,4 +337,4 @@ class SearchResultRenderer extends Widget {
   }
 }
 
-export = SearchResultRenderer;
+export default SearchResultRenderer;

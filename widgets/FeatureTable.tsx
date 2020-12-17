@@ -5,7 +5,6 @@
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
- * * Not supported in Internet Explorer 11.
  * * Number and date formatting is not yet supported but will be added in a future release.
  * * Viewing related records is currently not supported.
  * * Viewing attachments is currently not supported, although if a feature contains
@@ -27,8 +26,6 @@
  * ![standalone featuretable widget](../../assets/img/apiref/widgets/featuretable/featuretable-map.png)
  *
  *
- *
- * @beta
  * @module esri/widgets/FeatureTable
  * @amdalias FeatureTable
  * @since 4.15
@@ -46,10 +43,10 @@
  */
 
 // esri
-import { loadMessageBundle, onLocaleChange, substitute } from "esri/intl";
+import { fetchMessageBundle, onLocaleChange, substitute } from "esri/intl";
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { CollectionChangeEvent } from "esri/core/interfaces";
 import * as watchUtils from "esri/core/watchUtils";
@@ -58,29 +55,29 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import FeatureLayer = require("esri/layers/FeatureLayer");
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.FeatureForm
-import FieldConfig = require("esri/widgets/FeatureForm/FieldConfig");
+import FieldConfig from "esri/widgets/FeatureForm/FieldConfig";
 
 // esri.widgets.FeatureTable
-import FeatureTableViewModel = require("esri/widgets/FeatureTable/FeatureTableViewModel");
+import FeatureTableViewModel from "esri/widgets/FeatureTable/FeatureTableViewModel";
 
 // esri.widgets.FeatureTable.Grid
-import Column = require("esri/widgets/FeatureTable/Grid/Column");
-import Grid = require("esri/widgets/FeatureTable/Grid/Grid");
+import Column from "esri/widgets/FeatureTable/Grid/Column";
+import Grid from "esri/widgets/FeatureTable/Grid/Grid";
 import { State } from "esri/widgets/FeatureTable/Grid/interfaces";
 
 // esri.widgets.FeatureTable.Grid.support
-import ButtonMenu = require("esri/widgets/FeatureTable/Grid/support/ButtonMenu");
-import ButtonMenuItem = require("esri/widgets/FeatureTable/Grid/support/ButtonMenuItem");
+import ButtonMenu from "esri/widgets/FeatureTable/Grid/support/ButtonMenu";
+import ButtonMenuItem from "esri/widgets/FeatureTable/Grid/support/ButtonMenuItem";
 import {
   ButtonMenuConfig,
   ButtonMenuItemClickFunctionParams
@@ -103,7 +100,8 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
     clearSelection: true,
     refreshData: true,
     toggleColumns: true
-  }
+  },
+  selectionColumn: true
 };
 
 const CSS = {
@@ -128,6 +126,7 @@ const CSS = {
 interface VisibleElements {
   header?: true;
   menu?: boolean;
+  selectionColumn?: boolean;
   menuItems?: {
     clearSelection: true;
     refreshData: true;
@@ -224,7 +223,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
 
   initialize(): void {
     const loadMessages = async (): Promise<void> =>
-      (this.messages = await loadMessageBundle("esri/widgets/FeatureTable/t9n/FeatureTable"));
+      (this.messages = await fetchMessageBundle("esri/widgets/FeatureTable/t9n/FeatureTable"));
 
     loadMessages();
 
@@ -343,6 +342,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *
    * @property {boolean} [header] - Indicates whether to display the feature table's header information. Default value is `true`.
    * @property {boolean} [menu] - Indicates whether to display the feature table's menu.Default value is `true`.
+   * @property {boolean} [selectionColumn] - Indicates whether to display the selection column in the table. Each row has a checkbox that selects its corresponding feature.
    * @property {Object} [menuItems] - The menu items within the feature table menu.
    * This image shows the individual items within the widget's menu.
    *
@@ -540,6 +540,8 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   /**
    *
    * The associated {@link module:esri/layers/FeatureLayer} containing the fields and attributes to display within the widget.
+   * The table's pagination defaults to `50` records at a time. If the layer contains less than 50 records, it will use whatever
+   * count it has. Note that 0 records do not apply.
    *
    * @name layer
    * @type {module:esri/layers/FeatureLayer}
@@ -702,7 +704,8 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *      clearSelection: true,
    *      refreshData: false,
    *      toggleColumns: false
-   *    }
+   *    },
+   *    selectionColumn: false
    * }
    */
   @property()
@@ -711,7 +714,15 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
 
   @cast("visibleElements")
   protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
-    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+    const elements = { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+
+    // Sync selection column visibility between widgets
+    this.grid?.set("visibleElements", {
+      ...this.grid.visibleElements,
+      selectionColumn: elements.selectionColumn
+    });
+
+    return elements;
   }
 
   //--------------------------------------------------------------------------
@@ -1065,4 +1076,4 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   }
 }
 
-export = FeatureTable;
+export default FeatureTable;

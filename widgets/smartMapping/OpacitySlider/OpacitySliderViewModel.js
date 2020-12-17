@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../Color","../../../core/accessorSupport/decorators","../SmartMappingSliderViewModel","../support/utils"],(function(t,e,r,o,n,i,s){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r._initialValues=[],r}return r.__extends(e,t),Object.defineProperty(e.prototype,"stops",{set:function(t){this._initialValues=t.map((function(t){return t.value})),this._set("stops",t)},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"values",{get:function(){var t=this.stops;return!t||!t.length||t.length<2?[]:[t[0].value,t[t.length-1].value]},enumerable:!1,configurable:!0}),e.prototype.setValue=function(t,e){var r=this.max,o=this.min,n=this.stops;if(!(e>r||e<o)){var i=0===t?0:n.length-1;if(e!==n[i].value){var a=this.values,l=0===t?o:a[t-1],u=t===a.length-1?r:a[t+1],p=Math.max(Math.min(e,u),l),c=0===i?p:n[0].value,h=0===i?n[n.length-1].value:p;s.getStopChanges(c,h,this._initialValues).forEach((function(t,e){n[e].value=t.value})),this.notifyChange("values"),this.notifyChange("labels")}}},e.prototype.getStopInfo=function(t){var e=this.min,n=this.max,i=this.stops;if(!i||!i.length)return[];var s=this._getColorForStops(t).toRgb();return i.map((function(t){return{color:new o(r.__spreadArrays(s,[t.opacity])),offset:(n-t.value)/(n-e)}}))},e.prototype._getColorForStops=function(t){return t?t instanceof o?t:o.fromString(t):null},r.__decorate([n.property()],e.prototype,"stops",null),r.__decorate([n.property({dependsOn:["stops"],readOnly:!0})],e.prototype,"values",null),e=r.__decorate([n.subclass("esri.widgets.smartMapping.OpacitySlider.OpacitySliderViewModel")],e)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../Color","../support/utils","../SmartMappingSliderViewModel"],(function(t,e,s,o,r,i,n,a,l,u,c,p,h){"use strict";let g=function(e){function s(t){var s;return(s=e.call(this,t)||this)._initialValues=[],s}t._inheritsLoose(s,e);var o=s.prototype;return o.setValue=function(t,e){const{max:s,min:o,stops:r}=this;if(e>s||e<o)return;const i=0===t?0:r.length-1;if(e===r[i].value)return;const{values:n}=this,a=0===t?o:n[t-1],l=t===n.length-1?s:n[t+1],u=Math.max(Math.min(e,l),a),c=0===i?u:r[0].value,h=0===i?r[r.length-1].value:u,g=p.getStopChanges(c,h,this._initialValues);this.updateStops(g),this.notifyChange("values"),this.notifyChange("labels")},o.getStopInfo=function(t){const{min:e,max:s,stops:o}=this;if(!o||!o.length)return[];const r=this._getColorForStops(t).toRgb();return o.map((t=>({color:new c([...r,t.opacity]),offset:(s-t.value)/(s-e)})))},o._getColorForStops=function(t){return t?t instanceof c?t:c.fromString(t):null},t._createClass(s,[{key:"stops",set:function(t){this._initialValues=null==t?void 0:t.map((t=>t.value)),this._set("stops",t)}}]),s}(h);return e.__decorate([i.property()],g.prototype,"stops",null),g=e.__decorate([n.subclass("esri.widgets.smartMapping.OpacitySlider.OpacitySliderViewModel")],g),g}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./VisualVariable","./support/OpacityStop"],(function(t,e,r,o,i,n){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.type="opacity",r.normalizationField=null,r}var i;return r.__extends(e,t),i=e,Object.defineProperty(e.prototype,"cache",{get:function(){return{ipData:this._interpolateData(),hasExpression:!!this.valueExpression,compiledFunc:null}},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"stops",{set:function(t){t&&Array.isArray(t)&&(t=t.filter((function(t){return!!t}))).sort((function(t,e){return t.value-e.value})),this._set("stops",t)},enumerable:!1,configurable:!0}),e.prototype.clone=function(){return new i({field:this.field,normalizationField:this.normalizationField,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,stops:this.stops&&this.stops.map((function(t){return t.clone()})),legendOptions:this.legendOptions&&this.legendOptions.clone()})},e.prototype.getAttributeHash=function(){return t.prototype.getAttributeHash.call(this)+"-"+this.normalizationField},e.prototype._interpolateData=function(){return this.stops&&this.stops.map((function(t){return t.value||0}))},r.__decorate([o.property({readOnly:!0,dependsOn:["valueExpression","stops"]})],e.prototype,"cache",null),r.__decorate([o.property({type:["opacity"],json:{type:["transparencyInfo"]}})],e.prototype,"type",void 0),r.__decorate([o.property({type:String,json:{write:!0}})],e.prototype,"normalizationField",void 0),r.__decorate([o.property({type:[n],json:{write:!0}})],e.prototype,"stops",null),e=i=r.__decorate([o.subclass("esri.renderers.visualVariables.OpacityVariable")],e)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./VisualVariable","./support/OpacityStop"],(function(e,t,r,o,s,i,n,p,a,l,c,u){"use strict";var y;let d=y=function(t){function r(e){var r;return(r=t.call(this,e)||this).type="opacity",r.normalizationField=null,r}e._inheritsLoose(r,t);var o=r.prototype;return o.clone=function(){return new y({field:this.field,normalizationField:this.normalizationField,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,stops:this.stops&&this.stops.map((e=>e.clone())),legendOptions:this.legendOptions&&this.legendOptions.clone()})},o.getAttributeHash=function(){return`${t.prototype.getAttributeHash.call(this)}-${this.normalizationField}`},o._interpolateData=function(){return this.stops&&this.stops.map((e=>e.value||0))},e._createClass(r,[{key:"cache",get:function(){return{ipData:this._interpolateData(),hasExpression:!!this.valueExpression,compiledFunc:null}}},{key:"stops",set:function(e){e&&Array.isArray(e)&&(e=e.filter((e=>!!e))).sort(((e,t)=>e.value-t.value)),this._set("stops",e)}}]),r}(c);return t.__decorate([i.property({readOnly:!0,dependsOn:["valueExpression","stops"]})],d.prototype,"cache",null),t.__decorate([i.property({type:["opacity"],json:{type:["transparencyInfo"]}})],d.prototype,"type",void 0),t.__decorate([i.property({type:String,json:{write:!0}})],d.prototype,"normalizationField",void 0),t.__decorate([i.property({type:[u],json:{write:!0}})],d.prototype,"stops",null),d=y=t.__decorate([n.subclass("esri.renderers.visualVariables.OpacityVariable")],d),d}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../intersectionUtils"],(function(e,r,t,i,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.applySurfaceCollisionConstraint=void 0,r.applySurfaceCollisionConstraint=function(e,r,i){void 0===i&&(i=0);var o=e.state.constraints;if(!o.collision.enabled)return!1;var c=n.surfaceElevationBelowEye(e,r),a=e.renderCoordsHelper.getAltitude(r.eye),s=c+o.collision.elevationMargin;if(a>=s)return!1;var v=t.vec3.length(r.eye);if(t.vec3.subtract(l,r.center,r.eye),e.renderCoordsHelper.setAltitude(s,r.eye),1===i)t.vec3.add(r.center,r.eye,l);else if(2===i){var u=(v-a+s)/v;t.vec3.scale(r.center,r.center,u)}return r.markViewDirty(),!0};var l=i.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3f64","../../../../chunks/vec3","../intersectionUtils"],(function(e,t,n,r){"use strict";const i=t.create();e.applySurfaceCollisionConstraint=function(e,t,o=0){const c=e.state.constraints;if(!c.collision.enabled)return!1;const s=r.surfaceElevationBelowRenderLocation(e,t.eye),l=e.renderCoordsHelper.getAltitude(t.eye),a=s+c.collision.elevationMargin;if(l>=a)return!1;const u=n.length(t.eye);if(n.subtract(i,t.center,t.eye),e.renderCoordsHelper.setAltitude(a,t.eye),1===o)n.add(t.center,t.eye,i);else if(2===o){const e=(u-l+a)/u;n.scale(t.center,t.center,e)}return t.markViewDirty(),!0},Object.defineProperty(e,"__esModule",{value:!0})}));

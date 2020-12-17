@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/compilerUtils","../../../input/InputHandler"],(function(e,t,a,r,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.DoubleTapDragZoom=void 0;var n=function(e){function t(t,a,r){var i=e.call(this,!0)||this;return i.view=t,i.pointerType=a,i.registerIncoming("double-tap-drag",r,(function(e){return i._handleDoubleTapDrag(e)})),i}return a.__extends(t,e),t.prototype._handleDoubleTapDrag=function(e){var t=e.data;if(t.pointerType===this.pointerType){e.stopPropagation();var a=t.action,i=t.delta,n=this.view,o=n.mapViewNavigation;switch(a){case"begin":var s=n.scale;this._startScale=s,this._currentScale=s,this._previousDelta=i,o.begin();break;case"update":if(this._previousDelta.y===i.y)return;this._previousDelta=i;var c=Math.pow(1.015,i.y),l=this._startScale*c,u=l/this._currentScale;o.setViewpointImmediate(u),this._currentScale=l;break;case"end":var p=n.constraints,h=p.effectiveLODs;if(!p.snapToZoom||!h)return void o.end();var d=p.snapScale(this._currentScale),v=(i.y>0?Math.max(d,p.snapToPreviousScale(this._startScale)):Math.min(d,p.snapToNextScale(this._startScale)))/this._currentScale;o.zoom(v);break;default:r.neverReached(a)}}},t}(i.InputHandler);t.DoubleTapDragZoom=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/has","../../../input/InputHandler"],(function(e,t,a,i){"use strict";let n=function(e){function a(t,a,i){var n;return(n=e.call(this,!0)||this).view=t,n.pointerType=a,n.registerIncoming("double-tap-drag",i,(e=>n._handleDoubleTapDrag(e))),n}return t._inheritsLoose(a,e),a.prototype._handleDoubleTapDrag=function(e){const{data:t}=e,{pointerType:a}=t;if(a!==this.pointerType)return;e.stopPropagation();const{action:i,delta:n}=t,{view:r}=this,{mapViewNavigation:s}=r;switch(i){case"begin":{const{scale:e}=r;this._startScale=e,this._currentScale=e,this._previousDelta=n,s.begin();break}case"update":{if(this._previousDelta.y===n.y)return;this._previousDelta=n;const e=Math.pow(1.015,n.y),t=this._startScale*e,a=t/this._currentScale;s.setViewpointImmediate(a),this._currentScale=t;break}case"end":{const{constraints:e}=r,{effectiveLODs:t,snapToZoom:a}=e;if(!a||!t)return void s.end();const i=e.snapScale(this._currentScale),o=(n.y>0?Math.max(i,e.snapToPreviousScale(this._startScale)):Math.min(i,e.snapToNextScale(this._startScale)))/this._currentScale;s.zoom(o);break}}},a}(i.InputHandler);e.DoubleTapDragZoom=n,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -37,14 +37,14 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Fullscreen
-import FullscreenViewModel = require("esri/widgets/Fullscreen/FullscreenViewModel");
+import FullscreenViewModel from "esri/widgets/Fullscreen/FullscreenViewModel";
 
 // esri.widgets.Fullscreen.t9n
 import FullscreenMessages from "esri/widgets/Fullscreen/t9n/Fullscreen";
@@ -257,4 +257,4 @@ class Fullscreen extends Widget {
   }
 }
 
-export = Fullscreen;
+export default Fullscreen;

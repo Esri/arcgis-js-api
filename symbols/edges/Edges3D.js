@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/JSONSupport","../../core/lang","../../core/screenUtils","../../core/accessorSupport/decorators","../support/materialUtils"],(function(e,r,o,t,n,s,i,p,c){"use strict";return function(e){function r(r){var o=e.call(this,r)||this;return o.color=new t([0,0,0,1]),o.extensionLength=0,o.size=i.px2pt(1),o}return o.__extends(r,e),r.prototype.clone=function(){},r.prototype.cloneProperties=function(){return{color:s.clone(this.color),size:this.size,extensionLength:this.extensionLength}},o.__decorate([p.property({type:["solid","sketch"],readOnly:!0,json:{read:!0,write:{ignoreOrigin:!0}}})],r.prototype,"type",void 0),o.__decorate([p.property(c.colorAndTransparencyProperty)],r.prototype,"color",void 0),o.__decorate([p.property(o.__assign(o.__assign({},c.screenSizeProperty),{json:{write:{overridePolicy:function(e){return{enabled:!!e}}}}}))],r.prototype,"extensionLength",void 0),o.__decorate([p.property(c.screenSizeProperty)],r.prototype,"size",void 0),r=o.__decorate([p.subclass("esri.symbols.edges.Edges3D")],r)}(n.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color","../../core/screenUtils","../support/materialUtils"],(function(e,r,o,t,s,n,c,p,i,l,u,a,d,y,h){"use strict";let g=function(r){function o(e){var o;return(o=r.call(this,e)||this).color=new d([0,0,0,1]),o.extensionLength=0,o.size=y.px2pt(1),o}e._inheritsLoose(o,r);var s=o.prototype;return s.clone=function(){},s.cloneProperties=function(){return{color:t.clone(this.color),size:this.size,extensionLength:this.extensionLength}},o}(a.JSONSupport);return r.__decorate([c.property({type:["solid","sketch"],readOnly:!0,json:{read:!0,write:{ignoreOrigin:!0}}})],g.prototype,"type",void 0),r.__decorate([c.property(h.colorAndTransparencyProperty)],g.prototype,"color",void 0),r.__decorate([c.property({...h.screenSizeProperty,json:{write:{overridePolicy:e=>({enabled:!!e})}}})],g.prototype,"extensionLength",void 0),r.__decorate([c.property(h.screenSizeProperty)],g.prototype,"size",void 0),g=r.__decorate([p.subclass("esri.symbols.edges.Edges3D")],g),g}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/mathUtils","../../../core/libs/gl-matrix-2/vec3","../../../core/libs/gl-matrix-2/vec3f64"],(function(e,c,t,r,a){"use strict";Object.defineProperty(c,"__esModule",{value:!0}),c.directionToHeadingTilt=c.createDirectionUp=void 0;var i=a.vec3f64.create(),v=a.vec3f64.create();c.createDirectionUp=function(){return{direction:a.vec3f64.create(),up:a.vec3f64.create()}},c.directionToHeadingTilt=function(e,c,a,o,n){var d=i;r.vec3.normalize(d,e);var l=r.vec3.dot(d,o),s=l>0;(l=Math.abs(l))>.99&&((l=Math.abs(r.vec3.dot(c,o)))<.99?(r.vec3.copy(d,c),s&&r.vec3.scale(d,d,-1)):d=null);var u=0;if(d){r.vec3.scale(v,o,r.vec3.dot(o,d)),r.vec3.subtract(d,d,v);var f=r.vec3.dot(d,n)/(r.vec3.length(d)*r.vec3.length(n));r.vec3.cross(v,d,n),u=(r.vec3.dot(v,o)>0?1:-1)*t.rad2deg(t.acosClamped(f))}var g=t.rad2deg(t.acosClamped(-r.vec3.dot(o,e)/r.vec3.length(e)));return a?(a.heading=u,a.tilt=g,a):{heading:u,tilt:g}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/mathUtils","../../../chunks/vec3f64","../../../chunks/vec3"],(function(e,t,c,n){"use strict";const o=c.create(),a=c.create();e.createDirectionUp=function(){return{direction:c.create(),up:c.create()}},e.directionToHeadingTilt=function(e,c,r,i,d){let s=o;n.normalize(s,e);let l=n.dot(s,i);const u=l>0;l=Math.abs(l),l>.99&&(l=Math.abs(n.dot(c,i)),l<.99?(n.copy(s,c),u&&n.scale(s,s,-1)):s=null);let h=0;if(s){n.scale(a,i,n.dot(i,s)),n.subtract(s,s,a);const e=n.dot(s,d)/(n.length(s)*n.length(d));n.cross(a,s,d);h=(n.dot(a,i)>0?1:-1)*t.rad2deg(t.acosClamped(e))}const g=t.rad2deg(t.acosClamped(-n.dot(i,e)/n.length(e)));return r?(r.heading=h,r.tilt=g,r):{heading:h,tilt:g}},Object.defineProperty(e,"__esModule",{value:!0})}));

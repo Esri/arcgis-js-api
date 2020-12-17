@@ -1,25 +1,23 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../util/ScreenSizePerspective.glsl"],(function(e,t,r){"use strict";function l(e,l){const c=e.vertex.code;l.verticalOffsetEnabled?(e.vertex.uniforms.add("verticalOffset","vec4"),l.screenSizePerspectiveEnabled&&(e.include(r.ScreenSizePerspective),e.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4")),c.add(t.glsl`
+    vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {
+      float viewDistance = length((view * vec4(worldPos, 1.0)).xyz);
+      ${1===l.viewingMode?t.glsl`vec3 worldNormal = normalize(worldPos + localOrigin);`:t.glsl`vec3 worldNormal = vec3(0.0, 0.0, 1.0);`}
+      ${l.screenSizePerspectiveEnabled?t.glsl`
+          float cosAngle = dot(worldNormal, normalize(worldPos - camPos));
+          float verticalOffsetScreenHeight = screenSizePerspectiveScaleFloat(verticalOffset.x, abs(cosAngle), viewDistance, screenSizePerspectiveAlignment);`:t.glsl`
+          float verticalOffsetScreenHeight = verticalOffset.x;`}
+      // Screen sized offset in world space, used for example for line callouts
+      float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * viewDistance, verticalOffset.z, verticalOffset.w);
+      return worldNormal * worldOffset;
+    }
 
-define(["require","exports","tslib","../util/ScreenSizePerspective.glsl","../../shaderModules/interfaces"],(function(e,l,t,r,c){"use strict";function a(e,l){var a=e.vertex.code;l.verticalOffsetEnabled?(e.vertex.uniforms.add("verticalOffset","vec4"),l.screenSizePerspectiveEnabled&&(e.include(r.ScreenSizePerspective),e.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4")),a.add(c.glsl(v||(v=t.__makeTemplateObject(["\n    vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {\n      float viewDistance = length((view * vec4(worldPos, 1.0)).xyz);\n      ","\n      ","\n      // Screen sized offset in world space, used for example for line callouts\n      float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * viewDistance, verticalOffset.z, verticalOffset.w);\n      return worldNormal * worldOffset;\n    }\n\n    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) {\n      return worldPos + calculateVerticalOffset(worldPos, localOrigin);\n    }\n    "],["\n    vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {\n      float viewDistance = length((view * vec4(worldPos, 1.0)).xyz);\n      ","\n      ","\n      // Screen sized offset in world space, used for example for line callouts\n      float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * viewDistance, verticalOffset.z, verticalOffset.w);\n      return worldNormal * worldOffset;\n    }\n\n    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) {\n      return worldPos + calculateVerticalOffset(worldPos, localOrigin);\n    }\n    "])),1===l.viewingMode?c.glsl(i||(i=t.__makeTemplateObject(["vec3 worldNormal = normalize(worldPos + localOrigin);"],["vec3 worldNormal = normalize(worldPos + localOrigin);"]))):c.glsl(o||(o=t.__makeTemplateObject(["vec3 worldNormal = vec3(0.0, 0.0, 1.0);"],["vec3 worldNormal = vec3(0.0, 0.0, 1.0);"]))),l.screenSizePerspectiveEnabled?c.glsl(s||(s=t.__makeTemplateObject(["\n          float cosAngle = dot(worldNormal, normalize(worldPos - camPos));\n          float verticalOffsetScreenHeight = screenSizePerspectiveScaleFloat(verticalOffset.x, abs(cosAngle), viewDistance, screenSizePerspectiveAlignment);"],["\n          float cosAngle = dot(worldNormal, normalize(worldPos - camPos));\n          float verticalOffsetScreenHeight = screenSizePerspectiveScaleFloat(verticalOffset.x, abs(cosAngle), viewDistance, screenSizePerspectiveAlignment);"]))):c.glsl(f||(f=t.__makeTemplateObject(["\n          float verticalOffsetScreenHeight = verticalOffset.x;"],["\n          float verticalOffsetScreenHeight = verticalOffset.x;"])))))):a.add(c.glsl(d||(d=t.__makeTemplateObject(["\n    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) { return worldPos; }\n    "],["\n    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) { return worldPos; }\n    "]))))}function n(e,l,t,r){return void 0===r&&(r=O),r.screenLength=e.screenLength,r.perDistance=Math.tan(.5*l)/(.5*t),r.minWorldLength=e.minWorldLength,r.maxWorldLength=e.maxWorldLength,r}Object.defineProperty(l,"__esModule",{value:!0}),l.calculateVerticalOffsetFactors=l.VerticalOffset=void 0,l.VerticalOffset=a,function(e){e.bindUniforms=function(e,l,t){if(l.verticalOffset){var r=n(l.verticalOffset,t.camera.fovY,t.camera.fullViewport[3]),c=t.camera.pixelRatio||1;e.setUniform4f("verticalOffset",r.screenLength*c,r.perDistance,r.minWorldLength,r.maxWorldLength)}}}(a=l.VerticalOffset||(l.VerticalOffset={})),l.calculateVerticalOffsetFactors=n;var i,o,s,f,v,d,O={screenLength:0,perDistance:0,minWorldLength:0,maxWorldLength:0}}));
+    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) {
+      return worldPos + calculateVerticalOffset(worldPos, localOrigin);
+    }
+    `)):c.add(t.glsl`
+    vec3 addVerticalOffset(vec3 worldPos, vec3 localOrigin) { return worldPos; }
+    `)}function c(e,t,r,l=i){return l.screenLength=e.screenLength,l.perDistance=Math.tan(.5*t)/(.5*r),l.minWorldLength=e.minWorldLength,l.maxWorldLength=e.maxWorldLength,l}!function(e){e.bindUniforms=function(e,t,r){if(!t.verticalOffset)return;const l=c(t.verticalOffset,r.camera.fovY,r.camera.fullViewport[3]),i=r.camera.pixelRatio||1;e.setUniform4f("verticalOffset",l.screenLength*i,l.perDistance,l.minWorldLength,l.maxWorldLength)}}(l||(l={}));const i={screenLength:0,perDistance:0,minWorldLength:0,maxWorldLength:0};e.VerticalOffset=l,e.calculateVerticalOffsetFactors=c,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../arrayUtils","../Error","../Logger","../promiseUtils","./PropertyOrigin","./utils","./extensions/serializableProperty"],(function(r,e,i,t,n,o,u,a,l){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.write=e.willPropertyWrite=void 0;var s=n.getLogger("esri.core.accessorSupport.write");function f(r,e,n,o,a,l){if(!o||!o.write)return!1;var f=r.get(n);if(!a&&o.write.overridePolicy){var g=o.write.overridePolicy.call(r,f,n,l);void 0!==g&&(a=g)}if(a||(a=o.write),!a||!1===a.enabled)return!1;if((null===f&&!a.allowNull||void 0===f)&&a.isRequired){var d=new t("web-document-write:property-required","Missing value for required property '"+n+"' on '"+r.declaredClass+"'",{propertyName:n,target:r});return d&&l&&l.messages?l.messages.push(d):d&&!l&&s.error(d.name,d.message),!1}if(void 0===f)return!1;if(null===f&&!a.allowNull)return!1;if(function(r,e,t,n,o){var u=n.default;if(void 0===u)return!1;if(null!=n.defaultEquals)return n.defaultEquals(o);if("function"==typeof u){if(Array.isArray(o)){var a=u.call(r,e,t);return i.equals(a,o)}return!1}return u===o}(r,n,l,o,f))return!1;if(void 0!==o.default)return!0;if(!a.ignoreOrigin&&l&&l.origin&&e.store.originOf(n)<u.nameToId(l.origin))return!1;return!0}function g(r,e,i){if(r&&"function"==typeof r.toJSON&&(!r.toJSON.isDefaultToJSON||!r.write))return a.merge(e,r.toJSON());var t=a.getProperties(r),n=t.metadatas,s=function(s){var g=l.originSpecificWritePropertyDefinition(n[s],i);if(!f(r,t,s,g,void 0,i))return"continue";var d=r.get(s),p=g.write&&"string"==typeof g.write.target?g.write.target:s,c=function(r,e,i,t,n){var o,u,a={};return null===(u=null===(o=e.write)||void 0===o?void 0:o.writer)||void 0===u||u.call(r,t,a,i,n),a}(r,g,p,d,i);Object.keys(c).length>0&&(e=a.merge(e,c),i&&i.resources&&i.resources.pendingOperations&&i.resources.pendingOperations.length&&o.all(i.resources.pendingOperations).then((function(){return a.merge(e,c)})),i&&i.writtenProperties&&i.writtenProperties.push({target:r,propName:s,oldOrigin:u.idToReadableName(t.store.originOf(s)),newOrigin:i.origin}))};for(var g in n)s(g);return e}e.willPropertyWrite=function(r,e,i,t){var n=a.getProperties(r),o=n.metadatas,u=l.originSpecificWritePropertyDefinition(o[e],t);return!!u&&f(r,n,e,u,i,t)},e.write=g,e.default=g}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../Logger","./utils","./extensions/serializableProperty","../Error","./PropertyOrigin","../arrayUtils","../promiseUtils"],(function(e,r,t,i,n,o,s,u){"use strict";const l=r.getLogger("esri.core.accessorSupport.write");function a(e,r,t,i,n){var o,s;const u={};return null==(o=r.write)||null==(s=o.writer)||s.call(e,i,u,t,n),u}function f(e,r,t,i,u,a){if(!i||!i.write)return!1;const f=e.get(t);if(!u&&i.write.overridePolicy){const r=i.write.overridePolicy.call(e,f,t,a);void 0!==r&&(u=r)}if(u||(u=i.write),!u||!1===u.enabled)return!1;if((null===f&&!u.allowNull||void 0===f)&&u.isRequired){const r=new n("web-document-write:property-required",`Missing value for required property '${t}' on '${e.declaredClass}'`,{propertyName:t,target:e});return r&&a&&a.messages?a.messages.push(r):r&&!a&&l.error(r.name,r.message),!1}if(void 0===f)return!1;if(null===f&&!u.allowNull)return!1;if(function(e,r,t,i,n){const o=i.default;if(void 0===o)return!1;if(null!=i.defaultEquals)return i.defaultEquals(n);if("function"==typeof o){if(Array.isArray(n)){const i=o.call(e,r,t);return s.equals(i,n)}return!1}return o===n}(e,t,a,i,f))return!1;if(void 0!==i.default)return!0;if(!u.ignoreOrigin&&a&&a.origin){if(r.store.originOf(t)<o.nameToId(a.origin))return!1}return!0}function c(e,r,n){if(e&&"function"==typeof e.toJSON&&(!e.toJSON.isDefaultToJSON||!e.write))return t.merge(r,e.toJSON());const s=t.getProperties(e),l=s.metadatas;for(const c in l){const g=i.originSpecificWritePropertyDefinition(l[c],n);if(!f(e,s,c,g,void 0,n))continue;const p=e.get(c),d=a(e,g,g.write&&"string"==typeof g.write.target?g.write.target:c,p,n);Object.keys(d).length>0&&(r=t.merge(r,d),n&&n.resources&&n.resources.pendingOperations&&n.resources.pendingOperations.length&&u.all(n.resources.pendingOperations).then((()=>t.merge(r,d))),n&&n.writtenProperties&&n.writtenProperties.push({target:e,propName:c,oldOrigin:o.idToReadableName(s.store.originOf(c)),newOrigin:n.origin}))}return r}e.default=c,e.willPropertyWrite=function(e,r,n,o){const s=t.getProperties(e),u=s.metadatas,l=i.originSpecificWritePropertyDefinition(u[r],o);return!!l&&f(e,s,r,l,n,o)},e.write=c,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -28,23 +28,20 @@
  * @see {@link module:esri/widgets/LayerList/ListItem#panel ListItem.panel}
  */
 
-// @dojo.framework.shim
-import "@dojo/framework/shim/Promise";
-
 // esri.core
-import Handles = require("esri/../core/Handles");
-import { IdentifiableMixin } from "esri/../core/Identifiable";
-import * as watchUtils from "esri/../core/watchUtils";
+import Handles from "esri/core/Handles";
+import { IdentifiableMixin } from "esri/core/Identifiable";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/../core/accessorSupport/decorators";
+import { property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Legend = require("esri/Legend");
-import Widget = require("esri/Widget");
+import Legend from "esri/Legend";
+import Widget from "esri/Widget";
 
 // esri.widgets.LayerList
-import ListItem = require("esri/widgets/ListItem");
+import ListItem from "esri/widgets/ListItem";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
@@ -405,7 +402,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
       return;
     }
 
-    import("../Legend").then((LegendModule) => {
+    import("../Legend").then(({ default: LegendModule }) => {
       const { _handles, listItem } = this;
 
       const legend = new LegendModule(this._getLegendOptions(listItem));
@@ -491,4 +488,4 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
   }
 }
 
-export = ListItemPanel;
+export default ListItemPanel;

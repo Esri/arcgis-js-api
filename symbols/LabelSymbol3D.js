@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/Collection","../core/lang","../core/accessorSupport/decorators","./Symbol3D","./TextSymbol3DLayer","./callouts/calloutUtils","./support/Symbol3DVerticalOffset"],(function(e,t,o,r,l,s,i,a,n,y){"use strict";var c=r.ofType({base:null,key:"type",typeMap:{text:a}});return function(e){function t(t){var o=e.call(this,t)||this;return o.verticalOffset=null,o.callout=null,o.styleOrigin=null,o.symbolLayers=new c,o.type="label-3d",o}var r;return o.__extends(t,e),r=t,t.prototype.supportsCallout=function(){return!0},t.prototype.hasVisibleCallout=function(){return n.hasVisibleCallout(this)},t.prototype.hasVisibleVerticalOffset=function(){return n.hasVisibleVerticalOffset(this)},t.prototype.clone=function(){return new r({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail),callout:l.clone(this.callout),verticalOffset:l.clone(this.verticalOffset)})},t.fromTextSymbol=function(e){return new r({symbolLayers:[a.fromTextSymbol(e)]})},o.__decorate([s.property({type:y.default,json:{write:!0}})],t.prototype,"verticalOffset",void 0),o.__decorate([s.property(n.calloutProperty)],t.prototype,"callout",void 0),o.__decorate([s.property({json:{read:!1,write:!1}})],t.prototype,"styleOrigin",void 0),o.__decorate([s.property({type:c})],t.prototype,"symbolLayers",void 0),o.__decorate([s.enumeration({LabelSymbol3D:"label-3d"},{readOnly:!0})],t.prototype,"type",void 0),t=r=o.__decorate([s.subclass("esri.symbols.LabelSymbol3D")],t)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","./TextSymbol3DLayer","./Symbol3D","./callouts/calloutUtils","./support/Symbol3DVerticalOffset"],(function(e,t,o,r,l,s,c,a,i,n,u,p,y,b,f,d,h){"use strict";var m;const _=y.ofType({base:null,key:"type",typeMap:{text:b}});let v=m=function(t){function o(e){var o;return(o=t.call(this,e)||this).verticalOffset=null,o.callout=null,o.styleOrigin=null,o.symbolLayers=new _,o.type="label-3d",o}e._inheritsLoose(o,t);var l=o.prototype;return l.supportsCallout=function(){return!0},l.hasVisibleCallout=function(){return d.hasVisibleCallout(this)},l.hasVisibleVerticalOffset=function(){return d.hasVisibleVerticalOffset(this)},l.clone=function(){return new m({styleOrigin:r.clone(this.styleOrigin),symbolLayers:r.clone(this.symbolLayers),thumbnail:r.clone(this.thumbnail),callout:r.clone(this.callout),verticalOffset:r.clone(this.verticalOffset)})},o.fromTextSymbol=function(e){return new m({symbolLayers:[b.fromTextSymbol(e)]})},o}(f);return t.__decorate([c.property({type:h.default,json:{write:!0}})],v.prototype,"verticalOffset",void 0),t.__decorate([c.property(d.calloutProperty)],v.prototype,"callout",void 0),t.__decorate([c.property({json:{read:!1,write:!1}})],v.prototype,"styleOrigin",void 0),t.__decorate([c.property({type:_})],v.prototype,"symbolLayers",void 0),t.__decorate([a.enumeration({LabelSymbol3D:"label-3d"},{readOnly:!0})],v.prototype,"type",void 0),v=m=t.__decorate([i.subclass("esri.symbols.LabelSymbol3D")],v),v}));

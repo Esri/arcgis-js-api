@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Logger","../../../core/promiseUtils","../../../core/workers"],(function(e,t,r,i,o,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.WorkerHandle=void 0;var s=i.getLogger("esri.views.3d.support.WorkerHandle"),h=function(){function e(e,t,i,o){var h=this;void 0===o&&(o={}),this._methodName=t,this._promise=n.open(e,r.__assign(r.__assign({},o),{scheduler:i})).then((function(e){void 0===h._thread?(h._thread=e,h._promise=null):e.close()})),this._promise.catch((function(t){return s.error("Failed to initialize "+e+" worker: "+t)}))}return e.prototype.destroy=function(){this._thread&&(this._thread.close(),this._thread=null),this._promise=null},e.prototype.invoke=function(e,t){var r=this;if(void 0===t&&(t=null),this._thread){var i=this.getTransferList(e);return this._thread.invoke(this._methodName,e,{transferList:i,signal:t})}return this._promise?this._promise.then((function(){return o.throwIfAborted(t),r.invoke(e,t)})):o.reject(null)},e.prototype.broadcast=function(e,t){var r=this;return this._thread?o.all(this._thread.broadcast(t,e)).then((function(){})):this._promise?this._promise.then((function(){return r.broadcast(e,t)})):o.reject()},Object.defineProperty(e.prototype,"promise",{get:function(){return this._promise},enumerable:!1,configurable:!0}),e}();t.WorkerHandle=h}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/Logger","../../../core/promiseUtils","../../../core/workers/workers"],(function(e,t,r,i,s){"use strict";const o=r.getLogger("esri.views.3d.support.WorkerHandle");let n=function(){function e(e,t,r,i={}){this._methodName=t,this._promise=s.open(e,{...i,scheduler:r}).then((e=>{void 0===this._thread?(this._thread=e,this._promise=null,i.hasInitialize&&this.broadcast({},"initialize")):e.close()})),this._promise.catch((t=>o.error(`Failed to initialize ${e} worker: ${t}`)))}var r=e.prototype;return r.destroy=function(){this._thread&&(this._thread.close(),this._thread=null),this._promise=null},r.invoke=function(e,t){if(this._thread){const r=this.getTransferList(e);return this._thread.invoke(this._methodName,e,{transferList:r,signal:t})}return this._promise?this._promise.then((()=>(i.throwIfAborted(t),this.invoke(e,t)))):i.reject(null)},r.broadcast=function(e,t){return this._thread?i.all(this._thread.broadcast(t,e)).then((()=>{})):this._promise?this._promise.then((()=>this.broadcast(e,t))):i.reject()},t._createClass(e,[{key:"promise",get:function(){return this._promise}}]),e}();e.WorkerHandle=n,Object.defineProperty(e,"__esModule",{value:!0})}));

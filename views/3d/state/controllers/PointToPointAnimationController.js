@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/accessorSupport/decorators","../../../../core/libs/gl-matrix-2/vec3f64","../../../ViewAnimation","../../animation/pointToPoint/Animation","./AnimationController","../../webgl-engine/lib/Camera","../../webgl-engine/lib/Intersector"],(function(t,e,i,n,o,r,a,s,c,l){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.PointToPointAnimationController=void 0;var p=function(t){function e(e){var i=t.call(this,e)||this;return i.view=null,i.mode="interaction",i.hasTarget=!1,i}return i.__extends(e,t),Object.defineProperty(e.prototype,"intersectionHelper",{get:function(){return this.view.sceneIntersectionHelper},enumerable:!1,configurable:!0}),e.prototype.initialize=function(){this.animation=new a.default(this.view.state.mode),this.viewAnimation="interaction"===this.mode?null:new r},Object.defineProperty(e.prototype,"isInteractive",{get:function(){return"interaction"===this.mode},enumerable:!1,configurable:!0}),e.prototype.begin=function(t,e){this.hasTarget=!0;var i=this.animationSettings(e);m.copyFrom(this.view.state.camera);var n=new l.Intersector(this.view.state.mode);this.intersectionHelper.intersectRay(m.ray,n,u)&&(m.center=u),this.animation.update(m,t,i),this.animation.finished&&this.finish()},e.prototype.finish=function(){this.animation.currentTime=this.animation.time,t.prototype.finish.call(this)},Object.defineProperty(e.prototype,"steppingFinished",{get:function(){return this.hasTarget&&this.animation.finished},enumerable:!1,configurable:!0}),e.prototype.stepController=function(t,e){this.hasTarget&&this.animation.step(t,e)},e.prototype.onControllerEnd=function(e){this.hasTarget&&(this.animation.cameraAt(this.animation.currentTime/this.animation.time,e),this.animation.currentTime=this.animation.time),t.prototype.onControllerEnd.call(this,e)},e.prototype.animationSettings=function(t){return void 0===t&&(t={}),{apex:{maximumDistance:this.view.state.constraints.clampAltitude(1/0)/6,ascensionFactor:void 0,descensionFactor:void 0},speedFactor:t.speedFactor,duration:t.duration,maxDuration:t.maxDuration,easing:t.easing}},i.__decorate([n.property({constructOnly:!0})],e.prototype,"view",void 0),i.__decorate([n.property({constructOnly:!0})],e.prototype,"mode",void 0),e=i.__decorate([n.subclass("esri.views.3d.state.controllers.PointToPointAnimationController")],e)}(s.AnimationController);e.PointToPointAnimationController=p;var m=new c.default,u=o.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/has","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/decorators/subclass","../../../../core/urlUtils","../../../../core/uuid","../../../../portal/support/resourceExtension","../../../../chunks/vec3f64","../../../ViewAnimation","../../webgl-engine/lib/Intersector","../../webgl-engine/lib/Camera","../../animation/pointToPoint/Animation","./AnimationController"],(function(t,i,n,e,o,r,s,a,c,l,u,m,h,p,d,g,f){"use strict";t.PointToPointAnimationController=function(t){function n(i){var n;return(n=t.call(this,i)||this).view=null,n.mode="interaction",n.hasTarget=!1,n}i._inheritsLoose(n,t);var e=n.prototype;return e.initialize=function(){this.animation=new g.Animation(this.view.state.mode),this.viewAnimation="interaction"===this.mode?null:new h},e.begin=function(t,i){this.hasTarget=!0;const n=this.animationSettings(i);v.copyFrom(this.view.state.camera);const e=new p.Intersector(this.view.state.mode);this.intersectionHelper.intersectRay(v.ray,e,y)&&(v.center=y),this.animation.update(v,t,n),this.animation.finished&&this.finish()},e.finish=function(){this.animation.currentTime=this.animation.time,t.prototype.finish.call(this)},e.stepController=function(t,i){this.hasTarget&&this.animation.step(t,i)},e.onControllerEnd=function(i){this.hasTarget&&(this.animation.cameraAt(this.animation.currentTime/this.animation.time,i),this.animation.currentTime=this.animation.time),t.prototype.onControllerEnd.call(this,i)},e.animationSettings=function(t={}){return{apex:{maximumDistance:this.view.state.constraints.clampAltitude(1/0)/6,ascensionFactor:void 0,descensionFactor:void 0},speedFactor:t.speedFactor,duration:t.duration,maxDuration:t.maxDuration,easing:t.easing}},i._createClass(n,[{key:"intersectionHelper",get:function(){return this.view.sceneIntersectionHelper}},{key:"isInteractive",get:function(){return"interaction"===this.mode}},{key:"steppingFinished",get:function(){return this.hasTarget&&this.animation.finished}}]),n}(f.AnimationController),n.__decorate([s.property({constructOnly:!0})],t.PointToPointAnimationController.prototype,"view",void 0),n.__decorate([s.property({constructOnly:!0})],t.PointToPointAnimationController.prototype,"mode",void 0),t.PointToPointAnimationController=n.__decorate([a.subclass("esri.views.3d.state.controllers.PointToPointAnimationController")],t.PointToPointAnimationController);const v=new d,y=m.create();Object.defineProperty(t,"__esModule",{value:!0})}));

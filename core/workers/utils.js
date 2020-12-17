@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../has"],(function(e,r,t){"use strict";var s;Object.defineProperty(r,"__esModule",{value:!0}),r.receiveMessage=r.postMessage=r.toInvokeError=r.isTranferableResult=r.newJobId=r.MessageType=void 0,function(e){e[e.HANDSHAKE=0]="HANDSHAKE",e[e.CONFIGURE=1]="CONFIGURE",e[e.CONFIGURED=2]="CONFIGURED",e[e.OPEN=3]="OPEN",e[e.OPENED=4]="OPENED",e[e.RESPONSE=5]="RESPONSE",e[e.INVOKE=6]="INVOKE",e[e.ABORT=7]="ABORT",e[e.CLOSE=8]="CLOSE",e[e.OPEN_PORT=9]="OPEN_PORT",e[e.ON=10]="ON"}(s=r.MessageType||(r.MessageType={}));var n=0;function a(e){return e&&"object"==typeof e&&("result"in e||"transferList"in e)}function o(e){if(!e||!e.length)return null;if(t("esri-workers-arraybuffer-transfer"))return e;var r=e.filter((function(e){return!((r=e)instanceof ArrayBuffer||r&&r.constructor&&"ArrayBuffer"===r.constructor.name);var r}));return r.length?r:null}r.newJobId=function(){return n++},r.isTranferableResult=a,r.toInvokeError=function(e){return e?"string"==typeof e?JSON.stringify({name:"message",message:e}):e.toJSON?JSON.stringify(e):JSON.stringify({name:e.name,message:e.message,details:e.details||{stack:e.stack}}):null},r.postMessage=function(e,r,t,n){var i;r.type!==s.OPEN_PORT?r.type===s.INVOKE||r.type===s.RESPONSE?(a(t)?(i=o(t.transferList),r.data=t.result):(i=o(n),r.data=t),i?e.postMessage(r,i):e.postMessage(r)):e.postMessage(r):e.postMessage(r,[r.port])},r.receiveMessage=function(e){if(!e)return null;var r=e.data;return r?"string"==typeof r?JSON.parse(r):r:null}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../has"],(function(e,t){"use strict";var r;(r=e.MessageType||(e.MessageType={}))[r.HANDSHAKE=0]="HANDSHAKE",r[r.CONFIGURE=1]="CONFIGURE",r[r.CONFIGURED=2]="CONFIGURED",r[r.OPEN=3]="OPEN",r[r.OPENED=4]="OPENED",r[r.RESPONSE=5]="RESPONSE",r[r.INVOKE=6]="INVOKE",r[r.ABORT=7]="ABORT",r[r.CLOSE=8]="CLOSE",r[r.OPEN_PORT=9]="OPEN_PORT",r[r.ON=10]="ON";let s=0;function n(e){return e&&"object"==typeof e&&("result"in e||"transferList"in e)}function a(e){if(!e||!e.length)return null;if(t("esri-workers-arraybuffer-transfer"))return e;const r=e.filter((e=>{return!((t=e)instanceof ArrayBuffer||t&&t.constructor&&"ArrayBuffer"===t.constructor.name);var t}));return r.length?r:null}e.isTranferableResult=n,e.newJobId=function(){return s++},e.postMessage=function(t,r,s,i){if(r.type===e.MessageType.OPEN_PORT)return void t.postMessage(r,[r.port]);if(r.type!==e.MessageType.INVOKE&&r.type!==e.MessageType.RESPONSE)return void t.postMessage(r);let o;n(s)?(o=a(s.transferList),r.data=s.result):(o=a(i),r.data=s),o?t.postMessage(r,o):t.postMessage(r)},e.receiveMessage=function(e){if(!e)return null;const t=e.data;return t?"string"==typeof t?JSON.parse(t):t:null},e.toInvokeError=function(e){return e?"string"==typeof e?JSON.stringify({name:"message",message:e}):e.toJSON?JSON.stringify(e):JSON.stringify({name:e.name,message:e.message,details:e.details||{stack:e.stack}}):null},Object.defineProperty(e,"__esModule",{value:!0})}));

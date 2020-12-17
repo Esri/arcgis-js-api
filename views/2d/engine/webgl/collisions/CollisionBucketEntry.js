@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/libs/gl-matrix-2/vec2"],(function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});var n=function(){function e(){this._reference=null}return Object.defineProperty(e.prototype,"dirty",{get:function(){return this.reference&&this.reference.isDirty},set:function(e){this.reference&&this.reference.hasData&&(e||this.reference.isDirty)&&(this.reference.isDirty=e)},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"index",{get:function(){return this._reference&&this._reference.labelIndex},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"reference",{get:function(){return this._reference},set:function(e){this._reference=e},enumerable:!1,configurable:!0}),e.prototype.reset=function(e,r,n){var i=e.state,o=n.layerView.tileRenderer,c=this.reference;if(!c||!c.hasData)return!1;r&&(c.isDirty=!0);for(var a=c.transforms.labelMat2d,f=a[4],s=a[5],u=0,l=c.displayObjects;u<l.length;u++)for(var d=l[u],h=o.featuresView.attributeView,b=n.hasVV()?h.getVVSize(d.id):0,v=0,y=d.metrics;v<y.length;v++){var p=y[v];n.hasVV()&&p.computeVVOffset(b,n.vvEval);var g=p.bounds.center,m=p.bounds.centerT;c.isDirty&&(p.minZoom=-1);var V=t.vec2.copy(m,p.anchor);if(i.rotation?t.vec2.transformMat2d(V,V,a):(m[0]=V[0]+f,m[1]=V[1]+s),t.vec2.add(m,V,g),m[0]+=p.offsetX,m[1]+=p.offsetY,p.boxes)for(var D=0,_=p.boxes;D<_.length;D++){var x=_[D],O=x.center,j=p.anchor,M=x.centerT;t.vec2.add(M,j,O),i.rotation?t.vec2.transformMat2d(M,M,a):(M[0]=M[0]+f,M[1]=M[1]+s)}}return!0},e}();r.default=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/vec2"],(function(e,t){"use strict";return function(){function r(){this._reference=null}return r.prototype.reset=function(e,r,n){const{state:s}=e,i=n.layerView.tileRenderer,c=this.reference;if(!c||!c.hasData)return!1;r&&(c.isDirty=!0);const o=c.transforms.labelMat2d,f=o[4],a=o[5];for(const e of c.displayObjects){const r=i.featuresView.attributeView,u=n.hasVV()?r.getVVSize(e.id):0;for(const r of e.metrics){n.hasVV()&&r.computeVVOffset(u,n.vvEval);const e=r.bounds.center,i=r.bounds.centerT;c.isDirty&&(r.minZoom=-1);const h=t.copy(i,r.anchor);if(s.rotation?t.transformMat2d(h,h,o):(i[0]=h[0]+f,i[1]=h[1]+a),t.add(i,h,e),i[0]+=r.offsetX,i[1]+=r.offsetY,r.boxes)for(const e of r.boxes){const n=e.center,i=r.anchor,c=e.centerT;t.add(c,i,n),s.rotation?t.transformMat2d(c,c,o):(c[0]=c[0]+f,c[1]=c[1]+a)}}}return!0},e._createClass(r,[{key:"dirty",get:function(){return this.reference&&this.reference.isDirty},set:function(e){this.reference&&this.reference.hasData&&(e||this.reference.isDirty)&&(this.reference.isDirty=e)}},{key:"index",get:function(){return this._reference&&this._reference.labelIndex}},{key:"reference",get:function(){return this._reference},set:function(e){this._reference=e}}]),r}()}));

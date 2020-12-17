@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../engine/FeatureContainer"],(function(e,t,r,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),Object.defineProperty(t.prototype,"hasLabels",{get:function(){return!1},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"labelsVisible",{get:function(){return!1},enumerable:!1,configurable:!0}),t.prototype._renderGraphics=function(e,t){for(var r=0,n=this.children;r<n.length;r++){var i=n[r];i.isReady&&i.hasData&&(i.commitChanges(e),e.context.setStencilFunction(514,i.stencilRef,255),i._displayList.replay(e,i,t))}},t.prototype.renderChildren=function(t){var r=t.painter;if(this.children.some((function(e){return e.hasData}))){e.prototype.renderChildren.call(this,t),this._renderGraphics(t);var n=r.effects.highlight;n.bind(t),this._renderGraphics(t,n.defines),n.draw(t),n.unbind()}},t}(n.FeatureContainer);t.default=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../engine/webgl/enums","../../engine/FeatureContainer"],(function(e,n,t){"use strict";return function(t){function i(){return t.apply(this,arguments)||this}e._inheritsLoose(i,t);var r=i.prototype;return r.renderChildren=function(e){this.attributeView.bindTextures(e.context),this.children.some((e=>e.hasData))&&(t.prototype.renderChildren.call(this,e),e.drawPhase===n.WGLDrawPhase.MAP&&this._renderChildren(e),e.drawPhase===n.WGLDrawPhase.HIGHLIGHT&&this._renderHighlight(e))},r._renderChildren=function(e,n){for(const t of this.children)t.isReady&&t.hasData&&(t.commitChanges(e),e.context.setStencilFunction(514,t.stencilRef,255),t._displayList.replay(e,t,n))},r._renderHighlight=function(e){const{painter:n}=e,t=n.effects.highlight;t.bind(e),this._renderChildren(e,t.defines),t.draw(e),t.unbind()},e._createClass(i,[{key:"hasLabels",get:function(){return!1}},{key:"labelsVisible",get:function(){return!1}}]),i}(t.FeatureContainer)}));

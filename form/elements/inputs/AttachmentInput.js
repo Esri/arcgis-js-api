@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(t,e,r,o,n){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.type=null,r}var o;return r.__extends(e,t),o=e,e.prototype.clone=function(){return new o({type:this.type})},r.__decorate([n.property({type:["attachment","audio","document","image","signature","video"],json:{write:!0}})],e.prototype,"type",void 0),e=o=r.__decorate([n.subclass("esri.form.elements.inputs.AttachmentInput")],e)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport"],(function(e,r,t,o,s,c,u,n,p,i,a){"use strict";var l;let d=l=function(r){function t(e){var t;return(t=r.call(this,e)||this).type=null,t}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new l({type:this.type})},t}(a.JSONSupport);return r.__decorate([c.property({type:["attachment","audio","document","image","signature","video"],json:{write:!0}})],d.prototype,"type",void 0),d=l=r.__decorate([u.subclass("esri.form.elements.inputs.AttachmentInput")],d),d}));

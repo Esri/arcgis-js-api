@@ -41,14 +41,14 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.NavigationToggle
-import NavigationToggleViewModel = require("esri/widgets/NavigationToggle/NavigationToggleViewModel");
+import NavigationToggleViewModel from "esri/widgets/NavigationToggle/NavigationToggleViewModel";
 
 // esri.widgets.NavigationToggle.t9n
 import NavigationToggleMessages from "esri/widgets/NavigationToggle/t9n/NavigationToggle";
@@ -299,4 +299,4 @@ class NavigationToggle extends Widget {
   }
 }
 
-export = NavigationToggle;
+export default NavigationToggle;

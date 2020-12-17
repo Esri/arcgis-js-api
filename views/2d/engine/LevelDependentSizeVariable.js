@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/lang","../../../core/accessorSupport/decorators","../../../renderers/visualVariables/SizeVariable","../../../renderers/visualVariables/support/sizeVariableUtils"],(function(e,i,t,s,a,l,n){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.LevelDependentSizeVariable=void 0;var r=function(e){function i(){return null!==e&&e.apply(this,arguments)||this}var l;return t.__extends(i,e),l=i,i.prototype.writeLevels=function(e,i,t){for(var s in e){var a=this.levels[s];return void(i.stops=a)}},i.prototype.clone=function(){return new l({axis:this.axis,field:this.field,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,maxDataValue:this.maxDataValue,maxSize:n.isSizeVariable(this.maxSize)?this.maxSize.clone():this.maxSize,minDataValue:this.minDataValue,minSize:n.isSizeVariable(this.minSize)?this.minSize.clone():this.minSize,normalizationField:this.normalizationField,stops:this.stops&&this.stops.map((function(e){return e.clone()})),target:this.target,useSymbolValue:this.useSymbolValue,valueRepresentation:this.valueRepresentation,valueUnit:this.valueUnit,legendOptions:this.legendOptions&&this.legendOptions.clone(),levels:s.clone(this.levels)})},t.__decorate([a.property()],i.prototype,"levels",void 0),t.__decorate([a.writer("levels")],i.prototype,"writeLevels",null),i=l=t.__decorate([a.subclass("esri.views.2d.engine.LevelDependentSizeVariable")],i)}(l);i.LevelDependentSizeVariable=r}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/lang","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/accessorSupport/decorators/writer","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../renderers/visualVariables/support/sizeVariableUtils","../../../renderers/visualVariables/SizeVariable"],(function(e,i,s,t,r,a,l,o,n,p,u,c,h,v,d){"use strict";var S;e.LevelDependentSizeVariable=S=function(e){function s(){return e.apply(this,arguments)||this}i._inheritsLoose(s,e);var t=s.prototype;return t.writeLevels=function(e,i,s){for(const s in e){const e=this.levels[s];return void(i.stops=e)}},t.clone=function(){return new S({axis:this.axis,field:this.field,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,maxDataValue:this.maxDataValue,maxSize:v.isSizeVariable(this.maxSize)?this.maxSize.clone():this.maxSize,minDataValue:this.minDataValue,minSize:v.isSizeVariable(this.minSize)?this.minSize.clone():this.minSize,normalizationField:this.normalizationField,stops:this.stops&&this.stops.map((e=>e.clone())),target:this.target,useSymbolValue:this.useSymbolValue,valueRepresentation:this.valueRepresentation,valueUnit:this.valueUnit,legendOptions:this.legendOptions&&this.legendOptions.clone(),levels:r.clone(this.levels)})},s}(d),s.__decorate([o.property()],e.LevelDependentSizeVariable.prototype,"levels",void 0),s.__decorate([p.writer("levels")],e.LevelDependentSizeVariable.prototype,"writeLevels",null),e.LevelDependentSizeVariable=S=s.__decorate([n.subclass("esri.views.2d.engine.LevelDependentSizeVariable")],e.LevelDependentSizeVariable),Object.defineProperty(e,"__esModule",{value:!0})}));

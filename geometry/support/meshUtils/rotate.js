@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/Logger","../../../core/libs/gl-matrix-2/mat3","../../../core/libs/gl-matrix-2/mat3f64","../../../core/libs/gl-matrix-2/mat4","../../../core/libs/gl-matrix-2/mat4f64","../../../core/libs/gl-matrix-2/quat","../../../core/libs/gl-matrix-2/quatf64","../../../core/libs/gl-matrix-2/vec3","../../../core/libs/gl-matrix-2/vec3f64","../../../core/libs/gl-matrix-2/vec4f64","./projection","../../../views/3d/support/pointUtils","../../../views/3d/support/projectionUtils"],(function(e,t,r,a,i,o,n,c,l,s,p,f,m,g,u){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.axisAngleMultiply=t.axisAngleFrom=t.rotate=void 0;var v=r.getLogger("esri.geometry.support.meshUtils.rotate");function x(e,t,r,a){if(void 0===a&&(a=p.vec3f64.ZEROS),e){o.mat4.identity(d),o.mat4.rotate(d,d,t[3],t);for(var i=0;i<e.length;i+=r){for(var n=0;n<3;n++)A[n]=e[i+n]-a[n];s.vec3.transformMat4(A,A,d);for(n=0;n<3;n++)e[i+n]=A[n]+a[n]}}}t.rotate=function(e,t,r){if(e.vertexAttributes&&e.vertexAttributes.position&&0!==t[3]){var i=e.spatialReference,o=i.isWGS84||i.isWebMercator&&(!r||!1!==r.geographic),n=r&&r.origin||e.extent.center;o?function(e,t,r){var i=e.spatialReference,o=C;g.pointToVector(r,o,u.SphericalECEFSpatialReference)||g.pointToVector(e.extent.center,o,u.SphericalECEFSpatialReference);var n=e.vertexAttributes.position,c=e.vertexAttributes.normal,l=e.vertexAttributes.tangent,p=new Float64Array(n.length),f=new Float32Array(c?c.length:0),v=new Float32Array(l?l.length:0);u.computeLinearTransformation(u.SphericalECEFSpatialReference,o,d,u.SphericalECEFSpatialReference),a.mat3.fromMat4(h,d);var A=E;s.vec3.transformMat3(E,t,h),A[3]=t[3],m.projectToECEF(n,i,p),c&&m.projectNormalToECEF(c,n,p,i,f);l&&m.projectTangentToECEF(l,n,p,i,v);x(p,A,3,o),m.projectFromECEF(p,n,i),c&&(x(f,A,3),m.projectNormalFromECEF(f,n,p,i,c));l&&(x(v,A,4),m.projectTangentFromECEF(v,n,p,i,l));e.clearCache()}(e,t,n):function(e,t,r){var a=C;if(!g.pointToVector(r,a,e.spatialReference)){var i=e.extent.center;a[0]=i.x,a[1]=i.y,a[2]=i.z,v.error("Failed to project specified origin (wkid:"+r.spatialReference.wkid+") to mesh spatial reference (wkid:"+e.spatialReference.wkid+"). Using mesh extent.center instead")}x(e.vertexAttributes.position,t,3,a),x(e.vertexAttributes.normal,t,3),x(e.vertexAttributes.tangent,t,4),e.clearCache()}(e,t,n)}},t.axisAngleFrom=function(e,t,r){return s.vec3.copy(r,e),r[3]=t,r},t.axisAngleMultiply=function(e,t,r){return c.quat.setAxisAngle(b,e,e[3]),c.quat.setAxisAngle(F,t,t[3]),c.quat.multiply(b,F,b),r[3]=c.quat.getAxisAngle(r,b),r};var A=p.vec3f64.create(),E=f.vec4f64.create(),b=l.quatf64.create(),F=l.quatf64.create(),d=n.mat4f64.create(),h=i.mat3f64.create(),C=p.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/Logger","../../../chunks/vec3f64","../../../chunks/vec3","../../projectionEllipsoid","../../../chunks/mat4","../../projection","../../../chunks/mat3f64","../../../chunks/mat4f64","../../../chunks/quatf64","../../../chunks/vec4f64","../../../chunks/mat3","./projection","../../../chunks/quat"],(function(e,t,r,n,o,c,i,a,s,l,u,p,f,g){"use strict";const m=t.getLogger("esri.geometry.support.meshUtils.rotate");function h(e,t,o,i=r.ZEROS){if(e){c.identity(E),c.rotate(E,E,t[3],t);for(let t=0;t<e.length;t+=o){for(let r=0;r<3;r++)x[r]=e[t+r]-i[r];n.transformMat4(x,x,E);for(let r=0;r<3;r++)e[t+r]=x[r]+i[r]}}}const x=r.create(),A=u.create(),F=l.create(),j=l.create(),E=s.create(),k=a.create(),d=r.create();e.axisAngleFrom=function(e,t,r){return n.copy(r,e),r[3]=t,r},e.axisAngleMultiply=function(e,t,r){return g.setAxisAngle(F,e,e[3]),g.setAxisAngle(j,t,t[3]),g.multiply(F,j,F),r[3]=g.getAxisAngle(r,F),r},e.rotate=function(e,t,r){if(!e.vertexAttributes||!e.vertexAttributes.position||0===t[3])return;const c=e.spatialReference,a=c.isWGS84||c.isWebMercator&&(!r||!1!==r.geographic),s=r&&r.origin||e.extent.center;a?function(e,t,r){const c=e.spatialReference,a=o.getSphericalPCPF(c),s=d;i.projectPointToVector(r,s,a)||i.projectPointToVector(e.extent.center,s,a);const l=e.vertexAttributes.position,u=e.vertexAttributes.normal,g=e.vertexAttributes.tangent,m=new Float64Array(l.length),x=new Float32Array(u?u.length:0),F=new Float32Array(g?g.length:0);i.computeLinearTransformation(a,s,E,a),p.fromMat4(k,E);const j=A;n.transformMat3(A,t,k),j[3]=t[3],f.projectToECEF(l,c,m),u&&f.projectNormalToECEF(u,l,m,c,x);g&&f.projectTangentToECEF(g,l,m,c,F);h(m,j,3,s),f.projectFromECEF(m,l,c),u&&(h(x,j,3),f.projectNormalFromECEF(x,l,m,c,u));g&&(h(F,j,4),f.projectTangentFromECEF(F,l,m,c,g));e.clearCache()}(e,t,s):function(e,t,r){const n=d;if(!i.projectPointToVector(r,n,e.spatialReference)){const t=e.extent.center;n[0]=t.x,n[1]=t.y,n[2]=t.z,m.error(`Failed to project specified origin (wkid:${r.spatialReference.wkid}) to mesh spatial reference (wkid:${e.spatialReference.wkid}). Using mesh extent.center instead`)}h(e.vertexAttributes.position,t,3,n),h(e.vertexAttributes.normal,t,3),h(e.vertexAttributes.tangent,t,4),e.clearCache()}(e,t,s)},Object.defineProperty(e,"__esModule",{value:!0})}));

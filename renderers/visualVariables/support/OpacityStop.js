@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators","../../../core/accessorSupport/ensureType","../../../webdoc/support/opacityUtils"],(function(t,e,r,o,p,a,c){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.label=null,r.opacity=null,r.value=null,r}var o;return r.__extends(e,t),o=e,e.prototype.readOpacity=function(t,e){return c.transparencyToOpacity(e.transparency)},e.prototype.writeOpacity=function(t,e,r){e[r]=c.opacityToTransparency(t)},e.prototype.clone=function(){return new o({label:this.label,opacity:this.opacity,value:this.value})},r.__decorate([p.property({type:String,json:{write:!0}})],e.prototype,"label",void 0),r.__decorate([p.property({type:Number,json:{type:a.Integer,write:{target:"transparency"}}})],e.prototype,"opacity",void 0),r.__decorate([p.reader("opacity",["transparency"])],e.prototype,"readOpacity",null),r.__decorate([p.writer("opacity")],e.prototype,"writeOpacity",null),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"value",void 0),e=o=r.__decorate([p.subclass("esri.renderers.visualVariables.support.OpacityStop")],e)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/reader","../../../core/accessorSupport/decorators/subclass","../../../core/accessorSupport/decorators/writer","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport","../../../webdoc/support/opacityUtils"],(function(r,e,t,o,p,a,c,s,i,n,u,l,y,d){"use strict";var _;let b=_=function(e){function t(r){var t;return(t=e.call(this,r)||this).label=null,t.opacity=null,t.value=null,t}r._inheritsLoose(t,e);var o=t.prototype;return o.readOpacity=function(r,e){return d.transparencyToOpacity(e.transparency)},o.writeOpacity=function(r,e,t){e[t]=d.opacityToTransparency(r)},o.clone=function(){return new _({label:this.label,opacity:this.opacity,value:this.value})},t}(y.JSONSupport);return e.__decorate([a.property({type:String,json:{write:!0}})],b.prototype,"label",void 0),e.__decorate([a.property({type:Number,json:{type:p.Integer,write:{target:"transparency"}}})],b.prototype,"opacity",void 0),e.__decorate([c.reader("opacity",["transparency"])],b.prototype,"readOpacity",null),e.__decorate([i.writer("opacity")],b.prototype,"writeOpacity",null),e.__decorate([a.property({type:Number,json:{write:!0}})],b.prototype,"value",void 0),b=_=e.__decorate([s.subclass("esri.renderers.visualVariables.support.OpacityStop")],b),b}));

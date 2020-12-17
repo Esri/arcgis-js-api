@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","../../layers/support/fieldUtils"],(function(e,t,r,o,i,s){"use strict";return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}var o;return r.__extends(t,e),o=t,t.prototype.collectRequiredFields=function(e,t){return r.__awaiter(this,void 0,void 0,(function(){return r.__generator(this,(function(r){return[2,s.collectArcadeFieldNames(e,t,this.expression)]}))}))},t.prototype.clone=function(){return new o({expression:this.expression,title:this.title})},r.__decorate([i.property({type:String,json:{write:!0}})],t.prototype,"expression",void 0),r.__decorate([i.property({type:String,json:{write:!0}})],t.prototype,"title",void 0),t=o=r.__decorate([i.subclass("esri.layers.support.FeatureExpressionInfo")],t)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../layers/support/fieldUtils"],(function(e,r,t,o,s,p,i,c,n,u,l,a){"use strict";var d;let y=d=function(r){function t(){return r.apply(this,arguments)||this}e._inheritsLoose(t,r);var o=t.prototype;return o.collectRequiredFields=async function(e,r){return a.collectArcadeFieldNames(e,r,this.expression)},o.clone=function(){return new d({expression:this.expression,title:this.title})},t}(l.JSONSupport);return r.__decorate([p.property({type:String,json:{write:!0}})],y.prototype,"expression",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],y.prototype,"title",void 0),y=d=r.__decorate([i.subclass("esri.layers.support.FeatureExpressionInfo")],y),y}));

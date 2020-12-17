@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(e,o){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.ShaderTechnique=void 0;var t=function(){function e(e,o){o&&(this._config=o.snapshot()),this._program=this.initializeProgram(e),e.commonUniformStore&&(this._commonUniformStore=e.commonUniformStore,this._commonUniformStore.subscribeProgram(this._program)),this._pipeline=this.initializePipeline(e)}return e.prototype.dispose=function(){this._program&&(this._commonUniformStore&&this._commonUniformStore.unsubscribeProgram(this._program),this._program.dispose(),this._program=null)},e.prototype.reload=function(e){this._program&&(this._commonUniformStore&&this._commonUniformStore.unsubscribeProgram(this._program),this._program.dispose()),this._program=this.initializeProgram(e),this._commonUniformStore&&this._commonUniformStore.subscribeProgram(this._program)},Object.defineProperty(e.prototype,"program",{get:function(){return this._program},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"pipeline",{get:function(){return this._pipeline},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"key",{get:function(){return this._config.key},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"configuration",{get:function(){return this._config},enumerable:!1,configurable:!0}),e.prototype.bindPass=function(e,o,t){},e.prototype.bindMaterial=function(e,o,t){},e.prototype.bindDraw=function(e,o,t){},e.prototype.bindPipelineState=function(e){e.setPipelineState(this.pipeline)},e.prototype.ensureAttributeLocations=function(e){this.program.assertCompatibleVertexAttributeLocations(e)},Object.defineProperty(e.prototype,"primitiveType",{get:function(){return 4},enumerable:!1,configurable:!0}),e}();o.ShaderTechnique=t}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers"],(function(i,t){"use strict";let o=function(){function i(i,t){t&&(this._config=t.snapshot()),this._program=this.initializeProgram(i),i.commonUniformStore&&(this._commonUniformStore=i.commonUniformStore,this._commonUniformStore.subscribeProgram(this._program)),this._pipeline=this.initializePipeline(i)}var o=i.prototype;return o.dispose=function(){this._program&&(this._commonUniformStore&&this._commonUniformStore.unsubscribeProgram(this._program),this._program.dispose(),this._program=null)},o.reload=function(i){this._program&&(this._commonUniformStore&&this._commonUniformStore.unsubscribeProgram(this._program),this._program.dispose()),this._program=this.initializeProgram(i),this._commonUniformStore&&this._commonUniformStore.subscribeProgram(this._program)},o.bindPass=function(i,t,o){},o.bindMaterial=function(i,t,o){},o.bindDraw=function(i,t,o){},o.bindPipelineState=function(i){i.setPipelineState(this.pipeline)},o.ensureAttributeLocations=function(i){this.program.assertCompatibleVertexAttributeLocations(i)},t._createClass(i,[{key:"program",get:function(){return this._program}},{key:"pipeline",get:function(){return this._pipeline}},{key:"key",get:function(){return this._config.key}},{key:"configuration",get:function(){return this._config}},{key:"primitiveType",get:function(){return 4}}]),i}();i.ShaderTechnique=o,Object.defineProperty(i,"__esModule",{value:!0})}));

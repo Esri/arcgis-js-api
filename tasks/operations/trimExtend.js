@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/jsonMap"],(function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.trimExtendToRESTParameters=void 0;var r=new n.default({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"});t.trimExtendToRESTParameters=function(e){var t=e.toJSON(),n=t.extendHow,o=t.polylines,i=t.trimExtendTo,s={};return s.extendHow=r.toJSON(n),o&&o.length&&(s.polylines=JSON.stringify(o),s.sr=JSON.stringify(o[0].spatialReference)),i&&(s.trimExtendTo=JSON.stringify(i)),s}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/jsonMap"],(function(e,t){"use strict";const n=new t.JSONMap({0:"default-curve-extension",1:"relocate-ends",2:"keep-end-attributes",4:"no-end-attributes",8:"no-extend-at-from",16:"no-extend-at-to"});e.trimExtendToRESTParameters=function(e){const{extendHow:t,polylines:o,trimExtendTo:r}=e.toJSON(),i={};return i.extendHow=n.toJSON(t),o&&o.length&&(i.polylines=JSON.stringify(o),i.sr=JSON.stringify(o[0].spatialReference)),r&&(i.trimExtendTo=JSON.stringify(r)),i},Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/Error","../core/Promise","../core/promiseUtils","../core/promiseUtils","../core/accessorSupport/decorators"],(function(t,e,i,r,s,o,n,p){"use strict";var a=function(t){function e(e){var i=t.call(this,e)||this;return i.state="running",i.target=null,i}return i.__extends(e,t),e.prototype.initialize=function(){var t=this;this.addResolvingPromise(o.create((function(e,i){return t._dfd={resolve:e,reject:i}})))},Object.defineProperty(e.prototype,"done",{get:function(){return"finished"===this.state||"stopped"===this.state},enumerable:!1,configurable:!0}),e.prototype.stop=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","stopped"),this._dfd.reject(new r("ViewAnimation stopped")))},e.prototype.finish=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","finished"),this._dfd.resolve())},e.prototype.update=function(t,e){e||(e=n.isPromiseLike(t)?"waiting-for-target":"running"),this._set("target",t),this._set("state",e)},i.__decorate([p.property({readOnly:!0,dependsOn:["state"]})],e.prototype,"done",null),i.__decorate([p.property({readOnly:!0,type:String})],e.prototype,"state",void 0),i.__decorate([p.property()],e.prototype,"target",void 0),e=i.__decorate([p.subclass("esri.views.ViewAnimation")],e)}(s.EsriPromise);return function(t){t.State={RUNNING:"running",STOPPED:"stopped",FINISHED:"finished",WAITING_FOR_TARGET:"waiting-for-target"}}(a||(a={})),a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/promiseUtils","../core/Promise"],(function(e,t,s,r,i,o,n,a,p,c,d,u,h){"use strict";let l=function(t){function s(e){var s;return(s=t.call(this,e)||this).state="running",s.target=null,s}e._inheritsLoose(s,t);var r=s.prototype;return r.initialize=function(){this.addResolvingPromise(u.create(((e,t)=>this._dfd={resolve:e,reject:t})))},r.stop=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","stopped"),this._dfd.reject(new a("ViewAnimation stopped")))},r.finish=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","finished"),this._dfd.resolve())},r.update=function(e,t){t||(t=u.isPromiseLike(e)?"waiting-for-target":"running"),this._set("target",e),this._set("state",t)},e._createClass(s,[{key:"done",get:function(){return"finished"===this.state||"stopped"===this.state}}]),s}(h.EsriPromise);return t.__decorate([o.property({readOnly:!0,dependsOn:["state"]})],l.prototype,"done",null),t.__decorate([o.property({readOnly:!0,type:String})],l.prototype,"state",void 0),t.__decorate([o.property()],l.prototype,"target",void 0),l=t.__decorate([n.subclass("esri.views.ViewAnimation")],l),function(e){e.State={RUNNING:"running",STOPPED:"stopped",FINISHED:"finished",WAITING_FOR_TARGET:"waiting-for-target"}}(l||(l={})),l}));

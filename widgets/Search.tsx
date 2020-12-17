@@ -1,7 +1,7 @@
 /**
- * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)}
- * and/or {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
- * layer(s). If using a locator with a geocoding service, the
+ * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)},
+ * {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
+ * layer(s), and/or {@link module:esri/webdoc/applicationProperties/SearchTable table(s)}. If using a locator with a geocoding service, the
  * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
  * operation is used, whereas {@link module:esri/tasks/support/Query queries} are used on feature layers.
  *
@@ -42,15 +42,15 @@
  */
 
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { substitute } from "esri/intl";
-import PopupTemplate = require("esri/PopupTemplate");
+import PopupTemplate from "esri/PopupTemplate";
 
 // esri.core
-import { createAbortController } from "esri/../esri/core/promiseUtils";
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { eventKey } from "esri/core/events";
-import Handles = require("esri/core/Handles");
+import Handles from "esri/core/Handles";
+import { createAbortController } from "esri/core/promiseUtils";
 import { escapeRegExpString } from "esri/core/string";
 import * as watchUtils from "esri/core/watchUtils";
 
@@ -58,14 +58,14 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.portal
-import Portal = require("esri/portal/Portal");
+import Portal from "esri/portal/Portal";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import {
@@ -77,11 +77,11 @@ import {
   SuggestResult,
   SupportedSearchSource
 } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Search
-import SearchResultRenderer = require("esri/widgets/Search/SearchResultRenderer");
-import SearchViewModel = require("esri/widgets/Search/SearchViewModel");
+import SearchResultRenderer from "esri/widgets/Search/SearchResultRenderer";
+import SearchViewModel from "esri/widgets/Search/SearchViewModel";
 
 // esri.widgets.Search.t9n
 import SearchMessages from "esri/widgets/Search/t9n/Search";
@@ -596,6 +596,9 @@ class Search extends Widget {
    * may contain [ArcGIS Portal](https://enterprise.arcgis.com/en/portal/)
    * [locators](http://enterprise.arcgis.com/en/server/latest/publish-services/windows/geocode-services.htm)
    * and any web map or web scene [configurable search sources](http://doc.arcgis.com/en/arcgis-online/create-maps/configure-feature-search.htm).
+   * Web maps or web scenes may contain
+   * {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
+   * layer(s), and/or {@link module:esri/webdoc/applicationProperties/SearchTable table(s)} as sources.
    *
    * This property is used to populate the Search UI if the {@link module:esri/widgets/Search/SearchViewModel#sources sources} property is not set.
    *
@@ -978,10 +981,9 @@ class Search extends Widget {
 
   /**
    * The Search widget may be used to search features in a
-   * {@link module:esri/layers/FeatureLayer} or geocode locations with a
-   * {@link module:esri/tasks/Locator}. The `sources` property defines the sources from which
-   * to search for the [view](#view) specified by the Search widget instance.
-   * There are two types of sources:
+   * {@link module:esri/layers/FeatureLayer} or {@link module:esri/webdoc/applicationProperties/SearchTable table},
+   * or geocode locations with a {@link module:esri/tasks/Locator}. The `sources` property defines the sources from which
+   * to search for the [view](#view) specified by the Search widget instance. There are two types of sources:
    *
    * * {@link module:esri/widgets/Search/LayerSearchSource}
    * * {@link module:esri/widgets/Search/LocatorSearchSource}
@@ -1006,7 +1008,7 @@ class Search extends Widget {
    *     singleLineFieldName: "SingleLine",
    *     outFields: ["Addr_type"],
    *     name: "ArcGIS World Geocoding Service",
-   *     placeholder: "Adresse",
+   *     placeholder: "Address",
    *     resultSymbol: {
    *        type: "picture-marker",  // autocasts as new PictureMarkerSymbol()
    *        url: this.basePath + "/images/search/search-symbol-32.png",
@@ -1929,9 +1931,9 @@ class Search extends Widget {
     const isNavigationKey =
       key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown";
 
-    const list = this._suggestionListNode.getElementsByTagName("li");
+    const list = this._suggestionListNode?.getElementsByTagName("li");
 
-    if (list.length > 0) {
+    if (list?.length) {
       if (this.activeMenu !== "suggestion") {
         this.activeMenu = "suggestion";
       }
@@ -2042,9 +2044,9 @@ class Search extends Widget {
       return;
     }
 
-    const list = this._sourceListNode.getElementsByTagName("li");
+    const list = this._sourceListNode?.getElementsByTagName("li");
 
-    if (list.length === 0) {
+    if (!list || list.length === 0) {
       return;
     }
 
@@ -2102,4 +2104,4 @@ class Search extends Widget {
   }
 }
 
-export = Search;
+export default Search;

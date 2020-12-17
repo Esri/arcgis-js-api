@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","./Input"],(function(e,t,o,r,n){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.type="combo-box",o}var n;return o.__extends(t,e),n=t,t.prototype.clone=function(){return new n},o.__decorate([r.property({type:["combo-box"],json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=n=o.__decorate([r.subclass("esri.form.elements.inputs.ComboBoxInput")],t)}(n)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","./Input"],(function(e,o,r,t,s,c,n,u,p,i,a){"use strict";var l;let b=l=function(o){function r(e){var r;return(r=o.call(this,e)||this).type="combo-box",r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new l},r}(a);return o.__decorate([c.property({type:["combo-box"],json:{read:!1,write:!0}})],b.prototype,"type",void 0),b=l=o.__decorate([n.subclass("esri.form.elements.inputs.ComboBoxInput")],b),b}));

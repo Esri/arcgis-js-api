@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/libs/gl-matrix-2/vec3","../../core/libs/gl-matrix-2/vec3f64","./FilteredFiniteDifference","./Momentum"],(function(e,t,i,n,r,s,c){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.PanPlanarMomentumEstimator=t.PanPlanarMomentum=void 0;var a=function(e){function t(t,i,n,r,s){var c=e.call(this,t,i,n)||this;return c.sceneVelocity=r,c.direction=s,c}return i.__extends(t,e),t.prototype.value=function(t){return e.prototype.valueFromInitialVelocity.call(this,this.sceneVelocity,t)},t}(c.Momentum);t.PanPlanarMomentum=a;var l=function(){function e(e,t,i){void 0===e&&(e=300),void 0===t&&(t=12),void 0===i&&(i=.84),this.minimumInitialVelocity=e,this.stopVelocity=t,this.friction=i,this.enabled=!0,this.time=new s.FilteredFiniteDifference(.6),this.screen=[new s.FilteredFiniteDifference(.4),new s.FilteredFiniteDifference(.4)],this.scene=[new s.FilteredFiniteDifference(.6),new s.FilteredFiniteDifference(.6),new s.FilteredFiniteDifference(.6)],this.tmpDirection=r.vec3f64.create()}return e.prototype.add=function(e,t,i){if(this.enabled){if(this.time.hasLastValue)if(this.time.computeDelta(i)<.015)return;this.screen[0].update(e[0]),this.screen[1].update(e[1]),this.scene[0].update(t[0]),this.scene[1].update(t[1]),this.scene[2].update(t[2]),this.time.update(i)}},e.prototype.reset=function(){this.screen[0].reset(),this.screen[1].reset(),this.scene[0].reset(),this.scene[1].reset(),this.scene[2].reset(),this.time.reset()},e.prototype.evaluateMomentum=function(){if(!this.enabled||!this.screen[0].hasFilteredDelta)return null;var e=this.screen[0].filteredDelta,t=this.screen[1].filteredDelta,i=Math.sqrt(e*e+t*t)/this.time.filteredDelta;return Math.abs(i)<this.minimumInitialVelocity?null:this.createMomentum(i,this.stopVelocity,this.friction)},e.prototype.createMomentum=function(e,t,i){n.vec3.set(this.tmpDirection,this.scene[0].filteredDelta,this.scene[1].filteredDelta,this.scene[2].filteredDelta);var r=n.vec3.length(this.tmpDirection);r>0&&n.vec3.scale(this.tmpDirection,this.tmpDirection,1/r);var s=r/this.time.filteredDelta;return new a(e,t,i,s,this.tmpDirection)},e}();t.PanPlanarMomentumEstimator=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/vec3f64","../../chunks/vec3","./FilteredFiniteDifference","./Momentum"],(function(e,t,i,n,s,r){"use strict";let c=function(e){function i(t,i,n,s,r){var c;return(c=e.call(this,t,i,n)||this).sceneVelocity=s,c.direction=r,c}return t._inheritsLoose(i,e),i.prototype.value=function(t){return e.prototype.valueFromInitialVelocity.call(this,this.sceneVelocity,t)},i}(r.Momentum),l=function(){function e(e=300,t=12,n=.84){this.minimumInitialVelocity=e,this.stopVelocity=t,this.friction=n,this.enabled=!0,this.time=new s.FilteredFiniteDifference(.6),this.screen=[new s.FilteredFiniteDifference(.4),new s.FilteredFiniteDifference(.4)],this.scene=[new s.FilteredFiniteDifference(.6),new s.FilteredFiniteDifference(.6),new s.FilteredFiniteDifference(.6)],this.tmpDirection=i.create()}var t=e.prototype;return t.add=function(e,t,i){if(this.enabled){if(this.time.hasLastValue){if(this.time.computeDelta(i)<.015)return}this.screen[0].update(e[0]),this.screen[1].update(e[1]),this.scene[0].update(t[0]),this.scene[1].update(t[1]),this.scene[2].update(t[2]),this.time.update(i)}},t.reset=function(){this.screen[0].reset(),this.screen[1].reset(),this.scene[0].reset(),this.scene[1].reset(),this.scene[2].reset(),this.time.reset()},t.evaluateMomentum=function(){if(!this.enabled||!this.screen[0].hasFilteredDelta)return null;const e=this.screen[0].filteredDelta,t=this.screen[1].filteredDelta,i=Math.sqrt(e*e+t*t)/this.time.filteredDelta;return Math.abs(i)<this.minimumInitialVelocity?null:this.createMomentum(i,this.stopVelocity,this.friction)},t.createMomentum=function(e,t,i){n.set(this.tmpDirection,this.scene[0].filteredDelta,this.scene[1].filteredDelta,this.scene[2].filteredDelta);const s=n.length(this.tmpDirection);s>0&&n.scale(this.tmpDirection,this.tmpDirection,1/s);const r=s/this.time.filteredDelta;return new c(e,t,i,r,this.tmpDirection)},e}();e.PanPlanarMomentum=c,e.PanPlanarMomentumEstimator=l,Object.defineProperty(e,"__esModule",{value:!0})}));

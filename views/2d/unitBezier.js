@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(n,e){"use strict";function i(n,e,i,t){var r=3*n,u=3*(i-n)-r,s=1-r-u,a=3*e,o=3*(t-e)-a,c=1-a-o;function f(n){return((s*n+u)*n+r)*n}return function(n,e){return void 0===e&&(e=1e-6),function(n){return((c*n+o)*n+a)*n}(function(n,e){var i,t,a,o,c,g,F;for(a=n,g=0;g<8;g++){if(o=f(a)-n,Math.abs(o)<e)return a;if(c=(3*s*(F=a)+2*u)*F+r,Math.abs(c)<1e-6)break;a-=o/c}if((a=n)<(i=0))return i;if(a>(t=1))return t;for(;i<t;){if(o=f(a),Math.abs(o-n)<e)return a;n>o?i=a:t=a,a=.5*(t-i)+i}return a}(n,e))}}Object.defineProperty(e,"__esModule",{value:!0}),e.parse=e.easingFunctions=e.unitBezier=void 0,e.unitBezier=i;var t=/^cubic-bezier\((.*)\)/;e.easingFunctions={},e.parse=function(n){var r=e.easingFunctions[n]||null;if(!r){var u=t.exec(n);if(u){var s=u[1].split(",").map((function(n){return parseFloat(n.trim())}));4!==s.length||s.some((function(n){return isNaN(n)}))||(r=i.apply(i,s))}}return r},e.easingFunctions.ease=i(.25,.1,.25,1),e.easingFunctions.linear=i(0,0,1,1),e.easingFunctions.easeIn=e.easingFunctions["ease-in"]=i(.42,0,1,1),e.easingFunctions.easeOut=e.easingFunctions["ease-out"]=i(0,0,.58,1),e.easingFunctions.easeInOut=e.easingFunctions["ease-in-out"]=i(.42,0,.58,1)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function t(e,t,n,r){const i=3*e,u=3*(n-e)-i,a=1-i-u,s=3*t,o=3*(r-t)-s,f=1-s-o;function c(e){return((a*e+u)*e+i)*e}return function(e,t=1e-6){return n=function(e,t){let n,r,s,o,f,l;for(s=e,l=0;l<8;l++){if(o=c(s)-e,Math.abs(o)<t)return s;if(f=(3*a*(p=s)+2*u)*p+i,Math.abs(f)<1e-6)break;s-=o/f}var p;if(n=0,r=1,s=e,s<n)return n;if(s>r)return r;for(;n<r;){if(o=c(s),Math.abs(o-e)<t)return s;e>o?n=s:r=s,s=.5*(r-n)+n}return s}(e,t),((f*n+o)*n+s)*n;var n}}const n=/^cubic-bezier\((.*)\)/,r={};r.ease=t(.25,.1,.25,1),r.linear=t(0,0,1,1),r.easeIn=r["ease-in"]=t(.42,0,1,1),r.easeOut=r["ease-out"]=t(0,0,.58,1),r.easeInOut=r["ease-in-out"]=t(.42,0,.58,1),e.easingFunctions=r,e.parse=function(e){let i=r[e]||null;if(!i){const r=n.exec(e);if(r){const e=r[1].split(",").map((e=>parseFloat(e.trim())));4!==e.length||e.some((e=>isNaN(e)))||(i=t.apply(t,e))}}return i},e.unitBezier=t,Object.defineProperty(e,"__esModule",{value:!0})}));

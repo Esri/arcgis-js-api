@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/unitUtils","../../geometry/support/spatialReferenceUtils","../../layers/graphics/OptimizedFeature","../../layers/graphics/OptimizedFeatureSet","../../layers/graphics/OptimizedGeometry"],(function(e,t,r,o,i,n,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.OptimizedFeatureSetParserContext=void 0;var s=function(){function e(e){this.options=e,this.geometryTypes=["esriGeometryPoint","esriGeometryMultipoint","esriGeometryPolyline","esriGeometryPolygon"]}return e.prototype.createFeatureResult=function(){return new n.default},e.prototype.prepareFeatures=function(){},e.prototype.finishFeatureResult=function(e){if(e&&e.features&&e.hasZ&&this.options.sourceSpatialReference&&e.spatialReference&&!o.equals(e.spatialReference,this.options.sourceSpatialReference)&&!e.spatialReference.vcsWkid){var t=r.getMetersPerVerticalUnitForSR(this.options.sourceSpatialReference)/r.getMetersPerVerticalUnitForSR(e.spatialReference);if(1!==t)for(var i=0,n=e.features;i<n.length;i++){var a=n[i];if(a.geometry&&a.geometry.coords)for(var s=a.geometry.coords,p=2;p<s.length;p+=3)s[p]*=t}}},e.prototype.addFeature=function(e,t){e.features.push(t)},e.prototype.createFeature=function(){return new i.default},e.prototype.createSpatialReference=function(){return{wkid:0}},e.prototype.createGeometry=function(){return new a.default},e.prototype.addField=function(e,t){e.fields.push(t)},e.prototype.addCoordinate=function(e,t){e.coords.push(t)},e.prototype.addCoordinatePoint=function(e,t){e.coords.push(t)},e.prototype.addLength=function(e,t){e.lengths.push(t)},e.prototype.createPointGeometry=function(){return new a.default},e}();t.OptimizedFeatureSetParserContext=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../geometry/support/spatialReferenceUtils","../../core/unitUtils","../../layers/graphics/OptimizedFeature","../../layers/graphics/OptimizedFeatureSet","../../layers/graphics/OptimizedGeometry"],(function(e,t,r,o,n,i){"use strict";const s=["esriGeometryPoint","esriGeometryMultipoint","esriGeometryPolyline","esriGeometryPolygon"];let u=function(){function e(e){this.options=e,this.geometryTypes=s}var u=e.prototype;return u.createFeatureResult=function(){return new n},u.prepareFeatures=function(){},u.finishFeatureResult=function(e){if(!e||!e.features||!e.hasZ||!this.options.sourceSpatialReference||!e.spatialReference||t.equals(e.spatialReference,this.options.sourceSpatialReference)||e.spatialReference.vcsWkid)return;const o=r.getMetersPerVerticalUnitForSR(this.options.sourceSpatialReference)/r.getMetersPerVerticalUnitForSR(e.spatialReference);if(1!==o)for(const t of e.features){if(!t.geometry||!t.geometry.coords)continue;const e=t.geometry.coords;for(let t=2;t<e.length;t+=3)e[t]*=o}},u.addFeature=function(e,t){e.features.push(t)},u.createFeature=function(){return new o},u.createSpatialReference=function(){return{wkid:0}},u.createGeometry=function(){return new i},u.addField=function(e,t){e.fields.push(t)},u.addCoordinate=function(e,t){e.coords.push(t)},u.addCoordinatePoint=function(e,t){e.coords.push(t)},u.addLength=function(e,t){e.lengths.push(t)},u.addQueryGeometry=function(e,t){e.queryGeometry=t.queryGeometry,e.queryGeometryType=t.queryGeometryType},u.createPointGeometry=function(){return new i},e}();e.OPTIMIZED_GEOMETRY_TYPES=s,e.OptimizedFeatureSetParserContext=u,Object.defineProperty(e,"__esModule",{value:!0})}));

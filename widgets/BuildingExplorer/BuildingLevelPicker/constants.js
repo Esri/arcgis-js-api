@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(E,_){"use strict";Object.defineProperty(_,"__esModule",{value:!0}),_.LEVEL_WIDTH_CONSTANT=_.LEVEL_WIDTH_NOMINATOR=_.LEVEL_WIDTH_MAX=_.LEVEL_HEIGHT_DEFAULT=_.LEVEL_WIDTH_MIN=_.LEVELS_POINTER_ADJUSTMENT=_.LEVELS_MARGIN_FACTOR=_.LEVELS_PADDING=_.ALPHA_SPREAD_FACTOR=_.ALPHA_LEVEL_DEPENDENCY_FACTOR=_.LEVEL_HOVERED_EXTRA_WIDTH=_.LEVEL_HOVERED_EXTRA_HEIGHT=void 0,_.LEVEL_HOVERED_EXTRA_HEIGHT=30,_.LEVEL_HOVERED_EXTRA_WIDTH=20,_.ALPHA_LEVEL_DEPENDENCY_FACTOR=30,_.ALPHA_SPREAD_FACTOR=10,_.LEVELS_PADDING=20,_.LEVELS_MARGIN_FACTOR=2,_.LEVELS_POINTER_ADJUSTMENT=.035,_.LEVEL_WIDTH_MIN=30,_.LEVEL_HEIGHT_DEFAULT=14,_.LEVEL_WIDTH_MAX=80,_.LEVEL_WIDTH_NOMINATOR=100,_.LEVEL_WIDTH_CONSTANT=40}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/constants"],(function(E,_){"use strict";E.ALPHA_LEVEL_DEPENDENCY_FACTOR=_.ALPHA_LEVEL_DEPENDENCY_FACTOR,E.ALPHA_SPREAD_FACTOR=_.ALPHA_SPREAD_FACTOR,E.LEVELS_MARGIN_FACTOR=_.LEVELS_MARGIN_FACTOR,E.LEVELS_PADDING=_.LEVELS_PADDING,E.LEVELS_POINTER_ADJUSTMENT=_.LEVELS_POINTER_ADJUSTMENT,E.LEVEL_HEIGHT_DEFAULT=_.LEVEL_HEIGHT_DEFAULT,E.LEVEL_HOVERED_EXTRA_HEIGHT=_.LEVEL_HOVERED_EXTRA_HEIGHT,E.LEVEL_HOVERED_EXTRA_WIDTH=_.LEVEL_HOVERED_EXTRA_WIDTH,E.LEVEL_WIDTH_CONSTANT=_.LEVEL_WIDTH_CONSTANT,E.LEVEL_WIDTH_MAX=_.LEVEL_WIDTH_MAX,E.LEVEL_WIDTH_MIN=_.LEVEL_WIDTH_MIN,E.LEVEL_WIDTH_NOMINATOR=_.LEVEL_WIDTH_NOMINATOR,Object.defineProperty(E,"__esModule",{value:!0})}));

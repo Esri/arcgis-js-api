@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(e,r){"use strict";function y(e,r){return!!e.typeKeywords&&e.typeKeywords.indexOf(r)>-1}Object.defineProperty(r,"__esModule",{value:!0}),r.removeTypeKeyword=r.hasTypeKeyword=r.addTypeKeyword=void 0,r.addTypeKeyword=function(e,r){if(!y(e,r)){var d=e.typeKeywords;d?d.push(r):e.typeKeywords=[r]}},r.hasTypeKeyword=y,r.removeTypeKeyword=function(e,r){var y=e.typeKeywords;if(y){var d=y.indexOf(r);d>-1&&y.splice(d,1)}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function o(e,o){return!!e.typeKeywords&&e.typeKeywords.indexOf(o)>-1}e.addTypeKeyword=function(e,t){if(!o(e,t)){const o=e.typeKeywords;o?o.push(t):e.typeKeywords=[t]}},e.hasTypeKeyword=o,e.removeTypeKeyword=function(e,o){const t=e.typeKeywords;if(t){const e=t.indexOf(o);e>-1&&t.splice(e,1)}},Object.defineProperty(e,"__esModule",{value:!0})}));

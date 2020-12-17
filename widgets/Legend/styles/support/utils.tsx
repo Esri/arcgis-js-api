@@ -1,5 +1,11 @@
+// esri.core
+import { pt2px } from "esri/core/screenUtils";
+
+// esri.libs.maquette
+import { createProjector, Projector } from "esri/libs/maquette/index";
+
 // esri.symbols.support
-import { RectDescriptor } from "esri/../../../symbols/support/interfaces";
+import { RectDescriptor } from "esri/symbols/support/interfaces";
 import {
   generateFillAttributes,
   generateStrokeAttributes,
@@ -9,15 +15,26 @@ import {
   computeBBox,
   getBoundingBox,
   BBox
-} from "esri/../../../symbols/support/svgUtils";
+} from "esri/symbols/support/svgUtils";
+import { renderColorRampPreviewHTML } from "esri/symbols/support/symbolUtils";
 
 // esri.widgets
-import { RelationshipRampElement } from "esri/../../interfaces";
+import {
+  RelationshipRampElement,
+  SizeRampElement,
+  ColorRampElement,
+  UnivariateAboveAndBelowRampElement
+} from "esri/interfaces";
 
 // esri.widgets.support
-import { VNode } from "esri/../../support/interfaces";
-import { classes, tsx } from "esri/../../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { classes, tsx } from "esri/support/widget";
 
+const projector: Projector = createProjector();
+const separatorWidth = 10;
+const separatorHeight = 20;
+const aboveAndBelowSymbolPadding = 10;
+const aboveAndBelowCardStylePadding = 20;
 const svgNS = "http://www.w3.org/2000/svg";
 
 const CSS = {
@@ -36,7 +53,10 @@ const CSS = {
   squareTableLabelLeftBottom: "esri-relationship-ramp--square__table-label--left-bottom",
   squareTableLabelRightBottom: "esri-relationship-ramp--square__table-label--right-bottom",
   squareTableLabelLeftTop: "esri-relationship-ramp--square__table-label--left-top",
-  squareTableLabelRightTop: "esri-relationship-ramp--square__table-label--right-top"
+  squareTableLabelRightTop: "esri-relationship-ramp--square__table-label--right-top",
+  // univariate above-and-below
+  univariateAboveAndBelowSymbol: "esri-univariate-above-and-below-ramp__symbol",
+  colorRamp: "esri-legend__color-ramp"
 };
 
 export function renderRelationshipRamp(
@@ -263,4 +283,200 @@ function renderRamp(
       </svg>
     </div>
   );
+}
+
+function renderSeparator(rampAlignment: "horizontal" | "vertical" = "vertical"): VNode {
+  const style = "stroke:rgb(200, 200, 200);stroke-width:1";
+
+  return rampAlignment === "vertical" ? (
+    <svg height="4" width="10">
+      <line x1="0" y1="2" x2="10" y2="2" style={style} />
+    </svg>
+  ) : (
+    <svg height="10" width="10">
+      <line x1="5" y1="0" x2="5" y2="10" style={style} />
+    </svg>
+  );
+}
+
+function getSeparatorPreview(
+  opacity: number,
+  rampAlignment: "horizontal" | "vertical" = "vertical"
+): HTMLElement {
+  const separator = document.createElement("div");
+  separator.style.height = `${separatorHeight}px`;
+  separator.className = CSS.univariateAboveAndBelowSymbol;
+
+  if (opacity != null) {
+    separator.style.opacity = opacity.toString();
+  }
+
+  projector.append(separator, renderSeparator.bind(null, rampAlignment));
+  return separator;
+}
+
+function updateUnivariateAboveAndBelowSizeRampElement(
+  sizeRampElement: SizeRampElement,
+  opacity: number,
+  rampAlignment: "horizontal" | "vertical" = "vertical"
+): void {
+  sizeRampElement.infos.forEach((stop, index) => {
+    // Replace middle stop preview with separator
+    if (index === 2) {
+      stop.preview = getSeparatorPreview(opacity, rampAlignment);
+    } else {
+      const previewSize =
+        pt2px(stop.size) +
+        (rampAlignment === "horizontal"
+          ? aboveAndBelowCardStylePadding
+          : aboveAndBelowSymbolPadding);
+      const isPreviewDiv = stop.preview.tagName.toLowerCase() === "div";
+      const preview = isPreviewDiv ? stop.preview : document.createElement("div");
+      preview.className = CSS.univariateAboveAndBelowSymbol;
+
+      if (rampAlignment === "horizontal") {
+        preview.style.width = `${previewSize}px`;
+      } else {
+        preview.style.height = `${previewSize}px`;
+      }
+
+      if (!isPreviewDiv) {
+        preview.appendChild(stop.preview);
+      }
+
+      stop.preview = preview;
+    }
+  });
+}
+
+// Used to align the colorRamp at the middle of first size symbol
+export function getUnivariateAboveAndBelowColorRampMargin(
+  sizeRampElement: SizeRampElement,
+  style: "classic" | "card" = "classic"
+): number {
+  const stops = sizeRampElement.infos;
+
+  if (style === "classic") {
+    return (pt2px(stops[0].size) + aboveAndBelowSymbolPadding) / 2;
+  }
+
+  return (stops[0].size - stops[stops.length - 1].size) / 2;
+}
+
+export function getUnivariateAboveAndBelowColorRampPreview(
+  colorRampElement: ColorRampElement,
+  options: {
+    width?: number;
+    height?: number;
+    rampAlignment: "horizontal" | "vertical";
+    opacity: number;
+    type: "above" | "below" | "full";
+  }
+): HTMLElement {
+  if (!colorRampElement) {
+    return null;
+  }
+
+  const colors = colorRampElement.infos.map((stop) => stop.color);
+  const colorRampDiv = renderColorRampPreviewHTML(
+    options.type === "full"
+      ? colors
+      : options.type === "above"
+      ? colors.slice(0, 3) // First 3 colors
+      : colors.slice(2, 5), // Last 3 colors
+    { width: options.width, height: options.height, align: options.rampAlignment }
+  );
+
+  colorRampDiv.className = CSS.colorRamp;
+
+  if (options.opacity != null) {
+    colorRampDiv.style.opacity = options.opacity.toString();
+  }
+
+  return colorRampDiv;
+}
+
+export function getUnivariateAboveAndBelowSizeRampSize(
+  sizeRampElement: SizeRampElement,
+  type: "above" | "below" | "full",
+  rampAlignment: "horizontal" | "vertical" = "vertical"
+): number {
+  let sizeRampHeight = 0;
+
+  const stops = sizeRampElement.infos;
+  const startIndex = type === "full" || type === "above" ? 0 : 2;
+  const endIndex = type === "full" || type === "below" ? 4 : 2;
+
+  for (let index = startIndex; index <= endIndex; index++) {
+    if (index === 2) {
+      sizeRampHeight += rampAlignment === "horizontal" ? separatorWidth : separatorHeight;
+    } else {
+      const previewSize =
+        pt2px(stops[index].size) +
+        (rampAlignment === "horizontal"
+          ? aboveAndBelowCardStylePadding
+          : aboveAndBelowSymbolPadding);
+
+      sizeRampHeight += previewSize;
+    }
+  }
+
+  return sizeRampHeight;
+}
+
+export function getUnivariateAboveAndBelowColorRampSize(
+  sizeRampElement: SizeRampElement,
+  type: "above" | "below" | "full",
+  rampAlignment: "horizontal" | "vertical" = "vertical"
+): number {
+  const sizeRampSize = getUnivariateAboveAndBelowSizeRampSize(sizeRampElement, type, rampAlignment);
+  const stops = sizeRampElement.infos;
+  const startIndex = type === "full" || type === "above" ? 0 : 2;
+  const endIndex = type === "full" || type === "below" ? 4 : 2;
+  const symbolSize =
+    type === "full"
+      ? stops[startIndex].size + stops[endIndex].size
+      : type === "above"
+      ? stops[startIndex].size
+      : stops[endIndex].size;
+
+  return (
+    sizeRampSize -
+    (pt2px(symbolSize / 2) +
+      (rampAlignment === "vertical"
+        ? aboveAndBelowSymbolPadding / 2 + separatorHeight / 2
+        : aboveAndBelowCardStylePadding / 2 + separatorWidth / 2))
+  );
+}
+
+export function getUnivariateAboveAndBelowRampElements(
+  legendElement: UnivariateAboveAndBelowRampElement,
+  opacity: number,
+  rampAlignment: "horizontal" | "vertical" = "vertical"
+): { sizeRampElement: SizeRampElement; colorRampElement: ColorRampElement } {
+  const elements = legendElement.infos;
+  let sizeRampElement = elements.filter(({ type }) => type === "size-ramp")[0] as SizeRampElement;
+  let colorRampElement = elements.filter(
+    ({ type }) => type === "color-ramp"
+  )[0] as ColorRampElement;
+
+  if (sizeRampElement) {
+    sizeRampElement = { ...sizeRampElement };
+    sizeRampElement.infos = [...sizeRampElement.infos];
+  }
+
+  if (colorRampElement) {
+    colorRampElement = { ...colorRampElement };
+    colorRampElement.infos = [...colorRampElement.infos];
+  }
+
+  updateUnivariateAboveAndBelowSizeRampElement(sizeRampElement, opacity, rampAlignment);
+
+  // For card style
+  if (rampAlignment === "horizontal") {
+    sizeRampElement.infos.reverse();
+    colorRampElement?.infos.reverse();
+  }
+
+  return { sizeRampElement, colorRampElement };
 }

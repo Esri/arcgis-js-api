@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../views/3d/support/buffer/types"],(function(e,t){"use strict";function r(e,t,r){const n=e.typedBuffer,f=e.typedBufferStride,d=t.typedBuffer,u=t.typedBufferStride,o=r?r.count:t.count;let s=(r&&r.dstIndex?r.dstIndex:0)*f,c=(r&&r.srcIndex?r.srcIndex:0)*u;for(let e=0;e<o;++e)n[s]=d[c],n[s+1]=d[c+1],s+=f,c+=u}function n(e,n,f){const d=e.typedBuffer,u=e.typedBufferStride,o=n.typedBuffer,s=n.typedBufferStride,c=f?f.count:n.count;let i=(f&&f.dstIndex?f.dstIndex:0)*u,p=(f&&f.srcIndex?f.srcIndex:0)*s;if(t.isInteger(n.elementType)){const e=t.maximumValue(n.elementType);if(t.isSigned(n.elementType))for(let t=0;t<c;++t)d[i]=Math.max(o[p]/e,-1),d[i+1]=Math.max(o[p+1]/e,-1),i+=u,p+=s;else for(let t=0;t<c;++t)d[i]=o[p]/e,d[i+1]=o[p+1]/e,i+=u,p+=s}else r(e,n,f);return e}var f=Object.freeze({__proto__:null,copy:r,normalizeIntegerBuffer:n});e.copy=r,e.normalizeIntegerBuffer=n,e.vec2=f}));

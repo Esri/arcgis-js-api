@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./Program"],(function(e,r,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.createProgram=r.glslifyDefineMap=void 0,r.glslifyDefineMap=function(e){var r="";for(var n in e){var i=e[n];if("boolean"==typeof i)i&&(r+="#define "+n+"\n");else if("number"==typeof i)r+="#define "+n+" "+i.toFixed()+"\n";else if("object"==typeof i){var t=i.options,f=0;for(var o in t)r+="#define "+t[o]+" "+(f++).toFixed()+"\n";r+="#define "+n+" "+t[i.value]+"\n"}}return r},r.createProgram=function(e,r,i,t){i=i||{},t=t||"";var f="function"==typeof r.shaders?r.shaders(i):r.shaders;return new n(e,t+f.vertexShader,t+f.fragmentShader,r.attributes)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./Program"],(function(e,n){"use strict";e.createProgram=function(e,t,o,r){o=o||{},r=r||"";const f="function"==typeof t.shaders?t.shaders(o):t.shaders;return new n(e,r+f.vertexShader,r+f.fragmentShader,t.attributes)},e.glslifyDefineMap=function(e){let n="";for(const t in e){const o=e[t];if("boolean"==typeof o)o&&(n+=`#define ${t}\n`);else if("number"==typeof o)n+=`#define ${t} ${o.toFixed()}\n`;else if("object"==typeof o){const e=o.options;let r=0;for(const t in e)n+=`#define ${e[t]} ${(r++).toFixed()}\n`;n+=`#define ${t} ${e[o.value]}\n`}}return n},Object.defineProperty(e,"__esModule",{value:!0})}));

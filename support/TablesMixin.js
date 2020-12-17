@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/Collection","../core/collectionUtils","../core/Logger","../core/accessorSupport/decorators"],(function(e,t,r,o,n,a,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.TablesMixin=void 0;var i="esri.support.TablesMixin",l=a.getLogger(i);t.TablesMixin=function(e){return function(e){function t(){for(var t=[],r=0;r<arguments.length;r++)t[r]=arguments[r];var n=e.apply(this,t)||this;return n.tables=new o,n.tables.on("after-add",(function(e){var t=e.item;t.parent&&t.parent!==n&&"tables"in t.parent&&t.parent.tables.remove(t),t.parent=n,"feature"!==t.type&&l.error("Layer 'title:"+t.title+", id:"+t.id+"' of type '"+t.type+"' is not supported as a table and will therefore be ignored.")})),n.tables.on("after-remove",(function(e){e.item.parent=null})),n}return r.__extends(t,e),t.prototype.destroy=function(){for(var e=0,t=this.tables.removeAll();e<t.length;e++){t[e].destroy()}this.tables.destroy()},Object.defineProperty(t.prototype,"tables",{set:function(e){this._set("tables",n.referenceSetter(e,this._get("tables")))},enumerable:!1,configurable:!0}),r.__decorate([s.property()],t.prototype,"tables",null),t=r.__decorate([s.subclass(i)],t)}(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","../core/collectionUtils"],(function(e,t,r,s,o,n,i,a,l,c,u,p,d){"use strict";const f="esri.support.TablesMixin",b=o.getLogger(f);function y(e){return e&&"group"===e.type}function h(e,t,r){if(e)for(let s=0,o=e.length;s<o;s++){const o=e.getItemAt(s);if(o[t]===r)return o;if(y(o)){const e=h(o.tables,t,r);if(e)return e}}}e.TablesMixin=e=>{let s=function(e){function r(...r){var s;return(s=e.call(this,...r)||this).tables=new p,s.tables.on("after-add",(e=>{const r=e.item;r.parent&&r.parent!==t._assertThisInitialized(s)&&"tables"in r.parent&&r.parent.tables.remove(r),r.parent=t._assertThisInitialized(s),"feature"!==r.type&&b.error(`Layer 'title:${r.title}, id:${r.id}' of type '${r.type}' is not supported as a table and will therefore be ignored.`)})),s.tables.on("after-remove",(e=>{e.item.parent=null})),s}t._inheritsLoose(r,e);var s=r.prototype;return s.destroy=function(){const e=this.tables.removeAll();for(const t of e)t.destroy();this.tables.destroy()},s.findTableById=function(e){return h(this.tables,"id",e)},s.findTableByUid=function(e){return h(this.tables,"uid",e)},t._createClass(r,[{key:"tables",set:function(e){this._set("tables",d.referenceSetter(e,this._get("tables")))}}]),r}(e);return r.__decorate([i.property()],s.prototype,"tables",null),s=r.__decorate([a.subclass(f)],s),s},Object.defineProperty(e,"__esModule",{value:!0})}));

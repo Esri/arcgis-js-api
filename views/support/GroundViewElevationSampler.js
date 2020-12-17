@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Evented","../../core/Logger","../../core/accessorSupport/decorators","../../geometry/support/aaBoundingRect","../../geometry/support/contains","../../geometry/support/webMercatorUtils","../../layers/support/ElevationSampler","../3d/support/ElevationProvider","../3d/terrain/TerrainConst"],(function(e,t,r,n,o,a,i,p,s,l,c,u){"use strict";var d=o.getLogger("esri.views.support.GroundViewElevationSampler");return function(e){function t(t){var r=e.call(this,t)||this;return r.demResolution={min:-1,max:-1},r.noDataValue=u.ELEVATION_NODATA_VALUE,r}return r.__extends(t,e),t.prototype.initialize=function(){var e=this;this.view.basemapTerrain.on("elevation-change",(function(){return e.emit("changed",{})}))},Object.defineProperty(t.prototype,"extent",{get:function(){var e=this.view.basemapTerrain;return e.extent&&e.spatialReference?i.toExtent(e.extent,e.spatialReference):null},enumerable:!1,configurable:!0}),t.prototype.elevationAt=function(e){var t=e.spatialReference,r=this.spatialReference;if(!s.canProject(t,r)){var n=t?t.wkid:"unknown";return d.error("Cannot sample elevation at a location with spatial reference ("+n+") different from the view ("+r.wkid+")"),null}if(!p.extentContainsPoint(this.extent,e)){var o=this.extent,a=o.xmin+", "+o.ymin+", "+o.xmax+", "+o.ymax;d.warn("#elevationAt()","Point used to sample elevation ("+e.x+", "+e.y+") is outside of the sampler extent ("+a+")")}return c.getElevationAtPoint(this.view.elevationProvider,e)},t.prototype.queryElevation=function(e){return l.updateGeometryElevation(e.clone(),this)},r.__decorate([a.property({readOnly:!0})],t.prototype,"demResolution",void 0),r.__decorate([a.property({readOnly:!0,dependsOn:["view.basemapTerrain.extent","view.basemapTerrain.spatialReference"]})],t.prototype,"extent",null),r.__decorate([a.property({readOnly:!0})],t.prototype,"noDataValue",void 0),r.__decorate([a.property({readOnly:!0,aliasOf:"view.basemapTerrain.spatialReference"})],t.prototype,"spatialReference",void 0),r.__decorate([a.property({constructOnly:!0})],t.prototype,"view",void 0),t=r.__decorate([a.subclass("esri.views.support.GroundViewElevationSampler")],t)}(n.EventedAccessor)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../geometry/support/webMercatorUtils","../../geometry/support/contains","../../core/Evented","../../geometry/support/aaBoundingRect","../../layers/support/ElevationSampler","../3d/support/ElevationProvider","../3d/terrain/TerrainConst"],(function(e,t,r,o,n,a,i,s,p,c,l,u,d,v,y,m,f){"use strict";const h=o.getLogger("esri.views.support.GroundViewElevationSampler");let w=function(t){function r(e){var r;return(r=t.call(this,e)||this).demResolution={min:-1,max:-1},r.noDataValue=f.ELEVATION_NODATA_VALUE,r}e._inheritsLoose(r,t);var o=r.prototype;return o.initialize=function(){this.view.basemapTerrain.on("elevation-change",(()=>this.emit("changed",{})))},o.elevationAt=function(e){const t=e.spatialReference,r=this.spatialReference;if(!l.canProject(t,r)){const e=t?t.wkid:"unknown";return h.error(`Cannot sample elevation at a location with spatial reference (${e}) different from the view (${r.wkid})`),null}if(!u.extentContainsPoint(this.extent,e)){const t=this.extent,r=`${t.xmin}, ${t.ymin}, ${t.xmax}, ${t.ymax}`;h.warn("#elevationAt()",`Point used to sample elevation (${e.x}, ${e.y}) is outside of the sampler extent (${r})`)}return m.getElevationAtPoint(this.view.elevationProvider,e)},o.queryElevation=function(e){return y.updateGeometryElevation(e.clone(),this)},e._createClass(r,[{key:"extent",get:function(){const e=this.view.basemapTerrain;return e.extent&&e.spatialReference?v.toExtent(e.extent,e.spatialReference):null}}]),r}(d.EventedAccessor);return t.__decorate([a.property({readOnly:!0})],w.prototype,"demResolution",void 0),t.__decorate([a.property({readOnly:!0,dependsOn:["view.basemapTerrain.extent","view.basemapTerrain.spatialReference"]})],w.prototype,"extent",null),t.__decorate([a.property({readOnly:!0})],w.prototype,"noDataValue",void 0),t.__decorate([a.property({readOnly:!0,aliasOf:"view.basemapTerrain.spatialReference"})],w.prototype,"spatialReference",void 0),t.__decorate([a.property({constructOnly:!0})],w.prototype,"view",void 0),w=t.__decorate([i.subclass("esri.views.support.GroundViewElevationSampler")],w),w}));

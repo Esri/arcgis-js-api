@@ -1,0 +1,28 @@
+/*
+  Theme: Dark
+*/
+
+body {
+  --esri-calcite-theme-name: "dark";
+}
+
+// Hex values from
+// @import "../base/colors/scss/variables_dark.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+$font-color: #d1d1d1; // $Calcite_Gray_700 (dark)
+$background-color: #242424; // $Calcite_Gray_050 (dark)
+$interactive-font-color: #adadad; // $Calcite_Gray_600 (dark)
+
+$heading-color: $font-color;
+
+$button-color: #adadad;
+$button-color--inverse: $background-color;
+
+// Selected
+$border-color--active: $interactive-font-color;
+$background-color--active: #000000;
+
+// Error
+$font-color--error: #eb7953;
+
+@import "../base/core";

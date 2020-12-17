@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/jsonMap","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","./support/pointCloud/ColorModulation","./support/pointCloud/pointSizeAlgorithmTypeUtils"],(function(o,e,t,r,n,i,l,p,u){"use strict";var s=r.strict()({pointCloudClassBreaksRenderer:"point-cloud-class-breaks",pointCloudRGBRenderer:"point-cloud-rgb",pointCloudStretchRenderer:"point-cloud-stretch",pointCloudUniqueValueRenderer:"point-cloud-unique-value"}),c=function(o){function e(e){var t=o.call(this,e)||this;return t.type=void 0,t.pointSizeAlgorithm=null,t.colorModulation=null,t.pointsPerInch=10,t}return t.__extends(e,o),e.prototype.clone=function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},e.prototype.cloneProperties=function(){return{pointSizeAlgorithm:i.clone(this.pointSizeAlgorithm),colorModulation:i.clone(this.colorModulation),pointsPerInch:i.clone(this.pointsPerInch)}},t.__decorate([l.property({type:s.apiValues,readOnly:!0,nonNullable:!0,json:{type:s.jsonValues,read:!1,write:s.write}})],e.prototype,"type",void 0),t.__decorate([l.property({types:u.pointSizeAlgorithmTypes,json:{write:!0}})],e.prototype,"pointSizeAlgorithm",void 0),t.__decorate([l.property({type:p.default,json:{write:!0}})],e.prototype,"colorModulation",void 0),t.__decorate([l.property({json:{write:!0},nonNullable:!0,type:Number})],e.prototype,"pointsPerInch",void 0),e=t.__decorate([l.subclass("esri.renderers.PointCloudRenderer")],e)}(n.JSONSupport);return function(o){o.fieldTransformTypeKebabDict=new r.JSONMap({none:"none",lowFourBit:"low-four-bit",highFourBit:"high-four-bit",absoluteValue:"absolute-value",moduloTen:"modulo-ten"})}(c||(c={})),c}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/jsonMap","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport","./support/pointCloud/ColorModulation","./support/pointCloud/pointSizeAlgorithmTypeUtils"],(function(o,e,r,t,n,i,l,p,s,u,c,a,d,h,y){"use strict";const b=p.strict()({pointCloudClassBreaksRenderer:"point-cloud-class-breaks",pointCloudRGBRenderer:"point-cloud-rgb",pointCloudStretchRenderer:"point-cloud-stretch",pointCloudUniqueValueRenderer:"point-cloud-unique-value"});let S=function(e){function r(o){var r;return(r=e.call(this,o)||this).type=void 0,r.pointSizeAlgorithm=null,r.colorModulation=null,r.pointsPerInch=10,r}o._inheritsLoose(r,e);var n=r.prototype;return n.clone=function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},n.cloneProperties=function(){return{pointSizeAlgorithm:t.clone(this.pointSizeAlgorithm),colorModulation:t.clone(this.colorModulation),pointsPerInch:t.clone(this.pointsPerInch)}},r}(d.JSONSupport);return e.__decorate([l.property({type:b.apiValues,readOnly:!0,nonNullable:!0,json:{type:b.jsonValues,read:!1,write:b.write}})],S.prototype,"type",void 0),e.__decorate([l.property({types:y.pointSizeAlgorithmTypes,json:{write:!0}})],S.prototype,"pointSizeAlgorithm",void 0),e.__decorate([l.property({type:h.default,json:{write:!0}})],S.prototype,"colorModulation",void 0),e.__decorate([l.property({json:{write:!0},nonNullable:!0,type:Number})],S.prototype,"pointsPerInch",void 0),S=e.__decorate([s.subclass("esri.renderers.PointCloudRenderer")],S),function(o){o.fieldTransformTypeKebabDict=new p.JSONMap({none:"none",lowFourBit:"low-four-bit",highFourBit:"high-four-bit",absoluteValue:"absolute-value",moduloTen:"modulo-ten"})}(S||(S={})),S}));

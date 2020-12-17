@@ -1,25 +1,41 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../shading/Water.glsl","../shading/EvaluateMainLighting.glsl"],(function(e,o,r,t){"use strict";e.Overlay=function(e,a){3!==a.pbrMode&&4!==a.pbrMode||e.include(r.Water,a),e.vertex.uniforms.add("overlayTexOffset","vec4"),e.vertex.uniforms.add("overlayTexScale","vec4"),e.varyings.add("vtcOverlay","vec4"),e.vertex.code.add(o.glsl`
+    void setOverlayVTC(in vec2 uv) {
+      vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
+    }
+  `),e.fragment.uniforms.add("ovInnerColorTex","sampler2D"),e.fragment.uniforms.add("ovOuterColorTex","sampler2D"),e.fragment.uniforms.add("overlayOpacity","float"),e.fragment.code.add(o.glsl`
+    vec4 getOverlayColor(sampler2D ov0Tex, sampler2D ov1Tex, vec4 texCoords) {
+      // read textures outside of conditions, to avoid artifacts likely related to non-uniform flow control:
+      // - https://www.khronos.org/opengl/wiki/Sampler_(GLSL)#Non-uniform_flow_control
+      // - https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/13657
+      vec4 color0 = texture2D(ov0Tex, texCoords.xy);
+      vec4 color1 = texture2D(ov1Tex, texCoords.zw);
 
-define(["require","exports","tslib","../shading/EvaluateMainLighting.glsl","../shading/Water.glsl","../../shaderModules/interfaces"],(function(e,o,r,t,n,l){"use strict";var a,i,v,c;Object.defineProperty(o,"__esModule",{value:!0}),o.Overlay=void 0,o.Overlay=function(e,o){3!==o.pbrMode&&4!==o.pbrMode||e.include(n.Water,o),e.vertex.uniforms.add("overlayTexOffset","vec4"),e.vertex.uniforms.add("overlayTexScale","vec4"),e.varyings.add("vtcOverlay","vec4"),e.vertex.code.add(l.glsl(a||(a=r.__makeTemplateObject(["\n    void setOverlayVTC(in vec2 uv) {\n      vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;\n    }\n  "],["\n    void setOverlayVTC(in vec2 uv) {\n      vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;\n    }\n  "])))),e.fragment.uniforms.add("ovInnerColorTex","sampler2D"),e.fragment.uniforms.add("ovOuterColorTex","sampler2D"),e.fragment.uniforms.add("overlayOpacity","float"),e.fragment.code.add(l.glsl(i||(i=r.__makeTemplateObject(["\n    vec4 getOverlayColor(sampler2D ov0Tex, sampler2D ov1Tex, vec4 texCoords) {\n      // read textures outside of conditions, to avoid artifacts likely related to non-uniform flow control:\n      // - https://www.khronos.org/opengl/wiki/Sampler_(GLSL)#Non-uniform_flow_control\n      // - https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/13657\n      vec4 color0 = texture2D(ov0Tex, texCoords.xy);\n      vec4 color1 = texture2D(ov1Tex, texCoords.zw);\n\n      float valid0 = float((texCoords.x >= 0.0) && (texCoords.x <= 1.0) && (texCoords.y >= 0.0) && (texCoords.y <= 1.0));\n      float valid1 = float((texCoords.z >= 0.0) && (texCoords.z <= 1.0) && (texCoords.w >= 0.0) && (texCoords.w <= 1.0));\n\n      // Pick color0 if valid, otherwise color1 if valid, otherwise vec4(0)\n      return mix(color1 * valid1, color0, valid0);\n    }\n  "],["\n    vec4 getOverlayColor(sampler2D ov0Tex, sampler2D ov1Tex, vec4 texCoords) {\n      // read textures outside of conditions, to avoid artifacts likely related to non-uniform flow control:\n      // - https://www.khronos.org/opengl/wiki/Sampler_(GLSL)#Non-uniform_flow_control\n      // - https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/13657\n      vec4 color0 = texture2D(ov0Tex, texCoords.xy);\n      vec4 color1 = texture2D(ov1Tex, texCoords.zw);\n\n      float valid0 = float((texCoords.x >= 0.0) && (texCoords.x <= 1.0) && (texCoords.y >= 0.0) && (texCoords.y <= 1.0));\n      float valid1 = float((texCoords.z >= 0.0) && (texCoords.z <= 1.0) && (texCoords.w >= 0.0) && (texCoords.w <= 1.0));\n\n      // Pick color0 if valid, otherwise color1 if valid, otherwise vec4(0)\n      return mix(color1 * valid1, color0, valid0);\n    }\n  "])))),e.fragment.code.add(l.glsl(v||(v=r.__makeTemplateObject(["\n    vec4 getCombinedOverlayColor() {\n      return overlayOpacity * getOverlayColor(ovInnerColorTex, ovOuterColorTex, vtcOverlay);\n    }\n  "],["\n    vec4 getCombinedOverlayColor() {\n      return overlayOpacity * getOverlayColor(ovInnerColorTex, ovOuterColorTex, vtcOverlay);\n    }\n  "])))),3!==o.pbrMode&&4!==o.pbrMode||(e.include(t.EvaluateMainLighting),e.fragment.code.add(l.glsl(c||(c=r.__makeTemplateObject(["\n    vec4 getOverlayWaterColor(vec4 maskInput, vec4 colorInput, vec3 vposEyeDir,\n       float shadow, vec3 localUp, mat3 tbn, vec3 position) {\n\n      // reproject normal from 0...1 => -1...1\n      // and project it to worldspace.\n      vec3 n = normalize(tbn *  (2.0 * maskInput.rgb - vec3(1.0)));\n      vec3 v = vposEyeDir;\n      vec3 l = normalize(-lightingMainDirection);\n      vec3 final = getSeaColor(n, v, l, colorInput.rgb, lightingMainIntensity, localUp, 1.0 - shadow, maskInput.w, position);\n\n      // the terrain renderer assumes a premultiplied color output without gamma.\n      return vec4(final, colorInput.w);\n    }\n    "],["\n    vec4 getOverlayWaterColor(vec4 maskInput, vec4 colorInput, vec3 vposEyeDir,\n       float shadow, vec3 localUp, mat3 tbn, vec3 position) {\n\n      // reproject normal from 0...1 => -1...1\n      // and project it to worldspace.\n      vec3 n = normalize(tbn *  (2.0 * maskInput.rgb - vec3(1.0)));\n      vec3 v = vposEyeDir;\n      vec3 l = normalize(-lightingMainDirection);\n      vec3 final = getSeaColor(n, v, l, colorInput.rgb, lightingMainIntensity, localUp, 1.0 - shadow, maskInput.w, position);\n\n      // the terrain renderer assumes a premultiplied color output without gamma.\n      return vec4(final, colorInput.w);\n    }\n    "])))))}}));
+      float valid0 = float((texCoords.x >= 0.0) && (texCoords.x <= 1.0) && (texCoords.y >= 0.0) && (texCoords.y <= 1.0));
+      float valid1 = float((texCoords.z >= 0.0) && (texCoords.z <= 1.0) && (texCoords.w >= 0.0) && (texCoords.w <= 1.0));
+
+      // Pick color0 if valid, otherwise color1 if valid, otherwise vec4(0)
+      return mix(color1 * valid1, color0, valid0);
+    }
+  `),e.fragment.code.add(o.glsl`
+    vec4 getCombinedOverlayColor() {
+      return overlayOpacity * getOverlayColor(ovInnerColorTex, ovOuterColorTex, vtcOverlay);
+    }
+  `),3!==a.pbrMode&&4!==a.pbrMode||(e.include(t.EvaluateMainLighting),e.fragment.code.add(o.glsl`
+    vec4 getOverlayWaterColor(vec4 maskInput, vec4 colorInput, vec3 vposEyeDir,
+       float shadow, vec3 localUp, mat3 tbn, vec3 position) {
+
+      // reproject normal from 0...1 => -1...1
+      // and project it to worldspace.
+      vec3 n = normalize(tbn *  (2.0 * maskInput.rgb - vec3(1.0)));
+      vec3 v = vposEyeDir;
+      vec3 l = normalize(-lightingMainDirection);
+      vec3 final = getSeaColor(n, v, l, colorInput.rgb, lightingMainIntensity, localUp, 1.0 - shadow, maskInput.w, position);
+
+      // the terrain renderer assumes a premultiplied color output without gamma.
+      return vec4(final, colorInput.w);
+    }
+    `))},Object.defineProperty(e,"__esModule",{value:!0})}));

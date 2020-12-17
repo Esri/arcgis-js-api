@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/Logger","../../core/accessorSupport/decorators","../../geometry/support/jsonUtils"],(function(e,t,r,o,a,s,i){"use strict";var n=a.getLogger("esri.tasks.support.ProjectParameters");return function(e){function t(t){var r=e.call(this,t)||this;return r.geometries=null,r.outSpatialReference=null,r.transformation=null,r.transformForward=null,r}return r.__extends(t,e),Object.defineProperty(t.prototype,"outSR",{get:function(){return n.warn("ProjectParameters.outSR is deprecated. Use outSpatialReference instead."),this.outSpatialReference},set:function(e){n.warn("ProjectParameters.outSR is deprecated. Use outSpatialReference instead."),this.outSpatialReference=e},enumerable:!1,configurable:!0}),t.prototype.toJSON=function(){var e=this.geometries.map((function(e){return e.toJSON()})),t=this.geometries[0],r={};return r.outSR=this.outSpatialReference.wkid||JSON.stringify(this.outSpatialReference.toJSON()),r.inSR=t.spatialReference.wkid||JSON.stringify(t.spatialReference.toJSON()),r.geometries=JSON.stringify({geometryType:i.getJsonType(t),geometries:e}),this.transformation&&(r.transformation=this.transformation.wkid||JSON.stringify(this.transformation)),null!=this.transformForward&&(r.transformForward=this.transformForward),r},r.__decorate([s.property()],t.prototype,"geometries",void 0),r.__decorate([s.property({json:{read:{source:"outSR"}}})],t.prototype,"outSpatialReference",void 0),r.__decorate([s.property({json:{read:!1}})],t.prototype,"outSR",null),r.__decorate([s.property()],t.prototype,"transformation",void 0),r.__decorate([s.property()],t.prototype,"transformForward",void 0),t=r.__decorate([s.subclass("esri.tasks.support.ProjectParameters")],t)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/jsonUtils"],(function(e,r,t,o,s,a,n,i,p,c,u,l){"use strict";const f=o.getLogger("esri.tasks.support.ProjectParameters");let d=function(r){function t(e){var t;return(t=r.call(this,e)||this).geometries=null,t.outSpatialReference=null,t.transformation=null,t.transformForward=null,t}return e._inheritsLoose(t,r),t.prototype.toJSON=function(){const e=this.geometries.map((function(e){return e.toJSON()})),r=this.geometries[0],t={};return t.outSR=this.outSpatialReference.wkid||JSON.stringify(this.outSpatialReference.toJSON()),t.inSR=r.spatialReference.wkid||JSON.stringify(r.spatialReference.toJSON()),t.geometries=JSON.stringify({geometryType:l.getJsonType(r),geometries:e}),this.transformation&&(t.transformation=this.transformation.wkid||JSON.stringify(this.transformation)),null!=this.transformForward&&(t.transformForward=this.transformForward),t},e._createClass(t,[{key:"outSR",get:function(){return f.warn("ProjectParameters.outSR is deprecated. Use outSpatialReference instead."),this.outSpatialReference},set:function(e){f.warn("ProjectParameters.outSR is deprecated. Use outSpatialReference instead."),this.outSpatialReference=e}}]),t}(u.JSONSupport);return r.__decorate([a.property()],d.prototype,"geometries",void 0),r.__decorate([a.property({json:{read:{source:"outSR"}}})],d.prototype,"outSpatialReference",void 0),r.__decorate([a.property({json:{read:!1}})],d.prototype,"outSR",null),r.__decorate([a.property()],d.prototype,"transformation",void 0),r.__decorate([a.property()],d.prototype,"transformForward",void 0),d=r.__decorate([n.subclass("esri.tasks.support.ProjectParameters")],d),d}));

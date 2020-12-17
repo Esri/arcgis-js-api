@@ -1,18 +1,18 @@
 // esri.core
-import { Maybe, isSome, unwrap, isNone } from "esri/../../core/maybe";
+import { Maybe, isSome, unwrap, isNone } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property, aliasOf } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property, aliasOf } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.BuildingExplorer
-import BuildingPhase = require("esri/BuildingPhase");
+import BuildingPhase from "esri/BuildingPhase";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable, storeNode, isRTL } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable, storeNode, isRTL } from "esri/support/widget";
 
 interface ButtonProps {
   phase: number;
@@ -358,4 +358,4 @@ class BuildingPhasePicker extends Widget {
   }
 }
 
-export = BuildingPhasePicker;
+export default BuildingPhasePicker;

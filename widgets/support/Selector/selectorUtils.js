@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["require","exports"],(function(e,n){"use strict";async function t(){return new Promise((function(n,t){e(["../../../geometry/geometryEngineJSON"],n,t)}))}async function r(){return t().then((({contains:e,intersects:n,overlaps:t,simplify:r})=>({contains:e,intersects:n,overlaps:t,simplify:r})))}n.getGeometryEngineOperations=r,n.importGeometryEngine=t,n.updateSelection=async function(e){const{selector:n,candidates:t,currentSelection:o,options:s,view:i}=e;if(!(t&&t.length&&o&&i))return{added:[],removed:[]};const{overlaps:c,intersects:a,contains:d}=s,{spatialReference:u}=i;if(!n){return{added:[],removed:o.removeAll()}}const l=n,p=await r(),m=[],f=[];return t.forEach((e=>{const n=e.geometry,t=c&&!!p.overlaps(u,l,n),r=a&&!!p.intersects(u,l,n),s=d&&!!p.contains(u,l,n),i=o.includes(e);t||r||s?!i&&m.push(e):i&&f.push(e)})),o.removeMany(f),o.addMany(m),{added:m,removed:f}},Object.defineProperty(n,"__esModule",{value:!0})}));

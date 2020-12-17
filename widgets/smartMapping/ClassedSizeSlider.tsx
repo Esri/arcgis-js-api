@@ -72,28 +72,28 @@
  */
 
 // esri
-import Color = require("esri/../Color");
+import Color from "esri/Color";
 
 // esri.core
-import { isSome } from "esri/../core/maybe";
+import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.support
-import ClassBreakInfo = require("esri/../renderers/support/ClassBreakInfo");
+import ClassBreakInfo from "esri/renderers/support/ClassBreakInfo";
 
 // esri.smartMapping.renderers
-import { ClassBreaksRendererResult } from "esri/../smartMapping/renderers/color";
+import { ClassBreaksRendererResult } from "esri/smartMapping/renderers/color";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ClassedSizeSlider
-import ClassedSizeSliderViewModel = require("esri/widgets/ClassedSizeSlider/ClassedSizeSliderViewModel");
+import ClassedSizeSliderViewModel from "esri/widgets/ClassedSizeSlider/ClassedSizeSliderViewModel";
 import { SizeBreak } from "esri/widgets/ClassedSizeSlider/interfaces";
 
 // esri.widgets.smartMapping.ClassedSizeSlider.t9n
@@ -376,7 +376,7 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
           size = symbol.size;
           break;
         case "picture-marker":
-          size = symbol.size;
+          size = symbol.height;
           break;
         default:
       }
@@ -443,9 +443,15 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
         case "simple-marker":
           symbol.size = breaks[i].size;
           break;
-        case "picture-marker":
-          symbol.size = breaks[i].size;
+        case "picture-marker": {
+          const size = breaks[i].size;
+          const width = symbol.width;
+          const height = symbol.height;
+
+          symbol.height = size;
+          symbol.width = (size / height) * width;
           break;
+        }
         default:
       }
 
@@ -522,7 +528,7 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
           size = symbol.size;
           break;
         case "picture-marker":
-          size = symbol.size;
+          size = symbol.height;
           break;
         default:
       }
@@ -534,11 +540,11 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
     });
 
     this.set({
-      breaks,
-      histogramConfig: {
-        bins: histogramResult ? histogramResult.bins : []
-      }
+      breaks
     });
+    if (histogramResult?.bins) {
+      this.histogramConfig.bins = histogramResult.bins;
+    }
   }
 
   render(): VNode {
@@ -625,4 +631,4 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
   }
 }
 
-export = ClassedSizeSlider;
+export default ClassedSizeSlider;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/Logger","../../../core/libs/gl-matrix-2/mat4","../../../core/libs/gl-matrix-2/mat4f64","../../../core/libs/gl-matrix-2/vec3f64","./projection","../../../views/3d/support/pointUtils","../../../views/3d/support/projectionUtils"],(function(e,t,r,i,a,o,n,c,p){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.centerAt=void 0;var l=r.getLogger("esri.geometry.support.meshUtils.centerAt");t.centerAt=function(e,t,r){if(e.vertexAttributes&&e.vertexAttributes.position){var a=e.spatialReference,o=a.isWGS84||a.isWebMercator&&(!r||!1!==r.geographic),v=r&&r.origin||e.extent.center;o?function(e,t,r){var a=e.spatialReference,o=f,v=s;if(!c.pointToVector(t,v,p.SphericalECEFSpatialReference))return void l.error("Failed to project centerAt location (wkid:"+t.spatialReference.wkid+") to ECEF");c.pointToVector(r,o,p.SphericalECEFSpatialReference)||c.pointToVector(e.extent.center,o,p.SphericalECEFSpatialReference);var E=e.vertexAttributes.position,d=e.vertexAttributes.normal,F=new Float64Array(E.length),g=new Float32Array(d?d.length:0);n.projectToECEF(E,a,F),d&&n.projectNormalToECEF(d,E,F,a,g);p.computeLinearTransformation(p.SphericalECEFSpatialReference,o,m,p.SphericalECEFSpatialReference),p.computeLinearTransformation(p.SphericalECEFSpatialReference,v,u,p.SphericalECEFSpatialReference),i.mat4.invert(m,m),i.mat4.multiply(u,u,m),n.transformBufferInPlace(F,u),i.mat4.invert(u,u),i.mat4.transpose(u,u),d&&n.transformBufferInPlace(g,u,!0);n.projectFromECEF(F,E,a),d&&n.projectNormalFromECEF(g,E,F,a,d);e.clearCache()}(e,t,v):function(e,t,r){var i=f,a=s;if(!c.pointToVector(t,a,e.spatialReference))return void l.error("Failed to project centerAt location (wkid:"+t.spatialReference.wkid+") to mesh spatial reference (wkid:"+e.spatialReference.wkid+")");if(!c.pointToVector(r,i,e.spatialReference)){var o=e.extent.center;i[0]=o.x,i[1]=o.y,i[2]=o.z,l.error("Failed to project specified origin (wkid:"+r.spatialReference.wkid+") to mesh spatial reference (wkid:"+e.spatialReference.wkid+"). Using mesh extent.center instead")}(function(e,t,r){if(!e)return;for(var i=0;i<e.length;i+=3)for(var a=0;a<3;a++)e[i+a]+=t[a]-r[a]})(e.vertexAttributes.position,a,i),e.clearCache()}(e,t,v)}};var s=o.vec3f64.create(),f=o.vec3f64.create(),m=a.mat4f64.create(),u=a.mat4f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/Logger","../../../chunks/vec3f64","../../projectionEllipsoid","../../../chunks/mat4","../../projection","../../../chunks/mat4f64","./projection"],(function(e,t,r,o,n,i,c,a){"use strict";const s=t.getLogger("esri.geometry.support.meshUtils.centerAt");const p=r.create(),l=r.create(),f=c.create(),u=c.create();e.centerAt=function(e,t,r){if(!e.vertexAttributes||!e.vertexAttributes.position)return;const c=e.spatialReference,d=c.isWGS84||c.isWebMercator&&(!r||!1!==r.geographic),m=r&&r.origin||e.extent.center;d?function(e,t,r){const c=e.spatialReference,d=o.getSphericalPCPF(c),m=l,j=p;if(!i.projectPointToVector(t,j,d))return void s.error(`Failed to project centerAt location (wkid:${t.spatialReference.wkid}) to ECEF`);i.projectPointToVector(r,m,d)||i.projectPointToVector(e.extent.center,m,d);const g=e.vertexAttributes.position,h=e.vertexAttributes.normal,k=new Float64Array(g.length),F=new Float32Array(h?h.length:0);a.projectToECEF(g,c,k),h&&a.projectNormalToECEF(h,g,k,c,F);i.computeLinearTransformation(d,m,f,d),i.computeLinearTransformation(d,j,u,d),n.invert(f,f),n.multiply(u,u,f),a.transformBufferInPlace(k,u),n.invert(u,u),n.transpose(u,u),h&&a.transformBufferInPlace(F,u,!0);a.projectFromECEF(k,g,c),h&&a.projectNormalFromECEF(F,g,k,c,h);e.clearCache()}(e,t,m):function(e,t,r){const o=l,n=p;if(!i.projectPointToVector(t,n,e.spatialReference))return void s.error(`Failed to project centerAt location (wkid:${t.spatialReference.wkid}) to mesh spatial reference (wkid:${e.spatialReference.wkid})`);if(!i.projectPointToVector(r,o,e.spatialReference)){const t=e.extent.center;o[0]=t.x,o[1]=t.y,o[2]=t.z,s.error(`Failed to project specified origin (wkid:${r.spatialReference.wkid}) to mesh spatial reference (wkid:${e.spatialReference.wkid}). Using mesh extent.center instead`)}(function(e,t,r){if(!e)return;for(let o=0;o<e.length;o+=3)for(let n=0;n<3;n++)e[o+n]+=t[n]-r[n]})(e.vertexAttributes.position,n,o),e.clearCache()}(e,t,m)},Object.defineProperty(e,"__esModule",{value:!0})}));

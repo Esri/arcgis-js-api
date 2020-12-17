@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Accessor","../../core/Identifiable","../../core/accessorSupport/decorators"],(function(e,t,i,o,r,s){"use strict";return function(e){function t(t){var i=e.call(this,t)||this;return i.active=!1,i.className=null,i.disabled=!1,i.id=null,i.indicator=!1,i.title=null,i.type=null,i.visible=!0,i}var o;return i.__extends(t,e),o=t,t.prototype.clone=function(){return new o({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible})},i.__decorate([s.property()],t.prototype,"active",void 0),i.__decorate([s.property()],t.prototype,"className",void 0),i.__decorate([s.property()],t.prototype,"disabled",void 0),i.__decorate([s.property()],t.prototype,"id",void 0),i.__decorate([s.property()],t.prototype,"indicator",void 0),i.__decorate([s.property()],t.prototype,"title",void 0),i.__decorate([s.property()],t.prototype,"type",void 0),i.__decorate([s.property()],t.prototype,"visible",void 0),t=o=i.__decorate([s.subclass("esri.support.actions.ActionBase")],t)}(r.IdentifiableMixin(o))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor","../../core/Identifiable"],(function(e,t,o,r,i,s,c,p,a,l,d,n){"use strict";var u;let y=u=function(t){function o(e){var o;return(o=t.call(this,e)||this).active=!1,o.className=null,o.disabled=!1,o.id=null,o.indicator=!1,o.title=null,o.type=null,o.visible=!0,o}return e._inheritsLoose(o,t),o.prototype.clone=function(){return new u({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible})},o}(n.IdentifiableMixin(d));return t.__decorate([s.property()],y.prototype,"active",void 0),t.__decorate([s.property()],y.prototype,"className",void 0),t.__decorate([s.property()],y.prototype,"disabled",void 0),t.__decorate([s.property()],y.prototype,"id",void 0),t.__decorate([s.property()],y.prototype,"indicator",void 0),t.__decorate([s.property()],y.prototype,"title",void 0),t.__decorate([s.property()],y.prototype,"type",void 0),t.__decorate([s.property()],y.prototype,"visible",void 0),y=u=t.__decorate([c.subclass("esri.support.actions.ActionBase")],y),y}));

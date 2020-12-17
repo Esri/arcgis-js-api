@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./WGLDisplayList","./WGLDisplayObject","./util/serializationUtils"],(function(e,t,i,s,r){"use strict";function a(e){for(var t=[[],[],[],[],[]],i=0,s=e;i<s.length;i++)for(var r=0,a=s[i].displayRecords;r<a.length;r++){var n=a[r];t[n.geometryType].push(n)}return t}Object.defineProperty(t,"__esModule",{value:!0}),t.groupRecordsByGeometryType=void 0,t.groupRecordsByGeometryType=a;var n=function(){function e(){}return Object.defineProperty(e.prototype,"hasRegistry",{get:function(){return!!this._displayObjectRegistry},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"displayObjectRegistry",{get:function(){if(!this._displayObjectRegistry){this._displayObjectRegistry=new Map;for(var e=0,t=this.displayObjects;e<t.length;e++){var i=t[e];this._displayObjectRegistry.set(i.id,i)}}return this._displayObjectRegistry},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"displayList",{get:function(){return this._displayList},enumerable:!1,configurable:!0}),e.prototype.computeDisplayList=function(e){if(this._displayList=new i(e),e)for(var t=0,s=this.displayObjects;t<s.length;t++)for(var r=0,n=s[t].displayRecords;r<n.length;r++){var o=n[r];this._displayList.addToList(o)}else for(var l=a(this.displayObjects),p=l.length,y=0;y<p;++y){var c=l[y];this._displayList.addToList(c)}},e.prototype.clone=function(){var t=new e;return this.displayObjects&&(t.displayObjects=this.displayObjects.map((function(e){return e.clone()}))),t},e.prototype.serialize=function(e){return r.serializeList(e,this.displayObjects),e},e.prototype._deserializeObjects=function(e){for(var t=e.readInt32(),i=new Array(t),r=new Map,a=0;a<i.length;++a){var n=s.deserialize(e);i[a]=n,r.set(n.id,n)}this.displayObjects=i,this._displayList=null,this._displayObjectRegistry=r},e.deserialize=function(t){var i=new e;return i._deserializeObjects(t),i},e}();t.default=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./WGLDisplayList","./util/serializationUtils","./WGLDisplayObject"],(function(t,s,e,i,n){"use strict";function l(t){const s=[[],[],[],[],[]],e=t;for(const t of e)for(const e of t.displayRecords)s[e.geometryType].push(e);return s}let o=function(){function t(){}var o=t.prototype;return o.computeDisplayList=function(t){if(this._displayList=new e(t),t)for(const t of this.displayObjects)for(const s of t.displayRecords)this._displayList.addToList(s);else{const t=l(this.displayObjects),s=t.length;for(let e=0;e<s;++e){const s=t[e];this._displayList.addToList(s)}}},o.clone=function(){const s=new t;return this.displayObjects&&(s.displayObjects=this.displayObjects.map((t=>t.clone()))),s},o.serialize=function(t){return i.serializeList(t,this.displayObjects),t},o._deserializeObjects=function(t){const s=t.readInt32(),e=new Array(s),i=new Map;for(let s=0;s<e.length;++s){const l=n.deserialize(t);e[s]=l,i.set(l.id,l)}this.displayObjects=e,this._displayList=null,this._displayObjectRegistry=i},t.deserialize=function(s){const e=new t;return e._deserializeObjects(s),e},s._createClass(t,[{key:"displayObjectRegistry",get:function(){if(!this._displayObjectRegistry){this._displayObjectRegistry=new Map;for(const t of this.displayObjects)this._displayObjectRegistry.set(t.id,t)}return this._displayObjectRegistry}},{key:"displayList",get:function(){return this._displayList}}]),t}();t.default=o,t.groupRecordsByGeometryType=l,Object.defineProperty(t,"__esModule",{value:!0})}));

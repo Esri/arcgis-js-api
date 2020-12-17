@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","./labelUtils"],(function(e,r,t,o,n,s){"use strict";return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.value=null,r.expression=null,r}var o;return t.__extends(r,e),o=r,r.prototype.readExpression=function(e,r){return r.value?s.convertTemplatedStringToArcade(r.value):e},r.prototype.writeExpression=function(e,r,t){null!=this.value&&(e=s.convertTemplatedStringToArcade(this.value)),r[t]=e},r.prototype.clone=function(){return new o({value:this.value,expression:this.expression})},t.__decorate([n.property({json:{read:!1,write:!1}})],r.prototype,"value",void 0),t.__decorate([n.property({type:String,json:{write:{allowNull:!0}}})],r.prototype,"expression",void 0),t.__decorate([n.reader("expression",["expression","value"])],r.prototype,"readExpression",null),t.__decorate([n.writer("expression")],r.prototype,"writeExpression",null),r=o=t.__decorate([n.subclass("esri.layers.support.LabelExpressionInfo")],r)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./labelUtils"],(function(e,r,o,t,s,p,i,n,l,c,u,a,d,v){"use strict";var y;let _=y=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).expression=null,e.title=null,e.value=null,e}e._inheritsLoose(o,r);var t=o.prototype;return t.readExpression=function(e,r){return r.value?v.convertTemplatedStringToArcade(r.value):e},t.writeExpression=function(e,r,o){null!=this.value&&(e=v.convertTemplatedStringToArcade(this.value)),r[o]=e},t.clone=function(){return new y({expression:this.expression,title:this.title,value:this.value})},o}(d.JSONSupport);return r.__decorate([p.property({type:String,json:{write:{allowNull:!0}}})],_.prototype,"expression",void 0),r.__decorate([p.property({type:String,json:{write:!0,origins:{"web-scene":{write:!1}}}})],_.prototype,"title",void 0),r.__decorate([p.property({json:{read:!1,write:!1}})],_.prototype,"value",void 0),r.__decorate([i.reader("expression",["expression","value"])],_.prototype,"readExpression",null),r.__decorate([l.writer("expression")],_.prototype,"writeExpression",null),_=y=r.__decorate([n.subclass("esri.layers.support.LabelExpressionInfo")],_),_}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../../support/geometryUtils/triangle"],(function(e,t,r,c,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getNewId=t.computeAttachmentOriginLines=t.computeAttachmentOriginPoints=t.computeAttachmentOriginTriangles=t.generateDefaultIndexArray=void 0;var n=1,v=null,i=new Uint32Array([0]);t.generateDefaultIndexArray=function(e){if(1===e)return i;if(e>n||null==v){for(;e>n;)n*=2;v=new Uint32Array(n);for(var t=0;t<n;t++)v[t]=t}return new Uint32Array(v.buffer,0,e)},t.computeAttachmentOriginTriangles=function(e,t,c){if(!e)return!1;var n=e.strideIdx,v=e.offsetIdx,i=e.data;r.vec3.set(c,0,0,0),r.vec3.set(u,0,0,0);for(var d=0,l=0,g=0;g<t.length-2;g+=3){var m=t[g+0]*n+v,x=t[g+1]*n+v,A=t[g+2]*n+v;r.vec3.set(s,i[m+0],i[m+1],i[m+2]),r.vec3.set(f,i[x+0],i[x+1],i[x+2]),r.vec3.set(o,i[A+0],i[A+1],i[A+2]);var h=a.areaPoints3d(s,f,o);h?(r.vec3.add(s,s,f),r.vec3.add(s,s,o),r.vec3.scale(s,s,1/3*h),r.vec3.add(c,c,s),d+=h):(r.vec3.add(u,u,s),r.vec3.add(u,u,f),r.vec3.add(u,u,o),l+=3)}return(0!==l||0!==d)&&(0!==d?(r.vec3.scale(c,c,1/d),!0):0!==l&&(r.vec3.scale(c,u,1/l),!0))},t.computeAttachmentOriginPoints=function(e,t,c){if(!e||!t)return!1;var a=e.strideIdx,n=e.offsetIdx,v=e.data;r.vec3.set(c,0,0,0);for(var i=-1,d=0,s=0;s<t.length;s++){var f=t[s]*a+n;i!==f&&(c[0]+=v[f+0],c[1]+=v[f+1],c[2]+=v[f+2],d++),i=f}return d>1&&r.vec3.scale(c,c,1/d),d>0},t.computeAttachmentOriginLines=function(e,t,c,a){if(!e)return!1;var n=e.strideIdx,v=e.offsetIdx,i=e.data;r.vec3.set(a,0,0,0),r.vec3.set(u,0,0,0);for(var d=0,o=0,l=t?t.length-1:i.length/n-1,g=l+(c?2:0),m=0;m<g;m+=2){var x=m<l?m:l,A=m<l?m+1:0,h=(t?t[x]:x)*n+v,p=(t?t[A]:A)*n+v;s[0]=i[h+0],s[1]=i[h+1],s[2]=i[h+2],f[0]=i[p+0],f[1]=i[p+1],f[2]=i[p+2],r.vec3.scale(s,r.vec3.add(s,s,f),.5);var I=r.vec3.dist(s,f);I>0?(r.vec3.add(a,a,r.vec3.scale(s,s,I)),d+=I):(r.vec3.add(u,u,s),o++)}return 0!==d?(r.vec3.scale(a,a,1/d),!0):0!==o&&(r.vec3.scale(a,u,1/o),!0)};var d=0;t.getNewId=function(){return d++};var s=c.vec3f64.create(),f=c.vec3f64.create(),o=c.vec3f64.create(),u=c.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3f64","../../../../chunks/vec3","../../../../chunks/triangle"],(function(t,e,n,r){"use strict";let s=1,c=null;const a=new Uint32Array([0]);let d=0;const o=e.create(),i=e.create(),l=e.create(),f=e.create();t.computeAttachmentOriginLines=function(t,e,r,s){if(!t)return!1;const{strideIdx:c,offsetIdx:a,data:d}=t;n.set(s,0,0,0),n.set(f,0,0,0);let l=0,u=0;const g=e?e.length-1:d.length/c-1,h=g+(r?2:0);for(let t=0;t<h;t+=2){const r=t<g?t:g,h=t<g?t+1:0,x=(e?e[r]:r)*c+a,I=(e?e[h]:h)*c+a;o[0]=d[x+0],o[1]=d[x+1],o[2]=d[x+2],i[0]=d[I+0],i[1]=d[I+1],i[2]=d[I+2],n.scale(o,n.add(o,o,i),.5);const A=n.dist(o,i);A>0?(n.add(s,s,n.scale(o,o,A)),l+=A):(n.add(f,f,o),u++)}return 0!==l?(n.scale(s,s,1/l),!0):0!==u&&(n.scale(s,f,1/u),!0)},t.computeAttachmentOriginPoints=function(t,e,r){if(!t||!e)return!1;const{strideIdx:s,offsetIdx:c,data:a}=t;n.set(r,0,0,0);let d=-1,o=0;for(let t=0;t<e.length;t++){const n=e[t]*s+c;d!==n&&(r[0]+=a[n+0],r[1]+=a[n+1],r[2]+=a[n+2],o++),d=n}return o>1&&n.scale(r,r,1/o),o>0},t.computeAttachmentOriginTriangles=function(t,e,s){if(!t)return!1;const{strideIdx:c,offsetIdx:a,data:d}=t;n.set(s,0,0,0),n.set(f,0,0,0);let u=0,g=0;for(let t=0;t<e.length-2;t+=3){const h=e[t+0]*c+a,x=e[t+1]*c+a,I=e[t+2]*c+a;n.set(o,d[h+0],d[h+1],d[h+2]),n.set(i,d[x+0],d[x+1],d[x+2]),n.set(l,d[I+0],d[I+1],d[I+2]);const A=r.areaPoints3d(o,i,l);A?(n.add(o,o,i),n.add(o,o,l),n.scale(o,o,1/3*A),n.add(s,s,o),u+=A):(n.add(f,f,o),n.add(f,f,i),n.add(f,f,l),g+=3)}return(0!==g||0!==u)&&(0!==u?(n.scale(s,s,1/u),!0):0!==g&&(n.scale(s,f,1/g),!0))},t.generateDefaultIndexArray=function(t){if(1===t)return a;if(t>s||null==c){for(;t>s;)s*=2;c=new Uint32Array(s);for(let t=0;t<s;t++)c[t]=t}return new Uint32Array(c.buffer,0,t)},t.getNewId=function(){return d++},Object.defineProperty(t,"__esModule",{value:!0})}));

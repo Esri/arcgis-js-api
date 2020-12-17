@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/compilerUtils","../../core/maybe","../SimpleFillSymbol","../SimpleLineSymbol","../SimpleMarkerSymbol","../TextSymbol","./defaultsJSON"],(function(l,o,e,r,t,y,S,m,n){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.errorPolygonSymbol2D=o.errorPolylineSymbol2D=o.errorPointSymbol2D=o.getDefaultSymbol2D=o.defaultTextSymbol2D=o.defaultPolygonSymbol2D=o.defaultPolylineSymbol2D=o.defaultPointSymbol2D=void 0,o.defaultPointSymbol2D=S.fromJSON(n.defaultPointSymbolJSON),o.defaultPolylineSymbol2D=y.fromJSON(n.defaultPolylineSymbolJSON),o.defaultPolygonSymbol2D=t.fromJSON(n.defaultPolygonSymbolJSON),o.defaultTextSymbol2D=m.fromJSON(n.defaultTextSymbolJSON),o.getDefaultSymbol2D=function(l){if(r.isNone(l))return null;switch(l.type){case"mesh":return null;case"point":case"multipoint":return o.defaultPointSymbol2D;case"polyline":return o.defaultPolylineSymbol2D;case"polygon":case"extent":return o.defaultPolygonSymbol2D;default:e.neverReached(l)}return null},o.errorPointSymbol2D=S.fromJSON(n.errorPointSymbolJSON),o.errorPolylineSymbol2D=y.fromJSON(n.errorPolylineSymbolJSON),o.errorPolygonSymbol2D=t.fromJSON(n.errorPolygonSymbolJSON)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/has","../../core/maybe","../SimpleLineSymbol","../SimpleFillSymbol","../SimpleMarkerSymbol","../TextSymbol","./defaultsJSON"],(function(o,e,l,r,t,S,n,m){"use strict";const y=S.fromJSON(m.defaultPointSymbolJSON),i=r.fromJSON(m.defaultPolylineSymbolJSON),u=t.fromJSON(m.defaultPolygonSymbolJSON),f=n.fromJSON(m.defaultTextSymbolJSON);const b=S.fromJSON(m.errorPointSymbolJSON),a=r.fromJSON(m.errorPolylineSymbolJSON),s=t.fromJSON(m.errorPolygonSymbolJSON);o.defaultPointSymbol2D=y,o.defaultPolygonSymbol2D=u,o.defaultPolylineSymbol2D=i,o.defaultTextSymbol2D=f,o.errorPointSymbol2D=b,o.errorPolygonSymbol2D=s,o.errorPolylineSymbol2D=a,o.getDefaultSymbol2D=function(o){if(l.isNone(o))return null;switch(o.type){case"mesh":return null;case"point":case"multipoint":return y;case"polyline":return i;case"polygon":case"extent":return u}return null},Object.defineProperty(o,"__esModule",{value:!0})}));

@@ -82,38 +82,42 @@
  */
 
 // esri.core
-import { isSome } from "esri/../core/maybe";
+import EsriError from "esri/core/Error";
+import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.renderers
+import ClassBreaksRenderer from "esri/renderers/ClassBreaksRenderer";
 
 // esri.renderers.visualVariables
-import ColorVariable = require("esri/../renderers/visualVariables/ColorVariable");
-import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
+import ColorVariable from "esri/renderers/visualVariables/ColorVariable";
+import SizeVariable from "esri/renderers/visualVariables/SizeVariable";
 
 // esri.renderers.visualVariables.support
-import ColorSizeStop = require("esri/../renderers/visualVariables/support/ColorSizeStop");
-import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
-import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
+import ColorSizeStop from "esri/renderers/visualVariables/support/ColorSizeStop";
+import ColorStop from "esri/renderers/visualVariables/support/ColorStop";
+import SizeStop from "esri/renderers/visualVariables/support/SizeStop";
 
 // esri.smartMapping.renderers
-import { RendererResult } from "esri/../smartMapping/renderers/univariateColorSize";
+import { RendererResult } from "esri/smartMapping/renderers/univariateColorSize";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ColorSizeSlider
-import ColorSizeSliderViewModel = require("esri/widgets/ColorSizeSlider/ColorSizeSliderViewModel");
+import ColorSizeSliderViewModel from "esri/widgets/ColorSizeSlider/ColorSizeSliderViewModel";
 
 // esri.widgets.smartMapping.ColorSizeSlider.t9n
 import ColorSizeSliderMessages from "esri/widgets/ColorSizeSlider/t9n/ColorSizeSlider";
 
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
-import { getPathForSizeStops } from "esri/widgets/support/utils";
+import { getDynamicPathForSizeStops, getPathForSizeStops } from "esri/widgets/support/utils";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
@@ -192,6 +196,32 @@ class ColorSizeSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  handlesSyncedToPrimary
+  //----------------------------------
+
+  /**
+   * Only applicable when three thumbs (i.e. handles) are set on the
+   * slider (i.e. when [primaryHandleEnabled](#primaryHandleEnabled) is `true`). This property
+   * indicates whether the position of the outside handles are synced with the middle, or primary,
+   * handle. When enabled, if the primary handle is moved then the outside handle positions are updated
+   * while maintaining a fixed distance from the primary handle.
+   *
+   * @name handlesSyncedToPrimary
+   * @instance
+   * @type {boolean}
+   * @default true
+   * @since 4.18
+   *
+   * @see [primaryHandleEnabled](#primaryHandleEnabled)
+   *
+   * @example
+   * // enables the primary handles and syncs it with the others
+   * slider.primaryHandleEnabled = true;
+   * slider.handlesSyncedToPrimary = true;
+   */
+  @aliasOf("viewModel.handlesSyncedToPrimary") handlesSyncedToPrimary: boolean = null;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -242,6 +272,36 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    */
 
   //----------------------------------
+  //  primaryHandleEnabled
+  //----------------------------------
+
+  /**
+   * When `true`, the slider will render a third handle between the
+   * two handles already provided by default. This is the primary handle.
+   * Three or five [stops](#stops) must be defined for the primary handle to render.
+   * The primary handle represents the middle stop.
+   *
+   * When [handlesSyncedToPrimary](#handlesSyncedToPrimary) is `true`, then
+   * this handle will control the position of the others when moved.
+   *
+   * This is typically used in diverging, or `above-and-below` renderer configurations.
+   *
+   * @name primaryHandleEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.18
+   *
+   * @see [handlesSyncedToPrimary](#handlesSyncedToPrimary)
+   *
+   * @example
+   * // enables the primary handles and syncs it with the others
+   * slider.primaryHandleEnabled = true;
+   * slider.handlesSyncedToPrimary = true;
+   */
+  @aliasOf("viewModel.primaryHandleEnabled") primaryHandleEnabled: boolean = null;
+
+  //----------------------------------
   //  stops
   //----------------------------------
 
@@ -290,12 +350,14 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    */
   @property()
   @renderable([
+    "viewModel.handlesSyncedToPrimary",
     "viewModel.hasTimeData",
     "viewModel.inputFormatFunction",
     "viewModel.inputParseFunction",
     "viewModel.labelFormatFunction",
     "viewModel.max",
     "viewModel.min",
+    "viewModel.primaryHandleEnabled",
     "viewModel.stops",
     "viewModel.values",
     "viewModel.zoomOptions"
@@ -372,6 +434,9 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     histogramResult?: HistogramResult
   ): ColorSizeSlider {
     const {
+      renderer: {
+        authoringInfo: { univariateTheme }
+      },
       color: {
         visualVariable: { stops: colorStops }
       },
@@ -380,19 +445,44 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     } = result;
     const { avg, stddev } = statistics;
 
+    if (!colorStops) {
+      throw new EsriError(
+        "ColorSizeSlider-fromRendererResult:invalid-renderer-result",
+        "'result' must include 'color' variable."
+      );
+    }
+
+    const primaryHandleEnabled = univariateTheme === "above-and-below";
+
     const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
     const min = authoringInfoVisualVariable.minSliderValue;
     const max = authoringInfoVisualVariable.maxSliderValue;
 
-    const sizeVV = visualVariables[0];
+    const sizeVV = visualVariables.find(
+      (vv) =>
+        vv?.target !== "outline" &&
+        !(vv?.axis && !vv?.field && !vv?.valueExpression) &&
+        (vv?.field || vv?.valueExpression)
+    );
+
+    const sizeStops = sizeVV.stops;
+
     const stops = colorStops.map((colorStop, index) => {
       const { color, label, value } = colorStop;
+      let size: number | SizeVariable;
+
+      if (sizeStops && sizeStops.length > 0) {
+        size = sizeStops[index].size;
+      } else {
+        size =
+          index === 0 ? sizeVV.minSize : index === colorStops.length - 1 ? sizeVV.maxSize : null;
+      }
 
       return new ColorSizeStop({
         color,
         label,
         value,
-        size: index === 0 ? sizeVV.minSize : index === colorStops.length - 1 ? sizeVV.maxSize : null
+        size
       });
     });
 
@@ -400,6 +490,8 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       max,
       min,
       stops,
+      primaryHandleEnabled,
+      handlesSyncedToPrimary: primaryHandleEnabled,
       histogramConfig: {
         average: avg,
         standardDeviation: stddev,
@@ -455,6 +547,9 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    */
   updateFromRendererResult(result: RendererResult, histogramResult?: HistogramResult): void {
     const {
+      renderer: {
+        authoringInfo: { univariateTheme }
+      },
       color: {
         visualVariable: { stops: colorStops }
       },
@@ -463,19 +558,44 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     } = result;
     const { avg, stddev } = statistics;
 
+    if (!colorStops) {
+      throw new EsriError(
+        "ColorSizeSlider-fromRendererResult:invalid-renderer-result",
+        "'result' must include 'color' variable."
+      );
+    }
+
+    const primaryHandleEnabled = univariateTheme === "above-and-below";
+
     const authoringInfoVisualVariable = result.renderer.authoringInfo.visualVariables[0];
     const min = authoringInfoVisualVariable.minSliderValue;
     const max = authoringInfoVisualVariable.maxSliderValue;
 
-    const sizeVV = visualVariables[0];
+    const sizeVV = visualVariables.find(
+      (vv) =>
+        vv?.target !== "outline" &&
+        !(vv?.axis && !vv?.field && !vv?.valueExpression) &&
+        (vv?.field || vv?.valueExpression)
+    );
+
+    const sizeStops = sizeVV.stops;
+
     const stops = colorStops.map((colorStop, index) => {
       const { color, label, value } = colorStop;
+      let size: number | SizeVariable;
+
+      if (sizeStops && sizeStops.length > 0) {
+        size = sizeStops[index].size;
+      } else {
+        size =
+          index === 0 ? sizeVV.minSize : index === colorStops.length - 1 ? sizeVV.maxSize : null;
+      }
 
       return new ColorSizeStop({
         color,
         label,
         value,
-        size: index === 0 ? sizeVV.minSize : index === colorStops.length - 1 ? sizeVV.maxSize : null
+        size
       });
     });
 
@@ -483,12 +603,94 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       max,
       min,
       stops,
+      primaryHandleEnabled,
+      handlesSyncedToPrimary: primaryHandleEnabled,
       histogramConfig: {
         average: avg,
         standardDeviation: stddev,
         bins: histogramResult ? histogramResult.bins : []
       }
     });
+  }
+
+  /**
+   * A convenience function used to update a renderer generated with the
+   * {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+   * method with the values obtained from the slider. This method is useful for cases when the app allows the end user to switch data variables
+   * used to render the data.
+   *
+   * @method updateRenderer
+   * @instance
+   * @since 4.18
+   *
+   * @param {module:esri/renderers/ClassBreaksRenderer} renderer -
+   *   A renderer generated from the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+   *   method.
+   *
+   * @return {module:esri/renderers/ClassBreaksRenderer}
+   *   Returns the input renderer updated to match the current slider values. This should be set directly
+   *   back to the layer where it came from
+   *
+   * @example
+   * slider.on(["thumb-change", "thumb-drag"], function() {
+   *   layer.renderer = slider.updateRenderer( layer.renderer );
+   * });
+   */
+  updateRenderer(renderer: ClassBreaksRenderer): ClassBreaksRenderer {
+    const { stops } = this;
+    const firstStop = stops[0];
+    const lastStop = stops[stops.length - 1];
+    const midStop = stops[Math.floor(stops.length / 2)];
+
+    const clone = renderer.clone();
+
+    const variables = clone.visualVariables.map((variable) => {
+      if (variable.type === "size") {
+        if (
+          variable?.target === "outline" ||
+          (variable?.axis && !variable?.field && !variable?.valueExpression)
+        ) {
+          return variable;
+        }
+
+        // Target the correct size visual variable
+        if (isSome(variable.minSize) && isSome(variable.maxSize)) {
+          variable.set({
+            maxDataValue: lastStop.value,
+            minDataValue: firstStop.value,
+            maxSize: lastStop.size,
+            minSize: firstStop.size
+          });
+        } else if (variable.stops) {
+          variable.set({
+            stops: stops.map((stop) => {
+              const { label, size, value } = stop;
+
+              return new SizeStop({ label, size, value });
+            })
+          });
+        }
+      } else if (variable.type === "color") {
+        variable.set({
+          stops: this.stops.map((stop) => {
+            const { color, label, value } = stop;
+
+            return new ColorStop({ color, label, value });
+          })
+        });
+      }
+
+      return variable;
+    });
+    clone.visualVariables = variables;
+
+    if (clone.classBreakInfos.length > 1) {
+      const midValue = midStop.value;
+      clone.classBreakInfos[0].maxValue = midValue;
+      clone.classBreakInfos[1].minValue = midValue;
+    }
+
+    return clone;
   }
 
   /**
@@ -520,6 +722,13 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       const clone = variable.clone();
 
       if (variable.type === "size") {
+        if (
+          variable?.target === "outline" ||
+          (variable?.axis && !variable?.field && !variable?.valueExpression)
+        ) {
+          return clone;
+        }
+
         // Target the correct size visual variable
         if (isSome(variable.minSize) && isSome(variable.maxSize)) {
           const { stops } = this;
@@ -573,7 +782,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
 
   protected renderRamp(): VNode {
     const { _bgFillId, _rampFillId, viewModel, zoomOptions } = this;
-    const stopInfos = viewModel.getColorStopInfo();
+    const stopInfos = viewModel.getStopInfo();
 
     return (
       <div afterCreate={storeNode} bind={this} class={CSS.rampElement} data-node-ref="_rampNode">
@@ -602,6 +811,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     }
 
     const {
+      primaryHandleEnabled,
       stops,
       values,
       viewModel: { max, min },
@@ -620,16 +830,25 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     const [bottomWidth, topWidth] = widths;
     const [bottomValue, topValue] = values;
 
-    const path = getPathForSizeStops({
-      bottomValue,
-      bottomWidth,
-      max,
-      min,
-      pathHeight: offsetHeight,
-      pathWidth: offsetWidth,
-      topValue,
-      topWidth
-    });
+    const path = primaryHandleEnabled
+      ? getDynamicPathForSizeStops({
+          max,
+          min,
+          pathHeight: offsetHeight,
+          pathWidth: offsetWidth,
+          stops,
+          padding: topWidth
+        })
+      : getPathForSizeStops({
+          bottomValue,
+          bottomWidth,
+          max,
+          min,
+          pathHeight: offsetHeight,
+          pathWidth: offsetWidth,
+          topValue,
+          topWidth
+        });
 
     return [
       <path key="background" d={path} fill={`url(#${_bgFillId})`} />,
@@ -638,4 +857,4 @@ class ColorSizeSlider extends SmartMappingSliderBase {
   }
 }
 
-export = ColorSizeSlider;
+export default ColorSizeSlider;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Error","../../core/maybe","../../core/promiseUtils","../../core/accessorSupport/decorators","../../renderers/support/clickToleranceUtils","../../support/arcadeOnDemand","./support/popupUtils"],(function(e,r,t,a,n,o,s,i,u,c){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.MapImageLayerView=void 0,r.MapImageLayerView=function(e){return function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(r,e),r.prototype.fetchPopupFeatures=function(e,r){return t.__awaiter(this,void 0,void 0,(function(){var s,u,p,l,d,y,m=this;return t.__generator(this,(function(_){switch(_.label){case 0:return s=this.layer,e?(u=this.get("view.scale"),p=[],l=function(e){return t.__awaiter(m,void 0,void 0,(function(){var a,o,s;return t.__generator(this,(function(i){return a=0===e.minScale||u<=e.minScale,o=0===e.maxScale||u>=e.maxScale,e.visible&&a&&o&&(e.sublayers?e.sublayers.forEach(l):e.popupEnabled&&(s=c.getFetchPopupTemplate(e,t.__assign(t.__assign({},r),{defaultPopupTemplateEnabled:!1})),n.isSome(s)&&p.push({sublayer:e,popupTemplate:s}))),[2]}))}))},d=s.sublayers.toArray().map(l),[4,o.all(d)]):[2,o.reject(new a("mapimagelayerview:fetchPopupFeatures","Nothing to fetch without area",{layer:s}))];case 1:return _.sent(),y=p.map((function(a){var o=a.sublayer,s=a.popupTemplate;return t.__awaiter(m,void 0,void 0,(function(){var a,u,p,l,d,y;return t.__generator(this,(function(t){switch(t.label){case 0:return[4,o.load().catch((function(){}))];case 1:return t.sent(),a=o.createQuery(),u=n.isSome(r)?r.event:null,p=i.calculateTolerance({renderer:o.renderer,event:u}),l=this.createFetchPopupFeaturesQueryGeometry(e,p),a.geometry=l,d=a,[4,c.getRequiredFields(o,s)];case 2:return d.outFields=t.sent(),[4,this._loadArcadeModules(s)];case 3:return y=t.sent(),y&&y.arcadeUtils.hasGeometryOperations(s)||(a.maxAllowableOffset=l.width/p),[4,o.queryFeatures(a)];case 4:return[2,t.sent().features]}}))}))})),[4,o.eachAlways(y)];case 2:return[2,_.sent().reduce((function(e,r){return r.value?t.__spreadArrays(e,r.value):e}),[]).filter((function(e){return null!=e}))]}}))}))},r.prototype.canResume=function(){var r,t;return!!e.prototype.canResume.call(this)&&(null===(t=null===(r=this.imageParameters)||void 0===r?void 0:r.timeExtent)||void 0===t?!0:!t.isEmpty)},r.prototype._loadArcadeModules=function(e){if(e.get("expressionInfos.length"))return u.loadArcade()},t.__decorate([s.property()],r.prototype,"imageParameters",void 0),t.__decorate([s.property()],r.prototype,"layer",void 0),t.__decorate([s.property({dependsOn:["imageParameters.timeExtent"]})],r.prototype,"suspended",void 0),r=t.__decorate([s.subclass("esri.views.layers.MapImageLayerView")],r)}(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/Error","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../support/arcadeOnDemand","../../renderers/support/clickToleranceUtils","./support/popupUtils"],(function(e,r,t,a,o,s,p,c,l,u,i,n,d,y,m,h,f){"use strict";e.MapImageLayerView=e=>{let a=function(e){function t(){return e.apply(this,arguments)||this}r._inheritsLoose(t,e);var a=t.prototype;return a.fetchPopupFeatures=async function(e,r){const{layer:t}=this;if(!e)return y.reject(new u("mapimagelayerview:fetchPopupFeatures","Nothing to fetch without area",{layer:t}));const a=this.get("view.scale"),s=[],p=async e=>{const t=0===e.minScale||a<=e.minScale,c=0===e.maxScale||a>=e.maxScale;if(e.visible&&t&&c)if(e.sublayers)e.sublayers.forEach(p);else if(e.popupEnabled){const t=f.getFetchPopupTemplate(e,{...r,defaultPopupTemplateEnabled:!1});o.isSome(t)&&s.push({sublayer:e,popupTemplate:t})}},c=t.sublayers.toArray().map(p);await y.all(c);const l=s.map((async({sublayer:t,popupTemplate:a})=>{await t.load().catch((()=>{}));const s=t.createQuery(),p=o.isSome(r)?r.event:null,c=h.calculateTolerance({renderer:t.renderer,event:p}),l=this.createFetchPopupFeaturesQueryGeometry(e,c);s.geometry=l,s.outFields=await f.getRequiredFields(t,a);const u=await this._loadArcadeModules(a);u&&u.arcadeUtils.hasGeometryOperations(a)||(s.maxAllowableOffset=l.width/c);return(await t.queryFeatures(s)).features}));return(await y.eachAlways(l)).reduce(((e,r)=>r.value?[...e,...r.value]:e),[]).filter((e=>null!=e))},a.canResume=function(){var r,t;return!!e.prototype.canResume.call(this)&&(null==(r=this.imageParameters)||null==(t=r.timeExtent)||!t.isEmpty)},a._loadArcadeModules=function(e){if(e.get("expressionInfos.length"))return m.loadArcade()},t}(e);return t.__decorate([c.property()],a.prototype,"imageParameters",void 0),t.__decorate([c.property()],a.prototype,"layer",void 0),t.__decorate([c.property({dependsOn:["imageParameters.timeExtent"]})],a.prototype,"suspended",void 0),a=t.__decorate([l.subclass("esri.views.layers.MapImageLayerView")],a),a},Object.defineProperty(e,"__esModule",{value:!0})}));

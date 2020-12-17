@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/maybe","../../../../symbols/support/unitConversionUtils","./featureExpressionInfoUtils"],(function(e,t,n,o,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ElevationContext=void 0;var r=function(){function e(){this._meterUnitOffset=0,this._renderUnitOffset=0,this._unit="meters",this._metersPerElevationInfoUnit=1,this._featureExpressionInfoContext=null,this.centerPointInElevationSR=null,this.mode=null}return Object.defineProperty(e.prototype,"featureExpressionInfoContext",{get:function(){return this._featureExpressionInfoContext},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"meterUnitOffset",{get:function(){return this._meterUnitOffset},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"unit",{get:function(){return this._unit},set:function(e){this._unit=e,this._metersPerElevationInfoUnit=o.getMetersPerUnit(e)},enumerable:!1,configurable:!0}),e.prototype.reset=function(){this.mode=null,this._meterUnitOffset=0,this._renderUnitOffset=0,this._featureExpressionInfoContext=null,this.unit="meters"},Object.defineProperty(e.prototype,"offsetMeters",{set:function(e){this._meterUnitOffset=e,this._renderUnitOffset=0},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"offsetElevationInfoUnits",{set:function(e){this._meterUnitOffset=e*this._metersPerElevationInfoUnit,this._renderUnitOffset=0},enumerable:!1,configurable:!0}),e.prototype.addOffsetRenderUnits=function(e){this._renderUnitOffset+=e},e.prototype.geometryZWithOffset=function(e,t){var n=this.calculateOffsetRenderUnits(t);return null!=this.featureExpressionInfoContext?n:e+n},e.prototype.calculateOffsetRenderUnits=function(e){var t=this._meterUnitOffset,n=this.featureExpressionInfoContext;return null!=n&&(t+=i.execute(n)*this._metersPerElevationInfoUnit),t/e.unitInMeters+this._renderUnitOffset},e.prototype.setFromElevationInfo=function(e){this.mode=e.mode,this.unit=e.unit||"meters",this.offsetElevationInfoUnits=n.unwrapOr(e.offset,0)},e.prototype.updateFeatureExpressionInfoContext=function(e,t,o){if(n.isNone(e))this._featureExpressionInfoContext=null;else{var r=e&&e.arcade;r&&n.isSome(t)&&n.isSome(o)?(this._featureExpressionInfoContext=i.clone(e),i.setContextFeature(this._featureExpressionInfoContext,i.createFeature(r.modules,t,o))):this._featureExpressionInfoContext=e}},e.fromElevationInfo=function(t){var o=new e;return n.isSome(t)&&o.setFromElevationInfo(t),o},e}();t.ElevationContext=r}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../symbols/support/unitConversionUtils","./featureExpressionInfoUtils"],(function(t,e,n,s,i){"use strict";let o=function(){function t(){this._meterUnitOffset=0,this._renderUnitOffset=0,this._unit="meters",this._metersPerElevationInfoUnit=1,this._featureExpressionInfoContext=null,this.centerPointInElevationSR=null,this.mode=null}var o=t.prototype;return o.reset=function(){this.mode=null,this._meterUnitOffset=0,this._renderUnitOffset=0,this._featureExpressionInfoContext=null,this.unit="meters"},o.addOffsetRenderUnits=function(t){this._renderUnitOffset+=t},o.geometryZWithOffset=function(t,e){const n=this.calculateOffsetRenderUnits(e);return null!=this.featureExpressionInfoContext?n:t+n},o.calculateOffsetRenderUnits=function(t){let e=this._meterUnitOffset;const n=this.featureExpressionInfoContext;return null!=n&&(e+=i.execute(n)*this._metersPerElevationInfoUnit),e/t.unitInMeters+this._renderUnitOffset},o.setFromElevationInfo=function(t){this.mode=t.mode,this.unit=s.supportsUnit(t.unit)?t.unit:"meters",this.offsetElevationInfoUnits=n.unwrapOr(t.offset,0)},o.updateFeatureExpressionInfoContext=function(t,e,s){if(n.isNone(t))return void(this._featureExpressionInfoContext=null);const o=t&&t.arcade;o&&n.isSome(e)&&n.isSome(s)?(this._featureExpressionInfoContext=i.clone(t),i.setContextFeature(this._featureExpressionInfoContext,i.createFeature(o.modules,e,s))):this._featureExpressionInfoContext=t},t.fromElevationInfo=function(e){const s=new t;return n.isSome(e)&&s.setFromElevationInfo(e),s},e._createClass(t,[{key:"featureExpressionInfoContext",get:function(){return this._featureExpressionInfoContext}},{key:"meterUnitOffset",get:function(){return this._meterUnitOffset}},{key:"unit",get:function(){return this._unit},set:function(t){this._unit=t,this._metersPerElevationInfoUnit=s.getMetersPerUnit(t)}},{key:"offsetMeters",set:function(t){this._meterUnitOffset=t,this._renderUnitOffset=0}},{key:"offsetElevationInfoUnits",set:function(t){this._meterUnitOffset=t*this._metersPerElevationInfoUnit,this._renderUnitOffset=0}}]),t}();t.ElevationContext=o,Object.defineProperty(t,"__esModule",{value:!0})}));

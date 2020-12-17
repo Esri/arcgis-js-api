@@ -29,7 +29,7 @@
  */
 
 // esri
-import Viewpoint = require("esri/Viewpoint");
+import Viewpoint from "esri/Viewpoint";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -38,14 +38,14 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Home
-import HomeViewModel = require("esri/widgets/Home/HomeViewModel");
+import HomeViewModel from "esri/widgets/Home/HomeViewModel";
 
 // esri.widgets.Home.t9n
 import HomeMessages from "esri/widgets/Home/t9n/Home";
@@ -368,4 +368,4 @@ class Home extends Widget {
   }
 }
 
-export = Home;
+export default Home;

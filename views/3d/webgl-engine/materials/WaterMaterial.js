@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../lib/AnimationTimer","../lib/Material","./WaterGLMaterial","./WaterTechnique","./internal/DefaultBufferWriter","./internal/MaterialUtil","./internal/waterMaterialUtils"],(function(e,t,a,i,r,n,s,o,u,h){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.WaterMaterial=void 0;var p=function(e){function t(t,a){var r=e.call(this,a)||this;return r.animation=new i.AnimationTimer,r.techniqueConfig=new s.WaterTechniqueConfiguration,r.params=u.copyParameters(t,h.defaultWaterMaterialParameters),r}return a.__extends(t,e),t.prototype.setParameterValues=function(e){this.params=a.__assign(a.__assign({},this.params),e),this.parametersChanged()},t.prototype.getParameters=function(){return this.params},t.prototype.getTechniqueConfig=function(e){return this.techniqueConfig.output=e,this.techniqueConfig.writeDepth=this.params.writeDepth,this.techniqueConfig.receiveShadows=this.params.receiveShadows,this.techniqueConfig.slicePlaneEnabled=this.params.slicePlaneEnabled,this.techniqueConfig.transparent=this.params.transparent,this.techniqueConfig.useSSR=this.params.ssrEnabled,this.techniqueConfig.isDraped=this.params.isDraped,this.techniqueConfig},t.prototype.update=function(e){var t=Math.min(e.camera.relativeElevation,e.camera.distance);return this.animation.enabled=Math.sqrt(this.params.waveTextureRepeat/this.params.waveStrength)*t<c,this.animation.advance(e.dt),this.animation.enabled},t.prototype.intersect=function(e,t,a,i,r,n,s){u.intersectTriangleGeometry(e,t,i,r,n,void 0,s)},t.prototype.getGLMaterial=function(e){if(0===e.output&&this.params.isDraped){var t=e;return t.output=5,new n.WaterGLMaterial(t)}switch(e.output){case 0:case 2:case 4:return new n.WaterGLMaterial(e)}},t.prototype.createBufferWriter=function(){return new o.DefaultBufferWriter(o.PositionUVLayout)},t}(r.Material);t.WaterMaterial=p;var c=35e3}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./internal/MaterialUtil","../lib/Material","../lib/OrderIndependentTransparency","./internal/DefaultBufferWriter","./WaterTechnique","./WaterGLMaterial","../lib/AnimationTimer","./internal/waterMaterialUtils"],(function(e,t,i,a,n,r,s,o,u,c){"use strict";let h=function(e){function a(t,i){var a;return(a=e.call(this,i,t,c.defaultWaterMaterialParameters)||this).animation=new u.AnimationTimer,a.techniqueConfig=new s.WaterTechniqueConfiguration,a}t._inheritsLoose(a,e);var h=a.prototype;return h.getTechniqueConfig=function(e,t){return this.techniqueConfig.output=e,this.techniqueConfig.writeDepth=this.params.writeDepth,this.techniqueConfig.receiveShadows=this.params.receiveShadows,this.techniqueConfig.slicePlaneEnabled=this.params.slicePlaneEnabled,this.techniqueConfig.transparent=this.params.transparent,this.techniqueConfig.useSSR=this.params.ssrEnabled,this.techniqueConfig.isDraped=this.params.isDraped,this.techniqueConfig.transparencyPassType=t?t.transparencyPassType:3,this.techniqueConfig.enableOffset=!t||t.camera.relativeElevation<n.OITPolygonOffsetLimit,this.techniqueConfig},h.update=function(e){const t=Math.min(e.camera.relativeElevation,e.camera.distance);return this.animation.enabled=Math.sqrt(this.params.waveTextureRepeat/this.params.waveStrength)*t<l,this.animation.advance(e.dt),this.animation.enabled},h.intersect=function(e,t,a,n,r,s,o){i.intersectTriangleGeometry(e,t,n,r,s,void 0,o)},h.getGLMaterial=function(e){if(0===e.output&&this.params.isDraped){const t=e;return t.output=5,new o.WaterGLMaterial(t)}switch(e.output){case 0:case 2:case 4:case 7:return new o.WaterGLMaterial(e)}},h.createBufferWriter=function(){return new r.DefaultBufferWriter(r.PositionUVLayout)},a}(a.Material);const l=35e3;e.WaterMaterial=h,Object.defineProperty(e,"__esModule",{value:!0})}));

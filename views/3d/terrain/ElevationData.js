@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/mathUtils","../support/mathUtils","./TerrainConst"],(function(a,t,e,i,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ElevationData=void 0;var l=function(){function a(a,t,e){this.samplerData=null,this.level=a[0],this.i=a[1],this.j=a[2],this.extent=t;for(var i=e.noDataValue,r=e.values,l=1/0,h=-1/0,o=!0,s=!1,n=0;n<r.length;n++){var u=r[n];u!==i?(l=u<l?u:l,h=u>h?u:h,o=!1):s=!0}o&&(l=0,h=0),h=h>-3e38?h:0,this.samplerData={pixelData:e.values,width:e.width,height:e.height,noDataValue:i,safeWidth:.99999999*(e.width-1),dx:(e.width-1)/(t[2]-t[0]),dy:(e.width-1)/(t[3]-t[1]),x0:t[0],y1:t[3]},this.bounds=[l,h],this.hasNoDataValues=s}return a.prototype.release=function(){this.samplerData=null,this.bounds=null},a.prototype.computeMinMaxValue=function(a,t,e,l){l.min=1/0,l.max=-1/0,l.hasNoDataValues=!1;var h=a-this.level;if(h<=0)return l;var o=Math.pow(2,h);if(!(Math.floor(t/o)===this.i&&Math.floor(e/o)===this.j))return l;var s=1/0,n=-1/0,u=this.samplerData.width,f=this.samplerData.pixelData,p=.5*r.ELEVATION_NODATA_VALUE,v=(u-1)/o,m=(e-this.j*o)*v,d=(t-this.i*o)*v;if(v<1){var D=Math.floor(m),M=Math.floor(d),x=f[g=D+M*u],c=f[g+1],V=f[g+u],w=f[g+u+1];if(x+c+V+w<p){var A=m-D,E=d-M,b=i.bilerp(x,c,V,w,A,E),y=i.bilerp(x,c,V,w,A+v,E),N=i.bilerp(x,c,V,w,A,E+v),_=i.bilerp(x,c,V,w,A+v,E+v);return l.min=Math.min(b,y,N,_),l.max=Math.max(b,y,N,_),l}m=D,d=M,v=1}else m=Math.floor(m),d=Math.floor(d),v=Math.ceil(v);for(var O=m;O<=m+v;O++)for(var T=d;T<=d+v;T++){var g,j=f[g=O+T*u];j<p?(s=Math.min(s,j),n=Math.max(n,j)):l.hasNoDataValues=!0}return l.min=s,l.max=n,l},a.sample=function(a,t,i){for(var l=0,h=i;l<h.length;l++){var o=h[l];if(o){var s=o.safeWidth,n=o.width,u=o.pixelData,f=e.clamp(o.dy*(o.y1-t),0,s),p=e.clamp(o.dx*(a-o.x0),0,s),v=Math.floor(f),m=Math.floor(p),d=v*n+m,D=d+n,M=u[d],x=u[D],c=u[d+1],V=u[D+1];if(M+x+c+V<.5*r.ELEVATION_NODATA_VALUE){var w=M+(c-M)*(p-=m);return w+(x+(V-x)*p-w)*(f-=v)}}}return null},a}();t.ElevationData=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/mathUtils","../support/mathUtils","./TerrainConst"],(function(t,a,e,i){"use strict";let l=function(){function t(t,a,e){this.samplerData=null,this.level=t[0],this.i=t[1],this.j=t[2],this.extent=a;const i=e.noDataValue,l=e.values;let o=1/0,s=-1/0,n=!0,h=!1;for(let t=0;t<l.length;t++){const a=l[t];a!==i?(o=a<o?a:o,s=a>s?a:s,n=!1):h=!0}n&&(o=0,s=0),s=s>-3e38?s:0,this.samplerData={pixelData:e.values,width:e.width,height:e.height,noDataValue:i,safeWidth:.99999999*(e.width-1),dx:(e.width-1)/(a[2]-a[0]),dy:(e.width-1)/(a[3]-a[1]),x0:a[0],y1:a[3]},this.bounds=[o,s],this.hasNoDataValues=h}var l=t.prototype;return l.release=function(){this.samplerData=null,this.bounds=null},l.computeMinMaxValue=function(t,a,l,o){o.min=1/0,o.max=-1/0,o.hasNoDataValues=!1;const s=t-this.level;if(s<=0)return o;const n=Math.pow(2,s);if(!(Math.floor(a/n)===this.i&&Math.floor(l/n)===this.j))return o;let h=1/0,r=-1/0;const u=this.samplerData.width,f=this.samplerData.pixelData,c=.5*i.ELEVATION_NODATA_VALUE;let p=(u-1)/n,m=(l-this.j*n)*p,d=(a-this.i*n)*p;if(p<1){const t=Math.floor(m),a=Math.floor(d),i=t+a*u,l=f[i],s=f[i+1],n=f[i+u],h=f[i+u+1];if(l+s+n+h<c){const i=m-t,r=d-a,u=e.bilerp(l,s,n,h,i,r),f=e.bilerp(l,s,n,h,i+p,r),c=e.bilerp(l,s,n,h,i,r+p),M=e.bilerp(l,s,n,h,i+p,r+p);return o.min=Math.min(u,f,c,M),o.max=Math.max(u,f,c,M),o}m=t,d=a,p=1}else m=Math.floor(m),d=Math.floor(d),p=Math.ceil(p);for(let t=m;t<=m+p;t++)for(let a=d;a<=d+p;a++){const e=f[t+a*u];e<c?(h=Math.min(h,e),r=Math.max(r,e)):o.hasNoDataValues=!0}return o.min=h,o.max=r,o},t.sample=function(t,e,l){for(const o of l){if(!o)continue;const l=o.safeWidth,s=o.width,n=o.pixelData;let h=a.clamp(o.dy*(o.y1-e),0,l),r=a.clamp(o.dx*(t-o.x0),0,l);const u=Math.floor(h),f=Math.floor(r),c=u*s+f,p=c+s,m=n[c],d=n[p],M=n[c+1],D=n[p+1];if(m+d+M+D<.5*i.ELEVATION_NODATA_VALUE){h-=u,r-=f;const t=m+(M-m)*r;return t+(d+(D-d)*r-t)*h}}return null},t}();t.ElevationData=l,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/promiseUtils","../../geometry/support/coordsUtils"],(function(e,r,t,n){"use strict";function a(e,r){void 0===r&&(r=!1);var t=[];if(r)for(var a=0,i=e;a<i.length;a++){var l=i[a];if(l.geometry){var o=l.geometry;t.push.apply(t,o.points)}}else t=e.map((function(e){return e.geometry}));for(var u=[],g=[],s=1/0,v=-1/0,f=0,h=0,c=0,m=0,p=0,y=t;p<y.length;p++){var x=y[p];if(x){r?(u[0]=x[0],u[1]=x[1]):(u[0]=x.x,u[1]=x.y);for(var L=1/0,d=-1/0,D=0,b=t;D<b.length;D++){var k=b[D];if(k!==x&&k){r?(g[0]=k[0],g[1]=k[1]):(g[0]=k.x,g[1]=k.y);var z=n.getLength(u,g);z>0&&(z<L&&(L=z),z<s&&(s=z),z>d&&(d=z),z>v&&(v=z))}}L!==1/0&&(++c,f+=L),d!==-1/0&&(++m,h+=d)}}return{minDistance:s!==1/0?s:null,maxDistance:v!==-1/0?v:null,avgMinDistance:c?f/c:null,avgMaxDistance:m?h/m:null}}return function(e){var r=e.features,i=null;switch(e.geometryType){case"point":i=a(r);break;case"multipoint":i=a(r,!0);break;case"polyline":i=function(e){for(var r=0,t=0,a=1/0,i=-1/0,l=0,o=e;l<o.length;l++){var u=o[l].geometry;if(u){for(var g=0,s=0,v=u.paths;s<v.length;s++){var f=v[s],h=n.getPathLength(f);h>0&&(g+=h)}g>0&&(++r,t+=g,g<a&&(a=g),g>i&&(i=g))}}return{minLength:a!==1/0?a:null,maxLength:i!==-1/0?i:null,avgLength:r?t/r:null}}(r);break;case"polygon":i=function(e){for(var r=0,t=0,n=1/0,a=-1/0,i=0,l=e;i<l.length;i++){var o=l[i].geometry;if(o){var u=o.extent;if(u){var g=Math.sqrt(u.width*u.height);g>0&&(++r,t+=g,g<n&&(n=g),g>a&&(a=g))}}}return{minSize:n!==1/0?n:null,maxSize:a!==-1/0?a:null,avgSize:r?t/r:null}}(r)}return t.resolve(i)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../core/promiseUtils","../../geometry/support/coordsUtils"],(function(t,n){"use strict";function e(t,e=!1){let o=[];if(e){for(const n of t)if(n.geometry){const t=n.geometry;o.push.apply(o,t.points)}}else o=t.map((t=>t.geometry));const i=[],l=[];let s=1/0,c=-1/0,r=0,u=0,f=0,a=0;for(const t of o){if(!t)continue;e?(i[0]=t[0],i[1]=t[1]):(i[0]=t.x,i[1]=t.y);let g=1/0,m=-1/0;for(const r of o){if(r===t)continue;if(!r)continue;e?(l[0]=r[0],l[1]=r[1]):(l[0]=r.x,l[1]=r.y);const o=n.getLength(i,l);o>0&&(o<g&&(g=o),o<s&&(s=o),o>m&&(m=o),o>c&&(c=o))}g!==1/0&&(++f,r+=g),m!==-1/0&&(++a,u+=m)}return{minDistance:s!==1/0?s:null,maxDistance:c!==-1/0?c:null,avgMinDistance:f?r/f:null,avgMaxDistance:a?u/a:null}}return function(o){const{features:i}=o;let l=null;switch(o.geometryType){case"point":l=e(i);break;case"multipoint":l=e(i,!0);break;case"polyline":l=function(t){let e=0,o=0,i=1/0,l=-1/0;for(const s of t){const t=s.geometry;if(t){let s=0;for(const e of t.paths){const t=n.getPathLength(e);t>0&&(s+=t)}s>0&&(++e,o+=s,s<i&&(i=s),s>l&&(l=s))}}return{minLength:i!==1/0?i:null,maxLength:l!==-1/0?l:null,avgLength:e?o/e:null}}(i);break;case"polygon":l=function(t){let n=0,e=0,o=1/0,i=-1/0;for(const l of t){const t=l.geometry;if(t){const l=t.extent;if(l){const t=Math.sqrt(l.width*l.height);t>0&&(++n,e+=t,t<o&&(o=t),t>i&&(i=t))}}}return{minSize:o!==1/0?o:null,maxSize:i!==-1/0?i:null,avgSize:n?e/n:null}}(i)}return t.resolve(l)}}));

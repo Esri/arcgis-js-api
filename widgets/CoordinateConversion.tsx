@@ -38,37 +38,37 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { eventKey } from "esri/core/events";
-import global = require("esri/core/global");
-import Logger = require("esri/core/Logger");
+import global from "esri/core/global";
+import Logger from "esri/core/Logger";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
-import Point = require("esri/geometry/Point");
+import Point from "esri/geometry/Point";
 
 // esri.symbols
-import PictureMarkerSymbol = require("esri/symbols/PictureMarkerSymbol");
+import PictureMarkerSymbol from "esri/symbols/PictureMarkerSymbol";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { Mode } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.CoordinateConversion
-import CoordinateViewModel = require("esri/widgets/CoordinateConversion/CoordinateConversionViewModel");
+import CoordinateViewModel from "esri/widgets/CoordinateConversion/CoordinateConversionViewModel";
 
 // esri.widgets.CoordinateConversion.support
-import Conversion = require("esri/widgets/CoordinateConversion/support/Conversion");
-import Format = require("esri/widgets/CoordinateConversion/support/Format");
+import Conversion from "esri/widgets/CoordinateConversion/support/Conversion";
+import Format from "esri/widgets/CoordinateConversion/support/Format";
 
 // esri.widgets.CoordinateConversion.t9n
 import CoordinateConversionMessages from "esri/widgets/CoordinateConversion/t9n/CoordinateConversion";
@@ -76,7 +76,14 @@ import CoordinateConversionMessages from "esri/widgets/CoordinateConversion/t9n/
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  isRTL,
+  messageBundle,
+  renderable,
+  storeNode,
+  tsx
+} from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
 
@@ -119,6 +126,7 @@ const CSS: any = {
   header: "esri-widget__heading",
   widgetButton: "esri-widget--button",
   leftArrow: "esri-icon-left-arrow",
+  rightArrow: "esri-icon-right-arrow",
   captureButton: "esri-icon-map-pin",
   collapseButton: "esri-icon-up",
   copyButton: "esri-icon-duplicate",
@@ -813,7 +821,7 @@ class CoordinateConversion extends Widget {
             tabindex="0"
             title={messagesCommon.back}
           >
-            <span aria-hidden="true" class={CSS.leftArrow} />
+            {this._renderBackIcon()}
           </div>
           <h4 class={CSS.header} id={headerId}>
             {messages.inputCoordTitle}
@@ -1044,7 +1052,7 @@ class CoordinateConversion extends Widget {
             tabindex="0"
             title={messagesCommon.back}
           >
-            <span aria-hidden="true" class={CSS.leftArrow} />
+            {this._renderBackIcon()}
           </div>
           <h4 class={CSS.header} id={headerId}>
             {messages.settingsTitle}
@@ -1102,6 +1110,10 @@ class CoordinateConversion extends Widget {
         </div>
       </div>
     );
+  }
+
+  private _renderBackIcon(): VNode {
+    return <span aria-hidden="true" class={isRTL() ? CSS.rightArrow : CSS.leftArrow} />;
   }
 
   private _renderTools(index: number, conversion: Conversion, rowId: string): VNode {
@@ -1204,4 +1216,4 @@ class CoordinateConversion extends Widget {
   }
 }
 
-export = CoordinateConversion;
+export default CoordinateConversion;

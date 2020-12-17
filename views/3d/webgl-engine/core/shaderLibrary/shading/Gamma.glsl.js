@@ -1,25 +1,16 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";e.Gamma=function(e){e.fragment.code.add(o.glsl`
+    const float GAMMA = 2.2;
+    const float INV_GAMMA = 0.4545454545;
 
-define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,n,o,c){"use strict";var r;Object.defineProperty(n,"__esModule",{value:!0}),n.Gamma=void 0,n.Gamma=function(e){e.fragment.code.add(c.glsl(r||(r=o.__makeTemplateObject(["\n    const float GAMMA = 2.2;\n    const float INV_GAMMA = 0.4545454545;\n\n    vec4 delinearizeGamma(vec4 color) {\n      return vec4(pow(color.rgb, vec3(INV_GAMMA)), color.w);\n    }\n\n    vec3 linearizeGamma(vec3 color) {\n      return pow(color, vec3(GAMMA));\n    }\n  "],["\n    const float GAMMA = 2.2;\n    const float INV_GAMMA = 0.4545454545;\n\n    vec4 delinearizeGamma(vec4 color) {\n      return vec4(pow(color.rgb, vec3(INV_GAMMA)), color.w);\n    }\n\n    vec3 linearizeGamma(vec3 color) {\n      return pow(color, vec3(GAMMA));\n    }\n  "]))))}}));
+    vec4 delinearizeGamma(vec4 color) {
+      return vec4(pow(color.rgb, vec3(INV_GAMMA)), color.w);
+    }
+
+    vec3 linearizeGamma(vec3 color) {
+      return pow(color, vec3(GAMMA));
+    }
+  `)},Object.defineProperty(e,"__esModule",{value:!0})}));

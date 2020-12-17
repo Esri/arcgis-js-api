@@ -2,8 +2,8 @@
  * The TableList widget provides a way to display a list of tables associated with a {@link module:esri/Map}.
  * It is meant to be used with {@link module:esri/layers/FeatureLayer feature layer} tables.
  *
- * If a web map contains feature layer tables, they will display within the widget. Tables can also be added to the web map's
- * {@link module:esri/WebMap#tables tables} collection. Any tables referenced in the [map](#map)
+ * If a map contains feature layer tables, they will display within the widget. Tables can also be added to the map's
+ * {@link module:esri/Map#tables tables} collection. Any tables referenced in the [map](#map)
  * property will display in the widget. If unsure of whether the
  * layer is a table, check the feature layer's {@link module:esri/layers/FeatureLayer#isTable isTable} property.
  *
@@ -23,8 +23,9 @@
  * @see [TableList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TableList.tsx)
  * @see [TableList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TableList.scss)
  * @see module:esri/widgets/TableList/TableListViewModel
+ * @see {@link module:esri/Map#tables Map.tables}
  * @see {@link module:esri/WebMap#tables WebMap.tables}
- * @see [Sample - Toggle table visibility using TableList Widget](../sample-code/widgets-tablelist/index.html)
+ * @see [Sample - TableList Widget](../sample-code/widgets-tablelist/index.html)
  *
  * @example
  * const tableList = new TableList({
@@ -49,33 +50,33 @@
  */
 
 // esri
-import WebMap = require("esri/WebMap");
-import WebScene = require("esri/WebScene");
+import WebMap from "esri/WebMap";
+import WebScene from "esri/WebScene";
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { eventKey } from "esri/core/events";
-import Handles = require("esri/core/Handles");
+import Handles from "esri/core/Handles";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import Layer = require("esri/layers/Layer");
+import Layer from "esri/layers/Layer";
 
 // esri.libs.sortablejs
-import Sortable = require("esri/libs/sortablejs/Sortable");
+import Sortable from "esri/libs/sortablejs/Sortable";
 
 // esri.support.actions
-import ActionButton = require("esri/support/actions/ActionButton");
-import ActionToggle = require("esri/support/actions/ActionToggle");
+import ActionButton from "esri/support/actions/ActionButton";
+import ActionToggle from "esri/support/actions/ActionToggle";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.LayerList
 import { Action, Actions, Sections } from "esri/widgets/LayerList/interfaces";
@@ -86,8 +87,8 @@ import { accessibleHandler, renderable, tsx, vmEvent, messageBundle } from "esri
 
 // esri.widgets.TableList
 import { ListItemModifier } from "esri/widgets/TableList/interfaces";
-import ListItem = require("esri/widgets/TableList/ListItem");
-import TableListViewModel = require("esri/widgets/TableList/TableListViewModel");
+import ListItem from "esri/widgets/TableList/ListItem";
+import TableListViewModel from "esri/widgets/TableList/TableListViewModel";
 
 // esri.widgets.TableList.support
 import { findSelectedItem } from "esri/widgets/TableList/support/tableListUtils";
@@ -340,12 +341,13 @@ class TableList extends Widget {
   //----------------------------------
 
   /**
-   * A reference to a {@link module:esri/WebMap web map} containing the tables. Set this property
+   * A reference to a {@link module:esri/Map map} containing the tables. Set this property
    * to access the underlying tables within the map.
    *
    * @name map
    * @instance
-   * @type {module:esri/WebMap}
+   * @type {module:esri/Map | module:esri/WebMap}
+   * @see {@link module:esri/Map#tables Map.tables}
    * @see {@link module:esri/WebMap#tables WebMap.tables}
    *
    * @example
@@ -359,14 +361,14 @@ class TableList extends Widget {
    *   layer.load().then(function() {
    *     // Check if the layer is a table
    *     if (layer.isTable) {
-   *       webmap.tables.add(layer);
-   *       console.log(webmap.tables);
+   *       map.tables.add(layer);
+   *       console.log(map.tables);
    *     }
    *   });
    * });
    *
    * const tableList = new TableList({
-   *   map: webmap //  web map contains tables collection
+   *   map: map //  map contains tables collection
    * });
    */
   @aliasOf("viewModel.map")
@@ -737,8 +739,8 @@ class TableList extends Widget {
   ): VNode {
     const actionSectionsArray = actionsSections.toArray();
 
-    const actionSection = actionSectionsArray.map((actionSection) => (
-      <ul key={actionSection} class={CSS.actionsList}>
+    const actionSection = actionSectionsArray.map((actionSection, index) => (
+      <ul key={`${item}-action-section-${index}`} class={CSS.actionsList}>
         {this.renderActionSection(item, actionSection)}
       </ul>
     ));
@@ -825,7 +827,7 @@ class TableList extends Widget {
           data-item={item}
           data-action={action}
           role="button"
-          key={action}
+          key={`single-action-${action.uid}`}
           onclick={this._triggerAction}
           onkeydown={this._triggerAction}
           classes={buttonClasses}
@@ -843,7 +845,7 @@ class TableList extends Widget {
         bind={this}
         data-item={item}
         data-action={action}
-        key={action}
+        key={`action-${action.uid}`}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
         classes={buttonClasses}
@@ -1184,4 +1186,4 @@ class TableList extends Widget {
   }
 }
 
-export = TableList;
+export default TableList;

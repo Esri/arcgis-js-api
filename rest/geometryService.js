@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./geometryService/areasAndLengths","./geometryService/autoComplete","./geometryService/buffer","./geometryService/convexHull","./geometryService/cut","./geometryService/densify","./geometryService/difference","./geometryService/distance","./geometryService/fromGeoCoordinateString","./geometryService/generalize","./geometryService/intersect","./geometryService/labelPoints","./geometryService/lengths","./geometryService/offset","./geometryService/project","./geometryService/relation","./geometryService/reshape","./geometryService/simplify","./geometryService/toGeoCoordinateString","./geometryService/trimExtend","./geometryService/union","./geometryService/units"],(function(e,r,t,o,S,_,i,a,c,p,g,m,x,y,v,n,s,f,l,u,d,b,h,C,j){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),t.__exportStar(o,r),t.__exportStar(S,r),t.__exportStar(_,r),t.__exportStar(i,r),t.__exportStar(a,r),t.__exportStar(c,r),t.__exportStar(p,r),t.__exportStar(g,r),t.__exportStar(m,r),t.__exportStar(x,r),t.__exportStar(y,r),t.__exportStar(v,r),t.__exportStar(n,r),t.__exportStar(s,r),t.__exportStar(f,r),t.__exportStar(l,r),t.__exportStar(u,r),t.__exportStar(d,r),t.__exportStar(b,r),t.__exportStar(h,r),t.__exportStar(C,r),t.__exportStar(j,r)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./geometryService/areasAndLengths","./geometryService/autoComplete","./geometryService/buffer","./geometryService/convexHull","./geometryService/cut","./geometryService/densify","./geometryService/difference","./geometryService/distance","./geometryService/units","./geometryService/fromGeoCoordinateString","./geometryService/generalize","./geometryService/intersect","./geometryService/labelPoints","./geometryService/lengths","./geometryService/offset","./geometryService/project","./geometryService/relation","./geometryService/reshape","./geometryService/simplify","./geometryService/toGeoCoordinateString","./geometryService/trimExtend","./geometryService/union"],(function(e,r,t,i,o,n,c,s,g,m,a,y,f,l,v,S,d,u,p,b,h,C,x){"use strict";e.areasAndLengths=r.areasAndLengths,e.autoComplete=t.autoComplete,e.buffer=i.buffer,e.convexHull=o.convexHull,e.cut=n.cut,e.densify=c.densify,e.difference=s.difference,e.distance=g.distance,e.conversionTypeKebabDict=m.conversionTypeKebabDict,e.units=m.units,e.fromGeoCoordinateString=a.fromGeoCoordinateString,e.generalize=y.generalize,e.intersect=f.intersect,e.labelPoints=l.labelPoints,e.lengths=v.lengths,e.offset=S.offset,e.project=d.project,e.relation=u.relation,e.reshape=p.reshape,e.simplify=b.simplify,e.toGeoCoordinateString=h.toGeoCoordinateString,e.trimExtend=C.trimExtend,e.union=x.union,Object.defineProperty(e,"__esModule",{value:!0})}));

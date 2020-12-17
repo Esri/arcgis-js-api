@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../core/has","../core/maybe","../core/promiseUtils"],(function(e,r,n,o,t){"use strict";function i(){try{return new DOMException("Aborted","AbortError")}catch(r){var e=new Error;return e.name="AbortError",e}}Object.defineProperty(r,"__esModule",{value:!0}),r.loadImageAsync=void 0,r.loadImageAsync=function(e,r,a,c){return void 0===a&&(a=!1),t.create((function(d,s){if(t.isAborted(c))s(i());else{var u=function(){f(),s(new Error("Unable to load "+r))},l=function(){var r=e;f(),d(r)},v=function(){if(e){var r=e;f(),r.src="",s(i())}},f=function(){n("esri-image-decode")||(e.removeEventListener("error",u),e.removeEventListener("load",l)),u=null,l=null,e=null,o.isSome(c)&&c.removeEventListener("abort",v),v=null,a&&URL.revokeObjectURL(r)};o.isSome(c)&&c.addEventListener("abort",v),n("esri-image-decode")?e.decode().then(l,u):(e.addEventListener("error",u),e.addEventListener("load",l))}}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../core/has","../core/maybe","../core/promiseUtils"],(function(e,r,t,o){"use strict";function n(){try{return new DOMException("Aborted","AbortError")}catch{const e=new Error;return e.name="AbortError",e}}e.loadImageAsync=function(e,i,s=!1,c){return o.create(((d,a)=>{if(o.isAborted(c))return void a(n());let l=()=>{m(),a(new Error(`Unable to load ${i}`))},u=()=>{const r=e;m(),d(r)},v=()=>{if(!e)return;const r=e;m(),r.src="",a(n())};const m=()=>{r("esri-image-decode")||(e.removeEventListener("error",l),e.removeEventListener("load",u)),l=null,u=null,e=null,t.isSome(c)&&c.removeEventListener("abort",v),v=null,s&&URL.revokeObjectURL(i)};t.isSome(c)&&c.addEventListener("abort",v),r("esri-image-decode")?e.decode().then(u,l):(e.addEventListener("error",l),e.addEventListener("load",u))}))},Object.defineProperty(e,"__esModule",{value:!0})}));

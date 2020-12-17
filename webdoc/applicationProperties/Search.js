@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Collection","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","./SearchLayer"],(function(e,r,t,a,o,d,n,s){"use strict";var i=a.ofType(s);return function(e){function r(r){var t=e.call(this,r)||this;return t.addressSearchEnabled=!0,t.enabled=!0,t.hintText=null,t.layers=new i,t}var a;return t.__extends(r,e),a=r,r.prototype.readAddressSearchEnabled=function(e){return!e},r.prototype.writeAddressSearchEnabled=function(e,r,t){r[t]=!e},r.prototype.clone=function(){return new a(d.clone({addressSearchEnabled:this.addressSearchEnabled,enabled:this.enabled,hintText:this.hintText,layers:this.layers}))},t.__decorate([n.property({type:Boolean,json:{read:{source:"disablePlaceFinder"},write:{target:"disablePlaceFinder"},default:!0,origins:{"web-scene":{read:!1,write:!1}}}})],r.prototype,"addressSearchEnabled",void 0),t.__decorate([n.reader("addressSearchEnabled")],r.prototype,"readAddressSearchEnabled",null),t.__decorate([n.writer("addressSearchEnabled")],r.prototype,"writeAddressSearchEnabled",null),t.__decorate([n.property({type:Boolean,json:{write:!0,default:!0}})],r.prototype,"enabled",void 0),t.__decorate([n.property({type:String,json:{write:!0}})],r.prototype,"hintText",void 0),t.__decorate([n.property({type:i,json:{write:{enabled:!0,isRequired:!0}}})],r.prototype,"layers",void 0),r=a=t.__decorate([n.subclass("esri.webdoc.applicationProperties.Search")],r)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../core/Collection","../../core/accessorSupport/extensions/serializableProperty/writePolicyUtils","./SearchLayer","./SearchTable"],(function(e,r,o,t,s,a,c,i,n,d,l,p,u,y,b,h,S,w){"use strict";var _;const E=b.ofType(S),f=b.ofType(w);let v=_=function(r){function o(e){var o;return(o=r.call(this,e)||this).addressSearchEnabled=!0,o.enabled=!0,o.hintText=null,o.layers=new E,o.tables=new f,o}e._inheritsLoose(o,r);var s=o.prototype;return s.readAddressSearchEnabled=function(e){return!e},s.writeAddressSearchEnabled=function(e,r,o){r[o]=!e},s.clone=function(){return new _(t.clone({addressSearchEnabled:this.addressSearchEnabled,enabled:this.enabled,hintText:this.hintText,layers:this.layers,tables:this.tables}))},o}(y.JSONSupport);return r.__decorate([c.property({type:Boolean,json:{read:{source:"disablePlaceFinder"},write:{target:"disablePlaceFinder"},default:!0,origins:{"web-scene":{read:!1,write:!1}}}})],v.prototype,"addressSearchEnabled",void 0),r.__decorate([i.reader("addressSearchEnabled")],v.prototype,"readAddressSearchEnabled",null),r.__decorate([d.writer("addressSearchEnabled")],v.prototype,"writeAddressSearchEnabled",null),r.__decorate([c.property({type:Boolean,json:{write:!0,default:!0}})],v.prototype,"enabled",void 0),r.__decorate([c.property({type:String,json:{write:!0}})],v.prototype,"hintText",void 0),r.__decorate([c.property({type:E,json:{write:{overridePolicy:h.writeNonEmptyCollectionPolicy},origins:{"web-scene":{write:{isRequired:!0}}}}})],v.prototype,"layers",void 0),r.__decorate([c.property({type:f,json:{read:!0,write:{overridePolicy:h.writeNonEmptyCollectionPolicy},origins:{"web-scene":{read:!1,write:!1}}}})],v.prototype,"tables",void 0),v=_=r.__decorate([n.subclass("esri.webdoc.applicationProperties.Search")],v),v}));

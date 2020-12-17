@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../geometry/support/jsonUtils","../CurveHelper"],(function(t,e,i,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.EffectDonut=void 0;var r=function(){function t(){}return t.local=function(){return null===t.instance&&(t.instance=new t),t.instance},t.prototype.execute=function(t,e,i){return new h(t,e,i)},t.instance=null,t}();e.EffectDonut=r;var h=function(){function t(t,e,i){switch(this._inputGeometries=t,this._curveHelper=new n.CurveHelper,this._width=(void 0!==e.width?e.width:2)*i,e.method){case"Mitered":default:this._method="Mitered";break;case"Bevelled":this._method="Bevelled";break;case"Rounded":case"TrueBuffer":this._method="Rounded";break;case"Square":this._method="Square"}this._option=e.option,this._offsetFlattenError=n.PIXEL_TOLERANCE*i,this._option}return t.prototype.next=function(){for(var t=this._inputGeometries.next();t;){if(i.isExtent(t))if(this._width>0)return Math.min(t.xmax-t.xmin,t.ymax-t.ymin)-2*this._width<0?t:((n=[]).push([[t.xmin,t.ymin],[t.xmin,t.ymax],[t.xmax,t.ymax],[t.xmax,t.ymin],[t.xmin,t.ymin]]),n.push([[t.xmin+this._width,t.ymin+this._width],[t.xmax-this._width,t.ymin+this._width],[t.xmax-this._width,t.ymax-this._width],[t.xmin+this._width,t.ymax-this._width],[t.xmin+this._width,t.ymin+this._width]]),{rings:n});if(i.isPolygon(t)&&this._width>0){for(var e=[],n=[],r=0,h=t.rings;r<h.length;r++){var s=h[r],o=this._curveHelper.calculatePathLength(s);o>0&&e.push(s);var u=this._curveHelper.offset(s,this._width,this._method,4,this._offsetFlattenError);u&&(o<0&&u.reverse(),n.push(u)),o<0&&e.push(s)}if(n.length)return{rings:n}}t=this._inputGeometries.next()}return null},t}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../geometry/support/jsonUtils","../CurveHelper"],(function(t,e,i){"use strict";let n=function(){function t(){}return t.local=function(){return null===t.instance&&(t.instance=new t),t.instance},t.prototype.execute=function(t,e,i){return new s(t,e,i)},t}();n.instance=null;let s=function(){function t(t,e,n){switch(this._inputGeometries=t,this._curveHelper=new i.CurveHelper,this._width=(void 0!==e.width?e.width:2)*n,e.method){case"Mitered":default:this._method="Mitered";break;case"Bevelled":this._method="Bevelled";break;case"Rounded":case"TrueBuffer":this._method="Rounded";break;case"Square":this._method="Square"}this._option=e.option,this._offsetFlattenError=i.PIXEL_TOLERANCE*n,this._option}return t.prototype.next=function(){let t=this._inputGeometries.next();for(;t;){if(e.isExtent(t)&&this._width>0){if(Math.min(t.xmax-t.xmin,t.ymax-t.ymin)-2*this._width<0)return t;const e=[];return e.push([[t.xmin,t.ymin],[t.xmin,t.ymax],[t.xmax,t.ymax],[t.xmax,t.ymin],[t.xmin,t.ymin]]),e.push([[t.xmin+this._width,t.ymin+this._width],[t.xmax-this._width,t.ymin+this._width],[t.xmax-this._width,t.ymax-this._width],[t.xmin+this._width,t.ymax-this._width],[t.xmin+this._width,t.ymin+this._width]]),{rings:e}}if(e.isPolygon(t)&&this._width>0){const e=[];for(const i of t.rings){const t=this._curveHelper.calculatePathLength(i),n=this._curveHelper.offset(i,this._width,this._method,4,this._offsetFlattenError);n&&(t<0&&n.reverse(),e.push(n))}if(e.length)return{rings:e}}t=this._inputGeometries.next()}return null},t}();t.EffectDonut=n,Object.defineProperty(t,"__esModule",{value:!0})}));

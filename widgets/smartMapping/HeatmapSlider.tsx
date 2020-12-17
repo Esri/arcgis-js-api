@@ -61,19 +61,19 @@
  */
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.support
-import HeatmapColorStop = require("esri/../renderers/support/HeatmapColorStop");
+import HeatmapColorStop from "esri/renderers/support/HeatmapColorStop";
 
 // esri.smartMapping.renderers
-import { HeatmapRendererResult } from "esri/../smartMapping/renderers/heatmap";
+import { HeatmapRendererResult } from "esri/smartMapping/renderers/heatmap";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.HeatmapSlider
-import HeatmapSliderViewModel = require("esri/widgets/HeatmapSlider/HeatmapSliderViewModel");
+import HeatmapSliderViewModel from "esri/widgets/HeatmapSlider/HeatmapSliderViewModel";
 
 // esri.widgets.smartMapping.HeatmapSlider.t9n
 import HeatmapSliderMessages from "esri/widgets/HeatmapSlider/t9n/HeatmapSlider";
@@ -364,4 +364,4 @@ class HeatmapSlider extends SmartMappingSliderBase {
   }
 }
 
-export = HeatmapSlider;
+export default HeatmapSlider;

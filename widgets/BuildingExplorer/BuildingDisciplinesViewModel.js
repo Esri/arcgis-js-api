@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Accessor","../../core/Collection","../../core/collectionUtils","../../core/Handles","../../core/maybe","../../core/promiseUtils","../../core/accessorSupport/decorators","./support/buildingLayerUtils","./support/LayerTreeNode","./support/layerUtils"],(function(e,r,t,o,s,a,i,n,l,d,y,u,c){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.root=new u.LayerTreeNode,t.state="disabled",t._handles=new i,t._loadLayers=c.createLoadLayersFunction(),t.layers=new s,t}return t.__extends(r,e),r.prototype.initialize=function(){var e=this;this._handles.add(this.layers.on("change",(function(){return e._onLayersChange()}))),this._onLayersChange()},r.prototype.destroy=function(){this._set("state","disabled"),this._handles.destroy(),this.root.destroy()},Object.defineProperty(r.prototype,"layers",{set:function(e){var r=this._get("layers");this._set("layers",a.referenceSetter(e,r))},enumerable:!1,configurable:!0}),r.prototype._updateLayerTree=function(){var e=this;this.root.destroy(),this._set("root",new u.LayerTreeNode({collapsed:!1}));var r=new Map,t=this.layers.length>1?"modelName":"id";return this.layers.forEach((function(o){var s=y.findFullModelSublayer(o);n.isSome(s)&&e._addNodesForSublayers(s,e.root,r,t)})),this},r.prototype._addNodeForLayer=function(e,r,t,o){var s=String(e.get(o)).toLowerCase();if(n.isSome(s)&&!e.isEmpty){var a=r.id+"/"+s,i=t.get(a);i||(i=new u.LayerTreeNode({id:s,level:r.level+1}),t.set(a,i)),i.layers.push(e),r.children.push(i),this._addNodesForSublayers(e,i,t,o)}},r.prototype._addNodesForSublayers=function(e,r,t,o){var s=this;"building-group"!==e.type||e.isEmpty||e.sublayers.forEach((function(e){return s._addNodeForLayer(e,r,t,o)}))},r.prototype._onLayersChange=function(){return t.__awaiter(this,void 0,void 0,(function(){var e;return t.__generator(this,(function(r){switch(r.label){case 0:if(this._set("state","loading"),0===this.layers.length)return[2];r.label=1;case 1:return r.trys.push([1,3,,4]),[4,this._loadLayers(this.layers)];case 2:return r.sent(),this._updateLayerTree(),this._set("state","ready"),[3,4];case 3:return e=r.sent(),l.isAbortError(e)||this._set("state","failed"),[3,4];case 4:return[2]}}))}))},t.__decorate([d.property({readOnly:!0})],r.prototype,"root",void 0),t.__decorate([d.property({type:s,nonNullable:!0})],r.prototype,"layers",null),t.__decorate([d.property({readOnly:!0,nonNullable:!0})],r.prototype,"state",void 0),r=t.__decorate([d.subclass("esri.widgets.BuildingExplorer.BuildingDisciplineViewModel")],r)}(o)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../core/Accessor","../../core/Collection","../../core/collectionUtils","../../core/Handles","./support/buildingLayerUtils","./support/LayerTreeNode","./support/layerUtils"],(function(e,r,t,s,o,a,i,l,n,d,c,y,u,p,h,_,g,L,f){"use strict";let b=function(r){function t(e){var t;return(t=r.call(this,e)||this).root=new L.LayerTreeNode,t.state="disabled",t._handles=new _,t._loadLayers=f.createLoadLayersFunction(),t.layers=new p,t}e._inheritsLoose(t,r);var o=t.prototype;return o.initialize=function(){this._handles.add(this.layers.on("change",(()=>this._onLayersChange()))),this._onLayersChange()},o.destroy=function(){this._set("state","disabled"),this._handles.destroy(),this.root.destroy()},o._updateLayerTree=function(){this.root.destroy(),this._set("root",new L.LayerTreeNode({collapsed:!1}));const e=new Map,r=this.layers.length>1?"modelName":"id";return this.layers.forEach((t=>{const o=g.findFullModelSublayer(t);s.isSome(o)&&this._addNodesForSublayers(o,this.root,e,r)})),this},o._addNodeForLayer=function(e,r,t,o){const a=String(e.get(o)).toLowerCase();if(!s.isSome(a)||e.isEmpty)return;const i=`${r.id}/${a}`;let l=t.get(i);l||(l=new L.LayerTreeNode({id:a,level:r.level+1}),t.set(i,l)),l.layers.push(e),r.children.push(l),this._addNodesForSublayers(e,l,t,o)},o._addNodesForSublayers=function(e,r,t,s){"building-group"!==e.type||e.isEmpty||e.sublayers.forEach((e=>this._addNodeForLayer(e,r,t,s)))},o._onLayersChange=async function(){if(this._set("state","loading"),0!==this.layers.length)try{await this._loadLayers(this.layers),this._updateLayerTree(),this._set("state","ready")}catch(e){y.isAbortError(e)||this._set("state","failed")}},e._createClass(t,[{key:"layers",set:function(e){const r=this._get("layers");this._set("layers",h.referenceSetter(e,r))}}]),t}(u);return r.__decorate([i.property({readOnly:!0})],b.prototype,"root",void 0),r.__decorate([i.property({type:p,nonNullable:!0})],b.prototype,"layers",null),r.__decorate([i.property({readOnly:!0,nonNullable:!0})],b.prototype,"state",void 0),b=r.__decorate([l.subclass("esri.widgets.BuildingExplorer.BuildingDisciplineViewModel")],b),b}));

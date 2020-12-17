@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./Error","./Promise","./promiseUtils","./Warning","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass"],(function(o,r,e,t,n,a,l,d,s){"use strict";var i=function(o){return function(o){function r(){for(var r=[],e=0;e<arguments.length;e++)r[e]=arguments[e];var n=o.apply(this,r)||this;return n._loadController=null,n.loadError=null,n.loadStatus="not-loaded",n._set("loadWarnings",[]),n.addResolvingPromise(a.create((function(o){var r=n.load.bind(n);n.load=function(e){var l=a.create((function(o,r){a.onAbortOrThrow(e,r),n.destroyed&&r(new t("load:instance-destroyed","Instance of '"+(n.declaredClass||n.constructor.name)+"' is already destroyed",{instance:n})),n._promiseProps.when(o,r)}));if("not-loaded"===n.loadStatus){n._set("loadStatus","loading");var d=n._loadController=a.createAbortController();r({signal:d.signal}),a.onAbort(d.signal,(function(){n._promiseProps.abort()}))}return o(),l}}))),n.when((function(){n._set("loadStatus","loaded"),n._loadController=null}),(function(o){n._set("loadStatus","failed"),n._set("loadError",o),n._loadController=null})),n}return e.__extends(r,o),Object.defineProperty(r.prototype,"loaded",{get:function(){return"loaded"===this.loadStatus},enumerable:!1,configurable:!0}),Object.defineProperty(r.prototype,"loadWarnings",{get:function(){return this._get("loadWarnings")},enumerable:!1,configurable:!0}),r.prototype.load=function(){return null},r.prototype.cancelLoad=function(){var o;return this.isFulfilled()?this:(this._set("loadError",new t("load:cancelled","Cancelled")),null===(o=this._loadController)||void 0===o||o.abort(),this)},e.__decorate([d.property({readOnly:!0,dependsOn:["loadStatus"]})],r.prototype,"loaded",null),e.__decorate([d.property({readOnly:!0})],r.prototype,"loadError",void 0),e.__decorate([d.property()],r.prototype,"loadStatus",void 0),e.__decorate([d.property({type:[l],readOnly:!0})],r.prototype,"loadWarnings",null),r=e.__decorate([s.subclass("esri.core.Loadable")],r)}(o)},u=function(o){function r(){return null!==o&&o.apply(this,arguments)||this}return e.__extends(r,o),r=e.__decorate([s.subclass("esri.core.Loadable")],r)}(i(n.EsriPromise));return function(o){o.LoadableMixin=i,o.isLoadable=function(o){return!(!o||!o.load)}}(u||(u={})),u}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/property","./Warning","./accessorSupport/decorators/subclass","./Error","./promiseUtils","./Promise"],(function(o,e,r,t,n,l,a,s){"use strict";const d="loaded",i=s=>{let i=function(e){function r(...r){var t;return(t=e.call(this,...r)||this)._loadController=null,t.loadError=null,t.loadStatus="not-loaded",t._set("loadWarnings",[]),t.addResolvingPromise(new Promise((e=>{const r=t.load.bind(o._assertThisInitialized(t));t.load=n=>{const s=new Promise(((e,r)=>{const s=a.onAbortOrThrow(n,r);t.destroyed&&r(new l("load:instance-destroyed",`Instance of '${t.declaredClass||t.constructor.name}' is already destroyed`,{instance:o._assertThisInitialized(t)})),t._promiseProps.when(e,r).finally((()=>{s&&s.remove()}))}));if("not-loaded"===t.loadStatus){t._set("loadStatus","loading");const o=t._loadController=a.createAbortController();r({signal:o.signal}),a.onAbort(o.signal,(()=>{t._promiseProps.abort()}))}return e(),s}}))),t.when((()=>{t._set("loadStatus",d),t._loadController=null}),(o=>{t._set("loadStatus","failed"),t._set("loadError",o),t._loadController=null})),t}o._inheritsLoose(r,e);var t=r.prototype;return t.load=function(){return null},t.cancelLoad=function(){var o;return this.isFulfilled()||(this._set("loadError",new l("load:cancelled","Cancelled")),null==(o=this._loadController)||o.abort()),this},o._createClass(r,[{key:"loaded",get:function(){return this.loadStatus===d}},{key:"loadWarnings",get:function(){return this._get("loadWarnings")}}]),r}(s);return e.__decorate([r.property({readOnly:!0,dependsOn:["loadStatus"]})],i.prototype,"loaded",null),e.__decorate([r.property({readOnly:!0})],i.prototype,"loadError",void 0),e.__decorate([r.property()],i.prototype,"loadStatus",void 0),e.__decorate([r.property({type:[t],readOnly:!0})],i.prototype,"loadWarnings",null),i=e.__decorate([n.subclass("esri.core.Loadable")],i),i};let u=function(e){function r(){return e.apply(this,arguments)||this}return o._inheritsLoose(r,e),r}(i(s.EsriPromise));return u=e.__decorate([n.subclass("esri.core.Loadable")],u),function(o){o.LoadableMixin=i,o.isLoadable=function(o){return!(!o||!o.load)}}(u||(u={})),u}));

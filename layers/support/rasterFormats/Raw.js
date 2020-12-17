@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(r,e){"use strict";var t=function(r,e){var t=e.width*e.height,a=e.pixelType;return Math.floor(r.byteLength/(t*n(a)))},n=function(r){var e=1;switch(r){case Uint8Array:case Int8Array:e=1;break;case Uint16Array:case Int16Array:e=2;break;case Uint32Array:case Int32Array:case Float32Array:e=4;break;case Float64Array:e=8}return e};return function(){function r(){}return r.decode=function(r,e){var a,i,s,c,o,u=e.pixelType,f=[],h=e.width*e.height,y=t(r,e),l=e.bandIds,b=e.format,g=l&&l.length||t(r,e),A=r.byteLength-r.byteLength%(h*n(u)),p=new u(r,0,h*y);if("bip"===b)for(a=0;a<g;a++){for(c=new u(h),o=l?l[a]:a,i=0;i<h;i++)c[i]=p[i*y+o];f.push(c)}else if("bsq"===b)for(a=0;a<g;a++)o=l?l[a]:a,f.push(p.subarray(o*h,(o+1)*h));return A<r.byteLength-1&&(s=function(r,e){if(8*r.byteLength<e)return null;var t=new Uint8Array(r,0,Math.ceil(e/8)),n=new Uint8Array(e),a=0,i=0,s=0,c=0;for(s=0;s<t.length-1;s++)for(i=t[s],c=7;c>=0;c--)n[a++]=i>>c&1;for(c=7;a<e-1;)i=t[t.length-1],n[a++]=i>>c&1,c--;return n}(r.slice(A),h)),{pixels:f,mask:s}},r}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define((function(){"use strict";const e=function(e,n){const r=n.width*n.height,a=n.pixelType;return Math.floor(e.byteLength/(r*t(a)))},t=function(e){let t=1;switch(e){case Uint8Array:case Int8Array:t=1;break;case Uint16Array:case Int16Array:t=2;break;case Uint32Array:case Int32Array:case Float32Array:t=4;break;case Float64Array:t=8}return t};return function(){function n(){}return n.decode=function(n,r){const a=r.pixelType,i=[],c=r.width*r.height,s=e(n,r),{bandIds:o,format:f}=r,h=o&&o.length||e(n,r),u=n.byteLength-n.byteLength%(c*t(a)),y=new a(n,0,c*s);let l,b,g,A,p;if("bip"===f)for(l=0;l<h;l++){for(A=new a(c),p=o?o[l]:l,b=0;b<c;b++)A[b]=y[b*s+p];i.push(A)}else if("bsq"===f)for(l=0;l<h;l++)p=o?o[l]:l,i.push(y.subarray(p*c,(p+1)*c));return u<n.byteLength-1&&(g=function(e,t){if(8*e.byteLength<t)return null;const n=new Uint8Array(e,0,Math.ceil(t/8)),r=new Uint8Array(t);let a=0,i=0,c=0,s=0;for(c=0;c<n.length-1;c++)for(i=n[c],s=7;s>=0;s--)r[a++]=i>>s&1;for(s=7;a<t-1;)i=n[n.length-1],r[a++]=i>>s&1,s--;return r}(n.slice(u),c)),{pixels:i,mask:g}},n}()}));

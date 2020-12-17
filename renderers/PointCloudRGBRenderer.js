@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/lang","../core/accessorSupport/decorators","./PointCloudRenderer"],(function(e,r,t,o,n,i){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.type="point-cloud-rgb",t.field=null,t}var i;return t.__extends(r,e),i=r,r.prototype.clone=function(){return new i(t.__assign(t.__assign({},this.cloneProperties()),{field:o.clone(this.field)}))},t.__decorate([n.enumeration({pointCloudRGBRenderer:"point-cloud-rgb"})],r.prototype,"type",void 0),t.__decorate([n.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),r=i=t.__decorate([n.subclass("esri.renderers.PointCloudRGBRenderer")],r)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./PointCloudRenderer"],(function(e,r,o,t,n,s,c,i,u,p,l,d,a){"use strict";var f;let y=f=function(r){function o(e){var o;return(o=r.call(this,e)||this).type="point-cloud-rgb",o.field=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new f({...this.cloneProperties(),field:t.clone(this.field)})},o}(a);return r.__decorate([i.enumeration({pointCloudRGBRenderer:"point-cloud-rgb"})],y.prototype,"type",void 0),r.__decorate([c.property({type:String,json:{write:!0}})],y.prototype,"field",void 0),y=f=r.__decorate([u.subclass("esri.renderers.PointCloudRGBRenderer")],y),y}));

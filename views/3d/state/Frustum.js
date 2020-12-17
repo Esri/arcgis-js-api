@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/libs/gl-matrix-2/vec3","../../../core/libs/gl-matrix-2/vec3f64","../support/mathUtils","../support/geometryUtils/frustum"],(function(t,e,i,r,n,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.Frustum=void 0;var o=function(){function t(t){this.frustum=s.create(),this.lines=new Array(12),this.origin=r.vec3f64.create(),this.direction=r.vec3f64.create(),this._altitude=null,this.renderCoordsHelper=t?t.renderCoordsHelper:null;for(var e=0;e<12;e++)this.lines[e]={origin:null,direction:r.vec3f64.create(),endpoint:null}}return Object.defineProperty(t.prototype,"planes",{get:function(){return this.frustum.planes},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"points",{get:function(){return this.frustum.points},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"mutablePoints",{get:function(){return this.frustum.points},enumerable:!1,configurable:!0}),t.prototype.update=function(t){s.fromMatrix(t.viewMatrix,t.projectionMatrix,this.frustum),i.vec3.copy(this.origin,t.eye),i.vec3.copy(this.direction,t.viewForward),this._altitude=this.renderCoordsHelper.getAltitude(this.origin),this.updateLines()},t.prototype.updatePoints=function(t){for(var e=0;e<this.frustum.points.length;e++)i.vec3.copy(this.frustum.points[e],t[e]);s.recomputePlanes(this.frustum),this.updateLines()},Object.defineProperty(t.prototype,"altitude",{get:function(){return this._altitude},enumerable:!1,configurable:!0}),t.prototype.intersectsSphere=function(t){return s.intersectsSphere(this.frustum.planes,t)},t.prototype.intersectsRay=function(t){return s.intersectsRay(this.frustum.planes,t)},t.prototype.intersectsLineSegment=function(t,e){return s.intersectsLineSegment(this.frustum.planes,t,e)},t.prototype.intersectsPoint=function(t){return s.intersectsPoint(this.frustum.planes,t)},t.prototype.updateLines=function(){for(var t=this.frustum.points,e=0;e<4;e++){var i=e,r=e+4;this.updateLine(this.lines[e],t[i],t[r]),this.updateLine(this.lines[e+4],t[i],3===e?t[0]:t[i+1]),this.updateLine(this.lines[e+8],t[r],3===e?t[4]:t[r+1])}},t.prototype.updateLine=function(t,e,i){t.origin=e,t.endpoint=i,n.directionFromTo(t.direction,e,i)},t.planePointIndices=s.planePointIndices,t.nearFarLineIndices=[[0,4],[1,5],[2,6],[3,7]],t}();e.Frustum=o,e.default=o}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/vec3f64","../../../chunks/vec3","../support/mathUtils","../../../chunks/frustum"],(function(t,e,i,n,s,r){"use strict";let u=function(){function t(t){this.frustum=r.create(),this.lines=new Array(12),this.origin=i.create(),this.direction=i.create(),this._altitude=null,this.renderCoordsHelper=t?t.renderCoordsHelper:null;for(let t=0;t<12;t++)this.lines[t]={origin:null,direction:i.create(),endpoint:null}}var u=t.prototype;return u.update=function(t){r.fromMatrix(t.viewMatrix,t.projectionMatrix,this.frustum),n.copy(this.origin,t.eye),n.copy(this.direction,t.viewForward),this._altitude=this.renderCoordsHelper.getAltitude(this.origin),this.updateLines()},u.updatePoints=function(t){for(let e=0;e<this.frustum.points.length;e++)n.copy(this.frustum.points[e],t[e]);r.recomputePlanes(this.frustum),this.updateLines()},u.intersectsSphere=function(t){return r.intersectsSphere(this.frustum.planes,t)},u.intersectsRay=function(t){return r.intersectsRay(this.frustum.planes,t)},u.intersectsLineSegment=function(t,e){return r.intersectsLineSegment(this.frustum.planes,t,e)},u.intersectsPoint=function(t){return r.intersectsPoint(this.frustum.planes,t)},u.updateLines=function(){const{points:t}=this.frustum;for(let e=0;e<4;e++){const i=e,n=e+4;this.updateLine(this.lines[e],t[i],t[n]),this.updateLine(this.lines[e+4],t[i],3===e?t[0]:t[i+1]),this.updateLine(this.lines[e+8],t[n],3===e?t[4]:t[n+1])}},u.updateLine=function(t,e,i){t.origin=e,t.endpoint=i,s.directionFromTo(t.direction,e,i)},e._createClass(t,[{key:"planes",get:function(){return this.frustum.planes}},{key:"points",get:function(){return this.frustum.points}},{key:"mutablePoints",get:function(){return this.frustum.points}},{key:"altitude",get:function(){return this._altitude}}]),t}();u.planePointIndices=r.planePointIndices,u.nearFarLineIndices=[[0,4],[1,5],[2,6],[3,7]],t.Frustum=u,t.default=u,Object.defineProperty(t,"__esModule",{value:!0})}));

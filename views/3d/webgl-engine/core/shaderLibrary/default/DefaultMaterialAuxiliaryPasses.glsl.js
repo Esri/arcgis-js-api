@@ -1,25 +1,60 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../Transform.glsl","../Slice.glsl","../output/OutputHighlight.glsl","../shading/VisualVariables.glsl","../util/AlphaDiscard.glsl","../output/OutputDepth.glsl","../attributes/TextureCoordinateAttribute.glsl","../attributes/NormalAttribute.glsl","../attributes/VertexNormal.glsl"],(function(e,t,r,l,o,i,a,s,d,u,n){"use strict";e.DefaultMaterialAuxiliaryPasses=function(e,c){const v=e.vertex.code,p=e.fragment.code;1!==c.output&&3!==c.output||(e.include(r.Transform,{linearDepth:!0}),e.include(d.TextureCoordinateAttribute,c),e.include(i.VisualVariables,c),e.include(s.OutputDepth,c),e.include(l.Slice,c),e.vertex.uniforms.add("nearFar","vec2"),e.varyings.add("depth","float"),c.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),v.add(t.glsl`
+      void main(void) {
+        vpos = calculateVPos();
+        vpos = subtractOrigin(vpos);
+        vpos = addVerticalOffset(vpos, localOrigin);
+        gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);
+        forwardTextureCoordinates();
+      }
+    `),e.include(a.DiscardOrAdjustAlpha,c),p.add(t.glsl`
+      void main(void) {
+        discardBySlice(vpos);
+        ${c.hasColorTexture?t.glsl`
+        vec4 texColor = texture2D(tex, vuv0);
+        discardOrAdjustAlpha(texColor);`:""}
+        outputDepth(depth);
+      }
+    `)),2===c.output&&(e.include(r.Transform,{linearDepth:!1}),e.include(u.NormalAttribute,c),e.include(n.VertexNormal,c),e.include(d.TextureCoordinateAttribute,c),e.include(i.VisualVariables,c),c.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),e.vertex.uniforms.add("viewNormal","mat4"),e.varyings.add("vPositionView","vec3"),v.add(t.glsl`
+      void main(void) {
+        vpos = calculateVPos();
+        vpos = subtractOrigin(vpos);
+        ${0===c.normalType?t.glsl`
+        vNormalWorld = dpNormalView(vvLocalNormal(normalModel()));`:""}
+        vpos = addVerticalOffset(vpos, localOrigin);
+        gl_Position = transformPosition(proj, view, vpos);
+        forwardTextureCoordinates();
+      }
+    `),e.include(l.Slice,c),e.include(a.DiscardOrAdjustAlpha,c),p.add(t.glsl`
+      void main() {
+        discardBySlice(vpos);
+        ${c.hasColorTexture?t.glsl`
+        vec4 texColor = texture2D(tex, vuv0);
+        discardOrAdjustAlpha(texColor);`:""}
 
-define(["require","exports","tslib","../Slice.glsl","../Transform.glsl","../attributes/NormalAttribute.glsl","../attributes/TextureCoordinateAttribute.glsl","../attributes/VertexNormal.glsl","../output/OutputDepth.glsl","../output/OutputHighlight.glsl","../shading/VisualVariables.glsl","../util/AlphaDiscard.glsl","../../shaderModules/interfaces"],(function(e,o,t,r,a,n,l,i,s,d,u,v,c){"use strict";var p,m,g,x,f,O,h,_,T,b,C,j;Object.defineProperty(o,"__esModule",{value:!0}),o.DefaultMaterialAuxiliaryPasses=void 0,o.DefaultMaterialAuxiliaryPasses=function(e,o){var A=e.vertex.code,V=e.fragment.code;1!==o.output&&3!==o.output||(e.include(a.Transform,{linearDepth:!0}),e.include(l.TextureCoordinateAttribute,o),e.include(u.VisualVariables,o),e.include(s.OutputDepth,o),e.include(r.Slice,o),e.vertex.uniforms.add("nearFar","vec2"),e.varyings.add("depth","float"),o.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),A.add(c.glsl(p||(p=t.__makeTemplateObject(["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);\n        forwardTextureCoordinates();\n      }\n    "],["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPositionWithDepth(proj, view, vpos, nearFar, depth);\n        forwardTextureCoordinates();\n      }\n    "])))),e.include(v.DiscardOrAdjustAlpha,o),V.add(c.glsl(g||(g=t.__makeTemplateObject(["\n      void main(void) {\n        discardBySlice(vpos);\n        ","\n        outputDepth(depth);\n      }\n    "],["\n      void main(void) {\n        discardBySlice(vpos);\n        ","\n        outputDepth(depth);\n      }\n    "])),o.hasColorTexture?c.glsl(m||(m=t.__makeTemplateObject(["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"],["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"]))):""))),2===o.output&&(e.include(a.Transform,{linearDepth:!1}),e.include(n.NormalAttribute,o),e.include(i.VertexNormal,o),e.include(l.TextureCoordinateAttribute,o),e.include(u.VisualVariables,o),o.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),e.vertex.uniforms.add("viewNormal","mat4"),e.varyings.add("vPositionView","vec3"),A.add(c.glsl(f||(f=t.__makeTemplateObject(["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        ","\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPosition(proj, view, vpos);\n        forwardTextureCoordinates();\n      }\n    "],["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        ","\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPosition(proj, view, vpos);\n        forwardTextureCoordinates();\n      }\n    "])),0===o.normalType?c.glsl(x||(x=t.__makeTemplateObject(["\n        vNormalWorld = dpNormalView(vvLocalNormal(normalModel()));"],["\n        vNormalWorld = dpNormalView(vvLocalNormal(normalModel()));"]))):"")),e.include(r.Slice,o),e.include(v.DiscardOrAdjustAlpha,o),V.add(c.glsl(T||(T=t.__makeTemplateObject(["\n      void main() {\n        discardBySlice(vpos);\n        ","\n\n        ","\n        gl_FragColor = vec4(vec3(0.5) + 0.5 * normal, 1.0);\n      }\n    "],["\n      void main() {\n        discardBySlice(vpos);\n        ","\n\n        ","\n        gl_FragColor = vec4(vec3(0.5) + 0.5 * normal, 1.0);\n      }\n    "])),o.hasColorTexture?c.glsl(O||(O=t.__makeTemplateObject(["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"],["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"]))):"",3===o.normalType?c.glsl(h||(h=t.__makeTemplateObject(["\n            vec3 normal = screenDerivativeNormal(vPositionView);"],["\n            vec3 normal = screenDerivativeNormal(vPositionView);"]))):c.glsl(_||(_=t.__makeTemplateObject(["\n            vec3 normal = normalize(vNormalWorld);\n            if (gl_FrontFacing == false) normal = -normal;"],["\n            vec3 normal = normalize(vNormalWorld);\n            if (gl_FrontFacing == false) normal = -normal;"])))))),4===o.output&&(e.include(a.Transform,{linearDepth:!1}),e.include(l.TextureCoordinateAttribute,o),e.include(u.VisualVariables,o),o.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),A.add(c.glsl(b||(b=t.__makeTemplateObject(["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPosition(proj, view, vpos);\n        forwardTextureCoordinates();\n      }\n    "],["\n      void main(void) {\n        vpos = calculateVPos();\n        vpos = subtractOrigin(vpos);\n        vpos = addVerticalOffset(vpos, localOrigin);\n        gl_Position = transformPosition(proj, view, vpos);\n        forwardTextureCoordinates();\n      }\n    "])))),e.include(r.Slice,o),e.include(v.DiscardOrAdjustAlpha,o),e.include(d.OutputHighlight),V.add(c.glsl(j||(j=t.__makeTemplateObject(["\n      void main() {\n        discardBySlice(vpos);\n        ","\n        outputHighlight();\n      }\n    "],["\n      void main() {\n        discardBySlice(vpos);\n        ","\n        outputHighlight();\n      }\n    "])),o.hasColorTexture?c.glsl(C||(C=t.__makeTemplateObject(["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"],["\n        vec4 texColor = texture2D(tex, vuv0);\n        discardOrAdjustAlpha(texColor);"]))):"")))}}));
+        ${3===c.normalType?t.glsl`
+            vec3 normal = screenDerivativeNormal(vPositionView);`:t.glsl`
+            vec3 normal = normalize(vNormalWorld);
+            if (gl_FrontFacing == false) normal = -normal;`}
+        gl_FragColor = vec4(vec3(0.5) + 0.5 * normal, 1.0);
+      }
+    `)),4===c.output&&(e.include(r.Transform,{linearDepth:!1}),e.include(d.TextureCoordinateAttribute,c),e.include(i.VisualVariables,c),c.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),v.add(t.glsl`
+      void main(void) {
+        vpos = calculateVPos();
+        vpos = subtractOrigin(vpos);
+        vpos = addVerticalOffset(vpos, localOrigin);
+        gl_Position = transformPosition(proj, view, vpos);
+        forwardTextureCoordinates();
+      }
+    `),e.include(l.Slice,c),e.include(a.DiscardOrAdjustAlpha,c),e.include(o.OutputHighlight),p.add(t.glsl`
+      void main() {
+        discardBySlice(vpos);
+        ${c.hasColorTexture?t.glsl`
+        vec4 texColor = texture2D(tex, vuv0);
+        discardOrAdjustAlpha(texColor);`:""}
+        outputHighlight();
+      }
+    `))},Object.defineProperty(e,"__esModule",{value:!0})}));

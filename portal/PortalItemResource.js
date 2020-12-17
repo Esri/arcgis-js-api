@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/Accessor","../core/Error","../core/Logger","../core/maybe","../core/urlUtils","../core/accessorSupport/decorators","@dojo/framework/shim/Promise"],(function(e,t,r,o,a,i,p,n,s){"use strict";var l=i.getLogger("esri.portal.PortalItemResource");return function(t){function o(e){var r=t.call(this,e)||this;return r.portalItem=null,r}return r.__extends(o,t),o.prototype.normalizeCtorArgs=function(e){return e&&e.portalItem&&e.path?r.__assign(r.__assign({},e),{path:this.normalizePath(e.path,e.portalItem)}):e},Object.defineProperty(o.prototype,"path",{set:function(e){p.isSome(e)&&n.isAbsolute(e)?l.error("portalitemresource:invalid-path","A portal item resource path must be relative"):this._set("path",e)},enumerable:!1,configurable:!0}),o.prototype._castPath=function(e){return this.normalizePath(e,this.portalItem)},Object.defineProperty(o.prototype,"url",{get:function(){return this.portalItem&&this.path?this.portalItem.itemUrl+"/resources/"+this.path:null},enumerable:!1,configurable:!0}),Object.defineProperty(o.prototype,"itemRelativeUrl",{get:function(){return this.portalItem&&this.path?"./resources/"+this.path:null},enumerable:!1,configurable:!0}),o.prototype.fetch=function(e,t){void 0===e&&(e="json");var r=this.url;if(p.isNone(r))throw new a("portal-item-resource:fetch","Portal item resource does not refer to a valid item or path");return this.portalItem.portal._request(r,{responseType:e,signal:p.get(t,"signal")})},o.prototype.update=function(t,o){return r.__awaiter(this,void 0,void 0,(function(){return r.__generator(this,(function(r){switch(r.label){case 0:return[4,new Promise((function(t,r){e(["./support/resourceUtils"],t,r)}))];case 1:return[2,r.sent().addOrUpdateResource(this,"update",t,o)]}}))}))},o.prototype.hasPath=function(){return p.isSome(this.path)},o.prototype.normalizePath=function(e,t){return p.isNone(e)?e:(e=e.replace(/^\/+/,""),p.isSome(t)&&n.isAbsolute(e)&&(e=n.makeRelative(e,t.itemUrl)),e.replace(/^\/+/,"").replace(/^(\.\/)?resources\//,""))},r.__decorate([s.property()],o.prototype,"portalItem",void 0),r.__decorate([s.property({type:String,value:null})],o.prototype,"path",null),r.__decorate([s.cast("path")],o.prototype,"_castPath",null),r.__decorate([s.property({type:String,readOnly:!0,dependsOn:["portalItem","path"]})],o.prototype,"url",null),r.__decorate([s.property({type:String,readOnly:!0,dependsOn:["portalItem","path"]})],o.prototype,"itemRelativeUrl",null),o=r.__decorate([s.subclass("esri.portal.PortalItemResource")],o)}(o)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["require","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/maybe","../core/Logger","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/cast","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","./support/resourceExtension","../core/Accessor"],(function(t,e,r,o,s,a,p,i,l,n,c,u,h,m){"use strict";const d=a.getLogger("esri.portal.PortalItemResource");let y=function(r){function o(t){var e;return(e=r.call(this,t)||this).portalItem=null,e}e._inheritsLoose(o,r);var a=o.prototype;return a.normalizeCtorArgs=function(t){return t&&t.portalItem&&t.path?{...t,path:this.normalizePath(t.path,t.portalItem)}:t},a._castPath=function(t){return this.normalizePath(t,this.portalItem)},a.fetch=function(t="json",e){const r=this.url;if(s.isNone(r))throw new n("portal-item-resource:fetch","Portal item resource does not refer to a valid item or path");return this.portalItem.portal._request(r,{responseType:t,signal:s.get(e,"signal")})},a.update=async function(e,r){return(await new Promise((function(e,r){t(["./support/resourceUtils"],e,r)}))).addOrUpdateResource(this,"update",e,r)},a.hasPath=function(){return s.isSome(this.path)},a.normalizePath=function(t,e){return s.isNone(t)?t:(t=t.replace(/^\/+/,""),s.isSome(e)&&c.isAbsolute(t)&&(t=c.makeRelative(t,e.itemUrl)),t.replace(/^\/+/,"").replace(/^(\.\/)?resources\//,""))},e._createClass(o,[{key:"path",set:function(t){s.isSome(t)&&c.isAbsolute(t)?d.error("portalitemresource:invalid-path","A portal item resource path must be relative"):this._set("path",t)}},{key:"url",get:function(){return this.portalItem&&this.path?`${this.portalItem.itemUrl}/resources/${this.path}`:null}},{key:"itemRelativeUrl",get:function(){return this.portalItem&&this.path?`./resources/${this.path}`:null}}]),o}(m);return r.__decorate([p.property()],y.prototype,"portalItem",void 0),r.__decorate([p.property({type:String,value:null})],y.prototype,"path",null),r.__decorate([i.cast("path")],y.prototype,"_castPath",null),r.__decorate([p.property({type:String,readOnly:!0,dependsOn:["portalItem","path"]})],y.prototype,"url",null),r.__decorate([p.property({type:String,readOnly:!0,dependsOn:["portalItem","path"]})],y.prototype,"itemRelativeUrl",null),y=r.__decorate([l.subclass("esri.portal.PortalItemResource")],y),y}));

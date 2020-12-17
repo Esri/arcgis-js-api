@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/HandleOwner","../../../../../core/accessorSupport/decorators"],(function(e,t,r,i,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e){function t(t){var r=e.call(this,t)||this;return r.tiles=new Map,r}return r.__extends(t,e),t.prototype.destroy=function(){this.tiles.clear(),this.layer=this.layerView=this.tileInfoView=this.tiles=null},Object.defineProperty(t.prototype,"updating",{get:function(){return this.isUpdating()},enumerable:!1,configurable:!0}),t.prototype.acquireTile=function(e){var t=this,r=this.createTile(e);return r.once("isReady",(function(){return t.notifyChange("updating")})),this.tiles.set(e.id,r),r},t.prototype.forceAttributeTextureUpload=function(){},t.prototype.forEachTile=function(e){this.tiles.forEach(e)},t.prototype.releaseTile=function(e){this.tiles.delete(e.key.id),this.disposeTile(e)},t.prototype.isUpdating=function(){var e=!0;return this.tiles.forEach((function(t){e=e&&t.isReady})),!e},t.prototype.setHighlight=function(){},t.prototype.invalidateLabels=function(){},t.prototype.requestUpdate=function(){this.layerView.requestUpdate()},r.__decorate([o.property()],t.prototype,"layer",void 0),r.__decorate([o.property()],t.prototype,"layerView",void 0),r.__decorate([o.property()],t.prototype,"tileInfoView",void 0),r.__decorate([o.property()],t.prototype,"updating",null),t=r.__decorate([o.subclass("esri.views.2d.layers.features.tileRenderers.BaseTileRenderer")],t)}(i.HandleOwner);t.default=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../../../../core/has","../../../../../core/Logger","../../../../../core/accessorSupport/ensureType","../../../../../core/accessorSupport/decorators/property","../../../../../core/accessorSupport/decorators/subclass","../../../../../core/urlUtils","../../../../../core/uuid","../../../../../portal/support/resourceExtension","../../../../../core/HandleOwner"],(function(e,t,r,i,o,s,n,a,c,l,u){"use strict";let p=function(t){function r(e){var r;return(r=t.call(this,e)||this).tiles=new Map,r}e._inheritsLoose(r,t);var i=r.prototype;return i.destroy=function(){this.tiles.clear(),this.layer=this.layerView=this.tileInfoView=this.tiles=null},i.acquireTile=function(e){const t=this.createTile(e);return t.once("isReady",(()=>this.notifyChange("updating"))),this.tiles.set(e.id,t),t},i.forceAttributeTextureUpload=function(){},i.forEachTile=function(e){this.tiles.forEach(e)},i.releaseTile=function(e){this.tiles.delete(e.key.id),this.disposeTile(e)},i.isUpdating=function(){let e=!0;return this.tiles.forEach((t=>{e=e&&t.isReady})),!e},i.setHighlight=function(){},i.invalidateLabels=function(){},i.requestUpdate=function(){this.layerView.requestUpdate()},e._createClass(r,[{key:"updating",get:function(){return this.isUpdating()}}]),r}(u.HandleOwner);return t.__decorate([s.property()],p.prototype,"layer",void 0),t.__decorate([s.property()],p.prototype,"layerView",void 0),t.__decorate([s.property()],p.prototype,"tileInfoView",void 0),t.__decorate([s.property()],p.prototype,"updating",null),p=t.__decorate([n.subclass("esri.views.2d.layers.features.tileRenderers.BaseTileRenderer")],p),p}));

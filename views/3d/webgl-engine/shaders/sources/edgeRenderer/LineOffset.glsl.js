@@ -1,25 +1,73 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,a,l,r){"use strict";e.LineOffset=function(e,u){const s=e.vertex;e.include(r.UnpackAttributes,u);const c=e.fragment;switch(l.EdgeUtil.usesSketchLogic(u)&&(s.uniforms.add("uStrokesTextureScale","vec2"),s.uniforms.add("uStrokesLog2Resolution","float"),s.uniforms.add("uStrokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),c.uniforms.add("uStrokesTexture","sampler2D"),c.uniforms.add("uStrokesNormalizationScale","float"),s.code.add(t.glsl`
+      void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
+        vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
 
-define(["require","exports","tslib","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,n,a,l,u,r){"use strict";var c,s,i,o,d,f,k,p;Object.defineProperty(t,"__esModule",{value:!0}),t.LineOffset=void 0,t.LineOffset=function(e,t){var S=e.vertex;e.include(r.UnpackAttributes,t);var v=e.fragment;switch(u.EdgeUtil.usesSketchLogic(t)&&(S.uniforms.add("uStrokesTextureScale","vec2"),S.uniforms.add("uStrokesLog2Resolution","float"),S.uniforms.add("uStrokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),v.uniforms.add("uStrokesTexture","sampler2D"),v.uniforms.add("uStrokesNormalizationScale","float"),S.code.add(l.glsl(c||(c=n.__makeTemplateObject(["\n      void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {\n        vec2 sidenessNorm = unpackedAttributes.sidenessNorm;\n\n        float lineIndex = clamp(ceil(log2(lineLength)), 0.0, uStrokesLog2Resolution);\n\n        vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * uStrokeVariants + variantStroke + 0.5) * uStrokesTextureScale;\n        vStrokeUV.x += variantOffset;\n      }\n    "],["\n      void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {\n        vec2 sidenessNorm = unpackedAttributes.sidenessNorm;\n\n        float lineIndex = clamp(ceil(log2(lineLength)), 0.0, uStrokesLog2Resolution);\n\n        vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * uStrokeVariants + variantStroke + 0.5) * uStrokesTextureScale;\n        vStrokeUV.x += variantOffset;\n      }\n    "])))),e.fragment.include(a.RgbaFloatEncoding),v.code.add(l.glsl(s||(s=n.__makeTemplateObject(["\n      float calculateLineOffsetSketch() {\n        float offsetNorm = rgba2float(texture2D(uStrokesTexture, vStrokeUV));\n        return (offsetNorm - 0.5) * uStrokesNormalizationScale;\n      }\n\n      float calculateLinePressureSketch() {\n        return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0.0, 0.5)));\n      }\n    "],["\n      float calculateLineOffsetSketch() {\n        float offsetNorm = rgba2float(texture2D(uStrokesTexture, vStrokeUV));\n        return (offsetNorm - 0.5) * uStrokesNormalizationScale;\n      }\n\n      float calculateLinePressureSketch() {\n        return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0.0, 0.5)));\n      }\n    "]))))),t.mode){case 0:S.code.add(l.glsl(i||(i=n.__makeTemplateObject(["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes) {}\n      "],["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes) {}\n      "])))),v.code.add(l.glsl(o||(o=n.__makeTemplateObject(["\n        float calculateLineOffset() {\n          return 0.0;\n        }\n\n        float calculateLinePressure() {\n          return 1.0;\n        }\n      "],["\n        float calculateLineOffset() {\n          return 0.0;\n        }\n\n        float calculateLinePressure() {\n          return 1.0;\n        }\n      "]))));break;case 1:S.code.add(l.glsl(d||(d=n.__makeTemplateObject(["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)\n        {\n          calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);\n        }\n      "],["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)\n        {\n          calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);\n        }\n      "])))),v.code.add(l.glsl(f||(f=n.__makeTemplateObject(["\n        float calculateLineOffset() {\n          return calculateLineOffsetSketch();\n        }\n\n        float calculateLinePressure() {\n          return calculateLinePressureSketch();\n        }\n      "],["\n        float calculateLineOffset() {\n          return calculateLineOffsetSketch();\n        }\n\n        float calculateLinePressure() {\n          return calculateLinePressureSketch();\n        }\n      "]))));break;case 2:e.varyings.add("vType","float"),S.code.add(l.glsl(k||(k=n.__makeTemplateObject(["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)\n        {\n          vType = unpackedAttributes.type;\n\n          if (unpackedAttributes.type <= 0.0) {\n            calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);\n          }\n        }\n      "],["\n        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)\n        {\n          vType = unpackedAttributes.type;\n\n          if (unpackedAttributes.type <= 0.0) {\n            calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);\n          }\n        }\n      "])))),v.code.add(l.glsl(p||(p=n.__makeTemplateObject(["\n        float calculateLineOffset() {\n          if (vType <= 0.0) {\n            return calculateLineOffsetSketch();\n          }\n          else {\n            return 0.0;\n          }\n        }\n\n        float calculateLinePressure() {\n          if (vType <= 0.0) {\n            return calculateLinePressureSketch();\n          }\n          else {\n            return 1.0;\n          }\n        }\n      "],["\n        float calculateLineOffset() {\n          if (vType <= 0.0) {\n            return calculateLineOffsetSketch();\n          }\n          else {\n            return 0.0;\n          }\n        }\n\n        float calculateLinePressure() {\n          if (vType <= 0.0) {\n            return calculateLinePressureSketch();\n          }\n          else {\n            return 1.0;\n          }\n        }\n      "]))))}}}));
+        float lineIndex = clamp(ceil(log2(lineLength)), 0.0, uStrokesLog2Resolution);
+
+        vStrokeUV = vec2(exp2(lineIndex) * sidenessNorm.y, lineIndex * uStrokeVariants + variantStroke + 0.5) * uStrokesTextureScale;
+        vStrokeUV.x += variantOffset;
+      }
+    `),e.fragment.include(a.RgbaFloatEncoding),c.code.add(t.glsl`
+      float calculateLineOffsetSketch() {
+        float offsetNorm = rgba2float(texture2D(uStrokesTexture, vStrokeUV));
+        return (offsetNorm - 0.5) * uStrokesNormalizationScale;
+      }
+
+      float calculateLinePressureSketch() {
+        return rgba2float(texture2D(uStrokesTexture, vStrokeUV + vec2(0.0, 0.5)));
+      }
+    `)),u.mode){case 0:s.code.add(t.glsl`
+        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes) {}
+      `),c.code.add(t.glsl`
+        float calculateLineOffset() {
+          return 0.0;
+        }
+
+        float calculateLinePressure() {
+          return 1.0;
+        }
+      `);break;case 1:s.code.add(t.glsl`
+        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
+        {
+          calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
+        }
+      `),c.code.add(t.glsl`
+        float calculateLineOffset() {
+          return calculateLineOffsetSketch();
+        }
+
+        float calculateLinePressure() {
+          return calculateLinePressureSketch();
+        }
+      `);break;case 2:e.varyings.add("vType","float"),s.code.add(t.glsl`
+        void calculateStyleOutputs(UnpackedAttributes unpackedAttributes)
+        {
+          vType = unpackedAttributes.type;
+
+          if (unpackedAttributes.type <= 0.0) {
+            calculateStyleOutputsSketch(vLineLengthPixels, unpackedAttributes);
+          }
+        }
+      `),c.code.add(t.glsl`
+        float calculateLineOffset() {
+          if (vType <= 0.0) {
+            return calculateLineOffsetSketch();
+          }
+          else {
+            return 0.0;
+          }
+        }
+
+        float calculateLinePressure() {
+          if (vType <= 0.0) {
+            return calculateLinePressureSketch();
+          }
+          else {
+            return 1.0;
+          }
+        }
+      `)}},Object.defineProperty(e,"__esModule",{value:!0})}));

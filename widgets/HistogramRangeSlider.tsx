@@ -25,7 +25,7 @@
  */
 
 // esri
-import Color = require("esri/Color");
+import Color from "esri/Color";
 
 // esri.core
 import * as watchUtils from "esri/core/watchUtils";
@@ -38,15 +38,15 @@ import { Integer } from "esri/core/accessorSupport/ensureType";
 import { Bin } from "esri/renderers/smartMapping/statistics/interfaces";
 
 // esri.widgets
-import Histogram = require("esri/widgets/Histogram");
-import Slider = require("esri/widgets/Slider");
-import Widget = require("esri/widgets/Widget");
+import Histogram from "esri/widgets/Histogram";
+import Slider from "esri/widgets/Slider";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Histogram
 import { BarCreatedFunction, DataLineInfos, DataLineCreatedFunction } from "esri/widgets/Histogram/interfaces";
 
 // esri.widgets.HistogramRangeSlider
-import HistogramRangeSliderViewModel = require("esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel");
+import HistogramRangeSliderViewModel from "esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel";
 import { RangeType } from "esri/widgets/HistogramRangeSlider/interfaces";
 
 // esri.widgets.HistogramRangeSlider.t9n
@@ -933,6 +933,7 @@ class HistogramRangeSlider extends Widget {
 
     const { maxValue, minValue } = bin;
     const range = maxValue - minValue;
+    const inRange = values[0] > minValue && values[0] < maxValue;
 
     switch (rangeType) {
       // All bars are blue
@@ -943,11 +944,11 @@ class HistogramRangeSlider extends Widget {
       // Bars to the left of the handle are blue
       case "less-than":
       case "at-most": {
-        if (values[0] > minValue && values[0] < maxValue) {
+        if (inRange) {
           return this._getBlendedColor((values[0] - minValue) / range);
         }
 
-        if (minValue < values[0]) {
+        if (maxValue <= values[0]) {
           return this.includedBarColor;
         }
 
@@ -956,11 +957,11 @@ class HistogramRangeSlider extends Widget {
       // Bars to the right of the handle are blue
       case "greater-than":
       case "at-least": {
-        if (values[0] > minValue && values[0] < maxValue) {
+        if (inRange) {
           return this._getBlendedColor(1 - (values[0] - minValue) / range);
         }
 
-        if (minValue > values[0]) {
+        if (minValue >= values[0]) {
           return this.includedBarColor;
         }
 
@@ -1013,4 +1014,4 @@ class HistogramRangeSlider extends Widget {
   }
 }
 
-export = HistogramRangeSlider;
+export default HistogramRangeSlider;

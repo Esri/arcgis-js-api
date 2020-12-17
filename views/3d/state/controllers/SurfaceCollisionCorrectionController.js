@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/Handles","../../../../core/accessorSupport/decorators","../../camera/constraintUtils","../../camera/intersectionUtils","./CameraController"],(function(e,t,r,o,n,i,a,l){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.SurfaceCollisionCorrectionController=void 0;var s=function(e){function t(t){var r=e.call(this,t)||this;return r.handles=new o,r}return r.__extends(t,e),Object.defineProperty(t.prototype,"desiredCamera",{set:function(e){this._set("desiredCamera",e.clone())},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"canStop",{get:function(){return!0},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"constraintEnabled",{get:function(){return this.view.state.constraints.collision.enabled},enumerable:!1,configurable:!0}),t.prototype.onControllerStart=function(){var e=this;this.state=l.State.Running,this.handles.add(this.view.basemapTerrain.on("elevation-change",(function(t){return e.handleElevationChangeEvent(t)}))),this.applyCorrection()},t.prototype.onControllerEnd=function(){this.handles.removeAll()},t.prototype.stepController=function(){},t.prototype.handleElevationChangeEvent=function(e){a.eyeWithinExtent(this.view,this.desiredCamera,e.extent,e.spatialReference)&&this.applyCorrection()},t.prototype.applyCorrection=function(){var e=this;this.view.state.updateCamera((function(t){t.copyViewFrom(e.desiredCamera),i.applySurfaceCollisionConstraint(e.view,t,1)||e.constraintEnabled||(e.state=l.State.Stopped)}))},r.__decorate([n.property({constructOnly:!0})],t.prototype,"view",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"desiredCamera",null),t=r.__decorate([n.subclass("esri.views.3d.state.controllers.SurfaceCollisionCorrectionController")],t)}(l.CameraController);t.SurfaceCollisionCorrectionController=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/has","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/decorators/subclass","../../../../core/urlUtils","../../../../core/uuid","../../../../portal/support/resourceExtension","../../../../core/mathUtils","../../support/mathUtils","../../../../core/Handles","../../../../geometry/projectionEllipsoid","../../support/stack","../../../../chunks/lineSegment","../../../../chunks/ray","../../../../chunks/boundedPlane","../../../../chunks/clipRay","../../../../chunks/frustum","../../../../chunks/sphere","../../../../chunks/triangle","../../camera/intersectionUtils","../../camera/constraintUtils/surfaceCollision","./CameraController"],(function(e,t,r,o,n,s,i,a,l,c,u,p,h,C,d,f,y,m,v,S,k,g,_,b,E,w){"use strict";e.SurfaceCollisionCorrectionController=function(e){function r(t){var r;return(r=e.call(this,t)||this).handles=new C,r}t._inheritsLoose(r,e);var o=r.prototype;return o.onControllerStart=function(){this.state=w.State.Running,this.handles.add(this.view.basemapTerrain.on("elevation-change",(e=>this.handleElevationChangeEvent(e)))),this.applyCorrection()},o.onControllerEnd=function(){this.handles.removeAll()},o.stepController=function(){},o.handleElevationChangeEvent=function(e){b.eyeWithinExtent(this.view,this.desiredCamera,e.extent,e.spatialReference)&&this.applyCorrection()},o.applyCorrection=function(){this.view.state.updateCamera((e=>{e.copyViewFrom(this.desiredCamera),E.applySurfaceCollisionConstraint(this.view,e,1)||this.constraintEnabled||(this.state=w.State.Stopped)}))},t._createClass(r,[{key:"desiredCamera",set:function(e){this._set("desiredCamera",e.clone())}},{key:"canStop",get:function(){return!0}},{key:"constraintEnabled",get:function(){return this.view.state.constraints.collision.enabled}}]),r}(w.CameraController),r.__decorate([i.property({constructOnly:!0})],e.SurfaceCollisionCorrectionController.prototype,"view",void 0),r.__decorate([i.property({constructOnly:!0})],e.SurfaceCollisionCorrectionController.prototype,"desiredCamera",null),e.SurfaceCollisionCorrectionController=r.__decorate([a.subclass("esri.views.3d.state.controllers.SurfaceCollisionCorrectionController")],e.SurfaceCollisionCorrectionController),Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,20 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../attributes/VertexTextureCoordinates.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,r,t,u,o,n){"use strict";var a,l,s;Object.defineProperty(r,"__esModule",{value:!0}),r.ReadBaseColorTexture=void 0,r.ReadBaseColorTexture=function(e,r){var d=e.fragment;r.baseColorTexture?(e.include(u.VertexTextureCoordinates,r),d.uniforms.add("uBaseColorTexture","sampler2D"),d.uniforms.add("uBaseColorTextureSize","vec2"),2===r.attributeTextureCoordinates?(e.include(o.TextureAtlasLookup),d.code.add(n.glsl(a||(a=t.__makeTemplateObject(["\n        vec4 readBaseColorTexture() {\n          return textureAtlasLookup(\n            uBaseColorTexture,\n            uBaseColorTextureSize,\n            vuv0,\n            vuvRegion\n          );\n        }\n      "],["\n        vec4 readBaseColorTexture() {\n          return textureAtlasLookup(\n            uBaseColorTexture,\n            uBaseColorTextureSize,\n            vuv0,\n            vuvRegion\n          );\n        }\n      "]))))):d.code.add(n.glsl(l||(l=t.__makeTemplateObject(["\n        vec4 readBaseColorTexture() {\n          return texture2D(uBaseColorTexture, vuv0);\n        }\n      "],["\n        vec4 readBaseColorTexture() {\n          return texture2D(uBaseColorTexture, vuv0);\n        }\n      "]))))):d.code.add(n.glsl(s||(s=t.__makeTemplateObject(["\n      vec4 readBaseColorTexture() { return vec4(1.0); }\n    "],["\n      vec4 readBaseColorTexture() { return vec4(1.0); }\n    "]))))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../util/TextureAtlasLookup.glsl","../attributes/VertexTextureCoordinates.glsl"],(function(e,r,t,o){"use strict";e.ReadBaseColorTexture=function(e,u){const s=e.fragment;u.baseColorTexture?(e.include(o.VertexTextureCoordinates,u),s.uniforms.add("uBaseColorTexture","sampler2D"),s.uniforms.add("uBaseColorTextureSize","vec2"),2===u.attributeTextureCoordinates?(e.include(t.TextureAtlasLookup),s.code.add(r.glsl`
+        vec4 readBaseColorTexture() {
+          return textureAtlasLookup(
+            uBaseColorTexture,
+            uBaseColorTextureSize,
+            vuv0,
+            vuvRegion
+          );
+        }
+      `)):s.code.add(r.glsl`
+        vec4 readBaseColorTexture() {
+          return texture2D(uBaseColorTexture, vuv0);
+        }
+      `)):s.code.add(r.glsl`
+      vec4 readBaseColorTexture() { return vec4(1.0); }
+    `)},Object.defineProperty(e,"__esModule",{value:!0})}));

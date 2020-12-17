@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../geometry","../../Graphic","../../core/JSONSupport","../../core/maybe","../../core/accessorSupport/decorators","../../core/accessorSupport/decorators/reader","../../geometry/SpatialReference","./DirectionsFeatureSet","./FeatureSet","./NAMessage"],(function(e,r,t,o,i,n,p,a,s,l,c,u,y){"use strict";function d(e){return u.fromJSON(e).features.map((function(e){return e.geometry}))}return function(e){function r(r){var t=e.call(this,r)||this;return t.directions=null,t.facilities=null,t.incidents=null,t.messages=null,t.pointBarriers=null,t.polylineBarriers=null,t.polygonBarriers=null,t.routes=null,t}return t.__extends(r,e),r.prototype.readFacilities=function(e){return d(e)},r.prototype.readIncidents=function(e){return d(e)},r.prototype.readPointBarriers=function(e,r){return d(r.barriers)},r.prototype.readPolylineBarriers=function(e){return d(e)},r.prototype.readPolygonBarriers=function(e){return d(e)},r.prototype.readRoutes=function(e){return function(e){return e.features.map((function(r){var t=l.fromJSON(e.spatialReference),o=i.fromJSON(r);return p.isSome(o.geometry)&&(o.geometry.spatialReference=t),o}))}(e)},t.__decorate([a.property({type:[c]})],r.prototype,"directions",void 0),t.__decorate([a.property({type:[o.Point]})],r.prototype,"facilities",void 0),t.__decorate([s.reader("facilities")],r.prototype,"readFacilities",null),t.__decorate([a.property({type:[o.Point]})],r.prototype,"incidents",void 0),t.__decorate([s.reader("incidents")],r.prototype,"readIncidents",null),t.__decorate([a.property({type:[y]})],r.prototype,"messages",void 0),t.__decorate([a.property({type:[o.Point]})],r.prototype,"pointBarriers",void 0),t.__decorate([s.reader("pointBarriers",["barriers"])],r.prototype,"readPointBarriers",null),t.__decorate([a.property({type:[o.Polyline]})],r.prototype,"polylineBarriers",void 0),t.__decorate([s.reader("polylineBarriers")],r.prototype,"readPolylineBarriers",null),t.__decorate([a.property({type:[o.Polygon]})],r.prototype,"polygonBarriers",void 0),t.__decorate([s.reader("polygonBarriers")],r.prototype,"readPolygonBarriers",null),t.__decorate([a.property({type:[i]})],r.prototype,"routes",void 0),t.__decorate([s.reader("routes")],r.prototype,"readRoutes",null),r=t.__decorate([a.subclass("esri.tasks.support.ClosestFacilitySolveResult")],r)}(n.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/SpatialReference","../../geometry/Point","../../geometry/Polygon","../../geometry/Polyline","../../geometry","../../Graphic","./FeatureSet","./DirectionsFeatureSet","./NAMessage"],(function(e,r,o,t,i,n,p,a,s,c,l,u,y,d,_,f,g,m,B,S,v,P){"use strict";function b(e){return S.fromJSON(e).features.map((e=>e.geometry))}let h=function(r){function o(e){var o;return(o=r.call(this,e)||this).directions=null,o.facilities=null,o.incidents=null,o.messages=null,o.pointBarriers=null,o.polylineBarriers=null,o.polygonBarriers=null,o.routes=null,o}e._inheritsLoose(o,r);var i=o.prototype;return i.readFacilities=function(e){return b(e)},i.readIncidents=function(e){return b(e)},i.readPointBarriers=function(e,r){return b(r.barriers)},i.readPolylineBarriers=function(e){return b(e)},i.readPolygonBarriers=function(e){return b(e)},i.readRoutes=function(e){return function(e){return e.features.map((r=>{const o=d.fromJSON(e.spatialReference),i=B.fromJSON(r);return t.isSome(i.geometry)&&(i.geometry.spatialReference=o),i}))}(e)},o}(y.JSONSupport);return r.__decorate([p.property({type:[v]})],h.prototype,"directions",void 0),r.__decorate([p.property({type:[_]})],h.prototype,"facilities",void 0),r.__decorate([a.reader("facilities")],h.prototype,"readFacilities",null),r.__decorate([p.property({type:[_]})],h.prototype,"incidents",void 0),r.__decorate([a.reader("incidents")],h.prototype,"readIncidents",null),r.__decorate([p.property({type:[P]})],h.prototype,"messages",void 0),r.__decorate([p.property({type:[_]})],h.prototype,"pointBarriers",void 0),r.__decorate([a.reader("pointBarriers",["barriers"])],h.prototype,"readPointBarriers",null),r.__decorate([p.property({type:[g]})],h.prototype,"polylineBarriers",void 0),r.__decorate([a.reader("polylineBarriers")],h.prototype,"readPolylineBarriers",null),r.__decorate([p.property({type:[f]})],h.prototype,"polygonBarriers",void 0),r.__decorate([a.reader("polygonBarriers")],h.prototype,"readPolygonBarriers",null),r.__decorate([p.property({type:[B]})],h.prototype,"routes",void 0),r.__decorate([a.reader("routes")],h.prototype,"readRoutes",null),h=r.__decorate([s.subclass("esri.tasks.support.ClosestFacilitySolveResult")],h),h}));

@@ -1,25 +1,63 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../shaderModules/interfaces","./output/ReadLinearDepth.glsl","./util/CameraSpace.glsl"],(function(e,o,r,a){"use strict";e.Laserline=function(e,l){e.extensions.add("GL_OES_standard_derivatives"),e.include(r.ReadLinearDepth),e.include(a.CameraSpace),e.fragment.uniforms.add("glowColor","vec3"),e.fragment.uniforms.add("glowWidth","float"),e.fragment.uniforms.add("glowFalloff","float"),e.fragment.uniforms.add("innerColor","vec3"),e.fragment.uniforms.add("innerWidth","float"),e.fragment.uniforms.add("depthMap","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("frameColor","sampler2D"),l.contrastControlEnabled&&e.fragment.uniforms.add("globalAlphaContrastBoost","float"),e.fragment.code.add(o.glsl`
+  vec4 blendPremultiplied(vec4 source, vec4 dest) {
+    float oneMinusSourceAlpha = 1.0 - source.a;
 
-define(["require","exports","tslib","./output/ReadLinearDepth.glsl","./util/CameraSpace.glsl","../shaderModules/interfaces"],(function(e,n,o,l,r,a){"use strict";var t,d,i,c,p,u;Object.defineProperty(n,"__esModule",{value:!0}),n.Laserline=void 0,n.Laserline=function(e,n){e.extensions.add("GL_OES_standard_derivatives"),e.include(l.ReadLinearDepth),e.include(r.CameraSpace),e.fragment.uniforms.add("glowColor","vec3"),e.fragment.uniforms.add("glowWidth","float"),e.fragment.uniforms.add("glowFalloff","float"),e.fragment.uniforms.add("innerColor","vec3"),e.fragment.uniforms.add("innerWidth","float"),e.fragment.uniforms.add("depthMap","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("frameColor","sampler2D"),n.contrastControlEnabled&&e.fragment.uniforms.add("globalAlphaContrastBoost","float"),e.fragment.code.add(a.glsl(t||(t=o.__makeTemplateObject(["\n  vec4 blendPremultiplied(vec4 source, vec4 dest) {\n    float oneMinusSourceAlpha = 1.0 - source.a;\n\n    return vec4(\n      source.rgb + dest.rgb * oneMinusSourceAlpha,\n      source.a + dest.a * oneMinusSourceAlpha\n    );\n  }\n  "],["\n  vec4 blendPremultiplied(vec4 source, vec4 dest) {\n    float oneMinusSourceAlpha = 1.0 - source.a;\n\n    return vec4(\n      source.rgb + dest.rgb * oneMinusSourceAlpha,\n      source.a + dest.a * oneMinusSourceAlpha\n    );\n  }\n  "])))),e.fragment.code.add(a.glsl(d||(d=o.__makeTemplateObject(["\n  vec4 premultipliedColor(vec3 rgb, float alpha) {\n    return vec4(rgb * alpha, alpha);\n  }\n  "],["\n  vec4 premultipliedColor(vec3 rgb, float alpha) {\n    return vec4(rgb * alpha, alpha);\n  }\n  "])))),e.fragment.code.add(a.glsl(i||(i=o.__makeTemplateObject(["\n  vec4 laserlineProfile(float dist) {\n    if (dist > glowWidth) {\n      return vec4(0.0);\n    }\n\n    float innerAlpha = (1.0 - smoothstep(0.0, innerWidth, dist));\n    float glowAlpha = pow(max(0.0, 1.0 - dist / glowWidth), glowFalloff);\n\n    return blendPremultiplied(\n      premultipliedColor(innerColor, innerAlpha),\n      premultipliedColor(glowColor, glowAlpha)\n    );\n  }\n  "],["\n  vec4 laserlineProfile(float dist) {\n    if (dist > glowWidth) {\n      return vec4(0.0);\n    }\n\n    float innerAlpha = (1.0 - smoothstep(0.0, innerWidth, dist));\n    float glowAlpha = pow(max(0.0, 1.0 - dist / glowWidth), glowFalloff);\n\n    return blendPremultiplied(\n      premultipliedColor(innerColor, innerAlpha),\n      premultipliedColor(glowColor, glowAlpha)\n    );\n  }\n  "])))),e.fragment.code.add(a.glsl(c||(c=o.__makeTemplateObject(["\n  bool laserlineReconstructFromDepth(out vec3 pos, out vec3 normal, out float depthDiscontinuityAlpha) {\n    float depth = linearDepthFromTexture(depthMap, uv, nearFar);\n\n    if (-depth == nearFar[0]) {\n      return false;\n    }\n\n    pos = reconstructPosition(gl_FragCoord.xy, depth);\n    normal = normalize(cross(dFdx(pos), dFdy(pos)));\n\n    float ddepth = fwidth(depth);\n    depthDiscontinuityAlpha = 1.0 - smoothstep(0.0, 0.01, -ddepth / depth);\n\n    return true;\n  }\n  "],["\n  bool laserlineReconstructFromDepth(out vec3 pos, out vec3 normal, out float depthDiscontinuityAlpha) {\n    float depth = linearDepthFromTexture(depthMap, uv, nearFar);\n\n    if (-depth == nearFar[0]) {\n      return false;\n    }\n\n    pos = reconstructPosition(gl_FragCoord.xy, depth);\n    normal = normalize(cross(dFdx(pos), dFdy(pos)));\n\n    float ddepth = fwidth(depth);\n    depthDiscontinuityAlpha = 1.0 - smoothstep(0.0, 0.01, -ddepth / depth);\n\n    return true;\n  }\n  "])))),n.contrastControlEnabled?e.fragment.code.add(a.glsl(p||(p=o.__makeTemplateObject(["\n    float rgbToLuminance(vec3 color) {\n      return dot(vec3(0.2126, 0.7152, 0.0722), color);\n    }\n\n    vec4 laserlineOutput(vec4 color) {\n      float backgroundLuminance = rgbToLuminance(texture2D(frameColor, uv).rgb);\n      float alpha = clamp(globalAlpha * max(backgroundLuminance * globalAlphaContrastBoost, 1.0), 0.0, 1.0);\n\n      return color * alpha;\n    }\n    "],["\n    float rgbToLuminance(vec3 color) {\n      return dot(vec3(0.2126, 0.7152, 0.0722), color);\n    }\n\n    vec4 laserlineOutput(vec4 color) {\n      float backgroundLuminance = rgbToLuminance(texture2D(frameColor, uv).rgb);\n      float alpha = clamp(globalAlpha * max(backgroundLuminance * globalAlphaContrastBoost, 1.0), 0.0, 1.0);\n\n      return color * alpha;\n    }\n    "])))):e.fragment.code.add(a.glsl(u||(u=o.__makeTemplateObject(["\n    vec4 laserlineOutput(vec4 color) {\n      return color * globalAlpha;\n    }\n    "],["\n    vec4 laserlineOutput(vec4 color) {\n      return color * globalAlpha;\n    }\n    "]))))}}));
+    return vec4(
+      source.rgb + dest.rgb * oneMinusSourceAlpha,
+      source.a + dest.a * oneMinusSourceAlpha
+    );
+  }
+  `),e.fragment.code.add(o.glsl`
+  vec4 premultipliedColor(vec3 rgb, float alpha) {
+    return vec4(rgb * alpha, alpha);
+  }
+  `),e.fragment.code.add(o.glsl`
+  vec4 laserlineProfile(float dist) {
+    if (dist > glowWidth) {
+      return vec4(0.0);
+    }
+
+    float innerAlpha = (1.0 - smoothstep(0.0, innerWidth, dist));
+    float glowAlpha = pow(max(0.0, 1.0 - dist / glowWidth), glowFalloff);
+
+    return blendPremultiplied(
+      premultipliedColor(innerColor, innerAlpha),
+      premultipliedColor(glowColor, glowAlpha)
+    );
+  }
+  `),e.fragment.code.add(o.glsl`
+  bool laserlineReconstructFromDepth(out vec3 pos, out vec3 normal, out float depthDiscontinuityAlpha) {
+    float depth = linearDepthFromTexture(depthMap, uv, nearFar);
+
+    if (-depth == nearFar[0]) {
+      return false;
+    }
+
+    pos = reconstructPosition(gl_FragCoord.xy, depth);
+    normal = normalize(cross(dFdx(pos), dFdy(pos)));
+
+    float ddepth = fwidth(depth);
+    depthDiscontinuityAlpha = 1.0 - smoothstep(0.0, 0.01, -ddepth / depth);
+
+    return true;
+  }
+  `),l.contrastControlEnabled?e.fragment.code.add(o.glsl`
+    float rgbToLuminance(vec3 color) {
+      return dot(vec3(0.2126, 0.7152, 0.0722), color);
+    }
+
+    vec4 laserlineOutput(vec4 color) {
+      float backgroundLuminance = rgbToLuminance(texture2D(frameColor, uv).rgb);
+      float alpha = clamp(globalAlpha * max(backgroundLuminance * globalAlphaContrastBoost, 1.0), 0.0, 1.0);
+
+      return color * alpha;
+    }
+    `):e.fragment.code.add(o.glsl`
+    vec4 laserlineOutput(vec4 color) {
+      return color * globalAlpha;
+    }
+    `)},Object.defineProperty(e,"__esModule",{value:!0})}));

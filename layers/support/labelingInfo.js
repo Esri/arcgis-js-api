@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./LabelClass"],(function(e,r,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.reader=void 0;var i=/\[([^\[\]]+)\]/gi;r.reader=function(e,r,a){var t=this;return e?e.map((function(e){var l=new n;if(l.read(e,a),l.labelExpression){var o=r.fields||r.layerDefinition&&r.layerDefinition.fields||t.fields;l.labelExpression=l.labelExpression.replace(i,(function(e,r){return"["+function(e,r){if(!r)return e;for(var n=e.toLowerCase(),i=0;i<r.length;i++){var a=r[i].name;if(a.toLowerCase()===n)return a}return e}(r,o)+"]"}))}return l})):null}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./LabelClass"],(function(e,n){"use strict";const r=/\[([^\[\]]+)\]/gi;e.reader=function(e,t,i){return e?e.map((e=>{const s=new n;if(s.read(e,i),s.labelExpression){const e=t.fields||t.layerDefinition&&t.layerDefinition.fields||this.fields;s.labelExpression=s.labelExpression.replace(r,((n,r)=>`[${function(e,n){if(!n)return e;const r=e.toLowerCase();for(let e=0;e<n.length;e++){const t=n[e].name;if(t.toLowerCase()===r)return t}return e}(r,e)}]`))}return s})):null},Object.defineProperty(e,"__esModule",{value:!0})}));

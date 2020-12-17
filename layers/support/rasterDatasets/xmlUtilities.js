@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(e,n){"use strict";function t(e,n){if(!e||!n)return[];var t,l=n;if(n.indexOf("/")>-1?(l=n.slice(0,n.indexOf("/")),n=n.slice(n.indexOf("/")+1)):n="",!(t=n?r(e,l).getElementsByTagNameNS("*",n):e.getElementsByTagNameNS("*",l))||0===t.length)return[];for(var u=[],i=0;i<t.length;i++)u.push(t[i]||t.item[i]);return u}function r(e,n){if(!e||!n)return null;var l=n;n.indexOf("/")>-1?(l=n.slice(0,n.indexOf("/")),n=n.slice(n.indexOf("/")+1)):n="";var u=t(e,l);return u.length>0?n?r(u[0],n):u[0]:null}function l(e,n){void 0===n&&(n=null);var t,l=n?r(e,n):e;return l&&(t=l.textContent||l.nodeValue)?t.trim():null}function u(e,n){for(var r,l=t(e,n),u=[],i=0;i<l.length;i++)(r=l[i].textContent||l[i].nodeValue)&&""!==(r=r.trim())&&u.push(r);return u}Object.defineProperty(n,"__esModule",{value:!0}),n.getNodeNameIgnoreNS=n.isSameTagIgnoreNS=n.getElementNumericValues=n.getSpaceDelimitedNumericValues=n.getElementValues=n.getElementValue=n.getElement=n.getElements=void 0,n.getElements=t,n.getElement=r,n.getElementValue=l,n.getElementValues=u,n.getSpaceDelimitedNumericValues=function(e,n){return void 0===n&&(n=null),l(e,n).split(" ").map((function(e){return Number(e)}))},n.getElementNumericValues=function(e,n){return u(e,n).map((function(e){return Number(e)}))},n.isSameTagIgnoreNS=function(e,n){var t,r=null===(t=null==e?void 0:e.nodeName)||void 0===t?void 0:t.toLowerCase(),l=n.toLowerCase();return r.slice(r.lastIndexOf(":")+1)===l},n.getNodeNameIgnoreNS=function(e){return e.nodeName.slice(e.nodeName.lastIndexOf(":")+1)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function n(e,t){if(!e||!t)return[];let l=t;t.indexOf("/")>-1?(l=t.slice(0,t.indexOf("/")),t=t.slice(t.indexOf("/")+1)):t="";const u=[];if(t){const r=n(e,l);for(let e=0;e<r.length;e++){n(r[e],t).forEach((e=>u.push(e)))}return u}const r=e.getElementsByTagNameNS("*",l);if(!r||0===r.length)return[];for(let e=0;e<r.length;e++)u.push(r[e]||r.item[e]);return u}function t(e,l){if(!e||!l)return null;let u=l;l.indexOf("/")>-1?(u=l.slice(0,l.indexOf("/")),l=l.slice(l.indexOf("/")+1)):l="";const r=n(e,u);return r.length>0?l?t(r[0],l):r[0]:null}function l(e,n=null){const l=n?t(e,n):e;let u;return l?(u=l.textContent||l.nodeValue,u?u.trim():null):null}function u(e,t){const l=n(e,t),u=[];let r;for(let e=0;e<l.length;e++)r=l[e].textContent||l[e].nodeValue,r&&(r=r.trim(),""!==r&&u.push(r));return u}e.getElement=t,e.getElementNumericValue=function(e,n){const t=l(e,n);return Number(t)},e.getElementNumericValues=function(e,n){return u(e,n).map((e=>Number(e)))},e.getElementValue=l,e.getElementValues=u,e.getElements=n,e.getNodeNameIgnoreNS=function(e){return e.nodeName.slice(e.nodeName.lastIndexOf(":")+1)},e.getSpaceDelimitedNumericValues=function(e,n=null){return l(e,n).split(" ").map((e=>Number(e)))},e.isSameTagIgnoreNS=function(e,n){var t;const l=null==e||null==(t=e.nodeName)?void 0:t.toLowerCase(),u=n.toLowerCase();return l.slice(l.lastIndexOf(":")+1)===u},Object.defineProperty(e,"__esModule",{value:!0})}));

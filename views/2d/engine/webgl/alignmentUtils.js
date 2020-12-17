@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(e,t){"use strict";var n,r;Object.defineProperty(t,"__esModule",{value:!0}),t.getJustification=t.getYDirection=t.getXDirection=t.getAlignmentFromPlacement=t.getYAnchorDirection=t.getXAnchorDirection=t.VAlign=t.HAlign=void 0,function(e){e[e.Left=-1]="Left",e[e.Center=0]="Center",e[e.Right=1]="Right"}(n=t.HAlign||(t.HAlign={})),function(e){e[e.Top=1]="Top",e[e.Center=0]="Center",e[e.Bottom=-1]="Bottom",e[e.Baseline=2]="Baseline"}(r=t.VAlign||(t.VAlign={})),t.getXAnchorDirection=function(e){switch(e){case"left":return n.Left;case"right":return n.Right;case"center":case"justify":return n.Center}},t.getYAnchorDirection=function(e){switch(e){case"top":return r.Top;case"middle":return r.Center;case"baseline":return r.Baseline;case"bottom":return r.Bottom}},t.getAlignmentFromPlacement=function(e){switch(e){case"above-left":return[n.Right,r.Bottom];case"above-center":case"above-along":return[n.Center,r.Bottom];case"above-right":return[n.Left,r.Bottom];case"center-left":return[n.Right,r.Center];case"center-center":case"center-along":return[n.Center,r.Center];case"center-right":return[n.Left,r.Center];case"below-left":return[n.Right,r.Top];case"below-center":case"below-along":return[n.Center,r.Top];case"below-right":return[n.Left,r.Top];case"always-horizontal":return[n.Center,r.Baseline];default:return console.debug("Found invalid placement type "+e),[n.Center,r.Center]}},t.getXDirection=function(e){switch(e){case n.Right:return-1;case n.Center:return 0;case n.Left:return 1;default:return console.debug("Found invalid horizontal alignment "+e),0}},t.getYDirection=function(e){switch(e){case r.Top:return 1;case r.Center:return 0;case r.Bottom:case r.Baseline:return-1;default:return console.debug("Found invalid vertical alignment "+e),0}},t.getJustification=function(e){switch(e){case"left":return n.Left;case"right":return n.Right;case"center":case"justify":return n.Center}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";var n,t;(n=e.HAlign||(e.HAlign={}))[n.Left=-1]="Left",n[n.Center=0]="Center",n[n.Right=1]="Right",(t=e.VAlign||(e.VAlign={}))[t.Top=1]="Top",t[t.Center=0]="Center",t[t.Bottom=-1]="Bottom",t[t.Baseline=2]="Baseline",e.getAlignmentFromPlacement=function(n){switch(n){case"above-left":return[e.HAlign.Right,e.VAlign.Bottom];case"above-center":case"above-along":return[e.HAlign.Center,e.VAlign.Bottom];case"above-right":return[e.HAlign.Left,e.VAlign.Bottom];case"center-left":return[e.HAlign.Right,e.VAlign.Center];case"center-center":case"center-along":return[e.HAlign.Center,e.VAlign.Center];case"center-right":return[e.HAlign.Left,e.VAlign.Center];case"below-left":return[e.HAlign.Right,e.VAlign.Top];case"below-center":case"below-along":return[e.HAlign.Center,e.VAlign.Top];case"below-right":return[e.HAlign.Left,e.VAlign.Top];case"always-horizontal":return[e.HAlign.Center,e.VAlign.Baseline];default:return console.debug(`Found invalid placement type ${n}`),[e.HAlign.Center,e.VAlign.Center]}},e.getJustification=function(n){switch(n){case"left":return e.HAlign.Left;case"right":return e.HAlign.Right;case"center":case"justify":return e.HAlign.Center}},e.getXAnchorDirection=function(n){switch(n){case"left":return e.HAlign.Left;case"right":return e.HAlign.Right;case"center":case"justify":return e.HAlign.Center}},e.getXDirection=function(n){switch(n){case e.HAlign.Right:return-1;case e.HAlign.Center:return 0;case e.HAlign.Left:return 1;default:return console.debug(`Found invalid horizontal alignment ${n}`),0}},e.getYAnchorDirection=function(n){switch(n){case"top":return e.VAlign.Top;case"middle":return e.VAlign.Center;case"baseline":return e.VAlign.Baseline;case"bottom":return e.VAlign.Bottom}},e.getYDirection=function(n){switch(n){case e.VAlign.Top:return 1;case e.VAlign.Center:return 0;case e.VAlign.Bottom:case e.VAlign.Baseline:return-1;default:return console.debug(`Found invalid vertical alignment ${n}`),0}},Object.defineProperty(e,"__esModule",{value:!0})}));

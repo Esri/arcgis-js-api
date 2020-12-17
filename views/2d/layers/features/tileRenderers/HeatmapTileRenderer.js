@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/promiseUtils","../../../../../core/accessorSupport/decorators","../../../../../renderers/support/heatmapUtils","../../../engine/BitmapTileContainer","./BaseTileRenderer","./support/HeatmapSource"],(function(e,t,i,n,r,o,s,a,l){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var p=function(e){function t(t){var i=e.call(this,t)||this;return i._intensityInfo={minPixelIntensity:0,maxPixelIntensity:0},i.featuresView={attributeView:{initialize:function(){},requestUpdate:function(){}},requestRender:function(){}},i._container=new s.BitmapTileContainer(t.tileInfoView),i}return i.__extends(t,e),t.prototype.createTile=function(e){var t=this._container.createTile(e);return this.tileInfoView.getTileCoords(t.bitmap,e),t.bitmap.resolution=this.tileInfoView.getTileResolution(e),t},t.prototype.onConfigUpdate=function(){var e=this,t=this.layer.renderer;if("heatmap"===t.type){var i=t.minPixelIntensity,n=t.maxPixelIntensity;this._intensityInfo.minPixelIntensity=i,this._intensityInfo.maxPixelIntensity=n,this._gradient=o.generateGradient(t.toJSON()),this.tiles.forEach((function(t){var r=t.bitmap.source;r&&(r.minPixelIntensity=i,r.maxPixelIntensity=n,r.gradient=e._gradient,t.bitmap.invalidateTexture())}))}},t.prototype.hitTest=function(){return n.resolve([])},t.prototype.install=function(e){e.addChild(this._container)},t.prototype.uninstall=function(e){this._container.removeAllChildren(),e.removeChild(this._container)},t.prototype.disposeTile=function(e){this._container.removeChild(e),e.destroy()},t.prototype.supportsRenderer=function(e){return e&&"heatmap"===e.type},t.prototype.onTileData=function(e){var t=this.tiles.get(e.tileKey);if(t){var i=e.intensityInfo,n=this._intensityInfo,r=n.minPixelIntensity,o=n.maxPixelIntensity,s=t.bitmap.source||new l.HeatmapSource;s.intensities=i&&i.matrix||null,s.minPixelIntensity=r,s.maxPixelIntensity=o,s.gradient=this._gradient,t.bitmap.source=s,this._container.addChild(t),this.requestUpdate()}},t.prototype.onTileError=function(e){console.error(e)},t.prototype.lockGPUUploads=function(){},t.prototype.unlockGPUUploads=function(){},t=i.__decorate([r.subclass("esri.views.2d.layers.features.tileRenderers.HeatmapTileRenderer")],t)}(a.default);t.default=p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../../../../core/has","../../../../../core/Logger","../../../../../core/accessorSupport/ensureType","../../../../../core/accessorSupport/decorators/property","../../../../../core/accessorSupport/decorators/subclass","../../../../../core/urlUtils","../../../../../core/uuid","../../../../../portal/support/resourceExtension","../../../../../core/promiseUtils","../../../../../renderers/support/heatmapUtils","../../../engine/BitmapTileContainer","./BaseTileRenderer","./support/HeatmapSource"],(function(e,t,i,n,r,s,o,a,l,c,u,p,d,h,m){"use strict";let f=function(t){function i(e){var i;return(i=t.call(this,e)||this)._intensityInfo={minPixelIntensity:0,maxPixelIntensity:0},i.featuresView={attributeView:{initialize:()=>{},requestUpdate:()=>{}},requestRender:()=>{}},i._container=new d.BitmapTileContainer(e.tileInfoView),i}e._inheritsLoose(i,t);var n=i.prototype;return n.createTile=function(e){const t=this._container.createTile(e);return this.tileInfoView.getTileCoords(t.bitmap,e),t.bitmap.resolution=this.tileInfoView.getTileResolution(e),t},n.onConfigUpdate=function(){const e=this.layer.renderer;if("heatmap"===e.type){const{minPixelIntensity:t,maxPixelIntensity:i}=e;this._intensityInfo.minPixelIntensity=t,this._intensityInfo.maxPixelIntensity=i,this._gradient=p.generateGradient(e.toJSON()),this.tiles.forEach((e=>{const n=e.bitmap.source;n&&(n.minPixelIntensity=t,n.maxPixelIntensity=i,n.gradient=this._gradient,e.bitmap.invalidateTexture())}))}},n.hitTest=function(){return u.resolve([])},n.install=function(e){e.addChild(this._container)},n.uninstall=function(e){this._container.removeAllChildren(),e.removeChild(this._container)},n.disposeTile=function(e){this._container.removeChild(e),e.destroy()},n.supportsRenderer=function(e){return e&&"heatmap"===e.type},n.onTileData=function(e){const t=this.tiles.get(e.tileKey);if(!t)return;const i=e.intensityInfo,{minPixelIntensity:n,maxPixelIntensity:r}=this._intensityInfo,s=t.bitmap.source||new m.HeatmapSource;s.intensities=i&&i.matrix||null,s.minPixelIntensity=n,s.maxPixelIntensity=r,s.gradient=this._gradient,t.bitmap.source=s,this._container.addChild(t),this.requestUpdate()},n.onTileError=function(e){console.error(e)},n.lockGPUUploads=function(){},n.unlockGPUUploads=function(){},i}(h);return f=t.__decorate([o.subclass("esri.views.2d.layers.features.tileRenderers.HeatmapTileRenderer")],f),f}));

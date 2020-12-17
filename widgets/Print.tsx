@@ -24,6 +24,8 @@
  * * There is no current support for printing {@link module:esri/views/layers/FeatureLayerView#highlight highlighted features}. Instead, see {@link module:esri/views/MapView#takeScreenshot MapView.takeScreenshot()}.
  * * There is no current support for printing {@link module:esri/layers/ImageryLayer ImageryLayers} when a {@link module:esri/layers/ImageryLayer#pixelFilter pixelFilter}
  * is defined.
+ * * There is no current support for printing renderers generated from {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
+ * with an above-and-below theme.
  * * There is no current support for printing legend items for layers that are sent as a client-side image in the printout.
  *
  * Versioned support
@@ -74,36 +76,44 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
-import EsriError = require("esri/core/Error");
-import { eventKey } from "esri/core/events";
-import Logger = require("esri/core/Logger");
+import Collection from "esri/core/Collection";
+import EsriError from "esri/core/Error";
+import { eventKey, on } from "esri/core/events";
+import Logger from "esri/core/Logger";
 import * as urlUtils from "esri/core/urlUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.portal
+import Portal from "esri/portal/Portal";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
+
 // esri.tasks.support
-import PrintTemplate = require("esri/tasks/support/PrintTemplate");
+import PrintTemplate from "esri/tasks/support/PrintTemplate";
 
 // esri.views
-import MapView = require("esri/views/MapView");
+import MapView from "esri/views/MapView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Print
-import FileLink = require("esri/widgets/Print/FileLink");
-import PrintViewModel = require("esri/widgets/Print/PrintViewModel");
-import TemplateOptions = require("esri/widgets/Print/TemplateOptions");
+import CustomTemplate from "esri/widgets/Print/CustomTemplate";
+import FileLink from "esri/widgets/Print/FileLink";
+import PrintViewModel from "esri/widgets/Print/PrintViewModel";
+import TemplateOptions from "esri/widgets/Print/TemplateOptions";
 
 // esri.widgets.Print.t9n
 import type PrintMessages from "esri/widgets/Print/t9n/Print";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import Popover from "esri/widgets/support/Popover";
+import { keepMenuItemWithinView, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -115,13 +125,16 @@ interface TemplatesInfo {
   layout: TemplateInfo;
 }
 
-type TabId = "layoutTab" | "mapOnlyTab";
-
 const FileLinkCollection = Collection.ofType<FileLink>(FileLink);
+
+const enum TabId {
+  layout = "layoutTab",
+  mapOnly = "mapOnlyTab"
+}
 
 const CSS = {
   // base
-  base: "esri-print esri-widget esri-widget--panel",
+  base: "esri-print",
   // print-widget
   headerTitle: "esri-print__header-title",
   inputText: "esri-print__input-text",
@@ -130,6 +143,9 @@ const CSS = {
   layoutSection: "esri-print__layout-section",
   mapOnlySection: "esri-print__map-only-section",
   scaleInput: "esri-print__scale-input",
+  templateList: "esri-print__template-list",
+  templateListScroller: "esri-print__template-list-scroller",
+  templateListFooter: "esri-print__template-list-footer",
   // startup
   loader: "esri-print__loader",
   // buttons
@@ -143,6 +159,7 @@ const CSS = {
   swapButton: "esri-print__swap-button",
   linkButton: "esri-print__link-button",
   printButton: "esri-print__export-button",
+  templateButton: "esri-print__template-button",
   // containers
   formSectionContainer: "esri-print__form-section-container",
   advancedOptionsSection: "esri-print__advanced-options-section",
@@ -163,8 +180,12 @@ const CSS = {
   sizeContainer: "esri-print__size-container",
   widthContainer: "esri-print__width-container",
   // common
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
   widgetButton: "esri-widget--button",
   button: "esri-button",
+  buttonSecondary: "esri-button--secondary",
+  buttonTertiary: "esri-button--tertiary",
   select: "esri-select",
   header: "esri-widget__heading",
   input: "esri-input",
@@ -175,6 +196,12 @@ const CSS = {
   exportedFileError: "esri-print__exported-file--error",
   hide: "esri-hidden",
   rotate: "esri-rotating",
+  anchor: "esri-widget__anchor",
+  menu: "esri-menu",
+  menuList: "esri-menu__list",
+  menuItem: "esri-menu__list-item",
+  menuItemFocus: "esri-menu__list-item--focus",
+  menuHeader: "esri-menu__header",
   // icons
   iconCheckMark: "esri-icon-check-mark",
   iconDownload: "esri-icon-download",
@@ -350,17 +377,6 @@ class Print extends Widget<PrintEvents> {
         if (!scaleEnabled || !scale) {
           this.templateOptions.scale = newValue;
         }
-      }),
-
-      watchUtils.whenOnce(this, "printServiceUrl", () => {
-        const maxWaitTime = 500;
-
-        const timeoutId = setTimeout(() => {
-          this._awaitingServerResponse = true;
-          this.scheduleRender();
-        }, maxWaitTime);
-
-        this.viewModel.load().then(() => clearTimeout(timeoutId));
       })
     ]);
 
@@ -368,6 +384,15 @@ class Print extends Widget<PrintEvents> {
 
     this.templateOptions.width = width || 800;
     this.templateOptions.height = height || 1100;
+
+    const maxWaitTime = 500;
+
+    const timeoutId = setTimeout(() => {
+      this._awaitingServerResponse = true;
+      this.scheduleRender();
+    }, maxWaitTime);
+
+    this.viewModel.load().then(() => clearTimeout(timeoutId));
   }
 
   //--------------------------------------------------------------------------
@@ -386,11 +411,23 @@ class Print extends Widget<PrintEvents> {
 
   private _exportedFileNameMap: HashMap<number> = {};
 
+  private _focusedTemplateIndex = 0;
+
   private _layoutTabSelected = true;
 
   private _pendingExportScroll = false;
 
   private _rootNode: HTMLElement = null;
+
+  private _selectTemplateNode: HTMLButtonElement = null;
+
+  private _templateListPopover: Popover = new Popover({
+    owner: this,
+    placement: "top",
+    offset: [0, -100],
+    anchorElement: () => this._selectTemplateNode,
+    renderContentFunction: this.renderTemplateList
+  });
 
   //--------------------------------------------------------------------------
   //
@@ -540,6 +577,30 @@ class Print extends Widget<PrintEvents> {
   iconClass = CSS.widgetIcon;
 
   //----------------------------------
+  //  includeDefaultTemplates
+  //----------------------------------
+
+  /**
+   * Indicates whether or not to include {@link module:esri/widgets/Print/PrintViewModel#defaultTemplates defaultTemplates}.
+   *
+   * @name includeDefaultTemplates
+   * @instance
+   * @type {boolean}
+   * @default true
+   * @since 4.18
+   *
+   * @example
+   * const printWidget = new Print({
+   *    view: view,
+   *    includeDefaultTemplates: false,
+   *    portal: {url: "https://.example.arcgis.com/sharing/"},
+   *    container: "printDiv"
+   * });
+   */
+  @aliasOf("viewModel.includeDefaultTemplates")
+  includeDefaultTemplates: boolean = null;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -574,6 +635,66 @@ class Print extends Widget<PrintEvents> {
   messages: PrintMessages;
 
   //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages;
+
+  //----------------------------------
+  //  portal
+  //----------------------------------
+
+  /**
+   * It is possible to search a specified portal instance's [locator services](https://enterprise.arcgis.com/en/portal/latest/administer/windows/configure-portal-to-geocode-addresses.htm).
+   * Use this property to set this [ArcGIS Portal](https://enterprise.arcgis.com/en/portal/) instance to search.
+   * This is especially helpful when working with a {@link module:esri/widgets/Print/CustomTemplate custom print template}.
+   *
+   * If this property is set, it is not necessary to set the [printServiceUrl](#printServiceUrl) property.
+   *
+   * @name portal
+   * @instance
+   * @type {module:esri/portal/Portal}
+   * @since 4.18
+   * @see module:esri/widgets/Print/CustomTemplate
+   *
+   * @example
+   * const printWidget = new Print({
+   *    view: view,
+   *    portal: {url: "https://example.arcgis.com/sharing/"},
+   *    container: "printDiv"
+   * });
+   */
+  @aliasOf("viewModel.portal")
+  portal: Portal = null;
+
+  //----------------------------------
+  //  printServiceUrl
+  //----------------------------------
+
+  /**
+   * The URL of the REST endpoint of the Export Web Map Task.
+   * If the [portal](#portal) property is set, it is not necessary to set this property.
+   *
+   * @name printServiceUrl
+   * @instance
+   * @type {string}
+   */
+
+  @aliasOf("viewModel.printServiceUrl")
+  printServiceUrl: string = null;
+
+  //----------------------------------
   //  templateOptions
   //----------------------------------
 
@@ -600,21 +721,6 @@ class Print extends Widget<PrintEvents> {
     type: TemplateOptions
   })
   templateOptions: TemplateOptions = new TemplateOptions();
-
-  //----------------------------------
-  //  printServiceUrl
-  //----------------------------------
-
-  /**
-   * The URL of the REST endpoint of the Export Web Map Task.
-   *
-   * @name printServiceUrl
-   * @instance
-   * @type {string}
-   */
-
-  @aliasOf("viewModel.printServiceUrl")
-  printServiceUrl: string = null;
 
   //----------------------------------
   //  view
@@ -653,7 +759,7 @@ class Print extends Widget<PrintEvents> {
   @property({
     type: PrintViewModel
   })
-  @renderable(["viewModel.templatesInfo", "viewModel.state"])
+  @renderable(["viewModel.defaultTemplates", "viewModel.templatesInfo", "viewModel.state"])
   viewModel: PrintViewModel = new PrintViewModel();
 
   //--------------------------------------------------------------------------
@@ -775,7 +881,7 @@ class Print extends Widget<PrintEvents> {
 
     const exportDisabled = this.get<PrintViewModel["state"]>("viewModel.state") !== "ready";
     const titleOrFileNameSection = this.renderTitleOrFileNameSection();
-    const messages = this.messages;
+    const { includeDefaultTemplates, messages, viewModel } = this;
 
     const fileFormatMenuItems =
       this.get<string[]>("viewModel.templatesInfo.format.choiceList") || [];
@@ -1137,7 +1243,7 @@ class Print extends Widget<PrintEvents> {
             afterCreate={this._focusOnTabChange}
             afterUpdate={this._focusOnTabChange}
             id={`${this.id}__layoutTab`}
-            data-tab-id="layoutTab"
+            data-tab-id={TabId.layout}
             class={CSS.layoutTab}
             role="tab"
             tabIndex={0}
@@ -1149,7 +1255,7 @@ class Print extends Widget<PrintEvents> {
             afterCreate={this._focusOnTabChange}
             afterUpdate={this._focusOnTabChange}
             id={`${this.id}__mapOnlyTab`}
-            data-tab-id="mapOnlyTab"
+            data-tab-id={TabId.mapOnly}
             class={CSS.layoutTab}
             role="tab"
             tabIndex={0}
@@ -1172,6 +1278,9 @@ class Print extends Widget<PrintEvents> {
         >
           {messages.export}
         </button>
+        {includeDefaultTemplates && viewModel.defaultTemplates.length > 0
+          ? this.renderTemplateSectionTrigger()
+          : null}
         <div
           class={CSS.exportedFilesContainer}
           afterUpdate={this._scrollExportIntoView}
@@ -1190,13 +1299,9 @@ class Print extends Widget<PrintEvents> {
     );
 
     const printWidgetPanel = (
-      <div>
-        <div class={CSS.printWidgetContainer}>
-          <header class={CSS.headerTitle}>{messages.export}</header>
-          {this.error || !this.printServiceUrl || isSceneView || !this.view
-            ? errorPanel
-            : normalPanel}
-        </div>
+      <div class={CSS.printWidgetContainer}>
+        <header class={CSS.headerTitle}>{messages.export}</header>
+        {this.error || isSceneView || !this.view ? errorPanel : normalPanel}
       </div>
     );
 
@@ -1204,10 +1309,166 @@ class Print extends Widget<PrintEvents> {
     const panelContent = initializing ? this._renderLoader() : printWidgetPanel;
 
     return (
-      <div afterCreate={storeNode} bind={this} class={CSS.base} data-node-ref="_rootNode">
+      <div
+        afterCreate={this._handleRootAfterCreate}
+        bind={this}
+        class={this.classes(CSS.base, CSS.widget, CSS.panel)}
+      >
         {panelContent}
       </div>
     );
+  }
+
+  protected renderTemplateSectionTrigger(): VNode {
+    const { messages, _templateListPopover } = this;
+    const active = _templateListPopover.open;
+
+    return (
+      <button
+        afterCreate={(node: HTMLButtonElement) => (this._selectTemplateNode = node)}
+        aria-controls={active ? `${this.id}__template-selection` : ""}
+        aria-label={messages.selectTemplateDescription}
+        aria-pressed={active.toString()}
+        class={this.classes(CSS.button, CSS.buttonTertiary, CSS.templateButton)}
+        onclick={this.handleSelectTemplateClick}
+        title={messages.selectTemplateDescription}
+      >
+        {messages.selectTemplate}
+      </button>
+    );
+  }
+
+  protected renderTemplateList(): VNode {
+    const { messages, messagesCommon, viewModel } = this;
+    const { defaultTemplates } = viewModel;
+    const description = messages.selectTemplateDescription;
+    const id = `${this.id}__template-selection`;
+
+    return (
+      <div class={this.classes(CSS.templateList, CSS.widget, CSS.panel)} id={id}>
+        <h3 class={this.classes(CSS.menuHeader, CSS.header)}>{messages.selectTemplate}</h3>
+        <div class={CSS.templateListScroller}>
+          <ul
+            afterCreate={this.handleTemplateListCreation}
+            aria-activedescendant={`${this.id}__template-item--${this._focusedTemplateIndex}`}
+            aria-label={description}
+            class={CSS.menuList}
+            key="templates"
+            onblur={this.handleTemplateChildBlur}
+            onclick={this.handleTemplateListClick}
+            onkeydown={this.handleTemplateListKeyDown}
+            role="listbox"
+            tabIndex={0}
+            title={description}
+          >
+            {defaultTemplates.toArray().map((template, index) => {
+              const { description } = template;
+              const focused = index === this._focusedTemplateIndex;
+
+              return (
+                <li
+                  aria-label={description}
+                  class={this.classes(CSS.menuItem, {
+                    [CSS.menuItemFocus]: focused
+                  })}
+                  data-template={template}
+                  id={`${this.id}__template-item--${index}`}
+                  key={template.label}
+                  title={description}
+                >
+                  {template.label}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div class={CSS.templateListFooter}>
+          <button
+            type="button"
+            class={this.classes(CSS.button, CSS.buttonSecondary)}
+            onblur={this.handleTemplateChildBlur}
+            onclick={this.handleCloseTemplateSelection}
+          >
+            {messagesCommon.done}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  protected handleTemplateListCreation = (node: HTMLElement) => node.focus();
+
+  protected handleTemplateChildBlur = (event: FocusEvent) => {
+    const templateListChildFocused = (event.relatedTarget as HTMLElement)?.closest(
+      `.${CSS.templateList}`
+    );
+
+    if (!templateListChildFocused) {
+      this.handleCloseTemplateSelection();
+    }
+  };
+
+  protected handleCloseTemplateSelection = () => {
+    this._focusedTemplateIndex = 0;
+    this._templateListPopover.open = false;
+    this._selectTemplateNode.focus();
+  };
+
+  protected handleSelectTemplateClick = () => {
+    this._focusedTemplateIndex = 0;
+    this._templateListPopover.open = true;
+  };
+
+  protected handleTemplateListClick = (event: MouseEvent): void => {
+    const item = event.target as HTMLLIElement;
+    this.applyTemplate(item["data-template"] as CustomTemplate);
+  };
+
+  protected handleTemplateListKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter" || event.key === " ") {
+      this.applyTemplate(this.viewModel.defaultTemplates.getItemAt(this._focusedTemplateIndex));
+      event.preventDefault();
+      return;
+    }
+
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      const { defaultTemplates } = this.viewModel;
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      const nextIndex = (this._focusedTemplateIndex + direction) % defaultTemplates.length;
+      this._focusedTemplateIndex = nextIndex < 0 ? defaultTemplates.length - 1 : nextIndex;
+      const list = event.currentTarget as HTMLUListElement;
+
+      keepMenuItemWithinView(
+        list.querySelectorAll<HTMLLIElement>(`.${CSS.menuItem}`)[this._focusedTemplateIndex],
+        list.parentElement
+      );
+
+      event.preventDefault();
+    }
+
+    if (event.key === "Escape") {
+      this.handleCloseTemplateSelection();
+    }
+  };
+
+  protected applyTemplate(template: CustomTemplate): void {
+    const { format, layout, layoutOptions } = template;
+    const { templateOptions } = this;
+
+    this._templateListPopover.open = false;
+    this._toggleTab(layout === "map-only" ? TabId.mapOnly : TabId.layout, false);
+
+    if (format) {
+      templateOptions.format = format;
+    }
+
+    if (layout) {
+      templateOptions.layout = layout;
+    }
+
+    this._focusedTemplateIndex = null;
+    templateOptions.legendEnabled = layoutOptions?.legend ?? templateOptions.legendEnabled;
+    this.handleCloseTemplateSelection();
   }
 
   protected renderTitleOrFileNameSection(): VNode {
@@ -1254,6 +1515,17 @@ class Print extends Widget<PrintEvents> {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _handleRootAfterCreate(node: HTMLElement): void {
+    this._rootNode = node;
+    this.own(
+      on(node, "scroll", () => {
+        if (this._templateListPopover.open) {
+          this.handleCloseTemplateSelection();
+        }
+      })
+    );
+  }
 
   private _focusOnTabChange(node: HTMLElement): void {
     if (!this._activeTabFocusRequested) {
@@ -1550,8 +1822,8 @@ class Print extends Widget<PrintEvents> {
     this._toggleTab(target.getAttribute("data-tab-id") as TabId);
   }
 
-  private _toggleTab(targetTab: TabId): void {
-    this._layoutTabSelected = targetTab === "layoutTab";
+  private _toggleTab(targetTab: TabId, focusOnTab = true): void {
+    this._layoutTabSelected = targetTab === TabId.layout;
 
     if (!this._layoutTabSelected) {
       this.templateOptions.layout = "MAP_ONLY";
@@ -1560,7 +1832,9 @@ class Print extends Widget<PrintEvents> {
       this.templateOptions.layout = layoutChoices && layoutChoices[0];
     }
 
-    this._activeTabFocusRequested = true;
+    if (focusOnTab) {
+      this._activeTabFocusRequested = true;
+    }
   }
 
   private _handleLayoutPanelKeyDown(event: KeyboardEvent): void {
@@ -1576,11 +1850,11 @@ class Print extends Widget<PrintEvents> {
     }
 
     if (key === "ArrowLeft" || key === "ArrowRight") {
-      this._toggleTab(currentTab === "layoutTab" ? "mapOnlyTab" : "layoutTab");
+      this._toggleTab(currentTab === TabId.layout ? TabId.mapOnly : TabId.layout);
       event.preventDefault();
       event.stopPropagation();
     }
   }
 }
 
-export = Print;
+export default Print;

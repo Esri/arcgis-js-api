@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/compilerUtils","../../../../../core/maybe","../../../../../geometry/Circle","../../../../../support/elevationInfoUtils"],(function(e,r,t,i,o,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.isSupportedGraphic=void 0,r.isSupportedGraphic=function(e){if("graphics"!==e.layer.type)return 1;var r=e.geometry;if(i.isNone(r))return 2;var a=r.type;switch(a){case"polygon":if(r instanceof o)return 3;break;case"polyline":break;case"point":case"multipoint":case"extent":case"mesh":return 3;default:return t.neverReached(a),3}return"on-the-ground"!==n.getGraphicEffectiveElevationMode(e)&&n.hasGraphicFeatureExpressionInfo(e)?4:0}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../core/has","../../../../../core/maybe","../../../../../geometry/Circle","../../../../../support/elevationInfoUtils"],(function(e,t,r,n,o){"use strict";e.isSupportedGraphic=function(e){var t;if("graphics"!==(null==(t=e.layer)?void 0:t.type))return 1;const i=e.geometry;if(r.isNone(i))return 2;switch(i.type){case"polygon":if(i instanceof n)return 3;break;case"polyline":break;case"point":case"multipoint":case"extent":case"mesh":default:return 3}return"on-the-ground"!==o.getGraphicEffectiveElevationMode(e)&&o.hasGraphicFeatureExpressionInfo(e)?4:0},Object.defineProperty(e,"__esModule",{value:!0})}));

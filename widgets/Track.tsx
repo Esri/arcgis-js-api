@@ -42,17 +42,17 @@
  */
 
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
@@ -60,7 +60,7 @@ import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
 
 // esri.widgets.Track
-import TrackViewModel = require("esri/widgets/Track/TrackViewModel");
+import TrackViewModel from "esri/widgets/Track/TrackViewModel";
 
 // esri.widgets.Track.t9n
 import TrackMessages from "esri/widgets/Track/t9n/Track";
@@ -446,4 +446,4 @@ class Track extends Widget {
   }
 }
 
-export = Track;
+export default Track;

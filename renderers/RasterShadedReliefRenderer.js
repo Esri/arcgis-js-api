@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators","../tasks/support/colorRamps"],(function(e,t,r,o,p,i,a){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.altitude=45,r.azimuth=315,r.colorRamp=null,r.hillshadeType="multi-directional",r.pixelSizePower=.664,r.pixelSizeFactor=.024,r.scalingType="none",r.type="raster-shaded-relief",r.zFactor=1,r}var o;return r.__extends(t,e),o=t,t.prototype.readColorRamp=function(e){return a.fromJSON(e)},t.prototype.clone=function(){return new o({hillshadeType:this.hillshadeType,altitude:this.altitude,azimuth:this.azimuth,zFactor:this.zFactor,scalingType:this.scalingType,pixelSizeFactor:this.pixelSizeFactor,pixelSizePower:this.pixelSizePower,colorRamp:p.clone(this.colorRamp)})},r.__decorate([i.property({type:Number,json:{write:!0}})],t.prototype,"altitude",void 0),r.__decorate([i.property({type:Number,json:{write:!0}})],t.prototype,"azimuth",void 0),r.__decorate([i.property({types:a.types,json:{write:!0}})],t.prototype,"colorRamp",void 0),r.__decorate([i.reader("colorRamp")],t.prototype,"readColorRamp",null),r.__decorate([i.property({type:["traditional","multi-directional"],json:{write:!0}})],t.prototype,"hillshadeType",void 0),r.__decorate([i.property({type:Number,json:{write:!0}})],t.prototype,"pixelSizePower",void 0),r.__decorate([i.property({type:Number,json:{write:!0}})],t.prototype,"pixelSizeFactor",void 0),r.__decorate([i.property({type:["none","adjusted"],json:{write:!0}})],t.prototype,"scalingType",void 0),r.__decorate([i.enumeration({rasterShadedRelief:"raster-shaded-relief"})],t.prototype,"type",void 0),r.__decorate([i.property({type:Number,json:{write:!0}})],t.prototype,"zFactor",void 0),t=o=r.__decorate([i.subclass("esri.renderers.RasterShadedReliefRenderer")],t)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/reader","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport","../tasks/support/colorRamps"],(function(e,r,o,t,p,i,a,s,c,l,n,d,u,y,h){"use strict";var _;let m=_=function(r){function o(e){var o;return(o=r.call(this,e)||this).altitude=45,o.azimuth=315,o.colorRamp=null,o.hillshadeType="multi-directional",o.pixelSizePower=.664,o.pixelSizeFactor=.024,o.scalingType="none",o.type="raster-shaded-relief",o.zFactor=1,o}e._inheritsLoose(o,r);var p=o.prototype;return p.readColorRamp=function(e){return h.fromJSON(e)},p.clone=function(){return new _({hillshadeType:this.hillshadeType,altitude:this.altitude,azimuth:this.azimuth,zFactor:this.zFactor,scalingType:this.scalingType,pixelSizeFactor:this.pixelSizeFactor,pixelSizePower:this.pixelSizePower,colorRamp:t.clone(this.colorRamp)})},o}(y.JSONSupport);return r.__decorate([a.property({type:Number,json:{write:!0}})],m.prototype,"altitude",void 0),r.__decorate([a.property({type:Number,json:{write:!0}})],m.prototype,"azimuth",void 0),r.__decorate([a.property({types:h.types,json:{write:!0}})],m.prototype,"colorRamp",void 0),r.__decorate([c.reader("colorRamp")],m.prototype,"readColorRamp",null),r.__decorate([a.property({type:["traditional","multi-directional"],json:{write:!0}})],m.prototype,"hillshadeType",void 0),r.__decorate([a.property({type:Number,json:{write:!0}})],m.prototype,"pixelSizePower",void 0),r.__decorate([a.property({type:Number,json:{write:!0}})],m.prototype,"pixelSizeFactor",void 0),r.__decorate([a.property({type:["none","adjusted"],json:{write:!0}})],m.prototype,"scalingType",void 0),r.__decorate([s.enumeration({rasterShadedRelief:"raster-shaded-relief"})],m.prototype,"type",void 0),r.__decorate([a.property({type:Number,json:{write:!0}})],m.prototype,"zFactor",void 0),m=_=r.__decorate([l.subclass("esri.renderers.RasterShadedReliefRenderer")],m),m}));

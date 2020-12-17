@@ -44,16 +44,13 @@
  * view.ui.add(editor, "top-right");
  */
 
-// @dojo.framework.shim
-import Map from "@dojo/framework/shim/Map";
-
 // esri
 import { Polygon, Polyline } from "esri/geometry";
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { substitute } from "esri/intl";
 
 // esri.core
-import EsriError = require("esri/core/Error");
+import EsriError from "esri/core/Error";
 import { eventKey } from "esri/core/events";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import { init, on, watch, whenNot } from "esri/core/watchUtils";
@@ -62,7 +59,7 @@ import { init, on, watch, whenNot } from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import FeatureLayer = require("esri/layers/FeatureLayer");
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.layers.support
 import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
@@ -71,18 +68,18 @@ import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Attachments = require("esri/widgets/Attachments");
-import FeatureForm = require("esri/widgets/FeatureForm");
-import FeatureTemplates = require("esri/widgets/FeatureTemplates");
-import Spinner = require("esri/widgets/Spinner");
-import Widget = require("esri/widgets/Widget");
+import Attachments from "esri/widgets/Attachments";
+import FeatureForm from "esri/widgets/FeatureForm";
+import FeatureTemplates from "esri/widgets/FeatureTemplates";
+import Spinner from "esri/widgets/Spinner";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Editor
-import EditorViewModel = require("esri/widgets/Editor/EditorViewModel");
+import EditorViewModel from "esri/widgets/Editor/EditorViewModel";
 import {
   CancelWorkflowOptions,
   CreateWorkflow,
@@ -1441,7 +1438,7 @@ class Editor extends HandleOwnerMixin(Widget) {
     const displayField = getDisplayFieldName(layer);
 
     return (
-      (displayField && `${attributes[displayField]}`) ||
+      (displayField && attributes[displayField] && `${attributes[displayField]}`) ||
       substitute(this.messages.untitledFeatureTemplate, { id: attributes[objectIdField] })
     );
   }
@@ -1594,4 +1591,4 @@ class Editor extends HandleOwnerMixin(Widget) {
   }
 }
 
-export = Editor;
+export default Editor;

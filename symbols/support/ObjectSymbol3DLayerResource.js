@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/jsonMap","../../core/JSONSupport","../../core/accessorSupport/decorators","../../support/persistableUrlUtils"],(function(e,r,t,o,i,n,s){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.defaultPrimitive=r.ObjectSymbol3DLayerResource=void 0;var c=o.strict()({sphere:"sphere",cylinder:"cylinder",cube:"cube",cone:"cone",diamond:"diamond",tetrahedron:"tetrahedron",invertedCone:"inverted-cone"}),p=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o({href:this.href,primitive:this.primitive})},t.__decorate([n.property({type:String,json:{read:s.read,write:s.write}})],r.prototype,"href",void 0),t.__decorate([n.enumeration(c)],r.prototype,"primitive",void 0),r=o=t.__decorate([n.subclass("esri.symbols.support.ObjectSymbol3DLayerResource")],r)}(i.JSONSupport);r.ObjectSymbol3DLayerResource=p,r.defaultPrimitive="sphere",r.default=p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../chunks/persistableUrlUtils","../../core/JSONSupport"],(function(e,r,o,t,c,s,i,n,p,u,a,l,d,y,b){"use strict";var h;const m=n.strict()({sphere:"sphere",cylinder:"cylinder",cube:"cube",cone:"cone",diamond:"diamond",tetrahedron:"tetrahedron",invertedCone:"inverted-cone"});e.ObjectSymbol3DLayerResource=h=function(e){function o(){return e.apply(this,arguments)||this}return r._inheritsLoose(o,e),o.prototype.clone=function(){return new h({href:this.href,primitive:this.primitive})},o}(b.JSONSupport),o.__decorate([i.property({type:String,json:{read:y.read,write:y.write}})],e.ObjectSymbol3DLayerResource.prototype,"href",void 0),o.__decorate([p.enumeration(m)],e.ObjectSymbol3DLayerResource.prototype,"primitive",void 0),e.ObjectSymbol3DLayerResource=h=o.__decorate([u.subclass("esri.symbols.support.ObjectSymbol3DLayerResource")],e.ObjectSymbol3DLayerResource);var S=e.ObjectSymbol3DLayerResource;e.default=S,e.defaultPrimitive="sphere",Object.defineProperty(e,"__esModule",{value:!0})}));

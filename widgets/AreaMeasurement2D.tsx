@@ -40,20 +40,23 @@
 
 // esri.core
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
-import { SystemOrAreaUnit } from "esri/core/unitUtils";
+import { isMeasurementSystem, SystemOrAreaUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
+
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.AreaMeasurement2D
-import AreaMeasurement2DViewModel = require("esri/widgets/AreaMeasurement2D/AreaMeasurement2DViewModel");
+import AreaMeasurement2DViewModel from "esri/widgets/AreaMeasurement2D/AreaMeasurement2DViewModel";
 
 // esri.widgets.AreaMeasurement2D.t9n
 import AreaMeasurement2DMessages from "esri/widgets/AreaMeasurement2D/t9n/AreaMeasurement2D";
@@ -191,6 +194,23 @@ class AreaMeasurement2D extends Widget {
   messages: AreaMeasurement2DMessages = null;
 
   //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
   //  unit
   //----------------------------------
 
@@ -199,7 +219,7 @@ class AreaMeasurement2D extends Widget {
    *
    * @name unit
    * @instance
-   * @type {"metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares"}
+   * @type {module:esri/core/units~SystemOrAreaUnit}
    * @example
    *
    * // To create the AreaMeasurement2D widget that displays area in square US feet
@@ -223,7 +243,7 @@ class AreaMeasurement2D extends Widget {
    *
    * @name unitOptions
    * @instance
-   * @type {Array<"metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares">}
+   * @type {module:esri/core/units~SystemOrAreaUnit[]}
    * @example
    *
    * // To display the available units to the console
@@ -322,7 +342,7 @@ class AreaMeasurement2D extends Widget {
     const isDisabled = state === "disabled";
     const isReady = state === "ready";
     const isMeasuring = state === "measuring" || state === "measured";
-    const { messages } = this;
+    const { messages, messagesUnits } = this;
 
     const hintNode =
       active && isReady ? (
@@ -377,7 +397,9 @@ class AreaMeasurement2D extends Widget {
           >
             {unitOptions.map((unitOption) => (
               <option key={unitOption} value={unitOption}>
-                {messages.units[unitOption]}
+                {isMeasurementSystem(unitOption)
+                  ? messagesUnits.systems[unitOption]
+                  : messagesUnits.units[unitOption]?.pluralCapitalized}
               </option>
             ))}
           </select>
@@ -450,4 +472,4 @@ class AreaMeasurement2D extends Widget {
   }
 }
 
-export = AreaMeasurement2D;
+export default AreaMeasurement2D;

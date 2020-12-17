@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType"],(function(e,r,t,o,i,s,n){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.variableName=null,t.dimensionName=null,t.values=[],t.isSlice=!1,t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){return new o({variableName:this.variableName,dimensionName:this.dimensionName,values:i.clone(this.values),isSlice:this.isSlice})},t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"variableName",void 0),t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"dimensionName",void 0),t.__decorate([s.property({type:n.types.array(n.types.oneOf([n.types.native(Number),n.types.array(n.types.native(Number))])),json:{write:!0}})],r.prototype,"values",void 0),t.__decorate([s.property({type:Boolean,json:{write:!0}})],r.prototype,"isSlice",void 0),r=o=t.__decorate([s.subclass("esri.layers.support.DimensionalDefinition")],r)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,o,t,s,i,a,n,p,c,l,u){"use strict";var y;let d=y=function(r){function o(e){var o;return(o=r.call(this,e)||this).variableName=null,o.dimensionName=null,o.values=[],o.isSlice=!1,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new y({variableName:this.variableName,dimensionName:this.dimensionName,values:t.clone(this.values),isSlice:this.isSlice})},o}(u.JSONSupport);return r.__decorate([a.property({type:String,json:{write:!0}})],d.prototype,"variableName",void 0),r.__decorate([a.property({type:String,json:{write:!0}})],d.prototype,"dimensionName",void 0),r.__decorate([a.property({type:i.types.array(i.types.oneOf([i.types.native(Number),i.types.array(i.types.native(Number))])),json:{write:!0}})],d.prototype,"values",void 0),r.__decorate([a.property({type:Boolean,json:{write:!0}})],d.prototype,"isSlice",void 0),d=y=r.__decorate([n.subclass("esri.layers.support.DimensionalDefinition")],d),d}));

@@ -1,0 +1,86 @@
+@mixin featureMedia() {
+  .esri-feature-media {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+  .esri-feature-media__container {
+    display: flex;
+  }
+  .esri-feature-media__item-title {
+    font-size: $font-size__h2;
+    padding: 0.3rem 0 0;
+  }
+  .esri-feature-media__item-caption {
+    font-size: $font-size__body;
+    padding: 0.1rem 0 0;
+  }
+  .esri-feature-media__container {
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    min-height: 150px;
+    margin-top: $cap-spacing--half;
+  }
+  .esri-feature-media__container .esri-feature-media__button {
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 $button-width;
+    width: $button-width;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    color: $interactive-font-color;
+    display: flex;
+  }
+  .esri-feature-media__container .esri-feature-media__button {
+    cursor: pointer;
+    color: $interactive-font-color--hover;
+  }
+  .esri-feature-media__item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: $cap-spacing--half;
+  }
+  .esri-feature-media__item-container {
+    flex: 0 1 auto;
+    width: 100%;
+    img {
+      max-width: 100%;
+    }
+  }
+  .esri-feature-media__chart {
+    background-color: $background-color;
+    //  Dimensions on containing div are required
+    //  for Chart library to know how big to make the chart.
+    width: 100%;
+    height: 250px;
+  }
+  .esri-feature-media__previous-icon--rtl,
+  .esri-feature-media__next-icon--rtl {
+    display: none;
+  }
+
+  //  RTL
+  html[dir="rtl"] {
+    .esri-feature-media__image-summary {
+      margin: 0 0.5em 0 0;
+    }
+    .esri-feature-media__previous-icon--rtl,
+    .esri-feature-media__next-icon--rtl {
+      display: inline-block;
+    }
+    .esri-feature-media__previous-icon,
+    .esri-feature-media__next-icon {
+      display: none;
+    }
+  }
+}
+
+@if $include_FeatureMedia == true {
+  @include featureMedia();
+}

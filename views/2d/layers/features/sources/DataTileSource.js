@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/Evented","../../../../../core/maybe","../../../../../core/accessorSupport/diffUtils"],(function(t,e,o,r,n,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.DataTileSource=e.DataTileSubscription=void 0;var s=function(){function t(t){this._abortController=new AbortController,this.requests={pending:new Array,done:new Array},this.tile=t}return Object.defineProperty(t.prototype,"signal",{get:function(){return this._abortController.signal},enumerable:!1,configurable:!0}),t.prototype.add=function(t){this.requests.done.push(t),t.request.end&&(this.resolved=!0)},t.prototype.abort=function(){this._abortController.abort()},t}();e.DataTileSubscription=s;var u=function(){function t(t){this.events=new r,this._subscriptions=new Map,this._serviceQueryInfo={outSpatialReference:t.outSR},this._serviceInfo=t.serviceInfo,this._onRequest=t.onRequest}return t.prototype.queryLastEditDate=function(){return o.__awaiter(this,void 0,void 0,(function(){return o.__generator(this,(function(t){throw new Error("Service does not support query type")}))}))},t.prototype.query=function(t,e){return o.__awaiter(this,void 0,void 0,(function(){return o.__generator(this,(function(t){throw new Error("Service does not support query")}))}))},Object.defineProperty(t.prototype,"geometryType",{get:function(){return this._serviceInfo.geometryType},enumerable:!1,configurable:!0}),t.prototype.update=function(t){i.diff(t,this._sourceQueryInfo)&&(this._sourceQueryInfo=t)},t.prototype.updateSubscriptions=function(){},t.prototype.setViewState=function(t){},t.prototype.subscribe=function(t){var e=new s(t);this._subscriptions.set(t.id,e)},t.prototype.unsubscribe=function(t){var e=this.get(t.id);n.isSome(e)&&e.abort(),this._subscriptions.delete(t.id)},t.prototype.pause=function(){},t.prototype.resume=function(){},t.prototype.get=function(t){return this._subscriptions.has(t)?this._subscriptions.get(t):null},t.prototype.enableEvent=function(t,e){},t}();e.DataTileSource=u}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe","../../../../../core/Evented","../../../../../core/accessorSupport/diffUtils"],(function(e,t,n,r,s){"use strict";let o=function(){function e(e){this._abortController=new AbortController,this.requests={pending:new Array,done:new Array},this.tile=e}var n=e.prototype;return n.add=function(e){this.requests.done.push(e),e.request.end&&(this.resolved=!0)},n.abort=function(){this._abortController.abort()},t._createClass(e,[{key:"signal",get:function(){return this._abortController.signal}}]),e}(),i=function(){function e(e){this.events=new r,this._subscriptions=new Map,this._serviceQueryInfo={outSpatialReference:e.outSR},this._serviceInfo=e.serviceInfo,this._onRequest=e.onRequest}var i=e.prototype;return i.queryLastEditDate=async function(){throw new Error("Service does not support query type")},i.query=async function(e,t){throw new Error("Service does not support query")},i.update=function(e){s.diff(e,this._sourceQueryInfo)&&(this._sourceQueryInfo=e)},i.updateSubscriptions=function(){},i.setViewState=function(e){},i.subscribe=function(e){const t=new o(e);this._subscriptions.set(e.id,t)},i.unsubscribe=function(e){const t=this.get(e.id);n.isSome(t)&&t.abort(),this._subscriptions.delete(e.id)},i.pause=function(){},i.resume=function(){},i.get=function(e){return this._subscriptions.has(e)?this._subscriptions.get(e):null},i.enableEvent=function(e,t){},t._createClass(e,[{key:"geometryType",get:function(){return this._serviceInfo.geometryType}}]),e}();e.DataTileSource=i,e.DataTileSubscription=o,Object.defineProperty(e,"__esModule",{value:!0})}));

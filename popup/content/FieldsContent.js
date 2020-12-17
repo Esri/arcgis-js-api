@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","../FieldInfo","./Content"],(function(e,t,o,r,n,i,s){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.fieldInfos=null,o.type="fields",o}var s;return o.__extends(t,e),s=t,t.prototype.writeFieldInfos=function(e,t){t.fieldInfos=e&&e.map((function(e){return e.toJSON()}))},t.prototype.clone=function(){return new s({fieldInfos:Array.isArray(this.fieldInfos)?r.clone(this.fieldInfos):null})},o.__decorate([n.property({type:[i]})],t.prototype,"fieldInfos",void 0),o.__decorate([n.writer("fieldInfos")],t.prototype,"writeFieldInfos",null),o.__decorate([n.property({type:["fields"],readOnly:!0,json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=s=o.__decorate([n.subclass("esri.popup.content.FieldsContent")],t)}(s)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./Content","../FieldInfo"],(function(e,r,o,t,s,n,i,c,l,p,u,a,d,f){"use strict";var y;let I=y=function(r){function o(e){var o;return(o=r.call(this,e)||this).fieldInfos=null,o.type="fields",o}e._inheritsLoose(o,r);var s=o.prototype;return s.writeFieldInfos=function(e,r){r.fieldInfos=e&&e.map((e=>e.toJSON()))},s.clone=function(){return new y({fieldInfos:Array.isArray(this.fieldInfos)?t.clone(this.fieldInfos):null})},o}(d);return r.__decorate([i.property({type:[f]})],I.prototype,"fieldInfos",void 0),r.__decorate([l.writer("fieldInfos")],I.prototype,"writeFieldInfos",null),r.__decorate([i.property({type:["fields"],readOnly:!0,json:{read:!1,write:!0}})],I.prototype,"type",void 0),I=y=r.__decorate([c.subclass("esri.popup.content.FieldsContent")],I),I}));

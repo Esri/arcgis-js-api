@@ -1,22 +1,18 @@
 // esri.core
-import { find } from "esri/../../core/arrayUtils";
-import { on } from "esri/../../core/events";
-import Handles = require("esri/../../core/Handles");
-import { clamp } from "esri/../../core/mathUtils";
-import { Maybe, isSome } from "esri/../../core/maybe";
-import * as watchUtils from "esri/../../core/watchUtils";
+import { on } from "esri/core/events";
+import Handles from "esri/core/Handles";
+import { clamp } from "esri/core/mathUtils";
+import { Maybe, isSome } from "esri/core/maybe";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property, aliasOf } from "esri/../../core/accessorSupport/decorators";
-
-// esri.core.libs.pep
-import PEP = require("esri/../../core/libs/pep/pep");
+import { subclass, property, aliasOf } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.BuildingExplorer
-import BuildingLevel = require("esri/BuildingLevel");
+import BuildingLevel from "esri/BuildingLevel";
 
 // esri.widgets.BuildingExplorer.BuildingLevelPicker
 import * as constants from "esri/widgets/constants";
@@ -24,8 +20,8 @@ import { Label } from "esri/widgets/Label";
 import { LevelItem } from "esri/widgets/LevelItem";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable, storeNode } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable, storeNode } from "esri/support/widget";
 
 interface Messages {
   selectLevel: string;
@@ -417,8 +413,6 @@ class BuildingLevelPicker extends Widget {
       return;
     }
 
-    PEP.applyLocal(container);
-
     this._levelEventHandles.removeAll();
     this._levelEventHandles.add([
       on(container, "pointerenter", this._onPointerEnter),
@@ -456,8 +450,7 @@ class BuildingLevelPicker extends Widget {
   }
 
   private _focusCurrentLevel(): void {
-    const currentLevelWidget = find(
-      this._levelWidgets,
+    const currentLevelWidget = this._levelWidgets.find(
       (widget) => widget.level === this.viewModel.value
     );
 
@@ -625,4 +618,4 @@ class BuildingLevelPicker extends Widget {
   }
 }
 
-export = BuildingLevelPicker;
+export default BuildingLevelPicker;

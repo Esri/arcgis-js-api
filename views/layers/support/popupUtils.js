@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","@dojo/framework/shim/array","../../../core/maybe","../../../layers/support/fieldUtils"],(function(e,i,t,l,s,d){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.getFetchPopupTemplate=i.getRequiredFields=void 0,i.getRequiredFields=function(e,i){return void 0===i&&(i=e.popupTemplate),t.__awaiter(this,void 0,void 0,(function(){var a,r,u,p,o,n,f,c,h;return t.__generator(this,(function(F){switch(F.label){case 0:return s.isSome(i)?[4,i.getRequiredFields(e.fields)]:[2,[]];case 1:return a=F.sent(),r=i.lastEditInfoEnabled,u=e.objectIdField,p=e.typeIdField,o=e.globalIdField,n=e.relationships,l.includes(a,"*")?[2,["*"]]:r?[4,d.getFeatureEditFields(e)]:[3,3];case 2:return c=F.sent(),[3,4];case 3:c=[],F.label=4;case 4:return f=c,h=d.fixFields(e.fields,t.__spreadArrays(a,f)),p&&h.push(p),h&&u&&d.hasField(e.fields,u)&&-1===h.indexOf(u)&&h.push(u),h&&o&&d.hasField(e.fields,o)&&-1===h.indexOf(o)&&h.push(o),n&&n.forEach((function(i){var t=i.keyField;h&&t&&d.hasField(e.fields,t)&&-1===h.indexOf(t)&&h.push(t)})),[2,h]}}))}))},i.getFetchPopupTemplate=function(e,i){return e.popupTemplate?e.popupTemplate:s.isSome(i)&&i.defaultPopupTemplateEnabled&&s.isSome(e.defaultPopupTemplate)?e.defaultPopupTemplate:null}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/maybe","../../../layers/support/fieldUtils"],(function(e,i,t){"use strict";e.getFetchPopupTemplate=function(e,t){return e.popupTemplate?e.popupTemplate:i.isSome(t)&&t.defaultPopupTemplateEnabled&&i.isSome(e.defaultPopupTemplate)?e.defaultPopupTemplate:null},e.getRequiredFields=async function(e,l=e.popupTemplate){if(!i.isSome(l))return[];const d=await l.getRequiredFields(e.fields),{lastEditInfoEnabled:p}=l,{objectIdField:s,typeIdField:u,globalIdField:a,relationships:o}=e;if(d.includes("*"))return["*"];const n=p?await t.getFeatureEditFields(e):[],f=t.fixFields(e.fields,[...d,...n]);return u&&f.push(u),f&&s&&t.hasField(e.fields,s)&&-1===f.indexOf(s)&&f.push(s),f&&a&&t.hasField(e.fields,a)&&-1===f.indexOf(a)&&f.push(a),o&&o.forEach((i=>{const{keyField:l}=i;f&&l&&t.hasField(e.fields,l)&&-1===f.indexOf(l)&&f.push(l)})),f},Object.defineProperty(e,"__esModule",{value:!0})}));

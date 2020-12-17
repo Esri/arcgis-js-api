@@ -1,25 +1,82 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","./FoamRendering.glsl"],(function(e,t,a){"use strict";function r(e){e.fragment.uniforms.add("texWaveNormal","sampler2D"),e.fragment.uniforms.add("texWavePerturbation","sampler2D"),e.fragment.uniforms.add("waveParams","vec4"),e.fragment.uniforms.add("waveDirection","vec2"),e.include(a.FoamIntensity),e.fragment.code.add(t.glsl`
+      const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
 
-define(["require","exports","tslib","./FoamRendering.glsl","../../shaderModules/interfaces"],(function(e,t,n,r,a){"use strict";function o(e){e.fragment.uniforms.add("texWaveNormal","sampler2D"),e.fragment.uniforms.add("texWavePerturbation","sampler2D"),e.fragment.uniforms.add("waveParams","vec4"),e.fragment.uniforms.add("waveDirection","vec2"),e.include(r.FoamIntensity),e.fragment.code.add(a.glsl(v||(v=n.__makeTemplateObject(["\n      const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);\n\n      vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {\n        return 2.0 * texture2D(_tex, _uv).rg - 1.0;\n      }\n\n      float sampleNoiseTexture(vec2 _uv) {\n        return texture2D(texWavePerturbation, _uv).b;\n      }\n\n      vec3 textureDenormalized3D(sampler2D _tex, vec2 _uv) {\n        return 2.0 * texture2D(_tex, _uv).rgb - 1.0;\n      }\n\n      float computeProgress(vec2 uv, float time) {\n        return fract(time);\n      }\n\n      float computeWeight(vec2 uv, float time) {\n        float progress = computeProgress(uv, time);\n        return 1.0 - abs(1.0 - 2.0 * progress);\n      }\n\n      vec3 computeUVPerturbedWeigth(sampler2D texFlow, vec2 uv, float time, float phaseOffset) {\n        float flowStrength = waveParams[2];\n        float flowOffset = waveParams[3];\n\n        vec2 flowVector = textureDenormalized2D(texFlow, uv) * flowStrength;\n\n        float progress = computeProgress(uv, time + phaseOffset);\n        float weight = computeWeight(uv, time + phaseOffset);\n\n        vec2 result = uv;\n        result -= flowVector * (progress + flowOffset);\n        result += phaseOffset;\n        result += (time - progress) * FLOW_JUMP;\n\n        return vec3(result, weight);\n      }\n\n      const float TIME_NOISE_TEXTURE_REPEAT = 0.3737;\n      const float TIME_NOISE_STRENGTH = 7.77;\n\n      vec3 getWaveLayer(sampler2D _texNormal, sampler2D _dudv, vec2 _uv, vec2 _waveDir, float time) {\n        float waveStrength = waveParams[0];\n\n        // overall directional shift in uv's for directional wave movement for\n        // now we do a hard coded scale for wave speed such that a unit length\n        // direction is not too fast.\n        vec2 waveMovement = time * -_waveDir;\n\n        float timeNoise = sampleNoiseTexture(_uv * TIME_NOISE_TEXTURE_REPEAT) * TIME_NOISE_STRENGTH;\n\n        // compute two perturbed uvs and blend weights\n        // then sample the wave normals at the two positions and blend\n        vec3 uv_A = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.0);\n        vec3 uv_B = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.5);\n\n        vec3 normal_A = textureDenormalized3D(_texNormal, uv_A.xy) * uv_A.z;\n        vec3 normal_B = textureDenormalized3D(_texNormal, uv_B.xy) * uv_B.z;\n\n        // logic to flatten the wave pattern\n        // scale xy components of the normal, then adjust z (up) component\n        vec3 mixNormal = normalize(normal_A + normal_B);\n        mixNormal.xy *= waveStrength;\n        mixNormal.z = sqrt(1.0 - dot(mixNormal.xy, mixNormal.xy));\n\n        return mixNormal;\n      }\n\n      vec4 getSurfaceNormalAndFoam(vec2 _uv, float _time) {\n        float waveTextureRepeat = waveParams[1];\n        vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);\n        float foam  = normals2FoamIntensity(normal, waveParams[0]);\n        return vec4(normal, foam);\n      }\n    "],["\n      const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);\n\n      vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {\n        return 2.0 * texture2D(_tex, _uv).rg - 1.0;\n      }\n\n      float sampleNoiseTexture(vec2 _uv) {\n        return texture2D(texWavePerturbation, _uv).b;\n      }\n\n      vec3 textureDenormalized3D(sampler2D _tex, vec2 _uv) {\n        return 2.0 * texture2D(_tex, _uv).rgb - 1.0;\n      }\n\n      float computeProgress(vec2 uv, float time) {\n        return fract(time);\n      }\n\n      float computeWeight(vec2 uv, float time) {\n        float progress = computeProgress(uv, time);\n        return 1.0 - abs(1.0 - 2.0 * progress);\n      }\n\n      vec3 computeUVPerturbedWeigth(sampler2D texFlow, vec2 uv, float time, float phaseOffset) {\n        float flowStrength = waveParams[2];\n        float flowOffset = waveParams[3];\n\n        vec2 flowVector = textureDenormalized2D(texFlow, uv) * flowStrength;\n\n        float progress = computeProgress(uv, time + phaseOffset);\n        float weight = computeWeight(uv, time + phaseOffset);\n\n        vec2 result = uv;\n        result -= flowVector * (progress + flowOffset);\n        result += phaseOffset;\n        result += (time - progress) * FLOW_JUMP;\n\n        return vec3(result, weight);\n      }\n\n      const float TIME_NOISE_TEXTURE_REPEAT = 0.3737;\n      const float TIME_NOISE_STRENGTH = 7.77;\n\n      vec3 getWaveLayer(sampler2D _texNormal, sampler2D _dudv, vec2 _uv, vec2 _waveDir, float time) {\n        float waveStrength = waveParams[0];\n\n        // overall directional shift in uv's for directional wave movement for\n        // now we do a hard coded scale for wave speed such that a unit length\n        // direction is not too fast.\n        vec2 waveMovement = time * -_waveDir;\n\n        float timeNoise = sampleNoiseTexture(_uv * TIME_NOISE_TEXTURE_REPEAT) * TIME_NOISE_STRENGTH;\n\n        // compute two perturbed uvs and blend weights\n        // then sample the wave normals at the two positions and blend\n        vec3 uv_A = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.0);\n        vec3 uv_B = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.5);\n\n        vec3 normal_A = textureDenormalized3D(_texNormal, uv_A.xy) * uv_A.z;\n        vec3 normal_B = textureDenormalized3D(_texNormal, uv_B.xy) * uv_B.z;\n\n        // logic to flatten the wave pattern\n        // scale xy components of the normal, then adjust z (up) component\n        vec3 mixNormal = normalize(normal_A + normal_B);\n        mixNormal.xy *= waveStrength;\n        mixNormal.z = sqrt(1.0 - dot(mixNormal.xy, mixNormal.xy));\n\n        return mixNormal;\n      }\n\n      vec4 getSurfaceNormalAndFoam(vec2 _uv, float _time) {\n        float waveTextureRepeat = waveParams[1];\n        vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);\n        float foam  = normals2FoamIntensity(normal, waveParams[0]);\n        return vec4(normal, foam);\n      }\n    "]))))}var v;Object.defineProperty(t,"__esModule",{value:!0}),t.WaterDistortion=void 0,t.WaterDistortion=o,function(e){e.bindUniforms=function(e,t){e.setUniform1i("texWaveNormal",0),e.setUniform1i("texWavePerturbation",1),e.setUniform4f("waveParams",t.waveStrength,t.waveTextureRepeat,t.flowStrength,t.flowOffset),e.setUniform2f("waveDirection",t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)}}(o=t.WaterDistortion||(t.WaterDistortion={}))}));
+      vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {
+        return 2.0 * texture2D(_tex, _uv).rg - 1.0;
+      }
+
+      float sampleNoiseTexture(vec2 _uv) {
+        return texture2D(texWavePerturbation, _uv).b;
+      }
+
+      vec3 textureDenormalized3D(sampler2D _tex, vec2 _uv) {
+        return 2.0 * texture2D(_tex, _uv).rgb - 1.0;
+      }
+
+      float computeProgress(vec2 uv, float time) {
+        return fract(time);
+      }
+
+      float computeWeight(vec2 uv, float time) {
+        float progress = computeProgress(uv, time);
+        return 1.0 - abs(1.0 - 2.0 * progress);
+      }
+
+      vec3 computeUVPerturbedWeigth(sampler2D texFlow, vec2 uv, float time, float phaseOffset) {
+        float flowStrength = waveParams[2];
+        float flowOffset = waveParams[3];
+
+        vec2 flowVector = textureDenormalized2D(texFlow, uv) * flowStrength;
+
+        float progress = computeProgress(uv, time + phaseOffset);
+        float weight = computeWeight(uv, time + phaseOffset);
+
+        vec2 result = uv;
+        result -= flowVector * (progress + flowOffset);
+        result += phaseOffset;
+        result += (time - progress) * FLOW_JUMP;
+
+        return vec3(result, weight);
+      }
+
+      const float TIME_NOISE_TEXTURE_REPEAT = 0.3737;
+      const float TIME_NOISE_STRENGTH = 7.77;
+
+      vec3 getWaveLayer(sampler2D _texNormal, sampler2D _dudv, vec2 _uv, vec2 _waveDir, float time) {
+        float waveStrength = waveParams[0];
+
+        // overall directional shift in uv's for directional wave movement for
+        // now we do a hard coded scale for wave speed such that a unit length
+        // direction is not too fast.
+        vec2 waveMovement = time * -_waveDir;
+
+        float timeNoise = sampleNoiseTexture(_uv * TIME_NOISE_TEXTURE_REPEAT) * TIME_NOISE_STRENGTH;
+
+        // compute two perturbed uvs and blend weights
+        // then sample the wave normals at the two positions and blend
+        vec3 uv_A = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.0);
+        vec3 uv_B = computeUVPerturbedWeigth(_dudv, _uv + waveMovement, time + timeNoise, 0.5);
+
+        vec3 normal_A = textureDenormalized3D(_texNormal, uv_A.xy) * uv_A.z;
+        vec3 normal_B = textureDenormalized3D(_texNormal, uv_B.xy) * uv_B.z;
+
+        // logic to flatten the wave pattern
+        // scale xy components of the normal, then adjust z (up) component
+        vec3 mixNormal = normalize(normal_A + normal_B);
+        mixNormal.xy *= waveStrength;
+        mixNormal.z = sqrt(1.0 - dot(mixNormal.xy, mixNormal.xy));
+
+        return mixNormal;
+      }
+
+      vec4 getSurfaceNormalAndFoam(vec2 _uv, float _time) {
+        float waveTextureRepeat = waveParams[1];
+        vec3 normal = getWaveLayer(texWaveNormal, texWavePerturbation, _uv * waveTextureRepeat, waveDirection, _time);
+        float foam  = normals2FoamIntensity(normal, waveParams[0]);
+        return vec4(normal, foam);
+      }
+    `)}!function(e){e.bindUniforms=function(e,t){e.setUniform1i("texWaveNormal",0),e.setUniform1i("texWavePerturbation",1),e.setUniform4f("waveParams",t.waveStrength,t.waveTextureRepeat,t.flowStrength,t.flowOffset),e.setUniform2f("waveDirection",t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)}}(r||(r={})),e.WaterDistortion=r,Object.defineProperty(e,"__esModule",{value:!0})}));

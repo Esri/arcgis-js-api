@@ -61,9 +61,6 @@
  *
  */
 
-// @dojo.framework.shim
-import "@dojo/framework/shim/Promise";
-
 // esri.core
 import { neverReached } from "esri/core/compilerUtils";
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
@@ -73,19 +70,19 @@ import { SystemOrAreaUnit, SystemOrLengthUnit } from "esri/core/unitUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import AreaMeasurement2D = require("esri/widgets/AreaMeasurement2D");
-import AreaMeasurement3D = require("esri/widgets/AreaMeasurement3D");
-import DirectLineMeasurement3D = require("esri/widgets/DirectLineMeasurement3D");
-import DistanceMeasurement2D = require("esri/widgets/DistanceMeasurement2D");
-import Widget = require("esri/widgets/Widget");
+import AreaMeasurement2D from "esri/widgets/AreaMeasurement2D";
+import AreaMeasurement3D from "esri/widgets/AreaMeasurement3D";
+import DirectLineMeasurement3D from "esri/widgets/DirectLineMeasurement3D";
+import DistanceMeasurement2D from "esri/widgets/DistanceMeasurement2D";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Measurement
 import { MeasurementComponentType } from "esri/widgets/Measurement/interfaces";
-import MeasurementViewModel = require("esri/widgets/Measurement/MeasurementViewModel");
+import MeasurementViewModel from "esri/widgets/Measurement/MeasurementViewModel";
 
 // esri.widgets.Measurement.t9n
 import MeasurementMessages from "esri/widgets/Measurement/t9n/Measurement";
@@ -256,7 +253,7 @@ class Measurement extends Widget {
    *
    * @name areaUnit
    * @instance
-   * @type {"metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares"}
+   * @type {module:esri/core/units~SystemOrAreaUnit}
    *
    * @example
    * // To create the Measurement widget that displays area in square US feet
@@ -313,7 +310,7 @@ class Measurement extends Widget {
    *
    * @name linearUnit
    * @instance
-   * @type {"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"}
+   * @type {module:esri/core/units~SystemOrLengthUnit}
    *
    * @example
    * // To create the Measurement widget that displays distance in yards
@@ -461,14 +458,14 @@ class Measurement extends Widget {
         const { type } = view;
         switch (type) {
           case "2d": {
-            const AreaMeasurement2D = await import("./AreaMeasurement2D");
+            const AreaMeasurement2D = (await import("./AreaMeasurement2D")).default;
             return new AreaMeasurement2D({
               view,
               unit: areaUnit
             });
           }
           case "3d": {
-            const AreaMeasurement3D = await import("./AreaMeasurement3D");
+            const AreaMeasurement3D = (await import("./AreaMeasurement3D")).default;
             return new AreaMeasurement3D({
               view,
               unit: areaUnit
@@ -480,14 +477,14 @@ class Measurement extends Widget {
         }
       }
       case "distance": {
-        const DistanceMeasurement2D = await import("./DistanceMeasurement2D");
+        const DistanceMeasurement2D = (await import("./DistanceMeasurement2D")).default;
         return new DistanceMeasurement2D({
           view,
           unit: linearUnit
         });
       }
       case "direct-line": {
-        const DirectLineMeasurement3D = await import("./DirectLineMeasurement3D");
+        const DirectLineMeasurement3D = (await import("./DirectLineMeasurement3D")).default;
         return new DirectLineMeasurement3D({
           view,
           unit: linearUnit
@@ -535,4 +532,4 @@ class Measurement extends Widget {
   }
 }
 
-export = Measurement;
+export default Measurement;

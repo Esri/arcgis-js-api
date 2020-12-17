@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/mathUtils","../../../geometry/support/aaBoundingBox","../support/geometryUtils","./PatchGeometryFactory","./Tile"],(function(t,e,i,n,s,r,o,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.PlanarPatch=void 0;var h=function(t){function e(i,n,s){var r=t.call(this,e.NumSubdivisionsAtLevel)||this;return void 0!==i&&r.init(i,n,s),r}return i.__extends(e,t),e.prototype.init=function(e,i,s){t.prototype.init.call(this,e,i,s),this._edgeLen=this.extent[2]-this.extent[0],this._edgeLen2=this._edgeLen*this._edgeLen,this.centerAtSeaLevel[0]=n.lerp(this.extent[0],this.extent[2],.5),this.centerAtSeaLevel[1]=n.lerp(this.extent[1],this.extent[3],.5),this.centerAtSeaLevel[2]=0,this.updateRadiusAndCenter()},e.prototype.updateRadiusAndCenter=function(){this._updateCenter();var t=(this.extent[2]-this.extent[0])*Math.SQRT1_2,e=.5*(this.elevationBounds[0]-this.elevationBounds[1]);this._radius=Math.sqrt(t*t+e*e)},e.prototype._isVisible=function(){return this.intersectsClippingArea&&r.frustum.intersectsAABB(this.surface.frustum.planes,s.wrap(this.extent[0],this.extent[1],this.elevationBounds[0],this.extent[2],this.extent[3],this.elevationBounds[1]))},e.prototype.createGeometry=function(t,e){o.createPlanarGlobePatch(t,this.extent,e,this.renderData),this.setMemoryDirty()},e.NumSubdivisionsAtLevel=[2,2,2,2,2,2,2,2],e}(a.Tile);e.PlanarPatch=h}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/mathUtils","../../../geometry/support/aaBoundingBox","../support/geometryUtils","./PatchGeometryFactory","./Tile"],(function(t,e,i,n,s,r,h){"use strict";let a=function(t){function h(e,i,n){var s;return s=t.call(this,h.NumSubdivisionsAtLevel)||this,void 0!==e&&s.init(e,i,n),s}e._inheritsLoose(h,t);var a=h.prototype;return a.init=function(e,n,s){t.prototype.init.call(this,e,n,s),this._edgeLen=this.extent[2]-this.extent[0],this._edgeLen2=this._edgeLen*this._edgeLen,this.centerAtSeaLevel[0]=i.lerp(this.extent[0],this.extent[2],.5),this.centerAtSeaLevel[1]=i.lerp(this.extent[1],this.extent[3],.5),this.centerAtSeaLevel[2]=0,this.updateRadiusAndCenter()},a.updateRadiusAndCenter=function(){this._updateCenter();const t=(this.extent[2]-this.extent[0])*Math.SQRT1_2,e=.5*(this.elevationBounds[0]-this.elevationBounds[1]);this._radius=Math.sqrt(t*t+e*e)},a._isVisible=function(){return this.intersectsClippingArea&&s.frustum.intersectsAABB(this.surface.frustum.planes,n.wrap(this.extent[0],this.extent[1],this.elevationBounds[0],this.extent[2],this.extent[3],this.elevationBounds[1]))},a.createGeometry=function(t,e){r.createPlanarGlobePatch(t,this.extent,e,this.renderData),this.setMemoryDirty()},h}(h.default);a.NumSubdivisionsAtLevel=[2,2,2,2,2,2,2,2],t.PlanarPatch=a,Object.defineProperty(t,"__esModule",{value:!0})}));

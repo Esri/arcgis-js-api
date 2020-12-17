@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","./domains","./FeatureTemplate"],(function(e,r,t,o,a,n,p,i){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.id=null,t.name=null,t.domains=null,t.templates=null,t}return t.__extends(r,e),r.prototype.readDomains=function(e){var r={};for(var t in e)if(e.hasOwnProperty(t)){var o=e[t];switch(o.type){case"range":r[t]=p.RangeDomain.fromJSON(o);break;case"codedValue":r[t]=p.CodedValueDomain.fromJSON(o);break;case"inherited":r[t]=p.InheritedDomain.fromJSON(o)}}return r},r.prototype.writeDomains=function(e,r){var t={};for(var o in e)e.hasOwnProperty(o)&&(t[o]=e[o]&&e[o].toJSON());a.fixJson(t),r.domains=t},r.prototype.readTemplates=function(e){return e&&e.map((function(e){return new i(e)}))},r.prototype.writeTemplates=function(e,r){r.templates=e&&e.map((function(e){return e.toJSON()}))},t.__decorate([n.property({json:{write:!0}})],r.prototype,"id",void 0),t.__decorate([n.property({json:{write:!0}})],r.prototype,"name",void 0),t.__decorate([n.property({json:{write:!0}})],r.prototype,"domains",void 0),t.__decorate([n.reader("domains")],r.prototype,"readDomains",null),t.__decorate([n.writer("domains")],r.prototype,"writeDomains",null),t.__decorate([n.property({json:{write:!0}})],r.prototype,"templates",void 0),t.__decorate([n.reader("templates")],r.prototype,"readTemplates",null),t.__decorate([n.writer("templates")],r.prototype,"writeTemplates",null),r=t.__decorate([n.subclass("esri.layers.support.FeatureType")],r)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./CodedValueDomain","./InheritedDomain","./RangeDomain","./domains","./FeatureTemplate"],(function(e,r,o,t,a,s,n,p,c,i,u,l,d,m,y,_,f,w,S){"use strict";let h=function(r){function o(e){var o;return(o=r.call(this,e)||this).id=null,o.name=null,o.domains=null,o.templates=null,o}e._inheritsLoose(o,r);var a=o.prototype;return a.readDomains=function(e){const r={};for(const o in e)if(e.hasOwnProperty(o)){const t=e[o];switch(t.type){case"range":r[o]=f.fromJSON(t);break;case"codedValue":r[o]=y.fromJSON(t);break;case"inherited":r[o]=_.fromJSON(t)}}return r},a.writeDomains=function(e,r){const o={};for(const r in e)e.hasOwnProperty(r)&&(o[r]=e[r]&&e[r].toJSON());t.fixJson(o),r.domains=o},a.readTemplates=function(e){return e&&e.map((e=>new S(e)))},a.writeTemplates=function(e,r){r.templates=e&&e.map((e=>e.toJSON()))},o}(m.JSONSupport);return r.__decorate([n.property({json:{write:!0}})],h.prototype,"id",void 0),r.__decorate([n.property({json:{write:!0}})],h.prototype,"name",void 0),r.__decorate([n.property({json:{write:!0}})],h.prototype,"domains",void 0),r.__decorate([p.reader("domains")],h.prototype,"readDomains",null),r.__decorate([i.writer("domains")],h.prototype,"writeDomains",null),r.__decorate([n.property({json:{write:!0}})],h.prototype,"templates",void 0),r.__decorate([p.reader("templates")],h.prototype,"readTemplates",null),r.__decorate([i.writer("templates")],h.prototype,"writeTemplates",null),h=r.__decorate([c.subclass("esri.layers.support.FeatureType")],h),h}));

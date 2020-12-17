@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(t,e){"use strict";function i(t){return"date"===t.type||"esriFieldTypeDate"===t.type}function s(t){return t.toLowerCase().trim()}return(function(){function t(t){if(this.fields=t,this._fieldsMap=new Map,this._dateFieldsSet=new Set,this.dateFields=[],t){for(var e=[],n=0,r=t;n<r.length;n++){var o=r[n],a=o&&o.name;if(a){var d=s(a);this._fieldsMap.set(a,o),this._fieldsMap.set(d,o),e.push(d),i(o)&&(this.dateFields.push(o),this._dateFieldsSet.add(o))}}e.sort(),this.uid=e.join(",")}}return t.prototype.destroy=function(){this._fieldsMap.clear()},t.prototype.has=function(t){return null!=this.get(t)},t.prototype.get=function(t){return null!=t?this._fieldsMap.get(t)||this._fieldsMap.get(s(t)):void 0},t.prototype.isDateField=function(t){return this._dateFieldsSet.has(this.get(t))},t.prototype.normalizeFieldName=function(t){var e=this.get(t);if(e)return e.name},t}())}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define((function(){"use strict";function t(t){return"date"===t.type||"esriFieldTypeDate"===t.type}function e(t){return t.toLowerCase().trim()}return function(){function i(i){if(this.fields=i,this._fieldsMap=new Map,this._dateFieldsSet=new Set,this.dateFields=[],!i)return;const s=[];for(const n of i){const i=n&&n.name;if(i){const r=e(i);this._fieldsMap.set(i,n),this._fieldsMap.set(r,n),s.push(r),t(n)&&(this.dateFields.push(n),this._dateFieldsSet.add(n))}}s.sort(),this.uid=s.join(",")}var s=i.prototype;return s.destroy=function(){this._fieldsMap.clear()},s.has=function(t){return null!=this.get(t)},s.get=function(t){return null!=t?this._fieldsMap.get(t)||this._fieldsMap.get(e(t)):void 0},s.isDateField=function(t){return this._dateFieldsSet.has(this.get(t))},s.normalizeFieldName=function(t){const e=this.get(t);if(e)return e.name},i}()}));

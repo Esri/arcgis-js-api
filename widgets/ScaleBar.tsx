@@ -42,14 +42,14 @@ import { watch, whenTrue } from "esri/core/watchUtils";
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
+import MapView from "esri/views/MapView";
 
 // esri.widgets
 import { MapUnitType, ScaleBarProperties } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.ScaleBar
-import ScaleBarViewModel = require("esri/widgets/ScaleBar/ScaleBarViewModel");
+import ScaleBarViewModel from "esri/widgets/ScaleBar/ScaleBarViewModel";
 
 // esri.widgets.ScaleBar.t9n
 import ScaleBarMessages from "esri/widgets/ScaleBar/t9n/ScaleBar";
@@ -398,4 +398,4 @@ class ScaleBar extends Widget {
   }
 }
 
-export = ScaleBar;
+export default ScaleBar;

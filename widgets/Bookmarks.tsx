@@ -23,11 +23,11 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
-import Handles = require("esri/core/Handles");
-import Logger = require("esri/core/Logger");
+import Handles from "esri/core/Handles";
+import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -37,34 +37,34 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.libs.sortablejs
-import Sortable = require("esri/libs/sortablejs/Sortable");
+import Sortable from "esri/libs/sortablejs/Sortable";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
+import MapView from "esri/views/MapView";
 
 // esri.webdoc.support
 import Thumbnail from "esri/webdoc/support/Thumbnail";
 
 // esri.webmap
-import Bookmark = require("esri/webmap/Bookmark");
+import Bookmark from "esri/webmap/Bookmark";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Bookmarks
-import BookmarksUserState = require("esri/widgets/Bookmarks/BookmarksUserState");
-import BookmarksViewModel = require("esri/widgets/Bookmarks/BookmarksViewModel");
-import { BookmarkCreationOptions } from "esri/widgets/Bookmarks/interfaces";
+import BookmarksUserState from "esri/widgets/Bookmarks/BookmarksUserState";
+import BookmarksViewModel from "esri/widgets/Bookmarks/BookmarksViewModel";
+import { BookmarkOptions } from "esri/widgets/Bookmarks/interfaces";
 
 // esri.widgets.Bookmarks.t9n
 import BookmarksMessages from "esri/widgets/Bookmarks/t9n/Bookmarks";
 
 // esri.widgets.FeatureTable.Grid.support
-import ButtonMenu = require("esri/widgets/FeatureTable/Grid/support/ButtonMenu");
-import ButtonMenuItem = require("esri/widgets/FeatureTable/Grid/support/ButtonMenuItem");
+import ButtonMenu from "esri/widgets/FeatureTable/Grid/support/ButtonMenu";
+import ButtonMenuItem from "esri/widgets/FeatureTable/Grid/support/ButtonMenuItem";
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
@@ -370,12 +370,13 @@ class Bookmarks extends Widget {
   /**
    * Specifies how new bookmarks will be created if [editingEnabled](#editingEnabled) is set to `true`.
    * Can be used to enable or disable taking screenshots or creating an extent based on the current
-   * view when a bookmark is created. See {@link module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkCreationOptions BookmarkCreationOptions}
+   * view when a bookmark is created. See {@link module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions BookmarkOptions}
    * for more information.
    *
    * @name bookmarkCreationOptions
    * @instance
-   * @type {module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkCreationOptions}
+   * @type {module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions}
+   * @deprecated since 4.18. Use [`defaultCreateOptions`](#defaultCreateOptions) instead.
    *
    * @since 4.13
    *
@@ -398,17 +399,86 @@ class Bookmarks extends Widget {
    *
    */
   @property({
-    value: null
+    dependsOn: ["viewModel.defaultCreateOptions"]
   })
-  set bookmarkCreationOptions(value: BookmarkCreationOptions) {
+  get bookmarkCreationOptions(): BookmarkOptions {
+    deprecatedProperty(logger, "bookmarkCreationOptions", {
+      replacement: "defaultCreateOptions",
+      version: "4.18"
+    });
+
+    return this.viewModel.defaultCreateOptions;
+  }
+  set bookmarkCreationOptions(value: BookmarkOptions) {
     if (typeof value.captureExtent !== "undefined") {
       deprecatedProperty(logger, "bookmarkCreationOptions.captureExtent", {
-        replacement: "bookmarkCreationOptions.captureViewpoint",
+        replacement: "defaultCreateOptions.captureViewpoint",
         version: "4.17"
       });
     }
-    this._set("bookmarkCreationOptions", value);
+    deprecatedProperty(logger, "bookmarkCreationOptions", {
+      replacement: "defaultCreateOptions",
+      version: "4.18"
+    });
+
+    this.viewModel.defaultCreateOptions = value;
   }
+
+  //----------------------------------
+  //  defaultCreateOptions
+  //----------------------------------
+
+  /**
+   * Specifies how new bookmarks will be created if [editingEnabled](#editingEnabled) is set to `true`.
+   * Can be used to enable or disable taking screenshots or creating an extent based on the current
+   * view when a bookmark is created. See {@link module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions BookmarkOptions}
+   * for the full list of options.
+   *
+   * @name defaultCreateOptions
+   * @instance
+   * @type {module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions}
+   *
+   * @since 4.18
+   *
+   * @example
+   * const bookmarks = new Bookmarks({
+   *    view: view,
+   *    editingEnabled: true,
+   *    // whenever a new bookmark is created, a 100x100 px
+   *    // screenshot of the view will be taken and the rotation, scale, and extent
+   *    // of the view will not be set as the viewpoint of the new bookmark
+   *    defaultCreateOptions: {
+   *      takeScreenshot: true,
+   *      captureViewpoint: false,
+   *      screenshotSettings: {
+   *        width: 100,
+   *        height: 100
+   *      }
+   *    }
+   * });
+   *
+   */
+  @aliasOf("viewModel.defaultCreateOptions")
+  defaultCreateOptions: BookmarkOptions = null;
+
+  //----------------------------------
+  //  defaultEditOptions
+  //----------------------------------
+
+  /**
+   * Specifies how bookmarks will be edited, if [editingEnabled](#editingEnabled) is set to `true`.
+   * Can be used to enable or disable taking screenshots or capturing the bookmark's viewpoint based on the current
+   * view when a bookmark is edited. See {@link module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions BookmarkOptions}
+   * for the full list of options.
+   *
+   * @name defaultEditOptions
+   * @instance
+   * @type {module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions}
+   *
+   * @since 4.18
+   */
+  @aliasOf("viewModel.defaultEditOptions")
+  defaultEditOptions: BookmarkOptions = null;
 
   //----------------------------------
   //  bookmarks
@@ -1307,7 +1377,7 @@ class Bookmarks extends Widget {
   private _addBookmarkSubmit(event: Event): void {
     event.preventDefault();
 
-    const { _addInputNode, _userState, bookmarkCreationOptions } = this;
+    const { _addInputNode, _userState } = this;
 
     const name = _addInputNode && _addInputNode.value.trim();
 
@@ -1318,7 +1388,7 @@ class Bookmarks extends Widget {
 
     _userState.loading = true;
 
-    this.viewModel.createBookmark(bookmarkCreationOptions).then((bookmark) => {
+    this.viewModel.createBookmark().then((bookmark) => {
       bookmark.name = name;
 
       this.viewModel.bookmarks.add(bookmark);
@@ -1327,10 +1397,7 @@ class Bookmarks extends Widget {
     });
   }
 
-  private async _editBookmarkAndClose(
-    bookmark: Bookmark,
-    options: BookmarkCreationOptions
-  ): Promise<void> {
+  private async _editBookmarkAndClose(bookmark: Bookmark, options: BookmarkOptions): Promise<void> {
     await this.viewModel.editBookmark(bookmark, options);
 
     this._closeEditBookmarkForm();
@@ -1426,19 +1493,16 @@ class Bookmarks extends Widget {
   }
 
   private async _refreshThumbnail(): Promise<void> {
-    const { _userState, _editMenu, viewModel, bookmarkCreationOptions } = this;
+    const { _userState, _editMenu, viewModel } = this;
 
     _userState.validationState = undefined;
 
     await viewModel.editBookmark(this._userState.editedBookmark, {
-      ...bookmarkCreationOptions,
-      ...{
-        takeScreenshot: true,
-        captureExtent: false,
-        captureViewpoint: false,
-        captureRotation: false,
-        captureScale: false
-      }
+      takeScreenshot: true,
+      captureExtent: false,
+      captureViewpoint: false,
+      captureRotation: false,
+      captureScale: false
     });
 
     _editMenu.open = false;
@@ -1484,4 +1548,4 @@ class Bookmarks extends Widget {
   }
 }
 
-export = Bookmarks;
+export default Bookmarks;

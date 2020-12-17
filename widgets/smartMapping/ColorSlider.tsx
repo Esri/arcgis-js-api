@@ -74,22 +74,22 @@
  */
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
-import ColorStop = require("esri/../renderers/visualVariables/support/ColorStop");
+import ColorStop from "esri/renderers/visualVariables/support/ColorStop";
 
 // esri.smartMapping.renderers
-import { ContinuousRendererResult } from "esri/../smartMapping/renderers/color";
+import { ContinuousRendererResult } from "esri/smartMapping/renderers/color";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ColorSlider
-import ColorSliderViewModel = require("esri/widgets/ColorSlider/ColorSliderViewModel");
+import ColorSliderViewModel from "esri/widgets/ColorSlider/ColorSliderViewModel";
 
 // esri.widgets.smartMapping.ColorSlider.t9n
 import ColorSliderMessages from "esri/widgets/ColorSlider/t9n/ColorSlider";
@@ -170,12 +170,11 @@ class ColorSlider extends SmartMappingSliderBase {
   //----------------------------------
 
   /**
-   * Only applicable when three thumbs (i.e. handles) are set on the slider [values](#values). This property
+   * Only applicable when three thumbs (i.e. handles) are set on the
+   * slider (i.e. when [primaryHandleEnabled](#primaryHandleEnabled) is `true`). This property
    * indicates whether the position of the outside handles are synced with the middle, or primary,
    * handle. When enabled, if the primary handle is moved then the outside handle positions are updated
    * while maintaining a fixed distance from the primary handle.
-   *
-   * Only applicable when [primaryHandleEnabled](#primaryHandleEnabled) is `true`.
    *
    * @name handlesSyncedToPrimary
    * @instance
@@ -235,8 +234,13 @@ class ColorSlider extends SmartMappingSliderBase {
   /**
    * When `true`, the slider will render a third handle between the
    * two handles already provided by default. This is the primary handle.
+   * Three or five [stops](#stops) must be defined for the primary handle to render.
+   * The primary handle represents the middle stop.
+   *
    * When [handlesSyncedToPrimary](#handlesSyncedToPrimary) is `true`, then
    * this handle will control the position of the others when moved.
+   *
+   * This is typically used in diverging, or `above-and-below` renderer configurations.
    *
    * @name primaryHandleEnabled
    * @instance
@@ -534,4 +538,4 @@ class ColorSlider extends SmartMappingSliderBase {
   }
 }
 
-export = ColorSlider;
+export default ColorSlider;

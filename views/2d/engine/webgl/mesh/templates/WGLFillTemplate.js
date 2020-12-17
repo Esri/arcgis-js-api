@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../../core/mathUtils","../../../../../../core/screenUtils","../../color","../../definitions","../../GeometryUtils","../../number","../../materialKey/MaterialKey","./WGLBaseFillTemplate","./WGLMeshTemplate"],(function(e,t,i,r,o,l,a,n,f,s,u,h){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var c=function(e){function t(t,i,r,o,l,a,n,f,u){var h=e.call(this)||this;h.effects=u;var c=s.FillMaterialKey.load(t);return i&&(c.sdf=i.sdf,c.pattern=!0,c.textureBinding=i.textureBinding),h.fillColor=r,h.tl=o,h.br=l,h.aux1=a,h.aux2=n,h.aux3=f,h._materialKey=c.data,h}return i.__extends(t,e),t.fromCIMFill=function(e,i){var s=e.color,u=s&&l.premultiplyAlphaRGBA(s)||0,h=e.materialKey;if(!i)return new t(h,null,u,0,0,0,0,f.i8888to32(0,0,0,e.colorLocked?1:0),e.effects);var c=i.rect,p=i.width,x=i.height,w=c.x+a.SPRITE_PADDING,d=c.y+a.SPRITE_PADDING,P=w+p,v=d+x,y=r.nextHighestPowerOfTwo(o.pt2px(e.height||0));y>255?y=255:y<=0&&(y=r.nextHighestPowerOfTwo(v-d));var g=r.nextHighestPowerOfTwo(o.pt2px(e.height/x*p||0));g>255?g=255:g<=0&&(g=r.nextHighestPowerOfTwo(P-w));var T=o.pt2px(e.offsetX||0)+128;T>255&&(T=255);var m=o.pt2px(-e.offsetY||0)+128;m>255&&(m=255);var I=e.scaleX||1;return new t(h,i,u,f.i1616to32(w,d),f.i1616to32(P,v),f.i8888to32(g,y,T,m),f.i1616to32(128*I,128),f.i8888to32(0,0,n.degToByte(e.angle),e.colorLocked?1:0),e.effects)},t.fromSimpleFill=function(e,i,o){void 0===o&&(o=!1);var n=e.color,s=n&&"esriSFSNull"!==e.style&&l.premultiplyAlphaRGBAArray(n)||0,u=f.i8888to32(0,0,0,o?255:0),h=e.materialKey;if(!i)return new t(h,null,s,0,0,0,0,u,null);var c=i.rect,p=i.width,x=i.height,w=c.x+a.SPRITE_PADDING,d=c.y+a.SPRITE_PADDING,P=w+p,v=d+x;return new t(h,i,s,f.i1616to32(w,d),f.i1616to32(P,v),f.i8888to32(r.nextHighestPowerOfTwo(P-w),r.nextHighestPowerOfTwo(v-d),0,0),f.i1616to32(128,128),u,null)},t.fromPictureFill=function(e,i,l){void 0===l&&(l=!1);var n=a.PICTURE_FILL_COLOR,s=i.rect,u=i.width,h=i.height,c=s.x+a.SPRITE_PADDING,p=s.y+a.SPRITE_PADDING,x=c+u,w=p+h,d=f.i1616to32(c,p),P=f.i1616to32(x,w),v=r.nextHighestPowerOfTwo(o.pt2px(e.width));v>255&&(v=255);var y=r.nextHighestPowerOfTwo(o.pt2px(e.height));y>255&&(y=255);var g=o.pt2px(e.xoffset)+128;g>255&&(g=255);var T=o.pt2px(-e.yoffset)+128;T>255&&(T=255);var m=f.i8888to32(v,y,g,T),I=f.i1616to32(128*e.xscale,128*e.yscale),_=f.i8888to32(0,0,0,l?255:0);return new t(e.materialKey,i,n,d,P,m,I,_,null)},t}(u.default(h.default));t.default=c}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../../chunks/_rollupPluginBabelHelpers","../../../../../../core/mathUtils","../../../../../../core/screenUtils","../../definitions","../../number","../../materialKey/MaterialKey","../../color","../../GeometryUtils","./WGLMeshTemplate","./WGLBaseFillTemplate"],(function(t,e,i,o,l,r,n,s,c,f){"use strict";const a=128;return function(c){function f(t,e,i,o,l,n,s,f,a){var u;(u=c.call(this)||this).effects=a;const h=r.FillMaterialKey.load(t);return e&&(h.sdf=e.sdf,h.pattern=!0,h.textureBinding=e.textureBinding),u.fillColor=i,u.tl=o,u.br=l,u.aux1=n,u.aux2=s,u.aux3=f,u._materialKey=h.data,u}return t._inheritsLoose(f,c),f.fromCIMFill=function(t,r){const c=t.color,u=c&&n.premultiplyAlphaRGBA(c)||0,h=t.materialKey;if(!r){return new f(h,null,u,0,0,0,0,l.i8888to32(0,0,0,t.colorLocked?1:0),t.effects)}const{rect:p,width:x,height:w}=r,P=p.x+o.SPRITE_PADDING,g=p.y+o.SPRITE_PADDING,y=P+x,T=g+w;let m=e.nextHighestPowerOfTwo(i.pt2px(t.height||0));m>255?m=255:m<=0&&(m=e.nextHighestPowerOfTwo(T-g));let d=e.nextHighestPowerOfTwo(i.pt2px(t.height/w*x||0));d>255?d=255:d<=0&&(d=e.nextHighestPowerOfTwo(y-P));let I=i.pt2px(t.offsetX||0)+a;I>255&&(I=255);let D=i.pt2px(-t.offsetY||0)+a;D>255&&(D=255);const A=t.scaleX||1;return new f(h,r,u,l.i1616to32(P,g),l.i1616to32(y,T),l.i8888to32(d,m,I,D),l.i1616to32(a*A,128),l.i8888to32(0,0,s.degToByte(t.angle),t.colorLocked?1:0),t.effects)},f.fromSimpleFill=function(t,i,r=!1){const{color:s}=t,c=s&&"esriSFSNull"!==t.style&&n.premultiplyAlphaRGBAArray(s)||0,u=l.i8888to32(0,0,0,r?255:0),h=t.materialKey;if(!i)return new f(h,null,c,0,0,0,0,u,null);const{rect:p,width:x,height:w}=i,P=p.x+o.SPRITE_PADDING,g=p.y+o.SPRITE_PADDING,y=P+x,T=g+w;return new f(h,i,c,l.i1616to32(P,g),l.i1616to32(y,T),l.i8888to32(e.nextHighestPowerOfTwo(y-P),e.nextHighestPowerOfTwo(T-g),0,0),l.i1616to32(a,a),u,null)},f.fromPictureFill=function(t,r,n=!1){const s=o.PICTURE_FILL_COLOR,{rect:c,width:u,height:h}=r,p=c.x+o.SPRITE_PADDING,x=c.y+o.SPRITE_PADDING,w=p+u,P=x+h,g=l.i1616to32(p,x),y=l.i1616to32(w,P);let T=e.nextHighestPowerOfTwo(i.pt2px(t.width));T>255&&(T=255);let m=e.nextHighestPowerOfTwo(i.pt2px(t.height));m>255&&(m=255);let d=i.pt2px(t.xoffset)+a;d>255&&(d=255);let I=i.pt2px(-t.yoffset)+a;I>255&&(I=255);const D=l.i8888to32(T,m,d,I),A=l.i1616to32(a*t.xscale,a*t.yscale),G=l.i8888to32(0,0,0,n?255:0);return new f(t.materialKey,r,s,g,y,D,A,G,null)},f}(f(c))}));

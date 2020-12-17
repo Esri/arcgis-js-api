@@ -1,25 +1,104 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.glsl","./Reprojection.glsl"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.include(o.ReadLinearDepth),e.include(r.Reprojection),e.fragment.code.add(t.glsl`
+  const int maxSteps = ${a.highStepCount?"150;":"75;"}
 
-define(["require","exports","tslib","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../shaderModules/interfaces"],(function(e,t,n,o,r,a){"use strict";function i(e,t){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.include(o.ReadLinearDepth),e.include(r.Reprojection),e.fragment.code.add(a.glsl(d||(d=n.__makeTemplateObject(["\n  const int maxSteps = ","\n\n  vec4 applyProjectionMat(mat4 projectionMat, vec3 x)\n  {\n    vec4 projectedCoord =  projectionMat * vec4(x, 1.0);\n    projectedCoord.xy /= projectedCoord.w;\n    projectedCoord.xy = projectedCoord.xy*0.5 + 0.5;\n    return projectedCoord;\n  }\n\n  vec3 screenSpaceIntersection(vec3 dir, vec3 startPosition, vec3 viewDir, vec3 normal)\n  {\n    vec3 viewPos = startPosition;\n    vec3 viewPosEnd = startPosition;\n\n    // Project the start position to the screen\n    vec4 projectedCoordStart = applyProjectionMat(rpProjectionMat, viewPos);\n    vec3  Q0 = viewPos / projectedCoordStart.w; // homogeneous camera space\n    float k0 = 1.0/ projectedCoordStart.w;\n\n    // advance the position in the direction of the reflection\n    viewPos += dir;\n\n    vec4 projectedCoordVanishingPoint = applyProjectionMat(rpProjectionMat, dir);\n\n    // Project the advanced position to the screen\n    vec4 projectedCoordEnd = applyProjectionMat(rpProjectionMat, viewPos);\n    vec3  Q1 = viewPos / projectedCoordEnd.w; // homogeneous camera space\n    float k1 = 1.0/ projectedCoordEnd.w;\n\n    // calculate the reflection direction in the screen space\n    vec2 projectedCoordDir = (projectedCoordEnd.xy - projectedCoordStart.xy);\n    vec2 projectedCoordDistVanishingPoint = (projectedCoordVanishingPoint.xy - projectedCoordStart.xy);\n\n    float yMod = min(abs(projectedCoordDistVanishingPoint.y), 1.0);\n\n    float projectedCoordDirLength = length(projectedCoordDir);\n    float maxSt = float(maxSteps);\n\n    // normalize the projection direction depending on maximum steps\n    // this determines how blocky the reflection looks\n    vec2 dP = yMod * (projectedCoordDir)/(maxSt * projectedCoordDirLength);\n\n    // Normalize the homogeneous camera space coordinates\n    vec3  dQ = yMod * (Q1 - Q0)/(maxSt * projectedCoordDirLength);\n    float dk = yMod * (k1 - k0)/(maxSt * projectedCoordDirLength);\n\n    // initialize the variables for ray marching\n    vec2 P = projectedCoordStart.xy;\n    vec3 Q = Q0;\n    float k = k0;\n    float rayStartZ = -startPosition.z; // estimated ray start depth value\n    float rayEndZ = -startPosition.z;   // estimated ray end depth value\n    float prevEstimateZ = -startPosition.z;\n    float rayDiffZ = 0.0;\n    float dDepth;\n    float depth;\n    float rayDiffZOld = 0.0;\n\n    // early outs\n    if (dot(normal, dir) < 0.0 || dot(-viewDir, normal) < 0.0)\n      return vec3(P, 0.0);\n\n    for(int i = 0; i < maxSteps-1; i++)\n    {\n      depth = -linearDepthFromTexture(depthMapView, P, nearFar); // get linear depth from the depth buffer\n\n      // estimate depth of the marching ray\n      rayStartZ = prevEstimateZ;\n      dDepth = -rayStartZ - depth;\n      rayEndZ = (dQ.z * 0.5 + Q.z)/ ((dk * 0.5 + k));\n      rayDiffZ = rayEndZ- rayStartZ;\n      prevEstimateZ = rayEndZ;\n\n      if(-rayEndZ > nearFar[1] || -rayEndZ < nearFar[0] || P.y < 0.0  || P.y > 1.0 )\n      {\n        return vec3(P, 0.);\n      }\n\n      // If we detect a hit - return the intersection point, two conditions:\n      //  - dDepth > 0.0 - sampled point depth is in front of estimated depth\n      //  - if difference between dDepth and rayDiffZOld is not too large\n      //  - if difference between dDepth and 0.025/abs(k) is not too large\n      //  - if the sampled depth is not behind far plane or in front of near plane\n\n      if((dDepth) < 0.025/abs(k) + abs(rayDiffZ) && dDepth > 0.0 && depth > nearFar[0] && depth < nearFar[1] && abs(P.y - projectedCoordStart.y) > invResolutionHeight)\n      {\n          return vec3(P, depth);\n      }\n\n      // continue with ray marching\n      P += dP;\n      Q.z += dQ.z;\n      k += dk;\n      rayDiffZOld = rayDiffZ;\n    }\n    return vec3(P, 0.0);\n  }\n  "],["\n  const int maxSteps = ","\n\n  vec4 applyProjectionMat(mat4 projectionMat, vec3 x)\n  {\n    vec4 projectedCoord =  projectionMat * vec4(x, 1.0);\n    projectedCoord.xy /= projectedCoord.w;\n    projectedCoord.xy = projectedCoord.xy*0.5 + 0.5;\n    return projectedCoord;\n  }\n\n  vec3 screenSpaceIntersection(vec3 dir, vec3 startPosition, vec3 viewDir, vec3 normal)\n  {\n    vec3 viewPos = startPosition;\n    vec3 viewPosEnd = startPosition;\n\n    // Project the start position to the screen\n    vec4 projectedCoordStart = applyProjectionMat(rpProjectionMat, viewPos);\n    vec3  Q0 = viewPos / projectedCoordStart.w; // homogeneous camera space\n    float k0 = 1.0/ projectedCoordStart.w;\n\n    // advance the position in the direction of the reflection\n    viewPos += dir;\n\n    vec4 projectedCoordVanishingPoint = applyProjectionMat(rpProjectionMat, dir);\n\n    // Project the advanced position to the screen\n    vec4 projectedCoordEnd = applyProjectionMat(rpProjectionMat, viewPos);\n    vec3  Q1 = viewPos / projectedCoordEnd.w; // homogeneous camera space\n    float k1 = 1.0/ projectedCoordEnd.w;\n\n    // calculate the reflection direction in the screen space\n    vec2 projectedCoordDir = (projectedCoordEnd.xy - projectedCoordStart.xy);\n    vec2 projectedCoordDistVanishingPoint = (projectedCoordVanishingPoint.xy - projectedCoordStart.xy);\n\n    float yMod = min(abs(projectedCoordDistVanishingPoint.y), 1.0);\n\n    float projectedCoordDirLength = length(projectedCoordDir);\n    float maxSt = float(maxSteps);\n\n    // normalize the projection direction depending on maximum steps\n    // this determines how blocky the reflection looks\n    vec2 dP = yMod * (projectedCoordDir)/(maxSt * projectedCoordDirLength);\n\n    // Normalize the homogeneous camera space coordinates\n    vec3  dQ = yMod * (Q1 - Q0)/(maxSt * projectedCoordDirLength);\n    float dk = yMod * (k1 - k0)/(maxSt * projectedCoordDirLength);\n\n    // initialize the variables for ray marching\n    vec2 P = projectedCoordStart.xy;\n    vec3 Q = Q0;\n    float k = k0;\n    float rayStartZ = -startPosition.z; // estimated ray start depth value\n    float rayEndZ = -startPosition.z;   // estimated ray end depth value\n    float prevEstimateZ = -startPosition.z;\n    float rayDiffZ = 0.0;\n    float dDepth;\n    float depth;\n    float rayDiffZOld = 0.0;\n\n    // early outs\n    if (dot(normal, dir) < 0.0 || dot(-viewDir, normal) < 0.0)\n      return vec3(P, 0.0);\n\n    for(int i = 0; i < maxSteps-1; i++)\n    {\n      depth = -linearDepthFromTexture(depthMapView, P, nearFar); // get linear depth from the depth buffer\n\n      // estimate depth of the marching ray\n      rayStartZ = prevEstimateZ;\n      dDepth = -rayStartZ - depth;\n      rayEndZ = (dQ.z * 0.5 + Q.z)/ ((dk * 0.5 + k));\n      rayDiffZ = rayEndZ- rayStartZ;\n      prevEstimateZ = rayEndZ;\n\n      if(-rayEndZ > nearFar[1] || -rayEndZ < nearFar[0] || P.y < 0.0  || P.y > 1.0 )\n      {\n        return vec3(P, 0.);\n      }\n\n      // If we detect a hit - return the intersection point, two conditions:\n      //  - dDepth > 0.0 - sampled point depth is in front of estimated depth\n      //  - if difference between dDepth and rayDiffZOld is not too large\n      //  - if difference between dDepth and 0.025/abs(k) is not too large\n      //  - if the sampled depth is not behind far plane or in front of near plane\n\n      if((dDepth) < 0.025/abs(k) + abs(rayDiffZ) && dDepth > 0.0 && depth > nearFar[0] && depth < nearFar[1] && abs(P.y - projectedCoordStart.y) > invResolutionHeight)\n      {\n          return vec3(P, depth);\n      }\n\n      // continue with ray marching\n      P += dP;\n      Q.z += dQ.z;\n      k += dk;\n      rayDiffZOld = rayDiffZ;\n    }\n    return vec3(P, 0.0);\n  }\n  "])),t.highStepCount?"150;":"75;"))}var d;Object.defineProperty(t,"__esModule",{value:!0}),t.ScreenSpaceReflections=void 0,t.ScreenSpaceReflections=i,function(e){e.bindUniforms=function(e,t,n){n.ssrEnabled&&(e.setUniform1i("depthMapView",n.linearDepthTextureID),t.bindTexture(n.linearDepthTexture,n.linearDepthTextureID),e.setUniform2fv("nearFar",n.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",n.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/n.camera.height),r.Reprojection.bindUniforms(e,t,n))}}(i=t.ScreenSpaceReflections||(t.ScreenSpaceReflections={}))}));
+  vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
+  {
+    vec4 projectedCoord =  projectionMat * vec4(x, 1.0);
+    projectedCoord.xy /= projectedCoord.w;
+    projectedCoord.xy = projectedCoord.xy*0.5 + 0.5;
+    return projectedCoord;
+  }
+
+  vec3 screenSpaceIntersection(vec3 dir, vec3 startPosition, vec3 viewDir, vec3 normal)
+  {
+    vec3 viewPos = startPosition;
+    vec3 viewPosEnd = startPosition;
+
+    // Project the start position to the screen
+    vec4 projectedCoordStart = applyProjectionMat(rpProjectionMat, viewPos);
+    vec3  Q0 = viewPos / projectedCoordStart.w; // homogeneous camera space
+    float k0 = 1.0/ projectedCoordStart.w;
+
+    // advance the position in the direction of the reflection
+    viewPos += dir;
+
+    vec4 projectedCoordVanishingPoint = applyProjectionMat(rpProjectionMat, dir);
+
+    // Project the advanced position to the screen
+    vec4 projectedCoordEnd = applyProjectionMat(rpProjectionMat, viewPos);
+    vec3  Q1 = viewPos / projectedCoordEnd.w; // homogeneous camera space
+    float k1 = 1.0/ projectedCoordEnd.w;
+
+    // calculate the reflection direction in the screen space
+    vec2 projectedCoordDir = (projectedCoordEnd.xy - projectedCoordStart.xy);
+    vec2 projectedCoordDistVanishingPoint = (projectedCoordVanishingPoint.xy - projectedCoordStart.xy);
+
+    float yMod = min(abs(projectedCoordDistVanishingPoint.y), 1.0);
+
+    float projectedCoordDirLength = length(projectedCoordDir);
+    float maxSt = float(maxSteps);
+
+    // normalize the projection direction depending on maximum steps
+    // this determines how blocky the reflection looks
+    vec2 dP = yMod * (projectedCoordDir)/(maxSt * projectedCoordDirLength);
+
+    // Normalize the homogeneous camera space coordinates
+    vec3  dQ = yMod * (Q1 - Q0)/(maxSt * projectedCoordDirLength);
+    float dk = yMod * (k1 - k0)/(maxSt * projectedCoordDirLength);
+
+    // initialize the variables for ray marching
+    vec2 P = projectedCoordStart.xy;
+    vec3 Q = Q0;
+    float k = k0;
+    float rayStartZ = -startPosition.z; // estimated ray start depth value
+    float rayEndZ = -startPosition.z;   // estimated ray end depth value
+    float prevEstimateZ = -startPosition.z;
+    float rayDiffZ = 0.0;
+    float dDepth;
+    float depth;
+    float rayDiffZOld = 0.0;
+
+    // early outs
+    if (dot(normal, dir) < 0.0 || dot(-viewDir, normal) < 0.0)
+      return vec3(P, 0.0);
+
+    for(int i = 0; i < maxSteps-1; i++)
+    {
+      depth = -linearDepthFromTexture(depthMapView, P, nearFar); // get linear depth from the depth buffer
+
+      // estimate depth of the marching ray
+      rayStartZ = prevEstimateZ;
+      dDepth = -rayStartZ - depth;
+      rayEndZ = (dQ.z * 0.5 + Q.z)/ ((dk * 0.5 + k));
+      rayDiffZ = rayEndZ- rayStartZ;
+      prevEstimateZ = rayEndZ;
+
+      if(-rayEndZ > nearFar[1] || -rayEndZ < nearFar[0] || P.y < 0.0  || P.y > 1.0 )
+      {
+        return vec3(P, 0.);
+      }
+
+      // If we detect a hit - return the intersection point, two conditions:
+      //  - dDepth > 0.0 - sampled point depth is in front of estimated depth
+      //  - if difference between dDepth and rayDiffZOld is not too large
+      //  - if difference between dDepth and 0.025/abs(k) is not too large
+      //  - if the sampled depth is not behind far plane or in front of near plane
+
+      if((dDepth) < 0.025/abs(k) + abs(rayDiffZ) && dDepth > 0.0 && depth > nearFar[0] && depth < nearFar[1] && abs(P.y - projectedCoordStart.y) > invResolutionHeight)
+      {
+          return vec3(P, depth);
+      }
+
+      // continue with ray marching
+      P += dP;
+      Q.z += dQ.z;
+      k += dk;
+      rayDiffZOld = rayDiffZ;
+    }
+    return vec3(P, 0.0);
+  }
+  `)}!function(e){e.bindUniforms=function(e,t,o){o.ssrEnabled&&(e.setUniform1i("depthMapView",o.linearDepthTextureID),t.bindTexture(o.linearDepthTexture,o.linearDepthTextureID),e.setUniform2fv("nearFar",o.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",o.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/o.camera.height),r.Reprojection.bindUniforms(e,t,o))}}(a||(a={})),e.ScreenSpaceReflections=a,Object.defineProperty(e,"__esModule",{value:!0})}));

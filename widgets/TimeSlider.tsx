@@ -12,6 +12,35 @@
  * or a specific time interval (e.g. days). The [values](#values) property defines the
  * current location of the thumbs.
  *
+ * TimeSlider will automatically import settings from a WebMap if that WebMap contains a timeSlider definition and is indirectly associated with
+ * the widget. For example, consider the following snippet.
+ * ```js
+ * const view = new MapView({
+ *   map: WebMap.fromJSON({
+ *     operationalLayers: [],
+ *     widgets: {
+ *       timeSlider: {
+ *         properties:{
+ *           currentTimeExtent: [1522299600000, 1524114000000],
+ *           endTime: 1536814800000,
+ *           startTime: 1522299600000,
+ *           thumbCount: 2,
+ *           thumbMovingRate: 2000,
+ *           timeStopInterval: {
+ *             interval: 3,
+ *             units: "esriTimeUnitsWeeks"
+ *           }
+ *        }
+ *      }
+ *   }
+ * });
+ * const timeSlider = new TimeSlider({
+ *   view
+ * });
+ * const { unit, value } = timeSlider.stops.interval;
+ * console.log(`The stop interval is every ${value} {$unit}.`); // output: "This stop interval is every 3 weeks."
+ * ```
+ *
  * [![widgets-timeSlider](../../assets/img/apiref/widgets/widgets-timeSlider.png)](../sample-code/sandbox/sandbox.html?sample=widgets-timeslider)
  *
  * The TimeSlider widget can be configured to manipulate your time aware data in two different ways
@@ -114,14 +143,16 @@
  */
 
 // esri
-import TimeExtent = require("esri/TimeExtent");
-import TimeInterval = require("esri/TimeInterval");
+import TimeExtent from "esri/TimeExtent";
+import TimeInterval from "esri/TimeInterval";
+import WebMap from "esri/WebMap";
+import WebScene from "esri/WebScene";
 
 // esri.core
 import { equals } from "esri/core/arrayUtils";
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { neverReached } from "esri/core/compilerUtils";
-import EsriError = require("esri/core/Error");
+import EsriError from "esri/core/Error";
 import { on } from "esri/core/events";
 import { clamp } from "esri/core/mathUtils";
 import { throttle } from "esri/core/throttle";
@@ -140,12 +171,13 @@ import { offsetDate, truncateDate } from "esri/layers/support/timeUtils";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Slider = require("esri/widgets/Slider");
-import Widget = require("esri/widgets/Widget");
+import { PersistableWidget } from "esri/widgets/interfaces";
+import Slider from "esri/widgets/Slider";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Slider
 import { TickConfig } from "esri/widgets/Slider/interfaces";
@@ -156,7 +188,7 @@ import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/
 
 // esri.widgets.TimeSlider
 import { Stops, TimeSliderMode } from "esri/widgets/TimeSlider/interfaces";
-import TimeSliderViewModel = require("esri/widgets/TimeSlider/TimeSliderViewModel");
+import TimeSliderViewModel from "esri/widgets/TimeSlider/TimeSliderViewModel";
 
 // esri.widgets.TimeSlider.t9n
 import TimeSliderMessages from "esri/widgets/TimeSlider/t9n/TimeSlider";
@@ -398,7 +430,7 @@ type TimeSliderProperties = Partial<
 >;
 
 @subclass("esri.widgets.TimeSlider")
-class TimeSlider extends Widget {
+class TimeSlider extends Widget implements PersistableWidget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -789,6 +821,7 @@ class TimeSlider extends Widget {
    * });
    */
   @property()
+  @renderable()
   labelFormatFunction: DateLabelFormatter = null;
 
   //----------------------------------
@@ -931,6 +964,13 @@ class TimeSlider extends Widget {
 
   /**
    * The time (in milliseconds) between animation steps.
+   *
+   * ::: esri-md class="panel trailer-1"
+   *
+   * When a {@link module:esri/views/View} is associated with a TimeSlider and the TimeSlider is playing, the playback will pause before advancing if the View is still updating.
+   * For example, if the `playRate` is set to 1,000 (one second) and the `View` takes 1.5 seconds to render then the TimeSlider thumb(s) will advance every
+   * 1.5 seconds rather than every second.
+   * :::
    *
    * @name playRate
    * @instance
@@ -1655,6 +1695,43 @@ class TimeSlider extends Widget {
     return timeSlider;
   }
 
+  /**
+   * Updates the {@link module:esri/WebMap~TimeSlider time slider} widget definition in the provided {@link module:esri/WebMap}.
+   *
+   * @method updateWebDocument
+   * @instance
+   * @since 4.18
+   *
+   * @param {module:esri/WebMap} webmap - The webmap to be updated.
+   *
+   * @example
+   * // Load a webmap containing a timeslider widget into a MapView. Once loaded, advance the current time
+   * // extent by one stop and then update the original webmap.
+   *
+   * const webmap = new WebMap({
+   *   portalItem: {
+   *     id: "acea555a4b6f412dae98994bcfdbc002"
+   *   }
+   * });
+   *
+   * const view = new MapView({
+   *   container: "viewDiv",
+   *   map: webmap
+   * });
+   * await view.when();
+   *
+   * const timeSlider = new TimeSlider({
+   *   view
+   * });
+   * // Advance to thumb to next time extent
+   * timeSlider.next();
+   * timeSlider.updateWebDocument(webmap);
+   * webmap.save();
+   */
+  updateWebDocument(document: WebMap | WebScene): void {
+    this.viewModel?.updateWebDocument(document);
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Private Methods
@@ -1772,4 +1849,4 @@ class TimeSlider extends Widget {
   }
 }
 
-export = TimeSlider;
+export default TimeSlider;

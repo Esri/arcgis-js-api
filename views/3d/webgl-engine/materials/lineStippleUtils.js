@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/maybe","../../../webgl"],(function(e,t,r,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.createStipplePatternSimple=t.createStipplePattern=t.StippleTextureRepository=void 0;var i=function(){function e(){this.cache=new Map}return e.prototype.dispose=function(){this.cache.forEach((function(e){r.isSome(e.texture)&&(e.texture.dispose(),e.texture=null)})),this.cache.clear()},e.prototype.acquire=function(e){if(r.isNone(e))return null;var t=this.patternId(e),i=this.cache.get(t);if(i)return i.refCount++,i.bind;var o=this.patternToTextureData(e,2),u=o.length/2,a={refCount:1,texture:null,bind:function(e,t){return r.isNone(a.texture)&&(a.texture=new n.Texture(e,{width:o.length,height:1,internalFormat:6406,pixelFormat:6406,dataType:5121,wrapMode:33071},o)),e.bindTexture(a.texture,t),u}};return this.cache.set(t,a),a.bind},e.prototype.release=function(e){if(!r.isNone(e)){var t=this.patternId(e),n=this.cache.get(t);n&&(n.refCount--,0===n.refCount&&(r.isSome(n.texture)&&n.texture.dispose(),this.cache.delete(t)))}},e.prototype.swap=function(e,t){var r=this.acquire(t);return this.release(e),r},e.prototype.patternId=function(e){return e.join(",")},e.prototype.patternToTextureData=function(e,t){for(var r=e.reduce((function(e,t){return e+t}))*t,n=new Uint8Array(r),i=!0,o=0,u=0,a=e;u<a.length;u++){for(var p=a[u],c=0;c<p*t;c++)n[o++]=i?255:0;i=!i}return n},e}();t.StippleTextureRepository=i,t.createStipplePattern=function(e){return r.isNone(e)?e:e.slice()},t.createStipplePatternSimple=function(e){return[e,e]}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/has","../../../../core/maybe","../../../../chunks/builtins","../../../webgl/Texture","../../../webgl/FramebufferObject","../../../webgl/RenderingContext"],(function(e,t,n,r,i,u,o){"use strict";let c=function(){function e(){this.cache=new Map}var t=e.prototype;return t.dispose=function(){this.cache.forEach((e=>{n.isSome(e.texture)&&(e.texture.dispose(),e.texture=null)})),this.cache.clear()},t.acquire=function(e){if(n.isNone(e))return null;const t=this.patternId(e),r=this.cache.get(t);if(r)return r.refCount++,r.bind;const u=this.patternToTextureData(e,2),o=u.length/2,c={refCount:1,texture:null,bind:(e,t)=>(n.isNone(c.texture)&&(c.texture=new i(e,{width:u.length,height:1,internalFormat:6406,pixelFormat:6406,dataType:5121,wrapMode:33071},u)),e.bindTexture(c.texture,t),o)};return this.cache.set(t,c),c.bind},t.release=function(e){if(n.isNone(e))return;const t=this.patternId(e),r=this.cache.get(t);r&&(r.refCount--,0===r.refCount&&(n.isSome(r.texture)&&r.texture.dispose(),this.cache.delete(t)))},t.swap=function(e,t){const n=this.acquire(t);return this.release(e),n},t.patternId=function(e){return e.join(",")},t.patternToTextureData=function(e,t){const n=e.reduce(((e,t)=>e+t))*t,r=new Uint8Array(n);let i=!0,u=0;for(const n of e){for(let e=0;e<n*t;e++)r[u++]=i?255:0;i=!i}return r},e}();e.StippleTextureRepository=c,e.createStipplePattern=function(e){return n.isNone(e)?e:e.slice()},e.createStipplePatternSimple=function(e){return[e,e]},Object.defineProperty(e,"__esModule",{value:!0})}));

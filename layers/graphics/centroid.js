@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(r,e){"use strict";function n(r,e){return r?e?4:3:e?3:2}function t(r,e,t,I,u,i,o){void 0===o&&(o=1);for(var N=n(u,i),l=t,f=t+N,T=0,s=0,g=0,h=0,v=0,a=0,c=I-1;a<c;a++,l+=N,f+=N){var d=e[l],E=e[l+1],m=e[l+2],_=e[f],b=e[f+1],F=e[f+2],V=d*b-_*E;h+=V,T+=(d+_)*V,s+=(E+b)*V,u&&(g+=(m+F)*(V=d*F-_*m),v+=V),d<r[0]&&(r[0]=d),d>r[1]&&(r[1]=d),E<r[2]&&(r[2]=E),E>r[3]&&(r[3]=E),u&&(m<r[4]&&(r[4]=m),m>r[5]&&(r[5]=m))}if(h*o>0&&(h*=-1),v*o>0&&(v*=-1),!h)return null;var Y=[T,s,.5*h];return u&&(Y[3]=g,Y[4]=.5*v),Y}function I(r,e,t,I,l){for(var f=n(I,l),T=e,s=e+f,g=0,h=0,v=0,a=0,c=0,d=t-1;c<d;c++,T+=f,s+=f){var E,m=r[T],_=r[T+1],b=r[T+2],F=r[s],V=r[s+1],Y=r[s+2],O=I?i(m,_,b,F,V,Y):u(m,_,F,V);if(O)if(g+=O,I)h+=O*(E=N(m,_,b,F,V,Y))[0],v+=O*E[1],a+=O*E[2];else h+=O*(E=o(m,_,F,V))[0],v+=O*E[1]}return g>0?I?[h/g,v/g,a/g]:[h/g,v/g]:t>0?I?[r[e],r[e+1],r[e+2]]:[r[e],r[e+1]]:null}function u(r,e,n,t){var I=n-r,u=t-e;return Math.sqrt(I*I+u*u)}function i(r,e,n,t,I,u){var i=t-r,o=I-e,N=u-n;return Math.sqrt(i*i+o*o+N*N)}function o(r,e,n,t){return[r+.5*(n-r),e+.5*(t-e)]}function N(r,e,n,t,I,u){return[r+.5*(t-r),e+.5*(I-e),n+.5*(u-n)]}Object.defineProperty(e,"__esModule",{value:!0}),e.lineCentroid=e.getCentroidOptimizedGeometry=void 0,e.getCentroidOptimizedGeometry=function(r,e,u,i,o){if(!e||!e.lengths.length)return null;var N="upperLeft"===(null==o?void 0:o.originPosition)?-1:1;r.lengths.length&&(r.lengths.length=0),r.coords.length&&(r.coords.length=0);for(var l=r.coords,f=[],T=u?[Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY]:[Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY],s=e.lengths,g=e.coords,h=n(u,i),v=0,a=0,c=s;a<c.length;a++){var d=c[a],E=t(T,g,v,d,u,i,N);E&&f.push(E),v+=d*h}if(f.sort((function(r,e){var n=N*r[2]-N*e[2];return 0===n&&u&&(n=r[4]-e[4]),n})),f.length){var m=6*f[0][2];l[0]=f[0][0]/m,l[1]=f[0][1]/m,u&&(m=6*f[0][4],l[2]=0!==m?f[0][3]/m:0),(l[0]<T[0]||l[0]>T[1]||l[1]<T[2]||l[1]>T[3]||u&&(l[2]<T[4]||l[2]>T[5]))&&(l.length=0)}if(!l.length){var _=e.lengths[0]?I(g,0,s[0],u,i):null;if(!_)return null;l[0]=_[0],l[1]=_[1],u&&_.length>2&&(l[2]=_[2])}return r},e.lineCentroid=I}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";function n(t,n){return t?n?4:3:n?3:2}function e(t,e,r,o,I,u,l=1){const N=n(I,u);let s=r,c=r+N,i=0,f=0,T=0,h=0,g=0;for(let n=0,r=o-1;n<r;n++,s+=N,c+=N){const n=e[s],r=e[s+1],o=e[s+2],u=e[c],l=e[c+1],N=e[c+2];let E=n*l-u*r;h+=E,i+=(n+u)*E,f+=(r+l)*E,I&&(E=n*N-u*o,T+=(o+N)*E,g+=E),n<t[0]&&(t[0]=n),n>t[1]&&(t[1]=n),r<t[2]&&(t[2]=r),r>t[3]&&(t[3]=r),I&&(o<t[4]&&(t[4]=o),o>t[5]&&(t[5]=o))}if(h*l>0&&(h*=-1),g*l>0&&(g*=-1),!h)return null;const E=[i,f,.5*h];return I&&(E[3]=T,E[4]=.5*g),E}function r(t,e,r,N,s){const c=n(N,s);let i=e,f=e+c,T=0,h=0,g=0,E=0;for(let n=0,e=r-1;n<e;n++,i+=c,f+=c){const n=t[i],e=t[i+1],r=t[i+2],s=t[f],c=t[f+1],m=t[f+2],_=N?I(n,e,r,s,c,m):o(n,e,s,c);if(_)if(T+=_,N){const t=l(n,e,r,s,c,m);h+=_*t[0],g+=_*t[1],E+=_*t[2]}else{const t=u(n,e,s,c);h+=_*t[0],g+=_*t[1]}}return T>0?N?[h/T,g/T,E/T]:[h/T,g/T]:r>0?N?[t[e],t[e+1],t[e+2]]:[t[e],t[e+1]]:null}function o(t,n,e,r){const o=e-t,I=r-n;return Math.sqrt(o*o+I*I)}function I(t,n,e,r,o,I){const u=r-t,l=o-n,N=I-e;return Math.sqrt(u*u+l*l+N*N)}function u(t,n,e,r){return[t+.5*(e-t),n+.5*(r-n)]}function l(t,n,e,r,o,I){return[t+.5*(r-t),n+.5*(o-n),e+.5*(I-e)]}t.getCentroidOptimizedGeometry=function(t,o,I,u,l){if(!o||!o.lengths.length)return null;const N="upperLeft"===(null==l?void 0:l.originPosition)?-1:1;t.lengths.length&&(t.lengths.length=0),t.coords.length&&(t.coords.length=0);const s=t.coords,c=[],i=I?[Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY]:[Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY,Number.NEGATIVE_INFINITY],{lengths:f,coords:T}=o,h=n(I,u);let g=0;for(const t of f){const n=e(i,T,g,t,I,u,N);n&&c.push(n),g+=t*h}if(c.sort(((t,n)=>{let e=N*t[2]-N*n[2];return 0===e&&I&&(e=t[4]-n[4]),e})),c.length){let t=6*c[0][2];s[0]=c[0][0]/t,s[1]=c[0][1]/t,I&&(t=6*c[0][4],s[2]=0!==t?c[0][3]/t:0),(s[0]<i[0]||s[0]>i[1]||s[1]<i[2]||s[1]>i[3]||I&&(s[2]<i[4]||s[2]>i[5]))&&(s.length=0)}if(!s.length){const t=o.lengths[0]?r(T,0,f[0],I,u):null;if(!t)return null;s[0]=t[0],s[1]=t[1],I&&t.length>2&&(s[2]=t[2])}return t},t.lineCentroid=r,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -42,10 +42,10 @@
  */
 
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 
 // esri.core
-import EsriError = require("esri/core/Error");
+import EsriError from "esri/core/Error";
 import { formatFileSize } from "esri/core/unitFormatUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
@@ -56,13 +56,13 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.layers.support
-import AttachmentInfo = require("esri/layers/support/AttachmentInfo");
+import AttachmentInfo from "esri/layers/support/AttachmentInfo";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Attachments
-import AttachmentsViewModel = require("esri/widgets/Attachments/AttachmentsViewModel");
+import AttachmentsViewModel from "esri/widgets/Attachments/AttachmentsViewModel";
 import { AttachmentsDisplay, Abilities } from "esri/widgets/Attachments/interfaces";
 
 // esri.widgets.Attachments.support
@@ -1025,4 +1025,4 @@ class Attachments extends Widget {
   }
 }
 
-export = Attachments;
+export default Attachments;

@@ -1,25 +1,22 @@
-// @dojo.framework.shim
-import "@dojo/framework/shim/Promise";
-
 // esri.core
-import Collection = require("esri/../../core/Collection");
-import { on } from "esri/../../core/events";
-import { HandleOwnerMixin } from "esri/../../core/HandleOwner";
-import { isSome } from "esri/../../core/maybe";
-import * as watchUtils from "esri/../../core/watchUtils";
+import Collection from "esri/core/Collection";
+import { on } from "esri/core/events";
+import { HandleOwnerMixin } from "esri/core/HandleOwner";
+import { isSome } from "esri/core/maybe";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/../../core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.libs.vaadin-grid
-import "./../../../libs/vaadin-grid/webcomponents";
+import "./../../../libs/vaadin-grid/index";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.FeatureTable.Grid
-import Column = require("esri/widgets/Column");
-import GridViewModel = require("esri/widgets/GridViewModel");
+import Column from "esri/widgets/Column";
+import GridViewModel from "esri/widgets/GridViewModel";
 import {
   ColumnElement,
   DataProvider,
@@ -37,11 +34,8 @@ import { SortOrder, Store, StoreItem } from "esri/widgets/support/interfaces";
 import FeatureTableMessages from "esri/t9n/FeatureTable";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { isRTL, messageBundle, renderable, tsx } from "esri/../support/widget";
-
-// lazy-loaded since the Dojo build can't process ES 6 code
-import("./../../../libs/vaadin-grid/index");
+import { VNode } from "esri/support/interfaces";
+import { isRTL, messageBundle, renderable, tsx } from "esri/support/widget";
 
 interface VisibleElements {
   selectionColumn?: boolean;
@@ -620,4 +614,4 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
   }
 }
 
-export = Grid;
+export default Grid;

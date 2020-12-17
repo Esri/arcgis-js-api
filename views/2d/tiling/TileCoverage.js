@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/ObjectPool"],(function(o,n,t){"use strict";return function(){function o(){this.spans=[]}return o.prototype.acquire=function(o){this.lodInfo=o},o.prototype.release=function(){this.lodInfo=null,this.spans.length=0},o.prototype.forEach=function(o,n){var t=this.spans,e=this.lodInfo,r=e.level;if(0!==t.length)for(var l=0,i=t;l<i.length;l++)for(var s=i[l],c=s.row,f=s.colFrom,u=s.colTo,a=f;a<=u;a++)o.call(n,r,c,e.normalizeCol(a),e.getWorldForColumn(a))},o.pool=new t(o),o}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../core/ObjectPool"],(function(o){"use strict";let n=function(){function o(){this.spans=[]}var n=o.prototype;return n.acquire=function(o){this.lodInfo=o},n.release=function(){this.lodInfo=null,this.spans.length=0},n.forEach=function(o,n){const{spans:t,lodInfo:l}=this,{level:e}=l;if(0!==t.length)for(const{row:r,colFrom:c,colTo:i}of t)for(let t=c;t<=i;t++)o.call(n,e,r,l.normalizeCol(t),l.getWorldForColumn(t))},o}();return n.pool=new o(n),n}));

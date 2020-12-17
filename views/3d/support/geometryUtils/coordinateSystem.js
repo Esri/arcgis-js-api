@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/libs/gl-matrix-2/mat4","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,t,o,n,r){"use strict";function i(e){return{operations:e,value:e.create()}}function a(e,t,o,n){return e.operations.setAltitudeAt(e.value,t,o,n)}Object.defineProperty(t,"__esModule",{value:!0}),t.coordinateSystemFromOneAxisAndNormalVector=t.vectorCoordinates=t.elevate=t.setAltitudeOfTransformation=t.setAltitudeAt=t.altitudeAt=t.distanceToSilhouette=t.closestPointOnSilhouette=t.intersectRayClosestSilhouette=t.closestPoint=t.intersectsRay=t.intersectRay=t.axisAt=t.normalAt=t.wrap=t.fromValues=t.createFromOperations=t.setExtent=t.create=void 0,t.create=function(e){var t=e.value,o=e.operations;return{operations:o,value:o.create(t)}},t.setExtent=function(e,t,o){return e.operations.setExtent(e.value,t,o.value),o},t.createFromOperations=i,t.fromValues=function(e,t,o){return void 0===o&&(o=i(e)),o.operations=e,e.copy(t,o.value),o},t.wrap=function(e,t){return u.operations=e,u.value=t,u},t.normalAt=function(e,t,o){return e.operations.axisAt(e.value,t,2,o)},t.axisAt=function(e,t,o,n){return e.operations.axisAt(e.value,t,o,n)},t.intersectRay=function(e,t,o){return e.operations.intersectRay(e.value,t,o)},t.intersectsRay=function(e,t){return e.operations.intersectRay(e.value,t,null)},t.closestPoint=function(e,t,o){return e.operations.closestPoint(e.value,t,o)},t.intersectRayClosestSilhouette=function(e,t,o){return e.operations.intersectRayClosestSilhouette(e.value,t,o)},t.closestPointOnSilhouette=function(e,t,o){return e.operations.closestPointOnSilhouette(e.value,t,o)},t.distanceToSilhouette=function(e,t){return e.operations.distanceToSilhouette(e.value,t)},t.altitudeAt=function(e,t){return e.operations.altitudeAt(e.value,t)},t.setAltitudeAt=a,t.setAltitudeOfTransformation=function(e,t,r,i){return t!==i&&o.mat4.copy(i,t),n.vec3.set(s,i[12],i[13],i[14]),a(e,s,r,s),i[12]=s[0],i[13]=s[1],i[14]=s[2],i},t.elevate=function(e,t,o){return e.operations.elevate(e.value,t,o.value)};var s=r.vec3f64.create(),u={operations:null,value:null};t.vectorCoordinates=function(e,t,o,r,i){return i[0]=n.vec3.dot(e,t),i[1]=n.vec3.dot(e,o),i[2]=n.vec3.dot(e,r),i},t.coordinateSystemFromOneAxisAndNormalVector=function(e,t,o,r,i){n.vec3.copy(o,e),n.vec3.copy(c,t),n.vec3.normalize(c,c),n.vec3.cross(r,c,o),n.vec3.cross(i,r,o)};var c=r.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3f64","../../../../chunks/vec3","../../../../chunks/mat4"],(function(t,e,n,o){"use strict";function r(t){return{operations:t,value:t.create()}}function u(t,e,n,o){return t.operations.setAltitudeAt(t.value,e,n,o)}const i=e.create(),a={operations:null,value:null};const s=e.create();t.altitudeAt=function(t,e){return t.operations.altitudeAt(t.value,e)},t.axisAt=function(t,e,n,o){return t.operations.axisAt(t.value,e,n,o)},t.closestPoint=function(t,e,n){return t.operations.closestPoint(t.value,e,n)},t.closestPointOnSilhouette=function(t,e,n){return t.operations.closestPointOnSilhouette(t.value,e,n)},t.coordinateSystemFromOneAxisAndNormalVector=function(t,e,o,r,u){n.copy(o,t),n.copy(s,e),n.normalize(s,s),n.cross(r,s,o),n.cross(u,r,o)},t.create=function(t){const{value:e,operations:n}=t;return{operations:n,value:n.create(e)}},t.createFromOperations=r,t.distanceToSilhouette=function(t,e){return t.operations.distanceToSilhouette(t.value,e)},t.elevate=function(t,e,n){return t.operations.elevate(t.value,e,n.value)},t.fromValues=function(t,e,n=r(t)){return n.operations=t,t.copy(e,n.value),n},t.intersectRay=function(t,e,n){return t.operations.intersectRay(t.value,e,n)},t.intersectRayClosestSilhouette=function(t,e,n){return t.operations.intersectRayClosestSilhouette(t.value,e,n)},t.intersectsRay=function(t,e){return t.operations.intersectRay(t.value,e,null)},t.normalAt=function(t,e,n){return t.operations.axisAt(t.value,e,2,n)},t.setAltitudeAt=u,t.setAltitudeOfTransformation=function(t,e,r,a){return e!==a&&o.copy(a,e),n.set(i,a[12],a[13],a[14]),u(t,i,r,i),a[12]=i[0],a[13]=i[1],a[14]=i[2],a},t.setExtent=function(t,e,n){return t.operations.setExtent(t.value,e,n.value),n},t.vectorCoordinates=function(t,e,o,r,u){return u[0]=n.dot(t,e),u[1]=n.dot(t,o),u[2]=n.dot(t,r),u},t.wrap=function(t,e){return a.operations=t,a.value=e,a},Object.defineProperty(t,"__esModule",{value:!0})}));

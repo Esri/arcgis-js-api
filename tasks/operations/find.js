@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../layers/support/layerUtils"],(function(e,i,r){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.findToFindRESTParameters=void 0,i.findToFindRESTParameters=function(e){var i=e.toJSON(),n=i.contains,s=i.dynamicLayers,t=i.geometryPrecision,a=i.layerDefinitions,o=i.layerIds,f=i.maxAllowableOffset,l=i.outSR,d=i.returnGeometry,u=i.searchFields,y={contains:n,returnGeometry:d,geometryPrecision:t,maxAllowableOffset:f,searchText:i.searchText};if(o&&(y.layers=o.join(",")),u&&(y.searchFields=u.join(",")),l&&(y.sr=l.wkid||JSON.stringify(l)),a){for(var c=[],v=0;v<a.length;v++){var m=a[v];c[m.id]=m.definitionExpression}y.layerDefs=r.serializeLayerDefinitions(c)}if(s&&s.length){var h=[],x=function(e){var i=s[e],r=i.id;if(!i.subLayerIds&&o&&-1!==o.indexOf(r)){var n={id:r};n.source=i.source;var t=null;if(a&&a.length){var f=a.filter((function(e){return e.id===r}))[0];t=f&&f.definitionExpression}t&&(n.definitionExpression=t),h.push(n)}};for(v=0;v<s.length;v++)x(v);var g=JSON.stringify(h);"[]"===g&&(g="[{}]"),y.dynamicLayers=g}return y}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../layers/support/layerUtils"],(function(e,i){"use strict";e.findToFindRESTParameters=function(e){const{contains:n,dynamicLayers:s,geometryPrecision:t,layerDefinitions:r,layerIds:o,maxAllowableOffset:l,outSR:a,returnGeometry:f,searchFields:c,searchText:d}=e.toJSON(),y={contains:n,returnGeometry:f,geometryPrecision:t,maxAllowableOffset:l,searchText:d};if(o&&(y.layers=o.join(",")),c&&(y.searchFields=c.join(",")),a&&(y.sr=a.wkid||JSON.stringify(a)),r){const e=[];for(let i=0;i<r.length;i++){const n=r[i];e[n.id]=n.definitionExpression}y.layerDefs=i.serializeLayerDefinitions(e)}if(s&&s.length){const e=[];for(let i=0;i<s.length;i++){const n=s[i],t=n.id;if(!n.subLayerIds&&o&&-1!==o.indexOf(t)){const i={id:t};i.source=n.source;let s=null;if(r&&r.length){const e=r.filter((e=>e.id===t))[0];s=e&&e.definitionExpression}s&&(i.definitionExpression=s),e.push(i)}}let i=JSON.stringify(e);"[]"===i&&(i="[{}]"),y.dynamicLayers=i}return y},Object.defineProperty(e,"__esModule",{value:!0})}));

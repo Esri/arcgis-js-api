@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./SmartMappingSliderBase","./HeatmapSlider/HeatmapSliderViewModel","./../support/widget"],(function(e,r,t,i,s,a,l){"use strict";var o="esri-heatmap-slider",d="esri-heatmap-slider__ramp",n="esri-heatmap-slider__slider-container",p="esri-widget",u="esri-widget--panel",m="esri-disabled";return function(e){function r(r,t){var i=e.call(this,r,t)||this;return i._rampFillId=null,i.label=void 0,i.messages=null,i.stops=null,i.viewModel=new a,i.slider.set({visibleElements:{labels:!1,rangeLabels:!0},labelInputsEnabled:!1,rangeLabelInputsEnabled:!1}),i._rampFillId=i.id+"-ramp-fill",i}var s;return t.__extends(r,e),s=r,r.fromHeatmapRendererResult=function(e){return new s({stops:e.renderer.colorStops})},r.prototype.render=function(){var e,r=this.state,t=this.label,i="disabled"===r,s=this.classes(o,p,u,((e={})[m]=i,e));return l.tsx("div",{"aria-label":t,class:s},i?null:this.renderContent(this.renderRamp(),n))},r.prototype.renderRamp=function(){var e=this._rampFillId,r=this.viewModel.getStopInfo();return l.tsx("div",{class:d},l.tsx("svg",{xmlns:"http://www.w3.org/2000/svg"},l.tsx("defs",null,this.renderRampFillDefinition(e,r)),l.tsx("rect",{x:"0",y:"0",fill:"url(#"+e+")",height:"100%",width:"100%"})))},t.__decorate([i.property({aliasOf:{source:"messages.widgetLabel",overridable:!0}})],r.prototype,"label",void 0),t.__decorate([i.property(),l.renderable(),l.messageBundle("esri/widgets/smartMapping/HeatmapSlider/t9n/HeatmapSlider")],r.prototype,"messages",void 0),t.__decorate([i.aliasOf("viewModel.stops")],r.prototype,"stops",void 0),t.__decorate([i.property(),l.renderable(["viewModel.inputFormatFunction","viewModel.inputParseFunction","viewModel.labelFormatFunction","viewModel.max","viewModel.max","viewModel.stops","viewModel.values"])],r.prototype,"viewModel",void 0),r=s=t.__decorate([i.subclass("esri.widgets.smartMapping.HeatmapSlider")],r)}(s.SmartMappingSliderBase)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/aliasOf","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../support/widgetUtils","../support/decorators/messageBundle","../support/decorators/renderable","../../chunks/index","./SmartMappingSliderBase","./HeatmapSlider/HeatmapSliderViewModel"],(function(e,r,s,t,a,o,l,i,n,p,d,c,u,m,v,g,w){"use strict";var b;const h="esri-heatmap-slider",_="esri-heatmap-slider__ramp",f="esri-heatmap-slider__slider-container",M="esri-widget",S="esri-widget--panel",x="esri-disabled";let y=b=function(r){function s(e,s){var t;return(t=r.call(this,e,s)||this)._rampFillId=null,t.label=void 0,t.messages=null,t.stops=null,t.viewModel=new w,t.slider.set({visibleElements:{labels:!1,rangeLabels:!0},labelInputsEnabled:!1,rangeLabelInputsEnabled:!1}),t._rampFillId=`${t.id}-ramp-fill`,t}e._inheritsLoose(s,r),s.fromHeatmapRendererResult=function(e){return new b({stops:e.renderer.colorStops})};var t=s.prototype;return t.render=function(){const{state:e,label:r}=this,s="disabled"===e,t=this.classes(h,M,S,{[x]:s});return v.jsx("div",{"aria-label":r,class:t},s?null:this.renderContent(this.renderRamp(),f))},t.renderRamp=function(){const{_rampFillId:e,viewModel:r}=this,s=r.getStopInfo();return v.jsx("div",{class:_},v.jsx("svg",{xmlns:"http://www.w3.org/2000/svg"},v.jsx("defs",null,this.renderRampFillDefinition(e,s)),v.jsx("rect",{x:"0",y:"0",fill:`url(#${e})`,height:"100%",width:"100%"})))},s}(g.SmartMappingSliderBase);return r.__decorate([o.property({aliasOf:{source:"messages.widgetLabel",overridable:!0}})],y.prototype,"label",void 0),r.__decorate([o.property(),m.renderable(),u.messageBundle("esri/widgets/smartMapping/HeatmapSlider/t9n/HeatmapSlider")],y.prototype,"messages",void 0),r.__decorate([l.aliasOf("viewModel.stops")],y.prototype,"stops",void 0),r.__decorate([o.property(),m.renderable(["viewModel.inputFormatFunction","viewModel.inputParseFunction","viewModel.labelFormatFunction","viewModel.max","viewModel.max","viewModel.stops","viewModel.values"])],y.prototype,"viewModel",void 0),y=b=r.__decorate([i.subclass("esri.widgets.smartMapping.HeatmapSlider")],y),y}));

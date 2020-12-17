@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/has","../../../../core/lang","../../../../symbols/support/defaultsJSON"],(function(e,t,r,n,i,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.createDefaultTemplate=t.createDefaultAttributesFunction=t.createDrawingInfo=void 0,t.createDrawingInfo=function(e){return{renderer:{type:"simple",symbol:"esriGeometryPoint"===e||"esriGeometryMultipoint"===e?o.defaultPointSymbolJSON:"esriGeometryPolyline"===e?o.defaultPolylineSymbolJSON:o.defaultPolygonSymbolJSON}}},t.createDefaultAttributesFunction=function(e,t){if(n("csp-restrictions"))return function(){var n;return r.__assign(((n={})[t]=null,n),e)};try{var i="this."+t+" = null;";for(var o in e){i+="this"+(o.indexOf(".")?'["'+o+'"]':"."+o)+" = "+JSON.stringify(e[o])+";"}var u=new Function(i);return function(){return new u}}catch(n){return function(){var n;return r.__assign(((n={})[t]=null,n),e)}}},t.createDefaultTemplate=function(e){return void 0===e&&(e={}),[{name:"New Feature",description:"",prototype:{attributes:i.clone(e)}}]}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/has","../../../../core/lang","../../../../symbols/support/defaultsJSON"],(function(e,t,n,r){"use strict";e.createDefaultAttributesFunction=function(e,n){if(t("csp-restrictions"))return()=>({[n]:null,...e});try{let t=`this.${n} = null;`;for(const n in e){t+=`this${n.indexOf(".")?`["${n}"]`:`.${n}`} = ${JSON.stringify(e[n])};`}const r=new Function(t);return()=>new r}catch(t){return()=>({[n]:null,...e})}},e.createDefaultTemplate=function(e={}){return[{name:"New Feature",description:"",prototype:{attributes:n.clone(e)}}]},e.createDrawingInfo=function(e){return{renderer:{type:"simple",symbol:"esriGeometryPoint"===e||"esriGeometryMultipoint"===e?r.defaultPointSymbolJSON:"esriGeometryPolyline"===e?r.defaultPolylineSymbolJSON:r.defaultPolygonSymbolJSON}}},Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./dom"],(function(e,r,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.createProjector=void 0;var t,o=function(e,r){for(var n=[];e!==r;)n.push(e),e=e.parentNode;return n};t=Array.prototype.find?function(e,r){return e.find(r)}:function(e,r){return e.filter(r)[0]};var i=function(e,r){var n=e;return r.forEach((function(e){n=n&&n.children?t(n.children,(function(r){return r.domNode===e})):void 0})),n};r.createProjector=function(e){var r,t,u=n.applyDefaultProjectionOptions(e),d=u.performanceLogger,c=!0,a=!1,f=[],p=[],s=function(e,n,t){var c;u.eventHandlerInterceptor=function(e,r,n){var t=function(t){n("domEvent",t);var u=r(),d=o(t.currentTarget,u.domNode);d.reverse();var c,a=i(u.getLastRender(),d);return e.scheduleRender(),a&&(c=a.properties["on"+t.type].apply(a.properties.bind||this,arguments)),n("domEventProcessed",t),c};return function(){return t}}(r,(function(){return c}),d),c=e(n,t(),u),f.push(c),p.push(t)},v=function(){if(t=void 0,c){c=!1,d("renderStart",void 0);for(var e=0;e<f.length;e++){var r=p[e]();d("rendered",void 0),f[e].update(r),d("patched",void 0)}d("renderDone",void 0),c=!0}};return r={renderNow:v,scheduleRender:function(){t||a||(t=requestAnimationFrame(v))},stop:function(){t&&(cancelAnimationFrame(t),t=void 0),a=!0},resume:function(){a=!1,c=!0,r.scheduleRender()},append:function(e,r){s(n.dom.append,e,r)},insertBefore:function(e,r){s(n.dom.insertBefore,e,r)},merge:function(e,r){s(n.dom.merge,e,r)},replace:function(e,r){s(n.dom.replace,e,r)},detach:function(e){for(var r=0;r<p.length;r++)if(p[r]===e)return p.splice(r,1),f.splice(r,1)[0];throw new Error("renderFunction was not found")}}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./dom"],(function(e,r){"use strict";const t=(e,r)=>{const t=[];for(;e!==r;)t.push(e),e=e.parentNode;return t};let n;n=Array.prototype.find?(e,r)=>e.find(r):(e,r)=>e.filter(r)[0];const o=(e,r)=>{let t=e;return r.forEach((e=>{t=t&&t.children?n(t.children,(r=>r.domNode===e)):void 0})),t},d=(e,r,n)=>{const d=function(d){n("domEvent",d);const c=r(),s=t(d.currentTarget,c.domNode);s.reverse();const i=o(c.getLastRender(),s);let p;return e.scheduleRender(),i&&(p=i.properties[`on${d.type}`].apply(i.properties.bind||this,arguments)),n("domEventProcessed",d),p};return()=>d};e.createProjector=e=>{let t;const n=r.applyDefaultProjectionOptions(e),o=n.performanceLogger;let c,s=!0,i=!1;const p=[],l=[],a=(e,r,c)=>{let s;n.eventHandlerInterceptor=d(t,(()=>s),o),s=e(r,c(),n),p.push(s),l.push(c)},u=()=>{if(c=void 0,s){s=!1,o("renderStart",void 0);for(let e=0;e<p.length;e++){const r=l[e]();o("rendered",void 0),p[e].update(r),o("patched",void 0)}o("renderDone",void 0),s=!0}};return t={renderNow:u,scheduleRender:()=>{c||i||(c=requestAnimationFrame(u))},stop:()=>{c&&(cancelAnimationFrame(c),c=void 0),i=!0},resume:()=>{i=!1,s=!0,t.scheduleRender()},append:(e,t)=>{a(r.dom.append,e,t)},insertBefore:(e,t)=>{a(r.dom.insertBefore,e,t)},merge:(e,t)=>{a(r.dom.merge,e,t)},replace:(e,t)=>{a(r.dom.replace,e,t)},detach:e=>{for(let r=0;r<l.length;r++)if(l[r]===e)return l.splice(r,1),p.splice(r,1)[0];throw new Error("renderFunction was not found")}},t},Object.defineProperty(e,"__esModule",{value:!0})}));

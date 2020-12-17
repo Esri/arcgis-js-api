@@ -26,7 +26,6 @@
  * {@link module:esri/layers/KMLLayer},
  * {@link module:esri/layers/MapNotesLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
- * {@link module:esri/layers/RouteLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
  * {@link module:esri/layers/WebTileLayer}.
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
@@ -56,8 +55,8 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
-import Handles = require("esri/core/Handles");
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -67,22 +66,22 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import { cast } from "esri/core/accessorSupport/decorators/cast";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { LayerInfo } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Legend
-import LegendViewModel = require("esri/widgets/Legend/LegendViewModel");
+import LegendViewModel from "esri/widgets/Legend/LegendViewModel";
 
 // esri.widgets.Legend.styles
-import Card = require("esri/widgets/Legend/styles/Card");
-import Classic = require("esri/widgets/Legend/styles/Classic");
+import Card from "esri/widgets/Legend/styles/Card";
+import Classic from "esri/widgets/Legend/styles/Classic";
 
 // esri.widgets.Legend.support
-import ActiveLayerInfo = require("esri/widgets/Legend/support/ActiveLayerInfo");
+import ActiveLayerInfo from "esri/widgets/Legend/support/ActiveLayerInfo";
 
 // esri.widgets.Legend.t9n
 import LegendMessages from "esri/widgets/Legend/t9n/Legend";
@@ -497,4 +496,4 @@ class Legend extends Widget {
   }
 }
 
-export = Legend;
+export default Legend;

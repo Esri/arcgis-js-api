@@ -33,24 +33,24 @@
  */
 
 // esri
-import Basemap = require("esri/Basemap");
+import Basemap from "esri/Basemap";
 
 // esri.core
 import { deprecatedProperty } from "esri/core/deprecate";
-import Logger = require("esri/core/Logger");
+import Logger from "esri/core/Logger";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.BasemapToggle
-import BasemapToggleViewModel = require("esri/widgets/BasemapToggle/BasemapToggleViewModel");
+import BasemapToggleViewModel from "esri/widgets/BasemapToggle/BasemapToggleViewModel";
 
 // esri.widgets.BasemapToggle.t9n
 import BasemapToggleMessages from "esri/widgets/BasemapToggle/t9n/BasemapToggle";
@@ -197,9 +197,7 @@ class BasemapToggle extends Widget {
    * The next basemap for toggling. One of the following values may be set to this property:
    *
    * * The {@link module:esri/Map#basemap string ID} of any Esri basemap.
-   * * A custom {@link module:esri/Basemap} object. Since this property may be
-   * [autocast](../guide/programming-patterns/#autocasting), the {@link module:esri/Basemap}
-   * module does not need to be included in the `require()` function in most applications.
+   * * A custom {@link module:esri/Basemap} object.
    *
    * @instance
    * @name nextBasemap
@@ -386,4 +384,4 @@ class BasemapToggle extends Widget {
   }
 }
 
-export = BasemapToggle;
+export default BasemapToggle;

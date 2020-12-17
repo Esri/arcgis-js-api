@@ -1,21 +1,21 @@
 // esri.core
-import * as watchUtils from "esri/../../core/watchUtils";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.BuildingExplorer
-import BuildingDisciplinesViewModel = require("esri/BuildingDisciplinesViewModel");
+import BuildingDisciplinesViewModel from "esri/BuildingDisciplinesViewModel";
 
 // esri.widgets.BuildingExplorer.BuildingDisciplinesTree
-import BuildingDisciplinesNode = require("esri/widgets/BuildingDisciplinesNode");
+import BuildingDisciplinesNode from "esri/widgets/BuildingDisciplinesNode";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable } from "esri/support/widget";
 
 interface ConstructionParameters {
   toggleSiblingsVisibility?: boolean;
@@ -188,4 +188,4 @@ class BuildingDisciplinesTree extends Widget {
   }
 }
 
-export = BuildingDisciplinesTree;
+export default BuildingDisciplinesTree;

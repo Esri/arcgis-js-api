@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","./common","../../support/geometryUtils","../../support/mathUtils"],(function(e,r,t,n,i,a,o){"use strict";function c(e,r,t){if(void 0===t&&(t=i.defaultApplyOptions),!e.state.isLocal)return 0;var n=e.state.constraints.distance;if(!e.pointsOfInterest.surfaceOrigin.renderLocation||n===1/0)return 0;f.min=0,f.max=n,function(e,r,t){var n=r.interactionType;if(0===n)return;var a=t.min,o=t.max,f=r.interactionStartCamera,u=r.interactionFactor,p=1===n||4===n,v=c(e,f),d=0===v?0:s(e,f);t.min=a,t.max=o;var m=.05*d;i.adjustRangeForInteraction(v,d,p,u,m,t)}(e,t,f);var a=s(e,r),o=f.max-a;return o>=-1e-6?0:o}function s(e,r){var n=e.pointsOfInterest.surfaceOrigin;return t.vec3.distance(r.eye,n.renderLocation)}Object.defineProperty(r,"__esModule",{value:!0}),r.applyDistanceConstraint=r.getDistanceConstraintError=void 0,r.getDistanceConstraintError=c,r.applyDistanceConstraint=function(e,r,n){void 0===n&&(n=i.defaultApplyOptions);var f=c(e,r,n);if(0===f)return!1;var m=e.pointsOfInterest.surfaceOrigin,l=s(e,r)+f,y=t.vec3.copy(u,r.eye),g=i.interactionDirectionTowardsConstraintMinimization(r,n.interactionDirection,function(e,r,t){var n=e.pointsOfInterest.surfaceOrigin;return o.directionFromTo(t,r.eye,n.renderLocation)}(e,r,d),v);if(a.sphere.intersectRay(a.sphere.wrap(l,m.renderLocation),a.ray.wrap(r.eye,g),r.eye)){var O=t.vec3.subtract(p,r.eye,y);t.vec3.add(r.center,r.center,O),r.markViewDirty();var x=e.renderCoordsHelper.getAltitude(r.center);return e.renderCoordsHelper.intersectInfiniteManifold(r.ray,x,r.center),r.markViewDirty(),!0}return!1};var f={min:0,max:0},u=n.vec3f64.create(),p=n.vec3f64.create(),v=n.vec3f64.create(),d=n.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3f64","../../../../chunks/vec3","../../support/mathUtils","../../support/geometryUtils","./common"],(function(e,t,n,r,i,o){"use strict";function c(e,t,n=o.defaultApplyOptions){if(!e.state.isLocal)return 0;const r=e.state.constraints.distance;if(!e.pointsOfInterest.surfaceOrigin.renderLocation||r===1/0)return 0;s.min=0,s.max=r,function(e,t,n){const r=t.interactionType;if(0===r)return;const{min:i,max:s}=n,{interactionStartCamera:u,interactionFactor:f}=t,p=1===r||4===r,d=c(e,u),m=0===d?0:a(e,u);n.min=i,n.max=s;const y=.05*m;o.adjustRangeForInteraction(d,m,p,f,y,n)}(e,n,s);const i=a(e,t),u=s.max-i;return u>=-1e-6?0:u}function a(e,t){const r=e.pointsOfInterest.surfaceOrigin;return n.distance(t.eye,r.renderLocation)}const s={min:0,max:0},u=t.create(),f=t.create(),p=t.create(),d=t.create();e.applyDistanceConstraint=function(e,t,s=o.defaultApplyOptions){const m=c(e,t,s);if(0===m)return!1;const y=e.pointsOfInterest.surfaceOrigin,l=a(e,t)+m,O=n.copy(u,t.eye),g=o.interactionDirectionTowardsConstraintMinimization(t,s.interactionDirection,function(e,t,n){const i=e.pointsOfInterest.surfaceOrigin;return r.directionFromTo(n,t.eye,i.renderLocation)}(e,t,d),p);if(i.sphere.intersectRay(i.sphere.wrap(l,y.renderLocation),i.ray.wrap(t.eye,g),t.eye)){const r=n.subtract(f,t.eye,O);n.add(t.center,t.center,r),t.markViewDirty();const i=e.renderCoordsHelper.getAltitude(t.center);return e.renderCoordsHelper.intersectInfiniteManifold(t.ray,i,t.center),t.markViewDirty(),!0}return!1},e.getDistanceConstraintError=c,Object.defineProperty(e,"__esModule",{value:!0})}));

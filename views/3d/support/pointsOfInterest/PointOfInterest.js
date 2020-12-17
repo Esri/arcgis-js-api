@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/Accessor","../../../../core/Handles","../../../../core/accessorSupport/decorators","./disposeMembers"],(function(e,t,r,o,s,n,c){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.PointOfInterest=void 0;var d=function(e){function t(t){var r=e.call(this,t)||this;return r.handles=new s,r}return r.__extends(t,e),t.prototype.destroy=function(){c.default(this,"handles")},r.__decorate([n.property({constructOnly:!0})],t.prototype,"renderCoordsHelper",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"surface",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"state",void 0),t=r.__decorate([n.subclass("esri.views.3d.support.PointOfInterest")],t)}(o);t.PointOfInterest=d,t.default=d}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/has","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/decorators/subclass","../../../../core/urlUtils","../../../../core/uuid","../../../../portal/support/resourceExtension","../../../../core/Accessor","../../../../core/Handles","./disposeMembers"],(function(e,r,t,o,s,n,c,p,i,u,a,d,l,f){"use strict";e.PointOfInterest=function(e){function t(r){var t;return(t=e.call(this,r)||this).handles=new l,t}return r._inheritsLoose(t,e),t.prototype.destroy=function(){f.disposeMembers(this,"handles")},t}(d),t.__decorate([c.property({constructOnly:!0})],e.PointOfInterest.prototype,"renderCoordsHelper",void 0),t.__decorate([c.property({constructOnly:!0})],e.PointOfInterest.prototype,"surface",void 0),t.__decorate([c.property({constructOnly:!0})],e.PointOfInterest.prototype,"state",void 0),e.PointOfInterest=t.__decorate([p.subclass("esri.views.3d.support.PointOfInterest")],e.PointOfInterest);var y=e.PointOfInterest;e.default=y,Object.defineProperty(e,"__esModule",{value:!0})}));

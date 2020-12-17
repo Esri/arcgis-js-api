@@ -42,9 +42,9 @@
 
 // esri
 import { SpatialReference } from "esri/geometry";
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { substitute } from "esri/intl";
-import EsriMap = require("esri/Map");
+import EsriMap from "esri/Map";
 
 // esri.core
 import * as watchUtils from "esri/core/watchUtils";
@@ -56,22 +56,22 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 import { Content as ContentElement } from "esri/popup/content";
 
 // esri.popup.content
-import Customcontent = require("esri/popup/content/CustomContent");
-import TextContent = require("esri/popup/content/TextContent");
+import Customcontent from "esri/popup/content/CustomContent";
+import TextContent from "esri/popup/content/TextContent";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Attachments = require("esri/widgets/Attachments");
-import Widget = require("esri/widgets/Widget");
+import Attachments from "esri/widgets/Attachments";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Feature
-import FeatureContent = require("esri/widgets/Feature/FeatureContent");
-import FeatureFields = require("esri/widgets/Feature/FeatureFields");
-import FeatureMedia = require("esri/widgets/Feature/FeatureMedia");
-import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
+import FeatureContent from "esri/widgets/Feature/FeatureContent";
+import FeatureFields from "esri/widgets/Feature/FeatureFields";
+import FeatureMedia from "esri/widgets/Feature/FeatureMedia";
+import FeatureViewModel from "esri/widgets/Feature/FeatureViewModel";
 
 // esri.widgets.Feature.support
 import { FeatureContentMixin } from "esri/widgets/Feature/support/FeatureContentMixin";
@@ -787,4 +787,4 @@ class Feature extends FeatureContentMixin(Widget) {
   }
 }
 
-export = Feature;
+export default Feature;

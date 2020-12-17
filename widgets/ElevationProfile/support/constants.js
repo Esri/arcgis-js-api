@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(E,_){"use strict";Object.defineProperty(_,"__esModule",{value:!0}),_.STATS_FORMAT_PRECISION=_.HOVERED_POINT_SIZE=_.DELAY_AFTER_PREVIEW_MILLIS=_.UPDATE_THROTTLE_MILLIS=_.DEFAULT_OPTIONS=_.DEFAULT_ELEVATION_PROFILE_QUERY_OPTIONS=void 0,_.DEFAULT_ELEVATION_PROFILE_QUERY_OPTIONS={noDataValue:-5e5,demResolution:"finest-contiguous"},_.DEFAULT_OPTIONS={samplingDistance:.1,maxSamples:2e3},_.UPDATE_THROTTLE_MILLIS=100,_.DELAY_AFTER_PREVIEW_MILLIS=500,_.HOVERED_POINT_SIZE=10,_.STATS_FORMAT_PRECISION=1}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";var t;(t=e.ElevationProfileState||(e.ElevationProfileState={})).Disabled="disabled",t.Ready="ready",t.Creating="creating",t.Created="created",t.Selecting="selecting",t.Selected="selected";e.DEFAULT_DEM_RESOLUTION=.1,e.DEFAULT_ELEVATION_PROFILE_QUERY_OPTIONS={noDataValue:-5e5,demResolution:"auto",maximumAutoTileRequests:150},e.DELAY_AFTER_PREVIEW_MILLIS=500,e.FORMAT_PRECISION=1,e.HOVERED_POINTS_STYLE_3D={size:12,outlineSize:2,outlineColor:[1,1,1,1]},e.INPUT_LINE_SELECTED_STYLE_3D={width:6,outlineSize:4,color:[1,1,1,1],outlineColor:[1,.5,0,1],falloff:0},e.MAX_SAMPLES=2e3,e.NOT_AVAILABLE=" ― ",e.PORTRAIT_MODE_PIXEL_BREAKPOINT=400,e.PROFILE_LINES_STYLE_3D={width:3,outlineSize:0,falloff:0,outlineColor:[1,1,1,0]},e.UPDATE_THROTTLE_MILLIS=80,Object.defineProperty(e,"__esModule",{value:!0})}));

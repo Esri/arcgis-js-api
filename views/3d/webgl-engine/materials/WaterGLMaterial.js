@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../lib/GLMaterial","./WaterTechnique","./internal/MaterialUtil"],(function(t,e,a,i,r,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.WaterGLMaterial=void 0;var n=function(t){function e(e){var a=t.call(this,e)||this;return a.updateParameters(),a}return a.__extends(e,t),e.prototype.updateParameters=function(){this.params=s.copyParameters(this.material.getParameters()),this.technique=this.techniqueRep.acquireAndReleaseExisting(r.WaterTechnique,this.material.getTechniqueConfig(this.output),this.technique)},e.prototype.beginSlot=function(t){if(2===this.output)return 22===t;if(5===this.output)return null==t;if(4===this.output)return 3===t;var e=3;return this.params.transparent&&(e=this.params.writeDepth?5:8),t===e},e.prototype.setElapsedTimeUniform=function(t){var e=.001*this.material.animation.time;t.setUniform1f("timeElapsed",e*this.params.animationSpeed)},e.prototype._updateShadowState=function(t){t.shadowMappingEnabled!==this.params.receiveShadows&&(this.material.setParameterValues({receiveShadows:t.shadowMappingEnabled}),this.updateParameters())},e.prototype._updateSSRState=function(t){t.ssrEnabled!==this.params.ssrEnabled&&(this.material.setParameterValues({ssrEnabled:t.ssrEnabled}),this.updateParameters())},e.prototype.ensureResources=function(t){return this.technique.ensureResource(t)},e.prototype.ensureParameters=function(t){0===this.output&&(this._updateShadowState(t),this._updateSSRState(t))},e.prototype.bind=function(t,e){t.bindProgram(this.technique.program),this.technique.bindPass(t,this.params,e),2!==this.output&&0!==this.output||this.setElapsedTimeUniform(this.technique.program)},e}(i.GLMaterial);e.WaterGLMaterial=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../lib/GLMaterial","./WaterTechnique"],(function(e,t,a,i){"use strict";let s=function(e){function a(t){var a;return(a=e.call(this,t)||this).updateParameters(),a}t._inheritsLoose(a,e);var s=a.prototype;return s.updateParameters=function(e){this.technique=this.techniqueRep.acquireAndReleaseExisting(i.WaterTechnique,this.material.getTechniqueConfig(this.output,e),this.technique)},s.beginSlot=function(e){if(2===this.output)return 22===e;if(5===this.output)return null==e;if(4===this.output)return 3===e;let t=3;return this.material.params.transparent&&(t=this.material.params.writeDepth?5:8),e===t},s.setElapsedTimeUniform=function(e){const t=.001*this.material.animation.time;e.setUniform1f("timeElapsed",t*this.material.params.animationSpeed)},s._updateShadowState=function(e){e.shadowMappingEnabled!==this.material.params.receiveShadows&&this.material.setParameterValues({receiveShadows:e.shadowMappingEnabled})},s._updateSSRState=function(e){e.ssrEnabled!==this.material.params.ssrEnabled&&this.material.setParameterValues({ssrEnabled:e.ssrEnabled})},s.ensureResources=function(e){return this.technique.ensureResource(e)},s.ensureParameters=function(e){0===this.output&&(this._updateShadowState(e),this._updateSSRState(e)),this.updateParameters(e)},s.bind=function(e,t){e.bindProgram(this.technique.program),this.technique.bindPass(e,this.material.params,t),2!==this.output&&0!==this.output||this.setElapsedTimeUniform(this.technique.program)},a}(a);e.WaterGLMaterial=s,Object.defineProperty(e,"__esModule",{value:!0})}));

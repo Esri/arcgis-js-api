@@ -27,39 +27,39 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import has = require("esri/core/has");
-import Logger = require("esri/core/Logger");
+import has from "esri/core/has";
+import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import Layer = require("esri/layers/Layer");
+import Layer from "esri/layers/Layer";
 
 // esri.libs.sortablejs
-import Sortable = require("esri/libs/sortablejs/Sortable");
+import Sortable from "esri/libs/sortablejs/Sortable";
 
 // esri.support.actions
-import ActionButton = require("esri/support/actions/ActionButton");
-import ActionToggle = require("esri/support/actions/ActionToggle");
+import ActionButton from "esri/support/actions/ActionButton";
+import ActionToggle from "esri/support/actions/ActionToggle";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.BasemapLayerList
-import BasemapLayerListViewModel = require("esri/widgets/BasemapLayerList/BasemapLayerListViewModel");
+import BasemapLayerListViewModel from "esri/widgets/BasemapLayerList/BasemapLayerListViewModel";
 import { BasemapItemType, BasemapLayerListParams } from "esri/widgets/BasemapLayerList/interfaces";
 
 // esri.widgets.BasemapLayerList.t9n
@@ -67,8 +67,8 @@ import BasemapLayerListMessages from "esri/widgets/BasemapLayerList/t9n/BasemapL
 
 // esri.widgets.LayerList
 import { Action, Actions, ListItemModifier, Sections } from "esri/widgets/LayerList/interfaces";
-import ListItem = require("esri/widgets/LayerList/ListItem");
-import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
+import ListItem from "esri/widgets/LayerList/ListItem";
+import ListItemPanel from "esri/widgets/LayerList/ListItemPanel";
 
 // esri.widgets.LayerList.support
 import { findSelectedItem } from "esri/widgets/LayerList/support/layerListUtils";
@@ -923,7 +923,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
         onclick={this._toggleChildrenClick}
         onkeydown={this._toggleChildrenClick}
         data-item={item}
-        key={`toggle-children`}
+        key="toggle-children"
         class={this.classes(CSS.childToggle, childToggleClasses)}
         tabindex="0"
         role="button"
@@ -940,7 +940,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
 
   protected renderError(item: ListItem): VNode {
     return item.error ? (
-      <div key={`error`} class={CSS.errorMessage} role="alert">
+      <div key="error" class={CSS.errorMessage} role="alert">
         <span>{this.messages.layerError}</span>
       </div>
     ) : null;
@@ -957,7 +957,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
 
     return (
       <div
-        key={`actions-menu-toggle`}
+        key="actions-menu-toggle"
         data-item={item}
         bind={this}
         onclick={this._toggleActionsOpen}
@@ -994,7 +994,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
       !singleAction && actionsCount ? this.renderActionsMenuIcon(item, actionsUid) : null;
 
     return actionsMenuIcon || panelActionNode || singleAction ? (
-      <div key={`actions-menu`} class={CSS.actionsMenu}>
+      <div key="actions-menu" class={CSS.actionsMenu}>
         {panelActionNode}
         {singleActionNode}
         {actionsMenuIcon}
@@ -1019,7 +1019,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
     return hasChildren ? (
       <ul
         bind={this}
-        key={`list-items`}
+        key="list-items"
         id={listUid}
         data-group={item.uid}
         data-item={item}
@@ -1047,7 +1047,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
     const actionsCount = this._countActions(filteredSections);
 
     return [
-      <div key={`list-item-container`} class={CSS.itemContainer}>
+      <div key="list-item-container" class={CSS.itemContainer}>
         {this.renderChildrenToggle(item, listUid)}
         {this.renderLabel(item, parent, titleKey)}
         {this.renderActionsMenu(item, filteredSections, actionsCount, actionsUid)}
@@ -1276,7 +1276,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
 
     return (
       <div
-        key={panel}
+        key={`panel-${panel.uid}`}
         bind={this}
         data-panel={panel}
         onclick={this._triggerPanel}
@@ -1299,8 +1299,8 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   ): VNode {
     const actionSectionsArray = actionsSections.toArray();
 
-    const actionSection = actionSectionsArray.map((actionSection) => (
-      <ul key={actionSection} class={CSS.actionsList}>
+    const actionSection = actionSectionsArray.map((actionSection, index) => (
+      <ul key={`${item}-action-section-${index}`} class={CSS.actionsList}>
         {this.renderActionSection(item, actionSection)}
       </ul>
     ));
@@ -1309,7 +1309,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
       <div
         role="group"
         aria-expanded={item.actionsOpen ? "true" : "false"}
-        key={`actions-section`}
+        key="actions-section"
         id={actionsUid}
         class={CSS.actions}
         hidden={item.actionsOpen ? null : true}
@@ -1387,7 +1387,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
           data-item={item}
           data-action={action}
           role="button"
-          key={action}
+          key={`single-action-${action.uid}`}
           onclick={this._triggerAction}
           onkeydown={this._triggerAction}
           classes={buttonClasses}
@@ -1405,7 +1405,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
         bind={this}
         data-item={item}
         data-action={action}
-        key={action}
+        key={`action-${action.uid}`}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
         classes={buttonClasses}
@@ -1982,4 +1982,4 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   }
 }
 
-export = BasemapLayerList;
+export default BasemapLayerList;

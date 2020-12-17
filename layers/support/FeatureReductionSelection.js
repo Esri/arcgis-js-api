@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./FeatureReduction"],(function(e,t,r,o,n){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.type="selection",r}var n;return r.__extends(t,e),n=t,t.prototype.clone=function(){return new n},r.__decorate([o.property({type:["selection"]})],t.prototype,"type",void 0),t=n=r.__decorate([o.subclass("esri.layers.support.FeatureReductionSelection")],t)}(n.default)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./FeatureReduction"],(function(e,r,o,t,s,c,u,n,p,i,l){"use strict";var a;let d=a=function(r){function o(e){var o;return(o=r.call(this,e)||this).type="selection",o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new a},o}(l.default);return r.__decorate([c.property({type:["selection"]})],d.prototype,"type",void 0),d=a=r.__decorate([u.subclass("esri.layers.support.FeatureReductionSelection")],d),d}));

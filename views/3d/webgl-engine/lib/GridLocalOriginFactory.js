@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/maybe","../../../../core/libs/gl-matrix-2/mat4f64","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../../../../geometry/SpatialReference","../../support/projectionUtils","./Geometry","./GeometryData","./Layer","./localOrigin","./Object3D","./Util","../materials/RibbonLineMaterial"],(function(t,i,r,e,a,n,o,s,c,l,h,d,O,_,g){"use strict";var u=0,f=function(){function t(){this.ROOT_ORIGIN_ID="rg_root_"+u++,this._origins=new Map,this._gridSize=42e5}return t.prototype.getOrigin=function(i){var e=this._origins.get(this.ROOT_ORIGIN_ID);if(null==e){if(r.isSome(t.testOrigin)){var n=t.testOrigin;return this._origins.set(this.ROOT_ORIGIN_ID,d.fromValues(n[0],n[1],n[2],this.ROOT_ORIGIN_ID)),this.getOrigin(i)}var o=d.fromValues(i[0]+Math.random()-.5,i[1]+Math.random()-.5,i[2]+Math.random()-.5,this.ROOT_ORIGIN_ID);return this._origins.set(this.ROOT_ORIGIN_ID,o),o}a.vec3.subtract(I,i,e.vec3),I[0]=Math.abs(I[0]),I[1]=Math.abs(I[1]),I[2]=Math.abs(I[2]);var s=this._gridSize;if(I[0]<s&&I[1]<s&&I[2]<s)return e;var c=Math.round(i[0]/s),l=Math.round(i[1]/s),h=Math.round(i[2]/s),O="rg_"+c+"/"+l+"/"+h,_=this._origins.get(O);return _||(_=d.fromValues(c*s,l*s,h*s,O),this._origins.set(O,_)),_},t.prototype._drawOriginBox=function(t){var i=window.view,r=i._stage;if(null==this._object){this._material=new g({width:2,color:[0,1,0,1]},"GridLocalOriginMaterial"),r.add(3,this._material);var a=new h("GridLocalOrigin",{isPickable:!1});r.add(0,a),this._object=new O({idHint:"GridLocalOrigin",castShadow:!1}),r.add(1,this._object),a.addObject(this._object),r.addToViewContent([a.id])}for(var n=[0,1,5,4,0,2,1,7,6,2,0,1,3,7,5,4,6,2,0],d=n.length,u=new Float32Array(3*d),f=new Uint32Array(2*(d-1)),I=.5*this._gridSize,m=0;m<d;m++)u[3*m+0]=t[0]+(1&n[m]?I:-I),u[3*m+1]=t[1]+(2&n[m]?I:-I),u[3*m+2]=t[2]+(4&n[m]?I:-I),m>0&&(f[2*m+0]=m-1,f[2*m+1]=m);s.bufferToBuffer(u,o.WebMercator,0,u,i.spatialReference,0,d);var b={};b[_.VertexAttrConstants.POSITION]={size:3,data:u};var v={};v[_.VertexAttrConstants.POSITION]=f;var w=new l.GeometryData(b,v,"line"),R=new c(w,"GridLocalOriginBox");r.add(2,R),this._object.addGeometry(R,this._material,e.mat4f64.IDENTITY),console.log(this._origins.size,t)},t}(),I=n.vec3f64.create();return function(t){t.testOrigin=null}(f||(f={})),f}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../core/maybe","../../../../geometry/SpatialReference","../../../../chunks/vec3f64","../../../../chunks/vec3","../../../../geometry/projection","../../../../chunks/mat4f64","./Util","./GeometryData","./Object3D","./Geometry","./localOrigin","./Layer","../materials/RibbonLineMaterial"],(function(t,i,e,n,r,o,s,a,c,h,l,d,O){"use strict";let _=0;let g=function(){function e(){this.ROOT_ORIGIN_ID="rg_root_"+_++,this._origins=new Map,this._gridSize=42e5}var g=e.prototype;return g.getOrigin=function(i){const r=this._origins.get(this.ROOT_ORIGIN_ID);if(null==r){if(t.isSome(e.testOrigin)){const t=e.testOrigin;return this._origins.set(this.ROOT_ORIGIN_ID,l.fromValues(t[0],t[1],t[2],this.ROOT_ORIGIN_ID)),this.getOrigin(i)}const n=l.fromValues(i[0]+Math.random()-.5,i[1]+Math.random()-.5,i[2]+Math.random()-.5,this.ROOT_ORIGIN_ID);return this._origins.set(this.ROOT_ORIGIN_ID,n),n}n.subtract(u,i,r.vec3),u[0]=Math.abs(u[0]),u[1]=Math.abs(u[1]),u[2]=Math.abs(u[2]);const o=this._gridSize;if(u[0]<o&&u[1]<o&&u[2]<o)return r;const s=Math.round(i[0]/o),a=Math.round(i[1]/o),c=Math.round(i[2]/o),h=`rg_${s}/${a}/${c}`;let d=this._origins.get(h);return d||(d=l.fromValues(s*o,a*o,c*o,h),this._origins.set(h,d)),d},g._drawOriginBox=function(t){const e=window.view,n=e._stage;if(null==this._object){this._material=new O.RibbonLineMaterial({width:2,color:[0,1,0,1]},"GridLocalOriginMaterial"),n.add(3,this._material);const t=new d("GridLocalOrigin",{isPickable:!1});n.add(0,t),this._object=new c({idHint:"GridLocalOrigin",castShadow:!1}),n.add(1,this._object),t.addObject(this._object),n.addToViewContent([t.id])}const l=[0,1,5,4,0,2,1,7,6,2,0,1,3,7,5,4,6,2,0],_=l.length,g=new Float32Array(3*_),u=new Uint32Array(2*(_-1)),I=.5*this._gridSize;for(let i=0;i<_;i++)g[3*i+0]=t[0]+(1&l[i]?I:-I),g[3*i+1]=t[1]+(2&l[i]?I:-I),g[3*i+2]=t[2]+(4&l[i]?I:-I),i>0&&(u[2*i+0]=i-1,u[2*i+1]=i);r.projectBuffer(g,i.WebMercator,0,g,e.spatialReference,0,_);const f={};f[s.VertexAttrConstants.POSITION]={size:3,data:g};const m={};m[s.VertexAttrConstants.POSITION]=u;const b=new a.GeometryData(f,m,"line"),R=new h(b,"GridLocalOriginBox");n.add(2,R),this._object.addGeometry(R,this._material,o.IDENTITY),console.log(this._origins.size,t)},e}();const u=e.create();return function(t){t.testOrigin=null}(g||(g={})),g}));

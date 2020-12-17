@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils"],(function(r,e,t,o,n,i,u){"use strict";var p=function(r){function e(e){var t=r.call(this,e)||this;return t.geometries1=null,t.geometries2=null,t.relation=null,t.relationParameter=null,t}return t.__extends(e,r),t.__decorate([n.property({json:{read:{reader:function(r){return r?r.map((function(r){return u.fromJSON(r)})):null}},write:{writer:function(r,e){e.geometries1=r.map((function(r){return r.toJSON()}))}}}})],e.prototype,"geometries1",void 0),t.__decorate([n.property({json:{read:{reader:function(r){return r?r.map((function(r){return u.fromJSON(r)})):null}},write:{writer:function(r,e){e.geometries2=r.map((function(r){return r.toJSON()}))}}}})],e.prototype,"geometries2",void 0),t.__decorate([n.property({type:String,json:{write:!0}})],e.prototype,"relation",void 0),t.__decorate([n.property({type:String,json:{write:!0}})],e.prototype,"relationParameter",void 0),e=t.__decorate([n.subclass("esri.tasks.support.RelationParameters")],e)}(o.JSONSupport);return p.from=i.default(p),p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/jsonUtils"],(function(e,r,o,t,s,p,i,a,n,u,l,c){"use strict";let d=function(r){function o(e){var o;return(o=r.call(this,e)||this).geometries1=null,o.geometries2=null,o.relation=null,o.relationParameter=null,o}return e._inheritsLoose(o,r),o}(l.JSONSupport);return r.__decorate([p.property({json:{read:{reader:e=>e?e.map((e=>c.fromJSON(e))):null},write:{writer:(e,r)=>{r.geometries1=e.map((e=>e.toJSON()))}}}})],d.prototype,"geometries1",void 0),r.__decorate([p.property({json:{read:{reader:e=>e?e.map((e=>c.fromJSON(e))):null},write:{writer:(e,r)=>{r.geometries2=e.map((e=>e.toJSON()))}}}})],d.prototype,"geometries2",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],d.prototype,"relation",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],d.prototype,"relationParameter",void 0),d=r.__decorate([i.subclass("esri.tasks.support.RelationParameters")],d),d.from=s.ensureType(d),d}));

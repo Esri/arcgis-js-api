@@ -1,0 +1,153 @@
+/*
+  Core Settings and Imports
+*/
+
+$include_widgets: true !default;
+
+// Widget core
+$include_Widget: $include_widgets !default;
+
+// Widgets (sorted alphabetically)
+$include_AreaMeasurement2D: $include_widgets !default;
+$include_AreaMeasurement3D: $include_widgets !default;
+$include_Attachments: $include_widgets !default;
+$include_Attribution: $include_widgets !default;
+$include_BasemapGallery: $include_widgets !default;
+$include_BasemapLayerList: $include_widgets !default;
+$include_BasemapToggle: $include_widgets !default;
+$include_BinaryColorSizeSlider: $include_widgets !default;
+$include_Bookmarks: $include_widgets !default;
+$include_BuildingExplorer: $include_widgets !default;
+$include_ButtonMenu: $include_widgets !default;
+$include_ClassedColorSlider: $include_widgets !default;
+$include_ClassedSizeSlider: $include_widgets !default;
+$include_Compass: $include_widgets !default;
+$include_ColorSizeSlider: $include_widgets !default;
+$include_ColorSlider: $include_widgets !default;
+$include_CoordinateConversion: $include_widgets !default;
+$include_DatePicker: $include_widgets !default;
+$include_Daylight: $include_widgets !default;
+$include_Directions: $include_widgets !default;
+$include_DirectLineMeasurement3D: $include_widgets !default;
+$include_DistanceMeasurement2D: $include_widgets !default;
+$include_Editor: $include_widgets !default;
+$include_ElevationProfile: $include_widgets !default;
+$include_Expand: $include_widgets !default;
+$include_Feature: $include_widgets !default;
+$include_FeatureContent: $include_widgets !default;
+$include_FeatureMedia: $include_widgets !default;
+$include_FeatureForm: $include_widgets !default;
+$include_FeatureTable: $include_widgets !default;
+$include_FeatureTemplates: $include_widgets !default;
+$include_Grid: $include_widgets !default;
+$include_HeatmapSlider: $include_widgets !default;
+$include_Histogram: $include_widgets !default;
+$include_HistogramRangeSlider: $include_widgets !default;
+$include_IdentityForm: $include_widgets !default;
+$include_IdentityModal: $include_widgets !default;
+$include_ItemList: $include_widgets !default;
+$include_LayerList: $include_widgets !default;
+$include_Legend: $include_widgets !default;
+$include_LineOfSight: $include_widgets !default;
+$include_Measurement: $include_widgets !default;
+$include_NavigationToggle: $include_widgets !default;
+$include_OpacitySlider: $include_widgets !default;
+$include_Print: $include_widgets !default;
+$include_Popup: $include_widgets !default;
+$include_ScaleBar: $include_widgets !default;
+$include_ScaleRangeSlider: $include_widgets !default;
+$include_Search: $include_widgets !default;
+$include_SizeSlider: $include_widgets !default;
+$include_Sketch: $include_widgets !default;
+$include_Slice: $include_widgets !default;
+$include_Slider: $include_widgets !default;
+$include_Spinner: $include_widgets !default;
+$include_Swipe: $include_widgets !default;
+$include_TableList: $include_widgets !default;
+$include_TimePicker: $include_widgets !default;
+$include_TimeSlider: $include_widgets !default;
+$include_Zoom: $include_widgets !default;
+
+$icomoon-font-path: "../base/icons/fonts"; // Override for esri/themes/base/icons/style.scss
+$calcite-fonts-path: "../base/fonts/fonts/";
+
+@import "fonts/fonts.scss";
+@import "icons/style.scss";
+
+@import "color";
+@import "type";
+@import "sizes";
+@import "layout";
+@import "mixins";
+
+@import "View";
+@import "Ui";
+@import "Overlay";
+@import "OverlayItem";
+
+@import "widgets/Widget";
+
+// Widgets (sorted alphabetically)
+@import "widgets/AreaMeasurement2D";
+@import "widgets/AreaMeasurement3D";
+@import "widgets/Attribution";
+@import "widgets/Attachments";
+@import "widgets/BasemapGallery";
+@import "widgets/BasemapLayerList";
+@import "widgets/BasemapToggle";
+@import "widgets/Bookmarks";
+@import "widgets/BinaryColorSizeSlider";
+@import "widgets/BuildingExplorer";
+@import "widgets/ButtonMenu";
+@import "widgets/ClassedColorSlider";
+@import "widgets/ClassedSizeSlider";
+@import "widgets/ColorSizeSlider";
+@import "widgets/ColorSlider";
+@import "widgets/Compass";
+@import "widgets/CoordinateConversion";
+@import "widgets/DatePicker";
+@import "widgets/Daylight";
+@import "widgets/Directions";
+@import "widgets/DirectLineMeasurement3D";
+@import "widgets/DistanceMeasurement2D";
+@import "widgets/Editor";
+@import "widgets/ElevationProfile";
+@import "widgets/Expand";
+@import "widgets/Feature";
+@import "widgets/FeatureContent";
+@import "widgets/FeatureMedia";
+@import "widgets/FeatureForm";
+@import "widgets/FeatureTable";
+@import "widgets/Grid";
+@import "widgets/HeatmapSlider";
+@import "widgets/Histogram";
+@import "widgets/HistogramRangeSlider";
+@import "widgets/IdentityForm";
+@import "widgets/IdentityModal";
+@import "widgets/ItemList";
+@import "widgets/LayerList";
+@import "widgets/Legend";
+@import "widgets/LineOfSight";
+@import "widgets/Measurement";
+@import "widgets/NavigationToggle";
+@import "widgets/OpacitySlider";
+@import "widgets/Popup";
+@import "widgets/Print";
+@import "widgets/ScaleBar";
+@import "widgets/ScaleRangeSlider";
+@import "widgets/Search";
+@import "widgets/SearchResultRenderer";
+@import "widgets/SizeSlider";
+@import "widgets/Sketch";
+@import "widgets/Slice";
+@import "widgets/Slider";
+@import "widgets/Spinner";
+@import "widgets/Swipe";
+@import "widgets/FeatureTemplates";
+@import "widgets/TableList";
+@import "widgets/TimePicker";
+@import "widgets/TimeSlider";
+@import "widgets/Zoom";
+
+// animations
+@import "animation";

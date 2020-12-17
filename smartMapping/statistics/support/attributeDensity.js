@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../support/adapters/support/utils","../../../support/arcadeOnDemand"],(function(e,t,n,i,r){"use strict";function a(e,t,n){return void 0===t&&(t=!0),void 0===n&&(n=!0),i.isValidNumber(e)&&(t||0!==e)&&(n||e>=0)}return function(e){return n.__awaiter(this,void 0,void 0,(function(){var t,i,s,l,u,c,o,d,p,f,g,v,h,b,w,x,m,y,D,_,E,M,F,N,R,V,q,A,C;return n.__generator(this,(function(n){switch(n.label){case 0:t=e.features,i=e.attributes,s=e.includeZeros,l=e.includeNegatives,u=e.view,c=0,o=0,d=1/0,p=-1/0,f=null,g=new Map,F=0,n.label=1;case 1:return F<i.length?(V=i[F].valueExpression)?f?[3,3]:[4,r.loadArcade()]:[3,4]:[3,5];case 2:v=n.sent().arcadeUtils,f=v,n.label=3;case 3:g.set(F,f.createFunction(V)),n.label=4;case 4:return F++,[3,1];case 5:for(h=u&&f&&f.getViewInfo({viewingMode:"2d"===u.type?"map":u.viewingMode,scale:u.scale,spatialReference:u.spatialReference}),b=0,w=t;b<w.length;b++)if(x=w[b],m=x.geometry,y=x.attributes,m&&(D=m.extent)&&(_=D.width*D.height)>0){for(E=0,M=f&&f.createExecContext(x,h),F=0;F<i.length;F++)N=i[F],R=N.field,V=N.valueExpression,q=null,R?q=y[R]:V&&(A=g.get(F),q=f.executeFunction(A,M)),a(q,s,l)&&(E+=q||0);a(E,s,l)&&(++c,o+=C=E/_,C<d&&(d=C),C>p&&(p=C))}return[2,{minDensity:d!==1/0?d:null,maxDensity:p!==-1/0?p:null,avgDensity:c?o/c:null}]}}))}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../support/arcadeOnDemand","../../support/adapters/support/utils"],(function(e,t){"use strict";function n(e,n=!0,i=!0){return t.isValidNumber(e)&&(n||0!==e)&&(i||e>=0)}return async function(t){const{features:i,attributes:s,includeZeros:o,includeNegatives:c,view:a}=t;let l=0,r=0,u=1/0,f=-1/0,d=null;const p=new Map;for(let t=0;t<s.length;t++){const{valueExpression:n}=s[t];if(n){if(!d){const{arcadeUtils:t}=await e.loadArcade();d=t}p.set(t,d.createFunction(n))}}const g=a&&d&&d.getViewInfo({viewingMode:"2d"===a.type?"map":a.viewingMode,scale:a.scale,spatialReference:a.spatialReference});for(const e of i){const t=e.geometry,i=e.attributes;if(t){const a=t.extent;if(a){const t=a.width*a.height;if(t>0){let a=0;const v=d&&d.createExecContext(e,g);for(let e=0;e<s.length;e++){const{field:t,valueExpression:l}=s[e];let r=null;if(t)r=i[t];else if(l){const t=p.get(e);r=d.executeFunction(t,v)}n(r,o,c)&&(a+=r||0)}if(n(a,o,c)){const e=a/t;++l,r+=e,e<u&&(u=e),e>f&&(f=e)}}}}}return{minDensity:u!==1/0?u:null,maxDensity:f!==-1/0?f:null,avgDensity:l?r/l:null}}}));

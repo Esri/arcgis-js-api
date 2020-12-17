@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/MapUtils"],(function(e,o,l){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.maxDownloadSlots=o.downloadSlotsPerClient=void 0,o.downloadSlotsPerClient=l.MapFromValues([[0,15],[1,15],[2,20],[3,5]]),o.maxDownloadSlots=30}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";const o=(()=>{const e=new Array;return e[0]=10,e[1]=10,e[2]=10,e[3]=10,e[4]=5,e})();e.downloadSlotsPerClient=o,e.maxDownloadSlots=30,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../geometry/support/aaBoundingRect","./BitmapTile","./brushes","./webgl/enums","./webgl/TileContainer"],(function(e,t,r,i,n,s,a,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.BitmapTileContainer=void 0;var p=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),t.prototype.createTile=function(e){var t=this._tileInfoView.getTileBounds(i.create(),e);return new n.BitmapTile(e,t,this._tileInfoView.tileInfo.size)},t.prototype.destroyTile=function(){},t.prototype.prepareRenderPasses=function(t){var i=this,n=t.registerRenderPass({name:"bitmap (tile)",brushes:[s.brushes.bitmap],target:function(){return i.children.map((function(e){return e.bitmap}))},drawPhase:a.WGLDrawPhase.MAP});return r.__spreadArrays(e.prototype.prepareRenderPasses.call(this,t),[n])},t.prototype.doRender=function(t){this.visible&&t.drawPhase===a.WGLDrawPhase.MAP&&e.prototype.doRender.call(this,t)},t}(o.default);t.BitmapTileContainer=p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../geometry/support/aaBoundingRect","./webgl/enums","./brushes","./webgl/TileContainer","./BitmapTile"],(function(e,t,i,r,n,s,a){"use strict";let o=function(e){function s(){return e.apply(this,arguments)||this}t._inheritsLoose(s,e);var o=s.prototype;return o.createTile=function(e){const t=this._tileInfoView.getTileBounds(i.create(),e);return new a.BitmapTile(e,t,this._tileInfoView.tileInfo.size)},o.destroyTile=function(){},o.prepareRenderPasses=function(t){const i=t.registerRenderPass({name:"bitmap (tile)",brushes:[n.brushes.bitmap],target:()=>this.children.map((e=>e.bitmap)),drawPhase:r.WGLDrawPhase.MAP});return[...e.prototype.prepareRenderPasses.call(this,t),i]},o.doRender=function(t){this.visible&&t.drawPhase===r.WGLDrawPhase.MAP&&e.prototype.doRender.call(this,t)},s}(s.default);e.BitmapTileContainer=o,Object.defineProperty(e,"__esModule",{value:!0})}));

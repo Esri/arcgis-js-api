@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/accessorSupport/decorators","../../symbols/support/materialUtils","./Background"],(function(o,r,e,t,n,c,s){"use strict";var l=e.__assign(e.__assign({},c.colorAndTransparencyProperty),{nonNullable:!0});return function(o){function r(r){var e=o.call(this,r)||this;return e.type="color",e.color=new t([0,0,0,1]),e}var c;return e.__extends(r,o),c=r,r.prototype.clone=function(){return new c(this.cloneProperties())},r.prototype.cloneProperties=function(){return{color:this.color.clone()}},e.__decorate([n.enumeration({color:"color"},{readOnly:!0})],r.prototype,"type",void 0),e.__decorate([n.property(l)],r.prototype,"color",void 0),r=c=e.__decorate([n.subclass("esri.webscene.background.ColorBackground")],r)}(s)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../Color","../../symbols/support/materialUtils","./Background"],(function(o,r,e,c,t,s,n,l,u,p,a,i,d,y){"use strict";var b;const h={...d.colorAndTransparencyProperty,nonNullable:!0};let _=b=function(r){function e(o){var e;return(e=r.call(this,o)||this).type="color",e.color=new i([0,0,0,1]),e}o._inheritsLoose(e,r);var c=e.prototype;return c.clone=function(){return new b(this.cloneProperties())},c.cloneProperties=function(){return{color:this.color.clone()}},e}(y);return r.__decorate([n.enumeration({color:"color"},{readOnly:!0})],_.prototype,"type",void 0),r.__decorate([s.property(h)],_.prototype,"color",void 0),_=b=r.__decorate([l.subclass("esri.webscene.background.ColorBackground")],_),_}));

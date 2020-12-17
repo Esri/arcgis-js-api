@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Logger","../../../core/promiseUtils","../../../core/accessorSupport/decorators","../engine/BitmapContainer","./LayerView2D","./support/ExportStrategy","../../layers/LayerView","../../layers/RefreshableLayerView"],(function(t,e,r,i,n,o,a,s,p,u,h){"use strict";var c=i.getLogger("esri.views.2d.layers.BaseDynamicLayerView2D");return function(t){function e(){return null!==t&&t.apply(this,arguments)||this}return r.__extends(e,t),e.prototype.hitTest=function(){return null},e.prototype.update=function(t){this.strategy.update(t).catch((function(t){n.isAbortError(t)||c.error(t)})),this.notifyChange("updating")},e.prototype.attach=function(){this._bitmapContainer=new a.BitmapContainer,this.container.addChild(this._bitmapContainer),this.strategy=new p({container:this._bitmapContainer,fetchSource:this.fetchBitmapData.bind(this),requestUpdate:this.requestUpdate.bind(this)})},e.prototype.detach=function(){this.strategy.destroy(),this.strategy=null,this.container.removeChild(this._bitmapContainer),this._bitmapContainer.removeAllChildren()},e.prototype.moveStart=function(){},e.prototype.viewChange=function(){},e.prototype.moveEnd=function(){this.requestUpdate()},e.prototype.fetchBitmapData=function(t,e,r){return this.layer.fetchImage(t,e,r,{timestamp:this.refreshTimestamp})},e.prototype.doRefresh=function(){return r.__awaiter(this,void 0,void 0,(function(){return r.__generator(this,(function(t){return this.requestUpdate(),[2]}))}))},e.prototype.isUpdating=function(){return this.strategy.updating||this.updateRequested},r.__decorate([o.property()],e.prototype,"strategy",void 0),r.__decorate([o.property({dependsOn:["strategy.updating"]})],e.prototype,"updating",void 0),e=r.__decorate([o.subclass("esri.views.2d.layers.BaseDynamicLayerView2D")],e)}(h.RefreshableLayerView(s.LayerView2DMixin(u)))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/promiseUtils","../../layers/RefreshableLayerView","../../layers/LayerView","../engine/BitmapContainer","./LayerView2D","./support/ExportStrategy"],(function(e,t,r,i,s,a,n,o,c,p,u,h,d,y,l,f){"use strict";const g=i.getLogger("esri.views.2d.layers.BaseDynamicLayerView2D");let m=function(t){function r(){return t.apply(this,arguments)||this}e._inheritsLoose(r,t);var i=r.prototype;return i.hitTest=function(){return null},i.update=function(e){this.strategy.update(e).catch((e=>{u.isAbortError(e)||g.error(e)})),this.notifyChange("updating")},i.attach=function(){this._bitmapContainer=new y.BitmapContainer,this.container.addChild(this._bitmapContainer),this.strategy=new f({container:this._bitmapContainer,fetchSource:this.fetchBitmapData.bind(this),requestUpdate:this.requestUpdate.bind(this)})},i.detach=function(){this.strategy.destroy(),this.strategy=null,this.container.removeChild(this._bitmapContainer),this._bitmapContainer.removeAllChildren()},i.moveStart=function(){},i.viewChange=function(){},i.moveEnd=function(){this.requestUpdate()},i.fetchBitmapData=function(e,t,r){return this.layer.fetchImage(e,t,r,{timestamp:this.refreshTimestamp})},i.doRefresh=async function(){this.requestUpdate()},i.isUpdating=function(){return this.strategy.updating||this.updateRequested},r}(h.RefreshableLayerView(l.LayerView2DMixin(d)));return t.__decorate([a.property()],m.prototype,"strategy",void 0),t.__decorate([a.property({dependsOn:["strategy.updating"]})],m.prototype,"updating",void 0),m=t.__decorate([n.subclass("esri.views.2d.layers.BaseDynamicLayerView2D")],m),m}));

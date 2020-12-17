@@ -34,27 +34,24 @@
 // esri.core
 import { deprecatedProperty } from "esri/core/deprecate";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import Logger = require("esri/core/Logger");
+import Logger from "esri/core/Logger";
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import FeatureLayer = require("esri/layers/FeatureLayer");
-
-// esri.libs.intersection-observer
-import "../libs/intersection-observer/intersection-observer";
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.FeatureTemplates
-import FeatureTemplatesViewModel = require("esri/widgets/FeatureTemplates/FeatureTemplatesViewModel");
+import FeatureTemplatesViewModel from "esri/widgets/FeatureTemplates/FeatureTemplatesViewModel";
 import { Filter, GroupByType } from "esri/widgets/FeatureTemplates/interfaces";
 import { ItemList } from "esri/widgets/FeatureTemplates/ItemList";
-import TemplateItem = require("esri/widgets/FeatureTemplates/TemplateItem");
-import TemplateItemGroup = require("esri/widgets/FeatureTemplates/TemplateItemGroup");
+import TemplateItem from "esri/widgets/FeatureTemplates/TemplateItem";
+import TemplateItemGroup from "esri/widgets/FeatureTemplates/TemplateItemGroup";
 
 // esri.widgets.FeatureTemplates.t9n
 import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureTemplates";
@@ -72,16 +69,8 @@ const CSS = {
   widget: "esri-widget"
 };
 
-function isGroup(itemOrGroup: any): itemOrGroup is TemplateItemGroup {
-  return itemOrGroup.items;
-}
-
 function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string {
-  if (isGroup(itemOrGroup)) {
-    return itemOrGroup.uid;
-  }
-
-  return itemOrGroup.layer.id;
+  return itemOrGroup.label;
 }
 
 const logger = Logger.getLogger("esri.widgets.FeatureTemplates");
@@ -288,22 +277,26 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
 
   private _iconIntersectionObserver: IntersectionObserver = new IntersectionObserver(
     (entries, observer) => {
-      entries.forEach((entry) => {
+      entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
           const node = entry.target;
 
           if (!node["data-has-icon"]) {
-            node["data-has-icon"] = true;
             const item = node["data-item"] as TemplateItem;
 
-            item.fetchThumbnail().then(() => {
-              if (item.thumbnail) {
-                node.appendChild(item.thumbnail);
-              }
-            });
-          }
+            node["data-has-icon"] = true;
+            observer.unobserve(node);
+            await item.fetchThumbnail();
 
-          observer.unobserve(node);
+            const sameItem = node["data-item"] === item;
+
+            if (sameItem && item.thumbnail) {
+              node.appendChild(item.thumbnail);
+            } else {
+              node["data-has-icon"] = false;
+              observer.observe(node);
+            }
+          }
         }
       });
     }
@@ -646,4 +639,4 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   }
 }
 
-export = FeatureTemplates;
+export default FeatureTemplates;

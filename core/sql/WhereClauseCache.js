@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../ItemCache","./WhereClause"],(function(e,t,r,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.WhereClauseCache=void 0;var n=function(){function e(e,t){this._cache=new r(e),this._invalidCache=new r(t)}return e.prototype.get=function(e,t){var r=t.uid+":"+e,n=this._cache.get(r);if(n)return n;if(void 0!==this._invalidCache.get(r))return null;try{var u=i.WhereClause.create(e,t);return this._cache.put(r,u),u}catch(e){return this._invalidCache.put(r,null),null}},e}();t.WhereClauseCache=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../ItemCache","./WhereClause"],(function(e,t,n){"use strict";let i=function(){function e(e,n){this._cache=new t(e),this._invalidCache=new t(n)}return e.prototype.get=function(e,t){const i=`${t.uid}:${e}`,c=this._cache.get(i);if(c)return c;if(void 0!==this._invalidCache.get(i))return null;try{const c=n.WhereClause.create(e,t);return this._cache.put(i,c),c}catch{return this._invalidCache.put(i,null),null}},e}();e.WhereClauseCache=i,Object.defineProperty(e,"__esModule",{value:!0})}));

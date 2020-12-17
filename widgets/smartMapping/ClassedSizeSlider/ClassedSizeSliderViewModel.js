@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/maybe","../../../core/accessorSupport/decorators","../SmartMappingSliderViewModel"],(function(e,t,r,n,a,i){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.breaks=null,r.zoomingEnabled=!1,r}return r.__extends(t,e),Object.defineProperty(t.prototype,"max",{get:function(){var e=this.breaks;return e&&e.length?e[e.length-1].max:null},set:function(e){this._updateBreakMax(e),this.setMax(e)},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"min",{get:function(){var e=this.breaks;return e&&e.length?e[0].min:null},set:function(e){this._updateBreakMin(e),this.setMin(e)},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"values",{get:function(){var e=this.breaks;if(!e||!e.length)return[];for(var t=[],r=0;r<e.length-1;r++)t.push(e[r].max);return t},enumerable:!1,configurable:!0}),t.prototype.setValue=function(e,t){var r=this.max,n=this.min;t>r||t<n||(this._updateBreakInfos(t,e),this.notifyChange("values"),this.notifyChange("labels"))},t.prototype._updateBreakMax=function(e){var t=this.breaks,r=this.max,a=this.min;!isNaN(e)&&r!==e&&n.isSome(a)&&e>a&&t&&t.length&&(t[t.length-1].max=e)},t.prototype._updateBreakMin=function(e){var t=this.breaks,r=this.max,a=this.min;!isNaN(e)&&a!==e&&n.isSome(r)&&e<r&&t&&t.length&&(t[0].min=e)},t.prototype._updateBreakInfos=function(e,t){var r=this.breaks;r[t].max=e,r[t].min>r[t].max&&(r[t].min=e),n.isSome(r[t+1])&&(r[t+1].min=e)},r.__decorate([a.property()],t.prototype,"breaks",void 0),r.__decorate([a.property({dependsOn:["breaks"]})],t.prototype,"max",null),r.__decorate([a.property({dependsOn:["breaks"]})],t.prototype,"min",null),r.__decorate([a.property({dependsOn:["breaks"],readOnly:!0})],t.prototype,"values",null),t=r.__decorate([a.subclass("esri.widgets.smartMapping.ClassedSizeSlider.ClassedSizeSliderViewModel")],t)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../SmartMappingSliderViewModel"],(function(e,t,s,n,r,o,a,i,u,l,c,p){"use strict";let d=function(t){function s(e){var s;return(s=t.call(this,e)||this).breaks=null,s.zoomingEnabled=!1,s}e._inheritsLoose(s,t);var r=s.prototype;return r.setValue=function(e,t){const{max:s,min:n}=this;t>s||t<n||(this._updateBreakInfos(t,e),this.notifyChange("values"),this.notifyChange("labels"))},r._updateBreakMax=function(e){const{breaks:t,max:s,min:r}=this;!isNaN(e)&&s!==e&&n.isSome(r)&&e>r&&t&&t.length&&(t[t.length-1].max=e)},r._updateBreakMin=function(e){const{breaks:t,max:s,min:r}=this;!isNaN(e)&&r!==e&&n.isSome(s)&&e<s&&t&&t.length&&(t[0].min=e)},r._updateBreakInfos=function(e,t){const{breaks:s}=this;s[t].max=e,s[t].min>s[t].max&&(s[t].min=e),n.isSome(s[t+1])&&(s[t+1].min=e)},e._createClass(s,[{key:"max",set:function(e){this._updateBreakMax(e),this.setMax(e)},get:function(){const{breaks:e}=this;return e&&e.length?e[e.length-1].max:null}},{key:"min",set:function(e){this._updateBreakMin(e),this.setMin(e)},get:function(){const{breaks:e}=this;return e&&e.length?e[0].min:null}},{key:"values",get:function(){const{breaks:e}=this;if(!e||!e.length)return[];const t=[];for(let s=0;s<e.length-1;s++)t.push(e[s].max);return t}}]),s}(p);return t.__decorate([a.property()],d.prototype,"breaks",void 0),t.__decorate([a.property({dependsOn:["breaks"]})],d.prototype,"max",null),t.__decorate([a.property({dependsOn:["breaks"]})],d.prototype,"min",null),t.__decorate([a.property({dependsOn:["breaks"],readOnly:!0})],d.prototype,"values",null),d=t.__decorate([i.subclass("esri.widgets.smartMapping.ClassedSizeSlider.ClassedSizeSliderViewModel")],d),d}));

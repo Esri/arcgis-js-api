@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(n){"use strict";function t(){return new Float32Array(4)}function e(n){const t=new Float32Array(4);return t[0]=n[0],t[1]=n[1],t[2]=n[2],t[3]=n[3],t}function r(n,t,e,r){const u=new Float32Array(4);return u[0]=n,u[1]=t,u[2]=e,u[3]=r,u}function u(n,t){return new Float32Array(n,t,4)}function o(){return t()}function c(){return r(1,1,1,1)}function i(){return r(1,0,0,0)}function f(){return r(0,1,0,0)}function a(){return r(0,0,1,0)}function s(){return r(0,0,0,1)}const _=o(),l=c(),N=i(),I=f(),T=a(),U=s();var w=Object.freeze({__proto__:null,create:t,clone:e,fromValues:r,createView:u,zeros:o,ones:c,unitX:i,unitY:f,unitZ:a,unitW:s,ZEROS:_,ONES:l,UNIT_X:N,UNIT_Y:I,UNIT_Z:T,UNIT_W:U});n.ONES=l,n.UNIT_W=U,n.UNIT_X=N,n.UNIT_Y=I,n.UNIT_Z=T,n.ZEROS=_,n.clone=e,n.create=t,n.createView=u,n.fromValues=r,n.ones=c,n.unitW=s,n.unitX=i,n.unitY=f,n.unitZ=a,n.vec4f32=w,n.zeros=o}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./BufferView","./InterleavedLayout"],(function(e,f,r,u,i){"use strict";function t(e){var f=new Array;return e.fields.forEach((function(e,u){var i=r.__assign(r.__assign({},e),{constructor:c(e.constructor)});f.push([u,i])})),{stride:e.stride,fields:f,fieldNames:e.fieldNames}}function V(e){var f=i.newLayout();return f.stride=e.stride,f.fieldNames=e.fieldNames,e.fields.forEach((function(e){return f.fields.set(e[0],r.__assign(r.__assign({},e[1]),{constructor:(u=e[1].constructor,a.get(u))}));var u})),f}Object.defineProperty(f,"__esModule",{value:!0}),f.unpackLayout=f.packLayout=f.unpackInterleavedBuffer=f.packInterleavedBuffer=void 0,f.packInterleavedBuffer=function(e,f){return f.push(e.buffer),{buffer:e.buffer,layout:t(e.layout)}},f.unpackInterleavedBuffer=function(e){return V(e.layout).createView(e.buffer)},f.packLayout=t,f.unpackLayout=V;var n=[u.BufferViewFloat,u.BufferViewVec2f,u.BufferViewVec3f,u.BufferViewVec4f,u.BufferViewMat3f,u.BufferViewMat4f,u.BufferViewFloat64,u.BufferViewVec2f64,u.BufferViewVec3f64,u.BufferViewVec4f64,u.BufferViewMat3f64,u.BufferViewMat4f64,u.BufferViewUint8,u.BufferViewVec2u8,u.BufferViewVec3u8,u.BufferViewVec4u8,u.BufferViewUint16,u.BufferViewVec2u16,u.BufferViewVec3u16,u.BufferViewVec4u16,u.BufferViewUint32,u.BufferViewVec2u32,u.BufferViewVec3u32,u.BufferViewVec4u32,u.BufferViewInt8,u.BufferViewVec2i8,u.BufferViewVec3i8,u.BufferViewVec4i8,u.BufferViewInt16,u.BufferViewVec2i16,u.BufferViewVec3i16,u.BufferViewVec4i16,u.BufferViewInt32,u.BufferViewVec2i32,u.BufferViewVec3i32,u.BufferViewVec4i32];function c(e){return e.ElementType+"_"+e.ElementCount}var a=new Map;n.forEach((function(e){return a.set(c(e),e)}))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./BufferView","./InterleavedLayout"],(function(e,f,u){"use strict";function r(e){const f=new Array;return e.fields.forEach(((e,u)=>{const r={...e,constructor:V(e.constructor)};f.push([u,r])})),{stride:e.stride,fields:f,fieldNames:e.fieldNames}}function i(e){const f=u.newLayout();return f.stride=e.stride,f.fieldNames=e.fieldNames,e.fields.forEach((e=>{return f.fields.set(e[0],{...e[1],constructor:(u=e[1].constructor,c.get(u))});var u})),f}const t=[f.BufferViewFloat,f.BufferViewVec2f,f.BufferViewVec3f,f.BufferViewVec4f,f.BufferViewMat3f,f.BufferViewMat4f,f.BufferViewFloat64,f.BufferViewVec2f64,f.BufferViewVec3f64,f.BufferViewVec4f64,f.BufferViewMat3f64,f.BufferViewMat4f64,f.BufferViewUint8,f.BufferViewVec2u8,f.BufferViewVec3u8,f.BufferViewVec4u8,f.BufferViewUint16,f.BufferViewVec2u16,f.BufferViewVec3u16,f.BufferViewVec4u16,f.BufferViewUint32,f.BufferViewVec2u32,f.BufferViewVec3u32,f.BufferViewVec4u32,f.BufferViewInt8,f.BufferViewVec2i8,f.BufferViewVec3i8,f.BufferViewVec4i8,f.BufferViewInt16,f.BufferViewVec2i16,f.BufferViewVec3i16,f.BufferViewVec4i16,f.BufferViewInt32,f.BufferViewVec2i32,f.BufferViewVec3i32,f.BufferViewVec4i32];function V(e){return`${e.ElementType}_${e.ElementCount}`}const c=new Map;t.forEach((e=>c.set(V(e),e))),e.packInterleavedBuffer=function(e,f){return f.push(e.buffer),{buffer:e.buffer,layout:r(e.layout)}},e.packLayout=r,e.unpackInterleavedBuffer=function(e){return i(e.layout).createView(e.buffer)},e.unpackLayout=i,Object.defineProperty(e,"__esModule",{value:!0})}));

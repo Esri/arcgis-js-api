@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../symbols/support/gfxUtils","../../../symbols/support/previewSymbol3D"],(function(t,e,r,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.getRotationAngleForFocus=e.getRelationshipRampElement=void 0;var l={HH:315,HL:45,LL:135,LH:225},s={2:[["HL","HH"],["LL","LH"]],3:[["HL","HM","HH"],["ML","MM","MH"],["LL","LM","LH"]],4:[["HL","HM1","HM2","HH"],["M2L","M2M1","M2M2","M2H"],["M1L","M1M1","M1M2","M1H"],["LL","LM1","LM2","LH"]]};function i(t){if(t){var e,l=t.type;if(l.indexOf("3d")>-1)return o.getSymbolLayerFill(t.symbolLayers.getItemAt(0));if("simple-line"===l)return(e=r.getStroke(t))&&e.color;if("simple-marker"===t.type)if("x"===t.style||"cross"===t.style)return(e=r.getStroke(t))&&e.color;return r.getFill(t)}}function n(t){var e=l[t];return t&&null==e&&(e=l.HH),e||0}e.getRelationshipRampElement=function(t){var e=t.focus,r=t.infos,o=t.numClasses,l=s[o],a={};r.forEach((function(t){a[t.value]={label:t.label,fill:i(t.symbol)}}));for(var u=[],H=0;H<o;H++){for(var L=[],f=0;f<o;f++){var p=a[l[H][f]];L.push(p.fill)}u.push(L)}return{type:"relationship-ramp",numClasses:o,focus:e,colors:u,labels:function(t,e){var r=e.HH.label,o=e.LL.label,l=e.HL.label,s=e.LH.label;switch(t){case"HH":return{top:r,bottom:o,left:l,right:s};case"HL":return{top:l,bottom:s,left:o,right:r};case"LL":return{top:o,bottom:r,left:s,right:l};case"LH":return{top:s,bottom:l,left:r,right:o};default:return{top:r,bottom:o,left:l,right:s}}}(e,a),rotation:n(e)}},e.getRotationAngleForFocus=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../symbols/support/gfxUtils","../../../symbols/support/previewSymbol3D"],(function(t,e,o){"use strict";const l={HH:315,HL:45,LL:135,LH:225},r={2:[["HL","HH"],["LL","LH"]],3:[["HL","HM","HH"],["ML","MM","MH"],["LL","LM","LH"]],4:[["HL","HM1","HM2","HH"],["M2L","M2M1","M2M2","M2H"],["M1L","M1M1","M1M2","M1H"],["LL","LM1","LM2","LH"]]};function s(t){if(!t)return;const{type:l}=t;if(l.indexOf("3d")>-1)return o.getSymbolLayerFill(t.symbolLayers.getItemAt(0));if("simple-line"===l){const o=e.getStroke(t);return o&&o.color}if("simple-marker"===t.type&&("x"===t.style||"cross"===t.style)){const o=e.getStroke(t);return o&&o.color}return e.getFill(t)}function n(t){let e=l[t];return t&&null==e&&(e=l.HH),e||0}t.getRelationshipRampElement=function(t){const{focus:e,infos:o,numClasses:l}=t,i=r[l],u={};o.forEach((t=>{u[t.value]={label:t.label,fill:s(t.symbol)}}));const H=[];for(let t=0;t<l;t++){const e=[];for(let o=0;o<l;o++){const l=u[i[t][o]];e.push(l.fill)}H.push(e)}return{type:"relationship-ramp",numClasses:l,focus:e,colors:H,labels:function(t,e){const o=e.HH.label,l=e.LL.label,r=e.HL.label,s=e.LH.label;switch(t){case"HH":return{top:o,bottom:l,left:r,right:s};case"HL":return{top:r,bottom:s,left:l,right:o};case"LL":return{top:l,bottom:o,left:s,right:r};case"LH":return{top:s,bottom:r,left:o,right:l};default:return{top:o,bottom:l,left:r,right:s}}}(e,u),rotation:n(e)}},t.getRotationAngleForFocus=n,Object.defineProperty(t,"__esModule",{value:!0})}));

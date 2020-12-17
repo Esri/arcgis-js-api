@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Error","../../core/maybe","../../layers/support/fieldUtils","./support/utils","../support/utils","../support/adapters/support/layerUtils"],(function(e,t,r,a,i,s,n,l,u){"use strict";var o=s.numericTypes;function p(e){return r.__awaiter(this,void 0,void 0,(function(){var t,s,p,d,c,y,f,h,m,v,_;return r.__generator(this,(function(w){switch(w.label){case 0:if(!(e&&e.layer&&e.view))throw new a("heatmap-statistics:missing-parameters","'layer' and 'view' parameters are required");if(t=[0,2,1],s=e.layer,p=r.__rest(e,["layer"]),d=u.createLayerAdapter(s,t),(c=r.__assign({layerAdapter:d},p)).blurRadius=null==c.blurRadius?10:c.blurRadius,!d)throw new a("heatmap-statistics:invalid-parameters","'layer' must be one of these types: "+u.getLayerTypeLabels(t).join(", "));return y=i.isSome(c.signal)?{signal:c.signal}:null,[4,d.load(y)];case 1:return w.sent(),f=c.field,h=f?d.getField(f):null,[4,l.getFieldsList({field:f})];case 2:if(m=w.sent(),v=n.verifyBasicFieldValidity(d,m,"heatmap-statistics:invalid-parameters"))throw v;if(h&&(_=n.verifyFieldType(d,h,"heatmap-statistics:invalid-parameters",o)))throw _;return[2,c]}}))}))}return function(e){return r.__awaiter(this,void 0,void 0,(function(){var t,a,i;return r.__generator(this,(function(s){switch(s.label){case 0:return[4,p(e)];case 1:return t=s.sent(),a=t.layerAdapter,i=r.__rest(t,["layerAdapter"]),[2,a.heatmapStatistics(i)]}}))}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../core/maybe","../../core/Error","../../layers/support/fieldUtils","../support/utils","./support/utils","../support/adapters/support/layerUtils"],(function(e,t,a,i,s,r){"use strict";const l=a.numericTypes;return async function(a){const{layerAdapter:n,...p}=await async function(a){if(!(a&&a.layer&&a.view))throw new t("heatmap-statistics:missing-parameters","'layer' and 'view' parameters are required");const n=[0,2,1],{layer:p,...o}=a,u=r.createLayerAdapter(p,n),c={layerAdapter:u,...o};if(c.blurRadius=null==c.blurRadius?10:c.blurRadius,!u)throw new t("heatmap-statistics:invalid-parameters","'layer' must be one of these types: "+r.getLayerTypeLabels(n).join(", "));const d=e.isSome(c.signal)?{signal:c.signal}:null;await u.load(d);const y=c.field,f=y?u.getField(y):null,m=await i.getFieldsList({field:y}),w=s.verifyBasicFieldValidity(u,m,"heatmap-statistics:invalid-parameters");if(w)throw w;if(f){const e=s.verifyFieldType(u,f,"heatmap-statistics:invalid-parameters",l);if(e)throw e}return c}(a);return n.heatmapStatistics(p)}}));

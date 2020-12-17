@@ -31,20 +31,23 @@
 
 // esri.core
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
-import { SystemOrAreaUnit } from "esri/core/unitUtils";
+import { isMeasurementSystem, SystemOrAreaUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
+
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.AreaMeasurement3D
-import AreaMeasurement3DViewModel = require("esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel");
+import AreaMeasurement3DViewModel from "esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel";
 
 // esri.widgets.AreaMeasurement3D.t9n
 import AreaMeasurement3DMessages from "esri/widgets/AreaMeasurement3D/t9n/AreaMeasurement3D";
@@ -212,6 +215,23 @@ class AreaMeasurement3D extends Widget {
   messages: AreaMeasurement3DMessages = null;
 
   //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -246,10 +266,10 @@ class AreaMeasurement3D extends Widget {
    *
    * @name unitOptions
    * @instance
-   * @type {Array<"metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares">}
+   * @type {module:esri/core/units~SystemOrAreaUnit[]}
    */
   @aliasOf("viewModel.unitOptions")
-  unitOptions: Array<SystemOrAreaUnit> = null;
+  unitOptions: SystemOrAreaUnit[] = null;
 
   //----------------------------------
   //  unit
@@ -260,7 +280,7 @@ class AreaMeasurement3D extends Widget {
    * @name unit
    * @instance
    * @since 4.8
-   * @type { "metric" | "imperial" | "square-inches" | "square-feet" | "square-us-feet" | "square-yards" | "square-miles" | "square-meters" | "square-kilometers" | "acres" | "ares" | "hectares" }
+   * @type {module:esri/core/units~SystemOrAreaUnit}
    */
 
   @aliasOf("viewModel.unit")
@@ -273,13 +293,11 @@ class AreaMeasurement3D extends Widget {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const isSupported = this.viewModel.isSupported;
-    const isActive = this.viewModel.active;
-    const isDisabled = this.viewModel.state === "disabled";
-    const isReady = this.viewModel.state === "ready";
-    const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
-    const measurement = this.viewModel.measurement;
-    const { messages } = this;
+    const { isSupported, active: isActive, measurement, state, unit } = this.viewModel;
+    const isDisabled = state === "disabled";
+    const isReady = state === "ready";
+    const isMeasuring = state === "measuring" || state === "measured";
+    const { messages, messagesUnits } = this;
 
     const hintNode =
       isActive && isReady ? (
@@ -349,18 +367,20 @@ class AreaMeasurement3D extends Widget {
 
     const unitsSelectNode = (
       <div class={CSS.unitsSelectWrapper}>
-        <select class={CSS.unitsSelect} id={unitsId} onchange={this._changeUnit} bind={this}>
-          {this.viewModel.unitOptions.map((unit) =>
-            unit === this.viewModel.unit ? (
-              <option key={unit} value={unit} selected>
-                {messages.units[unit]}
-              </option>
-            ) : (
-              <option key={unit} value={unit}>
-                {messages.units[unit]}
-              </option>
-            )
-          )}
+        <select
+          class={CSS.unitsSelect}
+          id={unitsId}
+          onchange={this._changeUnit}
+          bind={this}
+          value={unit}
+        >
+          {this.viewModel.unitOptions.map((unitOption) => (
+            <option key={unitOption} value={unitOption}>
+              {isMeasurementSystem(unitOption)
+                ? messagesUnits.systems[unitOption]
+                : messagesUnits.units[unitOption]?.pluralCapitalized}
+            </option>
+          ))}
         </select>
       </div>
     );
@@ -433,4 +453,4 @@ class AreaMeasurement3D extends Widget {
   }
 }
 
-export = AreaMeasurement3D;
+export default AreaMeasurement3D;

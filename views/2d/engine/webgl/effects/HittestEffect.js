@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/MapUtils","../../../../../core/maybe","../definitions","./Effect"],(function(t,e,r,i,o,n,f){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.HittestEffect=void 0;var s=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.name=e.constructor.name,e.defines=["id"],e._lastSize=0,e}return r.__extends(e,t),e.prototype.dispose=function(){o.isSome(this._fbo)&&this._fbo.dispose()},e.prototype.bind=function(t){var e=t.context,r=t.painter,i=e.getViewport(),o=i.width,n=i.height,f=r.getFbos(o,n).effect0;e.bindFramebuffer(f),e.setClearColor(0,0,0,0),e.clear(e.gl.COLOR_BUFFER_BIT)},e.prototype.unbind=function(){},e.prototype.draw=function(t,e,r){var o=this,f=t.context,s=t.state,a=t.pixelRatio;void 0===r&&(r=n.HITTEST_SEARCH_SIZE);var u=f.getBoundFramebufferObject(),c=s.size[1]*a,p=Math.round(r*a),h=p/2,l=p/2;this._ensureBuffer(p),e.forEach((function(t,r){var n=new Map,f=Math.floor(r[0]*a-p/2),s=Math.floor(c-r[1]*a-p/2);u.readPixels(f,s,p,p,6408,5121,o._buf);for(var _=0;_<o._buf32.length;_++){var d=o._buf32[_];if(4294967295!==d&&0!==d){var b=_%p,v=p-Math.floor(_/p),y=(h-b)*(h-b)+(l-v)*(l-v),E=n.has(d)?n.get(d):4294967295;n.set(d,Math.min(y,E))}}var M=i.pairsOfMap(n).sort((function(t,e){return t[1]-e[1]})).map((function(t){return t[0]}));t.resolve(M),e.delete(r)}))},e.prototype._ensureBuffer=function(t){this._lastSize!==t&&(this._lastSize=t,this._buf=new Uint8Array(4*t*t),this._buf32=new Uint32Array(this._buf.buffer))},e}(f.Effect);e.HittestEffect=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe","../definitions","./Effect"],(function(t,e,i,n,o){"use strict";let s=function(t){function o(){var e;return(e=t.apply(this,arguments)||this).name=e.constructor.name,e.defines=["id"],e._lastSize=0,e}e._inheritsLoose(o,t);var s=o.prototype;return s.dispose=function(){i.isSome(this._fbo)&&this._fbo.dispose()},s.bind=function({context:t,painter:e}){const{width:i,height:n}=t.getViewport(),o=e.getFbos(i,n).effect0;t.bindFramebuffer(o),t.setClearColor(0,0,0,0),t.clear(t.gl.COLOR_BUFFER_BIT)},s.unbind=function(){},s.draw=function({context:t,state:e,pixelRatio:i},o,s=n.HITTEST_SEARCH_SIZE){const r=t.getBoundFramebufferObject(),f=e.size[1]*i,u=Math.round(s*i),a=u/2,c=u/2;this._ensureBuffer(u),o.forEach(((t,e)=>{const n=new Map,s=Math.floor(e[0]*i-u/2),h=Math.floor(f-e[1]*i-u/2);r.readPixels(s,h,u,u,6408,5121,this._buf);for(let t=0;t<this._buf32.length;t++){const e=this._buf32[t];if(4294967295!==e&&0!==e){const i=t%u,o=u-Math.floor(t/u),s=(a-i)*(a-i)+(c-o)*(c-o),r=n.has(e)?n.get(e):4294967295;n.set(e,Math.min(s,r))}}const l=Array.from(n).sort(((t,e)=>t[1]-e[1])).map((t=>t[0]));t.resolve(l),o.delete(e)}))},s._ensureBuffer=function(t){this._lastSize!==t&&(this._lastSize=t,this._buf=new Uint8Array(4*t*t),this._buf32=new Uint32Array(this._buf.buffer))},o}(o.Effect);t.HittestEffect=s,Object.defineProperty(t,"__esModule",{value:!0})}));

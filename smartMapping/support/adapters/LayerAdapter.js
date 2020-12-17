@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Loadable","../../../core/accessorSupport/decorators"],(function(e,r,t,o,p){"use strict";return function(e){function r(r){return e.call(this,r)||this}return t.__extends(r,e),t.__decorate([p.property({constructOnly:!0})],r.prototype,"layer",void 0),t.__decorate([p.property()],r.prototype,"geometryType",void 0),t.__decorate([p.property()],r.prototype,"objectIdField",void 0),t.__decorate([p.property()],r.prototype,"supportsSQLExpression",void 0),t.__decorate([p.property()],r.prototype,"hasQueryEngine",void 0),t.__decorate([p.property()],r.prototype,"minScale",void 0),t.__decorate([p.property()],r.prototype,"maxScale",void 0),t.__decorate([p.property()],r.prototype,"fullExtent",void 0),r=t.__decorate([p.subclass("esri.smartMapping.support.adapters.LayerAdapter")],r)}(o)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Loadable"],(function(e,r,o,t,p,s,c,a,i,u,d){"use strict";let n=function(r){function o(e){return r.call(this,e)||this}return e._inheritsLoose(o,r),o}(d);return r.__decorate([s.property({constructOnly:!0})],n.prototype,"layer",void 0),r.__decorate([s.property()],n.prototype,"geometryType",void 0),r.__decorate([s.property()],n.prototype,"objectIdField",void 0),r.__decorate([s.property()],n.prototype,"supportsSQLExpression",void 0),r.__decorate([s.property()],n.prototype,"hasQueryEngine",void 0),r.__decorate([s.property()],n.prototype,"minScale",void 0),r.__decorate([s.property()],n.prototype,"maxScale",void 0),r.__decorate([s.property()],n.prototype,"fullExtent",void 0),n=r.__decorate([c.subclass("esri.smartMapping.support.adapters.LayerAdapter")],n),n}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/date","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../intl/date","../../intl/number"],(function(t,e,r,o,a,p,i,n,s){"use strict";return function(t){function e(e){var r=t.call(this,e)||this;return r.dateFormat=null,r.digitSeparator=!1,r.places=null,r}var a;return r.__extends(e,t),a=e,e.prototype.clone=function(){return new a({dateFormat:this.dateFormat,digitSeparator:this.digitSeparator,places:this.places})},e.prototype.format=function(t){return this.dateFormat?n.formatDate(t,n.convertDateFormatToIntlOptions(this.dateFormat)):s.formatNumber(t,s.convertNumberFormatToIntlOptions(this))},r.__decorate([p.enumeration(o.dictionary)],e.prototype,"dateFormat",void 0),r.__decorate([p.property({type:Boolean,json:{write:!0}})],e.prototype,"digitSeparator",void 0),r.__decorate([p.property({type:i.Integer,json:{write:!0}})],e.prototype,"places",void 0),e=a=r.__decorate([p.subclass("esri.popup.support.FieldInfoFormat")],e)}(a.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../core/date","../../intl/date","../../intl/number"],(function(t,r,e,o,a,s,p,n,c,i,u,l,d,m,h){"use strict";var S;let y=S=function(r){function e(t){var e;return(e=r.call(this,t)||this).dateFormat=null,e.digitSeparator=!1,e.places=null,e}t._inheritsLoose(e,r);var o=e.prototype;return o.clone=function(){return new S({dateFormat:this.dateFormat,digitSeparator:this.digitSeparator,places:this.places})},o.format=function(t){return this.dateFormat?m.formatDate(t,m.convertDateFormatToIntlOptions(this.dateFormat)):h.formatNumber(t,h.convertNumberFormatToIntlOptions(this))},e}(l.JSONSupport);return r.__decorate([p.enumeration(d.dictionary)],y.prototype,"dateFormat",void 0),r.__decorate([s.property({type:Boolean,json:{write:!0}})],y.prototype,"digitSeparator",void 0),r.__decorate([s.property({type:a.Integer,json:{write:!0}})],y.prototype,"places",void 0),y=S=r.__decorate([n.subclass("esri.popup.support.FieldInfoFormat")],y),y}));

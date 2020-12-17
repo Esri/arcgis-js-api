@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/JSONSupport","../../core/Logger","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType"],(function(e,r,t,o,i,l,s,n){"use strict";var p=l.getLogger("esri.renderers.support.AttributeColorInfo");return function(e){function r(r){var t=e.call(this,r)||this;return t.color=null,t.field=null,t.label=null,t.valueExpression=null,t.valueExpressionTitle=null,t}var i;return t.__extends(r,e),i=r,r.prototype.castField=function(e){return null==e?e:"function"==typeof e?(p.error(".field: field must be a string value"),null):n.ensureString(e)},r.prototype.getAttributeHash=function(){return this.field+"-"+this.valueExpression},r.prototype.clone=function(){return new i({color:this.color&&this.color.clone(),field:this.field,label:this.label,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle})},t.__decorate([s.property({type:o,json:{type:[Number],write:!0}})],r.prototype,"color",void 0),t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"field",void 0),t.__decorate([s.cast("field")],r.prototype,"castField",null),t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"label",void 0),t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"valueExpression",void 0),t.__decorate([s.property({type:String,json:{write:!0}})],r.prototype,"valueExpressionTitle",void 0),r=i=t.__decorate([s.subclass("esri.renderers.support.AttributeColorInfo")],r)}(i.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/cast","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color"],(function(e,r,o,t,s,l,i,n,p,u,c,a,d){"use strict";var y;const f=t.getLogger("esri.renderers.support.AttributeColorInfo");let v=y=function(r){function o(e){var o;return(o=r.call(this,e)||this).color=null,o.field=null,o.label=null,o.valueExpression=null,o.valueExpressionTitle=null,o}e._inheritsLoose(o,r);var t=o.prototype;return t.castField=function(e){return null==e?e:"function"==typeof e?(f.error(".field: field must be a string value"),null):s.ensureString(e)},t.getAttributeHash=function(){return`${this.field}-${this.valueExpression}`},t.clone=function(){return new y({color:this.color&&this.color.clone(),field:this.field,label:this.label,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle})},o}(a.JSONSupport);return r.__decorate([l.property({type:d,json:{type:[Number],write:!0}})],v.prototype,"color",void 0),r.__decorate([l.property({type:String,json:{write:!0}})],v.prototype,"field",void 0),r.__decorate([i.cast("field")],v.prototype,"castField",null),r.__decorate([l.property({type:String,json:{write:!0}})],v.prototype,"label",void 0),r.__decorate([l.property({type:String,json:{write:!0}})],v.prototype,"valueExpression",void 0),r.__decorate([l.property({type:String,json:{write:!0}})],v.prototype,"valueExpressionTitle",void 0),v=y=r.__decorate([n.subclass("esri.renderers.support.AttributeColorInfo")],v),v}));

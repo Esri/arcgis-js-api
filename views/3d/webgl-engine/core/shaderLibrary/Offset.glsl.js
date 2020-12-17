@@ -1,25 +1,15 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../shaderModules/interfaces"],(function(e,o){"use strict";e.Offset=function(e){e.vertex.code.add(o.glsl`
+    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {
+      vec3 camToVert = posWorld - camPosWorld;
 
-define(["require","exports","tslib","../shaderModules/interfaces"],(function(o,e,c,n){"use strict";var l;Object.defineProperty(e,"__esModule",{value:!0}),e.Offset=void 0,e.Offset=function(o){o.vertex.code.add(n.glsl(l||(l=c.__makeTemplateObject(["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "],["\n    vec4 offsetBackfacingClipPosition(vec4 posClip, vec3 posWorld, vec3 normalWorld, vec3 camPosWorld) {\n      vec3 camToVert = posWorld - camPosWorld;\n\n      bool isBackface = dot(camToVert, normalWorld) > 0.0;\n      if (isBackface) {\n        posClip.z += 0.0000003 * posClip.w;\n      }\n      return posClip;\n    }\n  "]))))}}));
+      bool isBackface = dot(camToVert, normalWorld) > 0.0;
+      if (isBackface) {
+        posClip.z += 0.0000003 * posClip.w;
+      }
+      return posClip;
+    }
+  `)},Object.defineProperty(e,"__esModule",{value:!0})}));

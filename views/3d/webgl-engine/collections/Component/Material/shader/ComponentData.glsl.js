@@ -1,25 +1,44 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/shaderModules/interfaces","./DecodeSymbolColor.glsl"],(function(o,e,r){"use strict";o.ComponentData=function(o,l){1===l.componentData&&(o.vertex.uniforms.add("uComponentColorTex","sampler2D"),o.vertex.uniforms.add("uComponentColorTexInvDim","vec2"),o.attributes.add("componentIndex","float"),o.varyings.add("vExternalColorMixMode","mediump float"),o.varyings.add("vExternalColor","vec4"),o.include(r.DecodeSymbolColor),o.vertex.code.add(e.glsl`
+      vec4 _readComponentColor() {
+        float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;
+        vec2 indexCoord = vec2(
+          mod(normalizedIndex, 1.0),
+          (floor(normalizedIndex) + 0.5) * uComponentColorTexInvDim.y
+        );
+        return texture2D(uComponentColorTex, indexCoord);
+       }
 
-define(["require","exports","tslib","./DecodeSymbolColor.glsl","../../../../core/shaderModules/interfaces"],(function(o,e,n,r,l){"use strict";var t,a,d,x;Object.defineProperty(e,"__esModule",{value:!0}),e.ComponentData=void 0,e.ComponentData=function(o,e){1===e.componentData&&(o.vertex.uniforms.add("uComponentColorTex","sampler2D"),o.vertex.uniforms.add("uComponentColorTexInvDim","vec2"),o.attributes.add("componentIndex","float"),o.varyings.add("vExternalColorMixMode","mediump float"),o.varyings.add("vExternalColor","vec4"),o.include(r.DecodeSymbolColor),o.vertex.code.add(l.glsl(t||(t=n.__makeTemplateObject(["\n      vec4 _readComponentColor() {\n        float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;\n        vec2 indexCoord = vec2(\n          mod(normalizedIndex, 1.0),\n          (floor(normalizedIndex) + 0.5) * uComponentColorTexInvDim.y\n        );\n        return texture2D(uComponentColorTex, indexCoord);\n       }\n\n      vec4 forwardExternalColor(out bool castShadows) {\n        vec4 componentColor = _readComponentColor() * 255.0;\n\n        float shadowFlag = mod(componentColor.b * 255.0, 2.0);\n        componentColor.b -= shadowFlag;\n        castShadows = shadowFlag >= 1.0;\n\n        int decodedColorMixMode;\n        vExternalColor = decodeSymbolColor(componentColor, decodedColorMixMode) * 0.003921568627451; // = 1/255;\n        vExternalColorMixMode = float(decodedColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts\n\n        return vExternalColor;\n      }\n    "],["\n      vec4 _readComponentColor() {\n        float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;\n        vec2 indexCoord = vec2(\n          mod(normalizedIndex, 1.0),\n          (floor(normalizedIndex) + 0.5) * uComponentColorTexInvDim.y\n        );\n        return texture2D(uComponentColorTex, indexCoord);\n       }\n\n      vec4 forwardExternalColor(out bool castShadows) {\n        vec4 componentColor = _readComponentColor() * 255.0;\n\n        float shadowFlag = mod(componentColor.b * 255.0, 2.0);\n        componentColor.b -= shadowFlag;\n        castShadows = shadowFlag >= 1.0;\n\n        int decodedColorMixMode;\n        vExternalColor = decodeSymbolColor(componentColor, decodedColorMixMode) * 0.003921568627451; // = 1/255;\n        vExternalColorMixMode = float(decodedColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts\n\n        return vExternalColor;\n      }\n    "])))),o.fragment.code.add(l.glsl(a||(a=n.__makeTemplateObject(["\n      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {\n        externalColor = vExternalColor;\n        externalColorMixMode = int(vExternalColorMixMode);\n      }\n    "],["\n      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {\n        externalColor = vExternalColor;\n        externalColorMixMode = int(vExternalColorMixMode);\n      }\n    "]))))),0===e.componentData&&(o.vertex.uniforms.add("uExternalColor","vec4"),o.fragment.uniforms.add("uExternalColorMixMode","int"),o.varyings.add("vExternalColor","vec4"),o.vertex.code.add(l.glsl(d||(d=n.__makeTemplateObject(["\n      vec4 forwardExternalColor(out bool castShadows) {\n        vExternalColor = uExternalColor;\n        castShadows = true;\n        return uExternalColor;\n      }\n    "],["\n      vec4 forwardExternalColor(out bool castShadows) {\n        vExternalColor = uExternalColor;\n        castShadows = true;\n        return uExternalColor;\n      }\n    "])))),o.fragment.code.add(l.glsl(x||(x=n.__makeTemplateObject(["\n      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {\n        externalColor = vExternalColor;\n        externalColorMixMode = uExternalColorMixMode;\n      }\n    "],["\n      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {\n        externalColor = vExternalColor;\n        externalColorMixMode = uExternalColorMixMode;\n      }\n    "])))))}}));
+      vec4 forwardExternalColor(out bool castShadows) {
+        vec4 componentColor = _readComponentColor() * 255.0;
+
+        float shadowFlag = mod(componentColor.b * 255.0, 2.0);
+        componentColor.b -= shadowFlag;
+        castShadows = shadowFlag >= 1.0;
+
+        int decodedColorMixMode;
+        vExternalColor = decodeSymbolColor(componentColor, decodedColorMixMode) * 0.003921568627451; // = 1/255;
+        vExternalColorMixMode = float(decodedColorMixMode) + 0.5; // add 0.5 to avoid interpolation artifacts
+
+        return vExternalColor;
+      }
+    `),o.fragment.code.add(e.glsl`
+      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {
+        externalColor = vExternalColor;
+        externalColorMixMode = int(vExternalColorMixMode);
+      }
+    `)),0===l.componentData&&(o.vertex.uniforms.add("uExternalColor","vec4"),o.fragment.uniforms.add("uExternalColorMixMode","int"),o.varyings.add("vExternalColor","vec4"),o.vertex.code.add(e.glsl`
+      vec4 forwardExternalColor(out bool castShadows) {
+        vExternalColor = uExternalColor;
+        castShadows = true;
+        return uExternalColor;
+      }
+    `),o.fragment.code.add(e.glsl`
+      void readExternalColor(out vec4 externalColor, out int externalColorMixMode) {
+        externalColor = vExternalColor;
+        externalColorMixMode = uExternalColorMixMode;
+      }
+    `))},Object.defineProperty(o,"__esModule",{value:!0})}));

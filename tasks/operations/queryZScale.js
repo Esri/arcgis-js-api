@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./zscale"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.applyFeatureSetZUnitScaling=void 0,t.applyFeatureSetZUnitScaling=function(e,t,a){if(a&&a.features&&a.hasZ){var i=r.getGeometryZScaler(a.geometryType,t,e.outSpatialReference);if(i)for(var n=0,o=a.features;n<o.length;n++){i(o[n].geometry)}}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./zscale"],(function(e,t){"use strict";e.applyFeatureSetZUnitScaling=function(e,r,o){if(!o||!o.features||!o.hasZ)return;const n=t.getGeometryZScaler(o.geometryType,r,e.outSpatialReference);if(n)for(const e of o.features)n(e.geometry)},Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,253 @@
+/**
+ * Adds the styles for the label which displays the currently selected level.
+ */
+@mixin _buildingLevelPickerLabel($container, $theme) {
+  $base: "#{$container}-label";
+  $active: "#{$base}--active";
+  $hover: "#{$base}--hover";
+  $empty: "#{$base}--empty";
+  $clear-button: "#{$base}__clear-button";
+  $clear-button-icon: "#{$base}__clear-button-icon";
+
+  $width: 90px;
+  $height: 40px;
+  $padding: map-get($theme, padding);
+
+  .#{$base} {
+    color: map-get($theme, label-color);
+    text-align: center;
+    font-size: $height;
+    line-height: $height;
+  }
+
+  .#{$base},
+  .#{$empty} {
+    position: relative;
+
+    width: $width;
+
+    cursor: pointer;
+    transition: opacity 0.3s;
+    text-align: center;
+
+    &.#{$active} {
+      color: map-get($theme, label-color--active);
+    }
+  }
+
+  .#{$empty} {
+    font-size: $font-size;
+    font-weight: $font-weight--light;
+    color: map-get($theme, label-color--empty);
+    cursor: default;
+  }
+
+  .#{$clear-button} {
+    $size: 20px;
+    $icon-size: 12px;
+
+    font-size: $icon-size;
+    line-height: $icon-size;
+
+    position: absolute;
+    top: 10px; // Align with the label.
+
+    display: none;
+
+    width: $size;
+    height: $size;
+    margin-left: $side-spacing--quarter;
+    padding: ($size - $icon-size) / 2;
+
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    color: $interactive-font-color;
+    border: none;
+    border-radius: 50%;
+
+    appearance: none;
+
+    &:hover {
+      background: $background-color--hover;
+    }
+  }
+
+  // Show the button when we have an active level.
+  .#{$active} .#{$clear-button} {
+    display: inline-block;
+  }
+}
+
+/**
+ * Adds the styles for each of the levels in the level picker level stack.
+ */
+@mixin _buildingLevelPickerLevel($container, $theme) {
+  $item-container: "#{$container}-item";
+  $base: "#{$container}-item__base";
+  $hover: "#{$container}-item--hover";
+  $active: "#{$container}-item--active";
+  $animate-level: "#{$container}--animate-level";
+
+  .#{$item-container} {
+    border: 1px solid transparent;
+
+    will-change: height;
+    touch-action: none;
+  }
+
+  .#{$base} {
+    position: absolute;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    will-change: height;
+
+    .rect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      margin-top: 3px;
+
+      transform: translate(-50%, -50%) rotateX(66deg) rotateZ(45deg);
+      pointer-events: none;
+
+      border: map-get($theme, level-border-width) solid map-get($theme, level-border-color);
+      outline: solid 1px transparent; // So things don't move when focusing
+      background-color: map-get($theme, level-background-color);
+
+      will-change: height;
+    }
+  }
+
+  .#{$hover} .#{$base} {
+    .rect {
+      border-color: map-get($theme, level-border-color--hover);
+      background-color: map-get($theme, level-background-color--hover);
+      box-shadow: 0 0 2px 1px map-get($theme, level-border-color--hover);
+    }
+  }
+
+  .#{$active} .#{$base} {
+    .rect {
+      border-color: map-get($theme, level-border-color--active);
+      background-color: map-get($theme, level-background-color--active);
+    }
+  }
+
+  $in-duration: 0.1s;
+  $out-duration: 0.3s;
+
+  $bg-transition: background-color $in-duration ease-in-out;
+  $border-transition: border-color $in-duration ease-in-out;
+
+  $spring: cubic-bezier(0.63, -0.265, 0.48, 1.64);
+  $size-transition-out: height $out-duration $spring, width $out-duration $spring;
+  $size-transition-in: height $in-duration ease-out, width $in-duration ease-out;
+
+  .#{$item-container} {
+    &,
+    .#{$base},
+    .rect {
+      transition: $size-transition-in, $bg-transition, $border-transition;
+    }
+  }
+
+  // Animate everything when the $animate-level class is present in the parent.
+  .#{$animate-level} .#{$item-container} {
+    &,
+    .#{$base},
+    .rect {
+      transition: $size-transition-out, $bg-transition, $border-transition;
+    }
+  }
+}
+
+/**
+ * Adds all the styles for the level picker used in the building explorer.
+ */
+@mixin buildingLevelPicker() {
+  $container: "esri-building-level-picker";
+  $levels-container: "#{$container}__levels-container";
+  $levels-inner-container: "#{$container}__inner-levels-container";
+  $label-container: "#{$container}__label-container";
+  $no-level: "#{$container}--no-level";
+  $arrow-up: "#{$container}__arrow-up";
+  $arrow-down: "#{$container}__arrow-down";
+
+  $padding: 12px;
+
+  $theme: (
+    padding: $padding,
+    label-color: $interactive-font-color,
+    label-color--empty: $font-color,
+    label-color--active: $border-color--active,
+    level-border-width: 2px,
+    level-border-color: $border-color,
+    level-border-color--hover: $border-color--active,
+    level-border-color--active: $border-color--active,
+    level-background-color: rgba(#fff, 0.7),
+    level-background-color--hover: rgba(#fff, 0.7),
+    level-background-color--active: $border-color--active
+  );
+
+  .#{$container} {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    &.#{$no-level} {
+      display: none;
+    }
+  }
+
+  .#{$levels-container} {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    padding: 20px 0;
+
+    cursor: pointer;
+    transform: rotate(180deg); // So that our levels stack properly.
+
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .#{$levels-inner-container} {
+    transition: margin 0.3s;
+  }
+
+  .#{$label-container} {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 50%;
+    height: 90px;
+    margin-right: $padding;
+
+    align-items: center;
+  }
+
+  @include _buildingLevelPickerLabel($container, $theme);
+  @include _buildingLevelPickerLevel($container, $theme);
+
+  .#{$arrow-up},
+  .#{$arrow-down} {
+    @include arrowButton();
+  }
+
+  .#{$arrow-up} {
+    @extend .esri-arrow-up;
+  }
+
+  .#{$arrow-down} {
+    @extend .esri-arrow-down;
+  }
+}

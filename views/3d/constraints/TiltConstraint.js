@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Accessor","../../../core/mathUtils","../../../core/accessorSupport/decorators","../state/Constraints"],(function(t,e,o,a,r,n,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.TiltConstraint=void 0;var s={min:r.rad2deg(i.TiltDefault.min),max:r.rad2deg(i.TiltDefault.max)},u=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.mode="auto",e}return o.__extends(e,t),Object.defineProperty(e.prototype,"max",{get:function(){return this._get("max")},set:function(t){this._set("max",t),this.mode="manual"},enumerable:!1,configurable:!0}),e.prototype.castMax=function(t){return r.clamp(t,s.min,s.max)},e.prototype.autoUpdate=function(t){"auto"===this.mode&&this._get("max")!==t&&this._set("max",t)},o.__decorate([n.property({type:["auto","manual"]})],e.prototype,"mode",void 0),o.__decorate([n.property({type:Number,value:s.max})],e.prototype,"max",null),o.__decorate([n.cast("max")],e.prototype,"castMax",null),e=o.__decorate([n.subclass("esri.views.3d.constraints.TiltConstraint")],e)}(a);e.TiltConstraint=u,e.default=u}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/cast","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor","../../../core/mathUtils","../state/Constraints"],(function(t,e,o,r,a,s,n,i,c,u,l,p,d,m){"use strict";const _={min:d.rad2deg(m.TiltDefault.min),max:d.rad2deg(m.TiltDefault.max)};t.TiltConstraint=function(t){function o(){var e;return(e=t.apply(this,arguments)||this).mode="auto",e}e._inheritsLoose(o,t);var r=o.prototype;return r.castMax=function(t){return d.clamp(t,_.min,_.max)},r.autoUpdate=function(t){"auto"===this.mode&&this._get("max")!==t&&this._set("max",t)},e._createClass(o,[{key:"max",get:function(){return this._get("max")},set:function(t){this._set("max",t),this.mode="manual"}}]),o}(p),o.__decorate([s.property({type:["auto","manual"]})],t.TiltConstraint.prototype,"mode",void 0),o.__decorate([s.property({type:Number,value:_.max})],t.TiltConstraint.prototype,"max",null),o.__decorate([n.cast("max")],t.TiltConstraint.prototype,"castMax",null),t.TiltConstraint=o.__decorate([i.subclass("esri.views.3d.constraints.TiltConstraint")],t.TiltConstraint);var x=t.TiltConstraint;t.default=x,Object.defineProperty(t,"__esModule",{value:!0})}));

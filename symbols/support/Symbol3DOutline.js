@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/JSONSupport","../../core/maybe","../../core/screenUtils","../../core/accessorSupport/decorators","./materialUtils"],(function(e,t,o,r,p,l,i,s,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Symbol3DOutline=void 0;var c=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.color=new r([0,0,0,1]),t.size=i.px2pt(1),t.stipplePattern=null,t.stippleOffColor=null,t}var p;return o.__extends(t,e),p=t,t.prototype.clone=function(){return new p({color:l.isSome(this.color)?this.color.clone():null,size:this.size,stipplePattern:this.stipplePattern?this.stipplePattern.slice():null,stippleOffColor:this.stippleOffColor?this.stippleOffColor.clone():null})},o.__decorate([s.property(n.colorAndTransparencyProperty)],t.prototype,"color",void 0),o.__decorate([s.property(n.screenSizeProperty)],t.prototype,"size",void 0),o.__decorate([s.property(n.stipplePatternProperty)],t.prototype,"stipplePattern",void 0),o.__decorate([s.property({type:r})],t.prototype,"stippleOffColor",void 0),t=p=o.__decorate([s.subclass("esri.symbols.support.Symbol3DOutline")],t)}(p.JSONSupport);t.Symbol3DOutline=c,t.default=c}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color","../../core/screenUtils","./materialUtils"],(function(e,o,r,t,l,p,s,i,n,c,u,a,y,S,d,f){"use strict";var O;e.Symbol3DOutline=O=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).color=new S([0,0,0,1]),o.size=d.px2pt(1),o.stipplePattern=null,o.stippleOffColor=null,o}return o._inheritsLoose(r,e),r.prototype.clone=function(){return new O({color:l.isSome(this.color)?this.color.clone():null,size:this.size,stipplePattern:this.stipplePattern?this.stipplePattern.slice():null,stippleOffColor:this.stippleOffColor?this.stippleOffColor.clone():null})},r}(y.JSONSupport),r.__decorate([i.property(f.colorAndTransparencyProperty)],e.Symbol3DOutline.prototype,"color",void 0),r.__decorate([i.property(f.screenSizeProperty)],e.Symbol3DOutline.prototype,"size",void 0),r.__decorate([i.property(f.stipplePatternProperty)],e.Symbol3DOutline.prototype,"stipplePattern",void 0),r.__decorate([i.property({type:S})],e.Symbol3DOutline.prototype,"stippleOffColor",void 0),e.Symbol3DOutline=O=r.__decorate([n.subclass("esri.symbols.support.Symbol3DOutline")],e.Symbol3DOutline);var b=e.Symbol3DOutline;e.default=b,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,8 +1,8 @@
 // esri.core.accessorSupport
-import { property, subclass } from "esri/../core/accessorSupport/decorators";
+import { property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
@@ -99,4 +99,4 @@ class IconButton extends Widget {
   }
 }
 
-export = IconButton;
+export default IconButton;

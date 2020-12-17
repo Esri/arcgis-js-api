@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./viewUtils"],(function(e,i,t,c,r){"use strict";return function(){function e(){this.origin=c.vec3f64.create(),this.start=c.vec3f64.create(),this.end=c.vec3f64.create()}return e.prototype.update=function(e,i,c){if(t.vec3.copy(this.start,e),t.vec3.copy(this.end,i),c)switch(c){case"start":t.vec3.copy(this.origin,this.start);break;case"center":r.midpoint([e,i],this.origin);break;case"end":t.vec3.copy(this.origin,this.end);break;default:t.vec3.copy(this.origin,c)}else r.midpoint([e,i],this.origin)},e}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/vec3f64","../../../../../chunks/vec3","./viewUtils"],(function(t,i,e){"use strict";return function(){function n(){this.origin=t.create(),this.start=t.create(),this.end=t.create()}return n.prototype.update=function(t,n,s){if(i.copy(this.start,t),i.copy(this.end,n),s)switch(s){case"start":i.copy(this.origin,this.start);break;case"center":e.midpoint([t,n],this.origin);break;case"end":i.copy(this.origin,this.end);break;default:i.copy(this.origin,s)}else e.midpoint([t,n],this.origin)},n}()}));

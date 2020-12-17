@@ -31,7 +31,7 @@
  *   expandIconClass: "esri-icon-layer-list",  // see https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/
  *   // expandTooltip: "Expand LayerList", // optional, defaults to "Expand" for English locale
  *   view: view,
- *   content: layerList.domNode
+ *   content: layerList
  * });
  * view.ui.add(layerListExpand, "top-right");
  */
@@ -43,14 +43,14 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Expand
-import ExpandViewModel = require("esri/widgets/Expand/ExpandViewModel");
+import ExpandViewModel from "esri/widgets/Expand/ExpandViewModel";
 
 // esri.widgets.Expand.t9n
 import ExpandMessages from "esri/widgets/Expand/t9n/Expand";
@@ -699,4 +699,4 @@ class Expand extends Widget {
   }
 }
 
-export = Expand;
+export default Expand;

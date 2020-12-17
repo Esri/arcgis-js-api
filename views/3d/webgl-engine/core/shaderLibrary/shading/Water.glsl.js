@@ -1,25 +1,145 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","./ScreenSpaceReflections.glsl","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl"],(function(e,o,t,r,i,a){"use strict";e.Water=function(e,n){e.include(a.PhysicallyBasedRendering,n),e.include(i.Gamma),e.include(r.FoamColor),n.ssrEnabled&&e.include(t.ScreenSpaceReflections,n),e.fragment.code.add(o.glsl`
+    const vec3 fresnelSky =  vec3(0.02, 1.0, 15.0); // f0, f0max, exp
+    const vec2 fresnelMaterial =  vec2(0.02, 0.1); // f0, f0max for specular term
+    const float roughness = 0.015;
+    const float foamIntensityExternal = 1.7;
+    const float ssrIntensity = 0.65;
+    const float ssrHeightFadeStart = 300000.0;
+    const float ssrHeightFadeEnd = 500000.0;
+    const float waterDiffusion = 0.775;
+    const float waterSeeColorMod = 0.8;
+    const float correctionViewingPowerFactor = 0.4;
 
-define(["require","exports","tslib","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl","./ScreenSpaceReflections.glsl","../../shaderModules/interfaces"],(function(e,n,o,t,r,i,a,s){"use strict";var l,c,d;Object.defineProperty(n,"__esModule",{value:!0}),n.Water=void 0,n.Water=function(e,n){e.include(i.PhysicallyBasedRendering,n),e.include(r.Gamma),e.include(t.FoamColor),n.ssrEnabled&&e.include(a.ScreenSpaceReflections,n),e.fragment.code.add(s.glsl(l||(l=o.__makeTemplateObject(["\n    const vec3 fresnelSky =  vec3(0.02, 1.0, 15.0); // f0, f0max, exp\n    const vec2 fresnelMaterial =  vec2(0.02, 0.1); // f0, f0max for specular term\n    const float roughness = 0.015;\n    const float foamIntensityExternal = 1.7;\n    const float ssrIntensity = 0.65;\n    const float ssrHeightFadeStart = 300000.0;\n    const float ssrHeightFadeEnd = 500000.0;\n    const float waterDiffusion = 0.775;\n    const float waterSeeColorMod = 0.8;\n    const float correctionViewingPowerFactor = 0.4;\n\n    const vec3 skyZenitColor = vec3(0.52, 0.68, 0.90);\n    const vec3 skyColor = vec3(0.67, 0.79, 0.9);\n\n    PBRShadingWater shadingInfo;\n\n    /*\n    *   This function is an approximation for the sky gradient reflected\n    *   the water surface and describes a combination of two fresnel terms.\n    *   @parameter: cosTheta = is the result of max(dot(n,v), 0.0)\n    *   @parameter: horizon = the dominant color of the sky horizon\n    *   @parameter: cosTheta = the dominant color of the sky zenit\n    */\n    vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {\n      float exponent = pow((1.0 - cosTheta), fresnelSky[2]);\n      return mix(zenit, horizon, exponent);\n    }\n\n    /*\n    *   This function determines the water color per pixel.\n    *   @parameter: n = normal facing away from the surface\n    *   @parameter: v = view direction facing away from the surface.\n    *   @parameter: l = light direction facing away from the surface\n    *   @parameter: lightIntensity = light intensity, currently between 0...PI\n    *   @parameter: localUp = a normal for the general direction of the surface\n    *   @parameter: shadow = the amount of shadow at this pixel (0 = no shadow)\n    */\n    vec3 getSeaColor(in vec3 n, in vec3 v, in vec3 l, vec3 color, in vec3 lightIntensity, in vec3 localUp, in float shadow, float foamIntensity, vec3 positionView) {\n\n      float reflectionHit = 0.;\n      vec3 seaWaterColor = linearizeGamma(color);\n      // using half vector to determine the specular light\n      vec3 h = normalize(l + v);\n      shadingInfo.NdotL = clamp(dot(n, l), 0.0, 1.0);\n      shadingInfo.NdotV = clamp(dot(n, v), 0.001, 1.0);\n      shadingInfo.VdotN = clamp(dot(v, n), 0.001, 1.0);\n      shadingInfo.NdotH = clamp(dot(n, h), 0.0, 1.0);\n      shadingInfo.VdotH = clamp(dot(v, h), 0.0, 1.0);\n      shadingInfo.LdotH = clamp(dot(l, h), 0.0, 1.0);\n\n      // angle between vertex normal and view direction\n      float upDotV = max(dot(localUp,v), 0.0);\n      // reflected sky color: the reflected sky color consists of two main colors, the\n      // reflected color at the horizon and the reflected color of the zenit.\n      // the reflected sky color is then an approximation based on the fresnel term.\n      vec3 skyHorizon = linearizeGamma(skyColor);\n      vec3 skyZenit = linearizeGamma(skyZenitColor);\n      vec3 skyColor = getSkyGradientColor(upDotV, skyHorizon, skyZenit );\n\n      // we use the upDotL to smoothen out the\n      // reflected color of the water\n      float upDotL = max(dot(localUp,l),0.0);\n\n      // The approximated sky color is adjusted according to the sun position.\n      // This is done as approximation for e.g. night views.\n      float daytimeMod = 0.1 + upDotL * 0.9;\n      skyColor *= daytimeMod;\n\n      // If a water surface is in shadow we just use a slight darkening of the\n      // water surface expressed with this shadowModifier.\n      float shadowModifier = clamp(shadow, 0.8, 1.0);\n\n      // The reflected sky color consists of the fresnel reflection multiplied with the approximated sky color.\n      // The shadow is influencing the frensel term to keep the shadow impression for really near views. As long\n      // as reflection are absent there is a need to have a slight shadow for depth perception.\n      vec3 fresnelModifier = fresnelReflection(shadingInfo.VdotN, vec3(fresnelSky[0]), fresnelSky[1]);\n      vec3 reflSky = fresnelModifier * skyColor * shadowModifier;\n\n      // The reflected sea color is the input water color combined with the reflected sky color.\n      // The reflected sky color is modified by the incoming light.\n      vec3 reflSea = seaWaterColor * mix(skyColor, upDotL * lightIntensity * LIGHT_NORMALIZATION, 2.0 / 3.0) * shadowModifier;\n\n      vec3 specular = vec3(0.0);\n      // This prevents the specular light to be rendered when:\n      // - sun is behind a polygon (e.g. sundown for elevated polygons where nDotL might be still ok)\n      // - viewer is under water (for this localUp is better than n)\n      if(upDotV > 0.0 && upDotL > 0.0) {\n        // calculate the cook torrance BRDF but with simplified occlusion\n        vec3 specularSun = brdfSpecularWater(shadingInfo, roughness, vec3(fresnelMaterial[0]), fresnelMaterial[1]);\n\n        // Normalize light intensity to be between 0...1. Shadow cancels out specular light here\n        vec3 incidentLight = lightIntensity * LIGHT_NORMALIZATION * shadow;\n\n        specular = shadingInfo.NdotL * incidentLight * specularSun;\n      }\n\n      vec3 foam = vec3(0.0);\n      if(upDotV > 0.0) {\n        foam = foamIntensity2FoamColor(foamIntensityExternal, foamIntensity, skyZenitColor, daytimeMod);\n      }\n      "],["\n    const vec3 fresnelSky =  vec3(0.02, 1.0, 15.0); // f0, f0max, exp\n    const vec2 fresnelMaterial =  vec2(0.02, 0.1); // f0, f0max for specular term\n    const float roughness = 0.015;\n    const float foamIntensityExternal = 1.7;\n    const float ssrIntensity = 0.65;\n    const float ssrHeightFadeStart = 300000.0;\n    const float ssrHeightFadeEnd = 500000.0;\n    const float waterDiffusion = 0.775;\n    const float waterSeeColorMod = 0.8;\n    const float correctionViewingPowerFactor = 0.4;\n\n    const vec3 skyZenitColor = vec3(0.52, 0.68, 0.90);\n    const vec3 skyColor = vec3(0.67, 0.79, 0.9);\n\n    PBRShadingWater shadingInfo;\n\n    /*\n    *   This function is an approximation for the sky gradient reflected\n    *   the water surface and describes a combination of two fresnel terms.\n    *   @parameter: cosTheta = is the result of max(dot(n,v), 0.0)\n    *   @parameter: horizon = the dominant color of the sky horizon\n    *   @parameter: cosTheta = the dominant color of the sky zenit\n    */\n    vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {\n      float exponent = pow((1.0 - cosTheta), fresnelSky[2]);\n      return mix(zenit, horizon, exponent);\n    }\n\n    /*\n    *   This function determines the water color per pixel.\n    *   @parameter: n = normal facing away from the surface\n    *   @parameter: v = view direction facing away from the surface.\n    *   @parameter: l = light direction facing away from the surface\n    *   @parameter: lightIntensity = light intensity, currently between 0...PI\n    *   @parameter: localUp = a normal for the general direction of the surface\n    *   @parameter: shadow = the amount of shadow at this pixel (0 = no shadow)\n    */\n    vec3 getSeaColor(in vec3 n, in vec3 v, in vec3 l, vec3 color, in vec3 lightIntensity, in vec3 localUp, in float shadow, float foamIntensity, vec3 positionView) {\n\n      float reflectionHit = 0.;\n      vec3 seaWaterColor = linearizeGamma(color);\n      // using half vector to determine the specular light\n      vec3 h = normalize(l + v);\n      shadingInfo.NdotL = clamp(dot(n, l), 0.0, 1.0);\n      shadingInfo.NdotV = clamp(dot(n, v), 0.001, 1.0);\n      shadingInfo.VdotN = clamp(dot(v, n), 0.001, 1.0);\n      shadingInfo.NdotH = clamp(dot(n, h), 0.0, 1.0);\n      shadingInfo.VdotH = clamp(dot(v, h), 0.0, 1.0);\n      shadingInfo.LdotH = clamp(dot(l, h), 0.0, 1.0);\n\n      // angle between vertex normal and view direction\n      float upDotV = max(dot(localUp,v), 0.0);\n      // reflected sky color: the reflected sky color consists of two main colors, the\n      // reflected color at the horizon and the reflected color of the zenit.\n      // the reflected sky color is then an approximation based on the fresnel term.\n      vec3 skyHorizon = linearizeGamma(skyColor);\n      vec3 skyZenit = linearizeGamma(skyZenitColor);\n      vec3 skyColor = getSkyGradientColor(upDotV, skyHorizon, skyZenit );\n\n      // we use the upDotL to smoothen out the\n      // reflected color of the water\n      float upDotL = max(dot(localUp,l),0.0);\n\n      // The approximated sky color is adjusted according to the sun position.\n      // This is done as approximation for e.g. night views.\n      float daytimeMod = 0.1 + upDotL * 0.9;\n      skyColor *= daytimeMod;\n\n      // If a water surface is in shadow we just use a slight darkening of the\n      // water surface expressed with this shadowModifier.\n      float shadowModifier = clamp(shadow, 0.8, 1.0);\n\n      // The reflected sky color consists of the fresnel reflection multiplied with the approximated sky color.\n      // The shadow is influencing the frensel term to keep the shadow impression for really near views. As long\n      // as reflection are absent there is a need to have a slight shadow for depth perception.\n      vec3 fresnelModifier = fresnelReflection(shadingInfo.VdotN, vec3(fresnelSky[0]), fresnelSky[1]);\n      vec3 reflSky = fresnelModifier * skyColor * shadowModifier;\n\n      // The reflected sea color is the input water color combined with the reflected sky color.\n      // The reflected sky color is modified by the incoming light.\n      vec3 reflSea = seaWaterColor * mix(skyColor, upDotL * lightIntensity * LIGHT_NORMALIZATION, 2.0 / 3.0) * shadowModifier;\n\n      vec3 specular = vec3(0.0);\n      // This prevents the specular light to be rendered when:\n      // - sun is behind a polygon (e.g. sundown for elevated polygons where nDotL might be still ok)\n      // - viewer is under water (for this localUp is better than n)\n      if(upDotV > 0.0 && upDotL > 0.0) {\n        // calculate the cook torrance BRDF but with simplified occlusion\n        vec3 specularSun = brdfSpecularWater(shadingInfo, roughness, vec3(fresnelMaterial[0]), fresnelMaterial[1]);\n\n        // Normalize light intensity to be between 0...1. Shadow cancels out specular light here\n        vec3 incidentLight = lightIntensity * LIGHT_NORMALIZATION * shadow;\n\n        specular = shadingInfo.NdotL * incidentLight * specularSun;\n      }\n\n      vec3 foam = vec3(0.0);\n      if(upDotV > 0.0) {\n        foam = foamIntensity2FoamColor(foamIntensityExternal, foamIntensity, skyZenitColor, daytimeMod);\n      }\n      "])))),n.ssrEnabled?e.fragment.code.add(s.glsl(c||(c=o.__makeTemplateObject(["\n      // Convert the world position to view position\n      vec4 viewPosition = vec4(positionView.xyz, 1.0);\n      vec3 viewDir = normalize(viewPosition.xyz);\n      vec4 viewNormalVectorCoordinate = ssrViewMat *vec4(n, 0.0);\n      vec3 viewNormal = normalize(viewNormalVectorCoordinate.xyz);\n      vec4 viewUp = ssrViewMat *vec4(localUp, 0.0);\n\n      // at steeper viewing angles we use more of a vertex normal (in this case up) then the wave normal\n      // this removes some artifacts of normal mapping\n      float correctionViewingFactor = pow(max(dot(-viewDir, viewUp.xyz), 0.0), correctionViewingPowerFactor);\n      vec3 viewNormalCorrected = mix(viewUp.xyz, viewNormal, correctionViewingFactor);\n\n      vec3 reflected = normalize(reflect(viewDir, viewNormalCorrected));\n\n      // perform screen space reflection to detect hit\n      vec3 hitCoordinate = screenSpaceIntersection( normalize(reflected), viewPosition.xyz, viewDir, viewUp.xyz);\n      vec3 reflectedColor = vec3(0.0);\n\n      // if there is a hit with ssr find reflected color from the reprojeted frame\n      if (hitCoordinate.z > 0.0)\n      {\n        vec2 reprojectedCoordinate = reprojectionCoordinate(hitCoordinate);\n\n        // fade out if there if the hit is near end of Y axis\n        vec2 dCoords = smoothstep(0.3, 0.6, abs(vec2(0.5, 0.5) - hitCoordinate.xy));\n        float heightMod = smoothstep(ssrHeightFadeEnd, ssrHeightFadeStart, -positionView.z);\n        reflectionHit = waterDiffusion * clamp(1.0 - (1.3*dCoords.y), 0.0, 1.0) * heightMod;\n\n        reflectedColor = linearizeGamma(texture2D(lastFrameColorMap, reprojectedCoordinate).xyz)* reflectionHit * fresnelModifier.y * ssrIntensity;\n      }\n      float seeColorMod =  mix(waterSeeColorMod, waterSeeColorMod*0.5, reflectionHit);\n      // combining reflected sky, reflected sea, specular highlight and SSR reflections.\n      return tonemapACES((1. - reflectionHit) * reflSky + reflectedColor + reflSea * seeColorMod + specular + foam);\n    }\n  "],["\n      // Convert the world position to view position\n      vec4 viewPosition = vec4(positionView.xyz, 1.0);\n      vec3 viewDir = normalize(viewPosition.xyz);\n      vec4 viewNormalVectorCoordinate = ssrViewMat *vec4(n, 0.0);\n      vec3 viewNormal = normalize(viewNormalVectorCoordinate.xyz);\n      vec4 viewUp = ssrViewMat *vec4(localUp, 0.0);\n\n      // at steeper viewing angles we use more of a vertex normal (in this case up) then the wave normal\n      // this removes some artifacts of normal mapping\n      float correctionViewingFactor = pow(max(dot(-viewDir, viewUp.xyz), 0.0), correctionViewingPowerFactor);\n      vec3 viewNormalCorrected = mix(viewUp.xyz, viewNormal, correctionViewingFactor);\n\n      vec3 reflected = normalize(reflect(viewDir, viewNormalCorrected));\n\n      // perform screen space reflection to detect hit\n      vec3 hitCoordinate = screenSpaceIntersection( normalize(reflected), viewPosition.xyz, viewDir, viewUp.xyz);\n      vec3 reflectedColor = vec3(0.0);\n\n      // if there is a hit with ssr find reflected color from the reprojeted frame\n      if (hitCoordinate.z > 0.0)\n      {\n        vec2 reprojectedCoordinate = reprojectionCoordinate(hitCoordinate);\n\n        // fade out if there if the hit is near end of Y axis\n        vec2 dCoords = smoothstep(0.3, 0.6, abs(vec2(0.5, 0.5) - hitCoordinate.xy));\n        float heightMod = smoothstep(ssrHeightFadeEnd, ssrHeightFadeStart, -positionView.z);\n        reflectionHit = waterDiffusion * clamp(1.0 - (1.3*dCoords.y), 0.0, 1.0) * heightMod;\n\n        reflectedColor = linearizeGamma(texture2D(lastFrameColorMap, reprojectedCoordinate).xyz)* reflectionHit * fresnelModifier.y * ssrIntensity;\n      }\n      float seeColorMod =  mix(waterSeeColorMod, waterSeeColorMod*0.5, reflectionHit);\n      // combining reflected sky, reflected sea, specular highlight and SSR reflections.\n      return tonemapACES((1. - reflectionHit) * reflSky + reflectedColor + reflSea * seeColorMod + specular + foam);\n    }\n  "])))):e.fragment.code.add(s.glsl(d||(d=o.__makeTemplateObject(["\n      // combining reflected sky, reflected sea, specular highlight and SSR reflections.\n      return tonemapACES(reflSky + reflSea * waterSeeColorMod + specular + foam);\n    }\n  "],["\n      // combining reflected sky, reflected sea, specular highlight and SSR reflections.\n      return tonemapACES(reflSky + reflSea * waterSeeColorMod + specular + foam);\n    }\n  "]))))}}));
+    const vec3 skyZenitColor = vec3(0.52, 0.68, 0.90);
+    const vec3 skyColor = vec3(0.67, 0.79, 0.9);
+
+    PBRShadingWater shadingInfo;
+
+    /*
+    *   This function is an approximation for the sky gradient reflected
+    *   the water surface and describes a combination of two fresnel terms.
+    *   @parameter: cosTheta = is the result of max(dot(n,v), 0.0)
+    *   @parameter: horizon = the dominant color of the sky horizon
+    *   @parameter: cosTheta = the dominant color of the sky zenit
+    */
+    vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {
+      float exponent = pow((1.0 - cosTheta), fresnelSky[2]);
+      return mix(zenit, horizon, exponent);
+    }
+
+    /*
+    *   This function determines the water color per pixel.
+    *   @parameter: n = normal facing away from the surface
+    *   @parameter: v = view direction facing away from the surface.
+    *   @parameter: l = light direction facing away from the surface
+    *   @parameter: lightIntensity = light intensity, currently between 0...PI
+    *   @parameter: localUp = a normal for the general direction of the surface
+    *   @parameter: shadow = the amount of shadow at this pixel (0 = no shadow)
+    */
+    vec3 getSeaColor(in vec3 n, in vec3 v, in vec3 l, vec3 color, in vec3 lightIntensity, in vec3 localUp, in float shadow, float foamIntensity, vec3 positionView) {
+
+      float reflectionHit = 0.;
+      vec3 seaWaterColor = linearizeGamma(color);
+      // using half vector to determine the specular light
+      vec3 h = normalize(l + v);
+      shadingInfo.NdotL = clamp(dot(n, l), 0.0, 1.0);
+      shadingInfo.NdotV = clamp(dot(n, v), 0.001, 1.0);
+      shadingInfo.VdotN = clamp(dot(v, n), 0.001, 1.0);
+      shadingInfo.NdotH = clamp(dot(n, h), 0.0, 1.0);
+      shadingInfo.VdotH = clamp(dot(v, h), 0.0, 1.0);
+      shadingInfo.LdotH = clamp(dot(l, h), 0.0, 1.0);
+
+      // angle between vertex normal and view direction
+      float upDotV = max(dot(localUp,v), 0.0);
+      // reflected sky color: the reflected sky color consists of two main colors, the
+      // reflected color at the horizon and the reflected color of the zenit.
+      // the reflected sky color is then an approximation based on the fresnel term.
+      vec3 skyHorizon = linearizeGamma(skyColor);
+      vec3 skyZenit = linearizeGamma(skyZenitColor);
+      vec3 skyColor = getSkyGradientColor(upDotV, skyHorizon, skyZenit );
+
+      // we use the upDotL to smoothen out the
+      // reflected color of the water
+      float upDotL = max(dot(localUp,l),0.0);
+
+      // The approximated sky color is adjusted according to the sun position.
+      // This is done as approximation for e.g. night views.
+      float daytimeMod = 0.1 + upDotL * 0.9;
+      skyColor *= daytimeMod;
+
+      // If a water surface is in shadow we just use a slight darkening of the
+      // water surface expressed with this shadowModifier.
+      float shadowModifier = clamp(shadow, 0.8, 1.0);
+
+      // The reflected sky color consists of the fresnel reflection multiplied with the approximated sky color.
+      // The shadow is influencing the frensel term to keep the shadow impression for really near views. As long
+      // as reflection are absent there is a need to have a slight shadow for depth perception.
+      vec3 fresnelModifier = fresnelReflection(shadingInfo.VdotN, vec3(fresnelSky[0]), fresnelSky[1]);
+      vec3 reflSky = fresnelModifier * skyColor * shadowModifier;
+
+      // The reflected sea color is the input water color combined with the reflected sky color.
+      // The reflected sky color is modified by the incoming light.
+      vec3 reflSea = seaWaterColor * mix(skyColor, upDotL * lightIntensity * LIGHT_NORMALIZATION, 2.0 / 3.0) * shadowModifier;
+
+      vec3 specular = vec3(0.0);
+      // This prevents the specular light to be rendered when:
+      // - sun is behind a polygon (e.g. sundown for elevated polygons where nDotL might be still ok)
+      // - viewer is under water (for this localUp is better than n)
+      if(upDotV > 0.0 && upDotL > 0.0) {
+        // calculate the cook torrance BRDF but with simplified occlusion
+        vec3 specularSun = brdfSpecularWater(shadingInfo, roughness, vec3(fresnelMaterial[0]), fresnelMaterial[1]);
+
+        // Normalize light intensity to be between 0...1. Shadow cancels out specular light here
+        vec3 incidentLight = lightIntensity * LIGHT_NORMALIZATION * shadow;
+
+        specular = shadingInfo.NdotL * incidentLight * specularSun;
+      }
+
+      vec3 foam = vec3(0.0);
+      if(upDotV > 0.0) {
+        foam = foamIntensity2FoamColor(foamIntensityExternal, foamIntensity, skyZenitColor, daytimeMod);
+      }
+      `),n.ssrEnabled?e.fragment.code.add(o.glsl`
+      // Convert the world position to view position
+      vec4 viewPosition = vec4(positionView.xyz, 1.0);
+      vec3 viewDir = normalize(viewPosition.xyz);
+      vec4 viewNormalVectorCoordinate = ssrViewMat *vec4(n, 0.0);
+      vec3 viewNormal = normalize(viewNormalVectorCoordinate.xyz);
+      vec4 viewUp = ssrViewMat *vec4(localUp, 0.0);
+
+      // at steeper viewing angles we use more of a vertex normal (in this case up) then the wave normal
+      // this removes some artifacts of normal mapping
+      float correctionViewingFactor = pow(max(dot(-viewDir, viewUp.xyz), 0.0), correctionViewingPowerFactor);
+      vec3 viewNormalCorrected = mix(viewUp.xyz, viewNormal, correctionViewingFactor);
+
+      vec3 reflected = normalize(reflect(viewDir, viewNormalCorrected));
+
+      // perform screen space reflection to detect hit
+      vec3 hitCoordinate = screenSpaceIntersection( normalize(reflected), viewPosition.xyz, viewDir, viewUp.xyz);
+      vec3 reflectedColor = vec3(0.0);
+
+      // if there is a hit with ssr find reflected color from the reprojeted frame
+      if (hitCoordinate.z > 0.0)
+      {
+        vec2 reprojectedCoordinate = reprojectionCoordinate(hitCoordinate);
+
+        // fade out if there if the hit is near end of Y axis
+        vec2 dCoords = smoothstep(0.3, 0.6, abs(vec2(0.5, 0.5) - hitCoordinate.xy));
+        float heightMod = smoothstep(ssrHeightFadeEnd, ssrHeightFadeStart, -positionView.z);
+        reflectionHit = waterDiffusion * clamp(1.0 - (1.3*dCoords.y), 0.0, 1.0) * heightMod;
+
+        reflectedColor = linearizeGamma(texture2D(lastFrameColorMap, reprojectedCoordinate).xyz)* reflectionHit * fresnelModifier.y * ssrIntensity;
+      }
+      float seeColorMod =  mix(waterSeeColorMod, waterSeeColorMod*0.5, reflectionHit);
+      // combining reflected sky, reflected sea, specular highlight and SSR reflections.
+      return tonemapACES((1. - reflectionHit) * reflSky + reflectedColor + reflSea * seeColorMod + specular + foam);
+    }
+  `):e.fragment.code.add(o.glsl`
+      // combining reflected sky, reflected sea, specular highlight and SSR reflections.
+      return tonemapACES(reflSky + reflSea * waterSeeColorMod + specular + foam);
+    }
+  `)},Object.defineProperty(e,"__esModule",{value:!0})}));

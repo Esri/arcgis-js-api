@@ -1,18 +1,18 @@
 // esri.core
-import * as watchUtils from "esri/../../core/watchUtils";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.BuildingExplorer.support
 import { LayerTreeNode } from "esri/support/LayerTreeNode";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable, isRTL } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable, isRTL } from "esri/support/widget";
 
 interface ConstructionParameters {
   node: LayerTreeNode;
@@ -340,4 +340,4 @@ class BuildingDisciplinesNode extends Widget {
   }
 }
 
-export = BuildingDisciplinesNode;
+export default BuildingDisciplinesNode;

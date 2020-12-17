@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./ObjectPool"],(function(e,r,n){"use strict";var t=Array.prototype.splice;function o(e){e.length=0}var i=function(){function e(e,r){void 0===e&&(e=50),void 0===r&&(r=50),this._pool=new n(Array,void 0,o,r,e)}return e.prototype.acquire=function(){return this._pool.acquire()},e.prototype.copy=function(e){var r=this.acquire();return e.unshift(0,0),t.apply(r,e),e.splice(0,2),r},e.prototype.release=function(e){this._pool.release(e)},e.prototype.prune=function(){this._pool.prune(0)},e.acquire=function(){return u.acquire()},e.copy=function(e){return u.copy(e)},e.release=function(e){return u.release(e)},e.prune=function(){u.prune()},e}(),u=new i(100);return i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["./ObjectPool"],(function(n){"use strict";const e=Array.prototype.splice;function t(n){n.length=0}let r=function(){function r(e=50,r=50){this._pool=new n(Array,void 0,t,r,e)}var u=r.prototype;return u.acquire=function(){return this._pool.acquire()},u.copy=function(n){const t=this.acquire();return n.unshift(0,0),e.apply(t,n),n.splice(0,2),t},u.release=function(n){this._pool.release(n)},u.prune=function(){this._pool.prune(0)},r.acquire=function(){return o.acquire()},r.copy=function(n){return o.copy(n)},r.release=function(n){return o.release(n)},r.prune=function(){o.prune()},r}();const o=new r(100);return r}));

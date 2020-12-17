@@ -1,31 +1,31 @@
 // esri
-import PopupTemplate = require("esri/../PopupTemplate");
+import PopupTemplate from "esri/PopupTemplate";
 
 // esri.core
-import { eventKey } from "esri/../core/events";
-import * as watchUtils from "esri/../core/watchUtils";
+import { eventKey } from "esri/core/events";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.popup
-import FieldInfo = require("esri/../popup/FieldInfo");
+import FieldInfo from "esri/popup/FieldInfo";
 
 // esri.popup.content
-import ImageMediaInfo = require("esri/../popup/content/ImageMediaInfo");
+import ImageMediaInfo from "esri/popup/content/ImageMediaInfo";
 
 // esri.popup.content.support
-import ChartMediaInfoValueSeries = require("esri/../popup/content/support/ChartMediaInfoValueSeries");
-import { MediaInfo, MediaChartInfo } from "esri/../popup/content/support/mediaInfoTypes";
+import ChartMediaInfoValueSeries from "esri/popup/content/support/ChartMediaInfoValueSeries";
+import { MediaInfo, MediaChartInfo } from "esri/popup/content/support/mediaInfoTypes";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.Feature
 import { FeatureSupportedLayer, RelatedInfo } from "esri/widgets/interfaces";
 
 // esri.widgets.Feature.FeatureMedia
-import FeatureMediaViewModel = require("esri/widgets/FeatureMedia/FeatureMediaViewModel");
+import FeatureMediaViewModel from "esri/widgets/FeatureMedia/FeatureMediaViewModel";
 
 // esri.widgets.Feature.support
 import { shouldOpenInNewTab } from "esri/widgets/support/featureUtils";
@@ -38,7 +38,7 @@ import { AM4Charts, PieChart, XYChart, AM4Tooltip, AM4Core, ColorSet } from "esr
 import { loadChartsModule, getColorSet } from "esri/support/chartUtils";
 import { VNode } from "esri/support/interfaces";
 import { renderable, tsx, messageBundle } from "esri/support/widget";
-import { isRTL } from "esri/support/widgetUtils";
+import { isRTL, isDarkTheme } from "esri/support/widgetUtils";
 
 const CSS = {
   base: "esri-feature-media",
@@ -308,7 +308,6 @@ class FeatureMedia extends Widget {
         tabIndex={0}
         class={buttonClasses}
         bind={this}
-        onkeydown={buttonClick}
         onclick={buttonClick}
       >
         <span aria-hidden="true" class={LTRIconClasses} />
@@ -367,6 +366,10 @@ class FeatureMedia extends Widget {
       if (target instanceof am4core.ColorSet && defaultColorSet) {
         target.list = defaultColorSet;
       }
+    }
+
+    if (isDarkTheme()) {
+      am4core.useTheme(amCharts4Index.am4themes_dark);
     }
 
     am4core.useTheme(amCharts4Index.am4themes_animated);
@@ -608,4 +611,4 @@ class FeatureMedia extends Widget {
   }
 }
 
-export = FeatureMedia;
+export default FeatureMedia;

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor"],(function(e,t,o,r,s,c,p,i,n,u,l){"use strict";let a=function(t){function o(){var e;return(e=t.apply(this,arguments)||this).statistics=!0,e.legend=!0,e.sketchButton=!0,e.selectButton=!0,e}return e._inheritsLoose(o,t),o}(l);return t.__decorate([c.property()],a.prototype,"statistics",void 0),t.__decorate([c.property()],a.prototype,"legend",void 0),t.__decorate([c.property()],a.prototype,"sketchButton",void 0),t.__decorate([c.property()],a.prototype,"selectButton",void 0),a=t.__decorate([p.subclass("esri.widgets.ElevationProfile.ElevationProfileVisibleElements")],a),a}));

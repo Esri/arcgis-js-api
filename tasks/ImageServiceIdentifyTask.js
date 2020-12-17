@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/accessorSupport/decorators","../rest/imageServiceIdentify","./Task"],(function(e,t,r,i,s,n){"use strict";return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),t.prototype.execute=function(e,t){return s.imageServiceIdentify(this.url,e,t)},t=r.__decorate([i.subclass("esri.tasks.ImageServiceIdentifyTask")],t)}(n)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/deprecate","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Task","../rest/imageServiceIdentify"],(function(e,r,s,t,c,o,i,a,n,u,p,l,d){"use strict";const g=t.getLogger("esri.tasks.ImageServiceIdentifyTask");i.deprecatedModule(g,"esri/tasks/ImageServiceIdentifyTask",{replacement:"esri/tasks/ImageIdentifyTask"});let f=function(r){function s(){return r.apply(this,arguments)||this}return e._inheritsLoose(s,r),s.prototype.execute=function(e,r){return d.imageServiceIdentify(this.url,e,r)},s}(l);return f=r.__decorate([a.subclass("esri.tasks.ImageServiceIdentifyTask")],f),f}));

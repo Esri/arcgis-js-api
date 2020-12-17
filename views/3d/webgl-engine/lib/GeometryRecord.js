@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/ObjectPool","../../../../core/libs/gl-matrix-2/vec3","./IdGen"],(function(t,r,i,n,e){"use strict";return function(){function t(){}return t.prototype.acquire=function(r,i,n,e,o,a){this.id=t._idGen.gen(r&&r.id),this.geometry=r,this.material=i,this.transformation=n,this.instanceParameters=e,this.origin=o,this.shaderTransformation=a},t.prototype.getStaticTransformation=function(){return this.transformation},t.prototype.getShaderTransformation=function(){return this.shaderTransformation?this.shaderTransformation(this.transformation):this.transformation},t.prototype.computeAttachmentOrigin=function(t){return!!(this.material.computeAttachmentOrigin?this.material.computeAttachmentOrigin(this.geometry,t):this.geometry.computeAttachmentOrigin(t))&&(n.vec3.transformMat4(t,t,this.getStaticTransformation()),!0)},t._idGen=new e.IdGen,t.pool=new i(t),t}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../core/ObjectPool","../../../../chunks/vec3","./IdGen"],(function(t,n,i){"use strict";let r=function(){function t(){}var i=t.prototype;return i.acquire=function(n,i,r,e,a,o){this.id=t._idGen.gen(n&&n.id),this.geometry=n,this.material=i,this.transformation=r,this.instanceParameters=e,this.origin=a,this.shaderTransformation=o},i.getStaticTransformation=function(){return this.transformation},i.getShaderTransformation=function(){return this.shaderTransformation?this.shaderTransformation(this.transformation):this.transformation},i.computeAttachmentOrigin=function(t){return!!(this.material.computeAttachmentOrigin?this.material.computeAttachmentOrigin(this.geometry,t):this.geometry.computeAttachmentOrigin(t))&&(n.transformMat4(t,t,this.getStaticTransformation()),!0)},t}();return r._idGen=new i.IdGen,r.pool=new t(r),r}));

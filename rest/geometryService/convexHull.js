@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../request","../../geometry/support/jsonUtils","../utils","./utils"],(function(e,t,r,i,n,s,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.convexHull=void 0,t.convexHull=function(e,t,u){return r.__awaiter(this,void 0,void 0,(function(){var a,l,c,f;return r.__generator(this,(function(_){return a=t[0].spatialReference,l=s.parseUrl(e),c=r.__assign(r.__assign({},l.query),{f:"json",sr:JSON.stringify(a.toJSON()),geometries:JSON.stringify(o.encodeGeometries(t))}),f=s.asValidOptions(c,u),[2,i(l.path+"/convexHull",f).then((function(e){var t=e.data;return n.fromJSON(t.geometry).set({spatialReference:a})}))]}))}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../geometry/support/jsonUtils","../../request","../utils","./utils"],(function(e,t,s,r,n){"use strict";e.convexHull=async function(e,o,i){const l=o[0].spatialReference,u=r.parseUrl(e),a={...u.query,f:"json",sr:JSON.stringify(l.toJSON()),geometries:JSON.stringify(n.encodeGeometries(o))},c=r.asValidOptions(a,i);return s(u.path+"/convexHull",c).then((({data:e})=>t.fromJSON(e.geometry).set({spatialReference:l})))},Object.defineProperty(e,"__esModule",{value:!0})}));

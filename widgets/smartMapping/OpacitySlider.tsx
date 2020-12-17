@@ -72,25 +72,25 @@
  */
 
 // esri
-import Color = require("esri/../Color");
+import Color from "esri/Color";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
-import OpacityStop = require("esri/../renderers/visualVariables/support/OpacityStop");
+import OpacityStop from "esri/renderers/visualVariables/support/OpacityStop";
 
 // esri.smartMapping.renderers
-import { VisualVariableResult } from "esri/../smartMapping/renderers/opacity";
+import { VisualVariableResult } from "esri/smartMapping/renderers/opacity";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.OpacitySlider
-import OpacitySliderViewModel = require("esri/widgets/OpacitySlider/OpacitySliderViewModel");
+import OpacitySliderViewModel from "esri/widgets/OpacitySlider/OpacitySliderViewModel";
 
 // esri.widgets.smartMapping.OpacitySlider.t9n
 import OpacitySliderMessages from "esri/widgets/OpacitySlider/t9n/OpacitySlider";
@@ -505,4 +505,4 @@ class OpacitySlider extends SmartMappingSliderBase {
   }
 }
 
-export = OpacitySlider;
+export default OpacitySlider;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/mathUtils","../../../../../renderers/support/utils"],(function(e,n,r,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.getSizeForValueSimple=void 0;var a=Math.PI;function i(e,n){switch(n.transformationType){case"additive":return function(e,n){var r=u(n.minSize,e);return e+(r||n.minDataValue)}(e,n);case"constant":return function(e,n){var r=e.stops,t=r&&r.length&&r[0].size;null==t&&(t=e.minSize);return u(t,n)}(n,e);case"clamped-linear":return function(e,n){var r=(e-n.minDataValue)/(n.maxDataValue-n.minDataValue),t=u(n.minSize,e),a=u(n.maxSize,e);if(e<=n.minDataValue)return t;if(e>=n.maxDataValue)return a;return t+r*(a-t)}(e,n);case"proportional":return function(e,n){var t,a=e/n.minDataValue,i=u(n.minSize,e),s=u(n.maxSize,e);return t=a*i,r.clamp(t,i,s)}(e,n);case"stops":return function(e,n){var r=function(e,n){if(!n)return;var r=0,t=n.length-1;return n.some((function(n,a){return e<n?(t=a,!0):(r=a,!1)})),[r,t,(e-n[r])/(n[t]-n[r])]}(e,n.cache.ipData),t=r[0],a=r[1],i=r[2];if(t===a)return u(n.stops[t].size,e);var s=u(n.stops[t].size,e),o=u(n.stops[a].size,e);return s+(o-s)*i}(e,n);case"real-world-size":return function(e,n){var i=t.meterIn[n.valueUnit],s=u(n.minSize,e),o=u(n.maxSize,e),l=n.valueRepresentation,c=null;c="area"===l?2*Math.sqrt(e/a)/i:"radius"===l||"distance"===l?2*e/i:e/i;return r.clamp(c,s,o)}(e,n);case"identity":return e;case"unknown":return null}}function u(e,n){return"number"==typeof e?e:i(n,e)}n.getSizeForValueSimple=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../core/mathUtils","../../../../../renderers/support/lengthUtils"],(function(e,t,n){"use strict";const r=Math.PI;function a(e,a){switch(a.transformationType){case"additive":return function(e,t){const n=i(t.minSize,e);return e+(n||t.minDataValue)}(e,a);case"constant":return function(e,t){const n=e.stops;let r=n&&n.length&&n[0].size;null==r&&(r=e.minSize);return i(r,t)}(a,e);case"clamped-linear":return function(e,t){const n=(e-t.minDataValue)/(t.maxDataValue-t.minDataValue),r=i(t.minSize,e),a=i(t.maxSize,e);if(e<=t.minDataValue)return r;if(e>=t.maxDataValue)return a;return r+n*(a-r)}(e,a);case"proportional":return function(e,n){const r=e/n.minDataValue,a=i(n.minSize,e),u=i(n.maxSize,e);let s=null;return s=r*a,t.clamp(s,a,u)}(e,a);case"stops":return function(e,t){const[n,r,a]=function(e,t){if(!t)return;let n=0,r=t.length-1;return t.some(((t,a)=>e<t?(r=a,!0):(n=a,!1))),[n,r,(e-t[n])/(t[r]-t[n])]}(e,t.cache.ipData);if(n===r)return i(t.stops[n].size,e);{const u=i(t.stops[n].size,e);return u+(i(t.stops[r].size,e)-u)*a}}(e,a);case"real-world-size":return function(e,a){const u=n.meterIn[a.valueUnit],s=i(a.minSize,e),o=i(a.maxSize,e),{valueRepresentation:c}=a;let l=null;l="area"===c?2*Math.sqrt(e/r)/u:"radius"===c||"distance"===c?2*e/u:e/u;return t.clamp(l,s,o)}(e,a);case"identity":return e;case"unknown":return null}}function i(e,t){return"number"==typeof e?e:a(t,e)}e.getSizeForValueSimple=a,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/libs/earcut/earcut","./coordsUtils","./meshUtils/deduplicate"],(function(n,e,t,r,o){"use strict";function i(n,e,t){for(var o=n.length,i=new Array(o),l=new Array(o),s=new Array(o),h=0,g=0,u=0,f=0,c=0;c<o;++c)f+=n[c].length;for(var p,d=new Float64Array(3*f),v=0,y=o-1;y>=0;y--){var w=n[y],A=1===t&&(p=w,!r.isClockwise(p,!1,!1));if(A&&1!==o)i[h++]=w;else{var x=w.length;for(c=0;c<h;++c)x+=i[c].length;var I={index:v,pathLengths:new Array(h+1),count:x,holeIndices:new Array(h)};I.pathLengths[0]=w.length,w.length>0&&(s[u++]={index:v,count:w.length}),v=A?a(w,w.length-1,-1,d,v,w.length,e):a(w,0,1,d,v,w.length,e);for(var T=0;T<h;++T){var b=i[T];I.holeIndices[T]=v,I.pathLengths[T+1]=b.length,b.length>0&&(s[u++]={index:v,count:b.length}),v=a(b,0,1,d,v,b.length,e)}h=0,I.count>0&&(l[g++]=I)}}for(T=0;T<h;++T){(b=i[T]).length>0&&(s[u++]={index:v,count:b.length}),v=a(b,0,1,d,v,b.length,e)}return g<o&&(l.length=g),u<o&&(s.length=u),{position:d,polygons:l,outlines:s}}function a(n,e,t,r,o,i,a){o*=3;for(var l=0;l<i;++l){var s=n[e];r[o++]=s[0],r[o++]=s[1],r[o++]=a?s[2]:0,e+=t}return o/3}Object.defineProperty(e,"__esModule",{value:!0}),e.pathsToTriangulationInfo=e.triangulate=void 0,e.triangulate=function(n){for(var e=i(n.rings,n.hasZ,1),r=[],a=0,l=0,s=function(n){var o=n.count,i=n.index,s=new Float64Array(e.position.buffer,3*i*e.position.BYTES_PER_ELEMENT,3*o),h=n.holeIndices.map((function(n){return n-i})),g=new Uint32Array(t.earcut(s,h,3));r.push({position:s,faces:g}),a+=s.length,l+=g.length},h=0,g=e.polygons;h<g.length;h++){s(g[h])}var u=function(n,e,t){if(1===n.length)return n[0];for(var r=new Float64Array(e),o=new Uint32Array(t),i=0,a=0,l=0,s=0,h=n;s<h.length;s++){for(var g=h[s],u=0;u<g.position.length;u++)r[i++]=g.position[u];for(u=0;u<g.faces.length;u++)o[a++]=g.faces[u]+l;l=i/3}return{position:r,faces:o}}(r,a,l),f=o.default(u.position.buffer,6,{originalIndices:u.faces});return u.position=new Float64Array(f.buffer),u.faces=f.indices,u},e.pathsToTriangulationInfo=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./coordsUtils","../../core/libs/earcut/earcut","./meshUtils/deduplicate"],(function(n,t,e,o){"use strict";function l(n,e,o){const l=n.length,i=new Array(l),s=new Array(l),c=new Array(l);let a=0,h=0,f=0,g=0;for(let t=0;t<l;++t)g+=n[t].length;const u=new Float64Array(3*g);let p=0;for(let g=l-1;g>=0;g--){const y=n[g],w=1===o&&(d=y,!t.isClockwise(d,!1,!1));if(w&&1!==l)i[a++]=y;else{let n=y.length;for(let t=0;t<a;++t)n+=i[t].length;const t={index:p,pathLengths:new Array(a+1),count:n,holeIndices:new Array(a)};t.pathLengths[0]=y.length,y.length>0&&(c[f++]={index:p,count:y.length}),p=w?r(y,y.length-1,-1,u,p,y.length,e):r(y,0,1,u,p,y.length,e);for(let n=0;n<a;++n){const o=i[n];t.holeIndices[n]=p,t.pathLengths[n+1]=o.length,o.length>0&&(c[f++]={index:p,count:o.length}),p=r(o,0,1,u,p,o.length,e)}a=0,t.count>0&&(s[h++]=t)}}var d;for(let n=0;n<a;++n){const t=i[n];t.length>0&&(c[f++]={index:p,count:t.length}),p=r(t,0,1,u,p,t.length,e)}return h<l&&(s.length=h),f<l&&(c.length=f),{position:u,polygons:s,outlines:c}}function r(n,t,e,o,l,r,i){l*=3;for(let s=0;s<r;++s){const r=n[t];o[l++]=r[0],o[l++]=r[1],o[l++]=i?r[2]:0,t+=e}return l/3}n.pathsToTriangulationInfo=l,n.triangulate=function(n){const t=l(n.rings,n.hasZ,1),r=[];let i=0,s=0;for(const n of t.polygons){const o=n.count,l=n.index,c=new Float64Array(t.position.buffer,3*l*t.position.BYTES_PER_ELEMENT,3*o),a=n.holeIndices.map((n=>n-l)),h=new Uint32Array(e.earcut(c,a,3));r.push({position:c,faces:h}),i+=c.length,s+=h.length}const c=function(n,t,e){if(1===n.length)return n[0];const o=new Float64Array(t),l=new Uint32Array(e);let r=0,i=0,s=0;for(const t of n){for(let n=0;n<t.position.length;n++)o[r++]=t.position[n];for(let n=0;n<t.faces.length;n++)l[i++]=t.faces[n]+s;s=r/3}return{position:o,faces:l}}(r,i,s),a=o.deduplicate(c.position.buffer,6,{originalIndices:c.faces});return c.position=new Float64Array(a.buffer),c.faces=a.indices,c},Object.defineProperty(n,"__esModule",{value:!0})}));

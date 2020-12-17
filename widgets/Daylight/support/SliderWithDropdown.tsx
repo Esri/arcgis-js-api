@@ -1,18 +1,19 @@
 // esri.core
-import { eventKey } from "esri/../../core/events";
+import { eventKey } from "esri/core/events";
+import { isSome, Maybe } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Slider = require("esri/../Slider");
+import Slider from "esri/Slider";
 
 // esri.widgets.Daylight.support
 import { Item, SliderWithDropdownViewModel } from "esri/widgets/SliderWithDropdownViewModel";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable, storeNode } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable } from "esri/support/widget";
 
 const CSS = {
   interactive: "esri-interactive",
@@ -89,7 +90,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
   //
   //--------------------------------------------------------------------------
 
-  private _rootNode: HTMLElement = null;
+  private _rootNode: Maybe<HTMLElement> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -107,12 +108,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
       <div class={this.classes(CSS.box, CSS.label, dynamicDropDownStateClasses)}>
         {super.renderThumbLabel(index)}
         {this.showDropDown ? (
-          <div
-            afterCreate={storeNode}
-            class={CSS.dropdownRoot}
-            bind={this}
-            data-node-ref="_rootNode"
-          >
+          <div bind={this} afterCreate={this._onRootNodeCreate} class={CSS.dropdownRoot}>
             <button
               class={this.classes(
                 CSS.interactive,
@@ -141,7 +137,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
                 aria-label={this.buttonTooltip}
                 role="listbox"
                 onkeydown={this._onOlKeyDown}
-                afterCreate={(elem: HTMLOListElement) => (elem.firstChild as HTMLLIElement).focus()}
+                afterCreate={this._focusOnSelectedItem}
               >
                 {this.items.map((item, index) => (
                   <li
@@ -183,6 +179,20 @@ class SliderWithDropdown<T extends Item> extends Slider {
   //
   //--------------------------------------------------------------------------
 
+  private _onRootNodeCreate(node: HTMLElement): void {
+    this._rootNode = node;
+  }
+
+  private _focusOnSelectedItem(node: HTMLElement): void {
+    const nodeToSelect: Maybe<Element> =
+      node.querySelector(`.${CSS.dropdownListItemSelected}`) ?? (node.firstChild as HTMLElement);
+
+    if (isSome(nodeToSelect) && nodeToSelect instanceof HTMLElement) {
+      nodeToSelect.scrollIntoView();
+      nodeToSelect.focus();
+    }
+  }
+
   private _onAnchorClick(): boolean {
     this.viewModel.toggle();
     return true;
@@ -202,6 +212,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
     // Slider thumb anchor is grandparent of root node, it takes focus when dropdown button is clicked
     // Ignore it so that we do not close and re-open immediately
     if (
+      isSome(this._rootNode) &&
       !this._rootNode.contains(element) &&
       element !== this._rootNode.parentElement &&
       element !== this._rootNode.parentElement.parentElement
@@ -245,4 +256,4 @@ class SliderWithDropdown<T extends Item> extends Slider {
   }
 }
 
-export = SliderWithDropdown;
+export default SliderWithDropdown;

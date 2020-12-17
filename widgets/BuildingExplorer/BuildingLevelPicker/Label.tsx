@@ -1,15 +1,15 @@
 // esri.core
-import { Maybe, isNone } from "esri/../../core/maybe";
+import { Maybe, isNone } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { tsx, renderable } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { tsx, renderable } from "esri/support/widget";
 
 const BASE = "esri-building-level-picker-label";
 

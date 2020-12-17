@@ -1,35 +1,42 @@
 // esri
-import * as intl from "esri/../../intl";
+import * as intl from "esri/intl";
 
 // esri.core
-import Collection = require("esri/../../core/Collection");
+import Collection from "esri/core/Collection";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/../../core/accessorSupport/decorators";
+import { property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import ImageryLayer = require("esri/../../layers/ImageryLayer");
-import Layer = require("esri/../../layers/Layer");
+import ImageryLayer from "esri/layers/ImageryLayer";
+import Layer from "esri/layers/Layer";
 
 // esri.widgets
 import {
   ColorRampElement,
   StretchRampElement,
   HeatmapRampElement,
+  UnivariateAboveAndBelowRampElement,
   LegendElement,
   OpacityRampElement,
   RendererTitle,
   SymbolTableElement,
   ImageSymbolTableElementInfo,
   ColorRampStop
-} from "esri/../interfaces";
-import Widget = require("esri/../Widget");
+} from "esri/interfaces";
+import Widget from "esri/Widget";
 
 // esri.widgets.Legend.styles.support
-import { renderRelationshipRamp } from "esri/widgets/support/utils";
+import {
+  renderRelationshipRamp,
+  getUnivariateAboveAndBelowColorRampPreview,
+  getUnivariateAboveAndBelowColorRampSize,
+  getUnivariateAboveAndBelowColorRampMargin,
+  getUnivariateAboveAndBelowRampElements
+} from "esri/widgets/support/utils";
 
 // esri.widgets.Legend.support
-import ActiveLayerInfo = require("esri/support/ActiveLayerInfo");
+import ActiveLayerInfo from "esri/support/ActiveLayerInfo";
 import {
   attachToNode,
   getTitle,
@@ -41,8 +48,8 @@ import {
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { messageBundle, renderable, tsx } from "esri/support/widget";
 
 const CSS = {
   service: "esri-legend__service",
@@ -73,14 +80,19 @@ const CSS = {
   rampLastTick: "esri-legend__ramp-tick-last",
   rampLabelsContainer: "esri-legend__ramp-labels",
   rampLabel: "esri-legend__ramp-label",
+  univariateAboveAndBelowSymbol: "esri-univariate-above-and-below-ramp__symbol",
+  univariateAboveAndBelowLabel: "esri-univariate-above-and-below-ramp__label",
   message: "esri-legend__message",
   // common
   header: "esri-widget__heading",
   hidden: "esri-hidden"
 };
 
-const KEY = "esri-legend__",
-  GRADIENT_WIDTH = 24;
+const KEY = "esri-legend__";
+const GRADIENT_WIDTH = 24;
+const univariateRampContainerStyles = { display: "flex", alignItems: "flex-start" };
+const univariateColorRampContainerStyles = { marginLeft: "3px" };
+const univariateColorRampStyles = { display: "table-cell", verticalAlign: "middle" };
 
 @subclass("esri.widgets.Legend.styles.Classic")
 class Classic extends Widget {
@@ -262,6 +274,8 @@ class Classic extends Widget {
       content = this._renderLegendForRamp(legendElement, layer.opacity);
     } else if (legendElement.type === "relationship-ramp") {
       content = renderRelationshipRamp(legendElement, this.id, layer.opacity);
+    } else if (legendElement.type === "univariate-above-and-below-ramp") {
+      content = this._renderUnivariateAboveAndBelowRamp(legendElement, layer.opacity);
     }
 
     if (!content) {
@@ -294,6 +308,133 @@ class Classic extends Widget {
       <div class={this.classes(tableClass, tableClasses)}>
         {caption}
         {content}
+      </div>
+    );
+  }
+
+  private _renderUnivariateAboveAndBelowRamp(
+    legendElement: UnivariateAboveAndBelowRampElement,
+    opacity: number
+  ): VNode {
+    const { sizeRampElement, colorRampElement } = getUnivariateAboveAndBelowRampElements(
+      legendElement,
+      opacity
+    );
+    const colorRampAboveHeight = getUnivariateAboveAndBelowColorRampSize(sizeRampElement, "above");
+    const colorRampBelowHeight = getUnivariateAboveAndBelowColorRampSize(sizeRampElement, "below");
+    const colorRampWidth = 12;
+    const colorRampAbovePreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+      width: colorRampWidth,
+      height: colorRampAboveHeight,
+      rampAlignment: "vertical",
+      opacity,
+      type: "above"
+    });
+    const colorRampBelowPreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+      width: colorRampWidth,
+      height: colorRampBelowHeight,
+      rampAlignment: "vertical",
+      opacity,
+      type: "below"
+    });
+    const colorRampTopMargin = getUnivariateAboveAndBelowColorRampMargin(sizeRampElement);
+
+    const labels = sizeRampElement.infos.map((stop) => stop.label);
+    const aboveRampLabels = labels.map((label, index) => {
+      const isStartLabel = index === 0;
+      const isMidLabel = index === 2;
+
+      return isStartLabel ? (
+        <div
+          key={index}
+          class={
+            label
+              ? colorRampAbovePreview
+                ? CSS.univariateAboveAndBelowLabel
+                : CSS.rampLabel
+              : null
+          }
+        >
+          {label}
+        </div>
+      ) : isMidLabel ? (
+        <div />
+      ) : null;
+    });
+    const belowRampLabels = labels.map((label, index) => {
+      const isEndLabel = index === 4;
+      const isMidLabel = index === 2;
+
+      return isMidLabel || isEndLabel ? (
+        <div
+          key={index}
+          class={
+            label
+              ? colorRampAbovePreview
+                ? CSS.univariateAboveAndBelowLabel
+                : CSS.rampLabel
+              : null
+          }
+        >
+          {label}
+        </div>
+      ) : null;
+    });
+
+    const sizeRampPreviewStyles = { display: "table-cell", verticalAlign: "middle" };
+    const colorRampPreviewStyles = { marginTop: `${colorRampTopMargin}px` };
+    const colorRampAboveLabelStyles = { height: `${colorRampAboveHeight}px` };
+    const colorRampBelowLabelStyles = { height: `${colorRampBelowHeight}px` };
+
+    return (
+      <div key="univariate-above-and-below-ramp-preview" styles={univariateRampContainerStyles}>
+        <div class={CSS.layerBody}>
+          {sizeRampElement.infos.map((info, i) => (
+            <div class={this.classes(CSS.layerRow, CSS.sizeRamp)}>
+              <div
+                class={CSS.symbol}
+                styles={sizeRampPreviewStyles}
+                bind={info.preview}
+                afterCreate={attachToNode}
+              />
+              {!colorRampAbovePreview && i % 2 === 0 ? (
+                <div class={CSS.layerInfo}>{labels[i]}</div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+        {colorRampAbovePreview ? (
+          <div styles={colorRampPreviewStyles} key="color-ramp-preview">
+            <div styles={univariateColorRampContainerStyles}>
+              <div styles={univariateColorRampStyles}>
+                <div
+                  class={CSS.rampContainer}
+                  bind={colorRampAbovePreview}
+                  afterCreate={attachToNode}
+                />
+              </div>
+              <div styles={univariateColorRampStyles}>
+                <div class={CSS.rampLabelsContainer} styles={colorRampAboveLabelStyles}>
+                  {aboveRampLabels}
+                </div>
+              </div>
+            </div>
+            <div styles={univariateColorRampContainerStyles}>
+              <div styles={univariateColorRampStyles}>
+                <div
+                  class={CSS.rampContainer}
+                  bind={colorRampBelowPreview}
+                  afterCreate={attachToNode}
+                />
+              </div>
+              <div styles={univariateColorRampStyles}>
+                <div class={CSS.rampLabelsContainer} styles={colorRampBelowLabelStyles}>
+                  {belowRampLabels}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -367,7 +508,7 @@ class Classic extends Widget {
     let content: VNode = null;
     const isStretched = isImageryStretchedLegend(layer as ImageryLayer, legendType);
 
-    if (elementInfo.symbol && elementInfo.preview) {
+    if (elementInfo.preview) {
       content = <div class={CSS.symbol} bind={elementInfo.preview} afterCreate={attachToNode} />;
     } else if (elementInfo.src) {
       content = this._renderImage(elementInfo, layer, isStretched);
@@ -426,4 +567,4 @@ class Classic extends Widget {
   }
 }
 
-export = Classic;
+export default Classic;

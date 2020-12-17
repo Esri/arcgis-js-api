@@ -1,15 +1,15 @@
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.popup
-import ExpressionInfo = require("esri/../popup/ExpressionInfo");
-import FieldInfo = require("esri/../popup/FieldInfo");
+import ExpressionInfo from "esri/popup/ExpressionInfo";
+import FieldInfo from "esri/popup/FieldInfo";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.Feature.FeatureFields
-import FeatureFieldsViewModel = require("esri/widgets/FeatureFields/FeatureFieldsViewModel");
+import FeatureFieldsViewModel from "esri/widgets/FeatureFields/FeatureFieldsViewModel";
 
 // esri.widgets.Feature.t9n
 import type FeatureMessages from "esri/widgets/t9n/Feature";
@@ -174,4 +174,4 @@ class FeatureFields extends Widget {
   }
 }
 
-export = FeatureFields;
+export default FeatureFields;

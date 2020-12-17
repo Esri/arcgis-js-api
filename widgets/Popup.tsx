@@ -51,19 +51,16 @@
  * @see module:esri/widgets/Popup/PopupViewModel
  */
 
-// @dojo.framework.shim
-import "@dojo/framework/shim/Promise";
-
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { substitute } from "esri/intl";
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
-import Handles = require("esri/core/Handles");
-import Logger = require("esri/core/Logger");
+import Handles from "esri/core/Handles";
+import Logger from "esri/core/Logger";
 import { ScreenPoint } from "esri/core/screenUtils";
 import { throttle } from "esri/core/throttle";
 import * as watchUtils from "esri/core/watchUtils";
@@ -72,27 +69,24 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
-import Point = require("esri/geometry/Point");
+import Point from "esri/geometry/Point";
 
 // esri.t9n
 import type CommonMessages from "esri/t9n/common";
 
 // esri.views
 import { Breakpoints } from "esri/views/interfaces";
-import MapView = require("esri/views/MapView");
+import MapView from "esri/views/MapView";
 import { FetchPopupFeaturesResult } from "esri/views/PopupView";
-import SceneView = require("esri/views/SceneView");
-
-// esri.views.ui
-import UI = require("esri/views/ui/UI");
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Feature = require("esri/widgets/Feature");
-import Spinner = require("esri/widgets/Spinner");
-import Widget = require("esri/widgets/Widget");
+import Feature from "esri/widgets/Feature";
+import Spinner from "esri/widgets/Spinner";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Feature
-import FeatureViewModel = require("esri/widgets/Feature/FeatureViewModel");
+import FeatureViewModel from "esri/widgets/Feature/FeatureViewModel";
 
 // esri.widgets.Feature.support
 import { FeatureContentMixin } from "esri/widgets/Feature/support/FeatureContentMixin";
@@ -113,7 +107,7 @@ import {
   ViewPadding,
   FetchFeaturesOptions
 } from "esri/widgets/Popup/interfaces";
-import PopupViewModel = require("esri/widgets/Popup/PopupViewModel");
+import PopupViewModel from "esri/widgets/Popup/PopupViewModel";
 
 // esri.widgets.Popup.t9n
 import type PopupMessages from "esri/widgets/Popup/t9n/Popup";
@@ -410,6 +404,8 @@ class Popup extends FeatureContentMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  private _blurClose = false;
+
   private _blurContainer = false;
 
   private _containerNode: HTMLDivElement = null;
@@ -419,6 +415,8 @@ class Popup extends FeatureContentMixin(Widget) {
   private _featureMenuNode: HTMLElement = null;
 
   private _actionsMenuNode: HTMLElement = null;
+
+  private _focusClose = false;
 
   private _focusContainer = false;
 
@@ -1531,7 +1529,12 @@ class Popup extends FeatureContentMixin(Widget) {
       logger.warn("Popup can only be blurred when currently active.");
     }
 
-    this._blurContainer = true;
+    if (this.visibleElements.closeButton) {
+      this._blurClose = true;
+    } else {
+      this._blurContainer = true;
+    }
+
     this.scheduleRender();
   }
 
@@ -1626,7 +1629,12 @@ class Popup extends FeatureContentMixin(Widget) {
       logger.warn("Popup can only be focused when currently active.");
     }
 
-    this._focusContainer = true;
+    if (this.visibleElements.closeButton) {
+      this._focusClose = true;
+    } else {
+      this._focusContainer = true;
+    }
+
     this.scheduleRender();
   }
 
@@ -1992,33 +2000,38 @@ class Popup extends FeatureContentMixin(Widget) {
 
     const { titleId, collapsible, contentCollapsed, messagesCommon } = this;
 
-    const titleLabel = collapsible
-      ? contentCollapsed
-        ? messagesCommon.expand
-        : messagesCommon.collapse
-      : "";
-
     const containerClasses = {
       [CSS.headerContainerButton]: collapsible
     };
 
-    return title ? (
-      <div
-        class={this.classes(CSS.headerContainer, containerClasses)}
-        key={title}
-        enterAnimation={this._createFeatureUpdatedAnimation()}
+    const titleNode = <h2 class={CSS.headerTitle} innerHTML={title} />;
+
+    const containerNode = collapsible ? (
+      <button
+        key={`${title}--collapsible`}
         id={titleId}
-        role={collapsible ? "button" : "heading"}
-        aria-label={titleLabel}
-        title={titleLabel}
-        tabIndex={collapsible ? 0 : -1}
+        title={contentCollapsed ? messagesCommon.expand : messagesCommon.collapse}
         bind={this}
+        enterAnimation={this._createFeatureUpdatedAnimation()}
+        class={this.classes(CSS.headerContainer, containerClasses)}
+        aria-expanded={contentCollapsed ? "false" : "true"}
         onclick={this._toggleCollapsed}
-        onkeydown={this._toggleCollapsed}
       >
-        <h2 class={CSS.headerTitle} innerHTML={title} />
+        {titleNode}
+      </button>
+    ) : (
+      <div
+        key={title}
+        id={titleId}
+        bind={this}
+        enterAnimation={this._createFeatureUpdatedAnimation()}
+        class={this.classes(CSS.headerContainer, containerClasses)}
+      >
+        {titleNode}
       </div>
-    ) : null;
+    );
+
+    return title ? containerNode : null;
   }
 
   protected renderCloseIcon(): VNode {
@@ -2038,6 +2051,8 @@ class Popup extends FeatureContentMixin(Widget) {
         class={CSS.button}
         aria-label={messagesCommon.close}
         title={messagesCommon.close}
+        afterCreate={this._closeButtonNodeUpdated}
+        afterUpdate={this._closeButtonNodeUpdated}
       >
         {this.renderCloseIcon()}
       </div>
@@ -2238,7 +2253,8 @@ class Popup extends FeatureContentMixin(Widget) {
       contentId,
       collapsible,
       hasContent,
-      contentCollapsed
+      contentCollapsed,
+      visibleElements
     } = this;
 
     const { title } = this.viewModel;
@@ -2268,7 +2284,7 @@ class Popup extends FeatureContentMixin(Widget) {
     return (
       <div
         class={this.classes(CSS.main, CSS.widget, mainContainerClasses)}
-        tabIndex={-1}
+        tabIndex={!visibleElements.closeButton ? -1 : null}
         role="dialog"
         aria-labelledby={title ? titleId : ""}
         aria-describedby={hasContent && !contentCollapsed ? contentId : ""}
@@ -2354,7 +2370,7 @@ class Popup extends FeatureContentMixin(Widget) {
     const baseNode =
       type === "menu-item" ? (
         <li
-          key={action}
+          key={action.uid}
           role="menuitem"
           tabIndex={0}
           title={actionTitle}
@@ -2370,7 +2386,7 @@ class Popup extends FeatureContentMixin(Widget) {
         </li>
       ) : (
         <div
-          key={action}
+          key={action.uid}
           role="button"
           tabIndex={0}
           title={actionTitle}
@@ -3228,6 +3244,20 @@ class Popup extends FeatureContentMixin(Widget) {
     element.focus();
   }
 
+  private _closeButtonNodeUpdated(element: HTMLButtonElement): void {
+    if (this._focusClose) {
+      this._focusClose = false;
+      element.focus();
+      return;
+    }
+
+    if (this._blurClose) {
+      this._blurClose = false;
+      element.blur();
+      return;
+    }
+  }
+
   private _mainContainerNodeUpdated(element: HTMLDivElement): void {
     this._mainContainerNode = element;
 
@@ -3313,8 +3343,12 @@ class Popup extends FeatureContentMixin(Widget) {
 
   private _shouldDockAtCurrentViewSize(dockOptions: DockOptions): boolean {
     const breakpoint = dockOptions.breakpoint;
-    const { width: uiWidth, height: uiHeight } = this.get<UI>("viewModel.view.ui");
+    const ui = this.viewModel?.view?.ui;
+    if (!ui) {
+      return false;
+    }
 
+    const { width: uiWidth, height: uiHeight } = ui;
     if (isNaN(uiWidth) || isNaN(uiHeight)) {
       return false;
     }
@@ -3344,6 +3378,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
   private _destroySpinner(): void {
     const { _spinner, view } = this;
+
     if (_spinner) {
       view && view.ui && view.ui.remove(this._spinner, SPINNER_KEY);
       _spinner.destroy();
@@ -3366,7 +3401,6 @@ class Popup extends FeatureContentMixin(Widget) {
     });
   }
 
-  @accessibleHandler()
   private _toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
   }
@@ -3440,4 +3474,4 @@ class Popup extends FeatureContentMixin(Widget) {
   }
 }
 
-export = Popup;
+export default Popup;

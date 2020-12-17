@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/maybe"],(function(e,t,n){"use strict";return function(){function e(t,i){this._context=t,this._desc=i,this._glName=null,this._id=-1;var r=this._context.gl;n.isSome(this._context.instanceCounter)&&this._context.instanceCounter.increment(5,this),this._id=++e._nextId,this._glName=r.createRenderbuffer(),this._context.bindRenderbuffer(this),r.renderbufferStorage(r.RENDERBUFFER,i.internalFormat,i.width,i.height)}return Object.defineProperty(e.prototype,"descriptor",{get:function(){return this._desc},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"id",{get:function(){return this._id},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"glName",{get:function(){return this._glName},enumerable:!1,configurable:!0}),e.prototype.resize=function(e,t){var n=this._context.gl,i=this._desc;i.width===e&&i.height===t||(i.width=e,i.height=t,this._context.bindRenderbuffer(this),n.renderbufferStorage(n.RENDERBUFFER,i.internalFormat,i.width,i.height))},e.prototype.dispose=function(){this._glName&&(this._context.gl.deleteRenderbuffer(this._glName),this._glName=null);this._context&&n.isSome(this._context.instanceCounter)&&this._context.instanceCounter.decrement(5,this),this._context=null},e._nextId=0,e}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers"],(function(t){"use strict";let e=function(){function e(t,e){this._context=t,this._desc=e,this.id=++n,this._context.instanceCounter.increment(5,this);const i=this._context.gl;this.glName=i.createRenderbuffer(),this._context.bindRenderbuffer(this),i.renderbufferStorage(i.RENDERBUFFER,e.internalFormat,e.width,e.height)}var i=e.prototype;return i.resize=function(t,e){const n=this._desc;if(n.width===t&&n.height===e)return;n.width=t,n.height=e;const i=this._context.gl;this._context.bindRenderbuffer(this),i.renderbufferStorage(i.RENDERBUFFER,n.internalFormat,n.width,n.height)},i.dispose=function(){this._context&&(this._context.gl.deleteRenderbuffer(this.glName),this._context.instanceCounter.decrement(5,this),this._context=null)},t._createClass(e,[{key:"descriptor",get:function(){return this._desc}}]),e}(),n=0;return e}));

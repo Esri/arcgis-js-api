@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/mathUtils","../../../core/mathUtils","../../../core/unitUtils","../../../core/libs/gl-matrix-2/vec3","../../../core/libs/gl-matrix-2/vec3f64","../../../geometry/support/geodesicConstants"],(function(t,e,r,a,n,i,s,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.createNearFarHeuristic=void 0,e.createNearFarHeuristic=function(t,e,r){return 1===t?new c:new u(e,r)};var u=function(){function t(t,e){this.elevationProvider=t,this.unitInMeters=n.getMetersPerUnitForSR(e)}return t.prototype.compute=function(t,e,n,s,u){u||(u={near:0,far:0});var c=t[2]*this.unitInMeters,x=c,y=c-s,d=this.elevationProvider?this.elevationProvider.elevationBounds:null;d&&(c=y>=0?x-this.unitInMeters*d.min:this.unitInMeters*d.max-x);var p={x:n.xmax-n.xmin,y:n.ymax-n.ymin,z:4*Math.max(n.xmax-n.xmin,n.ymax-n.ymin)},I=Math.max(p.x,p.y,p.z);i.vec3.subtract(f,e,t),l[0]=f[0]>0?n.xmax:n.xmin,l[1]=f[1]>0?n.ymax:n.ymin,l[2]=f[2]>0?I/2:-I/2,i.vec3.subtract(l,l,t),i.vec3.normalize(f,f);var b=1.1*i.vec3.dot(l,f)*this.unitInMeters,g=Math.sqrt(c*(c+2*o.earthRadius)),P=Math.max(n.xmax-n.xmin,n.ymax-n.ymin),R=P*v*this.unitInMeters,U=P*M*this.unitInMeters,q=r.clamp((c-U)/(R-U),0,1);q*=q*q;var z=a.lerp(g,b,q);return z*=Math.max(Math.log(Math.abs(y)),1),z=Math.min(z,Math.max(34064e4,I)),m(z/=this.unitInMeters,h,this.unitInMeters,u)},t}(),c=function(){function t(){}return t.prototype.compute=function(t,e,a,n,s){s||(s={near:0,far:0});var u=i.vec3.length(t)-o.earthRadius,c=o.earthRadius+Math.min(0,n),h=Math.abs(u-n),x=Math.max(h,Math.abs(u));return m(1.2*Math.sqrt(x*(x+2*c)),r.clamp(2e4-(Math.log(x)-7.983)/9.011*19e3,1e3,2e4),1,s)},t}();function m(t,e,r,a){var n=x/r;return t/e>n?(a.far=t,a.near=a.far/e):(a.near=n,a.far=a.near*e),a}var h=2e4,x=2,v=.001,M=1e-4,l=s.vec3f64.create(),f=s.vec3f64.create()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/mathUtils","../../../chunks/vec3f64","../../../chunks/vec3","../../../geometry/projectionEllipsoid","../../../core/unitUtils"],(function(e,t,n,i,r,s){"use strict";let a=function(){function e(e,t){this.elevationProvider=e,this._referenceEllipsoid=r.getReferenceEllipsoid(t),this.unitInMeters=s.getMetersPerUnitForSR(t,this._referenceEllipsoid.metersPerDegree)}return e.prototype.compute=function(e,n,r,s,a){a||(a={near:0,far:0});let o=e[2]*this.unitInMeters;const l=o,f=o-s,p=this.elevationProvider?this.elevationProvider.elevationBounds:null;p&&(o=f>=0?l-this.unitInMeters*p.min:this.unitInMeters*p.max-l);const d={x:r.xmax-r.xmin,y:r.ymax-r.ymin,z:4*Math.max(r.xmax-r.xmin,r.ymax-r.ymin)},y=Math.max(d.x,d.y,d.z);i.subtract(M,n,e),x[0]=M[0]>0?r.xmax:r.xmin,x[1]=M[1]>0?r.ymax:r.ymin,x[2]=M[2]>0?y/2:-y/2,i.subtract(x,x,e),i.normalize(M,M);const v=1.1*i.dot(x,M)*this.unitInMeters,E=Math.sqrt(o*(o+2*this._referenceEllipsoid.radius)),I=Math.max(r.xmax-r.xmin,r.ymax-r.ymin),g=I*h*this.unitInMeters,_=I*m*this.unitInMeters;let b=t.clamp((o-_)/(g-_),0,1);b*=b*b;let P=t.lerp(E,v,b);return P*=Math.max(Math.log(Math.abs(f)),1),P=Math.min(P,Math.max(34064e4,y)),P/=this.unitInMeters,c(P,u,this.unitInMeters,a)},e}(),o=function(){function e(e){this._referenceEllipsoid=r.getReferenceEllipsoid(e)}return e.prototype.compute=function(e,n,r,s,a){a||(a={near:0,far:0});const o=i.length(e)-this._referenceEllipsoid.radius,u=this._referenceEllipsoid.radius+Math.min(0,s),l=Math.abs(o-s),h=Math.max(l,Math.abs(o));return c(1.2*Math.sqrt(h*(h+2*u)),t.clamp(2e4-(Math.log(h)-7.983)/9.011*19e3,1e3,2e4),1,a)},e}();function c(e,t,n,i){const r=l/n;return e/t>r?(i.far=e,i.near=i.far/t):(i.near=r,i.far=i.near*t),i}const u=2e4,l=2,h=.001,m=1e-4,x=n.create(),M=n.create();e.createNearFarHeuristic=function(e,t,n){return 1===e?new o(n):new a(t,n)},Object.defineProperty(e,"__esModule",{value:!0})}));

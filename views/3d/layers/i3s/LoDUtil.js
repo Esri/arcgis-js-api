@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/libs/gl-matrix-2/vec3"],(function(e,r,n){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.splitWorkEntry=r.splitWorkEntries=r.sortFrontToBack=r.nodeDiff=void 0,r.nodeDiff=function(e,r,n){for(var a=0;a<r.length;a++)o[a]=!1,d[a]=null;for(a=0;a<e.length;a++)t[a]=!1,l[a]=null;for(a=0;a<r.length;a++){(g=u(r[a],e,n))>=0&&(o[a]=!0,null!=l[g]?l[g].push(r[a]):l[g]=[r[a]])}for(a=0;a<e.length;a++){var g;(g=u(e[a],r,n))>=0&&(t[a]=!0,null!=d[g]?d[g].push(e[a]):d[g]=[e[a]])}var h=[];for(a=0;a<e.length;a++)null!=l[a]||t[a]||h.push({load:[],remove:[e[a]]});for(a=0;a<r.length;a++)null!=d[a]||o[a]||h.push({load:[r[a]],remove:[]});for(a=0;a<r.length;a++)null!=d[a]&&(d[a].length>1||d[a][0]!==r[a])&&h.push({load:[r[a]],remove:d[a]});for(a=0;a<e.length;a++)null!=l[a]&&(l[a].length>1||l[a][0]!==e[a])&&h.push({load:l[a],remove:[e[a]]});return h};var t=[!1],l=[null],o=[!1],d=[null];function u(e,r,n){for(var t=e;t>0;){var l=r.indexOf(t);if(l>=0)return l;t=n.getParentId(t)}return r.indexOf(t)}function a(e,r,n){for(var t=[r.remove[0]],l=[];1===t.length;){var o=t.pop();l.length=0;for(var d=0;d<r.load.length;d++){for(var u=r.load[d],a=n.getParentId(u);a!==o;)u=a,a=n.getParentId(u);var g=t.indexOf(u);g<0&&(g=t.length,t.push(u),l.push([])),l[g].push(r.load[d])}}r.load=t;for(d=0;d<t.length;d++)l[d].length>1?e.push({remove:[t[d]],load:l[d]}):t[d]=l[d][0]}r.sortFrontToBack=function(e,r,t){return e.sort((function(e,l){if(0===e.load.length&&0===l.load.length)return 0;if(0===e.load.length)return-1;if(0===l.load.length)return 1;if(0===e.remove.length&&0===l.remove.length){var o=t.getRenderCenter(e.load[0]),d=t.getRenderCenter(l.load[0]);return n.vec3.dot(o,r)-n.vec3.dot(d,r)}if(0===e.remove.length)return-1;if(0===l.remove.length)return 1;if(1===e.load.length&&1===l.load.length){o=t.getRenderCenter(e.load[0]),d=t.getRenderCenter(l.load[0]);return n.vec3.dot(o,r)-n.vec3.dot(d,r)}if(1===e.load.length)return-1;if(1===l.load.length)return 1;o=t.getRenderCenter(e.remove[0]),d=t.getRenderCenter(l.remove[0]);return n.vec3.dot(o,r)-n.vec3.dot(d,r)}))},r.splitWorkEntries=function(e,r,n){for(var t=0;t<e.length;++t){var l=e[t];l.load.length>r&&1===l.remove.length&&a(e,l,n)}},r.splitWorkEntry=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3"],(function(e,t){"use strict";const n=[!1],l=[null],o=[!1],r=[null];function d(e,t,n){let l=e;for(;l>0;){const e=t.indexOf(l);if(e>=0)return e;l=n.getParentId(l)}return t.indexOf(l)}function u(e,t,n){const l=[t.remove[0]],o=[];for(;1===l.length;){const e=l.pop();o.length=0;for(let r=0;r<t.load.length;r++){let d=t.load[r],u=n.getParentId(d);for(;u!==e;)d=u,u=n.getParentId(d);let h=l.indexOf(d);h<0&&(h=l.length,l.push(d),o.push([])),o[h].push(t.load[r])}}t.load=l;for(let t=0;t<l.length;t++)o[t].length>1?e.push({remove:[l[t]],load:o[t]}):l[t]=o[t][0]}e.nodeDiff=function(e,t,u){for(let e=0;e<t.length;e++)o[e]=!1,r[e]=null;for(let t=0;t<e.length;t++)n[t]=!1,l[t]=null;for(let n=0;n<t.length;n++){const r=d(t[n],e,u);r>=0&&(o[n]=!0,null!=l[r]?l[r].push(t[n]):l[r]=[t[n]])}for(let l=0;l<e.length;l++){const o=d(e[l],t,u);o>=0&&(n[l]=!0,null!=r[o]?r[o].push(e[l]):r[o]=[e[l]])}const h=[];for(let t=0;t<e.length;t++)null!=l[t]||n[t]||h.push({load:[],remove:[e[t]]});for(let e=0;e<t.length;e++)null!=r[e]||o[e]||h.push({load:[t[e]],remove:[]});for(let e=0;e<t.length;e++)null!=r[e]&&(r[e].length>1||r[e][0]!==t[e])&&h.push({load:[t[e]],remove:r[e]});for(let t=0;t<e.length;t++)null!=l[t]&&(l[t].length>1||l[t][0]!==e[t])&&h.push({load:l[t],remove:[e[t]]});return h},e.sortFrontToBack=function(e,n,l){return e.sort(((e,o)=>{if(0===e.load.length&&0===o.load.length)return 0;if(0===e.load.length)return-1;if(0===o.load.length)return 1;if(0===e.remove.length&&0===o.remove.length){const r=l.getRenderCenter(e.load[0]),d=l.getRenderCenter(o.load[0]);return t.dot(r,n)-t.dot(d,n)}if(0===e.remove.length)return-1;if(0===o.remove.length)return 1;if(1===e.load.length&&1===o.load.length){const r=l.getRenderCenter(e.load[0]),d=l.getRenderCenter(o.load[0]);return t.dot(r,n)-t.dot(d,n)}if(1===e.load.length)return-1;if(1===o.load.length)return 1;{const r=l.getRenderCenter(e.remove[0]),d=l.getRenderCenter(o.remove[0]);return t.dot(r,n)-t.dot(d,n)}}))},e.splitWorkEntries=function(e,t,n){for(let l=0;l<e.length;++l){const o=e[l];o.load.length>t&&1===o.remove.length&&u(e,o,n)}},e.splitWorkEntry=u,Object.defineProperty(e,"__esModule",{value:!0})}));

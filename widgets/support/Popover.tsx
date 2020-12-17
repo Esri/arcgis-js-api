@@ -8,21 +8,21 @@
  */
 
 // esri.core
-import { byId, remove } from "esri/../core/domUtils";
-import { isNone, isSome, Maybe } from "esri/../core/maybe";
-import { init } from "esri/../core/watchUtils";
+import { byId, remove } from "esri/core/domUtils";
+import { isNone, isSome, Maybe } from "esri/core/maybe";
+import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/../core/accessorSupport/decorators";
+import { property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.libs.maquette
-import { VNode as MaquetteVNode } from "esri/../libs/maquette/index";
+import { VNode as MaquetteVNode } from "esri/libs/maquette/index";
 
 // esri.libs.popper
-import { createPopper } from "esri/../libs/popper/index";
+import { createPopper } from "esri/libs/popper/index";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
@@ -363,4 +363,4 @@ class Popover<W extends Widget = Widget> extends Widget {
   }
 }
 
-export = Popover;
+export default Popover;

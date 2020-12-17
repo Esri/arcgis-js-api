@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/lang","../core/accessorSupport/decorators","./PointCloudRenderer","./support/LegendOptions","./support/pointCloud/ColorUniqueValueInfo"],(function(e,o,r,n,t,i,l,p){"use strict";return function(e){function o(o){var r=e.call(this,o)||this;return r.type="point-cloud-unique-value",r.field=null,r.fieldTransformType=null,r.colorUniqueValueInfos=null,r.legendOptions=null,r}var s;return r.__extends(o,e),s=o,o.prototype.clone=function(){return new s(r.__assign(r.__assign({},this.cloneProperties()),{field:n.clone(this.field),fieldTransformType:n.clone(this.fieldTransformType),colorUniqueValueInfos:n.clone(this.colorUniqueValueInfos),legendOptions:n.clone(this.legendOptions)}))},r.__decorate([t.enumeration({pointCloudUniqueValueRenderer:"point-cloud-unique-value"})],o.prototype,"type",void 0),r.__decorate([t.property({json:{write:!0},type:String})],o.prototype,"field",void 0),r.__decorate([t.property({type:i.fieldTransformTypeKebabDict.apiValues,json:{type:i.fieldTransformTypeKebabDict.jsonValues,read:i.fieldTransformTypeKebabDict.read,write:i.fieldTransformTypeKebabDict.write}})],o.prototype,"fieldTransformType",void 0),r.__decorate([t.property({type:[p.default],json:{write:!0}})],o.prototype,"colorUniqueValueInfos",void 0),r.__decorate([t.property({type:l.default,json:{write:!0}})],o.prototype,"legendOptions",void 0),o=s=r.__decorate([t.subclass("esri.renderers.PointCloudUniqueValueRenderer")],o)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./PointCloudRenderer","./support/LegendOptions","./support/pointCloud/ColorUniqueValueInfo"],(function(e,o,r,t,n,i,l,s,p,u,c,a,d,f,y){"use strict";var T;let _=T=function(o){function r(e){var r;return(r=o.call(this,e)||this).type="point-cloud-unique-value",r.field=null,r.fieldTransformType=null,r.colorUniqueValueInfos=null,r.legendOptions=null,r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new T({...this.cloneProperties(),field:t.clone(this.field),fieldTransformType:t.clone(this.fieldTransformType),colorUniqueValueInfos:t.clone(this.colorUniqueValueInfos),legendOptions:t.clone(this.legendOptions)})},r}(d);return o.__decorate([s.enumeration({pointCloudUniqueValueRenderer:"point-cloud-unique-value"})],_.prototype,"type",void 0),o.__decorate([l.property({json:{write:!0},type:String})],_.prototype,"field",void 0),o.__decorate([l.property({type:d.fieldTransformTypeKebabDict.apiValues,json:{type:d.fieldTransformTypeKebabDict.jsonValues,read:d.fieldTransformTypeKebabDict.read,write:d.fieldTransformTypeKebabDict.write}})],_.prototype,"fieldTransformType",void 0),o.__decorate([l.property({type:[y.default],json:{write:!0}})],_.prototype,"colorUniqueValueInfos",void 0),o.__decorate([l.property({type:f.default,json:{write:!0}})],_.prototype,"legendOptions",void 0),_=T=o.__decorate([p.subclass("esri.renderers.PointCloudUniqueValueRenderer")],_),_}));

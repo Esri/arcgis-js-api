@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/screenUtils","../../state/controllers/global/ZoomStepController","../../state/controllers/local/ZoomStepController","../../../input/InputHandler"],(function(e,t,o,r,n,l,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.MouseWheelZoom=void 0;var a=function(e){function t(t,o){var r=e.call(this,!0)||this;return r.view=t,r.registerIncoming("mouse-wheel",o,(function(e){return r.handleMouseWheel(e)})),r}return o.__extends(t,e),t.prototype.handleMouseWheel=function(e){if(this.view.navigation.mouseWheelZoomEnabled){var t=e.data;this.cameraController&&this.cameraController.active||(this.cameraController=this.view.state.isGlobal?new n.ZoomStepController({view:this.view,mode:"interaction"}):new l.ZoomStepController({view:this.view,mode:"interaction"}),this.view.state.switchCameraController(this.cameraController)),this.cameraController.zoomStep(-1/60*t.deltaY,r.createScreenPointArray(t.x,t.y)),e.preventDefault(),e.stopPropagation()}},t}(i.InputHandler);t.MouseWheelZoom=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../state/controllers/global/ZoomStepController","../../state/controllers/local/ZoomStepController"],(function(e,t,o,r,l,n){"use strict";let i=function(e){function r(t,o){var r;return(r=e.call(this,!0)||this).view=t,r.registerIncoming("mouse-wheel",o,(e=>r.handleMouseWheel(e))),r}return t._inheritsLoose(r,e),r.prototype.handleMouseWheel=function(e){if(!this.view.navigation.mouseWheelZoomEnabled)return;const t=e.data;this.cameraController&&this.cameraController.active||(this.cameraController=this.view.state.isGlobal?new l.ZoomStepController({view:this.view,mode:"interaction"}):new n.ZoomStepController({view:this.view,mode:"interaction"}),this.view.state.switchCameraController(this.cameraController)),this.cameraController.zoomStep(-1/60*t.deltaY,o.createScreenPointArray(t.x,t.y)),e.preventDefault(),e.stopPropagation()},r}(r.InputHandler);e.MouseWheelZoom=i,Object.defineProperty(e,"__esModule",{value:!0})}));

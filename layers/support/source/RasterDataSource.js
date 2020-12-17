@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,r,t,o,a){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.RasterDataSource=void 0;var s=function(e){function r(r){var t=e.call(this,r)||this;return t.type="raster",t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){var e=this.workspaceId,r=this.dataSourceName;return new o({workspaceId:e,dataSourceName:r})},t.__decorate([a.enumeration({raster:"raster"})],r.prototype,"type",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"dataSourceName",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"workspaceId",void 0),r=o=t.__decorate([a.subclass("esri.layers.support.source.RasterDataSource")],r)}(o.JSONSupport);r.RasterDataSource=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport"],(function(e,r,o,t,a,s,c,p,u,n,i,d,S){"use strict";var l;e.RasterDataSource=l=function(e){function o(r){var o;return(o=e.call(this,r)||this).type="raster",o}return r._inheritsLoose(o,e),o.prototype.clone=function(){const{workspaceId:e,dataSourceName:r}=this;return new l({workspaceId:e,dataSourceName:r})},o}(S.JSONSupport),o.__decorate([p.enumeration({raster:"raster"})],e.RasterDataSource.prototype,"type",void 0),o.__decorate([c.property({type:String,json:{write:!0}})],e.RasterDataSource.prototype,"dataSourceName",void 0),o.__decorate([c.property({type:String,json:{write:!0}})],e.RasterDataSource.prototype,"workspaceId",void 0),e.RasterDataSource=l=o.__decorate([u.subclass("esri.layers.support.source.RasterDataSource")],e.RasterDataSource),Object.defineProperty(e,"__esModule",{value:!0})}));

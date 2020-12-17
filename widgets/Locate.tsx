@@ -55,7 +55,7 @@
  */
 
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
@@ -64,14 +64,14 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Locate
-import LocateViewModel = require("esri/widgets/Locate/LocateViewModel");
+import LocateViewModel from "esri/widgets/Locate/LocateViewModel";
 
 // esri.widgets.Locate.t9n
 import LocateMessages from "esri/widgets/Locate/t9n/Locate";
@@ -465,4 +465,4 @@ class Locate extends Widget {
   }
 }
 
-export = Locate;
+export default Locate;

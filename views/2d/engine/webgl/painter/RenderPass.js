@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","@dojo/framework/shim/iterator","../../../../../core/has","../../../../../core/maybe","../enums"],(function(r,e,t,a,s,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(){function r(r,e){this.brushes=r,this.name=e.name,this.drawPhase=e.drawPhase||i.WGLDrawPhase.MAP,this._targetFn=e.target,this.effects=e.effects||[],this.has=e.has}return r.prototype.render=function(r){var e=r.context,t=r.profiler,s=this._targetFn(),i=this.drawPhase&r.drawPhase;if(t.recordPassStart(this.name),i&&(!this.has||a(this.has))){this._doRender(r,s),t.recordPassEnd();for(var n=0,o=this.effects;n<o.length;n++){var h=o[n];if(h.enable()){var d=h.apply;t.recordPassStart(this.name+"."+d.name),t.recordBrushStart(d.name);var f=h.args&&h.args(),u=e.getViewport(),c=u.x,p=u.y,l=u.width,m=u.height,b=e.getBoundFramebufferObject();d.bind(r,f),this._doRender(r,s,d.defines),d.draw(r,f),d.unbind(r,f),e.bindFramebuffer(b),e.setViewport(c,p,l,m),t.recordBrushEnd(),t.recordPassEnd()}}}},r.prototype._doRender=function(r,e,a){if(!s.isNone(e))if(t.isArrayLike(e))for(var i=0,n=e;i<n.length;i++){var o=n[i];if(o.visible)for(var h=0,d=this.brushes;h<d.length;h++){var f=d[h];r.profiler.recordBrushStart(f.name),f.prepareState(r,o,a),f.draw(r,o,a),r.profiler.recordBrushEnd()}}else for(var u=0,c=this.brushes;u<c.length;u++){f=c[u];r.profiler.recordBrushStart(f.name),f.prepareState(r,e,a),f.draw(r,e,a),r.profiler.recordBrushEnd()}},r}();e.default=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../../core/has","../../../../../core/maybe","../../../../../core/arrayUtils","../enums"],(function(e,r,t,s){"use strict";return function(){function a(e,r){var t;this.brushes=e,this.name=r.name,this.drawPhase=r.drawPhase||s.WGLDrawPhase.MAP,this._targetFn=r.target,this.effects=r.effects||[],this.enableDefaultDraw=null!=(t=r.enableDefaultDraw)?t:()=>!0,this.has=r.has}var n=a.prototype;return n.render=function(r){const{context:t,profiler:s}=r,a=this._targetFn(),n=this.drawPhase&r.drawPhase;if(s.recordPassStart(this.name),n&&(!this.has||e(this.has))){this.enableDefaultDraw()&&this._doRender(r,a),s.recordPassEnd();for(const e of this.effects){if(!e.enable())continue;const n=e.apply;s.recordPassStart(this.name+"."+n.name),s.recordBrushStart(n.name);const i=e.args&&e.args(),{x:o,y:h,width:f,height:d}=t.getViewport(),c=t.getBoundFramebufferObject();n.bind(r,i),this._doRender(r,a,n.defines),n.draw(r,i),n.unbind(r,i),t.bindFramebuffer(c),t.setViewport(o,h,f,d),s.recordBrushEnd(),s.recordPassEnd()}}},n._doRender=function(e,s,a){if(!r.isNone(s))if(t.isArrayLike(s)){for(const r of s)if(r.visible)for(const t of this.brushes)e.profiler.recordBrushStart(t.name),t.prepareState(e,r,a),t.draw(e,r,a),e.profiler.recordBrushEnd()}else for(const r of this.brushes)e.profiler.recordBrushStart(r.name),r.prepareState(e,s,a),r.draw(e,s,a),e.profiler.recordBrushEnd()},a}()}));

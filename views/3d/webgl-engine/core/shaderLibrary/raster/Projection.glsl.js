@@ -1,25 +1,35 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces"],(function(r,e){"use strict";r.Projection=function(r){r.fragment.uniforms.add("u_transformGrid","sampler2D"),r.fragment.uniforms.add("u_transformSpacing","vec2"),r.fragment.uniforms.add("u_transformGridSize","vec2"),r.fragment.uniforms.add("u_targetImageSize","vec2"),r.fragment.code.add(e.glsl`
+    vec2 projectPixelLocation(vec2 coords) {
+      // pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]
+      vec2 index_image = floor(coords * u_targetImageSize);
 
-define(["require","exports","tslib","../../shaderModules/interfaces"],(function(r,o,n,e){"use strict";var t;Object.defineProperty(o,"__esModule",{value:!0}),o.Projection=void 0,o.Projection=function(r){r.fragment.uniforms.add("u_transformGrid","sampler2D"),r.fragment.uniforms.add("u_transformSpacing","vec2"),r.fragment.uniforms.add("u_transformGridSize","vec2"),r.fragment.uniforms.add("u_targetImageSize","vec2"),r.fragment.code.add(e.glsl(t||(t=n.__makeTemplateObject(["\n    vec2 projectPixelLocation(vec2 coords) {\n      // pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]\n      vec2 index_image = floor(coords * u_targetImageSize);\n\n      // pixel's corresponding cell index in transform grid\n      // each transform cell corresponds to 4 pixels: 6 coefficients from lowerleft triangle followed by 6 coefficients from upperright triangle\n      vec2 oneTransformPixel = vec2(0.25 / u_transformGridSize.s, 1.0 / u_transformGridSize.t);\n      vec2 index_transform = floor(index_image / u_transformSpacing) / u_transformGridSize;\n\n      // correspoding position in transform grid cell, cell center coordinates\n      vec2 pos = fract((index_image + vec2(0.5, 0.5)) / u_transformSpacing);\n      vec2 srcLocation;\n      // pixel's corresponding transform cell location, center cell coordinates\n      vec2 transform_location = index_transform + oneTransformPixel * 0.5;\n\n      // use lower triangle or upper triangle\n      if (pos.s <= pos.t) {\n        vec4 ll_abc = texture2D(u_transformGrid, vec2(transform_location.s, transform_location.t));\n        vec4 ll_def = texture2D(u_transformGrid, vec2(transform_location.s + oneTransformPixel.s, transform_location.t));\n        srcLocation.s = dot(ll_abc.rgb, vec3(pos, 1.0));\n        srcLocation.t = dot(ll_def.rgb, vec3(pos, 1.0));\n      } else {\n        vec4 ur_abc = texture2D(u_transformGrid, vec2(transform_location.s + 2.0 * oneTransformPixel.s, transform_location.t));\n        vec4 ur_def = texture2D(u_transformGrid, vec2(transform_location.s + 3.0 * oneTransformPixel.s, transform_location.t));\n        srcLocation.s = dot(ur_abc.rgb, vec3(pos, 1.0));\n        srcLocation.t = dot(ur_def.rgb, vec3(pos, 1.0));\n      }\n      return srcLocation;;\n    }\n  "],["\n    vec2 projectPixelLocation(vec2 coords) {\n      // pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]\n      vec2 index_image = floor(coords * u_targetImageSize);\n\n      // pixel's corresponding cell index in transform grid\n      // each transform cell corresponds to 4 pixels: 6 coefficients from lowerleft triangle followed by 6 coefficients from upperright triangle\n      vec2 oneTransformPixel = vec2(0.25 / u_transformGridSize.s, 1.0 / u_transformGridSize.t);\n      vec2 index_transform = floor(index_image / u_transformSpacing) / u_transformGridSize;\n\n      // correspoding position in transform grid cell, cell center coordinates\n      vec2 pos = fract((index_image + vec2(0.5, 0.5)) / u_transformSpacing);\n      vec2 srcLocation;\n      // pixel's corresponding transform cell location, center cell coordinates\n      vec2 transform_location = index_transform + oneTransformPixel * 0.5;\n\n      // use lower triangle or upper triangle\n      if (pos.s <= pos.t) {\n        vec4 ll_abc = texture2D(u_transformGrid, vec2(transform_location.s, transform_location.t));\n        vec4 ll_def = texture2D(u_transformGrid, vec2(transform_location.s + oneTransformPixel.s, transform_location.t));\n        srcLocation.s = dot(ll_abc.rgb, vec3(pos, 1.0));\n        srcLocation.t = dot(ll_def.rgb, vec3(pos, 1.0));\n      } else {\n        vec4 ur_abc = texture2D(u_transformGrid, vec2(transform_location.s + 2.0 * oneTransformPixel.s, transform_location.t));\n        vec4 ur_def = texture2D(u_transformGrid, vec2(transform_location.s + 3.0 * oneTransformPixel.s, transform_location.t));\n        srcLocation.s = dot(ur_abc.rgb, vec3(pos, 1.0));\n        srcLocation.t = dot(ur_def.rgb, vec3(pos, 1.0));\n      }\n      return srcLocation;;\n    }\n  "]))))}}));
+      // pixel's corresponding cell index in transform grid
+      // each transform cell corresponds to 4 pixels: 6 coefficients from lowerleft triangle followed by 6 coefficients from upperright triangle
+      vec2 oneTransformPixel = vec2(0.25 / u_transformGridSize.s, 1.0 / u_transformGridSize.t);
+      vec2 index_transform = floor(index_image / u_transformSpacing) / u_transformGridSize;
+
+      // correspoding position in transform grid cell, cell center coordinates
+      vec2 pos = fract((index_image + vec2(0.5, 0.5)) / u_transformSpacing);
+      vec2 srcLocation;
+      // pixel's corresponding transform cell location, center cell coordinates
+      vec2 transform_location = index_transform + oneTransformPixel * 0.5;
+
+      // use lower triangle or upper triangle
+      if (pos.s <= pos.t) {
+        vec4 ll_abc = texture2D(u_transformGrid, vec2(transform_location.s, transform_location.t));
+        vec4 ll_def = texture2D(u_transformGrid, vec2(transform_location.s + oneTransformPixel.s, transform_location.t));
+        srcLocation.s = dot(ll_abc.rgb, vec3(pos, 1.0));
+        srcLocation.t = dot(ll_def.rgb, vec3(pos, 1.0));
+      } else {
+        vec4 ur_abc = texture2D(u_transformGrid, vec2(transform_location.s + 2.0 * oneTransformPixel.s, transform_location.t));
+        vec4 ur_def = texture2D(u_transformGrid, vec2(transform_location.s + 3.0 * oneTransformPixel.s, transform_location.t));
+        srcLocation.s = dot(ur_abc.rgb, vec3(pos, 1.0));
+        srcLocation.t = dot(ur_def.rgb, vec3(pos, 1.0));
+      }
+      return srcLocation;;
+    }
+  `)},Object.defineProperty(r,"__esModule",{value:!0})}));

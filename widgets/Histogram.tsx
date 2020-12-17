@@ -56,14 +56,15 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import { Bin, HistogramResult } from "esri/renderers/smartMapping/statistics/interfaces";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Histogram
-import HistogramViewModel = require("esri/widgets/Histogram/HistogramViewModel");
+import HistogramViewModel from "esri/widgets/Histogram/HistogramViewModel";
 import {
   BarCreatedFunction,
   DataLineInfos,
   DataLineCreatedFunction,
+  DataLineUpdatedFunction,
   State
 } from "esri/widgets/Histogram/interfaces";
 
@@ -108,6 +109,7 @@ type HistogramParams = Partial<
     | "bins"
     | "dataLines"
     | "dataLineCreatedFunction"
+    | "dataLineUpdatedFunction"
     | "labelFormatFunction"
     | "layout"
     | "max"
@@ -374,6 +376,28 @@ class Histogram extends Widget {
   @property()
   @renderable()
   dataLineCreatedFunction: DataLineCreatedFunction = null;
+
+  //----------------------------------
+  //  dataLineUpdatedFunction
+  //----------------------------------
+
+  /**
+   * Function that fires each time a data line is updated.
+   * You can use this to update the style of individual [dataLines](#dataLines) on the data axis.
+   *
+   * @name dataLineUpdatedFunction
+   * @instance
+   * @type {module:esri/widgets/Histogram~DataLineUpdatedFunction}
+   * @ignore
+   *
+   * @example
+   * histogram.dataLineUpdatedFunction = function (lineElement, labelElement, index) {
+   *   lineElement.setAttribute("y2", "25%");
+   * };
+   */
+  @property()
+  @renderable()
+  dataLineUpdatedFunction: DataLineUpdatedFunction = null;
 
   //----------------------------------
   //  label
@@ -751,6 +775,7 @@ class Histogram extends Widget {
     return (
       <g
         afterCreate={this._afterLinesSubgroupCreate}
+        afterUpdate={this._afterLinesSubgroupUpdate}
         bind={this}
         class={this.classes(CSS.dataLinesSubgroup)}
       >
@@ -775,6 +800,7 @@ class Histogram extends Widget {
     return (
       <g
         afterCreate={this._afterLinesSubgroupCreate}
+        afterUpdate={this._afterLinesSubgroupUpdate}
         bind={this}
         class={this.classes(CSS.dataLinesSubgroup)}
         data-index={index}
@@ -851,6 +877,21 @@ class Histogram extends Widget {
     }
   }
 
+  private _afterLinesSubgroupUpdate(element: SVGElement): void {
+    if (this.dataLineUpdatedFunction) {
+      const index = element.dataset
+        ? parseInt(element.dataset.index, 10)
+        : element.getAttribute("data-index")
+        ? parseInt(element.getAttribute("data-index"), 10)
+        : null;
+
+      const lineElement = element.childNodes[0] as SVGElement;
+      const labelElement = element.childNodes[1] ? (element.childNodes[1] as SVGElement) : null;
+
+      this.dataLineUpdatedFunction(lineElement, labelElement, !isNaN(index) ? index : null);
+    }
+  }
+
   private _getContainerDimensions(): [number, number] {
     const { _containerNode } = this;
 
@@ -876,12 +917,14 @@ class Histogram extends Widget {
       viewModel: { range }
     } = this;
 
-    // Get position of line, using shifted value as percent of total range
+    // Get position of line, using relative value as percent of total range
     // (e.g. value 10 of 0-100 or value 0 of -10 to 90 should be treated the same)
     // Use ratio to get relative position in pixels
-    const asPercent = (value - min) / range;
+    // Additionally, rendering at '0' hides the line unintentionally
+    // Adjust to '1' for edge case, though the label may still be hidden
+    const percentOfRange = Math.round(((value - min) / range) * 100) / 100;
     const [height, width] = this._getContainerDimensions();
-    const [x, y] = [asPercent * width, height - asPercent * height];
+    const [x, y] = [percentOfRange * width || 1, height - percentOfRange * height || 1];
 
     // Final position relies on layout
     return layout === "vertical" ? [0, "100%", y, y] : [x, x, "100%", 0];
@@ -895,12 +938,14 @@ class Histogram extends Widget {
       viewModel: { range }
     } = this;
 
-    const asPercent = (value - min) / range;
+    const percentOfRange = Math.round(((value - min) / range) * 100) / 100;
     const [height, width] = this._getContainerDimensions();
 
     // Final position relies on layout
-    return layout === "vertical" ? [width, height - asPercent * height] : [0, asPercent * width];
+    return layout === "vertical"
+      ? [width, height - percentOfRange * height]
+      : [0, percentOfRange * width];
   }
 }
 
-export = Histogram;
+export default Histogram;

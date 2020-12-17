@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Error","../../core/maybe","../../core/promiseUtils","../../core/accessorSupport/decorators","../../geometry/Point","../../layers/support/commonProperties","../../tasks/support/Query","./support/popupUtils"],(function(e,t,r,o,i,p,s,a,n,u,c){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ImageryLayerView=void 0,t.ImageryLayerView=function(e){return function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.view=null,t}return r.__extends(t,e),t.prototype.fetchPopupFeatures=function(e,t){return r.__awaiter(this,void 0,void 0,(function(){var s,n,l,y,d,m,w,h,f,v,_;return r.__generator(this,(function(r){switch(r.label){case 0:if(s=this.layer,!e)return[2,p.reject(new o("imagerylayerview:fetchPopupFeatures","Nothing to fetch without area",{layer:s}))];if(n=s.popupEnabled,l=c.getFetchPopupTemplate(s,t),!n||!i.isSome(l))throw new o("imagerylayerview:fetchPopupFeatures","Missing required popupTemplate or popupEnabled",{popupEnabled:n,popupTemplate:l});return[4,l.getRequiredFields()];case 1:return y=r.sent(),(d=new u).geometry=e,d.outFields=y,d.outSpatialReference=e.spatialReference,m=this.view.resolution,w="2d"===this.view.type?new a(m,m,this.view.spatialReference):new a(.5*m,.5*m,this.view.spatialReference),h=l.layerOptions||{returnTopmostRaster:!0,showNoDataRecords:!1},f=h.returnTopmostRaster,v=h.showNoDataRecords,_={returnDomainValues:!0,returnTopmostRaster:f,pixelSize:w,showNoDataRecords:v},[2,s.queryVisibleRasters(d,_).then((function(e){return e}))]}}))}))},t.prototype.canResume=function(){var t;return!!e.prototype.canResume.call(this)&&(null===(t=this.timeExtent)||void 0===t?!0:!t.isEmpty)},r.__decorate([s.property()],t.prototype,"layer",void 0),r.__decorate([s.property({dependsOn:["timeExtent"]})],t.prototype,"suspended",void 0),r.__decorate([s.property(n.combinedViewLayerTimeExtentProperty)],t.prototype,"timeExtent",void 0),r.__decorate([s.property()],t.prototype,"view",void 0),t=r.__decorate([s.subclass("esri.views.layers.ImageryLayerView")],t)}(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/Error","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../geometry/Point","../../layers/support/commonProperties","../../tasks/support/Query","./support/popupUtils"],(function(e,r,t,o,s,p,i,a,n,u,c,l,y,d,m,h,w,f){"use strict";e.ImageryLayerView=e=>{let o=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).view=null,r}r._inheritsLoose(t,e);var o=t.prototype;return o.fetchPopupFeatures=async function(e,r){const{layer:t}=this;if(!e)return d.reject(new u("imagerylayerview:fetchPopupFeatures","Nothing to fetch without area",{layer:t}));const{popupEnabled:o}=t,p=f.getFetchPopupTemplate(t,r);if(!o||!s.isSome(p))throw new u("imagerylayerview:fetchPopupFeatures","Missing required popupTemplate or popupEnabled",{popupEnabled:o,popupTemplate:p});const i=await p.getRequiredFields(),a=new w;a.geometry=e,a.outFields=i,a.outSpatialReference=e.spatialReference;const n=this.view.resolution,c="2d"===this.view.type?new m(n,n,this.view.spatialReference):new m(.5*n,.5*n,this.view.spatialReference),{returnTopmostRaster:l,showNoDataRecords:y}=p.layerOptions||{returnTopmostRaster:!0,showNoDataRecords:!1},h={returnDomainValues:!0,returnTopmostRaster:l,pixelSize:c,showNoDataRecords:y};return t.queryVisibleRasters(a,h).then((e=>e))},o.canResume=function(){var r;return!!e.prototype.canResume.call(this)&&(null==(r=this.timeExtent)||!r.isEmpty)},t}(e);return t.__decorate([a.property()],o.prototype,"layer",void 0),t.__decorate([a.property({dependsOn:["timeExtent"]})],o.prototype,"suspended",void 0),t.__decorate([a.property(h.combinedViewLayerTimeExtentProperty)],o.prototype,"timeExtent",void 0),t.__decorate([a.property()],o.prototype,"view",void 0),o=t.__decorate([n.subclass("esri.views.layers.ImageryLayerView")],o),o},Object.defineProperty(e,"__esModule",{value:!0})}));

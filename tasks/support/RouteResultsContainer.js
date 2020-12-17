@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Graphic","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/decorators/reader","./FeatureSet","./NAMessage","./RouteResult"],(function(r,e,o,t,p,a,i,s,n,u){"use strict";function l(r){return r&&s.fromJSON(r).features.map((function(r){return r}))}return function(r){function e(e){var o=r.call(this,e)||this;return o.barriers=null,o.messages=null,o.pointBarriers=null,o.polylineBarriers=null,o.polygonBarriers=null,o.routeResults=null,o}return o.__extends(e,r),e.prototype.readPointBarriers=function(r,e){return l(e.barriers||e.pointBarriers)},e.prototype.readPolylineBarriers=function(r){return l(r)},e.prototype.readPolygonBarriers=function(r){return l(r)},o.__decorate([a.property({aliasOf:"pointBarriers"})],e.prototype,"barriers",void 0),o.__decorate([a.property({type:[n]})],e.prototype,"messages",void 0),o.__decorate([a.property({type:[t]})],e.prototype,"pointBarriers",void 0),o.__decorate([i.reader("pointBarriers",["barriers","pointBarriers"])],e.prototype,"readPointBarriers",null),o.__decorate([a.property({type:[t]})],e.prototype,"polylineBarriers",void 0),o.__decorate([i.reader("polylineBarriers")],e.prototype,"readPolylineBarriers",null),o.__decorate([a.property({type:[t]})],e.prototype,"polygonBarriers",void 0),o.__decorate([i.reader("polygonBarriers")],e.prototype,"readPolygonBarriers",null),o.__decorate([a.property({type:[u]})],e.prototype,"routeResults",void 0),e=o.__decorate([a.subclass("esri.tasks.support.RouteResultsContainer")],e)}(p.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Graphic","./FeatureSet","./NAMessage","./RouteResult"],(function(r,e,o,t,s,p,a,i,n,u,l,c,y,d,_,B){"use strict";function f(r){return r&&d.fromJSON(r).features.map((r=>r))}let g=function(e){function o(r){var o;return(o=e.call(this,r)||this).barriers=null,o.messages=null,o.pointBarriers=null,o.polylineBarriers=null,o.polygonBarriers=null,o.routeResults=null,o}r._inheritsLoose(o,e);var t=o.prototype;return t.readPointBarriers=function(r,e){return f(e.barriers||e.pointBarriers)},t.readPolylineBarriers=function(r){return f(r)},t.readPolygonBarriers=function(r){return f(r)},o}(c.JSONSupport);return e.__decorate([p.property({aliasOf:"pointBarriers"})],g.prototype,"barriers",void 0),e.__decorate([p.property({type:[_]})],g.prototype,"messages",void 0),e.__decorate([p.property({type:[y]})],g.prototype,"pointBarriers",void 0),e.__decorate([a.reader("pointBarriers",["barriers","pointBarriers"])],g.prototype,"readPointBarriers",null),e.__decorate([p.property({type:[y]})],g.prototype,"polylineBarriers",void 0),e.__decorate([a.reader("polylineBarriers")],g.prototype,"readPolylineBarriers",null),e.__decorate([p.property({type:[y]})],g.prototype,"polygonBarriers",void 0),e.__decorate([a.reader("polygonBarriers")],g.prototype,"readPolygonBarriers",null),e.__decorate([p.property({type:[B]})],g.prototype,"routeResults",void 0),g=e.__decorate([i.subclass("esri.tasks.support.RouteResultsContainer")],g),g}));

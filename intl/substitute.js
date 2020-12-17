@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../core/Logger","../core/object","../core/string","./date","./number"],(function(e,t,r,n,a,i,u){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.substitute=void 0;var o=r.getLogger("esri.intl");function s(e){switch(typeof e){case"string":return e;case"number":return u.formatNumber(e);case"boolean":return""+e;default:return e instanceof Date?i.formatDate(e):""}}t.substitute=function(e,t,r){void 0===r&&(r={});var f=r.format,c=void 0===f?{}:f;return a.replace(e,(function(e){return function(e,t,r){var a,f,c=e.indexOf(":");-1===c?a=e.trim():(a=e.slice(0,c).trim(),f=e.slice(c+1).trim());if(!a)return"";var m=n.getDeepValue(a,t);if(null==m)return"";var d=r[f]||r[a];if(d)return function(e,t){switch(t.type){case"date":return i.formatDate(e,t.intlOptions);case"number":return u.formatNumber(e,t.intlOptions);default:return o.warn("missing format descriptor for key {key}"),s(e)}}(m,d);if(f)return function(e,t){switch(t.toLowerCase()){case"dateformat":return i.formatDate(e);case"numberformat":return u.formatNumber(e);default:return o.warn("inline format is unsupported since 4.12: "+t),/^(dateformat|datestring)/i.test(t)?i.formatDate(e):/^numberformat/i.test(t)?u.formatNumber(e):s(e)}}(m,f);return s(m)}(e,t,c)}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../core/object","../core/string","../core/Logger","./date","./number"],(function(t,e,r,n,o,a){"use strict";const u=n.getLogger("esri.intl");function i(t){switch(typeof t){case"string":return t;case"number":return a.formatNumber(t);case"boolean":return""+t;default:return t instanceof Date?o.formatDate(t):""}}t.substitute=function(t,n,s={}){const{format:f={}}=s;return r.replace(t,(t=>function(t,r,n){let s,f;const c=t.indexOf(":");-1===c?s=t.trim():(s=t.slice(0,c).trim(),f=t.slice(c+1).trim());if(!s)return"";const m=e.getDeepValue(s,r);if(null==m)return"";const l=n[f]||n[s];if(l)return function(t,e){switch(e.type){case"date":return o.formatDate(t,e.intlOptions);case"number":return a.formatNumber(t,e.intlOptions);default:return u.warn("missing format descriptor for key {key}"),i(t)}}(m,l);if(f)return function(t,e){switch(e.toLowerCase()){case"dateformat":return o.formatDate(t);case"numberformat":return a.formatNumber(t);default:return u.warn(`inline format is unsupported since 4.12: ${e}`),/^(dateformat|datestring)/i.test(e)?o.formatDate(t):/^numberformat/i.test(e)?a.formatNumber(t):i(t)}}(m,f);return i(m)}(t,n,f)))},Object.defineProperty(t,"__esModule",{value:!0})}));

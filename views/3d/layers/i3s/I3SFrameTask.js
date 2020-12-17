@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/arrayUtils","../../../support/Scheduler"],(function(t,e,n,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.addTask=void 0;var o=function(){function t(t){var e=this;this.referenceCount=0,this.callbacks=[],this.runIndex=0,this.handle=t.registerTask(r.Task.I3S_CONTROLLER,(function(t){return e.update(t)}),(function(){return e.needsUpdate()}))}return t.prototype.destroy=function(){this.handle&&(this.handle.remove(),this.handle=null)},t.prototype.needsUpdate=function(){for(var t=0,e=this.callbacks;t<e.length;t++){if(e[t].needsUpdate())return!0}return!1},t.prototype.update=function(t){this.sort();for(var e=this.callbacks,n={numIndexLoading:0,numNodesLoading:0},r=0;r<e.length&&!t.done;++r)e[r].priority=e[r].update(t,n),this.runIndex=r},t.prototype.sort=function(){for(var t=this.callbacks,e=t.length,n=this.runIndex;n>0;n--){for(var r=t[n-1],o=n;o<t.length&&r.priority<=t[o].priority&&(o!==e||r.priority<t[o].priority);)t[o-1]=t[o],o++;t[o-1]=r,e=o-1}this.runIndex=0},t.prototype.add=function(t){this.sort(),t.priority=1/0,this.callbacks.unshift(t)},t.prototype.remove=function(t){n.removeUnordered(this.callbacks,t),this.runIndex=this.callbacks.length,this.sort()},t}(),i=new Map;e.addTask=function(t,e){var n=i.get(t);return null==n&&(n=new o(t),i.set(t,n)),n.add(e),{remove:function(){null!=n&&(n.remove(e),n.callbacks.length>0?n=null:(i.delete(t),n.destroy(),n=null))}}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/arrayUtils","../../../support/Scheduler"],(function(t,e,n){"use strict";let r=function(){function t(t){this.referenceCount=0,this.callbacks=[],this.runIndex=0,this.handle=t.registerTask(n.Task.I3S_CONTROLLER,(t=>this.update(t)),(()=>this.needsUpdate()))}var r=t.prototype;return r.destroy=function(){this.handle&&(this.handle.remove(),this.handle=null)},r.needsUpdate=function(){for(const t of this.callbacks)if(t.needsUpdate())return!0;return!1},r.update=function(t){this.sort();const e=this.callbacks,n={numIndexLoading:0,numNodesLoading:0};for(let r=0;r<e.length&&!t.done;++r)e[r].priority=e[r].update(t,n),this.runIndex=r},r.sort=function(){const t=this.callbacks;let e=t.length;for(let n=this.runIndex;n>0;n--){const r=t[n-1];let s=n;for(;s<t.length&&r.priority<=t[s].priority&&(s!==e||r.priority<t[s].priority);)t[s-1]=t[s],s++;t[s-1]=r,e=s-1}this.runIndex=0},r.add=function(t){this.sort(),t.priority=1/0,this.callbacks.unshift(t)},r.remove=function(t){e.removeUnordered(this.callbacks,t),this.runIndex=this.callbacks.length,this.sort()},t}();const s=new Map;t.addTask=function(t,e){let n=s.get(t);return null==n&&(n=new r(t),s.set(t,n)),n.add(e),{remove:()=>{if(null==n)return;n.remove(e);n.callbacks.length>0||(s.delete(t),n.destroy()),n=null}}},Object.defineProperty(t,"__esModule",{value:!0})}));

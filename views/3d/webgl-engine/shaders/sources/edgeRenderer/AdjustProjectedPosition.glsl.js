@@ -1,25 +1,53 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl"],(function(e,o,t,r){"use strict";e.AdjustProjectedPosition=function(e,a){e.vertex.include(r.IsNaN),e.include(t.VertexPosition,a);const s=e.vertex;s.uniforms.add("uDepthBias","vec2"),s.uniforms.add("uViewportDimInv","vec2"),a.legacy?(s.uniforms.add("uView","mat4"),s.uniforms.add("uProj","mat4")):s.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),a.legacy?s.code.add(o.glsl`
+      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+        float offsetXY = uDepthBias.x;
+        float offsetZ  = uDepthBias.y;
 
-define(["require","exports","tslib","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/interfaces"],(function(e,o,t,r,a,n){"use strict";var s,i,l;Object.defineProperty(o,"__esModule",{value:!0}),o.AdjustProjectedPosition=void 0,o.AdjustProjectedPosition=function(e,o){e.vertex.include(a.IsNaN),e.include(r.VertexPosition,o);var c=e.vertex;c.uniforms.add("uDepthBias","vec2"),c.uniforms.add("uViewportDimInv","vec2"),o.legacy?(c.uniforms.add("uView","mat4"),c.uniforms.add("uProj","mat4")):c.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),o.legacy?c.code.add(n.glsl(s||(s=t.__makeTemplateObject(["\n      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {\n        float offsetXY = uDepthBias.x;\n        float offsetZ  = uDepthBias.y;\n\n        // screen space pixel offset\n        // we multiply by two to account for the fact that NDC go from -1 to 1\n        // we multiply by projPos.w to compensate for the perspective division that happens later\n        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing\n        // towards the camera\n        vec4 projNormal = uProj * uView * vec4(globalNormal, 0.0);\n\n        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;\n      }\n    "],["\n      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {\n        float offsetXY = uDepthBias.x;\n        float offsetZ  = uDepthBias.y;\n\n        // screen space pixel offset\n        // we multiply by two to account for the fact that NDC go from -1 to 1\n        // we multiply by projPos.w to compensate for the perspective division that happens later\n        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing\n        // towards the camera\n        vec4 projNormal = uProj * uView * vec4(globalNormal, 0.0);\n\n        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;\n      }\n    "])))):c.code.add(n.glsl(i||(i=t.__makeTemplateObject(["\n      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {\n        float offsetXY = uDepthBias.x;\n        float offsetZ  = uDepthBias.y;\n\n        // screen space pixel offset\n        // we multiply by two to account for the fact that NDC go from -1 to 1\n        // we multiply by projPos.w to compensate for the perspective division that happens later\n        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing\n        // towards the camera\n        vec4 projNormal = uTransform_ProjFromView * vec4(uTransformNormal_ViewFromGlobal * globalNormal, 0.0);\n\n        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;\n      }\n    "],["\n      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {\n        float offsetXY = uDepthBias.x;\n        float offsetZ  = uDepthBias.y;\n\n        // screen space pixel offset\n        // we multiply by two to account for the fact that NDC go from -1 to 1\n        // we multiply by projPos.w to compensate for the perspective division that happens later\n        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing\n        // towards the camera\n        vec4 projNormal = uTransform_ProjFromView * vec4(uTransformNormal_ViewFromGlobal * globalNormal, 0.0);\n\n        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;\n      }\n    "])))),c.code.add(n.glsl(l||(l=t.__makeTemplateObject(["\n    // A z-offset, using a depth based heuristic.\n    float _calculateProjectedBiasZ(vec4 projPos) {\n      float offsetZ = uDepthBias.y;\n      return sqrt(projPos.z) * offsetZ;\n    }\n\n    vec4 adjustProjectedPosition(vec4 projPos, vec3 worldNormal, float lineWidth) {\n      vec2 offsetXY = calculateProjectedBiasXY(projPos, worldNormal);\n\n      // we currently have to do this check because some geometries come with 0 length edge normals.\n      // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12890\n      if (!isNaN(offsetXY.x) && !isNaN(offsetXY.y)) {\n        projPos.xy += offsetXY;\n      }\n\n      projPos.z += _calculateProjectedBiasZ(projPos);\n\n      return projPos;\n    }\n  "],["\n    // A z-offset, using a depth based heuristic.\n    float _calculateProjectedBiasZ(vec4 projPos) {\n      float offsetZ = uDepthBias.y;\n      return sqrt(projPos.z) * offsetZ;\n    }\n\n    vec4 adjustProjectedPosition(vec4 projPos, vec3 worldNormal, float lineWidth) {\n      vec2 offsetXY = calculateProjectedBiasXY(projPos, worldNormal);\n\n      // we currently have to do this check because some geometries come with 0 length edge normals.\n      // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12890\n      if (!isNaN(offsetXY.x) && !isNaN(offsetXY.y)) {\n        projPos.xy += offsetXY;\n      }\n\n      projPos.z += _calculateProjectedBiasZ(projPos);\n\n      return projPos;\n    }\n  "]))))}}));
+        // screen space pixel offset
+        // we multiply by two to account for the fact that NDC go from -1 to 1
+        // we multiply by projPos.w to compensate for the perspective division that happens later
+        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing
+        // towards the camera
+        vec4 projNormal = uProj * uView * vec4(globalNormal, 0.0);
+
+        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;
+      }
+    `):s.code.add(o.glsl`
+      vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
+        float offsetXY = uDepthBias.x;
+        float offsetZ  = uDepthBias.y;
+
+        // screen space pixel offset
+        // we multiply by two to account for the fact that NDC go from -1 to 1
+        // we multiply by projPos.w to compensate for the perspective division that happens later
+        // normalizing over xyz means that the xy influence is reduced the more the normal is pointing
+        // towards the camera
+        vec4 projNormal = uTransform_ProjFromView * vec4(uTransformNormal_ViewFromGlobal * globalNormal, 0.0);
+
+        return offsetXY * projPos.w * 2.0 * uViewportDimInv * normalize(projNormal.xyz).xy;
+      }
+    `),s.code.add(o.glsl`
+    // A z-offset, using a depth based heuristic.
+    float _calculateProjectedBiasZ(vec4 projPos) {
+      float offsetZ = uDepthBias.y;
+      return sqrt(projPos.z) * offsetZ;
+    }
+
+    vec4 adjustProjectedPosition(vec4 projPos, vec3 worldNormal, float lineWidth) {
+      vec2 offsetXY = calculateProjectedBiasXY(projPos, worldNormal);
+
+      // we currently have to do this check because some geometries come with 0 length edge normals.
+      // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/12890
+      if (!isNaN(offsetXY.x) && !isNaN(offsetXY.y)) {
+        projPos.xy += offsetXY;
+      }
+
+      projPos.z += _calculateProjectedBiasZ(projPos);
+
+      return projPos;
+    }
+  `)},Object.defineProperty(e,"__esModule",{value:!0})}));

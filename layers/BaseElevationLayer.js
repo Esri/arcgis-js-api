@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../geometry","../core/Error","../core/accessorSupport/decorators","../geometry/support/aaBoundingRect","./Layer","./support/TileInfo","@dojo/framework/shim/Promise"],(function(e,t,r,o,n,i,a,p,l){"use strict";var u={id:"0/0/0",level:0,row:0,col:0,extent:null};return function(t){function p(){var e=null!==t&&t.apply(this,arguments)||this;return e.tileInfo=l.create({spatialReference:o.SpatialReference.WebMercator,size:256}),e.fullExtent=new o.Extent(-20037508.342787,-20037508.34278,20037508.34278,20037508.342787,o.SpatialReference.WebMercator),e.spatialReference=o.SpatialReference.WebMercator,e.type="base-elevation",e}return r.__extends(p,t),p.prototype.getTileBounds=function(e,t,r,o){var n=o||a.ZERO;return u.level=e,u.row=t,u.col=r,u.extent=n,this.tileInfo.updateTileInfo(u),u.extent=null,n},p.prototype.fetchTile=function(){throw new n("BaseElevationLayer:fetchtile-not-implemented","fetchTile() is not implemented")},p.prototype.queryElevation=function(e,t){var r=this;return this._importElevationQuery().then((function(o){return(new o.ElevationQuery).query(r,e,t)}))},p.prototype.createElevationSampler=function(e,t){var r=this;return this._importElevationQuery().then((function(o){return(new o.ElevationQuery).createSampler(r,e,t)}))},p.prototype._importElevationQuery=function(){return new Promise((function(t,r){e(["./support/ElevationQuery"],t,r)}))},r.__decorate([i.property({type:l})],p.prototype,"tileInfo",void 0),r.__decorate([i.property({type:["show","hide"]})],p.prototype,"listMode",void 0),r.__decorate([i.property()],p.prototype,"fullExtent",void 0),r.__decorate([i.property()],p.prototype,"spatialReference",void 0),r.__decorate([i.property({readOnly:!0,value:"base-elevation"})],p.prototype,"type",void 0),p=r.__decorate([i.subclass("esri.layers.BaseElevationLayer")],p)}(p)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["require","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../geometry/SpatialReference","../geometry/Extent","../geometry","./Layer","../geometry/support/aaBoundingRect","./support/TileInfo"],(function(e,t,r,o,n,i,a,l,p,s,c,u,y,d,f,v,h,_){"use strict";const E={id:"0/0/0",level:0,row:0,col:0,extent:null};let m=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).tileInfo=_.create({spatialReference:y.WebMercator,size:256}),e.fullExtent=new d(-20037508.342787,-20037508.34278,20037508.34278,20037508.342787,y.WebMercator),e.spatialReference=y.WebMercator,e.type="base-elevation",e}t._inheritsLoose(o,r);var n=o.prototype;return n.getTileBounds=function(e,t,r,o){const n=o||h.ZERO;return E.level=e,E.row=t,E.col=r,E.extent=n,this.tileInfo.updateTileInfo(E),E.extent=null,n},n.fetchTile=function(){throw new p("BaseElevationLayer:fetchtile-not-implemented","fetchTile() is not implemented")},n.queryElevation=function(e,t){return this._importElevationQuery().then((r=>(new r.ElevationQuery).query(this,e,t)))},n.createElevationSampler=function(e,t){return this._importElevationQuery().then((r=>(new r.ElevationQuery).createSampler(this,e,t)))},n._importElevationQuery=function(){return new Promise((function(t,r){e(["./support/ElevationQuery"],t,r)}))},o}(v);return r.__decorate([a.property({type:_})],m.prototype,"tileInfo",void 0),r.__decorate([a.property({type:["show","hide"]})],m.prototype,"listMode",void 0),r.__decorate([a.property()],m.prototype,"fullExtent",void 0),r.__decorate([a.property()],m.prototype,"spatialReference",void 0),r.__decorate([a.property({readOnly:!0,value:"base-elevation"})],m.prototype,"type",void 0),m=r.__decorate([l.subclass("esri.layers.BaseElevationLayer")],m),m}));

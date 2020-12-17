@@ -41,36 +41,33 @@
  */
 
 // esri
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { getLocale } from "esri/intl";
-
-// esri.core
-import { closest } from "esri/core/domUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.form
-import FormTemplate = require("esri/form/FormTemplate");
+import FormTemplate from "esri/form/FormTemplate";
 
 // esri.intl
 import { loadMoment } from "esri/intl/moment";
 
 // esri.layers
-import FeatureLayer = require("esri/layers/FeatureLayer");
+import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.layers.support
 import { getDomainRange } from "esri/layers/support/domains";
 import { FieldValue, getFieldRange, NumericRange } from "esri/layers/support/fieldUtils";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.FeatureForm
-import FeatureFormViewModel = require("esri/widgets/FeatureForm/FeatureFormViewModel");
-import FieldConfig = require("esri/widgets/FeatureForm/FieldConfig");
-import InputField = require("esri/widgets/FeatureForm/InputField");
-import InputFieldGroup = require("esri/widgets/FeatureForm/InputFieldGroup");
+import FeatureFormViewModel from "esri/widgets/FeatureForm/FeatureFormViewModel";
+import FieldConfig from "esri/widgets/FeatureForm/FieldConfig";
+import InputField from "esri/widgets/FeatureForm/InputField";
+import InputFieldGroup from "esri/widgets/FeatureForm/InputFieldGroup";
 import { Attributes } from "esri/widgets/FeatureForm/interfaces";
 
 // esri.widgets.FeatureForm.t9n
@@ -100,6 +97,7 @@ type DateFieldValue = Exclude<FieldValue, string>;
 const CSS = {
   base: "esri-feature-form",
   form: "esri-feature-form__form",
+  formHeader: "esri-feature-form__form-header",
   label: "esri-feature-form__label",
   inputField: "esri-feature-form__input",
   inputDate: "esri-feature-form__input--date",
@@ -117,13 +115,18 @@ const CSS = {
   group: "esri-feature-form__group",
   groupLabel: "esri-feature-form__group-label",
   groupHeader: "esri-feature-form__group-header",
+  groupHeading: "esri-feature-form__group-header",
+  groupTitle: "esri-feature-form__group-title",
   groupDescription: "esri-feature-form__group-description",
+  groupToggleIcon: "esri-feature-form__group-toggle-icon",
   groupCollapsed: "esri-feature-form__group--collapsed",
   groupSequential: "esri-feature-form__group--sequential",
   groupActive: "esri-feature-form__group--active",
 
   // icon
+  collapseIcon: "esri-icon-up",
   errorIcon: "esri-icon-notice-triangle",
+  expandIcon: "esri-icon-down",
 
   // common
   widget: "esri-widget",
@@ -237,6 +240,7 @@ class FeatureForm extends Widget {
       this.watch("feature", () => {
         const groupOrInput = this._getFocusableInput("forward");
         this._activeInputName = groupOrInput && groupOrInput.name;
+        this._userUpdatedInputFieldNames.clear();
 
         this._fieldFocusNeeded = true;
       }),
@@ -245,6 +249,7 @@ class FeatureForm extends Widget {
         if (event.invalid.length > 0) {
           const [invalidFieldName] = event.invalid;
 
+          event.invalid.forEach((fieldName) => this._userUpdatedInputFieldNames.add(fieldName));
           this._activeInputName = invalidFieldName;
           this._fieldFocusNeeded = true;
 
@@ -253,19 +258,27 @@ class FeatureForm extends Widget {
       })
     );
   }
+
+  destroy(): void {
+    this._userUpdatedInputFieldNames.clear();
+    this._userUpdatedInputFieldNames = null;
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Variables
   //
   //--------------------------------------------------------------------------
 
-  private _fieldFocusNeeded: boolean = false;
-
   private _activeDateEdit: DateEditParts = null;
 
   private _activeInputName: string = null;
 
+  private _fieldFocusNeeded: boolean = false;
+
   private _moment: typeof import("moment") = null;
+
+  private _userUpdatedInputFieldNames = new Set<string>();
 
   //--------------------------------------------------------------------------
   //
@@ -670,16 +683,24 @@ class FeatureForm extends Widget {
 
   protected renderForm(): VNode {
     const titleNode = this.title ? (
-      <h1 class={CSS.heading} key="title">
+      <h2 class={CSS.heading} key="title">
         {this.title}
-      </h1>
+      </h2>
     ) : null;
 
     const descriptionNode = this.description ? (
-      <h2 class={CSS.heading} key="description">
+      <p class={CSS.description} key="description">
         {this.description}
-      </h2>
+      </p>
     ) : null;
+
+    const headerNode =
+      titleNode || descriptionNode ? (
+        <div class={CSS.formHeader}>
+          {titleNode}
+          {descriptionNode}
+        </div>
+      ) : null;
 
     return (
       <form
@@ -688,8 +709,7 @@ class FeatureForm extends Widget {
         onsubmit={this._handleSubmit}
         onkeydown={this._handleFormKeyDown}
       >
-        {titleNode}
-        {descriptionNode}
+        {headerNode}
         {this.renderFields()}
       </form>
     );
@@ -725,6 +745,7 @@ class FeatureForm extends Widget {
 
     const sequential = this.groupDisplay === "sequential";
     const groupExpanded = !sequential ? state === "expanded" : isGroupActive;
+    const toggleIcon = groupExpanded ? CSS.collapseIcon : CSS.expandIcon;
 
     return (
       <fieldset
@@ -742,12 +763,20 @@ class FeatureForm extends Widget {
         key={index}
         onclick={this._handleGroupClick}
       >
-        <div class={CSS.groupHeader}>
-          <div class={CSS.groupLabel} id={labelId}>
-            {label}
+        <button
+          role={sequential ? "presentation" : undefined}
+          class={CSS.groupHeader}
+          type="button"
+          tabIndex={sequential ? -1 : 0}
+        >
+          <div class={CSS.groupTitle}>
+            <h4 class={this.classes(CSS.groupLabel, CSS.heading)} id={labelId}>
+              {label}
+            </h4>
+            {descriptionNode}
           </div>
-          {descriptionNode}
-        </div>
+          {!sequential ? <span class={this.classes(toggleIcon, CSS.groupToggleIcon)} /> : null}
+        </button>
         {inputs.map((inputField) => this.renderLabeledField(inputField))}
       </fieldset>
     );
@@ -948,7 +977,7 @@ class FeatureForm extends Widget {
   }
 
   protected renderAuxiliaryText(inputField: InputField): VNode {
-    if (!inputField.valid) {
+    if (this._userUpdatedInputFieldNames.has(inputField.name) && !inputField.valid) {
       return (
         <div key="error-message">
           <span class={this.classes(CSS.inputIconInvalid, CSS.errorIcon)} />
@@ -957,7 +986,7 @@ class FeatureForm extends Widget {
       );
     }
 
-    if (inputField.valid && inputField.description) {
+    if (inputField.description) {
       return (
         <div key="description" class={CSS.description}>
           {inputField.description}
@@ -970,10 +999,12 @@ class FeatureForm extends Widget {
 
   // tslint:disable-next-line:typedef
   protected getCommonInputProps(inputField: InputField) {
-    const { viewModel } = this;
-    const { editable, name, required, maxLength, minLength, hint, type, valid } = inputField;
+    const { groupDisplay, viewModel } = this;
+    const { editable, group, hint, maxLength, minLength, name, required, type, valid } = inputField;
     const value = viewModel.getValue(name);
+    const userUpdated = this._userUpdatedInputFieldNames.has(name);
     const disabled = !editable;
+    const shouldPreventTabbing = groupDisplay === "all" && group?.state === "collapsed";
 
     return {
       "afterCreate": this._afterScrollerCreateOrUpdate,
@@ -983,7 +1014,7 @@ class FeatureForm extends Widget {
         CSS.input,
         CSS.inputField,
         disabled ? CSS.inputDisabled : null,
-        !valid ? CSS.inputInvalid : null
+        userUpdated && !valid ? CSS.inputInvalid : null
       ),
       "key": name,
       "minlength": minLength > -1 ? `${minLength}` : "",
@@ -997,6 +1028,7 @@ class FeatureForm extends Widget {
       "onkeydown": this._handleInputKeyDown,
       "onmousedown": type === "number" ? this._handleNumberInputMouseDown : null,
       required,
+      "tabIndex": shouldPreventTabbing ? -1 : 0,
       "title": hint
     };
   }
@@ -1170,10 +1202,11 @@ class FeatureForm extends Widget {
       this._commitValue(input);
       const latestInputField = this.viewModel.findField(inputField.name);
       const nextInputFocusTarget = this._getFocusableInput(direction, latestInputField);
+      const movedBetweenGroups = latestInputField.group === nextInputFocusTarget?.group;
 
-      this._activeInputName = nextInputFocusTarget && nextInputFocusTarget.name;
+      this._activeInputName = nextInputFocusTarget?.name;
 
-      if (nextInputFocusTarget) {
+      if (nextInputFocusTarget && (this.groupDisplay === "sequential" || movedBetweenGroups)) {
         event.preventDefault();
         this._fieldFocusNeeded = true;
       } else {
@@ -1233,6 +1266,7 @@ class FeatureForm extends Widget {
   private _updateFieldValue(input: HTMLInputElement | HTMLSelectElement): void {
     const inputField: InputField = input["data-field"];
     this.viewModel.setValue(inputField.name, this._parseValue(input));
+    this._userUpdatedInputFieldNames.add(inputField.name);
   }
 
   /**
@@ -1243,8 +1277,8 @@ class FeatureForm extends Widget {
   private _updateDateFieldValue(dateInput: HTMLInputElement, timeInput: HTMLInputElement): void {
     const inputField: InputField = dateInput["data-field"]; // only need one since both refer to the same field
     this.viewModel.setValue(inputField.name, this._parseDateTimeValue(dateInput, timeInput));
+    this._userUpdatedInputFieldNames.add(inputField.name);
   }
-
   private _parseValue(input: HTMLInputElement | HTMLSelectElement): FieldValue {
     const inputField: InputField = input["data-field"];
     const valueAsText = input.value;
@@ -1348,8 +1382,9 @@ class FeatureForm extends Widget {
     const expanded = group.state === "expanded";
     const sequential = this.groupDisplay === "sequential";
 
+    const headerSelector = `.${CSS.groupHeader}`;
     const clickedOnExpandedGroupInputFieldArea =
-      expanded && !closest(event.target as HTMLElement, `.${CSS.groupHeader}`);
+      expanded && !(event.target as HTMLElement).closest(headerSelector);
 
     if (clickedOnExpandedGroupInputFieldArea) {
       return;
@@ -1358,7 +1393,9 @@ class FeatureForm extends Widget {
     this._activeInputName = this._getFocusableInput("forward", group)?.name;
 
     if (sequential) {
-      if (expanded) {
+      const buttonClicked = (event.target as HTMLElement).closest(headerSelector);
+
+      if (expanded && !buttonClicked) {
         // skip if already expanded
         return;
       }
@@ -1371,7 +1408,7 @@ class FeatureForm extends Widget {
     }
 
     group.state = expanded ? "collapsed" : "expanded";
-    this._fieldFocusNeeded = true;
+    this._fieldFocusNeeded = sequential;
 
     this.scheduleRender();
   }
@@ -1415,4 +1452,4 @@ class FeatureForm extends Widget {
   }
 }
 
-export = FeatureForm;
+export default FeatureForm;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Accessor","../../../core/accessorSupport/decorators","../../../core/libs/gl-matrix-2/mat4"],(function(t,r,e,o,i,n){"use strict";return function(t){function r(){var r=null!==t&&t.apply(this,arguments)||this;return r.from=null,r.to=null,r.duration=4e3,r.repeat=!0,r.done=!1,r}var o;return e.__extends(r,t),o=r,r.prototype.getColorMatrix=function(){if(this.done=!1,null==this._lastTime)this._currentStep=0,this._lastTime=Date.now();else{var t=this._lastTime,r=Date.now(),e=r-t;this._currentStep=this._currentStep+e,this._currentStep>=2147483647&&(this._currentStep=0),this._lastTime=r}var o=this._currentStep%this.duration/(this.duration/2),i=o<=1?o:2-o,s=this.from.getColorMatrix(),a=this.to.getColorMatrix();return n.mat4.multiplyScalar(s,s,1-i),n.mat4.multiplyScalar(a,a,i),!this.repeat&&this._currentStep>=this.duration&&(this.done=!0),n.mat4.add(s,s,a)},r.prototype.getOpacity=function(){throw new Error("No getOpacity definition for Transition")},r.prototype.clone=function(){var t=new o({from:this.from.clone(),to:this.to.clone(),duration:this.duration});return t._lastTime=this._lastTime,t._currentStep=this._currentStep,t},e.__decorate([i.property()],r.prototype,"from",void 0),e.__decorate([i.property()],r.prototype,"to",void 0),e.__decorate([i.property({type:Number})],r.prototype,"duration",void 0),e.__decorate([i.property({type:Boolean})],r.prototype,"repeat",void 0),r=o=e.__decorate([i.subclass("esri.views.layers.support.Transition")],r)}(o)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor","../../../chunks/mat4"],(function(t,r,e,o,i,s,n,c,p,a,u,l){"use strict";var h;let _=h=function(r){function e(){var t;return(t=r.apply(this,arguments)||this).from=null,t.to=null,t.duration=4e3,t.repeat=!0,t.done=!1,t}t._inheritsLoose(e,r);var o=e.prototype;return o.getColorMatrix=function(){if(this.done=!1,null==this._lastTime)this._currentStep=0,this._lastTime=Date.now();else{const t=this._lastTime,r=Date.now(),e=r-t;this._currentStep=this._currentStep+e,this._currentStep>=2147483647&&(this._currentStep=0),this._lastTime=r}const t=this._currentStep%this.duration/(this.duration/2),r=t<=1?t:2-t,e=this.from.getColorMatrix(),o=this.to.getColorMatrix();return l.multiplyScalar(e,e,1-r),l.multiplyScalar(o,o,r),!this.repeat&&this._currentStep>=this.duration&&(this.done=!0),l.add(e,e,o)},o.getOpacity=function(){throw new Error("No getOpacity definition for Transition")},o.clone=function(){const t=new h({from:this.from.clone(),to:this.to.clone(),duration:this.duration});return t._lastTime=this._lastTime,t._currentStep=this._currentStep,t},e}(u);return r.__decorate([s.property()],_.prototype,"from",void 0),r.__decorate([s.property()],_.prototype,"to",void 0),r.__decorate([s.property({type:Number})],_.prototype,"duration",void 0),r.__decorate([s.property({type:Boolean})],_.prototype,"repeat",void 0),_=h=r.__decorate([n.subclass("esri.views.layers.support.Transition")],_),_}));

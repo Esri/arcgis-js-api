@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Handles","../../../core/promiseUtils","../../../core/accessorSupport/decorators","./LayerView2D","./graphics/GraphicsView2D","../../layers/LayerView"],(function(e,r,t,i,s,n,a,p,o){"use strict";return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r._handles=new i,r._popupTemplates=new Map,r.graphicsViews=[],r}return t.__extends(r,e),r.prototype.hitTest=function(e,r){var t=this;if(this.suspended||!this.graphicsViews.length)return s.resolve();var i=this.graphicsViews.map((function(t){return t.hitTest(e,r)}));return s.all(i).then((function(e){return e.filter((function(e,r){return e&&(e.popupTemplate=t._popupTemplates.get(t.graphicsViews[r]),e.layer=t.layer,e.sourceLayer=t.layer),!!e}))[0]||null}))},r.prototype.update=function(e){if(this.graphicsViews)for(var r=0,t=this.graphicsViews;r<t.length;r++){t[r].processUpdate(e)}},r.prototype.attach=function(){var e=this;this.layer.featureCollections.forEach((function(r){var t=new p.default({view:e.view,graphics:r.source,requestUpdateCallback:function(){return e.requestUpdate()}});t.renderer=r.renderer,e._popupTemplates.set(t,r.popupTemplate),e.graphicsViews.push(t),e.container.addChild(t.container)}))},r.prototype.detach=function(){this.container.removeAllChildren();for(var e=0,r=this.graphicsViews;e<r.length;e++){var t=r[e];t.destroy(),t.view=null,t.renderer=null}this.graphicsViews.length=0,this._handles.removeAll(),this._popupTemplates=null},r.prototype.moveStart=function(){},r.prototype.moveEnd=function(){},r.prototype.viewChange=function(){for(var e=0,r=this.graphicsViews;e<r.length;e++){r[e].viewChange()}},r=t.__decorate([n.subclass("esri.views.2d.layers.MapNotesLayerView2D")],r)}(a.LayerView2DMixin(o))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Collection","../../../Graphic","../../layers/LayerView","./graphics/GraphicsView2D","./LayerView2D"],(function(e,i,t,r,s,a,o,n,c,l,p,h,u,f,d,g){"use strict";const w=Object.freeze({remove(){},pause(){},resume(){}});let y=function(i){function t(){return i.apply(this,arguments)||this}e._inheritsLoose(t,i);var s=t.prototype;return s.fetchPopupFeatures=async function(e){return(await Promise.all(Array.from(this.graphicsViews(),(i=>i.searchFeatures(e).then((e=>e.filter((e=>!!e.popupTemplate)))))))).flat()},s.graphicsViews=function*(){r.isSome(this._graphicsViewsFeatureCollectionMap)?yield*this._graphicsViewsFeatureCollectionMap.keys():r.isSome(this._graphicsViews)?yield*this._graphicsViews:yield*[]},s.hitTest=async function(e,i){if(this.suspended)return null;const t=Array.from(this.graphicsViews(),(async t=>{const s=await t.hitTest(e,i);if(s){if(s.layer=this.layer,s.sourceLayer=this.layer,r.isSome(this._graphicsViewsFeatureCollectionMap)){const e=this._graphicsViewsFeatureCollectionMap.get(t);!s.popupTemplate&&e.popupTemplate&&(s.popupTemplate=e.popupTemplate)}return s}return null}));return(await Promise.all(t)).filter((e=>!!e))[0]||null},s.highlight=function(e){let i;if("number"==typeof e?i=[e]:e instanceof u?i=[e.uid]:Array.isArray(e)&&e.length>0?i="number"==typeof e[0]?e:e.map((e=>e&&e.uid)):h.isCollection(e)&&(i=e.map((e=>e&&e.uid)).toArray()),i=i.filter((e=>null!=e)),!i.length)return w;for(const e of this.graphicsViews())e.addHighlight(i);return{remove:()=>{for(const e of this.graphicsViews())e.removeHighlight(i)}}},s.update=function(e){for(const i of this.graphicsViews())i.processUpdate(e)},s.attach=function(){var e;const i=this.view,t=()=>this.requestUpdate(),r=()=>this.notifyChange("updating");if(null!=(e=this.layer.featureCollections)&&e.length){this._graphicsViewsFeatureCollectionMap=new Map;for(const e of this.layer.featureCollections){const s=new d({view:i,graphics:e.source,renderer:e.renderer,requestUpdateCallback:t});this._graphicsViewsFeatureCollectionMap.set(s,e),this.container.addChild(s.container),this.handles.add(s.watch("updating",r),"layerview-updating")}}else{const e=[this.layer.polygonGraphics,this.layer.lineGraphics,this.layer.pointGraphics,this.layer.textGraphics].map((e=>new d({view:i,graphics:e,requestUpdateCallback:t})));for(const i of e)this.handles.add(i.watch("updating",r),"layerview-updating"),this.container.addChild(i.container);this._graphicsViews=e}},s.detach=function(){this.container.removeAllChildren(),this.handles.remove("layerview-updating");for(const e of this.graphicsViews())e.destroy(),e.view=null,e.renderer=null;this._graphicsViews=null,this._graphicsViewsFeatureCollectionMap=null},s.moveStart=function(){},s.moveEnd=function(){},s.viewChange=function(){for(const e of this.graphicsViews())e.viewChange()},s.isUpdating=function(){for(const e of this.graphicsViews())if(e.updating)return!0;return!1},t}(g.LayerView2DMixin(f));return y=i.__decorate([n.subclass("esri.views.2d.layers.MapNotesLayerView2D")],y),y}));

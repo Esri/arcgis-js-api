@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./depthRange","./Util"],(function(e,r,n,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.RenderPluginManager=void 0;var i=function(){function e(e){this.pluginContext=e,this.renderPlugins=new Array,this.slots=[];for(var r=0;r<23;++r)this.slots[r]=[]}return e.prototype.add=function(e,r){this.renderPlugins.push(r);for(var n=0;n<e.length;++n){var t=e[n];this.slots[t].push(r)}r.initializeRenderContext(this.pluginContext),this.pluginContext.requestRender()},e.prototype.remove=function(e){var r=this.renderPlugins.length;this.renderPlugins=this.renderPlugins.filter((function(r){return r!==e})),t.assert(this.renderPlugins.length<r,"Removing non-added render plugin");for(var n=0;n<this.slots.length;++n)this.slots[n]=this.slots[n].filter((function(r){return r!==e}));e.uninitializeRenderContext(),this.pluginContext.requestRender()},e.prototype.prepareRender=function(e){for(var r=0,n=this.renderPlugins;r<n.length;r++){var t=n[r];t.prepareRender&&t.prepareRender(e)}},e.prototype.render=function(e,r){r.slot=e;for(var n=!1,t=0,i=this.slots[e];t<i.length;t++){var o=i[t];o.canRender&&o.render(r)&&(n=!0)}return n},e.prototype.queryDepthRange=function(e){var r=o;r.near=1/0,r.far=-1/0;for(var t=0,i=this.renderPlugins;t<i.length;t++){var s=i[t];if(s.queryDepthRange){var u=s.queryDepthRange(e);u&&n.union(r,u,r)}}return r},Object.defineProperty(e.prototype,"needsHighlight",{get:function(){return this.renderPlugins.some((function(e){return e.needsHighlight}))},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"needsLinearDepth",{get:function(){return this.renderPlugins.some((function(e){return e.needsLinearDepth}))},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"needsLaserlineWithContrastControl",{get:function(){var e=this.slots[17];return!!e&&e.length>0},enumerable:!1,configurable:!0}),Object.defineProperty(e.prototype,"renderOccludedFlags",{get:function(){var e=0;return this.renderPlugins.forEach((function(r){r.renderOccludedFlags&&(e|=r.renderOccludedFlags)})),e},enumerable:!1,configurable:!0}),e}();r.RenderPluginManager=i;var o={near:0,far:0}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./Util","./depthRange"],(function(e,n,t,r){"use strict";let s=function(){function e(e){this.pluginContext=e,this.renderPlugins=new Array,this.slots=[];for(let e=0;e<23;++e)this.slots[e]=[]}var s=e.prototype;return s.add=function(e,n){this.renderPlugins.push(n);for(let t=0;t<e.length;++t){const r=e[t];this.slots[r].push(n)}n.initializeRenderContext(this.pluginContext),this.pluginContext.requestRender()},s.remove=function(e){const n=this.renderPlugins.length;this.renderPlugins=this.renderPlugins.filter((n=>n!==e)),t.assert(this.renderPlugins.length<n,"Removing non-added render plugin");for(let n=0;n<this.slots.length;++n)this.slots[n]=this.slots[n].filter((n=>n!==e));e.uninitializeRenderContext(),this.pluginContext.requestRender()},s.prepareRender=function(e){for(const n of this.renderPlugins)n.prepareRender&&n.prepareRender(e)},s.render=function(e,n){n.slot=e;const t=this.slots[e];let r=!1;for(const e of t)e.canRender&&e.render(n)&&(r=!0);return r},s.queryDepthRange=function(e){const n=i;n.near=1/0,n.far=-1/0;for(const t of this.renderPlugins)if(t.queryDepthRange){const s=t.queryDepthRange(e);s&&r.union(n,s,n)}return n},n._createClass(e,[{key:"needsHighlight",get:function(){return this.renderPlugins.some((e=>e.needsHighlight))}},{key:"needsLinearDepth",get:function(){return this.renderPlugins.some((e=>e.needsLinearDepth))}},{key:"needsLaserlineWithContrastControl",get:function(){const e=this.slots[17];return!!e&&e.length>0}},{key:"renderOccludedFlags",get:function(){let e=0;return this.renderPlugins.forEach((n=>{n.renderOccludedFlags&&(e|=n.renderOccludedFlags)})),e}}]),e}();const i={near:0,far:0};e.RenderPluginManager=s,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,28 @@
+/*
+  Theme: Light Purple
+*/
+
+body {
+  --esri-calcite-theme-name: "light-purple";
+}
+
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$font-color: $Calcite_Gray_700;
+$background-color: $Calcite_Vibrant_Purple_100;
+$interactive-font-color: $Calcite_Gray_650;
+$interactive-font-color--hover: $Calcite_Gray_700;
+
+$button-color: $Calcite_Vibrant_Purple_150;
+$button-color--bright: #fff;
+
+// Inverse
+$interactive-font-color--inverse: darken($font-color, 12%);
+$background-color--inverse: $Calcite_Vibrant_Purple_150;
+
+// Selected
+$border-color--active: $interactive-font-color;
+$background-color--active: $Calcite_Purple_100;
+
+@import "../base/core";

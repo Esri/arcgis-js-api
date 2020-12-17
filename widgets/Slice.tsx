@@ -43,26 +43,26 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import Layer = require("esri/layers/Layer");
+import Layer from "esri/layers/Layer";
 
 // esri.layers.buildingSublayers
-import BuildingComponentSublayer = require("esri/layers/buildingSublayers/BuildingComponentSublayer");
+import BuildingComponentSublayer from "esri/layers/buildingSublayers/BuildingComponentSublayer";
 
 // esri.views
-import SceneView = require("esri/views/SceneView");
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Slice
-import SliceViewModel = require("esri/widgets/Slice/SliceViewModel");
+import SliceViewModel from "esri/widgets/Slice/SliceViewModel";
 
 // esri.widgets.Slice.t9n
 import SliceMessages from "esri/widgets/Slice/t9n/Slice";
@@ -387,4 +387,4 @@ class Slice extends Widget {
   }
 }
 
-export = Slice;
+export default Slice;

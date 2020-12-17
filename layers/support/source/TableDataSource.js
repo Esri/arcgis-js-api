@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,r,t,o,a){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.TableDataSource=void 0;var p=function(e){function r(r){var t=e.call(this,r)||this;return t.type="table",t}var o;return t.__extends(r,e),o=r,r.prototype.clone=function(){var e=this.workspaceId,r=this.gdbVersion,t=this.dataSourceName;return new o({workspaceId:e,gdbVersion:r,dataSourceName:t})},t.__decorate([a.enumeration({table:"table"})],r.prototype,"type",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"workspaceId",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"gdbVersion",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"dataSourceName",void 0),r=o=t.__decorate([a.subclass("esri.layers.support.source.TableDataSource")],r)}(o.JSONSupport);r.TableDataSource=p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport"],(function(e,r,o,t,a,c,s,p,u,n,i,l,d){"use strict";var S;e.TableDataSource=S=function(e){function o(r){var o;return(o=e.call(this,r)||this).type="table",o}return r._inheritsLoose(o,e),o.prototype.clone=function(){const{workspaceId:e,gdbVersion:r,dataSourceName:o}=this;return new S({workspaceId:e,gdbVersion:r,dataSourceName:o})},o}(d.JSONSupport),o.__decorate([p.enumeration({table:"table"})],e.TableDataSource.prototype,"type",void 0),o.__decorate([s.property({type:String,json:{write:!0}})],e.TableDataSource.prototype,"workspaceId",void 0),o.__decorate([s.property({type:String,json:{write:!0}})],e.TableDataSource.prototype,"gdbVersion",void 0),o.__decorate([s.property({type:String,json:{write:!0}})],e.TableDataSource.prototype,"dataSourceName",void 0),e.TableDataSource=S=o.__decorate([u.subclass("esri.layers.support.source.TableDataSource")],e.TableDataSource),Object.defineProperty(e,"__esModule",{value:!0})}));

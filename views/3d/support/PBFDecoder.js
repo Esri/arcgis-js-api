@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../Graphic","../../../core/promiseUtils","../../../geometry/SpatialReference","../../../layers/support/Field","./WorkerHandle"],(function(e,r,t,n,o,i,s,a){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.PBFDecoder=void 0;var f=function(){function e(e){this._handle=new l(e)}return e.prototype.destroy=function(){this._handle.destroy()},e.prototype.invoke=function(e,r){return void 0===r&&(r=null),e.buffer&&0!==e.buffer.byteLength?(e.options.sourceSpatialReference&&e.options.sourceSpatialReference instanceof i&&(e.options=t.__assign(t.__assign({},e.options),{sourceSpatialReference:e.options.sourceSpatialReference.toJSON()})),this._handle.invoke(e,r).then((function(e){if(e.spatialReference=i.fromJSON(e.spatialReference),e.fields)for(var r=0;r<e.fields.length;r++)e.fields[r]=s.fromJSON(e.fields[r]);for(var t=e.spatialReference,o=0,a=e.features;o<a.length;o++){var f=a[o];f.uid=n.generateUID(),f.geometry&&(f.geometry.spatialReference=t)}return e}))):o.resolve(null)},e}();r.PBFDecoder=f;var l=function(e){function r(r){return e.call(this,"PBFDecoderWorker","_parseFeatureQuery",r,{strategy:"dedicated"})||this}return t.__extends(r,e),r.prototype.getTransferList=function(e){return[e.buffer]},r}(a.WorkerHandle)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/promiseUtils","../../../geometry/SpatialReference","../../../Graphic","../../../layers/support/Field","../../support/Scheduler","./WorkerHandle"],(function(e,r,t,n,o,s,i,a){"use strict";let f=function(){function e(e){this._handle=new l(e),this._frameTask=e.registerTask(i.Task.REMOTE_CLIENT,(()=>{}),(()=>!1))}var r=e.prototype;return r.destroy=function(){this._frameTask.remove(),this._handle.destroy()},r.invoke=function(e,r){return e.buffer&&0!==e.buffer.byteLength?(e.options.sourceSpatialReference&&e.options.sourceSpatialReference instanceof n&&(e.options={...e.options,sourceSpatialReference:e.options.sourceSpatialReference.toJSON()}),this._handle.invoke(e,r).then((e=>this._frameTask.schedule((()=>{if(e.spatialReference=n.fromJSON(e.spatialReference),e.fields)for(let r=0;r<e.fields.length;r++)e.fields[r]=s.fromJSON(e.fields[r]);const r=e.spatialReference;for(const t of e.features)t.uid=o.generateUID(),t.geometry&&(t.geometry.spatialReference=r);return e}))))):t.resolve(null)},e}(),l=function(e){function t(r){return e.call(this,"PBFDecoderWorker","_parseFeatureQuery",r)||this}return r._inheritsLoose(t,e),t.prototype.getTransferList=function(e){return[e.buffer]},t}(a.WorkerHandle);e.PBFDecoder=f,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/accessorSupport/decorators","../../../geometry/support/aaBoundingRect","../tiling","./LayerView2D","./support/Display","../../layers/LayerView","../../layers/RefreshableLayerView"],(function(e,t,r,o,i,n,s,a,l,p){"use strict";var u=new Set,d=[],c=[],h=function(e,t,r,o,n,s,a,l,p){void 0===l&&(l=[0,0]),void 0===p&&(p=i.create()),this.id=e,this.level=t,this.row=r,this.col=o,this.world=n,this.resolution=s,this.scale=a,this.coords=l,this.bounds=p};return function(e){function t(t){var r=e.call(this,t)||this;return r._tileMap=new Map,r.container=new a.default(r),r.layer=null,r.tiles=[],r}return r.__extends(t,e),Object.defineProperty(t.prototype,"_tileInfoView",{get:function(){var e=this.layer&&this.layer.tileInfo;return e?new n.TileInfoView(e):null},enumerable:!1,configurable:!0}),t.prototype.attach=function(){},t.prototype.detach=function(){},t.prototype.requestRender=function(){this.container.requestRender()},t.prototype.tilesChanged=function(e,t){},t.prototype.doRefresh=function(){return r.__awaiter(this,void 0,void 0,(function(){return r.__generator(this,(function(e){return[2]}))}))},t.prototype.isUpdating=function(){return!1},t.prototype.update=function(e){var t=this._tileInfoView,r=this.tiles;if(t){var o=t.getTileCoverage(e.state,0),i=o.spans,n=o.lodInfo,s=n.level;if(i.length)for(var a=0,l=i;a<l.length;a++)for(var p=l[a],f=p.row,y=p.colFrom,g=p.colTo,v=y;v<=g;v++){var w=n.normalizeCol(v),_=n.getWorldForColumn(v),V=s+"/"+f+"/"+w+"/"+_;if(!this._tileMap.has(V)){var b=new h(V,s,f,w,_,n.resolution,n.scale);n.getTileCoords(b.coords,b,!1),n.getTileBounds(b.bounds,b,!0),this._tileMap.set(V,b),r.push(b),d.push(b)}u.add(V)}}for(var m=r.length-1;m>=0;m--){b=r[m];u.has(b.id)||(r.splice(m,1),c.push(b),this._tileMap.delete(b.id))}(d.length||c.length)&&(this.tilesChanged(d,c),d.length=c.length=0),u.clear(),this.requestRender()},t.prototype.moveStart=function(){},t.prototype.viewChange=function(){this.requestUpdate()},t.prototype.moveEnd=function(){},r.__decorate([o.property({dependsOn:["layer.loaded"]})],t.prototype,"_tileInfoView",null),r.__decorate([o.property()],t.prototype,"layer",void 0),t=r.__decorate([o.subclass("esri.views.2d.layers.BaseLayerView2D")],t)}(p.RefreshableLayerView(s.LayerView2DMixin(l)))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../geometry/support/aaBoundingRect","../../layers/RefreshableLayerView","../tiling/TileKey","../tiling/PagedTileQueue","../tiling/TileInfoView","../tiling/TileQueue","../tiling/TileStrategy","../../layers/LayerView","./LayerView2D","./support/Display"],(function(e,t,i,o,s,r,n,l,a,c,u,h,p,d,f,g,y,w,_,T){"use strict";const v=new Set,V=[],b=[];let C=function(e,t,i,o,s,r,n,l=[0,0],a=u.create()){this.id=e,this.level=t,this.row=i,this.col=o,this.world=s,this.resolution=r,this.scale=n,this.coords=l,this.bounds=a},L=function(t){function i(i){var o;return(o=t.call(this,i)||this)._tileMap=new Map,o.container=new T.Display(e._assertThisInitialized(o)),o.layer=null,o.tiles=[],o}e._inheritsLoose(i,t);var o=i.prototype;return o.attach=function(){},o.detach=function(){},o.requestRender=function(){this.container.requestRender()},o.tilesChanged=function(e,t){},o.doRefresh=async function(){},o.isUpdating=function(){return!1},o.update=function(e){const t=this._tileInfoView,i=this.tiles;if(t){const o=t.getTileCoverage(e.state,0),{spans:s,lodInfo:r}=o,{level:n}=r;if(s.length)for(const{row:e,colFrom:t,colTo:o}of s)for(let s=t;s<=o;s++){const t=r.normalizeCol(s),o=r.getWorldForColumn(s),l=`${n}/${e}/${t}/${o}`;if(!this._tileMap.has(l)){const s=new C(l,n,e,t,o,r.resolution,r.scale);r.getTileCoords(s.coords,s,!1),r.getTileBounds(s.bounds,s,!0),this._tileMap.set(l,s),i.push(s),V.push(s)}v.add(l)}}for(let e=i.length-1;e>=0;e--){const t=i[e];v.has(t.id)||(i.splice(e,1),b.push(t),this._tileMap.delete(t.id))}(V.length||b.length)&&(this.tilesChanged(V,b),V.length=b.length=0),v.clear(),this.requestRender()},o.moveStart=function(){},o.viewChange=function(){this.requestUpdate()},o.moveEnd=function(){},e._createClass(i,[{key:"_tileInfoView",get:function(){const e=this.layer&&this.layer.tileInfo;return e?new f(e):null}}]),i}(h.RefreshableLayerView(_.LayerView2DMixin(w)));return t.__decorate([r.property({dependsOn:["layer.loaded"]})],L.prototype,"_tileInfoView",null),t.__decorate([r.property()],L.prototype,"layer",void 0),L=t.__decorate([n.subclass("esri.views.2d.layers.BaseLayerView2D")],L),L}));

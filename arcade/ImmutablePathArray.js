@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./ImmutableArray","./ImmutablePointArray"],(function(t,e,i,s,n){"use strict";return function(t){function e(e,i,s,n,a){var h=t.call(this,e)||this;return h._lazyPath=[],h._hasZ=!1,h._hasM=!1,h._hasZ=s,h._hasM=n,h._spRef=i,h._cacheId=a,h}return i.__extends(e,t),e.prototype.get=function(t){if(void 0===this._lazyPath[t]){var e=this._elements[t];if(void 0===e)return;this._lazyPath[t]=new n(e,this._spRef,this._hasZ,this._hasM,this._cacheId,t)}return this._lazyPath[t]},e.prototype.equalityTest=function(t){return t===this||null!==t&&(t instanceof e!=!1&&t.getUniqueHash()===this.getUniqueHash())},e.prototype.getUniqueHash=function(){return this._cacheId.toString()},e}(s)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","./ImmutableArray","./ImmutablePointArray"],(function(t,e,i){"use strict";return function(e){function n(t,i,n,s,h){var a;return(a=e.call(this,t)||this)._lazyPath=[],a._hasZ=!1,a._hasM=!1,a._hasZ=n,a._hasM=s,a._spRef=i,a._cacheId=h,a}t._inheritsLoose(n,e);var s=n.prototype;return s.get=function(t){if(void 0===this._lazyPath[t]){const e=this._elements[t];if(void 0===e)return;this._lazyPath[t]=new i(e,this._spRef,this._hasZ,this._hasM,this._cacheId,t)}return this._lazyPath[t]},s.equalityTest=function(t){return t===this||null!==t&&(t instanceof n!=!1&&t.getUniqueHash()===this.getUniqueHash())},s.getUniqueHash=function(){return this._cacheId.toString()},n}(e)}));

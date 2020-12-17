@@ -1,25 +1,65 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";e.RibbonVertexPosition=function(e,i){e.vertex.uniforms.add("intrinsicWidth","float"),i.vvSize?(e.attributes.add("sizeFeatureAttribute","float"),e.vertex.uniforms.add("vvSizeMinSize","vec3"),e.vertex.uniforms.add("vvSizeMaxSize","vec3"),e.vertex.uniforms.add("vvSizeOffset","vec3"),e.vertex.uniforms.add("vvSizeFactor","vec3"),e.vertex.code.add(t.glsl`
+    float getSize() {
+      return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;
+    }
+    `)):(e.attributes.add("size","float"),e.vertex.code.add(t.glsl`
+    float getSize(){
+      return intrinsicWidth * size;
+    }
+    `)),i.vvOpacity?(e.attributes.add("opacityFeatureAttribute","float"),e.vertex.defines.addInt("VV_OPACITY_N",8),e.vertex.code.add(t.glsl`
+    uniform float vvOpacityValues[VV_OPACITY_N];
+    uniform float vvOpacityOpacities[VV_OPACITY_N];
 
-define(["require","exports","tslib","../../shaderModules/interfaces"],(function(e,t,i,n){"use strict";var a,o,r,v,l,c;Object.defineProperty(t,"__esModule",{value:!0}),t.RibbonVertexPosition=void 0,t.RibbonVertexPosition=function(e,t){e.vertex.uniforms.add("intrinsicWidth","float"),t.vvSize?(e.attributes.add("sizeFeatureAttribute","float"),e.vertex.uniforms.add("vvSizeMinSize","vec3"),e.vertex.uniforms.add("vvSizeMaxSize","vec3"),e.vertex.uniforms.add("vvSizeOffset","vec3"),e.vertex.uniforms.add("vvSizeFactor","vec3"),e.vertex.code.add(n.glsl(a||(a=i.__makeTemplateObject(["\n    float getSize() {\n      return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;\n    }\n    "],["\n    float getSize() {\n      return intrinsicWidth * clamp(vvSizeOffset + sizeFeatureAttribute * vvSizeFactor, vvSizeMinSize, vvSizeMaxSize).x;\n    }\n    "]))))):(e.attributes.add("size","float"),e.vertex.code.add(n.glsl(o||(o=i.__makeTemplateObject(["\n    float getSize(){\n      return intrinsicWidth * size;\n    }\n    "],["\n    float getSize(){\n      return intrinsicWidth * size;\n    }\n    "]))))),t.vvOpacity?(e.attributes.add("opacityFeatureAttribute","float"),e.vertex.defines.addInt("VV_OPACITY_N",8),e.vertex.code.add(n.glsl(r||(r=i.__makeTemplateObject(["\n    uniform float vvOpacityValues[VV_OPACITY_N];\n    uniform float vvOpacityOpacities[VV_OPACITY_N];\n\n    float interpolateOpacity( float value ){\n      if (value <= vvOpacityValues[0]) {\n        return vvOpacityOpacities[0];\n      }\n\n      for (int i = 1; i < VV_OPACITY_N; ++i) {\n        if (vvOpacityValues[i] >= value) {\n          float f = (value - vvOpacityValues[i-1]) / (vvOpacityValues[i] - vvOpacityValues[i-1]);\n          return mix(vvOpacityOpacities[i-1], vvOpacityOpacities[i], f);\n        }\n      }\n\n      return vvOpacityOpacities[VV_OPACITY_N - 1];\n    }\n\n    vec4 applyOpacity( vec4 color ){\n      return vec4(color.xyz, interpolateOpacity(opacityFeatureAttribute));\n    }\n    "],["\n    uniform float vvOpacityValues[VV_OPACITY_N];\n    uniform float vvOpacityOpacities[VV_OPACITY_N];\n\n    float interpolateOpacity( float value ){\n      if (value <= vvOpacityValues[0]) {\n        return vvOpacityOpacities[0];\n      }\n\n      for (int i = 1; i < VV_OPACITY_N; ++i) {\n        if (vvOpacityValues[i] >= value) {\n          float f = (value - vvOpacityValues[i-1]) / (vvOpacityValues[i] - vvOpacityValues[i-1]);\n          return mix(vvOpacityOpacities[i-1], vvOpacityOpacities[i], f);\n        }\n      }\n\n      return vvOpacityOpacities[VV_OPACITY_N - 1];\n    }\n\n    vec4 applyOpacity( vec4 color ){\n      return vec4(color.xyz, interpolateOpacity(opacityFeatureAttribute));\n    }\n    "]))))):e.vertex.code.add(n.glsl(v||(v=i.__makeTemplateObject(["\n    vec4 applyOpacity( vec4 color ){\n      return color;\n    }\n    "],["\n    vec4 applyOpacity( vec4 color ){\n      return color;\n    }\n    "])))),t.vvColor?(e.attributes.add("colorFeatureAttribute","float"),e.vertex.defines.addInt("VV_COLOR_N",8),e.vertex.code.add(n.glsl(l||(l=i.__makeTemplateObject(["\n    uniform float vvColorValues[VV_COLOR_N];\n    uniform vec4 vvColorColors[VV_COLOR_N];\n\n    vec4 interpolateColor( float value ) {\n      if (value <= vvColorValues[0]) {\n        return vvColorColors[0];\n      }\n\n      for (int i = 1; i < VV_COLOR_N; ++i) {\n        if (vvColorValues[i] >= value) {\n          float f = (value - vvColorValues[i-1]) / (vvColorValues[i] - vvColorValues[i-1]);\n          return mix(vvColorColors[i-1], vvColorColors[i], f);\n        }\n      }\n\n      return vvColorColors[VV_COLOR_N - 1];\n    }\n\n    vec4 getColor(){\n      return applyOpacity(interpolateColor(colorFeatureAttribute));\n    }\n    "],["\n    uniform float vvColorValues[VV_COLOR_N];\n    uniform vec4 vvColorColors[VV_COLOR_N];\n\n    vec4 interpolateColor( float value ) {\n      if (value <= vvColorValues[0]) {\n        return vvColorColors[0];\n      }\n\n      for (int i = 1; i < VV_COLOR_N; ++i) {\n        if (vvColorValues[i] >= value) {\n          float f = (value - vvColorValues[i-1]) / (vvColorValues[i] - vvColorValues[i-1]);\n          return mix(vvColorColors[i-1], vvColorColors[i], f);\n        }\n      }\n\n      return vvColorColors[VV_COLOR_N - 1];\n    }\n\n    vec4 getColor(){\n      return applyOpacity(interpolateColor(colorFeatureAttribute));\n    }\n    "]))))):(e.attributes.add("color","vec4"),e.vertex.code.add(n.glsl(c||(c=i.__makeTemplateObject(["\n    vec4 getColor(){\n      return applyOpacity(color);\n    }\n    "],["\n    vec4 getColor(){\n      return applyOpacity(color);\n    }\n    "])))))}}));
+    float interpolateOpacity( float value ){
+      if (value <= vvOpacityValues[0]) {
+        return vvOpacityOpacities[0];
+      }
+
+      for (int i = 1; i < VV_OPACITY_N; ++i) {
+        if (vvOpacityValues[i] >= value) {
+          float f = (value - vvOpacityValues[i-1]) / (vvOpacityValues[i] - vvOpacityValues[i-1]);
+          return mix(vvOpacityOpacities[i-1], vvOpacityOpacities[i], f);
+        }
+      }
+
+      return vvOpacityOpacities[VV_OPACITY_N - 1];
+    }
+
+    vec4 applyOpacity( vec4 color ){
+      return vec4(color.xyz, interpolateOpacity(opacityFeatureAttribute));
+    }
+    `)):e.vertex.code.add(t.glsl`
+    vec4 applyOpacity( vec4 color ){
+      return color;
+    }
+    `),i.vvColor?(e.attributes.add("colorFeatureAttribute","float"),e.vertex.defines.addInt("VV_COLOR_N",8),e.vertex.code.add(t.glsl`
+    uniform float vvColorValues[VV_COLOR_N];
+    uniform vec4 vvColorColors[VV_COLOR_N];
+
+    vec4 interpolateColor( float value ) {
+      if (value <= vvColorValues[0]) {
+        return vvColorColors[0];
+      }
+
+      for (int i = 1; i < VV_COLOR_N; ++i) {
+        if (vvColorValues[i] >= value) {
+          float f = (value - vvColorValues[i-1]) / (vvColorValues[i] - vvColorValues[i-1]);
+          return mix(vvColorColors[i-1], vvColorColors[i], f);
+        }
+      }
+
+      return vvColorColors[VV_COLOR_N - 1];
+    }
+
+    vec4 getColor(){
+      return applyOpacity(interpolateColor(colorFeatureAttribute));
+    }
+    `)):(e.attributes.add("color","vec4"),e.vertex.code.add(t.glsl`
+    vec4 getColor(){
+      return applyOpacity(color);
+    }
+    `))},Object.defineProperty(e,"__esModule",{value:!0})}));

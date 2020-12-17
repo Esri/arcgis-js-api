@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64"],(function(e,t,i,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.EuclideanSegment=void 0;var c=function(){function e(e,t){void 0===e&&(e=r.vec3f64.create()),void 0===t&&(t=r.vec3f64.create()),this.startRenderSpace=e,this.endRenderSpace=t,this.type="euclidean"}return e.prototype.eval=function(e,t){i.vec3.lerp(t,this.startRenderSpace,this.endRenderSpace,e)},e}();t.EuclideanSegment=c}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/vec3f64","../../../../../chunks/vec3","../../../support/mathUtils","../../../../../geometry/projectionEllipsoid","../../../../../geometry/projection","../../../support/stack"],(function(e,t,r,n,s,c,i){"use strict";let o=function(){function e(e=t.create(),r=t.create()){this.startRenderSpace=e,this.endRenderSpace=r,this.type="euclidean"}var n=e.prototype;return n.eval=function(e,t){return r.lerp(t,this.startRenderSpace,this.endRenderSpace,e)},n.createRenderGeometry=function(e,t){const n=[],s=[],c=(t,c)=>{const i=h;r.subtract(i,t,e),n.push([i[0],i[1],i[2]]),s.push([c[0],c[1],c[2]])},o=t.worldUpAtPosition(this.eval(.5,a),i.sv3d.get());return c(this.startRenderSpace,o),c(this.endRenderSpace,o),{points:n,normals:s}},e}(),p=function(){function e(e,r,n){this.startRenderSpace=e,this.endRenderSpace=r,this.renderSpatialReference=n,this.type="geodesic",this._start=t.create(),this._end=t.create(),this._pcpf=s.getSphericalPCPF(n),this._project=c.canProjectWithoutEngine(n,this._pcpf),this._projectIn(e,this._start),this._projectIn(r,this._end)}var i=e.prototype;return i._projectIn=function(e,t){this._project?c.projectVectorToVector(e,this.renderSpatialReference,t,this._pcpf):r.copy(t,e)},i.eval=function(e,t){return this._project?(n.slerp(this._start,this._end,e,t),c.projectVectorToVector(t,this._pcpf,t,this.renderSpatialReference)):r.lerp(t,this._start,this._end,e),t},i.createRenderGeometry=function(e,t){const n=[],s=[],c=(t,c)=>{const i=d;r.subtract(i,t,e),n.push([i[0],i[1],i[2]]),s.push([c[0],c[1],c[2]])};for(let e=0;e<128;++e){const r=e/127,n=a,s=h;this.eval(r,n),t.worldUpAtPosition(n,s),c(n,s)}return{points:n,normals:s}},e}();const a=t.create(),h=t.create(),d=t.create();e.EuclideanSegment=o,e.GeodesicSegment=p,Object.defineProperty(e,"__esModule",{value:!0})}));

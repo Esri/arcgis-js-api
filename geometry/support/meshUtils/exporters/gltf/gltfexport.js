@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/promiseUtils","./index"],(function(e,n,t,o){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.toBinaryGLTF=void 0;var r=function(){function e(e,n){this.file={type:"model/gltf-binary",data:e},this.origin=n}return e.prototype.buffer=function(){return t.resolve(this.file)},e.prototype.download=function(e){var n=this;return t.create((function(){var t=new Blob([n.file.data],{type:n.file.type}),o=e;if(o||(o="model.glb"),"glb"!==o.split(".").pop()&&(o+=".glb"),window.navigator.msSaveOrOpenBlob)window.navigator.msSaveOrOpenBlob(t,o);else{var r=document.createElement("a"),i=URL.createObjectURL(t);r.href=i,r.download=o,document.body.appendChild(r),r.click(),setTimeout((function(){document.body.removeChild(r),window.URL.revokeObjectURL(i)}),0)}}))},e}();n.toBinaryGLTF=function(e,n){var t=new o.Asset,i=new o.Scene;t.addScene(i);var d=new o.Node;return i.addNode(d),d.mesh=e,o.exportGLB(t,n).then((function(e){return new r(e[o.MODEL_NAME_GLB],e.origin)}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../core/promiseUtils","./asset","./scene","./node","./index"],(function(e,t,n,o,i,r){"use strict";let d=function(){function e(e,t){this.file={type:"model/gltf-binary",data:e},this.origin=t}var n=e.prototype;return n.buffer=function(){return t.resolve(this.file)},n.download=function(e){return t.create((()=>{const t=new Blob([this.file.data],{type:this.file.type});let n=e;n||(n="model.glb");if("glb"!==n.split(".").pop()&&(n+=".glb"),window.navigator.msSaveOrOpenBlob)window.navigator.msSaveOrOpenBlob(t,n);else{const e=document.createElement("a"),o=URL.createObjectURL(t);e.href=o,e.download=n,document.body.appendChild(e),e.click(),setTimeout((function(){document.body.removeChild(e),window.URL.revokeObjectURL(o)}),0)}}))},e}();e.toBinaryGLTF=function(e,t){const c=new n.Asset,l=new o.Scene;c.addScene(l);const s=new i.Node;return l.addNode(s),s.mesh=e,r.exportGLB(c,t).then((e=>new d(e[r.MODEL_NAME_GLB],e.origin)))},Object.defineProperty(e,"__esModule",{value:!0})}));

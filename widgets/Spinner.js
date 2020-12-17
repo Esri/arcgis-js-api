@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/promiseUtils","../core/watchUtils","../core/accessorSupport/decorators","./Widget","./Spinner/SpinnerViewModel","./support/widget"],(function(e,i,t,o,n,r,s,a,l){"use strict";var c="esri-spinner",p="esri-spinner--start",d="esri-spinner--finish";return function(e){function i(i,t){var o=e.call(this,i,t)||this;return o._animationDelay=500,o._animationPromise=null,o.location=null,o.view=null,o.viewModel=new a,o.visible=!1,o}return t.__extends(i,e),i.prototype.initialize=function(){var e=this;this.own([n.watch(this,"visible",(function(i){return e._visibleChange(i)}))])},i.prototype.destroy=function(){this._animationPromise=null},i.prototype.show=function(e){var i=this,t=e.location,o=e.promise;t&&(this.viewModel.location=t),this.visible=!0;o&&o.catch((function(){})).then((function(){return i.hide()}))},i.prototype.hide=function(){this.visible=!1},i.prototype.render=function(){var e,i=this.visible,t=!!this.viewModel.screenLocation,o=!i&&t,n=((e={})[p]=i&&t,e[d]=o,e),r=this._getPositionStyles();return l.tsx("div",{class:this.classes(c,n),styles:r})},i.prototype._visibleChange=function(e){var i=this;if(e)this.viewModel.screenLocationEnabled=!0;else{var t=o.after(this._animationDelay);this._animationPromise=t,t.catch((function(){})).then((function(){i._animationPromise===t&&(i.viewModel.screenLocationEnabled=!1,i._animationPromise=null)}))}},i.prototype._getPositionStyles=function(){var e=this.viewModel,i=e.screenLocation,t=e.view;if(!t||!i)return{};var o=t.padding;return{left:i.x-o.left+"px",top:i.y-o.top+"px"}},t.__decorate([r.aliasOf("viewModel.location")],i.prototype,"location",void 0),t.__decorate([r.aliasOf("viewModel.view")],i.prototype,"view",void 0),t.__decorate([r.property({type:a}),l.renderable(["viewModel.screenLocation","viewModel.screenLocationEnabled"])],i.prototype,"viewModel",void 0),t.__decorate([r.aliasOf("viewModel.visible")],i.prototype,"visible",void 0),i=t.__decorate([r.subclass("esri.widgets.Spinner")],i)}(s)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/aliasOf","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/promiseUtils","../core/watchUtils","./support/widgetUtils","./support/decorators/renderable","../chunks/index","./Widget","./Spinner/SpinnerViewModel"],(function(e,i,o,t,s,n,r,c,a,l,p,d,u,h,v,w,_,f){"use strict";const b="esri-spinner",y="esri-spinner--start",m="esri-spinner--finish";let M=function(i){function o(e,o){var t;return(t=i.call(this,e,o)||this)._animationDelay=500,t._animationPromise=null,t.location=null,t.view=null,t.viewModel=new f,t.visible=!1,t}e._inheritsLoose(o,i);var t=o.prototype;return t.initialize=function(){this.own([u.watch(this,"visible",(e=>this._visibleChange(e)))])},t.destroy=function(){this._animationPromise=null},t.show=function(e){const{location:i,promise:o}=e;i&&(this.viewModel.location=i),this.visible=!0;const t=()=>this.hide();o&&o.catch((()=>{})).then(t)},t.hide=function(){this.visible=!1},t.render=function(){const{visible:e}=this,{screenLocation:i}=this.viewModel,o=!!i,t={[y]:e&&o,[m]:!e&&o},s=this._getPositionStyles();return w.jsx("div",{class:this.classes(b,t),styles:s})},t._visibleChange=function(e){if(e)return void(this.viewModel.screenLocationEnabled=!0);const i=d.after(this._animationDelay);this._animationPromise=i,i.catch((()=>{})).then((()=>{this._animationPromise===i&&(this.viewModel.screenLocationEnabled=!1,this._animationPromise=null)}))},t._getPositionStyles=function(){const{screenLocation:e,view:i}=this.viewModel;if(!i||!e)return{};const{padding:o}=i;return{left:e.x-o.left+"px",top:e.y-o.top+"px"}},o}(_);return i.__decorate([r.aliasOf("viewModel.location")],M.prototype,"location",void 0),i.__decorate([r.aliasOf("viewModel.view")],M.prototype,"view",void 0),i.__decorate([n.property({type:f}),v.renderable(["viewModel.screenLocation","viewModel.screenLocationEnabled"])],M.prototype,"viewModel",void 0),i.__decorate([r.aliasOf("viewModel.visible")],M.prototype,"visible",void 0),M=i.__decorate([c.subclass("esri.widgets.Spinner")],M),M}));

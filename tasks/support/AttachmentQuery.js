@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType"],(function(t,e,r,o,s,n,a){"use strict";var p=function(t){function e(e){var r=t.call(this,e)||this;return r.attachmentTypes=null,r.attachmentsWhere=null,r.keywords=null,r.globalIds=null,r.name=null,r.num=null,r.objectIds=null,r.returnMetadata=!1,r.size=null,r.start=null,r.where=null,r}var o;return r.__extends(e,t),o=e,e.prototype.writeStart=function(t,e){e.resultOffset=this.start,e.resultRecordCount=this.num||10},e.prototype.clone=function(){return new o(s.clone({attachmentTypes:this.attachmentTypes,attachmentsWhere:this.attachmentsWhere,keywords:this.keywords,where:this.where,globalIds:this.globalIds,name:this.name,num:this.num,objectIds:this.objectIds,returnMetadata:this.returnMetadata,size:this.size,start:this.start}))},r.__decorate([n.property({type:[String],json:{write:!0}})],e.prototype,"attachmentTypes",void 0),r.__decorate([n.property({type:String,json:{read:{source:"attachmentsDefinitionExpression"},write:{target:"attachmentsDefinitionExpression"}}})],e.prototype,"attachmentsWhere",void 0),r.__decorate([n.property({type:[String],json:{write:!0}})],e.prototype,"keywords",void 0),r.__decorate([n.property({type:[Number],json:{write:!0}})],e.prototype,"globalIds",void 0),r.__decorate([n.property({json:{write:!0}})],e.prototype,"name",void 0),r.__decorate([n.property({type:Number,json:{read:{source:"resultRecordCount"}}})],e.prototype,"num",void 0),r.__decorate([n.property({type:[Number],json:{write:!0}})],e.prototype,"objectIds",void 0),r.__decorate([n.property({type:Boolean,json:{default:!1,write:!0}})],e.prototype,"returnMetadata",void 0),r.__decorate([n.property({type:[Number],json:{write:!0}})],e.prototype,"size",void 0),r.__decorate([n.property({type:Number,json:{read:{source:"resultOffset"}}})],e.prototype,"start",void 0),r.__decorate([n.writer("start"),n.writer("num")],e.prototype,"writeStart",null),r.__decorate([n.property({type:String,json:{read:{source:"definitionExpression"},write:{target:"definitionExpression"}}})],e.prototype,"where",void 0),e=o=r.__decorate([n.subclass("esri.tasks.support.AttachmentQuery")],e)}(o.JSONSupport);return p.from=a.default(p),p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,t,r,o,s,n,p,a,i,c,u,d,l){"use strict";var y;let h=y=function(t){function r(e){var r;return(r=t.call(this,e)||this).attachmentTypes=null,r.attachmentsWhere=null,r.keywords=null,r.globalIds=null,r.name=null,r.num=null,r.objectIds=null,r.returnMetadata=!1,r.size=null,r.start=null,r.where=null,r}e._inheritsLoose(r,t);var s=r.prototype;return s.writeStart=function(e,t){t.resultOffset=this.start,t.resultRecordCount=this.num||10},s.clone=function(){return new y(o.clone({attachmentTypes:this.attachmentTypes,attachmentsWhere:this.attachmentsWhere,keywords:this.keywords,where:this.where,globalIds:this.globalIds,name:this.name,num:this.num,objectIds:this.objectIds,returnMetadata:this.returnMetadata,size:this.size,start:this.start}))},r}(l.JSONSupport);return t.__decorate([p.property({type:[String],json:{write:!0}})],h.prototype,"attachmentTypes",void 0),t.__decorate([p.property({type:String,json:{read:{source:"attachmentsDefinitionExpression"},write:{target:"attachmentsDefinitionExpression"}}})],h.prototype,"attachmentsWhere",void 0),t.__decorate([p.property({type:[String],json:{write:!0}})],h.prototype,"keywords",void 0),t.__decorate([p.property({type:[Number],json:{write:!0}})],h.prototype,"globalIds",void 0),t.__decorate([p.property({json:{write:!0}})],h.prototype,"name",void 0),t.__decorate([p.property({type:Number,json:{read:{source:"resultRecordCount"}}})],h.prototype,"num",void 0),t.__decorate([p.property({type:[Number],json:{write:!0}})],h.prototype,"objectIds",void 0),t.__decorate([p.property({type:Boolean,json:{default:!1,write:!0}})],h.prototype,"returnMetadata",void 0),t.__decorate([p.property({type:[Number],json:{write:!0}})],h.prototype,"size",void 0),t.__decorate([p.property({type:Number,json:{read:{source:"resultOffset"}}})],h.prototype,"start",void 0),t.__decorate([i.writer("start"),i.writer("num")],h.prototype,"writeStart",null),t.__decorate([p.property({type:String,json:{read:{source:"definitionExpression"},write:{target:"definitionExpression"}}})],h.prototype,"where",void 0),h=y=t.__decorate([a.subclass("esri.tasks.support.AttachmentQuery")],h),h.from=n.ensureType(h),h}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/screenUtils"],(function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.fitCircleLSQ=t.euclideanDistance=t.manhattanDistance=void 0,t.manhattanDistance=function(e,t){return Math.abs(t.x-e.x)+Math.abs(t.y-e.y)},t.euclideanDistance=function(e,t){var n=t.x-e.x,r=t.y-e.y;return Math.sqrt(n*n+r*r)},t.fitCircleLSQ=function(e,t){if(t?(t.radius=0,t.center.x=0,t.center.y=0):t={radius:0,center:n.createScreenPoint()},0===e.length)return t;if(1===e.length)return t.center.x=e[0].x,t.center.y=e[0].y,t;if(2===e.length){var r=e[0],a=e[1],i=[a.x-r.x,a.y-r.y],c=i[0],u=i[1];return t.radius=Math.sqrt(c*c+u*u)/2,t.center.x=(r.x+a.x)/2,t.center.y=(r.y+a.y)/2,t}for(var s=0,f=0,h=0;h<e.length;h++)s+=e[h].x,f+=e[h].y;s/=e.length,f/=e.length;var l=e.map((function(e){return e.x-s})),o=e.map((function(e){return e.y-f})),x=0,y=0,d=0,g=0,v=0,M=0,m=0;for(h=0;h<l.length;h++){var p=l[h],q=o[h],D=p*p,S=q*q;x+=D,y+=S,d+=p*q,g+=D*p,v+=S*q,M+=p*S,m+=q*D}var b=.5*(g+M),P=.5*(v+m),C=x*y-d*d,L=(b*y-P*d)/C,Q=(x*P-d*b)/C,_=n.createScreenPoint(L+s,Q+f);return{radius:Math.sqrt(L*L+Q*Q+(x+y)/e.length),center:_}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/screenUtils"],(function(e,t){"use strict";e.euclideanDistance=function(e,t){const n=t.x-e.x,r=t.y-e.y;return Math.sqrt(n*n+r*r)},e.fitCircleLSQ=function(e,n){if(n?(n.radius=0,n.center.x=0,n.center.y=0):n={radius:0,center:t.createScreenPoint()},0===e.length)return n;if(1===e.length)return n.center.x=e[0].x,n.center.y=e[0].y,n;if(2===e.length){const[t,r]=e,[c,a]=[r.x-t.x,r.y-t.y];return n.radius=Math.sqrt(c*c+a*a)/2,n.center.x=(t.x+r.x)/2,n.center.y=(t.y+r.y)/2,n}let r=0,c=0;for(let t=0;t<e.length;t++)r+=e[t].x,c+=e[t].y;r/=e.length,c/=e.length;const a=e.map((e=>e.x-r)),i=e.map((e=>e.y-c));let s=0,u=0,l=0,o=0,x=0,y=0,h=0;for(let e=0;e<a.length;e++){const t=a[e],n=i[e],r=t*t,c=n*n;s+=r,u+=c,l+=t*n,o+=r*t,x+=c*n,y+=t*c,h+=n*r}const f=.5*(o+y),d=.5*(x+h),g=s*u-l*l,M=(f*u-d*l)/g,p=(s*d-l*f)/g,b=t.createScreenPoint(M+r,p+c);return{radius:Math.sqrt(M*M+p*p+(s+u)/e.length),center:b}},e.manhattanDistance=function(e,t){return Math.abs(t.x-e.x)+Math.abs(t.y-e.y)},Object.defineProperty(e,"__esModule",{value:!0})}));

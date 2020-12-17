@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./Accessor","./Collection","./maybe","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass"],(function(r,t,e,o,s,n,i,u){"use strict";return function(r){function t(t){var e=r.call(this,t)||this;return e._groups=new Map,e}return e.__extends(t,r),t.prototype.destroy=function(){this.removeAll()},Object.defineProperty(t.prototype,"size",{get:function(){var r=0;return this._groups.forEach((function(t){r+=t.length})),r},enumerable:!1,configurable:!0}),t.prototype.add=function(r,t){var e=this;if(!this._isHandle(r)&&!Array.isArray(r)&&!s.isCollection(r))return this;var o=this._getOrCreateGroup(t);return Array.isArray(r)||s.isCollection(r)?r.forEach((function(r){return e._isHandle(r)&&o.push(r)})):o.push(r),this.notifyChange("size"),this},t.prototype.forEach=function(r,t){if("function"==typeof r)this._groups.forEach((function(t){return t.forEach(r)}));else{var e=this._getGroup(r);e&&t&&e.forEach(t)}},t.prototype.has=function(r){return this._groups.has(this._ensureGroupKey(r))},t.prototype.remove=function(r){if(Array.isArray(r)||s.isCollection(r))return r.forEach(this.remove,this),this;if(!this.has(r))return this;for(var t=this._getGroup(r),e=0;e<t.length;e++)t[e].remove();return this._deleteGroup(r),this.notifyChange("size"),this},t.prototype.removeAll=function(){return this._groups.forEach((function(r){for(var t=0;t<r.length;t++)r[t].remove()})),this._groups.clear(),this.notifyChange("size"),this},t.prototype._isHandle=function(r){return r&&!!r.remove},t.prototype._getOrCreateGroup=function(r){if(this.has(r))return this._getGroup(r);var t=[];return this._groups.set(this._ensureGroupKey(r),t),t},t.prototype._getGroup=function(r){return n.assumeNonNull(this._groups.get(this._ensureGroupKey(r)))},t.prototype._deleteGroup=function(r){return this._groups.delete(this._ensureGroupKey(r))},t.prototype._ensureGroupKey=function(r){return r||"_default_"},e.__decorate([i.property({readOnly:!0})],t.prototype,"size",null),t=e.__decorate([u.subclass("esri.core.Handles")],t)}(o)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./maybe","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass","./Accessor","./Collection"],(function(e,r,t,s,o,i,n){"use strict";let u=function(r){function s(e){var t;return(t=r.call(this,e)||this)._groups=new Map,t}e._inheritsLoose(s,r);var o=s.prototype;return o.destroy=function(){this.removeAll()},o.add=function(e,r){if(!this._isHandle(e)&&!Array.isArray(e)&&!n.isCollection(e))return this;const t=this._getOrCreateGroup(r);return Array.isArray(e)||n.isCollection(e)?e.forEach((e=>this._isHandle(e)&&t.push(e))):t.push(e),this.notifyChange("size"),this},o.forEach=function(e,r){if("function"==typeof e)this._groups.forEach((r=>r.forEach(e)));else{const t=this._getGroup(e);t&&r&&t.forEach(r)}},o.has=function(e){return this._groups.has(this._ensureGroupKey(e))},o.remove=function(e){if(Array.isArray(e)||n.isCollection(e))return e.forEach(this.remove,this),this;if(!this.has(e))return this;const r=this._getGroup(e);for(let e=0;e<r.length;e++)r[e].remove();return this._deleteGroup(e),this.notifyChange("size"),this},o.removeAll=function(){return this._groups.forEach((e=>{for(let r=0;r<e.length;r++)e[r].remove()})),this._groups.clear(),this.notifyChange("size"),this},o._isHandle=function(e){return e&&!!e.remove},o._getOrCreateGroup=function(e){if(this.has(e))return this._getGroup(e);const r=[];return this._groups.set(this._ensureGroupKey(e),r),r},o._getGroup=function(e){return t.assumeNonNull(this._groups.get(this._ensureGroupKey(e)))},o._deleteGroup=function(e){return this._groups.delete(this._ensureGroupKey(e))},o._ensureGroupKey=function(e){return e||"_default_"},e._createClass(s,[{key:"size",get:function(){let e=0;return this._groups.forEach((r=>{e+=r.length})),e}}]),s}(i);return r.__decorate([s.property({readOnly:!0})],u.prototype,"size",null),u=r.__decorate([o.subclass("esri.core.Handles")],u),u}));

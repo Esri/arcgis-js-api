@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../webgl","./shaders/BitBlitPrograms"],(function(e,t,r,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.BitBlitRenderer=void 0;var n=function(){function e(){this._initialized=!1}return e.prototype.dispose=function(){this._program&&(this._program.dispose(),this._program=null),this._vertexArrayObject&&(this._vertexArrayObject.dispose(),this._vertexArrayObject=null)},e.prototype.render=function(e,t,r,i){e&&(this._initialized||this._initialize(e),e.setBlendFunctionSeparate(1,771,1,771),e.bindVAO(this._vertexArrayObject),e.bindProgram(this._program),t.setSamplingMode(r),e.bindTexture(t,0),this._program.setUniform1i("u_tex",0),this._program.setUniform1f("u_opacity",i),e.drawArrays(5,0,4),e.bindTexture(null,0),e.bindVAO())},e.prototype._initialize=function(e){if(this._initialized)return!0;var t=i.bitBlit.attributes,n=r.createProgram(e,i.bitBlit);if(!n)return!1;var o=new Int8Array(16);o[0]=-1,o[1]=-1,o[2]=0,o[3]=0,o[4]=1,o[5]=-1,o[6]=1,o[7]=0,o[8]=-1,o[9]=1,o[10]=0,o[11]=1,o[12]=1,o[13]=1,o[14]=1,o[15]=1;var a=new r.VertexArrayObject(e,t,{geometry:[{name:"a_pos",count:2,type:5120,offset:0,stride:4,normalized:!1,divisor:0},{name:"a_tex",count:2,type:5120,offset:2,stride:4,normalized:!1,divisor:0}]},{geometry:r.BufferObject.createVertex(e,35044,o)});return this._program=n,this._vertexArrayObject=a,this._initialized=!0,!0},e}();t.BitBlitRenderer=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/has","../../../../core/mathUtils","../../../../chunks/builtins","../../../webgl/BufferObject","../../../webgl/VertexArrayObject","../../../webgl/FramebufferObject","../../../webgl/programUtils","../../../webgl/RenderingContext","./shaders/BitBlitPrograms"],(function(e,t,i,r,n,s,o,a,l,c){"use strict";let d=function(){function e(){this._initialized=!1}var t=e.prototype;return t.dispose=function(){this._program&&(this._program.dispose(),this._program=null),this._vertexArrayObject&&(this._vertexArrayObject.dispose(),this._vertexArrayObject=null)},t.render=function(e,t,i,r){e&&(this._initialized||this._initialize(e),e.setBlendFunctionSeparate(1,771,1,771),e.bindVAO(this._vertexArrayObject),e.bindProgram(this._program),t.setSamplingMode(i),e.bindTexture(t,0),this._program.setUniform1i("u_tex",0),this._program.setUniform1f("u_opacity",r),e.drawArrays(5,0,4),e.bindTexture(null,0),e.bindVAO())},t._initialize=function(e){if(this._initialized)return!0;const t=c.bitBlit.attributes,i=a.createProgram(e,c.bitBlit);if(!i)return!1;const r=new Int8Array(16);r[0]=-1,r[1]=-1,r[2]=0,r[3]=0,r[4]=1,r[5]=-1,r[6]=1,r[7]=0,r[8]=-1,r[9]=1,r[10]=0,r[11]=1,r[12]=1,r[13]=1,r[14]=1,r[15]=1;const o=new s(e,t,{geometry:[{name:"a_pos",count:2,type:5120,offset:0,stride:4,normalized:!1,divisor:0},{name:"a_tex",count:2,type:5120,offset:2,stride:4,normalized:!1,divisor:0}]},{geometry:n.createVertex(e,35044,r)});return this._program=i,this._vertexArrayObject=o,this._initialized=!0,!0},e}();e.BitBlitRenderer=d,Object.defineProperty(e,"__esModule",{value:!0})}));

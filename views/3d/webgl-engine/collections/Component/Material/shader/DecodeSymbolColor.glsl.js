@@ -1,25 +1,29 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/shaderModules/interfaces"],(function(o,l){"use strict";o.DecodeSymbolColor=function(o){o.vertex.code.add(l.glsl`
+    vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {
+      float symbolAlpha = 0.0;
 
-define(["require","exports","tslib","../../../../core/shaderModules/interfaces"],(function(o,l,e,n){"use strict";var a;Object.defineProperty(l,"__esModule",{value:!0}),l.DecodeSymbolColor=void 0,l.DecodeSymbolColor=function(o){o.vertex.code.add(n.glsl(a||(a=e.__makeTemplateObject(["\n    vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {\n      float symbolAlpha = 0.0;\n\n      const float maxTint = 85.0;\n      const float maxReplace = 170.0;\n      const float scaleAlpha = 3.0;\n\n      if (symbolColor.a > maxReplace) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);\n      } else if (symbolColor.a > maxTint) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);\n      } else if (symbolColor.a > 0.0) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * symbolColor.a;\n      } else {\n        colorMixMode = ",";\n        symbolAlpha = 0.0;\n      }\n\n      return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);\n    }\n  "],["\n    vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {\n      float symbolAlpha = 0.0;\n\n      const float maxTint = 85.0;\n      const float maxReplace = 170.0;\n      const float scaleAlpha = 3.0;\n\n      if (symbolColor.a > maxReplace) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);\n      } else if (symbolColor.a > maxTint) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);\n      } else if (symbolColor.a > 0.0) {\n        colorMixMode = ",";\n        symbolAlpha = scaleAlpha * symbolColor.a;\n      } else {\n        colorMixMode = ",";\n        symbolAlpha = 0.0;\n      }\n\n      return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);\n    }\n  "])),n.glsl.int(1),n.glsl.int(3),n.glsl.int(4),n.glsl.int(1)))}}));
+      const float maxTint = 85.0;
+      const float maxReplace = 170.0;
+      const float scaleAlpha = 3.0;
+
+      if (symbolColor.a > maxReplace) {
+        colorMixMode = ${l.glsl.int(1)};
+        symbolAlpha = scaleAlpha * (symbolColor.a - maxReplace);
+      } else if (symbolColor.a > maxTint) {
+        colorMixMode = ${l.glsl.int(3)};
+        symbolAlpha = scaleAlpha * (symbolColor.a - maxTint);
+      } else if (symbolColor.a > 0.0) {
+        colorMixMode = ${l.glsl.int(4)};
+        symbolAlpha = scaleAlpha * symbolColor.a;
+      } else {
+        colorMixMode = ${l.glsl.int(1)};
+        symbolAlpha = 0.0;
+      }
+
+      return vec4(symbolColor.r, symbolColor.g, symbolColor.b, symbolAlpha);
+    }
+  `)},Object.defineProperty(o,"__esModule",{value:!0})}));

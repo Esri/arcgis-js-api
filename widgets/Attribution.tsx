@@ -35,14 +35,14 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Attribution
-import AttributionViewModel = require("esri/widgets/Attribution/AttributionViewModel");
+import AttributionViewModel from "esri/widgets/Attribution/AttributionViewModel";
 
 // esri.widgets.Attribution.t9n
 import AttributionMessages from "esri/widgets/Attribution/t9n/Attribution";
@@ -120,7 +120,8 @@ class Attribution extends Widget {
    */
   @property({
     dependsOn: ["viewModel.items.length", "itemDelimiter"],
-    readOnly: true
+    readOnly: true,
+    autoTracked: false
   })
   @renderable()
   get attributionText(): string {
@@ -359,4 +360,4 @@ class Attribution extends Widget {
   }
 }
 
-export = Attribution;
+export default Attribution;

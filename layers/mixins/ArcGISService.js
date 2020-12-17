@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Logger","../../core/accessorSupport/decorators","../support/arcgisLayerUrl"],(function(e,t,r,i,n,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ArcGISService=void 0,t.ArcGISService=function(e){return function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return r.__extends(t,e),Object.defineProperty(t.prototype,"title",{get:function(){if(this._get("title")&&"defaults"!==this.originOf("title"))return this._get("title");if(this.url){var e=o.parse(this.url);if(e&&e.title)return e.title}return this._get("title")||""},set:function(e){this._set("title",e)},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"url",{set:function(e){this._set("url",o.sanitizeUrl(e,i.getLogger(this.declaredClass)))},enumerable:!1,configurable:!0}),r.__decorate([n.property({dependsOn:["url"]})],t.prototype,"title",null),r.__decorate([n.property({type:String})],t.prototype,"url",null),t=r.__decorate([n.subclass("esri.layers.mixins.ArcGISService")],t)}(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../support/arcgisLayerUrl"],(function(e,t,r,s,i,o,l,c,u,n,p,a,_){"use strict";e.ArcGISService=e=>{let s=function(e){function r(){return e.apply(this,arguments)||this}return t._inheritsLoose(r,e),t._createClass(r,[{key:"title",get:function(){if(this._get("title")&&"defaults"!==this.originOf("title"))return this._get("title");if(this.url){const e=_.parse(this.url);if(i.isSome(e)&&e.title)return e.title}return this._get("title")||""},set:function(e){this._set("title",e)}},{key:"url",set:function(e){this._set("url",_.sanitizeUrl(e,o.getLogger(this.declaredClass)))}}]),r}(e);return r.__decorate([c.property({dependsOn:["url"]})],s.prototype,"title",null),r.__decorate([c.property({type:String})],s.prototype,"url",null),s=r.__decorate([u.subclass("esri.layers.mixins.ArcGISService")],s),s},Object.defineProperty(e,"__esModule",{value:!0})}));

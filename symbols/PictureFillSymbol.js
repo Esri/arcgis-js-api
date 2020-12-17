@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/lang","../core/screenUtils","../core/accessorSupport/decorators","./FillSymbol","./support/urlUtils"],(function(t,e,o,r,i,s,p,l){"use strict";return function(t){function e(){for(var e=[],o=0;o<arguments.length;o++)e[o]=arguments[o];var r=t.apply(this,e)||this;return r.type="picture-fill",r.url=null,r.xscale=1,r.yscale=1,r.width=12,r.height=12,r.xoffset=0,r.yoffset=0,r.source=null,r}var p;return o.__extends(e,t),p=e,e.prototype.normalizeCtorArgs=function(t,e,o,r){if(t&&"string"!=typeof t&&null==t.imageData)return t;var s={};return t&&(s.url=t),e&&(s.outline=e),null!=o&&(s.width=i.toPt(o)),null!=r&&(s.height=i.toPt(r)),s},e.prototype.clone=function(){var t=new p({color:r.clone(this.color),height:this.height,outline:this.outline&&this.outline.clone(),url:this.url,width:this.width,xoffset:this.xoffset,xscale:this.xscale,yoffset:this.yoffset,yscale:this.yscale});return t._set("source",r.clone(this.source)),t},e.prototype.hash=function(){return t.prototype.hash.call(this)+"."+this.color.hash()+"."+this.height+"."+this.url+"."+this.width+"."+this.xoffset+"."+this.xscale+"."+this.yoffset+"."+this.yscale},o.__decorate([s.enumeration({esriPFS:"picture-fill"},{readOnly:!0})],e.prototype,"type",void 0),o.__decorate([s.property(l.urlPropertyDefinition)],e.prototype,"url",void 0),o.__decorate([s.property({type:Number,json:{write:!0}})],e.prototype,"xscale",void 0),o.__decorate([s.property({type:Number,json:{write:!0}})],e.prototype,"yscale",void 0),o.__decorate([s.property({type:Number,cast:i.toPt,json:{write:!0}})],e.prototype,"width",void 0),o.__decorate([s.property({type:Number,cast:i.toPt,json:{write:!0}})],e.prototype,"height",void 0),o.__decorate([s.property({type:Number,cast:i.toPt,json:{write:!0}})],e.prototype,"xoffset",void 0),o.__decorate([s.property({type:Number,cast:i.toPt,json:{write:!0}})],e.prototype,"yoffset",void 0),o.__decorate([s.property(l.sourcePropertyDefinition)],e.prototype,"source",void 0),e=p=o.__decorate([s.subclass("esri.symbols.PictureFillSymbol")],e)}(p)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/screenUtils","./FillSymbol","./support/urlUtils"],(function(t,e,o,r,s,i,c,l,p,u,n,a,h,y,f){"use strict";var d;let _=d=function(e){function o(...t){var o;return(o=e.call(this,...t)||this).type="picture-fill",o.url=null,o.xscale=1,o.yscale=1,o.width=12,o.height=12,o.xoffset=0,o.yoffset=0,o.source=null,o}t._inheritsLoose(o,e);var s=o.prototype;return s.normalizeCtorArgs=function(t,e,o,r){if(t&&"string"!=typeof t&&null==t.imageData)return t;const s={};return t&&(s.url=t),e&&(s.outline=e),null!=o&&(s.width=h.toPt(o)),null!=r&&(s.height=h.toPt(r)),s},s.clone=function(){const t=new d({color:r.clone(this.color),height:this.height,outline:this.outline&&this.outline.clone(),url:this.url,width:this.width,xoffset:this.xoffset,xscale:this.xscale,yoffset:this.yoffset,yscale:this.yscale});return t._set("source",r.clone(this.source)),t},s.hash=function(){var t;return`${e.prototype.hash.call(this)}.${null==(t=this.color)?void 0:t.hash()}.${this.height}.${this.url}.${this.width}.${this.xoffset}.${this.xscale}.${this.yoffset}.${this.yscale}`},o}(y);return e.__decorate([l.enumeration({esriPFS:"picture-fill"},{readOnly:!0})],_.prototype,"type",void 0),e.__decorate([c.property(f.urlPropertyDefinition)],_.prototype,"url",void 0),e.__decorate([c.property({type:Number,json:{write:!0}})],_.prototype,"xscale",void 0),e.__decorate([c.property({type:Number,json:{write:!0}})],_.prototype,"yscale",void 0),e.__decorate([c.property({type:Number,cast:h.toPt,json:{write:!0}})],_.prototype,"width",void 0),e.__decorate([c.property({type:Number,cast:h.toPt,json:{write:!0}})],_.prototype,"height",void 0),e.__decorate([c.property({type:Number,cast:h.toPt,json:{write:!0}})],_.prototype,"xoffset",void 0),e.__decorate([c.property({type:Number,cast:h.toPt,json:{write:!0}})],_.prototype,"yoffset",void 0),e.__decorate([c.property(f.sourcePropertyDefinition)],_.prototype,"source",void 0),_=d=e.__decorate([p.subclass("esri.symbols.PictureFillSymbol")],_),_}));

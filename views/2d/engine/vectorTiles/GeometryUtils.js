@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(_,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.between=e.interpolate=e.sqr=e.log2=e.degToByte=e.radToByte=e.positiveMod=e.C_SQRT2_INV=e.C_SQRT2=e.C_DEG_TO_RAD=e.C_DEG_TO_256=e.C_256_TO_RAD=e.C_RAD_TO_256=e.C_PI_BY_2=e.C_2PI=e.C_PI=e.C_INFINITY=void 0,e.C_INFINITY=Number.POSITIVE_INFINITY,e.C_PI=Math.PI,e.C_2PI=2*e.C_PI,e.C_PI_BY_2=e.C_PI/2,e.C_RAD_TO_256=128/e.C_PI,e.C_256_TO_RAD=e.C_PI/128,e.C_DEG_TO_256=256/360,e.C_DEG_TO_RAD=e.C_PI/180,e.C_SQRT2=1.414213562,e.C_SQRT2_INV=1/e.C_SQRT2;var t=1/Math.LN2;function n(_,e){return(_%=e)>=0?_:_+e}e.positiveMod=n,e.radToByte=function(_){return n(_*e.C_RAD_TO_256,256)},e.degToByte=function(_){return n(_*e.C_DEG_TO_256,256)},e.log2=function(_){return Math.log(_)*t},e.sqr=function(_){return _*_},e.interpolate=function(_,e,t){return _*(1-t)+e*t},e.between=function(_,e,t){return _>=e&&_<=t||_>=t&&_<=e}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";const e=Number.POSITIVE_INFINITY,n=Math.PI,_=2*n,r=n/2,o=128/n,u=n/128,i=256/360,I=n/180,c=1.414213562,T=1/Math.LN2;function f(t,e){return(t%=e)>=0?t:t+e}t.C_256_TO_RAD=u,t.C_2PI=_,t.C_DEG_TO_256=i,t.C_DEG_TO_RAD=I,t.C_INFINITY=e,t.C_PI=n,t.C_PI_BY_2=r,t.C_RAD_TO_256=o,t.C_SQRT2=c,t.C_SQRT2_INV=.707106781373095,t.between=function(t,e,n){return t>=e&&t<=n||t>=n&&t<=e},t.degToByte=function(t){return f(t*i,256)},t.interpolate=function(t,e,n){return t*(1-n)+e*n},t.log2=function(t){return Math.log(t)*T},t.positiveMod=f,t.radToByte=function(t){return f(t*o,256)},t.sqr=function(t){return t*t},Object.defineProperty(t,"__esModule",{value:!0})}));

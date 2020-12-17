@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../geometry","../../core/jsonMap","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],(function(e,t,o,r,i,n,p,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var a=new i.default({upperLeft:"upper-left",lowerLeft:"lower-left"}),c=function(e){function t(t){var o=e.call(this,t)||this;return o.extent=null,o.mode="view",o.originPosition="upper-left",o.tolerance=1,o}var i;return o.__extends(t,e),i=t,t.prototype.clone=function(){return new i(p.clone({extent:this.extent,mode:this.mode,originPosition:this.originPosition,tolerance:this.tolerance}))},o.__decorate([s.property({type:r.Extent,json:{write:{overridePolicy:function(){return{enabled:"view"===this.mode}}}}})],t.prototype,"extent",void 0),o.__decorate([s.property({type:["view","edit"],json:{write:!0}})],t.prototype,"mode",void 0),o.__decorate([s.property({type:String,json:{read:a.read,write:a.write}})],t.prototype,"originPosition",void 0),o.__decorate([s.property({type:Number,json:{write:{overridePolicy:function(){return{enabled:"view"===this.mode}}}}})],t.prototype,"tolerance",void 0),t=i=o.__decorate([s.subclass("esri.tasks.support.QuantizationParameters")],t)}(n.JSONSupport);t.default=c}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/Extent","../../geometry"],(function(e,r,o,t,i,n,s,p,c,u,a,l,d,y,w){"use strict";var h;const v=new p.JSONMap({upperLeft:"upper-left",lowerLeft:"lower-left"});let _=h=function(r){function o(e){var o;return(o=r.call(this,e)||this).extent=null,o.mode="view",o.originPosition="upper-left",o.tolerance=1,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new h(t.clone({extent:this.extent,mode:this.mode,originPosition:this.originPosition,tolerance:this.tolerance}))},o}(d.JSONSupport);return r.__decorate([s.property({type:y,json:{write:{overridePolicy(){return{enabled:"view"===this.mode}}}}})],_.prototype,"extent",void 0),r.__decorate([s.property({type:["view","edit"],json:{write:!0}})],_.prototype,"mode",void 0),r.__decorate([s.property({type:String,json:{read:v.read,write:v.write}})],_.prototype,"originPosition",void 0),r.__decorate([s.property({type:Number,json:{write:{overridePolicy(){return{enabled:"view"===this.mode}}}}})],_.prototype,"tolerance",void 0),_=h=r.__decorate([c.subclass("esri.tasks.support.QuantizationParameters")],_),_}));

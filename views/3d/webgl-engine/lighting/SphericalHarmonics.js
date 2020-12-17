@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/mathUtils","../../../../core/libs/gl-matrix-2/vec3","../../../../core/libs/gl-matrix-2/vec3f64","../lib/LongVectorMath","./Lightsources"],(function(i,t,n,e,r,s,c){"use strict";function a(i){return(i+1)*(i+1)}function o(i){return n.clamp(Math.floor(Math.sqrt(i)-1),0,2)}function h(i,t,n){var e=i[0],r=i[1],s=i[2],c=n||[];return c.length=a(t),t>=0&&(c[0]=.28209479177),t>=1&&(c[1]=.4886025119*e,c[2]=.4886025119*s,c[3]=.4886025119*r),t>=2&&(c[4]=1.09254843059*e*r,c[5]=1.09254843059*r*s,c[6]=.31539156525*(3*s*s-1),c[7]=1.09254843059*e*s,c[8]=.54627421529*(e*e-r*r)),c}function f(i,t){var n=a(i),e=t||{r:[],g:[],b:[]};e.r.length=e.g.length=e.b.length=n;for(var r=0;r<n;r++)e.r[r]=e.g[r]=e.b[r]=0;return e}function l(i,t){for(var n=o(t.r.length),r=0,c=i;r<c.length;r++){var a=c[r];e.vec3.negate(v,a.direction),h(v,n,b),s.elementwiseProduct(b,y),s.scalarProduct(b,a.intensity[0],p),s.add(t.r,p),s.scalarProduct(b,a.intensity[1],p),s.add(t.g,p),s.scalarProduct(b,a.intensity[2],p),s.add(t.b,p)}return t}function u(i,t){h(v,0,b);for(var n=0,e=i;n<e.length;n++){var r=e[n];t.r[0]+=b[0]*y[0]*r.intensity[0]*4*Math.PI,t.g[0]+=b[0]*y[0]*r.intensity[1]*4*Math.PI,t.b[0]+=b[0]*y[0]*r.intensity[2]*4*Math.PI}return t}Object.defineProperty(t,"__esModule",{value:!0}),t.combineLights=t.projectAmbientLights=t.projectFillLights=t.initSHCoefficients=t.computeCoefficients=t.orderFromNumberOfCoefficients=t.numberOfCoefficientsInBand=t.numberOfCoefficients=void 0,t.numberOfCoefficients=a,t.numberOfCoefficientsInBand=function(i){return 2*i+1},t.orderFromNumberOfCoefficients=o,t.computeCoefficients=h,t.initSHCoefficients=f,t.projectFillLights=l,t.projectAmbientLights=u,t.combineLights=function(i,t,n){f(t,n.sphericalHarmonics.sh),e.vec3.set(n.main.intensity,0,0,0);var r=!1,a=g,o=m,h=d;a.length=0,o.length=0,h.length=0;for(var b=0,p=i;b<p.length;b++){(L=p[b])instanceof c.MainLight&&!r?(e.vec3.copy(n.main.direction,L.direction),n.main.intensity[0]=L.intensity[0],n.main.intensity[1]=L.intensity[1],n.main.intensity[2]=L.intensity[2],n.main.castShadows=L.castShadows,r=!0):L instanceof c.MainLight||L instanceof c.FillLight?a.push(L):L instanceof c.AmbientLight?o.push(L):L instanceof c.SphericalHarmonicsLight&&h.push(L)}l(a,n.sphericalHarmonics.sh),u(o,n.sphericalHarmonics.sh);for(var v=0,y=h;v<y.length;v++){var L=y[v];s.add(n.sphericalHarmonics.sh.r,L.sh.r),s.add(n.sphericalHarmonics.sh.g,L.sh.g),s.add(n.sphericalHarmonics.sh.b,L.sh.b)}};var g=[],m=[],d=[],b=[0],p=[0],v=r.vec3f64.create(),y=[3.141593,2.094395,2.094395,2.094395,.785398,.785398,.785398,.785398,.785398]}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/mathUtils","../../../../chunks/vec3f64","../../../../chunks/vec3","./Lightsources","../lib/LongVectorMath"],(function(n,t,i,e,s,c){"use strict";function o(n){return(n+1)*(n+1)}function r(n){return t.clamp(Math.floor(Math.sqrt(n)-1),0,2)}function a(n,t,i){const e=n[0],s=n[1],c=n[2],r=i||[];return r.length=o(t),t>=0&&(r[0]=.28209479177),t>=1&&(r[1]=.4886025119*e,r[2]=.4886025119*c,r[3]=.4886025119*s),t>=2&&(r[4]=1.09254843059*e*s,r[5]=1.09254843059*s*c,r[6]=.31539156525*(3*c*c-1),r[7]=1.09254843059*e*c,r[8]=.54627421529*(e*e-s*s)),r}function h(n,t){const i=o(n),e=t||{r:[],g:[],b:[]};e.r.length=e.g.length=e.b.length=i;for(let n=0;n<i;n++)e.r[n]=e.g[n]=e.b[n]=0;return e}function f(n,t){const i=r(t.r.length);for(const s of n)e.negate(b,s.direction),a(b,i,m),c.elementwiseProduct(m,y),c.scalarProduct(m,s.intensity[0],p),c.add(t.r,p),c.scalarProduct(m,s.intensity[1],p),c.add(t.g,p),c.scalarProduct(m,s.intensity[2],p),c.add(t.b,p);return t}function u(n,t){a(b,0,m);for(const i of n)t.r[0]+=m[0]*y[0]*i.intensity[0]*4*Math.PI,t.g[0]+=m[0]*y[0]*i.intensity[1]*4*Math.PI,t.b[0]+=m[0]*y[0]*i.intensity[2]*4*Math.PI;return t}const l=[],d=[],g=[],m=[0],p=[0],b=i.create(),y=[3.141593,2.094395,2.094395,2.094395,.785398,.785398,.785398,.785398,.785398];n.combineLights=function(n,t,i){h(t,i.sphericalHarmonics.sh),e.set(i.main.intensity,0,0,0);let o=!1;const r=l,a=d,m=g;r.length=0,a.length=0,m.length=0;for(const t of n)t instanceof s.MainLight&&!o?(e.copy(i.main.direction,t.direction),i.main.intensity[0]=t.intensity[0],i.main.intensity[1]=t.intensity[1],i.main.intensity[2]=t.intensity[2],i.main.castShadows=t.castShadows,o=!0):t instanceof s.MainLight||t instanceof s.FillLight?r.push(t):t instanceof s.AmbientLight?a.push(t):t instanceof s.SphericalHarmonicsLight&&m.push(t);f(r,i.sphericalHarmonics.sh),u(a,i.sphericalHarmonics.sh);for(const n of m)c.add(i.sphericalHarmonics.sh.r,n.sh.r),c.add(i.sphericalHarmonics.sh.g,n.sh.g),c.add(i.sphericalHarmonics.sh.b,n.sh.b)},n.computeCoefficients=a,n.initSHCoefficients=h,n.numberOfCoefficients=o,n.numberOfCoefficientsInBand=function(n){return 2*n+1},n.orderFromNumberOfCoefficients=r,n.projectAmbientLights=u,n.projectFillLights=f,Object.defineProperty(n,"__esModule",{value:!0})}));

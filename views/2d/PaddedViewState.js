@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Accessor","../../core/accessorSupport/decorators","../../core/libs/gl-matrix-2/vec2","../../core/libs/gl-matrix-2/vec2f64","./viewpointUtils","./ViewState"],(function(e,t,r,o,i,p,a,n,d){"use strict";var c=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.left=0,t.top=0,t.right=0,t.bottom=0,t}return r.__extends(t,e),r.__decorate([i.property()],t.prototype,"left",void 0),r.__decorate([i.property()],t.prototype,"top",void 0),r.__decorate([i.property()],t.prototype,"right",void 0),r.__decorate([i.property()],t.prototype,"bottom",void 0),t=r.__decorate([i.subclass("esri.views.2d.PaddedViewState.Padding")],t)}(o);return function(e){function t(){for(var t=[],r=0;r<arguments.length;r++)t[r]=arguments[r];var o,i=e.apply(this,t)||this;return i.paddedViewState=new d,i._updateContent=(o=a.vec2f64.create(),function(){var e=i._get("size"),t=i._get("padding");if(e&&t){var r=i.paddedViewState;p.vec2.set(o,t.left+t.right,t.top+t.bottom),p.vec2.subtract(o,e,o),p.vec2.copy(r.size,o);var a=r.viewpoint;a&&(i.viewpoint=a)}}),i.watch(["size","padding"],i._updateContent,!0),i.padding=new c,i.size=[0,0],i}return r.__extends(t,e),Object.defineProperty(t.prototype,"padding",{set:function(e){this._set("padding",e||new c)},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"viewpoint",{set:function(e){if(e){var t=e.clone();this.paddedViewState.viewpoint=e,n.addPadding(t,e,this._get("size"),this._get("padding"));var r=this._viewpoint2D,o=t.targetGeometry;r.center[0]=o.x,r.center[1]=o.y,r.rotation=t.rotation,r.scale=t.scale,r.spatialReference=o.spatialReference,this._update()}},enumerable:!1,configurable:!0}),r.__decorate([i.property()],t.prototype,"paddedViewState",void 0),r.__decorate([i.property({type:c})],t.prototype,"padding",null),r.__decorate([i.property()],t.prototype,"viewpoint",null),t=r.__decorate([i.subclass("esri.views.2d.PaddedViewState")],t)}(d)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor","../../chunks/vec2f64","../../chunks/vec2","./viewpointUtils","./ViewState"],(function(e,t,o,r,i,s,p,n,a,c,d,u,l,_,y){"use strict";let h=function(t){function o(){var e;return(e=t.apply(this,arguments)||this).left=0,e.top=0,e.right=0,e.bottom=0,e}return e._inheritsLoose(o,t),o}(d);t.__decorate([s.property()],h.prototype,"left",void 0),t.__decorate([s.property()],h.prototype,"top",void 0),t.__decorate([s.property()],h.prototype,"right",void 0),t.__decorate([s.property()],h.prototype,"bottom",void 0),h=t.__decorate([p.subclass("esri.views.2d.PaddedViewState.Padding")],h);let g=function(t){function o(...e){var o;return(o=t.call(this,...e)||this).paddedViewState=new y,o._updateContent=(()=>{const e=u.create();return()=>{const t=o._get("size"),r=o._get("padding");if(!t||!r)return;const i=o.paddedViewState;l.set(e,r.left+r.right,r.top+r.bottom),l.subtract(e,t,e),l.copy(i.size,e);const s=i.viewpoint;s&&(o.viewpoint=s)}})(),o.watch(["size","padding"],o._updateContent,!0),o.padding=new h,o.size=[0,0],o}return e._inheritsLoose(o,t),e._createClass(o,[{key:"padding",set:function(e){this._set("padding",e||new h)}},{key:"viewpoint",set:function(e){if(e){const t=e.clone();this.paddedViewState.viewpoint=e,_.addPadding(t,e,this._get("size"),this._get("padding"));const o=this._viewpoint2D,r=t.targetGeometry;o.center[0]=r.x,o.center[1]=r.y,o.rotation=t.rotation,o.scale=t.scale,o.spatialReference=r.spatialReference,this._update()}}}]),o}(y);return t.__decorate([s.property()],g.prototype,"paddedViewState",void 0),t.__decorate([s.property({type:h})],g.prototype,"padding",null),t.__decorate([s.property()],g.prototype,"viewpoint",null),g=t.__decorate([p.subclass("esri.views.2d.PaddedViewState")],g),g}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Point"],(function(o,e,r,t,p,i){"use strict";return function(o){function e(){var e=null!==o&&o.apply(this,arguments)||this;return e.blockWidth=void 0,e.blockHeight=void 0,e.compression=null,e.origin=null,e.firstPyramidLevel=null,e.maximumPyramidLevel=null,e.pyramidScalingFactor=2,e.pyramidBlockWidth=null,e.pyramidBlockHeight=null,e.isVirtualTileInfo=!1,e.tileInfo=null,e.blockBoundary=null,e}return r.__extends(e,o),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"blockWidth",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"blockHeight",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],e.prototype,"compression",void 0),r.__decorate([p.property({type:i,json:{write:!0}})],e.prototype,"origin",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"firstPyramidLevel",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"maximumPyramidLevel",void 0),r.__decorate([p.property()],e.prototype,"pyramidScalingFactor",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"pyramidBlockWidth",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],e.prototype,"pyramidBlockHeight",void 0),r.__decorate([p.property({type:Boolean,json:{write:!0}})],e.prototype,"isVirtualTileInfo",void 0),r.__decorate([p.property({json:{write:!0}})],e.prototype,"tileInfo",void 0),r.__decorate([p.property()],e.prototype,"blockBoundary",void 0),e=r.__decorate([p.subclass("esri.layers.support.RasterStorageInfo")],e)}(t.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/Point"],(function(o,e,r,t,p,i,c,l,s,n,y,a){"use strict";let d=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).blockWidth=void 0,o.blockHeight=void 0,o.compression=null,o.origin=null,o.firstPyramidLevel=null,o.maximumPyramidLevel=null,o.pyramidScalingFactor=2,o.pyramidBlockWidth=null,o.pyramidBlockHeight=null,o.isVirtualTileInfo=!1,o.tileInfo=null,o.blockBoundary=null,o}return o._inheritsLoose(r,e),r}(y.JSONSupport);return e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"blockWidth",void 0),e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"blockHeight",void 0),e.__decorate([i.property({type:String,json:{write:!0}})],d.prototype,"compression",void 0),e.__decorate([i.property({type:a,json:{write:!0}})],d.prototype,"origin",void 0),e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"firstPyramidLevel",void 0),e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"maximumPyramidLevel",void 0),e.__decorate([i.property()],d.prototype,"pyramidScalingFactor",void 0),e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"pyramidBlockWidth",void 0),e.__decorate([i.property({type:Number,json:{write:!0}})],d.prototype,"pyramidBlockHeight",void 0),e.__decorate([i.property({type:Boolean,json:{write:!0}})],d.prototype,"isVirtualTileInfo",void 0),e.__decorate([i.property({json:{write:!0}})],d.prototype,"tileInfo",void 0),e.__decorate([i.property()],d.prototype,"blockBoundary",void 0),d=e.__decorate([c.subclass("esri.layers.support.RasterStorageInfo")],d),d}));

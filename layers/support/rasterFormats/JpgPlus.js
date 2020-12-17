@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./Jpg","./Zlib"],(function(e,r,n,t){"use strict";return function(){function e(){}return e.decode=function(e){var r=new Uint8Array(e),i=new n;i.parse(r);var a,o=i.width,f=i.height,u=i.numComponents,s=i.eof,h=i.getData(o,f,!0),g=o*f,l=0,w=0,c=0;if(s<r.length-1){var p=new t(r.subarray(s)).getBytes();a=new Uint8Array(g);var d=0;for(l=0;l<p.length;l++)for(c=7;c>=0;c--)a[d++]=p[l]>>c&1}var v,y=null;if(1===u)y=[h,h,h];else{for(y=[],l=0;l<3;l++)v=new Uint8Array(g),y.push(v);for(c=0,w=0;w<g;w++)for(l=0;l<3;l++)y[l][w]=h[c++]}return{width:o,height:f,pixels:y,mask:a}},e}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/Zlib","../../../chunks/Jpg"],(function(n,t){"use strict";return function(){function e(){}return e.decode=function(e){const r=new Uint8Array(e),i=new t.Jpg;i.parse(r);const{width:o,height:s,numComponents:u,eof:f}=i,c=i.getData(o,s,!0);let l;const h=o*s;let a=0,g=0,w=0;if(f<r.length-1){const t=new n.Zlib(r.subarray(f)).getBytes();l=new Uint8Array(h);let e=0;for(a=0;a<t.length;a++)for(w=7;w>=0;w--)l[e++]=t[a]>>w&1}let p,d=null;if(1===u)d=[c,c,c];else{for(d=[],a=0;a<3;a++)p=new Uint8Array(h),d.push(p);for(w=0,g=0;g<h;g++)for(a=0;a<3;a++)d[a][g]=c[w++]}return{width:o,height:s,pixels:d,mask:l}},e}()}));

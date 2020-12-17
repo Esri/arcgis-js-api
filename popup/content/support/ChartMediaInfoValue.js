@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/JSONSupport","../../../core/lang","../../../core/accessorSupport/decorators","./ChartMediaInfoValueSeries"],(function(e,t,o,r,i,p,n){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.fields=[],o.normalizeField=null,o.series=[],o.tooltipField=null,o}var r;return o.__extends(t,e),r=t,t.prototype.clone=function(){return new r({fields:i.clone(this.fields),normalizeField:this.normalizeField,tooltipField:this.tooltipField})},o.__decorate([p.property({type:[String],json:{write:!0}})],t.prototype,"fields",void 0),o.__decorate([p.property({type:String,json:{write:!0}})],t.prototype,"normalizeField",void 0),o.__decorate([p.property({type:[n],json:{read:!1}})],t.prototype,"series",void 0),o.__decorate([p.property({type:String,json:{write:!0}})],t.prototype,"tooltipField",void 0),t=r=o.__decorate([p.subclass("esri.popup.content.support.ChartMediaInfoValue")],t)}(r.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/lang","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport","./ChartMediaInfoValueSeries"],(function(e,o,r,t,i,p,s,l,n,c,u,a,d){"use strict";var y;let _=y=function(o){function r(e){var r;return(r=o.call(this,e)||this).fields=[],r.normalizeField=null,r.series=[],r.tooltipField=null,r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new y({fields:t.clone(this.fields),normalizeField:this.normalizeField,tooltipField:this.tooltipField})},r}(a.JSONSupport);return o.__decorate([s.property({type:[String],json:{write:!0}})],_.prototype,"fields",void 0),o.__decorate([s.property({type:String,json:{write:!0}})],_.prototype,"normalizeField",void 0),o.__decorate([s.property({type:[d],json:{read:!1}})],_.prototype,"series",void 0),o.__decorate([s.property({type:String,json:{write:!0}})],_.prototype,"tooltipField",void 0),_=y=o.__decorate([l.subclass("esri.popup.content.support.ChartMediaInfoValue")],_),_}));

@@ -1,25 +1,18 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,t,r,u,a,o){"use strict";var n,s,p;Object.defineProperty(t,"__esModule",{value:!0}),t.VertexTextureCoordinates=void 0,t.VertexTextureCoordinates=function(e,t){e.include(u.TextureCoordinateAttribute,t),e.fragment.code.add(o.glsl(n||(n=r.__makeTemplateObject(["\n  struct TextureLookupParameter {\n    vec2 uv;\n    ","\n  } vtc;\n  "],["\n  struct TextureLookupParameter {\n    vec2 uv;\n    ","\n  } vtc;\n  "])),t.supportsTextureAtlas?"vec2 size;":"")),1===t.attributeTextureCoordinates&&e.fragment.code.add(o.glsl(s||(s=r.__makeTemplateObject(["\n      vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {\n        return texture2D(tex, params.uv);\n      }\n    "],["\n      vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {\n        return texture2D(tex, params.uv);\n      }\n    "])))),2===t.attributeTextureCoordinates&&(e.include(a.TextureAtlasLookup),e.fragment.code.add(o.glsl(p||(p=r.__makeTemplateObject(["\n    vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {\n        return textureAtlasLookup(tex, params.size, params.uv, vuvRegion);\n      }\n    "],["\n    vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {\n        return textureAtlasLookup(tex, params.size, params.uv, vuvRegion);\n      }\n    "])))))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl"],(function(e,t,r,u){"use strict";e.VertexTextureCoordinates=function(e,a){e.include(r.TextureCoordinateAttribute,a),e.fragment.code.add(t.glsl`
+  struct TextureLookupParameter {
+    vec2 uv;
+    ${a.supportsTextureAtlas?"vec2 size;":""}
+  } vtc;
+  `),1===a.attributeTextureCoordinates&&e.fragment.code.add(t.glsl`
+      vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {
+        return texture2D(tex, params.uv);
+      }
+    `),2===a.attributeTextureCoordinates&&(e.include(u.TextureAtlasLookup),e.fragment.code.add(t.glsl`
+    vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {
+        return textureAtlasLookup(tex, params.size, params.uv, vuvRegion);
+      }
+    `))},Object.defineProperty(e,"__esModule",{value:!0})}));

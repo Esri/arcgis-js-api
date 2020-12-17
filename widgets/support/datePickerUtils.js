@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/Error","../../intl/date"],(function(t,e,r,a){"use strict";function n(t){for(var e=[/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g],r=0;r<10;r++)t=t.replace(e[r],r.toString());return Number(t)}function o(t){return new r("could not parse date input, expecting the following format: "+a.formatDate(Date.now(),t))}Object.defineProperty(e,"__esModule",{value:!0}),e.parseDateIntoParts=void 0,e.parseDateIntoParts=function(t,e){var r=a.getDateTimeFormatter(e),i=Date.now(),f=r.formatToParts(i),u=new Set;f.filter((function(t){return"literal"===t.type})).forEach((function(t){var e=t.value;return u.add(e)}));for(var l=0,c={};f.length>0;)for(var g=f.shift(),s=g.type,h=g.value,d=0;d<h.length;d++,l++){var p=t.charAt(l);if(u.has(p)){l++;break}if("literal"===s)break;c[s]||(c[s]=[]),c[s].push(p)}var v={};try{v.day=n(c.day.join("")),v.month=n(c.month.join(""))-1,v.year=n((c.year||c.relatedYear).join(""))}catch(t){throw o(e)}if(isNaN(v.day)||isNaN(v.month)||isNaN(v.year))throw o(e);return v}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/Error","../../intl/date"],(function(t,e,r){"use strict";function o(t){const e=[/٠/g,/١/g,/٢/g,/٣/g,/٤/g,/٥/g,/٦/g,/٧/g,/٨/g,/٩/g];for(let r=0;r<10;r++)t=t.replace(e[r],r.toString());return Number(t)}function a(t){return new e(`could not parse date input, expecting the following format: ${r.formatDate(Date.now(),t)}`)}t.parseDateIntoParts=function(t,e){const n=r.getDateTimeFormatter(e),i=Date.now(),c=n.formatToParts(i),l=new Set;c.filter((({type:t})=>"literal"===t)).forEach((({value:t})=>l.add(t)));let s=0;const f={};for(;c.length>0;){const{type:e,value:r}=c.shift();for(let o=0;o<r.length;o++,s++){const r=t.charAt(s);if(l.has(r)){s++;break}if("literal"===e)break;f[e]||(f[e]=[]),f[e].push(r)}}const g={};try{g.day=o(f.day.join("")),g.month=o(f.month.join(""))-1,g.year=o((f.year||f.relatedYear).join(""))}catch(t){throw a(e)}if(isNaN(g.day)||isNaN(g.month)||isNaN(g.year))throw a(e);return g},Object.defineProperty(t,"__esModule",{value:!0})}));

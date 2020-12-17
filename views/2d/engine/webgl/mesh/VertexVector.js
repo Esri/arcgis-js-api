@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../Utils","./VertexBuffer","../util/Writer"],(function(e,t,r,n,o){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.VertexVectors=void 0;var i=function(){function e(e,t){this.data=e,this.stride=t}return Object.defineProperty(e.prototype,"vertexCount",{get:function(){var e=this.stride/4,t=this.data.length/e;return t!==(0|t)&&console.debug("Corrupted stride"),t},enumerable:!1,configurable:!0}),e.prototype.transfer=function(e,t){var r=this.data.buffer();e.vertexCount=this.vertexCount,e.data=r,e.stride=this.stride,t.push(r)},e}();t.default=i;var s=function(){function e(e,t,n){void 0===n&&(n=!1),this.geometryType=e,this.indexVector=new o.default(Uint32Array,6*t),this.namedVectors={};var s=r.getStrides(e,n);for(var a in s){var u=s[a],f=void 0;switch(u%4){case 0:case 2:f=new o.default(Uint32Array,u*t);break;case 1:case 3:f=new o.default(Uint8Array,u*t)}this.namedVectors[a]=new i(f,u)}}return e.prototype.get=function(e){return this.namedVectors[e].data},e.prototype.getVector=function(e){return this.namedVectors[e]},e.prototype.transfer=function(e,t){var r=this.indexVector.buffer(),n={};for(var o in t.push(r),this.namedVectors){var i=this.namedVectors[o];n[o]={},i.transfer(n[o],t)}e.geometryType=this.geometryType,e.indexBuffer=r,e.namedBuffers=n,this.destroy()},e.prototype.intoBuffers=function(){var e=n.VertexBuffers.fromVertexVectors(this);return this.destroy(),e},e.prototype.destroy=function(){this.indexVector=null,this.namedVectors=null},e}();t.VertexVectors=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../Utils","../util/Writer","./VertexBuffer"],(function(t,e,r,n,s){"use strict";let i=function(){function t(t,e){this.data=t,this.stride=e}return t.prototype.transfer=function(t,e){const r=this.data.buffer();t.vertexCount=this.vertexCount,t.data=r,t.stride=this.stride,e.push(r)},e._createClass(t,[{key:"vertexCount",get:function(){const t=this.stride/4,e=this.data.length/t;return e!==(0|e)&&console.debug("Corrupted stride"),e}}]),t}(),o=function(){function t(t,e,s=!1){this.geometryType=t,this.indexVector=new n(Uint32Array,6*e),this.namedVectors={};const o=r.getStrides(t,s);for(const t in o){const r=o[t];let s;switch(r%4){case 0:case 2:s=new n(Uint32Array,r*e);break;case 1:case 3:s=new n(Uint8Array,r*e)}this.namedVectors[t]=new i(s,r)}}var e=t.prototype;return e.get=function(t){return this.namedVectors[t].data},e.getVector=function(t){return this.namedVectors[t]},e.transfer=function(t,e){const r=this.indexVector.buffer(),n={};e.push(r);for(const t in this.namedVectors){const r=this.namedVectors[t];n[t]={},r.transfer(n[t],e)}t.geometryType=this.geometryType,t.indexBuffer=r,t.namedBuffers=n,this.destroy()},e.intoBuffers=function(){const t=s.VertexBuffers.fromVertexVectors(this);return this.destroy(),t},e.destroy=function(){this.indexVector=null,this.namedVectors=null},t}();t.VertexVectors=o,t.default=i,Object.defineProperty(t,"__esModule",{value:!0})}));

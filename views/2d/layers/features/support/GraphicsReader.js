@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../geometry/support/jsonUtils","../../../../../layers/graphics/featureConversionUtils","./FeatureSetReader","./FeatureSetReaderJSON"],(function(e,r,t,n,o,i,u){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.GraphicsReader=void 0;var a=function(e){function r(r,t){return e.call(this,r,t,null)||this}return t.__extends(r,e),r.from=function(e){for(var t=i.FeatureSetReader.createInstance(),u=[],a=0,s=e.filter((function(e){return!!e.geometry}));a<s.length;a++){var c=s[a],p=n.getJsonType(c.geometry);o.convertFromGraphics(u,[c],p,!1,!1,"uid")}return new r(t,u)},Object.defineProperty(r.prototype,"geometryType",{get:function(){var e=this._current;return e?e.geometryType:null},enumerable:!1,configurable:!0}),r.prototype.readGraphic=function(){return this._current},r.prototype.getCursor=function(){return this.copy()},r.prototype.copy=function(){var e=new r(this.instance,this._features);return this.copyInto(e),e},r}(u.FeatureSetReaderJSON);r.GraphicsReader=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../geometry/support/jsonUtils","../../../../../layers/graphics/featureConversionUtils","./FeatureSetReader","./FeatureSetReaderJSON"],(function(e,t,r,n,o,s){"use strict";let u=function(e){function s(t,r){return e.call(this,t,r,null)||this}t._inheritsLoose(s,e),s.from=function(e){const t=o.FeatureSetReader.createInstance(),u=[],i=e.filter((e=>!!e.geometry));for(const e of i){const t=r.getJsonType(e.geometry);n.convertFromGraphics(u,[e],t,!1,!1,"uid")}return new s(t,u)};var u=s.prototype;return u.readGraphic=function(){return this._current},u.getCursor=function(){return this.copy()},u.copy=function(){const e=new s(this.instance,this._features);return this.copyInto(e),e},t._createClass(s,[{key:"geometryType",get:function(){const e=this._current;return e?e.geometryType:null}}]),s}(s.FeatureSetReaderJSON);e.GraphicsReader=u,Object.defineProperty(e,"__esModule",{value:!0})}));

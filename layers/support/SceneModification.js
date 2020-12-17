@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../geometry","../../core/JSONSupport","../../core/lang","../../core/Warning","../../core/accessorSupport/decorators","../../core/accessorSupport/decorators/persistable","../../views/3d/support/polygonUtils","../../views/3d/support/projectionUtils"],(function(e,t,r,o,i,p,s,a,n,c,l){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.geometry=null,r.type="clip",r}var i;return r.__extends(t,e),i=t,t.prototype.writeGeometry=function(e,t,r,i){if(i.layer&&i.layer.spatialReference&&!i.layer.spatialReference.equals(this.geometry.spatialReference)){if(!l.canProject(e.spatialReference,i.layer.spatialReference))return void(i&&i.messages&&i.messages.push(new s("scenemodification:unsupported","Scene modifications with incompatible spatial references are not supported",{modification:this,spatialReference:i.layer.spatialReference,context:i})));var p=new o.Polygon({spatialReference:i.layer.spatialReference});c.polygonToPolygon(e,p),t[r]=p.toJSON(i)}else t[r]=e.toJSON(i);delete t[r].spatialReference},t.prototype.clone=function(){return new i({geometry:p.clone(this.geometry),type:this.type})},r.__decorate([a.property({type:o.Polygon}),n.persistable()],t.prototype,"geometry",void 0),r.__decorate([a.writer(["web-scene","portal-item"],"geometry")],t.prototype,"writeGeometry",null),r.__decorate([a.property({type:["clip","mask","replace"],nonNullable:!0}),n.persistable()],t.prototype,"type",void 0),t=i=r.__decorate([a.subclass("esri.layers.support.SceneModification")],t)}(i.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/Warning","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/accessorSupport/decorators/persistable","../../core/JSONSupport","../../geometry/Polygon","../../geometry","../../geometry/projection"],(function(e,r,t,o,s,c,a,p,i,n,l,u,y,f,d){"use strict";var g;let m=g=function(r){function t(e){var t;return(t=r.call(this,e)||this).geometry=null,t.type="clip",t}e._inheritsLoose(t,r);var s=t.prototype;return s.writeGeometry=function(e,r,t,o){if(o.layer&&o.layer.spatialReference&&!o.layer.spatialReference.equals(this.geometry.spatialReference)){if(!d.canProjectWithoutEngine(e.spatialReference,o.layer.spatialReference))return void(o&&o.messages&&o.messages.push(new p("scenemodification:unsupported","Scene modifications with incompatible spatial references are not supported",{modification:this,spatialReference:o.layer.spatialReference,context:o})));const s=new y;d.projectPolygon(e,s,o.layer.spatialReference),r[t]=s.toJSON(o)}else r[t]=e.toJSON(o);delete r[t].spatialReference},s.clone=function(){return new g({geometry:o.clone(this.geometry),type:this.type})},t}(u.JSONSupport);return r.__decorate([a.property({type:y}),l.persistable()],m.prototype,"geometry",void 0),r.__decorate([n.writer(["web-scene","portal-item"],"geometry")],m.prototype,"writeGeometry",null),r.__decorate([a.property({type:["clip","mask","replace"],nonNullable:!0}),l.persistable()],m.prototype,"type",void 0),m=g=r.__decorate([i.subclass("esri.layers.support.SceneModification")],m),m}));

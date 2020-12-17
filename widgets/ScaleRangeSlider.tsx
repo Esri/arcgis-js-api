@@ -46,12 +46,12 @@ import { init, whenTrue } from "esri/core/watchUtils";
 import { cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Slider = require("esri/widgets/Slider");
-import Widget = require("esri/widgets/Widget");
+import Slider from "esri/widgets/Slider";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.ScaleRangeSlider
 import { ScaleType, SupportedRegion } from "esri/widgets/ScaleRangeSlider/interfaces";
@@ -59,15 +59,15 @@ import {
   getScalePreviewSource,
   getScalePreviewSpriteBackgroundPosition
 } from "esri/widgets/ScaleRangeSlider/scalePreviewUtils";
-import ScaleRanges = require("esri/widgets/ScaleRangeSlider/ScaleRanges");
-import ScaleRangeSliderViewModel = require("esri/widgets/ScaleRangeSlider/ScaleRangeSliderViewModel");
+import ScaleRanges from "esri/widgets/ScaleRangeSlider/ScaleRanges";
+import ScaleRangeSliderViewModel from "esri/widgets/ScaleRangeSlider/ScaleRangeSliderViewModel";
 
 // esri.widgets.ScaleRangeSlider.t9n
 import ScaleRangeSliderMessages from "esri/widgets/ScaleRangeSlider/t9n/ScaleRangeSlider";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import Popover = require("esri/widgets/support/Popover");
+import Popover from "esri/widgets/support/Popover";
 import {
   accessibleHandler,
   isRTL,
@@ -1116,4 +1116,4 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   }
 }
 
-export = ScaleRangeSlider;
+export default ScaleRangeSlider;

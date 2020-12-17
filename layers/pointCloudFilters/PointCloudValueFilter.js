@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","./PointCloudFilter"],(function(e,t,o,r,i,l){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.mode="exclude",o.type="value",o.values=[],o}var l;return o.__extends(t,e),l=t,t.prototype.clone=function(){return new l({field:this.field,mode:this.mode,values:r.clone(this.values)})},o.__decorate([i.property({type:["exclude","include"],json:{write:{enabled:!0,isRequired:!0}}})],t.prototype,"mode",void 0),o.__decorate([i.enumeration({pointCloudValueFilter:"value"})],t.prototype,"type",void 0),o.__decorate([i.property({type:[Number],json:{write:{enabled:!0,isRequired:!0}}})],t.prototype,"values",void 0),t=l=o.__decorate([i.subclass("esri.layers.pointCloudFilters.PointCloudValueFilter")],t)}(l)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./PointCloudFilter"],(function(e,o,r,t,s,u,i,l,c,n,p,a,d){"use strict";var y;let v=y=function(o){function r(e){var r;return(r=o.call(this,e)||this).mode="exclude",r.type="value",r.values=[],r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new y({field:this.field,mode:this.mode,values:t.clone(this.values)})},r}(d);return o.__decorate([i.property({type:["exclude","include"],json:{write:{enabled:!0,isRequired:!0}}})],v.prototype,"mode",void 0),o.__decorate([l.enumeration({pointCloudValueFilter:"value"})],v.prototype,"type",void 0),o.__decorate([i.property({type:[Number],json:{write:{enabled:!0,isRequired:!0}}})],v.prototype,"values",void 0),v=y=o.__decorate([c.subclass("esri.layers.pointCloudFilters.PointCloudValueFilter")],v),v}));

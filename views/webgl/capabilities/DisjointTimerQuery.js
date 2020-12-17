@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./isWebGL2Context"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.load=void 0,t.load=function(e,t){if(t.disjointTimerQuery)return null;var n=e.getExtension("EXT_disjoint_timer_query")||e.getExtension("EXT_disjoint_timer_query_webgl2");return n?r.default(e)?{createQuery:function(){return e.createQuery()},resultAvailable:function(t){return e.getQueryParameter(t,e.QUERY_RESULT_AVAILABLE)},getResult:function(t){return e.getQueryParameter(t,e.QUERY_RESULT)},disjoint:function(){return e.getParameter(n.GPU_DISJOINT_EXT)},beginTimeElapsed:function(t){return e.beginQuery(n.TIME_ELAPSED_EXT,t)},endTimeElapsed:function(){return e.endQuery(n.TIME_ELAPSED_EXT)},createTimestamp:function(e){return n.queryCounterEXT(e,n.TIMESTAMP_EXT)},timestampBits:function(){return e.getQuery(n.TIMESTAMP_EXT,n.QUERY_COUNTER_BITS_EXT)}}:{createQuery:function(){return n.createQueryEXT()},resultAvailable:function(e){return n.getQueryObjectEXT(e,n.QUERY_RESULT_AVAILABLE_EXT)},getResult:function(e){return n.getQueryObjectEXT(e,n.QUERY_RESULT_EXT)},disjoint:function(){return e.getParameter(n.GPU_DISJOINT_EXT)},beginTimeElapsed:function(e){return n.beginQueryEXT(n.TIME_ELAPSED_EXT,e)},endTimeElapsed:function(){return n.endQueryEXT(n.TIME_ELAPSED_EXT)},createTimestamp:function(e){return n.queryCounterEXT(e,n.TIMESTAMP_EXT)},timestampBits:function(){return n.getQueryEXT(n.TIMESTAMP_EXT,n.QUERY_COUNTER_BITS_EXT)}}:null}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./isWebGL2Context"],(function(e,t){"use strict";let E=function(e,t,E,T,r,i,_,u){this.createQuery=e,this.resultAvailable=t,this.getResult=E,this.disjoint=T,this.beginTimeElapsed=r,this.endTimeElapsed=i,this.createTimestamp=_,this.timestampBits=u};e.DisjointTimerQuery=E,e.createDisjointTimerQuery=function(e,T){if(T.disjointTimerQuery)return null;let r=e.getExtension("EXT_disjoint_timer_query_webgl2");return r&&t(e)?new E((()=>e.createQuery()),(t=>e.getQueryParameter(t,e.QUERY_RESULT_AVAILABLE)),(t=>e.getQueryParameter(t,e.QUERY_RESULT)),(()=>e.getParameter(r.GPU_DISJOINT_EXT)),(t=>e.beginQuery(r.TIME_ELAPSED_EXT,t)),(()=>e.endQuery(r.TIME_ELAPSED_EXT)),(e=>r.queryCounterEXT(e,r.TIMESTAMP_EXT)),(()=>e.getQuery(r.TIMESTAMP_EXT,r.QUERY_COUNTER_BITS_EXT))):(r=e.getExtension("EXT_disjoint_timer_query"),r?new E((()=>r.createQueryEXT()),(e=>r.getQueryObjectEXT(e,r.QUERY_RESULT_AVAILABLE_EXT)),(e=>r.getQueryObjectEXT(e,r.QUERY_RESULT_EXT)),(()=>e.getParameter(r.GPU_DISJOINT_EXT)),(e=>r.beginQueryEXT(r.TIME_ELAPSED_EXT,e)),(()=>r.endQueryEXT(r.TIME_ELAPSED_EXT)),(e=>r.queryCounterEXT(e,r.TIMESTAMP_EXT)),(()=>r.getQueryEXT(r.TIMESTAMP_EXT,r.QUERY_COUNTER_BITS_EXT))):null)},Object.defineProperty(e,"__esModule",{value:!0})}));

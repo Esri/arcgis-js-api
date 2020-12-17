@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/Logger","../../../../core/maybe","../core/shaderLibrary/ShaderOutputOptions","./Util"],(function(t,e,i,r,a,n){"use strict";var o=i.getLogger("esri.views.3d.webgl-engine.lib.GLMaterialRep"),u=function(){function t(t){this.refCnt=0,this.glMaterial=t}return t.prototype.incRefCnt=function(){++this.refCnt},t.prototype.decRefCnt=function(){--this.refCnt,n.assert(this.refCnt>=0)},t.prototype.getRefCnt=function(){return this.refCnt},t.prototype.getGLMaterial=function(){return this.glMaterial},t}();return function(){function t(t,e,i){this._textureRep=t,this._techniqueRep=e,this.onMaterialChanged=i,this._id2glMaterialRef=new Map}return t.prototype.dispose=function(){this._textureRep.dispose()},t.prototype.acquire=function(t,e){this.ownMaterial(t);var i,r=a.getShaderOutputID(t.id,e),n=this._id2glMaterialRef.get(r);return null==n?(i=t.getGLMaterial({material:t,techniqueRep:this._techniqueRep,textureRep:this._textureRep,output:e}),n=new u(i),this._id2glMaterialRef.set(r,n)):i=n.getGLMaterial(),n.incRefCnt(),i},t.prototype.release=function(t,e){var i=a.getShaderOutputID(t.id,e),r=this._id2glMaterialRef.get(i);if(r.decRefCnt(),0===r.getRefCnt()){var n=r.getGLMaterial();n&&n.dispose(),this._id2glMaterialRef.delete(i)}},t.prototype.materialChanged=function(t){for(var e=0,i=a.ShaderOutputTypes;e<i.length;e++){var r=i[e];if(5!==r.output&&6!==r.output){var n=this._id2glMaterialRef.get(a.getShaderOutputID(t.id,r.output));if(n&&n.getGLMaterial()){var o=n.getGLMaterial();o.updateParameters&&o.updateParameters()}}}this.onMaterialChanged&&this.onMaterialChanged(t)},t.prototype.ownMaterial=function(t){r.isSome(t.materialRepository)&&t.materialRepository!==this&&o.error("Material is already owned by a different material repository"),t.materialRepository=this},t}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../core/maybe","../../../../core/Logger","./Util","../core/shaderLibrary/ShaderOutputOptions"],(function(t,e,i,r){"use strict";const a=e.getLogger("esri.views.3d.webgl-engine.lib.GLMaterialRep");let n=function(){function t(t){this.refCnt=0,this.glMaterial=t}var e=t.prototype;return e.incRefCnt=function(){++this.refCnt},e.decRefCnt=function(){--this.refCnt,i.assert(this.refCnt>=0)},e.getRefCnt=function(){return this.refCnt},e.getGLMaterial=function(){return this.glMaterial},t}();return function(){function e(t,e,i){this._textureRep=t,this._techniqueRep=e,this.onMaterialChanged=i,this._id2glMaterialRef=new Map}var i=e.prototype;return i.dispose=function(){this._textureRep.dispose()},i.acquire=function(t,e){this.ownMaterial(t);const i=r.getShaderOutputID(t.id,e);let a=this._id2glMaterialRef.get(i);if(null==a){const r=t.getGLMaterial({material:t,techniqueRep:this._techniqueRep,textureRep:this._textureRep,output:e});return a=new n(r),a.incRefCnt(),this._id2glMaterialRef.set(i,a),r}return a.incRefCnt(),a.getGLMaterial()},i.release=function(t,e){const i=r.getShaderOutputID(t.id,e),a=this._id2glMaterialRef.get(i);if(a.decRefCnt(),0===a.getRefCnt()){const t=a.getGLMaterial();t&&t.dispose(),this._id2glMaterialRef.delete(i)}},i.materialChanged=function(t){for(const e of r.ShaderOutputTypes)if(5!==e.output&&6!==e.output){const i=this._id2glMaterialRef.get(r.getShaderOutputID(t.id,e.output));if(i&&i.getGLMaterial()){const t=i.getGLMaterial();t.updateParameters&&t.updateParameters()}}this.onMaterialChanged&&this.onMaterialChanged(t)},i.ownMaterial=function(e){t.isSome(e.materialRepository)&&e.materialRepository!==this&&a.error("Material is already owned by a different material repository"),e.materialRepository=this},e}()}));

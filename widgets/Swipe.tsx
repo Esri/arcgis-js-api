@@ -43,14 +43,11 @@ import { eventKey } from "esri/core/events";
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-// esri.core.libs.pep
-import PEP = require("esri/core/libs/pep/pep");
-
 // esri.views
-import MapView = require("esri/views/MapView");
+import MapView from "esri/views/MapView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
@@ -58,7 +55,7 @@ import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 // esri.widgets.Swipe
 import { LayerCollection, Direction, VisibleElements } from "esri/widgets/Swipe/interfaces";
-import SwipeViewModel = require("esri/widgets/Swipe/SwipeViewModel");
+import SwipeViewModel from "esri/widgets/Swipe/SwipeViewModel";
 
 // esri.widgets.Swipe.t9n
 import SwipeMessages from "esri/widgets/Swipe/t9n/Swipe";
@@ -495,7 +492,6 @@ class Swipe extends Widget {
   //--------------------------------------------------------------------------
 
   private _afterContainerCreate(element: HTMLElement): void {
-    PEP.applyLocal(element);
     this._container = element;
     element.addEventListener("pointerdown", this._onContainerPointerDown);
   }
@@ -622,4 +618,4 @@ class Swipe extends Widget {
   }
 }
 
-export = Swipe;
+export default Swipe;

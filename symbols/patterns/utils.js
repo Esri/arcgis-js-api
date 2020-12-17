@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./Pattern3D","./StylePattern3D"],(function(e,t,r,n){"use strict";function a(e,t,r){if(!e)return e;switch(e.type){case"style":var a=new n;return a.read(e,r),a}}Object.defineProperty(t,"__esModule",{value:!0}),t.symbol3dPatternProperty=t.read=void 0,t.read=a,t.symbol3dPatternProperty={types:{key:"type",base:r,typeMap:{style:n}},json:{read:a,write:!0}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./Pattern3D","./StylePattern3D"],(function(e,t,r){"use strict";function n(e,t,n){if(!e)return e;switch(e.type){case"style":{const t=new r;return t.read(e,n),t}}}const s={types:{key:"type",base:t,typeMap:{style:r}},json:{read:n,write:!0}};e.read=n,e.symbol3dPatternProperty=s,Object.defineProperty(e,"__esModule",{value:!0})}));

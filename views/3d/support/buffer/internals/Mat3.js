@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.BufferViewMat3Impl=void 0;var r=function(){function t(t,e,r,f,i){void 0===r&&(r=0),this.TypedArrayConstructor=t,this.elementCount=9;var u=this.TypedArrayConstructor;void 0===f&&(f=9*u.BYTES_PER_ELEMENT);var o=0===e.byteLength?0:r;this.typedBuffer=null==i?new u(e,o):new u(e,o,(i-r)/u.BYTES_PER_ELEMENT),this.typedBufferStride=f/u.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}return t.prototype.getMat=function(t,e){for(var r=t*this.typedBufferStride,f=0;f<9;f++)e[f]=this.typedBuffer[r+f];return e},t.prototype.setMat=function(t,e){for(var r=t*this.typedBufferStride,f=0;f<9;f++)this.typedBuffer[r+f]=e[f]},t.prototype.get=function(t,e){return this.typedBuffer[t*this.typedBufferStride+e]},t.prototype.set=function(t,e,r){this.typedBuffer[t*this.typedBufferStride+e]=r},t.prototype.copyFrom=function(t,e,r){for(var f=this.typedBuffer,i=e.typedBuffer,u=t*this.typedBufferStride,o=r*e.typedBufferStride,n=0;n<9;++n)f[u+n]=i[o+n]},Object.defineProperty(t.prototype,"buffer",{get:function(){return this.typedBuffer.buffer},enumerable:!1,configurable:!0}),t.ElementCount=9,t}();e.BufferViewMat3Impl=r}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers"],(function(t,e){"use strict";let r=function(){function t(t,e,r=0,f,i){this.TypedArrayConstructor=t,this.elementCount=9;const u=this.TypedArrayConstructor;void 0===f&&(f=9*u.BYTES_PER_ELEMENT);const n=0===e.byteLength?0:r;this.typedBuffer=null==i?new u(e,n):new u(e,n,(i-r)/u.BYTES_PER_ELEMENT),this.typedBufferStride=f/u.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}var r=t.prototype;return r.getMat=function(t,e){const r=t*this.typedBufferStride;for(let t=0;t<9;t++)e[t]=this.typedBuffer[r+t];return e},r.setMat=function(t,e){const r=t*this.typedBufferStride;for(let t=0;t<9;t++)this.typedBuffer[r+t]=e[t]},r.get=function(t,e){return this.typedBuffer[t*this.typedBufferStride+e]},r.set=function(t,e,r){this.typedBuffer[t*this.typedBufferStride+e]=r},r.copyFrom=function(t,e,r){const f=this.typedBuffer,i=e.typedBuffer,u=t*this.typedBufferStride,n=r*e.typedBufferStride;for(let t=0;t<9;++t)f[u+t]=i[n+t]},e._createClass(t,[{key:"buffer",get:function(){return this.typedBuffer.buffer}}]),t}();r.ElementCount=9,t.BufferViewMat3Impl=r,Object.defineProperty(t,"__esModule",{value:!0})}));

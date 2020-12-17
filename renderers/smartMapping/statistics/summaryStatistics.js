@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/deprecate","../../../core/Logger","../../../smartMapping/statistics/summaryStatistics"],(function(t,s,e,r,i){"use strict";var a=r.getLogger("esri.renderers.smartMapping.statistics.summaryStatistics");return e.deprecatedModule(a,"esri/renderers/smartMapping/statistics/summaryStatistics",{replacement:"esri/smartMapping/statistics/summaryStatistics"}),i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../core/Logger","../../../core/deprecate","../../../smartMapping/statistics/summaryStatistics"],(function(t,s,e){"use strict";const r=t.getLogger("esri.renderers.smartMapping.statistics.summaryStatistics");return s.deprecatedModule(r,"esri/renderers/smartMapping/statistics/summaryStatistics",{replacement:"esri/smartMapping/statistics/summaryStatistics"}),e}));

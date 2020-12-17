@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/Logger","../../../core/PooledArray","../support/projectionUtils","../support/WorkerHandle"],(function(e,t,r,o,n,i,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.toWasmModification=t.I3SMeshWorkerHandle=void 0;var s=o.getLogger("esri.views.3d.layers.I3SMeshWorkerHandle"),c=function(e){function t(t){return e.call(this,"SceneLayerWorker","process",t)||this}return r.__extends(t,e),t.prototype.getTransferList=function(e){return[e.geometryBuffer]},t.prototype.setModifications=function(e,t,r){var o={context:e,modifications:l(t,r),isGeodetic:r.isGeographic};this.broadcast(o,"setModifications")},t.prototype.setLegacySchema=function(e,t){var r=JSON.stringify(t);this.broadcast({context:e,jsonSchema:r},"setLegacySchema")},t.prototype.destroyContext=function(e){return this.broadcast(e,"destroyContext")},t}(a.WorkerHandle);t.I3SMeshWorkerHandle=c;var u=new n({deallocator:null}),f=[0,0,0];function l(e,t){u.clear();for(var r=function(e){var r="clip"===e.type?2:"mask"===e.type?1:0,o=e.geometry,n=function(e){return e};if(o.spatialReference){if(!i.canProject(o.spatialReference,t))return s.warn("Can't project modification polygon into layer spatial reference, ignoring modification"),"continue";n=function(e){return i.vectorToVector(e,o.spatialReference,f,t),f}}else o.hasZ||(f[2]=0,n=function(e){return f[0]=e[0],f[1]=e[1],f});u.push(r),u.push(o.rings.length);for(var a=0,c=o.rings;a<c.length;a++){var l=c[a];u.push(l.length);for(var p=0,h=l;p<h.length;p++){var d=n(h[p]);u.push(d[0]),u.push(d[1]),u.push(d[2])}}},o=0,n=e;o<n.length;o++){r(n[o])}u.push(3);for(var a=new Float64Array(u.length),c=0;c<u.length;++c)a[c]=u.getItemAt(c);return a}t.toWasmModification=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/Logger","../../../core/PooledArray","../../../geometry/projection","../support/WorkerHandle"],(function(e,t,o,n,r,s){"use strict";const i=o.getLogger("esri.views.3d.layers.I3SMeshWorkerHandle");let c=function(e){function o(t){return e.call(this,"SceneLayerWorker","process",t,{hasInitialize:!0})||this}t._inheritsLoose(o,e);var n=o.prototype;return n.getTransferList=function(e){return[e.geometryBuffer]},n.setModifications=function(e,t,o){const n={context:e,modifications:f(t,o),isGeodetic:o.isGeographic};this.broadcast(n,"setModifications")},n.setLegacySchema=function(e,t){const o=JSON.stringify(t);this.broadcast({context:e,jsonSchema:o},"setLegacySchema")},n.destroyContext=function(e){return this.broadcast(e,"destroyContext")},o}(s.WorkerHandle);const a=new n({deallocator:null}),l=[0,0,0];function f(e,t){a.clear();for(const o of e){const e="clip"===o.type?2:"mask"===o.type?1:0,n=o.geometry;let s=e=>e;if(n.spatialReference){if(!r.canProjectWithoutEngine(n.spatialReference,t)){i.warn("Can't project modification polygon into layer spatial reference, ignoring modification");continue}s=e=>(r.projectVectorToVector(e,n.spatialReference,l,t),l)}else n.hasZ||(l[2]=0,s=e=>(l[0]=e[0],l[1]=e[1],l));a.push(e),a.push(n.rings.length);for(const e of n.rings){a.push(e.length);for(const t of e){const e=s(t);a.push(e[0]),a.push(e[1]),a.push(e[2])}}}a.push(3);const o=new Float64Array(a.length);for(let e=0;e<a.length;++e)o[e]=a.getItemAt(e);return o}e.I3SMeshWorkerHandle=c,e.toWasmModification=f,Object.defineProperty(e,"__esModule",{value:!0})}));

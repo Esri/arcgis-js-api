@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers"],(function(i,e){"use strict";let t=function(){function i(i,e,t,s){this.semiMajorAxis=i,this.flattening=e,this.outerAtmosphereRimWidth=t;const n=1-this.flattening;this.semiMinorAxis=this.semiMajorAxis*n,this.halfSemiMajorAxis=this.semiMajorAxis/2,this.halfCircumference=Math.PI*this.semiMajorAxis,this.metersPerDegree=this.halfCircumference/180,this.inverseFlattening=1/(1-this.flattening)-1,this.eccentricitySquared=s||2*this.flattening-this.flattening*this.flattening,this.meanRadiusSemiAxes=(2*this.semiMajorAxis+this.semiMinorAxis)/3}return e._createClass(i,[{key:"radius",get:function(){return this.semiMajorAxis}}]),i}();const s=new t(6378137,1/298.257223563,3e5,.006694379990137799),n=new t(3396190,1/169.8944472236118,23e4),r=new t(1737400,0,0);i.Ellipsoid=t,i.earth=s,i.mars=n,i.moon=r,Object.defineProperty(i,"__esModule",{value:!0})}));

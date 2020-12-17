@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/promiseUtils","./WorkerTile","./style/StyleRepository"],(function(e,t,r,n,o,s){"use strict";return function(){function e(){this._spriteInfo={},this._glyphInfo={}}return e.prototype.reset=function(){return this._spriteInfo={},this._glyphInfo={},n.resolve()},e.prototype.getLayers=function(){return this._layers},e.prototype.setLayers=function(e){var t=new s(e.style);this._layers=t.layers},e.prototype.createTileAndParse=function(e,t){return r.__awaiter(this,void 0,void 0,(function(){var s,i,u,a,f,p,h,l;return r.__generator(this,(function(r){switch(r.label){case 0:for(s=e.key,i={},u=0,a=Object.keys(e.sourceName2DataAndRefKey);u<a.length;u++)f=a[u],p=e.sourceName2DataAndRefKey[f],i[f]=p.refKey;h=new o(s,i,this),r.label=1;case 1:return r.trys.push([1,3,,4]),[4,h.parse(e.sourceName2DataAndRefKey,t)];case 2:return[2,r.sent()];case 3:if(l=r.sent(),h.setObsolete(),h.release(),!n.isAbortError(l))throw l;return[2,null];case 4:return[2]}}))}))},e.prototype.updateStyle=function(e){var t=new s(e);this._layers=t.layers},e.prototype.fetchSprites=function(e,t,r){var o=[],s=this._spriteInfo;return e.forEach((function(e){void 0===s[e]&&o.push(e)})),0===o.length?n.resolve():t.invoke("getSprites",o,{signal:r&&r.signal}).then((function(e){for(var t in e){var r=e[t];s[t]=r}}))},e.prototype.getSpriteItems=function(){return this._spriteInfo},e.prototype.fetchGlyphs=function(e,t,r,o,s){var i=[],u=this._glyphInfo[t];return u?r.forEach((function(e){u[e]||i.push(e)})):(u=this._glyphInfo[t]=[],r.forEach((function(e){return i.push(e)}))),0===i.length?n.resolve():o.invoke("getGlyphs",{tileID:e,font:t,codePoints:i},s).then((function(e){for(var t=0;t<e.length;t++)e[t]&&(u[t]=e[t])}))},e.prototype.getGlyphItems=function(e){return this._glyphInfo[e]},e}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../../core/promiseUtils","./style/StyleRepository","./WorkerTile"],(function(e,t,s){"use strict";return function(){function r(){this._spriteInfo={},this._glyphInfo={}}var o=r.prototype;return o.reset=function(){return this._spriteInfo={},this._glyphInfo={},e.resolve()},o.getLayers=function(){var e;return null==(e=this._styleRepository)?void 0:e.layers},o.createTileAndParse=async function(t,r){const{key:o}=t,n={};for(const e of Object.keys(t.sourceName2DataAndRefKey)){const s=t.sourceName2DataAndRefKey[e];n[e]=s.refKey}const i=new s(o,n,this,this._styleRepository);try{return await i.parse(t,this._vectorTileLayerMaxBuffers,r)}catch(t){if(i.setObsolete(),i.release(),!e.isAbortError(t))throw t;return null}},o.updateStyle=function(e){if(!e||0===e.length||!this._styleRepository)return;const t=this._styleRepository;for(const s of e){const e=s.type,r=s.data;switch(e){case 0:t.setPaintProperties(r.layer,r.paint);break;case 1:t.setLayoutProperties(r.layer,r.layout);break;case 3:t.deleteStyleLayer(r.layerName);break;case 2:t.setStyleLayer(r.layer,r.index)}}},o.setStyle=function(e){this._styleRepository=new t(e.style),this._spriteInfo={},this._glyphInfo={},this._vectorTileLayerMaxBuffers=e.vectorTileLayerMaxBuffers},o.fetchSprites=function(t,s,r){const o=[],n=this._spriteInfo;return t.forEach((e=>{void 0===n[e]&&o.push(e)})),0===o.length?e.resolve():s.invoke("getSprites",o,{signal:r&&r.signal}).then((e=>{for(const t in e){const s=e[t];n[t]=s}}))},o.getSpriteItems=function(){return this._spriteInfo},o.fetchGlyphs=function(t,s,r,o,n){const i=[];let l=this._glyphInfo[s];return l?r.forEach((e=>{l[e]||i.push(e)})):(l=this._glyphInfo[s]=[],r.forEach((e=>i.push(e)))),0===i.length?e.resolve():o.invoke("getGlyphs",{tileID:t,font:s,codePoints:i},n).then((e=>{for(let t=0;t<e.length;t++)e[t]&&(l[t]=e[t])}))},o.getGlyphItems=function(e){return this._glyphInfo[e]},r}()}));

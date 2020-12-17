@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./SearchTableField"],(function(e,r,o,t,i,s,c,p,n,u,l,a,d){"use strict";var h;let S=h=function(r){function o(e){var o;return(o=r.call(this,e)||this).field=null,o.id=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new h(t.clone({field:this.field,id:this.id}))},o}(a.JSONSupport);return r.__decorate([c.property({type:d,json:{write:{isRequired:!0}}})],S.prototype,"field",void 0),r.__decorate([c.property({type:String,json:{write:{isRequired:!0}}})],S.prototype,"id",void 0),S=h=r.__decorate([p.subclass("esri.webdoc.applicationProperties.SearchTable")],S),S}));

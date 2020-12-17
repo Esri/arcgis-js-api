@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/unitUtils"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.defaultUnitPropertyMetadata=void 0,t.defaultUnitPropertyMetadata={dependsOn:["view.map.portalItem?.portal.units","view.map.portalItem?.portal.user.units","view.spatialReference"],readOnly:!0,get:function(){var e=this.view;if(!e)return"metric";var t=e.get("map.portalItem.portal");if(t)switch(t.get("user.units")||t.units){case"metric":return"metric";case"english":return"imperial"}return r.getDefaultUnitSystem(e.spatialReference)||"metric"}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/unitUtils"],(function(e,t){"use strict";const r={dependsOn:["view.map.portalItem?.portal.units","view.map.portalItem?.portal.user.units","view.spatialReference"],readOnly:!0,get(){const e="metric",{view:r}=this;if(!r)return e;const i=r.get("map.portalItem.portal");if(i){switch(i.get("user.units")||i.units){case e:return e;case"english":return"imperial"}}return t.getDefaultUnitSystem(r.spatialReference)||e}};e.defaultUnitPropertyMetadata=r,Object.defineProperty(e,"__esModule",{value:!0})}));

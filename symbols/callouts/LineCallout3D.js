@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/lang","../../core/maybe","../../core/screenUtils","../../core/accessorSupport/decorators","./Callout3D","./LineCallout3DBorder","../support/materialUtils"],(function(e,r,o,t,i,n,l,s,c,p,a){"use strict";return function(e){function r(r){var o=e.call(this,r)||this;return o.type="line",o.color=new t([0,0,0,1]),o.size=l.px2pt(1),o.border=null,o}var c;return o.__extends(r,e),c=r,Object.defineProperty(r.prototype,"visible",{get:function(){return this.size>0&&n.isSome(this.color)&&this.color.a>0},enumerable:!1,configurable:!0}),r.prototype.clone=function(){return new c({color:i.clone(this.color),size:this.size,border:i.clone(this.border)})},o.__decorate([s.enumeration({line:"line"},{readOnly:!0})],r.prototype,"type",void 0),o.__decorate([s.property(a.colorAndTransparencyProperty)],r.prototype,"color",void 0),o.__decorate([s.property(a.screenSizeProperty)],r.prototype,"size",void 0),o.__decorate([s.property({type:p.default,json:{write:!0}})],r.prototype,"border",void 0),o.__decorate([s.property({dependsOn:["size","color"],readOnly:!0})],r.prototype,"visible",null),r=c=o.__decorate([s.subclass("esri.symbols.callouts.LineCallout3D")],r)}(c)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../Color","../../core/screenUtils","../support/materialUtils","./Callout3D","../../chunks/LineCallout3DBorder"],(function(e,r,o,t,s,c,l,n,i,p,a,u,d,y,_,h,b,v){"use strict";var z;let f=z=function(r){function o(e){var o;return(o=r.call(this,e)||this).type="line",o.color=new y([0,0,0,1]),o.size=_.px2pt(1),o.border=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new z({color:t.clone(this.color),size:this.size,border:t.clone(this.border)})},e._createClass(o,[{key:"visible",get:function(){return this.size>0&&s.isSome(this.color)&&this.color.a>0}}]),o}(b);return r.__decorate([i.enumeration({line:"line"},{readOnly:!0})],f.prototype,"type",void 0),r.__decorate([n.property(h.colorAndTransparencyProperty)],f.prototype,"color",void 0),r.__decorate([n.property(h.screenSizeProperty)],f.prototype,"size",void 0),r.__decorate([n.property({type:v.LineCallout3DBorder$1,json:{write:!0}})],f.prototype,"border",void 0),r.__decorate([n.property({dependsOn:["size","color"],readOnly:!0})],f.prototype,"visible",null),f=z=r.__decorate([p.subclass("esri.symbols.callouts.LineCallout3D")],f),f}));

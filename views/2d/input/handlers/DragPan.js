@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../input/DragEventSeparator","../../../input/InputHandler","../../../input/handlers/support"],(function(t,n,a,e,i,o){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.DragPan=void 0;var r=function(t){function n(n,a,i){var r=t.call(this,!0)||this;r.view=n,r.pointerAction=a,r.registerIncoming("drag",i,(function(t){return r._handleDrag(t)})),r.registerIncoming("pointer-down",(function(){return r.stopMomentumNavigation()}));var p=r.view.mapViewNavigation;return r.dragEventSeparator=new e.DragEventSeparator({start:function(t,n){p.pan.begin(r.view,n.data),n.stopPropagation()},update:function(t,n){p.pan.update(r.view,n.data),n.stopPropagation()},end:function(t,n){p.pan.end(r.view,n.data),n.stopPropagation()},condition:function(t,n){return 1===t&&o.eventMatchesPointerAction(n.data,r.pointerAction)}}),r}return a.__extends(n,t),n.prototype._handleDrag=function(t){var n=this.view.mapViewNavigation;n.pinch.zoomMomentum||n.pinch.rotateMomentum?this.stopMomentumNavigation():this.dragEventSeparator.handle(t)},n.prototype.stopMomentumNavigation=function(){this.view.mapViewNavigation.pan.stopMomentumNavigation()},n}(i.InputHandler);n.DragPan=r}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../input/InputHandler","../../../input/handlers/support","../../../input/DragEventSeparator"],(function(t,n,a,e,i){"use strict";let o=function(t){function a(n,a,o){var r;(r=t.call(this,!0)||this).view=n,r.pointerAction=a,r.registerIncoming("drag",o,(t=>r._handleDrag(t))),r.registerIncoming("pointer-down",(()=>r.stopMomentumNavigation()));const p=r.view.mapViewNavigation;return r.dragEventSeparator=new i.DragEventSeparator({start:(t,n)=>{p.pan.begin(r.view,n.data),n.stopPropagation()},update:(t,n)=>{p.pan.update(r.view,n.data),n.stopPropagation()},end:(t,n)=>{p.pan.end(r.view,n.data),n.stopPropagation()},condition:(t,n)=>1===t&&e.eventMatchesPointerAction(n.data,r.pointerAction)}),r}n._inheritsLoose(a,t);var o=a.prototype;return o._handleDrag=function(t){const n=this.view.mapViewNavigation;n.pinch.zoomMomentum||n.pinch.rotateMomentum?this.stopMomentumNavigation():this.dragEventSeparator.handle(t)},o.stopMomentumNavigation=function(){this.view.mapViewNavigation.pan.stopMomentumNavigation()},a}(a.InputHandler);t.DragPan=o,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../webgl/Geometry"],(function(e,t,r){"use strict";return function(){function e(e,t){this.values={};for(var r=t.keys,s=t.values;e.next();)switch(e.tag()){case 1:this.id=e.getUInt64();break;case 2:for(var a=e.getMessage(),n=this.values;!a.empty();){var i=a.getUInt32(),o=a.getUInt32();n[r[i]]=s[o]}a.release();break;case 3:this.type=e.getUInt32();break;case 4:this._pbfGeometry=e.getMessage();break;default:e.skip()}}return e.prototype.getGeometry=function(e){if(void 0!==this._geometry)return this._geometry;if(!this._pbfGeometry)return null;var t,s,a=this._pbfGeometry;this._pbfGeometry=null,e?e.reset(this.type):t=[];for(var n,i=1,o=0,u=0,h=0;!a.empty();){if(0===o){var g=a.getUInt32();i=7&g,o=g>>3}switch(o--,i){case 1:u+=a.getSInt32(),h+=a.getSInt32(),e?e.moveTo(u,h):(s&&t.push(s),(s=[]).push(new r.Point(u,h)));break;case 2:u+=a.getSInt32(),h+=a.getSInt32(),e?e.lineTo(u,h):s.push(new r.Point(u,h));break;case 7:e?e.close():s&&!s[0].equals(u,h)&&s.push(s[0].clone());break;default:throw a.release(),new Error("Invalid path operation")}}return e?n=e.result():(s&&t.push(s),n=t),a.release(),this._geometry=n,n},e}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../webgl/Geometry"],(function(e){"use strict";return function(){function t(e,t){this.values={};const s=t.keys,r=t.values;for(;e.next();)switch(e.tag()){case 1:this.id=e.getUInt64();break;case 2:{const t=e.getMessage(),n=this.values;for(;!t.empty();){const e=t.getUInt32(),o=t.getUInt32();n[s[e]]=r[o]}t.release();break}case 3:this.type=e.getUInt32();break;case 4:this._pbfGeometry=e.getMessage();break;default:e.skip()}}return t.prototype.getGeometry=function(t){if(void 0!==this._geometry)return this._geometry;if(!this._pbfGeometry)return null;const s=this._pbfGeometry;let r,n;this._pbfGeometry=null,t?t.reset(this.type):r=[];let o,i=1,a=0,u=0,c=0;for(;!s.empty();){if(0===a){const e=s.getUInt32();i=7&e,a=e>>3}switch(a--,i){case 1:u+=s.getSInt32(),c+=s.getSInt32(),t?t.moveTo(u,c):(n&&r.push(n),n=[],n.push(new e.Point(u,c)));break;case 2:u+=s.getSInt32(),c+=s.getSInt32(),t?t.lineTo(u,c):n.push(new e.Point(u,c));break;case 7:t?t.close():n&&!n[0].equals(u,c)&&n.push(n[0].clone());break;default:throw s.release(),new Error("Invalid path operation")}}return t?o=t.result():(n&&r.push(n),o=r),s.release(),this._geometry=o,o},t}()}));

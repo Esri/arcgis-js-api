@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./core","./jobs","./SymbolDeclutterer","./SymbolRepository","./util"],(function(e,t,r,i,o,n,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.declutterSingleTile=void 0,t.declutterSingleTile=function(e){var t=new s.TileForest,l=new n.SymbolRepository(4096,t,(function(){var e=new r.VTLUniqueSymbol;return e.show=!1,e.parts.push({startTime:0,startOpacity:0,targetOpacity:0,show:!1}),e.parts.push({startTime:0,startOpacity:0,targetOpacity:0,show:!1}),e})),u=new o.SymbolDeclutterer(t,l,(function(t,r,o){return new i.CollisionJob(t,r,o,e.styleLayers.layers,e.key.level,0)}),(function(e,t){s.writeOpacityToBuffers(e,t,!1)}));t.add(e),l.addTile(e),u.setScreenSize(512,512),u.continue(1/0)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./core","./util","./jobs","./SymbolDeclutterer","./SymbolRepository"],(function(e,t,o,r,i,s){"use strict";e.declutterSingleTile=function(e,n){const y=[],l=new s.SymbolRepository(4096,y,(()=>{const e=new t.VTLUniqueSymbol;return e.show=!1,e.parts.push({startTime:0,startOpacity:0,targetOpacity:0,show:!1}),e.parts.push({startTime:0,startOpacity:0,targetOpacity:0,show:!1}),e})),u=new i.SymbolDeclutterer(y,l,((t,o,i)=>new r.CollisionJob(t,o,i,e.styleRepository,e.key.level,0)),((e,t)=>{o.writeOpacityToBuffers(e,t,!1)}),(()=>0),(e=>{const t=n.getStyleLayerByUID(e).getLayoutProperty("visibility");return!t||"none"!==t.getValue()}));y.push(e),l.add(e),u.setScreenSize(512,512),u.continue(1/0)},Object.defineProperty(e,"__esModule",{value:!0})}));

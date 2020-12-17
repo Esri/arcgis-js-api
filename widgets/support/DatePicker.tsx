@@ -11,26 +11,26 @@
  */
 
 // esri
-import { formatDate } from "esri/../intl";
+import { formatDate } from "esri/intl";
 
 // esri.core
-import { eventKey } from "esri/../core/events";
-import Logger = require("esri/../core/Logger");
+import { eventKey } from "esri/core/events";
+import Logger from "esri/core/Logger";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.intl
-import { loadMoment } from "esri/../intl/moment";
+import { loadMoment } from "esri/intl/moment";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { parseDateIntoParts } from "esri/widgets/datePickerUtils";
-import DatePickerViewModel = require("esri/widgets/DatePickerViewModel");
+import DatePickerViewModel from "esri/widgets/DatePickerViewModel";
 import { VNode } from "esri/widgets/interfaces";
-import Popover = require("esri/widgets/Popover");
+import Popover from "esri/widgets/Popover";
 import { accessibleHandler, isRTL, messageBundle, renderable, storeNode, tsx } from "esri/widgets/widget";
 
 // esri.widgets.support.t9n
@@ -799,4 +799,4 @@ class DatePicker extends Widget {
   }
 }
 
-export = DatePicker;
+export default DatePicker;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","../FeatureForm/FieldConfig"],(function(e,o,r,t,i){"use strict";return function(e){function o(o){var r=e.call(this,o)||this;return r.direction=null,r.formatFunction=null,r.menuConfig=null,r.sortable=!0,r.visible=!0,r}return r.__extends(o,e),r.__decorate([t.property()],o.prototype,"direction",void 0),r.__decorate([t.property()],o.prototype,"formatFunction",void 0),r.__decorate([t.property()],o.prototype,"menuConfig",void 0),r.__decorate([t.property()],o.prototype,"sortable",void 0),r.__decorate([t.property()],o.prototype,"visible",void 0),o=r.__decorate([t.subclass("esri.widgets.FeatureTable.FieldColumnConfig")],o)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../FeatureForm/FieldConfig"],(function(e,o,r,t,i,s,c,p,n,u,l){"use strict";let a=function(o){function r(e){var r;return(r=o.call(this,e)||this).direction=null,r.formatFunction=null,r.menuConfig=null,r.sortable=!0,r.visible=!0,r}return e._inheritsLoose(r,o),r}(l);return o.__decorate([s.property()],a.prototype,"direction",void 0),o.__decorate([s.property()],a.prototype,"formatFunction",void 0),o.__decorate([s.property()],a.prototype,"menuConfig",void 0),o.__decorate([s.property()],a.prototype,"sortable",void 0),o.__decorate([s.property()],a.prototype,"visible",void 0),a=o.__decorate([c.subclass("esri.widgets.FeatureTable.FieldColumnConfig")],a),a}));

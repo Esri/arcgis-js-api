@@ -46,15 +46,15 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { Axes } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Compass
-import CompassViewModel = require("esri/widgets/Compass/CompassViewModel");
+import CompassViewModel from "esri/widgets/Compass/CompassViewModel";
 
 // esri.widgets.Compass.t9n
 import CompassMessages from "esri/widgets/Compass/t9n/Compass";
@@ -277,4 +277,4 @@ class Compass extends Widget {
   }
 }
 
-export = Compass;
+export default Compass;

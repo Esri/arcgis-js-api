@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/libs/gl-matrix-2/vec3"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.BufferViewVec3Impl=void 0;var f=function(){function e(e,t,r,f,i){void 0===r&&(r=0),this.TypedArrayConstructor=e,this.elementCount=3;var u=this.TypedArrayConstructor;void 0===f&&(f=3*u.BYTES_PER_ELEMENT);var d=0===t.byteLength?0:r;this.typedBuffer=null==i?new u(t,d):new u(t,d,(i-r)/u.BYTES_PER_ELEMENT),this.typedBufferStride=f/u.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}return e.prototype.getVec=function(e,t){return r.vec3.set(t,this.typedBuffer[e*this.typedBufferStride],this.typedBuffer[e*this.typedBufferStride+1],this.typedBuffer[e*this.typedBufferStride+2])},e.prototype.setVec=function(e,t){this.typedBuffer[e*this.typedBufferStride]=t[0],this.typedBuffer[e*this.typedBufferStride+1]=t[1],this.typedBuffer[e*this.typedBufferStride+2]=t[2]},e.prototype.get=function(e,t){return this.typedBuffer[e*this.typedBufferStride+t]},e.prototype.set=function(e,t,r){this.typedBuffer[e*this.typedBufferStride+t]=r},e.prototype.setValues=function(e,t,r,f){this.typedBuffer[e*this.typedBufferStride]=t,this.typedBuffer[e*this.typedBufferStride+1]=r,this.typedBuffer[e*this.typedBufferStride+2]=f},e.prototype.copyFrom=function(e,t,r){var f=this.typedBuffer,i=t.typedBuffer,u=e*this.typedBufferStride,d=r*t.typedBufferStride;f[u]=i[d],f[u+1]=i[d+1],f[u+2]=i[d+2]},Object.defineProperty(e.prototype,"buffer",{get:function(){return this.typedBuffer.buffer},enumerable:!1,configurable:!0}),e.ElementCount=3,e}();t.BufferViewVec3Impl=f}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/vec3"],(function(e,t,f){"use strict";let r=function(){function e(e,t,f=0,r,i){this.TypedArrayConstructor=e,this.elementCount=3;const u=this.TypedArrayConstructor;void 0===r&&(r=3*u.BYTES_PER_ELEMENT);const s=0===t.byteLength?0:f;this.typedBuffer=null==i?new u(t,s):new u(t,s,(i-f)/u.BYTES_PER_ELEMENT),this.typedBufferStride=r/u.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}var r=e.prototype;return r.getVec=function(e,t){return f.set(t,this.typedBuffer[e*this.typedBufferStride],this.typedBuffer[e*this.typedBufferStride+1],this.typedBuffer[e*this.typedBufferStride+2])},r.setVec=function(e,t){this.typedBuffer[e*this.typedBufferStride]=t[0],this.typedBuffer[e*this.typedBufferStride+1]=t[1],this.typedBuffer[e*this.typedBufferStride+2]=t[2]},r.get=function(e,t){return this.typedBuffer[e*this.typedBufferStride+t]},r.set=function(e,t,f){this.typedBuffer[e*this.typedBufferStride+t]=f},r.setValues=function(e,t,f,r){this.typedBuffer[e*this.typedBufferStride]=t,this.typedBuffer[e*this.typedBufferStride+1]=f,this.typedBuffer[e*this.typedBufferStride+2]=r},r.copyFrom=function(e,t,f){const r=this.typedBuffer,i=t.typedBuffer,u=e*this.typedBufferStride,s=f*t.typedBufferStride;r[u]=i[s],r[u+1]=i[s+1],r[u+2]=i[s+2]},t._createClass(e,[{key:"buffer",get:function(){return this.typedBuffer.buffer}}]),e}();r.ElementCount=3,e.BufferViewVec3Impl=r,Object.defineProperty(e,"__esModule",{value:!0})}));

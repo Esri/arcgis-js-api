@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/promiseUtils","../../core/scheduling","../../core/watchUtils","../../core/accessorSupport/watch"],(function(e,i,r,n,t,a){"use strict";return function(e){switch(e.type){case"2d":return function(e){var i=r.createResolver();function t(){var r,d,o,u,s,l;!e.destroyed&&(a.dispatch(),n.debug.dispatch(),!e.ready||e.updating||!e.stationary||e.rendering||!0===(null===(r=e.layerViewManager)||void 0===r?void 0:r.updating)||!0===(null===(d=e.labelManager)||void 0===d?void 0:d.updating)||!0===(null===(o=e.graphicsView)||void 0===o?void 0:o.updating)||!(!0!==(null===(u=e.magnifier)||void 0===u?void 0:u.visible)||(null===(s=e._magnifierView)||void 0===s?void 0:s.mask)&&(null===(l=e._magnifierView)||void 0===l?void 0:l.overlay))||e.allLayerViews.some((function(e){return!0===e.updating}))||e.allLayerViews.find((function(e){var i=!e.isFulfilled(),r=e.updating&&!e.suspended;return i||r})))?setTimeout(t,16):i()}return setTimeout(t,16),i.promise}(e);case"3d":if(e)return a.dispatch(),n.debug.dispatch(),t.whenNotOnce(e,"updating")}return r.resolve()}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../core/promiseUtils","../../core/scheduling","../../core/accessorSupport/watch","../../core/watchUtils"],(function(e,n,i,r){"use strict";return function(t){switch(t.type){case"2d":return function(r){const t=e.createResolver();let a=performance.now();const u=function(){var e,t,a,u,o,s;if(i.dispatch(),n.debug.dispatch(),!r.ready||r.updating||!r.stationary||r.rendering||!0===(null==(e=r.layerViewManager)?void 0:e.updating)||!0===(null==(t=r.labelManager)?void 0:t.updating)||!0===(null==(a=r.graphicsView)?void 0:a.updating)||!0===(null==(u=r.magnifier)?void 0:u.visible)&&(null==(o=r._magnifierView)||!o.mask||null==(s=r._magnifierView)||!s.overlay)||r.allLayerViews.some((e=>!0===e.updating)))return!0;return!!r.allLayerViews.find((function(e){const n=!e.isFulfilled(),i=e.updating&&!e.suspended;return n||i}))};function o(){if(!r.destroyed&&u())a=null,setTimeout(o,16);else{a||(a=performance.now());performance.now()-a>=100?t():setTimeout(o,16)}}return setTimeout(o,16),t.promise}(t);case"3d":if(t)return i.dispatch(),n.debug.dispatch(),r.whenNotOnce(t,"updating")}return e.resolve()}}));

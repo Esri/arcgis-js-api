@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/accessorSupport/decorators","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","./MomentumController","../../utils/navigationUtils","../../../support/mathUtils"],(function(t,o,e,n,r,i,c,s,a){"use strict";Object.defineProperty(o,"__esModule",{value:!0}),o.ZoomPlanarMomentumController=void 0;var l=function(t){function o(o){var e=t.call(this,o)||this;return e.interactionType=1,e.constraintOptions.interactionDirection=i.vec3f64.create(),e}return e.__extends(o,t),Object.defineProperty(o.prototype,"zoomCenter",{set:function(t){this._set("zoomCenter",i.vec3f64.clone(t))},enumerable:!1,configurable:!0}),o.prototype.momentumStep=function(t,o){r.vec3.copy(this.constraintOptions.interactionDirection,o.eye);var e=this.momentum.valueDelta(0,t);s.applyZoomToPoint(o,this.zoomCenter,e,this.view.state.constraints.minimumPoiDistance),this.constraintOptions.interactionDirection=a.directionFromTo(this.constraintOptions.interactionDirection,o.eye,this.constraintOptions.interactionDirection)},e.__decorate([n.property({constructOnly:!0})],o.prototype,"momentum",void 0),e.__decorate([n.property({constructOnly:!0})],o.prototype,"zoomCenter",null),o=e.__decorate([n.subclass("esri.views.3d.state.controllers.momentum.ZoomPlanarMomentumController")],o)}(c.MomentumController);o.ZoomPlanarMomentumController=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../../../../core/has","../../../../../core/Logger","../../../../../core/accessorSupport/ensureType","../../../../../core/accessorSupport/decorators/property","../../../../../core/accessorSupport/decorators/subclass","../../../../../core/urlUtils","../../../../../core/uuid","../../../../../portal/support/resourceExtension","../../../../../chunks/vec3f64","../../../../../chunks/vec3","../../../support/mathUtils","../../utils/navigationUtils","./MomentumController"],(function(o,t,e,n,r,i,s,c,a,l,u,m,p,h,y,C){"use strict";o.ZoomPlanarMomentumController=function(o){function e(t){var e;return(e=o.call(this,t)||this).interactionType=1,e.constraintOptions.interactionDirection=m.create(),e}return t._inheritsLoose(e,o),e.prototype.momentumStep=function(o,t){p.copy(this.constraintOptions.interactionDirection,t.eye);const e=this.momentum.valueDelta(0,o);y.applyZoomToPoint(t,this.zoomCenter,e,this.view.state.constraints.minimumPoiDistance),this.constraintOptions.interactionDirection=h.directionFromTo(this.constraintOptions.interactionDirection,t.eye,this.constraintOptions.interactionDirection)},t._createClass(e,[{key:"zoomCenter",set:function(o){this._set("zoomCenter",m.clone(o))}}]),e}(C.MomentumController),e.__decorate([s.property({constructOnly:!0})],o.ZoomPlanarMomentumController.prototype,"momentum",void 0),e.__decorate([s.property({constructOnly:!0})],o.ZoomPlanarMomentumController.prototype,"zoomCenter",null),o.ZoomPlanarMomentumController=e.__decorate([c.subclass("esri.views.3d.state.controllers.momentum.ZoomPlanarMomentumController")],o.ZoomPlanarMomentumController),Object.defineProperty(o,"__esModule",{value:!0})}));

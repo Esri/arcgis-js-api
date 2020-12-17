@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./renderers/PointCloudClassBreaksRenderer","./renderers/PointCloudRenderer","./renderers/PointCloudRGBRenderer","./renderers/PointCloudStretchRenderer","./renderers/PointCloudUniqueValueRenderer"],(function(e,r,n,d,o,t,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.isPointCloudRenderer=r.PointCloudUniqueValueRenderer=r.PointCloudStretchRenderer=r.PointCloudRGBRenderer=r.BasePointCloudRenderer=r.PointCloudClassBreaksRenderer=void 0,r.PointCloudClassBreaksRenderer=n,r.BasePointCloudRenderer=d,r.PointCloudRGBRenderer=o,r.PointCloudStretchRenderer=t,r.PointCloudUniqueValueRenderer=i,r.isPointCloudRenderer=function(e){return e instanceof d}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./renderers/PointCloudRenderer","./renderers/PointCloudClassBreaksRenderer","./renderers/PointCloudRGBRenderer","./renderers/PointCloudStretchRenderer","./renderers/PointCloudUniqueValueRenderer"],(function(e,r,n,d,o,t){"use strict";e.BasePointCloudRenderer=r,e.PointCloudClassBreaksRenderer=n,e.PointCloudRGBRenderer=d,e.PointCloudStretchRenderer=o,e.PointCloudUniqueValueRenderer=t,e.isPointCloudRenderer=function(e){return e instanceof r},Object.defineProperty(e,"__esModule",{value:!0})}));

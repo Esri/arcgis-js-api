@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/deprecate","../../../../core/Logger","../../../../smartMapping/statistics/support/ageUtils"],(function(e,t,s,r,i,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var p=i.getLogger("esri.renderers.smartMapping.statistics.support.ageUtils");r.deprecatedModule(p,"esri/renderers/smartMapping/statistics/support/ageUtils",{replacement:"esri/smartMapping/statistics/support/ageUtils"}),s.__exportStar(a,t)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/Logger","../../../../core/deprecate","../../../../smartMapping/statistics/support/ageUtils"],(function(e,s,t,r){"use strict";const i=s.getLogger("esri.renderers.smartMapping.statistics.support.ageUtils");t.deprecatedModule(i,"esri/renderers/smartMapping/statistics/support/ageUtils",{replacement:"esri/smartMapping/statistics/support/ageUtils"}),e.getAgeExpressions=r.getAgeExpressions,e.supportedAgeUnits=r.supportedAgeUnits,e.verifyDates=r.verifyDates,Object.defineProperty(e,"__esModule",{value:!0})}));

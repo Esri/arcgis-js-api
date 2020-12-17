@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/PooledArray"],(function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.RenderPass=void 0;var i=function(){function e(e,t,i){void 0===i&&(i=0),this._rctx=e,this._techniqueRepository=t,this._sorting=i,this._draws=new r({initialSize:32,allocator:function(e){return e||{material:null,geometry:null,geometryRanges:null,bindDrawParams:null,depthSquaredHint:0,indexType:0}}}),this._passBoundTechniques=new Set,this._previouslyBoundMaterials=new Map,this._previouslyBoundDraw=new Map}return e.prototype.submitDraw=function(e,t,r,i,a){var n=this._draws.pushNew();n.geometry=t,n.geometryRanges=r,n.material=e,n.bindDrawParams=i,n.depthSquaredHint=a,n.indexType=t.indexed?t.vao.indexBuffer.indexType:0},e.prototype.dispatch=function(e){var t=this._rctx;this._passBoundTechniques.clear(),this._previouslyBoundMaterials.clear(),this._previouslyBoundDraw.clear();for(var r=null,i={repository:this._techniqueRepository},n=this._draws.length,s=0;s<n;s++){var o=this._draws.data[s],u=o.geometry,d=o.material.getTechnique(i,e,u.parameters);if(this._passBoundTechniques.has(d)||(d.bindPass(t,e),this._passBoundTechniques.add(d)),t.bindVAO(u.vao),d===r&&3===d.configuration.transparencyPassType||(t.bindProgram(d.program),t.setPipelineState(d.pipeline),r=d),this._previouslyBoundMaterials.get(d)!==o.material&&(d.bindMaterial(t,o.material,e),this._previouslyBoundMaterials.set(d,o.material)),this._previouslyBoundDraw.get(d)!==o.bindDrawParams&&(d.bindDraw(o.bindDrawParams,o.material,e),this._previouslyBoundMaterials.set(d,o.material)),0!==o.indexType)for(var p=a.get(o.indexType),l=0;l<o.geometryRanges.length;l+=2){var h=o.geometryRanges[l],y=o.geometryRanges[l+1];t.drawElements(u.primitiveType,y,o.indexType,h*p)}else for(l=0;l<o.geometryRanges.length;l+=2){h=o.geometryRanges[l],y=o.geometryRanges[l+1];t.drawArrays(u.primitiveType,h,y)}}},e.prototype.prepareSubmit=function(){this._draws.clear()},e.prototype.finishSubmit=function(){var e=0===this._sorting?1:-1;this._draws.sort((function(t,r){var i=e*(t.depthSquaredHint-r.depthSquaredHint);return 0!==i?i:t.geometry.vao.size-r.geometry.vao.size}))},Object.defineProperty(e.prototype,"count",{get:function(){return this._draws.length},enumerable:!1,configurable:!0}),e}();t.RenderPass=i;var a=new Map;a.set(5121,1),a.set(5123,2),a.set(5125,4)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/PooledArray"],(function(e,t,i){"use strict";let s=function(){function e(e,t,s=0){this._rctx=e,this._techniqueRepository=t,this._sorting=s,this._draws=new i({initialSize:32,allocator:e=>e||{material:null,geometry:null,geometryRanges:null,bindDrawParams:null,depthSquaredHint:0,indexType:0}}),this._passBoundTechniques=new Set,this._previouslyBoundMaterials=new Map,this._previouslyBoundDraw=new Map}var s=e.prototype;return s.submitDraw=function(e,t,i,s,r){const a=this._draws.pushNew();a.geometry=t,a.geometryRanges=i,a.material=e,a.bindDrawParams=s,a.depthSquaredHint=r,a.indexType=t.indexed?t.vao.indexBuffer.indexType:0},s.dispatch=function(e){const t=this._rctx;this._passBoundTechniques.clear(),this._previouslyBoundMaterials.clear(),this._previouslyBoundDraw.clear();let i=null;const s={repository:this._techniqueRepository},a=this._draws.length;for(let n=0;n<a;n++){const a=this._draws.data[n],o=a.geometry,l=a.material.getTechnique(s,e,o.parameters);if(this._passBoundTechniques.has(l)||(l.bindPass(t,e),this._passBoundTechniques.add(l)),t.bindVAO(o.vao),l===i&&3===l.configuration.transparencyPassType||(t.bindProgram(l.program),t.setPipelineState(l.pipeline),i=l),this._previouslyBoundMaterials.get(l)!==a.material&&(l.bindMaterial(t,a.material,e),this._previouslyBoundMaterials.set(l,a.material)),this._previouslyBoundDraw.get(l)!==a.bindDrawParams&&(l.bindDraw(a.bindDrawParams,a.material,e),this._previouslyBoundMaterials.set(l,a.material)),0!==a.indexType){const e=r.get(a.indexType);for(let i=0;i<a.geometryRanges.length;i+=2){const s=a.geometryRanges[i],r=a.geometryRanges[i+1];t.drawElements(o.primitiveType,r,a.indexType,s*e)}}else for(let e=0;e<a.geometryRanges.length;e+=2){const i=a.geometryRanges[e],s=a.geometryRanges[e+1];t.drawArrays(o.primitiveType,i,s)}}},s.prepareSubmit=function(){this._draws.clear()},s.finishSubmit=function(){const e=0===this._sorting?1:-1;this._draws.sort(((t,i)=>{const s=e*(t.depthSquaredHint-i.depthSquaredHint);return 0!==s?s:t.geometry.vao.size-i.geometry.vao.size}))},t._createClass(e,[{key:"count",get:function(){return this._draws.length}}]),e}();const r=new Map;r.set(5121,1),r.set(5123,2),r.set(5125,4),e.RenderPass=s,Object.defineProperty(e,"__esModule",{value:!0})}));

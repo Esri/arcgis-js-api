@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(r,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.computeNeighbors=void 0,n.computeNeighbors=function(r,n){for(var e=r.length/3,o=new Uint32Array(n+1),t=new Uint32Array(n+1),a=function(r,n){r<n?o[r+1]++:t[n+1]++},f=0;f<e;f++){var i=r[3*f],v=r[3*f+1],u=r[3*f+2];a(i,v),a(v,u),a(u,i)}var c=0,s=0;for(f=0;f<n;f++){var y=o[f+1],d=t[f+1];o[f+1]=c,t[f+1]=s,c+=y,s+=d}var l=new Uint32Array(6*e),p=o[n],w=function(r,n,e){if(r<n){var a=o[r+1]++;l[2*a]=n,l[2*a+1]=e}else{a=t[n+1]++;l[2*p+2*a]=r,l[2*p+2*a+1]=e}};for(f=0;f<e;f++){i=r[3*f],v=r[3*f+1],u=r[3*f+2];w(i,v,f),w(v,u,f),w(u,i,f)}var A=function(r,n){for(var e=2*r,o=n-r,t=1;t<o;t++){for(var a=l[e+2*t],f=l[e+2*t+1],i=t-1;i>=0&&l[e+2*i]>a;i--)l[e+2*i+2]=l[e+2*i],l[e+2*i+3]=l[e+2*i+1];l[e+2*i+2]=a,l[e+2*i+3]=f}};for(f=0;f<n;f++)A(o[f],o[f+1]),A(p+t[f],p+t[f+1]);var b=new Int32Array(3*e),g=function(n,e){return n===r[3*e]?0:n===r[3*e+1]?1:n===r[3*e+2]?2:-1},h=function(r,n){var e=g(r,n);b[3*n+e]=-1},U=function(r,n,e,o){var t=g(r,n);b[3*n+t]=o;var a=g(e,o);b[3*o+a]=n};for(f=0;f<n;f++){for(var m=o[f],N=o[f+1],_=t[f],j=t[f+1];m<N&&_<j;){var q=l[2*m];q===(x=l[2*p+2*_])?(U(f,l[2*m+1],x,l[2*p+2*_+1]),m++,_++):q<x?(h(f,l[2*m+1]),m++):(h(x,l[2*p+2*_+1]),_++)}for(;m<N;)h(f,l[2*m+1]),m++;for(;_<j;){var x;h(x=l[2*p+2*_],l[2*p+2*_+1]),_++}}return b}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";t.computeNeighbors=function(t,o){const n=t.length/3,e=new Uint32Array(o+1),r=new Uint32Array(o+1),s=(t,o)=>{t<o?e[t+1]++:r[o+1]++};for(let o=0;o<n;o++){const n=t[3*o],e=t[3*o+1],r=t[3*o+2];s(n,e),s(e,r),s(r,n)}let c=0,f=0;for(let t=0;t<o;t++){const o=e[t+1],n=r[t+1];e[t+1]=c,r[t+1]=f,c+=o,f+=n}const l=new Uint32Array(6*n),i=e[o],u=(t,o,n)=>{if(t<o){const r=e[t+1]++;l[2*r]=o,l[2*r+1]=n}else{const e=r[o+1]++;l[2*i+2*e]=t,l[2*i+2*e+1]=n}};for(let o=0;o<n;o++){const n=t[3*o],e=t[3*o+1],r=t[3*o+2];u(n,e,o),u(e,r,o),u(r,n,o)}const a=(t,o)=>{const n=2*t,e=o-t;for(let t=1;t<e;t++){const o=l[n+2*t],e=l[n+2*t+1];let r=t-1;for(;r>=0&&l[n+2*r]>o;r--)l[n+2*r+2]=l[n+2*r],l[n+2*r+3]=l[n+2*r+1];l[n+2*r+2]=o,l[n+2*r+3]=e}};for(let t=0;t<o;t++)a(e[t],e[t+1]),a(i+r[t],i+r[t+1]);const y=new Int32Array(3*n),w=(o,n)=>o===t[3*n]?0:o===t[3*n+1]?1:o===t[3*n+2]?2:-1,A=(t,o)=>{const n=w(t,o);y[3*o+n]=-1},d=(t,o,n,e)=>{const r=w(t,o);y[3*o+r]=e;const s=w(n,e);y[3*e+s]=o};for(let t=0;t<o;t++){let o=e[t];const n=e[t+1];let s=r[t];const c=r[t+1];for(;o<n&&s<c;){const n=l[2*o],e=l[2*i+2*s];n===e?(d(t,l[2*o+1],e,l[2*i+2*s+1]),o++,s++):n<e?(A(t,l[2*o+1]),o++):(A(e,l[2*i+2*s+1]),s++)}for(;o<n;)A(t,l[2*o+1]),o++;for(;s<c;){A(l[2*i+2*s],l[2*i+2*s+1]),s++}}return y},Object.defineProperty(t,"__esModule",{value:!0})}));

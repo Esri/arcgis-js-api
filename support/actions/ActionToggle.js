@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./ActionBase"],(function(e,t,i,r,s){"use strict";return function(e){function t(t){var i=e.call(this,t)||this;return i.image=null,i.type="toggle",i.value=!1,i}var s;return i.__extends(t,e),s=t,t.prototype.clone=function(){return new s({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible,image:this.image,value:this.value})},i.__decorate([r.property()],t.prototype,"image",void 0),i.__decorate([r.property()],t.prototype,"value",void 0),t=s=i.__decorate([r.subclass("esri.support.Action.ActionToggle")],t)}(s)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./ActionBase"],(function(e,t,r,o,s,i,c,a,l,u,n){"use strict";var p;let d=p=function(t){function r(e){var r;return(r=t.call(this,e)||this).image=null,r.type="toggle",r.value=!1,r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new p({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible,image:this.image,value:this.value})},r}(n);return t.__decorate([i.property()],d.prototype,"image",void 0),t.__decorate([i.property()],d.prototype,"value",void 0),d=p=t.__decorate([c.subclass("esri.support.Action.ActionToggle")],d),d}));

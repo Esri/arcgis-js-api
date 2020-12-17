@@ -1,25 +1,18 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../../../collections/Component/Material/shader/DecodeSymbolColor.glsl"],(function(o,e,l){"use strict";o.SymbolColor=function(o,r){r.symbolColor?(o.include(l.DecodeSymbolColor),o.attributes.add("symbolColor","vec4"),o.varyings.add("colorMixMode","mediump float")):o.fragment.uniforms.add("colorMixMode","int"),r.symbolColor?o.vertex.code.add(e.glsl`
+    int symbolColorMixMode;
 
-define(["require","exports","tslib","../../../collections/Component/Material/shader/DecodeSymbolColor.glsl","../../shaderModules/interfaces"],(function(o,e,l,r,d){"use strict";var n,i;Object.defineProperty(e,"__esModule",{value:!0}),e.SymbolColor=void 0,e.SymbolColor=function(o,e){e.symbolColor?(o.include(r.DecodeSymbolColor),o.attributes.add("symbolColor","vec4"),o.varyings.add("colorMixMode","mediump float")):o.fragment.uniforms.add("colorMixMode","int"),e.symbolColor?o.vertex.code.add(d.glsl(n||(n=l.__makeTemplateObject(["\n    int symbolColorMixMode;\n\n    vec4 getSymbolColor() {\n      return decodeSymbolColor(symbolColor, symbolColorMixMode) * 0.003921568627451;\n    }\n\n    void forwardColorMixMode() {\n      colorMixMode = float(symbolColorMixMode) + 0.5;\n    }\n  "],["\n    int symbolColorMixMode;\n\n    vec4 getSymbolColor() {\n      return decodeSymbolColor(symbolColor, symbolColorMixMode) * 0.003921568627451;\n    }\n\n    void forwardColorMixMode() {\n      colorMixMode = float(symbolColorMixMode) + 0.5;\n    }\n  "])))):o.vertex.code.add(d.glsl(i||(i=l.__makeTemplateObject(["\n    vec4 getSymbolColor() { return vec4(1.0); }\n    void forwardColorMixMode() {}\n    "],["\n    vec4 getSymbolColor() { return vec4(1.0); }\n    void forwardColorMixMode() {}\n    "]))))}}));
+    vec4 getSymbolColor() {
+      return decodeSymbolColor(symbolColor, symbolColorMixMode) * 0.003921568627451;
+    }
+
+    void forwardColorMixMode() {
+      colorMixMode = float(symbolColorMixMode) + 0.5;
+    }
+  `):o.vertex.code.add(e.glsl`
+    vec4 getSymbolColor() { return vec4(1.0); }
+    void forwardColorMixMode() {}
+    `)},Object.defineProperty(o,"__esModule",{value:!0})}));

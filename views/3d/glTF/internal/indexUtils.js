@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/typedArrayUtil","../../webgl-engine/lib/geometryDataUtils"],(function(r,e,n,t){"use strict";function i(r){return t.generateDefaultIndexArray(r)}Object.defineProperty(e,"__esModule",{value:!0}),e.triangleFanToTriangles=e.triangleStripToTriangles=e.trianglesToTriangles=e.linearIndexArray=void 0,e.linearIndexArray=i,e.trianglesToTriangles=function(r){return"number"==typeof r?i(r):n.isUint16Array(r)||n.isUint8Array(r)?new Uint32Array(r):r},e.triangleStripToTriangles=function(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r)for(var i=0,a=0;a<n;a+=1)a%2==0?(t[i++]=a,t[i++]=a+1,t[i++]=a+2):(t[i++]=a+1,t[i++]=a,t[i++]=a+2);else for(i=0,a=0;a<n;a+=1)if(a%2==0){var o=r[a],l=r[a+1],f=r[a+2];t[i++]=o,t[i++]=l,t[i++]=f}else{o=r[a+1],l=r[a],f=r[a+2];t[i++]=o,t[i++]=l,t[i++]=f}return t},e.triangleFanToTriangles=function(r){var e="number"==typeof r?r:r.length;if(e<3)return new Uint32Array(0);var n=e-2,t=new Uint32Array(3*n);if("number"==typeof r){for(var i=0,a=0;a<n;++a)t[i++]=0,t[i++]=a+1,t[i++]=a+2;return t}var o=r[0],l=r[1];for(i=0,a=0;a<n;++a){var f=r[a+2];t[i++]=o,t[i++]=l,t[i++]=f,l=f}return t}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/typedArrayUtil","../../webgl-engine/lib/geometryDataUtils"],(function(e,n,r){"use strict";function t(e){return r.generateDefaultIndexArray(e)}e.linearIndexArray=t,e.triangleFanToTriangles=function(e){const n="number"==typeof e?e:e.length;if(n<3)return new Uint32Array(0);const r=n-2,t=new Uint32Array(3*r);if("number"==typeof e){let e=0;for(let n=0;n<r;++n)t[e++]=0,t[e++]=n+1,t[e++]=n+2;return t}{const n=e[0];let i=e[1],o=0;for(let l=0;l<r;++l){const r=e[l+2];t[o++]=n,t[o++]=i,t[o++]=r,i=r}return t}},e.triangleStripToTriangles=function(e){const n="number"==typeof e?e:e.length;if(n<3)return new Uint32Array(0);const r=n-2,t=new Uint32Array(3*r);if("number"==typeof e){let e=0;for(let n=0;n<r;n+=1)n%2==0?(t[e++]=n,t[e++]=n+1,t[e++]=n+2):(t[e++]=n+1,t[e++]=n,t[e++]=n+2)}else{let n=0;for(let i=0;i<r;i+=1)if(i%2==0){const r=e[i],o=e[i+1],l=e[i+2];t[n++]=r,t[n++]=o,t[n++]=l}else{const r=e[i+1],o=e[i],l=e[i+2];t[n++]=r,t[n++]=o,t[n++]=l}}return t},e.trianglesToTriangles=function(e){return"number"==typeof e?t(e):n.isUint16Array(e)||n.isUint8Array(e)?new Uint32Array(e):e},Object.defineProperty(e,"__esModule",{value:!0})}));

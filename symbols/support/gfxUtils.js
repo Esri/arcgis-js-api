@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../assets","../../Color","../../request","../../core/ItemCache","../../core/promiseUtils","../../core/screenUtils","./cimSymbolUtils"],(function(e,t,r,i,l,a,n,o,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.defaultThematicColor=t.getStroke=t.getPatternUrlWithColor=t.getFill=t.getSVGBaselineShift=t.getSVGBaseline=t.getSVGAlign=void 0;var c=r.getAssetUrl("esri/symbols/patterns/"),p={left:"start",center:"middle",right:"end",justify:"start"},u={top:"text-before-edge",middle:"central",baseline:"alphabetic",bottom:"text-after-edge"},g=new a(1e3);t.getSVGAlign=function(e){var t=e.horizontalAlignment;return t=t&&p[t.toLowerCase()]||"middle"},t.getSVGBaseline=function(e){var t=e.verticalAlignment;return t&&u[t.toLowerCase()]||"alphabetic"},t.getSVGBaselineShift=function(e){return"bottom"===e.verticalAlignment?"super":null},t.getFill=function(e){var t=e.style,r=null;if(e)switch(e.type){case"simple-marker":"cross"!==t&&"x"!==t&&(r=e.color);break;case"simple-fill":"solid"===t?r=e.color:"none"!==t&&(r={type:"pattern",x:0,y:0,src:c+t+".png",width:5,height:5});break;case"picture-fill":r={type:"pattern",src:e.url,width:o.pt2px(e.width)*e.xscale,height:o.pt2px(e.height)*e.yscale,x:o.pt2px(e.xoffset),y:o.pt2px(e.yoffset)};break;case"text":r=e.color;break;case"cim":r=s.getCIMSymbolColor(e)}return r},t.getPatternUrlWithColor=function(e,t){var r=e+"-"+t;return void 0!==g.get(r)?n.resolve(g.get(r)):l(e,{responseType:"image"}).then((function(e){var i=e.data,l=i.naturalWidth,a=i.naturalHeight,n=document.createElement("canvas");n.width=l,n.height=a;var o=n.getContext("2d");o.fillStyle=t,o.fillRect(0,0,l,a),o.globalCompositeOperation="destination-in",o.drawImage(i,0,0);var s=n.toDataURL();return g.put(r,s),s}))},t.getStroke=function e(t){if(!t)return null;var r;switch(t.type){case"simple-fill":case"picture-fill":case"simple-marker":r=e(t.outline);break;case"simple-line":var i=o.pt2px(t.width);"none"!==t.style&&0!==i&&(r={color:t.color,style:m(t.style),width:i,cap:t.cap,join:"miter"===t.join?o.pt2px(t.miterLimit):t.join});break;default:r=null}return r};var f,m=(f={},function(e){if(f[e])return f[e];var t=e.replace(/-/g,"");return f[e]=t,t});t.defaultThematicColor=new i([128,128,128])}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/promiseUtils","../../Color","../../core/screenUtils","../../request","../../assets","../../core/ItemCache","./cimSymbolUtils"],(function(e,t,n,r,i,o,l,s){"use strict";const c="picture-fill",a="simple-fill",p="simple-marker",u=o.getAssetUrl("esri/symbols/patterns/"),f={left:"start",center:"middle",right:"end",justify:"start"},d={top:"text-before-edge",middle:"central",baseline:"alphabetic",bottom:"text-after-edge"},g=new l(1e3);const m=function(){const e={};return function(t){if(e[t])return e[t];const n=t.replace(/-/g,"");return e[t]=n,n}}(),h=new n([128,128,128]);e.defaultThematicColor=h,e.getFill=function(e){const t=e.style;let n=null;if(e)switch(e.type){case p:"cross"!==t&&"x"!==t&&(n=e.color);break;case a:"solid"===t?n=e.color:"none"!==t&&(n={type:"pattern",x:0,y:0,src:u+t+".png",width:5,height:5});break;case c:n={type:"pattern",src:e.url,width:r.pt2px(e.width)*e.xscale,height:r.pt2px(e.height)*e.yscale,x:r.pt2px(e.xoffset),y:r.pt2px(e.yoffset)};break;case"text":n=e.color;break;case"cim":n=s.getCIMSymbolColor(e)}return n},e.getPatternUrlWithColor=function(e,n){const r=e+"-"+n;return void 0!==g.get(r)?t.resolve(g.get(r)):i(e,{responseType:"image"}).then((e=>{const t=e.data,i=t.naturalWidth,o=t.naturalHeight,l=document.createElement("canvas");l.width=i,l.height=o;const s=l.getContext("2d");s.fillStyle=n,s.fillRect(0,0,i,o),s.globalCompositeOperation="destination-in",s.drawImage(t,0,0);const c=l.toDataURL();return g.put(r,c),c}))},e.getSVGAlign=function(e){let t=e.horizontalAlignment;return t=t&&f[t.toLowerCase()]||"middle",t},e.getSVGBaseline=function(e){const t=e.verticalAlignment;return t&&d[t.toLowerCase()]||"alphabetic"},e.getSVGBaselineShift=function(e){return"bottom"===e.verticalAlignment?"super":null},e.getStroke=function e(t){if(!t)return null;let n;switch(t.type){case a:case c:case p:n=e(t.outline);break;case"simple-line":{const e=r.pt2px(t.width);"none"!==t.style&&0!==e&&(n={color:t.color,style:m(t.style),width:e,cap:t.cap,join:"miter"===t.join?r.pt2px(t.miterLimit):t.join});break}default:n=null}return n},Object.defineProperty(e,"__esModule",{value:!0})}));

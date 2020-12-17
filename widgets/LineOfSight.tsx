@@ -55,13 +55,13 @@ import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import SceneView = require("esri/views/SceneView");
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.LineOfSight
-import LineOfSightViewModel = require("esri/widgets/LineOfSight/LineOfSightViewModel");
+import LineOfSightViewModel from "esri/widgets/LineOfSight/LineOfSightViewModel";
 
 // esri.widgets.LineOfSight.t9n
 import LineOfSightMessages from "esri/widgets/LineOfSight/t9n/LineOfSight";
@@ -342,4 +342,4 @@ class LineOfSight extends Widget {
   }
 }
 
-export = LineOfSight;
+export default LineOfSight;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/mathUtils"],(function(r,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.ResizableFloat32Array=void 0;var a=function(){function r(r){null==r?r=16:r<65536&&(r=t.nextHighestPowerOfTwo(r)),this._array=new Float32Array(r),this._size=0}return r.prototype.resize=function(r,e){if(this._size=r,this._size>this._array.length){for(var t=this._array.length||1;t<this._size;)t*=2;var a=new Float32Array(t);return e&&a.set(this._array),this._array=a,!0}var i=2*this._size;if(i<=this._array.length){for(t=this._array.length;t>=i;)t=Math.floor(t/2);a=new Float32Array(t);return e&&a.set(this._array.subarray(0,t)),this._array=a,!0}return!1},r.prototype.append=function(r){var e=this._size;this.resize(this._size+r.length,!0),this._array.set(r,e)},r.prototype.erase=function(r,e){for(var t=r;t<e;++t)this._array[t]=0},Object.defineProperty(r.prototype,"array",{get:function(){return this._array},enumerable:!1,configurable:!0}),Object.defineProperty(r.prototype,"size",{get:function(){return this._size},enumerable:!1,configurable:!0}),r}();e.ResizableFloat32Array=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/mathUtils"],(function(t,r,e){"use strict";let s=function(){function t(t){null==t?t=16:t<65536&&(t=e.nextHighestPowerOfTwo(t)),this._array=new Float32Array(t),this._size=0}var s=t.prototype;return s.resize=function(t,r){if(this._size=t,this._size>this._array.length){let t=this._array.length||1;for(;t<this._size;)t*=2;const e=new Float32Array(t);return r&&e.set(this._array),this._array=e,!0}const e=2*this._size;if(e<=this._array.length){let t=this._array.length;for(;t>=e;)t=Math.floor(t/2);const s=new Float32Array(t);return r&&s.set(this._array.subarray(0,t)),this._array=s,!0}return!1},s.append=function(t){const r=this._size;this.resize(this._size+t.length,!0),this._array.set(t,r)},s.erase=function(t,r){for(let e=t;e<r;++e)this._array[e]=0},r._createClass(t,[{key:"array",get:function(){return this._array}},{key:"size",get:function(){return this._size}}]),t}();t.ResizableFloat32Array=s,Object.defineProperty(t,"__esModule",{value:!0})}));

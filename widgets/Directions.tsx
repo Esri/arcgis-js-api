@@ -41,50 +41,52 @@
 
 // esri
 import { getAssetUrl } from "esri/assets";
-import Graphic = require("esri/Graphic");
+import Graphic from "esri/Graphic";
 import { formatDate, formatNumber, substitute } from "esri/intl";
 
 // esri.core
-import { find } from "esri/core/arrayUtils";
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { on, pausable } from "esri/core/events";
-import Handles = require("esri/core/Handles");
+import Handles from "esri/core/Handles";
 import { PausableHandle } from "esri/core/interfaces";
 import { init, on as watchOn, watch, when, whenOnce } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
+
 // esri.intl
 import { loadMoment } from "esri/intl/moment";
 
 // esri.libs.sortablejs
-import Sortable = require("esri/libs/sortablejs/Sortable");
+import Sortable from "esri/libs/sortablejs/Sortable";
 
 // esri.symbols
-import Symbol = require("esri/symbols/Symbol");
+import Symbol from "esri/symbols/Symbol";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.tasks.support
-import RouteResultsContainer = require("esri/tasks/support/RouteResultsContainer");
+import RouteResultsContainer from "esri/tasks/support/RouteResultsContainer";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
-import View = require("esri/views/View");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
+import View from "esri/views/View";
 
 // esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "esri/widgets/interfaces";
-import Search = require("esri/widgets/Search");
-import Widget = require("esri/widgets/Widget");
+import Search from "esri/widgets/Search";
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Directions
-import DirectionsViewModel = require("esri/widgets/Directions/DirectionsViewModel");
+import DirectionsViewModel from "esri/widgets/Directions/DirectionsViewModel";
 
 // esri.widgets.Directions.support
-import CostSummary = require("esri/widgets/Directions/support/CostSummary");
+import CostSummary from "esri/widgets/Directions/support/CostSummary";
 import {
   formatDistance,
   formatTime,
@@ -94,16 +96,16 @@ import {
 } from "esri/widgets/Directions/support/directionsUtils";
 import { Maneuver, PlaceholderStop, StopSymbols } from "esri/widgets/Directions/support/interfaces";
 import { toIconName } from "esri/widgets/Directions/support/maneuverUtils";
-import RouteSections = require("esri/widgets/Directions/support/RouteSections");
+import RouteSections from "esri/widgets/Directions/support/RouteSections";
 
 // esri.widgets.Directions.t9n
 import DirectionsMessages from "esri/widgets/Directions/t9n/Directions";
 
 // esri.widgets.support
-import DatePicker = require("esri/widgets/support/DatePicker");
+import DatePicker from "esri/widgets/support/DatePicker";
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import TimePicker = require("esri/widgets/support/TimePicker");
+import TimePicker from "esri/widgets/support/TimePicker";
 import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 const NOW = "now";
@@ -183,8 +185,8 @@ const CSS = {
   addStopIcon: "esri-icon-plus",
   removeStopIcon: "esri-icon-trash",
   reverseStopIcon: "esri-icon-up-down-arrows",
-  openIcon: "esri-icon-right-triangle-arrow",
-  closeIcon: "esri-icon-down-arrow",
+  openIcon: "esri-icon-down",
+  closeIcon: "esri-icon-up",
   warningIcon: "esri-icon-notice-triangle",
   widgetIcon: "esri-icon-directions",
 
@@ -240,9 +242,9 @@ const defaultDelayInMs = 100;
 const viewClickDelayInMs = 500;
 
 function isPointerOnSuggestion(event: PointerEvent): boolean {
-  return !!find(event.composedPath?.(), (el: HTMLElement) =>
-    el.classList?.contains("esri-search__suggestions-list")
-  );
+  return !!event
+    .composedPath?.()
+    .find((el: HTMLElement) => el.classList?.contains("esri-search__suggestions-list"));
 }
 
 @subclass("esri.widgets.Directions")
@@ -523,6 +525,23 @@ class Directions extends Widget {
   @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
+
+  //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
 
   //----------------------------------
   //  routeServiceUrl
@@ -1503,10 +1522,10 @@ class Directions extends Widget {
                   tabIndex={0}
                   title={title}
                 >
-                  <span aria-hidden="true" class={this.classes(sectionHeaderIconClasses)} />
                   <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>
                     {section.name}
                   </h2>
+                  <span aria-hidden="true" class={this.classes(sectionHeaderIconClasses)} />
                 </div>
               </header>
             );
@@ -1516,7 +1535,6 @@ class Directions extends Widget {
                 class={CSS.maneuverSectionHeader}
                 key="esri-directions__maneuver-section-header"
               >
-                {last ? <span aria-hidden="true" class={CSS.lastStopIcon} /> : null}
                 <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>{section.name}</h2>
               </header>
             );
@@ -1547,7 +1565,8 @@ class Directions extends Widget {
 
     const costSummary = this._costSummary.set({
       directionsViewModel: this.viewModel,
-      messages: this.messages
+      messages: this.messages,
+      messagesUnits: this.messagesUnits
     });
 
     const { messages } = this;
@@ -1704,8 +1723,10 @@ class Directions extends Widget {
     const { attributes } = maneuver;
     const distanceUnits = this.get<string>("viewModel.routeParameters.directionsLengthUnits");
 
-    const { messages } = this;
-    const length = formatDistance(messages, attributes.length, { toUnits: distanceUnits });
+    const { messages, messagesUnits } = this;
+    const length = formatDistance(messages, messagesUnits, attributes.length, {
+      toUnits: distanceUnits
+    });
     const time = formatTime(attributes.time);
 
     const associatedStop: Graphic = getAssociatedStop(maneuver);
@@ -1859,4 +1880,4 @@ class Directions extends Widget {
   }
 }
 
-export = Directions;
+export default Directions;

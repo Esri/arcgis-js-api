@@ -4,8 +4,7 @@
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
- * * Not supported in Internet Explorer 11.
- * * [Dark themed](../guide/styling/#themes) CSS is currently not supported.
+ * [Dark themed](../guide/styling/#themes) CSS is currently not supported.
  * :::
  *
  * The following image displays the default `ButtonMenu` alongside a custom
@@ -39,26 +38,26 @@
  */
 
 // esri.core
-import { eventKey } from "esri/../../../core/events";
-import { HandleOwnerMixin } from "esri/../../../core/HandleOwner";
-import { isSome } from "esri/../../../core/maybe";
-import { watch } from "esri/../../../core/watchUtils";
+import { eventKey } from "esri/core/events";
+import { HandleOwnerMixin } from "esri/core/HandleOwner";
+import { isSome } from "esri/core/maybe";
+import { watch } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../../../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget = require("esri/../../Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.FeatureTable.Grid.support
-import ButtonMenuItem = require("esri/widgets/ButtonMenuItem");
-import ButtonMenuViewModel = require("esri/widgets/ButtonMenuViewModel");
+import ButtonMenuItem from "esri/widgets/ButtonMenuItem";
+import ButtonMenuViewModel from "esri/widgets/ButtonMenuViewModel";
 import { ButtonMenuConfig } from "esri/widgets/interfaces";
 
 // esri.widgets.support
-import { VNode } from "esri/../../support/interfaces";
-import Popover = require("esri/../../support/Popover");
-import { isRTL, renderable, tsx } from "esri/../../support/widget";
+import { VNode } from "esri/support/interfaces";
+import Popover from "esri/support/Popover";
+import { isRTL, renderable, tsx } from "esri/support/widget";
 
 const CSS = {
   base: "esri-button-menu",
@@ -466,4 +465,4 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
   }
 }
 
-export = ButtonMenu;
+export default ButtonMenu;

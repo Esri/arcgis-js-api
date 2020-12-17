@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/JSONSupport","../core/lang","../core/accessorSupport/decorators"],(function(e,t,r,n,o,a){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.activeRange=null,r.currentRangeExtent=null,r.fullRangeExtent=null,r}var n;return r.__extends(t,e),n=t,t.prototype.clone=function(){return new n(o.clone({activeRange:this.activeRange,currentRangeExtent:this.currentRangeExtent,fullRangeExtent:this.fullRangeExtent}))},r.__decorate([a.property({type:String,nonNullable:!0,json:{read:{source:"activeRangeName"},write:{target:"activeRangeName",isRequired:!0}}})],t.prototype,"activeRange",void 0),r.__decorate([a.property({type:[Number],json:{write:!0}})],t.prototype,"currentRangeExtent",void 0),r.__decorate([a.property({type:[Number],json:{write:!0}})],t.prototype,"fullRangeExtent",void 0),t=n=r.__decorate([a.subclass("esri.webdoc.RangeInfo")],t)}(n.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport"],(function(e,t,r,n,o,c,a,u,s,p,i,l){"use strict";var g;let R=g=function(t){function r(e){var r;return(r=t.call(this,e)||this).activeRange=null,r.currentRangeExtent=null,r.fullRangeExtent=null,r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new g(n.clone({activeRange:this.activeRange,currentRangeExtent:this.currentRangeExtent,fullRangeExtent:this.fullRangeExtent}))},r}(l.JSONSupport);return t.__decorate([a.property({type:String,nonNullable:!0,json:{read:{source:"activeRangeName"},write:{target:"activeRangeName",isRequired:!0}}})],R.prototype,"activeRange",void 0),t.__decorate([a.property({type:[Number],json:{write:!0}})],R.prototype,"currentRangeExtent",void 0),t.__decorate([a.property({type:[Number],json:{write:!0}})],R.prototype,"fullRangeExtent",void 0),R=g=t.__decorate([u.subclass("esri.webdoc.RangeInfo")],R),R}));

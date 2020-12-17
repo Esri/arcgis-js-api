@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./Element","./support/inputs","../../layers/support/domains"],(function(e,t,r,i,o,p,n){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.domain=null,r.editable=!0,r.fieldName=null,r.hint=null,r.input=null,r.requiredExpression=null,r.type="field",r}var o;return r.__extends(t,e),o=t,t.prototype.clone=function(){return new o({description:this.description,domain:this.domain,editable:this.editable,fieldName:this.fieldName,hint:this.hint,input:this.input,label:this.label,requiredExpression:this.requiredExpression,visibilityExpression:this.visibilityExpression})},r.__decorate([i.property({types:n.types,json:{read:{reader:n.fromJSON},write:!0}})],t.prototype,"domain",void 0),r.__decorate([i.property({type:Boolean,json:{default:!0,write:!0}})],t.prototype,"editable",void 0),r.__decorate([i.property({type:String,json:{write:!0}})],t.prototype,"fieldName",void 0),r.__decorate([i.property({type:String,json:{write:!0}})],t.prototype,"hint",void 0),r.__decorate([i.property({types:p.types,json:{read:{source:"inputType"},write:{target:"inputType"}}})],t.prototype,"input",void 0),r.__decorate([i.property({type:String,json:{write:!0}})],t.prototype,"requiredExpression",void 0),r.__decorate([i.property({type:String,json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=o=r.__decorate([i.subclass("esri.form.elements.FieldElement")],t)}(o.Element)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../layers/support/domains","./Element","./support/inputs"],(function(e,t,r,o,i,p,s,n,l,d,a,u,c){"use strict";var y;let h=y=function(t){function r(e){var r;return(r=t.call(this,e)||this).domain=null,r.editable=!0,r.fieldName=null,r.hint=null,r.input=null,r.requiredExpression=null,r.type="field",r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new y({description:this.description,domain:this.domain,editable:this.editable,fieldName:this.fieldName,hint:this.hint,input:this.input,label:this.label,requiredExpression:this.requiredExpression,visibilityExpression:this.visibilityExpression})},r}(u.Element);return t.__decorate([p.property({types:a.types,json:{read:{reader:a.fromJSON},write:!0}})],h.prototype,"domain",void 0),t.__decorate([p.property({type:Boolean,json:{default:!0,write:!0}})],h.prototype,"editable",void 0),t.__decorate([p.property({type:String,json:{write:!0}})],h.prototype,"fieldName",void 0),t.__decorate([p.property({type:String,json:{write:!0}})],h.prototype,"hint",void 0),t.__decorate([p.property({types:c.types,json:{read:{source:"inputType"},write:{target:"inputType"}}})],h.prototype,"input",void 0),t.__decorate([p.property({type:String,json:{write:!0}})],h.prototype,"requiredExpression",void 0),t.__decorate([p.property({type:String,json:{read:!1,write:!0}})],h.prototype,"type",void 0),h=y=t.__decorate([s.subclass("esri.form.elements.FieldElement")],h),h}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(i,t){"use strict";return function(i,t,e,n){this._candidates=null,this._known=null,this._lastFetchedIndex=0,this._ordered=!1,this.pagesDefinition=null,this._candidates=i,this._known=t,this._ordered=e,this.pagesDefinition=n}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define((function(){"use strict";return function(i,n,t,e){this._candidates=null,this._known=null,this._lastFetchedIndex=0,this._ordered=!1,this.pagesDefinition=null,this._candidates=i,this._known=n,this._ordered=t,this.pagesDefinition=e}}));

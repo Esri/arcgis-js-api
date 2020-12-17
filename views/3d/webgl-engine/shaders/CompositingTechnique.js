@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../core/shaderTechnique/ReloadableShaderModule","../core/shaderTechnique/ShaderTechnique","../core/shaderTechnique/ShaderTechniqueConfiguration","../lib/DefaultVertexAttributeLocations","./Compositing.glsl","../../../webgl/Program","../../../webgl/renderState","../../../webgl/renderState","@dojo/framework/shim/Promise"],(function(e,t,r,i,n,o,a,u,l,c,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.CompositingTechniqueConfiguration=t.CompositingTechnique=void 0;var d=function(t){function n(){return null!==t&&t.apply(this,arguments)||this}return r.__extends(n,t),n.prototype.initializeProgram=function(e){var t=n.shader.get().build(this.configuration);return new l(e.rctx,t.generateSource("vertex"),t.generateSource("fragment"),a.Default3D)},n.prototype.initializePipeline=function(){if(2===this.configuration.function)return s.makePipelineState({colorWrite:{r:!1,g:!0,b:!1,a:!1}});switch(this.configuration.alphaMode){case 0:return s.makePipelineState({colorWrite:s.defaultColorWriteParams});case 1:return s.makePipelineState({blending:c.separateBlendingParams(770,1,771,771),colorWrite:s.defaultColorWriteParams});case 3:return s.makePipelineState({blending:c.simpleBlendingParams(771,770),colorWrite:s.defaultColorWriteParams,depthTest:null,depthWrite:null});default:return s.makePipelineState({blending:c.simpleBlendingParams(1,771),colorWrite:s.defaultColorWriteParams})}},n.shader=new i.ReloadableShaderModule(u,(function(){return new Promise((function(t,r){e(["./Compositing.glsl"],t,r)}))})),n}(n.ShaderTechnique);t.CompositingTechnique=d;var p=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.function=0,t.alphaMode=0,t.hasOpacityFactor=!1,t}return r.__extends(t,e),r.__decorate([o.parameter({count:4})],t.prototype,"function",void 0),r.__decorate([o.parameter({count:4})],t.prototype,"alphaMode",void 0),r.__decorate([o.parameter()],t.prototype,"hasOpacityFactor",void 0),t}(o.ShaderTechniqueConfiguration);t.CompositingTechniqueConfiguration=p}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["require","exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../core/shaderTechnique/ReloadableShaderModule","../core/shaderTechnique/ShaderTechnique","../core/shaderTechnique/ShaderTechniqueConfiguration","../lib/DefaultVertexAttributeLocations","../../../webgl/Program","../../../webgl/renderState","../../../../chunks/Compositing.glsl"],(function(e,t,r,i,n,o,a,u,l,c,s){"use strict";let h=function(e){function t(){return e.apply(this,arguments)||this}r._inheritsLoose(t,e);var i=t.prototype;return i.initializeProgram=function(e){const r=t.shader.get().build(this.configuration);return new l(e.rctx,r.generateSource("vertex"),r.generateSource("fragment"),u.Default3D)},i.initializePipeline=function(){if(2===this.configuration.function)return c.makePipelineState({colorWrite:{r:!1,g:!0,b:!1,a:!1}});switch(this.configuration.alphaMode){case 0:return c.makePipelineState({colorWrite:c.defaultColorWriteParams});case 1:return c.makePipelineState({blending:c.separateBlendingParams(770,1,771,771),colorWrite:c.defaultColorWriteParams});default:return c.makePipelineState({blending:c.simpleBlendingParams(1,771),colorWrite:c.defaultColorWriteParams})}},t}(o.ShaderTechnique);h.shader=new n.ReloadableShaderModule(s.CompositingShader,(()=>new Promise((function(t,r){e(["./Compositing.glsl"],t,r)}))));let d=function(e){function t(){var t;return(t=e.apply(this,arguments)||this).function=0,t.alphaMode=0,t.hasOpacityFactor=!1,t}return r._inheritsLoose(t,e),t}(a.ShaderTechniqueConfiguration);i.__decorate([a.parameter({count:4})],d.prototype,"function",void 0),i.__decorate([a.parameter({count:3})],d.prototype,"alphaMode",void 0),i.__decorate([a.parameter()],d.prototype,"hasOpacityFactor",void 0),t.CompositingTechnique=h,t.CompositingTechniqueConfiguration=d,Object.defineProperty(t,"__esModule",{value:!0})}));

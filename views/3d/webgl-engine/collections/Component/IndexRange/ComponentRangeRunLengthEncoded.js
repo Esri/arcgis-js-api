@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(n,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ComponentRangeRunLengthEncoded=void 0;var e=function(){function n(n){this._totalCount=n,this._indexRanges=[0,n]}return n.prototype.componentCount=function(){for(var n=this._indexRanges,t=0,e=0;e<n.length;e+=2)t+=n[e+1];return t},n.prototype.reset=function(n){"all"===n||n.length===this._totalCount?this._indexRanges=[0,this._totalCount]:this._indexRanges=function(n){var t=new Array;if(0===n.length)return t;for(var e=n[0],r=1,o=1;o<n.length;o++){var i=n[o];e+r===i?r+=1:(t.push(e),t.push(r),e=i,r=1)}return t.push(e),t.push(r),t}(n)},n.prototype.forEachComponent=function(n){for(var t=this._indexRanges,e=0;e<t.length;e+=2)for(var r=t[e],o=r+t[e+1],i=r;i<o;i++)if(!n(i))return!1;return!0},n.prototype.forEachComponentRange=function(n){for(var t=this._indexRanges,e=0;e<t.length;e+=2){var r=t[e];if(!n(r,r+t[e+1]))return!1}return!0},n.prototype.computeOffsetRanges=function(n){for(var t=new Array(this._indexRanges.length),e=this._indexRanges,r=0;r<e.length;r+=2){var o=e[r],i=o+e[r+1],u=n[o],a=n[i];t[r]=u,t[r+1]=a-u}return t},n}();t.ComponentRangeRunLengthEncoded=e}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(n){"use strict";let t=function(){function n(n){this._totalCount=n,this._indexRanges=[0,n]}var t=n.prototype;return t.componentCount=function(){const n=this._indexRanges;let t=0;for(let e=0;e<n.length;e+=2)t+=n[e+1];return t},t.reset=function(n){"all"===n||n.length===this._totalCount?this._indexRanges=[0,this._totalCount]:this._indexRanges=function(n){const t=new Array;if(0===n.length)return t;let e=n[0],o=1;for(let s=1;s<n.length;s++){const r=n[s];e+o===r?o+=1:(t.push(e),t.push(o),e=r,o=1)}return t.push(e),t.push(o),t}(n)},t.forEachComponent=function(n){const t=this._indexRanges;for(let e=0;e<t.length;e+=2){const o=t[e],s=o+t[e+1];for(let t=o;t<s;t++)if(!n(t))return!1}return!0},t.forEachComponentRange=function(n){const t=this._indexRanges;for(let e=0;e<t.length;e+=2){const o=t[e];if(!n(o,o+t[e+1]))return!1}return!0},t.computeOffsetRanges=function(n){const t=new Array(this._indexRanges.length),e=this._indexRanges;for(let o=0;o<e.length;o+=2){const s=e[o],r=s+e[o+1],i=n[s],u=n[r];t[o]=i,t[o+1]=u-i}return t},n}();n.ComponentRangeRunLengthEncoded=t,Object.defineProperty(n,"__esModule",{value:!0})}));

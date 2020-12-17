@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","./materialUtils"],(function(e,t,r,o,n,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Symbol3DVerticalOffset=void 0;var i=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.screenLength=0,t.minWorldLength=0,t}var o;return r.__extends(t,e),o=t,t.prototype.clone=function(){return new o({screenLength:this.screenLength,minWorldLength:this.minWorldLength,maxWorldLength:this.maxWorldLength})},r.__decorate([n.property(s.screenSizeProperty)],t.prototype,"screenLength",void 0),r.__decorate([n.property({type:Number,json:{write:!0,default:0}})],t.prototype,"minWorldLength",void 0),r.__decorate([n.property({type:Number,json:{write:!0}})],t.prototype,"maxWorldLength",void 0),t=o=r.__decorate([n.subclass("esri.symbols.support.Symbol3DVerticalOffset")],t)}(o.JSONSupport);t.Symbol3DVerticalOffset=i,t.default=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./materialUtils"],(function(e,r,t,o,s,c,n,l,p,i,a,u,f){"use strict";var y;e.Symbol3DVerticalOffset=y=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).screenLength=0,r.minWorldLength=0,r}return r._inheritsLoose(t,e),t.prototype.clone=function(){return new y({screenLength:this.screenLength,minWorldLength:this.minWorldLength,maxWorldLength:this.maxWorldLength})},t}(u.JSONSupport),t.__decorate([n.property(f.screenSizeProperty)],e.Symbol3DVerticalOffset.prototype,"screenLength",void 0),t.__decorate([n.property({type:Number,json:{write:!0,default:0}})],e.Symbol3DVerticalOffset.prototype,"minWorldLength",void 0),t.__decorate([n.property({type:Number,json:{write:!0}})],e.Symbol3DVerticalOffset.prototype,"maxWorldLength",void 0),e.Symbol3DVerticalOffset=y=t.__decorate([l.subclass("esri.symbols.support.Symbol3DVerticalOffset")],e.Symbol3DVerticalOffset);var d=e.Symbol3DVerticalOffset;e.default=d,Object.defineProperty(e,"__esModule",{value:!0})}));

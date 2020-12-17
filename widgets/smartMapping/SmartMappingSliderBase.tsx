@@ -7,25 +7,25 @@
  */
 
 // esri
-import Color = require("esri/../Color");
+import Color from "esri/Color";
 
 // esri.core
-import { isSome } from "esri/../core/maybe";
-import * as watchUtils from "esri/../core/watchUtils";
+import { isSome } from "esri/core/maybe";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.widgets
-import Histogram = require("esri/Histogram");
-import Slider = require("esri/Slider");
-import Widget = require("esri/Widget");
+import Histogram from "esri/Histogram";
+import Slider from "esri/Slider";
+import Widget from "esri/Widget";
 
 // esri.widgets.Histogram
 import { DataLineInfos } from "esri/Histogram/interfaces";
 
 // esri.widgets.smartMapping
-import SmartMappingSliderViewModel = require("esri/widgets/SmartMappingSliderViewModel");
+import SmartMappingSliderViewModel from "esri/widgets/SmartMappingSliderViewModel";
 
 // esri.widgets.smartMapping.support
 import {
@@ -834,13 +834,20 @@ export abstract class SmartMappingSliderBase extends Widget {
       return null;
     }
 
-    const { average, barCreatedFunction, bins, dataLineCreatedFunction } = config;
+    const {
+      average,
+      barCreatedFunction,
+      bins,
+      dataLineCreatedFunction,
+      dataLineUpdatedFunction
+    } = config;
 
     return {
       average,
       barCreatedFunction,
       bins,
       dataLineCreatedFunction,
+      dataLineUpdatedFunction,
       dataLines: this._getDataLines(config)
     };
   }

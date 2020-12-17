@@ -26,39 +26,39 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
+import Collection from "esri/core/Collection";
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
-import Handles = require("esri/core/Handles");
-import has = require("esri/core/has");
-import Logger = require("esri/core/Logger");
+import Handles from "esri/core/Handles";
+import has from "esri/core/has";
+import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.libs.sortablejs
-import Sortable = require("esri/libs/sortablejs/Sortable");
+import Sortable from "esri/libs/sortablejs/Sortable";
 
 // esri.support.actions
-import ActionButton = require("esri/support/actions/ActionButton");
-import ActionToggle = require("esri/support/actions/ActionToggle");
+import ActionButton from "esri/support/actions/ActionButton";
+import ActionToggle from "esri/support/actions/ActionToggle";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.LayerList
 import { Action, Actions, ListItemModifier, Sections } from "esri/widgets/LayerList/interfaces";
-import LayerListViewModel = require("esri/widgets/LayerList/LayerListViewModel");
-import ListItem = require("esri/widgets/LayerList/ListItem");
-import ListItemPanel = require("esri/widgets/LayerList/ListItemPanel");
+import LayerListViewModel from "esri/widgets/LayerList/LayerListViewModel";
+import ListItem from "esri/widgets/LayerList/ListItem";
+import ListItemPanel from "esri/widgets/LayerList/ListItemPanel";
 
 // esri.widgets.LayerList.support
 import {
@@ -666,13 +666,13 @@ class LayerList extends Widget {
   }
 
   protected renderActionsMenuIcon(item: ListItem, actionsUid: string): VNode {
-    const { messagesCommon } = this;
+    const { messages } = this;
 
     const actionsMenuClasses = {
       [CSS.actionsMenuItemActive]: item.actionsOpen
     };
 
-    const actionsMenuTitle = item.actionsOpen ? messagesCommon.close : messagesCommon.open;
+    const actionsMenuTitle = item.actionsOpen ? messages.closeActions : messages.openActions;
 
     return (
       <div
@@ -1028,7 +1028,7 @@ class LayerList extends Widget {
 
     return (
       <div
-        key={panel}
+        key={`panel-${panel.uid}`}
         bind={this}
         data-panel={panel}
         onclick={this._triggerPanel}
@@ -1051,8 +1051,8 @@ class LayerList extends Widget {
   ): VNode {
     const actionSectionsArray = actionsSections.toArray();
 
-    const actionSection = actionSectionsArray.map((actionSection) => (
-      <ul key={actionSection} class={CSS.actionsList}>
+    const actionSection = actionSectionsArray.map((actionSection, index) => (
+      <ul key={`${item}-action-section-${index}`} class={CSS.actionsList}>
         {this.renderActionSection(item, actionSection)}
       </ul>
     ));
@@ -1139,7 +1139,7 @@ class LayerList extends Widget {
           data-item={item}
           data-action={action}
           role="button"
-          key={action}
+          key={`single-action-${action.uid}`}
           onclick={this._triggerAction}
           onkeydown={this._triggerAction}
           classes={buttonClasses}
@@ -1157,7 +1157,7 @@ class LayerList extends Widget {
         bind={this}
         data-item={item}
         data-action={action}
-        key={action}
+        key={`action-${action.uid}`}
         onclick={this._triggerAction}
         onkeydown={this._triggerAction}
         classes={buttonClasses}
@@ -1628,4 +1628,4 @@ class LayerList extends Widget {
   }
 }
 
-export = LayerList;
+export default LayerList;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/screenUtils","../../state/controllers/RotateController","../../../input/InputHandler"],(function(e,r,t,n,a,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.TwoFingerTilt=void 0;var i=function(e){function r(r,t){void 0===t&&(t=!1);var n=e.call(this,!0)||this;return n.view=r,n.invert=t,n.registerIncoming("vertical-two-finger-drag",(function(e){return n.handleTwoFinger(e)})),n}return t.__extends(r,e),r.prototype.handleTwoFinger=function(e){var r=this.invert?-1:1,t=n.createScreenPointArray(0,e.data.delta*r);switch(e.data.action){case"begin":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.cameraController=new a.RotateController({view:this.view,pivot:"center"}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(t);break;case"update":this.cameraController&&this.cameraController.update(t);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}},r}(o.InputHandler);r.TwoFingerTilt=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../state/controllers/RotateController"],(function(e,t,r,n,o){"use strict";let a=function(e){function n(t,r=!1){var n;return(n=e.call(this,!0)||this).view=t,n.invert=r,n.registerIncoming("vertical-two-finger-drag",(e=>n.handleTwoFinger(e))),n}return t._inheritsLoose(n,e),n.prototype.handleTwoFinger=function(e){const t=this.invert?-1:1,n=r.createScreenPointArray(0,e.data.delta*t);switch(e.data.action){case"begin":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.cameraController=new o.RotateController({view:this.view,pivot:"center"}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(n);break;case"update":this.cameraController&&this.cameraController.update(n);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}},n}(n.InputHandler);e.TwoFingerTilt=a,Object.defineProperty(e,"__esModule",{value:!0})}));

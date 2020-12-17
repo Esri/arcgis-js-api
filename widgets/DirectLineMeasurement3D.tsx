@@ -40,20 +40,23 @@
 
 // esri.core
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
-import { SystemOrLengthUnit } from "esri/core/unitUtils";
+import { isMeasurementSystem, SystemOrLengthUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
+
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.DirectLineMeasurement3D
-import DirectLineMeasurement3DViewModel = require("esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel");
+import DirectLineMeasurement3DViewModel from "esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel";
 
 // esri.widgets.DirectLineMeasurement3D.t9n
 import DirectLineMeasurement3DMessages from "esri/widgets/DirectLineMeasurement3D/t9n/DirectLineMeasurement3D";
@@ -221,6 +224,23 @@ class DirectLineMeasurement3D extends Widget {
   messages: DirectLineMeasurement3DMessages = null;
 
   //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -256,10 +276,10 @@ class DirectLineMeasurement3D extends Widget {
    * @name unitOptions
    * @instance
    * @since 4.7
-   * @type {Array<"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers">}
+   * @type {module:esri/core/units~SystemOrLengthUnit[]}
    */
   @aliasOf("viewModel.unitOptions")
-  unitOptions: Array<SystemOrLengthUnit> = null;
+  unitOptions: SystemOrLengthUnit[] = null;
 
   //----------------------------------
   //  unit
@@ -270,7 +290,7 @@ class DirectLineMeasurement3D extends Widget {
    * @name unit
    * @instance
    * @since 4.8
-   * @type {"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"}
+   * @type {module:esri/core/units~SystemOrLengthUnit}
    */
   @aliasOf("viewModel.unit")
   unit: SystemOrLengthUnit = null;
@@ -282,13 +302,11 @@ class DirectLineMeasurement3D extends Widget {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const isSupported = this.viewModel.isSupported;
-    const isActive = this.viewModel.active;
-    const isDisabled = this.viewModel.state === "disabled";
-    const isReady = this.viewModel.state === "ready";
-    const isMeasuring = this.viewModel.state === "measuring" || this.viewModel.state === "measured";
-    const measurement = this.viewModel.measurement;
-    const { messages } = this;
+    const { isSupported, active: isActive, state, measurement, unit } = this.viewModel;
+    const isDisabled = state === "disabled";
+    const isReady = state === "ready";
+    const isMeasuring = state === "measuring" || state === "measured";
+    const { messages, messagesUnits } = this;
 
     const hintNode =
       isActive && isReady ? (
@@ -347,18 +365,20 @@ class DirectLineMeasurement3D extends Widget {
 
     const unitsSelectNode = (
       <div class={CSS.unitsSelectWrapper}>
-        <select class={CSS.unitsSelect} id={unitsId} onchange={this._changeUnit} bind={this}>
-          {this.viewModel.unitOptions.map((unit) =>
-            unit === this.viewModel.unit ? (
-              <option key={unit} value={unit} selected>
-                {messages.units[unit]}
-              </option>
-            ) : (
-              <option key={unit} value={unit}>
-                {messages.units[unit]}
-              </option>
-            )
-          )}
+        <select
+          class={CSS.unitsSelect}
+          id={unitsId}
+          onchange={this._changeUnit}
+          bind={this}
+          value={unit}
+        >
+          {this.viewModel.unitOptions.map((unitOption) => (
+            <option key={unitOption} value={unitOption}>
+              {isMeasurementSystem(unitOption)
+                ? messagesUnits.systems[unitOption]
+                : messagesUnits.units[unitOption]?.pluralCapitalized}
+            </option>
+          ))}
         </select>
       </div>
     );
@@ -431,4 +451,4 @@ class DirectLineMeasurement3D extends Widget {
   }
 }
 
-export = DirectLineMeasurement3D;
+export default DirectLineMeasurement3D;

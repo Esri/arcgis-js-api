@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/libs/gl-matrix-2/vec3","../../../core/libs/gl-matrix-2/vec3f64","../../../geometry/support/aaBoundingRect","../../../geometry/support/geodesicConstants","../webgl-engine/lib/Intersector"],(function(e,r,t,n,i,a,o){"use strict";function c(e,r){return e.elevationProvider&&e.elevationProvider.getElevation(r[0],r[1],r[2],e.renderCoordsHelper.spatialReference,"ground")||0}function s(e,r,n){if(!e.state.isGlobal)return!1;var i=c(e,r),a=e.stateManager.constraintsManager.nearFarHeuristic.compute(r,n,e.dataExtent,i,f).far,o=a*a;return t.vec3.squaredDistance(r,n)>o}Object.defineProperty(r,"__esModule",{value:!0}),r.cameraOnContentAlongViewDirection=r.surfaceElevationBelowEye=r.eyeWithinExtent=void 0,r.eyeWithinExtent=function(e,r,t,n){return e.renderCoordsHelper.fromRenderCoords(r.eye,v,n)&&i.containsPoint(t,v)},r.surfaceElevationBelowEye=function(e,r){return c(e,r.eye)},r.cameraOnContentAlongViewDirection=function(e,r,i,c){var v=e.state.camera.clone();r&&(v.eye=r),i&&(v.center=i),c&&(v.up=c),function(e,r,i){void 0===i&&(i=n.vec3f64.create());var c=l[e.viewingMode];c||((c=new o.Intersector(e.state.mode)).options.backfacesTerrain=!e.state.isGlobal,c.options.invisibleTerrain=!0,l[e.viewingMode]=c);var v=e.state.isGlobal;if(e.sceneIntersectionHelper.intersectRay(r,c,i)&&!s(e,r.origin,i))return!0;if(!e.renderCoordsHelper.intersectManifold(r,0,i)||s(e,r.origin,i))return!!v&&function(e,r){var n=t.vec3.dot(e.origin,e.origin),i=a.earthRadius*a.earthRadius,o=n-i,c=o>0?Math.sqrt(o)/3:1;return t.vec3.scale(r,e.direction,c/t.vec3.length(e.direction)),t.vec3.add(r,r,e.origin),!0}(r,i);return!0}(e,v.ray,d)||t.vec3.copy(d,v.center);var f=e.state.constraints,g=f.minimumPoiDistance;if(t.vec3.squaredDistance(v.eye,d)<g){var y=f.collision.enabled;t.vec3.copy(u,v.viewForward),t.vec3.scale(u,u,g),y?t.vec3.subtract(v.eye,d,u):t.vec3.add(d,v.eye,u);var p=e.renderCoordsHelper,b=p.getAltitude(v.eye),m=f.collision.elevationMargin;y&&b<m&&(t.vec3.subtract(u,d,v.eye),p.setAltitude(m,v.eye),t.vec3.add(d,v.eye,u))}return v.center=d,v};var l={},v=n.vec3f64.create(),d=n.vec3f64.create(),u=n.vec3f64.create(),f={near:0,far:0}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/vec3f64","../../../chunks/vec3","../../../geometry/projectionEllipsoid","../../../geometry/support/aaBoundingRect","../webgl-engine/lib/Intersector"],(function(e,t,n,r,i,o){"use strict";function a(e,t){return e.elevationProvider&&e.elevationProvider.getElevation(t[0],t[1],t[2],e.renderCoordsHelper.spatialReference,"ground")||0}function c(e,t,r){if(!e.state.isGlobal)return!1;const i=a(e,t),o=e.stateManager.constraintsManager.nearFarHeuristic,{far:c}=o.compute(t,r,e.dataExtent,i,f),s=c*c;return n.squaredDistance(t,r)>s}const s={},l=t.create(),d=t.create(),u=t.create(),f={near:0,far:0};e.cameraOnContentAlongViewDirection=function(e,i,a,l){const f=e.state.camera.clone();i&&(f.eye=i),a&&(f.center=a),l&&(f.up=l),function(e,i,a=t.create()){let l=s[e.viewingMode];l||(l=new o.Intersector(e.state.mode),l.options.backfacesTerrain=!e.state.isGlobal,l.options.invisibleTerrain=!0,s[e.viewingMode]=l);const{isGlobal:d}=e.state;if(e.sceneIntersectionHelper.intersectRay(i,l,a)&&!c(e,i.origin,a))return!0;if(!e.renderCoordsHelper.intersectManifold(i,0,a)||c(e,i.origin,a))return!!d&&function(e,t,r){const i=n.dot(e.origin,e.origin),o=i-r*r,a=o>0?Math.sqrt(o)/3:1;return n.scale(t,e.direction,a/n.length(e.direction)),n.add(t,t,e.origin),!0}(i,a,r.getReferenceEllipsoid(e.spatialReference).radius);return!0}(e,f.ray,d)||n.copy(d,f.center);const g=e.state.constraints,p=g.minimumPoiDistance;if(n.squaredDistance(f.eye,d)<p){const t=g.collision.enabled;n.copy(u,f.viewForward),n.scale(u,u,p),t?n.subtract(f.eye,d,u):n.add(d,f.eye,u);const r=e.renderCoordsHelper,i=r.getAltitude(f.eye),o=g.collision.elevationMargin;t&&i<o&&(n.subtract(u,d,f.eye),r.setAltitude(o,f.eye),n.add(d,f.eye,u))}return f.center=d,f},e.eyeWithinExtent=function(e,t,n,r){return e.renderCoordsHelper.fromRenderCoords(t.eye,l,r)&&i.containsPoint(n,l)},e.surfaceElevationBelowRenderLocation=a,Object.defineProperty(e,"__esModule",{value:!0})}));

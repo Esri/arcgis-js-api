@@ -71,38 +71,43 @@
  */
 
 // esri
-import Color = require("esri/../Color");
+import Color from "esri/Color";
 
 // esri.core
-import { isSome } from "esri/../core/maybe";
+import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables
-import SizeVariable = require("esri/../renderers/visualVariables/SizeVariable");
+import SizeVariable from "esri/renderers/visualVariables/SizeVariable";
 
 // esri.renderers.visualVariables.support
-import SizeStop = require("esri/../renderers/visualVariables/support/SizeStop");
+import SizeStop from "esri/renderers/visualVariables/support/SizeStop";
 
 // esri.smartMapping.renderers
-import { ContinuousRendererResult } from "esri/../smartMapping/renderers/size";
+import { ContinuousRendererResult } from "esri/smartMapping/renderers/size";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.SizeSlider
-import SizeSliderViewModel = require("esri/widgets/SizeSlider/SizeSliderViewModel");
+import SizeSliderViewModel from "esri/widgets/SizeSlider/SizeSliderViewModel";
 
 // esri.widgets.smartMapping.SizeSlider.t9n
 import SizeSliderMessages from "esri/widgets/SizeSlider/t9n/SizeSlider";
 
 // esri.widgets.smartMapping.support
 import { ZoomOptions } from "esri/widgets/support/interfaces";
-import { getPathForSizeStops, getSizesFromVariable, getFillFromColor } from "esri/widgets/support/utils";
+import {
+  getDynamicPathForSizeStops,
+  getPathForSizeStops,
+  getSizesFromVariable,
+  getFillFromColor
+} from "esri/widgets/support/utils";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
@@ -186,6 +191,33 @@ class SizeSlider extends SmartMappingSliderBase {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  handlesSyncedToPrimary
+  //----------------------------------
+
+  /**
+   * Only applicable when three thumbs (i.e. handles) are set on the slider [values](#values). This property
+   * indicates whether the position of the outside handles are synced with the middle, or primary,
+   * handle. When enabled, if the primary handle is moved then the outside handle positions are updated
+   * while maintaining a fixed distance from the primary handle.
+   *
+   * Only applicable when [primaryHandleEnabled](#primaryHandleEnabled) is `true`.
+   *
+   * @name handlesSyncedToPrimary
+   * @instance
+   * @type {boolean}
+   * @default true
+   * @since 4.18
+   *
+   * @see [primaryHandleEnabled](#primaryHandleEnabled)
+   *
+   * @example
+   * // enables the primary handles and syncs it with the others
+   * slider.primaryHandleEnabled = true;
+   * slider.handlesSyncedToPrimary = true;
+   */
+  @aliasOf("viewModel.handlesSyncedToPrimary") handlesSyncedToPrimary: boolean = null;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -221,6 +253,31 @@ class SizeSlider extends SmartMappingSliderBase {
   @renderable()
   @messageBundle("esri/widgets/smartMapping/SizeSlider/t9n/SizeSlider")
   messages: SizeSliderMessages = null;
+
+  //----------------------------------
+  //  primaryHandleEnabled
+  //----------------------------------
+
+  /**
+   * When `true`, the slider will render a third handle between the
+   * two handles already provided by default. This is the primary handle.
+   * When [handlesSyncedToPrimary](#handlesSyncedToPrimary) is `true`, then
+   * this handle will control the position of the others when moved.
+   *
+   * @name primaryHandleEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.18
+   *
+   * @see [handlesSyncedToPrimary](#handlesSyncedToPrimary)
+   *
+   * @example
+   * // enables the primary handles and syncs it with the others
+   * slider.primaryHandleEnabled = true;
+   * slider.handlesSyncedToPrimary = true;
+   */
+  @aliasOf("viewModel.primaryHandleEnabled") primaryHandleEnabled: boolean = null;
 
   //----------------------------------
   //  stops
@@ -643,6 +700,7 @@ class SizeSlider extends SmartMappingSliderBase {
     }
 
     const {
+      primaryHandleEnabled,
       stops,
       style: { trackFillColor },
       values,
@@ -660,19 +718,28 @@ class SizeSlider extends SmartMappingSliderBase {
     const [bottomWidth, topWidth] = widths;
     const [bottomValue, topValue] = values;
 
-    const path = getPathForSizeStops({
-      bottomValue,
-      bottomWidth,
-      max,
-      min,
-      pathHeight: offsetHeight,
-      pathWidth: offsetWidth,
-      topValue,
-      topWidth
-    });
+    const path = primaryHandleEnabled
+      ? getDynamicPathForSizeStops({
+          max,
+          min,
+          pathHeight: offsetHeight,
+          pathWidth: offsetWidth,
+          stops,
+          padding: topWidth
+        })
+      : getPathForSizeStops({
+          bottomValue,
+          bottomWidth,
+          max,
+          min,
+          pathHeight: offsetHeight,
+          pathWidth: offsetWidth,
+          topValue,
+          topWidth
+        });
 
     return <path d={path} fill={getFillFromColor(trackFillColor)} />;
   }
 }
 
-export = SizeSlider;
+export default SizeSlider;

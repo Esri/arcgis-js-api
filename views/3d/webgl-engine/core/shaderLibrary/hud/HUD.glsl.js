@@ -1,25 +1,151 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","../util/ScreenSizePerspective.glsl"],(function(e,t,o){"use strict";function a(e,a){const i=e;i.include(o.ScreenSizePerspective),i.attributes.add("position","vec3"),i.attributes.add("normal","vec3"),i.attributes.add("auxpos1","vec4"),i.vertex.uniforms.add("proj","mat4"),i.vertex.uniforms.add("view","mat4"),i.vertex.uniforms.add("viewNormal","mat4"),i.vertex.uniforms.add("viewport","vec4"),i.vertex.uniforms.add("camPos","vec3"),i.vertex.uniforms.add("polygonOffset","float"),i.vertex.uniforms.add("cameraGroundRelative","float"),i.vertex.uniforms.add("pixelRatio","float"),i.vertex.uniforms.add("perDistancePixelRatio","float"),i.vertex.uniforms.add("uRenderTransparentlyOccludedHUD","float"),a.verticalOffsetEnabled&&i.vertex.uniforms.add("verticalOffset","vec4"),a.screenSizePerspectiveEnabled&&i.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4"),i.vertex.uniforms.add("hudVisibilityTexture","sampler2D"),i.vertex.defines.addFloat("SMALL_OFFSET_ANGLE",.984807753012208),i.vertex.code.add(t.glsl`
+    struct ProjectHUDAux {
+      vec3 posModel;
+      vec3 posView;
+      vec3 vnormal;
 
-define(["require","exports","tslib","../util/ScreenSizePerspective.glsl","../../shaderModules/interfaces"],(function(e,n,t,o,a){"use strict";function i(e,n){var i=e;i.include(o.ScreenSizePerspective),i.attributes.add("position","vec3"),i.attributes.add("normal","vec3"),i.attributes.add("auxpos1","vec4"),i.vertex.uniforms.add("proj","mat4"),i.vertex.uniforms.add("view","mat4"),i.vertex.uniforms.add("viewNormal","mat4"),i.vertex.uniforms.add("viewport","vec4"),i.vertex.uniforms.add("camPos","vec3"),i.vertex.uniforms.add("polygonOffset","float"),i.vertex.uniforms.add("cameraGroundRelative","float"),i.vertex.uniforms.add("pixelRatio","float"),i.vertex.uniforms.add("perDistancePixelRatio","float"),i.vertex.uniforms.add("uRenderTransparentlyOccludedHUD","float"),n.verticalOffsetEnabled&&i.vertex.uniforms.add("verticalOffset","vec4"),n.screenSizePerspectiveEnabled&&i.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4"),i.vertex.uniforms.add("hudVisibilityTexture","sampler2D"),i.vertex.defines.addFloat("SMALL_OFFSET_ANGLE",.984807753012208),i.vertex.code.add(a.glsl(s||(s=t.__makeTemplateObject(["\n    struct ProjectHUDAux {\n      vec3 posModel;\n      vec3 posView;\n      vec3 vnormal;\n\n      float distanceToCamera;\n      float absCosAngle;\n    };\n  "],["\n    struct ProjectHUDAux {\n      vec3 posModel;\n      vec3 posView;\n      vec3 vnormal;\n\n      float distanceToCamera;\n      float absCosAngle;\n    };\n  "])))),i.vertex.code.add(a.glsl(r||(r=t.__makeTemplateObject(["\n    float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {\n      float pointGroundSign = sign(pointGroundDistance);\n\n      if (pointGroundSign == 0.0) {\n        pointGroundSign = cameraGroundRelative;\n      }\n\n      // cameraGroundRelative is -1 if camera is below ground, 1 if above ground\n      // groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise\n      float groundRelative = cameraGroundRelative * pointGroundSign;\n\n      // view angle dependent part of polygon offset emulation\n      // we take the absolute value because the sign that is dropped is\n      // instead introduced using the ground-relative position of the symbol and the camera\n      if (polygonOffset > .0) {\n        float cosAlpha = clamp(absCosAngle, 0.01, 1.0);\n\n        float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;\n        float factor = (1.0 - tanAlpha / viewport[2]);\n\n        // same side of the terrain\n        if (groundRelative > 0.0) {\n          posView *= factor;\n        }\n        // opposite sides of the terrain\n        else {\n          posView /= factor;\n        }\n      }\n\n      return groundRelative;\n    }\n  "],["\n    float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {\n      float pointGroundSign = sign(pointGroundDistance);\n\n      if (pointGroundSign == 0.0) {\n        pointGroundSign = cameraGroundRelative;\n      }\n\n      // cameraGroundRelative is -1 if camera is below ground, 1 if above ground\n      // groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise\n      float groundRelative = cameraGroundRelative * pointGroundSign;\n\n      // view angle dependent part of polygon offset emulation\n      // we take the absolute value because the sign that is dropped is\n      // instead introduced using the ground-relative position of the symbol and the camera\n      if (polygonOffset > .0) {\n        float cosAlpha = clamp(absCosAngle, 0.01, 1.0);\n\n        float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;\n        float factor = (1.0 - tanAlpha / viewport[2]);\n\n        // same side of the terrain\n        if (groundRelative > 0.0) {\n          posView *= factor;\n        }\n        // opposite sides of the terrain\n        else {\n          posView /= factor;\n        }\n      }\n\n      return groundRelative;\n    }\n  "])))),i.vertex.code.add(a.glsl(l||(l=t.__makeTemplateObject(["\n    void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {\n      float distanceToCamera = length(posView);\n\n      // Compute offset in world units for a half pixel shift\n      float pixelOffset = distanceToCamera * perDistancePixelRatio * 0.5;\n\n      // Apply offset along normal in the direction away from the ground surface\n      vec3 modelOffset = normalModel * cameraGroundRelative * pixelOffset;\n\n      // Apply the same offset also on the view space position\n      vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;\n\n      posModel += modelOffset;\n      posView += viewOffset;\n    }\n  "],["\n    void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {\n      float distanceToCamera = length(posView);\n\n      // Compute offset in world units for a half pixel shift\n      float pixelOffset = distanceToCamera * perDistancePixelRatio * 0.5;\n\n      // Apply offset along normal in the direction away from the ground surface\n      vec3 modelOffset = normalModel * cameraGroundRelative * pixelOffset;\n\n      // Apply the same offset also on the view space position\n      vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;\n\n      posModel += modelOffset;\n      posView += viewOffset;\n    }\n  "])))),i.vertex.code.add(a.glsl(d||(d=t.__makeTemplateObject(["\n    vec4 projectPositionHUD(out ProjectHUDAux aux) {\n      // centerOffset is in view space and is used to implement world size offsetting\n      // of labels with respect to objects. It also pulls the label towards the viewer\n      // so that the label is visible in front of the object.\n      vec3 centerOffset = auxpos1.xyz;\n\n      // The pointGroundDistance is the distance of the geometry to the ground and is\n      // negative if the point is below the ground, or positive if the point is above\n      // ground.\n      float pointGroundDistance = auxpos1.w;\n\n      aux.posModel = position;\n      aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;\n      aux.vnormal = normal;\n\n      applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);\n\n      // Screen sized offset in world space, used for example for line callouts\n      // Note: keep this implementation in sync with the CPU implementation, see\n      //   - MaterialUtil.verticalOffsetAtDistance\n      //   - HUDMaterial.applyVerticalOffsetTransformation\n\n      aux.distanceToCamera = length(aux.posView);\n\n      vec3 viewDirObjSpace = normalize(camPos - aux.posModel);\n      float cosAngle = dot(aux.vnormal, viewDirObjSpace);\n\n      aux.absCosAngle = abs(cosAngle);\n\n      ","\n\n      ","\n\n      ","\n\n      float groundRelative = applyHUDViewDependentPolygonOffset(pointGroundDistance, aux.absCosAngle, aux.posView);\n\n      ","\n\n      vec4 posProj = proj * vec4(aux.posView, 1.0);\n\n      ","\n\n      ","\n\n      // constant part of polygon offset emulation\n      posProj.z -= groundRelative * polygonOffset * posProj.w;\n      return posProj;\n    }\n  "],["\n    vec4 projectPositionHUD(out ProjectHUDAux aux) {\n      // centerOffset is in view space and is used to implement world size offsetting\n      // of labels with respect to objects. It also pulls the label towards the viewer\n      // so that the label is visible in front of the object.\n      vec3 centerOffset = auxpos1.xyz;\n\n      // The pointGroundDistance is the distance of the geometry to the ground and is\n      // negative if the point is below the ground, or positive if the point is above\n      // ground.\n      float pointGroundDistance = auxpos1.w;\n\n      aux.posModel = position;\n      aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;\n      aux.vnormal = normal;\n\n      applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);\n\n      // Screen sized offset in world space, used for example for line callouts\n      // Note: keep this implementation in sync with the CPU implementation, see\n      //   - MaterialUtil.verticalOffsetAtDistance\n      //   - HUDMaterial.applyVerticalOffsetTransformation\n\n      aux.distanceToCamera = length(aux.posView);\n\n      vec3 viewDirObjSpace = normalize(camPos - aux.posModel);\n      float cosAngle = dot(aux.vnormal, viewDirObjSpace);\n\n      aux.absCosAngle = abs(cosAngle);\n\n      ","\n\n      ","\n\n      ","\n\n      float groundRelative = applyHUDViewDependentPolygonOffset(pointGroundDistance, aux.absCosAngle, aux.posView);\n\n      ","\n\n      vec4 posProj = proj * vec4(aux.posView, 1.0);\n\n      ","\n\n      ","\n\n      // constant part of polygon offset emulation\n      posProj.z -= groundRelative * polygonOffset * posProj.w;\n      return posProj;\n    }\n  "])),n.screenSizePerspectiveEnabled&&(n.verticalOffsetEnabled||1===n.screenCenterOffsetUnitsEnabled)?"vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(aux.absCosAngle, aux.distanceToCamera, screenSizePerspectiveAlignment);":"",n.verticalOffsetEnabled?n.screenSizePerspectiveEnabled?"float verticalOffsetScreenHeight = applyScreenSizePerspectiveScaleFactorFloat(verticalOffset.x, perspectiveFactor);":"float verticalOffsetScreenHeight = verticalOffset.x;":"",n.verticalOffsetEnabled?a.glsl(c||(c=t.__makeTemplateObject(["\n            float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * aux.distanceToCamera, verticalOffset.z, verticalOffset.w);\n            vec3 modelOffset = aux.vnormal * worldOffset;\n            aux.posModel += modelOffset;\n            vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;\n            aux.posView += viewOffset;\n            // Since we elevate the object, we need to take that into account\n            // in the distance to ground\n            pointGroundDistance += worldOffset;"],["\n            float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * aux.distanceToCamera, verticalOffset.z, verticalOffset.w);\n            vec3 modelOffset = aux.vnormal * worldOffset;\n            aux.posModel += modelOffset;\n            vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;\n            aux.posView += viewOffset;\n            // Since we elevate the object, we need to take that into account\n            // in the distance to ground\n            pointGroundDistance += worldOffset;"]))):"",1!==n.screenCenterOffsetUnitsEnabled?a.glsl(f||(f=t.__makeTemplateObject(["\n            // Apply x/y in view space, but z in screen space (i.e. along posView direction)\n            aux.posView += vec3(centerOffset.x, centerOffset.y, 0.0);\n\n            // Same material all have same z != 0.0 condition so should not lead to\n            // branch fragmentation and will save a normalization if it's not needed\n            if (centerOffset.z != 0.0) {\n              aux.posView -= normalize(aux.posView) * centerOffset.z;\n            }\n          "],["\n            // Apply x/y in view space, but z in screen space (i.e. along posView direction)\n            aux.posView += vec3(centerOffset.x, centerOffset.y, 0.0);\n\n            // Same material all have same z != 0.0 condition so should not lead to\n            // branch fragmentation and will save a normalization if it's not needed\n            if (centerOffset.z != 0.0) {\n              aux.posView -= normalize(aux.posView) * centerOffset.z;\n            }\n          "]))):"",1===n.screenCenterOffsetUnitsEnabled?n.screenSizePerspectiveEnabled?"float centerOffsetY = applyScreenSizePerspectiveScaleFactorFloat(centerOffset.y, perspectiveFactor);":"float centerOffsetY = centerOffset.y;":"",1===n.screenCenterOffsetUnitsEnabled?"posProj.xy += vec2(centerOffset.x, centerOffsetY) * pixelRatio * 2.0 / viewport.zw * posProj.w;":"")),i.vertex.code.add(a.glsl(p||(p=t.__makeTemplateObject(["\n    bool testVisibilityHUD(vec4 posProj) {\n      // For occlusion testing, use the nearest pixel center to avoid\n      // subpixel filtering messing up the color we use to test for\n      vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);\n\n      vec4 occlusionPixel = texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w);\n\n      // the red pixel here indicates that the occlusion pixel passed the depth test against solid geometry and was written\n      // the green pixel stores transparency of transparent geometry (1.0 -> fully transparent)\n      // note that we also check against green == 0.0, i.e. transparent geometry that has opaque parts\n\n      // thus we render visible pixels that are occluded by semi-transparent (but not fully transparent!) geometry here\n      if (uRenderTransparentlyOccludedHUD > 0.5) {\n        // multiplying by uRenderTransparentlyOccludedHUD allows us to ignore the second condition if\n        // uRenderTransparentlyOccludedHUD = 0.75\n        return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;\n      }\n\n      // and visible pixels that are not occluded by semi-transparent geometry here\n      return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;\n    }\n  "],["\n    bool testVisibilityHUD(vec4 posProj) {\n      // For occlusion testing, use the nearest pixel center to avoid\n      // subpixel filtering messing up the color we use to test for\n      vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);\n\n      vec4 occlusionPixel = texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w);\n\n      // the red pixel here indicates that the occlusion pixel passed the depth test against solid geometry and was written\n      // the green pixel stores transparency of transparent geometry (1.0 -> fully transparent)\n      // note that we also check against green == 0.0, i.e. transparent geometry that has opaque parts\n\n      // thus we render visible pixels that are occluded by semi-transparent (but not fully transparent!) geometry here\n      if (uRenderTransparentlyOccludedHUD > 0.5) {\n        // multiplying by uRenderTransparentlyOccludedHUD allows us to ignore the second condition if\n        // uRenderTransparentlyOccludedHUD = 0.75\n        return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;\n      }\n\n      // and visible pixels that are not occluded by semi-transparent geometry here\n      return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;\n    }\n  "]))))}var s,r,l,c,f,d,p;Object.defineProperty(n,"__esModule",{value:!0}),n.HUD=void 0,n.HUD=i,function(e){!function(e){e[e.OCCLUDED=0]="OCCLUDED",e[e.NOTOCCLUDED=1]="NOTOCCLUDED",e[e.BOTH=2]="BOTH",e[e.COUNT=3]="COUNT"}(e.TransparentRenderStyle||(e.TransparentRenderStyle={})),e.bindUniforms=function(n,t){n.setUniform1f("uRenderTransparentlyOccludedHUD",t.renderTransparentlyOccludedHUD===e.TransparentRenderStyle.OCCLUDED?1:t.renderTransparentlyOccludedHUD===e.TransparentRenderStyle.NOTOCCLUDED?0:.75)},e.bindVisibilityTexture=function(e,n,t){n.setUniform1i("hudVisibilityTexture",1),e.bindTexture(t.hudVisibilityTexture,1),e.setActiveTexture(0)}}(i=n.HUD||(n.HUD={}))}));
+      float distanceToCamera;
+      float absCosAngle;
+    };
+  `),i.vertex.code.add(t.glsl`
+    float applyHUDViewDependentPolygonOffset(float pointGroundDistance, float absCosAngle, inout vec3 posView) {
+      float pointGroundSign = sign(pointGroundDistance);
+
+      if (pointGroundSign == 0.0) {
+        pointGroundSign = cameraGroundRelative;
+      }
+
+      // cameraGroundRelative is -1 if camera is below ground, 1 if above ground
+      // groundRelative is 1 if both camera and symbol are on the same side of the ground, -1 otherwise
+      float groundRelative = cameraGroundRelative * pointGroundSign;
+
+      // view angle dependent part of polygon offset emulation
+      // we take the absolute value because the sign that is dropped is
+      // instead introduced using the ground-relative position of the symbol and the camera
+      if (polygonOffset > .0) {
+        float cosAlpha = clamp(absCosAngle, 0.01, 1.0);
+
+        float tanAlpha = sqrt(1.0 - cosAlpha * cosAlpha) / cosAlpha;
+        float factor = (1.0 - tanAlpha / viewport[2]);
+
+        // same side of the terrain
+        if (groundRelative > 0.0) {
+          posView *= factor;
+        }
+        // opposite sides of the terrain
+        else {
+          posView /= factor;
+        }
+      }
+
+      return groundRelative;
+    }
+  `),a.isDraped||i.vertex.code.add(t.glsl`
+    void applyHUDVerticalGroundOffset(vec3 normalModel, inout vec3 posModel, inout vec3 posView) {
+      float distanceToCamera = length(posView);
+
+      // Compute offset in world units for a half pixel shift
+      float pixelOffset = distanceToCamera * perDistancePixelRatio * 0.5;
+
+      // Apply offset along normal in the direction away from the ground surface
+      vec3 modelOffset = normalModel * cameraGroundRelative * pixelOffset;
+
+      // Apply the same offset also on the view space position
+      vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;
+
+      posModel += modelOffset;
+      posView += viewOffset;
+    }
+  `),i.vertex.code.add(t.glsl`
+    vec4 projectPositionHUD(out ProjectHUDAux aux) {
+      // centerOffset is in view space and is used to implement world size offsetting
+      // of labels with respect to objects. It also pulls the label towards the viewer
+      // so that the label is visible in front of the object.
+      vec3 centerOffset = auxpos1.xyz;
+
+      // The pointGroundDistance is the distance of the geometry to the ground and is
+      // negative if the point is below the ground, or positive if the point is above
+      // ground.
+      float pointGroundDistance = auxpos1.w;
+
+      aux.posModel = position;
+      aux.posView = (view * vec4(aux.posModel, 1.0)).xyz;
+      aux.vnormal = normal;
+      ${a.isDraped?"":"applyHUDVerticalGroundOffset(aux.vnormal, aux.posModel, aux.posView);"}
+
+      // Screen sized offset in world space, used for example for line callouts
+      // Note: keep this implementation in sync with the CPU implementation, see
+      //   - MaterialUtil.verticalOffsetAtDistance
+      //   - HUDMaterial.applyVerticalOffsetTransformation
+
+      aux.distanceToCamera = length(aux.posView);
+
+      vec3 viewDirObjSpace = normalize(camPos - aux.posModel);
+      float cosAngle = dot(aux.vnormal, viewDirObjSpace);
+
+      aux.absCosAngle = abs(cosAngle);
+
+      ${a.screenSizePerspectiveEnabled&&(a.verticalOffsetEnabled||1===a.screenCenterOffsetUnitsEnabled)?"vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(aux.absCosAngle, aux.distanceToCamera, screenSizePerspectiveAlignment);":""}
+
+      ${a.verticalOffsetEnabled?a.screenSizePerspectiveEnabled?"float verticalOffsetScreenHeight = applyScreenSizePerspectiveScaleFactorFloat(verticalOffset.x, perspectiveFactor);":"float verticalOffsetScreenHeight = verticalOffset.x;":""}
+
+      ${a.verticalOffsetEnabled?t.glsl`
+            float worldOffset = clamp(verticalOffsetScreenHeight * verticalOffset.y * aux.distanceToCamera, verticalOffset.z, verticalOffset.w);
+            vec3 modelOffset = aux.vnormal * worldOffset;
+            aux.posModel += modelOffset;
+            vec3 viewOffset = (viewNormal * vec4(modelOffset, 1.0)).xyz;
+            aux.posView += viewOffset;
+            // Since we elevate the object, we need to take that into account
+            // in the distance to ground
+            pointGroundDistance += worldOffset;`:""}
+
+      float groundRelative = applyHUDViewDependentPolygonOffset(pointGroundDistance, aux.absCosAngle, aux.posView);
+
+      ${1!==a.screenCenterOffsetUnitsEnabled?t.glsl`
+            // Apply x/y in view space, but z in screen space (i.e. along posView direction)
+            aux.posView += vec3(centerOffset.x, centerOffset.y, 0.0);
+
+            // Same material all have same z != 0.0 condition so should not lead to
+            // branch fragmentation and will save a normalization if it's not needed
+            if (centerOffset.z != 0.0) {
+              aux.posView -= normalize(aux.posView) * centerOffset.z;
+            }
+          `:""}
+
+      vec4 posProj = proj * vec4(aux.posView, 1.0);
+
+      ${1===a.screenCenterOffsetUnitsEnabled?a.screenSizePerspectiveEnabled?"float centerOffsetY = applyScreenSizePerspectiveScaleFactorFloat(centerOffset.y, perspectiveFactor);":"float centerOffsetY = centerOffset.y;":""}
+
+      ${1===a.screenCenterOffsetUnitsEnabled?"posProj.xy += vec2(centerOffset.x, centerOffsetY) * pixelRatio * 2.0 / viewport.zw * posProj.w;":""}
+
+      // constant part of polygon offset emulation
+      posProj.z -= groundRelative * polygonOffset * posProj.w;
+      return posProj;
+    }
+  `),i.vertex.code.add(t.glsl`
+    bool testVisibilityHUD(vec4 posProj) {
+      // For occlusion testing, use the nearest pixel center to avoid
+      // subpixel filtering messing up the color we use to test for
+      vec4 posProjCenter = alignToPixelCenter(posProj, viewport.zw);
+
+      vec4 occlusionPixel = texture2D(hudVisibilityTexture, .5 + .5 * posProjCenter.xy / posProjCenter.w);
+
+      // the red pixel here indicates that the occlusion pixel passed the depth test against solid geometry and was written
+      // the green pixel stores transparency of transparent geometry (1.0 -> fully transparent)
+      // note that we also check against green == 0.0, i.e. transparent geometry that has opaque parts
+
+      // thus we render visible pixels that are occluded by semi-transparent (but not fully transparent!) geometry here
+      if (uRenderTransparentlyOccludedHUD > 0.5) {
+        // multiplying by uRenderTransparentlyOccludedHUD allows us to ignore the second condition if
+        // uRenderTransparentlyOccludedHUD = 0.75
+        return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g * uRenderTransparentlyOccludedHUD < 1.0;
+      }
+
+      // and visible pixels that are not occluded by semi-transparent geometry here
+      return occlusionPixel.r * occlusionPixel.g > 0.0 && occlusionPixel.g == 1.0;
+    }
+  `)}!function(e){e.bindUniforms=function(e,t){e.setUniform1f("uRenderTransparentlyOccludedHUD",0===t.renderTransparentlyOccludedHUD?1:1===t.renderTransparentlyOccludedHUD?0:.75)},e.bindVisibilityTexture=function(e,t,o){t.setUniform1i("hudVisibilityTexture",4),e.bindTexture(o.hudVisibilityTexture,4),e.setActiveTexture(0)}}(a||(a={})),e.HUD=a,Object.defineProperty(e,"__esModule",{value:!0})}));

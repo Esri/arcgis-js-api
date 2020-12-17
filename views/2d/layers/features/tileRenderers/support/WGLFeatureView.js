@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../../core/promiseUtils","../../../../engine/brushes","../../../../engine/FeatureContainer","../../../../engine/webgl/enums"],(function(e,t,r,n,a,i,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.WGLFeatureView=void 0;var l=function(e){function t(t,r,n){var a=e.call(this,t)||this;return a._pointToCallbacks=new Map,a._layer=n,a._layerView=r,a}return r.__extends(t,e),t.prototype.renderChildren=function(t){this.hasAnimation&&t.painter.effects.integrate.draw(t,t.attributeView);e.prototype.renderChildren.call(this,t)},t.prototype.hitTest=function(e,t){var r=[e,t],a=n.createResolver();return this._pointToCallbacks.set(r,a),this.requestRender(),a.promise},t.prototype.doRender=function(t){var r=this._layer,n=r.minScale,a=r.maxScale,i=t.state.scale;i<=(n||1/0)&&i>=a&&e.prototype.doRender.call(this,t)},Object.defineProperty(t.prototype,"hasAnimation",{get:function(){return this.hasLabels},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"hasLabels",{get:function(){var e=this._layer.featureReduction,t=e&&"cluster"===e.type&&e.labelsVisible&&e.labelingInfo&&e.labelingInfo.length;return this._layer.labelingInfo&&this._layer.labelingInfo.length&&this._layer.labelsVisible||!!t},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"labelsVisible",{get:function(){return this._layer.labelsVisible},enumerable:!1,configurable:!0}),t.prototype.prepareRenderPasses=function(t){var n=this,i=t.registerRenderPass({name:"label",brushes:[a.brushes.label],target:function(){return n.hasLabels?n.children:null},drawPhase:s.WGLDrawPhase.LABEL|s.WGLDrawPhase.LABEL_ALPHA}),l=t.registerRenderPass({name:"geometry",brushes:[a.brushes.fill,a.brushes.line,a.brushes.marker,a.brushes.text],target:function(){return n.children},effects:[{apply:t.effects.highlight,enable:function(){return!!n._layerView.hasHighlight()}},{apply:t.effects.hittest,enable:function(){return!!n._pointToCallbacks.size},args:function(){return n._pointToCallbacks}}]});return r.__spreadArrays(e.prototype.prepareRenderPasses.call(this,t),[l,i])},t}(i.FeatureContainer);t.WGLFeatureView=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../../chunks/_rollupPluginBabelHelpers","../../../../../../core/promiseUtils","../../../../engine/webgl/enums","../../../../engine/brushes","../../../../engine/FeatureContainer"],(function(e,s,t,r,a,i){"use strict";let l=function(e){function i(s,t,r){var a;return(a=e.call(this,s)||this)._pointToCallbacks=new Map,a._layer=r,a._layerView=t,a}s._inheritsLoose(i,e);var l=i.prototype;return l.renderChildren=function(s){if(this.attributeView.update(),this.hasAnimation){s.painter.effects.integrate.draw(s,s.attributeView)}e.prototype.renderChildren.call(this,s)},l.hitTest=function(e,s){const r=[e,s],a=t.createResolver();return this._pointToCallbacks.set(r,a),this.requestRender(),a.promise},l.doRender=function(s){const{minScale:t,maxScale:r}=this._layer,a=s.state.scale;a<=(t||1/0)&&a>=r&&e.prototype.doRender.call(this,s)},l.prepareRenderPasses=function(s){const t=s.registerRenderPass({name:"label",brushes:[a.brushes.label],target:()=>this.hasLabels?this.children:null,drawPhase:r.WGLDrawPhase.LABEL|r.WGLDrawPhase.LABEL_ALPHA}),i=s.registerRenderPass({name:"geometry",brushes:[a.brushes.fill,a.brushes.line,a.brushes.marker,a.brushes.text],target:()=>this.children,enableDefaultDraw:()=>!this._layerView.hasEffects,effects:[{apply:s.effects.outsideEffect,enable:()=>this._layerView.hasEffects,args:()=>this._layerView.effectLists.excluded},{apply:s.effects.insideEffect,enable:()=>this._layerView.hasEffects,args:()=>this._layerView.effectLists.included},{apply:s.effects.hittest,enable:()=>!!this._pointToCallbacks.size,args:()=>this._pointToCallbacks}]}),l=s.registerRenderPass({name:"highlight",brushes:[a.brushes.fill,a.brushes.line,a.brushes.marker,a.brushes.text],target:()=>this.children,drawPhase:r.WGLDrawPhase.HIGHLIGHT,enableDefaultDraw:()=>!1,effects:[{apply:s.effects.highlight,enable:()=>!!this._layerView.hasHighlight()}]});return[...e.prototype.prepareRenderPasses.call(this,s),i,l,t]},s._createClass(i,[{key:"hasAnimation",get:function(){return this.hasLabels}},{key:"hasLabels",get:function(){const e=this._layer.featureReduction,s=e&&"cluster"===e.type&&e.labelsVisible&&e.labelingInfo&&e.labelingInfo.length;return this._layer.labelingInfo&&this._layer.labelingInfo.length&&this._layer.labelsVisible||!!s}},{key:"labelsVisible",get:function(){return this._layer.labelsVisible}}]),i}(i.FeatureContainer);e.WGLFeatureView=l,Object.defineProperty(e,"__esModule",{value:!0})}));

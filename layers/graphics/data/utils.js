@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../core/jsonMap","../../../core/maybe","../../../core/unitUtils","../../../geometry/support/extentUtils","../../../geometry/support/jsonUtils","../../../geometry/support/normalizeUtils","../../../geometry/support/spatialReferenceUtils","../centroid","../featureConversionUtils","../OptimizedGeometry","./projectionSupport","./spatialQuerySupport"],(function(e,t,r,i,n,o,a,s,u,l,c,m,f,d,p){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.cleanFromGeometryEngine=t.normalizeQueryLike=t.normalizeFilter=t.normalizeQuery=t.getGeometry=t.getCentroid=t.transformCentroid=t.QUERY_ENGINE_EMPTY_RESULT=void 0;var y=new i.default({esriSRUnit_Meter:"meters",esriSRUnit_Kilometer:"kilometers",esriSRUnit_Foot:"feet",esriSRUnit_StatuteMile:"miles",esriSRUnit_NauticalMile:"nautical-miles",esriSRUnit_USNauticalMile:"us-nautical-miles"});t.QUERY_ENGINE_EMPTY_RESULT=Object.freeze({});var g=new f.default,_=new f.default,v=new f.default,S={esriGeometryPoint:m.convertToPoint,esriGeometryPolyline:m.convertToPolyline,esriGeometryPolygon:m.convertToPolygon,esriGeometryMultipoint:m.convertToMultipoint};function h(e,t,r,i,n){void 0===i&&(i=e.hasZ),void 0===n&&(n=e.hasM);var o=e.hasZ&&i,a=e.hasM&&n;if(r){var s=m.quantizeOptimizedGeometry(v,t,e.hasZ,e.hasM,"esriGeometryPoint",r,i,n);return m.convertToPoint(s,o,a)}return m.convertToPoint(t,o,a)}function R(e,i,o){return r.__awaiter(this,void 0,void 0,(function(){var l,c,m,f,p,y;return r.__generator(this,(function(r){switch(r.label){case 0:return e?(l=e.where,e.where=l=l&&l.trim(),(!l||/^1 *= *1$/.test(l)||i&&i===l)&&(e.where=null),e.geometry?[4,G(e)]:[2,e]):[2,null];case 1:return c=r.sent(),e.distance=0,e.units=null,"esriSpatialRelEnvelopeIntersects"===e.spatialRel&&(m=e.geometry.spatialReference,(c=a.getGeometryExtent(c)).spatialReference=m),e.geometry=c,[4,d.checkProjectionSupport(c.spatialReference,o)];case 2:return r.sent(),[4,u.normalizeCentralMeridian(s.fromJSON(c))];case 3:if(f=r.sent()[0],n.isNone(f))throw t.QUERY_ENGINE_EMPTY_RESULT;return p=f.toJSON(),[4,d.project(p,p.spatialReference,o)];case 4:if(!(y=r.sent()))throw t.QUERY_ENGINE_EMPTY_RESULT;return y.spatialReference=o,e.geometry=y,[2,e]}}))}))}function G(e){return r.__awaiter(this,void 0,void 0,(function(){var t,i,n,a,s,u,c;return r.__generator(this,(function(r){switch(r.label){case 0:return t=e.geometry,i=e.distance,n=e.units,null==i||"vertexAttributes"in t?[2,t]:(a=t.spatialReference,s=n?y.fromJSON(n):o.getUnitString(a),a&&(l.isGeographic(a)||l.isWebMercator(a))?(c=t,[3,3]):[3,1]);case 1:return[4,d.checkProjectionSupport(a,l.WGS84).then((function(){return d.project(t,l.WGS84)}))];case 2:c=r.sent(),r.label=3;case 3:return u=c,[4,p.getGeodesicBufferOperator()];case 4:return[2,r.sent()(u.spatialReference,u,i,s)]}}))}))}t.transformCentroid=h,t.getCentroid=function(e,t,r){return"esriGeometryPolygon"===e.geometryType&&t&&(t.centroid||t.geometry)?(t.centroid||(t.centroid=c.getCentroidOptimizedGeometry(new f.default,t.geometry,e.hasZ,e.hasM)),h(e,t.centroid,r)):null},t.getGeometry=function(e,t,r,i,n,o,a,s){void 0===a&&(a=t),void 0===s&&(s=r);var u=t&&a,l=r&&s,c=i?"coords"in i?i:i.geometry:null;if(!c)return null;if(n){var f=m.generalizeOptimizedGeometry(_,c,t,r,e,n,a,s);return o&&(f=m.quantizeOptimizedGeometry(v,f,u,l,e,o)),S[e](f,u,l)}if(o){f=m.quantizeOptimizedGeometry(v,c,t,r,e,o,a,s);return S[e](f,u,l)}return m.removeZMValues(g,c,t,r,a,s),S[e](g,u,l)},t.normalizeQuery=function(e,t,i){return r.__awaiter(this,void 0,void 0,(function(){var n,o,a,s,u;return r.__generator(this,(function(r){if(n=e.outFields,o=e.orderByFields,a=e.groupByFieldsForStatistics,s=e.outStatistics,n)for(u=0;u<n.length;u++)n[u]=n[u].trim();if(o)for(u=0;u<o.length;u++)o[u]=o[u].trim();if(a)for(u=0;u<a.length;u++)a[u]=a[u].trim();if(s)for(u=0;u<s.length;u++)s[u].onStatisticField&&(s[u].onStatisticField=s[u].onStatisticField.trim());return e.geometry&&!e.outSR&&(e.outSR=e.geometry.spatialReference),[2,R(e,t,i)]}))}))},t.normalizeFilter=function(e,t,i){return r.__awaiter(this,void 0,void 0,(function(){return r.__generator(this,(function(r){return[2,R(e,t,i)]}))}))},t.normalizeQueryLike=R,t.cleanFromGeometryEngine=function(e){return e&&E in e?JSON.parse(JSON.stringify(e,U)):e};var E="_geVersion",U=function(e,t){return e!==E?t:void 0}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/maybe","../../../core/jsonMap","../../../geometry/support/spatialReferenceUtils","../../../geometry/support/extentUtils","../../../geometry/support/jsonUtils","../../../core/unitUtils","../../../geometry/support/normalizeUtils","../OptimizedGeometry","../featureConversionUtils","../centroid","./projectionSupport","../../../chunks/spatialQuerySupport"],(function(e,r,t,o,i,n,m,s,l,a,p,u,y){"use strict";e.QUERY_ENGINE_EMPTY_RESULT=y.QUERY_ENGINE_EMPTY_RESULT,e.cleanFromGeometryEngine=y.cleanFromGeometryEngine,e.getCentroid=y.getCentroid,e.getGeometry=y.getGeometry,e.normalizeFilter=y.normalizeFilter,e.normalizeQuery=y.normalizeQuery,e.normalizeQueryLike=y.normalizeQueryLike,e.transformCentroid=y.transformCentroid,Object.defineProperty(e,"__esModule",{value:!0})}));

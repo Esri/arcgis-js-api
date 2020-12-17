@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/screenUtils","../../../../../core/accessorSupport/decorators","../../../../../core/libs/gl-matrix-2/vec3f64","../../../camera/constraintUtils","./MomentumController","../../utils/navigationUtils","../../../support/geometryUtils"],(function(e,t,r,o,n,i,s,c,p,l){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ZoomSphericalMomentumController=void 0;var a=function(e){function t(t){var r=e.call(this,t)||this;return r.interactionType=1,r.radius=0,r.tmpSceneCenter=i.vec3f64.create(),r.tmpZoomAxisAngle=l.axisAngle.create(),r.sphere=l.sphere.create(),r}return r.__extends(t,e),Object.defineProperty(t.prototype,"screenCenter",{set:function(e){this._set("screenCenter",o.createScreenPointArray(e[0],e[1]))},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"sceneCenter",{set:function(e){this._set("sceneCenter",i.vec3f64.clone(e))},enumerable:!1,configurable:!0}),t.prototype.initialize=function(){this.sphere.radius=this.radius},t.prototype.momentumStep=function(e,t){var r=this.momentum.valueDelta(0,e);p.applyZoomOnSphere(this.sphere,t,r),this.constraintOptions.interactionType=1,s.applyAll(this.view,t,this.constraintOptions),p.sphereOrPlanePointFromScreenPoint(this.sphere,t,this.screenCenter,this.tmpSceneCenter),l.axisAngle.fromPoints(this.sceneCenter,this.tmpSceneCenter,this.tmpZoomAxisAngle),p.applyRotation(t,this.sphere.center,this.tmpZoomAxisAngle),this.constraintOptions.interactionType=4},r.__decorate([n.property({constructOnly:!0})],t.prototype,"momentum",void 0),r.__decorate([n.property({constructOnly:!0})],t.prototype,"screenCenter",null),r.__decorate([n.property({constructOnly:!0})],t.prototype,"sceneCenter",null),r.__decorate([n.property({constructOnly:!0})],t.prototype,"radius",void 0),t=r.__decorate([n.subclass("esri.views.3d.state.controllers.momentum.ZoomSphericalMomentumController")],t)}(c.MomentumController);t.ZoomSphericalMomentumController=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../../../../core/has","../../../../../core/Logger","../../../../../core/accessorSupport/ensureType","../../../../../core/accessorSupport/decorators/property","../../../../../core/accessorSupport/decorators/subclass","../../../../../core/urlUtils","../../../../../core/uuid","../../../../../portal/support/resourceExtension","../../../../../core/screenUtils","../../../../../chunks/vec3f64","../../../support/geometryUtils","../../../camera/constraintUtils","../../utils/navigationUtils","./MomentumController"],(function(e,t,o,r,n,s,i,c,l,p,a,u,m,h,y,C,d){"use strict";e.ZoomSphericalMomentumController=function(e){function o(t){var o;return(o=e.call(this,t)||this).interactionType=1,o.radius=0,o.tmpSceneCenter=m.create(),o.tmpZoomAxisAngle=h.axisAngle.create(),o.sphere=h.sphere.create(),o}t._inheritsLoose(o,e);var r=o.prototype;return r.initialize=function(){this.sphere.radius=this.radius},r.momentumStep=function(e,t){const o=this.momentum.valueDelta(0,e);C.applyZoomOnSphere(this.sphere,t,o),this.constraintOptions.interactionType=1,y.applyAll(this.view,t,this.constraintOptions),C.sphereOrPlanePointFromScreenPoint(this.sphere,t,this.screenCenter,this.tmpSceneCenter),h.axisAngle.fromPoints(this.sceneCenter,this.tmpSceneCenter,this.tmpZoomAxisAngle),C.applyRotation(t,this.sphere.center,this.tmpZoomAxisAngle),this.constraintOptions.interactionType=4},t._createClass(o,[{key:"screenCenter",set:function(e){this._set("screenCenter",u.createScreenPointArray(e[0],e[1]))}},{key:"sceneCenter",set:function(e){this._set("sceneCenter",m.clone(e))}}]),o}(d.MomentumController),o.__decorate([i.property({constructOnly:!0})],e.ZoomSphericalMomentumController.prototype,"momentum",void 0),o.__decorate([i.property({constructOnly:!0})],e.ZoomSphericalMomentumController.prototype,"screenCenter",null),o.__decorate([i.property({constructOnly:!0})],e.ZoomSphericalMomentumController.prototype,"sceneCenter",null),o.__decorate([i.property({constructOnly:!0})],e.ZoomSphericalMomentumController.prototype,"radius",void 0),e.ZoomSphericalMomentumController=o.__decorate([c.subclass("esri.views.3d.state.controllers.momentum.ZoomSphericalMomentumController")],e.ZoomSphericalMomentumController),Object.defineProperty(e,"__esModule",{value:!0})}));

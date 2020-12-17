@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(t,e){"use strict";var s=function(){function t(t,e){this.oAuthInfo=null,this.storage=null,this.appId=null,this.expires=null,this.ssl=null,this.token=null,this.userId=null,this.oAuthInfo=t,this.storage=e,this._init()}return t.prototype.isValid=function(){var t=!1;if(this.oAuthInfo&&this.token&&this.userId){var e=Date.now();if(this.expires>e)(this.expires-e)/1e3>60*this.oAuthInfo.minTimeUntilExpiration&&(t=!0)}return t},t.prototype.save=function(){if(this.storage){var t=this._load(),e=this.oAuthInfo;if(e&&e.authNamespace&&e.portalUrl){var s=t[e.authNamespace];s||(s=t[e.authNamespace]={}),s[e.portalUrl]={appId:this.appId=e.appId,expires:this.expires,ssl:this.ssl,token:this.token,userId:this.userId};try{this.storage.setItem("esriJSAPIOAuth",JSON.stringify(t))}catch(t){console.log(t)}}}},t.prototype.destroy=function(){var t=this._load(),e=this.oAuthInfo;if(e&&e.appId&&e.portalUrl&&this.token&&this.expires>Date.now()){var s=e.portalUrl.replace(/^http:/i,"https:")+"/sharing/rest/oauth2/revokeToken",i=new FormData;if(i.append("f","json"),i.append("auth_token",this.token),i.append("client_id",e.appId),i.append("token_type_hint","access_token"),"function"==typeof navigator.sendBeacon)navigator.sendBeacon(s,i);else{var o=new XMLHttpRequest;o.open("POST",s),o.send(i)}}if(e&&e.authNamespace&&e.portalUrl&&this.storage){var a=t[e.authNamespace];if(a){delete a[e.portalUrl];try{this.storage.setItem("esriJSAPIOAuth",JSON.stringify(t))}catch(t){console.log(t)}}}e&&(e._oAuthCred=null,this.oAuthInfo=null)},t.prototype._init=function(){var t=this._load(),e=this.oAuthInfo;if(e&&e.authNamespace&&e.portalUrl){var s=t[e.authNamespace];s&&(s=s[e.portalUrl])&&(this.appId=s.appId,this.expires=s.expires,this.ssl=s.ssl,this.token=s.token,this.userId=s.userId)}},t.prototype._load=function(){var t={};if(this.storage){var e=this.storage.getItem("esriJSAPIOAuth");if(e)try{t=JSON.parse(e)}catch(t){console.log(t)}}return t},t}();return s.prototype.declaredClass="esri.identity.OAuthCredential",s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define((function(){"use strict";const t="esriJSAPIOAuth";let e=function(){function e(t,e){this.oAuthInfo=null,this.storage=null,this.appId=null,this.expires=null,this.ssl=null,this.token=null,this.userId=null,this.oAuthInfo=t,this.storage=e,this._init()}var s=e.prototype;return s.isValid=function(){let t=!1;if(this.oAuthInfo&&this.token&&this.userId){const e=Date.now();if(this.expires>e){(this.expires-e)/1e3>60*this.oAuthInfo.minTimeUntilExpiration&&(t=!0)}}return t},s.save=function(){if(!this.storage)return;const e=this._load(),s=this.oAuthInfo;if(s&&s.authNamespace&&s.portalUrl){let i=e[s.authNamespace];i||(i=e[s.authNamespace]={}),i[s.portalUrl]={appId:this.appId=s.appId,expires:this.expires,ssl:this.ssl,token:this.token,userId:this.userId};try{this.storage.setItem(t,JSON.stringify(e))}catch(t){console.log(t)}}},s.destroy=function(){const e=this._load(),s=this.oAuthInfo;if(s&&s.appId&&s.portalUrl&&this.token&&this.expires>Date.now()){const t=s.portalUrl.replace(/^http:/i,"https:")+"/sharing/rest/oauth2/revokeToken",e=new FormData;if(e.append("f","json"),e.append("auth_token",this.token),e.append("client_id",s.appId),e.append("token_type_hint","access_token"),"function"==typeof navigator.sendBeacon)navigator.sendBeacon(t,e);else{const s=new XMLHttpRequest;s.open("POST",t),s.send(e)}}if(s&&s.authNamespace&&s.portalUrl&&this.storage){const i=e[s.authNamespace];if(i){delete i[s.portalUrl];try{this.storage.setItem(t,JSON.stringify(e))}catch(t){console.log(t)}}}s&&(s._oAuthCred=null,this.oAuthInfo=null)},s._init=function(){const t=this._load(),e=this.oAuthInfo;if(e&&e.authNamespace&&e.portalUrl){let s=t[e.authNamespace];s&&(s=s[e.portalUrl],s&&(this.appId=s.appId,this.expires=s.expires,this.ssl=s.ssl,this.token=s.token,this.userId=s.userId))}},s._load=function(){let e={};if(this.storage){const s=this.storage.getItem(t);if(s)try{e=JSON.parse(s)}catch(t){console.log(t)}}return e},e}();return e.prototype.declaredClass="esri.identity.OAuthCredential",e}));

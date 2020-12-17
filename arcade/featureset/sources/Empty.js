@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../support/FeatureSet","../support/IdSet","../support/shared","../../../core/promiseUtils"],(function(e,t,r,n,o,u,s){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.declaredClass="esri.layers.featureset.sources.Empty",r._maxProcessing=1e3,r._wset=new o([],[],!1,null),r._parent=t.parentfeatureset,r._databaseType=u.FeatureServiceDatabaseType.Standardised,r}return r.__extends(t,e),t.prototype._getSet=function(){return s.resolve(this._wset)},t.prototype.optimisePagingFeatureQueries=function(){},t.prototype._isInFeatureSet=function(){return u.IdState.NotInFeatureSet},t.prototype._getFeature=function(){return s.reject(new Error("No Feature Found in EmptySet"))},t.prototype.queryAttachments=function(){return s.resolve([])},t.prototype._getFeatures=function(){return s.resolve("success")},t.prototype._featureFromCache=function(){return null},t.prototype._fetchAndRefineFeatures=function(){return s.reject(new Error("Fetch and Refine should not be called in this featureset"))},t.prototype._getFilteredSet=function(){return s.resolve(new o([],[],!1,null))},t.prototype._stat=function(e,t,r,n,o,u,s){return this._manualStat(e,t,u,s)},t.prototype._canDoAggregates=function(){return s.resolve(!1)},t}(n)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../core/promiseUtils","../support/shared","../support/IdSet","../support/FeatureSet"],(function(e,t,r,n,u){"use strict";return function(u){function s(e){var t;return(t=u.call(this,e)||this).declaredClass="esri.layers.featureset.sources.Empty",t._maxProcessing=1e3,t._wset=new n([],[],!1,null),t._parent=e.parentfeatureset,t._databaseType=r.FeatureServiceDatabaseType.Standardised,t}e._inheritsLoose(s,u);var a=s.prototype;return a._getSet=function(){return t.resolve(this._wset)},a.optimisePagingFeatureQueries=function(){},a._isInFeatureSet=function(){return r.IdState.NotInFeatureSet},a._getFeature=function(){return t.reject(new Error("No Feature Found in EmptySet"))},a.queryAttachments=function(){return t.resolve([])},a._getFeatures=function(){return t.resolve("success")},a._featureFromCache=function(){return null},a._fetchAndRefineFeatures=function(){return t.reject(new Error("Fetch and Refine should not be called in this featureset"))},a._getFilteredSet=function(){return t.resolve(new n([],[],!1,null))},a._stat=function(e,t,r,n,u,s,a){return this._manualStat(e,t,s,a)},a._canDoAggregates=function(){return t.resolve(!1)},s}(u)}));

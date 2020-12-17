@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../Color","../../../core/Accessor","../../../core/maybe","../../../core/accessorSupport/decorators","../../../core/libs/gl-matrix-2/vec4f32"],(function(o,t,r,e,l,i,c,p){"use strict";return function(o){function t(){var t=null!==o&&o.apply(this,arguments)||this;return t.color=new e([0,255,255]),t.haloColor=null,t.haloOpacity=1,t.fillOpacity=.25,t}return r.__extends(t,o),t.toEngineOptions=function(o){var t=e.toUnitRGBA(o.color),r=i.isSome(o.haloColor)?e.toUnitRGBA(o.haloColor):t;return{color:p.vec4f32.fromValues(t[0],t[1],t[2],t[3]),haloColor:p.vec4f32.fromValues(r[0],r[1],r[2],r[3]),haloOpacity:o.haloOpacity,haloOpacityOccluded:.25*o.haloOpacity,fillOpacity:o.fillOpacity,fillOpacityOccluded:.25*o.fillOpacity}},r.__decorate([c.property({type:e})],t.prototype,"color",void 0),r.__decorate([c.property({type:e})],t.prototype,"haloColor",void 0),r.__decorate([c.property()],t.prototype,"haloOpacity",void 0),r.__decorate([c.property()],t.prototype,"fillOpacity",void 0),t=r.__decorate([c.subclass("esri.views.3d.support.HighlightOptions")],t)}(l)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor","../../../Color","../../../chunks/vec4f32"],(function(o,r,e,t,c,l,p,i,a,s,u,n,y,h){"use strict";let d=function(r){function e(){var o;return(o=r.apply(this,arguments)||this).color=new y([0,255,255]),o.haloColor=null,o.haloOpacity=1,o.fillOpacity=.25,o}return o._inheritsLoose(e,r),e.toEngineOptions=function(o){const r=y.toUnitRGBA(o.color),e=t.isSome(o.haloColor)?y.toUnitRGBA(o.haloColor):r;return{color:h.fromValues(r[0],r[1],r[2],r[3]),haloColor:h.fromValues(e[0],e[1],e[2],e[3]),haloOpacity:o.haloOpacity,haloOpacityOccluded:.25*o.haloOpacity,fillOpacity:o.fillOpacity,fillOpacityOccluded:.25*o.fillOpacity}},e}(n);return r.__decorate([p.property({type:y})],d.prototype,"color",void 0),r.__decorate([p.property({type:y})],d.prototype,"haloColor",void 0),r.__decorate([p.property()],d.prototype,"haloOpacity",void 0),r.__decorate([p.property()],d.prototype,"fillOpacity",void 0),d=r.__decorate([i.subclass("esri.views.3d.support.HighlightOptions")],d),d}));

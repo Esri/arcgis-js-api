@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./Util"],(function(e,t,r){"use strict";function o(e){return t=e.data,r.getFirstObjectValue(t.indices).length>=1;var t}Object.defineProperty(t,"__esModule",{value:!0}),t.splitRenderGeometryChangeSetByMaterial=void 0,t.splitRenderGeometryChangeSetByMaterial=function(e){for(var t=new Map,r=null,n=null,a=function(e){if(e===r)return n;var o=t.get(e);return o||(o={toAdd:[],numToAdd:-1,toRemove:[],numToRemove:-1,toUpdate:[],numToUpdate:-1},t.set(e,o)),r=e,n=o,o},d=0;d<e.numToAdd;d++){if(o(i=e.toAdd[d]))a(i.material).toAdd.push(i)}for(d=0;d<e.numToRemove;d++){var i;if(o(i=e.toRemove[d]))a(i.material).toRemove.push(i)}for(d=0;d<e.numToUpdate;d++){var u=e.toUpdate[d];if(o(u.renderGeometry))a(u.renderGeometry.material).toUpdate.push(u)}return t}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","./Util"],(function(e,t){"use strict";function o(e){return o=e.data,t.getFirstObjectValue(o.indices).length>=1;var o}e.splitRenderGeometryChangeSetByMaterial=function(e){const t=new Map;let n=null,r=null;const d=e=>{if(e===n)return r;let o=t.get(e);return o||(o={toAdd:[],numToAdd:-1,toRemove:[],numToRemove:-1,toUpdate:[],numToUpdate:-1},t.set(e,o)),n=e,r=o,o};for(let t=0;t<e.numToAdd;t++){const n=e.toAdd[t];if(o(n)){d(n.material).toAdd.push(n)}}for(let t=0;t<e.numToRemove;t++){const n=e.toRemove[t];if(o(n)){d(n.material).toRemove.push(n)}}for(let t=0;t<e.numToUpdate;t++){const n=e.toUpdate[t];if(o(n.renderGeometry)){d(n.renderGeometry.material).toUpdate.push(n)}}return t},Object.defineProperty(e,"__esModule",{value:!0})}));

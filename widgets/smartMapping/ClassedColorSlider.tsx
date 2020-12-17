@@ -72,22 +72,22 @@
  */
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.renderers.smartMapping.statistics
-import { HistogramResult } from "esri/../renderers/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/renderers/smartMapping/statistics/interfaces";
 
 // esri.renderers.support
-import ClassBreakInfo = require("esri/../renderers/support/ClassBreakInfo");
+import ClassBreakInfo from "esri/renderers/support/ClassBreakInfo";
 
 // esri.smartMapping.renderers
-import { ClassBreaksRendererResult } from "esri/../smartMapping/renderers/color";
+import { ClassBreaksRendererResult } from "esri/smartMapping/renderers/color";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
 
 // esri.widgets.smartMapping.ClassedColorSlider
-import ClassedColorSliderViewModel = require("esri/widgets/ClassedColorSlider/ClassedColorSliderViewModel");
+import ClassedColorSliderViewModel from "esri/widgets/ClassedColorSlider/ClassedColorSliderViewModel";
 import { ColorBreak } from "esri/widgets/ClassedColorSlider/interfaces";
 
 // esri.widgets.smartMapping.ClassedColorSlider.t9n
@@ -476,11 +476,11 @@ class ClassedColorSlider extends SmartMappingSliderBase {
     });
 
     this.set({
-      breaks,
-      histogramConfig: {
-        bins: histogramResult ? histogramResult.bins : []
-      }
+      breaks
     });
+    if (histogramResult?.bins) {
+      this.histogramConfig.bins = histogramResult.bins;
+    }
   }
 
   render(): VNode {
@@ -518,4 +518,4 @@ class ClassedColorSlider extends SmartMappingSliderBase {
   }
 }
 
-export = ClassedColorSlider;
+export default ClassedColorSlider;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","../../geometry/support/jsonUtils"],(function(e,t,r,o,n,s,p){"use strict";var i=function(e){function t(t){var r=e.call(this,t)||this;return r.bevelRatio=null,r.geometries=null,r.offsetDistance=null,r.offsetHow=null,r.offsetUnit=null,r}return r.__extends(t,e),r.__decorate([n.property({type:Number,json:{write:!0}})],t.prototype,"bevelRatio",void 0),r.__decorate([n.property({json:{read:{reader:function(e){return e?e.map((function(e){return p.fromJSON(e)})):null}},write:{writer:function(e,t){t.geometries=e.map((function(e){return e.toJSON()}))}}}})],t.prototype,"geometries",void 0),r.__decorate([n.property({type:Number,json:{write:!0}})],t.prototype,"offsetDistance",void 0),r.__decorate([n.property({type:String,json:{write:!0}})],t.prototype,"offsetHow",void 0),r.__decorate([n.property({type:String,json:{write:!0}})],t.prototype,"offsetUnit",void 0),t=r.__decorate([n.subclass("esri.tasks.support.OffsetParameters")],t)}(o.JSONSupport);return i.from=s.default(i),i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/jsonUtils"],(function(e,r,o,t,s,p,i,n,u,c,a,l){"use strict";let f=function(r){function o(e){var o;return(o=r.call(this,e)||this).bevelRatio=null,o.geometries=null,o.offsetDistance=null,o.offsetHow=null,o.offsetUnit=null,o}return e._inheritsLoose(o,r),o}(a.JSONSupport);return r.__decorate([p.property({type:Number,json:{write:!0}})],f.prototype,"bevelRatio",void 0),r.__decorate([p.property({json:{read:{reader:e=>e?e.map((e=>l.fromJSON(e))):null},write:{writer:(e,r)=>{r.geometries=e.map((e=>e.toJSON()))}}}})],f.prototype,"geometries",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],f.prototype,"offsetDistance",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],f.prototype,"offsetHow",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],f.prototype,"offsetUnit",void 0),f=r.__decorate([i.subclass("esri.tasks.support.OffsetParameters")],f),f.from=s.ensureType(f),f}));

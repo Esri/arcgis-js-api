@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../core/arrayUtils"],(function(o,r,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.CommonUniformStore=void 0;var n=function(){function o(){this._uniforms={proj:[],shadowMapDistance:[],viewportPixelSz:[],lightingMainDirection:[]}}return o.prototype.dispose=function(){this._uniforms=null},o.prototype.getPrograms=function(o){return this._uniforms[o]||[]},o.prototype.subscribeProgram=function(o){for(var r in this._uniforms)o.hasUniform(r)&&this._uniforms[r].push(o)},o.prototype.unsubscribeProgram=function(o){for(var r in this._uniforms)i.removeUnordered(this._uniforms[r],o)},o}();r.CommonUniformStore=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../core/arrayUtils"],(function(i,n){"use strict";let o=function(){function i(){this._uniforms={proj:[],shadowMapDistance:[],viewportPixelSz:[],lightingMainDirection:[]}}var o=i.prototype;return o.dispose=function(){this._uniforms=null},o.getPrograms=function(i){return this._uniforms[i]||[]},o.subscribeProgram=function(i){for(const n in this._uniforms)i.hasUniform(n)&&this._uniforms[n].push(i)},o.unsubscribeProgram=function(i){for(const o in this._uniforms)n.removeUnordered(this._uniforms[o],i)},i}();i.CommonUniformStore=o,Object.defineProperty(i,"__esModule",{value:!0})}));

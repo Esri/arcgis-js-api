@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../../../Color","../../../../3d/interactive/Manipulator3D","../../manipulatorUtils","../../editingTools/manipulatorUtils","../../../webgl-engine/lib/Geometry","../../../webgl-engine/lib/Geometry","../../../webgl-engine/lib/GeometryUtil","../../../webgl-engine/materials/RibbonLineMaterial"],(function(e,t,r,o,i,l,n,a,s,u){"use strict";function c(e,t,o){return{geometry:new n(s.createSphereGeometry(e,32,32),"manipulator"),material:i.createManipulatorMaterial(r.toUnitRGBA(t)),stateMask:o}}Object.defineProperty(t,"__esModule",{value:!0}),t.createSphereManipulator=t.createPolylineGeometry=t.createPolylineMaterial=void 0,t.createPolylineMaterial=function(e,t,o,i){var l=new u({width:e,color:r.toUnitRGBA(t),stipplePattern:o,stippleOffColor:i&&[i.r,i.g,i.b,i.a]},"line-of-sight-line");return l.renderOccluded=4,l},t.createPolylineGeometry=function(e,t,r){return new a(s.createPolylineGeometry([e,t]),"line-of-sight-line-"+r)},t.createSphereManipulator=function(e,t){var r=[];t.customColor1&&r.push(c(t.size,t.customColor1,16)),t.customColor2&&r.push(c(t.size,t.customColor2,32)),t.customColor3&&r.push(c(t.size,t.customColor3,64)),t.color&&r.push(c(t.size,t.color));var i=new o.Manipulator3D({view:e,renderObjects:r,elevationInfo:{mode:"absolute-height",offset:0}});for(var n in l.disableDisplayOnGrab(i),t)i[n]=t[n];return i}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../Color","../../../webgl-engine/lib/GeometryUtil","../../../webgl-engine/lib/Geometry","../../../webgl-engine/materials/RibbonLineMaterial","../../Manipulator3D","../../manipulatorUtils","../../editingTools/manipulatorUtils"],(function(e,t,o,i,r,n,l,a){"use strict";function s(e,r,n){return{geometry:new i(o.createSphereGeometry(e,32,32),"manipulator"),material:l.createManipulatorMaterial(t.toUnitRGBA(r)),stateMask:n}}e.createPolylineGeometry=function(e,t,r){return new i(o.createPolylineGeometry([e,t]),`line-of-sight-line-${r}`)},e.createPolylineMaterial=function(e,o,i,n){return new r.RibbonLineMaterial({width:e,color:t.toUnitRGBA(o),stipplePattern:i,stippleOffColor:n&&[n.r,n.g,n.b,n.a],renderOccluded:4},"line-of-sight-line")},e.createSphereManipulator=function(e,t){const o=[];t.customColor1&&o.push(s(t.size,t.customColor1,16)),t.customColor2&&o.push(s(t.size,t.customColor2,32)),t.customColor3&&o.push(s(t.size,t.customColor3,64)),t.color&&o.push(s(t.size,t.color));const i=new n.Manipulator3D({view:e,renderObjects:o,elevationInfo:{mode:"absolute-height",offset:0}});a.disableDisplayOnGrab(i);for(const e in t)i[e]=t[e];return i},Object.defineProperty(e,"__esModule",{value:!0})}));

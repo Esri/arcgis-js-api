@@ -37,20 +37,14 @@ import { substitute } from "esri/intl";
 // esri.core
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
-import Logger = require("esri/core/Logger");
+import Logger from "esri/core/Logger";
 import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
-// esri.core.libs.pep
-import PEP = require("esri/core/libs/pep/pep");
-
-// esri.libs.resize-observer
-import ResizeObserver = require("esri/libs/resize-observer/ResizeObserver");
-
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Slider
 import {
@@ -65,7 +59,7 @@ import {
   TickConfig,
   ValueChangeEvent
 } from "esri/widgets/Slider/interfaces";
-import SliderViewModel = require("esri/widgets/Slider/SliderViewModel");
+import SliderViewModel from "esri/widgets/Slider/SliderViewModel";
 
 // esri.widgets.Slider.t9n
 import SliderMessages from "esri/widgets/Slider/t9n/Slider";
@@ -1940,7 +1934,6 @@ class Slider extends Widget<SliderEvents> {
   private _afterTrackCreate(element: HTMLElement): void {
     storeNode.call(this, element);
 
-    PEP.applyLocal(element);
     element.addEventListener("pointerdown", this._onTrackPointerDown);
 
     // Anchors, segments and ticks rely on 'trackElement' for proper placement
@@ -1951,7 +1944,6 @@ class Slider extends Widget<SliderEvents> {
   private _afterSegmentCreate(element: HTMLElement): void {
     this._segmentElements.push(element);
 
-    PEP.applyLocal(element);
     element.addEventListener("pointerdown", this._onSegmentPointerDown);
   }
 
@@ -1968,7 +1960,6 @@ class Slider extends Widget<SliderEvents> {
   private _afterAnchorCreate(element: HTMLElement): void {
     this._anchorElements.push(element);
 
-    PEP.applyLocal(element);
     element.addEventListener("pointerdown", this._onAnchorPointerDown);
 
     if (this.thumbCreatedFunction) {
@@ -2017,7 +2008,6 @@ class Slider extends Widget<SliderEvents> {
   private _afterLabelCreate(element: HTMLElement): void {
     this._labelElements.push(element);
 
-    PEP.applyLocal(element);
     element.addEventListener("pointerdown", this._onLabelPointerDown);
     element.addEventListener("pointerup", this._onLabelPointerUp);
   }
@@ -3292,4 +3282,4 @@ class Slider extends Widget<SliderEvents> {
   }
 }
 
-export = Slider;
+export default Slider;

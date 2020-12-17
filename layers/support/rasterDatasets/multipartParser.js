@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.parse=void 0;function e(t,n){for(var e,r=String.fromCharCode.apply(null,t.subarray(0,Math.min(300,t.length))).split("\n"),a=Math.min(r.length,7),i={},o=0,s=0;s<a;s++)if(r[s].length<4)o=o+r[s].length+1;else if("content"===r[s].slice(0,7).toLowerCase()){if(o=o+r[s].length+1,-1===r[s].indexOf(":"))continue;var l=r[s].substring(0,r[s].indexOf(":")).trim(),c=r[s].substring(r[s].indexOf(":")+1).trim();switch(l.toLowerCase()){case"content-type":i.contentType=c;break;case"content-description":i.contentDescription=c;break;case"content-transfer-encoding":i.contentTransferEncoding=c;break;case"content-id":i.contentID=c;break;case"content-disposition":i.contentDisposition=c;break;case"content-location":i.contentLocation=c}}else{if(i.contentDisposition&&r[s].length>=4&&(null===(e=i.contentType)||void 0===e?void 0:e.toLowerCase().indexOf("image"))>-1){var u=new ArrayBuffer(t.length-o);new Uint8Array(u).set(t.subarray(o,t.length)),i.contentData=u;break}if((""===n.start||i.contentID===n.start)&&i.contentType){if(i.contentType.indexOf("text")>-1){i.contentData=String.fromCharCode.apply(null,t.subarray(o,t.length));break}i.contentData=t.subarray(o,t.length)}}return i}n.parse=function(t){var n=function(t){var n,e=null===(n=t.getHeader("Content-Type"))||void 0===n?void 0:n.split(";"),r=null==e?void 0:e[0];if("multipart/related"!==r&&"multipart/mixed"!==r)return null;for(var a={boundary:"",start:"",type:""},i=1;i<e.length;i++){var o=e[i].split("=");a[o[0].trim()]=o[1].trim().slice(1,o[1].length-1)}return a}(t);return n?{isMultipart:!0,data:function(t,n){for(var r="--"+n.boundary,a=[],i=0;i<r.length;i++)a.push(r.charCodeAt(i));var o=[],s="\n--"+n.boundary+"--";for(i=0;i<s.length;i++)o.push(s.charCodeAt(i));var l=[10],c=[13,10],u=[],f=a.length,d=new Uint8Array(t),h=Math.min(1e4,d.length-f),p=0,g=0;for(i=0;i<h;i++){for(g=0;g<f&&d[i+g]===a[g];g++);g===f&&(p&&u.push(e(d.subarray(p,i),n)),d[(i+=f-1)+1]===l[0]?i+=1:d[i+1]===c[0]&&d[i+2]===c[1]&&(i+=2),p=i+1)}var y=o.length;for(i=d.length-y-10;i<d.length-y;i++){for(g=0;g<y&&d[i+g]===o[g];g++);if(g===y){u.push(e(d.subarray(p,i),n));break}}return u}(t.data,n)}:{isMultipart:!1,data:null}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";function n(t,n){const e=String.fromCharCode.apply(null,t.subarray(0,Math.min(300,t.length))).split("\n"),r=Math.min(e.length,7),o={};let a=0;for(let s=0;s<r;s++){var i;if(e[s].length<4)a=a+e[s].length+1;else if("content"===e[s].slice(0,7).toLowerCase()){if(a=a+e[s].length+1,-1===e[s].indexOf(":"))continue;const t=e[s].substring(0,e[s].indexOf(":")).trim(),n=e[s].substring(e[s].indexOf(":")+1).trim();switch(t.toLowerCase()){case"content-type":o.contentType=n;break;case"content-description":o.contentDescription=n;break;case"content-transfer-encoding":o.contentTransferEncoding=n;break;case"content-id":o.contentID=n;break;case"content-disposition":o.contentDisposition=n;break;case"content-location":o.contentLocation=n}}else{if(o.contentDisposition&&e[s].length>=4&&(null==(i=o.contentType)?void 0:i.toLowerCase().indexOf("image"))>-1){const n=new ArrayBuffer(t.length-a);new Uint8Array(n).set(t.subarray(a,t.length)),o.contentData=n;break}if((""===n.start||o.contentID===n.start)&&o.contentType){if(o.contentType.indexOf("text")>-1){o.contentData=String.fromCharCode.apply(null,t.subarray(a,t.length));break}o.contentData=t.subarray(a,t.length)}}}return o}t.parse=function(t){const e=function(t){var n;const e=null==(n=t.getHeader("Content-Type"))?void 0:n.split(";"),r=null==e?void 0:e[0];if("multipart/related"!==r&&"multipart/mixed"!==r)return null;const o={boundary:"",start:"",type:""};for(let t=1;t<e.length;t++){const n=e[t].split("=");o[n[0].trim()]=n[1].trim().slice(1,n[1].length-1)}return o}(t);return e?{isMultipart:!0,data:function(t,e){const r="--"+e.boundary,o=[];for(let t=0;t<r.length;t++)o.push(r.charCodeAt(t));const a=[],i="\n--"+e.boundary+"--";for(let t=0;t<i.length;t++)a.push(i.charCodeAt(t));const s=[10],l=[13,10],c=[],u=o.length,f=new Uint8Array(t),h=Math.min(1e4,f.length-u);let p=0,d=0;for(let t=0;t<h;t++){for(d=0;d<u&&f[t+d]===o[d];d++);d===u&&(p&&c.push(n(f.subarray(p,t),e)),t+=u-1,f[t+1]===s[0]?t+=1:f[t+1]===l[0]&&f[t+2]===l[1]&&(t+=2),p=t+1)}const g=a.length;for(let t=f.length-g-10;t<f.length-g;t++){for(d=0;d<g&&f[t+d]===a[d];d++);if(d===g){c.push(n(f.subarray(p,t),e));break}}return c}(t.data,e)}:{isMultipart:!1,data:null}},Object.defineProperty(t,"__esModule",{value:!0})}));

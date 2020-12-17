@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/handleUtils","./snappingUtils","./SnappingCandidate"],(function(e,t,n,r,i){"use strict";let a=function(e){function i({coordinateHelper:t,targetPoint:n,constraint:r,previousVertex:i,centerVertex:a}){var s;return(s=e.call(this,t,n,r)||this)._previousVertex=i,s._centerVertex=a,s}t._inheritsLoose(i,e);var a=i.prototype;return a.visualizeTargetHints=function(e,t,i){return n.destroyHandle(r.createLineSegmentHintFromMap(0,this.constraint.start,i,this.coordinateHelper,t,e))},a.visualizeReferenceHints=function(e,t,i){return n.handlesGroup([n.destroyHandle(r.createLineSegmentHintFromMap(2,this._previousVertex,this.constraint.start,this.coordinateHelper,t,e)),n.destroyHandle(r.createQuadHint(this._previousVertex,this._centerVertex,i,this.coordinateHelper,t,e))])},i}(i.SnappingCandidate);e.RightAngleSnappingCandidate=a,Object.defineProperty(e,"__esModule",{value:!0})}));

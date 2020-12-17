@@ -32,11 +32,11 @@
 
 // esri
 import { getAssetUrl } from "esri/assets";
-import Basemap = require("esri/Basemap");
+import Basemap from "esri/Basemap";
 
 // esri.core
-import Collection = require("esri/core/Collection");
-import Handles = require("esri/core/Handles");
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
 import { CollectionChangeEvent } from "esri/core/interfaces";
 import { on, whenOnce } from "esri/core/watchUtils";
 
@@ -44,18 +44,18 @@ import { on, whenOnce } from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.BasemapGallery
-import BasemapGalleryViewModel = require("esri/widgets/BasemapGallery/BasemapGalleryViewModel");
+import BasemapGalleryViewModel from "esri/widgets/BasemapGallery/BasemapGalleryViewModel";
 import { BasemapsSource } from "esri/widgets/BasemapGallery/interfaces";
 
 // esri.widgets.BasemapGallery.support
-import BasemapGalleryItem = require("esri/widgets/BasemapGallery/support/BasemapGalleryItem");
+import BasemapGalleryItem from "esri/widgets/BasemapGallery/support/BasemapGalleryItem";
 
 // esri.widgets.BasemapGallery.t9n
 import BasemapGalleryMessages from "esri/widgets/BasemapGallery/t9n/BasemapGallery";
@@ -232,15 +232,35 @@ class BasemapGallery extends Widget {
 
   /**
    * The source for basemaps that the widget will display.
-   * This property can be autocast with an array or {@link module:esri/core/Collection} of {@link module:esri/Basemap}s,
-   * a {@link module:esri/portal/Portal} instance, or a URL to a portal instance.
+   * This property can be autocast with an array or {@link module:esri/core/Collection} of {@link module:esri/Basemap}s, or
+   * a {@link module:esri/portal/Portal} instance.
    * The default source is a {@link module:esri/widgets/BasemapGallery/support/PortalBasemapsSource} that points to
    * the default portal instance set in {@link module:esri/config#portalUrl esriConfig.portalUrl}.
    *
    * @type {module:esri/widgets/BasemapGallery/support/LocalBasemapsSource | module:esri/widgets/BasemapGallery/support/PortalBasemapsSource}
    * @name source
    * @instance
-   * @autocast
+   * @autocast {"value": "module:esri/core/Collection<module:esri/Basemap> | module:esri/Basemap[] | module:esri/portal/Portal | Object"}
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: [Basemap.fromId("topo-vector"), Basemap.fromId("hybrid")] // autocasts to LocalBasemapsSource
+   * });
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: { // autocasts to PortalBasemapsSource
+   *      portal: "https://www.yourportal.arcgis.com"
+   *    }
+   * });
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: new Portal({url: "https://www.yourportal.arcgis.com"}) // autocasts to PortalBasemapsSource
+   * });
    *
    * @todo doc custom BasemapSource (interface) also supported
    */
@@ -376,4 +396,4 @@ class BasemapGallery extends Widget {
   }
 }
 
-export = BasemapGallery;
+export default BasemapGallery;

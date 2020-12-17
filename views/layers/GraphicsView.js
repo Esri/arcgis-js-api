@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators"],(function(e,r,t,o){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.GraphicsView=void 0,r.GraphicsView=function(e){return function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.graphics=null,r.renderer=null,r.view=null,r}return t.__extends(r,e),t.__decorate([o.property()],r.prototype,"graphics",void 0),t.__decorate([o.property()],r.prototype,"renderer",void 0),t.__decorate([o.property()],r.prototype,"updating",void 0),t.__decorate([o.property()],r.prototype,"view",void 0),r=t.__decorate([o.subclass("esri.views.layers.GraphicsView")],r)}(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Identifiable"],(function(e,r,o,t,s,p,i,c,u,n,a,l){"use strict";e.GraphicsView=e=>{let t=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).graphics=null,r.renderer=null,r.view=null,r}return r._inheritsLoose(o,e),o}(l.IdentifiableMixin(e));return o.__decorate([i.property()],t.prototype,"graphics",void 0),o.__decorate([i.property()],t.prototype,"renderer",void 0),o.__decorate([i.property()],t.prototype,"updating",void 0),o.__decorate([i.property()],t.prototype,"view",void 0),t=o.__decorate([c.subclass("esri.views.layers.GraphicsView")],t),t},Object.defineProperty(e,"__esModule",{value:!0})}));

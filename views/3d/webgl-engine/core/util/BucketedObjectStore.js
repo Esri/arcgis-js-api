@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../lib/AutoDisposable"],(function(t,e,n,u){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.BucketedObjectStore=e.BucketStorable=void 0;var r=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._bucket=null,e._bucketIndex=0,e}return n.__extends(e,t),Object.defineProperty(e.prototype,"bucketKey",{get:function(){return this._bucket.key},enumerable:!1,configurable:!0}),e}(u.AutoDisposable);e.BucketStorable=r;var o=function(){function t(){this._buckets=new Map,this._count=0}return t.prototype.add=function(t,e){var n=this._getBucket(t);e._bucket=n,e._bucketIndex=n.count,n._data.push(e),this._count++},t.prototype.remove=function(t){var e=t._bucket._data,n=e[e.length-1];e[t._bucketIndex]=n,n._bucketIndex=t._bucketIndex,e.pop(),this._count--,t._bucket=null,t._bucketIndex=0},t.prototype.updateKey=function(t,e){this.remove(t),this.add(e,t)},t.prototype.getBucket=function(t){return this._getBucket(t).data},t.prototype.forEach=function(t){this._buckets.forEach((function(e){t(e.data,e.key)}))},Object.defineProperty(t.prototype,"count",{get:function(){return this._count},enumerable:!1,configurable:!0}),t.prototype._getBucket=function(t){var e=this._buckets.get(t);if(e)return e;var n=new c(t);return this._buckets.set(t,n),n},t}();e.BucketedObjectStore=o;var c=function(){function t(t){this.key=t,this._data=new Array}return Object.defineProperty(t.prototype,"data",{get:function(){return this._data},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"count",{get:function(){return this._data.length},enumerable:!1,configurable:!0}),t}()}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../lib/AutoDisposable"],(function(t,e,n){"use strict";let u=function(t){function n(){var e;return(e=t.apply(this,arguments)||this)._bucket=null,e._bucketIndex=0,e}return e._inheritsLoose(n,t),e._createClass(n,[{key:"bucketKey",get:function(){return this._bucket.key}}]),n}(n.AutoDisposable),c=function(){function t(){this._buckets=new Map}var n=t.prototype;return n.add=function(t,e){const n=this._getBucket(t);e._bucket=n,e._bucketIndex=n.count,n.data.push(e),++n.statistics.added},n.remove=function(t){++t._bucket.statistics.removed;const e=t._bucket.data,n=e[e.length-1];e[t._bucketIndex]=n,n._bucketIndex=t._bucketIndex,e.pop(),t._bucket=null,t._bucketIndex=0},n.updateKey=function(t,e){this.remove(t),this.add(e,t)},n.getBucket=function(t){return this._getBucket(t).data},n.getPerformanceInfo=function(t){return this._getBucket(t).statistics},n.forEach=function(t){this._buckets.forEach((e=>t(e.data,e.key)))},n._getBucket=function(t){const e=this._buckets.get(t);if(e)return e;const n=new s(t);return this._buckets.set(t,n),n},e._createClass(t,[{key:"count",get:function(){let t=0;return this._buckets.forEach((e=>t+=e.count)),t}}]),t}(),s=function(){function t(t){this.key=t,this.data=new Array,this.statistics={added:0,removed:0}}return e._createClass(t,[{key:"count",get:function(){return this.data.length}}]),t}();t.BucketStorable=u,t.BucketedObjectStore=c,Object.defineProperty(t,"__esModule",{value:!0})}));

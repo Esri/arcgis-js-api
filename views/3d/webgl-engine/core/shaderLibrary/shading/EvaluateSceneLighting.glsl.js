@@ -1,25 +1,150 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./ReadShadowMap.glsl","./PhysicallyBasedRendering.glsl","./EvaluateAmbientOcclusion.glsl","./EvaluateAmbientLighting.glsl","./EvaluateMainLighting.glsl"],(function(e,i,t,a,n,o,l,r){"use strict";e.EvaluateSceneLighting=function(e,c){const d=e.fragment;e.include(r.EvaluateMainLighting),e.include(o.EvaluateAmbientOcclusion,c),0!==c.pbrMode&&e.include(n.PhysicallyBasedRendering,c),e.include(l.EvaluateAmbientLighting,c),c.receiveShadows&&e.include(a.ReadShadowMap,c),d.uniforms.add("lightingGlobalFactor","float"),d.uniforms.add("ambientBoostFactor","float"),e.include(t.PiUtils),d.code.add(i.glsl`
+    const float GAMMA_SRGB = 2.1;
+    const float INV_GAMMA_SRGB = 0.4761904;
+    ${0===c.pbrMode?"":"const vec3 GROUND_REFLECTANCE = vec3(0.2);"}
+  `),c.useOldSceneLightInterface?d.code.add(i.glsl`
+    vec3 evaluateSceneLightingExt(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight) {
+      // evaluate the main light
+      #if defined(TREE_RENDERING)
+        // Special case for tree rendering:
+        // We shift the Lambert lobe to the back, allowing it to reach part of the hemisphere
+        // facing away from the light. The idea is to get an effect where light is transmitted
+        // through the tree.
+        float minDot = -0.5;
+        float dotRange = 1.0 - minDot;
+        float dotNormalization = 0.66; // guessed & hand tweaked value, for an exact value we could precompute an integral over the sphere
 
-define(["require","exports","tslib","./EvaluateAmbientLighting.glsl","./EvaluateAmbientOcclusion.glsl","./EvaluateMainLighting.glsl","./PhysicallyBasedRendering.glsl","./PiUtils.glsl","./ReadShadowMap.glsl","../../shaderModules/interfaces"],(function(n,e,t,i,a,o,l,r,c,d){"use strict";var m,s,h,g,u,p,v,f,b,L,C,R,A;Object.defineProperty(e,"__esModule",{value:!0}),e.EvaluateSceneLighting=void 0,e.EvaluateSceneLighting=function(n,e){var G=n.fragment;n.include(o.EvaluateMainLighting),n.include(a.EvaluateAmbientOcclusion,e),0!==e.pbrMode&&n.include(l.PhysicallyBasedRendering,e),n.include(i.EvaluateAmbientLighting,e),e.receiveShadows&&n.include(c.ReadShadowMap,e),G.uniforms.add("lightingGlobalFactor","float"),G.uniforms.add("ambientBoostFactor","float"),n.include(r.PiUtils),G.code.add(d.glsl(m||(m=t.__makeTemplateObject(["\n    const float GAMMA_SRGB = 2.1;\n    const float INV_GAMMA_SRGB = 0.4761904;\n    ","\n  "],["\n    const float GAMMA_SRGB = 2.1;\n    const float INV_GAMMA_SRGB = 0.4761904;\n    ","\n  "])),0===e.pbrMode?"":"const vec3 GROUND_REFLECTANCE = vec3(0.2);")),e.useOldSceneLightInterface?G.code.add(d.glsl(s||(s=t.__makeTemplateObject(["\n    vec3 evaluateSceneLightingExt(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight) {\n      // evaluate the main light\n      #if defined(TREE_RENDERING)\n        // Special case for tree rendering:\n        // We shift the Lambert lobe to the back, allowing it to reach part of the hemisphere\n        // facing away from the light. The idea is to get an effect where light is transmitted\n        // through the tree.\n        float minDot = -0.5;\n        float dotRange = 1.0 - minDot;\n        float dotNormalization = 0.66; // guessed & hand tweaked value, for an exact value we could precompute an integral over the sphere\n\n        float dotVal = dotNormalization * (clamp(-dot(normal, lightingMainDirection), 1.0 - dotRange, 1.0) - minDot) * (1.0 / dotRange);\n      #else\n        float dotVal = clamp(-dot(normal, lightingMainDirection), 0.0, 1.0);\n      #endif\n\n      // move lighting towards (1.0, 1.0, 1.0) if requested\n      dotVal = mix(dotVal, 1.0, lightingFixedFactor);\n\n      vec3 mainLight = (1.0 - shadow) * lightingMainIntensity * dotVal;\n      vec3 ambientLight = calculateAmbientIrradiance(normal, ssao);\n\n      // inverse gamma correction on the albedo color\n      vec3 albedoGammaC = pow(albedo, vec3(GAMMA_SRGB));\n\n      // physically correct BRDF normalizes by PI\n      vec3 totalLight = mainLight + ambientLight + additionalLight;\n      totalLight = min(totalLight, vec3(PI));\n      vec3 outColor = vec3((albedoGammaC / PI) * (totalLight));\n\n      // apply gamma correction to the computed color\n      outColor = pow(outColor, vec3(INV_GAMMA_SRGB));\n\n      return outColor;\n    }\n  "],["\n    vec3 evaluateSceneLightingExt(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight) {\n      // evaluate the main light\n      #if defined(TREE_RENDERING)\n        // Special case for tree rendering:\n        // We shift the Lambert lobe to the back, allowing it to reach part of the hemisphere\n        // facing away from the light. The idea is to get an effect where light is transmitted\n        // through the tree.\n        float minDot = -0.5;\n        float dotRange = 1.0 - minDot;\n        float dotNormalization = 0.66; // guessed & hand tweaked value, for an exact value we could precompute an integral over the sphere\n\n        float dotVal = dotNormalization * (clamp(-dot(normal, lightingMainDirection), 1.0 - dotRange, 1.0) - minDot) * (1.0 / dotRange);\n      #else\n        float dotVal = clamp(-dot(normal, lightingMainDirection), 0.0, 1.0);\n      #endif\n\n      // move lighting towards (1.0, 1.0, 1.0) if requested\n      dotVal = mix(dotVal, 1.0, lightingFixedFactor);\n\n      vec3 mainLight = (1.0 - shadow) * lightingMainIntensity * dotVal;\n      vec3 ambientLight = calculateAmbientIrradiance(normal, ssao);\n\n      // inverse gamma correction on the albedo color\n      vec3 albedoGammaC = pow(albedo, vec3(GAMMA_SRGB));\n\n      // physically correct BRDF normalizes by PI\n      vec3 totalLight = mainLight + ambientLight + additionalLight;\n      totalLight = min(totalLight, vec3(PI));\n      vec3 outColor = vec3((albedoGammaC / PI) * (totalLight));\n\n      // apply gamma correction to the computed color\n      outColor = pow(outColor, vec3(INV_GAMMA_SRGB));\n\n      return outColor;\n    }\n  "])))):(1===e.viewingMode?G.code.add(d.glsl(h||(h=t.__makeTemplateObject(["\n      float _oldHeuristicLighting(vec3 vPosWorld) {\n        vec3 shadingNormalWorld = normalize(vPosWorld);\n        float vndl = -dot(shadingNormalWorld, lightingMainDirection);\n\n        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));\n      }\n    "],["\n      float _oldHeuristicLighting(vec3 vPosWorld) {\n        vec3 shadingNormalWorld = normalize(vPosWorld);\n        float vndl = -dot(shadingNormalWorld, lightingMainDirection);\n\n        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));\n      }\n    "])))):G.code.add(d.glsl(g||(g=t.__makeTemplateObject(["\n      float _oldHeuristicLighting(vec3 vPosWorld) {\n        float vndl = -dot(vec3(0.0, 0.0, 1.0), lightingMainDirection);\n        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));\n      }\n    "],["\n      float _oldHeuristicLighting(vec3 vPosWorld) {\n        float vndl = -dot(vec3(0.0, 0.0, 1.0), lightingMainDirection);\n        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));\n      }\n    "])))),G.code.add(d.glsl(u||(u=t.__makeTemplateObject(["\n      vec3 evaluateAdditionalLighting(float ambientOcclusion, vec3 vPosWorld) {\n        float additionalAmbientScale = _oldHeuristicLighting(vPosWorld);\n        return (1.0 - ambientOcclusion) * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor * lightingMainIntensity;\n      }\n    "],["\n      vec3 evaluateAdditionalLighting(float ambientOcclusion, vec3 vPosWorld) {\n        float additionalAmbientScale = _oldHeuristicLighting(vPosWorld);\n        return (1.0 - ambientOcclusion) * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor * lightingMainIntensity;\n      }\n    "])))),0===e.pbrMode||4===e.pbrMode?G.code.add(d.glsl(p||(p=t.__makeTemplateObject(["\n      vec3 evaluateSceneLighting(vec3 normalWorld, vec3 baseColor, float mainLightShadow, float ambientOcclusion, vec3 additionalLight)\n      {\n        vec3 mainLighting = evaluateMainLighting(normalWorld, mainLightShadow);\n        vec3 ambientLighting = calculateAmbientIrradiance(normalWorld, ambientOcclusion);\n        // inverse gamma correction on the base color\n        vec3 baseColorLinear = pow(baseColor, vec3(GAMMA_SRGB));\n\n        // physically correct BRDF normalizes by PI\n        vec3 totalLight = mainLighting + ambientLighting + additionalLight;\n        totalLight = min(totalLight, vec3(PI));\n        vec3 outColor = vec3((baseColorLinear / PI) * totalLight);\n\n        // apply gamma correction to the computed color\n        outColor = pow(outColor, vec3(INV_GAMMA_SRGB));\n\n        return outColor;\n      }\n      "],["\n      vec3 evaluateSceneLighting(vec3 normalWorld, vec3 baseColor, float mainLightShadow, float ambientOcclusion, vec3 additionalLight)\n      {\n        vec3 mainLighting = evaluateMainLighting(normalWorld, mainLightShadow);\n        vec3 ambientLighting = calculateAmbientIrradiance(normalWorld, ambientOcclusion);\n        // inverse gamma correction on the base color\n        vec3 baseColorLinear = pow(baseColor, vec3(GAMMA_SRGB));\n\n        // physically correct BRDF normalizes by PI\n        vec3 totalLight = mainLighting + ambientLighting + additionalLight;\n        totalLight = min(totalLight, vec3(PI));\n        vec3 outColor = vec3((baseColorLinear / PI) * totalLight);\n\n        // apply gamma correction to the computed color\n        outColor = pow(outColor, vec3(INV_GAMMA_SRGB));\n\n        return outColor;\n      }\n      "])))):1!==e.pbrMode&&2!==e.pbrMode||(G.code.add(d.glsl(v||(v=t.__makeTemplateObject(["\n      const float fillLightIntensity = 0.25;\n      const float horizonLightDiffusion = 0.4;\n      const float additionalAmbientIrradianceFactor = 0.02;\n\n      vec3 evaluateSceneLightingPBR(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight, vec3 viewDir, vec3 normalGround, vec3 mrr, vec3 _emission, float additionalAmbientIrradiance)\n      {\n        // Calculate half vector between view and light direction\n        vec3 viewDirection = -viewDir;\n        vec3 mainLightDirection = -lightingMainDirection;\n        vec3 h = normalize(viewDirection + mainLightDirection);\n\n        PBRShadingInfo inputs;\n        inputs.NdotL = clamp(dot(normal, mainLightDirection), 0.001, 1.0);\n        inputs.NdotV = clamp(abs(dot(normal, viewDirection)), 0.001, 1.0);\n        inputs.NdotH = clamp(dot(normal, h), 0.0, 1.0);\n        inputs.VdotH = clamp(dot(viewDirection, h), 0.0, 1.0);\n        inputs.NdotNG = clamp(dot(normal, normalGround), -1.0, 1.0);\n        vec3 reflectedView = normalize(reflect(viewDirection, normal));\n        inputs.RdotNG = clamp(dot(reflectedView, normalGround), -1.0, 1.0);\n\n        inputs.albedoLinear = pow(albedo, vec3(GAMMA_SRGB));\n        inputs.ssao = ssao;\n\n        inputs.metalness = mrr[0];\n        inputs.roughness = clamp(mrr[1] * mrr[1], 0.001, 0.99);\n      "],["\n      const float fillLightIntensity = 0.25;\n      const float horizonLightDiffusion = 0.4;\n      const float additionalAmbientIrradianceFactor = 0.02;\n\n      vec3 evaluateSceneLightingPBR(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight, vec3 viewDir, vec3 normalGround, vec3 mrr, vec3 _emission, float additionalAmbientIrradiance)\n      {\n        // Calculate half vector between view and light direction\n        vec3 viewDirection = -viewDir;\n        vec3 mainLightDirection = -lightingMainDirection;\n        vec3 h = normalize(viewDirection + mainLightDirection);\n\n        PBRShadingInfo inputs;\n        inputs.NdotL = clamp(dot(normal, mainLightDirection), 0.001, 1.0);\n        inputs.NdotV = clamp(abs(dot(normal, viewDirection)), 0.001, 1.0);\n        inputs.NdotH = clamp(dot(normal, h), 0.0, 1.0);\n        inputs.VdotH = clamp(dot(viewDirection, h), 0.0, 1.0);\n        inputs.NdotNG = clamp(dot(normal, normalGround), -1.0, 1.0);\n        vec3 reflectedView = normalize(reflect(viewDirection, normal));\n        inputs.RdotNG = clamp(dot(reflectedView, normalGround), -1.0, 1.0);\n\n        inputs.albedoLinear = pow(albedo, vec3(GAMMA_SRGB));\n        inputs.ssao = ssao;\n\n        inputs.metalness = mrr[0];\n        inputs.roughness = clamp(mrr[1] * mrr[1], 0.001, 0.99);\n      "])))),G.code.add(d.glsl(f||(f=t.__makeTemplateObject(["\n        inputs.f0 = (0.16 * mrr[2] * mrr[2]) * (1.0 - inputs.metalness) + inputs.albedoLinear * inputs.metalness;\n        inputs.f90 = vec3(clamp(dot(inputs.f0, vec3(50.0 * 0.33)), 0.0, 1.0)); // more accurate then using  f90 = 1.0\n        inputs.diffuseColor = inputs.albedoLinear * (vec3(1.0) - inputs.f0) * (1.0 - inputs.metalness);\n      "],["\n        inputs.f0 = (0.16 * mrr[2] * mrr[2]) * (1.0 - inputs.metalness) + inputs.albedoLinear * inputs.metalness;\n        inputs.f90 = vec3(clamp(dot(inputs.f0, vec3(50.0 * 0.33)), 0.0, 1.0)); // more accurate then using  f90 = 1.0\n        inputs.diffuseColor = inputs.albedoLinear * (vec3(1.0) - inputs.f0) * (1.0 - inputs.metalness);\n      "])))),G.code.add(d.glsl(b||(b=t.__makeTemplateObject(["\n        vec3 ambientDir = vec3(5.0 * normalGround[1] - normalGround[0] * normalGround[2], - 5.0 * normalGround[0] - normalGround[2] * normalGround[1], normalGround[1] * normalGround[1] + normalGround[0] * normalGround[0]);\n        ambientDir = ambientDir != vec3(0.0)? normalize(ambientDir) : normalize(vec3(5.0, -1.0, 0.0));\n\n        inputs.NdotAmbDir = abs(dot(normal, ambientDir));\n\n        // Calculate the irradiance components: sun, fill lights and the sky.\n        vec3 mainLightIrradianceComponent  = inputs.NdotL * (1.0 - shadow) * lightingMainIntensity;\n        vec3 fillLightsIrradianceComponent = inputs.NdotAmbDir * lightingMainIntensity * fillLightIntensity;\n        // calculateAmbientIrradiance for localView and additionalLight for gloabalView\n        vec3 ambientLightIrradianceComponent = calculateAmbientIrradiance(normal, ssao) + additionalLight;\n\n        // Assemble the overall irradiance of the sky that illuminates the surface\n        inputs.skyIrradianceToSurface    = ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;\n        // Assemble the overall irradiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky irradiance by the groundReflectance\n        inputs.groundIrradianceToSurface = GROUND_REFLECTANCE * ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;\n      "],["\n        vec3 ambientDir = vec3(5.0 * normalGround[1] - normalGround[0] * normalGround[2], - 5.0 * normalGround[0] - normalGround[2] * normalGround[1], normalGround[1] * normalGround[1] + normalGround[0] * normalGround[0]);\n        ambientDir = ambientDir != vec3(0.0)? normalize(ambientDir) : normalize(vec3(5.0, -1.0, 0.0));\n\n        inputs.NdotAmbDir = abs(dot(normal, ambientDir));\n\n        // Calculate the irradiance components: sun, fill lights and the sky.\n        vec3 mainLightIrradianceComponent  = inputs.NdotL * (1.0 - shadow) * lightingMainIntensity;\n        vec3 fillLightsIrradianceComponent = inputs.NdotAmbDir * lightingMainIntensity * fillLightIntensity;\n        // calculateAmbientIrradiance for localView and additionalLight for gloabalView\n        vec3 ambientLightIrradianceComponent = calculateAmbientIrradiance(normal, ssao) + additionalLight;\n\n        // Assemble the overall irradiance of the sky that illuminates the surface\n        inputs.skyIrradianceToSurface    = ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;\n        // Assemble the overall irradiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky irradiance by the groundReflectance\n        inputs.groundIrradianceToSurface = GROUND_REFLECTANCE * ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;\n      "])))),G.code.add(d.glsl(L||(L=t.__makeTemplateObject(["\n        vec3 horizonRingDir = inputs.RdotNG * normalGround - reflectedView;\n        vec3 horizonRingH = normalize(viewDirection + horizonRingDir);\n        inputs.NdotH_Horizon = dot(normal, horizonRingH);\n\n        vec3 mainLightRadianceComponent  = normalDistribution(inputs.NdotH, inputs.roughness) * lightingMainIntensity * (1.0 - shadow);\n        vec3 horizonLightRadianceComponent = normalDistribution(inputs.NdotH_Horizon, min(inputs.roughness + horizonLightDiffusion, 1.0)) * lightingMainIntensity * fillLightIntensity;\n        vec3 ambientLightRadianceComponent = calculateAmbientRadiance(ssao) + additionalLight; // calculateAmbientRadiance for localView and additionalLight for gloabalView\n\n        // Assemble the overall radiance of the sky that illuminates the surface\n        inputs.skyRadianceToSurface    =  ambientLightRadianceComponent + mainLightRadianceComponent + horizonLightRadianceComponent;\n        // Assemble the overall radiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky radince by the groundReflectance\n        inputs.groundRadianceToSurface = GROUND_REFLECTANCE * (ambientLightRadianceComponent + horizonLightRadianceComponent) + mainLightRadianceComponent;\n\n        // Calculate average ambient radiance - this is used int the gamut mapping part to deduce the black level that is soft compressed\n        inputs.averageAmbientRadiance = ambientLightIrradianceComponent[1] * (1.0 + GROUND_REFLECTANCE[1]);\n        "],["\n        vec3 horizonRingDir = inputs.RdotNG * normalGround - reflectedView;\n        vec3 horizonRingH = normalize(viewDirection + horizonRingDir);\n        inputs.NdotH_Horizon = dot(normal, horizonRingH);\n\n        vec3 mainLightRadianceComponent  = normalDistribution(inputs.NdotH, inputs.roughness) * lightingMainIntensity * (1.0 - shadow);\n        vec3 horizonLightRadianceComponent = normalDistribution(inputs.NdotH_Horizon, min(inputs.roughness + horizonLightDiffusion, 1.0)) * lightingMainIntensity * fillLightIntensity;\n        vec3 ambientLightRadianceComponent = calculateAmbientRadiance(ssao) + additionalLight; // calculateAmbientRadiance for localView and additionalLight for gloabalView\n\n        // Assemble the overall radiance of the sky that illuminates the surface\n        inputs.skyRadianceToSurface    =  ambientLightRadianceComponent + mainLightRadianceComponent + horizonLightRadianceComponent;\n        // Assemble the overall radiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky radince by the groundReflectance\n        inputs.groundRadianceToSurface = GROUND_REFLECTANCE * (ambientLightRadianceComponent + horizonLightRadianceComponent) + mainLightRadianceComponent;\n\n        // Calculate average ambient radiance - this is used int the gamut mapping part to deduce the black level that is soft compressed\n        inputs.averageAmbientRadiance = ambientLightIrradianceComponent[1] * (1.0 + GROUND_REFLECTANCE[1]);\n        "])))),G.code.add(d.glsl(A||(A=t.__makeTemplateObject(["\n        vec3 reflectedColorComponent = evaluateEnvironmentIllumination(inputs);\n        vec3 additionalMaterialReflectanceComponent = inputs.albedoLinear * additionalAmbientIrradiance;\n        vec3 emissionComponent = pow(_emission, vec3(GAMMA_SRGB));\n        vec3 outColorLinear = reflectedColorComponent + additionalMaterialReflectanceComponent + emissionComponent;\n        ","\n        return outColor;\n      }\n    "],["\n        vec3 reflectedColorComponent = evaluateEnvironmentIllumination(inputs);\n        vec3 additionalMaterialReflectanceComponent = inputs.albedoLinear * additionalAmbientIrradiance;\n        vec3 emissionComponent = pow(_emission, vec3(GAMMA_SRGB));\n        vec3 outColorLinear = reflectedColorComponent + additionalMaterialReflectanceComponent + emissionComponent;\n        ","\n        return outColor;\n      }\n    "])),2===e.pbrMode?d.glsl(C||(C=t.__makeTemplateObject(["vec3 outColor = pow(outColorLinear - 0.005 * inputs.averageAmbientRadiance, vec3(INV_GAMMA_SRGB));"],["vec3 outColor = pow(outColorLinear - 0.005 * inputs.averageAmbientRadiance, vec3(INV_GAMMA_SRGB));"]))):d.glsl(R||(R=t.__makeTemplateObject(["vec3 outColor = pow(blackLevelSoftCompression(outColorLinear, inputs), vec3(INV_GAMMA_SRGB));"],["vec3 outColor = pow(blackLevelSoftCompression(outColorLinear, inputs), vec3(INV_GAMMA_SRGB));"])))))))}}));
+        float dotVal = dotNormalization * (clamp(-dot(normal, lightingMainDirection), 1.0 - dotRange, 1.0) - minDot) * (1.0 / dotRange);
+      #else
+        float dotVal = clamp(-dot(normal, lightingMainDirection), 0.0, 1.0);
+      #endif
+
+      // move lighting towards (1.0, 1.0, 1.0) if requested
+      dotVal = mix(dotVal, 1.0, lightingFixedFactor);
+
+      vec3 mainLight = (1.0 - shadow) * lightingMainIntensity * dotVal;
+      vec3 ambientLight = calculateAmbientIrradiance(normal, ssao);
+
+      // inverse gamma correction on the albedo color
+      vec3 albedoGammaC = pow(albedo, vec3(GAMMA_SRGB));
+
+      // physically correct BRDF normalizes by PI
+      vec3 totalLight = mainLight + ambientLight + additionalLight;
+      totalLight = min(totalLight, vec3(PI));
+      vec3 outColor = vec3((albedoGammaC / PI) * (totalLight));
+
+      // apply gamma correction to the computed color
+      outColor = pow(outColor, vec3(INV_GAMMA_SRGB));
+
+      return outColor;
+    }
+  `):(1===c.viewingMode?d.code.add(i.glsl`
+      float _oldHeuristicLighting(vec3 vPosWorld) {
+        vec3 shadingNormalWorld = normalize(vPosWorld);
+        float vndl = -dot(shadingNormalWorld, lightingMainDirection);
+
+        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));
+      }
+    `):d.code.add(i.glsl`
+      float _oldHeuristicLighting(vec3 vPosWorld) {
+        float vndl = -dot(vec3(0.0, 0.0, 1.0), lightingMainDirection);
+        return smoothstep(0.0, 1.0, clamp(vndl * 2.5, 0.0, 1.0));
+      }
+    `),d.code.add(i.glsl`
+      vec3 evaluateAdditionalLighting(float ambientOcclusion, vec3 vPosWorld) {
+        float additionalAmbientScale = _oldHeuristicLighting(vPosWorld);
+        return (1.0 - ambientOcclusion) * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor * lightingMainIntensity;
+      }
+    `),0===c.pbrMode||4===c.pbrMode?d.code.add(i.glsl`
+      vec3 evaluateSceneLighting(vec3 normalWorld, vec3 baseColor, float mainLightShadow, float ambientOcclusion, vec3 additionalLight)
+      {
+        vec3 mainLighting = evaluateMainLighting(normalWorld, mainLightShadow);
+        vec3 ambientLighting = calculateAmbientIrradiance(normalWorld, ambientOcclusion);
+        // inverse gamma correction on the base color
+        vec3 baseColorLinear = pow(baseColor, vec3(GAMMA_SRGB));
+
+        // physically correct BRDF normalizes by PI
+        vec3 totalLight = mainLighting + ambientLighting + additionalLight;
+        totalLight = min(totalLight, vec3(PI));
+        vec3 outColor = vec3((baseColorLinear / PI) * totalLight);
+
+        // apply gamma correction to the computed color
+        outColor = pow(outColor, vec3(INV_GAMMA_SRGB));
+
+        return outColor;
+      }
+      `):1!==c.pbrMode&&2!==c.pbrMode||(d.code.add(i.glsl`
+      const float fillLightIntensity = 0.25;
+      const float horizonLightDiffusion = 0.4;
+      const float additionalAmbientIrradianceFactor = 0.02;
+
+      vec3 evaluateSceneLightingPBR(vec3 normal, vec3 albedo, float shadow, float ssao, vec3 additionalLight, vec3 viewDir, vec3 normalGround, vec3 mrr, vec3 _emission, float additionalAmbientIrradiance)
+      {
+        // Calculate half vector between view and light direction
+        vec3 viewDirection = -viewDir;
+        vec3 mainLightDirection = -lightingMainDirection;
+        vec3 h = normalize(viewDirection + mainLightDirection);
+
+        PBRShadingInfo inputs;
+        inputs.NdotL = clamp(dot(normal, mainLightDirection), 0.001, 1.0);
+        inputs.NdotV = clamp(abs(dot(normal, viewDirection)), 0.001, 1.0);
+        inputs.NdotH = clamp(dot(normal, h), 0.0, 1.0);
+        inputs.VdotH = clamp(dot(viewDirection, h), 0.0, 1.0);
+        inputs.NdotNG = clamp(dot(normal, normalGround), -1.0, 1.0);
+        vec3 reflectedView = normalize(reflect(viewDirection, normal));
+        inputs.RdotNG = clamp(dot(reflectedView, normalGround), -1.0, 1.0);
+
+        inputs.albedoLinear = pow(albedo, vec3(GAMMA_SRGB));
+        inputs.ssao = ssao;
+
+        inputs.metalness = mrr[0];
+        inputs.roughness = clamp(mrr[1] * mrr[1], 0.001, 0.99);
+      `),d.code.add(i.glsl`
+        inputs.f0 = (0.16 * mrr[2] * mrr[2]) * (1.0 - inputs.metalness) + inputs.albedoLinear * inputs.metalness;
+        inputs.f90 = vec3(clamp(dot(inputs.f0, vec3(50.0 * 0.33)), 0.0, 1.0)); // more accurate then using  f90 = 1.0
+        inputs.diffuseColor = inputs.albedoLinear * (vec3(1.0) - inputs.f0) * (1.0 - inputs.metalness);
+      `),d.code.add(i.glsl`
+        vec3 ambientDir = vec3(5.0 * normalGround[1] - normalGround[0] * normalGround[2], - 5.0 * normalGround[0] - normalGround[2] * normalGround[1], normalGround[1] * normalGround[1] + normalGround[0] * normalGround[0]);
+        ambientDir = ambientDir != vec3(0.0)? normalize(ambientDir) : normalize(vec3(5.0, -1.0, 0.0));
+
+        inputs.NdotAmbDir = abs(dot(normal, ambientDir));
+
+        // Calculate the irradiance components: sun, fill lights and the sky.
+        vec3 mainLightIrradianceComponent  = inputs.NdotL * (1.0 - shadow) * lightingMainIntensity;
+        vec3 fillLightsIrradianceComponent = inputs.NdotAmbDir * lightingMainIntensity * fillLightIntensity;
+        // calculateAmbientIrradiance for localView and additionalLight for gloabalView
+        vec3 ambientLightIrradianceComponent = calculateAmbientIrradiance(normal, ssao) + additionalLight;
+
+        // Assemble the overall irradiance of the sky that illuminates the surface
+        inputs.skyIrradianceToSurface    = ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;
+        // Assemble the overall irradiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky irradiance by the groundReflectance
+        inputs.groundIrradianceToSurface = GROUND_REFLECTANCE * ambientLightIrradianceComponent + mainLightIrradianceComponent + fillLightsIrradianceComponent ;
+      `),d.code.add(i.glsl`
+        vec3 horizonRingDir = inputs.RdotNG * normalGround - reflectedView;
+        vec3 horizonRingH = normalize(viewDirection + horizonRingDir);
+        inputs.NdotH_Horizon = dot(normal, horizonRingH);
+
+        vec3 mainLightRadianceComponent  = normalDistribution(inputs.NdotH, inputs.roughness) * lightingMainIntensity * (1.0 - shadow);
+        vec3 horizonLightRadianceComponent = normalDistribution(inputs.NdotH_Horizon, min(inputs.roughness + horizonLightDiffusion, 1.0)) * lightingMainIntensity * fillLightIntensity;
+        vec3 ambientLightRadianceComponent = calculateAmbientRadiance(ssao) + additionalLight; // calculateAmbientRadiance for localView and additionalLight for gloabalView
+
+        // Assemble the overall radiance of the sky that illuminates the surface
+        inputs.skyRadianceToSurface    =  ambientLightRadianceComponent + mainLightRadianceComponent + horizonLightRadianceComponent;
+        // Assemble the overall radiance of the ground that illuminates the surface. for this we use the simple model that changes only the sky radince by the groundReflectance
+        inputs.groundRadianceToSurface = GROUND_REFLECTANCE * (ambientLightRadianceComponent + horizonLightRadianceComponent) + mainLightRadianceComponent;
+
+        // Calculate average ambient radiance - this is used int the gamut mapping part to deduce the black level that is soft compressed
+        inputs.averageAmbientRadiance = ambientLightIrradianceComponent[1] * (1.0 + GROUND_REFLECTANCE[1]);
+        `),d.code.add(i.glsl`
+        vec3 reflectedColorComponent = evaluateEnvironmentIllumination(inputs);
+        vec3 additionalMaterialReflectanceComponent = inputs.albedoLinear * additionalAmbientIrradiance;
+        vec3 emissionComponent = pow(_emission, vec3(GAMMA_SRGB));
+        vec3 outColorLinear = reflectedColorComponent + additionalMaterialReflectanceComponent + emissionComponent;
+        ${2===c.pbrMode?i.glsl`vec3 outColor = pow(max(vec3(0.0), outColorLinear - 0.005 * inputs.averageAmbientRadiance), vec3(INV_GAMMA_SRGB));`:i.glsl`vec3 outColor = pow(blackLevelSoftCompression(outColorLinear, inputs), vec3(INV_GAMMA_SRGB));`}
+        return outColor;
+      }
+    `)))},Object.defineProperty(e,"__esModule",{value:!0})}));

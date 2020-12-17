@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../handleUtils","../lang","../maybe"],(function(r,e,t,n,a){"use strict";function i(r,e,t){return e?Object.keys(e).reduce((function(r,o){var u=null,l="merge";if(t&&(u=t.path?t.path+"."+o:o,l=t.policy(u)),"replace"===l)return r[o]=e[o],r;if(void 0===r[o])return r[o]=n.clone(e[o]),r;var s=r[o],c=e[o];if(s===c)return r;if(Array.isArray(c)||Array.isArray(r))s=s?Array.isArray(s)?r[o]=s.concat():r[o]=[s]:r[o]=[],c&&(Array.isArray(c)||(c=[c]),c.forEach((function(r){-1===s.indexOf(r)&&s.push(r)})));else if(c&&"object"==typeof c)if(t){var f=t.path;t.path=a.assumeNonNull(u),r[o]=i(s,c,t),t.path=f}else r[o]=i(s,c,null);else r.hasOwnProperty(o)&&!e.hasOwnProperty(o)||(r[o]=c);return r}),r||{}):r}function o(r){return Array.isArray(r)?r:r.split(".")}function u(r){if(Array.isArray(r)||r.indexOf(",")>-1){for(var e=Array.isArray(r)?r:r.split(","),t=0;t<e.length;t++)e[t]=e[t].trim();return 1===e.length?e[0]:e}return r.trim()}Object.defineProperty(e,"__esModule",{value:!0}),e.once=e.parse=e.parseConditionalPath=e.splitPath=e.pathToArray=e.pathToStringOrArray=e.merge=e.isPropertyDeclared=e.getProperties=void 0,e.getProperties=function(r){return r?r.__accessor__?r.__accessor__:r.propertyInvalidated?r:null:null},e.isPropertyDeclared=function(r,e){return null!=r&&r.metadatas&&null!=r.metadatas[e]},e.merge=function(r,e,t){return i(r,e,t?{policy:t,path:""}:null)},e.pathToStringOrArray=function(r){return r?"string"==typeof r&&-1===r.indexOf(".")?r:o(r):r},e.pathToArray=o,e.splitPath=u,e.parseConditionalPath=function(r){if(-1===r.indexOf("?"))return null;for(var e=o(r),t=new Array(e.length),n=0;n<e.length;n++){var a=e[n];t[n]="?"===a[a.length-1],t[n]&&(e[n]=a.slice(0,-1))}return{fullPath:e.join("."),conditional:t}},e.parse=function(r,e,n,a){var i=u(e);if(Array.isArray(i)){var o=i.map((function(e){return a(r,e.trim(),n)}));return t.handlesGroup(o)}return a(r,i.trim(),n)},e.once=function(r){var e=!1;return function(){e||(e=!0,r())}}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../lang","../maybe","../handleUtils"],(function(r,n,t,e){"use strict";function i(r){return r?r.__accessor__?r.__accessor__:r.propertyInvalidated?r:null:null}function o(r,e,i){return e?Object.keys(e).reduce((function(r,a){let u=null,l="merge";if(i&&(u=i.path?`${i.path}.${a}`:a,l=i.policy(u)),"replace"===l)return r[a]=e[a],r;if(void 0===r[a])return r[a]=n.clone(e[a]),r;let s=r[a],c=e[a];if(s===c)return r;if(Array.isArray(c)||Array.isArray(r))s=s?Array.isArray(s)?r[a]=s.concat():r[a]=[s]:r[a]=[],c&&(Array.isArray(c)||(c=[c]),c.forEach((r=>{-1===s.indexOf(r)&&s.push(r)})));else if(c&&"object"==typeof c)if(i){const n=i.path;i.path=t.assumeNonNull(u),r[a]=o(s,c,i),i.path=n}else r[a]=o(s,c,null);else r.hasOwnProperty(a)&&!e.hasOwnProperty(a)||(r[a]=c);return r}),r||{}):r}function a(r){return Array.isArray(r)?r:r.split(".")}function u(r){return r.indexOf(",")>-1?r.split(",").map((r=>r.trim())):[r.trim()]}function l(r){if(Array.isArray(r)){const n=[];for(const t of r)n.push(...u(t));return n}return u(r)}r.getDependsInfo=function(r,n,t){const e=i(r);return e?e.getDependsInfo(r,n,t,""):""},r.getProperties=i,r.isPropertyDeclared=function(r,n){return null!=r&&r.metadatas&&null!=r.metadatas[n]},r.merge=function(r,n,t){if(t){return o(r,n,{policy:t,path:""})}return o(r,n,null)},r.once=function(r){let n=!1;return()=>{n||(n=!0,r())}},r.parse=function(r,n,t,i){const o=l(n);if(1!==o.length){const n=o.map((n=>i(r,n,t)));return e.handlesGroup(n)}return i(r,o[0],t)},r.parseConditionalPath=function(r){if(-1===r.indexOf("?"))return null;const n=a(r),t=new Array(n.length);for(let r=0;r<n.length;r++){const e=n[r];t[r]="?"===e[e.length-1],t[r]&&(n[r]=e.slice(0,-1))}return{fullPath:n.join("."),conditional:t}},r.pathToArray=a,r.pathToStringOrArray=function(r){return r?"string"==typeof r&&-1===r.indexOf(".")?r:a(r):r},r.splitPath=l,Object.defineProperty(r,"__esModule",{value:!0})}));

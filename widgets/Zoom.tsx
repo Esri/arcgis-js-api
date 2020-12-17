@@ -32,19 +32,19 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
 
 // esri.widgets.Zoom
-import IconButton = require("esri/widgets/Zoom/IconButton");
-import ZoomViewModel = require("esri/widgets/Zoom/ZoomViewModel");
+import IconButton from "esri/widgets/Zoom/IconButton";
+import ZoomViewModel from "esri/widgets/Zoom/ZoomViewModel";
 
 // esri.widgets.Zoom.t9n
 import type ZoomMessages from "esri/widgets/Zoom/t9n/Zoom";
@@ -270,4 +270,4 @@ class Zoom extends Widget {
   }
 }
 
-export = Zoom;
+export default Zoom;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","./Accessor","./Handles","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass","../views/support/WatchUpdatingTracking"],(function(e,n,t,r,o,s,a,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.HandleOwner=n.HandleOwnerMixin=void 0,n.HandleOwnerMixin=function(e){return function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(n,e),n.prototype.destroy=function(){this.destroyed||(this.handles.destroy(),this.updatingHandles.destroy())},Object.defineProperty(n.prototype,"handles",{get:function(){return this._get("handles")||new o},enumerable:!1,configurable:!0}),Object.defineProperty(n.prototype,"updatingHandles",{get:function(){return this._get("updatingHandles")||new i.WatchUpdatingTracking},enumerable:!1,configurable:!0}),t.__decorate([s.property({readOnly:!0})],n.prototype,"handles",null),t.__decorate([s.property({readOnly:!0})],n.prototype,"updatingHandles",null),n=t.__decorate([a.subclass("esri.core.HandleOwner")],n)}(e)};var d=function(e){function n(){return null!==e&&e.apply(this,arguments)||this}return t.__extends(n,e),n=t.__decorate([a.subclass("esri.core.HandleOwner")],n)}(n.HandleOwnerMixin(r));n.HandleOwner=d}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass","./Accessor","./Handles","../views/support/WatchUpdatingTracking"],(function(e,t,n,r,s,o,a,i){"use strict";const d=e=>{let o=function(e){function n(){return e.apply(this,arguments)||this}return t._inheritsLoose(n,e),n.prototype.destroy=function(){this.destroyed||(this.handles.destroy(),this.updatingHandles.destroy())},t._createClass(n,[{key:"handles",get:function(){return this._get("handles")||new a}},{key:"updatingHandles",get:function(){return this._get("updatingHandles")||new i.WatchUpdatingTracking}}]),n}(e);return n.__decorate([r.property({readOnly:!0})],o.prototype,"handles",null),n.__decorate([r.property({readOnly:!0})],o.prototype,"updatingHandles",null),o=n.__decorate([s.subclass("esri.core.HandleOwner")],o),o};e.HandleOwner=function(e){function n(){return e.apply(this,arguments)||this}return t._inheritsLoose(n,e),n}(d(o)),e.HandleOwner=n.__decorate([s.subclass("esri.core.HandleOwner")],e.HandleOwner),e.HandleOwnerMixin=d,Object.defineProperty(e,"__esModule",{value:!0})}));

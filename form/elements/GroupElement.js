@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/lang","../../core/accessorSupport/decorators","../../core/accessorSupport/decorators/cast","../../core/accessorSupport/decorators/writer","./Element","../support/elements"],(function(e,t,r,o,n,s,i,p,l){"use strict";var a=function(e){function t(t){var r=e.call(this,t)||this;return r.elements=null,r.initialState="expanded",r.type="group",r}var p;return r.__extends(t,e),p=t,t.prototype.castElements=function(e){return l.ensureType(e,c,!1)},t.prototype.readElements=function(e,t){return l.fromJSON(t.formElements,c,!1)},t.prototype.writeElements=function(e,t){t.formElements=l.toJSON(e,c,!1)},t.prototype.clone=function(){return new p({description:this.description,elements:o.clone(this.elements),initialState:this.initialState,label:this.label,visibilityExpression:this.visibilityExpression})},r.__decorate([n.property({json:{write:!0}})],t.prototype,"elements",void 0),r.__decorate([s.cast("elements")],t.prototype,"castElements",null),r.__decorate([n.reader("elements",["formElements"])],t.prototype,"readElements",null),r.__decorate([i.writer("elements")],t.prototype,"writeElements",null),r.__decorate([n.property({type:["collapsed","expanded"],json:{default:"expanded",write:!0}})],t.prototype,"initialState",void 0),r.__decorate([n.property({type:String,json:{read:!1,write:!0}})],t.prototype,"type",void 0),t=p=r.__decorate([n.subclass("esri.form.elements.GroupElement")],t)}(p.Element),c=l.buildTypeMaps(a);return a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/cast","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./Element","../support/elements"],(function(e,t,r,o,s,n,i,l,c,p,a,u,d,m,y){"use strict";var _;let E=_=function(t){function r(e){var r;return(r=t.call(this,e)||this).elements=null,r.initialState="expanded",r.type="group",r}e._inheritsLoose(r,t);var s=r.prototype;return s.castElements=function(e){return y.ensureType(e,f,!1)},s.readElements=function(e,t){return y.fromJSON(t.formElements,f,!1)},s.writeElements=function(e,t){t.formElements=y.toJSON(e,f,!1)},s.clone=function(){return new _({description:this.description,elements:o.clone(this.elements),initialState:this.initialState,label:this.label,visibilityExpression:this.visibilityExpression})},r}(m.Element);t.__decorate([n.property({json:{write:!0}})],E.prototype,"elements",void 0),t.__decorate([i.cast("elements")],E.prototype,"castElements",null),t.__decorate([l.reader("elements",["formElements"])],E.prototype,"readElements",null),t.__decorate([p.writer("elements")],E.prototype,"writeElements",null),t.__decorate([n.property({type:["collapsed","expanded"],json:{default:"expanded",write:!0}})],E.prototype,"initialState",void 0),t.__decorate([n.property({type:String,json:{read:!1,write:!0}})],E.prototype,"type",void 0),E=_=t.__decorate([c.subclass("esri.form.elements.GroupElement")],E);const f=y.buildTypeMaps(E);return E}));

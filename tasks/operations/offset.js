@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../core/jsonMap","../../geometry/support/jsonUtils"],(function(e,t,o,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.offsetToRESTParameters=void 0;var r=new o.default({esriGeometryOffsetBevelled:"bevelled",esriGeometryOffsetMitered:"mitered",esriGeometryOffsetRounded:"rounded"}),f=new o.default({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});t.offsetToRESTParameters=function(e){var t=e.toJSON(),o=t.geometries,i=t.bevelRatio,n=t.offsetDistance,a=t.offsetHow,l=t.offsetUnit,d={bevelRatio:i,offsetDistance:n};return o&&o.length&&(d.geometries=JSON.stringify({geometryType:s.getJsonType(o[0]),geometries:o}),d.sr=JSON.stringify(o[0].spatialReference)),a&&(d.offsetHow=r.toJSON(a)),l&&(d.offsetUnit=f.toJSON(l)),d}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/jsonMap","../../geometry/support/jsonUtils"],(function(e,t,s){"use strict";const o=new t.JSONMap({esriGeometryOffsetBevelled:"bevelled",esriGeometryOffsetMitered:"mitered",esriGeometryOffsetRounded:"rounded"}),r=new t.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});e.offsetToRESTParameters=function(e){const{geometries:t,bevelRatio:i,offsetDistance:f,offsetHow:n,offsetUnit:a}=e.toJSON(),l={bevelRatio:i,offsetDistance:f};return t&&t.length&&(l.geometries=JSON.stringify({geometryType:s.getJsonType(t[0]),geometries:t}),l.sr=JSON.stringify(t[0].spatialReference)),n&&(l.offsetHow=o.toJSON(n)),a&&(l.offsetUnit=r.toJSON(a)),l},Object.defineProperty(e,"__esModule",{value:!0})}));

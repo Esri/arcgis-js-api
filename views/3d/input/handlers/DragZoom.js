@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../core/screenUtils","../../state/controllers/global/ZoomController","../../state/controllers/local/ZoomController","../../../input/InputHandler","../../../input/handlers/support"],(function(e,r,t,o,n,a,l,i){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.DragZoom=void 0;var s=function(e){function r(r,t,o){var n=e.call(this,!0)||this;return n.view=r,n.pointerAction=t,n.registerIncoming("drag",o,(function(e){return n.handleDrag(e)})),n}return t.__extends(r,e),r.prototype.handleDrag=function(e){var r=e.data;if(!(r.pointers.size>1)&&i.eventMatchesMousePointerAction(e.data,this.pointerAction)){var t=o.createScreenPointArray(r.center.x,r.center.y);switch(r.action){case"start":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.view.state.isGlobal?this.cameraController=new n.ZoomController({view:this.view}):this.cameraController=new a.ZoomController({view:this.view}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(t);break;case"update":this.cameraController&&this.cameraController.update(t);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}e.stopPropagation()}},r}(l.InputHandler);r.DragZoom=s}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../../input/handlers/support","../../state/controllers/global/ZoomController","../../state/controllers/local/ZoomController"],(function(e,t,r,o,n,a,l){"use strict";let i=function(e){function o(t,r,o){var n;return(n=e.call(this,!0)||this).view=t,n.pointerAction=r,n.registerIncoming("drag",o,(e=>n.handleDrag(e))),n}return t._inheritsLoose(o,e),o.prototype.handleDrag=function(e){const t=e.data;if(t.pointers.size>1)return;if(!n.eventMatchesMousePointerAction(e.data,this.pointerAction))return;const o=r.createScreenPointArray(t.center.x,t.center.y);switch(t.action){case"start":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.view.state.isGlobal?this.cameraController=new a.ZoomController({view:this.view}):this.cameraController=new l.ZoomController({view:this.view}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(o);break;case"update":this.cameraController&&this.cameraController.update(o);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}e.stopPropagation()},o}(o.InputHandler);e.DragZoom=i,Object.defineProperty(e,"__esModule",{value:!0})}));

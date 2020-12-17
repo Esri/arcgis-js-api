@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../Viewpoint","../core/Accessor","../core/lang","../core/accessorSupport/decorators","../geometry/SpatialReference","../webdoc/RangeInfo","./background/ColorBackground"],(function(e,r,o,t,n,i,p,a,c,s){"use strict";return function(e){function r(r){var o=e.call(this,r)||this;return o.background=null,o.rangeInfo=null,o.spatialReference=null,o.viewpoint=null,o}var n;return o.__extends(r,e),n=r,r.prototype.clone=function(){return new n(i.clone({background:this.background,rangeInfo:this.rangeInfo,spatialReference:this.spatialReference,viewpoint:this.viewpoint}))},o.__decorate([p.property({type:s})],r.prototype,"background",void 0),o.__decorate([p.property({type:c})],r.prototype,"rangeInfo",void 0),o.__decorate([p.property({type:a})],r.prototype,"spatialReference",void 0),o.__decorate([p.property({type:t})],r.prototype,"viewpoint",void 0),r=n=o.__decorate([p.subclass("esri.webmap.InitialViewProperties")],r)}(n)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Accessor","../geometry/SpatialReference","../Viewpoint","../webdoc/RangeInfo","./background/ColorBackground"],(function(e,r,o,t,n,c,p,i,s,a,u,l,d,g,y,f){"use strict";var _;let b=_=function(r){function o(e){var o;return(o=r.call(this,e)||this).background=null,o.rangeInfo=null,o.spatialReference=null,o.viewpoint=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new _(t.clone({background:this.background,rangeInfo:this.rangeInfo,spatialReference:this.spatialReference,viewpoint:this.viewpoint}))},o}(l);return r.__decorate([p.property({type:f})],b.prototype,"background",void 0),r.__decorate([p.property({type:y})],b.prototype,"rangeInfo",void 0),r.__decorate([p.property({type:d})],b.prototype,"spatialReference",void 0),r.__decorate([p.property({type:g})],b.prototype,"viewpoint",void 0),b=_=r.__decorate([i.subclass("esri.webmap.InitialViewProperties")],b),b}));

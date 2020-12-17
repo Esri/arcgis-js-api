@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","./VisualVariable","./support/ColorStop"],(function(e,t,o,r,n,i){"use strict";return function(e){function t(t){var o=e.call(this,t)||this;return o.type="color",o.normalizationField=null,o}var n;return o.__extends(t,e),n=t,Object.defineProperty(t.prototype,"cache",{get:function(){return{ipData:this._interpolateData(),hasExpression:!!this.valueExpression,compiledFunc:null}},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"stops",{set:function(e){e&&Array.isArray(e)&&(e=e.filter((function(e){return!!e}))).sort((function(e,t){return e.value-t.value})),this._set("stops",e)},enumerable:!1,configurable:!0}),t.prototype.clone=function(){return new n({field:this.field,normalizationField:this.normalizationField,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,stops:this.stops&&this.stops.map((function(e){return e.clone()})),legendOptions:this.legendOptions&&this.legendOptions.clone()})},t.prototype.getAttributeHash=function(){return e.prototype.getAttributeHash.call(this)+"-"+this.normalizationField},t.prototype._interpolateData=function(){return this.stops&&this.stops.map((function(e){return e.value||0}))},o.__decorate([r.property({readOnly:!0,dependsOn:["valueExpression","stops"]})],t.prototype,"cache",null),o.__decorate([r.property({type:["color"],json:{type:["colorInfo"]}})],t.prototype,"type",void 0),o.__decorate([r.property({type:String,json:{write:!0}})],t.prototype,"normalizationField",void 0),o.__decorate([r.property({type:[i],json:{write:!0}})],t.prototype,"stops",null),t=n=o.__decorate([r.subclass("esri.renderers.visualVariables.ColorVariable")],t)}(n)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./VisualVariable","./support/ColorStop"],(function(e,t,o,r,s,i,n,l,p,a,u,c){"use strict";var d;let h=d=function(t){function o(e){var o;return(o=t.call(this,e)||this).type="color",o.normalizationField=null,o}e._inheritsLoose(o,t);var r=o.prototype;return r.clone=function(){return new d({field:this.field,normalizationField:this.normalizationField,valueExpression:this.valueExpression,valueExpressionTitle:this.valueExpressionTitle,stops:this.stops&&this.stops.map((e=>e.clone())),legendOptions:this.legendOptions&&this.legendOptions.clone()})},r.getAttributeHash=function(){return`${t.prototype.getAttributeHash.call(this)}-${this.normalizationField}`},r._interpolateData=function(){return this.stops&&this.stops.map((e=>e.value||0))},e._createClass(o,[{key:"cache",get:function(){return{ipData:this._interpolateData(),hasExpression:!!this.valueExpression,compiledFunc:null}}},{key:"stops",set:function(e){e&&Array.isArray(e)&&(e=e.filter((e=>!!e))).sort(((e,t)=>e.value-t.value)),this._set("stops",e)}}]),o}(u);return t.__decorate([i.property({readOnly:!0,dependsOn:["valueExpression","stops"]})],h.prototype,"cache",null),t.__decorate([i.property({type:["color"],json:{type:["colorInfo"]}})],h.prototype,"type",void 0),t.__decorate([i.property({type:String,json:{write:!0}})],h.prototype,"normalizationField",void 0),t.__decorate([i.property({type:[c],json:{write:!0}})],h.prototype,"stops",null),h=d=t.__decorate([n.subclass("esri.renderers.visualVariables.ColorVariable")],h),h}));

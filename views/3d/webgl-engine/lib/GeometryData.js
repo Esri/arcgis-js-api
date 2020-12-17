@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","./geometryDataUtils","./Util"],(function(t,e,i,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.GeometryData=void 0;var n=function(){function t(e,i,r){void 0===i&&(i=t.DefaultIndices),void 0===r&&(r="triangle"),this.initialize(e,i,r)}return Object.defineProperty(t.prototype,"id",{get:function(){return this._id},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"vertexAttributes",{get:function(){return this._vertexAttributes},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"indices",{get:function(){return this._indices},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"indexCount",{get:function(){var t=r.getFirstObjectValue(this._indices);return null==t?0:t.length},enumerable:!1,configurable:!0}),Object.defineProperty(t.prototype,"primitiveType",{get:function(){return this._primitiveType},enumerable:!1,configurable:!0}),t.prototype.getVertexAttr=function(){return this.vertexAttributes},t.prototype.initialize=function(e,n,s){void 0===n&&(n=t.DefaultIndices),void 0===s&&(s="triangle");var o={};for(var u in e){var a=e[u],c=a.data,d=a.size;o[u]={data:c,size:d,offsetIdx:0,strideIdx:d}}if(n===t.DefaultIndices){var f=function(t){var e=r.getFirstObjectValue(t);if(null==e)return 0;return e.data.length/e.size}(o),p=i.generateDefaultIndexArray(f);for(var l in n={},o)n[l]=p}this._id=i.getNewId(),this._vertexAttributes=o,this._indices=n,this._primitiveType=s},t.prototype.toRenderData=function(){return{id:this._id.toString(),indices:this._indices,vertexAttr:this._vertexAttributes}},t.prototype.getIndices=function(t){return this._indices[t]},t.prototype.getAttribute=function(t){return this._vertexAttributes[t]},t.prototype.estimateGpuMemoryUsage=function(){var t=0;if(this._indices[r.VertexAttrConstants.POSITION]){var e=3;t+=this._indices[r.VertexAttrConstants.POSITION].length*e*4}if(this._indices[r.VertexAttrConstants.NORMAL]){e=3;t+=this._indices[r.VertexAttrConstants.NORMAL].length*e*4}if(this._indices[r.VertexAttrConstants.UV0]){e=2;t+=this._indices[r.VertexAttrConstants.UV0].length*e*4}if(this._indices[r.VertexAttrConstants.COLOR]){e=1;t+=this._indices[r.VertexAttrConstants.COLOR].length*e*4}return t},t.DefaultIndices={},t}();e.GeometryData=n}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./geometryDataUtils","./Util"],(function(t,e,i,n){"use strict";let s=function(){function t(e,i=t.DefaultIndices,n="triangle"){this.initialize(e,i,n)}var s=t.prototype;return s.getVertexAttr=function(){return this.vertexAttributes},s.initialize=function(e,s=t.DefaultIndices,r="triangle"){const c={};for(const t in e){const{data:i,size:n}=e[t];c[t]={data:i,size:n,offsetIdx:0,strideIdx:n}}if(s===t.DefaultIndices){const t=function(t){const e=n.getFirstObjectValue(t);if(null==e)return 0;return e.data.length/e.size}(c),e=i.generateDefaultIndexArray(t);s={};for(const t in c)s[t]=e}this._id=i.getNewId(),this._vertexAttributes=c,this._indices=s,this._primitiveType=r},s.toRenderData=function(){return{id:this._id.toString(),indices:this._indices,vertexAttr:this._vertexAttributes}},s.getIndices=function(t){return this._indices[t]},s.getAttribute=function(t){return this._vertexAttributes[t]},s.estimateGpuMemoryUsage=function(){let t=0;if(this._indices[n.VertexAttrConstants.POSITION]){const e=3;t+=this._indices[n.VertexAttrConstants.POSITION].length*e*4}if(this._indices[n.VertexAttrConstants.NORMAL]){const e=3;t+=this._indices[n.VertexAttrConstants.NORMAL].length*e*4}if(this._indices[n.VertexAttrConstants.UV0]){const e=2;t+=this._indices[n.VertexAttrConstants.UV0].length*e*4}if(this._indices[n.VertexAttrConstants.COLOR]){const e=1;t+=this._indices[n.VertexAttrConstants.COLOR].length*e*4}return t},e._createClass(t,[{key:"id",get:function(){return this._id}},{key:"vertexAttributes",get:function(){return this._vertexAttributes}},{key:"indices",get:function(){return this._indices}},{key:"indexCount",get:function(){const t=n.getFirstObjectValue(this._indices);return null==t?0:t.length}},{key:"primitiveType",get:function(){return this._primitiveType}}]),t}();s.DefaultIndices={},t.GeometryData=s,Object.defineProperty(t,"__esModule",{value:!0})}));

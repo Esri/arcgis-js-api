@@ -6,17 +6,17 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
-import Point = require("esri/geometry/Point");
+import Point from "esri/geometry/Point";
 
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Spinner
-import SpinnerViewModel = require("esri/widgets/Spinner/SpinnerViewModel");
+import SpinnerViewModel from "esri/widgets/Spinner/SpinnerViewModel";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
@@ -184,4 +184,4 @@ class Spinner extends Widget {
   }
 }
 
-export = Spinner;
+export default Spinner;

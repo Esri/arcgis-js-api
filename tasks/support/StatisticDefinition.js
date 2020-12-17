@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/jsonMap","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators"],(function(t,e,i,r,o,s,a){"use strict";var c=new r.default({count:"count",sum:"sum",min:"min",max:"max",avg:"avg",stddev:"stddev",var:"var",exceedslimit:"exceedslimit",percentile_cont:"percentile-continuous",percentile_disc:"percentile-discrete"});return function(t){function e(e){var i=t.call(this,e)||this;return i.maxPointCount=void 0,i.maxRecordCount=void 0,i.maxVertexCount=void 0,i.onStatisticField=null,i.outStatisticFieldName=null,i.statisticType=null,i.statisticParameters=null,i}var r;return i.__extends(e,t),r=e,e.prototype.writeStatisticParameters=function(t,e){"percentile-continuous"!==this.statisticType&&"percentile-discrete"!==this.statisticType||(e.statisticParameters=s.clone(t))},e.prototype.clone=function(){return new r({maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,statisticType:this.statisticType,statisticParameters:s.clone(this.statisticParameters)})},i.__decorate([a.property({type:Number,json:{write:!0}})],e.prototype,"maxPointCount",void 0),i.__decorate([a.property({type:Number,json:{write:!0}})],e.prototype,"maxRecordCount",void 0),i.__decorate([a.property({type:Number,json:{write:!0}})],e.prototype,"maxVertexCount",void 0),i.__decorate([a.property({type:String,json:{write:!0}})],e.prototype,"onStatisticField",void 0),i.__decorate([a.property({type:String,json:{write:!0}})],e.prototype,"outStatisticFieldName",void 0),i.__decorate([a.property({type:String,json:{read:{source:"statisticType",reader:c.read},write:{target:"statisticType",writer:c.write}}})],e.prototype,"statisticType",void 0),i.__decorate([a.property({type:Object})],e.prototype,"statisticParameters",void 0),i.__decorate([a.writer("statisticParameters")],e.prototype,"writeStatisticParameters",null),e=r=i.__decorate([a.subclass("esri.tasks.support.StatisticDefinition")],e)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(t,e,r,o,i,s,a,c,n,p,u,d,l,m){"use strict";var y;const S=new c.JSONMap({count:"count",sum:"sum",min:"min",max:"max",avg:"avg",stddev:"stddev",var:"var",exceedslimit:"exceedslimit",percentile_cont:"percentile-continuous",percentile_disc:"percentile-discrete"});let _=y=function(e){function r(t){var r;return(r=e.call(this,t)||this).maxPointCount=void 0,r.maxRecordCount=void 0,r.maxVertexCount=void 0,r.onStatisticField=null,r.outStatisticFieldName=null,r.statisticType=null,r.statisticParameters=null,r}t._inheritsLoose(r,e);var i=r.prototype;return i.writeStatisticParameters=function(t,e){"percentile-continuous"!==this.statisticType&&"percentile-discrete"!==this.statisticType||(e.statisticParameters=o.clone(t))},i.clone=function(){return new y({maxPointCount:this.maxPointCount,maxRecordCount:this.maxRecordCount,maxVertexCount:this.maxVertexCount,onStatisticField:this.onStatisticField,outStatisticFieldName:this.outStatisticFieldName,statisticType:this.statisticType,statisticParameters:o.clone(this.statisticParameters)})},r}(m.JSONSupport);return e.__decorate([a.property({type:Number,json:{write:!0}})],_.prototype,"maxPointCount",void 0),e.__decorate([a.property({type:Number,json:{write:!0}})],_.prototype,"maxRecordCount",void 0),e.__decorate([a.property({type:Number,json:{write:!0}})],_.prototype,"maxVertexCount",void 0),e.__decorate([a.property({type:String,json:{write:!0}})],_.prototype,"onStatisticField",void 0),e.__decorate([a.property({type:String,json:{write:!0}})],_.prototype,"outStatisticFieldName",void 0),e.__decorate([a.property({type:String,json:{read:{source:"statisticType",reader:S.read},write:{target:"statisticType",writer:S.write}}})],_.prototype,"statisticType",void 0),e.__decorate([a.property({type:Object})],_.prototype,"statisticParameters",void 0),e.__decorate([p.writer("statisticParameters")],_.prototype,"writeStatisticParameters",null),_=y=e.__decorate([n.subclass("esri.tasks.support.StatisticDefinition")],_),_}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/Identifiable","../../core/MultiOriginJSONSupport","../../core/accessorSupport/decorators","../support/commonProperties"],(function(e,r,t,o,i,p,n){"use strict";return function(e){function r(r){var t=e.call(this,r)||this;return t.title="",t.id=-1,t.modelName=null,t.isEmpty=null,t.visible=!0,t.opacity=1,t}return t.__extends(r,e),r.prototype.readTitle=function(e,r){return"string"==typeof r.alias?r.alias:"string"==typeof r.name?r.name:""},r.prototype.readIdOnlyOnce=function(e){return-1!==this.id?this.id:"number"==typeof e?e:void 0},t.__decorate([p.property({type:String,json:{origins:{"web-scene":{write:!0},"portal-item":{write:!0}}}})],r.prototype,"title",void 0),t.__decorate([p.reader("service","title",["alias","name"])],r.prototype,"readTitle",null),t.__decorate([p.property()],r.prototype,"layer",void 0),t.__decorate([p.property({type:Number,readOnly:!0,json:{read:!1,write:{ignoreOrigin:!0}}})],r.prototype,"id",void 0),t.__decorate([p.reader("service","id")],r.prototype,"readIdOnlyOnce",null),t.__decorate([p.property(n.readOnlyService(String))],r.prototype,"modelName",void 0),t.__decorate([p.property(n.readOnlyService(Boolean))],r.prototype,"isEmpty",void 0),t.__decorate([p.property({type:Boolean,json:{name:"visibility",write:!0}})],r.prototype,"visible",void 0),t.__decorate([p.property({type:Number,json:{write:!0}})],r.prototype,"opacity",void 0),r=t.__decorate([p.subclass("esri.layers.buildingSublayers.BuildingSublayer")],r)}(o.IdentifiableMixin(i.MultiOriginJSONSupport))}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Identifiable","../../core/MultiOriginJSONSupport","../support/commonProperties"],(function(e,r,t,o,i,p,n,a,s,c,l,d,u,y){"use strict";let _=function(r){function t(e){var t;return(t=r.call(this,e)||this).title="",t.id=-1,t.modelName=null,t.isEmpty=null,t.visible=!0,t.opacity=1,t}e._inheritsLoose(t,r);var o=t.prototype;return o.readTitle=function(e,r){return"string"==typeof r.alias?r.alias:"string"==typeof r.name?r.name:""},o.readIdOnlyOnce=function(e){return-1!==this.id?this.id:"number"==typeof e?e:void 0},t}(d.IdentifiableMixin(u.MultiOriginJSONSupport));return r.__decorate([p.property({type:String,json:{origins:{"web-scene":{write:!0},"portal-item":{write:!0}}}})],_.prototype,"title",void 0),r.__decorate([n.reader("service","title",["alias","name"])],_.prototype,"readTitle",null),r.__decorate([p.property()],_.prototype,"layer",void 0),r.__decorate([p.property({type:i.Integer,readOnly:!0,json:{read:!1,write:{ignoreOrigin:!0}}})],_.prototype,"id",void 0),r.__decorate([n.reader("service","id")],_.prototype,"readIdOnlyOnce",null),r.__decorate([p.property(y.readOnlyService(String))],_.prototype,"modelName",void 0),r.__decorate([p.property(y.readOnlyService(Boolean))],_.prototype,"isEmpty",void 0),r.__decorate([p.property({type:Boolean,json:{name:"visibility",write:!0}})],_.prototype,"visible",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],_.prototype,"opacity",void 0),_=r.__decorate([a.subclass("esri.layers.buildingSublayers.BuildingSublayer")],_),_}));

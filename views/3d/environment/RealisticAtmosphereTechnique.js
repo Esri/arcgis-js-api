@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../environment/RealisticAtmosphere.glsl","../webgl-engine/core/shaderTechnique/ReloadableShaderModule","../webgl-engine/core/shaderTechnique/ShaderTechnique","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration","../webgl-engine/lib/DefaultVertexAttributeLocations","../../webgl/Program","../../webgl/renderState","@dojo/framework/shim/Promise"],(function(e,i,r,n,t,a,o,l,u,s){"use strict";Object.defineProperty(i,"__esModule",{value:!0}),i.RealisticAtmosphereTechniqueConfiguration=i.RealisticAtmosphereTechnique=void 0;var c=function(i){function a(){return null!==i&&i.apply(this,arguments)||this}return r.__extends(a,i),a.prototype.initializeProgram=function(e){var i=a.shader.get(),r=this.configuration,n=i.build({haze:r.haze});return new u(e.rctx,n.generateSource("vertex"),n.generateSource("fragment"),l.Default3D)},a.prototype.initializePipeline=function(){return this.configuration.haze?s.makePipelineState({blending:s.separateBlendingParams(1,0,769,1),colorWrite:s.defaultColorWriteParams}):s.makePipelineState({blending:s.separateBlendingParams(770,1,771,771),depthTest:{func:515},colorWrite:s.defaultColorWriteParams})},a.shader=new t.ReloadableShaderModule(n,(function(){return new Promise((function(i,r){e(["../environment/RealisticAtmosphere.glsl"],i,r)}))})),a}(a.ShaderTechnique);i.RealisticAtmosphereTechnique=c;var h=function(e){function i(){var i=null!==e&&e.apply(this,arguments)||this;return i.haze=!1,i}return r.__extends(i,e),r.__decorate([o.parameter()],i.prototype,"haze",void 0),i}(o.ShaderTechniqueConfiguration);i.RealisticAtmosphereTechniqueConfiguration=h}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["require","exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../webgl-engine/core/shaderTechnique/ReloadableShaderModule","../webgl-engine/core/shaderTechnique/ShaderTechnique","../webgl-engine/core/shaderTechnique/ShaderTechniqueConfiguration","../webgl-engine/lib/DefaultVertexAttributeLocations","../../webgl/Program","../../webgl/renderState","../../../chunks/RealisticAtmosphere.glsl"],(function(e,i,r,t,n,a,o,l,u,s,h){"use strict";let c=function(e){function i(){return e.apply(this,arguments)||this}r._inheritsLoose(i,e);var t=i.prototype;return t.initializeProgram=function(e){const r=i.shader.get(),t=this.configuration,n=r.build({haze:t.haze});return new u(e.rctx,n.generateSource("vertex"),n.generateSource("fragment"),l.Default3D)},t.initializePipeline=function(){return this.configuration.haze?s.makePipelineState({blending:s.separateBlendingParams(1,0,769,1),colorWrite:s.defaultColorWriteParams}):s.makePipelineState({blending:s.separateBlendingParams(770,1,771,771),depthTest:{func:515},colorWrite:s.defaultColorWriteParams})},i}(a.ShaderTechnique);c.shader=new n.ReloadableShaderModule(h.RealisticAtmosphereShader,(()=>new Promise((function(i,r){e(["./RealisticAtmosphere.glsl"],i,r)}))));let d=function(e){function i(){var i;return(i=e.apply(this,arguments)||this).haze=!1,i}return r._inheritsLoose(i,e),i}(o.ShaderTechniqueConfiguration);t.__decorate([o.parameter()],d.prototype,"haze",void 0),i.RealisticAtmosphereTechnique=c,i.RealisticAtmosphereTechniqueConfiguration=d,Object.defineProperty(i,"__esModule",{value:!0})}));

@@ -1,18 +1,17 @@
 // esri
-import Graphic = require("esri/../Graphic");
-import { PopupTemplateContentCreator } from "esri/../interfaces";
-
-// esri.core
-import { from } from "esri/../core/arrayUtils";
+import Graphic from "esri/Graphic";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.popup
+import { PopupTemplateContentCreator } from "esri/popup/interfaces";
 
 // esri.widgets
-import Widget = require("esri/Widget");
+import Widget from "esri/Widget";
 
 // esri.widgets.Feature.FeatureContent
-import FeatureContentViewModel = require("esri/widgets/FeatureContent/FeatureContentViewModel");
+import FeatureContentViewModel from "esri/widgets/FeatureContent/FeatureContentViewModel";
 
 // esri.widgets.Feature.support
 import { shouldOpenInNewTab } from "esri/widgets/support/featureUtils";
@@ -121,7 +120,7 @@ class FeatureContent extends Widget {
   }
 
   private _addTargetToAnchors = (element: HTMLDivElement): void => {
-    from(element.querySelectorAll("a")).forEach((anchorEl) => {
+    Array.from(element.querySelectorAll("a")).forEach((anchorEl) => {
       if (shouldOpenInNewTab(anchorEl.href) && !anchorEl.hasAttribute("target")) {
         anchorEl.setAttribute("target", "_blank");
       }
@@ -129,4 +128,4 @@ class FeatureContent extends Widget {
   };
 }
 
-export = FeatureContent;
+export default FeatureContent;

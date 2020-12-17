@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(i,n){"use strict";function t(i,n){return Math.sqrt(i*i+n*n)}Object.defineProperty(n,"__esModule",{value:!0}),n.isPolygon=n.isPolyline=n.isPoint=n.isMultipoint=n.isExtent=n.getLimitCosine=n.isFunction=n.dist=n.normalize=n.len=n.sub=void 0,n.sub=function(i,n,t){return i[0]=n[0]-t[0],i[1]=n[1]-t[1],i},n.len=t,n.normalize=function(i){var n=t(i[0],i[1]);i[0]/=n,i[1]/=n},n.dist=function(i,n){return t(i[0]-n[0],i[1]-n[1])},n.isFunction=function(i){return"function"==typeof i},n.getLimitCosine=function(i){return 1/Math.max(i,1)},n.isExtent=function(i){return void 0!==i.xmin&&void 0!==i.ymin&&void 0!==i.xmax&&void 0!==i.ymax},n.isMultipoint=function(i){return void 0!==i.points},n.isPoint=function(i){return void 0!==i.x&&void 0!==i.y},n.isPolyline=function(i){return void 0!==i.paths},n.isPolygon=function(i){return void 0!==i.rings}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(n){"use strict";function i(n,i){return Math.sqrt(n*n+i*i)}n.dist=function(n,t){return i(n[0]-t[0],n[1]-t[1])},n.getLimitCosine=function(n){return 1/Math.max(n,1)},n.isExtent=function(n){return void 0!==n.xmin&&void 0!==n.ymin&&void 0!==n.xmax&&void 0!==n.ymax},n.isFunction=function(n){return"function"==typeof n},n.isMultipoint=function(n){return void 0!==n.points},n.isPoint=function(n){return void 0!==n.x&&void 0!==n.y},n.isPolygon=function(n){return void 0!==n.rings},n.isPolyline=function(n){return void 0!==n.paths},n.len=i,n.normalize=function(n){const t=i(n[0],n[1]);n[0]/=t,n[1]/=t},n.sub=function(n,i,t){return n[0]=i[0]-t[0],n[1]=i[1]-t[1],n},Object.defineProperty(n,"__esModule",{value:!0})}));

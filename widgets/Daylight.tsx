@@ -75,8 +75,7 @@
  */
 
 // esri.core
-import { findIndex } from "esri/core/arrayUtils";
-import Logger = require("esri/core/Logger");
+import Logger from "esri/core/Logger";
 import { Maybe, isSome } from "esri/core/maybe";
 import * as watchUtils from "esri/core/watchUtils";
 
@@ -84,11 +83,11 @@ import * as watchUtils from "esri/core/watchUtils";
 import { subclass, property, aliasOf, cast } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import SceneView = require("esri/views/SceneView");
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { DateOrSeason, Season } from "esri/widgets/interfaces";
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Daylight
 import {
@@ -97,16 +96,16 @@ import {
   formatSliderLabel,
   ORDERED_SEASONS
 } from "esri/widgets/Daylight/daylightUtils";
-import DaylightViewModel = require("esri/widgets/Daylight/DaylightViewModel");
+import DaylightViewModel from "esri/widgets/Daylight/DaylightViewModel";
 
 // esri.widgets.Daylight.support
-import SliderWithDropdown = require("esri/widgets/Daylight/support/SliderWithDropdown");
+import SliderWithDropdown from "esri/widgets/Daylight/support/SliderWithDropdown";
 
 // esri.widgets.Daylight.t9n
 import DaylightMessages from "esri/widgets/Daylight/t9n/Daylight";
 
 // esri.widgets.support
-import DatePicker = require("esri/widgets/support/DatePicker");
+import DatePicker from "esri/widgets/support/DatePicker";
 import { VNode } from "esri/widgets/support/interfaces";
 import { tsx, renderable, messageBundle } from "esri/widgets/support/widget";
 
@@ -604,7 +603,7 @@ class Daylight extends Widget {
     }
 
     // Update the time slider based on the view's UTC offset.
-    const index = findIndex(allOffsets, ({ abbr }) => abbr === currentViewUtcOffset);
+    const index = allOffsets.findIndex(({ abbr }) => abbr === currentViewUtcOffset);
     if (index > -1) {
       this._timeSlider.currentIndex = index;
     }
@@ -643,4 +642,4 @@ class Daylight extends Widget {
   }
 }
 
-export = Daylight;
+export default Daylight;

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/maybe"],(function(e,r,t,n,o){"use strict";function a(e){return t.__awaiter(this,void 0,void 0,(function(){var r,o,a,u,i,c,s,l,d,h,g,f,b,w,M,_,v,y;return t.__generator(this,(function(t){switch(t.label){case 0:return[4,e.whenReady()];case 1:return t.sent(),(r=e.basemapView.baseLayerViews.map((function(e){return e.layer}))).length?[4,e.takeScreenshot({format:"png",layers:r.toArray()})]:(o=getComputedStyle(e.container).backgroundColor,a=o&&new n(o),[2,e.get("background.color")||(a&&0!==a.a?a:null)||null]);case 2:for(u=t.sent(),i=u.data.data,c=i.length,s=0,l=0,d=0,h=0,g=0,f=0,b=0;b<c;b+=4)w=i[b],M=i[b+1],_=i[b+2],v=i[b+3],s+=w*w*(y=v/255),l+=M*M*y,d+=_*_*y,g+=y,v&&(h+=v,f++);return s=Math.round(Math.sqrt(s/g)),l=Math.round(Math.sqrt(l/g)),d=Math.round(Math.sqrt(d/g)),[2,new n([s,l,d,h/f/255])]}}))}))}function u(e){return function(e){var r=e.r,t=e.g,o=e.b,a=e.a;a<1&&(r=Math.round(a*r+255*(1-a)),t=Math.round(a*t+255*(1-a)),o=Math.round(a*o+255*(1-a)));return new n({r:r,g:t,b:o})}(e).isBright?"light":"dark"}Object.defineProperty(r,"__esModule",{value:!0}),r.getBackgroundColorTheme=r.getBackgroundColor=void 0,r.getBackgroundColor=a,r.getBackgroundColorTheme=function(e){return t.__awaiter(this,void 0,void 0,(function(){var r;return t.__generator(this,(function(t){switch(t.label){case 0:return e&&"3d"!==e.type?[4,a(e)]:[2,null];case 1:return r=t.sent(),[2,o.isSome(r)?u(r):null]}}))}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/maybe","../../Color"],(function(t,e,n){"use strict";async function r(t){await t.whenReady();const e=t.basemapView.baseLayerViews.map((t=>t.layer));if(!e.length){const e=getComputedStyle(t.container).backgroundColor,r=e&&new n(e);return t.get("background.color")||(r&&0!==r.a?r:null)||null}const r=(await t.takeScreenshot({format:"png",layers:e.toArray()})).data.data,a=r.length;let o=0,u=0,l=0,c=0,s=0,i=0;for(let t=0;t<a;t+=4){const e=r[t],n=r[t+1],a=r[t+2],d=r[t+3],h=d/255;o+=e*e*h,u+=n*n*h,l+=a*a*h,s+=h,d&&(c+=d,i++)}o=Math.round(Math.sqrt(o/s)),u=Math.round(Math.sqrt(u/s)),l=Math.round(Math.sqrt(l/s));return new n([o,u,l,c/i/255])}t.getBackgroundColor=r,t.getBackgroundColorTheme=async function(t){if(!t)return null;const a=await r(t);return e.isSome(a)?function(t){return function(t){let{r:e,g:r,b:a,a:o}=t;o<1&&(e=Math.round(o*e+255*(1-o)),r=Math.round(o*r+255*(1-o)),a=Math.round(o*a+255*(1-o)));return new n({r:e,g:r,b:a})}(t).isBright?"light":"dark"}(a):null},Object.defineProperty(t,"__esModule",{value:!0})}));

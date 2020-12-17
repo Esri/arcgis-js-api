@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../Graphic","../core/Collection","../core/collectionUtils","../core/accessorSupport/decorators","../core/accessorSupport/ensureType"],(function(e,t,o,r,n,i,c,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.graphicsCollectionProperty=t.castGraphicsCollection=t.GraphicsCollection=void 0;var l=n.ofType(r),a=function(e){function t(t){var o=e.call(this,t)||this;return o.on("before-add",(function(e){e.item||e.preventDefault()})),o.on("after-add",(function(e){return o._own(e.item)})),o.on("after-remove",(function(e){e.item.layer=null})),o}return o.__extends(t,e),t.prototype.destroy=function(){this._unownAll()},Object.defineProperty(t.prototype,"owner",{get:function(){return this._get("owner")},set:function(e){e!==this._get("owner")&&(this._unownAll(),this._set("owner",e),this._ownAll())},enumerable:!1,configurable:!0}),t.prototype._createNewInstance=function(e){return new l(e)},t.prototype._ownAll=function(){var e=this;this.items.forEach((function(t){return e._own(t)}))},t.prototype._own=function(e){e.layer&&"remove"in e.layer&&e.layer!==this.owner&&e.layer.remove(e),e.layer=this.owner},t.prototype._unownAll=function(){var e=this;this.items.forEach((function(t){return e._unown(t)}))},t.prototype._unown=function(e){e.layer===this.owner&&(e.layer=null)},o.__decorate([c.property()],t.prototype,"owner",null),t=o.__decorate([c.subclass("esri.support.GraphicsCollection")],t)}(l);t.GraphicsCollection=a,t.castGraphicsCollection=function(e){var t=s.default(a,e);return t&&(t.owner=this),t},t.graphicsCollectionProperty={type:a,cast:i.castForReferenceSetter,set:function(e){var t=i.referenceSetter(e,this._get("graphics"),a);t.owner=this,this._set("graphics",t)}},t.default=a}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","../core/collectionUtils","../Graphic"],(function(e,o,t,r,n,s,c,i,l,a,u,p,h,_){"use strict";const f=p.ofType(_);e.GraphicsCollection=function(e){function t(o){var t;return(t=e.call(this,o)||this).on("before-add",(e=>{e.item||e.preventDefault()})),t.on("after-add",(e=>t._own(e.item))),t.on("after-remove",(({item:e})=>{e.layer=null})),t}o._inheritsLoose(t,e);var r=t.prototype;return r.destroy=function(){this._unownAll()},r._createNewInstance=function(e){return new f(e)},r._ownAll=function(){this.items.forEach((e=>this._own(e)))},r._own=function(e){e.layer&&"remove"in e.layer&&e.layer!==this.owner&&e.layer.remove(e),e.layer=this.owner},r._unownAll=function(){this.items.forEach((e=>this._unown(e)))},r._unown=function(e){e.layer===this.owner&&(e.layer=null)},o._createClass(t,[{key:"owner",get:function(){return this._get("owner")},set:function(e){e!==this._get("owner")&&(this._unownAll(),this._set("owner",e),this._ownAll())}}]),t}(f),t.__decorate([c.property()],e.GraphicsCollection.prototype,"owner",null),e.GraphicsCollection=t.__decorate([i.subclass("esri.support.GraphicsCollection")],e.GraphicsCollection);var w=e.GraphicsCollection;e.castGraphicsCollection=function(o){const t=s.ensureType(e.GraphicsCollection,o);return t&&(t.owner=this),t},e.default=w,e.graphicsCollectionProperty=(o="graphics")=>({type:e.GraphicsCollection,cast:h.castForReferenceSetter,set(t){const r=h.referenceSetter(t,this._get(o),e.GraphicsCollection);r.owner=this,this._set(o,r)}}),Object.defineProperty(e,"__esModule",{value:!0})}));

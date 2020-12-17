@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../geometry","../../core/jsonMap","../../core/JSONSupport","../../core/accessorSupport/decorators","../../geometry/Polygon","../../geometry/SpatialReference","../../geometry/support/jsonUtils"],(function(e,t,r,o,i,s,n,p,a,u){"use strict";var c=new i.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});return function(e){function t(t){var r=e.call(this,t)||this;return r.bufferSpatialReference=null,r.distances=null,r.geodesic=!1,r.geometries=null,r.outSpatialReference=null,r.unionResults=!1,r.unit=null,r}return r.__extends(t,e),t.prototype.toJSON=function(){var e={unit:c.toJSON(this.unit),unionResults:this.unionResults,geodesic:this.geodesic},t=this.distances,r=this.outSpatialReference,o=this.bufferSpatialReference,i=this.geometries;if(i&&i.length>0){var s=i.map((function(e){return(e="extent"===e.type?p.fromExtent(e):e).toJSON()})),n="extent"===i[0].type?"esriGeometryPolygon":u.getJsonType(i[0]);e.geometries=JSON.stringify({geometryType:n,geometries:s}),e.inSR=i[0].spatialReference.wkid?i[0].spatialReference.wkid:JSON.stringify(i[0].spatialReference.toJSON())}return t&&(e.distances=t.join(",")),r&&(e.outSR=r.wkid?r.wkid:JSON.stringify(r.toJSON())),o&&(e.bufferSR=o.wkid?o.wkid:JSON.stringify(o.toJSON())),e},r.__decorate([n.property({type:a,json:{write:!0}})],t.prototype,"bufferSpatialReference",void 0),r.__decorate([n.property({type:[Number],json:{write:!0}})],t.prototype,"distances",void 0),r.__decorate([n.property({type:Boolean,json:{write:!0}})],t.prototype,"geodesic",void 0),r.__decorate([n.property({types:[o.geometryTypes],json:{write:!0}})],t.prototype,"geometries",void 0),r.__decorate([n.property({type:a,json:{write:!0}})],t.prototype,"outSpatialReference",void 0),r.__decorate([n.property({type:Boolean,json:{write:!0}})],t.prototype,"unionResults",void 0),r.__decorate([n.property({type:String,json:{write:!0}})],t.prototype,"unit",void 0),t=r.__decorate([n.subclass("esri.tasks.support.BufferParameters")],t)}(s.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/SpatialReference","../../geometry/Polygon","../../geometry/support/jsonUtils","../../geometry"],(function(e,t,o,r,s,i,n,p,c,u,a,l,y,d,f,S){"use strict";const g=new n.JSONMap({9001:"meters",9002:"feet",9036:"kilometers",9093:"miles",109012:"nautical-miles",109001:"yards"});let m=function(t){function o(e){var o;return(o=t.call(this,e)||this).bufferSpatialReference=null,o.distances=null,o.geodesic=!1,o.geometries=null,o.outSpatialReference=null,o.unionResults=!1,o.unit=null,o}return e._inheritsLoose(o,t),o.prototype.toJSON=function(){const e={unit:g.toJSON(this.unit),unionResults:this.unionResults,geodesic:this.geodesic},t=this.distances,o=this.outSpatialReference,r=this.bufferSpatialReference,s=this.geometries;if(s&&s.length>0){const t=s.map((function(e){return(e="extent"===e.type?d.fromExtent(e):e).toJSON()})),o="extent"===s[0].type?"esriGeometryPolygon":f.getJsonType(s[0]);e.geometries=JSON.stringify({geometryType:o,geometries:t}),e.inSR=s[0].spatialReference.wkid?s[0].spatialReference.wkid:JSON.stringify(s[0].spatialReference.toJSON())}return t&&(e.distances=t.join(",")),o&&(e.outSR=o.wkid?o.wkid:JSON.stringify(o.toJSON())),r&&(e.bufferSR=r.wkid?r.wkid:JSON.stringify(r.toJSON())),e},o}(l.JSONSupport);return t.__decorate([i.property({type:y,json:{write:!0}})],m.prototype,"bufferSpatialReference",void 0),t.__decorate([i.property({type:[Number],json:{write:!0}})],m.prototype,"distances",void 0),t.__decorate([i.property({type:Boolean,json:{write:!0}})],m.prototype,"geodesic",void 0),t.__decorate([i.property({types:[S.geometryTypes],json:{write:!0}})],m.prototype,"geometries",void 0),t.__decorate([i.property({type:y,json:{write:!0}})],m.prototype,"outSpatialReference",void 0),t.__decorate([i.property({type:Boolean,json:{write:!0}})],m.prototype,"unionResults",void 0),t.__decorate([i.property({type:String,json:{write:!0}})],m.prototype,"unit",void 0),m=t.__decorate([p.subclass("esri.tasks.support.BufferParameters")],m),m}));

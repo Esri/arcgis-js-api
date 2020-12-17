@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(e,r){"use strict";function i(e){return e instanceof Float32Array&&e.length>=3}function n(e){return Array.isArray(e)&&e.length>=3}Object.defineProperty(r,"__esModule",{value:!0}),r.isVec3=r.isVec3f64=r.isVec3f32=void 0,r.isVec3f32=i,r.isVec3f64=n,r.isVec3=function(e){return i(e)||n(e)}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function n(e){return e instanceof Float32Array&&e.length>=3}function r(e){return Array.isArray(e)&&e.length>=3}e.isVec3=function(e){return n(e)||r(e)},e.isVec3f32=n,e.isVec3f64=r,Object.defineProperty(e,"__esModule",{value:!0})}));

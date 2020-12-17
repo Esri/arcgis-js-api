@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/JSONSupport","../../core/accessorSupport/decorators","../../core/accessorSupport/ensureType","./exifUtils"],(function(e,t,r,o,n,i,p){"use strict";var d={1:{id:1,rotation:0,mirrored:!1},2:{id:2,rotation:0,mirrored:!0},3:{id:3,rotation:180,mirrored:!1},4:{id:4,rotation:180,mirrored:!0},5:{id:5,rotation:-90,mirrored:!0},6:{id:6,rotation:90,mirrored:!1},7:{id:7,rotation:90,mirrored:!0},8:{id:8,rotation:-90,mirrored:!1}};return function(e){function t(t){var r=e.call(this,t)||this;return r.contentType=null,r.exifInfo=null,r.id=null,r.globalId=null,r.keywords=null,r.name=null,r.parentGlobalId=null,r.parentObjectId=null,r.size=null,r.url=null,r}var o;return r.__extends(t,e),o=t,Object.defineProperty(t.prototype,"orientationInfo",{get:function(){var e=this.exifInfo,t=p.getExifValue({exifName:"Exif IFD0",tagName:"Orientation",exifInfo:e});return d[t]||null},enumerable:!1,configurable:!0}),t.prototype.clone=function(){return new o({contentType:this.contentType,exifInfo:this.exifInfo,id:this.id,globalId:this.globalId,keywords:this.keywords,name:this.name,parentGlobalId:this.parentGlobalId,parentObjectId:this.parentObjectId,size:this.size,url:this.url})},r.__decorate([n.property({type:String})],t.prototype,"contentType",void 0),r.__decorate([n.property()],t.prototype,"exifInfo",void 0),r.__decorate([n.property({readOnly:!0,dependsOn:["exifInfo"]})],t.prototype,"orientationInfo",null),r.__decorate([n.property({type:i.Integer})],t.prototype,"id",void 0),r.__decorate([n.property({type:String})],t.prototype,"globalId",void 0),r.__decorate([n.property({type:String})],t.prototype,"keywords",void 0),r.__decorate([n.property({type:String})],t.prototype,"name",void 0),r.__decorate([n.property({json:{read:!1}})],t.prototype,"parentGlobalId",void 0),r.__decorate([n.property({json:{read:!1}})],t.prototype,"parentObjectId",void 0),r.__decorate([n.property({type:i.Integer})],t.prototype,"size",void 0),r.__decorate([n.property({json:{read:!1}})],t.prototype,"url",void 0),t=o=r.__decorate([n.subclass("esri.layers.support.AttachmentInfo")],t)}(o.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./exifUtils"],(function(e,r,o,t,n,i,p,a,d,l,s,c){"use strict";var u;const y={1:{id:1,rotation:0,mirrored:!1},2:{id:2,rotation:0,mirrored:!0},3:{id:3,rotation:180,mirrored:!1},4:{id:4,rotation:180,mirrored:!0},5:{id:5,rotation:-90,mirrored:!0},6:{id:6,rotation:90,mirrored:!1},7:{id:7,rotation:90,mirrored:!0},8:{id:8,rotation:-90,mirrored:!1}};let f=u=function(r){function o(e){var o;return(o=r.call(this,e)||this).contentType=null,o.exifInfo=null,o.id=null,o.globalId=null,o.keywords=null,o.name=null,o.parentGlobalId=null,o.parentObjectId=null,o.size=null,o.url=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new u({contentType:this.contentType,exifInfo:this.exifInfo,id:this.id,globalId:this.globalId,keywords:this.keywords,name:this.name,parentGlobalId:this.parentGlobalId,parentObjectId:this.parentObjectId,size:this.size,url:this.url})},e._createClass(o,[{key:"orientationInfo",get:function(){const{exifInfo:e}=this,r=c.getExifValue({exifName:"Exif IFD0",tagName:"Orientation",exifInfo:e});return y[r]||null}}]),o}(s.JSONSupport);return r.__decorate([i.property({type:String})],f.prototype,"contentType",void 0),r.__decorate([i.property()],f.prototype,"exifInfo",void 0),r.__decorate([i.property({readOnly:!0,dependsOn:["exifInfo"]})],f.prototype,"orientationInfo",null),r.__decorate([i.property({type:n.Integer})],f.prototype,"id",void 0),r.__decorate([i.property({type:String})],f.prototype,"globalId",void 0),r.__decorate([i.property({type:String})],f.prototype,"keywords",void 0),r.__decorate([i.property({type:String})],f.prototype,"name",void 0),r.__decorate([i.property({json:{read:!1}})],f.prototype,"parentGlobalId",void 0),r.__decorate([i.property({json:{read:!1}})],f.prototype,"parentObjectId",void 0),r.__decorate([i.property({type:n.Integer})],f.prototype,"size",void 0),r.__decorate([i.property({json:{read:!1}})],f.prototype,"url",void 0),f=u=r.__decorate([p.subclass("esri.layers.support.AttachmentInfo")],f),f}));

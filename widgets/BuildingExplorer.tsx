@@ -56,36 +56,36 @@
  */
 
 // esri.core
-import Collection = require("esri/core/Collection");
-import Handles = require("esri/core/Handles");
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { property, subclass, cast, aliasOf } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import BuildingSceneLayer = require("esri/layers/BuildingSceneLayer");
+import BuildingSceneLayer from "esri/layers/BuildingSceneLayer";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import SceneView = require("esri/views/SceneView");
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.BuildingExplorer
-import BuildingExplorerViewModel = require("esri/widgets/BuildingExplorer/BuildingExplorerViewModel");
+import BuildingExplorerViewModel from "esri/widgets/BuildingExplorer/BuildingExplorerViewModel";
 
 // esri.widgets.BuildingExplorer.BuildingDisciplinesTree
-import BuildingDisciplinesTree = require("esri/widgets/BuildingExplorer/BuildingDisciplinesTree/BuildingDisciplinesTree");
+import BuildingDisciplinesTree from "esri/widgets/BuildingExplorer/BuildingDisciplinesTree/BuildingDisciplinesTree";
 
 // esri.widgets.BuildingExplorer.BuildingLevelPicker
-import BuildingLevelPicker = require("esri/widgets/BuildingExplorer/BuildingLevelPicker/BuildingLevelPicker");
+import BuildingLevelPicker from "esri/widgets/BuildingExplorer/BuildingLevelPicker/BuildingLevelPicker";
 
 // esri.widgets.BuildingExplorer.BuildingPhasePicker
-import BuildingPhasePicker = require("esri/widgets/BuildingExplorer/BuildingPhasePicker/BuildingPhasePicker");
+import BuildingPhasePicker from "esri/widgets/BuildingExplorer/BuildingPhasePicker/BuildingPhasePicker";
 
 // esri.widgets.BuildingExplorer.t9n
 import BuildingExplorerMessages from "esri/widgets/BuildingExplorer/t9n/BuildingExplorer";
@@ -218,7 +218,7 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
   view: SceneView = null;
 
   /**
-   * A {@link module:esri/Collection collection} of layers of type {@link module:esri/layers/BuildingSceneLayer}
+   * A {@link module:esri/core/Collection collection} of layers of type {@link module:esri/layers/BuildingSceneLayer}
    * that are added to the widget for exploration. The widget is only displayed when this property is set.
    * In case of multiple layers, the widget will display and apply the filters on all layers.
    *
@@ -505,4 +505,4 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
   }
 }
 
-export = BuildingExplorer;
+export default BuildingExplorer;

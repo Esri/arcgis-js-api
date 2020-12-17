@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../Color","../../core/JSONSupport","../../core/lang","../../core/maybe","../../core/accessorSupport/decorators","./MeshTexture"],(function(e,o,t,r,i,l,p,n,u){"use strict";return function(e){function o(o){var t=e.call(this,o)||this;return t.color=null,t.colorTexture=null,t.normalTexture=null,t.alphaMode="auto",t.alphaCutoff=.5,t.doubleSided=!0,t}var i;return t.__extends(o,e),i=o,o.prototype.clone=function(){return this.cloneWithDeduplication(null,new Map)},o.prototype.cloneWithDeduplication=function(e,o){var t=p.isSome(e)?e.get(this):null;if(t)return t;var r=new i(this.clonePropertiesWithDeduplication(o));return p.isSome(e)&&e.set(this,r),r},o.prototype.clonePropertiesWithDeduplication=function(e){return{color:l.clone(this.color),colorTexture:this.colorTexture?this.colorTexture.cloneWithDeduplication(e):null,normalTexture:this.normalTexture?this.normalTexture.cloneWithDeduplication(e):null,alphaMode:this.alphaMode,alphaCutoff:this.alphaCutoff,doubleSided:this.doubleSided}},t.__decorate([n.property({type:r,json:{write:!0}})],o.prototype,"color",void 0),t.__decorate([n.property({type:u,json:{write:!0}})],o.prototype,"colorTexture",void 0),t.__decorate([n.property({type:u,json:{write:!0}})],o.prototype,"normalTexture",void 0),t.__decorate([n.property({json:{write:!0}})],o.prototype,"alphaMode",void 0),t.__decorate([n.property({json:{write:!0}})],o.prototype,"alphaCutoff",void 0),t.__decorate([n.property({json:{write:!0}})],o.prototype,"doubleSided",void 0),o=i=t.__decorate([n.subclass("esri.geometry.support.MeshMaterial")],o)}(i.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color","./MeshTexture"],(function(e,o,r,t,l,i,p,u,n,c,s,a,d,h,y){"use strict";var f;let _=f=function(o){function r(e){var r;return(r=o.call(this,e)||this).color=null,r.colorTexture=null,r.normalTexture=null,r.alphaMode="auto",r.alphaCutoff=.5,r.doubleSided=!0,r}e._inheritsLoose(r,o);var i=r.prototype;return i.clone=function(){return this.cloneWithDeduplication(null,new Map)},i.cloneWithDeduplication=function(e,o){const r=l.isSome(e)?e.get(this):null;if(r)return r;const t=new f(this.clonePropertiesWithDeduplication(o));return l.isSome(e)&&e.set(this,t),t},i.clonePropertiesWithDeduplication=function(e){return{color:t.clone(this.color),colorTexture:this.colorTexture?this.colorTexture.cloneWithDeduplication(e):null,normalTexture:this.normalTexture?this.normalTexture.cloneWithDeduplication(e):null,alphaMode:this.alphaMode,alphaCutoff:this.alphaCutoff,doubleSided:this.doubleSided}},r}(d.JSONSupport);return o.__decorate([u.property({type:h,json:{write:!0}})],_.prototype,"color",void 0),o.__decorate([u.property({type:y,json:{write:!0}})],_.prototype,"colorTexture",void 0),o.__decorate([u.property({type:y,json:{write:!0}})],_.prototype,"normalTexture",void 0),o.__decorate([u.property({json:{write:!0}})],_.prototype,"alphaMode",void 0),o.__decorate([u.property({json:{write:!0}})],_.prototype,"alphaCutoff",void 0),o.__decorate([u.property({json:{write:!0}})],_.prototype,"doubleSided",void 0),_=f=o.__decorate([n.subclass("esri.geometry.support.MeshMaterial")],_),_}));

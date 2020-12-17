@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/libs/gl-matrix-2/vec2"],(function(e,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t,i){this.maxSize=e,this.tileInfoView=t,this.removedFunc=i,this._tilePerId=new Map,this._tileKeysPerLevel=[]}return e.prototype.has=function(e){return this._tilePerId.has(e)},e.prototype.get=function(e){return this._tilePerId.get(e)},e.prototype.pop=function(e){var t=this._tilePerId.get(e);if(!t)return null;var i=t.key.level,r=this._tileKeysPerLevel[i];n(this._tilePerId,e);for(var s=0;s<r.length;s++)if(r[s].id===e){r.splice(s,1);break}return t.visible=!0,t},e.prototype.add=function(e){e.visible=!1;var t=e.key,i=t.id;if(!this._tilePerId.has(i)){this._tilePerId.set(i,e);var r=t.level;this._tileKeysPerLevel[r]||(this._tileKeysPerLevel[r]=[]),this._tileKeysPerLevel[r].push(t)}},e.prototype.prune=function(e,t,i){var r=this._tilePerId.size;if(!(r<=this.maxSize)){for(var n=this._tileKeysPerLevel.length-1;r>this.maxSize&&n>=0;)n!==e&&(r=this._pruneAroundCenterTile(r,t,i,n)),n--;r>this.maxSize&&(r=this._pruneAroundCenterTile(r,t,i,e))}},e.prototype._pruneAroundCenterTile=function(e,t,r,n){var s=this._tileKeysPerLevel[n];if(!s||0===s.length)return e;var l=this.tileInfoView.tileInfo,o=l.size,u=l.origin,h=r*o[0],v=r*o[1],a=[0,0],d=[0,0];for(s.sort((function(e,r){return a[0]=u.x+h*(e.col+.5),a[1]=u.y-v*(e.row+.5),d[0]=u.x+h*(r.col+.5),d[1]=u.y-v*(r.row+.5),i.vec2.squaredDistance(a,t)-i.vec2.squaredDistance(d,t)}));s.length>0;){var f=s.pop();if(this._removeTile(f.id),--e===this.maxSize)break}return e},e.prototype._removeTile=function(e){var t=this._tilePerId.get(e);this.removedFunc&&this.removedFunc(t),n(this._tilePerId,e)},e}();function n(e,t){e.delete(t)}t.default=r}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../../chunks/vec2"],(function(e){"use strict";function t(e,t){e.delete(t)}return function(){function i(e,t,i){this.maxSize=e,this.tileInfoView=t,this.removedFunc=i,this._tilePerId=new Map,this._tileKeysPerLevel=[]}var n=i.prototype;return n.has=function(e){return this._tilePerId.has(e)},n.get=function(e){return this._tilePerId.get(e)},n.pop=function(e){const i=this._tilePerId.get(e);if(!i)return null;const n=i.key.level,r=this._tileKeysPerLevel[n];t(this._tilePerId,e);for(let t=0;t<r.length;t++)if(r[t].id===e){r.splice(t,1);break}return i.visible=!0,i},n.add=function(e){e.visible=!1;const t=e.key,i=t.id;if(this._tilePerId.has(i))return;this._tilePerId.set(i,e);const n=t.level;this._tileKeysPerLevel[n]||(this._tileKeysPerLevel[n]=[]),this._tileKeysPerLevel[n].push(t)},n.prune=function(e,t,i){let n=this._tilePerId.size;if(n<=this.maxSize)return;let r=this._tileKeysPerLevel.length-1;for(;n>this.maxSize&&r>=0;)r!==e&&(n=this._pruneAroundCenterTile(n,t,i,r)),r--;n>this.maxSize&&(n=this._pruneAroundCenterTile(n,t,i,e))},n._pruneAroundCenterTile=function(t,i,n,r){const s=this._tileKeysPerLevel[r];if(!s||0===s.length)return t;const{size:l,origin:o}=this.tileInfoView.tileInfo,h=n*l[0],u=n*l[1],c=[0,0],d=[0,0];for(s.sort(((t,n)=>(c[0]=o.x+h*(t.col+.5),c[1]=o.y-u*(t.row+.5),d[0]=o.x+h*(n.col+.5),d[1]=o.y-u*(n.row+.5),e.squaredDistance(c,i)-e.squaredDistance(d,i))));s.length>0;){const e=s.pop();if(this._removeTile(e.id),--t===this.maxSize)break}return t},n._removeTile=function(e){const i=this._tilePerId.get(e);this.removedFunc&&this.removedFunc(i),t(this._tilePerId,e)},i}()}));

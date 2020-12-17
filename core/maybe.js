@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports"],(function(n,e){"use strict";function r(n){return null!=n}function u(n,e,u){return r(n)?u(n):e}Object.defineProperty(e,"__esModule",{value:!0}),e.assumeNonNull=e.get=e.mapSomeFirst=e.andThen=e.mapOr=e.forEachSome=e.mapMany=e.mapSome=e.nullifyNonnullableForDispose=e.removeMaybe=e.disposeMaybe=e.destroyMaybe=e.unwrapOr=e.unwrap=e.applySome=e.isUndefined=e.isNone=e.isSome=e.none=void 0,e.none=null,e.isSome=r,e.isNone=function(n){return null==n},e.isUndefined=function(n){return void 0===n},e.applySome=function(n,e){return r(n)?e(n):null},e.unwrap=function(n){return n},e.unwrapOr=function(n,e){return r(n)?n:"function"==typeof e?e():e},e.destroyMaybe=function(n){return r(n)&&n.destroy(),null},e.disposeMaybe=function(n){return r(n)&&n.dispose(),null},e.removeMaybe=function(n){return r(n)&&n.remove(),null},e.nullifyNonnullableForDispose=function(n){return null},e.mapSome=function(n,e){var u=new Array;return n.forEach((function(n){var o=e(n);r(o)&&u.push(o)})),u},e.mapMany=function(n,e){for(var r=new Array,o=0,t=n;o<t.length;o++){var l=t[o];r.push(u(l,null,e))}return r},e.forEachSome=function(n,e){for(var r=0,o=n;r<o.length;r++){u(o[r],null,e)}},e.mapOr=u,e.andThen=function(n,e){return r(n)?e(n):null},e.mapSomeFirst=function(n,e){for(var u=0,o=n;u<o.length;u++){var t=e(o[u]);if(r(t))return t}return null},e.get=function(n){for(var e=[],r=1;r<arguments.length;r++)e[r-1]=arguments[r];for(var u=n,o=0;o<e.length&&u;)u=u[e[o++]];return u},e.assumeNonNull=function(n){return n}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports"],(function(n){"use strict";function u(n){return null!=n}function r(n,r,e){return u(n)?e(n):r}n.andThen=function(n,r){return u(n)?r(n):null},n.applySome=function(n,r){return u(n)?r(n):null},n.assumeNonNull=function(n){return n},n.destroyMaybe=function(n){return u(n)&&n.destroy(),null},n.disposeMaybe=function(n){return u(n)&&n.dispose(),null},n.forEachSome=function(n,u){for(const e of n)r(e,null,u)},n.get=function(n,...u){let r=n,e=0;for(;e<u.length&&r;)r=r[u[e++]];return r},n.isNone=function(n){return null==n},n.isSome=u,n.isUndefined=function(n){return void 0===n},n.mapMany=function(n,u){const e=new Array;for(const o of n)e.push(r(o,null,u));return e},n.mapOr=r,n.mapSome=function(n,r){const e=new Array;return n.forEach((n=>{const o=r(n);u(o)&&e.push(o)})),e},n.mapSomeFirst=function(n,r){for(const e of n){const n=r(e);if(u(n))return n}return null},n.none=null,n.nullifyNonnullableForDispose=function(n){return null},n.removeMaybe=function(n){return u(n)&&n.remove(),null},n.unwrap=function(n){return n},n.unwrapOr=function(n,r){return u(n)?n:"function"==typeof r?r():r},Object.defineProperty(n,"__esModule",{value:!0})}));

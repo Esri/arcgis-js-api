@@ -1,0 +1,637 @@
+/* ==========================================================================
+   box-sizing
+   ========================================================================== */
+
+@mixin widget {
+  .esri-widget {
+    box-sizing: border-box;
+    color: $font-color;
+    font-size: $font-size;
+    font-family: $font-family;
+    line-height: $line-height;
+    background-color: $background-color;
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    &#{&}--disabled {
+      & > * {
+        pointer-events: none;
+        opacity: $opacity--disabled;
+      }
+    }
+  }
+  .esri-widget__anchor {
+    text-decoration: none;
+    color: $button-color;
+    &:hover {
+      color: $button-color--hover;
+    }
+    &--disabled {
+      pointer-events: none;
+      opacity: $opacity--disabled;
+    }
+  }
+  .esri-widget__header {
+    align-items: center;
+    background-color: $background-color;
+    display: flex;
+    flex: 1 0 100%;
+    padding: $cap-spacing 0 $cap-spacing $side-spacing;
+    justify-content: space-between;
+    min-height: $header-height--min;
+    width: 100%;
+    .esri-widget__heading {
+      align-items: center;
+      color: $interactive-font-color;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      width: calc(100% - #{$header-button-width});
+    }
+    &-button {
+      -webkit-appearance: none;
+      align-items: center;
+      align-self: stretch;
+      background-color: transparent;
+      border: none;
+      color: $interactive-font-color;
+      cursor: pointer;
+      display: flex;
+      flex: 0 0 $header-button-width;
+      justify-content: center;
+      padding: 0;
+      width: $header-button-width;
+    }
+  }
+  .esri-widget__heading {
+    color: $heading-color;
+    font-weight: $font-weight__heading;
+    margin: 0 0 0.5rem 0;
+  }
+  h1.esri-widget__heading {
+    font-size: $font-size__h1;
+  }
+  h2.esri-widget__heading {
+    font-size: $font-size__h2;
+  }
+  h3.esri-widget__heading,
+  h4.esri-widget__heading,
+  h5.esri-widget__heading,
+  h6.esri-widget__heading {
+    font-size: $font-size__lt-h2;
+  }
+
+  .esri-widget__footer {
+    align-items: center;
+    background-color: $background-color;
+    display: flex;
+    justify-content: center;
+    min-height: $footer-height--min;
+    width: 100%;
+  }
+
+  .esri-widget__footer-pagination {
+    align-items: center;
+    color: $interactive-font-color;
+    display: flex;
+    justify-content: space-between;
+    &-previous-button,
+    &-next-button {
+      background-color: transparent;
+      border: 0;
+      margin: 0 $side-spacing--half;
+      padding: $cap-spacing $side-spacing;
+      cursor: pointer;
+      transition: background-color 125ms ease-in-out;
+      &:hover,
+      &:focus {
+        background-color: $background-color--hover;
+        color: $interactive-font-color--hover;
+      }
+    }
+  }
+
+  .esri-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: $background-color;
+    @include defaultBoxShadow();
+    padding: 0;
+    margin: $cap-spacing--eighth 0 0 0;
+    font-size: 14px;
+    line-height: 16px;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    overflow: hidden;
+    width: 100%;
+    visibility: hidden;
+    max-height: 0;
+    .esri-menu__header {
+      padding: 6px 12px;
+      background-color: $background-color--inverse;
+      color: $interactive-font-color--inverse;
+    }
+    &__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    &__list-item {
+      padding: 0.8em 1em;
+      cursor: pointer;
+      border-top: solid 1px $border-color;
+      border-left: $border-size--active solid transparent;
+    }
+    &__list-item:first-child {
+      border-top: none;
+    }
+    &__list-item--focus,
+    &__list-item:hover,
+    &__list-item:focus {
+      background-color: $background-color--hover;
+    }
+    &__list-item:active {
+      background-color: $background-color--active;
+    }
+    &__list-item--active,
+    &__list-item--active:hover,
+    &__list-item--active:focus {
+      background-color: $background-color--active;
+      border-left-color: $border-color--active;
+    }
+    &__list-item [class^="esri-icon"] {
+      padding-right: $font-size * 0.2;
+    }
+  }
+
+  .esri-widget__table {
+    color: $font-color;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    tr:nth-child(odd) {
+      background-color: rgba($background-color--inverse, 0.1);
+    }
+    tr:nth-child(even) {
+      background-color: rgba($background-color--inverse, 0.02);
+    }
+    tr {
+      a {
+        color: $interactive-font-color;
+        &:hover,
+        &:focus {
+          color: $interactive-font-color--hover;
+        }
+      }
+      td,
+      th {
+        padding: 0.5em 0.7em;
+        word-break: break-word;
+        vertical-align: top;
+        font-size: $font-size__body;
+        font-weight: $font-weight;
+      }
+      th {
+        width: 50%;
+        text-align: left;
+        border-right: 3px solid rgba(0, 0, 0, 0.05);
+      }
+      td {
+        width: 50%;
+      }
+    }
+  }
+
+  .esri-input {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: $font-color;
+    font-family: $font-family;
+    font-size: $font-size;
+    &[type="text"],
+    &[type="password"],
+    &[type="number"] {
+      height: $button-height;
+      padding: 0 0.5em;
+    }
+    &::-ms-clear {
+      display: none;
+    }
+    &::-moz-placeholder {
+      color: $font-color--placeholder;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: $font-color--placeholder;
+    }
+    &::-webkit-input-placeholder {
+      color: $font-color--placeholder;
+    }
+  }
+
+  .esri-button {
+    align-items: center;
+    background-color: $button-color;
+    border: 1px solid $button-color;
+    color: $button-color--inverse;
+    cursor: pointer;
+    display: flex;
+    font-family: inherit;
+    font-size: $font-size;
+    min-height: $button-height;
+    justify-content: center;
+    overflow: hidden;
+    padding: $cap-spacing--half $side-spacing--half;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    transition: background-color 125ms ease-in-out, border 125ms ease-in-out;
+    &:hover {
+      background-color: $button-color--hover;
+      border: 1px solid $button-color--hover;
+      color: $button-color--inverse;
+    }
+    &.esri-button--small {
+      font-size: $font-size--small;
+      min-height: $button-height--half;
+    }
+    &.esri-button--half {
+      display: inline-block;
+      width: 50%;
+    }
+    &.esri-button--third {
+      display: inline-block;
+      width: 33%;
+    }
+  }
+
+  .esri-button--secondary {
+    background-color: transparent;
+    color: $button-color;
+  }
+
+  .esri-button--tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: $button-color;
+    &:hover {
+      background-color: $background-color--hover;
+      border-color: transparent;
+      color: $button-color--hover;
+    }
+  }
+
+  .esri-button--disabled {
+    opacity: $opacity--disabled;
+    pointer-events: none;
+  }
+
+  .esri-button--drill-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $background-color;
+    cursor: pointer;
+    border: none;
+    border-radius: $border-radius;
+    text-align: unset;
+    text-decoration: none;
+    padding: $cap-spacing $side-spacing--half;
+    margin: $cap-spacing $side-spacing--half;
+    outline-offset: -4px;
+    transition: background-color 125ms ease-in-out;
+    @include borderBoxShadow();
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+    }
+    &__title {
+      font-size: $font-size;
+      font-family: $font-family;
+    }
+    [class*="esri-icon"] {
+      padding: 0 $side-spacing--half;
+    }
+  }
+
+  [class*="esri-icon"] {
+    font-size: $icon-size;
+    display: inline-block;
+  }
+
+  .esri-widget__content--empty {
+    align-items: center;
+    color: $interactive-font-color;
+    display: flex;
+    flex-flow: column wrap;
+    padding: $cap-spacing--plus-half $side-spacing--plus-half;
+    text-align: center;
+
+    h1.esri-widget__heading,
+    h2.esri-widget__heading,
+    h3.esri-widget__heading,
+    h4.esri-widget__heading,
+    h5.esri-widget__heading {
+      font-weight: $font-weight;
+    }
+  }
+
+  .esri-widget__content-illustration--empty {
+    padding: 1rem 0;
+    width: 128px;
+  }
+
+  .esri-widget__content-icon--empty {
+    padding: 0.5rem 0;
+    width: 32px;
+  }
+
+  // Select
+  $select_caret: "data:image/svg+xml,%3Csvg width%3D%2732%27%20height%3D%2732%27%20viewBox%3D%270%200%2032%2032%27%20xmlns%3D%27http://www.w3.org/2000/svg%27%3E%3Cpath%20d%3D%27M11%2013l5%205.833L21%2013z%27%20fill%3D%27%23" +
+    str-slice(#{$interactive-font-color}, 2) + "%27%20fill-rule%3D%27nonzero%27/%3E%3C/svg%3E";
+  .esri-select {
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 0.85em;
+    width: 100%;
+    height: $button-height;
+    color: $font-color;
+    border: 1px solid $border-color;
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    padding: 0 0.5em;
+    background: url($select_caret) no-repeat right center $background-color;
+  }
+
+  .esri-select::-ms-expand {
+    display: none;
+  }
+
+  // Disabled
+  .esri-disabled a,
+  .esri-disabled [class*="esri-icon"],
+  .esri-disabled [role="menu"],
+  .esri-disabled [role="checkbox"] {
+    color: $interactive-font-color--disabled;
+  }
+
+  .keynav-mode {
+    .esri-widget {
+      //  Saving this for when we can toggle a key-nav class
+      &:focus {
+        @include outlineStyle();
+      }
+      * {
+        &:focus {
+          @include outlineStyle();
+        }
+      }
+    }
+  }
+
+  /* ==========================================================================
+   Loader
+   ========================================================================== */
+  .esri-widget__loader-animation {
+    animation: esri-rotate 1250ms infinite linear;
+    transform: translateZ(0);
+    border: 0.15em solid transparent;
+    border-color: rgba($font-color, 0.8) $border-color $border-color $border-color;
+    border-radius: 100%;
+    display: block;
+    font-size: $spinning-loader-size;
+    height: 1em;
+    width: 1em;
+  }
+
+  /* ==========================================================================
+   Widget Button
+   ========================================================================== */
+
+  .esri-widget--button {
+    font-size: $font-size;
+    background-color: $background-color;
+    color: $interactive-font-color;
+    width: $button-width;
+    height: $button-height;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 125ms ease-in-out;
+    &:hover {
+      background-color: $background-color--hover;
+      color: $interactive-font-color--hover;
+    }
+    &:active {
+      background-color: $background-color--active;
+    }
+  }
+
+  /* ==========================================================================
+   Components (top Widget node in esri-ui-corner)
+   ========================================================================== */
+
+  .esri-ui-corner {
+    .esri-component {
+      @include defaultBoxShadow();
+    }
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-component.esri-widget--panel,
+    .esri-component.esri-widget--panel-height-only {
+      min-height: $panel-min-height--xsmall;
+      transition: max-height 250ms ease-in-out;
+      overflow-y: auto;
+    }
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-component > .esri-widget--panel,
+    .esri-component.esri-widget--panel {
+      width: $panel-width;
+      .esri-widget--panel {
+        // widget--panel inside another widget--panel
+        width: auto;
+      }
+    }
+  }
+
+  // Max heights
+  .esri-view-height-greater-than-medium {
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-ui-corner .esri-component.esri-widget--panel,
+    .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+      max-height: $view-height--gt-medium__component-max-height;
+    }
+  }
+  .esri-view-height-medium {
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-ui-corner .esri-component.esri-widget--panel,
+    .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+      max-height: $view-height--medium__component-max-height;
+    }
+  }
+  .esri-view-height-small {
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-ui-corner .esri-component.esri-widget--panel,
+    .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+      max-height: $view-height--small__component-max-height;
+    }
+  }
+  .esri-view-height-xsmall {
+    .esri-expand .esri-widget--panel,
+    .esri-expand .esri-widget--panel-height-only,
+    .esri-ui-corner .esri-component.esri-widget--panel,
+    .esri-ui-corner .esri-component.esri-widget--panel-height-only {
+      max-height: $view-height--xsmall__component-max-height;
+    }
+  }
+
+  .esri-ui-bottom-right,
+  .esri-ui-bottom-left {
+    .esri-menu {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: $cap-spacing--eighth;
+    }
+  }
+
+  /* ==========================================================================
+   RTL
+   ========================================================================== */
+
+  html[dir="rtl"] {
+    .esri-widget__table {
+      th {
+        text-align: right;
+        border-right: none;
+        border-left: 3px solid rgba(0, 0, 0, 0.05);
+      }
+    }
+    .esri-select {
+      background-position: left 50%;
+    }
+    .esri-menu__list-item [class^="esri-icon"] {
+      padding-right: 0;
+      padding-left: floor($font-size * 0.2);
+    }
+    .esri-menu__list-item {
+      border-left: none;
+      border-right: $border-size--active solid transparent;
+    }
+    .esri-menu__list-item--active {
+      border-right-color: $border-color--active;
+    }
+  }
+
+  /* ==========================================================================
+   accessibility
+   ========================================================================== */
+
+  .esri-icon-font-fallback-text {
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }
+
+  [class^="esri-icon"] {
+    // fixes IE11 bug where animation will continue after animation class is removed
+    // https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/4784
+    animation: none;
+  }
+
+  @keyframes esri-fade-in {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .esri-rotating {
+    animation: esri-rotate 1250ms infinite linear;
+    transform: translateZ(0);
+  }
+
+  /* ==========================================================================
+   clearfixing
+   ========================================================================== */
+
+  /**
+ * taken from http://nicolasgallagher.com/micro-clearfix-hack/
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+  .esri-clearfix {
+    &:before,
+    &:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  /* ==========================================================================
+   interaction
+   ========================================================================== */
+
+  .esri-interactive {
+    cursor: pointer;
+  }
+
+  /* ==========================================================================
+   visibility
+   ========================================================================== */
+
+  .esri-hidden {
+    display: none !important;
+  }
+
+  .esri-invisible {
+    visibility: hidden !important;
+  }
+
+  .esri-offscreen {
+    position: absolute;
+    top: -999em;
+    left: -999em;
+  }
+}
+
+@if $include_Widget == true {
+  @include widget();
+}

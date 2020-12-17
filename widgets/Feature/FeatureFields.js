@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../core/accessorSupport/decorators","../Widget","./FeatureFields/FeatureFieldsViewModel","../support/uriUtils","../support/widget"],(function(e,t,r,s,i,o,l,d){"use strict";var a="esri-feature-fields",n="esri-feature-fields__field-header",u="esri-feature-fields__field-data",f="esri-feature-fields__field-data--date",p="esri-widget__table";return function(e){function t(t,r){var s=e.call(this,t,r)||this;return s.attributes=null,s.expressionInfos=null,s.fieldInfos=null,s.viewModel=new o,s.messages=null,s.messagesURIUtils=null,s}return r.__extends(t,e),t.prototype.renderFieldInfo=function(e,t){var r,s=this.viewModel.attributes,i=e.fieldName,o=e.label||i,a=s?null==s[i]?"":s[i]:"",p=!(!e.format||!e.format.dateFormat),c="number"==typeof a&&!p?this._forceLTR(a):l.autoLink(this.messagesURIUtils,a),_=((r={})[f]=p,r);return d.tsx("tr",{key:"fields-element-info-row-"+i+"-"+t},d.tsx("th",{key:"fields-element-info-row-header-"+i+"-"+t,class:n,innerHTML:o}),d.tsx("td",{key:"fields-element-info-row-data-"+i+"-"+t,class:this.classes(u,_),innerHTML:c}))},t.prototype.renderFields=function(){var e=this,t=this.viewModel.formattedFieldInfos;return t.length?d.tsx("table",{class:p,summary:this.messages.fieldsSummary},d.tsx("tbody",null,t.map((function(t,r){return e.renderFieldInfo(t,r)})))):null},t.prototype.render=function(){return d.tsx("div",{class:a},this.renderFields())},t.prototype._forceLTR=function(e){return"&lrm;"+e},r.__decorate([s.aliasOf("viewModel.attributes")],t.prototype,"attributes",void 0),r.__decorate([s.aliasOf("viewModel.expressionInfos")],t.prototype,"expressionInfos",void 0),r.__decorate([s.aliasOf("viewModel.fieldInfos")],t.prototype,"fieldInfos",void 0),r.__decorate([s.property({type:o}),d.renderable(["viewModel.attributes","viewModel.formattedFieldInfos"])],t.prototype,"viewModel",void 0),r.__decorate([s.property(),d.renderable(),d.messageBundle("esri/widgets/Feature/t9n/Feature")],t.prototype,"messages",void 0),r.__decorate([s.property(),d.renderable(),d.messageBundle("esri/widgets/support/t9n/uriUtils")],t.prototype,"messagesURIUtils",void 0),t=r.__decorate([s.subclass("esri.widgets.Feature.FeatureFields")],t)}(i)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/aliasOf","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../support/widgetUtils","../support/decorators/messageBundle","../support/decorators/renderable","../../chunks/index","../Widget","./FeatureFields/FeatureFieldsViewModel","../support/uriUtils"],(function(e,s,r,t,o,i,l,a,d,n,u,c,p,f,_,m,y,g){"use strict";const h="esri-feature-fields",w="esri-feature-fields__field-header",b="esri-feature-fields__field-data",v="esri-feature-fields__field-data--date",F="esri-widget__table";let I=function(s){function r(e,r){var t;return(t=s.call(this,e,r)||this).attributes=null,t.expressionInfos=null,t.fieldInfos=null,t.viewModel=new y,t.messages=null,t.messagesURIUtils=null,t}e._inheritsLoose(r,s);var t=r.prototype;return t.renderFieldInfo=function(e,s){const{attributes:r}=this.viewModel,t=e.fieldName,o=e.label||t,i=r?null==r[t]?"":r[t]:"",l=!(!e.format||!e.format.dateFormat),a="number"==typeof i&&!l?this._forceLTR(i):g.autoLink(this.messagesURIUtils,i),d={[v]:l};return _.jsx("tr",{key:`fields-element-info-row-${t}-${s}`},_.jsx("th",{key:`fields-element-info-row-header-${t}-${s}`,class:w,innerHTML:o}),_.jsx("td",{key:`fields-element-info-row-data-${t}-${s}`,class:this.classes(b,d),innerHTML:a}))},t.renderFields=function(){const{formattedFieldInfos:e}=this.viewModel;return e.length?_.jsx("table",{class:F,summary:this.messages.fieldsSummary},_.jsx("tbody",null,e.map(((e,s)=>this.renderFieldInfo(e,s))))):null},t.render=function(){return _.jsx("div",{class:h},this.renderFields())},t._forceLTR=function(e){return`&lrm;${e}`},r}(m);return s.__decorate([l.aliasOf("viewModel.attributes")],I.prototype,"attributes",void 0),s.__decorate([l.aliasOf("viewModel.expressionInfos")],I.prototype,"expressionInfos",void 0),s.__decorate([l.aliasOf("viewModel.fieldInfos")],I.prototype,"fieldInfos",void 0),s.__decorate([i.property({type:y}),f.renderable(["viewModel.attributes","viewModel.formattedFieldInfos"])],I.prototype,"viewModel",void 0),s.__decorate([i.property(),f.renderable(),p.messageBundle("esri/widgets/Feature/t9n/Feature")],I.prototype,"messages",void 0),s.__decorate([i.property(),f.renderable(),p.messageBundle("esri/widgets/support/t9n/uriUtils")],I.prototype,"messagesURIUtils",void 0),I=s.__decorate([a.subclass("esri.widgets.Feature.FeatureFields")],I),I}));

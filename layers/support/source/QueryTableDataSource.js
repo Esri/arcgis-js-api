@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../geometry","../../../core/JSONSupport","../../../core/accessorSupport/decorators"],(function(e,r,t,o,p,a){"use strict";Object.defineProperty(r,"__esModule",{value:!0}),r.QueryTableDataSource=void 0;var i=function(e){function r(r){var t=e.call(this,r)||this;return t.type="query-table",t}var p;return t.__extends(r,e),p=r,r.prototype.clone=function(){var e,r=this,t=r.workspaceId,o=r.query,a=r.oidFields,i=r.spatialReference,y=r.geometryType,n={workspaceId:t,query:o,oidFields:a,spatialReference:null!==(e=null==i?void 0:i.clone())&&void 0!==e?e:void 0,geometryType:y};return new p(n)},t.__decorate([a.enumeration({queryTable:"query-table"})],r.prototype,"type",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"workspaceId",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"query",void 0),t.__decorate([a.property({type:String,json:{write:!0}})],r.prototype,"oidFields",void 0),t.__decorate([a.property({type:o.SpatialReference,json:{write:!0}})],r.prototype,"spatialReference",void 0),t.__decorate([a.enumeration(o.featureGeometryTypeKebabDictionary)],r.prototype,"geometryType",void 0),r=p=t.__decorate([a.subclass("esri.layers.support.source.QueryTableDataSource")],r)}(p.JSONSupport);r.QueryTableDataSource=i}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport","../../../geometry/SpatialReference","../../../geometry/support/typeUtils","../../../geometry"],(function(e,r,o,t,a,p,u,c,s,y,i,n,l,d,S,b){"use strict";var _;e.QueryTableDataSource=_=function(e){function o(r){var o;return(o=e.call(this,r)||this).type="query-table",o}return r._inheritsLoose(o,e),o.prototype.clone=function(){var e;const{workspaceId:r,query:o,oidFields:t,spatialReference:a,geometryType:p}=this,u={workspaceId:r,query:o,oidFields:t,spatialReference:null!=(e=null==a?void 0:a.clone())?e:void 0,geometryType:p};return new _(u)},o}(l.JSONSupport),o.__decorate([c.enumeration({queryTable:"query-table"})],e.QueryTableDataSource.prototype,"type",void 0),o.__decorate([u.property({type:String,json:{write:!0}})],e.QueryTableDataSource.prototype,"workspaceId",void 0),o.__decorate([u.property({type:String,json:{write:!0}})],e.QueryTableDataSource.prototype,"query",void 0),o.__decorate([u.property({type:String,json:{write:!0}})],e.QueryTableDataSource.prototype,"oidFields",void 0),o.__decorate([u.property({type:d,json:{write:!0}})],e.QueryTableDataSource.prototype,"spatialReference",void 0),o.__decorate([c.enumeration(S.featureGeometryTypeKebabDictionary)],e.QueryTableDataSource.prototype,"geometryType",void 0),e.QueryTableDataSource=_=o.__decorate([s.subclass("esri.layers.support.source.QueryTableDataSource")],e.QueryTableDataSource),Object.defineProperty(e,"__esModule",{value:!0})}));

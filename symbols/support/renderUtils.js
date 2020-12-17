@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","../../kernel","../../request","../../core/colorUtils","../../core/Error","../../core/has","../../core/promiseUtils","../../libs/maquette/index","./svgUtils"],(function(e,t,r,i,a,n,o,h,c,l){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.tintImageWithColor=t.renderSymbol=void 0;var d=c.createProjector();function u(e,t,r,i,n){switch(n){case"multiply":e[t+0]*=r[0],e[t+1]*=r[1],e[t+2]*=r[2],e[t+3]*=r[3];break;default:var o=a.toHSV({r:e[t+0],g:e[t+1],b:e[t+2]});o.h=i.h,o.s=i.s,o.v=o.v/100*i.v;var h=a.toRGB(o);e[t+0]=h.r,e[t+1]=h.g,e[t+2]=h.b,e[t+3]*=r[3]}}t.renderSymbol=function(e,t,r){var i=Math.ceil(t[0]),a=Math.ceil(t[1]);if(!e.some((function(e){return!!e.length})))return null;var n=r&&r.node||document.createElement("div");return null!=r.opacity&&(n.style.opacity=r.opacity.toString()),d.append(n,l.renderSVG.bind(null,e,i,a,r)),n},t.tintImageWithColor=function(e,t,c,l,d){return function(e,t,r){return e?i(e,{responseType:"image"}).then((function(e){var i=e.data,a=i.width,n=i.height,o=a/n,h=t;if(r){var c=Math.max(a,n);h=Math.min(h,c)}return{image:i,width:o<=1?Math.ceil(h*o):h,height:o<=1?h:Math.ceil(h/o)}})):h.reject(new n("renderUtils: imageDataSize","href not provided."))}(e,t,d).then((function(i){var n=i.width?i.width:t,h=i.height?i.height:t;if(i.image&&function(e,t){return!(!e||"ignore"===t)&&("multiply"!==t||255!==e.r||255!==e.g||255!==e.b||1!==e.a)}(c,l)){var d=i.image.width,g=i.image.height;(o("edge")||o("ie"))&&/\.svg$/i.test(e)&&(d-=1,g-=1);var s=function(e,t){e=Math.ceil(e),t=Math.ceil(t);var r=document.createElement("canvas");r.width=e,r.height=t,r.style.width=e+"px",r.style.height=t+"px";var i=r.getContext("2d");return i.clearRect(0,0,e,t),i}(n,h);s.drawImage(i.image,0,0,d,g,0,0,n,h);for(var m=s.getImageData(0,0,n,h),v=[c.r/255,c.g/255,c.b/255,c.a],f=a.toHSV(c),p=0;p<m.data.length;p+=4)u(m.data,p,v,f,l);s.putImageData(m,0,0),e=s.canvas.toDataURL("image/png")}else{var w=r.id&&r.id.findCredential(e);if(w&&w.token){var y=-1===e.indexOf("?")?"?":"&";e=""+e+y+"token="+w.token}}return{url:e,width:n,height:h}})).catch((function(){return{url:e,width:t,height:t}}))}}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../core/has","../../core/Error","../../core/promiseUtils","../../kernel","../../request","../../core/colorUtils","../../libs/maquette/projection","../../libs/maquette/projector","./svgUtils"],(function(t,e,i,n,r,o,a,c,h,l){"use strict";const s=h.createProjector();function d(t,e,i,n,r){switch(r){case"multiply":t[e+0]*=i[0],t[e+1]*=i[1],t[e+2]*=i[2],t[e+3]*=i[3];break;default:{const r=a.toHSV({r:t[e+0],g:t[e+1],b:t[e+2]});r.h=n.h,r.s=n.s,r.v=r.v/100*n.v;const o=a.toRGB(r);t[e+0]=o.r,t[e+1]=o.g,t[e+2]=o.b,t[e+3]*=i[3];break}}}t.renderSymbol=function(t,e,i){const n=Math.ceil(e[0]),r=Math.ceil(e[1]);if(!t.some((t=>!!t.length)))return null;const o=i&&i.node||document.createElement("div");return null!=i.opacity&&(o.style.opacity=i.opacity.toString()),s.append(o,l.renderSVG.bind(null,t,n,r,i)),o},t.tintImageWithColor=function(t,c,h,l,s){return function(t,e,r){return t?o(t,{responseType:"image"}).then((t=>{const i=t.data,n=i.width,o=i.height,a=n/o;let c=e;if(r){const t=Math.max(n,o);c=Math.min(c,t)}return{image:i,width:a<=1?Math.ceil(c*a):c,height:a<=1?c:Math.ceil(c/a)}})):n.reject(new i("renderUtils: imageDataSize","href not provided."))}(t,c,s).then((i=>{const n=i.width?i.width:c,o=i.height?i.height:c;if(i.image&&function(t,e){return!(!t||"ignore"===e||"multiply"===e&&255===t.r&&255===t.g&&255===t.b&&1===t.a)}(h,l)){let r=i.image.width,c=i.image.height;(e("edge")||e("ie"))&&/\.svg$/i.test(t)&&(r-=1,c-=1);const s=function(t,e){t=Math.ceil(t),e=Math.ceil(e);const i=document.createElement("canvas");i.width=t,i.height=e,i.style.width=t+"px",i.style.height=e+"px";const n=i.getContext("2d");return n.clearRect(0,0,t,e),n}(n,o);s.drawImage(i.image,0,0,r,c,0,0,n,o);const g=s.getImageData(0,0,n,o),u=[h.r/255,h.g/255,h.b/255,h.a],m=a.toHSV(h);for(let t=0;t<g.data.length;t+=4)d(g.data,t,u,m,l);s.putImageData(g,0,0),t=s.canvas.toDataURL("image/png")}else{const e=r.id&&r.id.findCredential(t);if(e&&e.token){const i=-1===t.indexOf("?")?"?":"&";t=`${t}${i}token=${e.token}`}}return{url:t,width:n,height:o}})).catch((function(){return{url:t,width:c,height:c}}))},Object.defineProperty(t,"__esModule",{value:!0})}));

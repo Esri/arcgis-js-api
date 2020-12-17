@@ -40,20 +40,23 @@
 
 // esri.core
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
-import { SystemOrLengthUnit } from "esri/core/unitUtils";
+import { isMeasurementSystem, SystemOrLengthUnit } from "esri/core/unitUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
+// esri.core.t9n
+import UnitsMessages from "esri/core/t9n/Units";
+
 // esri.views
-import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Widget = require("esri/widgets/Widget");
+import Widget from "esri/widgets/Widget";
 
 // esri.widgets.DistanceMeasurement2D
-import DistanceMeasurement2DViewModel = require("esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel");
+import DistanceMeasurement2DViewModel from "esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel";
 
 // esri.widgets.DistanceMeasurement2D.t9n
 import DistanceMeasurement2DMessages from "esri/widgets/DistanceMeasurement2D/t9n/DistanceMeasurement2D";
@@ -191,6 +194,23 @@ class DistanceMeasurement2D extends Widget {
   messages: DistanceMeasurement2DMessages = null;
 
   //----------------------------------
+  //  messagesUnits
+  //----------------------------------
+
+  /**
+   * @name messagesUnits
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @renderable()
+  @messageBundle("esri/core/t9n/Units")
+  messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
   //  unit
   //----------------------------------
 
@@ -199,7 +219,7 @@ class DistanceMeasurement2D extends Widget {
    *
    * @name unit
    * @instance
-   * @type {"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers"}
+   * @type {module:esri/core/units~SystemOrLengthUnit}
    * @example
    *
    * // To create the DistanceMeasurement2D widget that displays distance in yards
@@ -223,7 +243,7 @@ class DistanceMeasurement2D extends Widget {
    *
    * @name unitOptions
    * @instance
-   * @type {Array<"metric" | "imperial" | "inches" | "feet" | "us-feet" | "yards" | "miles" | "nautical-miles" | "meters" | "kilometers">}
+   * @type {module:esri/core/units~SystemOrLengthUnit[]}
    * @example
    *
    * // To display the available units to the console
@@ -316,7 +336,7 @@ class DistanceMeasurement2D extends Widget {
   //--------------------------------------------------------------------------
 
   render(): VNode {
-    const { id, messages, viewModel, visible } = this;
+    const { id, messages, messagesUnits, viewModel, visible } = this;
     const { active, isSupported, measurementLabel, state, unit, unitOptions } = viewModel;
 
     const isDisabled = state === "disabled";
@@ -375,7 +395,9 @@ class DistanceMeasurement2D extends Widget {
           >
             {unitOptions.map((unitOption) => (
               <option key={unitOption} value={unitOption}>
-                {messages.units[unitOption]}
+                {isMeasurementSystem(unitOption)
+                  ? messagesUnits.systems[unitOption]
+                  : messagesUnits.units[unitOption]?.pluralCapitalized}
               </option>
             ))}
           </select>
@@ -448,4 +470,4 @@ class DistanceMeasurement2D extends Widget {
   }
 }
 
-export = DistanceMeasurement2D;
+export default DistanceMeasurement2D;

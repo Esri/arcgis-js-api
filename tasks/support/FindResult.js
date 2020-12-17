@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../geometry","../../Graphic","../../core/JSONSupport","../../core/maybe","../../core/accessorSupport/decorators"],(function(e,t,r,o,a,p,i,u){"use strict";return function(e){function t(t){var r=e.call(this,t)||this;return r.displayFieldName=null,r.feature=null,r.foundFieldName=null,r.layerId=null,r.layerName=null,r.value=void 0,r}return r.__extends(t,e),t.prototype.readFeature=function(e,t){var r={attributes:{}};return t.attributes&&(r.attributes=t.attributes),t.geometry&&(r.geometry=t.geometry),a.fromJSON(r)},t.prototype.writeFeature=function(e,t){if(e){var a=e.attributes,p=e.geometry;a&&(t.attributes=r.__assign({},a)),i.isSome(p)&&(t.geometry=p.toJSON(),t.geometryType=o.typeKebabDictionary.toJSON(p.type))}},r.__decorate([u.property({type:String,json:{write:!0}})],t.prototype,"displayFieldName",void 0),r.__decorate([u.property({type:a})],t.prototype,"feature",void 0),r.__decorate([u.reader("feature",["attributes","geometry"])],t.prototype,"readFeature",null),r.__decorate([u.writer("feature")],t.prototype,"writeFeature",null),r.__decorate([u.property({type:String,json:{write:!0}})],t.prototype,"foundFieldName",void 0),r.__decorate([u.property({type:Number,json:{write:!0}})],t.prototype,"layerId",void 0),r.__decorate([u.property({type:String,json:{write:!0}})],t.prototype,"layerName",void 0),r.__decorate([u.property({json:{write:!0}})],t.prototype,"value",void 0),t=r.__decorate([u.subclass("esri.tasks.support.FindResult")],t)}(p.JSONSupport)}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/typeUtils","../../geometry","../../Graphic"],(function(e,r,t,o,p,a,s,u,i,c,n,y,l,d,_,m,S){"use strict";let b=function(r){function t(e){var t;return(t=r.call(this,e)||this).displayFieldName=null,t.feature=null,t.foundFieldName=null,t.layerId=null,t.layerName=null,t.value=void 0,t}e._inheritsLoose(t,r);var p=t.prototype;return p.readFeature=function(e,r){const t={attributes:{}};return r.attributes&&(t.attributes=r.attributes),r.geometry&&(t.geometry=r.geometry),S.fromJSON(t)},p.writeFeature=function(e,r){if(!e)return;const{attributes:t,geometry:p}=e;t&&(r.attributes={...t}),o.isSome(p)&&(r.geometry=p.toJSON(),r.geometryType=_.typeKebabDictionary.toJSON(p.type))},t}(d.JSONSupport);return r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"displayFieldName",void 0),r.__decorate([s.property({type:S})],b.prototype,"feature",void 0),r.__decorate([u.reader("feature",["attributes","geometry"])],b.prototype,"readFeature",null),r.__decorate([c.writer("feature")],b.prototype,"writeFeature",null),r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"foundFieldName",void 0),r.__decorate([s.property({type:Number,json:{write:!0}})],b.prototype,"layerId",void 0),r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"layerName",void 0),r.__decorate([s.property({json:{write:!0}})],b.prototype,"value",void 0),b=r.__decorate([i.subclass("esri.tasks.support.FindResult")],b),b}));

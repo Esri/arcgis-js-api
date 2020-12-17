@@ -1,28 +1,28 @@
 // esri
-import { substitute } from "esri/../../intl";
+import { substitute } from "esri/intl";
 
 // esri.core
-import Collection = require("esri/../../core/Collection");
-import Handles = require("esri/../../core/Handles");
-import { pt2px } from "esri/../../core/screenUtils";
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
+import { pt2px } from "esri/core/screenUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/../../core/accessorSupport/decorators";
+import { subclass, property } from "esri/core/accessorSupport/decorators";
 
 // esri.layers
-import ImageryLayer = require("esri/../../layers/ImageryLayer");
-import Layer = require("esri/../../layers/Layer");
+import ImageryLayer from "esri/layers/ImageryLayer";
+import Layer from "esri/layers/Layer";
 
 // esri.symbols.support
-import { Descriptor } from "esri/../../symbols/support/interfaces";
-import { renderSVG } from "esri/../../symbols/support/svgUtils";
+import { Descriptor } from "esri/symbols/support/interfaces";
+import { renderSVG } from "esri/symbols/support/svgUtils";
 
 // esri.t9n
-import CommonMessages from "esri/../../t9n/common";
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView = require("esri/../../views/MapView");
-import SceneView = require("esri/../../views/SceneView");
+import MapView from "esri/views/MapView";
+import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import {
@@ -32,23 +32,31 @@ import {
   OpacityRampElement,
   HeatmapRampElement,
   SizeRampElement,
+  UnivariateAboveAndBelowRampElement,
   ImageSymbolTableElementInfo
-} from "esri/../interfaces";
-import Widget = require("esri/../Widget");
+} from "esri/interfaces";
+import Widget from "esri/Widget";
 
 // esri.widgets.Legend.styles.support
-import { renderRelationshipRamp } from "esri/widgets/support/utils";
+import {
+  renderRelationshipRamp,
+  getUnivariateAboveAndBelowColorRampPreview,
+  getUnivariateAboveAndBelowColorRampSize,
+  getUnivariateAboveAndBelowSizeRampSize,
+  getUnivariateAboveAndBelowColorRampMargin,
+  getUnivariateAboveAndBelowRampElements
+} from "esri/widgets/support/utils";
 
 // esri.widgets.Legend.support
-import ActiveLayerInfo = require("esri/support/ActiveLayerInfo");
+import ActiveLayerInfo from "esri/support/ActiveLayerInfo";
 import { attachToNode, getTitle, isImageryStretchedLegend } from "esri/support/styleUtils";
 
 // esri.widgets.Legend.t9n
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
-import { VNode } from "esri/../support/interfaces";
-import { accessibleHandler, tsx, renderable, messageBundle } from "esri/../support/widget";
+import { VNode } from "esri/support/interfaces";
+import { accessibleHandler, tsx, renderable, messageBundle } from "esri/support/widget";
 
 const CSS = {
   activated: "esri-legend--card__carousel-indicator--activated",
@@ -85,6 +93,11 @@ const CSS = {
   symbolContainer: "esri-legend--card__symbol-container",
   sizeRampContainer: "esri-legend--card__size-ramp-container",
   sizeRampPreview: "esri-legend--card__size-ramp-preview",
+  rampContainer: "esri-legend__ramps",
+  sizeRampHorizontal: "esri-legend__size-ramp--horizontal",
+  rampLabelsContainer: "esri-legend__ramp-labels",
+  layerInfo: "esri-legend__layer-cell esri-legend__layer-cell--info",
+  univariateAboveAndBelowColorRamp: "esri-univariate-above-and-below-ramp__color--card",
   // common
   hidden: "esri-hidden",
   header: "esri-widget__heading"
@@ -552,6 +565,13 @@ class Card extends Widget {
           {renderRelationshipRamp(legendElement, this.id, layer.opacity)}
         </div>
       );
+    } else if (legendElement.type === "univariate-above-and-below-ramp") {
+      content = (
+        <div key={key} class={CSS.section}>
+          {titleSection}
+          {this._renderUnivariateAboveAndBelowRamp(legendElement, layer.opacity)}
+        </div>
+      );
     }
 
     if (!content) {
@@ -561,6 +581,95 @@ class Card extends Widget {
     this._sectionMap.set(key, content);
 
     return content;
+  }
+
+  private _renderUnivariateAboveAndBelowRamp(
+    legendElement: UnivariateAboveAndBelowRampElement,
+    opacity: number
+  ): VNode {
+    const { sizeRampElement, colorRampElement } = getUnivariateAboveAndBelowRampElements(
+      legendElement,
+      opacity,
+      "horizontal"
+    );
+
+    const sizeRampWidth = getUnivariateAboveAndBelowSizeRampSize(
+      sizeRampElement,
+      "full",
+      "horizontal"
+    );
+    const colorRampAboveWidth = getUnivariateAboveAndBelowColorRampSize(
+      sizeRampElement,
+      "above",
+      "horizontal"
+    );
+    const colorRampBelowWidth = getUnivariateAboveAndBelowColorRampSize(
+      sizeRampElement,
+      "below",
+      "horizontal"
+    );
+    const colorRampHeight = 12;
+    const colorRampAbovePreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+      width: colorRampAboveWidth,
+      height: colorRampHeight,
+      rampAlignment: "horizontal",
+      opacity,
+      type: "above"
+    });
+    const colorRampBelowPreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+      width: colorRampBelowWidth,
+      height: colorRampHeight,
+      rampAlignment: "horizontal",
+      opacity,
+      type: "below"
+    });
+    const colorRampLeftMargin = getUnivariateAboveAndBelowColorRampMargin(sizeRampElement, "card");
+    const labels = sizeRampElement.infos.map((stop) => stop.label);
+    const labelsContent = labels.map((label, index) =>
+      index === 0 || index === 4 ? <div key={index}>{label}</div> : null
+    );
+
+    const layerRowStyles = { display: "flex", flexDirection: "column" };
+    const sizeRampStyles = { display: "flex", flexDirection: "row" };
+    const colorRampStyles = {
+      marginTop: "3px",
+      marginLeft: `${colorRampLeftMargin}px`,
+      display: "flex"
+    };
+    const labelStyles = {
+      width: `${sizeRampWidth}px`,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between"
+    };
+
+    return (
+      <div class={CSS.layerRow} key="size-ramp-preview" styles={layerRowStyles}>
+        <div
+          class={this.classes(CSS.symbolContainer, CSS.sizeRampHorizontal)}
+          styles={sizeRampStyles}
+        >
+          {sizeRampElement.infos.map((info, i) => (
+            <div key={i} class={CSS.symbol} bind={info.preview} afterCreate={attachToNode} />
+          ))}
+        </div>
+        {colorRampAbovePreview ? (
+          <div
+            class={CSS.univariateAboveAndBelowColorRamp}
+            styles={colorRampStyles}
+            key="color-ramp-preview"
+          >
+            <div bind={colorRampAbovePreview} afterCreate={attachToNode} />
+            <div bind={colorRampBelowPreview} afterCreate={attachToNode} />
+          </div>
+        ) : null}
+        <div class={CSS.layerInfo}>
+          <div class={CSS.rampLabelsContainer} styles={labelStyles}>
+            {labelsContent}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   private _renderLegendForElementInfo(
@@ -577,7 +686,7 @@ class Card extends Widget {
 
     const isStretched = isImageryStretchedLegend(layer as ImageryLayer, legendType);
 
-    if (elementInfo.symbol && elementInfo.preview) {
+    if (elementInfo.preview) {
       if (elementInfo.symbol.type.indexOf("simple-fill") === -1) {
         if (!elementInfo.label) {
           return <div key={rowIndex} bind={elementInfo.preview} afterCreate={attachToNode} />;
@@ -933,4 +1042,4 @@ class Card extends Widget {
   }
 }
 
-export = Card;
+export default Card;

@@ -1,0 +1,385 @@
+@mixin elevationProfile() {
+  $width: 550px;
+  $height: 300px;
+  $chart-height-portrait: 150px;
+
+  $progress-bar-height: 3px;
+
+  $header-height: 30px;
+  $loading-message-font-size: $font-size--small;
+
+  $actions-spacing: $side-spacing--half;
+
+  $statistics-font-size: $font-size--tiny;
+  $statistics-spacing: $side-spacing;
+  $statistics-slope-values-spacing: $side-spacing--half;
+  $statistics-not-available-opacity: 0.4;
+
+  $toggle-button-width: 34px;
+  $popover-padding: $cap-spacing $side-spacing;
+  $popover-border: 1px solid $border-color;
+  $popover-background-color: $background-color;
+
+  $legend-font-size: $font-size--small;
+  $legend-label-spacing: $side-spacing--plus-half;
+  $legend-inactive-opacity: 0.5;
+
+  $checkbox-size: 14px;
+  $checkbox-border-size: 1px;
+  $checkbox-icon-size: 10px;
+
+  $color-indicator-width: 10px;
+  $color-indicator-height: 3px;
+  $color-indicator-spacing: $side-spacing--half;
+
+  //----------------------------------------------------------------------------
+  // Widget
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile {
+    &.esri-component.esri-widget--panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: $width;
+      height: $height;
+      padding: $cap-spacing $side-spacing;
+    }
+
+    &__progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: $progress-bar-height;
+      transition: opacity 500ms ease-in-out, width 200ms ease-in-out;
+      opacity: 0;
+      background-color: $border-color--active;
+
+      &--visible {
+        opacity: 1;
+        transition: opacity 100ms ease-in-out, width 200ms ease-in-out;
+      }
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      height: $header-height;
+      margin-bottom: $cap-spacing--half;
+      align-items: center;
+    }
+
+    &__header-spacer {
+      width: 100%;
+    }
+
+    &__loading-message {
+      font-size: $loading-message-font-size;
+      flex-shrink: 0;
+    }
+
+    $footer-v-half-gap: $cap-spacing--half;
+    $footer-h-half-gap: $side-spacing;
+
+    &__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: (-$footer-v-half-gap) (-$footer-h-half-gap);
+      margin-top: -$footer-v-half-gap + $cap-spacing;
+    }
+
+    &__legend-container {
+      flex: 1;
+      flex-grow: 1;
+      align-items: center;
+      margin: $footer-v-half-gap (-$legend-label-spacing / 2 + $footer-h-half-gap);
+    }
+
+    &__actions-container {
+      display: flex;
+      align-items: stretch;
+      align-self: flex-end;
+      justify-content: flex-end;
+      flex: 1;
+      flex-grow: 0;
+      margin: (-$actions-spacing / 2 + $footer-v-half-gap) (-$actions-spacing / 2 + $footer-h-half-gap);
+    }
+
+    &__action-button {
+      width: auto;
+      flex-shrink: 0;
+      margin: $actions-spacing / 2;
+    }
+
+    &__prompt-container {
+      display: flex;
+      width: 100%;
+      margin: 0;
+      padding: $cap-spacing $side-spacing;
+      min-height: 0;
+      text-align: center;
+      flex-shrink: 1;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+
+      > p {
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    &__chart-container {
+      width: 100%;
+      min-height: 0;
+      flex-shrink: 1;
+      flex-grow: 1;
+      margin-top: -10px; // Compensate for amCharts padding
+    }
+
+    // Portrait mode
+    // We have vertical space so we'll size the chart and let the widget scale vertically.
+
+    &--portrait.esri-component.esri-widget--panel {
+      height: auto;
+    }
+
+    &--portrait &__chart-container {
+      height: $chart-height-portrait;
+      flex-shrink: 0;
+    }
+
+    &--portrait &__footer {
+      display: block;
+    }
+
+    &--portrait &__legend-container {
+      margin-bottom: $cap-spacing + $cap-spacing--quarter;
+    }
+
+    &--portrait &__actions-container {
+      flex-direction: column;
+    }
+
+    &--portrait &__action-button {
+      align-self: stretch;
+    }
+  }
+
+  // Make sure we don't overflow vertically on smaller screens.
+  // Note that in portrait mode we allow overflowing because we don't really
+  // have another choice there.
+  .esri-view-height-xsmall {
+    .esri-elevation-profile.esri-component.esri-widget--panel:not(.esri-elevation-profile--portrait) {
+      height: $view-height--xsmall__component-max-height;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Settings
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-settings {
+    --button-offset: #{-$side-spacing--half};
+
+    width: $toggle-button-width;
+    flex-shrink: 0;
+    flex-grow: 0;
+    // Align icon to the right of the chart
+    margin-right: var(--button-offset);
+
+    &__popover-content {
+      font-family: $font-family;
+      padding: $popover-padding;
+      color: $font-color;
+      border: $popover-border;
+      background-color: $popover-background-color;
+    }
+
+    &__select {
+      min-width: 150px;
+    }
+
+    &__select-label {
+      display: block;
+      margin-bottom: $cap-spacing--eighth;
+      font-size: $font-size__body;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Statistics
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-statistics {
+    display: flex;
+    min-width: 0;
+    height: $header-height;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__statistic {
+      flex-shrink: 0;
+      margin-right: $statistics-spacing;
+
+      &--hidden {
+        display: none;
+      }
+
+      &--not-available {
+        opacity: $statistics-not-available-opacity;
+      }
+    }
+
+    &__statistic-label,
+    &__statistic-value {
+      display: flex;
+      font-size: $statistics-font-size;
+      line-height: 1.3em;
+      margin: 0;
+      white-space: nowrap;
+      color: $font-color;
+    }
+
+    &__statistic-label {
+      font-weight: $font-weight--medium;
+    }
+
+    &__statistic-value {
+      font-weight: $font-weight--regular;
+    }
+
+    &__slope-value {
+      &:not(:last-of-type) {
+        margin-right: $statistics-slope-values-spacing;
+      }
+
+      > [class^="esri-icon"] {
+        font-size: $statistics-font-size; // Keep the icon small.
+      }
+    }
+
+    &__slope-value--not-available {
+      opacity: $statistics-not-available-opacity;
+      font-family: monospace;
+    }
+
+    // When the whole statistic is not available, it'll already be faded out so
+    // there is no need to fade also the slope value.
+    &__statistic--not-available &__slope-value--not-available {
+      opacity: 1;
+    }
+
+    &__popover-toggle {
+      width: $toggle-button-width;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+
+    &__popover-content {
+      font-family: $font-family;
+      padding: $popover-padding;
+      border: $popover-border;
+      background-color: $popover-background-color;
+    }
+
+    &__popover-statistic:not(:last-of-type) {
+      margin-bottom: $cap-spacing--half;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Legend
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-legend {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    flex: 1;
+
+    &__label {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      opacity: $legend-inactive-opacity;
+      align-items: center;
+      margin: 0 ($legend-label-spacing / 2);
+
+      &--active {
+        opacity: 1;
+      }
+    }
+
+    &__label-content {
+      color: $font-color;
+      font-size: $legend-font-size;
+    }
+
+    &__checkbox {
+      font-size: $checkbox-icon-size;
+      line-height: $checkbox-icon-size;
+      display: inline-block;
+      width: $checkbox-size;
+      height: $checkbox-size;
+      margin: 0;
+      padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) / 2;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+      border: solid 1px $border-color;
+      background: none;
+      flex-shrink: 0;
+      appearance: none;
+
+      &:before {
+        color: $interactive-font-color--inverse;
+      }
+
+      &--checked {
+        background: $border-color--active;
+        border-color: $border-color--active;
+
+        &:before {
+          color: $interactive-font-color--inverse;
+        }
+      }
+    }
+
+    &__color-indicator {
+      width: $color-indicator-width;
+      height: $color-indicator-height;
+      margin: $color-indicator-spacing;
+      flex-shrink: 0;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // RTL
+  //----------------------------------------------------------------------------
+
+  html[dir="rtl"] {
+    .esri-elevation-profile-settings {
+      margin-right: 0;
+      margin-left: -$side-spacing--half;
+    }
+
+    .esri-elevation-profile-statistics {
+      &__statistic {
+        margin-right: 0;
+        margin-left: $statistics-spacing;
+      }
+
+      &__slope-value:not(:last-of-type) {
+        margin-right: 0;
+        margin-left: $statistics-slope-values-spacing;
+      }
+    }
+  }
+}
+
+@if $include_ElevationProfile == true {
+  @include elevationProfile();
+}

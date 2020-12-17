@@ -1,25 +1,5 @@
-// COPYRIGHT © 2020 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.17/esri/copyright.txt for details.
-
-define(["require","exports","tslib","../../../../../core/accessorSupport/decorators","../../../../../core/libs/gl-matrix-2/vec3","../../../../../core/libs/gl-matrix-2/vec3f64","../../../camera/constraintUtils","../PointToPointAnimationController","../../../webgl-engine/lib/Camera","../../../webgl-engine/lib/Intersector","../../../../animation/easing"],(function(t,e,i,r,a,o,n,s,c,m,p){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.ZoomStepController=void 0;var l=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e.zoomLocation=o.vec3f64.create(),e.tmpCamera=new c.default,e.tmpRayDir=o.vec3f64.create(),e.tmpCenter=o.vec3f64.create(),e.constraintOptions={selection:15,interactionType:1,interactionFactor:null,interactionStartCamera:new c.default,interactionDirection:null,tiltMode:0},e}return i.__extends(e,t),e.prototype.zoomStep=function(t,e){if(this.active){var i=this.view.state,r=this.constraintOptions.interactionStartCamera;this.animation.finished?r.copyFrom(i.camera):this.animation.cameraAt(1,r),this.tmpCamera.copyFrom(i.camera);var o=new m.Intersector(this.view.state.mode);t>0?(this.intersectionHelper.intersectScreenFreePointFallback(e,this.zoomLocation),this.intersectionHelper.intersectRay(this.tmpCamera.ray,o,this.tmpCenter)&&(this.tmpCamera.center=this.tmpCenter)):this.intersectionHelper.intersectRay(this.tmpCamera.ray,o,this.zoomLocation)?this.tmpCamera.center=this.zoomLocation:a.vec3.copy(this.zoomLocation,this.tmpCamera.center);var n=Math.pow(.6,t);this.updateCamera(this.tmpCamera,n,this.zoomLocation),this.begin(this.tmpCamera)}},e.prototype.animationSettings=function(){return{apex:null,duration:.6,easing:p.outExpo}},e.prototype.updateCamera=function(t,e,i){a.vec3.subtract(this.tmpRayDir,i,t.eye);var r=a.vec3.length(this.tmpRayDir),o=r*e;e<=1&&o<4&&(e=(o=4)/r),Math.abs(r-o)<1e-6||(a.vec3.scale(this.tmpRayDir,this.tmpRayDir,e),a.vec3.subtract(t.eye,i,this.tmpRayDir),a.vec3.lerp(t.center,t.center,i,1-e),n.applyAll(this.view,t,this.constraintOptions))},e=i.__decorate([r.subclass("esri.views.3d.state.controllers.local.ZoomStepController")],e)}(s.PointToPointAnimationController);e.ZoomStepController=l}));
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+*/
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../../../../core/has","../../../../../core/Logger","../../../../../core/accessorSupport/ensureType","../../../../../core/accessorSupport/decorators/property","../../../../../core/accessorSupport/decorators/subclass","../../../../../core/urlUtils","../../../../../core/uuid","../../../../../portal/support/resourceExtension","../../../../../chunks/vec3f64","../../../../../chunks/vec3","../../../../../support/featureFlags","../../../webgl-engine/lib/Intersector","../../../../animation/easing","../../../camera/constraintUtils","../../../webgl-engine/lib/Camera","../PointToPointAnimationController"],(function(t,e,i,o,a,r,n,s,c,m,p,l,h,u,C,y,g,d,b){"use strict";t.ZoomStepController=function(t){function i(){var e;return(e=t.apply(this,arguments)||this).zoomLocation=l.create(),e.tmpCamera=new d,e.tmpRayDir=l.create(),e.tmpCenter=l.create(),e.constraintOptions={selection:15,interactionType:1,interactionFactor:null,interactionStartCamera:new d,interactionDirection:null,tiltMode:0},e}e._inheritsLoose(i,t);var o=i.prototype;return o.zoomStep=function(t,e){if(!this.active)return;const i=this.view.state,{interactionStartCamera:o}=this.constraintOptions;this.animation.finished?o.copyFrom(i.camera):this.animation.cameraAt(1,o),this.tmpCamera.copyFrom(i.camera);const a=new C.Intersector(this.view.state.mode);t>0?(this.intersectionHelper.intersectScreenFreePointFallback(e,this.zoomLocation),this.intersectionHelper.intersectRay(this.tmpCamera.ray,a,this.tmpCenter)&&(this.tmpCamera.center=this.tmpCenter)):this.intersectionHelper.intersectRay(this.tmpCamera.ray,a,this.zoomLocation)?this.tmpCamera.center=this.zoomLocation:h.copy(this.zoomLocation,this.tmpCamera.center);const r=Math.pow(.6,t);if(!u.disableContextNavigation()&&this.view._stage.getCamera()._contextNavigation){let t=this.view._stage.renderView.getMinimalDepthForArea(e[0],e[1],this.view._stage.getCamera(),60);const i=Math.max(14*Math.abs(this.view.camera.position.z),20);if(t=t?Math.min(t,i):i,t){const e=l.create();h.subtract(e,this.zoomLocation,this.tmpCamera.eye),t<h.length(e)&&(h.normalize(e,e),h.add(this.zoomLocation,this.tmpCamera.eye,h.scale(e,e,t)))}}this.updateCamera(this.tmpCamera,r,this.zoomLocation),this.begin(this.tmpCamera)},o.animationSettings=function(){return{apex:null,duration:.6,easing:y.outExpo}},o.updateCamera=function(t,e,i){h.subtract(this.tmpRayDir,i,t.eye);const o=h.length(this.tmpRayDir);let a=o*e;e<=1&&a<4&&(a=4,e=a/o),Math.abs(o-a)<1e-6||(h.scale(this.tmpRayDir,this.tmpRayDir,e),h.subtract(t.eye,i,this.tmpRayDir),h.lerp(t.center,t.center,i,1-e),g.applyAll(this.view,t,this.constraintOptions))},i}(b.PointToPointAnimationController),t.ZoomStepController=i.__decorate([s.subclass("esri.views.3d.state.controllers.local.ZoomStepController")],t.ZoomStepController),Object.defineProperty(t,"__esModule",{value:!0})}));
