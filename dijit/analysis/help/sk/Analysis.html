@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="aoToolbox">
+        <p>Toolbox anal&yacute;zy prvkov obsahuje niekoľko n&aacute;strojov, ku ktor&yacute;m m&ocirc;žete prist&uacute;piť a použiť ich. Tieto &uacute;lohy s&uacute; usporiadan&eacute; nižsie do kateg&oacute;ri&iacute;; kateg&oacute;rie s&uacute; jednoducho logick&eacute; zoskupenia a neovplyvňuj&uacute;, ako viete prist&uacute;piť k &uacute;loh&aacute;m, alebo ich použiť.
+        </p>
+    </div>
+    <div id="SummarizeDataCategory" class="largesize">
+        <h2>Sumarizovať dáta</h2>
+        <hr/>
+        <p>Tieto n&aacute;stroje poč&iacute;taj&uacute; celkov&eacute; počty, dĺžky, plochy a z&aacute;kladn&eacute; opisn&eacute; &scaron;tatistiky prvkov a ich atrib&uacute;tov v r&aacute;mci pl&ocirc;ch alebo v bl&iacute;zkosti in&yacute;ch prvkov.
+            <ul>
+                <li> <b>Agregovať body</b> vypoč&iacute;ta &scaron;tatistiky pre body spadaj&uacute;ce do definovan&yacute;ch oblast&iacute;.
+                </li>
+                <li> <b>Pripojiť prvky</b> prenesie atrib&uacute;ty z jednej vrstvy alebo tabuľky do inej na z&aacute;klade priestorov&yacute;ch a atrib&uacute;tov&yacute;ch vzťahov.
+                </li>
+                <li> <b>Sumarizovať bl&iacute;zke</b> vypoč&iacute;ta &scaron;tatistiky pre prvky a ich atrib&uacute;ty, ktor&eacute; s&uacute; v r&aacute;mci definovanej vzdialenosti.
+                </li>
+                <li> <b>Sumarizovať vn&uacute;tri</b> vypoč&iacute;ta &scaron;tatistiky pre plo&scaron;n&eacute; prvky a ich atrib&uacute;ty, ktor&eacute; sa navz&aacute;jom prekr&yacute;vaj&uacute;.
+                </li>
+                <li> <b>Sumarizovať stred a rozptyl</b> vypoč&iacute;ta stredov&eacute; prvky a smerov&yacute; rozptyl.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="AggregatePointsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Agregované body</h2></td>
+                    <td>
+                    <img src="../images/GUID-60C59C66-3038-4D0E-8F6A-EC6C53FEAA02-web.png" class="titleImage" alt="Agregovan&eacute; body">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Použit&iacute;m bodovej vrstvy a vrstvy plo&scaron;n&yacute;ch prvkov urč&iacute; tento n&aacute;stroj, ktor&eacute; body spadaj&uacute; do každej plochy a vypoč&iacute;ta &scaron;tatistiky o v&scaron;etk&yacute;ch bodoch v r&aacute;mci každej plochy. Napr&iacute;klad:
+                <ul>
+                    <li>Dan&eacute; bodov&eacute; umiestnenia krimin&aacute;lnych incidentov, spoč&iacute;ta počet zločinov podľa okresu alebo in&eacute;ho administrat&iacute;vneho obvodu.
+                    </li>
+                    <li>N&aacute;jsť najvy&scaron;&scaron;ie a najniž&scaron;ie pr&iacute;jmy pre umiestnenie predajn&iacute; v r&aacute;mci krajiny.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="JoinFeaturesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Pripojiť prvky</h2></td>
+                    <td>
+                    <img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" class="titleImage" alt="Pripojiť prvky">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Prepojiť prvky prenesie atrib&uacute;ty z jednej vrstvy alebo tabuľky do inej na z&aacute;klade priestorov&yacute;ch a atrib&uacute;tov&yacute;ch vzťahov. Napr&iacute;klad:
+                <ul>
+                    <li>Pripojiť hranice alebo demografick&eacute; &uacute;daje k va&scaron;im d&aacute;tam o incidentoch.
+                    </li>
+                    <li>Indetifikovať najbliž&scaron;ie zariadenia k zn&aacute;memu umiestneniu.
+                    </li>
+                    <li>Určiť počet obydl&iacute;, ktor&eacute; spadaj&uacute; do povodňovej oblasti.
+                    </li>
+                    <li>Indentifikovať spoločn&eacute; habit&aacute;ty pre r&ocirc;zne divokožij&uacute;ce druhy.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeNearbyTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumarizovať blízke</h2></td>
+                    <td>
+                    <img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" class="titleImage" alt="Sumarizovať bl&iacute;zke">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>N&aacute;jde prvky, ktor&eacute; s&uacute; v r&aacute;mci zadanej vzdialenosti od prvkov vo vstupnej vrstve. Vzdialenosť m&ocirc;že byť meran&aacute; ako priamočiara alebo ako varianta tr&aacute;s zvolen&eacute;ho cestovn&eacute;ho režimu. N&aacute;sledne s&uacute; vypoč&iacute;tan&eacute; &scaron;tatistiky pre okolit&eacute; prvky. Napr&iacute;klad:
+                <ul>
+                    <li>Vypoč&iacute;tať celkov&uacute; popul&aacute;ciu v dosahu p&auml;ť min&uacute;t od navrhovanej polohy novej predajne.
+                    </li>
+                    <li>Vypoč&iacute;tať počet n&aacute;jazdov na diaľnicu v dosahu p&auml;ť min&uacute;t od navrhovanej polohy novej predajne, za &uacute;čelom zmerania jej dostupnosti.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeWithinTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sumarizovať vo vnútri</h2></td>
+                    <td>
+                    <img src="../images/GUID-9B12DB3F-AA7B-41EB-87C6-D2DEC3D52DA9-web.png" class="titleImage" alt="Sumarizovať vo vn&uacute;tri">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>N&aacute;jsť oblasti (a časti oblast&iacute;), ktor&eacute; sa prek&yacute;vaj&uacute; medzi dvoma vrstvami a vypoč&iacute;tať &scaron;tatistiky o prekryt&iacute;. Napr&iacute;klad:
+                <ul>
+                    <li>Ak je zadan&aacute; oblasť povodia a vrstva využitia p&ocirc;dy podľa typu, vypoč&iacute;ta v&yacute;meru každ&eacute;ho typu využitia p&ocirc;dy pre každ&eacute; povodie.
+                    </li>
+                    <li>Ak je zadan&aacute; vrstva parciel v r&aacute;mci okresu a vrstva hran&iacute;c obc&iacute;, sumarizuj priemern&uacute; hodnotu voľn&yacute;ch parciel v r&aacute;mci každej obce.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="SummarizeCenterAndDispersionTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zhrnúť stredové hodnoty a rozptyl</h2></td>
+                    <td>
+                    <img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Zhrn&uacute;ť stredov&eacute; hodnoty a rozptyl">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj použ&iacute;va bodov&eacute; prvky na v&yacute;počet centr&aacute;lneho prvku, geografick&eacute;ho priemeru, geografick&eacute;ho medi&aacute;nu alebo distribučnej elipsy. Napr&iacute;klad:
+                <ul>
+                    <li>Ak je zadan&aacute; vrstva ťaž&iacute;sk blokov, stredov&yacute; prvok v&aacute;žen&yacute; popul&aacute;ciou by mohol byť použit&yacute; na indetifikovanie časti mesta, ktor&aacute; je najdostupnej&scaron;ia pre centrum umenia.
+                    </li>
+                    <li>Ak je zadan&aacute; vrstva pozorovan&iacute; losov v r&aacute;mci parku počas niekoľk&yacute;ch rokov, m&ocirc;žete použiť geografick&yacute; stred, aby ste sa pozreli kde sa losy zdržuj&uacute; v lete a v zime.
+                    </li>
+                    <li>Ak je zadan&aacute; vrstva požiarov, geografick&yacute; medi&aacute;n m&ocirc;že byť použit&yacute; na zmeranie stredovej tendencie požiarov bez vplyvu okrajov&yacute;ch odľahlych prvkov.
+                    </li>
+                    <li>Ak je zadan&aacute; vrstva vzoriek podzemnej vody, m&ocirc;žete použiť elipsu na odvodenie sp&ocirc;sobu &scaron;&iacute;renia kontamin&aacute;cie.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+    <div id="EnrichLocationsCategory" class="smallsize">
+        <h2>Obohatenie údajov</h2>
+        <hr/>
+        <p>Tieto n&aacute;stroje v&aacute;m pom&aacute;haj&uacute; objaviť charakter oblast&iacute;. Podrobn&eacute; demografick&eacute; d&aacute;ta a &scaron;tatistiky s&uacute; vr&aacute;ten&eacute; pre vami vybran&eacute; oblasti.
+            <ul>
+                <li> <b>Obohatiť vrstvu</b> zbiera inform&aacute;cie o ľuďoch, miestach a podnikoch v &scaron;pecifikovanej oblasti alebo v r&aacute;mci zvolen&eacute;ho času cesty alebo vzdialenosti od umiestnenia.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="EnrichLayerTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Obohatiť vrstvu</h2></td>
+                    <td>
+                    <img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" class="titleImage" alt="Obohatiť vrstvu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Zbiera inform&aacute;cie o ľuďoch, miestach a podnikoch v &scaron;pecifikovanej oblasti alebo v r&aacute;mci zvolen&eacute;ho času cesty alebo vzdialenosti od umiestnenia.
+            </p>
+            <br/>
+        </div>
+    <div id="FindLocationsCategory" class="largesize">
+        <h2>Nájsť umiestnenia</h2>
+        <hr/>
+        <p>Tieto n&aacute;stroje sa použ&iacute;vaj&uacute; na identifik&aacute;ciu alebo vytvorenie prvkov, ktor&eacute; spĺňaj&uacute; vami &scaron;pecifikovan&eacute; krit&eacute;ria. Typ krit&eacute;ri&iacute; bude z&aacute;visieť od n&aacute;stroja, ktor&yacute; použijete; napr&iacute;klad, va&scaron;e krit&eacute;ria m&ocirc;žu byť odvoden&eacute; od priestovov&yacute;ch alebo atrib&uacute;tov&yacute;ch dopytov, oblast&iacute; viditeľn&yacute;ch z určitej v&yacute;&scaron;ky, oblast&iacute; pr&uacute;denia podľa vybran&yacute;ch odvodňovac&iacute;ch bodov alebo času jazdy v konkr&eacute;tnych podmienkach prem&aacute;vky.
+            <ul>
+                <li> <b>Vybrať najvhodnej&scaron;ie zariadenia</b> vyber&aacute; najlep&scaron;ie umiestnenia pre zariadenia pomocou priradenia lokal&iacute;t, ktor&eacute; maj&uacute; dopyt na tieto zariadenia sp&ocirc;sobom, ktor&yacute; bude spĺňať zadan&yacute; cieľ.
+                </li>
+                <li> <b>Vytvoriť vrstvu viditeľnosti</b> vytv&aacute;ra viditeľn&eacute; oblasti na z&aacute;klade polohy zadan&yacute;ch lokal&iacute;t.
+                </li>
+                <li> <b>Vytvoriť povodia</b> vytv&aacute;ra z&aacute;chytn&eacute; oblasti na z&aacute;klade polohy zadan&yacute;ch lokal&iacute;t.
+                </li>
+                <li> <b>Odvodiť nov&eacute; umiestnenia</b> vytvor&iacute; nov&eacute; oblasti z umiestnen&iacute; v &scaron;tudovanej oblasti, ktor&eacute; spĺňaj&uacute; s&eacute;riu krit&eacute;ri&iacute;.
+                </li>
+                <li> <b>N&aacute;jsť ťažisk&aacute;</b> n&aacute;jde reprezentat&iacute;vny stred (ťažisko) pre vstupn&eacute; prvky.
+                </li>
+                <li> <b>N&aacute;jsť existuj&uacute;ce umiestnenia</b> hľad&aacute; existuj&uacute;ce oblasti vo vrstve, ktor&aacute; spĺňa s&eacute;riu krit&eacute;ri&iacute;.
+                </li>
+                <li> <b>N&aacute;jsť podobn&eacute; umiestnenia</b> n&aacute;jde umiestnenia najviac podobn&eacute; jedn&eacute;mu alebo viacer&yacute;m referenčn&yacute;m umiestneniam na z&aacute;klade zadan&yacute;ch krit&eacute;ri&iacute;.
+                </li>
+                <li class="PortalOnly"> <b>Geok&oacute;dovať umiestnenia z tabuľky</b> konvertuje adresy z tabuľky na s&uacute;radnice. 
+                </li>
+                <li> <b>Trasovať v smere</b> určuje smer pr&uacute;denia v smere od zadanej lokality.
+                </li>
+            </ul>
+            
+        </p>
+        <p> 
+        </p>
+    </div>
+        <div id="ChooseBestFacilitiesTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vybrať najvhodnejšie zariadenia</h2></td>
+                    <td>
+                    <img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" class="titleImage" alt="Vybrať najvhodnej&scaron;ie zariadenia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vyber&aacute; najlep&scaron;ie umiestnenia pre zariadenia pomocou priradenia lokal&iacute;t, ktor&eacute; maj&uacute; dopyt na tieto zariadenia sp&ocirc;sobom, ktor&yacute; bude spĺňať zadan&yacute; cieľ.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateViewshedTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vytvoriť vrstvu viditeľnosti</h2></td>
+                    <td>
+                    <img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" class="titleImage" alt="Vytvoriť vrstvu viditeľnosti">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vytv&aacute;ra oblasti, ktor&eacute; s&uacute; viditeľn&eacute; na z&aacute;klade polohy zadan&yacute;ch lokal&iacute;t.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateWatershedsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vytvoriť povodia</h2></td>
+                    <td>
+                    <img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" class="titleImage" alt="Vytvoriť povodia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vytv&aacute;ra z&aacute;chytn&eacute; oblasti na z&aacute;klade polohy zadan&yacute;ch lokal&iacute;t.
+            </p>
+            <br/>
+        </div>
+        <div id="DeriveNewLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Odvodiť nové lokality</h2></td>
+                    <td>
+                    <img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" class="titleImage" alt="Odvodiť nov&eacute; lokality">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vytv&aacute;ra nov&eacute; prvky v z&aacute;ujmovej oblasti, ktor&eacute; spĺňaj&uacute; s&eacute;riu zadan&yacute;ch krit&eacute;ri&iacute;. Tieto krit&eacute;ri&aacute; m&ocirc;žu byť založen&eacute; na atrib&uacute;tov&yacute;ch dopytoch (napr&iacute;klad, pr&aacute;zdne parcely) a priestorov&yacute;ch dopytoch (napr&iacute;klad, v r&aacute;mci jednej m&iacute;le od rieky).
+            </p>
+            <br/>
+        </div>
+        <div id="FindCentroidsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť ťažiská</h2></td>
+                    <td>
+                    <img src="../images/GUID-75D9AF75-68C3-48BF-8062-D5499BD06978-web.png" class="titleImage" alt="N&aacute;jsť ťažisk&aacute;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>N&aacute;jde reprezentat&iacute;vny stred (ťažisko) pre každ&yacute; vstupn&yacute; multibod, čiaru alebo plochu.
+            </p>
+            <br/>
+        </div>
+        <div id="FindExistingLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť existujúce lokality</h2></td>
+                    <td>
+                    <img src="../images/GUID-FEF355B4-CF3B-48F6-9EC1-A00A1D53C81F-web.png" class="titleImage" alt="N&aacute;jsť existuj&uacute;ce lokality">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vyberie existuj&uacute;ce prvky v z&aacute;ujmovej oblasti, ktor&eacute; spĺňaj&uacute; s&eacute;riu zadan&yacute;ch krit&eacute;ri&iacute;. Tieto krit&eacute;ri&aacute; m&ocirc;žu byť založen&eacute; na atrib&uacute;tov&yacute;ch dopytoch (napr&iacute;klad, pr&aacute;zdne parcely) a priestorov&yacute;ch dopytoch (napr&iacute;klad, v r&aacute;mci jednej m&iacute;le od rieky).
+            </p>
+            <br/>
+        </div>
+        <div id="GeocodeLocationsfromTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Geokódovať lokality z tabuľky</h2></td>
+                    <td>
+                    <img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" class="titleImage" alt="Geok&oacute;dovať lokality z tabuľky">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Konvertovať adresy na s&uacute;radnice. Použiť tento n&aacute;stroj na adresy v tabuľke Excel alebo CSV s&uacute;bore.
+            </p>
+            <br/>
+        </div>
+        <div id="FindSimilarLocationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť podobné lokality</h2></td>
+                    <td>
+                    <img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" class="titleImage" alt="N&aacute;jsť podobn&eacute; lokality">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>N&aacute;jsť umiestnenia najviac podobn&eacute; jedn&eacute;mu alebo viacer&yacute;m referenčn&yacute;m umiestneniam na z&aacute;klade zadan&yacute;ch krit&eacute;ri&iacute;.
+            </p>
+            <br/>
+        </div>
+        <div id="TraceDownstreamTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trasovať po prúde</h2></td>
+                    <td>
+                    <img src="../images/GUID-1700E318-5F2D-4D4D-BF21-B12663F5D3C4-web.png" class="titleImage" alt="Trasovať po pr&uacute;de">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Určuje smer pr&uacute;denia v smere od zadanej lokality.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzePatternsCategory" class="largesize">
+        <h2>Analyzovať vzory</h2>
+        <hr/>
+        <p>Tieto n&aacute;stroje pom&aacute;haj&uacute; identifikovať, kvantifikovať a vizualizovať priestorov&eacute; vzory vo va&scaron;ich d&aacute;tach.
+            <ul>
+                <li> <b>Vypoč&iacute;tať hustotu</b> vezme zn&aacute;me množstv&aacute; vybran&yacute;ch &uacute;kazov a rozvinie tieto množstv&aacute; naprieč mapou.
+                </li>
+                <li> <b>N&aacute;jsť Hot Spots</b> identifikuje &scaron;tatisticky v&yacute;znamn&eacute; klastre v priestorovom vzore va&scaron;ich d&aacute;t.
+                </li>
+                <li> <b>N&aacute;jsť odľahl&eacute; prvky</b> určuje, či sa v priestorovom vzore va&scaron;ich d&aacute;t nach&aacute;dzaj&uacute; &scaron;tatisticky v&yacute;znamn&eacute; odľahl&eacute; prvky.
+                </li>
+                <li> <b>Najsť klastre</b> hľad&aacute; klastre bodov&yacute;ch prvkov v okol&iacute; na z&aacute;klade ich priestorovej distrib&uacute;cie.
+                </li>
+                <li> <b>Interpolovať body</b> predpoved&aacute; hodnoty na nov&yacute;ch lokalit&aacute;ch na z&aacute;klade meran&iacute; n&aacute;jden&yacute;ch v zbierke bodov.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="CalculateDensityTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vypočítať hustotu</h2></td>
+                    <td>
+                    <img src="../images/GUID-20E554EC-1F41-4951-99FE-B3FE71DB2E17-web.png" class="titleImage" alt="Vypoč&iacute;tať hustotu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Anal&yacute;za hustoty vezme zn&aacute;me množstv&aacute; vybran&yacute;ch &uacute;kazov a rozvinie tieto množstv&aacute; naprieč mapou. Tento n&aacute;stroj m&ocirc;žete použiť napr&iacute;klad na uk&aacute;žku koncentr&aacute;cie bleskov alebo torn&aacute;d, na pr&iacute;stup k zdravotn&yacute;m zariadeniam alebo na hustotu popul&aacute;cie.
+            </p>
+            <br/>
+        </div>
+        <div id="FindHotSpotsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť hot spoty</h2></td>
+                    <td>
+                    <img src="../images/GUID-D4A59131-AC88-4C7A-85BA-67861D5C1CF8-web.png" class="titleImage" alt="N&aacute;jsť hot spoty">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj vytv&aacute;ra mapu zn&aacute;zorňuj&uacute;cu ak&eacute;koľvek &scaron;tatisticky v&yacute;znamn&eacute; priestorov&eacute; klastrovanie pr&iacute;tomn&eacute; vo va&scaron;ich d&aacute;tach. Použite tento n&aacute;stroj na odkrytie neočak&aacute;van&yacute;ch hot spotov (červen&aacute;) a cold spotov (modr&aacute;) pre vysok&eacute; a n&iacute;zke hodnoty napr&iacute;klad pre hodnotu obydl&iacute;, hustotu kriminality, &uacute;mrtia pri dopravn&yacute;ch nehod&aacute;ch, nezamestnanosť alebo biodiverzitu.
+            </p>
+            <br/>
+        </div>
+        <div id="FindOutliersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť odľahlé prvky</h2></td>
+                    <td>
+                    <img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" class="titleImage" alt="N&aacute;jsť odľahl&eacute; prvky">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj vytv&aacute;ra mapu zn&aacute;zorňuj&uacute;cu ak&eacute;koľvek &scaron;tatisticky v&yacute;znamn&eacute; klastre a priestorov&eacute; odhľahl&eacute; prvky pr&iacute;tomn&eacute; vo va&scaron;ich d&aacute;tach. Použite tento n&aacute;stroj na identifik&aacute;ciu prvkov, ktor&eacute; maj&uacute; v&yacute;razne odli&scaron;n&eacute; hodnoty od svojich susedov. Tento n&aacute;stroj m&ocirc;žete použiť napr&iacute;klad na n&aacute;jdenie vzorov neobvykl&yacute;ch v&yacute;davkov, určiť najostrej&scaron;ie hranice medzi bohatstvom a chudobou v &scaron;tudovanej oblasti alebo určiť okresy v Spojen&yacute;ch &Scaron;t&aacute;toch s nezvyčajne n&iacute;zkou dĺžkou života v porovnan&iacute; s ich susedmi.
+            </p>
+            <br/>
+        </div>
+        <div id="FindPointClustersTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť klastre bodov</h2></td>
+                    <td>
+                    <img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" class="titleImage" alt="N&aacute;jsť klastre bodov">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj rozpozn&aacute;va oblasti s koncentrovan&yacute;mi bodmi, ktor&eacute; s&uacute; oddelen&eacute; pr&aacute;zdnymi alebo riedkymi oblasťami. Body, ktor&eacute; nie s&uacute; s&uacute;časťou klastra s&uacute; označen&eacute; ako &scaron;um.
+            </p>
+            <br/>
+        </div>
+        <div id="InterpolatePointsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Interpolovať body</h2></td>
+                    <td>
+                    <img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" class="titleImage" alt="Interpolovať body">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Tento n&aacute;stroj umožnuje predpovedať hodnoty na nov&yacute;ch lokalit&aacute;ch na z&aacute;klade meran&iacute; n&aacute;jden&yacute;ch v zbierke bodov. N&aacute;stroj berie bodov&eacute; d&aacute;ta s hodnotami v každom bode a vracia oblasti klasifikovan&eacute; predpovedan&yacute;mi hodnotami. Tento n&aacute;stroj m&ocirc;žete použiť napr&iacute;klad na predpovedanie množstva zr&aacute;žok naprieč povod&iacute;m na z&aacute;klade meran&iacute; odobran&yacute;ch v jednotliv&yacute;ch zr&aacute;žkomeroch.
+            </p>
+            <br/>
+        </div>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>Použiť blízkosť</h2>
+        <hr/>
+        <p>  Tieto n&aacute;stroje v&aacute;m pom&aacute;haj&uacute; zodpovedať jednu z najbežnej&scaron;&iacute;ch ot&aacute;zok priestorovej anal&yacute;zy: &quot;Čo je bl&iacute;zko čoho?&quot;
+            <ul>
+                <li> <b>Spojiť začiatky s destin&aacute;ciami</b> meria čas cesty alebo vzdialenosť medzi dvojicami bodov.
+                </li>
+                <li> <b>Vytvoriť obalov&eacute; z&oacute;ny</b> vytv&aacute;ra oblasti rovnakej vzdialenosti od prvkov.
+                </li>
+                <li> <b>Vytvoriť dojazdov&eacute; oblasti</b> n&aacute;jde oblasti dostupn&eacute; v rovnakom časovom intervale.
+                </li>
+                <li> <b>N&aacute;jsť najbliž&scaron;ie</b> identifikuje miesta najbliž&scaron;ie k zvolen&yacute;m lokalit&aacute;m.
+                </li>
+                <li> <b>Pl&aacute;novať trasy</b> urč&iacute; najlep&scaron;&iacute; sp&ocirc;sob na určenie trasy pre flotilu vozidiel za &uacute;čelom nav&scaron;t&iacute;venia množstva zast&aacute;vok.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="ConnectOriginsToDestinationsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Spojiť začiatky s destináciami</h2></td>
+                    <td>
+                    <img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" class="titleImage" alt="Spojiť začiatky s destin&aacute;ciami">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Spojiť začiatky s destin&aacute;ciami meria cestovn&yacute; čas alebo vzdialenosť medzi dvojicami bodov. N&aacute;stroj dok&aacute;že merať priamočiare vzdialenosti, cestn&eacute; vzdialenosti alebo časy jazdy. Použit&iacute;m tohto n&aacute;stroja m&ocirc;žete
+            </p>
+            <p>
+                <ul>
+                    <li>Vypoč&iacute;tať celkov&uacute; vzdialenosť alebo čas, ktor&yacute; doch&aacute;dzaj&uacute;ci zamestnanci prekonaj&uacute; na svojich cest&aacute;ch z domu do pr&aacute;ce.
+                    </li>
+                    <li>Merať ako ďaleko z&aacute;kazn&iacute;ci cestuj&uacute;, aby nakupovali vo va&scaron;ich predajniach. Použite t&uacute;to inform&aacute;ciu na definovanie v&aacute;&scaron;ho trhov&eacute;ho dosahu, hlavne keď sa zameriavate na reklamn&eacute; kampane alebo vyber&aacute;te nov&eacute; umiestnenia predajn&iacute;.
+                    </li>
+                    <li>Vypoč&iacute;tať očak&aacute;van&yacute; počet najazden&yacute;ch kilometrov pre va&scaron;u flotilu vozidiel. N&aacute;sledne spustite n&aacute;stroj Sumarizovať vn&uacute;tri na určenie počtu prejden&yacute;ch kilometrov podľa &scaron;t&aacute;tu alebo in&eacute;ho regi&oacute;nu.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Poskytujete začiatočn&eacute; a konečn&eacute; body a n&aacute;stroj vracia vrstvu obsahuj&uacute;cu l&iacute;nie tr&aacute;s, vr&aacute;tane meran&iacute; medzi dvojicami začiatkov a cieľov.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateBuffersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vytvoriť obalové zóny</h2></td>
+                    <td>
+                    <img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" class="titleImage" alt="Vytvoriť obalov&eacute; z&oacute;ny">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Obalov&aacute; z&oacute;na je oblasť, ktor&aacute; pokr&yacute;va zadan&uacute; vzdialenosť od bodu, l&iacute;nie alebo plo&scaron;n&eacute;ho prvku.
+            </p>
+            <p>Obalov&eacute; z&oacute;ny sa bežne použ&iacute;vaj&uacute; na vytvorenie oblast&iacute;, ktor&eacute; m&ocirc;žu byť ďalej analyzovan&eacute; za použitia in&yacute;ch n&aacute;strojov, ako Prekrytie vrstiev. Napr&iacute;klad, ak je ot&aacute;zka &quot;Ak&eacute; budovy s&uacute; v r&aacute;mci jednej m&iacute;le od &scaron;koly?&quot;, odpoveď m&ocirc;žeme n&aacute;jsť vytvoren&iacute;m jednom&iacute;ľovej obalovej z&oacute;ny okolo &scaron;koly a prekryt&iacute;m obalovej z&oacute;ny vrstvou obsahuj&uacute;cou obrysy budov. Konečn&yacute; v&yacute;sledok je vrstva budov vo vzdialenosti do jednej m&iacute;le od &scaron;koly.
+            </p>
+            <br/>
+        </div>
+        <div id="CreateDriveTimeAreasTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vytvoriť oblasti dojazdového času</h2></td>
+                    <td>
+                    <img src="../images/GUID-6F629A09-768D-4C04-88A4-AB941811ADE9-web.png" class="titleImage" alt="Vytvoriť oblasti dojazdov&eacute;ho času">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dojazdov&aacute; oblasť je oblasť, ktor&aacute; je dosiahnuteľn&aacute; v r&aacute;mci definovan&eacute;ho času jazdy alebo vzdialenosti. Dojazdov&eacute; oblasti v&aacute;m m&ocirc;žu pom&ocirc;cť zodpovedať va&scaron;e ot&aacute;zky, ako:
+                <ul>
+                    <li>Kam m&ocirc;žem d&ocirc;jsť v r&aacute;mci 30-min&uacute;tovej jazdy?
+                    </li>
+                    <li>Kam m&ocirc;žem d&ocirc;jsť v r&aacute;mci 30-min&uacute;tovej jazdy o 18:00 počas dopravnej &scaron;pičky?
+                    </li>
+                    <li>Ktor&eacute; oblasti mesta m&ocirc;žu hasiči dosiahnuť za p&auml;ť min&uacute;t jazdy? Ako by sa pokrytie hasičskej odozvy zlep&scaron;ilo postaven&iacute;m novej hasičskej stanice na tomto mieste?
+                    </li>
+                    <li>Ak&eacute; oblasti trhu pokr&yacute;va m&ocirc;j podnik? Ak&eacute; oblasti sa nach&aacute;dzaj&uacute; do 10 m&iacute;ľ od mojich predajn&iacute;?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="FindNearestTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Nájsť najbližší</h2></td>
+                    <td>
+                    <img src="../images/GUID-150C2484-7459-405A-8835-B4E72CD49738-web.png" class="titleImage" alt="N&aacute;jsť najbliž&scaron;&iacute;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Zmeria cestovn&eacute; n&aacute;klady medzi incidentami a zariadeniami a urč&iacute;, ktor&eacute; s&uacute; vz&aacute;jomne najbliž&scaron;ie. V&yacute;sledok je vrstva zobrazuj&uacute;ca najvhodnej&scaron;ie trasy medzi incidentami a zariadeniami spolu s cestovn&yacute;mi n&aacute;kladmi (čas a vzdialenosť) pre každ&uacute; trasu. Napr&iacute;klad, m&ocirc;žete tento n&aacute;stroj použiť pre n&aacute;jdenie najbliž&scaron;ej nemocnice k nehode alebo bankomat najbliž&scaron;&iacute; k va&scaron;ej aktu&aacute;lnej polohe.
+            </p>
+            <br/>
+        </div>
+        <div id="PlanRoutesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Plánovanie trás</h2></td>
+                    <td>
+                    <img src="../images/GUID-09CC6D60-3C72-42D7-968E-B0663F0B1EBB-web.png" class="titleImage" alt="Pl&aacute;novanie tr&aacute;s">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Poskytnite sadu zast&aacute;vok a počet vozidiel pre n&aacute;v&scaron;tevu zast&aacute;vok a Pl&aacute;novanie tr&aacute;s urč&iacute; ako efekt&iacute;vne priradiť zast&aacute;vky jednotliv&yacute;m vozidl&aacute;m a navedie vozidl&aacute; k pr&iacute;slu&scaron;n&yacute;m zast&aacute;vkam.
+            </p>
+            <p>Použite tento n&aacute;stroj na napl&aacute;novanie pr&aacute;ce pre mobiln&yacute; t&iacute;m in&scaron;pektorov, odhadcov, poskytovateľov dom&aacute;cich lužieb podpory a in&yacute;ch; doručenie alebo vyzdvihnutie položiek zo vzdialen&yacute;ch lokal&iacute;t; alebo pon&uacute;knutie dopravn&yacute;ch služieb pre ľud&iacute;.
+            </p>
+            <br/>
+        </div>
+    <div id="ManageDataCategory" class="largesize">
+        <h2>Spravovať dáta</h2>
+        <hr/>
+        <p>Tieto n&aacute;stroje s&uacute; použ&iacute;van&eacute; pre každodenn&eacute; spravovanie geografick&yacute;ch d&aacute;t a kombin&aacute;ciu d&aacute;t pre využitie v anal&yacute;zach.
+            <ul>
+                <li> <b>Zru&scaron;iť hranice</b> zl&uacute;či plochy, ktor&eacute; zdieľaj&uacute; spoločn&uacute; hranicu a maj&uacute; rovnak&uacute; atrib&uacute;tov&uacute; hodnotu.
+                </li>
+                <li> <b>Extrahovať d&aacute;ta</b> vytv&aacute;ra nov&eacute; sady d&aacute;t extrahovan&iacute;m prvkov z existuj&uacute;cich d&aacute;t.
+                </li>
+                <li> <b>Generovať tesel&aacute;cie</b> vytv&aacute;ra tesel&aacute;cie na z&aacute;klade rozsahu va&scaron;ich d&aacute;t.
+                </li>
+                <li> <b>Zl&uacute;čiť vrstvy</b> kop&iacute;ruje v&scaron;etky prvky z dvoch alebo viacer&yacute;ch existuj&uacute;cich vrstiev do novej vrstvy.
+                </li>
+                <li> <b>Prekryť vrstvy</b> kombinuje dve alebo viac vrstiev do spoločnej vrstvy. Prekrytie m&ocirc;žete ch&aacute;pať ako n&aacute;hľad cez sadu m&aacute;p a vytvorenie jedinej mapy obsahuj&uacute;cej v&scaron;etky &uacute;daje z tejto sady.
+                </li>
+            </ul>
+            
+        </p>
+    </div>
+        <div id="DissolveBoundariesTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zrušiť vnútorné hranice</h2></td>
+                    <td>
+                    <img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" class="titleImage" alt="Zru&scaron;iť vn&uacute;torn&eacute; hranice">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Plochy, ktor&eacute; sa prekr&yacute;vaj&uacute; alebo zdieľaj&uacute; spoločn&uacute; hranicu s&uacute; zl&uacute;čen&eacute; za &uacute;čelom vytvorenia v&yacute;slednej plochy.
+            </p>
+            <p>&Scaron;pecifikovan&iacute;m poľa m&ocirc;žete určovať, ktor&eacute; hranice sa zl&uacute;čia. Napr&iacute;klad, ak m&aacute;te vrstvu okresov s vhodn&yacute;m  <i>State_Name</i>atrib&uacute;tom, hranice m&ocirc;žete zru&scaron;iť s použit&iacute;m tohto <i>State_Name</i> atrib&uacute;tu. Susediace okresy bud&uacute; zl&uacute;čen&eacute; ak maj&uacute; rovnak&uacute; hodnotu pre <i>State_Name</i>. Konečn&yacute; v&yacute;sledok je vrstva &scaron;t&aacute;tnych hran&iacute;c.
+            </p>
+            <br/>
+        </div>
+        <div id="ExtractDataTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Extrahovať dáta</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" class="titleImage" alt="Extrahovať d&aacute;ta">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Vytv&aacute;ra s&uacute;bor zip, CSV alebo KMZ z vrstiev a oblasti z&aacute;ujmu, ktor&eacute; &scaron;pecifikujete.
+            </p>
+            <p>N&aacute;stroj Extrahovať d&aacute;ta požaduje aspoň jednu exportovateľn&uacute; vrstvu. Ak nem&aacute;te exportovateľn&eacute; vrstvy v  Map Viewer, n&aacute;stroj bude deaktivovan&yacute;. </p>
+            <p> 
+            </p>
+            <br/>
+        </div>
+        <div id="GenerateTessellationsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Generovať Voronoiove polygóny (teselácia)</h2></td>
+                    <td>
+                    <img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" class="titleImage" alt="Generovať Voronoiove polyg&oacute;ny (tesel&aacute;cia)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Generovať tesel&aacute;cie nad z&aacute;ujmovou oblasťou na z&aacute;klade &scaron;pecifikovan&eacute;ho tvaru a veľkosti.
+            </p>
+            <br/>
+        </div>
+        <div id="MergeLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zlúčiť vrstvy</h2></td>
+                    <td>
+                    <img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" class="titleImage" alt="Zl&uacute;čiť vrstvy">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Skop&iacute;ruje prvky z dvoch alebo viacer&yacute;ch existuj&uacute;cich vrstiev do novej vrstvy, napr&iacute;klad:
+                <ul>
+                    <li>M&aacute;me tri vrstvy pre Anglicko, Wales a &Scaron;k&oacute;tsko a chcem jedin&uacute; vrstvu pre Veľk&uacute; Brit&aacute;niu.
+                    </li>
+                    <li>M&aacute;me 12 vrstiev a každ&aacute; obsahuje inform&aacute;cie o parcel&aacute;ch pre priľahl&eacute; mestsk&eacute; časti. Chceme ich spojiť do jednej vrstvy, ponech&aacute;vaj&uacute;c len atrib&uacute;ty s rovnak&yacute;m n&aacute;zvom a typom na 12 vstupn&yacute;ch vrstv&aacute;ch.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="OverlayLayersTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prekryť vrstvy</h2></td>
+                    <td>
+                    <img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" class="titleImage" alt="Prekryť vrstvy">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Prekrytie kombinuje dve alebo viac vrstiev do jednej vrstvy. Prekrytie m&ocirc;žete ch&aacute;pať ako n&aacute;hľad cez sadu m&aacute;p a vytvorenie jedinej mapy obsahuj&uacute;cej v&scaron;etky &uacute;daje z tejto sady, napr&iacute;klad:
+                <ul>
+                    <li>Ktor&eacute; pozemky s&uacute; na &uacute;zem&iacute; 100-ročnej povodňovej oblasti? (Vn&uacute;tri je len in&yacute; sp&ocirc;sob ako povedať navrchu.)
+                          
+                    </li>
+                    <li>Ak&eacute; cesty s&uacute; v ktor&yacute;ch okresoch?
+                    </li>
+                    <li>Ak&yacute; typ krajiny je na akom type p&ocirc;dy?
+                         
+                    </li>
+                    <li>Ak&eacute; studne s&uacute; v opusten&yacute;ch vojensk&yacute;ch z&aacute;kladniach?
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+</div>
+</html>

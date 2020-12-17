@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Gabungkan Fitur</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Gabungkan Fitur"></h2>
+        <h2>Gabung Fitur</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Gabung Fitur"></h2>
         <hr/>
-    <p>Gabungkan Fitur berfungsi dengan dua layer dan menggabungkan atribut dari satu fitur ke fitur lain berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target. 
+    <p>Gabung Fitur berfungsi dengan dua layer dan menggabungkan atribut dari satu fitur ke fitur lain berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target.
     </p>
-    <p>Gabungkan Fitur dapat diterapkan ke titik, garis, area, dan tabel. Gabungan spasial mengharuskan data Anda untuk memiliki geometri. 
+    <p>Gabungkan Fitur dapat diterapkan ke titik, garis, area, dan tabel. Gabungan spasial mengharuskan data Anda untuk memiliki geometri.
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang terlihat dalam jangkauan peta saat ini yang akan dianalisis.  Jika tidak dicentang, semua fitur baik pada layer target maupun layer gabungan akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur yang terlihat dalam jangkauan peta saat ini yang akan dianalisis. Jika tidak dicentang, semua fitur baik pada layer target maupun layer gabungan akan dianalisis, meskipun berada di luar jangkauan peta yang ada.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -76,7 +76,7 @@
         <div><h2>Pilih jenis penggabungan</h2></div>
         <hr/>
         <div>
-            <p>Anda dapat menerapkan gabungan spasial, gabungan atribut, atau kombinasi dari keduanya. 
+            <p>Anda dapat menerapkan gabungan spasial, gabungan atribut, atau kombinasi dari keduanya.
                 <ul>
                     <li> <b>Spasial</b>&mdash;Menggunakan hubungan spasial yang ditentukan untuk menggabungkan fitur. Ini mengharuskan kedua layer memiliki geometri.
                     </li>
@@ -93,7 +93,7 @@
         <div><h2>Pilih hubungan spasial</h2></div>
         <hr/>
         <div>
-            <p>Hubungan spasial yang akan menentukan apakah fitur digabungkan satu sama lain. Hubungan yang tersedia akan tergantung pada jenis geometri (titik, garis, area) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
+            <p>Hubungan spasial yang akan menentukan apakah fitur digabungkan satu sama lain. Hubungan yang tersedia akan bergantung pada jenis geometri (titik, garis, area) yang digunakan sebagai fitur input. Hubungan yang tersedia termasuk yang berikut ini:
                 <ul>
                     <li> <b>Identik dengan</b>&mdash;Fitur pada layer target akan dicocokkan jika identik dengan fitur pada layer gabungan.
                     </li>
@@ -114,7 +114,7 @@
         <div><h2>Gabungan atribut</h2></div>
         <hr/>
         <div>
-            <p>Hubungan atribut yang akan menentukan apakah fitur digabungkan satu sama lainnya. Fitur cocok jika nilai kolom pada layer gabungan sama dengan nilai kolom pada layer target. 
+            <p>Hubungan atribut yang akan menentukan apakah fitur digabungkan satu sama lain. Fitur cocok jika nilai kolom pada layer gabungan sama dengan nilai kolom pada layer target.
             </p>
             <p>Contoh, misalnya Anda memiliki layer geografis seluruh kabupaten dari alamat tempat tinggal (termasuk kolom  <i>ZIP</i>) dan set data tabular demografi kesehatan berdasarkan Kode Pos (termasuk kolom yang bernama <i>HEALTHZIP</i>). Anda dapat menggabungkan set data kesehatan dengan data tempat tinggal dengan mencocokkan kolom <i>ZIP</i> ke <i>HEALTHZIP</i>, yang akan menghasilkan layer tempat tinggal dengan data kesehatan yang sesuai.
             </p>
@@ -126,17 +126,14 @@
         <div>
             <p>Menentukan bagaimana gabungan antara layer target dan layer gabungan akan ditangani jika terdapat beberapa fitur pada layer gabungan memiliki hubungan yang sama dengan layer target. Berikut ini adalah dua operasi penggabungan yang dapat dipilih:
                 <ul>
-                    <li> <b>Gabungkan satu ke satu</b>&mdash; Opsi ini menggabungkan fitur di layer target ke fitur tunggal di layer gabungan. Bagaimana fitur digabungkan ditentukan oleh parameter <b>Tambahkan statistik</b> atau parameter <b>Tentukan catatan mana yang disimpan</b>. Jika <b>Tambahkan statistik</b> digunakan, semua fitur gabungan yang cocok akan diringkas ke setiap fitur di layer sasaran. Jumlah fitur gabungan akan ditambahkan secara default.
-Jika <b>Tentukan catatan mana yang disimpan</b>
- digunakan, Anda dapat memilih untuk menyimpan cacatan pertama yang cocok (default) atau untuk menyimpan catatan yang cocok berdasarkan ekspresi. Ekspresi dapat menggunakan baik kolom numerik
-(opsi untuk catatan terbesar atau terkecil) maupun kolom tanggal (opsi untuk terbaru atau terlama).
+                    <li> <b>Gabungkan satu ke satu</b>&mdash; Opsi ini menggabungkan fitur di layer target ke fitur tunggal di layer gabungan. Bagaimana fitur digabungkan ditentukan oleh parameter <b>Tambahkan statistik</b> atau parameter <b>Tentukan catatan mana yang disimpan</b>. Jika <b>Tambahkan statistik</b> digunakan, semua fitur gabungan yang cocok akan diringkas ke setiap fitur di layer target. Jumlah fitur gabungan akan ditambahkan secara default. Jika <b>Tentukan catatan mana yang disimpan</b> digunakan, Anda dapat memilih untuk menyimpan catatan pertama yang cocok (default) atau untuk menyimpan catatan yang cocok berdasarkan ekspresi. Ekspresi dapat menggunakan baik kolom numerik (opsi untuk catatan terbesar atau terkecil) maupun kolom tanggal (opsi untuk terbaru atau terlama).
                     </li>
-                    <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target.  Layer hasil akan berisi beberapa rekaman fitur target.
+                    <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target. Layer hasil akan berisi beberapa rekaman fitur target.
                     </li>
                 </ul>
                 
             </p>
-            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar tradisional.   Pada kasus ini, layer akan digabungkan untuk memiliki fitur tunggal yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika menentukan hubungan <b>Gabungkan satu ke satu</b> dan memilih sebuah statistik, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi rangkuman dari supermarket, seperti angka (5), dan statistik opsional lainnya seperti jumlah penjualan tahunan.
+            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar tradisional. Pada kasus ini, layer akan digabungkan untuk memiliki fitur tunggal yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika menentukan hubungan <b>Gabungkan satu ke satu</b> dan memilih sebuah statistik, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi rangkuman dari supermarket, seperti angka (5), dan statistik opsional lainnya seperti jumlah penjualan tahunan.
             </p>
         </div>
     </div>
@@ -144,7 +141,7 @@ Jika <b>Tentukan catatan mana yang disimpan</b>
         <div><h2>Simpan semua fitur target</h2></div>
         <hr/>
         <div>
-            <p>Secara default, hanya fitur yang cocok antara layer target dan layer gabungan yang dikembalikan dalam layer hasil (sebuah gabungan dalam). Saat diaktifkan, parameter  <b>Simpan semua fitur target</b> akan mengubah output untuk menyertakan semua fitur dalam layer target terlepas dari apakah mereka cocok dengan fitur dalam layer gabungan (sebuah gabungan luar kiri).
+            <p>Secara default, hanya fitur yang cocok antara layer target dan layer gabungan yang dikembalikan dalam layer hasil (sebuah gabungan dalam). Saat diaktifkan, parameter  <b>Simpan semua fitur target</b> akan mengubah output untuk menyertakan semua fitur dalam layer targetm, terlepas dari apakah mereka cocok dengan fitur dalam layer gabungan (sebuah gabungan luar kiri).
             </p>
         </div>
     </div>
@@ -152,14 +149,14 @@ Jika <b>Tentukan catatan mana yang disimpan</b>
         <div><h2>Tambahkan statistik (opsional)</h2></div>
         <hr/>
         <div>
-            <p>Jika opsi  <b>Gabungkan satu ke satu</b> dipilih, untuk kolom numerik, Anda dapat meringkas dan menghitung statistik di fitur gabungan.   Secara default, jumlah fitur gabungan yang cocok akan dihitung dan ditambahkan ke layer hasil.  Jika memilih untuk tidak menambahkan statistik tambahan, fitur pertama yang cocok di layer gabungan akan digabungkan dengan fitur pertama yang cocok di layer sasaran.   Anda dapat menghitung satu atau beberapa hal berikut:
+            <p>Jika opsi  <b>Gabungkan satu ke satu</b> dipilih, untuk kolom numerik, Anda dapat meringkas dan menghitung statistik di fitur gabungan. Secara default, jumlah fitur gabungan yang cocok akan dihitung dan ditambahkan ke layer hasil. Jika memilih untuk tidak menambahkan statistik tambahan, fitur pertama yang cocok di layer gabungan akan digabungkan dengan fitur pertama yang cocok di layer sasaran. Anda dapat menghitung satu atau beberapa hal berikut:
             </p>
             <ul>
                 <li>Sum
                 </li>
-                <li>Minimum
+                <li>Minimal
                 </li>
-                <li>Maksimum
+                <li>Maksimal
                 </li>
                 <li>Rata-Rata
                 </li>
@@ -167,8 +164,6 @@ Jika <b>Tentukan catatan mana yang disimpan</b>
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
@@ -185,7 +180,7 @@ Jika <b>Tentukan catatan mana yang disimpan</b>
         <div><h2>Buat hasil sebagai tampilan feature layer yang di-host</h2></div>
         <hr/>
         <div>
-            <p> Membuat hasil sebagai tampilan feature layer yang di-host menjadikan data tetap yang terbaru saat data sumber berubah.  Tampilan feature layer yang di-host yang berisi gabungan akan bersifat baca-saja dan tidak menggunakan kredit untuk analisis dan penyimpanan.
+            <p> Membuat hasil sebagai tampilan feature layer yang dihost menjadikan data tetap yang terbaru saat data sumber berubah. Tampilan feature layer yang dihost yang berisi gabungan akan bersifat baca-saja.
             </p>
             <p>Anda dapat membuat tampilan feature layer yang di-host dari hasil analisis jika persyaratan berikut ini terpenuhi:
                 <ul>
@@ -193,7 +188,7 @@ Jika <b>Tentukan catatan mana yang disimpan</b>
                     </li>
                     <li>Kedua layer adalah feature layer yang di-host.
                     </li>
-                    <li>Anda melakukan gabungan berdasarkan atribut.
+                    <li>Anda sedang melakukan gabungan atribut.
                     </li>
                 </ul>
                 

@@ -44,11 +44,11 @@
         <h2>Savienot elementus</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Savienot elementus"></h2>
         <hr/>
-    <p>&quot;Savienot elementus&quot; strādā ar diviem slāņiem un savieno viena elementa atribūtus ar otra elementa atribūtiem, atkarībā no telpiskajām un atribūtu saistībām. Rīks nosaka visus ievades elementus, kas atbilst norādītajiem savieno&scaron;anas nosacījumiem, un mērķa slānim pievieno savienojamo slāni. 
+    <p>Funkcija &ldquo;Elementu savieno&scaron;ana&rdquo; izmanto divuds slāņus un savieno viena elementa atribūtus ar otra elementa atribūtiem atkarībā no telpiskajām un atribūtu saistībām. Rīks nosaka visus ievades elementus, kas atbilst norādītajiem savieno&scaron;anas nosacījumiem, un mērķa slānim pievieno savienojamo slāni.
     </p>
-    <p>Rīku Savienot elementus var lietot punktiem, līnijām, laukumiem un tabulām. Lai varētu veikt telpisko savieno&scaron;anu, jūsu datiem ir jābūt ģeometrijai. 
+    <p>Uzdevumu Savienot elementus var lietot punktiem, līnijām, apgabaliem un tabulām. Lai varētu veikt telpisko savieno&scaron;anu, jūsu datiem ir jābūt ģeometrijai.
     </p>
-    <p>Ja ir atzīmēts iestatījums  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tad tiek analizēti tikai tie elementi, kas redzami pa&scaron;reizējā kartes pārklājumā. Ja tas nav atzīmēts, tiek analizēti visi elementi gan mērķa slānī, gan pievienojamajā slānī pat tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    <p>Ja ir atzīmēts iestatījums  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tad tiek analizēti tikai tie elementi, kas redzami pa&scaron;reizējā kartes pārklājumā. Ja tas nav atzīmēts, tiek analizēti visi elementi gan mērķa slānī, gan savienojuma slānī par tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,7 @@
         <div><h2>Izvēlēties mērķa slāni</h2></div>
         <hr/>
         <div>
-            <p>Mērķa slānis, kam tabulā tiks pievienoti atribūti no pievienojamā slāņa.
+            <p>Mērķa slānis, kam atribūti no savienojuma slāņa tiek pievienoti tā tabulā.
             </p>
             <p>Papildus slāņa izvēlei no kartes varat atlasīt opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā. &Scaron;ī opcija atver galeriju, kurā varēsiet pārlūkot un atlasīt datu kopas no dažādiem avotiem un izmantot savā analīzē. 
             </p> 
@@ -66,7 +66,7 @@
         <div><h2>Izvēlēties slāni, ko pievienot mērķa slānim</h2></div>
         <hr/>
         <div>
-            <p>Pievienojamais slānis ar atribūtiem, kas tiek pievienoti mērķa slānim.
+            <p>Savienojuma slānis ar atribūtiem, kas tiek pievienoti mērķa slānim.
             </p>
             <p>Papildus slāņa izvēlei no kartes varat atlasīt opciju  <b>Izvēlēties analīzes slāni</b> nolaižamā saraksta lejasdaļā. &Scaron;ī opcija atver galeriju, kurā varēsiet pārlūkot un atlasīt datu kopas no dažādiem avotiem un izmantot savā analīzē. 
             </p>
@@ -76,11 +76,11 @@
         <div><h2>Izvēlēties savienošanas veidu(s)</h2></div>
         <hr/>
         <div>
-            <p>Varat lietot telpisko savieno&scaron;anu, atribūtu savieno&scaron;anu vai abu &scaron;o veidu kombināciju. 
+            <p>Varat lietot telpisko savieno&scaron;anu, atribūtu savieno&scaron;anu vai abu &scaron;o veidu kombināciju.
                 <ul>
-                    <li> <b>Telpiskais</b>&nbsp;&mdash; izmanto norādīto telpisko saistību, lai savienotu elementus. Lai izmantotu &scaron;o veidu, abiem slāņiem ir jābūt ģeometrijai.
+                    <li> <b>Telpiskā</b> Izmanto norādīto telpisko saistību, lai savienotu elementus. &Scaron;im nolūkam abiem slāņiem nepiecie&scaron;ama ģeometrija.
                     </li>
-                    <li> <b>Atribūtu</b>&nbsp;&mdash; savieno elementus, balstoties uz vienādiem laukiem.
+                    <li> <b>Atribūta</b> Savieno elementus, balstoties uz vienādiem laukiem.
                     </li>
                 </ul>
                 
@@ -93,17 +93,17 @@
         <div><h2>Izvēlēties telpisko saistību</h2></div>
         <hr/>
         <div>
-            <p>Telpiskā saistība, kas nosaka, vai elementi tiks savienoti. Pieejamās saistības ir atkarīgas no ievades elementos izmantotās ģeometrijas veida (punkti, līnijas, platības). Pieejamās saistības iekļauj sekojo&scaron;ās:
+            <p>Telpiskā saistība, kas nosaka, vai elementi tiks savienoti. Pieejamās saistības ir atkarīgas no ievades elementos izmantotās ģeometrijas veida&nbsp;(punkti, līnijas, laukumi). Pieejamās saistības ietver:
                 <ul>
-                    <li> <b>Identiski ar</b>&nbsp;&mdash; elementi mērķa slānī tiks atbilsto&scaron;i saskaņoti, ja tie būs identiski elementiem pievienojamajā slānī.
+                    <li> <b>Identiski ar</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti kā atbilsto&scaron;i, raugoties, vai tie ir identiski ar savienojamā slāņa elementiem.
                     </li>
-                    <li> <b>&Scaron;ķērso</b>&nbsp;&mdash; mērķa slāņa elementi tiks atbilsto&scaron;i saskaņoti, ja tie &scaron;ķērsos pievienojamā slāņa elementus.
+                    <li> <b>&Scaron;ķērso</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti kā atbilsto&scaron;i, raugoties, vai tie &scaron;ķērso savienojamā slāņa elementus.
                     </li>
-                    <li> <b>Pilnībā satur</b>&nbsp;&mdash; elementi tiks atbilsto&scaron;i saskaņoti, ja elementi mērķa slānī pilnībā saturēs elementus no pievienojamā slāņa.
+                    <li> <b>Pilnībā satur</b>&nbsp;&mdash; elementi tiks saskaņoti kā atbilsto&scaron;i, raugoties, vai mērķa slāņa elementi pilnībā satur savienojamā slāņa elementus.
                     </li>
-                    <li> <b>Pilnībā ietver</b>&nbsp;&mdash; elementi tiek atbilsto&scaron;i saskaņoti, ja elementi mērķa slānī ir pilnībā ietver pievienojamā slāņa elementus.
+                    <li> <b>Pilnībā ietver</b>&nbsp;&mdash; elementi tiks saskaņoti kā atbilsto&scaron;i, raugoties, vai mērķa slāņa elementi pilnībā ir ietverti savienojamā slāņa elementos.
                     </li>
-                    <li> <b>Norādītajā attālumā no</b>&nbsp;&mdash; mērķa slāņa elementi tiek atbilsto&scaron;i saskaņoti, ja tie atrodas norādītajā attālumā no pievienojamā slāņa elementiem.
+                    <li> <b>Norādītajā attālumā no</b>&nbsp;&mdash; mērķa slāņa elementi tiks saskaņoti kā atbilsto&scaron;i, raugoties, vai tie atrodas norādītajā attālumā no savienojamā slāņa elementiem.
                     </li>
                 </ul>
                 
@@ -114,9 +114,9 @@
         <div><h2>Atribūtu savienošana</h2></div>
         <hr/>
         <div>
-            <p>Atribūtu saistība, kas nosaka, vai elementi tiek savienoti cits ar citu. Elementi tiek savienoti, kad savienojamā slāņa lauku vērtības ir vienādas ar mērķa slāņa lauku vērtībām. 
+            <p>Atribūtu saistība, kas nosaka, vai elementi tiks savienoti viens ar otru. Elementi tiks saskaņoti kā atbilsto&scaron;i, ja savienojamā slāņa lauku vērtības ir vienādas ar mērķa slāņa lauku vērtībām.
             </p>
-            <p>Pieņemsim, ka jums ir visa apgabala dzīvesvietu adre&scaron;u ģeogrāfiskais slānis (ieskaitot lauku  <i>ZIP</i>) un datu kopas tabula ar veselības demogrāfiskajiem datiem pēc pasta indeksa (lauks ar nosaukumu <i>HEALTHZIP</i>). Jūs varat savienot veselības datu kopu ar dzīvesvietu datiem, saskaņojot lauku <i>ZIP</i> ar lauku <i>HEALTHZIP</i>, iegūstot dzīvesvietu slāni ar atbilsto&scaron;ajiem veselības datiem.
+            <p>Pieņemsim, ka jums ir visa reģiona dzīvesvietu adre&scaron;u ģeogrāfiskais slānis&nbsp;(iekļaujot lauku  <i>ZIP</i>) un datu kopas tabula ar veselības demogrāfiskajiem datiem pēc pasta indeksa&nbsp;(lauks ar nosaukumu <i>HEALTHZIP</i>). Jūs varat savienot veselības datu kopu ar dzīvesvietu datiem, saskaņojot lauku <i>ZIP</i> ar lauku <i>HEALTHZIP</i>, iegūstot dzīvesvietu slāni ar atbilsto&scaron;ajiem veselības datiem.
             </p>
         </div>
     </div>
@@ -124,18 +124,16 @@
         <div><h2>Izvēlēties savienošanas darbību</h2></div>
         <hr/>
         <div>
-            <p>Nosaka, kā tiek veikta mērķa un pievienojamā slāņa savieno&scaron;ana, ja tiek konstatēts, ka vairākiem pievienojamā slāņa elementiem ir vienāda saistība ar mērķa slāni. Var izvēlēties kādu no &scaron;īm divām savieno&scaron;anas operācijām:
+            <p>Tā nosaka, kā tiek veikta mērķa un savienojamā slāņa apvieno&scaron;ana, ja tiek konstatēts, ka daudziem savienojamā slāņa elementiem ir vienāda saistība ar mērķa slāni. Var izvēlēties kādu no &scaron;īm divām savieno&scaron;anas operācijām:
                 <ul>
-                    <li> <b>Savienot vienu pret vienu</b>&nbsp;&mdash; &scaron;ī opcija apvieno mērķa slāņa elementus vienā elementā apvienotajā slānī. Elementu apvieno&scaron;anu nosaka parametrs <b>Pievienot statistikas datus</b> vai <b>Definēt, kur&scaron; ieraksts tiek paturēts</b>. Ja izmantojat parametru <b>Pievienot statistikas datus</b>, visu saskaņoto, apvienoto elementu kopsavilkums tiks izmantots visos mērķa slāņa elementos. Savienoto elementu skaits tiks pievienots pēc noklusējuma. Ja izmantojat parametru <b>Definēt, kur&scaron; ieraksts tiek izmantots</b>,
- varat izvēlēties paturēt pirmo atbilsto&scaron;o ierakstu (noklusējuma iestatījums) vai saglabāt atbilsto&scaron;o ierakstu, pamatojoties uz izteiksmi. Izteiksme var izmantot skaitlisko lauku
-(lielākā vai mazākā ieraksta opcija) vai datumu laukumu (agrākā vai vēlākā datuma opcija).
+                    <li> <b>Savienot vienu pret vienu</b>&nbsp;&mdash; &scaron;ī opcija apvieno mērķa slāņa elementus vienā elementā apvienotajā slānī. Elementu apvieno&scaron;anu nosaka parametrs <b>Pievienot statistikas datus</b> vai <b>Definēt, kur&scaron; ieraksts tiek paturēts</b>. Ja izmantojat parametru <b>Pievienot statistikas datus</b>, visi atbilsto&scaron;ie elementi tiks apvienoti ar katru mērķa slāņa elementu. Savienoto elementu skaits tiks pievienots pēc noklusējuma. Ja izmantojat parametru <b>Definēt, kur&scaron; ieraksts tiek paturēts</b>, varat izvēlēties paturēt pirmo atbilsto&scaron;o saskaņoto ierakstu&nbsp;(noklusējuma iestatījums) vai saglabāt atbilsto&scaron;o ierakstu, izmantojot izteiksmi. Izteiksme var izmantot skaitlisko lauku (lielākā vai mazākā ieraksta opcija) vai datumu laukumu&nbsp;(agrākā vai vēlākā datuma opcija).
                     </li>
-                    <li> <b>Savienot vienu ar vairākiem</b>&nbsp;&mdash; &scaron;ajā gadījumā visi atbilsto&scaron;ie pievienojamā slāņa elementi tiek savienoti ar mērķa slāni. Rezultātu slānis iekļaus vairākus mērķa elementa ierakstus.
+                    <li> <b>Savienot vienu ar daudziem</b>&nbsp;&mdash; &scaron;ajā gadījumā visi atbilsto&scaron;ie savienojuma slāņa elementi tiek savienoti ar mērķa slāni. Rezultātu slānis iekļaus vairākus mērķa elementa ierakstus.
                     </li>
                 </ul>
                 
             </p>
-            <p>Pieņemsim, ka ir jāatrod lielveikali, kas atrodas ne tālāk kā 5&nbsp;kilometrus no zemnieku tirdziņa. &Scaron;ajā gadījumā slānim, kuram tiek veikta pievieno&scaron;ana, ir viens elements, kas atbilst zemnieku tirdziņam, bet pievienojamie elementi atbilst vietējiem pārtikas veikaliem, kuriem ir dažādi atribūti, piemēram, gada pārdo&scaron;anas rādītāji. Izmantojot rīku  <b>Elementu savieno&scaron;ana</b>, konstatējat, ka &scaron;iem kritērijiem atbilst pieci pārtikas veikali. Ja norādāt savieno&scaron;anas operāciju <b>Savienot vienu ar vairākiem</b>, rezultātā tiek parādīti pieci elementi, un katra rinda atbilst tirdziņam un lielveikalam. Ja norādāt saistību <b>Savienot vienu ar vienu</b> un izvēlaties statistikas rādītāju, tiek iegūts rezultāts ar vienu elementu, kas atbilst tirdziņam, un kopsavilkuma datiem par lielveikaliem, piemēram, skaitu&nbsp;(5) un citiem izvēles statistikas datiem&nbsp;&mdash; ikgadējo pārdo&scaron;anas rādītāju summu u.c.
+            <p>Pieņemsim, ka ir jāatrod lielveikali, kas atrodas ne tālāk kā 5&nbsp;kilometrus no zemnieku tirdziņa. &Scaron;ajā gadījumā slānim, kuram tiek veikta pievieno&scaron;ana, ir viens elements, kas attēlo zemnieku tirdziņu, bet pievienojamie elementi attēlo vietējos pārtikas veikalus, kuriem ir dažādi atribūti, piemēram, gada pārdo&scaron;anas rādītāji. Izmantojot rīku  <b>Elementu savieno&scaron;ana</b>, konstatējat, ka &scaron;iem kritērijiem atbilst pieci pārtikas veikali. Ja norādāt savieno&scaron;anas operāciju <b>Savienot vienu ar daudziem</b>, rezultātā tiek parādīti pieci elementi, un katra rindiņa atbilst tirdziņam un lielveikalam. Ja norādāt saistību <b>Savienot vienu ar vienu</b> un izvēlaties statistikas rādītāju, tiek iegūts rezultāts ar vienu elementu, kas atbilst tirdziņam, un kopsavilkuma datiem par lielveikaliem, piemēram, skaitu&nbsp;(5) un citiem izvēles statistikas datiem&nbsp;&mdash; ikgadējo pārdo&scaron;anas rādītāju summu u.c.
             </p>
         </div>
     </div>
@@ -151,23 +149,21 @@
         <div><h2>Pievienot statistiku (pēc izvēles)</h2></div>
         <hr/>
         <div>
-            <p>Ja izvēlas  <b>Savienot vienu ar vienu</b>, tad, izmantojot skaitliskos laukus, var apkopot un aprēķināt savienoto elementu statistiku.   Pēc noklusējuma tiek aprēķināts atbilsto&scaron;o savieno&scaron;anas elementu skaits un pieskaitīts rezultātu slānim.  Ja izvēlaties nepievienot papildu statistiku, pirmais atbilsto&scaron;ais pievienojamā slāņa elements tiek savienots ar pirmo atbilsto&scaron;o mērķa slāņa elementu. Var aprēķināt vienu vai vairākus no &scaron;iem rādītājiem:
+            <p>Ja izvēlas  <b>Savienot vienu ar vienu</b>, tad, izmantojot skaitliskos laukus, var apkopot un aprēķināt savienoto elementu statistiku. Pēc noklusējuma tiek aprēķināts atbilsto&scaron;o savienojamo elementu skaits un pieskaitīts rezultātu slānim. Ja izvēlaties nepievienot papildu statistiku, pirmais atbilsto&scaron;ais saskaņotais savienojuma slāņa elements tiks savienots ar pirmo atbilsto&scaron;o mērķa slāņa elementu. Var aprēķināt vienu vai vairākus no &scaron;iem rādītājiem:
             </p>
             <ul>
                 <li>Summa
                 </li>
-                <li>Minimālā vērtība
+                <li>Minimums
                 </li>
-                <li>Maksimālā vērtība
+                <li>Maksimums
                 </li>
-                <li>Vidējā vērtība
+                <li>Vidējais
                 </li>
                 <li>Standartnovirze
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
@@ -184,15 +180,15 @@
         <div><h2>Izveidot rezultātus kā viesotu elementu slāņu skatu</h2></div>
         <hr/>
         <div>
-            <p> Rezultātu izveide kā viesotam elementu slāņa skatam, nodro&scaron;ina datu aktualitāti, atbilsto&scaron;i izmaiņām avota datu slānī. Viesotu elementu slāņu skati, kuros ir savienojumi, ir tikai lasāmi un netērē servisa&nbsp;kredītus analīzei un glabā&scaron;anai.
+            <p> Ja izveidosiet rezultātus kā viesotu elementu slāņu skatu, varēsiet atjaunot datus atbilsto&scaron;i avota datu izmaiņām. Viesotu elementu slāņu skati, kuros ir savienojumi, ir tikai lasāmi.
             </p>
-            <p>Viesota elementu slāņa skata izveide no analīzes rezultātiem ir iespējama, ja ir spēkā visi tālāk minētie nosacījumi:
+            <p>Varat izveidot viesotu elementu slāņu skatu no analīzes rezultātiem, ja ir spēkā visi tālāk minētie nosacījumi.
                 <ul>
                     <li>Jūs esat abu slāņu īpa&scaron;nieks.
                     </li>
                     <li>Abi slāņi ir viesotu elementu slāņi.
                     </li>
-                    <li>Jūs veicat apvieno&scaron;anu, pamatojoties uz atribūtiem.
+                    <li>Jūs veicat atribūtu savieno&scaron;anu.
                     </li>
                 </ul>
                 

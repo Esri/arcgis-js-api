@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Interpolovať body</h2><p/>
+        <h2><img src="../images/GUID-28FC50AA-7B10-487C-949B-241EF2F8028E-web.png" alt="Interpolovať body"></h2>
+        <hr/>
+    <p>   N&aacute;stroj Interpolovať body umožňuje predpovedať hodnoty na nov&yacute;ch lokalit&aacute;ch na z&aacute;klade meran&iacute; z kolekcie bodov. N&aacute;stroj berie bodov&eacute; d&aacute;ta s hodnotami v každom bode a vracia oblasti klasifikovan&eacute; predpovedan&yacute;mi hodnotami. Napr&iacute;klad
+        <ul>
+            <li>Obvod spr&aacute;vy kvality ovzdu&scaron;ia m&aacute; senzory, ktor&eacute; meraj&uacute; &uacute;roveň znečistenia. Interpolovať body je možn&eacute; použiť na predpovedanie &uacute;rovne znečistenia na lokalit&aacute;ch bez senzorov, ako aj na rizikov&yacute;ch lokalit&aacute;ch ak&yacute;mi s&uacute; napr&iacute;klad &scaron;koly alebo nemocnice.
+            </li>
+            <li>Predpovedať vysok&uacute; koncentr&aacute;ciu kovov v plodin&aacute;ch na z&aacute;klade vzoriek zobrat&yacute;ch z jednotliv&yacute;ch rastl&iacute;n.
+            </li>
+            <li>Predpovedať &uacute;rovne živ&iacute;n v p&ocirc;de (dus&iacute;k, fosfor, drasl&iacute;k atď.) a ďal&scaron;ie ukazovatele (napr&iacute;klad elektrick&aacute; vodivosť), aby ste mohli &scaron;tudovať ich vzťah k v&yacute;nosu plod&iacute;n a predp&iacute;sať presn&eacute; množstv&aacute; hnoj&iacute;v pre každ&uacute; časť poľa.
+            </li>
+            <li>Meteorologick&eacute; aplik&aacute;cie zahŕňaj&uacute; predpovede tepl&ocirc;t, zr&aacute;žok a s&uacute;visiacich premenn&yacute;ch (napr&iacute;klad kysl&yacute;ch dažďov).
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte bodovú vrstvu obsahujúcu lokality so známymi hodnotami</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute; vrstva, ktor&aacute; sa použije ako z&aacute;klad interpol&aacute;cie.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Vyberte stĺpec na interpoláciu</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte pole obsahuj&uacute;ce hodnoty, ktor&eacute; chcete interpolovať.
+            </p>
+        </div>
+    </div>
+    <div id="interpolateOption">
+        <div><h2>Optimalizovať pre</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte si preferenciu r&yacute;chlosti verzus presnosi. Presnej&scaron;ie predpovede sa vypoč&iacute;tavaj&uacute; dlh&scaron;ie.
+            </p> 
+        </div>
+    </div>
+    <div id="outputPredictionError">
+        <div><h2>Výstupné chyby predikcie</h2></div>
+        <hr/>
+        <div>
+            <p> Ak je za&scaron;krtnut&eacute;, vytvor&iacute; sa vrstva &scaron;tandardn&yacute;ch ch&yacute;b pre predpovede interpol&aacute;cie. N&aacute;zov v&yacute;stupnej vrstvy bude n&aacute;zov v&yacute;slednej vrstvy s pripojen&yacute;m 'Errors'.
+            </p>
+            <p>&Scaron;tandardn&eacute; chyby s&uacute; užitočn&eacute;, pretože poskytuj&uacute; inform&aacute;cie o spoľahlivosti predpokladan&yacute;ch hodn&ocirc;t. Jednoduch&yacute;m pravidlom je, že skutočn&aacute; hodnota bude spadať do rozsahu dvojn&aacute;sobku &scaron;tandardn&yacute;ch ch&yacute;b predpovedanej hodnoty a to v 95 percent&aacute;ch pr&iacute;padov. Predpokladajme napr&iacute;klad, že nov&aacute; lokalita z&iacute;ska predpokladan&uacute; hodnotu 50 so &scaron;tandardnou chybou 5. To znamen&aacute;, že najlep&scaron;&iacute;m odhadom tohto n&aacute;stroja je skutočn&aacute; hodnota v danom mieste s hodnotou 50, ale primerane by mohla byť n&iacute;zka s hodnotou 40 alebo vysok&aacute; až 60. Ak chcete vypoč&iacute;tať tento rozsah primeran&yacute;ch hodn&ocirc;t, vyn&aacute;sobte &scaron;tandardn&uacute; chybu č&iacute;slom 2, pridajte t&uacute;to hodnotu k predpokladanej hodnote, aby ste dostali horn&yacute; koniec rozsahu, a odč&iacute;tajte ho od predpokladanej hodnoty, aby ste dostali doln&yacute; koniec rozsahu.
+            </p>
+        </div>
+    </div>
+    <div id="classificationType">
+        <div><h2>Klasifikovať podľa</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte, ako sa bud&uacute; predpovedan&eacute; hodnoty klasifikovať do oblast&iacute;.
+                <ul>
+                    <li>Geometrick&yacute; interval - Oblasti s&uacute; založen&eacute; na intervaloch triedy, ktor&eacute; maj&uacute; geometrick&yacute; rad. T&aacute;to met&oacute;da zaisťuje, že každ&yacute; rozsah tried m&aacute; približne rovnak&yacute; počet hodn&ocirc;t v r&aacute;mci každej triedy a že zmena medzi intervalmi je konzistentn&aacute;.
+                    </li>
+                    <li>Rovnak&yacute; interval &mdash; Oblasti sa vytv&aacute;raj&uacute; tak, aby bol rozsah predpovedan&yacute;ch hodn&ocirc;t pre každ&uacute; oblasť rovnak&yacute;.
+                    </li>
+                    <li>Rovnak&aacute; oblasť - Oblasti sa vytv&aacute;raj&uacute; tak, aby sa počet hodn&ocirc;t d&aacute;t v každej oblasti rovnal. Napr&iacute;klad, ak maj&uacute; d&aacute;ta viac veľk&yacute;ch hodn&ocirc;t ako mal&yacute;ch hodn&ocirc;t, bude vytvoren&yacute;ch viac oblast&iacute; pre v&auml;č&scaron;ie hodnoty.
+                    </li>
+                    <li>Manu&aacute;lny &mdash; T&aacute;to možnosť v&aacute;m umožňuje definovať pre oblasti vlastn&yacute; rozsah hodn&ocirc;t. Tieto hodnoty bud&uacute; zadan&eacute; do parametra  <b>Hodnoty zlomu triedy</b> niž&scaron;ie.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="numClasses">
+        <div><h2>Počet tried</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať počet tired (rozsah predpokladan&yacute;ch hodn&ocirc;t) vo v&yacute;slednej vrstve. Každ&aacute; trieda definuje hranicu oblast&iacute;. Hodnoty t&yacute;chto tried bud&uacute; určen&eacute; parametrom  <b>Klasifikovať podľa</b> vy&scaron;&scaron;ie.
+            </p>
+        </div>
+    </div>
+    <div id="classBreaks">
+        <div><h2>Hraničné hodnoty triedy</h2></div>
+        <hr/>
+        <div>
+            <p>Vložiť požadovan&eacute; hodnoty zlomu triedy oddelen&eacute; medzerami. Napr&iacute;klad, ak chcete zlomy triedy na hodnot&aacute;ch 1.5, 3 a 7, zadajte  <code>1.5 3 7 </code>. Tieto hodnoty definuj&uacute; horn&uacute; hranicu každej triedy, takže počet tried sa bude rovnať počtu zadan&yacute;ch hodn&ocirc;t. Pre lokality s predpokladan&yacute;mi hodnotami nad najv&auml;č&scaron;ou zadanou hodnotou zlomu sa nebud&uacute; vytv&aacute;rať žiadne oblasti. Mus&iacute;te zadať aspoň dve hodnoty nie v&auml;č&scaron;ie ako 32.
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Orezať výstup podľa</h2></div>
+        <hr/>
+        <div>
+            <p>Nakreslite alebo poskytnite vrstvu &scaron;pecifikuj&uacute;cu oblasť, pre ktor&uacute; sa m&aacute; vykresliť v&yacute;sledok. Napr&iacute;klad, ak interpolujete merania znečistenia jazera, m&ocirc;žete v tomto parametri použiť hranicu jazera a v&yacute;stup sa bude vykreslovať len v r&aacute;mci hran&iacute;c jazera.
+            </p>
+        </div>
+    </div>
+    <div id="predictAtPointLayer">
+        <div><h2>Predpovedať v týchto lokalitách</h2></div>
+        <hr/>
+        <div>
+            <p>Nakreslite alebo poskytnite vrstvu &scaron;pecifikuj&uacute;cu bodov&eacute; lokality pre vypoč&iacute;tanie predpokladan&yacute;ch hodn&ocirc;t. T&yacute;mto m&ocirc;žete z&iacute;skať predpovede pre konkr&eacute;tne z&aacute;ujmov&eacute; lokality. Napr&iacute;klad, ak vstupn&aacute; vrstva predstavuje meranie &uacute;rovn&iacute; znečistenia, pomocou tohto parametra m&ocirc;žete predpovedať &uacute;rovne znečistenia v lokalit&aacute;ch s vysokorizikovou popul&aacute;ciou, ako s&uacute; &scaron;koly alebo nemocnice. Z&iacute;skan&eacute; inform&aacute;cie m&ocirc;žete n&aacute;sledne použiť na odovzdanie odpor&uacute;čan&iacute; zdravotn&iacute;kom v dotknut&yacute;ch oblastiach.
+            </p>
+            <p>Ak je n&aacute;stroj použit&yacute;, vytvor&iacute; na zadan&yacute;ch lokalit&aacute;ch bodov&uacute; vrstvu predpoved&iacute;. N&aacute;zov v&yacute;stupnej vrstvy bude n&aacute;zov v&yacute;slednej vrstvy s pripojen&yacute;m 'Points'.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

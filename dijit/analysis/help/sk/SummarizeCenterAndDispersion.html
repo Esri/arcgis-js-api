@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Zhrnúť stredové hodnoty a rozptyl</h2><p/>
+        <h2><img src="../images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" alt="Zhrn&uacute;ť stredov&eacute; hodnoty a rozptyl"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj hľad&aacute; stredov&eacute; prvky a smerov&eacute; distrib&uacute;cie. M&ocirc;že byť použit&eacute; ako odpoveď na ot&aacute;zky ako:
+        <ul>
+            <li>Kde je stred?
+            </li>
+            <li>Ktor&yacute; prvok je najpr&iacute;stupnej&scaron;&iacute; zo v&scaron;etk&yacute;ch ostatn&yacute;ch prvkov?
+            </li>
+            <li>Ako rozpt&yacute;len&eacute;, hust&eacute; alebo celistv&eacute; s&uacute; prvky?
+            </li>
+            <li>S&uacute; tam smerov&eacute; trendy?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak  <b>Použiť aktu&aacute;lny rozsah</b> mapy je za&scaron;krtnut&eacute;, analyzovan&eacute; bud&uacute; len prvky vo vrstve vstupu viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je od&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu bud&uacute; analyzovan&eacute;, aj ak s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vybrať vrstvu na opis</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute; vrstva, line&aacute;rna vrstva alebo plo&scaron;n&aacute; vrstva bude použit&aacute; na n&aacute;jdenie centr&aacute;lnych prvkov a smerov&yacute;ch distrib&uacute;ci&iacute;.
+            </p>
+        </div>
+    </div>
+    <div id="summarizeTypes">
+        <div><h2>Typy zhrnutia</h2></div>
+        <hr/>
+        <div>
+            <p>Met&oacute;da zhrnutia stredu a rozptylu.
+            </p>
+            <ul>
+                <li>Centr&aacute;lny prvok - Identifikuje najstrednej&scaron;&iacute; prvok v d&aacute;tovej sade.
+                </li>
+                <li>Priemern&yacute; stred - Identifikuje geografick&yacute; stred (alebo stred koncentr&aacute;cie) pre sadu prvkov.
+                </li>
+                <li>Medi&aacute;nov&yacute; stred - Identifikuje umiestnenie, ktor&eacute; minimalizuje v&scaron;eobecn&uacute; Euklidovsk&uacute; vzdialenosť k prvkom v d&aacute;tovej sade.
+                </li>
+                <li>Elipsa - Vytv&aacute;ra &scaron;tandardn&eacute; elipsy odch&yacute;lky na zhrnutie priestorov&yacute;ch charakterist&iacute;k geografick&yacute;ch prvkov: centr&aacute;lnu tendenciu, rozptyl a smerov&eacute; trendy. Elipsy m&ocirc;žu mať veľkosť ako 1, 2 alebo 3 &scaron;tandardn&eacute; odch&yacute;lky.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="weightBy">
+        <div><h2>Váha podľa (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Pole použit&eacute; na v&aacute;ženie umiestnen&iacute; podľa ich relat&iacute;vnej d&ocirc;ležitosti.
+            </p>
+        </div>
+    </div>
+    <div id="groupBy">
+        <div><h2>Zoskupiť podľa (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Pole použit&eacute; na zoskupenie prvkov pre oddelen&eacute; v&yacute;počty centr&aacute;lnych prvkov alebo rozptylu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

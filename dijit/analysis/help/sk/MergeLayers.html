@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Zlúčiť vrstvy</h2><p/>
+        <h2><img src="../images/GUID-BDDD6517-4EE7-4EEC-AE15-15DD9B709131-web.png" alt="Zl&uacute;čiť vrstvy"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj kop&iacute;ruje prvky z dvoch vrstiev do novej vrstvy. V&scaron;etky vrstvy na zl&uacute;čenie musia obsahovať prvky rovnak&eacute;ho typu (body, l&iacute;nie alebo plochy). M&ocirc;žete ovl&aacute;dať, ako s&uacute; polia z vstupn&yacute;ch vrstiev spojen&eacute; a kop&iacute;rovan&eacute;, napr&iacute;klad:
+        <ul>
+            <li>M&aacute;te vrstvu &scaron;t&aacute;tnych &scaron;k&ocirc;l a vrstvu s&uacute;kromn&yacute;ch &scaron;k&ocirc;l a chcete jednu vrstvu zobrazuj&uacute;cu v&scaron;etky &scaron;koly.
+            </li>
+            <li>M&aacute;te dve vrstvy a každ&aacute; obsahuje inform&aacute;cie o parcel&aacute;ch pre priľahl&eacute; mestsk&eacute; časti. Chcete ich skombinovať do jednej vrstvy, so zachovan&iacute;m pol&iacute; s rovnak&yacute;m n&aacute;zvom a typom d&aacute;t oboch vstupn&yacute;ch vrstiev.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, zl&uacute;čen&eacute; bud&uacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky v oboch vrstv&aacute;ch bud&uacute; zl&uacute;čen&eacute;, aj ak s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vrstvu</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute;, l&iacute;niov&eacute; alebo plo&scaron;n&eacute; prvky na zl&uacute;čenie s vrstvou &scaron;pecifikovanou niž&scaron;ie.
+            </p>
+        </div>
+    </div>
+    <div id="MergeLayer">
+        <div><h2>Vybrať vrstvu na zlúčenie</h2></div>
+        <hr/>
+        <div>
+            <p>Vybrať vrstvu na zl&uacute;čenie s prvou vrstvou.
+            </p>
+        </div>
+    </div>
+    <div id="MergingAttributes">
+        <div><h2>Upraviť polia pre zlúčenie</h2></div>
+        <hr/>
+        <div>
+            <p>Predvolene bud&uacute; v&scaron;etky polia z oboch vstupov prenesen&eacute; do v&yacute;stupu. Zmeniť sp&ocirc;sob prenesenia pol&iacute; do v&yacute;stupu m&ocirc;žete nasledovne:
+                <ul>
+                    <li> <b>Premenovať</b> - Pole bude premenovan&eacute; na v&yacute;stupe.
+                    </li>
+                    <li> <b>Ostr&aacute;niť</b> - Pole bude odstr&aacute;nen&eacute; z v&yacute;stupu.
+                    </li>
+                    <li> <b>Sp&aacute;rovať</b> - Men&aacute; pol&iacute; sa sa stan&uacute; ekvivalentn&eacute;. Hodnoty poľa zo zlučovanej vrstvy bud&uacute; skop&iacute;rovan&eacute; do sp&aacute;rovan&eacute;ho poľa v&yacute;stupu.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ak obe vrstvy obsahuj&uacute; pole so zhodn&yacute;m n&aacute;zvom a d&aacute;tov&yacute;m typom, obsah oboch pol&iacute; sa zl&uacute;či do jedn&eacute;ho poľa s rovnak&yacute;m n&aacute;zvom. Toto sa nevzťahuje na polia, kde je použit&eacute;  <b>Sp&aacute;rovať</b> v parametri <b>Upraviť zlučovan&eacute; polia</b>.
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

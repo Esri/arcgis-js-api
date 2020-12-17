@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vytvoriť povodia</h2><p/>
+        <h2><img src="../images/GUID-4DE64CF6-2A02-46F6-8AE4-4D9227AAB71C-web.png" alt="Vytvoriť povodia"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj odvod&iacute; pre každ&yacute; bod vstupnej vrstvy povodie alebo oblasť pr&iacute;rastku v smere proti pr&uacute;du.
+    </p>
+    <p>Napr&iacute;klad, povedzme, že m&aacute;te bodov&eacute; prvky reprezentuj&uacute;ce kontaminovan&eacute; lokality a chcete n&aacute;jsť možn&eacute; zdroje kontamin&aacute;cie. Keďže zdroj kontamin&aacute;cie mus&iacute; byť niekde v povod&iacute; proti pr&uacute;du od bodu, použili by ste tento n&aacute;stroj na definovanie povodia obsahuj&uacute;ceho zdroje kontamin&aacute;cie.
+    </p>
+    <p>Umiestnenie va&scaron;ich vstupn&yacute;ch bodov je d&ocirc;ležit&eacute;. Ak nie s&uacute; umiestnen&eacute; presne na odtokov&uacute; l&iacute;niu, v&yacute;sledn&eacute; povodia m&ocirc;žu byť pr&iacute;li&scaron; mal&eacute; a neužitočn&eacute; pre anal&yacute;zu.  <b>Hľadať vzdialenosť k najbliž&scaron;iemu odtoku</b> je možn&eacute; použiť na upravenie umiestnenia va&scaron;ich vstupn&yacute;ch bodov tak, aby boli presne na odtokovej l&iacute;nii za &uacute;čelom n&aacute;jdenia povodia, ktor&eacute; vtek&aacute; do bodu na l&iacute;nii. Upraven&eacute; umiestnenia použit&eacute; na n&aacute;jdenie povod&iacute; s&uacute; zap&iacute;san&eacute; do v&yacute;stupnej vrstvy - va&scaron;e vstupn&eacute; body nebud&uacute; pozmenen&eacute;.
+    </p>
+    <p>V&yacute;sledok je skupinov&aacute; vrstva obsahuj&uacute;ca dve vrstvy: povodia a upraven&eacute; body použit&eacute; na v&yacute;počet povod&iacute;.
+    </p>
+    <p>V&yacute;sledn&eacute; povodia bud&uacute; mať v&scaron;etky atrib&uacute;ty va&scaron;ich vstupn&yacute;ch bodov a tieto doplňuj&uacute;ce atrib&uacute;ty:
+        <ul>
+            <li> <i>PourPtID</i>- Obsahuje ID hodnotu vstupn&eacute;ho bodu
+            </li>
+            <li> <i>Area Square Kilometers</i>- Obsahuje plochu povodia v kilometroch &scaron;tovrcov&yacute;ch
+            </li>
+            <li> <i>Description</i> a <i>DataResolution</i> - Obsahuje inform&aacute;cie vzťahuj&uacute;ce sa k hydrologick&yacute;m d&aacute;tam použit&yacute;m pre v&yacute;počet trasy
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť s&uacute;časn&yacute; rozsah mapy</b>, iba prvky v r&aacute;mci aktu&aacute;lneho rozsahu mapy bud&uacute; použit&eacute; na vypoč&iacute;tanie povod&iacute;. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Bodové prvky, ktoré budú použité pre výpočet povodí</h2></div>
+        <hr/>
+        <div>
+            <p>Povodie (oblasť pr&iacute;rastku v smere proti pr&uacute;du) bude vypoč&iacute;tan&eacute; pre každ&yacute; bod.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="SearchDistance">
+        <div><h2>Vyhľadávacia vzdialenosť k najbližšiemu odtoku</h2></div>
+        <hr/>
+        <div>
+            <p>Ak s&uacute; va&scaron;e vstupn&eacute; body umiestnen&eacute; mimo odtokovej l&iacute;nie, v&yacute;sledn&eacute; povodie bude pravdepodobne veľmi mal&eacute; a nie vhodn&eacute; pre anal&yacute;zu, napr&iacute;klad pri určovan&iacute; zdroja kontamin&aacute;cie v smere proti pr&uacute;du. Vo v&auml;č&scaron;ine pr&iacute;padov chcete vstupn&yacute; bod pripojiť k najbliž&scaron;ej odtokovej l&iacute;nii za &uacute;čelom n&aacute;jdenia povodia, ktor&eacute; vtek&aacute; do tohto bodu. Pre n&aacute;jdenie najbliž&scaron;ej odtokovej l&iacute;nie &scaron;pecifikujte vzdialenosť vyhľad&aacute;vania. Ak ne&scaron;pecifikujete vzdialenosť vyhľad&aacute;vania, n&aacute;stroj vypoč&iacute;ta a použije zauž&iacute;van&uacute; vzdialenosť vyhľad&aacute;vania.
+            </p>
+            <p>Pre použitie presn&eacute;ho umiestnenia v&aacute;&scaron;ho vstupn&eacute;ho bodu &scaron;pecifikujte vzdialenosť vyhľad&aacute;vania nula.
+            </p>
+            <p>Na analytick&eacute; &uacute;čely musia byť odtokov&eacute; l&iacute;nie prepoč&iacute;tan&eacute; za použitia &scaron;tandardn&yacute;ch hydrologick&yacute;ch modelov Esri. Ak nie je v r&aacute;mci vyhľad&aacute;vacej vzdialenosti n&aacute;jden&aacute; je žiadna odtokov&aacute; l&iacute;nia, je použit&aacute; lokalita s najv&auml;č&scaron;&iacute;m akumulačn&yacute;m pr&iacute;rastkom v r&aacute;mci vyhľad&aacute;vacej vzdialenosti.
+            </p> 
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+            <p> Spustenie tohto n&aacute;stroja nespotrev&uacute;va kredity.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

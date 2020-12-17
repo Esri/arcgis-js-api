@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Prekryť vrstvy</h2><p/>
+        <h2><img src="../images/GUID-CE1E0E84-F3B5-446B-9FDE-4DA057F106CC-web.png" alt="Prekryť vrstvy"></h2>
+        <hr/>
+    <p>Prekrytie kombinuje dve vrstvy do jednej. Na prekrytie m&ocirc;žete nazerať ako na pohľad cez sadu m&aacute;p a vytvorenie jedinej mapy obsahuj&uacute;cej v&scaron;etky inform&aacute;cie nach&aacute;dzaj&uacute;ce sa v celej sade. Prekrytie je viac ako len zlučovanie l&iacute;ni&iacute;; v&scaron;etky atrib&uacute;ty prvkov využit&yacute;ch v prekryt&iacute; s&uacute; prenesen&eacute; do fin&aacute;lneho produktu. Prekrytie sa použ&iacute;va na zodpovedanie jednej z najz&aacute;kladnej&scaron;&iacute;ch geografick&yacute;ch ot&aacute;zok, &quot;Čo sa nach&aacute;dza nad č&iacute;m?&quot; Napr&iacute;klad:
+        <ul>
+            <li>Ktor&eacute; parcely s&uacute; na &uacute;zem&iacute; 100-ročnej z&aacute;plavovej oblasti? (Vn&uacute;tri je len in&yacute; sp&ocirc;sob ako povedať navrchu.)
+                  
+            </li>
+            <li>Ak&eacute; cesty s&uacute; v ktor&yacute;ch okresoch?
+            </li>
+            <li>Ak&yacute; druh využitia &uacute;zemia sa nach&aacute;dza na akom type p&ocirc;dy?
+                 
+            </li>
+            <li>Ak&eacute; studne s&uacute; v opusten&yacute;ch vojensk&yacute;ch z&aacute;kladniach?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, prekryt&eacute; bud&uacute; len prvky vo vrstve vstupu a prekrytia, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu a vrstve prekryt&iacute; bud&uacute; prekryt&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vstupnú vrstvu</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute;, l&iacute;niov&aacute; alebo plo&scaron;n&aacute; vrstva, ktor&aacute; bude prekryt&aacute;.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="OverlayLayer">
+        <div><h2>Vybrať vrstvu prekrytia</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva na prekrytie so vstupnou vrstvou.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p> 
+        </div>
+    </div>
+    <div id="OverlayType">
+        <div><h2>Vybrať metódu prekrytia</h2></div>
+        <hr/>
+        <div>
+            <p>Met&oacute;da prekrytia definuje ako je kombinovan&aacute; vstupn&aacute; vrstva s vrstvou prekrytia.
+                <ul>
+                    <li> <b>Pretn&uacute;ť</b> - V&yacute;sledok bude obsahovať len tie prvky alebo časti prvkov v prekryvovej vrstve, ktor&eacute; sa prekr&yacute;vaj&uacute; s prvkami vo vstupnej vrstve. Pri pret&iacute;nan&iacute; l&iacute;niov&yacute;ch alebo plo&scaron;n&yacute;ch prvkov m&aacute;te možnosť definovať typ prvkov, ktor&eacute; chcete mať vo v&yacute;stupe.
+                        <table border="1">
+                        <tr>
+                            <td>
+                                <p>Body s bodmi
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-B456C1ED-F5A1-4F8A-A1ED-1BC35A4A8B40-web.png" alt="Body a bodov&yacute; vstup">
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-49B1A536-8426-4149-B067-5A16936E0BBC-web.png" alt="Body a body s bodov&yacute;m v&yacute;stupom">
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Body s l&iacute;niami
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-F1E6C6C8-4F51-4063-984D-0FC8D08EB2D2-web.png" alt="Body a l&iacute;niov&yacute; vstup">
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-02CFAFDC-1B3C-4C4B-A58C-7B0B78BA0B56-web.png" alt="Body a l&iacute;nie s bodov&yacute;m v&yacute;stupom">
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Body s plochami
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-5EE90BD6-CC3D-4E2F-A5D0-DC57298E8416-web.png" alt="body a plo&scaron;n&yacute; vstup">
+                                </p>
+                            </td>
+                            <td> <img src="../images/GUID-5CCA360F-D4C9-43AB-8FB2-E6E62DE93BD4-web.png" alt="body a plochy s bodov&yacute;m v&yacute;stupom">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>L&iacute;nie s l&iacute;niami
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-CF8DDF87-919D-43D5-BBB6-87F0EAC33891-web.png" alt="L&iacute;nie a l&iacute;niov&yacute; vstup">
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-DDCCB226-6490-4914-B87C-299125466256-web.png" alt="L&iacute;nie a l&iacute;nie s bodov&yacute;m v&yacute;stupom">
+                                </p>
+                                <p> <img src="../images/GUID-CDE3AAA9-94C1-41E9-8270-229433240743-web.png" alt="L&iacute;nie a l&iacute;nie s l&iacute;niov&yacute;m v&yacute;stupom ">
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>L&iacute;nie s plochami
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-E38EB7D6-9D35-4E0D-937A-9FEC4144AF2E-web.png" alt="L&iacute;nie a plo&scaron;n&yacute; vstup">
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-639F492C-BEE7-4A5F-AEBC-325B74FEC766-web.png" alt="L&iacute;nie a plochy s bodov&yacute;m v&yacute;stupom">
+                                </p>
+                                <p> <img src="../images/GUID-58DF5CF6-0A56-4717-AD9C-C3BEC8EA6906-web.png" alt="L&iacute;nie a plochy s l&iacute;niov&yacute;m v&yacute;stupom">
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Plochy s plochami
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-10C2CDA7-E6C4-4323-A9FB-5FB77A258CE0-web.png" alt="Plochy a plo&scaron;n&yacute; vstup">
+                                </p>
+                            </td>
+                            <td>
+                                <p> <img src="../images/GUID-3F71AD46-A6A2-436D-8BBA-13E014BB94D0-web.png" alt="Plochy a plochy s bodov&yacute;m v&yacute;stupom">
+                                </p>
+                                <p> <img src="../images/GUID-6AF62F09-6D32-4212-97C6-844580E34A22-web.png" alt="Plochy a plochy s l&iacute;niov&yacute;m v&yacute;stupom">
+                                </p>
+                                <p> <img src="../images/GUID-4D397A0E-EF91-4ACE-9655-2483AFC2FDE2-web.png" alt="Plochy a plochy s plo&scaron;n&yacute;m v&yacute;stupom">
+                                </p>
+                            </td>
+                        </tr>
+                        </table>
+                    </li>
+                    <li> <b>Zjednotenie</b> - V&yacute;sledok bude obsahovať prvky zo vstupnej vrstvy ako aj z vrstvy prekrytia. Možnosť Zjednotenia je dostupn&aacute; len ak aj vstupn&aacute; vrstva a vrstva prekrytia obsahuj&uacute; plo&scaron;n&eacute; prvky.
+                    </li>
+                    <li> <b>Vymazať</b> - V&yacute;sledok bude obsahovať prvky alebo časti prvkov vo vrstve vstupu, ktor&eacute; sa neprekr&yacute;vaj&uacute; s plochami vo vrstve prekrytia. Vrstva prekrytia m&ocirc;že obsahovať plo&scaron;n&eacute;, l&iacute;niov&eacute; alebo bodov&eacute; prvky.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, prekryt&eacute; bud&uacute; len prvky vo vrstve vstupu a prekrytia, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu a vrstve prekryt&iacute; bud&uacute; prekryt&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+            </p> 
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p> Toto je n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Bude mať rovnak&yacute; typ prvkov (plochy, l&iacute;nie alebo body) ako vrstva prekrytia. Predvolen&yacute; n&aacute;zov je založen&yacute; na met&oacute;de prekrytia a n&aacute;zve vstupnej vrstvy. Ak už vrstva existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b>, m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude uložen&yacute; v&yacute;sledok.
+            </p> 
+        </div>
+    </div>
+</div>
+</html>

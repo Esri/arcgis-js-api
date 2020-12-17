@@ -1556,6 +1556,7 @@
         "required": true,
         "dataType": "long",
         "displayName": "${rasterFunctions.rfxArgs.rowsName}",
+        "categoryRefId": "rfxArgCat_NeighborhoodSettings",
         "hidden": false,
         "defaultValue": 3
       },
@@ -1563,6 +1564,7 @@
         "required": true,
         "dataType": "long",
         "displayName": "${rasterFunctions.rfxArgs.columnsName}",
+        "categoryRefId": "rfxArgCat_NeighborhoodSettings",
         "hidden": false,
         "defaultValue": 3
       },
@@ -2085,6 +2087,7 @@
       "OutputValues": {
         "required": true,
         "dataType": "doublearray",
+        "displayName": "${rasterFunctions.rfxArgs.outputValuesName}",
         "hidden": false
       },
       "OutputRanges": {
@@ -3633,6 +3636,12 @@
           "type": "list",
           "enum": "gpsaKernelDensityMethods"
         }
+      },
+      "in_barriers": {
+        "required": false,
+        "dataType": "featureClass",
+        "displayName": "${rasterFunctions.rfxArgs.barriersName}",
+        "hidden": false
       }
     }
   },
@@ -7110,18 +7119,37 @@
           "triggers": [
             {
               "values": [0],
-              "active": ["SlopePValue"],
-              "inactive": ["Frequency", "Order", "CycleLength", "CycleUnit"]
+              "active": ["SlopePValue", "RMSE", "R2"],
+              "inactive": ["Frequency", "Order", "CycleLength", "CycleUnit", "SeasonalPeriod"]
             },
             {
               "values": [1],
-              "active": ["Frequency", "SlopePValue", "CycleLength", "CycleUnit"],
-              "inactive": ["Order"]
+              "active": ["Frequency", "SlopePValue","RMSE", "R2", "CycleLength", "CycleUnit"],
+              "inactive": ["Order", "SeasonalPeriod"]
             },
             {
               "values": [2],
-              "active": ["Order"],
-              "inactive": ["Frequency", "SlopePValue", "CycleLength", "CycleUnit"]
+              "active": ["Order", "RMSE", "R2"],
+              "inactive": ["Frequency", "SlopePValue", "CycleLength", "CycleUnit", "SeasonalPeriod"]
+            },
+            {
+              "values": [3],
+              "active": [],
+              "inactive": [
+                "Frequency",
+                "Order",
+                "SlopePValue",
+                "CycleLength",
+                "CycleUnit",
+                "SeasonalPeriod",
+                "RMSE",
+                "R2"
+              ]
+            },
+            {
+              "values": [4],
+              "active": ["SeasonalPeriod"],
+              "inactive": ["Order", "Frequency", "SlopePValue", "CycleLength", "CycleUnit", "RMSE", "R2"]
             }
           ]
         }
@@ -7188,6 +7216,17 @@
         "categoryRefId": "rfxArgCat_ModelStatistics",
         "hidden": false,
         "defaultValue": false
+      },
+      "SeasonalPeriod": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.trendAnalysisSeasonalPeriod}",
+        "hidden": false,
+        "defaultValue": "DAYS",
+        "domain": {
+          "type": "list",
+          "enum": "esriTrendSeasonlPeriod"
+        }
       }
     }
   },
@@ -7335,8 +7374,30 @@
       "Raster": {
         "required": true,
         "dataType": "raster",
-        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "displayName": "${rasterFunctions.rfxArgs.changeAnalysisRasterName}",
         "hidden": false
+      },
+      "SegmentDate": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.segmentDate}",
+        "hidden": false,
+        "defaultValue": 0,
+        "domain": {
+          "type": "list",
+          "enum": "esriSegmentDate"
+        }
+      },
+      "ChangeDirection": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.changeDirectionName}",
+        "defaultValue": 0,
+        "domain": {
+          "type": "list",
+          "enum": "esriChangeDirection"
+        }
       },
       "ChangeType": {
         "required": true,
@@ -7352,18 +7413,6 @@
           "active": true,
           "triggers": [
             {
-              "values": [0],
-              "active": ["MaxNumberChanges"]
-            },
-            {
-              "values": [1],
-              "active": ["MaxNumberChanges"]
-            },
-            {
-              "values": [2],
-              "active": ["MaxNumberChanges"]
-            },
-            {
               "values": [3],
               "inactive": ["MaxNumberChanges"]
             }
@@ -7376,6 +7425,105 @@
         "hidden": false,
         "displayName": "${rasterFunctions.rfxArgs.maxNumChangesName}",
         "defaultValue": 1
+      },
+      "FilterByYear": {
+        "required": true,
+        "dataType": "boolean",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.filterByYear}",
+        "defaultValue": false,
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [true],
+              "active": ["MinimumYear","MaximumYear"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "MinimumYear": {
+        "required": true,
+        "dataType": "long",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.minimumYear}"
+      },
+      "MaximumYear": {
+        "required": true,
+        "dataType": "long",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.maximumYear}"
+      },
+      "FilterByDuration": {
+        "required": true,
+        "dataType": "boolean",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.filterByDuration}",
+        "defaultValue": false,
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [true],
+              "active": ["MinimumDuration","MaximumDuration"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "MinimumDuration": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.minimumDuration}"
+      },
+      "MaximumDuration": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.maximumDuration}"
+      },
+      "FilterByMagnitude": {
+        "required": true,
+        "dataType": "boolean",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.filterByMagnitude}",
+        "defaultValue": false,
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [true],
+              "active": ["MinimumMagnitude","MaximumMagnitude"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "MinimumMagnitude": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.minimumMagnitude}"
+      },
+      "MaximumMagnitude": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.maximumMagnitude}"
       }
     }
   },
@@ -7405,13 +7553,13 @@
       "Raster": {
         "required": true,
         "dataType": "raster",
-        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "displayName": "${rasterFunctions.rfxArgs.fromRasterName}",
         "hidden": false
       },
       "Raster2": {
         "required": true,
         "dataType": "raster",
-        "displayName": "${rasterFunctions.rfxArgs.raster2Name}",
+        "displayName": "${rasterFunctions.rfxArgs.toRasterName}",
         "hidden": false
       },
       "Method": {
@@ -7423,6 +7571,73 @@
         "domain": {
           "type": "list",
           "enum": "esriComputeChangeMethods"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [2],
+              "active": ["FromClassValues","ToClassValues","KeepMethod","UseColorMethod"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "FromClassValues": {
+        "required": false,
+        "dataType": "longarray",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.fromClassValues}"
+      },
+      "ToClassValues": {
+        "required": false,
+        "dataType": "longarray",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.toClassValues}"
+      },
+      "KeepMethod": {
+        "required": false,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.keepMethod}",
+        "defaultValue": 1,
+        "domain": {
+          "type": "list",
+          "enum": "esriComputeChangeKeepMethods"
+        }
+      },
+      "UseColorMethod": {
+        "required": false,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.useColorMethod}",
+        "defaultValue": 0,
+        "domain": {
+          "type": "list",
+          "enum": "esriComputeChangeUseColorMethods"
+        }
+      },
+      "CellsizeType": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.cellsizeTypeName}",
+        "defaultValue": 2,
+        "domain": {
+          "type": "list",
+          "enum": "esriCellsizeTypes"
+        }
+      },
+      "ExtentType": {
+        "required": true,
+        "dataType": "long",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.extentTypeName}",
+        "defaultValue": 1,
+        "domain": {
+          "type": "list",
+          "enum": "esriExtentTypes"
         }
       }
     }
@@ -7568,6 +7783,7 @@
         "dataType": "string",
         "displayName": "${rasterFunctions.rfxArgs.aggregationDefinitionName}",
         "hidden": false,
+        "categoryRefId": "rfxArgCat_AggregationDef",
         "domain": {
           "type": "aggregationdef",
           "argumentName": "RasterCollection"
@@ -7578,6 +7794,127 @@
         "dataType": "geometry",
         "displayName": "${rasterFunctions.rfxArgs.queryGeometryName}",
         "hidden": true
+      }
+    }
+  },
+  "landTrendrFunction": {
+    "rasterFunctionArguments": {
+      "Raster": {
+        "required": true,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "ProcessingBand": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.processingBand}",
+        "hidden": false,
+        "defaultValue": 0,
+        "domain": {
+          "type": "bandIndex",
+          "argumentName": "Raster"
+        }
+      },
+      "SnappingDate": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.snappingDate}",
+        "hidden": false,
+        "defaultValue": "06-30"
+      },
+      "MaxSegments": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.maxNumSegments}",
+        "hidden": false,
+        "defaultValue": 5
+      },
+      "VertexCountOvershoot": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.vertexCountOvershoot}",
+        "hidden": false,
+        "defaultValue": 2
+      },
+      "SpikeThreshold": {
+        "required": true,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.spikeThreshold}",
+        "hidden": false,
+        "defaultValue": 0.9
+      },
+      "RecoveryThreshold": {
+        "required": true,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.recoveryThreshold}",
+        "hidden": false,
+        "defaultValue": 0.25
+      },
+      "MinObs": {
+        "required": true,
+        "dataType": "long",
+        "displayName": "${rasterFunctions.rfxArgs.minNumObs}",
+        "hidden": false,
+        "defaultValue": 6
+      },
+      "PValueThreshold": {
+        "required": true,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.pValueThreshold}",
+        "hidden": false,
+        "defaultValue": 0.01
+      },
+      "BestModelProportion": {
+        "required": true,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.bestModelProportion}",
+        "hidden": false,
+        "defaultValue": 1.25
+      },
+      "PreventOneYearRecovery": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.preventOneYearRecovery}",
+        "hidden": false,
+        "defaultValue": true
+      },
+      "RecoveryIncreaseTrend": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.recoveryIncreaseTrend}",
+        "hidden": false,
+        "defaultValue": true
+      },
+      "OutputOtherBands": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.outputOtherBands}",
+        "hidden": false,
+        "defaultValue": false
+      }
+    }
+  },
+  "mergeRastersFunction": {
+    "category": "dataManagement",
+    "icon": "mergeRasters.png",
+    "rasterFunctionArguments": {
+      "Rasters": {
+        "required": true,
+        "dataType": "rasterarray",
+        "displayName": "${rasterFunctions.rfxArgs.rastersName}",
+        "hidden": false
+      },
+      "mosaicOperator": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.resolveOverlapMethodName}",
+        "hidden": false,
+        "defaultValue": "MT_FIRST",
+        "domain": {
+          "type": "list",
+          "enum": "esriResolveOverlapMethods"
+        }
       }
     }
   }

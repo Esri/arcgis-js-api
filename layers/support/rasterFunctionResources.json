@@ -483,6 +483,18 @@
       {
         "key": 4,
         "label": "${rasterFunctions.enumLabels.stdDeviation}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.median}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.majority}"
+      },
+      {
+        "key": 7,
+        "label": "${rasterFunctions.enumLabels.minority}"
       }
     ],
     "uvMagDirUnkTypes": [
@@ -1803,6 +1815,14 @@
       {
         "key": 2,
         "label": "${rasterFunctions.enumLabels.trendPolynomial}"
+      },
+      {
+        "key": 3,
+        "label": "${rasterFunctions.enumLabels.trendMannKendall}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.trendSeasonalKendall}"
       }
     ],
     "dimensionDefinitionTypes": [
@@ -1847,6 +1867,26 @@
         "label": "${common.years}"
       }
     ],
+    "esriTrendSeasonlPeriod": [
+      {
+        "key": "DAYS",
+        "label": "${rasterFunctions.enumLabels.esriTimeUnitsDays}"
+      },
+      {
+        "key": "MONTHS",
+        "label": "${rasterFunctions.enumLabels.esriTimeUnitsMonths}"
+      }
+    ],
+    "esriSegmentDate": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.segmentBeginning}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.segmentEnd}"
+      }
+    ],
     "esriDetectChangeTypes": [
       {
         "key": 0,
@@ -1863,6 +1903,36 @@
       {
         "key": 3,
         "label": "${rasterFunctions.enumLabels.numberOfChanges}"
+      },
+      {
+        "key": 4,
+        "label": "${rasterFunctions.enumLabels.longestChange}"
+      },
+      {
+        "key": 5,
+        "label": "${rasterFunctions.enumLabels.shortestChange}"
+      },
+      {
+        "key": 6,
+        "label": "${rasterFunctions.enumLabels.fastestChange}"
+      },
+      {
+        "key": 7,
+        "label": "${rasterFunctions.enumLabels.slowestChange}"
+      }
+    ],
+    "esriChangeDirection": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.allChanges}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.increaseChanges}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.decreaseChanges}"
       }
     ],
     "esriRenderTrendTypes": [
@@ -1887,6 +1957,60 @@
       {
         "key": 2,
         "label": "${rasterFunctions.enumLabels.esriComputeChangeMethodCategorical}"
+      }
+    ],
+    "esriComputeChangeKeepMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeKeepAll}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeKeepChangedOnly}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeKeepUnchangedOnly}"
+      }
+    ],
+    "esriComputeChangeUseColorMethods": [
+      {
+        "key": 0,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeUseColorAverage}"
+      },
+      {
+        "key": 1,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeUseColorFrom}"
+      },
+      {
+        "key": 2,
+        "label": "${rasterFunctions.enumLabels.esriComputeChangeUseColorTo}"
+      }
+    ],
+    "esriResolveOverlapMethods": [
+      {
+        "key": "MT_FIRST",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeFirst}"
+      },
+      {
+        "key": "MT_LAST",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeLast}"
+      },
+      {
+        "key": "MT_MIN",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMin}"
+      },
+      {
+        "key": "MT_MAX",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMax}"
+      },
+      {
+        "key": "MT_MEAN",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeMean}"
+      },
+      {
+        "key": "MT_SUM",
+        "label": "${rasterFunctions.enumLabels.mosaicOpTypeSum}"
       }
     ]
   },
@@ -2065,6 +2189,14 @@
     },
     "rfxArgCat_ModelStatistics": {
       "title": "${rasterFunctions.categoryLabels.modelStatistics}",
+      "visible": true
+    },
+    "rfxArgCat_AggregationDef": {
+      "title": "${rasterFunctions.categoryLabels.aggregationDef}",
+      "visible": true
+    },
+    "rfxArgCat_FilterByAttributes": {
+      "title": "${rasterFunctions.categoryLabels.filterByAttributes}",
       "visible": true
     }
   }

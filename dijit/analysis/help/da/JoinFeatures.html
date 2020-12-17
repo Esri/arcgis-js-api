@@ -44,9 +44,9 @@
         <h2>Forbind objekter</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Forbind objekter"></h2>
         <hr/>
-    <p>Forbind objekter-v&aelig;rkt&oslash;jet arbejder med to lag, og det knytter attributter fra det ene objekt til det andet baseret p&aring; spatiale relationer og attributrelationer. V&aelig;rkt&oslash;jet registrerer alle de inputobjekter, der opfylder de angivne tilknytningsbetingelser, og det knytter tilknytningslaget til destinationslaget. 
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet arbejder med to lag, og det knytter attributter fra det ene objekt til det andet baseret p&aring; spatiale relationer og attributrelationer. V&aelig;rkt&oslash;jet registrerer alle de inputobjekter, der opfylder de angivne tilknytningsbetingelser, og det knytter tilknytningslaget til destinationslaget.
     </p>
-    <p>Forbind objekter-v&aelig;rkt&oslash;jet kan anvendes til punkter, linjer, omr&aring;der og tabeller. En spatial tilknytning kr&aelig;ver, at dine data har en geometri. 
+    <p>Forbind objekter-v&aelig;rkt&oslash;jet kan anvendes til punkter, linjer, omr&aring;der og tabeller. En spatial tilknytning kr&aelig;ver, at dine data har en geometri.
     </p>
     <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, analyseres kun de objekter, der er synlige inden for den aktuelle kortudstr&aelig;kning. Hvis feltet ikke er markeret, analyseres alle objekter i b&aring;de destinations- og tilknytningslaget, ogs&aring; selvom de befinder sig uden for den aktuelle kortudstr&aelig;kning.
     </p>
@@ -76,7 +76,7 @@
         <div><h2>Vælg tilknytningstype(r)</h2></div>
         <hr/>
         <div>
-            <p>Du kan anvende en spatial tilknytning, en attributtilknytning eller en kombination af begge to. 
+            <p>Du kan anvende en spatial tilknytning, en attributtilknytning eller en kombination af begge to.
                 <ul>
                     <li> <b>Spatial</b> &ndash; Benytter den angivne spatiale relation til at tilknytte objekter. Dette kr&aelig;ver, at begge lag har en geometri.
                     </li>
@@ -93,7 +93,7 @@
         <div><h2>Vælg en spatial relation</h2></div>
         <hr/>
         <div>
-            <p>Den spatiale relation, der bestemmer, om objekterne skal knyttes til hinanden. De tilg&aelig;ngelige relationer afh&aelig;nger af den geometritype (punkt, linje, omr&aring;de), der anvendes som inputobjekter. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
+            <p>Den spatiale relation, der bestemmer, om objekterne skal knyttes til hinanden. De tilg&aelig;ngelige relationer afh&aelig;nger af den geometritype (punkter, linjer, omr&aring;der), der anvendes som inputobjekter. Tilg&aelig;ngelige relationer omfatter f&oslash;lgende:
                 <ul>
                     <li> <b>Identisk med</b> &ndash; Objekterne i destinationslaget vil blive matchet, hvis de er identiske med objekterne i tilknytningslaget.
                     </li>
@@ -114,7 +114,7 @@
         <div><h2>Attribut-tilknytning</h2></div>
         <hr/>
         <div>
-            <p>Den attributrelation, der bestemmer, om objekterne knyttes til hinanden. Objekterne matches, n&aring;r feltv&aelig;rdierne i tilknytningslaget er lig med feltv&aelig;rdierne i destinationslaget. 
+            <p>Den attributrelation, der bestemmer, om objekterne knyttes til hinanden. Objekterne matches, n&aring;r feltv&aelig;rdierne i tilknytningslaget er lig med feltv&aelig;rdierne i destinationslaget.
             </p>
             <p>Forestil dig f.eks., at vi har et geografisk lag med beboelsesadresser, der g&aring;r p&aring; tv&aelig;rs af regioner (inkl. feltet  <i>ZIP</i>), samt et tabeldatas&aelig;t med helbredsm&aelig;ssige og demografiske oplysninger fordelt efter postnummer (inkl. et felt med titlen <i>HEALTHZIP</i>). Vi kan knytte datas&aelig;ttet med helbredsoplysninger til datas&aelig;ttet med adresseoplysninger ved at matche feltet <i>ZIP</i> med feltet <i>HEALTHZIP</i>, hvilket vil resultere i et lag med beboelsesadresser med tilsvarende helbredsdata.
             </p>
@@ -126,9 +126,7 @@
         <div>
             <p>Bestemmer, hvordan tilknytninger mellem destinations- og tilknytningslaget h&aring;ndteres, hvis det viser sig, at flere objekter i tilknytningslaget har den samme relation i forhold til destinationslaget. Du kan v&aelig;lge mellem disse to tilknytningshandlinger:
                 <ul>
-                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter objekterne i destinationslaget til et enkelt objekt i tilknytningslaget. M&aring;den, objekter knyttes sammen p&aring;, bestemmes af parameteren <b>Tilf&oslash;j statistik</b> eller parameteren <b>Defin&eacute;r, hvilken post der beholdes</b>. Hvis <b>Tilf&oslash;j statistik</b> benyttes, summeres alle matchede tilknyttede objekter for hvert objekt i destinationslaget. Antallet af tilknyttede objekter tilf&oslash;jes som standard.Hvis <b>Defin&eacute;r, hvilken post der beholdes</b>
- benyttes, kan du v&aelig;lge at beholde enten den f&oslash;rste post, der matcher, eller beholde en post, der matcher, p&aring; basis af et udtryk. Et udtryk kan bruge enten et numerisk felt 
-(mulighed for st&oslash;rste eller mindste post) eller et datofelt (mulighed for nyeste eller &aelig;ldste).
+                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter objekterne i destinationslaget til et enkelt objekt i tilknytningslaget. M&aring;den, objekter knyttes sammen p&aring;, bestemmes af parameteren <b>Tilf&oslash;j statistik</b> eller parameteren <b>Defin&eacute;r, hvilken post der beholdes</b>. Hvis <b>Tilf&oslash;j statistik</b> benyttes, summeres alle matchede tilknyttede objekter for hvert objekt i destinationslaget. Antallet af tilknyttede objekter tilf&oslash;jes som standard. Hvis <b>Defin&eacute;r, hvilken post der beholdes</b> benyttes, kan du v&aelig;lge at beholde enten den f&oslash;rste post, der matcher, eller beholde en post, der matcher, p&aring; basis af et udtryk. Et udtryk kan bruge enten et numerisk felt (mulighed for st&oslash;rste eller mindste post) eller et datofelt (mulighed for nyeste eller &aelig;ldste).
                     </li>
                     <li> <b>Tilknyt &eacute;n-til-mange</b> &ndash; Denne indstilling knytter alle matchende objekter i tilknytningslaget til destinationslaget. Resultatlaget vil indeholde flere poster fra destinationslaget.
                     </li>
@@ -166,8 +164,6 @@
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
@@ -184,15 +180,15 @@
         <div><h2>Opret resultater som hosted vektorlag-visning</h2></div>
         <hr/>
         <div>
-            <p> N&aring;r du opretter resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres. &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede, og de vil ikke forbruge credits i forbindelse med analyse og lagring.
+            <p> N&aring;r du opretter resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres. &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede.
             </p>
             <p>Du kan oprette en hosted vektorlag-visning ud fra analyseresultaterne, hvis alle f&oslash;lgende betingelser er opfyldt:
                 <ul>
                     <li>Du er ejer af begge lag.
                     </li>
-                    <li>Begeg lag er hostede vektorlag.
+                    <li>Begge lag er hostede vektorlag.
                     </li>
-                    <li>Du udf&oslash;rer en attribut-baseret tilknytning.
+                    <li>Du udf&oslash;rer en attribut-tilknytning.
                     </li>
                 </ul>
                 

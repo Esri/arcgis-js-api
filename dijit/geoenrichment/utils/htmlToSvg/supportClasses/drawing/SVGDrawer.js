@@ -1,4 +1,4 @@
-// COPYRIGHT © 201 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define(["./_TextDrawer","./_ImageDrawer","./_RectDrawer","./_SVGDrawer"],(function(r,e,n,a){return{drawRect:function(r,e){return n.drawRect(r,e)},drawBorder:function(r,e){return n.drawBorder(r,e)},drawText:function(e,n,a,t){return r.drawText(e,n,a,t)},drawSVG:function(r,e,n){return a.drawSVG(r,e,n)},drawBackgroundImage:function(r,n){return e.drawBackgroundImage(r,n)},drawImage:function(r,n,a){return e.drawImage(r,n,a)}}}));
+define(["./_TextDrawer","./_ImageDrawer","./_RectDrawer","./_SVGDrawer"],(function(r,e,n,a){return{drawRect:function(r,e){return n.drawRect(r,e)},drawBorder:function(r,e){return n.drawBorder(r,e)},drawText:function(e,n,a,t){return r.drawText(e,n,a,t)},drawSVG:function(r,e,n){return a.drawSVG(r,e,n)},drawBackgroundImage:function(r,n){return e.drawBackgroundImage(r,n)},drawImage:function(r,n,a,t){return e.drawImage(r,n,a,t)}}}));

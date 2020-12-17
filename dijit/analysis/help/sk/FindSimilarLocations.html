@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Nájsť podobné lokality</h2><p/>
+        <h2><img src="../images/GUID-6262A84E-9087-4E48-930E-E9B89FECC836-web.png" alt="N&aacute;jsť podobn&eacute; lokality"></h2>
+        <hr/>
+    <p>N&aacute;stroj N&aacute;jsť podobn&eacute; lokality meria na z&aacute;klade &scaron;pecifikovan&yacute;ch krit&eacute;ri&iacute; podobnosť lokal&iacute;t vo va&scaron;ej vrstve kandid&aacute;tov k jednej alebo viacer&yacute;m referenčn&yacute;m lokalit&aacute;m. Tento n&aacute;stroj dok&aacute;že zodpovedať ot&aacute;zky ako
+        <ul>
+            <li>Ktor&eacute; z va&scaron;ich predajn&iacute; s&uacute; najpodobnej&scaron;ie s naj&uacute;spe&scaron;nej&scaron;&iacute;mi s ohľadom na profily z&aacute;kazn&iacute;kov?
+            </li>
+            <li>Na z&aacute;klade charakterist&iacute;k obc&iacute; najviac postihnut&yacute;ch chorobnosťou, ktor&yacute;m ďal&scaron;&iacute;m obciam hroz&iacute; vysok&aacute; miera nebezpečenstva?
+            </li>
+        </ul>
+        Na zodpovedanie ot&aacute;zok ako s&uacute; tieto poskytnete referenčn&eacute; lokality, kandid&aacute;tske vyhľad&aacute;vacie lokality a polia reprezentuj&uacute;ce krit&eacute;ri&aacute;, ktor&eacute; chcete splniť. Prv&aacute; vstupn&aacute; vrstva by mala obsahovať referenciu alebo referenčn&eacute; umiestnenia. Napr&iacute;klad m&ocirc;že &iacute;sť o vrstvu obsahuj&uacute;cu va&scaron;e najv&yacute;konnej&scaron;ie predajne alebo obce najviac zasiahnut&eacute; chorobnosťou. N&aacute;sledne &scaron;pecifikujte vrstvu obsahuj&uacute;cu kandid&aacute;tske vyhľad&aacute;vacie lokality. Tu m&ocirc;žu byť v&scaron;etky va&scaron;e predajne alebo v&scaron;etky ostatn&eacute; obce. Nakoniec identifikujte jedno alebo viac pol&iacute; použit&yacute;ch na meranie podobnosti. N&aacute;stroj N&aacute;jsť podobn&eacute; lokality n&aacute;sledne ohodnot&iacute; v&scaron;etky kandid&aacute;tske vyhľad&aacute;vacie lokality podľa toho, ako veľmi sa zhoduj&uacute; s referenčn&yacute;mi lokalitami naprieč v&scaron;etk&yacute;mi zvolen&yacute;mi poľami.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vrstvu obsahujúcu referenčné lokality</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute;, l&iacute;niov&aacute; alebo plo&scaron;n&aacute; vrstva obsahuj&uacute;ca v&scaron;etky referenčn&eacute; lokality.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="inputLayerSel">
+        <div><h2>Môžete použiť všetky lokality alebo urobiť výber</h2></div>
+        <hr/>
+        <div>
+            <p>Pokiaľ je to potrebn&eacute;, použite tlačidl&aacute; v&yacute;beru na indentifik&aacute;ciu referenčn&yacute;ch lokal&iacute;t. Napr&iacute;klad ak vstupn&aacute; vrstva obsahuje v&scaron;etky umiestnenia - referenčn&eacute; lokality a z&aacute;roveň aj kandid&aacute;tske vyhľad&aacute;vacie lokality - budete potrebovať jeden z n&aacute;strojov na v&yacute;ber pre identifik&aacute;ciu referenčn&yacute;ch lokal&iacute;t. Ak vytvor&iacute;te dve oddelen&eacute; vrstvy, jednu s referenčn&yacute;mi lokalitami a druh&uacute; s kandid&aacute;tskymi vyhľad&aacute;vac&iacute;mi lokalitami, potom nie je potrebn&eacute; urobiť v&yacute;ber.
+            </p>
+            <p>Ak existuje viac ako jedna referenčn&aacute; lokalita, na anal&yacute;zu podobnosti je vytvoren&aacute; jedna lokalita za použitia priemeru hodn&ocirc;t pre každ&eacute; z použit&yacute;ch pol&iacute;.
+            </p>
+        </div>
+    </div>
+    <div id="searchLayer">
+        <div><h2>Vyhľadať podobné umiestnenia v</h2></div>
+        <hr/>
+        <div>
+            <p>Kandid&aacute;tske vyhľad&aacute;vacie lokality v tejto vrstve bud&uacute; ohodnoten&eacute; od najviac k najmenej podobn&yacute;m. Podobnosť vych&aacute;dza z toho, ako veľmi sa každ&aacute; lokalita zhoduje s referenčnou lokalitou naprieč poľami, ktor&eacute; &scaron;pecifikujete.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="analysisFields">
+        <div><h2>Založiť podobnosť na</h2></div>
+        <hr/>
+        <div>
+            <p>Polia, ktor&eacute; zvol&iacute;te, sa stan&uacute; krit&eacute;riami pre ohodnotenie podobnosti. Ak zvol&iacute;te pole popul&aacute;cie a z&aacute;robku, napr&iacute;klad, kandid&aacute;tske vyhľad&aacute;vacie lokality s najniž&scaron;&iacute;mi (najlep&scaron;&iacute;mi) ohodnoteniami bud&uacute; tie, ktor&eacute; maj&uacute; hodnoty popul&aacute;cie a z&aacute;robku podobn&eacute; s va&scaron;imi referenčn&yacute;mi lokalitami.
+            </p>
+        </div>
+    </div>
+    <div id="numberOfResults">
+        <div><h2>Ukáž</h2></div>
+        <hr/>
+        <div>
+            <p>M&ocirc;žete vidieť buď v&scaron;etky kandid&aacute;tske vyhľad&aacute;vacie lokality ohodnoten&eacute; od najpodobnej&scaron;&iacute;ch k najmenej podobn&yacute;m, alebo m&ocirc;žete &scaron;pecifikovať počet v&yacute;sledkov, ktor&eacute; chcete vidieť.
+                <ul>
+                    <li> <b>V&scaron;etky lokality od najviac po najmenej podobn&eacute;</b> - V&scaron;etky prvky v kandid&aacute;tskej vyhľad&aacute;vacej vrstve bud&uacute; zahrnut&eacute; v porad&iacute; ohodnotenia vo v&yacute;slednej vrstve
+                    </li>
+                    <li> <b>Počet vr&aacute;ten&yacute;ch lokal&iacute;t</b> - Urč&iacute;te koľko najpodobnej&scaron;&iacute;ch kandid&aacute;tov by malo byť zahrnut&yacute;ch vo v&yacute;slednej vrstve. Predvolen&yacute; vstup je 1.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>Poskytnite n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. T&aacute;to v&yacute;sledn&aacute; vrstva bude obsahovať referenčn&eacute; lokality a počet ohodnoten&yacute;ch kandid&aacute;tskych vyhľad&aacute;vac&iacute;ch lokal&iacute;t, ktor&eacute; ste zadali. Ak n&aacute;zov v&yacute;slednej vrstvy už existuje, budete vyzvan&yacute; k premenovaniu.
+            </p>
+            <p>Použit&iacute;m voľby  <b>Uložiť v&yacute;sledok do</b> z rozbaľovacieho menu m&ocirc;žete zadať meno zložky, do ktorej bude uložen&yacute; v&yacute;sledok v položke <b>M&ocirc;j obsah</b>.
+            </p>  
+        </div>
+    </div>
+</div>
+</html>

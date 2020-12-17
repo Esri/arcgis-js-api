@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Portal Analysis Environment settings</h2><p/>
+        <h2></h2>
+        <hr/>
+    <p>  Nastavenia prostredia pre anal&yacute;zu v Portal for ArcGIS a  ArcGIS Online. </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="overwriteResult">
+        <div><h2>Prepísať výslednú vrstvu</h2></div>
+        <hr/>
+        <div>
+            
+            <p>&Scaron;pecifikuje, či prep&iacute;sať existuj&uacute;ce vrstvy. Keď je za&scaron;krtnut&eacute;, ak už vo va&scaron;om obsahu existuje vrstva s rovnak&yacute;m n&aacute;zvom, bude prep&iacute;san&aacute;.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnut&eacute; - Ak už vo va&scaron;om obsahu existuje vrstva s rovnak&yacute;m n&aacute;zvom, bude prep&iacute;san&aacute;. V&yacute;stup bude mať rovnak&yacute; s&uacute;radnicov&yacute; syst&eacute;m ako vstup.
+                    </li>
+                    <li>Neza&scaron;krtnut&eacute; - Ak uveden&yacute; n&aacute;zov v&yacute;slednej vrstvy už existuje, zobraz&iacute; sa chybov&eacute; hl&aacute;senie a n&aacute;zov vrstvy mus&iacute; byť prep&iacute;san&yacute; e&scaron;te pred spusten&iacute;m n&aacute;stroja. Toto je prednastaven&aacute; voľba.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="closeAnalysisWidget">
+        <div><h2>Zatvoriť widget analýzy po spustení analýzy</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či ponechať okno anal&yacute;zy otvoren&eacute; a akt&iacute;vne počas činnosti n&aacute;stroja. Toto nastavenie v&aacute;m umožn&iacute; vykonať &uacute;pravy v parametroch va&scaron;ej anal&yacute;zy zatiaľ čo predo&scaron;l&aacute; &uacute;loha anal&yacute;zy naďalej prebieha. Anal&yacute;za je iterat&iacute;vny proces a ponechan&iacute;m otvoren&eacute;ho dial&oacute;gov&eacute;ho okna n&aacute;stroja m&ocirc;žete vykon&aacute;vať parametrick&eacute; zmeny a opakovane sp&uacute;&scaron;ťať va&scaron;e anal&yacute;zy.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnut&eacute; - Dial&oacute;gov&eacute; okno n&aacute;stroja anal&yacute;zy sa zatvor&iacute; a zobrazenie sa vr&aacute;ti do p&ocirc;vodn&eacute;ho pohľadu. Toto je prednastaven&aacute; voľba
+                    </li>
+                    <li>Neza&scaron;krtnut&eacute; - Dial&oacute;gov&eacute; okno n&aacute;stroja anal&yacute;zy ostane otvoren&eacute; a akt&iacute;vne.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="storeAnalysisResults">
+        <div><h2>Uchovajte výsledky analýzy ako hostované prvkové vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>&Scaron;pecifikuje, či v&yacute;sledn&aacute; vrstva vytvoren&aacute; z va&scaron;ej anal&yacute;zy bude kolekcia prvkov alebo hostovan&aacute; prvkov&aacute; vrstva.
+            </p>
+            <p>
+                <ul>
+                    <li>Za&scaron;krtnut&eacute;- V&yacute;sledky va&scaron;ej anal&yacute;zy vytvoria hostovan&uacute; prvkov&uacute; vrstvu a vo va&scaron;om obsahu bude vytvoren&aacute; nov&aacute; položka. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li>Neza&scaron;krtnut&eacute; - V&yacute;sledky va&scaron;ej anal&yacute;zy vytvoria kolekciu prvkov.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputCoordinateSystem">
+        <div><h2>Výstupný súradnicový systém</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje s&uacute;radnicov&yacute; syst&eacute;m v&yacute;slednej vrstvy pre anal&yacute;zu rastra.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Rovnak&yacute; ako vstup</b> - V&yacute;sledok va&scaron;ej anal&yacute;zy bude v rovnakom s&uacute;radnicovom syst&eacute;me ako vstup. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Podľa zadania</b> - V&yacute;sledok va&scaron;ej anal&yacute;zy bude vo vami vybranom s&uacute;radnicovom syst&eacute;me. Keď je t&aacute;to možnosť zvolen&aacute;, kliknite na tlačidlo gl&oacute;bu a vyberte zo zoznamu zn&aacute;mych s&uacute;radnicov&yacute;ch syst&eacute;mov alebo do pol&iacute;čka zadajte priestorov&uacute; referenciu WKID.
+                    </li>
+                    <li> <b>&lt;n&aacute;zov&gt; vrstvy</b> - V&yacute;sledok va&scaron;ej anal&yacute;zy bude v rovnakom s&uacute;radnicovom syst&eacute;me ako existuj&uacute;ca vrstva, ktor&uacute; vyberiete vo va&scaron;ej webovej mape.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingCoordinateSystem">
+        <div><h2>Súradnicový systém pre analýzy</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje s&uacute;radnicov&yacute; syst&eacute;m, ktor&yacute; va&scaron;a anal&yacute;za použije pri vykonan&iacute; GeoAnalytics anal&yacute;zy.
+            </p>
+            <p>Pre GeoAnalytics vyžaduj&uacute; niektor&eacute; anal&yacute;zy aby bolo spracovanie vykonan&eacute; v projektovanom s&uacute;radnicovom syst&eacute;me. Ak&yacute;koľvek n&aacute;stroj, ktor&yacute; m&aacute; vstavan&yacute; data binnig samotn&yacute;ch d&aacute;t alebo line&aacute;rnych jednotiek vyžaduje projektovan&yacute; s&uacute;radnicov&yacute; syst&eacute;m.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Rovnak&yacute; ako vstup</b> - Va&scaron;a anal&yacute;za bude spracovan&aacute; v rovnakom s&uacute;radnicovom syst&eacute;me ako vstup. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Podľa zadania</b> - Va&scaron;a anal&yacute;za bude v s&uacute;radnicovom syst&eacute;me v&aacute;&scaron;ho v&yacute;beru. Keď je t&aacute;to možnosť zvolen&aacute;, kliknite na tlačidlo gl&oacute;bu a vyberte zo zoznamu zn&aacute;mych projektovan&yacute;ch s&uacute;radnicov&yacute;ch syst&eacute;mov alebo do pol&iacute;čka zadajte priestorov&uacute; referenciu WKID.
+                    </li>
+                    <li> <b>&lt;n&aacute;zov&gt; vrstvy</b> / Va&scaron;a anal&yacute;za bude v rovnakom s&uacute;radnicovom syst&eacute;me ako existuj&uacute;ca vrstva, ktor&uacute; vyberiete vo va&scaron;ej webovej mape.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="processingExtent">
+        <div><h2>Rozsah</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje rozsah alebo hranicu, ktor&aacute; bude použit&aacute; pri vykon&aacute;van&iacute; anal&yacute;zy. V&scaron;etky vstupn&eacute; prvky, ktor&eacute; s&uacute; &uacute;plne vn&uacute;tri alebo pret&iacute;naj&uacute; &scaron;pecifikovan&yacute; rozsah, bud&uacute; použit&eacute; v anal&yacute;ze.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Predvolen&eacute;</b> - Rozsah poskytnut&yacute; n&aacute;strojom.
+                    </li>
+                    <li> <b>Podľa zadania</b> - Rozsah je definovan&yacute; s&uacute;radnicami, ktor&eacute; poskytnete.
+                    </li>
+                    <li> <b>&lt;n&aacute;zov&gt; vrstvy</b> - Rozsah použit&yacute; na spracovanie va&scaron;ej anal&yacute;zy bude rovnak&yacute; ako priestorov&yacute; rozsah existuj&uacute;cej vrstvy, ktor&uacute; vyberiete vo va&scaron;ej webovej mape. 
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="snapRaster">
+        <div><h2>Raster na prichytenie</h2></div>
+        <hr/>
+        <div>
+            <p>Uprav&iacute; rozsah v&yacute;stupnej rastrovej vrstvy tak, že bude mať rovnak&eacute; zarovnanie buniek ako &scaron;pecifikovan&aacute; vrstva  <b>Raster na prichytenie</b> v rastrovej anal&yacute;ze.
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Veľkosť bunky</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje veľkosť bunky alebo rozl&iacute;&scaron;enie, ktor&eacute; bude použit&eacute; na vytvorenie v&yacute;stupnej rastrovej vrstvy v rastrovej anal&yacute;ze. Predvolen&eacute; v&yacute;stupn&eacute; rozl&iacute;&scaron;enie je určen&eacute; najv&auml;č&scaron;ou veľkosťou bunky vo vstupnej rastrovej vrstve.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>Minimum vstupov</b> - Použiť najmen&scaron;iu velkosť bunky zo v&scaron;etk&yacute;ch vstupn&yacute;ch vrstiev.
+                    </li>
+                    <li> <b>Maximum vstupov</b> - Použiť najv&auml;č&scaron;iu veľkosť bunky zo v&scaron;etk&yacute;ch vstupn&yacute;ch vrstiev. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Podľa zadania</b> - &Scaron;pecifikujte č&iacute;seln&uacute; hodnotu na nastavenie veľkosti bunky. T&aacute;to voľba predstavuje prednastaven&uacute; hodnotu 1.
+                    </li>
+                    <li> <b>&lt;n&aacute;zov&gt; vrstvy</b> - Nastaviť veľkosť bunky pre zvolen&uacute; rastrov&uacute; vrstvu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="mask">
+        <div><h2>Maska</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje vrstvu, ktor&aacute; bude použit&aacute; na definovanie va&scaron;ej oblasti z&aacute;ujmu v rastrovej anal&yacute;ze. Iba tie bunky, ktor&eacute; spadaj&uacute; do masky anal&yacute;zy, bud&uacute; zahrnut&eacute; do spracovania anal&yacute;zy.
+            </p>
+            <ul>
+                <li>Maska m&ocirc;že byť buď raster alebo vrstva prvkov.
+                </li>
+                <li>Ak je maska anal&yacute;zy raster, v&scaron;etky bunky ktor&eacute; maj&uacute; hodnotu bud&uacute; použit&eacute; na definovanie masky. Bunky v rastri masky s hodnotou NoData s&uacute; považovan&eacute; za bunky mimo masky a bud&uacute; mať hodnotu NoData aj vo vrstve v&yacute;sledkov.
+                </li>
+                <li>Ak je maska anal&yacute;zy vrstva prvkov, bude pri spusten&iacute; n&aacute;stroja interne konvertovan&aacute; na raster. Preto sa uistite, že  <b>Veľkosť bunky</b> a <b>Raster na prichytenie</b> s&uacute; pre va&scaron;u anal&yacute;zu spr&aacute;vne nastaven&eacute;.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+    <div id="dataStore">
+        <div><h2>Data store</h2></div>
+        <hr/>
+        <div>
+            <p>V&yacute;sledok GeoAnalytics m&ocirc;že byť uložen&yacute; buď v  ArcGIS Data Store a vystaven&yacute; ako vrstva prvkov v  Portal for ArcGIS alebo konfigurovan&aacute; pre zdieľanie ako big data. </p>
+            <p>Keď ulož&iacute;te v&yacute;sledok do  ArcGIS Data Store, vo v&auml;č&scaron;ine pr&iacute;padov by mali byť v&yacute;sledky uložen&eacute; v &uacute;ložisku spatiotemporal data store. Toto je prednastaven&aacute; voľba. Pre nasleduj&uacute;ce d&ocirc;vody by ste mali v&yacute;sledky ukladať v &uacute;ložisku relational data store: <ul>
+                    <li>Na využitie va&scaron;ich v&yacute;sledkov v kolabor&aacute;cii portal-to-portal
+                    </li>
+                    <li>Na možnosť aktivovania synchroniz&aacute;cie s v&yacute;sledkami
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Nemali by ste použ&iacute;vať &uacute;ložisko relational data store ak očak&aacute;vate, že objem v&yacute;sledkov GeoAnalytics bude narastať a chcete využiť možnosti spatiotemporal big data store na spracovanie veľk&eacute;ho množstva d&aacute;t.
+            </p>
+        </div>
+    </div>
+    <div id="parallelProcessingFactor">
+        <div><h2>Faktor paralelného spracovania</h2></div>
+        <hr/>
+        <div>
+            <p>Distribuuje anal&yacute;zu naprieč viacer&yacute;mi in&scaron;tanciami služieb pre spracovanie rastrov.
+            </p>
+            <p>N&aacute;stroje, ktor&eacute; zohľadňuj&uacute; nastavenie prostredia  <b>Faktor paraleln&eacute;ho spracovania</b> v&aacute;m umožňuj&uacute; kontrolovať počet in&scaron;tanci&iacute; služieb pre spracovanie rastrov, ktor&eacute; viete použiť pri spracovan&iacute; va&scaron;ich d&aacute;t.
+            </p>
+            <p>Ak n&aacute;stroj nezohľadňuje  <b>Typ procesora</b> alebo ak je prostredie <b>Typ procesora</b> nastaven&eacute; na <b>CPU</b> , tak postredie <b>Faktor paraleln&eacute;ho spracovania</b> kontroluje in&scaron;tancie služby spracovania rastrov (CPU). Ak je <b>Typ procesora</b> nastaven&yacute; na <b>GPU</b>, prostredie <b>Faktor paralelen&eacute;ho spracovania </b> kontroluje počet GPU in&scaron;tanci&iacute; rastrov&eacute;ho spracovania.
+            </p> 
+            <p>Nastaven&iacute;m  <b>Faktoru paraleln&eacute;ho spracovania</b> m&ocirc;žete požiadať o počet paraleln&yacute;ch spracovateľov, ktor&yacute;ch server rastrovej anal&yacute;zy použ&iacute;je na spracovanie jednej &uacute;lohy rastrovej anal&yacute;zy. Av&scaron;ak, ak je celkov&yacute; počet paraleln&yacute;ch procesov v&yacute;&scaron;&scaron;&iacute;, ako maxim&aacute;lny počet in&scaron;tanci&iacute; služby rastrov&eacute;ho spracovania (CPU alebo GPU), dodatočn&eacute; paraleln&eacute; procesy bud&uacute; čakať.
+            </p>
+            <p>Ak nie je &scaron;pecifikovan&yacute;  <b>Faktor paraleln&eacute;ho spracovania</b>, ako je aj v predvolenom nastaven&iacute;, n&aacute;stroj použije 80 percent z maxim&aacute;lneho počtu in&scaron;tanci&iacute; služby rastrov&eacute;ho spracovania. Faktor paraleln&eacute;ho spracovania m&ocirc;že byť &scaron;pecifikovan&yacute; buď ako cel&eacute; č&iacute;slo, alebo ako percento.
+            </p>
+        </div>
+    </div>
+    <div id="retryOnFailures">
+        <div><h2>Počet opakovaní v prípade chyby</h2></div>
+        <hr/>
+        <div>
+            <p>Definuje o koľko opakovan&iacute; sa rovnak&yacute; spracovateľ pok&uacute;si, ak nastane n&aacute;hodn&eacute; zlyhanie pri spracovan&iacute; konkr&eacute;tnej &uacute;lohy. Predvolen&aacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
+    <div id="recycleProcessingWorkers">
+        <div><h2>Interval recyklovania spracovateľských procesov</h2></div>
+        <hr/>
+        <div>
+            <p>Definovať koľko sekci&iacute; sn&iacute;mkov bude spracovan&yacute;ch pred re&scaron;tartom spracovateľsk&yacute;ch procesov za &uacute;čelom pred&iacute;denia potenci&aacute;lnych zlyhan&iacute; pri dlhotrvaj&uacute;cich procesoch. Predvolen&aacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
+    <div id="processorType">
+        <div><h2>Typ procesora</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;stroje, ktor&eacute; dodržiavaj&uacute; nastavenia prostredia  <b>Typ procesora</b> v&aacute;m umožňuj&uacute; vybrať kde a ako chcete spracov&aacute;vať va&scaron;e d&aacute;ta. Va&scaron;e d&aacute;ta m&ocirc;žete spracovať za použitia servera, CPU poč&iacute;tača alebo GPU. Ak je nastavenie prostredia <b>Typ procesora</b> pr&aacute;zdne, n&aacute;stroj použije CPU na spracovanie d&aacute;t. Toto je prednastaven&aacute; voľba.
+            </p> 
+            <p>Spracovanie pomocou CPU m&ocirc;že byť paralelizovan&eacute; naprieč viacer&yacute;mi jadrami a in&scaron;tanciami tak, ako  <b>Faktor paraleln&eacute;ho spracovania</b>.
+            </p>
+            <p>Jadr&aacute; GPU s&uacute; efekt&iacute;vne pri spracovan&iacute; grafiky a sn&iacute;mok, pričom ich vysoko paraleln&eacute; &scaron;trukt&uacute;ry vykon&aacute;vaj&uacute; spracovanie veľk&yacute;ch blokov d&aacute;t pri opakovan&yacute;ch &uacute;loh&aacute;ch veľmi efekt&iacute;vne. N&aacute;stroje rastrovej anal&yacute;zy, ktor&eacute; dodržiavaj&uacute; toto nastavenie prostredia, dok&aacute;žu rozdeliť pr&aacute;cu naprieč in&scaron;tanciami GPU na viacer&yacute;ch serveroch rastrovej anal&yacute;zy tak ako  <b>Faktor paraleln&eacute;ho spracovania</b>.
+            </p>
+            <p>
+                <ul>
+                    <li> <b>GPU</b> - D&aacute;ta bud&uacute; spracovan&eacute; za použitia grafick&yacute;ch jadier GPU.
+                    </li>
+                    <li> <b>CPU</b> - D&aacute;ta bud&uacute; spracovan&eacute; za použitia procesora CPU.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+</div>
+</html>

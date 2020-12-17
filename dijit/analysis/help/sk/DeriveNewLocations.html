@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Odvodiť nové lokality</h2><p/>
+        <h2><img src="../images/GUID-4A756008-8431-4AA5-BD42-7135296560DD-web.png" alt="Odvodiť nov&eacute; lokality"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj odvodzuje nov&eacute; prvky v z&aacute;ujmovej oblasti tak, aby spĺňali sadu zadan&yacute;ch krit&eacute;ri&iacute;. Tieto krit&eacute;ri&aacute; m&ocirc;žu byť založen&eacute; na atrib&uacute;tov&yacute;ch dopytoch (napr&iacute;klad pr&aacute;zdne parcely) a priestorov&yacute;ch dopytoch (napr&iacute;klad parcely, ktor&eacute; s&uacute; v povodňov&yacute;ch oblastiach).
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, bud&uacute; analyzovan&eacute; v&scaron;etky prvky, aj tie, ktor&eacute; sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="Expression">
+        <div><h2>Odvodiť nové umiestnenia, ktoré sa zhodujú s nasledujúcim výrazom(i)</h2></div>
+        <hr/>
+        <div>
+            <p>Kliknite na tlačidlo  <b>Pridať V&yacute;raz</b> na definovanie v&yacute;razu. M&ocirc;žete pridať viacero v&yacute;razov. Po zadan&iacute; v&yacute;razov a kliknut&iacute;m na tlačidlo <b>Spustiť Anal&yacute;zu</b>, bud&uacute; prvky vo va&scaron;ej analytickej vrstve filtrovan&eacute; každ&yacute;m z v&yacute;razov. Množina prvkov spĺňaj&uacute;cich v&scaron;etky v&yacute;razy je zap&iacute;san&aacute; do v&yacute;slednej vrstvy.
+            </p>
+            <p>Existuj&uacute; dva z&aacute;kladn&eacute; typy v&yacute;razov, ktor&eacute; m&ocirc;žete vytvoriť; atrib&uacute;tov&eacute; a priestorov&eacute;. Atrib&uacute;tov&eacute; v&yacute;razy s&uacute; dopyty na hodnoty pol&iacute;, napr&iacute;klad  <code>kde je n&aacute;zov 'San Francisco'</code>. Existuj&uacute; &scaron;tyri typy priestorov&yacute;ch v&yacute;razov:
+                <ul>
+                    <li> <b>v r&aacute;mci vzdialenosti</b>: množina prvkov vo vzdialenosti od prvku z inej vrstvy. Napr&iacute;klad, vyhľadajte parcely vo vzdialenosti do 500 metrov od rieky Los Angeles.
+                    </li>
+                    <li> <b>&uacute;plne obsahuje</b>: prvok mus&iacute; obsahovať cel&yacute; prvok z inej vrstvy. Napr&iacute;klad, n&aacute;jdite povodia, ktor&eacute; &uacute;plne obsahuj&uacute; parcely určen&eacute; pre priemyseln&eacute; využitie. Žiadna časť parcely nem&ocirc;že byť mimo povodia.
+                    </li>
+                    <li> <b>&uacute;plne vo vn&uacute;tri</b>: prvok mus&iacute; byť &uacute;plne obsiahnut&yacute; v prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite &scaron;kolsk&eacute; obvody vo vn&uacute;tri hran&iacute;c mesta. Žiadna časť &scaron;kolsk&eacute;ho obvodu nem&ocirc;že zasahovať mimo hranice mesta.
+                    </li>
+                    <li> <b>pret&iacute;nať</b>: prvok alebo časti prvku sa musia prekr&yacute;vať alebo pret&iacute;nať s prvkom z inej vrstvy. Napr&iacute;klad, n&aacute;jdite sp&aacute;len&eacute; oblasti z viacer&yacute;ch požiarov v r&aacute;mci n&aacute;rodn&eacute;ho parku. Sp&aacute;len&eacute; oblasti mimo hran&iacute;c parku nebud&uacute; zahrnut&eacute;.
+                    </li>
+                    <li> <b>najbliž&scaron;ie k</b>: prvok mus&iacute; byť najbliž&scaron;ie k prvku z inej vrstvy. Napr&iacute;klad, n&aacute;jdite zelen&yacute; priestor, ktor&yacute; je najbliž&scaron;&iacute; ku každej &scaron;kole.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Každ&yacute; priestorov&yacute; v&yacute;raz m&aacute; prisl&uacute;chaj&uacute;cu neg&aacute;ciu, s v&yacute;nimkou  <b>najbliž&scaron;ie k</b>; <b>nie je v r&aacute;mci vzdialenosti od</b>, <b>neobsahuje &uacute;plne</b>, <b>nie &uacute;plne vo vn&uacute;tri</b> a <b>nepret&iacute;na</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Nájsť odľahlé prvky</h2><p/>
+        <h2><img src="../images/GUID-2FD18406-6333-45B9-8220-E930C1E154B2-web.png" alt="N&aacute;jsť odľahl&eacute; prvky"></h2>
+        <hr/>
+    <p>N&aacute;stroj N&aacute;jsť odľahl&eacute; prvky urč&iacute;, či sa v priestorovom vzore va&scaron;ich d&aacute;t nach&aacute;dzaj&uacute; &scaron;tatisticky v&yacute;znamn&eacute; odľahl&eacute; prvky.
+        <ul>
+            <li>Nach&aacute;dzaj&uacute; sa nezvyčajn&eacute; oblasti vo vzore va&scaron;ich d&aacute;t (kriminalita, stromy, dopravn&eacute; nehody)? Ako si m&ocirc;žete byť ist&yacute;?
+            </li>
+            <li>Naozaj ste na&scaron;li &scaron;tatisticky v&yacute;znamn&yacute; odľahl&yacute; prvok (pre m&iacute;ňanie, &uacute;mrtnosť novorodeniat, opakovane vysok&eacute; v&yacute;sledky testov) alebo by va&scaron;a mapa hovorila niečo in&eacute;, keby ste zmenili jej symboliku?
+            </li>
+        </ul>
+        N&aacute;stroj N&aacute;jsť odľahl&eacute; prvky v&aacute;m pom&ocirc;že zodpovedať tieto ot&aacute;zky s istotou.
+    </p>
+    <p>Zakažd&yacute;m, keď sa pozrieme na mapu, je pre na&scaron;e oči a mozog prirodzen&eacute; začať hľadať vzory aj tam, kde žiadne nie s&uacute;. V d&ocirc;sledku toho pre n&aacute;s m&ocirc;že byť n&aacute;ročn&eacute; rozl&iacute;&scaron;iť, či vzory vo va&scaron;ich d&aacute;tach s&uacute; v&yacute;sledkom skutočn&yacute;ch priestorov&yacute;ch procesov alebo len v&yacute;sledkom n&aacute;hody. Preto na&scaron;i v&yacute;skumn&iacute;ci a analytici použ&iacute;vaj&uacute; &scaron;tatistick&eacute; met&oacute;dy ako N&aacute;jsť odľahl&eacute; prvky (Anselin Local Moran's I) na kvantifik&aacute;ciu priestorov&yacute;ch vzorov. Keď n&aacute;jdete &scaron;tatisticky v&yacute;znamn&eacute; odľahl&eacute; prvky alebo zhlukovanie vo va&scaron;ich d&aacute;tach, z&iacute;skavate hodnotn&eacute; inform&aacute;cie. Znalosť kde a kedy sa odľahl&eacute; prvky vyskytuj&uacute; m&ocirc;že poskytn&uacute;ť d&ocirc;ležit&eacute; n&aacute;povedy o podporn&yacute;ch procesoch, ktor&eacute; tieto vzory sp&ocirc;sobuj&uacute;. Ďal&scaron;&iacute;m krokom by bolo vy&scaron;etrenie, prečo s&uacute; veci v t&yacute;chto oblastiach odľahl&yacute;ch prvkov tak v&yacute;razne odli&scaron;n&eacute;. Znalosť, že napr&iacute;klad vl&aacute;manie do dom&aacute;cnost&iacute; je v&yacute;znamne vy&scaron;&scaron;ie v konkr&eacute;tnych oblastiach napriek obklopenosti oblasťami s mal&yacute;m počtom kr&aacute;dež&iacute; je d&ocirc;ležit&aacute; inform&aacute;cia, ak potrebujete vytvoriť efekt&iacute;vne opatrenia prevencie, prideliť obmedzen&eacute; policajn&eacute; zdroje, iniciovať susedsk&eacute; hliadky, autorizovať hĺbkov&eacute; vy&scaron;etrovania alebo identifikovať potenci&aacute;lnych podozriv&yacute;ch.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vybrať vrstvu, pre ktorú budú vypočítané odľahlé prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Bod alebo plocha, z ktor&yacute;ch bud&uacute; n&aacute;jden&eacute; odľahl&eacute; prvky.
+            </p>
+        </div>
+    </div>
+    <div id="analysisField">
+        <div><h2>Nájsť odľahlé prvky z</h2></div>
+        <hr/>
+        <div>
+            <p>T&aacute;to anal&yacute;za zodpoved&aacute; ot&aacute;zku: Kde s&uacute; priestorov&eacute; odľahl&eacute; prvky v mojich d&aacute;tach?
+            </p>
+            <p>Ak s&uacute; va&scaron;e d&aacute;ta vo forme bodov a vyberiete si  <b>Počty bodov</b>, tento n&aacute;stroj ohodnot&iacute; priestorov&eacute; usporiadanie bodov&yacute;ch prvkov, aby zodpovedal ot&aacute;zku: Kde s&uacute; body neočak&aacute;vane zhlukovan&eacute; alebo rozpt&yacute;len&eacute;?
+            </p>
+            <p>Ak si vyberiete pole, tento n&aacute;stroj ohodnot&iacute; priestorov&eacute; usporiadanie hodn&ocirc;t asociovan&yacute;ch s každ&yacute;m prvkom, aby zodpovedal ot&aacute;zku: Kde s&uacute; n&iacute;zke hodnoty obklopen&eacute; vysok&yacute;mi hodnotami? Kde s&uacute; vysok&eacute; hodnoty obklopen&eacute; n&iacute;zkymi hodnotami?
+            </p>
+        </div>
+    </div>
+    <div id="aggregationPolygonLayer">
+        <div><h2>Počítať body v rámci</h2></div>
+        <hr/>
+        <div>
+            <p>Predvolen&eacute; je spoč&iacute;tať body v r&aacute;mci mriežky vytvorenej n&aacute;strojom na z&aacute;klade va&scaron;ich bodov&yacute;ch d&aacute;t. Pr&iacute;padne sa m&ocirc;žete rozhodn&uacute;ť spoč&iacute;tať body v r&aacute;mci &scaron;esťuholn&iacute;kovej mriežky alebo poskytn&uacute;ť plo&scaron;n&uacute; vrstvu (zvyčajne by zobrazovali administrat&iacute;vne oblasti pre reportovanie, ako &scaron;č&iacute;tacie plochy, vojensk&eacute; hranice alebo okresy), na zodpovedanie ot&aacute;zky: Pri danom počte bodov spoč&iacute;tan&yacute;ch v r&aacute;mci každ&eacute;ho plo&scaron;n&eacute;ho prvku, existuj&uacute; umiestnenia so &scaron;tatisticky v&yacute;znamn&yacute;mi vysok&yacute;mi alebo n&iacute;zkymi počtami v porovnan&iacute; s ich susedmi?
+            </p>
+        </div>
+    </div>
+    <div id="boundingPolygonLayer">
+        <div><h2>Definovať, kde sa body môžu vyskytovať</h2></div>
+        <hr/>
+        <div>
+            <p>Nakreslite alebo poskytnite vrstvu definuj&uacute;cu, kde s&uacute; incidenty možn&eacute;, aby ste zodpovedali ot&aacute;zku: Existuj&uacute; v r&aacute;mci oblast&iacute; nejak&eacute; miesta s neočak&aacute;vane vysok&yacute;mi alebo n&iacute;zkymi koncentr&aacute;ciami bodov?
+            </p>
+            <p>Plo&scaron;n&eacute; prvky, ktor&eacute; nakresl&iacute;te, alebo prvky v plo&scaron;nej vrstve, ktor&uacute; &scaron;pecifikujete by mali definovať, kde by sa pravdepodobne mohli body objaviť. Na nakreslenie t&yacute;chto oblast&iacute;, kliknite na tlačidlo  <b>Kresliť</b> a kliknite na umiestnenie na mape, aby ste vytvorili tvar oblasti. Na nakreslenie dodatočn&yacute;ch pl&ocirc;ch kliknite na tlačidlo kresliť znovu a pre pokračovanie kliknite na umiestnenie na mape.
+            </p>
+        </div>
+    </div>
+    <div id="dividedByField">
+        <div><h2>Delené</h2></div>
+        <hr/>
+        <div>
+            <p>Niekedy m&ocirc;žete chcieť analyzovať vzorce, ktor&eacute; ber&uacute; do &uacute;vahy z&aacute;kladn&eacute; distrib&uacute;cie. Napr&iacute;klad, ak va&scaron;e body reprezentuj&uacute; zločiny, rozdelenie podľa celkovej popul&aacute;cie by malo za n&aacute;sledok anal&yacute;zu zločinov v &scaron;ir&scaron;om meradle než konkr&eacute;tne počty zločinov. Vžber atrib&uacute;tu na delenie sa naz&yacute;va normaliz&aacute;cia.
+            </p>
+            <p> Voľba <i>Esri Population</i> obohat&iacute; každ&yacute; plo&scaron;n&yacute; prvok s hodnotami popul&aacute;cie, ktor&eacute; bud&uacute; nesk&ocirc;r použit&eacute; ako atrib&uacute;t pre delenie. T&aacute;to možnosť spotrebuje kredity.
+            </p>
+        </div>
+    </div>
+    <div id="permutations">
+        <div><h2>Optimalizovať pre</h2></div>
+        <hr/>
+        <div>
+            <p>M&ocirc;žete sa rozhodn&uacute;ť optimalizovať pre r&yacute;chlosť alebo presnosť.
+            </p>
+            <p>Tento n&aacute;stroj použ&iacute;va priestorov&eacute; permut&aacute;cie na určenie odli&scaron;nosti v&aacute;&scaron;ho priestorov&eacute;ho vzorca d&aacute;t od n&aacute;hodnosti. Zv&yacute;&scaron;enie počtu permut&aacute;ci&iacute; zv&yacute;&scaron;i presnosť, ale tiež zv&yacute;&scaron;i čas spracovania.
+            </p>
+        </div>
+    </div>
+    <div id="overrideOptions">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;stroj n&aacute;jde optim&aacute;lne nastavenia pre  <b>Veľkosť bunky</b> a <b>P&aacute;smo vzdialenosti</b> predvolen&eacute; na z&aacute;klade charakterist&iacute;k va&scaron;ich d&aacute;t. Av&scaron;ak, ak m&aacute;te konkr&eacute;tnu <b>Veľkosť bunky</b> alebo <b>P&aacute;smo vzdialenosti</b>, ktor&aacute; zapad&aacute; do va&scaron;ej anal&yacute;zy, m&ocirc;žete použiť <b>Menu možnost&iacute;</b> pre nastavenie vlastn&yacute;ch hodn&ocirc;t.
+            </p>
+            <p> <b>Možnosti</b> s&uacute; tiež užitočn&eacute; pri spusten&iacute; anal&yacute;zy na r&ocirc;znych d&aacute;tov&yacute;ch sad&aacute;ch, čo v&aacute;m umožnuje zachovať <b>P&aacute;smo vzdialenosti</b> a <b>Veľkosť bunky</b> konzistentn&eacute; naprieč viacer&yacute;mi d&aacute;tov&yacute;mi sadami. N&aacute;sledne m&ocirc;žete porovnať v&yacute;sledky (napr&iacute;klad počty obezity a cukrovky alebo počty zločinov pre dva rozdielne roky).
+            </p>
+        </div>
+    </div>
+    <div id="cellSize">
+        <div><h2>Veľkosť bunky</h2></div>
+        <hr/>
+        <div>
+            <p>Veľkosť buniek mriežky použit&aacute; na spoč&iacute;tanie obsiahnut&yacute;ch bodov.
+            </p>
+            <p>Pri použit&iacute; &scaron;esťuholn&iacute;kovej mriežky na spoč&iacute;tanie obsiahnut&yacute;ch bodov je t&aacute;to vzdialenosť použit&aacute; ako v&yacute;&scaron;ka &scaron;esťuholn&iacute;kov.
+            </p>
+        </div>
+    </div>
+    <div id="distanceBand">
+        <div><h2>Pásmo vzdialenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Každ&yacute; prvok je analyzovan&yacute; v r&aacute;mci kontextu jeho susediacich prvkov umiestnen&yacute;ch v r&aacute;mci vzdialenosti, ktor&uacute; &scaron;pecifikujete. N&aacute;stroj vypoč&iacute;ta predvolen&uacute; vzdialenosť za v&aacute;s, alebo m&ocirc;žete použiť t&uacute;to možnosť na nastavenie konkr&eacute;tnej vzdialenosti, ktor&uacute; považujete za vhodn&uacute; pre va&scaron;u anal&yacute;zu.
+            </p>
+            <p>Napr&iacute;klad, ak &scaron;tudujete doch&aacute;dzkov&eacute; vzorce a viete, že priemern&aacute; cesta do pr&aacute;ce je 15 m&iacute;ľ, butede možno chcieť použiť 15-m&iacute;ľov&eacute; p&aacute;smo vzdialenosti.
+            </p>
+        </div>
+    </div>
+    <div id="outlierResultLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>Poskytnite n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v položke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. T&aacute;to v&yacute;sledn&aacute; vrstva v&aacute;m uk&aacute;že &scaron;tatisticky v&yacute;znamn&eacute; odľahl&eacute; prvky vysok&yacute;ch a n&iacute;zkych hodn&ocirc;t alebo počtov bodov. Ak n&aacute;zov v&yacute;slednej vrstvy už existuje, budete požiadan&yacute; o zadanie in&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b>, m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

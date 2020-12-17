@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vybrať najvhodnejšie zariadenia</h2><p/>
+        <h2><img src="../images/GUID-E57BEC1A-C404-436B-B389-65711FF83088-web.png" alt="Vybrať najvhodnej&scaron;ie zariadenia"></h2>
+        <hr/>
+    <p>Vybrať najvhodnej&scaron;ie zariadenia v&aacute;m umožnuje zvoliť najvhodnej&scaron;ie lokality pre zariadenia. N&aacute;stroj vyhľad&aacute; lokality s dopytom po zariadeniach tak, aby boli splnen&eacute; zadan&eacute; ciele.
+    </p>
+    <p>Zariadenia predstavuj&uacute; lokality, ktor&eacute; pon&uacute;kaj&uacute; určit&yacute; druh služby ako napr&iacute;klad požiarne stanice, &scaron;koly, knižnice, obchody alebo distribučn&eacute; centr&aacute;. Dopyt po zariadeniach predstavuje lokality, ktor&eacute; maj&uacute; dopyt pre služby pon&uacute;kan&eacute; zariadeniami, ako napr&iacute;klad body sč&iacute;tac&iacute;ch obvodov sumarizuj&uacute;ce popul&aacute;ciu v danej oblasti.
+    </p>
+    <p>N&aacute;stroj Vybrať najvhodnej&scaron;ie zariadenia v&aacute;m m&ocirc;že pom&ocirc;cť zodpovedať ot&aacute;zky ako
+        <ul>
+            <li>V kr&iacute;zov&yacute;ch pr&iacute;padoch, ako m&ocirc;žu byť dom&aacute;cnosti pridelen&eacute; k spr&aacute;vnemu centru pomoci pri katastrof&aacute;ch, keď je počet l&ocirc;žok obmedzen&yacute; a nem&ocirc;že byť prekročen&yacute;?
+            </li>
+            <li>Ako m&ocirc;žete prideliť obyvateľstvo k najbliž&scaron;ej knižnici a n&aacute;jsť č&iacute;slo potenci&aacute;lnych n&aacute;v&scaron;tevn&iacute;kov, ktor&eacute; m&ocirc;že obsl&uacute;žiť?
+            </li>
+            <li>Ako m&ocirc;žete n&aacute;jsť najlep&scaron;ie umiestnenie pre centrum na distrib&uacute;ciu potrav&iacute;n, ktor&eacute; minimalizuje celkov&yacute; cestovn&yacute; čas (a t&yacute;m aj cenu) don&aacute;&scaron;ky do obchodn&yacute;ch reťazcov?
+            </li>
+            <li>Kde umiestniť nov&yacute; park, aby sa zabezpečil najvy&scaron;&scaron;&iacute; počet obyvateľov mesta žij&uacute;cich vo vzdialenosti p&auml;ť min&uacute;t pe&scaron;o od parku?
+            </li>
+            <li>Ak&eacute; s&uacute; najvhodnej&scaron;ie lokality pre zop&aacute;r obchodov pre dom&aacute;ce zvierat&aacute; v okrese tak, aby 40 percent vlastn&iacute;kov zvierat nežilo ďalej ako desať min&uacute;t jazdy od jedn&eacute;ho z obchodov?
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="goal">
+        <div><h2>Cieľ</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte cieľ, ktor&yacute; mus&iacute; byť naplnen&yacute; pri vyhľad&aacute;van&iacute; dopytovac&iacute;ch lokal&iacute;t pre zariadenia.
+            </p>
+            <p>S Vybrať najvhodnej&scaron;ie zariadenia viete zadať typ probl&eacute;mu ktor&yacute; rie&scaron;ite - Cieľ. N&aacute;stroj je optimalizovan&yacute;, aby poskytoval rie&scaron;enie pre konrk&eacute;tny cieľ. Bez ohľadu na cieľ je v podstate použit&aacute; rovnak&aacute; z&aacute;kladn&aacute; met&oacute;da na dosianutie rie&scaron;enia - množstvo dopytu z danej dopytovej lokality je pridelen&eacute; najbliž&scaron;iemu zariadeniu. Ciele ovplyvňuj&uacute; sp&ocirc;sob, ktor&yacute;m je vz&aacute;jomn&yacute; vplyv medzi vzdialenosťou (alebo časom) a dopytom spracovan&yacute;. N&aacute;stroj zvažuje cestovn&uacute; vzdialenosť/čas ako aj množstvo dopytu a - v niektor&yacute;ch pr&iacute;padoch - kapacitu zariaden&iacute;. Ak napr&iacute;klad cieľ uprednosťnuje skr&aacute;tenie cestovn&eacute;ho času, n&aacute;stroj sa aj tak bude sekund&aacute;rne snažiť maximalizovať priraden&yacute; dopyt. Podobne ak je cieľom maximalizovať pridelen&yacute; dopyt, n&aacute;stroj bude minimalizovať cestovn&yacute; čas (priraden&iacute;m dopytov&yacute;ch lokal&iacute;t najbližsiemu zariadeniu namiesto ak&eacute;mukoľvek zariadeniu).
+            </p>
+            <p>V z&aacute;vislosti na va&scaron;ich d&aacute;tach a nastaveniach ktor&eacute; použ&iacute;vate, rozdielne ciele m&ocirc;žu vyprodukovať rovnak&eacute; alebo podobn&eacute; v&yacute;sledky. Mali by ste v&scaron;ak &scaron;pecifikovať cieľ, ktor&yacute; je najvhodnej&scaron;&iacute; pre va&scaron;u anal&yacute;zu.
+            </p> 
+        </div>
+    </div>
+    <div id="allocateToExistingFacilities">
+        <div><h2>Prideliť existujúcim zariadeniam</h2></div>
+        <hr/>
+        <div>
+            <p>Použite tento cieľ, ak nechcete lokalizovať nov&eacute; zariadenia, ale chcete priradiť dopyt existuj&uacute;cim zariadeniam s obmedzenou alebo neobmedzenou kapacitou.
+            </p>
+            <p>Tento cieľ prirad&iacute; dopyt zariadeniam na z&aacute;klade kapacity zariadenia a množstva dopytu v okolitej oblasti. Dopyt je pridelen&yacute; najbliž&scaron;iemu zariadeniu pokiaľ nie je naplnen&aacute; jeho dostupn&aacute; kapacita. Ak &scaron;pecifikujete maxim&aacute;lny cestovn&yacute; rozsah, ak&aacute;koľvek dopytov&aacute; lokalita mimo cestovn&eacute;ho rozsahu nebude zariadeniu priraden&aacute;, aj keď nebol priraden&yacute; cel&yacute; požadovan&yacute; dopyt.
+            </p> 
+        </div>
+    </div>
+    <div id="minimizeTravel">
+        <div><h2>Minimalizovať cestovanie</h2></div>
+        <hr/>
+        <div>
+            <p>Použite tento cieľ ak chcete lokalizovať zariadenia tak, aby sa minimalizoval celkov&yacute; cestovn&yacute; čas alebo cestovn&aacute; vzdialenosť medzi dopytov&yacute;mi lokalitami a zariadeniami.
+            </p>
+            <p>Tento cieľ je často aplikovateľn&yacute;, keď sa cestovanie medzi zariaden&iacute;m a v&scaron;etk&yacute;mi dopytov&yacute;mi lokalitami realizuje na pravidelnej b&aacute;ze. Tento cieľ by ste použili napr&iacute;klad na minimaliz&aacute;ciu celkovej cestovnej vzdialenosti pri presune tovaru z distibučn&yacute;ch centier do predajn&iacute;, alebo na voľbu lokality pre konanie konferencie tak, aby sa minimalizovali cestovn&eacute; časy pre v&scaron;etk&yacute;ch z&uacute;častnen&yacute;ch.
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverage">
+        <div><h2>Maximalizovať pokrytie</h2></div>
+        <hr/>
+        <div>
+            <p>Použite tento cieľ ak chcete pre zariadenie pokryť maxim&aacute;lny dopyt vzhľadom na cestovn&yacute; čas alebo vzdialenosť k zariadeniam.
+            </p>
+            <p>Tento cieľ vyber&aacute; zariadenia tak, aby sa im pridelil maxim&aacute;lny objem dopytu, pričom dopyt z každej dopytovej lokality je pridelen&yacute; jedn&eacute;mu najbliž&scaron;iemu zariadeniu.
+            </p>
+            <p>Pre tento cieľ je požadovan&eacute; ohraničenie maxim&aacute;lneho cestovn&eacute;ho rozsahu, pretože v opačnom pr&iacute;pade by mohli byť v&scaron;etky dopytov&eacute; lokality priraden&eacute; k jedn&eacute;mu zariadeniu. Dopytov&eacute; lokality ležiace za hranicou cestovn&eacute;ho času alebo cestovnej vzdialenosti ktor&eacute;hokoľvek zo zariaden&iacute; nebud&uacute; pridelen&eacute; (čo v&aacute;m z&aacute;roveň uk&aacute;že lokality nenaplnen&eacute;ho dopytu, kde m&ocirc;žu byť vyžadovan&eacute; nov&eacute; zariadenia).
+            </p> 
+        </div>
+    </div>
+    <div id="maximizeCoverageWithCapacity">
+        <div><h2>Maximalizovať pokrytie s kapacitou</h2></div>
+        <hr/>
+        <div>
+            <p>Použite tento cieľ ak chcete pre zariadenie pokryť maxim&aacute;lny dopyt vzhľadom na cestovn&yacute; čas alebo vzdialenosť k zariadeniam s obmedzenou kapacitou.
+            </p>
+            <p>Tento cieľ vyber&aacute; zariadenia tak, aby sa im pridelil maxim&aacute;lny objem dopytu s ohľadom na kapacitu každ&eacute;ho zo zariaden&iacute;. V&scaron;etok dopyt z každej dopytovej lokality je pridelen&yacute; jedin&eacute;mu zariadeniu, ktor&eacute; je najbliž&scaron;ie a m&aacute; dostupn&uacute; kapacitu (to znamen&aacute;, že ak by pridelenie dopytovej lokality k zariadeniu prekročilo dostupn&uacute; kapacitu zariadenia, namiesto priradenia časti dopytu nebude dopytov&aacute; lokalita k zariadeniu priraden&aacute;).
+            </p> 
+        </div>
+    </div>
+    <div id="coverAPercentageOfDemand">
+        <div><h2>Pokryť percento dopytu</h2></div>
+        <hr/>
+        <div>
+            <p>Použite tento cieľ ak chcete n&aacute;jsť minim&aacute;lny počet zariaden&iacute;, ktor&eacute; potrebujete na pokrytie určit&eacute;ho percenta dopytu.
+            </p>
+            <p>Tento cieľ vyber&aacute; minim&aacute;lny počet zariaden&iacute; potrebn&yacute;ch na dosiahnutie &scaron;pecifikovan&eacute;ho percenta dopytu. Dopytov&aacute; lokalita, ktor&aacute; je v r&aacute;mci cestovn&eacute;ho dosahu dvoch alebo viacer&yacute;ch zariaden&iacute;, rozdel&iacute; svoj dopyt proporčne medzi zariadenia na z&aacute;klade vzdialenosti od kažn&eacute;ho z nich. Tento cieľ je často použ&iacute;van&yacute; v pr&iacute;pade, ak maj&uacute; obyvatelia na v&yacute;ber, ktor&eacute; zariadenie nav&scaron;t&iacute;viť, a predpoklad&aacute; sa, že, vo v&scaron;eobecnosti nav&scaron;t&iacute;via najbliž&scaron;ie zariadenie (v&scaron;etky ostatn&eacute; veci s&uacute; si rovn&eacute;).
+            </p>
+            <p>Na rozdiel od in&yacute;ch cieľov voľby zariaden&iacute;, v ktor&yacute;ch &scaron;pecifikujete koľko zariaden&iacute; zvoliť, tento cieľ vyber&aacute; počet zariaden&iacute; na z&aacute;klade precent dopytu, ktor&eacute; chcete dosiahnuť. Predpoklad&aacute;, že zariadenia maj&uacute; neobmedzen&uacute; kapacitu.
+            </p> 
+        </div>
+    </div>
+    <div id="measure">
+        <div><h2>Zmerať</h2></div>
+        <hr/>
+        <div>
+            <p>Tak ako ostatn&eacute; n&aacute;stroje obsahuj&uacute;ce cestovn&eacute; anal&yacute;zy viete &scaron;pecifikovať, či je cestovanie meran&eacute; vzdialenosťou alebo časom a m&ocirc;žete vybrať z viacer&yacute;ch cestovn&yacute;ch režimov ako čas ch&ocirc;dze, čas jazdy, čas jazdy mimo mesta a podobne. Dostupn&eacute; cestovn&eacute; režimy s&uacute; spr&iacute;stupnen&eacute; administr&aacute;torom va&scaron;ej organiz&aacute;cie. Pri použ&iacute;van&iacute;  <b>Čas jazdy</b>, <b>Čas jazdy na vidieku</b> alebo <b>Čas prepravy</b> m&ocirc;žete voliteľne zahrn&uacute;ť prem&aacute;vku pre &scaron;pecifick&yacute; deň v t&yacute;ždni a denn&yacute; čas.
+            </p>
+            <p> Za &uacute;čelom presn&eacute;ho priradenia dopytov&yacute;ch lokal&iacute;t k zariadeniam &scaron;pecifikujte, či cestovanie prebieha zo zariaden&iacute; do dopytov&yacute;ch miest (napr&iacute;klad z hasičskej stanice k obydliam) alebo z dopytov&yacute;ch miest k zariadeniam (napr&iacute;klad pri z&aacute;kazn&iacute;koch a knižniciach). Vybrať najvhodnej&scaron;ie zariadenia bude zohľadňovať smer cesty na jednosmern&yacute;ch uliciach, možnosť odbočenia z jednej ulice na druh&uacute;, z&aacute;kazy odbočen&iacute; v križovatk&aacute;ch a podobne, v z&aacute;vislosti na tom, či cestovanie prebieha smerom zo zariadenia k dopytov&yacute;m lokalit&aacute;m alebo naopak z dopytov&yacute;ch lokal&iacute;t k zariadeniam.
+            </p>
+        </div>
+    </div>
+    <div id="demandLocationsLayer">
+        <div><h2>Vrstva dopytových lokalít</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute; prvky reprezentuj&uacute;ce lokality s dopytom po služb&aacute;ch, ktor&eacute; poskytuj&uacute; zariadenia. N&aacute;stroj prirad&iacute; tieto dopytov&eacute; lokality vhodn&yacute;m zariadeniam na z&aacute;klade zvolen&eacute;ho cieľa.
+            </p>
+            <p>Dopytov&eacute; lokality maj&uacute; pridružen&eacute; množstvo dopytu. Použite kon&scaron;tantu na &scaron;pecifikovanie hodnoty, ak maj&uacute; v&scaron;etky dopytov&eacute; lokality rovnak&yacute; dopyt. Ak sa množstvo dopytu l&iacute;&scaron;i podľa dopytovej lokality, použite pole vo vrstve dopytov&yacute;ch lokal&iacute;t na &scaron;pecifikovanie hodnoty pre každ&uacute; dopytov&uacute; lokalitu.
+            </p>
+            <p>Dopyt bude pridelen&yacute; zariadeniam pok&yacute;m nebude v&scaron;etok dopyt pridelen&yacute; bez ohľadu na vzdialenosť dopytov&yacute;ch lokal&iacute;t od zariaden&iacute;. M&ocirc;žete priradiť maxim&aacute;lny cestovn&yacute; rozsah do vrstvy dopytov&yacute;ch lokal&iacute;t pre vytvorenie medznej vzdialenosti alebo času - dopytov&aacute; lokalita za touto medznou hodnotou nebude pridelen&aacute;. Použite kon&scaron;tantu na &scaron;pecifikovanie hodnoty, ak maj&uacute; v&scaron;etky dopytov&eacute; lokality rovnak&yacute; maxim&aacute;lny cestovn&yacute; rozsah. Ak sa maxim&aacute;lny cestovn&yacute; rozsah l&iacute;&scaron;i podľa dopytovej lokality, použite pole vo vrstve dopytov&yacute;ch lokal&iacute;t na &scaron;pecifikovanie hodnoty pre každ&uacute; dopytov&uacute; lokalitu.
+            </p>
+            <p>Ak je cieľom  <b>Pokryť percent&aacute; dopytu</b>, je nevyhnutn&eacute; zadať minim&aacute;lne percento dopytu, ktor&eacute; chcete dosiahnuť pre zariadenia.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+            <p>N&aacute;stroj podporuje do 10 000 prvkov vo vrstve dopytov&yacute;ch lokal&iacute;t.
+            </p>  
+        </div>
+    </div>
+    <div id="requiredFacilitiesLayer">
+        <div><h2>Vrstva požadovaných zariadení</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute; prvky reprezentuj&uacute;ce lokality, ktor&eacute; sl&uacute;žia ako zariadenia poskytuj&uacute;ce služby. Požadovan&eacute; zariadenia zvyčajne reprezentuj&uacute; existuj&uacute;ce lokality narozdiel od kandid&aacute;tskych zariaden&iacute;, ktor&eacute; zvyčajne reprezentuj&uacute; lokality pre umiestnenie alebo vybudovanie nov&yacute;ch zariaden&iacute;. Pri prideľovan&iacute; dopytov&yacute;ch lokal&iacute;t uprednostňuje n&aacute;stroj zariadenia vo  <b>Vrstve požadovan&yacute;ch pariaden&iacute;</b> pred zariadeniami z <b>Vrstvy kandid&aacute;tskych zariaden&iacute;</b>.
+            </p>
+            <p>Požadovan&eacute; zariadenia m&ocirc;žu mať neobmedzen&uacute; kapacitu (a teda m&ocirc;žu naplniť v&scaron;etok im pridelen&yacute; dopyt) alebo m&ocirc;žu mať obmedzen&uacute; kapacitu. Ak maj&uacute; v&scaron;etky zariadenia rovnak&uacute; obmedzen&uacute; kapacitu (napr&iacute;klad počet dom&aacute;cnost&iacute;, ktor&eacute; vie hasičsk&aacute; stanica obsl&uacute;žiť - povedzme 4 000), &scaron;pecifikujte kon&scaron;tantn&uacute; hodnotu. Ak sa kapacita medzi zariadeniami l&iacute;&scaron;i (napr&iacute;klad počet dostupn&yacute;ch miest pre nov&yacute;ch žiakov na každej strednej &scaron;kole), &scaron;pecifikujte pole obsahuj&uacute;ce hodnotu kapacity pre každ&eacute; zariadenie.
+            </p>
+            <p>N&aacute;stroj podporuje až 100 prvkov vo  <b>Vrstve požadovan&yacute;ch zariaden&iacute;</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="candidateFacilitiesLayer">
+        <div><h2>Vrstva kandidátskych zariadení</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute; prvky reprezentuj&uacute;ce lokality, ktor&eacute; sl&uacute;žia ako zariadenia poskytuj&uacute;ce služby. Kandid&aacute;tske zariadenia zvyčajne reprezentuj&uacute; lokality, na ktor&yacute;ch bud&uacute; umiestnen&eacute; alebo vybudovan&eacute; nov&eacute; zariadenia, na rozdiel od požadovan&yacute;ch zariaden&iacute;, ktor&eacute; zvyčajne reprezentuj&uacute; už existuj&uacute;ce lokality.
+            </p>
+            <p>V z&aacute;vislosti na cieli va&scaron;ej anal&yacute;zy, potrebujete &scaron;pecifikovať počet kandid&aacute;tskych zariaden&iacute;, ktor&eacute; treba vybrať zo sady kandid&aacute;tov. Ak &scaron;pecifikujete požadovan&eacute; aj kandid&aacute;tske zariadenia, n&aacute;stroj uprednostn&iacute; zariadenia vo  <b>Vrstve požadovan&yacute;ch zariaden&iacute;</b> pred ak&yacute;mkoľvek zariaden&iacute;m z <b>Vrstvy kandid&aacute;tskych zariadedn&iacute;</b>.
+            </p>
+            <p>Kandid&aacute;tske zariadenia m&ocirc;žu mať neobmedzen&uacute; kapacitu (a teda m&ocirc;žu naplniť v&scaron;etok im pridelen&yacute; dopyt) alebo m&ocirc;žu mať obmedzen&uacute; kapacitu. Ak maj&uacute; v&scaron;etky zariadenia rovnak&uacute; obmedzen&uacute; kapacitu (napr&iacute;klad počet dom&aacute;cnost&iacute;, ktor&eacute; vie hasičsk&aacute; stanica obsl&uacute;žiť - povedzme 4 000), &scaron;pecifikujte kon&scaron;tantn&uacute; hodnotu. Ak sa kapacita medzi zariadeniami l&iacute;&scaron;i (napr&iacute;klad počet dostupn&yacute;ch miest pre nov&yacute;ch žiakov na každej strednej &scaron;kole), &scaron;pecifikujte pole obsahuj&uacute;ce hodnotu kapacity pre každ&eacute; zariadenie.
+            </p>
+            <p>N&aacute;stroj podporuje až 1000 prvkov vo  <b>Vrstve kandid&aacute;tskych zariaden&iacute;</b>.
+            </p>  
+        </div>
+    </div>
+    <div id="barrier_layers">
+        <div><h2>Vyberte vstvy bariér</h2></div>
+        <hr/>
+        <div>
+            <p> Jeden alebo viac prvkov, ktor&eacute; sl&uacute;žia ako dočasn&eacute; obmedzenia (bari&eacute;ry), keď cestujete na podkladov&yacute;ch cest&aacute;ch. Bari&eacute;ry m&ocirc;žete &scaron;pecifikovať použit&iacute;m prvkov bodu, l&iacute;nie alebo polyg&oacute;nu.
+            </p>
+            <p>Bodov&aacute; bari&eacute;ria m&ocirc;že modelovať spadnut&yacute; strom, nehodu, spadnut&eacute; elektrick&eacute; vedenie alebo čokolvek, čo &uacute;plne blokuje dopravu na konkr&eacute;tnej poz&iacute;cii na ulici. Cestovanie je na ulici povolen&eacute;, av&scaron;ak nie cez bari&eacute;ru. M&ocirc;žete &scaron;pecifikovať viac ako 250 prvkov, ktor&eacute; bud&uacute; sl&uacute;žiť ako bodov&aacute; bari&eacute;ry.
+            </p>
+            <p>Line&aacute;rna bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa bari&eacute;ra pret&iacute;na s ulicami. Napr&iacute;klad, pochod alebo protest, ktor&yacute; blokuje prem&aacute;vku nprieč niekoľk&yacute;mi segmentami ul&iacute;c, m&ocirc;že byť modelovan&yacute; ako line&aacute;rna bari&eacute;ra. Ak počet prvkov ulice pretnut&yacute;chv&scaron;etk&yacute;mi line&aacute;rnymi bari&eacute;rami presiahne 500, n&aacute;stroj vr&aacute;ti chybu.
+            </p>
+            <p>Polyg&oacute;nov&aacute; bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa polyg&oacute;n pret&iacute;na s ulicami. Jedno z použit&iacute; tak&eacute;hoto typu bari&eacute;ry je modelovať povodne pokr&yacute;vaj&uacute;ce plochy siete ul&iacute;c a t&yacute;m znemožnuj&uacute; cestovanie na ceste. Ak počet prvkov ulice pretnut&yacute;ch v&scaron;etk&yacute;mi polyg&oacute;nov&yacute;mi bari&eacute;rami presiahne 200, n&aacute;stroj vr&aacute;ti chybu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>V&yacute;sledn&aacute; vrstva bude obsahovať nasleduj&uacute;ce vrstvy: zariadenia s priraden&yacute;m dopytom, dopytov&eacute; lokality priraden&eacute; k zariadeniam a priraďovacie l&iacute;nie sp&aacute;jaj&uacute;ce dopytov&eacute; lokality s priraden&yacute;mi zariadeniami. Priraďovacie l&iacute;nie s&uacute; vykreslen&eacute; ako rovn&eacute; čiary, hoci cestovn&yacute; čas alebo vzdialenosť medzi zariaden&iacute;m a dopytovou lokalitou je vždy založen&aacute; na zvolenom cestovnom režime a nevyuž&iacute;va priamočiare vzdialenosti.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

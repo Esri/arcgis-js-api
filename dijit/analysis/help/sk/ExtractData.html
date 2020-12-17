@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Extrahovať dáta</h2><p/>
+        <h2><img src="../images/GUID-CE24332B-74C0-412F-BB94-31415A02195A-web.png" alt="Extrahovať d&aacute;ta"></h2>
+        <hr/>
+    <p>S t&yacute;mto n&aacute;strojom m&ocirc;žete vybrať a stiahnuť d&aacute;ta pre &scaron;pecifikovan&uacute; oblasť z&aacute;ujmu. Vrstvy, ktor&eacute; zvol&iacute;te, bud&uacute; pridan&eacute; do ZIP, CSV alebo KMZ s&uacute;boru.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="InputLayers">
+        <div><h2>Vrstvy na extrahovanie</h2></div>
+        <hr/>
+        <div>
+            <p>Toto s&uacute; vrstvy vo va&scaron;ej legende, z ktor&yacute;ch m&ocirc;žete extrahovať prvky. Vrstvy, ktor&eacute; s&uacute; začiarknut&eacute;, s&uacute; extrahovan&eacute; a zahrnut&eacute; vo v&yacute;slednom ZIP alebo CSV s&uacute;bore.
+            </p>
+            <p>Aby sa vrstva zobrazila na vrchu zoznamu vrstiev na extrahovanie, mus&iacute;te d&aacute;ta vlastniť alebo mus&iacute; vlastn&iacute;k povoliť export d&aacute;t. Pre povolenie exportu d&aacute;t, ktor&eacute; vlastn&iacute;te: 
+                <ul>
+                    <li>Otvoriť popis položky d&aacute;t.
+                    </li>
+                    <li>Kliknite na kartu  <b>Nastavenia</b>.
+                    </li>
+                    <li>Posuňte nadol do sekcie  <b>Exportovať d&aacute;ta</b>.
+                    </li>
+                    <li>Začiarknite  <b>Umožniť ostatn&yacute;m exportovať do in&yacute;ch form&aacute;tov</b>. Po skončen&iacute; kliknite na <b>Uložiť</b>.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ak va&scaron;a analytick&aacute; vrstva obsahuje pr&iacute;lohy, berte na vedomie, že pr&iacute;lohy bud&uacute; extrahovan&eacute; len ak je form&aacute;t v&yacute;stupn&yacute;ch d&aacute;t s&uacute;borov&aacute; geodatab&aacute;za a voľba  <b>Orezať prvky</b> je neza&scaron;krtnut&aacute;.
+            </p>
+        </div>
+    </div>
+    <div id="AreaOfInterest">
+        <div><h2>Študijná oblasť</h2></div>
+        <hr/>
+        <div>
+            <p>Oblasť, ktor&aacute; definuje, ktor&eacute; prvky bud&uacute; zahrnut&eacute; vo v&yacute;stupnom ZIP alebo CSV s&uacute;bore. M&ocirc;žete vybrať z nasledovn&yacute;ch:
+                <ul>
+                    <li>Aktu&aacute;lny viditeľn&yacute; rozsah mapy ( <b>Rovnak&yacute; ako na obrazovke</b>).
+                    </li>
+                    <li>Jedna z vrstiev vo va&scaron;ej legende. Ak je zvolen&aacute; vrstva bodov&yacute;ch alebo l&iacute;niov&yacute;ch prvkov, rozsah vrstvy bude použit&yacute; ako &scaron;tudijn&aacute; oblasť.
+                    </li>
+                    <li>Nakreslite plochu na definovanie &scaron;tudijnej oblasti.
+                    </li>
+                </ul>
+                V&scaron;etky prvky v rozsahu mapy bud&uacute; extrahovan&eacute;. Pre prvky, ktor&eacute; križuj&uacute; alebo pret&iacute;naj&uacute; hranicu rozsahu mapy, ale nie s&uacute; kompletne vn&uacute;tri rozsahu, m&aacute;te dve možnosti:
+                <ul>
+                    <li> <b>Vybrať prvky</b> - Extrahovan&eacute; bud&uacute; cel&eacute; prvky križuj&uacute;ce hranicu &scaron;tudijnej oblasti.
+                    </li>
+                    <li> <b>Orezať prvky</b> - Iba tie časti prvkov, ktor&eacute; s&uacute; v r&aacute;mci &scaron;tudijnej oblasti, bud&uacute; extrahovan&eacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputFormat">
+        <div><h2>Formát výstupných dát</h2></div>
+        <hr/>
+        <div>
+            <p>Form&aacute;t d&aacute;t, ktor&yacute; bude extrahovan&yacute;. Pri exporte l&iacute;niov&yacute;ch alebo plo&scaron;n&yacute;ch prvkov do CSV s&uacute;borov bud&uacute; extrahovan&eacute; len nepriestorov&eacute; atrib&uacute;ty. Pri exporte bodov&yacute;ch prvnok bud&uacute; extrahovan&eacute; priestorov&eacute; aj nepriestorov&eacute; atrib&uacute;ty.
+            </p>
+            <p>Extrahovan&eacute; d&aacute;ta použij&uacute; zobrazenie Web Mercator 1984. Pre CSV s&uacute;bory bud&uacute; k d&aacute;tam pripojen&eacute; polia  <i>Lat</i> a <i>Long</i> so s&uacute;radnicami v projekcii Web Mercator 1984.
+            </p> 
+            <p>Podporovan&eacute; s&uacute; n&aacute;sledn&eacute; v&yacute;stupn&eacute; form&aacute;ty:
+                <ul>
+                    <li>Hodnota oddelen&aacute; čiarkami (CSV) -  <code>.csv</code> alebo <code>.zip</code>
+                    </li>
+                    <li>S&uacute;borov&aacute; geodatab&aacute;za - <code>.zip</code>
+                    </li>
+                    <li>Keyhole Markup Language (KML)&mdash; <code>.kmz</code> alebo <code>.zip</code>
+                    </li>
+                    <li>Shapefile- <code>.zip</code>
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výstupného súboru</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je meno položky, ktor&aacute; bude pridan&aacute; do zložky  <b>M&ocirc;j obsah</b>. N&aacute;zov položky je založen&yacute; na zvolenom <b>Form&aacute;te v&yacute;stupn&yacute;ch d&aacute;t</b>. Ak položka už existuje, budete vyzvan&yacute; zadať in&yacute; n&aacute;zov.
+            </p>
+            <p>Použit&iacute;m voľby  <b>Uložiť v&yacute;sledok do</b> z rozbaľovacieho menu m&ocirc;žete zadať meno zložky, do ktorej bude uložen&yacute; v&yacute;sledok v r&aacute;mci <b>M&ocirc;j obsah</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

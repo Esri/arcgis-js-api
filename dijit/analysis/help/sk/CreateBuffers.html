@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vytvoriť obalové zóny</h2><p/>
+        <h2><img src="../images/GUID-7F4A8E4D-42E3-41C1-9238-16619CE65079-web.png" alt="Vytvoriť obalov&eacute; z&oacute;ny"></h2>
+        <hr/>
+    <p>Obalov&aacute; z&oacute;na je oblasť, ktor&aacute; predstavuje zadan&uacute; vzdialenosť od bodu, l&iacute;nie alebo plo&scaron;n&eacute;ho prvku.
+    </p>
+    <p>Obalov&eacute; z&oacute;ny sa bežne použ&iacute;vaj&uacute; na vytvorenie oblast&iacute;, ktor&eacute; m&ocirc;žu byť ďalej analyzovan&eacute; za použitia n&aacute;stroja, ako Vrstvy prekrytia. Napr&iacute;klad, ak je ot&aacute;zka &quot;Ak&eacute; budovy sa nach&aacute;dzaj&uacute; v r&aacute;mci jednej m&iacute;le od &scaron;koly?&quot;, odpoveď m&ocirc;žeme n&aacute;jsť vytvoren&iacute;m jednom&iacute;ľovej obalovej z&oacute;ny okolo &scaron;koly a použit&iacute;m n&aacute;stroja Prekryť vrstvy na prekrytie obalovej z&oacute;ny vrstvou obsahuj&uacute;cou obrysy budov. Konečn&yacute; v&yacute;sledok je vrstva budov vo vzdialenosti do jednej m&iacute;le od &scaron;koly.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, do obalovej z&oacute;ny bud&uacute; zahrnut&eacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, pre v&scaron;etky prvky vo vrstve vstupu bud&uacute; vytvoren&eacute; obalov&eacute; z&oacute;ny, aj keď s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte vrstvu obsahujúcu prvky pre ktoré bude generovaná obalová zóna</h2></div>
+        <hr/>
+        <div>
+            <p>Body, l&iacute;nie alebo plo&scaron;n&eacute; prvky, ktor&eacute; bud&uacute; zahrnut&eacute; do obalovej z&oacute;ny.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="BufferSize">
+        <div><h2>Zadajte veľkosť obalovej zóny</h2></div>
+        <hr/>
+        <div>
+            <p>M&ocirc;žete zadať jednu alebo viacero hodn&ocirc;t vzdialenosti, oddeľuj&uacute;c každ&uacute; hodnotu medzerou. M&ocirc;žete zadať atrib&uacute;t vstupnej vrstvy obsahuj&uacute;ci hodnotu vzdialenosti, kliknut&iacute;m na  <b>Pole</b>.
+            </p> 
+        </div>
+    </div>
+    <div id="OptionPoint">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>Zvoľte, ako chcete vytvoriť prekr&yacute;vaj&uacute;ce sa obalov&eacute; z&oacute;ny. Pre ak&uacute;koľvek obalov&uacute; z&oacute;nu, ktor&aacute; sa nach&aacute;dza na vrchu inej obalovej z&oacute;ny m&ocirc;žu byť spoločn&eacute; oblasti ponechan&eacute; (Prekryť) alebo skombinovan&eacute; (Zru&scaron;iť). Pri použit&iacute;  <b>Zru&scaron;iť</b>, v&scaron;etky obalov&eacute; z&oacute;ny sa zl&uacute;čia do jedn&eacute;ho prvku, č&iacute;m sa odstr&aacute;ni prekrytie.
+            </p>  
+            <p> Pri použit&iacute; viacer&yacute;ch vzdialenost&iacute; m&ocirc;žete zvoliť ako reprezentovať vzdialenosť od poslednej vzdialenosti obalovej z&oacute;ny, napr&iacute;klad, ak s&uacute; vzdialenosti 10 a 14:
+                <ul>
+                    <li>Zvolenie  <b>Kruhy</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 10 do 14.
+                    </li>
+                    <li>Zvolenie  <b>Disky</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 0 do 14.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OptionPoly">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>Zvoľte, ako chcete spracovať prekr&yacute;vaj&uacute;ce sa obalov&eacute; z&oacute;ny. Pre ak&uacute;koľvek obalov&uacute; z&oacute;nu, ktor&aacute; sa nach&aacute;dza na vrchu inej obalovej z&oacute;ny m&ocirc;žu byť spoločn&eacute; oblasti ponechan&eacute; (Prekryť) alebo skombinovan&eacute; (Zru&scaron;iť). Pri použit&iacute;  <b>Zru&scaron;iť</b> sa v&scaron;etky obalov&eacute; z&oacute;ny zl&uacute;čia do jedn&eacute;ho prvku, č&iacute;m sa odstr&aacute;ni prekrytie.
+            </p>
+            <p>Pri vytvoren&iacute; jedinej obalovej z&oacute;ny (zadan&aacute; jedna vzdialenosť) okolo plo&scaron;n&eacute;ho prvku m&ocirc;žete vybrať, či bude spracov&aacute;van&yacute; prvok zahrnut&yacute; alebo vynechan&yacute; z v&yacute;slednej obalovej z&oacute;ny.
+            </p>
+            <p>Pri použit&iacute; viacer&yacute;ch vzdialenost&iacute; m&ocirc;žete zvoliť ako reprezentovať vzdialenosť od poslednej vzdialenosti obalovej z&oacute;ny, napr&iacute;klad, ak s&uacute; vzdialenosti 10 a 14:
+                <ul>
+                    <li>Zvolenie  <b>Kruhy</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 10 do 14.
+                    </li>
+                    <li>Zvolenie  <b>Disky</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 0 do 14.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="OptionLine">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>Zvoľte, ako chcete spracovať prekr&yacute;vaj&uacute;ce sa obalov&eacute; z&oacute;ny. Pre ak&uacute;koľvek obalov&uacute; z&oacute;nu, ktor&aacute; sa nach&aacute;dza na vrchu inej obalovej z&oacute;ny m&ocirc;žu byť spoločn&eacute; oblasti ponechan&eacute; (Prekryť) alebo skombinovan&eacute; (Zru&scaron;iť). Pri použit&iacute;  <b>Zru&scaron;iť</b> sa v&scaron;etky obalov&eacute; z&oacute;ny zl&uacute;čia do jedn&eacute;ho prvku, č&iacute;m sa odstr&aacute;ni prekrytie.
+            </p>
+            <p>Pri vytvoren&iacute; jedinej obalovej z&oacute;ny (zadan&aacute; jedna vzdialenosť) okolo l&iacute;nie m&ocirc;žete vybrať stranu l&iacute;nie, pre ktor&uacute; sa obalov&aacute; z&oacute;na vytvor&iacute;. Bežne sa vyberaj&uacute; obe strany. Ľav&aacute; a prav&aacute; je definovan&aacute; v smere od prvej x,y s&uacute;radnice l&iacute;nie (počiatočn&aacute; s&uacute;radnica) po posledn&uacute; x,y s&uacute;radnicu (koncov&aacute; s&uacute;radnica). V&yacute;ber ľavej alebo pravej strany predpoklad&aacute;, že viete v akom smere boli l&iacute;niov&eacute; prvky vytvoren&eacute; (napr&iacute;klad proti p&uacute;du alebo po pr&uacute;de riečnej siete). Na konci l&iacute;nie m&ocirc;že byť obalov&aacute; z&oacute;na zaoblen&aacute; (Zaoblen&eacute;) alebo ukončen&aacute; rovno naprieč (Ploch&eacute;).
+            </p>
+            <p>Pri vytvoren&iacute; viacer&yacute;ch obalov&yacute;ch z&oacute;n (viac ako jedna vzdialenosť) m&ocirc;žete zvoliť ako reprezentovať vzdialenosť od poslednej vzdialenosti obalovej z&oacute;ny, napr&iacute;klad, ak s&uacute; vzdialenosti 10 a 14:
+                <ul>
+                    <li>Zvolenie  <b>Kruhy</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 10 do 14.
+                    </li>
+                    <li>Zvolenie  <b>Disky</b> m&aacute; za n&aacute;sledok obalov&eacute; z&oacute;ny vo vzdialenostiach od 0 do 10 a od 0 do 14.
+                    </li>
+                </ul>
+                
+            </p> 
+        </div>
+    </div>
+    <div id="OptionNolayer">
+        <div><h2>Možnosti</h2></div>
+        <hr/>
+        <div>
+            <p>Po voľbe vrstvy na spracovanie m&ocirc;žete zvoliť ako spracovať prekr&yacute;vaj&uacute;ce sa obalov&eacute; z&oacute;ny. Pre ak&uacute;koľvek obalov&uacute; z&oacute;nu, ktor&aacute; sa nach&aacute;dza na vrchu inej obalovej z&oacute;ny m&ocirc;žu byť spoločn&eacute; oblasti ponechan&eacute; (Prekryť) alebo skombinovan&eacute; (Zru&scaron;iť). Pri použit&iacute;  <b>Zru&scaron;iť</b> sa v&scaron;etky obalov&eacute; z&oacute;ny zl&uacute;čia do jedn&eacute;ho prvku, č&iacute;m sa odstr&aacute;ni prekrytie. Navy&scaron;e m&ocirc;žete &scaron;pecifikovať ako bud&uacute; zadan&eacute; vzdialenosti reprezentovan&eacute;. Pre vrstvy obsahuj&uacute;ce l&iacute;niov&eacute; prvky m&ocirc;žete zvoliť, pre ktor&uacute; stranu l&iacute;nie bude obalov&aacute; z&oacute;na vytvoren&aacute;. Pre vrstvy obsahuj&uacute;ce plo&scaron;n&eacute; prvky m&ocirc;žete vybrať, či spracov&aacute;van&yacute; prvok bude zahrnut&yacute; alebo vynechan&yacute; z v&yacute;slednej obalovej z&oacute;ny.
+            </p>
+        </div>
+    </div>
+    <div id="BufferLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

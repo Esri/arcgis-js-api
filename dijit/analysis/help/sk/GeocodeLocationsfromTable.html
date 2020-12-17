@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Geokódovať lokality z tabuľky</h2><p/>
+        <h2><img src="../images/GUID-E4194410-7BBF-4349-98C9-22781D35183E-web.png" alt="Geok&oacute;dovať lokality z tabuľky"></h2>
+        <hr/>
+    <p>Geok&oacute;dovanie je sp&ocirc;sob konverzie adries na s&uacute;radnice. Tento n&aacute;stroj konvertuje adresy z tabuľky, CSV s&uacute;boru alebo Excel s&uacute;boru do prvkovej vrstvy alebo v&yacute;stupn&eacute;ho s&uacute;boru so s&uacute;radnicami zap&iacute;san&yacute;mi v extra stĺpcoch.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputTable">
+        <div><h2>Vybrať vstupnú tabuľku</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; tabuľka s adresami na geok&oacute;dovanie. Vstup mus&iacute; byť tabuľka, CSV s&uacute;bor alebo Excel s&uacute;bor.
+            </p>
+        </div>
+    </div>
+    <div id="geocodeServiceURL">
+        <div><h2>Vybrať lokátor</h2></div>
+        <hr/>
+        <div>
+            <p>Vybrať službu lok&aacute;tora pre geok&oacute;dovanie. Ak nie je služba lok&aacute;tora, ktor&uacute; chcete použiť, pr&iacute;tomn&aacute; v rozbaľovacom menu, kontaktujte v&aacute;&scaron;ho administr&aacute;tora pre konfigur&aacute;ciu tejto služby na hromadn&eacute; geok&oacute;dovanie.
+
+            </p>
+        </div>
+    </div>
+    <div id="sourceCountry">
+        <div><h2>Krajina</h2></div>
+        <hr/>
+        <div>
+            <p>Ak s&uacute; v&scaron;etky va&scaron;e adresy z jednej krajiny, zvoľte t&uacute;to krajinu, aby ste zaistili najpresnej&scaron;e v&yacute;sledky. V opačnom pr&iacute;pade ponechajte tento parameter nevyplnen&yacute;.
+            </p>
+        </div>
+    </div>
+    <div id="geocodeParameters">
+        <div><h2>Zvoliť dátové polia</h2></div>
+        <hr/>
+        <div>
+            <p>Služba lok&aacute;tora očak&aacute;va v d&aacute;tach polia ako adresa, mesto, &scaron;t&aacute;t a po&scaron;tov&yacute; k&oacute;d. Sp&aacute;rujte d&aacute;tov&eacute; polia vo va&scaron;om vstupnom s&uacute;bore alebo tabuľke s poliami, ktor&eacute; lok&aacute;tor očak&aacute;va, pomocou rozbaľovac&iacute;ch menu. Č&iacute;m viac pol&iacute; nap&aacute;rujete, t&yacute;m presnej&scaron;ie b&uacute;du v&yacute;sledky. Ak m&aacute; vstupn&aacute; tabuľka v&scaron;etky d&aacute;ta v jednom stĺpci, zvoľte  <b>Jedin&eacute; Pole</b> a vyberte d&aacute;tov&eacute; pole z rozbaľovacieho menu. V opačnom pr&iacute;pade zvoľte <b>Viacero Pol&iacute;</b> a nap&aacute;rujte vhodn&eacute; polia lok&aacute;tora k stĺpcom pr&iacute;slu&scaron;n&yacute;ch pol&iacute; vo va&scaron;ej tabuľke.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Vybrať formát výstupu</h2></div>
+        <hr/>
+        <div>
+            <p>Form&aacute;tovať v&yacute;sledky v&yacute;stupu. Ak zvol&iacute;te vytvorenie služby prvkov, adresy zo vstupnej tabuľky bud&uacute; pridan&eacute; do mapy ako vrstva bodov&yacute;ch prvkov. Možnosti CSV a XLS pridaj&uacute; po skončen&iacute; &uacute;lohy s&uacute;bory s v&yacute;sledkami geok&oacute;dovania do zložky  <b>M&ocirc;j Obsah</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výsledku</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

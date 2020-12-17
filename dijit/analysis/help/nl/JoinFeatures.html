@@ -41,14 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Objecten koppelen</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Objecten koppelen"></h2>
+        <h2>Aanmeldfeatures</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Aanmeldfeatures"></h2>
         <hr/>
-    <p>Objecten koppelen werkt met twee lagen en voegt attributen van &eacute;&eacute;n object toe aan een ander op basis van ruimtelijke en attribuutrelaties. De tool bepaalt alle invoerobjecten die voldoen aan de gespecificeerde koppelingsvoorwaarden en voegt de eerste laag toe aan de doellaag. 
+    <p>Objecten koppelen werkt met twee lagen en voegt attributen van &eacute;&eacute;n object toe aan een ander op basis van ruimtelijke en attribuutrelaties. De tool bepaalt alle invoerobjecten die voldoen aan de gespecificeerde koppelingsvoorwaarden en voegt de eerste laag toe aan de doellaag.
     </p>
-    <p>Objecten samenvoegen kan worden toegepast op punten, lijnen, vlakken en tabellen. Voor een ruimtelijke koppeling moet uw data een geometrie hebben. 
+    <p>Objecten samenvoegen kan worden toegepast op punten, lijnen, vlakken en tabellen. Voor een ruimtelijke koppeling moet uw data een geometrie hebben.
     </p>
-    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten geanalyseerd die zichtbaar zijn in de huidige kaartextent.  Als deze optie niet is geselecteerd, worden alle objecten in de doellaag en de koppelingslaag geanalyseerd, ook als ze zich buiten de huidige kaartextent bevinden.
+    <p>Als  <b>Huidige kaartextent gebruiken</b> is geselecteerd, worden alleen de objecten geanalyseerd die zichtbaar zijn op de huidige kaartextent. Als deze optie niet wordt geselecteerd, worden alle objecten in de doellaag en de koppelingslaag geanalyseerd, ook als ze zich buiten de huidige kaartextent bevinden.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -73,12 +73,12 @@
         </div>
     </div>
     <div id="joinType">
-        <div><h2>Selecteer de type(s) van de koppeling</h2></div>
+        <div><h2>Selecteer de type(s) van de samenvoeging</h2></div>
         <hr/>
         <div>
-            <p>U kunt een ruimtelijke koppeling, een attribuutkoppeling of een combinatie van de twee uitvoeren. 
+            <p>U kunt een ruimtelijke koppeling, een attribuutkoppeling of een combinatie van de twee uitvoeren.
                 <ul>
-                    <li> <b>Ruimtelijk</b>&mdash;Gebruikt een gespecificeerde ruimtelijke relatie om objecten te koppelen. Dit vereist dat beide lagen een geometrie hebben.
+                    <li> <b>Ruimtelijk</b>&mdash;Gebruikt een gespecificeerde ruimtelijke relatie om objecten samen te voegen. Dit vereist dat beide lagen een geometrie hebben.
                     </li>
                     <li> <b>Attribuut</b>&mdash;Voegt objecten samen op basis van gelijke velden.
                     </li>
@@ -111,24 +111,24 @@
         </div>
     </div>
     <div id="attributeRelationship">
-        <div><h2>Attribuut koppelen</h2></div>
+        <div><h2>Attribuut samenvoegen</h2></div>
         <hr/>
         <div>
-            <p>De attribuutrelatie die bepaalt of objecten worden gekoppeld. Objecten stemmen overeen als de veldwaarden in de koppelingslaag gelijk zijn aan veldwaarden in de doellaag. 
+            <p>De attribuutrelatie die bepaalt of objecten aan elkaar worden samengevoegd. Objecten worden gematched als de veldwaarden in de koppelingslaag gelijk zijn aan veldwaarden in de doellaag.
             </p>
             <p>Stel bijvoorbeeld dat we een provinciebrede geografische laag hebben met woonadressen (met inbegrip van een veld  <i>ZIP</i>) en een tabulaire dataset voor de gezondheidsdemografie op postcode (een veld met de naam <i>HEALTHZIP</i>). We kunnen de gezondheidsdataset dan koppelen aan de residenti&euml;le gegevens door het veld <i>ZIP</i> te koppelen aan <i>HEALTHZIP</i>, wat zal resulteren in een laag van woningen met de bijbehorende gezondheidsgegevens.
             </p>
         </div>
     </div>
     <div id="joinOperation">
-        <div><h2>Kies koppelingbewerking</h2></div>
+        <div><h2>Kies werking samenvoegen</h2></div>
         <hr/>
         <div>
             <p>Bepaalt hoe koppelingen tussen de doel- en koppelingslaag behandeld zullen worden als meerdere objecten in de koppelingslaag dezelfde relatie t.o.v. de doellaag blijken te hebben. De volgende zijn de twee koppelbewerkingen om uit te kiezen:
                 <ul>
-                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt het object in de doellaag toe aan een enkel object in de koppelingslaag. Hoe objecten worden toegevoegd, wordt bepaald door de <b>Voeg statistieken toe</b>-parameter of door de <b>Bepaal welke records worden bewaard</b> parameter. Als <b>Statistieken toevoegen</b> wordt gebruikt, worden alle overeenkomende gekoppelde objecten samengevat voor elk object in de doellaag. Het aantal verbonden objecten wordt standaard toegevoegd.Als <b>Bepaal welke records worden bewaard</b> wordt gebruikt, kunt u ervoor kiezen om het eerste overeenkomende record (standaardinstelling) of een overeenkomend record gebaseerd op een expressie te gebruiken. Een expressie kan zowel een numeriek veld (optie voor grootste of kleinste record) als een datumveld (optie voor nieuwste of oudste) gebruiken.
+                    <li> <b>E&eacute;n-aan-&eacute;&eacute;n koppelen</b>&mdash;Deze optie voegt het object in de doellaag toe aan een enkel object in de koppelingslaag. Hoe objecten worden toegevoegd, wordt bepaald door de parameter <b>Statistieken toevoegen</b> of de parameter <b>Bepalen welke records worden bewaard</b>. Als <b>Statistieken toevoegen</b> wordt gebruikt, worden alle overeenkomende gekoppelde objecten samengevat voor elk object in de doellaag. Het aantal verbonden objecten wordt standaard toegevoegd. Als <b>Bepalen welke records worden bewaard</b> is wordt gebruikt, kunt u ervoor kiezen om het eerste overeenkomende record (standaardinstelling) of een overeenkomend record gebaseerd op een expressie te gebruiken. Een expressie kan zowel een numeriek veld (optie voor grootste of kleinste record) als een datumveld (optie voor nieuwste of oudste) gebruiken.
                     </li>
-                    <li> <b>E&eacute;n-aan-veel koppelen</b>&mdash;Deze optie voegt alle overeenkomende objecten in de koppelingslaag toe aan de doellaag.  De resultaatlaag bevat dan meerdere records van het doelobject.
+                    <li> <b>E&eacute;n-aan-veel koppelen</b>&mdash;Deze optie voegt alle overeenkomende objecten in de koppelingslaag toe aan de doellaag. De resultaatlaag zal meerdere records van het doelobject bevatten.
                     </li>
                 </ul>
                 
@@ -164,8 +164,6 @@
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
@@ -182,7 +180,7 @@
         <div><h2>Resultaten aanmaken als gehoste objectlaagweergave</h2></div>
         <hr/>
         <div>
-            <p> Door resultaten aan te maken als een weergave van een gehoste objectlaag, kunnen de gegevens up-to-date blijven indien de brongegevens veranderen. De weergaven van gehoste objectlagen met samenvoegingen zijn alleen-lezen en verbruiken geen credits voor analyse en opslag.
+            <p> Door resultaten aan te maken als een weergave van een gehoste objectlaag, kunnen de gegevens up-to-date blijven indien de brongegevens veranderen. De weergaven van gehoste objectlagen met samenvoegingen zijn alleen-lezen.
             </p>
             <p>U kunt een gehoste objectlaag aanmaken van de analyseresultaten als aan alle volgende voorwaarden is voldaan:
                 <ul>

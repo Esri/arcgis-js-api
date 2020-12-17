@@ -1,4 +1,4 @@
-// COPYRIGHT © 201 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -22,4 +22,4 @@
 //
 // See http://js.arcgis.com/3.34/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","dojo/has","../../../../../kernel","./EnterpriseBrowseItem"],(function(e,s,n,i){var t={getConfig:function(e){var s=i.getConfig(e);return s.baseSections.push("all"),s.baseSections.push("subscription"),s}};return s("extend-esri")&&e.setObject("dijit.analysis.mixins.browselayers.configs.AGOLBrowseItem",t,n),t}));
+define(["dojo/_base/lang","dojo/has","../../../../../kernel","./EnterpriseBrowseItem","../../../ItemTypes"],(function(e,s,n,i,t){var o={getConfig:function(e){var s=i.getConfig(e);return s.baseSections.push("all"),s.baseSections.push("subscription"),(e.allowedItemTypes.indexOf(t.RFT)>-1||e.allowedItemTypes.indexOf(t.DLPK)>-1)&&s.baseSections.push("livingAtlas"),s}};return s("extend-esri")&&e.setObject("dijit.analysis.mixins.browselayers.configs.AGOLBrowseItem",o,n),o}));

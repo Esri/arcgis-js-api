@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Nájsť klastre bodov</h2><p/>
+        <h2><img src="../images/GUID-025ADB1C-E4BF-4C8D-A35F-1D0E222627F9-web.png" alt="N&aacute;jsť klastre bodov"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj hľad&aacute; klastre bodov&yacute;ch prvkov vn&uacute;tri okolit&eacute;ho &scaron;umu na z&aacute;klade ich priestorovej distrib&uacute;cie.
+    </p>
+    <p>Ak  <b>Použiť aktu&aacute;lny rozsah mapy</b> je za&scaron;krtnut&eacute;, analyzovan&eacute; bud&uacute; len prvky vo vrstve vstupu v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je nezačiarknut&eacute;, v&scaron;etky prvky v bodovej vrstve vstupu bud&uacute; analyzovan&eacute;, aj ak s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="analysisLayer">
+        <div><h2>Vybrať vrstvu, v rámci ktorej budú nájdené klastre</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute; vrstva, v ktorej bud&uacute; n&aacute;jden&eacute; klastre.
+            </p>
+        </div>
+    </div>
+    <div id="minFeaturesCluster">
+        <div><h2>Minimálny počet bodov, ktoré možno považovať za klaster</h2></div>
+        <hr/>
+        <div>
+            <p>Minim&aacute;lny počet prvkov, ktor&eacute; možno považovať za klaster. Ak&yacute;koľvek klaster s men&scaron;&iacute;m počtom prvkov ako je poskytnut&eacute; bude považovan&yacute; za &scaron;um.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Obmedziť rozsah vyhľadávania na (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Maxim&aacute;lna vzdialenosť prvkov, aby sa dali považovať za časť jedn&eacute;ho klastra. Ak zostane pr&aacute;zdne, n&aacute;stroj spust&iacute; HDBSCAN, ktor&yacute; využ&iacute;va r&ocirc;zne vzdialenosti na oddelenie klastrov rozdielnych hust&ocirc;t od menej hust&eacute;ho &scaron;umu. Ak je dan&aacute; hodnota, n&aacute;stroj spust&iacute; DBSCAN, ktor&yacute; využ&iacute;va zadan&uacute; vzdialenosť na oddelenie hust&yacute;ch klastrov od menej hust&eacute;ho &scaron;umu.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

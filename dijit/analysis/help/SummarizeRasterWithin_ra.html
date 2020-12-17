@@ -99,9 +99,21 @@
         <div>
             <p>Once you choose a layer to summarize, you can optionally calculate statistics of any numerical attribute of the points, lines, or areas within the input area layer.
             </p>
-            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Range, Standard deviation, Sum, and Variety.
+            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Percentile, Range, Standard deviation, Sum, and Variety.
             </p>
             <p>If the field is floating point, the options are Average, Maximum, Minimum, Range, Standard deviation, and Sum.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentile value</h2></div>
+        <hr/>
+        <div>
+            <p>The percentile to calculate. The default is 90, indicating the 90th percentile.
+            </p>
+            <p>The values can range from 0 to 100. The 0th percentile is essentially equivalent to the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
+            </p>
+            <p>This option is only supported if the  <b>Choose statistic to calculate</b> parameter is set to <b>Percentile</b>.
             </p>
         </div>
     </div>
@@ -110,6 +122,14 @@
         <hr/>
         <div>
             <p>If you choose to ignore missing values, only the cells that have a value in the layer to be summarized will be used in determining the output value for that area. Otherwise, if there are missing values anywhere in an area, it is deemed that there is insufficient information to perform statistical calculations for all the cells in that zone, and that area will receive a null (NoData) value in the output.
+            </p>
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Process as multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies how the input rasters will be processed if they are multidimensional. If you choose to process as multidimensional, statistics will be calculated from all dimensions of the input multidimensional dataset. Otherwise, statistics will be calculated from the current slice of the input multidimensional dataset, this is the default.
             </p>
         </div>
     </div>

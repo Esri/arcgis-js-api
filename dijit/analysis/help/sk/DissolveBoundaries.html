@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Zrušiť vnútorné hranice</h2><p/>
+        <h2><img src="../images/GUID-7B5F69B0-3625-404F-8B52-2B562766C0BB-web.png" alt="Zru&scaron;iť vn&uacute;torn&eacute; hranice"></h2>
+        <hr/>
+    <p>Oblasti, ktor&eacute; sa prekr&yacute;vaj&uacute; alebo zdieľaj&uacute; spoločn&uacute; hranicu s&uacute; zl&uacute;čen&eacute; dokopy za &uacute;čelom vytvorenia jednej oblasti.
+    </p>
+    <p>&Scaron;pecifikovan&iacute;m poľa m&ocirc;žete ovplyvniť, ktor&eacute; hranice sa zl&uacute;čia. Napr&iacute;klad, ak m&aacute;te vrstvu okresov a každ&yacute; okres m&aacute; atrib&uacute;t  <i>State_Name</i>, hranice m&ocirc;žete zru&scaron;iť použit&iacute;m tohto atrib&uacute;t <i>State_Name</i> . Susediace okresy bud&uacute; zl&uacute;čen&eacute; ak maj&uacute; rovnak&uacute; hodnotu pre <i>State_Name</i>. Konečn&yacute; v&yacute;sledok je vrstva &scaron;t&aacute;tnych hran&iacute;c.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať plošnú vrstvu, ktorej hranice budú zrušené</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva obsahuj&uacute;ca plo&scaron;n&eacute; prvky, ktor&yacute;m bud&uacute; zru&scaron;en&eacute; vn&uacute;torm&eacute; hranice.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="DissolveFields">
+        <div><h2>Vybrať metódu zrušenia</h2></div>
+        <hr/>
+        <div>
+            <p>M&ocirc;žete vybrať jednu alebo dve met&oacute;dy zlučovania plo&scaron;n&yacute;ch prvkov:
+                <ul>
+                    <li> <b>Plochy, ktor&eacute; sa prekr&yacute;vaj&uacute; alebo susedia</b> - Dve alebo viac pl&ocirc;ch, ktor&yacute;ch hranice sa prekr&yacute;vaj&uacute; bud&uacute; zl&uacute;čen&eacute; do jednej plochy. Okrem toho susediace plochy (zdieľaj&uacute;ce spoločn&uacute; hranicu) bud&uacute; zl&uacute;čen&eacute; do jednej plochy.
+                    </li>
+                    <li> <b>Plochy s rovnakou hodnotou poľa</b> - Plochy, ktor&eacute; sa prekr&yacute;vaj&uacute;, alebo zdieľaj&uacute; spoločn&uacute; hranicu, bud&uacute; zl&uacute;čen&eacute; do jednej plochy ak maj&uacute; rovnak&uacute; hodnotu poľa.
+                        <p>Napr&iacute;klad, ak m&aacute;te vrstvu okresov a každ&yacute; okres m&aacute; pole  <i>State_Name</i>, hranice m&ocirc;žete zru&scaron;iť použit&iacute;m poľa <i>State_Name</i>. Susediace okresy bud&uacute; zl&uacute;čen&eacute; ak maj&uacute; rovnak&uacute; hodnotu pre <i>State_Name</i>. V&yacute;sledkom je vrstva &scaron;t&aacute;tnych hran&iacute;c.
+                        </p>
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, zru&scaron;en&eacute; bud&uacute; hranice len pre prvky vo vrstve vstupu, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etk&yacute;m prvkom vo vrstve vstupu bud&uacute; zru&scaron;en&eacute; hranice, teda aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+            </p>
+        </div>
+    </div>
+    <div id="multiPartFeatures">
+        <div><h2>Vytvoriť viacnásobné prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Digit&aacute;lna reprezent&aacute;cia miesta alebo veci v ArcGIS, ktor&aacute; m&aacute; viac ako jednu časť, ale je definovan&aacute; ako jeden prvok, pretože odkazuje na jednu sadu atrib&uacute;tov. Napr&iacute;klad, &scaron;t&aacute;t Hawaii vo vrstve &scaron;t&aacute;tov m&ocirc;že byť považovan&yacute; za viacn&aacute;sobn&yacute; prvok, pretože jeho jednotliv&eacute; geometrick&eacute; časti s&uacute; klasifikovan&eacute; ako samostatn&yacute; &scaron;t&aacute;t. Booleovsk&yacute; parameter pon&uacute;ka dve možnosti:
+                <ul>
+                    <li>Pravdiv&yacute; (za&scaron;krtnut&eacute;): v&yacute;stupn&aacute; služba m&ocirc;že obsahovať viacn&aacute;sobn&eacute; prvky.
+                    </li>
+                    <li>Nepravdiv&yacute; (neza&scaron;krtnut&eacute;): v&yacute;stupn&aacute; služba bude obsahovať v&yacute;lučne prvky pozost&aacute;vaj&uacute;ce z jednej časti, pre každ&uacute; časť bud&uacute; vytvoren&eacute; samostatn&eacute; prvky.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="SummaryFields">
+        <div><h2>Pridať štatistiku</h2></div>
+        <hr/>
+        <div>
+            <p>Pre zl&uacute;čen&eacute; plochy m&ocirc;žete sumarizovať ich atrib&uacute;ty. Napr&iacute;klad, ak ru&scaron;&iacute;te hranicu medzi okresmi na z&aacute;klade  <i>State_Name</i> a každ&yacute; okres m&aacute; pole <i>Population</i>, m&ocirc;žete vypoč&iacute;tať sučet <i>Population</i> pre &scaron;t&aacute;t.
+            </p>
+            <p>Dostupn&eacute; &scaron;tatistick&eacute; typy s&uacute;:
+            </p>
+            <ul>
+                <li> <b>S&uacute;čet</b> - Prid&aacute;va celkov&uacute; hodnotu pre &scaron;pecifikovan&eacute; pole
+                    
+
+                </li>
+                <li> <b>Priemer</b> - Vypoč&iacute;ta priemer pre &scaron;pecifikovan&eacute; pole
+                    
+
+                </li>
+                <li> <b>Minimum</b> - N&aacute;jde najniž&scaron;iu hodnotu pre v&scaron;etky z&aacute;znamy &scaron;pecifikovan&eacute;ho poľa
+                    
+
+                </li>
+                <li> <b>Maximum</b> - N&aacute;jde najv&yacute;&scaron;&scaron;iu hodnotu pre v&scaron;etky z&aacute;znamy pre &scaron;pecifikovan&eacute; pole
+                    
+
+                </li>
+                <li> <b>Std. Och&yacute;lka</b> - N&aacute;jde &scaron;tandardn&uacute; odch&yacute;lku pre hodnoty v &scaron;pecifikovanom poli
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

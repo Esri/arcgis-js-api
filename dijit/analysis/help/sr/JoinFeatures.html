@@ -44,9 +44,9 @@
         <h2>Pridruži geoobjekte</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Pridruži geoobjekte"></h2>
         <hr/>
-    <p>Pridruži geoobjekte radi sa dva sloja i pridružuje atribute iz jednog geoobjekta drugom, na osnovu prostornih i atributivnih odnosa. Alatka određuje sve ulazne geoobjekte koji ispunjavaju navedene uslove pridruživanja i dodaje sloj za pridruživanje ciljnom sloju. 
+    <p>Pridruži geoobjekte radi sa dva sloja i pridružuje atribute iz jednog geoobjekta drugom, na osnovu prostornih i atributivnih odnosa. Alatka određuje sve ulazne geoobjekte koji ispunjavaju navedene uslove pridruživanja i dodaje sloj za pridruživanje ciljnom sloju.
     </p>
-    <p>Pridruži geoobjekte može da se primeni na tačke, linije, oblasti i tabele. Prostorno pridruživanje zahteva da va&scaron;i podaci imaju geometriju. 
+    <p>Pridruži geoobjekte može da se primeni na tačke, linije, oblasti i tabele. Prostorno pridruživanje zahteva da va&scaron;i podaci imaju geometriju.
     </p>
     <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće analizirani samo oni geoobjekti koji su vidljivi unutar trenutnog obuhvata mape. Ako ova opcija nije potvrđena, biće analizirani svi geoobjekti u ciljnom sloju i sloju za pridruživanje, čak i ako su izvan trenutnog obuhvata mape.
     </p>
@@ -76,11 +76,11 @@
         <div><h2>Izaberite tip(ove) pridruživanja</h2></div>
         <hr/>
         <div>
-            <p>Možete da primenite prostorno pridruživanje, atributivno pridruživanje ili kombinaciju ta dva. 
+            <p>Možete da primenite prostorno pridruživanje, atributivno pridruživanje, li kombinaciju ta dva.
                 <ul>
-                    <li> <b>Prostorno</b>&mdash;Koristi navedeni prostorni odnos za pridruživanje geoobjekata. To zahteva da oba sloja imaju geometriju.
+                    <li> <b>Prostorno</b> &ndash; Koristi navedeni prostorni odnos za pridruživanje geoobjekata. To zahteva da oba sloja imaju geometriju.
                     </li>
-                    <li> <b>Atributsko</b>&mdash;Pridružuje geoobjekte na osnovu jednakih polja.
+                    <li> <b>Atributsko</b> &ndash; Pridružuje geoobjekte na osnovu jednakih polja.
                     </li>
                 </ul>
                 
@@ -93,17 +93,17 @@
         <div><h2>Odaberite prostornu vezu</h2></div>
         <hr/>
         <div>
-            <p>Prostorni odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Dostupni odnosi će zavisiti od vrste geometrije (tačka, linija, oblasti) koja se koristi kao ulazni geoobjekti. Dostupni odnosi uključuju sledeće:
+            <p>Prostorni odnos koji će odrediti da li su geoobjekti međusobno spojeni. Dostupni odnosi će zavisiti od vrste geometrije (tačke, linije, oblasti) koja se koristi kao ulazni geoobjekti. Dostupni odnosi uključuju sledeće:
                 <ul>
-                    <li> <b>Identično sa</b>&mdash;Geoobjekti u ciljnom sloju će se podudarati, ako su identični sa geoobjektima u sloju za pridruživanje.
+                    <li> <b>Identično sa</b> &ndash; Geoobjekti u ciljnom sloju će se podudarati, ako su identični sa geoobjektima u sloju za pridruživanje.
                     </li>
                     <li> <b>Preseca</b>&mdash;Geoobjekti u ciljnom sloju će se podudarati, ako presecaju geoobjekte u sloju za pridruživanje.
                     </li>
-                    <li> <b>Potpuno sadrži</b>&mdash;Geoobjekti će se podudarati ako geoobjekti u ciljnom sloju potpuno sadrže geoobjekte u sloju za pridruživanje.
+                    <li> <b>Potpuno sadrži</b>&mdash;Geoobjekti će se podudarati ako geoobjekti u ciljnom sloju sadrže geoobjekte u sloju za pridruživanje.
                     </li>
                     <li> <b>Potpuno unutar</b>&mdash;Geoobjekti će se podudarati ako su geoobjekti u ciljnom sloju potpuno unutar geoobjekata u sloju za pridruživanje.
                     </li>
-                    <li> <b>Unutar rastojanja od</b>&mdash;Geoobjekti u ciljnom sloju će se podudarati, ako se nalaze unutar navedenog rastojanja geoobjekata u sloju za pridruživanje.
+                    <li> <b>Unutar rastojanja od</b> &ndash; Geoobjekti u ciljnom sloju će se podudarati, ako se nalaze unutar navedenog rastojanja geoobjekata u sloju za pridruživanje.
                     </li>
                 </ul>
                 
@@ -114,7 +114,7 @@
         <div><h2>Atributivno pridruživanje</h2></div>
         <hr/>
         <div>
-            <p>Atributivni odnos koji će odrediti da li su geoobjekti pridruženi jedan drugom. Geoobjekti se podudaraju kada su vrednosti polja u sloju za pridruživanje jednaki vrednostima polja u ciljnom sloju. 
+            <p>Atributivni odnos koji će odrediti da li su geoobjekti povezani jedan sa drugim. Geoobjekti se podudaraju kada su vrednosti polja u sloju za pridruživanje jednaki vrednostima polja u ciljnom sloju.
             </p>
             <p>Na primer, pretpostavimo da imate geografski sloj stambenih adresa &scaron;irom okruga (uključujući polje  <i>ZIP</i>) i tabelarni skup zdravstvenih demografskih podataka po po&scaron;tanskom broju (uključujući polje nazvano <i>HEALTHZIP</i>). Možete da pridružite skup zdravstvenih podataka stambenim podacima uparivanjem polja <i>ZIP</i> sa <i>HEALTHZIP</i>, &scaron;to bi rezultiralo slojem stambenih objekata sa odgovarajućim zdravstvenim podacima.
             </p>
@@ -126,25 +126,22 @@
         <div>
             <p>Određuje kako će biti obrađena spajanja između ciljnog i sloja za pridruživanje, ako se otkrije da vi&scaron;estruki geoobjekti u sloju za pridruživanje imaju isti odnos sa ciljnim slojem. Slede dve operacije pridruživanja između kojih je moguće izabrati:
                 <ul>
-                    <li> <b>Pridruži jedan jednom</b>&mdash;Ova opcija pridružuje geoobjekte u ciljnom sloju jednom geoobjektu u sloju za pridruživanje. Način na koji se geoobjekti pridružuju je određen parametrom <b>Dodaj statistiku</b> ili parametrom <b>Defini&scaron;i koji zapis se zadržava</b>. Ako se koristi opcija <b>Dodaj statistiku</b>, svi podudarajući pridruženi geoobjekti će biti sumirani svakom geoobjektu u ciljnom sloju. Brojač pridruženih geoobjekata će podrazumevano biti dodat.
-Ako se koristi opcija <b>Defini&scaron;i koji zapis se zadržava</b>,
-možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili podudarajući zapis na osnovu izraza. Izraz može da koristi bilo numeričko polje
-(opcija za najveći ili najmanji zapis) ili polje za datum (opcija za najnoviji ili najstariji).
+                    <li> <b>Pridruži jedan jednom</b> &ndash; Ova opcija pridružuje geoobjekte u ciljnom sloju jednom geoobjektu u sloju za pridruživanje. Način na koji se geoobjekti pridružuju je određen parametrom <b>Dodaj statistiku</b> ili parametrom <b>Defini&scaron;i koji zapis se zadržava</b>. Ako se koristi opcija <b>Dodaj statistiku</b>, svi podudarajući pridruženi geoobjekti će biti sumirani svakom geoobjektu u ciljnom sloju. Brojač pridruženih geoobjekata će podrazumevano biti dodat. Ako se opcija <b>Defini&scaron;i koji zapis se zadržava</b> koristi, možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili podudarajući zapis na osnovu izraza. Izraz može da koristi bilo numeričko polje (opcija za najveći ili najmanji zapis) ili polje za datum (opcija za najnoviji ili najstariji).
                     </li>
-                    <li> <b>Pridruži jedan mnogima</b>&mdash;Ova opcija pridružuje sve geoobjekte koji se podudaraju u sloju za pridruživanje ciljnom sloju. Sloj sa rezultatima će sadržati vi&scaron;estruke zapise ciljnog geoobjekta.
+                    <li> <b>Pridruži jedan mnogima</b> &ndash; Ova opcija pridružuje sve geoobjekte koji se podudaraju u sloju za pridruživanje ciljnom sloju. Sloj sa rezultatima će sadržati vi&scaron;estruke zapise ciljnog geoobjekta.
                     </li>
                 </ul>
                 
             </p>
-            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete odnos <b>pridruži jedan jednom</b> i odaberete statistiku, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
+            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete odnos <b>Pridruži jedan jednom</b> i odaberete statistiku, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
             </p>
         </div>
     </div>
     <div id="keepTargetFeatures">
-        <div><h2>Zadrži sve ciljane komponente</h2></div>
+        <div><h2>Zadrži sve ciljane geoobjekte</h2></div>
         <hr/>
         <div>
-            <p>Podrazumevano, samo komponente koje odgovaraju ciljanom sloju i pridruženom sloju vraćaju se u sloju rezultata (unutra&scaron;nje spajanje). Kada je uključen, parametar  <b>Zadrži sve ciljane komponente</b> promeniće izlaz za uključivanje svih funkcija u ciljanom sloju bez obzira da li se poklapaju sa komponentama u spojenom sloju (levi spoljni sloj).
+            <p>Podrazumevano, samo geoobjekti koji se poklapaju između ciljnog sloja i sloja za pridruživanje se vraćaju u sloj sa rezultatima (unutra&scaron;nje spajanje). Kada je omogućeno, parametar  <b>Zadrži sve ciljne geoobjekte</b> će promeniti izlaz da uključi sve geoobjekte u ciljnom sloju, bez obzira na to da li se podudaraju sa geoobjektima u sloju za pridruživanje (levo spoljno spajanje).
             </p>
         </div>
     </div>
@@ -159,7 +156,7 @@ možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili p
                 </li>
                 <li>Minimum
                 </li>
-                <li>Maksimalno
+                <li>Maksimum
                 </li>
                 <li>Prosečno
                 </li>
@@ -167,8 +164,6 @@ možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili p
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
@@ -185,7 +180,7 @@ možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili p
         <div><h2>Kreiraj rezultate kao prikaz hostovanih slojeva geoobjekata</h2></div>
         <hr/>
         <div>
-            <p> Kreiranje rezultata kao prikaza hostovanih slojeva geoobjekata omogućava da podaci ostanu ažurni sa promenama izvornih podataka.  Prikazi hostovanih slojeva geoobjekata koji sadrže pridruživanja biće samo za čitanje i ne tro&scaron;e kredite za analizu i čuvanje.
+            <p> Kreiranje rezultata kao prikaza hostovanih slojeva geoobjekata omogućava da podaci ostanu ažurni sa promenama izvornih podataka. Prikazi hostovanih slojeva geoobjekata koji sadrže pridruživanja biće samo za čitanje.
             </p>
             <p>Možete da kreirate prikaz hostovanih slojeva geoobjekata iz rezultata analize, ako su ispunjeni svi sledeći uslovi:
                 <ul>
@@ -193,7 +188,7 @@ možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili p
                     </li>
                     <li>Oba sloja su hostovani slojevi geoobjekata.
                     </li>
-                    <li>Obavljate pridruživanje na osnovu atributa.
+                    <li>Obavljate pridruživanje atributa.
                     </li>
                 </ul>
                 

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumarizovať blízke</h2><p/>
+        <h2><img src="../images/GUID-A5033D27-81B6-42E7-BA38-50D25C1CCCCA-web.png" alt="Sumarizovať bl&iacute;zke"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj hľad&aacute; a sumarizuje prvky, ktor&eacute; s&uacute; v r&aacute;mci &scaron;pecifikovanej vzdialenosti od prvkov v prvej vstupnej vrstve. Vzdialenosť m&ocirc;že byť meran&aacute; ako priamočiara vzdialenosť alebo za použitia zvolen&eacute;ho cestovn&eacute;ho režimu. Možnosti cestovn&eacute;ho režimu s&uacute; vzdialenosť jazdy, čas jazdy, dopravn&aacute; vzdialenosť, dopravn&yacute; čas, vzdialenosť ch&ocirc;dze alebo čas ch&ocirc;dze. N&aacute;sledne s&uacute; vypoč&iacute;tan&eacute; &scaron;tatistiky pre bl&iacute;zke prvky. Napr&iacute;klad
+        <ul>
+            <li>Vypoč&iacute;tať celkov&uacute; popul&aacute;ciu v r&aacute;mci p&auml;ť min&uacute;tov&eacute;ho času jazdy od navrhovanej loakality novej predajne.
+            </li>
+            <li>Vypoč&iacute;tať počet n&aacute;jazdov na diaľnicu v r&aacute;mci jednej m&iacute;le času jazdy od navrhovanej lokality novej predajne, za &uacute;čelom zmerania pr&iacute;stupnosti obchodu.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak  <b>je za&scaron;krtnut&eacute; Použiť s</b>&uacute;časn&yacute; rozsah mapy, analyzovan&eacute; bud&uacute; len prvky vo vstupnej vrstve a vrstve určenej na sumariz&aacute;ciu, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu aj vo vrstve určenej na anal&yacute;zu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumNearbyLayer">
+        <div><h2>Vybrať vrstvu, od ktorej sa budú merať vzdialenosti k prvkom vo vrstve, ktoré sa majú sumarizovať</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute;, l&iacute;niov&aacute; alebo plo&scaron;n&aacute; vrstva, ktor&aacute; bude použit&aacute; ako počiatočn&eacute; umiestnenia bl&iacute;zkych prvkov.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+            <p>N&aacute;stroj podporuje do 1,000 prvkov v tejto vrstve.
+            </p>
+        </div>
+    </div>
+    <div id="Summarize">
+        <div><h2>Vybrať vrstvu pre sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Prvky v tejto vrstve, ktor&eacute; s&uacute; v r&aacute;mci &scaron;pecifikovanej vzdialenosti od prvkov vo vrstve &scaron;pecifikovanej vy&scaron;&scaron;ie bud&uacute; sumarizovan&eacute;.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p> 
+        </div>
+    </div>
+    <div id="BufferOption">
+        <div><h2>Sumarizovať prvky v okolí pomocou</h2></div>
+        <hr/>
+        <div>
+            <p> M&ocirc;žete definovať ak&yacute; druh merania vzdialenosti chcete použiť, buď priamočiara vzdialenosť, alebo zvolen&yacute; cestovn&yacute; režim. Cestovn&eacute; režimy s&uacute; povolen&eacute;, len keď prv&aacute; vstupn&aacute; vrstva (vrstva, od ktorej sa meraj&uacute; vzdialenosti) obsahuje body. Dostupn&eacute; cestovn&eacute; režimy s&uacute; prednastaven&eacute; administr&aacute;torom va&scaron;ej organiz&aacute;cie. Pri použit&iacute; zvolen&eacute;ho cestovn&eacute;ho režimu sa merania vykon&aacute;vaj&uacute; popri cest&aacute;ch alebo chodn&iacute;koch a dodržiavaj&uacute; sa aplikovan&eacute; pravidl&aacute; ako jednosmern&eacute; cesty, nedovolen&eacute; odbočenia a podobne. <b>Čas jazdy</b>, <b>Čas jazdy na vidieku</b> a <b>Čas prepravy</b> dodržiava v&aacute;&scaron; v&yacute;ber r&yacute;chlosti jazdy, buď na z&aacute;klade živej prem&aacute;vky alebo typickej prem&aacute;vky. R&yacute;chlosti živej prem&aacute;vky sa zaznamen&aacute;vaj&uacute; cez senzory prem&aacute;vky a typick&eacute; r&yacute;chlosti s&uacute; vypoč&iacute;tan&eacute; z historick&yacute;ch priemerov.
+            </p>
+            <p>M&ocirc;žete zadať viacer&eacute; vzdialenosti. Prvky, ktor&eacute; s&uacute; vn&uacute;tri (alebo rovn&eacute;) vzdialenost&iacute;, ktor&eacute; zad&aacute;te, bud&uacute; sumarizovan&eacute;.
+            </p>
+            <p>Ak je za&scaron;krt&aacute;vacie pol&iacute;čko  <b>Vr&aacute;ť hraničn&eacute; oblasti</b> označen&eacute;, vr&aacute;ti v&yacute;sledn&uacute; vrstvu oblast&iacute; definovan&yacute;ch &scaron;pecifikovan&yacute;m meran&iacute;m vzdialenosti. V&yacute;sledn&aacute; vrstva bude obsahovať v&scaron;etky požadovan&eacute; sumarizovan&eacute; inform&aacute;cie. Napr&iacute;klad pri sumariz&aacute;cii bl&iacute;zkych bodov, pri použit&iacute; <b>Vzdialenosť l&iacute;nie</b> 5 m&iacute;ľ, bude v&aacute;&scaron; v&yacute;sledok obsahovať oblasti s polomerom 5 m&iacute;ľ okolo vstupn&yacute;ch prvkov a v&scaron;etky sumarizovan&eacute; inform&aacute;cie ako počet bodov a ostatn&eacute; pridan&eacute; &scaron;tatistiky. Ak je neza&scaron;krtnut&eacute;, v&yacute;sledn&aacute; vrstva vr&aacute;ti rovnak&eacute; prvky ako prv&aacute; vstupn&aacute; vrstva so v&scaron;etk&yacute;mi požadovan&yacute;mi sumarizovan&yacute;mi inform&aacute;ciami.
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsPoint">
+        <div><h2>Pridať štatistiky z vrstvy pre sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Voliteľne m&ocirc;žete vypoč&iacute;tať &scaron;tatistiky ak&yacute;chkoľvek č&iacute;seln&yacute;ch atrib&uacute;tov bl&iacute;zkych bodov.
+            </p>
+            <p>Ak je za&scaron;krt&aacute;vacie pol&iacute;čko  <b>Počet bodov</b> označen&eacute;, vypoč&iacute;ta celkov&yacute; počet bl&iacute;zkych bodov. Navy&scaron;e m&ocirc;žete vypoč&iacute;tať &scaron;tatistiku pre č&iacute;seln&eacute; polia bl&iacute;zkych bodov.
+            </p>
+            <ul>
+                <li> <b>S&uacute;čet</b> - Celkov&aacute; hodnota pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Priemer</b> - Priemer pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Minimum</b> - Najniž&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Maximum</b> - Najvy&scaron;&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Std. Odch&yacute;lka</b> - &Scaron;tandardn&aacute; odch&yacute;lka hodn&ocirc;t v &scaron;pecifikovanom poli
+                </li>
+            </ul>
+            
+            <p>Ak vrstva pre zhrnutie nem&aacute; č&iacute;seln&eacute; polia, pr&iacute;davn&eacute; &scaron;tatistiky nebud&uacute; dostupn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsLine">
+        <div><h2>Pridať štatistiky z vrstvy pre sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Voliteľne m&ocirc;žete vypoč&iacute;tať &scaron;tatistiky ak&yacute;chkoľvek č&iacute;seln&yacute;ch atrib&uacute;tov bl&iacute;zkych l&iacute;ni&iacute;.
+            </p>
+            <p>Ak je za&scaron;krt&aacute;vacie pol&iacute;čko  <b>Celkov&aacute; dĺžka</b> označen&eacute;, vypoč&iacute;ta celkov&uacute; dĺžku bl&iacute;zkych l&iacute;ni&iacute;. Navy&scaron;e m&ocirc;žete vypoč&iacute;tať &scaron;tatistiku pre č&iacute;seln&eacute; polia bl&iacute;zkych l&iacute;ni&iacute;.
+            </p>
+            <ul>
+                <li> <b>S&uacute;čet</b> - Celkov&aacute; hodnota pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Priemer</b> - Priemer pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Minimum</b> - Najniž&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Maximum</b> - Najvy&scaron;&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Std. Odch&yacute;lka</b> - &Scaron;tandardn&aacute; odch&yacute;lka hodn&ocirc;t v &scaron;pecifikovanom poli
+                </li>
+            </ul>
+            
+            <p>Ak vrstva pre zhrnutie nem&aacute; č&iacute;seln&eacute; polia, pr&iacute;davn&eacute; &scaron;tatistiky nebud&uacute; dostupn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsPolygon">
+        <div><h2>Pridať štatistiky z vrstvy pre sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Voliteľne m&ocirc;žete vypoč&iacute;tať &scaron;tatistiky ak&yacute;chkoľvek č&iacute;seln&yacute;ch atrib&uacute;tov bl&iacute;zkych pl&ocirc;ch.
+            </p>
+            <p>Ak je za&scaron;krt&aacute;vacie pol&iacute;čko  <b>Celkov&aacute; plocha</b> označen&eacute;, vypoč&iacute;ta celkov&uacute; plochu bl&iacute;zkych prvkov. Navy&scaron;e m&ocirc;žete vypoč&iacute;tať &scaron;tatistiku pre č&iacute;seln&eacute; polia bl&iacute;zkych prvkov.
+            </p>
+            <ul>
+                <li> <b>S&uacute;čet</b> - Celkov&aacute; hodnota pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Priemer</b> - Priemer pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Minimum</b> - Najniž&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Maximum</b> - Najvy&scaron;&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Std. Odch&yacute;lka</b> - &Scaron;tandardn&aacute; odch&yacute;lka hodn&ocirc;t v &scaron;pecifikovanom poli
+                </li>
+            </ul>
+            
+            <p>Ak vrstva pre zhrnutie nem&aacute; č&iacute;seln&eacute; polia, pr&iacute;davn&eacute; &scaron;tatistiky nebud&uacute; dostupn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="StatisticsNoLayer">
+        <div><h2>Pridať štatistiky z vrstvy pre sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Keď sa rozhodnete vybrať vrstvu na sumariz&aacute;ciu, m&ocirc;žete voliteľne vypoč&iacute;tať &scaron;tatistiku ktor&eacute;hokoľvek č&iacute;seln&eacute;ho atrib&uacute;tu bl&iacute;zkych bodov, l&iacute;ni&iacute; alebo pl&ocirc;ch.
+            </p>
+            <ul>
+                <li> <b>S&uacute;čet</b> - Celkov&aacute; hodnota pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Priemer</b> - Priemer pre &scaron;pecifikovan&eacute; pole
+                </li>
+                <li> <b>Minimum</b> - Najniž&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Maximum</b> - Najvy&scaron;&scaron;ia hodnota v &scaron;pecifikovanom poli
+                </li>
+                <li> <b>Std. Odch&yacute;lka</b> - &Scaron;tandardn&aacute; odch&yacute;lka hodn&ocirc;t v &scaron;pecifikovanom poli
+                </li>
+            </ul>
+            
+            <p>V z&aacute;vislosti od typov prvkov ktor&eacute; sumarizujete m&ocirc;žete vypoč&iacute;tať celkov&yacute; počet bl&iacute;zkych bodov, celkov&uacute; dĺžku bl&iacute;zkych l&iacute;ni&iacute; alebo celkov&uacute; plochu bl&iacute;zkych prvkov.
+            </p>
+            <p>Ak vrstva pre zhrnutie nem&aacute; č&iacute;seln&eacute; polia, pr&iacute;davn&eacute; &scaron;tatistiky nebud&uacute; dostupn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="GroupBy">
+        <div><h2>Zvoliť pole pre zoskupovanie</h2></div>
+        <hr/>
+        <div>
+            <p> Toto je atrib&uacute;t bl&iacute;zkych prvkov, ktor&yacute; m&ocirc;žete samostatne využiť na v&yacute;počet &scaron;tatistiky pre každ&uacute; jedinečn&uacute; atrib&uacute;tov&uacute; hodnotu. Napr&iacute;klad, povedzme, že va&scaron;a prv&aacute; vstupn&aacute; vrstva (vrstva, od ktorej sa meraj&uacute; vzdialenosti) obsahuje voľn&eacute; parcely na predaj a va&scaron;e bl&iacute;zke prvky s&uacute; obrysy budov. Jeden z atrib&uacute;tov obrysov budovy je <i>UseType</i>, ktor&yacute; obsahuje hodnoty ako MALOOBCHOD, OBYTN&Yacute;, V&Yacute;ROBA, VEREJN&Yacute; a podobne. Na charakterizovanie r&ocirc;zneho využitia budov v bl&iacute;zkosti každej voľnej parcely m&ocirc;žete vypoč&iacute;tať celkov&uacute; plochu každ&eacute;ho jedinečn&eacute;ho typu využitia budovy v r&aacute;mci dvoch kilometrov od pr&aacute;zdneho pozemku za použitia <i>UseType</i> ako skupiny podľa atrib&uacute;tu. &Scaron;tatistiky pre každ&uacute; skupinu, rovnako ako počet bl&iacute;zkych prvkov bud&uacute; zobrazen&eacute; vo vyskakovacom okne v&yacute;slednej vrstvy.
+            </p>    
+        </div>
+    </div>
+    <div id="MinorityMajority">
+        <div><h2>Pridať menšinu, väčšinu</h2></div>
+        <hr/>
+        <div>
+            <p>Toto za&scaron;krt&aacute;vacie pol&iacute;čko je aktivovan&eacute;, keď zvol&iacute;te pole, podľa ktor&eacute;ho zoskupovať. Ak chcete zistiť, ktor&eacute; hodnoty atrib&uacute;tov v r&aacute;mci každej skupiny s&uacute; men&scaron;ina (najmenej dominantn&eacute;) alebo v&auml;č&scaron;ina (najviac dominant&eacute;) v r&aacute;mci vami &scaron;pecifikovanej vzdialensoti alebo času, zvoľte  <b>Pridať men&scaron;inu, v&auml;č&scaron;inu</b>. Keď zvol&iacute;te <b>Pridať men&scaron;inu, v&auml;č&scaron;inu</b>, do va&scaron;ej v&yacute;slednej vrstvy bud&uacute; pridan&eacute; dve nov&eacute; polia. Ak zvol&iacute;te aj <b>Pridať percent&aacute;</b>, dve pr&iacute;davn&eacute; polia s&uacute; pridan&eacute; do v&yacute;slednej vrstvy obsahuj&uacute;cej percent&aacute; men&scaron;iny a v&auml;č&scaron;iny hodn&ocirc;t atrib&uacute;tov v r&aacute;mci každej skupiny.
+            </p>
+            <ul>
+                <li>Ak sumarizujete bl&iacute;zke body, hodnoty men&scaron;iny a v&auml;č&scaron;iny s&uacute; vypoč&iacute;tan&eacute; na z&aacute;klade počtu bodov v r&aacute;mci vami &scaron;pecifikovanej vzdialenosti alebo času.
+                </li>
+                <li>Ak sumarizujete bl&iacute;zke l&iacute;nie, hodnoty men&scaron;iny a v&auml;č&scaron;iny s&uacute; vypoč&iacute;tan&eacute; na z&aacute;klade dĺžky l&iacute;ni&iacute; v r&aacute;mci vami &scaron;pecifikovanej vzdialenosti alebo času.
+                </li>
+                <li>Ak sumarizujete bl&iacute;zke plochy, hodnoty men&scaron;iny a v&auml;č&scaron;iny s&uacute; vypoč&iacute;tan&eacute; na z&aacute;klade pl&ocirc;ch v r&aacute;mci vami &scaron;pecifikovanej vzdialenosti alebo času.
+                </li>
+            </ul>
+             
+        </div>
+    </div>
+    <div id="PercentShape">
+        <div><h2>Pridať percentá</h2></div>
+        <hr/>
+        <div>
+            <p>Toto za&scaron;krt&aacute;vacie pol&iacute;čko je aktivovan&eacute;, keď zvol&iacute;te pole, podľa ktor&eacute;ho zoskupovať. Vyberte  <b>Pridať percent&aacute;</b>, ak chcete n&aacute;jsť percent&aacute; každej hodnoty atrib&uacute;tu v r&aacute;mci každej skupiny. Nov&eacute; pole je pridan&eacute; do v&yacute;slednej tabuľky obsahuj&uacute;cej percent&aacute; každej hodnoty atrib&uacute;tu v r&aacute;mci každej skupiny. Ak <b>Pridať men&scaron;inu, v&auml;č&scaron;inu</b> je tiež začiarknut&eacute;, dve pr&iacute;davn&eacute; polia s&uacute; pridan&eacute; do v&yacute;slednej vrstvy obsahuj&uacute;cej percent&aacute; men&scaron;iny a v&auml;č&scaron;iny hodn&ocirc;t atrib&uacute;tov v r&aacute;mci každej skupiny.
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

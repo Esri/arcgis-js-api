@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Obohatiť vrstvu</h2><p/>
+        <h2><img src="../images/GUID-5B2D9742-AFD2-4054-8D05-ED6A80EDAF4D-web.png" alt="Obohatiť vrstvu"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj obohacuje va&scaron;e d&aacute;ta tak, že z&iacute;skava fakty o ľuďoch, miestach a prev&aacute;dzkach v okol&iacute; va&scaron;&iacute;ch d&aacute;t a umožňuje v&aacute;m zodpovedať nov&eacute; ot&aacute;zky o lokalit&aacute;ch, ktor&eacute; nedok&aacute;žete zodpovedať v&yacute;lučne za pomoci mapy. Napr&iacute;klad: Ak&yacute; typ ľud&iacute; tu žije? Čo radi robia ľudia v tejto oblasti? Ak&eacute; s&uacute; ich zvyky a sp&ocirc;sob života? Ak&eacute; druhy podnikov sa nach&aacute;daj&uacute; v tejto oblasti?
+    </p>
+    <p>V&yacute;sledok bude nov&aacute; vrstva obsahuj&uacute;ca v&scaron;etky demografick&eacute; a geografick&eacute; inform&aacute;cie z dan&yacute;ch kolekci&iacute; d&aacute;t. Tieto nov&eacute; inform&aacute;cie s&uacute; pridan&eacute; ako polia v tabuľke.
+    </p>
+    <p>Ak je  <b>Použiť aktu&aacute;lny rozsah mapy</b> za&scaron;krtnut&eacute;, obohaten&eacute; bud&uacute; len prvky vstupnej vrstvy viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vstupnej vrstve bud&uacute; obohaten&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vrstvu na obohatenie novými údajmi</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute;, l&iacute;niov&aacute; alebo plo&scaron;n&aacute; vrstva, ktor&aacute; bude obohaten&aacute; o nov&eacute; atrib&uacute;tov&eacute; d&aacute;ta.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="DataCollection">
+        <div><h2>Premenné pre obohatenie</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Kliknite na  <b>Vybrať premenn&eacute;</b> na otvorenie <b>D&aacute;tov&eacute;ho prehliadača</b> <b>D&aacute;tov&yacute; prehliadač</b> v&aacute;m pom&aacute;ha n&aacute;jsť a zvoliť premenn&eacute; pre obohatenia jednotlivo alebo v kolekci&aacute;ch.
+            </p>
+            <p>Regi&oacute;n je automaticky zvolen&yacute; podľa va&scaron;ich d&aacute;t. M&ocirc;žete vybrať odli&scaron;n&yacute; regi&oacute;n, ak va&scaron;e d&aacute;ta pokr&yacute;vaj&uacute; viac ako jednu krajinu.
+            </p>
+            <p>Premenn&eacute; obohatenia s&uacute; usporiadan&eacute; do d&aacute;tov&yacute;ch kolekci&iacute; pre jednoduch&yacute; pr&iacute;stup. Keď zvol&iacute;te d&aacute;tov&uacute; kolekciu, prehliadač zobraz&iacute; niekoľko najobľ&uacute;benej&scaron;&iacute;ch premenn&yacute;ch obohatenia v danej kolekcii. Pod  <b>Prehľad&aacute;vajte ďalej</b> sa tiež zobrazuj&uacute; kateg&oacute;rie v r&aacute;mci kolekcie. V r&aacute;mci každej kateg&oacute;rie m&ocirc;žete zvoliť cel&uacute; podkateg&oacute;riu alebo vojsť do podkateg&oacute;rie a zvoliť jednotliv&eacute; premenn&eacute; obohatenia. M&ocirc;žete tiež použiť vyhľad&aacute;vanie na n&aacute;jdenie konkr&eacute;tnej premennej v r&aacute;mci kateg&oacute;rie.
+            </p>
+            <p>Keď zvol&iacute;te premenn&eacute; pre obohatenie, tieto bud&uacute; pridan&eacute; do ko&scaron;&iacute;ka v rohu  <b>D&aacute;tov&eacute;ho prehliadača</b>. Použiť tento ko&scaron;&iacute;k na sledovanie počtu premenn&yacute;ch, ktor&eacute; ste zvolili.
+            </p>
+            <p>Každ&aacute; zvolen&aacute; premenn&aacute; bude pridan&aacute; ako pole do va&scaron;ej v&yacute;slednej vrstvy.
+            </p> 
+        </div>
+    </div>
+    <div id="BufferOption">
+        <div><h2>Definovať oblasti na obohatenie</h2></div>
+        <hr/>
+        <div>
+            <p>Definovať oblasť v okol&iacute; va&scaron;ich vstupn&yacute;ch bodov alebo l&iacute;ni&iacute;, ktor&eacute; bud&uacute; obohaten&eacute; za použitia buď priamočiarej vzdialenosti alebo zvolen&eacute;ho cestovn&eacute;ho režimu. Pre priamočiaru vzdialenosť zadajte hodnotu do 1000 m&iacute;ľ (1609 kilometrov). Cestovn&eacute; režimy m&ocirc;žu byť použit&eacute; len keď va&scaron;a vstupn&aacute; vrstva obsahuje body. Dostupn&eacute; cestovn&eacute; režimy s&uacute; zvolen&eacute; administr&aacute;torom va&scaron;ej organiz&aacute;cie. Pri použ&iacute;van&iacute; jedn&eacute;ho z cestovn&yacute; režimov sa merania vykon&aacute;vaj&uacute; popri cest&aacute;ch alebo chodn&iacute;koch a dodržiavaj&uacute; sa aplikovateľn&eacute; pravidl&aacute; ako jednosmern&eacute; cesty, nedovolen&eacute; odbočenia a podobne. Po vybran&iacute; v&aacute;&scaron;ho režimu a merania zadajte trvanie alebo vzdialenosť do 5 hod&iacute;n (300 min&uacute;t) alebo 300 m&iacute;ľ (428.8 kilometrov).
+            </p>
+            <p>Ak je za&scaron;krtnut&eacute;  <b>Vr&aacute;tiť v&yacute;sledok ako hraničn&uacute; oblasť</b>, v&yacute;sledkom bud&uacute; plo&scaron;n&eacute; prvky definovan&eacute; hodnotou času alebo vzdialenosti uveden&eacute; vy&scaron;&scaron;ie. Ak je neza&scaron;krtnut&eacute;, vr&aacute;ten&yacute; v&yacute;sledok bud&uacute; bodov&eacute; prvky.
+            </p>
+        </div>
+    </div>
+    <div id="OutputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

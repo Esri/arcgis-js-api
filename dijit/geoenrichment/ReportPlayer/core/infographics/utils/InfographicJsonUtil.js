@@ -1,4 +1,4 @@
-// COPYRIGHT © 201 Esri
+// COPYRIGHT © 2020 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.

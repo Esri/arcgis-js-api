@@ -96,7 +96,7 @@ relationships. The tool determines all input features that meet the specified jo
         <div><h2>Choose a spatial relationship</h2></div>
         <hr/>
         <div>
-            <p>The spatial relationship that will determine if features are joined to each other. The available relationships will depend on the type of geometry (point, line, areas) being used as the input features. The available relationships include the following:
+            <p>The spatial relationship that will determine whether features are joined to each other. The available relationships will depend on the type of geometry (points, lines, areas) being used as the input features. The available relationships include the following:
                 <ul>
                     <li> <b>Identical to</b>&mdash;The features in the target layer will be matched if they are identical to features in the join layer.
                     </li>
@@ -117,7 +117,7 @@ relationships. The tool determines all input features that meet the specified jo
         <div><h2>Attribute join</h2></div>
         <hr/>
         <div>
-            <p>The attribute relationship that will determine if features are joined to each other. Features are matched when the field values in the join layer are equal to field values in the target layer. 
+            <p>The attribute relationship that will determine whether features are joined to each other. Features are matched when the field values in the join layer are equal to field values in the target layer. 
             </p>
             <p>For example, suppose you have a countywide geographic layer of residential addresses (including a field  <i>ZIP</i>) and a tabular dataset of health demographics by ZIP Code (including a field named <i>HEALTHZIP</i>). You can join the health dataset to the residential data by matching the field <i>ZIP</i> to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
             </p>
@@ -129,7 +129,7 @@ relationships. The tool determines all input features that meet the specified jo
         <div>
             <p>Determines how joins between the target and join  layer will be handled if multiple  features in the join layer are found to have the same relationship to the target layer. The following are the two join operations from which to choose:
                 <ul>
-                    <li> <b>Join one to one</b>&mdash; This option joins the features in the target layer to a single feature in the join layer. How features are joined is determined by the <b>Add statistics</b> parameter or <b>Define which record is kept</b> parameter. If <b>Add statistics</b> is used, all matched joined features will be
+                    <li> <b>Join one to one</b>&mdash; This option joins the features in the target layer to a single feature in the join layer. How features are joined is determined by the <b>Add statistics</b> parameter or the <b>Define which record is kept</b> parameter. If <b>Add statistics</b> is used, all matched joined features will be
 summarized to each feature in the target layer. The count of joined
 features will be added by default.
 
@@ -145,7 +145,7 @@ newest or oldest).
                 </ul>
                 
             </p>
-            <p>For example, suppose you want to find supermarkets within 5 kilometers of a farmers market.   In this case, the layer being joined to has a single feature representing a farmers market, and the joining features represents the local grocery stores that have attributes such as total annual sales. Using the  <b>Join Features</b> tool, you find that five grocery stores meet that criteria. If you specify a join operation of <b>Join one to many</b>, you will end up with five features in your result, each row representing the farmers market and a supermarket. If you specify a <b>Join one to one</b> relationship and select a statistic, you will end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (5), and other optional statistics such as the sum of annual sales.
+            <p>For example, suppose you want to find supermarkets within 5 kilometers of a farmers market.   In this case, the layer being joined to has a single feature representing a farmers market, and the joining features represent the local grocery stores that have attributes such as total annual sales. Using the  <b>Join Features</b> tool, you find that five grocery stores meet that criteria. If you specify a join operation of <b>Join one to many</b>, you will end up with five features in your result, each row representing the farmers market and a supermarket. If you specify a <b>Join one to one</b> relationship and select a statistic, you will end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (5), and other optional statistics such as the sum of annual sales.
             </p>
         </div>
     </div>
@@ -177,15 +177,13 @@ change the output to include all features in the target layer regardless of whet
                 </li>
             </ul>
             
-            <p> 
-            </p>
         </div>
     </div>
     <div id="outputName">
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>This is the name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
+            <p>The name of the layer that will be created in  <b>My Content</b>  and added to the map.  The default  name is based on the tool name and the input layer name. If the layer name already exists, you will be prompted to provide another name.
             </p>
             <p>Using the  <b>Save result in</b> drop-down menu, you can  specify the name of a folder in <b>My Content</b> where the result will be saved.
             </p>
@@ -195,7 +193,7 @@ change the output to include all features in the target layer regardless of whet
         <div><h2>Create results as hosted feature layer view</h2></div>
         <hr/>
         <div>
-            <p> Creating results as a hosted feature layer view allows the data to stay up-to-date as the source data changes.  Hosted feature layer views containing joins will be read-only and do not consume credits for analysis and storage.
+            <p> Creating results as a hosted feature layer view allows the data to stay up to date as the source data changes.  Hosted feature layer views containing joins will be read-only.
             </p>
             <p>You can create a hosted feature layer view from the analysis results if all of the following conditions are met:
                 <ul>
@@ -203,7 +201,7 @@ change the output to include all features in the target layer regardless of whet
                     </li>
                     <li>Both layers are hosted feature layers.
                     </li>
-                    <li>You are performing an attribute based join.
+                    <li>You are performing an attribute join.
                     </li>
                 </ul>
                 

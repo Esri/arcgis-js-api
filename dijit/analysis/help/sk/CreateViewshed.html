@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vytvoriť vrstvu viditeľnosti</h2><p/>
+        <h2><img src="../images/GUID-491E9A75-30CC-4526-9F71-E47FD25536DE-web.png" alt="Vytvoriť vrstvu viditeľnosti"></h2>
+        <hr/>
+    <p>N&aacute;stroj Vytvoriť vrstvu viditeľnosti vytv&aacute;ra oblasti, kde m&ocirc;že pozorovateľ vidieť objekty na zemi. Vstupn&eacute; body porozovateľa m&ocirc;žu reprezentovať buď pozorovateľov (osoby na zemskom povrchu alebo hliadka v požiarnej veži) alebo pozorovan&eacute; objekty (vetern&eacute; turb&iacute;ny, vodojemy, vozidl&aacute; alebo ľudia). V&yacute;sledn&eacute; oblasti s&uacute; tak&eacute; oblasti, kde pozorovatelia vidia pozorovan&eacute; objekty alebo naopak: pozorovan&eacute; objekty m&ocirc;žu vidieť pozorovateľov.
+    </p>
+    <p>Pozorovatelia aj pozorovan&eacute; objekty m&ocirc;žu mať zadan&uacute; v&yacute;&scaron;ku nad zemou a tieto v&yacute;&scaron;ky sa použ&iacute;vaj&uacute; na určenie viditeľnosti. Napr&iacute;klad vrstva viditeľnosti vypoč&iacute;tan&aacute; pre vetern&eacute; turb&iacute;ny s v&yacute;&scaron;kou 400 st&ocirc;p a &scaron;esťstopov&eacute; osoby stojace na zemi bude zvyčajne v&auml;č&scaron;ia ako viditeľnosť pre turb&iacute;ny s v&yacute;&scaron;kou 200 st&ocirc;p a &scaron;esťstopov&eacute; osoby.
+    </p>
+    <p>Berte na vedomie, že v&yacute;počet vrstvy viditeľnosti nezohľadňuje prek&aacute;žky ako stromy alebo budovy. V&yacute;počet si m&ocirc;žete predstaviť tak, že prebieha na holej zemi bez v&scaron;etk&yacute;ch objektov okrem pozorovateľa a pozorovan&yacute;ch objektov.
+    </p>
+    <p>V&yacute;sledn&aacute; vrstva obsahuje oblasť plo&scaron;n&yacute;ch prvkov reprezentuj&uacute;cich viditeľn&eacute; oblasti. Pole  <i>Frequency</i> zaznamen&aacute;va počet pozorovateľsk&yacute;ch bodov, ktor&eacute; vidia dan&uacute; oblasť. Napr&iacute;klad, ak m&aacute;te p&auml;ť vstupn&yacute;ch bodov, každ&yacute; reprezentuj&uacute;ci hasičsk&uacute; vyhliadku, pole <i>Frequency</i> bude mať hodnoty medzi jedna a p&auml;ť; oblasti s hodnotu jedna m&ocirc;žu byť viditeľn&eacute; len jednou vyhliadkou a oblasti s hodnotou p&auml;ť s&uacute; viditeľn&eacute; zo v&scaron;etk&yacute;ch vyhliadok. V&yacute;sledn&aacute; vrstva tiež obsahuje pole <i>DEMResolution</i>, ktor&eacute; zaznamen&aacute;va rozl&iacute;&scaron;enie digit&aacute;lneho v&yacute;&scaron;kov&eacute;ho modelu (DEM) použit&eacute;ho na vytvorenie vrstvy viditeľnosti.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; len body pozorovateľa viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky body pozorovateľa vo vrstve vstupu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Bodové prvky, ktoré reprezentujú lokality pozorovateľa</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute; prvky predstavuj&uacute;ce lokality pozorovateľa.
+            </p>
+            <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
+            </p>
+        </div>
+    </div>
+    <div id="ObserverHeight">
+        <div><h2>Výška lokalít pozorovateľa</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je v&yacute;&scaron;ka va&scaron;ich lokal&iacute;t pozorovateľa nad povrchom. Predvolenou hodnotou je približn&aacute; v&yacute;&scaron;ka človeka.
+            </p>
+        </div>
+    </div>
+    <div id="TargetHeight">
+        <div><h2>Výška ostatných objektov na povrchu</h2></div>
+        <hr/>
+        <div>
+            <p>Ide o v&yacute;&scaron;ku kon&scaron;trukci&iacute; alebo os&ocirc;b na zemskom povrchu použ&iacute;van&yacute;ch na zabezpečenie viditeľnosti. V&yacute;sledn&aacute; vrstva viditeľnosti s&uacute; oblasti, pre ktor&eacute; pozorovateľ vid&iacute; ostatn&eacute; objekty. Rovnako plat&iacute; aj opak, teda že ostatn&eacute; objekty m&ocirc;žu vidieť bod pozorovateľa.
+            </p>
+            <p>
+                <ul>
+                    <li>Ak va&scaron;e pozorovacie body predstavuj&uacute; vetern&eacute; turb&iacute;ny a chcete určiť, kde osoby stojace na zemi m&ocirc;žu tieto turb&iacute;ny vidieť, zadajte priemern&uacute; v&yacute;&scaron;ku osoby (približne 6 st&ocirc;p). V&yacute;sledkom s&uacute; oblasti, kde osoba stojaca na zemi m&ocirc;že vidieť vetern&eacute; turb&iacute;ny.
+                    </li>
+                    <li>Ak va&scaron;e pozorovacie body predstavuj&uacute; hasičsk&eacute; vyhliadky a chcete určiť, ktor&eacute; z nich m&ocirc;žu vidieť dymov&yacute; oblak vysok&yacute; 20 st&ocirc;p alebo vy&scaron;&scaron;&iacute;, zadajte v&yacute;&scaron;ku 20 st&ocirc;p. V&yacute;sledkom s&uacute; tie oblasti, kde hasičsk&aacute; vyhliadka m&ocirc;že vidieť dymov&yacute; oblak vysok&yacute; aspoň 20 st&ocirc;p.
+                    </li>
+                    <li>Ak va&scaron;e pozorovacie body predstavuj&uacute; sc&eacute;nick&eacute; vyhliadky pozdĺž ciest a chodn&iacute;kov a chcete určiť, kde je možn&eacute; vidieť vetern&eacute; turb&iacute;ny vysok&eacute; najmenej 400 st&ocirc;p, zadajte v&yacute;&scaron;ku 400 st&ocirc;p. V&yacute;sledkom bud&uacute; tie oblasti, kde osoba stojaca na sc&eacute;nickej vyhliadke m&ocirc;že vidieť vetern&uacute; turb&iacute;nu aspoň 400 st&ocirc;p vysok&uacute;.
+                    </li>
+                    <li>Ak va&scaron;e body pozorovateľa reprezentuj&uacute; sc&eacute;nick&eacute; vyhliadky a chcete určiť, koľko plochy na zemi vidia ľudia stojaci na vyhliadke, zadajte nulu. V&yacute;sledok v t&yacute;chto s&uacute; tie oblasti, ktor&eacute; s&uacute; viditeľn&eacute; zo sc&eacute;nickej vyhliadky.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="MaximumDistance">
+        <div><h2>Maximálna dohľadová vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je medzn&aacute; vzdialenosť, kde sa v&yacute;počet viditeľn&yacute;ch oblast&iacute; zastav&iacute;. Za touto vzdialenosťou nie je ist&eacute;, či sa body pozorovateľa a in&eacute; objekty navz&aacute;jom vidia. Veľk&eacute; hodnoty zvy&scaron;uj&uacute; čas v&yacute;počtu. Povolen&aacute; hodnota maxima je 31 m&iacute;ľ (50 kilometrov).
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>n&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak n&aacute;zov vrstvy už existuje, budete požiadan&yacute; poskytn&uacute;ť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+            <p> Spustenie tohto n&aacute;stroja nespotrev&uacute;va kredity.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

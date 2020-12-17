@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Generovať Voronoiove polygóny (teselácia)</h2><p/>
+        <h2><img src="../images/GUID-7D6FF8CB-15F3-4051-9C57-46E6C3708788-web.png" alt="Generovať Voronoiove polyg&oacute;ny (tesel&aacute;cia)"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj generuje tesel&aacute;cie nad &scaron;tudovanou oblasťou na z&aacute;klade &scaron;pecifikovan&eacute;ho tvaru a veľkosti.
+    </p>
+    <p>Za&scaron;krt&aacute;vacie pol&iacute;čko  <b>Použiť s&uacute;časn&yacute; rozsah mapy</b> je deaktivovan&eacute; pre tento n&aacute;stroj, pretože rozsah použit&yacute; na generovanie tesel&aacute;ci&iacute; je kontrolovan&yacute; parametrom <b>Definovať rozsah</b>.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="binType">
+        <div><h2>Vybrať tvar</h2></div>
+        <hr/>
+        <div>
+            <p>Tvar alebo geometria tesel&aacute;cie, ktor&yacute; by ste chceli vytvoriť. Dostupn&eacute; tvary s&uacute;  <code>&Scaron;tvorec</code>, <code>&Scaron;esťuholn&iacute;k</code>, <code>Priečny &scaron;esťuholn&iacute;k</code>, <code>Trojuholn&iacute;k</code> alebo <code>Koso&scaron;tvorec</code>.
+            </p>
+        </div>
+    </div>
+    <div id="extentLayer">
+        <div><h2>Definovať študijnú oblasť</h2></div>
+        <hr/>
+        <div>
+            <p>Rozsah alebo oblasť, ktor&uacute; tesel&aacute;cie pokryj&uacute;. Rozsah m&ocirc;že byť určen&yacute; za použitia s&uacute;časn&eacute;ho rozsahu mapy, rozsahu existuj&uacute;cej vrstvy alebo interakt&iacute;vnym nakreslen&iacute;m oblasti, ktor&uacute; treba použiť ako rozsah.
+            </p>
+            <p>Ak bola zvolen&aacute; vrstva prvkov na určenie rozsahu, možnosť ponechať v&yacute;lučne pret&iacute;naj&uacute;ce sa tesel&aacute;cie bude povolen&aacute;. Ak je začiarknut&eacute;, iba tesel&aacute;cie pokr&yacute;vaj&uacute;ce alebo pret&iacute;najuce sa s prvkami v &scaron;pecifikovanej vrstve rozsahu bud&uacute; generovan&eacute; vo v&yacute;slednej vrstve tesel&aacute;ci&iacute;.
+            </p>
+            <p>
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>Nezačiarknut&eacute;
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-141880D1-A748-4F7B-B700-0036CA9ACCE1-web.png" alt="Pln&yacute; rozsah pokrytia">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Začiarknut&eacute;
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-F43D993E-5881-4A35-A4AE-4221EDD48374-web.png" alt="Pokrytie prvkov">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="binSize">
+        <div><h2>Defnovať veľkosť zásobníka určením</h2></div>
+        <hr/>
+        <div>
+            <p>Veľkosť každej bunky. Veľkosť bunky m&ocirc;že byť určen&aacute; &scaron;pecifikovan&iacute;m &scaron;tvorcov&yacute;ch jednotiek alebo &scaron;pecifikovan&iacute;m vzdialenosti, ktor&aacute; je vypoč&iacute;tan&aacute; za použitia nasledovn&yacute;ch rozmerov, kde d = vzdialenosť:
+                <table border="1">
+                <tr>
+                    <td>
+                        <p>&Scaron;tvorec
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-4DCDA345-EA0F-46AA-975D-27455F13AAA7-web.png" alt="&Scaron;tvorcov&eacute; tesel&aacute;cie">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>&Scaron;esťuholn&iacute;k
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-5A685C3F-B984-4B5E-8E8A-1EE7AB7FC434-web.png" alt="&Scaron;esťuholn&iacute;kov&eacute; tesel&aacute;cie">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Priečny &Scaron;esťuholn&iacute;k
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-61A8B883-A581-4A8D-9D77-57CEA96D9598-web.png" alt="Tesel&aacute;cia priečneho &scaron;esťuholn&iacute;ka">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Trojuholn&iacute;k
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-08AB7A29-A0E7-4210-8462-7550DC99A2F2-web.png" alt="Trojuholn&iacute;kov&aacute; tesel&aacute;cia">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Koso&scaron;tvorec
+                        </p>
+                    </td>
+                    <td>
+                        <p> <img src="../images/GUID-165A71F1-381F-4699-97FA-F83C30AC96E7-web.png" alt="Koso&scaron;tvorcov&aacute; tesel&aacute;cia">
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+    <div id="tessellationPolygonLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je meno vrstvy, ktor&aacute; bude vytvoren&aacute; v  <b>Mojom obsahu</b> a pridan&aacute; do mapy. Ak vrstva už existuje, budete požiadan&yacute; poskytnuť in&eacute; meno.
+            </p>
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude v&yacute;sledok uložen&yacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>
