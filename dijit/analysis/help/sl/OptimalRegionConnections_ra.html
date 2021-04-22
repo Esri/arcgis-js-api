@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimalne povezave regije</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Prikaz orodja Optimalne povezave regije"></h2>
+        <hr/>
+    <p>To orodje izračuna optimalno omrežje povezljivosti med dvema ali več vhodnimi regijami.
+    </p>
+    <p>Primeri uporabe vključujejo naslednje:
+        <ul>
+            <li>Modeliranje primernosti &ndash; Iz modela primernosti ste določili 10 najbolj&scaron;ih zaplat za življenjski prostor rdečerjavih risov. Rdečerjavim risom želite omogočiti premikanje med zaplatami s pomočjo učinkovitega omrežja koridorjev za prostoživeče živali, da bi se tako ohranila genska raznovrstnost metapopulacije.
+                
+
+            </li>
+            <li>Sečnja lesa &ndash; Pri sečnji lesa želite ustvariti najbolj stro&scaron;kovno učinkovito mrežo gozdarskih poti za odstranjevanje lesa.
+                
+
+            </li>
+            <li>Ohranjanje miru &ndash; Pri namestitvi voja&scaron;kih mirovnih sil ste določili pet območij za namestitev čet in osebja. Želite razviti optimalno povezane oskrbovalne poti med bazami.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo tiste lokacije vhodnih slojev, ki so vidne znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirane vse lokacije v vhodnih slojih, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Izberite raster regije ali geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Vhodne regije bodo povezane z optimalnim omrežjem.
+            </p>
+            <p>Če je vnos regije raster, so regije opredeljene s skupinami sosednjih (povezanih) celic z isto vrednostjo. Vsaka regija mora biti enolično o&scaron;tevilčena. Celice, ki niso del nobene regije, morajo imeti vrednost NoData. Tip rastra mora biti celo &scaron;tevilo, vrednosti pa so lahko pozitivne ali negativne.
+            </p>
+            <p>Če je vnos regije geoobjekt, so to lahko točke, linije ali poligoni. Poligonske regije ne morejo biti sestavljene iz mnogodelnih poligonov.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izberite raster ovir ali geoobjekt (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Sklop podatkov, ki določa ovire.
+            </p>
+            <p>Za rastr je lahko vhodni tip celo &scaron;tevilo ali enojno decimalno &scaron;tevilo. Celice, ki imajo vrednost (vključno z nič), bodo obravnavane kot ovira. Celice z vrednostjo NoData ne bodo obravnavane kot ovira.
+            </p>
+            <p>Za geoobjekt je vhodni tip lahko točka, linija ali poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Izberite raster stroškov (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, ki določa impendanco ali stro&scaron;ek za planimetrično premikanje skozi vsako celico.
+            </p>
+            <p>Vrednost na lokaciji vsake celice predstavlja razdaljo stro&scaron;kov na enoto za premikanje skozi celice. Vrednost lokacije vsake celice je pomnožena z resolucijo celice, hkrati pa upo&scaron;teva diagonalno premikanje, da se pridobi celoten stro&scaron;ek premika skozi celico.
+            </p>
+            <p>Vrednosti rastra stro&scaron;kov so lahko celo &scaron;tevilo ali &scaron;tevilo s plavajočo vejico, vendar ne morejo biti negativne ali ničla (ne morete imeti negativnih ali ničelnih stro&scaron;kov).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda razdalje (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Določa izračun razdalje na osnovi ravninske (ravne povr&scaron;ine) ali geodetske (elipsoid) metode.
+            </p>
+            <ul>
+                <li> <b>Ravnina</b> &ndash; Izračun razdalje bo izveden na projicirani ravni povr&scaron;ini s pomočjo 2D kartezijskega koordinatnega sistema. To je privzeta metoda.
+                    
+
+                </li>
+                <li> <b>Geodetsko</b> &ndash; Izračun razdalje bo izveden na elipsoidu. Tako se rezultati ne spremenijo ne glede na vhodno ali izhodno projekcijo.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Povezave znotraj regij (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Določa ali se bodo znotraj vhodnih regij poti nadaljevale in povezovale.
+            </p>
+            <ul>
+                <li> <b>Ustvari povezave</b> &ndash; Poti se bodo nadaljevale znotraj vhodnih regij, da bi se vse poti, ki vstopijo v regijo, povezovale. To je privzeto.
+                    
+
+                </li>
+                <li> <b>Brez povezav</b> &ndash; Poti se bodo ustavile na robovih vhodnih regij in se znotraj regij ne bodo nadaljevale ali povezovale.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Ime rezultata geoobjektnega sloja optimalnih linij povezljivosti</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Ta sloj je izhodni linijski geoobjekt, ki povezuje vsako vhodno regijo.
+            </p>
+            <p>Vsaka pot (ali linija) je enolično o&scaron;tevilčena, dodatna polja v preglednici atributov pa hranijo določene informacije o poti. Ta dodatna polja so naslednja:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Enolični identifikator za pot
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Skupna akumulativna razdalja ali stro&scaron;ek za pot
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Prva regija v kateri s pot poveže
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Druga regija v kateri se pot poveže
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ker vsako pot predstavlja enolična linija, bo na lokacijah, kjer poti tečejo po isti poti, več linij.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Ime rezultata geoobjektnega sloja sosednjih povezav (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Sloj je izhodni linijski geoobjekt, ki prepoznava vse poti iz vsake regije do vsakega svojega najbljižjega soseda, ali soseda z najmanj stro&scaron;ki.
+            </p>
+            <p>Vsaka pot (ali linija) je enolično o&scaron;tevilčena, dodatna polja v preglednici atributov pa hranijo določene informacije o poti. Ta dodatna polja so naslednja:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Enolični identifikator za pot
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Skupna akumulativna razdalja, ali stro&scaron;ek, za pot
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Prva regija v kateri s pot poveže
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Druga regija v kateri se pot poveže
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ker vsako pot predstavlja enolična linija, bo na lokacijah, kjer poti tečejo po isti poti, več linij.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

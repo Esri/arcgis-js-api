@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Вибрати точкові об'єкти для збагачення",chooseMVgridLyrLabel:"Вибрати сітку з декількома змінними, на основі котрої треба виконати збагачення",chooseVariables:"Вибрати змінні для додання",outputLayerName:"Збагачено ${inputFeatures} з ${gridLayer}",itemDescription:"Векторний шар, згенерований в результаті виконання рішення «Збагатити на основі сітки з декількома змінними» для ${inputFeatures}.",itemTags:"Результат аналізу, Збагатити на основі сітки з декількома змінними, ${inputFeatures}, ${gridLayer}",itemSnippet:"Векторний шар, згенерований зі «Збагатити на основі сітки з декількома змінними»."});

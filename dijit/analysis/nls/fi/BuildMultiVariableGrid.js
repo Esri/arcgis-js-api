@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Valitse niiden lohkojen tyyppi, joita käytetään useita muuttujia sisältävän ruudukon luomiseen",layersAttrLabel:"Valitse lähtöaineiston karttatasot ja muuttujat, jotka haluat sisällyttää ruudukkoon",itemDescription:"Kohdekarttataso, joka on luotu suorittamalla Luo useita muuttujia sisältävä ruudukko -toiminto.",itemTags:"Analyysitulos, Luo useita muuttujia sisältävä ruudukko",itemSnippet:"Kohdekarttataso, joka on luotu Luo useita muuttujia sisältävä ruudukko -toiminnolla",addVariables:"Lisää muuttujia"});

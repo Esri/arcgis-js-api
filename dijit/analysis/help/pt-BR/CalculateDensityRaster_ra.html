@@ -44,20 +44,19 @@
         <h2>Calcular Densidade</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Ferramenta Calcular Densidade"></h2>
         <hr/>
-    <p>Esta ferramenta cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto ou linha, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos ou linhas) ao longo do mapa. O resultado &eacute; uma camada de &aacute;reas classificadas a partir da menos densa at&eacute; a mais densa.
+    <p>Esta ferramenta cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto ou linha, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos ou linhas) ao longo do mapa. O resultado &eacute; uma camada de &aacute;reas classificada a partir da menos densa at&eacute; a mais densa.
     </p>
     <p>Na entrada de ponto, cada ponto deve representar o local de algum evento ou incidente, e a camada resultante representa uma contagem do incidente por &aacute;rea de unidade. Um valor de densidade mais alto em um novo local significa que h&aacute; mais pontos pr&oacute;ximos deste local. Em muitos casos, a camada resultante pode ser interpretada como uma superf&iacute;cie de risco para eventos futuros. Por exemplo, se os pontos de entrada representam locais de raios, a camada resultante pode ser interpretada como uma superf&iacute;cie de risco para futuros raios.
     </p>
     <p>Na entrada de linha, a superf&iacute;cie de densidade de linha representa a quantidade total de linhas que est&atilde;o pr&oacute;ximas de cada local. As unidades dos valores de densidade calculados s&atilde;o o comprimento da linha por &aacute;rea de unidade. Por exemplo, se as linhas representam rios, a camada resultante representar&aacute; o comprimento total de rios que est&atilde;o dentro do raio de pesquisa. Este resultado pode ser utilizado para identificar &aacute;reas que s&atilde;o hospitaleiras para animais de pasto.
     </p>
     <p>Outros casos de uso desta ferramenta incluem o seguinte:
-
         <ul>
             <li>Criar mapas da densidade de crime para ajudar departamentos de pol&iacute;cia a alocar corretamente recursos para &aacute;reas de alto crime.
                 
  
             </li>
-            <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para decidir onde novos hospitais devem ser constru&iacute;dos.
+            <li>Calcular densidades dos hospitais dentro de um munic&iacute;pio. A camada resultante mostrar&aacute; &aacute;reas com acessibilidade alta e baixa para hospitais, e estas informa&ccedil;&otilde;es podem ser utilizadas para determinar onde novos hospitais devem ser constru&iacute;dos.
                 
  
             </li>
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Escolher feições de barreira (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O conjunto de dados que define as barreiras.
+            </p>
+            <p>As barreiras podem ser uma camada de fei&ccedil;&atilde;o de polilinha ou de pol&iacute;gono.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

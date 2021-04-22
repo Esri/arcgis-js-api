@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Trace Proximity Events</h2><p/>
+        <h2><img src="./images/GUID-AE2A55D7-B5FB-48EC-8BCB-1B38CCFB61D2-web.png" alt="Trace Proximity Events"></h2>
+        <hr/>
+    <p> This tool traces events that are near each other in space (location) and time. The time-enabled point data must include features that represent an instant in time.
+    </p>
+    <p>The following terminology is used in the  Trace Proximity Events tool:
+    </p>
+    <p>
+        <ul>
+            <li>Entity&mdash;An object that has its position periodically recorded, for example, an animal, person, or vehicle. An entity can be stationary or moving.
+            </li>
+            <li>Entities of interest&mdash;The specific entities used to start a trace, for example, a person infected with coronavirus disease 2019 (COVID-19).
+            </li>
+            <li>Proximity event&mdash;The period of time when two entities are near each other, for example, two people who come within 3 meters of each other and within a 1-minute window of each other.
+            </li>
+            <li>Depth&mdash;The degree of separation between an entity of interest and an entity farther down the trace (downstream). For example, a proximity event between the entity of interest and someone else is depth 1.
+            </li>
+            <li>Trace event&mdash;The first contact for a specified entity downstream from the entities of interest.
+            </li>
+        </ul>
+        
+    </p>
+    <p>The
+following are examples of use cases that can be performed with the  Trace Proximity Events tool:
+    </p>
+    <p>
+        <ul>
+            <li>An organization monitors company-issued devices carried by workers. The company is interested in determining which employees were near an individual known to have COVID-19. Using the point layer representing device locations and time, the company identifies devices that have been within six meters and five minutes of the contagious person and other possibly contagious employees.
+                
+
+            </li>
+            <li>An NGO is monitoring salmon populations using GPS and is interested in tracking the spread of salmon lice between escaped farmed salmon and wild populations. Some GPS-tagged farmed salmon are tracked to see if they come in close proximity with tagged wild populations, and how those wild populations may further spread the disease. The measurements also include a depth field, which the NGO uses  to only find fish at a similar depth.
+                
+
+
+
+
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputPoints">
+        <div><h2>Choose the layer to find proximity events from</h2></div>
+        <hr/>
+        <div>
+            <p>The time-enabled point layer that will be used to trace proximity events.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
+            </p>
+        </div>
+    </div>
+    <div id="entityIdField">
+        <div><h2>Select a field to identify events</h2></div>
+        <hr/>
+        <div>
+            <p>The field representing unique IDs for each entity.
+            </p>
+        </div>
+    </div>
+    <div id="entitiesOfInterest">
+        <div><h2>Choose the layer to specify entities of interest</h2></div>
+        <hr/>
+        <div>
+            <p>The layer or table that contains the entities of interest. The entity of interest is where the proximity tracing will begin. If the input layer is time enabled, tracing will begin at that time for that entity. If you do not specify a time, tracing will begin on January 1, 1970, for that entity.
+            </p>
+        </div>
+    </div>
+    <div id="spatialSearch">
+        <div><h2>Define the spatial search distance</h2></div>
+        <hr/>
+        <div>
+            <p>The maximum distance between two points to be considered in proximity. Features within the spatial search distance and temporal search distance criteria are considered to be in proximity of each other.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Choose method used to calculate distance</h2></div>
+        <hr/>
+        <div>
+            <p>Method used to calculate distances. The  <b>Planar</b> method may calculate the results more quickly but will not calculate distances across the  international date line or account for the shape of the earth when calculating the distance between entities. The <b>Geodesic</b> method will calculate distances across the date line if required and apply a geodesic distance to account for the shape of the earth.
+            </p>
+        </div>
+    </div>
+    <div id="temporalSearch">
+        <div><h2>Define the temporal search distance</h2></div>
+        <hr/>
+        <div>
+            <p>The maximum duration between two points to be considered in proximity. Features within the temporal search distance and that meet the spatial search distance criteria are considered to be in proximity of each other.
+            </p>
+        </div>
+    </div>
+    <div id="maxTraceDepth">
+        <div><h2>Maximum trace depth</h2></div>
+        <hr/>
+        <div>
+            <p>The maximum degrees of separation between an entity of interest and an entity farther down the trace (downstream).
+            </p>
+        </div>
+    </div>
+    <div id="attributeMatchCriteria">
+        <div><h2>Select one or more entity attributes to match</h2></div>
+        <hr/>
+        <div>
+            <p>The fields used to constrain the proximity event. Fields selected must be equivalent for any two entities to be considered within proximity of each other. 
+            </p>
+            <p>For example, to constrain entities on the same floor, and you have a field named  <i>Floor</i> that represents the entities' floor level,  specify the <i>Floor</i> field.
+            </p>
+        </div>
+    </div>
+    <div id="includeTracksLayer">
+        <div><h2>Include tracks layer</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether to include an additional  output layer containing the first trace event and all subsequent features for that specified entity.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
+            </p>
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

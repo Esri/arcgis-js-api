@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>라인 형식 최적 경로(Optimal Path As Line)</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="라인 형식 최적 경로 도구 그림"></h2>
+        <hr/>
+    <p>이 도구는 목적지에서 원본까지의 최적 경로를 라인 형식으로 계산합니다.
+    </p>
+    <p>적용 예시:
+        <ul>
+            <li>건설 비용과 관련하여 새로운 도로에 가장 적합한 경로를 찾습니다.
+                
+
+
+            </li>
+            <li>목적지와 현재 위치 사이에 있는 최적의 항해 경로를 찾습니다.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>목적지 래스터 또는 피처 선택</h2></div>
+        <hr/>
+        <div>
+            <p>최적 경로가 최적 시작 지점으로 결정되는 셀을 식별하는 래스터 또는 피처 레이어입니다.
+            </p>
+            <p>입력이 래스터인 경우 목적지에 유효한 값(0은 유효한 값)을 갖는 셀로 구성되어야 하며 나머지 셀에는 NoData가 할당되어야 합니다. 입력 래스터 유형은 정수여야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>목적지 필드</h2></div>
+        <hr/>
+        <div>
+            <p>목적지 위치의 값을 얻는 데 사용되는 필드입니다.
+            </p>
+            <p>이 필드는 정수 유형이어야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>거리 누적 래스터 선택</h2></div>
+        <hr/>
+        <div>
+            <p>거리 누적 래스터는 목적지에서 시작 지점으로 가는 최적 경로를 결정하는 데 사용됩니다.
+            </p>
+            <p>거리 누적 래스터는 일반적으로 거리 누적 또는 거리 할당 도구를 사용하여 생성됩니다. 거리 누적 래스터의 각 셀은 시작지점 셀까지 표면상의 최저 누적 비용 거리를 나타냅니다.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>역방향 또는 흐름 방향 래스터 선택</h2></div>
+        <hr/>
+        <div>
+            <p>역방향 래스터에는 도 단위로 계산된 방향이 포함되어 있습니다. 방향은 장애물을 피하면서 최저 누적 비용 시작지점으로 돌아가는 최적 경로를 따라 다음 셀을 식별합니다.
+            </p>
+            <p>역방향 래스터는 일반적으로 거리 누적 또는 거리 할당 도구를 사용하여 생성됩니다. 이 경우 값 범위는 0도에서 360도입니다. 시작 지점 셀에 0 값이 예약되어 있습니다. 동쪽(오른쪽)이 90도이고 값이 시계방향으로 증가해야 합니다(180도 남쪽, 270도 서쪽, 360도 북쪽).
+            </p>
+            <p>생성된 최적 경로는 D8 흐름 방향을 기반으로 하는 흐름 경로일 수 있습니다. 이 방식으로 최적 경로를 생성하려면 이 매개변수에 대한 입력으로 D8 흐름 방향 래스터를 사용합니다.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>경로 유형(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            <p>비용 경로 계산에서 입력 목적지 데이터의 값과 구역을 해석하는 방식을 정의하는 키워드를 지정합니다.
+                <ul>
+                    <li> <b>각 영역</b> - 입력 목적지 데이터의 각 영역에 대해 최저 비용 경로가 결정됩니다. 이 옵션을 사용하면 각 영역의 최저 비용 경로는 영역에서 비용 거리 가중치가 가장 낮은 셀에서 시작합니다. 이 옵션이 기본 설정입니다.
+                         
+                    </li>
+                    <li> <b>최고 단일</b> - 입력 목적지 데이터의 모든 셀에 대해 최저 비용 경로는 원본 셀에 대한 최저 비용 경로가 최소인 셀에서 파생됩니다.
+                    </li>
+                    <li> <b>각 셀</b> - 입력 목적지 데이터에 유효한 값이 있는 각 셀에 대해 최저 비용 경로가 결정되어 결과 래스터에 저장됩니다. 이 옵션을 사용하면 입력 목적지 데이터의 각 셀은 개별적으로 처리되며 각 셀에 최저 비용 경로가 결정됩니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>결과 피처 레이어 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
+            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

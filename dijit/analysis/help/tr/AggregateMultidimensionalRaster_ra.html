@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Çok Boyutlu Rasterı Kümele</h2><p/>
+        <h2>Çok Boyutlu Rasterı Topla</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="&Ccedil;ok Boyutlu Rasterı Topla"></h2>
         <hr/>
     <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Kümelenecek çok boyutlu görüntü katmanını seçin</h2></div>
+        <div><h2>Toplanacak çok boyutlu görüntü katmanını seçin</h2></div>
         <hr/>
         <div>
             <p>&Ccedil;ok boyutlu rasterın toplanacak girdi g&ouml;r&uuml;nt&uuml;leme katmanı.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Kümelenecekler boyunca boyutu seçin</h2></div>
+        <div><h2>Toplanacak boyutu seçin</h2></div>
         <hr/>
         <div>
             <p>Toplama boyutu. Bu, değişkenlerin toplanacağı boyuttur.
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Kümelenecek değişkenleri seçin</h2></div>
+        <div><h2>Toplanacak değişkenleri seçin</h2></div>
         <hr/>
         <div>
             <p>Verilen boyut boyunca toplanacak değişken veya değişkenler. Değişken belirtilmediğinde, se&ccedil;ilen boyuta sahip t&uuml;m değişkenler toplanır.
@@ -88,10 +88,10 @@
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Kümeleme yöntemini seçin</h2></div>
+        <div><h2>Toplama yöntemini seç</h2></div>
         <hr/>
         <div>
-            <p>Toplanan dilimleri bir aralıkta birleştirmek i&ccedil;in kullanılacak matematiksel y&ouml;ntemi belirtir. 
+            <p>Toplanan dilimleri bir aralıkta birleştirmek i&ccedil;in kullanılacak matematiksel y&ouml;ntemi belirtir.
                 <ul>
                     <li> <b>Ortalama</b>&mdash;Bir pikselin değerlerinin aralıktaki t&uuml;m dilimlerdeki ortalamasını hesaplar. Varsayılan değerdir.
                     </li>
@@ -129,10 +129,10 @@
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Kümeleme tanımını seçin</h2></div>
+        <div><h2>Toplama tanımını seç</h2></div>
         <hr/>
         <div>
-            <p>Verilerin toplanacağı boyut aralığını belirtir. 
+            <p>Verilerin toplanacağı boyut aralığını belirtir.
                 <ul>
                     <li> <b>T&uuml;m&uuml;</b>&mdash;T&uuml;m dilimlerdeki veri değerleri k&uuml;melenir. Varsayılan değerdir.
                     </li>
@@ -148,7 +148,7 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Anahtar sözcük aralığını seçin</h2></div>
+        <div><h2>Anahtar sözcük aralığını seç</h2></div>
         <hr/>
         <div>
             <p>Boyut boyunca toplama yapılırken kullanılacak anahtar s&ouml;zc&uuml;k aralığını belirtir.  <b>Toplama Tanımı</b> <b>Aralık Anahtar S&ouml;zc&uuml;ğ&uuml;</b> olarak ayarlanırsa bu girdi gereklidir ve toplama zamana g&ouml;re yapılmalıdır.
@@ -198,7 +198,7 @@
         <div>
             <p>Aralık değeri i&ccedil;in kullanılacak birim.  <b>Boyut</b> bir zaman alanı olduğunda ve <b>Toplama Tanımı</b> <b>Aralık Değeri</b> olarak ayarlanırsa bu girdi gereklidir.
             </p>
-            <p>Zaman dışında herhangi bir şey &uuml;zerinde toplama yapıyorsanız, bu se&ccedil;enek kullanılamaz ve aralık değeri birimi girdi &ccedil;ok boyutlu raster verisinin değişken birimi ile eşleşir. 
+            <p>Zaman dışında herhangi bir şey &uuml;zerinde toplama yapıyorsanız, bu se&ccedil;enek kullanılamaz ve aralık değeri birimi girdi &ccedil;ok boyutlu raster verisinin değişken birimi ile eşleşir.
                 <ul>
                     <li> <b>Saatler</b>&mdash;Veri değerleri, sağlanan aralıklarla saatlik zaman dilimleri i&ccedil;inde k&uuml;melenir.
                     </li>
@@ -227,7 +227,7 @@
         <div><h2>Hesaplamadaki eksik değerleri yoksay</h2></div>
         <hr/>
         <div>
-            <p>Eksik değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir. 
+            <p>Eksik değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir.
                 <ul>
                     <li>İşaretli&mdash;Analizde verilen bir boyut boyunca ge&ccedil;erli olan t&uuml;m pikseller yer alır ancak NoData pikselleri dikkate alınmaz. Varsayılan değerdir.
                     </li>
@@ -242,6 +242,7 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

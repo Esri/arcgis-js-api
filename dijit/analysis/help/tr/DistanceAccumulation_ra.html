@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Mesafe Birikimi</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Mesafe Birikimi aracı ill&uuml;strasyonu"></h2>
+        <hr/>
+    <p>Bu ara&ccedil;, doğrusal mesafe, maliyet mesafesi, ger&ccedil;ek y&uuml;zey mesafesi ve dikey ve yatay fakt&ouml;rlere izin vererek her h&uuml;creden kaynaklara biriken mesafeyi hesaplar.
+    </p>
+    <p>&Ouml;rnek uygulamalar, aşağıdaki gibi soruları verilen yanıtları i&ccedil;erir:
+        <ul>
+            <li>En yakın şehre uzaklık nedir?
+                
+
+            </li>
+            <li>En yakın yola maliyet mesafesi nedir?
+                
+
+            </li>
+            <li>En yakın su kaynağına engellerin etrafındaki mesafe nedir?
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan girdi katmanındaki detaylar analiz edilir. İşaretli değilse, girdi katmanındaki t&uuml;m detaylar, ge&ccedil;erli harita ekran yayılımının dışında bile olsa analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Kaynak rasterı veya detaylarını seçin</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafenin hesaplanacağı kaynakları tanımlayan raster veya detay katmanı.
+            </p>
+            <p>Eğer girdi bir raster ise, kaynaklar i&ccedil;in ge&ccedil;erli değerlere sahip olan h&uuml;crelerden oluşması gerekir (sıfır ge&ccedil;erli bir değerdir) ve kalan h&uuml;creler NoData (Verisiz) olarak belirlenmelidir.
+            </p>
+            <p>Eğer girdi bir detay katmanı ise, bu durumda bir nokta, &ccedil;izgi veya &ccedil;okgen olabilir.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Engel rasterı ya da detaylarını seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Engelleri tanımlayan veri k&uuml;mesi.
+            </p>
+            <p>Bir raster katmanı i&ccedil;in, girdi t&uuml;r&uuml; tamsayı veya y&uuml;zen olabilir. Değeri olan (sıfır dahil) herhangi bir h&uuml;cre bir engel olarak kabul edilecektir. NoData (Verisiz) olan herhangi bir h&uuml;cre bir engel olarak kabul edilmeyecektir.
+            </p>
+            <p>Bir detay servisi i&ccedil;in girdi nokta, &ccedil;izgi veya &ccedil;okgen olabilir.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Yüzey rasterı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Her h&uuml;cre konumundaki y&uuml;kselti değerlerini tanımlayan bir raster.
+            </p>
+            <p>Değerler, h&uuml;creler arasında ge&ccedil;erken kapsanan ger&ccedil;ek y&uuml;zey mesafesini hesaplamak i&ccedil;in kullanılır.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Maliyet rasterı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Her bir h&uuml;crenin i&ccedil;inden planimetrik olarak hareket etmek i&ccedil;in empedansı veya maliyeti tanımlayan bir raster.
+            </p>
+            <p>Her h&uuml;cre konumundaki değer, h&uuml;cre i&ccedil;inde hareket etmek i&ccedil;in birim başına maliyet mesafesini temsil eder. Her h&uuml;cre konumu değeri h&uuml;cre &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml; ile &ccedil;arpılırken, aynı zamanda h&uuml;cre i&ccedil;inden ge&ccedil;menin toplam maliyetini elde etmek i&ccedil;in &ccedil;apraz (diyagonal) hareketi dengeler.
+            </p>
+            <p>Maliyet rasterının değerleri tamsayı veya kayan nokta olabilir, ancak negatif veya sıfır olamaz (negatif veya sıfır maliyete sahip olamazsınız).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Dikey rasterı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Her h&uuml;cre konumu i&ccedil;in z değerlerini tanımlayan bir raster.
+            </p>
+            <p>Bu değerler, bir h&uuml;creden diğerine ge&ccedil;erken oluşan dikey fakt&ouml;r&uuml; tanımlamak i&ccedil;in kullanılan eğimi hesaplamak i&ccedil;in kullanılır.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Dikey faktör (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Dikey fakt&ouml;r</b> dikey maliyet fakt&ouml;r&uuml; (VF) ve dikey bağıl hareket a&ccedil;ısı (VRMA) arasındaki ilişkiyi belirtir.
+            </p>
+            <p>Tanımlanmış bir dikey fakt&ouml;r grafiğini tanımlamak i&ccedil;in arasından se&ccedil;im yapılabilecek değiştiricili birka&ccedil; fakt&ouml;r mevcuttur. Grafikler, komşu bir h&uuml;creye taşınmanın toplam maliyetinin hesaplanmasında kullanılan dikey fakt&ouml;r&uuml; tanımlamak i&ccedil;in kullanılır.
+            </p>
+            <p>Aşağıdaki a&ccedil;ıklamalarda VF, bir h&uuml;creden diğerine ge&ccedil;erken karşılaşılan dikey zorluğunu tanımlamaktadır ve VRMA değiştiricisi ise  <b>Kaynaktan</b> h&uuml;cresi ile <b>Kaynağa</b> h&uuml;cresi arasındaki eğim a&ccedil;ısını tanımlamaktadır.
+                <ul>
+                    <li> <b>İkili</b>&mdash;Eğer VRMA, d&uuml;ş&uuml;k kesim a&ccedil;ısından b&uuml;y&uuml;kse ve y&uuml;ksek kesim a&ccedil;ısından k&uuml;&ccedil;&uuml;kse, bu durumda VF, sıfır fonksiyonuyla ilişkili değere ayarlanır, aksi takdirde sonsuzdur.
+                    </li>
+                    <li> <b>Lineer</b>&mdash;VF, VRMA'nın lineer bir fonksiyonudur.
+                    </li>
+                    <li> <b>Ters lineer</b>&mdash;VF, VRMA'nın ters lineer bir fonksiyonudur.
+                    </li>
+                    <li> <b>Simetrik lineer</b>&mdash;VF, VRMA'nın negatif veya pozitif tarafında lineer bir fonksiyonudur ve iki lineer fonksiyon VF (y) eksenine g&ouml;re simetriktir.
+                    </li>
+                    <li> <b>Simetrik ters lineer</b>&mdash;VF, VRMA'nın negatif veya pozitif tarafında ters lineer bir fonksiyonudur ve iki lineer fonksiyon VF (y) eksenine g&ouml;re simetriktir.
+                    </li>
+                    <li> <b>Kos</b>&mdash;VF, VRMA'nın kosin&uuml;s temelli fonksiyonudur.
+                    </li>
+                    <li> <b>Sek</b>&mdash;VF, VRMA'nın sekant temelli fonksiyonudur.
+                    </li>
+                    <li> <b>Kos-Sek</b>&mdash;VF, VRMA negatif olduğu zaman VRMA'nın kosin&uuml;s temelli fonksiyonudur ve VRMA negatif olmadığı zaman VRMA'nın sekant temelli fonksiyonudur.
+                    </li>
+                    <li> <b>Sek-Kos</b>&mdash;VF, VRMA negatif olduğu zaman VRMA'nın sekant temelli fonksiyonudur ve VRMA negatif olmadığı zaman VRMA'nın kosin&uuml;s temelli fonksiyonudur.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Dikey parametrelerin değiştiricileri aşağıdaki şekildedir:
+                <ul>
+                    <li> <b>Sıfır fakt&ouml;r&uuml;</b>&mdash;VRMA sıfır olduğu zaman kullanılan dikey fakt&ouml;rd&uuml;r. Bu fakt&ouml;r, belirtilen fonksiyonun y-kesimini konumlandırır. Tanım gereği, sıfır fakt&ouml;r&uuml; trigonometrik dikey fonksiyonların (Kos, Sek, Kos-Sek ya da Sek-Kos) hi&ccedil;birine uygulanamaz. Y-kesimi bu fonksiyonlarla tanımlanır.
+                    </li>
+                    <li> <b>D&uuml;ş&uuml;k kesme a&ccedil;ısı</b>&mdash;VF'nin altında kalanların sonsuz olarak ayarlanacağı VRMA a&ccedil;ısı.
+                    </li>
+                    <li> <b>Y&uuml;ksek kesme a&ccedil;ısı</b>&mdash;VF'nin &uuml;zerinde kalanların sonsuz olarak ayarlanacağı VRMA a&ccedil;ısı.
+                    </li>
+                    <li> <b>Eğim</b>&mdash; <b>Lineer</b> ve <b>Ters lineer</b> parametreleriyle kullanılan d&uuml;z &ccedil;izginin eğimi. Eğim, rise-over-run&rsquo;ın bir kesri olarak belirtilir (&ouml;rneğin, y&uuml;zde 45 eğim, 1/45'tir; bu da 0,02222 olarak girilir).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Yatay rasterı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Her h&uuml;credeki yatay y&ouml;n&uuml; tanımlayan bir raster.
+            </p>
+            <p>Rasterdaki değerlerin 0 ile 360 arasında değişen, 0 derece kuzeyde veya ekranın &uuml;st&uuml;nde bulunan bir tam sayı olması ve saat y&ouml;n&uuml;nde artması gerekir. D&uuml;z alanlara -1 değeri verilmelidir. Her bir konumdaki değerler, bir h&uuml;creden komşusu olan h&uuml;crelere ge&ccedil;erken ortaya &ccedil;ıkan yatay maliyeti belirlemek i&ccedil;in  <b>Yatay fakt&ouml;r</b> ile birlikte kullanılacaktır.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Yatay faktör (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Yatay fakt&ouml;r</b> yatay maliyet fakt&ouml;r&uuml; ve yatay bağıl hareket a&ccedil;ısı arasındaki ilişkiyi tanımlar.
+            </p>
+            <p>Tanımlanmış bir yatay fakt&ouml;r grafiğini tanımlamak i&ccedil;in arasından se&ccedil;im yapılabilecek değiştiricili birka&ccedil; fakt&ouml;r mevcuttur. Grafikler, komşu bir h&uuml;creye taşınmanın toplam maliyetinin hesaplanmasında kullanılan yatay fakt&ouml;r&uuml; tanımlamak amacıyla kullanılır.
+            </p>
+            <p>Aşağıdaki a&ccedil;ıklamalarda, yatay fakt&ouml;r (HF) bir h&uuml;creden diğerine ge&ccedil;erken karşılaşılan yatay zorluğu tanımlarken, yatay bağıl hareket a&ccedil;ısı (HRMA) ise bir h&uuml;crenin yatay y&ouml;n&uuml;yle hareket y&ouml;n&uuml; arasındaki a&ccedil;ıyı tanımlar.
+            </p>
+            <p>Bu HF'lerin tanımları ve parametreleri aşağıdaki gibidir:
+                <ul>
+                    <li> <b>İkili</b>&mdash;Eğer HRMA kesme a&ccedil;ısından daha azsa, bu durumda HF sıfır fakt&ouml;r&uuml;yle ilişkili değere ayarlanır, aksi takdirde sonsuzdur.
+                        
+
+                    </li>
+                    <li> <b>İleri</b>&mdash;Sadece ileri harekete izin verilir. HRMA, 0&rsquo;a eşit veya daha b&uuml;y&uuml;k ve 90'dan daha k&uuml;&ccedil;&uuml;k olmalıdır (0 &lt;= HRMA &lt; 90). HRMA 0'dan b&uuml;y&uuml;k ve 45 dereceden d&uuml;ş&uuml;kse, h&uuml;crenin HF'si sıfır fakt&ouml;r&uuml;yle ilişkili değere ayarlanır. HRMA, 45 dereceden b&uuml;y&uuml;k veya eşitse, yan değer değiştirici değeri kullanılır. 90 dereceye eşit veya daha b&uuml;y&uuml;k herhangi bir HRMA i&ccedil;in HF sonsuz olarak ayarlanır.
+                        
+
+                    </li>
+                    <li> <b>Lineer</b>&mdash;HF, HRMA'nın lineer bir fonksiyonudur.
+                        
+
+                    </li>
+                    <li> <b>Ters lineer</b>&mdash;HF, HRMA'nın ters lineer bir fonksiyonudur.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Yatay anahtar s&ouml;zc&uuml;klerin değiştiricileri aşağıdaki şekildedir:
+                <ul>
+                    <li> <b>Sıfır fakt&ouml;r&uuml;</b>&mdash;HRMA 0 olduğu zaman kullanılan yatay fakt&ouml;rd&uuml;r. Bu fakt&ouml;r, y-kesimini yatay fakt&ouml;r fonksiyonlarından herhangi biri i&ccedil;in konumlandırır.
+                        
+
+                    </li>
+                    <li> <b>Kesme a&ccedil;ısı</b>&mdash;HF'nin &ouml;tesinde kalanlar i&ccedil;in sonsuz olarak ayarlanacak olan HRMA a&ccedil;ısı.
+                        
+
+                    </li>
+                    <li> <b>Eğim</b>&mdash; <b>Lineer</b> ve <b>Ters lineer</b> yatay fakt&ouml;r anahtar s&ouml;zc&uuml;kleriyle birlikte kullanılan d&uuml;z &ccedil;izginin eğimi. Eğim, rise-over-run&rsquo;ın bir kesri olarak belirtilir (&ouml;rneğin, y&uuml;zde 45 eğim, 1/45'tir; bu da 0,02222 olarak girilir).
+                        
+
+                    </li>
+                    <li> <b>Yan Değer</b>&mdash; <b>İleri</b> yatay fakt&ouml;r anahtar s&ouml;zc&uuml;ğ&uuml; tanımlandığı zaman HRMA 45 dereceden daha b&uuml;y&uuml;k ya da buna eşit ve 90 dereceden daha az olduğundaki HF.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>İlk birikim</h2></div>
+        <hr/>
+        <div>
+            <p>Maliyet hesaplamasına başlamak i&ccedil;in başlangı&ccedil; birikimli maliyeti.
+            </p>
+            <p>Bu, bir kaynakla ilişkili sabit maliyetin belirtilmesi i&ccedil;in kullanılır. Sıfır maliyetiyle başlamak yerine, maliyet algoritması  <b>İlk birikim</b> tarafından ayarlanan değerle başlayacaktır.
+            </p>
+            <p>Değerler sıfır ya da daha b&uuml;y&uuml;k olmalıdır. Varsayılan değer 0'dir.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimum birikim</h2></div>
+        <hr/>
+        <div>
+            <p>Bir kaynak i&ccedil;in yolcunun maksimum birikimi.
+            </p>
+            <p>Maliyet hesaplamaları, belirlenen birikime ulaşılana kadar her kaynak i&ccedil;in devam eder.
+            </p>
+            <p>Değerler sıfırdan b&uuml;y&uuml;k olmalıdır. Varsayılan birikim, &ccedil;ıktı rasterının kenarına kadardır.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Maliyet çarpanı</h2></div>
+        <hr/>
+        <div>
+            <p>Maliyet değerlerine uygulanacak olan &ccedil;arpan.
+            </p>
+            <p>Bu, bir seyahat modunun veya bir kaynaktaki b&uuml;y&uuml;kl&uuml;ğ&uuml;n kontrol&uuml;n&uuml; sağlar. &Ccedil;arpan ne kadar b&uuml;y&uuml;kse, her bir h&uuml;creye ge&ccedil;menin maliyeti o kadar artar.
+            </p>
+            <p>Değerler sıfırdan b&uuml;y&uuml;k olmalıdır. Varsayılan değer 1'dir.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Seyahat yönü</h2></div>
+        <hr/>
+        <div>
+            <p>Yatay ve dikey fakt&ouml;rler uygulanırken yolcunun y&ouml;n&uuml;n&uuml; belirtir.
+            </p>
+            <p> <b>Kaynaktan</b>&mdash;Yatay fakt&ouml;r ve dikey fakt&ouml;r, girdi kaynağından başlayarak uygulanacaktır ve kaynak olmayan h&uuml;crelerin y&ouml;n&uuml;nde hareket edecektir. Varsayılan değerdir.
+            </p>
+            <p> <b>Kaynağa</b>&mdash;Yatay fakt&ouml;r ve dikey fakt&ouml;r, kaynak olmayan her h&uuml;creden başlayarak uygulanacaktır ve girdi kaynağı y&ouml;n&uuml;nde hareket edecektir.
+            </p>
+            <p>B&uuml;t&uuml;n kaynaklara uygulanacak olan  <b>Kaynaktan</b> ya da <b>Kaynağa</b> anahtar s&ouml;zc&uuml;ğ&uuml;n&uuml; tanımlayın veya her bir kaynak i&ccedil;in hareket y&ouml;n&uuml;n&uuml; tanımlamak &uuml;zere anahtar s&ouml;zc&uuml;kleri i&ccedil;eren kaynak verileri i&ccedil;erisinde bir alan tanımlayın. Bu alan <code>KAYNAKTAN</code> veya <code>KAYNAĞA</code> dizisini i&ccedil;ermelidir.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mesafe yöntemi (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafenin bir d&uuml;zlem (d&uuml;z d&uuml;nya) ya da bir jeodezik (elipsoid) y&ouml;ntemi kullanarak hesaplanacağını tanımlar.
+            </p>
+            <ul>
+                <li> <b>D&uuml;zlem</b>&mdash;Mesafe hesaplaması, 2B Kartezyen koordinat sistemi kullanılarak izd&uuml;ş&uuml;mlendirilen d&uuml;z bir d&uuml;zlemde ger&ccedil;ekleştirilir. Bu varsayılan y&ouml;ntemdir.
+                    
+
+                </li>
+                <li> <b>Jeodezik</b>&mdash;Mesafe hesaplaması elipsoid &uuml;zerinde ger&ccedil;ekleştirilir. Bu nedenle girdi veya &ccedil;ıktı izd&uuml;ş&uuml;m&uuml;nden bağımsız olarak sonu&ccedil;lar değişmez.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Sonuç mesafesi birikim raster adı</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafe birikim rasterı, en d&uuml;ş&uuml;k maliyetli kaynaktan gelen ya da bu kaynağa giden her h&uuml;cre i&ccedil;in birikim mesafesini i&ccedil;erir.
+            </p>
+            <p>&Ccedil;ıktı rasterı y&uuml;zen tiptir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Sonuç geri yön raster adı (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Geri y&ouml;n rasterı, derece olarak hesaplanan y&ouml;n&uuml; i&ccedil;erir. Y&ouml;n, engellerden ka&ccedil;ınırken en yakın kaynağa giden en kısa yol boyunca bir sonraki h&uuml;creyi tanımlar.
+            </p>
+            <p>Değer aralığı 0 derece 360 derece arasıdır ve kaynak h&uuml;creler i&ccedil;in 0 ayrılmıştır. Doğu (sağ) 90'dır ve değerler saat y&ouml;n&uuml;nde y&uuml;kselir (180 g&uuml;ney, 270 batı ve 360 kuzey).
+            </p>
+            <p>&Ccedil;ıktı rasterı y&uuml;zen tiptir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b> b&ouml;l&uuml;m&uuml;nde oluşturulacak katmanın adı. <b>İ&ccedil;eriğim</b>&rsquo;de hen&uuml;z mevcut olmayan bir ad belirtmeniz gerekir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Sonuç kaynak yönü raster adı (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Kaynak y&ouml;n&uuml; rasterı, en d&uuml;ş&uuml;k birikimli maliyet kaynak h&uuml;cresinin y&ouml;n&uuml;n&uuml; derece olarak azimut şeklinde tanımlar.
+            </p>
+            <p>Değer aralığı 0 derece 360 derece arasıdır ve kaynak h&uuml;creler i&ccedil;in 0 ayrılmıştır. Doğu (sağ) 90'dır ve değerler saat y&ouml;n&uuml;nde y&uuml;kselir (180 g&uuml;ney, 270 batı ve 360 kuzey).
+            </p>
+            <p>&Ccedil;ıktı rasterı y&uuml;zen tiptir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b> b&ouml;l&uuml;m&uuml;nde oluşturulacak katmanın adı. <b>İ&ccedil;eriğim</b>&rsquo;de hen&uuml;z mevcut olmayan bir ad belirtmeniz gerekir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Sonuç kaynak konumu raster adı (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Kaynak konum rasterı, &ccedil;ok bantlı bir &ccedil;ıktıdır. İlk bant bir satır indeksini i&ccedil;erir ve ikinci bant ise bir s&uuml;tun indeksini i&ccedil;erir. Bu indeksler, kaynak h&uuml;cresinin en d&uuml;ş&uuml;k birikimli maliyet mesafesi olan konumunu belirler.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b> b&ouml;l&uuml;m&uuml;nde oluşturulacak katmanın adı. <b>İ&ccedil;eriğim</b>&rsquo;de hen&uuml;z mevcut olmayan bir ad belirtmeniz gerekir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

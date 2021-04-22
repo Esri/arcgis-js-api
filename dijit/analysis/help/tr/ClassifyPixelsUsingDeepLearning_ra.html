@@ -64,7 +64,7 @@
         <div><h2>Pikselleri sınıflandırmak için kullanılan derin öğrenme modelini seçin</h2></div>
         <hr/>
         <div>
-            <p>Girdi derin &ouml;ğrenme paketi ( <code>.dlpk</code>) &ouml;ğesi.
+            <p>Girdi derin &ouml;ğrenme paketi ( <code>.dlpk</code>) &ouml;gesi.
             </p>
             <p>Derin &ouml;ğrenme paketi, Esri model tanımı JSON dosyası ( <code>.emd</code>), derin &ouml;ğrenme ikili model dosyası ve isteğe bağlı olarak kullanılacak Python raster fonksiyonundan oluşur.
             </p>
@@ -82,10 +82,31 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>İşlem Modu</h2></div>
+        <hr/>
+        <div>
+            <p>Mozaik bir veri k&uuml;mesindeki veya bir g&ouml;r&uuml;nt&uuml; servisindeki t&uuml;m raster &ouml;gelerinin nasıl işleneceğini belirtir. Girdi rasterı, bir mozaik veri k&uuml;mesi ya da bir g&ouml;r&uuml;nt&uuml; servisi olduğunda bu parametre uygulanır.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Mozaik veri k&uuml;mesindeki ya da g&ouml;r&uuml;nt&uuml; servisindeki t&uuml;m raster &ouml;geleri birlikte mozaiklenir ve işlenir. Varsayılan değerdir.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Mozaik veri k&uuml;mesindeki ya da g&ouml;r&uuml;nt&uuml; servisindeki t&uuml;m raster &ouml;geleri ayrı g&ouml;r&uuml;nt&uuml;ler olarak işlenir.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="outputClassifiedRaster">
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

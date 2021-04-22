@@ -67,7 +67,7 @@
     </p>
     <p>Om een analyse uit te voeren met meerpuntsobjecten, moet u deze eerst converteren naar enkelpuntsobjecten voordat u ze in deze tool gebruikt.
     </p>
-    <p>De ruimtelijke referentie van de x,y-co&ouml;rdinaten in de uitvoervoorbeeldtabel zijn dezelfde als de ingevoerde locatieraster of puntobjecten, tenzij ze zijn gespecificeerd in de omgeving van de omgeving <b>Uitvoerco&ouml;rdinatensysteem</b>. Als de ruimtelijke referentie van de ingevoerde locatiegegevens onbekend is, is ook de ruimtelijke referentie van de x,y-co&ouml;rdinaten onbekend.
+    <p>De ruimtelijke referentie van de x,y-co&ouml;rdinaten in de uitvoervoorbeeldtabel zijn dezelfde als de ingevoerde locatieraster of puntobjecten, tenzij ze zijn gespecificeerd in de omgeving van de omgeving <b>Uitvoercoordinatensysteem</b>. Als de ruimtelijke referentie van de ingevoerde locatiegegevens onbekend is, is ook de ruimtelijke referentie van de x,y-co&ouml;rdinaten onbekend.
     </p>
     <p>De ruimtelijke referentie van de uitgevoerde objectklasse is dezelfde als het ingevoerde locatieraster of puntobjecten, tenzij het is gespecificeerd in de omgeving  <b>Uitvoerco&ouml;rdinatensysteem</b>.
     </p>
@@ -112,7 +112,6 @@
             <p>Geef de tijd, diepte of andere acquisitiegegevens op die verband houden met de locatiecellen of objecten.
             </p>
             <p>Voor elke dimensie zijn er drie opties voor het specificeren van de acquisitie-informatie in verband met locatiecellen of objecten:
-
                 <ul>
                     <li> <b>Enkel veld of waarde</b>&mdash;Als deze optie is geselecteerd, moet de volgende informatie worden gespecificeerd:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Resampling-algoritme dat wordt gebruikt bij het bemonsteren van een raster.
             </p>
             <ul>
-                <li> <b>Dichtstbijzijnd</b>&mdash;Dichtstbijzijnde buur. Dit is de standaardinstelling.
+                <li> <b>Dichtstbijzijnd</b>&mdash;Dichtstbijzijnde buur, gebruikt de waarde van de dichtstbijzijnde cel om een waarde toe te wijzen aan de uitvoercel bij het resamplen. Dit is de standaardinstelling.
                 </li>
-                <li> <b>Bilineair</b>&mdash;Bilineaire interpolatie
+                <li> <b>Bilineair</b>&mdash;Bilineaire interpolatie, bepaalt de nieuwe waarde van een cel gebaseerd op een gewogen afstandsgemiddelde van de vier dichtstbijzijnde invoercelcentra.
                 </li>
-                <li> <b>Kubiek</b>&mdash;Kubieke convolutie
+                <li> <b>Kubiek</b>&mdash;Kubieke convolutie, bepaalt de nieuwe waarde van een cel op basis van het passen van een gladde curve door de 16 dichtstbijzijnde input pixelcentra.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["../PopupManager"],(function(p){return{add:function(a,n){a.popupManager||(a.popupManager=new p(n),a.popupManager.setMap(a))},remove:function(p){var a=p.popupManager;a&&(a.unsetMap(),p.popupManager=void 0)}}}));

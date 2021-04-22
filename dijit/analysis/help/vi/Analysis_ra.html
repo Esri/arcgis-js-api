@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Ph&acirc;n t&iacute;ch raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c bộ dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ. Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web  Portal for ArcGIS bao gồm  <b>Tổng kết Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch M&ocirc; h&igrave;nh</b>, <b>Sử dụng V&ugrave;ng l&acirc;n cận</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b>, <b>Quản l&yacute; Dữ liệu</b>, <b>Deep Learning</b> v&agrave; <b>Ph&acirc;n t&iacute;ch Đa chiều</b>.
+        <p>Ph&acirc;n t&iacute;ch raster cho ph&eacute;p bạn tiến h&agrave;nh ph&acirc;n t&iacute;ch c&aacute;c bộ dữ liệu raster lớn bằng c&aacute;ch sử dụng  ArcGIS Image Server. Điều n&agrave;y cho ph&eacute;p bạn ph&acirc;n t&iacute;ch lượng dữ liệu lớn hơn nhanh hơn bằng c&aacute;ch khai th&aacute;c sức mạnh của m&aacute;y chủ.Bộ c&ocirc;ng cụ hiện c&oacute; sẵn cho nhiều trải nghiệm người d&ugrave;ng web Portal for ArcGIS bao gồm  <b>Tổng kết Dữ liệu</b>, <b>Ph&acirc;n t&iacute;ch M&ocirc; h&igrave;nh</b>, <b>Sử dụng V&ugrave;ng l&acirc;n cận</b>, <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b>, <b>Ph&acirc;n t&iacute;ch Địa h&igrave;nh</b>, <b>Quản l&yacute; Dữ liệu</b>, <b>Deep Learning</b> v&agrave; <b>Ph&acirc;n t&iacute;ch Đa chiều</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Tóm tắt Dữ liệu</h2>
         <hr/>
-        <p>Bộ c&ocirc;ng cụ n&agrave;y chứa một c&ocirc;ng cụ để t&iacute;nh to&aacute;n một v&agrave;i số liệu thống k&ecirc; cho lớp raster trong ranh giới v&ugrave;ng m&agrave; bạn x&aacute;c định. 
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y được sử dụng để t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho một lớp raster trong ranh giới khu vực (v&ugrave;ng) do bạn x&aacute;c định.
             <ul>
                 <li> <b>Tổng kết Raster Trong phạm vi</b> t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c &ocirc; raster trong ranh giới v&ugrave;ng x&aacute;c định.
+                </li>
+                <li> <b>Thống k&ecirc; V&ugrave;ng dưới dạng Bảng</b> tổng kết c&aacute;c gi&aacute; trị của một raster trong c&aacute;c v&ugrave;ng của một bộ dữ liệu kh&aacute;c v&agrave; b&aacute;o c&aacute;o kết quả v&agrave;o bảng.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&iacute;nh to&aacute;n một số tổng kết thống k&ecirc; cho &ocirc; raster trong c&aacute;c v&ugrave;ng x&aacute;c định.
+            <p>C&ocirc;ng cụ n&agrave;y tổng kết c&aacute;c gi&aacute; trị của một raster trong c&aacute;c v&ugrave;ng của một bộ dữ liệu kh&aacute;c.
             </p>
-            <p>Một số ứng dụng mẫu bao gồm: 
-
-                <ul>
-                    <li>Với một lớp c&aacute;c phạm vi lưu vực s&ocirc;ng v&agrave; một lớp raster độ cao, t&iacute;nh to&aacute;n khoảng độ cao trong mỗi lưu vực s&ocirc;ng để x&aacute;c định độ cao n&agrave;o sẽ c&oacute; d&ograve;ng chảy mang năng lượng cao nhất.
-                        
-
-                    </li>
-                    <li>Với một lớp c&aacute;c đơn vị quản l&yacute; quản trị v&agrave; một lớp raster của c&aacute;c danh mục sử dụng đất, t&iacute;nh to&aacute;n c&aacute;c gi&aacute; trị sử dụng đất trong phạm vi mỗi khu vực quản l&yacute; để x&aacute;c định gi&aacute; trị n&agrave;o y&ecirc;u cầu lượng c&ocirc;ng việc lớn nhất nhắm x&aacute;c định kế hoạch quản l&yacute;.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Thống kê Vùng dưới dạng Bảng</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Biểu đồ Thống k&ecirc; V&ugrave;ng dưới dạng Bảng">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y tổng kết c&aacute;c gi&aacute; trị của một raster trong c&aacute;c v&ugrave;ng của một bộ dữ liệu kh&aacute;c v&agrave; b&aacute;o c&aacute;o kết quả v&agrave;o bảng.
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Sử dụng Vùng lân cận</h2>
         <hr/>
-        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn trả lời một trong c&aacute;c c&acirc;u hỏi thường gặp nhất đặt ra trong ph&acirc;n t&iacute;ch kh&ocirc;ng gian: &ldquo;C&aacute;i g&igrave; gần c&aacute;i g&igrave;?&rdquo;
-
+        <p>C&aacute;c c&ocirc;ng cụ n&agrave;y gi&uacute;p bạn trả lời một trong c&aacute;c c&acirc;u hỏi thường gặp nhất được đặt ra trong ph&acirc;n t&iacute;ch kh&ocirc;ng gian: C&aacute;i g&igrave; gần c&aacute;i g&igrave;? v&agrave; Đường dẫn tối ưu l&agrave; g&igrave;?
             <ul>
                 <li> <b>T&iacute;nh to&aacute;n Khoảng c&aacute;ch</b> t&iacute;nh to&aacute;n khoảng c&aacute;ch Euclid, hướng v&agrave; sự ph&acirc;n bổ từ một nguồn hoặc tập hợp nguồn.
                     
@@ -146,7 +148,27 @@
                     
 
                 </li>
-                <li> <b>X&aacute;c định Đường dẫn Chi ph&iacute; Đi lại dưới dạng Đa tuyến</b> t&iacute;nh to&aacute;n đường dẫn đa tuyến tối ưu giữa c&aacute;c điểm nguồn v&agrave; điểm đ&iacute;ch đ&atilde; biết.
+                <li> <b>X&aacute;c định Đường dẫn Chi ph&iacute; Đi lại dưới dạng Đa tuyến</b> t&iacute;nh to&aacute;n đường dẫn đa tuyến cực tiểu về chi ph&iacute; giữa c&aacute;c điểm đ&iacute;ch v&agrave; điểm nguồn đ&atilde; biết.
+                    
+
+                </li>
+                <li> <b>T&iacute;ch lũy Khoảng c&aacute;ch</b> t&iacute;nh to&aacute;n khoảng c&aacute;ch t&iacute;ch lũy cho từng &ocirc; tới nguồn, bao gồm khoảng c&aacute;ch đường thẳng, khoảng c&aacute;ch chi ph&iacute;, khoảng c&aacute;ch bề mặt thực, cũng như c&aacute;c hệ số dọc v&agrave; ngang.
+                    
+
+                </li>
+                <li> <b>Ph&acirc;n bổ Khoảng c&aacute;ch</b> t&iacute;nh to&aacute;n ph&acirc;n bổ khoảng c&aacute;ch cho từng &ocirc; tới nguồn được cung cấp dựa tr&ecirc;n khoảng c&aacute;ch đường thẳng, khoảng c&aacute;ch chi ph&iacute; v&agrave; khoảng c&aacute;ch bề mặt thực, cũng như c&aacute;c hệ số dọc v&agrave; ngang.
+                    
+
+                </li>
+                <li> <b>Đường dẫn Tối ưu Dưới dạng Đường</b> t&iacute;nh to&aacute;n đường dẫn tối ưu từ đ&iacute;ch đến nguồn dưới dạng một đường.
+                    
+
+                </li>
+                <li> <b>Đường dẫn Tối ưu Dưới dạng Raster</b> t&iacute;nh to&aacute;n đường dẫn tối ưu từ đ&iacute;ch đến nguồn dưới dạng một raster.
+                    
+
+                </li>
+                <li> <b>Kết nối V&ugrave;ng Tối ưu</b> t&iacute;nh to&aacute;n mạng lưới kết nối giữ hai hoặc nhiều v&ugrave;ng đầu v&agrave;o.
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&iacute;nh to&aacute;n khoảng c&aacute;ch Euclid, hướng v&agrave; sự ph&acirc;n bổ từ một nguồn hoặc tập hợp nguồn. Bạn c&oacute; thể sử dụng c&ocirc;ng cụ n&agrave;y để x&aacute;c định một vị tr&iacute; c&aacute;ch một con đường, một t&ograve;a nh&agrave; hoặc một c&ocirc;ng vi&ecirc;n bao xa. Bạn cũng c&oacute; thể x&aacute;c định bạn phải đi hướng n&agrave;o từ một vị tr&iacute; để quay lại nguồn theo hướng thẳng nhất. Bạn cũng c&oacute; thể xem mọi vị tr&iacute; trong khu vực nghi&ecirc;n cứu của bạn để biết vị tr&iacute; n&agrave;o gần nguồn nhất.
+            <p>C&ocirc;ng cụ n&agrave;y x&aacute;c định khoảng c&aacute;ch Euclid, hướng v&agrave; sự ph&acirc;n bổ từ một nguồn hoặc tập hợp nguồn.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&iacute;nh to&aacute;n mạng lưới chi ph&iacute; tối ưu từ một tập hợp c&aacute;c khu vực đầu v&agrave;o.
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n mạng lưới chi ph&iacute; tối ưu từ một tập hợp c&aacute;c khu vực đầu v&agrave;o.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&iacute;nh to&aacute;n đường dẫn đa tuyến c&oacute; chi ph&iacute; tối ưu giữa c&aacute;c điểm nguồn v&agrave; điểm đ&iacute;ch đ&atilde; biết.
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n đường dẫn đa tuyến tối ưu giữa c&aacute;c điểm đ&iacute;ch v&agrave; điểm nguồn.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Distance Accumulation (Tích lũy Khoảng cách)</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ T&iacute;ch lũy Khoảng c&aacute;ch">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n khoảng c&aacute;ch t&iacute;ch lũy cho từng &ocirc; tới nguồn, bao gồm khoảng c&aacute;ch đường thẳng, khoảng c&aacute;ch chi ph&iacute;, khoảng c&aacute;ch bề mặt thực, c&aacute;c hệ số dọc v&agrave; ngang.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Distance Allocation (Phân bổ Khoảng cách)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ Ph&acirc;n bổ Khoảng c&aacute;ch">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n ph&acirc;n bổ khoảng c&aacute;ch cho từng &ocirc; tới nguồn được cung cấp dựa tr&ecirc;n khoảng c&aacute;ch đường thẳng, khoảng c&aacute;ch chi ph&iacute;, khoảng c&aacute;ch bề mặt thực, c&aacute;c hệ số dọc v&agrave; ngang.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Path As Line (Đường dẫn Tối ưu Dưới dạng Đường)</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ Optimal Path As Line (Đường dẫn Tối ưu Dưới dạng Đường)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n đường dẫn tối ưu từ đ&iacute;ch đến nguồn dưới dạng một đường.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Path As Raster (Đường dẫn tối ưu dưới dạng Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ Optimal Path As Raster (Đường dẫn tối ưu dưới dạng Raster)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n đường dẫn tối ưu từ đ&iacute;ch đến nguồn dưới dạng một raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Region Connections (Kết nối Vùng Tối ưu)</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="H&igrave;nh minh họa c&ocirc;ng cụ Optimal Region Connections (Kết nối V&ugrave;ng Tối ưu)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n mạng lưới kết nối giữ hai hoặc nhiều v&ugrave;ng đầu v&agrave;o.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="regularsize">
         <h2>Phân tích Hình ảnh</h2>
         <hr/>
-        <p>C&aacute;c c&ocirc;ng cụ sau đ&acirc;y sẽ gi&uacute;p bạn ph&acirc;n t&iacute;ch h&igrave;nh ảnh. 
+        <p>C&aacute;c c&ocirc;ng cụ trong danh mục c&ocirc;ng cụ  <b>Ph&acirc;n t&iacute;ch H&igrave;nh ảnh</b> gi&uacute;p bạn ph&acirc;n t&iacute;ch h&igrave;nh ảnh:
             <ul>
-                <li> <b>&Aacute;p dụng Mẫu Chức năng Raster</b> xử l&yacute; h&igrave;nh ảnh của bạn bằng chuỗi chức năng, được x&aacute;c định bởi mẫu chức năng raster.
-                </li>
-                <li> <b>Theo d&otilde;i Thảm thực vật</b> ph&aacute;t hiện thảm thực vật trong một ảnh, dựa tr&ecirc;n ph&eacute;p to&aacute;n số học tr&ecirc;n c&aacute;c dải s&oacute;ng.
+                <li> <b>Theo d&otilde;i Thảm thực vật</b> ph&aacute;t hiện độ bao phủ tương đối của thảm thực vật trong một ảnh, dựa tr&ecirc;n ph&eacute;p to&aacute;n số học tr&ecirc;n c&aacute;c dải s&oacute;ng. Một số chỉ số thảm thực vật được cung cấp để ph&acirc;n t&iacute;ch h&igrave;nh ảnh.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Áp dụng Raster Function Template</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="&Aacute;p dụng Raster Function Template">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Xử l&yacute; h&igrave;nh ảnh bằng chuỗi chức năng, như được x&aacute;c định bởi mẫu chức năng raster.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Thực hiện một ph&eacute;p to&aacute;n số học tr&ecirc;n c&aacute;c dải s&oacute;ng của lớp raster đa băng tần để ph&aacute;t hiện th&ocirc;ng tin về lượng bao phủ của thảm thực vật ở khu vực nghi&ecirc;n cứu.
+            <p>Thực hiện một ph&eacute;p to&aacute;n số học tr&ecirc;n c&aacute;c dải s&oacute;ng của lớp raster đa băng tần để ph&aacute;t hiện th&ocirc;ng tin về lượng bao phủ của thảm thực vật.
             </p>
             <br/>
         </div>
@@ -448,9 +528,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Phân loại Pixel sử dụng Deep Learning</h2></td>
+                    <td><h2>Phân loại pixel sử dụng Deep Learning</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Ph&acirc;n loại Pixel sử dụng Deep Learning">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Ph&acirc;n loại pixel sử dụng Deep Learning">
                     </td>
                 </tr></tbody>
             </table>
@@ -463,9 +543,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Phát hiện Đối tượng sử dụng Deep Learning</h2></td>
+                    <td><h2>Phát hiện đối tượng sử dụng Deep Learning</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Ph&aacute;t hiện Đối tượng sử dụng Deep Learning">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Ph&aacute;t hiện đối tượng sử dụng Deep Learning">
                     </td>
                 </tr></tbody>
             </table>

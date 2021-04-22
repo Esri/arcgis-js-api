@@ -44,7 +44,7 @@
         <h2>Voltar a Cartografar Valores</h2><p/>
         <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="Ferramenta Voltar a Cartografar Valores para Portal"></h2>
         <hr/>
-    <p>Esta ferramenta permite-lhe alterar ou reclassificar os valores de pixeis dos dados raster. Os valores de pixeis s&atilde;o cartografados novamente atrav&eacute;s da especifica&ccedil;&atilde;o de um intervalo de valores em pixeis a cartografar num valor de pixel de sa&iacute;da. O valor de pixel de sa&iacute;da pode ser um valor v&aacute;lido ou um valor NoData, que s&atilde;o pixeis desprovidos de um valor conhecido associado aos mesmos.
+    <p>Esta ferramenta permite-lhe alterar ou reclassificar os valores de pixeis dos dados raster. Os valores de p&iacute;xeis s&atilde;o cartografados novamente atrav&eacute;s da especifica&ccedil;&atilde;o de um intervalo de valores em p&iacute;xeis a cartografar num valor de p&iacute;xel de sa&iacute;da. O valor de p&iacute;xel de sa&iacute;da pode ser um valor v&aacute;lido ou um valor NoData, que s&atilde;o p&iacute;xeis desprovidos de um valor conhecido associado aos mesmos.
     </p>
     <p>Se a op&ccedil;&atilde;o  <b>Utilizar a atual extens&atilde;o de mapa</b> estiver marcada , ser&atilde;o novamente cartografadas apenas as c&eacute;lulas raster que se encontrem vis&iacute;veis na atual extens&atilde;o do mapa. Se n&atilde;o marcar a op&ccedil;&atilde;o, ser&atilde;o processadas todas as c&eacute;lulas do raster, mesmo que se encontrem fora da extens&atilde;o atual do mapa.
     </p>
@@ -59,12 +59,12 @@
         </div>
     </div>
     <div id="RemapList">
-        <div><h2>Voltar a cartografar valores de pixeis para novos valores</h2></div>
+        <div><h2>Cartografar Novamente valores de pixeis para novos valores</h2></div>
         <hr/>
         <div>
-            <p>Introduzir&aacute; um intervalo de valores, especificando um valor m&iacute;nimo e um valor m&aacute;ximo, e depois um calor de sa&iacute;da ou um valor No Data ao intervalo especificado.
+            <p>Introduza um intervalo de valores, especificando um valor m&iacute;nimo e um valor m&aacute;ximo, e depois um calor de sa&iacute;da ou um valor No Data ao intervalo especificado.
             </p>
-            <p>Para voltar a cartografar um novo intervalo de valores, clique em  <b>Adicionar</b>, o que adiciona uma linha. Clique em cada um dos valores para editar a tabela em em conson&acirc;ncia com os intervalos e o valor cartografado novamente de que necessita. Quando especifica os intervalos de valores, existem duas regras importantes a empregar:
+            <p>Para voltar a cartografar um novo intervalo de valores, clique em  <b>Adicionar</b>, o que adiciona uma linha. Clique em cada um dos valores para editar a tabela em conson&acirc;ncia com os intervalos e o valor cartografado novamente de que necessita. Quando especifica os intervalos de valores, existem duas regras importantes a empregar:
                 <ul>
                     <li>O valor m&iacute;nimo no intervalo &eacute; inclusivo, e o valor m&aacute;ximo &eacute; exclusivo.
                     </li>
@@ -100,7 +100,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-19
+                    <p>10&ndash;19
                     </p>
                 </td>
             </tr>
@@ -119,9 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>A ordem de intervalos especificada na tabela tamb&eacute;m &eacute; importante. A linha superior da tabela &eacute; processada em primeiro lugar, depois &eacute; processada a linha abaixo. As duas tabelas exibidas abaixo mostram como os mesmos intervalos de valores podem produzir resultados diferentes, devido &agrave; ordem das linhas na coluna.
+            <p>A ordem de intervalos especificada na tabela tamb&eacute;m &eacute; importante. A linha superior da tabela &eacute; processada em primeiro lugar e, em seguida, &eacute; processada a linha abaixo. As duas tabelas exibidas abaixo mostram como os mesmos intervalos de valores podem produzir resultados diferentes, devido &agrave; ordem das linhas na coluna.
             </p> 
-            <p>A tabela abaixo exibe o valor de sa&iacute;da quando a primeira coluna &eacute; ordenada numericamente:
+            <p>A primeira tabela exibe o valor de sa&iacute;da quando a primeira coluna &eacute; ordenada numericamente.
             </p>
             <table border="1">
             <tr>
@@ -134,7 +134,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>1-14
+                    <p>1&ndash;14
                     </p>
                 </td>
             </tr>
@@ -148,7 +148,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>15-29
+                    <p>15&ndash;29
                     </p>
                 </td>
             </tr>
@@ -162,12 +162,12 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
             </table>
-            <p>A tabela abaixo demonstra que uma ordena&ccedil;&atilde;o diferente das linhas ir&aacute; produzir diferentes valores de sa&iacute;da:
+            <p>A segunda tabela demonstra que uma ordena&ccedil;&atilde;o diferente das linhas ir&aacute; produzir diferentes valores de sa&iacute;da:
             </p> 
             <table border="1">
             <tr>
@@ -180,7 +180,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-29
+                    <p>10&ndash;29
                     </p>
                 </td>
             </tr>
@@ -208,7 +208,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
@@ -221,6 +221,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Anzureichernde Punkt-Features auswählen",chooseMVgridLyrLabel:"Gitter mit mehreren Variablen auswählen, über das angereichert werden soll",chooseVariables:"Hinzuzufügende Variablen auswählen",outputLayerName:"Angereicherte ${inputFeatures} aus ${gridLayer}",itemDescription:"Durch Ausführung der Lösung 'Über Gitter mit mehreren Variablen anreichern' für ${inputFeatures} generierter Feature-Layer.",itemTags:"Analyseergebnis, Über Gitter mit mehreren Variablen anreichern, ${inputFeatures}, ${gridLayer}",itemSnippet:"Über 'Über Gitter mit mehreren Variablen anreichern' generierter Feature-Layer."});

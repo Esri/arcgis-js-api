@@ -59,7 +59,7 @@
             <p>Layer di destinazione alla cui tabella verranno aggiunti gli attributi derivanti dal layer di join.
             </p>
             <p>Oltre a scegliere un layer dalla mappa, &egrave; possibile selezionare  <b>Scegli layer di analisi</b> in fondo all'elenco a discesa. Con questa opzione si apre una galleria in cui &egrave; possibile individuare e selezionare dataset di varie fonti da utilizzare nell'analisi. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Determina in che modo verranno gestiti i layer di join e di destinazione se pi&ugrave; feature nel layer di join presentano la stessa relazione con il layer di destinazione. Di seguito sono riportate le due operazioni di join tra cui scegliere:
                 <ul>
-                    <li> <b>Join uno a uno</b>: questa opzione unisce le feature nel layer di target in una singola feature nel layer di join. La maniera in cui le feature vengono unite, viene determinata dal parametro <b>Aggiungere statistiche</b> o dal parametro <b>Specificare quale record mantenere</b>. Se viene utilizzato <b>Aggiungere statistiche</b>, tutte le feature unite corrispondenti verranno riepilogate per ogni feature nel layer di destinazione. Il conteggio di feature unite verr&agrave; aggiunto per impostazione predefinita. Se viene utilizzato <b>Specificare quale record mantenere</b>, &egrave; possibile scegliere di mantenere il primo record corrispondente (predefinito) o di mantenere un record corrispondente basato su un&rsquo;espressione. Un&rsquo;espressione pu&ograve; utilizzare un campo numerico (opzione per il record pi&ugrave; grande o pi&ugrave; piccolo) o un campo data (opzione per il pi&ugrave; recente o per il pi&ugrave; datato).
+                    <li> <b>Join uno a uno</b>: questa opzione unisce le feature nel layer di target in una singola feature nel layer di join. La maniera in cui le feature vengono unite, viene determinata dal parametro <b>Aggiungere statistiche</b> o dal parametro <b>Specificare quale record mantenere</b>. Se viene utilizzato <b>Aggiungi statistiche</b>, tutte le feature unite corrispondenti verranno riepilogate per ogni feature nel layer di destinazione. Il conteggio di feature unite verr&agrave; aggiunto per impostazione predefinita. Se <b>Specificare quale record mantenere</b> &egrave; utilizzato, puoi scegliere di mantenere il primo record corrispondente (impostazione predefinita) o di mantenere il record corrispondente con il valore pi&ugrave; alto o pi&ugrave; basso in un determinato campo ( <b>Ordinato per</b>). L'ordine per espressione richiede un campo numerico (opzione per il valore pi&ugrave; grande o pi&ugrave; piccolo) o un campo data (opzione per il pi&ugrave; recente o il pi&ugrave; vecchio).
                     </li>
                     <li> <b>Join uno a molti</b>: questa opzione unisce tutte le feature corrispondenti nel layer di join al layer di destinazione. Il layer risultati conterr&agrave; pi&ugrave; record della feature di destinazione.
                     </li>
                 </ul>
                 
             </p>
-            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino. In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b> e si seleziona una statistica, come risultato si otterranno una feature che rappresenta il mercato contadino e informazioni riepilogative dei supermercati, come il conteggio (5) e altre statistiche facoltative, ad esempio la somma delle vendite annuali.
+            <p>Si supponga, ad esempio, di voler trovare i supermercati situati a meno di 5 km da un mercato contadino. In questo caso, il layer nel quale verr&agrave; eseguito il join ha una sola feature che rappresenta un mercato contadino, mentre le feature di join rappresentano i negozi di alimentari che hanno degli attributi, come le vendite annuali totali. Utilizzando lo strumento  <b>Join delle feature</b>, sono stati trovati cinque negozi di alimentari che soddisfano i criteri. Se si specifica l'opzione <b>Join uno a molti</b>, come risultato si otterranno cinque feature nel risultato e ciascuna riga rappresenta il mercato contadino e un supermercato. Se si specifica una relazione <b>Join uno a uno</b> e si seleziona <b>Definisci quale record tenere</b>, vi ritroverete con una caratteristica che rappresenta il mercato degli agricoltori e un supermercato, ad esempio quello con le vendite annuali pi&ugrave; elevate. Se si specifica una relazione <b>Aggiungi statistiche</b>, vi ritroverete con una caratteristica che rappresenta il mercato degli agricoltori e un riepilogo dei cinque supermercati, come la somma delle vendite annuali e il conteggio (5) dei supermercati riepilogati. 
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Crea i risultati come vista di feature layer hosted</h2></div>
         <hr/>
         <div>
-            <p> La creazione dei risultati come una vista del feature layer hosted permette di mantenere i dati sempre aggiornati mentre i dati origine cambiano. Le viste hosted feature layer che contengono join saranno di sola lettura.
+            <p>La creazione dei risultati come una vista del feature layer hosted permette di mantenere i dati sempre aggiornati mentre i dati origine cambiano. Le viste del Feature Layer ospitate che contengono i join saranno di sola lettura.
             </p>
+            <p class="OnlineOnly">Le viste del Feature Layer ospitate contenenti join non consumano crediti per l'analisi e l'archiviazione.
+            </p> 
             <p>&Egrave; possibile creare una vista del feature layer hosted dai risultati dell&rsquo;analisi se vengono rispettate le seguenti condizioni:
                 <ul>
                     <li>Si &egrave; proprietari di entrambi i layer.

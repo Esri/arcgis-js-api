@@ -1,8 +1,18 @@
 <div data-dojo-attach-point="containerNode">
-
+ 
   <!-- resource constraints -->
   <div data-dojo-type="esri/dijit/metadata/form/Element"
-    data-dojo-props="target:'resConst',minOccurs:0,maxOccurs:'unbounded',label:'${i18nArcGIS.resource.resConst}'">
+    data-dojo-props="target:'resConst',minOccurs:0,maxOccurs:'unbounded',label:'${i18nArcGIS.resource.resConst}',
+    matchTopNode:[
+      {
+        qPath:'LegConsts/inspirePublicAccessLimits',
+        qMode: 'mustNot'
+      },
+      {
+        qPath:'LegConsts/inspireAccessUseConditions',
+        qMode: 'mustNot'
+      }
+    ]">
     <div data-dojo-type="esri/dijit/metadata/form/ElementChoice" data-dojo-props="isResConstElementChoice:true">
       
       <!-- general -->
@@ -22,4 +32,13 @@
       
     </div>
   </div>
+
+  <!-- access constraints -->
+  <div data-dojo-type="esri/dijit/metadata/types/arcgis/constraints/AccessConstraints">
+  </div>
+
+  <!-- use limitations -->
+  <div data-dojo-type="esri/dijit/metadata/types/arcgis/constraints/UseLimitations">
+  </div>
+
 </div>

@@ -44,7 +44,7 @@
         <h2>Temukan Statistik Argumen</h2><p/>
         <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Temukan Statistik Argumen"></h2>
         <hr/>
-    <p>Ekstrak nilai dimensi atau indeks band di mana statistik yang diberikan dicapai untuk setiap piksel dalam raster multidimensional atau multiband.
+    <p>Ekstrak nilai dimensi atau indeks band di mana statistik yang diberikan dicapai untuk setiap piksel dalam raster multidimensional atau multipita.
     </p>
     <p>Gunakan alat ini untuk mengekstraksi nilai dimensi (misalnya tanggal, tinggi, atau kedalaman) dengan statistik tertentu dicapai dalam tumpukan raster dalam set data raster multidimensional. Atau temukan nomor band dengan statistik dicapai dalam raster multiband.
     </p>
@@ -66,7 +66,7 @@
         <div><h2>Pilih dimensi dari mana statistik akan diekstrak</h2></div>
         <hr/>
         <div>
-            <p>Dimensi dari mana statistik akan diekstrak. Jika raster input bukan raster multidimensional, parameter ini tidak diperlukan.
+            <p>Dimensi asal statistik yang akan diekstrak. Jika raster input bukan raster multidimensional, parameter ini tidak diperlukan.
             </p>
         </div>
     </div>
@@ -74,7 +74,7 @@
         <div><h2>Pilih variabel yang akan dianalisis</h2></div>
         <hr/>
         <div>
-            <p>Variabel atau variabel yang akan dianalisis. Jika raster input bukan multidimensional, nilai-nilai piksel raster multiband dianggap sebagai variabel. Jika raster input multidimensional dan tidak ada variabel yang ditentukan, semua variabel dengan dimensi yang dipilih akan dianalisis.
+            <p>Variabel yang akan dianalisis. Jika raster input bukan multidimensional, nilai-nilai piksel raster multiband akan dianggap sebagai variabel. Jika raster input multidimensional dan tidak ada variabel yang ditentukan, semua variabel dengan dimensi yang dipilih akan dianalisis.
             </p>
             <p>Misalnya, untuk menemukan tahun dengan nilai suhu tertinggi, tentukan suhu sebagai variabel yang akan dianalisis. Jika Anda tidak menentukan variabel apa pun dan Anda memiliki variabel suhu dan curah hujan, kedua variabel tersebut akan dianalisis, dan raster multidimensional output akan menyertakan kedua variabel tersebut.
             </p>
@@ -84,7 +84,7 @@
         <div><h2>Pilih jenis statistik</h2></div>
         <hr/>
         <div>
-            <p>Menentukan statistik untuk mengekstrak dari variabel atau variabel di sepanjang dimensi yang ditentukan. 
+            <p>Menentukan statistik untuk mengekstrak dari variabel atau variabel di sepanjang dimensi yang ditentukan.
             </p>
             <ul>
                 <li> <b>Argumen minimum</b>&mdash;Nilai dimensi saat nilai variabel minimum tercapai akan diekstrak. Ini adalah default.
@@ -131,7 +131,7 @@
         <div><h2>Pilih penentuan dimensi</h2></div>
         <hr/>
         <div>
-            <p>Menentukan cara statistik akan diekstrak dari dimensi. 
+            <p>Menentukan cara statistik akan diekstrak dari dimensi.
                 <ul>
                     <li> <b>Semua</b>&mdash;Statistik akan diekstrak di semua dimensi. Ini adalah default.
                     </li>
@@ -148,7 +148,7 @@
         <div>
             <p>Unit waktu saat statistik akan diekstrak.
             </p>
-            <p>Misalnya, Anda memiliki lima tahun data suhu permukaan laut harian dan Anda ingin tahu tahun saat suhu maksimum diamati. Atur  <b>Argumen maksimum</b> sebagai jenis statistik, atur <b>Kata Kunci Interval</b> sebagai penentuan dimensi, dan atur <b>Tahunan</b> sebagai interval kata kunci dalam langkah ini.
+            <p>Misalnya, Anda memiliki data suhu permukaan laut harian sepanjang lima tahun dan Anda ingin tahu kapan tahun saat suhu maksimum bisa diamati. Atur  <b>Argumen maksimum</b> sebagai jenis statistik, atur <b>Kata Kunci Interval</b> sebagai penentuan dimensi, dan atur <b>Tahunan</b> sebagai interval kata kunci dalam langkah ini.
             </p>
             <p>Atau, jika Anda ingin mengetahui bulan saat suhu maksimum diamati secara konsisten, atur  <b>Argumen maksimum</b> sebagai jenis statistik, atur <b>Kata Kunci Interval</b> sebagai penentuan dimensi, dan atur <b>Berulang Setiap Bulan</b> sebagai interval kata kunci dalam langkah ini. Ini akan menghasilkan raster dengan setiap piksel berisi bulan tempat statistik dicapai di seluruh catatan lima tahun (08/18/2018, 08/25/2016, 08/07/2013, misalnya).
             </p>
@@ -185,7 +185,7 @@
         <div>
             <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis.
                 <ul>
-                    <li>Jika kotak dicentang, analisis akan menyertakan semua piksel yang valid di sepanjang dimensi yang ditentukan dan mengabaikan piksel NoData. Ini adalah default.
+                    <li>Jika kotak dicentang, analisis akan mencakup semua piksel yang valid di sepanjang dimensi tertentu dan mengabaikan piksel NoData. Ini adalah default.
                     </li>
                     <li>Jika kotak tidak dicentang, analisis akan menghasilkan NoData jika ada nilai NoData untuk piksel di sepanjang dimensi yang ditentukan.
                     </li>
@@ -198,9 +198,10 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

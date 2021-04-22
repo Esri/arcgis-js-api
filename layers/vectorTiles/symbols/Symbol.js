@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["../core/lang","../core/kebabDictionary","../core/JSONSupport","../Color"],(function(e,r,i,l){var o=r({esriSMS:"simple-marker",esriPMS:"picture-marker",esriSLS:"simple-line",esriSFS:"simple-fill",esriPFS:"picture-fill",esriTS:"text",esriSHD:"shield-label-symbol",PointSymbol3D:"point-3d",LineSymbol3D:"line-3d",PolygonSymbol3D:"polygon-3d",MeshSymbol3D:"mesh-3d",LabelSymbol3D:"label-3d"}),t=0;return i.createSubclass({declaredClass:"esri.symbols.Symbol",constructor:function(){this.id="sym"+t++},properties:{type:{type:String,value:null,json:{read:o.fromJSON,write:{ignoreOrigin:!0,writer:function(e,r){r.type=o.toJSON(this.type)}}}},color:{type:l,value:new l([0,0,0,1]),json:{read:function(r){return r&&e.isDefined(r[0])?[r[0],r[1],r[2],r[3]/255]:r},write:{allowNull:!0}}}}})}));

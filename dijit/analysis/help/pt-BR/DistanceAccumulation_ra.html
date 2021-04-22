@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Acumulação de Distância</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustra&ccedil;&atilde;o da ferrmenta Acumula&ccedil;&atilde;o de Dist&acirc;ncia"></h2>
+        <hr/>
+    <p>Esta ferramenta calcula a dist&acirc;ncia acumulada para cada c&eacute;lula at&eacute; as fontes, permitindo dist&acirc;ncia em linha reta, dist&acirc;ncia de custo, dist&acirc;ncia real da superf&iacute;cie e fatores verticais e horizontais.
+    </p>
+    <p>Aplica&ccedil;&otilde;es de exemplo incluem respostas a perguntas como as seguintes:
+        <ul>
+            <li>Qual &eacute; a dist&acirc;ncia at&eacute; a cidade mais pr&oacute;xima?
+                
+
+            </li>
+            <li>Qual &eacute; a dist&acirc;ncia de custo at&eacute; a estrada mais pr&oacute;xima?
+                
+
+            </li>
+            <li>Qual &eacute; a dist&acirc;ncia ao redor das barreiras at&eacute; a fonte de &aacute;gua mais pr&oacute;xima?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente as fei&ccedil;&otilde;es na camada de an&aacute;lise que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se n&atilde;o selecionada, todas as fei&ccedil;&otilde;es na camada de entrada ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Escolher feições ou raster de origem</h2></div>
+        <hr/>
+        <div>
+            <p>Um camada de fei&ccedil;&atilde;o ou raster que identifica as fontes para as quais a dist&acirc;ncia ser&aacute; calculada.
+            </p>
+            <p>Se a entrada for um raster, dever&aacute; consistir em c&eacute;lulas com valores v&aacute;lidos (zero &eacute; um valor v&aacute;lido) para as origens e as c&eacute;lulas restantes dever&atilde;o ser atribu&iacute;das a NoData.
+            </p>
+            <p>Se a entrada for uma camada de fei&ccedil;&atilde;o, poder&aacute; ser um ponto, linha ou pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Escolher feições ou raster de barreira (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O conjunto de dados que define as barreiras.
+            </p>
+            <p>Para uma camada de raster, o tipo de entrada pode ser inteiro ou flutuante. Quaisquer c&eacute;lulas com um valor (incluindo zero) ser&atilde;o tratadas como uma barreira. Quaisquer c&eacute;lulas que sejam NoData n&atilde;o ser&atilde;o tratadas como uma barreira.
+            </p>
+            <p>Para um servi&ccedil;o da fei&ccedil;&atilde;o, a entrada pode ser ponto, linha ou pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Escolher raster de superfície (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Um raster definindo os valores de eleva&ccedil;&atilde;o em cada localiza&ccedil;&atilde;o de c&eacute;lula.
+            </p>
+            <p>Os valores s&atilde;o utilizados para calcular a dist&acirc;ncia de superf&iacute;cie real coberta ao analisar entre as c&eacute;lulas.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Escolher raster de custo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Um raster definindo o custo ou imped&acirc;ncia para mover planimetricamente atrav&eacute;s de cada c&eacute;lula.
+            </p>
+            <p>O valor de cada localiza&ccedil;&atilde;o da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de localiza&ccedil;&atilde;o de c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
+            </p>
+            <p>Os valores do custo de raster podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo negativo ou zero).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Escolher raster vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Um raster definindo os valores z para cada local de c&eacute;lula.
+            </p>
+            <p>Os valores s&atilde;o utilizados para calcular a declividade para identificar o fator vertical incorrido ao mover de uma c&eacute;lula para outra.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Fator vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O  <b>Fator vertical</b> define o relacionamento entre o fator de custo vertical (VF) e o &acirc;ngulo de movimento relativo vertical (VRMA).
+            </p>
+            <p>H&aacute; diversos fatores com modificadores dos quais selecionar que identificam um gr&aacute;fico de fator vertical definido. Os gr&aacute;ficos s&atilde;o utilizados para identificar o fator vertical utilizado no c&aacute;lculo do custo total para mover em uma c&eacute;lula vizinha.
+            </p>
+            <p>Nas descri&ccedil;&otilde;es abaixo, o VF define a dificuldade vertical encontrada ao se mover de uma c&eacute;lula para a pr&oacute;xima, e o modificador VRMA identifica o &acirc;ngulo de inclina&ccedil;&atilde;o entre as c&eacute;lulas  <b>Da origem</b> e as c&eacute;lulas <b>Para origem</b> .
+                <ul>
+                    <li> <b>Bin&aacute;rio</b>&mdash;Se o VRMA for maior que o &acirc;ngulo de corte baixo e menor que o &acirc;ngulo de corte alto, o VF ser&aacute; configurado para o valor associado com o fator zero; caso contr&aacute;rio, ser&aacute; infinito.
+                    </li>
+                    <li> <b>Linear</b>&mdash;O VF &eacute; uma fun&ccedil;&atilde;o linear do VRMA.
+                    </li>
+                    <li> <b>Linear Inversa</b>&mdash;O VF &eacute; uma fun&ccedil;&atilde;o linear inversa do VRMA.
+                    </li>
+                    <li> <b>Linear sim&eacute;trica</b>&mdash;O VF &eacute; uma fun&ccedil;&atilde;o linear do VRMA em um lado negativo ou positivo do VRMA, e as duas fun&ccedil;&otilde;es lineares s&atilde;o sim&eacute;tricas com respeito ao eixo (y) VF.
+                    </li>
+                    <li> <b>Linear Inversa Sim&eacute;trica</b>&mdash;O VF &eacute; uma fun&ccedil;&atilde;o linear inversa do VRMA em um lado negativo ou positivo do VRMA, e as duas fun&ccedil;&otilde;es lineares s&atilde;o sim&eacute;tricas com respeito ao eixo (y) VF.
+                    </li>
+                    <li> <b>Cos</b>&mdash;O VF &eacute; a fun&ccedil;&atilde;o baseada em co-seno do VRMA.
+                    </li>
+                    <li> <b>Sec</b>&mdash;O VF &eacute; a fun&ccedil;&atilde;o baseada em secante do VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;O VF &eacute; a fun&ccedil;&atilde;o baseada em co-seno do VRMA quando o VRMA for negativo e a fun&ccedil;&atilde;o baseada em secante do VRMA quando o VRMA for n&atilde;o negativo.
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;O VF &eacute; a fun&ccedil;&atilde;o baseada em secante do VRMA quando o VRMA for negativo e a fun&ccedil;&atilde;o baseada em co-seno do VRMA quando o VRMA for n&atilde;o negativo.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Os modificadores dos par&acirc;metro verticais s&atilde;o os seguintes:
+                <ul>
+                    <li> <b>Fator zero</b>&mdash;O fator vertical utilizado quando o VRMA for zero. Este fator posiciona a op&ccedil;&atilde;o interceptar y da fun&ccedil;&atilde;o especificada. Por defini&ccedil;&atilde;o, o fator zero n&atilde;o &eacute; aplic&aacute;vel a nenhuma das fun&ccedil;&otilde;es verticais trigonom&eacute;tricas (Cos, Sec, Cos-Sec ou Sec-Cos). A op&ccedil;&atilde;o interceptar y &eacute; definida por estas fun&ccedil;&otilde;es.
+                    </li>
+                    <li> <b>&Acirc;ngulo de corte baixo</b>&mdash;O &acirc;ngulo VRMA abaixo no qual o VF ser&aacute; configurado para infinito.
+                    </li>
+                    <li> <b>&Acirc;ngulo de corte alto</b>&mdash;O &acirc;ngulo VRMA acima no qual o VF ser&aacute; configurado para infinito.
+                    </li>
+                    <li> <b>Declividade</b>&mdash;A declividade da linha reta utilizada com os par&acirc;metros <b>Linear</b> e <b>Linear Inverso</b> . A declividade &eacute; especificada como uma fra&ccedil;&atilde;o de subida acima do percurso (por exemplo, 45 porcento da declividade &eacute; 1/45, que &eacute; entrada como 0.02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Escolher raster horizontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Um raster definindo a dire&ccedil;&atilde;o horizontal em cada localiza&ccedil;&atilde;o de c&eacute;lula.
+            </p>
+            <p>Os valores no raster devem ser inteiros de 0 a 360, com 0 os graus sendo norte ou em dire&ccedil;&atilde;o ao topo da tela e aumentando &agrave; direita. As &aacute;reas planas recebem um valor de -1. Os valores em cada localiza&ccedil;&atilde;o ser&atilde;o utilizados junto com o  <b>Fator horizontal</b> para determinar o custo horizontal incorrido ao mover uma c&eacute;lula para seus vizinhos.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Fator horizontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O  <b>Fator horizontal</b> define o relacionamento entre o fator de custo horizontal e o &acirc;ngulo de movimento relativo horizontal.
+            </p>
+            <p>H&aacute; diversos fatores com modificadores dos quais selecionar que identificam um gr&aacute;fico de fator horizontal definido. Os gr&aacute;ficos s&atilde;o utilizados para identificar o fator horizontal utilizado no c&aacute;lculo do custo total de movimento em uma c&eacute;lula vizinha.
+            </p>
+            <p>Nas descri&ccedil;&otilde;es abaixo, o fator horizontal (HF) define a dificuldade horizontal encontrada ao se mover de uma c&eacute;lula para a pr&oacute;xima, e o &acirc;ngulo de movimento relativo horizontal (HRMA) identifica o &acirc;ngulo entre a dire&ccedil;&atilde;o horizontal de uma c&eacute;lula e a dire&ccedil;&atilde;o do movimento.
+            </p>
+            <p>As defini&ccedil;&otilde;es e par&acirc;metros deste HF s&atilde;o as seguintes:
+                <ul>
+                    <li> <b>Bin&aacute;rio</b>&mdash;Se o HRMA for menor que o &acirc;ngulo de corte, o HF ser&aacute; configurado para o valor associado com o fator zero; caso contr&aacute;rio, ser&aacute; infinito.
+                        
+
+                    </li>
+                    <li> <b>Adiante</b>&mdash;Somente o movimento adiante &eacute; permitido. O HRMA deve ser maior ou igual a 0 e menor que 90 (0 &lt;= HRMA &lt; 90). Se o HRMA for maior que 0 e menor que 45 graus, o HF para a c&eacute;lula &eacute; configurada para o valor associado com o fator zero. Se o HRMA for maior ou igual a 45 graus, o modificador de valor lateral &eacute; utilizado. O HF para qualquer HRMA igual ou maior que 90 graus &eacute; configurado para infinito.
+                        
+
+                    </li>
+                    <li> <b>Linear</b>&mdash;O HF &eacute; uma fun&ccedil;&atilde;o linear do HRMA.
+                        
+
+                    </li>
+                    <li> <b>Linear Inversa</b>&mdash;O HF &eacute; uma fun&ccedil;&atilde;o linear inversa do HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Os modificadores das palavras-chaves horizontais s&atilde;o os seguintes:
+                <ul>
+                    <li> <b>Fator zero</b>&mdash;O fator horizontal a ser utilizado quando o HRMA for 0. Este fator posiciona a op&ccedil;&atilde;o interceptar y para qualquer uma das fun&ccedil;&otilde;es de fator horizontal.
+                        
+
+                    </li>
+                    <li> <b>&Acirc;ngulo de Corte</b>&mdash;O &acirc;ngulo de HRMA al&eacute;m do qual o HF ser&aacute; definido para infinito.
+                        
+
+                    </li>
+                    <li> <b>Declividade</b>&mdash;A declividade da linha reta utilizada com as palavras-chaves de fator horizontal <b>Linear</b> e <b>Linear Inversa</b> . A declividade &eacute; especificada como uma fra&ccedil;&atilde;o de subida acima do percurso (por exemplo, 45 porcento da declividade &eacute; 1/45, que &eacute; entrada como 0.02222).
+                        
+
+                    </li>
+                    <li> <b>Valor Lateral</b>&mdash;O HF quando o HRMA for maior ou igual a 45 graus e menor que 90 graus quando a palavra-chave de fator horizontal <b>Adiante</b> for especificada.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Acumulação Inicial</h2></div>
+        <hr/>
+        <div>
+            <p>O custo acumulativo inicial para iniciar o c&aacute;lculo de custo.
+            </p>
+            <p>Isto permite a especifica&ccedil;&atilde;o do custo fixo associado com uma origem. Em vez de iniciar a um custo de zero, o algoritmo de custo come&ccedil;ar&aacute; com o valor definido por  <b>Acumula&ccedil;&atilde;o inicial</b>.
+            </p>
+            <p>Os valores devem ser zero ou maiores. O padr&atilde;o &eacute; 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Acumulação Máxima</h2></div>
+        <hr/>
+        <div>
+            <p>A acumula&ccedil;&atilde;o m&aacute;xima para o viajante de uma origem.
+            </p>
+            <p>Os c&aacute;lculos de custo continuam para cada origem at&eacute; que a acumula&ccedil;&atilde;o especificada seja alcan&ccedil;ada.
+            </p>
+            <p>Os valores devem ser maiores que zero. O ac&uacute;mulo padr&atilde;o &eacute; at&eacute; a borda do raster de sa&iacute;da.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplicador de custo</h2></div>
+        <hr/>
+        <div>
+            <p>O multiplicador para aplicar aos valores de custo.
+            </p>
+            <p>Isto permite o controle do modo de viagem ou a magnitude em uma origem. Quanto maior o multiplicador, maior o custo para mover por cada c&eacute;lula.
+            </p>
+            <p>Os valores devem ser maiores que zero. O padr&atilde;o &eacute; 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Direção da viagem</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica a dire&ccedil;&atilde;o do viajante ao aplicar fatores horizontais e verticais.
+            </p>
+            <p> <b>Da origem</b>&mdash;O fator vertical e o fator horizontal ser&atilde;o aplicados no in&iacute;cio da origem de entrada e saindo para c&eacute;lulas diferentes da origem. Este &eacute; o padr&atilde;o.
+            </p>
+            <p> <b>Para origem</b>&mdash;O fator vertical e o fator horizontal ser&atilde;o aplicados come&ccedil;ando em cada c&eacute;lula diferente da origem e voltando para a origem de entrada.
+            </p>
+            <p>Especifique a palavra-chave  <b>Da origem</b> ou <b>Para origem</b> , que ser&aacute; aplicada a todas as origens ou especifique um campo nos dados de origem que contenha as palavras-chaves para identificar a dire&ccedil;&atilde;o de viagem de cada origem. O campo deve conter a string <code>FROM_SOURCE</code> ou <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distância (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se o c&aacute;lculo da dist&acirc;ncia utiliza um m&eacute;todo plano (Terra plana) ou um m&eacute;todo geod&eacute;sico (elips&oacute;ide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;O c&aacute;lculo da dist&acirc;ncia ser&aacute; executado em um plano projetado utilizando um sistema de coordenada Cartesiano 2D. Este &eacute; o m&eacute;todo padr&atilde;o.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>&mdash;O c&aacute;lculo da dist&acirc;ncia ser&aacute; realizado no elips&oacute;ide. Portanto, n&atilde;o importando a proje&ccedil;&atilde;o de entrada ou de sa&iacute;da, os resultados n&atilde;o alteram.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Nome do raster de acumulação de distância resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de acumula&ccedil;&atilde;o de dist&acirc;ncia cont&eacute;m a dist&acirc;ncia acumulativa para cada c&eacute;lula de, ou para, a origem de menor custo.
+            </p>
+            <p>O raster de sa&iacute;da &eacute; do tipo flutuante.
+            </p>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Nome do raster de direção de volta resultante (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de dire&ccedil;&atilde;o de volta cont&eacute;m a dire&ccedil;&atilde;o calculada em graus. A dire&ccedil;&atilde;o identifica a pr&oacute;xima c&eacute;lula ao longo do caminho mais curto de volta at&eacute; a origem mais pr&oacute;xima, evitando barreiras.
+            </p>
+            <p>A faixa de valores &eacute; de 0 graus a 360 graus, com 0 reservado para as c&eacute;lulas de origem. Devido ao Leste (direita) ser 90 e os valores aumentarem no sentido hor&aacute;rio (180 &eacute; Sul, 270 &eacute; Oeste e 360 &eacute; Norte).
+            </p>
+            <p>O raster de sa&iacute;da &eacute; do tipo flutuante.
+            </p>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b>. Voc&ecirc; deve fornecer um nome que n&atilde;o exista atualmente em <b>Meu Conte&uacute;do</b>.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Nome do raster de direção de origem resultante (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de dire&ccedil;&atilde;o de origem identifica a dire&ccedil;&atilde;o da c&eacute;lula de origem de menor custo acumulado como um azimute em graus.
+            </p>
+            <p>A faixa de valores &eacute; de 0 graus a 360 graus, com 0 reservado para as c&eacute;lulas de origem. Devido ao Leste (direita) ser 90 e os valores aumentarem no sentido hor&aacute;rio (180 &eacute; Sul, 270 &eacute; Oeste e 360 &eacute; Norte).
+            </p>
+            <p>O raster de sa&iacute;da &eacute; do tipo flutuante.
+            </p>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b>. Voc&ecirc; deve fornecer um nome que n&atilde;o exista atualmente em <b>Meu Conte&uacute;do</b>.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Nome do raster de localização de origem resultante (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de localiza&ccedil;&atilde;o de origem &eacute; uma sa&iacute;da de m&uacute;ltiplas bandas. A primeira banda cont&eacute;m um &iacute;ndice de linha e a segunda banda cont&eacute;m um &iacute;ndice de coluna. Estes &iacute;ndices identificam o local da c&eacute;lula de origem que &eacute; a menor dist&acirc;ncia de custo acumulada.
+            </p>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b>. Voc&ecirc; deve fornecer um nome que n&atilde;o exista atualmente em <b>Meu Conte&uacute;do</b>.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

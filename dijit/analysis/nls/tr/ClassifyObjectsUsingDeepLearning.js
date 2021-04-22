@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Derin Öğrenme Kullanarak Nesneleri Sınıflandır",inputFeaturesLabel:"Nesneler için detay katmanı seçin (isteğe bağlı)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Nesneleri sınıflandırmak için kullanılan derin öğrenme modelini seçin",modelArgsLabel:"Derin öğrenme modeli değişkenlerini belirtin",classLabelFieldLabel:"Sınıf etiketi alan adını tanımlayın (isteğe bağlı)",processingModeLabel:"İşleme modu",processAsMosaicLabel:"Mozaiklenmiş görüntü olarak işle",processAsItemsLabel:"Tüm raster ögelerini ayrı işle",queryModelArgsMsg:"Model değişkenleri sorgulanıyor...",queryModelArgsErrMsg:"Model bağımsız değişkenleri sorgulanamadı.",valueLabel:"Değer",nameLabel:"Adı",analysisLayerLabel:"Nesneleri sınıflandırmak için kullanılan görüntüyü seçin",itemDescription:"Nesneleri Derin Öğrenme Kullanarak Sınıflandır ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analiz Sonucu, Nesneleri Derin Öğrenme Kullanarak Sınıflandır, ${layername}",itemSnippet:"Nesneleri Derin Öğrenme Kullanarak Sınıflandır ile oluşturulan Analiz Görüntü Servisi"});

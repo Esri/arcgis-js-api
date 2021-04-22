@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Jalur Optimal Sebagai Garis</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustrasi alat Jalur Optimal Sebagai Garis"></h2>
+        <hr/>
+    <p>Alat ini menghitung jalur optimal dari tujuan ke sumber sebagai garis.
+    </p>
+    <p>Contoh aplikasi termasuk yang berikut:
+        <ul>
+            <li>Temukan rute terbaik untuk jalan baru dalam hal biaya konstruksi.
+                
+
+
+            </li>
+            <li>Temukan rute berlayar terbaik dari tujuan ke lokasi saat ini.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur tujuan</h2></div>
+        <hr/>
+        <div>
+            <p>Raster atau feature layer yang mengidentifikasi sel dari mana jalur optimal ditentukan ke sumber yang paling optimal.
+            </p>
+            <p>Jika inputnya adalah raster, maka harus terdiri dari sel yang memiliki nilai valid (nol adalah nilai valid) untuk tujuan, dan sel yang tersisa harus diberi NoData. Raster input harus berjenis bilangan bulat.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Kolom tujuan</h2></div>
+        <hr/>
+        <div>
+            <p>Kolom digunakan guna mendapatkan nilai untuk lokasi tujuan.
+            </p>
+            <p>Kolom ini harus berupa jenis bilangan bulat.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Pilih raster akumulasi jarak</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulasi jarak digunakan untuk menentukan jalur optimal dari tujuan ke sumber.
+            </p>
+            <p>Raster akumulasi jarak biasanya dibuat dengan alat Akumulasi Jarak atau Alokasi Jarak. Setiap sel dalam raster akumulasi jarak mewakili jarak biaya akumulatif minimal atas permukaan dari setiap sel ke suatu set sel sumber.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Pilih arah balik atau raster arah aliran</h2></div>
+        <hr/>
+        <div>
+            <p>Raster arah balik berisi arah yang dihitung dalam derajat. Arah mengidentifikasikan sel berikutnya di sepanjang jalur optimal kembali ke sumber biaya paling akumulatif terkecil dengan menghindari pembatasan.
+            </p>
+            <p>Raster arah balik biasanya dibuat dengan alat Akumulasi Jarak atau Alokasi Jarak. Jika demikian, rentang nilainya adalah antara 0 derajat hingga 360 derajat. Nilai 0 disimpan untuk sel sumber. Arah timur (kanan) adalah 90 derajat, dan nilai bertambah searah jarum jam (180 adalah arah selatan, 270 adalah barat, dan 360 adalah utara).
+            </p>
+            <p>Jalur optimal yang dibuat dapat berupa jalur aliran berdasarkan arah aliran D8. Untuk membuat jalur optimal dengan cara ini, gunakan raster arah aliran D8 sebagai input untuk parameter ini.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Jenis jalur (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan kata kunci yang menetapkan cara nilai dan zona di data tujuan input diinterpretasikan dalam perhitungan jalur biaya.
+                <ul>
+                    <li> <b>Untuk Setiap Zona</b>&mdash;Untuk setiap zona di data tujuan input, jalur berbiaya terkecil akan ditentukan. Dengan opsi ini, jalur dengan biaya terkecil untuk setiap zona dimulai di sel dengan pembobotan jarak biaya terendah di zona tersebut. Ini adalah default.
+                         
+                    </li>
+                    <li> <b>Tunggal Terbaik</b>&mdash;Untuk semua sel di data tujuan input, jalur berbiaya terkecil akan dibuat dari sel dengan jalur berbiaya terkecil minimal ke sel sumber.
+                    </li>
+                    <li> <b>Untuk Setiap Sel</b>&mdash;Untuk setiap sel dengan nilai valid di data tujuan input, jalur berbiaya terkecil akan ditentukan. Dengan opsi ini, setiap sel dari data tujuan input diperlakukan secara terpisah, dan jalur dengan biaya terkecil ditentukan untuk masing-masing dari sel.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nama feature layer hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

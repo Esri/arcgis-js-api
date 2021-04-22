@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolit prvky k oříznutí",filterSelectLabel:"Oříznout všechny prvky nebo určit podmnožinu (volitelné)",targetArea:"Zvolit plochu k oříznutí na",outputLayerName:"Oříznout ${inputLayerName} na ${clipLayerName}",itemDescription:"Vrstva prvků vygenerovaná nástrojem Oříznout. Prvky z ${inputLayerName} byly oříznuty na ${clipLayerName}.",itemTags:"Výsledky analýzy, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Vrstva prvků vygenerovaná z Oříznout vrstvu"});

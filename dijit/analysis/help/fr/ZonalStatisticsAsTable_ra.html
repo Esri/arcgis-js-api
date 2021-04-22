@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Statistiques zonales (table)</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagramme Statistiques zonales (table)"></h2>
+        <hr/>
+    <p>Cet outil r&eacute;capitule les valeurs du raster dans chaque zone d&rsquo;un autre jeu de donn&eacute;es et affiche les r&eacute;sultats dans une table.
+    </p>
+    <p>Voici quelques exemples&nbsp;:
+    </p>
+    <p>
+        <ul>
+            <li>En prenant une couche de limites d&rsquo;&eacute;tats et la r&eacute;partition des pr&eacute;cipitations moyennes aux &Eacute;tats-Unis, calculez la r&eacute;partition par &eacute;tat des pluies extr&ecirc;mes &agrave; l&rsquo;aide d&rsquo;une liste de valeurs de centiles.
+                
+
+            </li>
+            <li>En prenant une couche de zones &eacute;cologiques superpos&eacute;es et une couche raster d&rsquo;humidit&eacute; du sol, calculez toutes les statistiques prises en charge dans chaque zone pour associer les zones avec la disponibilit&eacute; d&rsquo;humidit&eacute; du sol.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si l&rsquo;option  <b>Use current map extent (Utiliser l&rsquo;&eacute;tendue actuelle de la carte)</b> est s&eacute;lectionn&eacute;e, seules les entit&eacute;s de la couche en entr&eacute;e et de la couche &agrave; synth&eacute;tiser qui sont visibles au sein de l&rsquo;&eacute;tendue courante de la carte seront analys&eacute;es. Si l'option n'est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent &agrave; la fois dans la couche en entr&eacute;e et dans la couche &agrave; synth&eacute;tiser seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l'&eacute;tendue courante de la carte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Choisir des entités ou un raster de zone</h2></div>
+        <hr/>
+        <div>
+            <p>La couche qui d&eacute;finit les limites des zones, ou les surfaces, qui seront synth&eacute;tis&eacute;es.
+            </p>
+            <p>La couche peut &ecirc;tre un raster entier ou des donn&eacute;es d&rsquo;entit&eacute;. Pour les rasters, les zones sont d&eacute;finies par tous les emplacements dans l'entr&eacute;e dont la valeur de cellule est identique. Pour les entit&eacute;s, les zones peuvent &ecirc;tre superpos&eacute;es. Les surfaces ne sont pas n&eacute;cessairement contigu&euml;s.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Champ de zone</h2></div>
+        <hr/>
+        <div>
+            <p>Il s&rsquo;agit de l&rsquo;attribut de la couche qui sera utilis&eacute; pour d&eacute;finir les limites des zones (surfaces).
+            </p>
+            <p>Supposons par exemple que la premi&egrave;re couche en entr&eacute;e d&eacute;finit les limites des unit&eacute;s de gestion, avec des attributs qui d&eacute;finissent la r&eacute;gion, le secteur et l'ID de parcelle de chaque unit&eacute;. Une couche raster d&eacute;finissant l'indice de biodiversit&eacute; pour chaque emplacement est &eacute;galement pr&eacute;sente. Avec le champ que vous s&eacute;lectionnez, vous pouvez calculer la biodiversit&eacute; moyenne au niveau local, du secteur ou r&eacute;gional.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Choisir un raster de valeurs</h2></div>
+        <hr/>
+        <div>
+            <p>Les cellules raster dans cette couche seront synth&eacute;tis&eacute;es en fonction des surfaces (zones) dans lesquelles elles se trouvent.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorer les valeurs NoData dans les calculs (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Indique si les valeurs NoData sont ignor&eacute;es lors de l&rsquo;analyse.
+                <ul>
+                    <li>Activ&eacute;&nbsp;: l&rsquo;analyse inclut les cellules qui ont une valeur dans le raster de valeurs en entr&eacute;e au sein d&rsquo;une zone en particulier pour d&eacute;terminer la valeur en sortie de cette zone. Les cellules NoData dans le raster de valeurs seront ignor&eacute;es dans le calcul statistique. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li>D&eacute;sactiv&eacute;&nbsp;: le r&eacute;sultat de l&rsquo;analyse est NoData s&rsquo;il existe des valeurs NoData pour les cellules du raster de valeurs dans une zone en particulier.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Type de statistique (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le type de statistique &agrave; calculer.
+            </p>
+            <p>L&rsquo;entr&eacute;e peut &ecirc;tre comme suit&nbsp;:  <b>All (Tout)</b>, <b>Mean (Moyenne)</b>, <b>Majority (Majorit&eacute;)</b>, <b>Maximum</b>, <b>Median (M&eacute;diane)</b>, <b>Minimum</b>, <b>Minority (Minorit&eacute;)</b>, <b>Percentile (Centile)</b>, <b>Range (Plage)</b>, <b>Standard deviation (&Eacute;cart type)</b>, <b>Sum (Somme)</b>, <b>Variety (Vari&eacute;t&eacute;)</b>, <b>Minimum and Maximum (Minimum et maximum)</b>, <b>Mean and Standard deviation (Moyenne et &eacute;cart type)</b> ou <b>Minimum, Maximum and Mean (Minimum, Maximum et moyenne)</b>. La valeur par d&eacute;faut est <b>All (Tout)</b>.
+            </p>
+            <p>Si le raster de valeurs en entr&eacute;e est un entier, par d&eacute;faut, toutes les statistiques sont calcul&eacute;es. Si le raster de valeurs est &agrave; virgule flottante, par d&eacute;faut, toutes les statistiques &agrave; l&rsquo;exception de  <b>Median (M&eacute;diane)</b> et de <b>Percentile (Centile)</b> sont calcul&eacute;es. 
+            </p>
+            <p>Si le raster de valeurs en entr&eacute;e est &agrave; virgule flottante, les calculs de zone pour  <b>Majority (Majorit&eacute;)</b>, <b>Minority (Minorit&eacute;)</b> et <b>Variety (Vari&eacute;t&eacute;)</b> ne peuvent pas &ecirc;tre r&eacute;alis&eacute;s.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Valeurs de centiles (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Les centiles &agrave; calculer. Vous pouvez sp&eacute;cifier une valeur unique ou une liste de valeurs. La valeur par d&eacute;faut est de 90, soit le 90e centile.
+            </p>
+            <p>Les valeurs peuvent varier entre 0 et 100. Le fait de sp&eacute;cifier le centile n&deg;&nbsp;0 est &eacute;quivalent &agrave; la statistique minimale tandis que sp&eacute;cifier le 100e centile &eacute;quivaut au maximum. Une valeur de 50 donne le m&ecirc;me r&eacute;sultat que la statistique m&eacute;diane.
+            </p>
+            <p>Cette option n&rsquo;est prise en charge que si le param&egrave;tre  <b>Statistics type (Type de statistique)</b> est d&eacute;fini sur <b>Percentile (Centile)</b> ou <b>All (Tout)</b>
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Type d’interpolation des centiles (facultatif)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>D&eacute;finit la m&eacute;thode d&rsquo;interpolation en centile &agrave; utiliser lorsque le nombre de valeurs du raster en entr&eacute;e &agrave; calculer est pair.
+            </p> 
+            <p>Si le type de pixel du raster de valeurs en entr&eacute;e est de type entier, la m&eacute;thode  <b>Nearest (La plus proche)</b> est utilis&eacute;e. Si le type de pixel du raster de valeurs en entr&eacute;e est de type virgule flottante, la m&eacute;thode <b>Linear (Lin&eacute;aire)</b> est utilis&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+            </p>
+            <p>Pour la m&eacute;thode  <b>Nearest (La plus proche)</b>, la valeur disponible la plus proche du centile souhait&eacute; est utilis&eacute;e. Pour la m&eacute;thode <b>Linear (Lin&eacute;aire)</b>, la moyenne pond&eacute;r&eacute;e des deux valeurs voisines du centile souhait&eacute; est utilis&eacute;e.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Traiter comme multidimensionnel (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le mode de traitement des rasters en entr&eacute;e s&rsquo;il s&rsquo;agit de rasters multidimensionnels.
+            </p>
+            <ul>
+                <li>Activ&eacute;&nbsp;: les statistiques sont calcul&eacute;es &agrave; partir de la tranche actuelle du jeu de donn&eacute;es multidimensionnelles en entr&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    
+
+                </li>
+                <li>D&eacute;sactiv&eacute;&nbsp;: les statistiques sont calcul&eacute;es pour toutes les dimensions du jeu de donn&eacute;es multidimensionnelles en entr&eacute;e.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Nom de la table de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

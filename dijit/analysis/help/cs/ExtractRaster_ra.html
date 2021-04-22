@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Extrahovat rastr (Extract Raster)</h2><p/>
+        <h2>Extrahovat rastr</h2><p/>
         <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="N&aacute;stroj Extrahovat rastr pro port&aacute;l"></h2>
         <hr/>
     <p>Tento n&aacute;stroj může oř&iacute;znout rastr podle hranice, buď na obd&eacute;ln&iacute;kovou oblast nebo tvar, kter&yacute; interaktivně urč&iacute;te na obrazovce. Ořez&aacute;vat lze na rozsah oblasti moment&aacute;lně zobrazen&eacute; na va&scaron;&iacute; mapě nebo podle z&aacute;jmov&eacute; oblasti definovan&eacute; polygonem.
@@ -61,13 +61,34 @@
         <hr/>
         <div>
             <p>Zvolte typ rozsahu použit&yacute; při ořez&aacute;v&aacute;n&iacute; geometrie vrstvy:
-
                 <ul>
                     <li>Použ&iacute;t aktu&aacute;ln&iacute; rozsah &ndash; K oř&iacute;znut&iacute; v&yacute;sledn&eacute; vrstvy bude použit aktu&aacute;ln&iacute; rozsah mapy. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                         
 
                     </li>
-                    <li>Zvolit z&aacute;jmovou oblast &ndash; Umožn&iacute; v&aacute;m zvolit, zda v&yacute;sledek zobraz&iacute; oblast v rozsahu geometrie nebo oblast mimo rozsah geometrie. Pokud zvol&iacute;te možnost  <b>Data uvnitř geometrie</b>, sn&iacute;mky mimo rozsahy budou odstraněny. Pokud zvol&iacute;te možnost <b>Data mimo geometrii</b>, sn&iacute;mky uvnitř rozsahů budou odstraněny. Tak&eacute; můžete definovat geometrii oř&iacute;znut&iacute; pomoc&iacute; n&aacute;stroje kreslen&iacute;.
+                    <li>Zvolit z&aacute;jmovou oblast - Umožňuje definovat geometrii oř&iacute;znut&iacute; pomoc&iacute; n&aacute;stroje kreslen&iacute;.
+                        
+
+                    </li>
+                    <li>Zvolit vrstvu - Zvolte vrstvu prvku nebo vrstvu obrazov&yacute;ch dat k definov&aacute;n&iacute; rozsahu, nebo zvolte vrstvu polygonov&yacute;ch prvků k definov&aacute;n&iacute; geometrie oř&iacute;znut&iacute;.
+ Když je zvolena vrstva polygonov&yacute;ch prvků, zobraz&iacute; se za&scaron;krt&aacute;vac&iacute; pol&iacute;čko pro určen&iacute;, zda se maj&iacute; použ&iacute;t vstupn&iacute; prvky pro geometrii oř&iacute;znut&iacute;. Ve v&yacute;choz&iacute;m nastaven&iacute; je možnost neza&scaron;krtnuta. To znamen&aacute;, že k definov&aacute;n&iacute; rozsahu se použ&iacute;v&aacute; vstupn&iacute; vrstva prvků. Pokud je pole za&scaron;krtnuto, znamen&aacute; to, že pro geometrii oř&iacute;znut&iacute; se použ&iacute;vaj&iacute; vstupn&iacute; prvky.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Určete typ oříznutí</h2></div>
+        <hr/>
+        <div>
+            <p>Specifikujte, jestli chcete zachovat oblast vně nebo uvnitř va&scaron;&iacute; geometrie oř&iacute;znut&iacute;:
+                <ul>
+                    <li>Data uvnitř geometrie&mdash;Sn&iacute;mky uvnitř ořez&aacute;van&eacute; oblasti budou extrahov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                        
+
+                    </li>
+                    <li>Data mimo geometrii&mdash;Sn&iacute;mky mimo ořez&aacute;vanou oblast budou extrahov&aacute;ny.
                         
 
                     </li>
@@ -80,6 +101,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

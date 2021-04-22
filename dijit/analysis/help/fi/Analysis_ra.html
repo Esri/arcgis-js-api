@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasterianalyysin avulla voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Serverin avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.  Portal for ArcGIS -verkkoportaalin kautta t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; olevat ty&ouml;kalusarjat ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi mallit</b>, <b>K&auml;yt&auml; l&auml;heisyytt&auml;</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b>, <b>Hallitse aineistoa</b>, <b>Syv&auml;oppiminen</b> ja <b>Moniulotteinen analyysi</b>.
+        <p>Rasterianalyysia k&auml;ytt&auml;m&auml;ll&auml; voit analysoida suuria rasteriaineistoryhmi&auml;  ArcGIS Image Server -palvelimen avulla. Voit analysoida aiempaa enemm&auml;n tietoja entist&auml; nopeammin hy&ouml;dynt&auml;m&auml;ll&auml; palvelimen tehoa.Ty&ouml;kaluryhm&auml;t, jotka ovat t&auml;ll&auml; hetkell&auml; k&auml;ytett&auml;viss&auml; Portal for ArcGIS -verkkoportaalin kautta, ovat  <b>Aineiston yhteenveto</b>, <b>Analysoi mallit</b>, <b>K&auml;yt&auml; l&auml;heisyytt&auml;</b>, <b>Analysoi kuva</b>, <b>Analysoi maasto</b>, <b>Hallitse aineistoa</b>, <b>Syv&auml;oppiminen</b> ja <b>Moniulotteinen analyysi</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Aineiston yhteenveto</h2>
         <hr/>
-        <p>T&auml;m&auml; ty&ouml;kalusarja sis&auml;lt&auml;&auml; ty&ouml;kalun m&auml;&auml;ritettyjen aluerajojen sis&auml;ll&auml; olevan rasterikarttatason tilastotietojen laskemiseen. 
+        <p>N&auml;it&auml; ty&ouml;kaluja k&auml;ytet&auml;&auml;n laskettaessa tilastotietoja rasteritasolle, joka on m&auml;&auml;ritt&auml;m&auml;si aluerajojen (vy&ouml;hykkeiden) sis&auml;ll&auml;.
             <ul>
                 <li> <b>Koosta rasteri sijainnissa</b> -ty&ouml;kalu laskee m&auml;&auml;ritettyjen aluerajojen sis&auml;ll&auml; olevien rasterisolujen tilastotiedot.
+                </li>
+                <li> <b>Vy&ouml;hyketilastot taulukossa</b> laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml; ja raportoi tulokset tauluun.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Laskee m&auml;&auml;ritettyjen alueiden rasterisolujen yhteenvetotilastotietoja.
+            <p>T&auml;m&auml; ty&ouml;kalu laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml;.
             </p>
-            <p>Seuraavassa on luettelo joistakin sovelluksista: 
-
-                <ul>
-                    <li>Kun valuma-alueiden karttataso ja korkeuden rasterikarttataso on annettu, voit laskea jokaisen valuma-alueen korkeuden vaihteluv&auml;lin ja m&auml;&auml;ritt&auml;&auml;, mink&auml; valuma-alueiden energianvirtaus on suurin.
-                        
-
-                    </li>
-                    <li>Jos hallinnollisten hallinta-alueiden karttataso ja maank&auml;ytt&ouml;luokkien rasterikarttataso on annettu, voit laskea maank&auml;ytt&ouml;arvot kullakin hallinta-alueella ja tunnistaa ne alueet, joiden hallintasuunnitelman laatimiseen tarvitaan eniten ty&ouml;t&auml;.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Vyöhyketilastot taulukossa</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Vy&ouml;hykkeiset tilastotiedot taulukossa -kaavio">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml; ja raportoi tulokset tauluun.
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Käytä läheisyyttä</h2>
         <hr/>
-        <p>N&auml;iden ty&ouml;kalujen avulla saat vastauksen yhteen paikkatietojen analysoinnin peruskysymyksist&auml;: &rdquo;Mik&auml; on mink&auml;kin l&auml;hell&auml;?&rdquo;
-
+        <p>N&auml;iden ty&ouml;kalujen avulla saat vastauksen joihinkin paikkatietojen analysoinnin peruskysymyksiin: Mik&auml; on mink&auml;kin l&auml;hell&auml;? ja Mik&auml; on optimaalisin polku?
             <ul>
                 <li> <b>Laske et&auml;isyys</b> laskee euklidisen et&auml;isyyden, suunnan ja allokaation yhdest&auml; l&auml;hteest&auml; tai l&auml;hdejoukosta.
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>M&auml;&auml;rit&auml; matkakustannusten polku</b> Laskee pienimm&auml;n kustannuksen taiteviivareitin l&auml;ht&ouml;paikkojen ja tunnettujen kohteiden v&auml;lill&auml;.
+                <li> <b>M&auml;&auml;rit&auml; matkakustannusten polku</b> laskee pienimm&auml;n kustannuksen taiteviivareitin tunnettujen kohteiden ja l&auml;ht&ouml;pisteiden v&auml;lill&auml;.
+                    
+
+                </li>
+                <li> <b>Et&auml;isyyskertym&auml;</b> laskee kunkin solun kumuloituneen et&auml;isyyden l&auml;hteist&auml;. Funktio k&auml;ytt&auml;&auml; suoraa et&auml;isyytt&auml;, kustannuset&auml;isyytt&auml;, todellista pintaet&auml;isyytt&auml; sek&auml; pysty- ja vaakasuoraa tekij&auml;&auml;.
+                    
+
+                </li>
+                <li> <b>Et&auml;isyyskertym&auml;</b> laskee kunkin solun et&auml;isyyden kohdennuksen m&auml;&auml;ritettyisiin l&auml;hteisiin suoran et&auml;isyyden, kustannuset&auml;isyyden, todellisen pintaet&auml;isyyden sek&auml; pysty- ja vaakasuoran tekij&auml;n perusteella.
+                    
+
+                </li>
+                <li> <b>Optimaalinen polku viivavana</b> laskee optimaalisen polun kohteista l&auml;hteisiin viivana.
+                    
+
+                </li>
+                <li> <b>Optimaalinen polku rasterina</b> laskee optimaalisen polun kohteista l&auml;hteisiin rasterina.
+                    
+
+                </li>
+                <li> <b>Optimaaliset alueen yhteydet</b> laskee optimaalisen liittyvyysverkon kahden tai useamman l&auml;ht&ouml;alueen v&auml;lill&auml;.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,11 +185,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Laskee euklidisen et&auml;isyyden, suunnan ja allokaation yhdest&auml; l&auml;hteest&auml; tai l&auml;hdejoukosta. T&auml;m&auml;n ty&ouml;kalun avulla voit m&auml;&auml;ritt&auml;&auml;, miten kaukana sijainti on tiest&auml;, rakennuksesta tai puistosta. Voit my&ouml;s m&auml;&auml;ritt&auml;&auml;, mihin suuntaan sinun pit&auml;&auml; matkustaa, jotta voit palata suorinta reitti&auml; takaisin l&auml;ht&ouml;paikkaan. N&auml;et tarkastelualueen kaikista sijainneista, mik&auml; on l&auml;hin l&auml;ht&ouml;paikka.
+            <p>T&auml;m&auml; ty&ouml;kalu laskee euklidisen et&auml;isyyden, suunnan ja allokaation yhdest&auml; l&auml;hteest&auml; tai l&auml;hdejoukosta.
             </p>
             <br/>
         </div>
-        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Laskee optimaalisen kustannusverkon l&auml;ht&ouml;aluejoukosta.
+            <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen kustannusverkon l&auml;ht&ouml;aluejoukosta.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Laskee pienimm&auml;n kustannuksen taiteviivareitin l&auml;ht&ouml;paikkojen ja tunnettujen kohteiden v&auml;lill&auml;.
+            <p>T&auml;m&auml; ty&ouml;kalu laskee pienimm&auml;n kustannuksen taiteviivareitin l&auml;ht&ouml;paikkojen ja kohteiden v&auml;lill&auml;.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etäisyyskertymä</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Et&auml;isyyskertym&auml;-ty&ouml;kalun kuva">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee kunkin solun kumuloituneen et&auml;isyyden l&auml;hteist&auml;. Ty&ouml;kalussa voi k&auml;ytt&auml;&auml; suoraa et&auml;isyytt&auml;, kustannuset&auml;isyytt&auml;, todellista pintaet&auml;isyytt&auml; sek&auml; pysty- ja vaakasuoria tekij&ouml;it&auml;.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Etäisyyden kohdennus</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Et&auml;isyyden kohdennus -ty&ouml;kalun kuva">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee kunkin solun et&auml;isyyden kohdennuksen m&auml;&auml;ritettyisiin l&auml;hteisiin suoran et&auml;isyyden, kustannuset&auml;isyyden, todellisen pintaet&auml;isyyden sek&auml; pysty- ja vaakasuoran tekij&auml;n perusteella.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaalinen reitti viivana</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Optimaalinen reitti viivana -ty&ouml;kalun kuva">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen reitin kohteista l&auml;hteisiin viivana.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaalinen polku rasterina</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Optimaalinen polku rasterina -ty&ouml;kalun kuva">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen reitin kohteista l&auml;hteisiin rasterina.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaaliset alueen yhteydet</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Optimaaliset alueen yhteydet -ty&ouml;kalun kuva">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen yhteysverkoston kahden tai useamman l&auml;ht&ouml;alueen v&auml;lill&auml;.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analysoi kuva</h2>
         <hr/>
-        <p>Seuraavien ty&ouml;kalujen avulla voit analysoida kuvia. 
+        <p>Seuraava  <b>Analysoi kuva</b> -ty&ouml;kaluluokan ty&ouml;kalu auttaa kuvien analysoinnissa:
             <ul>
-                <li> <b>K&auml;yt&auml; rasteritoiminnon mallia</b> k&auml;sittelee kuvasi toimintoketjulla rasteritoiminnon mallin mukaisesti.
-                </li>
-                <li> <b>Tarkkaile kasvillisuutta</b> havaitsee kasvillisuuden kuvassa kaistoissa suoritettujen laskutoimitusten perusteella.
+                <li> <b>Tarkkaile kasvillisuutta</b> havaitsee suhteellisen kasvillisuuspeitteen kuvassa kaistoille suoritettujen laskutoimitusten perusteella. Kuva-analyysin k&auml;ytett&auml;viss&auml; on useita kasvillisuusindeksej&auml;.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Käytä rasteritoiminnon mallia</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="K&auml;yt&auml; rasteritoiminnon mallia">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>K&auml;sittelee kuvasi toimintoketjulla rasteritoiminnon mallin mukaisesti.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>T&auml;m&auml;n ty&ouml;kalun avulla voidaan hankkia tietoja tutkimusalueen kasvillisuuspeitteest&auml; suorittamalla laskutoimituksia monikaistaisen rasterikarttatason kaistoissa.
+            <p>T&auml;m&auml;n ty&ouml;kalun avulla voidaan hankkia tietoja kasvillisuuspeitteest&auml; suorittamalla laskutoimituksia monikaistaisen rasterikarttatason kaistoille.
             </p>
             <br/>
         </div>
@@ -420,7 +500,7 @@
                 <tbody><tr>
                     <td><h2>Esimerkki</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Otos">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Esimerkki">
                     </td>
                 </tr></tbody>
             </table>

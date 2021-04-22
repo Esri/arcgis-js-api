@@ -44,7 +44,7 @@
         <h2>Sažmi raster unutar</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Alat Sažmi Raster unutar"></h2>
         <hr/>
-    <p>Ovaj alat sažima raster na temelju područja (zona) određenih prvim slojem unosa.
+    <p>Ovaj alat rezimira vrijednosti rastera unutar zona drugog skupa podataka.
     </p>
     <p>Neki primjeri primjena uključuju sljedeće:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se samo oni geoobjekti u sloju unosa i sloju koji će se sažeti, a koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se svi geoobjekti u ulaznom sloju i sloju koji će se sažeti, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se samo oni geoobjekti ulaznog sloja i sloja koji će se sažeti, a koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se svi geoobjekti u ulaznom sloju i sloju koji će se sažeti, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>Kada odaberete sloj za sažimanje, dodatno možete izračunati statistiku bilo kojeg brojčanog atributa točaka, linija ili poligona u ulaznom sloju poligona.
             </p>
-            <p>Dostupne vrste statistika kad je odabrano polje cijeli broj jesu prosjek, većina, maksimum, srednja vrijednost, minimum, manjina, raspon, standardno odstupanje, zbroj i raznolikost.
+            <p>Dostupne vrste statistika kad je odabrano polje cijeli broj jesu prosjek, većina, maksimum, srednja vrijednost, minimum, manjina, postotak, raspon, standardno odstupanje, zbroj i raznolikost.
             </p>
             <p>Ako je polje plutajuća točka, opcije su prosjek, maksimum, minimum, raspon, standardno odstupanje i zbroj.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Postotna vrijednost</h2></div>
+        <hr/>
+        <div>
+            <p>Postotak koji treba izračunati. Zadana je vrijednost devedeset (90), &scaron;to označava devedeseti (90) postotak.
+            </p>
+            <p>Vrijednosti se mogu kretati od nula (0) do sto (100). Nulti (0) postotak u osnovi je jednak minimalnoj statistici, dok je stoti (100) postotak jednak maksimumu. Vrijednost od pedeset (50) rezultirat će u osnovi istim rezultatom kao i srednja vrijednost statistike.
+            </p>
+            <p>Ova opcija je jedino podržana kada je parametar  <b>Odaberi statistiku za izračun</b> postavljen na <b>Postotak</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
-    <div id="resultLayer">
-        <div><h2>Naziv sloja rezultata</h2></div>
+    <div id="processAsMultidimensional">
+        <div><h2>Procesuiraj kao multidimenzionalno</h2></div>
         <hr/>
         <div>
+            <p>Određuje kako će se obrađivati ulazni rasteri ako su vi&scaron;edimenzionalni. Ako odlučite obraditi kao vi&scaron;edimenzionalne, statistika će se izračunavati iz svih dimenzija ulaznog vi&scaron;edimenzionalnog skupa podataka. U suprotnom će se statistika izračunati iz trenutnog isječka ulaznog vi&scaron;edimenzionalnog skupa podataka, ovo je zadana vrijednost.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

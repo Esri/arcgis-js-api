@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimala regionanslutningar</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Verktygsskiss f&ouml;r Optimala regionanslutningar"></h2>
+        <hr/>
+    <p>Verktyget ber&auml;knar det optimala anslutningsn&auml;tverket mellan tv&aring; eller flera indataregioner.
+    </p>
+    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar:
+        <ul>
+            <li>L&auml;mplighetsmodellering &ndash; Utifr&aring;n en l&auml;mplighetsmodell har du identifierat 10 av de b&auml;sta boplatserna f&ouml;r lodjur. Du vill att lodjuren ska kunna f&ouml;rflytta sig mellan boplatserna genom det mest effektiva n&auml;tverket av djurkorridorer f&ouml;r att bibeh&aring;lla en genetisk variation inom metapopulationen.
+                
+
+            </li>
+            <li>Timmersk&ouml;rd &ndash; Vid en timmersk&ouml;rd vill du skapa det mest kostnadseffektiva n&auml;tverket av avverkningsrutter fr&aring;n vilket timret ska h&auml;mtas.
+                
+
+            </li>
+            <li>Fredsbevarande &ndash; I samband med en milit&auml;r fredsbevarande insats har du identifierat fem omr&aring;den d&auml;r man kan placera ut trupper och personal. Du vill ta fram de optimalt anslutna leveransrutterna mellan baserna.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, analyseras bara de platser i indatalagren som visas i den aktuella kartutbredningen. Om alternativet inte markeras analyseras alla platser i b&aring;da indatalagren, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Välj regionraster eller geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>De indataregioner som ska anslutas till det optimala n&auml;tverket.
+            </p>
+            <p>Om regioninmatningen &auml;r ett raster definieras regionerna av grupper av intilliggande (angr&auml;nsande) celler med samma v&auml;rde. Varje region m&aring;ste numreras unikt. De celler som inte ing&aring;r i en region m&aring;ste vara NoData. Rastertypen m&aring;ste vara heltal och v&auml;rdena kan vara antingen positiva eller negativa.
+            </p>
+            <p>Om regionindata &auml;r ett geoobjekt kan det vara punkter, linjer eller polygoner. Polygonregioner kan inte best&aring; av flerdelade polygoner.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Välj hinderraster eller geoobjekt (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Datasetet som definierar hinder.
+            </p>
+            <p>F&ouml;r ett raster kan indatatypen vara heltal eller flyttal. Alla celler som har ett v&auml;rde (inklusive noll) behandlas som ett hinder. Celler som &auml;r NoData behandlas inte som ett hinder.
+            </p>
+            <p>F&ouml;r ett geoobjekt kan indata vara punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Välj kostnadraster (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster som definierar impedansen eller kostnaden f&ouml;r att flytta planimetriskt genom varje cell.
+            </p>
+            <p>V&auml;rdet i varje cellposition motsvarar kostnad-per-enhetsavst&aring;ndet f&ouml;r att flytta genom cellen. Varje cellpositions v&auml;rde multipliceras med celluppl&ouml;sningen samtidigt som man ocks&aring; kompenserar f&ouml;r diagonala r&ouml;relse f&ouml;r att f&aring; fram den totala kostnaden f&ouml;r att passera genom cellen.
+            </p>
+            <p>V&auml;rdena i kostnadsrastret kan vara heltal eller flyttal, men de kan inte vara negativa eller noll (du kan inte ha en negativ kostnad eller nollkostnad).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avståndsmetod (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Anger om avst&aring;ndet ska ber&auml;knas med en planmetod (platt jordyta) eller en geodetisk metod (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Plan</b> &ndash; Avst&aring;ndsber&auml;kningen utf&ouml;rs p&aring; ett projicerat platt plan med ett tv&aring;dimensionellt kartesiskt koordinatsystem. Det h&auml;r &auml;r standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodetisk</b> &ndash; Avst&aring;ndsber&auml;kningen g&ouml;rs p&aring; ellipsoiden. Det inneb&auml;r att resultatet inte f&ouml;r&auml;ndras beroende p&aring; indata- eller utdataprojektion.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Anslutningar inom regioner (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Anger om rutterna ska forts&auml;tta och anslutas inom indataregionerna.
+            </p>
+            <ul>
+                <li> <b>Generera anslutningar</b> &ndash; Rutterna forts&auml;tter inom indataregionerna f&ouml;r att ansluta alla rutter som kommer in i en region. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    
+
+                </li>
+                <li> <b>Inga anslutningar</b>Rutterna kommer att stoppa vid kanterna till indataregionerna och kommer inte att forts&auml;tta eller ansluta inom dem.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Resultat för geoobjektlagernamnet Optimala anslutningslinjer</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Det h&auml;r lagret &auml;r ett utdatalinjegeoobjekt som ansluter varje indataregion.
+            </p>
+            <p>Varje rutt (eller linje) &auml;r unikt numrerad och ytterligare f&auml;lt i attributtabellen lagrar specifik information om rutten. Dessa ytterligare f&auml;lt &auml;r f&ouml;ljande:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- Ruttens unika identifierare
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- Det totala kumulativa avst&aring;ndet eller kostnaden f&ouml;r rutten
+                    
+
+                </li>
+                <li> <i>REGION1</i>- Den f&ouml;rsta regionen som rutten ansluter
+                    
+
+                </li>
+                <li> <i>REGION2</i>- Den andra regionen som rutten ansluter
+                    
+
+                </li>
+            </ul>
+            
+            <p>Eftersom varje bana representeras av en unik linje kommer det att finnas flera linjer p&aring; platser d&auml;r rutter g&aring;r parallellt.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Resultat för geoobjektlagernamnet Angränsande anslutningar (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Det h&auml;r lagret &auml;r ett utdatalinjegeoobjekt som identifierar alla rutter fr&aring;n varje region till var och en av dess n&auml;rmaste, eller billigaste, grannar.
+            </p>
+            <p>Varje rutt (eller linje) &auml;r unikt numrerad och ytterligare f&auml;lt i attributtabellen lagrar specifik information om rutten. Dessa ytterligare f&auml;lt &auml;r f&ouml;ljande:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- Ruttens unika identifierare
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- Det totala kumulativa avst&aring;ndet, eller kostnaden, f&ouml;r rutten
+                    
+
+                </li>
+                <li> <i>REGION1</i>- Den f&ouml;rsta regionen som rutten ansluter
+                    
+
+                </li>
+                <li> <i>REGION2</i>- Den andra regionen som rutten ansluter
+                    
+
+                </li>
+            </ul>
+            
+            <p>Eftersom varje bana representeras av en unik linje kommer det att finnas flera linjer p&aring; platser d&auml;r rutter g&aring;r parallellt.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

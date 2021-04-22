@@ -44,7 +44,7 @@
         <h2>Generiraj višedimenzionalnu anomaliju</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generiraj vi&scaron;edimenzionalnu anomaliju"></h2>
         <hr/>
-    <p>Generira vi&scaron;edimenzionalni rasterski skup podataka kombiniranjem postojećih varijabli vi&scaron;edimenzionalnog rastera prema određenoj dimenziji.
+    <p>izračunava anomaliju za svaki isječak u postojećem vi&scaron;edimenzionalnom rasteru radi generiranja novog vi&scaron;edimenzionalnog rastera.
     </p>
     <p>Anomalija je odstupanje zapažanja od standardne, srednje ili prosječne vrijednosti.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Odaberi metodu za generiranje anomalije</h2></div>
         <hr/>
         <div>
-            <p>Određuje metodu koja će se upotrijebiti za izračun anomalije. 
+            <p>Određuje metodu koja će se upotrijebiti za izračun anomalije.
                 <ul>
                     <li> <b>Razlika naspram srednje vrijednosti</b>&mdash;Izračunat će se razlika između vrijednosti piksela i srednje vrijednosti od vrijednosti tog piksela po isječcima koju definira interval. To je zadano.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Razlika naspram srednje vrijednosti = x - &micro;
-
                         <ul>
                             <li>x = vrijednost piksela u isječku
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Razlika naspram srednje vrijednosti u postocima = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = vrijednost piksela u isječku
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Postotak srednje vrijednosti = x / &micro;
-
                         <ul>
                             <li>x = vrijednost piksela u isječku
                                 
@@ -180,7 +177,7 @@
                         </ul>
                         
                     </li>
-                    <li>Rezultat z  = (x - &micro;) / S
+                    <li>Rezultat z = (x - &micro;) / S
                         <ul>
                             <li>x = vrijednost piksela u isječku
                             </li>
@@ -202,7 +199,7 @@
         <div><h2>Odaberite vremenski interval za izračun srednje vrijednosti</h2></div>
         <hr/>
         <div>
-            <p>Određuje vremenski interval koji će se upotrijebiti za izračun srednje vrijednosti. 
+            <p>Određuje vremenski interval koji će se upotrijebiti za izračun srednje vrijednosti.
                 <ul>
                     <li> <b>Sve</b>&mdash;Izračunava srednju vrijednost svih isječaka za svaki piksel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
         <hr/>
         <div>
-            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju. 
+            <p>Određuje ignoriraju li se u analizi vrijednosti koje nedostaju.
                 <ul>
                     <li>Provjereno&mdash;Analiza će uključivati sve važeće piksele za danu dimenziju i ignorirati piksele Bez podataka. To je zadano.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

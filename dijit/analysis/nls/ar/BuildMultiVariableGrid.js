@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"اختر نوع الخانات التي سيتم استخدامها لبناء الشبكة متعددة المتغيرات",layersAttrLabel:"اختر الطبقات والمتغيرات المدخلة التي تريد إدراجها في الشبكة",itemDescription:"طبقة الميزات المنشأة من تشغيل بناء شبكة متعددة المتغيرات.",itemTags:"نتائج التحليلات، بناء شبكة متعددة المتغيرات",itemSnippet:"طبقة الملامح المنشأة من بناء شبكة متعددة المتغيرات",addVariables:"إضافة متغيرات"});

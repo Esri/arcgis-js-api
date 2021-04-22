@@ -44,7 +44,7 @@
         <h2>Objektumok felismerése deep learning használatával</h2><p/>
         <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Objektumok felismer&eacute;se deep learning haszn&aacute;lat&aacute;val"></h2>
         <hr/>
-    <p>Ez az eszk&ouml;z tan&iacute;tott m&aacute;ly tanul&aacute;s modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely a tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
+    <p>Ez az eszk&ouml;z tan&iacute;tott deep learning modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely a tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
     </p>
     <p>Ha az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> ki van v&aacute;lasztva, a program csak az aktu&aacute;lis t&eacute;rk&eacute;p-kiterjed&eacute;sen l&aacute;that&oacute; raszterter&uuml;letet elemzi. Ha nincs kiv&aacute;lasztva, akkor az eg&eacute;sz rasztert elemzi, akkor is, ha az k&iacute;v&uuml;l esik az aktu&aacute;lis t&eacute;rk&eacute;p-kiterjed&eacute;sen.
     </p>
@@ -62,9 +62,9 @@
         <div><h2>Válassza ki a pixelek felismeréséhez használt deep learning modellt</h2></div>
         <hr/>
         <div>
-            <p>Bemeneti m&eacute;ly tanul&aacute;s csomag ( <code>.dlpk</code>) elem.
+            <p>Bemeneti deep learning csomag ( <code>.dlpk</code>) elem.
             </p>
-            <p>A m&eacute;ly tanul&aacute;s csomag ebből &aacute;ll: Esri modelldefin&iacute;ci&oacute;s JSON-f&aacute;jl ( <code>.emd</code>), m&eacute;ly tanul&aacute;s bin&aacute;ris modellf&aacute;jl, valamint opcion&aacute;lisan az alkalmazand&oacute; Python raszterfunkci&oacute;.
+            <p>A deep learning csomag ebből &aacute;ll: Esri modelldefin&iacute;ci&oacute;s JSON-f&aacute;jl ( <code>.emd</code>), deep learning bin&aacute;ris modellf&aacute;jl, valamint opcion&aacute;lisan az alkalmazand&oacute; Python raszterfunkci&oacute;.
             </p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <div><h2>Adja meg a deep learning modell argumentumait</h2></div>
         <hr/>
         <div>
-            <p>A funkci&oacute;argumentumokat a Python raszterfunkci&oacute; oszt&aacute;lyhivatkoz&aacute;sban a bemeneti modell defini&aacute;lja. Itt lehet list&aacute;zni a kieg&eacute;sz&iacute;tő m&eacute;ly tanul&aacute;s param&eacute;tereket &eacute;s argumentumokat k&iacute;s&eacute;rletekhez &eacute;s finom&iacute;t&aacute;sokhoz, mint p&eacute;ld&aacute;ul konfidenciak&uuml;sz&ouml;b&ouml;t az &eacute;rz&eacute;kenys&eacute;g &aacute;ll&iacute;t&aacute;s&aacute;hoz.
+            <p>A funkci&oacute;argumentumokat a Python raszterfunkci&oacute; oszt&aacute;lyhivatkoz&aacute;sban a bemeneti modell defini&aacute;lja. Itt lehet list&aacute;zni a kieg&eacute;sz&iacute;tő deep learning param&eacute;tereket &eacute;s argumentumokat k&iacute;s&eacute;rletekhez &eacute;s finom&iacute;t&aacute;sokhoz, mint p&eacute;ld&aacute;ul konfidenciak&uuml;sz&ouml;b&ouml;t az &eacute;rz&eacute;kenys&eacute;g &aacute;ll&iacute;t&aacute;s&aacute;hoz.
             </p>
             <p>Az argumentumok nev&eacute;t az eszk&ouml;z t&ouml;lti fel a Python modulb&oacute;l kiolvasva.
             </p>
@@ -82,7 +82,7 @@
         <div><h2>Ismétlődő vektoros elemek eltávolítása a kimenetből (választható)</h2></div>
         <hr/>
         <div>
-            <p>Nem maxim&aacute;lis tilt&aacute;st alkalmaz, ahol ism&eacute;tlődő objektumokat azonos&iacute;t, &eacute;s az alacsonyabb konfidencia-&eacute;rt&eacute;kkel rendelkező ism&eacute;tlődő vektoros elemet t&aacute;vol&iacute;tja el. 
+            <p>Nem maxim&aacute;lis tilt&aacute;st alkalmaz, ahol ism&eacute;tlődő objektumokat azonos&iacute;t, &eacute;s az alacsonyabb konfidencia-&eacute;rt&eacute;kkel rendelkező ism&eacute;tlődő vektoros elemet t&aacute;vol&iacute;tja el.
                 <ul>
                     <li>Nincs kiv&aacute;lasztva&mdash;Az &ouml;sszes felismert objektum benne lesz a kimeneti vektoroselem-oszt&aacute;lyban. Ez az alap&eacute;rtelmez&eacute;s.
                         
@@ -124,10 +124,11 @@
         </div>
     </div>
     <div id="outputObjects">
-        <div><h2>Eredményréteg neve</h2></div>
+        <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

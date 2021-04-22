@@ -47,7 +47,7 @@
     <p>A buffer is an area that covers a given distance from a point, line, or area feature.
 
     </p>
-    <p>Buffers are typically used to create areas that can be further analyzed using other tools. For example, if the question is What buildings are within 1 mile of the school?, the answer can be found by creating a 1-mile buffer around the school and overlaying the buffer with the layer containing building footprints. The end result is a layer of those buildings within 1 mile of the school.
+    <p>Buffers are typically used to create areas that can be further analyzed using other tools. For example, if the question is what buildings are within 1 mile of the school, the answer can be found by creating a 1-mile buffer around the school and overlaying the buffer with the layer containing building footprints. The end result is a layer of those buildings within 1 mile of the school.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -56,7 +56,7 @@
         <hr/>
         <div>
             <p>The  point, line, or area features
-to be buffered. The input  layers must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b>.
+to be buffered. The input  layers must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b>.  
             </p>
             <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
             </p>
@@ -72,7 +72,7 @@ to be buffered. The input  layers must be in a projected coordinate system or th
                     </li>
                     <li>Specify a field on the input layer that contains the distance value. You can use a string field or a numeric field. If a linear unit is not defined, the units of the spatial reference will be used. If you are using a geographic coordinate system, the unitless field will be assumed to be meters. 
                     </li>
-                    <li>Build an expression with multiple fields and mathematical operators. For example, to buffer by 10 times the value of a field named  <i>wind_speed</i> add the expression <i>$feature[&quot;wind_speed&quot;] x 10</i>.
+                    <li>Build an expression with multiple fields and mathematical operators. For example, to buffer by 10 times the value of a field named  <i>wind_speed</i>, add the expression <i>$feature[&quot;wind_speed&quot;] x 10</i>.
                     </li>
                 </ul>
                 
@@ -109,14 +109,14 @@ large areas and any geographic coordinate system.
         <div><h2>Allow multipart features</h2></div>
         <hr/>
         <div>
-            <p>Option to specify if your result will consist of single-part or multipart features. 
+            <p>Specifies whether the result will consist of single-part or multipart features. 
 
             </p>
             <p>
                 <ul>
-                    <li>Checked&mdash;The results of your analysis will be contain multipart features.   
+                    <li>Checked&mdash;The results of your analysis will contain multipart features.   
                     </li>
-                    <li>Unchecked&mdash;The results of your analysis will contain single-part features, This is the default.
+                    <li>Unchecked&mdash;The results of your analysis will contain single-part features. This is the default.
                     </li>
                 </ul>
                 
@@ -163,7 +163,7 @@ large areas and any geographic coordinate system.
         <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to a data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store, and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -181,7 +181,7 @@ large areas and any geographic coordinate system.
         <hr/>
         <div>
             <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify

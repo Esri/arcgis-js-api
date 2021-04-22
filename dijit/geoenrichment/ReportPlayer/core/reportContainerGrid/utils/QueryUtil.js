@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/dom-geometry"],(function(e){var n={getLayoutCells:function(e,n){var t=(n=n||{}).sectionFuncName,o=n.floatingCells,r=n.topFirst,i=n.visibleOnly,u=[];return(i?e.getShownGrids():e.getGrids()).forEach((function(e){var n=e.getFieldCells({floatingCells:o,topFirst:r});n&&(u=u.concat(n))})),t?u.filter((function(e){return!t||e&&e.content&&e.content[t]})):u},findFirstEmptyLayoutCell:function(e){return n.getLayoutCells(e,{sectionFuncName:"isEmpty"}).some((function(e){if(e.content.isEmpty())return t=e,!0})),t;var t},getFloatingTables:function(e,n){var t=[];return("number"==typeof n?[e.getGrids()[n]]:e.getGrids()).forEach((function(e){e.foregroundFloatingTablesSection&&(t=t.concat(e.foregroundFloatingTablesSection.getTables())),e.backgroundFloatingTablesSection&&(t=t.concat(e.backgroundFloatingTablesSection.getTables()))})),t},getSectionIndex:function(e,n){var t,o=0;return e.getGrids().some((function(e){return e.getFieldCells().some((function(e){if(e===n)return t=!0,!0;o++}))})),t&&o},getLayoutCellBySectionIndex:function(e,n){var t,o=0;return e.getGrids().some((function(e){return e.getFieldCells().some((function(e){if(o===n)return t=e,!0;o++}))})),t},screenToPageCoords:function(n,t,o,r){var i=n.getGrids()[n.getCurrentViewedPageIndex()];if(!i)return null;var u=e.position(i.domNode),a={x:t-u.x,y:o-u.y};if(r&&!r.returnInScreenCoordinates){var c=n.getZoomInfo().scale;a.x/=c,a.y/=c}return a}};return n}));

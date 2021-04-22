@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Avstandsallokering</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Illustrasjon av Avstandsallokering-verkt&oslash;yet"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet beregner avstandsallokering for hver celle til de oppgitte kildene basert p&aring; rettlinjet avstand, kostnadsavstand, reell overflateavstand samt vertikale og horisontale faktorer.
+    </p>
+    <p>Eksempler p&aring; bruksomr&aring;der kan v&aelig;re &aring; finne svar p&aring; sp&oslash;rsm&aring;l av f&oslash;lgende type:
+        <ul>
+            <li>Identifiserer de allokerte omr&aring;dene som feltarbeiderne er ansvarlig for.
+                
+
+            </li>
+            <li>Indentifiserer omr&aring;der som er tilordnet habitatomr&aring;der for r&oslash;dgauper.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres bare de geoobjektene i inndatalaget som er synlige innenfor gjeldende kartutstrekning. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjektene i inndatalaget, selv om de befinner seg utenfor rekkevidden av gjeldende kartvisning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Velg kilderaster eller geoobjekter</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster- eller geoobjektlag som angir kildene som avstanden skal beregnes til.
+            </p>
+            <p>Hvis inndataene er et raster, m&aring; de best&aring; av celler med gyldige verdier (null er en gyldig verdi) for kildene, og de gjenv&aelig;rende cellene m&aring; tilordnes NoData.
+            </p>
+            <p>Hvis inndataene er et geoobjektlag, kan det v&aelig;re punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Kildefelt (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Feltet som brukes til &aring; tilordne verdier til kildelokasjoner. M&aring; v&aelig;re av typen heltall.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Velg hindringsraster eller geoobjekter (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Datasettet som definerer hindringene.
+            </p>
+            <p>Inndatatypen for et rasterlag kan v&aelig;re heltall eller flyttall. Celler som har en verdi (inkludert null) behandles som en hindring. Celler som er NoData, behandles ikke som en hindring.
+            </p>
+            <p>For en geoobjekttjeneste kan inndata v&aelig;re punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Velg overflateraster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster som definerer h&oslash;ydeverdiene for hver cellelokasjon.
+            </p>
+            <p>Verdiene brukes til &aring; beregne den faktiske overflatedistansen som tilbakelegges n&aring;r man beveger seg mellom cellene.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Velg kostnadsraster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster som definerer impedansen, eller kostnaden, ved &aring; bevege seg planimetrisk gjennom hver celle.
+            </p>
+            <p>Verdien ved hver celleplassering representerer kostnad-per-enhet-avstanden for bevegelse gjennom cellen. Hver celleplasseringsverdi multipliseres med celleoppl&oslash;sningen og kompenserer samtidig for diagonal bevegelse for &aring; finne de totale kostnadene ved &aring; passere gjennom cellen.
+            </p>
+            <p>Kostnadsrasterets verdier kan v&aelig;re heltall eller flyttall, men de kan ikke v&aelig;re negative tall eller null (du kan ikke ha en negativ eller nullkostnad).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Velg vertikalt raster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster som definerer z-verdiene for hver cellelokasjon.
+            </p>
+            <p>Disse verdiene brukes til &aring; beregne helningen som brukes til &aring; identifisere den vertikale faktoren n&aring;r man beveger seg fra en celle til en annen.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikal faktor (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikal faktor</b> definerer forholdet mellom den loddrette kostnadsfaktoren og den loddrette relative bevegelsesvinkelen (vertical relative moving angle, VRMA).
+            </p>
+            <p>Du kan velge mellom flere faktorer med modifikatorer som identifiserer en definert vertikal faktorgraf. Grafene brukes til &aring; identifisere den vertikale faktoren som brukes til &aring; beregne totalkostnaden ved &aring; bevege seg over i en nabocelle.
+            </p>
+            <p>I beskrivelsene nedenfor definerer den vertikale faktoren (VF) det vertikale problemet som oppst&aring;r n&aring;r man beveger seg fra en celle til den neste, og VRM-modifikatoren identifiserer helningsvinkelen mellom  <b>Fra kilde</b>-cellen og <b>Til kilde</b>-cellen.
+                <ul>
+                    <li> <b>Bin&aelig;r</b> &ndash; Hvis VRMA er st&oslash;rre enn den lave snittvinkelen og mindre enn den h&oslash;ye snittvinkelen, angis VF som den verdien som er knyttet til nullfaktoren, ellers er den uendelig.
+                    </li>
+                    <li> <b>Line&aelig;r</b> &ndash; VF er en line&aelig;r funksjon av VRMA.
+                    </li>
+                    <li> <b>Invers line&aelig;r</b> &ndash; Angir at VF er en invers line&aelig;r funksjon av VRMA.
+                    </li>
+                    <li> <b>Symmetrisk line&aelig;r</b> &ndash; Angir at VF er en line&aelig;r funksjon av VRMA i enten den negative eller positive siden av VRMA, og de to line&aelig;re funksjonene er symmetriske med hensyn til VF-aksen (y-aksen).
+                    </li>
+                    <li> <b>Symmetrisk invers line&aelig;r</b> &ndash; Angir at VF er en invers line&aelig;r funksjon av VRMA i enten den negative eller positive siden av VRMA, og de to line&aelig;re funksjonene er symmetriske med hensyn til VF-aksen (y-aksen).
+                    </li>
+                    <li> <b>Cos</b> &ndash; VF er er den cosinus-baserte funksjonen av VRMA.
+                    </li>
+                    <li> <b>Sec</b> &ndash; VF er den sekant-baserte funksjonen av VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; VF er den cosinus-baserte funksjonen av VRMA n&aring;r VRMA er negativ, og den sekant-baserte funksjonen av VRMA n&aring;r VRMA er ikke-negativ.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; VF er den sekant-baserte funksjonen av VRMA n&aring;r VRMA er negativ, og den cosinus-baserte funksjonen av VRMA n&aring;r VRMA er ikke-negativ.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorene for de vertikale parametrene er som f&oslash;lger:
+                <ul>
+                    <li> <b>Nullfakttor</b> &ndash; Den vertikale faktoren som brukes n&aring;r VRMA er null. Denne faktoren plasserer y-skj&aelig;ringspunktet for den angitte funksjonen. Nullfaktor kan per definisjon ikke brukes p&aring; trigonometriske vertikale funksjoner (Cos, Sec, Cos-Sec, eller Sec-Cos). Y-skj&aelig;ringspunktet defineres av disse funksjonene.
+                    </li>
+                    <li> <b>Lav snittvinkel</b> &mdash; VRMA-vinkelen som VF settes til uendelig under.
+                    </li>
+                    <li> <b>H&oslash;y snittvinkel</b> &ndash; VRMA-vinkelen som VF settes til uendelig over.
+                    </li>
+                    <li> <b>Helning</b> &ndash; Helningen er den rette linjen som brukes med parameterne <b>Line&aelig;r</b> og <b>Invers line&aelig;r</b>. Helningen angis som forholdet mellom h&oslash;ydeforskjell over horisontal distanse (f.eks. tilsvarer 45 graders helning 1/45, som angis som 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Velg horisontalt raster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster som definerer den horisontale retningen i hver celle.
+            </p>
+            <p>Verdiene i rasteret m&aring; v&aelig;re heltall fra 0 til 360, der 0 grader er nord, eller mot toppen av skjermen, og stigende med klokken. Flate omr&aring;der skal ha verdien -1. Verdiene for hver lokasjon brukes i forbindelse med  <b>Horisontal faktor</b> til &aring; fastsette den horisontale kostnaden ved &aring; bevege seg fra en celle til naboceller.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horisontal faktor (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horisontal faktor</b> definerer forholdet mellom den vannrette kostnadsfaktoren og den horisontale relative bevegelsesvinkelen.
+            </p>
+            <p>Du kan velge mellom flere faktorer med modifikatorer som identifiserer en definert horisontal faktorgraf. Grafene brukes til &aring; identifisere den horisontale faktoren som brukes til &aring; beregne totalkostnaden ved &aring; bevege seg over i en nabocelle.
+            </p>
+            <p>I beskrivelsene nedenfor definerer den horisontale faktoren (HF) det horisontale problemet som oppst&aring;r n&aring;r man beveger seg fra en celle til den neste, og den horisontale relative bevegelsesvinkelen (HRMA) identifiserer vinkelen mellom den horisontale retningen fra en celle og bevegelsesretningen.
+            </p>
+            <p>Definisjonene og parameterne for disse horisontale faktorene er som f&oslash;lger:
+                <ul>
+                    <li> <b>Bin&aelig;r</b> &ndash; Hvis HRMA er mindre enn den lave snittvinkelen, settes HF til den verdien som er knyttet til nullfaktoren, ellers er den uendelig.
+                        
+
+                    </li>
+                    <li> <b>Fremover</b> &ndash; Det er kun tillatt med bevegelse fremover. HRMA m&aring; v&aelig;re st&oslash;rre enn eller lik 0 og mindre enn 90 grader (0 &lt;= HRMA &lt; 90). Hvis HRMA er st&oslash;rre enn 0 og mindre enn 45 grader, settes HF for cellen til verdien som er knyttet til nullfaktoren. Hvis HRMA er st&oslash;rre enn eller lik 45 grader, brukes modifikatorverdien for sideverdien. HF for en HRMA som er lik eller st&oslash;rre enn 90 grader, settes til uendelig.
+                    </li>
+                    <li> <b>Line&aelig;r</b> &ndash; HF er en line&aelig;r funksjon av HRMA.
+                        
+
+                    </li>
+                    <li> <b>Invers line&aelig;r</b> &ndash; Angir at HF er en invers line&aelig;r funksjon av HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorene for de horisontale n&oslash;kkelordene er som f&oslash;lger:
+                <ul>
+                    <li> <b>Nullfaktor</b> &ndash; Den horisontale faktoren n&aring;r HRMA er null. Denne faktoren plasserer y-skj&aelig;ringspunktet for funksjoner for den horisontale faktoren.
+                        
+
+                    </li>
+                    <li> <b>Snittvinkel</b> &ndash; HRMA-vinkelen som HF settes til uendelig over.
+                        
+
+                    </li>
+                    <li> <b>Helning</b> &ndash; Helning er den rette linjen som brukes med de horisontale faktorn&oslash;kkelordene <b>Line&aelig;r</b> og <b>Invers line&aelig;r</b>. Helningen angis som forholdet mellom h&oslash;ydeforskjell over horisontal distanse (f.eks. tilsvarer 45 graders helning 1/45, som angis som 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Sideverdi</b> &ndash; Fastsetter HF n&aring;r HRMA er st&oslash;rre enn eller lik 45 grader og mindre enn 90 grader n&aring;r det horisontale faktorn&oslash;kkelordet <b>Fremover</b> er angitt.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Første akkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Den opprinnelige akkumulerte kostnaden for &aring; starte kostnadsberegningen.
+            </p>
+            <p>Gj&oslash;r det mulig &aring; spesifisere den faste kostnaden knyttet til en kilde. I stedet for &aring; begynne med et kostnad p&aring; 0, begynner kostandsalgoritmen med den verdien som er angitt av  <b>F&oslash;rste akkumulering</b>.
+            </p>
+            <p>Verdiene m&aring; v&aelig;re null eller st&oslash;rre. Standardverdien er 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimal akkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimal akkumulering for den reisende for en kilde.
+            </p>
+            <p>Kostnadsberegningene fortsetter for hver kilde til den angitte akkumuleringen er n&aring;dd.
+            </p>
+            <p>Verdiene m&aring; st&oslash;rre enn null. Standard akkumulering er er til kanten av utdatarasteret.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kostnadsmultiplikator</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplikatorer som skal brukes p&aring; kostnadsverdier.
+            </p>
+            <p>Gj&oslash;r det mulig &aring; styre reisem&aring;ten eller st&oslash;rrelsen ved en kilde. Jo st&oslash;rre multiplikator, jo st&oslash;rre er kostnaden ved &aring; bevege seg gjennom hver celle.
+            </p>
+            <p>Verdiene m&aring; st&oslash;rre enn null. Standardverdien er 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Reiseretning</h2></div>
+        <hr/>
+        <div>
+            <p>Angir retningen for den reisende n&aring;r det brukes horisontale og vertikale faktorer.
+            </p>
+            <p> <b>Fra kilde</b> &ndash; Den horisontale og vertikale faktoren brukes fra inndatakilden og ut til ikke-kildecellene. Dette er standardalternativet.
+            </p>
+            <p> <b>Til kilde</b> &ndash; Den horisontale og vertikale faktoren brukes fra hver ikke-kildecelle og tilbake til inndatakilden.
+            </p>
+            <p>Angi n&oslash;kkelordet  <b>Fra kilde</b> eller <b>Til kilde</b> som skal brukes for alle kilder, eller angi et felt i kildedataene som inneholder n&oslash;kkelordene som identifiserer reiseretningen for hver kilde. Feltet m&aring; inneholde strengen <code>FROM_SOURCE</code> eller <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avstandsmetode (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om avstanden skal beregnes ved hjelp av en planmetode (flat jord) eller geodetisk metode (ellipsoide).
+            </p>
+            <ul>
+                <li> <b>Plan</b> &ndash;Avstandsberegningen foretas p&aring; et projisert flatt plan ved hjelp av et 2D kartesisk koordinatsystem. Dette er standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodetisk</b> &ndash; Avstandsberegningen foretas p&aring; ellipsoiden. Det betyr at resultatene ikke endrer seg, uansett inndata- og utdataprojeksjon.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Navn på resulterende raster for avstandsallokering</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Navn på resulterende raster for avstandsakkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteret for avstandsallokering inneholder den akkumulerte avstanden fra hver celle fra, eller til, kilden med lavest kostnad.
+            </p>
+            <p>Utdatarasteret er av typen flyttall.
+            </p>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Navn på resulterende tilbakeretningsraster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Tilbakeretningsrasteret inneholder beregnet retning i grader. Retningen identifiserer neste celle langs den korteste ruten tilbake til n&aelig;rmeste kilde samtidig som hindringer unng&aring;s.
+            </p>
+            <p>Verdiomr&aring;det er fra 0 grader til 360 grader, med 0 reservert for kildecellene. &Oslash;stlig retning (h&oslash;yre) er 90, og verdiene &oslash;ker med urviseren (180 er s&oslash;r, 270 er vest og 360 er nord).
+            </p>
+            <p>Utdatarasteret er av typen flyttall.
+            </p>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b>. Du m&aring; oppgi et navn som ikke allerede finnes i <b>Mitt innhold</b>.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Navn på resulterende laget for kilderetning (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteret for kilderetning identifiserer retningen for kildencelle med laveste akkumulert kostand som asimut i grader
+            </p>
+            <p>Verdiomr&aring;det er fra 0 grader til 360 grader, med 0 reservert for kildecellene. &Oslash;stlig retning (h&oslash;yre) er 90, og verdiene &oslash;ker med urviseren (180 er s&oslash;r, 270 er vest og 360 er nord).
+            </p>
+            <p>Utdatarasteret er av typen flyttall.
+            </p>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b>. Du m&aring; oppgi et navn som ikke allerede finnes i <b>Mitt innhold</b>.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Navn på resulterende laget for kildelokasjon (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteret for kildelokasjon er et flerb&aring;ndraster. Det f&oslash;rste b&aring;ndet inneholder en radindeks, og det andre b&aring;ndet inneholder en kolonneindeks. Disse indeksene identifiserer lokasjonen for kildecellen som er avstanden med laveste akkumulerte kostnader unna.
+            </p>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b>. Du m&aring; oppgi et navn som ikke allerede finnes i <b>Mitt innhold</b>.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

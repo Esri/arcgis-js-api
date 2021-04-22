@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Chọn loại bin sẽ được dùng để tạo lưới đa biến",layersAttrLabel:"Chọn các biến và lớp đầu vào mà bạn muốn bao gồm trong lưới",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy Tạo Lưới Đa biến.",itemTags:"Kết quả phân tích, Tạo Lưới Đa biến",itemSnippet:"Lớp đối tượng được tạo ra từ Tạo Lưới Đa biến",addVariables:"Thêm Biến"});

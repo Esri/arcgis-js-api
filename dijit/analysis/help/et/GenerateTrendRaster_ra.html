@@ -52,8 +52,6 @@
         <div><h2>Vali trendi analüüsimiseks mitmemõõtmeline pildikiht</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Mitmem&otilde;&otilde;tmelise rastri sisendpildikiht, mida hakatakse anal&uuml;&uuml;sima.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Vali joone tüüp, mida muutujate väärtuste dimensiooni paigutamiseks kasutatakse</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rab joone t&uuml;&uuml;bi, mida kasutatakse, et paigutada piksli v&auml;&auml;rtused m&ouml;&ouml;da dimensiooni. 
+            <p>M&auml;&auml;rab joone t&uuml;&uuml;bi, mida kasutatakse, et paigutada piksli v&auml;&auml;rtused m&ouml;&ouml;da dimensiooni.
                 <ul>
                     <li> <b>Lineaarne</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da lineaarset trendijoont. See on vaikevalik.
                     </li>
                     <li> <b>Pol&uuml;noomiline</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da teise j&auml;rgu pol&uuml;noomilist trendijoont.
                     </li>
                     <li> <b>Harmooniline</b> &ndash; muutuja piksli v&auml;&auml;rtused paigutatakse m&ouml;&ouml;da harmoonilist trendijoont.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Muutuja piksliv&auml;&auml;rtusi hinnatakse Mann-Kendalli trendikatse abil.
+                    </li>
+                    <li> <b>Hooajaline Kendall</b>&mdash;Muutuja piksliv&auml;&auml;rtusi hinnatakse hooajalise Kendalli trendikatse abil.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Määra hooajalise perioodi pikkuse ajaühik</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab hooajalise Kendalli testi sooritamisel hooaja pikkuse jaoks kasutatava aja&uuml;hiku.
+                <ul>
+                    <li> <b>P&auml;evad</b>&mdash;Hooajalise perioodi pikkuse &uuml;hik on p&auml;ev. See on vaikevalik.
+                    </li>
+                    <li> <b>Kuud</b>&mdash;Hooajalise perioodi pikkuse &uuml;hik on kuu.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>P&auml;evad</b> &ndash; harmoonilise ts&uuml;kli pikkuse aja&uuml;hikuna kasutatakse p&auml;evi.
                     </li>
-                    <li> <b>Aastad</b> &ndash; harmoonilise ts&uuml;kli pikkuse aja&uuml;hikuna kasutatakse aastaid. See on vaikimisi valik.
+                    <li> <b>Aastad</b> &ndash; harmoonilise ts&uuml;kli pikkuse aja&uuml;hikuna kasutatakse aastaid. See on vaikevalik.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

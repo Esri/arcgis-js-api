@@ -151,7 +151,7 @@
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system be used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
             </p>
         </div>
     </div>
@@ -159,7 +159,7 @@
         <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to a data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store, and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -177,7 +177,7 @@
         <hr/>
         <div>
             <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>This result layer will show you statistically significant clusters of high and low values or point counts. If the result layer name already exists, you will be asked to rename it.

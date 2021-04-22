@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimale regionsforbindelser</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Illustrasjon for verkt&oslash;yet Optimale regionsforbindelser"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet beregner det optimale forbindelsesnettverket mellom to eller flere inndataregioner.
+    </p>
+    <p>Eksempler p&aring; bruksomr&aring;der er blant annet f&oslash;lgende:
+        <ul>
+            <li>Egnethetsmodellering &ndash; Du identifisert ti av de beste habitatsomr&aring;dene for r&oslash;dgauper fra en egnethetsmodell. Du vil at r&oslash;dgaupene skal kunne forflytte seg mellom omr&aring;dene via det meste effektive nettet av gr&oslash;nne korridorer for &aring; opprettholde genetisk mangfold i metapopulasjonen.
+                
+
+            </li>
+            <li>T&oslash;mmerhogst &ndash; Du &oslash;nsker &aring; finne det mest kostnadseffektive nettet av t&oslash;mmerveier for uttransport av t&oslash;mmer under t&oslash;mmerhogst.
+                
+
+            </li>
+            <li>Fredsbevaring &ndash; I et milit&aelig;rt fredsbevaringsoppdrag har du identifisert fem omr&aring;der for utstasjonering av tropper og personell. Du &oslash;nsker &aring; f&aring; p&aring; plass optimale forsyningsruter mellom basene.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres bare de lokasjonene i inndatalagene som er synlige innenfor gjeldende kartutstrekning. Hvis det ikke er merket av for dette alternativet, analyseres alle lokasjoner i begge inndatalag, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Velg regionraster eller geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Inndataregionene som skal knyttes sammen i det optimale nettverket.
+            </p>
+            <p>Hvis regioninndataene er et raster, defineres regionene ved grupper av sammenhengende (tilst&oslash;tende) celler av samme verdi. Hver region m&aring; gis et unikt nummer. Cellene som ikke inng&aring;r i noen region, m&aring; v&aelig;re NoData. Rastertypen m&aring; v&aelig;re heltall, og verdiene kan v&aelig;re enten positive eller negative.
+            </p>
+            <p>Hvis regioninndataene er et geoobjekt, kan de v&aelig;re punkter, linjer eller polygoner. Polygonregioner kan ikke best&aring; av polygoner med flere deler.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Velg hindringsraster eller geoobjekt (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Datasettet som definerer hindringene.
+            </p>
+            <p>For raster kan inndatatypen v&aelig;re heltall eller flyttall. Celler som har en verdi (inkludert null) behandles som en hindring. Celler som er NoData, behandles ikke som en hindring.
+            </p>
+            <p>For geoobjekt kan inndata v&aelig;re punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Velg kostnadsraster (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster som definerer impedansen, eller kostnaden, ved &aring; bevege seg planimetrisk gjennom hver celle.
+            </p>
+            <p>Verdien ved hver celleplassering representerer kostnad-per-enhet-avstanden for bevegelse gjennom cellen. Hver celleplasseringsverdi multipliseres med celleoppl&oslash;sningen og kompenserer samtidig for diagonal bevegelse for &aring; finne de totale kostnadene ved &aring; passere gjennom cellen.
+            </p>
+            <p>Kostnadsrasterets verdier kan v&aelig;re heltall eller flyttall, men de kan ikke v&aelig;re negative tall eller null (du kan ikke ha en negativ eller nullkostnad).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avstandsmetode (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om avstanden skal beregnes ved hjelp av en planmetode (flat jord) eller geodetisk metode (ellipsoide).
+            </p>
+            <ul>
+                <li> <b>Planar</b> &ndash;Avstandsberegningen foretas p&aring; et projisert flatt plan ved hjelp av et 2D kartesisk koordinatsystem. Dette er standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodesic</b> &ndash; Avstandsberegningen foretas p&aring; ellipsoiden. Det betyr at resultatene ikke endrer seg, uansett inndata- og utdataprojeksjon.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Forbindelser innenfor regioner (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Angir om banene vil fortsette og forbindes innenfor inndataregionene.
+            </p>
+            <ul>
+                <li> <b>Generer forbindelser</b> &ndash; Baner vil fortsette innenfor inndataregionene for &aring; koble samme alle baner som kommer inn i en region. Dette er standardalternativet.
+                    
+
+                </li>
+                <li> <b>Ingen forbindelser</b> &ndash; Baner stopper ved kantene for inndataregionene og vil ikke fortsette eller knyttes sammen innenfor dem.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Navn på resultatlag for optimale forbindelseslinjer</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Dette laget er et utdata-linjegeoobjekt som kobler sammen hver inndataregion.
+            </p>
+            <p>Hver bane (eller linje) er unikt nummerert og tilleggsfelt i attributtabellen inneholder informasjon om banen. Tilleggsfeltene er f&oslash;lgende:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Den unike identifikatoren for banen
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Den totale akkumulerte avstanden eller kostnaden for banen
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Den f&oslash;rste regionen banen forbinder
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Den andre regionen banen forbinder
+                    
+
+                </li>
+            </ul>
+            
+            <p>Siden hver bane representeres av en unik linje, vil det v&aelig;re flere linjer i lokasjoner der banene g&aring;r samme rute.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Navn på resulterende geoobjektlag for tilstøtende ruter (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Dette laget er et utdata-linjegeoobjekt som identifiserer alle baner fra hver region til hver av sine n&aelig;rmeste, eller minst kostnadskrevende, naboer.
+            </p>
+            <p>Hver bane (eller linje) er unikt nummerert og tilleggsfelt i attributtabellen inneholder informasjon om banen. Tilleggsfeltene er f&oslash;lgende:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Den unike identifikatoren for banen
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Den totale akkumulerte avstanden, eller kostnaden, for banen
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Den f&oslash;rste regionen banen forbinder
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Den andre regionen banen forbinder
+                    
+
+                </li>
+            </ul>
+            
+            <p>Siden hver bane representeres av en unik linje, vil det v&aelig;re flere linjer i lokasjoner der banene g&aring;r samme rute.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

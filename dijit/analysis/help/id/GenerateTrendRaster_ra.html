@@ -52,8 +52,6 @@
         <div><h2>Pilih layer citra multidimensional untuk menganalisis tren</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Layer citra input dari raster multidimensional yang akan dianalisis.
             </p>
         </div>
@@ -70,7 +68,7 @@
         <div><h2>Pilih variabel untuk menganalisis tren</h2></div>
         <hr/>
         <div>
-            <p>Variabel atau variabel yang trennya akan dihitung. Jika tidak ada variabel yang ditentukan, variabel pertama dalam raster multidimensional akan dianalisis.
+            <p>Variabel yang trennya akan dihitung. Jika tidak ada variabel yang ditentukan, variabel pertama dalam raster multidimensional akan dianalisis.
             </p>
         </div>
     </div>
@@ -78,13 +76,32 @@
         <div><h2>Pilih jenis garis yang sesuai dengan nilai variabel di sepanjang dimensi</h2></div>
         <hr/>
         <div>
-            <p>Menentukan jenis garis yang akan digunakan agar sesuai dengan nilai piksel di sepanjang dimensi. 
+            <p>Menentukan jenis garis yang akan digunakan agar sesuai dengan nilai piksel di sepanjang dimensi.
                 <ul>
                     <li> <b>Linear</b>&mdash;Nilai piksel variabel akan dipasang di sepanjang garis tren linear. Ini adalah default.
                     </li>
                     <li> <b>Polinomial</b>&mdash;Nilai piksel variabel akan dipasang di sepanjang garis tren polinomial urutan kedua.
                     </li>
                     <li> <b>Harmonik</b>&mdash;Nilai piksel variabel akan dipasang di sepanjang garis tren harmonik.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Nilai piksel variabel akan dievaluasi menggunakan uji tren Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Nilai piksel variabel akan dievaluasi menggunakan uji tren Seasonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Tentukan unit waktu untuk panjang periode musiman</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan satuan waktu yang akan digunakan untuk lama periode musiman ketika melakukan uji Seasonal-Kendall.
+                <ul>
+                    <li> <b>Hari</b>&mdash;Satuan untuk lama periode musiman adalah harian. Ini adalah default.
+                    </li>
+                    <li> <b>Bulan</b>&mdash;Satuan untuk lama periode musiman adalah bulan.
                     </li>
                 </ul>
                 
@@ -148,7 +165,7 @@
         <div><h2>Pilih statistik model yang akan disertakan dalam raster tren</h2></div>
         <hr/>
         <div>
-            <p>Alat ini menyediakan tiga jenis statistik garis pencocokan tren: kesalahan akar rata-rata kuadrat (RMSE), statistik good-of-fit R-kuadrat (R-kuadrat), dan statistik nilai-p untuk koefisien kelerengan (Nilai-p koefisien kemiringan). Setiap statistik memiliki kotak centang yang sesuai untuk menentukan apakah akan dihitung dan disertakan sebagai salah satu dari beberapa band dalam raster tren output.
+            <p>Alat ini menyediakan tiga jenis statistik garis pencocokan tren: kesalahan akar rata-rata kuadrat (RMSE), statistik goodness-of-fit R-kuadrat (R-kuadrat), dan statistik nilai-p untuk koefisien kelerengan (Nilai-p koefisien kemiringan). Setiap statistik memiliki kotak centang yang sesuai untuk menentukan apakah akan dihitung dan disertakan sebagai salah satu dari beberapa band dalam raster tren output.
                 <ul>
                     <li>
                         <p>RMSE
@@ -207,9 +224,10 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Afstandsakkumulering</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Illustration af Afstandsallokering-v&aelig;rkt&oslash;jet"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j beregner den akkumulerede afstand fra hver celle til kilderne, hvilket tager h&oslash;jde for ligelinje-afstand, omkostningsafstand, virkelig overfladeafstand samt vandrette og lodrette faktorer.
+    </p>
+    <p>Eksempler p&aring; anvendelser er at besvare sp&oslash;rgsm&aring;l som disse:
+        <ul>
+            <li>Hvad er afstanden til den n&aelig;rmeste by?
+                
+
+            </li>
+            <li>Hvad er omkostningsafstanden til den n&aelig;rmeste vej?
+                
+
+            </li>
+            <li>Hvad er afstanden omkring barriererne i forhold til den n&aelig;rmeste vandkilde?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis  <b>Anvend aktuel kortudstr&aelig;kning</b> er markeret, vil kun de objekter i inputlaget, der er synlige i den aktuelle kortudstr&aelig;kning, blive analyseret. Hvis markeringen fjernes, analyseres alle objekter i inputlaget, ogs&aring; selvom de er placeret uden for den aktuelle kortvisnings udstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Vælg kilderaster eller -objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster- eller vektorlag, der definerer de kilder, som afstanden beregnes til.
+            </p>
+            <p>Hvis inputtet er en raster, skal den best&aring; af celler, der har gyldige v&aelig;rdier (nul er en gyldig v&aelig;rdi) for kilderne, og de resterende celler skal tildeles NoData.
+            </p>
+            <p>Hvis inputtet er et vektorlag, kan det v&aelig;re punkter, linjer eller polygoner.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Vælg barriere-raster eller -objekter (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Det datas&aelig;t, der definerer barriererne.
+            </p>
+            <p>For et rasterlag kan inputtypen v&aelig;re heltal eller flydende komma. Enhver celle, der har en v&aelig;rdi (inkl. nul), vil blive behandlet som en barriere. Enhver celle, der er NoData, vil ikke blive behandlet som en barriere.
+            </p>
+            <p>For en featuretjeneste kan input v&aelig;re et punkt, en linje eller en polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Vælg overfladeraster (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>En raster, der definerer h&oslash;jdev&aelig;rdierne ved hver cellelokation.
+            </p>
+            <p>V&aelig;rdierne bruges til at beregne den faktiske overfladedistance, der tilbagel&aelig;gges, n&aring;r man flytter mellem cellerne.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Vælg omkostningsraster (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>En raster, der definerer omkostninger eller impedans ved at bev&aelig;ge sig planimetrisk gennem hver celle.
+            </p>
+            <p>V&aelig;rdien ved hver cellelokation repr&aelig;senterer omkostning pr. enhed-afstanden ved at bev&aelig;ge sig gennem cellen. V&aelig;rdien ved hver cellelokation ganges med celleopl&oslash;sningen, og der kompenseres for diagonal bev&aelig;gelse for at f&aring; de samlede omkostninger ved at bev&aelig;ge sig gennem cellen.
+            </p>
+            <p>V&aelig;rdierne af omkostningsrasteren kan v&aelig;re heltal eller flydende komma, men de kan ikke v&aelig;re negative eller nul (man kan ikke have omkostninger, der er negative eller nul).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Vælg lodret raster (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>En raster, der definerer z-v&aelig;rdierne for hver celleplacering.
+            </p>
+            <p>V&aelig;rdierne anvendes til at beregne den h&aelig;ldning, der bruges til at identificere den lodrette faktor, n&aring;r man bev&aelig;ger sig fra en celle til en anden.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Lodret faktor (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Den  <b>lodrette faktor</b> definerer forholdet mellem den lodrette omkostningsfaktor (VF) og den lodrette relative bev&aelig;gelsesvinkel (vertical relative moving angle (VRMA)).
+            </p>
+            <p>Du kan v&aelig;lge mellem flere faktorer med modifikatorer, hvorfra der kan identificeres en defineret lodret faktorgraf. Graferne bruges til at identificere den lodrette faktor, der bruges til at beregne den samlede omkostning ved at bev&aelig;ge sig over i en nabocelle.
+            </p>
+            <p>I beskrivelserne nedenfor definerer den lodrette faktor (VF) de lodrette problemer, der opst&aring;r, n&aring;r man bev&aelig;ger sig fra en celle til den n&aelig;ste, og VRMA-modifikatoren angiver h&aelig;ldningsvinklen mellem  <b>Fra kilde</b>-cellen og <b>Til kilde</b>-cellen.
+                <ul>
+                    <li> <b>Bin&aelig;r</b> &ndash; Angiver, at hvis VRMA er st&oslash;rre end den lavt sk&aring;rne vinkel og mindre end den h&oslash;jt sk&aring;rne vinkel, er VF indstillet til den v&aelig;rdi, der er forbundet med nulfaktoren, ellers er den uendelig.
+                    </li>
+                    <li> <b>Line&aelig;r</b> &ndash; Angiver, at VF er en line&aelig;r funktion af VRMA.
+                    </li>
+                    <li> <b>Omvendt line&aelig;r</b> &ndash; VF er en omvendt line&aelig;r funktion af VRMA.
+                    </li>
+                    <li> <b>Symmetrisk line&aelig;r</b> &ndash; VF er en line&aelig;r funktion af VRMA i enten den negative eller positive side af VRMA, og de to line&aelig;re funktioner er symmetriske, hvad ang&aring;r VF (y-aksen).
+                    </li>
+                    <li> <b>Symmetrisk omvendt line&aelig;r</b> &ndash; VF er en omvendt line&aelig;r funktion af VRMA i enten den negative eller positive side af VRMA, og de to line&aelig;re funktioner er symmetriske med hensyn til VF (y-aksen).
+                    </li>
+                    <li> <b>Cos</b> &ndash; Identificerer VF som den cosinus-baserede funktion af VRMA.
+                    </li>
+                    <li> <b>Sec</b> &ndash; Identificerer VF som den sekant-baserede funktion af VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; Angiver, at VF er den cosinus-baserede funktion af VRMA, n&aring;r VRMA er negativ, og den sekant-baserede funktion af VRMA, n&aring;r VRMA er ikke-negativ.
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; Angiver, at VF er den sekant-baserede funktion af VRMA, n&aring;r VRMA er negativ, og den cosinus-baserede funktion af VRMA, n&aring;r VRMA er ikke-negativ.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorer til de lodrette parametre er som f&oslash;lger:
+                <ul>
+                    <li> <b>Nulfaktor</b> &ndash; Den lodrette faktor, der anvendes, n&aring;r VRMA er nul. Denne faktor positionerer y-sk&aelig;ringspunktet for den angivne funktion. Pr. definition kan nulfaktor ikke anvendes p&aring; trigonometriske lodrette funktioner (Cos, Sec, Cos-Sec eller Sec-Cos). Y-sk&aelig;ringspunktet er defineret af disse funktioner.
+                    </li>
+                    <li> <b>Lavt sk&aring;ret vinkel</b> &ndash; Definerer den VRMA-vinkel, under hvilken VF vil blive indstillet til uendelig.
+                    </li>
+                    <li> <b>H&oslash;jt sk&aring;ret vinkel</b> &ndash; Definerer den VRMA-vinkel, over hvilken VF vil blive indstillet til uendelig.
+                    </li>
+                    <li> <b>H&aelig;ldning</b> &ndash; H&aelig;ldningen af den lige linje, der anvendes sammen med parametrene <b>Line&aelig;r</b> og <b>Omvendt line&aelig;r</b>. H&aelig;ldningen angives som en br&oslash;kdel af &rdquo;rise over run&rdquo; (f.eks. svarer en 45 graders h&aelig;ldning til 1/45, der indtastes som 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Vælg vandret raster (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>En raster, der definerer den vandrette retning i hver celle.
+            </p>
+            <p>V&aelig;rdierne p&aring; rasteren skal v&aelig;re heltal i intervallet mellem 0 og 360, hvor 0 grader er nord, eller mod toppen af sk&aelig;rmen, og stigende med uret. Flade omr&aring;der b&oslash;r have v&aelig;rdien -1. V&aelig;rdierne p&aring; hvert sted bliver brugt i forbindelse med  <b>Vandret faktor</b> til at bestemme den vandrette omkostning ved at flytte sig fra &eacute;n celle til en nabocelle.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Vandret faktor (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vandret faktor</b> definerer forholdet mellem den vandrette omkostningsfaktor og den vandrette relative bev&aelig;gelsesvinkel (horizontal relative moving angle (HRMA).
+            </p>
+            <p>Du kan v&aelig;lge mellem flere faktorer med modifikatorer, der identificerer en defineret vandret faktorgraf. Graferne bruges til at identificere den vandrette faktor, der anvendes til at beregne den samlede omkostning ved at bev&aelig;ge sig over i en nabocelle.
+            </p>
+            <p>I beskrivelserne nedenfor definerer den vandrette faktor (HF) de vandrette problemer, der opst&aring;r, n&aring;r man bev&aelig;ger sig fra en celle til den n&aelig;ste, og den vandrette bev&aelig;gelsesvinkel (HRMA) identificerer vinklen mellem den vandrette retning fra en celle og bev&aelig;gelsesretningen.
+            </p>
+            <p>Definitioner og parametre for disse vandrette faktorer er som f&oslash;lger:
+                <ul>
+                    <li> <b>Bin&aelig;r</b> &ndash; Hvis HRMA er mindre end den sk&aring;rne vinkel, er HF indstillet til den v&aelig;rdi, der er forbundet med nulfaktoren, ellers er den uendelig.
+                        
+
+                    </li>
+                    <li> <b>Forward</b> &ndash; Kun foranst&aring;ende bev&aelig;gelse er tilladt. HRMA skal v&aelig;re st&oslash;rre end eller lig med 0 og mindre end 90 (0 &lt;= HRMA &lt; 90). . Hvis HRMA er st&oslash;rre end 0 og mindre end 45 grader, er HF for cellen indstillet til den v&aelig;rdi, der er forbundet med nulfaktoren. Hvis HRMA er st&oslash;rre end eller lig med 45 grader, anvendes modifikatorv&aelig;rdien for sidev&aelig;rdien. HF for enhver HRMA-v&aelig;rdi, der er lig med eller st&oslash;rre end 90 grader, er indstillet til uendelig.
+                        
+
+                    </li>
+                    <li> <b>Line&aelig;r</b> &ndash; HF er en line&aelig;r funktion af HRMA.
+                        
+
+                    </li>
+                    <li> <b>Omvendt line&aelig;r</b> &ndash; HF er en omvendt line&aelig;r funktion af HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorer til de vandrette n&oslash;gleord er som f&oslash;lger:
+                <ul>
+                    <li> <b>Nulfaktor</b> &ndash; Den vandrette faktor, der anvendes, n&aring;r HRMA er 0. Denne faktor positionerer y-sk&aelig;ringspunktet for funktionerne for den vandrette faktor.
+                        
+
+                    </li>
+                    <li> <b>Sk&aring;ret vinkel</b> &ndash; Definerer den HRMA-vinkel, over hvilken HF vil blive indstillet til uendelig.
+                        
+
+                    </li>
+                    <li> <b>H&aelig;ldning</b> &ndash; H&aelig;ldningen af den lige linje, der anvendes sammen med de vandrette faktorn&oslash;gleord <b>Line&aelig;r</b> og <b>Omvendt line&aelig;r</b>. H&aelig;ldningen angives som en br&oslash;kdel af &rdquo;rise over run&rdquo; (f.eks. svarer en 45 graders h&aelig;ldning til 1/45, der indtastes som 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Sidev&aelig;rdi</b> &ndash; HF, n&aring;r HRMA er st&oslash;rre end eller lig med 45 grader og mindre end 90 grader, n&aring;r det vandrette faktorn&oslash;gleord <b>Forward</b> er angivet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Første akkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>De oprindelige akkumulerede omkostninger for at starte omkostningsberegningen.
+            </p>
+            <p>Dette g&oslash;r det muligt at angive de faste omkostninger, der er knyttet til en kilde. I stedet for at starte med en omkostning p&aring; 0, begynder omkostningsalgoritmen med den v&aelig;rdi, der er angivet af  <b>F&oslash;rste akkumulering</b>.
+            </p>
+            <p>V&aelig;rdien skal v&aelig;re nul eller st&oslash;rre end nul. Standard er 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimal akkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Den maksimale akkumulerede omkostning for den rejsende til en kilde.
+            </p>
+            <p>Omkostningsberegningerne forts&aelig;tter for hver kilde, indtil den angivne akkumulering er n&aring;et.
+            </p>
+            <p>V&aelig;rdierne skal v&aelig;re st&oslash;rre end nul. Standardakkumuleringen er til kanten af output-rasteren.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Omkostningsmultiplikator</h2></div>
+        <hr/>
+        <div>
+            <p>Den multiplikator, der anvendes til omkostningsv&aelig;rdierne.
+            </p>
+            <p>Dette g&oslash;r det muligt at kontrollere rejsem&aring;den eller st&oslash;rrelsen ved en kilde. Jo st&oslash;rre multiplikator, jo st&oslash;rre omkostning ved at bev&aelig;ge sig gennem hver celle.
+            </p>
+            <p>V&aelig;rdierne skal v&aelig;re st&oslash;rre end nul. Standard er 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Rejseretning</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver retningen for den rejsende, n&aring;r der anvendes vandrette og lodrette faktorer.
+            </p>
+            <p> <b>Fra kilde</b> &ndash; Den vandrette faktor og den lodrette faktor vil blive anvendt fra starten af inputkilden og forts&aelig;tte ud til ikke-kildecellerne. Dette er standardv&aelig;rdien.
+            </p>
+            <p> <b>Til kilde</b> &ndash; Den vandrette faktor og den lodrette faktor vil blive anvendt fra starten af hver ikke-kildecelle og vende tilbage til inputkilden.
+            </p>
+            <p>Angiv det  <b>Fra kilde</b>- eller <b>Til kilde</b>-n&oslash;gleord, der skal anvendes til alle kilder, eller angiv et felt i kildedataene, som indeholder de n&oslash;gleord, der identificerer bev&aelig;gelsesretningen for hver kilde. Dette felt skal indeholde strengen <code>FROM_SOURCE</code> eller <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Afstandsmetode (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om afstanden skal beregnes ved hj&aelig;lp af en planar-metode (flad jord) eller en geod&aelig;tisk metode (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Planar</b> &ndash; Beregningen foretages p&aring; et projekteret fladt plan ved hj&aelig;lp af et 2D kartesisk koordinatsystem. Dette er standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geod&aelig;tisk</b> &ndash; Afstandsberegningen vil blive foretaget p&aring; ellipsoiden. Det betyder, at resultaterne ikke &aelig;ndrer sig, uanset input- eller output-projektion.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Navn på afstandsakkumuleringsraster</h2></div>
+        <hr/>
+        <div>
+            <p>Afstandsakkumuleringsrasteren indeholder den akkumulerende afstand for hver celle fra eller til kilden med de laveste omkostninger.
+            </p>
+            <p>Outputrasteren er af typen flydende komma.
+            </p>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Navn på den resulterende tilbageretningsraster (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Tilbageretningsrasteren indeholder beregnede retninger i grader. Retningen identificerer den n&aelig;ste celle langs med den korteste rute tilbage til den n&aelig;rmeste kilde, samtidig med at barrierer undg&aring;s.
+            </p>
+            <p>Intervallet af v&aelig;rdier er fra 0 grader til 360 grader, hvor 0 er forbeholdt kildecellerne. Stik &oslash;st (h&oslash;jre) er 90, og v&aelig;rdierne stiger i retning med uret (180 er syd, 270 er vest og 360 er nord).
+            </p>
+            <p>Outputrasteren er af typen flydende komma.
+            </p>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b>. Du skal angive et navn, der ikke eksisterer i forvejen, i <b>Mit indhold</b>.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Navn på den resulterende kilderetningsraster (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Kilderetningsrasteren identificerer retningen for kildecellen med de laveste akkumulerede omkostninger som en azimuth-v&aelig;rdi i grader.
+            </p>
+            <p>Intervallet af v&aelig;rdier er fra 0 grader til 360 grader, hvor 0 er forbeholdt kildecellerne. Stik &oslash;st (h&oslash;jre) er 90, og v&aelig;rdierne stiger i retning med uret (180 er syd, 270 er vest og 360 er nord).
+            </p>
+            <p>Outputrasteren er af typen flydende komma.
+            </p>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b>. Du skal angive et navn, der ikke eksisterer i forvejen, i <b>Mit indhold</b>.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Navn på den resulterende kildeplaceringsraster (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Kildeplaceringsrasteren er et multib&aring;nd-output. Det f&oslash;rste b&aring;nd indeholder et r&aelig;kkeindeks, og det andet b&aring;nd indeholder et kolonneindeks. Disse indekser identificerer placeringen af ​​den kildecelle, der er afstanden med de laveste akkumulerede omkostninger v&aelig;k.
+            </p>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b>. Du skal angive et navn, der ikke eksisterer i forvejen, i <b>Mit indhold</b>.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

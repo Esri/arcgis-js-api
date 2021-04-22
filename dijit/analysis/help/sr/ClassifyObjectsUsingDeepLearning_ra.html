@@ -44,14 +44,14 @@
         <h2>Klasifikuj objekte pomoću detaljnog učenja</h2><p/>
         <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasifikuj objekte pomoću detaljnog učenja"></h2>
         <hr/>
-    <p>Ova alatka pokreće uvežbani model detaljnog učenja na ulaznom rasteru i opcionu klasu geoobjekata kako bi proizvela klasu geoobjekata ili tabelu u kojoj svaki ulazni objekat ima dodeljenu oznaku klase.
+    <p>Ovaj alat pokreće obučeni model detaljnog učenja na ulaznom rasteru i opcionoj klasi geoobjekata kako bi se kreirala klasa geoobjekata ili tabela u kojoj svaki ulazni objekat ima dodeljenu oznaku klase.
     </p>
     <p>Ako je izabrana opcija  <b>Koristi trenutni obuhvat mape</b>, analiziraće se samo oblast rastera koja je vidljiva unutar trenutnog obuhvata mape. Ako nije izabrana, analiziraće se ceo raster, čak i ako je izvan trenutnog obuhvata mape.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Odaberite snimak koji se koristi za klasifikovanje objekata</h2></div>
+        <div><h2>Izaberite upotrebljeni snimak za klasifikaciju objekata</h2></div>
         <hr/>
         <div>
             <p>Ulazni snimak koji se koristi za otkrivanje objekata.
@@ -59,23 +59,43 @@
         </div>
     </div>
     <div id="inputfeatures">
-        <div><h2>Odaberite sloj geoobjekata za objekte (opciono)</h2></div>
+        <div><h2>Izaberite sloj funkcija za objekte (opcionalno)</h2></div>
         <hr/>
         <div>
-            <p>Ulazni sloj tačkastih, linijskih i poligonalnih geoobjekata koji određuje lokaciju svakog objekta koji treba da se klasifikuje i označi. Svaki red u ulaznom sloju geoobjekta predstavlja jedan objekat.
+            <p>Tačka, linija ili poligon ulazne komponente koji identifikuje lokaciju svakog objekta da bi se klasifikovali i obeležili. SVaki red u sloju ulazne komponente predstavlja jedan objekat.
             </p>
-            <p>Ako nije naveden nijedan ulazni sloj geoobjekta, alatka će se pona&scaron;ati kao da svaki ulazni snimak sadrži jedan objekat kog treba klasifikovati. Ukoliko ulazni snimak ili snimci koriste prostornu referencu, izlazni rezultat alatke je sloj geoobjekta u kojem se opseg svakog snimka koristi kao granična geometrija za svaki označeni geoobjekat. Ukoliko ulazni snimak ili snimci ne koriste prostornu referencu, izlazni rezultat alatke je tabela koja sadrži ID vrednosti snimka i oznake klase za svaki snimak.
+            <p>Ako nije naveden sloj geoobjekta, alat pretpostavlja da svaki ulazni snimak sadrži jedan objekat za klasifikaciju. Ako ulazni snimak ili snimci koriste spatijalnu referencu, izlaz iz alata je sloj komponente, u čijem opsegu je svaka slika koja se koristi kao geometrija za vezivanje za svaki obeleženi geoobjekat. Ako ulazni snimak ili snimci nemaju spatijalnu referencu, izlaz iz alata je tabela koja sadrži vrednosti ID snimka i oznaku klase za svaki snimak.
             </p>
         </div>
     </div>
     <div id="model">
-        <div><h2>Odaberite model detaljnog učenja koji se koristi za klasifikovanje objekata</h2></div>
+        <div><h2>Izaberite dubinski model za učenje da biste klasifikovali objekte</h2></div>
         <hr/>
         <div>
             <p>Ulazna stavka paketa za detaljno učenje ( <code>.dlpk</code>).
             </p>
             <p>Paket za detaljno učenje se sastoji od JSON datoteke sa definicijom Esri modela ( <code>.emd</code>), binarne datoteke modela detaljnog učenja i, opciono, Python rasterske funkcije koju treba koristiti.
             </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Režim obrade</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi na koji način će sve rasterske stavke u mozaičnom skupu podataka ili servisu snimaka biti obrađene. Ovaj parametar se primenjuje kada je ulazni raster mozaični skup podataka ili servis snimaka.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Sve rasterske stavke u mozaičnom skupu podataka ili servisu snimaka biće prikupljene i obrađene. Ovo je podrazumevano.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Sve rasterske stavke u mozaičnom skupu podataka ili servisu snimaka biće obrađene kao zasebni snimci.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
     <div id="modelArguments">
@@ -89,24 +109,24 @@
         </div>
     </div>
     <div id="classLabelField">
-        <div><h2>Definišite naziv polja oznake klase</h2></div>
+        <div><h2>Definišite naziv polja za oznaku klase</h2></div>
         <hr/>
         <div>
-            <p>Naziv polja koje će sadržati klasifikacionu oznaku u izlaznom sloju geoobjekta.
+            <p>Naziv polja koji će sadržati nalepnicu klasifikacije u sloju odlazne komponente.
             </p>
-            <p>Ukoliko nije naveden nijedan naziv polja, biće generisano novo polje pod nazivom  <i>ClassLabel</i> u izlaznom sloju geoobjekta.
+            <p>Ako nije naveden naziv polja, novo polje pod nazivom  <i>ClassLabel</i> biće generisano u odlaznom sloju geoobjekta.
             </p>
         </div>
     </div>
     <div id="processAllRasterItems">
-        <div><h2>Režim rada procesa</h2></div>
+        <div><h2>Režim obrade</h2></div>
         <hr/>
         <div>
-            <p>Određuje na koji način će biti obrađene sve rasterske stavke u servisu snimaka. 
+            <p>Navodi kako će sve stavke rastera na servisu snimka biti obrađene.
                 <ul>
-                    <li> <b>Obradi kao mozaični snimak</b>&mdash;sve rasterske stavke u servisu snimaka biće mozaično prikupljene i obrađene. Ovo je podrazumevano.
+                    <li> <b>Obrada kao mozaički snimak</b>&mdash;Sve stavke rastera u servisu snimka biće sklopljene zajedno u mozaik i obrađene. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Obradi stavke pojedinačno</b>&mdash;sve rasterske stavke u servisu snimaka biće obrađene kao zasebni snimci.
+                    <li> <b>Odvojena obrada stavki</b>&mdash;Sve stavke rastera u servisu snimka biće obrađene kao odvojeni snimci.
                     </li>
                 </ul>
                 .
@@ -117,6 +137,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

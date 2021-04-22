@@ -44,7 +44,7 @@
         <h2>Buat Jarak Pandang</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Alat Buat Jarak Pandang"></h2>
         <hr/>
-    <p>Alat ini mengidentifikasi area yang dapat dilihat pengamat, memperhitungkan topografi permukaan. Lokasi titik input dapat mewakili pengamat (misalnya orang yang berada di tanah atau pengawas suatu menara pemadam kebakaran) atau objek yang diamati (misalnya turbin angin, menara air, kendaraan, atau orang lain). Hasilnya menentukan area yang dapat dilihat dari lokasi pengamat.
+    <p>Alat ini mengidentifikasi area yang dapat dilihat lokasi pengamat input, dengan memperhitungkan topografi permukaan. Lokasi titik input dapat mewakili pengamat (misalnya orang yang berada di tanah atau pengawas suatu menara pemadam kebakaran) atau objek yang diamati (misalnya turbin angin, menara air, kendaraan, atau orang lain). Hasilnya menentukan area yang dapat dilihat dari lokasi pengamat.
     </p>
     <p>Baik pengamat maupun objek yang diamati dapat memiliki ketinggian di atas tanah, dan ketinggian ini digunakan untuk menentukan visibilitas. Contohnya, jarak pandang yang dihitung untuk turbin angin 300 kaki dan orang setinggi 6 kaki berdiri di atas tanah umumnya akan lebih besar dari jarak pandang yang dihitung untuk turbin 200 kaki dan orang setinggi 5 kaki.
     </p>
@@ -98,7 +98,7 @@ Metode ini dioptimalkan untuk memberikan keakuratan pada hasil, tetapi dengan wa
         <div>
             <p>Masukkan jarak henti dimana perhitungan area yang terlihat akan berhenti. Di luar jarak ini, tidak dapat ditentukan apakah titik pengamat dan objek lain dapat saling melihat.
             </p>
-            <p>Anda dapat menentukan nilai numerik yang mewakili jarak linear atau memilih kolom numerik dari fitur pengamat input. Jika sebuah kolom disediakan, nilai yang berada dalam kolom harus dalam unit yang sama seperti unit xy pada permukaan elevasi input.
+            <p>Anda dapat menentukan nilai numerik yang mewakili jarak linear atau memilih kolom numerik dari fitur pengamat input. Jika sebuah kolom disediakan, nilai yang berada dalam kolom harus dalam unit yang sama seperti unit x,y pada permukaan elevasi input.
             </p>
             <p>Catat bahwa nilai yang besar meningkatkan waktu perhitungan. Kecuali ditentukan, jarak maksimum default akan dihitung berdasarkan resolusi dan jangkauan permukaan elevasi input.
             </p>
@@ -119,7 +119,7 @@ Metode ini dioptimalkan untuk memberikan keakuratan pada hasil, tetapi dengan wa
         <div>
             <p>Masukkan jarak tempat dimulainya perhitungan area yang terlihat. Sel di permukaan yang lebih dekat daripada jarak ini tidak akan terlihat pada output, tetapi masih bisa menghalangi visibilitas sel antara jarak penglihatan minimum dan maksimum.
             </p>
-            <p>Anda dapat menentukan nilai numerik yang mewakili jarak linear atau memilih kolom numerik dari fitur pengamat input. Jika sebuah kolom disediakan, nilai yang berada dalam kolom harus dalam unit yang sama seperti unit xy pada permukaan elevasi input.
+            <p>Anda dapat menentukan nilai numerik yang mewakili jarak linear atau memilih kolom numerik dari fitur pengamat input. Jika sebuah kolom disediakan, nilai yang berada dalam kolom harus dalam unit yang sama seperti unit x,y pada permukaan elevasi input.
             </p>
             <p>Parameter ini berguna untuk mengontrol area analisis jarak pandang pada jarak tertentu dari pengamat. Contoh, jika Anda mengevaluasi visibilitas dari puncak bangunan ke taman yang jauh, Anda dapat menetapkan jarak penglihatan minimum untuk mengecualikan area yang dekat yang tidak memiliki kepentingan dan memperoleh kecepatan memproses yang lebih baik.
             </p>
@@ -230,9 +230,10 @@ Metode ini dioptimalkan untuk memberikan keakuratan pada hasil, tetapi dengan wa
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

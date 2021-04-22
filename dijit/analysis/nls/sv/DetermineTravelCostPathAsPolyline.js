@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Välj raster eller geoobjektkällager för att fastställa vägar från",inputCostRasterLabel:"Välj resekostnadsrasterlager",inputDestinationLayerLabel:"Välj raster eller geoobjektdestinationslager för att fastställa vägar till",pathTypeLabel:"Välj typ av vägar för att fastställa (valfritt)",bestSingle:"Bästa enskilda",eachCell:"Till varje cell",eachZone:"Till varje zon",destinationField:"Välj fält för att erhålla värden för destinationen",outputPolylineName:"Resultatpolylinjens namn",outputLayerName:"Optimal resekostnad som polylinje i ${layername}",drawDestinationPointLayerName:"Destinationspunkter",drawSourcePointLayerName:"Källpunkter",itemDescription:"Geoobjektlager som genererats vid körning av Fastställ resekostnadsrutt som polylinje på ${layername}. ",itemTags:"Analysresultat, Fastställ resekostnadsrutt som polylinje, ${layername} ${fieldname}",itemSnippet:"Geoobjektlager som genererats av Fastställ resekostnadsrutt som polylinje.",missingMessage:"Mållagret måste vara ett annat än källagret",noValueMessage:"Detta värde är obligatoriskt",placeHolder:"--Välj ett lager--"});

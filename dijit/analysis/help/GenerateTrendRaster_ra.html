@@ -52,8 +52,6 @@
         <div><h2>Choose multidimensional imagery layer to analyze trend</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>The input imagery layer of a multidimensional raster that will be analyzed.
             </p>
         </div>
@@ -85,6 +83,25 @@
                     <li> <b>Polynomial</b>&mdash;Variable pixel values will be fitted along a second order polynomial trend line.
                     </li>
                     <li> <b>Harmonic</b>&mdash;Variable pixel values will be fitted along a harmonic trend line.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Variable pixel values will be evaluated using the Mann-Kendall trend test.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Variable pixel values will be evaluated using the Seasonal-Kendall trend test.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Specify the time unit for the length of a seasonal period</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the time unit to be used for the length of a seasonal period when performing the Seasonal-Kendall test. 
+                <ul>
+                    <li> <b>Days</b>&mdash;The unit for the length of the seasonal period is days. This is the default.
+                    </li>
+                    <li> <b>Months</b>&mdash;The unit for the length of the seasonal period is months.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
+            
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

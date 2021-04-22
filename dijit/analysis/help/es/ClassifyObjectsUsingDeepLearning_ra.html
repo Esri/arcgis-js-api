@@ -78,6 +78,26 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Modo de procesamiento</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica c&oacute;mo se procesar&aacute;n todos los elementos de r&aacute;ster en un dataset de mosaico o un servicio de im&aacute;genes. Este par&aacute;metro se aplica si el r&aacute;ster de entrada es un dataset de mosaico o un servicio de im&aacute;genes.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Se crear&aacute; un mosaico con todos los elementos de r&aacute;ster del dataset de mosaico o del servicio de im&aacute;genes y se procesar&aacute;n. Esta es la opci&oacute;n predeterminada.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Todos los elementos de r&aacute;ster del dataset de mosaico o del servicio de im&aacute;genes se procesar&aacute;n como im&aacute;genes separadas.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="modelArguments">
         <div><h2>Especificar los argumentos del modelo de aprendizaje profundo</h2></div>
         <hr/>
@@ -102,7 +122,7 @@
         <div><h2>Modo de proceso</h2></div>
         <hr/>
         <div>
-            <p>Especifica c&oacute;mo se procesar&aacute;n todos los elementos de r&aacute;ster en un servicio de im&aacute;genes. 
+            <p>Especifica c&oacute;mo se procesar&aacute;n todos los elementos de r&aacute;ster en un servicio de im&aacute;genes.
                 <ul>
                     <li> <b>Procesar como imagen en mosaico</b>: todos los elementos de r&aacute;ster en el servicio de im&aacute;genes se unir&aacute;n en mosaico y se procesar&aacute;n. Esta es la opci&oacute;n predeterminada.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

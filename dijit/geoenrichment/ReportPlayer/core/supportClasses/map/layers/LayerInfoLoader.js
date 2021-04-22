@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/CacheUtil","esri/dijit/geoenrichment/utils/requests/UniversalClient","../WebMapsUtil"],(function(e,n,r){return{getInfo:function(t){var i=e.get("LayerInfoLoader");return i[t]||(i[t]=n.request(t).otherwise((function(){return r.executeItemUrl({url:t})})).then((function(e){return{url:t,name:e.name,rendererJson:e.drawingInfo&&e.drawingInfo.renderer,geometryType:e.geometryType}})).otherwise((function(e){return console.log(e),null}))),i[t]}}}));

@@ -44,7 +44,7 @@
         <h2>Gerar Anomalia Multidimensional</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Gerar Anomalia Multidimensional"></h2>
         <hr/>
-    <p>Gera um conjunto de dados raster multidimensional ao combinar vari&aacute;veis de raster multidimensional j&aacute; existentes a uma dimens&atilde;o.
+    <p>Calcula a anomalia para cada sec&ccedil;&atilde;o num raster multidimensional existente para gerar um novo raster multidimensional.
     </p>
     <p>Uma anomalia &eacute; um desvio de uma observa&ccedil;&atilde;o do seu valor padr&atilde;o, m&eacute;dio ou mediano.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Escolher método para gerar anomalia</h2></div>
         <hr/>
         <div>
-            <p>Especifica o m&eacute;todo que ser&aacute; utilizado para calcular a anomalia. 
+            <p>Especifica o m&eacute;todo que ser&aacute; utilizado para calcular a anomalia.
                 <ul>
                     <li> <b>Diferen&ccedil;a da M&eacute;dia</b> &mdash; Ser&aacute; calculada a diferen&ccedil;a entre o valor de um p&iacute;xel e a m&eacute;dia do valor desse p&iacute;xel em v&aacute;rias sec&ccedil;&otilde;es definidas pelo intervalo. Isto &eacute; por omiss&atilde;o.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Diferen&ccedil;a da m&eacute;dia = x - &micro;
-
                         <ul>
                             <li>x = valor do p&iacute;xel numa sec&ccedil;&atilde;o
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Diferen&ccedil;a de percentagem da m&eacute;dia = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valor do p&iacute;xel numa sec&ccedil;&atilde;o
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Diferen&ccedil;a da m&eacute;dia = x / &micro;
-
                         <ul>
                             <li>x = valor do p&iacute;xel numa sec&ccedil;&atilde;o
                                 
@@ -202,7 +199,7 @@
         <div><h2>Escolher o intervalo temporal para calcular a média</h2></div>
         <hr/>
         <div>
-            <p>Especifica o intervalo temporal que ser&aacute; utilizado para calcular a m&eacute;dia. 
+            <p>Especifica o intervalo temporal que ser&aacute; utilizado para calcular a m&eacute;dia.
                 <ul>
                     <li> <b>Todos</b> &mdash; Calcula a m&eacute;dia em todas as sec&ccedil;&otilde;es para cada p&iacute;xel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorar valores em falta no cálculo</h2></div>
         <hr/>
         <div>
-            <p>Especifica se os valores em falta s&atilde;o ou n&atilde;o ignorados na an&aacute;lise. 
+            <p>Especifica se os valores em falta s&atilde;o ou n&atilde;o ignorados na an&aacute;lise.
                 <ul>
                     <li>Assinalado &mdash; A an&aacute;lise ir&aacute; incluir todos os p&iacute;xeis v&aacute;lidos ao longo de uma determinada dimens&atilde;o e ignorar quaisquer p&iacute;xeis NoData. Isto &eacute; por omiss&atilde;o.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

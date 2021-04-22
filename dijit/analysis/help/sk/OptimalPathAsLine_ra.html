@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimálna cesta ako línia</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustr&aacute;cia n&aacute;stroja Optim&aacute;lna cesta ako l&iacute;nia"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;ta optim&aacute;lnu priamočiaru trasu z destin&aacute;ci&iacute; ku zdrojom.
+    </p>
+    <p>Pr&iacute;kladov&eacute; aplik&aacute;cie zahŕňaj&uacute; nasledovn&eacute;:
+        <ul>
+            <li>Vyhľadať najlep&scaron;iu trasu pre nov&uacute; cestu v zmysle n&aacute;kladov na v&yacute;stavbu.
+                
+
+
+            </li>
+            <li>N&aacute;jsť najlep&scaron;iu trasu pre plavbu medzi cieľom a aktu&aacute;lnou polohou.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Zvoliť destinácie ako raster alebo prvky.</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrov&aacute; alebo prvkov&aacute; vrstva, ktor&aacute; určuje bunku, z ktorej je odvoden&aacute; optim&aacute;lna trasa k optim&aacute;lnemu zdroju.
+            </p>
+            <p>Ak je vstup raster, mus&iacute; obsahovať bunky, ktor&eacute; maj&uacute; platn&eacute; hodnoty (nula je platn&aacute; hodnota) pre destin&aacute;cie a ostatn&eacute; bunky musia mať hodnotu NoData. Vstupn&yacute; raster mus&iacute; byť celoč&iacute;seln&yacute;.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Pole destinácie</h2></div>
+        <hr/>
+        <div>
+            <p>Stĺpec použit&yacute; na z&iacute;skanie hodn&ocirc;t pre polohy destin&aacute;ci&iacute;.
+            </p>
+            <p>Toto pole mus&iacute; byť celoč&iacute;seln&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Vybrať raster akumulácie vzdialenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumul&aacute;cie vzdialenosti sa použ&iacute;va na určenie optim&aacute;lnej trasy od destin&aacute;ci&iacute; k zdrojom.
+            </p>
+            <p>Raster akumul&aacute;cie vzdialenosti je obyčajne vytvoren&yacute; použit&iacute;m n&aacute;jstroja Akumul&aacute;cia vzdialenosti alebo Alok&aacute;cia vzdialenosti. Každ&aacute; bunka v rastri akumul&aacute;cie vzdialenosti predstavuje minim&aacute;lnu akumulačn&uacute; n&aacute;kladov&uacute; vzdialenosť po povrchu z každej bunky do množiny zdrojov&yacute;ch buniek.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Zvoliť raster spätného smeru alebo smeru toku</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&auml;tn&yacute; raster obsahuje vypoč&iacute;tan&eacute; smery v stupňoch. Smer identifikuje ďaľ&scaron;iu bunku pozdĺž optim&aacute;lnej trasy sp&auml;ť k zdroju s najmenej kumulat&iacute;vnyni n&aacute;kladmi, s vyh&yacute;ban&iacute;m sa bari&eacute;ram.
+            </p>
+            <p>Raster sp&auml;tnej vzdialenosti je obyčajne vytvoren&yacute; použit&iacute;m n&aacute;jstroja Akumul&aacute;cia vzdialenosti alebo Alok&aacute;cia vzdialenosti. Rozsah hodn&ocirc;t je v tomto pr&iacute;pade od 0 do 360 stupňov. Hodnota 0 je vyhraden&aacute; pre zdrojov&eacute; bunky. Na v&yacute;chod (vpravo) je 90 stupňov a hodnoty sa zvy&scaron;uj&uacute; v smere hodinov&yacute;ch ručičiek (180 je juh, 270 je z&aacute;pad a 360 je sever).
+            </p>
+            <p>Vytvoren&aacute; optim&aacute;lna trasa m&ocirc;že byť smer toku založen&yacute; na smere toku D8. Na vytvorenie optim&aacute;lnej trasy t&yacute;mto sp&ocirc;sobom použite raster smeru toku D8 ako vstup pre tento parameter.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Typ trasy (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje kľ&uacute;čov&eacute; slovo definuj&uacute;ce sp&ocirc;sob, ak&yacute;m bud&uacute; hodnoty a z&oacute;ny vstupn&yacute;ch d&aacute;t destin&aacute;ci&iacute; interpretovan&eacute; vo v&yacute;počtoch cestovn&yacute;ch n&aacute;kladov.
+                <ul>
+                    <li> <b>Do každej z&oacute;ny</b>&mdash;Trasa s najmen&scaron;&iacute;mi n&aacute;kladmi je určen&aacute; pre každ&uacute; z&oacute;nu vstupn&yacute;ch d&aacute;t destin&aacute;ci&iacute;. Pri tejto možnosti zač&iacute;na trasa s minim&aacute;lnymi n&aacute;kladmi pre každ&uacute; z&oacute;nu v bunke s v&aacute;žen&iacute;m vzdialenosti s najmen&scaron;&iacute;mi n&aacute;kladmi v z&oacute;ne Toto je prednastaven&aacute; voľba.
+                         
+                    </li>
+                    <li> <b>Najlep&scaron;ia jednoduch&aacute;</b>&mdash;Pre v&scaron;etky bunky vstupn&yacute;ch d&aacute;t destin&aacute;ci&iacute; je trasa s minim&aacute;lnymi n&aacute;kladmi odvoden&aacute; od bunky s minimom tr&aacute;s minim&aacute;lnych n&aacute;kladov k zdrojov&yacute;m bunk&aacute;m.
+                    </li>
+                    <li> <b>Do každej bunky</b>&mdash;Pre každ&uacute; bunku s platn&yacute;mi hodnotami vo vstupn&yacute;ch d&aacute;tach destin&aacute;ci&iacute; je určen&aacute; trasa s najmen&scaron;&iacute;mi n&aacute;kladmi. Pri tejto možnosti sa s každou bunkou vstupn&yacute;ch d&aacute;t destin&aacute;ci&iacute; zaobch&aacute;dza osobitne a pre každ&uacute; bunku sa urč&iacute; trasa minim&aacute;lnych n&aacute;kladov.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Názov výslednej prvkovej vrstvy</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

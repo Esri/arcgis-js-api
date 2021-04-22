@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Zonske statistike kao tablica</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Zonska statistika kao tablični dijagram"></h2>
+        <hr/>
+    <p>Ovaj alat rezimira vrijednosti rastera unutar zona drugog skupa podataka i izvje&scaron;tava rezultate u tablicu.
+    </p>
+    <p>Neki primjeri primjena uključuju sljedeće:
+    </p>
+    <p>
+        <ul>
+            <li>S obzirom na sloj državnih granica i raspodjelu srednjih oborina na kontinentalnom dijelu Sjedinjenih Država, izračunajte državnu raspodjelu ekstremnih ki&scaron;nih događaja koristeći popis percentilskih vrijednosti.
+                
+
+            </li>
+            <li>S obzirom na sloj preklapajućih ekolo&scaron;kih zona i rasterski sloj vlage u tlu, izračunajte sve podržane statistike unutar svake zone kako biste povezali zone s raspoloživo&scaron;ću vlage u tlu.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se samo oni geoobjekti ulaznog sloja i sloja koji će se sažeti, a koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se svi geoobjekti u ulaznom sloju i sloju koji će se sažeti, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Odaberite raster zone ili geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj koji definira granice zona ili područja koja će se sažeti.
+            </p>
+            <p>Sloj može biti cjeloviti raster ili podaci geoobjekata. Za rastere, zone se određuju prema svim lokacijama u unosu koje imaju istu vrijednost ćelije. Zbog geoobjekata, zone se mogu preklapati. Područja ne moraju biti susjedna.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Polje zone</h2></div>
+        <hr/>
+        <div>
+            <p>To je atribut sloja koji će se koristiti za definiranje granica zona (područja).
+            </p>
+            <p>Na primjer, pretpostavimo da prvi ulazni sloj određuje upravljanje granicama jedinice s atributima koji određuju regiju, okrug i ID parcele za svaku jedinicu. Također imate sloj rastera koji određuje indeks biolo&scaron;ke raznolikosti za svaku lokaciju. S poljem koje odaberete možete odlučiti izračunati prosječnu biolo&scaron;ku raznolikost na lokalnoj, okružnoj ili regionalnoj razini.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Odaberite raster vrijednosti</h2></div>
+        <hr/>
+        <div>
+            <p>Ćelije rastera u ovom sloju sažet će se prema područjima (zonama) u koje spadaju.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Zanemari NoData u izračunima (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje ignoriraju li se u analizi vrijednosti Bez podataka.
+                <ul>
+                    <li>Označeno - Analiza će obuhvatiti stanice koje imaju vrijednost u rasteru ulazne vrijednosti unutar bilo koje određene zone kako bi se utvrdila izlazna vrijednost za tu zonu. Ćelije NoData u rasteru vrijednosti zanemarit će se u statističkom izračunu. To je zadano.
+                    </li>
+                    <li>Nije potvrđeno - Analiza će rezultirati NoData ako postoje vrijednosti NoData za ćelije rastera vrijednosti unutar određene zone.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Vrsta statistike (opcionalno)</h2></div>
+        <hr/>
+        <div>
+            <p>Odeđuje vrstu statistike koja se izračunava.
+            </p>
+            <p>Unos može biti jedan od sljedećih:  <b>Sva polja</b>, <b>Srednja</b>, <b>Većina</b>, <b>Maksimum</b>, <b>Medijan</b>, <b>Minimum</b>, <b>Manjina</b>, <b>Postotak</b>, <b>Raspon</b>, <b>Standardna devijacija</b>, <b>Zbroj</b>, <b>Raznolikost</b>, <b>Minimum i Maksimum</b>, <b>Srednje i standardno odstupanje</b>, ili <b>Minimum, maksimum i srednja</b>. Zadana postavka je <b>Sva polja</b>.
+            </p>
+            <p>Ako je ulazni vrijednost rastera cijeli broj, prema zadanim postavkama izračunavat će se sve statistike. Ako je raster ulazne vrijednosti vrste plutajuće točke, sve statistike osim  <b>Medijan</b> i <b>Postotak</b> će se izračunati prema zadanim postavkama. 
+            </p>
+            <p>Ako je raster ulazne vrijednosti vrste plutajuće točke, zonski izračuni za  <b>Većina</b>, <b>Manjina</b>, i <b>Raznolikost</b> se ne mogu izračunati.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Vrijednosti postotaka (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Postoci za izračunavanje. Može se navesti pojedinačna vrijednost ili popis vrijednosti. Zadana je vrijednost devedeset (90), &scaron;to označava devedeseti (90) postotak.
+            </p>
+            <p>Vrijednosti se mogu kretati od nula (0) do sto (100). Nulti (0) postotak u osnovi je jednak minimalnoj statistici, dok je stoti (100) postotak jednak maksimumu. Vrijednost od pedeset (50) rezultirat će u osnovi istim rezultatom kao i srednja vrijednost statistike.
+            </p>
+            <p>Ova je opcija podržana samo ako  <b>Vrsta statistike</b> parametar je postavljen na <b>Postotak</b> ili <b>Sva polja</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Interpolacija postotka (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Određuje metodu interpolacije postotka koja će se koristiti kada je broj vrijednosti iz ulaznog rastera koji se izračunava ujednačen.
+            </p> 
+            <p>Ako je raster ulazne vrijednosti vrste piksela cijeli broj, upotrebljava se metoda  <b>Najbliže</b>. Ako je raster ulazne vrijednosti vrste piksela s plutajućom točkom, tada se koristi metoda <b>Linearno</b>. To je zadano.
+            </p>
+            <p>Za  <b>Najbliže</b> metodu, koristi se najbliža dostupna vrijednost željenom postotku. Za <b>Linearno</b> metodu, koristi se ponderirani prosjek dviju okolnih vrijednosti iz željenog postotka.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Procesuiraj kao višedimenzionalno (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje kako će se obrađivati ulazni rasteri ako su vi&scaron;edimenzionalni.
+            </p>
+            <ul>
+                <li>Provjereno - statistika će se izračunati iz trenutne kri&scaron;ke ulaznog vi&scaron;edimenzionalnog skupa podataka. To je zadano.
+                    
+
+                </li>
+                <li>Nije označeno - statistika će se izračunati za sve dimenzije ulaznog vi&scaron;edimenzionalnog skupa podataka.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Naziv tablice rezultata</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

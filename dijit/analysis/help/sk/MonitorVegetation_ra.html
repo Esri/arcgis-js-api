@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Monitorovať vegetáciu</h2><p/>
+        <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="N&aacute;stroj Monitorovať veget&aacute;ciu pre Port&aacute;l"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vykon&aacute;va aritmetick&uacute; oper&aacute;ciu na p&aacute;smach viacp&aacute;smovej rastrovej vrstvy na odhalenie vegetačnej pokr&yacute;vky v &scaron;tudijnej oblasti.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vstupné dáta</h2></div>
+        <hr/>
+        <div>
+            <p>Vybrať vrstvu viacp&aacute;smov&eacute;ho rastra. Uistite sa, že vstupn&yacute; raster m&aacute; spr&iacute;stupnen&eacute; vhodn&eacute; p&aacute;sma.
+            </p> 
+        </div>
+    </div>
+    <div id="vegetationIndexType">
+        <div><h2>Vybrať metódu monitorovania vegetácie</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte met&oacute;du na vytvorenie vrstvy vegetačn&eacute;ho indexu. Rozdielne vegetačn&eacute; indexy m&ocirc;žu napom&ocirc;cť zv&yacute;razniť určit&eacute; prvky alebo redukovať r&ocirc;zne &scaron;umy.
+            </p>
+            <ul>
+                <li>Global Environmental Monitoring Index &mdash; 
+GEMI je neline&aacute;rny vegetačn&yacute; index pre glob&aacute;lny enviroment&aacute;lny monitoring zo satelitn&yacute;ch sn&iacute;mok. Je podobn&yacute; NDVI, ale je menej citliv&yacute; na atomosferick&eacute; &uacute;činky. Je ovplyvnen&yacute; holou p&ocirc;dou; preto sa neodpor&uacute;ča ho použ&iacute;vať v oblastiach s riedkou alebo mierne hustou veget&aacute;ciou.
+
+                </li>
+                <li>Green Vegetation Index - Landsat TM &mdash; 
+GVI bol p&ocirc;vodne navrhnut&yacute; z Landsat MSS sn&iacute;mok, ale bol upraven&yacute; na použitie s Landsat TM sn&iacute;mkami. Je tiež zn&aacute;my ako Landsat TM Tasseled Cap index zelenej veget&aacute;cie. Tento monitorizačn&yacute; index m&ocirc;že byť tiež použit&yacute; so sn&iacute;mkami, ktor&yacute;ch p&aacute;sma zdieľaj&uacute; rovnak&eacute; spektr&aacute;lne charakteristiky.
+
+                </li>
+                <li>Modified Soil Adjusted Vegetation Index &mdash; 
+MSAVI2 je vegetačn&yacute; index, ktor&yacute; sa snaž&iacute; minimalizovať vplyvy holej p&ocirc;dy na met&oacute;du SAVI.
+
+                </li>
+                <li>Normalized Difference Vegetation Index  &mdash; 
+NDVI je &scaron;tandardizovan&yacute; index, ktor&yacute; umožňuje vygenerovať sn&iacute;mku zobrazuj&uacute;cu zeleň alebo relat&iacute;vnu biomasu. Tento index čerp&aacute; v&yacute;hodu z kontrastu charakterist&iacute;k dvoch p&aacute;siem z multispektr&aacute;lneho rastrov&eacute;ho datasetu: absorpcia chlorofylov&eacute;ho farbiva v červenom p&aacute;sme a vysok&aacute; odrazovosť rastlinn&yacute;ch materi&aacute;lov je bl&iacute;zko infračerven&eacute; (NIR) p&aacute;smo.
+
+                </li>
+                <li>Perpendicular Vegetation Index &mdash; 
+PVI je podobn&yacute; indexu rozdielu veget&aacute;cie; av&scaron;ak je citliv&yacute; na atmosferick&eacute; vari&aacute;cie. Pri použit&iacute; tejto met&oacute;dy na porovnanie rozdielnych sn&iacute;mok by malo &iacute;sť o sn&iacute;mky s aplikovan&yacute;mi atmosf&eacute;rick&yacute;mi korekciami. T&aacute;to inform&aacute;cia m&ocirc;že byť poskytnut&aacute; va&scaron;im predajcom d&aacute;t.
+
+                </li>
+                <li>Soil-Adjusted Vegetation Index &mdash; 
+Savi je vegetačn&yacute; index, ktor&yacute; sa snaž&iacute; o minimalizovanie vplyvu jasu p&ocirc;dy pomocou faktoru korekcie jasu p&ocirc;dy. Toto sa často použ&iacute;va v such&yacute;ch oblastiach, kde je pokrytie veget&aacute;ciou n&iacute;zke.
+
+                </li>
+                <li>Sultan's Formula &mdash; 
+Proces Sultanov vzorec vezme &scaron;esťp&aacute;smov&uacute; 8-bitov&uacute; sn&iacute;mku a použije na ňu &scaron;pecifick&yacute; algoritmus pre vyprodukovanie trojp&aacute;smovej 8-bitovej sn&iacute;mky. V&yacute;sledn&aacute; sn&iacute;mka zv&yacute;razňuje skaln&eacute; form&aacute;cie zvan&eacute; ofiolity na pobrež&iacute;. Tento vzorec bol navrhnut&yacute; na z&aacute;klade p&aacute;siem TM a ETM Landsat 5 alebo 7.
+
+                </li>
+                <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
+Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&scaron;a minimalizovať vplyvy jasu p&ocirc;dy predpokladom, že l&iacute;nia p&ocirc;dy m&aacute; voľn&yacute; sklon a priesečn&iacute;k.
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="bandIndexes">
+        <div><h2>Špecifikovať indexy pásma NIR a červeného pásma</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať indexy p&aacute;siem pre NIR a červen&eacute; p&aacute;sma.
+            </p>
+            <p>Každ&yacute; satelitn&yacute; senzor a leteck&aacute; kamera zachyt&aacute;va inform&aacute;cie, ktor&eacute; s&uacute; rozložen&eacute; na p&aacute;smov&eacute; indexy. Každ&eacute; p&aacute;smo obsahuje inform&aacute;cie pre &scaron;pecifick&uacute; časť elektromagnetick&eacute;ho spektra. T&aacute;to met&oacute;da monitorovania veget&aacute;cia vyžaduje, aby ste &scaron;pecifikovali index p&aacute;sma, ktor&yacute; zachytil NIT a červen&eacute; vlnov&eacute; dĺžky.
+            </p>
+        </div>
+    </div>
+    <div id="slopeOfSoilLine">
+        <div><h2>Sklon pôdnej línie</h2></div>
+        <hr/>
+        <div>
+            <p>Sklon p&ocirc;dnej l&iacute;nie. Sklon je približn&aacute; line&aacute;rna relačn&aacute; v&auml;zba medzi NIR a červen&yacute;mi p&aacute;smami v grafe rozptylu.
+            </p>
+            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de- prisp&ocirc;soben&yacute; vegetačn&yacute; index.
+            </p>
+        </div>
+    </div>
+    <div id="interceptOfSoilLine">
+        <div><h2>Priesečník</h2></div>
+        <hr/>
+        <div>
+            <p>Hodnota NIR, keď je hodnota odrazu červen&eacute;ho (Červen&eacute;) p&aacute;sma 0 pre konkr&eacute;tne p&ocirc;dne l&iacute;nie.
+            </p>
+            <p> <code>(a = NIR - sČerven&eacute;)</code>, keď je Červen&eacute; 0.
+            </p> 
+            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de- prisp&ocirc;soben&yacute; vegetačn&yacute; index.
+            </p>
+        </div>
+    </div>
+    <div id="greenVegetativeCover">
+        <div><h2>Množstvo pokrytia zelenej vegetácie</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje množstvo pokrytia zelenej veget&aacute;cie, čo je vyžadovan&eacute; met&oacute;dou SAVI.
+            </p>
+            <p>Platn&eacute; hodnoty s&uacute; nasledovn&eacute;:
+                <ul>
+                    <li>1 = Oblasti bez pokrytia zelenej veget&aacute;cie
+                        
+ 
+                    </li>
+                    <li>0.5 = Oblasti s miernym pokryt&iacute;m zelenej veget&aacute;cie
+                        
+ 
+                    </li>
+                    <li>0 = Oblasti s vysok&yacute;m pokryt&iacute;m zelenej veget&aacute;cie
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="adjustmentFactor">
+        <div><h2>Faktor prispôsobenia</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje faktor prisp&ocirc;sobenia pre pomoc minimaliz&aacute;cie efektu p&ocirc;dy, ktor&yacute; je vyžadovan&yacute; met&oacute;dou Transformovan&yacute; p&ocirc;de-prisp&ocirc;soben&yacute; vegetačn&yacute; index. Predvolen&aacute; hodnota je 0.08.
+            </p>
+            <p>N&iacute;zka hodnota znamen&aacute;, že ignorujete efekt p&ocirc;dy. Vysok&aacute; hodnota znamen&aacute;, že p&ocirc;da ovplyvn&iacute; v&aacute;&scaron; v&yacute;sledok.
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

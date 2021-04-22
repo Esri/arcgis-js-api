@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Acumulació de distància</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Il&middot;lustraci&oacute; de l'eina Acumulaci&oacute; de dist&agrave;ncia"></h2>
+        <hr/>
+    <p>Aquesta eina calcula la dist&agrave;ncia acumulada per a cada cel&middot;la als or&iacute;gens, tenint en compte la dist&agrave;ncia en l&iacute;nia recta, el cost en pla, la dist&agrave;ncia de superf&iacute;cie real i els factors horitzontal i vertical.
+    </p>
+    <p>Les aplicacions d'exemple inclouen respondre preguntes com ara:
+        <ul>
+            <li>Quina &eacute;s la dist&agrave;ncia a la localitat m&eacute;s propera?
+                
+
+            </li>
+            <li>Quin &eacute;s el cost en pla a la carretera m&eacute;s propera?
+                
+
+            </li>
+            <li>Quina &eacute;s la dist&agrave;ncia al voltant de les barreres a la font d'aigua m&eacute;s propera?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si s'ha activat  <b>Utilitza l'extensi&oacute; del mapa actual</b>, nom&eacute;s s'analitzaran les entitats de la capa d'entrada que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les entitats de la capa d'entrada, encara que estiguin fora de l'extensi&oacute; de visualitzaci&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Trieu les entitats o el ràster d'origen</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster o capa d'entitats que identifica els or&iacute;gens als quals es calcular&agrave; la dist&agrave;ncia.
+            </p>
+            <p>Si l'entrada &eacute;s un r&agrave;ster, ha d'estar formada per cel&middot;les que tinguin valors v&agrave;lids (zero &eacute;s un valor v&agrave;lid) per als or&iacute;gens, i les cel&middot;les restants tindran assignat el valor NoData.
+            </p>
+            <p>Si l'entrada &eacute;s una capa d'entitats, pot ser un punt, una l&iacute;nia o un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Trieu les entitats o el ràster de barrera (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Dataset que defineix les barreres.
+            </p>
+            <p>Per a una capa r&agrave;ster, el tipus d'entrada pot ser enter o flotant. Totes les cel&middot;les que tinguin un valor (incl&ograve;s el zero) es tractaran com una barrera. Totes les cel&middot;les que tinguin un valor NoData no es tractaran com una barrera.
+            </p>
+            <p>Per a un servei d'entitats, l'entrada pot ser un punt, una l&iacute;nia o un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Trieu el ràster de superfície (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster que defineix els valors d'elevaci&oacute; a la ubicaci&oacute; de cada cel&middot;la.
+            </p>
+            <p>Els valors s'utilitzen per calcular la dist&agrave;ncia de superf&iacute;cie real coberta en passar entre cel&middot;les.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Trieu el ràster de costos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster que defineix la imped&agrave;ncia o el cost del moviment planim&egrave;tric a trav&eacute;s de cada cel&middot;la.
+            </p>
+            <p>El valor de cada ubicaci&oacute; de cel&middot;la representa la dist&agrave;ncia de cost per unitat per moure's a trav&eacute;s de la cel&middot;la. Cada valor d'ubicaci&oacute; de cel&middot;la es multiplica per la resoluci&oacute; de la cel&middot;la alhora que es compensa el moviment diagonal per obtenir el cost total de passar a trav&eacute;s de la cel&middot;la.
+            </p>
+            <p>Els valors del r&agrave;ster de costos poden ser enters o punts flotants, per&ograve; no poden ser negatius ni zero (no podeu tenir un cost negatiu ni de zero).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Trieu el ràster vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster que defineix els valors z de la ubicaci&oacute; de cada cel&middot;la.
+            </p>
+            <p>Els valors s'utilitzen per calcular el pendent utilitzat per identificar el factor vertical que es produeix en passar d'una cel&middot;la a una altra.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Factor vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El  <b>factor vertical</b> defineix la relaci&oacute; entre el factor de cost vertical (VF) i l'angle de moviment relatiu vertical (VRMA).
+            </p>
+            <p>Hi ha diversos factors amb modificadors que es poden seleccionar i que identifiquen un gr&agrave;fic de factor vertical definit. Els gr&agrave;fics s'utilitzen per identificar el factor vertical utilitzat per calcular el cost total del moviment a una cel&middot;la ve&iuml;na.
+            </p>
+            <p>A les descripcions seg&uuml;ents, el VF defineix la dificultat vertical que s'experimenta en passar d'una cel&middot;la a la seg&uuml;ent, i el modificador del VRMA identifica l'angle d'inclinaci&oacute; entre la cel&middot;la  <b>Des de l'origen</b> i la cel&middot;la <b>A l'origen</b>.
+                <ul>
+                    <li> <b>Binari</b>: si el VRMA &eacute;s major que l'angle de tall baix i menor que l'angle de tall alt, el VF es defineix en el valor associat al factor zero; altrament, &eacute;s infinit.
+                    </li>
+                    <li> <b>Lineal</b>: el VF &eacute;s una funci&oacute; lineal del VRMA.
+                    </li>
+                    <li> <b>Lineal invers</b>: el VF &eacute;s una funci&oacute; lineal inversa del VRMA.
+                    </li>
+                    <li> <b>Lineal sim&egrave;tric</b>: el VF &eacute;s una funci&oacute; lineal del VRMA a la part negativa o positiva del VRMA i les dues funcions lineals s&oacute;n sim&egrave;triques respecte de l'eix del VF (y).
+                    </li>
+                    <li> <b>Lineal invers sim&egrave;tric</b>: el VF &eacute;s una funci&oacute; lineal inversa del VRMA a la part negativa o positiva del VRMA i les dues funcions lineals s&oacute;n sim&egrave;triques respecte de l'eix del VF (y).
+                    </li>
+                    <li> <b>Cos</b>: el VF &eacute;s la funci&oacute; basada en el cosinus del VRMA.
+                    </li>
+                    <li> <b>Sec</b>: el VF &eacute;s la funci&oacute; basada en la secant del VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>: el VF &eacute;s la funci&oacute; basada en el cosinus del VRMA si el VRMA &eacute;s negatiu i la funci&oacute; basada en la secant del VRMA si el VRMA no &eacute;s negatiu.
+                    </li>
+                    <li> <b>Sec-Cos</b>: el VF &eacute;s la funci&oacute; basada en la secant del VRMA si el VRMA &eacute;s negatiu i la funci&oacute; basada en el cosinus del VRMA si el VRMA no &eacute;s negatiu.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Els modificadors dels par&agrave;metres verticals s&oacute;n els seg&uuml;ents:
+                <ul>
+                    <li> <b>Factor zero</b>: factor vertical que s'utilitzar&agrave; quan el VRMA sigui zero. Aquest factor col&middot;loca la intercepci&oacute; y de la funci&oacute; especificada. Per definici&oacute;, el factor zero no &eacute;s aplicable a cap de les funcions verticals trigonom&egrave;triques (Cos, Sec, Cos-Sec o Sec-Cos). Aquestes funcions defineixen la intercepci&oacute; y.
+                    </li>
+                    <li> <b>Angle de tall baix</b>: angle VRMA per sota del qual es definir&agrave; un VF infinit.
+                    </li>
+                    <li> <b>Angle de tall alt</b>: angle VRMA per sobre del qual es definir&agrave; un VF infinit.
+                    </li>
+                    <li> <b>Pendent</b>: pendent de la l&iacute;nia recta utilitzada amb els par&agrave;metres <b>Lineal</b> i <b>Lineal invers</b>. El pendent s'especifica com una fracci&oacute; d'elevaci&oacute; sobre l'extensi&oacute; (per exemple, un pendent del 45 % &eacute;s 1/45, que s'especifica com 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Trieu el ràster horitzontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster que defineix la direcci&oacute; horitzontal a cada cel&middot;la.
+            </p>
+            <p>Els valors del r&agrave;ster han de ser enters de 0 a 360, en qu&egrave; 0 indica el nord o la part superior de la pantalla, i augmenten en sentit horari. Les &agrave;rees planes han de tenir assignat un valor de -1. Els valors en cada ubicaci&oacute; s'utilitzaran juntament amb el  <b>factor horitzontal</b> per determinar el cost horitzontal que es produeix en passar d'una cel&middot;la a les ve&iuml;nes.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Factor horitzontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El  <b>factor horitzontal</b> defineix la relaci&oacute; entre el factor de cost horitzontal i l'angle de moviment relatiu horitzontal.
+            </p>
+            <p>Hi ha diversos factors amb modificadors que es poden seleccionar i que identifiquen un gr&agrave;fic de factor horitzontal definit. Els gr&agrave;fics s'utilitzen per identificar el factor horitzontal que es fa servir per calcular el cost total del moviment a una cel&middot;la ve&iuml;na.
+            </p>
+            <p>A les descripcions seg&uuml;ents, el factor horitzontal (HF) defineix la dificultat horitzontal que s'experimenta en passar d'una cel&middot;la a la seg&uuml;ent i l'angle de moviment relatiu horitzontal (HRMA) identifica l'angle entre la direcci&oacute; horitzontal d'una cel&middot;la i la direcci&oacute; del moviment.
+            </p>
+            <p>Les definicions i els par&agrave;metres d'aquests HF s&oacute;n els seg&uuml;ents:
+                <ul>
+                    <li> <b>Binari</b>: si l'HRMA &eacute;s menor que l'angle de tall, l'HF es defineix en el valor associat al factor zero; altrament, &eacute;s infinit.
+                        
+
+                    </li>
+                    <li> <b>Endavant</b>: nom&eacute;s es permet el moviment endavant. L'HRMA ha de ser superior o igual a 0 i inferior a 90 (0 &lt;= HRMA &lt; 90). Si l'HRMA &eacute;s superior a 0 i inferior a 45 graus, l'HF de la cel&middot;la es defineix en el valor associat al factor zero. Si l'HRMA &eacute;s superior o igual a 45 graus, s'utilitza el valor modificador del valor lateral. L'HF de qualsevol HRMA igual o superior a 90 graus es defineix en infinit.
+                        
+
+                    </li>
+                    <li> <b>Lineal</b>: l'HF &eacute;s una funci&oacute; lineal de l'HRMA.
+                        
+
+                    </li>
+                    <li> <b>Lineal invers</b>: l'HF &eacute;s una funci&oacute; lineal inversa de l'HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Els modificadors de les paraules clau horitzontals s&oacute;n els seg&uuml;ents:
+                <ul>
+                    <li> <b>Factor zero</b>: el factor horitzontal que s'utilitza quan l'HRMA &eacute;s 0. Aquest factor col&middot;loca la intercepci&oacute; y de qualsevol de les funcions de factor horitzontal.
+                        
+
+                    </li>
+                    <li> <b>Angle de tall</b>: l'angle HRMA m&eacute;s enll&agrave; del qual es definir&agrave; un HF infinit.
+                        
+
+                    </li>
+                    <li> <b>Pendent</b>: el pendent de la l&iacute;nia recta utilitzada amb les paraules clau de factor horitzontal <b>Lineal</b> i <b>Lineal invers</b>. El pendent s'especifica com una fracci&oacute; d'elevaci&oacute; sobre l'extensi&oacute; (per exemple, un pendent del 45 % &eacute;s 1/45, que s'especifica com 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Valor lateral</b>: l'HF quan l'HRMA &eacute;s igual o m&eacute;s alt de 45 graus i m&eacute;s baix de 90 graus si s'especifica la paraula clau de factor horitzontal <b>Endavant</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Acumulació inicial</h2></div>
+        <hr/>
+        <div>
+            <p>Cost acumulatiu inicial per iniciar el c&agrave;lcul del cost.
+            </p>
+            <p>Permet especificar el cost fix associat a un origen. En lloc de comen&ccedil;ar amb un cost de zero, l'algoritme de cost ho far&agrave; amb el valor definit per l' <b>acumulaci&oacute; inicial</b>.
+            </p>
+            <p>Els valors han de ser iguals o m&eacute;s grans que zero. El valor per defecte &eacute;s 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Acumulació màxima</h2></div>
+        <hr/>
+        <div>
+            <p>Acumulaci&oacute; m&agrave;xima del viatger per a un origen.
+            </p>
+            <p>Els c&agrave;lculs de cost continuen per a cada origen fins a assolir l'acumulaci&oacute; especificada.
+            </p>
+            <p>Els valors han de ser m&eacute;s grans que zero. L'acumulaci&oacute; per defecte &eacute;s fins a la vora del r&agrave;ster de sortida.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplicador de costos</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplicador que s'aplicar&agrave; als valors dels costos.
+            </p>
+            <p>Permet controlar el mode de viatge o la magnitud en un origen. Com major sigui el multiplicador, m&eacute;s alt ser&agrave; el cost del moviment a trav&eacute;s de cada cel&middot;la.
+            </p>
+            <p>Els valors han de ser m&eacute;s grans que zero. El valor per defecte &eacute;s 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Dirección del viaje</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la direcci&oacute; del viatger en aplicar factors horitzontals i verticals.
+            </p>
+            <p> <b>Des de l'origen</b>: el factor horitzontal i el factor vertical s'aplicaran comen&ccedil;ant a l'origen d'entrada i passaran a les cel&middot;les que no pertanyin a l'origen. Aquesta &eacute;s l'opci&oacute; per defecte.
+            </p>
+            <p> <b>A l'origen</b>: el factor horitzontal i el factor vertical s'aplicaran comen&ccedil;ant a cada cel&middot;la que no pertanyi a l'origen i tornaran a l'origen d'entrada.
+            </p>
+            <p>Especifiqueu la paraula clau  <b>Des de l'origen</b> o <b>Fins a l'origen</b>, que s'aplicar&agrave; a tots els or&iacute;gens, o especifiqueu un camp a les dades d'origen que contingui les paraules clau per identificar la direcci&oacute; de viatge de cada origen. Aquest camp ha de contenir la cadena <code>FROM_SOURCE</code> o <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mètode de distància (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si es calcular&agrave; la dist&agrave;ncia mitjan&ccedil;ant un m&egrave;tode pla (terra plana) o geod&egrave;sic (el&middot;lipsoide).
+            </p>
+            <ul>
+                <li> <b>Pla</b>: el c&agrave;lcul de la dist&agrave;ncia es dur&agrave; a terme en un terreny pla projectat mitjan&ccedil;ant un sistema de coordenades cartesianes 2D. Aquest &eacute;s el m&egrave;tode per defecte.
+                    
+
+                </li>
+                <li> <b>Geod&egrave;sic</b>: el c&agrave;lcul de dist&agrave;ncia es dur&agrave; a terme a l'el&middot;lipsoide. Per tant, independentment de la projecci&oacute; d'entrada o de sortida, els resultats no canvien.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Nom del ràster d'acumulació de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster d'acumulaci&oacute; de dist&agrave;ncia cont&eacute; la dist&agrave;ncia acumulativa per a cada cel&middot;la des de o cap a l'origen de menor cost.
+            </p>
+            <p>El r&agrave;ster de sortida &eacute;s de tipus flotant.
+            </p>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Nom del ràster de direcció inversa de resultats (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster de direcci&oacute; inversa cont&eacute; la direcci&oacute; calculada en graus. La direcci&oacute; identifica la cel&middot;la seg&uuml;ent al llarg de la ruta m&eacute;s curta de tornada a l'origen m&eacute;s proper evitant les barreres.
+            </p>
+            <p>L'interval de valors &eacute;s de 0 a 360 graus, amb el valor 0 reservat per a les cel&middot;les d'origen. Cap a l'est (dreta) &eacute;s 90 i els valors augmenten en el sentit de les agulles del rellotge (180 &eacute;s el sud, 270 &eacute;s l'oest i 360 &eacute;s el nord).
+            </p>
+            <p>El r&agrave;ster de sortida &eacute;s de tipus flotant.
+            </p>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b>. Heu de proporcionar un nom que no existeixi a <b>El meu contingut</b>.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Nom del ràster de direcció d'origen de resultats (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster de direcci&oacute; d'origen identifica la direcci&oacute; de la cel&middot;la d'origen de menor cost acumulat com un azimut en graus.
+            </p>
+            <p>L'interval de valors &eacute;s de 0 a 360 graus, amb el valor 0 reservat per a les cel&middot;les d'origen. Cap a l'est (dreta) &eacute;s 90 i els valors augmenten en el sentit de les agulles del rellotge (180 &eacute;s el sud, 270 &eacute;s l'oest i 360 &eacute;s el nord).
+            </p>
+            <p>El r&agrave;ster de sortida &eacute;s de tipus flotant.
+            </p>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b>. Heu de proporcionar un nom que no existeixi a <b>El meu contingut</b>.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Nom del ràster d'ubicació d'origen de resultats (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster d'ubicaci&oacute; d'origen &eacute;s una sortida multibanda. La primera banda cont&eacute; un &iacute;ndex de files i la segona banda cont&eacute; un &iacute;ndex de columnes. Aquests &iacute;ndexs identifiquen la ubicaci&oacute; de la cel&middot;la d'origen amb la dist&agrave;ncia de menor cost acumulat.
+            </p>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b>. Heu de proporcionar un nom que no existeixi a <b>El meu contingut</b>.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

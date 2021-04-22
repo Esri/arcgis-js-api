@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies het raster of de locatie van een objectlaag voor de bepaling van de looproute tussen",inputCostRasterLabel:"Kies de rasterlaag met routekosten",outputOptimumNetworkName:"Resultaat polylijnlaagnaam van de optimale route",outputNeighborNetworkName:"Resultaat polylijnlaagnaam van de naburige route (optioneel)",outputLayerName:"Bepaal de optimale loopkost van ${layername}",itemDescription:"Objectlaag gegenereerd via de functie Optimale routekosten bepalen van het netwerk op ${layerName}. ",itemTags:"Analyseresultaat, Optimale routekosten bepalen van het netwerk, ${layername} ${fieldname}",itemSnippet:"Objectlaag gegenereerd via de functie Optimale routekosten bepalen van het netwerk."});

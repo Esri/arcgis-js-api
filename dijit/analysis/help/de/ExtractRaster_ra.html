@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>W&auml;hlen Sie den Ausdehnungstyp aus, der beim Ausschneiden der Geometrie des Layers verwendet werden soll:
-
                 <ul>
                     <li>Aktuelle Ausdehnung verwenden: Die aktuelle Kartenausdehnung dient zum Ausschneiden des resultierenden Layers. Dies ist die Standardeinstellung.
                         
 
                     </li>
-                    <li>Untersuchungsgebiet ausw&auml;hlen: Mit dieser Option k&ouml;nnen Sie festlegen, ob das Ergebnis die Fl&auml;che innerhalb oder die Fl&auml;che au&szlig;erhalb der Geometrieausdehnung anzeigen soll. Wenn Sie die Option  <b>Daten innerhalb der Geometrie</b> ausw&auml;hlen, werden die Bilddaten au&szlig;erhalb der Ausdehnungen entfernt. Wenn Sie die Option <b>Daten au&szlig;erhalb der Geometrie</b> ausw&auml;hlen, werden die Bilddaten innerhalb der Ausdehnungen entfernt. Eine Geometrie zum Ausschneiden kann auch mit dem Zeichenwerkzeug definiert werden.
+                    <li>Untersuchungsgebiet ausw&auml;hlen: Erm&ouml;glicht das Definieren einer Geometrie zum Ausschneiden mit dem Zeichenwerkzeug.
+                        
+
+                    </li>
+                    <li>Layer ausw&auml;hlen: W&auml;hlen Sie einen Feature- oder Bilddaten-Layer aus, um die Ausdehnung zu definieren, oder w&auml;hlen Sie einen Polygon-Feature-Layer aus, um die Geometrie zum Ausschneiden zu definieren. Wenn ein Polygon-Feature-Layer ausgew&auml;hlt wird, wird ein Kontrollk&auml;stchen angezeigt, mit dem angegeben werden kann, ob Eingabe-Features als Geometrie zum Ausschneiden verwendet werden sollen. Diese Option ist standardm&auml;&szlig;ig deaktiviert. Zum Definieren der Ausdehnung wird in diesem Fall der Eingabe-Feature-Layer verwendet. Ist das Kontrollk&auml;stchen aktiviert, werden die Eingabe-Features als Geometrie zum Ausschneiden verwendet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Ausschneidetyp festlegen</h2></div>
+        <hr/>
+        <div>
+            <p>Geben Sie an, ob Sie die Fl&auml;che innerhalb oder au&szlig;erhalb der Ausschneidegeometrie beibehalten m&ouml;chten:
+                <ul>
+                    <li>Daten innerhalb der Geometrie: Bilddaten innerhalb der Ausschneideausdehnung werden extrahiert. Dies ist die Standardeinstellung.
+                        
+
+                    </li>
+                    <li>Daten au&szlig;erhalb der Geometrie: Bilddaten au&szlig;erhalb der Ausschneideausdehnung werden extrahiert.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

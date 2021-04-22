@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"Pixel mit Deep Learning klassifizieren",outputLayerName:"${layername}_classified",modelLabel:"Deep-Learning-Modell für die Klassifizierung von Pixeln auswählen",modelArgsLabel:"Argumente für das Deep-Learning-Modell angeben",nameLabel:"Name",valueLabel:"Wert",queryModelArgsMsg:"Modellargumente werden abgefragt...",queryModelArgsErrMsg:"Fehler beim Abfragen der Modellargumente.",analysisLayerLabel:"Bild für die Klassifizierung von Pixeln auswählen",itemDescription:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service",itemTags:"Ergebnis der Raster-Analyse, Pixel mit Deep Learning klassifizieren, ${layername}",itemSnippet:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service"});
+define({toolDefine:"Pixel mit Deep Learning klassifizieren",outputLayerName:"${layername}_classified",modelLabel:"Deep-Learning-Modell für die Klassifizierung von Pixeln auswählen",modelArgsLabel:"Argumente für das Deep-Learning-Modell angeben",nameLabel:"Name",valueLabel:"Wert",queryModelArgsMsg:"Modellargumente werden abgefragt...",queryModelArgsErrMsg:"Fehler beim Abfragen der Modellargumente.",processingModeLabel:"Verarbeitungsmodus",processAsMosaicLabel:"Als mosaikiertes Bild verarbeiten",processAsItemsLabel:"Alle Raster-Elemente separat verarbeiten",analysisLayerLabel:"Bild für die Klassifizierung von Pixeln auswählen",itemDescription:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service",itemTags:"Ergebnis der Raster-Analyse, Pixel mit Deep Learning klassifizieren, ${layername}",itemSnippet:"Über 'Pixel mit Deep Learning klassifizieren' generierter Analyse-Image-Service"});

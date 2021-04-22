@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimální propojení regionů (Optimal Region Connections)</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustrace n&aacute;stroje Optim&aacute;ln&iacute; propojen&iacute; regionů"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; optim&aacute;ln&iacute; s&iacute;ť propojen&iacute; mezi dvěma nebo v&iacute;ce vstupn&iacute;mi regiony.
+    </p>
+    <p>Mezi př&iacute;klady použit&iacute; patř&iacute;:
+        <ul>
+            <li>Modelov&aacute;n&iacute; vhodnosti &mdash; Z modelu vhodnosti jste identifikovali 10 nejlep&scaron;&iacute;ch biotopov&yacute;ch plo&scaron;ek pro ryse červen&eacute;ho. Chcete, aby se rysov&eacute; mohli pohybovat mezi plo&scaron;kami skrze nejefektivněj&scaron;&iacute; s&iacute;t&iacute; koridorů pro divokou zvěř, aby byla zachov&aacute;na genetick&aacute; rozmanitost v r&aacute;mci metapopulace.
+                
+
+            </li>
+            <li>Sklizeň dřeva &mdash; Při sklizni dřeva chcete vytvořit n&aacute;kladově nejefektivněj&scaron;&iacute; s&iacute;ť odvozn&iacute;ch cest, ze kter&yacute;ch se bude těžit dřevo.
+                
+
+            </li>
+            <li>M&iacute;rov&eacute; operace &mdash; Ve vojensk&eacute;m m&iacute;rov&eacute;m nasazen&iacute; jste identifikovali pět oblast&iacute;, do kter&yacute;ch můžete um&iacute;stit vojensk&eacute; jednotky a person&aacute;l. Chcete vyvinout optim&aacute;lně propojen&eacute; z&aacute;sobovac&iacute; trasy mezi z&aacute;kladnami.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze lokace ve vstupn&iacute;ch vrstv&aacute;ch, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny lokace v obou vstupn&iacute;ch vrstv&aacute;ch, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Zvolte rastr regionu nebo prvek</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&iacute; regiony, kter&eacute; budou propojeny optim&aacute;ln&iacute; s&iacute;t&iacute;.
+            </p>
+            <p>Pokud je vstupn&iacute; region rastr, regiony jsou definovan&eacute; skupinami n&aacute;sleduj&iacute;c&iacute;ch (sousedn&iacute;ch) buněk se stejnou hodnotou. Každ&yacute; region mus&iacute; b&yacute;t jedinečně oč&iacute;slov&aacute;n. Buňky, kter&eacute; nejsou souč&aacute;st&iacute; ž&aacute;dn&eacute;ho regionu, mus&iacute; b&yacute;t NoData. Typ rastru mus&iacute; b&yacute;t cel&eacute; č&iacute;slo a hodnoty mohou b&yacute;t kladn&eacute; i z&aacute;porn&eacute;.
+            </p>
+            <p>Pokud je vstupn&iacute; region prvek, může m&iacute;t podobu bodů, lini&iacute; nebo polygonů. Polygonov&eacute; regiony se nemohou skl&aacute;dat u polygonů, kter&eacute; tvoř&iacute; v&iacute;ce č&aacute;st&iacute;.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Zvolte rastr překážky nebo prvek (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Datov&aacute; sada, kter&aacute; definuje přek&aacute;žky.
+            </p>
+            <p>U rastru může b&yacute;t typ vstupu cel&eacute; nebo desetinn&eacute; č&iacute;slo. V&scaron;echny buňky, kter&eacute; maj&iacute; hodnotu (včetně nuly), budou považov&aacute;ny za přek&aacute;žku. V&scaron;echny buňky, kter&eacute; maj&iacute; hodnotu NoData, nebudou považov&aacute;ny za přek&aacute;žku.
+            </p>
+            <p>U prvku může b&yacute;t vstup bod, linie nebo polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Zvolte nákladový rastr (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr definuj&iacute;c&iacute; impedanci nebo n&aacute;klady pro posun v polohopise přes každou buňku.
+            </p>
+            <p>Hodnota v každ&eacute;m um&iacute;stěn&iacute; buňky představuje vzd&aacute;lenost v jednotkov&yacute;ch n&aacute;kladech pro posun přes buňku. Hodnota v každ&eacute;m um&iacute;stěn&iacute; buňky je vyn&aacute;sobena rozli&scaron;en&iacute;m buňky zat&iacute;mco kompenzuje diagon&aacute;ln&iacute; pohyb pro z&iacute;sk&aacute;n&iacute; celkov&yacute;ch n&aacute;kladů přechodu přes buňku.
+            </p>
+            <p>Hodnoty rastru n&aacute;kladů mohou b&yacute;t cel&eacute; č&iacute;slo nebo desetinn&eacute; č&iacute;slo, ale nesm&iacute; b&yacute;t z&aacute;porn&eacute; nebo nulov&eacute; (nemůžete m&iacute;t z&aacute;porn&eacute; nebo nulov&eacute; n&aacute;klady).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda vzdálenosti (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Urč&iacute;, zda vypoč&iacute;tat vzd&aacute;lenost pomoc&iacute; rovinn&eacute; metody (na ploch&eacute; zemi) nebo geodetick&eacute; metody (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Rovinn&aacute;</b> &ndash; V&yacute;počet vzd&aacute;lenosti bude proveden na kartograficky zobrazen&eacute; rovině pomoc&iacute; 2D kart&eacute;zsk&eacute;ho souřadnicov&eacute;ho syst&eacute;mu. Toto je v&yacute;choz&iacute; metoda.
+                    
+
+                </li>
+                <li> <b>Geodetick&aacute;</b> &ndash; V&yacute;počet vzd&aacute;lenosti bude proveden na elipsoidu. Bez ohledu na kartografick&eacute; zobrazen&iacute; vstupu nebo v&yacute;stupu se v&yacute;sledky neměn&iacute;.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Propojení v rámci regionů (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, zda budou cesty pokračovat a napojovat se ve vstupn&iacute;ch regionech.
+            </p>
+            <ul>
+                <li> <b>Generovat propojen&iacute;</b> &mdash; Cesty budou pokračovat ve vstupn&iacute;ch regionech, aby propojily v&scaron;echny cesty, kter&eacute; vstupuj&iacute; do regionu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    
+
+                </li>
+                <li> <b>Ž&aacute;dn&aacute; propojen&iacute;</b> &mdash; Cesty se zastav&iacute; na okraj&iacute;ch vstupn&iacute;ch regionů a nebudou v nich pokračovat a ani se k nim nepřipoj&iacute;.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Název výsledné vrstvy prvků optimálního propojení linií</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Tato vrstva je prvek v&yacute;stupn&iacute; linie, kter&aacute; propojuje každ&yacute; vstupn&iacute; region.
+            </p>
+            <p>Každ&aacute; cesta (nebo linie) nese jedinečn&eacute; č&iacute;slo a dal&scaron;&iacute; pole v tabulce atributů ukl&aacute;daj&iacute; konkr&eacute;tn&iacute; informace o cestě. Jedn&aacute; se o n&aacute;sleduj&iacute;c&iacute; dal&scaron;&iacute; pole:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; Jedinečn&yacute; identifik&aacute;tor cesty
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; Celkov&aacute; kumulativn&iacute; vzd&aacute;lenost nebo n&aacute;klady na cestu
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; Prvn&iacute; region, kter&yacute; cesta propojuje
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; Dal&scaron;&iacute; region, kter&yacute; cesta propojuje
+                    
+
+                </li>
+            </ul>
+            
+            <p>Vzhledem k tomu, že každou cestu představuje jedinečn&aacute; linie, bude v m&iacute;stech, kde maj&iacute; cesty stejnou trasu, několik lini&iacute;.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Název výsledné vrstvy propojení prvků se sousedícími trasami (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Tato vrstva je prvek v&yacute;stupn&iacute; linie, kter&yacute; identifikuje v&scaron;echny cesty z každ&eacute;ho regionu ke každ&eacute;mu ze jeho nejbliž&scaron;&iacute;ch sousedů nebo sousedů s nejniž&scaron;&iacute;mi n&aacute;klady.
+            </p>
+            <p>Každ&aacute; cesta (nebo linie) nese jedinečn&eacute; č&iacute;slo a dal&scaron;&iacute; pole v tabulce atributů ukl&aacute;daj&iacute; konkr&eacute;tn&iacute; informace o cestě. Jedn&aacute; se o n&aacute;sleduj&iacute;c&iacute; dal&scaron;&iacute; pole:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; Jedinečn&yacute; identifik&aacute;tor cesty
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; Celkov&aacute; kumulativn&iacute; vzd&aacute;lenost nebo n&aacute;klady na cestu
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; Prvn&iacute; region, kter&yacute; cesta propojuje
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; Dal&scaron;&iacute; region, kter&yacute; cesta propojuje
+                    
+
+                </li>
+            </ul>
+            
+            <p>Vzhledem k tomu, že každou cestu představuje jedinečn&aacute; linie, bude v m&iacute;stech, kde maj&iacute; cesty stejnou trasu, několik lini&iacute;.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

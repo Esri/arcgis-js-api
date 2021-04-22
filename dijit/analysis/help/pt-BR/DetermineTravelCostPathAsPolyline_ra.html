@@ -44,7 +44,7 @@
         <h2>Determinar Caminhos de Custo da Viagem Como Polilinha</h2><p/>
         <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Ilustra&ccedil;&atilde;o da ferramenta Determinar Caminhos de Custo da Viagem como Polilinha"></h2>
         <hr/>
-    <p>Esta ferramenta calcula o caminho de polilinha de menor custo entre origens e destinos conhecidos.
+    <p>Esta ferramenta calcula o caminho de polilinha de menor custo entre destinos e origens.
     </p>
     <p>Aplica&ccedil;&otilde;es de exemplo incluem o seguinte:
         <ul>
@@ -79,9 +79,9 @@
         <div>
             <p>Um raster definindo o custo ou imped&acirc;ncia para mover planimetricamente atrav&eacute;s de cada c&eacute;lula.
             </p>
-            <p>O valor de cada local da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de local da c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
+            <p>O valor de cada localiza&ccedil;&atilde;o da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de localiza&ccedil;&atilde;o de c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
             </p>
-            <p>Os valores do raster de custo podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo  negativo ou zero).
+            <p>Os valores do custo de raster podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo negativo ou zero).
             </p>
         </div>
     </div>
@@ -99,6 +99,7 @@
         <div><h2>Nome da camada de polilinha resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

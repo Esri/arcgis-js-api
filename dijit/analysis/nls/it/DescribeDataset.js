@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli il dataset da descrivere",describeDataLabel:"Comprendi i dati creando un (facoltativo)",sampleLayer:"Layer di esempio",extentLayer:"Layer di estensione",noOfFeaturesLabel:"Numero di feature da includere",outputLayerName:"Nome del layer dei risultati",resultName:"Descrivi dati di ${layerName}",itemDescription:"Feature layer generato in seguito all'esecuzione di Descrivi dataset in ${layerName}. ",itemTags:"Risultato dell'analisi, Descrivi dataset, ${layerName}",itemSnippet:"Feature layer generato da Descrivi dataset."});

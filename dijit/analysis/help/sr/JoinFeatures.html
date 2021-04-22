@@ -59,7 +59,7 @@
             <p>Ciljni sloj koji će imati atribute iz sloja za pridruživanje dodatog njegovoj tabeli.
             </p>
             <p>Pored biranja sloja sa mape, možete da selektujete  <b>Izaberi sloj za analizu</b> koji se nalazi na dnu padajuće liste. Ova opcija otvara galeriju gde možete da pregledate i birate skupove podataka iz raznih izvora za kori&scaron;ćenje u va&scaron;oj analizi. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Određuje kako će biti obrađena spajanja između ciljnog i sloja za pridruživanje, ako se otkrije da vi&scaron;estruki geoobjekti u sloju za pridruživanje imaju isti odnos sa ciljnim slojem. Slede dve operacije pridruživanja između kojih je moguće izabrati:
                 <ul>
-                    <li> <b>Pridruži jedan jednom</b> &ndash; Ova opcija pridružuje geoobjekte u ciljnom sloju jednom geoobjektu u sloju za pridruživanje. Način na koji se geoobjekti pridružuju je određen parametrom <b>Dodaj statistiku</b> ili parametrom <b>Defini&scaron;i koji zapis se zadržava</b>. Ako se koristi opcija <b>Dodaj statistiku</b>, svi podudarajući pridruženi geoobjekti će biti sumirani svakom geoobjektu u ciljnom sloju. Brojač pridruženih geoobjekata će podrazumevano biti dodat. Ako se opcija <b>Defini&scaron;i koji zapis se zadržava</b> koristi, možete da odaberete da zadržite prvi podudarajući zapis (podrazumevano) ili podudarajući zapis na osnovu izraza. Izraz može da koristi bilo numeričko polje (opcija za najveći ili najmanji zapis) ili polje za datum (opcija za najnoviji ili najstariji).
+                    <li> <b>Pridruži jedan jednom</b>&ndash;Ova opcija pridružuje geoobjekte u ciljnom sloju jednom geoobjektu u sloju za pridruživanje. Način na koji se geoobjekti pridružuju je određen parametrom <b>Dodaj statistiku</b> ili parametrom <b>Defini&scaron;i koji zapis se zadržava</b>. Ako se koristi opcija <b>Dodaj statistiku</b>, svi podudarajući pridruženi geoobjekti će biti sumirani svakom geoobjektu u ciljnom sloju. Brojač pridruženih geoobjekata će podrazumevano biti dodat. Ako se koristi opcija <b>Definisanje zapisa koji se zadržava</b>, možete da izaberete da li da zadržite prvi zapis koji odgovara (podrazumevano) ili da zadržite odgovarajući zapis sa najvećom ili najmanjom vredno&scaron;ću u određenom polju ( <b>Nalog od strane</b>). Nalog po izrazu zahteva ili numeričko polje (opcija za najveću ili najmanju vrednost) ili polje podataka (opcija za najnovije i najstarije).
                     </li>
                     <li> <b>Pridruži jedan mnogima</b> &ndash; Ova opcija pridružuje sve geoobjekte koji se podudaraju u sloju za pridruživanje ciljnom sloju. Sloj sa rezultatima će sadržati vi&scaron;estruke zapise ciljnog geoobjekta.
                     </li>
                 </ul>
                 
             </p>
-            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete odnos <b>Pridruži jedan jednom</b> i odaberete statistiku, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja pijacu i sumiranim informacijama iz supermarketa, kao &scaron;to je broj (5) i ostale statistike kao &scaron;to je zbir godi&scaron;njeg prometa.
+            <p>Na primer, pretpostavimo da želite da nađete supermarkete u krugu od 5 kilometara od pijace. U ovom slučaju sloj kojem se pridružuje ima jedan geoobjekat koji predstavlja pijacu, a geoobjekti koji se pridružuju predstavljanju lokalne bakalnice koje imaju atribute kao &scaron;to je ukupni godi&scaron;nji promet. Koristeći alatku  <b>Pridruži geoobjekte</b>, nalazite da pet bakalnica ispunjava taj kriterijum. Ako navedete operaciju pridruživanja <b>Pridruži jedan mnogima</b>, zavr&scaron;ićete sa pet geoobjekata u rezultatu, gde svaki red predstavlja pijacu i supermarket. Ako navedete <b>Priključi jedan na jedan</b> vezu i izaberete <b>Defini&scaron;i koji zapis se čuva</b>, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja farmersko trži&scaron;te i jedan supermarket&mdash;jedan sa najvi&scaron;om godi&scaron;njom prodajom, na primer. Ako umesto toga izaberete <b>Dodaj statistiku</b>, zavr&scaron;ićete sa jednim geoobjektom koji predstavlja trži&scaron;te farmera i rezime za pet supermarketa, kao &scaron;to je zbir godi&scaron;nje prodaje i broj (5) rezimiranih supermarketa. 
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Kreiraj rezultate kao prikaz hostovanih slojeva geoobjekata</h2></div>
         <hr/>
         <div>
-            <p> Kreiranje rezultata kao prikaza hostovanih slojeva geoobjekata omogućava da podaci ostanu ažurni sa promenama izvornih podataka. Prikazi hostovanih slojeva geoobjekata koji sadrže pridruživanja biće samo za čitanje.
+            <p>Kreiranje rezultata kao prikaza hostovanih slojeva geoobjekata omogućava da podaci ostanu ažurni sa promenama izvornih podataka. Prikazi hostovanih slojeva geoobjekata koji sadrže pridruživanja biće samo za čitanje.
             </p>
+            <p class="OnlineOnly">Prikazi hostovanih slojeva geoobjekata koji sadrže pridruživanja ne tro&scaron;e kredite za analizu i čuvanje.
+            </p> 
             <p>Možete da kreirate prikaz hostovanih slojeva geoobjekata iz rezultata analize, ako su ispunjeni svi sledeći uslovi:
                 <ul>
                     <li>Vi ste vlasnik oba sloja.

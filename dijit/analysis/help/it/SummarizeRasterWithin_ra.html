@@ -44,13 +44,13 @@
         <h2>Riepiloga raster entro</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Strumento Riepiloga raster entro"></h2>
         <hr/>
-    <p>Questo strumento riepiloga un raster basato su aree (zone) definite dal primo layer di input.
+    <p>Questo strumento riassume i valori di un raster all'interno delle zone di un altro set di dati.
     </p>
     <p>Di seguito sono riportate alcune applicazioni di esempio:
     </p>
     <p>
         <ul>
-            <li>Dati un layer di confini spartiacque ed un layer di confini di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ogni spartiacque.
+            <li>Dati un layer di confini spartiacque e un layer di confini di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ciascuno spartiacque.
                 
 
             </li>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, vengono analizzate solo quelle feature nel layer di input e nel layer da riepilogare visibili all'interno dell'estensione mappa corrente.  Se &egrave; deselezionata, vengono analizzate tutte le feature presenti nel layer di input e nel layer da riepilogare, anche se esterne all'estensione mappa corrente.
+    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, vengono analizzate solo quelle feature nel layer di input e nel layer da riepilogare visibili all'interno dell'estensione mappa corrente. Se &egrave; deselezionata, vengono analizzate tutte le feature presenti nel layer di input e nel layer da riepilogare, anche se esterne all'estensione mappa corrente.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>Dopo aver scelto un layer da riepilogare, &egrave; possibile, facoltativamente, calcolare statistiche di qualsiasi attributo numerico dei punti, delle linee o delle aree che si trovano all'interno del layer di area di input.
             </p>
-            <p>I tipi di statistiche disponibili quando il campo selezionato &egrave; un intero sono Media, Maggioranza, Massimo, Mediana, Minimo, Minoranza, Intervallo, Deviazione standard, Somma e Variet&agrave;.
+            <p>I tipi di statistiche disponibili quando il campo selezionato &egrave; un intero sono Media, Maggioranza, Massimo, Mediana, Minimo, Minoranza, Percentile, Intervallo, Deviazione standard, Somma e Variet&agrave;.
             </p>
             <p>Se il campo &egrave; a virgola mobile, le opzioni sono Media, Massimo, Minimo, Intervallo, Deviazione standard e Somma.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valore percentile</h2></div>
+        <hr/>
+        <div>
+            <p>Il percentile da calcolare. Il valore predefinito &egrave; 90 , che indica il 90esimo percentile.
+            </p>
+            <p>I valori spaziano da 0 a 100. Il percentile numero 0 &egrave; essenzialmente l'equivalente della statistica minima e il percentile numero 100 &egrave; l'equivalente della statistica massima. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
+            </p>
+            <p>Questa opzione &egrave; supportata soltanto se il parametro  <b>Scegli statistiche da calcolare</b> &egrave; impostato su <b>Percentile</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
-    <div id="resultLayer">
-        <div><h2>Nome del layer dei risultati</h2></div>
+    <div id="processAsMultidimensional">
+        <div><h2>Elabora come multidimensionale</h2></div>
         <hr/>
         <div>
+            <p>Specifica il modo in cui vengono eleborati i raster di input se sono multidimensionali. Se scegli di elaborarli come multidimensionali, si calcoleranno le statistiche per tutte le dimensioni del dataset multidimensionale di input. Altrimenti, si calcoleranno le statistiche della sezione corrente del dataset multidimensionale di input, come da impostazioni predefinite.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

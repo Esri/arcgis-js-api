@@ -46,7 +46,7 @@
         <hr/>
     <p>Liit&auml; kohteet toimii kahden karttatason v&auml;lill&auml; ja liitt&auml;&auml; yhden kohteen ominaisuustiedot toiseen paikkatiedon ja ominaisuustiedon v&auml;listen suhteiden perusteella. Ty&ouml;kalu m&auml;&auml;ritt&auml;&auml; kaikki l&auml;ht&ouml;aineiston kohteet, jotka vastaavat m&auml;&auml;ritettyj&auml; liitt&auml;misen ehtoja ja lis&auml;&auml; liitoskarttatason kohdekarttatasoon.
     </p>
-    <p>Liit&auml; kohteet -toimintoa voi k&auml;ytt&auml;&auml; pisteisiin, viivoihin, alueisiin ja taulukoihin. Sijaintiliitos edellytt&auml;&auml;, ett&auml; aineistossa on geometriaobjekti.
+    <p>Liit&auml; kohteet -toimintoa voi k&auml;ytt&auml;&auml; pisteisiin, viivoihin, alueisiin ja taulukoihin. Sijaintiliitos edellytt&auml;&auml;, ett&auml; aineistolla on geometria.
     </p>
     <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -vaihtoehto on valittuna, toiminto analysoi vain nykyisess&auml; kartassa n&auml;kyviss&auml; olevat kohteet. Jos vaihtoehto ei ole valittuna, kohde- ja liitoskarttatason kaikki kohteet analysoidaan, vaikka ne olisivat nykyisen kartan laajuuden ulkopuolella.
     </p>
@@ -59,7 +59,7 @@
             <p>Kohdekarttataso, jonka taulukkoon liitoskarttatason ominaisuustiedot on lis&auml;tty.
             </p>
             <p>Kartasta valittavan karttatason lis&auml;ksi voit valita alareunan avattavasta luettelosta  <b>Valitse analyysikarttataso</b> -vaihtoehdon. T&auml;m&auml; vaihtoehto avaa gallerian, jossa voit selata ja valita aineistoryhmi&auml; erilaisista l&auml;hteist&auml; ja k&auml;ytt&auml;&auml; niit&auml; analyysissa. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -116,7 +116,7 @@
         <div>
             <p>Ominaisuustietosuhde, joka m&auml;&auml;ritt&auml;&auml;, liitet&auml;&auml;nk&ouml; kohteet toisiinsa. Kohteet t&auml;sm&auml;ytet&auml;&auml;n, kun liitoskarttatason kenttien arvot vastaavat kohdekarttatason kenttien arvoja.
             </p>
-            <p>Oletetaan esimerkiksi, ett&auml; sinulla on asuinosoitteiden maanlaajuinen maantieteellinen karttataso (mukaan lukien  <i>ZIP</i>-kentt&auml;) ja taulukkomuotoinen aineistoryhm&auml; terveystiedoista postinumeron mukaan (mukaan lukien <i>HEALTHZIP</i>-kentt&auml;). Voit liitt&auml;&auml; terveystietojen aineistoryhm&auml;n asuintietoihin t&auml;sm&auml;ytt&auml;m&auml;ll&auml; <i>ZIP</i>-kent&auml;n <i>HEALTHZIP</i>-kentt&auml;&auml;n, jolloin tuloksena on terveystiedon sis&auml;lt&auml;v&auml; asuinpaikkojen karttataso.
+            <p>Oletetaan esimerkiksi, ett&auml; sinulla on asuinosoitteiden maanlaajuinen maantieteellinen karttataso (mukaan lukien kentt&auml;  <i>ZIP</i>) ja postinumeron mukainen taulukkomuotoinen aineistoryhm&auml; terveystiedoista (mukaan lukien kentt&auml; <i>HEALTHZIP</i>). Voit liitt&auml;&auml; terveystietojen aineistoryhm&auml;n asuintietoihin t&auml;sm&auml;ytt&auml;m&auml;ll&auml; kent&auml;n <i>ZIP</i> kentt&auml;&auml;n <i>HEALTHZIP</i>, jolloin tuloksena on terveystiedot sis&auml;lt&auml;v&auml; asuinosoitteiden karttataso.
             </p>
         </div>
     </div>
@@ -126,14 +126,14 @@
         <div>
             <p>M&auml;&auml;ritt&auml;&auml;, miten kohdekarttatason ja liitoskarttatason v&auml;liset liitokset k&auml;sitell&auml;&auml;n, jos usealla liitoskarttatason kohteella on sama suhde kohdekarttatasoon. Valittavana on kaksi liitostoimintoa:
                 <ul>
-                    <li> <b>Liit&auml; yksi yhteen</b> &ndash; T&auml;m&auml; vaihtoehto liitt&auml;&auml; kohdekarttatason kohteet liitoskarttatason yhteen kohteeseen. Se, miten kohteet liitet&auml;&auml;n, m&auml;&auml;r&auml;ytyy <b>Lis&auml;&auml; tilastotiedot</b> -parametrin tai <b>M&auml;&auml;rit&auml; s&auml;ilytett&auml;v&auml; tietue</b> -parametrin perusteella. Jos <b>Lis&auml;&auml; tilastotiedot</b> -parametria k&auml;ytet&auml;&auml;n, kaikkien liittyvien kohteiden tietojen yhteenveto lis&auml;t&auml;&auml;n kohdekarttatason kullekin kohteelle. Liitettyjen kohteiden m&auml;&auml;r&auml; lis&auml;t&auml;&auml;n oletusarvoisesti. Jos k&auml;yt&auml;t <b>M&auml;&auml;rit&auml; s&auml;ilytett&auml;v&auml; tietue</b> -parametria, voit s&auml;ilytt&auml;&auml; joko ensimm&auml;isen tietuevastineen (oletusarvo) tai voit s&auml;ilytt&auml;&auml; tietuevastineen lausekkeen perusteella. Lausekkeessa voi k&auml;ytt&auml;&auml; numeerista kentt&auml;&auml; (suurimman tai pienimm&auml;n tietueen tapauksessa) tai p&auml;iv&auml;m&auml;&auml;r&auml;kentt&auml;&auml; (uusimman tai vanhimman tietueen tapauksessa).
+                    <li> <b>Liit&auml; yksi yhteen</b> &ndash; T&auml;m&auml; vaihtoehto liitt&auml;&auml; kohdekarttatason kohteet liitoskarttatason yhteen kohteeseen. Se, miten kohteet liitet&auml;&auml;n, m&auml;&auml;r&auml;ytyy <b>Lis&auml;&auml; tilastotiedot</b> -parametrin tai <b>M&auml;&auml;rit&auml; s&auml;ilytett&auml;v&auml; tietue</b> -parametrin perusteella. Jos <b>Lis&auml;&auml; tilastotiedot</b> -parametria k&auml;ytet&auml;&auml;n, kaikki ne liitetyt kohteet, joiden vastineet on l&ouml;ydetty, lis&auml;t&auml;&auml;n kohdekarttatason kuhunkin kohteeseen. Liitettyjen kohteiden m&auml;&auml;r&auml; lis&auml;t&auml;&auml;n oletusarvoisesti. Jos <b>M&auml;&auml;rit&auml; s&auml;ilytett&auml;v&auml; tietue</b> -parametria k&auml;ytet&auml;&auml;n, voit s&auml;ilytt&auml;&auml; joko ensimm&auml;isen tietuevastineen (oletusarvo) tai voit s&auml;ilytt&auml;&auml; sen tietuevastineen, jolla on tietyss&auml; kent&auml;ss&auml; suurin tai pienin arvo ( <b>J&auml;rjestysperuste</b>). J&auml;rjestysperuste-lauseke edellytt&auml;&auml; joko numerokentt&auml;&auml; (haluttaessa suurin tai pienin arvo) tai p&auml;iv&auml;m&auml;&auml;r&auml;kentt&auml;&auml; (haluttaessa uusin tai vanhin arvo).
                     </li>
                     <li> <b>Liit&auml; yksi useaan</b> &ndash; T&auml;m&auml; toiminto liitt&auml;&auml; kaikki liitoskarttatason vastaavat kohteet kohdekarttatasoon. Tuloskarttataso sis&auml;lt&auml;&auml; useita kohdekarttatason kohdetietueita.
                     </li>
                 </ul>
                 
             </p>
-            <p>Oletetaan esimerkiksi, ett&auml; haluat l&ouml;yt&auml;&auml; automarketit viiden kilometrin et&auml;isyydell&auml; torista. T&auml;ss&auml; tapauksessa karttatasolla, johon liitet&auml;&auml;n, on yksi toria edustava kohde ja liitett&auml;v&auml;t kohteet edustavat paikallisia ruokakauppoja, joihin liittyy ominaisuustietoja, kuten kokonaisvuosimyynti.  <b>Liit&auml; kohteet</b> -ty&ouml;kalun avulla saat selville, ett&auml; viisi ruokakauppaa t&auml;ytt&auml;v&auml;t kyseiset ehdot. Jos m&auml;&auml;rit&auml;t <b>Liit&auml; yksi useaan</b> -liitostoiminnon, saat tulokseksi viisi kohdetta, ja jokainen rivi edustaa toria ja automarkettia. Jos m&auml;&auml;rit&auml;t <b>Liit&auml; yksi yhteen</b> -suhteen ja valitset tilastotiedot, saat tulokseksi yhden toria edustavan kohteen ja koostetut tiedot automarketeista, kuten m&auml;&auml;r&auml;n (5), sek&auml; muita valinnaisia tilastotietoja, kuten vuosimyynnin.
+            <p>Oletetaan esimerkiksi, ett&auml; haluat l&ouml;yt&auml;&auml; automarketit viiden kilometrin et&auml;isyydell&auml; torista. T&auml;ss&auml; tapauksessa karttatasolla, johon liitet&auml;&auml;n, on yksi toria edustava kohde ja liitett&auml;v&auml;t kohteet edustavat paikallisia ruokakauppoja, joihin liittyy ominaisuustietoja, kuten kokonaisvuosimyynti.  <b>Liit&auml; kohteet</b> -ty&ouml;kalun avulla saat selville, ett&auml; viisi ruokakauppaa t&auml;ytt&auml;v&auml;t kyseiset ehdot. Jos m&auml;&auml;rit&auml;t <b>Liit&auml; yksi useaan</b> -liitostoiminnon, saat tulokseksi viisi kohdetta, ja jokainen rivi edustaa toria ja automarkettia. Jos m&auml;&auml;rit&auml;t <b>Liit&auml; yksi yhteen</b> -suhteen ja valitset <b>M&auml;&auml;rit&auml; s&auml;ilytett&auml;v&auml; tietue</b>, saat tulokseksi yhden toria edustavan kohteen ja yhden automarkettia edustavan kohteen (esimerkiksi sen, jolla on suurin vuosimyynti). Jos sen sijaan valitset <b>Lis&auml;&auml; tilastotietoja</b>, saat tulokseksi yhden toria edustavan kohteen ja koostetut tiedot viidest&auml; automarketista, kuten vuosimyynnin ja koosteeseen sis&auml;llytettyjen automarkettien m&auml;&auml;r&auml;n (5). 
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Luo tulokset isännöitynä kohdekarttatasona</h2></div>
         <hr/>
         <div>
-            <p> Tulosten luonti is&auml;nn&ouml;ityn&auml; kohdekarttatason n&auml;kym&auml;n&auml; saa aikaan sen, ett&auml; aineisto s&auml;ilyy ajan tasalla, kun l&auml;hdeaineisto muuttuu. Is&auml;nn&ouml;idyt kohdekarttatason n&auml;kym&auml;t, jotka sis&auml;lt&auml;v&auml;t liitoksia, ovat vain luku -muotoisia.
+            <p>Tulosten luonti is&auml;nn&ouml;ityn&auml; kohdekarttatason n&auml;kym&auml;n&auml; saa aikaan sen, ett&auml; aineisto s&auml;ilyy ajan tasalla, kun l&auml;hdeaineisto muuttuu. Is&auml;nn&ouml;idyt kohdekarttatason n&auml;kym&auml;t, jotka sis&auml;lt&auml;v&auml;t liitoksia, ovat vain luku -muotoisia.
             </p>
+            <p class="OnlineOnly">Liitoksia sis&auml;lt&auml;v&auml;t is&auml;nn&ouml;idyt kohdekarttatason n&auml;kym&auml;t eiv&auml;t kuluta analysoinnin ja tallennuksen krediittej&auml;.
+            </p> 
             <p>Voit luoda is&auml;nn&ouml;idyn kohdekarttatason n&auml;kym&auml;n analyysin tuloksista, jos kaikki seuraavat ehdot t&auml;yttyv&auml;t:
                 <ul>
                     <li>olet kummankin ryhm&auml;n omistaja

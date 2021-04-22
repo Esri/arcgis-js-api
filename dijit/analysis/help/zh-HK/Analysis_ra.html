@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過  Portal for ArcGIS Web 使用者體驗所使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>使用鄰域</b>、 <b>分析圖片</b>、 <b>分析地形</b>、 <b>管理資料</b>、 <b>深度學習</b>和 <b>多維分析</b>。
+        <p>點陣分析可讓您使用  ArcGIS Image Server 來執行大點陣資料集分析。 這能讓您運用伺服器的功能以更快地分析更多資料。目前可透過 Portal for ArcGIS Web 使用者體驗所使用的工具集為<b>摘要資料</b>、 <b>分析模式</b>、 <b>使用鄰域分析</b>、 <b>分析影像</b>、 <b>分析地形</b>、 <b>管理資料</b>、 <b>深度學習</b>和 <b>多維分析</b>。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>摘要資料</h2>
         <hr/>
-        <p>此工具集包含一個工具，可用於計算您定義的區域邊界內的點陣圖層的部分統計資料。
+        <p>這些工具可用於計算您所定義的地區邊界 (區域) 內某個點陣圖層的統計資料。
             <ul>
                 <li> <b>摘要點陣範圍</b>可計算定義的區域邊界內之點陣儲存格的統計資料。
+                </li>
+                <li> <b>作為表格的地區統計資料</b>可摘要其他資料集之地區中的點陣值，並向表格報告結果。
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="regularsize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>摘要點陣範圍</h2></td>
+                    <td><h2>摘要光欄範圍</h2></td>
                     <td>
                     <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="摘要點陣範圍工具">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>計算定義的區域內之點陣儲存格的部分摘要統計資料。
+            <p>此工具摘要其他資料集之地區中的點陣值。
             </p>
-            <p>以下是部分應用程式範例： 
-
-                <ul>
-                    <li>假設有一個流域區域圖層和一個高程點陣圖層，計算每一個流域內的高程範圍以判定何者具有最高的能源流量。
-                        
-
-                    </li>
-                    <li>假設有一個系統管理單元的圖層和一個陸地使用類別的點陣圖層，計算每個管理區域內的各種陸地使用值來識別何者需要執行大量工作，以決定管理計劃。
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>作為表格的地區統計資料</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="作為表格的地區統計資料圖表">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具摘要其他資料集之地區中的點陣值，並向表格報告結果。
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="smallsize">
+    <div id="UseProximityCategory" class="regularsize">
         <h2>使用鄰域分析</h2>
         <hr/>
-        <p>這些工具可以協助您回答在空間分析中，最常提出的一個問題：「什麼在什麼附近？」
-
+        <p>這些工具可以協助您回答在空間分析中，最常提出的一些問題：什麼在什麼附近？以及什麼是最佳路徑？
             <ul>
                 <li> <b>計算距離</b>可從單一或一組來源計算歐幾里德距離、方向和分配。
                     
@@ -146,7 +148,27 @@
                     
 
                 </li>
-                <li> <b>判定行進成本路徑為折線</b>可計算來源與已知目的地之間的最低成本折線路徑。
+                <li> <b>判定行進成本路徑為折線</b>可計算已知目的地與來源之間的最低成本折線路徑。
+                    
+
+                </li>
+                <li> <b>距離累積</b>可計算每個儲存格到來源的累積距離，允許直線距離、成本距離、真實表面距離，以及垂直和水平係數。
+                    
+
+                </li>
+                <li> <b>距離分配</b>可根據直線距離、成本距離、真實表面距離，以及垂直和水平係數，計算每個儲存格到提供的來源之間的距離分配。
+                    
+
+                </li>
+                <li> <b>最佳路徑為線</b>可計算目的地到來源的最佳路徑作為線。
+                    
+
+                </li>
+                <li> <b>將路徑最佳化成點陣</b>可計算目的地到來源的最佳路徑作為點陣。
+                    
+
+                </li>
+                <li> <b>最佳地區連線</b>可計算兩個或多個輸入地區之間的最佳連接線網路。
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>從單一或一組來源計算歐幾里德距離、方向和分配。您可以使用此工具來判定位置與道路、建築物或公園的距離。您也可以決定必須從位置的哪個方向行進，以便從最直線的路徑返回原點。您可以在研究區域中查看每個最近來源位置。
+            <p>此工具可從單一來源或一組來源計算歐幾里德距離、方向和分配。
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>計算一組輸入地區的最佳成本網路。
+            <p>此工具可計算一組輸入地區的最佳成本網路。
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>計算來源與已知目的地之間的最低成本折線路徑。
+            <p>此工具計算目的地與來源之間的最低成本折線路徑。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距離累積</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="距離累積工具圖例">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具計算每個儲存格到來源的累積距離，允許直線距離、成本距離、真實表面距離，以及垂直和水平係數。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距離分配</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="距離分配工具圖例">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具根據直線距離、成本距離、真實表面距離，以及垂直和水平係數，計算每個儲存格到提供的來源之間的距離分配。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最佳路徑為線</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="最佳路徑為線工具圖例">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具計算目的地到來源的最佳路徑作為線。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>將路徑最佳化成點陣</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="將路徑最佳化成點陣工具圖例">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具計算目的地到來源的最佳路徑作為點陣。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最佳地區連線</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="最佳地區連線工具圖例">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>此工具計算兩個或多個輸入地區之間的最佳連接線網路。
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>分析圖片</h2>
         <hr/>
-        <p>下列工具可協助您分析圖片。
+        <p> <b>分析影像</b>工具類別中的下列工具可協助您分析影像：
             <ul>
-                <li> <b>套用點陣函數樣板</b>會使用點陣函數樣板指定的函數或函數鏈結來處理您的影像。
-                </li>
-                <li> <b>監控植被</b>可根據頻段上的算術運算來偵測圖片內的植被。
+                <li> <b>監控植被</b>可根據頻段上的算術運算來偵測影像內的相對植被涵蓋範圍。 有數個植被索引可用於影像分析。
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>套用點陣函數樣板</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="套用點陣函數樣板">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>使用點陣函數樣板指定的函數鏈結來處理您的影像。
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>在多頻段點陣圖層的頻段上執行算術運算，以透露研究區域的植被涵蓋範圍資訊。
+            <p>在多頻段點陣圖層的頻段上執行算術運算，以透露植被涵蓋範圍資訊。
             </p>
             <br/>
         </div>
@@ -418,9 +498,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>取樣</h2></td>
+                    <td><h2>樣本</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="取樣">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="樣本">
                     </td>
                 </tr></tbody>
             </table>
@@ -470,7 +550,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>此工具可在輸入點陣上執行經過訓練的深度學習模型，以產生包含其發現之物件的圖徵類別。圖徵可以是找到的物件周圍的方塊或多邊形，也可以是物件中心上的點。
+            <p>此工具可在輸入點陣上執行經過訓練的深度學習模型，以產生包含其發現之物件的圖徵類別。 圖徵可以是找到的物件周圍的方塊或多邊形，也可以是物件中心上的點。
             </p>
             <br/>
         </div>

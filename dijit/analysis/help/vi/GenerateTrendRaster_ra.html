@@ -52,8 +52,6 @@
         <div><h2>Chọn lớp hình ảnh đa chiều để phân tích xu hướng</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Lớp h&igrave;nh ảnh đầu v&agrave;o của một raster đa chiều sẽ được ph&acirc;n t&iacute;ch.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Chọn loại đường phù hợp với các giá trị biến dọc theo một chiều</h2></div>
         <hr/>
         <div>
-            <p>Chỉ định loại đường được sử dụng để điều chỉnh gi&aacute; trị pixel dọc theo một chiều. 
+            <p>Chỉ định loại đường được sử dụng để điều chỉnh gi&aacute; trị pixel dọc theo một chiều.
                 <ul>
                     <li> <b>Tuyến t&iacute;nh</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng tuyến t&iacute;nh. Đ&acirc;y l&agrave; mặc định.
                     </li>
                     <li> <b>Đa thức</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng đa thức bậc hai.
                     </li>
                     <li> <b>Điều h&ograve;a</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được khớp dọc theo đường xu hướng điều h&ograve;a.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được đ&aacute;nh gi&aacute; bằng thử nghiệm xu hướng Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;C&aacute;c gi&aacute; trị pixel của biến sẽ được đ&aacute;nh gi&aacute; bằng thử nghiệm xu hướng Seasonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Chỉ định đơn vị thời gian cho độ dài thời gian theo mùa</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định đơn vị thời gian được sử dụng cho độ d&agrave;i của thời gian theo m&ugrave;a khi thực hiện kiểm định Seasonal-Kendall.
+                <ul>
+                    <li> <b>Ng&agrave;y</b>&mdash;Đơn vị cho độ d&agrave;i của thời gian theo m&ugrave;a l&agrave; ng&agrave;y. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li> <b>Th&aacute;ng</b>&mdash;Đơn vị cho độ d&agrave;i của thời gian theo m&ugrave;a l&agrave; th&aacute;ng.
                     </li>
                 </ul>
                 
@@ -207,7 +224,8 @@
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
             <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
             </p>

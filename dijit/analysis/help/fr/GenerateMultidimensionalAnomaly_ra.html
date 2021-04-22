@@ -44,7 +44,7 @@
         <h2>Générer une anomalie multidimensionnelle</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="G&eacute;n&eacute;rer une anomalie multidimensionnelle"></h2>
         <hr/>
-    <p>G&eacute;n&egrave;re un jeu de donn&eacute;es raster multidimensionnelles en associant des variables du raster multidimensionnel existant selon une dimension.
+    <p>Calcule l&rsquo;anomalie de chaque tranche d&rsquo;un raster multidimensionnel existant afin de cr&eacute;er un nouveau raster multidimensionnel.
     </p>
     <p>Une anomalie correspond &agrave; l&rsquo;&eacute;cart d&rsquo;une observation par rapport &agrave; sa valeur type, moyenne ou m&eacute;diane.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Choisir la méthode de génération des anomalies</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie la m&eacute;thode &agrave; utiliser pour calculer l&rsquo;anomalie. 
+            <p>Sp&eacute;cifie la m&eacute;thode &agrave; utiliser pour calculer l&rsquo;anomalie.
                 <ul>
                     <li> <b>Difference From Mean (Diff&eacute;rence par rapport &agrave; la moyenne)</b>&nbsp;: la diff&eacute;rence entre une valeur de pixel et la moyenne des valeurs de ce pixel dans les tranches d&eacute;finies par l&rsquo;intervalle est calcul&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Diff&eacute;rence par rapport &agrave; la moyenne = x - &micro;
-
                         <ul>
                             <li>x = valeur du pixel dans une tranche
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Diff&eacute;rence en pourcentage par rapport &agrave; la moyenne = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valeur du pixel dans une tranche
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Pourcentage de la moyenne = x / &micro;
-
                         <ul>
                             <li>x = valeur du pixel dans une tranche
                                 
@@ -202,7 +199,7 @@
         <div><h2>Choisir un intervalle temporel pour calculer la moyenne</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie l&rsquo;intervalle temporel &agrave; utiliser pour calculer la moyenne. 
+            <p>Sp&eacute;cifie l&rsquo;intervalle temporel &agrave; utiliser pour calculer la moyenne.
                 <ul>
                     <li> <b>All (Tout)</b>&nbsp;: calcule la moyenne des valeurs d&rsquo;un pixel sur toutes les tranches pour chaque pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorer les valeurs manquantes dans le calcul</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse. 
+            <p>Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse.
                 <ul>
                     <li>Activ&eacute;&nbsp;: l&rsquo;analyse inclut tous les pixels valides selon une dimension donn&eacute;e et ignore les pixels NoData. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                     </li>
@@ -250,7 +247,8 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>

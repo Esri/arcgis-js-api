@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimāls ceļš kā rastrs</h2><p/>
+        <h2><img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" alt="Rīka Optimāls ceļ&scaron; kā rastrs attēlojums"></h2>
+        <hr/>
+    <p>&Scaron;is rīks aprēķina optimālo ceļu no galamērķiem uz avotiem kā rastru.
+    </p>
+    <p>Tālāk sniegti daži lietojuma piemēri:
+        <ul>
+            <li>Atrodiet optimālu mar&scaron;rutu jaunam ceļam.
+                
+
+
+            </li>
+            <li>Atrodiet lejupvērsto trasējumu no atra&scaron;anās vietas.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Izvēlieties mērķa rastru vai elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs vai elementu slānis, kas identificē &scaron;ūnas, no kurām tiek noteikts optimālais ceļ&scaron; līdz optimālajam avotam.
+            </p>
+            <p>Ja ievade ir rastrs, tajā jābūt &scaron;ūnām ar derīgām galamērķu vērtībām&nbsp;(nulle ir derīga vērtība), un atliku&scaron;ajām &scaron;ūnām jābūt pie&scaron;ķirtai vērtībai NoData. Ievades rastra veidam ir jābūt veselam skaitlim.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Galamērķa lauks (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Lauks, ko izmanto, lai iegūtu galamērķa izvietojuma vērtības.
+            </p>
+            <p>&Scaron;im laukam jābūt veselam skaitlim.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Izvēlieties attāluma akumulēšanas rastru</h2></div>
+        <hr/>
+        <div>
+            <p>Attāluma akumulē&scaron;anas rastru izmanto, lai noteiktu optimālu ceļu no galamērķiem līdz avotiem.
+            </p>
+            <p>Attāluma akumulē&scaron;anas rastrs parasti tiek veidots ar rīku Attāluma akumulē&scaron;ana vai Attāluma pie&scaron;ķire. Katra &scaron;ūna attāluma akumulē&scaron;anas rastrā parāda minimālo akumulēto izmaksu attālumu virsmā no katras &scaron;ūnas līdz avota &scaron;ūnu kopai.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Izvēlieties atpakaļvirziena vai plūsmas virziena rastru</h2></div>
+        <hr/>
+        <div>
+            <p>Atpakaļvirziena rastrā ir aprēķināti virzieni grādos. Virziens norāda nākamo &scaron;ūnu optimālajā atpakaļceļā uz mazāko akumulēto izmaksu avotu, izvairoties no &scaron;ķēr&scaron;ļiem.
+            </p>
+            <p>Atpakaļvirziena rastrs parasti tiek veidots ar rīku Attāluma akumulē&scaron;ana vai Attāluma pie&scaron;ķir&scaron;ana. &Scaron;ajā gadījumā vērtību diapazons ir no 0&nbsp;līdz 360&nbsp;grādiem. Vērtība&nbsp;0 ir rezervēta avota &scaron;ūnām. Austrumu virzienu&nbsp;(pa labi) norāda 90&nbsp;grādi, un vērtības pieaug pulksteņrādītāja kustības virzienā&nbsp;(180&nbsp;norāda dienvidus, 270&nbsp;&mdash; rietumus, 360&nbsp;&mdash; ziemeļus).
+            </p>
+            <p>Izveidotais optimālais ceļ&scaron; var būt plūsmas ceļ&scaron;, kura pamatā ir D8&nbsp;plūsmas virziens. Lai &scaron;ādi ģenerētu optimālu ceļu, izmantojiet D8&nbsp;plūsmas virziena rastru kā ievadi &scaron;im parametram.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Ceļa veids (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda atslēgvārdu, kas nosaka, kā vērtības un zonas ievades mērķa datos tiks interpretētas ceļa aprēķinos.
+                <ul>
+                    <li> <b>Uz katru zonu</b>&nbsp;&mdash; katrai zonai ievades mērķa datos nosaka zemāko izmaksu ceļu. Izmantojot &scaron;o opciju, zemāko izmaksu ceļ&scaron; katrai zonai sākas &scaron;ūnā ar viszemāko izmaksu attāluma svaru &scaron;ajā zonā. Tā ir noklusējuma vērtība.
+                         
+                    </li>
+                    <li> <b>Viens labākais</b>&nbsp;&mdash; visām ievades galamērķa datu &scaron;ūnām minimālo izmaksu ceļ&scaron; tiek atvasināts no &scaron;ūnas ar zemāko izmaksu ceļu minimālo skaitu līdz avota &scaron;ūnām.
+                    </li>
+                    <li> <b>Uz katru &scaron;ūnu</b>&nbsp;&mdash; katrai &scaron;ūnai ar derīgām vērtībām ievades mērķa datos tiek noteikts zemāko izmaksu ceļ&scaron;. Izmantojot &scaron;o opciju, katra no ievades galamērķa datu &scaron;ūnām tiek apstrādāta atsevi&scaron;ķi, un katrai tiek noteikts zemāko izmaksu ceļ&scaron;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputRasterName">
+        <div><h2>Rezultātu rastra slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

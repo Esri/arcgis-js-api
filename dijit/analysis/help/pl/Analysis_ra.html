@@ -41,22 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analiza rastrowa umożliwia analizowanie dużych zestaw&oacute;w danych rastrowych przy użyciu serwera  ArcGIS Image Server. Umożliwia to szybsze analizowanie większych ilości danych przy wykorzystaniu mocy obliczeniowej serwera. W interfejsie internetowym oprogramowania  Portal for ArcGIS aktualnie dostępny jest następujący zestaw narzędzi:  <b>Sumowanie danych</b>, <b>Analiza zależności przestrzennych</b>, <b>Narzędzia bliskości</b>, <b>Analizuj obraz</b>, <b>Analizuj teren</b>, <b>Zarządzanie danymi</b>, <b>Deep Learning</b> oraz <b>Analiza wielowymiarowa</b>.
+        <p>Analiza rastrowa umożliwia analizowanie dużych zestaw&oacute;w danych rastrowych przy użyciu serwera  ArcGIS Image Server. Umożliwia to szybsze analizowanie większych ilości danych przy wykorzystaniu mocy obliczeniowej serwera.W interfejsie internetowym oprogramowania Portal for ArcGIS aktualnie dostępny jest następujący zestaw narzędzi:  <b>Sumowanie danych</b>, <b>Analiza zależności przestrzennych</b>, <b>Narzędzia bliskości</b>, <b>Analizuj obraz</b>, <b>Analizuj teren</b>, <b>Zarządzanie danymi</b>, <b>Deep Learning</b> oraz <b>Analiza wielowymiarowa</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Sumowanie danych</h2>
         <hr/>
-        <p>Ten zestaw narzędzi zawiera narzędzie służące do wykonywania obliczeń statystycznych dla warstwy rastrowej w zdefiniowanych granicach obszaru. 
+        <p>Te narzędzia są używane do obliczania statystyk dla warstwy rastrowej w zdefiniowanych przez Ciebie granicach obszaru (strefach).
             <ul>
-                <li>Narzędzie  <b>Podsumuj raster w ramach
-</b> umożliwia wykonywanie obliczeń statystycznych dla kom&oacute;rek rastra mieszczących się w zdefiniowanych granicach obszaru.
+                <li>Narzędzie  <b>Podsumuj raster w ramach </b> umożliwia wykonywanie obliczeń statystycznych dla kom&oacute;rek rastra mieszczących się w zdefiniowanych granicach obszaru.
+                </li>
+                <li>Narzędzie  <b>Statystyki strefowe jako tabela</b> tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych, a wyniki wyświetla w postaci tabeli.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -67,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Umożliwia obliczanie statystyk zbiorczych dla kom&oacute;rek rastra w zdefiniowanych obszarach.
+            <p>To narzędzie tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych.
             </p>
-            <p>Poniżej przedstawiono następujące przykładowe zastosowania: 
-
-                <ul>
-                    <li>Dysponując warstwą obszar&oacute;w zlewni i rastrową warstwą wysokościową, oblicz zakres wyniesień w obrębie każdej zlewni w celu ustalenia, w kt&oacute;rej z nich wystąpi przepływ ciek&oacute;w o najwyższej energii.
-                        
-
-                    </li>
-                    <li>Dysponując warstwą jednostek administracji publicznej i warstwą rastrową kategorii zagospodarowania terenu, oblicz zr&oacute;żnicowanie wartości zagospodarowania terenu w obszarach zarządzanych przez każdą z jednostek administracyjnych w celu zidentyfikowania tych, kt&oacute;re wymagają najwięcej pracy związanej z planem zagospodarowania.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Statystyka strefowa jako tabela</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagram narzędzia Statystyka strefowa jako tabela">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych, a wyniki wyświetla w postaci tabeli.
             </p>
             <br/>
         </div>
@@ -133,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Narzędzia bliskości</h2>
         <hr/>
-        <p>Narzędzia te pomagają w&nbsp;udzieleniu odpowiedzi na jedno z&nbsp;najczęstszych pytań zadawanych podczas wykonywania analizy przestrzennej: &bdquo;Co znajduje się w&nbsp;pobliżu czego?&rdquo;
-
+        <p>Te narzędzia pomagają w&nbsp;udzieleniu odpowiedzi na jedno z&nbsp;najczęstszych pytań zadawanych podczas wykonywania analizy przestrzennej: Co znajduje się w&nbsp;pobliżu czego i jaka jest optymalna ścieżka?
             <ul>
                 <li>Narzędzie  <b>Oblicz odległość</b> oblicza odległość euklidesową, kierunek i przydział z pojedynczego źr&oacute;dła lub zestawu źr&oacute;deł.
                     
@@ -147,13 +148,33 @@
                     
 
                 </li>
-                <li>Narzędzie  <b>Określ ścieżkę koszt&oacute;w podr&oacute;ży jako polilinię</b> oblicza ścieżkę poliliniową o najmniejszym koszcie między źr&oacute;dłami, a znanymi miejscami docelowymi.
+                <li>Narzędzie  <b>Określ ścieżkę koszt&oacute;w podr&oacute;ży jako polilinię</b> oblicza ścieżkę poliliniową o najmniejszym koszcie między znanymi miejscami docelowymi i źr&oacute;dłami.
+                    
+
+                </li>
+                <li>Narzędzie  <b>Akumulacja odległości</b> oblicza dla każdej kom&oacute;rki odległość do źr&oacute;deł, biorąc pod uwagę odległość w linii prostej, koszt odległości, rzeczywistą odległość powierzchniową, a także składnik poziomy i pionowy.
+                    
+
+                </li>
+                <li>Narzędzie  <b>Przydział odległości</b> oblicza dla każdej kom&oacute;rki odległość do podanych źr&oacute;deł, biorąc pod uwagę odległość w linii prostej, koszt odległości, rzeczywistą odległość powierzchniową, a także składnik poziomy i pionowy.
+                    
+
+                </li>
+                <li>Narzędzie  <b>Ścieżka optymalna jako linia</b> oblicza optymalną ścieżkę z miejsc docelowych do źr&oacute;deł jako linię.
+                    
+
+                </li>
+                <li>Narzędzie  <b>Ścieżka optymalna jako raster</b> oblicza optymalną ścieżkę z miejsc docelowych do źr&oacute;deł jako raster.
+                    
+
+                </li>
+                <li>Narzędzie  <b>Optymalne połączenia region&oacute;w</b> oblicza sieć połączeń o najmniejszym koszcie między dwoma lub większą liczbą region&oacute;w wejściowych.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -164,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>To narzędzie oblicza odległość euklidesową, kierunek i przydział z pojedynczego źr&oacute;dła lub zestawu źr&oacute;deł. Za pomocą tego narzędzia można określić odległość danej lokalizacji od drogi, budynku lub parku. Można także określić kierunek podr&oacute;ży powrotnej najkr&oacute;tszą drogą od określonej lokalizacji. Dla każdej lokalizacji na analizowanym obszarze pokazywana jest najkr&oacute;tsza droga powrotna.
+            <p>To narzędzie oblicza odległość euklidesową, kierunek i przydział na podstawie pojedynczego źr&oacute;dła lub zestawu źr&oacute;deł.
             </p>
             <br/>
         </div>
@@ -194,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>To narzędzie oblicza ścieżkę poliliniową o najmniejszym koszcie między źr&oacute;dłami a znanymi miejscami docelowymi.
+            <p>To narzędzie oblicza ścieżkę poliliniową o najmniejszym koszcie między miejscami docelowymi i źr&oacute;dłami.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Akumulacja odległości</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Ilustracja narzędzia Akumulacja odległości">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza dla każdej kom&oacute;rki odległość do źr&oacute;deł, biorąc pod uwagę odległość w linii prostej, koszt odległości, rzeczywistą odległość powierzchniową, a także składniki poziome i pionowe.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Przydział odległości</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Ilustracja narzędzia Przydział odległości">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza dla każdej kom&oacute;rki odległość do podanych źr&oacute;deł, biorąc pod uwagę odległość w linii prostej, koszt odległości, rzeczywistą odległość powierzchniową, a także składniki poziome i pionowe.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ścieżka optymalna jako linia</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Ilustracja narzędzia Ścieżka optymalna jako linia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza optymalną ścieżkę z miejsc docelowych do źr&oacute;deł jako linię.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ścieżka optymalna jako raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Ilustracja narzędzia Ścieżka optymalna jako raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza optymalną ścieżkę z miejsc docelowych do źr&oacute;deł jako raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optymalne połączenia regionów</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Ilustracja narzędzia Optymalne połączenia region&oacute;w">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To narzędzie oblicza sieć połączeń o najmniejszym koszcie między dwoma lub większą liczbą region&oacute;w wejściowych.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
-        <h2>Analiza obrazu</h2>
+        <h2>Analizuj obraz</h2>
         <hr/>
-        <p>Poniższe narzędzia ułatwiają analizowanie obraz&oacute;w. 
+        <p>Poniższe narzędzie z kategorii narzędzi  <b>Analiza obrazu</b> ułatwia analizowanie obraz&oacute;w:
             <ul>
-                <li>Narzędzie  <b>Zastosuj szablon funkcji rastrowych</b> przetwarza zobrazowanie z użyciem łańcucha funkcji w spos&oacute;b określony przez szablon funkcji rastrowych.
-                </li>
-                <li>Narzędzie  <b>Monitoruj roślinność</b> wykrywa roślinność na obrazie przy użyciu operacji arytmetycznych wykonywanych na pasmach.
+                <li>Narzędzie  <b>Monitoruj roślinność</b> wykrywa względny zasięg roślinności na obrazie przy użyciu operacji arytmetycznych wykonywanych na pasmach. Na potrzeby analizowania obraz&oacute;w dostępnych jest kilka wskaźnik&oacute;w roślinności.
                     
 
                 </li>
@@ -213,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Zastosuj szablon funkcji rastrowych</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Zastosuj szablon funkcji rastrowych">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Przetwarza zobrazowanie za pomocą łańcucha funkcji w spos&oacute;b określony przez szablon funkcji rastrowych.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -239,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Wykonuje operacje arytmetyczne na pasmach wielopasmowych warstw rastrowych w celu pozyskania informacji o zasięgu roślinności na danym obszarze.
+            <p>Wykonuje operacje arytmetyczne na pasmach wielopasmowych warstw rastrowych w celu pozyskania informacji o zasięgu roślinności.
             </p>
             <br/>
         </div>
@@ -362,8 +441,7 @@
                 <tbody><tr>
                     <td><h2>Wyodrębnij raster</h2></td>
                     <td>
-                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Narzędzie portalu Wyodrębnij raster
-">
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Narzędzie portalu Wyodrębnij raster ">
                     </td>
                 </tr></tbody>
             </table>
@@ -421,9 +499,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Próbka</h2></td>
+                    <td><h2>Przykład</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Pr&oacute;bka">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Przykład">
                     </td>
                 </tr></tbody>
             </table>

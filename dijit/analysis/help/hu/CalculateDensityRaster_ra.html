@@ -51,17 +51,16 @@
     <p>Vonal bemenet eset&eacute;n a vonal sűrűs&eacute;g felsz&iacute;n megfelel az egyes helyek k&ouml;zel&eacute;ben tal&aacute;lhat&oacute; teljes vonalmennyis&eacute;gnek. A sz&aacute;m&iacute;tott sűrűs&eacute;g&eacute;rt&eacute;kek m&eacute;rt&eacute;kegys&eacute;ge az egys&eacute;gnyi ter&uuml;letre eső vonalhossz&uacute;s&aacute;g. Ha p&eacute;ld&aacute;ul a vonalak foly&oacute;knak felelnek meg, akkor az eredm&eacute;ny r&eacute;teg a keres&eacute;si sug&aacute;ron bel&uuml;li foly&oacute;k teljes hossz&uacute;s&aacute;g&aacute;nak felel meg. Ez az eredm&eacute;ny felhaszn&aacute;lhat&oacute; &aacute;llatok legeltet&eacute;s&eacute;re alkalmas ter&uuml;letek azonos&iacute;t&aacute;s&aacute;ra.
     </p>
     <p>Az eszk&ouml;z ezenk&iacute;v&uuml;l az al&aacute;bbiakra is haszn&aacute;lhat&oacute;:
-
         <ul>
             <li>Bűncselekm&eacute;nyek sűrűs&eacute;gi t&eacute;rk&eacute;p&eacute;nek l&eacute;trehoz&aacute;sa, seg&iacute;tve ezzel a rendőrs&eacute;gnek az erőforr&aacute;sokat azokra a ter&uuml;letekre csoportos&iacute;tani, ahol nagy ar&aacute;ny&uacute; a bűn&ouml;z&eacute;s.
                 
  
             </li>
-            <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa. Az eredm&eacute;ny r&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
+            <li>A megy&eacute;ben tal&aacute;lhat&oacute; k&oacute;rh&aacute;zak sűrűs&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;sa. Az eredm&eacute;nyr&eacute;teg mutatja azokat a ter&uuml;leteket, ahol magas &eacute;s alacsony a k&oacute;rh&aacute;zak el&eacute;rhetős&eacute;ge, &eacute;s ez az inform&aacute;ci&oacute; felhaszn&aacute;lhat&oacute; annak eld&ouml;nt&eacute;s&eacute;re, hogy hol &eacute;p&uuml;ljenek &uacute;j k&oacute;rh&aacute;zak.
                 
  
             </li>
-            <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi helysz&iacute;ne alapj&aacute;n.
+            <li>Olyan ter&uuml;letek azonos&iacute;t&aacute;sa, ahol magas az erdőtűz kock&aacute;zata a kor&aacute;bbi erdőt&uuml;zek adatai alapj&aacute;n.
                 
  
             </li>
@@ -120,11 +119,22 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Határoló vektoros elemek kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az akad&aacute;lyokat meghat&aacute;roz&oacute; adathalmaz.
+            </p>
+            <p>Az akad&aacute;lyok lehetnek polyline vagy polygon t&iacute;pus&uacute; vektoros elemek r&eacute;tegei.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

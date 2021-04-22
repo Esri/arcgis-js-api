@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Het gebruik van trendraster voorspellen</h2><p/>
-        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Voorspellen met behulp van trendraster"></h2>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Het gebruik van trendraster voorspellen"></h2>
         <hr/>
     <p>Berekent een voorspeld multidimensionaal raster met behulp van het uitgevoerde trendraster van de  Trendraster genereren-tool.
     </p>
@@ -74,7 +74,7 @@
                 <ul>
                     <li> <b>Op waarde</b>&mdash;De voorspelling wordt berekend voor een enkele afmetingswaarde of een lijst van dimensiewaarden die in de volgende stap gespecificeerd worden. Dit is de standaardinstelling. U wilt bijvoorbeeld jaarlijkse neerslag voorspellen voor de jaren 2050, 2100 en 2150.
                     </li>
-                    <li> <b>Op interval</b>&mdash; De voorspelling wordt berekend voor een interval van de afmeting gedefinieerd door een start- en een eindwaarde. Bijvoorbeeld, u wilt jaarlijkse neerslag voorspellen voor elk jaar tussen 2050 en 2150.
+                    <li> <b>Op interval</b>&mdash;De voorspelling wordt berekend voor een interval van de afmeting gedefinieerd door een start- en een eindwaarde. Bijvoorbeeld, u wilt jaarlijkse neerslag voorspellen voor elk jaar tussen 2050 en 2150.
                     </li>
                 </ul>
                 
@@ -90,6 +90,22 @@
             <p>Het formaat van de tijd-, diepte- en hoogtewaarden moet overeenkomen met het formaat van de afmetingswaarden die worden gebruikt om het trendraster te genereren. Als het trendraster is gegenereerd voor de StdTijd-afmeting, moet het formaat JJJJ-MM-ddThh:MM:SS zijn, bijvoorbeeld, 2050-01-01T00:00:00. Meerdere waarden worden gescheiden door een puntkomma.
             </p>
             <p>Deze parameter is nodig wanneer de methode  <b>Op valuta</b> wordt geselecteerd om de dimensiewaarden voor de voorspelling te defini&euml;ren.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Start</h2></div>
+        <hr/>
+        <div>
+            <p>De startdatum, hoogte of diepte van het dimensie-interval om te gebruiken in de voorspelling.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>End</h2></div>
+        <hr/>
+        <div>
+            <p>De einddatum, hoogte of diepte van het dimensie-interval dat in de voorspelling moet worden gebruikt.
             </p>
         </div>
     </div>
@@ -123,6 +139,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

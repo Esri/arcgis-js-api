@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Predpovedať pomocou rastra trendov</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predpovedať pomocou rastra trendov"></h2>
+        <hr/>
+    <p>Vypoč&iacute;ta predpovedan&yacute; viacrozmern&yacute; raster pomocou rastra v&yacute;stupn&eacute;ho trendu z n&aacute;stroja  Generovať raster trendov.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, premenn&eacute; vrstvy, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy, bud&uacute; analyzovan&eacute;. Ak nie je za&scaron;krtnut&eacute;, premenn&eacute; celej vrstvy bud&uacute; analyzovan&eacute;, aj pokiaľ sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vybrať vrstvu viacrozmenrých snímok, ktorú predikovať.</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&yacute; viacrozmern&yacute; raster trendu z n&aacute;stroja  Generovať raster trendu.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vybrať premenné, ktorých hodnoty budú predikované</h2></div>
+        <hr/>
+        <div>
+            <p>Premenn&aacute; alebo premenn&eacute;, ktor&eacute; bud&uacute; predikovan&eacute; v anal&yacute;ze. Ak nie s&uacute; &scaron;pecifikovan&eacute; žiadne premenn&eacute;, bud&uacute; použit&eacute; v&scaron;etky premenn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Vyberte metódu použitú na poskytnutie predikovaných hodnôt dimenzie</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje met&oacute;du použit&uacute; na poskytnutie predikovan&yacute;ch hodn&ocirc;t dimenzie.
+                <ul>
+                    <li> <b>Podľa hodnoty</b>--Predikcia bude vypoč&iacute;tan&aacute; pre jedin&uacute; hodnotu dimenzie alebo zoznam hodn&ocirc;t dimenzie &scaron;pecifikovan&yacute;ch v ďal&scaron;om kroku. Toto je prednastaven&aacute; voľba. Napr&iacute;klad, chcete predpovedať ročn&yacute; &uacute;hrn zr&aacute;žok pre roky 2050, 2100 a 2150.
+                    </li>
+                    <li> <b>Podľa intervalu</b>--Predikcia bude vypoč&iacute;tan&aacute; pre interval dimenzie definovanej počiatočnou a koncovou hodnotou. Napr&iacute;klad, chcete predpovedať ročn&yacute; &uacute;hrn zr&aacute;žok pre každ&yacute; rok medzi 2050 a 2150.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="dimensionValues">
+        <div><h2>Špecifikovať hodnoty dimenzií pre predikciu</h2></div>
+        <hr/>
+        <div>
+            <p>Hodnota alebo hodnoty dimenzi&iacute;, ktor&eacute; sa maj&uacute; použiť v predikcii.
+            </p>
+            <p>Form&aacute;t hodn&ocirc;t času, hĺbky a v&yacute;&scaron;ky sa mus&iacute; zhodovať s form&aacute;tom hodn&ocirc;t dimenzie použit&yacute;m na generovanie rastra trendov. Ak bol raster trendov generovan&yacute; pre dimenziu StdTime, form&aacute;t by mal byť YYYY-MM-DDTHH:MM:SS, napr&iacute;klad, 2050-01-01T00:00:00. Viacer&eacute; hodnoty s&uacute; oddelen&eacute; bodkočiarkou.
+            </p>
+            <p>Tento parameter je vyžadovan&yacute;, keď je na definovanie hodn&ocirc;t dimenzie pre predikciu vybran&aacute; met&oacute;da  <b>Podľa hodnoty</b>.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Začiatok</h2></div>
+        <hr/>
+        <div>
+            <p>Počiatočn&yacute; d&aacute;tum, v&yacute;&scaron;ka alebo hĺbka intervalu dimenzie, ktor&eacute; použiť v predikcii.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Koniec</h2></div>
+        <hr/>
+        <div>
+            <p>Koncov&yacute; d&aacute;tum, v&yacute;&scaron;ka alebo hĺbka intervalu dimenzie, ktor&eacute; použiť v predikcii.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionInterval">
+        <div><h2>Definovať interval dimenzií pre predikciu</h2></div>
+        <hr/>
+        <div>
+            <p>Definovať počiatočn&yacute; a konečn&yacute; d&aacute;tum, v&yacute;&scaron;ku alebo hĺbku intervalu dimenzie, ktor&yacute; m&aacute; byť použit&yacute; v predikcii.
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Špecifikovať počet krokov medzi počiatočnými a konečnými hodnotami</h2></div>
+        <hr/>
+        <div>
+            <p>Počet krokov medzi dvoma hodnotami dimenzie, ktor&eacute; maj&uacute; byť zahrnut&eacute; v predikcii. Predvolen&aacute; hodnota je 1.
+            </p>
+            <p>Napr&iacute;klad, na predpovedanie hodn&ocirc;t teploty každ&yacute;ch 5 rokov, použite hodnotu 5.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Vybrať jednotku, ktorá bude použitá ako hodnota časového intervalu</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje jednotku, ktor&aacute; bude použit&aacute; ako hodnota časov&eacute;ho intervalu. Toto sa použ&iacute;va, len ak je rozmerom anal&yacute;zy časov&aacute; dimenzia.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

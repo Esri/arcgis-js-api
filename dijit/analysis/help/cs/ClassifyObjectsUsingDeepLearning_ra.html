@@ -72,10 +72,30 @@
         <div><h2>Vybrat model deep learningu, který bude použit ke klasifikaci objektů</h2></div>
         <hr/>
         <div>
-            <p>Vstupem je položka deep learningov&eacute;ho bal&iacute;čku ( <code>.dlpk</code>) .
+            <p>Vstupem je položka deep learningov&eacute;ho bal&iacute;čku ( <code>.dlpk</code>).
             </p>
-            <p>Deep learningov&yacute; bal&iacute;ček je složen ze souboru JSON s definic&iacute; modelu Esri ( <code>.emd</code>), souboru s bin&aacute;rn&iacute;m modelem deep learningu, a volitelně rastrov&eacute; funkce Python k použit&iacute;.
+            <p>Deep learningov&yacute; bal&iacute;ček je složen ze souboru JSON s&nbsp;definic&iacute; modelu Esri ( <code>.emd</code>), souboru s&nbsp;bin&aacute;rn&iacute;m modelem deep learningu, a&nbsp;volitelně rastrov&eacute; funkce Python k&nbsp;použit&iacute;.
             </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Režim zpracování</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě. Tento parametr se použije v př&iacute;padě, že je vstupn&iacute;m rastrem mozaikov&aacute; datov&aacute; sada nebo obrazov&aacute; služba.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou spojeny do mozaiky a zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
     <div id="modelArguments">
@@ -102,7 +122,7 @@
         <div><h2>Režim zpracování</h2></div>
         <hr/>
         <div>
-            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru ve službě image service. 
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru ve službě image service.
                 <ul>
                     <li> <b>Zpracovat jako mozaikov&yacute; obraz</b>&mdash;V&scaron;echny položky rastru ve službě image service budou spojeny do mozaiky a zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

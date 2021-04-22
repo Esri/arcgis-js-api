@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vyöhyketilastot taulukossa</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Vy&ouml;hykkeiset tilastotiedot taulukossa -kaavio"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml; ja raportoi tulokset tauluun.
+    </p>
+    <p>Seuraavassa on luettelo joistakin sovelluksista:
+    </p>
+    <p>
+        <ul>
+            <li>Jos k&auml;yt&ouml;ss&auml; ovat osavaltion rajojen karttataso ja sadem&auml;&auml;r&auml;n keskijakauma Yhdysvaltojen manneralueella, ty&ouml;kalu laskee &auml;&auml;rimm&auml;isten sadetapahtumien osavaltiokohtaisen jakauman k&auml;ytt&auml;m&auml;ll&auml; prosenttiarvojen luetteloa.
+                
+
+            </li>
+            <li>Jos k&auml;yt&ouml;ss&auml; ovat p&auml;&auml;llekk&auml;isten ekologisten vy&ouml;hykkeiden karttataso ja maaper&auml;n kosteuden rasteritaso, ty&ouml;kalu laskee kunkin vy&ouml;hykkeen kaikki tuetut tilastotiedot liittyvien vy&ouml;hykkeiden suhteen maaper&auml;n kosteuden saatavuuden mukaan.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -toiminto on valittuna, vain l&auml;ht&ouml;karttatason ja yhteenvetokarttatason nykyisess&auml; karttalaajuudessa n&auml;kyv&auml;t kohteet analysoidaan. Jos toimintoa ei ole valittu, analyysiin sis&auml;llytet&auml;&auml;n kaikki l&auml;ht&ouml;- ja yhteenvetokarttatason kohteet, vaikka ne eiv&auml;t sijaitsisikaan nykyisen karttalaajuuden alueella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Valitse vyöhykerasteri tai -kohteet</h2></div>
+        <hr/>
+        <div>
+            <p>Karttataso, joka m&auml;&auml;ritt&auml;&auml; yhteenvedett&auml;vien vy&ouml;hykkeiden tai alueiden rajat.
+            </p>
+            <p>Karttataso voi olla kokonaislukurasteri tai kohdeaineisto. Rastereissa vy&ouml;hykkeet m&auml;&auml;r&auml;ytyv&auml;t kaikkien niiden l&auml;ht&ouml;aineiston sijaintien mukaan, joilla on sama soluarvo. Kohteissa vy&ouml;hykkeet voivat olla p&auml;&auml;llekk&auml;isi&auml;. Alueiden ei tarvitse olla vierekk&auml;isi&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Vyöhykekenttä</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml; on sen karttatason ominaisuustieto, jota k&auml;ytet&auml;&auml;n vy&ouml;hykkeiden (alueiden) rajojen m&auml;&auml;ritt&auml;miseen.
+            </p>
+            <p>Oletetaan esimerkiksi, ett&auml; ensimm&auml;inen l&auml;ht&ouml;aineiston karttataso m&auml;&auml;ritt&auml;&auml; hallintoyksik&ouml;n rajat ominaisuustiedoilla, jotka m&auml;&auml;ritt&auml;v&auml;t kunkin yksik&ouml;n alueen, piirin ja kiinteist&ouml;n tunnuksen. Sinulla on my&ouml;s rasterikarttataso, joka m&auml;&auml;ritt&auml;&auml; kunkin sijainnin biodiversiteetti-indeksin. Valitsemasi kent&auml;n mukaan voit laskea keskim&auml;&auml;r&auml;isen biodiversiteetin paikallis-, piiri- tai aluetasolla.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Valitse arvorasteri</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;m&auml;n karttatason rasterisoluista laaditaan yhteenveto niiden alueiden (vy&ouml;hykkeiden) mukaan, joiden sis&auml;ll&auml; solut ovat.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ohita NoData-tiedot laskelmissa (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko NoData-arvot analyysissa.
+                <ul>
+                    <li>Valittu &ndash; analyysi sis&auml;lt&auml;&auml; solut, joiden l&auml;ht&ouml;arvorasterin arvo on mill&auml; tahansa tietyll&auml; vy&ouml;hykkeell&auml;, jotta voidaan m&auml;&auml;ritt&auml;&auml; kyseisen vy&ouml;hykkeen tulosarvo. Arvorasterin NoData-solut ohitetaan tilastollisessa laskennassa. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li>Ei valittu &ndash; analyysin tuloksena on NoData, jos arvorasterin solujen arvona on NoData-arvoja tietyll&auml; vy&ouml;hykkeell&auml;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Tilastotyyppi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; laskettavan tilastotyypin.
+            </p>
+            <p>L&auml;ht&ouml;aineisto voi olla jokin seuraavista:  <b>Kaikki</b>, <b>Keskiarvo</b>, <b>Enemmist&ouml;</b>, <b>Maksimi</b>, <b>Mediaani</b>, <b>Minimi</b>, <b>V&auml;hemmist&ouml;</b>, <b>Prosenttipiste</b>, <b>Arvoalue</b>, <b>Keskihajonta</b>, <b>Summa</b>, <b>Diversiteetti</b>, <b>Minimi ja Maksimi</b>, <b>Keskiarvo ja keskihajonta</b> tai <b>Minimi, Maksimi ja keskiarvo</b>. Oletusarvo on <b>Kaikki</b>.
+            </p>
+            <p>Jos l&auml;ht&ouml;aineiston arvorasteri on kokonaisluku, oletusarvoisesti kaikki tilastotiedot lasketaan. Jos rasteri on liukulukutyyppi&auml;, kaikki tilastotiedot paitsi  <b>Mediaani</b> ja <b>Prosenttiarvo</b> lasketaan oletusarvoisesti. 
+            </p>
+            <p>Jos l&auml;ht&ouml;aineiston arvorasteri on kelluvan pisteen tyyppi&auml;,  <b>Enemmist&ouml;</b>-, <b>V&auml;hemmist&ouml;</b>- ja <b>Diversiteetti</b>-vy&ouml;hykelaskuja ei voi laskea.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Prosenttipistearvot (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Laskettavat prosenttipisteet. Yksitt&auml;inen arvo tai arvoluettelo voidaan m&auml;&auml;ritt&auml;&auml;. Oletusarvo on 90, joka tarkoittaa 90. prosenttipistett&auml;.
+            </p>
+            <p>Arvot voivat olla 0&ndash;100. 0. prosenttipisteen m&auml;&auml;ritt&auml;minen vastaa periaatteessa Minimi-tilastotietoa, ja 100. prosenttipiste vastaa Maksimi-tilastotietoa. Arvo 50 tuottaa saman tuloksen kuin Mediaani-tilastotieto.
+            </p>
+            <p>T&auml;t&auml; asetusta tuetaan vain, jos  <b>Tilastotyyppi</b>-parametrin asetus on <b>Prosenttipiste</b> tai <b>Kaikki</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Prosenttipisteen interpolaatiotyyppi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>M&auml;&auml;ritt&auml;&auml; k&auml;ytett&auml;v&auml;n prosenttipisteen interpolointimenetelm&auml;n, kun l&auml;ht&ouml;rasterin laskettujen arvojen m&auml;&auml;r&auml; on parillinen.
+            </p> 
+            <p>Jos l&auml;ht&ouml;aineiston arvorasterin pikselityyppi on kokonaisluku, k&auml;ytet&auml;&auml;n  <b>L&auml;hin</b>-menetelm&auml;&auml;. Jos l&auml;ht&ouml;aineiston arvorasterin pikselityyppi on liukuluku, k&auml;ytet&auml;&auml;n <b>Lineaarinen</b>-menetelm&auml;&auml;. T&auml;m&auml; on oletusarvo.
+            </p>
+            <p> <b>L&auml;hin</b>-menetelm&auml;ss&auml; k&auml;ytet&auml;&auml;n l&auml;hint&auml; k&auml;ytett&auml;viss&auml; olevaa arvoa, joka vastaa haluttua prosenttipistett&auml;. <b>Lineaarinen</b>-menetelm&auml;ss&auml; k&auml;ytet&auml;&auml;n halutun prosenttipisteen kahden ymp&auml;r&ouml;iv&auml;n arvon painotettua keskiarvoa.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Prosessi moniulotteisena (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, miten l&auml;ht&ouml;aineiston rasterit k&auml;sitell&auml;&auml;n, jos ne ovat moniulotteisia.
+            </p>
+            <ul>
+                <li>Valittu &ndash; tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n nykyisest&auml; viipaleesta. T&auml;m&auml; on oletusarvo.
+                    
+
+                </li>
+                <li>Ei valittu &ndash; tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n kaikille ulottuvuuksille.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Tulostaulun nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

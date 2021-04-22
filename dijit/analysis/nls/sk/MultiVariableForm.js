@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({distToNearest:"Vzdialenosť k najbližšej",attrOfInterest:"Atribút najbližšej",summaryNearby:"Zhrnutie okolitých",summaryIntersecting:"Zhrnutie pretínajúcich sa",distToNearestLabel:"Vzdialenosť od stredu záložky k najbližšiemu prvku vo vstupnej vrstve",attrOfInterestLabel:"Hodnota špecifikovaného poľa od najbližšieho prvku zo vstupnej vrstvy",summaryNearbyLabel:"Štatistika vypočítaná na všetkých prvkoch nájdených so zadanou vzdialenosťou od stredu záložky",summaryIntersectingLabel:"Štatistika vypočítaná na všetkých prvkoch, ktoré pretínajú záložku",maxDistancefromCtr:"Maximálna vzdialenosť od stredu záložky",fieldToIncude:"Pole na zahrnutie",statstoCalculate:"Štatistika na vypočítanie",summFeatuesWithin:"Zhrnúť prvky v rámci",smallMaxDistErrorMsg:"Maximálna vzdialenosť od stredu záložky musí byť väčšia ako veľkosť záložky.",smallSumFeaturesErrorMsg:"Maximálna vzdialenosť od stredu záložky musí byť väčšia ako veľkosť záložky."});

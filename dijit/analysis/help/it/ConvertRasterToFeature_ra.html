@@ -55,7 +55,6 @@
     <p>Se &egrave; selezionata l'opzione  <b>Usa estensione mappa corrente</b>, solo le celle del raster visibili nell'estensione mappa corrente verranno convertite. Se &egrave; deselezionata, verranno convertite tutte le celle nel layer raster, anche se esterne all'estensione mappa corrente. Tenere in considerazione questo fattore se il layer del raster &egrave; grande o ha una risoluzione molto alta.
     </p>
     <p>Di seguito sono descritti alcuni casi di utilizzo di questo strumento:
-
         <ul>
             <li>Creare feature poligono da un raster di classificazione di utilizzo del suolo.
                 
@@ -103,7 +102,7 @@
             <p>Specifica il tipo di output.
             </p>
             <ul>
-                <li> <b>Punto</b>: il raster verr&agrave; convertito in un dataset di punti. Questa &egrave; l'impostazione predefinita.
+                <li> <b>Punto</b>: il raster verr&agrave; convertito in un dataset di punti. Si tratta dell'impostazione predefinita.
                     
  
                 </li>
@@ -126,7 +125,7 @@
             <p>Specifica se le linee o i poligoni saranno semplificati (smussati). Lo smoothing viene effettuato in modo tale che la linea contenga un numero minimo di segmenti, pur rimanendo il pi&ugrave; vicino possibile ai bordi delle celle del raster originali.
             </p>
             <ul>
-                <li>Selezionata: le feature lineari o poligonali verranno smussate per produrre un risultato pi&ugrave; generalizzato. Questa &egrave; l'impostazione predefinita.
+                <li>Selezionata: le feature lineari o poligonali verranno smussate per produrre un risultato pi&ugrave; generalizzato. Si tratta dell'impostazione predefinita.
                     
 
                 </li>
@@ -151,7 +150,7 @@
                     
 
                 </li>
-                <li>Deselezionata: le feature individuali (monoparte) verranno create per ogni poligono. Questa &egrave; l'impostazione predefinita.
+                <li>Deselezionata: le feature individuali (monoparte) verranno create per ogni poligono. Si tratta dell'impostazione predefinita.
                     
 
                 </li>
@@ -167,16 +166,17 @@
         <div>
             <p>Il limite di vertice utilizzato per suddividere un poligono in poligoni pi&ugrave; piccoli.
             </p>
-            <p>Se lasciati vuoti, i poligoni di output non verranno suddivisi. Questa &egrave; l'impostazione predefinita.
+            <p>Se lasciati vuoti, i poligoni di output non verranno suddivisi. Si tratta dell'impostazione predefinita.
             </p>
             <p>Questo parametro &egrave; supportato solo se il tipo di output &egrave; un poligono.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

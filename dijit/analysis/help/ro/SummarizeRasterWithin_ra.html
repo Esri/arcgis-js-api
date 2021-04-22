@@ -44,7 +44,7 @@
         <h2>Rezumare raster în cadrul</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Instrument Rezumare raster &icirc;n cadrul"></h2>
         <hr/>
-    <p>Acest instrument rezumă un raster bazat pe suprafeţe (zone) definit de primul strat tematic de intrare.
+    <p>Acest instrument rezumă valorile unui raster &icirc;n cadrul zonelor unui alt set de date.
     </p>
     <p>Printre exemplele de aplicaţii se numără:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai acele obiecte spaţiale din stratul tematic de intrare şi din stratul tematic de sumarizat care sunt vizibile din extinderea curentă a hărţii.  Dacă nu se bifează, vor fi analizate toate obiectele spaţiale at&acirc;t din stratul tematic de intrare, c&acirc;t şi din stratul tematic de analizat, chiar dacă acestea se află &icirc;n afara extinderii curente a hărţii.
+    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai acele obiecte spaţiale din stratul tematic de intrare şi din stratul tematic de sumarizat care sunt vizibile din extinderea curentă a hărţii. Dacă nu se bifează, vor fi analizate toate obiectele spaţiale at&acirc;t din stratul tematic de intrare, c&acirc;t şi din stratul tematic de analizat, chiar dacă acestea se află &icirc;n afara extinderii curente a hărţii.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>După ce alegeţi un strat tematic pentru a fi sumarizat, opţional, puteţi calcula statistici pentru oricare dintre atributele numerice ale punctelor, liniilor sau suprafeţelor din stratul tematic de suprafeţe de intrare.
             </p>
-            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Range, Standard deviation, Sum, and Variety.
+            <p>Tipurile de statistici disponibile atunci c&acirc;nd c&acirc;mpul selectat este un număr &icirc;ntreg sunt Medie, Majoritate, Maximă, Mediană, Minimă, Percentilă, Interval, abatere Standard, Sumă și Varietate.
             </p>
             <p>&Icirc;n cazul &icirc;n care c&acirc;mpul este un punct mobil, opţiunile sunt Medie, Maxim, Minim, Interval, Deviaţie standard şi Sumă.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valoarea percentilei</h2></div>
+        <hr/>
+        <div>
+            <p>Percentila de calculat. Valoarea implicită este 90 și indică cea de-a 90-a percentilă.
+            </p>
+            <p>Valorile variază &icirc;ntre 0 și 100. &Icirc;n principiu, percentila 0 este echivalentă cu statistica minimă, iar cea de-a 100-a percentilă este echivalentă cu maxima. &Icirc;n principiu, valoarea 50 are același rezultat ca statistica mediană.
+            </p>
+            <p>Această opțiune este acceptată doar dacă parametrul  <b>Alegeți statistica de calculat</b> este setat la <b>Percentilă</b>.
             </p>
         </div>
     </div>
@@ -113,11 +125,20 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Procesați ca multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică modul &icirc;n care rasterele de intrare vor fi prelucrate dacă acestea sunt multidimensionale. Dacă alegeți să prelucrați ca multidimensionale, statisticile vor fi calculate din toate dimensiunile setului de date multidimensional de intrare. &Icirc;n caz contrar, statisticile vor fi calculate din &icirc;mpărțirea actuală a setului de date multidimensional, aceasta este valoarea implicită.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>

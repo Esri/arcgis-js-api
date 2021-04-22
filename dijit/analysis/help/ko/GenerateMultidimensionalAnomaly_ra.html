@@ -42,9 +42,9 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>다차원 이상치 생성</h2><p/>
-        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="다차원 이상치 생성(Generate Multidimensional Anomaly)"></h2>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="다차원 이상치 생성"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Computes the anomaly for each slice in an existing multidimensional raster to generate a new multidimensional raster.
     </p>
     <p>이상치는 표준값, 평균값, 중앙값에서 관측되는 편차입니다.
     </p>
@@ -78,9 +78,9 @@
         <div><h2>이상치 생성 방법 선택</h2></div>
         <hr/>
         <div>
-            <p>이상치 계산에 사용할 방법을 지정합니다. 
+            <p>이상치 계산에 사용할 방법을 지정합니다.
                 <ul>
-                    <li> <b>평균과 차이</b> - 픽셀값과 간격을 통해 정의된 슬라이스 전체에서 픽셀값 평균의 차이가 계산됩니다. 이 방법이 기본값입니다.
+                    <li> <b>평균과 차이</b> - 픽셀값과 간격을 통해 정의된 슬라이스 전체에서 픽셀값 평균의 차이가 계산됩니다. 이 옵션이 기본 설정입니다.
                     </li>
                     <li> <b>평균과 백분율 차이</b> - 픽셀값과 간격을 통해 정의된 슬라이스 전체에서 픽셀값 평균의 백분율 차이가 계산됩니다.
                     </li>
@@ -101,8 +101,7 @@
             </p>
             <p>
                 <ul>
-                    <li>평균과 차이 = x - &micro;
-
+                    <li>평균과의 차이 = x - &micro;
                         <ul>
                             <li>x = 한 슬라이스의 픽셀값
                                 
@@ -117,8 +116,7 @@
                         
 
                     </li>
-                    <li>평균과 백분율 차이 = |x - &micro;| / [(x + &micro;)/2]
-
+                    <li>평균과의 백분율 차이 = |x - &micro;| / [(x + &micro;)/2]
                         <ul>
                             <li>x = 한 슬라이스의 픽셀값
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>평균의 백분율 = x / &micro;
-
                         <ul>
                             <li>x = 한 슬라이스의 픽셀값
                                 
@@ -202,7 +199,7 @@
         <div><h2>평균 계산에 사용할 시간 간격 선택</h2></div>
         <hr/>
         <div>
-            <p>평균을 계산하는 데 사용할 시간 간격을 지정합니다. 
+            <p>평균을 계산하는 데 사용할 시간 간격을 지정합니다.
                 <ul>
                     <li> <b>모두</b> - 각 픽셀의 모든 슬라이드에 걸쳐 평균을 계산합니다.
                     </li>
@@ -235,9 +232,9 @@
         <div><h2>계산 내 누락 값 무시</h2></div>
         <hr/>
         <div>
-            <p>누락된 값을 분석에서 무시할지 여부를 지정합니다. 
+            <p>누락된 값을 분석에서 무시할지 여부를 지정합니다.
                 <ul>
-                    <li>선택 - 분석은 지정된 차원에 따라 유효한 모든 픽셀을 포함하며 NoData 픽셀을 무시합니다. 이 방법이 기본값입니다.
+                    <li>선택 - 분석은 지정된 차원에 따라 유효한 모든 픽셀을 포함하며 NoData 픽셀을 무시합니다. 이 옵션이 기본 설정입니다.
                     </li>
                     <li>선택 취소 - 분석은 지정된 차원에 따라 NoData 픽셀값이 있는 경우 NoData를 반환합니다.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>결과 레이어 이름</h2></div>
         <hr/>
         <div>
+            
             <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
             </p>
             <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다.

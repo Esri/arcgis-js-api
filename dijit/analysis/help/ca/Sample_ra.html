@@ -46,7 +46,7 @@
         <hr/>
     <p>Aquesta eina crea una taula o una classe d'entitat de punt que mostra els valors de les cel&middot;les d'un r&agrave;ster o d'un conjunt de r&agrave;sters per a ubicacions definides. Les ubicacions es defineixen amb cel&middot;les de r&agrave;ster, entitats de pol&iacute;gon, entitats de polil&iacute;nia o un conjunt de punts.
     </p>
-    <p>Els valors de p&iacute;xel s'extrauran de tots els r&agrave;sters d'entrada a cada ubicaci&oacute;. Es crear&agrave; una taula o una classe d'entitat de punt amb camps que contenen els valors de p&iacute;xel de cada r&agrave;ster d'entrada. Els atributs addicionals de la taula de r&agrave;ster d'entrada no s'inclouran a la taula de sortida.
+    <p>Els valors de p&iacute;xel s'extrauran de tots els r&agrave;sters d'entrada a cada ubicaci&oacute;. Es crear&agrave; una taula o una classe d'entitat de punt amb camps que contenguin els valors de p&iacute;xel de cada r&agrave;ster d'entrada. Els atributs addicionals de la taula de r&agrave;ster d'entrada no s'inclouran a la taula de sortida.
     </p>
     <p>Es pot especificar qualsevol combinaci&oacute; de r&agrave;sters, com ara d'una sola banda, multibanda, multidimensionals o multivariables, com a r&agrave;sters d'entrada. L'estructura de la taula de sortida canvia quan els r&agrave;sters d'entrada s&oacute;n multidimensionals. Quan s'especifiqui un r&agrave;ster multibanda com un dels r&agrave;sters d'entrada, s'utilitzaran totes les bandes de l'entrada. Per processar una selecci&oacute; de les bandes d'un r&agrave;ster multibanda d'entrada, primer creeu un nou dataset r&agrave;ster format per aquestes bandes. Utilitzeu el resultat a la llista de r&agrave;sters d'entrada.
     </p>
@@ -112,7 +112,6 @@
             <p>Especifiqueu el temps, la profunditat o altres dades d'adquisici&oacute; de les dades associades amb les entitats o les cel&middot;les d'ubicaci&oacute;.
             </p>
             <p>Per a cada dimensi&oacute;, hi ha tres opcions per especificar la informaci&oacute; d'adquisici&oacute; associada a les entitats o les cel&middot;les d'ubicaci&oacute;:
-
                 <ul>
                     <li> <b>Camp o valor &uacute;nic</b>: si aquesta opci&oacute; est&agrave; seleccionada, s'ha d'especificar la informaci&oacute; seg&uuml;ent:
                         <ul>
@@ -129,7 +128,7 @@
                             </li>
                             <li> <b>Valor relatiu anterior</b>: especifiqueu un nombre no negatiu que es restar&agrave; de <b>Camp o valor de dimensi&oacute;</b> per definir l'inici d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
                             </li>
-                            <li> <b>Valor relatiu posterior</b>: especifiqueu un nombre no negatiu que se sumar&agrave; a <b>Camp o valor de dimensi&oacute;</b> per definir l'inici d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
+                            <li> <b>Valor relatiu posterior</b>: especifiqueu un nombre no negatiu que se sumar&agrave; a <b>Camp o valor de dimensi&oacute;</b> per definir el final d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
                             </li>
                         </ul>
                         
@@ -206,11 +205,11 @@
             <p>Algoritme de remostreig que s'utilitza en mostrejar un r&agrave;ster.
             </p>
             <ul>
-                <li> <b>M&eacute;s proper</b>: ve&iacute; m&eacute;s proper. Aquesta &eacute;s l'opci&oacute; per defecte.
+                <li> <b>M&eacute;s proper</b>: ve&iacute; m&eacute;s proper, utilitza el valor de la cel&middot;la m&eacute;s propera per assignar un valor a la cel&middot;la de sortida durant el remostreig. Aquesta &eacute;s l'opci&oacute; per defecte.
                 </li>
-                <li> <b>Bilineal</b>: interpolaci&oacute; bilineal
+                <li> <b>Bilineal</b>: interpolaci&oacute; bilineal, determina el nou valor d'una cel&middot;la en funci&oacute; de la mitjana de la dist&agrave;ncia ponderada dels quatre centres de cel&middot;la m&eacute;s propers.
                 </li>
-                <li> <b>C&uacute;bic</b>: convoluci&oacute; c&uacute;bica
+                <li> <b>C&uacute;bic</b>: convoluci&oacute; c&uacute;bica, determina el nou valor d'una cel&middot;la en funci&oacute; de l'ajust d'una corba suau a trav&eacute;s dels 16 centres de cel&middot;les d'entrada m&eacute;s propers.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
+            
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.

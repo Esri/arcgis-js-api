@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klasifikovať objekty použitím hĺbkového strojového učenia</h2><p/>
+        <h2><img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" alt="Klasifikovať objekty použit&iacute;m hĺbkov&eacute;ho strojov&eacute;ho učenia"></h2>
+        <hr/>
+    <p>Sp&uacute;&scaron;ťa model hĺbkov&eacute;ho strojov&eacute;ho učenia na vstupnom rastri a voliteľnej triede prvkov pre vyprodukovanie triedy prvkov alebo tabuľky, v ktorej m&aacute; každ&yacute; vstupn&yacute; objekt priraden&uacute; triedu.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, iba oblasť rastra, ktor&aacute; je viditeľn&aacute; v aktu&aacute;lnom rozsahu mapy bude analyzovan&aacute;. Ak nie je za&scaron;krtnut&eacute;, bude analyzovan&yacute; cel&yacute; rozsah rastra, aj ak je mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vyberte snímku použitú na klasifikáciu objektov</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; sn&iacute;mka použit&aacute; na detekciu objektov.
+            </p> 
+        </div>
+    </div>
+    <div id="inputfeatures">
+        <div><h2>Vybrať vrstvu pvkov pre objekty (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&aacute;, l&iacute;niov&aacute; alebo polyg&oacute;nov&aacute; vstupn&aacute; prvkov&aacute; vrstva, ktor&aacute; identifikuje lokalitu každ&eacute;ho objektu pre klasifik&aacute;ciu a označenie. Každ&yacute; riadok vo vstupnej vrstve prvkov reprezentuje jeden objekt.
+            </p>
+            <p>Ak nie je &scaron;pecifikovan&aacute; žiadna vstupn&aacute; vrstva prvkov, n&aacute;stroj predpoklad&aacute;, že každ&aacute; vstupn&aacute; sn&iacute;mka obsahuje jeden objekt na klasifik&aacute;ciu. Ak vstupn&aacute; sn&iacute;mka alebo sn&iacute;mky použ&iacute;vaj&uacute; priestorov&uacute; referenciu, v&yacute;stup z n&aacute;stroja bude vrstva prvkov, v ktorej je použit&yacute; rozsah každej sn&iacute;mky ako ohraničuj&uacute;ca geometria pre každ&yacute; označen&yacute; prvok. Ak vstupn&aacute; sn&iacute;mka alebo sn&iacute;mky nie s&uacute; priestorovo referencovan&eacute;, v&yacute;stup z n&aacute;stroja je tabuľka obsahuj&uacute;ca hodnoty ID sn&iacute;mok a označenia tried pre každ&uacute; sn&iacute;mku.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Vyberte model hĺbkového strojového učenia použitý na klasifikáciu objektov</h2></div>
+        <hr/>
+        <div>
+            <p>Položka vstupn&eacute;ho bal&iacute;čka Deep Learning ( <code>.dlpk</code>).
+            </p>
+            <p>Tento bal&iacute;ček hĺbkov&eacute;ho učenia je zostaven&yacute; zo s&uacute;boru Esri model definition JSON file ( <code>.emd</code>), bin&aacute;rneho modelov&eacute;ho s&uacute;boru hĺbkov&eacute;ho učenia, a pr&iacute;padne z rastrovej funkcie Python, ktor&aacute; sa použije.
+            </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Režim spracovania</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, ako bud&uacute; v&scaron;etky rastrov&eacute; položky v mozaikovom datasete alebo sn&iacute;mkovej službe spracovan&eacute;. Tento parameter sa použije, keď je vstupn&yacute;m rastrom mozaikov&yacute; dataset alebo sn&iacute;mkov&aacute; služba.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+V&scaron;etky rastrov&eacute; položky v mozaikovej d&aacute;tovej sade alebo sn&iacute;mkovej službe bud&uacute; spojen&eacute; mozaikou a spracovan&eacute;. Toto je prednastaven&aacute; voľba.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+V&scaron;etky rastrov&eacute; položky v mozaikovej d&aacute;tovej sade alebo sn&iacute;mkovej službe bud&uacute; spracovan&eacute; ako samostatn&eacute; obr&aacute;zky.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Zadajte parametre modelu hĺbkového strojového učenia</h2></div>
+        <hr/>
+        <div>
+            <p>Argumenty funkcie s&uacute; definovan&eacute; v triede rastrovej funkcie Python, na ktor&eacute; sa odkazuje vstupn&yacute; model. Tu zad&aacute;te ďal&scaron;ie parametre hĺbkov&eacute;ho strojov&eacute;ho učenia a argumenty pre experimenty a spresnenie, napr&iacute;klad prah spoľahlivosti pre nastavenie citlivosti.
+            </p>
+            <p>N&aacute;zvy argumentov s&uacute; vyplnen&eacute; n&aacute;strojom pri nač&iacute;tan&iacute; Python modulu zo servera rastrovej anal&yacute;zy.
+            </p>
+        </div>
+    </div>
+    <div id="classLabelField">
+        <div><h2>Definujte názov poľa označujúceho triedu</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov poľa, ktor&eacute; bude obsahovať označenie klasifik&aacute;cie vo v&yacute;stupnej vrstve prvkov.
+            </p>
+            <p>Ak nie je &scaron;pecifikovan&yacute; žiadny n&aacute;zov poľa, nov&eacute; pole s n&aacute;zvom <i>ClassLabel</i> bude vytvoren&eacute; vo v&yacute;stupnej prvkovej vrstve.
+            </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Režim spracovania</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, ako bud&uacute; v&scaron;etky rastrov&eacute; položky v sn&iacute;mkovej službe spracovan&eacute;.
+                <ul>
+                    <li> <b>Spracovať mozaikov&uacute; sn&iacute;mku</b>--V&scaron;eky rastrov&eacute; položky v sn&iacute;mkovej službe bud&uacute; mozaikovan&eacute; dohromady a spracovan&eacute;. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Spracovať položky oddelene</b>--V&scaron;eky rastrov&eacute; položky v sn&iacute;mkovej službe bud&uacute; spracovan&eacute; ako oddelen&eacute; sn&iacute;mky.
+                    </li>
+                </ul>
+                .
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureClass">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

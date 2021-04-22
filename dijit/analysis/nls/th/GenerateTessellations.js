@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseShape:"เลือกรูปทรง",defineExtent:"กำหนดขอบเขต",defineBin:"กำหนดขนาดถังโดยการระบุ",area:"พื้นที่",distance:"ระยะทาง",resultLayerName:"ชื่อของชั้นข้อมูลผลลัพธ์",hexagon:"หกเหลี่ยม",transverseHexagon:"หกเหลี่ยมตามขวาง",square:"สี่เหลี่ยม",triangle:"สามเหลี่ยม",diamond:"สี่เหลี่ยมข้าวหลามตัด",sameAsDisplay:"เหมือนกับการแสดงผล",emptyBinSize:"ต้องไม่เว้นว่างขนาดถัง",currentExtent:"ขอบเขตปัจจุบัน",intersectExtent:"คงไว้เฉพาะเทสเซลเลชันที่ตัดกัน",outputLayerName:"สร้างเทสเซลเลชันบน ${extentLayerName}",itemDescription:"ใช้ขอบเขตจาก ${extentLayerName}",itemTags:"ผลการวิเคราะห์, สร้างเทสเซลเลชัน, ${extentLayerName}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างจากการสร้างเทสเซลเลชัน"});

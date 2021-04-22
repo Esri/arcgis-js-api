@@ -46,7 +46,7 @@
         <hr/>
     <p>To orodje pretvori raster v geoobjektni sklop podatkov kot točke, linije ali poligone.
     </p>
-    <p>Parameter  <b>Izberi polje</b> vam omogoča možnost izbire, katero atributno polje vhodnega rastrskega sklopa podatkov bo postalo atribut v izhodnem razredu geoobjektov. Ta parameter je na voljo samo za rastre celih &scaron;tevil, ki imajo dodatne atribute v povezani tabeli.
+    <p>Parameter  <b>Izberi polje</b> vam omogoča možnost izbire, katero atributno polje vhodnega rastrskega sklopa podatkov bo postalo atribut v izhodnem geoobjektnem razredu. Ta parameter je na voljo samo za rastre celih &scaron;tevil, ki imajo dodatne atribute v povezani tabeli.
     </p>
     <p>Celica vhodnega rastra je lahko katere koli velikosti.
     </p>
@@ -55,7 +55,6 @@
     <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo pretvorjene samo rastrske celice, vidne znotraj trenutnega obsega karte. Če je odkljukano, bodo pretvorjene vse celice v rastrskem sloju, tudi če so zunaj trenutnega obsega karte. Upo&scaron;tevajte to, če je rastrski sloj velik ali ima zelo visoko ločljivost.
     </p>
     <p>Primeri uporabe tega orodja vključujejo naslednje:
-
         <ul>
             <li>Ustvarite poligonske geoobjekte iz klasifikacijskega rastra za rabo tal.
                 
@@ -75,7 +74,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Izberi rastrski sloj za pretvorbo</h2></div>
+        <div><h2>Izberi sloj rastra za pretvorbo</h2></div>
         <hr/>
         <div>
             <p>Vhodni rastrski sloj, ki bo pretvorjen v geoobjektne sloje.
@@ -90,9 +89,9 @@
             </p>
             <p>Lahko je katero koli celo &scaron;tevilo ali besedilna vrednost.
             </p>
-            <p>Polje, ki vsebuje vrednosti plavajoče vejice, se lahko uporablja samo, če je izhod v točkovnem sklopu podatkov.
+            <p>Polje, ki vsebuje vrednosti plavajoče vejice, se lahko uporablja samo, če je izhodni sloj v točkovnem sklopu podatkov.
             </p>
-            <p>Privzeta nastavitev je polje  <i>Value</i> , ki vsebuje vrednost v vsaki rastrski celici.
+            <p>Privzeta nastavitev je polje  <i>Value</i>, ki vsebuje vrednost v vsaki rastrski celici.
             </p>
         </div>
     </div>
@@ -103,7 +102,7 @@
             <p>Določi izhodni tip.
             </p>
             <ul>
-                <li> <b>Točka</b> &ndash; Raster bo pretvorjen v točkovni sklop podatkov. To je privzeta nastavitev.
+                <li> <b>Točka</b> &ndash; Raster bo pretvorjen v točkovni sklop podatkov. To je privzeto.
                     
  
                 </li>
@@ -126,7 +125,7 @@
             <p>Določi če bodo linije ali poligoni poenostavljeni (zglajeni). Glajenje se izvede tako, da linija vsebuje minimalno &scaron;tevilo segmentov, a hkrati ostaja kolikor se da blizu robovom prvotnih rastrskih celic.
             </p>
             <ul>
-                <li>Obkljukano &ndash; Linijski ali poligonski geoobjekti bodo izravnani zaradi pridobivanja bolj posplo&scaron;enega rezultata. To je privzeta nastavitev.
+                <li>Obkljukano &ndash; Linijski ali poligonski geoobjekti bodo izravnani zaradi pridobivanja bolj posplo&scaron;enega rezultata. To je privzeto.
                     
 
                 </li>
@@ -151,7 +150,7 @@
                     
 
                 </li>
-                <li>Odkljukano &ndash; Posamezni (enodelni) geoobjekti bodo ustvarjeni za vsak poligon. To je privzeta nastavitev.
+                <li>Odkljukano &ndash; Posamezni (enodelni) geoobjekti bodo ustvarjeni za vsak poligon. To je privzeto.
                     
 
                 </li>
@@ -167,7 +166,7 @@
         <div>
             <p>Omejitev lomnih točk, ki se uporablja za razdelitev poligona na manj&scaron;e poligone.
             </p>
-            <p>Če možnost pustite prazno, izhodni poligoni ne bodo razdeljeni. To je privzeta nastavitev.
+            <p>Če možnost pustite prazno, izhodni poligoni ne bodo razdeljeni. To je privzeto.
             </p>
             <p>Ta parameter je podprt samo, če je izhodni tip poligon.
             </p>
@@ -177,6 +176,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

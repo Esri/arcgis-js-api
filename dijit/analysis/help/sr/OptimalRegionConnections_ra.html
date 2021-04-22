@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimalne veze regiona</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Alatka za optimalne veze regiona"></h2>
+        <hr/>
+    <p>Ovaj alat izračunava optimalnu mrežu povezanosti između dva ili vi&scaron;e regiona.
+    </p>
+    <p>Primeri primene obuhvataju sledeće:
+        <ul>
+            <li>Modeliranje podobnosti&mdash;Iz modela pogodnosti identifikovali ste 10 najboljih stani&scaron;nih delova za divlje mačke. Želite da divlje mačke imaju mogućnost da se kreću između teritorija kroz najefikasniju mrežu koridora udivljini kako bi se održala genetska raznovrsnost unutar metapopulacije.
+                
+
+            </li>
+            <li>Seča drva&mdash;Kod seče drva, želite da kreirate najisplativiju mrežu &scaron;umskih puteva sa kojih ćete vaditi drvnu građu.
+                
+
+            </li>
+            <li>Mirovne snage&mdash;Kod raspoređivanja mirovnih snaga, identifikovali ste pet oblasti za pozicioniranje trupa i osoblja. Želite da kreirate optimalno povezane rute za snabdevanje između baza.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće analizirane samo one lokacije u ulaznim slojevima koje su vidljive unutar trenutnog obuhvata mape. Ako nije izabrana, analiziraće se sve lokacije u oba ulazna sloja, čak i ako su izvan trenutnog obuhvata mape.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Odaberite geoobjekat ili raster regiona</h2></div>
+        <hr/>
+        <div>
+            <p>Ulazni regioni koji će biti povezani optimalnom mrežom.
+            </p>
+            <p>Ako su ulazni podaci regiona raster, regioni se defini&scaron;u prema grupama susednih (okolnih) ćelija iste vrednosti. Svaki region mora da bude jedinstveno numerisan. Ćelije koje nisu deo nijednog regiona moraju da budu NoData. Tip rastera mora da bude ceo broj i vrednosti bilo pozitivne ili negativne.
+            </p>
+            <p>Ako je ulazni podatak regiona geoobjekat, to mogu da budu tačke, linije ili poligoni. Regioni poligona ne mogu biti sastavljeni od vi&scaron;edelnih poligona.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Odaberite geoobjekte ili raster barijera (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji defini&scaron;e barijere.
+            </p>
+            <p>Za raster, ulazni tip može da bude ceo broj ili broj s pokretnim zarezom. Sve ćelije koje imaju vrednost (uključujući nulu) će se tretirati kao barijera. Sve ćelije koje su tipa NoData (bez podataka) se neće tretirati kao barijere.
+            </p>
+            <p>Za geoobjekat, unos može da bude tačka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Odaberite raster troškova (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji defini&scaron;e impedansu ili tro&scaron;ak za pomeranje planimetrije kroz svaku ćeliju.
+            </p>
+            <p>Vrednost na lokaciji svake ćelije predstavlja rastojanje tro&scaron;ak-po-jedinici za pomeranje kroz ćeliju. Svaka vrednost lokacije ćelije se množi sa rezolucijom ćelije dok se takođe kompenzuje dijagonalni pokret za zadržavanje ukupnog tro&scaron;ka prolaska kroz ćeliju.
+            </p>
+            <p>Vrednosti rastera tro&scaron;kova mogu da budu ceo broj ili plutajući zarez, ali ne mogu da budu negativna ili nulta vrednost (ne možete da imate negativan ili nulti tro&scaron;ak).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metod rastojanja (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi da li rastojanje treba izračunati kori&scaron;ćenjem planarnog (ravna zemlja) ili geodetskog (elipsoid) metoda.
+            </p>
+            <ul>
+                <li> <b>Planarni</b>&mdash;Izračunavanje rastojanja će se obaviti na projektovanoj ravni kori&scaron;ćenjem 2D Dekartovog koordinatnog sistema. Ovo je podrazumevani metod.
+                    
+
+                </li>
+                <li> <b>Geodetski</b>&mdash;Izračunavanje rastojanja će se obaviti na elipsoidu. Stoga se, bez obzira na ulaznu ili izlaznu projekciju, rezultati ne menjaju.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Veze unutar regiona (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje da li će se putanje nastaviti i povezati unutar ulaznih regiona.
+            </p>
+            <ul>
+                <li> <b>Generi&scaron;i veze</b>&mdash;Putanje će se nastaviti unutar ulaznih regiona kako bi se povezale sve putanje koje ulaze u region. Ovo je podrazumevano.
+                    
+
+                </li>
+                <li> <b>Nema veza</b>&mdash;Putanje će se zaustaviti na ivicama ulaznih regiona i neće se nastaviti niti povezati unutar njih.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Naziv sloja geoobjekata optimalnih linija povezanosti sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Ovaj sloj je izlazni linijski geoobjekat koji povezuje svaki ulazni region.
+            </p>
+            <p>Svaka putanja (ili linija) je jedinstveno numerisana, a dodatna polja u tabeli sa atributima čuvaju određene informacije o putanji. Ta dodatna polja su sledeća:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Jedinstveni identifikator za putanju
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Ukupno akumulirano rastojanje ili tro&scaron;ak za putanju
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Prvi region sa kojim se putanja povezuje
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Drugi region sa kojim se putanja povezuje
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kako je svaka putanja predstavljena jedinstvenom linijom, u lokacijama gde se putanje kreću istom rutom biće vi&scaron;e linija.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Naziv sloja susednih veza sa rezultatima (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Ovaj sloj je izlazni linijski geoobjekat koji identifikuje sve putanje iz svakog regiona do svakog od najbližih suseda i suseda sa najmanjim tro&scaron;kovima.
+            </p>
+            <p>Svaka putanja (ili linija) je jedinstveno numerisana, a dodatna polja u tabeli sa atributima čuvaju određene informacije o putanji. Ta dodatna polja su sledeća:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Jedinstveni identifikator za putanju
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Ukupno akumulirano rastojanje ili tro&scaron;ak za putanju
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Prvi region sa kojim se putanja povezuje
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Drugi region sa kojim se putanja povezuje
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kako je svaka putanja predstavljena jedinstvenom linijom, u lokacijama gde se putanje kreću istom rutom biće vi&scaron;e linija.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

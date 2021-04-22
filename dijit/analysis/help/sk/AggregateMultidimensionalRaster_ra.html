@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Agregovať viacrozmerný raster</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregovať viacrozmern&yacute; raster"></h2>
+        <hr/>
+    <p>Vytvor&iacute; viacrozmern&yacute; rastrov&yacute; dataset kombin&aacute;ciou existuj&uacute;cich viacrozmern&yacute;ch rastrov&yacute;ch premenn&yacute;ch pozdĺž dimenzie.
+    </p>
+    <p>Ak m&aacute;te za obdobie 30 rokov d&aacute;ta o teplote povrchu mora, ktor&eacute; boli zbieran&eacute; mesačne každ&yacute;ch 5 metrov až do hĺbky 100 metrov, toto s&uacute; niektor&eacute; z možnost&iacute; použitia:
+        <ul>
+            <li>Agregovať mesačn&eacute; d&aacute;ta o teplote do ročn&yacute;ch d&aacute;t.
+            </li>
+            <li>Agregovať mesačn&eacute; d&aacute;ta o teplote do 4-mesačn&yacute;ch intervalov.
+            </li>
+            <li>Agregovať d&aacute;ta o teplote od 0 do 25 metrov, z 25 do 50 metrov a z 50 do 100 metrov.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, premenn&eacute; vrstvy, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy, bud&uacute; analyzovan&eacute;. Ak nie je za&scaron;krtnut&eacute;, premenn&eacute; celej vrstvy bud&uacute; analyzovan&eacute;, aj pokiaľ sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputMultidimensionalRaster">
+        <div><h2>Vyberte viacrozmernú snímkovú vrstvu, ktorú chcete agregovať</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; sn&iacute;mkov&aacute; vrstva viacrozmern&eacute;ho rastra, ktor&aacute; bude agregovan&aacute;.
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vyberte dimenziu, pozdĺž ktorej chcete agregovať</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzia agreg&aacute;cie. Toto je dimenzia, pozdĺž ktorej bud&uacute; agregovan&eacute; premenn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vyberte premenné na agregáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Premenn&aacute; alebo premenn&eacute;, ktor&eacute; bud&uacute; agregovan&eacute; pre vybran&uacute; dimenziu. Ak nie je &scaron;pecifikovan&aacute; žiadna premenn&aacute;, v&scaron;etky premenn&eacute; so zvolenou dimenziou bud&uacute; agregovan&eacute;.
+            </p>
+            <p>Napr&iacute;klad, na agregovanie va&scaron;ich denn&yacute;ch d&aacute;t o teplote do priemern&yacute;ch mesačn&yacute;ch hodn&ocirc;t, &scaron;pecifikujte teplotu ako premenn&uacute;, ktor&aacute; sa m&aacute; agregovať. Ak ne&scaron;pecifikujete žiadne premenn&eacute; a m&aacute;te premenn&eacute; denn&yacute;ch tepl&ocirc;t aj denn&yacute;ch zr&aacute;žok, obe premenn&eacute; bud&uacute; agregovan&eacute; do mesačn&yacute;ch priemerov a v&yacute;stupn&yacute; viacrozmern&yacute; raster bude obsahovať obe premenn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationMethod">
+        <div><h2>Vyberte metódu agregácie</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje matematick&uacute; met&oacute;du, ktor&aacute; bude použit&aacute; na kombinovanie agregovan&yacute;ch segmentov v intervale.
+                <ul>
+                    <li> <b>Priemer</b>--Vypoč&iacute;ta priemer hodn&ocirc;t pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Maximum</b>--Vypoč&iacute;ta maxim&aacute;lnu hodnotu pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>V&auml;č&scaron;ina</b>--Vypoč&iacute;ta hodnotu, ktor&aacute; sa pre pixely vyskytovala najčastej&scaron;ie vo v&scaron;etk&yacute;ch segmentoch v intervale.
+                    </li>
+                    <li> <b>Minimum</b>--Vypoč&iacute;ta minim&aacute;lnu hodnotu pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>Men&scaron;ina</b>--Vypoč&iacute;ta hodnotu, ktor&aacute; sa pre pixely vyskytovala najmenej často naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>Medi&aacute;n</b>--Vypoč&iacute;ta hodnotu medi&aacute;nu pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>Rozsah</b>--Vypoč&iacute;ta rozsah hodn&ocirc;t pre pixely naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>&Scaron;tandardn&aacute; odch&yacute;lka</b>--Vypoč&iacute;ta &scaron;tandardn&uacute; odch&yacute;lku hodn&ocirc;t pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>S&uacute;čet</b>--Vypoč&iacute;ta s&uacute;čet hodn&ocirc;t pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>Rozmanitosť</b>--Vypoč&iacute;ta počet unik&aacute;tnych hodn&ocirc;t pixelov naprieč v&scaron;etk&yacute;mi segmentami v intervale.
+                    </li>
+                    <li> <b>Vlastn&aacute;</b>--Vypoč&iacute;ta hodnotu pixelov na z&aacute;klade vlastnej funkcie rastra.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="aggregationFunction">
+        <div><h2>Vyberte šablónu rastrovej funkcie</h2></div>
+        <hr/>
+        <div>
+            <p>Vlastn&aacute; rastrov&aacute; funkcia, ktor&aacute; bude použit&aacute; na v&yacute;počet hodn&ocirc;t pixelov agregovan&yacute;ch rastrov. Vstupom je položka &scaron;abl&oacute;ny rastrovej funkcie v port&aacute;li. Vstup je vyžadovan&yacute;, keď je  <b>Met&oacute;da agreg&aacute;cie</b> nastaven&aacute; na <b>Vlastn&aacute;</b>.
+            </p>
+        </div>
+    </div>
+    <div id="aggregationDefinition">
+        <div><h2>Vyberte definíciu agregácie</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje interval dimenzie, pre ktor&uacute; sa bud&uacute; d&aacute;ta agregovať.
+                <ul>
+                    <li> <b>V&scaron;etky</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; naprieč v&scaron;etk&yacute;mi segmentami. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Kľ&uacute;čov&eacute; slovo intervalu</b>--D&aacute;ta premenn&yacute;ch sa agreguj&uacute; pomocou bežne zn&aacute;meho intervalu.
+                    </li>
+                    <li> <b>Hodnoty intervalov</b>--D&aacute;ta premenn&yacute;ch bud&uacute; agregovan&eacute; pomocou použ&iacute;vateľom zadan&eacute;ho intervalu a jednotky.
+                    </li>
+                    <li> <b>Intervalov&eacute; rozsahy</b>--D&aacute;ta premenn&yacute;ch bud&uacute; agregovan&eacute; medzi zadan&eacute; p&aacute;ry hodn&ocirc;t alebo d&aacute;tumov.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Vyberte interval kľúčového slova</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje interval kľ&uacute;čov&yacute;ch slov, ktor&eacute; bud&uacute; použit&eacute; pri agreg&aacute;cii v r&aacute;mci dimenzie. Tento vstup sa vyžaduje, keď je  <b>Defin&iacute;cia agreg&aacute;cie</b> nastaven&aacute; na <b>Kľ&uacute;čov&eacute; slovo intervalu</b> a agreg&aacute;cia mus&iacute; byť naprieč časom.
+                <ul>
+                    <li> <b>Hodinov&eacute;</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do hodinov&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&uacute; hodinu v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>Denn&eacute;</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do denn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&yacute; deň v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>T&yacute;ždenne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do t&yacute;ždenn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&yacute; t&yacute;ždeň v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>Mesačne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do mesačn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&yacute; mesiac v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>&Scaron;tvrťročne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do &scaron;tvrťročn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&yacute; &scaron;tvrťrok v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>Ročne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do ročn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať každ&yacute; rok v časovej s&eacute;rii.
+                    </li>
+                    <li> <b>Opakovať denne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do denn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať jednu agregovan&uacute; hodnotu za juli&aacute;nsky deň. V&yacute;stup bude obsahovať najviac 366 denn&yacute;ch časov&yacute;ch segmentov.
+                    </li>
+                    <li> <b>Opakovať t&yacute;ždenne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do t&yacute;ždenn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať jednu agregovan&uacute; hodnotu za t&yacute;ždeň. V&yacute;stup bude obsahovať najviac 53 t&yacute;ždenn&yacute;ch časov&yacute;ch segmentov.
+                    </li>
+                    <li> <b>Opakovať mesačne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do t&yacute;ždenn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať jednu agregovan&uacute; hodnotu za mesiac. V&yacute;stup bude obsahovať najviac 12 mesačn&yacute;ch časov&yacute;ch segmentov.
+                    </li>
+                    <li> <b>Opakovať &scaron;tvrťročne</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do t&yacute;ždenn&yacute;ch časov&yacute;ch krokov a v&yacute;sledok bude zahŕňať jednu agregovan&uacute; hodnotu za &scaron;tvrťrok. V&yacute;stup bude obsahovať najviac 4 &scaron;tvrťročn&eacute; časov&eacute; segmenty.
+                    </li>
+                    <li> <b>Desaťdňov&eacute;</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do 3 obdob&iacute;, každ&eacute; po 10 dn&iacute;. Posledn&eacute; obdobie m&ocirc;že obsahovať viac alebo menej ako 10 dn&iacute;. V&yacute;stup bude obsahovať 3 segmenty za každ&yacute; mesiac.
+                    </li>
+                    <li> <b>P&auml;ťdňov&eacute;</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do 6 obdob&iacute;, každ&eacute; po 5 dn&iacute;. Posledn&eacute; obdobie m&ocirc;že obsahovať viac alebo menej ako 5 dn&iacute;. V&yacute;stup bude obsahovať 6 segmentov za každ&yacute; mesiac.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalValue">
+        <div><h2>Interval hodnôt</h2></div>
+        <hr/>
+        <div>
+            <p>Veľkosť intervalu, ktor&yacute; sa použije na agreg&aacute;ciu. Tento parameter sa vyžaduje, keď je parameter  <b>Defin&iacute;cia agreg&aacute;cie</b> nastaven&yacute; na <b>Hodnota intervalu</b>.
+            </p>
+            <p>Napr&iacute;klad pre agreg&aacute;ciu 30-ročn&yacute;ch d&aacute;t o mesačnej teplote do 5-ročn&yacute;ch pr&iacute;rastkov zadajte 5 ako  <b>Hodnotu intervalu</b> a zadajte <b>Jednotka</b> ako <b>Roky</b>.
+            </p>
+        </div>
+    </div>
+    <div id="intervalUnit">
+        <div><h2>Jednotka</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka, ktor&aacute; bude použit&aacute; pre hodnotu intervalu. Tento vstup sa vyžaduje, keď je  <b>Dimenzia</b> časov&yacute;m stĺpcom a <b>Defin&iacute;cia agreg&aacute;cie</b> je nastaven&aacute; na <b>Hodnota intervalu</b>.
+            </p>
+            <p>Ak neagregujete časov&eacute; d&aacute;ta, t&aacute;to možnosť nebude k dispoz&iacute;cii a jednotka pre hodnotu intervalu sa bude zhodovať s jednotkou premennej vstupn&yacute;ch viacrozmern&yacute;ch rastrov&yacute;ch d&aacute;t.
+                <ul>
+                    <li> <b>Hodiny</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do hodinov&yacute;ch časov&yacute;ch segmentov v uvedenom intervale.
+                    </li>
+                    <li> <b>Dni</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do denn&yacute;ch časov&yacute;ch segmentov v uvedenom intervale.
+                    </li>
+                    <li> <b>T&yacute;ždeň</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do t&yacute;ždenn&yacute;ch časov&yacute;ch segmentov v uvedenom intervale.
+                    </li>
+                    <li> <b>Mesiace</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do mesačn&yacute;ch časov&yacute;ch segmentov v uvedenom intervale.
+                    </li>
+                    <li> <b>Roky</b>--Hodnoty d&aacute;t bud&uacute; agregovan&eacute; do ročn&yacute;ch časov&yacute;ch segmentov v uvedenom intervale.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalRanges">
+        <div><h2>Definovať rozsahy</h2></div>
+        <hr/>
+        <div>
+            <p>Rozsahy intervalu bud&uacute; použit&eacute; na agreg&aacute;ciu skup&iacute;n hodn&ocirc;t. Pozost&aacute;vaj&uacute; z p&aacute;rov minim&aacute;lnych a maxim&aacute;lnych hodn&ocirc;t rozsahov s typom d&aacute;t Double alebo D&aacute;tum. Tento vstup sa vyžaduje, keď je  <b>Defin&iacute;cia agreg&aacute;cie</b> nastaven&aacute; na <b>Rozsahy intervalu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovať chýbajúce hodnoty vo výpočte</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či s&uacute; ch&yacute;baj&uacute;ce hodnoty v anal&yacute;ze ignorovan&eacute;.
+                <ul>
+                    <li>Za&scaron;krtnut&eacute;--Anal&yacute;za zahrnie v&scaron;etky platn&eacute; pixely danej dimenzie a ignoruje v&scaron;etky pixely NoData. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li>Neza&scaron;krtnut&eacute;--V&yacute;sledkom anal&yacute;zy bude NoData, ak pre pixely danej dimenzie existuj&uacute; nejak&eacute; hodnoty NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

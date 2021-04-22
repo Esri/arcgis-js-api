@@ -112,7 +112,6 @@
             <p>M&auml;&auml;rake aeg, s&uuml;gavus v&otilde;i muu asukohapikslite- v&otilde;i objektidega seotud andmete hankimise teave.
             </p>
             <p>Iga dimensiooni puhul on asukohapikslite v&otilde;i -objektidega seotud andmete hankimise teabe m&auml;&auml;ramiseks kolm v&otilde;imalust.
-
                 <ul>
                     <li> <b>&Uuml;ksik v&auml;li v&otilde;i v&auml;&auml;rtus</b> &ndash; kui see v&otilde;imalus on valitud, tuleb m&auml;&auml;rata j&auml;rgnev teave.
                         <ul>
@@ -206,11 +205,11 @@
             <p>Korduvvalimi moodustamise algoritm, mida kasutatakse rastrist valimi v&otilde;tmisel.
             </p>
             <ul>
-                <li> <b>L&auml;him</b> &ndash; l&auml;him naaber. See on vaikimisi valik.
+                <li> <b>L&auml;him</b>&mdash;L&auml;him naaber, mis kasutab l&auml;hima lahtri v&auml;&auml;rtust, et m&auml;&auml;rata prooviv&otilde;tmisel v&auml;ljundpikslile v&auml;&auml;rtus. See on vaikevalik.
                 </li>
-                <li> <b>Bilineaarne</b> &ndash; bilineaarne interpolatsioon
+                <li> <b>Bilineaarne</b>&mdash;Bilineaarne interpolatsioon arvutab piksli v&auml;&auml;rtuse, kasutades nelja l&auml;hima piksli kaugusega kaalutud v&auml;&auml;rtust.
                 </li>
-                <li> <b>Kuubiline</b>  &ndash; kuupkonvolutsioon
+                <li> <b>Kuupkonvolutsioon</b>&mdash;Kuupkonvolutsioon m&auml;&auml;rab piksli uue v&auml;&auml;rtuse, tuginedes sujuva k&otilde;vera paigutamisele l&auml;bi 16 l&auml;hima sisendpiksli keskpunkti.
                 </li>
             </ul>
             
@@ -223,7 +222,7 @@
             <p>M&auml;&auml;rab selle, kas valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabelis ridades v&otilde;i veergudes. See v&otilde;imalus on saadaval ainult siis, kui mitmem&otilde;&otilde;tmeline sisendraster sisaldab &uuml;hte muutujat ja &uuml;hte dimensiooni ning iga l&otilde;ik on &uuml;he ribaga raster.
             </p>
             <ul>
-                <li> <b>Valimi v&auml;&auml;rtused kuvatakse reas</b> &ndash; valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabeli eri ridades. See on vaikimisi valik.
+                <li> <b>Valimi v&auml;&auml;rtused kuvatakse reas</b> &ndash; valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabeli eri ridades. See on vaikevalik.
                 </li>
                 <li> <b>Valimi v&auml;&auml;rtused kuvatakse veerus</b> &ndash; valimi v&auml;&auml;rtused kuvatakse v&auml;ljundtabeli eri veergudes. See v&otilde;imalus kehtib ainult siis, kui mitmem&otilde;&otilde;tmeline sisendraster sisaldab &uuml;hte muutujat ja &uuml;hte dimensiooni ning iga l&otilde;ik on &uuml;he ribaga raster.
                 </li>
@@ -238,7 +237,7 @@
             <p>M&auml;&auml;rab, kas luuakse punktobjektiklass koos valimi v&auml;&auml;rtuste tabeliga v&otilde;i ainult tabel valimi v&auml;&auml;rtustega.
             </p>
             <ul>
-                <li> <b>Tabel</b> &ndash; genereerib valimiv&auml;&auml;rtustega tabeli. See on vaikimisi valik.
+                <li> <b>Tabel</b> &ndash; genereerib valimiv&auml;&auml;rtustega tabeli. See on vaikevalik.
                 </li>
                 <li> <b>Objektid</b> &ndash; genereerib punktobjektiklassi, mille tabelis on valimiv&auml;&auml;rtused. Kui sisendina kasutatavad asukohaobjektid on pol&uuml;jooned v&otilde;i pol&uuml;goonid, siis on v&auml;ljundi iga punkt sisendi asukohaobjektide geomeertiline tsenter.
                 </li>
@@ -250,6 +249,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

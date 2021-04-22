@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Extrahovať raster</h2><p/>
+        <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="N&aacute;stroj extrahovať raster pre port&aacute;l"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vie orezať raster podľa obrysu, a to buď podľa obdĺžnikovej plochy alebo podľa tvaru, ktor&yacute; interakt&iacute;vne nakresl&iacute;te na obrazovke. M&ocirc;žete orezať podľa rozsahu aktu&aacute;lneho pohľadu v mape alebo podľa &scaron;tudijnej oblasti definovanej polyg&oacute;nom.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vstupné údaje pre extrakciu</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; vrstva na orezanie.
+            </p>
+        </div>
+    </div>
+    <div id="clippingGeometry">
+        <div><h2>Špecifikovať geometriu orezania</h2></div>
+        <hr/>
+        <div>
+            <p>Vybrať typ rozsahu, ktor&yacute; použiť pri orez&aacute;van&iacute; geometrie vrstvy:
+                <ul>
+                    <li>Použiť aktu&aacute;lny rozsah--Aktu&aacute;lny rozsah mapy bude použit&yacute; na orezanie v&yacute;slednej vrstvy. Toto je prednastaven&aacute; voľba.
+                        
+
+                    </li>
+                    <li>Vybrať rozsah &scaron;t&uacute;die - Umožňuje v&aacute;m definovať rozsah rezu geometrie použit&iacute;m n&aacute;stroja na kreslenie.
+                        
+
+                    </li>
+                    <li>Vybrať vrstvu - Vyberte prvkov&uacute; vrstvu alebo vrstvu sn&iacute;mkov na definovanie rozsahu, alebo vyberte mnohouholn&iacute;kov&uacute; prvkov&uacute; vrstvu na definovanie orez&aacute;vania geometrie. Ak je vybrat&aacute; mnohouholn&iacute;kov&aacute; prvkov&aacute; vrstva, za&scaron;krt&aacute;vacie pol&iacute;čko je zobrazen&eacute;, aby sa určilo, či treba použiť vstupn&eacute; prvky pre geometriu orezu. V z&aacute;kladnom stave za&scaron;krt&aacute;vacie pol&iacute;čko nie je za&scaron;krtnut&eacute;. To znamen&aacute;, že vstupn&aacute; prvkov&aacute; vrstva je použit&aacute; na definovanie rozsahu. Ak je za&scaron;krtnut&eacute;, znamen&aacute; to, že vstupn&eacute; prvky s&uacute; použit&eacute; pre geometriu orezu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Špecifikovať geometriu orezania</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte, či chcete zachovať oblasť vn&uacute;tri alebo mimo geometrie v&aacute;&scaron;ho orezania.
+                <ul>
+                    <li>D&aacute;ta vn&uacute;tri geometrie - Sn&iacute;mky vo vn&uacute;tri rozsahu rezu bud&uacute; vybrat&eacute;. Toto je prednastaven&aacute; voľba.
+                        
+
+                    </li>
+                    <li>D&aacute;ta mimo geometrie - Sn&iacute;mky mimo rozsahu rezu bud&uacute; vybrat&eacute;.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

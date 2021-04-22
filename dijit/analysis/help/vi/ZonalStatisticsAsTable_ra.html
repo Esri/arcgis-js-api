@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Thống kê Vùng dưới dạng Bảng</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Biểu đồ Thống k&ecirc; V&ugrave;ng dưới dạng Bảng"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y tổng kết c&aacute;c gi&aacute; trị của một raster trong c&aacute;c v&ugrave;ng của một bộ dữ liệu kh&aacute;c v&agrave; b&aacute;o c&aacute;o kết quả v&agrave;o bảng.
+    </p>
+    <p>Một số ứng dụng mẫu bao gồm:
+    </p>
+    <p>
+        <ul>
+            <li>Cho một lớp ranh giới tiểu bang v&agrave; sự ph&acirc;n bố lượng mưa trung b&igrave;nh tr&ecirc;n lục địa Hoa Kỳ, h&atilde;y t&iacute;nh to&aacute;n sự ph&acirc;n bố của c&aacute;c hiện tượng mưa cực đoan của tiểu bang bằng c&aacute;ch sử dụng danh s&aacute;ch c&aacute;c gi&aacute; trị ph&acirc;n vị.
+                
+
+            </li>
+            <li>Cho một lớp c&aacute;c v&ugrave;ng sinh th&aacute;i chồng ch&eacute;o v&agrave; một lớp raster độ ẩm của đất, h&atilde;y t&iacute;nh to&aacute;n tất cả c&aacute;c số liệu thống k&ecirc; được hỗ trợ trong mỗi v&ugrave;ng để li&ecirc;n hệ c&aacute;c v&ugrave;ng với độ ẩm sẵn c&oacute; của đất.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy trong lớp đầu v&agrave;o v&agrave; lớp cần tổng kết trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả c&aacute;c tổng hợp trong cả lớp đầu v&agrave;o v&agrave; lớp cần tổng hợp sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng ở ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Chọn raster khu vực hoặc đối tượng</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp x&aacute;c định ranh giới của v&ugrave;ng hoặc khu vực sẽ được tổng kết.
+            </p>
+            <p>Lớp c&oacute; thể l&agrave; dữ liệu đối tượng hoặc raster số nguy&ecirc;n. Đối với raster, c&aacute;c v&ugrave;ng được x&aacute;c định theo tất cả vị tr&iacute; trong đầu v&agrave;o c&oacute; c&ugrave;ng gi&aacute; trị &ocirc;. Đối với đối tượng, c&aacute;c v&ugrave;ng c&oacute; thể chồng ch&eacute;o nhau. C&aacute;c khu vực kh&ocirc;ng cần liền kề.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Trường khu vực</h2></div>
+        <hr/>
+        <div>
+            <p>Đ&acirc;y l&agrave; thuộc t&iacute;nh của lớp sẽ được sử dụng để x&aacute;c định ranh giới của c&aacute;c v&ugrave;ng (khu vực).
+            </p>
+            <p>V&iacute; dụ: giả sử lớp đầu v&agrave;o đầu ti&ecirc;n x&aacute;c định ranh giới đơn vị quản l&yacute; với c&aacute;c thuộc t&iacute;nh x&aacute;c định khu vực, quận v&agrave; ID thửa đất của mỗi đơn vị. Bạn cũng c&oacute; một lớp raster x&aacute;c định chỉ mục đa dạng sinh học cho mỗi vị tr&iacute;. Với trường đ&atilde; chọn, bạn c&oacute; thể quyết định t&iacute;nh to&aacute;n đa dạng sinh học trung b&igrave;nh ở cấp địa phương, quận hoặc khu vực.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Chọn raster giá trị</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c &ocirc; raster trong lớp n&agrave;y sẽ được tổng kết theo khu vực (v&ugrave;ng) c&oacute; chứa ch&uacute;ng.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Bỏ qua NoData trong các tính toán (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị NoData c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng.
+                <ul>
+                    <li>Được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ bao gồm c&aacute;c &ocirc; c&oacute; gi&aacute; trị trong raster gi&aacute; trị đầu v&agrave;o thuộc bất kỳ v&ugrave;ng cụ thể n&agrave;o để x&aacute;c định gi&aacute; trị đầu ra cho v&ugrave;ng đ&oacute;. C&aacute;c &ocirc; NoData trong raster gi&aacute; trị sẽ bị bỏ qua khi t&iacute;nh to&aacute;n số liệu. Đ&acirc;y l&agrave; mặc định.
+                    </li>
+                    <li>Kh&ocirc;ng được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ cho kết quả NoData nếu c&oacute; bất kỳ gi&aacute; trị NoData n&agrave;o cho c&aacute;c &ocirc; của raster gi&aacute; trị thuộc một v&ugrave;ng cụ thể.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Loại số liệu thống kê (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định kiểu số liệu cần t&iacute;nh to&aacute;n.
+            </p>
+            <p>Đầu v&agrave;o c&oacute; thể l&agrave; một trong số c&aacute;c kiểu số liệu sau đ&acirc;y:  <b>Tất cả</b>, <b>Trung b&igrave;nh</b>, <b>Đa số</b>, <b>Tối đa</b>, <b>B&igrave;nh qu&acirc;n</b>, <b>Tối thiểu</b>, <b>Thiểu số</b>, <b>Ph&acirc;n vị</b>, <b>Phạm vi</b>, <b>Độ lệch chuẩn</b>, <b>Tổng</b>, <b>H&agrave;ng loạt</b>, <b>Tối thiểu v&agrave; tối đa</b>, <b>Trung b&igrave;nh v&agrave; Độ lệch chuẩn</b> hoặc <b>Tối thiểu, Tối đa v&agrave; Trung b&igrave;nh</b>. Mặc định l&agrave; <b>Tất cả</b>.
+            </p>
+            <p>Nếu raster gi&aacute; trị đầu v&agrave;o l&agrave; số nguy&ecirc;n, theo mặc định, tất cả số liệu thống k&ecirc; sẽ được t&iacute;nh to&aacute;n. Nếu raster gi&aacute; trị thuộc loại điểm nổi, theo mặc định, tất cả c&aacute;c gi&aacute; trị thống k&ecirc; ngoại trừ  <b>B&igrave;nh qu&acirc;n</b> v&agrave; <b>Ph&acirc;n vị</b> sẽ được t&iacute;nh to&aacute;n. 
+            </p>
+            <p>Nếu raster gi&aacute; trị đầu v&agrave;o thuộc loại điểm nổi, c&aacute;c ph&eacute;p t&iacute;nh to&aacute;n trong v&ugrave;ng cho  <b>Đa số</b>, <b>Thiểu số</b> v&agrave; <b>H&agrave;ng loại</b> kh&ocirc;ng thể được thực hiện.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Giá trị phân vị (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Ph&acirc;n vị để t&iacute;nh to&aacute;n. Một gi&aacute; trị đơn lẻ hoặc một danh s&aacute;ch c&aacute;c gi&aacute; trị c&oacute; thể được chỉ định. Mặc định l&agrave; 90, biểu thị cho ph&acirc;n vị thứ 90.
+            </p>
+            <p>Gi&aacute; trị c&oacute; thể nằm trong khoảng từ 0 đến 100. Về cơ bản, kết quả của việc chỉ định ph&acirc;n vị thứ 0 tương đương với số liệu tối thiểu v&agrave; ph&acirc;n vị thứ 100 tương đương với số tối đa. Gi&aacute; trị l&agrave; 50 về cơ bản sẽ tạo ra kết quả tương tự như số liệu trung b&igrave;nh.
+            </p>
+            <p>T&ugrave;y chọn n&agrave;y chỉ được hỗ trợ nếu tham số  <b>Loại số liệu thống k&ecirc;</b> được đặt th&agrave;nh <b>Ph&acirc;n vị</b> hoặc <b>Tất cả</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Loại nội suy phân vị (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>X&aacute;c định phương ph&aacute;p nội suy ph&acirc;n vị sẽ được d&ugrave;ng khi số lượng gi&aacute; trị từ raster đầu v&agrave;o được t&iacute;nh l&agrave; số chẵn.
+            </p> 
+            <p>Nếu raster gi&aacute; trị đầu v&agrave;o thuộc loại pixel số nguy&ecirc;n th&igrave; phương ph&aacute;p  <b>Gần nhất</b> được sử dụng. Nếu raster gi&aacute; trị đầu v&agrave;o thuộc loại pixel điểm nổi th&igrave; phương ph&aacute;p <b>Tuyến t&iacute;nh</b> được sử dụng. Đ&acirc;y l&agrave; mặc định.
+            </p>
+            <p>Đối với phương ph&aacute;p  <b>Gần nhất</b>, sử dụng gi&aacute; trị c&oacute; sẵn gần nhất với ph&acirc;n vị mong muốn. Đối với phương ph&aacute;p <b>Tuyến t&iacute;nh</b>, sử dụng gi&aacute; trị trung b&igrave;nh trọng số của hai gi&aacute; trị xung quanh ph&acirc;n vị mong muốn.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Xử lý dưới dạng đa chiều (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định c&aacute;ch xử l&yacute; raster đầu v&agrave;o nếu ch&uacute;ng đa chiều.
+            </p>
+            <ul>
+                <li>Đ&atilde; chọn&mdash;Số liệu sẽ được t&iacute;nh to&aacute;n từ l&aacute;t hiện tại của bộ dữ liệu đa chiều đầu v&agrave;o. Đ&acirc;y l&agrave; mặc định.
+                    
+
+                </li>
+                <li>Kh&ocirc;ng được chọn&mdash;Số liệu sẽ được t&iacute;nh to&aacute;n cho tất cả c&aacute;c chiều của bộ dữ liệu đa chiều đầu v&agrave;o.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Tên bảng kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

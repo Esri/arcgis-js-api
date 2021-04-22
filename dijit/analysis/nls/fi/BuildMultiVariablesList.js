@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Valitse lähtökarttataso",addAVar:"Lisää muuttuja",distToNearest:"Etäisyys lähimpään",attrOfInterest:"Lähimmän ominaisuustiedot",summaryNearby:"Lähimmän yhteenveto",summaryIntersecting:"Leikkaavan yhteenveto",distToNearestLabel:"Etäisyys lohkon keskipisteestä lähimpään kohteeseen lähtöaineiston karttatasossa",attrOfInterestLabel:"Määritetyn kentän arvo lähimmän lähtöaineiston karttatason lähimmästä kohteesta",summaryNearbyLabel:"Kaikille niille kohteille lasketut tilastotiedot, jotka sijaitsevat määritetyllä etäisyydellä lohkon keskipisteestä",summaryIntersectingLabel:"Kaikille niille kohteille lasketut tilastotiedot, jotka leikkaavat lohkon",maxDistancefromCtr:"Maksimietäisyys lohkon keskipisteestä",fieldToIncude:"Sisällytettävät kentät",statstoCalculate:"Laskettavat tilastotiedot",summFeatuesWithin:"Koosta kohteet sijainnissa",layerChangeWarnMsg:"Tähän lähtöaineiston karttatasoon lisätyt muuttujat poistetaan, jos lähtöaineiston karttataso muuttuu",validationErrorMsg:"Korjaa validointivirheet ennen uuden muuttujan lisäämistä",atleastOneVarMsg:"Lisää uusin muuttuja tähän valittuun karttatasoon"});

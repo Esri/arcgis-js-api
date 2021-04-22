@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Kauguse akumulatsioon</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="T&ouml;&ouml;riista Kauguse akumulatsioon illustratsioon"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist arvutab iga lahtri akumuleerunud kauguse allikateni, v&otilde;imaldades kasutada sirgjoonelist kaugust, kulukaugust, tegelikku pinna kaugust, samuti vertikaalseid ja horisontaalseid kulutegureid.
+    </p>
+    <p>N&auml;idisrakendused v&otilde;imaldavad muuhulgas allj&auml;rgnevatele k&uuml;simustele vastamist:
+        <ul>
+            <li>Milline on vahemaa l&auml;hima linnani?
+                
+
+            </li>
+            <li>Milline on kuluvahemaa l&auml;hima maanteeni?
+                
+
+            </li>
+            <li>Milline on kaugus &uuml;mber t&otilde;kete l&auml;hima veekoguni?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui need on sel hetkel n&auml;htavast kaardiulatusest v&auml;ljas.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Valige lähteraster või -objektid</h2></div>
+        <hr/>
+        <div>
+            <p>Rastri- v&otilde;i objektikiht, mis m&auml;&auml;ratleb l&auml;htepunktid, milleni vahemaa arvutatakse.
+            </p>
+            <p>Kui sisend on raster, peab see sisaldama l&auml;htepunktide kohta kehtivate v&auml;&auml;rtustega lahtreid (null on kehtiv v&auml;&auml;rtus) ja &uuml;lej&auml;&auml;nud lahtritele tuleb m&auml;&auml;rata v&auml;&auml;rtus NoData.
+            </p>
+            <p>Kui sisendiks on objektikiht, v&otilde;ib see olla punkt, joon v&otilde;i hulknurk.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Tõkkerastri või objektide valimine (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>T&otilde;kkeid m&auml;&auml;ratlev andmekogum.
+            </p>
+            <p>Rastrikihi puhul v&otilde;ib sisendi t&uuml;&uuml;biks olla t&auml;isarv v&otilde;i ujukomaarv. K&otilde;iki v&auml;&auml;rtusega (sealhulgas nulliga) lahtreid k&auml;sitletakse t&otilde;kkena. NoData-lahtreid ei k&auml;sitleta t&otilde;kkena.
+            </p>
+            <p>Objektiteenuse puhul v&otilde;ib sisend olla punkt, joon v&otilde;i hulknurk.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Valige pinnaraster (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, mis m&auml;&auml;ratleb k&otilde;rguse v&auml;&auml;rtused igas lahtri asukohas.
+            </p>
+            <p>V&auml;&auml;rtusi kasutatakse tegeliku pinna vahemaa arvutamiseks lahtrite vahel l&auml;bimisel.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Valige kuluraster (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster m&auml;&auml;rab takistuse v&otilde;i kulu planimeetrilisel liikumisel l&auml;bi iga lahtri.
+            </p>
+            <p>Piksli iga asukoha v&auml;&auml;rtus v&auml;ljendab vahemaa &uuml;hiku maksumuse liikumisel l&auml;bi piksli. Iga piksli asukoha v&auml;&auml;rtus korrutatakse piksli resolutsiooniga, mis kompenseerib ka diagonaalliikumist, et saada l&auml;bi piksli liikumise kogukulu.
+            </p>
+            <p>Kulurastri v&auml;&auml;rtus v&otilde;ib t&auml;isarv v&otilde;i ujuva v&auml;&auml;rtusega arv, kuid ei tohi olla negatiivne v&otilde;i null (kulu ei saa olla negatiivne v&otilde;i null).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Valige vertikaalne raster (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, mis m&auml;&auml;ratleb iga lahtri asukoha z-v&auml;&auml;rtused.
+            </p>
+            <p>V&auml;&auml;rtusi kasutatakse kalde arvutamiseks, mida kasutatakse &uuml;hest lahtrist teise liikumisel tekkiva vertikaalse teguri tuvastamiseks.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikaalne tegur (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikaalne tegur</b> m&auml;&auml;ratleb seose vertikaalse kuluteguri (VF) ja vertikaalse suhtelise liikumisnurga (VRMA) vahel.
+            </p>
+            <p>Mitme muutjatega teguri hulgast saab valida m&auml;&auml;ratletud vertikaalse teguri graafiku. Graafikuid kasutatakse naaberlahtrisse kolimise kogumaksumuse arvutamisel kasutatava vertikaalse teguri tuvastamiseks.
+            </p>
+            <p>Allj&auml;rgnevates kirjeldustes m&auml;&auml;ratleb VF vertikaalsed raskused, mis tekivad &uuml;hest lahtrist teise liikumisel, ja VRMA muutja n&auml;itab lahtrite  <b>Allikast</b> ja <b>Allikasse</b> vahelist kaldenurka.
+                <ul>
+                    <li> <b>Binaarne</b> &mdash; kui VRMA on suurem kui madala l&otilde;ikenurga nurk ja v&auml;iksem kui suure l&otilde;ikenurga nurk, seatakse VF nullteguriga seotud v&auml;&auml;rtusele; vastasel juhul on see l&otilde;pmatus.
+                    </li>
+                    <li> <b>Lineaarne</b> &mdash; VF on VRMA lineaarne funktsioon.
+                    </li>
+                    <li> <b>P&ouml;&ouml;rdlineaarne</b> &mdash; VF on VRMA p&ouml;&ouml;rdlineaarne funktsioon.
+                    </li>
+                    <li> <b>S&uuml;mmeetriline lineaarne</b> &mdash; VF on VRMA lineaarne funktsioon vastavalt kas VRMA negatiivses v&otilde;i positiivses osas ning kaks lineaarset funktsiooni on VF (y) telje suhtes s&uuml;mmeetrilised.
+                    </li>
+                    <li> <b>S&uuml;mmeetriline p&ouml;&ouml;rdlineaarne</b> &mdash; VF on VRMA p&ouml;&ouml;rdlineaarne funktsioon vastavalt kas VRMA negatiivses v&otilde;i positiivses osas ning kaks lineaarset funktsiooni on VF (y) telje suhtes s&uuml;mmeetrilised.
+                    </li>
+                    <li> <b>Cos</b> &mdash; VF on VRMA koosinusel p&otilde;hinev funktsioon.
+                    </li>
+                    <li> <b>Sec</b> &mdash; VF on VRMA l&otilde;ikajap&otilde;hine funktsioon.
+                    </li>
+                    <li> <b>Cos-Sec</b> &mdash; VF on VRMA koosinusel p&otilde;hinev funktsioon, kui VRMA on negatiivne, ja VRMA l&otilde;ikajap&otilde;hine funktsioon, kui VRMA ei ole negatiivne.
+                    </li>
+                    <li> <b>Sec-Cos</b> &mdash; VF on VRMA l&otilde;ikajap&otilde;hine funktsioon, kui VRMA on negatiivne, ja VRMA koosinusel p&otilde;hinev funktsioon, kui VRMA ei ole negatiivne.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vertikaalsete parameetrite muutjad on j&auml;rgmised:
+                <ul>
+                    <li> <b>Nulltegur</b> &mdash; vertikaalne tegur, mida kasutatakse juhul, kui VRMA on null. See tegur paigutab m&auml;&auml;ratud funktsiooni y-ristl&otilde;ike. Definitsiooni j&auml;rgi ei ole nulltegur rakendatav &uuml;hegi trigonomeetrilise vertikaalse funktsiooni (Cos, Sec, Cos-Sec v&otilde;i Sec-Cos) korral. Y-l&otilde;ikepunkt on m&auml;&auml;ratletud nende funktsioonidega.
+                    </li>
+                    <li> <b>Madal l&otilde;ikenurk</b> &mdash; VRMA nurk, millest allpool seatakse VF l&otilde;pmatuseni.
+                    </li>
+                    <li> <b>K&otilde;rge l&otilde;ikenurk</b> &mdash; VRMA nurk, millest &uuml;lalpool seatakse VF l&otilde;pmatuseni.
+                    </li>
+                    <li> <b>Kalle</b> &mdash; sirgjoone kalle, mida kasutatakse koos parameetritega <b>Lineaarne</b> ja <b>P&ouml;&ouml;rdlineaarne</b>. Kallak on t&auml;psustatud kui murdosa t&otilde;usust (n&auml;iteks 45-protsendiline kalle on 1/45, mis sisestatakse kui 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Valige horisontaalne raster (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, mis m&auml;&auml;ratleb horisontaalse suuna igas lahtris.
+            </p>
+            <p>Rastril olevad v&auml;&auml;rtused peavad olema t&auml;isarvud vahemikus 0 kuni 360, kusjuures 0 kraadi on p&otilde;hjas v&otilde;i ekraani &uuml;laosas ja suureneb p&auml;rip&auml;eva. Tasapinnalistele aladele tuleks anda v&auml;&auml;rtus -1. Igas asukohas olevaid v&auml;&auml;rtusi kasutatakse koos  <b>horisontaalse teguriga</b>, et m&auml;&auml;rata kindlaks lahtrist naabrite juurde kolimisel tekkivad horisontaalsed kulud.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horisontaalne tegur (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horisontaalne tegur</b> m&auml;&auml;ratleb horisontaalse kuluteguri ja horisontaalse suhtelise liikumisnurga vahelise suhte.
+            </p>
+            <p>Mitme muutjatega teguri hulgast saab valida selle, mis tuvastab m&auml;&auml;ratletud horisontaalse teguri graafiku. Graafikuid kasutatakse naaberlahtrisse kolimise kogumaksumuse arvutamisel kasutatava horisontaalse teguri tuvastamiseks.
+            </p>
+            <p>Allj&auml;rgnevates kirjeldustes m&auml;&auml;ratleb horisontaalne tegur (HF) horisontaalsed raskused, mis tekivad &uuml;hest lahtrist teise liikumisel, ja horisontaalne suhteline liikumisnurk (HRMA) n&auml;itab lahtrist l&auml;htuva horisontaalse suuna ja liikumissuuna vahelist nurka.
+            </p>
+            <p>Nende HF-ide m&auml;&auml;ratlused ja parameetrid on j&auml;rgmised:
+                <ul>
+                    <li> <b>Binaarne</b> &mdash; kui HRMA on v&auml;iksem kui l&otilde;ikenurk, seatakse HF v&auml;&auml;rtusele, mis on seotud nullteguriga; vastasel juhul on see l&otilde;pmatus.
+                        
+
+                    </li>
+                    <li> <b>Edasi</b> &mdash; lubatud on ainult edasiliikumine. HRMA peab olema suurem kui 0 v&otilde;i sellega v&otilde;rdne ja alla 90 (0 &lt;= HRMA &lt; 90). Kui HRMA on suurem kui 0 ja v&auml;iksem kui 45 kraadi, seatakse lahtri HF v&auml;&auml;rtuseks, mis on seotud nullteguriga. Kui HRMA on suurem kui 45 kraadi v&otilde;i sellega v&otilde;rdne, kasutatakse k&uuml;lgv&auml;&auml;rtuse teisendaja v&auml;&auml;rtust. Mis tahes HRMA v&auml;&auml;rtuse HF, mis on v&otilde;rdne v&otilde;i suurem kui 90 kraadi, seatakse l&otilde;pmatuseni.
+                        
+
+                    </li>
+                    <li> <b>Lineaarne</b> &mdash; HF on HRMA lineaarne funktsioon.
+                        
+
+                    </li>
+                    <li> <b>P&ouml;&ouml;rdlineaarne</b> &mdash; HF on HRMA p&ouml;&ouml;rdlineaarne funktsioon.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Horisontaalsete m&auml;rks&otilde;nade muutjad on j&auml;rgmised:
+                <ul>
+                    <li> <b>Nulltegur</b> &mdash; horisontaalne tegur, mida kasutatakse juhul, kui HRMA on 0. See tegur paigutab y-l&otilde;ikepunkti mis tahes horisontaalse teguri funktsiooni jaoks.
+                        
+
+                    </li>
+                    <li> <b>L&otilde;ikenurk</b> &mdash; HRMA nurk, mille &uuml;letamisel HF seatakse l&otilde;pmatuseni.
+                        
+
+                    </li>
+                    <li> <b>Kalle</b> &mdash; sirgjoone kalle, mida kasutatakse koos horisontaalse teguri m&auml;rks&otilde;nadega <b>Lineaarne</b> ja <b>P&ouml;&ouml;rdlineaarne</b>. Kallak on t&auml;psustatud kui murdosa t&otilde;usust (n&auml;iteks 45-protsendiline kalle on 1/45, mis sisestatakse kui 0,02222).
+                        
+
+                    </li>
+                    <li> <b>K&uuml;lje v&auml;&auml;rtus</b> &mdash; HF, kui HRMA on suurem v&otilde;i v&otilde;rdne 45 kraadiga ja v&auml;iksem kui 90 kraadi, kui on m&auml;&auml;ratud horisontaalse teguri m&auml;rks&otilde;na <b>Edasi</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Algne akumulatsioon</h2></div>
+        <hr/>
+        <div>
+            <p>Algne kumulatiivne kulu kuluarvutuse alustamiseks.
+            </p>
+            <p>See v&otilde;imaldab m&auml;&auml;rata allikaga seotud p&uuml;sikulu. Selle asemel, et alustada nullmaksumusega, algab kulualgoritm parameetriga  <b>Algne akumulatsioon</b> m&auml;&auml;ratud v&auml;&auml;rtusega.
+            </p>
+            <p>V&auml;&auml;rtused peavad v&otilde;rduma nulliga v&otilde;i olema sellest suuremad. Vaikev&auml;&auml;rtus on 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimaalne akumulatsioon</h2></div>
+        <hr/>
+        <div>
+            <p>Reisija maksimaalne kumulatiivne kulu allika kohta.
+            </p>
+            <p>Kuluarvutusi j&auml;tkatakse iga allika puhul kuni m&auml;&auml;ratud akumulatsiooni saavutamiseni.
+            </p>
+            <p>V&auml;&auml;rtused peavad olema suuremad kui null. Vaikimisi on akumulatsioon v&auml;ljundrastri servani.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kulu kordaja</h2></div>
+        <hr/>
+        <div>
+            <p>Kulude v&auml;&auml;rtustele rakendatav kordaja.
+            </p>
+            <p>See v&otilde;imaldab juhtida liikumisviisi v&otilde;i suurusj&auml;rku allika juures. Mida suurem on kordaja, seda suurem on iga lahtri l&auml;bimise kulu.
+            </p>
+            <p>V&auml;&auml;rtused peavad olema suuremad kui null. Vaikev&auml;&auml;rtus on 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Sõitmise suund</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ratleb reisija suuna horisontaalse ja vertikaalse teguri rakendamisel.
+            </p>
+            <p> <b>Allikast</b> &mdash; horisontaalne tegur ja vertikaalne tegur rakendatakse sisendallikast alustamisel ja mittel&auml;htelahtritesse liikumisel. See on vaikevalik.
+            </p>
+            <p> <b>Allikasse</b> &mdash; horisontaalne tegur ja vertikaalne tegur rakendatakse igast mittel&auml;htelahtrist alustamisel ja tagasi sisendallikasse liikumisel.
+            </p>
+            <p>M&auml;&auml;rake kas m&auml;rks&otilde;na  <b>Allikast</b> v&otilde;i <b>Allikasse</b>, mis rakendatakse k&otilde;igile allikatele, v&otilde;i m&auml;&auml;rake l&auml;hteandmetes v&auml;li, mis sisaldab m&auml;rks&otilde;nu iga allika liikumissuuna tuvastamiseks. See v&auml;li peab sisaldama stringi <code>FROM_SOURCE</code> v&otilde;i <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Kauguse meetod (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas kaugus arvutatakse planaarse (lapiku maa) v&otilde;i geodeetilise (ellipsoidi) meetodiga.
+            </p>
+            <ul>
+                <li> <b>Planaarne</b> &ndash; arvutus viiakse l&auml;bi projitseeritud tasapinnal, kasutades Cartesiuse 2D-koordinaatide s&uuml;steemi. See on vaikimisi valitud meetod.
+                    
+
+                </li>
+                <li> <b>Geodeetiline</b> -- kaugusearvutus toimub ellipsoidil. Hoolimata sisendi v&otilde;i v&auml;ljundi projitseerimisest tulemused ei muutu.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Kauguse akumulatsiooni tulemrastri nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Kauguse akumulatsiooni raster sisaldab iga piksli kumulatiivset kaugust v&auml;hima kuluga allikast v&otilde;i v&auml;hima kuluga allikani.
+            </p>
+            <p>V&auml;ljundraster on ujukomaarvu t&uuml;&uuml;pi.
+            </p>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Tagasisuuna tulemrastri nimi (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Tagasisuuna raster sisaldab arvutatud suunda kraadides. Suund tuvastab j&auml;rgmise lahtri l&uuml;himal tagasiteel l&auml;hima allika juurde, v&auml;ltides t&otilde;kkeid.
+            </p>
+            <p>V&auml;&auml;rtuste vahemik on 0&ndash;360 kraadi (0 on reserveeritud l&auml;htepikslite jaoks). Idasuuna v&auml;&auml;rtus (suund paremale) on 90 ning v&auml;&auml;rtused suurenevad p&auml;rip&auml;eva (l&otilde;una on 180, l&auml;&auml;s on 270 ja p&otilde;hi on 360).
+            </p>
+            <p>V&auml;ljundraster on ujukomaarvu t&uuml;&uuml;pi.
+            </p>
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Allika suuna tulemrastri nimi (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Allika suuna raster tuvastab v&auml;hima akumuleerunud kuluga l&auml;htelahtri suuna asimuudina kraadides.
+            </p>
+            <p>V&auml;&auml;rtuste vahemik on 0&ndash;360 kraadi (0 on reserveeritud l&auml;htepikslite jaoks). Idasuuna v&auml;&auml;rtus (suund paremale) on 90 ning v&auml;&auml;rtused suurenevad p&auml;rip&auml;eva (l&otilde;una on 180, l&auml;&auml;s on 270 ja p&otilde;hi on 360).
+            </p>
+            <p>V&auml;ljundraster on ujukomaarvu t&uuml;&uuml;pi.
+            </p>
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Allika asukoha tulemrastri nimi (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Allika asukoha raster on mitmeribaline v&auml;ljund. Esimene riba sisaldab rea indeksit ja teine riba sisaldab veeru indeksit. Need indeksid tuvastavad asukoha v&auml;ikseima akumuleeritud kulukaugusega l&auml;htelahtril.
+            </p>
+            <p>Jaotises  <b>Minu sisu</b>loodava kihi nimi. Peate panema sellise nime, mida ei ole veel olemas valikus <b>Minu sisu</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

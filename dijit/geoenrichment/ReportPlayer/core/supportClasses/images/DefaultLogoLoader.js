@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["require","esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/utils/ColorUtil"],(function(o,r,e){return{_identifyDefaultLogoBackground:function(o){return!o||e.isTransparent(o.backgroundColor)?"transparent":e.isLightColor(o.backgroundColor)?"light":"dark"},_loadLogo:function(e){var t=new r;return o(["./"+e],(function(o){t.resolve(o)})),t.promise},getDefaultLogo:function(o){switch(this._identifyDefaultLogoBackground(o)){case"light":return this._loadLogo("DefaultLogoGraphicReportDark");case"dark":return this._loadLogo("DefaultLogoGraphicReportLight");default:return this._loadLogo("DefaultLogoGraphicReportGeneric")}}}}));

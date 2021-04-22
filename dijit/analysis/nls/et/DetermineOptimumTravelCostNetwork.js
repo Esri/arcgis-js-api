@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige rasterkiht või vektorkiht, et määratleda reisiteekond vahemikus",inputCostRasterLabel:"Valige reisikulu rasterkiht",outputOptimumNetworkName:"Optimaalsete teede murdjoone tulemkihi nimi",outputNeighborNetworkName:"Naaberteede murdjoone tulemkihi nimi (valikuline)",outputLayerName:"Määratle kihi ${layername} optimaalne reisikulu",itemDescription:"Objektikiht loodi kihi ${layerName} optimaalse reisikulu võrgu määratlemise kaudu. ",itemTags:"Analüüsi tulemus, Määratle optimaalse reisikulu võrk, ${layername} ${fieldname}",itemSnippet:"Objektikiht loodi optimaalse reisikulu võrgu määratlemise kaudu."});

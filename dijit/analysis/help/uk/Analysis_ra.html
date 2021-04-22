@@ -41,47 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Аналіз растрів дозволяє виконувати аналіз великих наборів растрових даних за допомогою  ArcGIS Image Server. Це дозволяє аналізувати більші обсяги даних з більшою швидкістю шляхом оптимального використання потужності сервера. Групи інструментів, доступні наразі через веб-інтерфейс користувача  Portal for ArcGIS  <b>Підсумування даних</b>, <b>Аналіз закономірностей</b>, <b>Використання наближеності</b>, <b>Аналізувати зображення</b>, <b>Аналізувати ландшафт</b>, <b>Керування даними</b>, <b>Глибоке навчання</b>, і <b>Багатовимірний аналіз</b>.
+        <p>Аналіз растрів дозволяє виконувати аналіз великих наборів растрових даних, використовуючи  ArcGIS Image Server. Це дозволяє аналізувати більші обсяги даних з більшою швидкістю шляхом оптимального використання потужності сервера.Наборами інструментів, доступними на поточний момент через веб-середовище користувача Portal for ArcGIS, є  <b>Підсумування даних</b>, <b>Аналіз закономірностей</b>, <b>Використання наближеності</b>, <b>Аналіз зображень</b>, <b>Аналіз ландшафту</b>, <b>Керування даними</b>, <b>Глибоке навчання</b> та <b>Багатовимірний аналіз</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
-        <h2>Summarize Data</h2>
+        <h2>Підсумувати дані</h2>
         <hr/>
-        <p>This toolset contains a tool for calculating some statistics for a raster layer within area boundaries that you define.
-
+        <p>Ці інструменти використовуються для розрахунку статистики для растрового шару в межах визначених вами кордонів області (зонах).
             <ul>
-                <li> <b>Summarize Raster Within</b> calculates statistics for raster cells that fall within defined area boundaries.
+                <li> <b>Підсумувати растр в межах</b> обчислює статистику для растрових осередків, які укладаються у визначені границі області.
+                </li>
+                <li> <b>Зональна статистика як таблиця</b> підсумовує значення растру в межах зон іншого набору даних та звітує результати в таблиці.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Summarize Raster Within</h2></td>
+                    <td><h2>Підсумувати растр в межах</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Summarize Raster Within tool">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Інструмент &laquo;Підсумувати растр в межах&raquo;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates some summary statistics for raster cells within defined areas.
+            <p>Цей інструмент підсумовує значення растру в межах зон іншого набору даних.
             </p>
-            <p>Some example applications are the following: 
-
-                <ul>
-                    <li>Given a layer of watershed areas and an elevation raster layer, calculate the range of elevations within each watershed in order to determine which ones will have the highest energy streamflow.
-                        
-
-                    </li>
-                    <li>Given a layer of administrative management units and a raster layer of land-use categories, calculate the variety of land-use values within each management area to identify which ones require the most work to determine a management plan.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Зональна статистика як таблиця</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Діаграма &quot;Зональна статистика як таблиця&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент підсумовує значення растру в межах зон іншого набору даних та звітує результати в таблиці.
             </p>
             <br/>
         </div>
@@ -107,9 +109,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Calculate Density</h2></td>
+                    <td><h2>Розрахувати щільність</h2></td>
                     <td>
-                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Calculate Density tool">
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Інструмент &laquo;Розрахунок щільності&raquo;">
                     </td>
                 </tr></tbody>
             </table>
@@ -133,27 +135,46 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
-        <h2>Use Proximity</h2>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>Використовувати наближеність</h2>
         <hr/>
-        <p>These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
-
+        <p>Ці інструменти допомагають відповісти на одне з найбільш поширених питань, пов&rsquo;язаних з просторовим аналізом: &quot;Що знаходиться поруч з чим?&quot; і &quot;Яким є найоптимальніший шлях?&quot;
             <ul>
-                <li> <b>Calculate Distance</b> calculates the Euclidean distance, direction and allocation from a single or set of sources.
+                <li> <b>Розрахувати відстань</b> розраховує Евклідову відстань, напрямок і розміщення на основі одного джерела або набору джерел.
                     
 
                 </li>
-                <li> <b>Determine Optimum Travel Cost Network</b> calculates the optimum cost network from a set of input regions.
+                <li> <b>Визначити мережу з оптимальної вартістю подорожі</b> обчислює мережу з оптимальною вартістю переміщення на основі набору вхідних регіонів.
                     
 
                 </li>
-                <li> <b>Determine Travel Cost Path As Polyline</b> calculates the least cost polyline path between sources and known destinations.
+                <li> <b>Визначити шлях вартості подорожі як полілінію</b> розраховує шлях полілінії з найменшою вартістю між відомими місцями призначення та джерелами.
+                    
+
+                </li>
+                <li> <b>Сумарна відстань</b> розраховує сумарну відстань для кожного осередку до джерел, враховуючи відстань по прямій, вартісну відстань, істинну відстань по поверхні, а також вертикальні та горизонтальні фактори вартості.
+                    
+
+                </li>
+                <li> <b>Розподіл відстані</b> розраховує розподіл відстані для кожного осередку до наданих джерел на основі відстані по прямій, вартісної відстані, істинної відстані по поверхні, а також вертикальних і горизонтальних факторів вартості.
+                    
+
+                </li>
+                <li> <b>Оптимальний шлях як лінія</b> розраховує оптимальний шлях від місць призначення до джерел як лінію.
+                    
+
+                </li>
+                <li> <b>Оптимальний шлях як растр</b> розраховує оптимальний шлях від місць призначення до джерел як лінію.
+                    
+
+                </li>
+                <li> <b>Оптимальні регіональні зв'язки</b> розраховує оптимальну мережу зв'язків між двома або більше вхідними регіонами.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -164,11 +185,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the Euclidean distance, direction and allocation from a single or set of sources. You can use this tool to determine how far a location is to a road, a building or a park. You can also determine which direction you must travel from a location to return back to a source in the most direct way. You can see for every location in your study area which is the closest source.
+            <p>Цей інструмент обчислює Евклідову відстань, напрямок і розміщення на основі одного чи кількох джерел.
             </p>
             <br/>
         </div>
-        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -179,11 +200,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the optimum cost network from a set of input regions.
+            <p>Цей інструмент обчислює мережу з оптимальною вартістю переміщення на основі набору вхідних регіонів.
             </p>
             <br/>
         </div>
-        <div id="DetermineTravelCostPathAsPolylineTool" class="smallsize">
+        <div id="DetermineTravelCostPathAsPolylineTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -194,19 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the least cost polyline path between sources and known destinations.
+            <p>Цей інструмент розраховує шлях полілінії з найменшою вартістю між місцями призначення та джерелами.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Сумарна відстань</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Ілюстрація інструменту &quot;Сумарна відстань&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент розраховує сумарну відстань для кожного осередку до джерел, враховуючи відстань по прямій, вартісну відстань, істинну відстань по поверхні, а також вертикальні та горизонтальні фактори.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Розподіл відстані</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Ілюстрація інструменту &quot;Розподіл відстані&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент розраховує розподіл відстані для кожного осередку до наданих джерел на основі відстані по прямій, вартісної відстані, істинної відстані по поверхні, а також вертикальних і горизонтальних факторів.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Оптимальний шлях як лінія</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Ілюстрація інструменту &quot;Оптимальний шлях як лінія&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент розраховує оптимальний шлях від місць призначення до джерел як лінію.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Оптимальний шлях як растр</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Ілюстрація інструменту &quot;Оптимальний шлях як растр&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент розраховує оптимальний шлях від місць призначення до джерел як растр.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Оптимальні регіональні зв'язки</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Ілюстрація інструменту &quot;Оптимальні регіональні зв'язки&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Цей інструмент розраховує оптимальну мережу зв'язків між двома або більше вхідними регіонами.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
-        <h2>Analyze Image</h2>
+        <h2>Аналізувати зображення</h2>
         <hr/>
-        <p>The following tool helps you analyze images.
-
+        <p>Наступний інструмент у категорії інструментів  <b>Аналіз зображень</b> допомагає аналізувати зображення:
             <ul>
-                <li> <b>Apply Raster Function Template</b> processes your imagery with the chain of functions, as specified by the raster function template.
-                </li>
-                <li> <b>Monitor Vegetation</b> detects vegetation within an image, based on arithmetic operations on the bands.
+                <li> <b>Моніторинг рослинності</b> виявляє відносний рослинний покрив на зображенні на основі арифметичних операцій над каналами. Доступні декілька індексів рослинності для аналізу зображень.
                     
 
                 </li>
@@ -214,33 +307,18 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Apply Raster Function Template</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Apply Raster Function Template">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Processes your imagery with the chain of functions, as specified by the raster function template.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Monitor Vegetation</h2></td>
+                    <td><h2>Контролювати рослинність</h2></td>
                     <td>
-                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Monitor Vegetation tool for Portal">
+                    <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Інструмент для порталу &laquo;Контролювати рослинність&raquo;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
+            <p>Виконує арифметичну операцію над каналами багатоканального растрового шару для виявлення інформації про рослинний покрив.
             </p>
             <br/>
         </div>
@@ -361,9 +439,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Extract Raster</h2></td>
+                    <td><h2>Виділити растр</h2></td>
                     <td>
-                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Extract Raster tool for Portal">
+                    <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Інструмент порталу &laquo;Виділити растр&raquo;">
                     </td>
                 </tr></tbody>
             </table>
@@ -376,9 +454,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Remap Values</h2></td>
+                    <td><h2>Повторно перетворити значення</h2></td>
                     <td>
-                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Remap Values tool for Portal">
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Інструмент порталу &laquo;Повторно перетворити значення&raquo;">
                     </td>
                 </tr></tbody>
             </table>
@@ -391,9 +469,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Convert Feature to  Raster</h2></td>
+                    <td><h2>Перетворити об'єкт в растр</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Convert Feature to Raster tool">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Інструмент &laquo;Перетворити об'єкт в растр&raquo;">
                     </td>
                 </tr></tbody>
             </table>
@@ -451,9 +529,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Classify Pixels Using Deep Learning</h2></td>
+                    <td><h2>Класифікувати пікселі, використовуючи глибоке навчання</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classify Pixels Using Deep Learning">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Класифікувати пікселі, використовуючи глибоке навчання">
                     </td>
                 </tr></tbody>
             </table>
@@ -466,9 +544,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Detect Objects Using Deep Learning</h2></td>
+                    <td><h2>Виявити об'єкти, використовуючи глибоке навчання</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detect Objects Using Deep Learning">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Виявити об'єкти, використовуючи глибоке навчання">
                     </td>
                 </tr></tbody>
             </table>

@@ -44,7 +44,7 @@
         <h2>Argumentstatistieken zoeken</h2><p/>
         <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Argumentstatistieken zoeken"></h2>
         <hr/>
-    <p>Extraheert de afmetingswaarde  of bandindex waarin een gegeven statistiek wordt verworven voor elke pixel in een multidimensionaal of multibandraster.
+    <p>Extraheert de afmetingswaarde of bandindex waarin een gegeven statistiek wordt verworven voor elke pixel in een multidimensionaal of multibandraster.
     </p>
     <p>Gebruik deze tool om de dimensiewaarde (bijvoorbeeld de datum, hoogte of diepte) te extraheren waarop een specifieke statistiek wordt bereikt in de stapel rasters in een multidimensionale rasterdataset. U kunt ook het bandnummer vinden waarop de statistiek wordt bereikt in een multibandraster.
     </p>
@@ -84,10 +84,10 @@
         <div><h2>Kies statistiektype</h2></div>
         <hr/>
         <div>
-            <p>Specificeert de statistieken om te extraheren van de variabele of variabelen langs de gegeven dimensie. 
+            <p>Specificeert de statistieken om te extraheren van de variabele of variabelen langs de gegeven dimensie.
             </p>
             <ul>
-                <li> <b>Argument van het minimum</b>&mdash; De dimensiewaarde waarbij de minimale variabele waarde wordt bereikt zal worden ge&euml;xtraheerd. Dit is de standaardinstelling.
+                <li> <b>Argument van het minimum</b>&mdash;is aangevinkt, worden variabelen of banden van de lagen die zichtbaar zijn in het huidige kaartextent geanalyseerd. Dit is de standaardinstelling.
                 </li>
                 <li> <b>Argument van het maximum</b>&mdash; De dimensiewaarde waarbij de maximale variabele waarde wordt bereikt zal worden ge&euml;xtraheerd.
                 </li>
@@ -131,9 +131,9 @@
         <div><h2>Kies de dimensiedefinitie</h2></div>
         <hr/>
         <div>
-            <p>Geeft aan hoe de statistiek uit de dimensie zal worden gehaald. 
+            <p>Geeft aan hoe de statistiek uit de dimensie zal worden gehaald.
                 <ul>
-                    <li> <b>Alle</b>&mdash; De statistieken zullen worden ge&euml;xtraheerd over alle dimensies. Dit is de standaardinstelling.
+                    <li> <b>Alle</b>&mdash;De statistieken zullen worden ge&euml;xtraheerd over alle dimensies. Dit is de standaardinstelling.
                     </li>
                     <li> <b>Intervaltrefwoord</b>&mdash; De statistiek zal worden ge&euml;xtraheerd uit de tijdsdimensie volgens het intervaltrefwoord.
                     </li>
@@ -148,9 +148,9 @@
         <div>
             <p>De eenheid van tijd waarvoor de statistiek zal worden ge&euml;xtraheerd.
             </p>
-            <p>U hebt bijvoorbeeld vijf jaar aan dagelijkse gegevens over de temperatuur van het zeeoppervlak en wilt weten in welk jaar de maximumtemperatuur werd waargenomen. Stel   <b>Argument van het maximum</b> in als het statistiektype, stel <b>Intervaltrefwoord</b> in als de definitie van de dimensie en stel <b>Jaarlijks</b> in als de trefwoordinterval in deze stap.
+            <p>U hebt bijvoorbeeld vijf jaar aan dagelijkse gegevens over de temperatuur van het zeeoppervlak en wilt weten in welk jaar de maximumtemperatuur werd waargenomen. Stel  <b>Argument van het maximum</b> in als het statistiektype, stel <b>Intervaltrefwoord</b> in als de definitie van de dimensie en stel <b>Jaarlijks</b> in als de trefwoordinterval in deze stap.
             </p>
-            <p>Als u wilt weten in welke maand de maximale temperatuur consequent werd waargenomen, stelt u  <b>Argument van het maximum</b> in als het statistiektype, stelt u het <b>Intervaltrefwoord</b> in als de dimensiedefinitie, en stelt u <b>Maandelijks terugkerend</b> in als de trefwoordinterval in deze stap. Dit zal een raster genereren waarin elke pixel de maand bevat waarin de statistiek werd bereikt over het vijfjarige record (bijvoorbeeld 08/18/2018, 08/25/2016, 08/07/2013).
+            <p>Als u wilt weten in welke maand de maximale temperatuur consequent werd waargenomen, stelt u  <b>Argument van het maximum</b> in als het statistiektype, stelt u het <b>Intervaltrefwoord</b> in als de dimensiedefinitie en stelt u <b>Maandelijks terugkerend</b> in als de trefwoordinterval in deze stap. Dit zal een raster genereren waarin elke pixel de maand bevat waarin de statistiek werd bereikt over het vijfjarige record (bijvoorbeeld 08/18/2018, 08/25/2016, 08/07/2013).
             </p>
             <p>Deze stap is nodig wanneer  <b>StdTijd</b> is ingesteld als de dimensie waaruit de statistiek zal worden ge&euml;xtraheerd, en <b>Intervaltrefwoord</b> is geselecteerd om te defini&euml;ren hoe de statistiek zal worden ge&euml;xtraheerd uit de tijdsdimensie.
                 <ul>
@@ -185,7 +185,7 @@
         <div>
             <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse.
                 <ul>
-                    <li>Als het vakje is aangevinkt, zal de analyse alle geldige pixels in een gegeven dimensie bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
+                    <li>Als het hokje is aangevinkt, zal de analyse alle geldige pixels in een gegeven afmeting bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
                     </li>
                     <li>Als het vakje niet is aangevinkt, zal de analyse resulteren in NoData als er NoData-waarden zijn voor de pixels in de gegeven dimensie.
                     </li>
@@ -198,6 +198,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

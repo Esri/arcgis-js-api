@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Elija el tipo de extensi&oacute;n que se debe utilizar al recortar la geometr&iacute;a de la capa:
-
                 <ul>
                     <li>Usar extensi&oacute;n actual: se utilizar&aacute; la extensi&oacute;n de mapa actual para recortar la capa resultante. Esta es la opci&oacute;n predeterminada.
                         
 
                     </li>
-                    <li>Elegir &aacute;rea de estudio: le permite elegir si en el resultado se mostrar&aacute; el &aacute;rea que queda dentro de la extensi&oacute;n de la geometr&iacute;a o el &aacute;rea que queda fuera de ella. Si elige la opci&oacute;n  <b>Datos dentro de geometr&iacute;a</b>, las im&aacute;genes que queden fuera de las extensiones se eliminar&aacute;n. Si elige la opci&oacute;n <b>Datos fuera de geometr&iacute;a</b>, las im&aacute;genes que queden dentro de las extensiones se eliminar&aacute;n. Tambi&eacute;n puede definir una geometr&iacute;a de recorte utilizando la herramienta de dibujar.
+                    <li>Elegir &aacute;rea de estudio: le permite definir una geometr&iacute;a de recorte utilizando la herramienta de dibujar.
+                        
+
+                    </li>
+                    <li>Elegir capa: elija una capa de entidades o una capa de im&aacute;genes para definir la extensi&oacute;n o una capa de entidades poligonales para definir la geometr&iacute;a de recorte. Cuando se selecciona una capa de entidades poligonales, se muestra una casilla de verificaci&oacute;n para especificar si se quieren usar entidades de entrada para recortar la geometr&iacute;a. De forma predeterminada, est&aacute; desactivado. Significa que se utiliza la capa de entidades de entrada para definir la extensi&oacute;n. Si est&aacute; activado, significa que se utilizan las entidades de entrada para recortar la geometr&iacute;a.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Especificar tipo de recorte</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique si desea conservar el &aacute;rea de dentro o fuera de su geometr&iacute;a de recorte:
+                <ul>
+                    <li>Datos dentro de la geometr&iacute;a: se extraer&aacute;n las im&aacute;genes que queden dentro de las extensiones de recorte. Esta es la opci&oacute;n predeterminada.
+                        
+
+                    </li>
+                    <li>Datos fuera de la geometr&iacute;a: se extraer&aacute;n las im&aacute;genes que queden fuera de las extensiones de recorte.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

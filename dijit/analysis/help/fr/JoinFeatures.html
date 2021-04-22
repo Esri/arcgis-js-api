@@ -59,7 +59,7 @@
             <p>La couche cible sera dot&eacute;e des attributs issus de la couche de jointure ajout&eacute;e &agrave; sa table.
             </p>
             <p>Outre le choix d&rsquo;une couche dans votre carte, vous pouvez s&eacute;lectionner  <b>Choose Analysis Layer (Choisir une couche d&rsquo;analyse)</b> au bas de la liste d&eacute;roulante. Cette option ouvre une biblioth&egrave;que qui vous permet de s&eacute;lectionner des jeux de donn&eacute;es de diff&eacute;rentes sources pour les utiliser dans votre analyse. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -116,7 +116,7 @@
         <div>
             <p>Relation attributaire qui va d&eacute;terminer si les entit&eacute;s sont jointes les unes aux autres. Les entit&eacute;s sont appari&eacute;es lorsque les valeurs de champ de la couche de jointure sont identiques &agrave; celles de la couche cible.
             </p>
-            <p>Supposons par exemple que vous poss&eacute;dez une couche g&eacute;ographique nationale d'adresses r&eacute;sidentielles (notamment un champ  <i>ZIP</i>) et un jeu de donn&eacute;es tabulaire de donn&eacute;es d&eacute;mographiques sanitaires par code postal (comprenant, un champ nomm&eacute; <i>HEALTHZIP</i>). Vous pouvez joindre le jeu de donn&eacute;es concernant la sant&eacute; aux donn&eacute;es r&eacute;sidentielles en appariant le champ <i>ZIP</i> &agrave; <i>HEALTHZIP</i>, ce qui g&eacute;n&egrave;re une couche des r&eacute;sidences comportant les donn&eacute;es sanitaires correspondantes.
+            <p>Supposons par exemple que vous poss&eacute;dez une couche g&eacute;ographique nationale d&rsquo;adresses r&eacute;sidentielles (notamment un champ  <i>ZIP</i>) et un jeu de donn&eacute;es tabulaire de donn&eacute;es d&eacute;mographiques sanitaires par code postal (comprenant, un champ nomm&eacute; <i>HEALTHZIP</i>). Vous pouvez joindre le jeu de donn&eacute;es concernant la sant&eacute; aux donn&eacute;es r&eacute;sidentielles en appariant le champ <i>ZIP</i> &agrave; <i>HEALTHZIP</i>, ce qui g&eacute;n&egrave;re une couche des r&eacute;sidences comportant les donn&eacute;es sanitaires correspondantes.
             </p>
         </div>
     </div>
@@ -126,14 +126,14 @@
         <div>
             <p>D&eacute;termine le mode de traitement des jointures entre la couche cible et la couche de jointure si plusieurs entit&eacute;s dans la couche de jointure pr&eacute;sentent la m&ecirc;me relation &agrave; la couche cible. Vous avez le choix entre les deux op&eacute;rations de jointure suivantes&nbsp;:
                 <ul>
-                    <li> <b>Joindre un vers un</b>&nbsp;: cette option joint les entit&eacute;s de la couche cible &agrave; une m&ecirc;me entit&eacute; de la couche de jointure. Le mode de jonction des entit&eacute;s est d&eacute;termin&eacute; par le param&egrave;tre <b>Ajouter des statistiques</b> ou le param&egrave;tre <b>D&eacute;finir l&rsquo;enregistrement &agrave; conserver</b>. Si le param&egrave;tre <b>Ajouter des statistiques</b> est utilis&eacute;, toutes les entit&eacute;s appari&eacute;es jointes seront r&eacute;capitul&eacute;es dans chaque entit&eacute; de la couche cible. Le nombre d&rsquo;entit&eacute;s jointes est ajout&eacute; par d&eacute;faut. Si le param&egrave;tre <b>D&eacute;finir l&rsquo;enregistrement &agrave; conserver</b> est utilis&eacute;, vous pouvez choisir de conserver le premier enregistrement correspondant (valeur par d&eacute;faut) ou de conserver un enregistrement correspondant en fonction d&rsquo;une expression. Une expression peut utiliser un champ num&eacute;rique (option pour l&rsquo;enregistrement le plus grand ou le plus petit) ou un champ de date (option pour le plus r&eacute;cent ou le plus ancien).
+                    <li> <b>Join one to one (Joindre un vers un)</b>&nbsp;: cette option joint les entit&eacute;s de la couche cible &agrave; une seule entit&eacute; de la couche de jointure. Le mode de jonction des entit&eacute;s est d&eacute;termin&eacute; par le param&egrave;tre <b>Ajouter des statistiques</b> ou le param&egrave;tre <b>D&eacute;finir l&rsquo;enregistrement &agrave; conserver</b>. Si le param&egrave;tre <b>Add statistics (Ajouter des statistiques)</b> est utilis&eacute;, toutes les entit&eacute;s appari&eacute;es jointes seront r&eacute;capitul&eacute;es dans chaque entit&eacute; de la couche cible. Le nombre d&rsquo;entit&eacute;s jointes est ajout&eacute; par d&eacute;faut. Si le param&egrave;tre <b>Define which record is kept (D&eacute;finir l&rsquo;enregistrement &agrave; conserver)</b> est utilis&eacute;, vous pouvez choisir de conserver le premier enregistrement correspondant (valeur par d&eacute;faut) ou de conserver l&rsquo;enregistrement correspondant dont la valeur est la plus &eacute;lev&eacute;e ou la plus basse dans un champ donn&eacute; ( <b>Order by (Trier par)</b>. L&rsquo;expression de tri n&eacute;cessite un champ num&eacute;rique (option pour l&rsquo;enregistrement le plus grand ou le plus petit) ou un champ de date (option pour le plus r&eacute;cent ou le plus ancien).
                     </li>
                     <li> <b>Joindre un vers plusieurs</b>&nbsp;: cette option joint toutes les entit&eacute;s appari&eacute;es de la couche de jointure &agrave; la couche cible. La couche de r&eacute;sultat contiendra plusieurs enregistrements de l&rsquo;entit&eacute; cible.
                     </li>
                 </ul>
                 
             </p>
-            <p>Supposons par exemple que vous voulez rechercher les supermarch&eacute;s situ&eacute;s &agrave; moins de 5&nbsp;kilom&egrave;tres d'un march&eacute; de producteurs. Dans ce cas, la couche vers laquelle la jointure est r&eacute;alis&eacute;e poss&egrave;de une seule entit&eacute; repr&eacute;sentant un march&eacute; de producteurs et les entit&eacute;s de jointure repr&eacute;sentent les &eacute;piceries locales qui poss&egrave;dent des attributs, tels que les ventes annuelles totales. L'outil  <b>Entit&eacute;s jointes</b> permet de trouver cinq &eacute;piceries qui r&eacute;pondent &agrave; ce crit&egrave;re. En sp&eacute;cifiant une op&eacute;ration de jointure de type <b>Joindre un vers plusieurs</b>, vous obtenez cinq entit&eacute;s dans votre r&eacute;sultat, chaque ligne repr&eacute;sentant le march&eacute; de producteurs et un supermarch&eacute;. En sp&eacute;cifiant une relation de type <b>Joindre un vers un</b> et en s&eacute;lectionnant une statistique, vous obtenez une entit&eacute; repr&eacute;sentant le march&eacute; de producteurs et les informations synth&eacute;tis&eacute;es des supermarch&eacute;s, par exemple le total (5), ainsi que d'autres statistiques facultatives, telles que la somme des ventes annuelles.
+            <p>Supposons par exemple que vous voulez rechercher les supermarch&eacute;s situ&eacute;s &agrave; moins de 5&nbsp;kilom&egrave;tres d'un march&eacute; de producteurs. Dans ce cas, la couche vers laquelle la jointure est r&eacute;alis&eacute;e poss&egrave;de une seule entit&eacute; repr&eacute;sentant un march&eacute; de producteurs et les entit&eacute;s de jointure repr&eacute;sentent les &eacute;piceries locales qui poss&egrave;dent des attributs, tels que les ventes annuelles totales. L'outil  <b>Entit&eacute;s jointes</b> permet de trouver cinq &eacute;piceries qui r&eacute;pondent &agrave; ce crit&egrave;re. En sp&eacute;cifiant une op&eacute;ration de jointure de type <b>Joindre un vers plusieurs</b>, vous obtenez cinq entit&eacute;s dans votre r&eacute;sultat, chaque ligne repr&eacute;sentant le march&eacute; de producteurs et un supermarch&eacute;. En sp&eacute;cifiant une relation de type <b>Join one to one (Joindre un vers un)</b> et en s&eacute;lectionnant <b>Define which record is kept (D&eacute;finir l&rsquo;enregistrement &agrave; conserver)</b>, vous obtenez une entit&eacute; repr&eacute;sentant le march&eacute; de producteurs et un supermarch&eacute; (celui dont les ventes annuelles sont les plus &eacute;lev&eacute;es, par exemple). Si, au contraire, vous choisissez <b>Add statistics (Ajouter des statistiques)</b>, vous obtenez une entit&eacute; repr&eacute;sentant le march&eacute; de producteurs et une synth&egrave;se des cinq supermarch&eacute;s, par exemple la somme des ventes annuelles et le total (5) des supermarch&eacute;s synth&eacute;tis&eacute;s. 
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Conserver toutes les entités cible</h2></div>
         <hr/>
         <div>
-            <p>Par d&eacute;faut, seules les entit&eacute;s d&rsquo;appariement entre la couche cible et la couche de jointure sont renvoy&eacute;es dans la couche de r&eacute;sultat (une jointure int&eacute;rieure). Lorsqu&rsquo;il est activ&eacute;, le param&egrave;tre  <b>Conserver toutes les entit&eacute;s cibles</b> modifiera la sortie pour inclure toutes les entit&eacute;s de la couche cible, qu&rsquo;elles correspondent ou non &agrave; des entit&eacute;s de la couche de jointure (une jointure ext&eacute;rieure gauche).
+            <p>Par d&eacute;faut, seules les entit&eacute;s d&rsquo;appariement entre la couche cible et la couche de jointure sont renvoy&eacute;es dans la couche de r&eacute;sultat (une jointure int&eacute;rieure). Lorsqu&rsquo;il est activ&eacute;, le param&egrave;tre  <b>Keep all target features (Conserver toutes les entit&eacute;s cible)</b> modifie la sortie pour inclure toutes les entit&eacute;s de la couche cible, qu&rsquo;elles correspondent ou non &agrave; des entit&eacute;s de la couche de jointure (une jointure ext&eacute;rieure gauche).
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Créer des résultats en tant que vue de couche d’entités hébergée</h2></div>
         <hr/>
         <div>
-            <p> La cr&eacute;ation de r&eacute;sultats en tant que vue de couche d&rsquo;entit&eacute;s h&eacute;berg&eacute;es permet de garder les donn&eacute;es &agrave; jour en cas de modification des donn&eacute;es source. Les vues de couches d&rsquo;entit&eacute;s h&eacute;berg&eacute;es contenant des jointures sont en lecture seule.
+            <p>La cr&eacute;ation de r&eacute;sultats en tant que vue de couche d&rsquo;entit&eacute;s h&eacute;berg&eacute;es permet de garder les donn&eacute;es &agrave; jour en cas de modification des donn&eacute;es source. Les vues de couches d&rsquo;entit&eacute;s h&eacute;berg&eacute;es contenant des jointures sont en lecture seule.
             </p>
+            <p class="OnlineOnly">Les vues de couches d&rsquo;entit&eacute;s h&eacute;berg&eacute;es contenant des jointures ne consomment pas de cr&eacute;dits dans le cadre de l&rsquo;analyse et du stockage.
+            </p> 
             <p>Vous pouvez cr&eacute;er une vue de couche d&rsquo;entit&eacute;s h&eacute;berg&eacute;es &agrave; partir des r&eacute;sultats d&rsquo;analyse si toutes les conditions suivantes sont remplies&nbsp;:
                 <ul>
                     <li>Vous &ecirc;tes le propri&eacute;taire des deux couches.

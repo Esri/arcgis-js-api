@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalyse lar deg analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren. Verkt&oslash;ysettene som for tiden er tilgjengelige gjennom  Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Bruk n&aelig;rhet</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b>, <b>Administrer data</b>, <b>Dyp l&aelig;ring</b> og <b>Flerdimensjonal analyse</b>.
+        <p>Med Rasteranalyse kan du analysere store rasterdatasett ved hjelp av  ArcGIS Image Server. Dette gj&oslash;r det mulig &aring; analysere mer data raskere ved &aring; utnytte kraften i serveren.Verkt&oslash;ysettene som for tiden er tilgjengelige gjennom Portal for ArcGIS p&aring; nettet, er  <b>Summer data</b>, <b>Analyser m&oslash;nstre</b>, <b>Bruk n&aelig;rhet</b>, <b>Analyser bilde</b>, <b>Analyser terreng</b> <b>Administrer data</b>, <b>Dyp l&aelig;ring</b> og <b>Flerdimensjonal analyse</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>Summer data</h2>
         <hr/>
-        <p>Dette verkt&oslash;ysettet har et verkt&oslash;y for &aring; beregne statistikk for et rasterlag innenfor omr&aring;degrensene du definerer. 
+        <p>Bruk disse verkt&oslash;yene til &aring; beregne statistikk for et rasterlag innenfor omr&aring;degrensene (sonene) du definerer.
             <ul>
                 <li> <b>Summer raster innenfor</b> beregner statistikk for rasterceller som faller innenfor definerte omr&aring;degrenser.
+                </li>
+                <li> <b>Sonestatistikk som tabell</b> summerer verdiene for et raster innenfor sonene til et annet datasett og rapporterer resultatene til en tabell.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner summeringsstatistikk for rasterceller innenfor definerte omr&aring;der.
+            <p>Dette verkt&oslash;yet summerer verdiene for et raster innenfor sonene til et annet datasett.
             </p>
-            <p>Noen eksempler p&aring; bruksomr&aring;der er f&oslash;lgende: 
-
-                <ul>
-                    <li>Gitt et lag med vannskilleomr&aring;der og et h&oslash;yderasterlag, beregner du rekkevidden av h&oslash;yder innenfor hvert vannskille for &aring; finne ut hvilke som vil ha den h&oslash;yeste vannf&oslash;ringen.
-                        
-
-                    </li>
-                    <li>Gitt et lag av forvaltningsenheter og et rasterlag av arealbrukskategorier, beregner du ulik arealbruk innenfor hvert forvaltningsomr&aring;de for &aring; identifisere hvilke som krever mest arbeid for &aring; vedta en forvaltningsplan.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sonestatistikk som tabell</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Sonestatistikk som tabell-diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet summerer verdiene for et raster innenfor sonene til et annet datasett og rapporterer resultatene til en tabell.
             </p>
             <br/>
         </div>
@@ -132,27 +135,46 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Bruk nærhet</h2>
         <hr/>
-        <p>Disse verkt&oslash;yene hjelper deg med finne svaret p&aring; et av det vanligste sp&oslash;rsm&aring;lene i geografiske analyser: &quot;Hva ligger i n&aelig;rheten av hva?&quot;
-
+        <p>Disse verkt&oslash;yene hjelper deg med finne svaret p&aring; de vanligste sp&oslash;rsm&aring;lene innen romlig analyse: Hva ligger i n&aelig;rheten av hva, og hva er den mest optimale ruten?
             <ul>
                 <li> <b>Beregn avstand</b> beregner euklidsk avstand, retning og tilordning fra en enkelt kilde eller et sett av kilder.
                     
 
                 </li>
-                <li> <b>Bestem optimalt nettverk for reiseutgifter</b> beregner det optimale utgiftsnettverket fra et sett av inndataregioner.
+                <li> <b>Bestem optimalt nettverk for reisekostnader</b> beregner det optimale kostnadsnettverket fra et sett av inndataregioner.
                     
 
                 </li>
-                <li> <b>Bestem rute for reiseutgifter som polylinje</b> beregner den beste polylinjeruten mellom kilder og kjente destinasjoner.
+                <li> <b>Fastsett rute for reiseutgifter som polylinje</b> beregner polylinjeruten med lavest kostnad mellom kilder og kjente m&aring;l.
+                    
+
+                </li>
+                <li> <b>Avstandsakkumulering</b> beregner akkumulert avstand for hver celle til kildene og tillater rettlinjet avstand kostnadsavstand, reell overflateavstand samt vertikale og horisontale kostnadsfaktorer.
+                    
+
+                </li>
+                <li> <b>Avstandsallokering</b> beregner avstandsallokering for hver celle til de oppgitte kildene basert p&aring; rettlinjet avstand, kostnadsavstand, reell overflateavstand, samt vertikale og horisontale faktorer.
+                    
+
+                </li>
+                <li> <b>Optimal rute som linje</b> beregner den optimale ruten fra destinasjoner til kilder som en linje.
+                    
+
+                </li>
+                <li> <b>Optimal rute som raster</b> beregner den optimale ruten fra destinasjoner til kilder som et raster.
+                    
+
+                </li>
+                <li> <b>Optimale regionsforbindelser</b> beregner det optimale forbindelsesnettverket mellom to eller flere inndataregioner.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner euklidsk avstand, retning og tilordning fra en enkelt kilde eller et sett av kilder. Du kan bruke dette verkt&oslash;yet til &aring; bestemme hvor langt en lokasjon ligger fra en vei, en bygning eller en park. Du kan ogs&aring; bestemme retningen du m&aring; reise i for &aring; komme tilbake til en kilde p&aring; mest mulig direkte m&aring;te. For hver lokasjon i studieomr&aring;det kan du se hvilken kilde som er den n&aelig;rmeste.
+            <p>Dette verkt&oslash;yet beregner euklidsk avstand, retning og tilordning fra en enkelt kilde eller et sett av kilder.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner det optimale utgiftsnettverket fra et sett av inndataregioner.
+            <p>Dette verkt&oslash;yet beregner det optimale kostnadsnettverket fra et sett av inndataregioner.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner den beste polylinjeruten mellom kilder og kjente m&aring;l.
+            <p>Dette verkt&oslash;yet beregner polylinjeruten med lavest kostand mellom destinasjoner og kilder.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Avstandsakkumulering</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Illustrasjon av Avstandsakkumulering-verkt&oslash;yet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner akkumulert avstand for hver celle til kildene og tar h&oslash;yde for rettlinjet avstand, kostnadsavstand, reell overflateavstand samt vertikale og horisontale faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Avstandsallokering</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Illustrasjon av Avstandsallokering-verkt&oslash;yet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner avstandsallokering for hver celle til de oppgitte kildene basert p&aring; rettlinjet avstand, kostnadsavstand, reell overflateavstand samt vertikale og horisontale faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal rute som linje</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Illustrasjon av verkt&oslash;yet Optimal rute som linje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner den optimale ruten fra destinasjoner til kilder som en linje.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal rute som raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Illustrasjon for verkt&oslash;yet Optimal rute som raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner den optimale ruten fra destinasjoner til kilder som et raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimale regionsforbindelser</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Illustrasjon for verkt&oslash;yet Optimale regionsforbindelser">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette verkt&oslash;yet beregner det optimale forbindelsesnettverket mellom to eller flere inndataregioner.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analyser bilde</h2>
         <hr/>
-        <p>F&oslash;lgende verkt&oslash;y hjelper deg med &aring; analysere bilder. 
+        <p>F&oslash;lgende verkt&oslash;y i verkt&oslash;ykategorien  <b>Analyser bilde</b> hjelper deg med &aring; analysere bilder:
             <ul>
-                <li> <b>Bruk rasterfunksjonsmal</b> behandler bildene med geoobjektene som er spesifisert av rasterfunksjonsmalen.
-                </li>
-                <li> <b>Overv&aring;k vegetasjon</b> oppdager vegetasjon i et bilde p&aring; bakgrunn av aritmetiske operasjoner p&aring; b&aring;ndene.
+                <li> <b>Overv&aring;k vegetasjon</b> oppdager relativ vegetasjonsdekning i et bilde basert p&aring; aritmetiske operasjoner p&aring; b&aring;ndene. Flere vegetasjonsindekser er tilgjengelig for bildeanalyse.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Bruk rasterfunksjonsmal</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Bruk rasterfunksjonsmal">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Behandler bildene med funksjonene, som er spesifisert av rasterfunksjonsmalen.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Utf&oslash;rer en aritmetisk operasjon p&aring; b&aring;ndene i et flerb&aring;nds rasterlag for &aring; vise informasjon om vegetasjonsdekningen i studieomr&aring;det.
+            <p>Utf&oslash;rer en aritmetisk operasjon p&aring; b&aring;ndene i et rasterlag med flere b&aring;nd for &aring; vise informasjon om vegetasjonsdekningen.
             </p>
             <br/>
         </div>
@@ -485,7 +565,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster og en valgfri geoobjektklasse for &aring; produsere en geoobjektklasse eller tabell der hvert inndataobjekt har f&aring;tt tildelt en klassemerking.
+            <p>Dette verkt&oslash;yet kj&oslash;rer en opptrent modell for dyp l&aelig;ring p&aring; et inndataraster og en valgfri geoobjektklasse for &aring; produsere en geoobjektklasse eller tabell der hvert inndataobjekt har en tilordnet klassemerking.
             </p>
             <br/>
         </div>
@@ -576,9 +656,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Prediksjon ved bruk av trendraster</h2></td>
+                    <td><h2>Forutsi ved bruk av trendraster</h2></td>
                     <td>
-                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prediksjon ved bruk av trendraster">
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Forutsi ved bruk av trendraster">
                     </td>
                 </tr></tbody>
             </table>

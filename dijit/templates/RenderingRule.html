@@ -304,17 +304,26 @@
         </tr>
 
       </tbody>
-      <tr data-dojo-attach-point="colorRampLabelBlock">
-        <td colspan="3">
-          <div class="esriRenderingRuleColorRampHeading">${_i18n.widgets.renderingRule.colorRampTitle}</div>
-        </td>
+      <tbody data-dojo-attach-point="colorRampSelectionBlock">
+        <tr data-dojo-attach-point="colorRampLabelBlock">
+          <td colspan="3">
+            <div class="esriRenderingRuleColorRampHeading">${_i18n.widgets.renderingRule.colorRampTitle}</div>
+          </td>
         </tr>
         <tr data-dojo-attach-point="colorRampBlock">
-        <td colspan="3" >
-          <select data-dojo-attach-point="colorRampSelect" data-dojo-type="esri/dijit/ColorRampSelector" class="esriRenderingRuleColorRampList dijitSelect"
-          data-dojo-props="dropDownPosition: ['below', 'above'], maxHeight: 200" data-dojo-attach-event="onChange: _onColorRampChange"></select>
-        </td>
-      </tr>
+          <td colspan="3" >
+            <select data-dojo-attach-point="colorRampSelect" data-dojo-type="esri/dijit/ColorRampSelector" class="esriRenderingRuleColorRampList dijitSelect"
+            data-dojo-props="dropDownPosition: ['below', 'above'], maxHeight: 200" data-dojo-attach-event="onChange: _onColorRampChange"></select>
+          </td>
+        </tr>
+        <tr data-dojo-attach-point="colorRampInvertBlock">
+          <td colspan="3">
+            <input type="checkbox" value="true" data-dojo-attach-point="invertColorRampCheckbox" class="esriRenderingRuleDraCheckbox" data-dojo-attach-event="onChange: _onColorRampChange">
+            </input>
+            <label class="esriRenderingRuleDraLabel">${_i18n.widgets.renderingRule.invertColorRampLabel}</label>
+          </td>
+        </tr>
+      </tbody>
       <tr data-dojo-attach-point="classifyGridBlock">
         <td colspan="3">
           <div data-dojo-attach-point="classifyLoadingMsg" class="esriRenderingRuleLoadingMsg">${_i18n.widgets.renderingRule.classifyLoadingMsg}</div>
@@ -326,6 +335,11 @@
         <td colspan="3">
             <div data-dojo-attach-point="uniqueValuesLoadingMsg" class="esriRenderingRuleLoadingMsg">${_i18n.widgets.renderingRule.uniqueValuesLoadingMsg}</div>
           <div data-dojo-attach-point="uniqueValuesGrid"></div>
+        </td>
+      </tr>
+      <tr data-dojo-attach-point="serviceInfoLoadingBlock">
+        <td colspan="3">
+            <div data-dojo-attach-point="serviceInfoLoadingMsg" class="esriRenderingRuleLoadingMsg">${_i18n.widgets.renderingRule.serviceInfoLoadingMsg}</div>
         </td>
       </tr>
       <tr>

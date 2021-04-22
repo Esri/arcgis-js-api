@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimale pad als lijn</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Optimale pad als lijn tool illustratie"></h2>
+        <hr/>
+    <p>Deze tool berekent het optimale pad van bestemmingen naar bronnen als een lijn.
+    </p>
+    <p>Voorbeelden van de toepassingen zijn onder meer het volgende:
+        <ul>
+            <li>Zoek de beste route voor een nieuwe weg in termen van aanlegkosten.
+                
+
+
+            </li>
+            <li>Zoek de beste vaarroute tussen een bestemming en de huidige locatie.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Kies bestemmingsraster of objecten</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster of objectlaag die de cellen identificeert van waaruit het optimale pad naar de optimale bron wordt bepaald.
+            </p>
+            <p>Als de input een raster is, moet het bestaan uit cellen die geldige waarden hebben (nul is een geldige waarde) voor de bestemmingen en aan de resterende cellen moeten NoData worden toegewezen. Het inputrastertype moet integer zijn.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Bestemmingsveld</h2></div>
+        <hr/>
+        <div>
+            <p>Het veld dat wordt gebruikt om waarden te krijgen voor de bestemmingslocaties.
+            </p>
+            <p>Dit veld moet van het type integer zijn.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Kies afstandaccumulatieraster</h2></div>
+        <hr/>
+        <div>
+            <p>Het raster afstandsaccumulatie wordt gebruikt om het optimale pad van de bestemmingen naar de bronnen te bepalen.
+            </p>
+            <p>Het raster van de afstandaccumulatie wordt meestal gemaakt met de tools Afstandaccumulatie of Afstandstoewijzing. Elke cel in het raster afstandaccumulatie vertegenwoordigt de minimum accumulatieve kostenafstand over een oppervlak van elke cel tot een stel broncellen.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Raster terugweg of stroomrichting</h2></div>
+        <hr/>
+        <div>
+            <p>Het raster terugweg bevat berekende richtingen in graden. De richting identificeert de volgende cel langs de optimale weg terug naar de minst geaccumuleerde kostenbron en vermijdt tegelijkertijd barri&egrave;res.
+            </p>
+            <p>Het raster voor terugweg wordt meestal gemaakt met de tools Afstandaccumulatie of Afstandstoewijzing. In dit geval is het bereik van de waarden tussen 0 graden en 360 graden. De waarde 0 is gereserveerd voor broncellen. Oost (rechts) is 90 en de waarden lopen rechtsom (180 is zuid, 270 is west en 360 is noord).
+            </p>
+            <p>Het optimale pad dat gecre&euml;erd wordt kan een stroompad zijn op basis van D8 stroomrichting. Om een optimaal pad op deze manier te genereren, gebruikt u een D8 stroomrichtingsraster als invoer voor deze parameter.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Padtype (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een trefwoord dat de manier definieert waarop de waardes en zones op de bestemmingsgegevens van de input worden ge&iuml;nterpreteerd in de kostenpadberekeningen.
+                <ul>
+                    <li> <b>Naar elke zone</b>&mdash;Voor elke zone op de bestemmingsgegevens van de invoer wordt een pad met de laagste kosten bepaald. Met deze optie begint het goedkoopste pad voor elke zone op de cel met de weging van de laagste kostenafstand in de zone. Dit is de standaardinstelling.
+                         
+                    </li>
+                    <li> <b>Beste enkel</b>&mdash;Voor alle cellen op de bestemmingsdata van de input wordt het goedkoopste pad afgeleid uit de cel met het minimum van de goedkoopste paden naar de broncellen.
+                    </li>
+                    <li> <b>Naar elke cel</b>&mdash;Voor elke cel met geldige waarden op de bestemmingsdata van de input wordt een optimaal pad bepaald. Met deze optie wordt elke cel van de bestemmingsdata van de input afzonderlijk behandeld en wordt voor elke cel een goedkoopste pad bepaald.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Resultaat feature layer naam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

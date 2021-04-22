@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({clustersLabel:"Raskite sluoksnio ${inputLayerName} sankaupas.",chooseLayerLabel:"Pasirinkite sluoksnį, kurio sankaupų bus ieškoma",minClusterPtsLabel:"Minimalus taškų skaičius, kuris bus laikomas sankaupa",minClustersPtsGAXLbl:"Minimalus taškų skaičius, iš kurio formuojama sankaupa",limitSearchLabel:"Apriboti paieškos intervalą iki (neprivaloma)",limitSearchReqLabel:"Apriboti paieškos intervalą iki",outputLayerName:"Rasti ${inputLayerName} sankaupas",itemDescription:"Elementų sluoksnis, sukurtas naudojant sprendimą Ieškoti taškų sankaupų, skirtą ${inputLayerName}.",itemTags:"Analizės rezultatas, Rasti taškų sankaupas, ${inputLayerName}",itemSnippet:"Elementų sluoksnis, sukurtas naudojant Rasti taškų sankaupas",chooseClusteringMethod:"Pasirinkite grupavimo būdą, kurį norite naudoti",dbscanLabel:"Apibrėžtas atstumas (DBSCAN)",hdbscanLabel:"Savarankiškai pasikoreguojantis (HDBSCAN)",useTimeToFindCLusters:"Išnaudokite laiką grupėms rasti",limitSearchDurLabel:"Apriboti paieškos trukmę iki"});

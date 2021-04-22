@@ -44,7 +44,7 @@
         <h2>Többdimenziós anomália létrehozása</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="T&ouml;bbdimenzi&oacute;s anom&aacute;lia l&eacute;trehoz&aacute;sa"></h2>
         <hr/>
-    <p>Egy t&ouml;bbdimenzi&oacute;s raszteres adathalmazt hoz l&eacute;tre megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszteres v&aacute;ltoz&oacute;k kombin&aacute;l&aacute;s&aacute;val adott dimenzi&oacute; ment&eacute;n.
+    <p>Az anom&aacute;li&aacute;t sz&aacute;m&iacute;tja ki egy megl&eacute;vő t&ouml;bbdimenzi&oacute;s raszter minden egyes szelet&eacute;n&eacute;l, &eacute;s &uacute;j t&ouml;bbdimenzi&oacute;s rasztert hoz l&eacute;tre.
     </p>
     <p>Az anom&aacute;lia egy megfigyel&eacute;s elt&eacute;r&eacute;s&eacute;t jelenti annak standard, &aacute;tlag- vagy medi&aacute;n &eacute;rt&eacute;k&eacute;től.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Anomália-létrehozás módszerének kiválasztása</h2></div>
         <hr/>
         <div>
-            <p>Ezzel adhat&oacute; meg az anom&aacute;lia kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt m&oacute;dszer. 
+            <p>Ezzel adhat&oacute; meg az anom&aacute;lia kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt m&oacute;dszer.
                 <ul>
                     <li> <b>&Aacute;tlagt&oacute;l vett elt&eacute;r&eacute;s</b> &ndash; Egy pixel &eacute;rt&eacute;ke &eacute;s az adott pixel &eacute;rt&eacute;k&eacute;nek &aacute;tlaga k&ouml;z&ouml;tti k&uuml;l&ouml;nbs&eacute;get sz&aacute;m&iacute;tja ki az intervallum &aacute;ltal meghat&aacute;rozott szeleteken. Ez az alap&eacute;rtelmez&eacute;s.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>&Aacute;tlagt&oacute;l vett elt&eacute;r&eacute;s = x &minus; &micro;
-
                         <ul>
                             <li>x = pixel &eacute;rt&eacute;ke egy szeletben
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>&Aacute;tlagt&oacute;l vett sz&aacute;zal&eacute;kos elt&eacute;r&eacute;s = |x &minus; &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pixel &eacute;rt&eacute;ke egy szeletben
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Az &aacute;tlag sz&aacute;zal&eacute;ka = x / &micro;
-
                         <ul>
                             <li>x = pixel &eacute;rt&eacute;ke egy szeletben
                                 
@@ -202,7 +199,7 @@
         <div><h2>Az átlag kiszámításához használt időintervallum kiválasztása</h2></div>
         <hr/>
         <div>
-            <p>Ezzel adhat&oacute; meg az &aacute;tlag kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt időintervallum. 
+            <p>Ezzel adhat&oacute; meg az &aacute;tlag kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt időintervallum.
                 <ul>
                     <li> <b>Mind</b> &ndash; Az &aacute;tlagot sz&aacute;m&iacute;tja ki az &ouml;sszes szeleten mindegyik pixeln&eacute;l.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Hiányzó értékek figyelmen kívül hagyása a számításban</h2></div>
         <hr/>
         <div>
-            <p>Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben. 
+            <p>Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben.
                 <ul>
                     <li>Bejel&ouml;lve &ndash; az elemz&eacute;s tartalmazni fogja az &ouml;sszes &eacute;rv&eacute;nyes pixelt egy adott dimenzi&oacute; ment&eacute;n, &eacute;s figyelmen k&iacute;v&uuml;l fogja hagyni a NoData pixeleket. Ez az alap&eacute;rtelmez&eacute;s.
                     </li>
@@ -250,7 +247,8 @@
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

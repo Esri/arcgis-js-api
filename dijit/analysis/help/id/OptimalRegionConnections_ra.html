@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Hubungan Wilayah Optimal</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustrasi alat Hubungan Wilayah Optimal"></h2>
+        <hr/>
+    <p>Alat ini menghitung jaringan konektivitas optimal antara dua wilayah input atau lebih.
+    </p>
+    <p>Contoh aplikasi termasuk yang berikut:
+        <ul>
+            <li>Model kesesuaian&mdash;Dari model kesesuaian, Anda telah mengidentifikasi 10 kawasan habitat bobcat. Anda ingin bobcat yang ada dapat berpindah-pindah wilayah melalui jaringan koridor alam liar yang paling efektif demi menjaga keragaman genetik di metapopulasi.
+                
+
+            </li>
+            <li>Penebangan kayu&mdash;Dalam proses penebangan kayu, Anda ingin membuat jaringan jalan yang berbiaya paling efisien untuk mengambil kayu yang ditebang.
+                
+
+            </li>
+            <li>Menjaga perdamaian&mdash;Dalam pengerahan tenaga militer untuk menjaga perdamaian, Anda telah mengidentifikasi lima wilayah untuk menempatkan pasukan dan personel. Anda ingin mengembangkan rute pengiriman suplai yang dapat menghubungkan pangkalan secara optimal.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jika  <b>Gunakan luas peta saat ini</b> dicentang, hanya lokasi di layer input yang terlihat dalam tingkat peta saat ini yang akan dianalisis. Jika tidak dicentang, semua lokasi di kedua layer input akan dianalisis, bahkan jika mereka berada di luar batas peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur wilayah</h2></div>
+        <hr/>
+        <div>
+            <p>Wilayah input yang akan dihubungkan oleh jaringan optimal.
+            </p>
+            <p>Jika input wilayahnya adalah raster, maka wilayah akan ditentukan menurut kelompok sel yang berdekatan dengan nilai yang sama. Setiap wilayah harus diberi nomor secara unik. Sel yang bukan bagian dari wilayah apa pun harus berupa NoData. Jenis raster harus berupa bilangan bulat, dan nilai dapat berupa nilai positif atau negatif.
+            </p>
+            <p>Jika input wilayahnya adalah fitur, maka wilayahnya dapat berupa titik, garis, atau poligon. Wilayah poligon tidak boleh terdiri dari poligon multibagian.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur penghalang (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Set data yang menentukan penghalang.
+            </p>
+            <p>Untuk raster, jenis inputnya dapat berupa bilangan bulat atau mengambang. Sel yang memiliki nilai (termasuk nol) akan dianggap sebagai penghalang. Sel yang memiliki NoData tidak akan dianggap sebagai penghalang.
+            </p>
+            <p>Untuk fitur, inputnya dapat berupa titik, garis, atau poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Pilih raster biaya (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster yang menentukan impedansi, atau biaya, untuk bergerak secara planimetri melalui setiap sel.
+            </p>
+            <p>Nilai di setiap lokasi sel mewakili jarak biaya-per-unit untuk bergerak melalui sel. Setiap nilai lokasi sel dikalikan dengan resolusi sel, sementara juga mengkompensasi gerakan diagonal untuk mendapatkan biaya total melewati sel.
+            </p>
+            <p>Nilai-nilai dari raster biaya dapat berupa bilangan bulat atau bilangan titik mengambang, tetapi tidak boleh negatif atau nol (Anda tidak dapat memiliki biaya negatif atau nol).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metode jarak (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah jarak dihitung menggunakan metode planar (bumi datar) atau geodesik (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;Penghitungan jarak akan dilakukan pada bidang datar terproyeksi menggunakan sistem koordinat Cartesian 2D. Ini adalah metode default.
+                    
+
+                </li>
+                <li> <b>Geodesik</b>&mdash;Penghitungan jarak akan dilakukan pada elipsoid. Maka dari itu, hasil tidak berubah terlepas dari proyeksi input atau output.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Hubungan di dalam wilayah (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah jalurnya akan berlanjut dan terhubung di dalam wilayah input.
+            </p>
+            <ul>
+                <li> <b>Buat hubungan</b>&mdash;Jalur akan berlanjut di dalam wilayah input untuk terhubung ke semua jalur yang memasuki wilayah. Ini adalah default.
+                    
+
+                </li>
+                <li> <b>Tidak ada hubungan</b>&mdash;Jalur akan berhenti di tepi wilayah input dan tidak akan terus berlanjut atau terhubung di dalamnya.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Hasilkan nama feature layer garis hubungan optimal</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Layer ini adalah fitur garis output yang menghubungkan setiap wilayah input.
+            </p>
+            <p>Setiap jalur (atau garis) memiliki nomor unik, dan kolom tambahan di tabel atribut menyimpan informasi tertentu yang berkaitan dengan jalurnya. Berikut adalah kolom tambahannya:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Pengidentifikasi unik untuk jalurnya
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Total akumulatif jarak atau biaya untuk jalurnya
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Wilayah pertama yang dihubungkan oleh jalurnya
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Wilayah lain yang dihubungkan oleh jalurnya
+                    
+
+                </li>
+            </ul>
+            
+            <p>Karena setiap jalur memiliki garis unik, nantinya akan ada beberapa garis di lokasi ketika sejumlah jalur melalui rute yang sama.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Hasilkan nama feature layer hubungan lingkungan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Layer ini adalah fitur garis output yang mengidentifikasi semua jalur dari setiap wilayah menuju ke lingkungan terdekatnya, atau yang berbiaya paling rendah.
+            </p>
+            <p>Setiap jalur (atau garis) memiliki nomor unik, dan kolom tambahan di tabel atribut menyimpan informasi tertentu yang berkaitan dengan jalurnya. Berikut adalah kolom tambahannya:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Pengidentifikasi unik untuk jalurnya
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Total akumulatif jarak, atau biaya, untuk jalurnya
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Wilayah pertama yang dihubungkan oleh jalurnya
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Wilayah lain yang dihubungkan oleh jalurnya
+                    
+
+                </li>
+            </ul>
+            
+            <p>Karena setiap jalur memiliki garis unik, nantinya akan ada beberapa garis di lokasi ketika sejumlah jalur melalui rute yang sama.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

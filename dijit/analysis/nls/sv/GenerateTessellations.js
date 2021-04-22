@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseShape:"Välj form",defineExtent:"Definiera utbredning",defineBin:"Definiera klasstorlek genom att ange",area:"Område",distance:"Avstånd",resultLayerName:"Resultatlagrets namn",hexagon:"Hexagon",transverseHexagon:"Tvärställd hexagon",square:"Fyrkant",triangle:"Triangel",diamond:"Diamant",sameAsDisplay:"Samma som visning",emptyBinSize:"Klasstorleken får inte vara tom",currentExtent:"aktuell utbredning",intersectExtent:"Behåll endast korsande tessellationer",outputLayerName:"Generera tessellationer på ${extentLayerName}",itemDescription:"Utbredning från ${extentLayerName} användes.",itemTags:"Analysresultat, Generera tessellationer, ${extentLayerName}",itemSnippet:"Geoobjektlager genererat från Generera tessellationer."});

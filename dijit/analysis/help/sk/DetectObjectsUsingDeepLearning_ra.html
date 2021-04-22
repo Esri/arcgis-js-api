@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Detekovať objekty použitím hĺbkového strojového učenia</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detekovať objekty použit&iacute;m hĺbkov&eacute;ho strojov&eacute;ho učenia"></h2>
+        <hr/>
+    <p>Sp&uacute;&scaron;ťa tr&eacute;novan&yacute; model hĺbkov&eacute;ho strojov&eacute;ho učenia na vstupnom rastri pre produkciu triedy prvkov obsahuj&uacute;cej n&aacute;jden&eacute; objekty. Prvky m&ocirc;žu byť ohraničuj&uacute;ce obdĺžniky alebo polyg&oacute;ny okolo n&aacute;jden&yacute;ch objektov alebo body v strede objektov.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, iba oblasť rastra, ktor&aacute; je viditeľn&aacute; v aktu&aacute;lnom rozsahu mapy bude analyzovan&aacute;. Ak nie je za&scaron;krtnut&eacute;, bude analyzovan&yacute; cel&yacute; rozsah rastra, aj ak je mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vyberte snímku pre detekciu objektov.</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; sn&iacute;mka použit&aacute; na detekciu objektov.
+            </p> 
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Vyberte model hĺbkového strojového učenia pre detekciu objektov</h2></div>
+        <hr/>
+        <div>
+            <p>Položka vstupn&eacute;ho bal&iacute;čka Deep Learning ( <code>.dlpk</code>).
+            </p>
+            <p>Tento bal&iacute;ček hĺbkov&eacute;ho učenia je zostaven&yacute; zo s&uacute;boru Esri model definition JSON file ( <code>.emd</code>), bin&aacute;rneho modelov&eacute;ho s&uacute;boru hĺbkov&eacute;ho učenia, a pr&iacute;padne z rastrovej funkcie Python, ktor&aacute; sa použije.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Zadajte parametre modelu hĺbkového strojového učenia</h2></div>
+        <hr/>
+        <div>
+            <p>Argumenty funkcie s&uacute; definovan&eacute; v triede rastrovej funkcie Python, na ktor&eacute; sa odkazuje vstupn&yacute; model. Tu zad&aacute;te ďal&scaron;ie parametre hĺbkov&eacute;ho strojov&eacute;ho učenia a argumenty pre experimenty a spresnenie, napr&iacute;klad prah spoľahlivosti pre nastavenie citlivosti.
+            </p>
+            <p>N&aacute;zvy argumentov s&uacute; vyplnen&eacute; n&aacute;strojom pri nač&iacute;tan&iacute; Python modulu zo servera rastrovej anal&yacute;zy.
+            </p>
+        </div>
+    </div>
+    <div id="runNMS">
+        <div><h2>Odstrániť duplicitné prvky z výstupu (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Vykon&aacute; nemaxim&aacute;lnu supresiu, kedy sa identifikuj&uacute; duplicitn&eacute; objekty a duplicitn&yacute; prvok s niž&scaron;ou hodnotou spoľahlivost je odstr&aacute;nen&yacute;.
+                <ul>
+                    <li>Neza&scaron;krtnut&eacute;--V&scaron;etky detekovan&eacute; objekty bud&uacute; vo v&yacute;stupnej triede prvkov. Toto je prednastaven&aacute; voľba.
+                        
+
+                    </li>
+                    <li>Za&scaron;krtnut&eacute;--Odstr&aacute;ni duplicitn&eacute; objekty, ktor&eacute; boli zisten&eacute;.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="confidenceScoreField">
+        <div><h2>Pole pre skóre spoľahlivosti</h2></div>
+        <hr/>
+        <div>
+            <p>Pole v službe prvkov, ktor&eacute; obsahuje sk&oacute;re spoľahlivosti ako v&yacute;stup met&oacute;dy detekcie objektov.
+            </p>
+            <p>Tento parameter je požadovan&yacute; keď za&scaron;krtnete parameter  <b>Nemaxim&aacute;lna supresia</b>.
+            </p>
+        </div>
+    </div>
+    <div id="classValueField">
+        <div><h2>Pole hodnoty triedy</h2></div>
+        <hr/>
+        <div>
+            <p>Pole hodnoty triedy vo v&yacute;stupnej službe prvkov. Ak nie je &scaron;pecifikovan&eacute;, n&aacute;stroj použije &scaron;tandardn&eacute; polia hodn&ocirc;t tried  <i>Classvalue</i> a <i>Value</i>. Ak tieto polia neexistuj&uacute;, v&scaron;etky prvky bud&uacute; uvažovan&eacute; ako rovnak&aacute; objektov&aacute; trieda.
+            </p>
+        </div>
+    </div>
+    <div id="maxOverlapRatio">
+        <div><h2>Maximálny pomer prekrytia</h2></div>
+        <hr/>
+        <div>
+            <p>Maxim&aacute;lny pomer prekrytia pre dva prekr&yacute;vaj&uacute;ce sa prvky, ktor&yacute; je definovan&yacute; ako pomer oblasti prekrytia k oblasti zjednotenia. Predvolen&aacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
+    <div id="outputObjects">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

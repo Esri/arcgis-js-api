@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({distToNearest:"Razdalja do najbližje",attrOfInterest:"Atribut najbližje",summaryNearby:"Povzetek bližine",summaryIntersecting:"Povzetek preseka",distToNearestLabel:"Razdalja od središča celice do najbližjega geoobjekta v vhodnem sloju",attrOfInterestLabel:"Vrednost določenega polja od najbližjega geoobjekta od vhodnega sloja",summaryNearbyLabel:"Statistika, izračunana za vse geoobjekte, najdene znotraj določene razdalje od središča celice",summaryIntersectingLabel:"Statistika, izračunana za vse geoobjekte, ki sekajo celico",maxDistancefromCtr:"Maksimalna razdalja od središča celice",fieldToIncude:"Polja za vključitev",statstoCalculate:"Statistika za izračun",summFeatuesWithin:"Povzemi geoobjekte znotraj",smallMaxDistErrorMsg:"Maksimalna razdalja od središča celice mora biti večja od velikosti celice.",smallSumFeaturesErrorMsg:"Maksimalna razdalja od središča celice mora biti večja od velikosti celice."});

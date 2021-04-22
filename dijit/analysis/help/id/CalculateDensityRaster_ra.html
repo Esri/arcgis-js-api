@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Hitung Kepadatan</h2><p/>
+        <h2>Hitung Densitas</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Alat Hitung Kepadatan"></h2>
         <hr/>
     <p>Alat ini membuat peta kepadatan dari fitur titik atau garis dengan menyebarkan jumlah beberapa fenomena yang diketahui (disajikan sebagai atribut titik atau garis) pada peta. Hasilnya adalah layer area yang diklasifikasikan dari yang paling tidak padat hingga paling padat.
@@ -51,7 +51,6 @@
     <p>Untuk input garis, permukaan kepadatan garis mewakili jumlah total garis yang berada di dekat setiap lokasi. Satuan nilai kepadatan yang dihitung adalah panjang area garis-per-satuan luas. Misalnya, jika garis menggambarkan sungai, layer hasil tersebut akan menggambarkan total panjang sungai yang berada di dalam radius pencarian. Hasil ini dapat digunakan untuk mengenali area yang ramah terhadap hewan pemakan rumput.
     </p>
     <p>Contoh lain penggunaan alat ini mencakup hal berikut:
-
         <ul>
             <li>Membuat peta kepadatan kejahatan untuk membantu kepolisian mengalokasikan sumber daya secara tepat ke area dengan tingkat kejahatan tinggi.
                 
@@ -61,7 +60,7 @@
                 
  
             </li>
-            <li>Mengenali area yang berisiko tinggi terjadi kebakaran hutan berdasarkan lokasi historis kebakaran hutan.
+            <li>Mengenali area yang berisiko tinggi akan terjadinya kebakaran hutan berdasarkan lokasi historis kebakaran hutan.
                 
  
             </li>
@@ -120,13 +119,24 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Pilih fitur penghalang (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Set data yang menentukan penghalang.
+            </p>
+            <p>Penghalang dapat menjadi feature layer polyline atau fitur poligon.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

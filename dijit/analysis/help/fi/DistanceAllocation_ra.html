@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Etäisyyden kohdennus</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Et&auml;isyyden kohdennus -ty&ouml;kalun kuva"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu laskee kunkin solun et&auml;isyyden kohdennuksen m&auml;&auml;ritettyisiin l&auml;hteisiin suoran et&auml;isyyden, kustannuset&auml;isyyden, todellisen pintaet&auml;isyyden sek&auml; pysty- ja vaakasuoran tekij&auml;n perusteella.
+    </p>
+    <p>Esimerkkikohteisiin sis&auml;ltyy kysymyksiin vastaaminen, kuten alla:
+        <ul>
+            <li>Tunnistaa kohdennetut alueet, joista kentt&auml;ty&ouml;ntekij&auml;t ovat vastuussa.
+                
+
+            </li>
+            <li>Tunnistaa alueet, jotka on kohdennettu punailvesten asuinalueiksi.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -asetus on valittuna, vain l&auml;ht&ouml;karttatasossa olevat, nykyisess&auml; karttalaajuudessa n&auml;kyv&auml;t kohteet analysoidaan. Jos toimintoa ei ole valittu, kaikki sy&ouml;tekarttatason kohteet analysoidaan &ndash; my&ouml;s kohteet, jotka ovat nykyisen kartan n&auml;ytt&ouml;laajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Valitse lähderasteri tai kohteet</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri tai kohdekarttataso, joka tunnistaa l&auml;hteet, joista et&auml;isyydet lasketaan.
+            </p>
+            <p>Jos l&auml;ht&ouml;aineisto on rasteri, sen on koostuttava soluista, joilla on kelvolliset arvot (nolla on kelvollinen arvo) l&auml;hteiss&auml;, ja muiden solujen arvoksi on m&auml;&auml;ritett&auml;v&auml; NoData.
+            </p>
+            <p>Jos l&auml;ht&ouml;aineisto on kohdekarttataso, se voi olla piste, viiva tai aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Lähdekenttä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Kentt&auml;&auml; k&auml;ytet&auml;&auml;n m&auml;&auml;ritt&auml;m&auml;&auml;n arvot l&auml;hdesijainteihin. Sen tyypin on oltava kokonaisluku.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Valitse esterasteri tai kohteet (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Aineistoryhm&auml;, joka m&auml;&auml;ritt&auml;&auml; esteet.
+            </p>
+            <p>Rasterikarttatasossa l&auml;ht&ouml;aineiston tyyppi voi olla kokonaisluku tai liukuluku. Kaikkia soluja, joilla on arvo (mukaan lukien nolla), k&auml;sitell&auml;&auml;n estein&auml;. Soluja, joiden arvona on NoData, ei k&auml;sitell&auml; esteen&auml;.
+            </p>
+            <p>L&auml;ht&ouml; voi kohdepalvelua varten olla piste, viiva tai aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Valitse pintarasteri (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri, joka m&auml;&auml;ritt&auml;&auml; korkeusarvot kussakin solusijainnissa.
+            </p>
+            <p>Arvojen avulla lasketaan todellinen pinnan et&auml;isyys kuljettujen solujen v&auml;lill&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Valitse kustannusrasteri (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri, joka m&auml;&auml;ritt&auml;&auml; impedanssin tai kustannuksen, jotta se voi liikkua planimetrisesti jokaisen solun l&auml;pi.
+            </p>
+            <p>Kunkin solusijainnin arvo edustaa yksikk&ouml;kohtaisen kustannuksen v&auml;limatkaa solun kautta siirtymiseksi. Kunkin solusijainnin arvo kerrotaan solun resoluutiolla diagonaalista liikett&auml; kompensoimalla, jotta saadaan selville solun l&auml;pikulun aiheuttamat kustannukset.
+            </p>
+            <p>Kustannusrasterin arvo voi olla kokonaisluku tai liukuluku, mutta se ei voi olla negatiivinen eik&auml; nolla (kustannus ei voi olla negatiivinen eik&auml; nolla).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Valitse pystyrasteri (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri, joka m&auml;&auml;ritt&auml;&auml; z-arvot kullekin solusijainnille.
+            </p>
+            <p>Arvojen avulla lasketaan kaltevuus, jota k&auml;ytet&auml;&auml;n sen pystysuoran tekij&auml;n m&auml;&auml;ritt&auml;miseen, joka esiintyy liikuttaessa solusta toiseen.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Pystykerroin (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Pystykerroin</b> m&auml;&auml;ritt&auml;&auml; pystysuoran kustannustekij&auml;n ja suhteellisesti liikkuvan kulman v&auml;lisen suhteen.
+            </p>
+            <p>Voit valita useista eri tekij&ouml;ist&auml; ja muokkaajista, jotka m&auml;&auml;ritt&auml;v&auml;t annettua pystysuoraa tekij&auml;&auml;. Kaavioiden avulla m&auml;&auml;ritet&auml;&auml;n pystysuora tekij&auml;, jota k&auml;ytet&auml;&auml;n naapurisoluun liikkuvien kokonaiskustannusten laskemiseen.
+            </p>
+            <p>Alla olevissa kuvauksissa pystykerroin (VF) m&auml;&auml;ritt&auml;&auml; pystysuuntaisen vaikeuden, joka ilmenee siirrytt&auml;ess&auml; solusta seuraavaan soluun, ja pystysuora suhteellisesti liikkuva kulma (VRMA) m&auml;&auml;ritt&auml;&auml;  <b>L&auml;hteest&auml;</b>-solun ja <b>L&auml;hteeseen</b>-solun v&auml;lisen kaltevuuskulman.
+                <ul>
+                    <li> <b>Binaarinen</b> &ndash; M&auml;&auml;ritt&auml;&auml;, ett&auml; VF:ksi m&auml;&auml;ritet&auml;&auml;n nollatekij&auml;&auml;n liitetty arvo, jos VRMA on suurempi kuin matala leikkauskulma ja pienempi kuin korkea leikkauskulma. Muutoin se on &auml;&auml;ret&ouml;n.
+                    </li>
+                    <li> <b>Lineaarinen</b> &ndash; Ilmaisee, ett&auml; VF on VRMA:n lineaarinen funktio.
+                    </li>
+                    <li> <b>K&auml;&auml;nteinen lineaarinen</b> &ndash; Ilmaisee, ett&auml; VF on VRMA:n k&auml;&auml;nteinen lineaarinen funktio.
+                    </li>
+                    <li> <b>Symmetrinen lineaarinen</b> &ndash; M&auml;&auml;ritt&auml;&auml;, ett&auml; VF on VRMA:n lineaarinen funktio VRMA:n joko negatiivisella tai positiivisella sivulla ja ett&auml; molemmat lineaariset funktiot ovat symmetrisi&auml; VF (y) -akseliin n&auml;hden.
+                    </li>
+                    <li> <b>Symmetrinen k&auml;&auml;nteinen lineaarinen</b> &ndash; M&auml;&auml;ritt&auml;&auml;, ett&auml; VF on VRMA:n k&auml;&auml;nteinen lineaarinen funktio VRMA:n joko negatiivisella tai positiivisella sivulla ja ett&auml; molemmat lineaariset funktiot ovat symmetrisi&auml; VF (y) -akseliin n&auml;hden.
+                    </li>
+                    <li> <b>Cos</b> &ndash; VF on VRMA:n kosinipohjainen funktio.
+                    </li>
+                    <li> <b>Sec</b> &ndash; VF on VRMA:n sekanttipohjainen funktio.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; VF on VRMA:n kosinipohjainen funktio, jos VRMA on negatiivinen, ja VF on VRMA:n sekanttipohjainen funktio, jos VRMA on muu kuin negatiivinen.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; VF on VRMA:n sekanttipohjainen funktio, jos VRMA on negatiivinen, ja VF on VRMA:n kosinipohjainen funktio, jos VRMA on muu kuin negatiivinen.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pystyparametrien muokkaajat ovat seuraavat:
+                <ul>
+                    <li> <b>Nollatekij&auml;</b> &ndash; Pystysuora tekij&auml;, jota k&auml;ytet&auml;&auml;n, kun VRMA on nolla. T&auml;m&auml; tekij&auml; m&auml;&auml;ritt&auml;&auml;, mihin m&auml;&auml;ritetyn funktion y-leikkauspiste sijoitetaan. M&auml;&auml;ritelm&auml;n mukaan nollatekij&auml;&auml; ei voi k&auml;ytt&auml;&auml; trigonometrisiss&auml; pystysuuntaisissa funktioissa (Cos, Sec, Cos-Sec tai Sec-Cos). Y-leikkauspiste m&auml;&auml;ritet&auml;&auml;n n&auml;iden funktioiden avulla.
+                    </li>
+                    <li> <b>Matala leikkauskulma</b> &ndash; VRMA-kulma, jonka alittuessa VF:ksi m&auml;&auml;ritet&auml;&auml;n &auml;&auml;ret&ouml;n.
+                    </li>
+                    <li> <b>Korkea leikkauskulma</b> &ndash; VRMA-kulma, jonka ylittyess&auml; VF:ksi m&auml;&auml;ritet&auml;&auml;n &auml;&auml;ret&ouml;n.
+                    </li>
+                    <li> <b>Kaltevuus</b> &ndash; <b>Lineaarinen</b>- ja <b>K&auml;&auml;nteinen lineaarinen</b> -parametreissa k&auml;ytetyn suoran viivan kaltevuus. Kaltevuus m&auml;&auml;ritet&auml;&auml;n asteen murto-osana (esimerkki: 45 prosentin kaltevuus on 1/45, joka vastaa sy&ouml;tett&auml; 0.02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Valitse vaakasuuntainen rasteri (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri, joka m&auml;&auml;ritt&auml;&auml; vaakasuunnan kussakin solussa.
+            </p>
+            <p>Rasterin arvojen on oltava kokonaislukuja (0&ndash;360): 0 astetta on pohjoinen tai n&auml;kym&auml;n yl&auml;reuna ja arvot kasvavat my&ouml;t&auml;p&auml;iv&auml;&auml;n. Tasaisille alueille on annettava arvo -1. Kunkin sijainnin arvoja k&auml;ytet&auml;&auml;n yhdess&auml;  <b>vaakasuoran tekij&auml;n</b> kanssa sen vaakasuuntaisen kustannuksen m&auml;&auml;ritt&auml;miseksi, joka syntyy liikuttaessa solusta sen naapureihin.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Vaakasuora tekijä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vaakasuora tekij&auml;</b> m&auml;&auml;ritt&auml;&auml; vaakasuoran kustannustekij&auml;n ja vaakasuoran suhteellisesti liikkuvan kulman v&auml;lisen suhteen.
+            </p>
+            <p>Voit valita useista eri tekij&ouml;ist&auml; ja muokkaajista, jotka m&auml;&auml;ritt&auml;v&auml;t annettua vaakasuoraa tekij&auml;&auml;. Kaavioiden avulla m&auml;&auml;ritet&auml;&auml;n vaakasuora tekij&auml;, jota k&auml;ytet&auml;&auml;n naapurisoluun liikkuvien kokonaiskustannusten laskemiseen.
+            </p>
+            <p>Alla olevissa kuvauksissa vaakasuora tekij&auml; (HF) m&auml;&auml;ritt&auml;&auml; vaakasuuntaiset vaikeudet, jotka ilmenev&auml;t siirrytt&auml;ess&auml; yhdest&auml; solusta seuraavaan soluun, ja vaakasuuntainen suhteellisesti liikkuvakulma (HRMA) tunnistaa vaakasuuntaisen suunnan kulman solusta liikkuvaan suuntaan.
+            </p>
+            <p>N&auml;iden HF-tiedostojen m&auml;&auml;ritykset ja parametrit ovat seuraavat:
+                <ul>
+                    <li> <b>Binaarinen</b> &ndash; HF:ksi m&auml;&auml;ritet&auml;&auml;n nollatekij&auml;&auml;n liitetty arvo, jos HRMA on pienempi kuin leikkauskulma. Muutoin se on &auml;&auml;ret&ouml;n.
+                        
+
+                    </li>
+                    <li> <b>Eteenp&auml;in</b>&ndash; vain eteenp&auml;in suuntautuva siirto on sallittu. HRMA:n on oltava suurempi tai yht&auml; suuri kuin 0 ja pienempi kuin 90 (0 &lt;= HRMA &lt; 90). Jos HRMA on suurempi kuin 0 ja pienempi kuin 45 astetta, solun HF:ksi m&auml;&auml;ritet&auml;&auml;n nollatekij&auml;&auml;n liitetty arvo. Jos HRMA on suurempi tai yht&auml; suuri kuin 45 astetta, k&auml;ytet&auml;&auml;n sivun arvon muokkaajan arvoa. Mink&auml; tahansa HRMA-arvon, joka on suurempi tai yht&auml; suuri kuin 90 astetta, HF:ksi m&auml;&auml;ritet&auml;&auml;n &auml;&auml;ret&ouml;n.
+                    </li>
+                    <li> <b>Lineaarinen</b> &ndash; HF on HRMA:n lineaarinen funktio.
+                        
+
+                    </li>
+                    <li> <b>K&auml;&auml;nteinen lineaarinen</b> &ndash; HF on HRMA:n k&auml;&auml;nteinen lineaarinen funktio.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vaakasuuntaisten avainsanojen muokkaajat ovat seuraavat:
+                <ul>
+                    <li> <b>Nollatekij&auml;</b> &ndash; Vaakasuora tekij&auml;, jota k&auml;ytet&auml;&auml;n, kun HRMA on nolla. T&auml;m&auml; tekij&auml; m&auml;&auml;ritt&auml;&auml;, mihin vaakasuoran tekij&auml;n funktion y-leikkauspiste sijoitetaan.
+                        
+
+                    </li>
+                    <li> <b>Leikkauskulma</b> &ndash; HRMA-kulma, jonka ylittyess&auml; HF:ksi m&auml;&auml;ritet&auml;&auml;n &auml;&auml;ret&ouml;n.
+                        
+
+                    </li>
+                    <li> <b>Kaltevuus</b> &ndash; suoran viivan kaltevuus, jota k&auml;ytet&auml;&auml;n seuraavien vaakasuoran tekij&auml;n avainsanojen kanssa: <b>Lineaarinen</b> ja <b>K&auml;&auml;nteinen lineaarinen</b>. Kaltevuus m&auml;&auml;ritet&auml;&auml;n asteen murto-osana (esimerkki: 45 prosentin kaltevuus on 1/45, joka vastaa sy&ouml;tett&auml; 0.02222).
+                        
+
+                    </li>
+                    <li> <b>Sivun arvo</b> &ndash; HF, jos HRMA on suurempi tai yht&auml; suuri kuin 45 astetta ja pienempi kuin 90 astetta ja jos vaakasuoran tekij&auml;n <b>Eteenp&auml;in</b>-avainsana on m&auml;&auml;ritetty.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Aloituskertymä</h2></div>
+        <hr/>
+        <div>
+            <p>Alkuper&auml;inen kumulatiivinen kustannus, jota k&auml;ytet&auml;&auml;n kustannuslaskennan aloituksessa.
+            </p>
+            <p>T&auml;m&auml;n parametrin avulla kiinte&auml;n kustannuksen m&auml;&auml;ritys voidaan liitt&auml;&auml; l&auml;hteeseen. 0-kustannuksesta aloittamisen sijasta kustannusalgoritmi aloittaa  <b>Alkuper&auml;inen kertym&auml;</b> -arvolla.
+            </p>
+            <p>Arvojen on oltava v&auml;hint&auml;&auml;n nolla. Oletusarvo on 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Enimmäiskertymä</h2></div>
+        <hr/>
+        <div>
+            <p>Matkustajan kumulatiivinen enimm&auml;iskustannus l&auml;hteelle.
+            </p>
+            <p>Kustannuslaskentaa jatketaan kullekin l&auml;hteelle, kunnes m&auml;&auml;ritetty kertym&auml; saavutetaan.
+            </p>
+            <p>Arvojen on oltava suurempia kuin nolla. Oletuskertym&auml; on tulosaineiston rasterin reunaan.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kustannuskerroin</h2></div>
+        <hr/>
+        <div>
+            <p>Kustannusarvoihin k&auml;ytett&auml;v&auml; kerroin.
+            </p>
+            <p>T&auml;m&auml;n parametrin avulla voidaan hallita matkustustilaa tai magnitudia l&auml;hteess&auml;. Mit&auml; suurempi kerroin on, sit&auml; suurempi on kunkin solun l&auml;pi liikkuva kustannus.
+            </p>
+            <p>Arvojen on oltava suurempia kuin nolla. Oletusarvo on 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Matkustussuunta</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; matkustajan suunnan, kun k&auml;ytet&auml;&auml;n vaaka- ja pystysuuntaisia kertoimia.
+            </p>
+            <p> <b>L&auml;hteest&auml;</b> &ndash; vaaka- ja pystysuuntaista tekij&auml;&auml; k&auml;ytet&auml;&auml;n aluksi l&auml;ht&ouml;aineiston l&auml;hteess&auml; ja sen j&auml;lkeen liikuttaessa muihin kuin l&auml;hdesoluihin. T&auml;m&auml; on oletusarvo.
+            </p>
+            <p> <b>L&auml;hteeseen</b> &ndash; vaaka- ja pystysuuntaista tekij&auml;&auml; k&auml;ytet&auml;&auml;n aluksi kussakin muussa kuin l&auml;hdesolussa ja sen j&auml;lkeen liikuttaessa takaisin l&auml;ht&ouml;aineiston l&auml;hteeseen.
+            </p>
+            <p>M&auml;&auml;rit&auml; joko  <b>L&auml;hteest&auml;</b>- tai <b>L&auml;hteeseen</b>-avainsana, jota k&auml;ytet&auml;&auml;n kaikkiin l&auml;hteisiin, tai m&auml;&auml;rit&auml; l&auml;hdeaineiston kentt&auml;, joka sis&auml;lt&auml;&auml; avainsanat kunkin l&auml;hteen matkustussuunnan m&auml;&auml;ritt&auml;miseen. Kyseisen kent&auml;n on sis&auml;llett&auml;v&auml; merkkijono <code>FROM_SOURCE</code> tai <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Etäisyysmenetelmä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, lasketaanko et&auml;isyys planaarisen (litte&auml; maa) tai geodeettisen (ellipsoidi) menetelm&auml;n avulla.
+            </p>
+            <ul>
+                <li> <b>Planaarinen</b> &ndash; et&auml;isyyslaskenta suoritetaan projisoidusta litte&auml;st&auml; tasosta karteesisen 2D-koordinaatiston avulla. T&auml;m&auml; on oletusmenetelm&auml;.
+                    
+
+                </li>
+                <li> <b>Geodeettinen</b> &ndash; et&auml;isyyslaskenta suoritetaan ellipsoidille. Siksi tulokset eiv&auml;t muutu l&auml;ht&ouml;aineiston tai tulosaineiston projisoinnista huolimatta.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Tulosaineiston etäisyyden kohdennusrasterin nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Tulosaineiston etäisyyskertymärasterin nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Et&auml;isyyskertym&auml;rasteri sis&auml;lt&auml;&auml; kumuloidun et&auml;isyyden kullekin solulle pienimm&auml;st&auml; kustannusl&auml;hteest&auml; tai siihen.
+            </p>
+            <p>Tulosrasterin tyyppi on float.
+            </p>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Tuloksen paluusuuntarasterin nimi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Paluusuuntarasteri sis&auml;lt&auml;&auml; lasketun suunnan asteina. Suunta tunnistaa seuraavan solun lyhimm&auml;ll&auml; reitill&auml; takaisin l&auml;himp&auml;&auml;n l&auml;hteeseen esteit&auml; v&auml;ltt&auml;en.
+            </p>
+            <p>Arvov&auml;li on 0&ndash;360 astetta, jossa 0 on varattu l&auml;hdesoluille. It&auml;suunta (oikealle) on 90 astetta ja arvot kasvavat my&ouml;t&auml;p&auml;iv&auml;&auml;n (180 on etel&auml;, 270 on l&auml;nsi ja 360 on pohjoinen).
+            </p>
+            <p>Tulosrasterin tyyppi on float.
+            </p>
+            <p>Karttatason nimi luodaan  <b>Oma sis&auml;lt&ouml; -osiossa</b>. Sinun on annettava nimi, jota ei t&auml;ll&auml; hetkell&auml; ole <b>Oma sis&auml;lt&ouml; -osiossa</b>.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Tuloksen lähdesuuntarasterin nimi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;hdesuuntarasteri tunnistaa v&auml;hiten kertyv&auml;n kustannusl&auml;hdesolun suunnan kompassisuunnan asteina.
+            </p>
+            <p>Arvov&auml;li on 0&ndash;360 astetta, jossa 0 on varattu l&auml;hdesoluille. It&auml;suunta (oikealle) on 90 astetta ja arvot kasvavat my&ouml;t&auml;p&auml;iv&auml;&auml;n (180 on etel&auml;, 270 on l&auml;nsi ja 360 on pohjoinen).
+            </p>
+            <p>Tulosrasterin tyyppi on float.
+            </p>
+            <p>Karttatason nimi luodaan  <b>Oma sis&auml;lt&ouml; -osiossa</b>. Sinun on annettava nimi, jota ei t&auml;ll&auml; hetkell&auml; ole <b>Oma sis&auml;lt&ouml; -osiossa</b>.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Tuloksen lähdesijaintirasterin nimi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;hdesijaintirasteri on monikaistainen tulosaineisto. Ensimm&auml;inen kaista sis&auml;lt&auml;&auml; rivi-indeksin, ja toinen kaista sis&auml;lt&auml;&auml; sarakeindeksin. N&auml;m&auml; indeksit m&auml;&auml;ritt&auml;v&auml;t sen l&auml;hdesolun sijainnin, joka on pienimm&auml;n kumulatiivisen kustannuset&auml;isyyden p&auml;&auml;ss&auml;.
+            </p>
+            <p>Karttatason nimi luodaan  <b>Oma sis&auml;lt&ouml; -osiossa</b>. Sinun on annettava nimi, jota ei t&auml;ll&auml; hetkell&auml; ole <b>Oma sis&auml;lt&ouml; -osiossa</b>.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

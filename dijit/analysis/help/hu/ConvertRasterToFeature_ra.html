@@ -55,7 +55,6 @@
     <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel a program csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; raszteres cell&aacute;kat alak&iacute;tja &aacute;t. Ha nincs bejel&ouml;lve, akkor a raszteres r&eacute;teg &ouml;sszes cell&aacute;j&aacute;t &aacute;talak&iacute;tja, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen. &Uuml;gyeljen erre, amikor a raszteres r&eacute;teg nagy, vagy nagyon nagy felbont&aacute;ssal rendelkezik.
     </p>
     <p>Az eszk&ouml;z p&eacute;ld&aacute;ul az al&aacute;bbiakra haszn&aacute;lhat&oacute;:
-
         <ul>
             <li>Polygon vektoros elemek l&eacute;trehoz&aacute;sa f&ouml;ldhaszn&aacute;lat-oszt&aacute;lyoz&aacute;st tartalmaz&oacute; raszterből.
                 
@@ -92,7 +91,7 @@
             </p>
             <p>Lebegőpontos &eacute;rt&eacute;keket tartalmaz&oacute; mező csak akkor haszn&aacute;lhat&oacute;, ha a kimenet pont-t&iacute;pus&uacute; adathalmaz.
             </p>
-            <p>Az alap&eacute;rtelmezett a(z)  <i>Value</i> mező, amely az &eacute;rt&eacute;ket minden egy raszteres cell&aacute;ban tartalmazza.
+            <p>Az alap&eacute;rtelmezett a(z)  <i>Value</i> mező, amely az &eacute;rt&eacute;ket tartalmazza minden raszteres cell&aacute;ban.
             </p>
         </div>
     </div>
@@ -126,7 +125,7 @@
             <p>Meghat&aacute;rozza, hogy a rendszer egyszerűs&iacute;tse-e (sim&iacute;tsa-e) a vonalakat vagy polygonokat. A sim&iacute;t&aacute;s &uacute;gy t&ouml;rt&eacute;nik, hogy a vonal tartalmaz egy minim&aacute;lis sz&aacute;m&uacute; szegmenst, ugyanakkor a a lehető legk&ouml;zelebb marad az eredeti rasztercella &eacute;leihez.
             </p>
             <ul>
-                <li>Bejel&ouml;lve &ndash; A rendszer kisim&iacute;tja a vonal &eacute;s a polygon t&iacute;pus&uacute; vektoros elemeket, ami generaliz&aacute;lja az eredm&eacute;nyt. Ez az alap&eacute;rtelmez&eacute;s.
+                <li>Bejel&ouml;lve &ndash; A rendszer kisim&iacute;tja a vonal &eacute;s a polygon t&iacute;pus&uacute; vektoros elemeket, ami &aacute;ltal&aacute;nos&iacute;tja az eredm&eacute;nyt. Ez az alap&eacute;rtelmez&eacute;s.
                     
 
                 </li>
@@ -141,7 +140,7 @@
         </div>
     </div>
     <div id="createMultipartFeatures">
-        <div><h2>Többrészes vektoros elemek létrehozása</h2></div>
+        <div><h2>Csoportosított vektoros elemek létrehozása</h2></div>
         <hr/>
         <div>
             <p>Megadja, hogy az eredm&eacute;ny polygonok egyr&eacute;szes vagy t&ouml;bbr&eacute;szes vektoros elemekből &aacute;lljanak majd.
@@ -177,7 +176,8 @@
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

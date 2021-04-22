@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang","./support/domainUtils"],(function(e,a,s,n,o,t){var r=e(null,{declaredClass:"esri.layers.FeatureSubtype",constructor:function(e){if(e&&a.isObject(e)){this.code=e.code,this.name=e.name,this.defaultValues=e.defaultValues;var s=e.domains,n=this.domains={};for(var o in s)s.hasOwnProperty(o)&&(n[o]=t.fromJson(s[o]))}},toJson:function(){var e=o.fixJson,s={code:this.code,name:this.name,defaultValues:e(a.clone(this.defaultValues))},n=this.domains;if(n){var t=s.domains={};for(var r in n)n.hasOwnProperty(r)&&(t[r]=n[r]&&n[r].toJson());e(t)}return e(s)}});return s("extend-esri")&&a.setObject("layers.FeatureSubtype",r,n),r}));

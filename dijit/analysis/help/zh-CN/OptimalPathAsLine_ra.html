@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>最佳路径为线</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="最佳路径为线工具图示"></h2>
+        <hr/>
+    <p>该工具用于以线形式计算从目的地到源的最佳路径。
+    </p>
+    <p>示例应用如下：
+        <ul>
+            <li>根据建设成本寻找新道路的最佳路线。
+                
+
+
+            </li>
+            <li>查找目的地和当前位置之间的最佳航行路线。
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>选择目标栅格或要素</h2></div>
+        <hr/>
+        <div>
+            <p>用于识别像元的栅格或要素图层（将确定的最佳路径为像元与最佳源之间的路径）。
+            </p>
+            <p>如果输入是栅格，则它必须由具有有效目标值（零是有效值）的像元组成，并且必须为其余的像元指定 NoData。 输入栅格类型必须为整型。
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>目标字段</h2></div>
+        <hr/>
+        <div>
+            <p>用于获得目标位置的值的字段。
+            </p>
+            <p>该字段必须为整型。
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>选择距离累积栅格</h2></div>
+        <hr/>
+        <div>
+            <p>距离累积栅格用于确定从目的地到源的最佳路径。
+            </p>
+            <p>距离累积栅格通常使用距离累积或距离分配工具进行创建。 距离累积栅格中的每个像元表示表面上从每个像元到源像元集的最小累积成本距离。
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>选择反向或流向栅格</h2></div>
+        <hr/>
+        <div>
+            <p>反向栅格包含以度为单位的计算方向。 该方向用于标识沿最佳路径返回最小累积成本源同时避开障碍的下一个像元。
+            </p>
+            <p>反向栅格通常使用距离累积或距离分配工具进行创建。 在本例中，值的范围是 0 度到 360 度。 值 0 留供源像元使用。 正东（右侧）是 90 度，且值以顺时针方向增加（180 是南方、270 是西方、360 是北方）。
+            </p>
+            <p>创建的最佳路径可以是基于 D8 流向的流动路径。 要以此方式生成最佳路径，请将 D8 流向栅格用作此参数的输入。
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>路径类型（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>用于指定对输入目标数据中的值和区域在成本路径计算中的解释方式进行定义的关键字。
+                <ul>
+                    <li> <b>至每个区域</b> - 对于输入目标数据上的每个区域，系统会确定最小成本路径。 利用此选项，每个区域的最低成本路径起点将位于区域内成本距离权重最低的像元处。 这是默认设置。
+                         
+                    </li>
+                    <li> <b>最佳单一</b> - 对于输入目标数据中的所有像元，最小成本路径派生自距源像元具有最小成本路径的最小值的像元。
+                    </li>
+                    <li> <b>至每个像元</b> - 将针对在输入目标数据中具有有效值的每个像元确定最小成本路径。 利用该选项，系统会分别处理输入目标数据中的每个像元，并确定每个像元的最小成本路径。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>结果要素图层名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

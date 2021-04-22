@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vytvoriť plochu viditeľnosti</h2><p/>
+        <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="N&aacute;stroj na vytvorenie plochy viditeľnosti"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj identifikuje oblasti, ktor&eacute; s&uacute; viditeľn&eacute; zo vstupn&yacute;ch pozorovac&iacute;ch lokal&iacute;t s ohľadom na topografiu povrchu. Lokality vstupn&yacute;ch bodov m&ocirc;žu reprezentovať pozorovateľov (osoby na zemskom povrchu alebo hliadku v požiarnej veži) alebo pozorovan&eacute; objekty (vetern&eacute; turb&iacute;ny, vodojemy, vozidl&aacute; alebo ľudia). V&yacute;sledky zn&aacute;zorňuj&uacute; miesta, ktor&eacute; je možn&eacute; vidieť z lokality pozorovateľa.
+    </p>
+    <p>Pozorovatelia aj pozorovan&eacute; objekty m&ocirc;žu mať zadan&uacute; v&yacute;&scaron;ku nad zemou a tieto v&yacute;&scaron;ky sa použ&iacute;vaj&uacute; na určenie plochy viditeľnosti. Napr&iacute;klad, plocha viditeľnosti poč&iacute;tan&aacute; pre 300 st&ocirc;p vysok&eacute; vetern&eacute; turb&iacute;ny a 6 st&ocirc;p vysok&uacute; osobu stojacu na zemi bude v&auml;č&scaron;ia, ako plocha viditeľnosti poč&iacute;tan&aacute; pre 200 st&ocirc;p vysok&eacute; turb&iacute;ny a 5 st&ocirc;p vysok&uacute; osobu.
+    </p>
+    <p>V&yacute;sledn&aacute; vrstva zaznamen&aacute;va, koľkokr&aacute;t bude každ&aacute; lokalita bunky vo vstupnom povrchovom rastri viditeľn&aacute; zo vstupn&yacute;ch pozorovac&iacute;ch bodov. Neviditeľn&eacute; bunky dostan&uacute; hodnoty NoData.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&yacute; bude len rozsah rastra a pozorovacie body v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky pozorovacie body vo vrstve vstupu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="elevationSurface">
+        <div><h2>Výškový povrch</h2></div>
+        <hr/>
+        <div>
+            <p>V&yacute;&scaron;kov&yacute; povrch, ktor&yacute; sa m&aacute; použiť na v&yacute;počet plochy viditeľnosti.
+            </p>
+            <p>Ak je vertik&aacute;lna jednotka vstupn&eacute;ho povrchu odli&scaron;n&aacute; od horizont&aacute;lnej jednotky, napr&iacute;klad ak s&uacute; hodnoty nadmorskej v&yacute;&scaron;ky reprezentovan&eacute; v stop&aacute;ch, ale s&uacute;radnicov&yacute; syst&eacute;m je v metroch, povrch mus&iacute; mať definovan&yacute; vertik&aacute;lny s&uacute;radnicov&yacute; syst&eacute;m. D&ocirc;vodom je, že n&aacute;stroj použ&iacute;va vertik&aacute;lne (Z) a horizont&aacute;lne (XY) jednotky na v&yacute;počet Z faktoru pre anal&yacute;zu plochy viditeľnosti. Bez vertik&aacute;lneho s&uacute;radnicov&eacute;ho syst&eacute;mu, a teda bez dostupn&yacute;ch inform&aacute;ci&iacute; o Z jednotk&aacute;ch, bude n&aacute;stroj predpokladať, že Z jednotky s&uacute; totožn&eacute; s XY jednotkami. V&yacute;sledkom toho je, že sa pre &uacute;čely anal&yacute;zy použije vn&uacute;torn&yacute; Z faktor o hodnote 0.1, čo m&ocirc;že sp&ocirc;sobiť neočak&aacute;van&eacute; v&yacute;sledky.
+            </p>
+            <p>V&yacute;&scaron;kov&yacute; povrch m&ocirc;že byť vo form&aacute;te cel&yacute;ch alebo desatinn&yacute;ch č&iacute;sel.
+            </p>
+        </div>
+    </div>
+    <div id="observerFeatures">
+        <div><h2>Bodové prvky, ktoré reprezentujú pozorovacie lokality</h2></div>
+        <hr/>
+        <div>
+            <p>Bodov&eacute; prvky, ktor&eacute; reprezentuj&uacute; pozorovacie lokality pri v&yacute;počte plochy viditeľnosti.
+            </p>
+        </div>
+    </div>
+    <div id="optimizeFor">
+        <div><h2>Optimalizovať pre</h2></div>
+        <hr/>
+        <div>
+            <p>Met&oacute;da optimaliz&aacute;cie, ktor&aacute; sa použije na v&yacute;počet plochy viditeľnosti.
+            </p>
+            <ul>
+                <li>Speed &mdash; 
+T&aacute;to met&oacute;da optimalizuje r&yacute;chlosť spracovania na &uacute;kor časti presnosti v&yacute;sledku. Toto je prednastaven&aacute; voľba.
+
+                </li>
+                <li>Accuracy &mdash; 
+T&aacute;to met&oacute;da je optimalizovan&aacute; pre presnosť vo v&yacute;sledkoch, ale sp&ocirc;sobuje dlh&scaron;&iacute; čas spracovania.
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="maximumDistance">
+        <div><h2>Maximálna dohľadová vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte medzn&uacute; vzdialenosť, kde sa v&yacute;počet pl&ocirc;ch viditeľnosti zastav&iacute;. Za touto vzdialenosťou sa už nebude určovať, či sa pozorovacie body a ďal&scaron;ie objekty m&ocirc;žu navz&aacute;jom vidieť.
+            </p>
+            <p>M&ocirc;žete &scaron;pecifikovať buď č&iacute;seln&uacute; hodnotu reprezentuj&uacute;cu line&aacute;rnu vzdialenosť, alebo vybrať č&iacute;seln&eacute; pole zo vstupn&yacute;ch prvkov pozorovateľov. Ak je poskytnut&eacute; pole, hodnoty obsiahnut&eacute; v poli musia byť v rovnak&yacute;ch jednotk&aacute;ch ako jednotky x, y vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+            <p>Berte na vedomie, že veľk&eacute; hodnoty zv&yacute;&scaron;a v&yacute;početn&yacute; čas. Ak nie je &scaron;pecifikovan&eacute;, predvolen&aacute; maxim&aacute;lna vzdialenosť bude vypoč&iacute;tan&aacute; na z&aacute;klade rozl&iacute;&scaron;enia a rozsahu vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+            <p>Tento parameter je užitočn&yacute; na modelovanie určit&yacute;ch javov. Napr&iacute;klad, obmedzen&iacute;m rozsahu viditeľnosti m&ocirc;žete modelovať poveternostn&eacute; podmienky, ako napr&iacute;klad ľahk&uacute; hmlu. Podobne, obmedzenie rozsahu viditeľnosti v&aacute;m poskytuje ist&uacute; kontrolu nad den&yacute;m časom simul&aacute;ciou s&uacute;mraku.
+            </p>
+        </div>
+    </div>
+    <div id="maximumDistanceField">
+        <div><h2>Maximálna dohľadová vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="minimumDistance">
+        <div><h2>Minimálna zobrazovacia vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte vzdialenosť, kde sa začne v&yacute;počet viditeľn&yacute;ch oblast&iacute;. Bunky na povrchu bliž&scaron;ie, ako zadan&aacute; vzdialenosť, nie s&uacute; viditeľn&eacute; vo v&yacute;sledku, ale m&ocirc;žu napriek tomu blokovať viditeľnosť buniek medzi minim&aacute;lnou a maxim&aacute;lnou zobrazovacou vzdialenosťou.
+            </p>
+            <p>M&ocirc;žete &scaron;pecifikovať buď č&iacute;seln&uacute; hodnotu reprezentuj&uacute;cu line&aacute;rnu vzdialenosť, alebo vybrať č&iacute;seln&eacute; pole zo vstupn&yacute;ch prvkov pozorovateľov. Ak je poskytnut&eacute; pole, hodnoty obsiahnut&eacute; v poli musia byť v rovnak&yacute;ch jednotk&aacute;ch ako jednotky x, y vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+            <p>Tento parameter je užitočn&yacute; na kontrolovanie anal&yacute;zy oblasti pl&ocirc;ch viditeľnosti v &scaron;pecifickej vzdialenosti od pozorovateľa. Napr&iacute;klad, ak hodnot&iacute;te viditeľnosť zo strechy budovy do vzdialen&eacute;ho parku, m&ocirc;žete nastaviť minim&aacute;lnu zobrazovaciu vzdialenosť tak, aby ste vyl&uacute;čili bl&iacute;zke oblasti, o ktor&eacute; nem&aacute;te z&aacute;ujem, č&iacute;m z&iacute;skate vy&scaron;&scaron;iu r&yacute;chlosť spracovania.
+            </p>
+        </div>
+    </div>
+    <div id="minimumDistanceField">
+        <div><h2>Minimálna zobrazovacia vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="viewingDistance3D">
+        <div><h2>Vzdialenosť je 3D</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať, či s&uacute; parametre minim&aacute;lnej a maxim&aacute;lnej vzdialenosti meran&eacute; trojrozmerne, alebo jednoduch&scaron;ie dvojrozmerne. Keď je možnosť za&scaron;krtnut&aacute;, zobrazovacie vzdialenosti bud&uacute; považovan&eacute; za 3D vzdialenosti. Keď nie je za&scaron;krtnut&aacute;, s&uacute; považovan&eacute; za 2D vzdialenosti.
+            </p> 
+            <p>2D vzdialenosť je jednoduch&aacute; line&aacute;rna vzdialenosť meran&aacute; medzi pozorovateľom a cieľom za pomoci ich rovinn&yacute;ch pol&ocirc;h na &uacute;rovni mora. 3D vzdialenosť d&aacute;va realistickej&scaron;iu hodnotu, keďže berie do &uacute;vahy ich relat&iacute;vne v&yacute;&scaron;ky.
+            </p>  
+        </div>
+    </div>
+    <div id="observersElevation">
+        <div><h2>Nadmorská výška pozorovacích lokalít</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte nadmorsk&eacute; v&yacute;&scaron;ky lokal&iacute;t pozorovateľov.
+            </p>
+            <p>M&ocirc;žete &scaron;pecifikovať buď č&iacute;seln&uacute; hodnotu reprezentuj&uacute;cu nadmorsk&uacute; v&yacute;&scaron;ku v&scaron;etk&yacute;ch pozorovateľov, alebo m&ocirc;žete zadať pole, ktor&eacute; reprezentuje v&yacute;&scaron;ku každ&eacute;ho pozorovateľa. Ak je poskytnut&eacute; pole, hodnota obsiahnut&aacute; v poli mus&iacute; byť v rovnak&yacute;ch jednotk&aacute;ch, ako Z jednotky vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+        </div>
+    </div>
+    <div id="observersElevationField">
+        <div><h2>Nadmorská výška pozorovacích lokalít</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="observersHeight">
+        <div><h2>Výška pozorovateľov nad povrchom</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte v&yacute;&scaron;ku pozorovateľa nad povrchom pre každ&uacute; pozorovaciu lokalitu.
+            </p> 
+            <p>M&ocirc;žete &scaron;pecifikovať buď č&iacute;seln&uacute; hodnotu pre v&yacute;&scaron;ku, alebo vybrať pole zo vstupn&yacute;ch prvkov pozorovateľov. Ak je poskytnut&eacute; pole, hodnota obsiahnut&aacute; v poli mus&iacute; byť v rovnak&yacute;ch jednotk&aacute;ch ako jednotky z vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+            <p>Predvolen&aacute; hodnota je 6 st&ocirc;p. Ak pozorujete z vyv&yacute;&scaron;enej lokality, napr&iacute;klad z pozorovacej veže alebo vysokej budovy, použite t&uacute;to v&yacute;&scaron;ku. Počas v&yacute;počtu plochy viditeľnosti je t&aacute;to hodnota, ak je &scaron;pecifikovan&aacute;, pridan&aacute; k nadmorskej v&yacute;&scaron;ke pozorovateľa; v opačnom pr&iacute;pade je pridan&aacute; do interpolovanej z-hodnoty povrchu.
+            </p>
+        </div>
+    </div>
+    <div id="observersHeightField">
+        <div><h2>Výška pozorovateľov nad povrchom</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="targetHeight">
+        <div><h2>Výška cieľa nad povrchom</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte v&yacute;&scaron;ku kon&scaron;trukci&iacute; alebo os&ocirc;b na zemskom povrchu pre zistenie viditeľnosti.
+            </p>
+            <p>M&ocirc;žete &scaron;pecifikovať buď č&iacute;seln&uacute; hodnotu pre v&yacute;&scaron;ku, alebo vybrať pole zo vstupn&yacute;ch prvkov pozorovateľov. Ak je poskytnut&eacute; pole, hodnota obsiahnut&aacute; v poli mus&iacute; byť v rovnak&yacute;ch jednotk&aacute;ch ako jednotky z vstupn&eacute;ho v&yacute;&scaron;kov&eacute;ho povrchu.
+            </p>
+            <p>V&yacute;sledn&aacute; plocha viditeľnosti indetifikuje tie oblasti, kde pozorovac&iacute; bod m&ocirc;že vidieť tieto objekty na povrchu. Plat&iacute; to aj naopak; objekty na povrchu m&ocirc;žu vidieť pozorovac&iacute; bod.
+            </p>
+            <p>Nasleduje niekoľko pr&iacute;kladov pre nastavenia v&yacute;&scaron;ky cieľa:
+            </p>
+            <ul>
+                <li>Ak va&scaron;e vstupn&eacute; body predstavuj&uacute; vetern&eacute; turb&iacute;ny a chcete určiť, kde na zemi stojace osoby m&ocirc;žu tieto turb&iacute;ny vidieť, zadajte priemern&uacute; v&yacute;&scaron;ku človeka (približne 6 st&ocirc;p).
+                    
+
+                </li>
+                <li>Ak va&scaron;e vstupn&eacute; body predstavuj&uacute; hasičsk&eacute; vyhliadky a chcete určiť, ktor&eacute; z nich m&ocirc;žu vidieť dymov&yacute; oblak vo v&yacute;&scaron;ke 20 st&ocirc;p alebo vy&scaron;&scaron;ie, zadajte cieľov&uacute; v&yacute;&scaron;ku 20 st&ocirc;p.
+                    
+
+                </li>
+                <li>Ak va&scaron;e vstupn&eacute; body predstavuj&uacute; sc&eacute;nick&eacute; vyhliadky pozdĺž ciest alebo chodn&iacute;kov a chcete určiť, kde je možn&eacute; vidieť vetern&eacute; turb&iacute;ny vysok&eacute; 400 st&ocirc;p a viac, zadajte v&yacute;&scaron;ku 400 st&ocirc;p.
+                    
+
+                </li>
+                <li>Ak va&scaron;e vstupn&eacute; body reprezentuj&uacute; sc&eacute;nick&eacute; vyhliadky a chcete určiť, ak&uacute; plochu na zemi vidia osoby stojace na vyhliadke, zadajte nulu ako cieľov&uacute; v&yacute;&scaron;ku.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="targetHeightField">
+        <div><h2>Výška pozorovateľov nad povrchom</h2></div>
+        <hr/>
+        <div>
+            
+        </div>
+    </div>
+    <div id="resultAglLayer">
+        <div><h2>Výstupná výška, ktorá sa stane viditeľnou</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov v&yacute;sledku v&yacute;stupu nad &uacute;rovňou zeme (AGL). V&yacute;sledok AGL je raster, kde každ&aacute; hodnota bunky je minim&aacute;lnou v&yacute;&scaron;kou, ktor&aacute; mus&iacute; byť pridan&aacute; do inak neviditeľnej bunky, aby ju urobila viditeľnou aspoň jedn&yacute;m pozorovateľom. Bunky, ktor&eacute; už boli viditeľn&eacute;, bud&uacute; mať priraden&uacute; hodnotu 0 v tomto v&yacute;stupnom rastri.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

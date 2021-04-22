@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Zonestatistik som tabel</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Zonestatistik som tabeldiagram"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j opsummerer v&aelig;rdierne for en raster i zonerne i et andet datas&aelig;t og rapporterer resultaterne til en tabel.
+    </p>
+    <p>Her er nogle eksempelanvendelser:
+    </p>
+    <p>
+        <ul>
+            <li>Ved at tage udgangspunkt i gr&aelig;nserne mellem enkeltstater og fordelingen af middelv&aelig;rdien for nedb&oslash;r over det kontinentale USA beregnes fordelingen af ekstreme regnvejrsh&aelig;ndelser p&aring; enkeltstater ved hj&aelig;lp af en liste med percentilv&aelig;rdier.
+                
+
+            </li>
+            <li>Ved at tage udgangspunkt i et lag med overlappende &oslash;kologiske zoner og et rasterlag med jordfugtighed beregnes alle underst&oslash;ttede statistiske data inden for hver zone med adgang til jordfugtighed.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis  <b>Anvend aktuel kortudstr&aelig;kning</b> er markeret, er det kun objekterne i inputlaget og laget, som skal summeres, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis umarkeret, analyseres alle objekter i b&aring;de inputlaget og laget, der skal summeres, ogs&aring; selvom de befinder sig uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Vælg zoneraster eller -objekter</h2></div>
+        <hr/>
+        <div>
+            <p>Det lag, der definerer gr&aelig;nserne for de zoner, eller omr&aring;der, der skal opsummeres.
+            </p>
+            <p>Laget kan v&aelig;re en heltalsraster eller objektdata. For rasterlag defineres zonerne af alle de positioner i inputtet, som har samme cellev&aelig;rdi. For objekter kan zonerne v&aelig;re overlappende. Omr&aring;derne beh&oslash;ver ikke at st&oslash;de op til hinanden.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Zonefelt</h2></div>
+        <hr/>
+        <div>
+            <p>Dette er den attribut i laget, der vil blive brugt til at definere gr&aelig;nserne for zonerne (omr&aring;derne).
+            </p>
+            <p>Forestil dig f.eks., at det f&oslash;rste inputlag definerer gr&aelig;nserne for administrationsenheden ved hj&aelig;lp af attributter, der definerer regionen, distriktet samt parcel-ID for hver enhed. Du kan ogs&aring; have et rasterlag, der definerer et biodiversitetsindeks for hver position. N&aring;r dette felt er valgt, kan du beslutte at beregne den gennemsnitlige biodiversitet p&aring; lokalt-, distrikts- og regionalt niveau.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Vælg værdiraster</h2></div>
+        <hr/>
+        <div>
+            <p>Rastercellerne i dette lag vil blive summeret efter de omr&aring;der (zoner), som de falder inden for.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Tilsidesæt NoData i beregninger (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om NoData-v&aelig;rdier ignoreres i analysen.
+                <ul>
+                    <li>Markeret &ndash; Analysen vil inkludere de celler, der har en v&aelig;rdi i inputv&aelig;rdirasteren inden for en bestemt zone med henblik p&aring; at bestemme outputv&aelig;rdien for den p&aring;g&aelig;ldende zone. NoData-celler i v&aelig;rdirasteren vil blive tilsidesat i statistikberegningen. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li>Ikke markeret &ndash; Analysen vil resultere i NoData, hvis der er NoData-v&aelig;rdier for v&aelig;rdirasterens celler inden for en bestemt zone.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Statistiktype (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den statistiktype, der skal beregnes.
+            </p>
+            <p>Inputtet kan v&aelig;re et af f&oslash;lgende:  <b>Alle</b>, <b>Middelv&aelig;rdi</b>, <b>Majoritet</b>, Maksimum <b>,</b> <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Percentil</b>, <b>Omr&aring;de</b>, <b>Standardafvigelse</b>, <b>Sum</b>, <b>Variation</b>, <b>Minimum og Maksimum</b>, <b>Middel- og Standardafvigelse</b> eller <b>Minimum, Maksimum og Middelv&aelig;rdi</b>. Standard er <b>Alle</b>.
+            </p>
+            <p>Hvis inputv&aelig;rdirasteren er heltal, beregnes alle statistiske data som standard. Hvis v&aelig;rdirasteren er af typen flydende komma, beregnes alle statistiske data undtagen  <b>Median</b> og <b>Percentil</b> som standard. 
+            </p>
+            <p>Hvis inputv&aelig;rdirasteren er af typen flydende komma, kan zoneberegningerne for  <b>Majoritet</b>, <b>Minoritet</b> og <b>Variation</b> ikke beregnes.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Percentilværdier (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>De percentiler, der skal beregnes. Der kan angives en enkelt v&aelig;rdi eller en liste med v&aelig;rdier. Standardv&aelig;rdien er 90, hvilket angiver den 90. percentil.
+            </p>
+            <p>V&aelig;rdierne kan v&aelig;re fra 0 til 100. Resultatet af at angive den 0. percentil svarer stort set til minimumsstatistikken, og den 100. percentil svarer til maksimum. En v&aelig;rdi p&aring; 50 vil stort set give det samme resultat som median-statistikken.
+            </p>
+            <p>Denne indstilling underst&oslash;ttes kun, hvis parameteren  <b>Statistiktype</b> er indstillet til <b>Percentil</b> eller <b>Alle</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Percentil interpolationstype (valgfri)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Angiver metoden for percentilinterpolation, der skal anvendes, n&aring;r antallet af v&aelig;rdier fra input-rasteren, der skal beregnes, er lige.
+            </p> 
+            <p>Hvis v&aelig;rdien af input-rasteren er af flydende heltal-pixeltypen, anvendes metoden  <b>N&aelig;rmeste</b>. Hvis v&aelig;rdien af input-rasteren er af flydende komma-pixeltypen, anvendes metoden <b>Line&aelig;r</b>. Dette er standardv&aelig;rdien.
+            </p>
+            <p>For metoden  <b>N&aelig;rmeste</b> anvendes den v&aelig;rdi, der er t&aelig;ttest p&aring; den &oslash;nskede percentil. For metoden <b>Line&aelig;r</b> anvendes det v&aelig;gtede gennemsnit af de to omkringliggende v&aelig;rdier i forhold til den &oslash;nskede percentil.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Behandl som flerdimensional (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, hvordan input-rastere skal behandles, hvis de er flerdimensionale.
+            </p>
+            <ul>
+                <li>Markeret &ndash; Statistiske data beregnes ud fra det aktuelle udsnit af det flerdimensionale inputdatas&aelig;t. Dette er standardv&aelig;rdien.
+                    
+
+                </li>
+                <li>Ikke markeret &ndash; Statistiske data beregnes for alle dimensioner af det flerdimensionale inputdatas&aelig;t.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Navn på resultattabel</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

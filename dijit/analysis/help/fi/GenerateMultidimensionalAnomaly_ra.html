@@ -44,7 +44,7 @@
         <h2>Luo moniulotteinen poikkeama</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Luo moniulotteinen poikkeama"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Computes the anomaly for each slice in an existing multidimensional raster to generate a new multidimensional raster.
     </p>
     <p>Poikkeama on havainnon poikkeama sen vakioarvosta, keskiarvosta tai mediaanista.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Valitse poikkeaman luontimenetelmä</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ritt&auml;&auml; menetelm&auml;n, jota k&auml;ytet&auml;&auml;n poikkeaman laskemiseen. 
+            <p>M&auml;&auml;ritt&auml;&auml; menetelm&auml;n, jota k&auml;ytet&auml;&auml;n poikkeaman laskemiseen.
                 <ul>
                     <li> <b>Ero keskiarvosta</b> &ndash; pikseliarvon ja sen keskiarvon v&auml;linen ero v&auml;lin m&auml;&auml;ritt&auml;miss&auml; eri viipaleissa lasketaan. T&auml;m&auml; on oletusarvo.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Ero keskiarvosta = x - &micro;
-
                         <ul>
                             <li>x = viipaleen pikseliarvo
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Prosentuaalinen ero keskiarvosta = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = viipaleen pikseliarvo
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Keskiarvon prosenttiarvo = x / &micro;
-
                         <ul>
                             <li>x = viipaleen pikseliarvo
                                 
@@ -202,7 +199,7 @@
         <div><h2>Laske keskiarvo valitsemalla temporaalinen väli</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ritt&auml;&auml; temporaalisen v&auml;lin, jota k&auml;ytet&auml;&auml;n keskiarvon laskennassa. 
+            <p>M&auml;&auml;ritt&auml;&auml; temporaalisen v&auml;lin, jota k&auml;ytet&auml;&auml;n keskiarvon laskennassa.
                 <ul>
                     <li> <b>Kaikki</b> &ndash; laskee kunkin pikselin keskiarvon kaikissa viipaleissa.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa. 
+            <p>M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa.
                 <ul>
                     <li>Valittu &ndash; Analyysi sis&auml;lt&auml;&auml; kaikki kelvolliset pikselit annetulla ulottuvuudella ja ohittaa kaikki NoData-pikselit. T&auml;m&auml; on oletusarvo.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
             <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.

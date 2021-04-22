@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Classifica pixel usando l'apprendimento profondo</h2><p/>
-        <h2><img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" alt="Classifica pixel usando l'apprendimento profondo"></h2>
+        <h2>Classifica pixel usando apprendimento profondo</h2><p/>
+        <h2><img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" alt="Classifica pixel usando apprendimento profondo"></h2>
         <hr/>
     <p>Questo strumento esegue un modello di apprendimento profondo addestrato su un raster di input per produrre un raster classificato e ogni pixel valido presenta una label class assegnata.
     </p>
@@ -82,10 +82,31 @@
             </p>
         </div>
     </div>
-    <div id="outputClassifiedRaster">
-        <div><h2>Nome del layer dei risultati</h2></div>
+    <div id="processing_mode">
+        <div><h2>Modalità di elaborazione</h2></div>
         <hr/>
         <div>
+            <p>Specifica come tutti gli elementi raster in un dataset mosaico o un servizio immagine sar&agrave; processato. Questo parametro &egrave; applicato quando il raster input &egrave; un dataset mosaico o un servizio immagine.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Tutti gli elementi raster nel dataset mosaico o servizio di immagine saranno elaborati insieme e processati. Si tratta dell'impostazione predefinita.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Tutti gli elementi raster nel dataset mosaico o servizio di immagine saranno processati come immagini separate.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
+    <div id="outputClassifiedRaster">
+        <div><h2>Nome layer risultati</h2></div>
+        <hr/>
+        <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

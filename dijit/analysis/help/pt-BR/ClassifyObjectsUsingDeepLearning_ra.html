@@ -72,17 +72,37 @@
         <div><h2>Escolher modelo de aprendizado detalhado utilizado para detectar classificar objetos</h2></div>
         <hr/>
         <div>
-            <p>O item do pacote de aprendizagem detalhada de entrada ( <code>.dlpk</code>) .
+            <p>O item do pacote de aprendizado detalhado de entrada ( <code>.dlpk</code>).
             </p>
-            <p>O pacote de aprendizagem detalhada &eacute; composto do arquivo JSON da defini&ccedil;&atilde;o de modelo da Esri ( <code>.emd</code>), o arquivo de modelo bin&aacute;rio de aprendizagem detalhada e, opcionalmente, a fun&ccedil;&atilde;o de raster do Python a ser utilizada.
+            <p>O pacote de aprendizado detalhado &eacute; composto do arquivo JSON da defini&ccedil;&atilde;o de modelo da Esri ( <code>.emd</code>), o arquivo de modelo bin&aacute;rio de aprendizado detalhado e, opcionalmente, a fun&ccedil;&atilde;o de raster do Python a ser utilizada.
             </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Modo de Processamento</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica como todos os itens do raster em um conjunto de dados de mosaico ou um servi&ccedil;o de imagem ser&atilde;o processados. Este par&acirc;metro &eacute; aplicado quando o raster de entrada &eacute; um conjunto de dados de mosaico ou um servi&ccedil;o de imagem.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Todos os itens do raster no conjunto de dados de mosaico ou servi&ccedil;o de imagem ser&atilde;o colocados em mosaico e processados. Este &eacute; o padr&atilde;o.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Todos os itens do raster no conjunto de dados de mosaico ou servi&ccedil;o de imagem ser&atilde;o processados como imagens separadas.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
     <div id="modelArguments">
         <div><h2>Especificar parâmetros do modelo de aprendizado detalhado</h2></div>
         <hr/>
         <div>
-            <p>Os par&acirc;metros da fun&ccedil;&atilde;o s&atilde;o definidos na classe de fun&ccedil;&atilde;o de raster do Python referenciada pelo modelo de entrada. &Eacute; aqui que voc&ecirc; lista os par&acirc;metros adicionais de aprendizagem detalhada e os par&acirc;metros para experimentos e refinamentos, como um limite de confian&ccedil;a para ajustar a sensibilidade.
+            <p>Os par&acirc;metros da fun&ccedil;&atilde;o s&atilde;o definidos na classe de fun&ccedil;&atilde;o de raster do Python referenciada pelo modelo de entrada. &Eacute; aqui que voc&ecirc; lista os par&acirc;metros adicionais de aprendizado detalhado e os par&acirc;metros para experimentos e refinamentos, como um limite de confian&ccedil;a para ajustar a sensibilidade.
             </p>
             <p>Os nomes dos par&acirc;metros s&atilde;o preenchidos pela ferramenta da leitura do m&oacute;dulo Python no servidor de an&aacute;lise do raster.
             </p>
@@ -102,7 +122,7 @@
         <div><h2>Modo do processamento</h2></div>
         <hr/>
         <div>
-            <p>Especifica como todos os itens de raster em um de servi&ccedil;o de imagem ser&atilde;o processados. 
+            <p>Especifica como todos os itens de raster em um de servi&ccedil;o de imagem ser&atilde;o processados.
                 <ul>
                     <li> <b>Processar como imagem mosaicada</b>&mdash;Todos os itens de raster no servi&ccedil;o de imagem ser&atilde;o mosaicados e processados. Este &eacute; o padr&atilde;o.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

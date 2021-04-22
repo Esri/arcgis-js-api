@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimális régiókapcsolatok</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Az Optim&aacute;lis r&eacute;gi&oacute;kapcsolatok eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
+        <hr/>
+    <p>Ez az eszk&ouml;z az optim&aacute;lis h&aacute;l&oacute;zati csatlakoz&aacute;st hat&aacute;rozza meg k&eacute;t vagy t&ouml;bb bemeneti r&eacute;gi&oacute; k&ouml;z&ouml;tt.
+    </p>
+    <p>Az alkalmaz&aacute;s&aacute;ra az al&aacute;bbi p&eacute;ld&aacute;k hozhat&oacute;k:
+        <ul>
+            <li>Alkalmass&aacute;g modellez&eacute;se &ndash; Egy alkalmass&aacute;gi modell alapj&aacute;n meghat&aacute;rozta a legjobb 10 &eacute;lőhelyet a hi&uacute;zok sz&aacute;m&aacute;ra. Az szeretn&eacute;, hogy a hi&uacute;zok v&aacute;ndorolni tudjanak az egyes &eacute;lőhelyek k&ouml;z&ouml;tt a vad&aacute;llatok sz&aacute;m&aacute;ra kijel&ouml;lt folyos&oacute;k leghat&eacute;konyabb h&aacute;l&oacute;zat&aacute;ban, hogy fenn lehessen tartani a genetikai diverzit&aacute;st a metapopul&aacute;ci&oacute;ban.
+                
+
+            </li>
+            <li>Fat&ouml;rzsek begyűjt&eacute;se &ndash; Az &eacute;p&uuml;letf&aacute;nak sz&aacute;nt fat&ouml;rzsek begyűjt&eacute;s&eacute;hez szeretn&eacute; kidolgozni a sz&aacute;ll&iacute;t&aacute;si utak legink&aacute;bb k&ouml;lts&eacute;gtakar&eacute;kos h&aacute;l&oacute;zat&aacute;t.
+                
+
+            </li>
+            <li>B&eacute;kefenntart&aacute;s &ndash; Katonai b&eacute;kefenntart&aacute;si bevet&eacute;sen &ouml;t olyan ter&uuml;letet hat&aacute;rozott meg, ahova katon&aacute;kat &eacute;s szem&eacute;lyzetet kell vez&eacute;nyelni. Optim&aacute;lisan &ouml;sszekapcsolt ell&aacute;t&aacute;si &uacute;tvonalakat szeretne kidolgozni a b&aacute;zisok k&ouml;z&ouml;tt.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az elemz&eacute;s csak azokat a bemenő r&eacute;tegeken l&eacute;vő helyeket foglalja mag&aacute;ban, amelyek l&aacute;that&oacute;k az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen. Ha nincs bejel&ouml;lve, akkor mindk&eacute;t bemenő r&eacute;teg &ouml;sszes hely&eacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Régióraszter vagy vektoros elem kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A bemeneti r&eacute;gi&oacute;k, amelyeket &ouml;ssze kell kapcsolni az optim&aacute;lis h&aacute;l&oacute;zattal.
+            </p>
+            <p>Ha a r&eacute;gi&oacute;bemenet egy raszter, a r&eacute;gi&oacute;kat azonos &eacute;rt&eacute;kű szomsz&eacute;dos cell&aacute;k csoportjai hat&aacute;rozz&aacute;k meg. Mindegyik r&eacute;gi&oacute;nak egyedi sz&aacute;moz&aacute;ssal kell rendelkeznie. Az egyetlen r&eacute;gi&oacute; r&eacute;sz&eacute;t sem k&eacute;pező cell&aacute;knak NoData &eacute;rt&eacute;kkel kell rendelkezni&uuml;k. A rasztert&iacute;pusnak integernek kell lennie, az &eacute;rt&eacute;kek pedig lehetnek pozit&iacute;vak vagy negat&iacute;vak.
+            </p>
+            <p>Ha a r&eacute;gi&oacute;bemenet egy vektoros elem, lehetnek benne pontok, vonalak vagy soksz&ouml;gek. A soksz&ouml;gű r&eacute;gi&oacute;k nem &aacute;llhatnak t&ouml;bbr&eacute;szes soksz&ouml;gekből.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Határoló raszter vagy vektoros elem kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az akad&aacute;lyokat meghat&aacute;roz&oacute; adathalmaz.
+            </p>
+            <p>Raszter eset&eacute;ben a bemeneti t&iacute;pus integer vagy lebegőpontos lehet. Minden &eacute;rt&eacute;kkel rendelkező cell&aacute;t (a nulla &eacute;rt&eacute;kűt is) akad&aacute;lyk&eacute;nt kezel. A NoData &eacute;rt&eacute;kű cell&aacute;kat nem tekinti akad&aacute;lynak.
+            </p>
+            <p>Vektoros elem eset&eacute;ben a bemenet lehet pont, vonal vagy soksz&ouml;g.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Költségraszter kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az egyes cell&aacute;kon t&ouml;rt&eacute;nő, s&iacute;krajzi &eacute;rtelemben vett &aacute;thalad&aacute;s impedanci&aacute;j&aacute;t vagy k&ouml;lts&eacute;g&eacute;t meghat&aacute;roz&oacute; raszter.
+            </p>
+            <p>Az egyes cellahelyeken szereplő &eacute;rt&eacute;kek az adott cell&aacute;n t&ouml;rt&eacute;nő &aacute;thalad&aacute;s egys&eacute;gnyi t&aacute;vols&aacute;gra eső k&ouml;lts&eacute;g&eacute;t jelentik. Az eszk&ouml;z a cell&aacute;n t&ouml;rt&eacute;nő &aacute;thalad&aacute;s teljes k&ouml;lts&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz megszorozza az egyes cellahelyek &eacute;rt&eacute;k&eacute;t a cellafelbont&aacute;ssal, &eacute;s &aacute;tl&oacute;s mozg&aacute;s eset&eacute;n kompenz&aacute;lja az &eacute;rt&eacute;ket.
+            </p>
+            <p>A k&ouml;lts&eacute;graszter &eacute;rt&eacute;kei lehetnek integer vagy lebegőpontos &eacute;rt&eacute;kek, de nem lehetnek negat&iacute;vak vagy null&aacute;k (a k&ouml;lts&eacute;g nem lehet negat&iacute;v vagy nulla).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Távolság módszere (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Megadja, hogy a t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa s&iacute;kbeli (lapos f&ouml;ld) vagy geod&eacute;ziai (ellipszoid) m&oacute;dszerrel t&ouml;rt&eacute;njen.
+            </p>
+            <ul>
+                <li> <b>S&iacute;kbeli</b> &ndash; A t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa lapos vet&uuml;leti s&iacute;kon t&ouml;rt&eacute;nik 2D Descartes-f&eacute;le koordin&aacute;ta-rendszerben. Ez az alap&eacute;rtelmezett m&oacute;dszer.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;ziai</b> &ndash; A t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa ellipszoidon t&ouml;rt&eacute;nik. Az eredm&eacute;nyek nem v&aacute;ltoznak, f&uuml;ggetlen&uuml;l a bemeneti vagy kimeneti vet&uuml;lettől.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Kapcsolatok a régiókon belül (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Megadja, hogy utak folytat&oacute;dnak-e &eacute;s csatlakoznak-e a bemeneti r&eacute;gi&oacute;kban.
+            </p>
+            <ul>
+                <li> <b>Kapcsolatok l&eacute;trehoz&aacute;sa</b> &ndash; Az utak folytat&oacute;dni fognak a bemeneti r&eacute;gi&oacute;kon bel&uuml;l, hogy &ouml;sszekapcsolj&aacute;k a r&eacute;gi&oacute;kba bel&eacute;pő &ouml;sszes utat. Ez az alap&eacute;rtelmez&eacute;s.
+                    
+
+                </li>
+                <li> <b>Nincsenek kapcsolatok</b> &ndash; Az &uacute;tvonalak megszakadnak a bemeneti r&eacute;gi&oacute;k sz&eacute;l&eacute;n, nem folytat&oacute;dnak &eacute;s nem kapcsol&oacute;dnak &ouml;ssze.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Eredmény optimális kapcsolódási vonalait tartalmazó vektoroselem-rétegének neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Ez a r&eacute;teg a bemeneti r&eacute;gi&oacute;kat &ouml;sszekapcsol&oacute; vonalak kimeneti vektoros eleme.
+            </p>
+            <p>Mindegyik &uacute;tvonal (vagy vonal) egyedi sz&aacute;moz&aacute;s&uacute;, &eacute;s az &uacute;tvonalra vonatkoz&oacute; adatokat az attrib&uacute;tumt&aacute;bla tov&aacute;bbi mezői t&aacute;rolj&aacute;k. Ezek a tov&aacute;bbi mezők a k&ouml;vetkezők:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Az &uacute;tvonal egyedi azonos&iacute;t&oacute;ja
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Az &uacute;tvonal teljes kumulat&iacute;v t&aacute;vols&aacute;ga vagy k&ouml;lts&eacute;ge
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Az első r&eacute;gi&oacute;, amelyet az &uacute;tvonal &ouml;sszekapcsol
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; A tov&aacute;bbi r&eacute;gi&oacute;k, amelyeket az &uacute;tvonal &ouml;sszekapcsol
+                    
+
+                </li>
+            </ul>
+            
+            <p>Mivel mindegyik &uacute;tvonalat egyedi vonal k&eacute;pvisel, t&ouml;bb vonal lesz azokon a helyeken, ahol az utak ugyanazon az &uacute;tvonalon haladnak.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Eredmény szomszédos kapcsolódásait tartalmazó vektoroselem-rétegének neve (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Ez a r&eacute;teg azon vonalak kimeneti vektoros eleme, amelyek meghat&aacute;rozz&aacute;k az &ouml;sszes utat az egyes r&eacute;gi&oacute;kb&oacute;l a legk&ouml;zelebbi vagy legkisebb k&ouml;lts&eacute;get jelentő szomsz&eacute;dos r&eacute;gi&oacute;ig.
+            </p>
+            <p>Mindegyik &uacute;tvonal (vagy vonal) egyedi sz&aacute;moz&aacute;s&uacute;, &eacute;s az &uacute;tvonalra vonatkoz&oacute; adatokat az attrib&uacute;tumt&aacute;bla tov&aacute;bbi mezői t&aacute;rolj&aacute;k. Ezek a tov&aacute;bbi mezők a k&ouml;vetkezők:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Az &uacute;tvonal egyedi azonos&iacute;t&oacute;ja
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Az &uacute;tvonal teljes kumulat&iacute;v t&aacute;vols&aacute;ga vagy k&ouml;lts&eacute;ge
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Az első r&eacute;gi&oacute;, amelyet az &uacute;tvonal &ouml;sszekapcsol
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; A tov&aacute;bbi r&eacute;gi&oacute;k, amelyeket az &uacute;tvonal &ouml;sszekapcsol
+                    
+
+                </li>
+            </ul>
+            
+            <p>Mivel mindegyik &uacute;tvonalat egyedi vonal k&eacute;pvisel, t&ouml;bb vonal lesz azokon a helyeken, ahol az utak ugyanazon az &uacute;tvonalon haladnak.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

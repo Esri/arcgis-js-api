@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>栅格分析允许使用  ArcGIS Image Server 执行大型栅格数据集分析。该工具允许通过整合服务器能力以更快地分析更多数据。当前可通过  Portal for ArcGIS web 用户体验获取的工具集包括：<b>汇总数据</b>、 <b>分析模式</b>、 <b>邻近分析</b>、 <b>分析影像</b>、 <b>分析 Terrain</b>、 <b>管理数据</b>、 <b>深度学习</b>和 <b>多维分析</b>。
+        <p>栅格分析允许使用  ArcGIS Image Server 执行大型栅格数据集分析。 该工具允许通过整合服务器能力以更快地分析更多数据。当前可通过 Portal for ArcGIS web 用户体验获取的工具集包括：<b>汇总数据</b>、 <b>分析模式</b>、 <b>邻近分析</b>、 <b>分析影像</b>、 <b>分析 Terrain</b>、 <b>管理数据</b>、 <b>深度学习</b>和 <b>多维分析</b>。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>汇总数据</h2>
         <hr/>
-        <p>此工具集包含用于计算所定义区域边界内栅格图层的某些统计数据的工具。
+        <p>这些工具可用于计算您定义的区域边界内栅格图层的统计数据。
             <ul>
                 <li> <b>汇总范围内的栅格</b>会计算位于所定义区域边界内的栅格像元的统计数据。
+                </li>
+                <li> <b>以表格显示分区统计</b>用于汇总另一个数据集区域内的栅格数据值并将结果报告到表中。
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="regularsize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>计算所定义区域内栅格像元的某些汇总统计数据。
+            <p>该工具用于汇总另一个数据集区域内的栅格数据值。
             </p>
-            <p>其中的一些应用示例如下： 
-
-                <ul>
-                    <li>已知流域面积图层和高程栅格图层，计算每条流域范围内高程的范围，以确定哪个流域的溪流能量最高。
-                        
-
-                    </li>
-                    <li>已知行政管理单位图层和土地利用类别的栅格图层，计算每个管理区域内不同的土地利用价值，以标识哪块土地在确定管理计划时需要的投入最多。
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>以表格显示分区统计</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="以表格显示分区统计逻辑示意图">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于汇总另一个数据集区域内的栅格数据值并以表的形式报告结果。
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="smallsize">
+    <div id="UseProximityCategory" class="regularsize">
         <h2>邻近分析</h2>
         <hr/>
-        <p>这些工具可帮助您回答在空间分析中提出的一个最普遍问题：&ldquo;什么在什么附近？&rdquo;
-
+        <p>这些工具可帮助您回答在空间分析中提出的一些最普遍问题：什么在什么附近？以及什么是最佳路径？
             <ul>
                 <li> <b>计算距离</b>用于计算距离单个源或一组源的欧氏距离、方向和分配。
                     
@@ -146,7 +148,27 @@
                     
 
                 </li>
-                <li> <b>确定行程成本路径折线</b>用于计算源和已知目的地之间的最低成本折线路径。
+                <li> <b>确定行程成本路径折线</b>用于计算已知目的地和源之间的最低成本折线路径。
+                    
+
+                </li>
+                <li> <b>距离累积</b>用于计算每个像元到源的累积距离，允许直线距离、成本距离和真实表面距离，以及垂直和水平因子。
+                    
+
+                </li>
+                <li> <b>距离分配</b>可根据直线距离、成本距离、真实表面距离以及垂直和水平系数，计算每个像元到所提供的源的距离分配。
+                    
+
+                </li>
+                <li> <b>最佳路径为线</b>用于以线形式计算从目的地到源的最佳路径。
+                    
+
+                </li>
+                <li> <b>最佳路径为栅格</b>用于以栅格形式计算从目的地到源的最佳路径。
+                    
+
+                </li>
+                <li> <b>最佳区域连接</b>用于在两个或多个输入区域之间计算最佳连通性网络。
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>计算距离单个源或一组源的欧氏距离、方向和分配。可使用此工具确定某个位置距离道路、建筑物或公园的距离。还可以确定必须从某个位置的哪个方向行驶才能以最直接的方式返回源。可在研究区域中查看每个位置的最接近源。
+            <p>该工具用于根据单个源或一组源计算欧氏距离、方向和分配。
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>计算一组输入区域的最佳成本网络。
+            <p>该工具用于根据一组输入区域计算最佳成本网络。
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>计算源和已知目的地之间的最低成本折线路径。
+            <p>该工具用于计算目的地和源之间的最低成本折线路径。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距离累积</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="距离累积工具图示">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于计算每个像元到源的累积距离，允许直线距离、成本距离、真实表面距离以及垂直和水平系数。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距离分配</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="距离分配工具图示">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于根据直线距离、成本距离、真实表面距离以及垂直和水平系数，计算每个像元到所提供的源的距离分配。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最佳路径为线</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="最佳路径为线工具图示">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于以线形式计算从目的地到源的最佳路径。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最佳路径为栅格</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="最佳路径为栅格工具图示">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于以栅格形式计算从目的地到源的最佳路径。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最佳区域连接</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="最佳区域连接工具图示">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>该工具用于在两个或多个输入区域之间计算最佳连通性网络。
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>分析影像</h2>
         <hr/>
-        <p>以下工具可帮助您分析影像。
+        <p> <b>分析影像</b>工具类别中的以下工具可帮助您分析影像：
             <ul>
-                <li> <b>应用栅格函数模板</b>通过栅格函数模板指定的函数链来处理影像。
-                </li>
-                <li> <b>监测植被</b>会根据对波段执行的算术运算监测影像内的植被。
+                <li> <b>监测植被</b>会根据对波段执行的算术运算检测影像中的相对植被覆盖度。 可将多个植被指数用于影像分析。
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>应用栅格函数模板</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="应用栅格函数模板">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>通过栅格函数模板指定的函数链来处理影像。
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>对多波段栅格图层的波段执行算术运算，以显示研究区域的植被覆盖度信息。
+            <p>对多波段栅格图层的波段执行算术运算，以显示植被覆盖度信息。
             </p>
             <br/>
         </div>
@@ -418,9 +498,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>采样</h2></td>
+                    <td><h2>示例</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="采样">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="示例">
                     </td>
                 </tr></tbody>
             </table>
@@ -470,7 +550,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>此工具用于运行输入栅格上的训练深度学习模型，以生成包含其找到对象的要素类。这些要素可以是所找到对象周围的边界框或面，也可以是对象中心的点。
+            <p>此工具用于运行输入栅格上的训练深度学习模型，以生成包含其找到对象的要素类。 这些要素可以是所找到对象周围的边界框或面，也可以是对象中心的点。
             </p>
             <br/>
         </div>

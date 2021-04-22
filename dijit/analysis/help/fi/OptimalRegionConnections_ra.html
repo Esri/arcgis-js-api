@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimaaliset alueen yhteydet</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Optimaaliset alueen yhteydet -ty&ouml;kalun kuva"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen yhteysverkoston kahden tai useamman l&auml;ht&ouml;alueen v&auml;lill&auml;.
+    </p>
+    <p>Esimerkkisovelluksia ovat mm. seuraavat:
+        <ul>
+            <li>Sopivuusmalli &ndash; sopivuusmallista on tunnistettu 10 parasta elinaluetta punailveksille. Haluat, ett&auml; punailvekset voivat siirty&auml; alueiden v&auml;lill&auml; tehokkaimpien villiel&auml;ink&auml;yt&auml;vien kautta, jotta monimuotoisuus s&auml;ilyy metapopulaatiossa.
+                
+
+            </li>
+            <li>Puunkorjuu &ndash; puunkorjuussa haluat luoda kustannustehokkaimman ajourien verkoston, joiden avulla puutavara ker&auml;t&auml;&auml;n.
+                
+
+            </li>
+            <li>Rauhanturvaaminen &ndash; armeijan rauhanturvaamistoimissa olet tunnistanut viisi aluetta, joihin voit sijoittaa joukkoja ja henkil&ouml;kuntaa. Haluat kehitt&auml;&auml; optimaalisesti yhdistetyt jakelureitit tukikohtien v&auml;lill&auml;.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jos  <b>K&auml;yt&auml; nykyist&auml; karttalaajuutta</b> -asetus on valittuna, vain l&auml;ht&ouml;karttatasoissa olevat, nykyisess&auml; karttalaajuudessa n&auml;kyv&auml;t sijainnit analysoidaan. Jos toimintoa ei ole valittu, kaikki molempien l&auml;ht&ouml;karttatasojen sijainnit analysoidaan &ndash; my&ouml;s ne, jotka ovat nykyisen karttalaajuuden ulkopuolella.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Valitse aluerasteri tai -kohde</h2></div>
+        <hr/>
+        <div>
+            <p>L&auml;ht&ouml;alueet, jotka optimaalinen verkosto yhdist&auml;&auml;.
+            </p>
+            <p>Jos l&auml;ht&ouml;alue on rasteri, alueet m&auml;&auml;ritet&auml;&auml;n niiden ryhmien pohjalta, joiden vierekk&auml;isiss&auml; soluissa on sama arvo. Jokaisella alueella on oma numeronsa. Jos solu ei kuulu mihink&auml;&auml;n alueeseen, se on yht&auml; kuin NoData. Rasterityypin on oltava kokonaisluku, ja arvot voivat olla joko positiivisia tai negatiivisia.
+            </p>
+            <p>Jos l&auml;ht&ouml;alue on kohde, se voi olla piste, viiva tai alue. Aluekohteista muodostuvat alueet eiv&auml;t voi koostua moniosaisista alueista.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Valitse esterasteri tai kohde (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Aineistoryhm&auml;, joka m&auml;&auml;ritt&auml;&auml; esteet.
+            </p>
+            <p>L&auml;ht&ouml;aineiston tyyppi voi rasteria varten olla joko kokonaisluku tai liukuluku. Kaikkia soluja, joilla on arvo (mukaan lukien nolla), k&auml;sitell&auml;&auml;n estein&auml;. Soluja, joiden arvona on NoData, ei k&auml;sitell&auml; estein&auml;.
+            </p>
+            <p>Kohteen l&auml;ht&ouml;aineisto voi olla piste, viiva tai aluekohde.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Valitse kustannusrasteri (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri, joka m&auml;&auml;ritt&auml;&auml; impedanssin tai kustannuksen, jotta se voi liikkua planimetrisesti jokaisen solun l&auml;pi.
+            </p>
+            <p>Kunkin solusijainnin arvo edustaa yksikk&ouml;kohtaisen kustannuksen v&auml;limatkaa solun kautta siirtymiseksi. Kunkin solusijainnin arvo kerrotaan solun resoluutiolla diagonaalista liikett&auml; kompensoimalla, jotta saadaan selville solun l&auml;pikulun aiheuttamat kustannukset.
+            </p>
+            <p>Kustannusrasterin arvo voi olla kokonaisluku tai liukuluku, mutta se ei voi olla negatiivinen eik&auml; nolla (kustannus ei voi olla negatiivinen eik&auml; nolla).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Etäisyysmenetelmä (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, lasketaanko et&auml;isyys planaarisen (litte&auml; maa) tai geodeettisen (ellipsoidi) menetelm&auml;n avulla.
+            </p>
+            <ul>
+                <li> <b>Planaarinen</b> &ndash; et&auml;isyyslaskenta suoritetaan projisoidusta litte&auml;st&auml; tasosta karteesisen 2D-koordinaatiston avulla. T&auml;m&auml; on oletusmenetelm&auml;.
+                    
+
+                </li>
+                <li> <b>Geodeettinen</b> &ndash; et&auml;isyyslaskenta suoritetaan ellipsoidille. Siksi tulokset eiv&auml;t muutu l&auml;ht&ouml;aineiston tai tulosaineiston projisoinnista huolimatta.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Yhteydet alueissa (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, jatkuvatko polut ja yhdistet&auml;&auml;nk&ouml; ne l&auml;ht&ouml;aineiston alueilla.
+            </p>
+            <ul>
+                <li> <b>Luo yhteydet</b> &ndash; polut jatkuvat l&auml;ht&ouml;aineiston alueilla, jotta kaikki alueeseen liittyv&auml;t polut yhdistet&auml;&auml;n. T&auml;m&auml; on oletusarvo.
+                    
+
+                </li>
+                <li> <b>Ei yhteyksi&auml;</b> &ndash; polut p&auml;&auml;ttyv&auml;t l&auml;ht&ouml;aineiston alueiden reunoihin eiv&auml;tk&auml; ne jatku tai yhdisty niihin.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Tuloksena oleva optimaalisten yhdistyvyysviivojen kohdekarttatason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>T&auml;m&auml; karttataso on tulosviivakohde, joka yhdist&auml;&auml; kunkin l&auml;ht&ouml;aineiston alueen.
+            </p>
+            <p>Jokainen polku (tai rivi) on numeroitu yksil&ouml;llisesti, ja ominaisuustietotaulun lis&auml;kent&auml;t sis&auml;lt&auml;v&auml;t tietyt polkua koskevat tiedot. Lis&auml;kent&auml;t ovat seuraavat:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; polun yksil&ouml;llinen tunnus
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; polun kumulatiivinen kokonaiset&auml;isyys tai -kustannus
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; ensimm&auml;inen alue, johon polku yhdistyy
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; toinen alue, johon polku yhdistyy
+                    
+
+                </li>
+            </ul>
+            
+            <p>Koska kutakin polkua edustaa yksil&ouml;llinen viiva, sijainneissa, joissa polut kulkevat samalla reitill&auml;, on useita rivej&auml;.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Tuloksena oleva viereisten yhteyksien kohdekarttatason nimi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>T&auml;m&auml; karttataso on tulosviivakohde, joka tunnistaa kunkin alueen kaikki polut l&auml;himp&auml;&auml;n tai pienimm&auml;n kustannuksen naapuriin.
+            </p>
+            <p>Jokainen polku (tai rivi) on numeroitu yksil&ouml;llisesti, ja ominaisuustietotaulun lis&auml;kent&auml;t sis&auml;lt&auml;v&auml;t tietyt polkua koskevat tiedot. Lis&auml;kent&auml;t ovat seuraavat:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; polun yksil&ouml;llinen tunnus
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; polun kumulatiivinen kokonaiset&auml;isyys tai -kustannus
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; ensimm&auml;inen alue, johon polku yhdistyy
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; toinen alue, johon polku yhdistyy
+                    
+
+                </li>
+            </ul>
+            
+            <p>Koska kutakin polkua edustaa yksil&ouml;llinen viiva, sijainneissa, joissa polut kulkevat samalla reitill&auml;, on useita rivej&auml;.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

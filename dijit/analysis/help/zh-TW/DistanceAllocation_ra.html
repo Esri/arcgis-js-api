@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>距離分配</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="距離分配工具圖例"></h2>
+        <hr/>
+    <p>此工具根據直線距離、成本距離、真實表面距離，以及垂直和水平係數，計算每個儲存格到提供的來源之間的距離分配。
+    </p>
+    <p>應用程式範例包含回答以下類似的問題：
+        <ul>
+            <li>識別現場工作人員負責的分配區域。
+                
+
+            </li>
+            <li>識別分配給山貓棲息地圖面的區域。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果勾選 <b>使用目前地圖範圍</b>，則僅分析目前地圖範圍中可見的輸入圖層中的圖徵。 如果未勾選，則分析輸入圖層中的所有圖徵，包括超出目前地圖顯示範圍的圖徵。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>選擇來源點陣或圖徵</h2></div>
+        <hr/>
+        <div>
+            <p>識別將計算與來源之距離的點陣或圖徵。
+            </p>
+            <p>如果輸入是點陣，則必須包含具備來源有效值 (零是有效值) 的儲存格，且必須將剩餘的儲存格指派為 NoData。
+            </p>
+            <p>如果輸入為圖徵圖層，則可以是點、線或多邊形。
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>來源欄位 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來將值指派給來源位置的欄位。 其必須為整數類型。
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>選擇屏障點陣或圖徵 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義屏障的資料集。
+            </p>
+            <p>若是點陣圖層，則輸入類型可以是整數或浮點數。 具有值 (包含零) 的任何儲存格都會視為屏障。 不會將作為 NoData 的任何儲存格視為屏障。
+            </p>
+            <p>對於圖徵服務，輸入可為點、線或多邊形。
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>選擇表面點陣 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義每一個儲存格位置上之高程值的點陣。
+            </p>
+            <p>值是用來計算在儲存格之間傳遞時所涵蓋的實際表面距離。
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>選擇成本點陣 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義阻抗或成本的點陣，以均勻方式穿過每個儲存格。
+            </p>
+            <p>每個儲存格位置上的值表示穿過該儲存格之每單位距離的成本。 每個儲存格位置值乘以儲存格解析度，同時也可以補償對角移動來取得穿過儲存格的總成本。
+            </p>
+            <p>成本點陣的值可為整數或浮點數，但不可是負數或零（您不能有負或零成本）。
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>選擇垂直點陣 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義每一個儲存格位置之 z 值的點陣。
+            </p>
+            <p>這些值用於計算坡度，可用來識別從某一個儲存格移至另一個儲存格時所發生的垂直係數。
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>垂直係數 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>垂直係數</b>會定義垂直成本係數與垂直相對移動角度之間的關係。
+            </p>
+            <p>可選擇修飾詞的若干係數來識別定義的垂直係數圖形。 圖形是用來識別垂直係數，在計算移至鄰近儲存格的總成本時會使用該係數。
+            </p>
+            <p>在下方說明中，垂直係數 (VF) 定義了從某一個儲存格移到下一個儲存格十遇到的垂直難度，而垂直相對移動角度 (VRMA) 修飾詞會識別 <b>從來源</b>儲存格和 <b>到來源</b>儲存格之間的傾斜角度。
+                <ul>
+                    <li> <b>-二進位</b> - 指定 VRMA 是否大於低切角並小於高切角，VF 是設為零係數的相關值；否則將是無限大。
+                    </li>
+                    <li> <b>線性</b> - 指出 VF 是 VRMA 的線性函數。
+                    </li>
+                    <li> <b>反向線性</b> - 指出 VF 是 VRMA 的反向線性函數。
+                    </li>
+                    <li> <b>對稱線性</b> - VF 是 VRMA 的負面或正面中 VRMA 的線性函數，兩個線性函數與 VF (y) 軸對稱。
+                    </li>
+                    <li> <b>對稱反向線性</b> - VF 是 VRMA 的負面或正面中 VRMA 的反向線性函數，兩個線性函數與 VF (y) 軸對稱。
+                    </li>
+                    <li> <b>Cos</b> - VF 為 VRMA 的餘弦式函數。
+                    </li>
+                    <li> <b>Sec</b> - VF 為 VRMA 的正割式函數。
+                    </li>
+                    <li> <b>Cos-Sec</b> - VF 是 VRMA 的餘弦式函數 (當 VRMA 為負數) 和 VRMA 的正割式函數 (當 VRMA 非負數)。
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b> - VF 是 VRMA 的正割式函數 (當 VRMA 為負數) 和 VRMA 的餘弦式函數 (當 VRMA 非負數)。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>以下是垂直參數的修飾詞：
+                <ul>
+                    <li> <b>零係數</b> - VRMA 為零時使用的垂直係數。 此係數會放置指定函數的 y 截面。 依定義，零係數不適合任何三角垂直函數（Cos、Sec、Cos-Sec 或 Sec-Cos）。 y 截面是由這些函數所定義。
+                    </li>
+                    <li> <b>低切角</b> - 低於哪個 VRMA 角度時，將 VF 設為無限大。
+                    </li>
+                    <li> <b>高切角</b> - 高於哪個 VRMA 角度時，將 VF 設為無限大。
+                    </li>
+                    <li> <b>坡度</b> - 與 <b>線性</b>和 <b>反向線性</b>參數搭配使用的直線坡度。 坡度指定為運行時上升的部分 (例如，45％ 坡度為 1/45，輸入為 0.02222)。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>選擇水平點陣 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義每一個儲存格上之水平方向的點陣。
+            </p>
+            <p>點陣上的值必須是範圍 0 到 360 的整數，0 度表示北方，或朝向畫面頂端，並且順時針遞增。 必須將值 -1 給予平坦區域。 將聯合使用每個位置值與 <b>水平係數</b>，以判斷從儲存格移至其鄰里時所發生的水平成本。
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>水平係數 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>水平係數</b>定義水平成本係數與水平相對移動角度之間的關係。
+            </p>
+            <p>可選擇修飾詞的若干係數來識別定義的水平係數圖形。 圖形是用來識別水平係數，在計算移至鄰近儲存格的總成本時會使用該係數。
+            </p>
+            <p>在下列說明中，水平係數 (HF) 定義了從某一個儲存格移到下一個儲存格時遇到的水平難度；而水平相對移動角度 (HRMA) 則會識別某個儲存格的水平方向與移動方向之間的角度。
+            </p>
+            <p>以下是這些 HF 的定義和參數：
+                <ul>
+                    <li> <b>二進位</b> - 如果 HRMA 小於切角，則 HF 會設為零係數的相關值；否則將是無限大。
+                        
+
+                    </li>
+                    <li> <b>往前</b> - 只允許向前移動。 HRMA 必須大於或等於 0 並小於 90 (0 &lt;= HRMA &lt; 90)。 如果 HRMA 大於 0 並小於 45 度，則會將儲存格的 HF 設定為零係數的相關值。 如果 HRMA 大於或等於 45 度，則使用邊值修飾詞值。 會將等於或大於 90 度的任何 HRMA 的 HF 設定為無限大。
+                    </li>
+                    <li> <b>線性</b> - HF 是 HRMA 的線性函數。
+                        
+
+                    </li>
+                    <li> <b>反向線性</b> - HF 是 HRMA 的反向線性函數。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>以下是水平關鍵字的修飾詞：
+                <ul>
+                    <li> <b>零係數</b> - HRMA 為零時使用的水平係數。 此係數會放置任何水平係數函數的 y 截面。
+                        
+
+                    </li>
+                    <li> <b>切角</b> - 超過哪個 HRMA 角度時，將 HF 設為無限大。
+                        
+
+                    </li>
+                    <li> <b>坡度</b> - 與 <b>線性</b>和 <b>反向線性</b>水平係數關鍵字搭配使用的直線坡度。 坡度指定為運行時上升的部分 (例如，45％ 坡度為 1/45，輸入為 0.02222)。
+                        
+
+                    </li>
+                    <li> <b>邊值</b> - 在指定 <b>往前</b>水平係數關鍵字的情況下，當 HRMA 大於或等於 45 度且小於 90 度時的 HF。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>初始累積</h2></div>
+        <hr/>
+        <div>
+            <p>用來開始計算成本的初始累積成本。
+            </p>
+            <p>這會允許指定與來源相關聯的固定成本。 不需要從成本零時開始，成本演算法將使用 <b>初始累積</b>所設定的值開始執行。
+            </p>
+            <p>值必須是零或更大。 預設值是 0。
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>最大累積</h2></div>
+        <hr/>
+        <div>
+            <p>某一來源旅行者的最大累積。
+            </p>
+            <p>為每個來源持續計算成本，直到達到指定的累積。
+            </p>
+            <p>值必須大於零。 預設累積是輸出點陣的邊緣。
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>成本乘數</h2></div>
+        <hr/>
+        <div>
+            <p>套用至成本值的乘數。
+            </p>
+            <p>這可控制來源上的行進或量級的模式。 乘數越大，移經每個儲存格的成本就越大。
+            </p>
+            <p>值必須大於零。 預設值是 1。
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>行進方向</h2></div>
+        <hr/>
+        <div>
+            <p>指定套用水平和垂直係數時旅行者的方向。
+            </p>
+            <p> <b>從來源</b> - 水平係數和垂直係數將從輸入來源開始套用，並向外行進至非來源儲存格。 這是預設情況。
+            </p>
+            <p> <b>到來源</b> - 水平係數和垂直係數將從每個非來源儲存格開始套用，並行進回到輸入來源。
+            </p>
+            <p>指定 <b>從來源</b>或 <b>到來源</b>關鍵字 (將套用到所有來源)，或在來源資料中指定包含關鍵字的欄位，以識別每個來源的行進方向。 該欄位必須包含字串 <code>FROM_SOURCE</code> 或 <code>TO_SOURCE</code>。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>距離方法 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定要使用平面 (平坦大地) 還是測地線 (橢圓) 方法來計算距離。
+            </p>
+            <ul>
+                <li> <b>平面</b> - 將使用 2D 笛卡兒座標系統，在投影的平面上執行距離計算。 這是預設方法。
+                    
+
+                </li>
+                <li> <b>測地線</b> - 在橢球體上執行距離計算。 因此，不論輸入或輸出投影為何都不會變更結果。
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>結果距離分配點陣名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>結果距離累積點陣名稱</h2></div>
+        <hr/>
+        <div>
+            <p>距離累積點陣包含每個儲存格與最低成本來源之間往返的累積距離。
+            </p>
+            <p>輸出點陣為浮點數類型。
+            </p>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>結果反方向點陣名稱 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>反方向點陣包含以度為單位所計算的方向。 該方向識別了沿最短路徑返回最近來源，同時避開屏障的下一個儲存格。
+            </p>
+            <p>值的範圍從 0 度到 360 度，0 保留給來源儲存格使用。 正東方 (右側) 為 90，且值會順時針遞增 (180 為南方，270 為西方，360 為北方)。
+            </p>
+            <p>輸出點陣為浮點數類型。
+            </p>
+            <p>將在 <b>我的內容</b>中建立圖層的名稱。 您必須提供 <b>我的內容</b>中目前不存在的名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>結果來源方向點陣名稱 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>來源方向點陣識別了以度為單位，作為方位的最低累積成本來源儲存格的方向。
+            </p>
+            <p>值的範圍從 0 度到 360 度，0 保留給來源儲存格使用。 正東方 (右側) 為 90，且值會順時針遞增 (180 為南方，270 為西方，360 為北方)。
+            </p>
+            <p>輸出點陣為浮點數類型。
+            </p>
+            <p>將在 <b>我的內容</b>中建立圖層的名稱。 您必須提供 <b>我的內容</b>中目前不存在的名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>結果來源位置點陣名稱 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>來源位置點陣為多頻段輸出。 第一個頻段包含列索引，而第二個頻段包含欄索引。 這些索引可識別累積成本距離最低的來源儲存格的位置。
+            </p>
+            <p>將在 <b>我的內容</b>中建立圖層的名稱。 您必須提供 <b>我的內容</b>中目前不存在的名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,7 @@
         <h2>Sumiraj raster unutar</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Alatka Sumiraj raster unutar"></h2>
         <hr/>
-    <p>Ova alatka sumira raster na osnovu oblasti (zona) definisanih prvim ulaznim slojem.
+    <p>Ova alatka sumira vrednosti rastera unutar zona drugog skupa podataka.
     </p>
     <p>Neki primeri primene obuhvataju sledeće:
     </p>
@@ -99,17 +99,37 @@
         <div>
             <p>Kada izaberete sloj za sumiranje, možete opciono da izračunate statistiku bilo kog numeričkog atributa tačaka, linija ili oblasti unutar sloja ulazne oblasti.
             </p>
-            <p>Dostupni tipovi statistike kada je odabrano polje celobrojno su prosek, većina, maksimum, srednja vrednost, minimum, manjina, opseg, standardna devijacija, zbir i raznovrsnost.
+            <p>Dostupni tipovi statistike kada je odabrano polje celobrojno su prosek, većina, maksimum, srednja vrednost, minimum, manjina, procenat, opseg, standardna devijacija, zbir i raznovrsnost.
             </p>
             <p>Ako je polje sa pokretnim zarezom, opcije su prosek, maksimum, minimum, opseg, standardna devijacija i zbir.
             </p>
         </div>
     </div>
+    <div id="percentileValue">
+        <div><h2>Percentilna vrednost</h2></div>
+        <hr/>
+        <div>
+            <p>Percentili za kalkulaciju. Podrazumevano je 90 &scaron;to označava 90-i procenat.
+            </p>
+            <p>Opseg se kreće od 0 do 100. Procenat 0 je su&scaron;tinski ekvivalentan minimalnoj statistici, a procenat 100 je ekvivalent maksimumu. Vrednost od 50 proizve&scaron;će u su&scaron;tini iste rezultate kao srednja statistika.
+            </p>
+            <p>Ova opcija je samo podržana ako je parametar  <b>Izbor statistike za kalkulaciju</b> pode&scaron;en na <b>Percentil</b>.
+            </p>
+        </div>
+    </div>
     <div id="missingValues">
-        <div><h2>Ignoriši nedostajuće vrednosti u izračunavanju</h2></div>
+        <div><h2>Ignoriši nedostajuće vrednosti u izračunavanju</h2></div>
         <hr/>
         <div>
             <p>Ako odaberete da ignori&scaron;ete vrednosti koje nedostaju, za određivanje izlazne vrednosti za tu oblast će se koristiti samo ćelije koje imaju vrednost u sloju koji treba da se sumira. U suprotnom, ako bilo gde u oblasti nedostaju vrednosti, smatra se da nema dovoljno informacija za vr&scaron;enje statističkih izračunavanja za sve ćelije u toj zoni i ta oblast će na izlazu dobiti vrednost null (bez podataka).
+            </p>
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Obradi kao višedimenzionalno</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi kako će unosni rasteri biti obrađeni ako su vi&scaron;edimenzionalni. Ako izaberete obradu kao vi&scaron;edimenzionalno, statistika će biti proračunata iz svih dimenzija za ulazni set podataka za vi&scaron;e dimenzija. U suprotnom, statistika će se proračunati iz trenutnog isečka za ulazni vi&scaron;edimenzionalni set podataka, koji je podrazumevan.
             </p>
         </div>
     </div>
@@ -117,6 +137,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

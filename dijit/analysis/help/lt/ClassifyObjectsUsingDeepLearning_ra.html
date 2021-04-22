@@ -78,11 +78,31 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Apdorojimo režimas</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, kaip bus apdorojami visi mozaikos duomenų rinkinio arba vaizdų paslaugos rastro elementai. &Scaron;is parametras taikomas, kai įvesties rastras yra mozaikos duomenų rinkinys arba vaizdo paslauga.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Bus sudaryta ir apdorojama visų mozaikos duomenų rinkinio arba vaizdų paslaugos rastro elementų mozaika. Tai yra numatytasis nustatymas.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Visi mozaikos duomenų rinkinio arba vaizdų paslaugos rastro elementai bus apdoroti kaip atskiri vaizdai.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="modelArguments">
         <div><h2>Nurodykite gilaus mokymosi modelio argumentus</h2></div>
         <hr/>
         <div>
-            <p>Funkcijos argumentai apibrėžiami įvesties modelyje, nurodytoje Python rastro funkcijos klasėje. Būtent čia nurodote papildomus giliojo mokymosi parametrus ir argumentus, skirtus eksperimentuoti ir tobulinti, pavyzdžiui, pasitikėjimo ribą jautrumo korekcijoms.
+            <p>Funkcijos argumentai apibrėžiami įvesties modelyje nurodytoje Python rastro funkcijos klasėje. Būtent čia nurodote papildomus giliojo mokymosi parametrus ir argumentus, skirtus eksperimentuoti ir tobulinti, pavyzdžiui, pasitikėjimo ribą jautrumo korekcijoms.
             </p>
             <p>Argumentų pavadinimus įrankis i&scaron;platina skaitydamas Python modulį rastrų analizės serveryje.
             </p>
@@ -102,9 +122,9 @@
         <div><h2>Apdorojimo režimas</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, kaip bus apdorojami visi vaizdų paslaugos rastro elementai. 
+            <p>Nurodo, kaip bus apdorojami visi vaizdų paslaugos rastro elementai.
                 <ul>
-                    <li> <b>Vaizdo mozaikos apdorojimas</b> &ndash; bus sudaryta ir apdorojama visų vaizdų paslaugos rastro elementų mozaika. Tai numatytasis nustatymas.
+                    <li> <b>Vaizdo mozaikos apdorojimas</b> &ndash; bus sudaryta ir apdorojama visų vaizdų paslaugos rastro elementų mozaika. Tai yra numatytasis nustatymas.
                     </li>
                     <li> <b>Atskirų elementų apdorojimas</b> &ndash; visi vaizdų paslaugos rastro elementai bus apdorojami kaip atskiri vaizdai.
                     </li>
@@ -117,7 +137,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

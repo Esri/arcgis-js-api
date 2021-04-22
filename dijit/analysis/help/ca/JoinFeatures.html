@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Uneix les entitats</h2><p/>
-        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Uneix les entitats"></h2>
+        <h2>Uneix les característiques</h2><p/>
+        <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Uneix les caracter&iacute;stiques"></h2>
         <hr/>
     <p>Uneix les entitats funciona amb dues capes i uneix atributs d'una entitat a una altra en funci&oacute; de les relacions espacials i d'atributs. L'eina determina totes les entitats d'entrada que compleixen les condicions d'uni&oacute; especificades i afegeix la capa d'uni&oacute; a la capa de dest&iacute;.
     </p>
@@ -59,7 +59,7 @@
             <p>Capa de dest&iacute; que tindr&agrave; els atributs de la capa d'uni&oacute; afegits a la seva taula.
             </p>
             <p>A banda de triar una capa del mapa, podeu seleccionar  <b>Trieu la capa d'an&agrave;lisi</b>, que es troba al final de la llista desplegable. Aquesta opci&oacute; obre una galeria on podeu cercar i seleccionar datasets de diversos or&iacute;gens per u utilitzar-los a l'an&agrave;lisi. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Determina com es gestiona la uni&oacute; entre la capa de dest&iacute; i la d'uni&oacute; si a la capa d'uni&oacute; hi ha diverses entitats que tenen la mateixa relaci&oacute; amb la capa de dest&iacute;. Aquestes s&oacute;n les dues operacions d'uni&oacute; que podeu triar:
                 <ul>
-                    <li> <b>Uneix un a un</b>: aquesta opci&oacute; uneix diferents entitats de la capa de dest&iacute; en una &uacute;nica entitat a la capa unida. La manera com s'uneixen les entitats ve determinada pel par&agrave;metre <b>Afegeix estad&iacute;stiques</b> o pel par&agrave;metre <b>Defineix quin registre es guarda</b>. Si es fa servir el par&agrave;metre <b>Afegeix estad&iacute;stiques</b>, totes les entitats unides coincidents es resumiran en cada entitat de la capa de dest&iacute;. El recompte d'entitats unides s'afegir&agrave; per defecte. Si es fa servir l'opci&oacute; <b>Defineix el registre que es mantindr&agrave;</b>, es pot triar si es vol mantenir el primer registre coincident (opci&oacute; per defecte) o si es vol mantenir un registre coincident a partir d'una expressi&oacute;. Una expressi&oacute; pot utilitzar un camp num&egrave;ric (opci&oacute; entre el registre m&eacute;s gran o el m&eacute;s petit) o b&eacute; un camp de data (opci&oacute; entre el m&eacute;s nou o el m&eacute;s antic).
+                    <li> <b>Uneix un a un</b>: aquesta opci&oacute; uneix diferents entitats de la capa de dest&iacute; en una &uacute;nica entitat a la capa unida. La manera com s'uneixen les entitats ve determinada pel par&agrave;metre <b>Afegeix estad&iacute;stiques</b> o pel par&agrave;metre <b>Defineix quin registre es guarda</b>. Si es fa servir el par&agrave;metre <b>Afegeix estad&iacute;stiques</b>, totes les entitats unides coincidents es resumiran en cada entitat de la capa de dest&iacute;. El recompte d'entitats unides s'afegir&agrave; per defecte. Si es fa servir l'opci&oacute; <b>Defineix el registre que es mantindr&agrave;</b>, es pot triar si es vol mantenir el primer registre coincident (opci&oacute; per defecte) o si es vol mantenir el registre coincident amb el valor m&eacute;s alt o m&eacute;s baix d'un camp determinat ( <b>Ordena per</b>). L'expressi&oacute; Ordena per necessita un camp num&egrave;ric (opci&oacute; entre el valor m&eacute;s gran o el m&eacute;s petit) o b&eacute; un camp de data (opci&oacute; entre el m&eacute;s nou o el m&eacute;s antic).
                     </li>
                     <li> <b>Uneix un a diversos</b>: aquesta opci&oacute; uneix totes les entitats coincidents de la capa d'uni&oacute; amb la capa de dest&iacute;. La capa de resultats contindr&agrave; diversos registres de l'entitat de dest&iacute;.
                     </li>
                 </ul>
                 
             </p>
-            <p>Per exemple, suposem que voleu trobar supermercats en un radi de 5 quil&ograve;metres d'un mercat agr&iacute;cola. En aquest cas, la capa d'uni&oacute; t&eacute; una &uacute;nica entitat que representa un mercat agr&iacute;cola, i les entitats d'uni&oacute; representen les botigues d'alimentaci&oacute; locals que tenen atributs com ara el total de vendes anuals. Mitjan&ccedil;ant l'eina  <b>Uneix les entitats</b>, veureu que hi ha cinc botigues d'alimentaci&oacute; que compleixen aquests criteris. Si especifiqueu la operaci&oacute; d'uni&oacute; <b>Uneix un a diversos</b>, obtindreu cinc entitats al resultat, on cada fila representa el mercat agr&iacute;cola i un supermercat. Si especifiqueu una relaci&oacute; d' <b>Uneix un a un</b> i seleccioneu una estad&iacute;stica, obtindreu una entitat que representar&agrave; el mercat agr&iacute;cola i la informaci&oacute; resumida dels supermercats &mdash;per exemple, el recompte (5)&mdash; i altres estad&iacute;stiques opcionals, com ara la suma de les vendes anuals.
+            <p>Per exemple, suposem que voleu trobar supermercats en un radi de 5 quil&ograve;metres d'un mercat agr&iacute;cola. En aquest cas, la capa d'uni&oacute; t&eacute; una &uacute;nica entitat que representa un mercat agr&iacute;cola, i les entitats d'uni&oacute; representen les botigues d'alimentaci&oacute; locals que tenen atributs com ara el total de vendes anuals. Mitjan&ccedil;ant l'eina  <b>Uneix les entitats</b>, veureu que hi ha cinc botigues d'alimentaci&oacute; que compleixen aquests criteris. Si especifiqueu la operaci&oacute; d'uni&oacute; <b>Uneix un a diversos</b>, obtindreu cinc entitats al resultat, on cada fila representa el mercat agr&iacute;cola i un supermercat. Si especifiqueu una relaci&oacute; d' <b>Uneix un a un</b> i trieu <b>Defineix el registre que es mantindr&agrave;</b>, obtindreu una entitat que representar&agrave; el mercat agr&iacute;cola i un supermercat, per exemple el que tingui m&eacute;s vendes anuals. Si en lloc d'aix&ograve; trieu <b>Afegeix estad&iacute;stiques</b>, obtindreu una entitat que representar&agrave; el mercat agr&iacute;cola i un resum dels cinc supermercats, com ara la suma de les vendes anuals i el recompte (5) dels supermercats del resum. 
             </p>
         </div>
     </div>
@@ -177,11 +177,13 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Crea els resultats com una visualització de capa d'entitats allotjada</h2></div>
+        <div><h2>Crea els resultats com una vista de capa d'entitats allotjada</h2></div>
         <hr/>
         <div>
-            <p> La creaci&oacute; dels resultats com una visualitzaci&oacute; de capa d'entitats allotjada permet que les dades es mantinguin actualitzades en cas que es produeixin canvis en les dades d'origen. Les visualitzacions de capa d'entitats allotjada que continguin unions seran nom&eacute;s de lectura.
+            <p>La creaci&oacute; dels resultats com una visualitzaci&oacute; de capa d'entitats allotjada permet que les dades es mantinguin actualitzades en cas que es produeixin canvis en les dades d'origen. Les visualitzacions de capa d'entitats allotjada que contenen unions seran nom&eacute;s de lectura.
             </p>
+            <p class="OnlineOnly">Les visualitzacions de capa d'entitats allotjada que continguin unions no consumiran cr&egrave;dits per a l'an&agrave;lisi i l'emmagatzematge.
+            </p> 
             <p>Podreu crear una vista de capa d'entitats allotjada des dels resultats de l'an&agrave;lisi si es compleixen totes les condicions seg&uuml;ents:
                 <ul>
                     <li>Sou el propietari d'ambdues capes.

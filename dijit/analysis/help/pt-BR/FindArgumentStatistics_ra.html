@@ -50,7 +50,7 @@
     </p>
     <p>Por exemplo, voc&ecirc; pode desejar conhecer o m&ecirc;s no qual cada pixel alcan&ccedil;ou a temperatura de superf&iacute;cie do mar mais alta em 30 anos de coleta de dados. Outro exemplo &eacute; que voc&ecirc; tem uma imagem de sensoriamento remoto de oito bandas e voc&ecirc; deseja conhecer a banda em que o valor de reflect&acirc;ncia m&iacute;nimo foi alcan&ccedil;ado para cada pixel.
     </p>
-    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, as vari&aacute;veis e bandas da camada que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se desmarcada, as vari&aacute;veis ou bandas da camada total ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
+    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionado, as vari&aacute;veis ou bandas da camada que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se desmarcado, as vari&aacute;veis ou bandas de toda a camada ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -74,7 +74,7 @@
         <div><h2>Escolher variáveis que serão analisadas</h2></div>
         <hr/>
         <div>
-            <p>A vari&aacute;vel ou vari&aacute;veis para serem analisadas. Se o raster de entrada n&atilde;o for multidimensional, os valores de pixel do raster de bandas m&uacute;ltiplas s&atilde;o consideradas a vari&aacute;vel. Se o raster de entrada for multidimensional e nenhuma vari&aacute;vel for especificada, todas as vari&aacute;veis com a dimens&atilde;o selecionada ser&atilde;o analisada.
+            <p>A vari&aacute;vel ou vari&aacute;veis a serem analisadas. Se o raster de entrada n&atilde;o for multidimensional, os valores de pixel do raster de bandas m&uacute;ltiplas s&atilde;o consideradas a vari&aacute;vel. Se o raster de entrada for multidimensional e nenhuma vari&aacute;vel for especificada, todas as vari&aacute;veis com a dimens&atilde;o selecionada ser&atilde;o analisada.
             </p>
             <p>Por exemplo, para localizar os anos em que os valores de temperatura foram mais alto, especifique a temperatura como a vari&aacute;vel a ser analisada. Se voc&ecirc; n&atilde;o especificar quaisquer vari&aacute;veis e voc&ecirc; tem ambas a temperatura e vari&aacute;veis de precipita&ccedil;&atilde;o, ambas as vari&aacute;veis ser&atilde;o analisadas e o raster multidimensional de sa&iacute;da incluir&aacute; ambas as vari&aacute;veis.
             </p>
@@ -84,7 +84,7 @@
         <div><h2>Escolher tipo de estatística</h2></div>
         <hr/>
         <div>
-            <p>Especifique a estat&iacute;stica para extrair da vari&aacute;vel ou vari&aacute;veis ao longo das dimens&otilde;es fornecidas. 
+            <p>Especifique a estat&iacute;stica para extrair da vari&aacute;vel ou vari&aacute;veis ao longo das dimens&otilde;es fornecidas.
             </p>
             <ul>
                 <li> <b>Par&acirc;metro do m&iacute;nimo</b>&mdash;O valor de dimens&atilde;o em que o valor da vari&aacute;vel m&iacute;nima for alcan&ccedil;ado ser&aacute; extra&iacute;do. Este &eacute; o padr&atilde;o.
@@ -131,7 +131,7 @@
         <div><h2>Escolher definição de dimensão</h2></div>
         <hr/>
         <div>
-            <p>Especifica como a estat&iacute;stica ser&aacute; extra&iacute;da a partir da dimens&atilde;o. 
+            <p>Especifica como a estat&iacute;stica ser&aacute; extra&iacute;da a partir da dimens&atilde;o.
                 <ul>
                     <li> <b>Todos</b>&mdash;A estat&iacute;stica ser&aacute; extra&iacute;da atrav&eacute;s de todas as dimens&otilde;es. Este &eacute; o padr&atilde;o.
                     </li>
@@ -143,14 +143,14 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Escolher intervalo da palavra-chave</h2></div>
+        <div><h2>Escolher intervalo de palavra-chave</h2></div>
         <hr/>
         <div>
             <p>A unidade de tempo em que a estat&iacute;stica ser&aacute; extra&iacute;da.
             </p>
-            <p>Por exemplo, voc&ecirc; tem cinco anos dados de temperatura de superf&iacute;cie do mar di&aacute;rios e voc&ecirc; deseja saber o ano foi observado a temperatura m&aacute;xima. Configure   <b>Par&acirc;metro do m&aacute;ximo</b> como o tipo de estat&iacute;stica, configure <b>Palavra-Chave de Intervalo</b> como a defini&ccedil;&atilde;o de dimens&atilde;o, e configurar <b>Anualmente</b> como o intervalo de palavra-chave nesta etapa.
+            <p>Por exemplo, voc&ecirc; tem cinco anos dados de temperatura de superf&iacute;cie do mar di&aacute;rios e voc&ecirc; deseja saber o ano foi observado a temperatura m&aacute;xima. Configure  <b>Par&acirc;metro do m&aacute;ximo</b> como o tipo de estat&iacute;stica, configure <b>Palavra-Chave de Intervalo</b> como a defini&ccedil;&atilde;o de dimens&atilde;o, e configurar <b>Anualmente</b> como o intervalo de palavra-chave nesta etapa.
             </p>
-            <p>Alternativamente,  se voc&ecirc; desejar saber o m&ecirc;s em que a temperatura m&aacute;xima foi constantemente observada, configure  <b>Par&acirc;metro do m&aacute;ximo</b> como o tipo de estat&iacute;stica, configure a <b>Palavra-Chave de Intervalo</b> como a defini&ccedil;&atilde;o de dimens&atilde;o, e configure <b>Mensalmente Recorrente</b> como o intervalo de palavra-chave nesta etapa. Isto gerar&aacute; um raster em que cada pixel cont&eacute;m o m&ecirc;s em que a estat&iacute;stica foi alcan&ccedil;ada atrav&eacute;s do registro de cinco anos (18/08/2018, 25/08/2016, 07/08/2013, por exemplo).
+            <p>Alternativamente, se voc&ecirc; desejar saber o m&ecirc;s em que a temperatura m&aacute;xima foi constantemente observada, configure  <b>Par&acirc;metro do m&aacute;ximo</b> como o tipo de estat&iacute;stica, configure a <b>Palavra-Chave de Intervalo</b> como a defini&ccedil;&atilde;o de dimens&atilde;o, e configure <b>Mensalmente Recorrente</b> como o intervalo de palavra-chave nesta etapa. Isto gerar&aacute; um raster em que cada pixel cont&eacute;m o m&ecirc;s em que a estat&iacute;stica foi alcan&ccedil;ada atrav&eacute;s do registro de cinco anos (18/08/2018, 25/08/2016, 07/08/2013, por exemplo).
             </p>
             <p>Esta etapa &eacute; exigida quando  <b>StdTime</b> for configurado como a dimens&atilde;o em que a estat&iacute;stica ser&aacute; extra&iacute;da, e <b>Palavra-Chave de Intervalo</b> &eacute; selecionada para definir como a estat&iacute;stica ser&aacute; extra&iacute;da da dimens&atilde;o de tempo.
                 <ul>
@@ -198,6 +198,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

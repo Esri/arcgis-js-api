@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Išgauti rastrą</h2><p/>
+        <h2>Rastro išgavimas</h2><p/>
         <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Rastro i&scaron;gavimo įrankis portalui"></h2>
         <hr/>
     <p>&Scaron;is įrankis gali i&scaron;kirpti rastrą pagal tam tikrą formą pvz., kvadratą arba bet kokią kitą, kurią interaktyviai nubrė&scaron;ite ekrane. Galite i&scaron;kirpti tą ploto aprėptį, kurią &scaron;iuo metu matote žemėlapyje, arba poligono formos analizuojamą plotą.
@@ -49,7 +49,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Pasirinkite įvesties duomenis, kuriuos norite išgauti</h2></div>
+        <div><h2>Pasirinkti atsisiuntimo įvesties duomenis</h2></div>
         <hr/>
         <div>
             <p>Įvesties sluoksnis, kurį norite i&scaron;kirpti.
@@ -57,17 +57,37 @@
         </div>
     </div>
     <div id="clippingGeometry">
-        <div><h2>Nurodykite iškerpamą formą</h2></div>
+        <div><h2>Nurodyti apkirpimo geometriją</h2></div>
         <hr/>
         <div>
             <p>Pasirinkite aprėpties tipą, kuris bus naudojamas apkerpant sluoksnį pagal tam tikrą formą:
-
                 <ul>
-                    <li>Naudoti esamą aprėptį &ndash; sluoksnis bus i&scaron;kirptas pagal matomą žemėlapio aprėptį. Tai numatytasis nustatymas.
+                    <li>Naudoti esamą aprėptį &ndash; sluoksnis bus i&scaron;kirptas pagal matomą žemėlapio aprėptį. Tai yra numatytasis nustatymas.
                         
 
                     </li>
-                    <li>Pasirinkti analizuojamą plotą &ndash; leidžia pasirinkti, ar matysite plotą formos viduje ar i&scaron;orėje. Jei pasirinksite parinktį  <b>Duomenys formos viduje</b>, bus pa&scaron;alintas vaizdas už aprėpties ribų. Jei pasirinksite parinktį <b>Duomenys už formos ribų</b>, bus pa&scaron;alintas vaizdas aprėpties viduje. I&scaron;kerpamą formą galite nubraižyti ir naudodami pie&scaron;imo įrankį.
+                    <li>Pasirinkite tiriamą plotą&mdash;I&scaron;kerpamą formą galėsite nubraižyti naudodami pie&scaron;imo įrankį.
+                        
+
+                    </li>
+                    <li>Pasirinkite sluoksnį&mdash;Pasirinkite elementų sluoksnį arba vaizdų sluoksnį, pagal kurį apibrėžiama aprėptis, arba pasirinkite plotinio elemento sluoksnį, pagal kurį apibrėžiama i&scaron;kerpama forma. Pasirinkus plotinio elemento sluoksnį, rodomas pažymėtinas langelis, kuriuo nurodoma, ar i&scaron;kerpamai formai naudoti įvesties elementus. Pagal numatytąjį nustatymą langelis nepažymėtas. Tai rei&scaron;kia, kad įvesties elemento sluoksnis yra naudojamas nustatyti aprėptį. Jei langelis pažymėtas, i&scaron;kerpamai formai naudojami įvesties elementai.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Nurodyti apkirpimo tipą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite, ar norite i&scaron;laikyti teritoriją i&scaron;kirpimo geometrijoje, ar už jos ribų:
+                <ul>
+                    <li>Duomenys geometrijos ribose&mdash;Bus atsiųsti į i&scaron;kirpimo aprėptis patenkantys vaizdai. Tai yra numatytasis nustatymas.
+                        
+
+                    </li>
+                    <li>Duomenys už geometrijos ribų&mdash;Bus atsiųsti į i&scaron;kirpimo aprėptis nepatenkantys vaizdai.
                         
 
                     </li>
@@ -80,7 +100,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

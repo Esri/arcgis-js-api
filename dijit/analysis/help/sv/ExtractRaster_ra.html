@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>V&auml;lj utbredningstyp som ska anv&auml;ndas n&auml;r du klipper lagrets geometri:
-
                 <ul>
                     <li>Anv&auml;nd aktuell utbredning &ndash; Den aktuella kartutbredningen anv&auml;nds f&ouml;r att klippa ut det resulterande lagret. Det h&auml;r &auml;r standardinst&auml;llningen.
                         
 
                     </li>
-                    <li>V&auml;lj unders&ouml;kningsomr&aring;de &ndash; Du kan v&auml;lja om resultatet ska visa omr&aring;det inom geometriutbredningen eller omr&aring;det utanf&ouml;r geometriutbredningen. Om du v&auml;ljer alternativet  <b>Data inne i geometrin</b> tas bilden utanf&ouml;r utbredningen bort. Om du v&auml;ljer alternativet <b>Data utanf&ouml;r geometrin</b> tas bilden inne i utbredningen bort. Du kan ocks&aring; definiera en klippningsgeometri med ritverktyget.
+                    <li>V&auml;lj studieomr&aring;de &ndash; L&aring;ter dig definiera en geometriklippning med ritverktyget.
+                        
+
+                    </li>
+                    <li>V&auml;lj lager &ndash; V&auml;lj ett geoobjektlager eller bildlager f&ouml;r att definiera utbredningen, eller v&auml;lj ett polygongeoobjektlager f&ouml;r att definiera geometriklippning. N&auml;r ett polygongeoobjektlager v&auml;ljs visas en kryssruta f&ouml;r att ange om indatageoobjekt ska anv&auml;ndas f&ouml;r geometriklippning. Den &auml;r omarkerad som standard. Det inneb&auml;r att indatalager f&ouml;r geoobjekt anv&auml;nds f&ouml;r att definiera utbredningen. Om markerat inneb&auml;r det att indatageoobjekt anv&auml;nds f&ouml;r geometriklippning
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Ange klippningstyp</h2></div>
+        <hr/>
+        <div>
+            <p>Ange om du vill bevara omr&aring;det innanf&ouml;r eller utanf&ouml;r klippningsgeometrin:
+                <ul>
+                    <li>Data innanf&ouml;r geometrin &ndash; Bilder inuti klippningsutbredningen tas bort. Det h&auml;r &auml;r standardinst&auml;llningen.
+                        
+
+                    </li>
+                    <li>Data utanf&ouml;r geometrin &ndash; Bilder utanf&ouml;r klippningsutbredningen tas bort.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimal Path As Line (Đường dẫn Tối ưu Dưới dạng Đường)</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="H&igrave;nh minh họa c&ocirc;ng cụ Optimal Path As Line (Đường dẫn Tối ưu Dưới dạng Đường)"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n đường dẫn tối ưu từ đ&iacute;ch đến nguồn dưới dạng một đường.
+    </p>
+    <p>C&aacute;c ứng dụng mẫu bao gồm:
+        <ul>
+            <li>T&igrave;m tuyến đường tốt nhất cho một con đường mới về mặt chi ph&iacute; x&acirc;y dựng.
+                
+
+
+            </li>
+            <li>T&igrave;m tuyến đường h&agrave;ng hải tốt nhất giữa điểm đến v&agrave; vị tr&iacute; hiện tại.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Chọn raster đích hoặc đối tượng</h2></div>
+        <hr/>
+        <div>
+            <p>Một lớp đối tượng hoặc raster x&aacute;c định c&aacute;c &ocirc; m&agrave; từ đ&oacute; đường dẫn tối ưu được x&aacute;c định đến nguồn tối ưu.
+            </p>
+            <p>Nếu đầu v&agrave;o l&agrave; một raster, đầu v&agrave;o phải chứa c&aacute;c &ocirc; c&oacute; gi&aacute; trị hợp lệ (kh&ocirc;ng l&agrave; một gi&aacute; trị hợp lệ) cho điểm đ&iacute;ch, v&agrave; c&aacute;c &ocirc; c&ograve;n lại phải được g&aacute;n l&agrave; NoData. Loại raster đầu v&agrave;o phải l&agrave; số nguy&ecirc;n.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Trường đích</h2></div>
+        <hr/>
+        <div>
+            <p>Trường được sử dụng để lấy gi&aacute; trị cho c&aacute;c vị tr&iacute; đ&iacute;ch.
+            </p>
+            <p>Trường n&agrave;y phải l&agrave; loại số nguy&ecirc;n.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Chọn raster tích lũy khoảng cách</h2></div>
+        <hr/>
+        <div>
+            <p>Raster t&iacute;ch lũy khoảng c&aacute;ch được d&ugrave;ng để x&aacute;c định đường dẫn tối ưu từ đ&iacute;ch đến nguồn.
+            </p>
+            <p>Raster t&iacute;ch lũy khoảng c&aacute;ch thường được tạo ra bằng c&ocirc;ng cụ Distance Allocation (Ph&acirc;n bổ Khoảng c&aacute;ch) hoặc Distance Accumulation (T&iacute;ch lũy Khoảng c&aacute;ch). Mỗi &ocirc; trong raster t&iacute;ch lũy khoảng c&aacute;ch đại diện cho khoảng c&aacute;ch chi ph&iacute; t&iacute;ch lũy &iacute;t nhất tr&ecirc;n một bề mặt từ một &ocirc; đến một tập hợp c&aacute;c &ocirc; nguồn.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Chọn raster thuận dòng hoặc ngược dòng</h2></div>
+        <hr/>
+        <div>
+            <p>Raster hướng ngược bao h&agrave;m c&aacute;c hướng t&iacute;nh to&aacute;n theo độ. Hướng x&aacute;c định &ocirc; tiếp theo dọc đường dẫn tối ưu ngược trở lại nguồn chi ph&iacute; t&iacute;ch lũy &iacute;t nhất đồng thời tr&aacute;nh c&aacute;c r&agrave;o cản.
+            </p>
+            <p>Raster hướng ngược d&ograve;ng thường được tạo ra bằng c&ocirc;ng cụ Distance Allocation (Ph&acirc;n bổ Khoảng c&aacute;ch) hoặc Distance Accumulation (T&iacute;ch lũy Khoảng c&aacute;ch). Trong trường hợp n&agrave;y, phạm vi của c&aacute;c gi&aacute; trị l&agrave; từ 0 độ đến 360 độ. Gi&aacute; trị 0 d&agrave;nh ri&ecirc;ng cho c&aacute;c &ocirc; nguồn. Hướng ch&iacute;nh đ&ocirc;ng (phải) l&agrave; 90 độ v&agrave; gi&aacute; trị sẽ tăng theo chiều kim đồng hồ (180 l&agrave; hướng nam, 270 l&agrave; hướng t&acirc;y v&agrave; 360 l&agrave; hướng bắc).
+            </p>
+            <p>Đường dẫn tối ưu được tạo c&oacute; thể l&agrave; đường dẫn d&ograve;ng chảy dựa tr&ecirc;n hướng d&ograve;ng chảy D8. Để tạo ra một đường dẫn tối ưu theo hướng n&agrave;y, sử dụng một raster hướng d&ograve;ng chảy D8 l&agrave;m đầu v&agrave;o cho tham số n&agrave;y.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Loại đường dẫn (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định một từ kho&aacute; x&aacute;c định c&aacute;ch diễn giải c&aacute;c gi&aacute; trị v&agrave; khu vực tr&ecirc;n dữ liệu đ&iacute;ch đầu v&agrave;o trong c&aacute;c ph&eacute;p t&iacute;nh to&aacute;n đường dẫn chi ph&iacute;.
+                <ul>
+                    <li> <b>Tới Mỗi Khu vực</b>&mdash;Đối với mỗi khu vực tr&ecirc;n dữ liệu đ&iacute;ch đầu v&agrave;o, một đường dẫn chi ph&iacute; tối thiểu được x&aacute;c định. Với t&ugrave;y chọn n&agrave;y, đường dẫn chi ph&iacute; tối thiểu cho mỗi khu vực bắt đầu ở &ocirc; c&oacute; trọng số khoảng c&aacute;ch chi ph&iacute; thấp nhất trong khu vực. Đ&acirc;y l&agrave; mặc định.
+                         
+                    </li>
+                    <li> <b>Đơn tốt nhất</b>&mdash;Đối với tất cả c&aacute;c &ocirc; tr&ecirc;n dữ liệu đ&iacute;ch đầu v&agrave;o, đường dẫn chi ph&iacute; tối thiểu xuất ph&aacute;t từ &ocirc; c&oacute; đường dẫn chi ph&iacute; tối thiểu đến &ocirc; nguồn.
+                    </li>
+                    <li> <b>Tới Mỗi &Ocirc;</b>&mdash;Đối với mỗi &ocirc; c&oacute; gi&aacute; trị hợp lệ tr&ecirc;n dữ liệu đ&iacute;ch đầu v&agrave;o, đường dẫn chi ph&iacute; tối thiểu được x&aacute;c định. Với t&ugrave;y chọn n&agrave;y, mỗi &ocirc; của dữ liệu đ&iacute;ch đầu v&agrave;o được xử l&yacute; ri&ecirc;ng biệt, v&agrave; đường dẫn chi ph&iacute; tối thiểu được x&aacute;c định từng &ocirc;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Tên lớp đối tượng kết quả</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

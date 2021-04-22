@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Attāluma piešķiršana</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Rīka Attāluma pie&scaron;ķir&scaron;ana attēlojums"></h2>
+        <hr/>
+    <p>&Scaron;is rīks aprēķina attālumu no katras &scaron;ūnas līdz norādītajiem avotiem, pamatojoties uz taisnas līnijas attālumu, izmaksu attālumu, reālo virsmas attālumu, kā arī vertikālajiem un horizontālajiem koeficientiem.
+    </p>
+    <p>Lietojuma piemēri ietver atbildes uz tālāk norādītajiem jautājumiem.
+        <ul>
+            <li>Atpazīst pie&scaron;ķirtās teritorijas, par kurām ir atbildīgi darbinieki.
+                
+
+            </li>
+            <li>Nosaka teritorijas, kas pie&scaron;ķirtas lū&scaron;u dzīvotņu apgabaliem.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ja ir atzīmēta opcija  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai pa&scaron;reizējā kartes pārklājumā redzamie ievades slāņa elementi. Ja &scaron;ī opcija nav atzīmēta, tiks analizēti visi ievades slāņa elementi, arī tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Izvēlēties avota rastru vai elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs vai elements, kas norāda avotus, līdz kuriem tiks aprēķināts attālums.
+            </p>
+            <p>Ja ievade ir rastrs, tajā jābūt &scaron;ūnām ar derīgām avotu vērtībām&nbsp;(nulle ir derīga vērtība), un atliku&scaron;ajām &scaron;ūnām jābūt pie&scaron;ķirtai vērtībai NoData.
+            </p>
+            <p>Ja ievade ir elementu slānis, tas var būt punkts, līnija vai daudzstūris.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Avota lauks (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Lauks, kas tiek lietots, lai pie&scaron;ķirtu avota izvietojumu vērtības. Tam jābūt veselam skaitlim.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izvēlēties barjeru rastru vai elementus (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Datu kopa, kas nosaka barjeras.
+            </p>
+            <p>Rastra slāņa ievades veids var būt vesels skaitlis vai peldo&scaron;a komata skaitlis. Visas &scaron;ūnas, kurām ir vērtība&nbsp;(iekļaujot nulli), tiks uzskatītas par barjerām. Visas NoData &scaron;ūnas netiks uzskatītas par barjerām.
+            </p>
+            <p>Elementu servisa ievade var būt punkts, līnija vai laukums.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Izvēlēties virsmas rastru (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs, kas nosaka augstuma vērtības katrā &scaron;ūnas novietojumā.
+            </p>
+            <p>Vērtības tiek lietotas, lai aprēķinātu faktisko virsmas attālumu, kas tiek pārvarēts, pārvietojoties starp &scaron;ūnām.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Izvēlēties izmaksu rastru (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs, kas nosaka pretestību vai izmaksas, lai planimetriski pārvietotos pa katru &scaron;ūnu.
+            </p>
+            <p>Vērtība katras &scaron;ūnas atra&scaron;anās vietā raksturo attālumu izmaksām uz vienu vienību, pārvietojoties cauri &scaron;ūnai. Katra &scaron;ūnas novietojuma vērtība tiek reizināta ar &scaron;ūnas iz&scaron;ķirtspēju, vienlaikus kompensējot diagonālo pārvieto&scaron;anos, lai iegūtu kopējās &scaron;ūnas &scaron;ķērso&scaron;anas izmaksas.
+            </p>
+            <p>Izmaksu rastra vērtības var būt vesels skaitlis vai peldo&scaron;ais punkts, bet tās nevar būt negatīvas vai ar nulles vērtību (jums nevar būt negatīvas vai nulles izmaksas).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Izvēlēties vertikālo rastru (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs, kas norāda z&nbsp;vērtības katrā &scaron;ūnas atra&scaron;anās vietā.
+            </p>
+            <p>&Scaron;īs vērtības tiek lietotas, lai aprēķinātu slīpumu, ko izmanto, lai noteiktu vertikālo koeficientu, kas tiek piemērots, pārvietojoties no vienas &scaron;ūnas uz citu.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikālais koeficients (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikālais koeficients</b> norāda saistību starp vertikālo izmaksu koeficientu un vertikālo relatīvo pārvieto&scaron;anās leņķi.
+            </p>
+            <p>Pastāv vairāki koeficienti ar modifikatoriem, no kuriem varat izvēlēties tos, kuri norāda noteiktā vertikālā koeficienta grafiku. Grafiki tiek lietoti, lai identificētu vertikālo koeficientu, kas tiek izmantots, lai aprēķinātu kopējās izmaksas par pārvieto&scaron;anos uz blakus eso&scaron;o &scaron;ūnu.
+            </p>
+            <p>Zemāk eso&scaron;ajos aprakstos vertikālais koeficients&nbsp;(Vertical Factor, VF) norāda vertikālās grūtības, ar kurām jāsastopas pārvietojoties no vienas &scaron;ūnas uz nākamo, un vertikālais relatīvais kustīgā leņķa&nbsp;(Vertical Relative Moving Angle, VRMA) modifikators norāda slīpuma leņķi starp &scaron;ūnu  <b>No avota</b> un &scaron;ūnu <b>Uz avotu</b>.
+                <ul>
+                    <li> <b>Bināri</b>&nbsp;&mdash; ja VRMA ir lielāks par zema griezuma leņķi un mazāks par augsta griezuma leņķi, VF tiek iestatīts uz vērtību, kas saistīta ar nulles koeficientu; pretējā gadījumā tā ir bezgalība.
+                    </li>
+                    <li> <b>Lineāri</b>&nbsp;&mdash; VF ir lineāra VRMA funkcija.
+                    </li>
+                    <li> <b>Apvērsti lineāri</b>&nbsp;&mdash; VF ir VRMA apvērsta lineāra funkcija.
+                    </li>
+                    <li> <b>Simetriski lineāri</b>&nbsp;&mdash; VF ir VRMA lineāra funkcija VRMA negatīvajā vai pozitīvajā pusē un abas lineārās funkcijas ir simetriskas attiecībā pret VF&nbsp;(y) asi.
+                    </li>
+                    <li> <b>Simetriski apvērsti lineāri</b>&nbsp;&mdash; VF ir VRMA apvērsta lineāra funkcija VRMA negatīvajā vai pozitīvajā pusē un abas lineārās funkcijas ir simetriskas attiecībā pret VF&nbsp;(y) asi.
+                    </li>
+                    <li> <b>Cos</b>&nbsp;&mdash;VF ir VRMA kosinusa funkcija.
+                    </li>
+                    <li> <b>Sec</b>&nbsp;&mdash; VF ir VRMA sekantes funkcija.
+                    </li>
+                    <li> <b>Cos-Sec</b>&nbsp;&mdash; VF ir VRMA kosinusa funkcija, kad VRMA ir negatīvs un VRMA sekantes funkcija, kad VRMA nav negatīvs.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>&nbsp;&mdash; VF ir VRMA sekantes funkcija, kad VRMA ir negatīvs, un VRMA ir kosinusa funkcija, kad VRMA nav negatīvs.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vertikālo parametru modifikatori ir &scaron;ādi:
+                <ul>
+                    <li> <b>Nulles koeficients</b>&nbsp;&mdash; vertikālais koeficients, ko izmanto, kad VMRA ir nulle. &Scaron;is koeficients nosaka y ass krustpunktu norādītajai funkcijai. Būtība nulles koeficients nav piemērojams jebkurai no trigonometriskajām vertikālajām funkcijām&nbsp;(Cos, Sec, Cos-Sec vai Sec-Cos). Y ass krustpunkts tiek definēts, izmantojot &scaron;īs funkcijas.
+                    </li>
+                    <li> <b>Zema griezuma leņķis</b>&nbsp;&mdash; VRMA leņķis, zem kura VF tiek iestatīta bezgalība.
+                    </li>
+                    <li> <b>Augsta griezuma leņķis</b>&nbsp;&mdash; VRMA leņķis, virs kura VF tiek iestatīta bezgalība.
+                    </li>
+                    <li> <b>Slīpums</b>&nbsp;&mdash; taisnas līnijas slīpums, ko izmanto ar <b>lineārajiem</b> un <b>apvērstajiem lineārajiem</b> parametriem. Slīpums tiek norādīts kā daļskaitlis, kas norāda paaugstinājumu virs virsmas (piemēram, 45 grādu slīpums ir 1/45, kad tiek ievadīts kā 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Izvēlēties horizotālo rastru (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs, kas nosaka horizontālo virzienu katrā &scaron;ūnā.
+            </p>
+            <p>Rastra vērtībām jābūt veseliem skaitļiem no 0 līdz 360, kur 0 grādi ir ziemeļi vai ekrāna aug&scaron;daļa un vērtības palielinās pulksteņrādītāju kustības virzienā. Plakanām teritorijām jāpie&scaron;ķir vērtība -1. Katras atra&scaron;anās vietas vērtības tiek izmantotas kopā ar parametru  <b>Horizontālais koeficients</b>, lai noteiktu horizontālās izmaksas, kas rodas, pārvietojoties no &scaron;ūnas uz tai līdzās eso&scaron;ajām &scaron;ūnām.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontālais koeficients (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horizontālais koeficients</b> norāda saistību starp horizontālo izmaksu koeficientu un horizontālo relatīvo pārvieto&scaron;anās leņķi.
+            </p>
+            <p>Pastāv vairāki koeficienti ar modifikatoriem, no kuriem varat izvēlēties tos, kuri identificē norādītā horizontālā koeficienta grafiku. Grafiki tiek lietoti, lai identificētu horizontālo koeficientu, kas tiek izmantots, aprēķinot kopējās izmaksas par pārvieto&scaron;anos uz līdzās eso&scaron;o &scaron;ūnu.
+            </p>
+            <p>Zemāk eso&scaron;ajos aprakstos horizontālais koeficients&nbsp;(Horizontal Factor, HF) norāda horizontālās grūtības, kas radu&scaron;ās, pārvietojoties no vienas &scaron;ūnas uz nākamo, un horizontālais relatīvais kustības leņķis&nbsp;(Horizontal Relative Moving Angle, HRMA) norāda leņķi starp horizontālo virzienu no &scaron;ūnas un kustības virzienu.
+            </p>
+            <p>&Scaron;īs HF definīcijas un parametri ir &scaron;ādi:
+                <ul>
+                    <li> <b>Bināri</b>&nbsp;&mdash; ja HRMA ir mazāks par griezuma leņķi, tiek iestatīta vērtība, kas saistīta ar nulles koeficientu; pretējā gadījumā tā ir bezgalība.
+                        
+
+                    </li>
+                    <li> <b>Uz priek&scaron;u</b>&nbsp;&mdash; atļauta tikai kustība uz priek&scaron;u. HRMA jābūt lielākam vai vienādam ar&nbsp;0 un mazākam par 90&nbsp;(0&nbsp;&lt;=&nbsp;HRMA&nbsp;&lt;&nbsp;90). Ja HRMA ir lielāks par 0 un mazāks nekā 45 grādi, &scaron;ūnas HF tiek iestatīta ar nulles koeficientu saistīta vērtība. Ja HRMA ir lielāks par 45 grādiem vai vienāds ar tiem, tiek lietota sānu vērtības modifikatora vērtība. Jebkurai HRMA vērtībai, kas ir vienāda vai lielāka par 90&nbsp;grādiem, HF tiek iestatīta bezgalība.
+                    </li>
+                    <li> <b>Lineāri</b>&nbsp;&mdash; HF ir lineāra HRMA funkcija.
+                        
+
+                    </li>
+                    <li> <b>Apvērsti lineāri</b>&nbsp;&mdash; HF ir HRMA apvērsta lineāra funkcija.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Horizontālo atslēgvārdu modifikatori ir &scaron;ādi:
+                <ul>
+                    <li> <b>Nulles koeficients</b>&nbsp;&mdash; horizontālais koeficients, ko izmanto, kad HRMA ir&nbsp;0. &Scaron;is koeficients nosaka y ass krustpunktu jebkurai no horizontālā koeficienta funkcijām.
+                        
+
+                    </li>
+                    <li> <b>Grie&scaron;anas leņķis</b>&nbsp;&mdash; HRMA leņķis, aiz kura HF tiek iestatīta bezgalība.
+                        
+
+                    </li>
+                    <li> <b>Slīpums</b>&nbsp;&mdash; taisnas līnijas slīpums, ko izmanto ar <b>lineārajiem</b> un <b>apvērstajiem lineārajiem</b> horizontālā koeficienta atslēgvārdiem. Slīpums tiek norādīts kā daļskaitlis, kas norāda paaugstinājumu virs virsmas (piemēram, 45 grādu slīpums ir 1/45, kad tiek ievadīts kā 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Sānu vērtība</b>&nbsp;&mdash; HF, ja HRMA ir 45&nbsp;grādi vai lielāks, un mazāks nekā 90&nbsp;grādi, kad ir norādīts horizontālā koeficienta atslēgvārds <b>Uz priek&scaron;u</b>.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Sākotnējā akumulācija</h2></div>
+        <hr/>
+        <div>
+            <p>Sākotnējās akumulatīvās izmaksas, lai sāktu izmaksu aprēķinu.
+            </p>
+            <p>&Scaron;is parametrs ļauj norādīt ar avotu saistītās fiksētās izmaksas. Tā vietā, lai sāktu ar nulles izmaksām, aprēķinu algoritms sāks ar vērtību, kas iestatīta pēc parametra  <b>Sākotnējā akumulācija</b>.
+            </p>
+            <p>Vērtībām jābūt nullei vai lielākām. Noklusējuma vērtība ir 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimālā akumulācija</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimālā akumulācija ceļotājam saistībā ar avotu.
+            </p>
+            <p>Izmaksu aprēķini tiek turpināti katram avotam, līdz ir sasniegta norādītā akumulācija.
+            </p>
+            <p>Vērtībām ir jābūt lielākām par nulli. Noklusējuma akumulācija ir līdz izvades rastra malai.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Izmaksu reizinātājs</h2></div>
+        <hr/>
+        <div>
+            <p>Reizinātājs, kas tiek piemērots izmaksu vērtībām.
+            </p>
+            <p>&Scaron;ādi ir iespējams kontrolēt avota pārvietojumu vai pakāpi (magnitūdu). Jo lielāks ir reizinātājs, jo lielākas ir izmaksas par pārvieto&scaron;anas cauri katrai &scaron;ūnai.
+            </p>
+            <p>Vērtībām ir jābūt lielākām par nulli. Noklusējuma vērtība ir 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Pārvietošanās virziens</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda ceļotāja virzienu, lietojot horizontālos un vertikālos koeficientus.
+            </p>
+            <p> <b>No avota</b>&nbsp;&mdash; tiks piemērots horizontālais koeficients un vertikālais koeficients, sākot ar ievades avotu un beidzot ar &scaron;ūnām, kas nav saistītas ar avotu. Tā ir noklusējuma vērtība.
+            </p>
+            <p> <b>Uz avotu</b>&nbsp;&mdash; tiek lietots horizontālais koeficients un vertikālais koeficients, kas sākas katrā &scaron;ūnā, kas nav saistīta ar avotu un pāriet atpakaļ uz ievades avotu.
+            </p>
+            <p>Norādiet atslēgvārdu  <b>No avota</b> vai <b>Līdz avotam</b>, kas tiks lietots visiem avotiem, vai norādiet lauku avota datos, kurā ir atslēgvārdi, lai noteiktu katra avota pārvieto&scaron;anās virzienu. &Scaron;ajā laukā jābūt virknei <code>FROM_SOURCE</code> vai <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Attāluma metode (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai aprēķināt attālumu, izmantojot plaknes&nbsp;(plakana zeme) vai ģeodēzisko&nbsp;(elipses) metodi.
+            </p>
+            <ul>
+                <li> <b>Planārā</b>&nbsp;&mdash; attāluma aprēķinā&scaron;ana tiks veikta projicētajā plakanajā plaknē, izmantojot 2D Dekarta koordinātu sistēmu. Tā ir noklusējuma metode.
+                    
+
+                </li>
+                <li> <b>Ģeodēziskā</b>&nbsp;&mdash; attāluma aprēķins tiks veikts, izmantojot elipsi. Tādēļ neatkarīgi no ievades vai izvades projekcijas, rezultāti nemainās.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Rezultāta attāluma piešķiršanas rastra nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Rezultāta attāluma akumulācijas rastra nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Attāluma akumulācijas rastrs satur akumulēto attālumu katrai &scaron;ūnai no viszemāko izmaksu avota vai līdz tam.
+            </p>
+            <p>Izvades rastrs ir peldo&scaron;ā komata tipa rastrs.
+            </p>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Rezultātā iegūts atpakaļvirziena rastra nosaukums (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Atpakaļvirziena rastrā ir aprēķināti virzieni grādos. Virziens norāda nākamo &scaron;ūnu pa īsāko ceļu atpakaļ pie tuvākā avota, vienlaikus izvairoties no &scaron;ķēr&scaron;ļiem.
+            </p>
+            <p>Vērtību diapazons ir no 0 grādiem līdz 360 grādiem. 0 apzīmē avota &scaron;ūnas. Austrumu virzienu (pa labi) apzīmē 90, un vērtības pieaug pulksteņrādītāju kustības virzienā (180 apzīmē dienvidus, 270 &mdash; rietumus, 360 &mdash; ziemeļus).
+            </p>
+            <p>Izvades rastrs ir peldo&scaron;ā komata tipa rastrs.
+            </p>
+            <p>Tā slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b>. Jums jānorāda nosaukums, kāda vēl nav sadaļā <b>Mans saturs</b>.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Rezultātā iegūtā avota virziena rastra nosaukums (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Avota virziena rastrs identificē vismazāk uzkrāto akumulēto avota &scaron;ūnas virzienu kā azimutu grādos.
+            </p>
+            <p>Vērtību diapazons ir no 0 grādiem līdz 360 grādiem. 0 apzīmē avota &scaron;ūnas. Austrumu virzienu (pa labi) apzīmē 90, un vērtības pieaug pulksteņrādītāju kustības virzienā (180 apzīmē dienvidus, 270 &mdash; rietumus, 360 &mdash; ziemeļus).
+            </p>
+            <p>Izvades rastrs ir peldo&scaron;ā komata tipa rastrs.
+            </p>
+            <p>Tā slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b>. Jums jānorāda nosaukums, kāda vēl nav sadaļā <b>Mans saturs</b>.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Rezultātā iegūtā avota atrašanās vietas rastra nosaukums (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Avota atra&scaron;anās vietas rastrs ir vairāku joslu izvade. Pirmajā joslā ir rindu indekss, bet otrajā&nbsp;&mdash; aiļu indekss. &Scaron;ie indeksi norāda tās avota &scaron;ūnas novietojumu, kura atrodas vismazākajā uzkrāto izmaksu attālumā.
+            </p>
+            <p>Tā slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b>. Jums jānorāda nosaukums, kāda vēl nav sadaļā <b>Mans saturs</b>.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

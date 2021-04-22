@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Conexões de Região Favoráveis</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustra&ccedil;&atilde;o da ferramenta Conex&otilde;es de Regi&atilde;o Favor&aacute;veis"></h2>
+        <hr/>
+    <p>Esta ferramenta calcula a rede de conectividade ideal entre duas ou mais regi&otilde;es de entrada.
+    </p>
+    <p>Aplica&ccedil;&otilde;es de exemplo incluem o seguinte:
+        <ul>
+            <li>Modelo de adequa&ccedil;&atilde;o&mdash;A partir de um modelo de adequa&ccedil;&atilde;o, voc&ecirc; identificou 10 das melhores manchas de habitat para lince. Voc&ecirc; deseja que os linces cosigam se mover entre as manchas por uma rede de corredores da vida selvagem mais efetiva para manter a diversidade gen&eacute;tica dentro da metapopula&ccedil;&atilde;o.
+                
+
+            </li>
+            <li>Colheita de madeira&mdash;Em uma colheita de madeira, voc&ecirc; pretende criar a rede de cuto mais eficiente de estradas madeireiras da qual extrair a madeira serrada.
+                
+
+            </li>
+            <li>Pacifica&ccedil;&atilde;o&mdash;Em uma implanta&ccedil;&atilde;o de pacifica&ccedil;&atilde;o militar, voc&ecirc; identificou cinco &aacute;reas nas quais posicionar tropas e pessoal. Voc&ecirc; deseja desenvolver as rotas de abastecimento conectadas de forma otimizada entre as bases.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente estes locais nas camadas de entrada que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisados. Se n&atilde;o selecionada, todos os locais nas camadas de entrada ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Escolher feição ou raster de região</h2></div>
+        <hr/>
+        <div>
+            <p>As regi&otilde;es de entrada a serem conectadas pela rede favor&aacute;vel.
+            </p>
+            <p>Se a entrada da regi&atilde;o for um raster, as regi&otilde;es ser&atilde;o definidas por grupos de c&eacute;lulas cont&iacute;guas (adjacentes) do mesmo valor. Cada regi&atilde;o deve ser numerada com exclusividade. As c&eacute;lulas que n&atilde;o fazem parte de nenhuma regi&atilde;o devem ser NoData. O tipo de raster deve ser inteiro e os valores podem ser positivos ou negativos.
+            </p>
+            <p>Se a entrada de regi&atilde;o for uma fei&ccedil;&atilde;o, poder&aacute; ser pontos, linhas ou pol&iacute;gonos. As regi&otilde;es de pol&iacute;gono n&atilde;o podem ser compostas por pol&iacute;gonos com v&aacute;rias partes.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Escolher feição ou raster de barreira (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O conjunto de dados que define as barreiras.
+            </p>
+            <p>Para um raster, o tipo de entrada pode ser inteiro ou flutuante. Quaisquer c&eacute;lulas com um valor (incluindo zero) ser&atilde;o tratadas como uma barreira. Quaisquer c&eacute;lulas que sejam NoData n&atilde;o ser&atilde;o tratadas como uma barreira.
+            </p>
+            <p>Para uma fei&ccedil;&atilde;o, a entrada pode ser um ponto, uma linha ou um pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Escolher raster de custo (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Um raster definindo o custo ou imped&acirc;ncia para mover planimetricamente atrav&eacute;s de cada c&eacute;lula.
+            </p>
+            <p>O valor de cada localiza&ccedil;&atilde;o da c&eacute;lula representa a dist&acirc;ncia de unidade por custo para mover pela c&eacute;lula. Cada valor de localiza&ccedil;&atilde;o de c&eacute;lula &eacute; multiplicado pela resolu&ccedil;&atilde;o de pixel, enquanto tamb&eacute;m compensando por movimento diagonal para obter o custo total de passagem pela c&eacute;lula.
+            </p>
+            <p>Os valores do custo de raster podem ser inteiros ou pontos flutuantes, mas eles n&atilde;o podem ser negativos ou zero (voc&ecirc; n&atilde;o pode ter um custo negativo ou zero).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distância (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se o c&aacute;lculo da dist&acirc;ncia utiliza um m&eacute;todo plano (Terra plana) ou um m&eacute;todo geod&eacute;sico (elips&oacute;ide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;O c&aacute;lculo da dist&acirc;ncia ser&aacute; executado em um plano projetado utilizando um sistema de coordenada Cartesiano 2D. Este &eacute; o m&eacute;todo padr&atilde;o.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>&mdash;O c&aacute;lculo da dist&acirc;ncia ser&aacute; realizado no elips&oacute;ide. Portanto, n&atilde;o importando a proje&ccedil;&atilde;o de entrada ou de sa&iacute;da, os resultados n&atilde;o alteram.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Conexões dentro de regiões (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se os caminhos continuar&atilde;o e se conectar&atilde;o nas regi&otilde;es de entrada.
+            </p>
+            <ul>
+                <li> <b>Gerar conex&otilde;es</b>&mdash;Os caminhos continuar&atilde;o nas regi&otilde;es de entrada para conectar todos os caminhos que entram em uma regi&atilde;o. Este &eacute; o padr&atilde;o.
+                    
+
+                </li>
+                <li> <b>Sem conex&otilde;es</b>&mdash;Os caminhos parar&atilde;o nas bordas das regi&otilde;es de entrada e n&atilde;o continuar&atilde;o ou se conectar&atilde;o dentro delas.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Nome da camada de feição das linhas de conectividade favorável resultante</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            </p>
+            <p>Esta camada &eacute; uma fei&ccedil;&atilde;o de linha de sa&iacute;da que conecta cada regi&atilde;o de entrada.
+            </p>
+            <p>Cada caminho (ou linha) &eacute; numerado exclusivamente e os campos adicionais na tabela de atributos armazenam informa&ccedil;&otilde;es espec&iacute;ficas sobre o caminho. Estes campos adicionais s&atilde;o os seguintes:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;O identificador &uacute;nico para o caminho
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;A dist&acirc;ncia acumulativa ou custo do caminho total
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;A primeira regi&atilde;o que o caminho conecta
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;A outra regi&atilde;o que o caminho conecta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Como cada caminho &eacute; representado por uma &uacute;nica linha, haver&aacute; v&aacute;rias linhas em locais onde os caminhos percorrem a mesma rota.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Nome da camada de feição das conexões vizinhas resultante (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            </p>
+            <p>Esta camada &eacute; uma fei&ccedil;&atilde;o de linha de sa&iacute;da que identifica todos os caminhos de cada regi&atilde;o para cada um de seus vizinhos mais pr&oacute;ximos ou de menor custo.
+            </p>
+            <p>Cada caminho (ou linha) &eacute; numerado exclusivamente e os campos adicionais na tabela de atributos armazenam informa&ccedil;&otilde;es espec&iacute;ficas sobre o caminho. Estes campos adicionais s&atilde;o os seguintes:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;O identificador &uacute;nico para o caminho
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;A dist&acirc;ncia acumulativa ou custo do caminho total
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;A primeira regi&atilde;o que o caminho conecta
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;A outra regi&atilde;o que o caminho conecta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Como cada caminho &eacute; representado por uma &uacute;nica linha, haver&aacute; v&aacute;rias linhas em locais onde os caminhos percorrem a mesma rota.
+            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

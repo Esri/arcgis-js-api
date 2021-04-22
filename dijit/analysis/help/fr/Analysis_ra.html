@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>L&rsquo;analyse raster vous permet d&rsquo;analyser des jeux de donn&eacute;es raster volumineux &agrave; l&rsquo;aide de  ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur. Les jeux d&rsquo;outils actuellement disponibles via l&rsquo;exp&eacute;rience utilisateur Web  Portal for ArcGIS sont  <b>Synth&eacute;tiser les donn&eacute;es</b>, <b>Analyser les mod&egrave;les</b>, <b>Utiliser la proximit&eacute;</b>, <b>Analyser l&rsquo;image</b>, <b>Analyser le MNT</b>, <b>G&eacute;rer les donn&eacute;es</b>, <b>Apprentissage profond</b> et <b>Analyse multidimensionnelle</b>.
+        <p>L&rsquo;analyse raster vous permet d&rsquo;analyser des jeux de donn&eacute;es raster volumineux &agrave; l&rsquo;aide de  ArcGIS Image Server. Vous pouvez ainsi analyser plus rapidement un plus grand nombre de donn&eacute;es en tirant parti de la puissance du serveur.Les jeux d&rsquo;outils actuellement disponibles via l&rsquo;exp&eacute;rience utilisateur Web Portal for ArcGIS sont  <b>Summarize Data (Synth&eacute;tiser les donn&eacute;es)</b>, <b>Analyze Patterns (Analyser les mod&egrave;les)</b>, <b>Use Proximity (Utiliser la proximit&eacute;)</b>, <b>Analyze Image (Analyser l&rsquo;image)</b>, <b>Analyze Terrain (Analyser le MNT)</b>, <b>Manage Data (G&eacute;rer les donn&eacute;es)</b>, <b>Deep Learning</b> et <b>Multidimensional Analysis (Analyse multidimensionnelle)</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Synthétiser les données</h2>
         <hr/>
-        <p>Ce jeu d'outils contient un outil qui permet de calculer certaines statistiques d'une couche raster au sein des limites surfaciques que vous d&eacute;finissez. 
+        <p>Ces outils permettent de calculer des statistiques pour une couche raster dans les limites des surfaces (zones) que vous avez d&eacute;finies.
             <ul>
                 <li> <b>Raster de synth&egrave;se &agrave; l'int&eacute;rieur</b> permet de calculer des statistiques pour les cellules raster qui se trouvent au sein des limites surfaciques d&eacute;finies.
+                </li>
+                <li> <b>Zonal Statistics as Table (Statistiques zonales (table))</b> r&eacute;capitule les valeurs d&rsquo;un raster dans les zones d&rsquo;un autre jeu de donn&eacute;es et affiche les r&eacute;sultats dans une table.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcule des r&eacute;sum&eacute;s statistiques pour les cellules raster au sein des surfaces d&eacute;finies.
+            <p>Cet outil r&eacute;capitule les valeurs d'un raster dans chaque zone d'un autre jeu de donn&eacute;es.
             </p>
-            <p>Voici quelques exemples&nbsp;: 
-
-                <ul>
-                    <li>Pour une couche de surfaces de bassin versant et une couche raster d'altitude, calculez la plage d'altitudes au sein de chaque bassin versant afin de d&eacute;terminer ceux qui contiennent le jaugeage de plus forte &eacute;nergie.
-                        
-
-                    </li>
-                    <li>Pour une couche d'unit&eacute;s de gestion administrative et une couche raster de cat&eacute;gories d'utilisation du sol, calculez la vari&eacute;t&eacute; de valeurs d'utilisation du sol au sein de chaque surface de gestion afin d'identifier celles qui demandent le plus de travail pour d&eacute;terminer un plan de gestion.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Statistiques zonales (table)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagramme Statistiques zonales (table)">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil r&eacute;capitule les valeurs du raster dans chaque zone d&rsquo;un autre jeu de donn&eacute;es et affiche les r&eacute;sultats dans une table.
             </p>
             <br/>
         </div>
@@ -135,10 +138,9 @@
     <div id="UseProximityCategory" class="largesize">
         <h2>Utiliser la proximité</h2>
         <hr/>
-        <p>Ces outils vous aident &agrave; r&eacute;pondre &agrave; l'une des questions les plus fr&eacute;quentes en mati&egrave;re d'analyse spatiale : &quot;Qu'est-ce qui se trouve &agrave; proximit&eacute; de quoi&nbsp;?&quot;
-
+        <p>Ces outils vous aident &agrave; r&eacute;pondre &agrave; certaines des questions les plus fr&eacute;quentes en mati&egrave;re d&rsquo;analyse spatiale&nbsp;: qu&rsquo;est-ce qui se trouve &agrave; proximit&eacute; de quoi&nbsp;? Et Quel est le chemin le plus optimal&nbsp;?
             <ul>
-                <li>L&rsquo;outil  <b>Calculate Distance (Calculer la distance)</b> calcule la distance euclidienne, la direction et l&rsquo;allocation &agrave; partir d&rsquo;une seule source ou d&rsquo;un ensemble de sources.
+                <li> <b>Calculate Distance (Calculer la distance)</b> calcule la distance euclidienne, la direction et l&rsquo;allocation &agrave; partir d&rsquo;une seule source ou d&rsquo;un ensemble de sources.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li>L&rsquo;outil  <b>Determine Travel Cost Path As Polyline (D&eacute;terminer le chemin de co&ucirc;t de d&eacute;placement sous forme d&rsquo;une polyligne)</b> calcule le chemin de moindre co&ucirc;t sous forme d&rsquo;une polyligne entre les sources et les destinations connues.
+                <li> <b>Determine Travel Cost Path As Polyline (D&eacute;terminer les chemins de co&ucirc;t de d&eacute;placement)</b> calcule le chemin de polyligne de moindre co&ucirc;t entre des destinations et des sources connues.
+                    
+
+                </li>
+                <li> <b>Distance Accumulation (Accumulation de distance)</b> calcule la distance cumul&eacute;e pour chaque cellule vers des sources, ce qui permet de conna&icirc;tre la distance en ligne droite, la distance de co&ucirc;t et la distance de surface vraie, ainsi que les facteurs verticaux et horizontaux.
+                    
+
+                </li>
+                <li> <b>Distance Allocation (Allocation de distance)</b> calcule l&rsquo;allocation de distance pour chaque cellule vers les sources fournies en fonction de la distance en ligne droite, de la distance de co&ucirc;t et de la distance de surface vraie, ainsi que des facteurs verticaux et horizontaux.
+                    
+
+                </li>
+                <li> <b>Optimal Path As Line (Chemin optimal comme ligne)</b> calcule le chemin optimal &agrave; partir des destinations vers les sources sous forme de ligne.
+                    
+
+                </li>
+                <li> <b>Optimal Path As Raster (Chemin optimal comme raster)</b> calcule le chemin optimal &agrave; partir des destinations vers les sources sous forme de raster.
+                    
+
+                </li>
+                <li> <b>Optimal Region Connections (Connexions optimales des r&eacute;gions)</b> calcule le r&eacute;seau de connectivit&eacute; optimal entre deux r&eacute;gions en entr&eacute;e ou plus.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcule la distance euclidienne, la direction et l&rsquo;allocation &agrave; partir d&rsquo;une seule source ou d&rsquo;un ensemble de sources. Vous pouvez utiliser cet outil pour d&eacute;terminer la distance d&rsquo;un emplacement par rapport &agrave; une route, un b&acirc;timent ou un parc. Vous pouvez &eacute;galement d&eacute;terminer la direction que vous devez prendre depuis un emplacement pour revenir le plus directement &agrave; une source. Vous pouvez voir pour chaque emplacement dans votre zone d&rsquo;&eacute;tude la source la plus proche.
+            <p>Cet outil calcule la distance euclidienne, la direction et l&rsquo;allocation d&rsquo;une seule source ou d&rsquo;un ensemble de sources.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcule le r&eacute;seau de co&ucirc;t optimal &agrave; partir d&rsquo;un ensemble de r&eacute;gions en entr&eacute;e.
+            <p>Cet outil calcule le r&eacute;seau de co&ucirc;t optimal &agrave; partir d&rsquo;un ensemble de r&eacute;gions en entr&eacute;e.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcule le chemin de moindre co&ucirc;t sous forme d&rsquo;une polyligne entre les sources et les destinations connues.
+            <p>Cet outil calcule le chemin de moindre co&ucirc;t sous forme d&rsquo;une polyligne entre les sources et les destinations.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Accumulation de distance</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Illustration de l&rsquo;outil Accumulation de Distance">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule la distance accumul&eacute;e de chaque cellule vers les sources en autorisant les facteurs de distance en ligne droite, de distance de co&ucirc;t, de distance de surface v&eacute;ritable, et les facteurs horizontaux et verticaux.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Allocation de distance</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Illustration de l&rsquo;outil Allocation de distance">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule l&rsquo;allocation de distance de chaque cellule vers les sources fournies en fonction des facteurs de distance en ligne droite, de distance de co&ucirc;t et de distance de surface v&eacute;ritable, ainsi que les facteurs horizontaux et verticaux.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Chemin optimal comme ligne</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Illustration de l&rsquo;outil Chemin optimal comme ligne">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule le chemin optimal &agrave; partir des destinations vers les sources sous forme d&rsquo;une ligne.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Chemin optimisé comme raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Illustration de l&rsquo;outil Chemin optimal comme raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule le chemin optimal &agrave; partir des destinations vers les sources sous forme d&rsquo;un raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Connexions optimales des régions</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Illustration de l&rsquo;outil Connexions optimales des r&eacute;gions">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Cet outil calcule le r&eacute;seau de connectivit&eacute; optimal entre deux r&eacute;gions en entr&eacute;e ou plus.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="regularsize">
         <h2>Analyser l'image</h2>
         <hr/>
-        <p>Les outils suivants vous aident &agrave; analyser les images. 
+        <p>L&rsquo;outil suivant de la cat&eacute;gorie des outils  <b>Analyze Image (Analyser l&rsquo;image)</b> aide &agrave; analyser les images&nbsp;:
             <ul>
-                <li> <b>Apply Raster Function Template (Appliquer le mod&egrave;le de fonction raster)</b> traite votre imagerie avec la cha&icirc;ne de fonctions, tel que sp&eacute;cifi&eacute; par le mod&egrave;le de fonction raster.
-                </li>
-                <li> <b>Surveiller la v&eacute;g&eacute;tation</b> d&eacute;tecte la v&eacute;g&eacute;tation au sein d'une image, en fonction d'op&eacute;rations arithm&eacute;tiques sur les canaux.
+                <li> <b>Monitor Vegetation (Surveiller la v&eacute;g&eacute;tation)</b> d&eacute;tecte la v&eacute;g&eacute;tation au sein d&rsquo;une image, en fonction d&rsquo;op&eacute;rations arithm&eacute;tiques sur les canaux. Plusieurs indices de v&eacute;g&eacute;tation sont disponibles &agrave; des fins d&rsquo;analyse des images.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Appliquer un modèle de fonction raster</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Appliquer un mod&egrave;le de fonction raster">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Traite votre imagerie avec la cha&icirc;ne de fonctions, tel que sp&eacute;cifi&eacute; par le mod&egrave;le de fonction raster.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>R&eacute;alise une op&eacute;ration arithm&eacute;tique sur les canaux d'une couche raster multicanal afin de r&eacute;v&eacute;ler des informations concernant la couverture v&eacute;g&eacute;tale de la zone d'&eacute;tude.
+            <p>R&eacute;alise une op&eacute;ration arithm&eacute;tique sur les canaux d&rsquo;une couche raster multicanal afin de r&eacute;v&eacute;ler des informations concernant la couverture v&eacute;g&eacute;tale.
             </p>
             <br/>
         </div>
@@ -450,7 +530,7 @@
                 <tbody><tr>
                     <td><h2>Classer des pixels à l’aide de l’apprentissage en profondeur</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classer des pixels &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classer des pixels &agrave; l&rsquo;aide de l&rsquo;apprentissage en profondeur">
                     </td>
                 </tr></tbody>
             </table>
@@ -465,7 +545,7 @@
                 <tbody><tr>
                     <td><h2>Détecter des objets à l’aide de l’apprentissage en profondeur</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="D&eacute;tecter des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="D&eacute;tecter des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage en profondeur">
                     </td>
                 </tr></tbody>
             </table>
@@ -478,9 +558,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Classer des objets en utilisant la méthode Deep Learning</h2></td>
+                    <td><h2>Classer des objets à l’aide d’algorithmes de Deep Learning</h2></td>
                     <td>
-                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classer des objets &agrave; l&rsquo;aide de l&rsquo;apprentissage profond">
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="Classer des objets &agrave; l&rsquo;aide d&rsquo;algorithmes de Deep Learning">
                     </td>
                 </tr></tbody>
             </table>
@@ -533,7 +613,7 @@
                 <tbody><tr>
                     <td><h2>Rechercher des statistiques d’arguments</h2></td>
                     <td>
-                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Rechercher des statistiques d&rsquo;argument">
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="Rechercher des statistiques d&rsquo;arguments">
                     </td>
                 </tr></tbody>
             </table>
@@ -563,7 +643,7 @@
                 <tbody><tr>
                     <td><h2>Générer un raster de tendance</h2></td>
                     <td>
-                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="G&eacute;n&eacute;rer un raster de tendances">
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="G&eacute;n&eacute;rer un raster de tendance">
                     </td>
                 </tr></tbody>
             </table>
@@ -578,7 +658,7 @@
                 <tbody><tr>
                     <td><h2>Prévoir à l’aide du raster de tendance</h2></td>
                     <td>
-                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Pr&eacute;dire &agrave; l&rsquo;aide d&rsquo;un raster de tendances">
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Pr&eacute;voir &agrave; l&rsquo;aide du raster de tendance">
                     </td>
                 </tr></tbody>
             </table>

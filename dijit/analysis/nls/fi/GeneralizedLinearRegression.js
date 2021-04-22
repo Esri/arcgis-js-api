@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({modifiedTitle:"Yleistetty lineaarinen regressio – ${goal}",fit:"Sovita",fitAndPredict:"Sovita ja ennusta",selectGoal:"Mitä haluat tehdä?",fitGoal:"Arvioi mallin suorituskykyä sovittamalla sitä",fitAndPredictGoal:"Sovita mallia ja ennusta arvoja",inputLayerLabel:"Valitse karttataso, josta malli luodaan",chooseDependentField:"Valitse mallinnettava kenttä",chooseDataType:"Valitse mallinnettavan aineiston tyyppi",continuousData:"Jatkuva",binaryData:"Binaarinen",countData:"Lukumäärä",chooseExplanatoryField:"Valitse selittävät kentät",chooseFeaturesToPredict:"Valitse karttataso, jonka arvoja haluat ennustaa",chooseExplainMatch:"Valitse, miten selittävät kentät täsmäytetään",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Kohdekarttataso, joka on luotu Yleistetty lineaarinen regressio ${goal} -ratkaisun suorituksen tuloksena.",itemTags:"Analyysin tulos, yleistetty lineaarinen regressio, ${inputLayerName}, ${goal}",itemSnippet:"Yleistetty lineaarinen regressio ${goal} -ratkaisun luoma kohdekarttataso"});

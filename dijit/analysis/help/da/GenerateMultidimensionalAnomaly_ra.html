@@ -44,7 +44,7 @@
         <h2>Generér flerdimensional anomali</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Gener&eacute;r flerdimensional anomali"></h2>
         <hr/>
-    <p>Genererer et flerdimensionalt rasterdatas&aelig;t ved at kombinere eksisterende flerdimensionale rastervariabler langs en dimension.
+    <p>Beregner anomalien for hvert udsnit i en eksisterende flerdimensional raster for at generere en ny flerdimensional raster.
     </p>
     <p>En anomali er en observations afvigelse fra dens standard-, middel- eller medianv&aelig;rdi.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Vælg metode til generering af anomali</h2></div>
         <hr/>
         <div>
-            <p>Angiver den metode, der bruges til at beregne anomalien. 
+            <p>Angiver den metode, der bruges til at beregne anomalien.
                 <ul>
                     <li> <b>Forskel fra middelv&aelig;rdi</b>&mdash;Forskellen mellem en pixelv&aelig;rdi og middelv&aelig;rdien af den p&aring;g&aelig;ldende pixel p&aring; tv&aelig;rs af udsnit, defineret af intervallet, beregnes. Dette er standardv&aelig;rdien.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Forskel fra middelv&aelig;rdi = x - &micro;
-
                         <ul>
                             <li>x = pixelv&aelig;rdi i et udsnit
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentvis forskel fra middelv&aelig;rdi = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pixelv&aelig;rdi i et udsnit
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Procent af middelv&aelig;rdien = x / &micro;
-
                         <ul>
                             <li>x = pixelv&aelig;rdi i et udsnit
                                 
@@ -202,7 +199,7 @@
         <div><h2>Vælg tidsmæssigt interval til beregning af middelværdien</h2></div>
         <hr/>
         <div>
-            <p>Angiver det tidsm&aelig;ssige interval, der bruges til at beregne middelv&aelig;rdien. 
+            <p>Angiver det tidsm&aelig;ssige interval, der bruges til at beregne middelv&aelig;rdien.
                 <ul>
                     <li> <b>Alle</b>&mdash;Beregner middelv&aelig;rdien p&aring; tv&aelig;rs af alle udsnit for hver pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorér manglende værdier i beregning</h2></div>
         <hr/>
         <div>
-            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen. 
+            <p>Angiver, om manglende v&aelig;rdier ignoreres i analysen.
                 <ul>
                     <li>Markeret - Analysen omfatter alle gyldige pixels langs en given dimension og ignorerer eventuelle NoData-pixels. Dette er standardv&aelig;rdien.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.

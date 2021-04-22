@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van   ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server. De toolsets die momenteel beschikbaar zijn via de  Portal for ArcGIS webgebruikerservaring zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Nabijheid gebruiken</b>, <b>Beeld analyseren</b>, <b>Terrein analyseren</b>, <b>Gegevens beheren</b>, <b>Deep Learning</b> en <b>Multidimensionale analyse</b>.
+        <p>Met Rasteranalyse kunt u de analyse uitvoeren van grote rasterdatasets met behulp van  ArcGIS Image Server. Hiermee kunt u sneller data analyseren door gebruik te maken van de kracht van de server.De toolsets die momenteel beschikbaar zijn via de Portal for ArcGIS webgebruikerservaring zijn  <b>Data samenvatten</b>, <b>Patronen analyseren</b>, <b>Nabijheid gebruiken</b>, <b>Beeld analyseren</b>, <b>Terrein analyseren</b>, <b>Gegevens beheren</b>, <b>Deep Learning</b>, en <b>Multidimensionale analyse</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Gegevens samenvatten</h2>
         <hr/>
-        <p>Deze toolset bevat een tool om statistieken te berekenen voor een rasterlaag binnen gebiedsgrenzen die u definieert. 
+        <p>Deze tools worden gebruikt voor het berekenen van statistieken voor een rasterlaag binnen de door u gedefinieerde gebiedsgrenzen (zones).
             <ul>
                 <li> <b>Raster binnenin samenvatten</b> berekent statistieken voor rastercellen die binnen gedefinieerde gebiedsgrenzen vallen.
+                </li>
+                <li> <b>Gebiedsstatistieken als tabel</b> vat de waarden van een raster samen binnen de zones van een andere dataset en rapporteert de resultaten aan een tabel.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berekent enkele overzichtsstatistieken voor rastercellen in bepaalde gebieden.
+            <p>Deze tool vat de waarden van een raster samen binnen de zones van een andere dataset.
             </p>
-            <p>Enkele voorbeelden van toepassingen zijn onder meer het volgende: 
-
-                <ul>
-                    <li>Bereken aan de hand van een gegeven laag van stroomgebieden en een hoogterasterlaag de reeks verhogingen binnen elk stroomgebied om te bepalen welke de hoogste energiestroming heeft.
-                        
-
-                    </li>
-                    <li>Bereken aan de hand van een gegeven laag van administratieve beheereenheden en een rasterlaag van landgebruikcategorie&euml;n de verscheidenheid van landgebruikwaarden binnen elk beheergebied om te bepalen welke het meeste werk vereisen om een ​​beheerplan te bepalen.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Gebiedstatistieken als tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Gebiedstatistieken als tabeldiagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool vat de waarden van een raster samen binnen de zones van een andere dataset en rapporteert de resultaten aan een tabel.
             </p>
             <br/>
         </div>
@@ -132,27 +135,46 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Nabijheid gebruiken</h2>
         <hr/>
-        <p>Deze tools helpen u een van de meest gestelde vragen op het gebied van ruimtelijke analyse te beantwoorden: &quot;Wat is er in de buurt van wat?&quot;
-
+        <p>Deze tools helpen u een aantal van de meest gestelde vragen op het gebied van ruimtelijke analyse te beantwoorden: &quot;Wat is er in de buurt van wat?&quot; en Wat is het meest optimale pad?
             <ul>
-                <li> <b>Afstand berekenen</b> berekent de Euclidese afstand, richting en toewijzing uit &eacute;&eacute;n bron of verzameling bronnen.
+                <li> <b>Afstand berekenen</b> berekent de Euclidische afstand, richting en toewijzing uit &eacute;&eacute;n bron of verzameling bronnen.
                     
 
                 </li>
-                <li> <b>Optimale loopkosten van het netwerk bepalen</b> berekent het optimale kostennetwerk uit een reeks invoergebieden.
+                <li> <b>Optimale reiskosten van het netwerk bepalen</b> berekent het optimale kostennetwerk uit een reeks invoergebieden.
                     
 
                 </li>
-                <li> <b>Loopkostenpad bepalen als polylijn</b> berekent het goedkoopste polylijnpad tussen bronnen en bekende bestemmingen.
+                <li> <b>Reiskostenpad als polylijn bepalen</b> berekent het polylijnpad met de minste kosten tussen bekende bestemmingen en bronnen.
+                    
+
+                </li>
+                <li> <b>Afstandaccumulatie </b> berekent de geaccumuleerde afstand voor elke cel naar bronnen, zodat de afstand hemelsbreed, kostenafstand en ware oppervlakafstand, evenals verticale en horizontale factoren mogelijk is.
+                    
+
+                </li>
+                <li> <b>Afstandstoewijzing</b> berekent voor elke cel de opgegeven bronnen op basis van de afstand hemelsbreed, kostenafstand en ware oppervlakafstand, evenals verticale en horizontale factoren.
+                    
+
+                </li>
+                <li> <b>Optimale pad als lijn</b> berekent het optimale pad van bestemmingen naar bronnen als een lijn.
+                    
+
+                </li>
+                <li> <b>Optimaal pad als raster</b> berekent het optimale pad van bestemmingen naar bronnen als een raster.
+                    
+
+                </li>
+                <li> <b>Optimale regioverbindingen</b> berekent het optimale connectiviteitsnetwerk tussen twee of meer invoergebieden.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berekent de Euclidese afstand, richting en toewijzing uit &eacute;&eacute;n bron of verzameling bronnen. Met deze tool kunt u bepalen hoe ver een locatie is ten opzichte van een weg, een gebouw of een park. U kunt ook bepalen in welke richting u van een locatie moet reizen om op de meest directe manier terug te keren naar een bron. Voor elke locatie in uw studiegebied kunt u zien welke de dichtstbijzijnde bron is.
+            <p>Deze tool berekent de Euclidese afstand, richting en toewijzing uit &eacute;&eacute;n bron of verzameling bronnen.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berekent het optimale kostennetwerk uit een reeks invoergebieden.
+            <p>Deze tool berekent het optimale kostennetwerk uit een reeks invoergebieden.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berekent het goedkoopste polylijnpad tussen bronnen en bekende bestemmingen.
+            <p>Deze tool berekent het goedkoopste polylijnpad tussen bronnen en bestemmingen.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Afstandsaccumulatie</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Illustratie tool afstandaccumulatie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent de verzamelde afstand voor elke cel naar de bronnen met mogelijkheid tot lineaire afstand, kostenafstand, afstand daadwerkelijk oppervlak alsmede verticale en horizontale kostenfactoren.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Afstandtoewijzing</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Illustratie tool afstandallocatie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent de afstandstoewijzing voor elke cel tot de gegeven bronnen op basis van de lineaire afstand, kostenafstand, daadwerkelijke oppervlakte-afstand en verticale en horizontale kostenfactoren.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimale pad als lijn</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Optimale pad als lijn tool illustratie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent het optimale pad van bestemmingen naar bronnen als een lijn.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaal pad als raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Optimaal pad als raster tool illustratie">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent het optimale pad van bestemmingen naar bronnen als een raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimale regioverbindingen</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Illustratie van optimale regioverbindingen">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Deze tool berekent het optimale connectiviteitsnetwerk tussen twee of meer invoergebieden.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Beeld analyseren</h2>
         <hr/>
-        <p>De volgende tool helpt u bij het analyseren van afbeeldingen. 
+        <p>De volgende tool in de toolcategorie  <b>Afbeelding analyseren</b> helpt u afbeeldingen te analyseren:
             <ul>
-                <li> <b>Template rasterfunctie toepassen</b> verwerkt uw afbeeldingen met de reeks functies, zoals gespecificeerd door de rasterfunctie-template.
-                </li>
-                <li> <b>Vegetatie controleren</b> detecteert vegetatie binnen een afbeelding, gebaseerd op rekenkundige bewerkingen op de banden.
+                <li> <b>Vegetatie controleren</b> detecteert vegetatie binnen een afbeelding, gebaseerd op rekenkundige bewerkingen op de banden. Er zijn verschillende vegetatie-indexen beschikbaar voor afbeeldingsanalyse.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Rasterfunctie-template toepassen</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Rasterfunctie-template toepassen">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Verwerkt uw afbeeldingen met de reeks functies, zoals gespecificeerd door de rasterfunctie-template.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Voert een rekenkundige bewerking uit op de banden van een multiband rasterlaag om informatie over de vegetatiedekking te onthullen van het onderzoeksgebied.
+            <p>Voert een rekenkundige bewerking uit op de banden van een multiband rasterlaag om informatie over de vegetatiedekking te onthullen.
             </p>
             <br/>
         </div>
@@ -546,7 +626,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Multidimensionale afwijking genereren</h2></td>
+                    <td><h2>Multidimensionale anomalie genereren</h2></td>
                     <td>
                     <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Multidimensionale anomalie genereren">
                     </td>
@@ -578,7 +658,7 @@
                 <tbody><tr>
                     <td><h2>Het gebruik van trendraster voorspellen</h2></td>
                     <td>
-                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Voorspellen met behulp van trendraster">
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Het gebruik van trendraster voorspellen">
                     </td>
                 </tr></tbody>
             </table>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimal väg som linje</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Verktygsskiss f&ouml;r Optimal v&auml;g som linje"></h2>
+        <hr/>
+    <p>Verktyget ber&auml;knar den optimala s&ouml;kv&auml;gen fr&aring;n destinationer till k&auml;llor som en linje.
+    </p>
+    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar:
+        <ul>
+            <li>Hitta den b&auml;sta str&auml;ckningen med avseende p&aring; byggkostnader f&ouml;r en ny v&auml;g.
+                
+
+
+            </li>
+            <li>Hitta den b&auml;sta seglingsrutten mellan en destination och aktuell plats.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Välj målraster eller geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster eller geoobjektlager som identifierar de celler fr&aring;n vilka den optimala v&auml;gen kan best&auml;mmas till den optimala k&auml;llan.
+            </p>
+            <p>Om indata &auml;r ett raster m&aring;ste det best&aring; av celler som har giltiga v&auml;rden (noll &auml;r ett giltigt v&auml;rde) f&ouml;r destinationerna, och de &aring;terst&aring;ende cellerna m&aring;ste tilldelas NoData. Indatarastret m&aring;ste vara av heltalstyp.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Destinationsfält</h2></div>
+        <hr/>
+        <div>
+            <p>F&auml;ltet som anv&auml;nds f&ouml;r att erh&aring;lla v&auml;rden f&ouml;r destinationsplatser.
+            </p>
+            <p>Det h&auml;r f&auml;ltet m&aring;ste vara av heltalstyp.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Välj avståndsackumuleringsraster</h2></div>
+        <hr/>
+        <div>
+            <p>Avst&aring;ndsackumuleringsrastret anv&auml;nds f&ouml;r att avg&ouml;ra den optimala v&auml;gen fr&aring;n destinationerna till k&auml;llorna.
+            </p>
+            <p>Avst&aring;ndsackumuleringsrastret skapas vanligtvis med verktygen Avst&aring;ndsackumulering eller Avst&aring;ndstilldelning. Varje cell i avst&aring;ndsackumuleringsrastret representerar den l&auml;gsta ackumulerade avst&aring;ndskostnaden &ouml;ver en yta fr&aring;n varje cell till en upps&auml;ttning k&auml;llceller.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Välj tillbakariktnings- eller flödesriktningsraster</h2></div>
+        <hr/>
+        <div>
+            <p>Tillbakariktningsrastret inneh&aring;ller ber&auml;knade riktningar i grader. Riktningen identifierar n&auml;sta cell l&auml;ngs den optimala v&auml;gen tillbaka till den l&auml;gsta ackumulerade kostnadsk&auml;llan samtidigt som hinder undviks.
+            </p>
+            <p>Tillbakariktningsrastret skapas vanligtvis med verktygen Avst&aring;ndsackumulering eller Avst&aring;ndstilldelning. I det h&auml;r fallet &auml;r intervallet f&ouml;r v&auml;rdena fr&aring;n 0 grader till 360 grader. V&auml;rdet 0 &auml;r reserverat f&ouml;r k&auml;llceller. &Ouml;stlig riktning (h&ouml;ger) &auml;r 90 grader, och v&auml;rdena &ouml;kar medurs (180 &auml;r s&ouml;der, 270 &auml;r v&auml;ster och 360 &auml;r norr).
+            </p>
+            <p>Den optimala s&ouml;kv&auml;gen som skapas kan vara en fl&ouml;desbana baserad p&aring; en D8-fl&ouml;desriktning. Om du vill generera en optimal s&ouml;kv&auml;g p&aring; det h&auml;r s&auml;ttet anv&auml;nder du ett D8-fl&ouml;desriktningsraster som indata f&ouml;r den h&auml;r parametern.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Sökvägstyp (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Anger ett nyckelord som definierar hur v&auml;rden och zoner i inkommande destinationsdata kommer att tolkas i kostnadsber&auml;kningar f&ouml;r rutter.
+                <ul>
+                    <li> <b>Till varje zon</b> &ndash; F&ouml;r varje zon i inkommande destinationsdata best&auml;ms en billigaste rutt. Med det h&auml;r alternativet b&ouml;rjar den billigaste rutten f&ouml;r varje zon vid cellen med den l&auml;gsta kostnaden f&ouml;r avst&aring;ndsviktning i zonen. Det h&auml;r &auml;r standardinst&auml;llningen.
+                         
+                    </li>
+                    <li> <b>B&auml;sta enskild</b> &ndash; F&ouml;r varje cell i inkommande destinationsdata h&auml;rleds en billigaste rutt fr&aring;n cellen med l&auml;gst antal rutter med l&auml;gst kostnad till k&auml;llcellerna.
+                    </li>
+                    <li> <b>Till varje cell</b> &ndash; F&ouml;r varje cell med giltiga v&auml;rden i inkommande destinationsdata avg&ouml;rs en billigaste rutt. Med det h&auml;r alternativet behandlas varje cell i inkommande destinationsdata separat, och en billigaste rutt best&auml;ms f&ouml;r varje cell.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Resultat för geoobjektlagernamn</h2></div>
+        <hr/>
+        <div>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

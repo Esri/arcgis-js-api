@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher uma camada para descrever",summaryTypes:"Tipos de resumo",centralFeature:"Elemento central",meanCenter:"Centro médio",medianCenter:"Centro mediano",ellipse:"Elipse",weightBy:"Pesar por (opcional)",groupBy:"Agrupar por (opcional)",resultLayerName:"Nome da camada resultante",outputLayerName:"Descrever distribuição de ${layerName}",none:"Nenhum",itemDescription:"Camada de elementos gerada através da execução de Resumir centro e dispersão em ${layerName}. ",itemTags:"Resultado da Análise, Resumir centro e dispersão, ${layerName}",itemSnippet:"Camada de elementos gerada através da execução de Resumir centro e dispersão"});

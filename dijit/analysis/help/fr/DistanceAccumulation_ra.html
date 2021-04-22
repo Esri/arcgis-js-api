@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Accumulation de distance</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Illustration de l&rsquo;outil Accumulation de Distance"></h2>
+        <hr/>
+    <p>Cet outil calcule la distance accumul&eacute;e de chaque cellule vers les sources en autorisant les facteurs de distance en ligne droite, de distance de co&ucirc;t, de distance de surface v&eacute;ritable, et les facteurs horizontaux et verticaux.
+    </p>
+    <p>Cet outil permet, par exemple, d&rsquo;apporter une r&eacute;ponse aux questions suivantes&nbsp;:
+        <ul>
+            <li>&Agrave; quelle distance se trouve la ville plus proche&nbsp;?
+                
+
+            </li>
+            <li>Quelle est la distance de co&ucirc;t par rapport &agrave; la route la plus proche&nbsp;?
+                
+
+            </li>
+            <li>Quelle est la distance autour des interruptions par rapport &agrave; la source d&rsquo;eau la plus proche&nbsp;?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si l&rsquo;option  <b>Utiliser l&rsquo;&eacute;tendue courante de la carte</b> est s&eacute;lectionn&eacute;e, seules ces entit&eacute;s qui sont visibles dans la couche en entr&eacute;e au sein de l&rsquo;&eacute;tendue courante de la carte seront analys&eacute;es. Si l&rsquo;option n&rsquo;est pas s&eacute;lectionn&eacute;e, toutes les entit&eacute;s qui se trouvent dans la couche en entr&eacute;e seront analys&eacute;es, m&ecirc;me si elles se trouvent en dehors de l&rsquo;&eacute;tendue courante de l&rsquo;affichage cartographique.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Choisir des entités ou un raster source</h2></div>
+        <hr/>
+        <div>
+            <p>Couche d&rsquo;entit&eacute;s ou raster qui identifie les sources par rapport auxquelles la distance va &ecirc;tre calcul&eacute;e.
+            </p>
+            <p>Si l&rsquo;entr&eacute;e est un raster, il doit comporter des cellules qui ont des valeurs valides (z&eacute;ro est une valeur valide) pour les sources, et les cellules restantes doivent avoir la valeur NoData.
+            </p>
+            <p>Si l&rsquo;entit&eacute; est une couche d&rsquo;entit&eacute;s, il peut s&rsquo;agir d&rsquo;un point, d&rsquo;une ligne ou d&rsquo;un polygone.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Choisir des entités ou un raster d’interruption (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Jeu de donn&eacute;es qui d&eacute;finit les interruptions.
+            </p>
+            <p>Pour une couche raster, le type en entr&eacute;e peut &ecirc;tre entier ou &agrave; virgule flottante. Toutes les cellules dot&eacute;es d&rsquo;une valeur (y compris z&eacute;ro) sont trait&eacute;es comme une interruption. Les cellules dot&eacute;es d&rsquo;une valeur NoData ne sont pas trait&eacute;es comme une interruption.
+            </p>
+            <p>Pour le service d&rsquo;entit&eacute;s, l&rsquo;entr&eacute;e peut &ecirc;tre de type ponctuel, lin&eacute;aire ou surfacique.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Choisir un raster de surface (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster d&eacute;finissant les valeurs d&rsquo;&eacute;l&eacute;vation &agrave; chaque emplacement de cellule.
+            </p>
+            <p>Ces valeurs permettent de calculer la distance de surface r&eacute;elle qui est couverte lors du passage d&rsquo;une cellule &agrave; une autre.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Choisir un raster de coût (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster d&eacute;finissant l&rsquo;imp&eacute;dance, ou le co&ucirc;t, de d&eacute;placement planim&eacute;trique &agrave; travers chaque cellule.
+            </p>
+            <p>La valeur de chaque emplacement de cellule repr&eacute;sente le co&ucirc;t par unit&eacute; de distance du d&eacute;placement &agrave; travers la cellule. Chaque valeur d'emplacement de cellule est multipli&eacute;e par la r&eacute;solution de cellule (avec &eacute;galement une compensation simultan&eacute;e pour mouvement diagonal) afin d'obtenir le co&ucirc;t total du passage &agrave; travers la cellule.
+            </p>
+            <p>Les valeurs du raster de co&ucirc;t peuvent &ecirc;tre des entiers ou valeurs &agrave; virgule flottante, mais elles ne peuvent pas &ecirc;tre n&eacute;gatives ni nulles (un co&ucirc;t ne peut pas &ecirc;tre n&eacute;gatif ou nul).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Choisir un raster vertical (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster d&eacute;finissant les valeurs z pour chaque emplacement de cellule
+            </p>
+            <p>Ces valeurs permettent de calculer la pente utilis&eacute;e pour identifier le facteur vertical associ&eacute; au d&eacute;placement d&rsquo;une cellule &agrave; une autre.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Facteur vertical (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Le param&egrave;tre  <b>Vertical factor (Facteur vertical)</b> d&eacute;finit la relation entre le facteur de co&ucirc;t vertical (VF) et l&rsquo;angle de d&eacute;placement relatif vertical (VRMA).
+            </p>
+            <p>Vous pouvez choisir parmi plusieurs facteurs, avec modificateurs, qui renvoient &agrave; un diagramme de facteurs verticaux d&eacute;fini. Les diagrammes permettent d&rsquo;identifier le facteur vertical utilis&eacute; pour le calcul du co&ucirc;t total d&rsquo;un d&eacute;placement vers une cellule voisine.
+            </p>
+            <p>Dans les descriptions ci-dessous, le facteur vertical (VF) d&eacute;finit la difficult&eacute; rencontr&eacute;e lors du d&eacute;placement d&rsquo;une cellule vers la suivante, et le modificateur VRMA identifie l&rsquo;angle de la pente entre la cellule  <b>From source (&Agrave; partir de la source)</b> et la cellule <b>To source (Vers la source)</b>.
+                <ul>
+                    <li> <b>Binary (Binaire)</b>&nbsp;: si l&rsquo;angle VRMA est sup&eacute;rieur &agrave; l&rsquo;angle d&rsquo;inflexion inf&eacute;rieur et inf&eacute;rieur &agrave; l&rsquo;angle d&rsquo;inflexion sup&eacute;rieur, le facteur&nbsp;VF doit correspondre &agrave; la valeur associ&eacute;e au facteur z&eacute;ro&nbsp;; sinon, il est infini.
+                    </li>
+                    <li> <b>Linear (Lin&eacute;aire)</b>&nbsp;: le facteur&nbsp;VF est une fonction lin&eacute;aire de l&rsquo;angle VRMA.
+                    </li>
+                    <li> <b>Inverse linear (Lin&eacute;aire inverse)</b>&nbsp;: indique que le facteur VF est une fonction lin&eacute;aire inverse de l&rsquo;angle VRMA.
+                    </li>
+                    <li> <b>Symmetric linear (Lin&eacute;aire sym&eacute;trique)</b>&nbsp;: le facteur VF est une fonction lin&eacute;aire de l&rsquo;angle VRMA, &agrave; la fois du c&ocirc;t&eacute; n&eacute;gatif et du c&ocirc;t&eacute; positif de l&rsquo;angle VRMA et les deux fonctions lin&eacute;aires sont sym&eacute;triques par rapport &agrave; l&rsquo;axe (y) du facteur VF.
+                    </li>
+                    <li> <b>Symmetric inverse linear (Lin&eacute;aire inverse sym&eacute;trique)</b>&nbsp;: le facteur VF est une fonction lin&eacute;aire inverse de l&rsquo;angle VRMA, &agrave; la fois du c&ocirc;t&eacute; n&eacute;gatif et du c&ocirc;t&eacute; positif de l&rsquo;angle VRMA, et les deux fonctions lin&eacute;aires sont sym&eacute;triques par rapport &agrave; l&rsquo;axe (y) du facteur VF.
+                    </li>
+                    <li> <b>Cos</b>&nbsp;: le facteur&nbsp;VF est une fonction cosinuso&iuml;dale de l&rsquo;angle VRMA.
+                    </li>
+                    <li> <b>Sec</b>&nbsp;: le facteur&nbsp;VF est une fonction s&eacute;cante de l&rsquo;angle VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>&nbsp;: le facteur&nbsp;VF est une fonction cosinuso&iuml;dale de l&rsquo;angle VRMA lorsque ce dernier est n&eacute;gatif et la fonction s&eacute;cante de l&rsquo;angle VRMA lorsque ce dernier n&rsquo;est pas n&eacute;gatif.
+                    </li>
+                    <li> <b>Sec-Cos</b>&nbsp;: le facteur&nbsp;VF est une fonction s&eacute;cante de l&rsquo;angle VRMA lorsque ce dernier est n&eacute;gatif et une fonction cosinuso&iuml;dale de l&rsquo;angle VRMA lorsque ce dernier n&rsquo;est pas n&eacute;gatif.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Les modificateurs des param&egrave;tres verticaux sont les suivants&nbsp;:
+                <ul>
+                    <li> <b>Zero factor (Facteur z&eacute;ro)</b>&nbsp;: le facteur vertical utilis&eacute; lorsque l&rsquo;angle VRMA est &eacute;gal &agrave; z&eacute;ro. Ce facteur positionne l&rsquo;intersection avec l&rsquo;axe des y de la fonction sp&eacute;cifi&eacute;e. Par d&eacute;finition, le facteur z&eacute;ro ne s'applique &agrave; aucune fonction verticale trigonom&eacute;trique (Cos, Sec, Cos-Sec ou Sec-Cos). Ces fonctions d&eacute;finissent l&rsquo;intersection avec l&rsquo;axe des y.
+                    </li>
+                    <li> <b>Low cut angle (Angle d&rsquo;inflexion inf&eacute;rieur)</b>&nbsp;: l&rsquo;angle VRMA en dessous duquel le facteur VF est d&eacute;fini sur l&rsquo;infini.
+                    </li>
+                    <li> <b>High cut angle (Angle d&rsquo;inflexion sup&eacute;rieur)</b>&nbsp;: l&rsquo;angle VRMA au-dessus duquel le facteur VF est d&eacute;fini sur l&rsquo;infini.
+                    </li>
+                    <li> <b>Slope (Pente)</b>&nbsp;: la pente de la ligne droite utilis&eacute;e avec les param&egrave;tres <b>Linear (Lin&eacute;aire)</b> et <b>Inverse linear (Lin&eacute;aire inverse)</b>. La pente est sp&eacute;cifi&eacute;e sous forme d&rsquo;un rapport de la hauteur sur la distance parcourue (par exemple, une pente de 45 pour cent correspond &agrave; 1/45, la valeur introduite &eacute;tant 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Choisir un raster horizontal (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster d&eacute;finissant la direction horizontale pour chaque cellule.
+            </p>
+            <p>Les valeurs du raster doivent &ecirc;tre des entiers compris entre 0 et 360, 0 degr&eacute; correspondant au nord (vers le haut de l&rsquo;&eacute;cran). Elles augmentent dans le sens horaire. La valeur -1 doit &ecirc;tre attribu&eacute;e aux surfaces planes. Les valeurs &agrave; chaque emplacement seront utilis&eacute;es conjointement au  <b>facteur horizontal</b> afin de d&eacute;terminer le co&ucirc;t horizontal encouru lors d'un d&eacute;placement &agrave; partir d'une cellule vers les cellules voisines.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Facteur horizontal (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Le param&egrave;tre  <b>Horizontal factor (Facteur horizontal)</b> d&eacute;finit la relation entre le facteur de co&ucirc;t horizontal et l&rsquo;angle de d&eacute;placement relatif horizontal.
+            </p>
+            <p>Vous pouvez choisir parmi plusieurs facteurs, avec modificateurs, qui renvoient &agrave; un diagramme de facteurs horizontaux d&eacute;fini. Les diagrammes permettent d'identifier le facteur horizontal utilis&eacute; pour le calcul du co&ucirc;t total d'un d&eacute;placement vers une cellule voisine.
+            </p>
+            <p>Dans les descriptions ci-dessous, le facteur horizontal (HF) d&eacute;finit la difficult&eacute; horizontale rencontr&eacute;e lors du d&eacute;placement d&rsquo;une cellule vers la suivante. L&rsquo;angle HRMA identifie l&rsquo;angle entre la direction horizontale d&rsquo;une cellule et la direction du d&eacute;placement.
+            </p>
+            <p>Les d&eacute;finitions et param&egrave;tres de ces facteurs horizontaux sont indiqu&eacute;s ci-dessous&nbsp;:
+                <ul>
+                    <li> <b>Binary (Binaire)</b>&nbsp;: si l&rsquo;angle&nbsp;HRMA est inf&eacute;rieur &agrave; l&rsquo;angle d&rsquo;inflexion, le facteur&nbsp;HF a la valeur associ&eacute;e au facteur z&eacute;ro&nbsp;; dans le cas contraire, le facteur horizontal est infini.
+                        
+
+                    </li>
+                    <li> <b>Forward (Avant)</b>&nbsp;: seul un mouvement vers l&rsquo;avant est autoris&eacute;. L'angle HRMA doit &ecirc;tre sup&eacute;rieur ou &eacute;gal &agrave;&nbsp;0 et inf&eacute;rieur &agrave; 90&nbsp;degr&eacute;s (0 &lt;= HRMA &lt; 90). Si l&rsquo;angle HRMA est compris entre 0 et 45 degr&eacute;s, le facteur HF de la cellule a la valeur associ&eacute;e au facteur z&eacute;ro. Si l&rsquo;angle HRMA est sup&eacute;rieur ou &eacute;gal &agrave; 45 degr&eacute;s, la valeur du modificateur de la valeur de bord est utilis&eacute;e. Le facteur HF pour un angle HRMA sup&eacute;rieur ou &eacute;gal &agrave; 90 degr&eacute;s est infini.
+                        
+
+                    </li>
+                    <li> <b>Linear (Lin&eacute;aire)</b>&nbsp;: le facteur&nbsp;HF est une fonction lin&eacute;aire de l&rsquo;angle HRMA.
+                        
+
+                    </li>
+                    <li> <b>Inverse linear (Lin&eacute;aire inverse)</b>&nbsp;: indique que le facteur HF est une fonction lin&eacute;aire inverse de l&rsquo;angle HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Les modificateurs des mots-cl&eacute;s horizontaux sont les suivants&nbsp;:
+                <ul>
+                    <li> <b>Zero factor (Facteur z&eacute;ro)</b>&nbsp;: le facteur horizontal utilis&eacute; lorsque la valeur HRMA est &eacute;gale &agrave; z&eacute;ro. Ce facteur positionne l&rsquo;intersection avec l&rsquo;axe des y de toutes les fonctions de facteur horizontal.
+                        
+
+                    </li>
+                    <li> <b>Cut angle (Angle d&rsquo;inflexion)</b>&nbsp;: l&rsquo;angle HRMA au-del&agrave; duquel le facteur&nbsp;HF a une valeur infinie.
+                        
+
+                    </li>
+                    <li> <b>Slope (Pente)</b>&nbsp;: la pente de la ligne droite utilis&eacute;e avec les mots-cl&eacute;s de facteur horizontal <b>Linear (Lin&eacute;aire)</b> et <b>Inverse linear (Lin&eacute;aire inverse)</b>. La pente est sp&eacute;cifi&eacute;e sous forme d&rsquo;un rapport de la hauteur sur la distance parcourue (par exemple, une pente de 45 pour cent correspond &agrave; 1/45, la valeur introduite &eacute;tant 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Side Value (Valeur de bord)</b>&nbsp;: le facteur HF lorsque l&rsquo;angle HRMA est sup&eacute;rieur ou &eacute;gal &agrave; 45&nbsp;degr&eacute;s et inf&eacute;rieur &agrave; 90&nbsp;degr&eacute;s lorsque le mot-cl&eacute; de facteur horizontal <b>Forward (Avant)</b> est sp&eacute;cifi&eacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Accumulation initiale</h2></div>
+        <hr/>
+        <div>
+            <p>Co&ucirc;t cumul&eacute; initial pour commencer le calcul de co&ucirc;t.
+            </p>
+            <p>Ce param&egrave;tre permet de sp&eacute;cifier le co&ucirc;t fixe associ&eacute; &agrave; une source. Plut&ocirc;t que de commencer avec un co&ucirc;t nul, l&rsquo;algorithme de co&ucirc;t commence avec la valeur d&eacute;finie par le param&egrave;tre  <b>Initial accumulation (Accumulation initiale)</b>.
+            </p>
+            <p>Les valeurs doivent &ecirc;tre &eacute;gales ou sup&eacute;rieures &agrave; z&eacute;ro. La valeur par d&eacute;faut est 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Accumulation maximale</h2></div>
+        <hr/>
+        <div>
+            <p>Accumulation maximale pour le voyageur pour une source.
+            </p>
+            <p>Les calculs de co&ucirc;t continuent pour chaque source jusqu&rsquo;&agrave; ce que l&rsquo;accumulation sp&eacute;cifi&eacute;e soit atteinte.
+            </p>
+            <p>Les valeurs doivent &ecirc;tre sup&eacute;rieures &agrave; z&eacute;ro. L&rsquo;accumulation par d&eacute;faut va jusqu&rsquo;&agrave; la bordure du raster en sortie.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplicateur de coût</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplicateur &agrave; appliquer aux valeurs de co&ucirc;t.
+            </p>
+            <p>Ce param&egrave;tre permet de contr&ocirc;ler le mode de d&eacute;placement ou la magnitude &agrave; une source. Plus le multiplicateur est &eacute;lev&eacute;, plus le co&ucirc;t de d&eacute;placement d'une cellule &agrave; une autre est important.
+            </p>
+            <p>Les valeurs doivent &ecirc;tre sup&eacute;rieures &agrave; z&eacute;ro. La valeur par d&eacute;faut est 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Sens de déplacement</h2></div>
+        <hr/>
+        <div>
+            <p>Indique le sens de d&eacute;placement du voyageur lorsque des facteurs horizontal et vertical sont appliqu&eacute;s.
+            </p>
+            <p> <b>From source (&Agrave; partir de la source)</b>&nbsp;: le facteur horizontal et le facteur vertical sont appliqu&eacute;s &agrave; partir de la source en entr&eacute;e et lors du d&eacute;placement vers les cellules non source. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+            </p>
+            <p> <b>To source (Vers la source)</b>&nbsp;: le facteur horizontal et le facteur vertical sont appliqu&eacute;s &agrave; partir de chaque cellule non source et lors du retour &agrave; la source en entr&eacute;e.
+            </p>
+            <p>Sp&eacute;cifiez le mot-cl&eacute;  <b>From source (&Agrave; partir de la source)</b> ou <b>To source (Vers la source)</b>, qui est appliqu&eacute; &agrave; toutes les sources, ou sp&eacute;cifiez un champ dans les donn&eacute;es source qui contient les mots-cl&eacute;s permettant d&rsquo;identifier le sens de d&eacute;placement pour chaque source. Ce champ doit contenir la cha&icirc;ne <code>FROM_SOURCE</code> ou <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Méthode de distance (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le calcul de la distance selon une m&eacute;thode plane (terre plate) ou g&eacute;od&eacute;sique (ellipso&iuml;de).
+            </p>
+            <ul>
+                <li> <b>Planar (Planaire)</b>&nbsp;: le calcul est effectu&eacute; sur une surface plane projet&eacute;e &agrave; l&rsquo;aide d&rsquo;un syst&egrave;me de coordonn&eacute;es cart&eacute;siennes&nbsp;2D. Il s&rsquo;agit de la m&eacute;thode par d&eacute;faut.
+                    
+
+                </li>
+                <li> <b>Geodesic (G&eacute;od&eacute;sique)</b>&nbsp;: le calcul de la distance s&rsquo;op&egrave;re sur l&rsquo;ellipso&iuml;de. Les r&eacute;sultats ne changent donc pas quelle que soit la projection en entr&eacute;e ou en sortie.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Le nom du raster d’accumulation de distance de résultat.</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster d&rsquo;accumulation de distance contient la distance cumul&eacute;e pour chaque cellule depuis ou vers la source de moindre co&ucirc;t.
+            </p>
+            <p>Le raster en sortie est de type entier.
+            </p>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Le nom du raster de direction arrière de résultat (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster de direction arri&egrave;re contient la direction calcul&eacute;e, en degr&eacute;s. La direction identifie la cellule suivante le long du chemin de retour le plus court vers la source la plus proche tout en &eacute;vitant les interruptions.
+            </p>
+            <p>La plage de valeurs s&rsquo;&eacute;tend de 0 &agrave; 360 degr&eacute;s, 0 &eacute;tant r&eacute;serv&eacute; aux cellules sources. La direction plein Est (droite) est de 90 et les valeurs augmentent dans le sens horaire (180, Sud ; 270, Ouest et 360, Nord).
+            </p>
+            <p>Le raster en sortie est de type entier.
+            </p>
+            <p>Nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b>. Vous devez fournir un nom qui n&rsquo;existe pas dans <b>My Content (Mon contenu)</b>.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Le nom du raster de direction source de résultat (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster de direction source identifie la direction de la cellule source de plus faible co&ucirc;t cumul&eacute; en tant qu&rsquo;azimut en degr&eacute;s.
+            </p>
+            <p>La plage de valeurs s&rsquo;&eacute;tend de 0 &agrave; 360 degr&eacute;s, 0 &eacute;tant r&eacute;serv&eacute; aux cellules sources. La direction plein Est (droite) est de 90 et les valeurs augmentent dans le sens horaire (180, Sud ; 270, Ouest et 360, Nord).
+            </p>
+            <p>Le raster en sortie est de type entier.
+            </p>
+            <p>Nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b>. Vous devez fournir un nom qui n&rsquo;existe pas dans <b>My Content (Mon contenu)</b>.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Le nom du raster de localisation source de résultat (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster de localisation source est une sortie &agrave; plusieurs canaux. Le premier canal contient un index de ligne et le deuxi&egrave;me canal contient un index de colonne. Ces index identifient l&rsquo;emplacement de la cellule source qui est &agrave; la distance de plus faible co&ucirc;t cumul&eacute;.
+            </p>
+            <p>Nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b>. Vous devez fournir un nom qui n&rsquo;existe pas dans <b>My Content (Mon contenu)</b>.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

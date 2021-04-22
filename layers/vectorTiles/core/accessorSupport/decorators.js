@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["require","exports","./decorators/aliasOf","./decorators/autoDestroy","./decorators/cast","./decorators/declared","./decorators/property","./decorators/reader","./decorators/shared","./decorators/subclass","./decorators/writer"],(function(r,e,o,a,t,s,d,c,i,n,u){function f(r){for(var o in r)e.hasOwnProperty(o)||(e[o]=r[o])}Object.defineProperty(e,"__esModule",{value:!0}),f(o),f(a),f(t),f(s),f(d),f(c),f(i),f(n),f(u)}));

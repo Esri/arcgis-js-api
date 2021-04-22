@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Klasifikovať pixely použitím hĺbkového strojového učenia</h2><p/>
+        <h2><img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" alt="Klasifikovať pixely použit&iacute;m hĺbkov&eacute;ho strojov&eacute;ho učenia"></h2>
+        <hr/>
+    <p>Sp&uacute;&scaron;ťa model hĺbkov&eacute;ho strojov&eacute;ho učenia na vstupnom rastri pre produkciu kategorizovan&eacute;ho rastra, pričom každ&yacute; platn&yacute; pixel m&aacute; priraden&eacute; označenie triedy.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, iba oblasť rastra, ktor&aacute; je viditeľn&aacute; v aktu&aacute;lnom rozsahu mapy bude analyzovan&aacute;. Ak nie je za&scaron;krtnut&eacute;, bude analyzovan&yacute; cel&yacute; raster, aj ak je to mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vybrať snímku pre klasifikáciu pixelov</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; sn&iacute;mka pre klasifik&aacute;ciu.
+            </p>
+            <p>M&ocirc;že byť ako URL sn&iacute;mkovej služby, rastrovej vrstvy alebo vrstvy sn&iacute;mkovej služby.
+            </p>
+        </div>
+    </div>
+    <div id="model">
+        <div><h2>Vybrať model hĺbkového strojového učenia použitý na klasifikovanie pixelov</h2></div>
+        <hr/>
+        <div>
+            <p>Položka vstupn&eacute;ho bal&iacute;čka Deep Learning ( <code>.dlpk</code>).
+            </p>
+            <p>Tento bal&iacute;ček hĺbkov&eacute;ho učenia je zostaven&yacute; zo s&uacute;boru Esri model definition JSON file ( <code>.emd</code>), bin&aacute;rneho modelov&eacute;ho s&uacute;boru hĺbkov&eacute;ho učenia, a pr&iacute;padne z rastrovej funkcie Python, ktor&aacute; sa použije.
+            </p>
+        </div>
+    </div>
+    <div id="modelArguments">
+        <div><h2>Zadajte parametre modelu hĺbkového strojového učenia</h2></div>
+        <hr/>
+        <div>
+            <p>Argumenty funkcie s&uacute; definovan&eacute; v triede rastrovej funkcie Python, na ktor&eacute; sa odkazuje vstupn&yacute; model. Tu zad&aacute;te ďal&scaron;ie parametre hĺbkov&eacute;ho strojov&eacute;ho učenia a argumenty pre experimenty a spresnenie, napr&iacute;klad prah spoľahlivosti pre nastavenie citlivosti.
+            </p>
+            <p>N&aacute;zvy argumentov s&uacute; vyplnen&eacute; n&aacute;strojom pri nač&iacute;tan&iacute; Python modulu zo servera rastrovej anal&yacute;zy.
+            </p>  
+            <p> 
+            </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Režim spracovania</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, ako bud&uacute; v&scaron;etky rastrov&eacute; položky v mozaikovom datasete alebo sn&iacute;mkovej službe spracovan&eacute;. Tento parameter sa použije, keď je vstupn&yacute;m rastrom mozaikov&yacute; dataset alebo sn&iacute;mkov&aacute; služba.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+V&scaron;etky rastrov&eacute; položky v mozaikovej d&aacute;tovej sade alebo sn&iacute;mkovej službe bud&uacute; spojen&eacute; mozaikou a spracovan&eacute;. Toto je prednastaven&aacute; voľba.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+V&scaron;etky rastrov&eacute; položky v mozaikovej d&aacute;tovej sade alebo sn&iacute;mkovej službe bud&uacute; spracovan&eacute; ako samostatn&eacute; obr&aacute;zky.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
+    <div id="outputClassifiedRaster">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern. De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via  Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Anv&auml;nd n&auml;rhet</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b>, <b>Hantera data</b>, <b>Djupinl&auml;rning</b> och <b>Flerdimensionell analys</b>.
+        <p>Rasteranalys till&aring;ter att du utf&ouml;r analys av st&ouml;rre rasterdataset med  ArcGIS Image Server. P&aring; s&aring; s&auml;tt kan du analysera st&ouml;rre m&auml;ngder data snabbare genom att utnyttja kraften hos servern.De verktygsset som f&ouml;r n&auml;rvarande finns tillg&auml;ngliga via Portal for ArcGIS-webbgr&auml;nssnittet &auml;r  <b>Summera data</b>, <b>Analysera m&ouml;nster</b>, <b>Anv&auml;nd n&auml;rhet</b>, <b>Analysera bild</b>, <b>Analysera terr&auml;ng</b>, <b>Hantera data</b>, <b>Djupinl&auml;rning</b> och <b>Flerdimensionell analys</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summera data</h2>
         <hr/>
-        <p>Det h&auml;r verktygssetet inneh&aring;ller ett verktyg f&ouml;r att ber&auml;kna statistik f&ouml;r ett rasterlager inom omr&aring;desgr&auml;nser som du definierar. 
+        <p>Dessa verktyg anv&auml;nds f&ouml;r att ber&auml;kna statistik f&ouml;r ett rasterlager inom de omr&aring;desgr&auml;nser (zoner) som definierats av dig.
             <ul>
                 <li> <b>Summera raster inom</b> ber&auml;knar statistik f&ouml;r rasterceller som ligger inom definierade omr&aring;desgr&auml;nser.
+                </li>
+                <li> <b>Zonstatistik som tabell</b> summerar v&auml;rdena i rastret inom zonerna f&ouml;r ett annat dataset och rapporterar resultatet till en tabell.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ber&auml;knar viss summeringsstatistik f&ouml;r rasterceller inom definierade omr&aring;den.
+            <p>Det h&auml;r verktyget summerar v&auml;rdena fr&aring;n ett raster inom zonerna f&ouml;r ett annat dataset.
             </p>
-            <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar: 
-
-                <ul>
-                    <li>Med ett lager f&ouml;r avrinningsomr&aring;den och ett h&ouml;jdrasterlager kan du ber&auml;kna h&ouml;jdomf&aring;nget inom varje avrinningsomr&aring;de f&ouml;r att avg&ouml;ra vilket som har str&ouml;mningen med h&ouml;gst energi.
-                        
-
-                    </li>
-                    <li>Med ett lager med administrativa enheter och ett rasterlager med landanv&auml;ndningskategorier kan du ber&auml;kna variationen inom landanv&auml;ndningv&auml;rden inom varje administrativt omr&aring;de f&ouml;r att identifiera vilka som kr&auml;ver mest arbete, s&aring; att en administrationsplan kan uppr&auml;ttas.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonstatistik som tabell</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Zonstatistik som tabelldiagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget summerar v&auml;rdena i ett raster inom zonerna f&ouml;r ett annat dataset och rapporterar resultatet till en tabell.
             </p>
             <br/>
         </div>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Använd närhet</h2>
         <hr/>
-        <p>De h&auml;r verktygen hj&auml;lper dig besvara en av de vanligaste fr&aring;gorna vid geografiska analyser: Vad ligger n&auml;ra vad?
-
+        <p>De h&auml;r verktygen hj&auml;lper dig besvara n&aring;gra av de vanligaste fr&aring;gorna vid geografiska analyser: Vad ligger n&auml;ra vad? och Vilken &auml;r den mest optimala v&auml;gen?
             <ul>
-                <li> <b>Ber&auml;kna avst&aring;nd</b> ber&auml;knar det euklidiska avst&aring;ndet, riktning och tilldelning fr&aring;n en enda k&auml;lla eller flera.
+                <li> <b>Ber&auml;kna avst&aring;nd</b> ber&auml;knar det euklidiska avst&aring;ndet, riktning och tilldelning fr&aring;n en enda k&auml;lla eller flera k&auml;llor.
                     
 
                 </li>
@@ -146,7 +148,27 @@
                     
 
                 </li>
-                <li> <b>Fastst&auml;ll resekostnadsrutt som polylinje</b> ber&auml;knar polylinjev&auml;gen med l&auml;gst kostnad mellan k&auml;llor och k&auml;nda m&aring;l.
+                <li> <b>Fastst&auml;ll resekostnadsrutt som polylinje</b> ber&auml;knar polylinjev&auml;gen med l&auml;gst kostnad mellan k&auml;nda m&aring;l och k&auml;llor.
+                    
+
+                </li>
+                <li> <b>Avst&aring;ndsackumulering</b> ber&auml;knar ackumulerat avst&aring;nd f&ouml;r varje cell till k&auml;llor, med h&auml;nsyn till rak linje-avst&aring;nd, kostnadsavst&aring;nd, verkligt ytavst&aring;nd, samt vertikala och horisontella kostnadsfaktorer.
+                    
+
+                </li>
+                <li> <b>Avst&aring;ndstilldelning</b> ber&auml;knar avst&aring;ndsallokering f&ouml;r varje cell till de angivna k&auml;llorna baserat p&aring; rak linje-avst&aring;nd, kostnadsavst&aring;nd, verkligt ytavst&aring;nd, samt vertikala och horisontella kostnadsfaktorer.
+                    
+
+                </li>
+                <li> <b>Optimal s&ouml;kv&auml;g som linje</b> ber&auml;knar den optimala s&ouml;kv&auml;gen fr&aring;n destinationer till k&auml;llor som linje.
+                    
+
+                </li>
+                <li> <b>Optimal s&ouml;kv&auml;g som raster</b> ber&auml;knar den optimala s&ouml;kv&auml;gen fr&aring;n destinationer till k&auml;llor som ett raster.
+                    
+
+                </li>
+                <li> <b>Optimala regionanslutningar</b> ber&auml;knar det optimala anslutningsn&auml;tverket mellan tv&aring; eller flera indataregioner.
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ber&auml;knar det euklidiska avst&aring;ndet, riktning och tilldelning fr&aring;n en enda k&auml;lla eller flera. Du kan anv&auml;nda det h&auml;r verktyget f&ouml;r att avg&ouml;ra hur l&aring;ngt det &auml;r till en plats fr&aring;n en v&auml;g, en byggnad eller en park. Du kan &auml;ven avg&ouml;ra vilken riktning du m&aring;ste &aring;ka fr&aring;n en plats f&ouml;r att &aring;terv&auml;nda till en k&auml;llplats via den mest direkta v&auml;gen. F&ouml;r varje plats i ditt unders&ouml;kningsomr&aring;de kan du se vilken som &auml;r n&auml;rmast k&auml;llan.
+            <p>Det h&auml;r verktyget ber&auml;knar det euklidiska avst&aring;ndet, riktning och tilldelning fr&aring;n en enda k&auml;lla eller flera k&auml;llor.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ber&auml;knar den optimala kostnadens n&auml;tverk av en upps&auml;ttning indataregioner.
+            <p>Det h&auml;r verktyget ber&auml;knar den optimala kostnadens n&auml;tverk av en upps&auml;ttning indataregioner.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ber&auml;knar polylinjev&auml;gen med l&auml;gst kostnad mellan k&auml;llor och k&auml;nda m&aring;l.
+            <p>Verktyget ber&auml;knar polylinjev&auml;gen med l&auml;gst kostnad mellan m&aring;l och k&auml;llor.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Avståndsackumulering</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Verktygsskiss f&ouml;r avst&aring;ndsackumulering">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget ber&auml;knar ackumulerat avst&aring;nd f&ouml;r varje cell till k&auml;llor, med h&auml;nsyn till rak linje-avst&aring;nd, kostnadsavst&aring;nd, verkligt ytavst&aring;nd, samt vertikala och horisontella faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Avståndsallokering</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Verktygsskiss f&ouml;r avst&aring;ndstilldelning">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget ber&auml;knar avst&aring;ndsallokering f&ouml;r varje cell till de angivna k&auml;llorna baserat p&aring; rak linje-avst&aring;nd, kostnadsavst&aring;nd, verkligt ytavst&aring;nd, samt vertikala och horisontella faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal väg som linje</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Verktygsskiss f&ouml;r Optimal v&auml;g som linje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget ber&auml;knar den optimala s&ouml;kv&auml;gen fr&aring;n destinationer till k&auml;llor som en linje.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal väg som raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Verktygsskiss f&ouml;r Optimal v&auml;g som raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget ber&auml;knar den optimala s&ouml;kv&auml;gen fr&aring;n destinationer till k&auml;llor som ett raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimala regionanslutningar</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Verktygsskiss f&ouml;r Optimala regionanslutningar">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Verktyget ber&auml;knar det optimala anslutningsn&auml;tverket mellan tv&aring; eller flera indataregioner.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analysera bild</h2>
         <hr/>
-        <p>F&ouml;ljande verktyg underl&auml;ttar vid analys av bilder. 
+        <p>F&ouml;ljande verktyg i  <b>Analysera bild</b>-kategorin underl&auml;ttar vid analys av bilder:
             <ul>
-                <li> <b>Till&auml;mpa rasterfunktionsmall</b> bearbetar bilderna med funktionskedjan enligt vad som anges i rasterfunktionsmallen.
-                </li>
-                <li> <b>&Ouml;vervaka vegetation</b> uppt&auml;cker vegetation i en bild baserat p&aring; aritmetiska &aring;tg&auml;rder p&aring; bilden.
+                <li> <b>&Ouml;vervaka vegetation</b> uppt&auml;cker relativ vegetationst&auml;ckning i en bild baserat p&aring; aritmetiska &aring;tg&auml;rder p&aring; bilden. Flera vegetationsindex finns till tillg&auml;ngliga f&ouml;r bildanalys.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Tillämpa rasterfunktionsmall</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Till&auml;mpa rasterfunktionsmall">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Bearbetar dina bilder med funktionskedjan, enligt vad som anges i rasterfunktionsmallen.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Utf&ouml;r en aritmetisk &aring;tg&auml;rd p&aring; banden i ett multibandsrasterlager f&ouml;r att visa information om vegetationst&auml;ckning i unders&ouml;kningsomr&aring;det.
+            <p>Utf&ouml;r en aritmetisk &aring;tg&auml;rd p&aring; banden i ett multibandsrasterlager f&ouml;r att visa information om vegetationst&auml;ckning.
             </p>
             <br/>
         </div>

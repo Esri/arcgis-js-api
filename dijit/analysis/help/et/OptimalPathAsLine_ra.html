@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimaalne tee joonena</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="T&ouml;&ouml;riista Optimaalne tee joonena illustratsioon"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist arvutab optimaalse tee sihtkohtadest l&auml;htekohani joonena.
+    </p>
+    <p>M&otilde;ned n&auml;ited kasutusaladest:
+        <ul>
+            <li>Leidke uuele teele ehituskulude poolest parim trass.
+                
+
+
+            </li>
+            <li>Leidke parim purjetamismarsruut sihtkoha ja praeguse asukohta vahel.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Valige sihtraster või objektid</h2></div>
+        <hr/>
+        <div>
+            <p>Rastri- v&otilde;i objektikiht, mis tuvastab lahtrid, millest alates m&auml;&auml;ratakse optimaalne tee optimaalse allikani.
+            </p>
+            <p>Kui sisend on raster, peab see sisaldama sihtkohtade kohta kehtivate v&auml;&auml;rtustega lahtreid (null on kehtiv v&auml;&auml;rtus) ja &uuml;lej&auml;&auml;nud lahtritele tuleb m&auml;&auml;rata v&auml;&auml;rtus NoData. Sisendrastri t&uuml;&uuml;p peavad olema t&auml;isarv.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Sihtkoha väli</h2></div>
+        <hr/>
+        <div>
+            <p>Seda v&auml;lja kasutatakse v&auml;&auml;rtuste m&auml;&auml;ramiseks sihtkoha asukohtadele.
+            </p>
+            <p>Selle v&auml;lja t&uuml;&uuml;p peab olema t&auml;isarv.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Valige kauguse akumulatsiooni raster</h2></div>
+        <hr/>
+        <div>
+            <p>Kauguse akumulatsiooni rastrit kasutatakse selleks, et m&auml;&auml;rata optimaalne tee sihtkohtadest allikateni.
+            </p>
+            <p>Kauguse akumulatsiooni raster luuakse tavaliselt t&ouml;&ouml;riistade Kauguse akumulatsioon v&otilde;i Kauguse eraldamine abil. Kauguse akumulatsiooni rastri iga piksel esitab minimaalse akumuleeruva kuluvahemaa iga lahtri pinnast kuni l&auml;htelahtrite komplektini.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Valige tagasisuuna või voolusuuna raster</h2></div>
+        <hr/>
+        <div>
+            <p>Tagasisuuna raster sisaldab arvutatud suundi kraadides. Suund identifitseerib j&auml;rgmise lahtri optimaalsel teel tagasi k&otilde;ige v&auml;hem akumuleeruva kuluallika juurde, v&auml;ltides takistusi.
+            </p>
+            <p>Tagasisuuna raster luuakse tavaliselt t&ouml;&ouml;riistade Kauguse akumulatsioon v&otilde;i Kauguse eraldamine abil. Sel juhul on v&auml;&auml;rtuste vahemik on 0&ndash;360 kraadi. V&auml;&auml;rtus 0 on reserveeritud l&auml;htelahtritele. Idasuuna v&auml;&auml;rtus (suund paremale) on 90 kraadi ning v&auml;&auml;rtused suurenevad p&auml;rip&auml;eva (l&otilde;una on 180, l&auml;&auml;s on 270 ja p&otilde;hi on 360).
+            </p>
+            <p>Loodud optimaalne tee v&otilde;ib olla D8 voolusuunal p&otilde;hinev voolutee. Optimaalse tee loomiseks sel viisil kasutage selle parameetri sisendina D8 voolusuunda.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tee tüüp (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab m&auml;rks&otilde;na, mis m&auml;&auml;ratleb viisi, kuidas v&auml;&auml;rtusi ja tsoone saab sihtkoha sisendandmetel t&otilde;lgendada kulutee arvutustes.
+                <ul>
+                    <li> <b>Iga tsoonini</b> &mdash; sihtkoha sisendandmete iga tsooni jaoks m&auml;&auml;ratakse odavaim tee. Selle variandi korral algab iga tsooni v&auml;hima kuluga tee lahtrist, mille tsooni kaalutud kaugus on k&otilde;ige odavam. See on vaikevalik.
+                         
+                    </li>
+                    <li> <b>Parim &uuml;ksik</b> &mdash; sihtkoha sisendandmete k&otilde;igil lahtritel tuletatakse v&auml;hima kuluga tee k&otilde;igi lahtrite puhul lahtrist, millest on l&auml;htelahtrini v&auml;hima kuluga tee.
+                    </li>
+                    <li> <b>Iga lahtrini</b> &mdash; igal lahtri jaoks, mille sihtkoha sisendandmed on kehtivad, m&auml;&auml;ratakse odavaim tee. Selle variandi puhul k&auml;sitletakse sihtkoha sisendandmete iga lahtrit eraldi ja iga lahtri jaoks m&auml;&auml;ratakse v&auml;hima kuluga tee.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Tulemobjektikihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

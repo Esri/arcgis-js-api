@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["require","exports","dojo/has","./nextTick","./now","./promiseUtils"],(function(e,n,t,r,i,l){var o=t("host-browser")?6:200,c=[],f=new Map,u=0;function a(){var e=0===c.length;if(!e){for(var n=i();!e&&i()-n<o;){var t=c[u];if(t){if(!0===t()){var l=f.get(t);c[u]=null,f.delete(t),l()}u=(u+1)%c.length}else c.splice(u,1),(e=0===c.length)?u=0:u%=c.length}e||r(a)}}return function(e){return e?l.create((function(n){c.push(e),f.set(e,n),1===c.length&&r(a)}),(function(){c[c.indexOf(e)]=null,f.delete(e)})):l.reject(new TypeError("callback is not a function"))}}));

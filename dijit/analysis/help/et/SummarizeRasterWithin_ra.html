@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Summeeri raster piirides</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="T&ouml;&ouml;riist &quot;Summeeri raster piirides&quot;"></h2>
+        <h2>Summeeri piirides olev raster</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summeeri rastri piirides t&ouml;&ouml;riist"></h2>
         <hr/>
-    <p>See t&ouml;&ouml;riist summeerib rastrid vastavalt esimese sisendkihiga m&auml;&auml;ratletud aladele (tsoonidele).
+    <p>See t&ouml;&ouml;riist v&otilde;tab kokku rastri v&auml;&auml;rtused teise andmestiku tsoonides.
     </p>
     <p>M&otilde;ned n&auml;ited kasutusaladest:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Kui tingimus  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse &uuml;ksnes neid sisendkihi ja summeeritava kihi objekte, mis on kaardil praegu n&auml;htavad.  Kui see ruut on m&auml;rkimata, anal&uuml;&uuml;sitakse k&otilde;iki sisendkihi ja summeeritava kihi objekte ka siis, kui neid pole praegu kaardil n&auml;ha.
+    <p>Kui tingimus  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse &uuml;ksnes neid sisendkihi ja summeeritava kihi objekte, mis on kaardil praegu n&auml;htavad. Kui see ruut on m&auml;rkimata, anal&uuml;&uuml;sitakse k&otilde;iki sisendkihi ja summeeritava kihi objekte ka siis, kui neid pole praegu kaardil n&auml;ha.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>P&auml;rast summeritava kihi valimist saate soovi korral arvutada mis tahes punktide, joonte v&otilde;i pindade statistika sisendpindade kihi piires.
             </p>
-            <p>Kui valitud v&auml;li on t&auml;isarv, saab valida j&auml;rgmised statistiku t&uuml;&uuml;bid: Keskmine, Enamus, Maksimum, Mediaan, Miinimum, V&auml;hemus, Vahemik, Standardh&auml;lve, Summa ja Erinevus.
+            <p>Kui valitud v&auml;li on t&auml;isarv, saab valida j&auml;rgmised statistiku t&uuml;&uuml;bid: Keskmine, Enamus, Maksimum, Mediaan, Miinimum, V&auml;hemus, Protsentiil, Vahemik, Standardh&auml;lve, Summa ja Erinevus.
             </p>
             <p>Kui v&auml;lja v&auml;&auml;rtused on ujuva v&auml;&auml;rtusega, saab valida: Keskmine, Maksimaalne, Minimaalne, Vahemik, Standardh&auml;lve ja Summa.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Protsentiili väärtus</h2></div>
+        <hr/>
+        <div>
+            <p>Arvutatav protsentiil. Vaikev&auml;&auml;rtus on 90, mis n&auml;itab 90. protsentiili.
+            </p>
+            <p>V&auml;&auml;rtused v&otilde;ivad olla vahemikus 0 kuni 100. 0. protsentiil on sisuliselt v&otilde;rdne miinimumstatistikaga ja 100. protsentiil on v&otilde;rdne maksimumiga. V&auml;&auml;rtus 50 annab sisuliselt sama tulemuse kui mediaanstatistika.
+            </p>
+            <p>See valik on toetatud ainult siis, kui parameetri  <b>Vali arvutamiseks statistika</b> v&auml;&auml;rtuseks on m&auml;&auml;ratud <b>Protsentiil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Töötle mitmemõõtmelisena</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kuidas sisendrastreid t&ouml;&ouml;deldakse, kui need on mitmem&otilde;&otilde;tmelised. Kui valite mitmem&otilde;&otilde;tmelisena t&ouml;&ouml;tlemise, arvutatakse statistika isendi mitmem&otilde;&otilde;tmelise andmestiku k&otilde;ikide m&otilde;&otilde;tmete p&otilde;hjal. Vastasel juhul arvutatakse statistika sisendi mitmem&otilde;&otilde;tmelise andmestiku praegusest l&otilde;igust. See toimub vaikimisi.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

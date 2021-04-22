@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({clustersLabel:"Найдите кластеры для слоя ${inputLayerName}.",chooseLayerLabel:"Выберите слой, для которого будут найдены кластеры",minClusterPtsLabel:"Минимальное число точек, которые будут считаться кластером",minClustersPtsGAXLbl:"Минимальное число точек для образования кластера",limitSearchLabel:"Ограничить диапазон поиска до (дополнительно)",limitSearchReqLabel:"Ограничить диапазон поиска до",outputLayerName:"Найти кластеры для ${inputLayerName}",itemDescription:"Векторный слой, созданный с помощью решения Найти кластеры точек для ${inputLayerName}.",itemTags:"Результаты анализа, Найти кластеры точек, ${inputLayerName}",itemSnippet:"Векторный слой, созданный в результате работы Найти кластеры точек",chooseClusteringMethod:"Выберите используемый метод кластеризации",dbscanLabel:"Заданное расстояние (DBSCAN)",hdbscanLabel:"Автонастройка (HDBSCAN)",useTimeToFindCLusters:"Использовать время для поиска кластеров",limitSearchDurLabel:"Ограничить длительность поиска до"});

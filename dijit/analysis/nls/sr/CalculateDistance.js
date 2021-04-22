@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite sloj lokacije rastera ili geoobjekta od kojeg želite da izračunate rastojanje",inputRaster:"Odaberite sloj rastera ili geoobjekta da biste predstavili barijere (opciono)",maxDistanceLabel:"Maksimalno rastojanje za izračunavanje (opciono)",outputCellSize:"Veličina izlazne ćelije (opciono)",distanceMethod:"Metod rastojanja",resultDistLayerName:"Naziv sloja sa rezultatima rastojanja",resultDirectionLayerName:"Naziv sloja sa rezultatima uputstava za navigaciju (opciono)",resultAllocationLayerName:"Naziv sloja sa rezultatima dodele (opciono)",outputBackDirectionName:"Naziv sloja povratnog smera rezultata (opciono)",outputLayerName:"Izračunato rastojanje za ${layername}",allocationFieldLabel:"Odaberite sloj za dodelu (opciono)",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Izračunaj rastojanje na ${layerName}. ",itemTags:"Rezultat analize, CalculateDistance, ${layername}, ${fieldname}",itemSnippet:"Sloj geoobjekata nastao iz CalculateDistance.",planar:"Planarno",geodesic:"Geodetski",selectDistance:"-- izaberi --"});

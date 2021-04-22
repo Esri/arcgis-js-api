@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Statistik Zona sebagai Tabel</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagram Statistik Zona sebagai Tabel"></h2>
+        <hr/>
+    <p>Alat ini merangkum nilai-nilai raster di dalam zona set data lain dan melaporkan hasilnya di dalam tabel.
+    </p>
+    <p>Beberapa aplikasi contoh termasuk hal berikut:
+    </p>
+    <p>
+        <ul>
+            <li>Dengan adanya layer batas negara bagian dan persebaran curah hujan rata-rata di sepanjang wilayah Amerika Serikat, hitung persebaran peristiwa hujan ekstrem di negara bagian menggunakan daftar nilai persentil.
+                
+
+            </li>
+            <li>Dengan adanya layer zona ekologi yang tumpang-tindih dan layer raster kelembapan tanah, hitung semua statistik pendukung di dalam setiap zona untuk menghubungkan zona dengan ketersediaan kelembapan tanah.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur pada layer input dan layer yang akan diringkas yang terlihat di jangkauan peta saat ini yang akan dianalisis. Jika tidak dicentang, semua fitur pada layer input dan layer yang akan diringkas akan dianalisis meskipun berada di luar jangkauan peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur zona</h2></div>
+        <hr/>
+        <div>
+            <p>Layer yang menentukan perbatasan zona, atau area, yang nantinya akan diringkas.
+            </p>
+            <p>Layer dapat berupa raster bilangan bulat atau data fitur. Untuk raster, zona ditentukan oleh semua lokasi di input yang memiliki nilai sel yang sama. Untuk fitur, zona dapat tumpang-tindih. Area tersebut tidak perlu berdampingan.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Kolom zona</h2></div>
+        <hr/>
+        <div>
+            <p>Ini adalah atribut layer yang akan digunakan untuk menentukan perbatasan zona (area).
+            </p>
+            <p>Contoh, misalnya layer input pertama menentukan batas unit manajemen, dengan atribut yang menentukan wilayah, distrik, dan ID persil setiap unit. Anda pun memiliki layer raster yang menentukan indeks hayati untuk setiap lokasi. Dengan kolom yang Anda pilih, Anda dapat memutuskan untuk menghitung rata-rata hayati di tingkat lokal, distrik, atau wilayah.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Pilih raster nilai</h2></div>
+        <hr/>
+        <div>
+            <p>Sel raster di layer ini akan diringkas berdasarkan area (zona) tempat posisi sel tersebut.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Abaikan NoData dalam perhitungan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah NoData yang hilang diabaikan dalam analisis.
+                <ul>
+                    <li>Dicentang&mdash;Analisis akan menyertakan sel yang memiliki nilai di raster nilai input dalam zona tertentu untuk menentukan nilai output zona tersebut. Sel NoData di raster nilai akan diabaikan di dalam penghitungan statistik. Ini adalah default.
+                    </li>
+                    <li>Tidak dicentang&mdash;Analisis akan menghasilkan NoData, jika ada nilai NoData untuk sel raster nilai di dalam zona tertentu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Jenis statistik (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan jenis statistik yang akan dihitung.
+            </p>
+            <p>Inputnya bisa berupa salah satu dari pilihan berikut:  <b>Semua</b>, <b>Rata-rata</b>, <b>Mayoritas</b>, <b>Maksimal</b>, <b>Median</b>, <b>Minimal</b>, <b>Minoritas</b>, <b>Persentil</b>, <b>Rentang</b>, <b>Simpangan baku</b>, <b>Jumlah</b>, <b>Keragaman</b>, <b>Minimal dan Maksimal</b>, <b>Rata-rata dan Simpangan baku</b>, atau <b>Minimal, Maksimal, dan Rata-rata</b>. Defaultnya adalah <b>Semua</b>.
+            </p>
+            <p>Jika raster nilai input berupa bilangan bulat, semua statistik akan dihitung secara default. Jika jenis raster nilai adalah titik mengambang, maka semua statistik selain  <b>Median</b> dan <b>Persentil</b> akan dihitung. 
+            </p>
+            <p>Jika jenis raster nilai input adalah titik mengambang, maka penghitungan zona untuk  <b>Mayoritas</b>, <b>Minoritas</b>, dan <b>Keragaman</b> tidak akan dapat dihitung.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Nilai persentil (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Persentil yang akan dihitung. Sebuah nilai tunggal atau daftar yang memuat beberapa nilai dapat ditentukan. Defaultnya adalah 90, yang menunjukkan persentil ke-90.
+            </p>
+            <p>Nilai dapat berkisar antara 0 hingga 100. Hasil dari menentukan persentil ke-0 pada intinya setara dengan hasil statistik minimal, dan persentil ke-100 setara dengan hasil statistik maksimal. Nilai 50 pada dasarnya akan menghasilkan hasil yang sama dengan statistik median.
+            </p>
+            <p>Opsi ini hanya didukung jika parameter  <b>Jenis statistik</b> ditetapkan ke <b>Persentil</b> atau <b>Semua</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Jenis interpolasi persentil (opsional)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Menentukan metode interpolasi persentil yang akan digunakan ketika nilai dari raster input yang akan dihitung berjumlah genap.
+            </p> 
+            <p>Jika raster nilai input berjenis piksel integer, metode  <b>Terdekat</b> yang akan digunakan. Jika raster nilai input merupakan jenis piksel titik mengambang, maka metode <b>Linear</b> yang akan digunakan. Ini adalah default.
+            </p>
+            <p>Untuk metode  <b>Terdekat</b>, nilai yang paling mendekati persentil yang diinginkan yang akan digunakan. Untuk metode <b>Linear</b>, rata-rata dari dua nilai terdekat dari persentil yang diinginkan yang akan digunakan.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Proses sebagai multidimensional (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan cara pemrosesan raster input jika raster input tersebut bersifat multidimensional.
+            </p>
+            <ul>
+                <li>Dicentang&mdash;Statistik akan dihitung dari irisan set data multidimensional input saat ini. Ini adalah default.
+                    
+
+                </li>
+                <li>Tidak Dicentang&mdash;Statistik akan dihitung untuk semua dimensi set data multidimensional input.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Nama tabel hasil</h2></div>
+        <hr/>
+        <div>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

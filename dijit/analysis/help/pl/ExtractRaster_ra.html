@@ -42,8 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Wyodrębnij raster</h2><p/>
-        <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Narzędzie portalu Wyodrębnij raster
-"></h2>
+        <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Narzędzie portalu Wyodrębnij raster "></h2>
         <hr/>
     <p>Za pomocą tego narzędzia można przyciąć raster do granicy, tworząc prostokątny obszar lub kształt definiowany interaktywnie na ekranie. Raster można przyciąć do rozmiaru wyznaczanego przez zasięg obszaru aktualnie wyświetlanego na mapie lub przez analizowany obszar zdefiniowany przez poligon.
     </p>
@@ -62,13 +61,33 @@
         <hr/>
         <div>
             <p>Wybierz typ zasięgu używany podczas przycinania geometrii warstwy:
-
                 <ul>
                     <li>Użyj bieżącego zasięgu &mdash; do przycięcia warstwy wynikowej zostanie użyty bieżący zasięg mapy. Jest to opcja domyślna.
                         
 
                     </li>
-                    <li>Wybierz analizowany obszar &mdash; za pomocą tej opcji można zdecydować, czy wynik ma zawierać obszar wewnątrz zasięgu geometrii lub obszar spoza zasięgu geometrii. Jeśli zostanie wybrana opcja  <b>Dane wewnątrz geometrii</b>, zobrazowanie spoza zasięg&oacute;w zostanie usunięte. Jeśli zostanie wybrana opcja <b>Dane poza geometrią</b>, zobrazowanie wewnątrz zasięg&oacute;w zostanie usunięte. Geometrię przycinania można także zdefiniować przy użyciu narzędzi rysowania.
+                    <li>Wybierz analizowany obszar &mdash; pozwala zdefiniować geometrię przycinania przy użyciu narzędzi rysowania.
+                        
+
+                    </li>
+                    <li>Wybierz warstwę &mdash; wybierz warstwę obiekt&oacute;w lub warstwę zobrazowań, aby zdefiniować zasięg lub wybierz warstwę obiekt&oacute;w poligonowych, aby zdefiniować geometrię przycinania. Po wybraniu warstwy obiekt&oacute;w poligonowych wyświetlane jest pole wyboru, w kt&oacute;rym można określić, czy do geometrii przycinania należy użyć obiekt&oacute;w wejściowych. Pole jest domyślnie niezaznaczone. Oznacza to, że wejściowa warstwa obiektowa służy do definiowania zasięgu. Jeśli pole jest zaznaczone, oznacza to, że obiekty wejściowe są używane do geometrii przycinania.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Wskaż typ przycinania</h2></div>
+        <hr/>
+        <div>
+            <p>Wskaż, czy należy zachować obszar wewnątrz lub na zewnątrz geometrii przycięcia:
+                <ul>
+                    <li>Dane wewnątrz geometrii &mdash; wyodrębnione zostanie zobrazowanie znajdujące się wewnątrz zasięg&oacute;w przycięcia. Jest to opcja domyślna.
+                        
+
+                    </li>
+                    <li>Dane poza geometrią &mdash; wyodrębnione zostanie zobrazowanie znajdujące się poza zasięgami przycięcia.
                         
 
                     </li>
@@ -81,6 +100,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

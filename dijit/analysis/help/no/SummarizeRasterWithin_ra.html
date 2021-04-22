@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summer raster innenfor</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summer raster innenfor-verkt&oslash;yet"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet summerer et raster basert p&aring; omr&aring;der (soner) som er definert av det f&oslash;rste inndatalaget.
+    <p>Dette verkt&oslash;yet summerer verdiene for et raster innenfor sonene til et annet datasett.
     </p>
     <p>Noen eksempler p&aring; bruksomr&aring;der er f&oslash;lgende:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres som er synlige i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun geoobjektene i inndatalaget og laget som skal summeres, som er synlige i gjeldende kartutstrekning, som analyseres. Hvis det ikke er merket av for dette alternativet, analyseres alle geoobjekter i b&aring;de inndatalaget og laget som skal summeres, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>N&aring;r du velger et lag &aring; summere, kan du ogs&aring; beregne statistikk for eventuelle numeriske attributter for punktene, linjene eller omr&aring;dene innenfor inndataomr&aring;delaget.
             </p>
-            <p>De tilgjengelige statistikktypene n&aring;r det valgte feltet er heltall, er Gjennomsnittlig, Majoritet, Maksimum, Median, Minimum, Minoritet, Omr&aring;de, Standardavvik, Sum og Variasjon.
+            <p>De tilgjengelige statistikktypene n&aring;r det valgte feltet er heltall, er Gjennomsnittlig, Majoritet, Maksimum, Median, Minimum, Minoritet, Persentil, Omr&aring;de, Standardavvik, Sum og Variasjon.
             </p>
             <p>Hvis feltet er flyttall, er alternativene Gjennomsnittlig, Maksimum, Minimum, Omr&aring;de, Standardavvik og Sum.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Persentilverdi</h2></div>
+        <hr/>
+        <div>
+            <p>Persentilen som skal beregnes. Standardverdien er 90, som angir den 90.&nbsp;persentilen.
+            </p>
+            <p>Verdiomr&aring;det kan v&aelig;re fra 0 til 100. 0.&nbsp;persentil er i sin vesentlighet lik den laveste verdien, og 100.&nbsp;persentil er lik den h&oslash;yeste verdien. En verdi p&aring; 50 gir i sin vesentlighet det samme resultatet som medianverdien.
+            </p>
+            <p>Dette alternativet st&oslash;ttes bare hvis parameteren  <b>Velg statistikk som skal beregnes</b> er satt til <b>Persentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Behandle som flerdimensjonale</h2></div>
+        <hr/>
+        <div>
+            <p>Angir hvordan inndatarasterne blir behandlet hvis de er fleredimensjonale. Hvis du velger &aring; behandle dem som flerdimensjonale, beregnes statistikken fra alle dimensjonene i det flerdimensjonale inndatasettet. I motsatt fall beregnes statistikken ut fra gjeldende sektor av det flerdimensjonale inndatasettet. Dette er standarden.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

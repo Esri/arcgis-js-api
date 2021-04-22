@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/promise/all","esri/dijit/geoenrichment/when","./areaDetails/_AreaDetailsSettingsBuilder","./chart/_ChartSettingsBuilder","./comparison/_ComparisonSettingsBuilder","./dynamicInfographic/_DynamicInfographicSettingsBuilder","./locator/_LocatorSettingsBuilder","./map/_MapSettingsBuilder","./multiFeature/_MultiFeatureSettingsBuilder","./table/_TableSettingsBuilder"],(function(t,e,i,n,r,a,s,o,g,S){var l={getSettingsSet:function(l){return e(l.getRenderPromise(),(function(){return t({areaDetailsSettings:i.provideAreaDetailsSettings(l),chartSettings:n.provideChartSettings(l),comparisonSettings:r.provideComparisonSettings(l),dynamicInfographicSettings:a.provideDynamicInfogarphicSettings(l),locatorSettings:s.provideLocatorSettings(l),mapSettings:o.provideMapSettings(l),multiFeatureSettings:g.provideMultiFeatureSettings(l),tableSettings:S.provideTableSettings(l)}).then((function(t){return Object.keys(t).forEach((function(e){var i=t[e];i&&(i.exportSettings&&(t.hasExport=!0),i.viewSettings&&(t.hasViewSettings=!0),i.filter&&(t.hasFilter=!0))})),t.hasExport||t.hasViewSettings||t.hasFilter||t.multiFeatureSettings?t:null}))}))}};return l}));

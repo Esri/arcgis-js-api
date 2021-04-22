@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Aggrega raster multidimensionale</h2><p/>
+        <h2>Aggregare raster multidimensionale</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Aggregare raster multidimensionale"></h2>
         <hr/>
     <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Scegliere il layer di immagini multidimensionale da aggregare</h2></div>
+        <div><h2>Selezionare il layer di immagini multidimensionale da aggregare</h2></div>
         <hr/>
         <div>
             <p>Layer di immagini di input di un raster multidimensionale che verr&agrave; aggregato.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Scegliere la dimensione lungo la quale aggregare</h2></div>
+        <div><h2>Selezionare la dimensione lungo la quale aggregare</h2></div>
         <hr/>
         <div>
             <p>Dimensione di aggregazione. Questa &egrave; la dimensione lungo la quale verranno aggregate le variabili.
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Scegliere le variabili da aggregare</h2></div>
+        <div><h2>Selezionare le variabili da aggregare</h2></div>
         <hr/>
         <div>
             <p>La variabile o le variabili che verranno aggregate lungo la dimensione specificata. Se non viene specificata alcuna variabile, verranno aggregate tutte le variabili con la dimensione selezionata.
@@ -88,12 +88,12 @@
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Scegliere il metodo di aggregazione</h2></div>
+        <div><h2>Selezionare il metodo di aggregazione</h2></div>
         <hr/>
         <div>
-            <p>Specifica il metodo matematico che verr&agrave; utilizzato per combinare le sezioni aggregate in un intervallo. 
+            <p>Specifica il metodo matematico che verr&agrave; utilizzato per combinare le sezioni aggregate in un intervallo.
                 <ul>
-                    <li> <b>Media</b>: calcola la media dei valori di pixel in tutte le sezioni dell'intervallo. Questa &egrave; l'impostazione predefinita.
+                    <li> <b>Media</b>: calcola la media dei valori di pixel in tutte le sezioni dell'intervallo. Si tratta dell'impostazione predefinita.
                     </li>
                     <li> <b>Massimo</b>: calcola il valore massimo di un pixel in tutte le sezioni dell'intervallo.
                     </li>
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div id="aggregationFunction">
-        <div><h2>Scegliere il modello di funzione raster</h2></div>
+        <div><h2>Selezionare il modello di funzioni raster</h2></div>
         <hr/>
         <div>
             <p>Una funzione raster personalizzata che verr&agrave; utilizzata per calcolare i valori dei pixel dei raster aggregati. L'input &egrave; un elemento del modello di funzione raster nel portale. Questo input &egrave; obbligatorio quando  <b>Metodo di aggregazione</b> &egrave; impostato su <b>Personalizzato</b>.
@@ -129,12 +129,12 @@
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Scegliere la definizione di aggregazione</h2></div>
+        <div><h2>Selezionare la definizione di aggregazione</h2></div>
         <hr/>
         <div>
-            <p>Specifica l'intervallo di dimensione per il quale verranno aggregati i dati. 
+            <p>Specifica l'intervallo di dimensione per il quale verranno aggregati i dati.
                 <ul>
-                    <li> <b>Tutte</b>: i valori dei dati verranno aggregati su tutte le sezioni. Questa &egrave; l'impostazione predefinita.
+                    <li> <b>Tutte</b>: i valori dei dati verranno aggregati su tutte le sezioni. Si tratta dell'impostazione predefinita.
                     </li>
                     <li> <b>Parola chiave di intervallo</b>: i dati variabili verranno aggregati utilizzando un intervallo comunemente noto.
                     </li>
@@ -148,7 +148,7 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Scegliere l'intervallo delle parole chiave</h2></div>
+        <div><h2>Selezionare l'intervallo di parole chiave</h2></div>
         <hr/>
         <div>
             <p>Specifica l'intervallo di parole chiave che verr&agrave; utilizzato durante l'aggregazione lungo la dimensione. Questo input &egrave; obbligatorio quando  <b>Definizione aggregazione</b> &egrave; impostato su <b>Parola chiave di intervallo</b> e l'aggregazione deve essere nel tempo.
@@ -198,7 +198,7 @@
         <div>
             <p>L'unit&agrave; che verr&agrave; utilizzata per il valore dell'intervallo. Questo input &egrave; obbligatorio quando  <b>Dimensione</b> &egrave; un campo temporale e <b>Definizione aggregazione</b> &egrave; impostato su <b>Valore di intervallo</b>.
             </p>
-            <p>Se si aggrega qualcosa di diverso dal tempo, questa opzione non sar&agrave; disponibile e l'unit&agrave; per il valore di intervallo corrisponder&agrave; all'unit&agrave; variabile dei dati raster multidimensionali di input. 
+            <p>Se si aggrega qualcosa di diverso dal tempo, questa opzione non sar&agrave; disponibile e l'unit&agrave; per il valore di intervallo corrisponder&agrave; all'unit&agrave; variabile dei dati raster multidimensionali di input.
                 <ul>
                     <li> <b>Orario</b>: i valori dei dati verranno aggregati in periodi di tempo orari all'intervallo fornito.
                     </li>
@@ -227,9 +227,9 @@
         <div><h2>Ignora valori mancanti nei calcoli</h2></div>
         <hr/>
         <div>
-            <p>Specifica se i valori mancanti vengono ignorati nell'analisi. 
+            <p>Specifica se i valori mancanti vengono ignorati nell'analisi.
                 <ul>
-                    <li>Selezionato: l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Questa &egrave; l'impostazione predefinita.
+                    <li>Selezionato: l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Si tratta dell'impostazione predefinita.
                     </li>
                     <li>Deselezionato: l'analisi produrr&agrave; NoData se sono presenti valori NoData per i pixel lungo la data dimensione.
                     </li>
@@ -239,9 +239,10 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

@@ -44,7 +44,7 @@
         <h2>Resumir Raster Em</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Ferramenta Resumir Raster Em"></h2>
         <hr/>
-    <p>Esta ferramenta resume um raster com base em &aacute;reas (zonas) definidas pela primeira camada de entrada.
+    <p>Esta ferramenta resume os valores de um raster dentro das zonas de outro conjunto de dados.
     </p>
     <p>Alguns exemplos de aplica&ccedil;&otilde;es incluem as seguintes:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Se  <b>Usar extens&atilde;o de mapa actual</b> &eacute; validado, apenas esses elementos na camada de entrada e da camada a ser resumida que s&atilde;o vis&iacute;veis dentro do mapa de extens&atilde;o actual ser&atilde;o analisados.  Se n&atilde;o validado, todos os elementos tanto na camada de entrada e na camada a serem resumidos v&atilde;o ser analisados, mesmo que se encontrem fora da extens&atilde;o do mapa actual.
+    <p>Se  <b>Usar extens&atilde;o de mapa atual</b> for validado, apenas esses elementos na camada de entrada e da camada a ser resumida que s&atilde;o vis&iacute;veis dentro do mapa de extens&atilde;o atual ser&atilde;o analisados. Se n&atilde;o validado, todos os elementos tanto na camada de entrada e na camada a serem resumidos v&atilde;o ser analisados, mesmo que se encontrem fora da extens&atilde;o do mapa atual.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>Ap&oacute;s selecionar uma camada para resumir, pode opcionalmente calcular estat&iacute;sticas de qualquer atributo num&eacute;rico dos pontos, linhas ou &aacute;reas inclu&iacute;dos na camada de &aacute;rea de entrada.
             </p>
-            <p>Os tipos de estat&iacute;sticas dispon&iacute;veis quando o campo selecionado &eacute; inteiro s&atilde;o M&eacute;dia, Maioria, M&aacute;ximo, Mediana, M&iacute;nimo, Minoria, Intervalo, Desvio padr&atilde;o, Soma e Variedade.
+            <p>Os tipos de estat&iacute;sticas dispon&iacute;veis quando o campo selecionado &eacute; inteiro s&atilde;o M&eacute;dia, Maioria, M&aacute;ximo, Mediana, M&iacute;nimo, Minoria, Percentil, Intervalo, Desvio padr&atilde;o, Soma e Variedade.
             </p>
             <p>Caso o campo seja um ponto flutuante, as op&ccedil;&otilde;es s&atilde;o, M&eacute;dia, M&aacute;ximo, M&iacute;nimo, Intervalo, Desvio padr&atilde;o e Soma.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>O percentil a calcular. A predefini&ccedil;&atilde;o &eacute; 90, indicando o 90.&ordm; percentil.
+            </p>
+            <p>O intervalo dos valores &eacute; de 0 a 100. O 0.&ordm; percentil &eacute; essencialmente equivalente &agrave; estat&iacute;stica m&iacute;nimo e o 100.&ordm; percentil &eacute; equivalente a m&aacute;ximo. Um valor de 50 ir&aacute; essencialmente produzir o mesmo resultado que a estat&iacute;stica mediana.
+            </p>
+            <p>Esta op&ccedil;&atilde;o s&oacute; &eacute; suportada se o par&acirc;metro  <b>Escolher estat&iacute;stica para calcular</b> para calcular estiver definido como <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Processar como multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica como os rasters de entrada ser&atilde;o processados se forem multidimensionais. Se decidir processar como multidimensional, as estat&iacute;sticas ser&atilde;o calculadas a partir de todas as dimens&otilde;es do conjunto de dados multidimensional de entrada. Caso contr&aacute;rio, as estat&iacute;sticas ser&atilde;o calculadas a partir da sec&ccedil;&atilde;o atual do conjunto de dados multidimensional de entrada (esta &eacute; a predefini&ccedil;&atilde;o).
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

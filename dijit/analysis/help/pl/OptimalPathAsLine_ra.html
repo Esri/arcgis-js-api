@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ścieżka optymalna jako linia</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustracja narzędzia Ścieżka optymalna jako linia"></h2>
+        <hr/>
+    <p>To narzędzie oblicza optymalną ścieżkę z miejsc docelowych do źr&oacute;deł jako linię.
+    </p>
+    <p>Poniżej przedstawiono następujące przykładowe zastosowania:
+        <ul>
+            <li>Znajdź najlepszą trasę dla nowej drogi pod względem koszt&oacute;w budowy.
+                
+
+
+            </li>
+            <li>Znajdź najlepszą trasę żeglugową między celem i bieżącą lokalizacją.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Wybierz docelowy raster lub obiekty</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa rastrowa lub obiektowa identyfikująca te kom&oacute;rki, na podstawie kt&oacute;rych jest ustalana optymalna ścieżka do optymalnego źr&oacute;dła.
+            </p>
+            <p>Jeśli dane wejściowe są rastrem, muszą składać się z kom&oacute;rek o prawidłowych wartościach (zero jest prawidłową wartością) dla tych cel&oacute;w, a do pozostałych kom&oacute;rek musi być przypisana wartość NoData (Brak danych). Raster wejściowy musi mieć typ całkowitoliczbowy.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Pole docelowe</h2></div>
+        <hr/>
+        <div>
+            <p>Pole służące do uzyskiwania wartości dla lokalizacji docelowych.
+            </p>
+            <p>Pole musi mieć typ całkowitoliczbowy.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Wybierz raster akumulacji odległości</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacji odległości jest używany do wyznaczania optymalnej ścieżki z miejsc docelowych do źr&oacute;deł.
+            </p>
+            <p>Raster akumulacji odległości jest zwykle tworzony przy użyciu narzędzi Akumulacja odległości lub Przydział odległości. Każda kom&oacute;rka w rastrze akumulacji odległości reprezentuje odległość o najmniejszym akumulowanym koszcie na powierzchni z każdej kom&oacute;rki do zestawu kom&oacute;rek źr&oacute;dłowych.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Wybierz raster kierunku wstecz lub kierunku przepływu</h2></div>
+        <hr/>
+        <div>
+            <p>Raster kierunku powrotnego zawiera kierunki obliczone w stopniach. Kierunek identyfikuje sąsiednią kom&oacute;rkę znajdującą się na optymalnej ścieżce powrotnej prowadzącej z powrotem do źr&oacute;dła o najniższym koszcie akumulowanym, przy czym omijane są bariery.
+            </p>
+            <p>Raster kierunku wstecz jest zwykle tworzony przy użyciu narzędzi Akumulacja odległości lub Przydział odległości. W tym przypadku wartości należą do zakresu od 0 do 360 stopni. Wartość 0 jest zarezerwowana dla kom&oacute;rek źr&oacute;dłowych. Dla kierunku wschodniego (na prawo) wartość wynosi 90 stopni, a wartości wzrastają zgodnie z kierunkiem ruchu wskaz&oacute;wek zegara (180 wskazuje południe, 270 &mdash; zach&oacute;d, a 360 &mdash; p&oacute;łnoc).
+            </p>
+            <p>Tworzona ścieżka optymalna może być ścieżką przepływu na podstawie kierunku przepływu D8. Aby wygenerować w ten spos&oacute;b ścieżkę optymalną, użyj rastra kierunku przepływu D8 jako wartości wejściowej tego parametru.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Typ ścieżki (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Określa słowo kluczowe definiujące spos&oacute;b interpretowania wartości i stref w wejściowych danych określających miejsca docelowe przy obliczaniu kosztu ścieżki.
+                <ul>
+                    <li> <b>Do każdej strefy</b> &mdash; dla wszystkich stref w wejściowych danych określających miejsca docelowe jest określana ścieżka o najniższym koszcie. Przy tej opcji ścieżka o najniższym koszcie dla każdej strefy rozpoczyna się w kom&oacute;rce o najniższym koszcie odległości w strefie. Jest to opcja domyślna.
+                         
+                    </li>
+                    <li> <b>Najlepsza pojedyncza</b> &mdash; dla wszystkich kom&oacute;rek w wejściowych danych określających miejsca docelowe jako ścieżka o najniższym koszcie jest wybierana ścieżka od kom&oacute;rki odpowiadającej minimum najmniejszych wartości kosztu ścieżek do kom&oacute;rek źr&oacute;dłowych.
+                    </li>
+                    <li> <b>Do każdej kom&oacute;rki</b> &mdash; dla wszystkich kom&oacute;rek o prawidłowych wartościach w wejściowych danych określających miejsca docelowe jest ustalana ścieżka o najniższym koszcie. Przy tej opcji każda kom&oacute;rka w wejściowych danych określających miejsca docelowe jest traktowana oddzielnie, a ścieżka o najniższym koszcie jest ustalana dla każdej kom&oacute;rki.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nazwa wynikowej warstwy obiektowej</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -59,7 +59,7 @@
             <p>Der Ziel-Layer, der Attribute des Join-Layers an seine Tabelle anh&auml;ngen wird.
             </p>
             <p>Neben einem Layer aus Ihrer Karte k&ouml;nnen Sie auch die Option  <b>Analyse-Layer ausw&auml;hlen</b> unten in der Dropdown-Liste ausw&auml;hlen. Mit dieser Option &ouml;ffnen Sie eine Galerie, in der Sie zu Datasets aus verschiedenen Quellen navigieren und diese f&uuml;r Ihre Analysen ausw&auml;hlen k&ouml;nnen. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Hiermit wird ermittelt, wie Verbindungen zwischen dem Ziel- und dem Join-Layer verarbeitet werden, wenn mehrere Features im Join-Layer dieselbe Beziehung mit dem Ziel-Layer aufweisen, mit dem sie verbunden sind. Es stehen folgende zwei Verbindungsvorg&auml;nge zur Auswahl:
                 <ul>
-                    <li> <b>Eins zu eins verbinden</b>: Mit dieser Option werden die Features im Ziel-Layer mit jeweils einem Feature im Join-Layer verbunden. Wie die Features verbunden werden, wird mit dem Parameter <b>Statistiken hinzuf&uuml;gen</b> oder dem Parameter <b>Festlegen, welcher Datensatz erhalten bleibt</b> festgelegt. Wird <b>Statistiken hinzuf&uuml;gen</b> verwendet, werden alle abgeglichenen verbundenen Features in den jeweiligen Features des Ziel-Layers zusammengefasst. Die Anzahl der verbundenen Features wird standardm&auml;&szlig;ig hinzugef&uuml;gt. Wird <b>Festlegen, welcher Datensatz erhalten bleibt</b> verwendet, k&ouml;nnen Sie ausw&auml;hlen, ob der erste abgeglichene Datensatz erhalten bleibt (Standardeinstellung) oder ob ein abgeglichener Datensatz basierend auf einem Ausdruck beibehalten wird. F&uuml;r einen Ausdruck kann entweder ein numerisches Feld (Option f&uuml;r den kleinsten oder gr&ouml;&szlig;ten Datensatz) oder ein Datumsfeld (Option f&uuml;r den neuesten oder &auml;ltesten Datensatz) verwendet werden.
+                    <li> <b>Eins zu eins verbinden</b>: Mit dieser Option werden die Features im Ziel-Layer mit jeweils einem Feature im Join-Layer verbunden. Wie die Features verbunden werden, wird mit dem Parameter <b>Statistiken hinzuf&uuml;gen</b> oder dem Parameter <b>Festlegen, welcher Datensatz erhalten bleibt</b> festgelegt. Wird <b>Statistiken hinzuf&uuml;gen</b> verwendet, werden alle abgeglichenen verbundenen Features in den jeweiligen Features des Ziel-Layers zusammengefasst. Die Anzahl der verbundenen Features wird standardm&auml;&szlig;ig hinzugef&uuml;gt. Wird <b>Festlegen, welcher Datensatz erhalten bleibt</b> verwendet, k&ouml;nnen Sie ausw&auml;hlen, ob der erste abgeglichene Datensatz erhalten bleibt (Standardeinstellung) oder ob der abgeglichene Datensatz mit dem h&ouml;chsten bzw. dem niedrigsten Wert in einem bestimmten Feld ( <b>Sortieren nach</b>) beibehalten wird. F&uuml;r den Ausdruck &quot;Sortieren nach&quot; kann entweder ein numerisches Feld (Option f&uuml;r den gr&ouml;&szlig;ten bzw. kleinsten Wert) oder ein Datumsfeld (Option f&uuml;r den neuesten bzw. &auml;ltesten Wert) verwendet werden.
                     </li>
                     <li> <b>Eins zu vielen verbinden</b>: Mit dieser Option werden alle &uuml;bereinstimmenden Features im Join-Layer mit dem Ziel-Layer verbunden. Der Ergebnis-Layer enth&auml;lt mehrere Datens&auml;tze des Ziel-Features.
                     </li>
                 </ul>
                 
             </p>
-            <p>Angenommen, Sie suchen Superm&auml;rkte im Umkreis von 5 Kilometern von einem Bauernmarkt. In diesem Fall muss der zu verbindende Layer &uuml;ber ein einzelnes Feature verf&uuml;gen, das einen Bauernmarkt darstellt, und die Verbindungs-Features stellen die lokalen Lebensmittelgesch&auml;fte mit Attributen wie dem j&auml;hrlichen Gesamtumsatz dar. Mit dem Werkzeug  <b>Features verbinden</b> ermitteln Sie, dass f&uuml;nf Lebensmittelgesch&auml;fte diesen Kriterien entsprechen. Wenn Sie den Verbindungsvorgang <b>Eins zu vielen verbinden</b> festlegen, enth&auml;lt Ihr Ergebnis f&uuml;nf Features, wobei jede Zeile den Bauernmarkt und einen Supermarkt darstellt. Wenn Sie die Beziehung <b>Eins zu eins verbinden</b> festlegen und eine Statistik ausw&auml;hlen, f&uuml;hrt Sie dies zu einem Feature, das den Bauernmarkt und die zusammengefassten Informationen zu den Superm&auml;rkten darstellt, inklusive der Anzahl (5) und anderer optionaler Statistiken wie dem Gesamtjahresumsatz.
+            <p>Angenommen, Sie suchen Superm&auml;rkte im Umkreis von 5 Kilometern von einem Bauernmarkt. In diesem Fall muss der zu verbindende Layer &uuml;ber ein einzelnes Feature verf&uuml;gen, das einen Bauernmarkt darstellt, und die Verbindungs-Features stellen die lokalen Lebensmittelgesch&auml;fte mit Attributen wie dem j&auml;hrlichen Gesamtumsatz dar. Mit dem Werkzeug  <b>Features verbinden</b> ermitteln Sie, dass f&uuml;nf Lebensmittelgesch&auml;fte diesen Kriterien entsprechen. Wenn Sie den Verbindungsvorgang <b>Eins zu vielen verbinden</b> festlegen, enth&auml;lt Ihr Ergebnis f&uuml;nf Features, wobei jede Zeile den Bauernmarkt und einen Supermarkt darstellt. Wenn Sie die Beziehung <b>Eins zu eins verbinden</b> festlegen und <b>Festlegen, welcher Datensatz erhalten bleibt</b> ausw&auml;hlen, erhalten Sie ein Feature, das den Bauernmarkt und einen Supermarkt darstellt &ndash; beispielsweise den mit dem h&ouml;chsten Jahresumsatz. Wenn Sie stattdessen <b>Statistiken hinzuf&uuml;gen</b> ausw&auml;hlen, erhalten Sie ein Feature, das den Bauernmarkt und eine Zusammenfassung der f&uuml;nf Superm&auml;rkte darstellt, beispielsweise den Gesamtjahresumsatz und die Anzahl (5) der zusammengefassten Superm&auml;rkte. 
             </p>
         </div>
     </div>
@@ -177,11 +177,13 @@
         </div>
     </div>
     <div id="isView">
-        <div><h2>Erstellen von Ergebnissen als Sicht eines gehosteten Feature-Layers</h2></div>
+        <div><h2>Ergebnisse als Sicht eines gehosteten Feature-Layers erstellen</h2></div>
         <hr/>
         <div>
-            <p> Wenn Sie die Ergebnisse als Sicht eines gehosteten Feature-Layers erstellen, bleiben die Daten im Falle von &Auml;nderungen an den Quelldaten aktuell. Sichten gehosteter Feature-Layer, die Verbindungen enthalten, sind schreibgesch&uuml;tzt.
+            <p>Wenn Sie die Ergebnisse als Sicht eines gehosteten Feature-Layers erstellen, bleiben die Daten im Falle von &Auml;nderungen an den Quelldaten aktuell. Sichten gehosteter Feature-Layer, die Verbindungen enthalten, sind schreibgesch&uuml;tzt.
             </p>
+            <p class="OnlineOnly">F&uuml;r die Analyse und das Speichern von Sichten gehosteter Feature-Layer, die Verbindungen enthalten, werden keine Credits verbraucht.
+            </p> 
             <p>Sie k&ouml;nnen aus den Analyseergebnissen eine Sicht eines gehosteten Feature-Layers erstellen, wenn alle der folgenden Bedingungen erf&uuml;llt werden:
                 <ul>
                     <li>Sie sind der Besitzer der beiden Layer.

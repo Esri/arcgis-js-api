@@ -44,21 +44,21 @@
         <h2>Finn argumentstatistikk</h2><p/>
         <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Finn argumentstatistikk"></h2>
         <hr/>
-    <p>Trekker ut dimensjonsverdien eller b&aring;ndindeksen der en gitt statistikk oppn&aring;s for hver piksel i et flerdimensjonalt raster eller flerb&aring;ndsraster.
+    <p>Trekker ut dimensjonsverdien eller b&aring;ndindeksen der en gitt statistikk oppn&aring;dd for hver piksel i et flerdimensjonalt raster eller flerb&aring;ndsraster.
     </p>
     <p>Bruk dette verkt&oslash;yet til &aring; trekke ut dimensjonsverdien (for eksempel dato, h&oslash;yde eller dybde) der en bestemt statistikk er oppn&aring;dd i stabelen av rastere i et flerdimensjonalt rasterdatasett. Alternativt kan du finne b&aring;ndnummeret der statistikken er n&aring;dd i et raster med flere b&aring;nd.
     </p>
-    <p>For eksempel vil du kanskje vite hvilken m&aring;ned hver piksel n&aring;dde den h&oslash;yeste havoverflatetemperaturen i l&oslash;pet av 30 &aring;rs datainnsamling. Et annet eksempel kan v&aelig;re at du har et fjernm&aring;lingsbilde med &aring;tte b&aring;nd og vil vite i hvilket b&aring;nd minimum refleksjonsfaktor ble n&aring;dd for hver piksel.
+    <p>Det kan for eksempel v&aelig;re du vil vite hvilken m&aring;ned hver piksel n&aring;dde den h&oslash;yeste havoverflatetemperaturen i l&oslash;pet av 30 &aring;rs datainnsamling. Et annet eksempel kan v&aelig;re at du har et fjernm&aring;lingsbilde med &aring;tte b&aring;nd og vil vite i hvilket b&aring;nd minimum refleksjonsfaktor ble n&aring;dd for hver piksel.
     </p>
-    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres variablene eller b&aring;ndene i laget som vises innenfor gjeldende kartutstrekning. Hvis alternativet ikke er avmerket, analyseres variablene eller b&aring;ndene i hele laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b> analyseres variablene eller b&aring;ndene i laget som vises innenfor gjeldende kartutstrekning. Hvis alternativet ikke er avmerket, analyseres variablene eller b&aring;ndene i hele laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Velg det flerdimensjonale bildet eller flerbåndsbildet som skal analyseres</h2></div>
+        <div><h2>Velg et flerdimensjonalt bildelag eller bildelag med flere bånd som skal analyseres</h2></div>
         <hr/>
         <div>
-            <p>Det flerdimensjonale rasteret eller flerb&aring;ndsrasteret som skal analyseres.
+            <p>Det inng&aring;ende flerdimensjonale rasteret eller flerb&aring;ndsrasteret som skal analyseres.
             </p>
         </div>
     </div>
@@ -66,12 +66,12 @@
         <div><h2>Velg dimensjon som statistikken skal trekkes ut fra</h2></div>
         <hr/>
         <div>
-            <p>Dimensjonen som statistikken skal trekkes ut fra. Denne parameteren er ikke obligatorisk n&aring;r inndatarasteret ikke er et flerdimensjonalt raster.
+            <p>Dimensjonen som statistikken trekkes ut fra. Hvis inndatarasteret ikke er et flerdimensjonalt raster, er denne parameteren ikke obligatorisk.
             </p>
         </div>
     </div>
     <div id="variables">
-        <div><h2>Velg én eller flere variabler som skal analyseres</h2></div>
+        <div><h2>Velg variabelen(e) som skal analyseres</h2></div>
         <hr/>
         <div>
             <p>Variabelen eller variablene som skal analyseres. Hvis inndatarasteret ikke er flerdimensjonalt, anses pikselverdiene i flerb&aring;ndsrasteret som variabelen. Hvis inndatarasteret er flerdimensjonalt og ingen variabel er angitt, analyseres alle variablene i den valgte dimensjonen.
@@ -84,16 +84,16 @@
         <div><h2>Velg statistikktype</h2></div>
         <hr/>
         <div>
-            <p>Angir hvilken statistikk som skal trekkes ut fra variabelen eller variablene langs den gitte dimensjonen. 
+            <p>Angir hvilken statistikk som skal trekkes ut fra variabelen eller variablene langs den gitte dimensjonen.
             </p>
             <ul>
-                <li> <b>Argumentet for minimum</b>&ndash;&nbsp;Dimensjonsverdien der minimumsverdien for variabelen er n&aring;dd, blir trukket ut. Dette er standardalternativet.
+                <li> <b>Argumentet for minimum</b> &ndash;&nbsp;Dimensjonsverdien der minimumsverdien for variabelen er n&aring;dd, blir trukket ut. Dette er standardalternativet.
                 </li>
-                <li> <b>Argumentet for maksimum</b>&ndash;&nbsp;Dimensjonsverdien der maksimumsverdien for variabelen er n&aring;dd, blir trukket ut.
+                <li> <b>Argumentet for maksimum</b> &ndash;&nbsp;Dimensjonsverdien der maksimumsverdien for variabelen er n&aring;dd, blir trukket ut.
                 </li>
-                <li> <b>Argumentet for median</b>&ndash;&nbsp;Dimensjonsverdien der medianverdien for variabelen er n&aring;dd, blir trukket ut.
+                <li> <b>Argumentet for median</b> &ndash; Dimensjonsverdien der medianverdien for variabelen er n&aring;dd, blir trukket ut.
                 </li>
-                <li> <b>Argumentet for varighet</b>&ndash;&nbsp;Den lengste dimensjonsvarigheten der variabelverdiene faller mellom minimums- og maksimumsverdien.
+                <li> <b>Argumentet for varighet</b> &ndash; Den lengste dimensjonsvarigheten der variabelverdiene faller mellom minimums- og maksimumsverdien.
                 </li>
             </ul>
             
@@ -111,9 +111,9 @@
         <div><h2>Angi minimumsverdi</h2></div>
         <hr/>
         <div>
-            <p>Minimumsvariabelen som skal brukes til &aring; trekke ut varigheten.
+            <p>Den minste variabelverdien som skal brukes til &aring; trekke ut varighet.
             </p>
-            <p>Denne parameteren er obligatorisk n&aring;r  <b>Varighet</b> velges som statistikktype.
+            <p>Denne parameteren er obligatorisk n&aring;r  <b>Varighet</b> er valgt som statistikktype.
             </p>
         </div>
     </div>
@@ -121,9 +121,9 @@
         <div><h2>Angi maksimumsverdi</h2></div>
         <hr/>
         <div>
-            <p>Maksimumsvariabelen som skal brukes til &aring; trekke ut varigheten.
+            <p>Den st&oslash;rste variabelverdien som skal brukes til &aring; trekke ut varighet.
             </p>
-            <p>Dette trinnet er obligatorisk n&aring;r  <b>Varighet</b> velges som statistikktype.
+            <p>Dette trinnet er obligatorisk n&aring;r  <b>Varighet</b> er valgt som statistikktype.
             </p>
         </div>
     </div>
@@ -131,11 +131,11 @@
         <div><h2>Velg dimensjonsdefinisjon</h2></div>
         <hr/>
         <div>
-            <p>Angir hvordan statistikken skal trekkes ut fra dimensjonen. 
+            <p>Angir hvordan statistikken skal trekkes ut fra dimensjonen.
                 <ul>
-                    <li> <b>Alle</b>&ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av alle dimensjoner. Dette er standardalternativet.
+                    <li> <b>Alle</b> &ndash; Statistikken trekkes ut p&aring; tvers av alle dimensjoner. Dette er standardalternativet.
                     </li>
-                    <li> <b>Intervalln&oslash;kkelord</b>&ndash;&nbsp;Statistikken trekkes ut fra tidsdimensjonen i henhold til intervalln&oslash;kkelordet.
+                    <li> <b>Intervalln&oslash;kkelord</b> &ndash; Statistikken trekkes ut fra tidsdimensjonen i henhold til intervalln&oslash;kkelordet.
                     </li>
                 </ul>
                 
@@ -148,31 +148,31 @@
         <div>
             <p>Tidsenheten som statistikken skal trekkes ut fra.
             </p>
-            <p>Hvis du for eksempel har data p&aring; fem &aring;rs daglige havoverflatetemperaturer, og du vil vite i hvilket &aring;r den maksimale temperaturen ble observert. Sett   <b>Argumentet for maksimum</b> som statistikktype, sett <b>Intervalln&oslash;kkelord</b> som dimensjonsdefinisjon, og sett <b>&Aring;rlig</b> som n&oslash;kkelordintervall p&aring; dette trinnet.
+            <p>Hvis du for eksempel har data p&aring; fem &aring;rs daglige havoverflatetemperaturer, og du vil vite i hvilket &aring;r den maksimale temperaturen ble observert. Angi  <b>Argumentet for maksimum</b> som statistikktype, sett, og angi <b>Intervalln&oslash;kkelord</b> som dimensjonsdefinisjon, og angi <b>&Aring;rlig</b> som n&oslash;kkelordsintervall i dette trinnet.
             </p>
-            <p>Hvis du heller vil vite i hvilken m&aring;ned maksimumstemperaturen ble registrert konsekvent, setter du  <b>Argumentet for maksimum</b> som statistikktype, setter <b>Intervalln&oslash;kkelord</b> som dimensjonsdefinisjon og <b>Gjentas m&aring;nedlig</b> som n&oslash;kkelordintervall p&aring; dette trinnet. Dette vil generere et raster der hver piksel inneholder m&aring;neden der statistikken ble n&aring;dd p&aring; tvers av registreringene for fem &aring;r (f.eks. 18.08.2018, 25.08.2016, 07.08.2013).
+            <p>Hvis du heller vil vite i hvilken m&aring;ned maksimumstemperaturen ble observert over en lengre periode, angir du  <b>Argumentet for maksimum</b> som statistikktype, angir <b>Intervalln&oslash;kkelord</b> som dimensjonsdefinisjon og angir <b>Gjentas m&aring;nedlig</b> som n&oslash;kkelordintervall i dette trinnet. Dette vil generere et raster der hver piksel inneholder m&aring;neden der statistikken ble n&aring;dd p&aring; tvers av registreringene for fem &aring;r (f.eks. 18.08.2018, 25.08.2016, 07.08.2013).
             </p>
-            <p>Dette trinnet er obligatorisk n&aring;r  <b>StdTime</b> er satt som dimensjonen statistikken skal trekkes ut fra, og <b>Intervalln&oslash;kkelord</b> er valgt for &aring; definere hvordan statistikken skal trekkes ut fra tidsdimensjonen.
+            <p>Dette trinnet er obligatorisk n&aring;r  <b>StdTime</b> er angitt som dimensjonen statistikken skal trekkes ut fra, og <b>Intervalln&oslash;kkelord</b> er valgt for &aring; definere hvordan statistikken skal trekkes ut fra tidsdimensjonen.
                 <ul>
-                    <li> <b>Gjentas daglig</b>&ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av dager.
+                    <li> <b>Gjentas daglig</b> &ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av dager.
                     </li>
-                    <li> <b>Gjentas ukentlig</b>&ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av uker.
+                    <li> <b>Gjentas ukentlig</b> &ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av uker.
                     </li>
-                    <li> <b>Gjentas m&aring;nedlig</b>&ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av m&aring;neder.
+                    <li> <b>Gjentas m&aring;nedlig</b> &ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av m&aring;neder.
                     </li>
-                    <li> <b>Gjentas kvartalsvis</b>&ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av kvartaler.
+                    <li> <b>Gjentas kvartalsvis</b> &ndash;&nbsp;Statistikken trekkes ut p&aring; tvers av kvartaler.
                     </li>
-                    <li> <b>Timebasert</b>&ndash;&nbsp;Statistikken trekkes ut fra den timen da statistikken ble n&aring;dd.
+                    <li> <b>Hver time</b> &ndash; Statistikken trekkes ut fra den timen da statistikken ble n&aring;dd.
                     </li>
-                    <li> <b>Daglig</b>&ndash;&nbsp;Statistikken trekkes ut fra den dagen da statistikken ble n&aring;dd.
+                    <li> <b>Daglig</b> &ndash; Statistikken trekkes ut fra den dagen da statistikken ble n&aring;dd.
                     </li>
-                    <li> <b>Ukentlig</b>&ndash;&nbsp;Statistikken trekkes ut fra den uken da statistikken ble n&aring;dd.
+                    <li> <b>Ukentlig</b> &ndash; Statistikken trekkes ut fra den uken da statistikken ble n&aring;dd.
                     </li>
-                    <li> <b>M&aring;nedlig</b>&ndash;&nbsp;Statistikken trekkes ut fra den m&aring;neden da statistikken ble n&aring;dd.
+                    <li> <b>M&aring;nedlig</b> &ndash; Statistikken trekkes ut fra den m&aring;neden da statistikken ble n&aring;dd.
                     </li>
-                    <li> <b>Kvartalsvis</b>&ndash;&nbsp;Statistikken trekkes ut fra det kvartalet da statistikken ble n&aring;dd.
+                    <li> <b>Kvartalsvis</b> &ndash; Statistikken trekkes ut fra det kvartalet da statistikken ble n&aring;dd.
                     </li>
-                    <li> <b>&Aring;rlig</b>&ndash;&nbsp;Statistikken trekkes ut fra det &aring;ret da statistikken ble n&aring;dd.
+                    <li> <b>&Aring;rlig </b> &ndash; Statistikken trekkes ut fra det &aring;ret da statistikken ble n&aring;dd.
                     </li>
                 </ul>
                 
@@ -198,6 +198,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

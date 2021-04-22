@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Genera raster di tendenza",outputLayerName:"${layername}_trend",dimensionLabel:"Scegli dimensione lungo la quale verrà analizzata la tendenza delle variabili",variablesLabel:"Scegli variabili per analizzare tendenza",variablesListLabel:"Variabili [Informazioni dimensione] (Descrizione)",trendLineTypeLabel:"Scegli il tipo di linea per inserire i valori delle variabili lungo una dimensione",linear:"Lineare",harmonic:"Armonica",polynomial:"Polinomiale",mannKendall:"Mann-Kendall",seasonalKendall:"Seasonal-Kendall",seasonalPeriod:"Specificare l'unità di tempo per la durata di un periodo stagionale",cycleLength:"Specificare la lunghezza del ciclo armonico",cycleUnit:"Scegliere l'unità di tempo della lunghezza del ciclo armonico",years:"Anni",days:"Giorni",months:"Mesi",frequencyLabel:"Specifica il numero di frequenza per l'adattamento delle tendenze armoniche",polynomialOrderLabel:"Specifica il numero dell'ordine polinomiale per l'adattamento delle tendenze",modelStatistics:"Scegliere le statistiche del modello da includere nel raster di tendenza",rmse:"RMSE",r2:"quadrato a R",slopePValue:"Valore P del coefficiente di pendenza",ignoreNodataLabel:"Ignora valori mancanti nei calcoli",ignore:"Ignora",analysisLayerLabel:"Scegli layer immagini multidimensionale per analizzare tendenza",itemDescription:"Image service di analisi generato da Genera raster di tendenza",itemTags:"Risultato dell'analisi raster, Genera raster di tendenza, ${layername}",itemSnippet:"Image service di analisi generato da Genera raster di tendenza"});

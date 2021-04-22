@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Predicția Utilizării Rasterului de Tendințe",outputLayerName:"${layername}_predict",variablesLabel:"Alegeți variabilele care vor fi anticipate",variablesListLabel:"Variabile [informații dimensiuni] (Descriere)",dimensionDefinitionLabel:"Alegeți metoda folosită pentru furnizarea valorilor dimensiunii de anticipare",dimensionValuesLabel:"Specificați valorile dimensiunii pentru anticipare",dimensionIntervalLabel:"Specificați intervalul de dimensiune pentru anticipare",intervalValueLabel:"Specificați numărul de etape dintre valorile de început și sfârșit",intervalUnitLabel:"Alegeți unitatea care va fi folosită pentru intervalul de valoare a timpului",startLabel:"Valoare de început",endLabel:"Valoare de sfârșit",byValueLabel:"După valoare",byIntervalLabel:"După interval",hours:"Ore",days:"Zile",weeks:"Săptămâni",months:"Luni",years:"Ani",custom:"Personalizare",itemDescription:"Serviciu de imagini de analiză generat din Anticipare cu ajutorul rasterului de tendințe",itemTags:"Rezultat analiză raster, Anticipare cu ajutorul rasterului de tendințe, ${layername}",itemSnippet:"Serviciu de imagini de analiză generat din Anticipare cu ajutorul rasterului de tendințe"});

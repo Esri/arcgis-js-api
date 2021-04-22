@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimalus kelias kaip linija</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Optimalaus kelio kaip linijos įrankio iliustracija"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis apskaičiuoja optimalų kelią nuo tikslų iki pradinių ta&scaron;kų kaip liniją.
+    </p>
+    <p>Taikymo pavyzdžiai:
+        <ul>
+            <li>Raskite geriausią mar&scaron;rutą naujam keliui pagal kelio tiesimo i&scaron;laidas.
+                
+
+
+            </li>
+            <li>Raskite geriausią plaukimo mar&scaron;rutą tarp tikslo ir dabartinės vietos.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Pasirinkite tikslo rastrą arba elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Rastro arba elementų sluoksnis, identifikuojantis gardeles, i&scaron; kurių nustatytas optimalus kelias iki optimalaus &scaron;altinio.
+            </p>
+            <p>Jei įvestis yra rastras, ją turi sudaryti tikslui tinkamas reik&scaron;mes (nulis yra tinkama reik&scaron;mė) turinčios gardelės, o likusios gardelės turi būti pažymėtos kaip NoData. Įvesties rastro tipas turi būti sveikasis skaičius.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Tikslo laukas</h2></div>
+        <hr/>
+        <div>
+            <p>Laukas, naudojamas gauti paskirties vietų reik&scaron;mes.
+            </p>
+            <p>&Scaron;io lauko tipas turi būti sveikasis skaičius.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Pasirinkti atstumo kaupimo rastrą</h2></div>
+        <hr/>
+        <div>
+            <p>Sukaupto atstumo rastras naudojamas nustatant optimalų kelią i&scaron; tikslų į &scaron;altinius.
+            </p>
+            <p>Atstumo kaupimo rastras paprastai kuriamas naudojant atstumo kaupimo arba atstumo priskyrimo įrankius. Kiekviena sukaupto atstumo rastro gardelė rodo mažiausią suminį sąnaudų atstumą pavir&scaron;iaus vienetui i&scaron; kiekvienos gardelės į &scaron;altinio gardelių rinkinį.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Pasirinkite atgalinės krypties arba tėkmės krypties rastrą</h2></div>
+        <hr/>
+        <div>
+            <p>Atgalinės krypties rastre yra laipsniais paskaičiuotų krypčių. Kryptis nurodo gardelę, esančią &scaron;alia optimalaus kelio atgal į mažiausių sukauptų sąnaudų &scaron;altinį, i&scaron;vengiant kliūčių.
+            </p>
+            <p>Atgalinės krypties rastras paprastai kuriamas naudojant atstumo kaupimo arba atstumo priskyrimo įrankius. &Scaron;iuo atveju reik&scaron;mių diapazonas yra nuo 0 laipsnių iki 360 laipsnių. Reik&scaron;mė 0 palikta &scaron;altinio gardelėms. Rytų kryptis (de&scaron;inėn) yra 90 laipsnių ir didėja pagal laikrodžio rodyklę (180 yra pietūs, 270 yra vakarai, o 360 yra &scaron;iaurė).
+            </p>
+            <p>Optimalus sukurtas kelias gali būti srauto kelias pagal D8 srauto kryptį. Norint sukurti optimalų kelią tokiu būdu, naudokite D8 tėkmės krypties rastrą kaip &scaron;io parametro įvestį.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Kelio tipas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Nustato raktažodį, apibrėžiantį, kaip, skaičiuojant mar&scaron;rutų sąnaudas, bus interpretuojamos įvesties tikslo vietų duomenų reik&scaron;mės ir zonos.
+                <ul>
+                    <li> <b>Kiekvienai zonai</b> &ndash; mažiausių sąnaudų mar&scaron;rutas apskaičiuojamas įvesties tikslo duomenų kiekvienai zonai. Naudojant &scaron;ią parinktį, kiekvienai zonai skirtas mažiausios kainos mar&scaron;rutas prasideda gardelėje su mažiausių sąnaudų atstumo svoriu zonoje. Tai yra numatytasis nustatymas.
+                         
+                    </li>
+                    <li> <b>Best Single</b>&mdash;Visoms gardelėms įvesties tikslo vietų duomenyse ekonomi&scaron;kiausias kelias apskaičiuojamas i&scaron; gardelės, turinčios mažiausiai ekonomi&scaron;kiausių kelių į &scaron;altinio gardeles.
+                    </li>
+                    <li> <b>Kiekvienai gardelei</b>&mdash;įvesties tikslo duomenų kiekvienai gardelei, turinčiai tinkamas reik&scaron;mes, apskaičiuojamas mažiausių sąnaudų mar&scaron;rutas. Naudojant &scaron;ią parinktį, kiekviena įvesties paskirties vietos duomenų gardelė apdorojama atskirai ir kiekvienai i&scaron; jų nustatomas mažiausių sąnaudų mar&scaron;rutas.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Rezultatų elementų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

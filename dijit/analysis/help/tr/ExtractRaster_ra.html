@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Katman geometrisi kesilirken kullanılacak yayılım t&uuml;r&uuml;n&uuml; se&ccedil;in:
-
                 <ul>
                     <li>Ge&ccedil;erli yayılımı kullan; istenen katmana kırpmak i&ccedil;in ge&ccedil;erli harita yayılımı kullanılır. Varsayılan değerdir.
                         
 
                     </li>
-                    <li>&Ccedil;alışma alanını se&ccedil;; sonucun geometri yayılımı i&ccedil;inde kalan alanı mı yoksa geometri yayılımının dışında kalan alanı mı g&ouml;stereceğini belirlemenize olanak tanır.  <b>Veri geometrinin i&ccedil;inde</b> se&ccedil;eneğini belirlerseniz, yayılımın dışındaki g&ouml;r&uuml;nt&uuml; &ccedil;ıkarılır. <b>Veri geometrinin dışında</b> se&ccedil;eneğini belirlerseniz, yayılımın i&ccedil;inde kalan g&ouml;r&uuml;nt&uuml; &ccedil;ıkarılır. &Ccedil;izim aracını kullanarak da bir kırpma geometrisi tanımlayabilirsiniz.
+                    <li>&Ccedil;alışma alanını se&ccedil;&mdash;&Ccedil;izim aracını kullanarak bir kesme geometrisi tanımlamanıza olanak tanır.
+                        
+
+                    </li>
+                    <li>Katman se&ccedil;&mdash;Yayılımı tanımlamak i&ccedil;in bir detay katmanı veya g&ouml;r&uuml;nt&uuml; katmanı se&ccedil;in ya da kesme geometrisini tanımlamak i&ccedil;in bir &ccedil;okgen detay katmanı se&ccedil;in. Bir &ccedil;okgen detay katmanı se&ccedil;ildiğinde, kesme geometrisi i&ccedil;in girdi detaylarının kullanılıp kullanılmayacağını belirtmek i&ccedil;in bir onay kutusu g&ouml;r&uuml;nt&uuml;lenir. Varsayılan olarak işaretlenmemiştir. Yayılımı tanımlamak i&ccedil;in girdi detay katmanının kullanıldığı anlamına gelir. İşaretlenmişse, kesme geometrisi i&ccedil;in girdi detaylarının kullanıldığı anlamına gelir.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Kesme türünü belirt</h2></div>
+        <hr/>
+        <div>
+            <p>Kesme geometrinizin i&ccedil;inde veya dışında kalan alanı tutmak isteyip istemediğinizi belirtin:
+                <ul>
+                    <li>Geometrinin i&ccedil;indeki veriler&mdash;Kesme yayılımlarının i&ccedil;indeki g&ouml;r&uuml;nt&uuml;ler kaldırılır. Varsayılan değerdir.
+                        
+
+                    </li>
+                    <li>Geometrinin dışındaki veriler&mdash;Kesme yayılımlarının dışındaki g&ouml;r&uuml;nt&uuml;ler kaldırılır.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

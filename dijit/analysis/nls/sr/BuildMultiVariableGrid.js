@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Odaberite vrstu blokova koji će se koristiti za izgradnju mreže sa više promenljivih",layersAttrLabel:"Odaberite ulazne slojeve i promenljive koje biste želeli da uključite u mrežu",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Izgradi mrežu sa više promenljivih.",itemTags:"Rezultat analize, izgradnja mreže sa više promenljivih",itemSnippet:"Sloj geoobjekata nastao usled izgradnje mreže sa više promenljivih",addVariables:"Dodaj promenljive"});

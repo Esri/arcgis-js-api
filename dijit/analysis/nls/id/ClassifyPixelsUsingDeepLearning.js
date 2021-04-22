@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"Klasifikasikan Piksel Menggunakan Deep Learning",outputLayerName:"${layername}_classified",modelLabel:"Pilih model deep learning yang digunakan untuk mengklasifikasikan piksel",modelArgsLabel:"Tentukan argumen model deep learning",nameLabel:"Nama",valueLabel:"Nilai",queryModelArgsMsg:"Argumen model pembuatan kueri...",queryModelArgsErrMsg:"Gagal membuat kueri argumen model.",analysisLayerLabel:"Pilih gambar yang digunakan untuk mengklasifikasikan piksel",itemDescription:"Layanan Gambar Analisis dibuat dari Klasifikasikan Piksel Menggunakan Deep Learning",itemTags:"Hasil Analisis Raster, Klasifikasikan Piksel Menggunakan Deep Learning, ${layername}",itemSnippet:"Layanan Gambar Analisis dibuat dari Klasifikasikan Piksel Menggunakan Deep Learning"});
+define({toolDefine:"Klasifikasikan Piksel Menggunakan Deep Learning",outputLayerName:"${layername}_classified",modelLabel:"Pilih model deep learning yang digunakan untuk mengklasifikasikan piksel",modelArgsLabel:"Tentukan argumen model deep learning",nameLabel:"Nama",valueLabel:"Nilai",queryModelArgsMsg:"Argumen model pembuatan kueri...",queryModelArgsErrMsg:"Gagal membuat kueri argumen model.",processingModeLabel:"Mode pemrosesan",processAsMosaicLabel:"Proses sebagai gambar mozaik",processAsItemsLabel:"Proses semua item raster secara terpisah",analysisLayerLabel:"Pilih gambar yang digunakan untuk mengklasifikasikan piksel",itemDescription:"Layanan Gambar Analisis dibuat dari Klasifikasikan Piksel Menggunakan Deep Learning",itemTags:"Hasil Analisis Raster, Klasifikasikan Piksel Menggunakan Deep Learning, ${layername}",itemSnippet:"Layanan Gambar Analisis dibuat dari Klasifikasikan Piksel Menggunakan Deep Learning"});

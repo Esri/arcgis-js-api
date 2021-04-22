@@ -48,10 +48,9 @@
     </p>
     <p>Voor de invoer van punten moet elk punt de locatie van een gebeurtenis of incident voorstellen en de resultaatlaag geeft een telling weer van het aantal incidenten per eenheid van het gebied. Een lagere dichtheidswaarde in een nieuwe locatie betekent dat er meer punten zijn in de buurt van die locatie. In vele gevallen kan de resultaatlaag worden ge&iuml;nterpreteerd als een risicogebied voor toekomstige gebeurtenissen. Als de invoerpunten bijvoorbeeld locaties van blikseminslagen voorstellen, kan de resultaatlaag worden ge&iuml;nterpreteerd als een risicogebied voor toekomstige blikseminslagen.
     </p>
-    <p>Voor de invoer van lijnen geeft het lijndichtheidsoppervlak de totale hoeveelheid lijnen weer die zich in de buurt van elke locatie bevindt. De eenheden van de berekende dichtheidswaarden zijn de lengte van de lijn per eenheid van het gebied. Als de lijnen bijvoorbeeld rivieren voorstellen, zal de resultaatlaag de totale lengte aan rivieren binnen  de zoekstraal voorstellen. Dit resultaat kan worden gebruikt om gebieden te identificeren die geschikt zijn om dieren te laten grazen.
+    <p>Voor de invoer van lijnen geeft het lijndichtheidsoppervlak de totale hoeveelheid lijnen weer die zich in de buurt van elke locatie bevindt. De eenheden van de berekende dichtheidswaarden zijn de lengte van de lijn per eenheid van het gebied. Als de lijnen bijvoorbeeld rivieren voorstellen, zal de resultaatlaag de totale lengte aan rivieren binnen de zoekstraal voorstellen. Dit resultaat kan worden gebruikt om gebieden te identificeren die geschikt zijn om dieren te laten grazen.
     </p>
     <p>Andere gebruiksvoorbeelden van deze tool zijn de volgende:
-
         <ul>
             <li>Dichtheidskaarten van misdaden maken om politiediensten te helpen op een geschikte manier middelen toe te wijzen aan gebieden met hoge misdaadcijfers.
                 
@@ -108,7 +107,7 @@
         <div>
             <p>Geef de eenheid van het uitvoergebied op. Dichtheid is telling gedeeld door gebied en deze parameter geeft de eenheid van het gebied op in de berekening van de dichtheid.
             </p>
-            <p>De beschikbare gebiedseenheden zijn vierkante mijl, vierkante voet en vierkante kilometer.
+            <p>De beschikbare oppervlakte-eenheden zijn vierkante mijl, vierkante voet en vierkante kilometer.
             </p>
         </div>
     </div>
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Barrièreobjecten kiezen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De dataset die de barri&egrave;res definieert.
+            </p>
+            <p>De barri&egrave;res kunnen een objectlaag van polylijn- of veelhoekige kenmerken zijn.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

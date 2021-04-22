@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({addBarriers:"Seleziona i layer delle barriere",pointBarrier:"Barriere puntuali",lineBarrier:"Barriere lineari",polygonBarrier:"Barriere poligonali",choosePointBarrier:"Scegli layer barriera puntuale",chooseLineBarrier:"Scegli layer barriera lineare",choosePolygonBarrier:"Scegli layer barriera poligonale",selectPointBarrier:"Scegli barriere puntuali",selectLineBarrier:"Scegli barriere lineari",selectPolygonBarrier:"Scegli barriere poligonali"});

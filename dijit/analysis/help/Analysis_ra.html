@@ -41,22 +41,24 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Raster analysis allows you to perform analysis of large raster datasets using   ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server. The toolsets currently available through the  Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Use Proximity</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, <b>Manage Data</b>, <b>Deep Learning</b>, and <b>Multidimensional Analysis</b>.
+        <p>Raster analysis allows you to perform analysis of large raster datasets using   ArcGIS Image Server. This allows you to analyze more data faster by harnessing the power of the server.The toolsets currently available through the Portal for ArcGIS web user experience are  <b>Summarize Data</b>, <b>Analyze Patterns</b>, <b>Use Proximity</b>, <b>Analyze Image</b>, <b>Analyze Terrain</b>, <b>Manage Data</b>, <b>Deep Learning</b>, and <b>Multidimensional Analysis</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>Summarize Data</h2>
         <hr/>
-        <p>This toolset contains a tool for calculating some statistics for a raster layer within area boundaries that you define.
+        <p>These tools are used for calculating statistics for a raster layer within the area boundaries (zones) defined by you.
 
             <ul>
                 <li> <b>Summarize Raster Within</b> calculates statistics for raster cells that fall within defined area boundaries.
+                </li>
+                <li> <b>Zonal Statistics as Table</b> summarizes the values of a raster within the zones of another dataset and reports the results to a table.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -67,21 +69,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates some summary statistics for raster cells within defined areas.
+            <p>This tool summarizes the values of a raster within the zones of another dataset.
             </p>
-            <p>Some example applications are the following: 
-
-                <ul>
-                    <li>Given a layer of watershed areas and an elevation raster layer, calculate the range of elevations within each watershed in order to determine which ones will have the highest energy streamflow.
-                        
-
-                    </li>
-                    <li>Given a layer of administrative management units and a raster layer of land-use categories, calculate the variety of land-use values within each management area to identify which ones require the most work to determine a management plan.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonal Statistics as Table</h2></td>
+                    <td>
+                    <img src="./images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Zonal Statistics as Table diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool summarizes the values of a raster within the zones of another dataset and reports the results to a table.
             </p>
             <br/>
         </div>
@@ -133,13 +136,14 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Use Proximity</h2>
         <hr/>
-        <p>These tools help you answer one of the most common questions posed in spatial analysis: &quot;What is near what?&quot;
+        <p>These tools help you answer some of the most common questions posed in spatial analysis: What is near what?
+and What is the most optimal path?
 
             <ul>
-                <li> <b>Calculate Distance</b> calculates the Euclidean distance, direction and allocation from a single or set of sources.
+                <li> <b>Calculate Distance</b> calculates the Euclidean distance, direction, and allocation from a single or set of sources.
                     
 
                 </li>
@@ -147,13 +151,33 @@
                     
 
                 </li>
-                <li> <b>Determine Travel Cost Path As Polyline</b> calculates the least cost polyline path between sources and known destinations.
+                <li> <b>Determine Travel Cost Path As Polyline</b> calculates the least-cost polyline path between known destinations and sources.
+                    
+
+                </li>
+                <li> <b>Distance Accumulation</b> calculates the accumulated distance for each cell to sources, allowing for straight-line distance, cost distance, and true surface distance, as well as vertical and horizontal factors.
+                    
+
+                </li>
+                <li> <b>Distance Allocation</b> calculates distance allocation for each cell to the provided sources based on straight-line distance, cost distance, and true surface distance, as well as vertical and horizontal factors.
+                    
+
+                </li>
+                <li> <b>Optimal Path As Line</b> calculates the optimal path from destinations to sources as a line.
+                    
+
+                </li>
+                <li> <b>Optimal Path As Raster</b> calculates the optimal path from destinations to sources as a raster.
+                    
+
+                </li>
+                <li> <b>Optimal Region Connections</b> calculates the optimal connectivity network between two or more input regions.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -164,7 +188,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the Euclidean distance, direction and allocation from a single or set of sources. You can use this tool to determine how far a location is to a road, a building or a park. You can also determine which direction you must travel from a location to return back to a source in the most direct way. You can see for every location in your study area which is the closest source.
+            <p>This tool calculates Euclidean distance, direction, and allocation from a single source or set of sources.
             </p>
             <br/>
         </div>
@@ -179,7 +203,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the optimum cost network from a set of input regions.
+            <p>This tool calculates the optimum cost network from a set of input regions.
             </p>
             <br/>
         </div>
@@ -194,19 +218,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates the least cost polyline path between sources and known destinations.
+            <p>This tool calculates the least-cost polyline path between destinations and sources.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Distance Accumulation</h2></td>
+                    <td>
+                    <img src="./images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Distance Accumulation tool illustration">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates the accumulated distance for each cell to sources, allowing for straight-line distance, cost distance, true surface distance, and vertical and horizontal factors.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Distance Allocation</h2></td>
+                    <td>
+                    <img src="./images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Distance Allocation tool illustration">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates distance allocation for each cell to the provided sources based on straight-line distance, cost distance, true surface distance, and vertical and horizontal factors.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Path As Line</h2></td>
+                    <td>
+                    <img src="./images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Optimal Path As Line tool illustration">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates the optimal path from destinations to sources as a line.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Path As Raster</h2></td>
+                    <td>
+                    <img src="./images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Optimal Path As Raster tool illustration">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates the optimal path from destinations to sources as a raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal Region Connections</h2></td>
+                    <td>
+                    <img src="./images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Optimal Region Connections tool illustration">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates the optimal connectivity network between two or more input regions.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analyze Image</h2>
         <hr/>
-        <p>The following tool helps you analyze images.
-
+        <p>The following tool in the  <b>Analyze Image</b> tool category helps you analyze  images:
             <ul>
-                <li> <b>Apply Raster Function Template</b> processes your imagery with the chain of functions, as specified by the raster function template.
-                </li>
-                <li> <b>Monitor Vegetation</b> detects vegetation within an image, based on arithmetic operations on the bands.
+                <li> <b>Monitor Vegetation</b> detects relative vegetation coverage in an image based on arithmetic operations on the bands. Several vegetation indices are available for image analysis.
                     
 
                 </li>
@@ -214,22 +310,7 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Apply Raster Function Template</h2></td>
-                    <td>
-                    <img src="./images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Apply Raster Function Template">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Processes your imagery with the chain of functions, as specified by the raster function template.
-            </p>
-            <br/>
-        </div>
-        <div id="MonitorVegetationTool" class="regularsize">
+        <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -240,7 +321,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information of the study area.
+            <p>Performs an arithmetic operation on the bands of a multiband raster layer to reveal vegetation coverage information.
             </p>
             <br/>
         </div>

@@ -44,7 +44,7 @@
         <h2>Gabung Fitur</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Gabung Fitur"></h2>
         <hr/>
-    <p>Gabung Fitur berfungsi dengan dua layer dan menggabungkan atribut dari satu fitur ke fitur lain berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target.
+    <p>Gabungkan Fitur berfungsi dengan dua layer dan menggabungkan atribut dari satu fitur ke fitur lain berdasarkan hubungan spasial dan atribut. Alat ini menentukan seluruh fitur input yang memenuhi kondisi penggabungan yang ditentukan dan menambahkan gabungan layer ke layer target.
     </p>
     <p>Gabungkan Fitur dapat diterapkan ke titik, garis, area, dan tabel. Gabungan spasial mengharuskan data Anda untuk memiliki geometri.
     </p>
@@ -59,7 +59,7 @@
             <p>Layer target yang akan memiliki atribut dari gabungan layer yang ditambahkan pada tabelnya.
             </p>
             <p>Selain memilih sebuah layer dari peta, Anda dapat memilih  <b>Pilih Layer Analisis</b> yang terdapat di bagian paling bawah daftar drop-down. Opsi ini membuka galeri di mana Anda dapat menelusuri dan memilih set data dari berbagai sumber untuk digunakan dalam analisis Anda. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Menentukan bagaimana gabungan antara layer target dan layer gabungan akan ditangani jika terdapat beberapa fitur pada layer gabungan memiliki hubungan yang sama dengan layer target. Berikut ini adalah dua operasi penggabungan yang dapat dipilih:
                 <ul>
-                    <li> <b>Gabungkan satu ke satu</b>&mdash; Opsi ini menggabungkan fitur di layer target ke fitur tunggal di layer gabungan. Bagaimana fitur digabungkan ditentukan oleh parameter <b>Tambahkan statistik</b> atau parameter <b>Tentukan catatan mana yang disimpan</b>. Jika <b>Tambahkan statistik</b> digunakan, semua fitur gabungan yang cocok akan diringkas ke setiap fitur di layer target. Jumlah fitur gabungan akan ditambahkan secara default. Jika <b>Tentukan catatan mana yang disimpan</b> digunakan, Anda dapat memilih untuk menyimpan catatan pertama yang cocok (default) atau untuk menyimpan catatan yang cocok berdasarkan ekspresi. Ekspresi dapat menggunakan baik kolom numerik (opsi untuk catatan terbesar atau terkecil) maupun kolom tanggal (opsi untuk terbaru atau terlama).
+                    <li> <b>Gabungkan satu ke satu</b>&mdash;Opsi ini menggabungkan fitur di layer target ke fitur tunggal di layer gabungan. Bagaimana fitur digabungkan ditentukan oleh parameter <b>Tambahkan statistik</b> atau parameter <b>Tentukan catatan mana yang disimpan</b>. Jika <b>Tambahkan statistik</b> digunakan, semua fitur gabungan yang cocok akan diringkas ke setiap fitur di layer sasaran. Jumlah fitur gabungan akan ditambahkan secara default. Jika <b>Tentukan catatan mana yang disimpan</b> digunakan, Anda dapat memilih untuk menyimpan catatan pertama yang cocok (default) atau menyimpan catatan yang cocok dengan nilai tertinggi atau terendah di kolom tertentu ( <b>Urutkan berdasarkan</b>). Urutan berdasarkan ekspresi memerlukan kolom numerik (opsi untuk nilai terbesar atau terkecil) atau kolom tanggal (opsi untuk terbaru atau terlama).
                     </li>
                     <li> <b>Gabungkan satu ke banyak</b>&mdash;Opsi ini menggabungkan seluruh fitur yang cocok di layer gabungan ke layer target. Layer hasil akan berisi beberapa rekaman fitur target.
                     </li>
                 </ul>
                 
             </p>
-            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar tradisional. Pada kasus ini, layer akan digabungkan untuk memiliki fitur tunggal yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika menentukan hubungan <b>Gabungkan satu ke satu</b> dan memilih sebuah statistik, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan informasi rangkuman dari supermarket, seperti angka (5), dan statistik opsional lainnya seperti jumlah penjualan tahunan.
+            <p>Contoh, misalnya Anda ingin menemukan supermarket dalam jarak 5 kilometer dari pasar tradisional. Pada kasus ini, layer akan digabungkan untuk memiliki fitur tunggal yang mewakili pasar tradisional, dan fitur gabungan mewakili toko kelontong setempat yang memiliki atribut seperti penjualan tahunan total. Menggunakan alat  <b>Gabungkan Fitur</b>, Anda akan menemukan bahwa lima toko kelontong memenuhi kriteria tersebut. Jika menggunakan operasi penggabungan <b>Gabungkan satu ke banyak</b>, Anda akan mendapatkan lima fitur pada hasil, yang mana masing-masing baris mewakili pasar tradisional dan supermarket. Jika Anda menentukan hubungan <b>Gabung satu ke satu</b> dan memilih <b>Tentukan catatan mana yang disimpan</b>, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan satu supermarket&mdash;misalnya, salah satu dengan penjualan tahunan tertinggi. Jika Anda memilih <b>Tambah statistik</b>, Anda akan mendapatkan satu fitur yang mewakili pasar petani dan ringkasan dari lima supermarket, seperti jumlah penjualan tahunan dan hitungan (5) dari ringkasan supermarket. 
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Simpan semua fitur target</h2></div>
         <hr/>
         <div>
-            <p>Secara default, hanya fitur yang cocok antara layer target dan layer gabungan yang dikembalikan dalam layer hasil (sebuah gabungan dalam). Saat diaktifkan, parameter  <b>Simpan semua fitur target</b> akan mengubah output untuk menyertakan semua fitur dalam layer targetm, terlepas dari apakah mereka cocok dengan fitur dalam layer gabungan (sebuah gabungan luar kiri).
+            <p>Secara default, hanya fitur yang cocok antara layer target dan layer gabungan yang dikembalikan dalam layer hasil (sebuah gabungan dalam). Saat diaktifkan, parameter  <b>Simpan semua fitur target</b> akan mengubah output untuk menyertakan semua fitur dalam layer target, terlepas dari cocok tidaknya dengan fitur dalam layer gabungan (sebuah gabungan luar kiri).
             </p>
         </div>
     </div>
@@ -160,7 +160,7 @@
                 </li>
                 <li>Rata-Rata
                 </li>
-                <li>Deviasi Standar
+                <li>Simpangan baku
                 </li>
             </ul>
             
@@ -180,8 +180,10 @@
         <div><h2>Buat hasil sebagai tampilan feature layer yang di-host</h2></div>
         <hr/>
         <div>
-            <p> Membuat hasil sebagai tampilan feature layer yang dihost menjadikan data tetap yang terbaru saat data sumber berubah. Tampilan feature layer yang dihost yang berisi gabungan akan bersifat baca-saja.
+            <p>Membuat hasil sebagai tampilan feature layer yang dihost menjadikan data tetap yang terbaru saat data sumber berubah. Tampilan feature layer yang dihost yang berisi gabungan akan bersifat baca-saja.
             </p>
+            <p class="OnlineOnly">Tampilan feature layer yang dihost yang berisi gabungan tidak menggunakan kredit untuk analisis dan penyimpanan.
+            </p> 
             <p>Anda dapat membuat tampilan feature layer yang di-host dari hasil analisis jika persyaratan berikut ini terpenuhi:
                 <ul>
                     <li>Anda adalah pemilik kedua layer.

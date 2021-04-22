@@ -66,7 +66,7 @@
         <div>
             <p>O item do pacote ( <code>.dlpk</code>) de aprendizagem profunda de entrada.
             </p>
-            <p>O pacote de aprendizagem profunda &eacute; composto pelo ficheiro JSON ( <code>.emd</code>) que define o modelo Esri, o ficheiro bin&aacute;rio da aprendizagem profunda e, opcionalmente, a fun&ccedil;&atilde;o raster em Python a ser utilizada.
+            <p>O pacote de aprendizagem profunda &eacute; composto pelo ficheiro JSON ( <code>.emd</code>), que define o modelo Esri, o ficheiro bin&aacute;rio da aprendizagem profunda e, opcionalmente, a fun&ccedil;&atilde;o raster em Python a ser utilizada.
             </p>
         </div>
     </div>
@@ -82,10 +82,31 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Modo de Processamento</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica como ser&atilde;o processados todos os itens raster num conjunto de dados de mosaico ou num servi&ccedil;o de imagens. Este par&acirc;metro &eacute; aplicado quando o raster de entrada &eacute; um conjunto de dados de mosaico ou um servi&ccedil;o de imagens.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Todos os itens raster no conjunto de dados de mosaico ou servi&ccedil;o de imagens ser&atilde;o colocados em mosaico e processados. Isto &eacute; por omiss&atilde;o.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Todos os itens raster no conjunto de dados de mosaico ou servi&ccedil;o de imagens ser&atilde;o processados como imagens separadas.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="outputClassifiedRaster">
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

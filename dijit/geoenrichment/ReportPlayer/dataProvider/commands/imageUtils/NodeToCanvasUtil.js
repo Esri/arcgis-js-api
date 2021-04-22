@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when","dojo/dom-construct","esri/dijit/geoenrichment/utils/SVGUtil","../createHTML/CSSFilesLoader"],(function(e,t,n,r,o){var i={svgNodeToCanvasFunc:function(i,d,c){return t(o.loadCssFontFiles(),(function(t){var o=document.createElement("canvas");o.width=d,o.height=c,t.forEach((function(e){var t=document.createElementNS("http://www.w3.org/2000/svg","defs"),n=document.createElementNS("http://www.w3.org/2000/svg","style");n.innerHTML=e,t.appendChild(n),i.insertBefore(t,i.firstElementChild)}));var a=window.URL||window.webkitURL||window,s=new Image;s.width=d,s.height=c;var l=new Blob([r.getOuterHTML(i)],{type:"image/svg+xml"}),w=a.createObjectURL(l),u=new e;return s.onload=function(){s.onload=s.onerror=null,o.getContext("2d").drawImage(s,0,0,d,c),a.revokeObjectURL(w),n.destroy(s),u.resolve(o)},s.onerror=function(e){s.onload=s.onerror=null,n.destroy(s),u.reject(e)},n.place(s,document.body),s.src=w,u.promise}))}};return i}));

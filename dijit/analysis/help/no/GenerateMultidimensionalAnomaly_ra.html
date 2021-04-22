@@ -44,7 +44,7 @@
         <h2>Generer flerdimensjonal anomali</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generer flerdimensjonal anomali"></h2>
         <hr/>
-    <p>Genererer et flerdimensjonalt rasterdatasett ved &aring; sl&aring; sammen eksisterende flerdimensjonale rastervariabler langs en dimensjon.
+    <p>Beregner anomalien for hver inndeling i et eksisterende flerdimensjonalt raster for &aring; generere et nytt flerdimensjonalt raster.
     </p>
     <p>En anomali er en obervasjons avvik fra standard-, middel- eller medianverdien.
     </p>
@@ -78,21 +78,21 @@
         <div><h2>Velg metode for generering av anomali</h2></div>
         <hr/>
         <div>
-            <p>Angir metoden som skal brukes til &aring; generere anomalien. 
+            <p>Angir metoden som skal brukes til &aring; generere anomalien.
                 <ul>
-                    <li> <b>Forskjell fra gjennomsnitt</b>&ndash;&nbsp;Beregner forskjellen mellom en pikselverdi og gjennomsnittet for denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet. Dette er standardalternativet.
+                    <li> <b>Forskjell fra gjennomsnitt</b> &ndash; Beregner forskjellen mellom en pikselverdi og gjennomsnittet av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet. Dette er standardalternativet.
                     </li>
-                    <li> <b>Prosentvis forskjell fra gjennomsnitt</b>&ndash;&nbsp;Beregner den prosentvise forskjellen mellom en pikselverdi og gjennomsnittet av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    <li> <b>Prosentvis forskjell fra gjennomsnitt</b> &ndash; Beregner den prosentvise forskjellen mellom en pikselverdi og gjennomsnittet av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
                     </li>
-                    <li> <b>Prosent av gjennomsnitt</b>&ndash;&nbsp;Prosenten av gjennomsnittet beregnes.
+                    <li> <b>Prosent av gjennomsnitt</b> &ndash; Beregner prosenten av gjennomsnittet.
                     </li>
-                    <li> <b>Z-sk&aring;r</b>&ndash;&nbsp;Z-sk&aring;ren for hver piksel beregnes. En z-sk&aring;r p&aring; 0 angir at pikslens verdi er identisk med gjennomsnittet. En z-sk&aring;r p&aring; 1 angir at pikslens verdi er 1 standardavvik fra gjennomsnittet. Hvis en z-sk&aring;r er 2, er pikslens verdi 2 standardavvik fra gjennomsnittet og s&aring; videre.
+                    <li> <b>Z-sk&aring;r</b> &mdash; Beregner Z-sk&aring;ren for hver piksel. En z-sk&aring;r p&aring; 0 angir at pikslens verdi er identisk med gjennomsnittet. En z-sk&aring;r p&aring; 1 angir at pikslens verdi er 1 standardavvik fra gjennomsnittet. Hvis en z-sk&aring;r er 2, er pikslens verdi 2 standardavvik fra gjennomsnittet og s&aring; videre.
                     </li>
-                    <li> <b>Forskjell fra median</b>&ndash;&nbsp;Beregner forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    <li> <b>Forskjell fra median</b> &mdash; Beregner forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
                     </li>
-                    <li> <b>Prosentvis forskjell fra median</b>&ndash;&nbsp;Beregner den prosentvise forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
+                    <li> <b>Prosentvis forskjell fra median</b> &ndash; Beregner den prosentvise forskjellen mellom en pikselverdi og den matematiske medianen av denne pikselens verdi p&aring; tvers av inndelingene som er definert av intervallet.
                     </li>
-                    <li> <b>Prosent av median</b>&ndash;&nbsp;Beregner prosenten av den matematiske medianen.
+                    <li> <b>Prosent av median</b> &ndash; Beregner prosenten av den matematiske medianen.
                     </li>
                 </ul>
                 
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Forskjell fra gjennomsnitt = x - &micro;
-
                         <ul>
                             <li>x = pikselverdien i en inndeling
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Prosentvis forskjell fra gjennomsnitt = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pikselverdien i en inndeling
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Prosent av gjennomsnitt = x / &micro;
-
                         <ul>
                             <li>x = pikselverdien i en inndeling
                                 
@@ -202,21 +199,21 @@
         <div><h2>Velg tidsintervall for å beregne gjennomsnitt</h2></div>
         <hr/>
         <div>
-            <p>Angir tidsintervallet som skal brukes til &aring; beregne gjennomsnittet. 
+            <p>Angir tidsintervallet som skal brukes til &aring; beregne gjennomsnittet.
                 <ul>
-                    <li> <b>Alle</b>&ndash;&nbsp;Beregner gjennomsnittet p&aring; tvers av alle inndelinger for hver piksel.
+                    <li> <b>Alle</b> &ndash; Beregner gjennomsnittet p&aring; tvers av alle inndelinger for hver piksel.
                     </li>
-                    <li> <b>&Aring;rlig</b>&ndash;&nbsp;Beregner &aring;rlig gjennomsnitt for hver piksel.
+                    <li> <b>&Aring;rlig</b> &mdash; Beregner &aring;rlig gjennomsnitt for hver piksel.
                     </li>
-                    <li> <b>Gjentas m&aring;nedlig</b>&ndash;&nbsp;Beregner m&aring;nedlig gjennomsnitt for hver piksel.
+                    <li> <b>Gjentas hver m&aring;ned</b> &mdash; Beregner m&aring;nedlig gjennomsnitt for hver piksel.
                     </li>
-                    <li> <b>Gjentas ukentlig</b>&ndash;&nbsp;Beregner ukentlig gjennomsnitt for hver piksel.
+                    <li> <b>Gjentas ukentlig</b> &mdash; Beregner ukentlig gjennomsnitt for hver piksel.
                     </li>
-                    <li> <b>Gjentas daglig</b>&ndash;&nbsp;Beregner daglig gjennomsnitt for hver piksel.
+                    <li> <b>Gjentas daglig</b>&mdash; Beregner daglig gjennomsnitt for hver piksel.
                     </li>
-                    <li> <b>Timebasert</b>&ndash;&nbsp;Beregner gjennomsnitt per time for hver piksel.
+                    <li> <b>Hver time</b> &ndash; Beregner gjennomsnitt per time for hver piksel.
                     </li>
-                    <li> <b>Eksternt raster</b>&ndash;&nbsp;Referanse finnes til et eksisterende rasterdatasett som inneholder gjennomsnitts- eller medianverdien for hver piksel.
+                    <li> <b>Eksternt raster</b> &ndash; Det refereres til et eksisterende rasterdatasett som inneholder gjennomsnitts- eller medianverdien for hver piksel.
                     </li>
                 </ul>
                 
@@ -235,7 +232,7 @@
         <div><h2>Ignorer manglende verdier i beregningen</h2></div>
         <hr/>
         <div>
-            <p>Angir om manglende verdier ignoreres i analysen. 
+            <p>Angir om manglende verdier ignoreres i analysen.
                 <ul>
                     <li>Avmerket &ndash; Analysen omfatter alle gyldige piksler langs en gitt dimensjon og ignorerer eventuelle NoData-piksler. Dette er standardalternativet.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Predict Using Trend Raster (Predviđanje upotrebom rastera trenda)</h2><p/>
+        <h2>Predict Using Trend Raster</h2><p/>
         <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predict Using Trend Raster"></h2>
         <hr/>
-    <p>Izračunava prognozirani vi&scaron;edimenzionalni raster koristeći izlazni raster trenda iz alatke  Generate Trend Raster.
+    <p>Izračunava prognozirani vi&scaron;edimenzionalni raster koristeći izlazni raster trenda iz  Generate Trend Raster alata.
     </p>
     <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, promenljive koje su vidljive unutar trenutnog obuhvata mape biće analizirane. Ako nije izabrana, analiziraće se sve lokacije u ulaznom sloju, čak i ako su izvan trenutnog obuhvata mape.
     </p>
@@ -54,27 +54,27 @@
         <div><h2>Izaberite višedimenzionalni sloj snimka za predviđanje</h2></div>
         <hr/>
         <div>
-            <p>Ulazni vi&scaron;edimenzionalni raster trenda iz alatke  Generate Trend Raster (Generi&scaron;i raster trenda).
+            <p>Unos vi&scaron;edimenzionalnog trenda rastera iz alata  Kreiranje trenda rastera.
             </p>
         </div>
     </div>
     <div id="variables">
-        <div><h2>Odaberite promenljivu(e) koja(e) će biti predviđena(e)</h2></div>
+        <div><h2>Izaberite promenljivu(e) koja će biti predviđena</h2></div>
         <hr/>
         <div>
-            <p>Promenljiva ili promenljive koje će biti predviđene u analizi. Ako nijedna promenljiva nije navedena, upotrebiće se sve promenljive.
+            <p>Promenljiva ili promenljive koje će biti predviđeni u analizi. Ako nema navedenih promenljivih, koristiće se sve promenljive.
             </p>
         </div>
     </div>
     <div id="dimensionDefinition">
-        <div><h2>Odaberi metod koji se koristi za obezbeđivanje vrednosti za predikciju dimenzija</h2></div>
+        <div><h2>Izaberite metod koji se koristiza obezbeđivanje predviđenih vrednosti dimenzija</h2></div>
         <hr/>
         <div>
-            <p>Navodi metod koji se koristi za obezbeđivanje vrednosti za predikciju dimenzija.
+            <p>Izaberite metod koji se koristi za obezbeđivanje vrednosti dimenzija predikcija.
                 <ul>
-                    <li> <b>Putem vrednosti</b>&mdash;Predviđanje će biti izračunato za pojedinačnu vrednost dimenzije ili spisak vrednosti dimenzija navedenih u sledećem koraku. Ovo je podrazumevano. Na primer, ako želite da predvidite godi&scaron;nju precipitaciju za godine 2050, 2100 i 2150.
+                    <li> <b>Po vrednosti</b>&mdash;Predikcija će biti izračunata za vrednost jedne dimenzije ili listu dimenzija navedenih u sledećem koraku. Ovo je podrazumevano. Na primer, želite da predvidite godi&scaron;nje padavine za godine 2050, 2100 i 2150.
                     </li>
-                    <li> <b>Putem intervala</b>&mdash;Predviđanje će biti izračunato za interval dimenzije definisane početnom i krajnjom vredno&scaron;ću.  Na primer, ako želite da predvidite godi&scaron;nju precipitaciju za svaku godinu između 2050 i 2150.
+                    <li> <b>Po intervalu</b>&mdash;Predikcija će biti izračunata za interval dimenzije definisan vredno&scaron;ću za početak i zavr&scaron;etak. Na primer, želiteda predvidite godi&scaron;nje padavine za svaku godinu od 2050. i 2150.
                     </li>
                 </ul>
                 
@@ -82,40 +82,56 @@
         </div>
     </div>
     <div id="dimensionValues">
-        <div><h2>Navedite vrednost(i) dimenzije za predviđanje</h2></div>
+        <div><h2>Navedite vrednost(i) dimenzija za predviđanje</h2></div>
         <hr/>
         <div>
-            <p>Vrednost ili vrednosti dimenzije koje će se koristiti u predviđanju.
+            <p>Navedite dimenziju vrednosti ili vi&scaron;e vrednosti koje će se koristiti u predviđanju.
             </p>
-            <p>Vrednosti za vremenski format, dubinu i visinu moraju da odgovaraju formatu dimenzije vrednosti koja se koristi za kreiranje rastera trenda. Ako je raster trenda kreiran preko dimenzije StdTime, format treba da bude GGGG-MM-DDTČČ:MM:SS, na primer 2050-01-01T00:00:00. Vi&scaron;estruke vrednosti se odvajaju tačkom i zapetom.
+            <p>Format vremena, dubine i vrednosti visine moraju da odgovaraju formatu za vrednosti dimenzije koje se koriste za kreiranje trenda rastera. Ako je trend rastera generisan za StdTime dimenziju, format treba da bude GGGG-MM-DDTČČ:MM:SS, na primer 2050-01-01T00:00:00. Vi&scaron;estruke vrednosti odvojene su tačkom i zapetom.
             </p>
-            <p>Ovaj parametar neophodan je kada je izabran metod  <b>Putem vrednosti</b> kako bi se definisale vrednosti dimenzije za predviđanje.
+            <p>Ovaj parametar je potreban kada je metod  <b>Po vrednosti</b> izabran za definiciju vrednosti dimenzije za predviđanje.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Start</h2></div>
+        <hr/>
+        <div>
+            <p>Datum početka, visina ili dubina intervala dimenzije koji će se koristiti u predviđanju.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Kraj</h2></div>
+        <hr/>
+        <div>
+            <p>Datum zavr&scaron;etka, visina ili dubina intervala dimenzije koji će se koristiti u predviđanju.
             </p>
         </div>
     </div>
     <div id="dimensionInterval">
-        <div><h2>Definišite interval dimenzije za predviđanje</h2></div>
+        <div><h2>Definisanje intervala dimenzija za predviđanje</h2></div>
         <hr/>
         <div>
-            <p>Defini&scaron;ite datum početka i zavr&scaron;etka, visinu ili dubinu intervala dimenzije koji će biti upotrebljeni u predviđanju.
+            <p>Defini&scaron;e datum početka i datum zavr&scaron;etka, visina ili dubina intervala dimenzije koji će se koristiti u predviđanju.
             </p>
         </div>
     </div>
     <div id="intervalValue">
-        <div><h2>Navedite broj koraka između početnih i krajnjih vrednosti</h2></div>
+        <div><h2>Navedite broj koraka između početne i krajnje vrednosti</h2></div>
         <hr/>
         <div>
-            <p>Broj koraka između dve dimenzije vrednosti koji će biti uključen u predviđanje. Podrazumevana vrednost je 1.
+            <p>Broj koraka između vrednosti dve dimenzije koje će biti uključene u predviđanju. Podrazumevana vrednost je 1.
             </p>
-            <p>Na primer, za predviđanje temperaturnih vrednosti svakih pet godina, koristite vrednost 5.
+            <p>Na primer, za predviđanje vrednosti temperature za svakih 5 godina, upotrebite vrednost 5.
             </p>
         </div>
     </div>
     <div id="intervalUnit">
-        <div><h2>Odaberite jedinicu koja će se koristiti za interval vrednosti vremena.</h2></div>
+        <div><h2>Izaberite jedinicu koja će se koristiti za vrednost vremenskog intervala.</h2></div>
         <hr/>
         <div>
-            <p>Određuje jedinicu koja će se koristiti za interval vrednosti. Ovo se primenjuje samo kada je dimenzija analize vremenska dimenzija.
+            <p>Navodi jedinicu koja će se koristiti za interval vrednosti. Ovo je samo primenljivo kada je dimenzija za analizu vremenska analiza.
             </p>
         </div>
     </div>
@@ -123,6 +139,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

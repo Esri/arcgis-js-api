@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Multidimensionale afwijking genereren</h2><p/>
+        <h2>Multidimensionale anomalie genereren</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Multidimensionale anomalie genereren"></h2>
         <hr/>
-    <p>Genereert een multidimensionaal rasterdataset door bestaande multidimensionale rastervariabelen naast de afmeting te combineren.
+    <p>Berekent de anomalie voor elk stukje in een bestaande multidimensionaal raster om een multidimensionaal raster te genereren.
     </p>
     <p>Een anomalie is de afwijking van een observatie van de standaard-, gemiddelde of mediaanwaarde.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Een methode kiezen om een anomalie te genereren</h2></div>
         <hr/>
         <div>
-            <p>Specificeert de methode die wordt gebruikt om de anomalie te berekenen. 
+            <p>Specificeert de methode die wordt gebruikt om de anomalie te berekenen.
                 <ul>
                     <li> <b>Verschil ten opzichte van het gemiddelde</b>&mdash;Het verschil tussen een pixelwaarde en het gemiddelde van die pixelwaarde in door de interval gedefinieerde stukken worden berekend. Dit is de standaardinstelling.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Verschil van het gemiddelde = x - &micro;
-
                         <ul>
                             <li>x = pixelwaarde in een stuk
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Percentageverschil van het gemiddelde = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pixelwaarde in een stuk
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Percentage van het gemiddelde = x / &micro;
-
                         <ul>
                             <li>x = pixelwaarde in een stuk
                                 
@@ -180,7 +177,7 @@
                         </ul>
                         
                     </li>
-                    <li>Z-score  = (x - &micro;) / S
+                    <li>Z-score = (x - &micro;) / S
                         <ul>
                             <li>x = pixelwaarde in een stuk
                             </li>
@@ -202,7 +199,7 @@
         <div><h2>Temporele interval kiezen om het gemiddelde te berekenen</h2></div>
         <hr/>
         <div>
-            <p>Specificeert de temporele interval die wordt gebruikt om het gemiddelde te berekenen. 
+            <p>Specificeert de temporele interval die wordt gebruikt om het gemiddelde te berekenen.
                 <ul>
                     <li> <b>Alle</b>&mdash;Berekent het gemiddelde over alle stukken voor elke pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
         <hr/>
         <div>
-            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse. 
+            <p>Specificeert of ontbrekende waarden worden genegeerd in de analyse.
                 <ul>
                     <li>Aangevinkt&mdash;De analyse zal alle geldige pixels in een gegeven afmeting bevatten en alle NoData-pixels negeren. Dit is de standaardinstelling.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

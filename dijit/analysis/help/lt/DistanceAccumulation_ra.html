@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Sukauptas atstumas</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Sukaupto atstumo įrankio iliustracija"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis apskaičiuoja kiekvienos gardelės sukauptą atstumą iki &scaron;altinio, atsižvelgiant į tiesinį atstumą, sąnaudų atstumą, tikrąjį pavir&scaron;iaus atstumą ir vertikalų ir horizontalų veiksnius.
+    </p>
+    <p>Taikymo pavyzdžiai apima tokius klausimus:
+        <ul>
+            <li>Koks atstumas iki artimiausio miesto?
+                
+
+            </li>
+            <li>Koks sąnaudų atstumas iki artimiausio kelio?
+                
+
+            </li>
+            <li>Koks atstumas i&scaron;vengiant kliūčių iki artimiausio vandens &scaron;altinio?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojamos tik tie įvesties sluoksnio elementai, kurie patenka į esamo žemėlapio aprėptį. Jei nepažymėta, bus analizuojami visi įvesties sluoksnio elementai, net jei jie nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Pasirinkti šaltinio rastrą arba elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Rastro arba elementų sluoksnis, nustatantis &scaron;altinius, iki kurių bus skaičiuojamas atstumas.
+            </p>
+            <p>Jei įvestis yra rastras, ją turi sudaryti &scaron;altiniams tinkamas reik&scaron;mes (nulis yra tinkama reik&scaron;mė) turinčios gardelės, o likusios gardelės turi būti pažymėtos kaip NoData.
+            </p>
+            <p>Jei įvestis yra elemento sluoksnis, ji gali būti ta&scaron;kas, linija arba poligonas.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Pasirinkite kliūčių rastrą arba elementus (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Duomenų rinkinys, apibrėžiantis kliūtis.
+            </p>
+            <p>Rastro sluoksnio įvestis gali būti sveikojo skaičiaus arba de&scaron;imtainio (Float) tipo. Visos gardelės, kuriose yra nurodyta reik&scaron;mė (įskaitant nulį) bus laikomos kliūtimis. Visos NoData gardelės nebus laikomos kliūtimi.
+            </p>
+            <p>Elementų paslaugos įvestis gali būti ta&scaron;kas, linija arba plotas.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Pasirinkite paviršiaus rastrą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastras, apra&scaron;antis kiekvienos gardelės padėties auk&scaron;čio reik&scaron;mę.
+            </p>
+            <p>&Scaron;ios reik&scaron;mės naudojamos skaičiuojant faktinį pavir&scaron;iaus atstumą, kuris įveikiamas keliaujant tarp gardelių.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Pasirinkite sąnaudų rastrą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastras, apibrėžiantis planimetri&scaron;ko judėjimo per kiekvieną gardelę sąnaudas.
+            </p>
+            <p>Kiekvienos gardelės padėties reik&scaron;mė atspindi sąnaudos vienetui atstumą judant per gardelę. Kiekvienos gardelės padėties reik&scaron;mė dauginama i&scaron; gardelės skiriamosios gebos, kompensuojant už judėjimą įstrižai, ir gaunama bendrųjų sąnaudų kertant gardelę suma.
+            </p>
+            <p>Sąnaudų rastro reik&scaron;mės gali būti sveikieji skaičiai arba skaičiai su slankiuoju kableliu, tačiau ne neigiamos ir ne nulinės reik&scaron;mės (sąnaudos negali būti neigiamos arba nulinės).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Pasirinkite vertikalų rastrą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastras, apra&scaron;antis kiekvienos gardelės padėties z reik&scaron;mes.
+            </p>
+            <p>&Scaron;ios reik&scaron;mės naudojamos skaičiuojant pasvirimą, kuris naudojamas identifikuojant vertikalų veiksnį, patiriamą judant i&scaron; vienos gardelės į kitą.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikalus veiksnys (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikalus veiksnys</b> apra&scaron;o ry&scaron;į tarp vertikalaus sąnaudų veiksnio (VF) ir vertikalaus santykinio judančio kampo (VRMA).
+            </p>
+            <p>Galima rinktis i&scaron; kelių veiksnių su modifikatoriais, kurie identifikuoja apibrėžtą vertikalaus veiksnio grafiką. Grafikai naudojami identifikuoti vertikalų veiksnį, kuris naudojamas skaičiuojant bendrąsias keliavimo į kaimyninę gardelę i&scaron;laidas.
+            </p>
+            <p>Toliau pateikiamuose apra&scaron;ymuose VF apibrėžia vertikalų sudėtingumą judant i&scaron; vienos gardelės į kitą, o VRMA modifikatorius nurodo nuolydžio kampą tarp gardelės  <b>I&scaron; &scaron;altinio</b> ir gardelės <b>Į &scaron;altinį</b>.
+                <ul>
+                    <li> <b>Dvejetainis</b>&mdash;Jei VRMA yra didesnis nei mažo pjūvio kampas ir mažesnis nei didelio pjūvio kampas, VF nustatomas į su nuliniu veiksniu susijusią reik&scaron;mę; kitu atveju jis yra begalybė.
+                    </li>
+                    <li> <b>Tiesinis</b>&mdash;VF yra linijinė VRMA funkcija.
+                    </li>
+                    <li> <b>Atvirk&scaron;tinis tiesinis</b>&mdash;VF yra atvirk&scaron;čiai proporcinga linijinė VRMA funkcija.
+                    </li>
+                    <li> <b>Simetrinis tiesinis</b>&mdash;VF yra linijinė VRMA funkcija neigiamoje arba teigiamoje VRMA pusėje ir &scaron;ios dvi linijinės funkcijos yra simetri&scaron;kos VF (y) a&scaron;ies atžvilgiu.
+                    </li>
+                    <li> <b>Simetrinis atvirk&scaron;tinis tiesinis</b>&mdash;VF yra atvirk&scaron;tinė linijinė VRMA funkcija neigiamoje arba teigiamoje VRMA pusėje ir &scaron;ios dvi linijinės funkcijos yra simetri&scaron;kos VF (y) a&scaron;ies atžvilgiu.
+                    </li>
+                    <li> <b>Kosinusinė</b>&mdash;VF yra kosinusinė VRMA funkcija.
+                    </li>
+                    <li> <b>Kirstinė</b>&mdash;VF yra kirstinė VRMA funkcija.
+                    </li>
+                    <li> <b>Kosinusinė-kirstinė</b>&mdash;Nurodo, kad VF yra kosinusinė VRMA funkcija, kai VRMA yra neigiamas, ir kirstinė VRMA funkcija, kai &scaron;is kampas nėra neigiamas.
+                    </li>
+                    <li> <b>Kirstinė-kosinusinė</b>&mdash;Nurodo, kad VF yra kirstinė VRMA funkcija, kai VRMA yra neigiamas, ir kosinusinė VRMA funkcija, kai &scaron;is kampas nėra neigiamas.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Vertikalių parametrų modifikatoriai apima:
+                <ul>
+                    <li> <b>Nulinis veiksnys</b>&mdash;Vertikalus veiksnys, naudojamas kai VRMA lygus nuliui. &Scaron;is veiksnys nurodytai funkcijai nustato y susikirtimo padėtį. Pagal apibrėžimą nulinis veiksnys netaikomas jokioms trigonometrinėms vertikalioms funkcijoms (Cos, Sec, Cos-Sec, or Sec-Cos). &Scaron;ios funkcijos apra&scaron;o y susikirtimą.
+                    </li>
+                    <li> <b>Apatinio pjūvio kampas</b>&mdash;Apibrėžia VRMA kampą, žemiau kurio VF bus nustatytas kaip begalybė.
+                    </li>
+                    <li> <b>Vir&scaron;utinio pjūvio kampas</b>&mdash;Apibrėžia VRMA kampą, vir&scaron; kurio VF bus nustatytas kaip begalybė.
+                    </li>
+                    <li> <b>Nuolydis</b>&mdash;Tiesios linijos nuolydis, naudojamas su parametrais <b>Tiesinis</b> ir <b>Atvirk&scaron;tinis tiesinis</b>. Pasvirimas nurodomas kaip pakilimo dalis per važiavimą (pavyzdžiui, 45 procentų pasvirimas yra 1/45 ir įvedamas kaip 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Pasirinkite horizontalų rastrą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastras, apra&scaron;antis kiekvienos gardelės horizontalią kryptį.
+            </p>
+            <p>Rastre esančios reik&scaron;mės turi būti tarp 0 ir 360, kur 0 laipsnių atitinka &scaron;iaurę arba ekrano vir&scaron;ų ir laipsniai didėja pagal laikrodžio rodyklę. Plok&scaron;čioms teritorijoms reikia priskirti reik&scaron;mę -1. Kiekvienos padėties reik&scaron;mės bus naudojamos su  <b>Horizontaliu veiksniu</b>, siekiant nustatyti horizontalias i&scaron;laidas, patirtas judant i&scaron; gardelės į kaimynines.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontalus veiksnys (nprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horizontalus veiksnys</b> apra&scaron;o ry&scaron;į tarp horizontalaus sąnaudų veiksnio ir horizontalaus santykinio judančio kampo.
+            </p>
+            <p>Galima rinktis i&scaron; kelių veiksnių su modifikatoriais, kurie identifikuoja apibrėžtą horizontalaus veiksnio grafiką. Grafikai naudojami identifikuoti vertikalų veiksnį, kuris naudojamas skaičiuojant bendrąsias keliavimo į kaimyninę gardelę i&scaron;laidas.
+            </p>
+            <p>Toliau pateikiamuose apra&scaron;ymuose horizontalus veiksnys (HF) apibūdina horizontalų sudėtingumą, judant i&scaron; vienos gardelės į kitą, o horizontalus santykinis judėjimo kampas (HRMA) žymi kampą tarp horizontalios gardelės krypites ir judėjimo krypties.
+            </p>
+            <p>&Scaron;ių HF apibrėžimai ir parametrai yra tokie:
+                <ul>
+                    <li> <b>Dvejetainis</b>&mdash;Jei HRMA yra mažesnis nei pjūvio kampas, HF nustatomas į su nuliniu veiksniu susijusią reik&scaron;mę; kitu atveju jis yra begalybė.
+                        
+
+                    </li>
+                    <li> <b>Pirmyn</b>&mdash;Leidžiama judėti tik pirmyn. HRMA turi būti didesnis nei arba lygus 0 ir mažesnis nei arba lygus 90 (0 &lt;= HRMA &lt; 90). Jei HRMA didesnis nei 0 ir mažesnis nei 45 laipsniai, gardelės HF nustatomas į su nuliniu veiksniu susijusią reik&scaron;mę. Jei HRMA didesnis arba lygus nei 45 laipsniai, naudojama &scaron;oninė reik&scaron;mės modifikatoriaus reik&scaron;mė. Bet kokiai 90 laipsnių lygiai ar didesnei HRMA reik&scaron;mei nustatomas begalybei lygus HF.
+                        
+
+                    </li>
+                    <li> <b>Tiesinis</b>&mdash;HF yra linijinė VRMA funkcija.
+                        
+
+                    </li>
+                    <li> <b>Atvirk&scaron;tinis tiesinis</b>&mdash;HF yra atvirk&scaron;čiai proporcinga linijinė VRMA funkcija.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Horizontalių raktažodžių modifikatoriai yra tokie:
+                <ul>
+                    <li> <b>Nulinis veiksnys</b>&mdash;Horizontalus veiksnys, naudojamas kai HRMA lygus nuliui. &Scaron;is veiksnys bet kokioms horizontalaus veiksnio funkcijoms nustato y susikirtimo padėtį.
+                        
+
+                    </li>
+                    <li> <b>Pjūvio kampas</b>&mdash;HRMA kampas, kurį vir&scaron;ijus HF bus nustatytas kaip begalybė.
+                        
+
+                    </li>
+                    <li> <b>Nuolydis</b>&mdash;Tiesios linijos nuolydis, naudojamas su horizontalaus veiksnio raktažodžiais <b>Tiesinis</b> ir <b>Atvirk&scaron;tinis tiesinis</b>. Pasvirimas nurodomas kaip pakilimo dalis per važiavimą (pavyzdžiui, 45 procentų pasvirimas yra 1/45 ir įvedamas kaip 0,02222).
+                        
+
+                    </li>
+                    <li> <b>&Scaron;oninė reik&scaron;mė</b>&mdash;Nustato HF, kai HRMA didesnis už arba lygus 45 laipsniams ir mažesnis nei 90 laipsnių, nurodžius horizontalaus veiksnio raktažodį <b>Pirmyn</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Pradinis kaupimas</h2></div>
+        <hr/>
+        <div>
+            <p>Pradinės suminės i&scaron;laidos, norint pradėti skaičiuoti i&scaron;laidas.
+            </p>
+            <p>&Scaron;is parametras leidžia nurodyti fiksuotą su &scaron;altiniu susijusią kainą. Užuot pradedamas nuo nulinės sąnaudų reik&scaron;mės, i&scaron;laidų skaičiavimo algoritmas pradedamas nuo parametre  <b>Pradinis kaupimas</b> nurodytos reik&scaron;mės.
+            </p>
+            <p>Reik&scaron;mės turi būti lygios nuliui arba didesnės. Numatytoji reik&scaron;mė yra 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimalus kaupimas</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalus &scaron;altinio kaupimas keliautojui.
+            </p>
+            <p>I&scaron;laidų skaičiavimai tęsiami kiekvienam &scaron;altiniui, kol pasiekiamas nurodytas sukauptas kiekis.
+            </p>
+            <p>Reik&scaron;mės turi būti didesnės už nulį. Numatytasis sukauptas kiekis matuojamas iki i&scaron;vesties rastro kra&scaron;to.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Sąnaudų daugiklis</h2></div>
+        <hr/>
+        <div>
+            <p>Daugiklis, taikytinas sąnaudų reik&scaron;mėms.
+            </p>
+            <p>&Scaron;is parametras leidžia &scaron;altinyje valdyti kelionės modelį arba stiprumą. Kuo daugiklis didesnis, tuo didesnės i&scaron;laidos keliauti per kiekvieną gardelę.
+            </p>
+            <p>Reik&scaron;mės turi būti didesnės už nulį. Numatytoji reik&scaron;mė yra 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Kelionės kryptis</h2></div>
+        <hr/>
+        <div>
+            <p>Apibrėžia keliautojo kryptį, taikant horizontalius ir vertikalius veiksnius.
+            </p>
+            <p> <b>I&scaron; &scaron;altinio</b>&mdash;Horizontalus ir vertikalus veiksniai bus taikomi ties įvesties &scaron;altiniu ir keliaujant į &scaron;altiniui nepriklausančias gardeles. Tai yra numatytasis nustatymas.
+            </p>
+            <p> <b>Į &scaron;altinį</b>&mdash;Horizontalus ir vertikalus veiksniai bus taikomi ties &scaron;altiniui nepriklausančiomis gardelėmis ir keliaujant atgal į įvesties &scaron;altinį.
+            </p>
+            <p>Nurodykite raktažodį  <b>I&scaron; &scaron;altinio</b> arba <b>Į &scaron;altinį</b>, kuris bus taikomas visiems &scaron;altiniams, arba nurodykite &scaron;altinio duomenų lauką, kuriame yra kiekvieno &scaron;altinio kelionės kryptį apibūdinantys raktažodžiai. Laukelyje turi būti eilutė <code>FROM_SOURCE</code> arba <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Atstumo metodas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar apskaičiuoti atstumą naudojant&nbsp;plok&scaron;tuminį (plok&scaron;čios žemės) ar geodezinį (elipsoido) metodą.
+            </p>
+            <ul>
+                <li> <b>Plok&scaron;tuminis</b>&mdash;Atstumas apskaičiuojamas ant plok&scaron;čio ploto projekcijos, naudojant 2D Dekarto koordinačių sistemą. Tai yra numatytasis metodas.
+                    
+
+                </li>
+                <li> <b>Geodezinis</b>&mdash;Atstumas apskaičiuojamas naudojant elipsoidą. Todėl, nepaisant įvesties ar i&scaron;vesties projekcijos, rezultatai nepasikeis.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Gauto sukaupto atstumo rastro pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sukaupto atstumo rastre pateikiama kiekvienos gardelės sukaupto atstumo i&scaron; ekonomi&scaron;kiausio &scaron;altinio arba į jį, informacija.
+            </p>
+            <p>I&scaron;vesties rastras yra de&scaron;imtainio (Float) tipo.
+            </p>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Gaunamos atgalinės krypties rastro pavadinimas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Atgalinės krypties rastre yra laipsniais apskaičiuota kryptis. Kryptis nurodo gardelę, esančią &scaron;alia trumpiausio kelio atgal į artimiausią &scaron;altinį, i&scaron;vengiant kliūčių.
+            </p>
+            <p>Reik&scaron;mių diapazonas yra nuo 0 laipsnių iki 360 laipsnių, pasiliekant 0 &scaron;altinio gardelėms. Rytų kryptis (de&scaron;inėn) yra 90 ir didėja pagal laikrodžio rodyklę (180 yra pietūs, 270 yra vakarai, o 360 yra &scaron;iaurė).
+            </p>
+            <p>I&scaron;vesties rastras yra de&scaron;imtainio (Float) tipo.
+            </p>
+            <p>Pavadinimas sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b>. Įveskite pavadinimą, kuris dar nėra naudojamas <b>Turinyje</b>.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Gaunamos šaltinio krypties rastro pavadinimas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;altinio krypties rastras nurodo mažiausio sukaupto sąnaudų &scaron;altinio gardelės kryptį kaip azimutą laipsniais.
+            </p>
+            <p>Reik&scaron;mių diapazonas yra nuo 0 laipsnių iki 360 laipsnių, pasiliekant 0 &scaron;altinio gardelėms. Rytų kryptis (de&scaron;inėn) yra 90 ir didėja pagal laikrodžio rodyklę (180 yra pietūs, 270 yra vakarai, o 360 yra &scaron;iaurė).
+            </p>
+            <p>I&scaron;vesties rastras yra de&scaron;imtainio (Float) tipo.
+            </p>
+            <p>Pavadinimas sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b>. Įveskite pavadinimą, kuris dar nėra naudojamas <b>Turinyje</b>.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Gaunamos šaltinio vietos rastro pavadinimas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;altinio vietos rastras yra daugiakanalė i&scaron;vestis. Pirmajame kanale yra eilutės indeksas, o antrajame &ndash; stulpelio indeksas. &Scaron;ie indeksai identifikuoja &scaron;altinio gardelės vietą, kuri nutolusi per mažiausiai suminių sąnaudų.
+            </p>
+            <p>Pavadinimas sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b>. Įveskite pavadinimą, kuris dar nėra naudojamas <b>Turinyje</b>.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

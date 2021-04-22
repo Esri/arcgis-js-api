@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../kernel","../lang"],(function(e,n,t,s,a){var o=e(null,{declaredClass:"esri.layers.Domain",constructor:function(e){e&&n.isObject(e)&&(this.name=e.name,this.type=e.type)},toJson:function(){return a.fixJson({name:this.name,type:this.type})}});return t("extend-esri")&&n.setObject("layers.Domain",o,s),o}));

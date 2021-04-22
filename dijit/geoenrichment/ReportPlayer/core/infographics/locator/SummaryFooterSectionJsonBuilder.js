@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../../sections/SectionTypes","esri/dijit/geoenrichment/utils/FieldUtil"],(function(e,t,a){var i={buildSummaryFooterSectionJson:function(i){var n=i.dataSectionJson,d=e.clone(n.stack[0]);d.data.data.length=1;var o=d.data.data[0].fieldInfos;return d.data.columns.forEach((function(e){var t=o[e.field];t&&!a.isNumericField(t)&&(delete o[e.field],delete d.data.data[0][e.field])})),{type:t.INFOGRAPHIC_SUMMARY_FOOTER,stack:[d]}}};return i}));

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optymalne połączenia regionów</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustracja narzędzia Optymalne połączenia region&oacute;w"></h2>
+        <hr/>
+    <p>To narzędzie oblicza sieć połączeń o najmniejszym koszcie między dwoma lub większą liczbą region&oacute;w wejściowych.
+    </p>
+    <p>Poniżej przedstawiono następujące przykładowe zastosowania:
+        <ul>
+            <li>Model przydatności &mdash; na podstawie modelu przydatności zidentyfikowano 10 najlepszych płat&oacute;w siedliskowych rysi. Rysie powinny mieć możliwość przemieszczania się między płatami siedliskowymi przy wykorzystaniu najbardziej efektywnej sieci korytarzy ekologicznych, dzięki czemu zostanie zachowana genetyczna r&oacute;żnorodność metapopulacji.
+                
+
+            </li>
+            <li>Pozyskiwanie drewna &mdash; w procesie pozyskiwania drewna należy utworzyć najbardziej efektywną kosztowo sieć dr&oacute;g leśnych, kt&oacute;re ułatwią pozyskiwanie tego surowca.
+                
+
+            </li>
+            <li>Utrzymywanie pokoju &mdash; podczas rozmieszczania wojskowych sił pokojowych zidentyfikowano pięć obszar&oacute;w, na kt&oacute;rych zostaną rozmieszczeni żołnierze i personel pomocniczy. Konieczne jest wyznaczenie optymalnych tras zaopatrzeniowych łączących te bazy.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jeśli zaznaczona jest opcja  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty warstwy wejściowej widoczne w bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowane zostaną wszystkie obiekty w obu warstwach wejściowych, nawet jeśli znajdują się one poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Wybierz raster lub obiekt regionu</h2></div>
+        <hr/>
+        <div>
+            <p>Regiony wejściowe, kt&oacute;re mają być połączone optymalną siecią.
+            </p>
+            <p>Jeśli dane wejściowe regionu to raster, regiony są definiowane przez grupy ciągłych (przylegających do siebie) kom&oacute;rek o tych samych wartościach. Każdy region musi mieć unikalny numer. Kom&oacute;rki niebędące częścią żadnego regionu muszą mieć wartość Brak danych. Raster musi być typu całkowitoliczbowego, a wartości mogą być dodatnie lub ujemne.
+            </p>
+            <p>Jeśli dane wejściowe regionu mają postać warstwy obiektowej, może to być warstwa punktowa, liniowa lub poligonowa. Warstwy poligonowe region&oacute;w nie mogą składać się z poligon&oacute;w wieloczęściowych.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Wybierz raster lub obiekt barier (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Zestaw danych definiujący bariery.
+            </p>
+            <p>W przypadku rastra typem wejściowym może być liczba całkowita lub zmiennoprzecinkowa. Wszystkie kom&oacute;rki, kt&oacute;re zawierają wartości (w tym wartość zero), będą traktowane jako bariery. Wszystkie kom&oacute;rki zawierające wartość NoData nie będą traktowane jako bariery.
+            </p>
+            <p>W przypadku obiektu danymi wejściowymi mogą być punkty, linie lub poligony.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Wybierz raster kosztów (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definiujący impedancję (koszt) ruchu planimetrycznego między poszczeg&oacute;lnymi kom&oacute;rkami.
+            </p>
+            <p>Wartość w każdej lokalizacji kom&oacute;rki reprezentuje odległość kosztu na jednostkę na potrzeby poruszania się przez tę kom&oacute;rkę. Wartość każdej lokalizacji kom&oacute;rki jest mnożona przez rozdzielczość kom&oacute;rki, a jednocześnie następuje kompensacja ruchu ukośnego, aby uzyskać łączny koszt poruszania się przez kom&oacute;rkę.
+            </p>
+            <p>Wartości rastra koszt&oacute;w mogą być całkowitoliczbowe lub zmiennoprzecinkowe, ale nie mogą być ujemne ani r&oacute;wne zero (koszt nie może być wartością ujemną ani mieć wartość zerową).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda wyznaczania odległości (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Wskazuje, czy odległości mają być obliczane przy użyciu metody planarnej (płaska powierzchnia Ziemi), czy geodezyjnej (elipsoida).
+            </p>
+            <ul>
+                <li> <b>Planarna</b> &mdash; obliczenia odległości będą wykonywane na odwzorowanej płaskiej powierzchni przy użyciu 2-wymiarowego kartezjańskiego układu wsp&oacute;łrzędnych. To jest metoda domyślna.
+                    
+
+                </li>
+                <li> <b>Geodezyjna</b> &mdash; obliczenia odległości będą wykonywane na elipsoidzie. Dzięki temu wyniki nie zmieniają się w zależności od wejściowego lub wynikowego odwzorowania.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Połączenia w obrębie regionów (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Decyduje o tym, czy ścieżki będą kontynuować sw&oacute;j bieg i łączyć się w obrębie region&oacute;w wejściowych.
+            </p>
+            <ul>
+                <li> <b>Generuj połączenia</b> &mdash; ścieżki będą kontynuować sw&oacute;j bieg w obrębie region&oacute;w wejściowych, łącząc wszystkie ścieżki, kt&oacute;re wchodzą do regionu. Jest to opcja domyślna.
+                    
+
+                </li>
+                <li> <b>Brak połączeń</b> &mdash; ścieżki będą kończyć się na krawędziach region&oacute;w wejściowych i nie będą kontynuować swojego biegu ani łączyć się w ich obrębie.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Nazwa wynikowej warstwy obiektowej linii optymalnego połączenia</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Ta warstwa to wynikowa warstwa obiekt&oacute;w liniowych łączących poszczeg&oacute;lne regiony wejściowe.
+            </p>
+            <p>Każda ścieżka (lub linia) jest unikalnie numerowana, a w dodatkowych polach tabeli atrybut&oacute;w przechowywane są określone informacje o ścieżce. Te dodatkowe pola to:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Unikalny identyfikator ścieżki
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Łączna zakumulowana odległość lub koszt ścieżki
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Pierwszy z łączonych przez ścieżkę region&oacute;w
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Drugi z łączonych przez ścieżkę region&oacute;w
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ponieważ każda ścieżka jest reprezentowane przez unikalną linię, w lokalizacjach, w kt&oacute;rych ścieżki biegną tą samą trasą, będzie istnieć wiele linii.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Nazwa wynikowej warstwy obiektowej połączeń sąsiadujących (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Ta warstwa to wynikowa warstwa obiekt&oacute;w liniowych, kt&oacute;ra identyfikuje wszystkie ścieżki prowadzące z każdego regionu do najbliższych (lub najkorzystniejszych kosztowo) region&oacute;w sąsiadujących.
+            </p>
+            <p>Każda ścieżka (lub linia) jest unikalnie numerowana, a w dodatkowych polach tabeli atrybut&oacute;w przechowywane są określone informacje o ścieżce. Te dodatkowe pola to:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Unikalny identyfikator ścieżki
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Łączna zakumulowana odległość lub koszt ścieżki
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Pierwszy z łączonych przez ścieżkę region&oacute;w
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Drugi z łączonych przez ścieżkę region&oacute;w
+                    
+
+                </li>
+            </ul>
+            
+            <p>Ponieważ każda ścieżka jest reprezentowane przez unikalną linię, w lokalizacjach, w kt&oacute;rych ścieżki biegną tą samą trasą, będzie istnieć wiele linii.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

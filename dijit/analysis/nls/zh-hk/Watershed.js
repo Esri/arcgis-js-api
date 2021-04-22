@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"選擇流動方向圖層",pourPointLayerLabel:"選擇傾點點陣或圖徵圖層",pourPointField:"選擇傾點欄位",resultLayerName:"結果圖層名稱",outputLayerName:"${layername} 的流域",itemDescription:"在 ${layerName} 上執行摘要中心和離差所產生的圖徵圖層。 ",itemTags:"分析結果，流域，${layername} ${fieldname}",itemSnippet:"從「流域」產生的圖徵圖層。"});

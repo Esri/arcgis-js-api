@@ -44,7 +44,7 @@
         <h2>Tạo Bất thường Đa chiều</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Tạo Bất thường Đa chiều"></h2>
         <hr/>
-    <p>Tạo một bộ dữ liệu raster đa chiều bằng c&aacute;ch kết hợp c&aacute;c biến raster đa chiều hiện c&oacute; dọc theo một chiều.
+    <p>T&iacute;nh to&aacute;n bất thường cho mỗi l&aacute;t cắt trong một raster đa chiều hiện c&oacute; để tạo ra một raster đa chiều mới.
     </p>
     <p>Một bất thường l&agrave; độ lệch của một quan s&aacute;t so với gi&aacute; trị ti&ecirc;u chuẩn, trung b&igrave;nh hoặc b&igrave;nh qu&acirc;n của n&oacute;.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Chọn phương pháp để tạo bất thường</h2></div>
         <hr/>
         <div>
-            <p>Chỉ định phương ph&aacute;p sẽ được sử dụng để t&iacute;nh to&aacute;n bất thường. 
+            <p>Chỉ định phương ph&aacute;p sẽ được sử dụng để t&iacute;nh to&aacute;n bất thường.
                 <ul>
                     <li> <b>Ch&ecirc;nh lệch so với Trung b&igrave;nh</b>&mdash;Ch&ecirc;nh lệch giữa gi&aacute; trị pixel v&agrave; trung b&igrave;nh của gi&aacute; trị pixel đ&oacute; tr&ecirc;n c&aacute;c l&aacute;t cắt được x&aacute;c định bởi khoảng sẽ được t&iacute;nh to&aacute;n. Đ&acirc;y l&agrave; mặc định.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Ch&ecirc;nh lệch so với trung b&igrave;nh = x - &micro;
-
                         <ul>
                             <li>x = gi&aacute; trị pixel trong một l&aacute;t
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Phần trăm ch&ecirc;nh lệch so với trung b&igrave;nh = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = gi&aacute; trị pixel trong một l&aacute;t
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Phần trăm trung b&igrave;nh = x / &micro;
-
                         <ul>
                             <li>x = gi&aacute; trị pixel trong một l&aacute;t
                                 
@@ -202,7 +199,7 @@
         <div><h2>Chọn khoảng thời gian để tính giá trị trung bình</h2></div>
         <hr/>
         <div>
-            <p>Chỉ định khoảng thời gian sẽ được sử dụng để t&iacute;nh b&igrave;nh qu&acirc;n. 
+            <p>Chỉ định khoảng thời gian sẽ được sử dụng để t&iacute;nh b&igrave;nh qu&acirc;n.
                 <ul>
                     <li> <b>Tất cả</b>&mdash;T&iacute;nh gi&aacute; trị trung b&igrave;nh tr&ecirc;n tất cả c&aacute;c l&aacute;t cắt cho mỗi pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Bỏ qua các giá trị thiếu trong tính toán</h2></div>
         <hr/>
         <div>
-            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng. 
+            <p>Chỉ định liệu c&aacute;c gi&aacute; trị bị thiếu c&oacute; bị bỏ qua trong ph&acirc;n t&iacute;ch kh&ocirc;ng.
                 <ul>
                     <li>Được chọn&mdash;Ph&acirc;n t&iacute;ch sẽ bao gồm tất cả c&aacute;c pixel hợp lệ dọc theo một chiều nhất định v&agrave; bỏ qua mọi pixel NoData. Đ&acirc;y l&agrave; mặc định.
                     </li>
@@ -250,7 +247,8 @@
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
             <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
             </p>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Estatística Zonal como Tabela</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagrama de Estat&iacute;stica Zonal como Tabela"></h2>
+        <hr/>
+    <p>Esta ferramenta resume os valores de um raster dentro das zonas de outro conjunto de dados e relata os resultados em uma tabela.
+    </p>
+    <p>Alguns aplicativos de exemplo incluem o seguinte:
+    </p>
+    <p>
+        <ul>
+            <li>Dada uma camada de limites estaduais e a distribui&ccedil;&atilde;o da precipita&ccedil;&atilde;o m&eacute;dia sobre o territ&oacute;rio continental dos Estados Unidos, calcule a distribui&ccedil;&atilde;o estadual de eventos de chuva extrema usando uma lista de valores percentuais.
+                
+
+            </li>
+            <li>Dada uma camada de zonas ecol&oacute;gicas sobrepostas e uma camada raster de umidade do solo, calcule todas as estat&iacute;sticas com suporte dentro de cada zona para relacionar as zonas com a disponibilidade de umidade do solo.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente aquelas fei&ccedil;&otilde;es na camada de entrada e camada a serem resumidas que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se n&atilde;o selecionada, todas as fei&ccedil;&otilde;es em ambas a camada de entrada e a camada a ser resumida ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Escolher feições ou raster de zona</h2></div>
+        <hr/>
+        <div>
+            <p>A camada que define os limites das zonas, ou &aacute;reas, que ser&atilde;o resumidas.
+            </p>
+            <p>A camada pode ser um raster inteiro ou dados de fei&ccedil;&otilde;es. Para rasters, as zonas s&atilde;o definidas por todos os locais na entrada que tenham o mesmo valor de c&eacute;lula. Para fei&ccedil;&otilde;es, as zonas podem ser sobrepostas. As &aacute;reas n&atilde;o t&ecirc;m que ser cont&iacute;guas.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Campo de Zona</h2></div>
+        <hr/>
+        <div>
+            <p>Este &eacute; o atributo da camada que ser&aacute; usada para definir os limites das zonas (&aacute;reas).
+            </p>
+            <p>Por exemplo, suponha que a primeira camada de entrada define os limites da unidade de gerenciamento, com atributos que definem a regi&atilde;o, o distrito e o parcel ID de cada unidade. Voc&ecirc; tamb&eacute;m tem uma camada raster definindo um &iacute;ndice de biodiversidade de cada local. Com o campo que voc&ecirc; selecionar, voc&ecirc; pode decidir calcular a biodiversidade m&eacute;dia no local, distrito ou n&iacute;veis regionais.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Escolher raster de valor</h2></div>
+        <hr/>
+        <div>
+            <p>As c&eacute;lulas raster desta camada ser&atilde;o resumidas pelas &aacute;reas (zonas) que elas caem dentro.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorar NoData nos cálculos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica se os valores de NoData s&atilde;o ignorados na an&aacute;lise.
+                <ul>
+                    <li>Marcado&mdash;A an&aacute;lise incluir&aacute; as c&eacute;lulas que possuem um valor no raster do valor de entrada dentro de qualquer zona espec&iacute;fica para determinar o valor de sa&iacute;da para essa zona. As c&eacute;lulas NoData no raster de valor ser&atilde;o ignoradas no c&aacute;lculo da estat&iacute;stica. Este &eacute; o padr&atilde;o.
+                    </li>
+                    <li>Desmarcado&mdash;A an&aacute;lise resultar&aacute; em NoData se houver algum valor NoData para as c&eacute;lulas do raster de valor dentro de uma zona espec&iacute;fica.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Tipo de estatística (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o tipo de estat&iacute;stica a ser calculado.
+            </p>
+            <p>A entrada pode ser um dos seguintes:  <b>Todos</b>, <b>M&eacute;dia</b>, <b>Maioria</b>, <b>M&aacute;ximo</b>, <b>M&eacute;dia</b>, <b>M&iacute;nimo</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Intervalo</b>, <b>Desvio padr&atilde;o</b>, <b>Soma</b>, <b>Variedade</b>, <b>M&iacute;nimo e M&aacute;ximo</b>, <b>M&eacute;dia e Desvio padr&atilde;o</b>, ou <b>M&iacute;nimo, M&aacute;ximo e M&eacute;dia</b>. O padr&atilde;o &eacute; <b>Todos</b>.
+            </p>
+            <p>Se o raster do valor de entrada for inteiro, por padr&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas. Se o raster de valor for do tipo ponto flutuante, por padr&atilde;o, todas as estat&iacute;sticas, exceto  <b>Mediana</b> e <b>Percentil</b>, ser&atilde;o calculadas. 
+            </p>
+            <p>Se o raster de valor de entrada for do tipo ponto flutuante, os c&aacute;lculos zonais para  <b>Maioria</b>, <b>Minoria</b> e <b>Variedade</b> n&atilde;o podem ser calculados.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Valores de percentil (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Os percentis a serem calculados. Um &uacute;nico valor ou uma lista de valores podem ser especificados. O padr&atilde;o &eacute; 90, indicando o 90&ordm; percentil.
+            </p>
+            <p>Os valores podem variar de 0 at&eacute; 100. O resultado da especifica&ccedil;&atilde;o do 0&ordm; percentil &eacute; essencialmente equivalente ao da estat&iacute;stica m&iacute;nima e o 100&ordm; percentil &eacute; equivalente ao m&aacute;ximo. Um valor de 50 produzir&aacute; essencialmente o mesmo resultado que a estat&iacute;stica mediana.
+            </p>
+            <p>Esta op&ccedil;&atilde;o s&oacute; &eacute; suportada se o par&acirc;metro  <b>Tipo estat&iacute;sticas</b> estiver definido como <b>Percentil</b> ou <b>Todos</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tipo de interpolação de percentil (opcional)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Especifica o m&eacute;todo de interpola&ccedil;&atilde;o de percentil a ser usado quando o n&uacute;mero de valores do raster de entrada a ser calculado &eacute; par.
+            </p> 
+            <p>Se o raster de valor de entrada for do tipo pixel inteiro, o m&eacute;todo  <b>Mais pr&oacute;ximo</b> &eacute; usado. Se o raster de valor de entrada for do tipo pixel de ponto flutuante, ent&atilde;o o m&eacute;todo <b>Linear</b> ser&aacute; usado. Este &eacute; o padr&atilde;o.
+            </p>
+            <p>Para o m&eacute;todo  <b>Mais pr&oacute;ximo</b>, &eacute; usado o valor dispon&iacute;vel mais pr&oacute;ximo do percentil desejado. Para o m&eacute;todo <b>Linear</b>, &eacute; usada a m&eacute;dia ponderada dos dois valores circundantes do percentil desejado.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Processar como multidimensional (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica como os rasters de entrada ser&atilde;o processados se forem multidimensionais.
+            </p>
+            <ul>
+                <li>Marcado&mdash;As estat&iacute;sticas ser&atilde;o calculadas a partir da parte atual do conjunto de dados multidimensional de entrada. Este &eacute; o padr&atilde;o.
+                    
+
+                </li>
+                <li>Desmarcado&mdash;As estat&iacute;sticas ser&atilde;o calculadas para todas as dimens&otilde;es do conjunto de dados multidimensional de entrada.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Nome da tabela de resultados</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

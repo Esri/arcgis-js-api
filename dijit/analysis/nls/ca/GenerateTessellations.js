@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseShape:"Trieu la forma",defineExtent:"Definiu l'extensió",defineBin:"Per definir la mida del bin, especifiqueu",area:"Àrea",distance:"Distància",resultLayerName:"Nom de la capa de resultats",hexagon:"Hexàgon",transverseHexagon:"Hexàgon transversal",square:"Quadrat",triangle:"Triangle",diamond:"Diamant",sameAsDisplay:"Igual que la visualització",emptyBinSize:"La mida del bin no pot estar buida",currentExtent:"extensió actual",intersectExtent:"Mantén només les tessel·lacions que s'intersequen",outputLayerName:"Genera tessel·lacions a ${extentLayerName}",itemDescription:"S'ha utilitzat l'extensió de ${extentLayerName}.",itemTags:"Resultat de l'anàlisi, Genera tessel·lacions, ${extentLayerName}",itemSnippet:"Capa d'entitats generada a partir de Genera tessel·lacions."});

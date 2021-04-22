@@ -16,30 +16,28 @@
     data-dojo-props="target:'ModTime',minOccurs:0">
     <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputSysTime"></div>
   </div>
-  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
-    data-dojo-props="target:'SyncOnce',minOccurs:0">
+  
+  <!-- ArcIMS metadata server related -->
+  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" 
+    data-dojo-props="target:'PublishedDocID',minOccurs:0">
   </div>
   <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
-    data-dojo-props="target:'SyncDate',minOccurs:0">
-    <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputDate"></div>
+    data-dojo-props="target:'PublishStatus',minOccurs:0,fixed:true,value:'editor:esri.dijit.metadata.editor'">
   </div>
-  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
-    data-dojo-props="target:'SyncTime',minOccurs:0">
-  </div>
-  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
-    data-dojo-props="target:'MapLyrSync',minOccurs:0">
-  </div>
-  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
+
+  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" 
     data-dojo-props="target:'ArcGISFormat',minOccurs:0">
+  </div>
+  <!-- metadata style (i.e. profile) -->
+  <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
+    data-dojo-props="target:'ArcGISstyle',minOccurs:0,label:'${i18nArcGIS.metadataStyle.caption}'">
+    <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputProfile"></div>
   </div>
   <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
     data-dojo-props="target:'ArcGISProfile',minOccurs:0">
   </div>
-  
-  <!-- ArcIMS metadata server related -->
-  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'PublishedDocID',minOccurs:0"></div>
   <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" 
-    data-dojo-props="target:'PublishStatus',minOccurs:0,fixed:true,value:'editor:esri.dijit.metadata.editor'">
+    data-dojo-props="target:'MapLyrSync',fixed:true,value:'false'">
   </div>
   
   <!-- ArcIMS image or feature service description -->
@@ -49,4 +47,12 @@
   <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'ServiceFCType',minOccurs:0"></div>
   <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'ServiceFCName',minOccurs:0"></div>
 
+  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'SyncOnce',minOccurs:0">
+  </div>
+  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'SyncDate',minOccurs:0">
+    <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputDate"></div>
+  </div>
+  <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'SyncTime',minOccurs:0">
+  </div>
+  
 </div>

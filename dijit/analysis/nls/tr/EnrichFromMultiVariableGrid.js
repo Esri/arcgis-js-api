@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Zenginleştirilecek nokta detaylarını seçin",chooseMVgridLyrLabel:"Zenginleştirmenin yapılacağı çok değişkenli grid’i seçin",chooseVariables:"Eklenecek değişkenleri seçin",outputLayerName:"${gridLayer}’den zenginleştirilmiş ${inputFeatures}",itemDescription:"${inputFeatures} için Çok Değişkenli Kılavuzdan Zenginleştir çözümü çalıştırılarak oluşturulan detay katmanı.",itemTags:"Analiz Sonucu, Çok Değişkenli Kılavuzdan Zenginleştir, ${inputFeatures}, ${gridLayer}",itemSnippet:"Detay katmanı Çok Değişkenli Kılavuzdan Zenginleştir ile oluşturuldu."});

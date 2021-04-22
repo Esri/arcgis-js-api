@@ -44,9 +44,9 @@
         <h2>Konverter raster til geoobjekt</h2><p/>
         <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Verkt&oslash;y for &aring; konvertere raster til geoobjekt"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet konverterer raster til et geoobjektdatasett som punkter, linjer eller polygoner.
+    <p>Dette verkt&oslash;yet konverterer et raster til et geoobjektdatasett som punkter, linjer eller polygoner.
     </p>
-    <p>Med  <b>Velg felt</b>-parameteren kan du velge hvilket attributtfelt i inndatarasterdatasettet som skal bli et attributt i utdatageoobjektklassen. Denne parameteren er kun tilgjengelig for heltallrastere som har ekstra attributter i den tilknyttede tabellen.
+    <p>Med  <b>Velg felt</b>-parameteren kan du velge hvilket attributtfelt i inndatarasterdatasettet som skal bli et attributt i utdatageoobjektsklassen. Denne parameteren er kun tilgjengelig for heltallrastere som har ekstra attributter i den tilknyttede tabellen.
     </p>
     <p>Inngangsrastene kan ha en hvilken som helst cellest&oslash;rrelse.
     </p>
@@ -55,9 +55,8 @@
     <p>Hvis  <b>Bruk gjeldende kartutstrekning</b> er krysset av, blir bare rastercellene som er synlige innenfor gjeldende kartutstrekning konvertert. Hvis det ikke er merket av for dette alternativet, blir alle cellene i rasteret behandlet, selv om de befinner seg utenfor gjeldende kartutstrekning. Legg merke til dette hvis rasterlaget er stort eller har en meget h&oslash;y oppl&oslash;sning.
     </p>
     <p>Bruksm&aring;ter dette verkt&oslash;yet omfatter f&oslash;lgende:
-
         <ul>
-            <li>Lag polygongeoobjekter fra en arealbruksomr&aring;deraster.
+            <li>Lag polygongeoobjekter fra et raster for arealbruksklassifisering.
                 
 
             </li>
@@ -78,7 +77,7 @@
         <div><h2>Velg rasterlag som skal konverteres</h2></div>
         <hr/>
         <div>
-            <p>Inndatarasterlaget som skal konverteres til geoobjektlag.
+            <p>Inndatarasterlaget som skal konverteres til geoobjektslag.
             </p>
         </div>
     </div>
@@ -92,7 +91,7 @@
             </p>
             <p>Et felt som inneholder flyttallsverdier kan brukes bare hvis utdataene er til et punktdatasett.
             </p>
-            <p>Standard er feltet  <i>Value</i>, som inneholder verdien i hver rastercelle.
+            <p>Standard er feltet  <i>Value</i> som inneholder verdien i hver rastercelle.
             </p>
         </div>
     </div>
@@ -103,15 +102,15 @@
             <p>Angir utdatatypen.
             </p>
             <ul>
-                <li> <b>Punkt</b>&ndash;&nbsp;Rasteret konverteres til et punktdatasett. Dette er standardalternativet.
+                <li> <b>Punkt</b> &ndash; Rasteret konverteres til et punktdatasett. Dette er standardalternativet.
                     
  
                 </li>
-                <li> <b>Linje</b>&ndash;&nbsp;Rasteret konverteres til et linjegeoobjektdatasett.
+                <li> <b>Linje</b> &ndash; Rasteret konverteres til et linjegeoobjektdatasett.
                     
  
                 </li>
-                <li> <b>Polygon</b>&ndash;&nbsp;Rasteret konverteres til et polygongeoobjektdatasett.
+                <li> <b>Polygon</b> &ndash; Rasteret konverteres til et polygongeoobjektdatasett.
                     
 
                 </li>
@@ -151,7 +150,7 @@
                     
 
                 </li>
-                <li>Ikke avmerket &ndash;&nbsp;Enkeltvise geoobjekter (med &eacute;n del) opprettes for hver polygon. Dette er standardalternativet.
+                <li>Ikke avmerket &ndash;&nbsp;Individuelle geoobjekter (med &eacute;n del) opprettes for hver polygon. Dette er standardalternativet.
                     
 
                 </li>
@@ -177,6 +176,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

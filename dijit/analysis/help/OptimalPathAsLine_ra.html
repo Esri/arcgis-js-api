@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimal Path As Line</h2><p/>
+        <h2><img src="./images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Optimal Path As Line tool illustration"></h2>
+        <hr/>
+    <p>This tool calculates the optimal path from destinations to sources as a line.
+    </p>
+    <p>Example applications include the following:
+        <ul>
+            <li>Find the best route for a new road in terms of construction costs.
+                
+
+
+            </li>
+            <li>Find the best sailing route between a destination and current location.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Choose destination raster or features</h2></div>
+        <hr/>
+        <div>
+            <p>A raster or feature layer  that identifies the cells from which the optimal path is determined to the optimum source.
+            </p>
+            <p>If the input is a raster, it must consist of cells that have valid values (zero is a valid value) for the destinations, and the remaining cells must be assigned NoData. The input raster  type must be integer.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Destination field</h2></div>
+        <hr/>
+        <div>
+            <p>The field used to obtain values for the destination locations.
+            </p>
+            <p>This field must be of type integer.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Choose distance accumulation raster</h2></div>
+        <hr/>
+        <div>
+            <p>The distance accumulation raster is used to determine the optimal path from the destinations to the sources.
+            </p>
+            <p>The distance accumulation raster is usually created with the Distance Accumulation or Distance Allocation tools. Each cell in the distance accumulation raster represents the minimum accumulative cost distance over a surface from each cell to a set of source cells.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Choose back direction or flow direction raster</h2></div>
+        <hr/>
+        <div>
+            <p>The back direction raster contains calculated directions in degrees. The direction identifies the next cell along the optimal path back to the least accumulative cost source while avoiding barriers.
+            </p>
+            <p>The back direction  raster is usually created with the Distance Accumulation or Distance Allocation tools. In this case the range of values is from 0 degrees to 360 degrees. The value 0 is reserved for the source cells. Due east (right) is 90 degrees, and the values increase clockwise (180 is south, 270 is west, and 360 is north).
+            </p>
+            <p>The optimal path created can be a flow path
+based on D8 flow direction. To generate an optimal path in this
+way, use a D8 flow direction raster as input for this parameter.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Path type
+(optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies a keyword that defines how the values and zones in the input destination data will be interpreted in the cost path calculations.
+                <ul>
+                    <li> <b>To Each Zone</b>&mdash;For each zone in the input destination data, a least-cost path is determined. With this option, the least-cost path for each zone begins at the cell with the lowest cost distance weighting in the zone. This is the default.
+                         
+                    </li>
+                    <li> <b>Best Single</b>&mdash;For all cells in the input destination data, the least-cost path is derived from the cell with the minimum of the least-cost paths to source cells.
+                    </li>
+                    <li> <b>To Each Cell</b>&mdash;For each cell with valid values in the input destination data, a least-cost path is determined. With this option, each cell of the input destination data is treated separately, and a least-cost path is determined for each cell.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Result feature layer name</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

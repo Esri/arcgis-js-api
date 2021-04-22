@@ -66,7 +66,7 @@
         <div>
             <p>Item paket deep learning input ( <code>.dlpk</code>).
             </p>
-            <p>Paket deep learning terdiri atas file JSON penentuan model Esri ( <code>.emd</code>), file model biner deep learning, dan secara opsional, fungsi raster Python yang akan digunakan.
+            <p>Paket deep learning terdiri atas file JSON definisi model Esri ( <code>.emd</code>), file model biner deep learning, dan secara opsional, fungsi raster Python yang akan digunakan.
             </p>
         </div>
     </div>
@@ -82,13 +82,34 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Mode Pemrosesan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan cara memproses semua item raster dalam set data mosaik atau layanan gambar. Parameter ini diterapkan saat raster input berupa set data mosaik atau layanan gambar.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Semua item raster dalam set data mosaik atau layanan gambar akan diubah menjadi mosaik dan diproses. Ini adalah default.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Semua item raster dalam set data mosaik atau layanan gambar akan diproses sebagai gambar terpisah.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="outputClassifiedRaster">
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Odvodiť orientáciu na svetové strany</h2><p/>
+        <h2><img src="../images/GUID-D03FF025-0530-4D0D-87A3-B25D6716F8F0-web.png" alt="Odvodiť orient&aacute;ciu na svetov&eacute; strany pre Port&aacute;l"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vytv&aacute;ra mapu orient&aacute;cie georeli&eacute;fu zo zdrojov&yacute;ch &uacute;dajov o prev&yacute;&scaron;en&iacute;. Orient&aacute;cia na svetov&eacute; strany identifikuje smer maxim&aacute;lneho klesania podľa zmeny hodnoty bunky vzhľadom k jej susedom. Orient&aacute;ciu možno považovať za smer sklonu. Hodnoty v&yacute;stupn&eacute;ho rastra predstavuj&uacute; uhlov&yacute; smer orient&aacute;cie vzhľadom k svetov&yacute;m stran&aacute;m.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>vstupné dáta</h2></div>
+        <hr/>
+        <div>
+            <p>V&yacute;&scaron;kov&aacute; vrstva, pre ktorej každ&uacute; bunku bude vypoč&iacute;tan&aacute; orient&aacute;cia na svetov&eacute; strany.
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,20 +41,20 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Ustvari večdimenzionalno anomalijo</h2><p/>
-        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ustvari večdimenzionalno anomalijo"></h2>
+        <h2>Ustvarjanje večdimenzionalne anomalije</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ustvarjanje večdimenzionalne anomalije"></h2>
         <hr/>
-    <p>Ustvari večdimenzionalni rastrski sklop podatkov s pomočjo združevanja obstoječih večdimenzionalnih rastrskih spremenljivk vzdolž dimenzije.
+    <p>Izračuna anomalijo za vsak izsek v obstoječem večdimenzionalnem rastru, da ustvari nov večdimenzionalni raster.
     </p>
-    <p>Anomalija je odklon opazovanja od njegovih standardnih on srednjih vrednosti in mediana.
+    <p>Anomalija je odklon opazovanja od njegovih standardnih ali srednjih vrednosti in mediane.
     </p>
-    <p>To orodje izračuna anomalije v času za eno ali več spremenljivk v večdimenzionalnem rasterju. Če imate poleg časovne dimenzije tudi brez-časovno dimenzijo, se bo anomalija izračunala na vsakem koraku v dodatni dimenziji.
+    <p>To orodje izračuna anomalije v času za eno ali več spremenljivk v večdimenzionalnem rastru. Če imate poleg časovne dimenzije tudi brez-časovno dimenzijo, se bo anomalija izračunala na vsakem koraku v dodatni dimenziji.
     </p>
     <p>Na primer, če imate podatke o mesečni temperaturi oceana, ki se zbirajo na vsak 1 meter globine do 100 metrov, in želite izračunati anomalije temperature kot odklone od letne srednje vrednosti. To orodje bo določilo anomalije v temperaturi glede na letno srednjo vrednost, če nastavite  <b>Letno</b> kot <b>časovni interval za izračun srednje vrednosti</b>, in bo vrnilo vrednosti anomalije za vsako posamezno od 100 globin.
     </p>
     <p>To orodje podpira samo večdimenzionalni rastrski sklop podatkov, ki ima časovno dimenzijo.
     </p>
-    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke sloja, ki so vidne znotraj trenutnega obsega mape. Če je možnost odkljukana, bodo analizirane spremenljivke celotnega sloja, tudi če so zunaj trenutnega obsega karte.
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirane samo spremenljivke sloja, ki so vidne znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirane spremenljivke celotnega sloja, tudi če so zunaj trenutnega obsega karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -78,9 +78,9 @@
         <div><h2>Izberi metodo za ustvarjanje anomalije</h2></div>
         <hr/>
         <div>
-            <p>Določi metodo, ki bo uporabljena za izračun anomalije. 
+            <p>Določi metodo, ki bo uporabljena za izračun anomalije.
                 <ul>
-                    <li> <b>Razlika od srednje vrednosti</b> &ndash; Izračunana bo razlika med vrednostjo piksla in srednjo vrednostjo tega piksla preko izsekov, ki jih opredeljuje interval. To je privzeta nastavitev.
+                    <li> <b>Razlika od srednje vrednosti</b> &ndash; Izračunana bo razlika med vrednostjo piksla in srednjo vrednostjo tega piksla preko izsekov, ki jih opredeljuje interval. To je privzeto.
                     </li>
                     <li> <b>Odstotna razlika od srednje vrednosti</b> &ndash; Izračunana bo odstotna razlika med vrednostjo piksla in srednjo vrednostjo tega piksla preko izsekov, ki jih opredeljuje interval.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Razlika od srednje vrednosti = x - &micro;
-
                         <ul>
                             <li>x = vrednost piksla v izseku
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Odstotna razlika od srednje vrednosti = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = vrednost piksla v izseku
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Odstotek srednje vrednosti = x - &micro;
-
                         <ul>
                             <li>x = vrednost piksla v izseku
                                 
@@ -180,13 +177,13 @@
                         </ul>
                         
                     </li>
-                    <li>Z-vrednost  = (x - &micro;) / S
+                    <li>Z-vrednost = (x - &micro;) / S
                         <ul>
                             <li>x = vrednost piksla v izseku
                             </li>
                             <li>&micro; = srednja vrednost vrednosti tega piksla preko podanega časovnega intervala
                             </li>
-                            <li>&micro; = standardni odklon vrednosti tega piksla preko podanega časovnega intervala
+                            <li>S = standardni odklon vrednosti tega piksla preko podanega časovnega intervala
                             </li>
                         </ul>
                         
@@ -202,7 +199,7 @@
         <div><h2>Izberi časovni interval za izračun srednje vrednosti</h2></div>
         <hr/>
         <div>
-            <p>Določi časovni interval, ki bo uporabljena za izračun srednje vrednosti. 
+            <p>Določi časovni interval, ki bo uporabljena za izračun srednje vrednosti.
                 <ul>
                     <li> <b>Vse</b> &ndash; Izračuna srednjo vrednost po vseh izsekih za vsak piksel.
                     </li>
@@ -235,9 +232,9 @@
         <div><h2>Prezri manjkajoče vrednosti v izračunu</h2></div>
         <hr/>
         <div>
-            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti. 
+            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti.
                 <ul>
-                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeto.
                     </li>
                     <li>Odkljukano &ndash; Rezultat analize bo brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

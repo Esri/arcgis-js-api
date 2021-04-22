@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg det raster- eller vektorpositionslag, der skal beregnes rejseruter mellem",inputCostRasterLabel:"Vælg rasterlag for rejseomkostninger",outputOptimumNetworkName:"Navn på resulterende polylinjelag for optimale ruter",outputNeighborNetworkName:"Navn på resulterende polylinjelag for tilstødende ruter (valgfrit)",outputLayerName:"Beregn optimale rejseomkostninger for ${layername}",itemDescription:"Vektorlag genereret ud fra kørsel af Beregn optimale rejseomkostninger for ${layerName}. ",itemTags:"Analyseresultat, Beregn optimale rejseomkostninger, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra kørsel af Beregn optimale rejseomkostninger."});

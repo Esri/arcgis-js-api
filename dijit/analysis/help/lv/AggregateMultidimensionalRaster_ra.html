@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Apkopot multidimensiju rastru</h2><p/>
-        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Apkopot multidimensiju rastru"></h2>
+        <h2>Apkopot daudzdimensiju rastru</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Apkopot daudzdimensiju rastru"></h2>
         <hr/>
-    <p>Ģenerē multidimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os multidimensiju rastra mainīgos.
+    <p>Ģenerē daudzdimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os multidimensiju rastra mainīgos.
     </p>
     <p>Ja jūsu rīcībā ir 30 gadu gaitā iegūti jūras virsmas temperatūras dati, kas apkopoti katru mēnesi ik pēc 5 metru dziļuma, līdz pat 100 metriem, tālāk ir redzami daži izmanto&scaron;anas piemēri:
         <ul>
@@ -62,15 +62,15 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Izvēlēties apkopojamu vairāku dimensiju attēlu slāni</h2></div>
+        <div><h2>Lai apkopotu, izvēlieties daudzdimensiju attēlu slāni</h2></div>
         <hr/>
         <div>
-            <p>Tiks apkopots multidimensiju rastra ievades attēlu slānis.
+            <p>Tiks apkopots daudzdimensiju rastra ievades attēlu slānis.
             </p>
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Izvēlēties dimensiju, pa kuru veikt apkopošanu</h2></div>
+        <div><h2>Izvēlieties dimensiju, kurā tiks veikta apkopošana</h2></div>
         <hr/>
         <div>
             <p>Apkopo&scaron;anas dimensija. Tā ir dimensija, kurā tiks apkopoti mainīgie.
@@ -78,20 +78,20 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Izvēlēties apkopojamos mainīgos</h2></div>
+        <div><h2>Izvēlieties apkopojamo(s) mainīgo(s)</h2></div>
         <hr/>
         <div>
             <p>Mainīgais vai mainīgie, kas tiks apkopoti konkrētajā dimensijā. Ja nav norādīts mainīgais, tiks analizēti visi mainīgie atlasītajā laika dimensijā.
             </p>
-            <p>Piemēram, lai apkopotu dienas temperatūras datus kā mēne&scaron;a vidējās vērtības, kā apkopojamo mainīgo norādiet temperatūru. Ja jūs nenorādāt nevienu mainīgo un jums ir gan dienas temperatūra, gan dienas nokri&scaron;ņu mainīgās vērtības, abi mainīgie tiks apkopoti mēne&scaron;a vidējos lielumos un izvades multidimensiju rastrā būt iekļauti abi mainīgie.
+            <p>Piemēram, lai apkopotu dienas temperatūras datus kā mēne&scaron;a vidējās vērtības, kā apkopojamo mainīgo norādiet temperatūru. Ja jūs nenorādāt nevienu mainīgo un jums ir gan dienas temperatūra, gan dienas nokri&scaron;ņu mainīgās vērtības, abi mainīgie tiks apkopoti mēne&scaron;a vidējos lielumos un izvades daudzdimensiju rastrā būt iekļauti abi mainīgie.
             </p>
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Izvēlēties apkopošanas paņēmienu</h2></div>
+        <div><h2>Izvēlieties apkopošanas metodi</h2></div>
         <hr/>
         <div>
-            <p>Nosaka matemātisko metodi, ko izmantos apkopoto sektoru apvieno&scaron;anai intervālā. 
+            <p>Nosaka matemātisko metodi, ko izmantos apkopoto sektoru apvieno&scaron;anai intervālā.
                 <ul>
                     <li> <b>Vidējā vērtība</b>&nbsp;&mdash; aprēķina pikseļa vērtības vidējo aritmētisko starp visiem sektoriem jeb sadaļām intervālā. Tā ir noklusējuma vērtība.
                     </li>
@@ -121,18 +121,18 @@
         </div>
     </div>
     <div id="aggregationFunction">
-        <div><h2>Izvēlēties rastra funkcijas veidni</h2></div>
+        <div><h2>Izvēlieties rastra funkciju sagatavi</h2></div>
         <hr/>
         <div>
-            <p>Pielāgota rastra funkcija, kas tiks izmantota apkopoto rastru pikseļa vērtību aprēķinā&scaron;anai. Ievade ir rastra funkcijas veidnes vienība portālā. Ievade ir nepiecie&scaron;ama, ja  <b>Apkopo&scaron;anas metode</b> ir iestatīta uz <b>Pielāgota</b>.
+            <p>Pielāgota rastra funkcija, kas tiks izmantota apkopoto rastru pikseļa vērtību aprēķinā&scaron;anai. Ievade ir rastra funkcijas sagataves vienums portālā. Ievade ir nepiecie&scaron;ama, ja  <b>Apkopo&scaron;anas metode</b> ir iestatīta uz <b>Pielāgota</b>.
             </p>
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Izvēlēties apkopošanas aprakstu</h2></div>
+        <div><h2>Izvēlieties apkopošanas definīciju</h2></div>
         <hr/>
         <div>
-            <p>Norāda dimensijas intervālu, kuram tiks apkopoti dati. 
+            <p>Norāda dimensijas intervālu, kuram tiks apkopoti dati.
                 <ul>
                     <li> <b>Visi</b>&nbsp;&mdash; datu vērtības tiks apkopotas visos sektoros. Tā ir noklusējuma vērtība.
                     </li>
@@ -148,7 +148,7 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Izvēlēties atslēgvārda intervālu</h2></div>
+        <div><h2>Izvēlieties atslēgas vārda intervālu</h2></div>
         <hr/>
         <div>
             <p>Norāda atslēgas vārda intervālu, kas tiks izmantots, veicot apkopo&scaron;anu dimensijā. &Scaron;ī ievade ir nepiecie&scaron;ama, ja  <b>Apkopo&scaron;anas definīcija</b> ir iestatīta uz <b>Intervāla atslēgas vārds</b> un apkopo&scaron;ana ir jāveic laika griezumā.
@@ -173,9 +173,9 @@
                     </li>
                     <li> <b>Periodiski katru ceturksni</b>&nbsp;&mdash; datu vērtības tiks apkopotas nedēļas laika soļos, un rezultāts ietvers vienu apkopoto vērtību ceturksnī. Izvade ietvers ne vairāk kā 4 ceturk&scaron;ņa laika sektorus.
                     </li>
-                    <li> <b>Reizi dekādē</b>&nbsp;&mdash; datu vērtības tiks apkopotas 3&nbsp;periodos ar 10&nbsp;dienu ilgumu katram. Pēdējais periods var būt vairāk vai mazāk kā 10 dienas ilgs. Izvade ietvers 3 sektorus katram mēnesim.
+                    <li> <b>Reizi dekādē</b>&nbsp;&mdash; datu vērtības tiks apkopotas 3&nbsp;periodos ar 10&nbsp;dienu ilgumu katram. Pēdējais periods var būt vairāk vai mazāk kā 10&nbsp;dienas ilgs. Izvade ietvers 3 sektorus katram mēnesim.
                     </li>
-                    <li> <b>Reizi piecās dienās</b>&nbsp;&mdash; datu vērtības tiks apkopotas 6&nbsp;periodos ar 5&nbsp;dienu ilgumu katram. Pēdējais periods var būt vairāk vai mazāk kā 5 dienas ilgs. Izvade ietvers 6 sektorus katram mēnesim.
+                    <li> <b>Reizi piecās dienās</b>&nbsp;&mdash; datu vērtības tiks apkopotas 6&nbsp;periodos ar 5&nbsp;dienu ilgumu katram. Pēdējais periods var būt vairāk vai mazāk kā 5 dienas ilgs. Izvade ietvers 6&nbsp;sektorus katram mēnesim.
                     </li>
                 </ul>
                 
@@ -193,12 +193,12 @@
         </div>
     </div>
     <div id="intervalUnit">
-        <div><h2>Mērvienība</h2></div>
+        <div><h2>Vienība</h2></div>
         <hr/>
         <div>
-            <p>Mērvienība, kas tiks izmantota intervāla vērtībai. Ievade ir nepiecie&scaron;ama, ja  <b>Dimensija</b> ir laika lauks un <b>Apkopo&scaron;anas definīcija</b> ir iestatīta uz <b>Intervāla vērtība</b>.
+            <p>Vienība, kas tiks izmantota intervāla vērtībai. Ievade ir nepiecie&scaron;ama, ja  <b>Dimensija</b> ir laika lauks un <b>Apkopo&scaron;anas definīcija</b> ir iestatīta uz <b>Intervāla vērtība</b>.
             </p>
-            <p>Ja apkopojat pēc cita parametra, nevis laika, &scaron;ī opcija nebūs pieejama un intervāla vērtības vienība atbildīs ievades multidimensiju rastra datu mainīgajai vienībai. 
+            <p>Ja apkopojat pēc cita parametra, nevis laika, &scaron;ī opcija nebūs pieejama un intervāla vērtības vienība atbildīs ievades daudzdimensiju rastra datu mainīgajai vienībai.
                 <ul>
                     <li> <b>Stundas</b>&nbsp;&mdash; datu vērtības dotajā intervālā tiks apkopotas stundas laika sektoros.
                     </li>
@@ -216,7 +216,7 @@
         </div>
     </div>
     <div id="intervalRanges">
-        <div><h2>Norādīt diapazonus</h2></div>
+        <div><h2>Definēt diapazonus</h2></div>
         <hr/>
         <div>
             <p>Intervālu diapazoni tiks izmantoti, lai apkopotu vērtību grupas. Tās sastāv no mazāko un lielāko diapazonu vērtību pāriem, un to datu tips ir Dubults vai Datums. &Scaron;ī ievade ir nepiecie&scaron;ama, ja  <b>Apkopo&scaron;anas Definīcija </b> ir iestatīta uz <b>Intervāla diapazoni </b>.
@@ -227,7 +227,7 @@
         <div><h2>Ignorēt aprēķinā trūkstošās vērtības</h2></div>
         <hr/>
         <div>
-            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības. 
+            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības.
                 <ul>
                     <li>Atzīmēts &mdash; analīze ietver visus derīgos pikseļus konkrētajā dimensijā un ignorē jebkurus NoData pikseļus. Tā ir noklusējuma vērtība.
                     </li>
@@ -242,6 +242,7 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
+            
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
             <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.

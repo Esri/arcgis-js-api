@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({clustersLabel:"Hitta kluster för lagret ${inputLayerName}.",chooseLayerLabel:"Välj det lager som klustren ska hittas från",minClusterPtsLabel:"Minimalt antal punkter för att betraktas som ett kluster",minClustersPtsGAXLbl:"Minsta antal punkter som kan fungera som utgångsvärde för ett kluster",limitSearchLabel:"Begränsa sökintervallet till (valfritt)",limitSearchReqLabel:"Begränsa sökintervallet till",outputLayerName:"Hitta kluster för ${inputLayerName}",itemDescription:"Geoobjektlager som genererats genom att lösningen Hitta punktkluster för ${inputLayerName} har körts.",itemTags:"Analysresultat, Hitta punktkluster, ${inputLayerName}",itemSnippet:"Geoobjektlager som genererats av Hitta punktkluster",chooseClusteringMethod:"Välj klustringsmetod att använda",dbscanLabel:"Definierat avstånd (DBSCAN)",hdbscanLabel:"Självjusterande (HDBSCAN)",useTimeToFindCLusters:"Använd tid för att hitta kluster",limitSearchDurLabel:"Begränsa söktiden till"});

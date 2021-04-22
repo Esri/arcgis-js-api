@@ -95,22 +95,22 @@
                 </li>
                 <li> Overlay Layers
                 </li>
-                <li> Summarize Center and Dispersion
+                <li> Calculate Motion Statistics
+                </li>
+                <li> Trace Proximity Events
                 </li>
             </ul>
             
         </p>
-        <p>GeoAnalytics focuses on analyzing large amounts of data with an emphasis on both spatial and temporal patterns. 
+        <p>GeoAnalytics focuses on analyzing large amounts of data with an emphasis on both spatial and temporal patterns.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="largesize">
         <h2>Summarize Data</h2>
         <hr/>
-        <p>   The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
+        <p> The Summarize Data toolset contains tools that calculate total counts, lengths, areas, and basic descriptive statistics of features and their attributes within areas or near other features.
             <ul>
                 <li> <b>Aggregate Points</b> calculates statistics about points that fall within specified areas or bins.
-                </li>
-                <li> <b>Calculate Motion Statistics</b> calculations motion statistics and measurements  used to enrich your track datasets.
                 </li>
                 <li> <b>Build Multi-Variable Grid</b> generates a grid of square or hexagonal bins and calculates values for each bin based on the proximity of each input layer.
                 </li>
@@ -120,9 +120,7 @@
                 </li>
                 <li> <b>Reconstruct Tracks</b> calculates statistics about points or polygons that belong to the same track and reconstructs inputs into tracks.
                 </li>
-                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that share attributes.
-                </li>
-                <li> <b>Summarize Center and Dispersion</b> finds central features and directional distributions.
+                <li> <b>Summarize Attributes</b> calculates statistics about feature or tabular data that shares attributes.
                 </li>
                 <li> <b>Summarize Within</b> calculates statistics for area features and attributes that overlap each other.
                 </li>
@@ -141,10 +139,10 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p> Using a layer of
+            <p>   Using a layer of
 point features and either a layer of area features or bins defined by a specified distance, this tool
 determines which points fall within each area or bin and calculates statistics about all
-the points within each area or bin. You may optionally apply time slicing with this tool.
+the points within each area or bin. You can optionally apply time slicing with this tool.
             </p>
             <p>The following are examples:
                 <ul>
@@ -168,7 +166,7 @@ the points within each area or bin. You may optionally apply time slicing with t
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Build Multi-Variable Grid tool generates a grid of square or hexagonal bins and calculates variables for each bin based on the proximity of one or more input layers.
+            <p>This tool generates a grid of square or hexagonal bins and calculates variables for each bin based on the proximity of one or more input layers.
             </p>
             <p>The following are examples:
                 <ul>
@@ -194,7 +192,7 @@ the points within each area or bin. You may optionally apply time slicing with t
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Summarizes input features with statistics, sample layers, and visualization. You can choose to output a sample layer or extent layer.
+            <p>This tool summarizes input features with statistics, sample layers, and visualization. You can choose to output a sample layer or extent layer.
             </p>
             <p>The following are examples:
                 <ul>
@@ -275,38 +273,9 @@ summarizes statistics for specified fields.
             </p>
             <p>The following are examples:
                 <ul>
-                    <li>Given locations of grocery stores with a field  <i>COMPANY_NAME</i>, summarize the stores by the company name to determine statistics for each company.
+                    <li>Given locations of grocery stores with a  <i>COMPANY_NAME</i> field, summarize the stores by the company name to determine statistics for each company.
                     </li>
-                    <li>Given a table of grocery stores with  fields  <i>COMPANY_NAME</i> and <i>COUNTY</i>, summarize the stores by the company name and county to determine statistics for each company within each county.
-                    </li>
-                </ul>
-                
-            </p>
-            <br/>
-        </div>
-        <div id="SummarizeCenterAndDispersionTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Summarize Center and Dispersion</h2></td>
-                    <td>
-                    <img src="./images/GUID-D2D53CA4-8A35-4163-9765-77BF232E569D-web.png" class="titleImage" alt="Summarize Center and Dispersion">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>The Summarize Center and Dispersion task  
-finds central features and directional distributions.
-            </p>
-            <p>The following are examples:
-                <ul>
-                    <li>Where is the center? 
-                    </li>
-                    <li>Which feature is the most accessible from all other features?
-                    </li>
-                    <li>How dispersed, compact, or integrated are the features?
-                    </li>
-                    <li>Are there directional trends?
+                    <li>Given a table of grocery stores with  <i>COMPANY_NAME</i> and <i>COUNTY</i>  fields, summarize the stores by the company name and county to determine statistics for each company within each county.
                     </li>
                 </ul>
                 
@@ -324,7 +293,7 @@ finds central features and directional distributions.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Finds areas (and portions of areas) that overlap between two
+            <p>This tool finds areas (and portions of areas) that overlap between two
 layers and calculates statistics about the overlap. 
             </p>
             <p>The following are examples:
@@ -392,7 +361,7 @@ points, lines, areas, or tables that represents an instant in time.   Using sequ
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Converts addresses into coordinates. Use this tool on big data file share tables.
+            <p>This tool converts addresses into coordinates. Use this tool on big data file share tables.
             </p>
             <br/>
         </div>
@@ -479,15 +448,15 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Calculate Density tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
+            <p>This tool creates a density map from point features by spreading known quantities of some phenomenon (represented as attributes of the points) across the map. The result is a layer of areas representing the density.
             </p>
             <p>The following are examples:
                 <ul>
-                    <li>Calculating densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to determine where new hospitals should be built.
+                    <li>Calculate densities of hospitals within a county.  The result layer will show areas with high and low accessibility to hospitals, and this information can be used to determine where new hospitals should be built.
                     </li>
-                    <li>Identifying areas that are at high risk of forest fires based on historical locations of forest fires.
+                    <li>Identify areas that are at high risk of forest fires based on historical locations of forest fires.
                     </li>
-                    <li>Locating communities that are far from major highways to plan where new roads should be constructed.
+                    <li>Locate communities that are far from major highways to plan where new roads should be constructed.
                     </li>
                 </ul>
                 
@@ -505,7 +474,7 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Find Point Clusters tool  finds clusters of point features in surrounding noise based on their spatial distribution.
+            <p>This tool  finds clusters of point features in surrounding noise based on their spatial distribution.
             </p>
             <p>The following are examples:
                 <ul>
@@ -529,14 +498,14 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Find Hot Spots tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
+            <p>This tool will determine if there is any statistically significant clustering in the spatial pattern of your data. 
                 <ul>
                     <li>Are your points (crime incidents, trees, traffic accidents) really clustered?  How can you be sure?
                     </li>
                     <li>Have you truly discovered a statistically significant hot spot (for spending, infant mortality, consistently high test scores), or would your map tell a different story if you changed the way it was symbolized?
                     </li>
                 </ul>
-                The Find Hot Spots tool will help you answer these questions with confidence.
+                The Find Hot Spots tool will help you answer these questions with confidence. 
             </p>
             <br/>
         </div>
@@ -551,16 +520,16 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Forest-based Classification and Regression tool models and generates predictions using an adaptation of Leo Breiman's random forest algorithm, which is a supervised machine learning method.
+            <p>This tool models and generates predictions using an adaptation of Leo Breiman's random forest algorithm, which is a supervised machine learning method.
             </p>
             <p>The following are examples:
                 <ul>
-                    <li>Given data on occurrence of seagrass, as well as a number of environmental explanatory variables represented as both attributes which has been enriched using a multivariable grid to calculate distances to factories upstream and major ports, future seagrass occurrence can be predicted based on future projections for those same environmental explanatory variables.
+                    <li>Given data on occurrence of seagrass, as well as a number of environmental explanatory variables represented as both attributes that have been enriched using a multivariable grid to calculate distances to factories upstream and major ports, future seagrass occurrence can be predicted based on future projections for those same environmental explanatory variables.
                           
                     </li>
-                    <li>Suppose you have crop yield data at hundreds of farms across the country along with other attributes at each of those farms (number of employees, acreage, and so on). Using these pieces of data, you can provide a set of features representing farms where you don't have crop yield (but you do have all of the other variables), and make a prediction about crop yield.
+                    <li>You have crop yield data at hundreds of farms across the country along with other attributes at each of those farms (number of employees, acreage, and so on). Using these pieces of data, you can provide a set of features representing farms where you don't have crop yield (but you do have all of the other variables), and make a prediction about crop yield.
                     </li>
-                    <li>Housing values can be predicted based on the prices of houses that have been sold in the current year. The sale price of homes sold, along with information about the number of bedrooms, distance to schools, proximity to major highways, average income, and crime counts can be used to predict sale prices of similar homes.
+                    <li>Housing values can be predicted based on the prices of houses that have been sold in the current year. The sale price of homes sold, along with information about the number of bedrooms, distance to schools, proximity to major highways, average income, and crime counts, can be used to predict sale prices of similar homes.
                          
                     </li>
                 </ul>
@@ -579,7 +548,7 @@ duration.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>The Generalized Linear Regression tool   generates predictions or models a dependent variable in terms of its relationship to a set of explanatory variables.  This tool can be used to fit continuous (OLS), binary (logistic), and count (Poisson) models.
+            <p>This  tool   generates predictions or models a dependent variable in terms of its relationship to a set of explanatory variables.  This tool can be used to fit continuous (OLS), binary (logistic), and count (Poisson) models.
             </p>
             <p>The following are examples:
                 <ul>
@@ -587,7 +556,7 @@ duration.
                     </li>
                     <li>Is there a positive relationship between vandalism and burglary?
                     </li>
-                    <li>Which variables effectively predict 911 call volume?  Given future projections, what is the expected demand for emergency response resources?
+                    <li>What variables effectively predict 911 call volume?  Given future projections, what is the expected demand for emergency response resources?
                     </li>
                     <li>What variables affect low birth rates?
                     </li>
@@ -630,6 +599,8 @@ duration.
                 <li> <b>Create Buffers</b> creates areas of a specified distance from
 features.
                 </li>
+                <li> <b>Trace Proximity Events</b> traces events that are near each other in space (location) and time.
+                </li>
             </ul>
             
         </p>
@@ -652,6 +623,30 @@ features.
                     <li>Using linear river features, buffer each river by 50 times the width of the river to determine a proposed riparian boundary.
                     </li>
                     <li>Given areas representing countries, buffer each country by 200 nautical miles to determine the maritime boundary.  
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
+        <div id="TraceProximityEventsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Trace Proximity Events</h2></td>
+                    <td>
+                    <img src="./images/GUID-AE2A55D7-B5FB-48EC-8BCB-1B38CCFB61D2-web.png" class="titleImage" alt="Trace Proximity Events">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool analyzes time-enabled point features representing moving entities. The task will follow entities of interest in space (location) and time to see which other entities the entities of interest have interacted with. The trace will continue from entity to entity to a configurable value of maximum degrees of separation from the original entity of interest.
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>Suppose an organization monitors company-issued devices carried by workers. The company is interested in determining which employees were near an individual known to have COVID-19. Using the point layer representing device locations and time, the company can identify devices that have been within 6 meters and 5 minutes of the contagious person and other possibly contagious employees.
+                    </li>
+                    <li>An NGO is monitoring salmon populations using GPS and is interested in tracking the spread of salmon lice between escaped farmed salmon and wild populations. Some GPS-tagged farmed salmon were tracked to see if they come in close proximity with tagged wild populations, and how those wild populations may further spread the disease.
                     </li>
                 </ul>
                 
@@ -692,7 +687,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
+            <p>This tool appends features to an existing hosted layer in your contents in  ArcGIS Enterprise. </p>
             <p>The following are examples:
                 <ul>
                     <li>Update your 2018_Sales feature layer each month as your reports become available.
@@ -717,10 +712,10 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>This tool calculates values for a new or existing field and creates a layer in your contents in  ArcGIS Enterprise. </p>
             <p>The following are examples:
                 <ul>
-                    <li>Modify an existing field named  <i>total</i> to be the sum of revenue from fields <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i>.
+                    <li>Modify an existing field named  <i>total</i> to be the sum of revenue from the <i>total_2016</i>, <i>total_2017</i>, and <i>total_2018</i> fields.
                     </li>
                     <li>Create a field to categorize hazard levels based on field values such as  <i>windspeed</i> and <i>pollutant</i>.
                     </li>
@@ -740,7 +735,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Clips input features from defined areas of interest. The output result will be a subset  of input features. 
+            <p>This tool clips input features from defined areas of interest. The output result will be a subset  of input features. 
             </p>
             <p>The following are examples: 
                 <ul>
@@ -764,7 +759,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
+            <p>This tool copies an input feature layer or table to an  ArcGIS Data Store and creates a layer in your contents in  ArcGIS Enterprise. </p>
             <p>The following are examples:
                 <ul>
                     <li>Copy a collection of  <code>.csv</code> files in a big data file share to the spatiotemporal data store for visualization.
@@ -787,11 +782,11 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Merges area features that intersect or share a common field value to create contiguous or multipart features.
+            <p>This tool merges area features that intersect or share a common field value to create contiguous or multipart features.
             </p>
             <p>The following are examples:
                 <ul>
-                    <li>Create a single feature representing the state of Hawaii by dissolving the boundaries of Hawaiian islands.
+                    <li>Create a single feature representing the state of Hawaii by dissolving the boundaries of the Hawaiian islands.
                     </li>
                     <li>Combine similar study areas based on soil type to output a contiguous soil type dataset.
                     </li>
@@ -811,7 +806,7 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Combines two feature layers to create a single result layer. All fields from the merge layer will be included by default, or you can specify custom merge rules to define the resulting schema.  
+            <p>This tool combines two feature layers to create a single result layer. All fields from the merge layer will be included by default, or you can specify custom merge rules to define the resulting schema.  
             </p>
             <p>The following are examples:
                 <ul>
@@ -835,11 +830,11 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Combines two or more layers into one layer.  Overlay is used to answer one of the most basic questions of geography; What is on top of what? 
+            <p>This tool combines two or more layers into one layer.  Overlay is used to answer one of the most basic questions of geography: What is on top of what? 
             </p>
             <p>The following are examples:
                 <ul>
-                    <li>What parcels are within the 100-year floodplain? (Within is just another way of saying on top of.)
+                    <li>What parcels are within the 100-year floodplain? (Within is another way of saying on top of.)
                           
                     </li>
                     <li>What land use is on top of what soil type?
@@ -857,12 +852,39 @@ features.
         <hr/>
         <p>These tools help you explore the character of areas.
             <ul>
-                <li> <b>Enrich From Multi-Variable Grid</b> joins attributes from a multi-variable grid layer to a point layer.
+                <li> <b>Calculate Motion Statistics</b> calculates motion statistics and measurements  used to enrich your track datasets.
+                </li>
+                <li> <b>Enrich From Multi-Variable Grid</b> joins attributes from a multivariable grid layer to a point layer.
                 </li>
             </ul>
             
         </p>
     </div>
+        <div id="CalculateMotionStatisticsTool" class="largesize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Calculate Motion Statistics</h2></td>
+                    <td>
+                    <img src="./images/GUID-002C76BB-C004-4701-B71C-73604B47CE46-web.png" class="titleImage" alt="Calculate Motion Statistics">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>This tool calculates groups of motion statistics and measurements for time-enabled points that represent tracks. 
+            </p>
+            <p>The following are examples:
+                <ul>
+                    <li>A city is monitoring snowplow operations and wants to better
+understand vehicle movement. The city wants to enrich its dataset with slope and speed statistics to determine where it can  improve snowplow coverage and maintain safety for higher-grade roads.
+                    </li>
+                    <li>A shipping company wants to understand where it is losing the most time while delivering, so it enriches its dataset with idle and duration statistics.
+                    </li>
+                </ul>
+                
+            </p>
+            <br/>
+        </div>
         <div id="EnrichFromMultiVariableGridTool" class="largesize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -874,7 +896,8 @@ features.
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Efficiently joins attributes from a multi-variable grid to a point layer, allowing you to quickly add a large and diverse collection of information to point data for use in further spatial analysis. 
+            <p>This tool
+efficiently joins attributes from a multivariable grid to a point layer, allowing you to quickly add a large and diverse collection of information to point data for use in further spatial analysis. 
             </p>
             <p>The following is an example:
                 <ul>

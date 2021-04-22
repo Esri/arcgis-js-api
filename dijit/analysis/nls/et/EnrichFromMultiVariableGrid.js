@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Valige rikastatavad punktobjektid",chooseMVgridLyrLabel:"Valige mitme muutujaga ruudustik, millest rikastatakse",chooseVariables:"Vali lisatavad muutujad",outputLayerName:"Rikastatud ${inputFeatures} kihist ${gridLayer}",itemDescription:"Objektikiht on loodud lahenduse Rikastage mitme muutujaga ruudustikust abil objektide ${inputFeatures} jaoks.",itemTags:"Analüüsi tulemus, Rikastage mitme muutujaga ruudustikust, ${inputFeatures}, ${gridLayer}",itemSnippet:"Objektikiht on loodud lahenduse Rikastage mitme muutujaga ruudustikust abil"});

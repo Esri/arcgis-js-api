@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Afstandtoewijzing</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Illustratie tool afstandallocatie"></h2>
+        <hr/>
+    <p>Deze tool berekent de afstandstoewijzing voor elke cel tot de gegeven bronnen op basis van de lineaire afstand, kostenafstand, daadwerkelijke oppervlakte-afstand en verticale en horizontale kostenfactoren.
+    </p>
+    <p>Voorbeeldtoepassingen omvatten het beantwoorden van vragen zoals:
+        <ul>
+            <li>Identificeert de toegewezen gebieden die door de veldwerkers moeten worden bestreken.
+                
+
+            </li>
+            <li>Identificeert gebieden die zijn toegewezen aan leefgebieden voor lynxen.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Als  <b>Huidig extent van de kaart gebruiken</b> is aangevinkt, worden alleen die objecten in de invoerlaag die binnen het huidige extent van de kaart zichtbaar zijn, geanalyseerd. Als de optie niet is aangevinkt, worden alle objecten in de invoerlaag geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaartweergave bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Kies bronraster of objecten</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster of objectlaag die de bronnen definieert waarnaar de afstand wordt berekend.
+            </p>
+            <p>Als de input een ratser is dan moet het uit cellen bestaan die geldige waarden hebben (nul is een geldige waarde) voor de bronnen en aan de resterende cellen moet NoData worden toegewezen.
+            </p>
+            <p>Als de invoer een objectlaag is, kan het punt, lijn of polygoon zijn.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Bronveld (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Het veld dat wordt gebruikt om waardes toe te wijzen aan de bronlocaties. Het moet het type integer zijn.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Kies barrièreraster of objecten (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De dataset die de barri&egrave;res definieert.
+            </p>
+            <p>Voor een rasterlaag kan het invoertype een geheel getal of kommagetal zijn. Alle cellen met een waarde (inclusief nul) worden behandeld als een barri&egrave;re. Alle cellen die NoData zijn, worden niet behandeld als een barri&egrave;re.
+            </p>
+            <p>Voor een featureservice kan de invoer een punt, lijn of polygoon zijn.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Kies oppervlakraster (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster dat de hoogtewaardes op elke cellocatie definieert.
+            </p>
+            <p>De waardes worden gebruikt om de daadwerkelijke oppervlakteafstand te berekenen die wordt afgelegd bij het voorbijgaan tussen cellen.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Kies kostenraster (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster dat de impedantie of de kosten definieert om planimetrisch door elke cel te bewegen.
+            </p>
+            <p>De waarde op elke cellocatie vertegenwoordigt de kosten per eenheid afstand voor het verplaatsen door de cel. Elke cellocatiewaarde wordt vermenigvuldigd met de celresolutie, terwijl ook de diagonale beweging wordt gecompenseerd om de totale kosten van het passeren door de cel te verkrijgen.
+            </p>
+            <p>De waarden van het kostenraster kunnen gehele getallen of zwevendekommagetallen zijn, maar ze kunnen niet negatief of nul zijn (u kunt geen negatieve of nulkosten hebben).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Kies verticaal raster (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster dat de z-waarden voor elke cellocatie definieert.
+            </p>
+            <p>De waardes worden gebruikt om de helling te berekenen die gebruikt wordt om de verticale factor die oploopt bij het bewegen van de ene cel naar de andere te identificeren.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Verticale factor (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De  <b>Verticale factor</b> definieert de relatie tussen de verticale kostenfactor en de verticale relatieve bewegende hoek.
+            </p>
+            <p>Er zijn een aantal factoren met modifiers die u kunt selecteren die een gedefinieerde verticale factorgrafiek identificeren. De grafieken worden gebruikt om de verticale factor te identificeren die gebruikt wordt bij de berekening van de totale kosten om naar een naburige cel te bewegen.
+            </p>
+            <p>In de onderstaande beschrijvingen definieert de verticale factor (VF) de tegengekomen verticale uitdaging bij het bewegen van de ene cel naar de volgende, en de verticale relatieve bewegende hoek (%0MA) modifier identificeert de hellingshoek tussen de cel  <b>Van bron</b> en de cel <b>Naar bron</b>.
+                <ul>
+                    <li> <b>Binair</b>&mdash;Geeft aan dat als de VRBH groter is dan de lage snijhoek en kleiner dan de hoge snijhoek, de VF ingesteld wordt op de waarde die geassocieerd wordt met de nulfactor; anders is deze oneindig.
+                    </li>
+                    <li> <b>Lineair</b>&mdash;Geeft aan dat de VF een lineaire functie is van de VRBH.
+                    </li>
+                    <li> <b>Omgekeerd lineair</b>&mdash;Geeft aan dat de VF een omgekeerde lineaire functie is van de VRBH.
+                    </li>
+                    <li> <b>Symmetrisch lineair</b>&mdash;De VF is een lineaire functie van de VRBH in ofwel de negatieve of positieve kant van de VRBH, respectievelijk, en de twee lineaire functies zijn symmetrisch wat betreft de VF (y)-as.
+                    </li>
+                    <li> <b>Symmetrisch omgekeerd lineair</b>&mdash;De VF is een omgekeerde lineaire functie van de VRBH in ofwel de negatieve of positieve kant van de VRBH, respectievelijk, en de twee lineaire functies zijn symmetrisch wat betreft de VF (y)-as.
+                    </li>
+                    <li> <b>Cos</b>&mdash;De VF is de cosinusgebaseerde functie van de VRBH.
+                    </li>
+                    <li> <b>Sec</b>&mdash;De VF is de snij-gebaseerde functie van de VRBH.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;De VF is de cosinusgebaseerde functie van de VRBH is als de VRBH negatief is, en de snij-gebaseerde functie van de VRBH als de VRBH niet negatief is.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;De VF is de snij-gebaseerde functie van de VRBH is als de VRBH negatief is, en de cosinusgebaseerde functie van de VRBH als de VRBH niet negatief is.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De modifiers voor de verticale parameters zijn als volgt:
+                <ul>
+                    <li> <b>Nulfactor</b>&mdash;De verticale factor gebruikt wordt als de VRBH nul is. Deze factor positioneert de y-onderschepping van de gespecificeerde functie. De nulfactor is per definitie niet toepasbaar op de trigonometrische verticale functies (Cos, Sec, Cos-Sec of Sec-Cos). De y-onderschepping wordt gedefinieerd door deze functies.
+                    </li>
+                    <li> <b>Lage snijhoek</b>&mdash;De VRBH-hoek waarbuiten de VF ingesteld wordt op oneindig.
+                    </li>
+                    <li> <b>Hoge snijhoek</b>&mdash;De VRBH-hoek waarbuiten de VF ingesteld wordt op oneindig.
+                    </li>
+                    <li> <b>Helling</b>&mdash;De helling van de rechte lijn gebruikt met de <b>Lineaire</b> en <b>Omgekeerde lineaire</b> parameters. De helling is gespecificeerd als een fractie van &lsquo;rise over run&rsquo; (bijvoorbeeld, 45 procent helling is 1/45, wat ingevoerd wordt als 0.02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Horizontaal raster kiezen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster dat de horizontale richting op elke cel definieert.
+            </p>
+            <p>De waardes op het raster moeten geheel getal zijn tussen de 0 en 360, waarbij 0 graden het noorden is, of naar de bovenkant van het scherm toe, en naarmate zo hoger worden, wordt er met de klok meegedraaid. Vlakke gebieden moeten een waarde van -1 krijgen. De waarden op elke locatie worden gebruikt in combinatie met de  <b>horizontale factor</b> om de gemaakte kosten te bepalen bij het bewegen van een cel naar zijn buren.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontale factor (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De  <b>Horizontale factor</b> definieert de relatie tussen de horizontale kostenfactor en de horizontale relatieve bewegende hoek (HRBH).
+            </p>
+            <p>Er zijn een aantal factoren met modifiers die u kunt selecteren die een gedefinieerde horizontale factorgrafiek identificeren. De grafieken worden gebruikt om de horizontale factor te identificeren die gebruikt wordt bij de berekening van de totale kosten om naar een naburige cel te bewegen.
+            </p>
+            <p>In de onderstaande beschrijvingen definieert horizontale factor (HF) de tegengekomen horizontale uitdaging bij het bewegen van de ene cel naar de volgende en horizontale relatieve bewegende hoek (HRBH) identificeert de hoek tussen de horizontale richting van een cel en de bewegingsrichting.
+            </p>
+            <p>De definities en parameters van deze HF zijn als volgt:
+                <ul>
+                    <li> <b>Binair</b>&mdash;Geeft aan dat als de HRBH minder is dan de snijhoek, de HF ingesteld wordt op de waarde die geassocieerd wordt met de nulfactor; anders is deze oneindig.
+                        
+
+                    </li>
+                    <li> <b>Voorwaarts</b>&mdash;Alleen voorwaartse beweging is toegestaan. De HRBH moet groter of gelijk zijn aan 0 en minder dan 90 graden (0 &lt;= HRBH &lt; 90). Als de HRBH groter is dan 0 en minder dan 45 graden, wordt de HF voor de cel ingesteld op de waarde die geassocieerd wordt met de nulfactor. Als de HRBH groter of gelijk is aan 45 graden, wordt de zijwaarde modifier waarde gebruikt. De HF die voor een HRBH-waarde gelijk is aan of groter is dan 90 graden, wordt ingesteld op oneindig.
+                    </li>
+                    <li> <b>Lineair</b>&mdash;Specificeert dat de HF een lineaire functie is van de HRBH.
+                        
+
+                    </li>
+                    <li> <b>Omgekeerd lineair</b>&mdash;Specificeert dat de HF een omgekeerde lineaire functie is van de HRBH.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>De modifiers voor de horizontale trefwoorden zijn als volgt:
+                <ul>
+                    <li> <b>Nulfactor</b>&mdash;De horizontale factor gebruikt als de HRBH 0 is. Deze factor positioneert de y-onderschepping voor elk van de horizontale factorfuncties.
+                        
+
+                    </li>
+                    <li> <b>Snijhoek</b>&mdash;De HRBH-hoek waarbuiten de HF ingesteld wordt op oneindig.
+                        
+
+                    </li>
+                    <li> <b>Helling</b>&mdash;De helling van de rechte lijn gebruikt met de <b>Lineaire</b> en <b>Omgekeerd lineaire</b> horizontale factor trefwoorden. De helling is gespecificeerd als een fractie van &lsquo;rise over run&rsquo; (bijvoorbeeld, 45 procent helling is 1/45, wat ingevoerd wordt als 0.02222).
+                        
+
+                    </li>
+                    <li> <b>Zijwaarde</b>&mdash;Stelt de HF vast wanneer de HRMA groter of gelijk is aan 45 graden en kleiner dan 90 graden wanneer het <b>Voorwaarts</b> horizontale factor trefwoord gespecificeerd is.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Initiële accumulatie</h2></div>
+        <hr/>
+        <div>
+            <p>De initi&euml;le accumulatieve kosten om de kostenberekening te starten.
+            </p>
+            <p>Dit zorgt voor de specificatie van de vaste kosten die verbonden zijn met een bron. In plaats te beginnen met kosten van nul, begint het kostenalgoritme met de waarde ingesteld door  <b>Initi&euml;le accumulatie</b>.
+            </p>
+            <p>De waarde moet nul of hoger zijn. De standaardwaarde is 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximale accumulatie</h2></div>
+        <hr/>
+        <div>
+            <p>De maximale accumulatie voor de reiziger voor een bron.
+            </p>
+            <p>De kostenberekeningen gaan door voor elke bron totdat de gespecificeerde accumulatie is bereikt.
+            </p>
+            <p>De waardes moeten groter zijn dan nul. De standaardaccumulatie is tot de rand van het outputraster.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kostenvermenigvuldiging</h2></div>
+        <hr/>
+        <div>
+            <p>Een multiplier om op de kostenwaardes toe te passen.
+            </p>
+            <p>Deze parameter zorgt voor controle over de reismethode of de omvang bij de bron. Hoe groter de multiplier, hoe groter de kosten om door elke cel te bewegen.
+            </p>
+            <p>De waardes moeten groter zijn dan nul. De standaardwaarde is 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Reisrichting</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de richting van de reiziger bij het toepassen van horizontale en verticale factoren.
+            </p>
+            <p> <b>Van de bron</b>&mdash;De horizontale factor en verticale factor worden toegepast aan het begin van de inputbron en gaan naar de niet-broncellen. Dit is de standaardinstelling.
+            </p>
+            <p> <b>Naar de bron</b>&mdash;De horizontale factor en verticale factor worden toegepast aan het begin van elke niet-broncel en keert terug naar de invoerbron.
+            </p>
+            <p>Geef het trefwoord  <b>Van bron</b> of <b>Naar bron</b> op dat op alle bronnen zal worden toegepast, of specificeer een veld in het Bronraster die de trefwoorden bevat om de reisrichting voor elke bron te identificeren. Dit veld moet de string <code>VAN_BRON</code> of <code>NAAR_BRON</code> bevatten.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Afstandmethode (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of de afstand wordt berekend met behulp van een vlakke (vlakke aarde) of een geodetische (ellipsvormige) methode.
+            </p>
+            <ul>
+                <li> <b>Planair</b>&mdash;De afstandsberekening wordt uitgevoerd op een geprojecteerd vlak met behulp van een 2D Cartesiaans co&ouml;rdinatensysteem. Dit is de standaardmethode.
+                    
+
+                </li>
+                <li> <b>Geodetisch</b>&mdash;De afstandsberekening wordt uitgevoerd op de ellipso&iuml;de. Daarom veranderen de resultaten niet, ongeacht de invoer- of uitvoerprojectie.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Resultaat afstand allocatie rasternaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Resultaat afstand accumulatie rasternaam</h2></div>
+        <hr/>
+        <div>
+            <p>Het accumulatieraster van de afstand bevat de accumulatieve afstand voor elke cel van of naar de bron met de minste kosten.
+            </p>
+            <p>Het outputraster is van het type float.
+            </p>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Resultaat naam raster terugweg (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Het raster terugweg bevat berekende richtingen in graden. De richting identificeert de volgende cel langs de optimale weg terug naar de minst geaccumuleerde kostenbron en vermijdt tegelijkertijd barri&egrave;res.
+            </p>
+            <p>Het bereik van de waarden loopt van 0 graden tot 360 graden, met 0 gereserveerd voor de broncellen. Oost (rechts) is 90 en de waarden lopen rechtsom (180 is zuid, 270 is west en 360 is noord).
+            </p>
+            <p>Het outputraster is van het type float.
+            </p>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt. U dient een naam in te vullen die nog niet in <b>Mijn Content</b> bestaat.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Resultaat bron richting raster naam (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Het raster bron richting identificeert de richting van de minst geaccumuleerde kostenbron als een azimuth in graden.
+            </p>
+            <p>Het bereik van de waarden loopt van 0 graden tot 360 graden, met 0 gereserveerd voor de broncellen. Oost (rechts) is 90 en de waarden lopen rechtsom (180 is zuid, 270 is west en 360 is noord).
+            </p>
+            <p>Het outputraster is van het type float.
+            </p>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt. U dient een naam in te vullen die nog niet in <b>Mijn Content</b> bestaat.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Resultaat bron locatie raster naam (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Het raster bron locatie is een multiband-uitvoer. De eerste band bevat een rij-index en de tweede band bevat een kolomindex. Deze indexen identificeren de locatie van de broncel die de minst geaccumuleerde kostenafstand is.
+            </p>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt. U dient een naam in te vullen die nog niet in <b>Mijn Content</b> bestaat.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

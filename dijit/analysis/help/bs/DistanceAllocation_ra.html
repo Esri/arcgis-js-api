@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Raspodjela udaljenosti</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Raspodjela udaljenosti ilustracija alata"></h2>
+        <hr/>
+    <p>Ovaj alat izračunava raspodjelu udaljenosti za svaku ćeliju do ponuđenih izvora na temelju ravne udaljenosti, tro&scaron;kovne udaljenosti, stvarne povr&scaron;inske udaljenosti i vertikalnih i horizontalnih faktora.
+    </p>
+    <p>Primjeri primjena uključuju odgovaranje na sljedeća pitanja:
+        <ul>
+            <li>Utvrđuje dodijeljena područja za čija su pokrivanja terenski radnici odgovorni.
+                
+
+            </li>
+            <li>Utvrđuje područja koja su dodijeljena mjestima stani&scaron;ta za crvene risove.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se samo geoobjekti u ulaznom sloju koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se svi geoobjekti u ulaznom sloju, čak i ako se nalaze izvan trenutačnog prikaza obuhvata karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Odaberite izvorni raster ili geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterski sloj ili sloj geoobjekta koji identificira izvore prema kojima će se izračunati udaljenost.
+            </p>
+            <p>Ako je unos raster, mora se sastojati od ćelija koje imaju važeće vrijednosti (nula je valjana vrijednost) za izvore, a preostalim ćelijama mora biti dodijeljen NoData.
+            </p>
+            <p>Za uslugu geoobjekta unos može biti točka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Izvorno polje (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Polje koje se koristi za dodjeljivanje vrijednosti izvornim lokacijama. To mora biti vrsta cijelog broja.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Odaberite raster barijere ili geoobjekte (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji definira ograničenja.
+            </p>
+            <p>Za rasterski sloj vrsta unosa može biti cijeli broj ili broj s pomičnim zarezom. Sve ćelije koje imaju vrijednost (uključujući nulu) tretirat će se kao ograničenje. Sve ćelije koje su NemaPodataka neće se tretirati kao ograničenje.
+            </p>
+            <p>Za uslugu geoobjekta unos može biti točka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Odaberite površinski raster (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji definira vrijednosti visine terena na svakoj lokaciji ćelije.
+            </p>
+            <p>Vrijednosti se upotrebljavaju za izračunavanje stvarne udaljenosti povr&scaron;ine obuhvaćene prilikom prolaska između ćelija.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Odaberite troškovni raster (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji određuje impendanciju ili tro&scaron;kove za planimetrijsko kretanje kroz svaku ćeliju.
+            </p>
+            <p>Vrijednost na svakoj lokaciji ćelije predstavlja tro&scaron;kove po jedinici za udaljenost kretanja do ćelija. Svaka vrijednost lokacije ćelije množi se s razlučivosti ćelije pri čemu se također kompenzira za dijagonalno kretanje kako bi se do&scaron;lo do ukupnog tro&scaron;ka prolaska kroz ćeliju.
+            </p>
+            <p>Vrijednosti rastera tro&scaron;kova mogu biti cijeli brojevi ili plutajuća točka, ali ne mogu biti negativne ili nula (tro&scaron;ak ne može biti negativan ili nula).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Odaberite okomiti raster (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji definira z-vrijednosti za svaku lokaciju ćelije.
+            </p>
+            <p>Ta se vrijednost upotrebljava za izračunavanje nagiba koji se upotrebljava za identificiranje okomitog faktora koji se javio prilikom prebacivanja iz jedne ćelije u drugu.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Okomiti faktor (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertiklani facktor</b> definira odnos između faktora vertikalne cijene i vertikalnog relativnog kuta kretanja.
+            </p>
+            <p>Postoji nekoliko faktora koji modificiraju &scaron;to možete odabrati za identifikaciju grafikona definiranog okomitog faktora. Grafikoni se upotrebljavaju za identifikaciju vertikalnog faktora koji se upotrebljava pri izračunavanju ukupnog tro&scaron;ka za prebacivanje u susjednu ćeliju.
+            </p>
+            <p>U donjim opisima, vertikalni faktor (VF) definira vertikalnu pote&scaron;koću koja je pojavlja pri prelasku iz jedne ćelije u drugu, a vertikalni relativni kut kretanja (VRMA) modifikator identificira kut nagiba između  <b>Od izvorne</b> ćelije i <b>Do izvorne</b> ćelije.
+                <ul>
+                    <li> <b>Binarni</b>&mdash;Ako je VRMA veći od kuta malog reza i manji od kuta velikog reza, onda je VF postavljen na vrijednost povezanu s faktorom nula; u suprotnom je beskonačno.
+                    </li>
+                    <li> <b>Linearno</b>&mdash;Naznačuje da je VF linearna funkcija VRMA-a.
+                    </li>
+                    <li> <b>Obrnuto linearno</b>&mdash;Naznačuje da je VF obrnuta linearna funkcija VRMA-a.
+                    </li>
+                    <li> <b>Simetrično linearno</b>&mdash;Naznačuje da je VF linearna funkcija VRMA-a na negativnoj ili pozitivnoj strani VRMA-a, odnosno, da su dvije linearne funkcije simetrične u odnosu na VF (y) os.
+                    </li>
+                    <li> <b>Simetrično obrnuto linearno</b>&mdash;Naznačuje da je VF obrnuta linearna funkcija VRMA-a na negativnoj ili pozitivnoj strani VRMA-a, odnosno, da su dvije linearne funkcije simetrične u odnosu na VF (y) os.
+                    </li>
+                    <li> <b>Cos</b>&mdash;Identificira VF kao funkciju na temelju kosinusa VRMA-a.
+                    </li>
+                    <li> <b>Sec</b>&mdash;Identificira VF kao funkciju na temelju sekanta VRMA-a.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;Specificira da je VF funkcija na temelju kosinusa VRMA-a kada je VRMA negativan i funkcija na temelju sekanta VRMA-a kada VRMA nije negativan.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;Specificira da je VF funkcija na temelju sekanta VRMA-a kada je VRMA negativan i funkcija na temelju kosinusa VRMA-a kada VRMA nije negativan.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatori okomitih parametra su sljedeći:
+                <ul>
+                    <li> <b>Nulti faktor</b>&mdash;Uspostavlja vertikalni faktor koji se upotrebljava kada je VRMA nula. Taj faktor pozicionira y-presijecanje specificiranje funkcije. Prema definiciji faktor nula nije primjenjiv ni na jednu trigonometrijsku vertikalnu funkciju (COS, SEC, COS-SEC ili SEC-COS). y-presijecanje definirano je ovim funkcijama.
+                    </li>
+                    <li> <b>Kut malog reza</b>&mdash;Definira kut VRMA-a ispod kojeg će VF biti postavljen na beskonačnost.
+                    </li>
+                    <li> <b>Kut velikog reza</b>&mdash;Definira kut VRMA-a ispod kojeg će VF biti postavljen na beskonačnost.
+                    </li>
+                    <li> <b>Nagib</b>&mdash;Uspostavlja nagib ravne linije koja se koristi s <b>Linearnim</b> i <b>obrnuto linearnim</b> parametrima. Nagib je specificiran kao frakcija uzdizanja iznad pokretanja (na primjer, nagib od 45 posto je 1/45, a to je unos kao 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Odaberite vodoravni raster (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji definira horizontalni smjer u svakoj ćeliji.
+            </p>
+            <p>Vrijednost na rasteru mora biti cijeli broj u rasponu od 0 do 360; time da 0 predstavlja sjever ili smjer pri vrhu zaslona, i povećava se u smjeru kazaljke na satu. Ravnim područjima trebala bi se dodijeliti vrijednost -1. Vrijednosti na svakoj lokaciji bit će kori&scaron;tene zajedno s  <b>Vodoravni faktor</b> za određivanje vodoravnih tro&scaron;kova nastalih prilikom prelaska s željie na njezine susjede.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Vodoravni faktor (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vodoravni faktor</b> definira odnos između faktora vodoravne cijene i vodoravnog relativnog kutakretanja.
+            </p>
+            <p>Postoji nekoliko faktora koji modificiraju &scaron;to možete odabrati za identifikaciju grafikona definiranog vodoravnog faktora. Grafikoni se upotrebljavaju za identifikaciju vodoravnog faktora koji se upotrebljava pri izračunavanju ukupnog tro&scaron;ka za prebacivanje u susjednu ćeliju.
+            </p>
+            <p>U donjim opisima, vodoravni faktor (VF) definira vodoravnu pote&scaron;koću koja se pojavlja pri prelasku iz jedne ćelije u drugu, a vodoravni relativni kut kretanja (VRMA) modifikator identificira kut nagiba između vodoravnog smjera ćelije i smjera kretanja.
+            </p>
+            <p>Definicije i parametri ovih HF su kako slijedi:
+                <ul>
+                    <li> <b>Binarni</b>&mdash;Označava da u slučaju da je HRMA manji od kuta reza, HF je postavljen na vrijednost povezanu s faktorom nula; u suprotnom je beskonačno.
+                        
+
+                    </li>
+                    <li> <b>Naprijed</b>&mdash;Uspostavlja da je samo kretanje prema naprijed dopu&scaron;teno. HRMA mora biti veći od ili jednako 0 i manji od 90 stupnjeva (0 &lt;= HRMA &lt; 90). Ako je HRMA postavljen na vi&scaron;e od 0 i manje od 45 stupnjeva, HF za ćelije postavljen je na vrijednost povezanu s nultim faktorom. Ako je HRMA vi&scaron;e od ili jednako 45 stupnjeva, upotrebljava se vrijednost modifikatora vrijednosti strane. HF za bilo koju HRMA vrijednost jednak ili veći od 90 stupnjeva postavljen je na beskonačno.
+                    </li>
+                    <li> <b>Linearno</b>&mdash;Naznačuje da je HF linearna funkcija HRMA-a.
+                        
+
+                    </li>
+                    <li> <b>Obrnuto linearno</b>&mdash;Naznačuje da je HF obrnuta linearna funkcija HRMA-a.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatori vodoravnih ključnih riječi su sljedeći:
+                <ul>
+                    <li> <b>Nulti faktor</b>&mdash;Uspostavlja vodoravni faktor koji se upotrebljava kada je HRMA-a 0. Taj faktor pozicionira y-presijecanje za bilo koju funkciju horizontalnog faktora.
+                        
+
+                    </li>
+                    <li> <b>Kut reza</b>&mdash;Definira kut HRMA-a nakon kojeg će HF biti postavljen na beskonačnost.
+                        
+
+                    </li>
+                    <li> <b>Nagib</b>&mdash;Uspostavlja nagib ravne linije koja se koristi s <b>Linearnim</b> i <b>obrnuto linearnim</b> ključnim riječima vodoravnog faktora. Nagib je specificiran kao frakcija uzdizanja iznad pokretanja (na primjer, nagib od 45 posto je 1/45, a to je unos kao 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Sporedna vrijednost</b>&mdash;Uspostavlja HF kada je HRMA veća ili jednaka kao 45 stupnjeva i manja od 90 stupnjeva kada je <b>Naprijed</b> ključna riječ vodoravnog faktora specifirana.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Početna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Početni akumulativni tro&scaron;ak za početak izračunavanja tro&scaron;kova.
+            </p>
+            <p>Ovaj parametar omogućava specifikaciju fiksnih tro&scaron;kova povezanih s izvorom. Umjesto pokretanja od tro&scaron;ka od nula, algoritam tro&scaron;ka zapoćet će s vrijedno&scaron;ću postavljenom od strane  <b>Početna akumulacija</b>.
+            </p>
+            <p>Vrijednosti moraju biti nula ili veći. Zadana je vrijednost 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimalna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalni akumulirani tro&scaron;ak putnika za izvor.
+            </p>
+            <p>Izračuni tro&scaron;ka nastavljaju se za svaki izvor dok se ne dosegne specificirania akumulacija.
+            </p>
+            <p>Vrijednosti moraju biti veća od nule. Zadani kapacitet je do ruba izlaznog rastera.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Množitelj troškova</h2></div>
+        <hr/>
+        <div>
+            <p>Množitelj koji se primjenjuje na vrijednosti tro&scaron;ka.
+            </p>
+            <p>Ovaj parametar omogućuje kontrolu načina putovanja ili veličinu na izvoru. &Scaron;to je veći multiplikator, veći je tro&scaron;ak koji treba prebaciti kroz svaku ćeliju.
+            </p>
+            <p>Vrijednosti moraju biti veća od nule. Zadana je vrijednost 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Smjer putovanja</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje smjer putnika kada se primjenjuju vodoravni i okomiti faktori.
+            </p>
+            <p> <b>Iz izvora</b>&mdash;Vodoravni faktor i okomiti faktor će se primijeniti počev&scaron;i od ulaznog izvora i putovat će do ćelija koje nisu izvorne. To je zadano.
+            </p>
+            <p> <b>Do izvora</b>&mdash;Vodoravni faktor i okomiti faktor će se primijeniti počev&scaron;i od svake ćelije koja nije izvorna i putovat će natrag u ulazni izvor.
+            </p>
+            <p>Navedite  <b>Od izvora</b> ili <b>Do izvora</b> ključnu riječ, koja će biti primijenjena na sve izvore, ili navedite polje unutar izvornih podataka koje sadrži ključne riječi za prepoznavanje smjer putovanja za svaki izvor. To polje mora sadržavati nis <code>OD_IZVORA</code> ili <code>DO_IZVORA</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda udaljenosti (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje hoće li se računati udaljenost uporebom planarne (ravno tlo) ili geodezijske (elipsoid) metode.
+            </p>
+            <ul>
+                <li> <b>Planarno</b>&mdash;Izračun udaljenosti će se izvr&scaron;iti na projiciranoj ravnini pomoću 2D kartezijanskog koordinatnog sustava. To je zadana metoda.
+                    
+
+                </li>
+                <li> <b>Geodetska</b>&mdash;Izračun udaljenosti će se izvesti na elipsoidu. Stoga bez obzira na projekciju unosa ili izlaza, rezultati se neće mijenjati.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Naziv rezultata dodjele udaljenosti rastera</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Naziv rezultata akumulacije udaljenosti rastera</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacije udaljenosti sadrži akumulativnu udaljenost za svaku ćeliju od ili do izvora s najmanjom cijenom.
+            </p>
+            <p>Izlazni raster je vrsta broja s pomičnim zarezom.
+            </p>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Naziv sloja povratnog rezultata smjera (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster stražnjeg smjera sadrži izračunati smjer u stupnjevima. Smjer identificira sljedeću ćeliju na najkraćem putu natrag do najbližeg izvora, izbjegavajući barijere.
+            </p>
+            <p>Raspon vrijednosti iznosi od 0 stupnjeva do 360 stupnjeva, s tim da je 0 rezervirano za izvorne ćelije. Prema istoku (desno) je 90, a vrijednosti se povećavaju u smjeru kazaljke na satu (180 je južno, 270 je zapadno, a 360 je sjeverno).
+            </p>
+            <p>Izlazni raster je vrsta broja s pomičnim zarezom.
+            </p>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b>. Morate navesti naziv koji već ne postoji u stavci <b>Moj sadržaj</b>.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Naziv rastera izvornog smjera rezultata (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster smjera izvora identificira smjer najmanje akumulirane ćelije izvora tro&scaron;kova kao azimut u stupnjevima.
+            </p>
+            <p>Raspon vrijednosti iznosi od 0 stupnjeva do 360 stupnjeva, s tim da je 0 rezervirano za izvorne ćelije. Prema istoku (desno) je 90, a vrijednosti se povećavaju u smjeru kazaljke na satu (180 je južno, 270 je zapadno, a 360 je sjeverno).
+            </p>
+            <p>Izlazni raster je vrsta broja s pomičnim zarezom.
+            </p>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b>. Morate navesti naziv koji već ne postoji u stavci <b>Moj sadržaj</b>.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Naziv rastera izvornog smjera rezultata (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Izvorni raster lokacije je vi&scaron;epojasni izlaz. Prvi pojas sadrži indeks redaka, a drugi pojas sadrži indeks stupaca. Ovi indeksi identificiraju mjesto izvorne ćelije koja je najmanje akumulirana udaljenost tro&scaron;kova.
+            </p>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b>. Morate navesti naziv koji već ne postoji u stavci <b>Moj sadržaj</b>.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

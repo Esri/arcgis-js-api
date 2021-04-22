@@ -52,8 +52,6 @@
         <div><h2>Escolher camada de imagens multidimensionais para analisar tendência</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>A camada de imagens de entrada de um raster multidimensional que ser&aacute; agregado.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Escolha o tipo de linha para ajustar os valores de variáveis ao longo de uma dimensão</h2></div>
         <hr/>
         <div>
-            <p>Especifica o tipo de linha a ser utilizado para ajustar os valores de pixels ao longo de uma dimens&atilde;o. 
+            <p>Especifica o tipo de linha a ser utilizado para ajustar os valores de pixels ao longo de uma dimens&atilde;o.
                 <ul>
                     <li> <b>Linear</b>&mdash;Os valores de pixel da vari&aacute;vel ser&atilde;o ajustados ao longo de uma linha de tend&ecirc;ncia linear. Este &eacute; o padr&atilde;o.
                     </li>
                     <li> <b>Polinomial</b>&mdash;Os valores de pixel da vari&aacute;vel ser&atilde;o ajustados ao longo de uma segunda linha de tend&ecirc;ncia de ordem polinomial.
                     </li>
                     <li> <b>Harm&ocirc;nica</b>&mdash;Os valores de pixel da vari&aacute;vel ser&atilde;o ajustados ao longo de uma linha de tend&ecirc;ncia harm&ocirc;nica.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Os valores de pixel da vari&aacute;vel ser&atilde;o avaliados usando o teste de tend&ecirc;ncia de Mann-Kendall.
+                    </li>
+                    <li> <b>Sazonal-Kendall</b>&mdash;Os valores de pixel da vari&aacute;vel ser&atilde;o avaliados usando o teste de tend&ecirc;ncia Sazonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Especificar a unidade de tempo para a duração de um período sazonal</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica a unidade de tempo a ser usada para a dura&ccedil;&atilde;o de um per&iacute;odo sazonal ao realizar o teste Sazonal-Kendall.
+                <ul>
+                    <li> <b>Dias</b>&mdash;A unidade para a dura&ccedil;&atilde;o do per&iacute;odo sazonal &eacute; dias. Este &eacute; o padr&atilde;o.
+                    </li>
+                    <li> <b>Meses</b>&mdash;A unidade para a dura&ccedil;&atilde;o do per&iacute;odo sazonal &eacute; meses.
                     </li>
                 </ul>
                 
@@ -148,7 +165,7 @@
         <div><h2>Escolha a estatística de modelo para ser incluído no raster de tendência</h2></div>
         <hr/>
         <div>
-            <p>Esta ferramenta fornece tr&ecirc;s tipos de estat&iacute;stica de linha de ajuste de tend&ecirc;ncia : o  erro quadr&aacute;tico m&eacute;dio (RMSE), a estat&iacute;stica de bom ajuste quadrado de R (R quadrado), e a estat&iacute;stica de valor p do coeficiente de declividade (Valor p do coeficiente de declividade). Cada estat&iacute;stica tem uma caixa de sele&ccedil;&atilde;o correspondente para especificar se ela ser&aacute; calculada e inclu&iacute;da como uma das bandas m&uacute;ltiplas no raster de tend&ecirc;ncia de sa&iacute;da.
+            <p>Esta ferramenta fornece tr&ecirc;s tipos de estat&iacute;stica de linha de ajuste de tend&ecirc;ncia : o erro quadr&aacute;tico m&eacute;dio (RMSE), a estat&iacute;stica de bom ajuste quadrado de R (R quadrado), e a estat&iacute;stica de valor p do coeficiente de declividade (Valor p do coeficiente de declividade). Cada estat&iacute;stica tem uma caixa de sele&ccedil;&atilde;o correspondente para especificar se ela ser&aacute; calculada e inclu&iacute;da como uma das bandas m&uacute;ltiplas no raster de tend&ecirc;ncia de sa&iacute;da.
                 <ul>
                     <li>
                         <p>RMSE
@@ -162,7 +179,7 @@
                         
                     </li>
                     <li>
-                        <p>R-quadrada
+                        <p>R-quadrado
                         </p>
                         <ul>
                             <li>Marcado&mdash;O valor de R quadrado ser&aacute; calculado e inclu&iacute;do como um das bandas m&uacute;ltiplas na raster de tend&ecirc;ncia de sa&iacute;da.
@@ -207,6 +224,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

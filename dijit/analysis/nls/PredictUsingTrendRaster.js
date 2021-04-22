@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({root:{toolDefine:"Predict Using Trend Raster",outputLayerName:"${layername}_predict",variablesLabel:"Choose variable(s) that will be predicted",variablesListLabel:"Variables [Dimension Info] (Description)",dimensionDefinitionLabel:"Choose the method used to provide prediction dimension values",dimensionValuesLabel:"Specify dimension value(s) for prediction",dimensionIntervalLabel:"Specify dimension interval for prediction",intervalValueLabel:"Specify the number of steps between the start and end values",intervalUnitLabel:"Choose the unit that will be used for the time value interval",startLabel:"Start Value",endLabel:"End Value",byValueLabel:"By Value",byIntervalLabel:"By Interval",hours:"Hours",days:"Days",weeks:"Weeks",months:"Months",years:"Years",custom:"Custom",itemDescription:"Analysis Image Service generated from Predict Using Trend Raster",itemTags:"Raster Analysis Result, Predict Using Trend Raster, ${layername}",itemSnippet:"Analysis Image Service generated from Predict Using Trend Raster"},ar:0,bs:0,ca:0,cs:0,da:0,de:0,el:0,es:0,et:0,fi:0,fr:0,he:0,hi:0,hr:0,hu:0,id:0,it:0,ja:0,ko:0,lv:0,lt:0,nl:0,nb:0,pl:0,"pt-br":0,"pt-pt":0,ro:0,ru:0,sr:0,sv:0,th:0,tr:0,vi:0,"zh-cn":0,"zh-hk":0,"zh-tw":0});
+define({root:{toolDefine:"Predict Using Trend Raster",outputLayerName:"${layername}_predict",variablesLabel:"Choose variable(s) that will be predicted",variablesListLabel:"Variables [Dimension Info] (Description)",dimensionDefinitionLabel:"Choose the method used to provide prediction dimension values",dimensionValuesLabel:"Specify dimension value(s) for prediction",dimensionIntervalLabel:"Specify dimension interval for prediction",intervalValueLabel:"Specify the number of steps between the start and end values",intervalUnitLabel:"Choose the unit that will be used for the time value interval",startLabel:"Start Value",endLabel:"End Value",byValueLabel:"By Value",byIntervalLabel:"By Interval",hours:"Hours",days:"Days",weeks:"Weeks",months:"Months",years:"Years",custom:"Custom",itemDescription:"Analysis Image Service generated from Predict Using Trend Raster",itemTags:"Raster Analysis Result, Predict Using Trend Raster, ${layername}",itemSnippet:"Analysis Image Service generated from Predict Using Trend Raster"},ar:1,bs:1,ca:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,hr:1,hu:1,id:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sr:1,sk:1,sl:1,sv:1,th:1,tr:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1});

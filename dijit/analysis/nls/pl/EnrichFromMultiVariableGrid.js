@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Wybierz obiekty punktowe do wzbogacenia",chooseMVgridLyrLabel:"Wybierz siatkę wielu zmiennych, która zostanie użyta do wzbogacania",chooseVariables:"Wybierz zmienne do dodania",outputLayerName:"Wzbogacono obiekty wejściowe ${inputFeatures} na podstawie warstwy siatki ${gridLayer}",itemDescription:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Wzbogać na podstawie siatki wielu wartości dla obiektów wejściowych ${inputFeatures}.",itemTags:"Wynik analizy, Wzbogać na podstawie siatki wielu zmiennych, ${inputFeatures}, ${gridLayer}",itemSnippet:"Warstwa obiektowa wygenerowana na podstawie narzędzia Buduj siatkę wielu wartości."});

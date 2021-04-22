@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Collegamenti regionali ottimali</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Illustrazione strumenti di connessioni per le regioni ottimali"></h2>
+        <hr/>
+    <p>Questo strumento calcola la rete di connettivit&agrave; ottimale tra due o pi&ugrave; regioni di input.
+    </p>
+    <p>Di seguito sono riportate le applicazioni di esempio:
+        <ul>
+            <li>Modello di idoneit&agrave;: da un modello di idoneit&agrave;, sono stati identificati 10 migliori patch di habitat per linci rosse. Si desidera che le linci rosse siano in grado di spostarsi tra i patch attraverso la rete pi&ugrave; efficace di corridoi faunistici per mantenere la diversit&agrave; genetica all'interno della metapopolazione.
+                
+
+            </li>
+            <li>Raccolta di legname - In una raccolta di legname, si vuole creare la rete di strade di intasamento pi&ugrave; economica ed efficiente da cui estrarre il legname.
+                
+
+            </li>
+            <li>Mantenimento della pace - In uno spiegamento militare di mantenimento della pace, avete identificato cinque aree in cui posizionare le truppe e il personale. Si desidera sviluppare le vie di alimentazione collegate in modo ottimale tra le basi.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, verranno analizzate solo le posizioni nei layer di input visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate tutte le posizioni di entrambi i layer di input, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Scegliere un raster di regione o feature</h2></div>
+        <hr/>
+        <div>
+            <p>Le regioni di input da connettere alla rete ottimale.
+            </p>
+            <p>Se l'input regione &egrave; un raster, le regioni sono definite per gruppi di celle contigue (adiacenti) di uno stesso valore. Ogni regione deve essere numerata in modo univoco. Le celle che non fanno parte di alcuna regione devono essere NoData. Il tipo di raster deve essere un numero intero e i valori possono essere positivi o negativi.
+            </p>
+            <p>Se l'input regione &egrave; un feature, pu&ograve; essere in punti, linee o poligoni. Le regioni in poligoni non possono essere composte da poligoni multiparte.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Scegliere un raster di barriera o un feature (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il dataset che definisce le barriere.
+            </p>
+            <p>Per un raster, il tipo di input pu&ograve; essere intero o mobile. Ogni cella che dispone di un valore (incluso lo zero) sar&agrave; trattata come barriera. Ogni cella che sia un NoData non verr&agrave; trattata come una barriera.
+            </p>
+            <p>Per un feature, l'input pu&ograve; essere in punti, linee o poligoni.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Scegliere un raster di costo (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster che definisce l'impedenza o il costo dello spostamento planimetrico attraverso ciascuna cella.
+            </p>
+            <p>Il valore ad ogni posizione di cella rappresenta la distanza costo per unit&agrave; per lo spostamento attraverso di essa. Ogni valore di posizione di una cella viene moltiplicato per la risoluzione della cella, compensando al contempo il movimento diagonale per ottenere il costo totale dell'attraversamento della cella.
+            </p>
+            <p>I valori del raster di costo possono essere a numero intero o a virgola mobile, ma non possono essere negativi o zero (non &egrave; possibile disporre di un costo negativo o zero).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metodo di distanza (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se calcolare la distanza con un metodo planare (terra piatta) o geodetico (ellissoide).
+            </p>
+            <ul>
+                <li> <b>Planare</b>: Il calcolo della distanza verr&agrave; eseguito su un piano piatto proiettato utilizzando un sistema di coordinate cartesiane 2D. Questo &egrave; il metodo predefinito.
+                    
+
+                </li>
+                <li> <b>Geodesico</b>: Il calcolo della distanza verr&agrave; eseguito sull'ellissoide Pertanto, indipendentemente dalla proiezione di input o output, i risultati non cambiano.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Connessioni con le regioni (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i percorsi continueranno e si connetteranno con le regioni input.
+            </p>
+            <ul>
+                <li> <b>Genera connessioni</b>: i percorsi continueranno all'interno delle regioni input a connettersi ai percorsi che immettono una regione. Si tratta dell'impostazione predefinita.
+                    
+
+                </li>
+                <li> <b>No connessioni</b>: i percorsi si fermeranno ai bordi delle regioni input e non continueranno o si connetteranno con esse.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Risultato: layer di connettività ottimali hanno un nome di livello</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>Questo layer &egrave; un feature di linea di output che connette ogni regione di input.
+            </p>
+            <p>Ogni percorso (o linea) &egrave; numerato equamente, e campi aggiuntivi nelle informazioni specifiche archiviano una tabella dell'attributo sul percorso. Questi campi aggiuntivi sono i seguenti:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>-L'identificatore unico per il percorso
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>-La distanza accumulativa totale o il corso per il percorso
+                    
+
+                </li>
+                <li> <i>REGION1</i>-La prima regione che connette il percorso
+                    
+
+                </li>
+                <li> <i>REGION2</i>-L'altra regione che connette il percorso
+                    
+
+                </li>
+            </ul>
+            
+            <p>Dal momento che ogni percorso &egrave; rappresentato da una linea unica, ci saranno linee multiple in posizioni dove percorsi viaggiano sulla stessa strada.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Risultato delle connessioni vicine con il nome del layer (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>Questo layer &egrave; un feature linea di output che identifica tutti i percorso da ogni regione a ciascuna dei suoi pi&ugrave; vicini o meno costosi.
+            </p>
+            <p>Ogni percorso (o linea) &egrave; numerato equamente, e campi aggiuntivi nelle informazioni specifiche archiviano una tabella dell'attributo sul percorso. Questi campi aggiuntivi sono i seguenti:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>-L'identificatore unico per il percorso
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>-La distanza accumulativo totale o il costo per il percorso
+                    
+
+                </li>
+                <li> <i>REGION1</i>-La prima regione che connette il percorso
+                    
+
+                </li>
+                <li> <i>REGION2</i>-L'altra regione che connette il percorso
+                    
+
+                </li>
+            </ul>
+            
+            <p>Dal momento che ogni percorso &egrave; rappresentato da una linea unica, ci saranno linee multiple in posizioni dove percorsi viaggiano sulla stessa strada.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

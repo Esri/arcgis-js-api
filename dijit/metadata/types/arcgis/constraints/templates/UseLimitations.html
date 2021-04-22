@@ -1,0 +1,40 @@
+<div data-dojo-attach-point="containerNode">
+
+    <div data-dojo-type="esri/dijit/metadata/form/Element" data-dojo-props="target:'resConst',forInspire: true,label:'${i18nArcGIS.codelist.RS_UseLimitations}',
+        matchTopNode:[
+          {
+            qPath:'LegConsts/inspireAccessUseConditions',
+            qValue: null,
+            qMode: 'must'
+          }
+        ]">
+        <div data-dojo-type="esri/dijit/metadata/form/Element" data-dojo-props="target:'LegConsts',showHeader:false">
+    
+            <div data-dojo-type="esri/dijit/metadata/form/HiddenElement" data-dojo-props="target:'useConsts'">
+                <div data-dojo-type="esri/dijit/metadata/form/Element" data-dojo-props="target:'RestrictCd'">
+                    <div data-dojo-type="esri/dijit/metadata/form/Attribute" data-dojo-props="target:'value',value:'008'">
+                    </div>
+                </div>
+            </div>
+    
+            <div data-dojo-type="esri/dijit/metadata/form/Element"
+                data-dojo-props="target:'inspireAccessUseConditions',showHeader:false">
+                <div data-dojo-type="esri/dijit/metadata/form/Element"
+                    data-dojo-props="target:'ConditionsAccUseCd',showHeader:false">
+                    <div data-dojo-type="esri/dijit/metadata/form/Attribute"
+                        data-dojo-props="target:'value',showHeader:false,minOccurs:1">
+                        <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputSelectCode"
+                            data-dojo-props="codelistType:'RS_UseLimitations'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div data-dojo-type="esri/dijit/metadata/form/HiddenElement"
+                data-dojo-props="target:'othConsts',value:'${i18nArcGIS.constraints.legal.othConsts}'">
+            </div>
+    
+        </div>
+    </div>
+
+</div>

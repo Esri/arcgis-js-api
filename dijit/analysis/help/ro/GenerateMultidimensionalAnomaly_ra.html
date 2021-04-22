@@ -44,7 +44,7 @@
         <h2>Generarea Anomaliei Multidimensionale</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generarea Anomaliei Multidimensionale"></h2>
         <hr/>
-    <p>Generează un set de date de raster multidimensional prin combinarea variabilelor existente ale rasterului multidimensional de-a lungul unei dimensiuni.
+    <p>Calculează anomalia pentru fiecare &icirc;mpărțire dintr-un raster multidimensional existent pentru a genera un raster multidimensional noi.
     </p>
     <p>O anomalie este abaterea unei observații de la valoarea sa standard, medie sau mediană.
     </p>
@@ -59,7 +59,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Alegeți stratul tematic de imagistică pentru generarea unei anomalii</h2></div>
+        <div><h2>Alegeți stratul tematic de imagini multidimensionale pentru a genera anomalie</h2></div>
         <hr/>
         <div>
             <p>Stratul tematic de imagini de intrare al unui set de date raster multidimensional.
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Alegeți variabila (variabilele) pentru care vor fi generate anomalii</h2></div>
+        <div><h2>Alegeți variabilele pentru care vor fi generate anomaliile</h2></div>
         <hr/>
         <div>
             <p>Variabila sau variabilele pentru care vor fi calculate anomaliile. Dacă nu este specificată nicio variabilă, toate variabilele cu o dimensiune de timp vor fi analizate.
@@ -75,12 +75,12 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Alegeți metoda de generare a anomaliilor</h2></div>
+        <div><h2>Alegeți metoda de generare a anomaliei</h2></div>
         <hr/>
         <div>
-            <p>Specifică metoda care va fi folosită pentru a calcula anomalia. 
+            <p>Specifică metoda care va fi folosită pentru a calcula anomalia.
                 <ul>
-                    <li> <b>Diferența Față de Medie</b>&mdash;Va fi calculată diferența dintre valoarea unui pixel și media valorii acelui pixel &icirc;n &icirc;mpărțirile definite de interval. Aceasta este setarea implicită.
+                    <li> <b>Diferența Față de Medie</b>&mdash;Va fi calculată diferența dintre valoarea unui pixel și media valorii acelui pixel &icirc;n &icirc;mpărțirile definite de interval. Aceasta este acţiunea implicită.
                     </li>
                     <li> <b>Diferență Procentuală Față de Medie</b>&mdash;Va fi calculată diferența procentuală dintre valoarea unui pixel și media valorii acelui pixel &icirc;n &icirc;mpărțirile definite de interval.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Diferența față de medie = x - &micro;
-
                         <ul>
                             <li>x = valoarea pixelului dintr-o &icirc;mpărțire
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Diferența procentuală de la medie = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valoarea pixelului dintr-o &icirc;mpărțire
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Procentul mediei = x - &micro;
-
                         <ul>
                             <li>x = valoarea pixelului dintr-o &icirc;mpărțire
                                 
@@ -199,10 +196,10 @@
         </div>
     </div>
     <div id="calculationInterval">
-        <div><h2>Alegeți intervalul temporal pentru calcularea mediei</h2></div>
+        <div><h2>Alegeți intervalul temporal pentru a calcula media</h2></div>
         <hr/>
         <div>
-            <p>Specifică intervalul temporal care va fi folosit pentru a calcula media. 
+            <p>Specifică intervalul temporal care va fi folosit pentru a calcula media.
                 <ul>
                     <li> <b>Toate</b>&mdash;Calculează media pe toate &icirc;mpărțirile pentru fiecare pixel.
                     </li>
@@ -235,9 +232,9 @@
         <div><h2>Ignorare valori lipsă în calcul</h2></div>
         <hr/>
         <div>
-            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză. 
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză.
                 <ul>
-                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este acţiunea implicită.
                     </li>
                     <li>Nebifat&mdash;Analiza va avea ca rezultat NoData dacă există orice valori NoData pentru pixel pe dimensiunea dată.
                     </li>
@@ -250,7 +247,8 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>

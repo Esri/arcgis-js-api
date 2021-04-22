@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Avståndsackumulering</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Verktygsskiss f&ouml;r avst&aring;ndsackumulering"></h2>
+        <hr/>
+    <p>Verktyget ber&auml;knar ackumulerat avst&aring;nd f&ouml;r varje cell till k&auml;llor, med h&auml;nsyn till rak linje-avst&aring;nd, kostnadsavst&aring;nd, verkligt ytavst&aring;nd, samt vertikala och horisontella faktorer.
+    </p>
+    <p>Exempel p&aring; till&auml;mpningar &auml;r att besvara fr&aring;gor som de h&auml;r:
+        <ul>
+            <li>Vad &auml;r avst&aring;ndet till n&auml;rmaste stad?
+                
+
+            </li>
+            <li>Vad &auml;r kostnadsavst&aring;ndet till n&auml;rmaste v&auml;g?
+                
+
+            </li>
+            <li>Vad &auml;r avst&aring;ndet runt hinder till n&auml;rmaste vattenk&auml;lla?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> markeras, analyseras bara de geoobjekt i indatalagret som visas i den aktuella kartutbredningen. Om alternativet inte markeras analyseras alla geoobjekt i indatalagret, &auml;ven om de ligger utanf&ouml;r den visade kartutbredningen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Välj källraster eller geoobjekt</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster eller geoobjektlager som definierar de k&auml;llor till vilka avst&aring;ndet ska ber&auml;knas.
+            </p>
+            <p>Om indata &auml;r ett raster m&aring;ste det best&aring; av celler som har giltiga v&auml;rden (noll &auml;r ett giltigt v&auml;rde) f&ouml;r k&auml;llorna, och de &aring;terst&aring;ende cellerna m&aring;ste tilldelas NoData.
+            </p>
+            <p>Om indata &auml;r ett geoobjektlager kan det vara punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Välj hinderraster eller geoobjekt (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Datasetet som definierar hinder.
+            </p>
+            <p>F&ouml;r ett rasterlager kan indatatypen vara heltal eller flyttal. Alla celler som har ett v&auml;rde (inklusive noll) behandlas som ett hinder. Celler som &auml;r NoData behandlas inte som ett hinder.
+            </p>
+            <p>F&ouml;r en geoobjekttj&auml;nst kan indata vara punkt, linje eller polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Välj ytraster (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster som definierar h&ouml;jdv&auml;rdena f&ouml;r varje cellplats.
+            </p>
+            <p>V&auml;rdena anv&auml;nds f&ouml;r att ber&auml;kna det faktiska t&auml;ckta ytavst&aring;ndet vid passage mellan celler.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Välj kostnadraster (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster som definierar impedansen eller kostnaden f&ouml;r att flytta planimetriskt genom varje cell.
+            </p>
+            <p>V&auml;rdet i varje cellposition motsvarar kostnad-per-enhetsavst&aring;ndet f&ouml;r att flytta genom cellen. Varje cellpositions v&auml;rde multipliceras med celluppl&ouml;sningen samtidigt som man ocks&aring; kompenserar f&ouml;r diagonala r&ouml;relse f&ouml;r att f&aring; fram den totala kostnaden f&ouml;r att passera genom cellen.
+            </p>
+            <p>V&auml;rdena i kostnadsrastret kan vara heltal eller flyttal, men de kan inte vara negativa eller noll (du kan inte ha en negativ kostnad eller nollkostnad).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Välj vertikalt raster (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ett z-v&auml;rden som definierar h&ouml;jdv&auml;rdena f&ouml;r varje cellplats.
+            </p>
+            <p>V&auml;rdena anv&auml;nds till att ber&auml;kna lutningen som anv&auml;nds f&ouml;r att identifiera den vertikala faktor som uppkommit vid f&ouml;rflyttning fr&aring;n en cell till en annan.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikal faktor (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikal faktor</b> definierar f&ouml;rh&aring;llandet mellan den vertikala kostnadsfaktorn (VF) och den vertikala relativa r&ouml;relsevinkeln (VRMA).
+            </p>
+            <p>Det finns flera faktorer med modifierare som du kan v&auml;lja och som identifierar ett definierat vertikalt faktordiagram. Diagrammen anv&auml;nds till att identifiera den vertikala faktor som anv&auml;nds vid ber&auml;kning av den totala kostnaden f&ouml;r att flytta in i en angr&auml;nsande cell.
+            </p>
+            <p>I beskrivningarna nedan definierar VF det vertikala problemet med att flytta fr&aring;n en cell till en annan, och VRMA-modifieraren identifierar lutningsvinkeln mellan cellerna  <b>Fr&aring;n k&auml;lla</b> och <b>Till k&auml;lla</b>.
+                <ul>
+                    <li> <b>Bin&auml;r</b> &ndash; Om VRMA &auml;r st&ouml;rre &auml;n den l&aring;ga klippvinkeln och mindre &auml;n den h&ouml;ga klippvinkeln, f&aring;r VF det v&auml;rde som &auml;r kopplat till nollfaktorn. Annars f&aring;r det ett o&auml;ndligt v&auml;rde.
+                    </li>
+                    <li> <b>Linj&auml;r</b> &ndash; Anger att VF &auml;r en linj&auml;r funktion av VRMA.
+                    </li>
+                    <li> <b>Omv&auml;nd linj&auml;r</b> &ndash; Anger att VF &auml;r en inverterad linj&auml;r funktion av VRMA.
+                    </li>
+                    <li> <b>Symmetrisk linj&auml;r</b>&ndash; Anger att VF &auml;r en linj&auml;r funktion av VRMA p&aring; antingen den positiva eller negativa sidan av VRMA och att de tv&aring; linj&auml;ra funktionerna &auml;r symmetriska med avseende p&aring; VF (y)-axeln.
+                    </li>
+                    <li> <b>Symmetriskt inverterad linj&auml;r</b> &ndash; Anger att VF &auml;r en inverterad linj&auml;r funktion av VRMA p&aring; antingen den positiva eller negativa sidan av VRMA och att de tv&aring; linj&auml;ra funktionerna &auml;r symmetriska med avseende p&aring; VF (y)-axeln.
+                    </li>
+                    <li> <b>Cos</b> &ndash; Anger att VF &auml;r den cosinusbaserade funktionen av VRMA.
+                    </li>
+                    <li> <b>Sec</b> &ndash; Anger att VF &auml;r den sekantbaserade funktionen av VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; Anger att VF &auml;r den cosinusbaserade funktionen av VRMA n&auml;r VRMA &auml;r negativt och den sekantbaserade funktionen av VRMA n&auml;r VRMA inte &auml;r negativt.
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; Anger att VF &auml;r den sekantbaserade funktionen av VRMA n&auml;r VRMA &auml;r negativt och den cosinusbaserade funktionen av VRMA n&auml;r VRMA inte &auml;r negativt.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifierarna f&ouml;r de vertikala parametrarna &auml;r enligt f&ouml;ljande:
+                <ul>
+                    <li> <b>Nollfaktor</b> &ndash; Den vertikalfaktor som anv&auml;nds n&auml;r VRMA &auml;r noll. Denna faktor positionerar y-interceptet av den angivna funktionen. Per definition &auml;r nollfaktorn inte till&auml;mplig p&aring; de trigonometriska vertikalfunktionerna (Cos, Sec, Cos-Sec eller Sec-Cos). Y-intercept definieras av dessa funktioner.
+                    </li>
+                    <li> <b>L&aring;g klippvinkel</b> &ndash; Den VRMA-vinkel under vilken VF f&aring;r ett o&auml;ndligt v&auml;rde.
+                    </li>
+                    <li> <b>H&ouml;g klippvinkel</b> &ndash; Den VRMA-vinkel ovanf&ouml;r vilken VF f&aring;r ett o&auml;ndligt v&auml;rde.
+                    </li>
+                    <li> <b>Lutning</b> &ndash; Lutningen f&ouml;r den raka linjen som anv&auml;nds med parametrarna <b>Linj&auml;r</b> och <b>Omv&auml;nd linj&auml;r</b> . Lutningen anges som ett br&aring;k av f&ouml;r&auml;ndring p&aring; y-axeln delat med f&ouml;r&auml;ndringen p&aring; x-axeln (45 procent lutning &auml;r 1/45, vilket blir indata som 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Välj horisontellt raster (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Ett raster som definierar den horisontella riktningen f&ouml;r varje cell.
+            </p>
+            <p>V&auml;rdena p&aring; rastret m&aring;ste vara heltal fr&aring;n 0 till 360, d&auml;r 0 grader &auml;r norr, eller riktat mot sk&auml;rmens &ouml;verkant och &ouml;kar medurs. Platta omr&aring;den b&ouml;r ges v&auml;rdet &minus;1. V&auml;rdena p&aring; varje plats kommer att anv&auml;ndas i kombination med  <b>Horisontalfaktor</b> f&ouml;r att fastst&auml;lla den uppkomna horisontella kostnaden n&auml;r man flyttar fr&aring;n en cell till dess grannar.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horisontalfaktor (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horisontalfaktor</b> definierar f&ouml;rh&aring;llandet mellan den horisontella kostnadsfaktorn och den horisontella relativa r&ouml;relsevinkeln.
+            </p>
+            <p>Det finns flera faktorer med modifierare som du kan v&auml;lja och som identifierar ett definierat horisontellt faktordiagram. Diagrammen anv&auml;nds till att identifiera den horisontella faktor som anv&auml;nds vid ber&auml;kning av den totala kostnaden f&ouml;r att flytta in i en angr&auml;nsande cell.
+            </p>
+            <p>I beskrivningarna nedan definierar horisontalfaktorn (HF) det horisontella problemet vid f&ouml;rflyttning fr&aring;n en cell till en annan, och horisontell relativ r&ouml;relsevinkel (HRMA) identifierar vinkeln mellan den horisontella riktningen fr&aring;n en cell och i flyttningsriktningen.
+            </p>
+            <p>Definitionerna och parametrarna f&ouml;r dessa HF &auml;r enligt f&ouml;ljande:
+                <ul>
+                    <li> <b>Bin&auml;r</b> &ndash; Om HRMA &auml;r mindre &auml;n klippvinkeln, f&aring;r HF det v&auml;rde som &auml;r kopplat till nollfaktorn. Annars f&aring;r det ett o&auml;ndligt v&auml;rde.
+                        
+
+                    </li>
+                    <li> <b>Fram&aring;t</b> &ndash; Endast fram&aring;tr&ouml;relse &auml;r till&aring;tet. HRMA m&aring;ste vara st&ouml;rre &auml;n eller lika med 0 och mindre &auml;n 90 (0 &lt;= HRMA &lt; 90). Om HRMA &auml;r st&ouml;rre &auml;n 0 och mindre &auml;n 45 grader, f&aring;r HF f&ouml;r cellen det v&auml;rde som &auml;r kopplat till nollfaktorn. Om HRMA &auml;r st&ouml;rre &auml;n eller lika med 45 grader, anv&auml;nds sidov&auml;rdesmodifierarens v&auml;rde. HF f&ouml;r ett valfritt HRMA som &auml;r lika med eller st&ouml;rre &auml;n 90 grader f&aring;r ett o&auml;ndligt v&auml;rde.
+                        
+
+                    </li>
+                    <li> <b>Linj&auml;r</b> &ndash; Anger att HF &auml;r en linj&auml;r funktion av HRMA.
+                        
+
+                    </li>
+                    <li> <b>Omv&auml;nd linj&auml;r</b> &ndash; Anger att HF &auml;r en inverterad linj&auml;r funktion av HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifierarna till de horisontella s&ouml;korden &auml;r f&ouml;ljande:
+                <ul>
+                    <li> <b>Nollfaktor</b> &ndash; Fastst&auml;ller den horisontalfaktor som ska anv&auml;ndas n&auml;r HRMA &auml;r noll. Denna faktor positionerar y-interceptet f&ouml;r n&aring;gon av horisontalfaktorsfunktionerna.
+                        
+
+                    </li>
+                    <li> <b>Klippvinkel</b> &ndash; Den HRMA-vinkel bortom vilken HF f&aring;r ett o&auml;ndligt v&auml;rde.
+                        
+
+                    </li>
+                    <li> <b>Lutning</b> &ndash; Fastst&auml;ller lutningen f&ouml;r den r&auml;ta linje som anv&auml;nds med nyckelorden f&ouml;r horisontalfaktor <b>Linj&auml;r</b> och <b>Omv&auml;nd linj&auml;r</b>. Lutningen anges som ett br&aring;k av f&ouml;r&auml;ndring p&aring; y-axeln delat med f&ouml;r&auml;ndringen p&aring; x-axeln (45 procent lutning &auml;r 1/45, vilket blir indata som 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Sidov&auml;rde</b> &ndash; HF n&auml;r HRMA &auml;r st&ouml;rre &auml;n eller lika med 45 grader och mindre &auml;n 90 grader n&auml;r horisontalfaktor <b>Fram&aring;t</b> anges som nyckelord.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Inledande ackumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Kostnad f&ouml;r inledande ackumulering f&ouml;r att p&aring;b&ouml;rja kostnadsber&auml;kningen.
+            </p>
+            <p>Till&aring;ter specifikation av den fasta kostnaden som kan associeras med en k&auml;lla. I st&auml;llet f&ouml;r att b&ouml;rja p&aring; kostnaden 0, b&ouml;rjar kostnadsalgoritmen med det angivna v&auml;rdet f&ouml;r  <b>Inledande ackumulering</b>.
+            </p>
+            <p>V&auml;rdet m&aring;ste vara noll eller h&ouml;gre. Standard &auml;r 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximal ackumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Resen&auml;rens maximala ackumulering f&ouml;r en k&auml;lla.
+            </p>
+            <p>Kostnadsber&auml;kningarna forts&auml;tter f&ouml;r varje k&auml;lla tills den angivna ackumuleringen uppn&aring;s.
+            </p>
+            <p>V&auml;rdena m&aring;ste vara st&ouml;rre &auml;n noll. Standardackumuleringen &auml;r till utdatarastrets gr&auml;ns.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kostnadsmultiplikator</h2></div>
+        <hr/>
+        <div>
+            <p>En multiplikator som kan anv&auml;ndas p&aring; kostnadsv&auml;rden.
+            </p>
+            <p>Den till&aring;ter kontroll av f&auml;rdl&auml;get eller magnituden vid en k&auml;lla. Ju h&ouml;gre multiplikator, desto h&ouml;gre kostnad f&ouml;r att flytta igenom varje cell.
+            </p>
+            <p>V&auml;rdena m&aring;ste vara st&ouml;rre &auml;n noll. Standard &auml;r 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Reseriktning</h2></div>
+        <hr/>
+        <div>
+            <p>Anger reseriktningen vid till&auml;mpning av horisontella och vertikala faktorer.
+            </p>
+            <p> <b>Fr&aring;n k&auml;llan</b> &ndash; Den horisontella faktorn och den vertikala faktorn till&auml;mpas fr&aring;n b&ouml;rjan i indatak&auml;llan och f&auml;rdas ut till icke-k&auml;llcellerna. Det h&auml;r &auml;r standardinst&auml;llningen.
+            </p>
+            <p> <b>Till k&auml;lla</b> &ndash; Den horisontella faktorn och den vertikala faktorn till&auml;mpas fr&aring;n b&ouml;rjan i varje icke-k&auml;llcell och f&auml;rdas tillbaka till indatak&auml;llan.
+            </p>
+            <p>Ange antingen nyckelordet  <b>Fr&aring;n k&auml;lla</b> eller <b>Till k&auml;lla</b>, som ska till&auml;mpas p&aring; alla k&auml;llor, eller ange ett f&auml;lt i k&auml;lldata som inneh&aring;ller de nyckelord som ska identifiera reseriktning f&ouml;r varje k&auml;lla. Det f&auml;ltet m&aring;ste inneh&aring;lla str&auml;ngen <code>FROM_SOURCE</code> eller <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Avståndsmetod (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Anger om avst&aring;ndet ska ber&auml;knas med en planmetod (platt jordyta) eller en geodetisk metod (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Plan</b> &ndash; Avst&aring;ndsber&auml;kningen utf&ouml;rs p&aring; ett projicerat platt plan med ett tv&aring;dimensionellt kartesiskt koordinatsystem. Det h&auml;r &auml;r standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geodetisk</b> &ndash; Avst&aring;ndsber&auml;kningen g&ouml;rs p&aring; ellipsoiden. Det inneb&auml;r att resultatet inte f&ouml;r&auml;ndras beroende p&aring; indata- eller utdataprojektion.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Resultat för rasternamn för avståndsackumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Avst&aring;ndsackumuleringsrastret inneh&aring;ller det kumulativa avst&aring;ndet f&ouml;r varje cell fr&aring;n eller till den l&auml;gsta k&auml;llan.
+            </p>
+            <p>Utdatarastret &auml;r av typen flyttal.
+            </p>
+            <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Resultat för rasternamn för tillbakariktning (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Tillbakariktningsrastret inneh&aring;ller ber&auml;knad riktning i grader. Riktningen identifierar n&auml;sta cell l&auml;ngs den kortaste v&auml;gen tillbaka till den n&auml;rmaste k&auml;llan samtidigt som hinder undviks.
+            </p>
+            <p>V&auml;rdeintervallet &auml;r fr&aring;n 0 till 360 grader, med 0 reserverat f&ouml;r ursprungsceller. &Ouml;stlig riktning (h&ouml;ger) &auml;r 90, och v&auml;rdena &ouml;kar medurs (180 &auml;r s&ouml;der, 270 &auml;r v&auml;ster och 360 &auml;r norr).
+            </p>
+            <p>Utdatarastret &auml;r av typen flyttal.
+            </p>
+            <p>Namnet p&aring; lagret som ska skapas i  <b>Mitt inneh&aring;ll</b>. Du m&aring;ste ange ett namn som inte redan finns i <b>Mitt inneh&aring;ll</b>.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Resultat för rasternamn för källriktning (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>K&auml;llriktningsrastret identifierar riktningen f&ouml;r den minsta ackumulerade kostnadsk&auml;llcellen som en azimut i grader.
+            </p>
+            <p>V&auml;rdeintervallet &auml;r fr&aring;n 0 till 360 grader, med 0 reserverat f&ouml;r ursprungsceller. &Ouml;stlig riktning (h&ouml;ger) &auml;r 90, och v&auml;rdena &ouml;kar medurs (180 &auml;r s&ouml;der, 270 &auml;r v&auml;ster och 360 &auml;r norr).
+            </p>
+            <p>Utdatarastret &auml;r av typen flyttal.
+            </p>
+            <p>Namnet p&aring; lagret som ska skapas i  <b>Mitt inneh&aring;ll</b>. Du m&aring;ste ange ett namn som inte redan finns i <b>Mitt inneh&aring;ll</b>.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Resultat för rasternamn för källplats (valfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>K&auml;llplatsrastret &auml;r ett flerbandsutdata. Det f&ouml;rsta bandet inneh&aring;ller ett radindex och det andra bandet inneh&aring;ller ett kolumnindex. Dessa index identifierar platsen f&ouml;r k&auml;llcellen som &auml;r den l&auml;gsta ackumulerade avst&aring;ndskostnaden bort.
+            </p>
+            <p>Namnet p&aring; lagret som ska skapas i  <b>Mitt inneh&aring;ll</b>. Du m&aring;ste ange ett namn som inte redan finns i <b>Mitt inneh&aring;ll</b>.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

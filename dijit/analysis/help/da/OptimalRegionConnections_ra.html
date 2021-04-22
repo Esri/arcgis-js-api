@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimale regionsforbindelser</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Illustration af v&aelig;rkt&oslash;jet Optimale regionsforbindelser"></h2>
+        <hr/>
+    <p>Dette v&aelig;rkt&oslash;j beregner det optimale forbindelsesnetv&aelig;rk mellem to eller flere input-regioner.
+    </p>
+    <p>Eksempler p&aring; anvendelse:
+        <ul>
+            <li>Kvalitetsmodellering &ndash; Ud fra en egnethedsmodel har du identificeret 10 af de bedste levesteder for r&oslash;dlosser. Du &oslash;nsker, at r&oslash;dlosser skal kunne bev&aelig;ge sig mellem levestederne via det mest effektive netv&aelig;rk af dyrelivskorridorer med henblik p&aring; at bevare den genetiske diversitet inden for metapopulationen.
+                
+
+            </li>
+            <li>Tr&aelig;f&aelig;ldning &ndash; I forbindelse med tr&aelig;f&aelig;ldning &oslash;nsker du at skabe det mest omkostningseffektive netv&aelig;rk af f&aelig;ldningsveje, hvorfra du kan hente de f&aelig;ldede tr&aelig;er.
+                
+
+            </li>
+            <li>Fredsbevarelse &ndash; I forbindelse med en milit&aelig;r fredsbevarende mission har du identificeret fem omr&aring;der, hvor du kan placere tropper og personel. Du &oslash;nsker at udvikle optimalt forbundne forsyningsruter mellem baserne.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Hvis  <b>Anvend aktuel kortudstr&aelig;kning</b> er markeret, vil kun de steder i inputlagene, der er synlige i den aktuelle kortudstr&aelig;kning, blive analyseret. Hvis markeringen fjernes, analyseres alle steder i begge inputlag, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Vælg regionsraster eller -objekt</h2></div>
+        <hr/>
+        <div>
+            <p>De input-regioner, der skal forbindes via det optimale netv&aelig;rk.
+            </p>
+            <p>Hvis regionsinputtet er en raster, er regionerne defineret efter grupper af indbyrdes tilgr&aelig;nsende (tilst&oslash;dende) celler med den samme v&aelig;rdi. Hver region skal have sit eget unikke nummer. De celler, der ikke er en del af en region, skal v&aelig;re NoData. Rastertypen skal v&aelig;re heltal, og v&aelig;rdierne kan v&aelig;re positive eller negative.
+            </p>
+            <p>Hvis regionsinputtet er et objekt, kan det v&aelig;re punkter, linjer eller polygoner. Polygonregioner kan ikke v&aelig;re sammensat af multipart-polygoner.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Vælg barriereraster eller -objekt (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>Det datas&aelig;t, der definerer barriererne.
+            </p>
+            <p>For en raster kan inputtypen v&aelig;re heltal eller flydende komma. Enhver celle, der har en v&aelig;rdi (inkl. nul), vil blive behandlet som en barriere. Enhver celle, der er NoData, vil ikke blive behandlet som en barriere.
+            </p>
+            <p>For et objekt kan inputtet v&aelig;re et punkt, en linje eller en polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Vælg omkostningsraster (valgfrit)</h2></div>
+        <hr/>
+        <div>
+            <p>En raster, der definerer omkostninger eller impedans ved at bev&aelig;ge sig planimetrisk gennem hver celle.
+            </p>
+            <p>V&aelig;rdien ved hver cellelokation repr&aelig;senterer omkostning pr. enhed-afstanden ved at bev&aelig;ge sig gennem cellen. V&aelig;rdien ved hver cellelokation ganges med celleopl&oslash;sningen, og der kompenseres for diagonal bev&aelig;gelse for at f&aring; de samlede omkostninger ved at bev&aelig;ge sig gennem cellen.
+            </p>
+            <p>V&aelig;rdierne af omkostningsrasteren kan v&aelig;re heltal eller flydende komma, men de kan ikke v&aelig;re negative eller nul (man kan ikke have omkostninger, der er negative eller nul).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Afstandsmetode (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om afstanden skal beregnes ved hj&aelig;lp af en planar-metode (flad jord) eller en geod&aelig;tisk metode (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Planar</b> &ndash; Beregningen foretages p&aring; et projekteret fladt plan ved hj&aelig;lp af et 2D kartesisk koordinatsystem. Dette er standardmetoden.
+                    
+
+                </li>
+                <li> <b>Geod&aelig;tisk</b> &ndash; Afstandsberegningen vil blive foretaget p&aring; ellipsoiden. Det betyder, at resultaterne ikke &aelig;ndrer sig, uanset input- eller output-projektion.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Forbindelser inden for regioner (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, om ruterne skal forts&aelig;tte og v&aelig;re indbyrdes forbundne inden for inputregionerne.
+            </p>
+            <ul>
+                <li> <b>Gener&eacute;r forbindelser</b> &ndash; Ruterne vil forts&aelig;tte inden for inputregionerne med henblik p&aring; at forbinde alle ruter, der g&aring;r ind i en region. Dette er standardv&aelig;rdien.
+                    
+
+                </li>
+                <li> <b>Ingen forbindelser</b> &ndash; Ruterne vil stoppe ved gr&aelig;nserne til inputregionerne og vil ikke forts&aelig;tte eller forbinde ruterne indbyrdes.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Navnet på det resulterende optimale vektorlag for forbindelseslinjer</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Dette lag er et outputlinjeobjekt, der forbinder hver inputregion.
+            </p>
+            <p>Enhver rute (eller linje) har et entydigt nummer, og supplerende felter i attributtabellen indeholder specifikke oplysninger om ruten. Disse supplerende felter er:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Den entydige identifikator for ruten
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Den samlede akkumulerede afstand eller omkostningerne for ruten
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Den f&oslash;rste region, som ruten f&aring;r forbindelse til
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Den anden region, som ruten f&aring;r forbindelse til
+                    
+
+                </li>
+            </ul>
+            
+            <p>Da hver rute er repr&aelig;senteret ved en entydig linje, vil der v&aelig;re flere linjer p&aring; placeringer, hvor ruterne er de samme.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Navnet på det resulterende vektorlag for tilstødende forbindelser (valgfri)</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
+            </p>
+            <p>Dette lag er et outputlinjeobjekt, der identificerer alle ruter fra hver region til hver af rutens n&aelig;rmeste, eller mindst omkostningstunge, naboer.
+            </p>
+            <p>Enhver rute (eller linje) har et entydigt nummer, og supplerende felter i attributtabellen indeholder specifikke oplysninger om ruten. Disse supplerende felter er:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&ndash; Den entydige identifikator for ruten
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&ndash; Den samlede akkumulerede afstand eller omkostningerne for ruten
+                    
+
+                </li>
+                <li> <i>REGION1</i>&ndash; Den f&oslash;rste region, som ruten f&aring;r forbindelse til
+                    
+
+                </li>
+                <li> <i>REGION2</i>&ndash; Den anden region, som ruten f&aring;r forbindelse til
+                    
+
+                </li>
+            </ul>
+            
+            <p>Da hver rute er repr&aelig;senteret ved en entydig linje, vil der v&aelig;re flere linjer p&aring; placeringer, hvor ruterne er de samme.
+            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

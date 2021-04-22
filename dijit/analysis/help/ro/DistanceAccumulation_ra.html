@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Acumularea distanței</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustrarea instrumentului Acumularea distanței"></h2>
+        <hr/>
+    <p>Acest instrument calculează distanța acumulată pentru fiecare celulă la surse, permiț&acirc;nd distanța de linie dreaptă, distanța de cost, distanța de suprafață reală, precum și factorii verticali și orizontali.
+    </p>
+    <p>Aplicațiile exemplu includ răspunsurile la &icirc;ntrebări cum ar fi următoarele:
+        <ul>
+            <li>Ce distanță este față de cel mai apropiat oraș?
+                
+
+            </li>
+            <li>Ce distanță de cost este față de cel mai apropiat drum?
+                
+
+            </li>
+            <li>Ce distanță este &icirc;n preajma barierelor pentru cea mai apropiată sursă de apă?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Dacă se bifează  <b>Utilizare extindere curentă hartă</b>, vor fi analizate numai acele obiecte spaţiale din stratul tematic de intrare care sunt vizibile din extinderea curentă a hărţii. Dacă nu se bifează, toate obiectele spaţiale din stratul tematic introdus vor fi analizate, chiar dacă se află &icirc;n afara afişare extinderii curente a hărţii.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Alegeți rasterul sau obiectele spațiale sursă</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster sau un strat tematic de obiecte spațiale care identifică sursele pentru care va fi calculată distanța.
+            </p>
+            <p>Dacă intrarea este un raster, trebuie să fie reprezentată de celule care au valori valide (zero este o valoare validă) pentru surse, iar celulelor rămase trebuie să li se aloce NoData.
+            </p>
+            <p>Dacă intrarea este un strat tematic de obiecte spațiale, poate fi un punct, o linie sau un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Alegeți raster sau obiecte spațiale tip barieră (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Setul de date care definește barierele.
+            </p>
+            <p>Pentru un strat tematic raster, tipul de intrare poate fi număr &icirc;ntreg sau virgulă mobilă. Orice celulă care are o valoare (inclusiv zero) va fi tratată ca o barieră. Orice celulă care este NoData nu va fi tratată ca o barieră.
+            </p>
+            <p>Pentru un serviciu de obiecte spaţiale, intrarea poate fi un punct, o liniei sau un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Alegeți raster suprafață (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster care definește valorile de elevație pentru fiecare amplasare de celulă.
+            </p>
+            <p>Valorile sunt utilizate pentru a calcula distanța suprafeței efective acoperite la comutarea &icirc;ntre celule.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Alegeți raster cost (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster care definește impedanța sau costul deplasării planimetrice prin fiecare celulă.
+            </p>
+            <p>Valoarea din fiecare amplasare a celulei reprezintă distanța cost-pe-unitate pentru deplasarea prin celulă. Fiecare valoare de localizare a celulei este &icirc;nmulțită cu rezoluției celulei &icirc;n timp ce se compensează deplasarea pe diagonală pentru a obține costul total al deplasării prin celulă.
+            </p>
+            <p>Valorile rasterului de cost poate fi un număr &icirc;ntreg sau o virgulă mobilă, dar nu pot fi negative sau zero (nu puteți avea un cost negativ sau zero).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Alegeți raster vertical (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster care definește valorile z pentru fiecare amplasare de celulă.
+            </p>
+            <p>Valorile sunt utilizate pentru calcularea pantei utilizate pentru identificarea factorului vertical apărut la deplasarea de la o celulă la alta.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Factor vertical (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Factor vertical</b> definește relația dintre factorul de cost vertical (VF) și unghiul de deplasare relativă verticală (VRMA).
+            </p>
+            <p>Există mai mulți factori cu modificatori din care puteți selecta, care identifică un grafic de factor vertical definit. Graficele sunt utilizate pentru a identifica factorul vertical utilizat la calcularea costului total pentru deplasarea pe o celulă &icirc;nvecinată.
+            </p>
+            <p>&Icirc;n descrierile de mai jos, VF definește dificultatea verticală apărută la deplasarea de la o celulă la următoarea, iar modificatorul VRMA identifică unghiul pantei dintre celula  <b>De la sursă</b> și celula <b>La sursă</b>.
+                <ul>
+                    <li> <b>Binar</b> &ndash; dacă VRMA este mai mare dec&acirc;t unghiul de tăiere inferior și mai mic dec&acirc;t unghiul de tăiere superior, VF este setat la valoarea asociată cu factorul zero; &icirc;n caz contrar, este infinit.
+                    </li>
+                    <li> <b>Liniar</b> &ndash; VF este o funcție liniară pentru VRMA.
+                    </li>
+                    <li> <b>Liniar invers</b> &ndash; VF este o funcție liniară inversă pentru VRMA.
+                    </li>
+                    <li> <b>Liniar simetric</b> &ndash; VF este o funcție liniară pentru VRMA pe partea negativă sau pe cea pozitivă a VRMA, iar cele două funcții liniare sunt simetrice &icirc;n raport cu axa VF (y).
+                    </li>
+                    <li> <b>Liniar invers simetric</b> &ndash; VF este o funcție liniară inversă pentru VRMA pe partea negativă sau pe cea pozitivă a VRMA, iar cele două funcții liniare sunt simetrice &icirc;n raport cu axa VF (y).
+                    </li>
+                    <li> <b>Cos</b> &ndash; VF este funcția bazată pe cosinus pentru VRMA.
+                    </li>
+                    <li> <b>Sec</b> &mdash; VF este funcția bazată pe secant pentru VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; VF este funcția bazată pe cosinus pentru VRMA atunci c&acirc;nd VRMA este negativ și este funcția bazată pe secantă pentru VRMA atunci c&acirc;nd VRMA nu este negativ.
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; VF este funcția bazată pe secantă pentru VRMA atunci c&acirc;nd VRMA este negativ și este funcția bazată pe cosinus pentru VRMA atunci c&acirc;nd VRMA nu este negativ.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modificatorii pentru parametrii verticali sunt următorii:
+                <ul>
+                    <li> <b>Factor zero</b> &mdash; factorul vertical utilizat atunci c&acirc;nd VRMA este zero. Acest factor poziționează interceptarea y a funcției specificate. Potrivit definiției, factorul zero nu se aplică niciunei funcții verticale trigonometrice (Cos, Sec, Cos-Sec sau Sec-Cos). Interceptarea y este definită de aceste funcții.
+                    </li>
+                    <li> <b>Unghi de tăiere redus</b> &ndash; unghiul VRMA sub care VF va fi setat la infinit.
+                    </li>
+                    <li> <b>Unghi de tăiere mare</b> &ndash; unghiul VRMA peste care VF va fi setat la infinit.
+                    </li>
+                    <li> <b>Pantă</b> &ndash; panta liniei drepte folosită cu parametrii <b>Liniar</b> și <b>Invers Liniar</b>. Panta este specificată ca o fracție a gradientului (de exemplu, o pantă de 45 la sută este 1/45, care se introduce ca 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Alegeți raster orizontal (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster care definește direcția orizontală pentru fiecare celulă.
+            </p>
+            <p>Valorile din raster trebuie să fie numere &icirc;ntregi cuprinse &icirc;ntre 0 și 360, 0 grade reprezent&acirc;nd nordul sau către partea superioară a ecranului, cresc&acirc;nd &icirc;n sens orar. Zonelor plate ar trebui să li se atribuie valoarea -1. Valorile din fiecare amplasare vor fi folosite &icirc;mpreună cu  <b>Factorul orizontal</b> pentru a determina costul orizontal &icirc;nregistrat la deplasarea de la o celulă la vecinele acesteia.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Factor orizontal (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Factor orizontal</b> definește relația dintre factorul de cost orizontal și unghiul de deplasare relativă orizontală.
+            </p>
+            <p>Există mai mulți factori cu modificatori din care puteți selecta, care identifică un grafic de factor orizontal definit. Graficele sunt utilizate pentru a identifica factorul orizontal utilizat la calcularea costului total pentru deplasarea pe o celulă &icirc;nvecinată.
+            </p>
+            <p>&Icirc;n descrierile de mai jos, factorul orizontal (HF) definește dificultatea orizontală apărută la deplasarea de la o celulă la următoarea, iar unghiul de deplasare relativă orizontală (HRMA) identifică unghiul dintre direcția orizontală de la o celulă și direcția de deplasare.
+            </p>
+            <p>Definițiile și parametrii acestor HF sunt după cum urmează:
+                <ul>
+                    <li> <b>Binar</b> &ndash; &icirc;n cazul unei valori mai mici pentru HRMA dec&acirc;t unghiul de tăiere, HF este setat la valoarea asociată cu factorul zero; &icirc;n caz contrar, este infinit.
+                        
+
+                    </li>
+                    <li> <b>&Icirc;nainte</b> &ndash; este permisă numai deplasarea &icirc;nainte. HRMA trebuie să fie mai mare sau egal cu 0 și nu mai mic dec&acirc;t 90 (0 &lt;= HRMA &lt; 90). Dacă HRMA este mai mare dec&acirc;t 0 și mai mic dec&acirc;t 45 de grade, HF pentru celulă este setat la valoarea asociată cu factorul zero. Dacă HRMA este mai mare sau egal cu 45 de grade, este utilizată valoarea modificatorului pentru valoarea laterală. HF pentru orice HRMA egală sau mai mare dec&acirc;t 90 de grade este setat la infinit.
+                        
+
+                    </li>
+                    <li> <b>Liniar</b> &ndash; HF este o funcție liniară pentru VRMA.
+                        
+
+                    </li>
+                    <li> <b>Liniar invers</b> &ndash; este o funcție liniară inversă pentru VRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modificatorii pentru cuvintele-cheie orizontale sunt următorii:
+                <ul>
+                    <li> <b>Factor zero</b> &ndash; factorul orizontal utilizat atunci c&acirc;nd HRMA este 0. Acest factor poziționează interceptarea y pentru oricare dintre funcțiile factorului orizontal.
+                        
+
+                    </li>
+                    <li> <b>Unghi de tăiere</b> &ndash; unghiul HRMA după care HF va fi setat la infinit.
+                        
+
+                    </li>
+                    <li> <b>Pantă</b> &ndash; panta liniei drepte folosită cu cuvintele-cheie ale factorului orizontal <b>Liniar</b> și <b>Liniar invers</b>. Panta este specificată ca o fracție a gradientului (de exemplu, o pantă de 45 la sută este 1/45, care se introduce ca 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Valoare auxiliară</b> &ndash; HF atunci c&acirc;nd HRMA este mai mare sau egală cu 45 grade și mai mică de 90 grade atunci c&acirc;nd este specificat cuv&acirc;ntul-cheie al factorului orizontal <b>&Icirc;nainte</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Acumulare inițială</h2></div>
+        <hr/>
+        <div>
+            <p>Costul acumulativ inițial pentru a &icirc;ncepe calcularea costurilor.
+            </p>
+            <p>Acesta permite specificarea costului fix asociat unei surse. &Icirc;n loc să &icirc;nceapă la un cost zero, algoritmul de cost va &icirc;ncepe cu valoarea setată de  <b>Acumulare inițială</b>.
+            </p>
+            <p>Valorile trebuie să fie zero sau mai mari. Valoarea implicită este 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Acumulare maximă</h2></div>
+        <hr/>
+        <div>
+            <p>Acumularea maximă pentru călător pentru o sursă.
+            </p>
+            <p>Calculele de cost continuă pentru fiecare sursă p&acirc;nă c&acirc;nd este atinsă acumularea specificată.
+            </p>
+            <p>Valorile trebuie să fie mai mari dec&acirc;t zero. Acumularea implicită este la marginea rasterului de ieșire.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplicator cost</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplicator care se aplică valorilor de cost.
+            </p>
+            <p>Acesta permite controlul modului de deplasare sau magnitudinea pentru o sursă. Cu c&acirc;t multiplicatorul este mai mare, cu at&acirc;t costul de deplasare prin fiecare celulă este mai mare.
+            </p>
+            <p>Valorile trebuie să fie mai mari dec&acirc;t zero. Valoarea implicită este 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Direcție de deplasare</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică direcția călătorului la aplicarea factorilor vertical și orizontal.
+            </p>
+            <p> <b>De la sursă</b> &ndash; factorii orizontal și vertical vor fi aplicați &icirc;ncep&acirc;nd cu sursa de intrare și deplas&acirc;ndu-se la celulele care nu aparțin sursei. Aceasta este acţiunea implicită.
+            </p>
+            <p> <b>La sursă</b> &ndash; factorii orizontal și vertical vor fi aplicați &icirc;ncep&acirc;nd cu fiecare celulă ce nu aparține sursei și deplas&acirc;ndu-se la sursa de intrare.
+            </p>
+            <p>Specificați cuv&acirc;ntul-cheie  <b>De la sursă</b> sau <b>La sursă</b>, care va fi aplicat tuturor surselor, fie specificați un c&acirc;mp din datele sursă care include cuvintele cheie pentru a identifica direcția de deplasare pentru fiecare sursă. C&acirc;mpul respectiv trebuie să conțină șirul <code>FROM_SOURCE</code> sau <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda distanței (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă distanța se calculează utiliz&acirc;nd o metodă &icirc;n plan (păm&acirc;nt plat) sau una geodezică (elipsoidă).
+            </p>
+            <ul>
+                <li> <b>&Icirc;n plan</b> &ndash; calculul distanței va fi realizat pe un plan plat proiectat folosind un sistem de coordonate cartezian 2D. Aceasta este metoda implicită.
+                    
+
+                </li>
+                <li> <b>Geodezic</b> &ndash; calculul distanței va fi realizat pe un elipsoid. Prin urmare, indiferent de proiecția de intrare sau de ieșire, rezultatele nu se schimbă.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Nume raster acumulare distanță rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de acumulare a distanței conține distanța acumulativă pentru fiecare celulă de la sau la sursa cu cel mai mic cost.
+            </p>
+            <p>Rasterul de ieșire este de tip virgulă mobilă.
+            </p>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Nume raster de direcție inversă rezultat (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de direcție inversă conține direcția calculată &icirc;n grade. Direcția identifică următoarea celulă de-a lungul celui mai scurt traseu &icirc;napoi către cea mai apropiată sursă &icirc;n timp ce se evită barierele.
+            </p>
+            <p>Gama de valori este de la 0 grade la 360 grade, cu 0 rezervat pentru celulele sursă. Spre Est (dreapta) este 90, iar valoarea crește &icirc;n sens orar (180 este sudul, 270 este vestul, iar 360 este nordul).
+            </p>
+            <p>Rasterul de ieșire este de tip virgulă mobilă.
+            </p>
+            <p>Acesta este numele stratului tematic cu grupuri care va fi creat &icirc;n  <b>Resursele Mele</b>. Trebuie să specificați un nume care nu există &icirc;n prezent &icirc;n <b>Resursele Mele</b>.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Nume raster de direcție sursă rezultat (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de direcție sursă identifică direcția celulei sursă a costului cel mai puțin acumulat sub formă de azimut &icirc;n grade.
+            </p>
+            <p>Gama de valori este de la 0 grade la 360 grade, cu 0 rezervat pentru celulele sursă. Spre Est (dreapta) este 90, iar valoarea crește &icirc;n sens orar (180 este sudul, 270 este vestul, iar 360 este nordul).
+            </p>
+            <p>Rasterul de ieșire este de tip virgulă mobilă.
+            </p>
+            <p>Acesta este numele stratului tematic cu grupuri care va fi creat &icirc;n  <b>Resursele Mele</b>. Trebuie să specificați un nume care nu există &icirc;n prezent &icirc;n <b>Resursele Mele</b>.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Nume raster de locație sursă rezultat (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de locație sursă este o ieșire multibandă. Prima bandă conține un indice de r&acirc;nd, iar a doua bandă conține un indice de coloană. Acești indici identifică locația celulei sursă care este la cea mai mică distanță de cost acumulată.
+            </p>
+            <p>Acesta este numele stratului tematic cu grupuri care va fi creat &icirc;n  <b>Resursele Mele</b>. Trebuie să specificați un nume care nu există &icirc;n prezent &icirc;n <b>Resursele Mele</b>.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,25 @@
+// COPYRIGHT © 2021 Esri
+//
+// All rights reserved under the copyright laws of the United States
+// and applicable international laws, treaties, and conventions.
+//
+// This material is licensed for use under the Esri Master License
+// Agreement (MLA), and is bound by the terms of that agreement.
+// You may redistribute and use this code without modification,
+// provided you adhere to the terms of the MLA and include this
+// copyright notice.
+//
+// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
+//
+// For additional information, contact:
+// Environmental Systems Research Institute, Inc.
+// Attn: Contracts and Legal Services Department
+// 380 New York Street
+// Redlands, California, USA 92373
+// USA
+//
+// email: contracts@esri.com
+//
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+
+define(["dojo/_base/declare","dojo/_base/lang"],(function(t,a){return t(null,{cleanGroup:function(t,h){if(this.inherited(arguments),!h&&this.chart._nativeClip){var i=this.chart.offsets,e=this.chart.dim;(i=a.mixin({},i)).l=Math.max(0,i.l-10),i.t=Math.max(0,i.t-10),i.r=Math.max(0,i.r-10),i.b=Math.max(0,i.b-10);var r=Math.max(0,e.width-i.l-i.r),n=Math.max(0,e.height-i.t-i.b);this.group.setClip({x:i.l,y:i.t,width:r,height:n})}}})}));

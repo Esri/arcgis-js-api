@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define([],(function(){var A={PAGE_HEADER:"PageHeader",DETAILS_HEADER:"DetailsHeader",DETAILS:"Details",GROUP:"Group",PAGE_FOOTER:"PageFooter",REPORT_FOOTER:"ReportFooter",DATA_SOURCE:"DataSource",EMPTY:"empty",INFOGRAPHIC_HEADER:"InfographicHeader",INFOGRAPHIC_VARIABLE:"InfographicVariable",INFOGRAPHIC_BACKGROUND:"InfographicBackground",INFOGRAPHIC_FOREGROUND:"InfographicForeground",INFOGRAPHIC_ATTRIBUTES:"InfographicAttributes",INFOGRAPHIC_NOTES:"InfographicNotes",INFOGRAPHIC_SUMMARY:"InfographicSummary",INFOGRAPHIC_SUMMARY_FOOTER:"InfographicSummaryFooter",TABLE_BACKGROUND:"TableBackground",TABLE_FOREGROUND:"TableForeground",TABLE_BACKGROUND_FLOATING_PANELS:"BackgroundFloatingPanels",TABLE_FOREGROUND_FLOATING_PANELS:"ForegroundFloatingPanels",TABLE_FLOATING_PANELS:"FloatingPanels"};return A}));

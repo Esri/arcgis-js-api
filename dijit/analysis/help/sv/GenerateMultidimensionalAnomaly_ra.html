@@ -44,7 +44,7 @@
         <h2>Generera flerdimensionell anomali</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generera flerdimensionell anomali"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Computes the anomaly for each slice in an existing multidimensional raster to generate a new multidimensional raster.
     </p>
     <p>En anomali &auml;r n&auml;r en observation avviker fr&aring;n sitt standardv&auml;rde, medelv&auml;rde eller medianv&auml;rde.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Välj metod för att generera anomali</h2></div>
         <hr/>
         <div>
-            <p>Anger metoden som ska anv&auml;ndas f&ouml;r att ber&auml;kna anomalin. 
+            <p>Anger metoden som ska anv&auml;ndas f&ouml;r att ber&auml;kna anomalin.
                 <ul>
                     <li> <b>Skillnad fr&aring;n medel</b> &ndash; Skillnaden mellan ett pixelv&auml;rde och medel f&ouml;r det pixelv&auml;rdet &ouml;ver sektorer som definieras av intervallet kommer att ber&auml;knas. Det h&auml;r &auml;r standardinst&auml;llningen.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Skillnad fr&aring;n medel = x - &micro;
-
                         <ul>
                             <li>x = pixelv&auml;rde i en sektor
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentskillnad fr&aring;n medel = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pixelv&auml;rde i en sektor
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Procent av medel = x / &micro;
-
                         <ul>
                             <li>x = pixelv&auml;rde i en sektor
                                 
@@ -202,7 +199,7 @@
         <div><h2>Välj tidsintervall för att beräkna medel</h2></div>
         <hr/>
         <div>
-            <p>Anger tidsintervall som ska anv&auml;ndas f&ouml;r att ber&auml;kna medel. 
+            <p>Anger tidsintervall som ska anv&auml;ndas f&ouml;r att ber&auml;kna medel.
                 <ul>
                     <li> <b>Alla</b> &ndash; Ber&auml;knar medel &ouml;ver alla sektorer f&ouml;r varje pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorera saknade värden i beräkningen</h2></div>
         <hr/>
         <div>
-            <p>Anger huruvida saknade v&auml;rden ignoreras i analysen. 
+            <p>Anger huruvida saknade v&auml;rden ignoreras i analysen.
                 <ul>
                     <li>Markerad &ndash; Analysen inkluderar alla giltiga pixlar l&auml;ngs en given dimension och ignorerar eventuella NoData-pixlar. Det h&auml;r &auml;r standardinst&auml;llningen.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

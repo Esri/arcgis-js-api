@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor. Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari del  Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Utilitza la proximitat</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b>, <b>Administra les dades</b>, <b>Aprenentatge profund</b> i <b>An&agrave;lisi multidimensional</b>.
+        <p>An&agrave;lisi del r&agrave;ster us permet fer l'an&agrave;lisi de datasets r&agrave;ster grans mitjan&ccedil;ant l' ArcGIS Image Server. Aix&ograve; us permet analitzar dades m&eacute;s r&agrave;pid i aprofitar la pot&egrave;ncia del servidor.Els conjunts d'eines disponibles actualment a trav&eacute;s de l'experi&egrave;ncia d'usuari web del Portal for ArcGIS s&oacute;n  <b>Resumir les dades</b>, <b>Analitza els patrons</b>, <b>Utilitza la proximitat</b>, <b>Analitza la imatge</b>, <b>Analitza el terreny</b>, <b>Administra les dades</b>, <b>Aprenentatge profund</b> i <b>An&agrave;lisi multidimensional</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
-        <h2>Resumir les dades</h2>
+    <div id="SummarizeDataCategory" class="regularsize">
+        <h2>Resumir dades</h2>
         <hr/>
-        <p>Aquest conjunt d'eines cont&eacute; una eina per calcular algunes estad&iacute;stiques d'una capa r&agrave;ster dins dels l&iacute;mits d'&agrave;rea que definiu. 
+        <p>Aquestes eines es fan servir per calcular estad&iacute;stiques per a una capa r&agrave;ster dins dels l&iacute;mits d'una &agrave;rea (zona) que h&agrave;giu definit.
             <ul>
                 <li> <b>Resumir el r&agrave;ster dins de</b> calcula les estad&iacute;stiques de les cel&middot;les del r&agrave;ster que queden dins de l&iacute;mits d'&agrave;rea definits.
+                </li>
+                <li> <b>Estad&iacute;stiques zonals com a taula</b> resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset o informa dels resultats en una taula.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula algunes estad&iacute;stiques de resum de les cel&middot;les del r&agrave;ster dins d'&agrave;rees definides.
+            <p>Aquesta eina resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset.
             </p>
-            <p>Alguns exemples d'aplicacions s&oacute;n: 
-
-                <ul>
-                    <li>Donada una capa d'&agrave;rees de conca hidrogr&agrave;fica i una capa r&agrave;ster d'elevaci&oacute;, calculeu l'interval d'elevacions dins de cada conca hidrogr&agrave;fica per determinar quines tindran el cabal m&eacute;s alt.
-                        
-
-                    </li>
-                    <li>Donada una capa d'unitats de gesti&oacute; administrativa i una capa r&agrave;ster de categories d'&uacute;s del s&ograve;l, calculeu la varietat de valors d'&uacute;s del s&ograve;l dins de cada &agrave;rea d'administraci&oacute; per identificar quines exigiran m&eacute;s esfor&ccedil;os per determinar un pla d'administraci&oacute;.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Estadísticas zonales como tabla</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagrama Estad&iacute;stiques zonals com a taula">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset o informa dels resultats en una taula.
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Utilitza la proximitat</h2>
         <hr/>
-        <p>Aquestes eines us ajuden a respondre una de les preguntes m&eacute;s habituals de l'an&agrave;lisi espacial: &quot;Qu&egrave; hi ha a prop de qu&egrave;?&quot;
-
+        <p>Aquestes eines us ajuden a respondre a algunes de les preguntes m&eacute;s habituals de l'an&agrave;lisi espacial: &quot;Qu&egrave; hi ha a prop de qu&egrave;?&quot; i &quot;Quina &eacute;s la ruta m&eacute;s &ograve;ptima?&quot;
             <ul>
                 <li> <b>Calcula la dist&agrave;ncia</b> calcula la dist&agrave;ncia euclidiana, la direcci&oacute; i l'assignaci&oacute; des d'un origen &uacute;nic o un conjunt d'or&iacute;gens.
                     
@@ -146,7 +148,27 @@
                     
 
                 </li>
-                <li> <b>Determina la ruta de cost de viatge com a polil&iacute;nia</b> calcula la ruta de polil&iacute;nia de menor cost entre els or&iacute;gens i les destinacions conegudes.
+                <li> <b>Determina la ruta de cost de viatge com a polil&iacute;nia</b> calcula la ruta de polil&iacute;nia de menor cost entre les destinacions conegudes i els or&iacute;gens.
+                    
+
+                </li>
+                <li> <b>Acumulaci&oacute; de dist&agrave;ncia</b> calcula la dist&agrave;ncia acumulada per a cada cel&middot;la als or&iacute;gens, tenint en compte la dist&agrave;ncia en l&iacute;nia recta, el cost en pla i la dist&agrave;ncia de superf&iacute;cie real, aix&iacute; com els factors horitzontal i vertical.
+                    
+
+                </li>
+                <li> <b>Assignaci&oacute; de dist&agrave;ncia</b> calcula l'assignaci&oacute; de dist&agrave;ncia per a cada cel&middot;la als or&iacute;gens proporcionats, en funci&oacute; de la dist&agrave;ncia en l&iacute;nia recta, el cost en pla i la dist&agrave;ncia de superf&iacute;cie real, aix&iacute; com els factors horitzontal i vertical.
+                    
+
+                </li>
+                <li> <b>Ruta &ograve;ptima com a l&iacute;nia</b> calcula la ruta &ograve;ptima de les destinacions als or&iacute;gens com una l&iacute;nia.
+                    
+
+                </li>
+                <li> <b>Ruta &ograve;ptima com a r&agrave;ster</b> calcula la ruta &ograve;ptima de les destinacions als or&iacute;gens com un r&agrave;ster.
+                    
+
+                </li>
+                <li> <b>Connexions de regi&oacute; &ograve;ptimes</b> calcula la xarxa de connectivitat &ograve;ptima entre dues o m&eacute;s regions d'entrada.
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula la dist&agrave;ncia euclidiana, la direcci&oacute; i l'assignaci&oacute; des d'un origen &uacute;nic o un conjunt d'or&iacute;gens. Podeu utilitzar aquesta eina per determinar a quina dist&agrave;ncia es troba una ubicaci&oacute; d'una carretera, un edifici o un parc. Tamb&eacute; podeu determinar quina direcci&oacute; heu de prendre des d'una ubicaci&oacute; per tornar a un origen de la manera m&eacute;s directa. De cada ubicaci&oacute; de l'&agrave;rea d'estudi podeu veure quin &eacute;s l'origen m&eacute;s proper.
+            <p>Aquesta eina calcula la dist&agrave;ncia euclidiana, la direcci&oacute; i l'assignaci&oacute; des d'un origen &uacute;nic o un conjunt d'or&iacute;gens.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula la xarxa de cost &ograve;ptima a partir d'un conjunt de regions d'entrada.
+            <p>Aquesta eina calcula la xarxa de cost &ograve;ptima a partir d'un conjunt de regions d'entrada.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula la ruta de polil&iacute;nia de menor cost entre els or&iacute;gens i les destinacions conegudes.
+            <p>Aquesta eina calcula la ruta de polil&iacute;nia de menor cost entre les destinacions i els or&iacute;gens.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Acumulació de distància</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Il&middot;lustraci&oacute; de l'eina Acumulaci&oacute; de dist&agrave;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula la dist&agrave;ncia acumulada per a cada cel&middot;la als or&iacute;gens, tenint en compte la dist&agrave;ncia en l&iacute;nia recta, el cost en pla, la dist&agrave;ncia de superf&iacute;cie real i els factors horitzontal i vertical.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Assignació de distància</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Il&middot;lustraci&oacute; de l'eina Assignaci&oacute; de dist&agrave;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula l'assignaci&oacute; de dist&agrave;ncia per a cada cel&middot;la als or&iacute;gens proporcionats, en funci&oacute; de la dist&agrave;ncia en l&iacute;nia recta, el cost en pla, la dist&agrave;ncia de superf&iacute;cie real i els factors horitzontal i vertical.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ruta òptima com a línia</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Il&middot;lustraci&oacute; de l'eina Ruta &ograve;ptima com a l&iacute;nia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula la ruta &ograve;ptima de les destinacions als or&iacute;gens com una l&iacute;nia.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Ruta òptima com a ràster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Il&middot;lustraci&oacute; de l'eina Ruta &ograve;ptima com a r&agrave;ster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula la ruta &ograve;ptima de les destinacions als or&iacute;gens com un r&agrave;ster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Connexions de regió òptimes</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Il&middot;lustraci&oacute; de l'eina Connexions de regi&oacute; &ograve;ptimes">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Aquesta eina calcula la xarxa de connectivitat &ograve;ptima entre dues o m&eacute;s regions d'entrada.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analitza la imatge</h2>
         <hr/>
-        <p>L'eina seg&uuml;ent us ajuda a analitzar imatges. 
+        <p>L'eina seg&uuml;ent de la categoria d'eina  <b>Analitza la imatge</b> us ajuda a analitzar imatges:
             <ul>
-                <li> <b>Aplica la plantilla de funci&oacute; de r&agrave;ster</b> processa les imatges amb la cadena de funcions, tal com s'especifica a la plantilla de funci&oacute; de r&agrave;ster.
-                </li>
-                <li> <b>Supervisa la vegetaci&oacute;</b> detecta la vegetaci&oacute; en una imatge segons les operacions aritm&egrave;tiques de les bandes.
+                <li> <b>Supervisa la vegetaci&oacute;</b> detecta la cobertura de vegetaci&oacute; relativa en una imatge segons les operacions aritm&egrave;tiques de les bandes. Hi ha diversos &iacute;ndexs disponibles per a l'an&agrave;lisi d'imatges.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Aplica la plantilla de funció de ràster</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplica la plantilla de funci&oacute; de r&agrave;ster">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Processa les imatges amb la cadena de funcions, tal com s'especifica a la plantilla de funci&oacute; de r&agrave;ster.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Realitza una operaci&oacute; aritm&egrave;tica sobre les bandes d'una capa r&agrave;ster multibanda per revelar la informaci&oacute; de cobertura de vegetaci&oacute; de l'&agrave;rea d'estudi.
+            <p>Realitza una operaci&oacute; aritm&egrave;tica sobre les bandes d'una capa r&agrave;ster multibanda per revelar la informaci&oacute; de cobertura de vegetaci&oacute;.
             </p>
             <br/>
         </div>
@@ -390,7 +470,7 @@
                 <tbody><tr>
                     <td><h2>Converteix una entitat a ràster</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Eina Converteix una entitat a r&agrave;ster">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Herramienta Convertir entidad a r&aacute;ster">
                     </td>
                 </tr></tbody>
             </table>
@@ -578,7 +658,7 @@
                 <tbody><tr>
                     <td><h2>Predigueu l'ús del ràster de tendència</h2></td>
                     <td>
-                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Prediu mitjan&ccedil;ant el r&agrave;ster de tend&egrave;ncia">
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="Predigueu l'&uacute;s del r&agrave;ster de tend&egrave;ncia">
                     </td>
                 </tr></tbody>
             </table>

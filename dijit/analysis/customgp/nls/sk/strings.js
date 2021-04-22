@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocessing",_featureAction_ReceiveFeatureSet:"Nastaviť ako vstup ",requiredInfo:"je vyžadované.",drawnOnMap:"Výsledok je nakreslený na mape.",noToolConfig:"Nie je k dispozícii žiadna prednastavená úloha geoprocessingu.",useUrlForGPInput:"URL",useUploadForGPInput:"Nahrať súbor",useImageServiceLayer:"Vrstva obrazovej služby",useBrowseLayerPortal:"Prehľadať / Vybrať z portálu",selectFileToUpload:"Vybrať súbor...",rasterFormat:"Formát rastrových údajov",noFileSelected:"Žiadny vybraný súbor!",uploadSuccess:"Súbor sa podarilo úspešne nahrať!",showLayerContent:"Zobraziť obsah vrstvy",invalidUrl:"Neplatná URL adresa prvkovej služby",urlPlaceholder:"URL sady prvkov",addShapefile:"Pridať súbor Shapefile",generateShapefileError:"Generovať chybu súboru Shapefile, skontrolujte prosím: ",cleared:"Výsledok bol odstránený.",enlargeView:"Zväčšiť zobrazenie",exportOutput:"Export",emptyResult:"Výsledok je prázdny.",useSelectedFeatureset:"Použiť výsledné prvky.",closeSelectedFeatureset:"Vymazať a použiť konfigurovanú možnosť vstupu."});

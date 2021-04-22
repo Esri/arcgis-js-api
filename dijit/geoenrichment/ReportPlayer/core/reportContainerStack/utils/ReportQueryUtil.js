@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/DomUtil"],(function(e){var n={getPanelInfoByNode:function(i,t){var a={panelIndex:-1,panelScale:void 0};return i.isReportContainerStackAll?(i.getInnerContainers().some((function(e){var i=n.getPanelInfoByNode(e,t);if(-1!==i.panelIndex)return a=i,!0})),a):(i.infographicPage.getSections().some((function(n,o){if(e.isChildOf(t,n.domNode))return a.panelIndex=o,a.panelScale=i.infographicPage.getPanelScaleAt(o),!0})),a)}};return n}));

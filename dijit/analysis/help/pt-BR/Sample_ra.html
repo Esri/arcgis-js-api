@@ -112,7 +112,6 @@
             <p>Especifique o tempo, a profundidade ou outros dados de aquisi&ccedil;&atilde;o associados a c&eacute;lulas ou fei&ccedil;&otilde;es de localiza&ccedil;&atilde;o.
             </p>
             <p>Para cada dimens&atilde;o, h&aacute; tr&ecirc;s op&ccedil;&otilde;es para especificar as informa&ccedil;&otilde;es de aquisi&ccedil;&atilde;o associadas a c&eacute;lulas ou fei&ccedil;&otilde;es de localiza&ccedil;&atilde;o:
-
                 <ul>
                     <li> <b>Valor ou campo &uacute;nico</b>&mdash;Quando esta op&ccedil;&atilde;o &eacute; selecionada, as seguintes informa&ccedil;&otilde;es precisam ser especificadas:
                         <ul>
@@ -190,7 +189,7 @@
         </div>
     </div>
     <div id="percentileValue">
-        <div><h2>Valor percentual</h2></div>
+        <div><h2>Valor de percentil</h2></div>
         <hr/>
         <div>
             <p>O percentil a ser calculado quando o par&acirc;metro  <b>Tipo de Estat&iacute;stica</b> &eacute; definido para <b>Percentil</b>.
@@ -206,11 +205,11 @@
             <p>Algoritmo de reamostragem utilizado ao amostrar um raster.
             </p>
             <ul>
-                <li> <b>Mais Pr&oacute;ximo</b>&mdash;Vizinho mais pr&oacute;ximo. Este &eacute; o padr&atilde;o.
+                <li> <b>Mais pr&oacute;ximo</b>&mdash;O vizinho mais pr&oacute;ximo utiliza o valor da c&eacute;lula mais pr&oacute;xima para atribuir um valor para a c&eacute;lula de sa&iacute;da durante a reamostragem. Este &eacute; o padr&atilde;o.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Interpola&ccedil;&atilde;o bilinear
+                <li> <b>Bilinear</b>&mdash;Interpola&ccedil;&atilde;o bilinear, determina o novo valor de uma c&eacute;lula baseado em uma m&eacute;dia da dist&acirc;ncia ponderada dos quatro centros da c&eacute;lula de entrada mais pr&oacute;xima.
                 </li>
-                <li> <b>C&uacute;bica</b>&mdash;Convolu&ccedil;&atilde;o c&uacute;bica
+                <li> <b>C&uacute;bica</b>&mdash;Convolu&ccedil;&atilde;o c&uacute;bica, determina o novo valor de uma c&eacute;lula baseado no ajuste de uma curva de suaviza&ccedil;&atilde;o atrav&eacute;s de 16 centros da c&eacute;lula de entrada mais pr&oacute;xima.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

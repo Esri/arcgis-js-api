@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A an&aacute;lise de raster permite a voc&ecirc; executar an&aacute;lises de grandes conjuntos de dados raster utilizando o  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor. Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do  Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Utilizar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerenciar Dados</b>, <b>Aprendizagem Detalhada</b>, e <b>An&aacute;lise Multidimensional</b>.
+        <p>A an&aacute;lise de raster permite realizar an&aacute;lises de grandes conjuntos de dados raster usando  ArcGIS Image Server. Isto permite que voc&ecirc; analise mais dados de forma r&aacute;pida utilizando o poder da tecnologia do servidor.Os conjuntos de ferramentas atualmente dispon&iacute;veis atrav&eacute;s da experi&ecirc;ncia de usu&aacute;rio web do Portal for ArcGIS s&atilde;o  <b>Resumir Dados</b>, <b>Analisar Padr&otilde;es</b>, <b>Utilizar Proximidade</b>, <b>Analisar Imagem</b>, <b>Analisar Terreno</b>, <b>Gerenciar Dados</b>, <b>Aprendizagem Detalhada</b>, e <b>An&aacute;lise Multidimensional</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Resumir Dados</h2>
         <hr/>
-        <p>Este conjunto de ferramentas cont&eacute;m uma ferramenta para calcular algumas estat&iacute;sticas para uma camada raster dentro dos limites de &aacute;rea que voc&ecirc; definir. 
+        <p>Essas ferramentas s&atilde;o usadas para calcular estat&iacute;sticas para uma camada de raster dentro dos limites de &aacute;rea (zonas) definidos por voc&ecirc;.
             <ul>
                 <li> <b>Resumir Raster Dentro</b> calcula estat&iacute;sticas das c&eacute;lulas raster que caiem dentro dos limites de &aacute;rea definidos.
+                </li>
+                <li> <b>Estat&iacute;stica Zonal como Tabela</b> resume os valores de um dado raster dentro das zonas de outro conjunto de dados e registra os resultados em uma tabela.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula algumas estat&iacute;stica de resumo das c&eacute;lulas de raster dentro das &aacute;reas definidas.
+            <p>Esta ferramenta resume os valores de um raster dentro das zonas de outro conjunto de dados.
             </p>
-            <p>Alguns aplicativos de exemplo s&atilde;o os seguintes: 
-
-                <ul>
-                    <li>Com uma camada de &aacute;reas de bacia e uma camada de eleva&ccedil;&atilde;o raster fornecidas, calcule a faixa de eleva&ccedil;&otilde;es dentro de cada bacia a fim de determinar quais ter&atilde;o a energia mais alta no rio.
-                        
-
-                    </li>
-                    <li>Com uma camada de unidades de gerenciamento administrativa e uma camada raster fornecida de categorias de uso do solo, calcula a variedade de valores de uso do solo dentro de cada &aacute;rea de gerenciamento para identificar quais exigem mais trabalho para determinar um plano de gerenciamento.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Estatística Zonal como Tabela</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagrama de Estat&iacute;stica Zonal como Tabela">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta resume os valores de um raster dentro das zonas de outro conjunto de dados e relata os resultados em uma tabela.
             </p>
             <br/>
         </div>
@@ -132,21 +135,40 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Utilizar Proximidade</h2>
         <hr/>
-        <p>Estas ferramentas ajudam voc&ecirc; a responder uma das perguntas mais comuns apresentada na an&aacute;lise espacial: &quot;O que est&aacute; pr&oacute;ximo do que?&quot;
-
+        <p>Essas ferramentas ajudam a responder algumas das perguntas mais comuns colocadas na an&aacute;lise espacial: O que est&aacute; perto de qu&ecirc;? e qual &eacute; o caminho mais favor&aacute;vel?
             <ul>
                 <li> <b>Calcular Dist&acirc;ncia</b> calcula a dist&acirc;ncia Euclidiana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma &uacute;nica ou conjunto de fontes.
                     
 
                 </li>
-                <li> <b>Determinar Rede de Custo de Viagem Favor&aacute;vel</b> calcula a rede de custo favor&aacute;vel de um conjunto de regi&otilde;es de entrada.
+                <li> <b>Determinar Rede de Custo da Viagem Favor&aacute;vel</b> calcula a rede de custo favor&aacute;vel de um conjunto de regi&otilde;es de entrada.
                     
 
                 </li>
-                <li> <b>Determinar Caminho de Custo de Viagem Como Polilinha</b> calcule o caminho de polilinha de menor custo entre origens e destinos conhecidos.
+                <li> <b>Determinar Caminho de Custo da Viagem Como Polilinha</b> calcula o caminho de polilinha de menor custo entre origens e destinos conhecidos.
+                    
+
+                </li>
+                <li> <b>Acumula&ccedil;&atilde;o de Dist&acirc;ncia</b>calcula a dist&acirc;ncia acumulada de cada c&eacute;lula para origens, permitindo dist&acirc;ncia de linha direta, dist&acirc;ncia de custo, dist&acirc;ncia de superf&iacute;cie verdadeira, como tamb&eacute;m, fatores vertical e horizontal.
+                    
+
+                </li>
+                <li> <b>Aloca&ccedil;&atilde;o de Dist&acirc;ncia</b> calcula a aloca&ccedil;&atilde;o de dist&acirc;ncia de cada c&eacute;lula para origens fornecidas com base em dist&acirc;ncia de linha direta, dist&acirc;ncia de custo, dist&acirc;ncia de superf&iacute;cie verdadeira, como tamb&eacute;m fatores vertical e horizontal.
+                    
+
+                </li>
+                <li> <b>Caminho Favor&aacute;vel como Linha</b> calcula o caminho favor&aacute;vel dos destinos at&eacute; origens como uma linha.
+                    
+
+                </li>
+                <li> <b>Caminho Favor&aacute;vel como Raster</b> calcula o caminho favor&aacute;vel dos destinos at&eacute; origens como um raster.
+                    
+
+                </li>
+                <li> <b>Conex&otilde;es de Regi&atilde;o Favor&aacute;veis</b> calcula a rede de conectividade favor&aacute;vel entre duas ou mais regi&otilde;es de entrada.
                 </li>
             </ul>
             
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula a dist&acirc;ncia Euclidiana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma &uacute;nica ou conjunto de fontes. Voc&ecirc; pode utilizar esta ferramenta para determinar a que dist&acirc;ncia uma localiza&ccedil;&atilde;o est&aacute; de uma estrada, um edif&iacute;cio ou um estacionamento. Voc&ecirc; tamb&eacute;m pode determinar qual dire&ccedil;&atilde;o voc&ecirc; deve viajar de uma localiza&ccedil;&atilde;o para retornar para um origem de um modo mais direto. Voc&ecirc; pode visualizar cada localiza&ccedil;&atilde;o em sua &aacute;rea de estudo que &eacute; a origem mais pr&oacute;xima.
+            <p>Esta ferramenta calcula a dist&acirc;ncia Euclidiana, dire&ccedil;&atilde;o e aloca&ccedil;&atilde;o de uma fonte &uacute;nica ou conjunto de fontes.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula a rede de custo favor&aacute;vel de um conjunto de regi&otilde;es de entrada.
+            <p>Esta ferramenta calcula a rede de custo favor&aacute;vel de um conjunto de regi&otilde;es de entrada.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Calcula o caminho de polilinha de menor custo entre origens e destinos conhecidos.
+            <p>Esta ferramenta calcula o caminho de polilinha de menor custo entre destinos e origens.
             </p>
             <br/>
         </div>
-    <div id="AnalyzeImageCategory" class="regularsize">
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Acumulação de Distância</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o da ferrmenta Acumula&ccedil;&atilde;o de Dist&acirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula a dist&acirc;ncia acumulada para cada c&eacute;lula at&eacute; as fontes, permitindo dist&acirc;ncia em linha reta, dist&acirc;ncia de custo, dist&acirc;ncia real da superf&iacute;cie e fatores verticais e horizontais.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Alocação de Distância</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o da ferrmenta Aloca&ccedil;&atilde;o de Dist&acirc;ncia">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula a aloca&ccedil;&atilde;o de dist&acirc;ncia para cada c&eacute;lula para as fontes fornecidas com base na dist&acirc;ncia em linha reta, dist&acirc;ncia de custo, dist&acirc;ncia real da superf&iacute;cie e fatores verticais e horizontais.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Caminho Favorável como Linha</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o da ferramenta Caminho Favor&aacute;vel como Linha">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula o caminho ideal dos destinos &agrave;s origens como uma linha.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Caminho Favorável como Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o da ferramenta Caminho Favor&aacute;vel como Raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula o caminho ideal dos destinos &agrave;s origens como um raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Conexões de Região Favoráveis</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Ilustra&ccedil;&atilde;o da ferramenta Conex&otilde;es de Regi&atilde;o Favor&aacute;veis">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Esta ferramenta calcula a rede de conectividade ideal entre duas ou mais regi&otilde;es de entrada.
+            </p>
+            <br/>
+        </div>
+    <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analisar Imagem</h2>
         <hr/>
-        <p>A ferramenta seguinte ajuda a voc&ecirc; analisar as imagens. 
+        <p>A seguinte ferramenta na categoria da ferramenta  <b>Analisar Imagem</b> ajuda a analisar as imagens:
             <ul>
-                <li> <b>Aplicar Modelo de Fun&ccedil;&atilde;o do Raster</b> processa sua imagem com a cadeia de fun&ccedil;&otilde;es, como especificado pelo modelo de fun&ccedil;&atilde;o do raster.
-                </li>
-                <li> <b>Monitorar Vegeta&ccedil;&atilde;o</b> detecta vegeta&ccedil;&atilde;o dentro de uma imagem, baseado nas opera&ccedil;&otilde;es aritm&eacute;ticas nas bandas.
+                <li> <b>Monitorar Vegeta&ccedil;&atilde;o</b> detecta cobertura de vegeta&ccedil;&atilde;o reltiva em uma imagem com base nas opera&ccedil;&otilde;es aritm&eacute;ticas nas bandas. V&aacute;rios &iacute;ndices de vegeta&ccedil;&atilde;o est&atilde;o dispon&iacute;veis para an&aacute;lise de imagem.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Aplicar Modelo de Função do Raster</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Aplicar Modelo de Fun&ccedil;&atilde;o do Raster">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Processa sua imagem com a fun&ccedil;&atilde;o ou cadeia de fun&ccedil;&otilde;es, como especificado pelo modelo de fun&ccedil;&atilde;o do raster.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Executa uma opera&ccedil;&atilde;o aritm&eacute;tica nas bandas de uma camada de raster de bandas m&uacute;ltiplas para revelar as informa&ccedil;&otilde;es de cobertura de vegeta&ccedil;&atilde;o da &aacute;rea de estudo.
+            <p>Executa uma opera&ccedil;&atilde;o aritm&eacute;tica nas bandas de uma camada de raster de bandas m&uacute;ltiplas para revelar as informa&ccedil;&otilde;es de cobertura da vegeta&ccedil;&atilde;o.
             </p>
             <br/>
         </div>
@@ -448,14 +528,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Classificar Pixels Utilizando Aprendizado Detalhado</h2></td>
+                    <td><h2>Classificar Pixels Utilizando Aprendizagem Detalhada</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classificar Pixels Utilizando Aprendizado Detalhado">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Classificar Pixels Utilizando Aprendizagem Detalhada">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir um raster classificado, e cada pixel v&aacute;lido tem um r&oacute;tulo de classe atribu&iacute;do.
+            <p>Esta ferramenta executa um modelo de aprendizado detalhado testado em um raster de entrada para produzir um raster classificado, e cada pixel v&aacute;lido tem um r&oacute;tulo de classe atribu&iacute;do.
             </p>
             <br/>
         </div>
@@ -463,14 +543,14 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Detectar Objetos Utilizando Aprendizado Detalhado</h2></td>
+                    <td><h2>Detectar Objetos Utilizando Aprendizagem Detalhada</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detectar Objetos Utilizando Aprendizado Detalhado">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Detectar Objetos Utilizando Aprendizagem Detalhada">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir uma classe de fei&ccedil;&atilde;o contendo os objetos localizados por ela. As fei&ccedil;&otilde;es podem ser caixas delimitadoras ou pol&iacute;gonos ao redor dos objetos encontrados ou pontos nos centros dos objetos.
+            <p>Esta ferramenta executa um modelo de aprendizado detalhado e testado em um raster de entrada para produzir uma classe de fei&ccedil;&atilde;o contendo os objetos localizados por ela. As fei&ccedil;&otilde;es podem ser caixas delimitadoras ou pol&iacute;gonos ao redor dos objetos encontrados ou pontos nos centros dos objetos.
             </p>
             <br/>
         </div>

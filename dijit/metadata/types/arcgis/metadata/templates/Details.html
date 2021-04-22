@@ -18,18 +18,11 @@
   <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
     data-dojo-props="target:'mdHrLvName',minOccurs:0,maxOccurs:'unbounded',label:'${i18nArcGIS.metadata.mdHrLvName}'">
   </div>
-  
-  <!-- metadata date -->
-  <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
-    data-dojo-props="target:'mdDateSt',minOccurs:1,label:'${i18nArcGIS.metadata.mdDateSt}'">
-    <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputDate" data-dojo-props="allowTime:false,useNow:true"></div>
-  </div>
-  
+
   <!-- file identifier -->
   <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
     data-dojo-props="target:'mdFileID',minOccurs:0,label:'${i18nArcGIS.metadata.mdFileID}'">
-    <div data-dojo-type="esri/dijit/metadata/form/InputText"
-      data-dojo-props="useUniqueId:true,regenerateIfTemplate:true">
+    <div data-dojo-type="esri/dijit/metadata/form/InputText" data-dojo-props="useUniqueId:true,regenerateIfTemplate:true">
     </div>
   </div>
   

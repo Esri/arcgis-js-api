@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Konvertovať prvok na raster</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="N&aacute;stroj na konverziu prvkov na raster"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj konvertuje prvky na rastrov&yacute; dataset.
+    </p>
+    <p>Každ&aacute; trieda prvkov obsahuj&uacute;ca bod, l&iacute;niu alebo polyg&oacute;n m&ocirc;že byť konvertovan&aacute; na rastrov&yacute; dataset.
+    </p>
+    <p>Stred bunky je použit&yacute; na určenie hodnoty v&yacute;stupu pixelu rastra.
+    </p>
+    <p>Typ vstupn&eacute;ho poľa určuje typ v&yacute;stupn&eacute;ho rastra. Ak je pole cel&eacute; č&iacute;slo, v&yacute;stupn&yacute; raster bude cel&eacute; č&iacute;slo; ak je to desatinn&eacute; č&iacute;slo, v&yacute;stup bude desatinn&eacute; č&iacute;slo.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte prvkovú vrstvu na konverziu</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva vstupn&yacute;ch prvkov, ktor&uacute; konvertovať na rastrov&yacute; dataset.
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Vyberte pole</h2></div>
+        <hr/>
+        <div>
+            <p>Vyberte pole, ktor&eacute; bude použit&eacute; na priradenie hodn&ocirc;t do v&yacute;stupn&eacute;ho rastra.
+            </p> 
+        </div>
+    </div>
+    <div id="outputCellSize">
+        <div><h2>Výstupná veľkosť bunky</h2></div>
+        <hr/>
+        <div>
+            <p>Veľkosť bunky a jednotka pre v&yacute;stupn&eacute; rastre.
+            </p>
+            <p>Dostupn&eacute; jednotky s&uacute; mile, stopy, kilometre a metre. Predvolen&eacute; s&uacute; stopy.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

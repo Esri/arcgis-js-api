@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Multidimensionalen Bilddaten-Layer für die Aggregation auswählen</h2></div>
+        <div><h2>Multidimensionale Bilddaten-Layer für die Aggregation auswählen</h2></div>
         <hr/>
         <div>
             <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Rasters wird aggregiert.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Dimension auswählen, für die die Aggregation durchgeführt werden soll</h2></div>
+        <div><h2>Dimension, entlang derer die Aggregation erfolgen soll, auswählen</h2></div>
         <hr/>
         <div>
             <p>Die Aggregationsdimension. Dies ist die Dimension, an der entlang die Variablen aggregiert werden.
@@ -91,7 +91,7 @@
         <div><h2>Aggregationsmethode auswählen</h2></div>
         <hr/>
         <div>
-            <p>Gibt die mathematische Methode an, nach der die aggregierten Abschnitte in einem Intervall kombiniert werden. 
+            <p>Gibt die mathematische Methode an, nach der die aggregierten Abschnitte in einem Intervall kombiniert werden.
                 <ul>
                     <li> <b>Mittelwert</b>: Berechnet den Mittelwert der Werte eines Pixels f&uuml;r alle Abschnitte im Intervall. Dies ist die Standardeinstellung.
                     </li>
@@ -132,7 +132,7 @@
         <div><h2>Aggregationsdefinition auswählen</h2></div>
         <hr/>
         <div>
-            <p>Gibt das Dimensionsintervall an, f&uuml;r das die Daten aggregiert werden. 
+            <p>Gibt das Dimensionsintervall an, f&uuml;r das die Daten aggregiert werden.
                 <ul>
                     <li> <b>Alle</b>: Die Datenwerte aller Abschnitte werden aggregiert. Dies ist die Standardeinstellung.
                     </li>
@@ -173,9 +173,9 @@
                     </li>
                     <li> <b>Quartalsweise wiederkehrend</b>: Die Datenwerte werden in viertelj&auml;hrliche Zeitintervalle aggregiert, und das Ergebnis enth&auml;lt einen aggregierten Wert pro Quartal. Es werden maximal 4 Quartals-Zeitintervalle ausgegeben.
                     </li>
-                    <li> <b>Zehnt&auml;gig</b>: Die Datenwerte werden in 3&nbsp;Zeitr&auml;ume von je 10&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 10 Tage umfassen. Es werden 3 Zeitintervalle f&uuml;r jeden Monat ausgegeben.
+                    <li> <b>Zehnt&auml;gig</b>: Die Datenwerte werden in 3&nbsp;Zeitr&auml;ume von je 10&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 10 Tage umfassen. Es werden 3&nbsp;Zeitintervalle f&uuml;r jeden Monat ausgegeben.
                     </li>
-                    <li> <b>F&uuml;nft&auml;gig</b>: Die Datenwerte werden in 6&nbsp;Zeitr&auml;ume von je 5&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 5 Tage umfassen. Es werden 6 Zeitintervalle f&uuml;r jeden Monat ausgegeben.
+                    <li> <b>F&uuml;nft&auml;gig</b>: Die Datenwerte werden in 6&nbsp;Zeitr&auml;ume von je 5&nbsp;Tagen aggregiert. Der letzte Zeitraum kann mehr oder weniger als 5&nbsp;Tage umfassen. Es werden 6&nbsp;Zeitintervalle f&uuml;r jeden Monat ausgegeben.
                     </li>
                 </ul>
                 
@@ -198,7 +198,7 @@
         <div>
             <p>Die f&uuml;r den Intervallwert verwendete Einheit. Diese Eingabe ist erforderlich, wenn es sich bei  <b>Dimension</b> um ein Zeitfeld handelt und f&uuml;r <b>Aggregationsdefinition</b> die Option <b>Intervallwert</b> festgelegt wurde.
             </p>
-            <p>Wenn die Aggregation &uuml;ber eine andere Dimension als die Zeit erfolgt, ist diese Option nicht verf&uuml;gbar, und die Einheit des Intervallwertes entspricht der Variableneinheit der multidimensionalen Eingabe-Raster-Daten. 
+            <p>Wenn die Aggregation &uuml;ber eine andere Dimension als die Zeit erfolgt, ist diese Option nicht verf&uuml;gbar, und die Einheit des Intervallwertes entspricht der Variableneinheit der multidimensionalen Eingabe-Raster-Daten.
                 <ul>
                     <li> <b>Stunden</b>: Die Datenwerte werden in st&uuml;ndliche Zeitabschnitte im angegebenen Intervall aggregiert.
                     </li>
@@ -227,7 +227,7 @@
         <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
         <hr/>
         <div>
-            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden. 
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden.
                 <ul>
                     <li>Aktiviert: Bei der Analyse werden alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
                     </li>
@@ -242,6 +242,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

@@ -40,11 +40,11 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Summér raster inden for</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summ&eacute;r raster inden for-v&aelig;rkt&oslash;j"></h2>
         <hr/>
-    <p>Dette v&aelig;rkt&oslash;j summerer rasterdata baseret p&aring; omr&aring;der (zoner), der er defineret af det f&oslash;rste inputlag.
+    <p>Dette v&aelig;rkt&oslash;j giver en oversigt over v&aelig;rdierne for en raster inden for et andet datas&aelig;ts zoner.
     </p>
     <p>Her er nogle eksempelanvendelser:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>N&aring;r du har valgt et lag, der skal summeres, kan du v&aelig;lge at beregne statistik for eventuelle numeriske attributter best&aring;ende af punkter, linjer eller omr&aring;der inden for inputomr&aring;delaget.
             </p>
-            <p>N&aring;r det valgte felt udg&oslash;res af et heltal, er de tilg&aelig;ngelige statistikttyper Gennemsnit, Majoritet, Maksimum, Median, Minimum, Minoritet, Omr&aring;de, Standardafvigelse, Sum og Variation.
+            <p>N&aring;r det valgte felt udg&oslash;res af et heltal, er de tilg&aelig;ngelige statistikttyper Gennemsnit, Majoritet, Maksimum, Median, Minimum, Minoritet, Percentil, Omr&aring;de, Standardafvigelse, Sum og Variation.
             </p>
             <p>Hvis feltet er et flydende punkt, er valgmulighederne Gennemsnit, Maksimum, Minimum, Omr&aring;de, Standardafvigelse og Sum.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilværdi</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil, der skal beregnes. Standardv&aelig;rdien er 90, hvilket angiver den 90. percentil.
+            </p>
+            <p>V&aelig;rdierne kan v&aelig;re fra 0 til 100. Den 0. percentil svarer stort set til minimum-statistikken, og den 100. percentil svarer til maksimum. En v&aelig;rdi p&aring; 50 vil stort set give det samme resultat som median-statistikken.
+            </p>
+            <p>Denne indstilling underst&oslash;ttes kun, hvis parameteren  <b>V&aelig;lg statistik, der skal beregnes</b> er indstillet til <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Behandl som flerdimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, hvordan input-rastere skal behandles, hvis de er flerdimensionale. Hvis du v&aelig;lger &quot;Behandl som flerdimensional&quot;, vil der blive beregnet statistik ud fra alle dimensioner af det indsatte flerdimensionale datas&aelig;t. Ellers vil statistikken blive beregnet ud fra det aktuelle udsnit af det indsatte flerdimensionale datas&aelig;t, hvilket er standardv&aelig;rdien.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.

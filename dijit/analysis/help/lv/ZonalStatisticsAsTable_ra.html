@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Zonālā statistika kā tabula</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Rīka Zonālā statistika kā tabula diagramma"></h2>
+        <hr/>
+    <p>&Scaron;is rīks apkopo rastra vērtības citas datu kopas zonās un uzrāda rezultātus tabulā.
+    </p>
+    <p>Daži no pielietojumu piemēriem ietver:
+    </p>
+    <p>
+        <ul>
+            <li>Ņemot vērā &scaron;tatu robežu slāni un vidējo nokri&scaron;ņu sadalījumu Amerikas Savienoto Valstu kontinentālajā daļā, aprēķiniet stipra lietus gadījumu sadalījumu pa &scaron;tatiem, izmantojot procentiles vērtību sarakstu.
+                
+
+            </li>
+            <li>Ņemot vērā pārklā&scaron;anās ekoloģisko zonu slāni un augsnes mitruma rastra slāni, aprēķina visu atbalstīto statistiku katrā zonā, lai saistītu zonas ar augsnes mitruma datu pieejamību.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja iespēja nav atzīmēta, visi elementi ievades un apkopojamajā slānī tiks analizēti&nbsp;&mdash; arī tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Izvēlieties zonas rastru vai elementus</h2></div>
+        <hr/>
+        <div>
+            <p>Slānis, kas norāda zonu robežas vai apkopojamās teritorijas.
+            </p>
+            <p>Slānis var būt veselo skaitļu rastrs vai elementu dati. Rastru zonas definē visi ievadē eso&scaron;ie novietojumi ar vienādu &scaron;ūnas vērtību. Elementos zonas var pārklāties. Teritorijām nav jābūt nepārtrauktām.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Zonas lauks</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;is ir slāņa atribūts, kas tiks izmantots, lai norādītu zonu&nbsp;(teritoriju) robežas.
+            </p>
+            <p>Piemēram, pieņemsim, ka pirmais ievades slānis definē teritorijas zemes pārvaldības vienības robežas un ietver atribūtus, kas definē katras vienības reģionu, rajonu un zemes vienības ID. Pieejams arī rastra slānis, kas definē katras atra&scaron;anās vietas bioloģisko daudzveidību. Izvēloties lauku, varat aprēķināt vidējo bioloģisko daudzveidību vietējā, rajona vai reģionālā līmenī.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Izvēlieties vērtību rastru</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;ī slāņa rastra &scaron;ūnas tiks apkopotas pēc teritorijām (zonām), kurās tās atrodas.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Aprēķinos ignorēt NoData (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai NoData vērtības analīzē tiek ignorētas.
+                <ul>
+                    <li>Atzīmēts&nbsp;&mdash; analīze ietvers &scaron;ūnas, kurām kādā noteiktā zonā ir vērtība ievades vērtību rastrā, lai noteiktu &scaron;īs zonas izvades vērtību. Vērtību rastra NoData &scaron;ūnas statistiskajā aprēķinā tiks ignorētas. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li>Neatzīmēts&nbsp;&mdash; analīzes rezultātā tiks iegūti NoData, ja noteiktā zonā vērtības rastra &scaron;ūnām būs NoData vērtības.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Statistikas veids (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda aprēķināmās statistikas veidu.
+            </p>
+            <p>Ievade var būt &scaron;āda:  <b>Visi</b>, <b>Vidējā vērtība</b>, <b>Vairākums</b>, <b>Maksimums</b>, <b>Mediāna</b>, <b>Minimums</b>, <b>Mazākums</b>, <b>Procentile</b>, <b>Diapazons</b>, <b>Standartnovirze</b>, <b>Summa</b>, <b>Varietāte</b>, <b>Minimums un maksimums</b>, <b>Vidējā un standartnovirze</b> vai <b>minimums, maksimums un vidējā vērtība</b>. Noklusējuma ievade ir <b>Viss</b>.
+            </p>
+            <p>Ja ievades vērtības rastrs ir vesels skaitlis, pēc noklusējuma tiks aprēķināta visa statistika. Ja vērtības rastrs ir peldo&scaron;ā komata tips, pēc noklusējuma tiks aprēķināta visa statistika, izņemot  <b>mediānu</b> un <b>procentili</b>. 
+            </p>
+            <p>Ja ievades vērtības rastrs ir peldo&scaron;ā komata tips, zonālos aprēķinus attiecībā uz  <b>vairākumu</b>, <b>mazākumu</b> un <b>varietāti</b> nevar aprēķināt.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Procentiles vērtības (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Aprēķināmā procentile. Var norādīt vienu vērtību vai vērtību sarakstu. Noklusējuma vērtība ir&nbsp;90, norādot 90.&nbsp;procentili.
+            </p>
+            <p>Vērtības var būt diapazonā no 0 līdz 100. 0.&nbsp;procentiles norādī&scaron;anas rezultāts būtībā ir līdzvērtīgs minimālās statistikas rezultātam, un 100.&nbsp;procentile ir līdzvērtīga maksimumam. Vērtība 50&nbsp;uzrādīs tādu pa&scaron;u rezultātu kā mediānas statistika.
+            </p>
+            <p>&Scaron;ī opcija tiek atbalstīta tikai tad, ja parametrs  <b>Statistikas veids</b> ir iestatīts uz <b>Procentile</b> vai <b>Visi</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Procentiles interpolācijas veids (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Norāda procentīles interpolācijas metodi, kas jāizmanto, ja aprēķināmā ievades rastra vērtību skaits ir vienāds.
+            </p> 
+            <p>Ja ievades vērtības rastrs ir vesels pikselis, tiek izmantota metode  <b>Vistuvākais</b>. Ja ievades vērtības rastrs ir peldo&scaron;ā punkta pikseļu veida rastrs, tiek izmantota metode <b>Lineārs</b>. Tā ir noklusējuma vērtība.
+            </p>
+            <p>Izmantojot metodi  <b>Vistuvākā</b>, tiek izmantota vēlamā procentilei tuvākā pieejamā vērtība. Metodē <b>Lineāri</b> tiek izmantota abu apkārtējo vērtību vidējā svērtā vērtība no vēlamās procentiles.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Apstrādāt kā multidimensionālu (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, kā tiks apstrādāti ievades rastri, ja tie ir daudzdimensionāli.
+            </p>
+            <ul>
+                <li>Atzīmēts&nbsp;&mdash; statistika tiks aprēķināta no ievades daudzdimensiju datu kopas pa&scaron;reizējā slāņa. Tā ir noklusējuma vērtība.
+                    
+
+                </li>
+                <li>Neatzīmēts&nbsp;&mdash; statistika tiks aprēķināta visām ievades daudzdimensiju datu kopas dimensijām.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Rezultātu tabulas nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

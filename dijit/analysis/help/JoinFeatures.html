@@ -49,7 +49,7 @@ layers and   joins attributes from one
 feature to another based on spatial and attribute
 relationships. The tool determines all input features that meet the specified join conditions and appends the join layer to the target layer. 
     </p>
-    <p>Join Features can be applied to points, lines, areas, and tables. A spatial join requires that your data has a geometry. 
+    <p>Join Features can be applied to points, lines, areas, and tables. A spatial join requires that your data have a geometry. 
     </p>
     <p>If  <b>Use current map extent</b> is checked, only the features visible within the current map extent will be analyzed.  If unchecked, all features in both the target layer and the join layer will be analyzed, even if they are outside the current map extent.
     </p>
@@ -62,7 +62,7 @@ relationships. The tool determines all input features that meet the specified jo
             <p>The target layer that will have attributes from the join layer appended to its table.
             </p>
             <p>In addition to choosing a layer from your map, you can select  <b>Choose Analysis Layer</b> found at the bottom of the drop-down list. This option opens a gallery where you can browse to and select datasets from various sources to use in your analysis. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -119,7 +119,7 @@ relationships. The tool determines all input features that meet the specified jo
         <div>
             <p>The attribute relationship that will determine whether features are joined to each other. Features are matched when the field values in the join layer are equal to field values in the target layer. 
             </p>
-            <p>For example, suppose you have a countywide geographic layer of residential addresses (including a field  <i>ZIP</i>) and a tabular dataset of health demographics by ZIP Code (including a field named <i>HEALTHZIP</i>). You can join the health dataset to the residential data by matching the field <i>ZIP</i> to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
+            <p>For example, suppose you have a countywide geographic layer of residential addresses (including a  <i>ZIP</i> field) and a tabular dataset of health demographics by ZIP Code (including a field named <i>HEALTHZIP</i>). You can join the health dataset to the residential data by matching the <i>ZIP</i> field to <i>HEALTHZIP</i>, which will result in a layer of residences with the corresponding health data.
             </p>
         </div>
     </div>
@@ -129,15 +129,15 @@ relationships. The tool determines all input features that meet the specified jo
         <div>
             <p>Determines how joins between the target and join  layer will be handled if multiple  features in the join layer are found to have the same relationship to the target layer. The following are the two join operations from which to choose:
                 <ul>
-                    <li> <b>Join one to one</b>&mdash; This option joins the features in the target layer to a single feature in the join layer. How features are joined is determined by the <b>Add statistics</b> parameter or the <b>Define which record is kept</b> parameter. If <b>Add statistics</b> is used, all matched joined features will be
+                    <li> <b>Join one to one</b>&mdash;This option joins the features in the target layer to a single feature in the join layer. How features are joined is determined by the <b>Add statistics</b> parameter or the <b>Define which record is kept</b> parameter. If <b>Add statistics</b> is used, all matched joined features will be
 summarized to each feature in the target layer. The count of joined
 features will be added by default.
 
 If <b>Define which record is kept</b>
  is used, you can choose to
-either keep the first matching record (default) or to keep a matching record
-based on an expression. An expression can use either a numeric field
-(option for largest or smallest record) or a date field (option for
+either keep the first matching record (default) or to keep the matching record
+with the highest or lowest value in a certain field ( <b>Order by</b>). The order by expression requires either a numeric field
+(option for largest or smallest value) or a date field (option for
 newest or oldest).
                     </li>
                     <li> <b>Join one to many</b>&mdash;This option joins all the matching features in the join layer to the target layer.  The result layer will contain multiple records of the target feature.
@@ -145,7 +145,7 @@ newest or oldest).
                 </ul>
                 
             </p>
-            <p>For example, suppose you want to find supermarkets within 5 kilometers of a farmers market.   In this case, the layer being joined to has a single feature representing a farmers market, and the joining features represent the local grocery stores that have attributes such as total annual sales. Using the  <b>Join Features</b> tool, you find that five grocery stores meet that criteria. If you specify a join operation of <b>Join one to many</b>, you will end up with five features in your result, each row representing the farmers market and a supermarket. If you specify a <b>Join one to one</b> relationship and select a statistic, you will end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (5), and other optional statistics such as the sum of annual sales.
+            <p>For example, suppose you want to find supermarkets within 5 kilometers of a farmers market.   In this case, the layer being joined to has a single feature representing a farmers market, and the joining features represent the local grocery stores that have attributes such as total annual sales. Using the  <b>Join Features</b> tool, you find that five grocery stores meet that criteria. If you specify a join operation of <b>Join one to many</b>, you will end up with five features in your result, each row representing the farmers market and a supermarket. If you specify a <b>Join one to one</b> relationship and choose <b>Define which record is kept</b>,  you will end up with one feature representing the farmers market and one supermarket&mdash;the one with the highest annual sales, for example. If instead you choose <b>Add statistics</b>, you will end up with one feature representing the farmers market and a summary of the five supermarkets, such as the sum of annual sales and the count (5) of the summarized supermarkets. 
             </p>
         </div>
     </div>
@@ -173,7 +173,7 @@ change the output to include all features in the target layer regardless of whet
                 </li>
                 <li>Average
                 </li>
-                <li>Standard Deviation
+                <li>Standard deviation
                 </li>
             </ul>
             
@@ -193,8 +193,10 @@ change the output to include all features in the target layer regardless of whet
         <div><h2>Create results as hosted feature layer view</h2></div>
         <hr/>
         <div>
-            <p> Creating results as a hosted feature layer view allows the data to stay up to date as the source data changes.  Hosted feature layer views containing joins will be read-only.
+            <p>Creating results as a hosted feature layer view allows the data to stay up to date as the source data changes.  Hosted feature layer views containing joins will be read-only.
             </p>
+            <p class="OnlineOnly">Hosted feature layer views containing joins do not consume credits for analysis and storage.
+            </p> 
             <p>You can create a hosted feature layer view from the analysis results if all of the following conditions are met:
                 <ul>
                     <li>You are the owner of both layers.

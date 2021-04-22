@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите объекты для вырезания",filterSelectLabel:"Выполните вырезание всех объектов или укажите поднабор (дополнительно)",targetArea:"Выберите область для вырезания",outputLayerName:"Вырезать ${inputLayerName} в ${clipLayerName}",itemDescription:"Векторный слой, созданный из запущенного решения ''Вырезать''. Объекты из ${inputLayerName} были вырезаны в ${clipLayerName}.",itemTags:"Результат анализа, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Векторный слой, созданный решением Вырезание слоев'"});

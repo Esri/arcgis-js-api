@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Zvolte typ přihrádek, které budou použity pro vytvoření mřížky s více proměnnými",layersAttrLabel:"Zvolte vstupní vrstvy a proměnné, které chcete zahrnout do mřížky",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Vytvořit mřížku s více proměnnými.",itemTags:"Výsledek analýzy, Vytvořit mřížku s více proměnnými",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Vytvořit mřížku s více proměnnými",addVariables:"Přidat proměnné"});

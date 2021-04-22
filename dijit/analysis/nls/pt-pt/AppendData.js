@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Selecionar camada à qual anexar",inputWarningLabel:"Aviso: A camada à qual é aplicado o anexo será modificada.",inputHostedLayerWarning:"A camada selecionada não era uma camada de elementos alojada. Por favor, selecione uma camada de elementos alojada à qual anexar.",appendLayerLabel:"Selecionar camada para anexar",filterLabel:"Anexar todos os elementos ou definir um subconjunto (opcional)",fieldMappingLabel:"Selecionar como anexar campos (opcional)",inputField:"Introduzir Campo",appendValue:"Anexar Valor",expression:"Expressão"});

@@ -244,6 +244,14 @@
              <select class="esriLeadingMargin1 longInput esriLongLabel" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_maskSelect" data-dojo-attach-event="onChange:_handleMaskSelectChange"></select>
            </td>
          </tr>
+         <tr data-dojo-attach-point="_creditWarningRow">
+           <td colspan="2">
+             <label class="esriSelectLabel esriLeadingMargin1">
+               <input type="radio" data-dojo-attach-point="_creditWarningCheck" data-dojo-type="dijit/form/CheckBox" data-dojo-props="checked:true" data-dojo-attach-event="onChange:_handleCreditWarningCheck" name="creditWarning" value="false" />
+               ${i18n.creditWarning}
+             </label>
+           </td>
+         </tr>
          <tr data-dojo-attach-point="_storageLblRow">
            <td class="esriAlignLeading esriAnalysisTitle" colspan="3">
              <label class="esriAnalysisStepsLabel">${i18n.storageLabel}</label>
@@ -327,23 +335,23 @@
        </tbody>
      </table>
     </div>
-    <div data-dojo-attach-point="_jobHistoryCtr" style="display:none;">
-      <div data-dojo-attach-point="_jobsListDiv"></div>
+  <div data-dojo-attach-point="_jobHistoryCtr" style="display:none;">
+    <div data-dojo-attach-point="_jobsListDiv"></div>
+  </div>
+  <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
+      <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg">
+      </a>
+      <span data-dojo-attach-point="_bodyNode"></span>
+  </div>
+  <div data-dojo-type="dijit/ConfirmDialog" class="esriAnalysisStgSpatialDialog" title="${i18n.coordSysDialogTitle}" data-dojo-props="closable:false" data-dojo-attach-point="_coordDialog" style="width:40em;" data-dojo-attach-event="onExecute:_handleSRDlgOk,onCancel:_handleSRDlgCancel">
+    <div data-dojo-attach-point="_spatialRefGridNode"></div>
+  </div>
+  <div  class="esriFloatTrailing" data-dojo-attach-point="_actionbuttonCtr">
+    <div data-dojo-type="dijit/form/Button"  class="${cssClass.primaryButton}" data-dojo-attach-point="_addBtn" data-dojo-attach-event="onClick:_handleOkButtonClick">
+      ${i18n.apply}
     </div>
-    <div class="esriFormWarning esriRoundedBox" data-dojo-attach-point="_errorMessagePane" style="display:none;">
-        <a href="#" title="${i18n.close}" class="esriFloatTrailing esriAnalysisCloseIcon" title='${i18n.close}' data-dojo-attach-event="onclick:_handleCloseMsg">
-        </a>
-        <span data-dojo-attach-point="_bodyNode"></span>
+      <div data-dojo-type="dijit/form/Button" class="${cssClass.button}" data-dojo-attach-point="_closeBtn" data-dojo-attach-event="onClick:_handleCancelButtonClick">
+      ${i18n.cancel}
     </div>
-    <div data-dojo-type="dijit/ConfirmDialog" class="esriAnalysisStgSpatialDialog" title="${i18n.coordSysDialogTitle}" data-dojo-props="closable:false" data-dojo-attach-point="_coordDialog" style="width:40em;" data-dojo-attach-event="onExecute:_handleSRDlgOk,onCancel:_handleSRDlgCancel">
-      <div data-dojo-attach-point="_spatialRefGridNode"></div>
-    </div>
-    <div  class="esriFloatTrailing" data-dojo-attach-point="_actionbuttonCtr">
-      <div data-dojo-type="dijit/form/Button"  class="${cssClass.primaryButton}" data-dojo-attach-point="_addBtn" data-dojo-attach-event="onClick:_handleOkButtonClick">
-        ${i18n.apply}
-      </div>
-       <div data-dojo-type="dijit/form/Button" class="${cssClass.button}" data-dojo-attach-point="_closeBtn" data-dojo-attach-event="onClick:_handleCancelButtonClick">
-        ${i18n.cancel}
-      </div>
-    </div>
+  </div>
 </div>

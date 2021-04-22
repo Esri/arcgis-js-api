@@ -49,7 +49,7 @@ layers. Join  Features  joins attributes from one
 feature to another based on spatial, temporal, and attribute
 relationships or some combination of the  three. The tool determines all input features that meet the specified join conditions and joins the second input layer to the first. You can optionally join all features to the matching features or summarize the matching features.
     </p>
-    <p>Join Features can be applied to points, lines, areas, and tables. A temporal join requires that your input data is time-enabled, and a spatial join requires that your data has a geometry. 
+    <p>Join Features can be applied to points, lines, areas, and tables. A temporal join requires that your input data be time-enabled, and a spatial join requires that your data have a geometry. 
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -88,7 +88,7 @@ relationships or some combination of the  three. The tool determines all input f
                 </ul>
                 
             </p>
-            <p>For example, suppose you wanted to find supermarkets within 2 kilometers of a farmer's market.   In this case, the target layer has a single feature representing a farmer's market, and the join layer represents the local grocery stores and has attributes such as total annual sales. Using the Join Features tool, you find that five grocery stores meet the criteria. If you specified a join operation of  <b>Join one to many</b>, you would end up with five features in your result, each row representing the farmer's market and a supermarket. If you specified a <b>Join one to one</b> relationship, you would end up with one feature representing the farmer's market and the summarized information from the supermarkets, such as the count (2), and other statistics such as the sum of annual sales.
+            <p>For example, suppose you wanted to find supermarkets within 2 kilometers of a farmers market.   In this case, the target layer has a single feature representing a farmers market, and the join layer represents the local grocery stores and has attributes such as total annual sales. Using the Join Features tool, you find that five grocery stores meet the criteria. If you specified a join operation of  <b>Join one to many</b>, you would end up with five features in your result, each row representing the farmers market and a supermarket. If you specified a <b>Join one to one</b> relationship, you would end up with one feature representing the farmers market and the summarized information from the supermarkets, such as the count (2), and other statistics such as the sum of annual sales.
             </p>
         </div>
     </div>
@@ -140,16 +140,6 @@ relationships or some combination of the  three. The tool determines all input f
             </p>
         </div>
     </div>
-    <div id="nearSpatial">
-        <div><h2></h2></div>
-        <hr/>
-        <div>
-            <p> Specifies the radius applied to a spatial near relationship.
-            </p>
-            <p>For example, if you had a dataset representing a nuclear plant and a dataset representing residences, you could set a 1 kilometer nearSpatial distance to find houses within 1 kilometer of the nuclear plant.
-            </p> 
-        </div>
-    </div>
     <div id="temporalRelationship">
         <div><h2>Choose a temporal relationship</h2></div>
         <hr/>
@@ -191,17 +181,6 @@ relationships or some combination of the  three. The tool determines all input f
             </p>
         </div>
     </div>
-    <div id="nearTemporal">
-        <div><h2></h2></div>
-        <hr/>
-        <div>
-            
-            <p>Specifics the temporal radius applied to a temporal near relationship. A temporal near relationship includes  <b>Near</b>, <b>Near Before</b>, and <b>Near After</b>.
-            </p>
-            <p>For example, if you have a layer of boating incidents and a layer of GPS tracks for a hurricane, you could look for boating incidents within a specified distance of hurricane tracks in both space (1 kilometer) and time (5 hours). This would result in boating incidents joined to hurricanes that occurred close together in space and time.
-            </p>
-        </div>
-    </div>
     <div id="attributeRelationship">
         <div><h2>Choose the fields to match</h2></div>
         <hr/>
@@ -218,7 +197,7 @@ relationships or some combination of the  three. The tool determines all input f
         <div>
             <p>Calculates statistics on the joined features if the join operation is  <b>Join one to one</b>. All statistics will be calculated by default.
             </p>
-            <p>You can calculate statistics on features that are summarized. On numeric fields, you can calculate the following: 
+            <p>You can calculate statistics on features that are summarized. On numeric fields, you can calculate the following:
                 <ul>
                     <li>Count&mdash;Calculates the number of nonnull values. It can be used on numeric fields or strings. The count of [null, 0, 2] is 2.
                     </li>
@@ -264,11 +243,20 @@ relationships or some combination of the  three. The tool determines all input f
             </p>
         </div>
     </div>
+    <div id="keepTargetFeatures">
+        <div><h2>Keep all target features</h2></div>
+        <hr/>
+        <div>
+            <p>By default, only matching features between the target layer and the join layer are returned in the result layer (an inner join). When enabled, the  <b>Keep all target features</b> parameter will 
+change the output to include all features in the target layer regardless of whether they match features in the join layer (a left outer join). This option is only available for one to one joins.
+            </p>
+        </div>
+    </div>
     <div id="dataStore">
         <div><h2>Choose datastore</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to a data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store, and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -286,7 +274,7 @@ relationships or some combination of the  three. The tool determines all input f
         <hr/>
         <div>
             <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify

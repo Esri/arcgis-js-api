@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Distance Allocation</h2><p/>
+        <h2><img src="./images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Distance Allocation tool illustration"></h2>
+        <hr/>
+    <p>This tool calculates distance allocation for each cell to the provided sources based on straight-line distance, cost distance, true surface distance, and vertical and horizontal factors.
+    </p>
+    <p>Example applications include answering questions such as the following:
+
+        <ul>
+            <li>Identifies the allocated areas that fieldworkers are responsible for covering. 
+                
+
+            </li>
+            <li>Identifies areas that are allocated to habitat patches for bobcats.
+            </li>
+        </ul>
+        
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer that are visible within the current map extent will be analyzed. If unchecked, all features in the input layer will be analyzed, even if they are outside the current map display extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Choose source raster or features</h2></div>
+        <hr/>
+        <div>
+            <p>A raster or feature layer that identifies the sources to which the distance will be calculated. 
+            </p>
+            <p>If the input is a raster, it must consist of cells that have valid values (zero is a valid value) for the sources, and the remaining cells must be assigned NoData.
+            </p>
+            <p>If the input is a feature layer, it can be point, line, or polygon.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Source field (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The field used to assign values to the source locations. It must be of type integer.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Choose barrier raster or features (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The dataset that defines the barriers.
+            </p>
+            <p>For a raster layer, the input type can be integer or float. Any cells that have a value (including zero) will be treated as a barrier. Any cells that are NoData will not be treated as a barrier.
+            </p>
+            <p>For a feature service, the input can be point, line, or polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Choose surface raster (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the elevation values at each cell location.
+            </p>
+            <p>The values are used to calculate the actual surface distance covered when passing between cells.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Choose cost raster (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the impedance, or cost, to move planimetrically through each cell.
+            </p>
+            <p>The value at each cell location represents the cost-per-unit distance for moving through the cell. Each cell location value is multiplied by the cell resolution while also compensating for diagonal movement to obtain the total cost of passing through the cell.
+            </p>
+            <p>The values of the cost raster can be integer or floating point, but they cannot be negative or zero (you cannot have a negative or zero cost).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Choose vertical raster (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the z-values for each cell location.
+            </p>
+            <p>The values are used for calculating the slope that is used to identify the vertical factor incurred when moving from one cell to another.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertical factor (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The  <b>Vertical factor</b> defines the relationship between the vertical cost factor and the vertical relative moving angle.
+            </p>
+            <p>There are several factors with modifiers from which to select that identify a defined vertical factor graph. The graphs are used to identify the vertical factor used in calculating the total cost for moving into a neighboring cell.
+            </p>
+            <p>In the descriptions below, vertical factor (VF) defines the vertical difficulty encountered in moving from one cell to the next, and the vertical relative moving angle (VRMA) modifier identifies the slope angle between the  <b>From source</b> cell and the <b>To source</b> cell.
+                <ul>
+                    <li> <b>Binary</b>&mdash;If the VRMA is greater than the low-cut angle and less than the high-cut angle, the VF is set to the value associated with the zero factor; otherwise, it is infinity.
+                    </li>
+                    <li> <b>Linear</b>&mdash;The VF is a linear function of the VRMA.
+                    </li>
+                    <li> <b>Inverse linear</b>&mdash;The VF is an inverse linear function of the VRMA.
+                    </li>
+                    <li> <b>Symmetric linear</b>&mdash;The VF is a linear function of the VRMA in either the negative or positive side of the VRMA, and the two linear functions are symmetrical with respect to the VF (y) axis.
+                    </li>
+                    <li> <b>Symmetric inverse linear</b>&mdash;The VF is an inverse linear function of the VRMA in either the negative or positive side of the VRMA, and the two linear functions are symmetrical with respect to the VF (y) axis.
+                    </li>
+                    <li> <b>Cos</b>&mdash;The VF is the cosine-based function of the VRMA.
+                    </li>
+                    <li> <b>Sec</b>&mdash;The VF is the secant-based function of the VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;The VF is the cosine-based function of the VRMA when the VRMA is negative and is the secant-based function of the VRMA when the VRMA is nonnegative.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;The VF is the secant-based function of the VRMA when the VRMA is negative and is the cosine-based function of the VRMA when the VRMA is nonnegative.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>The modifiers to the vertical parameters are as follows:
+
+                <ul>
+                    <li> <b>Zero factor</b>&mdash;The vertical factor used when the VRMA is zero. This factor positions the y-intercept of the specified function. By definition, the zero factor is not applicable to any of the trigonometric vertical functions (Cos, Sec, Cos-Sec, or Sec-Cos). The y-intercept is defined by these functions.
+                    </li>
+                    <li> <b>Low cut angle</b>&mdash;The VRMA angle below which the VF will be set to infinity.
+                    </li>
+                    <li> <b>High cut angle</b>&mdash;The VRMA angle above which the VF will be set to infinity.
+                    </li>
+                    <li> <b>Slope</b>&mdash;The slope of the straight line used with the <b>Linear</b> and <b>Inverse linear</b> parameters. The slope is specified as a fraction of rise over run (for example, 45 percent slope is 1/45, which is input as 0.02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Choose horizontal raster (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the horizontal direction at each cell.
+            </p>
+            <p>The values on the raster must be integers ranging from 0 to 360, with 0 degrees being north, or toward the top of the screen, and increasing clockwise. Flat areas should be given a value of -1. The values at each location will be used in conjunction with the  <b>Horizontal factor</b> to determine the horizontal cost incurred when moving from a cell to its neighbors.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontal factor (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The  <b>Horizontal factor</b> defines the relationship between the horizontal cost factor and the horizontal relative moving angle.
+            </p>
+            <p>There are several factors with modifiers from which to select that identify a defined horizontal factor graph. The graphs are used to identify the horizontal factor that is used in calculating the total cost of moving into a neighboring cell.
+            </p>
+            <p>In the descriptions below, horizontal factor (HF) defines the horizontal difficulty encountered when moving from one cell to the next, and horizontal relative moving angle (HRMA) identifies the angle between the horizontal direction from a cell and the moving direction.
+            </p>
+            <p>The definitions and parameters of these HF are as follows:
+
+                <ul>
+                    <li> <b>Binary</b>&mdash;If the HRMA is less than the cut angle, the HF is set to the value associated with the zero factor; otherwise, it is infinity.
+                        
+
+                    </li>
+                    <li> <b>Forward</b>&mdash;Only forward movement is allowed. The HRMA must be greater than or equal to 0 and less than 90 (0 &lt;= HRMA &lt; 90). If the HRMA is greater than 0 and less than 45 degrees, the HF for the cell is set to the value associated with the zero factor. If the HRMA is greater than or equal to 45 degrees, the side value modifier value is used. The HF for any HRMA equal to or greater than 90 degrees is set to infinity.
+                    </li>
+                    <li> <b>Linear</b>&mdash;The HF is a linear function of the HRMA.
+                        
+
+                    </li>
+                    <li> <b>Inverse linear</b>&mdash;The HF is an inverse linear function of the HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>The modifiers to the horizontal keywords are as follows:
+
+                <ul>
+                    <li> <b>Zero factor</b>&mdash;The horizontal factor used when the HRMA is 0. This factor positions the y-intercept for any of the horizontal factor functions.
+                        
+
+                    </li>
+                    <li> <b>Cut angle</b>&mdash;The HRMA angle beyond which the HF will be set to infinity.
+                        
+
+                    </li>
+                    <li> <b>Slope</b>&mdash;The slope of the straight line used with the <b>Linear</b> and <b>Inverse linear</b> horizontal factor keywords. The slope is specified as a fraction of rise over run (for example, 45 percent slope is 1/45, which is input as 0.02222).
+                        
+
+                    </li>
+                    <li> <b>Side Value</b>&mdash;The HF when the HRMA is greater than or equal to 45 degrees and less than 90 degrees when the <b>Forward</b> horizontal factor keyword is specified.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Initial accumulation</h2></div>
+        <hr/>
+        <div>
+            <p>The initial accumulative cost to begin the cost calculation.
+            </p>
+            <p>This allows for the specification of the fixed cost associated with a source. Instead of starting at a cost of zero, the cost algorithm will begin with the value set by  <b>Initial accumulation</b>.
+            </p>
+            <p>The values must be zero or greater. The default is 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximum accumulation</h2></div>
+        <hr/>
+        <div>
+            <p>The maximum accumulation for the traveler for a source.
+            </p>
+            <p>The cost calculations continue for each source until the specified accumulation is reached.
+            </p>
+            <p>The values must be greater than zero. The default accumulation is to the edge of the output raster.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Cost multiplier</h2></div>
+        <hr/>
+        <div>
+            <p>The multiplier to apply to the cost values.
+            </p>
+            <p>This allows for control of the mode of travel or the magnitude at a source. The greater the multiplier, the greater the cost to move through each cell.
+            </p>
+            <p>The values must be greater than zero. The default is 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Travel direction</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the direction of the traveler when applying horizontal and vertical factors.
+            </p>
+            <p> <b>From source</b>&mdash;The horizontal factor and vertical factor will be applied beginning at the input source and travel out to the nonsource cells. This is the default.
+            </p>
+            <p> <b>To source</b>&mdash;The horizontal factor and vertical factor will be applied beginning at each nonsource cell and travel back to the input source.
+            </p>
+            <p>Specify the  <b>From source</b> or <b>To source</b> keyword, which will be applied to all sources, or specify a field in the source data that contains the keywords to identify the direction of travel for each source. That field must contain the string <code>FROM_SOURCE</code> or <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Distance method (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether to calculate the distance using a planar (flat earth) or a geodesic (ellipsoid) method.
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;The distance calculation will be performed on a projected flat plane using a 2D Cartesian coordinate system. This is the default method.
+                    
+
+                </li>
+                <li> <b>Geodesic</b>&mdash;The distance calculation will be performed on the ellipsoid. Therefore, regardless of input or output projection, the results do not change.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Result distance allocation raster name</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Result distance accumulation raster name</h2></div>
+        <hr/>
+        <div>
+            <p>The distance accumulation raster contains the accumulative distance for each cell from, or to, the least-cost source.
+            </p>
+            <p>The output raster is of type float.
+            </p>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Result back direction raster name (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The back direction raster contains the calculated direction in degrees. The direction identifies the next cell along the shortest path back to the closest source while avoiding barriers.
+            </p>
+            <p>The range of values is from 0 degrees to 360 degrees, with 0 reserved for the source cells. Due east (right) is 90, and the values increase clockwise (180 is south, 270 is west, and 360 is north).
+            </p>
+            <p>The output raster is of type float.
+            </p>
+            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not currently exist in <b>My Content</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Result source direction raster name (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The source direction raster identifies the direction of the least accumulated cost source cell as an azimuth in degrees.
+            </p>
+            <p>The range of values is from 0 degrees to 360 degrees, with 0 reserved for the source cells. Due east (right) is 90, and the values increase clockwise (180 is south, 270 is west, and 360 is north).
+            </p>
+            <p>The output raster is of type float.
+            </p>
+            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not currently exist in <b>My Content</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Result source location raster name (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The source location raster is a multiband output. The first band contains a row index, and the second band contains a column index. These indexes identify the location of the source cell that is the least accumulated cost distance away.
+            </p>
+            <p>The name of the layer that will be created in  <b>My Content</b>. You must provide a name that does not currently exist in <b>My Content</b>.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

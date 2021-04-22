@@ -64,7 +64,7 @@
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
-GEMI, uydu g&ouml;r&uuml;nt&uuml;lerinden global &ccedil;evre izleme i&ccedil;in kullanılan doğrusal olmayan bir bitki &ouml;rt&uuml;s&uuml; indeksidir. NDVI &ouml;ğesine benzer, ancak atmosfer etkilerine karşı duyarlılığı daha d&uuml;ş&uuml;kt&uuml;r. &Ccedil;ıplak toprak tarafından etkilenir; bu nedenle &ccedil;ok seyrek ya da &ccedil;ok yoğun bitki &ouml;rt&uuml;s&uuml; bulunana alanlarda kullanılması &ouml;nerilmez.
+GEMI, uygu g&ouml;r&uuml;nt&uuml;lerinden global &ccedil;evre izleme i&ccedil;in kullanılan doğrusal olmayan bir bitki &ouml;rt&uuml;s&uuml; indeksidir. NDVI &ouml;ğesine benzer, ancak atmosfer etkilerine karşı duyarlılığı daha d&uuml;ş&uuml;kt&uuml;r. &Ccedil;ıplak toprak tarafından etkilenir; bu nedenle &ccedil;ok seyrek ya da &ccedil;ok yoğun bitki &ouml;rt&uuml;s&uuml; bulunana alanlarda kullanılması &ouml;nerilmez.
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
@@ -99,7 +99,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>NIR bandı ve Kırmızı band indekslerini belirtin</h2></div>
+        <div><h2>NIR bandı ve Red bandı indekslerini belirtin</h2></div>
         <hr/>
         <div>
             <p>Yakın kızıl&ouml;tesi (NIR) ve kızıl bantlar i&ccedil;in bant indekslerini belirtin.
@@ -124,7 +124,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div>
             <p>Belirli toprak &ccedil;izgileri i&ccedil;in kızıl (Kızıl) bant yansıma değeri 0 iken yakın kızıl&ouml;tesinin (NIR) değeridir.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , kırmızı 0 iken.
+            <p> <code>(a = NIR - sRed)</code>, kırmızı 0 iken.
             </p> 
             <p>Bu parametre yalnızca D&ouml;n&uuml;şt&uuml;r&uuml;lm&uuml;ş Toprağa G&ouml;re Ayarlı Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;ntemi i&ccedil;in ge&ccedil;erlidir.
             </p>
@@ -136,8 +136,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div>
             <p>SAVI y&ouml;nteminin gerektirdiği yeşil bitki &ouml;rt&uuml;s&uuml; miktarını belirtir.
             </p>
-            <p>Ge&ccedil;erli değerler aşağıdaki gibidir: 
-
+            <p>Ge&ccedil;erli değerler aşağıdaki gibidir:
                 <ul>
                     <li>1 = Yeşil bitki &ouml;rt&uuml;s&uuml; bulunmayan alanlar
                         
@@ -160,7 +159,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Ayarlama faktörü</h2></div>
         <hr/>
         <div>
-            <p>Toprağa G&ouml;re Ayarlanan Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;nteminde gerekli olan, toprak etkisini minimize etmeye yardımcı ayarlama fakt&ouml;r&uuml;n&uuml; belirtir. Varsayılan değer 0.08'dır.
+            <p>Toprağa G&ouml;re Ayarlanan Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;nteminde gerekli olan, toprak etkisini minimize etmeye yardımcı ayarlama fakt&ouml;r&uuml;n&uuml; belirtir. Varsayılan değer 0,08'dir.
             </p>
             <p>D&uuml;ş&uuml;k bir değer toprak etkisinin dikkate alınmadığı anlamına gelir. Y&uuml;ksek bir değer, toprağın sonucunuzu etkileyebileceği anlamına gelir.
             </p>
@@ -170,6 +169,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

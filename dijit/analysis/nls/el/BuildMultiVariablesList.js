@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Επιλογή καταχωρισμένου θεματικού επιπέδου",addAVar:"Προσθήκη μεταβλητής",distToNearest:"Απόσταση ως το πλησιέστερο",attrOfInterest:"Γνώρισμα πλησιέστερου",summaryNearby:"Σύνοψη γειτονικών",summaryIntersecting:"Σύνοψη τεμνόμενων",distToNearestLabel:"Η απόσταση από το κέντρο του bin ως το πλησιέστερο στοιχείο στο θεματικό επίπεδο εισόδου",attrOfInterestLabel:"Η τιμή ενός καθορισμένου πεδίου από το πλησιέστερο στοιχείο από το θεματικό επίπεδο εισόδου",summaryNearbyLabel:"Στατιστικό στοιχείο υπολογισμένο για όλα τα στοιχεία που βρέθηκαν εντός τς καθορισμένης απόστασης από το κέντρο του bin",summaryIntersectingLabel:"Στατιστικό στοιχείο υπολογισμένο για όλα τα στοιχεία που τέμνουν το bin",maxDistancefromCtr:"Μέγιστη απόσταση από το κέντρο του bin",fieldToIncude:"Πεδίο προς συμπερίληψη",statstoCalculate:"Στατιστικό στοιχείο προς υπολογισμό",summFeatuesWithin:"Σύνοψη στοιχείων εντός",layerChangeWarnMsg:"Όσες μεταβλητές έχουν προστεθεί για αυτό το θεματικό επίπεδο εισόδου θα καταργηθούν αν το αλλάξετε.",validationErrorMsg:"Διορθώστε τα λάθη επικύρωσης προτού προσθέσετε νέα μεταβλητή.",atleastOneVarMsg:"Προσθέστε τουλάχιστον μία μεταβλητή σε αυτό το επιλεγμένο θεματικό επίπεδο."});

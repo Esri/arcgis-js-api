@@ -52,8 +52,6 @@
         <div><h2>Trend analiz etmek için çok boyutlu görüntü katmanını seçin</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>&Ccedil;ok boyutlu rasterın analiz edilecek girdi g&ouml;r&uuml;nt&uuml;leme katmanı.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Bir boyut boyunca değişken değerlerini sığdırmak için bir çizgi türü seçin</h2></div>
         <hr/>
         <div>
-            <p>Bir boyut boyunca piksel değerlerini sığdırmak i&ccedil;in kullanılacak &ccedil;izginin t&uuml;r&uuml;n&uuml; belirtir. 
+            <p>Bir boyut boyunca piksel değerlerini sığdırmak i&ccedil;in kullanılacak &ccedil;izginin t&uuml;r&uuml;n&uuml; belirtir.
                 <ul>
                     <li> <b>Lineer</b>&mdash;Değişken piksel değerleri bir lineer trend &ccedil;izgisi boyunca sığdırılır. Varsayılan değerdir.
                     </li>
                     <li> <b>&Uuml;stel</b>&mdash;Değişken piksel değerleri bir ikinci sıra &uuml;stel trend &ccedil;izgisi boyunca sığdırılır.
                     </li>
                     <li> <b>Harmonik</b>&mdash;Değişken piksel değerleri bir harmonik trend &ccedil;izgisi boyunca sığdırılır.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Değişken piksel değerleri, Mann-Kendall trend testi kullanılarak değerlendirilir.
+                    </li>
+                    <li> <b>Mevsimsel-Kendall</b>&mdash;Değişken piksel değerleri, Mevsimsel-Kendall trend testi kullanılarak değerlendirilir.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Mevsimsel dönemin uzunluğu için zaman birimini belirt</h2></div>
+        <hr/>
+        <div>
+            <p>Mevsimsel-Kendall testi yapılırken bir mevsimsel d&ouml;nem uzunluğu i&ccedil;in kullanılacak zaman birimini belirtir.
+                <ul>
+                    <li> <b>G&uuml;nler</b>&mdash;Mevsimsel d&ouml;nemin uzunluk birimi g&uuml;nlerdir. Varsayılan değerdir.
+                    </li>
+                    <li> <b>Aylar</b>&mdash;Mevsimsel d&ouml;nemin uzunluk birimi aylardır.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

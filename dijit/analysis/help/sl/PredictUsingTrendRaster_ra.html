@@ -62,7 +62,7 @@
         <div><h2>Izberi spremenljivko(-e), ki bodo napovedane</h2></div>
         <hr/>
         <div>
-            <p>Spremenljivka ali spremenljivke, ki bodo napovedane vzdolž podane dimenzije. Če ni določene nobene spremenljive, bodo uporabljene vse spremenljivke.
+            <p>Spremenljivka ali spremenljivke, ki bodo napovedane v analizi. Če ni določene nobene spremenljive, bodo uporabljene vse spremenljivke.
             </p>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <div>
             <p>Določi metodo, ki se uporablja za zagotavljanje napovedi vrednosti dimenzije.
                 <ul>
-                    <li> <b>Po vrednosti</b> &ndash; Napoved bo izračunana za posamezno vrednost dimenzije ali za seznam vrednosti dimenzije, kot določeno v naslednjem koraku. To je privzeta nastavitev. Na primer, želite napovedati letne padavine za leta 2050, 2100 in 2150.
+                    <li> <b>Po vrednosti</b> &ndash; Napoved bo izračunana za posamezno vrednost dimenzije ali za seznam vrednosti dimenzije, kot določeno v naslednjem koraku. To je privzeto. Na primer, želite napovedati letne padavine za leta 2050, 2100 in 2150.
                     </li>
                     <li> <b>Po intervalu</b> &ndash; Napoved bo izračunana za interval dimenzije, ki je opredeljen z začetno in končno vrednostjo. Na primer, želite napovedati letne padavine za vsako leto med letoma 2050 in 2150.
                     </li>
@@ -93,6 +93,22 @@
             </p>
         </div>
     </div>
+    <div id="start">
+        <div><h2>Začetek</h2></div>
+        <hr/>
+        <div>
+            <p>Pri napovedi bo uporabljen začetni datum, vi&scaron;ina ali globina intervala dimenzije.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Konec</h2></div>
+        <hr/>
+        <div>
+            <p>Pri napovedi bo uporabljen končni datum, vi&scaron;ina ali globina intervala dimenzije.
+            </p>
+        </div>
+    </div>
     <div id="dimensionInterval">
         <div><h2>Določi interval dimenzije za napoved</h2></div>
         <hr/>
@@ -105,7 +121,7 @@
         <div><h2>Določi število korakov med začetnimi in končnim vrednostmi</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;tevilo korakov med dvema vrednostma dimenzije, vključenima v napoved. Privzeta vrednost je 1.
+            <p>&Scaron;tevilo korakov med dvema vrednostma dimenzije, vključenimi v napoved. Privzeta vrednost je 1.
             </p>
             <p>Na primer, za napoved vrednosti temperature vsakih pet let, uporabite vrednost 5.
             </p>
@@ -123,6 +139,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

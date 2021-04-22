@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["../../declare","../../units","./StudyAreaOptions"],(function(i,t,r){return i("esri.tasks.geoenrichment.RingBuffer",[r],{radii:null,units:null,constructor:function(i){i&&(i.bufferRadii?this.radii=i.bufferRadii:i.radius?this.radii=[i.radius]:i.radii&&(this.radii=i.radii),this.units=i.bufferUnits||i.units),this.radii||(this.radii=[1]),this.units||(this.units=t.MILES)},toJson:function(){return{areaType:"RingBuffer",bufferUnits:this.units,bufferRadii:this.radii}}})}));

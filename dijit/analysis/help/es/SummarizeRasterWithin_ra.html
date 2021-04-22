@@ -44,7 +44,7 @@
         <h2>Resumir ráster dentro de</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Herramienta Resumir r&aacute;ster dentro de"></h2>
         <hr/>
-    <p>Esta herramienta resume un r&aacute;ster basado en &aacute;reas (zonas) definidas por la primera capa de entrada.
+    <p>Esta herramienta resume el valor de un r&aacute;ster dentro de las zonas de otro dataset.
     </p>
     <p>A continuaci&oacute;n se indican algunas aplicaciones de ejemplo:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n las entidades de la capa de entrada y la capa que se va a resumir que est&eacute;n visibles en la extensi&oacute;n de mapa actual.  Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las entidades de la capa de entrada y de la capa que se va a resumir, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n las entidades de la capa de entrada y la capa que se va a resumir que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las entidades de la capa de entrada y de la capa que se va a resumir, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>Una vez que haya elegido una capa para resumir, podr&aacute; calcular estad&iacute;sticas sobre cualquier atributo num&eacute;rico de los puntos, l&iacute;neas o &aacute;reas dentro de la capa de &aacute;rea de entrada.
             </p>
-            <p>Los tipos de estad&iacute;sticas que est&aacute;n disponibles cuando el campo seleccionado es un entero son: Media, Mayor&iacute;a, M&aacute;ximo, Mediana, M&iacute;nimo, Minor&iacute;a, Rango, Desviaci&oacute;n est&aacute;ndar, Suma y Variedad.
+            <p>Los tipos de estad&iacute;sticas que est&aacute;n disponibles cuando el campo seleccionado es un entero son: Media, Mayor&iacute;a, M&aacute;ximo, Mediana, M&iacute;nimo, Minor&iacute;a, Percentil, Rango, Desviaci&oacute;n est&aacute;ndar, Suma y Variedad.
             </p>
             <p>Si el campo es de punto flotante, las opciones son: Valor medio, M&aacute;ximo, M&iacute;nimo, Rango, Desviaci&oacute;n est&aacute;ndar y Suma.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>El percentil que se va a calcular. El valor predeterminado es 90, que indica el 90.&ordm; percentil.
+            </p>
+            <p>Los valores pueden variar de 0 a 100. El 0.&ordm; percentil equivale en esencia a la estad&iacute;stica m&iacute;nimo, mientras que el 100.&ordm; percentil equivale a la estad&iacute;stica m&aacute;ximo. Un valor de 50 generar&aacute; en esencia el mismo resultado que la estad&iacute;stica mediana.
+            </p>
+            <p>Esta opci&oacute;n solo se admite si el valor del par&aacute;metro  <b>Elija una estad&iacute;stica para calcular</b> es <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Procesar como multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica c&oacute;mo se procesan los r&aacute;steres de entrada si son multidimensionales. Si se opta por procesar como multidimensional, las estad&iacute;sticas se calculan a partir de todas las dimensiones del dataset multidimensional de entrada. De lo contrario, las estad&iacute;sticas se calculan a partir del fragmento actual del dataset multidimensional de entrada, que es el predeterminado.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

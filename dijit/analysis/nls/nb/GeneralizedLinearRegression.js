@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalisert lineær regresjon - ${goal}",fit:"Tilpass",fitAndPredict:"Tilpass og forutsi",selectGoal:"Hva vil du gjøre?",fitGoal:"Tilpass en modell til å vurdere modellytelsen",fitAndPredictGoal:"Tilpass en modell og forutsi verdier",inputLayerLabel:"Velg laget det skal genereres en modell fra",chooseDependentField:"Velg feltet som skal modelleres",chooseDataType:"Velg typen data som skal modelleres",continuousData:"Kontinuerlig",binaryData:"Binær",countData:"Antall",chooseExplanatoryField:"Velg forklarende felt",chooseFeaturesToPredict:"Velg et lag det skal forutsis verdier for",chooseExplainMatch:"Velg hvordan forklarende felt skal matches",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Geoobjektlag generert ved å kjøre Generalisert lineær regresjon ${goal}-løsningene.",itemTags:"Analyseresultat, Generalisert lineær regresjon, ${inputLayerName}, ${goal}",itemSnippet:"Geoobjektlag generert fra Generalisert lineær regresjon ${goal}"});

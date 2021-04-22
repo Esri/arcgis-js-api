@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"A többváltozós táblázat felépítéséhez használt gyűjtők típusának kiválasztása",layersAttrLabel:"A táblázatban használni kívánt bemenő rétegek és változók kiválasztása",itemDescription:"A többváltozós rácsháló felépítése függvény futtatásából létrehozott vektoros réteg.",itemTags:"Az elemzés végeredménye, többváltozós rácsháló felépítése",itemSnippet:"A többváltozós rácsháló felépítése függvény alapján létrehozott vektoros réteg",addVariables:"Változók hozzáadása"});

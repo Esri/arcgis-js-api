@@ -44,7 +44,7 @@
         <h2>Koosta rasteri sijainnissa</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Koosta rasteri sijainnissa -ty&ouml;kalu"></h2>
         <hr/>
-    <p>T&auml;m&auml; ty&ouml;kalu koostaa rasterin ensimm&auml;isess&auml; l&auml;ht&ouml;aineiston karttatasossa m&auml;&auml;ritettyjen alueiden (vy&ouml;hykkeiden) perusteella.
+    <p>T&auml;m&auml; ty&ouml;kalu laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml;.
     </p>
     <p>Seuraavassa on luettelo joistakin sovelluksista:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Valittuasi tason, josta yhteenveto laaditaan, voit vaihtoehtoisesti laskea tilastotietoja l&auml;ht&ouml;aineiston aluekarttatason pisteiden, viivojen tai alueiden kaikille numeromuotoisille ominaisuustiedoille.
             </p>
-            <p>Kun valittu kentt&auml; on kokonaisluku, k&auml;ytett&auml;viss&auml; ovat seuraavat tilastotietojen tyypit: Keskiarvo, Enemmist&ouml;, Maksimi, Mediaani, Minimi, V&auml;hemmist&ouml;, Vaihteluv&auml;li, Keskihajonta, Summa ja Diversiteetti.
+            <p>Kun valittu kentt&auml; on kokonaisluku, k&auml;ytett&auml;viss&auml; ovat seuraavat tilastotietojen tyypit: Keskiarvo, Enemmist&ouml;, Maksimi, Mediaani, Minimi, V&auml;hemmist&ouml;, Prosenttipiste, Vaihteluv&auml;li, Keskihajonta, Summa ja Diversiteetti.
             </p>
             <p>Jos kentt&auml; on liukuluku, k&auml;ytett&auml;viss&auml; ovat seuraavat tyypit: Keskiarvo, Maksimi, Minimi, Vaihteluv&auml;li, Keskihajonta ja Summa.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Prosenttiarvo</h2></div>
+        <hr/>
+        <div>
+            <p>Laskettava prosenttipiste. Oletusarvo on 90, joka tarkoittaa 90. prosenttipistett&auml;.
+            </p>
+            <p>Arvot voivat olla 0&ndash;100. 0. prosenttipiste vastaa periaatteessa Minimi-tilastotietoa, ja 100. prosenttipiste Maksimi-tilastotietoa. Arvo 50 tuottaa saman tuloksen kuin Mediaani-tilastotieto.
+            </p>
+            <p>T&auml;t&auml; vaihtoehtoa tuetaan vain, jos  <b>Valitse laskettava tilastotieto</b> -parametrin arvoksi on m&auml;&auml;ritetty <b>Prosenttipiste</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Käsittele moniulotteisena</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml;, miten l&auml;ht&ouml;aineiston rasterit k&auml;sitell&auml;&auml;n, jos ne ovat moniulotteisia. Jos valitset niiden k&auml;sittelemisen moniulotteisina, tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n kaikista ulottuvuuksista. Muuten tilastotiedot lasketaan oletuksena l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n nykyisest&auml; viipaleesta.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
             <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.

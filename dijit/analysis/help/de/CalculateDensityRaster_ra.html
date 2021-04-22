@@ -46,26 +46,25 @@
         <hr/>
     <p>Dieses Werkzeug erstellt eine Dichtekarte aus Punkt- oder Linien-Features, indem bekannte Mengen eines Ph&auml;nomens (als Attribute der Punkte oder Linien dargestellt) auf der Karte verteilt werden. Das Resultat ist ein Layer mit Fl&auml;chen, die von geringster bis h&ouml;chster Dichte klassifiziert sind.
     </p>
-    <p>Bei der Punkteingabe stellt jeder Punkt die Position eines Ereignisses und der Ergebnis-Layer die Anzahl der Ereignisse pro Fl&auml;cheneinheit dar. Ein h&ouml;herer Dichtewert an einer neuen Position bedeutet, dass sich mehr Punkte in der N&auml;he dieser Position befinden. In vielen F&auml;llen kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Ereignisse interpretiert werden. Wenn die Eingabepunkte beispielsweise Positionen mit Blitzeinschl&auml;gen darstellen, kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Blitzeinschl&auml;ge interpretiert werden.
+    <p>Bei der Punkteingabe stellt jeder Punkt die Position eines Ereignisses und der Ergebnis-Layer die Anzahl der Ereignisse pro Fl&auml;cheneinheit dar. Ein h&ouml;herer Dichtewert an einer neuen Position bedeutet, dass sich mehr Punkte in der N&auml;he dieser Position befinden. In vielen F&auml;llen kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Ereignisse interpretiert werden. Wenn die Eingabepunkte beispielsweise Positionen mit Blitzeinschl&auml;gen darstellen, kann der Ergebnis-Layer als Risikooberfl&auml;che f&uuml;r zuk&uuml;nftige Blitzeinschl&auml;ge interpretiert werden.
     </p>
     <p>Bei der Linieneingabe stellt die Oberfl&auml;che der Liniendichte die Gesamtzahl der Linien dar, die sich in der N&auml;he einer Position befinden. Die Einheit der berechneten Dichtewerte ist die Linienl&auml;nge pro Fl&auml;cheneinheit. Wenn die Linien beispielsweise Fl&uuml;sse darstellen, stellt der Ergebnis-Layer die Gesamtl&auml;nge von Fl&uuml;ssen innerhalb des Suchradius dar. Anhand dieses Ergebnisses k&ouml;nnen Fl&auml;chen identifiziert werden, die f&uuml;r Weidetiere geeignet sind.
     </p>
     <p>Nachfolgend finden Sie weitere Anwendungsf&auml;lle dieses Werkzeugs:
-
         <ul>
             <li>Erstellung von Kriminalit&auml;tsdichtekarten, um Polizeidienststellen bei der entsprechenden Zuteilung von Ressourcen zu unterst&uuml;tzen.
                 
  
             </li>
-            <li>Berechnung der Krankenhausdichte in einem Bezirk. Der Ergebnis-Layer zeigt Fl&auml;chen mit hoher und niedriger Erreichbarkeit von Krankenh&auml;usern. Anhand dieser Informationen kann entschieden werden, ob neue Krankenh&auml;user gebaut werden m&uuml;ssen.
+            <li>Berechnung der Krankenhausdichte in einem Bezirk. Der Ergebnis-Layer zeigt Fl&auml;chen mit hoher und niedriger Erreichbarkeit von Krankenh&auml;usern und anhand dieser Informationen kann entschieden werden, ob neue Krankenh&auml;user gebaut werden m&uuml;ssen.
                 
  
             </li>
-            <li>Identifikation von Fl&auml;chen, die aufgrund historischer Waldbrandstandorte ein hohes Waldbrandrisiko aufweisen.
+            <li>Identifizieren von Fl&auml;chen, die aufgrund historischer Waldbrandstandorte ein hohes Waldbrandrisiko aufweisen.
                 
  
             </li>
-            <li>Ermittlung von Gemeinden, die weit von wichtigen Fernstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen.
+            <li>Ermitteln von Gemeinden, die weit von wichtigen Fernstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen
                 
 
             </li>
@@ -86,7 +85,7 @@
         <div><h2>Zählfeld verwenden</h2></div>
         <hr/>
         <div>
-            <p>Stellen Sie ein Feld bereit, das die Anzahl der Ereignisse an jeder Position angibt. Wenn Sie beispielsweise &uuml;ber Punkte verf&uuml;gen, die St&auml;dte darstellen, k&ouml;nnen Sie ein Feld als Z&auml;hlfeld f&uuml;r die Einwohnerzahl verwenden. Im resultierenden Bev&ouml;lkerungsdichte-Layer werden in der N&auml;he von St&auml;dten mit gr&ouml;&szlig;eren Einwohnerzahlen gr&ouml;&szlig;ere Bev&ouml;lkerungsdichten dargestellt.
+            <p>Geben Sie ein Feld an, das die Anzahl der Ereignisse an jeder Position angibt. Wenn Sie beispielsweise &uuml;ber Punkte verf&uuml;gen, die St&auml;dte darstellen, k&ouml;nnen Sie ein Feld als Z&auml;hlfeld f&uuml;r die Einwohnerzahl verwenden, und der resultierende Bev&ouml;lkerungsdichte-Layer berechnet gr&ouml;&szlig;ere Bev&ouml;lkerungsdichten in der N&auml;he von St&auml;dten mit gr&ouml;&szlig;eren Einwohnerzahlen.
             </p>
             <p>Bei Verwendung der Standardoption  <b>Keine</b> wird angenommen, dass jede Position eine einzelne Zahl darstellt.
             </p>
@@ -98,7 +97,7 @@
         <div>
             <p>Geben Sie eine Entfernung ein, die angibt, in welchem Umkreis nach Punkt- oder Linien-Features bei der Berechnung von Dichtewerten gesucht werden soll. Wenn Sie beispielsweise eine Suchentfernung von 10.000 Metern angeben, wird die Dichte jeder Position im Ausgabe-Layer basierend auf Features berechnet, die sich innerhalb einer Entfernung von 10.000 Metern von der Position befinden. Jede Position, die keine Ereignisse innerhalb von 10.000 Metern aufweist, erh&auml;lt einen Dichtewert von Null.
             </p>
-            <p>Wenn keine Entfernung angegeben wird, wird ein Standardwert berechnet, der auf den Positionen der Eingabe-Features und den Werten im Z&auml;hlfeld (falls ein Z&auml;hlfeld festgelegt wurde) basiert.
+            <p>Wenn keine Entfernung angegeben wird, wird ein Standardwert berechnet, der auf den Positionen der Eingabe-Features und den Werten im Z&auml;hlfeld (falls ein Z&auml;hlfeld bereitgestellt wurde) basiert.
             </p>
         </div>
     </div>
@@ -106,7 +105,7 @@
         <div><h2>Ausgabe-Flächeneinheiten</h2></div>
         <hr/>
         <div>
-            <p>Geben Sie die Ausgabe-Fl&auml;cheneinheit an. Dichte ist die Anzahl geteilt durch die Fl&auml;che. Mit diesem Parameter wird festgelegt, in welcher Einheit die Fl&auml;che in der Dichteberechnung angegeben wird.
+            <p>Geben Sie die Ausgabe-Fl&auml;cheneinheit an. Dichte ist die Anzahl geteilt durch die Fl&auml;che, und dieser Parameter gibt die Einheit der Fl&auml;che in der Dichteberechnung an.
             </p>
             <p>Die verf&uuml;gbaren Fl&auml;cheneinheiten sind Quadratmeilen, Quadratfu&szlig;, Quadratmeter und Quadratkilometer.
             </p>
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Barrieren-Features auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Dataset, das die Barrieren definiert.
+            </p>
+            <p>Die Barrieren k&ouml;nnen Feature-Layer mit Polylinien- oder Polygon-Features sein.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

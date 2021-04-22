@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Akumulasi Jarak</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustrasi alat Akumulasi Jarak"></h2>
+        <hr/>
+    <p>Alat ini menghitung jarak terakumulasi untuk setiap sel ke sumber, memungkinkan jarak garis lurus, jarak biaya, jarak permukaan sebenarnya, dan faktor vertikal dan horizontal.
+    </p>
+    <p>Contoh aplikasi mencakup menjawab pertanyaan seperti berikut:
+        <ul>
+            <li>Berapa jarak ke kota terdekat?
+                
+
+            </li>
+            <li>Berapa jarak ke jalan terdekat?
+                
+
+            </li>
+            <li>Berapa jarak melalui penghalang untuk menuju ke sumber air terdekat?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, hanya fitur-fitur di layer input yang terlihat dalam lingkup peta saat ini yang akan dianalisis. Jika tidak dicentang, semua fitur di layer input akan dianalisis, meskipun mereka berada di luar tampilan layar peta saat ini.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur sumber</h2></div>
+        <hr/>
+        <div>
+            <p>Raster atau feature layer yang mengidentifikasi sumber yang jaraknya akan dihitung.
+            </p>
+            <p>Jika input berupa raster, input harus terdiri dari sel yang memiliki nilai valid (nol adalah nilai valid) untuk sumber, dan sel yang tersisa harus diberi NoData.
+            </p>
+            <p>Jika input berupa feature layer, input harus berupa titik, garis, atau poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Pilih raster atau fitur penghalang (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Set data yang menentukan penghalang.
+            </p>
+            <p>Untuk layer raster, jenis input dapat berupa bilangan bulat atau desimal. Sel yang memiliki nilai (termasuk nol) akan dianggap sebagai penghalang. Sel yang memiliki NoData tidak akan dianggap sebagai penghalang.
+            </p>
+            <p>Untuk feature service, input bisa berupa titik, garis, atau poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Pilih raster permukaan (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster yang mendefinisikan nilai elevasi di setiap lokasi sel.
+            </p>
+            <p>Nilai-nilai ini digunakan untuk menghitung jarak permukaan aktual yang tercakup saat berpindah antar sel.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Pilih raster biaya (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster yang menentukan impedansi, atau biaya, untuk bergerak secara planimetri melalui setiap sel.
+            </p>
+            <p>Nilai di setiap lokasi sel mewakili jarak biaya-per-unit untuk bergerak melalui sel. Setiap nilai lokasi sel dikalikan dengan resolusi sel, sementara juga mengkompensasi gerakan diagonal untuk mendapatkan biaya total melewati sel.
+            </p>
+            <p>Nilai-nilai dari raster biaya dapat berupa bilangan bulat atau bilangan titik mengambang, tetapi tidak boleh negatif atau nol (Anda tidak dapat memiliki biaya negatif atau nol).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Pilih raster vertikal (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster yang menentukan nilai z di setiap lokasi sel.
+            </p>
+            <p>Nilai digunakan untuk menghitung kemiringan yang digunakan untuk mengidentifikasi faktor vertikal yang terjadi ketika berpindah dari satu sel ke sel lainnya.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Faktor vertikal (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Faktor vertikal</b> menentukan hubungan antara faktor biaya vertikal (VF) dan sudut pergerakan relatif vertikal (VRMA).
+            </p>
+            <p>Ada beberapa faktor dengan pengubah yang dapat Anda pilih yang mengidentifikasi grafik faktor vertikal yang ditentukan. Grafik digunakan untuk mengidentifikasi faktor vertikal yang digunakan dalam menghitung total biaya untuk pindah ke sel terdekat lain.
+            </p>
+            <p>Dalam penjelasan di bawah, VF menentukan halangan vertikal yang dialami saat berpindah antar sel, dan pengubah VRMA mengidentifikasi sudut kemiringan antara sel  <b>Dari sumber</b> dan sel <b>Ke sumber</b>.
+                <ul>
+                    <li> <b>Biner</b>&mdash;Jika VRMA lebih besar dari sudut potong rendah dan kurang dari sudut potong tinggi, VF diatur ke nilai yang terkait dengan faktor nol; jika tidak, nilainya menjadi tak hingga.
+                    </li>
+                    <li> <b>Linear</b>&mdash;VF adalah fungsi linear dari VRMA.
+                    </li>
+                    <li> <b>Linear terbalik</b>&mdash;VF adalah fungsi linear terbalik dari VRMA.
+                    </li>
+                    <li> <b>Linear simetris</b>&mdash;VF adalah fungsi linear dari VRMA di sisi negatif atau positif dari VRMA, dan dua fungsi linear simetris dengan sumbu VF (y).
+                    </li>
+                    <li> <b>Linear terbalik simetris</b>&mdash;VF adalah fungsi linear terbalik dari VRMA di sisi negatif atau positif dari VRMA, dan dua fungsi linear simetris dengan sumbu VF (y).
+                    </li>
+                    <li> <b>Cos</b>&mdash;VF adalah fungsi berbasis kosinus dari VRMA.
+                    </li>
+                    <li> <b>Sec</b>&mdash;VF adalah fungsi berbasis sekan dari VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;VF adalah fungsi berbasis kosinus dari VRMA ketika VRMA negatif dan fungsi berbasis sekan dari VRMA ketika VRMA non-negatif.
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;VF adalah fungsi berbasis sekan dari VRMA ketika VRMA negatif dan fungsi berbasis kosinus dari VRMA ketika VRMA non-negatif.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pengubah parameter vertikal adalah sebagai berikut:
+                <ul>
+                    <li> <b>Faktor nol</b>&mdash;Faktor vertikal yang digunakan ketika VRMA nol. Faktor ini menempatkan titik potong-y dari fungsi yang ditentukan. Berdasarkan definisinya, faktor nol tidak akan berlaku untuk fungsi vertikal trigonometri (Cos, Sec, Cos-Sec, atau Sec-Cos). Titik potong-y ditentukan oleh fungsi ini.
+                    </li>
+                    <li> <b>Sudut potong rendah</b>&mdash;Sudut VRMA di bawah VF yang akan diatur ke tak hingga.
+                    </li>
+                    <li> <b>Sudut potong tinggi</b>&mdash;Sudut VRMA di atas VF yang akan diatur ke tak hingga.
+                    </li>
+                    <li> <b>Kemiringan</b>&mdash;Kemiringan garis lurus yang digunakan dengan parameter <b>Linear</b> dan <b>Linear terbalik</b>. Kemiringan ditentukan sebagai pecahan dari kenaikan seiring perjalanan (misalnya, kemiringan 45 persen adalah 1/45, yang dimasukkan inputnya sebagai 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Pilih raster horizontal (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster yang mendefinisikan arah horizontal di setiap sel.
+            </p>
+            <p>Nilai pada raster harus berupa bilangan bulat yang berkisar antara 0 hingga 360, dengan posisi 0 derajat di utara, atau mengarah ke atas layar, dan bertambah searah jarum jam. Area datar harus diberi nilai -1. Nilai-nilai di setiap lokasi akan digunakan bersama  <b>Faktor horizontal</b> untuk menentukan biaya horizontal yang dikeluarkan saat berpindah antar sel.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Faktor horizontal (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Faktor horizontal</b> menentukan hubungan antara faktor biaya horizontal dan sudut pergerakan relatif horizontal.
+            </p>
+            <p>Ada beberapa faktor dengan pengubah yang dapat Anda pilih yang mengidentifikasi grafik faktor horizontal yang ditentukan. Grafik digunakan untuk mengidentifikasi faktor horizontal yang digunakan dalam menghitung total biaya perpindahan ke sel terdekat.
+            </p>
+            <p>Dalam penjelasan di bawah, faktor horizontal (HF) menentukan halangan horizontal yang dialami saat berpindah antar sel, dan sudut pergerakan relatif horizontal (HRMA) mengidentifikasi sudut antara arah horizontal dari sel dan arah pergerakan.
+            </p>
+            <p>Definisi dan parameter HF adalah sebagai berikut:
+                <ul>
+                    <li> <b>Biner</b>&mdash;Jika HRMA kurang dari sudut potong, HF diatur ke nilai yang terkait dengan faktor nol; jika tidak, nilainya tak hingga.
+                        
+
+                    </li>
+                    <li> <b>Maju</b>&mdash;Hanya gerakan maju yang diperbolehkan. HRMA harus lebih besar dari atau sama dengan 0 dan kurang dari 90 (0 &lt;= HRMA &lt; 90). Jika HRMA lebih besar dari 0 dan kurang dari 45 derajat, HF untuk sel diatur ke nilai yang terkait dengan faktor nol. Jika HRMA lebih besar dari atau sama dengan 45 derajat, nilai pengubah nilai sisi yang digunakan. HF untuk nilai HRMA yang sama dengan atau lebih besar dari 90 derajat akan diatur ke tak hingga.
+                        
+
+                    </li>
+                    <li> <b>Linear</b>&mdash;HF adalah fungsi linear dari HRMA.
+                        
+
+                    </li>
+                    <li> <b>Linear terbalik</b>&mdash;HF adalah fungsi linear terbalik dari HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Pengubah kata kunci horizontal adalah sebagai berikut:
+                <ul>
+                    <li> <b>Faktor nol</b>&mdash;Faktor horizontal yang digunakan ketika HRMA nol. Faktor ini menempatkan titik potong-y untuk salah satu fungsi faktor horizontal.
+                        
+
+                    </li>
+                    <li> <b>Sudut potong</b>&mdash;Sudut HRMA di luar HF yang akan diatur ke tak hingga.
+                        
+
+                    </li>
+                    <li> <b>Kemiringan</b>&mdash;Kemiringan garis lurus yang digunakan dengan kata kunci faktor horizontal <b>Linear</b> dan <b>Linear terbalik</b>. Kemiringan ditentukan sebagai pecahan dari kenaikan seiring perjalanan (misalnya, kemiringan 45 persen adalah 1/45, yang dimasukkan inputnya sebagai 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Nilai Sisi</b>&mdash;HF ketika HRMA lebih besar dari atau sama dengan 45 derajat dan kurang dari 90 derajat ketika kata kunci faktor horizontal <b>Maju</b> ditentukan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Akumulasi awal</h2></div>
+        <hr/>
+        <div>
+            <p>Biaya akumulasi awal untuk memulai perhitungan biaya.
+            </p>
+            <p>Ini memungkinkan untuk spesifikasi biaya tetap terkait sumber. Sebagai ganti memulai dengan biaya nol, algoritme biaya akan dimulai dengan set nilai yang ditentukan oleh  <b>Akumulasi awal</b>.
+            </p>
+            <p>Nilai harus nol atau lebih. Default adalah 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Akumulasi maksimal</h2></div>
+        <hr/>
+        <div>
+            <p>Akumulasi maksimal untuk wisatawan untuk suatu sumber.
+            </p>
+            <p>Kalkulasi biaya berlanjut untuk setiap sumber hingga kapasitas yang ditentukan tercapai.
+            </p>
+            <p>Nilai harus lebih besar dari nol. Akumulasi default adalah ke tepi raster output.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Pengganda biaya</h2></div>
+        <hr/>
+        <div>
+            <p>Pengganda yang akan diterapkan pada nilai biaya.
+            </p>
+            <p>Ini berfungsi untuk mengontrol mode perjalanan atau besaran pada sumber. Semakin besar pengganda, semakin besar biaya untuk bergerak melalui setiap sel.
+            </p>
+            <p>Nilai harus lebih besar dari nol. Default adalah 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Arah perjalanan</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan arah wisatawan saat menerapkan faktor horizontal dan vertikal.
+            </p>
+            <p> <b>Dari sumber</b>&mdash;Faktor horizontal dan vertikal akan diterapkan awalnya ke sumber input dan berlanjut ke sel nonsumber. Ini adalah default.
+            </p>
+            <p> <b>Ke sumber</b>&mdash;Faktor horizontal dan vertikal akan diterapkan awalnya ke setiap sel nonsumber dan berlanjut kembali ke sumber input.
+            </p>
+            <p>Tetapkan kata kunci  <b>Dari sumber</b> atau <b>Ke sumber</b>, yang akan diterapkan ke semua sumber, atau tentukan kolom dalam data sumber yang berisi kata kunci untuk mengidentifikasi arah perjalanan untuk setiap sumber. Kolom tersebut harus berisi string <code>FROM_SOURCE</code> atau <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metode jarak (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan apakah jarak dihitung menggunakan metode planar (bumi datar) atau geodesik (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;Penghitungan jarak akan dilakukan pada bidang datar terproyeksi menggunakan sistem koordinat Cartesian 2D. Ini adalah metode default.
+                    
+
+                </li>
+                <li> <b>Geodesik</b>&mdash;Penghitungan jarak akan dilakukan pada elipsoid. Maka dari itu, hasil tidak berubah terlepas dari proyeksi input atau output.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Hasil nama raster akumulasi jarak</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulasi jarak berisi jarak akumulasi untuk setiap sel dari, atau ke, sumber berbiaya terendah.
+            </p>
+            <p>Raster output akan berupa jenis desimal.
+            </p>
+            <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Hasil nama raster arah kembali (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster arah kembali berisi arah yang dihitung dalam derajat. Arah mengidentifikasi sel berikutnya di sepanjang jalur kembali tersingkat ke sumber terdekat sembari menghindari penghalang.
+            </p>
+            <p>Rentang nilai adalah dari 0 derajat ke 360 derajat, dengan 0 dicadangkan untuk sel sumber. Karena timur (kanan) adalah 90 dan nilai meningkat searah jarum jam (180 adalah selatan, 270 adalah barat, dan 360 adalah utara).
+            </p>
+            <p>Raster output akan berupa jenis desimal.
+            </p>
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang belum ada di <b>Konten Saya</b>.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Hasil nama raster arah sumber (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster arah sumber mengidentifikasi arah dari sel sumber dengan biaya akumulasi terendah sebagai azimut dalam derajat.
+            </p>
+            <p>Rentang nilai adalah dari 0 derajat ke 360 derajat, dengan 0 dicadangkan untuk sel sumber. Karena timur (kanan) adalah 90 dan nilai meningkat searah jarum jam (180 adalah selatan, 270 adalah barat, dan 360 adalah utara).
+            </p>
+            <p>Raster output akan berupa jenis desimal.
+            </p>
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang belum ada di <b>Konten Saya</b>.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Hasil nama raster lokasi sumber (opsional)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster lokasi sumber adalah output multiband. Band pertama dan kedua masing-masing berisi indeks baris dan indeks kolom. Indeks tersebut mengidentifikasi lokasi sel sumber yang merupakan jarak biaya akumulasi terendah.
+            </p>
+            <p>Nama layer yang akan dibuat dalam  <b>Konten Saya</b>. Anda harus memberikan nama yang belum ada di <b>Konten Saya</b>.
+            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

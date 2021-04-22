@@ -52,8 +52,6 @@
         <div><h2>Välj flerdimensionellt bildlager för att analysera trend</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Indatabildlagret f&ouml;r ett flerdimensionellt raster som ska analyseras.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Välj typ av linje för att anpassa variabelvärdena längs en dimension</h2></div>
         <hr/>
         <div>
-            <p>Anger typ av linje som ska anv&auml;ndas f&ouml;r anpassning till pixelv&auml;rdena l&auml;ngs en dimension. 
+            <p>Anger typ av linje som ska anv&auml;ndas f&ouml;r anpassning till pixelv&auml;rdena l&auml;ngs en dimension.
                 <ul>
                     <li> <b>Linj&auml;r</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en linj&auml;r trendlinje. Det h&auml;r &auml;r standardinst&auml;llningen.
                     </li>
                     <li> <b>Polynom</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en andra ordnings polynomtrendlinje.
                     </li>
                     <li> <b>Harmonisk</b> &ndash; Variabla pixelv&auml;rden anpassas l&auml;ngs en harmonisk trendlinje.
+                    </li>
+                    <li> <b>Mann-Kendall</b> &ndash; Variabla pixelv&auml;rden kommer att utv&auml;rderas med hj&auml;lp av Mann-Kendall-trendtestet.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b> &ndash; Variabla pixelv&auml;rden kommer att utv&auml;rderas medhj&auml;lp av Seasonal-Kendall-trendtestet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Ange tidsenhet för längden på säsongsperioden</h2></div>
+        <hr/>
+        <div>
+            <p>Anger vilken tidsenhet som ska anv&auml;ndas f&ouml;r l&auml;ngden p&aring; en s&auml;songsperiod n&auml;r Seasonal-Kendall-testet utf&ouml;rs.
+                <ul>
+                    <li> <b>Dagar</b> &ndash; Enheten f&ouml;r s&auml;songsperiodens l&auml;ngd &auml;r dagar. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    </li>
+                    <li> <b>M&aring;nader</b> &ndash; Enheten f&ouml;r s&auml;songsperiodens l&auml;ngd &auml;r m&aring;nader.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

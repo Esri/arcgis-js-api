@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Zonálna štatistika ako tabuľka</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagram zon&aacute;lnej &scaron;tatistiky ako tabuľky"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj sumarizuje hodnoty rastra v r&aacute;mci z&oacute;n in&eacute;ho datasetu a v&yacute;sledky zap&iacute;&scaron;e do tabuľky.
+    </p>
+    <p>Niektor&eacute; pr&iacute;klady aplik&aacute;ci&iacute; obsahuj&uacute; nasledovn&eacute;:
+    </p>
+    <p>
+        <ul>
+            <li>Ak je dan&aacute; vrstva &scaron;t&aacute;tnych hran&iacute;c a distrib&uacute;cia priemern&yacute;ch zr&aacute;žok nad kontinent&aacute;lnymi Spojen&yacute;mi &scaron;t&aacute;tmi, vypoč&iacute;taj distrib&uacute;ciu v&yacute;skytov extr&eacute;mneho dažďa podľa &scaron;t&aacute;tov s použit&iacute;m percentiln&yacute;ch hodn&ocirc;t.
+                
+
+            </li>
+            <li>Ak je dan&aacute; vrstva presahuj&uacute;cich ekologick&yacute;ch z&oacute;n a rastrov&aacute; vrstva vlhkosti p&ocirc;dy, vypoč&iacute;taj v&scaron;etky podporovan&eacute; &scaron;tatistiky v každej z&oacute;ne pre vztiahnutie z&oacute;ny s dostupnou p&ocirc;dnou vlhkosťou.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť s&uacute;časn&yacute; rozsah mapy</b>, analyzovan&eacute; bud&uacute; len prvky vo vstupnej vrstve a vrstve určenej na sumariz&aacute;ciu, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu aj vo vrstve určenej na anal&yacute;zu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Vyberte raster zón alebo prvkov</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva definuj&uacute;ca hranice z&oacute;n alebo oblast&iacute;, ktor&eacute; bud&uacute; sumarizovan&eacute;
+            </p>
+            <p>Vrstva m&ocirc;že byť celoč&iacute;seln&yacute; raster alebo prvkov&eacute; d&aacute;ta. Pre rastre s&uacute; z&oacute;ny definovan&eacute; v&scaron;etk&yacute;mi lokalitami vo vstupe, ktor&eacute; maj&uacute; rovnak&uacute; hodnotu bunky. Pre rastre s&uacute; z&oacute;ny definovan&eacute; v&scaron;etk&yacute;mi lokalitami vo vstupe, ktor&eacute; maj&uacute; rovnak&uacute; hodnotu bunky. Oblasti nemusia byť susediace.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Oblasti nemusia byť susediace.</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je atrib&uacute;t vrstvy, ktor&yacute; sa použije na vymedzenie hran&iacute;c z&oacute;n (oblast&iacute;).
+            </p>
+            <p>Ak napr&iacute;klad prv&aacute; vstupn&aacute; vrstva definuje hranice manažovateľn&yacute;ch jednotiek s atrib&uacute;tmi, ktor&eacute; definuj&uacute; regi&oacute;n, kraj a ID parcely každej jednotky. K dispoz&iacute;cii m&aacute;te tiež rastrov&uacute; vrstvu definuj&uacute;cu index biodiverzity pre každ&uacute; lokalitu. V&yacute;berom poľa sa m&ocirc;žete rozhodn&uacute;ť pre v&yacute;počet priemernej biodiverzity na miestnej, krajskej alebo region&aacute;lnej &uacute;rovni.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Vyberte hodnotu rastra</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrov&eacute; bunky v tejto vrstve bud&uacute; sumarizovan&eacute; podľa oblast&iacute; (z&oacute;n), do ktor&yacute;ch spadaj&uacute;.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovať NoData vo výpočtoch (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či s&uacute; hodnoty NoData v anal&yacute;ze ignorovan&eacute;.
+                <ul>
+                    <li>Za&scaron;krtnut&eacute;&mdash;Anal&yacute;za bude zahŕňať bunky, ktor&eacute; maj&uacute; hodnoty vo vstupnom rastri hodn&ocirc;t v r&aacute;mci niektorej konkr&eacute;tnej z&oacute;ny pre určenie v&yacute;stupnej hodnoty pre t&uacute;to z&oacute;nu. Bunky s NoData v rastri hodn&ocirc;t bud&uacute; v &scaron;tatistickom v&yacute;počte ignorovan&eacute;. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li>Toto je prednastaven&aacute; voľba.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Typ štatistiky (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje typ &scaron;tatistiky, ktor&aacute; sa m&aacute; vypoč&iacute;tať.
+            </p>
+            <p>Vstup m&ocirc;že byť jeden z nasleduj&uacute;cich:  <b>V&scaron;etky</b>, <b>Priemer</b>, <b>V&auml;č&scaron;ina</b>, <b>Maximum</b>, <b>Medi&aacute;n</b>, <b>Minimum</b>, <b>Men&scaron;ina</b>, <b>Percentil</b>, <b>Rozsah</b>, <b>&Scaron;tandardn&aacute; devi&aacute;cia</b>, <b>S&uacute;čet</b>, <b>Rozmanitosť</b>, <b>Minumum a maximum</b>, <b>Priemer a &scaron;tandardn&aacute; odch&yacute;lka</b>, alebo <b>Minimum, maximum a priemer</b>. Prednastaven&aacute; hodnota je <b>V&scaron;etko</b>.
+            </p>
+            <p>Ak je vstupn&yacute; raster hodn&ocirc;t celoč&iacute;seln&yacute;, podľa prednastavenia bud&uacute; vypoč&iacute;tan&eacute; v&scaron;etky &scaron;tatistiky. Ak je raster hodn&ocirc;t typu pohyblivej desatinnej čiarky, podľa prednastavenia bud&uacute; vypoč&iacute;tan&eacute; v&scaron;etky &scaron;tatistiky okrem  <b>Medi&aacute;nu</b> a <b>Percentilu</b>. 
+            </p>
+            <p>Ak je vstupn&yacute; raster hodn&ocirc;t typu pohyblivej desatinnej čiarky, zon&aacute;lne kalkul&aacute;cie pre  <b>V&auml;č&scaron;inu</b>, <b>Men&scaron;inu</b> a <b>Rozmanitosť</b> nem&ocirc;žu byť vypoč&iacute;tan&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Hodnoty percentilu (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Percentily na kalkul&aacute;ciu. M&ocirc;že byť &scaron;pecifikovan&aacute; jedna hodnota alebo zoznam hodn&ocirc;t. Predvolen&aacute; hodnota je 90, čo označuje 90-ty percentil.
+            </p>
+            <p>Hodnoty sa m&ocirc;žu pohybovať od 0 do 100. V&yacute;sledok &scaron;pecifikovan&eacute;ho nult&eacute;ho percentilu je v podstate ekvivalentn&yacute; &scaron;tatistike minima a st&yacute; percentil je ekvivalentn&yacute; &scaron;tatistike maxima. Hodnota 50 prinesie v z&aacute;sade rovnak&yacute; v&yacute;sledok ako &scaron;tatistika Medi&aacute;nu.
+            </p>
+            <p>T&aacute;to možnosť je podporovan&aacute; len keď je parameter  <b>Typ &scaron;tatistiky</b> nastaven&yacute; na <b>Percentil</b> alebo <b>V&scaron;etko</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Typ percentilnej interpolácie (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Určuje met&oacute;du interpol&aacute;cie percentilu, ktor&aacute; sa použije, keď počet hodn&ocirc;t z vstupn&eacute;ho rastra, ktor&eacute; sa maj&uacute; vypoč&iacute;tať, je p&aacute;rny.
+            </p> 
+            <p>Ak vstupn&yacute; raster hodn&ocirc;t obsahuje celoč&iacute;seln&eacute; typy pixelu, potom je použit&aacute; met&oacute;da  <b>Najbliž&scaron;&iacute;</b>. Ak vstupn&yacute; raster hodn&ocirc;t obsahuje pixely typu desatinn&eacute;ho č&iacute;sla, potom je použit&aacute; met&oacute;da <b>Line&aacute;rny</b>. Toto je prednastaven&aacute; voľba.
+            </p>
+            <p>Pre met&oacute;du  <b>Najbliž&scaron;&iacute;</b>, bude použit&aacute; najbliž&scaron;ia dostupn&aacute; hodnota k požadovan&eacute;mu percentilu. Pre met&oacute;du <b>Line&aacute;rny</b>, bude použit&yacute; v&aacute;žen&yacute; priemer dvoch susedn&yacute;ch hodn&ocirc;t k požadovan&eacute;mu percentilu.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Spracovať ako viacrozmerné (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, ako sa bud&uacute; spracov&aacute;vať vstupn&eacute; rastre, ak s&uacute; viacrozmern&eacute;.
+            </p>
+            <ul>
+                <li>Určuje, ako sa bud&uacute; spracov&aacute;vať vstupn&eacute; rastre, ak s&uacute; viacrozmern&eacute;. Toto je prednastaven&aacute; voľba.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnut&eacute;&mdash;&scaron;tatistika bude vypoč&iacute;tan&aacute; pre v&scaron;etky dimenzie vstupn&eacute;ho viacrozmern&eacute;ho datasetu.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Názov tabuľky výsledkov</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

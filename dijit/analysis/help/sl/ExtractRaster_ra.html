@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Ekstrahiraj raster</h2><p/>
+        <h2>Izvleci raster</h2><p/>
         <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Orodje Ekstrahiraj raster za Portal"></h2>
         <hr/>
     <p>To orodje lahko pripne raster k meji, bodisi k pravokotnemu območju ali k obliki, ki jo interaktivno določite na zaslonu. Izsekate lahko na obseg območja, ki je trenutno prikazano na va&scaron;i karti, ali na &scaron;tudijsko območje, določeno s poligonom.
@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Izberite tip obsega, ki ga želite uporabiti pri rezanju geometrije sloja:
-
                 <ul>
                     <li>Uporabi trenutni obseg &ndash; trenutni obseg karte se bo uporabljal za izsek sloja z rezultati. To je privzeto.
                         
 
                     </li>
-                    <li>Izberi &scaron;tudijsko območje &ndash; omogoča vam možnost izbire, ali bodo rezultati prikazali območje znotraj obsega geometrije ali območje zunaj obsega geometrije. Če izberete možnost  <b>Podatki znotraj geometrije</b>, bo odstranjeno slikovje zunaj obsegov. Če izberete možnost <b>Podatki zunaj geometrije</b> bo odstranjeno slikovje znotraj obsegov. Prav tako lahko določite geometrijo izseka s pomočjo orodja za risanje.
+                    <li>Izberi območje raziskave &mdash; Omogoča vam določanje geometrije izseka s pomočjo orodja za risanje.
+                        
+
+                    </li>
+                    <li>Izberi sloj &mdash; Izberite geoobjektni sloj ali slikovni sloj za določanje obsega oz. izberite poligonski geoobjektni sloj za določanje geometrije izseka. Ko je poligonski geoobjektni sloj izbran, se prikaže izbirno polje za določanje, ali boste uporabili vhodne geoobjekte za geometrijo izseka. Po privzeti nastavitvi ni izbran. To pomeni, da se vhodni geoobjektni sloj uporablja za določanje obsega. Če je izbran, to pomeni, da se vhodni geoobjekti uporabljajo za geometrijo izseka.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Določi vrsto izseka</h2></div>
+        <hr/>
+        <div>
+            <p>Določite, ali želite obdržati območje znotraj ali zunaj geometrije izseka:
+                <ul>
+                    <li>Podatki znotraj geometrije &mdash; Slike znotraj obsegov izseka bodo izvlečene. To je privzeto.
+                        
+
+                    </li>
+                    <li>Podatki izven geometrije &mdash; Slike izven obsegov izseka bodo izvlečene.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

@@ -59,7 +59,7 @@
             <p>Ciljni sloj, ki bo imel atribute s spojitvenega sloja, dodane v njegovo tabelo.
             </p>
             <p>Poleg izbire sloja s karte lahko izberete  <b>Izberi sloj za analizo</b> ki se nahaja v spodnjem delu spustnega menija. Ta možnost odpre galerijo, kjer lahko brskate in izberete sklope podatkov iz različnih virov za uporabo v svoji analizi. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -126,14 +126,14 @@
         <div>
             <p>Določa, kako bodo obravnavani spoji med ciljnim in spojitvenim slojem, če bo več geoobjektov v spojitvenem sloju imelo enako relacijo s ciljnim slojem. V nadaljevanju sta dva načina spajanja, med katerimi lahko izbirate:
                 <ul>
-                    <li> <b>Spoji enega z enim</b> &ndash; Ta možnost spoji geoobjekte v ciljnem sloju v en geoobjekt v spojitvenem sloju. Kako so spojeni geoobjekti je doloženo s parametrom <b>Dodaj statistiko</b> ali <b>Določi, kateri zapis se hrani</b>. Če je uporabljen parameter <b>Dodaj statistiko</b>, bodo vsi ujemajoči spojeni geoobjekti povzeti na vsak geoobjekt v ciljnem sloju. Vsota spojenih geoobjektov bo dodana privzeto. Če je uporabljen parameter <b>Določi, kateri zapis se hrani</b>, lahko izberete shranjevanje prvega ujemajočega izpisa (privzeto) ali pa shranjevanje izpisa na podlagi izraza. Izraz lahko uporabi &scaron;tevilsko polje (možnost za največje ali najmanj&scaron;e izpise)ali podatkovno polje (možnost za najnovej&scaron;ega in najstarej&scaron;ega).
+                    <li> <b>Spoji enega z enim</b> &ndash; Ta možnost spoji geoobjekte v ciljnem sloju v en geoobjekt v spojitvenem sloju. Kako so spojeni geoobjekti je doloženo s parametrom <b>Dodaj statistiko</b> ali <b>Določi, kateri zapis se hrani</b>. Če je uporabljen parameter <b>Dodaj statistiko</b>, bodo vsi ujemajoči spojeni geoobjekti povzeti na vsak geoobjekt v ciljnem sloju. Vsota spojenih geoobjektov bo dodana privzeto. Če je uporabljen parameter <b>Določi, kateri zapis se hrani</b>, lahko izberete shranjevanje prvega ujemajočega izpisa (privzeto) ali pa shranjevanje izpisa z najvi&scaron;jo ali najnižjo vredostjo v določenem polju ( <b>Uredi po</b>). Urejanju po izrazu potrebuje &scaron;tevilsko polje (možnost za največje ali najmanj&scaron;e vrednosti) ali podatkovno polje (možnost za najnovej&scaron;ega in najstarej&scaron;ega).
                     </li>
                     <li> <b>Spoji enega z večimi</b> Ta možnost spoji vse ujemajoče geoobjekte v spojitvenem sloju s ciljnim slojem. Sloj z rezultati bo vseboval več zapisov ciljnega geobjekta.
                     </li>
                 </ul>
                 
             </p>
-            <p>Na primer, predpostavite, da želite najti supermarket 5 kilometrov od tržnice. V tem primeru ima sloj, h kateremu so spojeni, en geoobjekt, ki predstavlja tržnico, in spojitvene geoobjekte, ki predstavljajo lokalne trgovine z atributi, kot je skupna letna prodaja. S pomočjo orodja  <b>Spoji geoobjekte</b> najdete teh pet trgovin z živili, ki izpolnjujejo kriterije. Če navedete način spajanja <b>Spoji enega z mnogimi</b>, boste imeli pet geoobjektov v va&scaron;em rezultatu, vsaka vrstica bi predstavljala tržnico in supermarket. Če navedete relacijo <b>Spoji enega z enim</b> in izberete statistiko, boste imeli en geoobjekt, ki predstavlja tržnico in povzete informacije supermarketov, kot so &scaron;tetje (5) in druge izbirne statistike, kot je vsota letne prodaje.
+            <p>Na primer, predpostavite, da želite najti supermarket 5 kilometrov od tržnice. V tem primeru ima sloj, h kateremu so spojeni, en geoobjekt, ki predstavlja tržnico, in spojitvene geoobjekte, ki predstavljajo lokalne trgovine z atributi, kot je skupna letna prodaja. S pomočjo orodja  <b>Spoji geoobjekte</b> najdete teh pet trgovin z živili, ki izpolnjujejo kriterije. Če navedete način spajanja <b>Spoji enega z mnogimi</b>, boste imeli pet geoobjektov v va&scaron;em rezultatu, vsaka vrstica bi predstavljala tržnico in supermarket. Če določite razmerje <b>Spoji eno z drugim</b> in izberete <b>Določi, kateri izpis se hrani</b>, boste dobili en geoobjekt, ki predstavlja kmetijsko tržnico in veleblagovnico &mdash; npr. eno z najvi&scaron;jo letno prodajo. Če namesto tega izberete <b>Dodaj statistiko</b>, boste dobili en geoobjekt, ki predstavlja kmetijsko tržnico in povzetek petih veleblagovnic, kot npr. vsota letne prodaje in &scaron;tetje (5) povzetih veleblagovnic. 
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Ohrani vse ciljne geoobjekte</h2></div>
         <hr/>
         <div>
-            <p>Privzeto so samo ujemajoči se geoobjekti med ciljnim in spojenim slojem poslani nazaj v sloj rezultatov (notranji sloj). Ko je to omogočeno, bo parameter  <b>Ohrani vse ciljne geoobjekte</b>spremenil izhod, da bi vključil vse geoobjekte v ciljni sloj, ne glede na to, ali se ujemajo z geoobjekti v spojenem sloju (levi zunanji sloj).
+            <p>Privzeto so samo ujemajoči se geoobjekti med ciljnim in spojenim slojem poslani nazaj v sloj rezultatov (notranji sloj). Ko je to omogočeno, bo parameter  <b>Ohrani vse ciljne geoobjekte</b> spremenil izhod, da bi vključil vse geoobjekte v ciljni sloj, ne glede na to, ali se ujemajo z geoobjekti v spojenem sloju (levi zunanji sloj).
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Ustvari rezultate kot pogled sloja gostujočega geoobjekta</h2></div>
         <hr/>
         <div>
-            <p> Ustvarjanje rezultatov kot pogleda gostujočega geoobjektnega sloja omogoča, da ostanejo podatki posodobljeni kljub spremembam izvornih podatkov. Pogled gostujočega geoobjektnega sloja, ki vsebuje spoje, bo samo za branje.
+            <p>Ustvarjanje rezultatov kot pogleda gostujočega geoobjektnega sloja omogoča, da ostanejo podatki posodobljeni kljub spremembam izvornih podatkov. Pogled gostujočega geoobjektnega sloja, ki vsebuje spoje, bo samo za branje.
             </p>
+            <p class="OnlineOnly">Pogled gostujočega geoobjektnega sloja, ki vsebuje spoje, ne porablja kreditov za analizo in shranjevanje.
+            </p> 
             <p>Ustvarite lahko pogled gostujočega geoobjektnega sloja iz rezultatov analize, če so izpolnjeni vsi naslednji pogoji:
                 <ul>
                     <li>Ste lastnik obeh slojev.

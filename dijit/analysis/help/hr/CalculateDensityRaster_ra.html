@@ -48,16 +48,15 @@
     </p>
     <p>Za ulazne točke svaka bi točka trebala predstavljati lokaciju nekog događaja ili incidenta, a sloj rezultata predstavlja zbroj incidenata po jediničnom području. Vrijednost veće gustoće na novoj lokaciji znači da ima vi&scaron;e točaka blizu te lokacije. U mnogo slučajeva, sloj rezultata može se protumačiti kao područje rizika za buduće događaje. Na primjer, ako unesene točke predstavljaju lokacije udara munje, sloj rezultata može se protumačiti kao područje rizika za buduće udare munje.
     </p>
-    <p>Za ulazne linije povr&scaron;ina gustoće linija predstavlja ukupnu količinu linija koje se nalaze blizu određene lokacije. Jedinice izračunatih vrijednosti gustoće su dužina linije po jedinici povr&scaron;ine. Na primjer, ako linije predstavljaju rijeke, sloj rezultata predstavljat će ukupnu duljinu rijeka koje se nalaze unutar radijusa pretraživanja.  Rezultat se može upotrijebiti za određivanje područja koja su pristupačna za ispa&scaron;u životinja.
+    <p>Za ulazne linije povr&scaron;ina gustoće linija predstavlja ukupnu količinu linija koje se nalaze blizu određene lokacije. Jedinice izračunatih vrijednosti gustoće su dužina linije po jedinici povr&scaron;ine. Na primjer, ako linije predstavljaju rijeke, sloj rezultata predstavljat će ukupnu duljinu rijeka koje se nalaze unutar radijusa pretraživanja. Rezultat se može upotrijebiti za određivanje područja koja su pristupačna za ispa&scaron;u životinja.
     </p>
     <p>Ostali slučajevi upotrebe za ovaj alat uključuju sljedeće:
-
         <ul>
             <li>Stvaranje karata gustoće zločina kako bi se pomoglo policiji da pravilno raspodijele resurse u područja s visokom stopom zločina.
                 
  
             </li>
-            <li>Izračunavanje gustoće bolnica unutar okruga.  Sloj rezultata prikazat će područja s visokom i niskom pristupačno&scaron;ću bolnicama, a ti se podaci mogu iskoristiti za odlučivanje gdje treba sagraditi nove bolnice.
+            <li>Izračunavanje gustoće bolnica unutar okruga. Sloj rezultata prikazat će područja s visokom i niskom pristupačno&scaron;ću bolnicama, a ti se podaci mogu iskoristiti za odlučivanje gdje treba sagraditi nove bolnice.
                 
  
             </li>
@@ -86,7 +85,7 @@
         <div><h2>Upotrijebi polje brojača</h2></div>
         <hr/>
         <div>
-            <p>Unesite polje koje određuje broj incidenata na svakoj lokaciji.  Na primjer, ako imate točke koje predstavljaju gradove, možete upotrijebiti polje koje predstavlja stanovni&scaron;tvo grada kao polje brojača, a sloj rezultata gustoće stanovni&scaron;tva izračunat će veće gustoće stanovni&scaron;tva blizu gradova s većim brojem stanovni&scaron;tva.
+            <p>Unesite polje koje određuje broj incidenata na svakoj lokaciji. Na primjer, ako imate točke koje predstavljaju gradove, možete upotrijebiti polje koje predstavlja stanovni&scaron;tvo grada kao polje brojača, a sloj rezultata gustoće stanovni&scaron;tva izračunat će veće gustoće stanovni&scaron;tva blizu gradova s većim brojem stanovni&scaron;tva.
             </p>
             <p>Ako se koristi zadana vrijednost  <b>Ni&scaron;ta</b>, tada će se pretpostaviti da svaka lokacija predstavlja jedan zbroj.
             </p>
@@ -96,7 +95,7 @@
         <div><h2>Pretraži udaljenost</h2></div>
         <hr/>
         <div>
-            <p>Unesite udaljenost koja određuje koliko daleko će se pretraživati da bi se prona&scaron;li točke ili linije geoobjekata prilikom izračuna vrijednosti gustoće.  Na primjer, ako unesete udaljenost pretraživanja od 10.000 metara, gustoće svih lokacija u izlaznom sloju izračunavaju se na temelju geoobjekata koji se nalaze unutar 10.000 metara od lokacije.  Sve lokacije koje ne sadrže incidente unutar 10.000 metara dobit će nultu vrijednost gustoće.
+            <p>Unesite udaljenost koja određuje koliko daleko će se pretraživati da bi se prona&scaron;le točke ili linije geoobjekata prilikom izračuna vrijednosti gustoće. Na primjer, ako unesete udaljenost pretraživanja od 10.000 metara, gustoće svih lokacija u izlaznom sloju izračunavaju se na temelju geoobjekata koji se nalaze unutar 10.000 metara od lokacije. Sve lokacije koje ne sadrže incidente unutar 10.000 metara dobit će nultu vrijednost gustoće.
             </p>
             <p>Ako se ne unese udaljenost, izračunat će se zadana na temelju lokacija unesenih geoobjekata i vrijednosti iz polja brojača (ako je uneseno polje brojača).
             </p>
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
-    <div id="outputName">
-        <div><h2>Naziv sloja rezultata</h2></div>
+    <div id="inBarriers">
+        <div><h2>Odaberite geoobjekte barijere (nije obavezno)</h2></div>
         <hr/>
         <div>
+            <p>Skup podataka koji definira ograničenja.
+            </p>
+            <p>Barijere mogu biti sloj geoobjekta polilinije ili poligona.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Naziva sloja rezultata</h2></div>
+        <hr/>
+        <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

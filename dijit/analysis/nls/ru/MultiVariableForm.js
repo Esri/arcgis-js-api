@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({distToNearest:"Расстояние до ближайшего",attrOfInterest:"Атрибут ближайшего",summaryNearby:"Информация о близлежащих",summaryIntersecting:"Информация о пересекающих",distToNearestLabel:"Расстояние от центра бина до ближайшего объекта входного слоя",attrOfInterestLabel:"Значение заданного поля от ближайшего объекта входного слоя",summaryNearbyLabel:"Вычисляется статистика для всех объектов, найденных в пределах заданного расстояния от центра бина",summaryIntersectingLabel:"Вычисляется статистика для всех объектов, пересекающих бин",maxDistancefromCtr:"Максимальное расстояние от центра бина",fieldToIncude:"Включаемое поле",statstoCalculate:"Вычисляемая статистика",summFeatuesWithin:"Суммировать объекты пределах",smallMaxDistErrorMsg:"Максимальное расстояние от центра бина должно быть больше, чем размер бина.",smallSumFeaturesErrorMsg:"Максимальное расстояние от центра бина должно быть больше, чем размер бина."});

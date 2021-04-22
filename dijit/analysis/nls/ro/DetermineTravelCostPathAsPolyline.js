@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Alegeți rasterul sau stratul tematic sursă de obiecte spațiale pentru determinarea căilor",inputCostRasterLabel:"Alegeți stratul tematic raster de deplasare",inputDestinationLayerLabel:"Alegeți rasterul sau stratul tematic al destinației obiectelor spațiale pentru a determina căile până la",pathTypeLabel:"Alegeți tipurile de căi de determinat (opțional)",bestSingle:"Cel mai bun element unic",eachCell:"Până la fiecare celulă",eachZone:"Până la fiecare zonă",destinationField:"Alegeți câmp pentru obținerea de valori pentru destinație",outputPolylineName:"Nume linie poligonală rezultată",outputLayerName:"Cost optim de deplasare ca linie poligonală pentru ${layername}",drawDestinationPointLayerName:"Puncte de destinație",drawSourcePointLayerName:"Puncte sursă",itemDescription:"Strat tematic de obiecte spațiale generat de rularea opțiunii de Determinare cost optim cale de deplasare ca linie poligonală pe ${layername}. ",itemTags:"Rezultatul analizei, Determinare cost cale de deplasare ca linie poligonală, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat de opțiunea Determinare cost cale de deplasare ca linie poligonală.",missingMessage:"Stratul tematic de destinație trebuie să fie diferit de stratul tematic sursă",noValueMessage:"Această valoare este obligatorie",placeHolder:"--Selectaţi un strat tematic--"});

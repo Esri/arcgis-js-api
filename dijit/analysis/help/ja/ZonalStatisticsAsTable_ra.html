@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>ゾーン統計をテーブルに出力 (Zonal Statistics as Table)</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="[ゾーン統計をテーブルに出力 (Zonal Statistics as Table)] ツール の図"></h2>
+        <hr/>
+    <p>このツールは、他のデータセットのゾーンごとにラスター値を集約し、その結果をテーブルに出力します。
+    </p>
+    <p>適用例のいくつかを次に示します。
+    </p>
+    <p>
+        <ul>
+            <li>州境界のレイヤーおよび米国本土での平均降水量の分布を使用して、異常気象の州ごとの分布をパーセンタイル値を使用して計算します。
+                
+
+            </li>
+            <li>重複する生態域のレイヤーおよび土壌水分のラスター レイヤーを使用して、サポートされるすべての統計を各域で計算して、各域を土壌水分の利用可能性に関連付けます。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>[現在のマップ範囲を使用]</b> をオンにすると、現在のマップ範囲内に表示されている入力レイヤーと集計対象レイヤーのフィーチャだけが解析されます。 オフの場合、入力レイヤーと集計されるレイヤーのすべてのフィーチャが、現在のマップ範囲内になくても解析されます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>ゾーン ラスターまたはフィーチャの選択</h2></div>
+        <hr/>
+        <div>
+            <p>集計対象のゾーン (エリア) の境界を定義するレイヤー。
+            </p>
+            <p>レイヤーは、整数ラスターでもフィーチャ データでもかまいません。 ラスターの場合、ゾーンは、同じセル値が設定された入力内のすべての場所で定義されます。 フィーチャの場合は、ゾーンは重なっていてもかまいません。 エリアは連続していなくてもかまいません。
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>ゾーン フィールド</h2></div>
+        <hr/>
+        <div>
+            <p>ゾーン (エリア) の境界の定義に使用されるレイヤーの属性です。
+            </p>
+            <p>たとえば、最初の入力レイヤーで管理単位の境界が定義されており、各単位の地域、地区、およびパーセル ID を定義した属性があるとします。 各場所の多様性インデックスを定義したラスター レイヤーもあります。 選択したフィールドを使用して、局所、地区、または地域レベルで平均的な多様性を算出することができます。
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>値ラスターの選択</h2></div>
+        <hr/>
+        <div>
+            <p>このレイヤー内のラスター セルは、これらのセルが含まれているエリア (ゾーン) 別に集計されます。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>計算時に NoData を除外 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>解析で NoData 値を無視するかどうかを指定します。
+                <ul>
+                    <li>オン - 解析には、特定のゾーン内の入力値ラスターで値を持つセルが含まれます。このセルは、そのゾーンの出力値の決定に使用されます。 値ラスターの NoData セルは、統計情報の計算時に無視されます。 これがデフォルト値になります。
+                    </li>
+                    <li>オフ - 特定のゾーン内の値ラスターのセルに NoData 値が存在する場合、解析結果は NoData になります。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>統計情報の種類 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>計算する統計情報の種類を指定します。
+            </p>
+            <p>入力は、 <b>[すべて]</b>、 <b>[平均値]</b>、 <b>[最頻値]</b>、 <b>[最大値]</b>、 <b>[中央値]</b>、 <b>[最小値]</b>、 <b>[最少頻値]</b>、 <b>[パーセンタイル]</b>、 <b>[範囲値]</b>、 <b>[標準偏差]</b>、 <b>[合計]</b>、 <b>[種類]</b>、 <b>[最小と最大]</b>、 <b>[平均値および標準偏差]</b>、 <b>[最小値、最大値および平均値]</b> のいずれかです。 デフォルトは <b>[すべて]</b> です。
+            </p>
+            <p>入力値ラスターが整数の場合は、デフォルトですべての統計情報が計算されます。 入力値ラスターが浮動小数点タイプの場合は、 <b>[中央値]</b> と <b>[パーセンタイル]</b> 以外のすべての統計情報がデフォルトで計算されます。 
+            </p>
+            <p>入力値ラスターが浮動小数点タイプの場合、 <b>[最頻値]</b>、 <b>[最少頻値]</b>、 <b>[種類]</b> のゾーン計算は実行されません。
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>パーセンタイル値 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>計算するパーセンタイル。 単一の値または値のリストを指定できます。 デフォルトは 90 で、90 番目のパーセンタイルを示します。
+            </p>
+            <p>値の範囲は 0 ～ 100 です。 0 番目のパーセンタイルは最小値の統計情報と実質的に同じであり、100 番目のパーセンタイルは最大値と同じです。 値が 50 の場合、基本的に中央値の統計情報と同じ結果になります。
+            </p>
+            <p>このオプションは、 <b>[統計情報の種類]</b> パラメーターが <b>[パーセンタイル]</b> か <b>[すべて]</b> に設定されている場合にのみサポートされます。
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>パーセンタイル内挿タイプ (オプション)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>計算される入力ラスターの値の数が偶数である場合に使用されるパーセンタイル内挿の方法を指定します。
+            </p> 
+            <p>入力値ラスターが整数ピクセル タイプである場合は、 <b>[最近隣内挿法]</b> が使用されます。 入力値ラスターが浮動小数点ピクセル タイプである場合は、 <b>[リニア]</b> 内挿法が使用されます。 これがデフォルトです。
+            </p>
+            <p> <b>[最近隣内挿法]</b> では、目的のパーセンタイルに使用できる最近隣の値が使用されます。 <b>[リニア]</b> では、目的のパーセンタイルからの 2 つの周囲値の加重平均が使用されます。
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>多次元として処理 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>多次元の場合の入力ラスターの処理方法を指定します。
+            </p>
+            <ul>
+                <li>オン - 統計情報は入力多次元データセットの現在のスライスから計算されます。 これがデフォルト値になります。
+                    
+
+                </li>
+                <li>オフ - 統計情報は、入力多次元データセットのすべての次元に対して計算されます。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>結果テーブル名</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> に作成され、マップに追加されるレイヤーの名前。 デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。 レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

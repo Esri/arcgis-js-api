@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analiza rastera omogućuje vam da izvr&scaron;ite analizu velikih skupova rasterskih podataka pomoću programa   ArcGIS Image Server. To vam omogućuje da brže analizirate vi&scaron;e podataka pomoću snage poslužitelja. Skupovi alata koji su trenutačno dostupni putem mrežnog korisničkog iskustvaPortal for ArcGIS su<b>Sažmi podatke</b>, <b>Analiziraj uzorke</b>, <b>Upotrijebi blizinu</b>, <b>Analiziraj sliku</b>, <b>Analiziraj teren</b>, <b>Upravljanje podacima</b> i <b>Duboko učenje</b> i <b>Vi&scaron;edimenzionalna analiza</b>.
+        <p>Analiza rastera omogućuje vam da izvr&scaron;ite analizu velikih skupova rasterskih podataka pomoću programa  ArcGIS Image Server. To vam omogućuje da brže analizirate vi&scaron;e podataka pomoću snage poslužitelja.Skupovi alata koji su trenutačno dostupni putem Portal for ArcGIS mrežnog korisničkog iskustva su  <b>Sažmi podatke</b>, <b>Analiziraj uzorke</b>, <b>Upotrijebi blizinu</b>, <b>Analiziraj sliku</b>, <b>Analiziraj teren</b>, <b>Upravljanje podacima</b> i <b>Duboko učenje</b> i <b>Vi&scaron;edimenzionalna analiza</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
-        <h2>Sažmi podatke</h2>
+        <h2>Sažimanje podataka</h2>
         <hr/>
-        <p>Ovaj skup alata sadrži alat za izračun statistike za sloj rastera unutar granica koje odredite. 
+        <p>Ovi se alati koriste za izračunavanje statistike za rasterski sloj unutar granica područja (zona) koje ste definirali.
             <ul>
                 <li> <b>Sažmi raster unutar</b> izračunava statistiku za ćelije rastera koje spadaju u granicama određeno područje.
+                </li>
+                <li> <b>Zonske statistike kao tablica</b> rezimira vrijednosti rastera unutar zona drugog skupa podataka i izvje&scaron;tava rezultate u tablicu.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračunava statistike sažetka za ćelije rastera unutar definiranih područja.
+            <p>Ovaj alat rezimira vrijednosti rastera unutar zona drugog skupa podataka.
             </p>
-            <p>Neki primjeri primjena su sljedeći: 
-
-                <ul>
-                    <li>Sa slojem sliva i visinskim slojem rastera izračunajte raspon uzvi&scaron;enja unutar svakog sliva kako bi se odredilo koji imaju protok najveće energije.
-                        
-
-                    </li>
-                    <li>Sa slojem jedinica administrativne uprave i slojem rastera kategorije upotrebe zemlje izračunajte raznolikost upotrebe zemlje unutar pojedinih jedinica uprave kako biste odredili gdje je potrebno najvi&scaron;e posla za određivanje plana upravljanja.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonske statistike kao tablica</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Zonska statistika kao tablični dijagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat rezimira vrijednosti rastera unutar zona drugog skupa podataka i izvje&scaron;tava rezultate u tablicu.
             </p>
             <br/>
         </div>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Upotrijebi udaljenost</h2>
         <hr/>
-        <p>Ovi vam alati pomažu odgovoriti na najče&scaron;će pitanje u prostornoj analizi: &bdquo;&Scaron;to je kraj čega?&rdquo;
-
+        <p>Ovi alati pomažu vam odgovoriti na neka od najče&scaron;ćih pitanja postavljenih u prostornoj analizi: &Scaron;to je blizu čega? i Koji je najoptimalniji put?
             <ul>
-                <li> <b>Izračunaj udaljenost</b> izračunava euklidsku udaljenost, smjer i dodjelu iz jednog skupa izvora.
+                <li> <b>Izračunaj udaljenost</b> izračunava euklidsku udaljenost, smjer i dodjelu iz jednog ili skupa izvora.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Utvrdi putanju putnih tro&scaron;kova kao poliliniju</b> izračunava putanju polilinije s najmanjim tro&scaron;kom između izvora i poznatih odredi&scaron;ta
+                <li> <b>Odredite smjer putnih tro&scaron;kova kao polilin</b> izračunava smjer polilinije s najmanjim tro&scaron;kom između poznatih odredi&scaron;ta i izvora.
+                    
+
+                </li>
+                <li> <b>Akumulacija udaljenosti</b> izračunava akumulaciju udaljenosti za svaku ćeliju do izvora, omogućavajući udaljenost ravne linije, tro&scaron;kovnu udaljenost i stvarnu povr&scaron;insku udaljenost, kao i okomite i vodoravne faktore.
+                    
+
+                </li>
+                <li> <b>Dodjela udaljenosti</b> Izračunava dodjelu udaljenosti za svaku ćeliju do navedenih izvora na temelju udaljenosti ravne linije, tro&scaron;kovne udaljenosti, stvarne povr&scaron;inske udaljenosti, kao i okomite i vodoravne faktore.
+                    
+
+                </li>
+                <li> <b>Optimalni put u obliku linije</b> izračunava optimalni put od odredi&scaron;ta do izvora u obliku linije.
+                    
+
+                </li>
+                <li> <b>Optimalni put u obliku rastera</b> izračunava optimalni put od odredi&scaron;ta do izvora u obliku rastera.
+                    
+
+                </li>
+                <li> <b>Optimalne regionalne veze</b> izračunava optimalnu mrežu povezivanja između dva ili vi&scaron;e područja unosa.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,11 +185,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračunava euklidsku udaljenost, smjer i dodjelu iz jednog skupa izvora. Možete upotrijebiti ovaj alat za određivanje koliko je daleko određena lokacija od ceste, zgrade ili parka. Također možete odrediti smjer u kojem trebate putovati od lokacije da biste se najizravnije vratili do izvora. Za svaku lokaciju u va&scaron;em radnom području možete vidjeti koji je najbliži izvor.
+            <p>Ovaj alat izračunava euklidsku udaljenost, smjer i dodjelu iz jednog izvora ili skupa izvora.
             </p>
             <br/>
         </div>
-        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračunava mrežu optimalnih tro&scaron;kova iz skupa ulaznih regija.
+            <p>Ovaj alat izračunava mrežu optimalnih tro&scaron;kova iz skupa ulaznih regija.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračunava putanju polilinije s najmanjim tro&scaron;kom između izvora i poznatih odredi&scaron;ta.
+            <p>Ovaj alat izračunava putanju polilinije s najmanjim tro&scaron;kom između odredi&scaron;ta i izvora.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Prijeđena udaljenost</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Raspodjela udaljenosti ilustracija alata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava prijeđenu udaljenost za svaku ćeliju do izvora, omogućavajući udaljenost ravne linije, tro&scaron;kovnu udaljenost, stvarnu povr&scaron;insku udaljenost, kao i vertikalne i horizontalne faktore.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raspodjela udaljenosti</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Raspodjela udaljenosti ilustracija alata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava raspodjelu udaljenosti za svaku ćeliju do ponuđenih izvora na temelju ravne udaljenosti, tro&scaron;kovne udaljenosti, stvarne povr&scaron;inske udaljenosti i vertikalnih i horizontalnih faktora.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalni put kao linija</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Optimalni put kao ilustracija raster alata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava optimalni put od odredi&scaron;ta do izvora u obliku linije.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalni put kao raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Optimalni put kao ilustracija raster alata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava optimalni put od odredi&scaron;ta do izvora u obliku rastera.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalne regionalne veze</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Optimalni put kao ilustracija raster alata">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ovaj alat izračunava optimalnu mrežu povezivanja između dva ili vi&scaron;e područja unosa.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analiziraj sliku</h2>
         <hr/>
-        <p>Sljedeći alat pomaže vam u analiziranju slika. 
+        <p>Sljedeći alat u kategoriji alata  <b>Analiziranje slike</b> pomaže vam u analiziranju slika:
             <ul>
-                <li> <b>Primjena predlo&scaron;ka funkcije rastera</b> obrađuje va&scaron;e snimke lancem funkcija kako je određeno predlo&scaron;kom funkcije rastera.
-                </li>
-                <li> <b>Praćenje vegetacije</b> otkriva vegetaciju uz sliku, na temelju računskih operacija na kanalima.
+                <li> <b>Praćenje vegetacije</b> otkriva relativnu pokrivenost vegetacijom uz sliku na temelju računskih operacija na kanalima. Postoji nekoliko indeksa za vegetaciju dostupnih za analizu slike.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Primjena predloška funkcije rastera</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Primjena predlo&scaron;ka funkcije rastera">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Obrađuje va&scaron;u snimku lancem funkcija kako je navedeno u predlo&scaron;ku funkcije rastera.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izvr&scaron;ava računske operacije nad kanalima u sloju vi&scaron;ekanalnog rastera kako bi se otkrile informacije o pokrivenosti vegetacije na radnom području.
+            <p>Izvr&scaron;ava računske operacije nad kanalima u sloju vi&scaron;ekanalnog rastera kako bi se otkrile informacije o pokrivenosti vegetacije.
             </p>
             <br/>
         </div>

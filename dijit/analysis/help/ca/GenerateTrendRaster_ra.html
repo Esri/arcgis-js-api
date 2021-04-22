@@ -52,8 +52,6 @@
         <div><h2>Trieu la capa d'imatges multidimensionals per analitzar la tendència</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Capa d'imatges d'entrada d'un r&agrave;ster multidimensional que s'analitzar&agrave;.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Trieu el tipus de línia per ajustar els valors de la variable a una dimensió</h2></div>
         <hr/>
         <div>
-            <p>Especifica el tipus de l&iacute;nia que s'utilitzar&agrave; per ajustar els valors de p&iacute;xel a una dimensi&oacute;. 
+            <p>Especifica el tipus de l&iacute;nia que s'utilitzar&agrave; per ajustar els valors de p&iacute;xel a una dimensi&oacute;.
                 <ul>
-                    <li> <b>Lineal</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia lineal. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    <li> <b>Lineal</b>: els valors de p&iacute;xel de la variable s'ajustaran a una l&iacute;nia de tend&egrave;ncia lineal. Aquesta &eacute;s l'opci&oacute; per defecte.
                     </li>
-                    <li> <b>Polin&ograve;mica</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia polin&ograve;mica de segon ordre.
+                    <li> <b>Polin&ograve;mica</b>: els valors de p&iacute;xel de la variable s'ajustaran a una l&iacute;nia de tend&egrave;ncia polin&ograve;mica de segon ordre.
                     </li>
-                    <li> <b>Harm&ograve;nica</b>: els valors de p&iacute;xel variables s'ajustaran a una l&iacute;nia de tend&egrave;ncia harm&ograve;nica.
+                    <li> <b>Harm&ograve;nica</b>: els valors de p&iacute;xel de la variable s'ajustaran a una l&iacute;nia de tend&egrave;ncia harm&ograve;nica.
+                    </li>
+                    <li> <b>Mann-Kendall</b>: els valors de p&iacute;xel de la variable s'avaluaran amb la prova de tend&egrave;ncia de Mann-Kendall.
+                    </li>
+                    <li> <b>Estacional de Kendall</b>: els valors de p&iacute;xel de la variable s'avaluaran amb la prova de tend&egrave;ncia estacional de Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Especifiqueu la unitat de temps per a la durada d'un període estacional</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unitat de temps que es far&agrave; servir per a la durada d'un per&iacute;ode estacional en dur a terme la prova estacional de Kendall.
+                <ul>
+                    <li> <b>Dies</b>: la unitat de la durada del per&iacute;ode estacional &eacute;s dies. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    </li>
+                    <li> <b>Mesos</b>: la unitat de la durada del per&iacute;ode estacional &eacute;s mesos.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
+            
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.

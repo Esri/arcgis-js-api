@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Spojiť začiatky s destináciami</h2><p/>
-        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Spojiť začiatky s destin&aacute;ciami"></h2>
+        <h2>Spojiť počiatky s destináciami</h2><p/>
+        <h2><img src="../images/GUID-7266D30B-0250-4132-B1A5-9B59F0212FAD-web.png" alt="Spojiť počiatky s destin&aacute;ciami"></h2>
         <hr/>
-    <p>Spojiť začiatky s destin&aacute;ciami meria cestovn&yacute; čas alebo vzdialenosť medzi dvojicami bodov. N&aacute;stroj m&ocirc;že merať priamočiare vzdialenosti, vzdialenosti na z&aacute;klade sp&ocirc;sobu cestovania ako napr&iacute;klad &scaron;of&eacute;rovania alebo cestovania alebo dĺžky cesty na z&aacute;klade sp&ocirc;sobu cestovania. S použit&iacute;m tohto n&aacute;stroje m&ocirc;žte urobiť nasledovn&eacute;:
+    <p>Spojiť počiatky s destin&aacute;ciami meria cestovn&yacute; čas alebo vzdialenosť medzi dvojicami bodov. N&aacute;stroj m&ocirc;že merať priamočiare vzdialenosti, vzdialenosti podľa sp&ocirc;sobu cestovania ako napr&iacute;klad jazda autom a pe&scaron;ia ch&ocirc;dza alebo dĺžky cestovania podľa zvolen&eacute;ho sp&ocirc;sobu cestovania. S použit&iacute;m tohto n&aacute;stroja m&ocirc;žete vykonať nasledovn&eacute;:
     </p>
     <p>
         <ul>
@@ -57,18 +57,18 @@
         </ul>
         
     </p>
-    <p>Poskytujete začiatočn&eacute; a konečn&eacute; body a n&aacute;stroj vracia vrstvu obsahuj&uacute;cu l&iacute;nie tr&aacute;s, vr&aacute;tane meran&iacute; medzi dvojicami začiatkov a cieľov.
+    <p>Poskytujete počiatočn&eacute; a konečn&eacute; body a n&aacute;stroj vracia vrstvu obsahuj&uacute;cu l&iacute;nie tr&aacute;s, vr&aacute;tane meran&iacute; medzi dvojicami počiatkov a cieľov.
     </p>
     <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, na anal&yacute;zu bud&uacute; použit&eacute; len prvky v aktu&aacute;lnom rozsahu mapy. Ak je od&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu bud&uacute; zohľadnen&eacute;, aj ak s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="originsLayer">
-        <div><h2>Vyberte bodovú vrstvu, ktorá reprezentuje umiestnenie začiatkov.</h2></div>
+        <div><h2>Vyberte bodovú vrstvu, ktorá reprezentuje umiestnenie počiatočných lokalít.</h2></div>
         <hr/>
         <div>
-            <p>Vyberte bodov&uacute; vrstvu, ktor&aacute; reprezentuje začiatok alebo začiatky. N&aacute;stoj podporuje do:  5,000začiatkov a  5,000destin&aacute;ci&iacute;. </p>
-            <p>Ak vyberiete vrstvu čo bude mať pr&aacute;ve jeden začiatok tak sa spoj&iacute; so v&scaron;etk&yacute;mi destin&aacute;ciami.
+            <p>Vyberte bodov&uacute; vrstvu, ktor&aacute; reprezentuje počiatok alebo počiatky. N&aacute;stoj podporuje do:  5,000 počiatkov a  5,000destin&aacute;ci&iacute;. </p>
+            <p>Ak vyberiete vrstvu pr&aacute;ve s jedn&yacute;m počiatkom, tento sa spoj&iacute; so v&scaron;etk&yacute;mi destin&aacute;ciami.
             </p>
             <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
             </p>
@@ -78,55 +78,55 @@
         <div><h2>Vyberte vrstvu destinácií.</h2></div>
         <hr/>
         <div>
-            <p>Vyberte vrstvu reprezentuj&uacute;cu destin&aacute;ciu alebo destin&aacute;cie, do ktor&yacute;ch by sa počiatky mali prip&aacute;jať. N&aacute;stroj podporuje do:  5,000 začiatkov a  5,000destin&aacute;ci&iacute;. </p>
-            <p>Ak zvol&iacute;te vrstvu, ktor&aacute; m&aacute; presne jednu destin&aacute;cu, v&scaron;etky počiatky sa prip&aacute;jaj&uacute; k tejto destin&aacute;cii.
+            <p>Vyberte vrstvu reprezentuj&uacute;cu destin&aacute;ciu alebo destin&aacute;cie, s ktor&yacute;mi by sa počiatky mali spojiť. N&aacute;stroj podporuje do:  5,000 počiatkov a  5,000destin&aacute;ci&iacute;. </p>
+            <p>Ak zvol&iacute;te vrstvu, ktor&aacute; m&aacute; presne jednu destin&aacute;cu, v&scaron;etky počiatky sa pripoja k tejto destin&aacute;cii.
             </p>
             <p>Ak existuje jeden počiatok a mnoho destin&aacute;cii, n&aacute;stroj spoj&iacute; počiatok s každou destin&aacute;ciou.
             </p>
             <p>Navy&scaron;e k v&yacute;beru vrstvy va&scaron;ej mapy, m&ocirc;žete zvoliť  <b>Vybrať analytick&uacute; vrstvu</b>, ktor&aacute; je na spodku rozbalen&eacute;ho zoznamu. T&aacute;to možnosť otv&aacute;ra gal&eacute;riu, kde m&ocirc;žete prehľad&aacute;vať a zvoliť d&aacute;tov&uacute; sadu z r&ocirc;znych zdrojov na použitie vo va&scaron;ej anal&yacute;ze. 
             </p>
-            <p> Ak je veľa začiatkov a veľa destin&aacute;ci&iacute; mus&iacute;te mať tve polia, ktor&eacute; opisuj&uacute; p&aacute;ry p&ocirc;vodov a destin&aacute;ci&iacute;: <b>pole ID v začiatku </b> <b>a pridelen&eacute; ID pole v destin&aacute;cii</b>. N&aacute;stroj sp&aacute;ja p&aacute;ry počiatok-destin&aacute;cia počas anal&yacute;zy. Napr&iacute;klad, predstavte si, že m&aacute;te dva začiatky s hodnotami pol&iacute; <code>Rosie</code> a <code>Harold</code>a dve destin&aacute;cie s rovnak&yacute;mi hodnotami ID. ZAčiatok <code>Rosie</code> sa spoj&iacute; s destin&aacute;ciou <code>Rosie</code> a <code>Harold</code> sa spoj&iacute; s <code>Haroldom</code>. Nerobia sa žiadne ďal&scaron;ie spojenia alebo merania.
+            <p> Ak je veľa počiatkov a veľa destin&aacute;ci&iacute;, potrebujete dve polia, ktor&eacute; opisuj&uacute; p&aacute;ry počiatkov a destin&aacute;ci&iacute;: <b>pole ID v počiatkoch </b> a <b>zodpovedaj&uacute;ce ID pole v destin&aacute;ci&aacute;ch</b>. N&aacute;stroj počas anal&yacute;zy sp&aacute;ja p&aacute;ry počiatok-destin&aacute;cia. Predstavte si napr&iacute;klad, že m&aacute;te dva počiatky s hodnotami pol&iacute; <code>Rosie</code> a <code>Harold</code>a dve destin&aacute;cie s rovnak&yacute;mi hodnotami ID. Počiatok <code>Rosie</code> sa spoj&iacute; s destin&aacute;ciou <code>Rosie</code> a <code>Harold</code> sa spoj&iacute; s <code>Haroldom</code>. Nevytv&aacute;raj&uacute; sa žiadne ďal&scaron;ie spojenia alebo merania.
             </p>
-            <p>Ak je rovnak&yacute; počet začiatkov a destin&aacute;ci&iacute;, ID č&iacute;sla musia byť rovnak&eacute; v r&aacute;mci jednej vrstvy, napr&iacute;klad vrstva destin&aacute;cie nem&ocirc;že mať dve hodnoty  <code>Rosie</code>. Hodnoty začiatkov&yacute;ch a destinačn&yacute;ch vrstiev sa musia presne prepojiť na vytvorenie p&aacute;ru; <code>Harold</code> sa nepripoj&iacute; k nespr&aacute;vne nap&iacute;sanej hodnote <code>Harodl</code>. 
+            <p>Ak je rovnak&yacute; počet počiatkov a destin&aacute;ci&iacute;, hodnoty ID musia byť unik&aacute;tne v r&aacute;mci každej vrstvy, napr&iacute;klad vrstva destin&aacute;ci&iacute; nem&ocirc;že obsahovať dve hodnoty  <code>Rosie</code>. Hodnoty vrstiev počiatkov a destin&aacute;ci&iacute; sa musia presne zhodovať aby bolo možn&eacute; vytvoriť p&aacute;ry; <code>Harold</code> sa nepripoj&iacute; k nespr&aacute;vne nap&iacute;sanej hodnote <code>Harodl</code>. 
             </p>
-            <p>N&aacute;stroj tiež podporuje sp&aacute;janie každ&eacute;ho počiatku k viac ako jednej destin&aacute;cii alebo každ&uacute; destin&aacute;ciu k viac ako jedn&eacute;mu počiatku. V tak&yacute;ch pr&iacute;padoch st&aacute;le potrebujete mať dve polia, ktor&eacute; opisuj&uacute; p&aacute;ry počiatok-destin&aacute;cia. Av&scaron;ak, iba jedna z vrstiev (buď vrstva počiatku alebo vrstva destin&aacute;cie) potrebuje mať unik&aacute;tne hodnoty ID.
+            <p>N&aacute;stroj podporuje taktiež spojenie každ&eacute;ho počiatku k viac ako jednej destin&aacute;cii alebo každej destin&aacute;cie k viac ako jedn&eacute;mu počiatku. V takom pr&iacute;pade je nevyhnutn&eacute; mať dve polia, ktor&eacute; popisuj&uacute; p&aacute;ry počiatok-destin&aacute;cia. Av&scaron;ak, iba jedna z vrstiev (buď vrstva počiatkov alebo destin&aacute;ci&iacute;) potrebuje mať unik&aacute;tne hodnoty ID.
             </p>
         </div>
     </div>
     <div id="measurementType">
-        <div><h2>Zmerať</h2></div>
+        <div><h2>Merať</h2></div>
         <hr/>
         <div>
             
-            <p>Vyberte, či spojiť počiatky s destin&aacute;ciami použit&iacute;m priamočiarej vzdialenosti alebo cestovn&eacute;ho režimu. V&yacute;stupn&eacute; trasy bud&uacute; sledovať cesty alebo chodn&iacute;ky a dodržiavať aplikovateľn&eacute; pravidl&aacute;, ako jednosmern&eacute; ulice, nedovolen&eacute; odbočenia pre jazdu alebo n&aacute;kladn&uacute; dopravu. Dostupn&eacute; cestovn&eacute; režimy s&uacute; prednastaven&eacute; administr&aacute;torom va&scaron;ej organiz&aacute;cie.
+            <p>Vyberte, či spojiť počiatky s destin&aacute;ciami použit&iacute;m priamočiarej vzdialenosti alebo cestovn&eacute;ho režimu. V&yacute;stupn&eacute; trasy bud&uacute; sledovať cesty alebo chodn&iacute;ky a dodržiavať aplikovateľn&eacute; pravidl&aacute;, ako jednosmern&eacute; ulice, nedovolen&eacute; odbočenia alebo n&aacute;kladn&uacute; dopravu. Dostupn&eacute; cestovn&eacute; režimy s&uacute; prednastaven&eacute; administr&aacute;torom va&scaron;ej organiz&aacute;cie.
             </p>
-            <p>Pri v&yacute;bere  <b>Čas jazdy</b>, <b>Čas jazdy na vidieku</b> alebo <b>Prepravn&yacute; čas</b>, m&aacute;te r&ocirc;zne možnosti merania času jazdy.
+            <p>Pri v&yacute;bere  <b>Čas jazdy</b>, <b>Čas jazdy na vidieku</b> alebo <b>Čas n&aacute;kladnej prepravy</b>, m&aacute;te r&ocirc;zne možnosti merania času jazdy.
                 <ul>
                     <li>
-                        <p>Od&scaron;krtine  <b>Použiť prem&aacute;vku</b> na n&aacute;jdenie najr&yacute;chlej&scaron;&iacute;ch tr&aacute;s na z&aacute;klade nemenn&yacute;ch rychlost&iacute;.
+                        <p>Od&scaron;krtnite  <b>Použiť prem&aacute;vku</b> pre n&aacute;jdenie najr&yacute;chlej&scaron;&iacute;ch tr&aacute;s na z&aacute;klade nemenn&yacute;ch rychlost&iacute;.
                         </p>
-                        <p>Toto je možnosť zvoliť si, či chcete mať k dispoz&iacute;cii v&scaron;eobecn&eacute; meranie podľa času jazdy, nie t&uacute;, ktor&aacute; sa poč&iacute;ta pomocou zmeny dopravn&yacute;ch podmienok pre konkr&eacute;tny čas odchodu.
-                        </p>
-                    </li>
-                    <li>
-                        <p>Za&scaron;krtnite  <b>Použiť prem&aacute;vku</b> na n&aacute;jdenie najr&yacute;chlej&scaron;&iacute;ch tr&aacute;s na z&aacute;klade dan&eacute;ho času &scaron;tartu a meniacich sa dopravn&yacute;ch podmienkach. Z&aacute;roveň zvolen&iacute;m možnosti <b>Živ&aacute; prem&aacute;vka</b> sa čas odchodu z p&ocirc;vodn&eacute;ho miesta nastav&iacute; na aktu&aacute;lny čas a aktu&aacute;lna a predpokladan&aacute; r&yacute;chlosť prem&aacute;vky s&uacute; referencovan&eacute; zo senzorov a prenosov na vytvorenie tr&aacute;s. Predpokladan&eacute; r&yacute;chlosti prem&aacute;vky s&uacute; vypoč&iacute;tan&eacute; referencovan&iacute;m živ&yacute;ch prenosov r&yacute;chlost&iacute; prem&aacute;vky, historick&yacute;ch r&yacute;chlost&iacute; a aktu&aacute;lnych udalost&iacute;, ako počasie. R&yacute;chlosti prem&aacute;vky s&uacute; predpokladan&eacute; 4 hod&iacute;n do bud&uacute;cnosti, takže m&ocirc;žete pohn&uacute;ť posuvn&iacute;kom na nastavenie času odchodu dopredu o  4 hod&iacute;n. </p>
-                        <p>Použite tieto nastavenia živej prem&aacute;vky, aby ste na&scaron;li časy jazdy pri odchode teraz, pri odchode o jednu hodinu od teraz a podobne.
+                        <p>T&aacute;to možnosť umožňuje voľbu, či chcete v&scaron;eobecn&eacute; meranie podľa času jazdy, ktor&eacute; nebude reflektovať zmeny dopravn&yacute;ch podmienok pre konkr&eacute;tny čas odchodu.
                         </p>
                     </li>
                     <li>
-                        <p>Za&scaron;krtnut&iacute;m  <b>Použiť prem&aacute;vku</b> a v&yacute;berom <b>Doprava na z&aacute;klade typick&yacute;ch podmienok pre</b> deň a čas, n&aacute;stroj n&aacute;jde najkrat&scaron;ie trasy na z&aacute;klade historick&yacute;ch priemerov r&yacute;chlost&iacute; pre každ&yacute; p&auml;ť-min&uacute;tov&yacute; interval počas rutinn&eacute;ho t&yacute;ždňa. V&yacute;sledky zahŕňaj&uacute; prem&aacute;vku, ale odstraňuj&uacute; vplyv s&uacute;časn&yacute;ch podmienok prem&aacute;vky a udalost&iacute;, ktor&eacute; sa m&ocirc;žu v&yacute;znamne l&iacute;&scaron;iť od normy.
+                        <p>Za&scaron;krtnite  <b>Použiť prem&aacute;vku</b> na n&aacute;jdenie najr&yacute;chlej&scaron;&iacute;ch tr&aacute;s na z&aacute;klade dan&eacute;ho času &scaron;tartu a meniacich sa dopravn&yacute;ch podmienkach. Z&aacute;roveň zvolen&iacute;m možnosti <b>Živ&aacute; prem&aacute;vka</b> je čas odchodu zo vstupn&yacute;ch bodov nastaven&yacute; na aktu&aacute;lny čas a aktu&aacute;lne a predpokladan&eacute; r&yacute;chlosti prem&aacute;vky s&uacute; referencovan&eacute; zo senzorov a prenosov, ktor&eacute; sa zohľadnia pre vytvorenie tr&aacute;s. Predpokladan&eacute; r&yacute;chlosti prem&aacute;vky s&uacute; vypoč&iacute;tan&eacute; referencovan&iacute;m živ&yacute;ch prenosov o r&yacute;chlost&iacute; prem&aacute;vky, historick&yacute;ch r&yacute;chlost&iacute; a aktu&aacute;lnych udalost&iacute;, ako napr&iacute;klad počasie. R&yacute;chlosti prem&aacute;vky s&uacute; predpokladan&eacute; 4 hod&iacute;n do bud&uacute;cnosti, takže m&ocirc;žete pomocou časovn&eacute;ho posuvn&iacute;ka nastaviť čas odchodu dopredu o  4 hod&iacute;n. </p>
+                        <p>Použite nastavenia živej prem&aacute;vky, aby ste zistili časy jazdy pri odchode teraz, pri odchode o hodinu, atď.
                         </p>
-                        <p>M&ocirc;žete použiť tieto nastavenia historickej prem&aacute;vky na položenie ot&aacute;zky, napr&iacute;klad, &quot;Ako dlho by v&scaron;eobecne trvalo dosiahnuť tieto destin&aacute;cie pri odchode o 11:30 v stredu?&quot;
+                    </li>
+                    <li>
+                        <p>Za&scaron;krtnut&iacute;m  <b>Použiť prem&aacute;vku</b> a zvolen&iacute;m <b>Doprava na z&aacute;klade typick&yacute;ch podmienok pre</b> deň a čas, n&aacute;stroj n&aacute;jde najr&yacute;chlej&scaron;ie trasy na z&aacute;klade historick&yacute;ch priemerov r&yacute;chlost&iacute; pre každ&yacute; p&auml;ť-min&uacute;tov&yacute; interval počas rutinn&eacute;ho t&yacute;ždňa. V&yacute;sledky zahŕňaj&uacute; prem&aacute;vku, ale odstraňuj&uacute; vplyv s&uacute;časn&yacute;ch podmienok prem&aacute;vky a udalost&iacute;, ktor&eacute; sa m&ocirc;žu v&yacute;znamne l&iacute;&scaron;iť od normy.
                         </p>
-                        <p>Čas, ktor&yacute; ste nastavili, referuje na časov&eacute; p&aacute;smo, v ktorom sa v&aacute;&scaron; počiatok nach&aacute;dz&aacute;. Takže, ak nastav&iacute;te čas na 8:00 a m&aacute;te dva počiatky, jeden v New York City a in&yacute; v Los Angeles, trasy bud&uacute; generovan&eacute; pre čas odchodu 8:00 v&yacute;chodn&eacute;ho času a 8:00 tichomorsk&eacute;ho času, v tomto porad&iacute;
+                        <p>Tieto nastavenia historickej prem&aacute;vky m&ocirc;žete použiť na položenie ot&aacute;zky, napr&iacute;klad, &quot;Ako dlho by v&scaron;eobecne trvalo dosiahnuť tieto destin&aacute;cie pri odchode v stredu o 11:30?&quot;
+                        </p>
+                        <p>Čas, ktor&yacute; ste nastavili, referuje na časov&eacute; p&aacute;smo, v ktorom sa počiatky nach&aacute;dzaj&uacute;. Takže, ak nastav&iacute;te čas na 8:00 a m&aacute;te dva počiatky, jeden v New York City a druh&yacute; v Los Angeles, trasy bud&uacute; generovan&eacute; pre čas odchodu 8:00 v&yacute;chodn&eacute;ho času a 8:00 tichomorsk&eacute;ho času.
                         </p>
                     </li>
                 </ul>
                 
             </p>
-            <p>V&scaron;imnite si, že zatiaľ čo vozidlo odch&aacute;dza z počiatku, ubieha čas a podmienky prem&aacute;vky sa menia. N&aacute;stroj Prepojiť p&ocirc;vody s destin&aacute;ciami je zodpovedn&yacute; za rodiely keď za&scaron;krtnete  <b>Použiť prem&aacute;vku</b>, av&scaron;ak nie každ&yacute; regi&oacute;n podporuje prem&aacute;vku. Kliknite na prepojenie <b>Zobraziť dostupnosť</b> na n&aacute;stroji, aby ste zistili, či sa pon&uacute;ka vo vami &scaron;tudovanej oblasti.
+            <p>V&scaron;imnite si, že zatiaľ čo vozidlo odch&aacute;dza zo počiatku, ubieha čas a podmienky prem&aacute;vky sa menia. N&aacute;stroj Prepojiť zdroje s destin&aacute;ciami zohľadňuje tieto rozdiely keď za&scaron;krtnete  <b>Použiť prem&aacute;vku</b>, av&scaron;ak nie každ&yacute; regi&oacute;n prem&aacute;vku podporuje. Kliknite v n&aacute;stroji na link <b>Zobraziť dostupnosť</b>, aby ste zistili, či je možn&eacute; jeho využitie aj vo va&scaron;ej oblasti.
             </p>
-            <p> <b>Prepravn&yacute; čas</b> m&ocirc;že použ&iacute;vať dynamick&eacute; cestovn&eacute; r&yacute;chlosti na z&aacute;klade prem&aacute;vky, ale iba v r&aacute;mci povolen&eacute;ho r&yacute;chlostn&eacute;ho limitu. Napr&iacute;klad, ak je dynamick&aacute; r&yacute;chlosť pre ulicu na z&aacute;klade živej prem&aacute;vky 65 m&iacute;ľ za hodinu, ale maxim&aacute;lna povolen&aacute; r&yacute;chlosť pre t&uacute;to ulicu je 55 m&iacute;ľ za hodinu, v&yacute;počet použije pre t&uacute;to ulicu r&yacute;chlosť 55 m&iacute;ľ za hodinu.
+            <p> <b>Čas n&aacute;kladnej prepravy</b> m&ocirc;že použ&iacute;vať dynamick&eacute; cestovn&eacute; r&yacute;chlosti na z&aacute;klade prem&aacute;vky, ale iba v r&aacute;mci povolen&eacute;ho r&yacute;chlostn&eacute;ho limitu. Napr&iacute;klad, ak je dynamick&aacute; r&yacute;chlosť pre ulicu na z&aacute;klade živej prem&aacute;vky 65 m&iacute;ľ za hodinu, ale maxim&aacute;lna povolen&aacute; r&yacute;chlosť n&aacute;kladnej prepravy je pre t&uacute;to ulicu 55 m&iacute;ľ za hodinu, v&yacute;počet použije pre t&uacute;to ulicu r&yacute;chlosť 55 m&iacute;ľ za hodinu.
             </p>
         </div>
     </div>
@@ -134,15 +134,15 @@
         <div><h2>Vyberte vstvy bariér</h2></div>
         <hr/>
         <div>
-            <p> Jeden alebo viac prvkov, ktor&eacute; sl&uacute;žia ako dočasn&eacute; obmedzenia (bari&eacute;ry), keď cestujete na podkladov&yacute;ch cest&aacute;ch. Bari&eacute;ry m&ocirc;žete &scaron;pecifikovať použit&iacute;m prvkov bodu, l&iacute;nie alebo polyg&oacute;nu.
+            <p> Jeden alebo viac prvkov, ktor&eacute; sl&uacute;žia ako dočasn&eacute; obmedzenia (bari&eacute;ry), pri prechode po podkladov&yacute;ch prvkoch ciest. Bari&eacute;ry m&ocirc;žete &scaron;pecifikovať použit&iacute;m bodov, l&iacute;ni&iacute; alebo polyg&oacute;nov.
             </p>
-            <p>  <b>Vybrať bari&eacute;rov&eacute; vrstvy</b> je dostupn&eacute;, keď sa použ&iacute;va cestovn&yacute; reťim ako parameter <b>Merania</b>. Ak je použit&aacute; <b>Vzdialenosť l&iacute;nie</b>, <b>Vybrať vrstvy bari&eacute;r</b> bude deaktivovan&eacute;.
+            <p>  <b>Vybrať bari&eacute;rov&eacute; vrstvy</b> je dostupn&eacute;, keď je cestovn&yacute; režim ako parameter <b>Merania</b>. Ak je použit&aacute; <b>L&iacute;niov&aacute; vzdialenosť</b>, <b>Vybrať vrstvy bari&eacute;r</b> bude deaktivovan&eacute;.
             </p>
-            <p>Bodov&aacute; bari&eacute;ria m&ocirc;že modelovať spadnut&yacute; strom, nehodu, spadnut&eacute; elektrick&eacute; vedenie alebo čokolvek, čo &uacute;plne blokuje dopravu na konkr&eacute;tnej poz&iacute;cii na ulici. Cestovanie je na ulici povolen&eacute;, av&scaron;ak nie cez bari&eacute;ru. M&ocirc;žete &scaron;pecifikovať viac ako 250 prvkov, ktor&eacute; bud&uacute; sl&uacute;žiť ako bodov&aacute; bari&eacute;ry.
+            <p>Bodov&aacute; bari&eacute;ria m&ocirc;že modelovať spadnut&yacute; strom, nehodu, spadnut&eacute; elektrick&eacute; vedenie alebo čokoľvek, čo &uacute;plne blokuje dopravu na konkr&eacute;tnej poz&iacute;cii na ulici. Cestovanie je na ulici povolen&eacute;, av&scaron;ak nie cez bari&eacute;ru. M&ocirc;žete &scaron;pecifikovať viac ako 250 prvkov, ktor&eacute; bud&uacute; sl&uacute;žiť ako bodov&aacute; bari&eacute;ra.
             </p>
-            <p>Line&aacute;rna bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa bari&eacute;ra pret&iacute;na s ulicami. Napr&iacute;klad, pochod alebo protest, ktor&yacute; blokuje prem&aacute;vku nprieč niekoľk&yacute;mi segmentami ul&iacute;c, m&ocirc;že byť modelovan&yacute; ako line&aacute;rna bari&eacute;ra. Ak počet prvkov ulice pretnut&yacute;chv&scaron;etk&yacute;mi line&aacute;rnymi bari&eacute;rami presiahne 500, n&aacute;stroj vr&aacute;ti chybu.
+            <p>Line&aacute;rna bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa bari&eacute;ra pret&iacute;na s ulicami. Napr&iacute;klad, pochod alebo protest, ktor&yacute; blokuje prem&aacute;vku naprieč niekoľk&yacute;mi segmentami ul&iacute;c, m&ocirc;že byť modelovan&yacute; ako line&aacute;rna bari&eacute;ra. Ak počet prvkov ul&iacute;c pretnut&yacute;ch line&aacute;rnymi bari&eacute;rami presiahne 500, n&aacute;stroj vr&aacute;ti chybu.
             </p>
-            <p>Polyg&oacute;nov&aacute; bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa polyg&oacute;n pret&iacute;na s ulicami. Jedno z použit&iacute; tak&eacute;hoto typu bari&eacute;ry je modelovať povodne pokr&yacute;vaj&uacute;ce plochy siete ul&iacute;c a t&yacute;m znemožnuj&uacute; cestovanie na ceste. Ak počet prvkov ulice pretnut&yacute;ch v&scaron;etk&yacute;mi polyg&oacute;nov&yacute;mi bari&eacute;rami presiahne 200, n&aacute;stroj vr&aacute;ti chybu.
+            <p>Polyg&oacute;nov&aacute; bari&eacute;ra obmedzuje cestovanie kdekoľvek, kde sa polyg&oacute;n pret&iacute;na s ulicami. Jedno z použit&iacute; tak&eacute;hoto typu bari&eacute;ry je modelovanie povodn&iacute; pokr&yacute;vaj&uacute;cich plochy siete ul&iacute;c a t&yacute;m znemožnenie cestovania po zasiahnut&yacute;ch cest&aacute;ch. Ak počet prvkov ul&iacute;c pretnut&yacute;ch polyg&oacute;nov&yacute;mi bari&eacute;rami presiahne 200, n&aacute;stroj vr&aacute;ti chybu.
             </p>
         </div>
     </div>
@@ -153,7 +153,7 @@
             <p>Vyberte tvar trasy, ktor&aacute; sp&aacute;ja každ&yacute; počiatok s jeho destin&aacute;ciou:
             </p>
             <ul>
-                <li> <b>Priama čiara</b> - Tvar je priama čiara sp&aacute;jaj&uacute;ca p&aacute;r p&ocirc;vodu a destin&aacute;cie. T&aacute;to možnosť je najvhodnej&scaron;ia, keď chcete generovať pav&uacute;kov&eacute; diagramy alebo l&iacute;nie t&uacute;žby (napr&iacute;klad, na zobrazenie obchodov, ktor&eacute; nav&scaron;tevuj&uacute; z&aacute;kazn&iacute;ci).
+                <li> <b>Priama čiara</b> - Tvar bude priama čiara sp&aacute;jaj&uacute;ca každ&yacute; p&aacute;r počiatku a destin&aacute;cie. T&aacute;to možnosť je najvhodnej&scaron;ia, ak chcete generovať pav&uacute;kov&eacute; diagramy alebo l&iacute;nie požiadaviek (napr&iacute;klad, na zobrazenie obchodov, ktor&eacute; nav&scaron;tevuj&uacute; z&aacute;kazn&iacute;ci).
                 </li>
                 <li> <b>Nasleduj ulice</b> - Tvar je založen&yacute; na podkladovej sieti ul&iacute;c. T&aacute;to možnosť je najvhodnej&scaron;ia, keď chcete generovať trasy medzi počiatkami a destin&aacute;ciami. <b>Nasleduj ulice</b> je deaktivovan&yacute; keď je meran&iacute;m <b>Priama vzdialenosť</b>.
                 </li>
@@ -167,13 +167,13 @@
         <div><h2>Názov výslednej vrstvy</h2></div>
         <hr/>
         <div>
-            <p>N&aacute;zov vrstvy prvkov, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Ak vrstva prvkov už existuje, budete požiadan&yacute; poskytnuť in&yacute; n&aacute;zov. Vrstva funkci&iacute; bude obsahovať vrstvu pre každ&uacute; z nasleduj&uacute;cich možnost&iacute;: trasy, nepriraden&eacute; počiatky a nepriraden&eacute; destin&aacute;cie, keď niektor&eacute; počiatky nemožno spojiť s ich destin&aacute;ciami.
+            <p>N&aacute;zov vrstvy prvkov, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Ak vrstva prvkov už existuje, budete požiadan&yacute; poskytnuť in&yacute; n&aacute;zov. Prvkov&aacute; vrstva bude obsahovať vrstvu pre : trasy, nepriraden&eacute; počiatky a nepriraden&eacute; destin&aacute;cie v pr&iacute;pade, keď niektor&eacute; počiatky nemožno spojiť s ich destin&aacute;ciami.
             </p>
-            <p>Ak zvol&iacute;te  <b>Zahrn&uacute;ť vrstvy trasy</b>, každ&aacute; trasa z v&yacute;sledku je tiež uložen&aacute; ako vrstva trasy. Vrstva trasy zahŕňa v&scaron;etky inform&aacute;cie pre konkr&eacute;tnu trasu, napr&iacute;klad zast&aacute;vky pridelen&eacute; trase, ako aj cestovn&eacute; in&scaron;trukcie. Vytvorenie vrstvy trasy je užitočn&eacute;, ak chcete zdieľať jednotliv&eacute; trasy s in&yacute;mi členmi vo va&scaron;ej organizacii alebo ďalej upravovať trasy použit&iacute;m tlačidla <b>Navigačn&eacute; in&scaron;trukcie</b> v map viewer. Vrstvy trasy použ&iacute;vaj&uacute; n&aacute;zov poskytnut&yacute; pre vrstvu prvku ako predponu a n&aacute;zov trasy vygenerovan&yacute; ako s&uacute;časť anal&yacute;zy, ktor&yacute; je pridan&yacute; na vytvorenie unik&aacute;tneho n&aacute;zvu pre každ&uacute; vrstvu trasy.
+            <p>Ak zvol&iacute;te  <b>Zahrn&uacute;ť vrstvy tr&aacute;s</b>, každ&aacute; trasa z v&yacute;sledku je uložen&aacute; aj ako vrstva trasy. Vrstva trasy zahŕňa v&scaron;etky inform&aacute;cie pre konkr&eacute;tnu trasu, napr&iacute;klad pridelen&eacute; zast&aacute;vky ako aj cestovn&eacute; in&scaron;trukcie. Vytvorenie vrstvy tr&aacute;s je užitočn&eacute;, ak chcete zdieľať jednotliv&eacute; trasy s in&yacute;mi členmi va&scaron;ej organizacie alebo ďalej upravovať trasy použit&iacute;m tlačidla <b>Navigačn&eacute; in&scaron;trukcie</b> v mapovom zobrazovači. Vrstvy tr&aacute;s použ&iacute;vaj&uacute; n&aacute;zov podľa prvkovej vrstvy ako predponu a pridan&eacute;ho n&aacute;zvu trasy vygenerovanej anal&yacute;zou, č&iacute;m sa vytvoria unik&aacute;tne n&aacute;zvy pre každ&uacute; trasov&uacute; vrstvu.
             </p>
-            <p>Maxim&aacute;lny počet vrstiev trasy, ktor&yacute; m&ocirc;že byť vytvoren&yacute; je  1,000. Ak v&yacute;sledok obsahuje viac, ako  1,000 tr&aacute;s a  <b>Zahrn&uacute;ť vrstvy trasy</b> je za&scaron;krtnut&eacute;, n&aacute;stroj vytvor&iacute; len v&yacute;stupn&uacute; službu prvkov.
+            <p>Maxim&aacute;lny počet vrstiev tr&aacute;s, ktor&eacute; m&ocirc;žu byť vytvoren&eacute; je  1,000. Ak v&yacute;sledok obsahuje viac, ako  1,000 tr&aacute;s a  <b>Zahrn&uacute;ť vrstvy tr&aacute;s</b> je za&scaron;krtnut&eacute;, n&aacute;stroj vytvor&iacute; len v&yacute;stupn&uacute; prvkov&uacute; službu.
             </p>
-            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bud&uacute; vrstva prvkov a vrstvy trasy, v pr&iacute;pade vytvorenia, uložen&eacute;.
+            <p>Použit&iacute;m rozbaľovacieho menu  <b>Uložiť v&yacute;sledok v</b> m&ocirc;žete zadať n&aacute;zov novej zložky v zložke <b>M&ocirc;j obsah</b>, kam bude vrstva prvkov a vrstvy tr&aacute;s, v pr&iacute;pade vytvorenia, uložen&eacute;.
             </p>
         </div>
     </div>

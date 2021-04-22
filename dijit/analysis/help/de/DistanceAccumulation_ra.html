@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Entfernungsakkumulation</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Abbildung zum Werkzeug &quot;Entfernungsakkumulation&quot;"></h2>
+        <hr/>
+    <p>Dieses Werkzeug berechnet die akkumulative Entfernung von jeder Zelle zu den Quellen. Dabei werden geradlinige Entfernung, Kostenentfernung, tats&auml;chliche Oberfl&auml;chenentfernung sowie vertikale und horizontale Faktoren ber&uuml;cksichtigt.
+    </p>
+    <p>Zu den Beispielanwendungen z&auml;hlt die Beantwortung von Fragen wie den folgenden:
+        <ul>
+            <li>Wie lautet die Entfernung zur n&auml;chsten Stadt?
+                
+
+            </li>
+            <li>Wie lautet die Kostenentfernung zur n&auml;chsten Stra&szlig;e?
+                
+
+            </li>
+            <li>Wie lautet die Entfernung um Barrieren zur n&auml;chsten Wasserquelle?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Features im Eingabe-Layer analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn diese Option deaktiviert ist, werden alle Features im Eingabe-Layer analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Anzeigeausdehnung der Karte befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Quell-Raster oder -Features auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster oder Feature-Layer, der die Quellen definiert, zu denen die Entfernung berechnet wird.
+            </p>
+            <p>Wenn die Eingabe ein Raster ist, muss die Eingabe aus Quellenzellen mit g&uuml;ltigen Werten (0 ist ein g&uuml;ltiger Wert) bestehen, und den restlichen Zellen muss &quot;NoData&quot; zugewiesen werden.
+            </p>
+            <p>Wenn die Eingabe ein Feature-Layer ist, kann es sich um Punkte, Linien oder Polygone handeln.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Barriere-Raster- oder -Features auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Dataset, das die Barrieren definiert.
+            </p>
+            <p>Bei einem Raster-Layer kann der Eingabetyp ein Integer- oder Gleitkomma-Raster sein. Zellen, die &uuml;ber einen Wert (einschlie&szlig;lich 0) verf&uuml;gen, werden als Barriere verarbeitet. Zellen, die &uuml;ber einen NoData-Wert verf&uuml;gen, werden nicht als Barriere verarbeitet.
+            </p>
+            <p>Bei einem Feature-Service kann die Eingabe ein Punkt, eine Linie oder ein Polygon sein.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Oberflächen-Raster auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster, das die H&ouml;henwerte an jeder Zellenposition definiert.
+            </p>
+            <p>Beim &Uuml;bergang zwischen Zellen werden die Werte verwendet, um die tats&auml;chliche Oberfl&auml;chenentfernung zu berechnen.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Kosten-Raster auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster, das die Impedanz oder die Kosten f&uuml;r eine planimetrische Bewegung durch jede Zelle definiert.
+            </p>
+            <p>Der Wert an jeder Zellenposition stellt die Kosten pro Einheitenentfernung f&uuml;r die Bewegung durch die Zelle dar. Jeder Zellenpositionswert wird mit der Zellenaufl&ouml;sung multipliziert, und gleichzeitig werden diagonale Bewegungen ausgeglichen, um die Gesamtkosten f&uuml;r die Bewegung durch die Zelle zu erhalten.
+            </p>
+            <p>Die Werte im Kosten-Raster k&ouml;nnen Ganzzahl- oder Gleitkommawerte sein, sie d&uuml;rfen jedoch nicht negativ oder 0 sein (negative oder keine Kosten sind nicht zul&auml;ssig).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Vertikal-Raster auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster, das die Z-Werte f&uuml;r jede Zellenposition definiert.
+            </p>
+            <p>Die Werte werden zum Berechnen der Neigung verwendet, die zum Identifizieren des vertikalen Faktors beim &Uuml;bergang von einer Zelle zur anderen dient.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikaler Faktor (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Der  <b>vertikale Faktor</b> definiert die Beziehung zwischen dem vertikalen Kostenfaktor (VF) und dem vertikalen relativen Bewegungswinkel (Vertical Relative Moving Angle, VRMA).
+            </p>
+            <p>Es stehen mehrere Faktoren mit Modifikatoren zur Auswahl, die ein definiertes Diagramm f&uuml;r den vertikalen Faktor identifizieren. Die Diagramme identifizieren den vertikalen Faktor, der zum Berechnen der Gesamtkosten f&uuml;r die Bewegung in eine benachbarte Zelle verwendet wird.
+            </p>
+            <p>In den folgenden Beschreibungen definiert der VF die vertikalen Hindernisse bei der Bewegung von einer Zelle zur n&auml;chsten, und der VRMA-Modifikator identifiziert den Neigungswinkel zwischen der Zelle  <b>Von Quelle</b> und der Zelle <b>Zur Quelle</b>.
+                <ul>
+                    <li> <b>Bin&auml;r</b>: Wenn der VRMA gr&ouml;&szlig;er als der untere Schnittwinkel und kleiner als der obere Schnittwinkel ist, wird f&uuml;r den VF der dem Null-Faktor zugewiesene Wert festgelegt. Andernfalls ist dieser unendlich.
+                    </li>
+                    <li> <b>Linear</b>: Der VF ist eine lineare Funktion des VRMA.
+                    </li>
+                    <li> <b>Invers linear</b>: Der VF ist eine invers lineare Funktion des VRMA.
+                    </li>
+                    <li> <b>Symmetrisch linear</b>: Der VF ist eine lineare Funktion des VRMA auf der negativen oder positiven Seite des VRMA und die beiden linearen Funktionen hinsichtlich der VF-Achse bzw. Y-Achse sind symmetrisch.
+                    </li>
+                    <li> <b>Symmetrisch invers linear</b>: Der VF ist eine invers lineare Funktion des VRMA auf der negativen oder positiven Seite des VRMA und die beiden linearen Funktionen hinsichtlich der VF-Achse bzw. Y-Achse sind symmetrisch.
+                    </li>
+                    <li> <b>Cos</b>: Der VF ist die kosinusbasierte Funktion des VRMA.
+                    </li>
+                    <li> <b>Sec</b>: Der VF ist die sekantenbasierte Funktion des VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>: Der VF ist bei einem negativen VRMA die kosinusbasierte Funktion des VRMA und bei einem positiven VRMA die sekantenbasierte Funktion des VRMA.
+                    </li>
+                    <li> <b>Sec-Cos</b>: Der VF ist bei einem negativen VRMA die sekantenbasierte Funktion des VRMA und bei einem positiven VRMA die kosinusbasierte Funktion des VRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Die Modifikatoren f&uuml;r die Parameter des vertikalen Faktors lauten wie folgt:
+                <ul>
+                    <li> <b>Null-Faktor</b>: Der vertikale Faktor, der verwendet wird, wenn der VRMA 0 ist. Dieser Faktor positioniert den Y-Schnittpunkt der angegebenen Funktion. Laut Definition ist der Null-Faktor nicht auf trigonometrische vertikale Funktionen (Cos, Sec, Cos-Sec oder Sec-Cos) anwendbar. Der Y-Schnittpunkt wird von diesen Funktionen definiert.
+                    </li>
+                    <li> <b>Niedriger Schnittwinkel</b>: Der VRMA, unter dem der VF auf unendlich festgelegt wird
+                    </li>
+                    <li> <b>Hoher Schnittwinkel</b>: Der VRMA, &uuml;ber dem der VF auf unendlich festgelegt wird
+                    </li>
+                    <li> <b>Neigung</b>: Die Neigung der Geraden, die mit den Parametern <b>Linear</b> und <b>Invers linear</b> verwendet wird. Die Neigung wird als Verh&auml;ltnis von H&ouml;hendifferenz zu horizontaler Distanz angegeben (z.&nbsp;B. ist eine 45-Grad-Neigung 1/45 und wird als 0,02222 eingegeben).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Horizontal-Raster auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster, das die horizontale Richtung an jeder Zelle definiert.
+            </p>
+            <p>Die Werte in dem Raster m&uuml;ssen ganzzahlig zwischen 0&nbsp;und 360&nbsp;Grad sein. Dabei steht 0&nbsp;Grad f&uuml;r Norden (am Bildschirm oben), und der Winkel nimmt im Uhrzeigersinn zu. Ebenen Fl&auml;chen sollte der Wert -1 zugewiesen werden. Beim &Uuml;bergang von einer Zelle zu einer benachbarten Zelle werden die Werte an jeder Position zusammen mit dem  <b>horizontalen Faktor</b> verwendet, um die anfallenden horizontalen Kosten zu bestimmen.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontaler Faktor (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Der  <b>horizontale Faktor</b> definiert die Beziehung zwischen dem horizontalen Kostenfaktor und dem horizontalen relativen Bewegungswinkel.
+            </p>
+            <p>Es stehen mehrere Faktoren mit Modifikatoren zur Auswahl, die ein definiertes Diagramm f&uuml;r den horizontalen Faktor identifizieren. Die Diagramme identifizieren den horizontalen Faktor, der zum Berechnen der Gesamtkosten f&uuml;r die Bewegung in eine benachbarte Zelle verwendet wird.
+            </p>
+            <p>In den folgenden Beschreibungen definiert der horizontale Faktor (HF) die horizontalen Hindernisse bei der Bewegung von einer Zelle zur n&auml;chsten, und der horizontale relative Bewegungswinkel (HRMA) identifiziert den Winkel zwischen der horizontalen Richtung von einer Zelle und der Bewegungsrichtung.
+            </p>
+            <p>Die Definitionen und Parameter der HF lauten wie folgt:
+                <ul>
+                    <li> <b>Bin&auml;r</b>: Wenn der HRMA kleiner ist als der Schnittwinkel, wird f&uuml;r den HF der dem Null-Faktor zugewiesene Wert festgelegt. Andernfalls ist dieser unendlich.
+                        
+
+                    </li>
+                    <li> <b>Vorw&auml;rts</b>: Nur Vorw&auml;rtsbewegungen sind zul&auml;ssig. Der HRMA muss gr&ouml;&szlig;er als oder gleich 0&nbsp;Grad und kleiner als 90&nbsp;Grad sein (0 &lt;= HRMA &lt; 90). Wenn der HRMA gr&ouml;&szlig;er als 0 und kleiner als 45 Grad ist, wird als HF f&uuml;r die Zelle der dem Null-Faktor zugewiesene Wert festgelegt. Wenn der HRMA gr&ouml;&szlig;er als oder gleich 45&nbsp;Grad ist, wird der Wert des Seitenwert-Modifikators verwendet. Der HF f&uuml;r einen HRMA, der gr&ouml;&szlig;er als oder gleich 90&nbsp;Grad ist, wird auf unendlich festgelegt.
+                        
+
+                    </li>
+                    <li> <b>Linear</b>: Der HF ist eine lineare Funktion des HRMA.
+                        
+
+                    </li>
+                    <li> <b>Invers linear</b>: Der HF ist eine invers lineare Funktion des HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Die Modifikatoren f&uuml;r die Schl&uuml;sselw&ouml;rter des horizontalen Faktors lauten wie folgt:
+                <ul>
+                    <li> <b>Null-Faktor</b>: Der horizontale Faktor, der verwendet wird, wenn der HRMA 0 ist. Dieser Faktor positioniert den Y-Schnittpunkt f&uuml;r alle Funktionen f&uuml;r den horizontalen Faktor.
+                        
+
+                    </li>
+                    <li> <b>Schnittwinkel</b>: Der HRMA, ab dem der HF auf unendlich festgelegt wird.
+                        
+
+                    </li>
+                    <li> <b>Neigung</b>: Die Neigung der Geraden, die mit den Schl&uuml;sselw&ouml;rtern <b>Linear</b> und <b>Invers Linear</b> f&uuml;r den horizontalen Faktor verwendet wird. Die Neigung wird als Verh&auml;ltnis von H&ouml;hendifferenz zu horizontaler Distanz angegeben (z.&nbsp;B. ist eine 45-Grad-Neigung 1/45 und wird als 0,02222 eingegeben).
+                        
+
+                    </li>
+                    <li> <b>Seitenfaktor</b>: Der HF, wenn der HRMA gr&ouml;&szlig;er oder gleich 45&nbsp;Grad und kleiner als 90&nbsp;Grad ist und wenn das Schl&uuml;sselwort <b>Vorw&auml;rts</b> f&uuml;r den horizontalen Faktor angegeben wird
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Initiale Akkumulation</h2></div>
+        <hr/>
+        <div>
+            <p>Die anf&auml;nglichen akkumulativen Kosten zum Beginn der Kostenberechnung.
+            </p>
+            <p>Dies erm&ouml;glicht die Festlegung der Fixkosten, die mit einer Quelle verkn&uuml;pft sind. Der Kostenalgorithmus beginnt mit dem durch die  <b>Initiale Akkumulation</b> festgelegten Wert statt mit dem Kostenwert Null.
+            </p>
+            <p>Die Wert m&uuml;ssen gr&ouml;&szlig;er gleich 0 sein. Die Standardeinstellung ist 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximale Akkumulation</h2></div>
+        <hr/>
+        <div>
+            <p>Die maximale Akkumulation f&uuml;r den Reisenden f&uuml;r eine Quelle.
+            </p>
+            <p>Die Kostenberechnungen werden f&uuml;r jede Quelle fortgesetzt, bis die angegebene Akkumulation erreicht ist.
+            </p>
+            <p>Die Werte m&uuml;ssen gr&ouml;&szlig;er als Null sein. Die Standardakkumulation reicht bis zur Kante des Ausgabe-Rasters.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Kostenmultiplikator</h2></div>
+        <hr/>
+        <div>
+            <p>Der Multiplikator zum Anwenden der Kostenwerte.
+            </p>
+            <p>Dieser erm&ouml;glicht die Steuerung des Reisemodus oder der Magnitude an einer Quelle. Je gr&ouml;&szlig;er der Multiplikator, desto h&ouml;her sind die Kosten, um sich von einer Zelle zur anderen zu bewegen.
+            </p>
+            <p>Die Werte m&uuml;ssen gr&ouml;&szlig;er als Null sein. Die Standardeinstellung ist 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Reiserichtung</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt die Richtung des Reisenden an, wenn horizontale und vertikale Faktoren angewendet werden.
+            </p>
+            <p> <b>Von Quelle</b>: Der horizontale Faktor und der vertikale Faktor werden beginnend an der Eingabequelle angewendet und in Richtung Nicht-Quellenzellen fortgesetzt. Dies ist die Standardeinstellung.
+            </p>
+            <p> <b>Zur Quelle</b>: Der horizontale Faktor und der vertikale Faktor werden beginnend an jeder Nicht-Quellenzelle angewendet und zur&uuml;ck in Richtung Eingabequelle fortgesetzt.
+            </p>
+            <p>Geben Sie das Schl&uuml;sselwort  <b>Von Quelle</b> bzw. <b>Zur Quelle</b> an, das auf alle Quellen angewendet wird. Alternativ k&ouml;nnen Sie in den Quelldaten ein Feld mit den Schl&uuml;sselw&ouml;rtern festlegen, um die Reiserichtung f&uuml;r jede Quelle festzulegen. Dieses Feld muss die Zeichenfolge <code>FROM_SOURCE</code> oder <code>TO_SOURCE</code> enthalten.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Entfernungsmethode (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Entfernung mithilfe einer planaren (flache Erde) oder geod&auml;tischen (Ellipsoid) Methode berechnet werden soll.
+            </p>
+            <ul>
+                <li> <b>Planar</b>: Die Entfernungsberechnung erfolgt auf einer projizierten flachen Ebene mithilfe eines kartesischen 2D-Koordinatensystems. Dies ist das Standardverfahren.
+                    
+
+                </li>
+                <li> <b>Geod&auml;tisch</b>: Die Entfernungsberechnung erfolgt f&uuml;r das Ellipsoid. Deshalb &auml;ndern sich die Ergebnisse unabh&auml;ngig von der Eingabe- oder Ausgabeprojektion nicht.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Name des Ergebnis-Entfernungsakkumulations-Rasters</h2></div>
+        <hr/>
+        <div>
+            <p>Das Entfernungsakkumulations-Raster enth&auml;lt die akkumulative Entfernung jeder Zelle zu oder von der kosteng&uuml;nstigsten Quelle.
+            </p>
+            <p>Das Ausgabe-Raster ist ein Gleitkomma-Raster.
+            </p>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Name des Ergebnis-Gegenrichtungs-Rasters (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Gegenrichtungs-Raster enth&auml;lt die berechnete Richtung in Grad. Die Richtung identifiziert die n&auml;chste Zelle entlang der k&uuml;rzesten Route zur&uuml;ck zur n&auml;chstgelegenen Quelle, wobei Barrieren vermieden werden.
+            </p>
+            <p>Der Wertebereich reicht von 0&nbsp;Grad bis 360&nbsp;Grad, wobei 0&nbsp;Grad f&uuml;r die Quellenzellen reserviert ist. In &ouml;stlicher Richtung (rechts) befindet sich der 90-Grad-Winkel, und die Werte nehmen im Uhrzeigersinn zu (180&nbsp;Grad ist S&uuml;den, 270&nbsp;Grad ist Westen und 360&nbsp;Grad ist Norden).
+            </p>
+            <p>Das Ausgabe-Raster ist ein Gleitkomma-Raster.
+            </p>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt wird. Sie m&uuml;ssen einen Namen angeben, der aktuell nicht in <b>Eigene Inhalte</b> vorhanden ist.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Name des Ergebnis-Quellenrichtungs-Rasters (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Quellenrichtungs-Raster gibt die Richtung der Quellenzelle mit den geringsten akkumulativen Kosten als Azimut in Grad an.
+            </p>
+            <p>Der Wertebereich reicht von 0&nbsp;Grad bis 360&nbsp;Grad, wobei 0&nbsp;Grad f&uuml;r die Quellenzellen reserviert ist. In &ouml;stlicher Richtung (rechts) befindet sich der 90-Grad-Winkel, und die Werte nehmen im Uhrzeigersinn zu (180&nbsp;Grad ist S&uuml;den, 270&nbsp;Grad ist Westen und 360&nbsp;Grad ist Norden).
+            </p>
+            <p>Das Ausgabe-Raster ist ein Gleitkomma-Raster.
+            </p>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt wird. Sie m&uuml;ssen einen Namen angeben, der aktuell nicht in <b>Eigene Inhalte</b> vorhanden ist.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Name des Ergebnis-Quellspeicherort-Rasters (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Quellspeicherort-Raster ist eine Multiband-Ausgabe. Das erste Band enth&auml;lt einen Zeilenindex, und das zweite Band enth&auml;lt einen Spaltenindex. Diese Indizes geben die Position der Quellenzelle an, deren Entfernung die geringsten akkumulativen Kosten aufweist.
+            </p>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt wird. Sie m&uuml;ssen einen Namen angeben, der aktuell nicht in <b>Eigene Inhalte</b> vorhanden ist.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

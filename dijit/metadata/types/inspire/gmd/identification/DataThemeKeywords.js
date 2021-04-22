@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Element","../../../../form/InputDelimitedTextArea","../../../../form/iso/AbstractObject","../../../../form/iso/CodeListAttribute","../../../../form/iso/CodeListValueAttribute","../../../../form/iso/CodeListElement","../../../../form/iso/CodeListReference","../../../../form/iso/ObjectReference","../../../../form/iso/gemet/GemetThemeTool","dojo/text!./templates/DataThemeKeywords.html","../../../../../../kernel"],(function(e,t,o,i,r,s,m,a,d,n,f,l,c,b,j){var p=e(i,{templateString:b});return o("extend-esri")&&t.setObject("dijit.metadata.types.inspire.gmd.identification.DataThemeKeywords",p,j),p}));

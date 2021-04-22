@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Aggregate Multidimensional Raster (Agregatni višedimenzionalni raster)</h2><p/>
-        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Aggregate Multidimensional Raster"></h2>
+        <h2>Agregatni multidimenzionalni raster</h2><p/>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregatni multidimenzionalni raster"></h2>
         <hr/>
-    <p>Generi&scaron;e vi&scaron;edimenzionalni rasterski skup podataka kombinovanjem postojećih vi&scaron;edimenzionalnih promenljivih rastera duž dimenzije.
+    <p>Generi&scaron;e multidimenzionalni skup podataka kombinovanjem postojećih multidimenzionalnih varijabli mreže duž dimenzije.
     </p>
     <p>Ako imate 30 godina podataka o temperaturi morske povr&scaron;ine, koje se prikupljaju mesečno i na svakih 5 metara dubine do 100 metara, neki primeri su sledeći:
         <ul>
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Odaberite višedimenzionalni sloj snimka za grupisanje</h2></div>
+        <div><h2>Izaberite višedimenzionalni sloj slika da biste stvorili agregat</h2></div>
         <hr/>
         <div>
             <p>Sloj ulaznih slika vi&scaron;edimenzionalnog rasterskog skupa.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Izaberite dimenziju za grupisanje</h2></div>
+        <div><h2>Izaberite dimenziju duž koje ćete objediniti</h2></div>
         <hr/>
         <div>
             <p>Dimenzija agregacije. Ovo je dimenzija duž koje će se varijable agregirati.
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Izaberite promenljivu(e) za grupisanje</h2></div>
+        <div><h2>Izaberite promenljive (a) za objedinjavanje</h2></div>
         <hr/>
         <div>
             <p>Varijabla ili varijable koje će biti objedinjene duž date dimenzije. Ako nije navedena nijedna varijabla, analiziraće se sve varijable sa vremenskom dimenzijom.
@@ -88,32 +88,32 @@
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Izaberite metod grupisanja</h2></div>
+        <div><h2>Odaberite metod objedinjavanja</h2></div>
         <hr/>
         <div>
-            <p>Određuje matematičku metodu koja će se koristiti za kombinovanje zbirnih odsečaka u intervalu. 
+            <p>Određuje matematičku metodu koja će se koristiti za kombinovanje zbirnih odseka u intervalu.
                 <ul>
-                    <li> <b>Srednja vrednost</b>&mdash;izračunava srednju vrednost piksela na svim odsečcima u intervalu. Ovo je podrazumevano.
+                    <li> <b>Srednje</b>&mdash;Izračunava srednju vrednost piksela na svim odsječcima u intervalu. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Maksimalno</b>&mdash;izračunava maksimalnu vrednost piksela na svim odsečcima u intervalu.
+                    <li> <b>Maksimum</b>&mdash;Izračunava maksimalnu vrednost piksela na svim presecima u intervalu.
                     </li>
-                    <li> <b>Većina</b>&mdash;izračunava vrednost koja se najče&scaron;će pojavljivala za piksel na svim odsečcima u intervalu.
+                    <li> <b>Većina</b>&mdash;Izračunava vrednost koja se najče&scaron;će pojavljivala za piksel na svim presecima u intervalu.
                     </li>
-                    <li> <b>Minimalno</b>&mdash;izračunava minimalnu vrednost piksela na svim odsečcima u intervalu.
+                    <li> <b>Minimum</b>&mdash;Izračunava minimalnu vrednost piksela na svim presecima u intervalu.
                     </li>
-                    <li> <b>Manjina</b>&mdash;izračunava vrednost koja se najmanje pojavljivala za piksel na svim odsečcima u intervalu.
+                    <li> <b>Manjina</b>&mdash;Izračunava vrednost koja se najče&scaron;će pojavljivala za piksel na svim presecima u intervalu.
                     </li>
-                    <li> <b>Prosečno</b>&mdash;izračunava vrednost medijane piksela na svim odsečcima u intervalu.
+                    <li> <b>Srednja vrednost</b>&mdash;Izračunava srednju vrednost piksela na svim presecima u intervalu.
                     </li>
-                    <li> <b>Opseg</b>&mdash;izračunava raspon vrednosti za piksel na svim odsečcima u intervalu.
+                    <li> <b>Opseg</b>&mdash;Izračunava raspon vrednosti za piksel na svim isečcima u intervalu.
                     </li>
-                    <li> <b>Standardna devijacija</b>&mdash;izračunava standardno odstupanje vrednosti piksela na svim odsečcima u intervalu.
+                    <li> <b>Standardna devijacija</b>&mdash;Izračunava raspon vrednosti za piksel na svim isečcima u intervalu.
                     </li>
-                    <li> <b>Zbir</b>&mdash;izračunava zbroj vrednosti piksela na svim odsečcima u intervalu..
+                    <li> <b>Zbir</b>&mdash;Izračunava zbroj vrednosti piksela na svim isečcima u intervalu.
                     </li>
-                    <li> <b>Raznolikost</b>&mdash;izračunava broj jedinstvenih vrednosti piksela na svim odsečcima u intervalu.
+                    <li> <b>Raznovrsnost</b>&mdash;Izračunava broj jedinstvenih vrednosti piksela na svim presecima u intervalu.
                     </li>
-                    <li> <b>Prilagođeno</b>&mdash;izračunava vrednost piksela na osnovu prilagođene rasterske funkcije.
+                    <li> <b>Prilagođeno</b>&mdash;Izračunava vrednost piksela na osnovu prilagođene rasterske funkcije.
                     </li>
                 </ul>
                 
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div id="aggregationFunction">
-        <div><h2>Izaberite šablon rasterske funkcije</h2></div>
+        <div><h2>Primeni šablon rasterske funkcije</h2></div>
         <hr/>
         <div>
             <p>Prilagođena rasterska funkcija koja će se koristiti za izračunavanje vrednosti piksela agregiranih rastera. Ulaz je stavka predlo&scaron;ka rasterske funkcije na portalu. Ovaj unos je potreban kada je  <b>Aggregation Method</b> pode&scaron;en na <b>Custom</b>.
@@ -129,18 +129,18 @@
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Izaberite definiciju grupisanja</h2></div>
+        <div><h2>Izaberite definiciju za grupisanje</h2></div>
         <hr/>
         <div>
-            <p>Određuje interval dimenzija za koji će se podaci grupisati. 
+            <p>Određuje interval dimenzija za koji će se podaci agregirati.
                 <ul>
-                    <li> <b>Sve</b>&mdash;vrednosti podataka će se grupisati na svim odsečcima. Ovo je podrazumevano.
+                    <li> <b>Sve</b>&mdash;Vrednosti podataka će se agregirati na svim isečcima. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Ključna reč za interval</b>&mdash;promenljivi podaci će se grupisati koristeći op&scaron;te poznati interval.
+                    <li> <b>Interval ključne reči</b>&mdash;Promenljivi podaci će se objediniti koristeći op&scaron;te poznati interval.
                     </li>
-                    <li> <b>Vrednost intervala</b>&mdash;promenljivi podaci će se grupisati koristeći interval i jedinicu navedenu od strane korisnika.
+                    <li> <b>Interval vrednosti</b>&mdash;Promenljivi podaci će se objediti pomoću intervala i jedinice koje je odredio korisnik.
                     </li>
-                    <li> <b>Interval opsega</b>&mdash;podaci promenljivih će se grupisati između određenih parova vrednosti ili datuma.
+                    <li> <b>Interval opsega</b>&mdash;Podaci promenljivih će se agregirati između određenih parova vrednosti ili datuma.
                     </li>
                 </ul>
                 
@@ -148,34 +148,34 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Izaberite interval za ključnu reč</h2></div>
+        <div><h2>Izaberite interval ključnih reči</h2></div>
         <hr/>
         <div>
-            <p>Određuje interval ključnih reči koji će se koristiti prilikom objedinjavanja duž dimenzije. Ovaj unos je potreban kada je  <b>Definicija grupisanja</b> pode&scaron;ena na <b>Ključna reč za interval</b>, a grupisanje mora da se obavi u vremenu.
+            <p>Određuje interval ključnih reči koji će se koristiti prilikom objedinjavanja duž dimenzije. Ovaj unos je potreban kada je  <b>Aggregation Definition</b> pode&scaron;ena na <b>Interval Keyword</b>, a objedinjavanje mora da se obavi u vremenu.
                 <ul>
-                    <li> <b>Po satu</b>&mdash;vrednosti podataka će se grupisati uz satne vremenske korake, a rezultat će uključivati svaki sat u vremenskoj seriji.
+                    <li> <b>Po satu</b>&mdash;Vrednosti podataka objedinit će se uz satne vremenske korake, a rezultat će uključivati svaki sat u vremenskoj seriji.
                     </li>
-                    <li> <b>Po danu</b>&mdash;vrednosti podataka će se grupisati u dnevne vremenske korake, a rezultat će uključivati svaki dan u vremenskoj seriji.
+                    <li> <b>Dnevno</b>&mdash;Vrednosti podataka objedinit će se u dnevne vremenske korake, a rezultat će se sastojati svaki dan u vremenskoj seriji.
                     </li>
-                    <li> <b>Po nedelji</b>&mdash;vrednosti podataka će se grupisati u nedeljne vremenske korake, a rezultat će se sastojati od svake nedelje u vremenskoj seriji.
+                    <li> <b>Nedeljno</b>&mdash;Vrednosti podataka objedinjuju se u nedeljne vremenske korake, a rezultat će se sastojati od svake nedelje u vremenskoj seriji.
                     </li>
-                    <li> <b>Po mesecu</b>&mdash;vrednosti podataka će se grupisati u mesečnim vremenskim koracima, a rezultat će uključivati svaki mesec u vremenskoj seriji.
+                    <li> <b>Mesečno</b>&mdash;Vrednosti podataka objediniće se u mesečnim vremenskim koracima, a rezultat će uključivati svaki mesec u vremenskoj seriji.
                     </li>
-                    <li> <b>Po kvartalu</b>&mdash;vrednosti podataka će se grupisati u kvartalnim vremenskim koracima, a rezultat će uključivati svaku četvrtinu u vremenskoj seriji.
+                    <li> <b>Kvartalno</b>&mdash;Vrednosti podataka objediniće se u kvartalnim vremenskim koracima, a rezultat će uključivati svaku četvrtinu u vremenskoj seriji.
                     </li>
-                    <li> <b>Po godini</b>&mdash;vrednosti podataka će se grupisati u godi&scaron;njim vremenskim koracima, a rezultat će uključivati svaku godinu u vremenskoj seriji.
+                    <li> <b>Godi&scaron;nje</b>&mdash;Vrednosti podataka objediniće se u godi&scaron;njim vremenskim koracima, a rezultat će se uključiti svake godine u vremensku seriju.
                     </li>
-                    <li> <b>Svakodnevno ponavljanje</b>&mdash;vrednosti podataka će se grupisati u dnevne vremenske korake, a rezultat će uključivati jednu agregiranu vrednost po Julijanskom danu. Rezultat će obuhvatati najvi&scaron;e 366 dnevnih odseka vremena.
+                    <li> <b>Dnevno de&scaron;avanje</b>&mdash;Vrednosti podataka objediniće se u dnevne vremenske korake, a rezultat će uključivati jednu agregiranu vrijednost po Julianskom danu. Rezultat će obuhvatati najvi&scaron;e 366 dnevnih odseka vremena.
                     </li>
-                    <li> <b>Ponavljanje sedmično</b>&mdash;vrednosti podataka će se grupisati u nedeljne vremenske korake, a rezultat će uključivati jednu agregiranu vrednost nedeljno. Rezultat će uključivati, najvi&scaron;e, 53 nedeljna odeljka vremena.
+                    <li> <b>Nedeljno de&scaron;avanje</b>&mdash;Vrednosti podataka objedinjuju se u nedeljne vremenske korake, a rezultat će uključivati jednu agregiranu vrednost nedeljno. Rezultat će uključivati, najvi&scaron;e, 53 nedeljna odeljka vremena.
                     </li>
-                    <li> <b>Ponavljanje mesečno</b>&mdash;vrednosti podataka će se grupisati u nedeljne vremenske korake, a rezultat će uključivati jednu objedinjenu vrednost mesečno. Rezultat će uključivati najvi&scaron;e 12 mesečnih odseka vremena.
+                    <li> <b>Mesečno ponavljanje</b>&mdash;Vrednosti podataka objedinjuju se u nedeljne vremenske korake, a rezultat će uključivati jednu agregiranu vrednost mesečno. Rezultat će uključivati najvi&scaron;e 12 mesečnih odseka vremena.
                     </li>
-                    <li> <b>Ponavljanje kvartalno</b>&mdash;vrednosti podataka će se grupisati u nedeljne vremenske korake, a rezultat će uključivati jednu objedinjenu vrednost po kvartalu. Rezultat će uključivati najvi&scaron;e 4 kvartalna odseka vremena.
+                    <li> <b>Kvartalno ponavljanje</b>&mdash;Vrednosti podataka objedinjuju se u nedeljne vremenske korake, a rezultat će uključivati jednu agregiranu vrednost kvartalno. Rezultat će uključivati najvi&scaron;e 4 kvartalna odseka vremena.
                     </li>
-                    <li> <b>Dekadno</b>&mdash; vrednosti podataka će se grupisati u 3 perioda od po 10 dana. Poslednji period može da sadrži vi&scaron;e ili manje od 10 dana. Rezultat će uključivati 3 kri&scaron;ke za svaki mesec.
+                    <li> <b>Dekadno</b>&mdash; Vrednosti podataka objediniće se u 3 perioda od po 10 dana. Poslednji period može da sadrži vi&scaron;e ili manje od 10 dana. Rezultat će uključivati 3 kri&scaron;ke za svaki mesec.
                     </li>
-                    <li> <b>Petodnevno</b>&mdash;vrednosti podataka će se grupisati u 6 perioda od po 5 dana. Poslednji period može da sadrži vi&scaron;e ili manje od 5 dana. Rezultat će uključivati 6 kri&scaron;ke za svaki mesec.
+                    <li> <b>Pentadno</b>&mdash;Vrednosti podataka objediniće se u 6 perioda od po 5 dana. Poslednji period može da sadrži vi&scaron;e ili manje od 5 dana. Rezultat će uključivati 6 kri&scaron;ke za svaki mesec.
                     </li>
                 </ul>
                 
@@ -198,17 +198,17 @@
         <div>
             <p>Jedinica će se koristiti za internu vrednost. Ovaj unos je potreban kada je  <b>Dimension</b> polje za vreme a <b>Aggregation Definition</b> pode&scaron;en na <b>Interval Value</b>.
             </p>
-            <p>Ako grupi&scaron;ete preko bilo čega osim vremena, ova opcija neće biti dostupna, a jedinica za vrednost intervala će odgovarati promenljivoj jedinici ulaznih vi&scaron;edimenzionalnih rasterskih podataka. 
+            <p>Ako agregirate preko bilo čega osim vremena, ova opcija neće biti dostupna, a jedinica za vrednost intervala će odgovarati promenljivoj jedinici ulaznih vi&scaron;edimenzionalnih rasterskih podataka.
                 <ul>
-                    <li> <b>Sati</b>&mdash;vrednosti podataka će se grupisati u satne odsečke vremena u navedenom intervalu.
+                    <li> <b>Sati</b>&mdash;Vrednosti podataka objedinit će se u satne isečke u navedenom intervalu.
                     </li>
-                    <li> <b>Dani</b>&mdash;vrednosti podataka će se grupisati u dnevne odsečke vremena u navedenom intervalu.
+                    <li> <b>Dani</b>&mdash;Vrednosti podataka objediniće se u dnevne isečke vremena u navedenom intervalu.
                     </li>
-                    <li> <b>Nedelje</b>&mdash;vrednosti podataka će se grupisati u nedeljne odsečke vremena u navedenom intervalu.
+                    <li> <b>Nedelje</b>&mdash;Vrednosti podataka objedinit će se u nedeljne odlomke vremena u navedenom intervalu.
                     </li>
-                    <li> <b>Meseci</b>&mdash;vrednosti podataka će se grupisati u mesečne odsečke vremena u navedenom intervalu.
+                    <li> <b>Meseci</b>&mdash;Vrednosti podataka objediniće se u mesečne odlomke vremena u predviđenom intervalu.
                     </li>
-                    <li> <b>Godine</b>&mdash;vrednosti podataka će se grupisati u godi&scaron;nje odsečke vremena u navedenom intervalu.
+                    <li> <b>Godine</b>&mdash;Vrednosti podataka objediniće se u godi&scaron;nje odlomke vremena u navedenom intervalu.
                     </li>
                 </ul>
                 
@@ -227,11 +227,11 @@
         <div><h2>Ignoriši nedostajuće vrednosti u izračunavanju</h2></div>
         <hr/>
         <div>
-            <p>Određuje da li se vrednosti koje nedostaju zanemaruju u analizi. 
+            <p>Određuje da li se vrednosti koje nedostaju zanemaruju u analizi.
                 <ul>
                     <li>Označeno - Analiza će uključiti sve važeće piksele duž date dimenzije i zanemariti sve NoData piksele. Ovo je podrazumevano.
                     </li>
-                    <li>Neoznačeno&mdash;Analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za piksele duž date dimenzije.
+                    <li>Neoznačeno - Analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za piksele duž date dimenzije.
                     </li>
                 </ul>
                 
@@ -242,6 +242,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

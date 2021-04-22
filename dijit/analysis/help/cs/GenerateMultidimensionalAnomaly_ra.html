@@ -42,11 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Generovat vícerozměrnou anomálii (Generate Multidimensional Anomaly)</h2><p/>
-        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generovat v&iacute;cerozměrnou anom&aacute;lii"></h2>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generovat v&iacute;cerozměrnou anom&aacute;lii (Generate Multidimensional Anomaly)"></h2>
         <hr/>
-    <p>Vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru kombinac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru a rozměru.
+    <p>Vypoč&iacute;t&aacute; anom&aacute;lii pro každ&yacute; v&yacute;řez ve st&aacute;vaj&iacute;c&iacute;m v&iacute;cerozměrn&eacute;m rastru, aby vygeneroval nov&yacute; v&iacute;cerozměrn&yacute; rastr.
     </p>
-    <p>Anom&aacute;lie je odchylka pozorov&aacute;n&iacute; od standardn&iacute;, průměrn&eacute; nebo středn&iacute; hodnoty.
+    <p>Anom&aacute;lie je odchylka pozorov&aacute;n&iacute; od standardn&iacute;, průměrn&eacute; nebo středn&iacute; hodnoty (medi&aacute;nu).
     </p>
     <p>Tento n&aacute;stroj poč&iacute;t&aacute; anom&aacute;lie v průběhu času pro jednu nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru. Pokud kromě časov&eacute; dimenze m&aacute;te nečasovou dimenzi, bude anom&aacute;lie vypoč&iacute;t&aacute;na v každ&eacute;m kroku v dal&scaron;&iacute; dimenzi.
     </p>
@@ -54,12 +54,12 @@
     </p>
     <p>Tento n&aacute;stroj podporuje pouze v&iacute;cerozměrn&eacute; rastrov&eacute; datov&eacute; sady, kter&eacute; maj&iacute; časov&yacute; rozměr.
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Vyberte vrstvu vícerozměrných snímků, u které chcete generovat anomálii.</h2></div>
+        <div><h2>Zvolte vrstvu vícerozměrných snímků, u které chcete generovat anomálii</h2></div>
         <hr/>
         <div>
             <p>Vstupn&iacute; vrstva sn&iacute;mků v&iacute;cerozměrn&eacute; rastrov&eacute; datov&eacute; sady.
@@ -67,10 +67,10 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Vyberte proměnnou (proměnné), u kterých se budou generovat anomálie</h2></div>
+        <div><h2>Vyberte proměnné, u kterých se budou generovat anomálie</h2></div>
         <hr/>
         <div>
-            <p>Proměnn&aacute; nebo proměnn&eacute;, u kter&eacute; se vypoč&iacute;taj&iacute; anom&aacute;lie. Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, budou analyzov&aacute;ny v&scaron;echny proměnn&eacute; s časovou k&oacute;tou.
+            <p>Proměnn&aacute; nebo proměnn&eacute;, u kter&eacute; se vypoč&iacute;taj&iacute; anom&aacute;lie. Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; proměnn&aacute;, budou analyzov&aacute;ny v&scaron;echny proměnn&eacute; s&nbsp;časov&yacute;m rozměrem.
             </p>
         </div>
     </div>
@@ -78,7 +78,7 @@
         <div><h2>Vyberte metodu generování anomálie</h2></div>
         <hr/>
         <div>
-            <p>Určuje metodu, kter&aacute; bude použita k vypoč&iacute;t&aacute;n&iacute; anom&aacute;lie. 
+            <p>Určuje metodu, kter&aacute; bude použita k vypoč&iacute;t&aacute;n&iacute; anom&aacute;lie.
                 <ul>
                     <li> <b>Rozd&iacute;l od průměru</b>&mdash;Vypoč&iacute;t&aacute; se rozd&iacute;l mezi hodnotou pixelu a průměrem hodnoty tohoto pixelu na řezech definovan&yacute;ch intervalem. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Rozd&iacute;l od průměru = x - &micro;
-
                         <ul>
                             <li>x = hodnota pixelu v řezu
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentu&aacute;ln&iacute; rozd&iacute;l od průměru = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = hodnota pixelu v řezu
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Procentu&aacute;ln&iacute; průměr = x / &micro;
-
                         <ul>
                             <li>x = hodnota pixelu v řezu
                                 
@@ -199,10 +196,10 @@
         </div>
     </div>
     <div id="calculationInterval">
-        <div><h2>Zvolte časový interval pro výpočet střední hodnoty</h2></div>
+        <div><h2>Zvolte časový interval pro výpočet průměru</h2></div>
         <hr/>
         <div>
-            <p>Určuje časov&yacute; interval, kter&yacute; se použije k vypoč&iacute;t&aacute;n&iacute; průměru. 
+            <p>Určuje časov&yacute; interval, kter&yacute; se použije k vypoč&iacute;t&aacute;n&iacute; průměru.
                 <ul>
                     <li> <b>V&scaron;e</b>&mdash;Vypoč&iacute;t&aacute; průměr ze v&scaron;ech řezů pro každ&yacute; pixel.
                     </li>
@@ -216,7 +213,7 @@
                     </li>
                     <li> <b>Každou hodinu</b>&mdash;Vypoč&iacute;t&aacute; hodinov&yacute; průměr pro každ&yacute; pixel.
                     </li>
-                    <li> <b>Extern&iacute; rastr</b>&mdash;Je definov&aacute;na existuj&iacute;c&iacute; rastrov&aacute; datov&aacute; sada, kter&aacute; obsahuje průměrnou nebo hodnotu nebo hodnotu medi&aacute;nu pro každ&yacute; pixel.
+                    <li> <b>Extern&iacute; rastr</b>&mdash;Je definov&aacute;na existuj&iacute;c&iacute; rastrov&aacute; datov&aacute; sada, kter&aacute; obsahuje průměrnou hodnotu nebo hodnotu medi&aacute;nu pro každ&yacute; pixel.
                     </li>
                 </ul>
                 
@@ -224,7 +221,7 @@
         </div>
     </div>
     <div id="referenceMeanRaster">
-        <div><h2>Zvolit vrstvu obrazových dat průměru jako referenci</h2></div>
+        <div><h2>Zvolte vrstvu obrazových dat průměru jako referenci</h2></div>
         <hr/>
         <div>
             <p>Určuje referenčn&iacute; rastrovou datovou sadu, kter&aacute; obsahuje dř&iacute;ve vypoč&iacute;tan&yacute; průměr pro každ&yacute; pixel. Anom&aacute;lie budou vypoč&iacute;t&aacute;ny v porovn&aacute;n&iacute; s t&iacute;mto průměrem.
@@ -235,7 +232,7 @@
         <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
         <hr/>
         <div>
-            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny. 
+            <p>Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny.
                 <ul>
                     <li>Za&scaron;krtnuto&mdash;Anal&yacute;za bude zahrnovat v&scaron;echny platn&eacute; pixely v dan&eacute;m rozměru a bude ignorovat pixely s hodnotou NoData. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

@@ -1999,7 +1999,7 @@
       "ClippingRaster": {
         "required": false,
         "dataType": "raster",
-        "displayName": "${rasterFunctions.rfxArgs.clippingGeometryName}",
+        "displayName": "${widgets.rasterFunctionEditor.rfxClippingGeometry.clippingRaster}",
         "hidden": false
       },
       "ClippingGeometry": {
@@ -2048,7 +2048,8 @@
       "UseTable": {
         "required": true,
         "dataType": "boolean",
-        "hidden": false,
+        "hidden": true,
+        "defaultValue": false,
         "displayName": "${rasterFunctions.rfxArgs.remapDefinitionTypeName}",
         "editorStateTrigger": {
           "active": true,
@@ -2141,6 +2142,7 @@
         "required": true,
         "dataType": "boolean",
         "displayName": "${rasterFunctions.rfxArgs.allowUnmatchedName}",
+        "defaultValue": true,
         "hidden": false
       }
     },
@@ -3639,7 +3641,10 @@
       },
       "in_barriers": {
         "required": false,
-        "dataType": "featureClass",
+        "dataType": "featureclass",
+        "dataTypeAttributes": {
+          "type": ["polygon", "line"]
+        },
         "displayName": "${rasterFunctions.rfxArgs.barriersName}",
         "hidden": false
       }
@@ -4081,7 +4086,7 @@
         "required": true,
         "dataType": "string",
         "hidden": true,
-        "defaultValue": "in_zone_data"
+        "defaultValue": "in_value_raster"
       },
       "OutputRasterParameterName": {
         "required": true,
@@ -4120,6 +4125,43 @@
         "domain": {
           "type": "list",
           "enum": "gpsaZonalStatisticsTypes"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": ["PERCENTILE"],
+              "active": ["percentile_value"],
+              "inactive": [""],
+              "autoRevert": true
+            },
+            {
+              "values": ["PERCENTILE", "MEDIAN"],
+              "active": ["percentile_interpolation_type"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "percentile_value": {
+        "required": false,
+        "dataType": "double",
+        "displayName": "${rasterFunctions.rfxArgs.percentileValue}",
+        "hidden": false,
+        "categoryRefId": "rfxArgCat_Percentile",
+        "defaultValue": 90
+      },
+      "percentile_interpolation_type": {
+        "required": false,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.percentileInterpolationType}",
+        "hidden": false,
+        "categoryRefId": "rfxArgCat_Percentile",
+        "defaultValue": "AUTO_DETECT",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaZonalPercentileInterpolationTypes"
         }
       },
       "ignore_nodata": {
@@ -4144,6 +4186,19 @@
           "enum": "gpsaProcessAsMultidimensionalOptions"
         }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["statistics_type"],
+          "triggerArguments": ["in_value_raster"],
+          "triggerAttributes": { "in_value_raster": "MEAN|MAXIMUM|MINIMUM|RANGE|STD|SUM" },
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxStatisticsPixelFilter"
+          }
+        }
+      ]
     }
   },
   "HeatIndex": {
@@ -4489,7 +4544,24 @@
               ]
             },
             {
-              "values": [1, 2, 3, 5, 11, 12, 14, 15, 16, 17, 19, 20, 23, 24, 28, 29, 33, 34, 44, 46, 41, 50, 61],
+              "values": [1, 2, 3, 5, 11, 12, 14, 15, 16, 17, 19, 20, 23, 24, 28, 29, 33, 34, 44, 46, 61],
+              "inputArgs": [
+                {
+                  "required": true,
+                  "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+                  "hidden": false,
+                  "allowScalar": true
+                },
+                {
+                  "required": true,
+                  "displayName": "${rasterFunctions.rfxArgs.raster2Name}",
+                  "hidden": false,
+                  "allowScalar": true
+                }
+              ]
+            },
+            {
+              "values": [50],
               "inputArgs": [
                 {
                   "required": true,
@@ -5847,7 +5919,7 @@
         "dataType": "long",
         "displayName":"${rasterFunctions.rfxArgs.neighborhoodType}",
         "hidden": false,
-        "defaultValue": 10,
+        "defaultValue": 1,
         "domain": {
           "type": "list",
           "enum": "esriFocalNeighborhoodTypes"
@@ -5856,23 +5928,15 @@
         "editorStateTrigger": {
           "active": true,
           "triggers": [{
-              "values": [
-                1
-              ],
-              "active": [
-                "Width", "Height"
-              ],
+              "values": [1],
+              "active": ["Width", "Height"],
               "inactive": [
                 "Radius", "InnerRadius", "OuterRadius", "StartAngle", "EndAngle", "NeighborhoodValues"
               ]
             },
             {
-              "values": [
-                2
-              ],
-              "active": [
-                "Radius"
-              ],
+              "values": [2],
+              "active": ["Radius"],
               "inactive": [
                 "Width",
                 "Height",
@@ -5884,20 +5948,14 @@
               ]
             },
             {
-              "values": [
-                3
-              ],
-              "active": [
-                "InnerRadius", "OuterRadius"
-              ],
+              "values": [3],
+              "active": ["InnerRadius", "OuterRadius"],
               "inactive": [
                 "Width", "Height", "Radius", "StartAngle", "EndAngle", "NeighborhoodValues"
               ]
             },
             {
-              "values": [
-                4
-              ],
+              "values": [4],
               "active": [
                 "Radius", "StartAngle", "EndAngle"
               ],
@@ -5906,9 +5964,7 @@
               ]
             },
             {
-              "values": [
-                5, 6
-              ],
+              "values": [5, 6],
               "active": [
                 "Width", "Height", "NeighborhoodValues"
               ],
@@ -5937,7 +5993,7 @@
       },
       "InnerRadius": {
         "required": true,
-        "dataType": "double",
+        "dataType": "long",
         "displayName":"${rasterFunctions.rfxArgs.innerRadiusName}",
         "hidden": false,
         "defaultValue": 1,
@@ -5945,7 +6001,7 @@
       },
       "OuterRadius": {
         "required": true,
-        "dataType": "double",
+        "dataType": "long",
         "displayName":"${rasterFunctions.rfxArgs.outerRadiusName}",
         "hidden": false,
         "defaultValue": 3,
@@ -5953,7 +6009,7 @@
       },
       "Radius": {
         "required": true,
-        "dataType": "double",
+        "dataType": "long",
         "displayName":"${rasterFunctions.rfxArgs.radiusName}",
         "hidden": false,
         "defaultValue": 3,
@@ -5964,7 +6020,7 @@
         "dataType": "double",
         "displayName":"${rasterFunctions.rfxArgs.startAngleName}",
         "hidden": false,
-        "defaultValue": 3,
+        "defaultValue": 0,
         "categoryRefId": "rfxArgCat_NeighborhoodSettings"
       },
       "EndAngle": {
@@ -5972,7 +6028,7 @@
         "dataType": "double",
         "displayName":"${rasterFunctions.rfxArgs.endAngleName}",
         "hidden": false,
-        "defaultValue": 3,
+        "defaultValue": 90,
         "categoryRefId": "rfxArgCat_NeighborhoodSettings"
       },
       "NeighborhoodValues": {
@@ -5998,7 +6054,7 @@
           "active": true,
           "triggers": [
             {
-              "values": [4],
+              "values": [12],
               "active": ["Percentile"],
               "autoRevert": true
             }
@@ -6010,7 +6066,7 @@
         "dataType": "double",
         "displayName":"${rasterFunctions.rfxArgs.percentileName}",
         "hidden": false,
-        "defaultValue": 50,
+        "defaultValue": 90,
         "categoryRefId": "rfxArgCat_FocalStatistics"
       },
       "NoDataPolicy": {
@@ -6025,14 +6081,62 @@
       "active": true,
       "overrides": [
         {
-          "argumentNames": [
-            "NeighborhoodValues"
-          ],
-          "triggerArguments": [
-            "Width", "Height"
-          ],
+          "argumentNames": ["StatisticType"],
+          "triggerArguments": ["Raster", "NeighborhoodType"],
+          "triggerAttributes": { "Raster": "3|2|4|5|12|7|8|9", "NeighborhoodType": "3|8|9" },
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxStatisticsPixelFilter"
+          }
+        },
+        {
+          "argumentNames": ["NeighborhoodValues"],
+          "triggerArguments": ["Width", "Height"],
           "widget": {
             "path": "esri/dijit/RasterFunctionEditor/RFxNeighborhoodValues"
+          }
+        },
+        {
+          "argumentNames": ["Width"],
+          "triggerAttributes": "minValue:1",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
+          }
+        },
+        {
+          "argumentNames": ["Height"],
+          "triggerAttributes": "minValue:1",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
+          }
+        },
+        {
+          "argumentNames": ["Radius"],
+          "triggerAttributes": "minValue:1",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
+          }
+        },
+        {
+          "argumentNames": ["InnerRadius"],
+          "triggerAttributes": "minValue:1;lessThan:OuterRadius",
+          "triggerArguments": ["OuterRadius"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
+          }
+        },
+        {
+          "argumentNames": ["OuterRadius"],
+          "triggerAttributes": "minValue:2;greaterThan:InnerRadius",
+          "triggerArguments": ["InnerRadius"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
+          }
+        },
+        {
+          "argumentNames": ["Percentile"],
+          "triggerAttributes": "minValue:0;maxValue:100",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxRangedValueEditor"
           }
         }
       ]
@@ -6750,6 +6854,56 @@
       }
     }
   },
+
+  "BoundaryClean": {
+    "category": "dataManagement",
+    "icon": "boundaryClean.png",
+    "rasterFunctionArguments": {
+      "ToolName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "BoundaryClean_sa"
+      },
+      "PrimaryInputParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "in_raster"
+      },
+      "OutputRasterParameterName": {
+        "required": true,
+        "dataType": "string",
+        "hidden": true,
+        "defaultValue": "out_raster"
+      },
+      "in_raster": {
+        "required": false,
+        "dataType": "raster",
+        "displayName": "${rasterFunctions.rfxArgs.rasterName}",
+        "hidden": false
+      },
+      "sort_type": {
+        "required": true,
+        "dataType": "string",
+        "displayName": "${rasterFunctions.rfxArgs.sortType}",
+        "hidden": false,
+        "defaultValue": "NO_SORT",
+        "domain": {
+          "type": "list",
+          "enum": "gpsaSortType"
+        }
+      },
+      "number_of_runs": {
+        "required": true,
+        "dataType": "boolean",
+        "displayName": "${rasterFunctions.rfxArgs.numberOfRuns}",
+        "hidden": false,
+        "defaultValue": true
+      }
+    }
+  },
+
   "Expand": {
     "rasterFunctionArguments": {
       "ToolName": {
@@ -7408,15 +7562,6 @@
         "domain": {
           "type": "list",
           "enum": "esriDetectChangeTypes"
-        },
-        "editorStateTrigger": {
-          "active": true,
-          "triggers": [
-            {
-              "values": [3],
-              "inactive": ["MaxNumberChanges"]
-            }
-          ]
         }
       },
       "MaxNumberChanges": {
@@ -7450,6 +7595,7 @@
         "dataType": "long",
         "categoryRefId": "rfxArgCat_FilterByAttributes",
         "hidden": false,
+        "defaultValue": 0,
         "displayName": "${rasterFunctions.rfxArgs.minimumYear}"
       },
       "MaximumYear": {
@@ -7457,6 +7603,7 @@
         "dataType": "long",
         "categoryRefId": "rfxArgCat_FilterByAttributes",
         "hidden": false,
+        "defaultValue": 0,
         "displayName": "${rasterFunctions.rfxArgs.maximumYear}"
       },
       "FilterByDuration": {
@@ -7524,7 +7671,85 @@
         "categoryRefId": "rfxArgCat_FilterByAttributes",
         "hidden": false,
         "displayName": "${rasterFunctions.rfxArgs.maximumMagnitude}"
+      },
+      "FilterByStartValue": {
+        "required": true,
+        "dataType": "boolean",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.filterByStartValue}",
+        "defaultValue": false,
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [true],
+              "active": ["MinimumStartValue", "MaximumStartValue"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "MinimumStartValue": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.minimumStartValue}"
+      },
+      "MaximumStartValue": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.maximumStartValue}"
+      },
+      "FilterByEndValue": {
+        "required": true,
+        "dataType": "boolean",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.filterByEndValue}",
+        "defaultValue": false,
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [true],
+              "active": ["MinimumEndValue", "MaximumEndValue"],
+              "inactive": [""],
+              "autoRevert": true
+            }
+          ]
+        }
+      },
+      "MinimumEndValue": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.minimumEndValue}"
+      },
+      "MaximumEndValue": {
+        "required": true,
+        "dataType": "double",
+        "categoryRefId": "rfxArgCat_FilterByAttributes",
+        "hidden": false,
+        "displayName": "${rasterFunctions.rfxArgs.maximumEndValue}"
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["ChangeType"],
+          "triggerArguments": ["Raster","SegmentDate","ChangeDirection","FilterByDuration","MinimumDuration","MaximumDuration","FilterByMagnitude","MinimumMagnitude","MaximumMagnitude","FilterByStartValue","MinimumStartValue","MaximumStartValue","FilterByEndValue","MinimumEndValue","MaximumEndValue","MaxNumberChanges"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxDetectChangeTypePicker"
+          }
+        }
+      ]
     }
   },
   "TrendToRGBFunction": {
@@ -7810,9 +8035,9 @@
         "dataType": "string",
         "displayName": "${rasterFunctions.rfxArgs.processingBand}",
         "hidden": false,
-        "defaultValue": 0,
+        "defaultValue": "Band_1",
         "domain": {
-          "type": "bandIndex",
+          "type": "bandName",
           "argumentName": "Raster"
         }
       },

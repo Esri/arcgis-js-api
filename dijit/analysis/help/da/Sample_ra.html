@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Eksempel</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Sample"></h2>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Eksempel"></h2>
         <hr/>
     <p>Dette v&aelig;rkt&oslash;j opretter en tabel eller en punktobjektklasse, der viser v&aelig;rdierne for celler fra en raster eller et s&aelig;t rastere for definerede steder. Stederne defineres af rasterceller, polygonobjekter, polylinjeobjekter eller af et s&aelig;t punkter.
     </p>
@@ -73,7 +73,7 @@
     </p>
     <p>Milj&oslash;et Parallelbehandlingsfaktor underst&oslash;ttes  <b>kun</b>, n&aring;r inputtet er en flerdimensional raster.
     </p>
-    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler eller b&aring;nd fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler eller b&aring;nd fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
+    <p>Hvis feltet  <b>Brug aktuel kortudstr&aelig;kning</b> er markeret, er det variabler fra laget, der er synlige inden for den aktuelle kortudstr&aelig;kning, der analyseres. Hvis markeringen fjernes, analyseres variabler fra hele laget, ogs&aring; selvom de er placeret uden for den aktuelle kortudstr&aelig;kning.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -112,7 +112,6 @@
             <p>Angiv tid, dybde eller anden information om erhvervelse, der er knyttet til placeringscellerne eller -objekterne.
             </p>
             <p>For hver dimension er der tre muligheder for at angive den information om erhvervelse, der er forbundet med positionsceller eller -objekter:
-
                 <ul>
                     <li> <b>Enkelt felt eller en enkelt v&aelig;rdi</b>&ndash; N&aring;r denne indstilling er valgt, skal f&oslash;lgende oplysninger angives:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Resamplingsalgoritmer, der anvendes ved sampling af en raster.
             </p>
             <ul>
-                <li> <b>N&aelig;rmeste</b>&mdash;N&aelig;rmeste nabo. Dette er standardv&aelig;rdien.
+                <li> <b>N&aelig;rmeste</b> &ndash; N&aelig;rmeste nabo bruger den n&aelig;rmeste celles v&aelig;rdi til at tildele output-cellen en v&aelig;rdi ved resampling. Dette er standardv&aelig;rdien.
                 </li>
-                <li> <b>Biline&aelig;r </b>&mdash;Biline&aelig;r interpolation
+                <li> <b>Bilinear</b> &ndash; Bilinear interpolation beregner en celles nye v&aelig;rdi ud fra et v&aelig;gtet afstandsgennemsnit af de fire n&aelig;rmeste input-cellecentre.
                 </li>
-                <li> <b>Kubisk</b>&mdash;Kubisk konvolution
+                <li> <b>Cubic</b> &ndash; Cubic convolution beregner en celles nye v&aelig;rdi ved at tilpasse en j&aelig;vn kurve gennem de 16 n&aelig;rmeste input-cellecentre.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.

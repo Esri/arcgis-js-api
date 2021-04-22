@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[近接エリアの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、 <b>[データの管理]</b>、 <b>[ディープ ラーニング]</b>、および <b>[多次元解析]</b> です。
+        <p>[ラスター解析] では、 ArcGIS Image Server を使用して大規模なラスター データセットの解析を実行できます。 このツールを使用すると、サーバーの能力を活用して、より多くのデータをよりすばやく解析できます。 Portal for ArcGIS Web ユーザー操作で現在使用できるツールセットは、<b>[データの集約]</b>、 <b>[パターンの分析]</b>、 <b>[近接エリアの分析]</b>、 <b>[画像の分析]</b>、 <b>[テレインの分析]</b>、 <b>[データの管理]</b>、 <b>[ディープ ラーニング]</b>、および <b>[多次元解析]</b> です。
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>データの集約</h2>
         <hr/>
-        <p>このツールセットには、定義されたエリア境界内にあるラスター レイヤーの統計情報を計算するツールが用意されています。
+        <p>これらのツールは、定義されたエリア境界 (ゾーン) 内にあるラスター レイヤーの統計情報を計算するために使用されます。
             <ul>
                 <li> <b>[エリア内でのラスターの集約]</b> では、定義されたエリア境界内にあるラスター セルの統計情報を計算します。
+                </li>
+                <li> <b>[ゾーン統計をテーブルに出力 (Zonal Statistics as Table)]</b> は他のデータセットのゾーンごとにラスター値を集約し、その結果をテーブルに出力します。
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="regularsize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>エリア内でのラスターの集約 (Summarize Raster Within)</h2></td>
+                    <td><h2>エリア内でのラスターの集約</h2></td>
                     <td>
                     <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="エリア内でのラスターの集約ツール">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>定義されたエリア内にあるラスター セルの統計情報のサマリーを計算します。
+            <p>このツールは、他のデータセットのゾーンごとにラスター値を集約します。
             </p>
-            <p>適用例のいくつかを次に示します。
-
-                <ul>
-                    <li>集水域エリアのレイヤーと標高ラスター レイヤーを使用して、それぞれの集水域内の標高の範囲を計算し、エネルギーの流れが最も大きいものはどれかを特定します。
-                        
-
-                    </li>
-                    <li>行政管理単位のレイヤーと土地利用カテゴリのラスター レイヤーを使用して、各管理領域内のさまざまな土地利用の値を計算し、管理計画を決定する際に最も労力を必要とするものはどれかを特定します。
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>ゾーン統計をテーブルに出力 (Zonal Statistics as Table)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="[ゾーン統計をテーブルに出力 (Zonal Statistics as Table)] ツール の図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、他のデータセットのゾーンごとにラスター値を集約し、その結果をテーブルに出力します。
             </p>
             <br/>
         </div>
@@ -106,9 +109,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>密度の計算 (Calculate Density)</h2></td>
+                    <td><h2>密度の計算</h2></td>
                     <td>
-                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="密度の計算 (Calculate Density) ツール">
+                    <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="[密度の計算] ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="smallsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>近接エリアの分析</h2>
         <hr/>
-        <p>次のツールを使用すると、「近くにあるのは何か」という空間解析で最も一般的な質問の 1 つに答えることができます。
-
+        <p>次のツールを使用すると、「近くにあるのは何か」、「最適パスはどれか」はという空間解析で最も一般的な質問に答えることができます。
             <ul>
                 <li> <b>[距離の計算]</b> は、1 つのソースまたは複数のソースからのユークリッド距離、方向、および割り当てを計算します。
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>[ポリラインとしての移動コスト パスの決定]</b> は、ソースと既知の目的地の間のポリラインとしての最小コスト パスを計算します。
+                <li> <b>[ポリラインとしての移動コスト パスの決定]</b> は、既知の目的地とソースの間のポリラインとしての最小コスト パスを計算します。
+                    
+
+                </li>
+                <li> <b>[距離累積]</b> は直線距離、コスト距離、実際のサーフェス距離、垂直方向ファクター、および水平方向ファクターを考慮に入れて、ソースまでの累積距離をセルごとに計算します。
+                    
+
+                </li>
+                <li> <b>[距離アロケーション]</b> は直線距離、コスト距離、実際のサーフェス距離、垂直方向および水平方向ファクターに基づいて、各セルから指定したソースまでの距離アロケーションを計算します。
+                    
+
+                </li>
+                <li> <b>[最適パス (ライン)]</b> は目的地からソースまでの最適パスをラインとして計算します。
+                    
+
+                </li>
+                <li> <b>[最適パス (ラスター)]</b> は目的地からソースまでの最適パスをラスターとして計算します。
+                    
+
+                </li>
+                <li> <b>[最適リージョン接続]</b> は、2 つ以上の入力領域間で最適な接続ネットワークを計算します。
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>1 つのソースまたは複数のソースからのユークリッド距離、方向、および割り当てを計算します。このツールを使用して、ある位置から道路、建物、または公園までの距離を決定できます。最も直接的な方法でソースに戻るために、ある位置からどの方向に移動する必要があるかを決定することもできます。分析範囲内の、最も近いソースであるすべての位置を確認することができます。
+            <p>このツールは、1 つのソースまたはソースのセットからのユークリッド距離、方向、およびアロケーションを計算します。
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>入力地域から、最適コスト ネットワークを計算します。
+            <p>このツールは、入力地域から、最適コスト ネットワークを計算します。
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>ソースと既知の目的地の間のポリラインとしての最小コスト パスを計算します。
+            <p>このツールは、目的地とソースの間のポリラインとしての最小コスト パスを計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距離累積</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="[距離累積] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、直線距離、コスト距離、実際のサーフェス距離、鉛直および水平方向の係数を考慮して、各セルからソースまでの累積距離を計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>距離アロケーション</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="[距離アロケーション] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、直線距離、コスト距離、実際のサーフェス距離、鉛直および水平方向の係数に基づいて、各セルから指定したソースまでの距離アロケーションを計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最適パス (ライン)</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="[最適パス (ライン)] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、目的地からソースまでの最適パスをラインとして計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最適パス (ラスター)</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="[最適パス (ラスター)] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、目的地からソースまでの最適パスをラスターとして計算します。
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>最適リージョン接続</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="[最適リージョン接続] ツールの図">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>このツールは、2 つ以上の入力領域間の最適な接続ネットワークを計算します。
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>画像の分析</h2>
         <hr/>
-        <p>次のツールは、画像の分析に役立ちます。
+        <p> <b>[画像の分析]</b> ツール カテゴリの以下のツールは画像の解析に役立ちます。
             <ul>
-                <li> <b>[ラスター関数テンプレートの適用]</b> は、ラスター関数テンプレートで指定されているように、画像を関数チェーンで処理します。
-                </li>
-                <li> <b>[植生の監視]</b> では、バンドに対する算術演算に基づいて、画像に含まれる植生を検出します。
+                <li> <b>[植生の監視]</b> では、バンドに対する算術演算に基づいて、画像の相対植被を検出します。 画像解析では複数の植生インデックスを使用できます。
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>ラスター関数テンプレートの適用</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="ラスター関数テンプレートの適用">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>ラスター関数テンプレートで指定されているように、画像を関数チェーンで処理します。
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>マルチバンド ラスター レイヤーのバンドに対する算術演算を実行し、分析範囲の植被情報を明確にします。
+            <p>マルチバンド ラスター レイヤーのバンドに対する算術演算を実行し、植被情報を明確にします。
             </p>
             <br/>
         </div>
@@ -390,7 +470,7 @@
                 <tbody><tr>
                     <td><h2>フィーチャをラスターに変換</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="フィーチャをラスターに変換ツール">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="[フィーチャをラスターに変換] ツール">
                     </td>
                 </tr></tbody>
             </table>
@@ -403,7 +483,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ラスターをフィーチャに変換 (Convert Raster To Feature)</h2></td>
+                    <td><h2>ラスターをフィーチャに変換</h2></td>
                     <td>
                     <img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" class="titleImage" alt="[ラスターをフィーチャに変換 (Convert Raster To Feature)] ツール">
                     </td>
@@ -418,7 +498,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Sample (サンプル)</h2></td>
+                    <td><h2>サンプル</h2></td>
                     <td>
                     <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="サンプル">
                     </td>
@@ -444,13 +524,13 @@
             
         </p>
     </div>
-        <div id="ClassifyPixelsUsingDeepLearningTool" class="regularsize">
+        <div id="ClassifyPixelsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)</h2></td>
+                    <td><h2>ディープ ラーニングを使用したピクセルの分類</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="ディープ ラーニングを使用したピクセルの分類 (Classify Pixels Using Deep Learning)">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="ディープ ラーニングを使用したピクセルの分類">
                     </td>
                 </tr></tbody>
             </table>
@@ -470,17 +550,17 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>このツールは、入力ラスターに対してトレーニング済みのディープ ラーニング モデルを実行し、検出したオブジェクトを含むフィーチャクラスを作成します。フィーチャには、検出されたオブジェクトの周囲の境界四角形やポリゴン、またはオブジェクトの中心のポイントを指定できます。
+            <p>このツールは、入力ラスターに対してトレーニング済みのディープ ラーニング モデルを実行し、検出したオブジェクトを含むフィーチャクラスを作成します。 フィーチャには、検出されたオブジェクトの周囲の境界四角形やポリゴン、またはオブジェクトの中心のポイントを指定できます。
             </p>
             <br/>
         </div>
-        <div id="ClassifyObjectsUsingDeepLearningTool" class="regularsize">
+        <div id="ClassifyObjectsUsingDeepLearningTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>ディープ ラーニングを使用したオブジェクトの分類 (Classify Objects Using Deep Learning)</h2></td>
+                    <td><h2>ディープ ラーニングを使用したオブジェクトの分類</h2></td>
                     <td>
-                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="ディープ ラーニングを使用したオブジェクトの分類 (Classify Objects Using Deep Learning)">
+                    <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="ディープ ラーニングを使用したオブジェクトの分類">
                     </td>
                 </tr></tbody>
             </table>
@@ -516,9 +596,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>多次元ラスターの集約</h2></td>
+                    <td><h2>多次元ラスターの集約 (Aggregate Multidimensional Raster)</h2></td>
                     <td>
-                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="多次元ラスターの集約">
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="多次元ラスターの集約 (Aggregate Multidimensional Raster)">
                     </td>
                 </tr></tbody>
             </table>
@@ -531,9 +611,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>引数の統計を検索 (Find Argument Statistics)</h2></td>
+                    <td><h2>引数の統計を検索</h2></td>
                     <td>
-                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="引数の統計を検索 (Find Argument Statistics)">
+                    <img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" class="titleImage" alt="引数の統計を検索">
                     </td>
                 </tr></tbody>
             </table>
@@ -561,9 +641,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>トレンド ラスターの生成 (Generate Trend Raster)</h2></td>
+                    <td><h2>トレンド ラスターの生成</h2></td>
                     <td>
-                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="トレンド ラスターの生成 (Generate Trend Raster)">
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="トレンド ラスターの生成">
                     </td>
                 </tr></tbody>
             </table>
@@ -572,13 +652,13 @@
             </p>
             <br/>
         </div>
-        <div id="PredictUsingTrendRasterTool" class="regularsize">
+        <div id="PredictUsingTrendRasterTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>トレンド ラスターを使用した予測 (Predict Using Trend Raster)</h2></td>
+                    <td><h2>トレンド ラスターを使用した予測</h2></td>
                     <td>
-                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="トレンド ラスターを使用した予測 (Predict Using Trend Raster)">
+                    <img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" class="titleImage" alt="トレンド ラスターを使用した予測">
                     </td>
                 </tr></tbody>
             </table>

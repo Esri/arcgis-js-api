@@ -89,8 +89,25 @@
           <td colspan="3" class="clear"></td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="2" style="padding-bottom:0;">
             <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.threeLabel}</label>
+            <label class="esriAnalysisStepsLabel">${i18n.processingModeLabel}</label>
+          </td>
+          <td class="shortTextInput" style="padding-bottom:0;">
+            <a href="#" class='esriFloatTrailing helpIcon' esriHelpTopic="processAllRasterItems"></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-top:0;">
+            <select class="longInput esriLongLabel esriLeadingMargin1" style="margin-top:1.0em;" data-dojo-type="dijit/form/Select" data-dojo-attach-point="_processingModeSelect"></select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="clear"></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label class="esriFloatLeading esriTrailingMargin025 esriAnalysisNumberLabel">${i18n.fourLabel}</label>
             <label class="esriAnalysisStepsLabel">${i18n.outputLayerLabel}</label>
           </td>
           <td class="shortTextInput">

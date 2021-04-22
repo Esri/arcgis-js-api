@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/iso/AbstractObject","../../../../form/iso/ObjectReference","../extent/GeographicDescription","../extent/GeographicElement","../../gmd/extent/TemporalElement","../../gmd/extent/VerticalElement","dojo/text!./templates/ResourceExtent.html","../../../../../../kernel"],(function(e,t,n,o,i,r,a,c,s,m,d,l){var g=e(o,{templateString:d});return n("extend-esri")&&t.setObject("dijit.metadata.types.gemini.gmd.identification.ResourceExtent",g,l),g}));

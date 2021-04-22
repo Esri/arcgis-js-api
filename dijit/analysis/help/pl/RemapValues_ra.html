@@ -44,7 +44,7 @@
         <h2>Ponownie mapuj wartości</h2><p/>
         <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="Narzędzie portalu Ponownie mapuj wartości"></h2>
         <hr/>
-    <p>To narzędzie umożliwia modyfikowanie lub ponowne klasyfikowanie wartości pikseli w danych rastrowych. Wartości pikseli są ponownie mapowane poprzez podanie zakresu wartości pikseli, kt&oacute;re mają być mapowane na wynikową wartość piksela. Wynikową wartością piksela może być prawidłowa wartość lub wartość NoData oznaczająca piksele, z kt&oacute;rymi nie są powiązane żadne znane wartości.
+    <p>To narzędzie umożliwia modyfikowanie lub ponowne klasyfikowanie wartości pikseli w danych rastrowych. Wartości pikseli są ponownie przyporządkowywane poprzez podanie zakresu wartości pikseli, kt&oacute;re mają być przyporządkowane do wynikowej wartości piksela. Wynikową wartością piksela może być prawidłowa wartość lub wartość NoData oznaczająca piksele, z kt&oacute;rymi nie są powiązane żadne znane wartości.
     </p>
     <p>Jeśli jest zaznaczona opcja  <b>Użyj bieżącego zasięgu mapy</b>, ponownie mapowane będą tylko kom&oacute;rki widoczne w&nbsp;bieżącym zasięgu mapy. Jeśli ta opcja nie jest zaznaczona, wszystkie kom&oacute;rki w rastrze zostaną przetworzone, nawet jeśli znajdują się one poza bieżącym zasięgiem mapy.
     </p>
@@ -64,7 +64,7 @@
         <div>
             <p>Wprowadzany jest zakres wartości poprzez podanie wartości minimalnej i maksymalnej, a następnie do określonego zakresu przypisywana jest wartość wynikowa lub wartość NoData.
             </p>
-            <p>Aby ponownie mapować nowy zakres wartości, kliknij przycisk  <b>Dodaj</b>, co spowoduje dodanie wiersza. Kliknij każdą wartość w celu zmodyfikowania tabeli pod kątem potrzebnych zakres&oacute;w i ponownie mapowanej wartości. Podczas podawania zakres&oacute;w wartości należy pamiętać o dw&oacute;ch ważnych regułach:
+            <p>Aby ponownie mapować nowy zakres wartości, kliknij przycisk  <b>Dodaj</b>, co spowoduje dodanie wiersza. Kliknij każdą wartość w celu zmodyfikowania tabeli pod kątem potrzebnych zakres&oacute;w i ponownie przyporządkowanej wartości. Podczas podawania zakres&oacute;w wartości należy pamiętać o dw&oacute;ch ważnych regułach:
                 <ul>
                     <li>Wartość minimalna należy do zakresu, a wartość maksymalna nie.
                     </li>
@@ -100,7 +100,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-19
+                    <p>10&ndash;19
                     </p>
                 </td>
             </tr>
@@ -119,9 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>Kolejność zakres&oacute;w podanych w tabeli jest także istotna. G&oacute;rny wiersz tabeli jest przetwarzany jako pierwszy, następnie przetwarzany jest wiersz znajdujący się poniżej. W dw&oacute;ch poniższych tabelach pokazano, jak na podstawie tych samych zakres&oacute;w wartości mogą być generowane r&oacute;żne wyniki. Jest to spowodowane inną kolejnością wierszy w tabeli.
+            <p>Kolejność zakres&oacute;w podanych w tabeli jest także istotna. G&oacute;rny wiersz tabeli jest przetwarzany jako pierwszy, a następnie przetwarzany jest wiersz znajdujący się poniżej. W dw&oacute;ch poniższych tabelach pokazano, jak na podstawie tych samych zakres&oacute;w wartości mogą być generowane r&oacute;żne wyniki. Jest to spowodowane inną kolejnością wierszy w tabeli.
             </p> 
-            <p>W poniższej tabeli pokazano wartość wynikową, gdy pierwsza kolumna jest sortowana jak liczby:
+            <p>W pierwszej tabeli pokazano wartość wynikową, gdy pierwsza kolumna jest sortowana jak liczby.
             </p>
             <table border="1">
             <tr>
@@ -134,7 +134,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>1-14
+                    <p>1&ndash;14
                     </p>
                 </td>
             </tr>
@@ -148,7 +148,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>15-29
+                    <p>15&ndash;29
                     </p>
                 </td>
             </tr>
@@ -162,12 +162,12 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
             </table>
-            <p>W poniższej tabeli pokazano, jak zastosowanie r&oacute;żnego sposobu porządkowania wierszy wpływa na uzyskanie r&oacute;żnych wartości wynikowych:
+            <p>W drugiej tabeli pokazano, jak zastosowanie r&oacute;żnego sposobu porządkowania wierszy wpływa na uzyskanie r&oacute;żnych wartości wynikowych:
             </p> 
             <table border="1">
             <tr>
@@ -180,7 +180,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-29
+                    <p>10&ndash;29
                     </p>
                 </td>
             </tr>
@@ -208,7 +208,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
@@ -221,6 +221,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

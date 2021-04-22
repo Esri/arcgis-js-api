@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Conexiones de región óptimas</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustraci&oacute;n de la herramienta Conexiones de regi&oacute;n &oacute;ptimas"></h2>
+        <hr/>
+    <p>Esta herramienta calcula la red de conectividad &oacute;ptima entre dos o m&aacute;s regiones de entrada.
+    </p>
+    <p>A continuaci&oacute;n se indican algunas aplicaciones de ejemplo:
+        <ul>
+            <li>Modelo de adecuaci&oacute;n: a partir de un modelo de adecuaci&oacute;n, ha identificado 10 de los mejores terrenos de h&aacute;bitat para los linces. Quiere que los linces se puedan mover entre los terrenos utilizando la red m&aacute;s efectiva de corredores de vida salvaje para mantener la diversidad gen&eacute;tica dentro de la metapoblaci&oacute;n.
+                
+
+            </li>
+            <li>Tala de madera: en una explotaci&oacute;n maderera, desea crear la red m&aacute;s rentable de caminos de tala forestal para extraer la madera.
+                
+
+            </li>
+            <li>Misi&oacute;n de paz: en un despliegue militar para una misi&oacute;n de paz, ha identificado 5 &aacute;reas en las que se deben situar las tropas y el personal. Desea desarrollar las rutas de suministro conectadas de forma &oacute;ptima entre las bases.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si se ha activado  <b>Usar extensi&oacute;n de mapa actual</b>, solo se analizar&aacute;n las ubicaciones de las capas de entrada que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las ubicaciones de ambas capas de entrada, aunque est&eacute;n fuera de la extensi&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Elegir ráster o entidad de región</h2></div>
+        <hr/>
+        <div>
+            <p>Regiones de entada que debe conectarse mediante la red &oacute;ptima.
+            </p>
+            <p>Si la entrada de la regi&oacute;n es un r&aacute;ster, las regiones se definen mediante grupos de celdas contiguas (adyacentes) con el mismo valor. Cada regi&oacute;n se debe numerar de forma &uacute;nica. Las celdas que no formen parte de ninguna regi&oacute;n deber&aacute;n ser NoData. El tipo de r&aacute;ster debe ser un n&uacute;mero entero y los valores pueden ser positivos o negativos.
+            </p>
+            <p>Si la regi&oacute;n de entrada es una entidad, puede ser puntos, l&iacute;neas o pol&iacute;gonos. Las regiones de pol&iacute;gono no pueden estar compuestas por pol&iacute;gonos multiparte.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Seleccionar el ráster o la entidad de barrera (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El dataset que define las barreras.
+            </p>
+            <p>Para un r&aacute;ster, la entrada puede ser de tipo entero o flotante. Las celdas que tengan alg&uacute;n valor (incluido cero) se tratar&aacute;n como barreras. Las celdas que tengan el valor NoData no se tratar&aacute;n como barreras.
+            </p>
+            <p>En el caso de una entidad, la entrada puede ser un punto, una l&iacute;nea o un pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Seleccionar ráster de coste (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&aacute;ster que define la impedancia o el coste de hacer un movimiento planim&eacute;trico por medio de cada celda.
+            </p>
+            <p>El valor de cada ubicaci&oacute;n de celda representa la distancia de coste por unidad para moverse a trav&eacute;s de la celda. Cada valor de ubicaci&oacute;n de celda se multiplica por la resoluci&oacute;n de la celda mientras que tambi&eacute;n se compensa por el movimiento diagonal para obtener el coste total de pasar por medio de la celda.
+            </p>
+            <p>Los valores del r&aacute;ster de coste pueden ser enteros o de punto flotante, pero no pueden ser negativos o cero (no puede tener un coste negativo o cero).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distancia (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si la distancia se va a calcular bas&aacute;ndose en un m&eacute;todo planar (Tierra plana) o geod&eacute;sico (elipsoide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>: el c&aacute;lculo de distancia se realizar&aacute; sobre un plano llano proyectado usando un sistema de coordenadas cartesianas 2D. Este es el m&eacute;todo predeterminado.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>: el c&aacute;lculo de distancia se realizar&aacute; en el elipsoide. Por lo tanto, independientemente de la proyecci&oacute;n de entrada o salida, los resultados no cambian.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Conexiones entre regiones (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si las rutas seguir&aacute;n y se conectar&aacute;n dentro de las regiones de entrada.
+            </p>
+            <ul>
+                <li> <b>Generar conexiones</b>: las rutas seguir&aacute;n dentro de las regiones de entrada para conectar todas las rutas e entren en una regi&oacute;n. Esta es la opci&oacute;n predeterminada.
+                    
+
+                </li>
+                <li> <b>Ninguna conexi&oacute;n</b>: las rutas se detendr&aacute;n en los bordes de las regiones de entrada y no continuar&aacute;n ni se conectar&aacute;n dentro de ellas.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Nombre de la capa de entidades de líneas de conectividad óptima resultante</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Esta capa es una entidad de l&iacute;nea de salida que conecta cada regi&oacute;n de entrada.
+            </p>
+            <p>Cada ruta (o l&iacute;nea) est&aacute; numerada de forma &uacute;nica y hay campos adicionales en la tabla de atributos donde se almacena informaci&oacute;n espec&iacute;fica sobre la ruta. Los campos adicionales son:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; Identificador &uacute;nico de la ruta
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; Distancia o coste acumulado total de la ruta
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; Primera regi&oacute;n que conecta la ruta
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; La otra regi&oacute;n que conecta la ruta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Como cada ruta se representa mediante una l&iacute;nea &uacute;nica, habr&aacute; varias l&iacute;neas en las ubicaciones donde las rutas transcurren por el mismo camino.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Nombre de capa de entidad de conexiones vecinas resultante (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Esta capa es una entidad de l&iacute;nea de salida que identifica todas las rutas de cada regi&oacute;n hacia sus vecinos m&aacute;s pr&oacute;ximos o de menor coste.
+            </p>
+            <p>Cada ruta (o l&iacute;nea) est&aacute; numerada de forma &uacute;nica y hay campos adicionales en la tabla de atributos donde se almacena informaci&oacute;n espec&iacute;fica sobre la ruta. Los campos adicionales son:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; Identificador &uacute;nico de la ruta
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; Distancia o coste acumulado total de la ruta
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; Primera regi&oacute;n que conecta la ruta
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; La otra regi&oacute;n que conecta la ruta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Como cada ruta se representa mediante una l&iacute;nea &uacute;nica, habr&aacute; varias l&iacute;neas en las ubicaciones donde las rutas transcurren por el mismo camino.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Выберите точечный слой для обогащения",chooseMVgridLyrLabel:"Выберите сетку нескольких переменных для обогащения",chooseVariables:"Выберите переменные для добавления",outputLayerName:"${inputFeatures} – обогащено при помощи ${gridLayer}",itemDescription:"Векторный слой, созданный решением Enrich From Multi-Variable Grid для ${inputFeatures}.",itemTags:"Результат анализа, Enrich From Multi-Variable Grid, ${inputFeatures}, ${gridLayer}",itemSnippet:"Векторный слой, созданный при помощи Enrich From Multi-Variable Grid."});

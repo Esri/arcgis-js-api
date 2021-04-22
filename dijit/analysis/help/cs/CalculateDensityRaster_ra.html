@@ -41,27 +41,26 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vypočítat hustotu (Calculate Density)</h2><p/>
+        <h2>Vypočítat hustotu</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="N&aacute;stroj Vypoč&iacute;tat hustotu"></h2>
         <hr/>
     <p>Tento n&aacute;stroj vytv&aacute;ř&iacute; mapu hustoty z&nbsp;bodov&yacute;ch nebo liniov&yacute;ch prvků rozprostřen&iacute;m zn&aacute;m&yacute;ch množstv&iacute; určit&eacute;ho jevu (v podobě atributů bodů nebo lini&iacute;) po mapě. V&yacute;sledkem je vrstva oblast&iacute; klasifikovan&yacute;ch od nejm&eacute;ně hust&yacute;ch po nejhust&scaron;&iacute;.
     </p>
     <p>V př&iacute;padě vstupn&iacute;ch bodů by měl každ&yacute; bod vyjadřovat polohu určit&eacute; ud&aacute;losti, v&yacute;sledn&aacute; vrstva pak představuje počet ud&aacute;lost&iacute; na jednotkovou plochu. Vy&scaron;&scaron;&iacute; hodnota hustoty v&nbsp;nov&eacute;m um&iacute;stěn&iacute; znamen&aacute;, že v&nbsp;bl&iacute;zkosti tohoto um&iacute;stěn&iacute; je v&iacute;ce bodů. V mnoha př&iacute;padech lze v&yacute;slednou vrstvu vykl&aacute;dat jako grafick&eacute; zobrazen&iacute; rizika budouc&iacute;ch ud&aacute;lost&iacute;. Pokud např&iacute;klad vstupn&iacute; body představuj&iacute; m&iacute;sta &uacute;deru blesku, lze v&yacute;slednou vrstvu vykl&aacute;dat jako grafick&eacute; vyj&aacute;dřen&iacute; rizika budouc&iacute;ch &uacute;derů blesku.
     </p>
-    <p>V př&iacute;padě vstupn&iacute;ch lini&iacute; představuje povrch hustoty lini&iacute; celkov&eacute; množstv&iacute; lini&iacute; v&nbsp;bl&iacute;zkosti dan&eacute;ho um&iacute;stěn&iacute;. Jednotky vypoč&iacute;tan&yacute;ch hodnot hustoty ud&aacute;vaj&iacute; d&eacute;lku oblasti linie na jednotku. Pokud např&iacute;klad linie představuj&iacute; řeky, bude v&yacute;sledn&aacute; vrstva představovat celkovou d&eacute;lku řek v&nbsp;oblasti vyhled&aacute;v&aacute;n&iacute;. Tento v&yacute;sledek lze využ&iacute;t k&nbsp;identifikaci oblast&iacute; př&iacute;zniv&yacute;ch pro pastvu zv&iacute;řat.
+    <p>V př&iacute;padě vstupn&iacute;ch lini&iacute; představuje povrch hustoty lini&iacute; celkov&eacute; množstv&iacute; lini&iacute; v&nbsp;bl&iacute;zkosti dan&eacute;ho um&iacute;stěn&iacute;. Jednotky vypoč&iacute;tan&yacute;ch hodnot hustoty ud&aacute;vaj&iacute; d&eacute;lku oblasti linie na jednotku. Pokud např&iacute;klad linie představuj&iacute; řeky, bude v&yacute;sledn&aacute; vrstva představovat celkovou d&eacute;lku řek v&nbsp;oblasti vyhled&aacute;v&aacute;n&iacute;. Tento v&yacute;sledek lze využ&iacute;t k identifikaci oblast&iacute; př&iacute;zniv&yacute;ch pro pastvu zv&iacute;řat.
     </p>
     <p>Mezi dal&scaron;&iacute; možnosti použit&iacute; tohoto n&aacute;stroje patř&iacute;:
-
         <ul>
-            <li>Vytv&aacute;řen&iacute; map hustoty trestn&yacute;ch činů, kter&eacute; pomohou policejn&iacute;m oddělen&iacute;m odpov&iacute;daj&iacute;c&iacute;m způsobem přidělit zdroje oblastem s&nbsp;vysokou m&iacute;rou kriminality.
+            <li>Vytv&aacute;řen&iacute; map hustoty trestn&yacute;ch činů, kter&eacute; pomohou policejn&iacute;m oddělen&iacute;m odpov&iacute;daj&iacute;c&iacute;m způsobem přidělit zdroje oblastem s vysokou m&iacute;rou kriminality.
                 
  
             </li>
-            <li>V&yacute;počet hustoty nemocnic v&nbsp;kraji. V&yacute;sledn&aacute; vrstva uk&aacute;že oblasti s&nbsp;vysokou a n&iacute;zkou m&iacute;rou dostupnosti nemocnic. Tuto informaci lze využ&iacute;t při rozhodov&aacute;n&iacute;, kde by měly b&yacute;t postaveny nov&eacute; nemocnice.
+            <li>V&yacute;počet hustoty nemocnic v&nbsp;kraji. V&yacute;sledn&aacute; vrstva uk&aacute;že oblasti s vysokou a n&iacute;zkou m&iacute;rou dostupnosti nemocnic. Tuto informaci lze využ&iacute;t při rozhodov&aacute;n&iacute;, kde by měly b&yacute;t postaveny nov&eacute; nemocnice.
                 
  
             </li>
-            <li>Identifikace oblast&iacute; s&nbsp;vysok&yacute;m rizikem lesn&iacute;ch pož&aacute;rů na z&aacute;kladě historick&yacute;ch um&iacute;stěn&iacute; lesn&iacute;ch pož&aacute;rů.
+            <li>Identifikace oblast&iacute; s vysok&yacute;m rizikem lesn&iacute;ch pož&aacute;rů na z&aacute;kladě historick&yacute;ch um&iacute;stěn&iacute; lesn&iacute;ch pož&aacute;rů.
                 
  
             </li>
@@ -86,7 +85,7 @@
         <div><h2>Použít pole počtu</h2></div>
         <hr/>
         <div>
-            <p>Uveďte pole, kter&eacute; určuje počet ud&aacute;lost&iacute; v&nbsp;každ&eacute;m um&iacute;stěn&iacute;. Pokud např&iacute;klad va&scaron;e body představuj&iacute; města, můžete jako pole počtu použ&iacute;t pole, kter&eacute; uv&aacute;d&iacute; počet obyvatel města. V&yacute;sledn&aacute; vrstva hustoty populace vypoč&iacute;t&aacute; vět&scaron;&iacute; hustoty populace u měst s&nbsp;vět&scaron;&iacute;m počtem obyvatel.
+            <p>Uveďte pole, kter&eacute; určuje počet ud&aacute;lost&iacute; v&nbsp;každ&eacute;m um&iacute;stěn&iacute;. Pokud např&iacute;klad va&scaron;e body představuj&iacute; města, můžete jako pole počtu použ&iacute;t pole, kter&eacute; uv&aacute;d&iacute; počet obyvatel města. V&yacute;sledn&aacute; vrstva hustoty populace vypoč&iacute;t&aacute; vět&scaron;&iacute; hustoty populace u měst s vět&scaron;&iacute;m počtem obyvatel.
             </p>
             <p>Při použit&iacute; v&yacute;choz&iacute; volby  <b>Ž&aacute;dn&eacute;</b> se bude předpokl&aacute;dat, že se každ&eacute; um&iacute;stěn&iacute; započ&iacute;t&aacute;v&aacute; jednou.
             </p>
@@ -98,7 +97,7 @@
         <div>
             <p>Zadejte vzd&aacute;lenost, kter&aacute; určuje, jak daleko se maj&iacute; při v&yacute;počtu hodnot hustoty hledat bodov&eacute; nebo liniov&eacute; prvky. Pokud např&iacute;klad zad&aacute;te vyhled&aacute;vac&iacute; vzd&aacute;lenost 10 000 metrů, bude hustota jak&eacute;hokoli um&iacute;stěn&iacute; ve v&yacute;stupn&iacute; vrstvě vypoč&iacute;t&aacute;na na z&aacute;kladě prvků ve vzd&aacute;lenosti 10 000 metrů od tohoto um&iacute;stěn&iacute;. Jak&eacute;koli um&iacute;stěn&iacute;, u něhož se ve vzd&aacute;lenosti 10 000 metrů nenach&aacute;z&iacute; ž&aacute;dn&eacute; jin&eacute; prvky, bude m&iacute;t nulovou hodnotu hustoty.
             </p>
-            <p>Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; vzd&aacute;lenost, vypoč&iacute;t&aacute; se v&yacute;choz&iacute; hodnota na z&aacute;kladě um&iacute;stěn&iacute; vstupn&iacute;ch prvků a hodnot v&nbsp;poli počtu (je-li pole počtu určeno).
+            <p>Pokud nen&iacute; zad&aacute;na ž&aacute;dn&aacute; vzd&aacute;lenost, vypoč&iacute;t&aacute; se v&yacute;choz&iacute; hodnota na z&aacute;kladě um&iacute;stěn&iacute; vstupn&iacute;ch prvků a hodnot v poli počtu (je-li pole počtu určeno).
             </p>
         </div>
     </div>
@@ -113,10 +112,20 @@
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Výstupní velikost buňky</h2></div>
+        <div><h2>Výstupní velikost pixelu</h2></div>
         <hr/>
         <div>
             <p>Velikost buňky a jednotka pro v&yacute;stupn&iacute; rastry.
+            </p>
+        </div>
+    </div>
+    <div id="inBarriers">
+        <div><h2>Zvolit prvky překážek (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Datov&aacute; sada, kter&aacute; definuje přek&aacute;žky.
+            </p>
+            <p>Přek&aacute;žkami může b&yacute;t vrstva liniov&yacute;ch nebo polygonov&yacute;ch prvků.
             </p>
         </div>
     </div>
@@ -124,6 +133,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

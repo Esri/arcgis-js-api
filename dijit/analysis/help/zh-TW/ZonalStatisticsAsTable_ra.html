@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>作為表格的地區統計資料</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="作為表格的地區統計資料圖表"></h2>
+        <hr/>
+    <p>此工具摘要其他資料集之地區中的點陣值，並向表格報告結果。
+    </p>
+    <p>部分應用程式範例包含：
+    </p>
+    <p>
+        <ul>
+            <li>利用一個州界與美國大陸平均降雨分佈圖層，使用百分位值清單計算整個州的極端降雨事件分佈情形。
+                
+
+            </li>
+            <li>利用一個重疊的生態區圖層和一個土壤水分點陣圖層，計算每一個地區內所有支援的統計資料，以建立地區與土壤水分可用性之間的關聯。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果勾選 <b>使用目前地圖範圍</b>，則僅分析目前地圖範圍內可見的輸入圖層和待摘要圖層中的圖徵。 如果未勾選，則會對分析輸入圖層和待摘要圖層內的所有圖徵，包括超出當前地圖範圍的圖徵。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>選擇地區點陣或圖徵</h2></div>
+        <hr/>
+        <div>
+            <p>將摘要定義地區或區域邊界的圖層。
+            </p>
+            <p>圖層可為整數點陣或圖徵資料。 對於點陣，地區是由具有相同儲存格值的輸入中的所有位置所定義。 若是圖徵，地區可以重疊。 區域不必連續。
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>地區欄位</h2></div>
+        <hr/>
+        <div>
+            <p>這是將用來定義地區 (區域) 之邊界的圖層屬性。
+            </p>
+            <p>例如，假設第一個輸入圖層使用屬性來定義管理單元邊界，這些屬性可定義每個單元的地區、區域和宗地 ID。 您也擁有可定義每個位置的生物多樣性索引的點陣圖層。 藉助選擇的欄位，您可以決定計算本地、區域或地區級別上的生物多樣性平均值。
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>選擇值點陣</h2></div>
+        <hr/>
+        <div>
+            <p>此圖層中的點陣儲存格將按其所在的區域（地區）摘要。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>在計算中忽略 NoData (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否在分析中忽略 NoData 值。
+                <ul>
+                    <li>已勾選 - 分析將包含在任何特定地區內的輸入值點陣中具有值的儲存格，以判斷該地區的輸出值。 在統計數字計算中，將忽略值點陣中的 NoData 儲存格。 這是預設情況。
+                    </li>
+                    <li>已取消勾選 - 若特定地區內值點陣的儲存格具有任何 NoData 值，則分析將導出 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>統計資料類型 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定要計算的統計資料類型。
+            </p>
+            <p>輸入可以是下列之一： <b>全部</b>、 <b>平均值</b>、 <b>大多數</b>、 <b>最大值</b>、 <b>中位數</b>、 <b>最小值</b>、 <b>少數</b>、 <b>百分位數</b>、 <b>範圍</b>、 <b>標準差</b>、 <b>總和</b>、 <b>多樣化</b>、 <b>最小值和最大值</b>、 <b>平均值和標準差</b>或 <b>最小值、最大值和平均值</b>。 預設為 <b>全部</b>。
+            </p>
+            <p>如果輸入值點陣為整數，則預設將計算所有統計資料。 如果值點陣為浮點數類型，則預設將計算所有統計資料，但不包括 <b>中位數</b>和 <b>百分位數</b>。 
+            </p>
+            <p>如果輸入值點陣為浮點數類型，則無法進行 <b>大多數</b>、 <b>少數</b>和 <b>多樣化</b>的地區計算。
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>百分位值 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>要計算的百分位數。 可以指定單一值或值清單。 預設值是 90，表示第 90 個百分位數。
+            </p>
+            <p>值範圍可從 0 到 100。 指定第 0 個百分位數的結果基本上等於「最小值」統計資料的結果，而第 100 個百分位數等於「最大值」。 值 50 基本上會與「中位數」統計資料產生相同的結果。
+            </p>
+            <p>只要在 <b>統計資料類型</b>參數設為 <b>百分位數</b>或 <b>全部</b>時，才支援此選項。
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>百分位插值類型 (選用)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>指定要計算的輸入點陣中的值數量為偶數時，要使用的百分位插值方法。
+            </p> 
+            <p>如果輸入值點陣為整數像素類型，則使用 <b>最近</b>方法。 如果輸入值點陣是浮點像素類型，則使用 <b>線性</b>方法。 這是預設值。
+            </p>
+            <p>若是 <b>最近</b> 方法，則會使用最接近所需百分位數的可用值。 若是 <b>線性</b>方法，則會使用來自所需百分位數的兩個周圍值的加權平均值。
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>作為多維處理 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定多維輸入點陣的處理方式。
+            </p>
+            <ul>
+                <li>已勾選 - 將從輸入多維資料集的目前切片計算統計資料。 這是預設情況。
+                    
+
+                </li>
+                <li>已取消勾選 - 將從輸入多維資料集的所有維度計算統計資料。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>結果表名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

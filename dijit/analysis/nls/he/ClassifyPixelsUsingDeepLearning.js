@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"סווג פיקסלים באמצעות למידה לעומק",outputLayerName:"${layername}_classified",modelLabel:"בחר מודל של למידה לעומק (deep learning) המשמש לסיווג פיקסלים",modelArgsLabel:"ציין ארגומנטים למודל של למידה לעומק",nameLabel:"שם",valueLabel:"ערך",queryModelArgsMsg:"מבוצעת שאילתה של ארגומנטים למודל...",queryModelArgsErrMsg:"תשאול ארגומנטים של מודל נכשל.",analysisLayerLabel:"בחר תמונה לסיווג פיקסלים",itemDescription:"ניתוח של שירות תמונות הנוצר מסיווג פיקסלים באמצעות למידה לעומק",itemTags:"תוצאת ניתוח רסטר, סיווג פיקסלים באמצעות למידה לעומק, ${layername}",itemSnippet:"ניתוח של שירות תמונות הנוצר מסיווג פיקסלים באמצעות למידה לעומק"});
+define({toolDefine:"סווג פיקסלים באמצעות למידה לעומק",outputLayerName:"${layername}_classified",modelLabel:"בחר מודל של למידה לעומק (deep learning) המשמש לסיווג פיקסלים",modelArgsLabel:"ציין ארגומנטים למודל של למידה לעומק",nameLabel:"שם",valueLabel:"ערך",queryModelArgsMsg:"מבוצעת שאילתה של ארגומנטים למודל...",queryModelArgsErrMsg:"תשאול ארגומנטים של מודל נכשל.",processingModeLabel:"מצב עיבוד",processAsMosaicLabel:"עיבוד כתמונת מוזאיקה",processAsItemsLabel:"עיבוד כל פריטי הרסטר בנפרד",analysisLayerLabel:"בחר תמונה לסיווג פיקסלים",itemDescription:"ניתוח של שירות תמונות הנוצר מסיווג פיקסלים באמצעות למידה לעומק",itemTags:"תוצאת ניתוח רסטר, סיווג פיקסלים באמצעות למידה לעומק, ${layername}",itemSnippet:"ניתוח של שירות תמונות הנוצר מסיווג פיקסלים באמצעות למידה לעומק"});

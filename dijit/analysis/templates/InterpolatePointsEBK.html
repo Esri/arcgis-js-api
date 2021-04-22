@@ -1,7 +1,7 @@
 <div class="esriAnalysis">
   <div data-dojo-type="dijit/layout/ContentPane" style="margin-top:0.5em; margin-bottom: 0.5em;">
     <div data-dojo-attach-point="_hotspotsToolContentTitle" class="analysisTitle">
-      <table class="esriFormTable" > 
+      <table class="esriFormTable" >
         <tr>
           <td class="esriToolIconTd"><div class="createInterpolatedRasterIcon"></div></td>
           <td class="esriAlignLeading esriAnalysisTitle" data-dojo-attach-point="_toolTitle">
@@ -9,7 +9,7 @@
             <nav class="breadcrumbs" data-dojo-attach-point="_analysisModeLblNode" style="display:none;">
               <a href="#" class="crumb breadcrumbs__modelabel" data-dojo-attach-event="onclick:_handleModeCrumbClick" data-dojo-attach-point="_analysisModeCrumb"></a>
               <a href="#" class="crumb is-active" data-dojo-attach-point="_analysisTitleCrumb" style="font-size:16px;">${i18n.interpolatePoints}</a>
-            </nav> 
+            </nav>
           </td>
           <td>
             <div class="esriFloatTrailing" style="padding:0;">
@@ -18,8 +18,8 @@
                 </div>
                 <div class="esriFloatTrailing">
                   <a href="#" data-dojo-attach-point="_closeBtn" title="${i18n.close}" class="esriAnalysisCloseIcon"></a>
-                </div>              
-            </div>  
+                </div>
+            </div>
           </td>
         </tr>
       </table>
@@ -117,7 +117,7 @@
                       <label>${i18n.numberOfNeighbors}</label>
                     </td>
                     <td>
-                      <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,trim:true,invalidMessage:'${i18n.numberOfNeighborsInValidMsg}', constraints:{min: 1, max: 64} " class=" longtextinput" data-dojo-attach-point="_numberOfNeighborsInput" data-dojo-attach-event="onChange:_handleNumberOfNeighborsChange"></input>                        
+                      <input type="text" data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="intermediateChanges:true,trim:true,invalidMessage:'${i18n.numberOfNeighborsInValidMsg}', constraints:{min: 1, max: 64} " class=" longtextinput" data-dojo-attach-point="_numberOfNeighborsInput" data-dojo-attach-event="onChange:_handleNumberOfNeighborsChange"></input>
                     </td>
                     <td class="shortTextInput">
                       <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="numberOfNeighbors"></a>
@@ -171,7 +171,7 @@
                               <label class="esriSelectLabel">
                                 <div data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_predictionErrorCheck" data-dojo-props="intermediateChanges:true,checked:false"></div>
                                 ${i18n.outputPredictionErrors}
-                              </label>                            
+                              </label>
                             </td>
                             <td class="shortTextInput">
                               <a href="#" class='esriFloatTrailing helpIcon' esrihelptopic="outputPredictionError"></a>

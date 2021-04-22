@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Analisis Raster memungkinkan Anda melakukan analisis terhadap set data raster dengan jumlah banyak menggunakan  ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server. Rangkaian alat saat ini tersedia melalui pengalaman pengguna web  Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Gunakan Kedekatan Jarak</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, <b>Kelola Data</b>, <b>Deep Learning</b>, dan <b>Analisis Multidimensional</b>.
+        <p>Analisis Raster memungkinkan Anda melakukan analisis terhadap set data raster dengan jumlah banyak menggunakan  ArcGIS Image Server. Hal ini memungkinkan Anda untuk menganalisis lebih banyak data dengan lebih cepat dengan memanfaatkan kekuatan server.Rangkaian alat yang saat ini tersedia melalui pengalaman pengguna web Portal for ArcGIS adalah  <b>Ringkas Data</b>, <b>Analisis Pola</b>, <b>Gunakan Kedekatan Jarak</b>, <b>Analisis Gambar</b>, <b>Analisis Medan</b>, <b>Kelola Data</b>, <b>Deep Learning</b>, dan <b>Analisis Multidimensional</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
-        <h2>Ringkas Data</h2>
+        <h2>Summarize Data</h2>
         <hr/>
-        <p>Rangkaian alat ini berisi alat untuk menghitung statistik untuk layer raster di dalam batas area yang Anda tentukan. 
+        <p>Alat ini digunakan untuk menghitung statistik layer raster di dalam batas area (zona) yang Anda tentukan.
             <ul>
                 <li> <b>Ringkas Raster di Dalam</b> menghitung statistik untuk sel raster yang berada di dalam batas area yang sudah ditentukan.
+                </li>
+                <li> <b>Statistik Zona sebagai Tabel</b> merangkum nilai-nilai raster di dalam zona set data lain dan melaporkan hasilnya di dalam tabel.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menghitung statistik ringkasan untul sel raster yang berada di dalam batas area yang sudah ditentukan.
+            <p>Alat ini merangkum nilai raster di dalam zona set data lain.
             </p>
-            <p>Beberapa aplikasi contoh adalah seperti berikut: 
-
-                <ul>
-                    <li>Dengan mengetahui layer area batas air dan layer raster elevasi, hitung rentang elevasi di dalam setiap batas air untuk menentukan manakah yang memiliki aliran stream energi yang tertinggi.
-                        
-
-                    </li>
-                    <li>Dengan mengetahui layer unit manajemen administratif dan layer raster kategori penggunaan tanah, hitung berbagai nilai penggunaan tanah di dalam setiap area manajemen untuk mengidentifikasi manakah yang memerlukan pekerjaan paling banyak untuk menentukan rencana manajemen.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Statistik Zona sebagai Tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagram Statistik Zona sebagai Tabel">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini merangkum nilai-nilai raster di dalam zona set data lain dan melaporkan hasilnya di dalam tabel.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Hitung Kepadatan</h2></td>
+                    <td><h2>Hitung Densitas</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Alat Hitung Kepadatan">
                     </td>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
-        <h2>Gunakan Kedekatan Jarak</h2>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>Gunakan Kedekatan Jarak (Proximity)</h2>
         <hr/>
-        <p>Alat ini membantu Anda menjawab salah satu pertanyaan yang paling sering diajukan dalam analisis ruang: &quot;Apa yang berada di dekat apa?&quot;
-
+        <p>Alat ini membantu Anda menjawab pertanyaan yang paling sering diajukan dalam analisis spasial: Apa saja yang ada di sekitar? dan Apa jalur yang paling optimal?
             <ul>
                 <li> <b>Hitung Jarak</b> menghitung jarak, arah, dan alokasi Euclidean untuk satu atau serangkaian sumber.
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Tentukan Jalur Biaya Perjalanan Sebagai Polyline</b> menghitung jalur polyline biaya paling sedikit antara sumber dan tujuan yang diketahui.
+                <li> <b>Tentukan Jalur Biaya Perjalanan Sebagai Polyline</b> menghitung jalur biaya polyline paling sedikit antara sumber dan tujuan yang diketahui.
+                    
+
+                </li>
+                <li> <b>Akumulasi Jarak</b> menghitung akumulasi jarak setiap sel ke sumber, memungkinkan jarak garis lurus, jarak biaya, dan jarak permukaan sebenarnya, serta faktor vertikal dan horizontal.
+                    
+
+                </li>
+                <li> <b>Alokasi Jarak</b> menghitung alokasi jarak untuk setiap sel ke sumber yang disediakan berdasarkan jarak garis lurus, jarak biaya, dan jarak permukaan sebenarnya, serta faktor vertikal dan horizontal.
+                    
+
+                </li>
+                <li> <b>Jalur Optimal Sebagai Garis</b> menghitung jalur optimal dari tujuan ke sumber sebagai garis.
+                    
+
+                </li>
+                <li> <b>Jalur Optimal Sebagai Raster</b> menghitung jalur optimal dari tujuan ke sumber sebagai raster.
+                    
+
+                </li>
+                <li> <b>Hubungan Wilayah Optimal</b> menghitung jaringan konektivitas optimal antara dua atau serangkaian wilayah input.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menghitung jarak, arah, dan alokasi Euclidean untuk satu atau serangkaian sumber. Anda dapat menggunakan alat ini untuk menentukan seberapa jauh lokasi ke jalanan, gedung, atau taman. Anda juga dapat menentukan arah mana yang harus Anda lalui dari lokasi sebelum kembali ke sumber di sebagian besar jalur langsung. Anda dapat melihat setiap lokasi di area studi yang terdekat dari sumber.
+            <p>Alat ini menghitung jarak, arah, dan alokasi Euclidean dari sumber tunggal atau kumpulan sumber.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menghitung jaringan biaya optimal dari serangkaian wilayah input.
+            <p>Alat ini menghitung jaringan biaya optimal dari serangkaian daerah input.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Menghitung jalur polyline biaya paling sedikit antara sumber dan tujuan yang diketahui.
+            <p>Alat ini menghitung jalur polyline berbiaya paling rendah antara tujuan dan sumber.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Akumulasi Jarak</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Ilustrasi alat Akumulasi Jarak">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung jarak terakumulasi untuk setiap sel ke sumber, memungkinkan jarak garis lurus, jarak biaya, jarak permukaan sebenarnya, dan faktor vertikal dan horizontal.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Alokasi Jarak</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Ilustrasi alat Alokasi Jarak">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung alokasi jarak untuk setiap sel ke sumber yang disediakan berdasarkan jarak garis lurus, jarak biaya, jarak permukaan sebenarnya, dan faktor vertikal dan horizontal.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Jalur Optimal Sebagai Garis</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Ilustrasi alat Jalur Optimal Sebagai Garis">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung jalur optimal dari tujuan ke sumber sebagai garis.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Jalur Optimal Sebagai Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Ilustrasi alat Jalur Optimal Sebagai Raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung jalur optimal dari tujuan ke sumber sebagai raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Hubungan Wilayah Optimal</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Ilustrasi alat Hubungan Wilayah Optimal">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Alat ini menghitung jaringan konektivitas optimal antara dua wilayah input atau lebih.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
-        <h2>Analisis Gambar</h2>
+        <h2>Analisis Citra</h2>
         <hr/>
-        <p>Alat berikut membantu Anda menganalisis gambar. 
+        <p>Alat berikut dalam kategori alat  <b>Analisis Gambar</b> membantu Anda menganalisis gambar:
             <ul>
-                <li> <b>Terapkan Template Fungsi Raster</b> memproses citra Anda dengan rangkaian fungsi, sesuai yang ditentukan oleh template fungsi raster.
-                </li>
-                <li> <b>Pantau Vegetasi</b> mendeteksi vegetasi di dalam gambar, berdasarkan operasi aritmetika pada pita.
+                <li> <b>Pantau Vegetasi</b> mendeteksi cakupan vegetasi relatif dalam gambar berdasarkan operasi aritmetika pada band. Beberapa indeks vegetasi tersedia untuk analisis gambar.
                     
 
                 </li>
@@ -212,22 +307,7 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Terapkan Template Fungsi Raster</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Terapkan Template Fungsi Raster">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Memproses citra Anda dengan rangkaian fungsi, sesuai yang ditentukan oleh template fungsi raster.
-            </p>
-            <br/>
-        </div>
-        <div id="MonitorVegetationTool" class="regularsize">
+        <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Melakukan operasi aritmetika pada pita dari layer raster multipeta untuk mengungkapkan informasi cakupan vegetasi dari area studi.
+            <p>Melakukan operasi aritmetika pada band dari layer raster multiband untuk menampilkan informasi cakupan vegetasi.
             </p>
             <br/>
         </div>
@@ -470,7 +550,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Alat ini menjalankan model deep learning terlatih pada sebuah raster input untuk menghasilkan feature class berisi objek yang ditemukannya. Fitur tersebut bisa jadi kotak atau poligon keliling di sekitar objek yang ditemukan, atau titik di tengah objek.
+            <p>Alat ini menjalankan model deep learning terlatih pada sebuah raster input untuk menghasilkan kelas fitur berisi objek yang ditemukannya. Fitur tersebut bisa jadi kotak atau poligon keliling di sekitar objek yang ditemukan, atau titik di tengah objek.
             </p>
             <br/>
         </div>
@@ -546,9 +626,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Buat Anomali Multidimensional</h2></td>
+                    <td><h2>Hasilkan Anomali Multidimensional</h2></td>
                     <td>
-                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Buat Anomali Multidimensional">
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Hasilkan Anomali Multidimensional">
                     </td>
                 </tr></tbody>
             </table>

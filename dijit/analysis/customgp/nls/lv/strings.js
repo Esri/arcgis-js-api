@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({_widgetLabel:"Ģeodatu apstrāde",_featureAction_ReceiveFeatureSet:"Iestatīt kā ievadi šim: ",requiredInfo:"ir obligāts.",drawnOnMap:"Rezultāts tiek zīmēts kartē.",noToolConfig:"Nav pieejams neviens iepriekš konfigurēts ģeodatu apstrādes uzdevums.",useUrlForGPInput:"Vietrādis (URL)",useUploadForGPInput:"Augšupielādējiet failu",useImageServiceLayer:"Attēlu servisa slānis",useBrowseLayerPortal:"Pārlūkot/izvēlēties no portāla",selectFileToUpload:"Atlasiet failu...",rasterFormat:"Rastra datu formāts",noFileSelected:"Nav atlasīts fails!",uploadSuccess:"Faila augšupielāde veiksmīga!",showLayerContent:"Rādīt slāņa saturu",invalidUrl:"Nederīgs elementu servisa URL",urlPlaceholder:"elementu kopas URL",addShapefile:"Pievienot Shape failu",generateShapefileError:"Ģenerēt Shape faila kļūdu; pārbaudiet: ",cleared:"Rezultāts ir notīrīts.",enlargeView:"Palielināt skatu",exportOutput:"Eksportēt",emptyResult:"Rezultāts ir tukšs.",useSelectedFeatureset:"Izmantot rezultātā iegūto(-s) elementu(-s).",closeSelectedFeatureset:"Notīrīt un izmantot konfigurētās ievades opciju."});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Yoğunluğu Hesaplama</h2><p/>
+        <h2>Yoğunluğu Hesapla</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Yoğunluğu Hesaplama aracı"></h2>
         <hr/>
     <p>Bu ara&ccedil;, bazı olayların bilinen miktarlarını (nokta veya &ccedil;izgi &ouml;znitelikleri olarak g&ouml;sterilen) haritada dağıtarak nokta veya &ccedil;izgi detaylı bir yoğunluk haritası oluşturur. Sonu&ccedil;ta ortaya en az yoğundan en fazla yoğun olana doğru sınıflanan bir alan katmanı &ccedil;ıkar.
@@ -51,7 +51,6 @@
     <p>&Ccedil;izgi girdileri i&ccedil;in ise, &ccedil;izgi yoğunluğu y&uuml;zeyi her konumun yakınındaki toplam &ccedil;izgi miktarını g&ouml;sterir. Hesaplanan yoğunluk değerlerinin birimi, birim alan başına &ccedil;izgi uzunluğudur. &Ouml;rneğin, &ccedil;izgilerin nehirleri g&ouml;sterdiği durumda, sonu&ccedil; katmanı arama yarı&ccedil;apı i&ccedil;indeki nehirlerin toplam uzunluğunu g&ouml;sterir. Bu sonu&ccedil;, hayvanların otlatılması a&ccedil;ısından uygun alanların belirlenmesi amacıyla kullanılabilir.
     </p>
     <p>Bu aracın kullanıldığı diğer durumlar şunlardır:
-
         <ul>
             <li>Polis merkezlerinin y&uuml;ksek su&ccedil; oranlı alanlarda uygun kaynak bulundurmasına yardımcı olmak amacıyla su&ccedil; yoğunluğu haritaları oluşturulması.
                 
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Engel detaylarını seç (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Engelleri tanımlayan veri k&uuml;mesi.
+            </p>
+            <p>Engeller, &ccedil;oklu &ccedil;izgi veya &ccedil;okgen detaylar i&ccedil;eren bir detay katmanı olabilir.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

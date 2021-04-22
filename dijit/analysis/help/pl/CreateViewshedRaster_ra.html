@@ -44,7 +44,7 @@
         <h2>Utwórz widoczność</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Narzędzie Utw&oacute;rz Widoczność"></h2>
         <hr/>
-    <p>To narzędzie identyfikuje obszary widoczne dla obserwatora, biorąc pod uwagę ukształtowanie terenu. Wejściowe lokalizacje punkt&oacute;w mogą reprezentować albo obserwator&oacute;w (np. ludzi na ziemi lub obserwator&oacute;w w wieży pożarowej) albo obserwowane obiekty (takie jak turbiny wiatrowe, wieże ciśnień, pojazdy lub inni ludzie). Wynikiem będą obszary widoczne z lokalizacji obserwator&oacute;w.
+    <p>To narzędzie identyfikuje obszary widoczne dla wejściowych lokalizacji obserwator&oacute;w, biorąc pod uwagę ukształtowanie terenu. Wejściowe lokalizacje punkt&oacute;w mogą reprezentować albo obserwator&oacute;w (np. ludzi na ziemi lub obserwator&oacute;w w wieży pożarowej) albo obserwowane obiekty (takie jak turbiny wiatrowe, wieże ciśnień, pojazdy lub inni ludzie). Wynikiem będą obszary widoczne z lokalizacji obserwator&oacute;w.
     </p>
     <p>Zar&oacute;wno obserwatorzy, jak i obserwowane obiekty, mogą znajdować się na pewnej wysokości nad powierzchnią ziemi. Wysokości te są wykorzystywane przy określaniu widoczności. Przykład: widoczność obliczona dla 92-metrowych turbin wiatrowych i&nbsp;os&oacute;b o wzroście 180&nbsp;cm stojących na ziemi będzie przeważnie większa niż widoczność obliczona dla 60-metrowych turbin i&nbsp;os&oacute;b o&nbsp;wzroście 152&nbsp;cm.
     </p>
@@ -98,7 +98,7 @@ Ta metoda zwraca najdokładniejsze wyniki kosztem dłuższego czasu przetwarzani
         <div>
             <p>Wprowadź maksymalną odległość, na kt&oacute;rej będzie kończyć się wyznaczanie widocznych obszar&oacute;w. Po przekroczeniu tej odległości narzędzie nie będzie sprawdzać, czy obserwatorzy i inne obiekty widzą się nawzajem.
             </p>
-            <p>Można podać wartość liczbową reprezentującą odległość liniową albo wybrać pole liczbowe z wejściowych obiekt&oacute;w obserwator&oacute;w. Jeśli zostanie podane pole, wartości w tych polach muszą być wyrażane w tych samych jednostkach, co jednostki xy wejściowej powierzchni wysokościowej.
+            <p>Można podać wartość liczbową reprezentującą odległość liniową albo wybrać pole liczbowe z wejściowych obiekt&oacute;w obserwator&oacute;w. Jeśli zostanie podane pole, wartości w tym polu muszą być wyrażane w tych samych jednostkach, co jednostki xy wejściowej powierzchni wysokościowej.
             </p>
             <p>Pamiętaj, że większe wartości wydłużą czas wykonywania obliczeń. Jeśli nie zostanie podana maksymalna odległość, domyślnie zostanie ona obliczona na podstawie rozdzielczości i zasięgu wejściowej powierzchni wysokościowej.
             </p>
@@ -119,7 +119,7 @@ Ta metoda zwraca najdokładniejsze wyniki kosztem dłuższego czasu przetwarzani
         <div>
             <p>Wprowadź odległość, od kt&oacute;rej będzie rozpoczynać się wyznaczanie widocznych obszar&oacute;w. Kom&oacute;rki znajdujące się na powierzchni bliżej niż wynosi ta odległość nie są widoczne w danych wynikowych, ale nadal blokują widoczność kom&oacute;rek znajdujących się między minimalną a maksymalną odległością widoczności.
             </p>
-            <p>Można podać wartość liczbową reprezentującą odległość liniową albo wybrać pole liczbowe z wejściowych obiekt&oacute;w obserwator&oacute;w. Jeśli zostanie podane pole, wartości w tych polach muszą być wyrażane w tych samych jednostkach, co jednostki xy wejściowej powierzchni wysokościowej.
+            <p>Można podać wartość liczbową reprezentującą odległość liniową albo wybrać pole liczbowe z wejściowych obiekt&oacute;w obserwator&oacute;w. Jeśli zostanie podane pole, wartości w tym polu muszą być wyrażane w tych samych jednostkach, co jednostki xy wejściowej powierzchni wysokościowej.
             </p>
             <p>Tego parametru można użyć do kontrolowania obszaru analizy widoczności w konkretnej odległości od obserwatora. Na przykład jeśli oceniana jest widoczność z g&oacute;rnych pięter budynku na odległy park, można ustawić minimalną odległość widoczności w taki spos&oacute;b, aby wykluczyć nieistotne obszary znajdujące się w pobliżu budynku i uzyskać wyższą szybkość przetwarzania.
             </p>
@@ -230,6 +230,7 @@ Ta metoda zwraca najdokładniejsze wyniki kosztem dłuższego czasu przetwarzani
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

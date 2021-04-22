@@ -67,7 +67,29 @@
                         
 
                     </li>
-                    <li>Choose study area&mdash;Allows you to choose whether the result will show the area within the geometry extent or the area outside the geometry extent. If you choose the  <b>Data inside the geometry</b> option, the imagery outside the extents will be removed. If you choose the <b>Data outside the geometry</b> option, the imagery within the extents will be removed. You can also define a clipping geometry using the draw tool.
+                    <li>Choose study area&mdash;Allows you to  define a clipping geometry using the draw tool.
+                        
+
+                    </li>
+                    <li>Choose layer&mdash;Choose a feature layer or imagery layer to define the extent, or choose a polygon feature layer to define the clipping geometry. When a polygon feature layer is selected, a check box is displayed to specify wether to use input features for clipping geometry. By default, it's unchecked. It means the input feature layer is used for define the extent. If it's checked, it means the input features are used for clipping geometry.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Specify clipping type</h2></div>
+        <hr/>
+        <div>
+            <p>Specify whether you want to retain the area inside or outside your clip geometry:
+
+                <ul>
+                    <li>Data inside the geometry&mdash;Imagery inside the clip extents will be extracted. This is the default.
+                        
+
+                    </li>
+                    <li>Data outside the geometry&mdash;Imagery outside the clip extents will be extracted.
                         
 
                     </li>
@@ -80,6 +102,7 @@
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
+            
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

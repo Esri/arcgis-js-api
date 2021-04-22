@@ -44,7 +44,7 @@
         <h2>Multidimensionale Abweichung generieren</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Multidimensionale Abweichung generieren"></h2>
         <hr/>
-    <p>Generiert ein multidimensionales Raster-Dataset durch Kombinieren vorhandener multidimensionaler Raster-Variablen entlang einer Dimension.
+    <p>Berechnet die Abweichung f&uuml;r jeden Ausschnitt in einem vorhandenen multidimensionalen Raster, um ein neues multidimensionales Raster zu generieren.
     </p>
     <p>Als Abweichung wird die Differenz zwischen einer Beobachtung und dem zugeh&ouml;rigen Standard-, Mittel- oder Medianwert bezeichnet.
     </p>
@@ -59,7 +59,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Multidimensionalen Bilddaten-Layer zum Erstellen von Abweichungen auswählen</h2></div>
+        <div><h2>Multidimensionale Bilddaten-Layer zum Ermitteln von Abweichungen auswählen</h2></div>
         <hr/>
         <div>
             <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Raster-Datasets.
@@ -78,7 +78,7 @@
         <div><h2>Methode zum Ermitteln von Abweichungen auswählen</h2></div>
         <hr/>
         <div>
-            <p>Gibt die Methode an, die zum Berechnen der Abweichung verwendet wird. 
+            <p>Gibt die Methode an, die zum Berechnen der Abweichung verwendet wird.
                 <ul>
                     <li> <b>Differenz vom Mittelwert</b>: Die Differenz zwischen einem Pixelwert und dem Mittelwert des Wertes dieses Pixels in den vom Intervall definierten Abschnitten wird berechnet. Dies ist die Standardeinstellung.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Differenz vom Mittelwert = x - &micro;
-
                         <ul>
                             <li>x = Pixelwert in einem Abschnitt
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Prozentuale Differenz vom Mittelwert = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = Pixelwert in einem Abschnitt
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Prozentsatz vom Mittelwert = x / &micro;
-
                         <ul>
                             <li>x = Pixelwert in einem Abschnitt
                                 
@@ -202,7 +199,7 @@
         <div><h2>Zeitintervall zum Berechnen des Mittelwerts auswählen</h2></div>
         <hr/>
         <div>
-            <p>Gibt das Zeitintervall an, das zum Berechnen des Mittelwertes verwendet wird. 
+            <p>Gibt das Zeitintervall an, das zum Berechnen des Mittelwertes verwendet wird.
                 <ul>
                     <li> <b>Alle</b>: Berechnet den Mittelwert in allen Abschnitten f&uuml;r jedes Pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
         <hr/>
         <div>
-            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden. 
+            <p>Gibt an, ob fehlende Werte bei der Analyse ignoriert werden.
                 <ul>
                     <li>Aktiviert: Bei der Analyse werden alle g&uuml;ltigen Pixel entlang einer angegebenen Dimension einbezogen und alle NoData-Pixel ignoriert. Dies ist die Standardeinstellung.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Elija el tipo de bin que se utilizará para crear la cuadrícula multivariable",layersAttrLabel:"Elija las capas y variables de entrada que desee incluir en la cuadrícula",itemDescription:"Capa de entidades generada al ejecutar Crear cuadrícula multivariable.",itemTags:"Resultados del análisis, Crear cuadrícula multivariable",itemSnippet:"Capa de entidades generada a partir de Crear cuadrícula multivariable",addVariables:"Agregar variables"});

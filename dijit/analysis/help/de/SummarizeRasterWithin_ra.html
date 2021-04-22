@@ -41,20 +41,20 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Raster zusammenfassen (innerhalb)</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Werkzeug &quot;Raster zusammenfassen (innerhalb)&quot;"></h2>
+        <h2>Zusammenfassen (innerhalb)</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Werkzeug &quot;Zusammenfassen (innerhalb)&quot;"></h2>
         <hr/>
-    <p>Mit diesem Werkzeug wird ein Raster basierend auf Fl&auml;chen (Zonen) zusammengefasst, die durch den ersten Eingabe-Layer definiert werden.
+    <p>Mit diesem Werkzeug werden die Werte eines Rasters innerhalb der Zonen eines anderen Datasets zusammengefasst.
     </p>
     <p>Folgende Beispielanwendungen stehen zur Verf&uuml;gung:
     </p>
     <p>
         <ul>
-            <li>Anhand eines Layers mit Grenzen von Abflussgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Abflussgebiet ermitteln.
+            <li>Anhand eines Layers mit Grenzen von Wassereinzugsgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln.
                 
 
             </li>
-            <li>Fassen Sie anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt zusammen.
+            <li>Den durchschnittlichen Grundst&uuml;ckswert unbebauter Flurst&uuml;cke je Stadt anhand eines Flurst&uuml;cks-Layers in einem Landkreis und eines Stadtgrenzen-Layers zusammenfassen.
                 
 
             </li>
@@ -99,9 +99,21 @@
         <div>
             <p>Nachdem Sie einen Layer ausgew&auml;hlt haben, der zusammengefasst werden soll, k&ouml;nnen Sie optional Statistiken aller numerischen Attribute der Punkte, Linien oder Fl&auml;chen innerhalb des Eingabe-Fl&auml;chen-Layers berechnen.
             </p>
-            <p>Bei einem ganzzahligen Feld stehen folgende Statistiktypen zur Auswahl: Durchschnitt, Mehrheit, Maximum, Medianwert, Minimum, Minderheit, Bereich, Standardabweichung, Summe und Varianz.
+            <p>Bei einem ganzzahligen Feld stehen folgende Statistiktypen zur Auswahl: Durchschnitt, Mehrheit, Maximum, Medianwert, Minimum, Minderheit, Perzentil, Bereich, Standardabweichung, Summe und Varianz.
             </p>
             <p>Wenn das Feld den Typ &quot;Gleitkomma&quot; aufweist, sind folgende Optionen verf&uuml;gbar: Durchschnitt, Maximum, Minimum, Bereich, Standardabweichung und Summe.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Perzentilwert</h2></div>
+        <hr/>
+        <div>
+            <p>Das zu berechnende Perzentil. Der Standardwert ist 90 und steht f&uuml;r das 90.&nbsp;Perzentil.
+            </p>
+            <p>Zul&auml;ssige Werte k&ouml;nnen zwischen 0 und 100 liegen. Grunds&auml;tzlich entspricht der Perzentilwert&nbsp;0 statistisch gesehen dem Minimum und der Perzentilwert&nbsp;100 dem Maximum. Der Wert&nbsp;50 ergibt im Wesentlichen dasselbe Ergebnis wie der Medianwert der Statistik.
+            </p>
+            <p>Diese Option wird nur unterst&uuml;tzt, wenn f&uuml;r den Parameter  <b>Zu berechnende Statistik ausw&auml;hlen</b> die Option <b>Perzentil</b> festgelegt wurde.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Als mehrdimensional verarbeiten</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, wie die Eingabe-Raster verarbeitet werden, wenn es sich um multidimensionale Raster handelt. Wenn Sie &quot;Als mehrdimensional verarbeiten&quot; ausw&auml;hlen, werden Statistiken anhand aller Dimensionen des multidimensionalen Eingabe-Datasets berechnet. Andernfalls werden Statistiken anhand des aktuellen Segments des multidimensionalen Eingabe-Datasets berechnet. Dies ist die Standardeinstellung.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

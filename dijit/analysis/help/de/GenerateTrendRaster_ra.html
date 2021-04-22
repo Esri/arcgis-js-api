@@ -52,8 +52,6 @@
         <div><h2>Multidimensionalen Bilddaten-Layer für die Trendanalyse auswählen</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Der Eingabe-Bilddaten-Layer eines multidimensionalen Rasters f&uuml;r die Analyse.
             </p>
         </div>
@@ -78,7 +76,7 @@
         <div><h2>Linientyp für die Anpassung an die Variablenwerte in einer Dimension auswählen</h2></div>
         <hr/>
         <div>
-            <p>Gibt den Linientyp f&uuml;r die Anpassung an die Pixelwerte in einer Dimension an. 
+            <p>Gibt den Linientyp f&uuml;r die Anpassung an die Pixelwerte in einer Dimension an.
                 <ul>
                     <li> <b>Linear</b>: Variable Pixelwerte werden entlang einer linearen Trendlinie angepasst. Dies ist die Standardeinstellung.
                     </li>
@@ -86,13 +84,32 @@
                     </li>
                     <li> <b>Harmonisch</b>: Variable Pixelwerte werden entlang einer harmonischen Trendlinie angepasst.
                     </li>
+                    <li> <b>Mann-Kendall</b>: Variable Pixelwerte werden mit dem Mann-Kendall-Trendtest ausgewertet.
+                    </li>
+                    <li> <b>Saisonal Kendall</b>: Variable Pixelwerte werden mit dem saisonalen Kendall-Trendtest ausgewertet.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Zeiteinheit für die Länge eines saisonalen Zeitraums angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, welche Zeiteinheit bei Durchf&uuml;hrung des saisonalen Kendall-Tests f&uuml;r die L&auml;nge des saisonalen Zeitraums verwendet wird.
+                <ul>
+                    <li> <b>Tage</b>: Die Einheit f&uuml;r die L&auml;nge des saisonalen Zeitraums ist ein Tag. Dies ist die Standardeinstellung.
+                    </li>
+                    <li> <b>Monate</b>: Die Einheit f&uuml;r die L&auml;nge des saisonalen Zeitraums ist ein Monat.
+                    </li>
                 </ul>
                 
             </p>
         </div>
     </div>
     <div id="cycleLength">
-        <div><h2>Die Länge des harmonischen Zyklus angeben</h2></div>
+        <div><h2>Länge des harmonischen Zyklus angeben</h2></div>
         <hr/>
         <div>
             <p>Die L&auml;nge der zu modellierenden periodischen Variation. Dieser Parameter ist erforderlich, wenn f&uuml;r den Trendlinientyp die Option  <b>Harmonisch</b> festgelegt wurde. Der Gr&uuml;nanteil bei Bl&auml;ttern beispielsweise weist pro Jahr einen starken Variationszyklus auf, sodass die Zyklusl&auml;nge 1&nbsp;Jahr betr&auml;gt. St&uuml;ndlich erfasste Temperaturdaten weisen pro Tag einen starken Variationszyklus auf, sodass die Zyklusl&auml;nge 1&nbsp;Tag betr&auml;gt.
@@ -207,6 +224,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

@@ -44,7 +44,7 @@
         <h2>Koble sammen geoobjekter</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Koble sammen geoobjekter"></h2>
         <hr/>
-    <p>Koble sammen geoobjekter fungerer med to lag og f&oslash;yer sammen attributter fra ett geoobjekt til et annet ut fra romlige og attributtmessige forhold. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler laget til m&aring;llaget.
+    <p>Funksjonen Koble geoobjekter fungerer med to lag og f&oslash;yer sammen attributter fra ett geoobjekt til et annet p&aring; bakgrunn av romlige og attributtmessige forhold. Verkt&oslash;yet fastsetter alle inndatageoobjekter som oppfyller de angitte betingelsene og kobler laget til m&aring;llaget.
     </p>
     <p>Koble geoobjekter kan brukes p&aring; punkter, linjer, omr&aring;der og tabeller. En geografisk kobling krever at dataene har en geometri.
     </p>
@@ -59,7 +59,7 @@
             <p>M&aring;llaget vil f&aring; attributter fra koblingslaget lagt til i tabellen.
             </p>
             <p>I tillegg til &aring; velge et lag fra kartet kan du velge  <b>Velg analyselag</b> som du finner nederst i rullegardinlisten. Dette alternativet &aring;pner et galleri der du kan bla til og velge datasett fra ulike kilder som du vil bruke i analysen. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -116,7 +116,7 @@
         <div>
             <p>Attributtforholdet som vil avgj&oslash;re om geoobjektene skal kobles sammen. Geoobjekter matches n&aring;r feltverdiene i koblingslaget er lik feltverdiene i m&aring;llaget.
             </p>
-            <p>La oss for eksempel si at vi har et landsdekkende geografisk lag med boligadresser (inkludert et felt  <i>ZIP</i>) og et tabellbasert helsedatasett fordelt p&aring; postnummer (inkludert et felt ved navn <i>HEALTHZIP</i>). Du kan koble helsedatasettet til boligdataene ved &aring; matche feltet <i>ZIP</i> til <i>HEALTHZIP</i>, noe som gir et lag med boliger og tilh&oslash;rende helsedata.
+            <p>La oss for eksempel si at vi har et landsdekkende geografisk lag med boligadresser (inkludert et  <i>ZIP</i>-felt ) og et tabellbasert helsedatasett fordelt p&aring; postnummer (inkludert et felt som heter <i>HEALTHZIP</i>). Du kan koble helsedatasettet til boligdataene ved &aring; matche feltet <i>ZIP</i> med <i>HEALTHZIP</i>, noe som gir et lag med boliger og tilh&oslash;rende helsedata.
             </p>
         </div>
     </div>
@@ -126,14 +126,14 @@
         <div>
             <p>Fastsetter hvordan koblinger mellom m&aring;l- og koblingslagene blir h&aring;ndtert hvis flere geoobjekter i m&aring;llaget viser seg &aring; ha det samme forholdet til m&aring;llaget. Det er to koblingsoperasjoner &aring; velge mellom:
                 <ul>
-                    <li> <b>Koble en til en</b> &ndash;&nbsp;Dette alternativet kobler geoobjektene i m&aring;llaget til ett enkelt geoobjekt i koblingslaget. M&aring;ten geoobjekter kobles sammen p&aring;, bestemmes av parameteren <b>Legg til statistikk</b> eller parameteren <b>Angi hvilken post som skal beholdes</b>. Hvis <b>Legg til statistikk</b> brukes, blir alle samsvarende koblede geoobjekter summert til hvert geoobjekt i m&aring;llaget. Antallet koblede geoobjekter legges til som standard. Hvis <b>Angi hvilken post som skal beholdes</b> brukes, kan du velge enten &aring; beholde den f&oslash;rste samsvarende posten (standard) eller &aring; beholde en samsvarende post basert p&aring; et uttrykk. Et uttrykk kan bruke enten et numerisk felt (alternativ for st&oslash;rste eller minste post) eller et datofelt (alternativ for nyeste eller eldste).
+                    <li> <b>Koble en til en</b> &ndash;&nbsp;Dette alternativet kobler geoobjektene i m&aring;llaget til ett enkelt geoobjekt i koblingslaget. M&aring;ten geoobjekter kobles sammen p&aring;, bestemmes av parameteren <b>Legg til statistikk</b> eller parameteren <b>Angi hvilken post som skal beholdes</b>. Hvis <b>Legg til statistikk</b> brukes, blir alle samsvarende koblede geoobjekter summert til hvert geoobjekt i m&aring;llaget. Antallet koblede geoobjekter legges til som standard. Hvis <b>Angi hvilken post som skal beholdes</b> brukes, kan du velge enten &aring; beholde den f&oslash;rste samsvarende posten (standard) eller &aring; beholde den samsvarende posten med den h&oslash;yeste eller laveste verdien i et bestemt felt ( <b>Sorter etter</b>). Uttrykket Sorter etter krever et numerisk felt (alternativ for st&oslash;rste eller minste verdi) eller et datofelt (alternativ for nyeste eller eldste).
                     </li>
                     <li> <b>Koble en til mange</b> &ndash; Dette alternativet kobler alle samsvarende geoobjekter i koblingslaget til m&aring;llaget. Det resulterende laget inneholder flere poster av m&aring;letgeoobjektet.
                     </li>
                 </ul>
                 
             </p>
-            <p>Anta for eksempel at du &oslash;nsker &aring; finne supermarkeder innen 5 kilometer fra Bondens marked. I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal kobles til, representerer de lokale dagligvarebutikkene med attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner du ut at fem dagligvarebutikker oppfyller dette kriteriet. Hvis du spesifiserer en koblingsoperasjon som <b>Koble en til mange</b>, vil du ende opp med fem geoobjekter i resultatet, der hver rad representerer Bondens marked og et supermarked. Hvis du spesifiserer et <b>Koble en til en</b>-forhold og velger en statistikk, ender du opp med ett geoobjekt som representerer Bondens marked og den oppsummerte informasjonen fra supermarkedene, f.eks. antallet (5), og annen statistikk som summen av &aring;rlig omsetning.
+            <p>Anta for eksempel at du &oslash;nsker &aring; finne supermarkeder innen 5 kilometer fra Bondens marked. I dette tilfellet har laget som det skal kobles til, ett enkelt geoobjekt som representerer Bondens marked, og geoobjektene som skal kobles til, representerer de lokale dagligvarebutikkene med attributter som samlet &aring;rlig omsetning. Ved hjelp av verkt&oslash;yet  <b>Koble geoobjekter</b> finner du ut at fem dagligvarebutikker oppfyller dette kriteriet. Hvis du spesifiserer en koblingsoperasjon som <b>Koble en til mange</b>, vil du ende opp med fem geoobjekter i resultatet, der hver rad representerer Bondens marked og et supermarked. Hvis du angir et <b>Koble en til en</b>-forhold og velger <b>Angi hvilken post som skal beholdes</b>, ender du opp med ett geoobjekt som representerer Bondens marked og &eacute;n dagligvarebutikk &ndash; den med h&oslash;yeste &aring;rlig omsetning for eksempel. Hvis du i stedet velger <b>Legg til statistikk</b>, ender du opp med ett geoobjekt som representerer Bondes marked og en oppsummering for de fem dagligvarebutikkene, f.eks. samlet &aring;rlig omsetning og antallet (5) oppsummerte dagligvarebutikker. 
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Behold alle målgeoobjekter</h2></div>
         <hr/>
         <div>
-            <p>Som standard returneres bare samsvarende geoobjekter mellom m&aring;llaget og koblingslaget i resultatlaget (indre kobling). N&aring;r parameteren  <b>Behold alle m&aring;lgeoobjekter</b> aktiveres, endres utdataene til &aring; omfatte alle geoobjekter i m&aring;l- laget uavhengig av om de samsvarer med geoobjekter i koblingslaget (venstre ytre kobling).
+            <p>Som standard returneres bare samsvarende geoobjekter mellom m&aring;llaget og koblingslaget i resultatlaget (indre kobling). N&aring;r parameteren  <b>Behold alle m&aring;lgeoobjekter</b> er aktivert, endres utdataene til &aring; omfatte alle geoobjekter i m&aring;llaget uavhengig av om de samsvarer med geoobjekter i koblingslaget (en venstre ytre kobling).
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Opprett resultater som hostet geoobjektlagvisning</h2></div>
         <hr/>
         <div>
-            <p> N&aring;r du oppretter resultatene som en hosted geoobjektlagvisning, oppdateres dataene n&aring;r kildedataene endres. Hostede geoobjektlagvisninger som inneholder tilknytninger, vil v&aelig;re skrivebeskyttet.
+            <p>N&aring;r du oppretter resultatene som en hosted geoobjektlagvisning, oppdateres dataene n&aring;r kildedataene endres. Hostede geoobjektlagvisninger som inneholder tilknytninger, er skrivebeskyttet.
             </p>
+            <p class="OnlineOnly">Hostede geoobjektlagvisninger som inneholder tilknytninger, bruker ikke credits til analyse og lagring.
+            </p> 
             <p>Du kan opprette en hostet geoobjektlagvisning fra analyseresultatene hvis alle f&oslash;lgende betingelser er oppfylt:
                 <ul>
                     <li>Du eier begge lagene.

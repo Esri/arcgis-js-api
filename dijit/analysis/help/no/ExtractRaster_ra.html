@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Velg utstrekningstypen som skal brukes ved klipping av lagets geometri:
-
                 <ul>
                     <li>Bruk gjeldende utstrekning &ndash; Den gjeldende kartutstrekningen blir bruk til &aring; klippe det resulterende laget. Dette er standardalternativet.
                         
 
                     </li>
-                    <li>Velg studieomr&aring;de &ndash; Lar deg velge om resultatet skal vise omr&aring;det innenfor geometriens utstrekning eller omr&aring;det utenfor den geometriske utstrekningen. Hvis du velger alternativet  <b>Data inside the geometry</b> (Data innenfor geometrien), fjernes bildene som er utenfor utstrekningen. Hvis du velger alternativet <b>Data outside the geometry</b> (Data utenfor geometrien), fjernes bildene som er utenfor utstrekningen. Du kan ogs&aring; definere en klippegeometri ved hjelp av tegneverkt&oslash;yet.
+                    <li>Velg studieomr&aring;de &ndash; Lar deg definere en klippegeometri ved hjelp av tegneverkt&oslash;yet.
+                        
+
+                    </li>
+                    <li>Velg lag &ndash; Velg et geoobjektlag eller bildelag for &aring; definere utstrekningen, eller velg et polygongeoobjekt for &aring; definere klippegeometrien. N&aring;r et polygongeoobjektlag er valgt, vises en avmerkingsboks for &aring; angi om inndategeoobjekter skal brukes for klippegeometri. Avmerkingsboksen er som standard ikke avmerket. Det betyr at inndatageoobjektet brukes til &aring; definere utstrekningen. Hvis den er avmerket, betyr det at inndatageoobjekter brukes til klippegeometri.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Velg klippetype</h2></div>
+        <hr/>
+        <div>
+            <p>Angi om du vil beholde omr&aring;det innenfor eller utenfor klippegeometrien.
+                <ul>
+                    <li>Data innenfor geometrien &ndash; Bilder innenfor klippeutstrekningene blir trukket ut. Dette er standardalternativet.
+                        
+
+                    </li>
+                    <li>Data utenfor geometrien &ndash; Bilder utenfor klippeutstrekningene blir trukket ut.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

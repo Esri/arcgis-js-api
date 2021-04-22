@@ -44,7 +44,7 @@
         <h2>Tilordne verdier på nytt</h2><p/>
         <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="Portalverkt&oslash;y for &aring; tilordne verdier p&aring; nytt"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet lar deg endre eller omklassifisere pikselverdiene p&aring; rasterdata. Pikselverdier tilordnes p&aring; nytt ved &aring; spesifisere en rekke med pikselverdier som skal tilordnes en ny pikselverdi i resultatet. Resultat pikselverdien kan v&aelig;re en gyldig verdi eller en NoData-verdi, som er piksler som ikke har noen kjent verdi knyttet til seg.
+    <p>Dette verkt&oslash;yet lar deg endre eller omklassifisere pikselverdiene p&aring; rasterdata. Pikselverdier tilordnes p&aring; nytt ved &aring; spesifisere et pikselverdiomr&aring;de som skal tilordnes en utdatapikselverdi. Utdatapikselverdien kan v&aelig;re en gyldig verdi eller en NoData-verdi, som er piksler som ikke har noen kjent verdi tilknyttet.
     </p>
     <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, er det kun cellene som vises i gjeldende kartutstrekning som f&aring;r verdiene tilordnet p&aring; nytt. Hvis det ikke er merket av for dette alternativet, blir alle rasterlagene behandlet selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
@@ -62,9 +62,9 @@
         <div><h2>Tilordne pikselverdier på nytt til nye verdier</h2></div>
         <hr/>
         <div>
-            <p>Du angir et verdiomr&aring;de ved &aring; angi en minimum- og maksimumsverdi, og deretter tildeler du en resultatverdi eller en NoData-verdi til det angitte omr&aring;det.
+            <p>Angi et verdiomr&aring;de ved &aring; angi en minimum- og maksimumsverdi, og tilordne deretter en utdataverdi eller resultatverdi eller en NoData-verdi til det angitte omr&aring;det.
             </p>
-            <p>For &aring; tilordne et nytt verdiomr&aring;de, klikker du p&aring;  <b>Legg til</b>, som legger til en rad.  Klikk p&aring; hver verdi for &aring; redigere tabellen til omr&aring;dene og den nye tilordnede verdien du trenger. N&aring;r du angir verdiomr&aring;de, er det to viktige regler som brukes:
+            <p>For &aring; tilordne et nytt verdiomr&aring;de, klikker du p&aring;  <b>Legg til</b>, som legger til en rad. Klikk p&aring; hver verdi for &aring; redigere tabellen til omr&aring;dene og den nye tilordnede verdien du trenger. N&aring;r du angir verdiomr&aring;de, er det to viktige regler som brukes:
                 <ul>
                     <li>Minimumsverdien i omr&aring;det er inklusiv, og maksimumsverdien er eksklusiv.
                     </li>
@@ -86,7 +86,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>1-9
+                    <p>1&ndash;9
                     </p>
                 </td>
             </tr>
@@ -100,7 +100,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-19
+                    <p>10&ndash;19
                     </p>
                 </td>
             </tr>
@@ -119,9 +119,9 @@
                 </td>
             </tr>
             </table>
-            <p>Rekkef&oslash;lgen p&aring; omr&aring;dene som er angitt i tabellen er ogs&aring; viktig. Den &oslash;verste raden i tabellen behandles f&oslash;rst, deretter behandles raden under. De to tabellene nedenfor viser hvordan de samme verdiomr&aring;dene produserer ulike resultater p&aring; grunn av rekkef&oslash;lgen av tabellradene.
+            <p>Rekkef&oslash;lgen p&aring; omr&aring;dene som er angitt i tabellen er ogs&aring; viktig. Den &oslash;verste raden i tabellen behandles f&oslash;rst og deretter behandles raden under. De to tabellene nedenfor viser hvordan de samme verdiomr&aring;dene gir ulike resultater p&aring; grunn av rekkef&oslash;lgen av tabellradene.
             </p> 
-            <p>Tabellen nedenfor viser utdataverdien n&aring;r den f&oslash;rste kolonnen sorteres numerisk:
+            <p>Den f&oslash;rste tabellen viser utdataverdien n&aring;r den f&oslash;rste kolonnen sorteres numerisk:
             </p>
             <table border="1">
             <tr>
@@ -148,7 +148,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>15-29
+                    <p>15&ndash;29
                     </p>
                 </td>
             </tr>
@@ -162,12 +162,12 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
             </table>
-            <p>Tabellen nedenfor viser hvordan en annerledes sortering av radene vil produsere forskjellige utdataverdier:
+            <p>Den andre tabellen viser hvordan en annerledes sortering av radene vil gi forskjellige utdataverdier:
             </p> 
             <table border="1">
             <tr>
@@ -180,7 +180,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>10-29
+                    <p>10&ndash;29
                     </p>
                 </td>
             </tr>
@@ -194,7 +194,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>1-9
+                    <p>1&ndash;9
                     </p>
                 </td>
             </tr>
@@ -208,7 +208,7 @@
                     </p>
                 </td>
                 <td>
-                    <p>30-39
+                    <p>30&ndash;39
                     </p>
                 </td>
             </tr>
@@ -221,6 +221,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

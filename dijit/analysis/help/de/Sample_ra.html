@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Die Eingabe-Raster werden mit dem urspr&uuml;nglichen Raumbezug und der urspr&uuml;nglichen Aufl&ouml;sung abgerufen. Wenn mehrere Eingabe-Raster mit unterschiedlichen Raumbez&uuml;gen vorhanden sind, werden die Eingabepositionen auf die Raumbez&uuml;ge der einzelnen Raster projiziert, aus denen Werte extrahiert werden. Die Analyseumgebung wird auf die Eingabepositionen angewendet, wobei aber die Eingabe-Raster die Analyseumgebung nicht ber&uuml;cksichtigen.
+    <p>Dem Eingabe-Raster werden Stichproben mit dem urspr&uuml;nglichen Raumbezug und der urspr&uuml;nglichen Aufl&ouml;sung entnommen. Wenn mehrere Eingabe-Raster mit unterschiedlichen Raumbez&uuml;gen vorhanden sind, werden die Eingabepositionen auf die Raumbez&uuml;ge der einzelnen Raster projiziert, aus denen Werte extrahiert werden. Die Analyseumgebung wird auf die Eingabepositionen angewendet, wobei aber die Eingabe-Raster die Analyseumgebung nicht ber&uuml;cksichtigen.
     </p>
     <p>Positionen, mit denen Werte aus NoData-Zellen im Eingabe-Raster extrahiert werden, erhalten in der Ausgabetabelle einen &lt;NULL&gt;-Wert.
     </p>
@@ -112,7 +112,6 @@
             <p>Geben Sie die Zeit, Tiefe oder andere Erfassungsdaten f&uuml;r die Positionszellen bzw. Positions-Features an.
             </p>
             <p>F&uuml;r jede Dimension gibt es drei Optionen, um die Erfassungsdaten f&uuml;r Positionszellen oder Positions-Features anzugeben:
-
                 <ul>
                     <li> <b>Einzelfeld oder -wert</b>: Bei Auswahl dieser Option m&uuml;ssen die folgenden Informationen angegeben werden:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Verwendeter Resampling-Algorithmus bei der Entnahme eines Rasters.
             </p>
             <ul>
-                <li> <b>N&auml;chster</b>: N&auml;chster Nachbar. Dies ist die Standardeinstellung.
+                <li> <b>N&auml;chster Nachbar</b>: Verwendet den Wert der n&auml;chstgelegenen Zelle, um der Ausgabezelle beim Resampling einen Wert zuzuweisen. Dies ist die Standardeinstellung.
                 </li>
-                <li> <b>Bilinear</b>: Bilineare Interpolation
+                <li> <b>Bilinear</b>: Bestimmt den neuen Wert einer Zelle anhand eines gewichteten Entfernungsdurchschnitts der vier n&auml;chstgelegenen Mittelpunkte der Eingabezellen.
                 </li>
-                <li> <b>Kubisch</b>: Kubische Faltung
+                <li> <b>Kubisch</b>: Bestimmt den neuen Wert einer Zelle, indem eine gegl&auml;ttete Kurve durch die 16 n&auml;chstgelegenen Mittelpunkte der Eingabezellen gef&uuml;hrt wird.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Name des Ergebnis-Layers</h2></div>
         <hr/>
         <div>
+            
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
             <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.

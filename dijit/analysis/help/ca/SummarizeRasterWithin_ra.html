@@ -44,13 +44,13 @@
         <h2>Resumir el ràster dins de</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Eina Resumir el r&agrave;ster dins de"></h2>
         <hr/>
-    <p>Aquesta eina resumeix un r&agrave;ster en funci&oacute; de les &agrave;rees (zones) definides per la primera capa d'entrada.
+    <p>Aquesta eina resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset.
     </p>
     <p>Alguns exemples d'aplicacions s&oacute;n:
     </p>
     <p>
         <ul>
-            <li>Donada una capa de l&iacute;mits de conques hidrogr&agrave;fiques i una capa de l&iacute;mits d'&uacute;s del s&ograve;l per tipus d'&uacute;s, calculeu la superf&iacute;cie total del tipus d'&uacute;s del s&ograve;l per a cada conca hidrogr&agrave;fica.
+            <li>Donada una capa de l&iacute;mits de conques hidrogr&agrave;fiques i una capa de l&iacute;mits d'&uacute;s del s&ograve;l per tipus d'&uacute;s, calcular la superf&iacute;cie total del tipus d'&uacute;s del s&ograve;l per a cada conca hidrogr&agrave;fica.
                 
 
             </li>
@@ -99,9 +99,21 @@
         <div>
             <p>Quan h&agrave;giu triat una capa per resumir-la, tindreu l'opci&oacute; de calcular les estad&iacute;stiques de qualsevol atribut num&egrave;ric dels punts, les l&iacute;nies o les &agrave;rees que estiguin dins de la capa d'&agrave;rees d'entrada.
             </p>
-            <p>Els tipus d'estad&iacute;stiques disponibles quan el camp seleccionat &eacute;s un enter s&oacute;n Mitjana, Majoria, M&agrave;xim, Mitjana, M&iacute;nim, Minoria, Interval, Desviaci&oacute; est&agrave;ndard, Suma i Varietat.
+            <p>Els tipus d'estad&iacute;stiques disponibles quan el camp seleccionat &eacute;s un enter s&oacute;n Mitjana, Majoria, M&agrave;xim, Mediana, M&iacute;nim, Minoria, Percentil, Interval, Desviaci&oacute; est&agrave;ndard, Suma i Varietat.
             </p>
             <p>Si el camp &eacute;s un punt flotant, les opcions s&oacute;n Mitjana, M&agrave;xim, M&iacute;nim, Interval, Desviaci&oacute; est&agrave;ndard i Suma.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil que es calcular&agrave;. El valor per defecte &eacute;s 90, que indica el percentil 90.
+            </p>
+            <p>Els valors poden anar de 0 a 100. El percentil 0 &eacute;s b&agrave;sicament equivalent a l'estad&iacute;stica m&iacute;nima i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
+            </p>
+            <p>Aquesta opci&oacute; nom&eacute;s s'admet si el par&agrave;metre  <b>Trieu una estad&iacute;stica per calcular</b> es defineix com a <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Processa com a multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica com es processaran els r&agrave;sters d'entrada si s&oacute;n multidimensionals. Si trieu processar-los com a multidimensionals, les estad&iacute;stiques es calcularan a partir de totes les dimensions del dataset multidimensional d'entrada. Si no, les estad&iacute;stiques es calcularan a partir del sector actual del dataset multidimensional d'entrada (aquesta &eacute;s l'opci&oacute; per defecte).
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
+            
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.

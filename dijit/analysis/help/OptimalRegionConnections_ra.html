@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimal Region Connections</h2><p/>
+        <h2><img src="./images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Optimal Region Connections tool illustration"></h2>
+        <hr/>
+    <p>This tool calculates the optimal connectivity network between two or more input regions.
+    </p>
+    <p>Example applications include the following:
+
+        <ul>
+            <li>Suitability modeling&mdash;From a suitability model, you have identified 10 of the best habitat patches for bobcats. You want the bobcats to be able to move between the patches through the most effective network of wildlife corridors to maintain genetic diversity within the metapopulation.
+                
+
+            </li>
+            <li>Timber harvest&mdash;In a timber harvest, you want to create the most cost-efficient network of logging roads from which to extract the lumber.
+                
+
+            </li>
+            <li>Peacekeeping&mdash;In a military peacekeeping deployment, you have identified five areas at which to position troops and personnel. You want to develop the optimally connected supply routes between the bases.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only those locations in the input layers that are visible within the current map extent will be analyzed. If unchecked, all locations in both input layers will be analyzed, even if they are outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Choose region raster or feature</h2></div>
+        <hr/>
+        <div>
+            <p>The input regions to be connected by the optimal network.
+            </p>
+            <p>If the region input is a raster, the regions are defined by groups of contiguous (adjacent) cells of the same value. Each region must be uniquely numbered. The cells that are not part of any region must be NoData. The raster type must be integer, and the values can be either positive or negative.
+            </p>
+            <p>If the region input is a feature, it can be points, lines, or polygons. Polygon regions cannot be composed of multipart polygons.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Choose barrier raster or feature (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The dataset that defines the barriers.
+            </p>
+            <p>For a raster, the input type can be integer or float. Any cells that have a value (including zero) will be treated as a barrier. Any cells that are NoData will not be treated as a barrier.
+            </p>
+            <p>For a feature, the input can be point, line, or polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Choose cost raster (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>A raster defining the impedance, or cost, to move planimetrically through each cell.
+            </p>
+            <p>The value at each cell location represents the cost-per-unit distance for moving through the cell. Each cell location value is multiplied by the cell resolution while also compensating for diagonal movement to obtain the total cost of passing through the cell.
+            </p>
+            <p>The values of the cost raster can be integer or floating point, but they cannot be negative or zero (you cannot have a negative or zero cost).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Distance method (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether to calculate the distance using a planar (flat earth) or a geodesic (ellipsoid) method.
+            </p>
+            <ul>
+                <li> <b>Planar</b>&mdash;The distance calculation will be performed on a projected flat plane using a 2D Cartesian coordinate system. This is the default method.
+                    
+
+                </li>
+                <li> <b>Geodesic</b>&mdash;The distance calculation will be performed on the ellipsoid. Therefore, regardless of input or output projection, the results do not change.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Connections within regions (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether the paths will continue and connect within the input regions.
+            </p>
+            <ul>
+                <li> <b>Generate connections</b>&mdash;Paths will continue within the input regions to connect all paths that enter a region. This is the default.
+                    
+
+                </li>
+                <li> <b>No connections</b>&mdash;Paths will stop at the edges of the input regions and will not continue or connect within them.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Result optimal connectivity lines feature layer name</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>This layer is an output line feature that connects each input region.
+            </p>
+            <p>Each path (or line) is uniquely numbered, and additional fields in the attribute table store specific information about the path. Those additional fields are the following:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;The unique identifier for the path
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;The total accumulative distance or cost for the path
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;The first region the path connects
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;The other region the path connects
+                    
+
+                </li>
+            </ul>
+            
+            <p>Since each path is represented by a unique line, there will be multiple lines in locations where paths travel the same route.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Result neighboring connections feature layer name (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>This layer is an output line feature that identifies all paths from each region to each of its closest, or least cost, neighbors.
+            </p>
+            <p>Each path (or line) is uniquely numbered, and additional fields in the attribute table store specific information about the path. Those additional fields are the following:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;The unique identifier for the path
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;The total accumulative distance, or cost, for the path
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;The first region the path connects
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;The other region the path connects
+                    
+
+                </li>
+            </ul>
+            
+            <p>Since each path is represented by a unique line, there will be multiple lines in locations where paths travel the same route.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

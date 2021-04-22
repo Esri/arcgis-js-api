@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>最佳路徑為線</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="最佳路徑為線工具圖例"></h2>
+        <hr/>
+    <p>此工具計算目的地到來源的最佳路徑作為線。
+    </p>
+    <p>應用範例包含：
+        <ul>
+            <li>根據建造成本尋找新道路的最佳路線。
+                
+
+
+            </li>
+            <li>找出目的地與目前位置之間的最佳航行路線。
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>選擇目的地點陣或圖徵</h2></div>
+        <hr/>
+        <div>
+            <p>點陣或圖徵圖層，可識別能決定最佳來源之最佳路徑的儲存格。
+            </p>
+            <p>如果輸入是點陣，則必須包含具備目的地有效值 (零是有效值) 的儲存格，且必須將剩餘的儲存格指派為 NoData。 輸入點陣類型必須是整數。
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>目的地欄位</h2></div>
+        <hr/>
+        <div>
+            <p>用來取得目的地位置之值的欄位。
+            </p>
+            <p>此欄位必須為整數類型。
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>選擇距離累積點陣</h2></div>
+        <hr/>
+        <div>
+            <p>距離累積點陣是用來決定目的地到來源的最佳路徑。
+            </p>
+            <p>距離累積點陣通常是使用距離累積或距離分配工具建立。 距離累積點陣中的每個儲存格可代表每個儲存格到一組來源儲存格之表面上的最短累積成本距離。
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>選擇反方向或流動方向點陣</h2></div>
+        <hr/>
+        <div>
+            <p>反方向點陣包含以度為單位所計算的方向。 該方向識別了沿最佳路徑返回最低累積成本來源，同時避開屏障的下一個儲存格。
+            </p>
+            <p>反方向點陣通常是使用距離累積或距離分配工具建立。 在此清況下，值的範圍是從 0 度到 360 度。 值 0 是保留供來源儲存格使用。 正東方 (右側) 為 90 度，且值會順時針遞增 (180 為南方，270 為西方，360 為北方)。
+            </p>
+            <p>建立的最佳路徑可以是根據 D8 流動方向的流動路徑。 若要以此方式產生最佳路徑，可使用 D8 流動方向點陣作為此參數的輸入。
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>路徑類型 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定關鍵字以定義在成本路徑計算中，如何解讀輸入目的地資料中的值和區域。
+                <ul>
+                    <li> <b>到每個區域</b> - 對於輸入目的地資料中的每個區域決定最低成本路徑。 使用此選項時，每個區域的最低成本路徑是從區域中具有最低成本距離權數的儲存格開始。 這是預設情況。
+                         
+                    </li>
+                    <li> <b>最佳單一</b> - 對於輸入目的地資料中的所有儲存格，會從至來源儲存格具有「最低成本路徑」最小值的儲存格中衍生最低成本路徑。
+                    </li>
+                    <li> <b>每個儲存格</b> - 對於輸入目的地資料中內含有效值的每個儲存格決定最低成本路徑。 使用此選項時將分別處理輸入目的地資料的每個儲存格，並為每個儲存格決定最低成本路徑。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>結果圖徵圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,7 @@
         <h2>Generer tendensraster</h2><p/>
         <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generer tendensraster"></h2>
         <hr/>
-    <p>Estimerer tendensen for hver pixel langs en dimension for en eller flere variabler i en flerdimensional  raster.
+    <p>Estimerer tendensen for hver pixel langs en dimension for en eller flere variabler i en flerdimensional raster.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,8 +52,6 @@
         <div><h2>Vælg det flerdimensionale billedlag for at analysere tendens</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Det input-billedlag fra en flerdimensional raster, der analyseres.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Vælg den type linje, skal bruges for at tilpasse variable værdier langs en dimension</h2></div>
         <hr/>
         <div>
-            <p>Angiver den type linje, der skal bruges for at passe til pixelv&aelig;rdierne langs en dimension. 
+            <p>Angiver den type linje, der skal bruges for at passe til pixelv&aelig;rdierne langs en dimension.
                 <ul>
                     <li> <b>Line&aelig;r</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en line&aelig;r tendenskurve. Dette er standardv&aelig;rdien.
                     </li>
                     <li> <b>Polynomisk</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en andengradspolynomisk tendenskurve.
                     </li>
                     <li> <b>Harmonisk</b>&mdash;Variable pixelv&aelig;rdier tilpasses langs en harmonisk tendenskurve.
+                    </li>
+                    <li> <b>Mann-Kendall</b> &ndash; Variable pixelv&aelig;rdier evalueres ved brug af Mann-Kendall-tendenstesten.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b> &ndash; Variable pixelv&aelig;rdier evalueres ved brug af Seasonal-Kendall-tendenstesten.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Angiv tidsenhed for varigheden af en sæsonbestemt periode</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver den tidsenhed, der skal anvendes til varigheden af en s&aelig;sonbestemt periode, n&aring;r Seasonal-Kendall-testen udf&oslash;res.
+                <ul>
+                    <li> <b>Dage</b> &ndash; Enheden for varigheden af den s&aelig;sonbestemte periode er dage. Dette er standardv&aelig;rdien.
+                    </li>
+                    <li> <b>M&aring;neder</b> &ndash; Enheden for varigheden af den s&aelig;sonbestemte periode er m&aring;neder.
                     </li>
                 </ul>
                 
@@ -165,7 +182,7 @@
                         <p>R-kvadratisk
                         </p>
                         <ul>
-                            <li>Markeret&mdash;Den R-kvadratiske v&aelig;rdi beregnes og inkluderes som et af  b&aring;ndene i output-tendensrasteren.
+                            <li>Markeret&mdash;Den R-kvadratiske v&aelig;rdi beregnes og inkluderes som et af b&aring;ndene i output-tendensrasteren.
                             </li>
                             <li>Ikke markeret&mdash;Den R-kvadratiske v&aelig;rdi beregnes ikke. Dette er standardv&aelig;rdien.
                             </li>
@@ -207,6 +224,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.

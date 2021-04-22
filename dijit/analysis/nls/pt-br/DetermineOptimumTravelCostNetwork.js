@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolha camada de localização de feição ou raster para determinar caminhos de viagem entre",inputCostRasterLabel:"Escolher camada de raster do custo de viagem",outputOptimumNetworkName:"Nome da camada de polilinha de caminhos favoráveis resultante",outputNeighborNetworkName:"Nome da camada de polilinha de caminhos de vizinhança resultante (opcional)",outputLayerName:"Determinar custo de viagem favorável de ${layername}",itemDescription:"Camada de feição gerada a partir da execução de Determinar rede de custo de viagem favorável em ${layerName}. ",itemTags:"Resultado da Análise, Determinar Rede de Custo de Viagem Favorável, ${layername} ${fieldname}",itemSnippet:"Camada de feição gerada a partir da execução de Determinar Rede de Custo de Viagem Favorável."});

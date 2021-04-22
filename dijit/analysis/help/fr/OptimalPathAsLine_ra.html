@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Chemin optimal comme ligne</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Illustration de l&rsquo;outil Chemin optimal comme ligne"></h2>
+        <hr/>
+    <p>Cet outil calcule le chemin optimal &agrave; partir des destinations vers les sources sous forme d&rsquo;une ligne.
+    </p>
+    <p>Voici quelques exemples d&rsquo;application&nbsp;:
+        <ul>
+            <li>D&eacute;terminez le meilleur itin&eacute;raire pour implanter une route en termes de co&ucirc;ts de construction.
+                
+
+
+            </li>
+            <li>D&eacute;terminez le meilleur itin&eacute;raire de navigation entre une destination et une localisation actuelle.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Choisir des entités ou un raster de destination</h2></div>
+        <hr/>
+        <div>
+            <p>Couche d&rsquo;entit&eacute;s ou raster identifiant les cellules &agrave; partir desquelles le chemin optimal est d&eacute;termin&eacute; par rapport &agrave; la source optimale.
+            </p>
+            <p>Si l&rsquo;entr&eacute;e est un raster, il doit comporter des cellules qui ont des valeurs valides (z&eacute;ro est une valeur valide) pour les destinations, et les cellules restantes doivent avoir la valeur NoData. Le type raster en entr&eacute;e doit &ecirc;tre un entier.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Champ de destination</h2></div>
+        <hr/>
+        <div>
+            <p>Champ permettant d&rsquo;obtenir des valeurs pour les emplacements de destination.
+            </p>
+            <p>Ce champ doit &ecirc;tre de type entier.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Choisir le raster d’accumulation de distance</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster d&rsquo;accumulation de distance est utilis&eacute; pour d&eacute;terminer le chemin optimal entre les destinations et les sources.
+            </p>
+            <p>Le raster d&rsquo;accumulation de distance est g&eacute;n&eacute;ralement cr&eacute;&eacute; avec les outils Accumulation de distance ou Allocation de distance. Chaque cellule du raster d&rsquo;accumulation de distance repr&eacute;sente la distance de co&ucirc;t cumul&eacute;e minimum sur une surface allant de chaque cellule &agrave; un ensemble de cellules source.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Choisir le raster de direction arrière ou de sens de circulation</h2></div>
+        <hr/>
+        <div>
+            <p>Le raster de direction arri&egrave;re contient des directions calcul&eacute;es en degr&eacute;s. La direction identifie la cellule suivante sur le chemin optimal de retour vers la source de plus faible co&ucirc;t cumul&eacute;, en &eacute;vitant les interruptions.
+            </p>
+            <p>Le raster de direction arri&egrave;re est g&eacute;n&eacute;ralement cr&eacute;&eacute; &agrave; l&rsquo;aide des outils Accumulation de distance ou Allocation de distance. Dans ce cas, la plage de valeurs est comprise entre 0&nbsp;degr&eacute; et 360&nbsp;degr&eacute;s. La valeur&nbsp;0 est r&eacute;serv&eacute;e aux cellules source. La direction plein Est (droite) est de 90&nbsp;degr&eacute;s et les valeurs grandissent dans le sens horaire (180, Sud&nbsp;; 270, Ouest et 360, Nord).
+            </p>
+            <p>Le chemin optimal cr&eacute;&eacute; peut &ecirc;tre un chemin de flux bas&eacute; sur la direction de flux D8. Pour g&eacute;n&eacute;rer un chemin optimal de cette fa&ccedil;on, utilisez un raster de sens de circulation&nbsp;D8 en entr&eacute;e pour ce param&egrave;tre.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Type de chemin (facultatif)</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie un mot-cl&eacute; qui d&eacute;finit la fa&ccedil;on dont les valeurs et les zones dans les donn&eacute;es de destination en entr&eacute;e sont interpr&eacute;t&eacute;es dans les calculs du chemin de co&ucirc;t.
+                <ul>
+                    <li> <b>To Each Zone (Vers chaque zone)</b>&nbsp;: pour chaque zone dans les donn&eacute;es de destination en entr&eacute;e, un chemin de moindre co&ucirc;t est d&eacute;termin&eacute;. Avec cette option, pour chaque zone, le chemin de moindre co&ucirc;t commence &agrave; la cellule avec la pond&eacute;ration de distance de plus faible co&ucirc;t dans la zone. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                         
+                    </li>
+                    <li> <b>Best Single (Le moins co&ucirc;teux)</b>&nbsp;: pour toutes les cellules dans les donn&eacute;es de destination en entr&eacute;e, le chemin de moindre co&ucirc;t d&eacute;coule de la cellule contenant les chemins de moindre co&ucirc;t minimum vers les cellules source.
+                    </li>
+                    <li> <b>To Each Cell (Vers chaque cellule)</b>&nbsp;: pour chaque cellule avec des valeurs valides dans les donn&eacute;es de destination en entr&eacute;e, un chemin de moindre co&ucirc;t est d&eacute;termin&eacute;. Avec cette option, chaque cellule des donn&eacute;es de destination en entr&eacute;e est trait&eacute;e s&eacute;par&eacute;ment et un chemin de moindre co&ucirc;t est d&eacute;termin&eacute; pour chaque cellule.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nom de la couche d’entités de résultat</h2></div>
+        <hr/>
+        <div>
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Reklasifikovať hodnoty</h2><p/>
+        <h2><img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" alt="Port&aacute;lov&yacute; n&aacute;stroj na reklasifik&aacute;ciu hodn&ocirc;t"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj v&aacute;m umožnuje zmeniť alebo reklasifikovať hodnoty pixelov rastrov&yacute;ch &uacute;dajov. Pixelov&eacute; hodnoty s&uacute; premapovan&eacute; &scaron;pecifikovan&iacute;m rozsahov pixelov&yacute;ch hodn&ocirc;t pre ich premapovanie na hodnoty v&yacute;stupn&yacute;ch pixelov. Hodnota v&yacute;stupn&eacute;ho pixelu m&ocirc;źe byť platn&aacute; hodnota alebo NoData, ktor&uacute; maj&uacute; vo v&yacute;stupe pixely, ktor&eacute; nemaj&uacute; asociovan&uacute; žiadnu zn&aacute;mu hodnotu v premapovan&iacute;.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, premapovan&eacute; bud&uacute; len tie bunky, ktor&eacute; s&uacute; viditeľn&eacute; v aktu&aacute;lnom rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky bunky v rastri bud&uacute; spracovan&eacute;, aj ak sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>vstupné dáta</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&eacute; d&aacute;ta, ktor&eacute; bud&uacute; mať premapovan&eacute; hodnoty.
+            </p>
+        </div>
+    </div>
+    <div id="RemapList">
+        <div><h2>Premapovať hodnoty pixelov na nové hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte rozsah hodn&ocirc;t &scaron;pecifikovan&iacute;m minim&aacute;lnej a maxim&aacute;lnej hodnoty a n&aacute;sledne prideľte v&yacute;stupn&uacute; hodnotu alebo hodnotu NoData do &scaron;pecifikovan&eacute;ho rozsahu.
+            </p>
+            <p>Na premapovanie nov&eacute;ho rozsahu hodn&ocirc;t, kliknite na  <b>Pridať</b>, čo prid&aacute; riadok. Kliknite na každ&uacute; hodnotu za &uacute;čelom editovania tabuľky do rozsahov a premapovania hodnoty, ktor&uacute; potrebujete. Keď &scaron;pecifikujete rozsahy hodn&ocirc;t, toto s&uacute; dve d&ocirc;ležit&eacute; pravidl&aacute;, ktor&eacute; sa použ&iacute;vaj&uacute;:
+                <ul>
+                    <li>Minim&aacute;lna hodnota v rozsahu je inkluz&iacute;vna (vr&aacute;tane) a maxim&aacute;lna hodnota je exkluz&iacute;vna (nie vr&aacute;tane).
+                    </li>
+                    <li>Riadky v tabuľke s&uacute; spracovan&eacute; od vrchu nadol.
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Tabuľka niž&scaron;ie zobrazuje, že minim&aacute;lna hodnota je zahrnut&aacute; v r&aacute;mci v&yacute;stupu, ale maxim&aacute;lna hodnota do v&yacute;stupu zahrnut&aacute; nie je.
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>1&ndash;9
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>20
+                    </p>
+                </td>
+                <td>
+                    <p>10&ndash;19
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>50
+                    </p>
+                </td>
+                <td>
+                    <p>51
+                    </p>
+                </td>
+                <td>
+                    <p>50
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <p>Poradie rozsahov &scaron;pecifikovan&eacute; v tabuľke je taktiež d&ocirc;ležit&eacute;. Vrchn&yacute; riadok tabuľky je spracovan&yacute; prv&yacute;, a n&aacute;sledne je spracovan&yacute; riadok pod n&iacute;m. Dve tabuľky niž&scaron;ie zobrazuj&uacute;, ako rozsahy rovnak&yacute;ch hodn&ocirc;t produkuj&uacute; r&ocirc;zne v&yacute;sledky kv&ocirc;li poradiu riadkov tabuľky.
+            </p> 
+            <p>Prv&aacute; tabuľka zobrazuje v&yacute;stupn&uacute; hodnotu, keď je prv&yacute; stĺpec zotrieden&yacute; podľa č&iacute;sel:
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>15
+                    </p>
+                </td>
+                <td>
+                    <p>1&ndash;14
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>15&ndash;29
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>40
+                    </p>
+                </td>
+                <td>
+                    <p>30&ndash;39
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <p>Druh&aacute; tabuľka zobrazuje, ako rozdielne zoradenia riadkov vyprodukuj&uacute; r&ocirc;zne v&yacute;stupn&eacute; hodnoty:
+            </p> 
+            <table border="1">
+            <tr>
+                <td>
+                    <p>10
+                    </p>
+                </td>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>10&ndash;29
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>15
+                    </p>
+                </td>
+                <td>
+                    <p>1&ndash;9
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>30
+                    </p>
+                </td>
+                <td>
+                    <p>40
+                    </p>
+                </td>
+                <td>
+                    <p>30&ndash;39
+                    </p>
+                </td>
+            </tr>
+            </table>
+            <p>30&ndash;39 Keďže každ&yacute; riadok je spracovan&yacute; od vrchu nadol, tieto hodnoty maj&uacute; prednosť pri určovan&iacute; v&yacute;stupu, aj ak s&uacute; použit&eacute; rovnak&eacute; rozsahy.
+            </p>
+        </div>
+    </div>
+    <div id="OutputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

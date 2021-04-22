@@ -207,11 +207,11 @@ a list of imagery layers whose values will be sampled based on the input locatio
             <p>Resampling algorithm used when sampling a raster.
             </p>
             <ul>
-                <li> <b>Nearest</b>&mdash;Nearest neighbor. This is the default.
+                <li> <b>Nearest</b>&mdash;Nearest neighbor, uses the value of the closest cell to assign a value to the output cell when resampling. This is the default.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Bilinear interpolation
+                <li> <b>Bilinear</b>&mdash;Bilinear interpolation, determines the new value of a cell based on a weighted distance average of the four nearest input cell centers.
                 </li>
-                <li> <b>Cubic</b>&mdash;Cubic convolution
+                <li> <b>Cubic</b>&mdash;Cubic convolution, determines the new value of a cell based on fitting a smooth curve through the 16 nearest input cell centers.
                 </li>
             </ul>
             
@@ -251,6 +251,7 @@ a list of imagery layers whose values will be sampled based on the input locatio
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
+            
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

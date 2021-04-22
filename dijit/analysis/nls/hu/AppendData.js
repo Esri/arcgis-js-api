@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Válassza ki a következőhöz hozzáfűzni kívánt réteget:",inputWarningLabel:"Figyelmeztetés: a hozzáfűzni kívánt réteg módosulni fog.",inputHostedLayerWarning:"A kijelölt réteg nem központilag tárolt vektoros réteg volt. Kérjük, válasszon ki egy központilag tárolt vektoros réteget a hozzáfűzéshez.",appendLayerLabel:"Válassza ki a hozzáfűzni kívánt réteget",filterLabel:"Az összes vektoros elem hozzáfűzése vagy részhalmaz definiálása (opcionális)",fieldMappingLabel:"A mezők hozzáfűzési módjának kiválasztása (opcionális)",inputField:"Bemeneti mező",appendValue:"Érték hozzáfűzése",expression:"Kifejezés"});

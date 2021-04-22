@@ -24,6 +24,19 @@
         data-dojo-props="label:'${i18nArcGIS.contact.caption}'">
       </div>
 
+      <!-- metadata date & time-->
+      <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
+        data-dojo-props="target:'mdDateSt',minOccurs:1,label:'${i18nArcGIS.metadata.mdDateSt}'">
+        <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputDate" data-dojo-props="allowTime:false,useNow:true">
+        </div>
+      </div>
+
+      <div data-dojo-type="esri/dijit/metadata/form/OpenElement"
+        data-dojo-props="target:'mdTimeSt',minOccurs:1,label:'${i18nArcGIS.metadata.mdTimeSt}'">
+        <div data-dojo-type="esri/dijit/metadata/types/arcgis/form/InputSysTime" data-dojo-props="allowTime:false,useNow:true">
+        </div>
+      </div>
+
       <!-- metadata maintenance -->      
       <div data-dojo-type="esri/dijit/metadata/form/Section"
         data-dojo-props="showHeader:false,label:'${i18nArcGIS.maintenance.caption}'">

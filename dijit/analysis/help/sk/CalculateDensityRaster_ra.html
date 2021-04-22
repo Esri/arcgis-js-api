@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vypočítať hustotu</h2><p/>
+        <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="N&aacute;stroj na v&yacute;počet hustoty"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vytv&aacute;ra mapu hustoty z bodov&yacute;ch alebo l&iacute;niov&yacute;ch prvkov pomocou rozvinutia zn&aacute;mych početnost&iacute; vybran&eacute;ho javu (reprezentovan&eacute;ho forme atrib&uacute;tov bodov alebo čiar) naprieč mapou. V&yacute;sledkom je vrstva oblast&iacute; klasifikovan&yacute;ch od najmenej hustej po najhustej&scaron;iu.
+    </p>
+    <p>Pri zad&aacute;van&iacute; bodov by mal každ&yacute; bod predstavovať umiestnenie nejakej udalosti alebo incidentu a v&yacute;sledn&aacute; vrstva predstavuje počet incidentov na jednotku plochy. V&auml;č&scaron;ia hodnota hustoty na novej lokalite znamen&aacute;, že pri tom mieste existuje viac bodov. V mnoh&yacute;ch pr&iacute;padoch m&ocirc;že byť v&yacute;sledn&aacute; vrstva interpretovan&aacute; ako rizikov&yacute; povrch pre bud&uacute;ce udalosti. Ak napr&iacute;klad vstupn&eacute; body reprezentuj&uacute; lokality &uacute;derov blesku, v&yacute;sledn&aacute; vrstva m&ocirc;že byť interpretovan&aacute; ako rizikov&yacute; povrch pre &uacute;dery blesku do bud&uacute;cnosti.
+    </p>
+    <p>Pre l&iacute;niov&yacute; vstup reprezentuje povrch hustoty l&iacute;ni&iacute; celkov&eacute; množstvo l&iacute;ni&iacute; v bl&iacute;zkosti každej lokality. Jednotky vypoč&iacute;tan&yacute;ch hodn&ocirc;t hustoty s&uacute; dĺžkou l&iacute;nie na jednotku plochy. Napr&iacute;klad, ak l&iacute;nie predstavuj&uacute; rieky, v&yacute;sledn&aacute; vrstva bude reprezentovať celkov&uacute; dĺžku riek v rozsahu vyhľad&aacute;vacej vzdialenosti. Tento v&yacute;sledok m&ocirc;že byť použit&yacute; na identifik&aacute;ciu oblast&iacute;, ktor&eacute; s&uacute; ob&yacute;vateľn&eacute; bylinožravcami.
+    </p>
+    <p>In&eacute; využitie pre tento n&aacute;stroj zahŕňa naslednovn&eacute;:
+        <ul>
+            <li>Vytv&aacute;ranie m&aacute;p hustoty zločinnosti pre pomoc pol&iacute;ci&iacute; spr&aacute;vne prideliť zdroje oblastiach s vysokou kriminalitou.
+                
+ 
+            </li>
+            <li>V&yacute;počet hustoty nemocn&iacute;c v r&aacute;mci kraja. V&yacute;sledn&aacute; vrstva uk&aacute;že oblasti s vysokou a n&iacute;zkou pr&iacute;stupnosťou k nemocniciam a t&aacute;to inform&aacute;cia m&ocirc;že byť použit&aacute; na určenie, kde by mali byť zriaden&eacute; nov&eacute; nemocnice.
+                
+ 
+            </li>
+            <li>Indetifikovanie oblast&iacute; s vysok&yacute;m rizikom lesn&yacute;ch požiarov na z&aacute;klade historick&yacute;ch lokal&iacute;t lesn&yacute;ch požiarov.
+                
+ 
+            </li>
+            <li>Lokaliz&aacute;cia komun&iacute;t, ktor&eacute; s&uacute; ďaleko od diaľnic za &uacute;čelom pl&aacute;novania v&yacute;stavby nov&yacute;ch ciest.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputPointOrLineFeatures">
+        <div><h2>Vybrať vstupnú bodovú alebo líniovú vrstvu, z ktorej bude vypočítaná hustota</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; bodov&aacute; alebo l&iacute;niov&aacute; vrstva, ktor&aacute; bude použit&aacute; na v&yacute;počet vrstvy hustoty.
+            </p>
+        </div>
+    </div>
+    <div id="countField">
+        <div><h2>Použiť pole počtu</h2></div>
+        <hr/>
+        <div>
+            <p>Poskytnite pole &scaron;pecifikuj&uacute;ce počet incidentov na každej lokalite. Napr&iacute;klad, ak m&aacute;te body reprezentuj&uacute;ce mest&aacute;, m&ocirc;žete použiť pole reprezentuj&uacute;ce popul&aacute;ciu ako pole počtu a v&yacute;sledn&aacute; vrstva hustoty popul&aacute;cie bude mať v&auml;č&scaron;ie hustoty pri mest&aacute;ch s v&auml;č&scaron;ou popul&aacute;ciou.
+            </p>
+            <p>Ak je použit&yacute; predvolen&yacute; v&yacute;ber  <b>None</b>, potom sa bude predpokladať, že každ&aacute; lokalita reprezentuje počet jeden.
+            </p>
+        </div>
+    </div>
+    <div id="searchDistance">
+        <div><h2>Vyhľadávacia vzdialenosť</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte vzdialenosť &scaron;pecifikuj&uacute;cu ako ďaleko hľadať, aby sa na&scaron;iel bodov&yacute; alebo l&iacute;niov&yacute; prvok pri v&yacute;počte hodn&ocirc;t hustoty. Ak napr&iacute;klad zad&aacute;te vyhľad&aacute;vaciu vzdialenosť 10 000 metrov, hustota ľubovoľnej lokality vo v&yacute;stupnej vrstve sa vypoč&iacute;ta na z&aacute;klade prvkov vo vzdialenosti do 10 000 metrov od lokality. Ak&aacute;koľvek lokalita, ktor&aacute; nem&aacute; žiadne incidenty do 10 000 metrov, dostane hodnotu hustoty nula.
+            </p>
+            <p>Ak nie je zadan&aacute; žiadna vzdialenosť, bude vypoč&iacute;tan&aacute; predvolen&aacute; vzdialenosť na z&aacute;klade lokal&iacute;t vstupn&yacute;ch prvkov a hodn&ocirc;t v poli počtu (ak je poskytnut&eacute; pole počtu).
+            </p>
+        </div>
+    </div>
+    <div id="outputAreaUnits">
+        <div><h2>Výstupné plošné jednotky</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikujte v&yacute;stupn&uacute; plo&scaron;n&uacute; jednotku. Hustota je počet delen&yacute; plochou a tento parameter &scaron;pecifikuje jednotku plochy vo v&yacute;počte hustoty.
+            </p>
+            <p>Dostupn&eacute; plo&scaron;n&eacute; jednotky s&uacute; &scaron;tvorcov&eacute; m&iacute;le, &scaron;tvorcov&eacute; stopy, &scaron;tvorcov&eacute; metre a &scaron;tvorcov&eacute; kilometre.
+            </p>
+        </div>
+    </div>
+    <div id="outputCellSize">
+        <div><h2>Výstupná veľkosť bunky</h2></div>
+        <hr/>
+        <div>
+            <p>Veľkosť bunky a jednotka pre v&yacute;stupn&eacute; rastre.
+            </p>
+        </div>
+    </div>
+    <div id="inBarriers">
+        <div><h2>Vyberte vlastnosti bariéry (nepovinné)</h2></div>
+        <hr/>
+        <div>
+            <p>Dataset, ktor&yacute; reprezentuje bar&eacute;ry.
+            </p>
+            <p>Bari&eacute;ry m&ocirc;žu byť vrstvou funkcie na vlastnostiach lomen&yacute;ch čiar alebo mnohouholn&iacute;kov.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

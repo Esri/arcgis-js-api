@@ -112,7 +112,6 @@
             <p>Določi čas, globino in druge podatke o pridobitvi, ki so povezane s celicami ali geoobjekti lokacije.
             </p>
             <p>Za vsako dimenzijo obstajajo tri možnosti določanja informacij o pridobitvi, ki so povezane z celicami ali geoobjekti lokacije:
-
                 <ul>
                     <li> <b>Enojno polje ali vrednost</b> &ndash; Kadar je izbrana ta možnost, je treba določiti naslednje informacije:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algoritem prevzorčenja, ki je uporabljen pri vzorčenju rastra.
             </p>
             <ul>
-                <li> <b>Najbližji</b> &ndash; Najbližji sosed. To je privzeta nastavitev.
+                <li> <b>Najbližji</b> &ndash; Najbližji sosed, uporablja vrednost najbližje celice za dodelitev vrednosti izhodni celici pri ponovnem vzorčenju. To je privzeto.
                 </li>
-                <li> <b>Bilinearno</b> &ndash; Bilinearna interpolacija
+                <li> <b>Bilinearno</b>&mdash;Bilinearna interpolacija, določa novo vrednost celice na podlagi določenega povprečja razdalje sredi&scaron;č &scaron;tirih najbližjih vhodnih celic.
                 </li>
-                <li> <b>Kubično</b> &ndash; Kubična konvolucija
+                <li> <b>Kubično</b>&mdash;Kubična konvolucija, določa novo vrednost celice na osnovi napeljave gladke krivine skozi 16 najbližjih vhodnih centrov celice.
                 </li>
             </ul>
             
@@ -223,7 +222,7 @@
             <p>Določi, ali so vzorčene vrednosti v izhodni tabeli prikazane v vrsticah ali stolpcih. Ta možnost je na voljo samo, kadar vhodni večdimenzionalni raster vsebuje eno spremenljivko in eno dimenzijo, in je vsak izsek enopasovni raster.
             </p>
             <ul>
-                <li> <b>Vzorčene vrednosti se pojavijo v vrstici</b> &ndash;Vzorčene vrednosti se v izhodni tabeli pojavijo v ločenih vrsticah. To je privzeta nastavitev.
+                <li> <b>Vzorčene vrednosti se pojavijo v vrstici</b> &ndash;Vzorčene vrednosti se v izhodni tabeli pojavijo v ločenih vrsticah. To je privzeto.
                 </li>
                 <li> <b>Vzorčene vrednosti se pojavijo v stolpcu</b> &ndash;Vzorčene vrednosti se v izhodni tabeli pojavijo v ločenih stolpcih. Ta možnost je veljavna samo, kadar vhodni večdimenzionalni raster vsebuje eno spremenljivko in eno dimenzijo, in je vsak izsek enopasovni raster.
                 </li>
@@ -238,7 +237,7 @@
             <p>Določa, ali se ustvari točkovni geoobjektni razred z vzorčenimi vrednostmi v svoji tabeli ali samo tabela z vzorčenimi vrednostmi.
             </p>
             <ul>
-                <li> <b>Tabela</b> &ndash; Ustvari tabelo z vzorčenimi vrednostmi. To je privzeta nastavitev.
+                <li> <b>Tabela</b> &ndash; Ustvari tabelo z vzorčenimi vrednostmi. To je privzeto.
                 </li>
                 <li> <b>Geoobjekti</b> &ndash; Ustvari točkovni geoobjektni razred z vzorčenimi vrednostmi v svoji tabeli. Če so vhodni geoobjekti lokacije polilinije ali poligoni, je vsaka točka v izhodu centroid vsake geometrije vhodnih geoobjektov lokacije.
                 </li>
@@ -250,6 +249,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/on","dojo/sniff","esri/dijit/geoenrichment/utils/DeviceUtil"],(function(e,o,i){var n={onLayerMouseOver:function(n,u,r){var t=i.isMobileDevice(),s=t?n:o("touch")?u:n,v=t?"mouse-over":o("touch")?"mouse-down, mouse-move":"mouse-move";return e(s,v,r)}};return n}));

@@ -44,11 +44,12 @@
         <h2>Reconstruct Tracks</h2><p/>
         <h2><img src="./images/GUID-80807DB7-0CA7-4FD8-9702-B4486285D4FC-web.png" alt="Reconstruct Tracks"></h2>
         <hr/>
-    <p> This tool works with a time-enabled layer of
-either point  or area features that represent an <code>instant</code> in time.   It first
-determines which features belong to a track using an identifier. Using the time at each location, the tracks are ordered sequentially and transformed into a line or area representing the path of movement over time. Optionally, the input may be buffered by a  field, which will create an area at each location. These buffered points or input areas, are then joined sequentially to create a track as a area where the width is representative of the attribute of interest. Resulting tracks have a start and end time, which represent temporally the first and last feature in a given track. When the tracks are created, statistics about the input features are calculated and assigned to the output track. The
+    <p>This tool works with a time-enabled layer of
+either point  or area features that represent an instant in time.   It first
+determines which features belong to a track using an identifier. Using the time at each location, the tracks are ordered sequentially and transformed into a line or area representing the path of movement over time. Optionally, the input can be buffered by a  field, which will create an area at each location. These buffered points, or input areas, are then joined sequentially to create a track as an area where the width is representative of the attribute of interest. Resulting tracks have a start and end time, which represent temporally the first and last feature in a given track. When the tracks are created, statistics about the input features are calculated and assigned to the output track. The
 most basic statistic is the count  of points within
 the area, but other statistics can be calculated  as well.
+
     </p>
     <p>Features in time-enabled layers can be represented in one of two ways:
         <ul>
@@ -59,9 +60,9 @@ the area, but other statistics can be calculated  as well.
         </ul>
         
     </p>
-    <p>For example, suppose you have GPS measurements of hurricanes every 10 minutes. Each GPS measurement records the hurricane's name, location, time of recording, and  wind speed. With this information, you could create tracks for each hurricane using the name for  track identification, and tracks for each hurricane  would be generated. Additionally, you could calculate statistics such as the mean, max, and minimum wind speed of each hurricane, as well as the count of measurements within each track.
+    <p>For example, suppose you have GPS measurements of hurricanes every 10 minutes. Each GPS measurement records the hurricane's name, location, time of recording, and  wind speed. With this information, you could create tracks for each hurricane using the name for  track identification, and tracks for each hurricane  would be generated. Additionally, you could calculate statistics such as the mean, maximum, and minimum wind speed of each hurricane, as well as the count of measurements within each track.
     </p>
-    <p>Using the same example, you could buffer your tracks by the wind speed. This would buffer each measurement by the wind speed field at that location, and join the buffered areas together, creating a area representative of the track path, as well as the changes in wind speed as the hurricanes progressed.   
+    <p>Using the same example, you could buffer your tracks by the wind speed. This would buffer each measurement by the wind speed field at that location and join the buffered areas together, creating an area representative of the track path, as well as the changes in wind speed as the hurricanes progressed.   
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -69,7 +70,7 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Choose features to reconstruct tracks from</h2></div>
         <hr/>
         <div>
-            <p>The point or area layer that will be reconstructed into tracks. The input layer must be time-enabled with features that represent an instant in time. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.
+            <p>The point or area layer that will be reconstructed into tracks. The input layer must be time enabled with features that represent an instant in time. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.  
             </p>
             <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
             </p>
@@ -90,7 +91,7 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Choose method used to reconstruct tracks</h2></div>
         <hr/>
         <div>
-            <p>Method used to join tracks   and apply buffer (if applicable). The  <b>Planar</b> method may calculate the results more quickly but will not wrap tracks around the  international dateline or account for the actual shape of the earth when buffering. The <b>Geodesic</b> method will wrap tracks around the date line if required and apply a geodesic buffer to account for the shape of the earth.
+            <p>Method used to join tracks   and apply a buffer (if applicable). The  <b>Planar</b> method may calculate the results more quickly but will not wrap tracks around the  international date line or account for the shape of the earth when buffering. The <b>Geodesic</b> method will wrap tracks around the date line if required and apply a geodesic buffer to account for the shape of the earth.
             </p>
         </div>
     </div>
@@ -98,11 +99,11 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Create an expression to buffer input features by (optional)</h2></div>
         <hr/>
         <div>
-            <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator and basic operations such as add, subtract, multiply, and divide are supported. Values are calculated using the analysis coordinate system. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using the  <b>Analysis Environments</b> if a buffer is applied.
+            <p>Equation used to calculate the buffer distance around input features. This equation can be generated using the buffer calculator and basic operations such as add, subtract, multiply, and divide are supported. Values are calculated using the analysis coordinate system. The layer must be in a projected coordinate system or the processing spatial reference must be set to a projected coordinate system using  <b>Analysis Environments</b> if a buffer is applied.  
             </p>
-            <p>An equation like  <code>$feature.windspeed * 1000</code> would apply a buffer of 1,000 multiplied by the field <i>windspeed</i>. You may use more than one field in the buffer calculator.
+            <p>An equation such as  <code>$feature.windspeed * 1000</code> would apply a buffer of 1,000 multiplied by the <i>windspeed</i> field. You can use more than one field in the buffer calculator.
             </p>
-            <p> You can also specify a track-aware expression. For example, you could calculate the sum of field value <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
+            <p>You can also specify a track-aware expression. For example, you could calculate the sum of field value  <i>windspeed</i> for the current feature and previous two features with an equation like <code>$track.field(windspeed).history(-3)</code>. At each location, the sum of the current <i>windspeed</i>, and previous two measurements would be calculated and buffered.
             </p>
         </div>
     </div>
@@ -114,7 +115,7 @@ the area, but other statistics can be calculated  as well.
             </p>
             <p>If you specify a time split and a distance split, tracks will be split when one or both conditions are met. 
             </p>
-            <p>Imagine that you had  point features representing aircraft flights, where the track field was the aircraft ID. This aircraft could make multiple trips and would be represented as one track.  If you knew that there is a 1-hour  break between the flights, you could use  <code>1 hour</code> as your track split, and each flight would be split into its own track.
+            <p>For example, if you had  point features representing aircraft flights, where the track field was the aircraft ID, this aircraft could make multiple trips and would be represented as one track.  If you knew that there is a 1-hour  break between the flights, you could use  <code>1 hour</code> as your track split, and each flight would be split into its own track.
             </p>
         </div>
     </div>
@@ -128,14 +129,40 @@ the area, but other statistics can be calculated  as well.
                 <ul>
                     <li> <b>Based on a distance between inputs</b>&mdash;If input points or areas have a wider distance between them than the specified distance, they will be split into different tracks. For example, if you specified a distance of 10 kilometers, sequential points greater than 10 kilometers would be separate tracks.
                     </li>
-                    <li> <b>Based on a time between inputs</b>&mdash; If input points or areas have a longer duration between them than the time split, they will be split into different tracks. For example, if had  point features representing aircraft flights, where the track field was the aircraft ID. This aircraft could make multiple trips and would be represented as one track.  If you knew that there is a 1-hour  break between the flights, you could use <code>1 hour</code> as your track split, and each flight would be split into its own track.
+                    <li> <b>Based on a time between inputs</b>&mdash;If input points or areas have a longer duration between them than the time split, they will be split into different tracks. For example, if you had  point features representing aircraft flights, where the track field was the aircraft ID, this aircraft could make multiple trips and would be represented as one track.  If you knew that there is a 1-hour  break between the flights, you could use <code>1 hour</code> as your track split, and each flight would be split into its own track.
                     </li>
-                    <li> <b>At defined time intervals</b>&mdash;Split using regular intervals, specified by a time interval and a reference time. If you don't specify a reference time, Jan 1, 1970 will be used. For example, if you specified 1 year with a reference time of Feb 2, 1990 at 10:00, you would split tracks at Feb 2, 1990 at 10:00, Feb 2, 1991 at 10:00 and continue on in one year intervals.
+                    <li> <b>At defined time intervals</b>&mdash;Split using regular intervals, specified by a time interval and a reference time. If you don't specify a reference time, Jan 1, 1970, will be used. For example, if you specified 1 year with a reference time of Feb 2, 1990, at 10:00, you would split tracks at Feb 2, 1990, at 10:00 and Feb 2, 1991, at 10:00 and continue on in one year intervals.
+                    </li>
+                    <li> <b>Based on an Arcade expression</b>&mdash;Apply an Arcade expression that will split tracks based on values, geometry, or time values. For example, you can split
+tracks when a field value is more than double the previous value in
+a track. To do this, using an example field named <i>WindSpeed</i>, you can use the following
+expression: <code>var speed =
+TrackFieldWindow(&quot;WindSpeed&quot;, -1, 1); 2* speed[0] &lt;
+speed[1]</code>. Tracks will split when the previous value
+( <code>speed[0]</code>) is less than two times the current
+value.
                     </li>
                 </ul>
                 
             </p>
-            <p>If you specify multiple split options, tracks will be split when one or more conditions are met. 
+            <p>When
+you split a track using a time split, distance split, or split
+expression, you can decide how segments between the tracks will be
+created. You have the
+following options:
+                <ul>
+                    <li> <b>Gap</b>&mdash;Create a gap
+between the two tracks that were split.
+                    </li>
+                    <li> <b>Finish After</b>&mdash;Create
+a segment that ends after the split.
+                    </li>
+                    <li> <b>Start Before</b>&mdash;Create
+a segment that ends and starts before the split.
+                    </li>
+                </ul>
+                
+If you specify multiple split options, tracks will be split when one or more conditions are met.
             </p>
         </div>
     </div>
@@ -197,7 +224,7 @@ the area, but other statistics can be calculated  as well.
         <div><h2>Choose an ArcGIS Data Store to save results to</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to a data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store, and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -215,7 +242,7 @@ the area, but other statistics can be calculated  as well.
         <hr/>
         <div>
             <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify

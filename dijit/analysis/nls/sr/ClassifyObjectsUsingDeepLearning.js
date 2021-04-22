@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Klasifikuj objekte pomoću detaljnog učenja",inputFeaturesLabel:"Izaberite sloj funkcija za objekte (opcionalno)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Izaberite dubinski model za učenje da biste klasifikovali objekte",modelArgsLabel:"Navedite argumente modela detaljnog učenja",classLabelFieldLabel:"Definišite naziv polja za oznaku klase (opcionalno)",processingModeLabel:"Režim obrade",processAsMosaicLabel:"Obrada kao mozaički snimak",processAsItemsLabel:"Obrada svih stavki rastera odvojeno",queryModelArgsMsg:"Izvršavanje upita za argumente modela...",queryModelArgsErrMsg:"Neuspešan upit argumenata modela.",valueLabel:"Vrednost",nameLabel:"Naziv",analysisLayerLabel:"Izaberite upotrebljeni snimak za klasifikaciju objekata",itemDescription:"Servis za analizu snimaka generisan iz Klasifikacije objekata pomoću dubinskog učenja",itemTags:"Rezultat rasterske analize, klasifikacija objekata pomoću dubinskog učenja, ${layername}",itemSnippet:"Servis za analizu snimka generisan iz Klasifikacije objekata korišćenjem dubinskog učenja"});

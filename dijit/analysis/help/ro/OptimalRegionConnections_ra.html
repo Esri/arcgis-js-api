@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Conexiunile regionale optime</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustrarea instrumentului Conexiunile regionale optime"></h2>
+        <hr/>
+    <p>Acest instrument calculează rețeaua de conectivitate optimă &icirc;ntre două sau mai multe regiuni de introducere.
+    </p>
+    <p>Example applications include the following:
+        <ul>
+            <li>Modelarea adecvării &ndash; Pe baza unui model de adecvare, ați identificat 10 dintre cele mai bune porțiuni de habitat pentru lincși. Doriți ca lincșii să se poată deplasa &icirc;ntre porțiuni prin intermediul celei mai eficiente rețele de coridoare pentru animale sălbatice pentru a menține diversitatea genetică &icirc;n cadrul metapopulației.
+                
+
+            </li>
+            <li>Recoltarea lemnului &ndash; &Icirc;n cadrul unei operațiuni de recoltare a lemnului, doriți să creați cea mai eficientă rețea din punct de vedere al costurilor, de drumuri forestiere, de pe care să extrageți cherestea.
+                
+
+            </li>
+            <li>Menținerea păcii &ndash; &Icirc;n cadrul unei operațiuni de desfășurare a forțelor militare &icirc;n vederea menținerii păcii, ați identificat cinci suprafețe pe care să poziționați trupele și personalul. Doriți să dezvoltați rutele de aprovizionare conectate optim dintre baze.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>If  <b>Use current map extent</b> is checked, only those locations in the input layers that are visible within the current map extent will be analyzed. If unchecked, all locations in both input layers will be analyzed, even if they are outside the current map extent.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Alegeți rasterul sau obiectul spațial al regiunii</h2></div>
+        <hr/>
+        <div>
+            <p>Regiunile introduse care trebuie conectate de rețeaua optimă.
+            </p>
+            <p>Dacă regiunea introdusă este un raster, regiunile sunt definite de grupurile de celule apropiate (adiacente) de aceeași valoare. Fiecare regiune trebuie să primească un număr unic. Celulele care nu fac parte din nicio regiune trebuie să fie NoData. Tipul rasterului trebuie să fie un număr &icirc;ntreg, iar valorile pot fi pozitive sau negative.
+            </p>
+            <p>Dacă regiunea introdusă este un obiect spațial, poate fi sub formă de puncte, linii sau poligoane. Regiunile sub formă de poligoane nu pot fi compuse din poligoane formate din mai multe părți.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Alegeți raster sau obiect spațial tip barieră (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Setul de date care definește barierele.
+            </p>
+            <p>Pentru un raster, tipul de intrare poate fi număr &icirc;ntreg sau virgulă mobilă. Orice celule care au o valoare (inclusiv zero) vor fi tratate ca o barieră. Orice celule care sunt NoData nu vor fi tratate ca o barieră.
+            </p>
+            <p>Pentru un obiect spaţial, intrarea poate fi un punct, o linie sau un poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Alegeți raster cost (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster care definește impedanța sau costul deplasării planimetrice prin fiecare celulă.
+            </p>
+            <p>Valoarea din fiecare amplasare a celulei reprezintă distanța cost-pe-unitate pentru deplasarea prin celulă. Fiecare valoare de localizare a celulei este &icirc;nmulțită cu rezoluției celulei &icirc;n timp ce se compensează deplasarea pe diagonală pentru a obține costul total al deplasării prin celulă.
+            </p>
+            <p>Valorile rasterului de cost poate fi un număr &icirc;ntreg sau o virgulă mobilă, dar nu pot fi negative sau zero (nu puteți avea un cost negativ sau zero).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda distanței (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă distanța se calculează utiliz&acirc;nd o metodă &icirc;n plan (păm&acirc;nt plat) sau una geodezică (elipsoidă).
+            </p>
+            <ul>
+                <li> <b>&Icirc;n plan</b> &ndash; calculul distanței va fi realizat pe un plan plat proiectat folosind un sistem de coordonate cartezian 2D. Aceasta este metoda implicită.
+                    
+
+                </li>
+                <li> <b>Geodezic</b> &ndash; calculul distanței va fi realizat pe un elipsoid. Prin urmare, indiferent de proiecția de intrare sau de ieșire, rezultatele nu se schimbă.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Conexiuni în cadrul regiunilor (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică dacă traseele vor continua și se vor conecta &icirc;n cadrul regiunilor introduse.
+            </p>
+            <ul>
+                <li> <b>Generare conexiuni</b> &ndash; traseele vor continua &icirc;n cadrul regiunilor introduse pentru a conecta toate traseele care se află &icirc;ntr-o regiune. Aceasta este acţiunea implicită.
+                    
+
+                </li>
+                <li> <b>Fără conexiuni</b> &ndash; traseele se vor opri la marginile regiunilor introduse și nu vor continua sau nu se vor conecta &icirc;n cadrul acestora.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Numele stratului tematic de obiecte spațiale sub formă de linii de conectivitate optime rezultate</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Acest strat tematic este un obiect spațial sub formă de linii de ieșire care conectează fiecare regiune introdusă.
+            </p>
+            <p>Fiecare traseu (sau linie) este numerotat(ă) unic și c&acirc;mpurile suplimentare din tabelul de atribute stochează informații specifice despre traseu. Aceste c&acirc;mpuri suplimentare sunt următoarele:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; identificatorul unic pentru traseu
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; distanța acumulativă sau costul total pentru cale
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; prima regiune conectată de traseu
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; cealaltă regiune conectată de traseu
+                    
+
+                </li>
+            </ul>
+            
+            <p>Av&acirc;nd &icirc;n vedere că fiecare traseu este reprezentat de o linie unică, vor exista mai multe linii &icirc;n locațiile unde traseele utilizează aceeași rută.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Numele stratului tematic de obiecte spațiale de conexiuni apropiate rezultate (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Acest strat tematic este un obiect spațial sub formă de linii de ieșire care identifică toate traseele din fiecare regiune către fiecare dintre cei mai apropiați vecini sau cu costul cel mai mic.
+            </p>
+            <p>Fiecare traseu (sau linie) este numerotat(ă) unic și c&acirc;mpurile suplimentare din tabelul de atribute stochează informații specifice despre traseu. Aceste c&acirc;mpuri suplimentare sunt următoarele:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash; identificatorul unic pentru traseu
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash; distanța acumulativă sau costul total pentru cale
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash; prima regiune conectată de traseu
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash; cealaltă regiune conectată de traseu
+                    
+
+                </li>
+            </ul>
+            
+            <p>Av&acirc;nd &icirc;n vedere că fiecare traseu este reprezentat de o linie unică, vor exista mai multe linii &icirc;n locațiile unde traseele utilizează aceeași rută.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,7 @@
         <h2>Skapa siktområde</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Verktyget Skapa siktomr&aring;de"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget identifierar de omr&aring;den som kan ses av en observat&ouml;r i termer av yttopografi. Indatapunkterna kan representera antingen observat&ouml;rer (till exempel personer p&aring; marken eller spanare i ett brandtorn) eller objekt som observeras (till exempel vindkraftverk, vattentorn, fordon eller andra m&auml;nniskor). Resultaten definierar de omr&aring;den som kan ses fr&aring;n observat&ouml;rsplatserna.
+    <p>Det h&auml;r verktyget identifierar de omr&aring;den som kan ses fr&aring;n de inmatade observat&ouml;rsplatserna i termer av yttopografi. Indatapunkterna kan representera antingen observat&ouml;rer (till exempel personer p&aring; marken eller spanare i ett brandtorn) eller objekt som observeras (till exempel vindkraftverk, vattentorn, fordon eller andra m&auml;nniskor). Resultaten definierar de omr&aring;den som kan ses fr&aring;n observat&ouml;rsplatserna.
     </p>
     <p>B&aring;de observat&ouml;rerna och de observerade objekten kan ha en h&ouml;jd &ouml;ver marken, och den h&auml;r h&ouml;jden anv&auml;nds f&ouml;r att fastst&auml;lla synligheten. Ett siktomr&aring;de som ber&auml;knas f&ouml;r 90 meter h&ouml;ga vindkraftverk och en tv&aring; meter l&aring;ng m&auml;nniska som st&aring;r p&aring; marken, &auml;r till exempel normalt sett st&ouml;rre &auml;n ett siktomr&aring;de ber&auml;knat f&ouml;r 60 meter h&ouml;ga vindkraftverk och en m&auml;nniska som &auml;r 1,70 meter l&aring;ng.
     </p>
@@ -98,7 +98,7 @@ Den h&auml;r metoden &auml;r optimerad f&ouml;r noggrannhet i resultatet, p&arin
         <div>
             <p>Ange ett brytavst&aring;nd d&auml;r ber&auml;kningen av synliga omr&aring;den stoppas. Bortom det h&auml;r avst&aring;ndet kommer det inte att fastst&auml;llas om observat&ouml;rsplatserna och de andra objekten kan se varandra.
             </p>
-            <p>Du kan antingen ange ett numeriskt v&auml;rde som representerar ett linj&auml;rt avst&aring;nd eller v&auml;lja ett numeriskt f&auml;lt fr&aring;n observat&ouml;rsgeoobjekten f&ouml;r indata. Om ett f&auml;lt anges m&aring;ste v&auml;rdena som finns i f&auml;ltet vara i samma enhet som xy-enheten f&ouml;r indatah&ouml;jdk&auml;llan.
+            <p>Du kan antingen ange ett numeriskt v&auml;rde som representerar ett linj&auml;rt avst&aring;nd eller v&auml;lja ett numeriskt f&auml;lt fr&aring;n observat&ouml;rsgeoobjekten f&ouml;r indata. Om ett f&auml;lt anges m&aring;ste v&auml;rdena som finns i f&auml;ltet vara i samma enhet som x,y-enheten f&ouml;r indatah&ouml;jdk&auml;llan.
             </p>
             <p>Observera att stora v&auml;rden &ouml;kar ber&auml;kningstiden. Om inget annat anges, ber&auml;knas ett maximalt standardavst&aring;nd baserat p&aring; uppl&ouml;sningen och utbredningen av indatah&ouml;jdk&auml;llan.
             </p>
@@ -119,7 +119,7 @@ Den h&auml;r metoden &auml;r optimerad f&ouml;r noggrannhet i resultatet, p&arin
         <div>
             <p>Ange ett avst&aring;nd d&auml;r ber&auml;kningen av synliga omr&aring;den b&ouml;rjar. Celler p&aring; ytan n&auml;rmare &auml;n det h&auml;r avst&aring;ndet syns inte i utdata, men kan fortfarande blockera synligheten f&ouml;r celler mellan det minimala och maximala siktavst&aring;ndet.
             </p>
-            <p>Du kan antingen ange ett numeriskt v&auml;rde som representerar ett linj&auml;rt avst&aring;nd eller v&auml;lja ett numeriskt f&auml;lt fr&aring;n observat&ouml;rsgeoobjekten f&ouml;r indata. Om ett f&auml;lt anges m&aring;ste v&auml;rdena som finns i f&auml;ltet vara i samma enhet som xy-enheten f&ouml;r indatah&ouml;jdk&auml;llan.
+            <p>Du kan antingen ange ett numeriskt v&auml;rde som representerar ett linj&auml;rt avst&aring;nd eller v&auml;lja ett numeriskt f&auml;lt fr&aring;n observat&ouml;rsgeoobjekten f&ouml;r indata. Om ett f&auml;lt anges m&aring;ste v&auml;rdena som finns i f&auml;ltet vara i samma enhet som x,y-enheten f&ouml;r indatah&ouml;jdk&auml;llan.
             </p>
             <p>Den h&auml;r parametern &auml;r anv&auml;ndbar f&ouml;r att styra siktomr&aring;dets analysomr&aring;de till ett visst avst&aring;nd fr&aring;n observat&ouml;ren. Om du till exempel utv&auml;rderar synligheten fr&aring;n taket av en byggnad till en avl&auml;gsen park, kan du st&auml;lla in ett minimalt siktavst&aring;nd f&ouml;r att utesluta omr&aring;den i n&auml;rheten som inte &auml;r intressanta och f&aring; en b&auml;ttre bearbetningshastighet.
             </p>
@@ -230,6 +230,7 @@ Den h&auml;r metoden &auml;r optimerad f&ouml;r noggrannhet i resultatet, p&arin
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

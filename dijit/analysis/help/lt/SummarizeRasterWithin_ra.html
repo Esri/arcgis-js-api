@@ -44,7 +44,7 @@
         <h2>Sumuoti rastrą viduje</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Įrankis Sumuoti rastrą viduje"></h2>
         <hr/>
-    <p>&Scaron;is įrankis susumuoja pirmajame įvesties sluoksnyje apibrėžto ploto (zonų) rastrą.
+    <p>&Scaron;is įrankis apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes.
     </p>
     <p>Taikymo pavyzdžiai:
     </p>
@@ -54,19 +54,19 @@
                 
 
             </li>
-            <li>Turint sklypų ir savivaldybių sluoksnius, apskaičiuoti neužstatytų sklypų kiekvienos savivaldybės ribose skaičių.
+            <li>Turint sklypų ir savivaldybių sluoksnius apskaičiuoti neužstatytų sklypų kiekvienos savivaldybės ribose skaičių.
                 
 
             </li>
         </ul>
         
     </p>
-    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojami tik į esamo žemėlapio aprėptį patenkantys įvesties ir sumuojamo sluoksnio elementai.  Jei nepažymėta, bus analizuojami visi abiejų sluoksnių (įvesties sluoksnio ir sumuojamo sluoksnio) elementai, net jei jie nepatenka į esamo žemėlapio aprėpties ribas.
+    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojami tik į esamo žemėlapio aprėptį patenkantys įvesties ir sumuojamo sluoksnių elementai. Jei nepažymėta, bus analizuojami visi abiejų sluoksnių (įvesties sluoksnio ir sumuojamo sluoksnio) elementai, net jei jie nepatenka į esamo žemėlapio aprėpties ribas.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Pasirinkite plotinį sluoksnį, kurio apibrėžtose ribose sumuoti rastro sluoksnį</h2></div>
+        <div><h2>Pasirinkite plotų sluoksnį, kurio apibrėžtose ribose sumuoti rastro sluoksnį</h2></div>
         <hr/>
         <div>
             <p>Sumuojamų plotų arba zonų ribas apibrėžiantis sluoksnis.
@@ -86,7 +86,7 @@
         </div>
     </div>
     <div id="sumRasterLayer">
-        <div><h2>Pasirinkite rastrinį sluoksnį sumavimui</h2></div>
+        <div><h2>Pasirinkite rastro sluoksnį sumavimui</h2></div>
         <hr/>
         <div>
             <p>&Scaron;io sluoksnio rastro gardelės bus sumuojamos pagal plotus (zonas), kurios yra viduje.
@@ -94,14 +94,26 @@
         </div>
     </div>
     <div id="sumStatistic">
-        <div><h2>Pasirinkite norimus skaičiuoti statistinius duomenis</h2></div>
+        <div><h2>Pasirinkite norimą skaičiuoti statistiką</h2></div>
         <hr/>
         <div>
             <p>Pasirinkę sumuojamą sluoksnį, taip pat galite apskaičiuoti bet kurių ta&scaron;kų, linijų ar plotų įvesties ploto sluoksnyje skaitinių atributų statistinius rodiklius.
             </p>
-            <p>Kai pasirinktas laukas yra sveikasis skaičius, galima apskaičiuoti &scaron;iuos statistinius duomenis: vidurkį, daugumą, maksimumą, medianą, minimumą, mažumą, imtį, standartinį nuokrypį, sumą ir dispersiją.
+            <p>Kai pasirinktas laukas yra sveikasis skaičius, galima apskaičiuoti &scaron;iuos statistinius duomenis: vidurkį, daugumą, maksimumą, medianą, minimumą, mažumą, procentinę dalį, imtį, standartinį nuokrypį, sumą ir dispersiją.
             </p>
-            <p>Jeigu lauką sudaro slankiojo kablelio skaičius, galima apskaičiuoti vidurkį, maksimumą, minimumą, imtį, standartinį nuokrypį ir sumą.
+            <p>Jeigu lauką sudaro slankiojo kablelio skaičius, galima apskaičiuoti vidurkį, maksimumą, minimumą, diapazoną, standartinį nuokrypį ir sumą.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Procentilinė reikšmė</h2></div>
+        <hr/>
+        <div>
+            <p>Apskaičiuotina procentinė dalis. Numatytoji reik&scaron;mė yra 90, nurodanti 90-ąją procentinę dalį.
+            </p>
+            <p>Tinkami reik&scaron;mių intervalai yra nuo 0 iki 100. 0-inė procentinė dalis i&scaron; esmės atitinka Minimumo statistiką, o 100 procentų ekvivalentas yra Maksimumas. 50 lygi reik&scaron;mė i&scaron; esmės pateiks analogi&scaron;kus rezultatus kaip ir Medianos statistika.
+            </p>
+            <p>&Scaron;i parinktis palaikoma tik tuo atveju, jei parametras  <b>Pasirinkite norimą skaičiuoti statistiką</b> nustatytas kaip <b>Procentinė dalis</b>.
             </p>
         </div>
     </div>
@@ -113,11 +125,20 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Apdoroti kaip daugiamatį</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, kaip bus apdorojami įvesties rastrai, jei jie yra daugiamačiai. Jei duomenis pasirinksite apdoroti kaip daugiamačius, statistika bus apskaičiuojama naudojat visus įvesties daugiamačio duomenų rinkinio matmenis. Prie&scaron;ingu atveju statistika bus apskaičiuojama naudojant įvesties daugiamačio duomenų rinkinio dabartinę skiltį. Tai yra numatytasis nustatymas.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

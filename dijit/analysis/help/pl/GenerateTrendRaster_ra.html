@@ -52,8 +52,6 @@
         <div><h2>Wybierz wielowymiarową warstwę zobrazowań do przeanalizowania trendu</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Wejściowa warstwa zobrazowań rastra wielowymiarowego do przeanalizowania.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Wybierz typ linii, aby dopasować wartości zmiennej wzdłuż wymiaru</h2></div>
         <hr/>
         <div>
-            <p>Określa typ linii do użycia w celu dopasowania do wartości pikseli wzdłuż wymiaru. 
+            <p>Określa typ linii do użycia w celu dopasowania do wartości pikseli wzdłuż wymiaru.
                 <ul>
                     <li> <b>Liniowa</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu liniowego. Jest to opcja domyślna.
                     </li>
                     <li> <b>Wielomianowa</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu wielomianowego drugiego stopnia.
                     </li>
                     <li> <b>Harmoniczna</b> &mdash; wartości pikseli dla zmiennej zostaną dopasowane wzdłuż linii trendu harmonicznego.
+                    </li>
+                    <li> <b>Mann-Kendall</b> &mdash; zmienne wartości pikseli zostaną oszacowane za pomocą testu Manna-Kendalla wskazującego trend.
+                    </li>
+                    <li> <b>Kendall (sezonowy)</b> &mdash; zmienne wartości pikseli zostaną oszacowane za pomocą testu Kendalla (sezonowego) wskazującego trend.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Podaj jednostkę czasu długości okresu sezonowego</h2></div>
+        <hr/>
+        <div>
+            <p>Decyduje o jednostce czasu, kt&oacute;ra będzie używana do określania długości okresu sezonowego, gdy wykonywany jest test Kendalla (sezonowy).
+                <ul>
+                    <li> <b>Dni</b> &mdash; jednostką długości okresu sezonowego są dni. Jest to opcja domyślna.
+                    </li>
+                    <li> <b>Miesiące</b> &mdash; jednostką długości okresu sezonowego są miesiące.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

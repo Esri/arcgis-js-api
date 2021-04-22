@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대용량 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다. 현재  Portal for ArcGIS 웹 UX에서 제공되는 도구집합은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>인접성 사용</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>, <b>딥러닝</b>, <b>다차원 분석</b>입니다.
+        <p>래스터 분석 도구에서는  ArcGIS Image Server를 사용하여 대용량 래스터 데이터셋을 분석할 수 있습니다. 또한 서버의 성능을 활용하여 데이터를 좀 더 빠르게 분석할 수 있습니다.현재 Portal for ArcGIS 웹 UX에서 제공되는 도구집합은  <b>데이터 요약</b>, <b>패턴 분석</b>, <b>근접도 사용</b>, <b>이미지 분석</b>, <b>터레인 분석</b>, <b>데이터 관리</b>, <b>딥러닝</b>, <b>다차원 분석</b>입니다.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>데이터 요약</h2>
         <hr/>
-        <p>이 도구모음에는 정의하는 영역 경계 내의 래스터 레이어에 대한 일부 통계를 계산하는 도구가 포함되어 있습니다. 
+        <p>이러한 도구를 사용하여 사용자가 정의한 영역 경계(구역) 내의 래스터 레이어에 대한 통계를 계산합니다.
             <ul>
                 <li> <b>다음 범위 내 래스터 요약</b> - 정의된 영역 경계 내에 속하는 래스터 셀에 대한 통계를 계산합니다.
+                </li>
+                <li> <b>테이블 형식 구역 통계</b>는 다른 데이터셋의 구역 내에서 래스터 값을 요약하고 결과를 테이블에 보고합니다.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="regularsize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>다음 범위 내 래스터 요약(Summarize Raster Within)</h2></td>
+                    <td><h2>다음 범위 내 래스터 요약</h2></td>
                     <td>
                     <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="다음 범위 내 래스터 요약 도구">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>정의된 영역 내의 래스터 셀에 대한 일부 요약 통계를 계산합니다.
+            <p>이 도구는 다른 데이터셋의 구역 내에서 래스터 값을 요약합니다.
             </p>
-            <p>다음과 같은 몇 가지 적용 예가 있습니다. 
-
-                <ul>
-                    <li>유역 영역 레이어와 고도 래스터 레이어가 주어진 경우 각 유역 내의 고도 범위를 계산하여 유량 에너지가 최고인 유역을 확인합니다.
-                        
-
-                    </li>
-                    <li>관리 단위 레이어와 토지 이용 범주의 래스터 레이어가 주어진 경우 각 관리 영역 내의 다양한 토지 이용 값을 계산하여 관리 계획을 세우는 데 가장 많은 작업을 해야 하는 관리 영역을 확인합니다.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>테이블 구역 통계(Zonal Statistics as Table)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="테이블 형식 구역 통계 다이어그램">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 다른 데이터셋의 구역 내에서 래스터 값을 요약하고 결과를 테이블에 보고합니다.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>밀도 계산(Calculate Density)</h2></td>
+                    <td><h2>밀도 계산</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="밀도 계산 도구">
                     </td>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="smallsize">
-        <h2>인접도 사용 (Use Proximity)</h2>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>인접도 사용(Use Proximity)</h2>
         <hr/>
-        <p>공간 분석에서 가장 많이 제기되는 일반 질문 중 하나인 &quot;무엇과 무엇이 인접합니까?&quot;라는 질문에 대한 답을 찾는데 사용하는 도구입니다.
-
+        <p>공간 분석에서 가장 일반적으로 제기되는 질문 중 하나인 &quot;무엇과 무엇이 인접합니까?&quot; 및 &quot;최적 경로는 무엇입니까&quot;라는 몇몇 질문에 대한 답을 찾는데 사용하는 도구입니다.
             <ul>
                 <li> <b>거리 계산</b>은 하나 또는 여러 원본으로부터의 유클리드 거리, 방향 및 할당을 계산합니다.
                     
@@ -147,12 +149,32 @@
 
                 </li>
                 <li> <b>폴리라인으로의 이동 비용 경로 결정</b>은 원본과 알려진 목적지 간의 최저 비용 폴리라인 경로를 계산합니다.
+                    
+
+                </li>
+                <li> <b>거리 누적</b>각 셀에 대해 직선 거리, 비용 거리, 실제 표면 거리, 수직 및 수평 계수를 감안하여 원본까지의 누적 거리를 계산합니다.
+                    
+
+                </li>
+                <li> <b>거리 할당</b>은 각 셀에 대해 직선 거리, 비용 거리, 실제 표면 거리, 수직 및 수평 계수를 기반으로 제공된 원본까지의 거리 할당을 계산합니다.
+                    
+
+                </li>
+                <li> <b>라인 형식 최적 경로</b>는 목적지에서 시작 지점까지의 최적 경로를 라인 형식으로 계산합니다.
+                    
+
+                </li>
+                <li> <b>래스터 형식 최적 경로</b>는 목적지에서 시작 지점까지의 최적 경로를 래스터 형식으로 계산합니다.
+                    
+
+                </li>
+                <li> <b>최적 지역 연결</b>은 두 개 이상의 입력 지역 간의 최적 연결 네트워크를 계산합니다.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>하나 또는 여러 원본으로부터의 유클리드 거리, 방향 및 할당을 계산합니다. 이 도구를 사용하여 위치에서 도로, 건물 또는 공원까지의 거리를 결정합니다. 가장 직접적인 방법으로 위치에서 원본으로 돌아가야 하는 방향을 결정할 수도 있습니다. 가장 가까운 원본인 연구 영역의 모든 위치를 볼 수 있습니다.
+            <p>이 도구는 하나 또는 여러 원본으로부터의 유클리드 거리, 방향 및 할당을 계산합니다.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>입력 영역의 집합으로부터의 최적 비용 네트워크를 계산합니다.
+            <p>이 도구는 입력 지역의 집합으로부터의 최적 비용 네트워크를 계산합니다.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>원본과 알려진 목적지 간의 최저 비용 폴리라인을 계산합니다.
+            <p>이 도구는 목적지와 원본 간의 최저 비용 폴리라인 경로를 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>거리 누적(Distance Accumulation)</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="거리 누적 도구 그림">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 각 셀에 대해 직선 거리, 비용 거리, 실제 표면 거리, 수직 및 수평 계수를 감안하여 원본까지의 누적 거리를 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>거리 할당(Distance Allocation)</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="거리 할당 도구 그림">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 각 셀에 대해 직선 거리, 비용 거리, 실제 표면 거리, 수직 및 수평 계수를 기반으로 제공된 원본까지의 거리 할당을 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>라인 형식 최적 경로(Optimal Path As Line)</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="라인 형식 최적 경로 도구 그림">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 목적지에서 원본까지의 최적 경로를 라인 형식으로 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>래스터 형식 최적 경로(Optimal Path As Raster)</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="라인 형식 최적 경로 도구 그림">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 목적지에서 원본까지의 최적 경로를 래스터 형식으로 계산합니다.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>최적 영역 연결(Optimal Region Connections)</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="최적 영역 연결 도구 그림">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>이 도구는 두 개 이상의 입력 영역 간의 최적 연결 네트워크를 계산합니다.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
-        <h2>이미지 분석(Analyze Image)</h2>
+        <h2>이미지 분석</h2>
         <hr/>
-        <p>다음 도구는 이미지를 분석하는 데 유용합니다. 
+        <p> <b>이미지 분석</b> 도구 범주의 다음 도구는 이미지를 분석하는 데 유용합니다.
             <ul>
-                <li> <b>래스터 함수 템플릿 적용</b>은 래스터 함수 템플릿에서 지정한 대로 이미지를 함수 체인으로 처리합니다.
-                </li>
-                <li> <b>식생 모니터링</b>은 밴드에 대한 산술 연산을 기반으로 이미지 내의 식생을 감지합니다.
+                <li> <b>식생 모니터링</b>은 밴드에 대한 산술 연산을 기반으로 이미지 내의 상대적인 식생 커버리지를 감지합니다. 이미지 분석에 여러 식생 지수를 사용할 수 있습니다.
                     
 
                 </li>
@@ -212,33 +307,18 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>래스터 함수 템플릿 적용</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="래스터 함수 템플릿 적용(Apply Raster Function Template)">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>래스터 함수 템플릿에서 지정한 대로 이미지를 함수 체인으로 처리합니다.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>식생 모니터링(Monitor Vegetation)</h2></td>
+                    <td><h2>식생 모니터링</h2></td>
                     <td>
                     <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="포털용 식생 모니터링 도구">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>멀티밴드 래스터 레이어 밴드에 대해 산술 연산을 수행하여 처리 범위의 식생 커버리지 정보를 나타냅니다.
+            <p>멀티밴드 래스터 레이어 밴드에 대해 산술 연산을 수행하여 식생 커버리지 정보를 나타냅니다.
             </p>
             <br/>
         </div>
@@ -358,7 +438,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>래스터 추출(Extract Raster)</h2></td>
+                    <td><h2>래스터 추출</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="포털의 래스터 추출 도구">
                     </td>
@@ -373,9 +453,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>값 재배치(Remap Values)</h2></td>
+                    <td><h2>값 리맵</h2></td>
                     <td>
-                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="포털용 값 재배치 도구">
+                    <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="포털용 값 리맵 도구">
                     </td>
                 </tr></tbody>
             </table>
@@ -450,7 +530,7 @@
                 <tbody><tr>
                     <td><h2>딥러닝을 사용하여 픽셀 분류(Classify Pixels Using Deep Learning)</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="딥러닝을 사용하여 픽셀 분류">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="딥러닝을 사용하여 픽셀 분류(Classify Pixels Using Deep Learning)">
                     </td>
                 </tr></tbody>
             </table>
@@ -459,13 +539,13 @@
             </p>
             <br/>
         </div>
-        <div id="DetectObjectsUsingDeepLearningTool" class="smallsize">
+        <div id="DetectObjectsUsingDeepLearningTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
                     <td><h2>딥러닝을 사용하여 객체 감지(Detect Objects Using Deep Learning)</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="딥러닝을 사용하여 객체 감지">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="딥러닝을 사용하여 객체 감지(Detect Objects Using Deep Learning)">
                     </td>
                 </tr></tbody>
             </table>
@@ -478,7 +558,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>딥러닝을 사용하여 객체 분류(Classify Objects Using Deep Learning)</h2></td>
+                    <td><h2>딥러닝을 사용하여 객체 분류</h2></td>
                     <td>
                     <img src="../images/GUID-F31B4A21-3E5C-4667-B66B-155CC35CD62B-web.png" class="titleImage" alt="딥러닝을 사용하여 객체 분류">
                     </td>
@@ -518,7 +598,7 @@
                 <tbody><tr>
                     <td><h2>다차원 래스터 집계</h2></td>
                     <td>
-                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="다차원 래스터 집계(Aggregate Multidimensional Raster)">
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="다차원 래스터 집계">
                     </td>
                 </tr></tbody>
             </table>
@@ -548,7 +628,7 @@
                 <tbody><tr>
                     <td><h2>다차원 이상치 생성</h2></td>
                     <td>
-                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="다차원 이상치 생성(Generate Multidimensional Anomaly)">
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="다차원 이상치 생성">
                     </td>
                 </tr></tbody>
             </table>
@@ -563,7 +643,7 @@
                 <tbody><tr>
                     <td><h2>추세 래스터 생성(Generate Trend Raster)</h2></td>
                     <td>
-                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="추세 래스터 생성">
+                    <img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" class="titleImage" alt="추세 래스터 생성(Generate Trend Raster)">
                     </td>
                 </tr></tbody>
             </table>

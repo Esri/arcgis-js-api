@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimaalinen reitti viivana</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Optimaalinen reitti viivana -ty&ouml;kalun kuva"></h2>
+        <hr/>
+    <p>T&auml;m&auml; ty&ouml;kalu laskee optimaalisen reitin kohteista l&auml;hteisiin viivana.
+    </p>
+    <p>Esimerkkisovelluksia ovat mm. seuraavat:
+        <ul>
+            <li>Etsi paras reitti uudelle tielle rakennuskustannuksien kannalta.
+                
+
+
+            </li>
+            <li>Etsi paras purjehdusreitti kohteen ja nykyisen sijainnin v&auml;lill&auml;.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Valitse määränpäärasteri tai -kohteet</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteri- tai kohdekarttataso, joka m&auml;&auml;ritt&auml;&auml; solut, joista selvitet&auml;&auml;n optimaalinen reitti edullisimpaan l&auml;hteeseen.
+            </p>
+            <p>Jos l&auml;ht&ouml;aineisto on rasteri, sen on koostuttava soluista, joilla on kelvolliset arvot (nolla on kelvollinen arvo) m&auml;&auml;r&auml;np&auml;ille, ja muiden solujen arvoksi on m&auml;&auml;ritett&auml;v&auml; NoData. L&auml;ht&ouml;aineiston rasterityypin on oltava kokonaisluku.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Määränpääkenttä</h2></div>
+        <hr/>
+        <div>
+            <p>T&auml;t&auml; kentt&auml;&auml; k&auml;ytet&auml;&auml;n noutamaan kohdesijaintien arvot.
+            </p>
+            <p>T&auml;m&auml;n kent&auml;n on oltava tyyppi&auml; kokonaisluku.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Valitse etäisyyskertymärasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Et&auml;isyyskertym&auml;rasteria k&auml;ytet&auml;&auml;n optimaalisen reitin m&auml;&auml;ritt&auml;miseen m&auml;&auml;r&auml;np&auml;ist&auml; l&auml;hteisiin.
+            </p>
+            <p>Et&auml;isyyskertym&auml;rasteri luodaan yleens&auml; Et&auml;isyyskertym&auml;- tai Et&auml;isyyden kohdennus -ty&ouml;kalulla. Kukin et&auml;isyyskertym&auml;rasterin solu edustaa pienint&auml; kumulatiivista kustannuset&auml;isyytt&auml; kustakin solusta l&auml;hdesolujen joukkoon pinnan kautta.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Valitse paluusuunnan tai virtaussuunnan rasteri</h2></div>
+        <hr/>
+        <div>
+            <p>Paluusuunnan rasteri sis&auml;lt&auml;&auml; lasketut suunnat asteina. Suunta tunnistaa seuraavan solun optimaalisella reitill&auml; takaisin pienimm&auml;n kumulatiivisen kustannuksen l&auml;hteeseen esteit&auml; v&auml;ltt&auml;en.
+            </p>
+            <p>Paluusuunnan rasteri luodaan yleens&auml; Et&auml;isyyskertym&auml;- tai Et&auml;isyyden kohdennus -ty&ouml;kalulla. T&auml;ss&auml; tapauksessa arvojen vaihteluv&auml;li on 0&ndash;360 astetta. Arvo 0 on varattu l&auml;hdesoluille. It&auml;suunta (oikealle) on 90 astetta ja arvot kasvavat my&ouml;t&auml;p&auml;iv&auml;&auml;n (180 on etel&auml;, 270 on l&auml;nsi ja 360 on pohjoinen).
+            </p>
+            <p>Luotu optimaalinen polku voi olla virtausreitti, joka perustuu virtaussuuntaan D8. Jos haluat luoda optimaalisen polun t&auml;ll&auml; tavalla, k&auml;yt&auml; D8-virtaussuuntarasteria t&auml;m&auml;n parametrin l&auml;ht&ouml;aineistona.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Reitin tyyppi (valinnainen)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; avainsanan, joka m&auml;&auml;ritt&auml;&auml;, miten l&auml;ht&ouml;aineiston kohdeaineiston arvoja ja vy&ouml;hykkeit&auml; tulkitaan kustannusreittilaskelmissa.
+                <ul>
+                    <li> <b>Jokaiseen vy&ouml;hykkeeseen</b> &ndash; kutakin l&auml;ht&ouml;aineiston m&auml;&auml;r&auml;np&auml;&auml;aineiston vy&ouml;hykett&auml; kohti m&auml;&auml;ritet&auml;&auml;n pienimm&auml;n kustannuksen reitti. T&auml;ss&auml; vaihtoehdossa pienimm&auml;n kustannuksen reitti kullekin vy&ouml;hykkeelle alkaa solusta, jolla on vy&ouml;hykkeen alhaisin kustannus-et&auml;isyys-painoarvo. T&auml;m&auml; on oletusarvo.
+                         
+                    </li>
+                    <li> <b>Paras yksitt&auml;inen</b> &ndash; Koskee l&auml;ht&ouml;aineiston m&auml;&auml;r&auml;np&auml;&auml;aineiston kaikkia soluja. Pienimm&auml;n kustannuksen reitti saadaan solusta, josta on kaikkein pienimm&auml;n kustannuksen reitit l&auml;ht&ouml;soluihin.
+                    </li>
+                    <li> <b>Jokainen solu</b> &ndash; Koskee kaikkia soluja, joilla on kelvolliset arvot l&auml;ht&ouml;aineiston m&auml;&auml;r&auml;np&auml;&auml;aineistossa. Pienimm&auml;n kustannuksen reitti m&auml;&auml;ritet&auml;&auml;n. T&auml;ss&auml; vaihtoehdossa jokaista l&auml;ht&ouml;aineiston kohdeaineiston solua k&auml;sitell&auml;&auml;n erikseen. Pienimm&auml;n kustannuksen reitti m&auml;&auml;ritet&auml;&auml;n jokaiselle solulle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Tuloksena olevan kohdekarttatason nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
+            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

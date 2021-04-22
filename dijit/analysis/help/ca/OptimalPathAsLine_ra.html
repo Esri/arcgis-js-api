@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ruta òptima com a línia</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Il&middot;lustraci&oacute; de l'eina Ruta &ograve;ptima com a l&iacute;nia"></h2>
+        <hr/>
+    <p>Aquesta eina calcula la ruta &ograve;ptima de les destinacions als or&iacute;gens com una l&iacute;nia.
+    </p>
+    <p>Alguns exemples d'aplicacions s&oacute;n:
+        <ul>
+            <li>Trobeu la millor ruta per a una carretera nova en termes de costos de construcci&oacute;.
+                
+
+
+            </li>
+            <li>Trobeu la millor ruta de navegaci&oacute; entre una destinaci&oacute; i la ubicaci&oacute; actual.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Trieu les entitats o el ràster de destinació</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster o capa d'entitats que identifica les cel&middot;les des de les quals es determina la ruta &ograve;ptima a l'origen &ograve;ptim.
+            </p>
+            <p>Si l'entrada &eacute;s un r&agrave;ster, ha d'estar formada per cel&middot;les que tinguin valors v&agrave;lids (zero &eacute;s un valor v&agrave;lid) per a les destinacions, i les cel&middot;les restants tindran assignat el valor NoData. El tipus de r&agrave;ster d'entrada ha de ser enter.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Camp de destinació</h2></div>
+        <hr/>
+        <div>
+            <p>Camp utilitzat per obtenir els valors de les ubicacions de destinaci&oacute;.
+            </p>
+            <p>Aquest camp ha de ser de tipus enter.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Trieu el ràster d'acumulació de distància</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster d'acumulaci&oacute; de dist&agrave;ncia s'utilitza per determinar la ruta &ograve;ptima des de les destinacions fins als or&iacute;gens.
+            </p>
+            <p>El r&agrave;ster d'acumulaci&oacute; de dist&agrave;ncia normalment es crea amb les eines Acumulaci&oacute; de dist&agrave;ncia o Assignaci&oacute; de dist&agrave;ncia. Cada cel&middot;la del r&agrave;ster d'acumulaci&oacute; de dist&agrave;ncia representa la dist&agrave;ncia de cost acumulatiu m&iacute;nim sobre una superf&iacute;cie de cada cel&middot;la a un conjunt de cel&middot;les d'origen.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Trieu el ràster de direcció del flux o de direcció inversa</h2></div>
+        <hr/>
+        <div>
+            <p>El r&agrave;ster de direcci&oacute; inversa cont&eacute; les direccions calculades en graus. La direcci&oacute; identifica la cel&middot;la seg&uuml;ent al llarg de la ruta &ograve;ptima de tornada a l'origen de menor cost acumulatiu evitant les barreres.
+            </p>
+            <p>El r&agrave;ster de direcci&oacute; inversa normalment es crea amb les eines Acumulaci&oacute; de dist&agrave;ncia o Assignaci&oacute; de dist&agrave;ncia. En aquest cas, l'interval de valors va de 0 a 360 graus. El valor 0 es reserva per a les cel&middot;les d'origen. Cap a l'est (dreta) &eacute;s 90 graus i els valors augmenten en el sentit de les agulles del rellotge (180 &eacute;s el sud, 270 &eacute;s l'oest i 360 &eacute;s el nord).
+            </p>
+            <p>La ruta &ograve;ptima creada pot ser un recorregut del flux basat en la direcci&oacute; del flux D8. Per generar una ruta &ograve;ptima d'aquesta manera, feu servir el r&agrave;ster de direcci&oacute; del flux D8 com a entrada d'aquest par&agrave;metre.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tipus de ruta (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica una paraula clau que defineixi com els valors i les zones de les dades de destinaci&oacute; d'entrada s'interpretaran als c&agrave;lculs de la ruta de cost.
+                <ul>
+                    <li> <b>Per a cada zona</b>: per a cada zona de les dades de destinaci&oacute; d'entrada, es determinar&agrave; una ruta de menor cost. Amb aquesta opci&oacute;, la ruta de menor cost per a cada zona comen&ccedil;a a la cel&middot;la amb la ponderaci&oacute; de dist&agrave;ncia de menor cost a la zona. Aquesta &eacute;s l'opci&oacute; per defecte.
+                         
+                    </li>
+                    <li> <b>L'&uacute;nic millor</b>: per a totes les cel&middot;les de les dades de destinaci&oacute; d'entrada, la ruta de menor cost es deriva de la cel&middot;la amb el m&iacute;nim de rutes de menor cost a les cel&middot;les d'origen.
+                    </li>
+                    <li> <b>Per a cada cel&middot;la</b>: per a cada cel&middot;la amb valors v&agrave;lids a les dades de destinaci&oacute; d'entrada, es determinar&agrave; una ruta de menor cost. Amb aquesta opci&oacute;, cada cel&middot;la de les dades de destinaci&oacute; d'entrada es tractar&agrave; de manera individual i es determinar&agrave; una ruta de menor cost per a cada cel&middot;la.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nom de la capa d'entitats de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

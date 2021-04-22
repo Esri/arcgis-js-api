@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Určiť trasu dopravných nákladov ako líniu</h2><p/>
+        <h2><img src="../images/GUID-9A27DEB7-0276-483C-A12F-3E70D636550D-web.png" alt="Ilustr&aacute;cia n&aacute;stroja na určenie trasy dopravn&yacute;ch n&aacute;kladov ako l&iacute;nie"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;ta l&iacute;niov&uacute; trasu najniž&scaron;&iacute;ch n&aacute;kladov medzi zn&aacute;mymi zdrojmi a destin&aacute;ciami.
+    </p>
+    <p>Pr&iacute;kladov&eacute; aplik&aacute;cie zahŕňaj&uacute; nasledovn&eacute;:
+        <ul>
+            <li>Vyhľadať najlep&scaron;iu trasu pre nov&uacute; cestu v zmysle n&aacute;kladov na v&yacute;stavbu.
+                
+
+            </li>
+            <li>Identifikovať trasu, ktor&uacute; zvoliť z niekoľk&yacute;ch predmestsk&yacute;ch lokal&iacute;t (zdroje) k najbliž&scaron;iemu ochodn&eacute;mu centru (destin&aacute;cia).
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; iba tie lokality vo vstupnej vrstve, ktor&eacute; s&uacute; viditeľn&eacute; v aktu&aacute;lnom rozsahu mapy. Ak nie je za&scaron;krtnut&eacute;, v&scaron;etky lokality v oboch vstupn&yacute;ch vrstv&aacute;ch bud&uacute; analyzovan&eacute;, aj v pr&iacute;pade, že sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Vyberte zdrojovú rastrovú alebo prvkovú vrstvu pre určenie trás</h2></div>
+        <hr/>
+        <div>
+            <p>Sn&iacute;mkov&aacute; alebo prvkov&aacute; služba, ktor&aacute; identifikuje bunky, z ktor&yacute;ch je určen&aacute; najmenej n&aacute;kladn&aacute; trasa k najmenej n&aacute;kladnej destin&aacute;cii.
+            </p>
+            <p>Ak je vstupom sn&iacute;mkov&aacute; služba, vstup pozost&aacute;va z buniek, ktor&eacute; maj&uacute; platn&eacute; hodnoty (nula je platnou hodnotou) a zvy&scaron;n&eacute; bunky musia mať priraden&eacute; NoData.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Vyberte rastrovú vrstvu cestovných nákladov</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definuj&uacute;ci impedanciu alebo n&aacute;klady planimetrick&eacute;ho pohybu cez každ&uacute; bunku.
+            </p>
+            <p>Hodnota v každej lokalite bunky predstavuje n&aacute;klady za jednotku vzdialenosti pri jej prechode. Hodnota každej bunky je vyn&aacute;soben&aacute; rozl&iacute;&scaron;en&iacute;m bunky, čo kompenzuje diagon&aacute;lny pohyb, aby sa z&iacute;skali celkov&eacute; n&aacute;klady na prechod bunkou.
+            </p>
+            <p>Hodnoty N&aacute;kladov&eacute;ho rastra m&ocirc;žu byť cel&eacute; č&iacute;slo alebo desatinn&eacute; č&iacute;slo, ale nem&ocirc;žu byť z&aacute;porn&eacute; alebo nulov&eacute; (nem&ocirc;žete mať negat&iacute;vne alebo nulov&eacute; n&aacute;klady).
+            </p>
+        </div>
+    </div>
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Vstupné prvky alebo raster destinácií</h2></div>
+        <hr/>
+        <div>
+            <p>Vstup, ktor&yacute; definuje destin&aacute;cie použit&eacute; na v&yacute;počet vzdialenosti. Vrstva m&ocirc;že byť rastrov&aacute; alebo prvkov&aacute;.
+            </p>
+            <p>A je vstupom sn&iacute;mkov&aacute; služba, v&yacute;stup pozost&aacute;va z buniek, ktor&eacute; maj&uacute; platn&eacute; hodnoty (nula je platnou hodnotou) a zvy&scaron;n&eacute; bunky musia mať priraden&eacute; NoData.
+            </p>
+        </div>
+    </div>
+    <div id="outputPolylineName">
+        <div><h2>Názov výslednej vrstvy línií</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Vybertre typ trasy, ktorá sa má urciť</h2></div>
+        <hr/>
+        <div>
+            <p>Definuje sp&ocirc;sob, ktor&yacute;m bud&uacute; hodnoty a z&oacute;ny na vstupe interpretovan&eacute; vo v&yacute;počtoch n&aacute;kladov trasy.
+            </p>
+            <ul>
+                <li> <b>Najlep&scaron;ia jednoduch&aacute;</b>--Pre v&scaron;etky bunky alebo lokality vo vstupn&yacute;ch destinačn&yacute;ch d&aacute;tach je najmenej n&aacute;kladn&aacute; trasa odvoden&aacute; z lokality s minim&aacute;lnou najmenej n&aacute;kladnou trasou do zdrojovej lokality. Toto je prednastaven&aacute; voľba
+                    
+
+                </li>
+                <li> <b>Do každej bunky</b>--Pre každ&uacute; bunku alebo lokalitu s platn&yacute;mi hodnotami vo vstupn&yacute;ch destinačn&yacute;ch d&aacute;tach je najmenej n&aacute;kladn&aacute; trasa určen&aacute; a uložen&aacute; vo v&yacute;stupnej prvkovej službe. Pri tejto voľbe sa s každou bunkou vstupn&yacute;ch destinačn&yacute;ch d&aacute;t zaobch&aacute;dza oddelene a pre každ&uacute; bunku sa urč&iacute; trasa s minim&aacute;lnymi n&aacute;kladmi.
+                    
+
+                </li>
+                <li> <b>Do každej z&oacute;ny</b>--Pre každ&uacute; z&oacute;nu vo vstupn&yacute;ch destinačn&yacute;ch d&aacute;tach je najmenej n&aacute;kladn&aacute; trasa určen&aacute; a uložen&aacute; na v&yacute;stupnej prvkovej službe. Pri tejto možnosti zač&iacute;na najmenej n&aacute;kladn&aacute; trasa pre každ&uacute; z&oacute;nu v bunke alebo lokalite podľa v&aacute;hy najmen&scaron;&iacute;ch n&aacute;kladov vzdialenosti v z&oacute;ne.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Vyberte pole pre získanie hodnôt pre destináciu</h2></div>
+        <hr/>
+        <div>
+            <p>Pole použit&eacute; na z&iacute;skanie hodn&ocirc;t pre lokality destin&aacute;ci&iacute;.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

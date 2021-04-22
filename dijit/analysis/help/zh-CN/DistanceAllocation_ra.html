@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>距离分配</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="距离分配工具图示"></h2>
+        <hr/>
+    <p>该工具用于根据直线距离、成本距离、真实表面距离以及垂直和水平系数，计算每个像元到所提供的源的距离分配。
+    </p>
+    <p>示例应用包括回答以下问题：
+        <ul>
+            <li>识别由外业工作人员负责的分配区域。
+                
+
+            </li>
+            <li>识别已分配给短尾猫栖息地的区域。
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则仅分析当前地图范围中可见的输入图层中的要素。 如果未选中，则将分析输入图层中的所有要素，包括超出当前地图显示范围的要素。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>选择源栅格或要素</h2></div>
+        <hr/>
+        <div>
+            <p>此栅格或要素图层用于识别计算距离的源。
+            </p>
+            <p>如果输入是栅格，则它必须由具有源的有效值（零是有效值）的像元组成，并且必须为其余的像元指定 NoData。
+            </p>
+            <p>如果输入是要素图层，则它可以是点、线或面。
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>源字段（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>用于向源位置分配值的字段。 该字段必须为整型。
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>选择障碍栅格或要素（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>定义障碍的数据集。
+            </p>
+            <p>对于栅格图层，输入类型可以是整型或浮点型。 任何拥有值（包括零）的像元都将被视为障碍。 任何 NoData 像元都不会被视为障碍。
+            </p>
+            <p>对于要素服务，输入可以为点、线或面。
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>选择表面栅格（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>定义每个像元位置的高程值的栅格。
+            </p>
+            <p>这些值用于计算经过两个像元时所涉及的实际表面距离。
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>选择成本栅格（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>该栅格可定义在每个像元中进行平面移动所需的阻抗或成本。
+            </p>
+            <p>每个像元位置上的值表示经过像元时移动每单位距离所需的成本。 每个像元位置值乘以像元分辨率，同时也会补偿对角线移动来获取经过像元的总成本。
+            </p>
+            <p>成本栅格的值可以是整型或浮点型，但不可以为负值或零（不存在负成本或零成本）。
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>选择垂直栅格（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>定义每个像元位置的 z 值的栅格。
+            </p>
+            <p>这些 z 值用于计算坡度，而坡度用于标识在不同的像元之间移动时产生的垂直系数。
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>垂直系数（可选）</h2></div>
+        <hr/>
+        <div>
+            <p> <b>垂直系数</b>用于定义垂直成本系数和垂直相对移动角度之间的关系。
+            </p>
+            <p>有若干个带有修饰属性的系数可供选择，用于标识定义的垂直系数图。 这些图表用于标识在计算移动到相邻像元的总成本时的垂直系数。
+            </p>
+            <p>在下面的描述中，垂直系数 (VF) 用于定义从一个像元移至下一像元时所遇到的垂直阻力；垂直相对移动角度 (VRMA) 修饰属性用于定义 <b>来自源</b>像元与 <b>到源</b>像元之间的坡度角度。
+                <ul>
+                    <li> <b>二进制</b> - 如果 VRMA 大于交角的下限且小于交角的上限，则将 VF 设置为与零系数相关联的值；否则为无穷大。
+                    </li>
+                    <li> <b>线性</b> - VF 是 VRMA 的线性函数。
+                    </li>
+                    <li> <b>逆线性</b> - VF 是 VRMA 的逆线性函数。
+                    </li>
+                    <li> <b>对称线性</b> - 无论在 VRMA 正侧还是负侧，VF 均为 VRMA 的线性函数，并且这两个线性函数关于 VF (y) 轴对称。
+                    </li>
+                    <li> <b>对称逆线性</b> - 无论在 VRMA 正侧还是负侧，VF 均为 VRMA 的逆线性函数，并且这两个线性函数关于 VF (y) 轴对称。
+                    </li>
+                    <li> <b>Cos</b> - VF 为 VRMA 的余弦函数。
+                    </li>
+                    <li> <b>Sec</b> - VF 为 VRMA 的正割函数。
+                    </li>
+                    <li> <b>Cos-Sec</b> - 当 VRMA 为负时，VF 为 VRMA 的余弦函数；当 VRMA 为非负时，VF 为 VRMA 的正割函数。
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b> - 当 VRMA 为负时，VF 为 VRMA 的正割函数；当 VRMA 为非负时，VF 为 VRMA 的余弦函数。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>垂直参数的修饰属性如下：
+                <ul>
+                    <li> <b>零系数</b> - VRMA 为零时要使用的垂直系数。 该系数可确定指定函数的 y 截距。 按照定义，零系数对于任意三角垂直函数（Cos、Sec、Cos-Sec 或 Sec-Cos）都不适用。 y 截距由以上函数定义。
+                    </li>
+                    <li> <b>交角下限</b> - 一个 VRMA 角度，小于该角度时 VF 将被设置为无穷大。
+                    </li>
+                    <li> <b>交角上限</b> - 一个 VRMA 角度，大于该角度时 VF 将被设置为无穷大。
+                    </li>
+                    <li> <b>坡度</b> - 与 <b>线性</b>和 <b>逆线性</b>参数相结合使用的直线坡度。 坡度被指定为垂直增量与水平增量的比值（例如，45 百分比坡度是 1/45，以 0.02222 的方式输入）。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>选择水平栅格（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>定义每个像元的水平方向的栅格。
+            </p>
+            <p>在栅格上的这些值必须是整数，以北纬 0 度（或朝向屏幕顶部）为起始值，范围为 0 至 360，顺时针增加。 平坦区域应赋值为 -1。 每个位置上的值与 <b>水平系数</b>结合使用，用来确定在相邻像元之间移动时产生的水平成本。
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>水平系数（可选）</h2></div>
+        <hr/>
+        <div>
+            <p> <b>水平系数</b>用于定义水平成本系数与水平相对移动角度之间的关系。
+            </p>
+            <p>有若干个带有修饰属性的系数可供选择，用于标识定义的水平系数图。 这些图表用于标识在计算移动到相邻像元的总成本时的水平系数。
+            </p>
+            <p>在下面的描述中，水平系数 (HF) 用于定义从一个像元移动到下一像元时所遇到的水平阻力；水平相对移动角度 (HRMA) 用于定义像元的水平方向与移动方向之间的角度。
+            </p>
+            <p>这些 HF 的定义和参数如下：
+                <ul>
+                    <li> <b>二进制</b> - 如果 HRMA 小于交角，则将 HF 设置为与零系数相关联的值；否则为无穷大。
+                        
+
+                    </li>
+                    <li> <b>前向</b> - 只允许向前的移动。 HRMA 必须大于等于 0 度且小于 90 度 (0 &lt;= HRMA &lt; 90)。 如果 HRMA 大于 0 度且小于 45 度，则将像元的 HF 设置为与零系数相关联的值。 如果 HRMA 大于等于 45 度，则使用边值修饰属性值。 对于 HRMA 等于或大于 90 度的任何情况，均将 HF 设置为无穷大。
+                    </li>
+                    <li> <b>线性</b> - HF 是 HRMA 的线性函数。
+                        
+
+                    </li>
+                    <li> <b>逆线性</b> - HF 是 HRMA 的逆线性函数。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>水平关键字的修饰属性如下：
+                <ul>
+                    <li> <b>零系数</b> - HRMA 为 0 时使用的水平系数。 该系数可确定任意水平系数函数的 y 截距。
+                        
+
+                    </li>
+                    <li> <b>交角</b> - 一个 HRMA 角度，大于该角度时 HF 将被设置为无穷大。
+                        
+
+                    </li>
+                    <li> <b>坡度</b> - 与 <b>线性</b>和 <b>逆线性</b>水平系数关键字相结合使用的直线坡度。 坡度被指定为垂直增量与水平增量的比值（例如，45 百分比坡度是 1/45，以 0.02222 的方式输入）。
+                        
+
+                    </li>
+                    <li> <b>边值</b> - 在指定了 <b>前向</b>水平系数关键字的情况下，HRMA 大于或等于 45 度且小于 90 度时的 HF。
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>初始累积</h2></div>
+        <hr/>
+        <div>
+            <p>开始进行成本计算的初始累积成本。
+            </p>
+            <p>它适用于与源相关的固定成本规范。 成本算法将从通过 <b>初始累积</b>设置的值开始，而非从零成本开始。
+            </p>
+            <p>值必须大于等于零。 默认值为 0。
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>最大累积</h2></div>
+        <hr/>
+        <div>
+            <p>源的旅行者的最大累积。
+            </p>
+            <p>每个源的成本计算将在达到指定累积后停止。
+            </p>
+            <p>值必须大于零。 默认累积为到输出栅格边的边。
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>成本倍增率</h2></div>
+        <hr/>
+        <div>
+            <p>要应用于成本值的乘数。
+            </p>
+            <p>可将其用于控制源的出行或放大模式。 乘数越大，在每个像元间移动的成本将越大。
+            </p>
+            <p>值必须大于零。 默认值为 1。
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>行驶方向</h2></div>
+        <hr/>
+        <div>
+            <p>当应用水平和垂直系数时，指定旅行者的方向。
+            </p>
+            <p> <b>来自源</b> - 水平系数和垂直系数将应用于从输入源开始并行驶至非源像元的情况。 这是默认设置。
+            </p>
+            <p> <b>到源</b> - 水平系数和垂直系数将应用于从每个非源像元开始并行驶回输入源的情况。
+            </p>
+            <p>指定将应用于所有源的 <b>来自源</b>或 <b>到源</b>关键字，或指定包含用于确定各个源行驶方向关键字的源数据字段。 该字段必须包含字符串 <code>FROM_SOURCE</code> 或 <code>TO_SOURCE</code>。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>距离方法（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否使用平面（平地）或测地线（椭球）方法计算距离。
+            </p>
+            <ul>
+                <li> <b>平面</b> - 将使用 2D 笛卡尔坐标系对投影平面执行距离计算。 这是默认方法。
+                    
+
+                </li>
+                <li> <b>测地线</b> - 距离计算将在椭圆体上执行。 因此，无论是输入投影还是输出投影，结果不会改变。
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>结果距离分配栅格名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>结果距离累积栅格名称</h2></div>
+        <hr/>
+        <div>
+            <p>距离累积栅格包含每个像元距最小成本源的累积距离。
+            </p>
+            <p>输出栅格为浮点类型。
+            </p>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>结果反向栅格名称（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>反向栅格中包含以度为单位的计算方向。 该方向可用于识别沿最短路径返回最近源同时避开障碍的下一像元。
+            </p>
+            <p>值的范围是 0 度到 360 度，并为源像元保留 0 度。 正东（右侧）是 90 度，且值以顺时针方向增加（180 是南方、270 是西方、360 是北方）。
+            </p>
+            <p>输出栅格为浮点类型。
+            </p>
+            <p>将要在 <b>我的内容</b>中创建的图层的名称。 必须提供 <b>我的内容</b>中当前没有的名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>结果源方向栅格名称（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>源方向栅格将最小积累成本源像元的方向标识为方位角（以度为单位）。
+            </p>
+            <p>值的范围是 0 度到 360 度，并为源像元保留 0 度。 正东（右侧）是 90 度，且值以顺时针方向增加（180 是南方、270 是西方、360 是北方）。
+            </p>
+            <p>输出栅格为浮点类型。
+            </p>
+            <p>将要在 <b>我的内容</b>中创建的图层的名称。 必须提供 <b>我的内容</b>中当前没有的名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>结果源位置栅格名称（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>源位置栅格为多波段输出。 第一个波段包含行索引，第二个波段包含列索引。 这些索引用于标识相距最小积累成本距离的源像元的位置。
+            </p>
+            <p>将要在 <b>我的内容</b>中创建的图层的名称。 必须提供 <b>我的内容</b>中当前没有的名称。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

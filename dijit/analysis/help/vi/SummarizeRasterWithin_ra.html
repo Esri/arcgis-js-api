@@ -44,7 +44,7 @@
         <h2>Tổng kết Raster Trong phạm vi</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="C&ocirc;ng cụ Tổng kết Raster Trong phạm vi"></h2>
         <hr/>
-    <p>C&ocirc;ng cụ tổng kết một raster dựa tr&ecirc;n c&aacute;c khu vực (v&ugrave;ng) được x&aacute;c định bởi lớp đầu v&agrave;o đầu ti&ecirc;n.
+    <p>C&ocirc;ng cụ n&agrave;y tổng kết c&aacute;c gi&aacute; trị của một raster trong c&aacute;c v&ugrave;ng của một bộ dữ liệu kh&aacute;c.
     </p>
     <p>Một số ứng dụng mẫu bao gồm:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Khi bạn chọn một lớp để tổng kết, bạn c&oacute; thể t&ugrave;y chọn t&iacute;nh to&aacute;n số liệu thống k&ecirc; của bất kỳ thuộc t&iacute;nh số n&agrave;o của c&aacute;c điểm, đường hoặc khu vực trong lớp khu vực đầu v&agrave;o.
             </p>
-            <p>Khi trường được chọn l&agrave; số nguy&ecirc;n, c&aacute;c loại số liệu thống k&ecirc; sẵn c&oacute; l&agrave; Trung b&igrave;nh, Đa số, Tối đa, B&igrave;nh qu&acirc;n, Tối thiểu, Thiểu số, Phạm vi, Độ lệch ti&ecirc;u chuẩn, Tổng số v&agrave; Sự đa dạng.
+            <p>Khi trường được chọn l&agrave; số nguy&ecirc;n, c&aacute;c loại số liệu thống k&ecirc; sẵn c&oacute; l&agrave; Trung b&igrave;nh, Đa số, Tối đa, B&igrave;nh qu&acirc;n, Tối thiểu, Thiểu số, Ph&acirc;n Vị, Phạm vi, Độ lệch ti&ecirc;u chuẩn, Tổng số v&agrave; Sự đa dạng.
             </p>
             <p>Nếu trường l&agrave; điểm nổi, c&aacute;c t&ugrave;y chọn l&agrave; Trung b&igrave;nh, Tối đa, Tối thiểu, Phạm vi, Độ lệch ti&ecirc;u chuẩn v&agrave; Tổng số.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Giá trị phân vị</h2></div>
+        <hr/>
+        <div>
+            <p>Tỷ lệ phần trăm cần t&iacute;nh. Mặc định l&agrave; 90, biểu thị cho ph&acirc;n vị thứ 90.
+            </p>
+            <p>Gi&aacute; trị c&oacute; thể nằm trong khoảng từ 0 đến 100. Ph&acirc;n vị thứ 0 về cơ bản tương đương với số liệu tối thiểu v&agrave; ph&acirc;n vị thứ 100 tương đương với số tối đa. Gi&aacute; trị l&agrave; 50 về cơ bản sẽ tạo ra kết quả tương tự như số liệu trung b&igrave;nh.
+            </p>
+            <p>T&ugrave;y chọn n&agrave;y chỉ được hỗ trợ nếu tham số  <b>Chọn số liệu thống k&ecirc; để t&iacute;nh to&aacute;n</b> được đặt th&agrave;nh l&agrave; <b>Percentile</b> (Ph&acirc;n vị).
             </p>
         </div>
     </div>
@@ -113,11 +125,22 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Xử lý dưới dạng Đa chiều</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định c&aacute;ch xử l&yacute; raster đầu v&agrave;o nếu ch&uacute;ng đa chiều. Nếu bạn chọn xử l&yacute; dưới dạng đa chiều, số liệu sẽ được t&iacute;nh to&aacute;n từ tất cả mọi g&oacute;c độ của bộ dữ liệu đa chiều đầu v&agrave;o.
+ Nếu kh&ocirc;ng, số liệu sẽ được t&iacute;nh to&aacute;n từ l&aacute;t hiện tại của bộ dữ liệu đa chiều đầu v&agrave;o, đ&acirc;y l&agrave; gi&aacute; trị mặc định.
+
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Tên lớp kết quả</h2></div>
         <hr/>
         <div>
-            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của T&ocirc;i</b> v&agrave; th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
             <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
             </p>

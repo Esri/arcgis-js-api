@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Asignación de distancia</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Ilustraci&oacute;n de la herramienta Asignaci&oacute;n de distancia"></h2>
+        <hr/>
+    <p>Esta herramienta calcula la asignaci&oacute;n de distancia para cada celda a los or&iacute;genes proporcionados en funci&oacute;n de la distancia en l&iacute;nea recta, coste-distancia, verdadera distancia de superficie y factores de coste vertical y horizontal.
+    </p>
+    <p>Las aplicaciones de ejemplo dan respuesta a preguntas como las siguientes:
+        <ul>
+            <li>Identifica las &aacute;reas asignadas que deben cubrir los trabajadores de campo.
+                
+
+            </li>
+            <li>Identifica &aacute;reas asignadas a terrenos de h&aacute;bitat para linces.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si se ha activado  <b>Usar la extensi&oacute;n del mapa actual</b>, solo se analizar&aacute;n aquellas entidades de la capa de entrada que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si la opci&oacute;n est&aacute; desactivada, se analizar&aacute;n todas las entidades de la capa de entrada, aunque est&eacute;n fuera de la extensi&oacute;n de visualizaci&oacute;n de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Elegir entidades o ráster de origen</h2></div>
+        <hr/>
+        <div>
+            <p>Capa r&aacute;ster o de entidades que define los or&iacute;genes respecto de los cuales se calcular&aacute; la distancia.
+            </p>
+            <p>Si la entrada es un r&aacute;ster, debe constar de celdas con valores v&aacute;lidos (cero es un valor v&aacute;lido) para los or&iacute;genes y se debe asignar NoData a las celdas restantes.
+            </p>
+            <p>Si la entrada es una capa de entidades, puede ser punto, l&iacute;nea o pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Campo de origen (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El campo que se utiliza para asignar los valores a las ubicaciones de origen. Debe ser de tipo entero.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Seleccionar el ráster o las entidades de barrera (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El dataset que define las barreras.
+            </p>
+            <p>Para una capa r&aacute;ster, la entrada puede ser de tipo entero o flotante. Las celdas que tengan alg&uacute;n valor (incluido cero) se tratar&aacute;n como barreras. Las celdas que tengan el valor NoData no se tratar&aacute;n como barreras.
+            </p>
+            <p>En el caso de un servicio de entidades, la entrada puede ser un punto, una l&iacute;nea o un pol&iacute;gono.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Seleccionar ráster de superficie (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&aacute;ster que define los valores de elevaci&oacute;n de cada ubicaci&oacute;n de celda.
+            </p>
+            <p>Los valores se utilizan para calcular la distancia de la superficie actual cubierta al pasar entre las celdas.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Seleccionar ráster de coste (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&aacute;ster que define la impedancia o el coste de hacer un movimiento planim&eacute;trico por medio de cada celda.
+            </p>
+            <p>El valor de cada ubicaci&oacute;n de celda representa la distancia de coste por unidad para moverse a trav&eacute;s de la celda. Cada valor de ubicaci&oacute;n de celda se multiplica por la resoluci&oacute;n de la celda mientras que tambi&eacute;n se compensa por el movimiento diagonal para obtener el coste total de pasar por medio de la celda.
+            </p>
+            <p>Los valores del r&aacute;ster de coste pueden ser enteros o de punto flotante, pero no pueden ser negativos o cero (no puede tener un coste negativo o cero).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Seleccionar ráster vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&aacute;ster que define los valores z de cada ubicaci&oacute;n de celda.
+            </p>
+            <p>Los valores se utilizan para calcular la pendiente que se utiliza para identificar el factor vertical incurrido al realizar un movimiento de una celda a otra.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Factor vertical (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El  <b>Factor vertical</b> define la relaci&oacute;n que existe entre el factor de coste vertical y el &aacute;ngulo de movimiento relativo vertical.
+            </p>
+            <p>Existen varios factores con modificadores que se pueden seleccionar que identifican un gr&aacute;fico de factor vertical definido. Los gr&aacute;ficos se utilizan para identificar el factor vertical utilizado para calcular el coste total de realizar el movimiento hacia una celda pr&oacute;xima.
+            </p>
+            <p>En las descripciones siguientes, factor vertical (VF) define la dificultad vertical encontrada al pasar de una celda a la siguiente, y el modificador de &aacute;ngulo de movimiento relativo a la vertical (VRMA) identifica el &aacute;ngulo de pendiente entre la celda  <b>De origen</b> y la celda <b>A origen</b>.
+                <ul>
+                    <li> <b>Binario</b>: si el VRMA es mayor que el &aacute;ngulo de corte bajo y menor que el &aacute;ngulo de corte alto, el VF est&aacute; establecido en el valor asociado al factor cero; de lo contrario, es infinito.
+                    </li>
+                    <li> <b>Lineal</b>: el VF es una funci&oacute;n lineal del VRMA.
+                    </li>
+                    <li> <b>Lineal inversa</b>: el VF es una funci&oacute;n lineal inversa del VRMA.
+                    </li>
+                    <li> <b>Lineal sim&eacute;trica</b>: el VF es una funci&oacute;n lineal del VRMA tanto en el lado negativo como en el positivo del VRMA, y las dos funciones lineales son sim&eacute;tricas con respecto al eje VF (y).
+                    </li>
+                    <li> <b>Lineal inversa sim&eacute;trica</b>: el VF es una funci&oacute;n lineal del VRMA tanto en el lado negativo como en el positivo del VRMA, y las dos funciones lineales son sim&eacute;tricas con respecto al eje VF (y).
+                    </li>
+                    <li> <b>Cos</b>: el VF es la funci&oacute;n de base coseno del VRMA.
+                    </li>
+                    <li> <b>Cos</b>: el VF es la funci&oacute;n de base secante del VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>: el VF es la funci&oacute;n de base coseno del VRMA cuando el VRMA es negativo y la funci&oacute;n de base secante del VRMA cuando el VRMA no es negativo.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>: el VF es la funci&oacute;n de base secante del VRMA cuando el VRMA es negativo y la funci&oacute;n de base coseno del VRMA cuando el VRMA no es negativo.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Los modificadores de los par&aacute;metros verticales son los siguientes:
+                <ul>
+                    <li> <b>Factor cero</b>: el factor vertical que se utilizar&aacute; cuando el VRMA sea cero. Este factor posiciona el interceptor y de la funci&oacute;n especificada. Por definici&oacute;n, el factor cero no es aplicable a ninguna de las funciones verticales trigonom&eacute;tricas (Cos, Sec, Cos-Sec o Sec-Cos). El interceptor y se define mediante estas funciones.
+                    </li>
+                    <li> <b>&Aacute;ngulo de corte bajo</b>: el &aacute;ngulo VRMA por debajo del cual el VF se establecer&aacute; en infinito.
+                    </li>
+                    <li> <b>&Aacute;ngulo de corte alto</b>: el &aacute;ngulo VRMA por encima del cual el VF se establecer&aacute; en infinito.
+                    </li>
+                    <li> <b>Pendiente</b>: la pendiente de la l&iacute;nea recta utilizada con las palabras clave de factor vertical <b>Lineal</b> y <b>Lineal inversa</b>. La pendiente se especifica como una fracci&oacute;n de aumento sobre la ejecuci&oacute;n (por ejemplo, 45 de pendiente en porcentaje es 1/45, lo que es entrada como 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Seleccionar ráster horizontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&aacute;ster que define la direcci&oacute;n horizontal de cada celda.
+            </p>
+            <p>Los valores del r&aacute;ster deben ser n&uacute;meros enteros comprendidos entre 0 y 360, con 0 grados al norte o hacia la parte superior de la pantalla y que aumentan en el sentido de las agujas del reloj. Las &aacute;reas llanas deben tener el valor -1. Los valores de cada ubicaci&oacute;n se utilizar&aacute;n en conjunto con el  <b>Factor horizontal</b> para determinar el coste horizontal incurrido al realizar el movimiento de una celda hacia sus elementos pr&oacute;ximos.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Factor horizontal (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El  <b>Factor horizontal</b> define la relaci&oacute;n que existe entre el factor de coste horizontal y el &aacute;ngulo de movimiento relativo horizontal.
+            </p>
+            <p>Existen varios factores con modificadores que se pueden seleccionar que identifican un gr&aacute;fico de factor horizontal definido. Los gr&aacute;ficos se utilizan para identificar el factor horizontal que se utiliza para calcular el coste total de realizar el movimiento hacia una celda pr&oacute;xima.
+            </p>
+            <p>En las descripciones siguientes, factor horizontal (HF) define la dificultad horizontal encontrada al realizar un movimiento desde una celda a la siguiente, y &aacute;ngulo de movimiento relativo horizontal (HRMA) identifica el &aacute;ngulo entre la direcci&oacute;n horizontal de una celda y la direcci&oacute;n del movimiento.
+            </p>
+            <p>A continuaci&oacute;n se indican las definiciones y los par&aacute;metros de estos HF:
+                <ul>
+                    <li> <b>Binario</b>: si el HRMA es menor que el &aacute;ngulo de corte, el HF est&aacute; establecido en el valor asociado al factor cero; de lo contrario, es infinito.
+                        
+
+                    </li>
+                    <li> <b>Adelante</b>: solo se permite el movimiento hacia delante. El HRMA debe ser mayor o igual que 0 y menor que 90 (0 &lt;= HRMA &lt; 90). Si el HRMA es mayor que 0 y menor que 45 grados, el HF de la celda se establece para el valor asociado con el factor cero. Si el HRMA es mayor o igual que 45 grados, se utiliza el valor de modificaci&oacute;n del valor lateral. El HF de cualquier HRMA que sea igual o mayor que 90 grados se establece como infinito.
+                    </li>
+                    <li> <b>Lineal</b>: el HF es una funci&oacute;n lineal del HRMA.
+                        
+
+                    </li>
+                    <li> <b>Lineal inversa</b>: el HF es una funci&oacute;n lineal inversa del HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Los modificadores para las palabras clave horizontales son:
+                <ul>
+                    <li> <b>Factor cero</b>: factor horizontal que se utilizar&aacute; cuando el HRMA sea 0. Este factor posiciona el interceptor y para cualquiera de las funciones de los factores horizontales.
+                        
+
+                    </li>
+                    <li> <b>&Aacute;ngulo de corte</b>: el &aacute;ngulo HRMA m&aacute;s all&aacute; del cual el HF se establecer&aacute; en infinito.
+                        
+
+                    </li>
+                    <li> <b>Pendiente</b>: la pendiente de la l&iacute;nea recta utilizada con las palabras clave de factor horizontal <b>Lineal</b> y <b>Lineal inversa</b>. La pendiente se especifica como una fracci&oacute;n de aumento sobre la ejecuci&oacute;n (por ejemplo, 45 de pendiente en porcentaje es 1/45, lo que es entrada como 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Valor lateral</b>: el HF cuando el HRMA es mayor o igual a 45 grados y menor que 90 grados cuando se especifica la palabra clave de factor horizontal <b>Adelante</b>.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Acumulación inicial</h2></div>
+        <hr/>
+        <div>
+            <p>El coste acumulativo inicial con el que comenzar el c&aacute;lculo de costes.
+            </p>
+            <p>Esto permite especificar el coste fijo asociado a un origen. En lugar de empezar con un coste cero, el algoritmo de coste empezar&aacute; con el valor establecido en la  <b>Acumulaci&oacute;n inicial</b>.
+            </p>
+            <p>Los valores deben ser mayores o iguales que cero. El valor predeterminado es 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Acumulación máxima</h2></div>
+        <hr/>
+        <div>
+            <p>La acumulaci&oacute;n m&aacute;xima de la persona que viaja para un origen.
+            </p>
+            <p>Los c&aacute;lculos de coste contin&uacute;an para cada origen hasta que se alcanza la acumulaci&oacute;n especificada.
+            </p>
+            <p>Los valores deben ser mayores que cero. La acumulaci&oacute;n predeterminada es hasta el borde del r&aacute;ster de salida.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplicador de coste</h2></div>
+        <hr/>
+        <div>
+            <p>El multiplicador que se debe aplicar a los valores de coste.
+            </p>
+            <p>Permite controlar el modo de viaje o la magnitud en un origen. Cuanto mayor sea el multiplicador, mayor ser&aacute; el coste de moverse a trav&eacute;s de cada celda.
+            </p>
+            <p>Los valores deben ser mayores que cero. El valor predeterminado es 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Dirección del viaje</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la direcci&oacute;n de la persona que viaja al aplicar factores horizontales y verticales.
+            </p>
+            <p> <b>De origen</b>: el factor horizontal y el factor vertical se aplicar&aacute;n empezando por el origen de entrada y avanzando hacia las celdas que no pertenezcan al origen. Esta es la opci&oacute;n predeterminada.
+            </p>
+            <p> <b>A origen</b>: el factor horizontal y el factor vertical se aplicar&aacute;n empezando por las celdas que no pertenezcan al origen y regresando al origen de entrada.
+            </p>
+            <p>Especifique la palabra clave  <b>De origen</b> o <b>A origen</b> que se aplicar&aacute; a todos los or&iacute;genes o especifique un campo en los datos de origen que contenga las palabras clave para identificar la direcci&oacute;n de desplazamiento de cada origen. Ese campo debe contener la cadena de caracteres <code>FROM_SOURCE</code> o <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Método de distancia (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si la distancia se va a calcular bas&aacute;ndose en un m&eacute;todo planar (Tierra plana) o geod&eacute;sico (elipsoide).
+            </p>
+            <ul>
+                <li> <b>Planar</b>: el c&aacute;lculo de distancia se realizar&aacute; sobre un plano llano proyectado usando un sistema de coordenadas cartesianas 2D. Este es el m&eacute;todo predeterminado.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;sico</b>: el c&aacute;lculo de distancia se realizar&aacute; en el elipsoide. Por lo tanto, independientemente de la proyecci&oacute;n de entrada o salida, los resultados no cambian.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Nombre del ráster de asignación de distancia</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Nombre del ráster de acumulación de distancia</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de acumulaci&oacute;n de distancia contiene la distancia acumulativa de cada celda desde el origen de menor coste o hasta &eacute;l.
+            </p>
+            <p>El r&aacute;ster de salida es de tipo flotante.
+            </p>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Nombre del ráster de dirección hacia atrás (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de direcci&oacute;n hacia atr&aacute;s contiene la direcci&oacute;n calculada en grados. La direcci&oacute;n identifica la siguiente celda por la ruta m&aacute;s corta, de vuelta al origen m&aacute;s cercano, a la vez que evita las barreras.
+            </p>
+            <p>El rango de valores es de 0 grados hasta 360 grados, con el 0 reservado para las celdas de origen. Hacia el este (derecha) es 90 y los valores aumentan en el sentido de las agujas del reloj (180 es sur, 270 es oeste y 360 es norte).
+            </p>
+            <p>El r&aacute;ster de salida es de tipo flotante.
+            </p>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b>. Debe indicar un nombre que no exista a&uacute;n en <b>Mi contenido</b>.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Nombre del ráster de dirección al origen (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de direcci&oacute;n de origen identifica la direcci&oacute;n de la celda de origen de coste acumulado como acimut en grados.
+            </p>
+            <p>El rango de valores es de 0 grados hasta 360 grados, con el 0 reservado para las celdas de origen. Hacia el este (derecha) es 90 y los valores aumentan en el sentido de las agujas del reloj (180 es sur, 270 es oeste y 360 es norte).
+            </p>
+            <p>El r&aacute;ster de salida es de tipo flotante.
+            </p>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b>. Debe indicar un nombre que no exista a&uacute;n en <b>Mi contenido</b>.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Nombre del ráster de ubicación del origen (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de ubicaci&oacute;n de origen es una salida multibanda. La primera banda contiene un &iacute;ndice de fila y la segunda banda contiene un &iacute;ndice de columna. Estos &iacute;ndices identifican la ubicaci&oacute;n de la celda de origen m&aacute;s cercana al menor coste-distancia acumulado.
+            </p>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b>. Debe indicar un nombre que no exista a&uacute;n en <b>Mi contenido</b>.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

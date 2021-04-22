@@ -41,35 +41,35 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Detect Objects Using Deep Learning</h2><p/>
-        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detect Objects Using Deep Learning"></h2>
+        <h2>Виявити об'єкти, використовуючи глибоке навчання</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Виявити об'єкти, використовуючи глибоке навчання"></h2>
         <hr/>
     <p>Цей інструмент запускає навчену модель глибокого навчання на вхідному растрі, щоб створити клас об&rsquo;єктів, в якому містяться знайдені ним об&rsquo;єкти. Об&rsquo;єктами можуть бути обмежуючі рамки або полігони навколо знайдених об&rsquo;єктів, або точки по центру об&rsquo;єктів.
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only the raster area that is visible within the current map extent will be analyzed. If unchecked, the whole raster will be analyzed, even if it is outside the current map extent.
+    <p>Якщо вибрано опцію  <b>Використовувати поточний екстент карти</b>, буде аналізуватися тільки растрова область, видима в межах поточного екстенту карти. Якщо цю опцію не вибрано, буде аналізуватися весь растр, навіть якщо він знаходиться за межами поточного екстенту карти.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Choose image used to detect objects</h2></div>
+        <div><h2>Оберіть зображення, використовуване для виявлення об’єктів</h2></div>
         <hr/>
         <div>
-            <p>The input image used to detect objects.
+            <p>Вхідне зображення, використовуване для виявлення об&rsquo;єктів.
             </p> 
         </div>
     </div>
     <div id="model">
-        <div><h2>Choose deep learning model used to detect objects</h2></div>
+        <div><h2>Вибрати модель глибокого навчання, використовувану для виявлення об'єктів</h2></div>
         <hr/>
         <div>
-            <p>Елемент вхідного пакету глибокого навчання ( <code>.dlpk</code>).
+            <p>Елемент вхідного пакета глибокого навчання ( <code>.dlpk</code>).
             </p>
-            <p>Пакет глибокого навчання містить файл JSON ( <code>.emd</code>) з визначенням моделі Esri, файл бінарної моделі глибокого навчання, і додатково може використовуватися растрова функція Python.
+            <p>Пакет глибокого навчання містить JSON-файл визначення моделі Esri ( <code>.emd</code>), файл бінарної моделі глибокого навчання, та опціонально може використовуватися растрова функція Python.
             </p>
         </div>
     </div>
     <div id="modelArguments">
-        <div><h2>Specify deep learning model arguments</h2></div>
+        <div><h2>Вказати аргументи моделі глибокого навчання</h2></div>
         <hr/>
         <div>
             <p>Аргументи функції визначаються у класі растрової функції Python, на яку посилається вхідна модель. Саме тут наводяться додаткові параметри і аргументи глибокого навчання для експериментів і доводження, такі як довірчий поріг для уточнення чутливості.
@@ -79,17 +79,16 @@
         </div>
     </div>
     <div id="runNMS">
-        <div><h2>Remove duplicate features from the output (optional)</h2></div>
+        <div><h2>Видалити об'єкти-дублікати з вихідних даних (опціонально)</h2></div>
         <hr/>
         <div>
-            <p>Performs non-maximum suppression, where duplicate objects are identified and the duplicate feature with a lower confidence value is removed.
-
+            <p>Виконує придушення немаксимумів, при якому об'єкти-дублікати ідентифікуються і вилучаються повторювані об'єкти з низьким рівнем достовірності.
                 <ul>
-                    <li>Unchecked&mdash;All objects that are detected will be in the output feature class. This is the default.
+                    <li>Не вибрано&mdash;Всі виявлені об&rsquo;єкти будуть у вихідному класі об&rsquo;єктів. Це значення за замовчуванням.
                         
 
                     </li>
-                    <li>Checked&mdash;Removes duplicate objects that are detected.
+                    <li>Вибрано&mdash;Вилучає виявлені повторювані об&rsquo;єкти.
                         
 
                     </li>
@@ -99,38 +98,39 @@
         </div>
     </div>
     <div id="confidenceScoreField">
-        <div><h2>Confidence score field</h2></div>
+        <div><h2>Поле ступеня довіри</h2></div>
         <hr/>
         <div>
-            <p>The field in the feature service that contains the confidence scores as output by the object detection method.
+            <p>Поле в сервісі об&rsquo;єктів, яке містить ступені довіри, видані методом виявлення об&rsquo;єктів.
             </p>
-            <p>This parameter is required when you check the  <b>Non Maximum Suppression</b> parameter.
+            <p>Цей параметр потрібен, коли вибраний параметр  <b>Придушення немаксимумів</b>.
             </p>
         </div>
     </div>
     <div id="classValueField">
-        <div><h2>Class value field</h2></div>
+        <div><h2>Поле значення класу</h2></div>
         <hr/>
         <div>
-            <p>The class value field in the output feature service. If not specified, the tool will use the standard class value fields  <i>Classvalue</i> and <i>Value</i>. If these fields do not exist, all features will be treated as the same object class.
+            <p>Поле значення класу у вихідному сервісі об&rsquo;єктів. Якщо не вказано, інструмент використовуватиме стандартні поля значень класів  <i>Classvalue</i> і <i>Value</i>. Якщо ці поля відсутні, всі об&rsquo;єкти будуть розглядатися як однаковий об&rsquo;єктний клас.
             </p>
         </div>
     </div>
     <div id="maxOverlapRatio">
-        <div><h2>Maximum overlap ratio</h2></div>
+        <div><h2>Максимальний коефіцієнт накладення</h2></div>
         <hr/>
         <div>
-            <p>The maximum overlap ratio for two overlapping features, which is defined as the ratio of intersection area over union area. The default is 0.
+            <p>Максимальний коефіцієнт накладення для двох об&rsquo;єктів, що перекриваються, який визначається як відношення площі перетину до площі об&rsquo;єднання. За замовчуванням: 0.
             </p>
         </div>
     </div>
     <div id="outputObjects">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Ім'я шару результатів</h2></div>
         <hr/>
         <div>
-            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Ім'я за замовчуванням визначається на основі імені інструменту та імені вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
             </p>
-            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            <p>Використовуючи розкривний список  <b>Зберегти результат у</b>, можна вказати ім'я папки в <b>Мій вміст</b>, де зберігатиметься результат.
             </p>
         </div>
     </div>

@@ -44,7 +44,7 @@
         <h2>Create Viewshed</h2><p/>
         <h2><img src="../images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Create Viewshed tool"></h2>
         <hr/>
-    <p>Цей інструмент ідентифікує області, видимі спостерігачу, з урахуванням топографії поверхні. Вхідні точки місць розташування можуть представляти або спостерігачів (наприклад, людей на землі або спостерігачів на пожежній вежі), або об'єкти спостереження (наприклад, вітряні турбіни, водонапірні вежі, транспортні засоби або інші люди). Результати визначають області, які видно з місця розташування спостерігача.
+    <p>Цей інструмент ідентифікує області, видимі розташуванням вхідних спостерігачів, з урахуванням топографії поверхні. Вхідні точки місць розташування можуть представляти або спостерігачів (наприклад, людей на землі або спостерігачів на пожежній вежі), або об'єкти спостереження (наприклад, вітряні турбіни, водонапірні вежі, транспортні засоби або інші люди). Результати визначають області, які видно з місця розташування спостерігача.
     </p>
     <p>Both the observers and the observed objects can have a height above ground, and these heights are used to determine visibility. For example, a viewshed computed for 300-foot wind turbines and a 6-foot tall person standing on the ground will typically be larger than a viewshed computed for 200-foot turbines and a 5-foot tall person.
     </p>
@@ -98,7 +98,7 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div>
             <p>Enter a cutoff distance where the computation of visible areas will stop. Beyond this distance, whether the observer points and the other objects can see each other will not be determined.
             </p>
-            <p>Можна указати або числове значення, яке представляє лінійну відстань, або обрати числове поле із вхідних об&rsquo;єктів спостерігача. Якщо поле вказано, то значення, які містяться в полі, повинні бути в тих самих одиницях, що й одиниці вимірювання xy вхідної поверхні підвищення.
+            <p>Можна указати або числове значення, яке представляє лінійну відстань, або обрати числове поле із вхідних об&rsquo;єктів спостерігача. Якщо надано поле, то значення, що містяться в полі, мають бути в тих самих одиницях, що й одиниці вимірювання x,y вхідної поверхні підвищення.
             </p>
             <p>Note that large values will increase computation time. Unless specified, a default maximum distance will be computed based on the resolution and extent of the input elevation surface.
             </p>
@@ -119,7 +119,7 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div>
             <p>Enter a distance where the computation of visible areas is to begin. Cells on the surface closer than this distance are not visible in the output but can still block visibility of the cells between the minimum and the maximum viewing distance.
             </p>
-            <p>Можна указати або числове значення, яке представляє лінійну відстань, або обрати числове поле із вхідних об&rsquo;єктів спостерігача. Якщо поле вказано, то значення, які містяться в полі, повинні бути в тих самих одиницях, що й одиниці вимірювання xy вхідної поверхні підвищення.
+            <p>Можна указати або числове значення, яке представляє лінійну відстань, або обрати числове поле із вхідних об&rsquo;єктів спостерігача. Якщо надано поле, то значення, що містяться в полі, мають бути в тих самих одиницях, що й одиниці вимірювання x,y вхідної поверхні підвищення.
             </p>
             <p>This parameter is useful for controlling the viewshed analysis area at a specific distance away from the observer. For example, if you are evaluating the visibility from a building top to a distant park, you can set a minimum viewing distance to exclude the areas close by that are of no interest and gain a better processing speed.
             </p>
@@ -230,9 +230,10 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
-            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Ім'я за замовчуванням визначається на основі імені інструменту та імені вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
             </p>
-            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            <p>Використовуючи розкривний список  <b>Зберегти результат у</b>, можна вказати ім'я папки в <b>Мій вміст</b>, де зберігатиметься результат.
             </p>
         </div>
     </div>

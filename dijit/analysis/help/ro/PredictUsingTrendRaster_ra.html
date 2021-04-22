@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Predicția Utilizării Rasterului de Tendințe</h2><p/>
-        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predicție cu Ajutorul Rasterului de Tendință"></h2>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predicția Utilizării Rasterului de Tendințe"></h2>
         <hr/>
     <p>Calculează un raster multidimensional prognozat folosind rasterul de tendințe rezultant din instrumentul  Generarea Rasterului de Tendințe.
     </p>
@@ -62,7 +62,7 @@
         <div><h2>Alegeți variabila(ele) de supus predicției</h2></div>
         <hr/>
         <div>
-            <p>Variabila sau variabilele care vor fi supuse predicției &icirc;n analiză. Dacă  nu sunt specificate variabile, vor fi folosite toate variabilele.
+            <p>Variabila sau variabilele care vor fi supuse predicției &icirc;n analiză. Dacă nu sunt specificate variabile, vor fi folosite toate variabilele.
             </p>
         </div>
     </div>
@@ -70,9 +70,9 @@
         <div><h2>Alegeți metoda folosită pentru a asigura valori de dimensiune a predicției</h2></div>
         <hr/>
         <div>
-            <p>Specifică metoda folosită pentru asigurarea valorilor dimensiunii de predicție.
+            <p>Specifică metoda folosită pentru asigurarea valorilor dimensiunii de prognoză.
                 <ul>
-                    <li> <b>După Valoare</b>&mdash;Predicția va fi calculată pentru o valoare de dimensiune individuală sau o listă de valori de dimensiune specificate la pasul următor. Aceasta este setarea implicită. De exemplu, doriți să prognozați precipitațiile anuale pentru anii 2050, 2100, și 2150.
+                    <li> <b>După Valoare</b>&mdash;Predicția va fi calculată pentru o valoare de dimensiune individuală sau o listă de valori de dimensiune specificate la pasul următor. Aceasta este acţiunea implicită. De exemplu, doriți să prognozați precipitațiile anuale pentru anii 2050, 2100, și 2150.
                     </li>
                     <li> <b>După Interval</b>&mdash;Predicția va fi calculată pentru un interval al dimensiunii definit de o valoare de &icirc;nceput și de sf&acirc;rșit. De exemplu, doriți să prognozați precipitațiile anuale pentru fiecare an dintre 2050 și 2150.
                     </li>
@@ -90,6 +90,22 @@
             <p>Formatul valorilor orei, ad&acirc;ncimii și &icirc;nălțimii trebuie să corespundă formatului valorilor dimensiunii folosite pentru a genera rasterul de tendință. Dacă rasterul de tendință a fost generat pentru dimensiunea StdTime, formatul trebuie să fie AAAA-LL-ZZTHH:MM:SS, de exemplu 2050-01-01T00:00:00. Valorile multiple sunt separate cu punct și virgulă.
             </p>
             <p>Acest parametru este necesar atunci c&acirc;nd metoda  <b>După valoare</b> este selectată pentru a defini valorile dimensiunii pentru predicție.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Început</h2></div>
+        <hr/>
+        <div>
+            <p>Data de &icirc;nceput, &icirc;nălțimea sau ad&acirc;ncimea intervalului de dimensiuni de utilizat &icirc;n prognoză.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Terminare</h2></div>
+        <hr/>
+        <div>
+            <p>Data de sf&acirc;rșit, &icirc;nălțimea sau ad&acirc;ncimea intervalului de dimensiuni de utilizat &icirc;n prognoză.
             </p>
         </div>
     </div>
@@ -123,7 +139,8 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>

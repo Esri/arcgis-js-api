@@ -54,14 +54,14 @@
         <ul>
             <li>Raster &mdash; P&iacute;xeis que cont&ecirc;m valores v&aacute;lidos (n&atilde;o NoData) s&atilde;o usados para extrair os valores de p&iacute;xeis de todos os rasters de entrada, e o centro do pixel &eacute; usado para localiza&ccedil;&otilde;es de ponto.
             </li>
-            <li>Ponto &mdash; Os valores ser&atilde;o  em cada localiza&ccedil;&atilde;o do ponto.
+            <li>Ponto &mdash; Os valores ser&atilde;o em cada localiza&ccedil;&atilde;o do ponto.
             </li>
-            <li>Polilinha ou um pol&iacute;gono &mdash; Os valores ser&atilde;o  no centroide do pol&iacute;gono ou da polilinha. Se o raster de entrada for multidimensional, os valores ser&atilde;o agregados com base no tipo de  <b>Estat&iacute;stica</b>.
+            <li>Polilinha ou um pol&iacute;gono &mdash; Os valores ser&atilde;o no centroide do pol&iacute;gono ou da polilinha. Se o raster de entrada for multidimensional, os valores ser&atilde;o agregados com base no tipo de  <b>Estat&iacute;stica</b>.
             </li>
         </ul>
         
     </p>
-    <p>Os rasters de entrada s&atilde;o  na sua refer&ecirc;ncia espacial e resolu&ccedil;&atilde;o nativas. Se tivermos v&aacute;rios rasters de entrada com diferentes refer&ecirc;ncias espaciais, as localiza&ccedil;&otilde;es de entrada s&atilde;o projetadas para cada refer&ecirc;ncia espacial de cada raster individual a partir do qual os valores s&atilde;o extra&iacute;dos. O ambiente de an&aacute;lise &eacute; aplicado &agrave;s localiza&ccedil;&otilde;es de entrada, mas os raster de entrada n&atilde;o ir&atilde;o respeitar o ambiente de an&aacute;lise.
+    <p>Os rasters de entrada s&atilde;o na sua refer&ecirc;ncia espacial e resolu&ccedil;&atilde;o nativas. Se tivermos v&aacute;rios rasters de entrada com diferentes refer&ecirc;ncias espaciais, as localiza&ccedil;&otilde;es de entrada s&atilde;o projetadas para cada refer&ecirc;ncia espacial de cada raster individual a partir do qual os valores s&atilde;o extra&iacute;dos. O ambiente de an&aacute;lise &eacute; aplicado &agrave;s localiza&ccedil;&otilde;es de entrada, mas os raster de entrada n&atilde;o ir&atilde;o respeitar o ambiente de an&aacute;lise.
     </p>
     <p>As localiza&ccedil;&otilde;es que extraem valores de c&eacute;lulas NoData no raster de entrada receber&atilde;o um valor &lt;null&gt; na tabela de sa&iacute;da.
     </p>
@@ -81,9 +81,9 @@
         <div><h2>Escolher as camadas</h2></div>
         <hr/>
         <div>
-            <p>Uma camada de imagens simples ou uma lista de camadas de imagens, cujos valores ser&atilde;o  com base nos dados de localiza&ccedil;&atilde;o de entrada.
+            <p>Uma camada de imagens simples ou uma lista de camadas de imagens, cujos valores ser&atilde;o com base nos dados de localiza&ccedil;&atilde;o de entrada.
             </p>
-            <p>Para  todas as sec&ccedil;&otilde;es de uma camada de imagens multidimensionais, esta deve ser o &uacute;nico raster de entrada.
+            <p>Para todas as sec&ccedil;&otilde;es de uma camada de imagens multidimensionais, esta deve ser o &uacute;nico raster de entrada.
             </p>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div><h2>Especificar campo de ID nico</h2></div>
         <hr/>
         <div>
-            <p>Um campo que cont&eacute;m um valor diferente para cada localiza&ccedil;&atilde;o ou  no raster de localiza&ccedil;&atilde;o de entrada ou classe de elementos.
+            <p>Um campo que cont&eacute;m um valor diferente para cada localiza&ccedil;&atilde;o ou no raster de localiza&ccedil;&atilde;o de entrada ou classe de elementos.
             </p>
         </div>
     </div>
@@ -112,7 +112,6 @@
             <p>Especificar o tempo, profundidade, ou outros dados de aquisi&ccedil;&atilde;o associados com as c&eacute;lulas de localiza&ccedil;&atilde;o ou elementos.
             </p>
             <p>Para cada dimens&atilde;o, existem tr&ecirc;s op&ccedil;&otilde;es para especificar as informa&ccedil;&otilde;es de aquisi&ccedil;&atilde;o associado com c&eacute;lulas de localiza&ccedil;&atilde;o ou elementos:
-
                 <ul>
                     <li> <b>Campo &uacute;nico ou valor</b> &mdash; Quando esa op&ccedil;&atilde;o for selecionada, as seguintes informa&ccedil;&otilde;es devem ser especificadas:
                         <ul>
@@ -195,7 +194,7 @@
         <div>
             <p>O percentil a calcular quando o par&acirc;metro  <b>Tipo de Estat&iacute;stica</b> est&aacute; definido para <b>Percentil</b>.
             </p>
-            <p>Este  de 0 a 100. O padr&atilde;o &eacute; 90.
+            <p>Este de 0 a 100. O padr&atilde;o &eacute; 90.
             </p>
         </div>
     </div>
@@ -206,26 +205,26 @@
             <p>O algoritmo de reamostragem usado na amostragem de um raster.
             </p>
             <ul>
-                <li> <b>Mais pr&oacute;ximo</b> &mdash; Vizinho mais pr&oacute;ximo. Isto &eacute; por omiss&atilde;o.
+                <li> <b>Mais pr&oacute;ximo</b> &mdash; Vizinho mais pr&oacute;ximo. Utilize o valor da c&eacute;lula mais pr&oacute;xima para atribuir um valor &agrave; c&eacute;lula de sa&iacute;da durante a reamostragem. Isto &eacute; por omiss&atilde;o.
                 </li>
-                <li> <b>Bilinear</b> &mdash; Interpola&ccedil;&atilde;o bilinear
+                <li> <b>Bilinear</b> &mdash; Interpola&ccedil;&atilde;o bilinear. Determina o novo valor de uma c&eacute;lula com base numa m&eacute;dia de dist&acirc;ncia ponderada dos quatro centros de c&eacute;lulas de entrada mais pr&oacute;ximos.
                 </li>
-                <li> <b>C&uacute;bico</b> &mdash; Convolu&ccedil;&atilde;o c&uacute;bica
+                <li> <b>C&uacute;bico</b> &mdash; Convolu&ccedil;&atilde;o c&uacute;bica. Determina o novo valor de uma c&eacute;lula com base na instala&ccedil;&atilde;o de uma curva suave atrav&eacute;s dos 16 centros de c&eacute;lulas de entrada mais pr&oacute;ximos.
                 </li>
             </ul>
             
         </div>
     </div>
     <div id="layout">
-        <div><h2>Especificar o  de saída</h2></div>
+        <div><h2>Especificar o layout de saída</h2></div>
         <hr/>
         <div>
-            <p>Especifica se os valores  aparecem em linhas ou colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas est&aacute; dispon&iacute;vel quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
+            <p>Especifica se os valores aparecem em linhas ou colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas est&aacute; dispon&iacute;vel quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
             </p>
             <ul>
-                <li> <b>Os valores  aparecem em linha</b> &mdash; Os valores  aparecem em linhas separadas na tabela de sa&iacute;da. Isto &eacute; por omiss&atilde;o.
+                <li> <b>Os valores aparecem em linha</b> &mdash; Os valores aparecem em linhas separadas na tabela de sa&iacute;da. Isto &eacute; por omiss&atilde;o.
                 </li>
-                <li> <b>Os valores  aparecem em coluna</b> &mdash; Os valores  aparecem em colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas &eacute; v&aacute;lida quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
+                <li> <b>Os valores amostrados aparecem em coluna</b> &mdash; Os valores amostrados aparecem em colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o apenas &eacute; v&aacute;lida quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada sec&ccedil;&atilde;o &eacute; um raster de banda &uacute;nica.
                 </li>
             </ul>
             
@@ -235,12 +234,12 @@
         <div><h2>Especificar tipo de saída</h2></div>
         <hr/>
         <div>
-            <p>Especifica se deve gerar uma classe de elementos de pontos com valores  na sua tabela, ou apenas uma tabela com valores .
+            <p>Especifica se deve gerar uma classe de elementos de pontos com valores na sua tabela, ou apenas uma tabela com valores .
             </p>
             <ul>
                 <li> <b>Tabela</b> &mdash; Gerar uma tabela com valores . Isto &eacute; por omiss&atilde;o.
                 </li>
-                <li> <b>Elementos</b> &mdash; Gerar uma classe de elementos de pontos com valores  na sua tabela. Se os elementos de entrada de localiza&ccedil;&atilde;o forem polilinhas ou pol&iacute;gonos, cada ponto na sa&iacute;da &eacute; o centroide de cada geometria dos elementos de entrada de localiza&ccedil;&atilde;o.
+                <li> <b>Elementos</b> &mdash; Gerar uma classe de elementos de pontos com valores na sua tabela. Se os elementos de entrada de localiza&ccedil;&atilde;o forem polilinhas ou pol&iacute;gonos, cada ponto na sa&iacute;da &eacute; o centroide de cada geometria dos elementos de entrada de localiza&ccedil;&atilde;o.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

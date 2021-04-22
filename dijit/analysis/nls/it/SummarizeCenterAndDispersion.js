@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli un layer da descrivere",summaryTypes:"Tipi riepilogo",centralFeature:"Feature Centrale",meanCenter:"Centro medio",medianCenter:"Centro Mediano",ellipse:"Ellisse",weightBy:"Peso per (opzionale)",groupBy:"Raggruppa per (opzionale)",resultLayerName:"Nome del layer dei risultati",outputLayerName:"Descrivi distribuzione di ${layerName}",none:"Nessuna",itemDescription:"Feature layer generato in seguito all'esecuzione di Riepiloga centro e dispersione su ${layerName}. ",itemTags:"Risultato analisi, Riepiloga centro e dispersione, ${layerName}",itemSnippet:"Feature layer generato da Riepiloga centro e dispersione"});

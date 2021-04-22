@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimale Regionsverbindungen</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Abbildung zum Werkzeug &quot;Optimale Regionsverbindungen&quot;"></h2>
+        <hr/>
+    <p>Dieses Werkzeug berechnet das optimale Konnektivit&auml;tsnetzwerk zwischen mindestens zwei Eingabe-Regionen.
+    </p>
+    <p>Nachfolgend werden einige Beispielanwendungen aufgef&uuml;hrt:
+        <ul>
+            <li>Eignungsmodellierung: Sie haben 10 der besten Lebensr&auml;ume f&uuml;r Rotluchse &uuml;ber ein Eignungsmodell identifiziert. Sie m&ouml;chten, dass die Rotluchse sich durch das effektivste Netzwerk aus Wildtierkorridoren zwischen den Lebensr&auml;umen bewegen k&ouml;nnen, um die genetische Vielfalt in der Metapopulation zu erhalten.
+                
+
+            </li>
+            <li>Holzernte: Bei einer Holzernte m&ouml;chten Sie das kosteneffizienteste Netzwerk von Waldwegen f&uuml;r den Abtransport des Holzes erstellen.
+                
+
+            </li>
+            <li>Friedenssicherung: In einem milit&auml;rischen Einsatz zur Friedenssicherung haben Sie f&uuml;nf Bereiche identifiziert, in denen Truppen und Einsatzkr&auml;fte stationiert werden sollen. Sie m&ouml;chten ein Netzwerk aus optimal verbundenen Versorgungswegen zwischen den Milit&auml;rst&uuml;tzpunkten entwickeln.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Wenn die Option  <b>Aktuelle Kartenausdehnung verwenden</b> aktiviert ist, werden nur die Positionen in den Eingabe-Layern analysiert, die in der aktuellen Kartenausdehnung sichtbar sind. Wenn diese Option deaktiviert ist, werden alle Positionen in den beiden Eingabe-Layern analysiert, auch diejenigen, die sich au&szlig;erhalb der aktuellen Kartenausdehnung befinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Regionen-Raster oder -Feature auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Die Eingabe-Regionen, die durch das optimale Netzwerk verbunden werden sollen.
+            </p>
+            <p>Wenn die Region-Eingabe ein Raster ist, werden die Regionen nach Gruppen zusammenh&auml;ngender (benachbarter) Zellen mit identischem Wert definiert. Jede Region muss eindeutig nummeriert sein. Die Zellen, die nicht Teil einer Region sind, m&uuml;ssen vom Typ &quot;NoData&quot; sein. Der Rastertyp muss ein Ganzzahlwert sein, und die Werte k&ouml;nnen positiv oder negativ sein.
+            </p>
+            <p>Wenn die Regionseingabe ein Feature ist, kann es sich um Polygone, Linien oder Punkte handeln. Polygonregionen d&uuml;rfen nicht aus Multipart-Polygonen bestehen.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Barriere-Raster- oder -Feature auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Das Dataset, das die Barrieren definiert.
+            </p>
+            <p>Bei einem Raster kann der Eingabetyp ein Integer- oder Gleitkomma-Raster sein. Zellen, die &uuml;ber einen Wert (einschlie&szlig;lich 0) verf&uuml;gen, werden als Barriere verarbeitet. Zellen, die &uuml;ber einen NoData-Wert verf&uuml;gen, werden nicht als Barriere verarbeitet.
+            </p>
+            <p>Bei einem Feature kann die Eingabe ein Punkt, eine Linie oder ein Polygon sein.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Kosten-Raster auswählen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster, das die Impedanz oder die Kosten f&uuml;r eine planimetrische Bewegung durch jede Zelle definiert.
+            </p>
+            <p>Der Wert an jeder Zellenposition stellt die Kosten pro Einheitenentfernung f&uuml;r die Bewegung durch die Zelle dar. Jeder Zellenpositionswert wird mit der Zellenaufl&ouml;sung multipliziert, und gleichzeitig werden diagonale Bewegungen ausgeglichen, um die Gesamtkosten f&uuml;r die Bewegung durch die Zelle zu erhalten.
+            </p>
+            <p>Die Werte im Kosten-Raster k&ouml;nnen Ganzzahl- oder Gleitkommawerte sein, sie d&uuml;rfen jedoch nicht negativ oder 0 sein (negative oder keine Kosten sind nicht zul&auml;ssig).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Entfernungsmethode (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Entfernung mithilfe einer planaren (flache Erde) oder geod&auml;tischen (Ellipsoid) Methode berechnet werden soll.
+            </p>
+            <ul>
+                <li> <b>Planar</b>: Die Entfernungsberechnung erfolgt auf einer projizierten flachen Ebene mithilfe eines kartesischen 2D-Koordinatensystems. Dies ist das Standardverfahren.
+                    
+
+                </li>
+                <li> <b>Geod&auml;tisch</b>: Die Entfernungsberechnung erfolgt f&uuml;r das Ellipsoid. Deshalb &auml;ndern sich die Ergebnisse unabh&auml;ngig von der Eingabe- oder Ausgabeprojektion nicht.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Verbindungen innerhalb von Regionen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt an, ob die Pfade fortgesetzt und innerhalb der Eingaberegionen verbunden werden.
+            </p>
+            <ul>
+                <li> <b>Verbindungen generieren</b>: Pfade werden innerhalb der Eingaberegionen fortgesetzt, um alle Pfade zu verbinden, die in eine Region hineinf&uuml;hren. Dies ist die Standardeinstellung.
+                    
+
+                </li>
+                <li> <b>Keine Verbindungen</b>: Pfade werden an den Kanten der Eingaberegionen beendet und nicht fortgesetzt bzw. nicht in den Regionen verbunden.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Name des Ergebnis-Feature-Layers mit optimalen Konnektivitätslinien</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Bei diesem Layer handelt es sich um ein Ausgabelinien-Feature, das die einzelnen Eingaberegionen verbindet.
+            </p>
+            <p>Jeder Pfad (bzw. jede Linie) ist eindeutig nummeriert, und konkrete Informationen &uuml;ber den Pfad sind in zus&auml;tzlichen Feldern in der Attributtabelle gespeichert. Dabei handelt es sich um folgende Felder:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>: die eindeutige Kennung f&uuml;r den Layer
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>: die akkumulative Gesamtentfernung oder die akkumulativen Gesamtkosten f&uuml;r den Pfad
+                    
+
+                </li>
+                <li> <i>REGION1</i>: die erste Region, die der Pfad verbindet
+                    
+
+                </li>
+                <li> <i>REGION2</i>: die andere Region, die der Pfad verbindet
+                    
+
+                </li>
+            </ul>
+            
+            <p>Da jeder Pfad durch eine eindeutige Linie dargestellt wird, weisen Positionen, an denen Pfade an derselben Route verlaufen, mehrere Linien auf.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Name des Ergebnis-Feature-Layers benachbarter Verbindungen (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Bei diesem Layer handelt es sich um das Ausgabe-Linien-Feature, das alle Pfade von jeder Region zu jeder ihrer n&auml;chstgelegenen bzw. kosteng&uuml;nstigsten Nachbarn identifiziert.
+            </p>
+            <p>Jeder Pfad (bzw. jede Linie) ist eindeutig nummeriert, und konkrete Informationen &uuml;ber den Pfad sind in zus&auml;tzlichen Feldern in der Attributtabelle gespeichert. Dabei handelt es sich um folgende Felder:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>: die eindeutige Kennung f&uuml;r den Layer
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>: die akkumulative Gesamtentfernung oder die akkumulativen Gesamtkosten f&uuml;r den Pfad
+                    
+
+                </li>
+                <li> <i>REGION1</i>: die erste Region, die der Pfad verbindet
+                    
+
+                </li>
+                <li> <i>REGION2</i>: die andere Region, die der Pfad verbindet
+                    
+
+                </li>
+            </ul>
+            
+            <p>Da jeder Pfad durch eine eindeutige Linie dargestellt wird, weisen Positionen, an denen Pfade an derselben Route verlaufen, mehrere Linien auf.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

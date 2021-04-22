@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"Klasifikuj piksele pomoću detaljnog učenja",outputLayerName:"${layername}_classified",modelLabel:"Odaberite model detaljnog učenja koji se koristi za klasifikovanje piksela",modelArgsLabel:"Navedite argumente modela detaljnog učenja",nameLabel:"Naziv",valueLabel:"Vrednost",queryModelArgsMsg:"Izvršavanje upita za argumente modela...",queryModelArgsErrMsg:"Neuspešan upit argumenata modela.",analysisLayerLabel:"Odaberite snimak koji se koristi za klasifikovanje piksela",itemDescription:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja",itemTags:"Rezultat rasterske analize, Klasifikuj piksele pomoću detaljnog učenja, ${layername}",itemSnippet:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja"});
+define({toolDefine:"Klasifikuj piksele pomoću detaljnog učenja",outputLayerName:"${layername}_classified",modelLabel:"Odaberite model detaljnog učenja koji se koristi za klasifikovanje piksela",modelArgsLabel:"Navedite argumente modela detaljnog učenja",nameLabel:"Naziv",valueLabel:"Vrednost",queryModelArgsMsg:"Izvršavanje upita za argumente modela...",queryModelArgsErrMsg:"Neuspešan upit argumenata modela.",processingModeLabel:"Režim obrade",processAsMosaicLabel:"Obrada kao mozaički snimak",processAsItemsLabel:"Obrada svih stavki rastera odvojeno",analysisLayerLabel:"Odaberite snimak koji se koristi za klasifikovanje piksela",itemDescription:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja",itemTags:"Rezultat rasterske analize, Klasifikuj piksele pomoću detaljnog učenja, ${layername}",itemSnippet:"Servis za analizu snimaka nastao iz funkcije Klasifikuj piksele pomoću detaljnog učenja"});

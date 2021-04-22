@@ -44,7 +44,7 @@
         <h2>Summera raster inom</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Verktyget Summera raster inom"></h2>
         <hr/>
-    <p>Det h&auml;r verktyget summerar ett raster baserat p&aring; omr&aring;den (zoner) som definieras av det f&ouml;rsta indatalagret.
+    <p>Det h&auml;r verktyget summerar v&auml;rdena fr&aring;n ett raster inom zonerna f&ouml;r ett annat dataset.
     </p>
     <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>N&auml;r du har valt ett lager som ska summeras kan du ber&auml;kna statistik f&ouml;r valfria numeriska attribut till punkterna, linjerna och omr&aring;dena i indataomr&aring;deslagret.
             </p>
-            <p>De tillg&auml;ngliga statistiktyperna n&auml;r det valda f&auml;ltet &auml;r heltal &auml;r Genomsnitt, Majoritet, Maximum, Median, Minimum, Minoritet, Omf&aring;ng, Standardavvikelse, Summa och Variation.
+            <p>De tillg&auml;ngliga statistiktyperna n&auml;r det valda f&auml;ltet &auml;r heltal &auml;r Genomsnitt, Majoritet, Maximum, Median, Minimum, Minoritet, Percentil, Omf&aring;ng, Standardavvikelse, Summa och Variation.
             </p>
             <p>Om f&auml;ltet &auml;r flyttal &auml;r alternativen Genomsnitt, Maximum, Minimum, Omf&aring;ng, Standardavvikelse och Summa.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilvärde</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil att ber&auml;kna. Standard &auml;r 90, som anger den nittionde percentilen.
+            </p>
+            <p>V&auml;rdena kan vara fr&aring;n 0 till 100. Percentilen 0 motsvarar i huvudsak statistikkategorin Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
+            </p>
+            <p>Detta alternativ st&ouml;ds bara om parametern  <b>V&auml;lj statistik att ber&auml;kna</b> &auml;r angiven till <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Bearbeta flerdimensionellt</h2></div>
+        <hr/>
+        <div>
+            <p>Anger hur indatarastren bearbetas om de &auml;r flerdimensionella. Om du v&auml;ljer flerdimensionell bearbetning ber&auml;knas statistiken f&ouml;r alla dimensioner av det angivna flerdimensionella datasetet. Annars ber&auml;knas statistiken fr&aring;n den aktuella sektorn av det angivna flerdimensionella datasetet. Detta &auml;r standardinst&auml;llningen.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

@@ -72,10 +72,30 @@
         <div><h2>Vælg den Deep Learning-model, der skal bruges til at registrere objekter</h2></div>
         <hr/>
         <div>
-            <p>Elementet Deep Learning-inputpakken ( <code>.dlpk</code>).
+            <p>Elementet Deep Learning-inputpakke ( <code>.dlpk</code>).
             </p>
             <p>Deep Learning-pakken best&aring;r af Esri-modeldefinitionens JSON-filen ( <code>.emd</code>), den bin&aelig;re Deep Learning-modelfil, og evt. den Python rasterfunktion, der skal anvendes.
             </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Behandlingstilstand</h2></div>
+        <hr/>
+        <div>
+            <p>Angiver, hvordan alle rasterelementer i et mosaikdatas&aelig;t eller en billedtjeneste skal behandles. Denne parameter anvendes, n&aring;r inputrasteren er et mosaikdatas&aelig;t eller en billedtjeneste.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Alle rasterelementer i mosaikdatas&aelig;ttet eller billedtjenesten vil blive placeret i en mosaik og behandlet. Dette er standardv&aelig;rdien.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Alle rasterelementer i mosaikdatas&aelig;ttet eller billedtjenesten behandles som separate billeder.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
     <div id="modelArguments">
@@ -94,7 +114,7 @@
         <div>
             <p>Navnet p&aring; det felt, der skal indeholde klassifikationsetiketten i output-vektorlaget.
             </p>
-            <p>Hvis der ikke er angivet noget feltnavn, genereres  <i>ClassLabel</i> der et nyt felt i output-vektorlaget.
+            <p>Hvis der ikke er angivet noget feltnavn, genereres  <i>ClassLabel</i>, der er et nyt felt, i output-vektorlaget.
             </p>
         </div>
     </div>
@@ -102,7 +122,7 @@
         <div><h2>Procestilstand</h2></div>
         <hr/>
         <div>
-            <p>Angiver, hvordan alle rasterelementer i en billedtjeneste skal behandles. 
+            <p>Angiver, hvordan alle rasterelementer i en billedtjeneste skal behandles.
                 <ul>
                     <li> <b>Behandl som mosaikbillede</b>&mdash;Alle rasterelementer i billedtjenesten samles i en mosaik og behandlet. Dette er standardv&aelig;rdien.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
             <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.

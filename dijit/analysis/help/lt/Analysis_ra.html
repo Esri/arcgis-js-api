@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrų analizė leidžia analizuoti didelius rastrų duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų.  Portal for ArcGIS internetinės paskyros naudotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai:  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Naudoti gretimybes</b>, <b>Analizuoti vaizdą</b>, <b>Analizuoti reljefą</b>, <b>Valdyti duomenis</b>, <b>Gilus mokymasis</b> ir <b>Daugiamatė analizė</b>.
+        <p>Rastrų analizė leidžia analizuoti didelius rastrų duomenų rinkinius, naudojantis  ArcGIS Image Server. Pasinaudojant serverio galimybėmis, galima greičiau i&scaron;analizuoti daugiau duomenų. Portal for ArcGIS internetinės paskyros naudotojui &scaron;iuo metu prieinami &scaron;ie įrankių rinkiniai  <b>Sumuoti duomenis</b>, <b>Analizuoti dėsningumus</b>, <b>Naudoti gretimybes</b>, <b>Analizuoti vaizdą</b>, <b>Analizuoti reljefą</b>, <b>Valdyti duomenis</b>, <b>Gilus mokymasis</b> ir <b>Daugiamatė analizė</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
-        <h2>Duomenų sumavimas</h2>
+        <h2>Sumuoti duomenis</h2>
         <hr/>
-        <p>&Scaron;iame rinkinyje yra įrankis, skirtas į jūsų nurodyto ploto ribas patenkančio rastro sluoksnio statistikai skaičiuoti. 
+        <p>&Scaron;ie įrankiai naudojami apskaičiuoti rastro sluoksnio, esančio jūsų nurodyto ploto ribose (zonose), statistiką.
             <ul>
                 <li> <b>Sumuoti rastrą viduje</b> apskaičiuoja rastro gardelių, patenkančių į nurodyto ploto ribas, statistiką.
+                </li>
+                <li> <b>Zonos statistika lentelėje </b> apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes ir pateikia rezultatus lentelėje.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>apskaičiuoja į nurodytus plotus patenkančių rastro gardelių kai kuriuos suvestinius statistikos rodiklius.
+            <p>&Scaron;is įrankis apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes.
             </p>
-            <p>Keli pritaikymo pavyzdžiai: 
-
-                <ul>
-                    <li>Turėdami vandens baseinų teritorijų sluoksnį ir auk&scaron;čių rastro sluoksnį, galite apskaičiuoti kiekvieno vandens baseino auk&scaron;čių diapazoną, kad nustatytumėte, kur tekantis vanduo sugeneruotų daugiausia energijos.
-                        
-
-                    </li>
-                    <li>Turėdami administracinių vienetų sluoksnį ir žemės panaudojimo kategorijų rastrinį sluoksnį, galite apskaičiuoti kiekvieno administracinio vieneto žemės panaudojimo skirtumus, kad nustatytumėte, kuriuose reikia daugiausia darbo jėgos, ir galėtumėte sukurti valdymo planą.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonos statistika lentelėje</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Zonos statistikos lentelėje diagrama">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes ir pateikia rezultatus lentelėje.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Skaičiuoti tankį</h2></td>
+                    <td><h2>Apskaičiuoti tankį</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Tankio apskaičiavimo įrankis">
                     </td>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Naudoti gretimybes</h2>
         <hr/>
-        <p>&Scaron;ie įrankiai leidžia atsakyti į vieną dažniausių erdvinės analizės klausimų: kas yra greta ko?
-
+        <p>&Scaron;ie įrankiai leidžia atsakyti į dažniausius erdvinės analizės klausimus: &bdquo;Kas yra &scaron;alia ko?&ldquo; ir &bdquo;Koks yra optimalus kelias ten nuvykti?&ldquo;
             <ul>
-                <li> <b>Skaičiuoti atstumą</b> skaičiuoja Euklido atstumą, kryptį ir priskyrimą i&scaron; vieno &scaron;altinio arba &scaron;altinių rinkinio.
+                <li> <b>Apskaičiuoti atstumą</b> skaičiuoja Euklido atstumą, kryptį ir priskyrimą i&scaron; vieno &scaron;altinio arba &scaron;altinių rinkinio.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Nustatyti kelionės sąnaudų mar&scaron;rutą kaip poliliniją</b> skaičiuoja mažiausių sąnaudų polilinijų mar&scaron;rutą tarp pradinių ta&scaron;kų ir žinomų tikslinių vietų.
+                <li> <b>Nustatyti kelionės sąnaudų mar&scaron;rutą kaip poliliniją</b> skaičiuoja mažiausių sąnaudų polilinijų mar&scaron;rutą tarp žinomų tikslinių vietų ir pradinių ta&scaron;kų.
+                    
+
+                </li>
+                <li> <b>Sukauptas atstumas</b> skaičiuoja kiekvienos gardelės sukauptą atstumą iki pradinių ta&scaron;kų, atsižvelgiant į tiesinį atstumą, sąnaudų atstumą, tikrąjį pavir&scaron;iaus atstumą, taip pat vertikalius ir horizontalius veiksnius.
+                    
+
+                </li>
+                <li> <b>Atstumo priskyrimas</b> skaičiuoja kiekvienos gardelės atstumo priskyrimą iki pateiktų pradinių ta&scaron;kų, atsižvelgiant į tiesinį atstumą, sąnaudų atstumą, tikrąjį pavir&scaron;iaus atstumą, taip pat vertikalius ir horizontalius veiksnius.
+                    
+
+                </li>
+                <li> <b>Optimalus kelias kaip linija</b> skaičiuoja optimalų kelią nuo tikslų iki pradinių ta&scaron;kų kaip liniją.
+                    
+
+                </li>
+                <li> <b>Optimalus kelias kaip rastras</b> skaičiuoja optimalų kelią nuo tikslų iki pradinių ta&scaron;kų kaip rastrą.
+                    
+
+                </li>
+                <li> <b>Optimalus susisiekimas tarp regionų</b> skaičiuoja optimalų sujungimo tinklą tarp dviejų ir daugiau įvesties regionų.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Skaičiuoja Euklido atstumą, kryptį ir priskyrimą i&scaron; vieno &scaron;altinio arba &scaron;altinių rinkinio. &Scaron;į įrankį galite naudoti, kad apskaičiuotumėte, kaip toli nuo tam tikros vietovės yra kelias, pastatas arba parkas. Taip pat galite nustatyti, kokia kryptimi turite keliauti nuo vietovės, kad tiesiausiu keliu grįžtumėte prie pradinio ta&scaron;ko. Savo analizuojamoje teritorijoje galite kiekvienai padėčiai rasti artimiausią pradinį ta&scaron;ką.
+            <p>&Scaron;is įrankis skaičiuoja Euklido atstumą, kryptį ir priskyrimą i&scaron; vieno &scaron;altinio arba &scaron;altinių rinkinio.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Skaičiuoja optimalių sąnaudų tinklą i&scaron; įvesties regionų rinkinio.
+            <p>&Scaron;is įrankis skaičiuoja optimalių sąnaudų tinklą i&scaron; įvesties regionų rinkinio.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Skaičiuoja mažiausių sąnaudų polilinijų mar&scaron;rutą tarp pradinių ta&scaron;kų ir žinomų tikslinių vietų.
+            <p>&Scaron;is įrankis skaičiuoja mažiausių sąnaudų polilinijų mar&scaron;rutą tarp tikslinių vietų ir pradinių ta&scaron;kų.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Sukauptas atstumas</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Sukaupto atstumo įrankio iliustracija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja kiekvienos gardelės sukauptą atstumą iki &scaron;altinio, atsižvelgiant į tiesinį atstumą, sąnaudų atstumą, tikrąjį pavir&scaron;iaus atstumą ir vertikalų ir horizontalų veiksnius.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Atstumo priskyrimas</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Atstumo priskyrimo įrankio iliustracija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja kiekvienos gardelės atstumo priskyrimą iki pateiktų &scaron;altinių, atsižvelgiant į tiesinį atstumą, sąnaudų atstumą, tikrąjį pavir&scaron;iaus atstumą ir vertikalų ir horizontalų veiksnius.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalus kelias kaip linija</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Optimalaus kelio kaip linijos įrankio iliustracija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja optimalų kelią nuo tikslų iki pradinių ta&scaron;kų kaip liniją.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalus kelias kaip rastras</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Optimalaus kelio kaip rastro įrankio iliustracija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja optimalų kelią nuo tikslų iki pradinių ta&scaron;kų kaip rastrą.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalus susisiekimas tarp regionų</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Optimalaus susisiekimo tarp regionų įrankio iliustracija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is įrankis apskaičiuoja optimalų sujungimo tinklą tarp dviejų ir daugiau įvesties regionų.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
-        <h2>Analizuoti vaizdus</h2>
+        <h2>Vaizdo analizė</h2>
         <hr/>
-        <p>Toliau apra&scaron;ytas įrankis padeda analizuoti vaizdus. 
+        <p>Įrankių kategorijos  <b>Analizuoti vaizdą</b> įrankis padeda analizuoti vaizdus:
             <ul>
-                <li>Įrankis  <b>Taikyti rastrų funkcijos &scaron;abloną</b> apdoroja jūsų vaizdus naudodamas funkcijų seką, kaip nurodo rastrų funkcijos &scaron;ablonas.
-                </li>
-                <li> <b>Stebėti augmeniją</b> aptinka augmeniją vaizde, atlikdamas aritmetiniais veiksmais kanaluose.
+                <li> <b>Stebėti augmeniją</b> aptinka santykinį augmenijos plotą vaizde, atliekant aritmetinius kanalų veiksmus. Vaizdų analizei galimi keli augalijos indeksai.
                     
 
                 </li>
@@ -212,33 +307,18 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Taikyti rastrų funkcijos šabloną</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Taikyti rastrų funkcijos &scaron;abloną">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Apdoroja jūsų vaizdus naudodamas funkcijų seką, kaip nurodo rastrų funkcijos &scaron;ablonas.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Stebėti augmeniją</h2></td>
+                    <td><h2>Augmenijos stebėjimas</h2></td>
                     <td>
                     <img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" class="titleImage" alt="Augmenijos stebėjimo įrankis portalui">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Atliekami aritmetiniai veiksmai daugiakanalio rastrinio sluoksnio kanaluose, kad būtų galima gauti informaciją apie tiriamo ploto padengimą augmenija.
+            <p>Atliekami aritmetiniai veiksmai daugiakanalio rastrinio sluoksnio kanaluose, kad būtų galima gauti informaciją apie padengimą augmenija.
             </p>
             <br/>
         </div>
@@ -358,7 +438,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Išgauti rastrą</h2></td>
+                    <td><h2>Rastro išgavimas</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Rastro i&scaron;gavimo įrankis portalui">
                     </td>
@@ -373,7 +453,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Iš naujo susieti reikšmes</h2></td>
+                    <td><h2>Reikšmių priskyrimas iš naujo</h2></td>
                     <td>
                     <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Portalo įrankis reik&scaron;mėms i&scaron; naujo susieti">
                     </td>
@@ -418,9 +498,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Atranka</h2></td>
+                    <td><h2>Pavyzdys</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Atranka">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Pavyzdys">
                     </td>
                 </tr></tbody>
             </table>
@@ -448,9 +528,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Klasifikuoti pikselius naudojant gilųjį mokymąsi</h2></td>
+                    <td><h2>Pikselių klasifikavimas naudojant gilųjį mokymąsi</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasifikuoti pikselius naudojant gilųjį mokymąsi">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Pikselių klasifikavimas naudojant gilųjį mokymąsi">
                     </td>
                 </tr></tbody>
             </table>
@@ -463,9 +543,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Aptikti objektus naudojant gilųjį mokymąsi</h2></td>
+                    <td><h2>Objektų aptikimas naudojant gilųjį mokymąsi</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Aptikti objektus naudojant gilųjį mokymąsi">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Objektų aptikimas naudojant gilųjį mokymąsi">
                     </td>
                 </tr></tbody>
             </table>

@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Selecione o tipo de extens&atilde;o a utilizar ao recortar a geometria da camada.
-
                 <ul>
                     <li>Utilizar extens&atilde;o atual&mdash;A atual extens&atilde;o do mapa ser&aacute; utilizada para recortar a camada resultante. Isto &eacute; por omiss&atilde;o.
                         
 
                     </li>
-                    <li>Selecionar &aacute;rea de estudo&mdash;Permite-lhe escolher se o resultado exibir&aacute; a &aacute;rea no interior da extens&atilde;o da geometria ou a &aacute;rea no exterior da extens&atilde;o da geometria. Caso selecione a op&ccedil;&atilde;o  <b>Dados no interior da geometria</b> , as imagens que se encontram no exterior da extens&atilde;o ser&atilde;o removidas. Caso selecione a op&ccedil;&atilde;o <b>Dados no exterior da geometria</b> , as imagens que se encontram no interior da extens&atilde;o ser&atilde;o removidas. Pode ainda definir uma geometria de recorte, utilizando a ferramenta desenhar.
+                    <li>Selecionar a &aacute;rea de estudo&mdash;Permite-lhe definir uma geometria de recorte, utilizando a ferramenta de desenho.
+                        
+
+                    </li>
+                    <li>Selecionar camada&mdash;Selecione uma camada de elementos ou camada de imagens para definir a extens&atilde;o ou selecione uma camada de elementos pol&iacute;gono para definir a geometria de recorte. Quando uma camada de elementos pol&iacute;gono &eacute; selecionada, &eacute; exibida uma caixa de valida&ccedil;&atilde;o para especificar se ir&aacute; usar elementos de entrada para a geometria de recorte. Por predefini&ccedil;&atilde;o, n&atilde;o est&aacute; selecionada. Isto significa que a camada de elementos de entrada &eacute; usada para definir a extens&atilde;o. Se estiver selecionada, significa que os elementos de entrada s&atilde;o usados para a geometria de recorte.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Especificar tipo de recorte</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique se pretende manter a &aacute;rea no interior ou fora da geometria de recorte:
+                <ul>
+                    <li>Dados dentro da geometria&mdash;As imagens dentro das extens&otilde;es de recorte ser&atilde;o extra&iacute;das. Isto &eacute; por omiss&atilde;o.
+                        
+
+                    </li>
+                    <li>Dados fora da geometria&mdash;As imagens fora das extens&otilde;es de recorte ser&atilde;o extra&iacute;das.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

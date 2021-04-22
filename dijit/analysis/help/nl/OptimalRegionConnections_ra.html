@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimale regioverbindingen</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Illustratie van optimale regioverbindingen"></h2>
+        <hr/>
+    <p>Deze tool berekent het optimale connectiviteitsnetwerk tussen twee of meer invoergebieden.
+    </p>
+    <p>Voorbeelden van de toepassingen zijn onder meer het volgende:
+        <ul>
+            <li>Geschiktheidsmodel&mdash;Vanuit een geschiktheidsmodel hebt u 10 van de beste leefgebieden voor lynxen ge&iuml;dentificeerd. U wilt dat de lynxen kunnen verplaatsen tussen de gebieden via het meest effectieve netwerk van natuurcorridors om de genetische diversiteit binnen de metapopulatie te behouden.
+                
+
+            </li>
+            <li>Houtkap&mdash;Bij een houtkap wilt u het meest kosteneffectieve netwerk van wegen om het hout uit te halen, cre&euml;ren.
+                
+
+            </li>
+            <li>Vrede bewaren&mdash;In een militaire vredesoperatie hebt u vijf gebieden ge&iuml;dentificeerd om de positie en het personeel te bepalen. U wilt de optimale aangesloten leveringsroutes tussen de basissen ontwikkelen.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Als  <b>Huidig extent van de kaart gebruiken</b> is aangevinkt, worden alleen die locaties in de invoerlagen die binnen het huidige extent van de kaart zichtbaar zijn, geanalyseerd. Als de optie niet is aangevinkt, worden alle locaties in de beide invoerlagen geanalyseerd, zelfs als deze zich buiten het huidige extent van de kaart bevinden.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Kies regioraster of object</h2></div>
+        <hr/>
+        <div>
+            <p>De invoerregio's die via het optimale netwerk worden aangesloten.
+            </p>
+            <p>Als de regio-invoer een raster is, worden de regio's gedefinieerd door groepen aangrenzende cellen van dezelfde waarde. Elke regio moet een uniek nummer krijgen. De cellen die geen deel uitmaken van een regio moeten NoData zijn. Het rastertype moet een geheel getal zijn en de waarden kunnen zowel positief als negatief zijn.
+            </p>
+            <p>Als de regio-invoer een object is, kunnen het punten, lijnen of polygonen zijn. Polygoonregio's kunnen niet worden samengesteld uit polygonen met meerdere delen.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Kies barrièreraster of object (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De dataset die de barri&egrave;res definieert.
+            </p>
+            <p>Voor een raster kan het invoertype een geheel getal of kommagetal zijn. Alle cellen met een waarde (inclusief nul) worden behandeld als een barri&egrave;re. Alle cellen die NoData zijn, worden niet behandeld als een barri&egrave;re.
+            </p>
+            <p>Voor een object kan de invoer een punt, lijn of polygoon zijn.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Kies kostenraster (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Een raster dat de impedantie of de kosten definieert om planimetrisch door elke cel te bewegen.
+            </p>
+            <p>De waarde op elke cellocatie vertegenwoordigt de kosten per eenheid afstand voor het verplaatsen door de cel. Elke cellocatiewaarde wordt vermenigvuldigd met de celresolutie, terwijl ook de diagonale beweging wordt gecompenseerd om de totale kosten van het passeren door de cel te verkrijgen.
+            </p>
+            <p>De waarden van het kostenraster kunnen gehele getallen of zwevendekommagetallen zijn, maar ze kunnen niet negatief of nul zijn (u kunt geen negatieve of nulkosten hebben).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Afstandmethode (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of de afstand wordt berekend met behulp van een vlakke (vlakke aarde) of een geodetische (ellipsvormige) methode.
+            </p>
+            <ul>
+                <li> <b>Planair</b>&mdash;De afstandsberekening wordt uitgevoerd op een geprojecteerd vlak met behulp van een 2D Cartesiaans co&ouml;rdinatensysteem. Dit is de standaardmethode.
+                    
+
+                </li>
+                <li> <b>Geodetisch</b>&mdash;De afstandsberekening wordt uitgevoerd op de ellipso&iuml;de. Daarom veranderen de resultaten niet, ongeacht de invoer- of uitvoerprojectie.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Verbindingen binnen regio's (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert of de paden doorgaan en verbinden in de invoergebieden.
+            </p>
+            <ul>
+                <li> <b>Verbindingen genereren</b>&mdash;Paden lopen door in de invoerregio's om alle paden die een regio invoeren te verbinden. Dit is de standaardinstelling.
+                    
+
+                </li>
+                <li> <b>Geen verbindingen</b>&mdash;Paden stoppen aan de randen van de invoerregio's en gaan niet verder of verbinden er zich in.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Resultaat optimale connectiviteitslijnen objectlaagnaam</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Deze laag is een uitvoerlijnobject dat elke invoerregio verbindt.
+            </p>
+            <p>Elk pad (of lijn) is uniek genummerd en extra velden in de attribuuttabel slaan specifieke informatie over het pad op. Die extra velden zijn de volgende:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;De unieke identificator voor het pad
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;De totale accumulatieve afstand of kosten voor het pad
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;De eerste regio die het pad verbindt
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;De andere regio die het pad verbindt
+                    
+
+                </li>
+            </ul>
+            
+            <p>Aangezien elk pad wordt vertegenwoordigd door een unieke lijn, zullen er meerdere lijnen zijn op locaties waar paden dezelfde route rijden.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Resultaat objectlaagnaam van de naburige verbindingen (optioneel)</h2></div>
+        <hr/>
+        <div>
+            <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>Deze laag is een uitvoerlijnobject dat alle paden van elke regio identificeert naar elk van de dichtstbijzijnde of de goedkoopste, buren.
+            </p>
+            <p>Elk pad (of lijn) is uniek genummerd en extra velden in de attribuuttabel slaan specifieke informatie over het pad op. Die extra velden zijn de volgende:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;De unieke identificator voor het pad
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;De totale accumulatieve afstand of kosten voor het pad
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;De eerste regio die het pad verbindt
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;De andere regio die het pad verbindt
+                    
+
+                </li>
+            </ul>
+            
+            <p>Aangezien elk pad wordt vertegenwoordigd door een unieke lijn, zullen er meerdere lijnen zijn op locaties waar paden dezelfde route rijden.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>最適リージョン接続</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="[最適リージョン接続] ツールの図"></h2>
+        <hr/>
+    <p>このツールは、2 つ以上の入力領域間の最適な接続ネットワークを計算します。
+    </p>
+    <p>次のような適用例があります。
+        <ul>
+            <li>適合性モデリング - 適合性モデルから、ボブキャットの最適な 10 か所の生息地域を特定しました。 メタ個体群の中で遺伝的多様性を維持するために、ボブキャットが自然のコリドーの最適なネットワークを通って生息地域間を移動することを望んでいます。
+                
+
+            </li>
+            <li>森林伐採 - 森林伐採で、切り出した材木を運ぶ道路の最もコスト効率のよいネットワークを作成したいと考えています。
+                
+
+            </li>
+            <li>平和維持活動 - 平和維持軍の配置において、部隊と隊員を配置する 5 つのエリアを特定しました。 基地間を最適につなぐ補給ルートを開発したいと考えています。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>[現在のマップ範囲を使用]</b> をオンにすると、現在のマップ範囲内に表示されている入力レイヤー内の位置だけが解析されます。 オフの場合、両方の入力レイヤー内のすべての位置が、現在のマップ範囲内になくても解析されます。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>領域ラスターまたはフィーチャの選択</h2></div>
+        <hr/>
+        <div>
+            <p>最適なネットワークで接続される入力領域。
+            </p>
+            <p>領域の入力がラスターの場合、領域は同じ値を持つ連続 (隣接) するセルのグループによって定義されます。 各領域には一意の番号を付ける必要があります。 領域の一部でないセルは NoData にする必要があります。 ラスター タイプは整数である必要があり、正または負の値を指定できます。
+            </p>
+            <p>領域の入力がフィーチャの場合、ポイント、ライン、ポリゴンを使用できます。 ポリゴンの領域には、マルチパート ポリゴンは使用できません。
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>バリア ラスターまたはバリア フィーチャの選択 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>バリアを定義するデータセット。
+            </p>
+            <p>ラスターの場合、入力タイプは整数か浮動小数です。 値 (0 を含む) を持つセルであれば、バリアとして処理されます。 NoData のセルはバリアとして処理されません。
+            </p>
+            <p>フィーチャの場合、入力はポイント、ライン、ポリゴンです。
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>コスト ラスターの選択 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>各セル内を平面的に通過するときにかかるインピーダンスまたはコストを定義するラスター。
+            </p>
+            <p>各セル位置の値は、そのセル上を通過するための単位距離あたりのコストを表します。 セル内を通過する総コストを取得するために、各セル位置の値にセル解像度を乗算して、対角移動についても補正します。
+            </p>
+            <p>コスト ラスターとして、整数値または浮動小数点値を使用できますが、負の値や 0 は使用できません (負またはゼロのコストは指定できません)。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>距離の方法 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>距離を平面 (平面地球) と測地線 (楕円体) のどちらの方法を用いて計算するかを指定します。
+            </p>
+            <ul>
+                <li> <b>[平面]</b> - 距離計算は、2 次元直交座標系を使用して投影された平面で実行されます。 これはデフォルトの方法です。
+                    
+
+                </li>
+                <li> <b>[測地線]</b> - 距離は楕円形に基づいて計算されます。 したがって、入力または出力投影に関係なく、結果は変わりません。
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>リージョン接続 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>パスが続行し、入力領域内に接続するかどうかを指定します。
+            </p>
+            <ul>
+                <li> <b>[接続の生成]</b> - パスは入力領域内まで続き、領域に入るすべての経路を接続します。 これがデフォルト値になります。
+                    
+
+                </li>
+                <li> <b>[接続なし]</b> - パスは入力領域のエッジで止まり、入力領域まで続かないか、入力領域内で接続しません。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>結果の最適接続ライン フィーチャ レイヤーの名前</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> に作成され、マップに追加されるレイヤーの名前。 デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。 レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p>このレイヤーは、各入力領域を接続する出力ライン フィーチャです。
+            </p>
+            <p>各パス (またはライン) は、一意の番号が付けられ、属性テーブルのその他のフィールドには、パスに関する特定の情報が格納されています。 次のような追加フィールドがあります。
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- パスの一意な ID
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- パスの合計累積距離またはコスト
+                    
+
+                </li>
+                <li> <i>REGION1</i>- パスが接続する最初の領域
+                    
+
+                </li>
+                <li> <i>REGION2</i>- パスが接続するその他の領域
+                    
+
+                </li>
+            </ul>
+            
+            <p>各パスは、一意のラインで表されるため、パスが同じルートを移動する場所には複数のラインがあります。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>結果の隣接接続フィーチャ レイヤーの名前 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> に作成され、マップに追加されるレイヤーの名前。 デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。 レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p>このレイヤーは、各領域からぞれぞれ最も近い、または最小コストの近傍を識別する出力ライン フィーチャです。
+            </p>
+            <p>各パス (またはライン) は、一意の番号が付けられ、属性テーブルのその他のフィールドには、パスに関する特定の情報が格納されています。 次のような追加フィールドがあります。
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- パスの一意な ID
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- パスの合計累積距離またはコスト
+                    
+
+                </li>
+                <li> <i>REGION1</i>- パスが接続する最初の領域
+                    
+
+                </li>
+                <li> <i>REGION2</i>- パスが接続するその他の領域
+                    
+
+                </li>
+            </ul>
+            
+            <p>各パスは、一意のラインで表されるため、パスが同じルートを移動する場所には複数のラインがあります。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

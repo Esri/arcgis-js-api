@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../base/Descriptor","../../../../form/Tabs","../../../../form/iso/AbstractObject","../../../../form/iso/ObjectReference","./AcquisitionPlan","./AcquisitionRequirement","./EnvironmentalConditions","./Instrument","./Objective","./Operation","./Platform","dojo/text!./templates/Acquisition.html","../../../../../../kernel"],(function(e,t,i,o,n,s,a,r,c,m,d,b,j,l,u,f){var q=e(o,{templateString:u});return i("extend-esri")&&t.setObject("dijit.metadata.types.iso.gmi.acquisitionInformation.Acquisition",q,f),q}));

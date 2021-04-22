@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>最佳区域连接</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="最佳区域连接工具图示"></h2>
+        <hr/>
+    <p>该工具用于在两个或多个输入区域之间计算最佳连通性网络。
+    </p>
+    <p>示例应用如下：
+        <ul>
+            <li>适宜性建模 - 您已经从适用性模型中标识了 10 个短尾猫的最佳栖息地。 您希望短尾猫能够通过最有效的野生动物廊道网络在地区间活动以保持种群的遗传多样性。
+                
+
+            </li>
+            <li>木材采伐 - 在木材采伐中，您希望创建用于采伐木材的集材道路的最有效成本网络。
+                
+
+            </li>
+            <li>维和 - 您已在军事维和部署中标识了 5 个区域来定位部队及人员。 您希望开发基地间的最佳连接补给线路。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则仅分析当前地图范围中可见的输入图层中的位置。 如果未选中，则将分析这两个输入图层中的所有位置，包括超出当前地图范围的位置。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>选择区域栅格或要素</h2></div>
+        <hr/>
+        <div>
+            <p>要通过最佳网络连接的输入区域。
+            </p>
+            <p>如果区域输入为栅格，则区域将通过值相同的连续（邻近）像元组进行定义。 每个区域必须具有唯一的编号。 不属于任何区域的像元一定是 NoData。 栅格类型必须为整型，值可正可负。
+            </p>
+            <p>如果区域输入为要素，则它可以是点，线或面。 面区域不能包含多部分面。
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>选择障碍栅格或要素（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>定义障碍的数据集。
+            </p>
+            <p>对于栅格，输入类型可以是整型或浮点型。 任何拥有值（包括零）的像元都将被视为障碍。 任何 NoData 像元都不会被视为障碍。
+            </p>
+            <p>对于要素，输入可以为点、线或面。
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>选择成本栅格（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>该栅格可定义以平面测量的经过每个像元所需的阻抗或成本。
+            </p>
+            <p>每个像元位置上的值表示经过像元时移动每单位距离所需的成本。 每个像元位置值乘以像元分辨率，同时也会补偿对角线移动来获取经过像元的总成本。
+            </p>
+            <p>成本栅格的值可以是整型或浮点型，但不可以为负值或零（不存在负成本或零成本）。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>距离方法（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>指定是否使用平面（平地）或测地线（椭球）方法计算距离。
+            </p>
+            <ul>
+                <li> <b>平面</b> - 将使用 2D 笛卡尔坐标系对投影平面执行距离计算。 这是默认方法。
+                    
+
+                </li>
+                <li> <b>测地线</b> - 距离计算将在椭圆体上执行。 因此，无论是输入投影还是输出投影，结果不会改变。
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>区域内的连接（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>用于指定路径是否将继续并在输入区域内连接。
+            </p>
+            <ul>
+                <li> <b>生成连接</b> - 路径将在输入区域内继续以连接进入区域的所有路径。 这是默认设置。
+                    
+
+                </li>
+                <li> <b>无连接</b> - 路径将在输入区域的边缘停止，并且不会在输入区域内继续或连接。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>结果最佳连通性线要素图层名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>此图层为连接每个输入区域的输出线要素。
+            </p>
+            <p>每条路径（或线）都是唯一标识的，同时属性表中的其他字段用于存储有关路径的特定信息。 这些附加字段如下：
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- 路径的唯一标识符
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- 路径的总累积距离或成本
+                    
+
+                </li>
+                <li> <i>REGION1</i>- 该路径连接的第一个区域
+                    
+
+                </li>
+                <li> <i>REGION2</i>- 该路径连接的另一个区域
+                    
+
+                </li>
+            </ul>
+            
+            <p>由于每条路径都是由唯一的线所表示，因此多条路径经过同一路线的位置会存在多条线。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>结果相邻连接要素图层名称（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+            <p>此图层为用于标识从每个区域到其每个最近或最小成本邻域的所有路径的输出线要素。
+            </p>
+            <p>每条路径（或线）都是唯一标识的，同时属性表中的其他字段用于存储有关路径的特定信息。 这些附加字段如下：
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- 路径的唯一标识符
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- 路径的总累积距离或成本
+                    
+
+                </li>
+                <li> <i>REGION1</i>- 该路径连接的第一个区域
+                    
+
+                </li>
+                <li> <i>REGION2</i>- 该路径连接的另一个区域
+                    
+
+                </li>
+            </ul>
+            
+            <p>由于每条路径都是由唯一的线所表示，因此多条路径经过同一路线的位置会存在多条线。
+            </p>
+            <p>您可以使用 <b>将结果保存在</b>下拉框指定 <b>我的内容</b>中的文件夹名称，结果将保存到该文件夹中。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

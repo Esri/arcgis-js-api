@@ -44,7 +44,7 @@
         <h2>Ekstrak Raster</h2><p/>
         <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Alat Ekstrak Raster untuk Portal"></h2>
         <hr/>
-    <p>Alat ini dapat menempelkan raster ke perbatasan, baik pada area persegi panjang atau bentuk yang Anda definisikan secara interaktif pada layar. Anda dapat menempelkan jangkauan area yang saat ini Anda tampilkan di peta Anda atau dekat area studi yang ditentukan oleh sebuah poligon.
+    <p>Alat ini dapat menempelkan raster ke perbatasan, baik pada area persegi panjang atau bentuk yang Anda definisikan secara interaktif pada layar. Anda dapat menempelkan cakupan area yang saat ini Anda tampilkan di peta Anda atau dekat area studi yang ditentukan oleh sebuah poligon.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Pilih tipe jangkauan yang akan digunakan ketika memotong geometri di layer:
-
                 <ul>
                     <li>Gunakan jangkauan saat ini&mdash;Jangkauan peta saat ini akan digunakan untuk menempelkan layer yang dihasilkan. Ini adalah default.
                         
 
                     </li>
-                    <li>Pilih area studi&mdash;Memungkinkan Anda untuk memilih apakah hasil akan menunjukkan area di dalam jangkauan geometri atau area di luar jangkauan geometri. Jika Anda memilih opsi  <b>Data di dalam geometri</b>, citra di luar jangkauan akan dihapus. Jika Anda memilih opsi <b>Data di luar geometri</b>, citra di dalam jangkauan akan dihapus. Anda pun dapat mendefinisikan geometri pemotongan dengan menggunakan alat gambar.
+                    <li>Pilih area studi&mdash;Memungkinkan Anda menentukan geometri pemotongan menggunakan alat gambar.
+                        
+
+                    </li>
+                    <li>Pilih lapisan&mdash;Pilih feature layer atau layer citra untuk menentukan luasnya, atau pilih layer fitur poligon untuk menentukan geometri pemotongan. Saat feature layer poligon dipilih, kotak centang akan ditampilkan untuk menentukan penggunaan fitur input untuk geometri pemotongan. Secara default, ini tidak dicentang. Ini berarti feature layer input digunakan untuk menentukan jangkauan. Jika dicentang, artinya fitur input akan digunakan untuk geometri pemotongan.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Tentukan jenis pemotongan</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan apakah Anda ingin mempertahankan area di dalam atau di luar geometri potong Anda:
+                <ul>
+                    <li>Data di dalam geometri&mdash;Citra di dalam jangkauan potong akan diekstrak. Ini adalah default.
+                        
+
+                    </li>
+                    <li>Data di luar geometri&mdash;Citra di luar jangkauan potong akan diekstrak.
                         
 
                     </li>
@@ -80,9 +100,10 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

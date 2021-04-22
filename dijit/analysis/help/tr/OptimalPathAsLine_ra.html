@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Çizgi Olarak En Uygun Yol</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="&Ccedil;izgi Olarak En Uygun Yol aracı ill&uuml;strasyonu"></h2>
+        <hr/>
+    <p>Bu ara&ccedil;, hedeflerden kaynaklara en uygun yolu bir &ccedil;izgi olarak hesaplar.
+    </p>
+    <p>&Ouml;rnek uygulamalar arasında şunlar yer alır:
+        <ul>
+            <li>İnşaat maliyetleri a&ccedil;ısından yeni bir yol i&ccedil;in en iyi rotanın bulunması.
+                
+
+
+            </li>
+            <li>Bir varış noktası ile mevcut konum arasındaki en iyi sefer rotasını bul.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Hedef rasterı veya detayları seç</h2></div>
+        <hr/>
+        <div>
+            <p>En uygun kaynağa giden en uygun yolun belirlendiği h&uuml;creleri tanımlayan bir raster ya da detay katmanı.
+            </p>
+            <p>Eğer girdi bir raster ise, hedefler i&ccedil;in ge&ccedil;erli değerlere sahip olan h&uuml;crelerden oluşması gerekir (sıfır ge&ccedil;erli bir değerdir) ve kalan h&uuml;creler NoData (Verisiz) olarak belirlenmelidir. Girdi rasterı tipi tamsayı olmalıdır.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Varış alanı</h2></div>
+        <hr/>
+        <div>
+            <p>Hedef konum değerleri almak i&ccedil;in kullanılan alan.
+            </p>
+            <p>Bu alan tamsayı t&uuml;r&uuml;nde olmalıdır.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Mesafe birikim rasterını seç</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafe birikim rasterı, hedeflerden kaynaklara giden en uygun yolu belirlemek i&ccedil;in kullanılır.
+            </p>
+            <p>Mesafe birikim rasterı genellikle Mesafe Birikimi ya da Mesafe Dağıtımı ara&ccedil;larıyla oluşturulur. Mesafe birikim rasterında yer alan her bir h&uuml;cre, bir y&uuml;zey &uuml;zerinde her h&uuml;creden bir dizi kaynak h&uuml;creye giden minimum birikim maliyet mesafesini temsil etmektedir.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Geri yönü veya akış yönü rasterını seç</h2></div>
+        <hr/>
+        <div>
+            <p>Geri y&ouml;n rasterı, derece olarak hesaplanan y&ouml;nleri i&ccedil;erir. Y&ouml;n, engellerden ka&ccedil;ınırken en d&uuml;ş&uuml;k birikim maliyet kaynağına giden en uygun yol boyunca bir sonraki h&uuml;creyi tanımlar.
+            </p>
+            <p>Geri y&ouml;n rasterı genellikle Mesafe Birikimi ya da Mesafe Dağıtımı ara&ccedil;larıyla oluşturulur. Bu durumda değerlerin aralığı 0 derece ile 360 derece arasındadır. 0 değeri kaynak h&uuml;creleri i&ccedil;in ayrılmıştır. Doğu (sağ) 90 derecedir ve değerler saat y&ouml;n&uuml;nde artar (180 g&uuml;ney, 270 batı ve 360 kuzey).
+            </p>
+            <p>Oluşturulan en uygun yol, D8 akış y&ouml;n&uuml; tabanlı bir akış yolu olabilir. Bu bi&ccedil;imde en uygun yolu oluşturmak amacıyla, bu parametre i&ccedil;in girdi olarak bir D8 akış y&ouml;n&uuml; rasterı kullanın.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Yol türü (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi hedef verilerindeki değerlerin ve b&ouml;lgelerin maliyet yolu hesaplamalarında nasıl yorumlanacağını belirleyen bir anahtar s&ouml;zc&uuml;ğ&uuml; tanımlar.
+                <ul>
+                    <li> <b>Her B&ouml;lgeye</b>&mdash;Girdi hedef verilerindeki her bir b&ouml;lge i&ccedil;in en d&uuml;ş&uuml;k maliyetli yol belirlenir. Bu se&ccedil;enekle, her b&ouml;lge i&ccedil;in en d&uuml;ş&uuml;k maliyetli yol, b&ouml;lgedeki en d&uuml;ş&uuml;k maliyetli mesafe ağırlıklandırmasına sahip h&uuml;crede başlar. Varsayılan değerdir.
+                         
+                    </li>
+                    <li> <b>En İyi Tek</b>&mdash;Girdi hedef verilerindeki t&uuml;m h&uuml;creler i&ccedil;in en d&uuml;ş&uuml;k maliyetli yol, kaynak h&uuml;crelere giden en d&uuml;ş&uuml;k maliyetli yolun minimum olanına sahip h&uuml;creden t&uuml;retilir.
+                    </li>
+                    <li> <b>Her H&uuml;creye</b>&mdash;Girdi hedef verilerinde ge&ccedil;erli değerlere sahip her h&uuml;cre i&ccedil;in en d&uuml;ş&uuml;k maliyetli yol belirlenir. Bu se&ccedil;enekle, girdi hedef verilerinin her bir h&uuml;cresi ayrı ayrı ele alınır ve her h&uuml;cre i&ccedil;in en az maliyetli yol belirlenir.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Sonuç detay katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

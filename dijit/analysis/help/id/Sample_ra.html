@@ -48,7 +48,7 @@
     </p>
     <p>Nilai piksel akan diekstrak dari semua raster input di setiap lokasi. Feature class titik atau tabel akan dibuat dengan kolom yang berisi nilai piksel untuk setiap raster input. Atribut tambahan dari tabel raster input tidak akan dimasukkan dalam tabel output.
     </p>
-    <p>Kombinasi raster apa pun, seperti band tunggal, multiband, multidimensional, atau multivarian, dapat ditentukan sebagai raster input. Struktur tabel output berubah saat raster input bersifat multidimensional. Ketika raster multiband ditentukan sebagai salah satu raster input, semua band dalam input itu akan digunakan. Untuk memproses pilihan band dari raster multiband input, pertama buat set data raster baru yang terdiri dari band-band tertentu. Gunakan hasilnya dalam daftar raster input.
+    <p>Kombinasi raster apa pun, seperti band tunggal, multiband, multidimensional, atau multivarian, dapat ditentukan sebagai raster input. Struktur tabel output berubah saat raster input bersifat multidimensional. Ketika raster multiband ditentukan sebagai salah satu raster input, semua band dalam input itu akan digunakan. Untuk memproses pilihan band dari raster multiband input, pertama-tama buatlah set data raster baru yang terdiri dari band-band tertentu. Gunakan hasilnya dalam daftar raster input.
     </p>
     <p>Lokasi input dapat berupa fitur raster atau titik:
         <ul>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p>Raster input diambil sampelnya dalam referensi dan resolusi spasial asli mereka. Jika ada beberapa raster input dengan referensi spasial yang berbeda, lokasi input diproyeksikan ke masing-masing referensi spasial raster individu dari mana nilai diekstrak. Lingkungan analisis diterapkan ke lokasi input, tetapi raster input tidak akan menaati lingkungan analisis.
+    <p>Raster input diambil sampelnya dalam referensi dan resolusi spasial asli mereka. Jika ada beberapa raster input dengan referensi spasial yang berbeda, lokasi input diproyeksikan ke masing-masing referensi spasial raster individu yang nilainya diekstrak. Lingkungan analisis diterapkan ke lokasi input, tetapi raster input tidak akan menaati lingkungan analisis.
     </p>
     <p>Lokasi yang mengekstrak nilai dari sel NoData di raster input akan diberi nilai &lt;null&gt; di tabel output.
     </p>
@@ -112,7 +112,6 @@
             <p>Tentukan waktu, kedalaman, atau data akuisisi lainnya yang terkait dengan sel atau fitur lokasi.
             </p>
             <p>Untuk setiap dimensi, ada tiga opsi untuk menentukan informasi akuisisi yang terkait dengan sel atau fitur lokasi:
-
                 <ul>
                     <li> <b>Kolom atau nilai tunggal</b>&mdash;Bila opsi ini dipilih, informasi berikut perlu ditentukan:
                         <ul>
@@ -127,9 +126,9 @@
                         <ul>
                             <li> <b>Nilai atau kolom dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi.
                             </li>
-                            <li> <b>Nilai relatif sebelumnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk dikurangi dari <b>Nilai atau kolom dimensi</b> untuk menentukan awal rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                            <li> <b>Nilai relatif sebelumnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk dikurangi dari <b>Kolom dimensi atau nilai</b> untuk menentukan awal rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
                             </li>
-                            <li> <b>Nilai relatif setelahnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk ditambahkan ke <b>Nilai atau kolom tunggal</b> untuk menentukan akhir rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                            <li> <b>Nilai relatif setelahnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk ditambahkan ke <b>Kolom dimensi atau nilai</b> untuk menentukan akhir rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
                             </li>
                         </ul>
                         
@@ -206,11 +205,11 @@
             <p>Algoritme pengambilan ulang sampel digunakan saat mengambil sampel raster.
             </p>
             <ul>
-                <li> <b>Terdekat</b>&mdash;Lingkungan terdekat. Ini adalah default.
+                <li> <b>Terdekat</b>&mdash;Lingkungan terdekat, menggunakan nilai dari sel terdekat untuk menetapkan nilai ke sel output saat pengambilan sampel ulang. Ini adalah default.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Interpolasi bilinear
+                <li> <b>Bilinear</b>&mdash;Interpolasi bilinear, menentukan nilai baru sebuah sel berdasarkan rata-rata jarak tertimbang dari empat pusat sel input terdekat.
                 </li>
-                <li> <b>Kubik</b>&mdash;Konvolusi kubik
+                <li> <b>Kubik</b>&mdash;Konvolusi kubik, menentukan nilai baru dari sebuah sel berdasarkan pemasangan kurva halus melalui 16 pusat sel input terdekat.
                 </li>
             </ul>
             
@@ -250,9 +249,10 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

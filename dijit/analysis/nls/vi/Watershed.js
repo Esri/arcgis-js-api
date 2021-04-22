@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Chọn lớp hướng dòng chảy",pourPointLayerLabel:"Chọn raster điểm chảy hoặc lớp đối tượng",pourPointField:"Chọn trường điểm chảy",resultLayerName:"Tên lớp kết quả",outputLayerName:"Lưu vực sông của ${layername}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy chức năng Tổng Hợp độ tập trung và phân tán trên ${layerName}. ",itemTags:"Phân tích Kết quả, Lưu vực sông, ${layername} ${fieldname}",itemSnippet:"Lớp đối tượng được tạo ra từ Lưu vực sông."});

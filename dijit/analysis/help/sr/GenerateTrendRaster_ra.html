@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Generate Trend Raster (Generiši raster trenda)</h2><p/>
+        <h2>Generate Trend Raster</h2><p/>
         <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generate Trend Raster"></h2>
         <hr/>
     <p>Procenjuje trend svakog piksela duž dimenzije za jednu ili vi&scaron;e promenljivih u vi&scaron;edimenzionalnom rasteru.
@@ -49,20 +49,18 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Izaberite višedimenzionalni sloj snimka za analizu trenda</h2></div>
+        <div><h2>Izaberite višedimenzionalne slojeve snimaka za analizu trenda</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
-            <p>Ulazni sloj snimka vi&scaron;edimenzionalnog rastera koji će biti analiziran.
+            <p>Sloj ulaznih slika vi&scaron;edimenzionalnog rasterskog skupa koji će biti analiziran.
             </p>
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Odaberite dimenziju duž koje će trend promenljive biti analiziran</h2></div>
+        <div><h2>Izaberite dimenzije uz čiju će se promenljivu analizirati trend</h2></div>
         <hr/>
         <div>
-            <p>Dimenzija duž koje će trend biti ekstraktovan za promenljivu ili promenljive selektovane u analizi.
+            <p>Dimenzije duž kojih će trend biti ekstraktovan za promenljivu ili promenljive izabrane u analizi.
             </p>
         </div>
     </div>
@@ -70,21 +68,40 @@
         <div><h2>Izaberite promenljivu(e) za analizu trenda</h2></div>
         <hr/>
         <div>
-            <p>Varijabla ili varijable za koje će se izračunati trendovi. Ako promenljiva nije navedena, analiziraće se prva promenljiva u vi&scaron;edimenzionalnom rasteru.
+            <p>Varijabla ili varijable za koje će se izračunati trendovi. Ako nema navedene promenljive, prva promenljiva u vi&scaron;edimenzionalnom rasteru biće analizirana.
             </p>
         </div>
     </div>
     <div id="trendLineType">
-        <div><h2>Odaberi tip linije koja će se koristiti za uklapanje vrednosti promenljivih duž dimenzije</h2></div>
+        <div><h2>Izaberite tip linije koja odgovara promenljivim vrednostima uz dimenziju</h2></div>
         <hr/>
         <div>
-            <p>Navodi tip linije koja će se koristiti za uklapanje vrednosti piksela duž dimenzije. 
+            <p>Navodi tip linije koji će se koristiti za uklapanje u vrednosti piksela uz dimenziju.
                 <ul>
-                    <li> <b>Linearni</b>&mdash;Promenljive vrednosti piksela biće postavljene duž linearne linije trenda. Ovo je podrazumevano.
+                    <li> <b>Linearno</b>&mdash;Vrednosti varijabilnih piksela biće uklopljeni duž linearne linije trenda. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Polinomni</b>&mdash;Promenljive vrednosti piksela biće postavljene duž polinomne linije trenda.
+                    <li> <b>Polinomijalno</b>&mdash;Promenljive vrednosti piksela biće uklopljene duž drugog redosleda polinomijalne linije trenda.
                     </li>
-                    <li> <b>Harmonični</b>&mdash;Promenljive vrednosti piksela biće postavljene duž harmonične linije trenda.
+                    <li> <b>Harmonski</b>&mdash;Promenljive vrednosti piksela biće uklopljene duž harmonske linije trenda.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Promenljiva vrednost piksela biće procenjena kori&scaron;ćenjem Mann-Kendall testa trenda.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Promenljive vrednosti piksela biće procenjene kori&scaron;ćenjem Seasonal-Kendall testa trenda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Navedite vremensku jedinicu za tužinu perioda sezone</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi vremensku jedinicu koja će se koristiti za dužinu sezonskog perioda prilikom obavljanja Seasonal-Kendall testa.
+                <ul>
+                    <li> <b>Dani</b>&mdash;Jedinica za dužinu sezonskog perioda je u danima. Ovo je podrazumevano.
+                    </li>
+                    <li> <b>Meseci</b>&mdash;Jedinica za dužinu sezonskog perioda je u mesecima.
                     </li>
                 </ul>
                 
@@ -92,71 +109,71 @@
         </div>
     </div>
     <div id="cycleLength">
-        <div><h2>Odredite dužinu harmoničnog ciklusa</h2></div>
+        <div><h2>Navedite dužinu harmoničnog ciklusa</h2></div>
         <hr/>
         <div>
-            <p>Dužina periodične varijacije do modela. Ovaj parametar je neophodan kada je tip linije trenda postavljen na  <b>Harmonični</b>. Na primer, zelenilo listova često ima jedan jak ciklus varijacija u jednoj godini, tako da dužina ciklusa iznosi 1 godinu. Podaci o satnoj temperaturi imaju jedan snažan ciklus varijacija tokom jednog dana, tako da je dužina ciklusa 1 dan.
+            <p>Dužina periodične varijacije modela. Ovaj parametar je potreban kada je tip linije trenda postavljen na  <b>Harmonski</b>. Na primer, zelinilo lista ima jak ciklus varijacija u jednoj godini, tako da je dužina ciklusa 1 godina. Podaci o temperaturi po satu ima jednu od jakih cikluka varijacija tokom jednog dana, tako da dužina ciklusa je 1 dan.
             </p>
-            <p>Podrazumevana dužina je 1 godinu za podatke koji variraju na godi&scaron;njem ciklusu.
+            <p>Podrazumevana dužina je 1 godina za podatke koji variraju prema godi&scaron;njem ciklusu.
             </p>
-            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme i kada je tip linije trenda postavljen na  <b>Harmonični</b>.
+            <p>Ovaj parametar je samo uključen u analizu trenda kada je dimenzija koja se analizira vreme a tip linije trenda je postavljen na  <b>Harmonski</b>.
             </p>
         </div>
     </div>
     <div id="cycleUnit">
-        <div><h2>Odaberi jedinicu vremena dužine harmoničnog ciklusa</h2></div>
+        <div><h2>Izaberite vremensku jedinicu za dužinu harmonskog ciklusa</h2></div>
         <hr/>
         <div>
-            <p>Određuje jedinicu vremena koja će se koristiti za dužinu harmoničnog ciklusa.
+            <p>Navodi jedinicu za vreme koja će se koristiti za dužinu harmonskog ciklusa.
                 <ul>
-                    <li> <b>Dani</b>&mdash;Jedinica za dužinu harmoničnog ciklusa su dani.
+                    <li> <b>Dani</b>&mdash;Jedinica za dužinu harmonskog ciklusa je u danima.
                     </li>
-                    <li> <b>Godine</b>&mdash;Jedinica za dužinu harmoničnog ciklusa su godine. Ovo je podrazumevano.
+                    <li> <b>Godine</b>&mdash;Jedinica za dužinu harmonskog ciklusa je u godinama. Ovo je podrazumevano.
                     </li>
                 </ul>
                 
             </p>
-            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme i kada je tip linije trenda postavljen na  <b>Harmonični</b>.
+            <p>Ovaj parametar je samo uključen u analizu trenda kada je dimenzija koja se analizira vreme a tip linije trenda je postavljen na  <b>Harmonski</b>.
             </p>
         </div>
     </div>
     <div id="frequency">
-        <div><h2>Navedite broj učestalosti za uklapanje harmoničnog trenda.</h2></div>
+        <div><h2>Navedite broj frekvencije za harmonizovano uklapanje trenda</h2></div>
         <hr/>
         <div>
-            <p>Frekvencija koja se koristi za uklapanje harmoničnog trenda. Ovaj parametar navodi učestalost ciklusa u godini.
+            <p>Frekvencija za upotrebu u uklapanju harmonskog trenda. Ovaj parametar određuje učestalost ciklusta u godini.
             </p>
-            <p>Podrazumevana vrednost je 1, ili jedan harmonični ciklus godi&scaron;nje.
+            <p>Podrazumevana vrednost je 1, ili jedan harmonski ciklus po godini.
             </p>
-            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme.
+            <p>Ovaj parametar je samo uključen u analizu trenda kada je dimenzija koja se analizira vreme.
             </p>
         </div>
     </div>
     <div id="polynomialOrder">
-        <div><h2>Navedite polinomni redni broj za uklapanje trenda</h2></div>
+        <div><h2>Izaberite polinomijalni redni broj za uklapanje trenda</h2></div>
         <hr/>
         <div>
-            <p>Redni broj polinoma koji se koristi za uklapanje polinomnog trenda.
+            <p>Polinomski redni broj za upotrebu uklapanja polinomijalnog trenda.
             </p>
-            <p>Ovaj parametar je obuhvaćen analizom trenda samo kada je dimenzija koja se analizira vreme.
+            <p>Ovaj parametar je samo uključen u analizu trenda kada je dimenzija koja se analizira vreme.
             </p>
-            <p>Podrazumevana vrednost je 2 ili polinom drugog reda.
+            <p>Podrazumevana vrednost je 2, ili drugi redosled polinoma.
             </p>
         </div>
     </div>
     <div id="modelStatistics">
-        <div><h2>Odaberite statistiku modela koja će biti obuhvaćena rasterom trenda</h2></div>
+        <div><h2>Izaberite model statistike koji će biti uključen u raster trenda</h2></div>
         <hr/>
         <div>
-            <p>Ova alatka pruža tri tipa statistike fit linije trenda: koren srednje kvadratne gre&scaron;ke (RMSE), R-kvadratna statistika adekvatnosti uklapanja (R-kvadrat) i statistika p-vrednosti za koeficijent nagiba (P-vrednost koeficijenta nagiba). Svaka statistika ima odgovarajuće polje za potvrdu kako bi se odredilo da li će se izračunati i obuhvatiti kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+            <p>Ovaj alat obezbeđuje tri tipa statistike za trend koji odgovara liniji: koren srednje kvadratne gre&scaron;ke (RMSE), R-kvadratna pogodnost odgovarajuće statistike (R-kvadrat), i p-vrednost statistike za koecifijent nagiba (P-vrednost koeficijenta nagiba). Svaka statistika ima odgovarajući okvir za potvrdu da bi se navelo da li će biti proračunato i uključeno kao jedan od vi&scaron;estrukih opsega u odlaznom trendu rastera.
                 <ul>
                     <li>
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Označeno&mdash;RMSE će biti izračunat i obuhvaćen kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda. Ovo je podrazumevano.
+                            <li>Obeleženo&mdash;RMSE će biti izračunat i uključen kao jedan od vi&scaron;estrukih opsega u odlaznom trendu rastera. Ovo je podrazumevano.
                             </li>
-                            <li>Neoznačeno&mdash;RMSE neće biti izračunat.
+                            <li>Neobeleženo--RMSE se neće izračunavati.
                             </li>
                         </ul>
                         
@@ -165,9 +182,9 @@
                         <p>R-kvadrat
                         </p>
                         <ul>
-                            <li>Označeno&mdash;Vrednost R-kvadrat će biti izračunata i obuhvaćena kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+                            <li>Obeleženo&mdash;R-kvadrat će biti izračunat i uključen kao jedan od vi&scaron;estrukih opsega u odlaznom trendu rastera.
                             </li>
-                            <li>Neoznačeno&mdash;Vrednost R-kvadrat neće biti izračunata. Ovo je podrazumevano.
+                            <li>Neobeleženo&mdash;R-kvadratna vrednost se neće izračunavati. Ovo je podrazumevano.
                             </li>
                         </ul>
                         
@@ -176,9 +193,9 @@
                         <p>P-vrednost koeficijenta nagiba
                         </p>
                         <ul>
-                            <li>Označeno&mdash;P-vrednost će biti izračunata i obuhvaćena kao jedan od vi&scaron;e opsega u izlaznom rasteru trenda.
+                            <li>Obeleženo&mdash;P-vrednost će biti izračunata i uključena kao jedan od vi&scaron;estrukih opsega u odlaznom trendu rastera.
                             </li>
-                            <li>Neoznačeno&mdash;P-vrednost neće biti izračunata. Ovo je podrazumevano.
+                            <li>Neobeleženo--P-vrednost se neće izračunavati. Ovo je podrazumevano.
                             </li>
                         </ul>
                         
@@ -207,6 +224,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

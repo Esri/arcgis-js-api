@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Generovat rastr trendu (Generate Trend Raster)</h2><p/>
-        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generovat rastr trendu"></h2>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generovat rastr trendu (Generate Trend Raster)"></h2>
         <hr/>
     <p>Odhadne trend každ&eacute;ho pixelu v rozměru pro jednu nebo v&iacute;ce proměnn&yacute;ch ve v&iacute;cerozměrn&eacute;m rastru.
     </p>
@@ -52,8 +52,6 @@
         <div><h2>Vybrat vrstvu vícerozměrných snímků pro analýzu trendu</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Vstupn&iacute; vrstva sn&iacute;mků v&iacute;cerozměrn&eacute;ho rastru, kter&yacute; bude analyzov&aacute;n.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Vybrat typ linie k proložení hodnotami proměnných podél rozměru</h2></div>
         <hr/>
         <div>
-            <p>Určuje typ linie, kter&aacute; bude použita k proložen&iacute; hodnotami pixelů pod&eacute;l rozměru. 
+            <p>Určuje typ linie, kter&aacute; bude použita k proložen&iacute; hodnotami pixelů pod&eacute;l rozměru.
                 <ul>
                     <li> <b>Line&aacute;rn&iacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l line&aacute;rn&iacute; linie trendu. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                     </li>
                     <li> <b>Polynomick&aacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l polynomick&eacute; linie trendu druh&eacute;ho ř&aacute;du.
                     </li>
                     <li> <b>Harmonick&aacute;</b>&mdash;Hodnoty pixelů proměnn&eacute; budou proloženy pod&eacute;l harmonick&eacute; linie trendu.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Hodnoty proměnn&yacute;ch pixelů budou vyhodnoceny pomoc&iacute; Mann-Kendallova testu trendu.
+                    </li>
+                    <li> <b>Sez&oacute;nn&iacute; Kendall</b>&mdash;Hodnoty proměnn&yacute;ch pixelů budou vyhodnoceny pomoc&iacute; sez&oacute;nn&iacute;ho Kendallova testu trendu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Určete jednotku času pro délku sezónního období</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje jednotku času, kter&aacute; se m&aacute; použ&iacute;t pro d&eacute;lku sez&oacute;nn&iacute;ho obdob&iacute; při prov&aacute;děn&iacute; sez&oacute;nn&iacute;ho Kendallova testu.
+                <ul>
+                    <li> <b>Dny</b>&mdash;Jednotkou pro d&eacute;lku sez&oacute;nn&iacute;ho obdob&iacute; jsou dny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    </li>
+                    <li> <b>Měs&iacute;ce</b>&mdash;Jednotkou pro d&eacute;lku sez&oacute;nn&iacute;ho obdob&iacute; jsou měs&iacute;ce.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

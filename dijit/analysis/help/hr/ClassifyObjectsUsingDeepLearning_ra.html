@@ -46,7 +46,7 @@
         <hr/>
     <p>Ovaj alat pokreće obučeni model dubokog učenja na ulaznom rasteru i opcionalnu klasu geoobjekata kako bi proizveo klasu geoobjekta ili tablicu u kojoj svaki ulazni objekt ima dodijeljenu oznaku razreda.
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte,</b> pretvorit će se samo ćelije rastera koje su vidljive unutar trenutačnog obuhvata karte. Ako nije označena, analizirat će se svi geoobjekti, čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, pretvorit će se samo ćelije rastera koje su vidljive unutar trenutačnog obuhvata karte. Ako nije označena, analizirat će se svi geoobjekti, čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -78,6 +78,26 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Način obrade</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje kako će se obrađivati ​​sve rasterske stavke u mozaičnom skupu podataka ili slikovnoj usluzi. Ovaj se parametar primjenjuje kada je ulazni raster mozaik skup podataka ili usluga slike.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Sve rasterske stavke u skupu podataka mozaika ili slikovnoj usluzi mozaicirat će se zajedno i obraditi. To je zadano.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Sve rasterske stavke u skupu podataka mozaika ili usluzi slika obrađivat će se kao zasebne slike.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="modelArguments">
         <div><h2>Odredi argumente modela dubokog učenja</h2></div>
         <hr/>
@@ -102,7 +122,7 @@
         <div><h2>Način obrade</h2></div>
         <hr/>
         <div>
-            <p>Određuje kako će se obrađivati svi rasterski elementi u usluzi slike. 
+            <p>Određuje kako će se obrađivati svi rasterski elementi u usluzi slike.
                 <ul>
                     <li> <b>Process as mosaicked image</b>&mdash;Svi rasterski elementi u usluzi slike biti će složeni zajedno te će se zajedno i obraditi. To je zadano.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

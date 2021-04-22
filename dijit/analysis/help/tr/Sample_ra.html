@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Örnek</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="&Ouml;rnekle"></h2>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="&Ouml;rnek"></h2>
         <hr/>
     <p>Bu ara&ccedil;, tanımlanan konumlar i&ccedil;in bir raster veya raster k&uuml;mesinden alınan h&uuml;crelerin değerlerini g&ouml;steren bir tablo veya nokta detay sınıfı oluşturur. Konumlar raster h&uuml;creleri, &ccedil;okgen detayları, &ccedil;oklu &ccedil;izgi detayları veya bir dizi nokta ile tanımlanır.
     </p>
@@ -112,7 +112,6 @@
             <p>Konum h&uuml;creleri veya detaylarla ilgili zaman, derinlik veya diğer alım verilerini belirtin.
             </p>
             <p>Her boyut i&ccedil;in konum h&uuml;creleri veya detaylarla ilgili alım bilgilerini belirtmenin &uuml;&ccedil; se&ccedil;eneği vardır:
-
                 <ul>
                     <li> <b>Tek alan veya değer</b>&mdash;Bu se&ccedil;enek belirlenirse aşağıdaki bilgilerin belirtilmesi gerekir:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Bir raster &ouml;rneklerken kullanılan yeniden &ouml;rnekleme algoritması.
             </p>
             <ul>
-                <li> <b>En yakın</b>&mdash;En yakın komşu. Varsayılan değerdir.
+                <li> <b>En yakın</b>&mdash;En yakın komşu, tekrar &ouml;rnekleme yaparken &ccedil;ıktı h&uuml;cresine bir değer atamak i&ccedil;in en yakın h&uuml;crenin değerini kullanır. Varsayılan değerdir.
                 </li>
-                <li> <b>Bilineer</b>&mdash;Bilineer interpolasyon
+                <li> <b>Bilineer</b>&mdash;Bilineer enterpolasyon, bir h&uuml;crenin yeni değerini en yakın d&ouml;rt girdi h&uuml;cresi merkezinin ağırlıklı mesafe ortalamasına dayanarak belirler.
                 </li>
-                <li> <b>K&uuml;bik</b>&mdash;K&uuml;bik konvol&uuml;syon
+                <li> <b>K&uuml;bik</b>&mdash;K&uuml;bik konvol&uuml;syon, bir h&uuml;crenin yeni değerini en yakın 16 girdi h&uuml;cresi merkezinden d&uuml;zg&uuml;n bir eğri ge&ccedil;irerek belirler.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

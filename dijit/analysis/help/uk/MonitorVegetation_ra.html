@@ -41,113 +41,112 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Monitor Vegetation</h2><p/>
-        <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Monitor Vegetation tool for Portal"></h2>
+        <h2>Контролювати рослинність</h2><p/>
+        <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Інструмент для порталу &laquo;Контролювати рослинність&raquo;"></h2>
         <hr/>
     <p>Цей інструмент виконує арифметичну операцію над каналами багатоканального растрового шару для пошуку інформації про рослинний покрив в області інтересу.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Select the input data</h2></div>
+        <div><h2>Вибрати вхідні дані</h2></div>
         <hr/>
         <div>
-            <p>Choose the multiband raster layer. Make sure the input raster has the appropriate bands available.
+            <p>Вибрати багатоканальний растровий шар. Переконайтеся, що у вхідному растрі доступні належні канали.
             </p> 
         </div>
     </div>
     <div id="vegetationIndexType">
-        <div><h2>Choose method to monitor vegetation</h2></div>
+        <div><h2>Вибрати метод для контролю рослинності</h2></div>
         <hr/>
         <div>
-            <p>Choose the method to create the vegetation index layer. The different vegetation indexes can help highlight certain features or reduce various noise.
+            <p>Виберіть метод для створення індексного шару рослинності. Різноманітні індекси рослинності можуть допомогти виділити певні об&rsquo;єкти або зменшити різноманітні шуми.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
-GEMI is a nonlinear vegetation index for global environmental monitoring from satellite imagery. It is similar to NDVI, but it is less sensitive to atmospheric effects. It is affected by bare soil; therefore, it is not recommended for use in areas of sparse or moderately dense vegetation.
+GEMI &mdash; це нелінійний індекс рослинності для глобального моніторингу навколишнього середовища за супутниковими знімками. Він подібний до NDVI, але менш чутливий до впливу атмосфери. На нього впливає оголений ґрунт, тому його не рекомендується використовувати в областях з рідкою або помірно густою рослинністю.
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
-GVI was originally designed from Landsat MSS imagery but has been modified for use with Landsat TM imagery. It is also known as the Landsat TM Tasseled Cap green vegetation index. This monitoring index can also be used with imagery whose bands share the same spectral characteristics.
+GVI був первісно розроблений на основі знімків Landsat MSS і модифікований для знімків Landsat TM. Він також відомий як індекс зеленої рослинності Landsat TM Tasseled Cap. Його можна також застосовувати до знімків, канали яких мають такі самі спектральні характеристики.
 
                 </li>
                 <li>Modified Soil Adjusted Vegetation Index &mdash; 
-MSAVI2 is a vegetation index that tries to minimize bare soil influences of the SAVI method.
+MSAVI2 &mdash; це індекс рослинності, який намагається мінімізувати вплив оголеного ґрунту на метод SAVI.
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI is a standardized index allowing you to generate an image displaying greenness, or relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset: the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
+NDVI &mdash; це стандартизований індекс, який дозволяє генерувати зображення, що показує зелений покрив або відносну біомасу. Цей індекс використовує контрастність характеристик двох каналів з набору мультиспектральних растрових даних &mdash; поглинання пігментом хлорофілу в червоному каналі та високу віддзеркалювальну здатність рослинних матеріалів у ближньому інфрачервоному каналі (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
-PVI is similar to a difference vegetation index; however, it is sensitive to atmospheric variations. When using this method to compare different images, it should only be used on images that have been atmospherically corrected. This information can be provided by your data vendor.
+PVI подібний до різницевого індексу рослинності, однак він чутливий до атмосферних відхилень. При використанні цього методу для порівняння різних зображень його слід застосовувати тільки до зображень, скоригованих за атмосферою. Ця інформація може бути надана вашим постачальником даних.
 
                 </li>
                 <li>Soil-Adjusted Vegetation Index &mdash; 
-SAVI is a vegetation index that attempts to minimize soil brightness influences using a soil-brightness correction factor. This is often used in arid regions where vegetative cover is low.
+SAVI &mdash; це індекс рослинності, який намагається мінімізувати вплив яскравості ґрунту за допомогою коефіцієнта корекції яскравості ґрунту. Він часто використовується у пустельних областях, де рослинний покрив незначний.
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-The Sultan's Formula process takes a six-band 8-bit image and applies a specific algorithm to it to produce a three-band 8-bit image. The resulting image highlights rock formations called ophiolites on coastlines. This formula was designed based on the TM and ETM bands of a Landsat 5 or 7 scene.
+При методі Султана береться шестиканальне 8-бітне зображення і за допомогою спеціального алгоритму створюється трьохканальне 8-бітне зображення. В отриманому зображенні виділяються скельні утворення на узбережжях, які називаються офіоліти. Ця формула була розроблена на основі каналів TM і TM сцени Landsat 5 або 7.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
-Transformed-SAVI is a vegetation index that attempts to minimize soil brightness influences by assuming the soil line has an arbitrary slope and intercept.
+Перетворений SAVI &mdash; це індекс рослинності, який намагається мінімізувати вплив яскравості ґрунту шляхом припущення, що лінія ґрунту має довільний ухил і перетин.
 
                 </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specify indexes of NIR band and Red band</h2></div>
+        <div><h2>Вказати індекси для ближнього ІЧ-каналу та червоного каналу</h2></div>
         <hr/>
         <div>
-            <p>Specify the band indexes for the NIR and red bands.
+            <p>Указати індекси каналів для ближнього ІЧ-каналу і червоного каналу.
             </p>
-            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and red wavelengths.
+            <p>Кожний супутниковий сенсор і аерокамера отримує інформацію, розкладену на індекси каналів. Кожний індекс каналу містить інформацію про певну частину електромагнітного спектру. Для цього методу моніторингу рослинності потрібно, щоб був заданий індекс каналу, який охоплює довжини хвилі близької ІЧ і червоної частини спектру.
             </p>
         </div>
     </div>
     <div id="slopeOfSoilLine">
-        <div><h2>Slope of soil line</h2></div>
+        <div><h2>Ухил лінії ґрунту</h2></div>
         <hr/>
         <div>
-            <p>The slope of the soil line. The slope is the approximate linear relationship between the NIR and red bands on a scatterplot.
+            <p>Ухил лінії ґрунту. Ухил &mdash; це наближене лінійне відношення між ближнім ІЧ і червоним каналом на діаграмі розсіяння.
             </p>
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
+            <p>Цей параметр дійсний тільки для методу &laquo;Перетворений індекс рослинності з корекцією за ґрунтом&raquo;.
             </p>
         </div>
     </div>
     <div id="interceptOfSoilLine">
-        <div><h2>Intercept</h2></div>
+        <div><h2>Перетин</h2></div>
         <hr/>
         <div>
-            <p>The value of the NIR when the reflection value of the red (Red) band is 0 for the particular soil lines.
+            <p>Значення близького ІЧ-каналу, коли значення віддзеркалення червоного (Red) каналу становить 0 для певних ліній ґрунту.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , when Red is 0.
+            <p> <code>(a = NIR - sRed)</code>, коли Red становить 0.
             </p> 
-            <p>This parameter is only valid for the Transformed Soil-Adjusted Vegetation Index method.
+            <p>Цей параметр дійсний тільки для методу &laquo;Перетворений індекс рослинності з корекцією за ґрунтом&raquo;.
             </p>
         </div>
     </div>
     <div id="greenVegetativeCover">
-        <div><h2>Amount of green vegetation cover</h2></div>
+        <div><h2>Кількість зеленого рослинного покриву</h2></div>
         <hr/>
         <div>
-            <p>Specifies the amount of green vegetation cover, which is required by the SAVI method.
+            <p>Указує кількість зеленого рослинного покриву, що потрібно для методу SAVI.
             </p>
-            <p>Valid values are as follows: 
-
+            <p>Допустимі значення:
                 <ul>
-                    <li>1 = Areas with no green vegetation cover
+                    <li>1 = Області без зеленого рослинного покриву
                         
  
                     </li>
-                    <li>0.5 = Areas with moderate green vegetation cover
+                    <li>0,5 = Області з помірним зеленим рослинним покривом
                         
  
                     </li>
-                    <li>0 = Areas with high green vegetation cover
+                    <li>0 = Області з щільним зеленим рослинним покривом
                         
 
                     </li>
@@ -157,22 +156,23 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         </div>
     </div>
     <div id="adjustmentFactor">
-        <div><h2>Adjustment factor</h2></div>
+        <div><h2>Коефіцієнт поправки</h2></div>
         <hr/>
         <div>
-            <p>Specifies the adjustment factor to help minimize soil effect, which is required by the Transformed Soil-Adjusted Vegetation Index method. The default value is 0.08.
+            <p>Задає коефіцієнт поправки, який допомагає мінімізувати вплив ґрунту, що потрібно для методу &laquo;Перетворений індекс рослинності з корекцією за ґрунтом&raquo;. Значення за замовчуванням 0,08.
             </p>
-            <p>A low value means that you are ignoring the soil effect. A high value means that the soil will affect your result.
+            <p>Низьке значення означає, що вплив ґрунту ігнорується. Високе значення означає, що є вплив ґрунту на результат.
             </p>
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Ім'я шару результатів</h2></div>
         <hr/>
         <div>
-            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Ім'я за замовчуванням визначається на основі імені інструменту та імені вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
             </p>
-            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            <p>Використовуючи розкривний список  <b>Зберегти результат у</b>, можна вказати ім'я папки в <b>Мій вміст</b>, де зберігатиметься результат.
             </p>
         </div>
     </div>

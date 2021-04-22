@@ -52,8 +52,6 @@
         <div><h2>Izberi večdimenzionalni slikovni sloj za analizo trenda</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Vhodni slikovni sloj večdimenzionalnega rastra, ki bo analiziran.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Izberi tip linije za prilagajanje vrednostim spremenljivke vzdolž dimenzije</h2></div>
         <hr/>
         <div>
-            <p>Določa tip linije, ki bo uporabljena za prilagajanje vrednostim piksla vzdolž dimenzije. 
+            <p>Določa tip linije, ki bo uporabljena za prilagajanje vrednostim piksla vzdolž dimenzije.
                 <ul>
-                    <li> <b>Linearno</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije linearnega trenda. To je privzeta nastavitev.
+                    <li> <b>Linearno</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije linearnega trenda. To je privzeto.
                     </li>
                     <li> <b>Polinomsko</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije trenda polinoma druge stopnje.
                     </li>
                     <li> <b>Harmonsko</b> &ndash; Spremenljivke vrednosti piksla bodo prilagojene vzdolž linije harmonskega trenda.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;spremenljive vrednosti pikslov bodo ocenjene z uporabo testa trenda Mann-Kendall.
+                    </li>
+                    <li> <b>Sezonski Kendall</b>&mdash;spremenljive vrednosti pikslov bodo ocenjene z uporabo testa trenda sezonskega Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Določite časovno enoto, uporabljeno za dolžino sezonskega obdobja</h2></div>
+        <hr/>
+        <div>
+            <p>Določa časovno enoto, ki bo uporabljena za dolžino sezonskega obdobja pri izvajanju testa Sezonski Kendall.
+                <ul>
+                    <li> <b>Dnevi</b>&mdash;enota za dolžino sezonskega obdobja so dnevi. To je privzeto.
+                    </li>
+                    <li> <b>Meseci</b>&mdash;enota za dolžino sezonskega obdobja so meseci.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>Dnevi</b> &ndash; Enota za dolžino harmonskega cikla so dnevi.
                     </li>
-                    <li> <b>Leta</b> &ndash; Enota za dolžino harmonskega cikla so leta. To je privzeta nastavitev.
+                    <li> <b>Leta</b> &ndash; Enota za dolžino harmonskega cikla so leta. To je privzeto.
                     </li>
                 </ul>
                 
@@ -154,7 +171,7 @@
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Obkljukano &ndash; RMSE bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda. To je privzeta nastavitev.
+                            <li>Obkljukano &ndash; RMSE bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda. To je privzeto.
                             </li>
                             <li>Odkljukano &ndash; RMSE ne bo izračunan.
                             </li>
@@ -167,7 +184,7 @@
                         <ul>
                             <li>Obkljukano &ndash; Vrednost R-kvadrat bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda.
                             </li>
-                            <li>Odkljukano &ndash; Vrednost R-kvadrat ne bo izračunana. To je privzeta nastavitev.
+                            <li>Odkljukano &ndash; Vrednost R-kvadrat ne bo izračunana. To je privzeto.
                             </li>
                         </ul>
                         
@@ -178,7 +195,7 @@
                         <ul>
                             <li>Obkljukano &ndash; P-vrednost bo izračunana in vključena kot eden izmed več pasov v izhodnem rastru trenda.
                             </li>
-                            <li>Odkljukano &ndash; P-vrednost ne bo izračunana. To je privzeta nastavitev.
+                            <li>Odkljukano &ndash; P-vrednost ne bo izračunana. To je privzeto.
                             </li>
                         </ul>
                         
@@ -194,7 +211,7 @@
         <div>
             <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti.
                 <ul>
-                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeto.
                     </li>
                     <li>Odkljukano&mdash;Rezultat analize bo brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
                     </li>
@@ -207,6 +224,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

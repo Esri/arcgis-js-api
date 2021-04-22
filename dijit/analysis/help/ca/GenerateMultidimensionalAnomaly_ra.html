@@ -44,7 +44,7 @@
         <h2>Genera l'anomalia multidimensional</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Genera l'anomalia multidimensional"></h2>
         <hr/>
-    <p>Per generar un dataset r&agrave;ster multidimensional, combina variables de r&agrave;ster multidimensional existents en una dimensi&oacute;.
+    <p>Calcula l'anomalia de cada sector d'un r&agrave;ster multidimensional existent per generar un r&agrave;ster multidimensional nou.
     </p>
     <p>Una anomalia &eacute;s la desviaci&oacute; d'una observaci&oacute; del seu valor de mitjana, mediana o est&agrave;ndard.
     </p>
@@ -78,9 +78,9 @@
         <div><h2>Trieu el mètode per generar l'anomalia</h2></div>
         <hr/>
         <div>
-            <p>Especifica el m&egrave;tode que s'utilitzar&agrave; per calcular l'anomalia. 
+            <p>Especifica el m&egrave;tode que s'utilitzar&agrave; per calcular l'anomalia.
                 <ul>
-                    <li> <b>Difer&egrave;ncia de la mitjana</b>: es calcular&agrave; la difer&egrave;ncia entre el valor d'un p&iacute;xel i la mitjana del valor del p&iacute;xel als sectors definits per l'interval. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    <li> <b>Difer&egrave;ncia de la mitjana</b>: es calcular&agrave; la difer&egrave;ncia entre el valor d'un p&iacute;xel i la mitjana del valor del p&iacute;xel als sectors definits per l'interval. Esta es la opci&oacute;n predeterminada.
                     </li>
                     <li> <b>Percentatge de difer&egrave;ncia de la mitjana</b>: es calcular&agrave; el percentatge de difer&egrave;ncia entre el valor d'un p&iacute;xel i la mitjana del valor del p&iacute;xel als sectors definits per l'interval.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Difer&egrave;ncia de la mitjana = x - &micro;
-
                         <ul>
                             <li>x = valor del p&iacute;xel en un sector
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Percentatge de difer&egrave;ncia de la mitjana = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valor del p&iacute;xel en un sector
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Percentatge de la mitjana = x / &micro;
-
                         <ul>
                             <li>x = valor del p&iacute;xel en un sector
                                 
@@ -202,7 +199,7 @@
         <div><h2>Trieu l'interval temporal per calcular la mitjana</h2></div>
         <hr/>
         <div>
-            <p>Especifica l'interval temporal que s'utilitzar&agrave; per calcular la mitjana. 
+            <p>Especifica l'interval temporal que s'utilitzar&agrave; per calcular la mitjana.
                 <ul>
                     <li> <b>Tots</b>: calcula la mitjana en tots els sectors de cada p&iacute;xel.
                     </li>
@@ -235,9 +232,9 @@
         <div><h2>Ignora els valors que falten al càlcul</h2></div>
         <hr/>
         <div>
-            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi. 
+            <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi.
                 <ul>
-                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Esta es la opci&oacute;n predeterminada.
                     </li>
                     <li>Desactivada: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per al p&iacute;xel a la dimensi&oacute; proporcionada.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
+            
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.

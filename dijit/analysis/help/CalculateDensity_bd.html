@@ -150,9 +150,9 @@ can use a field representing the population of the city as the count field, and 
                 </ul>
                 
             </p>
-            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to <code>1 week</code>. 
+            <p>For example, if you have data that represents a year in time and you want to analyze it using weekly steps, set  <b>Time step interval</b> to 1 week.  
             </p>
-            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to <code>1 week</code>, <b>How often to repeat the time step</b> to <code>1 month</code>, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
+            <p>For example, if you have data that represents a year in time and you want to analyze it using the first week of the month, set  <b>Time step interval</b> to 1 week, <b>How often to repeat the time step</b> to 1 month, and <b>Time to align the time steps to</b> to <code>January 1, at 12:00 am</code>.
             </p>
         </div>
     </div>
@@ -162,7 +162,7 @@ can use a field representing the population of the city as the count field, and 
         <div>
             <p>The interval of time used for generating time steps.  <b>Time step interval</b> can be used alone or with the <b>How often to repeat the time step</b> or <b>Time to align the time steps to</b> parameter.
             </p>
-            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to 1 hour, <b>How often to repeat the time step</b> to 1 week, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>. 
             </p>
         </div>
     </div>
@@ -172,7 +172,7 @@ can use a field representing the population of the city as the count field, and 
         <div>
             <p> The step used for calculating a time step. <b>How often to repeat the time step</b> can be used alone, with <b>Time step interval</b>, with <b>Reference Time</b>, or with both <b>Time step interval</b> and <b>Time to align the time steps to</b>.
             </p>
-            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to 1 hour, <b>How often to repeat the time step</b> to 1 week, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>. 
             </p>
         </div>
     </div>
@@ -182,7 +182,7 @@ can use a field representing the population of the city as the count field, and 
         <div>
             <p>The date and time used to align time slicing. Time stepping will start at and continue backward from this time. If no reference time is selected, time stepping will align to January 1st, 1970. 
             </p>
-            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to <code>1 hour</code>, <b>How often to repeat the time step</b> to <code>1 week</code>, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>.
+            <p>For example, if you want to create time steps that take place every Monday from 9:00 a.m. until 10:00 a.m., set  <b>Time step interval</b> to 1 hour, <b>How often to repeat the time step</b> to 1 week, and <b>Time to align the time steps to</b> to <code>9:00:00 a.m. on a Monday</code>. 
             </p>
         </div>
     </div>
@@ -190,7 +190,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>SpatialReference (wkid)</h2></div>
         <hr/>
         <div>
-            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system is used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
+            <p>This is a temporary parameter for prerelease  to set the processing spatial reference. Many big data tools require that a projected coordinate system be used as the spatial reference for processing. By default, the tool will use the input coordinate system but will fail if it's a geographic coordinate system. To set a projected coordinate system, enter the WKID. For example,  <b>Web Mercator</b> would be entered as <code>3857</code>.
             </p>
         </div>
     </div>
@@ -198,7 +198,7 @@ can use a field representing the population of the city as the count field, and 
         <div><h2>Choose data store</h2></div>
         <hr/>
         <div>
-            <p>GeoAnalytics results are stored to an data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons why you may want to store results to the relational data store: 
+            <p>GeoAnalytics results are stored to a data store and exposed as a feature layer in   Portal for ArcGIS. In most cases, results should be stored to the spatiotemporal data store, and this is the default. In some cases, saving results to the  relational data store is a good option. The following are reasons you may want to store results to the relational data store: 
                 <ul>
                     <li>You can use results in portal-to-portal collaboration.
                     </li>
@@ -216,7 +216,7 @@ can use a field representing the population of the city as the count field, and 
         <hr/>
         <div>
             <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
-Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. It will not be added to the map. The default name is based on the
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
 tool name and the input layer name. If the layer already exists, the tool will fail.
             </p>
             <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify

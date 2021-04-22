@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/array","dojo/_base/declare"],(function(e,o){return o(null,{declaredClass:"esri.dijit.VisibleScaleRangeSlider._SlideEvent",_events:["onMouseMove","onFirstMove",{name:"onMoveStop",hookTo:"destroy"}],postCreate:function(){this.inherited(arguments),this._extendMover(this._movable),this._extendMover(this._movableBar,"rangebar"),this._extendMover(this._movableMax,"max")},_extendMover:function(o,t){if(o){var i=o.mover,n=this._events,a={};e.forEach(n,(function(e){var n,r,s,d,l,v;"object"==typeof e?(r=e.name,n=e.hookTo):r=e,s=i.prototype[r]||function(){},d="slide"+(t||"")+"-"+r.toLowerCase(),l=function(){s.apply(this,arguments),this.widget.emit(d,{movable:o})},n&&(v=i.prototype[n],a[n]=function(){v.apply(this,arguments),l.apply(this,arguments)}),a[r]=l})),i.extend(a)}}})}));

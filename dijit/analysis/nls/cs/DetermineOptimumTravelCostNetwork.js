@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zvolte rastrovou vrstvu nebo vrstvu umístění prvků pro stanovení tras mezi",inputCostRasterLabel:"Zvolte rastrovou vrstvu cestovních nákladů",outputOptimumNetworkName:"Název výsledné liniové vrstvy s optimálními trasami",outputNeighborNetworkName:"Název výsledné liniové vrstvy se sousedícími trasami (volitelné)",outputLayerName:"Stanovit optimální cestovní náklady pro ${layername}",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Stanovit síť optimálních cestovních nákladů pro ${layerName}. ",itemTags:"Výsledek analýzy, Stanovit síť optimálních cestovních nákladů, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Stanovit síť optimálních cestovních nákladů."});

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Connexions de regió òptimes</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Il&middot;lustraci&oacute; de l'eina Connexions de regi&oacute; &ograve;ptimes"></h2>
+        <hr/>
+    <p>Aquesta eina calcula la xarxa de connectivitat &ograve;ptima entre dues o m&eacute;s regions d'entrada.
+    </p>
+    <p>Alguns exemples d'aplicacions s&oacute;n:
+        <ul>
+            <li>Model d'adequaci&oacute;: a partir d'un model d'adequaci&oacute;, heu identificat 10 dels millors terrenys d'h&agrave;bitat per a linxs. Voleu que els linxs es puguin moure d'uns terrenys als altres amb la xarxa m&eacute;s efectiva de corredors de vida salvatge per mantenir la diversitat gen&egrave;tica dins de la metapoblaci&oacute;.
+                
+
+            </li>
+            <li>Explotaci&oacute; fustera: en una explotaci&oacute; fustera, voleu crear la xarxa m&eacute;s rendible de camins de tala per extreure la fusta.
+                
+
+            </li>
+            <li>Manteniment de la pau: en un desplegament militar de manteniment de la pau, heu identificat cinc &agrave;rees en qu&egrave; s'han de situar les tropes i el personal. Voleu crear rutes d'abastiment connectades de manera &ograve;ptima entre les bases.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Si s'ha activat  <b>Utilitza l'extensi&oacute; del mapa actual</b>, nom&eacute;s s'analitzaran les ubicacions de les capes d'entrada que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran totes les ubicacions d'ambdues capes d'entrada, encara que estiguin fora de l'extensi&oacute; de mapa actual.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Trieu el ràster o l'entitat de regió</h2></div>
+        <hr/>
+        <div>
+            <p>Regions d'entrada que es connectaran amb la xarxa &ograve;ptima.
+            </p>
+            <p>Si l'entrada de regions &eacute;s un r&agrave;ster, les regions es defineixen mitjan&ccedil;ant grups de cel&middot;les contig&uuml;es (adjacents) del mateix valor. Cadascuna de les regions ha d'estar numerada de manera &uacute;nica. Les cel&middot;les que no formin part de cap regi&oacute; han de ser NoData. El tipus de r&agrave;ster ha de ser enter i els valors poden ser positius o negatius.
+            </p>
+            <p>Si l'entrada de regions &eacute;s una entitat, poden ser punts, l&iacute;nies o pol&iacute;gons. Les regions de pol&iacute;gon no poden estar formades per pol&iacute;gons multipart.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Trieu el ràster o l'entitat de barrera (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Dataset que defineix les barreres.
+            </p>
+            <p>Per a un r&agrave;ster, el tipus d'entrada pot ser enter o flotant. Totes les cel&middot;les que tinguin un valor (incl&ograve;s el zero) es tractaran com una barrera. Totes les cel&middot;les que tinguin un valor NoData no es tractaran com una barrera.
+            </p>
+            <p>Per a una d'entitat, l'entrada pot ser un punt, una l&iacute;nia o un pol&iacute;gon.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Trieu el ràster de costos (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>R&agrave;ster que defineix la imped&agrave;ncia o el cost del moviment planim&egrave;tric a trav&eacute;s de cada cel&middot;la.
+            </p>
+            <p>El valor de cada ubicaci&oacute; de cel&middot;la representa la dist&agrave;ncia de cost per unitat per moure's a trav&eacute;s de la cel&middot;la. Cada valor d'ubicaci&oacute; de cel&middot;la es multiplica per la resoluci&oacute; de la cel&middot;la alhora que es compensa el moviment diagonal per obtenir el cost total de passar a trav&eacute;s de la cel&middot;la.
+            </p>
+            <p>Els valors del r&agrave;ster de costos poden ser enters o punts flotants, per&ograve; no poden ser negatius ni zero (no podeu tenir un cost negatiu ni de zero).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mètode de distància (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si es calcular&agrave; la dist&agrave;ncia mitjan&ccedil;ant un m&egrave;tode pla (terra plana) o geod&egrave;sic (el&middot;lipsoide).
+            </p>
+            <ul>
+                <li> <b>Pla</b>: el c&agrave;lcul de la dist&agrave;ncia es dur&agrave; a terme en un terreny pla projectat mitjan&ccedil;ant un sistema de coordenades cartesianes 2D. Aquest &eacute;s el m&egrave;tode per defecte.
+                    
+
+                </li>
+                <li> <b>Geod&egrave;sic</b>: el c&agrave;lcul de dist&agrave;ncia es dur&agrave; a terme a l'el&middot;lipsoide. Per tant, independentment de la projecci&oacute; d'entrada o de sortida, els resultats no canvien.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Connexions dins de regions (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica si els camins continuaran i es connectaran dins de les regions d'entrada.
+            </p>
+            <ul>
+                <li> <b>Genera connexions</b>: els camins continuaran dins de les regions d'entrada per connectar tots els camins que entren dins d'una regi&oacute;. Aquesta &eacute;s l'opci&oacute; per defecte.
+                    
+
+                </li>
+                <li> <b>Sense connexions</b>: els camins s'aturaran a les vores de les regions d'entrada i no continuaran ni es connectaran entre ells.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Nom de la capa d'entitats de línies de connectivitat òptima de resultats</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Aquesta capa &eacute;s una entitat de l&iacute;nia de sortida que connecta cada regi&oacute; d'entrada.
+            </p>
+            <p>Cada ruta (o l&iacute;nia) est&agrave; numerada de manera &uacute;nica i els camps addicionals de la taula d'atributs n'emmagatzemen informaci&oacute; espec&iacute;fica. Aquests camps addicionals s&oacute;n els seg&uuml;ents:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- L'identificador &uacute;nic de la ruta
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- La dist&agrave;ncia acumulativa total o cost de la ruta
+                    
+
+                </li>
+                <li> <i>REGION1</i>- La primera regi&oacute; que connecta la ruta
+                    
+
+                </li>
+                <li> <i>REGION2</i>- L'altra regi&oacute; que connecta la ruta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Com que cada ruta es representa amb una &uacute;nica l&iacute;nia, hi haur&agrave; diverses l&iacute;nies en les ubicacions on les rutes segueixin el mateix recorregut.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Nom de la capa d'entitats de connexions veïnes de resultats (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Aquesta capa &eacute;s una entitat de l&iacute;nia de sortida que identifica tots els camins de cada regi&oacute; a cadascun dels ve&iuml;ns m&eacute;s propers o de menor cost.
+            </p>
+            <p>Cada ruta (o l&iacute;nia) est&agrave; numerada de manera &uacute;nica i els camps addicionals de la taula d'atributs n'emmagatzemen informaci&oacute; espec&iacute;fica. Aquests camps addicionals s&oacute;n els seg&uuml;ents:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>- L'identificador &uacute;nic de la ruta
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>- La dist&agrave;ncia acumulativa total o cost de la ruta
+                    
+
+                </li>
+                <li> <i>REGION1</i>- La primera regi&oacute; que connecta la ruta
+                    
+
+                </li>
+                <li> <i>REGION2</i>- L'altra regi&oacute; que connecta la ruta
+                    
+
+                </li>
+            </ul>
+            
+            <p>Com que cada ruta es representa amb una &uacute;nica l&iacute;nia, hi haur&agrave; diverses l&iacute;nies en les ubicacions on les rutes segueixin el mateix recorregut.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird. Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von  Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Nachbarschaftsanalyse verwenden</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b>, <b>Daten verwalten</b>, <b>Deep Learning</b> und <b>Multidimensionale Analyse</b>.
+        <p>Die Toolbox &quot;Raster-Analyse&quot; erm&ouml;glicht Ihnen die Analyse gro&szlig;er Raster-Datasets mit  ArcGIS Image Server. Dadurch k&ouml;nnen gr&ouml;&szlig;ere Datenmengen schneller analysiert werden, indem das Potenzial des Servers genutzt wird.Zu den Toolsets, die derzeit &uuml;ber die Web-Benutzeroberfl&auml;che von Portal for ArcGIS verf&uuml;gbar sind, geh&ouml;ren  <b>Daten zusammenfassen</b>, <b>Muster analysieren</b>, <b>Nachbarschaftsanalyse verwenden</b>, <b>Bild analysieren</b>, <b>Terrain analysieren</b>, <b>Daten verwalten</b>, <b>Deep Learning</b> und <b>Multidimensionale Analyse</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Daten zusammenfassen</h2>
         <hr/>
-        <p>Dieses Toolset enth&auml;lt ein Werkzeug zum Berechnen einiger Statistiken f&uuml;r einen Raster-Layer innerhalb von Fl&auml;chengrenzen, die Sie definieren. 
+        <p>Mit diesen Werkzeugen werden Statistiken f&uuml;r einen Raster-Layer innerhalb der festgelegten Fl&auml;chengrenzen (Zonen) berechnet:&lt;
             <ul>
                 <li> <b>Zusammenfassen (innerhalb)</b> berechnet Statistiken f&uuml;r Raster-Zellen, die in definierten Fl&auml;chengrenzen liegen.
+                </li>
+                <li>Mit  <b>Zonale Statistiken als Tabelle</b> werden die Werte eines Rasters innerhalb der Zonen eines anderen Datasets zusammengefasst und die Ergebnisse in einer Tabelle ausgegeben.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Raster zusammenfassen (innerhalb)</h2></td>
+                    <td><h2>Zusammenfassen (innerhalb)</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Werkzeug &quot;Raster zusammenfassen (innerhalb)&quot;">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Werkzeug &quot;Zusammenfassen (innerhalb)&quot;">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berechnet einige Summenstatistiken f&uuml;r Raster-Zellen, die sich innerhalb definierter Fl&auml;chen befinden.
+            <p>Mit diesem Werkzeug werden die Werte eines Rasters innerhalb der Zonen eines anderen Datasets zusammengefasst.
             </p>
-            <p>Folgende Beispielanwendungen sind verf&uuml;gbar: 
-
-                <ul>
-                    <li>Berechnen Sie anhand eines Abflussgebiet-Layers und eines H&ouml;hen-Raster-Layers den H&ouml;henbereich in jedem Abflussgebiet, um zu ermitteln, welche den h&ouml;chsten Energiestrom aufweisen.
-                        
-
-                    </li>
-                    <li>Berechnen Sie anhand eines Layers mit Verwaltungseinheiten und eines Raster-Layers mit Landnutzungskategorien die verschiedenen Landnutzungswerte in jedem Verwaltungsbereich, um herauszufinden, welche den gr&ouml;&szlig;ten Arbeitsaufwand zur Bestimmung eines Verwaltungsplans fordern.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonale Statistiken als Tabelle</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagramm von &quot;Zonale Statistiken als Tabelle&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug fasst die Werte eines Rasters innerhalb der Zonen eines anderen Datasets zusammen und zeigt die Ergebnisse in einer Tabelle an.
             </p>
             <br/>
         </div>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Nachbarschaftsanalyse verwenden</h2>
         <hr/>
-        <p>Mit diesen Werkzeugen k&ouml;nnen Sie eine der am h&auml;ufigsten gestellten Fragen im Zusammenhang mit r&auml;umlichen Analysen beantworten: &quot;Welche Elemente befinden sich in r&auml;umlicher N&auml;he zueinander?&quot;
-
+        <p>Mit diesen Werkzeugen k&ouml;nnen Sie einige der am h&auml;ufigsten gestellten Fragen im Zusammenhang mit r&auml;umlichen Analysen beantworten: Welche Elemente befinden sich in r&auml;umlicher N&auml;he zueinander? Welcher Pfad ist optimal?
             <ul>
                 <li> <b>Entfernung berechnen</b> berechnet die euklidische Entfernung, Richtung und Zuordnung von einer einzelnen oder verschiedenen Quellen.
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Reisekostenpfad als Polylinie ermitteln</b> berechnet den kosteng&uuml;nstigsten Pfad zwischen Quellen und bekannten Zielen als Polylinie.
+                <li> <b>Reisekostenpfad als Polylinie ermitteln</b> berechnet den kosteng&uuml;nstigsten Pfad zwischen bekannten Zielen und Quellen.
+                    
+
+                </li>
+                <li> <b>Entfernungsakkumulation</b> berechnet die akkumulative Entfernung von jeder Zelle zu den Quellen. Dabei werden geradlinige Entfernung, Kostenentfernung, tats&auml;chliche Oberfl&auml;chenentfernung sowie vertikale und horizontale Faktoren ber&uuml;cksichtigt.
+                    
+
+                </li>
+                <li> <b>Entfernungsallokation</b> berechnet die Entfernungsallokation f&uuml;r jede Zelle zu den angegebenen Quellen auf Grundlage von geradliniger Entfernung, Kostenentfernung, tats&auml;chlicher Oberfl&auml;chenentfernung sowie vertikalen und horizontalen Faktoren.
+                    
+
+                </li>
+                <li> <b>Optimaler Pfad als Linie</b> berechnet den optimalen Pfad von Zielen zu Quellen als Linie.
+                    
+
+                </li>
+                <li> <b>Optimaler Pfad als Raster</b> berechnet den optimalen Pfad von Zielen zu Quellen als Raster.
+                    
+
+                </li>
+                <li> <b>Optimale Regionsverbindungen</b> berechnet das optimale Konnektivit&auml;tsnetzwerk zwischen mindestens zwei Eingaberegionen.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berechnet die euklidische Entfernung, Richtung und Zuordnung von einer einzelnen oder verschiedenen Quellen. Mit diesem Werkzeug k&ouml;nnen Sie die Entfernung einer Position von einer Stra&szlig;e, einem Geb&auml;ude oder einem Park ermitteln. Dar&uuml;ber hinaus k&ouml;nnen Sie feststellen, in welche Richtung Sie von einer Position aus fahren m&uuml;ssen, um auf direktestem Weg zu einer Quelle zur&uuml;ckzukehren. F&uuml;r jede Position im Untersuchungsgebiet wird die n&auml;chstgelegene Quelle angezeigt.
+            <p>Dieses Werkzeug berechnet die euklidische Entfernung, Richtung und Zuordnung von einer einzelnen oder verschiedenen Quellen.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berechnet das optimale Kostennetzwerk von verschiedenen Eingaberegionen.
+            <p>Dieses Werkzeug berechnet das optimale Kostennetzwerk von verschiedenen Eingaberegionen.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Berechnet den kosteng&uuml;nstigsten Pfad zwischen Quellen und bekannten Zielen als Polylinie.
+            <p>Dieses Werkzeug berechnet den kosteng&uuml;nstigsten Pfad zwischen Zielen und Quellen als Polylinie.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entfernungsakkumulation</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Abbildung zum Werkzeug &quot;Entfernungsakkumulation&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet die akkumulative Entfernung von jeder Zelle zu den Quellen. Dabei werden geradlinige Entfernung, Kostenentfernung, tats&auml;chliche Oberfl&auml;chenentfernung sowie vertikale und horizontale Faktoren ber&uuml;cksichtigt.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Entfernungsallokation</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Abbildung zum Werkzeug &quot;Entfernungsallokation&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet die Entfernungsallokation f&uuml;r jede Zelle zu den angegebenen Quellen auf Grundlage von geradliniger Entfernung, Kostenentfernung, tats&auml;chlicher Oberfl&auml;chenentfernung sowie vertikalen und horizontalen Faktoren.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaler Pfad als Linie</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Abbildung zum Werkzeug &quot;Optimaler Pfad als Linie&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet den optimalen Pfad von Zielen zu Quellen als Linie.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaler Pfad als Raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Abbildung zum Werkzeug &quot;Optimaler Pfad als Raster&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet den optimalen Pfad von Zielen zu Quellen als Raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimale Regionsverbindungen</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Abbildung zum Werkzeug &quot;Optimale Regionsverbindungen&quot;">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dieses Werkzeug berechnet das optimale Konnektivit&auml;tsnetzwerk zwischen mindestens zwei Eingabe-Regionen.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Bild analysieren</h2>
         <hr/>
-        <p>Das folgende Werkzeug unterst&uuml;tzt Sie bei der Analyse von Bildern. 
+        <p>Das folgende Werkzeug aus der Kategorie  <b>Bild analysieren</b> unterst&uuml;tzt Sie bei der Analyse von Bildern:
             <ul>
-                <li> <b>Vorlage f&uuml;r Raster-Funktionen anwenden</b> bearbeitet Ihre Bilddaten mit der Funktionskette, die in der Vorlage f&uuml;r Raster-Funktionen angegeben wurde.
-                </li>
-                <li> <b>Vegetation &uuml;berwachen</b> erkennt Vegetation in einem Bild basierend auf arithmetischen Operationen f&uuml;r die B&auml;nder.
+                <li> <b>Vegetation &uuml;berwachen</b> erkennt die relative Vegetationsabdeckung in einem Bild basierend auf arithmetischen Operationen f&uuml;r die B&auml;nder. F&uuml;r die Bildanalyse sind mehrere Vegetationsindizes verf&uuml;gbar.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Vorlage für Raster-Funktionen anwenden</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Vorlage f&uuml;r Raster-Funktionen anwenden">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Bearbeitet Ihre Bilddaten mit der Funktionskette, die in der Vorlage f&uuml;r Raster-Funktionen angegeben wurde.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>F&uuml;hrt eine arithmetische Operation f&uuml;r die B&auml;nder eines Multiband-Raster-Layers durch, um die Informationen zur Vegetationsabdeckung des Einzugsgebiets aufzudecken.
+            <p>F&uuml;hrt eine arithmetische Operation f&uuml;r die B&auml;nder eines Multiband-Raster-Layers durch, um Informationen zur Vegetationsabdeckung aufzuzeigen.
             </p>
             <br/>
         </div>

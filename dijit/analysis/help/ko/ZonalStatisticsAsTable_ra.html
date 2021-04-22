@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>테이블 구역 통계(Zonal Statistics as Table)</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="테이블 형식 구역 통계 다이어그램"></h2>
+        <hr/>
+    <p>이 도구는 다른 데이터셋의 구역 내에서 래스터 값을 요약하고 결과를 테이블에 보고합니다.
+    </p>
+    <p>다음과 같은 몇 가지 적용 예가 있습니다.
+    </p>
+    <p>
+        <ul>
+            <li>주 경계 레이어와 미대륙의 평균 강수량 분포가 지정된 경우 백분위 수 값 목록을 사용하여 폭우 시 주별 분포를 계산합니다.
+                
+
+            </li>
+            <li>중첩되는 생태 구역 레이어와 토양 습도 래스터 레이어가 지정된 경우 각 구역 내에서 지원되는 모든 통계를 계산하여 구역과 토양 습도 가용성의 관계를 설정합니다.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>현재 맵 범위 사용</b>을 선택한 경우 현재 맵 범위 내에 표시된 입력 레이어 및 요약할 레이어의 피처만 분석되고, 이 옵션을 선택하지 않는 경우 현재 맵 범위를 벗어나는 피처까지 포함하여 입력 레이어와 요약할 레이어에 있는 피처가 전부 분석됩니다.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>구역 래스터 또는 피처 선택</h2></div>
+        <hr/>
+        <div>
+            <p>구역이나 영역의 경계를 정의하는 레이어로, 요약될 레이어입니다.
+            </p>
+            <p>레이어는 정수 래스터 또는 피처 데이터일 수 있습니다. 래스터의 경우 구역은 셀 값이 같은 입력의 모든 위치에 의해 정의됩니다. 피처의 경우 구역이 겹칠 수 있습니다. 영역은 인접하지 않아도 됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>구역 필드</h2></div>
+        <hr/>
+        <div>
+            <p>이 필드는 구역(영역)의 경계를 정의하는 데 사용할 레이어의 속성입니다.
+            </p>
+            <p>예를 들어 첫 번째 입력 레이어가 지역, 구역 및 각 단위의 필지 ID를 정의하는 속성을 사용하여 관리 단위 경계를 정의한다고 가정해 보겠습니다. 각 위치의 생물 다양성 색인을 정의하는 래스터 레이어도 있습니다. 선택한 필드를 사용하여 지방, 구역 또는 지역 수준에서의 평균 생물 다양성을 계산해볼 수 있습니다.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>래스터 값 선택</h2></div>
+        <hr/>
+        <div>
+            <p>이 레이어의 래스터 셀은 포함되어 있는 영역(구역)별로 요약됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>계산에서 NoData 무시(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            <p>NoData 값을 분석에서 무시할지 여부를 지정합니다.
+                <ul>
+                    <li>선택 - 해당 구역의 결과 값을 결정하기 위해 특정 구역 내의 입력 값 래스터에 값이 있는 셀이 분석에 포함됩니다. 값 래스터의 NoData 셀은 통계 계산에서 무시됩니다. 이 옵션이 기본 설정입니다.
+                    </li>
+                    <li>선택 안 함 - 분석은 특정 구역 내 값 래스터 셀에 NoData 값이 있는 경우 NoData를 반환합니다.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>통계 유형(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            <p>계산할 통계 유형을 지정합니다.
+            </p>
+            <p>입력은  <b>모두</b>, <b>평균</b>, <b>다수</b>, <b>최대값</b>, <b>중앙값</b>, <b>최소값</b>, <b>소수</b>, <b>백분위수</b>, <b>범위</b>, <b>표준편차</b>, <b>합계</b>, <b>다양</b>, <b>최소값 및 최대값</b>, <b>평균 및 표준편차</b>, <b>최소값, 최대값 및 평균</b> 중 하나일 수 있습니다. 기본값은 <b>모두</b>입니다.
+            </p>
+            <p>입력 값 래스터가 정수인 경우 기본 설정에 따라 모든 통계가 계산됩니다. 값 래스터가 부동 소수점 유형인 경우 기본 설정에 따라  <b>중앙값</b> 및 <b>백분위수</b>를 제외한 모든 통계가 계산됩니다. 
+            </p>
+            <p>입력 값 래스터가 부동 소수점 유형인 경우  <b>다수</b>, <b>소수</b>, <b>다양</b>에 대한 구역 계산을 수행할 수 없습니다.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>백분위수 값(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            <p>계산할 백분위수입니다. 단일 값 또는 값 목록을 지정할 수 있습니다. 기본값은 90이며 90번째 백분위수를 나타냅니다.
+            </p>
+            <p>값의 범위는 0~100일 수 있습니다. 0번째 백분위수를 지정한 결과는 기본적으로 최소 통계의 결과와 같고 100번째 백분위수는 최대 통계의 결과와 같습니다. 50의 값은 기본적으로 중앙값 통계와 동일한 결과를 생성합니다.
+            </p>
+            <p>이 옵션은  <b>통계 유형</b> 매개변수가 <b>백분위수</b> 또는 <b>모두</b>로 설정된 경우에만 지원됩니다.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>백분위수 보간 유형(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>계산될 입력 래스터의 값 개수가 짝수일 경우 사용될 백분위수 보간 방법을 지정합니다.
+            </p> 
+            <p>입력 값 래스터가 정수 픽셀 유형인 경우  <b>최근린</b> 방법이 사용됩니다. 입력 값 래스터가 부동 소수점 픽셀 유형인 경우 <b>선형</b> 방법이 사용됩니다. 이 옵션이 기본 설정입니다.
+            </p>
+            <p> <b>근사값</b> 방법의 경우 원하는 백분위수에 대해 이용 가능한 가장 가까운 값이 사용됩니다. <b>선형</b> 방법의 경우 원하는 백분위수에서 주변 두 값의 가중 평균이 사용됩니다.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>다차원으로 처리(선택 사항)</h2></div>
+        <hr/>
+        <div>
+            <p>입력 래스터가 다차원일 경우 처리 방법을 지정합니다.
+            </p>
+            <ul>
+                <li>선택 - 입력 다차원 데이터셋의 현재 슬라이스에서 통계가 계산됩니다. 이 옵션이 기본 설정입니다.
+                    
+
+                </li>
+                <li>선택 안 함 - 입력 다차원 데이터셋의 모든 차원에서 통계가 계산됩니다.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>결과 테이블 이름</h2></div>
+        <hr/>
+        <div>
+            <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

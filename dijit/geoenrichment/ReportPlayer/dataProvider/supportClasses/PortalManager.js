@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/Deferred","dojo/on","esri/dijit/geoenrichment/when","esri/arcgis/Portal","../../../utils/CacheUtil"],(function(r,e,n,o,t){return{getSignedInPortal:function(a){var i=t.get("PortalManager.portal");if(!i[a]){var s=new o.Portal(a),l=new r;return e(s,"load",(function(){if(s.user)return i[a]={user:new o.PortalUser({portal:s,credential:{userId:s.user.username,server:s.url,token:"",expires:9999999999999,creationTime:9999999999999,scope:"portal",resources:[s.portalUrl]}}),portal:s},l.resolve(i[a]);i[a]=n(s.signIn(),(function(r){return l.resolve({user:r,portal:s}),{user:r,portal:s}}))})),l.promise}return i[a]}}}));

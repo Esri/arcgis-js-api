@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika. Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;njePortal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Uporabi bližino</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b>, <b>Upravljaj podatke</b>, <b>Globoko učenje</b> in <b>Večdimenzionalna analiza</b>.
+        <p>Rastrska analiza vam omogoča izvajanje analize velikih rastrskih sklopov podatkov s pomočjo  ArcGIS Image Server. Tako vam je omogočeno analiziranje večje količine podatkov s pomočjo zmogljivosti strežnika.Trenutno razpoložljivi kompleti orodij prek spletne uporabni&scaron;ke izku&scaron;nje Portal for ArcGIS so  <b>Povzemi podatke</b>, <b>Analiziraj vzorce</b>, <b>Uporabi bližino</b>, <b>Analiziraj slike</b>, <b>Analiziraj relief</b>, <b>Upravljaj podatke</b>, <b>Globoko učenje</b> in <b>Večdimenzionalna analiza</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>Povzemi podatke</h2>
         <hr/>
-        <p>Komplet orodij vsebuje orodje za izračun statistike za rastrski sloj znotraj meja, ki jih sami določite. 
+        <p>Ta orodja se uporabljajo za izračun statistik za rastrski sloj znotraj meja poligonov (območij), ki ste jih opredelili.
             <ul>
-                <li> <b>Povzemi raster znotraj</b> izračuna statistiko za rastrske celice, ki padejo znotraj določenih meja območja.
+                <li> <b>Povzemi raster znotraj</b> izračuna statistiko za rastrske celice, ki padejo znotraj določenih meja območij.
+                </li>
+                <li> <b>Območna statistika kot tabela</b> povzema vrednosti rastra znotraj območij drugega sklopa podatkov in poroča rezultate v tabelo.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračuna statistiko povzetka za rastrske celice znotraj določenih območij.
+            <p>To orodje povzema vrednosti rastra znotraj območij drugega sklopa podatkov.
             </p>
-            <p>Nekaj primerov uporabe vključuje naslednje: 
-
-                <ul>
-                    <li>Če imate rastrska sloja razvodij in vi&scaron;ine, lahko izračunate razpon vi&scaron;in znotraj posameznega razvodja, saj boste tako lahko ugotovili, katera imajo pretok največje energije.
-                        
-
-                    </li>
-                    <li>Če imate sloj enot administrativne uprave in rastrski sloj kategorij rabe tal, lahko izračunate raznolikost vrednosti rabe tal znotraj območja posamezne administrativne uprave, saj boste lahko ugotovili, kje je za določanje načrta upravljanja potrebno največ dela.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Območna statistika kot tabela</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagram Območna statistika kot tabela">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje povzema vrednosti rastra znotraj območij drugega sklopa podatkov in poroča rezultate v tabelo.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Izračun gostote</h2></td>
+                    <td><h2>Izračunaj gostoto</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Orodje za izračun gostote">
                     </td>
@@ -132,27 +135,46 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Uporabi bližino</h2>
         <hr/>
-        <p>Ta orodja vam pomagajo odgovoriti na eno izmed najpogostej&scaron;ih vpra&scaron;anj, zastavljenih v prostorski analizi: &raquo;Kaj je v bližini česa?&laquo;
-
+        <p>Ta orodja vam pomagajo odgovoriti na najpogostej&scaron;a vpra&scaron;anja, zastavljenih v prostorski analizi: &raquo;Kaj je v bližini česa?&laquo; in &raquo;Katera je najoptimalnej&scaron;a pot?&laquo;
             <ul>
-                <li> <b>Izračunaj razdaljo</b> Izračuna evklidsko razdaljo, smer in dodelitev iz enega vira ali sklopa virov.
+                <li> <b>Izračunaj razdaljo</b> izračuna evklidsko razdaljo, smer in dodelitev iz enega vira ali sklopa virov.
                     
 
                 </li>
-                <li> <b>Določi omrežje optimalnih potnih stro&scaron;kov</b> Izračuna omrežje optimalnih stro&scaron;kov iz sklopa vhodnih regij.
+                <li> <b>Določi omrežje optimalnih potnih stro&scaron;kov</b> izračuna omrežje optimalnih stro&scaron;kov iz sklopa vhodnih regij.
                     
 
                 </li>
-                <li> <b>Določi pot potnih stro&scaron;kov kot polilinijo</b> Izračuna polilinijo poti med viri in znanimi cilji z najmanj stro&scaron;ki.
+                <li> <b>Določi pot potnih stro&scaron;kov kot polilinijo</b> izračuna polilinijo poti z najmanj stro&scaron;ki med znanimi cilji in viri.
+                    
+
+                </li>
+                <li> <b>Akumulacija razdalje</b> izračuna akumulirano razdaljo vsake celice do virov, pri čemer je mogoče določiti razdaljo zračne linije, stro&scaron;kovno razdaljo in pravo povr&scaron;insko razdaljo ter navpične in vodoravne faktorje stro&scaron;kov.
+                    
+
+                </li>
+                <li> <b>Razmestitev razdalje</b> izračuna razmestitev razdalje vsake celice do opredeljenih virov na podlagi razdalje zračne linije, stro&scaron;kovne razdalje in prave povr&scaron;inske razdalje ter navpičnih in vodoravnih faktorjev stro&scaron;kov.
+                    
+
+                </li>
+                <li> <b>Optimalna pot kot linija</b> izračuna optimalno pot od ciljev do virov v obliki linije.
+                    
+
+                </li>
+                <li> <b>Optimalna pot kot raster</b> izračuna optimalno pot od ciljev do virov v obliki rastra.
+                    
+
+                </li>
+                <li> <b>Optimalne povezave regije</b> izračuna optimalno omrežje povezljivosti med dvema ali več vhodnimi regijami.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,11 +185,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračuna evklidsko razdaljo, smer in dodelitev iz enega vira ali sklopa virov. To orodje lahko uporabite, da določite, kako daleč je lokacija do ceste, stavbe ali parka. Določite lahko tudi, v kateri smeri morate potovati z lokacije, da se vrnete nazaj na vir po kar najbolj neposredni poti. Za vsako lahko na va&scaron;em &scaron;tudijskem območju vidite, kateri vir je najbližji.
+            <p>To orodje izračuna evklidsko razdaljo, smer in dodelitev iz enega vira ali sklopa virov.
             </p>
             <br/>
         </div>
-        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračuna optimalno omrežje stro&scaron;kov iz sklopa vhodnih regij.
+            <p>To orodje izračuna optimalno omrežje stro&scaron;kov iz sklopa vhodnih regij.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izračuna polilinijo poti med viris in znanimi cilji z najmanj stro&scaron;ki.
+            <p>To orodje izračuna polilinijo poti med cilji in viri z najmanj stro&scaron;ki.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Akumulacija razdalje</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Prikaz orodja Akumulacija razdalje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna akumulirano razdaljo vsake celice do virov, pri čemer je mogoče določiti pravokotno razdaljo, stro&scaron;kovno razdaljo, pravo povr&scaron;insko razdaljo ter navpične in vodoravne faktorje.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Razporeditev razdalje</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Prikaz orodja Razporeditev razdalje">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna razporeditev razdalje vsake celice do opredeljenih virov, pri čemer je mogoče določiti pravokotno razdaljo, stro&scaron;kovno razdaljo, pravo povr&scaron;insko razdaljo ter navpične in vodoravne faktorje.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalna pot kot linija</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Prikaz orodja Optimalna pot kot linija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna optimalno pot od ciljev do virov v obliki linije.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalna pot rastra</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Prikaz orodja Optimalna pot kot raster">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna optimalno pot od ciljev do virov v obliki rastra.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimalne povezave regije</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Prikaz orodja Optimalne povezave regije">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>To orodje izračuna optimalno omrežje povezljivosti med dvema ali več vhodnimi regijami.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analiziraj slike</h2>
         <hr/>
-        <p>Naslednje orodje vam bo pomagalo pri analiziranju slik. 
+        <p>Naslednje orodje v kategoriji orodij  <b>Analiziraj sliko</b> vam bo pomagalo pri analiziranju slik:
             <ul>
-                <li> <b>Uporabi predlogo rastrske funkcije</b> obdeluje va&scaron;e slikovje s funkcijo ali verigo funkcij, kot je navedeno s predlogo rastrske funkcije.
-                </li>
-                <li> <b>Monitoring vegetacije</b> zaznava vegetacijo v sliki, ki temelji na aritmetičnih operacijah na pasovih.
+                <li> <b>Spremljanje vegetacije</b> zaznava relativno pokritost z vegetacijo v sliki, ki temelji na aritmetičnih operacijah na pasovih. Za analizo slike so na voljo &scaron;tevilni indici vegetacije.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Uporabi predlogo rastrske funkcije</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Uporabi predlogo rastrske funkcije">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Obdeluje va&scaron;e slikovje s funkcijo ali verigo funkcij, kot je določeno s predlogo rastrske funkcije.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Izvaja aritmetične operacije na pasovih večpasovnega rastrskega sloja, da razkrije informacije o pokritosti z vegetacijo na &scaron;tudijskem območju.
+            <p>Izvaja aritmetične operacije na pasovih večpasovnega rastrskega sloja, da razkrije informacije o pokritosti z vegetacijo.
             </p>
             <br/>
         </div>
@@ -358,7 +438,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ekstrahiraj raster</h2></td>
+                    <td><h2>Izvleci raster</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Orodje Ekstrahiraj raster za Portal">
                     </td>
@@ -518,7 +598,7 @@
                 <tbody><tr>
                     <td><h2>Agregacija večdimenzionalnega rastra</h2></td>
                     <td>
-                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregacija večdimenzionalnega rasterja">
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Agregacija večdimenzionalnega rastra">
                     </td>
                 </tr></tbody>
             </table>
@@ -542,13 +622,13 @@
             </p>
             <br/>
         </div>
-        <div id="GenerateMultidimensionalAnomalyTool" class="smallsize">
+        <div id="GenerateMultidimensionalAnomalyTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ustvari večdimenzionalno anomalijo</h2></td>
+                    <td><h2>Ustvarjanje večdimenzionalne anomalije</h2></td>
                     <td>
-                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ustvari večdimenzionalno anomalijo">
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ustvarjanje večdimenzionalne anomalije">
                     </td>
                 </tr></tbody>
             </table>

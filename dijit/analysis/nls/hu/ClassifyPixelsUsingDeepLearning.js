@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"Pixelek osztályozása Deep Learning használatával",outputLayerName:"${layername}_osztályozva",modelLabel:"Válassza ki a pixelek osztályozásához használt Deep Learning modellt",modelArgsLabel:"Adja meg a Deep Learning modell argumentumait",nameLabel:"Név",valueLabel:"Érték",queryModelArgsMsg:"Modell argumentumainak lekérdezése...",queryModelArgsErrMsg:"Nem sikerült a modellargumentumok leekérdezése.",analysisLayerLabel:"Válassza ki a pixelek osztályozásához használt képet",itemDescription:"Deep Learning használatával történő pixelosztályozásból létrehozott elemzési raszteres szolgáltatás",itemTags:"Raszteres elemzés végeredménye, Pixelek osztályozása Deep Learning használatával, ${layername}",itemSnippet:"Deep Learning használatával történő pixelosztályozásból létrehozott elemzési raszteres szolgáltatás"});
+define({toolDefine:"Pixelek osztályozása Deep Learning használatával",outputLayerName:"${layername}_osztályozva",modelLabel:"Válassza ki a pixelek osztályozásához használt Deep Learning modellt",modelArgsLabel:"Adja meg a Deep Learning modell argumentumait",nameLabel:"Név",valueLabel:"Érték",queryModelArgsMsg:"Modell argumentumainak lekérdezése...",queryModelArgsErrMsg:"Nem sikerült a modellargumentumok leekérdezése.",processingModeLabel:"Feldolgozó mód",processAsMosaicLabel:"Feldolgozás mozaikos képként",processAsItemsLabel:"Valamennyi raszteres elem külön-külön feldolgozása",analysisLayerLabel:"Válassza ki a pixelek osztályozásához használt képet",itemDescription:"Deep Learning használatával történő pixelosztályozásból létrehozott elemzési raszteres szolgáltatás",itemTags:"Raszteres elemzés végeredménye, Pixelek osztályozása Deep Learning használatával, ${layername}",itemSnippet:"Deep Learning használatával történő pixelosztályozásból létrehozott elemzési raszteres szolgáltatás"});

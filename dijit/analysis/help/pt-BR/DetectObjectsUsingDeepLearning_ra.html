@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Detectar Objetos Utilizando Aprendizado Detalhado</h2><p/>
-        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detectar Objetos Utilizando Aprendizado Detalhado"></h2>
+        <h2>Detectar Objetos Utilizando Aprendizagem Detalhada</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Detectar Objetos Utilizando Aprendizagem Detalhada"></h2>
         <hr/>
-    <p>Esta ferramenta executa um modelo de aprendizagem detalhada testado em um raster de entrada para produzir uma classe de fei&ccedil;&atilde;o contendo os objetos localizados por ela. As fei&ccedil;&otilde;es podem ser caixas delimitadoras ou pol&iacute;gonos ao redor dos objetos encontrados ou pontos nos centros dos objetos.
+    <p>Esta ferramenta executa um modelo de aprendizado detalhado e testado em um raster de entrada para produzir uma classe de fei&ccedil;&atilde;o contendo os objetos localizados por ela. As fei&ccedil;&otilde;es podem ser caixas delimitadoras ou pol&iacute;gonos ao redor dos objetos encontrados ou pontos nos centros dos objetos.
     </p>
     <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionada, somente as &aacute;reas do raster que s&atilde;o vis&iacute;veis na extens&atilde;o de mapa atual ser&atilde;o analisadas. Se n&atilde;o selecionada, o raster inteiro ser&aacute; analisado, mesmo que estiver fora da extens&atilde;o de mapa atual.
     </p>
@@ -62,17 +62,17 @@
         <div><h2>Escolher modelo de aprendizado detalhado utilizado para detectar objetos</h2></div>
         <hr/>
         <div>
-            <p>O item do pacote de aprendizagem detalhada de entrada ( <code>.dlpk</code>) .
+            <p>O item do pacote de aprendizado detalhado de entrada ( <code>.dlpk</code>).
             </p>
-            <p>O pacote de aprendizagem detalhada &eacute; composto do arquivo JSON da defini&ccedil;&atilde;o de modelo da Esri ( <code>.emd</code>), o arquivo de modelo bin&aacute;rio de aprendizagem detalhada e, opcionalmente, a fun&ccedil;&atilde;o de raster do Python a ser utilizada.
+            <p>O pacote de aprendizado detalhado &eacute; composto do arquivo JSON da defini&ccedil;&atilde;o de modelo da Esri ( <code>.emd</code>), o arquivo de modelo bin&aacute;rio de aprendizado detalhado e, opcionalmente, a fun&ccedil;&atilde;o de raster do Python a ser utilizada.
             </p>
         </div>
     </div>
     <div id="modelArguments">
-        <div><h2>Especificar parâmetros do modelo de aprendizado detalhado</h2></div>
+        <div><h2>Especificar parâmetros do modelo de aprendizagem detalhada</h2></div>
         <hr/>
         <div>
-            <p>Os par&acirc;metros da fun&ccedil;&atilde;o s&atilde;o definidos na classe de fun&ccedil;&atilde;o de raster do Python referenciada pelo modelo de entrada. &Eacute; aqui que voc&ecirc; lista os par&acirc;metros adicionais de aprendizagem detalhada e os par&acirc;metros para experimentos e refinamentos, como um limite de confian&ccedil;a para ajustar a sensibilidade.
+            <p>Os par&acirc;metros da fun&ccedil;&atilde;o s&atilde;o definidos na classe de fun&ccedil;&atilde;o de raster do Python referenciada pelo modelo de entrada. &Eacute; aqui que voc&ecirc; lista os par&acirc;metros adicionais de aprendizado detalhado e os par&acirc;metros para experimentos e refinamentos, como um limite de confian&ccedil;a para ajustar a sensibilidade.
             </p>
             <p>Os nomes dos par&acirc;metros s&atilde;o preenchidos pela ferramenta da leitura do m&oacute;dulo Python no servidor de an&aacute;lise do raster.
             </p>
@@ -82,7 +82,7 @@
         <div><h2>Remover feições duplicadas da saída (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Executa supress&atilde;o n&atilde;o m&aacute;xima, onde objetos duplicados s&atilde;o identificados e a fei&ccedil;&atilde;o duplicada com um valor de confian&ccedil;a inferior &eacute; removida. 
+            <p>Executa supress&atilde;o n&atilde;o m&aacute;xima, onde objetos duplicados s&atilde;o identificados e a fei&ccedil;&atilde;o duplicada com um valor de confian&ccedil;a inferior &eacute; removida.
                 <ul>
                     <li>Desmarcada&mdash;Todos os objetos detectados estar&atilde;o na classe de fei&ccedil;&atilde;o de sa&iacute;da. Este &eacute; o padr&atilde;o.
                         
@@ -127,6 +127,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

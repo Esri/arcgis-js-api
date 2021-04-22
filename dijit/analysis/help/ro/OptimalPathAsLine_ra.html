@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Traseu optim ca linie</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustrarea instrumentului Traseu optim ca linie"></h2>
+        <hr/>
+    <p>Acest instrument calculează traseul optim de la destinații la surse ca o linie.
+    </p>
+    <p>Example applications include the following:
+        <ul>
+            <li>Find the best route for a new road in terms of construction costs.
+                
+
+
+            </li>
+            <li>Găsiți cea mai bună rută de navigație &icirc;ntre o destinație și locația curentă.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Alegeți rasterul sau obiectele spațiale de destinație</h2></div>
+        <hr/>
+        <div>
+            <p>Un strat tematic de tip raster sau obiect spațial care identifică celulele pe baza cărora este determinat traseul optim la sursa optimă.
+            </p>
+            <p>Dacă intrarea este un raster, trebuie să fie reprezentată de celule care au valori valide (zero este o valoare validă) pentru destinații, iar celulelor rămase trebuie să li se aloce NoData. Tipul de raster introdus trebuie să fie număr &icirc;ntreg.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Câmp destinație</h2></div>
+        <hr/>
+        <div>
+            <p>C&acirc;mpul utilizat pentru a obține valori pentru amplasările de destinație.
+            </p>
+            <p>Acest c&acirc;mp trebuie să fie de tip număr &icirc;ntreg.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Alegeți rasterul de acumulare a distanței</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de acumulare a distanței este utilizat pentru a determina traseul optim de la destinații la surse.
+            </p>
+            <p>Rasterul de acumulare a distanței este creat, de obicei, cu instrumentele Acumularea distanței sau Alocarea distanței. Fiecare celulă din rasterul de acumulare a distanței reprezintă valoarea cost-distanță minimă acumulată pe o suprafață de la fiecare celulă la un set de celule sursă.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Alegeți rasterul de direcție a fluxului sau de direcție inversă</h2></div>
+        <hr/>
+        <div>
+            <p>Rasterul de direcție inversă conține direcții calculate &icirc;n grade. Direcția identifică următoarea celulă de-a lungul traseului optim &icirc;napoi la sursa cu cel mai mic cost acumulativ, &icirc;n timp ce evită barierele.
+            </p>
+            <p>Rasterul de direcție inversă este creat, de obicei, cu instrumentele Acumularea distanței sau Alocarea distanței. &Icirc;n acest caz, gama de valori este de la 0 grade la 360 de grade. Valoarea 0 este rezervată pentru celulele sursă. Spre Est (dreapta) este 90 de grade, iar valoarea crește &icirc;n sens orar (180 este sudul, 270 este vestul, iar 360 este nordul).
+            </p>
+            <p>Traseul optim creat poate fi un traseu de flux bazat pe direcția fluxului D8. Pentru a genera un traseu optim &icirc;n acest mod, utilizați un raster de direcție a fluxului D8 ca intrare pentru acest parametru.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tipul traseului (opțional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică un cuv&acirc;nt-cheie care definește modul &icirc;n care valorile și zonele din datele de destinație introduse vor fi interpretate &icirc;n calculele traseului de cost.
+                <ul>
+                    <li> <b>Către fiecare zonă</b> &ndash; Pentru fiecare zonă din datele de destinație introduse, se determină un traseu cu cel mai mic cost. Cu această opțiune, traseul cu cel mai mic cost pentru fiecare zonă &icirc;ncepe la celula cu distanța de cost minim ponderată &icirc;n zonă. Aceasta este acţiunea implicită.
+                         
+                    </li>
+                    <li> <b>Cel mai bun luat individual</b> &ndash; Pentru toate celulele din datele de destinație introduse, traseul cu cel mai mic cost este determinat din celulă pe baza minimului dintre traseele cu cel mai mic cost către celulele sursă.
+                    </li>
+                    <li> <b>P&acirc;nă la fiecare celulă</b> &ndash; Pentru fiecare celulă cu valori valide din datele de destinație introduse, este determinat un traseu cu cel mai mic cost. Cu această opțiune, fiecare celulă a datelor de destinație introduse este tratată separat și este determinată o cale de cost minim pentru fiecare celulă.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Numele stratului tematic de obiecte spațiale rezultat</h2></div>
+        <hr/>
+        <div>
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

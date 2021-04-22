@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vyhľadať štatistiku argumentov</h2><p/>
+        <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Vyhľadať &scaron;tatistiku argumentov"></h2>
+        <hr/>
+    <p>Extrahuje hodnotu dimenzie alebo index p&aacute;sma, pri ktor&yacute;ch sa dosiahne dan&aacute; &scaron;tatistika pre každ&yacute; pixel vo viacrozmernom alebo viacp&aacute;smovom rastri.
+    </p>
+    <p>Použite tento n&aacute;stroj na extrahovanie hodnoty dimenzie (napr&iacute;klad pre d&aacute;tum, v&yacute;&scaron;ku alebo hĺbku), pre ktor&eacute; je dosiahnuteľn&aacute; &scaron;tatistika v s&eacute;rii rastrov viacrozmern&eacute;ho rastrov&eacute;ho datasetu. Alternat&iacute;vne vyhľadajte č&iacute;slo p&aacute;sma, v ktorom je &scaron;tatistika obsiahnut&aacute; vo viacp&aacute;smovom rastri.
+    </p>
+    <p>Napr&iacute;klad, pokiaľ chete vedieť mesiac, v ktorom každ&yacute; pixel dosiahol najvy&scaron;&scaron;iu teplotu morsk&eacute;ho povrchu v kolekcii &uacute;dajov za 30 rokov. Ďaľ&scaron;&iacute;m pr&iacute;kladom je napr&iacute;klad osemp&aacute;smov&aacute; sn&iacute;mka ďiaľkov&eacute;ho prieskumu Zeme a chcete vedieť p&aacute;smo, v ktorom je pre každ&yacute; pixel dosiahnut&yacute; najmen&scaron;&iacute; odraz.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, premenn&eacute; alebo p&aacute;sma vrstvy, ktor&eacute; s&uacute; viditeľn&eacute; v aktu&aacute;lnom rozsahu mapy, bud&uacute; analyzovan&eacute;. Ak nie je za&scaron;krtnut&eacute;, premenn&eacute; alebo p&aacute;sma celej vrstvy bud&uacute; analyzovan&eacute;, aj pokiaľ sa nach&aacute;dzaj&uacute; mimo rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRaster">
+        <div><h2>Vyberte viacrozmernú alebo viacpásmovú snímkovú vrstvu, ktorú chcete analyzovať</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&yacute; viacrozmern&yacute; alebo viacp&aacute;smov&yacute; raster, ktor&yacute; sa bude analyzovať
+            </p>
+        </div>
+    </div>
+    <div id="dimension">
+        <div><h2>Vybrať dimenziu, z ktorej budú extrahované štatistiky</h2></div>
+        <hr/>
+        <div>
+            <p>Dimenzia, z ktorej chcete extrahovať &scaron;tatistiku. Vstupn&yacute; raster nie je viacrozmern&yacute; raster, tento parameter nie je vyžadovan&yacute;.
+            </p>
+        </div>
+    </div>
+    <div id="variables">
+        <div><h2>Vyberte premenné, ktoré budú analyzované.</h2></div>
+        <hr/>
+        <div>
+            <p>Premenn&aacute; alebo premenn&eacute;, ktor&eacute; sa maj&uacute; analyzovať. Ak vstupn&yacute; raster nie je viacrozmern&yacute;, hodnoty pixelov viacp&aacute;smov&eacute;ho rastra s&uacute; považovan&eacute; za premenn&uacute;. Ak je vstupn&yacute; raster viacrozmern&yacute; a nie je &scaron;pecifikovan&aacute; žiadna premenn&aacute;, v&scaron;etky premenn&eacute; v zvolenej dimenzii bud&uacute; analyzovan&eacute;.
+            </p>
+            <p>Napr&iacute;klad, na n&aacute;jdenie rokov, v ktor&yacute;ch boli hodnoty teploty najvy&scaron;&scaron;ie, &scaron;pecifikujte teplotu ako premenn&uacute;, ktor&aacute; sa m&aacute; analyzovať. Ak ne&scaron;pecifikujete žiadne premenn&eacute; a m&aacute;te premenn&eacute; teploty aj zr&aacute;žok, obe premenn&eacute; bud&uacute; analyzovan&eacute; a v&yacute;stupn&yacute; viacrozmern&yacute; raster bude zahŕňať obe premenn&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="statisticsType">
+        <div><h2>Vybrať typ štatistiky</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje &scaron;tatistiku na extrahovanie z premennej alebo premenn&yacute;ch v r&aacute;mci danej dimenzie.
+            </p>
+            <ul>
+                <li> <b>Argument minima</b>--Bude extrahovan&aacute; hodnota dimenzie, na ktorej je dosiahnut&aacute; minim&aacute;lna hodnota. Toto je prednastaven&aacute; voľba.
+                </li>
+                <li> <b>Argument maxima</b>--Bude extrahovan&aacute; hodnota dimenzie, na ktorej je dosiahnut&aacute; maxim&aacute;lna hodnota.
+                </li>
+                <li> <b>Argument medi&aacute;nu</b>--Bude extrahovan&aacute; hodnota, na ktorej je dosiahnut&aacute; medi&aacute;nov&aacute; hodnota.
+                </li>
+                <li> <b>Argument trvania</b>--Najdlh&scaron;ie trvanie dimenzie, kde premenn&eacute; hodnoty spadaj&uacute; medzi minim&aacute;lnu a maxim&aacute;lnu hodnotu.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="multipleOccurrenceValue">
+        <div><h2>Špecifikovať hodnotu viacnásobného výskytu</h2></div>
+        <hr/>
+        <div>
+            <p>Hodnota pixelu, ktor&aacute; sa použije na indik&aacute;ciu, že dan&aacute; &scaron;tatistika argumentu bola dosiahnut&aacute; vo vstupnom rastrovom datasete viac ako raz. Ak nie je &scaron;pecifikovan&eacute;, hodnotou pixela bude hodnota dimenzie pri prvom dosiahnut&iacute; &scaron;tatistiky argumentu.
+            </p>
+        </div>
+    </div>
+    <div id="minValue">
+        <div><h2>Špecifikovať minimálnu hodnotu</h2></div>
+        <hr/>
+        <div>
+            <p>Minim&aacute;lna hodnota premennej, ktor&aacute; sa použije na extrahovanie trvania.
+            </p>
+            <p>Tento parameter je vyžadovan&yacute;, keď je zvolen&eacute;  <b>Trvanie</b> ako typ &scaron;tatistiky.
+            </p>
+        </div>
+    </div>
+    <div id="maxValue">
+        <div><h2>Špecifikovať maximálnu hodnotu</h2></div>
+        <hr/>
+        <div>
+            <p>Maxim&aacute;lna hodnota premennej, ktor&aacute; sa použije na extrahovanie trvania.
+            </p>
+            <p>Tento krok je vyžadovan&yacute;, keď je  <b>Trvanie</b> vybran&eacute; ako typ &scaron;tatistiky.
+            </p>
+        </div>
+    </div>
+    <div id="dimensionDefinition">
+        <div><h2>Vybrať definíciu dimenzie</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, ako bude &scaron;tatistika extrahovan&aacute; z dimenzie.
+                <ul>
+                    <li> <b>V&scaron;etko</b>--&Scaron;tatistika bude extrahovan&aacute; naprieč v&scaron;etk&yacute;mi dimenziami. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li> <b>Kľučov&eacute; slovo intervalu</b>--&Scaron;tatistika bude extrahovan&aacute; z časovej dimenzie podľa kľ&uacute;čov&eacute;ho slova intervalu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="intervalKeyword">
+        <div><h2>Vyberte interval kľúčového slova</h2></div>
+        <hr/>
+        <div>
+            <p>Jednotka času, pre ktor&uacute; bude &scaron;tatistika extrahovan&aacute;.
+            </p>
+            <p>Napr&iacute;klad, ak m&aacute;te p&auml;ť rokov denn&yacute;ch d&aacute;t o teplote morsk&eacute;ho povrchu a chcete vedieť rok, v ktorom bola pozorovan&aacute; maxim&aacute;lna teplota. Nastavte  <b>Argument maxima</b> ako typ &scaron;tatistiky, nastavte <b>Kľ&uacute;čov&eacute; slovo intervalu</b> ako defin&iacute;ciu dimenzie a nastavte <b>Ročne</b> ako kľ&uacute;čov&eacute; slovo intervalu v tomto kroku.
+            </p>
+            <p>Pr&iacute;padne, ak chcete vedieť mesiac, v ktorom bola pozorovan&aacute; maxim&aacute;lna teplota, nastavte  <b>Argument maxima</b> ako typ &scaron;tatistiky, nastavte <b>Kľ&uacute;čov&eacute; slovo intervalu</b> ako defin&iacute;ciu dimenzie a nastavte <b>Opakovať mesačne</b> ako kľučov&eacute; slovo intervalu v tomto kroku. Toto vygeneruje raster, v ktorom každ&yacute; pixel obsahuje mesiac, v ktorom bola &scaron;tatistika dosiahnut&aacute; naprieč piatimi rokmi z&aacute;znamov (08/18/2018, 08/25/2016, 08/07/2013, napr&iacute;klad).
+            </p>
+            <p>Tento krok sa vyžaduje, keď je  <b>StdTime</b> nastaven&yacute; ako dimenzia, z ktorej bude extrahovan&aacute; &scaron;tatistika, a <b>Kľ&uacute;čov&eacute; slovo intervalu</b> je zvolen&eacute; na definovanie sp&ocirc;sobu, ktor&yacute;m bude &scaron;tatistika extrahovan&aacute; z časovej dimenzie.
+                <ul>
+                    <li> <b>Opakovať denne</b>--&Scaron;tatistika bude extrahovan&aacute; naprieč dňami.
+                    </li>
+                    <li> <b>Opakovať t&yacute;ždenne</b>--&Scaron;tatistika bude extrahovan&aacute; naprieč t&yacute;ždňami.
+                    </li>
+                    <li> <b>Opakovať mesačne</b>--&Scaron;tatistika bude extrahovan&aacute; naprieč mesiacmi.
+                    </li>
+                    <li> <b>Opakovať &scaron;tvrťročne</b>--&Scaron;tatistika bude extrahovan&aacute; naprieč &scaron;tvrťrokmi.
+                    </li>
+                    <li> <b>Hodinovo</b>--&Scaron;tatistika bude extrahovan&aacute; pre hodinu, v ktorej bola dosiahnut&aacute;.
+                    </li>
+                    <li> <b>Denne</b>--&Scaron;tatistika bude extrahovan&aacute; pre deň, v ktorom bola dosiahnut&aacute;.
+                    </li>
+                    <li> <b>T&yacute;ždenne</b>--&Scaron;tatistika bude extrahovan&aacute; pre t&yacute;žden, v ktorom bola dosiahnut&aacute;.
+                    </li>
+                    <li> <b>Mesačne</b>--&Scaron;tatistika bude extrahovan&aacute; pre mesiac, v ktorom bola dosiahnut&aacute;.
+                    </li>
+                    <li> <b>&Scaron;tvrťročne</b>--&Scaron;tatistika bude extrahovan&aacute; pre &scaron;tvrťrok, v ktorom bola dosiahnut&aacute;.
+                    </li>
+                    <li> <b>Yearly</b>--&Scaron;tatistika bude extrahovan&aacute; pre rok, v ktorom bola dosiahnut&aacute;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorovať chýbajúce hodnoty vo výpočte</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či s&uacute; ch&yacute;baj&uacute;ce hodnoty v anal&yacute;ze ignorovan&eacute;.
+                <ul>
+                    <li>Ak je pol&iacute;čko za&scaron;krtnut&eacute;, anal&yacute;za zahrnie v&scaron;etky platn&eacute; pixely danej dimenzie a ignoruje v&scaron;etky pixely NoData. Toto je prednastaven&aacute; voľba.
+                    </li>
+                    <li>Ak je pol&iacute;čko neza&scaron;krtnut&eacute;, v&yacute;sledkom anal&yacute;zy bude NoData, ak pre pixely danej dimenzie existuj&uacute; nejak&eacute; hodnoty NoData.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

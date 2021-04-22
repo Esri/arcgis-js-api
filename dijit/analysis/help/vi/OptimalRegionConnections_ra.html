@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimal Region Connections (Kết nối Vùng Tối ưu)</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="H&igrave;nh minh họa c&ocirc;ng cụ Optimal Region Connections (Kết nối V&ugrave;ng Tối ưu)"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n mạng lưới kết nối giữ hai hoặc nhiều v&ugrave;ng đầu v&agrave;o.
+    </p>
+    <p>C&aacute;c ứng dụng mẫu bao gồm:
+        <ul>
+            <li>M&ocirc; h&igrave;nh h&oacute;a t&iacute;nh ph&ugrave; hợp&mdash;Từ m&ocirc; h&igrave;nh ph&ugrave; hợp, bạn đ&atilde; x&aacute;c định được 10 trong số c&aacute;c bản v&aacute; m&ocirc;i trường sống tốt nhất d&agrave;nh cho lo&agrave;i linh mi&ecirc;u. Bạn muốn lo&agrave;i linh mi&ecirc;u c&oacute; thể di chuyển giữa c&aacute;c bản v&aacute; th&ocirc;ng qua mạng lưới h&agrave;nh lang động vật hoang d&atilde; hiệu quả nhất để duy tr&igrave; sự đa dạng di truyền trong si&ecirc;u quần thể.
+                
+
+            </li>
+            <li>Khai th&aacute;c gỗ&mdash;Trong một vụ khai th&aacute;c gỗ, bạn muốn tạo ra một mạng lưới c&aacute;c con đường khai th&aacute;c gỗ hiệu quả nhất về chi ph&iacute; để từ đ&oacute; đốn gỗ.
+                
+
+            </li>
+            <li>G&igrave;n giữ h&ograve;a b&igrave;nh&mdash;Trong một đợt triển khai g&igrave;n giữ h&ograve;a b&igrave;nh của qu&acirc;n đội, bạn đ&atilde; x&aacute;c định được năm khu vực để bố tr&iacute; binh l&iacute;nh v&agrave; tham mưu. Bạn muốn ph&aacute;t triển c&aacute;c tuyến đường cung cấp viện trợ được kết nối tối ưu với nhau giữa c&aacute;c căn cứ.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Nếu  <b>Sử dụng phạm vi bản đồ hiện tại</b> được chọn, th&igrave; chỉ c&aacute;c vị tr&iacute; nh&igrave;n thấy được trong lớp đầu v&agrave;o v&agrave; trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả vị tr&iacute; trong cả hai lớp đầu v&agrave;o sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng ngo&agrave;i phạm vi bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Chọn raster khu vực hoặc đối tượng</h2></div>
+        <hr/>
+        <div>
+            <p>C&aacute;c khu vực đầu v&agrave;o được kết nối bởi mạng lưới tối ưu.
+            </p>
+            <p>Nếu đầu v&agrave;o khu vực l&agrave; một raster, c&aacute;c khu vực được x&aacute;c định bởi nh&oacute;m c&aacute;c &ocirc; liền kề c&oacute; c&ugrave;ng gi&aacute; trị. Mỗi khu vực phải được đ&aacute;nh số duy nhất. C&aacute;c &ocirc; kh&ocirc;ng thuộc bất kỳ khu vực n&agrave;o phải l&agrave; NoData. Loại raster phải l&agrave; số nguy&ecirc;n, v&agrave; gi&aacute; trị c&oacute; thể l&agrave; dương hoặc &acirc;m.
+            </p>
+            <p>Nếu đầu v&agrave;o khu vực l&agrave; một đối tượng, đ&oacute; c&oacute; thể l&agrave; c&aacute;c điểm, đường hoặc đa gi&aacute;c. Khu vực đa gi&aacute;c kh&ocirc;ng được bao gồm đa gi&aacute;c nhiều phần.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Chọn đối tượng hoặc raster rào cản (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Bộ dữ liệu x&aacute;c định c&aacute;c r&agrave;o cản.
+            </p>
+            <p>Đối với một raster, loại đầu v&agrave;o c&oacute; thể l&agrave; số nguy&ecirc;n hoặc gi&aacute; trị thả nổi. Bất kỳ &ocirc; n&agrave;o c&oacute; gi&aacute; trị (kể cả 0) sẽ được coi l&agrave; một r&agrave;o cản. Bất kỳ &ocirc; n&agrave;o l&agrave; NoData sẽ kh&ocirc;ng được coi l&agrave; r&agrave;o cản.
+            </p>
+            <p>Đối với đối tượng, đầu v&agrave;o c&oacute; thể l&agrave; điểm, đường hoặc đa gi&aacute;c.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Chọn raster chi phí (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Một raster x&aacute;c định trở kh&aacute;ng hoặc chi ph&iacute; để di chuyển diện t&iacute;ch qua từng cell.
+            </p>
+            <p>Gi&aacute; trị ở mỗi vị tr&iacute; cell đại diện cho khoảng c&aacute;ch chi ph&iacute; tr&ecirc;n đơn vị để di chuyển qua &ocirc;. Mỗi gi&aacute; trị vị tr&iacute; cell được nh&acirc;n với độ ph&acirc;n giải cell trong khi cũng b&ugrave; trừ cho chuyển động ch&eacute;o để c&oacute; được tổng chi ph&iacute; đi qua cell.
+            </p>
+            <p>Gi&aacute; trị của raster chi ph&iacute; c&oacute; thể l&agrave; số nguy&ecirc;n hoặc điểm nổi, nhưng ch&uacute;ng kh&ocirc;ng được l&agrave; số &acirc;m hoặc bằng kh&ocirc;ng (bạn kh&ocirc;ng thể c&oacute; chi ph&iacute; &acirc;m hoặc bằng kh&ocirc;ng).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Phương pháp khoảng cách (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định xem sẽ t&iacute;nh to&aacute;n khoảng c&aacute;ch bằng phương ph&aacute;p phẳng (tr&aacute;i đất phẳng) hay phương ph&aacute;p trắc địa (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Phẳng</b>&mdash;Ph&eacute;p t&iacute;nh khoảng c&aacute;ch sẽ được thực hiện tr&ecirc;n một mặt phẳng được chiếu bằng hệ tọa độ 2D Cartesian. Đ&acirc;y l&agrave; phương ph&aacute;p mặc định.
+                    
+
+                </li>
+                <li> <b>Trắc địa</b>&mdash;Ph&eacute;p t&iacute;nh khoảng c&aacute;ch sẽ được thực hiện tr&ecirc;n một h&igrave;nh cầu. Do đ&oacute;, bất kể l&agrave; ph&eacute;p chiếu đầu v&agrave;o hay đầu ra, kết quả đều kh&ocirc;ng thay đổi.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Kết nối trong khu vực (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định liệu đường dẫn c&oacute; tiếp tục v&agrave; kết nối trong c&aacute;c khu vực đầu v&agrave;o hay kh&ocirc;ng.
+            </p>
+            <ul>
+                <li> <b>Tạo kết nối</b>&mdash;Đường dẫn sẽ tiếp tục trong c&aacute;c khu vực đầu v&agrave;o để kết nối tất cả c&aacute;c đường dẫn đi v&agrave;o một khu vực. Đ&acirc;y l&agrave; mặc định.
+                    
+
+                </li>
+                <li> <b>Kh&ocirc;ng kết nối</b>&mdash;Đường dẫn sẽ dừng lại ở c&aacute;c cạnh của khu vực đầu v&agrave;o v&agrave; sẽ kh&ocirc;ng tiếp tục hoặc kết nối b&ecirc;n trong đ&oacute;.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Cho kết quả tên lớp đối tượng dòng kết nối tối ưu</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Lớp n&agrave;y l&agrave; đối tượng d&ograve;ng đầu ra kết nối từng khu vực đầu v&agrave;o.
+            </p>
+            <p>Mỗi đường dẫn (hoặc d&ograve;ng) được đ&aacute;nh số duy nhất v&agrave; c&aacute;c trường bổ sung trong bảng thuộc t&iacute;nh lưu trữ th&ocirc;ng tin cụ thể về đường dẫn. C&aacute;c trường bổ sung đ&oacute; l&agrave;:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;M&atilde; định danh duy nhất cho đường dẫn
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Tổng khoảng c&aacute;ch hoặc chi ph&iacute; t&iacute;ch lũy cho đường dẫn
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Khu vực đầu ti&ecirc;n đường dẫn kết nối
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Khu vực c&ograve;n lại đường dẫn kết nối
+                    
+
+                </li>
+            </ul>
+            
+            <p>V&igrave; mỗi đường dẫn được biểu thị bằng một d&ograve;ng duy nhất, n&ecirc;n sẽ c&oacute; nhiều d&ograve;ng ở c&aacute;c vị tr&iacute; nơi c&oacute; c&aacute;c đường dẫn di chuyển c&ugrave;ng một tuyến đường.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Cho kết quả là tên lớp đối tượng kết nối lân cận (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Lớp n&agrave;y l&agrave; một t&iacute;nh năng d&ograve;ng đầu ra x&aacute;c định tất cả c&aacute;c đường dẫn từ từng khu vực đến từng v&ugrave;ng l&acirc;n cận gần nhất hoặc cực tiểu chi ph&iacute;.
+            </p>
+            <p>Mỗi đường dẫn (hoặc d&ograve;ng) được đ&aacute;nh số duy nhất v&agrave; c&aacute;c trường bổ sung trong bảng thuộc t&iacute;nh lưu trữ th&ocirc;ng tin cụ thể về đường dẫn. C&aacute;c trường bổ sung đ&oacute; l&agrave;:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;M&atilde; định danh duy nhất cho đường dẫn
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Tổng khoảng c&aacute;ch hoặc chi ph&iacute; t&iacute;ch lũy cho đường dẫn
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Khu vực đầu ti&ecirc;n đường dẫn kết nối
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Khu vực c&ograve;n lại đường dẫn kết nối
+                    
+
+                </li>
+            </ul>
+            
+            <p>V&igrave; mỗi đường dẫn được biểu thị bằng một d&ograve;ng duy nhất, n&ecirc;n sẽ c&oacute; nhiều d&ograve;ng ở c&aacute;c vị tr&iacute; nơi c&oacute; c&aacute;c đường dẫn di chuyển c&ugrave;ng một tuyến đường.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

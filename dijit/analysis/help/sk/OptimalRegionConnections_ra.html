@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimálne prepojenia regiónov</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Ilustr&aacute;cia n&aacute;stroja Optim&aacute;lne prepojenia regi&oacute;nov"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;ta optim&aacute;lnu sieť prepojen&iacute; medzi dvoma a viacer&yacute;mi vstupn&yacute;mi regi&oacute;nmi.
+    </p>
+    <p>Pr&iacute;kladov&eacute; aplik&aacute;cie zahŕňaj&uacute; nasledovn&eacute;:
+        <ul>
+            <li>Modelovanie vhodnosti&mdash;Z modelu vhodnosti urč&iacute;te 10 z najlep&scaron;&iacute;ch biotopov&yacute;ch ostrovov pre rysy. Chcete, aby sa rysy mohli pohybovať medzi ostrovmi cez najefekt&iacute;vnej&scaron;iu sieť koridorov pre divok&uacute; zver, aby bola udržan&aacute; genetick&aacute; r&ocirc;znorodosť v r&aacute;mci celkovej popul&aacute;cie.
+                
+
+            </li>
+            <li>Ťažba dreva&mdash;pri ťažbe dreva chcete vytvoriť sieť ťažobn&yacute;ch ciest pre ťažbu s najmen&scaron;&iacute;mi n&aacute;kladmi.
+                
+
+            </li>
+            <li>Udržiavanie mieru&mdash;pri vojenskej misii podpory urdžania mieru určite p&auml;ť oblast&iacute;, kam nasadiť jednotky a person&aacute;l. Chcete vytvoriť optim&aacute;lne prepojen&eacute; z&aacute;sobovacie cesty medzi z&aacute;kladňami.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; iba tie lokality vo vstupnej vrstve, ktor&eacute; s&uacute; viditeľn&eacute; v aktu&aacute;lnom rozsahu mapy. Ak nie je za&scaron;krtnut&eacute;, v&scaron;etky lokality v oboch vstupn&yacute;ch vrstv&aacute;ch bud&uacute; analyzovan&eacute;, aj v pr&iacute;pade, že sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Vyberte raster alebo prvok regiónu</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&eacute; regi&oacute;ny, ktor&eacute; maj&uacute; byť prepojen&eacute; optim&aacute;lnou sieťou.
+            </p>
+            <p>Ak je vstupom regi&oacute;nu raster, regi&oacute;ny s&uacute; definovan&eacute; skupinami priľahl&yacute;ch (susediacich) buniek rovnakej hodnoty. Každ&yacute; regi&oacute;n mus&iacute; byť unik&aacute;tne oč&iacute;slovan&yacute;. Bunky, ktor&eacute; nie s&uacute; s&uacute;časťou žiadneho regi&oacute;nu musia byť NoData. Typ rastra mus&iacute; byť cel&eacute; č&iacute;slo a hodnoty m&ocirc;žu byť kladn&eacute; alebo z&aacute;porn&eacute;.
+            </p>
+            <p>Ak je vstupn&yacute; regi&oacute;n prvkom, m&ocirc;že pozost&aacute;vať z bodov, l&iacute;ni&iacute; alebo polyg&oacute;nov. Polyg&oacute;nov&eacute; regi&oacute;ny nem&ocirc;žu byť zložen&eacute; z viacdielnych polyg&oacute;nov.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Zvoľte raster alebo prvok bariéry (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Dataset, ktor&yacute; reprezentuje bar&eacute;ry.
+            </p>
+            <p>Typ vstupu pre raster m&ocirc;že byť cel&eacute; alebo desatinn&eacute; č&iacute;slo. Ľubovoľn&eacute; bunky, ktor&eacute; maj&uacute; hodnotu (vr&aacute;tane nuly), bud&uacute; považovan&eacute; za bari&eacute;ru. Ľubovoľn&eacute; bunky, ktor&eacute; s&uacute; NoData nebud&uacute; považovan&eacute; za bari&eacute;ru.
+            </p>
+            <p>Vstup pre prvok m&ocirc;že byť bod, l&iacute;nia alebo polyg&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Zvoľte nákladový raster (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definuj&uacute;ci impedanciu alebo n&aacute;klady planimetrick&eacute;ho pohybu cez každ&uacute; bunku.
+            </p>
+            <p>Hodnota v každej polohe bunky predstavuje n&aacute;klady za jednotku vzdialenosti pri prechode touto bunkou. Hodnota každej bunky je vyn&aacute;soben&aacute; rozl&iacute;&scaron;en&iacute;m bunky, čo kompenzuje diagon&aacute;lny pohyb, aby sa z&iacute;skali celkov&eacute; n&aacute;klady na prechod bunkou.
+            </p>
+            <p>Hodnoty n&aacute;kladov&eacute;ho rastra m&ocirc;žu byť cel&eacute; alebo desatinn&eacute; č&iacute;slo, ale nem&ocirc;žu byť z&aacute;porn&eacute; alebo nulov&eacute; (nem&ocirc;žu byť z&aacute;porn&eacute; alebo nulov&eacute; n&aacute;klady).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metóda vzdialenosti (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či sa m&aacute; vzdialenosť vypoč&iacute;tať pomocou plan&aacute;rnej (ploch&aacute; zem) alebo geodetickej (elipsoid) met&oacute;dy.
+            </p>
+            <ul>
+                <li> <b>Plan&aacute;rna</b>&mdash;V&yacute;počet vzdialenosti bude vykonan&yacute; na projektovanej plochej rovine použit&iacute;m 2D kart&eacute;zianskeho s&uacute;radnicov&eacute;ho syst&eacute;mu. Toto je predvolen&aacute; met&oacute;da.
+                    
+
+                </li>
+                <li> <b>Geodetick&aacute;</b>&mdash;V&yacute;počet vzdialenosti bude vykonan&yacute; na elipsoide. Preto sa v&yacute;sledky nemenia bez ohľadu na vstupn&uacute; alebo v&yacute;stupn&uacute; projekciu.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Prepojenia v rámci regiónov (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či bud&uacute; trasy pokračovať a prep&aacute;jať sa vr&aacute;mci vstupn&yacute;ch regi&oacute;nov.
+            </p>
+            <ul>
+                <li> <b>Generovať prepojenia</b>&mdash;Trasy bud&uacute; pokračovať v r&aacute;mci vstupn&yacute;ch regi&oacute;nov na prepojenie v&scaron;etk&yacute;ch tr&aacute;s, ktor&eacute; do regi&oacute;nu vstupuj&uacute;. Toto je prednastaven&aacute; voľba.
+                    
+
+                </li>
+                <li> <b>Žiadne prepojenia</b>&mdash;Trasy sa zastavia na hrane vstupn&yacute;ch regi&oacute;nov a nebud&uacute; pokračovať alebo sa v r&aacute;mci nich prep&aacute;jať.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Názov vrstvy prvkov optimálnych prepojovacích línií.</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>T&aacute;to vrstva je v&yacute;stupn&yacute;m line&aacute;rnym prvkom, ktor&yacute; prep&aacute;ja každ&yacute; vstupn&yacute; regi&oacute;n.
+            </p>
+            <p>Každ&aacute; trasa (alebo l&iacute;nia) je unik&aacute;tne oč&iacute;slovan&aacute; a ďal&scaron;ie polia tabuľky altrib&uacute;tov obsahuj&uacute; &scaron;pecifick&eacute; inform&aacute;cie o trase. Dodatočn&eacute; polia s&uacute; nasledovn&eacute;:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Jedinečn&yacute; identifik&aacute;tor trasy
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Celkov&aacute; kumulat&iacute;vna vzdialenosť alebo n&aacute;klady trasy
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Prv&yacute; regi&oacute;n, ktor&yacute; trasa prep&aacute;ja
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Ďal&scaron;ie regi&oacute;ny, ktor&eacute; trasa prep&aacute;ja
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kedže každ&aacute; trasa je reprezentovan&aacute; jedinečnou l&iacute;niou, v miestach, kde trasy maj&uacute; rovnak&yacute; priebeh, bud&uacute; s&uacute;streden&eacute; viacer&eacute; l&iacute;nie.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Názov výslednej vrstvy prvkov susedných prepojení (voliteľné)</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>T&aacute;to vrstva obsahuje v&yacute;stupn&eacute; l&iacute;niov&eacute; prvky, ktor&eacute; identifikuj&uacute; trasy z každ&eacute;ho regi&oacute;nu ku každ&eacute;mu susedovi podľa bl&iacute;zkosti alebo najmen&scaron;&iacute;ch n&aacute;kladov.
+            </p>
+            <p>Každ&aacute; trasa (alebo l&iacute;nia) je unik&aacute;tne oč&iacute;slovan&aacute; a ďal&scaron;ie polia tabuľky altrib&uacute;tov obsahuj&uacute; &scaron;pecifick&eacute; inform&aacute;cie o trase. Dodatočn&eacute; polia s&uacute; nasledovn&eacute;:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Jedinečn&yacute; identifik&aacute;tor trasy
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Celkov&aacute; kumulat&iacute;vna vzdialenosť alebo n&aacute;klady trasy
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Prv&yacute; regi&oacute;n, ktor&yacute; trasa prep&aacute;ja
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Ďal&scaron;ie regi&oacute;ny, ktor&eacute; trasa prep&aacute;ja
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kedže každ&aacute; trasa je reprezentovan&aacute; jedinečnou l&iacute;niou, v miestach, kde trasy maj&uacute; rovnak&yacute; priebeh, bud&uacute; s&uacute;streden&eacute; viacer&eacute; l&iacute;nie.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -52,8 +52,6 @@
         <div><h2>Elegir capa de imágenes multidimensional para analizar tendencia</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>La capa de im&aacute;genes de entrada de un r&aacute;ster multidimensional que se analizar&aacute;.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Elegir el tipo de línea para ajustar valores de variables a lo largo de una dimensión</h2></div>
         <hr/>
         <div>
-            <p>Especifica el tipo de l&iacute;nea que se utilizar&aacute; para ajustar a los valores de p&iacute;xel a lo largo de una dimensi&oacute;n. 
+            <p>Especifica el tipo de l&iacute;nea que se utilizar&aacute; para ajustar a los valores de p&iacute;xel a lo largo de una dimensi&oacute;n.
                 <ul>
                     <li> <b>Lineal</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia lineal. Esta es la opci&oacute;n predeterminada.
                     </li>
                     <li> <b>Polin&oacute;mico</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia polin&oacute;mica de segundo orden.
                     </li>
                     <li> <b>Arm&oacute;nico</b>: se ajustar&aacute;n valores de p&iacute;xel de variable a lo largo de una l&iacute;nea de tendencia arm&oacute;nica.
+                    </li>
+                    <li> <b>Mann-Kendall</b>: los valores de p&iacute;xel variables se evaluar&aacute;n con la prueba de tendencia Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>: los valores de p&iacute;xel variables se evaluar&aacute;n con la prueba de tendencia Seasonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Especificar la unidad de tiempo para la duración de un ciclo estacional</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica la unidad de tiempo que se utilizar&aacute; durante el periodo estacional al realizar la prueba Seasonal-Kendall.
+                <ul>
+                    <li> <b>D&iacute;as</b>: la unidad de la duraci&oacute;n del periodo estacional es d&iacute;as. Esta es la opci&oacute;n predeterminada.
+                    </li>
+                    <li> <b>Meses</b>: la unidad de la duraci&oacute;n del periodo estacional es meses.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

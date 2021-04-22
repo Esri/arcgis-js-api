@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({addBarriers:"Vali tõkke kihid",pointBarrier:"Punkttõkked",lineBarrier:"Joonetõkked",polygonBarrier:"Alatõkked",choosePointBarrier:"Vali punkttõkke kiht",chooseLineBarrier:"Vali joontõkke kiht",choosePolygonBarrier:"Vali hulknurktõkke kiht",selectPointBarrier:"Vali punkttõkked",selectLineBarrier:"Vali joontõkked",selectPolygonBarrier:"Vali hulknurktõkked"});

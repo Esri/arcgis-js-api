@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Calculate Motion Statistics</h2><p/>
+        <h2><img src="./images/GUID-002C76BB-C004-4701-B71C-73604B47CE46-web.png" alt="Calculate Motion Statistics"></h2>
+        <hr/>
+    <p>The Calculate Motion Statistics tool calculates groups of motion statistics and measurements for time-enabled features of time type instant. Statistics and measurements are based on tracks that are determined by a unique identifier. Calculation groups include distance, speed, acceleration, duration, elevation, slope, idle, and bearing based on the provided time values and geometry of point-based events.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Choose the layer for which statistics will be calculated</h2></div>
+        <hr/>
+        <div>
+            <p>The point layer that will have statistics and measurements calculated. The input layer must be time enabled with features that represent an instant in time.
+            </p>
+            <p>In addition to choosing a layer from your map, you can choose  <b>Choose Analysis Layer</b> at the bottom of the drop-down list to browse to your contents for a big data file share dataset or feature layer. You may optionally apply a filter on your input layer or apply a selection on hosted layers added to your map. Filters and selections are only applied for analysis. 
+            </p>
+        </div>
+    </div>
+    <div id="trackFields">
+        <div><h2>Choose one or more fields to identify tracks</h2></div>
+        <hr/>
+        <div>
+            <p>One or more fields that represent the track identifier.
+            </p>
+            <p>For example, if you were calculating  statistics or measurements for the tracks of hurricanes, you could use the hurricane name as the track field.
+            </p>
+        </div>
+    </div>
+    <div id="trackHistoryWindow">
+        <div><h2>Choose the number of points to be used in calculation</h2></div>
+        <hr/>
+        <div>
+            <p>The number of observations that are used to calculate statistics starting with Min-, Max-, Avg-, or Tot-. By default, the value is 3.
+            </p>
+        </div>
+    </div>
+    <div id="motionStatistics">
+        <div><h2>Choose one or more motion statistics</h2></div>
+        <hr/>
+        <div>
+            <p>Determines the motion statistic and measurement groups
+that will be calculated and returned in the output layer.  All statistics are calculated by default. Choose to calculate one or more of the following statistic groups:
+                <ul>
+                    <li> <b>Distance</b>&mdash;Calculates a group of distance statistics. This includes the distance between the current point and the previous point, as well as the total distance, minimum distance, maximum  distance, and average distance from the points in the track history window.
+                    </li>
+                    <li> <b>Speed</b>&mdash;Calculates a group of speed statistics. This includes the  speed between the current point and the previous point, as well as the minimum speed, maximum speed, and average speed from the points in the track history window.
+                    </li>
+                    <li> <b>Acceleration</b>&mdash;Calculates a group of acceleration statistics. This includes the acceleration between the current point and the previous point, as well as the minimum acceleration, maximum acceleration, and average acceleration from the points in the track history window.
+                    </li>
+                    <li> <b>Duration</b>&mdash;Calculates a group of duration statistics. This includes the duration between the current point and the previous point, as well as the total duration, minimum duration, maximum duration, and average duration from the points in the track history window.
+                    </li>
+                    <li> <b>Elevation</b>&mdash;Calculates a group of elevation statistics. This includes the elevation between the current point and the previous point, as well as the total elevation change, minimum elevation, maximum elevation, and average elevation from the points in the track history window.
+                    </li>
+                    <li> <b>Slope</b>&mdash;Calculates a group of slope statistics. This includes the slope between the current point and the previous point, as well as the minimum slope, maximum slope, and average slope from the points in the track history window.
+                    </li>
+                    <li> <b>Idle</b>&mdash;Calculates a group of idle statistics. This includes the idling between the current point and the previous point, as well as the total idle time and percentage idle time from the points in the track history window.
+                    </li>
+                    <li> <b>Bearing</b>&mdash;Calculates a single statistic, bearing.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="idlingCriteria">
+        <div><h2>Define the idling criteria (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Defines what distance and duration are considered to be an idling event.
+            </p>
+            <p>The distance defines the he maximum distance that two sequential points in a track can be apart and still be considered an idle event. The time defines the minimum duration that two sequential points in a track must be near each other to be considered an idle event. 
+            </p>
+            <p>For example, if you are interested in calculating statistics where traffic has not moved more than 20 meters for an hour, the distance tolerance would be 20 meters and the  time tolerance would be 1 hour.
+            </p>
+            <p>This parameter is required if the  <b>Idle</b> statistic group is specified in the <b>motion statistics</b> parameter or if all statistic groups are calculated, which is the default.
+            </p>
+        </div>
+    </div>
+    <div id="splitTracks">
+        <div><h2>Track Splitting (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies whether to split tracks using time intervals, which segment your input features for analysis. If you use time intervals, you must set the time interval you want to use, and optionally set the reference time. If you don't set a reference time, Jan 1, 1970, will be used.
+            </p>
+            <p>For example, if you set the time boundary to be 1 day, starting at 9:00 AM on January 1st, 1990, each track will be truncated at 9:00 a.m. for every day and analyzed within that segment. No tracks will start before 9:00 a.m. and end afterward. 
+            </p>
+            <p>Using time intervals is a fast way to accelerate computing time, as it quickly creates smaller tracks for analysis. If splitting by a reoccurring time interval makes sense for your analysis, it is recommended for big data processing.
+            </p>
+        </div>
+    </div>
+    <div id="distanceUnit">
+        <div><h2>Choose the distance unit used in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The unit used to calculate distance statistics.
+            </p>
+        </div>
+    </div>
+    <div id="durationUnit">
+        <div><h2>Choose the duration unit used in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The unit used to calculate duration statistics.
+            </p>
+        </div>
+    </div>
+    <div id="speedUnit">
+        <div><h2>Choose the speed unit used in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The unit used to calculate speed statistics.
+            </p>
+        </div>
+    </div>
+    <div id="accelerationUnit">
+        <div><h2>Choose the acceleration unit used in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The unit used to calculate acceleration statistics.
+            </p>
+        </div>
+    </div>
+    <div id="elevationUnit">
+        <div><h2>Choose the elevation unit used in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The unit used to calculate elevation statistics.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Choose the distance method used  in calculations</h2></div>
+        <hr/>
+        <div>
+            <p>The method used to calculate distances between track observations.
+There are two methods to choose from:
+ <b>Planar</b> and <b>Geodesic</b>. The planar method joins points using a plane method and will not cross the
+international date line. 
+The geodesic method joins points geodesically and will allow tracks to cross the
+international date line.
+This is the default.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Result layer name</h2></div>
+        <hr/>
+        <div>
+            <p> The name of the layer that will be created.  If you are writing to an ArcGIS Data Store, your results will be saved in  <b>My
+Content</b> and added to the map. If you are writing to a big data file share, your results will be stored in the big data file share and added to its manifest. They will not be added to the map. The default name is based on the
+tool name and the input layer name. If the layer already exists, the tool will fail.
+            </p>
+            <p>When writing to   ArcGIS Data Store  (relational or spatiotemporal big data store) using the  <b>Save result in</b> drop-down box, you can specify
+the name of a folder in <b>My Content</b> where the result will be
+saved.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

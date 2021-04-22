@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["../../declare","./StudyAreaOptions","./DriveUnits"],(function(i,r,t){return i("esri.tasks.geoenrichment.DriveBuffer",[r],{radii:null,units:null,constructor:function(i){i&&(i.bufferRadii?this.radii=i.bufferRadii:i.radius?this.radii=[i.radius]:i.radii&&(this.radii=i.radii),this.units=i.bufferUnits||i.units),this.radii||(this.radii=[5]),this.units||(this.units=t.MINUTES)},toJson:function(){return{areaType:"DriveTimeBuffer",bufferUnits:this.units,bufferRadii:this.radii}}})}));

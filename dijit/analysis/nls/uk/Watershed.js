@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Вибрати шар напрямку потоку",pourPointLayerLabel:"Вибрати растр точки гирла або векторний шар",pourPointField:"Вибрати поле точки гирла",resultLayerName:"Ім'я шару результатів",outputLayerName:"Водозбірна область ${layername}",itemDescription:"Векторний шар, згенерований в результаті підсумування центру та розкиду для ${layerName}. ",itemTags:"Результат аналізу, Водозбірна область, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті створення водозбірних областей."});

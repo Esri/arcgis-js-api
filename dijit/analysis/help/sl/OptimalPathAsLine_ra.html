@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimalna pot kot linija</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Prikaz orodja Optimalna pot kot linija"></h2>
+        <hr/>
+    <p>To orodje izračuna optimalno pot od ciljev do virov v obliki linije.
+    </p>
+    <p>Primeri uporabe vključujejo naslednje:
+        <ul>
+            <li>Poi&scaron;či najbolj&scaron;o pot za novo cesto glede na stro&scaron;ke izgradnje.
+                
+
+
+            </li>
+            <li>Poi&scaron;čite najbolj&scaron;o pot za jadranje med ciljem in trenutno lokacijo.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Izberite raster cilja ali geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Raster ali geoobjektni sloj, ki prepozna celice iz katerih je določena optimalna pot do optimalnega vira.
+            </p>
+            <p>Če je vhod raster, mora biti sestavljen iz celic z veljavnimi vrednostmi (nič je veljavna vrednost) za cilje, preostale celice pa morajo imeti dodeljeno vrednost NoData. Vhodni tip rastra mora biti celo &scaron;tevilo.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Polje cilja</h2></div>
+        <hr/>
+        <div>
+            <p>Polje, uporabljeno za pridobitev vrednosti za ciljne lokacije.
+            </p>
+            <p>Polje mora biti vrste celega &scaron;tevila.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Izberite raster akumulacije razdalje</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacije razdalje se uporablja za določitev optimalne poti od ciljev do virov.
+            </p>
+            <p>Raster akumulacije razdalje je običajno ustvarjen z orodjema Akumulacija razdalje in Razmestitev razdalje. Vsaka celica v rastru akumulirane razdalje predstavlja najmanj&scaron;o razdaljo akumuliranega stro&scaron;ka prek povr&scaron;ine stro&scaron;ka od vsake celice do sklopa izvornih celic.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Izberite raster povratne povezave ali smeri toka</h2></div>
+        <hr/>
+        <div>
+            <p>Raster obratne smeri vsebuje izračunane smeri v stopinjah. Smer identificira naslednjo celico po optimalni poti nazaj do najmanj akumulativnega vira stro&scaron;kov, pri čemer se izogne oviram.
+            </p>
+            <p>Raster obratne povezave je običajno ustvarjen z orodjema Akumulacija razdalje in Razmestitev razdalje. V tem primeru je razpon vrednosti od 0 stopinj do 360 stopinj. Vrednost 0 je rezervirana za izvorne celice. Proti vzhodu (desno) je 90 stopinj in vrednost se veča v smeri urnega kazalca (180 je proti jugu, 270 je proti zahodu in 360 je proti severu).
+            </p>
+            <p>Ustvarjena optimalna pot je lahko pot toka na podlagi smeri toka D8. Če želite ustvariti optimalno pot na ta način, uporabite raster smeri toka D8 kot vnos za ta parameter.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tip poti (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Določi ključno besedo, ki opredeli kako bodo vrednosti in območja v vhodnih podatkih cilja interpretirani v izračunih poti stro&scaron;ka.
+                <ul>
+                    <li> <b>Do vsakega območja</b> &ndash; Za vsako območje v vhodnih podatkih cilja je določena pot z najmanj&scaron;imi stro&scaron;ki. S to možnostjo se pot najmanj&scaron;ega stro&scaron;ka za vsako območje začne v celici z najmanj&scaron;imi stro&scaron;ki glede na razdaljo v območju. To je privzeto.
+                         
+                    </li>
+                    <li> <b>Najbolj&scaron;e enojno</b> &ndash; Za vse celice vhodnih podatkov cilja pot najmanj&scaron;ega stro&scaron;ka izhaja iz celice z najmanj potmi najmanj&scaron;ega stro&scaron;ka do izvornih celic.
+                    </li>
+                    <li> <b>Do vsake celice</b> &ndash; Za vsako celico z veljavnimi vrednostmi na vhodnih podatkih cilja je določena pot najmanj&scaron;ega stro&scaron;ka. S to možnostjo je vsaka celica vhodnih podatkov cilja obravnavana ločeno in je za vsako celico določena pot najmanj&scaron;ega stro&scaron;ka.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Ime rezultata geoobjektnega sloja</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

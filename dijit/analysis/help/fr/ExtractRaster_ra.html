@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Choisissez le type d'&eacute;tendue &agrave; utiliser lors de la d&eacute;coupe de la g&eacute;om&eacute;trie de la couche&nbsp;:
-
                 <ul>
                     <li>Utiliser l'&eacute;tendue courante&nbsp;: l'&eacute;tendue actuelle de la carte sera utilis&eacute;e pour d&eacute;couper la couche r&eacute;sultante. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                         
 
                     </li>
-                    <li>Choisir la zone d'&eacute;tude&nbsp;: permet de choisir si le r&eacute;sultat va afficher la surface au sein de l'&eacute;tendue de la g&eacute;om&eacute;trie ou la surface &agrave; l'ext&eacute;rieur de l'&eacute;tendue de la g&eacute;om&eacute;trie. Si vous choisissez l'option  <b>Donn&eacute;es &agrave; l'int&eacute;rieur de la g&eacute;om&eacute;trie</b>, les images qui se trouvent en dehors de l'&eacute;tendue sont supprim&eacute;es. Si vous choisissez l'option <b>Donn&eacute;es en dehors de la g&eacute;om&eacute;trie</b>, les images qui se trouvent au sein de l'&eacute;tendue sont supprim&eacute;es. Vous pouvez &eacute;galement d&eacute;finir une g&eacute;om&eacute;trie de d&eacute;coupage &agrave; l'aide de l'outil de dessin.
+                    <li>Choisir la zone d&rsquo;&eacute;tude&nbsp;: cette option permet de d&eacute;finir une g&eacute;om&eacute;trie de d&eacute;coupage &agrave; l&rsquo;aide de l&rsquo;outil de dessin.
+                        
+
+                    </li>
+                    <li>Choisir la couche&nbsp;: choisissez une couche d&rsquo;entit&eacute;s ou d&rsquo;images pour d&eacute;finir l&rsquo;&eacute;tendue ou choisissez une couche d&rsquo;entit&eacute;s surfaciques pour d&eacute;finir la g&eacute;om&eacute;trie de d&eacute;coupage. Lorsqu&rsquo;une couche d&rsquo;entit&eacute;s surfaciques est s&eacute;lectionn&eacute;e, une case &agrave; cocher s&rsquo;affiche et invite l&rsquo;utilisateur &agrave; indiquer s&rsquo;il souhaite utiliser les entit&eacute;s en entr&eacute;e pour la g&eacute;om&eacute;trie de d&eacute;coupage. Cette case est d&eacute;sactiv&eacute;e par d&eacute;faut. Cela signifie que la couche d&rsquo;entit&eacute;s en entr&eacute;e est utilis&eacute;e pour d&eacute;finir l&rsquo;&eacute;tendue. Si la case est coch&eacute;e, les entit&eacute;s en entr&eacute;e sont utilis&eacute;es comme g&eacute;om&eacute;trie de d&eacute;coupage.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Spécifier le type de découpage</h2></div>
+        <hr/>
+        <div>
+            <p>Indiquez si vous voulez que la zone figure &agrave; l&rsquo;int&eacute;rieur ou &agrave; l&rsquo;ext&eacute;rieur de la g&eacute;om&eacute;trie de d&eacute;coupage&nbsp;:
+                <ul>
+                    <li>Donn&eacute;es &agrave; l&rsquo;int&eacute;rieur de la g&eacute;om&eacute;trie&nbsp;: les images situ&eacute;es &agrave; l&rsquo;int&eacute;rieur de l&rsquo;&eacute;tendue de d&eacute;coupage sont extraites. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                        
+
+                    </li>
+                    <li>Donn&eacute;es &agrave; l&rsquo;ext&eacute;rieur de la g&eacute;om&eacute;trie&nbsp;: les images en dehors de l&rsquo;&eacute;tendue de d&eacute;coupage sont extraites.
                         
 
                     </li>
@@ -80,7 +100,8 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>

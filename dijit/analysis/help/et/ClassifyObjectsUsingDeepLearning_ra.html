@@ -72,17 +72,37 @@
         <div><h2>Valige objektide klassifitseerimisel kasutatav süvaõppemudel</h2></div>
         <hr/>
         <div>
-            <p>The input deep learning package ( <code>.dlpk</code>) item.
+            <p>Sisendi s&uuml;va&otilde;ppepaketi ( <code>.dlpk</code>) &uuml;ksus.
             </p>
-            <p>The deep learning package is composed of the Esri model definition JSON file ( <code>.emd</code>), the deep learning binary model file, and optionally, the Python raster function to be used.
+            <p>S&uuml;va&otilde;ppepakett koosneb Esri mudeli m&auml;&auml;ratluse JSON-failist ( <code>.emd</code>), s&uuml;va&otilde;ppe binaarmudeli failist ja valikuliselt kasutatavast Python-rastri funktsioonist.
             </p>
+        </div>
+    </div>
+    <div id="processing_mode">
+        <div><h2>Töötlusrežiim</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kuidas k&otilde;iki mosaiikandmestiku rastri&uuml;ksusi pilditeenuses t&ouml;&ouml;deldakse. See parameeter rakendatakse, kui sisendraster on mosaiikandmestik v&otilde;i pilditeenus.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+K&otilde;ik mosaiikandmestiku v&otilde;i pilditeenuse rastri&uuml;ksused &uuml;hendatakse mosaiiktehnikaga ja neid t&ouml;&ouml;deldakse mosaiigina. See on vaikevalik.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+K&otilde;ik mosaiikandmestiku v&otilde;i pilditeenuse rastri&uuml;ksused t&ouml;&ouml;deldakse eraldi piltidena.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
     <div id="modelArguments">
         <div><h2>Määrake süvaõppemudeli argumendid</h2></div>
         <hr/>
         <div>
-            <p>The function arguments are defined in the Python raster function class referenced by the input model. This is where you list additional deep learning parameters and arguments for experiments and refinement, such as a confidence threshold for adjusting the sensitivity.
+            <p>The function arguments are defined in the Python raster function class referenced by the input model. Seal loetletakse t&auml;iendavad s&uuml;va&otilde;ppe parameetrid ning eksperimentide ja t&auml;psustuste argumendid, n&auml;iteks tundlikkuse reguleerimise usaldatavuse l&auml;viv&auml;&auml;rtus.
             </p>
             <p>T&ouml;&ouml;riist t&auml;idab rasteranal&uuml;&uuml;si serveris Pythoni mudeli lugemise teel argumendid nimedega.
             </p>
@@ -94,7 +114,7 @@
         <div>
             <p>Selle v&auml;lja nimi, mis sisaldab v&auml;ljundobjektikihi klassifitseerimism&auml;rki.
             </p>
-            <p>Kui v&auml;lja nime pole m&auml;&auml;ratud, genereeritakse v&auml;ljundobjektikihis uus v&auml;li nimega  <i>ClassLabel</i>.
+            <p>Kui v&auml;lja nime pole m&auml;&auml;ratud, genereeritakse v&auml;ljundobjektikihis uus v&auml;li nimega  <i>ClassLabel</i> .
             </p>
         </div>
     </div>
@@ -102,9 +122,9 @@
         <div><h2>Töötusrežiim</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rab, kuidas k&otilde;iki rastri&uuml;ksusi pilditeenuses t&ouml;&ouml;deldakse. 
+            <p>M&auml;&auml;rab, kuidas k&otilde;iki rastri&uuml;ksusi pilditeenuses t&ouml;&ouml;deldakse.
                 <ul>
-                    <li> <b>Mosaiikpildina t&ouml;&ouml;tlemine</b> &ndash; k&otilde;ik rastri&uuml;ksused pilditeenuses &uuml;hendatakse mosaiiktehnikaga ja neid t&ouml;&ouml;deldakse mosaiigina. See on vaikimisi valik.
+                    <li> <b>Mosaiikpildina t&ouml;&ouml;tlemine</b> &ndash; k&otilde;ik rastri&uuml;ksused pilditeenuses &uuml;hendatakse mosaiiktehnikaga ja neid t&ouml;&ouml;deldakse mosaiigina. See on vaikevalik.
                     </li>
                     <li> <b>&Uuml;ksuste eraldi t&ouml;&ouml;tlemine</b> &ndash; k&otilde;ik rastri&uuml;ksused pilditeenuses t&ouml;&ouml;deldakse eraldi pildina.
                     </li>
@@ -117,6 +137,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

@@ -40,70 +40,70 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
-        <h2>Find Argument Statistics (Pronađi statistiku argumenata)</h2><p/>
+    <div id="toolDescription" class="largesize">
+        <h2>Find Argument Statistics</h2><p/>
         <h2><img src="../images/GUID-6DE9D49F-C9CA-48B8-B14F-C8EF05FBFA42-web.png" alt="Find Argument Statistics"></h2>
         <hr/>
     <p>Izvlači vrednost dimenzije ili indeks opsega pri kojem se postiže određena statistika za svaki piksel u vi&scaron;edimenzionalnom ili vi&scaron;epojasnom rasteru.
     </p>
-    <p>Koristite ovu alatku da izvučete vrednost dimenzije (na primer datum, visinu ili dubinu) na kojoj se postiže određena statistika u snopu rastera u vi&scaron;edimenzionalnom skupu rasterskih podataka. Alternativno, pronađite broj opsega kod koga se postiže statistika u vi&scaron;epojasnom rasteru.
+    <p>Upotrebite ovaj alat za ekstrakciju vrednosti dimenzije (na primer datum, visina ili dubina) pri kojim se određena statistika dostiže u skupu rastera u vi&scaron;edimenzionalnom setu podataka rastera. Alternativno pronalazi opseg broja pri kom se statistika dostiže u rasteru sa vi&scaron;e opsega.
     </p>
-    <p>Na primer, možda želite da znate mesec u kojem je svaki piksel dostigao najvi&scaron;u temperaturu morske povr&scaron;ine tokom 30 godina prikupljanja podataka. Drugi primer je da imate osmopojasni snimak daljinske detekcije i želite da znate opseg u kom je postignuta minimalna vrednost reflektanse za svaki piksel.
+    <p>Na primer, možda želite da znate mesec u kom je svaki piksel dostigao najvi&scaron;u povr&scaron;insku temperaturu mora u prikupljanju podataka preko 30 godina. Drugi primer je da imate snimak daljinskog senzora u osam opsega i želite da znate opseg u kom će minimalna reflektantna vrednost biti dostignuta za svaki piksel.
     </p>
-    <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, promenljive ili opsezi koji su vidljivi unutar trenutnog obuhvata mape biće analizirani. Ako nije izabrana, analiziraće se promenljive ili opsezi celog sloja, čak i ako su izvan trenutnog obuhvata mape.
+    <p>Ako se obeleži opcija  <b>Upotreba opsega trenutne mape</b>, promenljive ili opsezi sloja koji su vidljivi u okviru trenutnog opsega mape biće analizirani. Ako nije obeleženo, promenljive ili opsezi kompletnog sloja biće analizirani, čak iako su oni van opsega trenutne mape.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Odaberite višedimenzionalni ili višepojasni sloj za analizu</h2></div>
+        <div><h2>Izaberite višedimenzionalni ili višestruki opseg sloja snimaka za analizu</h2></div>
         <hr/>
         <div>
-            <p>Ulazni vi&scaron;edimenzionalni ili vi&scaron;epojasni raster koji treba da se analizira.
+            <p>Ulazni vi&scaron;edimenzionalni ili vi&scaron;eopsežni rasterski niz podataka za analizu.
             </p>
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Odaberite dimenziju iz koje će biti izvučena statistika</h2></div>
+        <div><h2>Izaberite dimenzije iz kojih će statistika biti ekstraktovana</h2></div>
         <hr/>
         <div>
-            <p>Dimenzija iz koje će statistika biti izvučena. Ako ulazni raster nije vi&scaron;edimenzionalni raster, ovaj parametar nije neophodan.
+            <p>Dimenzije iz kojih će statistika biti ekstraktovana. Ako ulazni raster nije vi&scaron;edimenzionalni raster, ovaj parametar nije potreban.
             </p>
         </div>
     </div>
     <div id="variables">
-        <div><h2>Odaberite promenljivu(e) koja(e) će biti analizirana(e)</h2></div>
+        <div><h2>Izaberite promenljivu(e) koja će biti analizirana</h2></div>
         <hr/>
         <div>
-            <p>Promenljiva ili promenljive koje će biti analizirane. Ukoliko ulazni raster nije vi&scaron;edimenzionalni, smatraće se da su vrednosti piksela vi&scaron;epojasnog rastera promenljiva. Ako je ulazni raster vi&scaron;edimenzionalni i nije navedena nijedna promenljiva, analiziraće se sve promenljive sa selektovanom dimenzijom.
+            <p>Promenljiva ili promenljive za analizu. Ako ulazni raster nije vi&scaron;edimenzionalni, vrednosti piksela rastera za vi&scaron;e opsega smatraju se kao promenljive. Ako je ulazni raster vi&scaron;edimenzionalni i nema navedene promenljive, sve promenljive u okviru izabrane dimenzije biće analizirane.
             </p>
-            <p>Na primer, da biste na&scaron;li godine u kojima su temperaturne vrednosti bile najvi&scaron;e, navedite temperaturu kao promenljivu koja treba da se analizira. Ako ne navedete nijednu promenljivu i imate i promenljive temperature i padavina, obe promenljive će biti analizirane, a izlazni vi&scaron;edimenzionalni raster uključuje obe promenljive.
+            <p>Na primer, da biste prona&scaron;li broj godina u kojima je vrednost temperature najvi&scaron;a,navedite temperature kao promenljive koje treba analizirati. Ako ne navedete nijednu promenljivu i imate i promenljive temperature i vlažnosti, obe varijable biće analizirane, a izlazni vi&scaron;edimenzionalni raster uključuje obe promenljive.
             </p>
         </div>
     </div>
     <div id="statisticsType">
-        <div><h2>Odaberite statistički tip</h2></div>
+        <div><h2>Izaberite tip statistike</h2></div>
         <hr/>
         <div>
-            <p>Određuje statistiku za izdvajanje iz promenljive ili promenljivih duž date dimenzije. 
+            <p>Navodi statistiku za ekstrakciju iz promenljivih ili promenljive duž datih dimenzija.
             </p>
             <ul>
-                <li> <b>Argument minimuma</b>&mdash;Vrednost dimenzije na kojoj se dostiže minimalna vrednost promenljive biće izvučena. Ovo je podrazumevano.
+                <li> <b>Argument za minimum</b>&mdash;Vrednosti dimenzije pri kojima se vrednost minimalne promenljive dostiže i biće ekstraktovani. Ovo je podrazumevano.
                 </li>
-                <li> <b>Argument maksimuma</b>&mdash;Vrednost dimenzije na kojoj se dostiže maksimalna vrednost promenljive biće izvučena.
+                <li> <b>Argument za maksimum</b>&mdash;Vrednosti dimenzije pri kojima se vrednost maksimalne promenljive dostiže i biće ekstraktovani.
                 </li>
-                <li> <b>Argument srednje vrednosti</b>&mdash;Vrednost dimenzije na kojoj se dostiže vrednost medijane promenljive biće izvučena.
+                <li> <b>Argument za srednju vrednost</b>&mdash;Vrednosti dimenzije pri kojima se srednja vrednost promenljive dostiže i biće ekstraktovani.
                 </li>
-                <li> <b>Argument trajanja</b>&mdash;Najduže trajanje dimenzije za koje promenljive vrednosti padaju između minimalne i maksimalne vrednosti.
+                <li> <b>Argument trajanja</b>&mdash;Najduža dimenzija trajanja za koju promenljive vrednosti potpadaju između vrednosti minimuma i maksimuma.
                 </li>
             </ul>
             
         </div>
     </div>
     <div id="multipleOccurrenceValue">
-        <div><h2>Navedite višestruku vrednost pojavljivanja</h2></div>
+        <div><h2>Vrednost za navod višestrukih dešavanja</h2></div>
         <hr/>
         <div>
-            <p>Vrednost piksela koja se koristi da naznači da je data statistika argumenta postignuta vi&scaron;e od jednom u ulaznom rasterskom skupu podataka. Ako nije navedeno, vrednost piksela biće vrednost dimenzije kada je statistika argumenta prvi put postignuta.
+            <p>Vrednost piksela za upotrebu za indikaciju koja dobija statistiku argumenta koja je dostignuta veća od jednog puta u setu podataka ulaznog rastera. Ako nije navedeno, vrednost piksela će biti vrednost dimenzije za prvi put kada se statistika argumenta dostigne.
             </p>
         </div>
     </div>
@@ -111,9 +111,9 @@
         <div><h2>Navedite minimalnu vrednost</h2></div>
         <hr/>
         <div>
-            <p>Minimalna vrednost promenljive koja se koristi za izdvajanje trajanja.
+            <p>Minimalna vrednost promenljive koja se koristi za trajanje ekstrakcije.
             </p>
-            <p>Ovaj parametar je neophodan kada je  <b>Trajanje</b> selektovano kao statistički tip.
+            <p>Ovaj parametar je potreban kada se opcija  <b>Trajanje</b> dostigne kao tip statistike.
             </p>
         </div>
     </div>
@@ -121,21 +121,21 @@
         <div><h2>Navedite maksimalnu vrednost</h2></div>
         <hr/>
         <div>
-            <p>Maksimalna vrednost promenljive koja se koristi za izdvajanje trajanja.
+            <p>Maksimalna vrednost promenljive koja se koristi za trajanje ekstrakcije.
             </p>
-            <p>Ovaj korak je neophodan kada je  <b>Trajanje</b> selektovano kao statistički tip.
+            <p>Ovaj korak je potreban kada se opcija  <b>Trajanje</b> izabere kao tip statistike.
             </p>
         </div>
     </div>
     <div id="dimensionDefinition">
-        <div><h2>Izaberite definiciju dimenzije</h2></div>
+        <div><h2>Izaberite definiciju dimenzija</h2></div>
         <hr/>
         <div>
-            <p>Određuje kako se statistika izdvaja iz dimenzije. 
+            <p>Navodi kako će se statistika ekstraktovati iz dimenzija.
                 <ul>
-                    <li> <b>Sve</b>&mdash;Statistika će biti izvučena na svim dimenzijama. Ovo je podrazumevano.
+                    <li> <b>Sve</b>&mdash;Statistika će biti ekstraktovana u svim dimenzijama. Ovo je podrazumevano.
                     </li>
-                    <li> <b>Ključna reč za interval</b>&mdash;Statistika će biti izvučena iz dimenzije vremena prema ključnoj reči za interval.
+                    <li> <b>Interval ključne reči</b>&mdash;Statistika će biti ekstraktovana iz dimenzije vremena u skladu sa intervalom ključne reči.
                     </li>
                 </ul>
                 
@@ -143,36 +143,36 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Izaberite interval za ključnu reč</h2></div>
+        <div><h2>Izaberite interval ključnih reči</h2></div>
         <hr/>
         <div>
-            <p>Jedinica vremena za koju će biti izvučena statistika.
+            <p>Jedinica vremena tokom koje će statistika biti ekstraktovana.
             </p>
-            <p>Na primer, imate pet godina podataka o dnevnoj temperaturi mora i želite znati godinu u kojoj je opažena maksimalna temperatura. Podesite   <b>Argument maksimuma</b> kao statistički tip, podesite <b>Ključna reč za interval</b> kao definiciju dimenzije i <b>Po godini</b> kao interval za ključnu reč u ovom koraku.
+            <p>Na primer, podatke za povr&scaron;inu temperature mora za period od pet godina i želite da znate godinu u kojoj je maksimalna temperatura posmatrana. Podesite  <b>Argument za maksimum</b> kao statistički tip, podesite <b>Interval ključne reči</b> kao definiciju dimenzije, i podesite <b>Godi&scaron;nje</b> kao interval ključne reči u ovom koraku.
             </p>
-            <p>Alternativno,  ukoliko želite da znate mesec u kom je maksimalna temperatura konstantno praćena, podesite    <b>Argument maksimuma</b> kao statistički tip, podesite <b>Ključna reč za interval</b> kao definiciju dimenzije i podesite <b>Ponavljanje mesečno</b> kao interval za ključnu reč u ovom koraku. Ovim će biti generisan raster u kojem svaki piksel sadrži mesec u kojem je dostignuta statistika kroz petogodi&scaron;nje prikupljanje podataka (na primer: 18.08.2018, 25.08.2016, 07.08.2013).
+            <p>Alternativno, ako želite da znate mesec u kom je maksimalna temperatura dosledno posmatrana, podesite  <b>Argument za maksimum</b> kao tip statistike, podesite <b>Interval ključne reči</b> kao definiciju dimenzije, i podesite <b>Mesečna pde&scaron;avanja</b> kao interval ključne reči u ovom koraku. Ovo će kreirati raster u kom svaki piksel sadrži mesec u kom je statistika dostignuta u zapisu od pet godina (08/18/2018, 08/25/2016, 08/07/2013, na primer).
             </p>
-            <p>Ovaj korak je neophodan kada je  <b>StdTime</b> postavljen kao dimenzija iz koje će statistika biti izvučena, a <b>Ključna reč za interval</b> selektovana kako bi se definisao način na koji će statistika biti izvučena iz vremenske dimenzije.
+            <p>Ovaj korak je potreban kada je  <b>StdTime</b> pode&scaron;eno na dimenzije iz kojih će statistika biti ekstraktovana, a <b>Interval ključnih reči</b> je izabran za definiciju načina na koji se statistika ekstraktuje iz vremenske dimenzije.
                 <ul>
-                    <li> <b>Svakodnevno ponavljanje</b>&mdash; Statistika će se izvlačiti tokom nekoliko dana.
+                    <li> <b>Dnevne pojave</b>&mdash; Statistika se ekstraktuje iz dana.
                     </li>
-                    <li> <b>Ponavljanje sedmično</b>&mdash; Statistika će se izvlačiti tokom nekoliko nedelja.
+                    <li> <b>Nedeljne pojave</b>&mdash;Statistika se ekstraktuje iz nedelja.
                     </li>
-                    <li> <b>Ponavljanje mesečno</b>&mdash; Statistika će se izvlačiti tokom nekoliko meseci.
+                    <li> <b>Mesečne pojave</b>&mdash;Statistika se ekstraktuje iz meseci.
                     </li>
-                    <li> <b>Ponavljanje kvartalno</b>&mdash; Statistika će se izvlačiti tokom nekoliko kvartala.
+                    <li> <b>Kvartalne pojave</b>&mdash;Statistika se ekstraktuje iz kvartala.
                     </li>
-                    <li> <b>Po satu</b>&mdash;Statistika će se izvlačiti za   sat u kom je statistika postignuta.
+                    <li> <b>Sati</b>&mdash;Statistika će biti ekstraktovana za sat u kom se statistika dostiže.
                     </li>
-                    <li> <b>Po danu</b>&mdash;Statistika će se izvlačiti za   dan u kom je statistika prikupljena.
+                    <li> <b>Dnevno</b>&mdash;Statistika će biti ekstraktovana za dan u kom se statistika dostigne.
                     </li>
-                    <li> <b>Po nedelji</b>&mdash;Statistika će se izvlačiti za   nedelju u kojoj je statistika prikupljena.
+                    <li> <b>Nedeljno</b>&mdash;Statistika će biti ekstraktovana za nedelju u kojoj se statistika dostigne.
                     </li>
-                    <li> <b>Po mesecu</b>&mdash;Statistika će se izvlačiti za   mesec u kom je statistika prikupljena.
+                    <li> <b>Mesečno</b>&mdash;Statistika će biti ekstraktovana za mesec u kojoj se statistika dostigne.
                     </li>
-                    <li> <b>Po kvartalu</b>&mdash;Statistika će se izvlačiti za   kvartal u kom je statistika prikupljena.
+                    <li> <b>Kvartalno</b>&mdash;Statistika će biti ekstraktovana za kvartal u kom se statistika dostigne.
                     </li>
-                    <li> <b>Po godini</b>&mdash;Statistika će se izvlačiti za   godinu u kojoj je statistika prikupljena.
+                    <li> <b>Godi&scaron;nje</b>&mdash;Statistika će biti ekstraktovana za godinu u kojoj se statistika dostigne.
                     </li>
                 </ul>
                 
@@ -185,9 +185,9 @@
         <div>
             <p>Određuje da li se vrednosti koje nedostaju zanemaruju u analizi.
                 <ul>
-                    <li>Ako je polje označeno, analiza će uključiti sve važeće piksele duž date dimenzije i zanemariti sve NoData piksele. Ovo je podrazumevano.
+                    <li>Ako se okvir obeleži, analiza će uključiti sve važeće piksele duž date dimenzije i zanemariti sve NoData piksele. Ovo je podrazumevano.
                     </li>
-                    <li>Ako je polje neoznačeno, analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za piksele duž date dimenzije.
+                    <li>Ako okvir nije obeležen, analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za piksele duž date dimenzije.
                     </li>
                 </ul>
                 
@@ -198,6 +198,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

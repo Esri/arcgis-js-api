@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>最適パス (ライン)</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="[最適パス (ライン)] ツールの図"></h2>
+        <hr/>
+    <p>このツールは、目的地からソースまでの最適パスをラインとして計算します。
+    </p>
+    <p>次のような適用例があります。
+        <ul>
+            <li>建設費に関して最も良い新しい道路のルートを見つける。
+                
+
+
+            </li>
+            <li>現在位置から目的地までの最適な航路を見つける。
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>目的地ラスターまたはフィーチャの選択</h2></div>
+        <hr/>
+        <div>
+            <p>最適ソースまでの最適なパスが求められるセルを識別する、ラスターまたはフィーチャ レイヤー。
+            </p>
+            <p>入力がラスターである場合、ラスターは目的地に有効値 (0 は有効値) が含まれているセルで構成される必要があります。そして、残りのセルには NoData が割り当てられていなければなりません。 入力ラスター タイプは整数である必要があります。
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>目的地フィールド</h2></div>
+        <hr/>
+        <div>
+            <p>目的地の位置の値を取得するために使用するフィールド。
+            </p>
+            <p>このフィールドは、整数タイプである必要があります。
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>距離累積ラスターの選択</h2></div>
+        <hr/>
+        <div>
+            <p>距離累積ラスターは、目的地からソースまでの最適なパスを決定するために使用されます。
+            </p>
+            <p>距離累積ラスターは通常、[距離累積 (Distance Accumulation)] または [距離アロケーション (Distance Allocation)] ツールで作成されます。 距離累積ラスター内の各セルは、各セルから一連のソース セルまでのサーフェス上での最小累積コスト距離を表します。
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>バック方向または流向ラスターの選択</h2></div>
+        <hr/>
+        <div>
+            <p>バック方向ラスターは、角度で計算した方向を含みます。 バリアを避けながら、最小累積コスト ソースに戻る最適なパスに沿った隣接セルへの方向を特定します。
+            </p>
+            <p>バック方向ラスターは通常、[距離累積] または [距離アロケーション] ツールで作成されます。 この場合、値の範囲は 0 ～ 360 度になります。 値 0 はソース セル用に予約されています。 真東 (右) は 90 度で、値は時計回りに増加します (180 が南、270 が西、360 が北)。
+            </p>
+            <p>作成された最適なパスは、D8 流向に基づいた流路です。 この方法で最適なパスを作成するには、このパラメーターの入力として D8 流向ラスターを使用します。
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>パスの種類 (オプション)</h2></div>
+        <hr/>
+        <div>
+            <p>入力目的地データの値とゾーンを、パスの計算の中でどのように解釈するかを定義するキーワードを指定します。
+                <ul>
+                    <li> <b>[各ゾーンへ]</b> - 入力目的地データの各ゾーンについて、最小コスト パスが求められます。 このオプションを使用すると、各ゾーンの最小コスト パスは、ゾーン内で最低のコスト距離加重を持つセルから開始します。 これがデフォルト値になります。
+                         
+                    </li>
+                    <li> <b>[最短経路]</b> - 入力目的地データのすべてのセルについて、最小コスト パスは、ソース セルへの最小コスト パスの最小値を持つセルから求められます。
+                    </li>
+                    <li> <b>[各セルへ]</b> - 入力目的地データの有効な値を持つ各セルについて、最適なパスが決定されます。 このオプションを使用すると、入力目的地データの各セルが別々に扱われ、各セルの最小コスト パスが決定されます。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>結果フィーチャ レイヤー名</h2></div>
+        <hr/>
+        <div>
+            <p> <b>[マイ コンテンツ]</b> に作成され、マップに追加されるレイヤーの名前。 デフォルトの名前は、ツール名と入力レイヤー名に基づいて設定されます。 レイヤーがすでに存在する場合は、別の名前を指定するよう求められます。
+            </p>
+            <p> <b>[出力の保存場所]</b> ドロップダウン ボックスを使用して、結果を保存する <b>[マイ コンテンツ]</b> 内のフォルダーの名前を指定できます。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

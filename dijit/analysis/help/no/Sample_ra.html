@@ -44,46 +44,46 @@
         <h2>Prøve</h2><p/>
         <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Pr&oslash;ve"></h2>
         <hr/>
-    <p>Dette verkt&oslash;yet oppretter en tabell eller punktgeoobjektklasse som viser verdiene i cellene fra et raster eller sett av rastere for definerte lokasjoner. Lokasjonene defineres av rasterceller, polygongeoobjekter, polylinjegeoobjekter eller av et sett med punkter.
+    <p>Dette verkt&oslash;yet oppretter en tabell eller punktgeoobjektklasse som viser verdiene i cellene fra et raster, eller sett av rastere, for definerte lokasjoner. Lokasjonene defineres av rasterceller, polygongeoobjekter, polylinjegeoobjekter eller av et sett med punkter.
     </p>
-    <p>Pikselverdier trekkes ut fra alle inndatarastre p&aring; hver lokasjon. Det opprettes en tabell eller punktgeoobjektklasse med felt som inneholder pikselverdiene for hvert inndataraster. Tilleggsattributter fra inndatarastertabellen inkluderes ikke i utdatatabellen.
+    <p>Pikselverdier trekkes ut fra alle inndatarastre p&aring; hver lokasjon. Det opprettes en tabell eller punktgeoobjektklasse med felt som inneholder pikselverdiene for hvert inndataraster. Tilleggsattributter fra inndatarastertabellen inkluderes ikke i utdatatabellen
     </p>
-    <p>Enhver kombinasjon av rastere, for eksempel ettb&aring;nds-, flerb&aring;nds- flerdimensjonale eller multivariable rastere kan angis som inndatarastre. Strukturen i utdatatabellen endres n&aring;r inndatarastrene er flerdimensjonale. N&aring;r et flerb&aring;ndsraster angis som et av inndatarastrene, brukes alle b&aring;ndene i de gjeldende inndataene. For &aring; behandle et utvalg av b&aring;nd fra et inndataraster med flere b&aring;nd m&aring; du f&oslash;rst opprette et nytt rasterdatasett som best&aring;r av de gjeldende b&aring;ndene. Bruk resultatet i listen med inndatarastre.
+    <p>Enhver kombinasjon av rastere, for eksempel ettb&aring;nds-, flerb&aring;nds- flerdimensjonale eller multivariable rastere, kan angis som inndatarastre Strukturen i utdatatabellen endres n&aring;r inndatarastrene er flerdimensjonale. N&aring;r et flerb&aring;ndsraster angis som et av inndatarastrene, brukes alle b&aring;ndene i de gjeldende inndataene. For &aring; behandle et utvalg av b&aring;nd fra et inndataraster med flere b&aring;nd m&aring; du f&oslash;rst opprette et nytt rasterdatasett som best&aring;r av de gjeldende b&aring;ndene. Bruk resultatet i listen med inndatarastre.
     </p>
     <p>Inndatalokasjonen kan v&aelig;re et raster eller punktgeoobjekt:
         <ul>
             <li>Raster &ndash;&nbsp;Piksler som inneholder gyldige verdier (ikke NoData), brukes til &aring; trekke ut pikselverdiene fra alle inndatarastre, pikselens sentrum brukes som punktlokasjon.
             </li>
-            <li>Punkt &ndash;&nbsp;Verdier velges ut p&aring; hver punktlokasjon.
+            <li>Punkt &ndash;&nbsp;Verdier samples p&aring; hver punktlokasjon.
             </li>
-            <li>Polylinje eller et polygon &ndash;&nbsp;Verdier velges ut ved polygonets eller polylinjens midtpunkt. Hvis inndatarasteret er flerdimensjonalt, aggregeres verdiene p&aring; basis av  <b>Statistikk</b>type.
+            <li>Polylinje eller et polygon &ndash;&nbsp;Verdier samples ved polygonets eller polylinjens midtpunkt. Hvis inndatarasteret er flerdimensjonalt, aggregeres verdiene basert p&aring;  <b>Statistikktype</b>.
             </li>
         </ul>
         
     </p>
-    <p>Det foretas et utvalg av inndatarastre i deres egne romlige referanse og oppl&oslash;sning. Hvis det er flere inndatarastre med forskjellige romlige referanser, projiseres inndatalokasjonene til hvert enkelt rasters romlige referanse, og verdiene trekkes ut derfra. Analysemilj&oslash;et brukes p&aring; inndatalokasjonene, men inndatarastrene st&oslash;tter ikke analysemilj&oslash;et.
+    <p>Inndatarastre samples i deres opprinnelige romlige referanse og oppl&oslash;sning. Hvis det er flere inndatarastre med forskjellige romlige referanser, projiseres inndatalokasjonene til hvert enkelt rasters romlige referanse, og verdiene trekkes ut derfra. Analysemilj&oslash;et brukes p&aring; inndatalokasjonene, men inndatarastrene tar ikke hensyn til analysemilj&oslash;et.
     </p>
-    <p>Lokasjoner som trekker ut verdier fra NoData-celler i inndatarasteret, f&aring;r verdien &lt;null&gt; i utdatatabellen.
+    <p>Lokasjoner som trekker ut verdier fra NoData-celler i inndatarasteret, f&aring;r en &lt;null&gt;-verdi i utdatatabellen.
     </p>
     <p>Hvis multipunktgeoobjekter skal analyseres, m&aring; de konverteres til enkeltpunktgeoobjekter f&oslash;r de kan brukes i dette verkt&oslash;yet.
     </p>
-    <p>Den romlige referansen til x,y-koordinatene i utdatapr&oslash;vetabellen er den samme som lokasjonsrastrene eller punktgeoobjektene som ble brukt som inndata, med mindre noe annet er angitt i <b>Koordinatsystem for utdata</b>-milj&oslash;et. Hvis den romlige referansen til lokasjonsdataene som ble brukt som inndata er ukjent, er den romlige referansen til x,y-koordinatene ogs&aring; ukjent.
+    <p>Den romlige referansen til x,y-koordinatene i utdatatabellen for utvalget er den samme som lokasjonsrastrene eller punktgeoobjektene som ble brukt som inndata, med mindre noe annet er angitt i milj&oslash;et  <b>Koordinatsystem for utdata</b>. Hvis den romlige referansen til lokasjonsdataene som ble brukt som inndata er ukjent, er den romlige referansen til x,y-koordinatene ogs&aring; ukjent
     </p>
-    <p>Den romlige referansen til utdatageoobjektsklassen er den samme som lokasjonsrastrene eller punktgeoobjektene som ble brukt som inndata, med mindre noe annet er angitt i <b>koordinatsystem for utdata</b>-milj&oslash;et.
+    <p>Den romlige referansen til utdatageoobjektsklassen er den samme som lokasjonsrastrene eller punktgeoobjektene som ble brukt som inndata, med mindre noe annet er angitt i  <b>Koordinatsystem for utdata</b>-milj&oslash;et.
     </p>
     <p> <b>Parallellprosesseringsfaktor</b>-milj&oslash;et st&oslash;ttes bare n&aring;r inndataene er et flerdimensjonalt raster.
     </p>
-    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b>, analyseres variablene eller b&aring;ndene i laget som vises innenfor gjeldende kartutstrekning. Hvis alternativet ikke er avmerket, analyseres variablene eller b&aring;ndene i hele laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
+    <p>Hvis det er merket av for  <b>Bruk gjeldende kartutstrekning</b> analyseres variablene eller b&aring;ndene i laget som vises innenfor gjeldende kartutstrekning. Hvis alternativet ikke er avmerket, analyseres variablene eller b&aring;ndene i hele laget, selv om de befinner seg utenfor gjeldende kartutstrekning.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inRasters">
-        <div><h2>Velg ett eller flere bildelag til utvalget</h2></div>
+        <div><h2>Velg ett eller flere bildelag som skal samples</h2></div>
         <hr/>
         <div>
-            <p>Ett enkelt bildelag eller en liste med bildelag hvis verdier blir valgt ut p&aring; basis av lokasjonsinndataene.
+            <p>Ett enkelt bildelag eller en liste med bildelag hvis verdier samples p&aring; basis av lokasjonsinndataene.
             </p>
-            <p>Hvis alle inndelinger fra et flerdimensjonalt bildelag skal velges ut, m&aring; det v&aelig;re det eneste inndatarasteret.
+            <p>Hvis alle inndelinger fra et flerdimensjonalt bildelag skal samples, m&aring; det v&aelig;re det eneste inndatarasteret.
             </p>
         </div>
     </div>
@@ -91,14 +91,14 @@
         <div><h2>Velg lokasjonslag</h2></div>
         <hr/>
         <div>
-            <p>Data som identifiserer posisjoner du vil ha med i utvalget.
+            <p>Data som identifiserer posisjoner du vil sample.
             </p>
-            <p>Lokasjonsinndataene kan v&aelig;re et raster eller en punkt-, polylinje- eller polygongeoobjektklasse.
+            <p>Lokasjonsinndataene kan v&aelig;re et raster eller en punkt-, polylinje- eller polygongeoobjektklasse
             </p>
         </div>
     </div>
     <div id="uniqueIdField">
-        <div><h2>Angi unikt ID-felt</h2></div>
+        <div><h2>Angi unik ID-feltet</h2></div>
         <hr/>
         <div>
             <p>Et felt som inneholder en forskjellig verdi for hver lokasjon eller hvert geoobjekt i inndatalokasjonsrasteret eller geoobjektklassen.
@@ -112,33 +112,32 @@
             <p>Angi tidspunkt, dybde eller andre innhentingsdata forbundet med lokasjonsceller eller geoobjekter.
             </p>
             <p>For hver dimensjon er det tre alternativer for &aring; angi innhentingsinformasjonen om lokasjonsceller eller geoobjekter:
-
                 <ul>
-                    <li> <b>Ett felt eller &eacute;n verdi</b>&ndash;&nbsp;N&aring;r dette alternativet velges, m&aring; f&oslash;lgende opplysninger angis:
+                    <li> <b>Ett felt eller &eacute;n verdi</b> &ndash; N&aring;r dette alternativet velges, m&aring; f&oslash;lgende opplysninger angis:
                         <ul>
-                            <li> <b>Dimensjonsfelt eller -verdi</b>&ndash;&nbsp;Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi.
+                            <li> <b>Dimensjonsfelt eller -verdi</b> &ndash; Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi.
                             </li>
                         </ul>
                         
                         
 
                     </li>
-                    <li> <b>Ett felt eller verdi med relative verdier</b>&ndash;&nbsp;Hvis dette alternativet velges, m&aring; opplysningene nedenfor spesifiseres samlet for &aring; definere omr&aring;det som statistikken skal beregnes innenfor for variabler:
+                    <li> <b>Ett felt eller &eacute;n verdi med relative verdier</b> &ndash; Hvis dette alternativet velges, m&aring; opplysningene nedenfor spesifiseres samlet for &aring; definere omr&aring;det som statistikken skal beregnes innenfor for variabler:
                         <ul>
-                            <li> <b>Dimensjonsfelt eller -verdi</b>&ndash;&nbsp;Velg et felt med dimensjonsverdier fra lokasjonsdataene.
+                            <li> <b>Dimensjonsfelt eller -verdi</b> &ndash; Velg et felt med dimensjonsverdier fra lokasjonsdataene.
                             </li>
-                            <li> <b>Relativ verdi f&oslash;r</b>&ndash;&nbsp;Angi et ikke-negativt tall &aring; trekke fra <b>Dimensjonsfelt eller -verdi</b> for &aring; definere starten p&aring; et omr&aring;de for dimensjonsverdier. Denne verdien representerer antall dager hvis dimensjonen er tid.
+                            <li> <b>Relativ verdi f&oslash;r</b> &ndash; Angi et ikke-negativt tall som skal trekkes fra <b>Dimensjonsfelt eller -verdi</b> for &aring; definere starten p&aring; et dimensjonsverdiomr&aring;de. Hvis dimensjonen er tid, representerer denne verdien antall dager.
                             </li>
-                            <li> <b>Relativ verdi etter</b>&ndash;&nbsp;Angi et ikke-negativt tall &aring; legge til <b>Dimensjonsfelt eller -verdi</b> for &aring; definere slutten p&aring; et omr&aring;de for dimensjonsverdier. Denne verdien representerer antall dager hvis dimensjonen er tid.
+                            <li> <b>Relativ verdi etter</b> &ndash; Angi et ikke-negativt tall som skal legges til <b>Dimensjonsfelt eller -verdi</b> for &aring; definere slutten p&aring; et dimensjonsverdiomr&aring;de. Hvis dimensjonen er tid, representerer denne verdien antall dager.
                             </li>
                         </ul>
                         
                     </li>
-                    <li> <b>Start- og sluttfelt eller verdier</b>&ndash;&nbsp;Hvis dette alternativet velges, m&aring; opplysningene nedenfor spesifiseres samlet for &aring; definere omr&aring;det som statistikken skal beregnes innenfor for variabler:
+                    <li> <b>Start- og sluttfelt eller verdier</b> &ndash; Hvis dette alternativet velges, m&aring; opplysningene nedenfor spesifiseres samlet for &aring; definere omr&aring;det som statistikken skal beregnes innenfor for variabler:
                         <ul>
-                            <li> <b>Startfelt eller -verdier</b>&ndash;&nbsp;Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi for &aring; definere starten p&aring; et omr&aring;de for dimensjonsverdier.
+                            <li> <b>Startfelt eller verdier</b> &ndash; Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi for &aring; definere starten p&aring; et dimensjonsverdiomr&aring;de.
                             </li>
-                            <li> <b>Sluttfelt eller -verdier</b>&ndash;&nbsp;Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi for &aring; definere slutten p&aring; et omr&aring;de for dimensjonsverdier.
+                            <li> <b>Sluttfelt eller verdier</b> &ndash; Velg et felt med dimensjonsverdier fra lokasjonsdataene, eller angi en spesifikk dimensjonsverdi for &aring; definere slutten p&aring; et dimensjonsverdiomr&aring;de.
                             </li>
                         </ul>
                         
@@ -167,23 +166,23 @@
             <p>Typen statistikk som skal beregnes.
             </p>
             <ul>
-                <li> <b>Minimum</b>&ndash;&nbsp;Finner minimumsverdien innenfor det angitte omr&aring;det.
+                <li> <b>Minimum</b> &ndash; Finner minimumsverdien innenfor det angitte omr&aring;det.
                 </li>
-                <li> <b>Maksimum</b>&ndash;&nbsp;Finner maksimumsverdien innenfor det angitte omr&aring;det.
+                <li> <b>Maksimum</b> &ndash; Finner maksimumsverdien innenfor det angitte omr&aring;det.
                 </li>
-                <li> <b>Median</b>&ndash;&nbsp;Finner medianverdien innenfor det angitte omr&aring;det.
+                <li> <b>Median</b> &ndash;Finner medianverdien innenfor det angitte omr&aring;det.
                 </li>
-                <li> <b>Gjennomsnitt</b>&ndash;&nbsp;Beregner gjennomsnittet for det angitte omr&aring;det.
+                <li> <b>Gjennomsnitt</b> &ndash; Beregner gjennomsnittet for det angitte omr&aring;det.
                 </li>
-                <li> <b>Sum</b>&ndash;&nbsp;Beregner summen av variablene innenfor det angitte omr&aring;det.
+                <li> <b>Sum</b> &ndash; Beregner summen av variablene innenfor det angitte omr&aring;det.
                 </li>
-                <li> <b>Majoritet</b>&ndash;&nbsp;Finner verdien som forekommer oftest.
+                <li> <b>Majoritet</b> &ndash; Finner verdien som forekommer oftest.
                 </li>
-                <li> <b>Minoritet</b>&ndash;&nbsp;Finner verdien som forekommer sjeldnest.
+                <li> <b>Minoritet</b> &ndash; Finner verdien som forekommer sjeldnest.
                 </li>
-                <li> <b>Standardavvik</b>&ndash;&nbsp;Beregner standardavviket.
+                <li> <b>Standardavvik</b> &ndash; Beregner standardavviket.
                 </li>
-                <li> <b>Persentil</b>&ndash;&nbsp;Beregner en definert persentil innenfor det angitte omr&aring;det.
+                <li> <b>Persentil</b> &ndash; Beregner en definert persentil innenfor det angitte omr&aring;det.
                 </li>
             </ul>
             
@@ -195,7 +194,7 @@
         <div>
             <p>Persentilen som skal beregnes n&aring;r parameteren  <b>Statistikktype</b> er satt til <b>Persentil</b>.
             </p>
-            <p>Denne verdien kan g&aring; fra 0 til 100. Standardverdien er 90.
+            <p>Verdien kan v&aelig;re fra 0 til 100. Standardverdien er 90.
             </p>
         </div>
     </div>
@@ -203,14 +202,14 @@
         <div><h2>Angi resamplingsteknikk</h2></div>
         <hr/>
         <div>
-            <p>Resampling-algoritmen brukes n&aring;r det gj&oslash;res utvalg fra et raster.
+            <p>Resamplingsalgoritmen som brukes ved sampling av et raster.
             </p>
             <ul>
-                <li> <b>N&aelig;rmest</b>&ndash;&nbsp;N&aelig;rmeste nabo. Dette er standardalternativet.
+                <li> <b>N&aelig;rmeste</b> &ndash; N&aelig;rmeste nabo bruker verdien i n&aelig;rmeste celle til &aring; tilordne en verdi til utdatacellen ved resampling. Dette er standardalternativet.
                 </li>
-                <li> <b>Biline&aelig;r</b>&ndash;&nbsp;Biline&aelig;r interpolering
+                <li> <b>Biline&aelig;r</b> &ndash; Biline&aelig;r interpolering fastsetter den nye verdien for en celle basert p&aring; en vektet gjennomsnittsavstand for de fire n&aelig;rmeste inndatacellesentrene.
                 </li>
-                <li> <b>Kubisk</b>&ndash;&nbsp;Kubisk konvolusjon
+                <li> <b>Cubic</b> &ndash; Kubisk konvolusjon bestemmer den nye verdien for en celle ved &aring; tilpasse en jevn kurve gjennom de 16 n&aelig;rmeste inndatacellesentrene.
                 </li>
             </ul>
             
@@ -220,12 +219,12 @@
         <div><h2>Angi layout for utdata</h2></div>
         <hr/>
         <div>
-            <p>Angir om pr&oslash;veverdier skal vises i rader eller kolonner i utdatatabellen. Dette alternativet er bare tilgjengelig n&aring;r det flerdimensjonale inndatarasteret inneholder &eacute;n variabel og &eacute;n dimensjon, og hver inndeling er et raster med ett b&aring;nd.
+            <p>Angir om de samplede verdier skal vises i rader eller kolonner i utdatatabellen. Dette alternativet er bare tilgjengelig n&aring;r det flerdimensjonale inndatarasteret inneholder &eacute;n variabel og &eacute;n dimensjon, og hver inndeling er et raster med ett b&aring;nd.
             </p>
             <ul>
-                <li> <b>Utvalgte verdier vises i rad</b>&ndash;&nbsp;Pr&oslash;veverdier vises i adskilte rader i utdatatabellen. Dette er standardalternativet.
+                <li> <b>Samplede verdier vises i rad</b> &ndash; Samplede verdier vises i separate rader i utdatatabellen. Dette er standardalternativet.
                 </li>
-                <li> <b>Pr&oslash;veverdier vises i kolonne</b>&ndash;&nbsp;Pr&oslash;veverdier vises i adskilte kolonner i utdatatabellen. Dette alternativet er bare gyldig n&aring;r det flerdimensjonale inndatarasteret inneholder &eacute;n variabel og &eacute;n dimensjon, og hver inndeling er et raster med ett b&aring;nd.
+                <li> <b>Samplede verdier vises i kolonne</b> &ndash; Samplede verdier vises i separate kolonner i utdatatabellen. Dette alternativet er bare tilgjengelig n&aring;r det flerdimensjonale inndatarasteret inneholder &eacute;n variabel og &eacute;n dimensjon, og hver inndeling er et raster med ett b&aring;nd.
                 </li>
             </ul>
             
@@ -235,12 +234,12 @@
         <div><h2>Angi utdatatype</h2></div>
         <hr/>
         <div>
-            <p>Angir om det skal genereres en punktgeoobjektklasse med pr&oslash;veverdier i tabellen, eller bare en tabell med pr&oslash;veverdier.
+            <p>Angir om det skal genereres en punktgeoobjektklasse med samplede verdier i tabellen, eller bare en tabell med samplede verdier.
             </p>
             <ul>
-                <li> <b>Tabell</b>&ndash;&nbsp;Generer en tabell med pr&oslash;veverdier. Dette er standardalternativet.
+                <li> <b>Tabell</b> &ndash; Generer en tabell med samplede verdier. Dette er standardalternativet.
                 </li>
-                <li> <b>Geoobjekter</b>&ndash;&nbsp;Generer en punktgeoobjektklasse med pr&oslash;veverdier i tabellen. Hvis lokasjonsgeoobjektene som brukes som inndata, er polylinjer eller polygoner, er hvert punkt i utdataene midtpunktet i hver geometri i inndatalokasjonsgeoobjektene.
+                <li> <b>Geoobjekter</b> &ndash; Generer en punktgeoobjektklasse med samplede verdier i tabellen. Hvis lokasjonsgeoobjektene som brukes som inndata, er polylinjer eller polygoner, er hvert punkt i utdataene midtpunktet i hver geometri i inndatalokasjonsgeoobjektene.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

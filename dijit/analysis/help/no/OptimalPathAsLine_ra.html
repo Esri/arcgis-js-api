@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimal rute som linje</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Illustrasjon av verkt&oslash;yet Optimal rute som linje"></h2>
+        <hr/>
+    <p>Dette verkt&oslash;yet beregner den optimale ruten fra destinasjoner til kilder som en linje.
+    </p>
+    <p>Eksempler p&aring; bruksomr&aring;der er blant annet f&oslash;lgende:
+        <ul>
+            <li>Finne den beste traseen for en ny vei ut fra anleggskostnader.
+                
+
+
+            </li>
+            <li>Finn beste seilerute mellom en destinasjon og gjeldende lokasjon.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Velge destinasjonsraster eller geoobjekter</h2></div>
+        <hr/>
+        <div>
+            <p>Et raster- eller geoobjektlag som identifiserer cellene som den optimale ruten til den optimale kilden bestemmes fra.
+            </p>
+            <p>Hvis inndataene er et raster, m&aring; det best&aring; av celler med gyldige verdier (null er en gyldig verdi) for destinasjonene, og de gjenv&aelig;rende cellene m&aring; tilordnes NoData. Inndatarastertypen m&aring; v&aelig;re heltall.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Målfelt</h2></div>
+        <hr/>
+        <div>
+            <p>Feltet brukes til &aring; hente verdier for destinasjonslokasjoner.
+            </p>
+            <p>Feltet m&aring; v&aelig;re av typen heltall.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Velg raster for avstandsakkumulering</h2></div>
+        <hr/>
+        <div>
+            <p>Rasteret for avstandsakkumulering brukes til &aring; bestemme optimal rute fra destinasjonene til kildene.
+            </p>
+            <p>Rasteret for avstandsakkumulering opprettes vanligvis med verkt&oslash;yene Avstandsakkumulering eller Avstandsallokering. Hver celle i rasteret for avstandsakkumulering representerer minimum akkumulerte kostnadsavstand over en overflate fra hver celle til et sett med kildeceller.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Velg tilbakeretning- eller strømningsretningsraster</h2></div>
+        <hr/>
+        <div>
+            <p>Tilbakeretningsrasteret inneholder beregnede retninger i grader. Retningen identifiserer neste celle langs den optimale ruten tilbake til kilden med lavest akkumulert kostnad samtidig som hindringer unng&aring;s.
+            </p>
+            <p>Tilbakeretningsrasteret opprettes vanligvis med verkt&oslash;yene Avstandsakkumulering eller Avstandsallokering. I dette tilfellet er verdiomr&aring;det fra 0 til 360 grader. Verdien 0 er reservert for kildecellene. &Oslash;stlig retning (h&oslash;yre) er 90 grader, og verdiene &oslash;ker med urviseren (180 er s&oslash;r, 270 er vest og 360 er nord).
+            </p>
+            <p>Den optimale ruten kan v&aelig;re en str&oslash;mningslinje basert p&aring; str&oslash;mningsretningen D8. For &aring; generere en optimal rute p&aring; denne m&aring;ten bruker du et rasterlag med D8-str&oslash;mningsretning som inndata for denne parameteren.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Rutetype (valgfritt)</h2></div>
+        <hr/>
+        <div>
+            <p>Angir et n&oslash;kkelord som definerer hvordan verdiene og sonene i destinasjonsinndataene blir tolket i beregninger av rutens kostnader.
+                <ul>
+                    <li> <b>Til hver sone</b> &ndash; Det bestemmes en rute med lavest kostnad for hver sone i destinasjonsinndataene. Med dette alternativet begynner ruten med lavest kostnad for hver sone ved cellen med sonens laveste vektede kostnadsavstand. Dette er standardalternativet.
+                         
+                    </li>
+                    <li> <b>Beste enkel</b> &ndash; For alle celler i destinasjonsinndataene utledes ruten med lavest kostnad fra cellen med minimum av ruter med lavest kostnad til kildecellene.
+                    </li>
+                    <li> <b>Til hver celle</b> &ndash; For hver celle med gyldige verdier i destinasjonsinndataene fastsettes en rute med lavest kostnad. Med dette alternativet behandles hver celle med destinasjonsinndata separat, og det bestemmes en rute med lavest kostnad for hver celle.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Navn på resultatgeoobjektlag</h2></div>
+        <hr/>
+        <div>
+            <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

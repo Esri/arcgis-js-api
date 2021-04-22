@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>A raszterelemz&eacute;s lehetőv&eacute; teszi nagy m&eacute;retű raszteres adathalmazok elemz&eacute;s&eacute;t az  ArcGIS Image Server seg&iacute;ts&eacute;g&eacute;vel. &Iacute;gy a szerver erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban. A  Portal for ArcGIS port&aacute;lon kereszt&uuml;l jelenleg a k&ouml;vetkező eszk&ouml;zk&eacute;szletek &eacute;rhetők el:  <b>Adatok &ouml;sszegz&eacute;se</b>, <b>Mint&aacute;zatok elemz&eacute;se</b>, <b>K&ouml;zels&eacute;g haszn&aacute;lata</b>, <b>K&eacute;p elemz&eacute;se</b>, <b>Felsz&iacute;nelemz&eacute;s</b>, <b>Adatok kezel&eacute;se</b>, <b>M&eacute;ly Tanul&aacute;s</b> &eacute;s <b>T&ouml;bbdimenzi&oacute;s elemz&eacute;s</b>.
+        <p>A raszterelemz&eacute;s lehetőv&eacute; teszi nagy m&eacute;retű raszteres adathalmazok elemz&eacute;s&eacute;t az  ArcGIS Image Server seg&iacute;ts&eacute;g&eacute;vel. &Iacute;gy a szerver erej&eacute;t kihaszn&aacute;lva t&ouml;bb adatot elemezhet gyorsabban.A Portal for ArcGIS port&aacute;lon kereszt&uuml;l jelenleg a k&ouml;vetkező eszk&ouml;zk&eacute;szletek &eacute;rhetők el:  <b>Adatok &ouml;sszegz&eacute;se</b>, <b>Mint&aacute;zatok elemz&eacute;se</b>, <b>K&ouml;zels&eacute;g haszn&aacute;lata</b>, <b>K&eacute;p elemz&eacute;se</b>, <b>Felsz&iacute;nelemz&eacute;s</b>, <b>Adatok kezel&eacute;se</b>, <b>Deep Learning</b> &eacute;s <b>T&ouml;bbdimenzi&oacute;s elemz&eacute;s</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="regularsize">
         <h2>Adatok összegzése</h2>
         <hr/>
-        <p>Ez az eszk&ouml;zk&eacute;szlet egy, az &Ouml;n &aacute;ltal kijel&ouml;lt hat&aacute;rvonalakkal meghat&aacute;rozott ter&uuml;leten bel&uuml;l tal&aacute;lhat&oacute; raszteres r&eacute;teg n&eacute;h&aacute;ny statisztik&aacute;j&aacute;nak kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lhat&oacute; eszk&ouml;zt tartalmaz. 
+        <p>Ezek az eszk&ouml;z&ouml;k az &Ouml;n &aacute;ltal meghat&aacute;rozott ter&uuml;leteken (z&oacute;n&aacute;kon) bel&uuml;l l&eacute;vő raszterr&eacute;teg statisztik&aacute;j&aacute;nak kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lhat&oacute;k.
             <ul>
                 <li>A  <b>Raszter ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;se</b> a kijel&ouml;lt hat&aacute;rvonalakkal meghat&aacute;rozott ter&uuml;leten bel&uuml;l eső raszteres cell&aacute;k statisztik&aacute;it sz&aacute;m&iacute;tja ki.
+                </li>
+                <li>A  <b>Z&oacute;nastatisztik&aacute;k t&aacute;bl&aacute;zatk&eacute;nt</b> eszk&ouml;z egy raszter &eacute;rt&eacute;keinek statisztik&aacute;j&aacute;t sz&aacute;m&iacute;tja ki egy m&aacute;sik adathalmaz z&oacute;n&aacute;iban, &eacute;s t&aacute;bl&aacute;zatban jelen&iacute;ti meg az eredm&eacute;nyeket.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Meghat&aacute;rozott ter&uuml;leteken bel&uuml;l eső raszteres cell&aacute;k n&eacute;h&aacute;ny &ouml;sszefoglal&oacute; statisztik&aacute;j&aacute;t sz&aacute;m&iacute;tja ki.
+            <p>Ez az eszk&ouml;z egy raszter &eacute;rt&eacute;keit &ouml;sszegzi egy m&aacute;sik adathalmaz z&oacute;n&aacute;iban.
             </p>
-            <p>N&eacute;h&aacute;ny p&eacute;lda az eszk&ouml;z alkalmaz&aacute;s&aacute;ra: 
-
-                <ul>
-                    <li>Adott egy v&iacute;zgyűjtő ter&uuml;leteket tartalmaz&oacute; r&eacute;teg &eacute;s egy raszteres magass&aacute;gr&eacute;teg &ndash; sz&aacute;m&iacute;tsa ki a magass&aacute;gtartom&aacute;nyt az egyes v&iacute;zgyűjtő ter&uuml;leteken bel&uuml;l, &eacute;s ez alapj&aacute;n &aacute;llap&iacute;tsa meg, hogy melyikeknek lesz a legnagyobb energi&aacute;j&uacute; v&iacute;z&aacute;raml&aacute;sa.
-                        
-
-                    </li>
-                    <li>Adott egy adminisztrat&iacute;v igazgat&aacute;si egys&eacute;geket tartalmaz&oacute; r&eacute;teg &eacute;s egy f&ouml;ldhaszn&aacute;lati kateg&oacute;ri&aacute;kat tartalmaz&oacute; raszteres r&eacute;teg &ndash; sz&aacute;m&iacute;tsa ki a f&ouml;ldhaszn&aacute;lati &eacute;rt&eacute;kek v&aacute;ltozatoss&aacute;g&aacute;t az egyes igazgat&aacute;si ter&uuml;leteken bel&uuml;l, &eacute;s &aacute;llap&iacute;tsa meg, hogy melyikekn&eacute;l sz&uuml;ks&eacute;ges a legt&ouml;bb munka egy kezel&eacute;si terv meghat&aacute;roz&aacute;s&aacute;hoz.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zónastatisztikák táblázatként</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Z&oacute;nastatisztik&aacute;k t&aacute;bl&aacute;zatk&eacute;nt diagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z egy raszter &eacute;rt&eacute;keit &ouml;sszegzi egy m&aacute;sik adathalmaz z&oacute;n&aacute;iban, &eacute;s t&aacute;bl&aacute;zatban jelen&iacute;ti meg az eredm&eacute;nyeket.
             </p>
             <br/>
         </div>
@@ -135,8 +138,7 @@
     <div id="UseProximityCategory" class="largesize">
         <h2>Közelség használata</h2>
         <hr/>
-        <p>Ezek az eszk&ouml;z&ouml;k seg&iacute;tenek v&aacute;laszt adni a t&eacute;rbeli elemz&eacute;sn&eacute;l leggyakrabban feltett k&eacute;rd&eacute;sek egyik&eacute;re: &bdquo;Mi mihez van k&ouml;zel?&rdquo;
-
+        <p>Ezek az eszk&ouml;z&ouml;k seg&iacute;tenek v&aacute;laszt adni a t&eacute;rbeli elemz&eacute;sn&eacute;l leggyakrabban feltett k&eacute;rd&eacute;sekre: Mi mihez van k&ouml;zel? Melyik az optim&aacute;lis &uacute;tvonal?
             <ul>
                 <li>A  <b>T&aacute;vols&aacute;g kisz&aacute;m&iacute;t&aacute;sa</b> az euklideszi t&aacute;vols&aacute;got, ir&aacute;nyt &eacute;s allok&aacute;ci&oacute;t sz&aacute;m&iacute;tja ki egyetlen forr&aacute;sb&oacute;l vagy egy forr&aacute;shalmazb&oacute;l.
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li>Az  <b>&Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa polyline-k&eacute;nt</b> a legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; polyline-&uacute;tvonalat hat&aacute;rozza meg kiindul&oacute;pontok &eacute;s ismert c&eacute;lpontok k&ouml;z&ouml;tt.
+                <li>Az  <b>&Uacute;tik&ouml;lts&eacute;g-&uacute;tvonal meghat&aacute;roz&aacute;sa polyline-k&eacute;nt</b> a legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; polyline-&uacute;tvonalat hat&aacute;rozza meg az ismert kiindul&oacute;pontok &eacute;s c&eacute;lpontok k&ouml;z&ouml;tt.
+                    
+
+                </li>
+                <li>A  <b>T&aacute;vols&aacute;gakkumul&aacute;ci&oacute;</b> az egyes cell&aacute;k forr&aacute;st&oacute;l vett kumulat&iacute;v t&aacute;vols&aacute;g&aacute;t sz&aacute;m&iacute;tja ki, megengedve az egyenes vonal&uacute; t&aacute;vols&aacute;g, a k&ouml;lts&eacute;gt&aacute;vols&aacute;g, a val&oacute;di felsz&iacute;ni t&aacute;vols&aacute;g, valamint a f&uuml;ggőleges &eacute;s v&iacute;zszintes t&eacute;nyezők haszn&aacute;lat&aacute;t.
+                    
+
+                </li>
+                <li>A  <b>T&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s</b> az egyes cell&aacute;k t&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s&eacute;t sz&aacute;m&iacute;tja ki a megadott forr&aacute;sokhoz egyenes vonal&uacute; t&aacute;vols&aacute;g, k&ouml;lts&eacute;gt&aacute;vols&aacute;g, val&oacute;di felsz&iacute;ni t&aacute;vols&aacute;g, valamint a f&uuml;ggőleges &eacute;s v&iacute;zszintes t&eacute;nyezők alapj&aacute;n.
+                    
+
+                </li>
+                <li>Az  <b>Optim&aacute;lis &uacute;tvonal vonalk&eacute;nt</b> az optim&aacute;lis &uacute;tvonalat vonalk&eacute;nt hat&aacute;rozza meg a c&eacute;lpontok &eacute;s a kiindul&oacute;pontok k&ouml;z&ouml;tt.
+                    
+
+                </li>
+                <li>Az  <b>Optim&aacute;lis &uacute;tvonal raszterk&eacute;nt</b> az optim&aacute;lis &uacute;tvonalat raszterk&eacute;nt hat&aacute;rozza meg a c&eacute;lpontok &eacute;s a kiindul&oacute;pontok k&ouml;z&ouml;tt.
+                    
+
+                </li>
+                <li>Az  <b>Optim&aacute;lis r&eacute;gi&oacute;kapcsolatok</b> az optim&aacute;lis h&aacute;l&oacute;zati csatlakoz&aacute;st hat&aacute;rozza meg k&eacute;t vagy t&ouml;bb bemeneti r&eacute;gi&oacute; k&ouml;z&ouml;tt.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="largesize">
+        <div id="CalculateDistanceTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Az euklideszi t&aacute;vols&aacute;got, ir&aacute;nyt &eacute;s allok&aacute;ci&oacute;t sz&aacute;m&iacute;tja ki egyetlen forr&aacute;sb&oacute;l vagy egy forr&aacute;shalmazb&oacute;l. Az eszk&ouml;z seg&iacute;ts&eacute;g&eacute;vel meghat&aacute;rozhatja, hogy milyen messze van egy hely egy &uacute;tt&oacute;l, egy &eacute;p&uuml;lettől vagy egy parkt&oacute;l. Azt is meghat&aacute;rozhatja, hogy melyik ir&aacute;nyba kell mennie egy helyről ahhoz, hogy a legk&ouml;zvetlenebb &uacute;ton jusson vissza a kiindul&oacute;pontra. A vizsg&aacute;lt ter&uuml;let &ouml;sszes hely&eacute;n&eacute;l l&aacute;thatja, hogy melyik a legk&ouml;zelebbi kiindul&oacute;pont.
+            <p>Ez az eszk&ouml;z az euklideszi t&aacute;vols&aacute;got, ir&aacute;nyt &eacute;s allok&aacute;ci&oacute;t sz&aacute;m&iacute;tja ki egyetlen forr&aacute;sb&oacute;l vagy egy forr&aacute;shalmazb&oacute;l.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Az optim&aacute;lis k&ouml;lts&eacute;gh&aacute;l&oacute;zatot sz&aacute;m&iacute;tja ki bemeneti r&eacute;gi&oacute;k halmaz&aacute;b&oacute;l.
+            <p>Ez az eszk&ouml;z az optim&aacute;lis k&ouml;lts&eacute;gh&aacute;l&oacute;zatot sz&aacute;m&iacute;tja ki bemeneti r&eacute;gi&oacute;k halmaz&aacute;b&oacute;l.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>A legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; polyline-&uacute;tvonalat hat&aacute;rozza meg kiindul&oacute;pontok &eacute;s ismert c&eacute;lpontok k&ouml;z&ouml;tt.
+            <p>Ez az eszk&ouml;z a legkisebb k&ouml;lts&eacute;ggel j&aacute;r&oacute; polyline-&uacute;tvonalat sz&aacute;m&iacute;tja ki c&eacute;lpontok &eacute;s kiindul&oacute;pontok k&ouml;z&ouml;tt.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Távolságakkumuláció</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="T&aacute;vols&aacute;gakkumul&aacute;ci&oacute; eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az egyes cell&aacute;k forr&aacute;st&oacute;l vett kumulat&iacute;v t&aacute;vols&aacute;g&aacute;t sz&aacute;m&iacute;tja ki, megengedve az egyenes vonal&uacute; t&aacute;vols&aacute;g, a k&ouml;lts&eacute;gt&aacute;vols&aacute;g, a val&oacute;di felsz&iacute;ni t&aacute;vols&aacute;g, valamint a f&uuml;ggőleges &eacute;s v&iacute;zszintes t&eacute;nyezők haszn&aacute;lat&aacute;t.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Távolság-hozzárendelés</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="T&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az egyes cell&aacute;k t&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s&eacute;t sz&aacute;m&iacute;tja ki a megadott forr&aacute;sokhoz egyenes vonal&uacute; t&aacute;vols&aacute;g, k&ouml;lts&eacute;gt&aacute;vols&aacute;g, val&oacute;di felsz&iacute;ni t&aacute;vols&aacute;g, valamint a f&uuml;ggőleges &eacute;s v&iacute;zszintes t&eacute;nyezők alapj&aacute;n.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimális útvonal vonalként</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Az Optim&aacute;lis &uacute;tvonal vonalk&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az optim&aacute;lis &uacute;tvonalat hat&aacute;rozza meg vonalk&eacute;nt a c&eacute;lpontok &eacute;s a kiindul&oacute;pontok k&ouml;z&ouml;tt.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimális útvonal raszterként</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Az Optim&aacute;lis &uacute;tvonal raszterk&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az optim&aacute;lis &uacute;tvonalat raszterk&eacute;nt hat&aacute;rozza meg a c&eacute;lpontok &eacute;s a kiindul&oacute;pontok k&ouml;z&ouml;tt.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimális régiókapcsolatok</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Az Optim&aacute;lis r&eacute;gi&oacute;kapcsolatok eszk&ouml;z illusztr&aacute;ci&oacute;ja">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Ez az eszk&ouml;z az optim&aacute;lis h&aacute;l&oacute;zati csatlakoz&aacute;st hat&aacute;rozza meg k&eacute;t vagy t&ouml;bb bemeneti r&eacute;gi&oacute; k&ouml;z&ouml;tt.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="regularsize">
         <h2>Kép elemzése</h2>
         <hr/>
-        <p>Az al&aacute;bbi eszk&ouml;z k&eacute;pek elemz&eacute;s&eacute;ben seg&iacute;t. 
+        <p>Az al&aacute;bbi eszk&ouml;z a  <b>K&eacute;p elemz&eacute;se</b> eszk&ouml;zkateg&oacute;ri&aacute;ban k&eacute;pek elemz&eacute;s&eacute;ben ny&uacute;jt seg&iacute;ts&eacute;get:
             <ul>
-                <li>A  <b>Raszterfunkci&oacute;-sablon alkalmaz&aacute;sa</b> feldolgozza a t&aacute;v&eacute;rz&eacute;kelt felv&eacute;tel&eacute;t a raszterfunkci&oacute;-sablon &aacute;ltal meghat&aacute;rozott funkci&oacute;l&aacute;nccal.
-                </li>
-                <li>A  <b>N&ouml;v&eacute;nyzeti monitoring</b> a s&aacute;vokon alkalmazott sz&aacute;mtani műveletek alapj&aacute;n felismeri a n&ouml;v&eacute;nyzetet egy k&eacute;pen bel&uuml;l.
+                <li> <b>A N&ouml;v&eacute;nyzeti monitoring</b> a s&aacute;vokon alkalmazott sz&aacute;mtani műveletek alapj&aacute;n felismeri a relat&iacute;v n&ouml;v&eacute;nyzeti fedetts&eacute;get egy k&eacute;pen bel&uuml;l. T&ouml;bbf&eacute;le n&ouml;v&eacute;nyzeti index &aacute;ll rendelkez&eacute;sre a k&eacute;pelemz&eacute;shez.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="regularsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Raszterfunkció-sablon alkalmazása</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Raszterfunkci&oacute;-sablon alkalmaz&aacute;sa">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Feldolgozza a t&aacute;v&eacute;rz&eacute;kelt felv&eacute;tel&eacute;t a raszterfunkci&oacute;-sablon &aacute;ltal meghat&aacute;rozott funkci&oacute;l&aacute;nccal.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Sz&aacute;mtani műveletet hajt v&eacute;gre egy t&ouml;bbs&aacute;vos raszteres r&eacute;teg s&aacute;vjain, &eacute;s az adatok alapj&aacute;n felt&aacute;rja a mintater&uuml;let n&ouml;v&eacute;nyzeti bor&iacute;totts&aacute;g&aacute;nak m&eacute;rt&eacute;k&eacute;t.
+            <p>Sz&aacute;mtani műveletet hajt v&eacute;gre egy t&ouml;bbs&aacute;vos raszteres r&eacute;teg s&aacute;vjain, &eacute;s az adatok alapj&aacute;n felt&aacute;rja a n&ouml;v&eacute;nyzeti bor&iacute;totts&aacute;g m&eacute;rt&eacute;k&eacute;t.
             </p>
             <br/>
         </div>
@@ -455,7 +535,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ez az eszk&ouml;z tan&iacute;tott m&eacute;ly tanul&aacute;s modellt futtat egy bemeneti raszteren egy oszt&aacute;lyozott raszter l&eacute;trehoz&aacute;s&aacute;ra, &eacute;s minden &eacute;rv&eacute;nyes pixelnek lesz egy hozz&aacute;rendelt oszt&aacute;lya.
+            <p>Ez az eszk&ouml;z tan&iacute;tott deep learning modellt futtat egy bemeneti raszteren egy oszt&aacute;lyozott raszter l&eacute;trehoz&aacute;s&aacute;ra, &eacute;s minden &eacute;rv&eacute;nyes pixelnek lesz egy hozz&aacute;rendelt oszt&aacute;lya.
             </p>
             <br/>
         </div>
@@ -470,7 +550,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Ez az eszk&ouml;z tan&iacute;tott m&aacute;ly tanul&aacute;s modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely a tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
+            <p>Ez az eszk&ouml;z tan&iacute;tott deep learning modellt futtat egy bemeneti raszteren egy olyan vektoroselem-oszt&aacute;ly l&eacute;trehoz&aacute;s&aacute;ra, amely a tartalmazza a tal&aacute;lt objektumokat. A vektoros elemek lehetnek az objektum k&ouml;r&uuml;l tal&aacute;lhat&oacute;, hat&aacute;rol&oacute; mezők vagy soksz&ouml;gek, &eacute;s lehetnek pontok az objektumok k&ouml;z&eacute;ppontjaiban.
             </p>
             <br/>
         </div>

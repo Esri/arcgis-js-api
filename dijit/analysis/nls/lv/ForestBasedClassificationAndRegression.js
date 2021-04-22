@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({modifiedTitle:"Uz mežu balstīta klasifikācija un regresija — ${goal}",train:"Trenēt",trainAndPredict:"Trenēt un prognzēt",selectGoal:"Ko jūs vēlētos darīt?",trainGoal:"Trenējiet modeli, lai izvērtētu modeļa veiktspēju",trainAndPredictGoal:"Trenējiet modeli un prognozējiet vērtības",inFeaturesLabel:"Izvēlieties trenējamo slāni",variablePredictLabel:"Izvēlēties prognozes lauku",categorical:"Kategorija",chooseExplanatoryField:"Izvēlieties vienu vai vairākus skaidrojuma laukus",chooseFeaturesToPredict:"Izvēlieties slāni, lai prognozētu vērtības",chooseExplainMatch:"Izvēlieties, kā tiks salāgoti skaidrojuma lauki",options:"Iespējas",advancedForestOptions:"Uzlabotās meža opcijas",numberOfTrees:"Koku skaits",minimumLeafSize:"Minimālais lapu izmērs",maximumTreeDepth:"Maksimālais koka dziļums",sampleSize:"Dati, kas pieejami par katru koku (%)",randomVariables:"Nejaušā secībā atlasītu mainīgo skaits",variableConstraintMsg:"Jābūt starp 1 un skaidrojuma mainīgo skaitu.",validationOptions:"Validācijas opcijas",percentageForValidation:"Treniņu dati, kas pieejami validācijai (%)",outputLayerName:"FBCR ${inFeaturesName}",itemDescription:"Elementu slānis, kas ģenerēts, palaižot meža klasifikācijas un regresijas ${goal} risinājumus.",itemTags:"Analīzes rezultāts, meža klasifikācija un regresija, ${inFeaturesName}, ${goal}",itemSnippet:"Elementu slānis, kas ģenerēts no meža klasifikācijas un regresijas (${goal} risinājumiem."});

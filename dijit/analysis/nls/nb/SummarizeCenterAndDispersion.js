@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Velg et lag som skal beskrives",summaryTypes:"Sammendragstyper",centralFeature:"Sentralt geoobjekt",meanCenter:"Snitt for midtpunkt",medianCenter:"Median for midtpunkt",ellipse:"Ellipse",weightBy:"Vekt etter (valgfritt)",groupBy:"Grupper etter (valgfritt)",resultLayerName:"Navn på resultatlag",outputLayerName:"Beskriv fordeling for ${layerName}",none:"Ingen",itemDescription:"Geoobjektslag generert ved kjøring av Summer midtpunkt og fordeling på ${layerName}. ",itemTags:"Analyseresultat, Summer midtpunkt og fordeling,  ${layerName}",itemSnippet:"Geoobjektslag generert fra Summer midtpunkt og fordeling"});

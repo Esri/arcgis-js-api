@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Pilih layer tempat tambahan",inputWarningLabel:"Peringatan: Layer yang Anda lampirkan akan dimodifikasi.",inputHostedLayerWarning:"Layer terpilih bukan merupakan feature layer yang di-host. Harap pilih feature layer yang di-host untuk ditambahkan.",appendLayerLabel:"Pilih layer yang akan ditambahkan",filterLabel:"Tambahkan semua fitur atau tentukan subset (opsional)",fieldMappingLabel:"Pilih cara menambahkan kolom (opsional)",inputField:"Kolom Input",appendValue:"Tambahkan Nilai",expression:"Ekspresi"});

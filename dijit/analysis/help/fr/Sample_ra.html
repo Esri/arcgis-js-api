@@ -44,7 +44,7 @@
         <h2>Échantillon</h2><p/>
         <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="&Eacute;chantillon"></h2>
         <hr/>
-    <p>Cet outil cr&eacute;e une table ou une classe d&rsquo;entit&eacute;s ponctuelles indiquant les valeurs de cellules d&rsquo;un raster ou d&rsquo;un jeu de rasters, pour des localisations d&eacute;finies. Les localisations sont d&eacute;finies par des cellules raster, des entit&eacute;s surfaciques, des entit&eacute;s polylignes ou par un jeu de points.
+    <p>Cet outil cr&eacute;e une table ou une classe d&rsquo;entit&eacute;s ponctuelles indiquant les valeurs de cellules d&rsquo;un raster ou d&rsquo;un jeu de rasters, pour des localisations d&eacute;finies. Les localisations sont d&eacute;finies par des cellules raster, des entit&eacute;s surfaciques, des entit&eacute;s polylignes ou par un ensemble de points.
     </p>
     <p>Les valeurs de pixel sont extraites de tous les rasters en entr&eacute;e &agrave; chaque localisation. Une table ou une classe d&rsquo;entit&eacute;s ponctuelles est cr&eacute;&eacute;e avec des champs contenant les valeurs de pixel pour chaque raster en entr&eacute;e. Les attributs suppl&eacute;mentaires provenant de la table raster en entr&eacute;e ne sont pas inclus dans la table en sortie.
     </p>
@@ -112,7 +112,6 @@
             <p>Sp&eacute;cifiez la dimension temporelle, la profondeur ou d&rsquo;autres donn&eacute;es d&rsquo;acquisition associ&eacute;es aux entit&eacute;s ou cellules de localisation.
             </p>
             <p>Pour chaque dimension, trois options permettent de sp&eacute;cifier les informations d&rsquo;acquisition associ&eacute;es aux entit&eacute;s ou cellules de localisation&nbsp;:
-
                 <ul>
                     <li> <b>Single field or value (Champ ou valeur unique)</b>&nbsp;: lorsque cette option est s&eacute;lectionn&eacute;e, les informations suivantes doivent &ecirc;tre sp&eacute;cifi&eacute;es&nbsp;:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algorithme de r&eacute;&eacute;chantillonnage utilis&eacute; lors de l'&eacute;chantillonnage d'un raster.
             </p>
             <ul>
-                <li> <b>Nearest (Le plus proche)</b>&nbsp;: voisin le plus proche. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                <li> <b>Nearest (Le plus proche)</b>&nbsp;: la m&eacute;thode du voisin le plus proche utilise la valeur de la cellule la plus proche pour affecter une valeur &agrave; la cellule en sortie lors du r&eacute;&eacute;chantillonnage. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                 </li>
-                <li> <b>Bilinear (Bilin&eacute;aire)</b>&nbsp;: interpolation bilin&eacute;aire
+                <li> <b>Bilinear (Bilin&eacute;aire)</b>&nbsp;: l&rsquo;interpolation bilin&eacute;aire d&eacute;termine la nouvelle valeur d&rsquo;une cellule en fonction d&rsquo;une distance moyenne pond&eacute;r&eacute;e des valeurs des centres des quatre cellules en entr&eacute;e les plus proches.
                 </li>
-                <li> <b>Cubic (Cubique)</b>&nbsp;: convolution cubique
+                <li> <b>Cubic (Cubique)</b>&nbsp;: la convolution cubique d&eacute;termine la nouvelle valeur d&rsquo;une cellule en ajustant une courbe liss&eacute;e suivant les valeurs des centres des 16&nbsp;cellules en entr&eacute;e les plus proches.
                 </li>
             </ul>
             
@@ -250,7 +249,8 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>

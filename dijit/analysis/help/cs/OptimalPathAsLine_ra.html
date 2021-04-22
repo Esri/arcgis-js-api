@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimální trasa jako linie (Optimal Path As Line)</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustrace n&aacute;stroje Optim&aacute;ln&iacute; trasa jako linie"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; optim&aacute;ln&iacute; cestu z&nbsp;c&iacute;le ke zdrojům jako linii.
+    </p>
+    <p>Mezi př&iacute;klady použit&iacute; patř&iacute;:
+        <ul>
+            <li>Najděte nejlep&scaron;&iacute; trasu pro novou silnici v&nbsp;r&aacute;mci stavebn&iacute;ch n&aacute;kladů.
+                
+
+
+            </li>
+            <li>Najděte nejlep&scaron;&iacute; trasu pro plavbu mezi c&iacute;lem a&nbsp;aktu&aacute;ln&iacute; polohou.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Zvolte cílový rastr nebo prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrov&aacute; vrstva nebo vrstva prvků, kter&aacute; identifikuje buňky, ze kter&yacute;ch bude určena optim&aacute;ln&iacute; trasa k&nbsp;optim&aacute;ln&iacute;mu zdroji.
+            </p>
+            <p>Pokud je vstup rastr, mus&iacute; se skl&aacute;dat z&nbsp;buněk, kter&eacute; maj&iacute; pro destinace platn&eacute; hodnoty (včetně nuly). Zb&yacute;vaj&iacute;c&iacute;m buňk&aacute;m mus&iacute; b&yacute;t přiřazena hodnota NoData. Vstupn&iacute; rastr mus&iacute; b&yacute;t celoč&iacute;seln&eacute;ho typu.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Cílové pole</h2></div>
+        <hr/>
+        <div>
+            <p>Pole slouž&iacute;c&iacute; k z&iacute;sk&aacute;n&iacute; hodnot pro c&iacute;lov&aacute; um&iacute;stěn&iacute;.
+            </p>
+            <p>Toto pole mus&iacute; b&yacute;t typu cel&eacute; č&iacute;slo.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Zvolit rastr akumulace vzdálenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr akumulovan&eacute; vzd&aacute;lenosti se použ&iacute;v&aacute; k&nbsp;určen&iacute; optim&aacute;ln&iacute; trasy z&nbsp;c&iacute;lů ke zdrojům.
+            </p>
+            <p>Rastr akumulace vzd&aacute;lenosti je obvykle vytvořen pomoc&iacute; n&aacute;strojů Akumulace vzd&aacute;lenosti nebo Přidělen&iacute; vzd&aacute;lenosti. Každ&aacute; buňka v&nbsp;rastru akumulovan&eacute; vzd&aacute;lenosti představuje minim&aacute;ln&iacute; akumulovanou vzd&aacute;lenost n&aacute;kladů přes povrch z&nbsp;každ&eacute; buňky k&nbsp;sadě zdrojov&yacute;ch buněk.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Zvolit rastr zpětného směru nebo směru odtoku</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr zpětn&eacute;ho směru obsahuje vypoč&iacute;tan&eacute; vzd&aacute;lenosti ve stupn&iacute;ch. Směr identifikuje n&aacute;sleduj&iacute;c&iacute; buňku na optim&aacute;ln&iacute; cestě zpět ke zdroji s nejniž&scaron;&iacute; akumulac&iacute; a vyh&yacute;b&aacute; se přitom bari&eacute;r&aacute;m.
+            </p>
+            <p>Rastr zpětn&eacute;ho směru je obvykle vytvořen pomoc&iacute; n&aacute;strojů Akumulace vzd&aacute;lenosti nebo Přidělen&iacute; vzd&aacute;lenosti. V&nbsp;tomto př&iacute;padě jsou hodnoty v&nbsp;rozmez&iacute; 0 až 360 stupňů. Hodnota 0 je vyhrazena pro zdrojov&eacute; buňky. Oček&aacute;van&yacute; v&yacute;chod (napravo) je 90 stupňů a&nbsp;hodnoty rostou ve směru hodinov&yacute;ch ručiček (180 je jih, 270 je z&aacute;pad a&nbsp;360 je sever).
+            </p>
+            <p>Vytvořen&aacute; optim&aacute;ln&iacute; cesta může b&yacute;t trasa vodn&iacute;ho toku založen&aacute; na směru odtoku D8. Chcete-li t&iacute;mto způsobem vygenerovat optim&aacute;ln&iacute; trasu, použijte jako vstup pro tento parametr rastr směru odtoku D8.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Typ trasy (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje kl&iacute;čov&eacute; slovo definuj&iacute;c&iacute; způsob, jak&yacute;m budou hodnoty a&nbsp;z&oacute;ny ve vstupn&iacute;ch datech destinac&iacute; interpretov&aacute;ny ve v&yacute;počtech n&aacute;kladů trasy:
+                <ul>
+                    <li> <b>Do každ&eacute; z&oacute;ny</b> &ndash; pro každou z&oacute;nu ve vstupn&iacute;ch datech destinac&iacute; se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa. Pomoc&iacute; t&eacute;to volby nejm&eacute;ně n&aacute;kladn&aacute; trasa pro každou z&oacute;nu zač&iacute;n&aacute; v buňce s nejkrat&scaron;&iacute; vzd&aacute;lenost&iacute; v&aacute;žen&yacute;ch n&aacute;kladů v z&oacute;ně. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                         
+                    </li>
+                    <li> <b>Nejlep&scaron;&iacute; jednotliv&yacute;</b> &mdash; Pro v&scaron;echny buňky ve vstupn&iacute;ch datech destinac&iacute; je nejm&eacute;ně n&aacute;kladn&aacute; cesta odvozena z&nbsp;buňky s&nbsp;minimem nejm&eacute;ně n&aacute;kladn&yacute;ch cest do zdrojov&yacute;ch buněk.
+                    </li>
+                    <li> <b>Do každ&eacute; buňky</b> &ndash; pro každou buňku s platn&yacute;mi hodnotami ve vstupn&iacute;ch datech destinac&iacute; se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa. Pomoc&iacute; t&eacute;to volby se každ&aacute; buňka vstupn&iacute;ch dat destinac&iacute; bere samostatně a pro každou se urč&iacute; nejm&eacute;ně n&aacute;kladn&aacute; trasa pro každou buňku.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Název výsledné vrstvy prvků</h2></div>
+        <hr/>
+        <div>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

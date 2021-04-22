@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu. Rīku kopas, kas pa&scaron;laik ir pieejamas, izmantojot  Portal for ArcGIS tīmekļa lietotāju pieredzi, ir  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Izmantot tuvumu</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b>, <b>Pārvaldīt datus</b>, <b>Deep Learning</b> un <b>Multidimensiju analīze</b>.
+        <p>Rastra analīze ļauj veikt lielu rastra datu kopu analīzi, izmantojot  ArcGIS Image Server. Tādējādi varat ātrāk analizēt lielāku datu apjomu, izmantojot servera jaudu.Pa&scaron;laik, izmantojot Portal for ArcGIS tīmekļa lietotāju pieredzi, pieejamās rīku kopas ir &scaron;ādas:  <b>Apkopot datus</b>, <b>Analizēt modeļus</b>, <b>Izmantot tuvumu</b>, <b>Analizēt attēlu</b>, <b>Analizēt reljefu</b>, <b>Pārvaldīt datus</b>, <b>Deep Learning</b> un <b>Daudzdimensiju analīze</b>.
         </p>
     </div>
     <div id="SummarizeDataCategory" class="smallsize">
         <h2>Apkopot datus</h2>
         <hr/>
-        <p>&Scaron;ajā rīku komplektā ir iekļauts rīks, kas ļauj aprēķināt rastra slāņa statistiku jūsu definētās platības robežās. 
+        <p>Rīki tiek izmantoti, lai aprēķinātu norādītās teritorijas&nbsp;(zonas) rastra slāņa statistiku.
             <ul>
-                <li> <b>Apkopot rastu &scaron;eit:</b> aprēķina statistiku rastru &scaron;ūnām, kas atrodas definētās platības robežās.
+                <li> <b>Apkopot rastru, izmantojot:</b> aprēķina statistiku rastru &scaron;ūnām, kas atrodas definētās teritorijas robežās.
+                </li>
+                <li>Rīks  <b>Zonālā statistika kā tabula</b> apkopo rastra vērtības citas datu kopas zonās un uzrāda rezultātus tabulā.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Apkopot rastru šeit:</h2></td>
+                    <td><h2>Apkopot rastru šajās robežās</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Rīks Apkopot rastru &scaron;eit:">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Rīks Apkopot rastru &scaron;ajās robežās:">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Aprēķina kopsavilkuma statistiku rastru &scaron;ūnām definētās platībās.
+            <p>&Scaron;is rīks apkopo rastra vērtības citas datu kopas zonās.
             </p>
-            <p>Daži pielietojumu piemēri: 
-
-                <ul>
-                    <li>Ja ir dots ūdens&scaron;ķirtnes platības slānis un augstuma rastra slānis, aprēķiniet augstuma diapazonu katrā ūdens&scaron;ķirtnē, lai noteiktu, kurās no tām ir spēcīgākā ūdens plūsma.
-                        
-
-                    </li>
-                    <li>Ja ir dots administratīvās pārvaldības vienību slānis un zemes lietojuma kategoriju rastra slānis, aprēķiniet zemes lietojuma dispersiju katrā pārvaldības platībā, lai noteiktu, kurās no tām jāiegulda visvairāk darba, lai izveidotu pārvaldības plānu.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonālā statistika kā tabula</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Rīka Zonālā statistika kā tabula diagramma">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks apkopo rastra vērtības citas datu kopas zonās un uzrāda rezultātus tabulā.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Blīvuma aprēķināšana</h2></td>
+                    <td><h2>Aprēķināt blīvumu</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Blīvuma aprēķinā&scaron;anas rīks">
                     </td>
@@ -132,11 +135,10 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
-        <h2>Lietot tuvumu</h2>
+    <div id="UseProximityCategory" class="largesize">
+        <h2>Lietot tuvumā esošos</h2>
         <hr/>
-        <p>&Scaron;ie rīki palīdz jums atbildēt uz vienu no visbiežāk uzdotajiem jautājumiem par telpisko analīzi: &ldquo;Kas atrodas tuvumā kam?&rdquo;
-
+        <p>&Scaron;ie rīki palīdz atbildēt uz dažiem visbiežāk uzdotajiem jautājumiem par telpisko analīzi: Kādi objekti atrodas tuvumā? un Kāds ir optimālākais ceļ&scaron;?
             <ul>
                 <li>Rīks  <b>Aprēķināt attālumu</b> aprēķina Eiklīda attālumu, virzienu un sadalījumu no viena avota vai avotu kopas.
                     
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li>Rīks  <b>Noteikt ceļo&scaron;anas izmaksu ceļu kā polilīniju</b> aprēķina minimālo izmaksu polilīniju ceļu starp avotiem un zināmiem galamērķiem.
+                <li>Rīks  <b>Noteikt ceļo&scaron;anas izmaksu ceļu kā lauztu līniju</b> aprēķina minimālo izmaksu lauzto līniju ceļu zināmiem galamērķiem un avotiem.
+                    
+
+                </li>
+                <li>Rīks  <b>Attāluma akumulē&scaron;ana</b> aprēķina akumulēto attālumu no katras &scaron;ūnas līdz avotiem, nodro&scaron;inot taisnas līnijas attālumu, izmaksu attālumu un reālo virsmas attālumu, kā arī vertikālos un horizontālos koeficientus.
+                    
+
+                </li>
+                <li>Rīks  <b>Attāluma pie&scaron;ķir&scaron;ana</b> aprēķina attālumu no katras &scaron;ūnas līdz norādītajiem avotiem, balstoties uz taisnas līnijas attālumu, izmaksu attālumu un reālo virsmas attālumu, kā arī vertikālajiem un horizontālajiem koeficientiem.
+                    
+
+                </li>
+                <li>Rīks  <b>Optimālais ceļ&scaron; kā līnija</b> aprēķina optimālo ceļu no galamērķiem uz avotiem kā līniju.
+                    
+
+                </li>
+                <li>Rīks  <b>Optimālais ceļ&scaron; kā rastrs</b> aprēķina optimālo ceļu no galamērķiem uz avotiem kā rastru.
+                    
+
+                </li>
+                <li>Rīks  <b>Optimālais reģionu savienojums</b> aprēķina optimālo savienojamības tīklu starp diviem vai vairākiem ievades reģioniem.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Aprēķina Eiklīda attālumu, virzienu un sadalījumu no viena avota vai avotu kopas. Jūs varat izmantot &scaron;o rīku, lai noteiktu, kādā attālumā no ceļa, ēkas vai parka atrodas novietojums. Jūs varat arī noteikt, kurā virzienā no novietojuma jums jāceļo, lai atgrieztos atpakaļ pie avota pa vistaisnāko ceļu. Jūs varat redzēt ikvienu novietojumu pētāmajā teritorijā, kas ir vistuvākais avots.
+            <p>&Scaron;is rīks aprēķina Eiklīda attālumu, virzienu un sadalījumu no viena avota vai avotu kopas.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Aprēķina optimālo ceļo&scaron;anas izmaksu tīklu no ievades reģionu kopas.
+            <p>&Scaron;is rīks aprēķina optimālo ceļo&scaron;anas tīklu no ievades reģionu kopas.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Aprēķina minimālo izmaksu polilīniju ceļu starp avotiem un zināmiem galamērķiem.
+            <p>&Scaron;is rīks aprēķina minimālo izmaksu polilīniju ceļu starp avotiem un zināmiem galamērķiem.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Attāluma akumulācija</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Rīka Attāluma akumulācija attēlojums">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina akumulēto attālumu no katras &scaron;ūnas līdz avotiem, nodro&scaron;inot taisnas līnijas attālumu, izmaksu attālumu, reālo virsmas attālumu, kā arī vertikālos un horizontālos koeficientus.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Attāluma piešķiršana</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Rīka Attāluma pie&scaron;ķir&scaron;ana attēlojums">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina attālumu no katras &scaron;ūnas līdz norādītajiem avotiem, pamatojoties uz taisnas līnijas attālumu, izmaksu attālumu, reālo virsmas attālumu, kā arī vertikālajiem un horizontālajiem koeficientiem.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimāls ceļš kā līnija</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Attēlojums rīkam Optimāls ceļ&scaron; kā līnija">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina optimālo ceļu no galamērķiem uz avotiem kā līniju.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimāls ceļš kā rastrs</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Rīka Optimāls ceļ&scaron; kā rastrs attēlojums">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina optimālo ceļu no galamērķiem uz avotiem kā rastru.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimāli reģiona savienojumi</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Rīka Optimāli reģiona savienojumi attēlojums">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>&Scaron;is rīks aprēķina optimālo savienojamības tīklu starp diviem vai vairākiem ievades reģioniem.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analizēt attēlu</h2>
         <hr/>
-        <p>Zemāk norādītais rīks palīdz analizēt attēlus. 
+        <p>&Scaron;is rīks rīku kategorijā  <b>Analizēt attēlu</b> palīdz analizēt attēlus:
             <ul>
-                <li>Rīks  <b>Lietot rastra funkciju sagatavi</b> apstrādā jūsu attēlus, izmantojot funkciju vai funkciju virkni, kā norādīts rastra funkcijas sagatavē.
-                </li>
-                <li> <b>Pārraudzīt veģetāciju</b> attēlā nosaka veģetāciju, pamatojoties uz aritmētiskām joslu darbībām.
+                <li>Rīks  <b>Pārraudzīt veģetāciju</b> attēlā konstatē relatīvo veģetācijas pārklājumu, pamatojoties uz aritmētiskām darbībām joslās. Attēlu analīzei ir pieejami vairāki veģetācijas indeksi.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Lietot rastra funkciju sagatavi</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Lietot rastra funkciju sagatavi">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Apstrādā jūsu attēlus, izmantojot funkciju vai funkciju virkni, kā norādīts rastra funkcijas sagatavē.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -388,9 +468,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Konvertēt elementu par rastru</h2></td>
+                    <td><h2>Pārvērst elementu par rastru</h2></td>
                     <td>
-                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Rīks konvertēt elementu par rastru">
+                    <img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" class="titleImage" alt="Rīks Pārvērst elementu par rastru">
                     </td>
                 </tr></tbody>
             </table>
@@ -450,12 +530,12 @@
                 <tbody><tr>
                     <td><h2>Funkcija Klasificēt pikseļus, izmantojot Deep Learning</h2></td>
                     <td>
-                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Klasificēt pikseļus, izmantojot Deep Learning">
+                    <img src="../images/GUID-88BE63A6-B06C-4C61-9AB1-8DA5A08C6783-web.png" class="titleImage" alt="Funkcija Klasificēt pikseļus, izmantojot Deep Learning">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&Scaron;is rīks izmanto trenētu Deep Learning modeli uz ievades rastra, lai izveidotu klasificētu rastru, un katram derīgajam pikselim ir pie&scaron;ķirta klases atzīme.
+            <p>&Scaron;is rīks izmanto apmācītu Deep Learning modeli uz ievades rastra, lai izgatavotu klasificētu rastru, un katram derīgajam pikselim ir pie&scaron;ķirta klases atzīme.
             </p>
             <br/>
         </div>
@@ -465,7 +545,7 @@
                 <tbody><tr>
                     <td><h2>Funkcija Noteikt objektus, izmantojot Deep Learning</h2></td>
                     <td>
-                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Noteikt objektus, izmantojot Deep Learning">
+                    <img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" class="titleImage" alt="Funkcija Noteikt objektus, izmantojot Deep Learning">
                     </td>
                 </tr></tbody>
             </table>
@@ -516,9 +596,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Apkopot multidimensiju rastru</h2></td>
+                    <td><h2>Apkopot daudzdimensiju rastru</h2></td>
                     <td>
-                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Apkopot multidimensiju rastru">
+                    <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="Apkopot daudzdimensiju rastru">
                     </td>
                 </tr></tbody>
             </table>
@@ -546,9 +626,9 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ģenerēt multidimensiju anomāliju</h2></td>
+                    <td><h2>Ģenerēt daudzdimensiju anomāliju</h2></td>
                     <td>
-                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ģenerēt multidimensiju anomāliju">
+                    <img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" class="titleImage" alt="Ģenerēt daudzdimensiju anomāliju">
                     </td>
                 </tr></tbody>
             </table>

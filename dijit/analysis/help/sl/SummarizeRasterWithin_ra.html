@@ -44,7 +44,7 @@
         <h2>Povzemi raster znotraj</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Orodje Povzemi raster znotraj"></h2>
         <hr/>
-    <p>To orodje povzema raster na podlagi območij (con), določenih s prvim vhodnim slojem.
+    <p>To orodje povzema vrednosti rastra znotraj območij drugega sklopa podatkov.
     </p>
     <p>Nekaj primerov uporabe vključuje naslednje:
     </p>
@@ -66,7 +66,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Izberi poligonski sloj za povzetek rastrskega sloja znotraj določene meja</h2></div>
+        <div><h2>Izberi poligonski sloj za povzetek sloja rastra znotraj omejitve</h2></div>
         <hr/>
         <div>
             <p>Sloj, ki določa meje območij ali con, ki bodo povzete.
@@ -86,7 +86,7 @@
         </div>
     </div>
     <div id="sumRasterLayer">
-        <div><h2>Izberi rastrski sloj za povzemanje</h2></div>
+        <div><h2>Izberi sloj rastra za povzemanje</h2></div>
         <hr/>
         <div>
             <p>Rastrske celice v tem sloju bodo povzete po območjih (conah), v katera spadajo.
@@ -99,9 +99,21 @@
         <div>
             <p>Ko izberete sloj za povzetek, lahko po želji izračunate statistiko katerih koli &scaron;tevilskih atributov točk, linij ali poligonov znotraj sloja vhodnega poligonskega sloja.
             </p>
-            <p>Razpoložljivi tipi statistike, ko je izbrano polje celo &scaron;tevilo, so povprečje, večina, maksimum, sredina, minimum, manj&scaron;ina, obseg, standardni odklon, vsota in razlika.
+            <p>Razpoložljivi tipi statistike, ko je izbrano polje celo &scaron;tevilo, so povprečje, večina, maksimum, sredina, minimum, manj&scaron;ina, percentil, obseg, standardni odklon, vsota in razlika.
             </p>
             <p>Če je polje plavajoča vejica, so na voljo možnosti povprečje, maksimum, minimum, razpon, standardni odklon in vsota.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Vrednost percentila</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil za izračun. Privzeta vrednost je 90, ki označuje 90. percentil.
+            </p>
+            <p>Vrednosti se gibljejo od 0 do 100. Percentil 0 je pravzaprav enakovreden najmanj&scaron;i, percentil 100 pa največji statistični vrednosti. Vrednost 50 bo pravzaprav ustvarila enak rezultat kot srednja statistična vrednost.
+            </p>
+            <p>Ta možnost je podprta samo, če je parameter  <b>Izberi statistiko za izračun</b> nastavljen na <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Obdelaj kot večdimenzionalno</h2></div>
+        <hr/>
+        <div>
+            <p>Določi, kako bodo vhodni rastri obdelani, če bodo večdimenzionalni. Če izberete obdelavo kot večdimenzionalno, bo statistika izračunana iz vseh dimenzij vhodnega večdimenzionalnega sklopa podatkov. V nasprotnem primeru, pa bo statistika izračunana iz trenutnega izseka vhodnega večdimenzionalnega sklopa podatkov, kar je privzeta nastavitev.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

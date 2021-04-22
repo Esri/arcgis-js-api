@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Povodie</h2><p/>
+        <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="&Uacute;loha povodia"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj určuje pr&iacute;rastkov&uacute; oblasť nad sadou buniek v rastri.
+    </p>
+    <p>Povodie je oblasť st&uacute;pania, ktor&aacute; prispieva k toku--zvyčajne vody--k spoločn&eacute;mu v&yacute;stupu ako koncentrovan&eacute;mu odvodneniu. Može byť s&uacute;časťou v&auml;č&scaron;ieho povodia a tiež m&ocirc;že obsahovať men&scaron;ie povodia, zvan&eacute; podpovodia.
+    </p>
+    <p>Vezme sa hodnota každ&eacute;ho povodia z hodnoty zdroja vo vstupnom rastri alebo prvku vrstvy odtokov&yacute;ch bodov. Ak je odtokov&yacute; bod rastrov&yacute; dataset, hodnoty buniek s&uacute; použit&eacute; tak, ako je predvolen&eacute;. Ak je odtokov&yacute; bod bodov&yacute; prvkov&yacute; dataset, hodnoty bud&uacute; poch&aacute;dzať zo &scaron;pecifikovan&eacute;ho poľa.
+    </p>
+    <p>N&aacute;stroj Povodie podporuje iba vstupn&uacute; rastrov&uacute; vrstvu D8 smeru toku.
+    </p>
+    <p>Pri &scaron;pecifikovan&iacute; vstupn&yacute;ch lokal&iacute;t odtokov&yacute;ch bodov vo forme prvkov bude predvolen&yacute;m poľom prv&eacute; dostupn&eacute; platn&eacute; pole. Ak neexistuj&uacute; žiadne platn&eacute; polia, pole ObjectID (napr&iacute;klad OID alebo FID) bude predvolen&eacute;.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputFlowDirectionRaster">
+        <div><h2>Vyberte vrstvu smeru toku</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&yacute; raster, ktor&yacute; ukazuje smer toku von z každej bunky.
+            </p>
+            <p>Raster smeru toku m&ocirc;že byť vytvoren&yacute; použit&iacute;m n&aacute;stroja Smer Toku alebo &uacute;lohou SmerToku v službe N&aacute;strojeAnal&yacute;zyRastra, spustenej s použit&iacute;m predvolen&eacute;ho typu smeru toku  <b>D8</b>.
+            </p>
+        </div>
+    </div>
+    <div id="inPourPointRasterOrFeatures">
+        <div><h2>Špecifikovať vstupné lokality odtokových bodov</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&eacute; lokality odtokov&yacute;ch bodov.
+            </p>
+            <p>Pre raster toto predstavuje bunky, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť. V&scaron;etky bunky, ktor&eacute; nie s&uacute; NoData, bud&uacute; použit&eacute; ako zdrojov&eacute; bunky. Pre bodov&yacute; vstup toto predstavuje lokality, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť.
+            </p>
+        </div>
+    </div>
+    <div id="pourPointField">
+        <div><h2>Vyberte atribút určujúci odtokové body</h2></div>
+        <hr/>
+        <div>
+            <p>Pole použit&eacute; na pridelenie hodn&ocirc;t k lokalit&aacute;m odtokov&yacute;ch bodov.
+            </p>
+            <p>Aj je vstupn&aacute; vrstva odtokov&yacute;ch bodov rastrom, je použit&aacute; Hodnota. Ak ide o prvok, je použit&eacute; č&iacute;seln&eacute; pole. Ak pole obsahuje desatinn&eacute; hodnoty, bud&uacute; orezan&eacute; na cel&eacute; č&iacute;sla.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

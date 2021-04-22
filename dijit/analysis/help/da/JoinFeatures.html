@@ -59,7 +59,7 @@
             <p>Det destinationslag, der f&aring;r attributter fra tilknytningslaget knyttet til sin tabel.
             </p>
             <p>Ud over at v&aelig;lge et lag fra dit kort kan du v&aelig;lge  <b>V&aelig;lg analyselag</b> nederst p&aring; rullelisten. Denne indstilling &aring;bner et galleri, hvor du kan gennemse og v&aelig;lge datas&aelig;t fra forskellige kilder, som du kan bruge i din analyse. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -116,7 +116,7 @@
         <div>
             <p>Den attributrelation, der bestemmer, om objekterne knyttes til hinanden. Objekterne matches, n&aring;r feltv&aelig;rdierne i tilknytningslaget er lig med feltv&aelig;rdierne i destinationslaget.
             </p>
-            <p>Forestil dig f.eks., at vi har et geografisk lag med beboelsesadresser, der g&aring;r p&aring; tv&aelig;rs af regioner (inkl. feltet  <i>ZIP</i>), samt et tabeldatas&aelig;t med helbredsm&aelig;ssige og demografiske oplysninger fordelt efter postnummer (inkl. et felt med titlen <i>HEALTHZIP</i>). Vi kan knytte datas&aelig;ttet med helbredsoplysninger til datas&aelig;ttet med adresseoplysninger ved at matche feltet <i>ZIP</i> med feltet <i>HEALTHZIP</i>, hvilket vil resultere i et lag med beboelsesadresser med tilsvarende helbredsdata.
+            <p>Forestil dig f.eks., at du har et geografisk lag med beboelsesadresser, der g&aring;r p&aring; tv&aelig;rs af regioner (inkl. feltet  <i>ZIP</i> ), samt et tabeldatas&aelig;t med helbredsm&aelig;ssige og demografiske oplysninger fordelt efter postnummer (inkl. et felt med titlen <i>HEALTHZIP</i>). Vi kan knytte datas&aelig;ttet med helbredsoplysninger til datas&aelig;ttet med adresseoplysninger ved at matche feltet <i>ZIP</i> med <i>HEALTHZIP</i>, hvilket vil resultere i et lag med beboelsesadresser med tilsvarende helbredsdata.
             </p>
         </div>
     </div>
@@ -126,14 +126,14 @@
         <div>
             <p>Bestemmer, hvordan tilknytninger mellem destinations- og tilknytningslaget h&aring;ndteres, hvis det viser sig, at flere objekter i tilknytningslaget har den samme relation i forhold til destinationslaget. Du kan v&aelig;lge mellem disse to tilknytningshandlinger:
                 <ul>
-                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b> &ndash; Denne indstilling knytter objekterne i destinationslaget til et enkelt objekt i tilknytningslaget. M&aring;den, objekter knyttes sammen p&aring;, bestemmes af parameteren <b>Tilf&oslash;j statistik</b> eller parameteren <b>Defin&eacute;r, hvilken post der beholdes</b>. Hvis <b>Tilf&oslash;j statistik</b> benyttes, summeres alle matchede tilknyttede objekter for hvert objekt i destinationslaget. Antallet af tilknyttede objekter tilf&oslash;jes som standard. Hvis <b>Defin&eacute;r, hvilken post der beholdes</b> benyttes, kan du v&aelig;lge at beholde enten den f&oslash;rste post, der matcher, eller beholde en post, der matcher, p&aring; basis af et udtryk. Et udtryk kan bruge enten et numerisk felt (mulighed for st&oslash;rste eller mindste post) eller et datofelt (mulighed for nyeste eller &aelig;ldste).
+                    <li> <b>Tilknyt &eacute;n-til-&eacute;n</b>&ndash; Denne indstilling knytter objekterne i destinationslaget til et enkelt objekt i tilknytningslaget. M&aring;den, objekter knyttes sammen p&aring;, bestemmes af parameteren <b>Tilf&oslash;j statistik</b> eller parameteren <b>Defin&eacute;r, hvilken post der beholdes</b>. Hvis <b>Tilf&oslash;j statistik</b> benyttes, summeres alle matchede tilknyttede objekter for hvert objekt i destinationslaget. Antallet af tilknyttede objekter tilf&oslash;jes som standard. Hvis <b>Definer, hvilken post der beholdes</b> benyttes, kan du v&aelig;lge at beholde enten den f&oslash;rste post, der matcher (standard), eller beholde den post med den h&oslash;jeste eller laveste v&aelig;rdi i et bestemt felt, der matcher ( <b>R&aelig;kkef&oslash;lge efter</b>). R&aelig;kkef&oslash;lge efter udtryk kr&aelig;ver enten et numerisk felt (mulighed for st&oslash;rste eller mindste v&aelig;rdi) eller et datofelt (mulighed for nyeste eller &aelig;ldste).
                     </li>
                     <li> <b>Tilknyt &eacute;n-til-mange</b> &ndash; Denne indstilling knytter alle matchende objekter i tilknytningslaget til destinationslaget. Resultatlaget vil indeholde flere poster fra destinationslaget.
                     </li>
                 </ul>
                 
             </p>
-            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 5 kilometer fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet finder du ud af, at fem dagligvarebutikker opfylder kriterierne. Hvis du har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville du ende med at have fem objekter i dit resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis du angiver en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation og v&aelig;lger en statistik, vil du ende med at have &eacute;t objekt, der repr&aelig;senterer markedet med landbrugsprodukter og de summerede oplysninger om dagligvarebutikker, s&aring;som antallet (5) samt andre valgfrie statistiske oplysninger som f.eks. de samlede &aring;rlige salgstal.
+            <p>Forestil dig f.eks., at vi &oslash;nsker at finde frem til alle de dagligvarebutikker, der ligger inden for 5 kilometer fra et marked med landbrugsprodukter. I dette tilf&aelig;lde skal det lag, der tilknyttes til, have et enkelt objekt, der repr&aelig;senterer et marked med landbrugsprodukter, og de tilknyttede objekter repr&aelig;senterer de lokale dagligvarebutikker, der har attributter s&aring;som samlede &aring;rlige salgstal. Med  <b>Forbind objekter</b>-v&aelig;rkt&oslash;jet finder du ud af, at fem dagligvarebutikker opfylder kriterierne. Hvis du har angivet tilknytningshandlingen <b>Tilknyt &eacute;n-til-mange</b>, ville du ende med at have fem objekter i dit resultatlag, hvor hver r&aelig;kke repr&aelig;senterer markedet med landbrugsprodukter og &eacute;n dagligvarebutik. Hvis du angiver en <b>Tilknyt &eacute;n-til-&eacute;n</b>-relation og v&aelig;lger <b>Definer, hvilken post der beholdes</b>, vil du ende med at have &eacute;t objekt, der repr&aelig;senterer markedet og en dagligvarebutik &ndash; f.eks. den med den h&oslash;jeste &aring;rlige oms&aelig;tning. Hvis du i stedet v&aelig;lger <b>Tilf&oslash;j statistik</b>, vil du ende med at have &eacute;t objekt, der repr&aelig;senterer markedet, og en opsummering af de fem supermarkeder, der f.eks. omfatter summen af de &aring;rlige oms&aelig;tninger og antallet (5) af opsummerede supermarkeder. 
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@
         <div><h2>Behold alle målobjekter</h2></div>
         <hr/>
         <div>
-            <p>Som standard returneres kun matchende objekter mellem m&aring;llaget og tilknytningslaget i resultatlaget (en indre tilknytning). N&aring;r det er aktiveret, &aelig;ndrer parameteren  <b>Behold alle m&aring;lobjekter</b> outputtet, s&aring; det omfatter alle objekter i m&aring;llaget, uanset om de matcher objekter i tilknytningslaget (en venstre ydre tilknytning).
+            <p>Som standard returneres kun matchende objekter mellem m&aring;llaget og tilknytningslaget i resultatlaget (en indre tilknytning). N&aring;r det er aktiveret, &aelig;ndrer parameteret  <b>Behold alle m&aring;lobjekter</b> outputtet, s&aring; det omfatter alle objekter i m&aring;llaget, uanset om de matcher objekter i tilknytningslaget (en venstre ydre tilknytning).
             </p>
         </div>
     </div>
@@ -180,13 +180,15 @@
         <div><h2>Opret resultater som hosted vektorlag-visning</h2></div>
         <hr/>
         <div>
-            <p> N&aring;r du opretter resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres. &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede.
+            <p>N&aring;r du opretter resultaterne som en &quot;hosted&quot; vektorlag-visning, vil dataene v&aelig;re opdaterede, n&aring;r kildedataene &aelig;ndres. &quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, vil v&aelig;re skrivebeskyttede.
             </p>
+            <p class="OnlineOnly">&quot;Hostede&quot; vektorlag-visninger, der indeholder tilknytninger, forbruger ikke credits i forbindelse med analyse og lagring.
+            </p> 
             <p>Du kan oprette en hosted vektorlag-visning ud fra analyseresultaterne, hvis alle f&oslash;lgende betingelser er opfyldt:
                 <ul>
                     <li>Du er ejer af begge lag.
                     </li>
-                    <li>Begge lag er hostede vektorlag.
+                    <li>Begeg lag er hostede vektorlag.
                     </li>
                     <li>Du udf&oslash;rer en attribut-tilknytning.
                     </li>

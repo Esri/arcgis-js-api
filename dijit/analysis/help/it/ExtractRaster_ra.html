@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Scegliere il tipo di estensione da utilizzare quando si ritaglia la geometria del layer:
-
                 <ul>
-                    <li>Utilizza estensione corrente: verr&agrave; utilizzata l'estensione della mappa corrente per ritagliare il layer risultante. Questa &egrave; l'impostazione predefinita.
+                    <li>Utilizza estensione corrente: verr&agrave; utilizzata l'estensione della mappa corrente per ritagliare il layer risultante. Si tratta dell'impostazione predefinita.
                         
 
                     </li>
-                    <li>Scegli area di studio: consente di scegliere se il risultato indicher&agrave; l'area all'interno dell'estensione della geometria o quella all'esterno. Se si sceglie l'opzione  <b>Dati all'interno della geometria</b>, le immagini all'esterno delle estensioni verranno rimosse. Se si sceglie l'opzione <b>Dati all'esterno della geometria</b>, le immagini all'interno delle estensioni verranno rimosse. &Egrave; anche possibile definire una geometria di ritaglio utilizzando lo strumento di disegno.
+                    <li>Scegli area di studio: consente di definire una geometria di ritaglio utilizzando lo strumento di disegno.
+                        
+
+                    </li>
+                    <li>Scegli layer: scegliere un feature layer o un layer di immagini per definire l'estensione oppure scegliere un feature layer poligonale per definire la geometria di ritaglio. Quando &egrave; selezionato un feature layer poligonale, viene visualizzata una casella di controllo per specificare se utilizzare le feature di input per il ritaglio della geometria. Per impostazione predefinita, &egrave; deselezionato. Significa che il Feature Layer di input viene utilizzato per definire l'estensione. Se &egrave; selezionato, significa che le caratteristiche di input vengono utilizzate per il ritaglio della geometria.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Specifica tipo di ritaglio</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare se si vuole mantenere l'area all'interno o all'esterno della geometria ritagliata:
+                <ul>
+                    <li>Dati all'interno della geometria: verranno estratte le immagini all'interno delle estensioni della clip. Si tratta dell'impostazione predefinita.
+                        
+
+                    </li>
+                    <li>Dati al di fuori della geometria: verranno estratte le immagini al di fuori delle estensioni della clip.
                         
 
                     </li>
@@ -77,9 +97,10 @@
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vzorek (Sample)</h2><p/>
+        <h2>Vzorek</h2><p/>
         <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Vzorek"></h2>
         <hr/>
     <p>Tento n&aacute;stroj vytvoř&iacute; tabulku nebo tř&iacute;du bodov&yacute;ch prvků, kter&aacute; uvede hodnoty buněk z rastru nebo sady rastrů pro definovan&eacute; um&iacute;stěn&iacute;. Um&iacute;stěn&iacute; jsou definov&aacute;na buňkami rastru, polygonov&yacute;mi prvky, polyliniov&yacute;mi prvky nebo sadou bodů.
@@ -112,7 +112,6 @@
             <p>Určete čas, hloubku nebo jin&aacute; data o poř&iacute;zen&iacute; spojen&aacute; s buňkami nebo prvky um&iacute;stěn&iacute;.
             </p>
             <p>Pro každ&yacute; rozměr jsou tři možnosti zad&aacute;n&iacute; informac&iacute; o poř&iacute;zen&iacute; spojen&yacute;ch s buňkami nebo prvky um&iacute;stěn&iacute;:
-
                 <ul>
                     <li> <b>Jedin&eacute; pole nebo hodnota</b>&mdash;Když je vybr&aacute;na tato možnost, mus&iacute; b&yacute;t zad&aacute;ny n&aacute;sleduj&iacute;c&iacute; informace:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algoritmus převzorkov&aacute;n&iacute; použit&yacute; při vzorkov&aacute;n&iacute; rastru.
             </p>
             <ul>
-                <li> <b>Nejbliž&scaron;&iacute;</b>&mdash;Nejbliž&scaron;&iacute; soused. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                <li> <b>Nearest</b>&mdash;Nejbliž&scaron;&iacute; soused použ&iacute;v&aacute; k přiřazen&iacute; hodnoty v&yacute;stupn&iacute; buňce při převzorkov&aacute;n&iacute; hodnotu nejbliž&scaron;&iacute; buňky. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                 </li>
-                <li> <b>Biline&aacute;rn&iacute;</b>&mdash;Biline&aacute;rn&iacute; interpolace
+                <li> <b>Bilinear</b>&mdash;Biline&aacute;rn&iacute; interpolace určuje novou hodnotu buňky na z&aacute;kladě v&aacute;žen&eacute;ho průměru vzd&aacute;lenosti čtyř nejbliž&scaron;&iacute;ch středů vstupn&iacute;ch buněk.
                 </li>
-                <li> <b>Kubick&aacute;</b>&mdash;Kubick&aacute; konvoluce
+                <li> <b>Cubic</b>&mdash;Kubick&aacute; interpolace určuje novou hodnotu buňky na z&aacute;kladě tvorby hladk&eacute; křivky proch&aacute;zej&iacute;c&iacute; středy 16 nejbliž&scaron;&iacute;ch vstupn&iacute;ch buněk.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Název výsledné vrstvy</h2></div>
         <hr/>
         <div>
+            
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .

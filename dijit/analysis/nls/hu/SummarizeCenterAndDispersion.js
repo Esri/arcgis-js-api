@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Válasszon ki egy leírni kívánt réteget",summaryTypes:"Összefoglalás típusai",centralFeature:"Központi vektoros elem",meanCenter:"Átlagközéppont",medianCenter:"Mediánközéppont",ellipse:"Ellipszis",weightBy:"Súlyozva ezzel (opcionális):",groupBy:"Csoportosítás szempontja (opcionális):",resultLayerName:"Eredményréteg neve",outputLayerName:"${layerName} eloszlásának leírása",none:"Egyik sem",itemDescription:"A Középpont és szóródás összefoglalása ${layerName} rétegen történő futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Középpont és szóródás összefoglalása, ${layerName}",itemSnippet:"A Középpont és szóródás összefoglalása futtatásából létrehozott vektoros réteg"});

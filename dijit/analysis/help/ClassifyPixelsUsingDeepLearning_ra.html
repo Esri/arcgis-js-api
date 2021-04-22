@@ -82,10 +82,32 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Processing Mode</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies how 
+all raster items in a mosaic dataset or an image service will be processed. This parameter is applied when the input raster is a mosaic dataset or an image service.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+All raster items in the mosaic dataset or image service will be mosaicked together and processed. This is the default.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+All raster items in the mosaic dataset or image service will be processed as separate images.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="outputClassifiedRaster">
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
+            
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

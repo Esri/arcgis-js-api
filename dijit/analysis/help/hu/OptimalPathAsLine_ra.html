@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Optimális útvonal vonalként</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Az Optim&aacute;lis &uacute;tvonal vonalk&eacute;nt eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
+        <hr/>
+    <p>Ez az eszk&ouml;z az optim&aacute;lis &uacute;tvonalat hat&aacute;rozza meg vonalk&eacute;nt a c&eacute;lpontok &eacute;s a kiindul&oacute;pontok k&ouml;z&ouml;tt.
+    </p>
+    <p>Az alkalmaz&aacute;s&aacute;ra az al&aacute;bbi p&eacute;ld&aacute;k hozhat&oacute;k:
+        <ul>
+            <li>Egy &uacute;j &uacute;t legjobb &uacute;tvonal&aacute;nak megkeres&eacute;se &eacute;p&iacute;t&eacute;si k&ouml;lts&eacute;geket illetően.
+                
+
+
+            </li>
+            <li>A legjobb vitorl&aacute;z&aacute;si &uacute;tvonal megkeres&eacute;se a c&eacute;l&aacute;llom&aacute;s &eacute;s az aktu&aacute;lis hely k&ouml;z&ouml;tt.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Célraszter vagy vektoros elemek kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Raszteresadathalmaz-r&eacute;teg, amely azokat a cell&aacute;kat azonos&iacute;tja, amelyekből meghat&aacute;rozhat&oacute; az optim&aacute;lis &uacute;tvonal az optim&aacute;lis forr&aacute;sig.
+            </p>
+            <p>Ha a bemenet egy raszter, akkor &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező cell&aacute;kb&oacute;l kell &aacute;llnia (a nulla &eacute;rv&eacute;nyes &eacute;rt&eacute;k) a c&eacute;l&aacute;llom&aacute;sokhoz, m&iacute;g a t&ouml;bbi cell&aacute;hoz a NoData &eacute;rt&eacute;ket kell rendelni. A bemeneti raszternek integer t&iacute;pus&uacute;nak kell lennie.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Célállomás mező</h2></div>
+        <hr/>
+        <div>
+            <p>A c&eacute;lhelysz&iacute;nek &eacute;rt&eacute;keinek beolvas&aacute;s&aacute;hoz haszn&aacute;lt mező.
+            </p>
+            <p>A mezőnek integer t&iacute;pus&uacute;nak kell lennie.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Távolságakkumulációs raszter kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A t&aacute;vols&aacute;gakkumul&aacute;ci&oacute;-rasztert haszn&aacute;lja a c&eacute;l&aacute;llom&aacute;sok &eacute;s a forr&aacute;sok k&ouml;z&ouml;tti optim&aacute;lis &uacute;tvonal meghat&aacute;roz&aacute;s&aacute;ra.
+            </p>
+            <p>A t&aacute;vols&aacute;gakkumul&aacute;ci&oacute;s raszter &aacute;ltal&aacute;ban a T&aacute;vols&aacute;gakkumul&aacute;ci&oacute; vagy a T&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s eszk&ouml;zzel hozhat&oacute; l&eacute;tre. A t&aacute;vols&aacute;gakkumul&aacute;ci&oacute;s raszter mindegyik cell&aacute;ja a legkisebb kumulat&iacute;v k&ouml;lts&eacute;gt&aacute;vols&aacute;got jel&ouml;li egy adott felsz&iacute;nen az egyes cell&aacute;k &eacute;s forr&aacute;scell&aacute;k egy halmaza k&ouml;z&ouml;tt.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Visszirányú vagy áramlásiirány-raszter kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>A visszir&aacute;nyraszter fokokban tartalmazza a sz&aacute;m&iacute;tott ir&aacute;nyokat. Az ir&aacute;ny azonos&iacute;tja a k&ouml;vetkező cell&aacute;t a legkisebb kumulat&iacute;v k&ouml;lts&eacute;ggel el&eacute;rhető forr&aacute;s fel&eacute; vezető, akad&aacute;lyokat elker&uuml;lő, optim&aacute;lis &uacute;tvonal ment&eacute;n.
+            </p>
+            <p>A visszir&aacute;ny&uacute; raszter &aacute;ltal&aacute;ban a T&aacute;vols&aacute;gakkumul&aacute;ci&oacute; vagy a T&aacute;vols&aacute;g-hozz&aacute;rendel&eacute;s eszk&ouml;zzel hozhat&oacute; l&eacute;tre. Ebben az esetben az &eacute;rt&eacute;ktartom&aacute;ny 0 fokt&oacute;l 360 fokig terjed. A 0 &eacute;rt&eacute;k a forr&aacute;scell&aacute;k sz&aacute;m&aacute;ra van fenntartva. Egyenesen kelet fel&eacute; (jobbra) 90, &eacute;s az &eacute;rt&eacute;kek az &oacute;ramutat&oacute; j&aacute;r&aacute;s&aacute;val megegyező ir&aacute;nyban emelkednek (180 d&eacute;l, 270 nyugat, 360 pedig &eacute;szak).
+            </p>
+            <p>A l&eacute;trehozott optim&aacute;lis &uacute;tvonal lehet egy &aacute;raml&aacute;si &uacute;tvonal a D8 &aacute;raml&aacute;si ir&aacute;ny alapj&aacute;n. Ha ezen a m&oacute;don szeretne optim&aacute;lis &uacute;tvonalat l&eacute;trehozni, haszn&aacute;ljon D8 &aacute;raml&aacute;siir&aacute;ny-rasztert ezen param&eacute;ter bemenetek&eacute;nt.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Útvonaltípus (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhat egy kulcssz&oacute;t, amely meghat&aacute;rozza a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &eacute;rt&eacute;kek &eacute;s z&oacute;n&aacute;k &eacute;rtelmez&eacute;s&eacute;nek m&oacute;dj&aacute;t a k&ouml;lts&eacute;g&uacute;tvonal sz&aacute;m&iacute;t&aacute;sakor.
+                <ul>
+                    <li> <b>Mindegyik z&oacute;n&aacute;ba</b> &ndash; A bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes z&oacute;na eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat. Ezt a lehetős&eacute;get v&aacute;lasztva az egyes z&oacute;n&aacute;k legolcs&oacute;bb &uacute;tvonala a z&oacute;n&aacute;ban a legkisebb k&ouml;lts&eacute;gt&aacute;vols&aacute;g-s&uacute;lyoz&aacute;ssal rendelkező cell&aacute;n&aacute;l kezdődik. Ez az alap&eacute;rtelmez&eacute;s.
+                         
+                    </li>
+                    <li> <b>Legjobb egyed&uuml;l&aacute;ll&oacute;</b> &ndash; A bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő &ouml;sszes cella eset&eacute;n a legolcs&oacute;bb &uacute;tvonalat a forr&aacute;scell&aacute;kba tart&oacute; legolcs&oacute;bb &uacute;tvonalak minimum&aacute;val rendelkező cell&aacute;b&oacute;l sz&aacute;rmaztatja.
+                    </li>
+                    <li> <b>Mindegyik cell&aacute;ba</b> &ndash; A bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő, &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező &ouml;sszes cella vagy hely eset&eacute;n meghat&aacute;rozza a legkev&eacute;sb&eacute; k&ouml;lts&eacute;ges &uacute;tvonalat. Ezt a lehetős&eacute;get v&aacute;lasztva a bemeneti c&eacute;l&aacute;llom&aacute;sadatok k&ouml;z&ouml;tt szereplő cell&aacute;k mindegyik&eacute;t k&uuml;l&ouml;n kezeli, &eacute;s mindegyik cell&aacute;hoz meghat&aacute;rozza a legolcs&oacute;bb &uacute;tvonalat.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Eredmény vektoroselem-réteg neve</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

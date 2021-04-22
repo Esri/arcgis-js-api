@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Ekstrakti raster</h2><p/>
+        <h2>Tee rastrist väljavõte</h2><p/>
         <h2><img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" alt="Rastri ekstraktimise t&ouml;&ouml;riist (Portal)"></h2>
         <hr/>
     <p>Selle t&ouml;&ouml;riistaga saab ekstraktida piiri rastri nelinurkse alaga v&otilde;i ekraanil interaktiivselt vaba k&auml;ega markeeritud ulatusega. Saate ekstraktida parajasti kuvatava kaardiala ulatuses v&otilde;i pol&uuml;gooniga m&auml;&auml;ratletud uuringuala ulatuses.
@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>Valige ulatuse t&uuml;&uuml;p kihi geomeetria k&auml;rpimiseks.
-
                 <ul>
-                    <li>Kasuta praegust ulatust &ndash; kihi k&auml;rpimiseks kasutatakse kaardi praegust ulatust. See on vaikimisi valik.
+                    <li>Kasuta praegust ulatust &ndash; kihi k&auml;rpimiseks kasutatakse kaardi praegust ulatust. See on vaikevalik.
                         
 
                     </li>
-                    <li>Vali uuringu ala &ndash; saate valida, kas tulemuses n&auml;idatakse ala geomeetria ulatuse piires v&otilde;i v&auml;ljaspool geomeetria ulatust. Kui valite valiku  <b>Geomeetria sisse j&auml;&auml;vad andmed</b>, eemaldatakse ulatusest v&auml;lja j&auml;&auml;vad pildid. Kui valite valiku <b>Geomeetriast v&auml;ljapoole j&auml;&auml;vad andmed</b>, eemaldatakse ulatuse sisse j&auml;&auml;vad pildid. K&auml;rpimise geomeetria saab m&auml;&auml;ratleda ka joonistamise t&ouml;&ouml;riistaga.
+                    <li>Vali uuringuala&mdash;K&auml;rpimise geomeetria saab m&auml;&auml;ratleda ka joonistamise t&ouml;&ouml;riistaga.
+                        
+
+                    </li>
+                    <li>Vali kiht&mdash;Valige ulatuse m&auml;&auml;ratlemiseks funktsioonikiht v&otilde;i pildikiht v&otilde;i k&auml;rpimise geomeetria m&auml;&auml;ratlemiseks hulknurga objektikiht. Kui on valitud hulknurga objektikiht, kuvatakse m&auml;rkeruut, et m&auml;&auml;rata, kas k&auml;rpimise geomeetria jaoks kasutatakse sisendobjekte. Vaikimisi on m&auml;rkeruut m&auml;rkimata. See t&auml;hendab, et ulatuse m&auml;&auml;ratlemiseks kasutatakse sisendi objektikihti. Kui m&auml;rkeruut on m&auml;rgitud, t&auml;hendab see, et k&auml;rpimise geomeetria jaoks kasutatakse sisendobjekte.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Määra kärpimise tüüp</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake, kas soovite s&auml;ilitada ala k&auml;rpimise geomeetria sees v&otilde;i sellest v&auml;ljaspool.
+                <ul>
+                    <li>Andmed geomeetria sees&mdash;K&auml;rpe laiendite sees olevad pildid eemaldatakse. See on vaikevalik.
+                        
+
+                    </li>
+                    <li>Andmed v&auml;ljaspool geomeetriat&mdash;K&auml;rpe laienditest v&auml;ljaspool olevad pildid eemaldatakse.
                         
 
                     </li>
@@ -80,6 +100,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

@@ -78,6 +78,26 @@
             </p>
         </div>
     </div>
+    <div id="processing_mode">
+        <div><h2>Modalità di elaborazione</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica come tutti gli elementi raster in un dataset mosaico o un servizio immagine sar&agrave; processato. Questo parametro &egrave; applicato quando il raster input &egrave; un dataset mosaico o un servizio immagine.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Tutti gli elementi raster nel dataset mosaico o servizio di immagine saranno elaborati insieme e processati. Si tratta dell'impostazione predefinita.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Tutti gli elementi raster nel dataset mosaico o servizio di immagine saranno processati come immagini separate.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
+        </div>
+    </div>
     <div id="modelArguments">
         <div><h2>Specifica gli argomenti del modello di apprendimento profondo</h2></div>
         <hr/>
@@ -102,9 +122,9 @@
         <div><h2>Modalità di processo</h2></div>
         <hr/>
         <div>
-            <p>Specifica come verranno elaborati tutti gli elementi raster di un servizio di immagine. 
+            <p>Specifica come verranno elaborati tutti gli elementi raster di un servizio di immagine.
                 <ul>
-                    <li> <b>Elabora come immagine a mosaico</b>: tutti gli elementi raster del servizio di immagine saranno elaborati insieme come immagini a mosaico. Questa &egrave; l'impostazione predefinita.
+                    <li> <b>Elabora come immagine a mosaico</b>: tutti gli elementi raster del servizio di immagine saranno elaborati insieme come immagini a mosaico. Si tratta dell'impostazione predefinita.
                     </li>
                     <li> <b>Elabora elementi separatamente</b>: tutti gli elementi raster del servizio di immagine saranno elaborati come immagini separate.
                     </li>
@@ -114,9 +134,10 @@
         </div>
     </div>
     <div id="outputFeatureClass">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

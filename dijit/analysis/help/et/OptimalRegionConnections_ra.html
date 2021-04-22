@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Piirkonna optimaalsed ühendused</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="T&ouml;&ouml;riista Piirkonna optimaalsed &uuml;hendused illustratsioon"></h2>
+        <hr/>
+    <p>See t&ouml;&ouml;riist arvutab optimaalse &uuml;hendusv&otilde;rgu kahe v&otilde;i enama sisendpiirkonna vahel.
+    </p>
+    <p>M&otilde;ned n&auml;ited kasutusaladest:
+        <ul>
+            <li>Sobivuse modelleerimine &ndash; olete sobivusmudeli p&otilde;hjal tuvastanud 10 parimat elupaika ilveste jaoks. Soovite, et ilvesed saaksid metapopulatsiooni geneetilise mitmekesisuse s&auml;ilitamiseks liikuda elupaikade vahel l&auml;bi t&otilde;husaima metsloomakoridoride v&otilde;rgu.
+                
+
+            </li>
+            <li>Puidu &uuml;lest&ouml;&ouml;tamine &ndash; soovite puidu &uuml;lest&ouml;&ouml;tamisel luua k&otilde;ige kulut&otilde;husama metsaveoteede v&otilde;rgu, mida m&ouml;&ouml;da saematerjali v&auml;lja viia.
+                
+
+            </li>
+            <li>Rahuvalve &ndash; olete s&otilde;jalisel rahuvalveoperatsioonil tuvastanud viis piirkonda, kuhu paigutada v&auml;ed ja personal. Soovite rajada optimaalselt &uuml;hendatud baasidevahelised varustusteed.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Kui ruut  <b>Kasuta praegust kaardi ulatust</b> on m&auml;rgitud, anal&uuml;&uuml;sitakse ainult neid sisendkihi objekte, mis on n&auml;htavad kaardi praeguses ulatuses. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel k&otilde;iki sisendkihis olevaid objekte ka siis, kui need ei ole kaardi praeguses ulatuses n&auml;htavad.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Piirkonna rastri või objekti valimine</h2></div>
+        <hr/>
+        <div>
+            <p>Sisendpiirkonnad, mis tuleb &uuml;hendada optimaalseima v&otilde;rguga.
+            </p>
+            <p>Kui piirkonna sisend on raster, m&auml;&auml;ratletakse piirkonnad sama v&auml;&auml;rtusega pikslite piirnevate (k&uuml;lgnevate) r&uuml;hmadena. Igal piirkonnal peab olema unikaalne number. Pikslid, mis ei kuulu &uuml;htegi piirkonda, peavad olema vorminguga NoData. Rastri t&uuml;&uuml;p peab olema t&auml;isarv ja v&auml;&auml;rtus v&otilde;ib olla kas positiivne v&otilde;i negatiivne.
+            </p>
+            <p>Kui piirkonna sisend on objekt, v&otilde;ivad need olla punktid, jooned v&otilde;i hulknurgad. Hulknurksed piirkonnad ei saa koosneda mitmeosalistest hulknurkadest.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Tõkkerastri või -objekti valimine (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>T&otilde;kkeid m&auml;&auml;ratlev andmekogum.
+            </p>
+            <p>Rastri puhul v&otilde;ib sisendi t&uuml;&uuml;biks olla t&auml;isarv v&otilde;i ujukomaarv. K&otilde;iki v&auml;&auml;rtusega (sealhulgas nulliga) piksleid k&auml;sitletakse t&otilde;kkena. NoData-piksleid ei k&auml;sitleta t&otilde;kkena.
+            </p>
+            <p>Objekti puhul v&otilde;ib sisendiks olla punkt, joon v&otilde;i hulknurk.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Kulurastri valimine (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster m&auml;&auml;rab takistuse v&otilde;i kulu planimeetrilisel liikumisel l&auml;bi iga piksli.
+            </p>
+            <p>Piksli iga asukoha v&auml;&auml;rtus v&auml;ljendab vahemaa &uuml;hiku maksumuse liikumisel l&auml;bi piksli. Iga piksli asukoha v&auml;&auml;rtus korrutatakse piksli resolutsiooniga, mis kompenseerib ka diagonaalliikumist, et saada l&auml;bi piksli liikumise kogukulu.
+            </p>
+            <p>Kulurastri v&auml;&auml;rtus v&otilde;ib t&auml;isarv v&otilde;i ujuva v&auml;&auml;rtusega arv, kuid ei tohi olla negatiivne v&otilde;i null (kulu ei saa olla negatiivne v&otilde;i null).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Kauguse meetod (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas kaugus arvutatakse planaarse (lapiku maa) v&otilde;i geodeetilise (ellipsoidi) meetodiga.
+            </p>
+            <ul>
+                <li> <b>Planaarne</b> &ndash; arvutus viiakse l&auml;bi projitseeritud tasapinnal, kasutades Cartesisuse 2D-koordinaatide s&uuml;steemi. See on vaikimisi valitud meetod.
+                    
+
+                </li>
+                <li> <b>Geodeetiline</b> -- kaugusearvutus toimub ellipsoidil. Hoolimata sisendi v&otilde;i v&auml;ljundi projitseerimisest tulemused ei muutu.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Ühendused piirkondade sees (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rab, kas teed j&auml;tkuvad ja &uuml;henduvad sisendpiirkondade sees.
+            </p>
+            <ul>
+                <li> <b>Loo &uuml;hendused</b> -- k&otilde;igi piirkonda sisenevate teede &uuml;hendamiseks j&auml;tkatakse teid sisendpiirkondade sees. See on vaikevalik.
+                    
+
+                </li>
+                <li> <b>&Uuml;hendusi pole</b> -- teed l&otilde;pevad sisendpiirkondade servadel ja ei j&auml;tku ega &uuml;hendu nende sees.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Optimaalsete ühendusjoonte tulemobjektikihi nimi</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>See kiht on v&auml;ljundjoone objekt, mis &uuml;hendab iga sisendpiirkonda.
+            </p>
+            <p>Igal teel (v&otilde;i joonel) on kordumatu number ja atribuuttabeli lisav&auml;ljadel talletatakse eriteave tee kohta. Need lisav&auml;ljad on j&auml;rgmised:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>-- tee kordumatu identifikaator
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>-- tee summaarne kumulatiivne kaugus v&otilde;i kulu
+                    
+
+                </li>
+                <li> <i>REGION1</i>-- esimene piirkond, mida tee &uuml;hendab
+                    
+
+                </li>
+                <li> <i>REGION2</i>-- teine piirkond, mida tee &uuml;hendab
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kuna iga teed v&auml;ljendab unikaalne joon, on kohtades, kus teed kulgevad samal marsruudil, mitu joont.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Naaberühenduste objekti tulemkihi nimi (valikuline)</h2></div>
+        <hr/>
+        <div>
+            <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>See kiht on v&auml;ljundjoone objekt, mis tuvastab k&otilde;ik teed igast piirkonnast iga l&auml;hima v&otilde;i v&auml;hima kuluga naabrini.
+            </p>
+            <p>Igal teel (v&otilde;i joonel) on kordumatu number ja atribuuttabeli lisav&auml;ljadel talletatakse eriteave tee kohta. Need lisav&auml;ljad on j&auml;rgmised:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>-- tee kordumatu identifikaator
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>-- tee summaarne kumulatiivne kaugus v&otilde;i kulu
+                    
+
+                </li>
+                <li> <i>REGION1</i>-- esimene piirkond, mida tee &uuml;hendab
+                    
+
+                </li>
+                <li> <i>REGION2</i>-- teine piirkond, mida tee &uuml;hendab
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kuna iga teed v&auml;ljendab unikaalne joon, on kohtades, kus teed kulgevad samal marsruudil, mitu joont.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

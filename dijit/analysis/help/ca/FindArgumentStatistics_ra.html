@@ -46,7 +46,7 @@
         <hr/>
     <p>Extreu el valor de la dimensi&oacute; o l'&iacute;ndex de banda en qu&egrave; s'obt&eacute; una estad&iacute;stica determinada de cada p&iacute;xel en un r&agrave;ster multidimensional o multibanda.
     </p>
-    <p>Utilitzeu aquesta eina per extreure el valor de dimensi&oacute; (per exemple, la data, l'al&ccedil;ada o la profunditat) en qu&egrave; s'arriba a una estad&iacute;stica concreta en un conjunt de r&agrave;sters en un dataset r&agrave;ster multidimensional. Tamb&eacute; podeu cercar el n&uacute;mero de banda en qu&egrave; s'arriba a una estad&iacute;stica en un r&agrave;ster multibanda.
+    <p>Utilitzeu aquesta eina per extreure el valor de dimensi&oacute; (per exemple, la data, l'altura o la profunditat) en qu&egrave; s'arriba a una estad&iacute;stica concreta en un conjunt de r&agrave;sters en un dataset r&agrave;ster multidimensional. Tamb&eacute; podeu cercar el n&uacute;mero de banda en qu&egrave; s'arriba a una estad&iacute;stica en un r&agrave;ster multibanda.
     </p>
     <p>Per exemple, &eacute;s possible que vulgueu saber a quin mes cada p&iacute;xel ha arribat al m&agrave;xim de temperatura de la superf&iacute;cie del mar en 30 anys de dades recopilades. Un altre exemple seria si teniu una imatge de teledetecci&oacute; de vuit bandes i voleu saber la banda en qu&egrave; s'ha arribat al valor m&iacute;nim de reflect&agrave;ncia de cada p&iacute;xel.
     </p>
@@ -84,7 +84,7 @@
         <div><h2>Trieu el tipus d'estadístiques</h2></div>
         <hr/>
         <div>
-            <p>Especifica l'estad&iacute;stica que s'extraur&agrave; de la variable o les variables amb la dimensi&oacute; proporcionada. 
+            <p>Especifica l'estad&iacute;stica que s'extraur&agrave; de la variable o les variables amb la dimensi&oacute; proporcionada.
             </p>
             <ul>
                 <li> <b>Argument del m&iacute;nim</b>: s'extraur&agrave; el valor de dimensi&oacute; en qu&egrave; s'arriba al valor m&iacute;nim de la variable. Aquesta &eacute;s l'opci&oacute; per defecte.
@@ -131,7 +131,7 @@
         <div><h2>Trieu la definició de la dimensió</h2></div>
         <hr/>
         <div>
-            <p>Especifica com l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute;. 
+            <p>Especifica com l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute;.
                 <ul>
                     <li> <b>Totes</b>: l'estad&iacute;stica s'extraur&agrave; de totes les dimensions. Aquesta &eacute;s l'opci&oacute; per defecte.
                     </li>
@@ -150,7 +150,7 @@
             </p>
             <p>Per exemple, teniu cinc anys de dades di&agrave;ries de la temperatura de la superf&iacute;cie del mar i voleu saber l'any en qu&egrave; es va observar la temperatura m&agrave;xima. Definiu  <b>Argument del m&agrave;xim</b> com a tipus d'estad&iacute;stica, definiu <b>Paraula clau de l'interval</b> com a definici&oacute; de la dimensi&oacute; i definiu <b>Cada any</b> com a interval de paraules clau en aquest pas.
             </p>
-            <p>Si voleu saber el mes en qu&egrave; s'ha observat sistem&agrave;ticament la temperatura m&agrave;xima, definiu  <b>Argument del m&agrave;xim</b> com a tipus d'estad&iacute;stica, definiu <b>Paraula clau de l'interval</b> com a definici&oacute; de la dimensi&oacute; i definiu <b>Recurrent cada mes</b> com a interval de paraules clau en aquest pas. Aquesta acci&oacute; generar&agrave; un r&agrave;ster en qu&egrave; cada p&iacute;xel cont&eacute; el mes en qu&egrave; s'ha arribat a l'estad&iacute;stica en un registre de cinc anys (08/18/2018, 08/25/2016 i 08/07/2013, per exemple).
+            <p>Si voleu saber el mes en qu&egrave; s'ha observat sistem&agrave;ticament la temperatura m&agrave;xima de manera sistem&agrave;tica, definiu  <b>Argument del m&agrave;xim</b> com a tipus d'estad&iacute;stica, definiu <b>Paraula clau de l'interval</b> com a definici&oacute; de la dimensi&oacute; i definiu <b>Recurrent cada mes</b> com a interval de paraules clau en aquest pas. Aquesta acci&oacute; generar&agrave; un r&agrave;ster en qu&egrave; cada p&iacute;xel cont&eacute; el mes en qu&egrave; s'ha arribat a l'estad&iacute;stica en un registre de cinc anys (08/18/2018, 08/25/2016 i 08/07/2013, per exemple).
             </p>
             <p>Aquest pas &eacute;s obligatori quan  <b>StdTime</b> s'ha definit com la dimensi&oacute; de qu&egrave; s'extraur&agrave; l'estad&iacute;stica i s'ha seleccionat <b>Paraula clau de l'interval</b> per definir com l'estad&iacute;stica s'extraur&agrave; de la dimensi&oacute; de temps.
                 <ul>
@@ -198,6 +198,7 @@
         <div><h2>Nom de la capa de resultats</h2></div>
         <hr/>
         <div>
+            
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.

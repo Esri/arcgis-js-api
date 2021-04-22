@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"Määritä objektit syväoppimisen avulla",outputLayerName:"${layername}_havaittu",modelLabel:"Valitse objektien havaitsemisessa käytettävä syväoppimismalli",modelArgsLabel:"Määritä syväoppimismallin argumentit",nameLabel:"Nimi",valueLabel:"Arvo",removeDuplicatesLable:"Poista kohteiden kaksoiskappaleet tulosaineistosta (valinnainen)",queryModelArgsMsg:"Suoritetaan mallin argumenttien kyselyä...",queryModelArgsErrMsg:"Mallin argumenttien kysely epäonnistui.",nonMaxSuppressionLabel:"Ei enimmäispoistoa",options:"Asetukset",confidenceLabel:"Luotettavuuspisteiden kenttä",classValueLabel:"Luokitusarvokenttä",maxOverlapLabel:"Päällekkäisyyssuhde enintään",numberOnlyMsg:"Vain numeeriset arvot ovat sallittuja.",analysisLayerLabel:"Valitse objektien havaitsemisessa käytettävä kuva",itemDescription:"Analysointikuvapalvelu on luotu Havaitse objektit syväoppimisen avulla -ratkaisusta",itemTags:"Rasterianalyysin tulos, Havaitse objektit syväoppimisen avulla, ${layername}",itemSnippet:"Analysointikuvapalvelu on luotu Havaitse objektit syväoppimisen avulla -ratkaisusta"});
+define({toolDefine:"Määritä objektit syväoppimisen avulla",outputLayerName:"${layername}_havaittu",modelLabel:"Valitse objektien havaitsemisessa käytettävä syväoppimismalli",modelArgsLabel:"Määritä syväoppimismallin argumentit",nameLabel:"Nimi",valueLabel:"Arvo",removeDuplicatesLable:"Poista kohteiden kaksoiskappaleet tulosaineistosta (valinnainen)",queryModelArgsMsg:"Suoritetaan mallin argumenttien kyselyä...",queryModelArgsErrMsg:"Mallin argumenttien kysely epäonnistui.",nonMaxSuppressionLabel:"Ei enimmäispoistoa",options:"Asetukset",confidenceLabel:"Luotettavuuspisteiden kenttä",classValueLabel:"Luokitusarvokenttä",maxOverlapLabel:"Päällekkäisyyssuhde enintään",numberOnlyMsg:"Vain numeeriset arvot ovat sallittuja.",processingModeLabel:"Käsittelytila",processAsMosaicLabel:"Käsittele mosaiikkikuvana",processAsItemsLabel:"Käsittele kaikki rasterikohteet erikseen",analysisLayerLabel:"Valitse objektien havaitsemisessa käytettävä kuva",itemDescription:"Analysointikuvapalvelu on luotu Havaitse objektit syväoppimisen avulla -ratkaisusta",itemTags:"Rasterianalyysin tulos, Havaitse objektit syväoppimisen avulla, ${layername}",itemSnippet:"Analysointikuvapalvelu on luotu Havaitse objektit syväoppimisen avulla -ratkaisusta"});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Izračun gostote</h2><p/>
+        <h2>Izračunaj gostoto</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Orodje za izračun gostote"></h2>
         <hr/>
     <p>Orodje ustvarja karto gostote iz točkovnih ali linijskih geoobjektov s &scaron;irjenjem znanih količin nekaterih pojavov (predstavljenih kot atributi točk ali linij) na karti. Rezultat je poligonski sloj, klasificiran od največje do najmanj&scaron;e gostote.
@@ -51,7 +51,6 @@
     <p>Pri vhodnih linijskih podatkih, povr&scaron;inska gostota predstavlja skupno &scaron;tevilo linij, ki je v bližini vsake lokacije. Enote izračunanih vrednosti gostote so dolžina linije na povr&scaron;insko enoto. Na primer, če linije predstavljajo reke, bo sloj z rezultati predstavljal skupno dolžino rek znotraj iskalnega polmera. Ta rezultat je mogoče uporabiti za identifikacijo območij, ki so primerna za pa&scaron;o živali.
     </p>
     <p>Drugi primeri uporabe tega orodja vključujejo:
-
         <ul>
             <li>Ustvarjanje kart gostote kriminalitete, ki pomagajo policijo ustrezno razporediti vire na območja z visoko stopnjo kriminalitete.
                 
@@ -75,7 +74,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputPointOrLineFeatures">
-        <div><h2>Izberi vhodni točkovni ali linijski sloj za izračun gostote</h2></div>
+        <div><h2>Izberi vhodni točkovni sloj ali linijski sloj za izračun gostote</h2></div>
         <hr/>
         <div>
             <p>Vhodni točkovni ali linijski sloj, ki se bo uporabljal za izračun gostote sloja.
@@ -93,7 +92,7 @@
         </div>
     </div>
     <div id="searchDistance">
-        <div><h2>Iskalna razdalja</h2></div>
+        <div><h2>Poišči razdaljo</h2></div>
         <hr/>
         <div>
             <p>Vnesite razdaljo, ki določa, kako daleč bo potekalo iskanje točkovnih ali linijskih geoobjektov med izračunavanjem vrednosti gostote. Na primer, če navedete iskalno razdaljo 10.000 metrov, bo gostota vseh lokacij v izhodnem sloju izračunana na osnovi geoobjektov, ki se nahajajo do 10.000 metrov od lokacije. Lokacije, ki nimajo incidentov v razdalji do 10.000 metrov, bodo dobile vrednost gostote nič.
@@ -103,7 +102,7 @@
         </div>
     </div>
     <div id="outputAreaUnits">
-        <div><h2>Izhodne površinske enote</h2></div>
+        <div><h2>Enote površine rezultata</h2></div>
         <hr/>
         <div>
             <p>Navedite enoto povr&scaron;ine izhodnega poligona. Gostota je &scaron;tevilo, deljeno s povr&scaron;ino, in ta parameter določa povr&scaron;insko enoto v izračunu gostote.
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Izberi geoobjekte ovir (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Sklop podatkov, ki določa ovire.
+            </p>
+            <p>Ovire so lahko geobjektni sloj polilinije ali poligonski geoobjekti.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

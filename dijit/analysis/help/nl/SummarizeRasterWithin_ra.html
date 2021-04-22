@@ -44,7 +44,7 @@
         <h2>Raster binnenin samenvatten</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Raster binnenin tool samenvatten"></h2>
         <hr/>
-    <p>Deze tool vat een raster samen gebaseerd op gebieden (zones) bepaald door de eerste invoerlaag.
+    <p>Deze tool vat de waarden van een raster samen binnen de zones van een andere dataset.
     </p>
     <p>Enkele voorbeelden van de toepassingen zijn onder meer het volgende:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Zodra u een samen te vatten laag kiest, kunt u optioneel statistieken berekenen van alle numerieke attributen van de punten, lijnen of oppervlakten in de invoerlaag.
             </p>
-            <p>De beschikbare statistiektypes wanneer het geselecteerde veld integer is, zijn Gemiddeld, Meerderheid, Maximum, Mediaan, Minimum, Minderheid, Reeks, Standaardafwijking, Som en Vari&euml;teit.
+            <p>De beschikbare statistiektypes wanneer het geselecteerde veld integer is, zijn Gemiddeld, Meerderheid, Maximum, Mediaan, Minimum, Minderheid, Percentiel, Reeks, Standaardafwijking, Som en Vari&euml;teit.
             </p>
             <p>Als het veld floating-point is, zijn de opties Gemiddeld, Maximum, Minimum, Reeks, Standaardafwijking en Som.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentielwaarde</h2></div>
+        <hr/>
+        <div>
+            <p>Het percentiel om te berekenen. De standaard is 90, wijzend op het 90e percentiel.
+            </p>
+            <p>De waardes kunnen tussen de 0 en 100 liggen. Het 0de percentiel is in wezen gelijk aan de minimumstatistiek en het 100ste percentiel is gelijk aan het maximum. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
+            </p>
+            <p>Deze optie wordt alleen ondersteun als de parameter  <b>Kies een statistiek om te berekenen</b> is ingesteld op <b>Percentiel</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Verwerken als multidimensionaal</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert hoe de invoerrasters worden verwerkt als deze multidimensionaal zijn. Als u ervoor kiest te verwerken als multidimensionaal, worden statistieken berekend van alle dimensies van de ingevoerde multidimensionale dataset. Anders worden statistieken berekend op basis van de huidige doorsnede van de ingevoerde multidimensionale dataset, dit is de standaard.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

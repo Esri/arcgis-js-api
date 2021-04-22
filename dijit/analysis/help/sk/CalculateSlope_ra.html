@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Výpočet sklonu</h2><p/>
+        <h2><img src="../images/GUID-D33862C6-01BB-445E-B0C3-BC8B8C1858DA-web.png" alt="N&aacute;stroj na v&yacute;počet sklonu pre port&aacute;l"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vytv&aacute;ra povrch, ktor&yacute; zobrazuje sklon vstupn&yacute;ch v&yacute;&scaron;kov&yacute;ch &uacute;dajov. Sklon predstavuje mieru zmeny nadmorskej v&yacute;&scaron;ky pre každ&uacute; bunku digit&aacute;lneho modelu v&yacute;&scaron;ky (DEM).
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vyberte vstupné údaje pre výpočet sklonu</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva v&yacute;&scaron;ok, z ktorej bude poč&iacute;tan&yacute; sklon.
+            </p>
+        </div>
+    </div>
+    <div id="zFactor">
+        <div><h2>Špecifikujte faktor mierky pre výšku</h2></div>
+        <hr/>
+        <div>
+            <p>Zadajte z-faktor.
+            </p>
+            <p>Z-faktor je faktor &scaron;k&aacute;lovania použ&iacute;van&yacute; na prevod hodn&ocirc;t nadmorskej v&yacute;&scaron;ky na dva &uacute;čely:
+                <ul>
+                    <li>Prevedenie v&yacute;&scaron;kov&yacute;ch jednotiek (napr&iacute;klad metre alebo stopy) na horizont&aacute;lne s&uacute;radnicov&eacute; jednotky vrstvy, ktor&yacute;mi m&ocirc;žu byť stopy, metre alebo stupne.
+                        
+  
+                    </li>
+                    <li>Pridanie zv&yacute;raznen&eacute;ho prev&yacute;&scaron;enia pre vizu&aacute;lny efekt.
+                        
+ 
+                    </li>
+                </ul>
+                
+            </p>
+            <table border="1">
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <p>Zo st&ocirc;p
+                    </p>
+                </td>
+                <td>
+                    <p>Z metrov
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Zo st&ocirc;p
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+                <td>
+                    <p>0.3048
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Z metrov
+                    </p>
+                </td>
+                <td>
+                    <p>3.28084
+                    </p>
+                </td>
+                <td>
+                    <p>1
+                    </p>
+                </td>
+            </tr>
+            </table>
+        </div>
+    </div>
+    <div id="outputLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

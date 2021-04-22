@@ -44,13 +44,13 @@
         <h2>Ringkas Raster di Dalam</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Alat Ringkas Raster di Dalam"></h2>
         <hr/>
-    <p>Alat ini meringkas raster berdasarkan area (zona) yang ditentukan oleh layer input pertama.
+    <p>Alat ini merangkum nilai raster di dalam zona set data lain.
     </p>
     <p>Beberapa aplikasi contoh termasuk hal berikut:
     </p>
     <p>
         <ul>
-            <li>Dengan mengetahui batas air dan layer batas penggunaan lahan menurut jenis penggunaan lahan, hitung luas total dari jenis penggunaan lahan untuk setiap batas air.
+            <li>Dengan layer batas Daerah Aliran Sungai dan batas penggunaan lahan berdasarkan jenis penggunaannya, dapat dihitung luas total penggunaan lahan untuk setiap Daerah Aliran Sungai.
                 
 
             </li>
@@ -71,7 +71,7 @@
         <div>
             <p>Layer yang menentukan perbatasan area atau zona yang akan diringkas.
             </p>
-            <p>Layer dapat berupa raster atau data fitur. Untuk raster, zona ditentukan oleh semua lokasi di input yang memiliki nilai sel yang sama. Area itu tidak harus menular.
+            <p>Layer dapat berupa raster atau data fitur. Untuk raster, zona ditentukan oleh semua lokasi di input yang memiliki nilai sel yang sama. Area tersebut tidak perlu berdampingan.
             </p>
         </div>
     </div>
@@ -99,9 +99,21 @@
         <div>
             <p>Setelah Anda memilih layer untuk diringkas, Anda dapat memilih untuk menghitung statistik dari setiap atribut numerik dari titik, garis, atau area di dalam layer area input.
             </p>
-            <p>Tipe statistik yang tersedia ketika kolom yang dipilih adalah bilangan bulat adalah Rata-rata, Mayoritas, Maksimal, Median, Minimal, Minoritas, Rentang, Standar deviasi, Jumlah, dan Keragaman.
+            <p>Tipe statistik yang tersedia ketika kolom yang dipilih adalah bilangan bulat adalah Rata-rata, Mayoritas, Maksimal, Median, Minoritas, Persentil, Rentang, Standar deviasi, Jumlah, dan Keragaman.
             </p>
             <p>Jika kolom adalah bilangan titik mengambang, opsinya adalah Rata-rata, Maksimal, Minimal, Rentang, Standar deviasi, dan Jumlah.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Nilai Persentil</h2></div>
+        <hr/>
+        <div>
+            <p>Persentil yang dihitung. Defaultnya adalah 90, yang menunjukkan persentil ke-90.
+            </p>
+            <p>Nilai dapat berkisar antara 0 hingga 100. Persentil ke-0 pada dasarnya setara dengan statistik minimal, dan persentil ke-100 setara dengan statistik maksimal. Nilai 50 pada dasarnya akan menghasilkan hasil yang sama dengan statistik median.
+            </p>
+            <p>Opsi ini hanya didukung jika parameter  <b>Pilih statistik yang akan dihitung</b> diatur ke <b>Persentil</b>.
             </p>
         </div>
     </div>
@@ -113,13 +125,22 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Proses sebagai multidimensional</h2></div>
+        <hr/>
+        <div>
+            <p>Menentukan cara pemrosesan raster input jika raster input tersebut bersifat multidimensional. Jika Anda memilih untuk memproses sebagai multidimensional, statistik akan dihitung dari semua dimensi set data multidimensional input. Jika tidak, maka statistik akan dihitung dari irisan set data multidimensional input saat ini, ini defaultnya.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

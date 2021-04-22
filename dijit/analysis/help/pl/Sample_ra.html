@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Próbka</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Pr&oacute;bka"></h2>
+        <h2>Przykład</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Przykład"></h2>
         <hr/>
     <p>To narzędzie tworzy tabelę lub klasę obiekt&oacute;w punktowych, kt&oacute;ra pokazuje wartości kom&oacute;rek z rastra lub zestawu rastr&oacute;w dla zdefiniowanych lokalizacji. Lokalizacje są zdefiniowane przez kom&oacute;rki rastra, obiekty poligonowe, obiekty poliliniowe lub zbi&oacute;r punkt&oacute;w.
     </p>
@@ -112,7 +112,6 @@
             <p>Wpisz czas, głębokość lub inne dane o pozyskaniu powiązane z obiektami albo kom&oacute;rkami lokalizacji.
             </p>
             <p>W przypadku każdego wymiaru istnieją trzy opcje definiowania informacji o pozyskaniu powiązanych z obiektami albo kom&oacute;rkami lokalizacji:
-
                 <ul>
                     <li> <b>Jedno pole lub jedna wartość</b> &mdash; gdy ta opcja jest wybrana, należy podać następujące informacje:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algorytm ponownego pr&oacute;bkowania używany podczas pr&oacute;bkowania rastra.
             </p>
             <ul>
-                <li> <b>Najbliższy</b> &mdash; najbliższy sąsiad. Jest to opcja domyślna.
+                <li> <b>Najbliższe</b> &mdash; najbliższy sąsiad. W celu przypisania wartości do kom&oacute;rki danych wynikowych podczas ponownego pr&oacute;bkowania używana jest wartość najbliższej kom&oacute;rki. Jest to opcja domyślna.
                 </li>
-                <li> <b>Dwuliniowe</b> &mdash; interpolacja dwuliniowa
+                <li> <b>Dwuliniowe</b> &mdash; interpolacja dwuliniowa. Nowa wartość kom&oacute;rki jest wyznaczana na podstawie ważonej średniej odległości środk&oacute;w czterech najbliższych kom&oacute;rek wejściowych.
                 </li>
-                <li> <b>Sześcienne</b> &mdash; splatanie sześcienne
+                <li> <b>Sześcienne</b> &mdash; splatanie sześcienne. Nowa wartość kom&oacute;rki jest wyznaczana na podstawie dopasowania wygładzonej krzywej przechodzącej przez środki 16 najbliższych kom&oacute;rek wejściowych.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

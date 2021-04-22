@@ -46,7 +46,7 @@
         <hr/>
     <p>Generuoja daugiamačių rastrinių duomenų rinkinį, apjungdamas esamus daugiamačius rastrinius kintamuosius pagal matmenį.
     </p>
-    <p>Jei turite 30 metų jūros pavir&scaron;iaus temperatūros duomenis, kurie buvo renkami kasmet  iki 100 metrų gylio kas 5 metrus, galimi tokie įrankio pritaikymo pavyzdžiai:
+    <p>Jei turite 30 metų jūros pavir&scaron;iaus temperatūros duomenis, kurie buvo renkami kasmet iki 100 metrų gylio kas 5 metrus, galimi tokie įrankio pritaikymo pavyzdžiai:
         <ul>
             <li>Mėnesio temperatūrų duomenų agregavimas į metinius duomenis.
             </li>
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Pasirinkite agreguotiną daugiamatį vaizdų sluoksnį</h2></div>
+        <div><h2>Pasirinkti daugiamatį vaizdų sluoksnį, kuris bus agreguojamas</h2></div>
         <hr/>
         <div>
             <p>Daugiamačio rastro įvesties vaizdų sluoksnis, kuris bus agreguojamas.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Pasirinkite dimensiją, pagal kurią agreguoti</h2></div>
+        <div><h2>Pasirinkti, pagal kurį matmenį agreguoti</h2></div>
         <hr/>
         <div>
             <p>Agregavimo matmuo. Tai yra matmuo, pagal kurį kintamieji bus agreguojami.
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Pasirinkite agreguotiną kintamąjį (-uosius)</h2></div>
+        <div><h2>Pasirinkti kintamąjį (kintamuosius), kuris (kurie) bus agreguojamas (agreguojami)</h2></div>
         <hr/>
         <div>
             <p>Kintamasis arba kintamieji, kuris (kurie) bus agreguojamas (agreguojami) pagal nurodytą matmenį. Jei kintamasis nenurodytas, bus agreguojami visi pasirinktą matmenį turintys kintamieji.
@@ -88,12 +88,12 @@
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Pasirinkite agregavimo metodą</h2></div>
+        <div><h2>Pasirinkti agregavimo būdą</h2></div>
         <hr/>
         <div>
-            <p>Nurodo matematinį metodą, kuris bus naudojamas agreguotų skilčių jungimui į intervalą. 
+            <p>Nurodo matematinį metodą, kuris bus naudojamas agreguotų skilčių jungimui į intervalą.
                 <ul>
-                    <li> <b>Vidurkis</b> &ndash; skaičiuoja pikselio reik&scaron;mių visose intervalo skiltyse vidurkį. Tai numatytasis nustatymas.
+                    <li> <b>Vidurkis</b> &ndash; skaičiuoja pikselio reik&scaron;mių visose intervalo skiltyse vidurkį. Tai yra numatytasis nustatymas.
                     </li>
                     <li> <b>Maksimumas</b> &ndash; skaičiuoja maksimalią pikselio reik&scaron;mę visose intervalo skiltyse.
                     </li>
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div id="aggregationFunction">
-        <div><h2>Pasirinkite rastrų funkcijos šabloną</h2></div>
+        <div><h2>Pasirinkti rastrų funkcijos šabloną</h2></div>
         <hr/>
         <div>
             <p>Adaptuota rastrų funkcija, kuris bus naudojama skaičiuojant agreguotų rastrų pikselių reik&scaron;mes. Įvestis yra portale esantis rastrų funkcijos &scaron;ablonas. &Scaron;ios įvesties reikia, jei  <b>Agregavimo metodas</b> nustatytas kaip <b>Adaptuotas</b>.
@@ -129,12 +129,12 @@
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Pasirinkite agregavimo apibrėžimą</h2></div>
+        <div><h2>Pasirinkti agregavimo aprašą</h2></div>
         <hr/>
         <div>
-            <p>Nurodo matmens intervalą, kuriame esantys duomenys bus agreguojami 
+            <p>Nurodo matmens intervalą, kuriame esantys duomenys bus agreguojami
                 <ul>
-                    <li> <b>Viskas</b> &ndash; bus agreguojamos visų skilčių duomenų reik&scaron;mės. Tai numatytasis nustatymas.
+                    <li> <b>Viskas</b> &ndash; bus agreguojamos visų skilčių duomenų reik&scaron;mės. Tai yra numatytasis nustatymas.
                     </li>
                     <li> <b>Intervalo raktažodis</b> &ndash; kintamojo duomenys bus agreguojami naudojant vieną i&scaron; įprastinių intervalų.
                     </li>
@@ -148,7 +148,7 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Pasirinkite raktažodžių intervalą</h2></div>
+        <div><h2>Pasirinkti raktažodžio intervalą</h2></div>
         <hr/>
         <div>
             <p>Nurodo raktažodžio intervalą, kurį naudojant bus agreguojama pagal matmenį. &Scaron;ios įvesties reikia, jei  <b>Agregavimo apra&scaron;as</b> nustatytas kaip <b>Intervalo raktažodis</b>, o agregavimas vykdomas pagal laiką.
@@ -193,12 +193,12 @@
         </div>
     </div>
     <div id="intervalUnit">
-        <div><h2>Vienetai</h2></div>
+        <div><h2>Matavimo vienetai</h2></div>
         <hr/>
         <div>
             <p>Intervalo reik&scaron;mei naudojami matavimo vienetai. &Scaron;i įvestis reikalinga, jei  <b>Matmuo</b> yra laiko laukas, o <b>Agregavimo apra&scaron;as</b> nustatytas kaip <b>Intervalo reik&scaron;mė</b>.
             </p>
-            <p>Jei agreguojate pagal kitą kintamąjį nei laikas, &scaron;i parinktis nebus galima, o intervalo reik&scaron;mės matavimo vienetai bus tokie patys, kaip įvesties daugiamačių rastrinių duomenų kintamojo matavimo vienetai. 
+            <p>Jei agreguojate pagal kitą kintamąjį nei laikas, &scaron;i parinktis nebus galima, o intervalo reik&scaron;mės matavimo vienetai bus tokie patys, kaip įvesties daugiamačių rastrinių duomenų kintamojo matavimo vienetai.
                 <ul>
                     <li> <b>Valandos</b> &ndash; nurodytame intervale duomenų reik&scaron;mės bus agreguojamos į valandos trukmės laiko skiltis.
                     </li>
@@ -216,7 +216,7 @@
         </div>
     </div>
     <div id="intervalRanges">
-        <div><h2>Apibrėžti diapazonus</h2></div>
+        <div><h2>Apibrėžti intervalus</h2></div>
         <hr/>
         <div>
             <p>Reik&scaron;mių grupėms agreguoti bus naudojami intervalai. Juos sudaro minimalios ir maksimalios intervalo reik&scaron;mių poros, kurių duomenų tipas yra Dvigubo tikslumo arba Data. &Scaron;ios įvesties reikia, jei  <b>Agregavimo apra&scaron;as</b> nustatyta kaip <b>Intervalai</b>.
@@ -227,9 +227,9 @@
         <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės. 
+            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
                 <ul>
-                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai yra numatytasis nustatymas.
                     </li>
                     <li>Nepažymėta &ndash; analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikselis turi bent vieną NoData reik&scaron;mę.
                     </li>
@@ -242,7 +242,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

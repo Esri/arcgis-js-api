@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimāli reģiona savienojumi</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Rīka Optimāli reģiona savienojumi attēlojums"></h2>
+        <hr/>
+    <p>&Scaron;is rīks aprēķina optimālo savienojamības tīklu starp diviem vai vairākiem ievades reģioniem.
+    </p>
+    <p>Tālāk sniegti daži lietojuma piemēri:
+        <ul>
+            <li>Piemērotības modelē&scaron;ana&nbsp;&mdash; izmantojot piemērotības modeli, jūs noteicāt 10&nbsp;labākos biotopu apgabalus lū&scaron;iem. Jūs vēlaties, lai lū&scaron;i varētu pārvietoties starp apgabaliem, izmantojot efektīvāko savvaļas dzīvnieku koridoru tīklu, lai uzturētu ģenētisko daudzveidību metapopulācijā.
+                
+
+            </li>
+            <li>Mežistrāde&nbsp;&mdash; lai iegūtu kokmateriālus, ir jāizveido rentablākais mežizstrādes ceļu tīkls, no kura var iegūt kokmateriālus.
+                
+
+            </li>
+            <li>Miera uzturē&scaron;ana&nbsp;&mdash; militārajā miera uzturē&scaron;anas dislokācijā jūs esat identificējis piecas teritorijas, kurās izvietot karaspēku un personālu. Jūs vēlaties izstrādāt optimāli savienotus piegādes mar&scaron;rutus starp bāzēm
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ja ir atzīmēta opcija  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai pa&scaron;reizējā kartes pārklājumā redzamie novietojumi ievades slāņos. Ja &scaron;ī opcija nav atzīmēta, tiks analizēti visi novietojumi abos ievades slāņos, arī tad, ja tie atrodas ārpus pa&scaron;reizējā pārklājuma.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Izvēlēties reģiona rastru vai elementu</h2></div>
+        <hr/>
+        <div>
+            <p>Ievades reģioni, kas savienojami ar optimālo tīklu.
+            </p>
+            <p>Ja reģiona ievade ir rastrs, reģioni tiek definēti pēc līdzās eso&scaron;o &scaron;ūnu grupām ar tādu pa&scaron;u vērtību. Katram reģionam jābūt unikāli numurētam. &Scaron;ūnām jābūt NoData, ja tās nav neviena reģiona daļa. Rastra tipam jābūt veselam skaitlim, un vērtības var būt vai nu pozitīvas, vai negatīvas.
+            </p>
+            <p>Ja reģiona ievade ir elements, tas var būt punkti, līnijas vai daudzstūri. Daudzstūra reģionus nevar veidot no daudzdaļīgiem daudzstūriem.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izvēlēties barjeras rastru vai elementu (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Datu kopa, kas nosaka barjeras.
+            </p>
+            <p>Rastra ievades veids var būt vesels skaitlis, vai peldo&scaron;s. Visas &scaron;ūnas, kurām ir vērtība&nbsp;(iekļaujot nulli), tiks uzskatītas par barjerām. Visas NoData &scaron;ūnas netiks uzskatītas par barjerām.
+            </p>
+            <p>Elementam ievade var būt punkts, līnija vai daudzstūris.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Izvēlēties izmaksu rastru (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrs, kas nosaka pretestību vai izmaksas, lai planimetriski pārvietotos pa katru &scaron;ūnu.
+            </p>
+            <p>Vērtība katras &scaron;ūnas atra&scaron;anās vietā raksturo attālumu izmaksām uz vienu vienību, pārvietojoties cauri &scaron;ūnai. Katra &scaron;ūnas novietojuma vērtība tiek reizināta ar &scaron;ūnas iz&scaron;ķirtspēju, vienlaikus kompensējot diagonālo pārvieto&scaron;anos, lai iegūtu kopējās &scaron;ūnas &scaron;ķērso&scaron;anas izmaksas.
+            </p>
+            <p>Izmaksu rastra vērtības var būt vesels skaitlis vai peldo&scaron;ais punkts, bet tās nevar būt negatīvas vai ar nulles vērtību (jums nevar būt negatīvas vai nulles izmaksas).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Attāluma metode (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai aprēķināt attālumu, izmantojot plaknes&nbsp;(plakana zeme) vai ģeodēzisko&nbsp;(elipses) metodi.
+            </p>
+            <ul>
+                <li> <b>Plakne</b>&nbsp;&mdash; attāluma aprēķinā&scaron;ana tiks veikta projicētajā plakanajā plaknē, izmantojot 2D Dekarta koordinātu sistēmu. Tā ir noklusējuma metode.
+                    
+
+                </li>
+                <li> <b>Ģeodēzija</b>&nbsp;&mdash; attāluma aprēķins tiks veikts ar elipsi. Tādēļ neatkarīgi no ievades vai izvades projekcijas, rezultāti nemainās.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Savienojumi ar reģioniem (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, vai ceļi tiks turpināti un savienoti ievades reģionos.
+            </p>
+            <ul>
+                <li> <b>Ģenerēt savienojumus</b>&nbsp;&mdash; ceļi tiks turpināti ievades reģionos, lai savienotu visus ceļus, kas ieved reģionā. Tā ir noklusējuma vērtība.
+                    
+
+                </li>
+                <li> <b>Nav savienojumu</b>&nbsp;&mdash; ceļi apstāsies ievades reģiona malās, kā arī neturpināsies un nesavienosies tajos.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Rezultāta optimālais savienojamības līniju elementa slāņa nosaukums</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>&Scaron;is slānis ir izvades līnijas elements, kas savieno katru ievades reģionu.
+            </p>
+            <p>Katrs ceļ&scaron;&nbsp;(vai līnija) ir unikāli numurēta, un papildu lauki atribūtu tabulā saglabā specifisku informāciju par ceļu. &Scaron;ie papildu lauki ir norādīti zemāk.
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;&nbsp;Ceļa unikālais identifikators
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;&nbsp;Kopējais uzkrātais attālums vai ceļa izmaksas
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;&nbsp;Pirmais reģions, ko ceļ&scaron; savieno
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;&nbsp;Otrs reģions, ko ceļ&scaron; savieno
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tā kā katrs ceļ&scaron; ir apzīmēts ar unikālu līniju, vietās, kur ceļi veido vienu un to pa&scaron;u mar&scaron;rutu, būs vairākas līnijas.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Rezultātā iegūto tuvumā esošo savienojumu elementa slāņa nosaukums (pēc izvēles)</h2></div>
+        <hr/>
+        <div>
+            <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
+            </p>
+            <p>&Scaron;is slānis ir izvades līnijas elements, kas identificē visus ceļus no katra reģiona uz katru no tā tuvākajiem reģioniem vai ar vismazākajām izmaksām.
+            </p>
+            <p>Katrs ceļ&scaron;&nbsp;(vai līnija) ir unikāli numurēta, un papildu lauki atribūtu tabulā saglabā specifisku informāciju par ceļu. &Scaron;ie papildu lauki ir norādīti zemāk.
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;&nbsp;Ceļa unikālais identifikators
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;&nbsp;Kopējais uzkrātais attālums vai ceļa izmaksas
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;&nbsp;Pirmais reģions, ko ceļ&scaron; savieno
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;&nbsp;Otrs reģions, ko ceļ&scaron; savieno
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tā kā katrs ceļ&scaron; ir apzīmēts ar unikālu līniju, vietās, kur ceļi veido vienu un to pa&scaron;u mar&scaron;rutu, būs vairākas līnijas.
+            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

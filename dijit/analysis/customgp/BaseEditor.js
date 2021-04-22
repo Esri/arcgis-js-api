@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/Deferred","dijit/_WidgetBase","dijit/_TemplatedMixin"],(function(e,t,n){return e([n],{baseClass:"jimu-gp-editor-base",editorName:"BaseEditor",dependParam:"",postCreate:function(){this.inherited(arguments)},getValue:function(){},getGPValue:function(){var e=new t;return e.resolve(this.getValue()),e},wrapGPValue:function(e){return e?(e.toJson||(e.toJson=function(){return e}),e):e},wrapValueToDeferred:function(e){var n=new t;return n.resolve(e),n},update:function(e){}})}));

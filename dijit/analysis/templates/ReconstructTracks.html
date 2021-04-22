@@ -108,7 +108,7 @@
                     <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="trim:true" data-dojo-attach-point="_bufFieldOutput" value=""></input>
                   </td>
                   <td class="shortTextInput">
-                    <div data-dojo-type="dijit/form/Button" class="esriActionButton" data-dojo-props="label:'${i18n.add}',iconClass:'esriAnalysisExpIcon',showLabel: false" data-dojo-attach-point="_expBtn" data-dojo-attach-event="onClick:_handleExpBtnClick"></div>
+                    <div data-dojo-type="dijit/form/Button" class="esriActionButton" data-dojo-props="label:'${i18n.add}',iconClass:'esriAnalysisExpIcon',showLabel: false" data-dojo-attach-point="_expBtn" data-dojo-attach-event="onClick:_handleBufExpBtnClick"></div>
                   </td>
                </tr>
               </table>
@@ -178,6 +178,42 @@
           <tr>
             <td colspan="3">
               <div style="width:100%;height:100%;" data-dojo-attach-point="_timeBoundarySelect" data-dojo-type="esri/dijit/analysis/components/TimeBoundarySelect/TimeBoundarySelect"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1">
+                <input data-dojo-type="dijit/form/CheckBox" data-dojo-attach-point="_arcadeSplitCheck" data-dojo-attach-event="onChange:_handleArcadeExprCheckChange"></input>
+                ${i18n.arcadeExprSplitLabel}
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <table style="width:90%">
+                <tr>
+                  <td colspan="2">
+                    <input type="text" data-dojo-type="dijit/form/ValidationTextBox" class="esriLeadingMargin1 longInput" data-dojo-props="trim:true,required:true" data-dojo-attach-point="_splitExprInput" value=""></input>
+                  </td>
+                  <td class="shortTextInput">
+                    <div data-dojo-type="dijit/form/Button" class="esriActionButton" data-dojo-props="label:'${i18n.add}',iconClass:'esriAnalysisExpIcon',showLabel: false" data-dojo-attach-point="_splitExprBtn" data-dojo-attach-event="onClick:_handleSplitExpBtnClick"></div>
+                  </td>
+               </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label class="esriLeadingMargin1" data-dojo-attach-point="_splitTypeLabel">${i18n.splitTypeLabel}</label>
+            </td>
+          </tr>
+          <tr data-dojo-attach-point="_splitBoundaryRow">
+            <td colspan="3" style="padding-bottom:0.25;padding-top:0.25;">
+              <select data-dojo-type="dijit/form/Select"  class="esriLeadingMargin2 longInput esriLongLabel" data-dojo-attach-point="_splitBoundarySelect">
+                <option value="Gap">${i18n.gap}</option>
+                <option value="FinishLast">${i18n.finishLast}</option>
+                <option value="StartNext">${i18n.startNext}</option>
+              </select>
             </td>
           </tr>
           <tr>

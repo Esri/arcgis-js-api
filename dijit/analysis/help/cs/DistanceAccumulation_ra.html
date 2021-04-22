@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Akumulace vzdálenosti</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustrace n&aacute;stroje Akumulace vzd&aacute;lenosti"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;t&aacute; akumulovanou vzd&aacute;lenost od jednotliv&yacute;ch buněk ke zdrojům. Poč&iacute;t&aacute; s&nbsp;př&iacute;mou vzd&aacute;lenost&iacute; vzdu&scaron;nou čarou, vzd&aacute;lenost&iacute; n&aacute;kladů a&nbsp;vzd&aacute;lenost&iacute; skutečn&eacute;ho povrchu i&nbsp;se svisl&yacute;mi a&nbsp;vodorovn&yacute;mi faktory.
+    </p>
+    <p>Př&iacute;klady použit&iacute; zahrnuj&iacute; i odpovědi na ot&aacute;zky jako např:
+        <ul>
+            <li>Jak&aacute; je vzd&aacute;lenost do nejbliž&scaron;&iacute;ho města?
+                
+
+            </li>
+            <li>Jak&aacute; je v&aacute;žen&aacute; vzd&aacute;lenost k nejbliž&scaron;&iacute; silnici?
+                
+
+            </li>
+            <li>Jak&aacute; je vzd&aacute;lenost kolem přek&aacute;žek k nejbliž&scaron;&iacute;mu vodn&iacute;mu zdroji?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze prvky ve vstupn&iacute; vrstvě, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky ve vstupn&iacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Zvolte rastr zdroje nebo prvky</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva rastru nebo prvku, kter&aacute; identifikuje zdroje, ke kter&yacute;m se vypoč&iacute;t&aacute; vzd&aacute;lenost.
+            </p>
+            <p>Pokud je vstup rastr, mus&iacute; se skl&aacute;dat z buněk, kter&eacute; maj&iacute; pro zdroje platn&eacute; hodnoty (včetně nuly). Zb&yacute;vaj&iacute;c&iacute;m buňk&aacute;m mus&iacute; b&yacute;t přiřazena hodnota NoData.
+            </p>
+            <p>Pokud je vstup vrstva prvků, může b&yacute;t vstup bod, linie nebo polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Zvolte rastr překážky nebo prvky (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Datov&aacute; sada, kter&aacute; definuje přek&aacute;žky.
+            </p>
+            <p>U rastrov&eacute; vrstvy může b&yacute;t typ vstupu cel&eacute; nebo desetinn&eacute; č&iacute;slo. V&scaron;echny buňky, kter&eacute; maj&iacute; hodnotu (včetně nuly), budou považov&aacute;ny za přek&aacute;žku. V&scaron;echny buňky, kter&eacute; maj&iacute; hodnotu NoData, nebudou považov&aacute;ny za přek&aacute;žku.
+            </p>
+            <p>Vstup u feature služby může b&yacute;t bod, linie nebo polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Zvolte rastr povrchu (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr definuj&iacute;c&iacute; hodnoty nadmořsk&eacute; v&yacute;&scaron;ky v každ&eacute;m um&iacute;stěn&iacute; buňky.
+            </p>
+            <p>Hodnoty se použ&iacute;vaj&iacute; pro v&yacute;počet skutečn&eacute; povrchov&eacute; vzd&aacute;lenosti, kter&aacute; mus&iacute; b&yacute;t překon&aacute;na při přech&aacute;zen&iacute; mezi buňkami.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Zvolte nákladový rastr (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr definuj&iacute;c&iacute; impedanci nebo n&aacute;klady pro posun v polohopise přes každou buňku.
+            </p>
+            <p>Hodnota v každ&eacute;m um&iacute;stěn&iacute; buňky představuje vzd&aacute;lenost v jednotkov&yacute;ch n&aacute;kladech pro posun přes buňku. Hodnota v každ&eacute;m um&iacute;stěn&iacute; buňky je vyn&aacute;sobena rozli&scaron;en&iacute;m buňky zat&iacute;mco kompenzuje diagon&aacute;ln&iacute; pohyb pro z&iacute;sk&aacute;n&iacute; celkov&yacute;ch n&aacute;kladů přechodu přes buňku.
+            </p>
+            <p>Hodnoty rastru n&aacute;kladů mohou b&yacute;t cel&eacute; č&iacute;slo nebo desetinn&eacute; č&iacute;slo, ale nesm&iacute; b&yacute;t z&aacute;porn&eacute; nebo nulov&eacute; (nemůžete m&iacute;t z&aacute;porn&eacute; nebo nulov&eacute; n&aacute;klady).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Zvolte vertikální rastr (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr definuj&iacute;c&iacute; hodnoty &bdquo;z&ldquo; pro každ&eacute; um&iacute;stěn&iacute; buňky.
+            </p>
+            <p>Hodnoty se použ&iacute;vaj&iacute; pro v&yacute;počet sklonu použit&eacute;ho k identifikaci vertik&aacute;ln&iacute;ho faktoru vznikl&eacute;ho při přechodu z jedn&eacute; buňky do druh&eacute;.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikální faktor (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertik&aacute;ln&iacute; faktor</b> určuje vztah mezi vertik&aacute;ln&iacute;m faktorem (VF) ceny a vertik&aacute;ln&iacute;m relativn&iacute;m &uacute;hlem pohybu (VRMA).
+            </p>
+            <p>Můžete zvolit z několika faktorů s modifik&aacute;tory, kter&eacute; identifikuj&iacute; definovan&yacute; graf vertik&aacute;ln&iacute;ch faktorů. Grafy se použ&iacute;vaj&iacute; k identifikaci vertik&aacute;ln&iacute;ho faktoru použit&eacute;ho při v&yacute;počtu celkov&yacute;ch n&aacute;kladů na přesun do sousedn&iacute; buňky.
+            </p>
+            <p>V n&iacute;že uveden&yacute;ch popisech definuje VF vertik&aacute;ln&iacute; obt&iacute;ž, s n&iacute;ž se setk&aacute;v&aacute;me při přechodu z jedn&eacute; buňky do dal&scaron;&iacute;, a modifik&aacute;tor VRMA identifikuje &uacute;hel sklonu mezi buňkou  <b>Od zdroje</b> a buňkou <b>Ke zdroji</b>.
+                <ul>
+                    <li> <b>Bin&aacute;rn&iacute;</b> &ndash; Označuje, že pokud je VRMA vět&scaron;&iacute; než doln&iacute; hraničn&iacute; &uacute;hel a men&scaron;&iacute; než horn&iacute; hraničn&iacute; &uacute;hel, faktor VF je nastaven na hodnotu spojenou s nulov&yacute;m faktorem; jinak to je nekonečno.
+                    </li>
+                    <li> <b>Line&aacute;rn&iacute;</b> &ndash; Určuje, že VF je line&aacute;rn&iacute; funkc&iacute; VRMA.
+                    </li>
+                    <li> <b>Inverzn&iacute; line&aacute;rn&iacute;</b> &ndash; Určuje, že VF je inverzn&iacute; line&aacute;rn&iacute; funkc&iacute; VRMA.
+                    </li>
+                    <li> <b>Symetricky line&aacute;rn&iacute;</b> &ndash; Určuje, že VF je line&aacute;rn&iacute; funkc&iacute; &uacute;hlu VRMA buď na z&aacute;porn&eacute;, nebo na kladn&eacute; straně &uacute;hlu VRMA a obě line&aacute;rn&iacute; funkce jsou symetrick&eacute; vzhledem k ose VF (y).
+                    </li>
+                    <li> <b>Symetricky inverzn&iacute; line&aacute;rn&iacute;</b> &ndash; Určuje, že VF je inverzn&iacute; line&aacute;rn&iacute; funkc&iacute; &uacute;hlu VRMA buď na z&aacute;porn&eacute;, nebo na kladn&eacute; straně &uacute;hlu VRMA a obě line&aacute;rn&iacute; funkce jsou symetrick&eacute; vzhledem k ose VF (y).
+                    </li>
+                    <li> <b>Cos</b> &ndash; VF je funkce VRMA založen&aacute; na funkci kosinus.
+                    </li>
+                    <li> <b>Sec</b> &ndash; VF je funkce VRMA založen&aacute; na sečn&aacute;ch.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; VF je funkce VRMA založen&aacute; na funkci kosinus, když je VRMA z&aacute;porn&yacute;, a je funkce VRMA založen&aacute; na sečn&aacute;ch, když VRMA nen&iacute; z&aacute;porn&yacute;.
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; VF je funkce VRMA založen&aacute; na sečn&aacute;ch, když je &uacute;hel VRMA z&aacute;porn&yacute;, a je funkce založen&aacute; na kosinu, když nen&iacute; z&aacute;porn&yacute;.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifik&aacute;tory vertik&aacute;ln&iacute;ch parametrů zahrnuj&iacute; n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li> <b>Nulov&yacute; faktor</b> &ndash; Použit&yacute; vertik&aacute;ln&iacute; faktor, když je VRMA nula. Tento faktor umisťuje průseč&iacute;k y zadan&eacute; funkce. Ze sv&eacute; podstaty nemůže b&yacute;t nulov&yacute; faktor aplikovateln&yacute; na kteroukoliv z vertik&aacute;ln&iacute;ch funkc&iacute; (Cos, Sec, Cos-Sec nebo Sec-Cos). Průseč&iacute;k y je definov&aacute;n těmito funkcemi.
+                    </li>
+                    <li> <b>Doln&iacute; hraničn&iacute; &uacute;hel</b> &ndash; &Uacute;hel VRMA, pod kter&yacute;m bude VF nastaven na nekonečno.
+                    </li>
+                    <li> <b>Horn&iacute; hraničn&iacute; &uacute;hel</b> &ndash; &Uacute;hel VRMA, nad kter&yacute;m bude VF nastaven na nekonečno.
+                    </li>
+                    <li> <b>Sklon</b> &ndash; Sklon př&iacute;mky použ&iacute;van&yacute; s <b>line&aacute;rn&iacute;mi</b> a <b>inverzn&iacute;mi</b> parametry. Sklon je specifikov&aacute;n jako zlomek stoup&aacute;n&iacute; (např&iacute;klad 45% sklon je 1/45, jehož vstup je 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Zvolte horizontální rastr (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr definuj&iacute;c&iacute; horizont&aacute;ln&iacute; směr v každ&eacute; buňce.
+            </p>
+            <p>Hodnoty v rastru mus&iacute; b&yacute;t cel&aacute; č&iacute;sla v rozmez&iacute; od 0 do 360 stupňů, přičemž 0 stupňů je sever nebo směr k horn&iacute; č&aacute;sti obrazovky. &Uacute;hel se zvy&scaron;uje se ve směru hodinov&yacute;ch ručiček. Ploch&yacute;m oblastem by měla b&yacute;t přidělena hodnota -1. Hodnoty v každ&eacute;m um&iacute;stěn&iacute; budou použity ve spojen&iacute; s  <b>horizont&aacute;ln&iacute;m faktorem</b> pro určen&iacute; horizont&aacute;ln&iacute;ch n&aacute;kladů vznikl&yacute;ch během pohybu z buňky k jej&iacute;m sousedům.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontální faktor (volitelný)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horizont&aacute;ln&iacute; faktor</b> určuje vztah mezi horizont&aacute;ln&iacute;m faktorem n&aacute;kladů a horizont&aacute;ln&iacute;m relativn&iacute;m &uacute;hlem pohybu.
+            </p>
+            <p>Můžete zvolit z několika faktorů s modifik&aacute;tory, kter&eacute; identifikuj&iacute; definovan&yacute; graf horizont&aacute;ln&iacute;ch faktorů. Grafy se použ&iacute;vaj&iacute; k identifikaci horizont&aacute;ln&iacute;ho faktoru použit&eacute;ho při v&yacute;počtu celkov&yacute;ch n&aacute;kladů na přesun do sousedn&iacute; buňky.
+            </p>
+            <p>V n&iacute;že uveden&yacute;ch popisech definuje horizont&aacute;ln&iacute; faktor (HF) horizont&aacute;ln&iacute; obt&iacute;ž, s n&iacute;ž se setk&aacute;v&aacute;me při přechodu z jedn&eacute; buňky do dal&scaron;&iacute;, a horizont&aacute;ln&iacute; relativn&iacute; &uacute;hel pohybu (HRMA) určuje &uacute;hel mezi horizont&aacute;ln&iacute;m směrem pohybu z buňky a směrem pohybu.
+            </p>
+            <p>Definice a parametry těchto VF jsou n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li> <b>Bin&aacute;rn&iacute;</b> &ndash; Označuje, že pokud je HRMA men&scaron;&iacute; než &uacute;hel řezu, HF je nastaven na hodnotu spojenou s nulov&yacute;m faktorem; jinak je na hodnotě nekonečno.
+                        
+
+                    </li>
+                    <li> <b>Dopředu</b> &ndash; Stanov&iacute;, že je povolen pouze pohyb vpřed. HRMA mus&iacute; b&yacute;t vět&scaron;&iacute; nebo roven 0 a men&scaron;&iacute; než 90 (0 &lt;= HRMA &lt;90). Pokud je HRMA vět&scaron;&iacute; než 0 a men&scaron;&iacute; než 45 stupňů, HF pro buňku je nastaven na hodnotu spojenou s nulov&yacute;m faktorem. Pokud je HRMA vět&scaron;&iacute; nebo roven 45 stupňům, použije se hodnota modifik&aacute;toru vedlej&scaron;&iacute; hodnoty. HF pro jakoukoli hodnotu HRMA rovnou nebo vět&scaron;&iacute; než 90 stupňů je nastaven na nekonečno.
+                        
+
+                    </li>
+                    <li> <b>Line&aacute;rn&iacute;</b> &ndash; VF je line&aacute;rn&iacute; funkc&iacute; HRMA.
+                        
+
+                    </li>
+                    <li> <b>Inverzn&iacute; line&aacute;rn&iacute;</b> &ndash; VF je inverzn&iacute; line&aacute;rn&iacute; funkc&iacute; HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifik&aacute;tory horizont&aacute;ln&iacute;ch kl&iacute;čov&yacute;ch slov zahrnuj&iacute; n&aacute;sleduj&iacute;c&iacute;:
+                <ul>
+                    <li> <b>Nulov&yacute; faktor</b> &ndash; Použit&yacute; horizont&aacute;ln&iacute; faktor, když je HRMA nula. Tento faktor umisťuje průchod y pro jakoukoli funkci horizont&aacute;ln&iacute;ho faktoru.
+                        
+
+                    </li>
+                    <li> <b>Hraničn&iacute; &uacute;hel</b> &ndash; &Uacute;hel HRMA, pod kter&yacute;m bude HF nastaven na nekonečno.
+                        
+
+                    </li>
+                    <li> <b>Sklon</b> &ndash; Sklon př&iacute;mky použ&iacute;van&yacute; s kl&iacute;čov&yacute;mi slovy <b>line&aacute;rn&iacute;ho</b> a <b>inverzn&iacute;ho line&aacute;rn&iacute;ho</b> horizont&aacute;ln&iacute;ho faktoru. Sklon je specifikov&aacute;n jako zlomek stoup&aacute;n&iacute; (např&iacute;klad 45% sklon je 1/45, jehož vstup je 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Vedlej&scaron;&iacute; hodnota</b> &ndash; HF, když je HRMA vět&scaron;&iacute; nebo roven 45 stupňům a men&scaron;&iacute; než 90 stupňů, když je zad&aacute;no kl&iacute;čov&eacute; slovo horizont&aacute;ln&iacute;ho faktoru <b>Dopředu</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Počáteční akumulace</h2></div>
+        <hr/>
+        <div>
+            <p>Poč&aacute;tečn&iacute; akumulačn&iacute; n&aacute;klady slouž&iacute;c&iacute; k v&yacute;počtu n&aacute;kladů.
+            </p>
+            <p>Umožňuje specifikovat fixn&iacute; n&aacute;klady spojen&eacute; se zdrojem. Nam&iacute;sto toho, aby se zač&iacute;nalo od n&aacute;kladu 0, algoritmus n&aacute;kladů začne od zadan&eacute; hodnoty  <b>Poč&aacute;tečn&iacute; akumulace</b>.
+            </p>
+            <p>Hodnoty mus&iacute; b&yacute;t nula vět&scaron;&iacute; než nula. V&yacute;choz&iacute; hodnota je 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximální akumulace</h2></div>
+        <hr/>
+        <div>
+            <p>Maxim&aacute;ln&iacute; akumulace pro cestu ke zdroji.
+            </p>
+            <p>V&yacute;počty n&aacute;kladů pokračuj&iacute; pro každ&yacute; zdroj, dokud nen&iacute; dosaženo stanoven&eacute; akumulace.
+            </p>
+            <p>Hodnoty mus&iacute; b&yacute;t vět&scaron;&iacute; než nula. V&yacute;choz&iacute; akumulace je zobrazena na hraně v&yacute;stupn&iacute;ho rastru.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Nákladový multiplikátor</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplik&aacute;tor, kter&yacute; bude použit na n&aacute;kladov&eacute; hodnoty.
+            </p>
+            <p>Umožňuje ř&iacute;dit režim cestov&aacute;n&iacute; nebo v&yacute;znam zdroje. Č&iacute;m vět&scaron;&iacute; n&aacute;sobitel je, t&iacute;m vět&scaron;&iacute; jsou n&aacute;klady na pohyb skrz jednotliv&eacute; buňky.
+            </p>
+            <p>Hodnoty mus&iacute; b&yacute;t vět&scaron;&iacute; než nula. V&yacute;choz&iacute; hodnota je 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Směr cesty</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje směr cesty při použit&iacute; vertik&aacute;ln&iacute;ho a horizont&aacute;ln&iacute;ho faktoru.
+            </p>
+            <p> <b>Ze zdroje</b> &ndash; Horizont&aacute;ln&iacute; a vertik&aacute;ln&iacute; faktory se aplikuj&iacute; nejdř&iacute;ve na vstupn&iacute;m zdroji a budou cestovat do nezdrojov&yacute;ch buněk. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+            </p>
+            <p> <b>Do zdroje</b> &ndash;Horizont&aacute;ln&iacute; a vertik&aacute;ln&iacute; faktory se aplikuj&iacute; nejdř&iacute;ve na každou nezdrojovou buňku a budou cestovat zpět do vstupn&iacute;ho zdroje.
+            </p>
+            <p>Zadejte kl&iacute;čov&eacute; slovo  <b>Ze zdroje</b> nebo <b>Do zdroje</b>, kter&eacute; bude použito pro v&scaron;echny zdroje, nebo určete pole ve zdroji dat, kter&eacute; obsahuje kl&iacute;čov&aacute; slova pro určen&iacute; směru cesty v&scaron;ech zdrojů. Toto pole mus&iacute; obsahovat řetězec <code>FROM_SOURCE</code> nebo <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda vzdálenosti (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Urč&iacute;, zda vypoč&iacute;tat vzd&aacute;lenost pomoc&iacute; rovinn&eacute; metody (na ploch&eacute; zemi) nebo geodetick&eacute; metody (elipsoid).
+            </p>
+            <ul>
+                <li> <b>Rovinn&aacute;</b> &ndash; V&yacute;počet vzd&aacute;lenosti bude proveden na kartograficky zobrazen&eacute; rovině pomoc&iacute; 2D kart&eacute;zsk&eacute;ho souřadnicov&eacute;ho syst&eacute;mu. Toto je v&yacute;choz&iacute; metoda.
+                    
+
+                </li>
+                <li> <b>Geodetick&aacute;</b> &ndash; V&yacute;počet vzd&aacute;lenosti bude proveden na elipsoidu. Bez ohledu na kartografick&eacute; zobrazen&iacute; vstupu nebo v&yacute;stupu se v&yacute;sledky neměn&iacute;.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Název výsledného rastru akumulace vzdálenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr akumulace vzd&aacute;lenosti obsahuje kumulativn&iacute; vzd&aacute;lenost pro každou buňku z nejm&eacute;ně n&aacute;kladn&eacute;ho zdroje nebo do něj.
+            </p>
+            <p>V&yacute;stupn&iacute; rastr je typu Float.
+            </p>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Název výsledného rastru zpátečního směru (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr zp&aacute;tečn&iacute;ho směru obsahuje vypoč&iacute;tanou vzd&aacute;lenost ve stupn&iacute;ch. Směr identifikuje n&aacute;sleduj&iacute;c&iacute; buňku na nejkrat&scaron;&iacute; cestě zpět k nejbliž&scaron;&iacute;mu zdroji při současn&eacute;m vyhnut&iacute; se přek&aacute;žk&aacute;m.
+            </p>
+            <p>Hodnoty jsou v rozmez&iacute; 0 až 360 stupňů a 0 je rezervov&aacute;na pro zdrojov&eacute; buňky. Oček&aacute;van&yacute; v&yacute;chod (napravo) je 90 a hodnoty rostou ve směru hodinov&yacute;ch ručiček (180 je jih, 270 je z&aacute;pad a 360 je sever).
+            </p>
+            <p>V&yacute;stupn&iacute; rastr je typu Float.
+            </p>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b>. Mus&iacute;te zadat n&aacute;zev, kter&yacute; je&scaron;tě ve složce <b>Můj obsah</b> neexistuje.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Název výsledného rastru zpátečního směru zdroje (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr zdrojov&eacute;ho směru identifikuje směr buňky s nejm&eacute;ně akumulovan&yacute;mi n&aacute;klady jako azimut ve stupn&iacute;ch.
+            </p>
+            <p>Hodnoty jsou v rozmez&iacute; 0 až 360 stupňů a 0 je rezervov&aacute;na pro zdrojov&eacute; buňky. Oček&aacute;van&yacute; v&yacute;chod (napravo) je 90 a hodnoty rostou ve směru hodinov&yacute;ch ručiček (180 je jih, 270 je z&aacute;pad a 360 je sever).
+            </p>
+            <p>V&yacute;stupn&iacute; rastr je typu Float.
+            </p>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b>. Mus&iacute;te zadat n&aacute;zev, kter&yacute; je&scaron;tě ve složce <b>Můj obsah</b> neexistuje.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Název výsledného rastru umístění zdroje (volitelné)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastr um&iacute;stěn&iacute; zdroje je v&iacute;cep&aacute;smov&yacute; v&yacute;stup. Prvn&iacute; p&aacute;smo obsahuje index ř&aacute;dku a druh&eacute; p&aacute;smo obsahuje index sloupce. Tyto indexy identifikuj&iacute; um&iacute;stěn&iacute; zdrojov&eacute; buňky, kter&aacute; je vzd&aacute;len&aacute; o nejmen&scaron;&iacute; akumulovanou vzd&aacute;lenost n&aacute;kladů.
+            </p>
+            <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b>. Mus&iacute;te zadat n&aacute;zev, kter&yacute; je&scaron;tě ve složce <b>Můj obsah</b> neexistuje.
+            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/dom-construct","esri/dijit/geoenrichment/utils/animation/Animator","esri/dijit/geoenrichment/ReportPlayer/ReportPlayerState","./_defaults"],(function(n,i,t,e,o){return n(null,{_animationMemo:null,_isAnimating:!1,renderAnimation:function(){!this._isAnimating&&this._animationMemo&&this._renderAnimation(this._animationMemo.s)},_renderAnimation:function(n){var a=this;if(this._animationInfos.length&&this.opt.animate&&(this._animationMemo={s:n},!e.isAnimationSuspended)){var s=[];a.valueLabelElements.forEach((function(n){n.style.display="none"})),this._isAnimating=!0,a._animationInfos.forEach((function(n,e){t.animateProperty({duration:a.opt.animate.duration||o.duration,properties:{slice:{start:0,end:1}},progressFunction:function(t,o,a){n.isShape?n.func(a):n.isLabel&&(s[e]&&i.destroy(s[e]),s[e]=n.func(a))},endFunction:r})}))}function r(){s.forEach((function(n){i.destroy(n)})),a.valueLabelElements.forEach((function(n){n.style.display=""})),a._isAnimating=!1}}})}));

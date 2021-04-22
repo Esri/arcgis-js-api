@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({binsLabel:"Scegli il tipo di bin da utilizzare per creare la griglia multi-variabile",layersAttrLabel:"Scegli i layer di input e le variabili da includere nella griglia",itemDescription:"Feature Layer generato dall'esecuzione di Crea griglia multi-variabile.",itemTags:"Risultato di analisi, Crea griglia multi-variabile",itemSnippet:"Feature Layer generato da Crea griglia multi-variabile",addVariables:"Aggiungi variabili"});

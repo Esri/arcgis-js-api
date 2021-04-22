@@ -112,7 +112,6 @@
             <p>Ange tid, djup eller andra inh&auml;mtningsdata kopplade till platscellerna eller geoobjekten.
             </p>
             <p>F&ouml;r varje dimension finns det tre alternativ f&ouml;r att ange inh&auml;mtningsinformationen kopplad till platsceller eller geoobjekt:
-
                 <ul>
                     <li> <b>Ett f&auml;lt eller v&auml;rde</b> &ndash; N&auml;r det h&auml;r alternativet &auml;r markerat m&aring;ste f&ouml;ljande information anges:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Omsamplingsalgoritm som anv&auml;nds n&auml;r ett raster samplas.
             </p>
             <ul>
-                <li> <b>N&auml;rmast</b> &ndash; N&auml;rmaste granne. Det h&auml;r &auml;r standardinst&auml;llningen.
+                <li> <b>N&auml;rmast</b> &ndash; N&auml;rmaste granne, anv&auml;nder v&auml;rdet i den n&auml;rmaste cellen f&ouml;r att tilldela ett v&auml;rde till utdatacellen vid omsampling. Det h&auml;r &auml;r standardinst&auml;llningen.
                 </li>
-                <li> <b>Bilinj&auml;r</b> &ndash; Bilinj&auml;r interpolation
+                <li> <b>Bilinj&auml;r</b> &ndash; Bilinj&auml;r interpolation, fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; ett viktat avst&aring;ndsgenomsnitt f&ouml;r de fyra n&auml;rmaste indatacellcentren.
                 </li>
-                <li> <b>Kubisk</b> &ndash; Kubisk interpolation
+                <li> <b>Kubisk</b> &ndash; Kubisk interpolation, fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; inpassningen av en mjuk kurva genom de 16 n&auml;rmaste indatacellcentren.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Resultatlagrets namn</h2></div>
         <hr/>
         <div>
+            
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
             <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.

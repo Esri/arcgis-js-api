@@ -52,8 +52,6 @@
         <div><h2>Pasirinkite daugiamatį vaizdų sluoksnį tendencijai analizuoti</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Daugiamačio rastro įvesties vaizdų sluoksnis, kuris bus analizuojamas.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Pasirinkite linijos tipą, derantį prie kintamojo reikšmių pagal matmenį</h2></div>
         <hr/>
         <div>
-            <p>Nurodo linijos, kurią reikia naudoti, kad atitiktų pikselių reik&scaron;mes i&scaron;ilgai matmens, tipą. 
+            <p>Nurodo linijos, kurią reikia naudoti, kad atitiktų pikselių reik&scaron;mes i&scaron;ilgai matmens, tipą.
                 <ul>
-                    <li> <b>Tiesinė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal tiesinę tendencijos liniją. Tai numatytasis nustatymas.
+                    <li> <b>Tiesinė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal tiesinę tendencijos liniją. Tai yra numatytasis nustatymas.
                     </li>
                     <li> <b>Daugianarė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal antro eili&scaron;kumo daugianarės tendencijos liniją.
                     </li>
                     <li> <b>Harmoninė</b> &ndash; kintamųjų pikselių reik&scaron;mės bus priderintos pagal harmoninę tendencijos liniją.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Kintamosios pikselių reik&scaron;mės vertinamos pagal Mann-Kendall tendencijos testą.
+                    </li>
+                    <li> <b>Sezoninis-Kendall</b>&mdash;Kintamosios pikselių reik&scaron;mės vertinamos pagal sezoninį-Kendall tendencijos testą.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Nurodykite sezono laikotarpio ilgio laiko matavimo vienetą</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo sezoninio laikotarpio laiko matavimo vienetą, kuris bus naudojamas vykdant sezoninį-Kendall testą.
+                <ul>
+                    <li> <b>Dienos</b>&mdash;Sezoninio laikotarpio ilgio vienetas yra dienos. Tai yra numatytasis nustatymas.
+                    </li>
+                    <li> <b>Mėnesiai</b>&mdash;Sezoninio laikotarpio ilgio vienetas yra mėnesiai.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>Dienos</b> &ndash; harmoninio ciklo ilgio vienetas yra dienos.
                     </li>
-                    <li> <b>Metai</b> &ndash; harmoninio ciklo ilgio vienetas yra metai. Tai numatytasis nustatymas.
+                    <li> <b>Metai</b> &ndash; harmoninio ciklo ilgio vienetas yra metai. Tai yra numatytasis nustatymas.
                     </li>
                 </ul>
                 
@@ -154,7 +171,7 @@
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Pažymėta &ndash; RMSE bus apskaičiuotas ir įtrauktas kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą. Tai numatytasis nustatymas.
+                            <li>Pažymėta &ndash; RMSE bus apskaičiuotas ir įtrauktas kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą. Tai yra numatytasis nustatymas.
                             </li>
                             <li>Nepažymėta &ndash; RMSE nebus apskaičiuotas.
                             </li>
@@ -167,7 +184,7 @@
                         <ul>
                             <li>Pažymėta &ndash; R kvadrato reik&scaron;mė bus apskaičiuota ir įtraukta kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą.
                             </li>
-                            <li>Nepažymėta &ndash; R kvadrato reik&scaron;mė nebus apskaičiuota. Tai numatytasis nustatymas.
+                            <li>Nepažymėta &ndash; R kvadrato reik&scaron;mė nebus apskaičiuota. Tai yra numatytasis nustatymas.
                             </li>
                         </ul>
                         
@@ -178,7 +195,7 @@
                         <ul>
                             <li>Pažymėta &ndash; p reik&scaron;mė bus apskaičiuota ir įtraukta kaip vienas i&scaron; daugelio kanalų į i&scaron;vesties tendencijų rastrą.
                             </li>
-                            <li>Nepažymėta &ndash; p reik&scaron;mė nebus apskaičiuota. Tai numatytasis nustatymas.
+                            <li>Nepažymėta &ndash; p reik&scaron;mė nebus apskaičiuota. Tai yra numatytasis nustatymas.
                             </li>
                         </ul>
                         
@@ -194,7 +211,7 @@
         <div>
             <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
                 <ul>
-                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai yra numatytasis nustatymas.
                     </li>
                     <li>Nepažymėta &ndash; analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikseliai turi bent vieną NoData reik&scaron;mę.
                     </li>
@@ -207,7 +224,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

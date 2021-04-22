@@ -124,7 +124,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div>
             <p>Vrijednost NIR-a kad je vrijednost refleksije crvenog kanala 0 za određene linije tla.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , kad je crveno 0.
+            <p> <code>(a = (blizu infracrvenog) - sCrveno)</code>, kad je crveno 0.
             </p> 
             <p>Ovaj je parametar važeći samo za metodu indeksa Transformed-SAVI.
             </p>
@@ -136,8 +136,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div>
             <p>Označava količinu zelenog pokrova vegetacije, &scaron;to je potrebno za metodu SAVI.
             </p>
-            <p>Valjane su vrijednosti sljedeće: 
-
+            <p>Valjane su vrijednosti sljedeće:
                 <ul>
                     <li>1 = područja bez zelenog pokrova vegetacije
                         
@@ -167,9 +166,10 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         </div>
     </div>
     <div id="outputLayer">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

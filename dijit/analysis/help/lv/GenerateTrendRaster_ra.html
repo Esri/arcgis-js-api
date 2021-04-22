@@ -44,7 +44,7 @@
         <h2>Ģenerēt tendences rastru</h2><p/>
         <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Ģenerēt tendences rastru"></h2>
         <hr/>
-    <p>Izvērtē katra pikseļa tendenci dimensijā vienam vai vairākiem multidimensiju rastra mainīgajiem.
+    <p>Novērtē katra pikseļa tendenci dimensijas ietvaros vienam vai vairākiem daudzdimensiju rastra mainīgajiem.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,8 +52,6 @@
         <div><h2>Izvēlēties multidimensiju attēlu slāni tendences analīzei</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Analizējamais multidimensiju rastra ievades attēlu slānis.
             </p>
         </div>
@@ -62,7 +60,7 @@
         <div><h2>Izvēlēties dimensiju, ar kuru tiks analizēta mainīgā tendence</h2></div>
         <hr/>
         <div>
-            <p>Dimensija pēc kuras tiks izgūta tendence mainīgajam vai mainīgajiem, kas atlasīti analīzē.
+            <p>Dimensija (koordinātu ass), pa kuru tiks izgūta tendence mainīgajam vai mainīgajiem, kas atlasīti analīzē.
             </p>
         </div>
     </div>
@@ -78,13 +76,32 @@
         <div><h2>Izvēlieties līnijas veidu, kas jāizmanto, lai izvietotu mainīgā vērtības dimensijā</h2></div>
         <hr/>
         <div>
-            <p>Norāda līnijas veidu, kas jāizmanto, lai izvietotu pikseļu vērtības dimensijā. 
+            <p>Norāda līnijas veidu, kas jāizmanto, lai pielāgotu pikseļu vērtības dimensijā.
                 <ul>
                     <li> <b>Lineāra</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas lineārā tendences līnijā. Tā ir noklusējuma vērtība.
                     </li>
                     <li> <b>Polinoma</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas otrās pakāpes polinoma tendences līnijā.
                     </li>
                     <li> <b>Harmoniska</b>&nbsp;&mdash; mainīgā pikseļa vērtības tiks izvietotas harmoniskās tendences līnijā.
+                    </li>
+                    <li> <b>Manns-Kendels</b>&nbsp;&mdash; mainīgās pikseļu vērtības tiks izvērtētas, izmantojot Manna-Kendela tendenču testu.
+                    </li>
+                    <li> <b>Sezona-Kendels</b>&nbsp;&ndash; mainīgās pikseļu vērtības tiks izvērtētas, izmantojot Sezonas-Kendela tendences testu.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Norādiet laika mērvienību sezonas perioda ilgumam</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda laika mērvienību, kas jāizmanto sezonas perioda garumam, veicot Sezonas-Kendela testu.
+                <ul>
+                    <li> <b>Dienas</b>&nbsp;&mdash; sezonas perioda garuma mērvienība ir dienas. Tā ir noklusējuma vērtība.
+                    </li>
+                    <li> <b>Mēne&scaron;i</b>&nbsp;&mdash; sezonas perioda garuma mērvienība ir mēne&scaron;i.
                     </li>
                 </ul>
                 
@@ -207,6 +224,7 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
+            
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
             <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.

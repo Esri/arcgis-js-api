@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Выберите набор данных для описания",describeDataLabel:"Изучите данные, создав (дополнительно)",sampleLayer:"Образец слоя",extentLayer:"Экстент слоя",noOfFeaturesLabel:"Используемое количество объектов",outputLayerName:"Имя слоя результата",resultName:"Описание данных ${layerName}",itemDescription:"Векторный слой, созданный инструментом Описание набора данных по ${layerName}. ",itemTags:"Результат анализа, DescribeDataset , ${layerName}",itemSnippet:"Векторный слой, полученный в результате работы Описание набора данных."});

@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Însumare raster multidimensional</h2><p/>
+        <h2>Raster Multidimensional Agregat</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Raster Multidimensional Agregat"></h2>
         <hr/>
     <p>Generează un set de date de raster multidimensional prin combinarea variabilelor existente ale rasterului multidimensional de-a lungul unei dimensiuni.
@@ -62,7 +62,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Alegeți un strat tematic de imagistică pentru însumare</h2></div>
+        <div><h2>Alegeți stratul tematic de imagini multidimensionale pentru a agrega</h2></div>
         <hr/>
         <div>
             <p>Stratul tematic de imagini de intrare al unui raster multidimensional vor fi agregate.
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Alegeți dimensiunea de însumare</h2></div>
+        <div><h2>Alegeți dimensiunea de-a lungul căreia să se efectueze agregarea</h2></div>
         <hr/>
         <div>
             <p>Dimensiunea agregării. Aceasta este dimensiunea de-a lungul căreia vor fi agregate variabilele.
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Alegeți variabila/variabilele de însumare</h2></div>
+        <div><h2>Alegeți variabilele de agregare</h2></div>
         <hr/>
         <div>
             <p>Variabila sau variabilele care vor fi agregate de-a lungul dimensiunii date. Dacă nu este specificată nicio variabilă, toate variabilele cu dimensiunea selectată vor fi agregate.
@@ -88,12 +88,12 @@
         </div>
     </div>
     <div id="aggregationMethod">
-        <div><h2>Alegeți metoda de însumare</h2></div>
+        <div><h2>Alegeți metoda de agregare</h2></div>
         <hr/>
         <div>
-            <p>Specifică metoda matematică care va fi utilizată pentru a combina &icirc;mpărțirile agregate &icirc;ntr-un interval. 
+            <p>Specifică metoda matematică care va fi utilizată pentru a combina &icirc;mpărțirile agregate &icirc;ntr-un interval.
                 <ul>
-                    <li> <b>Medie</b>&mdash;Calculează media valorilor unui pixel pe toate &icirc;mpărțirile din interval. Aceasta este setarea implicită.
+                    <li> <b>Medie</b>&mdash;Calculează media valorilor unui pixel pe toate &icirc;mpărțirile din interval. Aceasta este acţiunea implicită.
                     </li>
                     <li> <b>Maximă</b>&mdash;Calculează valoarea maximă a unui pixel pe toate &icirc;mpărțirile din interval.
                     </li>
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div id="aggregationFunction">
-        <div><h2>Alegeți șablonul funcției raster</h2></div>
+        <div><h2>Alegeţi un şablon funcţie raster</h2></div>
         <hr/>
         <div>
             <p>O funcție raster specifică care va fi folosită pentru calcularea valorilor pixel ale rasterelor agregate. Intrarea este un model de funcţie raster &icirc;n portal. Această intrare este necesară atunci c&acirc;nd  <b>Metoda de Agregare</b> este fixată la <b>Specifică</b>.
@@ -129,12 +129,12 @@
         </div>
     </div>
     <div id="aggregationDefinition">
-        <div><h2>Alegeți definiția de însumare</h2></div>
+        <div><h2>Alegeți definiţia agregării</h2></div>
         <hr/>
         <div>
-            <p>Specifică intervalul de dimensiuni pentru care vor fi agregate datele. 
+            <p>Specifică intervalul de dimensiuni pentru care vor fi agregate datele.
                 <ul>
-                    <li> <b>Toate</b>&mdash;Valorile datelor vor fi agregate pe toate &icirc;mpărțirile. Aceasta este setarea implicită.
+                    <li> <b>Toate</b>&mdash;Valorile datelor vor fi agregate pe toate &icirc;mpărțirile. Aceasta este acţiunea implicită.
                     </li>
                     <li> <b>Cuv&acirc;nt-Cheie Interval</b>&mdash;Datele variabile vor fi agregate folosind un interval cunoscut &icirc;n comun.
                     </li>
@@ -148,7 +148,7 @@
         </div>
     </div>
     <div id="intervalKeyword">
-        <div><h2>Alegeți intervalul de cuvinte cheie</h2></div>
+        <div><h2>Alegeți intervalul cuvântului cheie</h2></div>
         <hr/>
         <div>
             <p>Specifică intervalul cuv&acirc;ntului cheie care va fi utilizat la agregarea de-a lungul dimensiunii. Această intrare este necesară c&acirc;nd  <b>Definiția Agregării</b> este setată la <b>Interval Cuv&acirc;nt Cheie</b>, iar agregarea trebuie să fie pe timp.
@@ -198,7 +198,7 @@
         <div>
             <p>Unitatea care va fi folosită pentru valoarea de interval. Această intrare este necesară atunci c&acirc;nd  <b>Dimensiunea</b> este un c&acirc;mp de timp iar <b>Definirea Agregării</b> este setată la <b>Valoarea Intervalului</b>.
             </p>
-            <p>Dacă agregați pe orice altceva &icirc;n afara timpului, această opțiune nu va fi disponibilă iar unitatea pentru valoarea de interval ca corespunde unității variabile a datelor de raster multidimensional introduse. 
+            <p>Dacă agregați pe orice altceva &icirc;n afara timpului, această opțiune nu va fi disponibilă iar unitatea pentru valoarea de interval ca corespunde unității variabile a datelor de raster multidimensional introduse.
                 <ul>
                     <li> <b>Ore</b>&mdash;Valorile de date vor fi agregate &icirc;n &icirc;mpărțiri de timp orare &icirc;n intervalul prevăzut.
                     </li>
@@ -216,7 +216,7 @@
         </div>
     </div>
     <div id="intervalRanges">
-        <div><h2>Definire intervale</h2></div>
+        <div><h2>Definirea intervalelor</h2></div>
         <hr/>
         <div>
             <p>Intervalele vor fi folosite pentru a integra grupuri de valori. Acestea constau &icirc;n perechi de valori de interval minim și maxim, cu tipuri de date Duble sau Dată. Această intrare este necesară atunci c&acirc;nd  <b>Definirea Agregării</b> este stabilită la <b>Intervale</b>.
@@ -227,9 +227,9 @@
         <div><h2>Ignorare valori lipsă în calcul</h2></div>
         <hr/>
         <div>
-            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză. 
+            <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză.
                 <ul>
-                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este acţiunea implicită.
                     </li>
                     <li>Nebifat&mdash;Analiza va avea ca rezultat NoData dacă există orice valori NoData pentru pixel alături de dimensiunea dată.
                     </li>
@@ -242,7 +242,8 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>

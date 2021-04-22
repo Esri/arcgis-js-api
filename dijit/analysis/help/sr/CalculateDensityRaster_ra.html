@@ -51,7 +51,6 @@
     <p>Za linijski unos, povr&scaron;ina gustine linija predstavlja ukupnu količinu linija koja je blizu svake lokacije. Jedinice izračunatih vrednosti gustine su dužina oblasti linije-po-jedinici. Na primer, ako linije predstavljaju reke, sloj sa rezultatima predstavljaće ukupnu dužinu reka koje su unutar radijusa pretrage. Ovaj rezultat može da se koristi za identifikovanje oblasti koje su gostoljubive prema životinjama na ispa&scaron;i.
     </p>
     <p>Drugi slučajevi upotrebe ove alatke uključuju sledeće:
-
         <ul>
             <li>Kreiranje mapa gustine kriminalnih dela &scaron;to pomaže policijskim odeljenjima da dodele resurse u oblastima visoke stope kriminala.
                 
@@ -93,7 +92,7 @@
         </div>
     </div>
     <div id="searchDistance">
-        <div><h2>Pretraži rastojanje</h2></div>
+        <div><h2>Rastojanje pretrage</h2></div>
         <hr/>
         <div>
             <p>Unesite razdaljinu navodeći koliko daleko treba pretraživati da bi se prona&scaron;li tačkasti ili linijski geoobjekti prilikom izračunavanja vrednosti gustine. Na primer, ako unesete pretragu razdaljine od 10.000 metara, gustina bilo koje lokacije u izlaznom sloju izračunava se na osnovu geoobjekata koji su unutar 10.000 metara od lokacije. Svaka lokacija koja nema nijedan incident unutar 10.000 metara primiće vrednost gustine nula.
@@ -120,10 +119,21 @@
             </p>
         </div>
     </div>
+    <div id="inBarriers">
+        <div><h2>Izaberite komponente barijere (opcionalno)</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji defini&scaron;e barijere.
+            </p>
+            <p>Barijere mogu da budu sloj komponente polilinije ili komponente poligona.
+            </p>
+        </div>
+    </div>
     <div id="outputName">
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

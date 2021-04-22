@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Prevedere utilizzando il raster di tendenza</h2><p/>
-        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prevedere utilizzando il raster di tendenza"></h2>
+        <h2>Predire utilizzando il raster di tendenza</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Predire utilizzando il raster di tendenza"></h2>
         <hr/>
     <p>Computes a forecasted multidimensional raster using the output trend raster from the  Generate Trend Raster tool.
     </p>
@@ -72,7 +72,7 @@
         <div>
             <p>Specifica il metodo utilizzato per fornire valori di dimensione sulle previsioni.
                 <ul>
-                    <li> <b>Per valore</b>: la previsione sar&agrave; calcolata per un singolo valore di dimensione o per un elenco di valori di dimensione specificati nella fase successiva. Questa &egrave; l'impostazione predefinita. Ad esempio, si desidera prevedere la precipitazione annuale per gli anni 2050, 2100 e 2150.
+                    <li> <b>Per valore</b>: la previsione sar&agrave; calcolata per un singolo valore di dimensione o per un elenco di valori di dimensione specificati nella fase successiva. Si tratta dell'impostazione predefinita. Ad esempio, si desidera prevedere la precipitazione annuale per gli anni 2050, 2100 e 2150.
                     </li>
                     <li> <b>Per intervallo</b>: la previsione sar&agrave; calcolata per un intervallo della dimensione definita da un valore di inizio e uno di fine. Ad esempio, si desidera prevedere la precipitazione annuale per ogni anno compreso tra il 2050 e il 2150.
                     </li>
@@ -90,6 +90,22 @@
             <p>Il formato dei valori di tempo, profondit&agrave; e altezza deve corrispondere al formato dei valori di dimensione utilizzati per generare il raster di tendenza. Se il raster di tendenza &egrave; stato generato per la dimensione StdTime, il formato deve essere AAAA-MM-GGTHH:MM:SS, es. 2050-01-01T00:00:00. Pi&ugrave; valori sono separati con un punto e virgola.
             </p>
             <p>Questo parametro &egrave; necessario quando si seleziona il metodo  <b>Per valore</b> per definire i valori di dimensione per la previsione.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Partenza</h2></div>
+        <hr/>
+        <div>
+            <p>La data, l'altezza o la profondit&agrave; iniziale dell'intervallo della dimensione da usare nella previsione.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Fine</h2></div>
+        <hr/>
+        <div>
+            <p>La data, l'altezza o la profondit&agrave; finale dell'intervallo della dimensione da usare nella previsione.
             </p>
         </div>
     </div>
@@ -120,9 +136,10 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

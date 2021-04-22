@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Percorso ottimale come linea</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Percorso ottimale come linea di illustrazione strumenti"></h2>
+        <hr/>
+    <p>Questo strumento calcola il percorso ottimale dalle destinazioni alle sorgenti come una linea.
+    </p>
+    <p>Di seguito sono riportate le applicazioni di esempio:
+        <ul>
+            <li>Trovare il miglior percorso per una nuova strada in termini di costi di costruzione.
+                
+
+
+            </li>
+            <li>Trovare la rotta di navigazione migliore tra una destinazione e la posizione corrente.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Scegliere destinazione raster o feature</h2></div>
+        <hr/>
+        <div>
+            <p>Un layer raster o feature che identifica le celle da cui il percorso ottimale &egrave; determinato all''origine ottimale.
+            </p>
+            <p>Se l'input &egrave; un raster, deve consistere di celle che abbiano valori validi (zero &egrave; un valore valido) per le destinazioni e le celle rimanenti devono essere assegnate NoData. Il tipo di raster di input deve essere intero.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Campo di destinazione</h2></div>
+        <hr/>
+        <div>
+            <p>Il campo usato per ottenere i valori per le posizioni di destinazione.
+            </p>
+            <p>Questo campo deve essere di tipo intero.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Scegliere raster di accumulo della distanza</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di accumulo distanza viene utilizzato per stabilire il percorso ottimale dalle destinazioni alle origini.
+            </p>
+            <p>Il raster di accumulo della distanza &egrave; solitamente creato con gli Accumulo distanza o Assegnazione della distanza. Ciascuna cella nel raster di accumulo della distanza rappresenta la distanza di costo cumulativa minima su una superficie da ogni cella a un insieme di celle di origine.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Scegliere direzione contraria o raster di direzione del flusso</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di direzione contraria contiene le direzioni calcolate in gradi. La direzione identifica la cella successiva seguendo il percorso ottimale fino all'origine di costo minimo cumulativo evitando barriere.
+            </p>
+            <p>Il raster di direzione contraria &egrave; solitamente creato con gli strumenti Accumulo distanza o Allocazione della distanza. In questo caso l'intervallo dei valori &egrave; da 0 gradi a 360 gradi. Il valore 0 &egrave; riservato per le celle di origine. Verso est (destra) &egrave; di 90 e i valori aumentano in senso orario (180 &egrave; sud, 270 &egrave; ovest e 360 &egrave; nord).
+            </p>
+            <p>Il percorso ottimale creato pu&ograve; essere un percorso di flusso basato su una direzione di flusso D8. Per generare un percorso ottimale in questo modo, utilizzare un raster di direzione di flusso D8 come input per questo parametro.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tipo percorso (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica una parola chiave che definisce come i valori e le zone nei dati di destinazione di input vengono interpretati nei calcoli del percorso di costo.
+                <ul>
+                    <li> <b>A ogni zona</b>: per ogni zona nei dati di destinazione di input, viene determinato almeno un percorso di costo minimo. Con questa opzione, il percorso di costo minimo per ogni zona inizia nella cella con la ponderazione di distanza di costo pi&ugrave; bassa nella zona. Si tratta dell'impostazione predefinita.
+                         
+                    </li>
+                    <li> <b>Singolo migliore</b>: per tutte le celle nei dati di destinazione di input, il percorso di costo minimo deriva dalla cella con il minimo del percorso di costo minimo per la ricerca delle celle.
+                    </li>
+                    <li> <b>A ogni cella</b>: per ogni celle con valori validi nei dati di destinazione dell'input, viene determinato un percorso di costo minimo. Con questa opzione, ogni cella dei dati di destinazione di input viene trattata separatamente e viene determinato un percorso di costo minimo per ciascuna.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Risultato nome feature layer</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

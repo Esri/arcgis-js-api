@@ -44,7 +44,7 @@
         <h2>Podsumuj raster w ramach</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Narzędzie Podsumuj raster w ramach"></h2>
         <hr/>
-    <p>To narzędzie podsumowuje raster na podstawie obszar&oacute;w (stref) zdefiniowanych przez pierwszą warstwę wejściową.
+    <p>To narzędzie tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych.
     </p>
     <p>Poniżej przedstawiono następujące przykładowe zastosowania:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Po wybraniu warstwy do zsumowania można także obliczyć dane statystyczne dowolnych atrybut&oacute;w liczbowych punkt&oacute;w, linii lub obszar&oacute;w znajdujących się w wejściowej warstwie powierzchniowej.
             </p>
-            <p>W przypadku wybrania pola typu całkowitego dostępne są następujące typy obliczeń statystycznych: średnia, większość, maksimum, mediana, minimum, mniejszość, zakres, odchylenie standardowe, suma i zr&oacute;żnicowanie.
+            <p>W przypadku wybrania pola typu całkowitego dostępne są następujące typy obliczeń statystycznych: średnia, większość, maksimum, mediana, minimum, mniejszość, percentyl, zakres, odchylenie standardowe, suma i zr&oacute;żnicowanie.
             </p>
             <p>W przypadku pola zmiennoprzecinkowego dostępne opcje to: średnia, maksimum, minimum, zakres, odchylenie standardowe i suma.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Wartość percentylowa</h2></div>
+        <hr/>
+        <div>
+            <p>Percentyl do obliczenia. Wartość domyślna to 90. Oznacza ona 90. percentyl.
+            </p>
+            <p>Wartości należą do zakresu od 0 do 100. Zerowy percentyl jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
+            </p>
+            <p>Ta opcja jest obsługiwana tylko wtedy, gdy parametr  <b>Wybierz statystykę do obliczenia</b> jest ustawiony na wartość <b>Percentyl</b>.
             </p>
         </div>
     </div>
@@ -109,7 +121,15 @@
         <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
         <hr/>
         <div>
-            <p>Jeśli zostanie wybrana opcja ignorowania brakujących wartości, podczas ustalania wartości wynikowej dla tego obszaru będą używane tylko te kom&oacute;rki, kt&oacute;re mają wartość w warstwie do zsumowania.  W przeciwnym razie, jeśli gdziekolwiek w obszarze brakuje wartości, uznaje się, że nie ma wystarczających informacji do przeprowadzenia obliczeń statystycznych dla wszystkich kom&oacute;rek w tej strefie, a w danych wynikowych temu obszarowi zostanie przypisana wartość pusta (NoData).
+            <p>Jeśli zostanie wybrana opcja ignorowania brakujących wartości, podczas ustalania wartości wynikowej dla tego obszaru będą używane tylko te kom&oacute;rki, kt&oacute;re mają wartość w warstwie do zsumowania. W przeciwnym razie, jeśli gdziekolwiek w obszarze brakuje wartości, uznaje się, że nie ma wystarczających informacji do przeprowadzenia obliczeń statystycznych dla wszystkich kom&oacute;rek w tej strefie, a w danych wynikowych temu obszarowi zostanie przypisana wartość pusta (NoData).
+            </p>
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Przetwarzaj jako wielowymiarowe</h2></div>
+        <hr/>
+        <div>
+            <p>Decyduje o tym, jak będą przetwarzane rastry wejściowe, jeśli są to rastry wielowymiarowe. Jeśli zostanie wybrana opcja przetwarzania rastr&oacute;w jako wielowymiarowych, zostaną obliczone statystyki ze wszystkich wymiar&oacute;w wejściowego zestawu danych wielowymiarowych. W przeciwnym razie zostaną obliczone statystyki z bieżącego przekroju zestawu danych wielowymiarowych. Jest to opcja domyślna.
             </p>
         </div>
     </div>
@@ -117,6 +137,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

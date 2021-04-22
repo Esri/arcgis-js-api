@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","./_ClusteredColumnsBase"],(function(e,r){return e(r,{_drawColumn:function(e,r,t,o,s,i,n,a){return this._drawColumnBackground(e,r,t,o,s,i,n,a),{shape:this.createRect(n,e,t).setFill(o.series.fill).setStroke(o.series.stroke),rect:t}},_drawColumnBackground:function(e,r,t,o,s,i,n,a){if(o.series.showColumnBarBackground){var u=r[r.valueProp],l={x:t.x,y:u>0?i.t:s.height-i.b-a,width:t.width,height:u>0?s.height-i.t-i.b-a:a};this.createRect(n,e,l).setFill(o.series.columnBarBackgroundColor)}}})}));

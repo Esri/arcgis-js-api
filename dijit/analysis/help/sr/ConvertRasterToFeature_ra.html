@@ -42,11 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Konvertuj raster u geoobjekat</h2><p/>
-        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Alatka za konvertovanje rastera u geoobjekat"></h2>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="Alat za konvertovanje rastera u geoobjekat"></h2>
         <hr/>
     <p>Ovaj alat konvertuje raster u skup podataka geoobjekta, kao &scaron;to su tačke, linije ili poligoni.
     </p>
-    <p>Parametar  <b>Odaberite polje</b> vam omogućava da odaberete koje će polje atributa skupa podataka ulaznog rastera postati atribut u klasi izlaznog geoobjekta. Ovaj parametar je dostupan samo za celobrojne rastere koji imaju dodatne atribute u povezanoj tabeli.
+    <p>Parametar  <b>Odaberite polje</b> vam omogućava da odaberete koje polje atributa skupa podataka ulaznog rastera će postati atribut u klasi izlaznog geoobjekta. Ovaj parametar je dostupan samo za celobrojne rastere koji imaju dodatne atribute u povezanoj tabeli.
     </p>
     <p>Ulazni raster može da ima ćeliju bilo koje veličine.
     </p>
@@ -55,7 +55,6 @@
     <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, konvertovaće se samo one ćelije rastera koje su vidljive unutar trenutnog obuhvata mape. Ako nije izabrana, sve ćelije u sloju rastera će biti konvertovane, čak i ako su izvan trenutnog obuhvata mape. Obratite pažnju na to, ako je sloj rastera velik ili ima veoma visoku rezoluciju.
     </p>
     <p>Slučajevi upotrebe za ovaj alat uključuju sledeće:
-
         <ul>
             <li>Kreirajte poligonalne geoobjekte iz rastera za klasifikaciju kori&scaron;ćenja zemlji&scaron;ta.
                 
@@ -86,13 +85,13 @@
         <div><h2>Odaberite polje</h2></div>
         <hr/>
         <div>
-            <p>Polje u kom se navodi vrednost konverzije.
+            <p>Polje koje navodi za vrednost za konverziju.
             </p>
             <p>To može biti celobrojna ili tekstualna vrednost.
             </p>
             <p>Polje koje sadrži vrednosti sa pokretnim zarezom može da se koristi samo ako izlazni rezultati idu u tačkasti skup podataka.
             </p>
-            <p>Podrazumevano je polje  <i>Value</i>, koje sadrži vrednost svake ćelije rastera.
+            <p>Podrazumevano je polje  <i>Value</i>, koje sadrži vrednost u svakoj ćeliji rastera.
             </p>
         </div>
     </div>
@@ -100,7 +99,7 @@
         <div><h2>Odaberite tip izlaznih rezultata</h2></div>
         <hr/>
         <div>
-            <p>Određuje tip izlaznih rezultata.
+            <p>Navodi tip izlaza.
             </p>
             <ul>
                 <li> <b>Tačka</b>&mdash;raster će biti konvertovan u tačkasti skup podataka. Ovo je podrazumevano.
@@ -123,20 +122,20 @@
         <div><h2>Pojednostavi linije ili poligone</h2></div>
         <hr/>
         <div>
-            <p>Određuje da li će linije ili poligoni biti pojednostavljeni (poravnati). Poravnjivanje se vr&scaron;i na takav način da linija sadrži najmanji broj segmenata, dok istovremeno ostaje &scaron;to je moguće bliže početnim ivicama ćelije rastera.
+            <p>Navodi da li će linije ili poligoni biti pojednostavljeni (ublaženi). Ublažavanje se obavlja tako da linija sadrži minimalni broj segmenata dok ostaje &scaron;to je bliže moguće originalnom rasteru grupa ćelija.
             </p>
             <ul>
-                <li>Izabrano&mdash;Linijski ili poligonalni geoobjekti će biti poravnati kako bi se proizveo op&scaron;tiji rezultat. Ovo je podrazumevano.
+                <li>Obeleženo&mdash;Linijski ili poligonalni geoobjekti će biti poravnati kako bi se proizveo op&scaron;tiji rezultat. Ovo je podrazumevano.
                     
 
                 </li>
-                <li>Nije izabrano&mdash;Linijski ili poligonalni geoobjekti će pratiti granice ćelija rasterskog skupa podataka.
+                <li>Neobeleženo&mdash;Linijski ili poligonalni geoobjekti će pratiti granice ćelije rastera seta podataka.
                     
 
                 </li>
             </ul>
             
-            <p>Ovaj parametar je isključivo podržan ako je izlazni rezultat linija ili poligon.
+            <p>Ovaj parametar je samo podržan ako je tip izlaza granica ćelija rastera seta podataka.
             </p>
         </div>
     </div>
@@ -144,32 +143,32 @@
         <div><h2>Kreiraj višedelne geoobjekte</h2></div>
         <hr/>
         <div>
-            <p>Određuje da li će se izlazni poligoni sastojati od geoobjekata od jednog ili vi&scaron;e delova.
+            <p>Navodi da li će se odlazni poligoni sastojati od geoobjekata od jednog ili vi&scaron;e delova.
             </p>
             <ul>
-                <li>Izabrano&mdash;Vi&scaron;edelni geoobjekti će biti kreirani na osnovu poligona koji imaju istu vrednost.
+                <li>Obeleženo&mdash;Geoobjekti iz vi&scaron;e delova biće kreirani na osnovu poligona koji imaju istu vrednost.
                     
 
                 </li>
-                <li>Nije izabrano&mdash;Pojedinačni (jednodelni) geoobjekti će biti kreirani za svaki poligon. Ovo je podrazumevano.
+                <li>Neobeleženo&mdash;Individualni (jednodelni) geoobjekti biće kreirani za svaki poligon. Ovo je podrazumevano.
                     
 
                 </li>
             </ul>
             
-            <p>Ovaj parametar je isključivo podržan ako je izlazni rezultat poligon.
+            <p>Ovaj parametar je samo podržan ako je tip izlaza poligon.
             </p>
         </div>
     </div>
     <div id="maxVerticesPerFeature">
-        <div><h2>Maksimalan broj temena po poligonalnom geoobjektu</h2></div>
+        <div><h2>Maksimalno vertikala po poligonalnom geoobjektu</h2></div>
         <hr/>
         <div>
-            <p>Ograničenje temena koje se koristi za podelu poligona na manje poligone.
+            <p>Vertikalni limit koji se koristi za pod-podelu poligona u manje poligone.
             </p>
-            <p>Ako su ostavljeni prazni, izlazni poligoni neće biti podeljeni. Ovo je podrazumevano.
+            <p>Ako se ostavi prazno, odlazni poligoni neće se deliti. Ovo je podrazumevano.
             </p>
-            <p>Ovaj parametar je isključivo podržan ako je izlazni rezultat poligon.
+            <p>Ovaj parametar je samo podržan ako je tip izlaza poligon.
             </p>
         </div>
     </div>
@@ -177,6 +176,7 @@
         <div><h2>Naziv sloja sa rezultatima</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
             <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.

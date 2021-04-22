@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Velg et inndatalag",addAVar:"Legg til en variabel",distToNearest:"Avstand til nærmeste",attrOfInterest:"Attributt for nærmeste",summaryNearby:"Oversikt over nærmeste",summaryIntersecting:"Oversikt over kryssende",distToNearestLabel:"Avstanden fra beholderens sentrum til nærmeste geoobjekt i inndatalaget",attrOfInterestLabel:"Verdien i et bestemt felt i nærmeste geoobjekt fra inndatalaget",summaryNearbyLabel:"En statistisk beregning av alle geoobjekter som ble funnet innenfor angitt avstand fra cellens sentrum",summaryIntersectingLabel:"En statistisk beregning av alle objekter som krysser beholderen",maxDistancefromCtr:"Maksimum avstand fra beholderens sentrum",fieldToIncude:"Felt som skal inkluderes",statstoCalculate:"Statistikk som skal beregnes",summFeatuesWithin:"Summer geoobjekter innenfor",layerChangeWarnMsg:"Variabler som er lagt til for dette inndatalaget, blir fjernet hvis inndatalaget endres",validationErrorMsg:"Rett opp valideringsfeilene før du legger til en ny variabel",atleastOneVarMsg:"Legg til minst en variabel i dette valgte laget"});

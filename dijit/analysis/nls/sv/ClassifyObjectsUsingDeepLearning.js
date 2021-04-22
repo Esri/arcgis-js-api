@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Klassificera objekt med djupinlärning",inputFeaturesLabel:"Välj geoobjektlager för objekt (valfritt)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Välj den djupinlärningsmodell som används för att klassificera objekt",modelArgsLabel:"Ange modellargument för djupinlärning",classLabelFieldLabel:"Definiera fältnamn för klassetikett (valfritt)",processingModeLabel:"Bearbetningsläge",processAsMosaicLabel:"Bearbeta som mosaikbearbetad bild",processAsItemsLabel:"Bearbeta alla rasterobjekt separat",queryModelArgsMsg:"Söker modellargument ...",queryModelArgsErrMsg:"Det gick inte att söka efter modellargument.",valueLabel:"Värde",nameLabel:"Namn",analysisLayerLabel:"Välj bild som används för att klassificera objekt",itemDescription:"Analysbildtjänst skapad från Klassificera objekt med djupinlärning",itemTags:"Rasteranalysresultat, Klassificera objekt med djupinlärning, ${layername}",itemSnippet:"Analysbildtjänst skapad från Klassificera objekt med djupinlärning"});

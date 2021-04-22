@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({toolDefine:"Trova statistiche argomento",outputLayerName:"${layername}_argumentStatistics",dimensionLabel:"Scegli dimensione da cui si estrarrà la statistica",variablesLabel:"Scegli variabili da analizzare",variablesListLabel:"Variabili [Informazioni dimensione] (Descrizione)",statisticsTypeLabel:"Scegli tipo di statistiche",multipleOccurrenceValueLabel:"Specifica valore di occorrenze multiple (opzionale)",minValueLabel:"Specifica valore minimo",maxValueLabel:"Specifica valore massimo",argumentMinLabel:"Argomento del minimo",argumentMaxLabel:"Argomento del massimo",argumentMedianLabel:"Argomento della mediana",durationLabel:"Durata",dimensionDefinitionLabel:"Scegli definizione dimensione",intervalKeywordLabel:"Scegli parola chiave di intervallo",all:"Tutte",intervalKeyword:"Parola chiave di intervallo",hourly:"Ogni ora",daily:"Ogni giorno",weekly:"Ogni settimana",monthly:"Ogni mese",quarterly:"Trimestrale",yearly:"Annuale",recurringDaily:"Ricorrenza giornaliera",recurringWeekly:"Ricorrenza settimanale",recurringMonthly:"Ricorrenza mensile",recurringQuarterly:"Ricorrenza trimestrale",ignoreNodataLabel:"Ignora valori mancanti nei calcoli",ignore:"Ignora",analysisLayerLabel:"Scegli layer immagini multidimensionale o multibanda da analizzare",itemDescription:"Image service di analisi generato da Trova statistiche argomento",itemTags:"Risultato dell'analisi raster, Trova statistiche argomento, ${layername}",itemSnippet:"Image service di analisi generato da Trova statistiche argomento"});

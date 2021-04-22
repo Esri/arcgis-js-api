@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"בחר שכבת רסטר או שכבת מיקומים של ישויות כדי לקבוע את מסלולי הנסיעה ביניהם",inputCostRasterLabel:"בחר את שכבת הרסטר של עלויות הנסיעה",outputOptimumNetworkName:"הצג בתוצאה שם שכבת קווים של מסלולים מיטביים",outputNeighborNetworkName:"הצג בתוצאה שם שכבת קווים של מסלולים סמוכים (אופציונלי)",outputLayerName:"קבע את עלות הנסיעה המיטבית של ‎${layername}‎",itemDescription:"שכבת הישויות נוצרה מהפעלה של 'קביעת רשת עלות הנסיעה המיטבית' בשכבה ‎${layerName}‎. ",itemTags:"תוצאת הניתוח, קביעת רשת עלויות הנסיעה המיטבית, ‎${layername}‎ ‏‎${fieldname}",itemSnippet:"שכבת הישויות נוצרה מהפעלה של 'קביעת רשת עלות הנסיעה המיטבית'."});

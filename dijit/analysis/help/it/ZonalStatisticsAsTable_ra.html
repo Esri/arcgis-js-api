@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Statistiche zonali come tabella</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Statistiche zonali come diagramma tabella"></h2>
+        <hr/>
+    <p>Questo strumento riepiloga i valori del raster nell'ambito delle zone di un altro dataset e riporta i risultati in una tabella.
+    </p>
+    <p>Di seguito sono riportate alcune applicazioni di esempio:
+    </p>
+    <p>
+        <ul>
+            <li>Dato un layer di confini di stato e la distribuzione di precipitazione media sugli Stati Uniti continentali, calcolare la distribuzione in tutto lo stato di eventi di pioggia estremi utilizzando una lista di valori di percentile.
+                
+
+            </li>
+            <li>Dato un layer di zone ecologiche di sovrapposizione e un layer raster di umidit&agrave; del suolo, calcolare tutte le statistiche supportate all'interno di ogni zona per relazionare le zone con l'umidit&agrave; del suolo disponibile.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, vengono analizzate solo quelle feature nel layer di input e nel layer da riepilogare visibili all'interno dell'estensione mappa corrente. Se &egrave; deselezionata, vengono analizzate tutte le feature presenti nel layer di input e nel layer da riepilogare, anche se esterne all'estensione mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>Scegliere raster di zona o feature</h2></div>
+        <hr/>
+        <div>
+            <p>Il layer che definisce i confini delle zone o aree che verranno riepilogati.
+            </p>
+            <p>Il layer pu&ograve; essere un raster intero o dati feature. Per i raster, le zone sono definite da tutte le posizioni nell'input aventi lo stesso valore di cella. Per feature, le zone possono essere sovrapposte. Le aree non devono essere contigue.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Campo Zona</h2></div>
+        <hr/>
+        <div>
+            <p>Questo &egrave; l'attributo del layer che verr&agrave; utilizzato per definire i confini delle zone (aree).
+            </p>
+            <p>Si supponga, ad esempio, che il primo layer di input definisca i confini dell'unit&agrave; di gestione, con attributi che definiscono la regione, il distretto e l'ID particella di ciascuna unit&agrave;. Si dispone anche di un layer raster che definisce un indice di biodiversit&agrave; per ciascuna posizione. Con il campo selezionato, &egrave; possibile decidere di calcolare la biodiversit&agrave; media a livello locale, di distretto o di regione.
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>Scegliere un raster valore</h2></div>
+        <hr/>
+        <div>
+            <p>Le celle raster in questo layer saranno riepilogate in base alle aree (zone) comprese.
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>Ignorare i NoData nei calcoli (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se i valori NoData vengono ignorati nell'analisi.
+                <ul>
+                    <li>Selezionato: l'analisi includer&agrave; le celle che hanno un valore nel raster valore di input all'interno di ogni zona particolare per determinare il valore di output per quella zona. Le celle NoData nel raster valore saranno ignorate nel calcolo statistico. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li>Non selezionato: l'analisi risulter&agrave; in NoData se ci sono dei valori NoData per le celle del raster di valore all'interno di una zona particolare.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>Tipo di statistiche (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica il tipo di statistica da calcolare.
+            </p>
+            <p>L'input pu&ograve; essere uno dei seguenti:  <b>Tutti</b>, <b>Medio</b>, <b>Maggioranza</b>, <b>Massimo</b>, <b>Mediano</b>, <b>Minimo</b>, <b>Minoranza</b>, <b>Percentile</b>, <b>Intervallo</b>, <b>Deviazione standard</b>, <b>Somma</b>, <b>Variet&agrave;</b>, <b>Minimo e massimo</b>, <b>Deviazione media e standard</b> o <b>Minimo, massimo e medio</b>. L'impostazione predefinita &egrave; <b>Tutti</b>.
+            </p>
+            <p>Se il raster valore di input &egrave; intero, per impostazione predefinita, tutte le statistiche verranno calcolate. Se il raster di valore &egrave; di tipo virgola mobile, per impostazione predefinita, tutte le statistiche tranne  <b>Mediano</b> e <b>Percentile</b> verranno calcolate. 
+            </p>
+            <p>Se il raster di valore input &egrave; di tipo virgola mobile, i calcoli delle zone per  <b>Maggioranza</b>, <b>Minoranza</b> e <b>Variet&agrave;</b> non pu&ograve; essere calcolato.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>Valori percentile (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Le percentuali da calcolare. Un valore singolo o una lista di valori pu&ograve; essere specificata. Il valore predefinito &egrave; 90 , che indica il 90esimo percentile.
+            </p>
+            <p>I valori spaziano da 0 a 100. Il risultati di specificazione del percentile 0 &egrave; essenzialmente equivalente a quello della statistica minima e il percentile 100 &egrave; equivalente al massimo. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
+            </p>
+            <p>Questa opzione &egrave; supportata solamente se il parametro  <b>Tipo di statistiche</b> &egrave; impostato su <b>Percentile</b> o <b>Tutti</b>.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tipo di interpolazione percentile (opzionale)</h2></div>
+        <hr/>
+        <div>
+            
+            <p>Specifica il metodo di interpolazione percentile da utilizzare quando il numero di valori dal raster di input da calcolare &egrave; pari.
+            </p> 
+            <p>Se il valore di input raster &egrave; di tipo pixel intero, viene utilizzato il metodo  <b>Pi&ugrave; vicino</b>. Se il raster di valore di input &egrave; di tipo punto pixel mobile, allora viene usare il metodo <b>Lineare</b>. Si tratta dell'impostazione predefinita.
+            </p>
+            <p>Per il metodo  <b>Pi&ugrave; vicino</b>, il valore disponibile pi&ugrave; vicino al percentile desiderato &egrave; utilizzato. Per il metodo <b>Lineare</b>, la media pesata dei due valori circostanti dal percentile desiderato &egrave; utilizzata.
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Processo come multidimensionale (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica il modo in cui vengono eleborati i raster di input se sono multidimensionali.
+            </p>
+            <ul>
+                <li>Selezionato: le statistiche verranno calcolate dalla porzione corrente del dataset multidimensionale di input. Si tratta dell'impostazione predefinita.
+                    
+
+                </li>
+                <li>Non selezionato: le statistiche verranno calcolate per tutte le dimensioni del dataset multidimensionale dell'input.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>Risultato nome tabella</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

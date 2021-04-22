@@ -48,7 +48,7 @@
     </p>
     <p>A rendszer pixel&eacute;rt&eacute;keket nyer ki valamennyi bemeneti raszterből minden helyen. T&aacute;bl&aacute;zat vagy pontszerűvektoroselem-oszt&aacute;ly j&ouml;n l&eacute;tre, az egyes bemeneti raszterekre vonatkoz&oacute; pixel&eacute;rt&eacute;keket tartalmaz&oacute; mezőkkel. A kimeneti t&aacute;bl&aacute;zatba nem ker&uuml;lnek bele a bemeneti rasztert&aacute;bl&aacute;b&oacute;l sz&aacute;rmaz&oacute; tov&aacute;bbi attrib&uacute;tumok.
     </p>
-    <p>A raszterek b&aacute;rmely kombin&aacute;ci&oacute;ja &ndash; p&eacute;ld&aacute;ul az egys&aacute;vos, t&ouml;bbs&aacute;vos, t&ouml;bbdimenzi&oacute;s vagy t&ouml;bbv&aacute;ltoz&oacute;s &ndash; meghat&aacute;rozhat&oacute; bemeneti raszterk&eacute;nt. A kimeneti t&aacute;bla strukt&uacute;r&aacute;ja megv&aacute;ltozik, ha a bemeneti raszterek multidimenzion&aacute;lisok. Ha valamelyik bemeneti raszterk&eacute;nt t&ouml;bbs&aacute;vos raszter van megadva, akkor a rendszer a bemenetben l&eacute;vő valamennyis s&aacute;vot fel fogja haszn&aacute;lni. Ha t&ouml;bbs&aacute;vos raszter kiv&aacute;lasztott s&aacute;vjait szeretn&eacute; feldolgozni, akkor elősz&ouml;r hozzon l&eacute;tre az adott s&aacute;vokb&oacute;l &aacute;ll&oacute; &uacute;j raszteres adathalmazt. A bemeneti raszterek list&aacute;j&aacute;ban pedig haszn&aacute;lja fel az eredm&eacute;nyt.
+    <p>A raszterek b&aacute;rmely kombin&aacute;ci&oacute;ja &ndash; p&eacute;ld&aacute;ul az egys&aacute;vos, t&ouml;bbs&aacute;vos, t&ouml;bbdimenzi&oacute;s vagy t&ouml;bbv&aacute;ltoz&oacute;s &ndash; meghat&aacute;rozhat&oacute; bemeneti raszterk&eacute;nt. A kimeneti t&aacute;bla strukt&uacute;r&aacute;ja megv&aacute;ltozik, ha a bemeneti raszterek multidimenzion&aacute;lisok. Ha valamelyik bemeneti raszterk&eacute;nt t&ouml;bbs&aacute;vos raszter van megadva, akkor a rendszer a bemenetben l&eacute;vő valamennyi s&aacute;vot fel fogja haszn&aacute;lni. Ha t&ouml;bbs&aacute;vos raszter kiv&aacute;lasztott s&aacute;vjait szeretn&eacute; feldolgozni, akkor elősz&ouml;r hozzon l&eacute;tre az adott s&aacute;vokb&oacute;l &aacute;ll&oacute; &uacute;j raszteres adathalmazt. A bemeneti raszterek list&aacute;j&aacute;ban pedig haszn&aacute;lja fel az eredm&eacute;nyt.
     </p>
     <p>A bemeneti hely lehet raszteres vagy pontszerű vektoros elem.
         <ul>
@@ -56,7 +56,7 @@
             </li>
             <li>Pont &ndash; A rendszer minden pontszerű helyen mint&aacute;t vesz az &eacute;rt&eacute;kekből.
             </li>
-            <li>Vonall&aacute;nc vagy polygon &ndash;A rendszer a polygon vagy vonall&aacute;nc centroidj&aacute;n&aacute;l vesz mint&aacute;t az &eacute;rt&eacute;kekből. Ha a bemeneti raszter t&ouml;bbdimenzi&oacute;s, a rendszer az &eacute;rt&eacute;keket a  <b>Statisztika</b> t&iacute;pusa alapj&aacute;n &ouml;sszes&iacute;ti.
+            <li>Vonall&aacute;nc vagy polygon &ndash;A rendszer a polygon vagy a vonall&aacute;nc centroidj&aacute;n&aacute;l vesz mint&aacute;t az &eacute;rt&eacute;kekből. Ha a bemeneti raszter t&ouml;bbdimenzi&oacute;s, a rendszer az &eacute;rt&eacute;keket a  <b>Statisztika</b> t&iacute;pusa alapj&aacute;n &ouml;sszes&iacute;ti.
             </li>
         </ul>
         
@@ -67,13 +67,13 @@
     </p>
     <p>Ha multipoint vektoros elemmel k&iacute;v&aacute;n elemz&eacute;st v&eacute;grehajtani, akkor elősz&ouml;r alak&iacute;tsa &aacute;t őket egyetlen pontszerű vektoros elemm&eacute;, mielőtt ebben az eszk&ouml;zben haszn&aacute;ln&aacute; őket.
     </p>
-    <p>A kimeneti mintat&aacute;bl&aacute;ban szereplő x,y koordin&aacute;t&aacute;k t&eacute;rbeli referenci&aacute;ja ugyanaz, mint a bemeneti hely raszteres vagy pontszerű vektoros eleme, kiv&eacute;ve, ha a  <b>kimeneti koordin&aacute;ta-rendszer</b> k&ouml;rnyezet meghat&aacute;rozza. Ha a bemeneti helyadatok t&eacute;rbeli referenci&aacute;ja ismeretlen, akkor az x,y koordin&aacute;t&aacute;k t&eacute;rbeli referenci&aacute;ja szint&eacute;n ismeretlen.
+    <p>A kimeneti mintat&aacute;bl&aacute;ban szereplő x,y koordin&aacute;t&aacute;k t&eacute;rbeli referenci&aacute;ja ugyanaz, mint a bemeneti hely raszteres vagy pontszerű vektoros eleme, kiv&eacute;ve, ha meghat&aacute;rozt&aacute;k a  <b>Kimeneti koordin&aacute;ta-rendszer</b> k&ouml;rnyezetben. Ha a bemeneti helyadatok t&eacute;rbeli referenci&aacute;ja ismeretlen, akkor az x,y koordin&aacute;t&aacute;k t&eacute;rbeli referenci&aacute;ja szint&eacute;n ismeretlen.
     </p>
     <p>A kimeneti vektoroselem-oszt&aacute;ly t&eacute;rbeli referenci&aacute;ja ugyanaz, mint a bemeneti hely raszteres vagy pontszerű vektoros eleme, kiv&eacute;ve, ha a  <b>kimeneti koordin&aacute;ta-rendszer</b> k&ouml;rnyezet meghat&aacute;rozza.
     </p>
     <p>A  <b>P&aacute;rhuzamos feldolgoz&aacute;si t&eacute;nyező</b> k&ouml;rnyezetet csak akkor t&aacute;mogatja a rendszer, ha a bemenet t&ouml;bbdimenzi&oacute;s raszter.
     </p>
-    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it vagy s&aacute;vjait elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t vagy s&aacute;vj&aacute;t  elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az alkalmaz&aacute;s csak az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen l&aacute;that&oacute; r&eacute;teg v&aacute;ltoz&oacute;it vagy s&aacute;vjait elemzi. Ha nincs bejel&ouml;lve, akkor a teljes r&eacute;teg minden v&aacute;ltoz&oacute;j&aacute;t vagy s&aacute;vj&aacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -112,7 +112,6 @@
             <p>Hat&aacute;rozza meg a helyazonos&iacute;t&oacute; cell&aacute;khoz vagy vektoros elemekhez t&aacute;rs&iacute;tott idő, m&eacute;lys&eacute;g, vagy m&aacute;s beszerz&eacute;si adatokat.
             </p>
             <p>Mindegyik dimenzi&oacute; eset&eacute;ben h&aacute;rom lehetős&eacute;g van a helyazonos&iacute;t&oacute; cell&aacute;khoz vagy vektoros elemekhez t&aacute;rs&iacute;tott beszerz&eacute;si adatok meghat&aacute;roz&aacute;s&aacute;ra:
-
                 <ul>
                     <li> <b>Egyetlen mező vagy &eacute;rt&eacute;k</b> &ndash; Ha ezt a lehetős&eacute;get jel&ouml;li be, akkor a k&ouml;vetkező adatokat kell megadni:
                         <ul>
@@ -129,7 +128,7 @@
                             </li>
                             <li> <b>Relat&iacute;v &eacute;rt&eacute;k a k&ouml;vetkező előtt:</b> &ndash; adja meg azt a nem negat&iacute;v sz&aacute;mot, amelyet ki kell vonni a <b>Dimenzi&oacute; mező vagy -&eacute;rt&eacute;k</b> param&eacute;terből a k&iacute;v&aacute;nt dimenzi&oacute;&eacute;rt&eacute;k-tartom&aacute;ny kezdet&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz. Ha a dimenzi&oacute; idő, akkor az &eacute;rt&eacute;k a napok sz&aacute;m&aacute;t jel&ouml;li.
                             </li>
-                            <li> <b>Relat&iacute;v &eacute;rt&eacute;k a k&ouml;vetkező ut&aacute;n:</b> &ndash; adja meg azt a nem negat&iacute;v sz&aacute;mot, amelyet hozz&aacute; kell adni a <b>Dimenzi&oacute; mező vagy -&eacute;rt&eacute;k</b> param&eacute;terhez a k&iacute;v&aacute;nt dimenzi&oacute;&eacute;rt&eacute;k-tartom&aacute;ny v&eacute;g&eacute;nek  meghat&aacute;roz&aacute;s&aacute;hoz. Ha a dimenzi&oacute; idő, akkor az &eacute;rt&eacute;k a napok sz&aacute;m&aacute;t jel&ouml;li.
+                            <li> <b>Relat&iacute;v &eacute;rt&eacute;k a k&ouml;vetkező ut&aacute;n:</b> &ndash; adja meg azt a nem negat&iacute;v sz&aacute;mot, amelyet hozz&aacute; kell adni a <b>Dimenzi&oacute; mező vagy -&eacute;rt&eacute;k</b> param&eacute;terhez a k&iacute;v&aacute;nt dimenzi&oacute;&eacute;rt&eacute;k-tartom&aacute;ny v&eacute;g&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz. Ha a dimenzi&oacute; idő, akkor az &eacute;rt&eacute;k a napok sz&aacute;m&aacute;t jel&ouml;li.
                             </li>
                         </ul>
                         
@@ -206,11 +205,11 @@
             <p>Raszter mintav&eacute;telez&eacute;sekor haszn&aacute;lt &uacute;jramintav&eacute;telez&eacute;si algoritmus.
             </p>
             <ul>
-                <li> <b>Legk&ouml;zelebbi</b> &ndash; Legk&ouml;zelebbi szomsz&eacute;d. Ez az alap&eacute;rtelmez&eacute;s.
+                <li> <b>Legk&ouml;zelebbi</b> &ndash; Legk&ouml;zelebbi szomsz&eacute;d, a legk&ouml;zelebbi cella &eacute;rt&eacute;k&eacute;t haszn&aacute;lja a kimeneti cella &eacute;rt&eacute;k&eacute;nek hozz&aacute;rendel&eacute;s&eacute;hez az &uacute;jramintav&eacute;telez&eacute;sn&eacute;l. Ez az alap&eacute;rtelmez&eacute;s.
                 </li>
-                <li> <b>Biline&aacute;ris</b> &ndash; Biline&aacute;ris interpol&aacute;ci&oacute;.
+                <li> <b>Biline&aacute;ris</b> &ndash; Biline&aacute;ris interpol&aacute;ci&oacute;, a cella &uacute;j &eacute;rt&eacute;k&eacute;t a n&eacute;gy legk&ouml;zelebbi bemeneti cella k&ouml;z&eacute;ppontja t&aacute;vols&aacute;g&aacute;nak s&uacute;lyozott &aacute;tlaga alapj&aacute;n hat&aacute;rozza meg.
                 </li>
-                <li> <b>K&ouml;b&ouml;s</b> &ndash; K&ouml;b&ouml;s konvol&uacute;ci&oacute;.
+                <li> <b>K&ouml;b&ouml;s</b> &ndash; K&ouml;b&ouml;s konvol&uacute;ci&oacute;, az adott cella &uacute;j &eacute;rt&eacute;k&eacute;t a 16 legk&ouml;zelebbi bemeneti cella k&ouml;z&eacute;ppontj&aacute;n &aacute;thalad&oacute; sima g&ouml;rbe illeszt&eacute;s&eacute;vel hat&aacute;rozza meg.
                 </li>
             </ul>
             
@@ -238,9 +237,9 @@
             <p>Azt hat&aacute;rozza meg, hogy a rendszer pontszerű vektoroselem-oszt&aacute;lyt hozzon l&eacute;tre, amelynek a t&aacute;bl&aacute;zat&aacute;ban szerepelnek a mintav&eacute;telezett &eacute;rt&eacute;kek, vagy csak mintav&eacute;telezett &eacute;rt&eacute;keket tartalmaz&oacute; t&aacute;bl&aacute;zatot.
             </p>
             <ul>
-                <li> <b>T&aacute;bl&aacute;zat</b>&ndash; T&aacute;bl&aacute;zat l&eacute;trehoz&aacute;sa mintav&eacute;telezett &eacute;rt&eacute;kekkel. Ez az alap&eacute;rtelmez&eacute;s.
+                <li> <b>T&aacute;bl&aacute;zat</b> &ndash; T&aacute;bl&aacute;zat l&eacute;trehoz&aacute;sa mintav&eacute;telezett &eacute;rt&eacute;kekkel. Ez az alap&eacute;rtelmez&eacute;s.
                 </li>
-                <li> <b>Funkci&oacute;k</b>&ndash; pontszerűvektoroselem-oszt&aacute;ly mintav&eacute;telezett &eacute;rt&eacute;kekkel a t&aacute;bl&aacute;zat&aacute;ban. Ha a bemeneti helyazonos&iacute;t&oacute; vektoros elemek vonall&aacute;ncok vagy polygonok, akkor a kimenet minden pontja a bemeneti helyazonos&iacute;t&oacute; vektoros elemek egyes geometri&aacute;inak centroidja.
+                <li> <b>Funkci&oacute;k</b> &ndash; Pontszerűvektoroselem-oszt&aacute;ly mintav&eacute;telezett &eacute;rt&eacute;kekkel a t&aacute;bl&aacute;zat&aacute;ban. Ha a bemeneti helyazonos&iacute;t&oacute; vektoros elemek vonall&aacute;ncok vagy polygonok, akkor a kimenet minden pontja a bemeneti helyazonos&iacute;t&oacute; vektoros elemek egyes geometri&aacute;inak centroidja.
                 </li>
             </ul>
             
@@ -250,7 +249,8 @@
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

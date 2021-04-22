@@ -112,7 +112,6 @@
             <p>Especifique la hora, profundidad u otros datos de adquisici&oacute;n asociados con las entidades o celdas de ubicaci&oacute;n.
             </p>
             <p>Para cada dimensi&oacute;n, existen tres opciones para especificar la informaci&oacute;n de adquisici&oacute;n asociada con celdas o entidades de ubicaci&oacute;n:
-
                 <ul>
                     <li> <b>Campo o valor &uacute;nico</b>: cuando se selecciona esta opci&oacute;n, debe especificarse la siguiente informaci&oacute;n:
                         <ul>
@@ -206,11 +205,11 @@
             <p>El algoritmo de remuestreo utilizado para muestrear un r&aacute;ster.
             </p>
             <ul>
-                <li> <b>M&aacute;s cercano</b>: vecino m&aacute;s cercano. Esta es la opci&oacute;n predeterminada.
+                <li> <b>Vecino</b>: utiliza el valor de la celda m&aacute;s cercana para asignar un valor a la celda de salida durante el remuestreo. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Bilineal</b>: interpolaci&oacute;n bilineal
+                <li> <b>Interpolaci&oacute;n bilinear</b>: determina el nuevo valor de una celda bas&aacute;ndose en el promedio de distancia ponderada de los cuatro centros de celdas de entrada m&aacute;s cercanos.
                 </li>
-                <li> <b>C&uacute;bica</b>: convoluci&oacute;n c&uacute;bica
+                <li> <b>Convoluci&oacute;n c&uacute;bica</b>: determina el nuevo valor de una celda bas&aacute;ndose en el ajuste de una curva suave a trav&eacute;s de los 16 centros de celdas de entrada m&aacute;s cercanos.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

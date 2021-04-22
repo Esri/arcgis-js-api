@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({chooseShape:"اختيار شكل",defineExtent:"تعريف المدى",defineBin:"تحديد حجم الربط بتعيين",area:"المنطقة",distance:"المسافة",resultLayerName:"اسم طبقة النتيجة",hexagon:"مسدس",transverseHexagon:"شكل سداسي مستعرض",square:"مربع",triangle:"مثلث",diamond:"معين",sameAsDisplay:"مثل العرض",emptyBinSize:"لا يمكن ترك حجم الربط خاليًا",currentExtent:"المدى الحالي",intersectExtent:"الاحتفاظ فقط بأشكال الفسيفساء المتقاطعة",outputLayerName:"إنشاء أشكال الفسيفساء في ${extentLayerName}",itemDescription:"تم استخدام المدى من ${extentLayerName}.",itemTags:"نتيجة التحليل، إنشاء أشكال فسيفساء، ${extentLayerName}",itemSnippet:"طبقة المعالم المُنشأة من إنشاء أشكال فسيفساء"});

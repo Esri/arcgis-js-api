@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Sumarizovať raster v rámci</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="N&aacute;stroj Sumarizovať raster v r&aacute;mci"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj sumarizuje hodnoty rastra v r&aacute;mci z&oacute;n in&eacute;ho datasetu.
+    </p>
+    <p>Niektor&eacute; pr&iacute;klady aplik&aacute;ci&iacute; obsahuj&uacute; nasledovn&eacute;:
+    </p>
+    <p>
+        <ul>
+            <li>Ak použit&eacute; vrstvy hran&iacute;c predstavuj&uacute; povodia a hranice využitia krajiny podľa typu p&ocirc;dy, vypoč&iacute;ta v&yacute;meru typu p&ocirc;dy pre každ&eacute; povodie.
+                
+
+            </li>
+            <li>Ak je zadan&aacute; vrstva parciel v r&aacute;mci okresu a vrstva hran&iacute;c obc&iacute;, sumarizuje priemern&uacute; hodnotu voľn&yacute;ch parciel v r&aacute;mci každej obce.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť s&uacute;časn&yacute; rozsah mapy</b>, analyzovan&eacute; bud&uacute; len prvky vo vstupnej vrstve a vrstve určenej na sumariz&aacute;ciu, ktor&eacute; s&uacute; viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak je neza&scaron;krtnut&eacute;, v&scaron;etky prvky vo vrstve vstupu aj vo vrstve určenej na anal&yacute;zu bud&uacute; analyzovan&eacute;, aj pokiaľ s&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="sumWithinLayer">
+        <div><h2>Vyberte plošnú vrstvu, aby ste zosumarizovali rastrovú vrstvu v rámci definovaných hraníc</h2></div>
+        <hr/>
+        <div>
+            <p>Vrstva, ktor&aacute; definuje hranice oblast&iacute; alebo z&oacute;n, ktor&eacute; bud&uacute; sumarizovan&eacute;.
+            </p>
+            <p>Vrstva m&ocirc;že byť rastrov&aacute; alebo prvkov&aacute;. Pre rastre s&uacute; z&oacute;ny definovan&eacute; v&scaron;etk&yacute;mi lokalitami vo vstupe, ktor&eacute; maj&uacute; rovnak&uacute; hodnotu bunky. Oblasti nemusia byť susediace.
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>Vybrať pole na definovanie hraníc</h2></div>
+        <hr/>
+        <div>
+            <p>Toto je atrib&uacute;t vrstvy, ktor&aacute; sa použije na vymedzenie hran&iacute;c oblast&iacute;.
+            </p>
+            <p>Ak napr&iacute;klad prv&aacute; vstupn&aacute; vrstva definuje hranice manažovateľn&yacute;ch jednotiek s atrib&uacute;tmi, ktor&eacute; definuj&uacute; regi&oacute;n, kraj a ID parcely každej jednotky. K dispoz&iacute;cii m&aacute;te tiež rastrov&uacute; vrstvu definuj&uacute;cu index biodiverzity pre každ&uacute; lokalitu. V&yacute;berom poľa sa m&ocirc;žete rozhodn&uacute;ť pre v&yacute;počet priemernej biodiverzity na miestnej, krajskej alebo region&aacute;lnej &uacute;rovni.
+            </p>
+        </div>
+    </div>
+    <div id="sumRasterLayer">
+        <div><h2>Vybrať rastrovú vrstvu na sumarizáciu</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrov&eacute; bunky v tejto vrstve bud&uacute; sumarizovan&eacute; podľa oblast&iacute; (z&oacute;n), do ktor&yacute;ch spadaj&uacute;.
+            </p>
+        </div>
+    </div>
+    <div id="sumStatistic">
+        <div><h2>Vybrať štatistiku na výpočet</h2></div>
+        <hr/>
+        <div>
+            <p>Po v&yacute;bere vrstvy, ktor&aacute; sa m&aacute; sumarizovať, m&ocirc;žete voliteľne vypoč&iacute;tať &scaron;tatistiky ľubovoľn&yacute;ch č&iacute;seln&yacute;ch atrib&uacute;tov bodov, čiar alebo pl&ocirc;ch v r&aacute;mci vrstvy vstupnej oblasti.
+            </p>
+            <p>Ak je vybran&eacute; pole cel&eacute; č&iacute;slo, dostupn&yacute;mi &scaron;tatistick&yacute;mi typmi s&uacute; Priemer, V&auml;č&scaron;ina, Maximum, Medi&aacute;n, Minimum, Men&scaron;ina, Percentil, Rozsah, &Scaron;tandardn&aacute; odch&yacute;lka, S&uacute;čet a Rozmanitosť.
+            </p>
+            <p>Ak je pole desatinn&eacute; č&iacute;slo, k dispoz&iacute;cii je Priemer, Maximum, Minimum, Rozsah, &Scaron;tandardn&aacute; odch&yacute;lka a S&uacute;čet.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Hodnota percentilu</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil, ktor&yacute; sa m&aacute; vypoč&iacute;tať. Predvolen&aacute; hodnota je 90, čo označuje 90-ty percentil.
+            </p>
+            <p>Hodnoty sa m&ocirc;žu pohybovať od 0 do 100. 0-t&yacute; percentil je v podstate ekvivalentn&yacute; so &scaron;tatistick&yacute;m minimom a 100-&yacute; percentil ekvivalentn&yacute; s maximom. Hodnota 50 prinesie v z&aacute;sade rovnak&yacute; v&yacute;sledok ako &scaron;tatistika Medi&aacute;nu.
+            </p>
+            <p>T&aacute;to možnosť je podporovan&aacute;, iba ak je parameter  <b>Vybrať &scaron;tatistiku na v&yacute;počet</b> nastaven&yacute; na <b>Percentil</b>.
+            </p>
+        </div>
+    </div>
+    <div id="missingValues">
+        <div><h2>Ignorovať vo výpočte chýbajúce hodnoty</h2></div>
+        <hr/>
+        <div>
+            <p>Ak sa rozhodnete ignorovať ch&yacute;baj&uacute;ce hodnoty, pri určovan&iacute; v&yacute;stupnej hodnoty pre t&uacute;to oblasť sa použij&uacute; iba bunky, ktor&eacute; maj&uacute; hodnotu vo vrstve, ktor&aacute; sa m&aacute; sumarizovať. V opačnom pr&iacute;pade, ak kdekoľvek v oblasti ch&yacute;baj&uacute; hodnoty, m&aacute; sa za to, že nie je dostatok inform&aacute;ci&iacute; na vykonanie &scaron;tatistick&yacute;ch v&yacute;počtov pre v&scaron;etky bunky v tejto z&oacute;ne a t&aacute;to oblasť dostane na v&yacute;stup nulov&uacute; hodnotu (NoData).
+            </p>
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Spracovať ako viacrozmerné</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje, ako sa bud&uacute; spracov&aacute;vať vstupn&eacute; rastre, ak s&uacute; viacrozmern&eacute;. Ak sa rozhodnete spracov&aacute;vať ako viacrozmern&eacute;, &scaron;tatistika sa bude poč&iacute;tať zo v&scaron;etk&yacute;ch dimenzi&iacute; vstupn&eacute;ho viacrozmern&eacute;ho datasetu. V opačnom pr&iacute;pade sa &scaron;tatistika bude poč&iacute;tať z aktu&aacute;lneho segmentu vstupn&eacute;ho viacrozmern&eacute;ho datasetu. Toto je predvolen&eacute; nastavenie.
+            </p>
+        </div>
+    </div>
+    <div id="resultLayer">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

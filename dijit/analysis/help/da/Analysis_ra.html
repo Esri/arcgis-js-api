@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke. De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via  Portal for ArcGIS, er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Anvend n&aelig;rhed</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b>, <b>Administr&eacute;r data</b>, <b>Deep Learning</b> og <b>Flerdimensional analyse</b>.
+        <p>Med rasteranalyse kan du udf&oslash;re analyse af store rasterdatas&aelig;t ved hj&aelig;lp af  ArcGIS Image Server. Dette g&oslash;r dig i stand til at analysere flere data hurtigere ved at udnytte serverens styrke.De v&aelig;rkt&oslash;jss&aelig;t, der p&aring; nuv&aelig;rende tidspunkt er tilg&aelig;ngelige via Portal for ArcGIS er  <b>Summ&eacute;r data</b>, <b>Analys&eacute;r m&oslash;nstre</b>, <b>Anvend n&aelig;rhed</b>, <b>Analys&eacute;r billede</b>, <b>Analys&eacute;r terr&aelig;n</b>, <b>Administr&eacute;r data</b>, <b>Deep Learning</b> og <b>Flerdimensionel analyse</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summér data</h2>
         <hr/>
-        <p>Dette v&aelig;rkt&oslash;jss&aelig;t indeholder et v&aelig;rkt&oslash;j til beregning af nogle statistikker for et rasterlag inden for de omr&aring;degr&aelig;nser, som du definerer. 
+        <p>Disse v&aelig;rkt&oslash;jer bruges til at beregne statistik for et rasterlag inden for de omr&aring;degr&aelig;nser (zoner), som du har defineret.
             <ul>
                 <li> <b>Summ&eacute;r raster inden for</b> beregner statistik for rasterceller, der ligger inden for definerede omr&aring;degr&aelig;nser.
+                </li>
+                <li> <b>Zonestatistik som tabel</b> opsummerer v&aelig;rdierne for en raster i zonerne i et andet datas&aelig;t og rapporterer resultaterne til en tabel.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner nogle oversigtsstatistikker for rasterceller inden for definerede omr&aring;der.
+            <p>Dette v&aelig;rkt&oslash;j giver en oversigt over v&aelig;rdierne for en raster inden for et andet datas&aelig;ts zoner.
             </p>
-            <p>Her er nogle eksempelanvendelser: 
-
-                <ul>
-                    <li>Ved angivelse af et lag med afvandingsomr&aring;der og et h&oslash;jderasterlag beregnes h&oslash;jdeintervallerne inden for hvert afvandingsomr&aring;de med henblik p&aring; at fastl&aelig;gge, hvilke afvandingsomr&aring;der der vil have den kraftigste vandgennemstr&oslash;mning.
-                        
-
-                    </li>
-                    <li>Ved angivelse af et lag med administrative styringsenheder og et rasterlag med arealanvendelseskategorier beregnes variationen af arealanvendelsesv&aelig;rdier inden for hvert styringsomr&aring;de med henblik p&aring; at identificere, hvilke omr&aring;der der kr&aelig;ver mest arbejde for at f&aring; fastlagt en administrationsplan.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Zonestatistik som tabel</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Zonestatistik som tabeldiagram">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j opsummerer v&aelig;rdierne for en raster i zonerne i et andet datas&aelig;t og rapporterer resultaterne til en tabel.
             </p>
             <br/>
         </div>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Anvend nærhed</h2>
         <hr/>
-        <p>Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at besvare et af de mest almindelige sp&oslash;rgsm&aring;l i geografisk analyse: &quot;Hvad ligger i n&aelig;rheden af hvad?&quot;
-
+        <p>Disse v&aelig;rkt&oslash;jer hj&aelig;lper dig med at besvare nogle af de mest almindelige sp&oslash;rgsm&aring;l, der stilles i forbindelse med geografisk analyse: Hvad ligger i n&aelig;rheden af hvad? og Hvad er den optimale rute?
             <ul>
-                <li> <b>Beregn afstand</b> beregner euklidisk afstand, retning og allokering ud fra en enkelt kilde eller et s&aelig;t af kilder.
+                <li> <b>Beregn afstand</b> beregner den euklidiske afstand, retning og allokering ud fra en enkelt kilde eller et s&aelig;t af kilder.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Beregn rejseomkostninger som polylinje</b> beregner polylinjeruten med de laveste omkostninger mellem kilder og kendte destinationer.
+                <li> <b>Beregn rejseomkostninger som polylinje</b> beregner polylinjeruten med de laveste omkostninger mellem kendte destinationer og kilder.
+                    
+
+                </li>
+                <li> <b>Afstandsakkumulering </b> beregner den akkumulerede afstand fra hver celle til kilderne, hvilket tager h&oslash;jde for ligelinje-afstand, omkostningsafstand, virkelig overfladeafstand samt vandrette og lodrette omkostningsfaktorer.
+                    
+
+                </li>
+                <li> <b>Afstandsallokering</b> beregner afstandsallokeringen fra hver celle til de angivne kilder, baseret p&aring; ligelinje-afstand, omkostningsafstand, virkelig overfladeafstand samt vandrette og lodrette omkostningsfaktorer.
+                    
+
+                </li>
+                <li> <b>Optimal rute som linje</b> beregner den optimale rute fra destinationer til kilder som en linje.
+                    
+
+                </li>
+                <li> <b>Optimal rute som raster</b> beregner den optimale rute fra destinationer til kilder som en raster.
+                    
+
+                </li>
+                <li> <b>Optimal Region-forbindelser</b> beregner det optimale forbindelsesnetv&aelig;rk mellem to eller flere input-regioner.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner den euklidiske afstand, retning og allokering ud fra en enkelt kilde eller et s&aelig;t af kilder. Du kan bruge dette v&aelig;rkt&oslash;j til at afg&oslash;re, hvor langt en placering er fra en vej, en bygning eller en park. Du kan ogs&aring; afg&oslash;re, hvilken retning du skal rejse fra et sted for at vende tilbage til en kilde p&aring; den mest direkte m&aring;de. Du kan se for hver enkelt placering i dit unders&oslash;gelsesomr&aring;de, hvilken kilde der er den n&aelig;rmeste.
+            <p>Dette v&aelig;rkt&oslash;j beregner euklidisk afstand, retning og allokering ud fra en enkelt kilde eller et s&aelig;t af kilder.
             </p>
             <br/>
         </div>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner det optimale omkostningsnetv&aelig;rk ud fra et s&aelig;t af input-regioner.
+            <p>Dette v&aelig;rkt&oslash;j beregner det optimale omkostningsnetv&aelig;rk ud fra et s&aelig;t af input-regioner.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Beregner polylinjeruten med de laveste omkostninger mellem kilder og kendte destinationer.
+            <p>Dette v&aelig;rkt&oslash;j beregner polylinjeruten med de laveste omkostninger mellem destinationer og kilder.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Afstandsakkumulering</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Illustration af Afstandsallokering-v&aelig;rkt&oslash;jet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner den akkumulerede afstand fra hver celle til kilderne, hvilket tager h&oslash;jde for ligelinje-afstand, omkostningsafstand, virkelig overfladeafstand samt vandrette og lodrette faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Afstandsallokering</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Illustration af Afstandsallokering-v&aelig;rkt&oslash;jet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner afstandsallokeringen fra hver celle til de angivne kilder, baseret p&aring; ligelinje-afstand, omkostningsafstand, virkelig overfladeafstand samt vandrette og lodrette faktorer.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal rute som linje</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="Illustration af Optimal rute som linje-v&aelig;rkt&oslash;j">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner den optimale rute fra destinationer til kilder som en linje.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimal rute som raster</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Illustration af Optimal rute som raster-v&aelig;rkt&oslash;jet">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner den optimale rute fra destinationer til kilder som en raster.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimale regionsforbindelser</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="Illustration af v&aelig;rkt&oslash;jet Optimale regionsforbindelser">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Dette v&aelig;rkt&oslash;j beregner det optimale forbindelsesnetv&aelig;rk mellem to eller flere input-regioner.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analysér billede</h2>
         <hr/>
-        <p>F&oslash;lgende v&aelig;rkt&oslash;j hj&aelig;lper dig med at analysere billeder. 
+        <p>F&oslash;lgende v&aelig;rkt&oslash;j i v&aelig;rkt&oslash;jskategorien  <b>Analyser billede</b> hj&aelig;lper dig med at analysere billeder:
             <ul>
-                <li> <b>Anvend rasterfunktionsskabelon</b> behandler dine billeder vha. den k&aelig;de af funktioner, der er angivet i rasterfunktionsskabelonen.
-                </li>
-                <li> <b>Overv&aring;g vegetation</b> registrerer vegetation inde i det billede p&aring; grundlag af aritmetiske handlinger p&aring; b&aring;ndene.
+                <li> <b>Overv&aring;g vegetation</b> registrerer relativr vegetationsd&aelig;kke i et billede p&aring; grundlag af aritmetiske handlinger p&aring; b&aring;ndene. Der findes flere vegetationsindekser til billedanalyse.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Anvend rasterfunktionsskabelon</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Anvend rasterfunktionsskabelon">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>Behandler dine billeder vha. den k&aelig;de af funktioner, der er angivet i rasterfunktionsskabelonen.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Udf&oslash;rer en aritmetisk handling p&aring; b&aring;ndene i et multiband-rasterlag med henblik p&aring; at afsl&oslash;re oplysninger om vegetationsd&aelig;kket i unders&oslash;gelsesomr&aring;det.
+            <p>Udf&oslash;rer en aritmetisk handling p&aring; b&aring;ndene i et multiband-rasterlag med henblik p&aring; at afsl&oslash;re oplysninger om vegetationsd&aelig;kke.
             </p>
             <br/>
         </div>
@@ -373,7 +453,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Genberegn værdier</h2></td>
+                    <td><h2>Kortlæg værdier igen</h2></td>
                     <td>
                     <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="Genberegn v&aelig;rdier-v&aelig;rkt&oslash;j til Portal">
                     </td>
@@ -420,7 +500,7 @@
                 <tbody><tr>
                     <td><h2>Eksempel</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Sample">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="Eksempel">
                     </td>
                 </tr></tbody>
             </table>

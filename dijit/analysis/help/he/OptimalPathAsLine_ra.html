@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>נתיב מיטבי בתור קו</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="איור של כלי 'נתיב מיטבי בתור קו'"></h2>
+        <hr/>
+    <p>כלי זה מחשב את הנתיב המיטבי מיעדים למקורות כקו.
+    </p>
+    <p>להלן דוגמאות ליישומים:
+        <ul>
+            <li>מצא את הנתיב הטוב ביותר עבור כביש חדש, מבחינת עלויות בנייה.
+                
+
+
+            </li>
+            <li>מצא את מסלול השיט המיטבי בין יעד למיקום נוכחי.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>בחר רסטר יעד או ישויות</h2></div>
+        <hr/>
+        <div>
+            <p>שכבת רסטר או ישויות שמזהה את התאים שמהם נקבע הנתיב המיטבי אל המקור האופטימלי.
+            </p>
+            <p>אם הקלט הוא רסטר, עליו להיות מורכב מתאים שיש להם ערכים חוקיים (אפס הוא ערך חוקי) עבור היעדים, ולתאים האחרים יש להקצות NoData. סוג רסטר הקלט חייב להיות מספר שלם.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>שדה יעד</h2></div>
+        <hr/>
+        <div>
+            <p>השדה אשר משמש להשגת ערכים עבור מיקומי היעד.
+            </p>
+            <p>שדה זה חייב להיות מסוג מספר שלם.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>בחר רסטר של הצטברות מרחק</h2></div>
+        <hr/>
+        <div>
+            <p>רסטר הצטברות המרחק משמש לקביעת הנתיב המיטבי מהיעדים אל המקורות.
+            </p>
+            <p>רסטר הצטברות המרחק בדרך כלל נוצר עם כלי הצטברות מרחק או הקצאת מרחק. כל תא ברסטר הצטברות המרחק מייצג את העלות המצטברת המינימלית על פני משטח מכל תא אל ערכה של תאי מקור.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>בחר רסטר של כיוון הפוך או כיוון זרימה</h2></div>
+        <hr/>
+        <div>
+            <p>רסטר הכיוון ההפוך מכיל כיוונים מחושבים במעלות. הכיוו ןמזהה את התא הבא לאורך הנתיב המיטבי חזרה למקור העלות המצטברת הנמוכה ביותר תוך הימנעות ממחסומים.
+            </p>
+            <p>רסטר הכיוון ההפוך בדרך כלל נוצר עם כלי הצטברות מרחק או הקצאת מרחק. במקרה זה, טווח הערכים הוא בין 0 מעלות ל- 360 מעלות. הערך 0 שמור לתאי המקור. כיוון מזרח (ימין) הוא 90 מעלות והערכים גדלים עם כיוון השעון (180 הוא דרום, 270 הוא מערב, 360 הוא צפון).
+            </p>
+            <p>הנתיב המיטבי שנוצר יכול להיות נתיב זרימה על בסיס כיוון זרימה D8. כדי ליצור נתיב מיטבי בדרך זו, השתמש ברסטר כיוון זרימה D8 כקלט עבור פרמטר זה.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>סוג נתיב (אופציונלי)</h2></div>
+        <hr/>
+        <div>
+            <p>מציין מילת מפתח שמגדירה כיצד הערכים והאזורים בנתוני היעד של הקלט יפורשו בחישובי עלויות הנתיבים.
+                <ul>
+                    <li> <b>אל כל אזור</b> - עבור כל אזור בנתוני יעד הקלט, נתיב עם העלות הנמוכה ביותר נקבע. עם אפשרות זו, הנתיב עם העלות הנמוכה ביותר עבור כל אזור מתחיל בתא או במיקום עם שקלול המרחק בעל העלות הנמוכה ביותר באזור. זוהי ברירת המחדל.
+                         
+                    </li>
+                    <li> <b>היחיד הטוב ביותר</b> - עבור כל התאים או המיקומים בנתוני היעד של הקלט, הנתיב עם העלות הנמוכה ביותר נגזר מהמיקום עם מינימום נתיבים עם העלות הנמוכה ביותר אל תאי המקור.
+                    </li>
+                    <li> <b>אל כל תא</b> - עבור כל תא או מיקום עם ערך חוקי בנתוני יעד הקלט, נתיב עם העלות הנמוכה ביותר נקבע. עם אפשרות זו, כל תא של נתוני יעד הקלט מטופל בנפרד, ונתיב עם העלות הנמוכה ביותר נקבע עבור כל תא.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>שם שכבת מאפייני תוצאה</h2></div>
+        <hr/>
+        <div>
+            <p>השם של השכבה שתיווצר ב <b>התוכן שלי</b> ותתווסף למפה. שם ברירת המחדל מבוסס על שם הכלי ושם שכבת הקלט. אם שם השכבה כבר קיים, תתבקש לספק שם אחר.
+            </p>
+            <p>באפשרותך לציין את השם של תיקייה ב- <b>התוכן שלי</b> שבה התוצאה תישמר באמצעות התיבה הנפתחת <b>שמור תוצאה ב</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

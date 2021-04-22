@@ -67,13 +67,13 @@
     </p>
     <p>Da biste izvr&scaron;ili analizu s geoobjektima s vi&scaron;e točaka, prvo ih pretvorite u geoobjekte jedne točke prije nego &scaron;to ih upotrijebite u ovom alatu.
     </p>
-    <p>Prostorna referenca x, y koordinata u tablici izlaznih uzorka jednaka je kao i ulazna lokacija rastera ili geoobjekti točke, osim ako nije navedena u okruženju <b>Izlazni koordinatni sustav</b> . Ako je prostorna referenca podataka o ulaznim lokacijama nepoznata, prostorna referenca x, y koordinata također nije poznata.
+    <p>Prostorna referenca x, y koordinata u tablici izlaznih uzorka jednaka je kao i ulazna lokacija rastera ili geoobjekti točke, osim ako nije navedena u okruženju  <b>Izlazni koordinatni sustav</b>. Ako je prostorna referenca podataka o ulaznim lokacijama nepoznata, prostorna referenca x, y koordinata također nije poznata.
     </p>
     <p>Prostorna referenca klase izlaznih geoobjekta uzorka jednaka je kao i ulazna lokacija rastera ili geoobjekti točke, osim ako nije navedena u okruženju  <b>Izlazni koordinatni sustav</b> .
     </p>
     <p>Okruženje  <b>Faktor za paralelnu obradu</b> je podržano samo kada je ulaz vi&scaron;edimenzionalni raster..
     </p>
-    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte,</b> analizirat će se varijable ili kanali geoobjekta koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable ili kanali cijelog geoobjekta čak i ako se nalaze izvan trenutačnog obuhvata karte.
+    <p>Ako je označena opcija  <b>Upotrijebi trenutačni obuhvat karte</b>, analizirat će se varijable ili kanali geoobjekta koji su vidljivi unutar trenutačnog obuhvata karte. Ako opcija nije označena, analizirat će se varijable ili kanali cijelog geoobjekta čak i ako se nalaze izvan trenutačnog obuhvata karte.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -112,7 +112,6 @@
             <p>Navedite vrijeme, dubinu ili druge podatke o skupljanju povezani s ćelijama ili geoobjektima lokacije.
             </p>
             <p>Za svaku dimenziju postoje tri mogućnosti određivanja informacija o akviziciji povezanih s ćelijama ili geoobjektima lokacije:
-
                 <ul>
                     <li> <b>Jedno polje ili vrijednost</b>&mdash;Kad je odabrana ta opcija, treba navesti sljedeće informacije:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algoritam ponovnog uzorkovanja koji se koristi pri uzorkovanju rastera.
             </p>
             <ul>
-                <li> <b>Najbliži</b>&mdash;Najbliži susjed. To je zadano.
+                <li> <b>Najbliži</b>&mdash;Najbliži susjed, upotrebljava se vrijednost najbliže ćelije za dodjeljivanje vrijednosti izlaznoj ćeliji kod ponovnog uzorkovanja. To je zadano.
                 </li>
-                <li> <b>Bilinearan</b>&mdash;Bilinearna interpolacija
+                <li> <b>Bilinearno</b>&mdash;bilinearna interpolacija i određuje novu vrijednost ćelije na temelju prosječne udaljenosti između četiri najbliža sredi&scaron;ta ulaznih ćelija.
                 </li>
-                <li> <b>Kubno</b>&mdash;Kubična konvolucija
+                <li> <b>Kubično</b>--Kubična konvolucija određuje novu vrijednost ćelija na temelju pode&scaron;avanja izglađene krivulje kroz 16 najbližih centara ulaznih ćelija.
                 </li>
             </ul>
             
@@ -250,6 +249,7 @@
         <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

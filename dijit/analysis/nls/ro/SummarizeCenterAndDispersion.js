@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeţi un strat tematic pentru descris",summaryTypes:"Tipuri de rezumat",centralFeature:"Obiect spațial central",meanCenter:"Centru mediu",medianCenter:"Centru mediu",ellipse:"Elipsă",weightBy:"Greutate după (opțional)",groupBy:"Grupare după (opțional)",resultLayerName:"Nume strat tematic rezultat",outputLayerName:"Descrieți distribuția ${layerName}",none:"Niciunul",itemDescription:"Strat tematic de obiecte spaţiale generat din rularea Centrului de rezumare și dispersare pe ${layerName}. ",itemTags:"Rezultatul analizei, Centru de rezumare și dispersare, ${layerName}",itemSnippet:"Strat tematic de obiecte spaţiale generat din Centrul de rezumare și dispersare"});

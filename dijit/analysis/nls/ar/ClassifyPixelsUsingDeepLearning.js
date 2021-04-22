@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define({toolDefine:"تصنيف وحدات البكسل باستخدام التعلم الشامل",outputLayerName:"${layername}_classified",modelLabel:"اختيار نموذج التعلم الشامل المستخدم لتصنيف البكسل",modelArgsLabel:"تحديد وسيطات نموذج التعلم الشامل",nameLabel:"الاسم",valueLabel:"قيمة",queryModelArgsMsg:"جار الاستعلام عن وسيطات النموذج...",queryModelArgsErrMsg:"فشل الاستعلام عن وسائط النموذج.",analysisLayerLabel:"اختيار صورة مستخدمة لتصنيف البكسل",itemDescription:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل",itemTags:"نتيجة تحليل البيانات النقطية، تصنيف البكسل باستخدام التعلم الشامل، ${layername}",itemSnippet:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل"});
+define({toolDefine:"تصنيف وحدات البكسل باستخدام التعلم الشامل",outputLayerName:"${layername}_classified",modelLabel:"اختيار نموذج التعلم الشامل المستخدم لتصنيف البكسل",modelArgsLabel:"تحديد وسيطات نموذج التعلم الشامل",nameLabel:"الاسم",valueLabel:"قيمة",queryModelArgsMsg:"جار الاستعلام عن وسيطات النموذج...",queryModelArgsErrMsg:"فشل الاستعلام عن وسائط النموذج.",processingModeLabel:"وضع المعالجة",processAsMosaicLabel:"المعالجة كصورة فسيفساء",processAsItemsLabel:"معالجة جميع عناصر البيانات النقطية بشكل منفصل",analysisLayerLabel:"اختيار صورة مستخدمة لتصنيف البكسل",itemDescription:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل",itemTags:"نتيجة تحليل البيانات النقطية، تصنيف البكسل باستخدام التعلم الشامل، ${layername}",itemSnippet:"تحليل خدمة الصورة المنشأة من تصنيف البكسل باستخدام التعلم الشامل"});

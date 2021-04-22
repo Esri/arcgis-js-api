@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Optimalus susisiekimas tarp regionų</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="Optimalaus susisiekimo tarp regionų įrankio iliustracija"></h2>
+        <hr/>
+    <p>&Scaron;is įrankis apskaičiuoja optimalų sujungimo tinklą tarp dviejų ir daugiau įvesties regionų.
+    </p>
+    <p>Taikymo pavyzdžiai:
+        <ul>
+            <li>Tinkamumo modeliavimas &ndash; Pagal tinkamumo modelį nustatėte 10 geriausių lū&scaron;ių buveinių plotų. Siekiant i&scaron;laikyti genetinę metapopuliacijos įvairovę, reikia, kad lū&scaron;ys galėtų judėti per efektyviausią laukinių gyvūnų koridorių tinklą.
+                
+
+            </li>
+            <li>Medienos derlius &ndash; Medienos derliaus funkcija leis sukurti ekonomi&scaron;kiausią medžių kirtimo kelių tinklą, i&scaron; kur bus gaunama mediena.
+                
+
+            </li>
+            <li>Taikos palaikymas - Karinio taikos palaikymo funkcija leidžia nustatyti penkias sritis, kuriose dislokuojami kariai ir personalas. Norite sukurti optimaliai sujungtus tiekimo mar&scaron;rutus tarp bazių.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jei  <b>Naudoti esamą žemėlapio aprėptį</b> pažymėta, bus analizuojamos tik tos įvesties sluoksnių padėtys, kurios patenka į esamo žemėlapio aprėptį Jei nepažymėta, bus analizuojamos visos padėtys abiejuose įvesties sluoksniuose, net jei jos nepatenka į esamą žemėlapio aprėptį.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Pasirinkite regiono rastrą ar elementą</h2></div>
+        <hr/>
+        <div>
+            <p>Optimaliu tinklu sujungiami įvesties regionai.
+            </p>
+            <p>Jei regiono įvestis yra rastras, regionai apibrėžiami tos pačios reik&scaron;mės susisiekiančių (gretimų) gardelių grupėmis. Kiekvienas regionas turi turėti unikalų numerį. Jokiam regionui nepriklausančios gardelės turi būti be duomenų. Rastro tipas turi būti sveikasis skaičius, o reik&scaron;mės gali būti teigiamos arba neigiamos.
+            </p>
+            <p>Jei regiono įvestis yra elementas, ji gali būti ta&scaron;kas, linija ar poligonas. Poligono regionų negali sudaryti kelių dalių poligonai.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Pasrinkite kliūčių rastrą ar elementą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Duomenų rinkinys, apibrėžiantis kliūtis.
+            </p>
+            <p>Rastro įvestis gali būti sveikojo skaičiaus arba de&scaron;imtainio (Float) tipo. Visos gardelės, kuriose yra nurodyta reik&scaron;mė (įskaitant nulį) bus laikomos kliūtimis. Visos NoData gardelės nebus laikomos kliūtimi.
+            </p>
+            <p>Elemento įvestis gali būti ta&scaron;kas, linija arba poligonas.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Pasirinkite sąnaudų rastrą (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Rastras, apibrėžiantis planimetri&scaron;ko judėjimo per kiekvieną gardelę sąnaudas.
+            </p>
+            <p>Kiekvienos gardelės padėties reik&scaron;mė atspindi sąnaudos vienetui atstumą judant per gardelę. Kiekvienos gardelės padėties reik&scaron;mė dauginama i&scaron; gardelės skiriamosios gebos, kompensuojant už judėjimą įstrižai, ir gaunama bendrųjų sąnaudų kertant gardelę suma.
+            </p>
+            <p>Sąnaudų rastro reik&scaron;mės gali būti sveikieji skaičiai arba skaičiai su slankiuoju kableliu, tačiau ne neigiamos ir ne nulinės reik&scaron;mės (sąnaudos negali būti neigiamos arba nulinės).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Atstumo metodas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo ar apskaičiuoti atstumą naudojant&nbsp;plok&scaron;tuminį (plok&scaron;čios žemės), ar geodezinį (elipsoido) metodą.
+            </p>
+            <ul>
+                <li> <b>Plok&scaron;tuminis</b>&mdash;Atstumas apskaičiuojamas ant plok&scaron;čio ploto projekcijos, naudojant 2D Dekarto koordinačių sistemą. Tai yra numatytasis metodas.
+                    
+
+                </li>
+                <li> <b>Geodezinis</b>&mdash;Atstumas apskaičiuojamas naudojant elipsoidą. Todėl, nepaisant įvesties ar i&scaron;vesties projekcijos, rezultatai nepasikeis.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Regionų jungtys (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodo, ar keliai įvesties regionuose tęsiasi ir susijungia.
+            </p>
+            <ul>
+                <li> <b>Generuoti jungtis</b>&mdash;Keliai įvesties regionuose tęsiasi, siekiant sujungti visus į regioną įeinančius kelius. Tai yra numatytasis nustatymas.
+                    
+
+                </li>
+                <li> <b>Jungčių nėra</b>&mdash;Keliai baigiasi įvesties regionų kra&scaron;tuose ir juose nesitęs ir nesusijungs.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Optimalaus sujungimo linijų rezultatų elementų sluoksnio pavadinimas</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>&Scaron;is sluoksnis yra i&scaron;vesties linijos elementas, jungiantis visus įvesties regionus.
+            </p>
+            <p>Kiekvienas kelias (arba linija) turi unikalų numerį, o papildomuose atributų lentelės laukeliuose saugoma konkreti kelio informacija. Papildomi laukeliai yra &scaron;ie:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Unikalus kelio identifikatorius
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Bendras sukauptas kelio atstumas arba sąnaudos
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Pirmasis regionas, kurį jungia kelias
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Kitas kelio jungiamas regionas
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kadangi kiekvienas kelias atvaizduojamas unikalia linija, tose vietose, kur keliai eina tuo pačiu mar&scaron;rutu, bus kelios linijos.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Rezultate gauto gretimų jungčių elemento sluoksnio pavadinimas (neprivaloma)</h2></div>
+        <hr/>
+        <div>
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>&Scaron;is sluoksnis yra i&scaron;vesties linijos elementas, identifikuojantis visus kelius i&scaron; kiekvieno regiono iki kiekvieno artimiausio ar ekonomi&scaron;kiausio kaimyninio regiono.
+            </p>
+            <p>Kiekvienas kelias (arba linija) turi unikalų numerį, o papildomuose atributų lentelės laukeliuose saugoma konkreti kelio informacija. Papildomi laukeliai yra &scaron;ie:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Unikalus kelio identifikatorius
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Bendras sukauptas kelio atstumas arba sąnaudos
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Pirmasis regionas, kurį jungia kelias
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Kitas kelio jungiamas regionas
+                    
+
+                </li>
+            </ul>
+            
+            <p>Kadangi kiekvienas kelias atvaizduojamas unikalia linija, tose vietose, kur keliai eina tuo pačiu mar&scaron;rutu, bus kelios linijos.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,7 @@
         <h2>Raster de synthèse à l'intérieur</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Outil Raster de synth&egrave;se &agrave; l'int&eacute;rieur"></h2>
         <hr/>
-    <p>Cet outil synth&eacute;tise un raster en fonction des surfaces (zones) d&eacute;finies par la premi&egrave;re couche en entr&eacute;e.
+    <p>Cet outil r&eacute;capitule les valeurs d'un raster dans chaque zone d'un autre jeu de donn&eacute;es.
     </p>
     <p>Voici quelques exemples&nbsp;:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Une fois la couche &agrave; synth&eacute;tiser choisie, vous pouvez &eacute;galement calculer des statistiques pour les attributs num&eacute;riques des points, lignes ou zones au sein de la couche surfacique en entr&eacute;e.
             </p>
-            <p>Les types statistiques disponibles lorsque le champ s&eacute;lectionn&eacute; est un entier sont Moyenne, Majorit&eacute;, Maximum, M&eacute;diane, Minimum, Minorit&eacute;, Plage, &Eacute;cart type, Somme et Vari&eacute;t&eacute;.
+            <p>Les types statistiques disponibles lorsque le champ s&eacute;lectionn&eacute; est un entier sont Moyenne, Majorit&eacute;, Maximum, M&eacute;diane, Minimum, Minorit&eacute;, Centile, Plage, &Eacute;cart type, Somme et Vari&eacute;t&eacute;.
             </p>
             <p>Si le champ est &agrave; virgule flottante, les options sont Moyenne, Maximum, Minimum, Plage, Ecart type et Somme.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valeur du percentile</h2></div>
+        <hr/>
+        <div>
+            <p>Pourcentage &agrave; calculer. La valeur par d&eacute;faut est de 90, soit le 90e centile.
+            </p>
+            <p>Les valeurs peuvent varier entre 0 et 100. Le centile centile n&deg;&nbsp;0 est &eacute;quivalent &agrave; la statistique minimale tandis que le 100e centile &eacute;quivaut au maximum Une valeur de 50 donne le m&ecirc;me r&eacute;sultat que la statistique m&eacute;diane.
+            </p>
+            <p>Cette option n&rsquo;est prise en charge que si le param&egrave;tre  <b>Choose statistic to calculate (Choisir les statistiques &agrave; calculer)</b> est d&eacute;fini sur <b>Percentile (Centile)</b>.
             </p>
         </div>
     </div>
@@ -113,11 +125,20 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Traiter comme multidimensionnel</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie le mode de traitement des rasters en entr&eacute;e s&rsquo;il s&rsquo;agit de rasters multidimensionnels. Si vous choisissez le traitement multidimensionnel, les statistiques sont calcul&eacute;es pour toutes les dimensions d&rsquo;un jeu de donn&eacute;es multidimensionnelles. Sinon, les statistiques sont calcul&eacute;es &agrave; partir de la tranche actuelle d&rsquo;un jeu de donn&eacute;es multidimensionnelles en entr&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>

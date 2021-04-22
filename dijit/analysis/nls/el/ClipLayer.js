@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή στοιχείων προς αποκοπή",filterSelectLabel:"Αποκοπή όλων των στοιχείων ή καθορισμός υποσυνόλου (προαιρετικά)",targetArea:"Επιλογή περιοχής από την οποία θα γίνει αποκοπή",outputLayerName:"Αποκοπή από το θεματικό επίπεδο ${inputLayerName} προς το θεματικό επίπεδο ${clipLayerName}",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της λύσης «Αποκοπή». Έγινε αποκοπή των στοιχείων από το θεματικό επίπεδο ${inputLayerName} προς το θεματικό επίπεδο ${clipLayerName}.",itemTags:"Αποτέλεσμα ανάλυσης, Θεματικό Επίπεδο Αποκοπής, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Δημιουργήθηκε feature layer από το Θεματικό Επίπεδο Αποκοπής"});

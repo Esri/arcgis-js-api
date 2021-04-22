@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../Color","../../../core/Accessor","../../../core/accessorSupport/decorators"],(function(r,o,e,t,p,c,i){return function(r){function o(){var o=null!==r&&r.apply(this,arguments)||this;return o.color=new p([0,255,255]),o.haloOpacity=1,o.fillOpacity=.5,o}return e(o,r),t([i.property({type:p})],o.prototype,"color",void 0),t([i.property()],o.prototype,"haloOpacity",void 0),t([i.property()],o.prototype,"fillOpacity",void 0),o=t([i.subclass("esri.views.2d.support.HighlightOptions")],o)}(i.declared(c))}));

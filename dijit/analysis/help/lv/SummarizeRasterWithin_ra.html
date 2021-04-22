@@ -41,37 +41,37 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Apkopot rastru šeit:</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Rīks Apkopot rastru &scaron;eit:"></h2>
+        <h2>Apkopot rastru šajās robežās</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Rīks Apkopot rastru &scaron;ajās robežās:"></h2>
         <hr/>
-    <p>&Scaron;is rīks apkopo rastru, pamatojoties uz teritorijām (zonām), ko definē pirmais ievades slānis.
+    <p>&Scaron;is rīks apkopo rastra vērtības citas datu kopas zonās.
     </p>
     <p>Daži no pielietojumu piemēriem ietver:
     </p>
     <p>
         <ul>
-            <li>Ņemot ūdens&scaron;ķirtnes robežas un zemes lieto&scaron;anas robežas, kalkulē kopējo zemes lieto&scaron;anas veidu katrai ūdens&scaron;ķirtnei.
+            <li>Ņemot ūdens&scaron;ķirtņu robežas un zemes lieto&scaron;anas robežas, aprēķina kopējo zemes lieto&scaron;anas veidu katrai ūdens&scaron;ķirtnes robežai.
                 
 
             </li>
-            <li>Ņemot zemes gabalu slāni un novada un pilsētas robežu slāni, apkopo vidējo brīvo zemes gabalu vērtību katras pilsētas robežās.
+            <li>Ņemot zemes vienību slāni un novada un pilsētas robežu slāni, katrā pilsētas robežu slānī aprēķina vidējo vērtību ar pieejamajām zemes vienībām.
                 
 
             </li>
         </ul>
         
     </p>
-    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā.  Ja noņemsiet atzīmi no izvēles rūtiņas, tiks analizēti visi elementi ievades un apkopojamā slānī (arī tie, kas atradīsies ārpus pa&scaron;reizējā kartes pārklājuma).
+    <p>Ja atzīmēts  <b>Lietot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tie analīzes slāņa un apkopojamā slāņa elementi, kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja iespēja nav atzīmēta, visi elementi ievades un apkopojamajā slānī tiks analizēti&nbsp;&mdash; arī tad, ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Izvēlēties apgabala slāni, lai definētajās robežās apkopotu rastra slāni</h2></div>
+        <div><h2>Izvēlēties laukuma slāni, lai definētajās robežās apkopotu rastra slāni</h2></div>
         <hr/>
         <div>
             <p>Slānis, kas definē apkopojamo teritoriju vai zonu robežas.
             </p>
-            <p>Slānis var būt rastra vai elementu dati. Rastra zonas definē visi ievades novietojumi ar vienādu &scaron;ūnas vērtību. Teritorijām nav jābūt nepārtrauktām.
+            <p>Slānis var būt rastra vai elementu dati. Rastru zonas definē visi ievadē eso&scaron;ie novietojumi ar vienādu &scaron;ūnas vērtību. Teritorijām nav jābūt nepārtrauktām.
             </p>
         </div>
     </div>
@@ -81,7 +81,7 @@
         <div>
             <p>&Scaron;is ir slāņa atribūts, kas tiks izmantots, lai definētu teritoriju robežas.
             </p>
-            <p>Piemēram, pieņemsim, ka pirmais ievades slānis definē pārvaldības vienības robežas ar atribūtiem, kas definē katras vienības reģionu, rajonu un zemes gabala ID. Pieejams arī rastra slānis, kas definē katras atra&scaron;anās vietas bioloģisko daudzveidību. Izvēloties lauku, varat aprēķināt vidējo bioloģisko daudzveidību vietējā, rajona vai reģionālā līmenī.
+            <p>Piemēram, pieņemsim, ka pirmais ievades slānis definē teritorijas zemes pārvaldības vienības robežas un ietver atribūtus, kas definē katras vienības reģionu, rajonu un zemes vienības ID. Pieejams arī rastra slānis, kas definē katras atra&scaron;anās vietas bioloģisko daudzveidību. Izvēloties lauku, varat aprēķināt vidējo bioloģisko daudzveidību vietējā, rajona vai reģionālā līmenī.
             </p>
         </div>
     </div>
@@ -99,9 +99,21 @@
         <div>
             <p>Kad esat izvēlējies apkopojamo slāni, varat pēc izvēles aprēķināt statistiku par jebkuru ievades teritorijas slānī eso&scaron;o punkta, līnijas vai teritorijas skaitlisko atribūtu.
             </p>
-            <p>Ja izvēlētais lauks ir vesels skaitlis, pieejamie statistikas veidi ir vidējais, vairākums, maksimālais, mediāna, minimālais, mazākums, diapazons, standartnovirze, summa un dažādība.
+            <p>Ja izvēlētais lauks ir vesels skaitlis, pieejamie statistikas veidi ir Vidējais, Vairākums, Maksimālais, Mediāna, Minimālais, Mazākums, Procentile, Diapazons, Standartnovirze, Summa un Variabilitāte.
             </p>
-            <p>Ja lauks ir peldo&scaron;ā komata skaitlis, opcijas ir vidējais, maksimālais, minimālais, diapazons, standarta novirze un summa.
+            <p>Ja lauks ir peldo&scaron;ā punkta skaitlis, opcijas ir &scaron;ādas: Vidējais, Maksimālais, Minimālais, Diapazons, Standartnovirze un Summa.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Procentiles vērtība</h2></div>
+        <hr/>
+        <div>
+            <p>Aprēķināmā procentile Noklusējuma vērtība ir&nbsp;90, norādot 90.&nbsp;procentili.
+            </p>
+            <p>Vērtības var būt diapazonā no 0 līdz 100. 0.&nbsp;procentile būtībā ir līdzvērtīga minimālajai statistikai, un 100.&nbsp;procentile ir līdzvērtīga maksimālajai vērtībai. Vērtība 50&nbsp;uzrādīs tādu pa&scaron;u rezultātu kā mediānas statistika.
+            </p>
+            <p>&Scaron;ī opcija tiek atbalstīta tikai tad, ja parametra  <b>Izvēlēties aprēķināmo statistiku</b> iestatījums ir <b>Procentile</b>.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Apstrādāt kā daudzdimensiju</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, kā tiks apstrādāti ievades rastri, ja tie ir daudzdimensionāli. Ja izvēlaties apstrādāt kā daudzdimensiju rastru, statistika tiks aprēķināta no visām ievades daudzdimensiju datu kopas dimensijām. Pretējā gadījumā statistika tiks aprēķināta no ievades daudzdimensiju datu kopas pa&scaron;reizējā slāņa; tas ir noklusējuma iestatījums.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
+            
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
             <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.

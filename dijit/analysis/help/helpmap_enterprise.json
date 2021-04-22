@@ -199,6 +199,12 @@
         },
         "GeographicallyWeightedRegression_bd": {
             "toolDescription": "120001799"
+        },
+        "CalculateMotionStatistics_bd": {
+            "toolDescription": "120002630"
+        },
+        "TraceProximityEvents_bd": {
+            "toolDescription": "120002646"
         }
     }
 }

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","esri/dijit/geoenrichment/promise/all"],(function(n,e){return n(null,{collapseContent:function(){this._grids.forEach((function(n){n.collapseContent()})),this._syncFillerContainer()},hasHiddenContent:function(){return this._grids.some((function(n){return n.hasHiddenContent()}))},resizePanelsToShowContent:function(){return e(this._grids.map((function(n){return n.resizeRowHeightToShowCellsContent()})))}})}));

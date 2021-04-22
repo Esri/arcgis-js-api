@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Atranka</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Atranka"></h2>
+        <h2>Pavyzdys</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Pavyzdys"></h2>
         <hr/>
     <p>&Scaron;is įrankis sukuria lentelę arba ta&scaron;kų elementų klasę, kurioje rodomos rastro arba rastrų rinkinio gardelių reik&scaron;mės apibrėžtoms vietoms. Vietas apibrėžia rastrinės gardelės, plotiniai elementai, polilinijų elementai arba ta&scaron;kų rinkinys.
     </p>
@@ -112,7 +112,6 @@
             <p>Nurodykite laiką, gylį ar kitus duomenų rinkimo duomenis, susijusius su vietos gardelėmis ar elementais.
             </p>
             <p>Kiekvienam matmeniui yra trys parinktys nurodyti duomenų gavimo informaciją, susijusią su vietos gardelėmis ar elementais:
-
                 <ul>
                     <li> <b>Vienas laukas arba reik&scaron;mė</b> &ndash; pasirinkus &scaron;ią parinktį, reikia nurodyti &scaron;ią informaciją:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Perdėstymo algoritmas, naudojamas rastro atrankai.
             </p>
             <ul>
-                <li> <b>Artimiausias</b> &ndash; artimiausias kaimynas. Tai numatytasis nustatymas.
+                <li> <b>Artimiausias</b>&mdash;Pasirinkus artimiausio kaimyno nustatymą, perskaičiuojant ir priskiriant reik&scaron;mę i&scaron;vesties gardelei, naudojama artimiausios gardelės reik&scaron;mė. Tai yra numatytasis nustatymas.
                 </li>
-                <li> <b>Dvitiesis</b> &ndash; dvitiesis interpoliavimas
+                <li> <b>Dvitiesis</b>&mdash;Pasirinkus dvitiesį interpoliavimą, apskaičiuojama nauja gardelės reik&scaron;mė pagal artimiausių keturių įvesties gardelių centrų pasvertą atstumo vidurkį.
                 </li>
-                <li> <b>Kubinė</b> &ndash; kubinė sąsūka
+                <li> <b>Kubinė</b>&mdash;Pasirinkus kubinę sąsūką, apskaičiuojama nauja gardelės reik&scaron;mė pagal glodintos kreivės tinkamumą per 16 artimiausių įvesties gardelių centrus.
                 </li>
             </ul>
             
@@ -223,7 +222,7 @@
             <p>Nurodo, ar įtrauktos reik&scaron;mės rodomos i&scaron;vesties lentelės eilutėse ar stulpeliuose. &Scaron;i parinktis galima tik tada, kai įvesties daugiamatis rastras turi vieną kintamąjį ir vieną matmenį, o kiekviena skiltis yra vieno kanalo rastras.
             </p>
             <ul>
-                <li> <b>Atrinktos reik&scaron;mės rodomos eilutėje</b> &ndash; atrinktos reik&scaron;mės rodomos atskirose i&scaron;vesties lentelės eilutėse. Tai numatytasis nustatymas.
+                <li> <b>Atrinktos reik&scaron;mės rodomos eilutėje</b> &ndash; atrinktos reik&scaron;mės rodomos atskirose i&scaron;vesties lentelės eilutėse. Tai yra numatytasis nustatymas.
                 </li>
                 <li> <b>Atrinktos reik&scaron;mės rodomos stulpelyje</b> &ndash; atrinktos reik&scaron;mės rodomos atskiruose i&scaron;vesties lentelės stulpeliuose. &Scaron;i parinktis tinkama tik tada, kai įvesties daugiamatis rastras turi vieną kintamąjį ir vieną matmenį, o kiekviena skiltis yra vieno kanalo rastras.
                 </li>
@@ -238,7 +237,7 @@
             <p>Nurodo, ar sugeneruos ta&scaron;ko elementų klasę su atrinktomis reik&scaron;mėmis jų lentelėje, ar tik lentelę su atrinktomis reik&scaron;mėmis.
             </p>
             <ul>
-                <li> <b>Lentelė</b> &ndash; generuoti lentelę su atrinktomis reik&scaron;mėmis. Tai numatytasis nustatymas.
+                <li> <b>Lentelė</b> &ndash; generuoti lentelę su atrinktomis reik&scaron;mėmis. Tai yra numatytasis nustatymas.
                 </li>
                 <li> <b>Elementai</b> &ndash; generuoti ta&scaron;ko elementų klasę su atrinktomis reik&scaron;mėmis jų lentelėje. Jei įvesties vietos elementai yra polilinijos arba plotai, kiekvienas i&scaron;vesties ta&scaron;kas yra kiekvienos įvesties vietos elementų geometrijos centroidas.
                 </li>
@@ -250,7 +249,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

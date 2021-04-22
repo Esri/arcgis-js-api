@@ -44,7 +44,7 @@
         <h2>Gerar Anomalia Multidimensional</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Gerar Anomalia Multidimensional"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Computes the anomaly for each slice in an existing multidimensional raster to generate a new multidimensional raster.
     </p>
     <p>Uma anomalia &eacute; a diverg&ecirc;ncia de uma observa&ccedil;&atilde;o de seu valor padr&atilde;o, m&eacute;dia ou mediana.
     </p>
@@ -59,7 +59,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Escolher camada de imagens multidimensionais para gerar anomalia</h2></div>
+        <div><h2>Escolha a camada de imagens multidimensional para gerar anomalia</h2></div>
         <hr/>
         <div>
             <p>A camada de imagens de entrada de um conjunto de dados raster multidimensional.
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Escolher variáveis para as quais serão geradas anomalias</h2></div>
+        <div><h2>Escolha variáveis em que as anomalias serão geradas</h2></div>
         <hr/>
         <div>
             <p>A vari&aacute;vel ou vari&aacute;veis em que as anomalias ser&atilde;o calculadas. Se nenhuma vari&aacute;vel for especificada, todas as vari&aacute;veis com uma dimens&atilde;o de tempo ser&atilde;o analisadas.
@@ -75,10 +75,10 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Escolher método para gerar anomalia</h2></div>
+        <div><h2>Escolha o método para gerar anomalia</h2></div>
         <hr/>
         <div>
-            <p>Especifica o texto que ser&aacute; utilizado para calcular a anomalia. 
+            <p>Especifica o texto que ser&aacute; utilizado para calcular a anomalia.
                 <ul>
                     <li> <b>Diferen&ccedil;a da M&eacute;dia</b>&mdash;A diferen&ccedil;a entre um valor de pixel e a m&eacute;dia deste valor do pixel atrav&eacute;s de partes definidas pelo intervalo ser&aacute; calculada. Este &eacute; o padr&atilde;o.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Diferen&ccedil;a da m&eacute;dia = x - &micro;
-
                         <ul>
                             <li>x = valor de pixel em uma parte
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Diferen&ccedil;a de porcentagem da m&eacute;dia = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valor de pixel em uma parte
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Porcentagem da m&eacute;dia = x - &micro;
-
                         <ul>
                             <li>x = valor de pixel em uma parte
                                 
@@ -199,10 +196,10 @@
         </div>
     </div>
     <div id="calculationInterval">
-        <div><h2>Escolher intervalo temporal para calcular a média</h2></div>
+        <div><h2>Escolha intervalo temporal para calcular a média</h2></div>
         <hr/>
         <div>
-            <p>Especifica o intervalo temporal que ser&aacute; utilizado para calcular a m&eacute;dia. 
+            <p>Especifica o intervalo temporal que ser&aacute; utilizado para calcular a m&eacute;dia.
                 <ul>
                     <li> <b>Todos</b>&mdash;Calcula a m&eacute;dia atrav&eacute;s de todas as partes de cada pixel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorar valores ausentes no cálculo</h2></div>
         <hr/>
         <div>
-            <p>Especifica se os valores ausentes s&atilde;o ignorados na an&aacute;lise. 
+            <p>Especifica se os valores ausentes s&atilde;o ignorados na an&aacute;lise.
                 <ul>
                     <li>Marcado&mdash;A an&aacute;lise incluir&aacute; todos os pixels v&aacute;lidos ao longo de uma dimens&atilde;o fornecida e ignorar&aacute; quaisquer pixels de NoData. Este &eacute; o padr&atilde;o.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .

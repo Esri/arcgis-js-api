@@ -41,46 +41,49 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab  ArcGIS Image Serveriga anal&uuml;&uuml;sida suuri rasterandmestikke. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid. Hetkel portaalis  Portal for ArcGIS kasutamiseks saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmed</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Kasuta l&auml;hedust</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b>, <b>Halda andmeid </b>, <b>S&uuml;va&otilde;pe</b> ja <b>Mitmem&otilde;&otilde;tmeline anal&uuml;&uuml;s</b>.
+        <p>Rasteranal&uuml;&uuml;s v&otilde;imaldab anal&uuml;&uuml;sida suuri rasterandmestikke, kasutades kihte  ArcGIS Image Server. Nii saate serveri j&otilde;udlust &auml;ra kasutades anal&uuml;&uuml;sida kiiremini rohkem andmeid.Hetkel portaalis Portal for ArcGIS saadaval olevad t&ouml;&ouml;riistakomplektid on  <b>Summeeri andmed</b>, <b>Anal&uuml;&uuml;si mustreid</b>, <b>Kasuta l&auml;hedust</b>, <b>Anal&uuml;&uuml;si pilti</b>, <b>Anal&uuml;&uuml;si maastikku</b>, <b>Halda andmeid</b>, <b>S&uuml;va&otilde;pe</b> ja <b>Mitmem&otilde;&otilde;tmeline anal&uuml;&uuml;s</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Summeeri andmeid</h2>
         <hr/>
-        <p>See t&ouml;&ouml;riistakomplekt sisaldab t&ouml;&ouml;riista rasterkihi statistikute arvutamiseks teie m&auml;&auml;ratletud ala piirides. 
+        <p>Neid t&ouml;&ouml;riistu kasutatakse rasterkihi statistikute arvutamiseks teie m&auml;&auml;ratletud ala piirides (tsoonides).
             <ul>
                 <li> <b>Summeeri rastri piirides</b> arvutab m&auml;&auml;ratletud ala piiridesse j&auml;&auml;vate rasterkihi pikslite statistikud.
+                </li>
+                <li> <b>Tsoonip&otilde;hine statistika tabelina</b> v&otilde;tab kokku rastri v&auml;&auml;rtused teise andmestiku tsoonides ja esitab tulemused tabelisse.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Summeeri raster piirides</h2></td>
+                    <td><h2>Summeeri piirides olev raster</h2></td>
                     <td>
-                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="T&ouml;&ouml;riist &quot;Summeeri raster piirides&quot;">
+                    <img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" class="titleImage" alt="Summeeri rastri piirides t&ouml;&ouml;riist">
                     </td>
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Arvutab m&auml;&auml;ratletud ala piiridesse j&auml;&auml;vate rasterkihi pikslite summaarsed statistikud.
+            <p>See t&ouml;&ouml;riist v&otilde;tab kokku rastri v&auml;&auml;rtused teise andmestiku tsoonides.
             </p>
-            <p>V&otilde;imalikud kasutusalad on muuhulgas j&auml;rgnevad: 
-
-                <ul>
-                    <li>V&otilde;ttes arvesse valgalade kihti ja k&otilde;rgusandmete rasterkihti, saame arvutada iga valgala osas k&otilde;rguste vahemiku, et m&auml;&auml;rata, millistel neist on k&otilde;ige suurema energiaga vool.
-                        
-
-                    </li>
-                    <li>V&otilde;ttes arvesse haldus&uuml;ksuste kihti ja maakasutuse kategooriaid kirjeldavat rasterkihti, saame arvutada maakasutuse v&auml;&auml;rtuste mitmekesisuse igas haldus&uuml;ksuses m&auml;&auml;ramaks, milliste puhul on halduskava koostamiseks k&otilde;ige rohkem t&ouml;&ouml;d vaja teha.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tsoonipõhine statistika tabelina</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Diagramm Tsoonip&otilde;hine statistika tabelina">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist v&otilde;tab kokku rastri v&auml;&auml;rtused teise andmestiku tsoonides ja esitab tulemused tabelisse.
             </p>
             <br/>
         </div>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Kasuta lähedust</h2>
         <hr/>
-        <p>Need t&ouml;&ouml;riistad aitavad vastata ruumianal&uuml;&uuml;si k&auml;igus sageli tekkivale k&uuml;simusele &bdquo;Mis on mille l&auml;hedal?&ldquo;
-
+        <p>Need t&ouml;&ouml;riistad aitavad vastata ruumianal&uuml;&uuml;si k&auml;igus sageli tekkivale k&uuml;simusele: &quot;Mis on mille l&auml;hedal?&quot; ja &quot;Milline on k&otilde;ige optimaalsem tee?&quot;
             <ul>
-                <li> <b>Arvuta vahemaa</b>. See t&ouml;&ouml;riist arvutab Eukleidese kauguse, suuna ja paigutuse &uuml;hestainsast l&auml;htepunktist v&otilde;i l&auml;htepunktide komplektist.
+                <li> <b>Arvuta vahemaa.</b> See t&ouml;&ouml;riist arvutab Eukleidese kauguse, suuna ja paigutuse &uuml;hestainsast l&auml;htepunktist v&otilde;i l&auml;htepunktide komplektist.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>M&auml;&auml;ra s&otilde;idukulude tee murdjoonena</b>. See t&ouml;&ouml;riist arvutab odavaima murdjoone tee l&auml;htekohtade ja teadaolevate sihtkohtade vahel.
+                <li> <b>M&auml;&auml;ra s&otilde;idukulude tee murdjoonena</b> See t&ouml;&ouml;riist arvutab odavaima murdjoone tee teadaolevate sihtkohtade ja l&auml;htekohtade vahel.
+                    
+
+                </li>
+                <li> <b>Akumuleerunud kaugus</b> See t&ouml;&ouml;riist arvutab iga lahtri akumuleerunud kauguse allikateni, v&otilde;imaldades kasutada sirgjoonelist kaugust, kulukaugust, tegelikku pinna kaugust, samuti vertikaalseid ja horisontaalseid kulutegureid.
+                    
+
+                </li>
+                <li> <b>Kauguse paigutus</b> See t&ouml;&ouml;riist arvutab iga lahtri kauguse paigutuse antud allikateni, v&otilde;imaldades kasutada sirgjoonelist kaugust, kulukaugust, tegelikku pinna kaugust, samuti vertikaalseid ja horisontaalseid kulutegureid.
+                    
+
+                </li>
+                <li> <b>Optimaalne tee joonena</b> See t&ouml;&ouml;riist arvutab optimaalse tee sihtkohtadest l&auml;htekohani joonena.
+                    
+
+                </li>
+                <li> <b>Optimaalne tee rastrina</b> See t&ouml;&ouml;riist arvutab optimaalse tee sihtkohtadest l&auml;htekohtadeni rastrina.
+                    
+
+                </li>
+                <li> <b>Piirkonna optimaalsed &uuml;hendused</b> see t&ouml;&ouml;riist arvutab optimaalne &uuml;hendusv&otilde;rgu kahe v&otilde;i enama sisendpiirkonna vahel..
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,7 +185,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>See t&ouml;&ouml;riist arvutab Eukleidese kauguse, suuna ja paigutuse &uuml;hestainsast l&auml;htepunktist v&otilde;i l&auml;htepunktide komplektist. Selle t&ouml;&ouml;riista abil saate m&auml;&auml;rata, kui kaugel on asukoht teest, hoonest v&otilde;i pargist. Saate ka m&auml;&auml;rata, mis suunas peate asukohast liikuma, et j&otilde;uda k&otilde;ige otsemat teed m&ouml;&ouml;da l&auml;htepunkti tagasi. Saate oma uuringuala asukohtade hulgas leida l&auml;htepunktile k&otilde;ige l&auml;hema koha.
+            <p>See t&ouml;&ouml;riist arvutab Eukleidese kauguse, suuna ja paigutuse &uuml;hestainsast l&auml;htepunktist v&otilde;i l&auml;htepunktide komplektist.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>See t&ouml;&ouml;riist arvutab odavaima murdjoone tee l&auml;htekohtade ja teadaolevate sihtkohtade vahel.
+            <p>See t&ouml;&ouml;riist arvutab odavaima murdjoone tee sihtkohtade ja l&auml;htekohtade vahel.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kauguse akumulatsioon</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="T&ouml;&ouml;riista Kauguse akumulatsioon illustratsioon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab iga lahtri akumuleerunud kauguse allikateni, v&otilde;imaldades kasutada sirgjoonelist kaugust, kulukaugust, tegelikku pinna kaugust, samuti vertikaalseid ja horisontaalseid kulutegureid.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Kauguse paigutus</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="T&ouml;&ouml;riista Kauguse eraldamine illustratsioon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>T&ouml;&ouml;riist arvutab iga lahtri kauguse paigutuse antud allikateni, v&otilde;imaldades kasutada sirgjoonelist kaugust, kulukaugust, tegelikku pinna kaugust, samuti vertikaalseid ja horisontaalseid kulutegureid.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaalne tee joonena</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="T&ouml;&ouml;riista Optimaalne tee joonena illustratsioon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab optimaalse tee sihtkohtadest l&auml;htekohani joonena.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Optimaalne tee rastrina</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="T&ouml;&ouml;riista Optimaalne tee rastrina illustratsioon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab optimaalse tee sihtkohtadest l&auml;htekohani rastrina.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Piirkonna optimaalsed ühendused</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="T&ouml;&ouml;riista Piirkonna optimaalsed &uuml;hendused illustratsioon">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>See t&ouml;&ouml;riist arvutab optimaalse &uuml;hendusv&otilde;rgu kahe v&otilde;i enama sisendpiirkonna vahel.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="smallsize">
         <h2>Analüüsi pilti</h2>
         <hr/>
-        <p>J&auml;rgmine t&ouml;&ouml;riist aitab anal&uuml;&uuml;sida pilte. 
+        <p>J&auml;rgmine t&ouml;&ouml;riist kategoorias  <b>Anal&uuml;&uuml;si pilti</b> aitab anal&uuml;&uuml;sida pilte:
             <ul>
-                <li>Funktsioon  <b>Rakenda rasterfunktsiooni mall</b> t&ouml;&ouml;tleb teie pilte funktsiooni ahela kaudu nagu rasterfunktsiooni mallis m&auml;&auml;ratletud.
-                </li>
-                <li>Funktsiooni  <b>Taimestiku seire</b> puhul kasutatakse pildil taimestiku tuvastamiseks lainepikkustel aritmeetilisi toiminguid.
+                <li>Funktsioon  <b>Taimestiku seire</b> kasutab pildil taimestiku tuvastamiseks lainepikkustel aritmeetilisi toiminguid. Pildi anal&uuml;&uuml;sil kasutatakse mitut taimestikuindeksit.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Rakenda rasterfunktsiooni mall</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Rakenda rasterfunktsiooni mall">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>T&ouml;&ouml;tleb teie pilte funktsiooni ahela kaudu nagu rasterfunktsiooni mallis m&auml;&auml;ratletud.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Uuringualal oleva taimestiku kohta teabe hankimiseks saab teostada mitme lainepikkusega rasterkihil aritmeetilise toimingu.
+            <p>Taimestiku kohta teabe hankimiseks saab teostada mitme lainepikkusega rasterkihil aritmeetilise toimingu.
             </p>
             <br/>
         </div>
@@ -358,7 +438,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Ekstrakti raster</h2></td>
+                    <td><h2>Tee rastrist väljavõte</h2></td>
                     <td>
                     <img src="../images/GUID-DC9CBCB9-A07C-42D3-A0CB-2FB1483CBF4C-web.png" class="titleImage" alt="Rastri ekstraktimise t&ouml;&ouml;riist (Portal)">
                     </td>
@@ -373,7 +453,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Vastenda väärtused uuesti</h2></td>
+                    <td><h2>Leia uued väärtused</h2></td>
                     <td>
                     <img src="../images/GUID-4006E442-A60B-469A-891D-5ED442F64CB8-web.png" class="titleImage" alt="V&auml;&auml;rtuste uuesti vastendamise t&ouml;&ouml;riist (Portal)">
                     </td>

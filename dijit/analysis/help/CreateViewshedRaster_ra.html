@@ -44,7 +44,7 @@
         <h2>Create Viewshed</h2><p/>
         <h2><img src="./images/GUID-BB8B8CAF-330E-4C41-9D94-AF4728D0D0F3-web.png" alt="Create Viewshed tool"></h2>
         <hr/>
-    <p>This tool identifies the areas an observer can see, accounting for surface topography. The input point locations can represent either observers (such as people on the ground or lookouts in a fire tower), or observed objects (such as wind turbines, water towers, vehicles, or other people). The results define the areas that can be seen from the observer locations.
+    <p>This tool identifies the areas  that the input observer locations can see, accounting for surface topography. The input point locations can represent either observers (such as people on the ground or lookouts in a fire tower), or observed objects (such as wind turbines, water towers, vehicles, or other people). The results define the areas that can be seen from the observer locations.
     </p>
     <p>Both the observers and the observed objects can have a height above ground, and these heights are used to determine visibility. For example, a viewshed computed for 300-foot wind turbines and a 6-foot tall person standing on the ground will typically be larger than a viewshed computed for 200-foot turbines and a 5-foot tall person.
     </p>
@@ -98,7 +98,7 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div>
             <p>Enter a cutoff distance where the computation of visible areas will stop. Beyond this distance, whether the observer points and the other objects can see each other will not be determined.
             </p>
-            <p>You can either specify a numerical value representing a linear distance or select a numerical field from the input observer features. If a field is provided, the values contained in the field must be in the same unit as the xy unit of the input elevation surface.
+            <p>You can either specify a numerical value representing a linear distance or select a numerical field from the input observer features. If a field is provided, the values contained in the field must be in the same unit as the x,y unit of the input elevation surface.
             </p>
             <p>Note that large values will increase computation time. Unless specified, a default maximum distance will be computed based on the resolution and extent of the input elevation surface.
             </p>
@@ -119,7 +119,7 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div>
             <p>Enter a distance where the computation of visible areas is to begin. Cells on the surface closer than this distance are not visible in the output but can still block visibility of the cells between the minimum and the maximum viewing distance.
             </p>
-            <p>You can either specify a numerical value representing a linear distance or select a numerical field from the input observer features. If a field is provided, the values contained in the field must be in the same unit as the xy unit of the input elevation surface.
+            <p>You can either specify a numerical value representing a linear distance or select a numerical field from the input observer features. If a field is provided, the values contained in the field must be in the same unit as the x,y unit of the input elevation surface.
             </p>
             <p>This parameter is useful for controlling the viewshed analysis area at a specific distance away from the observer. For example, if you are evaluating the visibility from a building top to a distant park, you can set a minimum viewing distance to exclude the areas close by that are of no interest and gain a better processing speed.
             </p>
@@ -230,6 +230,7 @@ This method is optimized for accuracy in the results, at the expense of a longer
         <div><h2>Result layer name</h2></div>
         <hr/>
         <div>
+            
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
-define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../tools/ClickableTool","../../../base/etc/docUtil","./ThemeDialog","../../../../../kernel"],(function(e,t,o,n,i,l,a){var s=e([n],{postCreate:function(){this.inherited(arguments)},startup:function(){if(!this._started){var e=i.findGxeContext(this);e&&e.gemetUrl&&e.gemetInspireThemeThesaurus||(this.domNode.style.display="none")}},whenToolClicked:function(e,o){if(o&&o.parentXNode){var n=o.getInputValue();null===n||n.push||(n=[n]),new l({gxeDocument:o.parentXNode.gxeDocument,initiallySelectedValues:n,onSelect:t.hitch(this,(function(e){o.importValues(null,e)}))}).show()}}});return o("extend-esri")&&t.setObject("dijit.metadata.form.iso.gemet.GemetThemeTool",s,a),s}));
+define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../tools/ClickableTool","../../../base/etc/docUtil","./ThemeDialog","../../../../../kernel"],(function(e,t,i,o,n,s,a){var l=e([o],{visible:!0,postCreate:function(){this.inherited(arguments);var e=this.getParent();this.dojoAttachPoint&&e&&(e[this.dojoAttachPoint]=this,e._attachPoints.push(this.dojoAttachPoint))},startup:function(){if(!this._started){var e=n.findGxeContext(this);this.visible&&e&&e.gemetUrl&&e.gemetInspireThemeThesaurus||(this.domNode.style.display="none")}},whenToolClicked:function(e,i){if(i&&i.parentXNode){var o=i.getInputValue();null===o||o.push||(o=[o]),new s({gxeDocument:i.parentXNode.gxeDocument,initiallySelectedValues:o,onSelect:t.hitch(this,(function(e){i.importValues(null,e)}))}).show()}}});return i("extend-esri")&&t.setObject("dijit.metadata.form.iso.gemet.GemetThemeTool",l,a),l}));

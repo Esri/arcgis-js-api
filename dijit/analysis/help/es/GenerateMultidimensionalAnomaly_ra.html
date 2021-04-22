@@ -44,7 +44,7 @@
         <h2>Generar anomalía multidimensional</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generar anomal&iacute;a multidimensional"></h2>
         <hr/>
-    <p>Genera un dataset r&aacute;ster multidimensional al combinar variables de r&aacute;ster multidimensional existentes a lo largo de una dimensi&oacute;n.
+    <p>Calcula la anomal&iacute;a de cada porci&oacute;n en un r&aacute;ster multidimensional existente para generar un nuevo r&aacute;ster multidimensional.
     </p>
     <p>Una anomal&iacute;a es la desviaci&oacute;n de una observaci&oacute;n de su valor est&aacute;ndar, medio o de mediana.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Elija el método para generar anomalías</h2></div>
         <hr/>
         <div>
-            <p>Especifica el m&eacute;todo que se utilizar&aacute; para calcular la anomal&iacute;a. 
+            <p>Especifica el m&eacute;todo que se utilizar&aacute; para calcular la anomal&iacute;a.
                 <ul>
                     <li> <b>Diferencia desde valor medio</b>: se calcular&aacute; la diferencia entre un valor de p&iacute;xel y el valor medio del valor de dicho p&iacute;xel de porciones definidas por el intervalo. Esta es la opci&oacute;n predeterminada.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Diferencia desde valor medio = x - &micro;
-
                         <ul>
                             <li>x = valor de p&iacute;xel en una porci&oacute;n
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Diferencia de porcentaje desde valor medio = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = valor de p&iacute;xel en una porci&oacute;n
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Porcentaje de valor medio = x / &micro;
-
                         <ul>
                             <li>x = valor de p&iacute;xel en una porci&oacute;n
                                 
@@ -202,7 +199,7 @@
         <div><h2>Elegir el intervalo temporal que se utilizará para calcular el valor medio</h2></div>
         <hr/>
         <div>
-            <p>Especifica el intervalo temporal que se utilizar&aacute; para calcular el valor medio. 
+            <p>Especifica el intervalo temporal que se utilizar&aacute; para calcular el valor medio.
                 <ul>
                     <li> <b>Todo</b>: calcula el valor medio a trav&eacute;s de todas las porciones de cada p&iacute;xel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorar valores que faltan en cálculo</h2></div>
         <hr/>
         <div>
-            <p>Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis. 
+            <p>Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis.
                 <ul>
                     <li>Activado: el an&aacute;lisis incluir&aacute; todos los p&iacute;xeles v&aacute;lidos a lo largo de una dimensi&oacute;n determinada y se ignorar&aacute;n los p&iacute;xeles NoData. Esta es la opci&oacute;n predeterminada.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Nombre de capa de resultados</h2></div>
         <hr/>
         <div>
+            
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.

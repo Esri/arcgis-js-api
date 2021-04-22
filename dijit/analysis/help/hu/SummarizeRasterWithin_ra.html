@@ -44,7 +44,7 @@
         <h2>Raszter területen belüli összegzése</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Raszter ter&uuml;leten bel&uuml;li &ouml;sszegz&eacute;se eszk&ouml;z"></h2>
         <hr/>
-    <p>Ez az eszk&ouml;z egy rasztert &ouml;sszegez az első bemenő r&eacute;teggel defini&aacute;lt ter&uuml;letek (z&oacute;n&aacute;k) alapj&aacute;n.
+    <p>Ez az eszk&ouml;z egy raszter &eacute;rt&eacute;keit &ouml;sszegzi egy m&aacute;sik adathalmaz z&oacute;n&aacute;iban.
     </p>
     <p>Az alkalmaz&aacute;s&aacute;ra az al&aacute;bbi n&eacute;h&aacute;ny p&eacute;lda hozhat&oacute;:
     </p>
@@ -99,9 +99,21 @@
         <div>
             <p>Az &ouml;sszes&iacute;tendő r&eacute;teg kiv&aacute;laszt&aacute;sa ut&aacute;n opcion&aacute;lisan kisz&aacute;m&iacute;thatja a bemenő ter&uuml;let r&eacute;teg pontjainak, vonalainak vagy ter&uuml;leteinek b&aacute;rmely numerikus attrib&uacute;tum&aacute;t.
             </p>
-            <p>A k&ouml;vetkező statisztikat&iacute;pusok &eacute;rhetők el, ha a kiv&aacute;lasztott mező integer: &aacute;tlag, t&ouml;bbs&eacute;g, maximum, medi&aacute;n, minimum, kisebbs&eacute;g, terjedelem, sz&oacute;r&aacute;s, &ouml;sszeg &eacute;s v&aacute;ltozatoss&aacute;g.
+            <p>A k&ouml;vetkező statisztikat&iacute;pusok &eacute;rhetők el, ha a kiv&aacute;lasztott mező integer: &aacute;tlag, t&ouml;bbs&eacute;g, maximum, medi&aacute;n, minimum, kisebbs&eacute;g, percentilis, terjedelem, sz&oacute;r&aacute;s, &ouml;sszeg &eacute;s v&aacute;ltozatoss&aacute;g.
             </p>
             <p>Ha a mező lebegőpontos, a k&ouml;vetkező lehetős&eacute;gek &aacute;llnak rendelkez&eacute;sre: &aacute;tlag, maximum, minimum, terjedelem, sz&oacute;r&aacute;s &eacute;s &ouml;sszeg.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentilis érték</h2></div>
+        <hr/>
+        <div>
+            <p>A kisz&aacute;m&iacute;tand&oacute; percentilis. Az alap&eacute;rtelmezett &eacute;rt&eacute;k 90, amely a 90. percentilist jelzi.
+            </p>
+            <p>Az &eacute;rt&eacute;kek 0 &eacute;s 100 k&ouml;z&eacute; eshetnek. A 0. percentilis l&eacute;nyeg&eacute;ben a Minimum statisztik&aacute;val, m&iacute;g a 100. percentilis a Maximum statisztik&aacute;val egyezik meg. Az 50-es &eacute;rt&eacute;k l&eacute;nyeg&eacute;ben ugyanazt az eredm&eacute;nyt adja, mint a Medi&aacute;n statisztika.
+            </p>
+            <p>Ezt a be&aacute;ll&iacute;t&aacute;st csak akkor t&aacute;mogatja a rendszer, ha a  <b>Kisz&aacute;m&iacute;tand&oacute; statisztika kiv&aacute;laszt&aacute;sa</b> param&eacute;ter be&aacute;ll&iacute;t&aacute;sa <b>Percentilis</b>.
             </p>
         </div>
     </div>
@@ -113,11 +125,20 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Feldolgozás többdimenziósként</h2></div>
+        <hr/>
+        <div>
+            <p>Azt hat&aacute;rozza meg, hogy mik&eacute;nt t&ouml;rt&eacute;njen a bemeneti raszterek feldolgoz&aacute;sa, amennyiben azok t&ouml;bbdimenzi&oacute;sak. Ha a t&ouml;bbdimenzi&oacute;sk&eacute;nt val&oacute; feldolgoz&aacute;st v&aacute;lasztja, a rendszer a statisztik&aacute;kat a t&ouml;bbdimenzi&oacute;s adathalmaz valamennyi dimenzi&oacute;j&aacute;ra fogja kisz&aacute;m&iacute;tani. Egy&eacute;b esetben a rendszer a statisztik&aacute;kat a adathalmaz aktu&aacute;lis szelet&eacute;ből fogja kisz&aacute;m&iacute;tani (ez az alap&eacute;rtelmezett be&aacute;ll&iacute;t&aacute;s).
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["../../declare","./GeographyQueryBase"],(function(e,r){return e("esri.tasks.geoenrichment.GeographyQuery",[r],{geographyLayerIDs:null,geographyIDs:null,where:null,constructor:function(e){e&&(this.geographyLayerIDs=e.geographyLayerIDs||e.geographyLayers.split(";"),this.geographyIDs=e.geographyIDs,this.where=e.where||e.geographyQuery)},toJson:function(){var e=this.inherited(arguments);return this.geographyLayerIDs&&(e.geographyLayers=this.geographyLayerIDs.join(";")),this.geographyIDs&&(e.geographyIDs=this.geographyIDs),this.where&&(e.geographyQuery=this.where),e}})}));

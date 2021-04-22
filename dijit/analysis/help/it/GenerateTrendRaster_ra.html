@@ -52,8 +52,6 @@
         <div><h2>Scegliere il layer di immagini multidimensionale per analizzare la tendenza</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Il layer di immagini di input di un raster multidimensionale che verr&agrave; analizzato.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Scegliere il tipo di linea che si adatta ai valori variabili lungo una dimensione</h2></div>
         <hr/>
         <div>
-            <p>Specifica il tipo di linea da usare per adattarsi ai valori dei pixel lungo una dimensione. 
+            <p>Specifica il tipo di linea da usare per adattarsi ai valori dei pixel lungo una dimensione.
                 <ul>
-                    <li> <b>Lineare</b>: i valori dei pixel variabili saranno adattati lungo una linea di tendenza lineare. Questa &egrave; l'impostazione predefinita.
+                    <li> <b>Lineare</b>: i valori dei pixel variabili saranno adattati lungo una linea di tendenza lineare. Si tratta dell'impostazione predefinita.
                     </li>
                     <li> <b>Polinomiale</b>: i valori dei pixel variabili saranno adattati lungo una linea di tendenza polinomiale di secondo ordine.
                     </li>
                     <li> <b>Armonica</b>: i valori dei pixel variabili saranno adattati lungo una linea di tendenza armonica.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;I valori dei pixel variabili verranno valutati utilizzando il test di tendenza Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;I valori dei pixel variabili verranno valutati utilizzando il test di tendenza Seasonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Specificare l'unità di tempo per la durata di un periodo stagionale</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica l'unit&agrave; di tempo usata per la lunghezza di un periodo stagionale quando viene eseguito un testo Seasonal-Kendall.
+                <ul>
+                    <li> <b>Giorni</b>&mdash;L'unit&agrave; di misura per la lunghezza del periodo stagionale &egrave; espressa in giorni. Si tratta dell'impostazione predefinita.
+                    </li>
+                    <li> <b>Mesi</b>&mdash;L'unit&agrave; di misura per la lunghezza del periodo stagionale &egrave; espressa in mesi.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>Giorno</b>: l'unit&agrave; di misura per la lunghezza del ciclo armonico &egrave; il giorno.
                     </li>
-                    <li> <b>Anno</b>: l'unit&agrave; di misura per la lunghezza del ciclo armonico &egrave; l'anno. Questa &egrave; l'impostazione predefinita.
+                    <li> <b>Anno</b>: l'unit&agrave; di misura per la lunghezza del ciclo armonico &egrave; l'anno. Si tratta dell'impostazione predefinita.
                     </li>
                 </ul>
                 
@@ -154,7 +171,7 @@
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Selezionato: l'RMSE sar&agrave; calcolato e incluso come una delle bande multiple nel raster di tendenza di output. Questa &egrave; l'impostazione predefinita.
+                            <li>Selezionato: l'RMSE sar&agrave; calcolato e incluso come una delle bande multiple nel raster di tendenza di output. Si tratta dell'impostazione predefinita.
                             </li>
                             <li>Deselezionato: l'RMSE non verr&agrave; calcolato.
                             </li>
@@ -162,12 +179,12 @@
                         
                     </li>
                     <li>
-                        <p>Quadrato a R
+                        <p>quadrato a R
                         </p>
                         <ul>
                             <li>Selezionato: il valore del quadrato a R sar&agrave; calcolato e incluso come una delle bande multiple nel raster di tendenza di output.
                             </li>
-                            <li>Deselezionato: il valore del quadrato a R non verr&agrave; calcolato. Questa &egrave; l'impostazione predefinita.
+                            <li>Deselezionato: il valore del quadrato a R non verr&agrave; calcolato. Si tratta dell'impostazione predefinita.
                             </li>
                         </ul>
                         
@@ -178,7 +195,7 @@
                         <ul>
                             <li>Selezionato: il valore P sar&agrave; calcolato e incluso come una delle bande multiple nel raster di tendenza di output.
                             </li>
-                            <li>Deselezionato: il valore P non verr&agrave; calcolato. Questa &egrave; l'impostazione predefinita.
+                            <li>Deselezionato: il valore P non verr&agrave; calcolato. Si tratta dell'impostazione predefinita.
                             </li>
                         </ul>
                         
@@ -194,7 +211,7 @@
         <div>
             <p>Specifica se i valori mancanti vengono ignorati nell'analisi.
                 <ul>
-                    <li>Selezionato: l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Questa &egrave; l'impostazione predefinita.
+                    <li>Selezionato: l'analisi includer&agrave; tutti i pixel validi lungo una data dimensione e ignorer&agrave; tutti i pixel NoData. Si tratta dell'impostazione predefinita.
                     </li>
                     <li>Deselezionato: l'analisi produrr&agrave; NoData se sono presenti valori NoData per i pixel lungo la data dimensione.
                     </li>
@@ -204,9 +221,10 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

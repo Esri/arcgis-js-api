@@ -52,8 +52,6 @@
         <div><h2>Kies een multidimensionale laag van satellietbeelden om trends te analyseren</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>De invoerlaag van satellietbeelden van een multidimensionaal raster die wordt geanalyseerd.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Kies het type lijn om de variabele langs een dimensie te plaatsen</h2></div>
         <hr/>
         <div>
-            <p>Specificeert het type lijn dat moet worden gebruikt om te passen aan de pixelwaarden langs een afmeting. 
+            <p>Specificeert het type lijn dat moet worden gebruikt om te passen aan de pixelwaarden langs een afmeting.
                 <ul>
                     <li> <b>Lineair</b>&mdash;Variabele pixelwaarden worden langs een lineaire trendlijn geplaatst. Dit is de standaardinstelling.
                     </li>
                     <li> <b>Polynomiaal</b>&mdash;Variabele pixelwaarden worden langs een tweede polynomiale trendlijn geplaatst.
                     </li>
                     <li> <b>Harmonisch</b>&mdash;Variabele pixelwaarden worden langs een harmonische trendlijn geplaatst.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Variabele pixelwaarden worden ge&euml;valueerd met behulp van de Mann-Kendall trendtest.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Variabele pixelwaarden worden ge&euml;valueerd met behulp van de Seasonal-Kendall trendtest.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Specificeer de tijdseenheid voor de lengte van een seizoensperiode</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de tijdseenheid die moet worden gebruikt voor de lengte van een seizoensperiode bij het uitvoeren van de Seasonall-Kendall-test.
+                <ul>
+                    <li> <b>Dagen</b>&mdash;De eenheid voor de lengte van de seizoensperiode is dagen. Dit is de standaardinstelling.
+                    </li>
+                    <li> <b>Maanden</b>&mdash;De eenheid voor de lengte van de seizoensperiode is maanden.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>Dagen</b>&mdash; De eenheid voor de lengte van de harmonische cyclus is dagen.
                     </li>
-                    <li> <b>Jaren</b>&mdash; De eenheid voor de lengte van de harmonische cyclus is jaren. Dit is de standaardinstelling.
+                    <li> <b>Jaren</b>&mdash;De eenheid voor de lengte van de harmonische cyclus is jaren. Dit is de standaardinstelling.
                     </li>
                 </ul>
                 
@@ -154,7 +171,7 @@
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Aangevinkt&mdash;De RMSE wordt berekend en opgenomen als een van de meervouige banden in het uitgevoerde trendraster. Dit is de standaardinstelling.
+                            <li>Aangevinkt&mdash;De RMSE wordt berekend en opgenomen als een van de meervoudige banden in het uitgevoerde trendraster. Dit is de standaardinstelling.
                             </li>
                             <li>Niet aangevinkt&mdash; De RMSE wordt niet berekend.
                             </li>
@@ -207,6 +224,7 @@
         <div><h2>Resultaat laagnaam</h2></div>
         <hr/>
         <div>
+            
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.

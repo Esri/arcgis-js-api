@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Prediksjon ved bruk av trendraster</h2><p/>
-        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prediksjon ved bruk av trendraster"></h2>
+        <h2>Forutsi ved bruk av trendraster</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Forutsi ved bruk av trendraster"></h2>
         <hr/>
     <p>Beregner et forventet flerdimensjonalt raster ved hjelp av det resulterende trendrasteret fra verkt&oslash;yet  Generer trendraster.
     </p>
@@ -51,7 +51,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Velg flerdimensjonalt bildelag som skal predikeres</h2></div>
+        <div><h2>Velg flerdimensjonalt bildelag som skal forutsis</h2></div>
         <hr/>
         <div>
             <p>Det resulterende flerdimensjonale trendrasteret fra verkt&oslash;yet  Generer trendraster.
@@ -59,10 +59,10 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Velg én eller flere variabler som skal predikeres</h2></div>
+        <div><h2>Velg variabelen(e) som skal forutsis</h2></div>
         <hr/>
         <div>
-            <p>Variabelen eller variablene som skal predikeres i analysen. Hvis det ikke er angitt en variabel, brukes alle variablene.
+            <p>Variabelen eller variablene som skal forutsis i analysen. Hvis det ikke er angitt variabler, brukes alle variablene.
             </p>
         </div>
     </div>
@@ -72,9 +72,9 @@
         <div>
             <p>Angir metoden som skal brukes til &aring; levere dimensjonsverdier for prediksjon.
                 <ul>
-                    <li> <b>Etter verdi</b>&ndash;&nbsp;Prediksjonen beregnes for en enkelt dimensjonsverdi eller en liste med dimensjonsverdier som angis i neste trinn. Dette er standardalternativet. Hvis du f.eks. &oslash;nsker &aring; forutsi &aring;rlig nedb&oslash;r for &aring;rene 2050, 2100 og 2150.
+                    <li> <b>Etter verdi</b> &ndash;&nbsp;Prediksjonen beregnes for en enkelt dimensjonsverdi eller en liste med dimensjonsverdier som angis i neste trinn. Dette er standardalternativet. Hvis du f.eks. &oslash;nsker &aring; forutsi &aring;rlig nedb&oslash;r for &aring;rene 2050, 2100 og 2150.
                     </li>
-                    <li> <b>Etter intervall</b>&ndash;&nbsp;Prediksjonen beregnes for et intervall av den dimensjonen som er definert med en start- og en sluttverdi. Hvis du f.eks. &oslash;nsker &aring; forutsi &aring;rlig nedb&oslash;r for hvert &aring;r mellom 2050 og 2150.
+                    <li> <b>Etter intervall</b> &ndash; Prediksjonen beregnes for et intervall av den dimensjonen som er definert med en start- og en sluttverdi. Hvis du f.eks. &oslash;nsker &aring; forutsi &aring;rlig nedb&oslash;r for hvert &aring;r mellom 2050 og 2150.
                     </li>
                 </ul>
                 
@@ -82,14 +82,30 @@
         </div>
     </div>
     <div id="dimensionValues">
-        <div><h2>Angi én eller flere dimensjonsverdier for prediksjon</h2></div>
+        <div><h2>Angi dimensjonsverdi(er) for prediksjon</h2></div>
         <hr/>
         <div>
-            <p>Dimensjonsverdien(e) som skal brukes i prediksjonen
+            <p>Dimensjonsverdien(e) som skal brukes i prediksjonen.
             </p>
             <p>Formatet for tids-, dybde- og h&oslash;ydeverdier m&aring; samsvare med formatet for dimensjonsverdiene som brukes til &aring; generere trendrasteret. Hvis trendrasteret ble generert for StdTime-dimensjonen, skal formatet v&aelig;re &Aring;&Aring;&Aring;&Aring;-MM-DDTTT:MM:SS, for eksempel 2050-01-01T00:00:00. Flere verdier skilles med semikolon.
             </p>
             <p>Denne parameteren er obligatorisk n&aring;r metoden  <b>Etter verdi</b> velges for &aring; angi dimensjonsverdier for prediksjon.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Start</h2></div>
+        <hr/>
+        <div>
+            <p>Startdatoen, h&oslash;yden eller dybden for dimesjonsintervallet som skal brukes i prediksjonen.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Avslutt</h2></div>
+        <hr/>
+        <div>
+            <p>Sluttdatoen, h&oslash;yden eller dybden for dimesjonsintervallet som skal brukes i prediksjonen.
             </p>
         </div>
     </div>
@@ -112,7 +128,7 @@
         </div>
     </div>
     <div id="intervalUnit">
-        <div><h2>Velg enheten som skal brukes for tidsverdiintervallet</h2></div>
+        <div><h2>Velg enheten som skal brukes for tidsverdiintervallet.</h2></div>
         <hr/>
         <div>
             <p>Angir enheten som blir brukt for verdiintervallet. Denne gjelder kun n&aring;r analysens dimensjon er en tidsdimensjon.
@@ -123,6 +139,7 @@
         <div><h2>Navn på resultatlag</h2></div>
         <hr/>
         <div>
+            
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
             <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.

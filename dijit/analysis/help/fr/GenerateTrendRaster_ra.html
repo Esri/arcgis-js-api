@@ -42,9 +42,9 @@
 <div id="topics">
     <div id="toolDescription" class="smallsize">
         <h2>Générer un raster de tendance</h2><p/>
-        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="G&eacute;n&eacute;rer un raster de tendances"></h2>
+        <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="G&eacute;n&eacute;rer un raster de tendance"></h2>
         <hr/>
-    <p>Estime la tendance de chaque pixel par rapport &agrave; une dimension pour une ou plusieurs variables d&rsquo;un raster multidimensionnel.
+    <p>Estime la tendance pour chaque pixel le long d&rsquo;une dimension pour une ou plusieurs variables dans un raster multidimensionnel.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -52,8 +52,6 @@
         <div><h2>Choisir une couche d’imagerie multidimensionnelle pour analyser la tendance</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Couche d&rsquo;imagerie en entr&eacute;e d&rsquo;un raster multidimensionnel &agrave; analyser.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Choisir le type de ligne pour ajuster les valeurs de variable le long d’une dimension</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie le type de ligne &agrave; utiliser pour ajuster les valeurs de pixel le long d&rsquo;une dimension. 
+            <p>Sp&eacute;cifie le type de ligne &agrave; utiliser pour ajuster les valeurs de pixel le long d&rsquo;une dimension.
                 <ul>
                     <li> <b>Linear (Lin&eacute;aire)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance lin&eacute;aire. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
                     </li>
                     <li> <b>Polynomial (Polynomial)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance polynomiale de second ordre.
                     </li>
                     <li> <b>Harmonic (Harmonique)</b>&nbsp;: les valeurs de pixel des variables sont ajust&eacute;es le long d&rsquo;une ligne de tendance harmonique.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&nbsp;: les valeurs de pixel variables sont &eacute;valu&eacute;es &agrave; l&rsquo;aide du test de tendance de Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal Kendall (Kendall saisonnier)</b>&nbsp;: les valeurs de pixel variables sont &eacute;valu&eacute;es &agrave; l&rsquo;aide du test de tendance de Kendall saisonnier.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Indiquez l’unité de temps de la durée d’une saison.</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifie l&rsquo;unit&eacute; de temps &agrave; utiliser pour mesurer la longueur de la p&eacute;riode saisonni&egrave;re lors du test de Kendall saisonnier
+                <ul>
+                    <li> <b>Days (Jours)</b>&nbsp;: l&rsquo;unit&eacute; de dur&eacute;e d&rsquo;une saison se d&eacute;finit en jours. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    </li>
+                    <li> <b>Months (Mois)</b>&nbsp;: l&rsquo;unit&eacute; de dur&eacute;e d&rsquo;une saison se d&eacute;finit en mois.
                     </li>
                 </ul>
                 
@@ -207,7 +224,8 @@
         <div><h2>Nom de la couche de résultat</h2></div>
         <hr/>
         <div>
-            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>Mon contenu</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
+            
+            <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
             </p>

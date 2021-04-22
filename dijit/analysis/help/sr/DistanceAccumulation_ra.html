@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Akumulacija rastojanja</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustracija alatke za akumulaciju rastojanja"></h2>
+        <hr/>
+    <p>Ovaj alat izračunava akumulirano rastojanje za svaku ćeliju do izvora, omogućavajući pravolinijsko rastojanje, rastojanje tro&scaron;kova i stvarno povr&scaron;insko rastojanje, i vertikalne i horizontalne faktore.
+    </p>
+    <p>Primeri primene uključuju odgovore na pitanja kao &scaron;to su:
+        <ul>
+            <li>Koje je rastojanje do najbližeg grada?
+                
+
+            </li>
+            <li>Koliko je rastojanje tro&scaron;kova do najbližeg puta?
+                
+
+            </li>
+            <li>Koliko je rastojanje oko barijera do najbližeg izvora vode?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Ako je opcija  <b>Koristi trenutni obuhvat mape</b> izabrana, biće analizirani samo oni geoobjekti u ulaznom sloju koji su vidljivi unutar trenutnog obuhvata mape. Ako nije izabrana, analiziraće se svi geoobjekti u ulaznom sloju, čak i ako su izvan trenutnog prikaza obuhvata mape.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Odaberite raster ili geoobjekte izvora</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj geoobjekta ili rastera koji identifikuje izvore do kojih će rastojanje biti izračunato.
+            </p>
+            <p>Ako je unos raster, on mora da se sastoji od ćelija koje imaju važeće vrednosti (nula je važeća vrednost) za izvore i preostale ćelije moraju da imaju dodeljeno NoData.
+            </p>
+            <p>Ako je unos sloj geoobjekata, on može da bude tačka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Odaberite raster ili geoobjekte barijera (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Skup podataka koji defini&scaron;e barijere.
+            </p>
+            <p>Za sloj rastera, ulazni tip može da bude ceo broj ili broj s pokretnim zarezom. Sve ćelije koje imaju vrednost (uključujući nulu) će se tretirati kao barijera. Sve ćelije koje su tipa NoData (bez podataka) se neće tretirati kao barijere.
+            </p>
+            <p>Za servis geoobjekata, unos može da bude tačka, linija ili poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Odaberite raster površine (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji defini&scaron;e vrednosti uzdignuća na lokaciji svake ćelije.
+            </p>
+            <p>Te vrednosti se koriste za izračunavanje stvarnog povr&scaron;inskog rastojanja pređenog tokom prolaženja između ćelija.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Odaberite raster troškova (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji defini&scaron;e impedansu ili tro&scaron;ak za pomeranje planimetrije kroz svaku ćeliju.
+            </p>
+            <p>Vrednost na lokaciji svake ćelije predstavlja rastojanje tro&scaron;ak-po-jedinici za pomeranje kroz ćeliju. Svaka vrednost lokacije ćelije se množi sa rezolucijom ćelije dok se takođe kompenzuje dijagonalni pokret za zadržavanje ukupnog tro&scaron;ka prolaska kroz ćeliju.
+            </p>
+            <p>Vrednosti rastera tro&scaron;kova mogu da budu ceo broj ili plutajući zarez, ali ne mogu da budu negativna ili nulta vrednost (ne možete da imate negativan ili nulti tro&scaron;ak).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Odaberite vertikalni raster (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji defini&scaron;e z-vrednosti za lokaciju svake ćelije.
+            </p>
+            <p>Vrednosti se koriste za izračunavanje nagiba koji se koristi za utvrđivanje vertikalnog faktora nastalog prilikom kretanja od jedne ćelije do druge.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikalni faktor (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikalni faktor</b> defini&scaron;e odnos između vertikalnog faktora tro&scaron;kova (VF) i vertikalnog relativnog ugla kretanja (VRMA).
+            </p>
+            <p>Postoji nekoliko faktora sa modifikatorima za izbor koji identifikuju definisani grafikon vertikalnog faktora. Grafikoni se koriste za utvrđivanje vertikalnog faktora koji se koristi za izračunavanje ukupnog tro&scaron;ka za pomeranje u susedsku ćeliju.
+            </p>
+            <p>U opisima koji su dati u nastavku, VF defini&scaron;e vertikalnu pote&scaron;koću na koju se nailazi prilikom pomeranja od jedne ćelije do sledeće, dok VRMA modifikator identifikuje ugao nagiba između ćelije  <b>Od izvora</b> i ćelije <b>Do izvora</b>.
+                <ul>
+                    <li> <b>Binarno</b>&mdash;Ako je VRMA veći od ugla niskog sečenja i manji od ugla visokog sečenja, VF je pode&scaron;en na vrednost povezanu sa nultim faktorom; u suprotnom je vrednost beskonačno.
+                    </li>
+                    <li> <b>Linearno</b>&mdash;VF je linearna funkcija VRMA.
+                    </li>
+                    <li> <b>Inverzno linearno</b>&mdash;VF je inverzna linearna funkcija VRMA.
+                    </li>
+                    <li> <b>Simetrično linearno</b>&mdash;VF je linearna funkcija VRMA na negativnoj ili pozitivnoj strani VRMA, a dve linearne funkcije su simetrične u odnosu na VF (y) osu.
+                    </li>
+                    <li> <b>Simetrično inverzno linearno</b>&mdash;VF je inverzna linearna funkcija VRMA na negativnoj ili pozitivnoj strani VRMA, a dve linearne funkcije su simetrične u odnosu na VF (y) osu.
+                    </li>
+                    <li> <b>Cos</b>&mdash;VR je funkcija VRMA zasnovana na kosekansu.
+                    </li>
+                    <li> <b>Sec</b>&mdash;VR je funkcija VRMA zasnovana na sekansu.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;VF je funkcija VRMA zasnovana na kosekansu kada je VRMA negativan, dok je VF funkcija VRMA zasnovana na sekansu kada je VRMA nenegativan.
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;VF je funkcija VRMA zasnovana na sekansu kada je VRMA negativan, dok je VF funkcija VRMA zasnovana na kosekansu kada je VRMA nenegativan.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatori vertikalnih parametara su sledeći:
+                <ul>
+                    <li> <b>Nulti faktor</b>&mdash;Vertikalni faktor koji se koristi kada je VRMA nula. Ovaj faktor pozicionira y-presek navedene funkcije. Prema definiciji, nulti faktor nije primenjiv ni na jednu trigonometrijsku vertikalnu funkciju (Cos, Sec, Cos-Sec ili Sec-Cos). Y-presek je definisan ovim funkcijama.
+                    </li>
+                    <li> <b>Ugao niskog sečenja</b>&mdash;Ugao VRMA ispod kojeg će VF biti postavljen na beskonačno.
+                    </li>
+                    <li> <b>Ugao visokog sečenja</b>&mdash;Ugao VRMA iznad kojeg će VF biti postavljen na beskonačno.
+                    </li>
+                    <li> <b>Nagib</b>&mdash;Nagib prave linije koji se koristi sa parametrima <b>Linearno</b> i <b>Inverzno linearno</b>. Nagib je naveden kao odnos uspona i rastojanja (na primer, nagib od 45 procenata je 1/45, a uneta vrednost je 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Odaberite horizontalni raster (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster koji defini&scaron;e horizontalan smer u svakoj ćeliji.
+            </p>
+            <p>Vrednosti na rasteru moraju da budu celi brojevi od 0 do 360, pri čemu 0 stepeni treba da bude severno ili prema vrhu ekrana i da se povećava u smeru kretanja kazaljke na satu. Ravne oblasti treba da imaju vrednost -1. Vrednosti na svakoj lokaciji će se koristiti sa  <b>Horizontalnim faktorom</b> kako bi se odredio horizontalni tro&scaron;ak nastao prilikom kretanja od jedne ćelije do njenih suseda.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontalni faktor (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horizontalni faktor</b> defini&scaron;e odnos između horizontalnog faktora tro&scaron;kova i horizontalnog relativnog ugla kretanja.
+            </p>
+            <p>Postoji nekoliko faktora sa modifikatorima za izbor koji identifikuju definisani grafikon horizontalnog faktora. Grafikoni se koriste za identifikovanje horizontalnog faktora koji se koristi za izračunavanje ukupnog tro&scaron;ka za pomeranje u susedsku ćeliju.
+            </p>
+            <p>U opisima koji su dati u nastavku, horizontalni faktor (HF) defini&scaron;e horizontalnu pote&scaron;koću na koju se nailazi prilikom pomeranja od jedne ćelije do sledeće, dok horizontalni relativni ugao pomeranja (HRMA) identifikuje ugao između horizontalnog smera od ćelije i smera kretanja.
+            </p>
+            <p>Definicije i parametri ovih HF-ova su sledeći:
+                <ul>
+                    <li> <b>Binarno</b>&mdash;Ako je HRMA manji od ugla sečenja, HF je pode&scaron;en na vrednost povezanu sa nultim faktorom; u suprotnom je vrednost beskonačno.
+                        
+
+                    </li>
+                    <li> <b>Napred</b>&mdash;Dozvoljeno je samo kretanje napred. HRMA mora da bude veći od ili jednak 0 i manji od 90 (0 &lt;= HRMA &lt; 90). Ako je HRMA veći od 0 i manji od 45 stepeni, HF za ćeliju je pode&scaron;en na vrednost povezanu sa nultim faktorom. Ako je HRMA veći od ili jednak 45 stepeni, koristi se vrednost modifikatora bočne vrednosti. HF za bilo koji HRMA jednak ili veći od 90 stepeni je pode&scaron;en na beskonačno.
+                        
+
+                    </li>
+                    <li> <b>Linearno</b>&mdash;HF je linearna funkcija HRMA.
+                        
+
+                    </li>
+                    <li> <b>Inverzno linearno</b>&mdash;HF je inverzna linearna funkcija HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatori horizontalnih ključnih reči su sledeći:
+                <ul>
+                    <li> <b>Nulti faktor</b>&mdash;Horizontalni faktor koji se koristi kada je HRMA nula. Ovaj faktor pozicionira y-presek za bilo koju od funkcija horizontalnog faktora.
+                        
+
+                    </li>
+                    <li> <b>Ugao sečenja</b>&mdash;Ugao HRMA iza kojeg će VF biti postavljen na beskonačno.
+                        
+
+                    </li>
+                    <li> <b>Nagib</b>&mdash;Nagib prave linije koji se koristi sa ključnim rečima za horizontalne faktore <b>Linearno</b> i <b>Inverzno linearno</b>. Nagib je naveden kao odnos uspona i rastojanja (na primer, nagib od 45 procenata je 1/45, a uneta vrednost je 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Bočna vrednost</b>&mdash;HF kada je HRMA veći od ili jednak 45 stepeni i manji od 90 stepeni kada je navedena ključna reč za horizontalni faktor <b>Napred</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Početna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Početni akumulativni tro&scaron;ak za započinjanje izračunavanja tro&scaron;kova.
+            </p>
+            <p>Ovim se omogućava određivanje fiksnog tro&scaron;ka povezanog sa izvorom. Umesto započinjanja od tro&scaron;ka čija je vrednost nula, algoritam tro&scaron;ka će započeti vredno&scaron;ću koju postavi  <b>Početna akumulacija</b>.
+            </p>
+            <p>Vrednosti moraju da budu nula ili veće. Podrazumevano je 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimalna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Maksimalna akumulacija pri putovanju ka izvoru.
+            </p>
+            <p>Izračunavanja tro&scaron;kova se nastavljaju za svaki izvor dok se ne postigne navedena akumulacija.
+            </p>
+            <p>Vrednosti moraju da budu veće od nule. Podrazumevana akumulacija je prema ivici izlaznog rastera.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Multiplikator troškova</h2></div>
+        <hr/>
+        <div>
+            <p>Multiplikator koji se primenjuje na vrednosti tro&scaron;kova.
+            </p>
+            <p>Time se omogućava kontrola režima putovanja ili magnitude na izvoru. &Scaron;to je multiplikator veći, veći je tro&scaron;ak kretanja kroz svaku ćeliju.
+            </p>
+            <p>Vrednosti moraju da budu veće od nule. Podrazumevana vrednost je 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Smer putovanja</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi smer putovanja kada se primenjuju horizontalni i vertikalni faktori.
+            </p>
+            <p> <b>Od izvora</b>&mdash;Horizontalni i vertikalni faktor će se primenjivati počev od ulaznog izvora sve do ćelija bez izvora. Ovo je podrazumevano.
+            </p>
+            <p> <b>Do izvora</b>&mdash;Horizontalni i vertikalni faktor će se primenjivati počev od svake ćelije bez izvora i povratka do ulaznog izvora.
+            </p>
+            <p>Navedite ključnu reč za  <b>Od izvora</b> ili <b>Do izvora</b> koja će biti primenjena na sve izvore ili navedite polje u podacima izvora koje sadrži ključne reči radi utvrđivanja smera kretanja za svaki izvor. Polje mora da sadrži nisku <code>FROM_SOURCE</code> ili <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metod rastojanja (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi da li rastojanje treba izračunati kori&scaron;ćenjem planarnog (ravna zemlja) ili geodetskog (elipsoid) metoda.
+            </p>
+            <ul>
+                <li> <b>Planarni</b>&mdash;Izračunavanje rastojanja će se obaviti na projektovanoj ravni kori&scaron;ćenjem 2D Dekartovog koordinatnog sistema. Ovo je podrazumevani metod.
+                    
+
+                </li>
+                <li> <b>Geodetski</b>&mdash;Izračunavanje rastojanja će se obaviti na elipsoidu. Stoga se, bez obzira na ulaznu ili izlaznu projekciju, rezultati ne menjaju.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Naziv rastera akumulacije rastojanja sa rezultatima</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacije rastojanja sadrži akumulirano rastojanje za svaku ćeliju od ili do izvora sa najmanje tro&scaron;kova.
+            </p>
+            <p>Izlazni raster je tip s pokretnim zarezom.
+            </p>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Naziv rastera povratnog smera sa rezultatima (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster povratnog smera sadrži izračunati smer u stepenima. Smer identifikuje sledeću ćeliju duž najkraće putanje nazad do najbližeg izvora uz izbegavanje barijera.
+            </p>
+            <p>Opseg vrednosti je od 0 do 360 stepeni, gde je 0 rezervisana za ćelije izvora. U pravcu istoka (desno) je 90 i vrednosti se povećavaju u smeru kretanja kazaljke na satu (180 je jug, 270 je zapad, a 360 je sever).
+            </p>
+            <p>Izlazni raster je tip s pokretnim zarezom.
+            </p>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b>. Morate da unesete ime koje trenutno ne postoji u <b>Mom sadržaju</b>.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Naziv rastera smera izvora sa rezultatima (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster smera izvora identifikuje smer ćelije izvora sa najmanje akumuliranim tro&scaron;kovima kao azimut u stepenima.
+            </p>
+            <p>Opseg vrednosti je od 0 do 360 stepeni, gde je 0 rezervisana za ćelije izvora. U pravcu istoka (desno) je 90 i vrednosti se povećavaju u smeru kretanja kazaljke na satu (180 je jug, 270 je zapad, a 360 je sever).
+            </p>
+            <p>Izlazni raster je tip s pokretnim zarezom.
+            </p>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b>. Morate da unesete ime koje trenutno ne postoji u <b>Mom sadržaju</b>.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Naziv rastera lokacije izvora sa rezultatima (opciono)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster lokacije izvora je izlazni rezultat sa vi&scaron;e opsega. Prvi opseg sadrži indeks reda, dok drugi opseg sadrži indeks kolone. Ovi indeksi identifikuju lokaciju ćelije izvora koja predstavlja rastojanje sa najmanje akumuliranim tro&scaron;kovima.
+            </p>
+            <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b>. Morate da unesete ime koje trenutno ne postoji u <b>Mom sadržaju</b>.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

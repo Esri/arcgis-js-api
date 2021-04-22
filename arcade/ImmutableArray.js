@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["require","exports"],(function(t,e){"use strict";return function(){function t(t){void 0===t&&(t=[]),this._elements=t}return t.prototype.length=function(){return this._elements.length},t.prototype.get=function(t){return this._elements[t]},t.prototype.toArray=function(){for(var t=[],e=0;e<this.length();e++)t.push(this.get(e));return t},t}()}));

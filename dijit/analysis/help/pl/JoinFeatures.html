@@ -44,7 +44,7 @@
         <h2>Połącz obiekty</h2><p/>
         <h2><img src="../images/GUID-2230E8B8-8956-475C-9C65-68A92359BB48-web.png" alt="Połącz obiekty"></h2>
         <hr/>
-    <p>Operując na dw&oacute;ch warstwach, narzędzie Złącz obiekty umożliwia połączenie atrybut&oacute;w jednego obiektu z atrybutami innego obiektu na podstawie relacji przestrzennych i atrybutowych. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki połączenia, a następnie dołącza warstwę połączenia do warstwy docelowej.
+    <p>Operując na dw&oacute;ch warstwach, narzędzie Połącz obiekty umożliwia połączenie atrybut&oacute;w jednego obiektu z innym obiektem na podstawie relacji przestrzennych i atrybutowych. Narzędzie ustala wszystkie obiekty wejściowe, kt&oacute;re spełniają określone warunki połączenia, a następnie dołącza warstwę połączenia do warstwy docelowej.
     </p>
     <p>Narzędzie Połącz obiekty można stosować do punkt&oacute;w, linii, obszar&oacute;w i tabel. Połączenie przestrzenne wymaga, aby dane miały geometrię.
     </p>
@@ -59,7 +59,7 @@
             <p>Warstwa docelowa, do tabeli kt&oacute;rej zostaną dołączone atrybuty z warstwy połączenia.
             </p>
             <p>Poza wybraniem warstwy na mapie można wybrać opcję  <b>Wybierz warstwę analizy</b> dostępną w dolnej części menu rozwijanego. Wybranie tej opcji spowoduje otwarcie galerii, w kt&oacute;rej można wyszukać i wybrać zestawy danych pochodzące z r&oacute;żnych źr&oacute;deł w celu użycia ich podczas przeprowadzania analiz. 
-            </p> 
+            </p>
         </div>
     </div>
     <div id="joinLayer">
@@ -116,7 +116,7 @@
         <div>
             <p>Relacja atrybutowa, kt&oacute;ra decyduje o tym, czy obiekty zostaną ze sobą połączone. Obiekty są dopasowywane, jeśli wartości w polach warstwy połączenia są r&oacute;wne wartościom w polach warstwy docelowej.
             </p>
-            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych z adresami zamieszkania zwierająca pole  <i>ZIP</i> i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i>. Zestaw danych zdrowotnych można złączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
+            <p>Zał&oacute;żmy na przykład, że dla całego powiatu istnieje warstwa danych geograficznych z adresami zamieszkania zawierająca pole  <i>ZIP</i> i tabelaryczny zestaw danych demograficznych dotyczących zdrowia według kod&oacute;w pocztowych zawierający pole o nazwie <i>HEALTHZIP</i>. Zestaw danych zdrowotnych można złączyć z danymi na temat adres&oacute;w zamieszkania, dopasowując pole <i>ZIP</i> do pola <i>HEALTHZIP</i>, co spowoduje powstanie warstwy adres&oacute;w zamieszkania z odpowiadającymi im danymi zdrowotnymi.
             </p>
         </div>
     </div>
@@ -126,14 +126,14 @@
         <div>
             <p>Określa, w jaki spos&oacute;b będą obsługiwane połączenia między warstwą docelową i warstwą połączenia, jeśli w warstwie połączenia zostanie znalezionych wiele obiekt&oacute;w o takich samych relacjach z warstwą docelową. Można wybrać jedną z dw&oacute;ch następujących operacji łączenia:
                 <ul>
-                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć obiekty w warstwie docelowej z pojedynczym obiektem w warstwie złączenia. To, jak warstwy są łączone, zależy od parametru <b>Dodaj statystyki</b> lub <b>Zdefiniuj zachowywany rekord</b>. Opcjonalnie, jeśli używana jest opcja <b>Dodaj statystyki</b>, dopasowane złączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba złączonych obiekt&oacute;w. Jeśli używana jest opcja <b>Zdefiniuj zachowywany rekord</b>, można wybrać opcję zachowania pierwszego zgodnego rekordu (opcja domyślna) lub zachowania zgodnego rekordu na podstawie wyrażenia. W wyrażeniu można użyć pola liczbowego (opcja największego lub najmniejszego rekordu) lub pola daty (opcja najnowszego lub najstarszego rekordu).
+                    <li> <b>Złączenie jeden do jeden</b> &mdash; ta opcja pozwala połączyć obiekty w warstwie docelowej z pojedynczym obiektem w warstwie złączenia. To, jak warstwy są łączone, zależy od parametru <b>Dodaj statystyki</b> lub <b>Zdefiniuj zachowywany rekord</b>. Opcjonalnie, jeśli używana jest opcja <b>Dodaj statystyki</b>, dopasowane połączone obiekty zostaną podsumowane względem poszczeg&oacute;lnych obiekt&oacute;w w warstwie docelowej. Domyślnie zostanie dodana liczba złączonych obiekt&oacute;w. Jeśli używana jest opcja <b>Zdefiniuj zachowywany rekord</b>, można wybrać opcję zachowania pierwszego zgodnego rekordu (opcja domyślna) lub zachowania zgodnego rekordu z najwyższą lub najniższą wartością w określonym polu ( <b>Sortuj wg</b>). Kolejność według wyrażenia wymaga pola liczbowego (opcja największej lub najmniejszej wartości) lub pola daty (opcja najnowszej lub najstarszej wartości).
                     </li>
                     <li> <b>Złączenie jeden do wielu</b> &mdash; ta opcja pozwala połączyć wszystkie pasujące obiekty w warstwie połączenia z warstwą docelową. Warstwa wynikowa będzie zawierać wiele rekord&oacute;w obiektu docelowego.
                     </li>
                 </ul>
                 
             </p>
-            <p>Zał&oacute;żmy, że chcesz znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzasz, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja połączenia <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku określenia relacji <b>Złączenie jeden do jeden</b> i wybrania statystyki dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i zbiorcze informacje o supermarketach, takie jak ich liczba (5) i inne dane statystyczne, na przykład suma rocznej sprzedaży.
+            <p>Zał&oacute;żmy, że chcesz znaleźć supermarkety w promieniu 5 kilometr&oacute;w od rynku produkt&oacute;w rolnych. W tym przypadku warstwa, do kt&oacute;rej będą dołączane obiekty, zawiera pojedynczy obiekt reprezentujący rynek produkt&oacute;w rolnych, a dołączane obiekty reprezentują lokalne sklepy spożywcze, kt&oacute;re mają atrybuty, takie jak suma rocznej sprzedaży. Używając narzędzia  <b>Połącz obiekty</b>, stwierdzasz, że pięć sklep&oacute;w spożywczych spełnia kryteria. Jeśli zostanie określona operacja połączenia <b>Złączenie jeden do wielu</b>, dane wynikowe będą zawierać pięć obiekt&oacute;w, a każdy wiersz będzie reprezentować rynek produkt&oacute;w rolnych i jeden z supermarket&oacute;w. W przypadku określenia relacji <b>Złączenie jeden do jeden</b> i wybrania opcji <b>Zdefiniuj zachowywany rekord</b>, dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i jeden supermarket, np. z najwyższą roczną sprzedażą. Jeśli zamiast tego zostanie wybrana opcja <b>Dodaj statystyki</b>, dane wynikowe będą zawierać jeden obiekt reprezentujący rynek produkt&oacute;w rolnych i podsumowanie dotyczące pięciu supermarket&oacute;w, takie jak suma rocznej sprzedaży i liczba (5) zsumowanych supermarket&oacute;w. 
             </p>
         </div>
     </div>
@@ -180,8 +180,10 @@
         <div><h2>Tworzenie wyników w postaci widoku hostowanej warstwy obiektowej</h2></div>
         <hr/>
         <div>
-            <p> Wyniki utworzone w postaci widoku hostowanej warstwy obiektowej pozostają aktualne, gdy zmienia się źr&oacute;dło danych. Widoki hostowanej warstwy obiektowej zawierające złączenia są widokami tylko do odczytu.
+            <p>Wyniki utworzone w postaci widoku hostowanej warstwy obiektowej pozostają aktualne, gdy zmienia się źr&oacute;dło danych. Widoki hostowanej warstwy obiektowej zawierające złączenia są widokami tylko do odczytu.
             </p>
+            <p class="OnlineOnly">Analizowanie i przechowywanie widok&oacute;w hostowanej warstwy obiektowej zawierającej złączenia nie powoduje wykorzystania kredyt&oacute;w.
+            </p> 
             <p>Widok hostowanej warstwy obiektowej można utworzyć na podstawie wynik&oacute;w analizy, gdy spełnione są wszystkie następujące warunki:
                 <ul>
                     <li>Obie warstwy są Twoją własnością.

@@ -41,52 +41,53 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Convert Feature to  Raster</h2><p/>
-        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Convert Feature to Raster tool"></h2>
+        <h2>Перетворити об'єкт в растр</h2><p/>
+        <h2><img src="../images/GUID-FC535A9C-A946-419A-9A85-95EB31E4D3A0-web.png" alt="Інструмент &laquo;Перетворити об'єкт в растр&raquo;"></h2>
         <hr/>
     <p>Цей інструмент перетворює об'єкти в набори растрових даних.
     </p>
     <p>Будь-який клас об&rsquo;єктів, що містить точкові, лінійні або полігональні об&rsquo;єкти, може бути перетворений в набір растрових даних.
     </p>
-    <p>The cell center is used to decide the value of the output raster pixel.
+    <p>Центр осередку використовується для визначення значення пікселя вихідного растру.
     </p>
-    <p>The input field type determines the type of output raster. If the field is integer, the output raster will be integer; if it is floating point, the output will be floating point.
+    <p>Тип вхідного поля визначає тип вихідного растру. Якщо поле &mdash; ціле число, вихідний растр буде цілочисловим; якщо растр з плаваючою точкою &mdash; вихідний растр буде з плаваючою точкою.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Choose feature layer to convert</h2></div>
+        <div><h2>Вибрати векторний шар для перетворення</h2></div>
         <hr/>
         <div>
-            <p>The input feature layer to convert to a raster dataset.
+            <p>Вхідний векторний шар для перетворення в набір растрових даних.
             </p>
         </div>
     </div>
     <div id="field">
-        <div><h2>Choose field</h2></div>
+        <div><h2>Вибрати поле</h2></div>
         <hr/>
         <div>
-            <p>Choose the field that will be used to assign values to the output raster.
+            <p>Вибрати поле, яке буде використане для призначення значень вихідному растру.
             </p> 
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Output cell size</h2></div>
+        <div><h2>Розмір вихідного осередку</h2></div>
         <hr/>
         <div>
             <p>Розмір осередку і одиниці виміру для вихідних растрів.
             </p>
-            <p>The available units are Miles, Feet, Kilometers, and Meters. The default is Feet.
+            <p>Доступні одиниці виміру &mdash; милі, фути, кілометри і метри. За замовчуванням обрано фути.
             </p>
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Ім'я шару результатів</h2></div>
         <hr/>
         <div>
-            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Ім'я за замовчуванням визначається на основі імені інструменту та імені вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
             </p>
-            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            <p>Використовуючи розкривний список  <b>Зберегти результат у</b>, можна вказати ім'я папки в <b>Мій вміст</b>, де зберігатиметься результат.
             </p>
         </div>
     </div>

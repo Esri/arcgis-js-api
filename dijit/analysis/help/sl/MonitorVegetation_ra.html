@@ -99,7 +99,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Določi indekse bližnje infrardečega in rdečega pasu</h2></div>
+        <div><h2>Določi indekse pasu NIR in rdečega pasu</h2></div>
         <hr/>
         <div>
             <p>Določi pasovne indekse za NIR in rdeče pasove.
@@ -124,7 +124,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
         <div>
             <p>Vrednost NIR, ko je odbojna vrednost rdečega pasu (Red) 0 pri določenih linijah prsti.
             </p>
-            <p> <code>(a = NIR - sRed)</code> , ko je Red 0.
+            <p> <code>(a = blizu infrardeče - sRdeče)</code>, ko je Red 0.
             </p> 
             <p>Ta parameter je veljaven samo za metodo transformiranega indeksa vegetacije glede na talni tip.
             </p>
@@ -136,8 +136,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
         <div>
             <p>Določi količino pokrova zelene vegetacije, ki je zahtevana za metodo SAVI.
             </p>
-            <p>Veljavne vrednosti so naslednje: 
-
+            <p>Veljavne vrednosti so naslednje:
                 <ul>
                     <li>1 = območja brez pokrova zelene vegetacije
                         
@@ -170,6 +169,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({font:"8pt Verdana",theme:{chart:{fill:null},plotarea:{fill:null},axis:{stroke:{color:"#FFFFFF"},tick:{color:"#FFFFFF",font:"normal normal normal 8pt Verdana",fontColor:"#FFFFFF"}},marker:{symbol:"m-3,0 c0,-4 6,-4 6,0, m-6,0 c0,4 6,4 6,0"}},male:{fill:"#69A3F7",stroke:null},female:{fill:"#FF9CF3",stroke:null},line:{fill:"#FFFFFF",stroke:{width:.75,color:"#FFFFFF"}}});

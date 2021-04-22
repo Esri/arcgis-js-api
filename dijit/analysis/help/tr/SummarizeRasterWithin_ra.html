@@ -44,7 +44,7 @@
         <h2>Raster Özetleme Aralığı</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Raster &Ouml;zetleme Aralığı aracı"></h2>
         <hr/>
-    <p>Bu ara&ccedil;, ilk girdi katmanı tarafından tanımlanan alanlara (b&ouml;lgelere) dayanan bir rasterı &ouml;zetler.
+    <p>Bu ara&ccedil;, başka bir veri k&uuml;mesinin b&ouml;lgeleri i&ccedil;indeki bir rasterın değerlerini &ouml;zetler.
     </p>
     <p>Bazı &ouml;rnek uygulamalar aşağıda verilmiştir:
     </p>
@@ -61,7 +61,7 @@
         </ul>
         
     </p>
-    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan girdi katmanındaki ve &ouml;zetlenecek katmandaki ilgili detaylar analiz edilir.  İşaretli değilse, hem girdi katmanı hem de &ouml;zetlenecek katmandaki t&uuml;m detaylar, ge&ccedil;erli harita yayılımının dışında olsa bile analiz edilir.
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan girdi katmanındaki ve &ouml;zetlenecek katmandaki ilgili detaylar analiz edilir. İşaretli değilse, hem girdi katmanı hem de &ouml;zetlenecek katmandaki t&uuml;m detaylar, ge&ccedil;erli harita yayılımının dışında olsa bile analiz edilir.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -99,9 +99,21 @@
         <div>
             <p>&Ouml;zetlenecek bir katman se&ccedil;tikten sonra, girdi alanı katmanı i&ccedil;inde kalan noktaların, &ccedil;izgilerin veya alanların sayısal &ouml;zniteliğine ait istatistikleri isteğe bağlı olarak hesaplayabilirsiniz.
             </p>
-            <p>Se&ccedil;ilen alan tamsayı olduğunda kullanılabilir istatistik t&uuml;rleri Ortalama, &Ccedil;oğunluk, Maksimum, Orta Değer, Minimum, Azınlık, Aralık, Standart sapma, Toplam ve &Ccedil;eşitliliktir.
+            <p>Se&ccedil;ilen alan tam sayı olduğunda kullanılabilir istatistik t&uuml;rleri Ortalama, &Ccedil;oğunluk, Maksimum, Ortanca Minimum, Azınlık, Y&uuml;zde, Aralık, Standart sapma, Toplam ve &Ccedil;eşitliliktir.
             </p>
             <p>Alan kayan noktalı ise se&ccedil;enekler Ortalama, Maksimum, Minimum, Aralık, Standart sapma ve Toplamdır.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Yüzde değeri</h2></div>
+        <hr/>
+        <div>
+            <p>Hesaplanacak olan y&uuml;zde. Varsayılan 90'dır ve 90. y&uuml;zdelik dilimi g&ouml;sterir.
+            </p>
+            <p>Değerler 0 ile 100 arasında değişebilir. Y&uuml;zde 0, temelde minimum istatistiğe ve y&uuml;zde 100, maksimum istatistiğe eşittir. 50 değeri temelde ortanca istatistiğiyle aynı sonucu &uuml;retir.
+            </p>
+            <p>Bu se&ccedil;enek sadece  <b>Hesaplanacak istatistiği se&ccedil;</b> parametresi <b>Y&uuml;zde</b> olarak ayarlanırsa desteklenir.
             </p>
         </div>
     </div>
@@ -113,10 +125,19 @@
             </p>
         </div>
     </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Çok boyutlu olarak işle</h2></div>
+        <hr/>
+        <div>
+            <p>&Ccedil;ok boyutlu olduklarında girdi rasterlarının nasıl işleneceğini belirtir. &Ccedil;ok boyutlu olarak işlemeyi se&ccedil;erseniz, istatistikler girdi &ccedil;ok boyutlu veri k&uuml;mesinin t&uuml;m boyutlarından hesaplanır. Aksi takdirde, istatistikler girdi &ccedil;ok boyutlu veri k&uuml;mesinin ge&ccedil;erli diliminden hesaplanır; bu varsayılandır.
+            </p>
+        </div>
+    </div>
     <div id="resultLayer">
         <div><h2>Sonuç katmanı adı</h2></div>
         <hr/>
         <div>
+            
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.

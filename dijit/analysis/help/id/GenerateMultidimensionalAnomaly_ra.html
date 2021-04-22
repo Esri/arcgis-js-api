@@ -41,10 +41,10 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Buat Anomali Multidimensional</h2><p/>
-        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Buat Anomali Multidimensional"></h2>
+        <h2>Hasilkan Anomali Multidimensional</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Hasilkan Anomali Multidimensional"></h2>
         <hr/>
-    <p>Menghasilkan set data raster multidimensional dengan menggabungkan variabel raster multidimensional yang ada di sepanjang dimensi.
+    <p>Menghitung anomali untuk setiap irisan dalam raster multidimensional yang ada untuk menghasilkan raster multidimensional baru.
     </p>
     <p>Anomali adalah deviasi pengamatan dari nilai standar, rata-rata, atau mediannya.
     </p>
@@ -54,7 +54,7 @@
     </p>
     <p>Alat ini hanya mendukung set data raster multidimensional yang memiliki dimensi waktu.
     </p>
-    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel seluruh layer akan dianalisis, bahkan jika berada di luar jangkauan peta saat ini.
+    <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel layer yang terlihat di dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel seluruh layer akan dianalisis, bahkan jika berada di luar jangkauan peta saat ini.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -78,7 +78,7 @@
         <div><h2>Pilih metode untuk menghasilkan anomali</h2></div>
         <hr/>
         <div>
-            <p>Menentukan metode yang akan digunakan untuk menghitung anomali. 
+            <p>Menentukan metode yang akan digunakan untuk menghitung anomali.
                 <ul>
                     <li> <b>Perbedaan dari Rata-rata</b>&mdash;Perbedaan antara nilai piksel dan rata-rata nilai piksel tersebut di seluruh irisan yang ditentukan oleh interval akan dihitung. Ini adalah default.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Perbedaan rata-rata = x - &mu;
-
                         <ul>
                             <li>x = nilai piksel dalam satu irisan
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Persentase perbedaan dari rata-rata = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = nilai piksel dalam satu irisan
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Persentase rata-rata = x / &micro;
-
                         <ul>
                             <li>x = nilai piksel dalam satu irisan
                                 
@@ -180,7 +177,7 @@
                         </ul>
                         
                     </li>
-                    <li>Skor z  = (x - &micro;) / S
+                    <li>Skor z = (x - &micro;) / S
                         <ul>
                             <li>x = nilai piksel dalam satu irisan
                             </li>
@@ -202,7 +199,7 @@
         <div><h2>Pilih interval temporal untuk menghitung rata-rata</h2></div>
         <hr/>
         <div>
-            <p>Menentukan interval temporal yang akan digunakan untuk menghitung rata-rata. 
+            <p>Menentukan interval temporal yang akan digunakan untuk menghitung rata-rata.
                 <ul>
                     <li> <b>Semua</b>&mdash;Menghitung rata-rata di semua irisan untuk setiap piksel.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Abaikan nilai yang hilang dalam penghitungan</h2></div>
         <hr/>
         <div>
-            <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis. 
+            <p>Menentukan apakah nilai yang hilang diabaikan dalam analisis.
                 <ul>
                     <li>Dicentang&mdash;Analisis akan mencakup semua piksel yang valid di sepanjang dimensi yang ditentukan dan mengabaikan piksel NoData apa pun. Ini adalah default.
                     </li>
@@ -250,9 +247,10 @@
         <div><h2>Nama layer hasil</h2></div>
         <hr/>
         <div>
+            
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak tarik-turun <b>Simpan hasil di</b>.
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
             </p>
         </div>
     </div>

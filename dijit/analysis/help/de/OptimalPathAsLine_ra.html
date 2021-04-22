@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimaler Pfad als Linie</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Abbildung zum Werkzeug &quot;Optimaler Pfad als Linie&quot;"></h2>
+        <hr/>
+    <p>Dieses Werkzeug berechnet den optimalen Pfad von Zielen zu Quellen als Linie.
+    </p>
+    <p>Nachfolgend werden einige Beispielanwendungen aufgef&uuml;hrt:
+        <ul>
+            <li>Die beste Route suchen f&uuml;r eine neue Stra&szlig;e im Hinblick auf Baukosten.
+                
+
+
+            </li>
+            <li>Die beste Segelroute zwischen einem Ziel und dem aktuellen Standort suchen.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Ziel-Raster oder -Features auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Ein Raster oder Feature-Layer mit Zellen, von denen aus der optimale Pfad zur optimalen Quelle ermittelt wird.
+            </p>
+            <p>Wenn die Eingabe ein Raster ist, muss die Eingabe aus Zielzellen mit g&uuml;ltigen Werten (0 ist ein g&uuml;ltiger Wert) bestehen, und den restlichen Zellen muss &quot;NoData&quot; zugewiesen werden. Das Eingabe-Raster muss den Typ &quot;Integer&quot; aufweisen.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Ziel-Feld</h2></div>
+        <hr/>
+        <div>
+            <p>Das Feld, das verwendet wird, um Werte f&uuml;r die Zielpositionen zu erhalten.
+            </p>
+            <p>Dieses Feld muss vom Typ &quot;Integer&quot; sein.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Entfernungsakkumulations-Raster auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Mit dem Entfernungsakkumulations-Raster wird die optimale Verbindung von den Zielen zu den Quellen ermittelt.
+            </p>
+            <p>Das Entfernungsakkumulations-Raster wird i.&nbsp;d.&nbsp;R. mit dem Werkzeug Entfernungsakkumulation oder Entfernungsallokation erstellt. Jede Zelle im Entfernungsakkumulations-Raster stellt die minimale akkumulative Kostenentfernung &uuml;ber eine Oberfl&auml;che von jeder Zelle zu einer Menge von Quellenzellen dar.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Gegenrichtungs- oder Fließrichtungs-Raster auswählen</h2></div>
+        <hr/>
+        <div>
+            <p>Das Gegenrichtungs-Raster enth&auml;lt berechnete Richtungen in Grad. Die Richtung identifiziert die n&auml;chste Zelle entlang dem optimalen Pfad zur&uuml;ck zur Quelle mit den geringsten akkumulativen Kosten, wobei Barrieren vermieden werden.
+            </p>
+            <p>Das Gegenrichtungs-Raster wird i.&nbsp;d.&nbsp;R. mit dem Werkzeug &quot;Entfernungsakkumulation&quot; oder &quot;Entfernungsallokation&quot; erstellt. In diesem Fall reicht der Wertebereich von 0&nbsp;Grad bis 360&nbsp;Grad. Der Wert 0 ist f&uuml;r die Quellenzellen reserviert. In &ouml;stlicher Richtung (rechts) befindet sich der 90-Grad-Winkel, und die Werte nehmen im Uhrzeigersinn zu (180 Grad ist S&uuml;den, 270 Grad ist Westen und 360 Grad ist Norden).
+            </p>
+            <p>Die erstellte optimale Verbindung kann eine Flie&szlig;verbindung auf Grundlage einer D8-Flie&szlig;richtung sein. Um auf diese Weise eine optimale Verbindung zu generieren, verwenden Sie ein D8-Flie&szlig;richtungs-Raster als Eingabe f&uuml;r diesen Parameter.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Pfadtyp (optional)</h2></div>
+        <hr/>
+        <div>
+            <p>Gibt ein Schl&uuml;sselwort an, das definiert, wie die Werte und Zonen der Eingabezieldaten in den Kostenpfadberechnungen interpretiert werden.
+                <ul>
+                    <li> <b>Zu jeder Zone</b>: F&uuml;r jede Zone in den Eingabezieldaten wird eine kosteng&uuml;nstigste Route ermittelt. Bei dieser Option beginnt die kosteng&uuml;nstigste Route f&uuml;r jede Zone bei der Zelle mit der niedrigsten Kostenentfernungsgewichtung in der Zone. Dies ist die Standardeinstellung.
+                         
+                    </li>
+                    <li> <b>Der Beste</b>: F&uuml;r alle Zellen in den Eingabezieldaten wird die kosteng&uuml;nstigste Route aus der Zelle mit dem Minimum der kosteng&uuml;nstigsten Routen zu Quellenzellen abgeleitet.
+                    </li>
+                    <li> <b>Zu jeder Zelle</b>: F&uuml;r jede Zelle mit g&uuml;ltigen Werten in den Eingabezieldaten wird eine kosteng&uuml;nstigste Route ermittelt. Mit dieser Option wird jede Zelle der Eingabezieldaten separat behandelt und eine kosteng&uuml;nstigste Route f&uuml;r jede Zelle ermittelt.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Name des Ergebnis-Feature-Layers</h2></div>
+        <hr/>
+        <div>
+            <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
+            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

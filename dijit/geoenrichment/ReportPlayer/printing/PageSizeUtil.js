@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/i18n!esri/nls/jsapi"],(function(e){e=e.geoenrichment.dijit.ReportPlayer.PaperSize;var l={getSupportedPageSizes:function(l,a){var u=[{label:e.a3,value:"a3"},{label:e.a4,value:"a4"},{label:e.a5,value:"a5"},{label:e.b4,value:"b4"},{label:e.b5,value:"b5"},{label:e.ledger,value:"ledger"},{label:e.legal,value:"legal"},{label:e.letter,value:"letter"},{label:e.tabloid,value:"tabloid"}];return l&&u.push({label:a||e.custom,value:"custom"}),u}};return l}));

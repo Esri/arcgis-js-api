@@ -42,7 +42,7 @@
 <div id="topics">
     <div id="toolDescription" class="regularsize">
         <h2>Agregacija večdimenzionalnega rastra</h2><p/>
-        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregacija večdimenzionalnega rasterja"></h2>
+        <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregacija večdimenzionalnega rastra"></h2>
         <hr/>
     <p>Ustvari večdimenzionalni rastrski sklop podatkov s pomočjo združevanja obstoječih večdimenzionalnih rastrskih spremenljivk vzdolž dimenzije.
     </p>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div id="dimension">
-        <div><h2>Izberi dimenzijo vzdolž katere poteka agregacija</h2></div>
+        <div><h2>Izberi dimenzijo vzdolž katere bo potekala agregacija</h2></div>
         <hr/>
         <div>
             <p>Dimenzija agregacije. To je dimenzija vzdolž katere bo potekala agregacija spremenljivk.
@@ -91,9 +91,9 @@
         <div><h2>Izberi metodo agregacije</h2></div>
         <hr/>
         <div>
-            <p>Določi matematično metodo, ki bo uporabljena za združevanje agregiranih izsekov v intervalu. 
+            <p>Določi matematično metodo, ki bo uporabljena za združevanje agregiranih izsekov v intervalu.
                 <ul>
-                    <li> <b>Srednja vrednost</b> &ndash; Izračuna srednjo vrednost vrednosti piksla po vseh izsekih v intervalu. To je privzeta nastavitev.
+                    <li> <b>Srednja vrednost</b> &ndash; Izračuna srednjo vrednost vrednosti piksla po vseh izsekih v intervalu. To je privzeto.
                     </li>
                     <li> <b>Maksimum</b> &ndash; Izračuna maksimalno vrednost vrednosti piksla po vseh izsekih v intervalu.
                     </li>
@@ -132,9 +132,9 @@
         <div><h2>Izberi definicijo agregacije</h2></div>
         <hr/>
         <div>
-            <p>Določi interval dimenzije za katerega bo potekala agregacija podatkov. 
+            <p>Določi interval dimenzije za katerega bo potekala agregacija podatkov.
                 <ul>
-                    <li> <b>Vse</b> &ndash; Vrednosti podatkov bodo agregirane po vseh izsekih. To je privzeta nastavitev.
+                    <li> <b>Vse</b> &ndash; Vrednosti podatkov bodo agregirane po vseh izsekih. To je privzeto.
                     </li>
                     <li> <b>Ključna beseda intervala</b> &ndash; Podatki spremenljivke bodo agregirani z uporabo splo&scaron;no znanega intervala.
                     </li>
@@ -151,7 +151,7 @@
         <div><h2>Izberi interval ključne besede</h2></div>
         <hr/>
         <div>
-            <p>Določi interval ključne besede, ki bo uporabljen ob agregaciji vzdolž dimenzije. Vnos je obvezen, kadar je  <b>Definicija agregacije</b> nastavljena na <b>ključna beseda intervala</b> in agregacija mora potekati skozi čas.
+            <p>Določi interval ključne besede, ki bo uporabljen ob agregaciji vzdolž dimenzije. Vnos je obvezen, kadar je  <b>Definicija Agregacije</b> nastavljena na <b>ključna beseda intervala</b>in agregacija mora potekati skozi čas.
                 <ul>
                     <li> <b>Urno</b> &ndash; Vrednosti podatkov bodo agregirane v urne časovne korake in rezultat bo vključeval vsako uro v časovni seriji.
                     </li>
@@ -173,7 +173,7 @@
                     </li>
                     <li> <b>Trimesečno ponavljajoče</b> &ndash; Vrednosti podatkov bodo agregirane v tedenske časovne korake in rezultat bo vključeval eno agregirano vrednost na trimesečje. Rezultat bo vključeval največ 4 trimesečne časovne izseke.
                     </li>
-                    <li> <b>Deseterno</b> &ndash; Vrednosti podatkov bodo agregirane v 3 obdobja, vsako po 10 dni. Zadnje obdobje bo morda vsebovalo manj kot 10 dni. Rezultat bo vključeval 3 izseke za vsak mesec.
+                    <li> <b>Deseterno</b> &ndash; Vrednosti podatkov bodo agregirane v 3 obdobja, vsako po 10 dni. Zadnje obdobje bo morda vsebovali manj kot 10 dni. Rezultat bo vključeval 3 izseke za vsak mesec.
                     </li>
                     <li> <b>Peterno</b> &ndash; Vrednosti podatkov bodo agregirane v 6 obdobij, vsako po 5 dni. Zadnje obdobje bo morda vsebovalo manj kot 5 dni. Rezultat bo vključeval 6 izsekov za vsak mesec.
                     </li>
@@ -198,7 +198,7 @@
         <div>
             <p>Enota, ki bo uporabljena za vrednost intervala. Ta vnos je obvezen, kadar je  <b>Dimenzija</b> časovno polje in je <b>Definicija agregacije</b> nastavljena na <b>Vrednost intervala</b>.
             </p>
-            <p>Če agregacija poteka preko česar kar ni čas, potem ta možnost ne bo na voljo in se bo enota za vrednost intervala ujemala z enoto spremenljivke vhodnih podatkov večdimenzionalnega rastra. 
+            <p>Če agregacija poteka preko česar kar ni čas, potem ta možnost ne bo na voljo in se bo enota za vrednost intervala ujemala z enoto spremenljivke vhodnih podatkov večdimenzionalnega rasterja.
                 <ul>
                     <li> <b>Ure</b> &ndash; Vrednosti podatkov bodo agregirane v urne časovne izseke v navedenem intervalu.
                     </li>
@@ -227,9 +227,9 @@
         <div><h2>Prezri manjkajoče vrednosti v izračunu</h2></div>
         <hr/>
         <div>
-            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti. 
+            <p>Določi ali se bo v analizi prezrlo manjkajoče vrednosti.
                 <ul>
-                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeta nastavitev.
+                    <li>Obkljukano&mdash;Analiza bo vključevala vse veljavne piksle vzdolž dane dimenzije in prezrla vse piksle brez podatkov. To je privzeto.
                     </li>
                     <li>Odkljukano &ndash; Rezultat analize bo brez podatkov, če vzdolž dane dimenzije obstajajo vrednosti brez podatkov za piksle.
                     </li>
@@ -242,6 +242,7 @@
         <div><h2>Ime sloja z rezultati</h2></div>
         <hr/>
         <div>
+            
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
             <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.

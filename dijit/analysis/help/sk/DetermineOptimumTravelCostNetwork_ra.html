@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Určiť sieť optimálnych cestovných nákladov</h2><p/>
+        <h2><img src="../images/GUID-097BDD6E-0AD8-44F2-BB70-C5395F4B1AF4-web.png" alt="Ilustr&aacute;cia n&aacute;stroja na určenie optim&aacute;lnych cestovn&yacute;ch n&aacute;kladov"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj vypoč&iacute;ta optim&aacute;lnu sieť n&aacute;kladov zo s&uacute;boru vstupn&yacute;ch regi&oacute;nov.
+    </p>
+    <p>Jedno z využit&iacute; tohto n&aacute;stroja je vyhľadanie najlep&scaron;ej siete pre pohotovostn&eacute; vozidl&aacute;.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, analyzovan&eacute; bud&uacute; iba tie lokality vo vstupnej vrstve, ktor&eacute; s&uacute; viditeľn&eacute; v aktu&aacute;lnom rozsahu mapy. Ak nie je za&scaron;krtnut&eacute;, v&scaron;etky miesta vo vstupnej vrstve bud&uacute; analyzovan&eacute;, aj v pr&iacute;pade, že sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionsRasterOrFeatures">
+        <div><h2>Vyberte raster alebo vrstvu lokalít prvkov pre určenie cestovných trás medzi</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&eacute; regi&oacute;ny, ktor&eacute; maj&uacute; byť spojen&eacute; sieťou s najmen&scaron;&iacute;mi n&aacute;kladmi.
+            </p>
+            <p>Regi&oacute;ny m&ocirc;žu byť definovan&eacute; buď sn&iacute;mkovou alebo prvkovou službou.
+            </p>
+            <p>Pre sn&iacute;mkov&uacute; službu s&uacute; regi&oacute;ny definovan&eacute; skupinami priľahl&yacute;ch buniek rovnakej hodnoty. Každ&yacute; regi&oacute;n mus&iacute; byť unik&aacute;tne oč&iacute;slovan&yacute;. Bunky, ktor&eacute; nie s&uacute; s&uacute;časťou žiadneho regi&oacute;nu musia byť NoData. Typ rastra mus&iacute; byť cel&eacute; č&iacute;slo a hodnoty m&ocirc;žu byť kladn&eacute; alebo z&aacute;porn&eacute;.
+            </p>
+            <p>Pre prvkov&uacute; službu v m&ocirc;že byť vstupom bod, l&iacute;nia alebo polyg&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Vyberte rastrovú vrstvu cestovných nákladov</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definuj&uacute;ci impedanciu alebo n&aacute;klady planimetrick&eacute;ho pohybu cez každ&uacute; bunku.
+            </p>
+            <p>Hodnota v každej lokalite bunky predstavuje n&aacute;klady za jednotku vzdialenosti pri jej prechode. Hodnota každej bunky je vyn&aacute;soben&aacute; rozl&iacute;&scaron;en&iacute;m bunky, čo kompenzuje diagon&aacute;lny pohyb, aby sa z&iacute;skali celkov&eacute; n&aacute;klady na prechod bunkou.
+            </p>
+            <p>Hodnoty N&aacute;kladov&eacute;ho rastra m&ocirc;žu byť cel&eacute; č&iacute;slo alebo desatinn&eacute; č&iacute;slo, ale nem&ocirc;žu byť z&aacute;porn&eacute; alebo nulov&eacute; (nem&ocirc;žete mať negat&iacute;vne alebo nulov&eacute; n&aacute;klady).
+            </p> 
+        </div>
+    </div>
+    <div id="outputOptimumNetworkName">
+        <div><h2>Názov výslednej čiarovej vrstvy s optimalizovanými trasami</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborNetworkName">
+        <div><h2>Názov výslednej čiarovej vrstvy so susediacimi trasami</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

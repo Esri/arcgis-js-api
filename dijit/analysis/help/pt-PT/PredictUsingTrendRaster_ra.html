@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Prever através da Utilização de um Raster de Tendência</h2><p/>
-        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prever atrav&eacute;s da Utiliza&ccedil;&atilde;o de um Raster de Tend&ecirc;ncia"></h2>
+        <h2>Prever Através da Utilização de um Raster de Tendência</h2><p/>
+        <h2><img src="../images/GUID-E3758820-51A9-46DE-AAF6-E27B68DE4012-web.png" alt="Prever Atrav&eacute;s da Utiliza&ccedil;&atilde;o de um Raster de Tend&ecirc;ncia"></h2>
         <hr/>
     <p>Calcula um raster multidimensional previsto utilizando o raster de tend&ecirc;ncia da ferramenta  Gerar Raster de Tend&ecirc;ncia.
     </p>
@@ -59,10 +59,10 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Escolha  a prever</h2></div>
+        <div><h2>Escolha a prever</h2></div>
         <hr/>
         <div>
-            <p>que ser&aacute;&atilde;o previstas na an&aacute;lise. Se n&atilde;o for especificada qualquer vari&aacute;vel, ser&atilde;o utilizadas todas as vari&aacute;veis.
+            <p>A vari&aacute;vel ou vari&aacute;veis que ser&atilde;o previstas na an&aacute;lise. Se n&atilde;o for especificada qualquer vari&aacute;vel, ser&atilde;o utilizadas todas as vari&aacute;veis.
             </p>
         </div>
     </div>
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="dimensionValues">
-        <div><h2>Especificar valores dimensãoões  previsão</h2></div>
+        <div><h2>Especificar valores dimensãoões previsão</h2></div>
         <hr/>
         <div>
             <p>O valor ou valores de dimens&atilde;o a utilizar na previs&atilde;o.
@@ -90,6 +90,22 @@
             <p>O formato dos valores de tempo, profundidade e altura deve corresponder ao formato dos valores de dimens&atilde;o utilizados para gerar o raster de tend&ecirc;ncia. Se o raster de tend&ecirc;ncia foi gerado para a dimens&atilde;o StdTime, o formato deve ser YYYY-MM-DDTHH:MM:SS, por exemplo, 2050-01-01T00:00:00. Os valores m&uacute;ltiplos s&atilde;o separados com ponto e v&iacute;rgula.
             </p>
             <p>Este par&acirc;metro &eacute; necess&aacute;rio quando o m&eacute;todo  <b>Por valor</b> est&aacute; selecionado para definir os valores de dimens&atilde;o para a previs&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Iniciar</h2></div>
+        <hr/>
+        <div>
+            <p>A data de in&iacute;cio, altura ou profundidade do intervalo de dimens&atilde;o a utilizar na previs&atilde;o.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Terminar</h2></div>
+        <hr/>
+        <div>
+            <p>A data de fim, altura ou profundidade do intervalo de dimens&atilde;o a utilizar na previs&atilde;o.
             </p>
         </div>
     </div>
@@ -123,6 +139,7 @@
         <div><h2>Nome da camada resultante</h2></div>
         <hr/>
         <div>
+            
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
             <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.

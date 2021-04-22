@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Distance Accumulation (Tích lũy Khoảng cách)</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="H&igrave;nh minh họa c&ocirc;ng cụ T&iacute;ch lũy Khoảng c&aacute;ch"></h2>
+        <hr/>
+    <p>C&ocirc;ng cụ n&agrave;y t&iacute;nh to&aacute;n khoảng c&aacute;ch t&iacute;ch lũy cho từng &ocirc; tới nguồn, bao gồm khoảng c&aacute;ch đường thẳng, khoảng c&aacute;ch chi ph&iacute;, khoảng c&aacute;ch bề mặt thực, c&aacute;c hệ số dọc v&agrave; ngang.
+    </p>
+    <p>C&aacute;c ứng dụng v&iacute; dụ bao gồm c&acirc;u trả lời cho c&aacute;c c&acirc;u hỏi như sau:
+        <ul>
+            <li>Khoảng c&aacute;ch tới thị x&atilde; gần nhất l&agrave; bao nhi&ecirc;u?
+                
+
+            </li>
+            <li>Khoảng c&aacute;ch chi ph&iacute; tới đường gần nhất l&agrave; bao nhi&ecirc;u?
+                
+
+            </li>
+            <li>Khoảng c&aacute;ch quanh c&aacute;c r&agrave;o cản tới nguồn nước gần nhất l&agrave; bao nhi&ecirc;u?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; chỉ c&aacute;c đối tượng nh&igrave;n thấy được trong lớp đầu v&agrave;o v&agrave; trong phạm vi bản đồ hiện tại mới được ph&acirc;n t&iacute;ch. Nếu bỏ chọn, tất cả đối tượng trong lớp đầu v&agrave;o sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi hiển thị của bản đồ hiện tại.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Chọn raster nguồn hoặc đối tượng</h2></div>
+        <hr/>
+        <div>
+            <p>Lớp đối tượng hoặc raster x&aacute;c định nguồn m&agrave; khoảng c&aacute;ch sẽ được t&iacute;nh to&aacute;n theo đ&oacute;.
+            </p>
+            <p>Nếu đầu v&agrave;o l&agrave; một raster, đầu v&agrave;o phải chứa c&aacute;c &ocirc; c&oacute; gi&aacute; trị hợp lệ (0 l&agrave; một gi&aacute; trị hợp lệ) cho điểm nguồn, v&agrave; c&aacute;c &ocirc; c&ograve;n lại phải được g&aacute;n l&agrave; NoData.
+            </p>
+            <p>Nếu đầu v&agrave;o l&agrave; một lớp đối tượng, đ&oacute; c&oacute; thể l&agrave; điểm, đường hoặc v&ugrave;ng.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Chọn các đối tượng hoặc raster rào cản (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Bộ dữ liệu x&aacute;c định c&aacute;c r&agrave;o cản.
+            </p>
+            <p>Đối với một lớp raster, loại đầu v&agrave;o c&oacute; thể l&agrave; số nguy&ecirc;n hoặc gi&aacute; trị thả nổi. Bất kỳ &ocirc; n&agrave;o c&oacute; gi&aacute; trị (kể cả 0) sẽ được coi l&agrave; một r&agrave;o cản. Bất kỳ &ocirc; n&agrave;o l&agrave; NoData sẽ kh&ocirc;ng được coi l&agrave; r&agrave;o cản.
+            </p>
+            <p>Đối với dịch vụ đối tượng, đầu v&agrave;o c&oacute; thể l&agrave; điểm, đường hoặc đa gi&aacute;c.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Chọn raster Bề mặt (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Một raster x&aacute;c định gi&aacute; trị độ cao tại vị tr&iacute; mỗi &ocirc;.
+            </p>
+            <p>C&aacute;c gi&aacute; trị được sử dụng để t&iacute;nh to&aacute;n khoảng c&aacute;ch bề mặt thực tế được bao phủ khi di chuyển qua c&aacute;c &ocirc;.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Chọn raster chi phí (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Một raster x&aacute;c định trở kh&aacute;ng hoặc chi ph&iacute; để di chuyển diện t&iacute;ch qua từng cell.
+            </p>
+            <p>Gi&aacute; trị ở mỗi vị tr&iacute; cell đại diện cho khoảng c&aacute;ch chi ph&iacute; tr&ecirc;n đơn vị để di chuyển qua &ocirc;. Mỗi gi&aacute; trị vị tr&iacute; cell được nh&acirc;n với độ ph&acirc;n giải cell trong khi cũng b&ugrave; trừ cho chuyển động ch&eacute;o để c&oacute; được tổng chi ph&iacute; đi qua cell.
+            </p>
+            <p>Gi&aacute; trị của raster chi ph&iacute; c&oacute; thể l&agrave; số nguy&ecirc;n hoặc điểm nổi, nhưng ch&uacute;ng kh&ocirc;ng được l&agrave; số &acirc;m hoặc bằng kh&ocirc;ng (bạn kh&ocirc;ng thể c&oacute; chi ph&iacute; &acirc;m hoặc bằng kh&ocirc;ng).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Chọn raster dọc (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Một raster x&aacute;c định gi&aacute; trị z cho từng vị tr&iacute; &ocirc;.
+            </p>
+            <p>C&aacute;c gi&aacute; trị được sử dụng để t&iacute;nh độ dốc được sử dụng để x&aacute;c định hệ số dọc xảy ra khi dịch chuyển từ một &ocirc; sang một &ocirc; kh&aacute;c.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Hệ số dọc (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Hệ số dọc</b> x&aacute;c định mối quan hệ giữa hệ số chi ph&iacute; dọc (VF) v&agrave; g&oacute;c dịch chuyển tương đối dọc (VRMA).
+            </p>
+            <p>C&oacute; một v&agrave;i hệ số c&oacute; c&ocirc;ng cụ sửa đổi để lựa chọn v&agrave; x&aacute;c định một biểu đồ hệ số dọc. C&aacute;c biểu đồ được sử dụng để x&aacute;c định hệ số dọc được sử dụng trong việc t&iacute;nh to&aacute;n tổng chi ph&iacute; cho việc di chuyển tới một &ocirc; l&acirc;n cận.
+            </p>
+            <p>Trong m&ocirc; tả b&ecirc;n dưới, VF x&aacute;c định kh&oacute; khăn theo chiều dọc gặp phải khi di chuyển từ một &ocirc; sang &ocirc; tiếp theo v&agrave; c&ocirc;ng cụ sửa đổi VRMA x&aacute;c định g&oacute;c dốc giữa &ocirc;  <b>Từ nguồn</b> v&agrave; &ocirc; <b>Đến nguồn</b>.
+                <ul>
+                    <li> <b>Nhị ph&acirc;n</b>&mdash;Nếu VRMA lớn hơn g&oacute;c cắt thấp v&agrave; nhỏ hơn g&oacute;c cắt cao, VF được đặt ở gi&aacute; trị c&oacute; li&ecirc;n quan đến hệ số 0; nếu kh&ocirc;ng, n&oacute; sẽ l&agrave; v&ocirc; cực.
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh</b>&mdash;VF l&agrave; một h&agrave;m tuyến t&iacute;nh của VRMA.
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh nghịch đảo</b>&mdash;VF l&agrave; một h&agrave;m tuyến t&iacute;nh nghịch đảo của VRMA.
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh đối xứng</b>&mdash;VF l&agrave; một h&agrave;m tuyến t&iacute;nh của VRMA ở cả mặt dương v&agrave; &acirc;m của VRMA, v&agrave; hai h&agrave;m tuyến t&iacute;nh đối xứng với nhau qua trục VF (y).
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh đối xứng nghịch đảo</b>&mdash;VF l&agrave; một h&agrave;m tuyến t&iacute;nh nghịch đảo của VRMA ở cả mặt dương v&agrave; &acirc;m của VRMA, v&agrave; hai h&agrave;m tuyến t&iacute;nh đối xứng với nhau qua trục VF (y).
+                    </li>
+                    <li> <b>Cos</b>&mdash;VF l&agrave; h&agrave;m dựa v&agrave;o cosin của VRMA.
+                    </li>
+                    <li> <b>Sec</b>&mdash;VF l&agrave; h&agrave;m dựa v&agrave;o c&aacute;t tuyến của VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>&mdash;VF l&agrave; một h&agrave;m dựa v&agrave;o cosin của VRMA khi VRMA mang gi&aacute; trị &acirc;m v&agrave; l&agrave; h&agrave;m dựa v&agrave;o c&aacute;t tuyến VRMA khi VRMA kh&ocirc;ng &acirc;m.
+                    </li>
+                    <li> <b>Sec-Cos</b>&mdash;VF l&agrave; một h&agrave;m dựa v&agrave;o c&aacute;t tuyến của VRMA khi VRMA mang gi&aacute; trị &acirc;m v&agrave; l&agrave; h&agrave;m dựa v&agrave;o cosin VRMA khi VRMA kh&ocirc;ng &acirc;m.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bộ điều chỉnh c&aacute;c tham số dọc như sau:
+                <ul>
+                    <li> <b>Hệ số 0</b>&mdash;Hệ số dọc được sử dụng khi VRMA bằng 0. Hệ số n&agrave;y định vị hệ số chặn y của h&agrave;m được chỉ định. Theo định nghĩa, hệ số 0 kh&ocirc;ng được &aacute;p dụng cho bất kỳ h&agrave;m dọc lượng gi&aacute;c n&agrave;o (Cos, Sec, Cos-Sec, hoặc Sec-Cos). Hệ số chặn y được định nghĩa theo c&aacute;c h&agrave;m n&agrave;y.
+                    </li>
+                    <li> <b>G&oacute;c cắt thấp</b>&mdash;G&oacute;c VRMA m&agrave; ở b&ecirc;n dưới đ&oacute; th&igrave; VF sẽ được đặt th&agrave;nh v&ocirc; cực.
+                    </li>
+                    <li> <b>G&oacute;c cắt cao</b>&mdash;G&oacute;c VRMA m&agrave; ở b&ecirc;n tr&ecirc;n đ&oacute; th&igrave; VF sẽ được đặt th&agrave;nh v&ocirc; cực.
+                    </li>
+                    <li> <b>Dốc</b>&mdash;Độ dốc của đường thẳng được sử dụng với tham số <b>Tuyến t&iacute;nh</b> v&agrave; <b>Tuyến t&iacute;nh nghịch đảo</b>. Độ dốc được x&aacute;c định như l&agrave; một tỷ lệ tăng khi chạy (chẳng hạn, độ dốc 45% l&agrave; 1/45, được nhập l&agrave; 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Chọn raster ngang (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Một raster x&aacute;c định hướng ngang tại mỗi &ocirc;.
+            </p>
+            <p>Gi&aacute; trị của raster phải l&agrave; số nguy&ecirc;n trong khoảng từ 0 đến 360, trong đ&oacute; 0 độ l&agrave; ph&iacute;a bắc hay ở ph&iacute;a tr&ecirc;n của m&agrave;n h&igrave;nh, v&agrave; tăng theo chiều kim đồng hồ. Khu vực bằng phẳng n&ecirc;n được thiết lập gi&aacute; trị l&agrave; -1. C&aacute;c gi&aacute; trị ở mỗi vị tr&iacute; sẽ được sử dụng c&ugrave;ng với  <b>Hệ số ngang</b> để x&aacute;c định chi ph&iacute; ngang ph&aacute;t sinh khi di chuyển từ một &ocirc; đến c&aacute;c &ocirc; l&acirc;n cận.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Hệ số ngang (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Hệ số ngang</b> x&aacute;c định mối quan hệ giữa hệ số chi ph&iacute; ngang v&agrave; g&oacute;c dịch chuyển tương đối ngang.
+            </p>
+            <p>C&oacute; một v&agrave;i hệ số c&oacute; c&ocirc;ng cụ sửa đổi để lựa chọn v&agrave; x&aacute;c định một biểu đồ hệ số ngang. C&aacute;c biểu đồ được sử dụng để x&aacute;c định hệ số ngang được sử dụng trong việc t&iacute;nh to&aacute;n tổng chi ph&iacute; của việc di chuyển tới một &ocirc; l&acirc;n cận.
+            </p>
+            <p>Trong c&aacute;c m&ocirc; tả b&ecirc;n dưới, hệ số ngang (HF) x&aacute;c định kh&oacute; khăn theo chiều ngang gặp phải khi di chuyển từ một &ocirc; sang &ocirc; tiếp theo v&agrave; g&oacute;c dịch chuyển tương đối theo chiều ngang (HRMA) x&aacute;c định g&oacute;c giữa hướng nằm ngang từ một &ocirc; v&agrave; hướng dịch chuyển.
+            </p>
+            <p>Định nghĩa v&agrave; tham số của HF như sau:
+                <ul>
+                    <li> <b>Nhị ph&acirc;n</b>&mdash;Nếu HRMA nhỏ hơn g&oacute;c cắt, HF được đặt ở gi&aacute; trị c&oacute; li&ecirc;n quan đến hệ số 0; nếu kh&ocirc;ng, n&oacute; sẽ l&agrave; v&ocirc; cực.
+                        
+
+                    </li>
+                    <li> <b>Chuyển tiến</b>&mdash;Chỉ được ph&eacute;p dịch chuyển tiến về ph&iacute;a trước. HRMA phải lớn hơn hoặc bằng 0 hoặc nhỏ hơn 90 (0 &lt;= HRMA &lt; 90). Nếu HRMA lớn hơn 0 v&agrave; nhỏ hơn 45 độ, HF cho &ocirc; được thiết lập tới gi&aacute; trị c&oacute; li&ecirc;n quan đến hệ số kh&ocirc;ng. Nếu HRMA lớn hơn hoặc bằng 45 độ, gi&aacute; trị b&ecirc;n gi&aacute; trị bộ điều chỉnh được sử dụng. HF d&agrave;nh cho bất kỳ HRMA n&agrave;o bằng hoặc lớn hơn 90 độ được thiết lập về v&ocirc; cực.
+                        
+
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh</b>&mdash;HF l&agrave; một h&agrave;m tuyến t&iacute;nh của HRMA.
+                        
+
+                    </li>
+                    <li> <b>Tuyến t&iacute;nh nghịch đảo</b>&mdash;HF l&agrave; một h&agrave;m tuyến t&iacute;nh nghịch đảo của HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Bộ điều chỉnh c&aacute;c từ kh&oacute;a ngang như sau:
+                <ul>
+                    <li> <b>Hệ số 0</b>&mdash;Hệ số ngang được sử dụng khi HRMA bằng 0. Hệ số n&agrave;y định vị hệ số chặn y cho bất kỳ h&agrave;m hệ số ngang n&agrave;o.
+                        
+
+                    </li>
+                    <li> <b>G&oacute;c cắt</b>&mdash;G&oacute;c HRMA m&agrave; ở b&ecirc;n ngo&agrave;i đ&oacute; th&igrave; HF sẽ được đặt th&agrave;nh v&ocirc; cực.
+                        
+
+                    </li>
+                    <li> <b>Độ dốc</b>&mdash;Độ dốc của đường thẳng sử dụng từ kho&aacute; hệ số ngang <b>Tuyến t&iacute;nh</b> v&agrave; <b>Tuyến t&iacute;nh nghịch đảo</b>. Độ dốc được x&aacute;c định như l&agrave; một tỷ lệ tăng khi chạy (chẳng hạn, độ dốc 45% l&agrave; 1/45, được nhập l&agrave; 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Gi&aacute; trị b&ecirc;n</b>&mdash;HF khi HRMA lớn hơn hoặc bằng 45 độ v&agrave; nhỏ hơn 90 độ khi từ kh&oacute;a hệ số ngang <b>Chuyển tiến</b> được chỉ định.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Tích lũy ban đầu</h2></div>
+        <hr/>
+        <div>
+            <p>Chi ph&iacute; t&iacute;ch lũy ban đầu để bắt đầu t&iacute;nh to&aacute;n chi ph&iacute;.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y cho ph&eacute;p c&aacute;c th&ocirc;ng số kỹ thuật của chi ph&iacute; cố định li&ecirc;n kết đến một nguồn. Thay v&igrave; bắt đầu với chi ph&iacute; bằng 0, thuật to&aacute;n chi ph&iacute; sẽ bắt đầu với gi&aacute; trị được thiết lập bởi  <b>T&iacute;ch lũy ban đầu</b>.
+            </p>
+            <p>C&aacute;c gi&aacute; trị phải lớn hơn hoặc bằng 0. Gi&aacute; trị mặc định l&agrave; 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Tích lũy tối đa</h2></div>
+        <hr/>
+        <div>
+            <p>T&iacute;ch lũy tối đa của người đi lại cho một nguồn.
+            </p>
+            <p>T&iacute;nh to&aacute;n chi ph&iacute; tiếp tục cho mỗi nguồn cho đến khi đạt được t&iacute;ch lũy chỉ định.
+            </p>
+            <p>C&aacute;c gi&aacute; trị phải lớn hơn kh&ocirc;ng. T&iacute;ch lũy mặc định đạt bi&ecirc;n của raster đầu ra.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Bội số chi phí</h2></div>
+        <hr/>
+        <div>
+            <p>Một bội số để &aacute;p dụng cho c&aacute;c gi&aacute; trị chi ph&iacute;.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y cho ph&eacute;p kiểm so&aacute;t chế độ đi lại hoặc cường độ tại một nguồn. Hệ số nh&acirc;n c&agrave;ng lớn, chi ph&iacute; để di chuyển qua mỗi &ocirc; c&agrave;ng lớn.
+            </p>
+            <p>C&aacute;c gi&aacute; trị phải lớn hơn kh&ocirc;ng. Gi&aacute; trị mặc định l&agrave; 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Chiều di chuyển</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định hướng của người đi lại khi &aacute;p dụng hệ số theo chiều ngang v&agrave; dọc.
+            </p>
+            <p> <b>Từ nguồn</b>&mdash;Hệ số theo chiều ngang v&agrave; dọc sẽ được &aacute;p dụng bắt đầu từ nguồn đầu v&agrave;o v&agrave; di chuyển tới c&aacute;c &ocirc; kh&ocirc;ng thuộc nguồn. Đ&acirc;y l&agrave; mặc định.
+            </p>
+            <p> <b>Đến nguồn</b>&mdash;Hệ số theo chiều ngang v&agrave; dọc sẽ được &aacute;p dụng bắt đầu từ mỗi &ocirc; kh&ocirc;ng thuộc nguồn v&agrave; di chuyển trở lại nguồn đầu v&agrave;o.
+            </p>
+            <p>Chỉ định từ kh&oacute;a  <b>Từ nguồn</b> hoặc <b>Đến nguồn</b>, điều n&agrave;y sẽ được &aacute;p dụng cho mọi nguồn, hoặc chỉ định một trường trong dữ liệu nguồn c&oacute; chứa c&aacute;c từ kh&oacute;a để x&aacute;c định hướng đi của mỗi nguồn. Trường đ&oacute; phải chứa chuỗi <code>FROM_SOURCE</code> hoặc <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Phương pháp khoảng cách (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định xem sẽ t&iacute;nh to&aacute;n khoảng c&aacute;ch bằng phương ph&aacute;p phẳng (tr&aacute;i đất phẳng) hay phương ph&aacute;p trắc địa (ellipsoid).
+            </p>
+            <ul>
+                <li> <b>Phẳng</b>&mdash;Ph&eacute;p t&iacute;nh khoảng c&aacute;ch sẽ được thực hiện tr&ecirc;n một mặt phẳng được chiếu bằng hệ tọa độ 2D Cartesian. Đ&acirc;y l&agrave; phương ph&aacute;p mặc định.
+                    
+
+                </li>
+                <li> <b>Trắc địa</b>&mdash;Ph&eacute;p t&iacute;nh khoảng c&aacute;ch sẽ được thực hiện tr&ecirc;n một h&igrave;nh cầu. Do đ&oacute;, bất kể l&agrave; ph&eacute;p chiếu đầu v&agrave;o hay đầu ra, kết quả đều kh&ocirc;ng thay đổi.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Trả về tên raster tích lũy khoảng cách</h2></div>
+        <hr/>
+        <div>
+            <p>Raster t&iacute;ch lũy khoảng c&aacute;ch chứa khoảng c&aacute;ch t&iacute;ch lũy cho mỗi &ocirc; từ hoặc đến nguồn cực tiểu chi ph&iacute;.
+            </p>
+            <p>Raster đầu ra l&agrave; kiểu gi&aacute; trị thả nổi.
+            </p>
+            <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Trả về tên raster định hướng (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster ngược d&ograve;ng bao h&agrave;m c&aacute;c hướng t&iacute;nh to&aacute;n theo độ. Hướng x&aacute;c định &ocirc; tiếp theo dọc đường dẫn ngắn nhất ngược trở lại nguồn gần nhất, đồng thời tr&aacute;nh c&aacute;c r&agrave;o cản.
+            </p>
+            <p>Phạm vi của c&aacute;c gi&aacute; trị l&agrave; từ 0 độ đến 360 độ, với 0 d&agrave;nh ri&ecirc;ng cho c&aacute;c &ocirc; nguồn. Hướng ch&iacute;nh đ&ocirc;ng (phải) l&agrave; 90 v&agrave; gi&aacute; trị sẽ tăng theo chiều kim đồng hồ (180 l&agrave; hướng nam, 270 l&agrave; hướng t&acirc;y v&agrave; 360 l&agrave; hướng bắc).
+            </p>
+            <p>Raster đầu ra l&agrave; kiểu gi&aacute; trị thả nổi.
+            </p>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của t&ocirc;i</b>. Bạn phải đặt một t&ecirc;n hiện chưa c&oacute; trong <b>Nội dung của t&ocirc;i</b>.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Trả về tên raster định hướng nguồn (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster định hướng nguồn x&aacute;c định hướng của &ocirc; nguồn chi ph&iacute; được t&iacute;ch lũy &iacute;t nhất dưới dạng phương vị bằng độ.
+            </p>
+            <p>Phạm vi của c&aacute;c gi&aacute; trị l&agrave; từ 0 độ đến 360 độ, với 0 d&agrave;nh ri&ecirc;ng cho c&aacute;c &ocirc; nguồn. Hướng ch&iacute;nh đ&ocirc;ng (phải) l&agrave; 90 v&agrave; gi&aacute; trị sẽ tăng theo chiều kim đồng hồ (180 l&agrave; hướng nam, 270 l&agrave; hướng t&acirc;y v&agrave; 360 l&agrave; hướng bắc).
+            </p>
+            <p>Raster đầu ra l&agrave; kiểu gi&aacute; trị thả nổi.
+            </p>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của t&ocirc;i</b>. Bạn phải đặt một t&ecirc;n hiện chưa c&oacute; trong <b>Nội dung của t&ocirc;i</b>.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Trả về tên raster vị trí nguồn (tùy chọn)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster vị tr&iacute; nguồn l&agrave; đầu ra đa dải. Dải đầu ti&ecirc;n chứa chỉ số h&agrave;ng v&agrave; dải thứ hai chứa chỉ số cột. C&aacute;c chỉ mục n&agrave;y x&aacute;c định vị tr&iacute; của &ocirc; nguồn v&agrave; đ&oacute; l&agrave; khoảng c&aacute;ch chi ph&iacute; t&iacute;ch lũy &iacute;t nhất.
+            </p>
+            <p>T&ecirc;n lớp sẽ được tạo trong mục  <b>Nội dung của t&ocirc;i</b>. Bạn phải đặt một t&ecirc;n hiện chưa c&oacute; trong <b>Nội dung của t&ocirc;i</b>.
+            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

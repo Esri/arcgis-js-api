@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Vektorizovať raster</h2><p/>
+        <h2><img src="../images/GUID-7BBBCE28-2FDA-46B8-99D7-65F560AB2F2B-web.png" alt="N&aacute;stroj Vektorizovať raster"></h2>
+        <hr/>
+    <p>Tento n&aacute;stroj konvertuje raster na prvkov&yacute; dataset ako body, l&iacute;nie alebo polyg&oacute;ny.
+    </p>
+    <p>Parameter  <b>Vybrať pole</b> v&aacute;m umožňuje vybrať, ktor&eacute; atrib&uacute;tov&eacute; pole vstupn&eacute;ho rastrov&eacute;ho datasetu sa stane atrib&uacute;tom vo v&yacute;stupnej prvkovej triede. Tento parameter je dostupn&yacute; len pre celoč&iacute;seln&eacute; rastre, ktor&eacute; maj&uacute; ďal&scaron;ie atrib&uacute;ty v pridanej tabuľke.
+    </p>
+    <p>Vstupn&yacute; raster m&ocirc;že mať ľubovoľn&uacute; veľkosť buniek.
+    </p>
+    <p>Celoč&iacute;seln&eacute; rastre bud&uacute; konvertovan&eacute; na bod, l&iacute;niu, alebo polyg&oacute;nov&eacute; prvky; av&scaron;ak, rastre s desatinn&yacute;mi č&iacute;salmi m&ocirc;žu byť konvertovan&eacute; len na bodov&eacute; prvky.
+    </p>
+    <p>Ak je za&scaron;krtnut&eacute;  <b>Použiť aktu&aacute;lny rozsah mapy</b>, do obalovej z&oacute;ny bud&uacute; zahrnut&eacute; len prvky viditeľn&eacute; v r&aacute;mci aktu&aacute;lneho rozsahu mapy. Ak neza&scaron;krtnut&eacute;, v&scaron;etky bunky v rastrovej vrstve bud&uacute; konvertovan&eacute;, aj ak sa nach&aacute;dzaj&uacute; mimo aktu&aacute;lneho rozsahu mapy. V&scaron;imnite si to, ak je rastrov&aacute; vrstva veľmi veľk&aacute; alebo m&aacute; veľmi vysok&eacute; rozl&iacute;&scaron;enie.
+    </p>
+    <p>Pr&iacute;pady použitia pre tento n&aacute;stroj obsahuj&uacute; nasleduj&uacute;ce:
+        <ul>
+            <li>Vytvoriť polyg&oacute;nov&eacute; prvky z klasifikačn&eacute;ho rastru pozemn&eacute;ho použitia.
+                
+
+            </li>
+            <li>Pr&uacute;dy identifikovan&eacute; v DEM m&ocirc;žu byť konvertovan&eacute; na l&iacute;niov&eacute; prvky.
+                
+
+            </li>
+            <li>DEM m&ocirc;že byť konvertovan&yacute; na bodov&eacute; prvky, ktor&eacute; m&ocirc;žu byť použit&eacute; v nerastrovom pracovnom postupe.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputLayer">
+        <div><h2>Vybrať vrstvu rastra na prevedenie</h2></div>
+        <hr/>
+        <div>
+            <p>Vstupn&aacute; rastrov&aacute; vrstva, ktor&aacute; bude konvertovan&aacute; na vrstvu prvkov.
+            </p>
+        </div>
+    </div>
+    <div id="field">
+        <div><h2>Vyberte pole</h2></div>
+        <hr/>
+        <div>
+            <p>Pole, ktor&eacute; śpecifikuje konverzn&uacute; hodnotu.
+            </p>
+            <p>M&ocirc;že to byť cel&eacute; č&iacute;slo alebo text.
+            </p>
+            <p>Pole obsahuj&uacute;ce hodnoty s desatinn&yacute;mi č&iacute;slami m&ocirc;že byť použit&eacute; len vtedy, ak jeho v&yacute;stup je na bodovej d&aacute;tovej sade.
+            </p>
+            <p>V&yacute;sledkom je  <i>Value</i> pole, ktor&eacute; obsahuje hodnotu v každej rastrovej bunke.
+            </p>
+        </div>
+    </div>
+    <div id="outputType">
+        <div><h2>Vybrať typ výstupu</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje typ v&yacute;stupu
+            </p>
+            <ul>
+                <li> <b>Bod</b> - Raster bude konvertovan&yacute; na bodov&yacute; dataset. Toto je prednastaven&aacute; voľba.
+                    
+ 
+                </li>
+                <li> <b>Čiara</b> - Raster bude konvertovan&yacute; na dataset prvkov čiary.
+                    
+ 
+                </li>
+                <li> <b>Mnohouholn&iacute;k</b> - Raster bude konvertovan&yacute; na mnohouholn&iacute;k.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="simplifyLinesOrPolygons">
+        <div><h2>Zjednodušiť línie alebo polygóny</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či bud&uacute; l&iacute;nie a polyg&oacute;ny zjednodu&scaron;en&eacute; - zjemnen&eacute;. Vyhľadenie je uroben&eacute; tak&yacute;m sp&ocirc;sobom, aby l&iacute;nia mala minim&aacute;lny počet segmentov a z&aacute;roveň aby zostala čo najvernej&scaron;ia p&ocirc;vodn&yacute;m hran&aacute;m rastrovej bunky.
+            </p>
+            <ul>
+                <li>Za&scaron;krtnut&yacute; - L&iacute;niov&eacute; alebo polyg&oacute;nov&eacute; prvky bud&uacute; zjemnen&eacute; na vytvorenie viac v&scaron;eoben&eacute;ho v&yacute;sledku. Toto je prednastaven&aacute; voľba.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnut&yacute; - L&iacute;nia alebo polyg&oacute;nov&eacute; prvky bud&uacute; nasledovať ohraničenia bunky dan&eacute;ho rastrovej d&aacute;tovej sady.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tento parameter je umožnen&yacute; iba vtedy, keď je v&yacute;stupn&yacute; typ l&iacute;niou alebo polyg&oacute;nom.
+            </p>
+        </div>
+    </div>
+    <div id="createMultipartFeatures">
+        <div><h2>Vytvoriť viacdielne prvky</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikuje, či bud&uacute; v&yacute;stupn&eacute; mnohouholn&iacute;ky pozost&aacute;vať z jednodielnych prvkov alebo viacdielnych prvkov.
+            </p>
+            <ul>
+                <li>Za&scaron;krtnut&yacute; - Viacdielne prvky bud&uacute; vytvoren&eacute; na z&aacute;klade polyg&oacute;nov, ktor&eacute; maj&uacute; rovnak&uacute; hodnotu.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnut&yacute; - Individu&aacute;lne (jednodielne) prvky bud&uacute; vytvoren&eacute; pre každ&yacute; mnohouholn&iacute;k. Toto je prednastaven&aacute; voľba.
+                    
+
+                </li>
+            </ul>
+            
+            <p>Tento parameter je podporovan&yacute; len vtedy, keď je v&yacute;stupn&yacute; typ polyg&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="maxVerticesPerFeature">
+        <div><h2>Maximum vrcholov na polygónový prvok</h2></div>
+        <hr/>
+        <div>
+            <p>Limit lomov&eacute;ho bodu použit&yacute; na podrozdelenie polyg&oacute;nu na men&scaron;ie polyg&oacute;ny.
+            </p>
+            <p>Ak s&uacute; pr&aacute;zdne, v&yacute;stupn&eacute; polyg&oacute;ny nebud&uacute; rozdelen&eacute;. Toto je prednastaven&aacute; voľba.
+            </p>
+            <p>Tento parameter je podporovan&yacute; len vtedy, keď je v&yacute;stupn&yacute; typ polyg&oacute;n.
+            </p>
+        </div>
+    </div>
+    <div id="outputName">
+        <div><h2>Názov výslednej vrstvy</h2></div>
+        <hr/>
+        <div>
+            
+            <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
+            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

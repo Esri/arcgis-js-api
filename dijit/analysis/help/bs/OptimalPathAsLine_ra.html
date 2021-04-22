@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Optimalni put kao linija</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Optimalni put kao ilustracija raster alata"></h2>
+        <hr/>
+    <p>Ovaj alat izračunava optimalni put od odredi&scaron;ta do izvora u obliku linije.
+    </p>
+    <p>Primjeri primjena uključuju sljedeće:
+        <ul>
+            <li>Traženje najbolje rute za novu cestu prema tro&scaron;kovima izgradnje.
+                
+
+
+            </li>
+            <li>Pronađite najbolju rutu plovidbe između odredi&scaron;ta i trenutne lokacije.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Odaberite odredišni raster ili geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Sloj skupa podataka rastera koji identificira one ćelije od kojih se određuje optimalni put određuje se do optimalnog izvora.
+            </p>
+            <p>Ako je unos raster, mora se sastojati od ćelija koje imaju važeće vrijednosti (nula je valjana vrijednost) za izvore, a preostalim ćelijama mora biti dodijeljen NoData. Ulazna rasterska vrsta mora biti cijeli broj.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Odredišno polje</h2></div>
+        <hr/>
+        <div>
+            <p>Polje koje se upotrebljava za dobivanje vrijednosti za lokacije odredi&scaron;ta.
+            </p>
+            <p>Ovo polje mora biti cijeli broj.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Odaberite raster akumulacije udaljenosti</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacije udaljenosti koristi se za određivanje optimalnog puta od odredi&scaron;ta do izvora.
+            </p>
+            <p>Raster za akumuliranje udaljenosti obično se stvara pomoću alata Akumuliranje udaljenosti ili Raspodjela udaljenosti. Svaka ćelija u rasteru za akumuliranje udaljenosti predstavlja minimalnu ukupan udaljenost tro&scaron;kova preko povr&scaron;ine od svake ćelije do skupa izvornih ćelija.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Odaberite raster stražnjeg smjera ili smjera strujanja</h2></div>
+        <hr/>
+        <div>
+            <p>Raster stražnjeg smjera sadrži izračunati smjer u stupnjevima. Smjer identificira sljedeću ćeliju duž optimalnog puta natrag do najmanjeg akumulativnog izvora tro&scaron;kova uz izbjegavanje prepreka.
+            </p>
+            <p>Raster stražnjeg smjera obično se izrađuje pomoću alata Akumuliranje udaljenosti ili Raspodjela udaljenosti. U ovom slučaju raspon vrijednosti je od 0 stupnjeva do 360 stupnjeva. Vrijednost 0 rezervirana je za izvorne ćelije. Prema istoku (desno) je 90, a vrijednosti se povećavaju u smjeru kazaljke na satu (180 je južno, 270 je zapadno, a 360 je sjeverno).
+            </p>
+            <p>Stvoreni optimalni put može biti put protoka zasnovan na smjeru protoka D8. Da biste na taj način generirali optimalni put, upotrijebite raster smjera protoka D8 kao unos za ovaj parametar.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Vrsta puta (nije obavezno)</h2></div>
+        <hr/>
+        <div>
+            <p>Navodi ključnu riječ koja definira kako će se vrijednosti i zone u ulaznim odredi&scaron;nim podacima tumačiti u izračunima puta.
+                <ul>
+                    <li> <b>Do svake zone</b>&mdash;Za svaku zonu u podacima ulaznog odredi&scaron;ta određuje se najpovoljniji put. S ovom opcijom najpovoljnija putanja za svaku zonu počinje od ćelije s najpovoljnijom prosječnom udaljenosti u zoni. To je zadano.
+                         
+                    </li>
+                    <li> <b>Najbolji pojedinac</b>&mdash;Za sve ćelije u podacima ulaznog odredi&scaron;ta najpovoljniji put izvodi se od ćelije s minimumom najpovoljnijih putova do izvornih ćelija.
+                    </li>
+                    <li> <b>Do svake ćelije</b>&mdash;Za svaku ćeliju s ispravnim vrijednostima podataka ulaznog odredi&scaron;ta određuje se najpovoljniji put. S ovom opcijom sve ćelije podataka ulaznog odredi&scaron;ta tretiraju se zasebno i određuje se najpovoljnija putanja za svaku ćeliju.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Naziv rezultata sloja geoobjekta</h2></div>
+        <hr/>
+        <div>
+            <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
+            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

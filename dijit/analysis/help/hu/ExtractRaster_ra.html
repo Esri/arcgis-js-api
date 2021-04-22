@@ -61,13 +61,33 @@
         <hr/>
         <div>
             <p>V&aacute;lassza ki a r&eacute;teg geometri&aacute;j&aacute;nak kiv&aacute;g&aacute;sakor haszn&aacute;lni k&iacute;v&aacute;nt kiterjed&eacute;st&iacute;pust:
-
                 <ul>
                     <li>Aktu&aacute;lis kiterjed&eacute;s haszn&aacute;lata &ndash; az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;st haszn&aacute;lja az eredm&eacute;ny r&eacute;teg kiv&aacute;g&aacute;s&aacute;hoz. Ez az alap&eacute;rtelmez&eacute;s.
                         
 
                     </li>
-                    <li>Mintater&uuml;let kiv&aacute;laszt&aacute;sa &ndash; kiv&aacute;laszthatja, hogy az eredm&eacute;ny a geometria kiterjed&eacute;s&eacute;n bel&uuml;l l&eacute;vő ter&uuml;letet vagy a geometria kiterjed&eacute;s&eacute;n k&iacute;v&uuml;l l&eacute;vő ter&uuml;letet mutatja. Ha az  <b>Adatok a geometri&aacute;n bel&uuml;l</b> lehetős&eacute;get v&aacute;lasztja, a kiterjed&eacute;seken k&iacute;v&uuml;l l&eacute;vő t&aacute;v&eacute;rz&eacute;kelt felv&eacute;tel t&ouml;rlődik. Ha az <b>Adatok a geometri&aacute;n k&iacute;v&uuml;l</b> lehetős&eacute;get v&aacute;lasztja, a kiterjed&eacute;seken bel&uuml;l l&eacute;vő t&aacute;v&eacute;rz&eacute;kelt felv&eacute;tel t&ouml;rlődik. A rajzol&oacute;eszk&ouml;z seg&iacute;ts&eacute;g&eacute;vel kiv&aacute;g&aacute;si geometri&aacute;t is meghat&aacute;rozhat.
+                    <li>Mintater&uuml;let kiv&aacute;laszt&aacute;sa &ndash; Lehetőv&eacute; teszi, hogy a kiv&aacute;g&aacute;si geometri&aacute;t rajzol&oacute;eszk&ouml;z seg&iacute;ts&eacute;g&eacute;vel hat&aacute;rozza meg.
+                        
+
+                    </li>
+                    <li>R&eacute;teg kiv&aacute;laszt&aacute;sa &ndash; V&aacute;lasszon egy vektoros r&eacute;teget vagy t&aacute;v&eacute;rz&eacute;kel&eacute;si r&eacute;teget a kiterjed&eacute;s meghat&aacute;roz&aacute;s&aacute;hoz, vagy v&aacute;lasszon egy polygon vektoros r&eacute;teget a kiv&aacute;g&aacute;si geometria meghat&aacute;roz&aacute;s&aacute;hoz. Polygon vektoros r&eacute;teg kiv&aacute;laszt&aacute;sa eset&eacute;n egy jel&ouml;lőn&eacute;gyzet jelenik meg, amellyel meghat&aacute;rozhatja, hogy haszn&aacute;lja-e a bemeneti vektoros r&eacute;tegeket a kiv&aacute;g&aacute;si geometri&aacute;hoz. Alap&eacute;rtelmez&eacute;sben nincs bejel&ouml;lve. Ez azt jelenti, hogy a bemeneti vektoros r&eacute;teg hat&aacute;rozza meg a kiterjed&eacute;st. Ha be van jel&ouml;lve, akkor a bemeneti vektoros elemeket haszn&aacute;lja a kiv&aacute;g&aacute;si geometri&aacute;hoz.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="clippingType">
+        <div><h2>Kivágási típus megadása</h2></div>
+        <hr/>
+        <div>
+            <p>Megadhatja, hogy a kiv&aacute;g&aacute;si geometri&aacute;n bel&uuml;l vagy azon k&iacute;v&uuml;l l&eacute;vő ter&uuml;letet szeretn&eacute; megtartani:
+                <ul>
+                    <li>Adatok a geometri&aacute;n bel&uuml;l &ndash; A kiv&aacute;g&aacute;s kiterjed&eacute;s&eacute;n bel&uuml;l tal&aacute;lhat&oacute; t&aacute;v&eacute;rz&eacute;kelt felv&eacute;teleket fogja kinyerni. Ez az alap&eacute;rtelmez&eacute;s.
+                        
+
+                    </li>
+                    <li>Adatok a geometri&aacute;n k&iacute;v&uuml;l &ndash; A kiv&aacute;g&aacute;s kiterjed&eacute;s&eacute;n k&iacute;v&uuml;l tal&aacute;lhat&oacute; t&aacute;v&eacute;rz&eacute;kelt felv&eacute;teleket fogja kinyerni.
                         
 
                     </li>
@@ -80,7 +100,8 @@
         <div><h2>Eredmény réteg neve</h2></div>
         <hr/>
         <div>
-            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;től &eacute;s a bemenő r&eacute;teg nev&eacute;től f&uuml;gg. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
             <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
             </p>

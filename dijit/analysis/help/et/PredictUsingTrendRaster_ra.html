@@ -46,7 +46,7 @@
         <hr/>
     <p>Arvutab ennustatud mitmem&otilde;&otilde;rmelise rastri t&ouml;&ouml;riista  Trendi rastri loomine v&auml;ljundi trendi rastri abil.
     </p>
-    <p>Kui  <b>Kasuta hetke kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse kihi muutujaid, mis on hetke kaardi kuvaulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ielikus kihis olevaid muutujaid ka siis, kui neid pole praegu kaardil n&auml;ha.
+    <p>Kui ruut  <b>Kasuta praeguse kaardi kuvaulatust</b> on valitud, anal&uuml;&uuml;sitakse kihi muutujaid, mis on praeguse kaardi kuvaulatuses n&auml;htavad. Kui see ruut pole m&auml;rgitud, kasutatakse anal&uuml;&uuml;si koostamisel t&auml;ielikus kihis olevaid muutujaid ka siis, kui neid pole praegu kaardil n&auml;ha.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -72,7 +72,7 @@
         <div>
             <p>M&auml;&auml;rab meetodi, mida kasutatakse prognoosimise dimensiooni v&auml;&auml;rtuste esitamiseks.
                 <ul>
-                    <li> <b>V&auml;&auml;rtuse j&auml;rgi</b> &ndash; prognoos arvutatakse &uuml;ksiku dimensiooni v&auml;&auml;rtuse v&auml;&auml;rtuste loendi kohta, mida kirjeldatakse j&auml;rgmises sammu juures. See on vaikimisi valitud. N&auml;iteks soovite ennustada aastaseid sademeid aastateks 2050, 2100 ja 2150.
+                    <li> <b>V&auml;&auml;rtuse j&auml;rgi</b> &ndash; prognoos arvutatakse &uuml;ksiku dimensiooni v&auml;&auml;rtuse v&auml;&auml;rtuste loendi kohta, mida kirjeldatakse j&auml;rgmises sammu juures. See on vaikevalik. N&auml;iteks soovite ennustada aastaseid sademeid aastateks 2050, 2100 ja 2150.
                     </li>
                     <li> <b>Intervalli j&auml;rgi</b> &ndash; prognoos arvutatakse dimensiooni intervalli kohta, mis on m&auml;&auml;ratletud alguse ja l&otilde;pu v&auml;&auml;rtusega. N&auml;iteks soovite ennustada aastaseid sademeid igaks aastaks ajavahemikus 2050-2150.
                     </li>
@@ -90,6 +90,22 @@
             <p>Aja, s&uuml;gavuse ja k&otilde;rguse v&auml;&auml;rtuste formaat peab sobima kokku trendi rastri loomiseks kasutatavate v&auml;&auml;rtuste dimensiooniga. Kui trendi raster loodi dimensiooni StdTime jaoks, peab formaat olema YYYY-MM-DDTHH:MM:SS, n&auml;iteks 2050-01-01T00:00:00. Erinevad v&auml;&auml;rtused eraldatakse semikooloniga.
             </p>
             <p>See parameeter on n&otilde;utav, kui prognoosi dimensiooni v&auml;&auml;rtuste m&auml;&auml;ratlemise meetodiks on valitud  <b>V&auml;&auml;rtuse j&auml;rgi</b>.
+            </p>
+        </div>
+    </div>
+    <div id="start">
+        <div><h2>Käivita</h2></div>
+        <hr/>
+        <div>
+            <p>Ennustuses kasutatava dimensiooni intervalli alguskuup&auml;ev, k&otilde;rgus v&otilde;i s&uuml;gavus.
+            </p>
+        </div>
+    </div>
+    <div id="end">
+        <div><h2>Lõpp</h2></div>
+        <hr/>
+        <div>
+            <p>Ennustuses kasutatava dimensiooni intervalli l&otilde;pukuup&auml;ev, k&otilde;rgus ja s&uuml;gavus.
             </p>
         </div>
     </div>
@@ -123,6 +139,7 @@
         <div><h2>Tulemkihi nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.

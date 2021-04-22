@@ -52,8 +52,6 @@
         <div><h2>Valitse moniulotteinen kuva-aineistokarttataso trendin analysointia varten</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Analysoitavan moniulotteisen rasterin l&auml;ht&ouml;aineiston kuva-aineistokarttataso.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Valitse sen viivan tyypin, jota käytetään muuttujan arvojen sovittamiseen ulottuvuudelle</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ritt&auml;&auml; sen viivan tyypin, jota k&auml;ytet&auml;&auml;n pikseliarvojen sovittamiseen ulottuvuudelle. 
+            <p>M&auml;&auml;ritt&auml;&auml; sen viivan tyypin, jota k&auml;ytet&auml;&auml;n pikseliarvojen sovittamiseen ulottuvuudelle.
                 <ul>
                     <li> <b>Lineaarinen</b> &ndash; muuttujan pikseliarvot sovitetaan lineaariselle trendiviivalle. T&auml;m&auml; on oletusarvo.
                     </li>
                     <li> <b>Polynominen</b> &ndash; muuttujan pikseliarvot sovitetaan toisen asteen polynomin trendiviivalle.
                     </li>
                     <li> <b>Harmoninen</b> &ndash; muuttujan pikseliarvot sovitetaan harmoniselle trendiviivalle.
+                    </li>
+                    <li> <b>Mann-Kendall</b> &ndash; muuttujan pikseliarvot arvioidaan k&auml;ytt&auml;m&auml;ll&auml; Mann-Kendall-trenditesti&auml;.
+                    </li>
+                    <li> <b>Vuodenaika-Kendall</b> &ndash; muuttujan pikseliarvot arvioidaan k&auml;ytt&auml;m&auml;ll&auml; Vuodenaika-Kendall-trenditesti&auml;.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Määritä kausittaisen jakson pituuden aikayksikkö</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ritt&auml;&auml; aikayksik&ouml;n, jota k&auml;ytet&auml;&auml;n kausijakson pituutena suoritettaessa Vuodenaika-Kendall-testi&auml;.
+                <ul>
+                    <li> <b>P&auml;iv&auml;t</b> &ndash; kausijakson pituuden yksikk&ouml; on p&auml;iv&auml;. T&auml;m&auml; on oletusarvo.
+                    </li>
+                    <li> <b>Kuukaudet</b> &ndash; kausijakson pituuden yksikk&ouml; on kuukausi.
                     </li>
                 </ul>
                 
@@ -126,7 +143,7 @@
         <div>
             <p>Harmonisen trendin sovituksessa k&auml;ytett&auml;v&auml; toistov&auml;li. T&auml;m&auml; parametri m&auml;&auml;ritt&auml;&auml; syklien toistov&auml;lin vuodessa.
             </p>
-            <p>Oletusarvo on 1 tai yksi harmoninen sykli per vuosi.
+            <p>Oletusarvo on 1 tai yksi harmoninen sykli vuodessa.
             </p>
             <p>T&auml;m&auml; parametri sis&auml;llytet&auml;&auml;n trendianalyysiin vain, kun analysoitava ulottuvuus on aika.
             </p>
@@ -207,6 +224,7 @@
         <div><h2>Tulostason nimi</h2></div>
         <hr/>
         <div>
+            
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
             <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Razporeditev razdalje</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Prikaz orodja Razporeditev razdalje"></h2>
+        <hr/>
+    <p>To orodje izračuna razporeditev razdalje vsake celice do opredeljenih virov, pri čemer je mogoče določiti pravokotno razdaljo, stro&scaron;kovno razdaljo, pravo povr&scaron;insko razdaljo ter navpične in vodoravne faktorje.
+    </p>
+    <p>Primeri uporabe vključujejo odgovore na vpra&scaron;anja, kot so:
+        <ul>
+            <li>Prepozna razporejena območja, ki jih terenski delavec pokriva.
+                
+
+            </li>
+            <li>Prepozna območja, ki so dodeljena zaplatam življenjskega prostora rdečerjavega risa.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Če je obkljukano  <b>Uporabi trenutni obseg karte</b>, bodo analizirani samo tisti geoobjekti vhodnega sloja, ki so vidni znotraj trenutnega obsega karte. Če je možnost odkljukana, bodo analizirani vsi geoobjekti v vhodnem sloju, tudi če so zunaj trenutnega obsega karte.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Izberite izvorni raster ali geoobjekte</h2></div>
+        <hr/>
+        <div>
+            <p>Rastrski ali geoobjektni sloj, ki prepozna vire, do katerih bo izračunana razdalja.
+            </p>
+            <p>Če je vhod raster, mora biti sestavljen iz celic z veljavnimi vrednostmi (nič je veljavna vrednost) za vire, preostale celice pa morajo imeti dodeljeno vrednost NoData.
+            </p>
+            <p>Če je vhod geoobjektni sloj, je to lahko točka, linija ali poligon.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Izvorno polje (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Polje, uporabljeno za dodelitev vrednosti izvornih lokacij. Biti mora vrste celega &scaron;tevila.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Izberite raster ovir ali geoobjekte (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Sklop podatkov, ki določa ovire.
+            </p>
+            <p>Za rastrski sloj je lahko vhodni tip celo &scaron;tevilo ali enojno decimalno &scaron;tevilo. Celice, ki imajo vrednost (vključno z nič), bodo obravnavane kot ovira. Celice z vrednostjo NoData ne bodo obravnavane kot ovira.
+            </p>
+            <p>Za geoobjektno storitev je vhodni tip lahko točka, linija ali poligon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Izberite raster površine (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, ki določa vi&scaron;inske vrednosti na vsaki lokaciji celice.
+            </p>
+            <p>Vrednosti se uporabljajo za izračun dejanske povr&scaron;inske razdalje, zajete pri premikanju med celicami.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Izberite raster stroškov (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, ki določa impendanco ali stro&scaron;ek za planimetrično premikanje skozi vsako celico.
+            </p>
+            <p>Vrednost na lokaciji vsake celice predstavlja razdaljo stro&scaron;kov na enoto za premikanje skozi celice. Vrednost lokacije vsake celice je pomnožena z resolucijo celice, hkrati pa upo&scaron;teva diagonalno premikanje, da se pridobi celoten stro&scaron;ek premika skozi celico.
+            </p>
+            <p>Vrednosti rastra stro&scaron;kov so lahko celo &scaron;tevilo ali &scaron;tevilo s plavajočo vejico, vendar ne morejo biti negativne ali ničla (ne morete imeti negativnih ali ničelnih stro&scaron;kov).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Izberite vertikalni raster (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, ki določa z-vrednosti za vsako lokacijo celice.
+            </p>
+            <p>Vrednosti so uporabljene za izračun nagiba, uporabljenga za prepoznavanje vertikalnega faktorja, ki nastane pri premikanju od ene celice k drugi.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Vertikalni faktor (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Vertikalni faktor</b> določa odnos med vertikalnim faktorjem stro&scaron;ka in vertikalnim relativnim kotom premikanja.
+            </p>
+            <p>Obstaja več faktorjev z modifikatorji, med katerimi lahko izbirate, da prepoznavajo grafikon določenega vertikalnega faktorja. Grafikoni se uporabljajo za prepoznavanje vertikalnega faktorja, ki se uporablja pri izračunavanju skupnih stro&scaron;kov premika v sosednjo celico.
+            </p>
+            <p>V spodnjih opisih vertikalni faktor (VF) določa vertikalno težavnost, ki se pojavi pri premikanju od ene celice do naslednje, modifikator vertikalnega relativnega kota premikanja (VRMA) pa določa naklonski kot med celico  <b>Od vira</b> in celico <b>Do vira</b>.
+                <ul>
+                    <li> <b>Binarno</b> &ndash; Določa, da je VF nastavljen na vrednost, povezano s faktorjem nič, če je VRMA večji od nizkega kota rezanja in manj&scaron;i od visokega kota rezanja; v nasprotnem primeru je vrednost neskončna.
+                    </li>
+                    <li> <b>Linearno</b> &ndash; Določa, da je VF linearna funkcija VRMA.
+                    </li>
+                    <li> <b>Obratno linearno</b> &ndash; Določa, da je VF obratna linearna funkcija VRMA.
+                    </li>
+                    <li> <b>Simetrično linearno</b> -- Določa, da je VF linearna funkcija VRMA na negativni ali pozitivni strani VRMA in da sta obe linearni funkciji simetrični glede na os VF (y).
+                    </li>
+                    <li> <b>Simetrično obratno linearno</b> &ndash; Določa, da je VF obratna linearna funkcija VRMA na negativni ali pozitivni strani VRMA in da sta obe linearni funkciji simetrični glede na os VF (y).
+                    </li>
+                    <li> <b>Cos</b> &ndash; Določa VF kot funkcijo VRMA na osnovi kosinusa.
+                    </li>
+                    <li> <b>Sec</b> &ndash; Določa VF kot funkcijo VRMA na osnovi sekante.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; Določa, da je VF funkcija VRMA na osnovi kosinusa, če je VRMA negativen, in funkcija VRMA na osnovi sekante, če VRMA ni negativen.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; Določa, da je VF funkcija VRMA na osnovi sekante, če je VRMA negativen, in funkcija VRMA na osnovi kosinusa, če VRMA ni negativen.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorji vertikalnih parametrov so naslednji:
+                <ul>
+                    <li> <b>Faktor nič</b> &ndash; Določa vertikalni faktor, ki se bo uporabil, ko je VRMA nič. Ta faktor določa položaj y-preseči&scaron;ča za določeno funkcijo. Po definiciji faktor nič ne velja za nobeno vertikalno trigonometrično funkcijo (Cos, Sec, Cos-Sec ali Sec-Cos). Te funkcije določajo y-preseči&scaron;če.
+                    </li>
+                    <li> <b>Nizki kot rezanja</b> &ndash; Določa kot VRMA, pod katerim bo VF nastavljen na neskončno vrednost.
+                    </li>
+                    <li> <b>Visoki kot rezanja</b> &ndash; Določa kot VRMA, nad katerim bo VF nastavljen na neskončno vrednost.
+                    </li>
+                    <li> <b>Naklon</b> &ndash; Določa naklon ravne linije, ki se uporablja s parametri <b>Linearno</b> in <b>Obratno linearno</b>. Naklon je določen kot del nagiba linije (45-odstotni naklon je 1/45, kar se vnese kot 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Izberite horizontalni raster (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster, ki določa horizontalno smer vsake celice.
+            </p>
+            <p>Vrednosti rastra morajo biti cela &scaron;tevila v razponu od 0 do 360, pri čemer se 0 stopinj nahaja severno ali proti vrhu zaslona, in se povečevati v smeri urinega kazalca. Ploskim območjem se naj dodeli vrednost -1. Vrednosti na vsaki lokaciji bodo uporabljene skupaj s  <b>Horizontalnim faktorjem</b> za določanje horizontalnega stro&scaron;ka, ki nastane pri premikanju od celice do sosednjih celic.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Horizontalni faktor (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Horizontalni faktor</b> določa odnos med horizontalnim faktorjem stro&scaron;ka in horizontalnim relativnim kotom premikanja.
+            </p>
+            <p>Obstaja več faktorjev z modifikatorji, med katerimi lahko izbirate, da prepoznavajo grafikon določenega horizontalnega faktorja. Grafikoni se uporabljajo za prepoznavanje horizontalnega faktorja, ki se uporablja pri izračunavanju skupnih stro&scaron;kov premika v sosednjo celico.
+            </p>
+            <p>V spodnjih opisih horizontalni faktor (HF) določa horizontalno težavnost, ki se pojavi pri premikanju od ene celice do naslednje, horizontalni relativni kot premikanja (HRMA) pa določa kot med horizontalno smerjo od celice in smerjo premikanja.
+            </p>
+            <p>Opredelitve in parametri teh HF so naslednji:
+                <ul>
+                    <li> <b>Binarno</b> &ndash; Ponazarja, da je HF nastavljen na vrednost, povezano s faktorjem nič, če je HRMA manj&scaron;i od kota rezanja; v nasprotnem primeru je vrednost neskončna.
+                        
+
+                    </li>
+                    <li> <b>Naprej</b> &ndash; Določa, da je dovoljeno samo premikanje naprej. HRMA mora biti večji od ali enak 0 in manj&scaron;i od 90 (0 &lt;= HRMA &lt; 90). Če je HRMA večji od 0 in manj&scaron;i od 45 stopinj, je HF za celico nastavljen na vrednost, povezano s faktorjem nič. Če je HRMA večji od ali enak 45 stopinjam, se uporabi modifikator stranske vrednosti. HF za kateri koli HRMA, ki je enak ali večji od 90 stopinj, je nastavljen na neskončno vrednost.
+                    </li>
+                    <li> <b>Linearno</b> &ndash; Določa, da je HF linearna funkcija HRMA.
+                        
+
+                    </li>
+                    <li> <b>Obratno linearno</b> &ndash; Določa, da je HF obratna linearna funkcija HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modifikatorji horizontalnih ključnih besed so naslednji:
+                <ul>
+                    <li> <b>Faktor nič</b> &ndash; Določa horizontalni faktor, ki se bo uporabil, ko je HRMA 0. Ta faktor določa položaj y-preseči&scaron;ča za katero koli funkcijo horizontalnega faktorja.
+                        
+
+                    </li>
+                    <li> <b>Kot rezanja</b> &ndash; Določa kot HRMA, po katerem bo HF nastavljen na neskončno vrednost.
+                        
+
+                    </li>
+                    <li> <b>Naklon</b> &ndash; Določa naklon ravne linije, ki se uporablja s ključnima besedama horizontalnega faktorja <b>Linearno</b> in <b>Obratno linearno</b>. Naklon je določen kot del nagiba linije (45-odstotni naklon je 1/45, kar se vnese kot 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Stranska vrednost</b> &ndash; Določa HF, če je HRMA večji od ali enak 45 stopinjam in manj&scaron;i od 90 stopinj, ko je določena ključna beseda horizontalnega faktorja <b>Naprej</b>.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Začetna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Prvotni akumulirani stro&scaron;ek za začetek izračuna stro&scaron;kov.
+            </p>
+            <p>Omogoča specifikacijo fiksnih stro&scaron;kov, povezanih z virom. Namesto, da bi začel pri stro&scaron;ku nič, bo algoritem stro&scaron;kov začel z vrednostjo, ki jo določi  <b>Začetna akumulacija</b>.
+            </p>
+            <p>Vrednosti morajo biti nič ali večje. Privzeto je 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maksimalna akumulacija</h2></div>
+        <hr/>
+        <div>
+            <p>Popotnikova maksimalna akumulacija za vir.
+            </p>
+            <p>Izračuni stro&scaron;kov se nadaljujejo za vsak vir, dokler ni dosežena določena akumulacija.
+            </p>
+            <p>Vrednosti morajo biti večje od nič. Privzeta akumulacija je proti robu izhodnega rastra.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Množitelj stroškov</h2></div>
+        <hr/>
+        <div>
+            <p>Množitelj za uporabo pri vrednostih stro&scaron;ka.
+            </p>
+            <p>Omogoča nadzor načina potovanja ali magnitude na viru. Večji kot je zmnožek, večji je stro&scaron;ek za premikanje skozi posamezno celico.
+            </p>
+            <p>Vrednosti morajo biti večje od nič. Privzeta vrednost je 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Smer potovanja</h2></div>
+        <hr/>
+        <div>
+            <p>Določa popotnikovo smer pri uporabi horizontalnih in vertikalnih faktorjev.
+            </p>
+            <p> <b>Iz vira</b> &ndash; Uporabljena bosta horizontalni in vertikalni faktor z začetkom v vhodnem viru ter s premikanjem navzven proti neizvornim celicam. To je privzeto.
+            </p>
+            <p> <b>V vir</b> &ndash; Uporabljena bosta horizontalni in vertikalni vir z začetkom pri vsaki neizvorni celici in s premikanjem nazaj proti vhodnemu viru.
+            </p>
+            <p>Določite ključno besedo  <b>Iz vira</b> ali <b>V vir</b>, ki bo uporabljena na vseh virih, ali določite polje v izvornih podatkih, ki vsebuje ključne besede za prepoznavo smeri potovanja za vsak vir. To polje mora vsebovati niz <code>FROM_SOURCE</code> ali <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda razdalje (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Določa izračun razdalje na osnovi ravninske (ravne povr&scaron;ine) ali geodetske (elipsoid) metode.
+            </p>
+            <ul>
+                <li> <b>Ravnina</b> &ndash; Izračun razdalje bo izveden na projicirani ravni povr&scaron;ini s pomočjo 2D kartezijskega koordinatnega sistema. To je privzeta metoda.
+                    
+
+                </li>
+                <li> <b>Geodetsko</b> &ndash; Izračun razdalje bo izveden na elipsoidu. Tako se rezultati ne spremenijo ne glede na vhodno ali izhodno projekcijo.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Ime rezultata rastra razmestitvene razdalje</h2></div>
+        <hr/>
+        <div>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Ime rezultata rastra akumulacije razdalje</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacije razdalje vsebuje akumulativno razdaljo vsake celice od, ali do, vira najmanj&scaron;ega stro&scaron;ka.
+            </p>
+            <p>Izhodni raster je tip plavajoče vejice.
+            </p>
+            <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Ime rezultata rastra obratne smeri (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster obratne smeri vsebuje izračunane smeri v stopinjah. Smer prepozna naslednjo celico vzdolž najkraj&scaron;e poti nazaj do najbližjega vira, pri čemer se izogne oviram.
+            </p>
+            <p>Razpon vrednosti je od 0 stopinj do 360 stopinj, pri čemer je 0 rezervirana za celice z izvornimi vrednostmi. Proti vzhodu (desno) je 90 in vrednost se veča v smeri urnega kazalca (180 je proti jugu, 270 je proti zahodu in 360 je proti severu).
+            </p>
+            <p>Izhodni raster je tip plavajoče vejice.
+            </p>
+            <p>To je ime sloja, ki bo dodan v  <b>Moja vsebina</b>. Navesti morate ime, ki trenutno &scaron;e ne obstaja v <b>Moji vsebini</b>.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Ime rezultata rastra izvorne smeri (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster izvorne smeri prepozna smer celice najmanj akumuliranega vira stro&scaron;kov kot azimut v stopinjah.
+            </p>
+            <p>Razpon vrednosti je od 0 stopinj do 360 stopinj, pri čemer je 0 rezervirana za celice z izvornimi vrednostmi. Proti vzhodu (desno) je 90 in vrednost se veča v smeri urnega kazalca (180 je proti jugu, 270 je proti zahodu in 360 je proti severu).
+            </p>
+            <p>Izhodni raster je tip plavajoče vejice.
+            </p>
+            <p>To je ime sloja, ki bo dodan v  <b>Moja vsebina</b>. Navesti morate ime, ki trenutno &scaron;e ne obstaja v <b>Moji vsebini</b>.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Ime rezultata rastra izvorne lokacije (izbirno)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster izvorne lokacije je večpasovni rezultat. Prvi pas vsebuje indeks vrstice in drugi pas vsebuje indeks stolpca. Ti indeksi prepoznavajo lokacijo izvorne celice, ki je oddaljena vsaj za razdaljo akumuliranega stro&scaron;ka.
+            </p>
+            <p>To je ime sloja, ki bo dodan v  <b>Moja vsebina</b>. Navesti morate ime, ki trenutno &scaron;e ne obstaja v <b>Moji vsebini</b>.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

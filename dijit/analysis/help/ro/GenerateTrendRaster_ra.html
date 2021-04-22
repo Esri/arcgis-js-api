@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Generarea Rasterului de Tendințe</h2><p/>
+        <h2>Generează Raster Tendință</h2><p/>
         <h2><img src="../images/GUID-A95F821A-8CAF-45F3-93E5-14BDF5DA0BCD-web.png" alt="Generează Raster Tendință"></h2>
         <hr/>
     <p>Estimează tendința pentru fiecare pixel din una sau mai multe variabile dintr-un raster multidimensional.
@@ -52,8 +52,6 @@
         <div><h2>Alegeți stratul tematic de imagini multidimensionale pentru a analiza tendința</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Stratul tematic de imagini de intrare al unui raster multidimensional care va fi analizat.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Alegeți tipul liniei care să corespundă valorilor variabilei de-a lungul unei dimensiuni</h2></div>
         <hr/>
         <div>
-            <p>Specifică tipul liniei de utilizat pentru fixarea valorilor pixelilor de-a lungul unei dimensiuni. 
+            <p>Specifică tipul liniei de utilizat pentru fixarea valorilor pixelilor de-a lungul unei dimensiuni.
                 <ul>
-                    <li> <b>Liniar</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință liniară. Aceasta este setarea implicită.
+                    <li> <b>Liniar</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință liniară. Aceasta este acţiunea implicită.
                     </li>
                     <li> <b>Polinomial</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință polinomială de ordin doi.
                     </li>
                     <li> <b>Armonic</b>&mdash;Valori variabile ale pixelului vor fi ajustate de-a lungul unei linii cu tendință armonică.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Valorile variabile ale pixelilor vor fi evaluate cu ajutorul testului de tendință Mann-Kendall.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Valorile variabile ale pixelului vor fi evaluate cu ajutorul testului de tendință Seasonal-Kendall.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Specificați unitatea de timp pentru durata unei perioade sezoniere</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică unitatea de timp de folosit pentru lungimea unei perioade sezoniere la efectuarea testului Seasonal-Kendall.
+                <ul>
+                    <li> <b>Zile</b>&mdash;Unitatea pentru durata perioadei sezoniere este ziua. Aceasta este acţiunea implicită.
+                    </li>
+                    <li> <b>Luni</b>&mdash;Unitatea de lungime pentru durata unei perioade sezoniere este luna.
                     </li>
                 </ul>
                 
@@ -111,7 +128,7 @@
                 <ul>
                     <li> <b>Zile</b>&mdash;Unitatea pentru lungimea ciclului armonic o reprezintă zilele.
                     </li>
-                    <li> <b>Ani</b>&mdash;Unitatea pentru lungimea ciclului armonic o reprezintă anii. Aceasta este setarea implicită.
+                    <li> <b>Ani</b>&mdash;Unitatea pentru lungimea ciclului armonic o reprezintă anii. Aceasta este acţiunea implicită.
                     </li>
                 </ul>
                 
@@ -126,7 +143,7 @@
         <div>
             <p>Frecvența de utilizat &icirc;n ajustarea tendinței armonice. Acest parametru specifică frecvența ciclurilor dintr-un an.
             </p>
-            <p>Valoarea implicită este 1, sau un ciclu armonic pe an.
+            <p>Valoarea implicită este 1 sau un ciclu armonic pe an.
             </p>
             <p>Acest parametru este inclus &icirc;n analiza tendinței doar atunci c&acirc;nd dimensiunea supusă analizei este timpul.
             </p>
@@ -154,7 +171,7 @@
                         <p>RMSE
                         </p>
                         <ul>
-                            <li>Bifat&mdash;RMSE va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat. Aceasta este setarea implicită.
+                            <li>Bifat&mdash;RMSE va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat. Aceasta este acţiunea implicită.
                             </li>
                             <li>Nebifat&mdash;RMSE nu va fi calculat.
                             </li>
@@ -167,7 +184,7 @@
                         <ul>
                             <li>Bifat&mdash;Valoarea R la pătrat va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat.
                             </li>
-                            <li>Nebifat&mdash;Valoarea R la pătrat nu va fi calculată. Aceasta este setarea implicită.
+                            <li>Nebifat&mdash;Valoarea R la pătrat nu va fi calculată. Aceasta este acţiunea implicită.
                             </li>
                         </ul>
                         
@@ -178,7 +195,7 @@
                         <ul>
                             <li>Bifat&mdash;Valoarea P va fi calculată și inclusă ca una dintre benzile multiple din rasterul de tendință rezultat.
                             </li>
-                            <li>Nebifat&mdash;Valoarea P nu va fi calculată. Aceasta este setarea implicită.
+                            <li>Nebifat&mdash;Valoarea P nu va fi calculată. Aceasta este acţiunea implicită.
                             </li>
                         </ul>
                         
@@ -194,7 +211,7 @@
         <div>
             <p>Specifică dacă valorile lipsă sunt ignorate &icirc;n analiză.
                 <ul>
-                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este setarea implicită.
+                    <li>Bifat-Analiza va include toți pixelii valabili de-a lungul unei dimensiuni date și va ignora orice pixeli NoData. Aceasta este acţiunea implicită.
                     </li>
                     <li>Debifat&mdash; Analiza va avea ca rezultat NoData dacă există valori NoData pentru pixeli de-a lungul dimensiunii date.
                     </li>
@@ -207,7 +224,8 @@
         <div><h2>Nume strat tematic rezultat</h2></div>
         <hr/>
         <div>
-            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Resursele mele</b> şi va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            
+            <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>

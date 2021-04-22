@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>最佳地區連線</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="最佳地區連線工具圖例"></h2>
+        <hr/>
+    <p>此工具計算兩個或多個輸入地區之間的最佳連接線網路。
+    </p>
+    <p>應用範例包含：
+        <ul>
+            <li>適宜性模型&mdash;從適宜性模型識別出 10 個山貓的最佳棲息地圖面。 您希望山貓能夠在圖面之間經由最有效的生態廊道網移動，以維護群聯族群內的廣泛多元性。
+                
+
+            </li>
+            <li>伐木集運&mdash;在伐木集運過程中，您想要建立最具成本效益的集材道路網來集運木材。
+                
+
+            </li>
+            <li>維持和平&mdash;在維持和平的軍事部署中，您識別出五個派駐軍隊和人員的區域。 您想要在基地之間發展最有效連接的供應路線。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果勾選 <b>使用目前地圖範圍</b>，則僅分析目前地圖範圍中可見的輸入圖層中的位置。 如果未勾選，則分析兩個輸入圖層中的所有位置，包括超出目前地圖範圍的圖徵。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>選擇地區點陣或圖徵</h2></div>
+        <hr/>
+        <div>
+            <p>要以最佳網路連接的輸入地區。
+            </p>
+            <p>如果地區輸入是點陣，則依相同值的連續 (相鄰) 儲存格群組來定義地區。 每一個地區必須有唯一的編號。 不屬於任何地區的儲存格必須是 NoData。 點陣類型必須是正整數或負整數。
+            </p>
+            <p>如果地區輸入是圖徵，則可以是點、線或多邊形。 多邊形地區不可由多組件多邊形組成。
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>選擇屏障點陣或圖徵 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義屏障的資料集。
+            </p>
+            <p>若是點陣，則輸入類型可以是整數或浮點數。 具有值 (包含零) 的任何儲存格都會視為屏障。 不會將作為 NoData 的任何儲存格視為屏障。
+            </p>
+            <p>若是圖徵，則輸入可以是點、線或多邊形。
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>選擇成本點陣 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>用來定義阻抗或成本的點陣，以均勻方式穿過每個儲存格。
+            </p>
+            <p>每個儲存格位置上的值表示穿過該儲存格之每單位距離的成本。 每個儲存格位置值乘以儲存格解析度，同時也可以補償對角移動來取得穿過儲存格的總成本。
+            </p>
+            <p>成本點陣的值可為整數或浮點數，但不可是負數或零（您不能有負或零成本）。
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>距離方法 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定要使用平面 (平坦大地) 還是測地線 (橢圓) 方法來計算距離。
+            </p>
+            <ul>
+                <li> <b>平面</b> - 將使用 2D 笛卡兒座標系統，在投影的平面上執行距離計算。 這是預設方法。
+                    
+
+                </li>
+                <li> <b>測地線</b> - 在橢球體上執行距離計算。 因此，不論輸入或輸出投影為何都不會變更結果。
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>地區中的連線 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>指定輸入地區內的路徑是否將繼續並連接。
+            </p>
+            <ul>
+                <li> <b>產生連線</b> - 輸入地區內的路徑將會繼續，以連接進入地區的所有路徑。 這是預設情況。
+                    
+
+                </li>
+                <li> <b>無連線</b> - 路徑將在輸入地區邊緣停止，且不會在地區內繼續或連接。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>結果最佳連接線圖徵圖層名稱</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>此圖層是連接每一個輸入地區的輸出線圖徵。
+            </p>
+            <p>每條路徑 (或線) 都會單獨編號，且屬性表中的其他欄位會儲存有關路徑的特定資訊。 這些其他欄位如下：
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;路徑的唯一識別碼
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;路徑的總累積距離或成本
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;路徑連接的第一個地區
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;路徑連接的其他地區
+                    
+
+                </li>
+            </ul>
+            
+            <p>由於每一條路徑是由唯一的一條線代表，因此路徑行經相同路線的位置中會有多條線。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>結果鄰近連線圖徵圖層名稱 (選用)</h2></div>
+        <hr/>
+        <div>
+            <p>在 <b>我的內容</b>中建立並新增到地圖中的圖層的名稱。 預設名稱參照工具名稱以及輸入圖層名稱。 如果已存在該名稱的圖層，系統將提示您提供其他名稱。
+            </p>
+            <p>此圖層是輸出線圖徵，可識別從每個地區到每一個最近或最低成本鄰近地區的所有路徑。
+            </p>
+            <p>每條路徑 (或線) 都會單獨編號，且屬性表中的其他欄位會儲存有關路徑的特定資訊。 這些其他欄位如下：
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;路徑的唯一識別碼
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;路徑的總累積距離或成本
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;路徑連接的第一個地區
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;路徑連接的其他地區
+                    
+
+                </li>
+            </ul>
+            
+            <p>由於每一條路徑是由唯一的一條線代表，因此路徑行經相同路線的位置中會有多條線。
+            </p>
+            <p>您可以使用 <b>將結果儲存到</b>下拉式方塊，在 <b>我的內容</b>中指定將儲存結果的資料夾名稱。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

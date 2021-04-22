@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define([],(function(){var n={getNumberOfPoints:function(t){if(!t)return 0;Array.isArray(t)||(t=[t]);var r=0;return t.forEach((function(t){r+=n.getGeometryPointCount(t.geometry||t)})),r},getGeometryPointCount:function(n){if(!n)return 0;var t=0,r=n.rings||n.paths;return!r&&n.points&&(r=[n.points]),r?r.forEach((function(n){t+=n&&n.length||0})):t+="x"in n?1:2,t}};return n}));

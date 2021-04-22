@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Scegli il raster o il layer di posizione della feature per determinare gli itinerari di viaggio tra",inputCostRasterLabel:"Scegli il layer raster costi di viaggio",outputOptimumNetworkName:"Nome del layer polilineare dei percorsi ottimali di risultato",outputNeighborNetworkName:"Nome del layer polilineare dei percorsi adiacenti di risultato (opzionale)",outputLayerName:"Determina costo ottimale del viaggio di ${layername}",itemDescription:"Feature layer generato in seguito all'esecuzione di Determina rete di costo ottimale del viaggio su ${layerName}. ",itemTags:"Risultato di analisi, Determina rete di costo ottimale del viaggio, ${layername} ${fieldname}",itemSnippet:"Feature layer generato da Determina rete di costo ottimale del viaggio."});

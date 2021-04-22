@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>以表格显示分区统计</h2><p/>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="以表格显示分区统计逻辑示意图"></h2>
+        <hr/>
+    <p>该工具用于汇总另一个数据集区域内的栅格数据值并以表的形式报告结果。
+    </p>
+    <p>其中的一些应用示例如下：
+    </p>
+    <p>
+        <ul>
+            <li>已知州边界和美国大陆平均降水量分布，使用一列百分比值计算强降雨事件的州分布。
+                
+
+            </li>
+            <li>已知重叠生态区图层和土壤湿度的栅格图层，计算每个区域中所有的支持数据以将区域与土壤湿度可用性相关联。
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p>如果选中 <b>使用当前地图范围</b>，则仅分析当前地图范围内可见的输入图层和待汇总图层中的要素。 如果未选中，则会对输入图层和待汇总图层内的所有要素进行分析，包括超出当前地图范围的要素。
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputZoneRasterOrFeatures">
+        <div><h2>选择区域栅格或要素</h2></div>
+        <hr/>
+        <div>
+            <p>定义要汇总的区或区域边界的图层。
+            </p>
+            <p>图层可以是整型栅格或要素数据。 对于栅格，区域将由输入中具有相同像元值的所有位置定义。 对于要素，区域可以重叠。 各区域无需相连。
+            </p>
+        </div>
+    </div>
+    <div id="zoneField">
+        <div><h2>区域字段</h2></div>
+        <hr/>
+        <div>
+            <p>这是将用于定义区（区域）边界的图层的属性。
+            </p>
+            <p>例如，假设第一个输入图层使用定义各单元的地区、区域和宗地 ID 的属性定义管理单元边界。 您还具有用于定义每个位置的生物多样性指数的栅格图层。 使用所选字段可计算本地、区域或地区级别的平均生物多样性。
+            </p>
+        </div>
+    </div>
+    <div id="inputValueRaster">
+        <div><h2>选择值栅格</h2></div>
+        <hr/>
+        <div>
+            <p>此图层中的栅格像元将按其所在的区域（区）进行汇总。
+            </p>
+        </div>
+    </div>
+    <div id="ignoreNodata">
+        <div><h2>在计算中忽略 NoData（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>指定分析中是否忽略 NoData 值。
+                <ul>
+                    <li>选中 - 分析将包括在任意特定区域内的输入值栅格中具有值的像元，以确定该区域的输出值。 在统计计算过程中，值栅格内的 NoData 像元将被忽略。 这是默认设置。
+                    </li>
+                    <li>未选中 - 如果特定区域内值栅格的像元具有任意 NoData 值，则分析结果将变为 NoData。
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="statisticType">
+        <div><h2>统计数据类型（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>用于指定要计算的统计数据类型。
+            </p>
+            <p>输入可以是以下任意一项： <b>全部</b>、 <b>均值</b>、 <b>众数</b>、 <b>最大值</b>、 <b>中值</b>、 <b>最小值</b>、 <b>少数</b>、 <b>百分比数</b>、 <b>范围</b>、 <b>标准差</b>、 <b>总和</b>、 <b>变异度</b>、 <b>最小值和最大值</b>、 <b>均值和标准差</b>，或 <b>最小值、最大值和均值</b>。 默认值为 <b>全部</b>。
+            </p>
+            <p>如果输入值栅格为整型，则系统将默认计算所有统计数据。 如果值栅格为浮点型，则系统将默认计算除 <b>中位数</b>和 <b>百分位数</b>之外的所有统计数据。 
+            </p>
+            <p>如果输入值栅格为浮点型，则将无法对 <b>众数</b>、 <b>少数</b>和 <b>变异性</b>执行分区计算。
+            </p>
+        </div>
+    </div>
+    <div id="percentileValues">
+        <div><h2>百分比值（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>要计算的百分位数。 可以指定单个值或值列表。 默认值为 90，表示 90%。
+            </p>
+            <p>取值范围为 0 到 100。 指定 0% 的结果基本上等同于最小值统计数据的结果，而 100% 则等同于最大值。 值 50 所生成的结果基本等同于中值统计数据的结果。
+            </p>
+            <p>仅当 <b>统计数据类型</b>参数设置为 <b>百分位数</b>或 <b>全部</b>时，系统才支持此选项。
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>百分位数插值类型（可选）</h2></div>
+        <hr/>
+        <div>
+            
+            <p>指定输入栅格中要计算的值数量为偶数时使用的百分位数插值方法。
+            </p> 
+            <p>如果输入值栅格的像素类型为整型，则将使用 <b>最邻近</b>方法。 如果输入值栅格的像素类型为浮点型，则将使用 <b>线性</b>方法。 这是默认设置。
+            </p>
+            <p>对于 <b>最邻近</b>方法，将使用最接近所需的百分位数的可用值。 对于 <b>线性</b>方法，将使用接近所需百分位数的两个值的加权平均值。
+            </p> 
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>以多维方式处理（可选）</h2></div>
+        <hr/>
+        <div>
+            <p>指定输入栅格的处理方式（如果它们是多维的）。
+            </p>
+            <ul>
+                <li>选中 - 将基于输入多维数据集的当前时间片计算统计数据。 这是默认设置。
+                    
+
+                </li>
+                <li>未选中 - 将计算输入多维数据集的所有维度的统计数据。
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputTableName">
+        <div><h2>结果表名称</h2></div>
+        <hr/>
+        <div>
+            <p>将在 <b>我的内容</b>中创建并添加到地图中的图层的名称。 默认名称基于工具名称以及输入图层名称。 如果该名称的图层已存在，则系统将提示您提供其他名称。
+            </p>
+        </div>
+    </div>
+</div>
+</html>

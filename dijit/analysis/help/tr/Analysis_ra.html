@@ -41,21 +41,23 @@
 <body onload="init()">
 <div id="topics">
     <div id="raToolbox">
-        <p>Raster analizi  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır.  Portal for ArcGIS web kullanıcı deneyimi &ccedil;er&ccedil;evesinde şu anda sunulmakta olan ara&ccedil; setleri şunlardır:  <b>Veriyi &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>Yakınlık Kullan</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b>, <b>Veriyi Y&ouml;net</b>, <b>Derin &Ouml;ğrenme</b> ve <b>&Ccedil;ok Boyutlu Analiz</b>.
+        <p>Raster analizi,  ArcGIS Image Server uygulamasını kullanarak b&uuml;y&uuml;k raster veri k&uuml;melerinin analizini yapmanıza olanak tanır. Bu, sunucu g&uuml;c&uuml;n&uuml; kullanarak daha fazla veriyi daha hızlı analiz etmenize olanak tanır. Portal for ArcGIS web kullanıcı deneyiminde kullanılabilen ara&ccedil; setleri şunlardır:  <b>Verileri &Ouml;zetle</b>, <b>Modelleri Analiz Et</b>, <b>Yakınlık Kullan</b>, <b>G&ouml;r&uuml;nt&uuml;y&uuml; Analiz Et</b>, <b>Araziyi Analiz Et</b>, <b>Verileri Y&ouml;net</b>, <b>Derin &Ouml;ğrenme</b> ve <b>&Ccedil;ok Boyutlu Analiz</b>.
         </p>
     </div>
-    <div id="SummarizeDataCategory" class="smallsize">
+    <div id="SummarizeDataCategory" class="regularsize">
         <h2>Veriyi Özetle</h2>
         <hr/>
-        <p>Bu ara&ccedil; setinde, tanımladığınız alan sınırları i&ccedil;indeki bir raster katmanı i&ccedil;in bazı istatistikleri hesaplamada kullanılan bir ara&ccedil; bulunur. 
+        <p>Bu ara&ccedil;lar, sizin tarafınızdan tanımlanan alan sınırları (b&ouml;lgeler) i&ccedil;erisinde yer alan bir raster katmanının istatistiklerini hesaplamak i&ccedil;in kullanılır.
             <ul>
                 <li> <b>Raster &Ouml;zetleme Aralığı</b>, tanımlı alan sınırları i&ccedil;ine d&uuml;şen raster h&uuml;creleri i&ccedil;in istatistikleri hesaplar.
+                </li>
+                <li> <b>Tablo Olarak B&ouml;lgesel İstatistikler</b> başka bir veri k&uuml;mesinin b&ouml;lgeleri i&ccedil;erisindeki bir rasterın değerlerini &ouml;zetler ve sonu&ccedil;ları bir tablo halinde rapor eder.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="SummarizeRasterWithinTool" class="largesize">
+        <div id="SummarizeRasterWithinTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -66,21 +68,22 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tanımlı alanların i&ccedil;inde kalan raster h&uuml;creleri i&ccedil;in bazı &ouml;zet istatistikleri hesaplar.
+            <p>Bu ara&ccedil;, başka bir veri k&uuml;mesinin b&ouml;lgeleri i&ccedil;indeki bir rasterın değerlerini &ouml;zetler.
             </p>
-            <p>Bazı &ouml;rnek uygulamalar aşağıda verilmiştir: 
-
-                <ul>
-                    <li>Bir su havzası alanları katmanı ve y&uuml;kselti raster katmanı verildiğinde, her su havzası i&ccedil;indeki y&uuml;kselti aralığını hesaplayarak hangilerinde en y&uuml;ksek enerjiye sahip akış olacağını belirleyebilirsiniz.
-                        
-
-                    </li>
-                    <li>Bir resmi y&ouml;netim birimleri katmanı ve arazi kullanımı kategorileri raster katmanı verildiğinde, her y&ouml;netim alanı i&ccedil;indeki arazi kullanım &ccedil;eşitliliği değerlerini hesaplayarak en fazla &ccedil;alışmaya ihtiya&ccedil; duyanları tanımlayarak bir y&ouml;netim planı belirleyebilirsiniz.
-                        
-
-                    </li>
-                </ul>
-                
+            <br/>
+        </div>
+        <div id="ZonalStatisticsAsTableTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Tablo Olarak Bölgesel İstatistikler</h2></td>
+                    <td>
+                    <img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" class="titleImage" alt="Tablo Olarak B&ouml;lgesel İstatistikler diyagramı">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, bir rasterın başka bir veri k&uuml;mesinin b&ouml;lgeleri dahilindeki değerlerini &ouml;zetler ve sonu&ccedil;ları bir tablo halinde bildirir.
             </p>
             <br/>
         </div>
@@ -106,7 +109,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Yoğunluğu Hesaplama</h2></td>
+                    <td><h2>Yoğunluğu Hesapla</h2></td>
                     <td>
                     <img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" class="titleImage" alt="Yoğunluğu Hesaplama aracı">
                     </td>
@@ -132,13 +135,12 @@
             </p>
             <br/>
         </div>
-    <div id="UseProximityCategory" class="regularsize">
+    <div id="UseProximityCategory" class="largesize">
         <h2>Yakınlık Kullan</h2>
         <hr/>
-        <p>Bu ara&ccedil;lar mekansal analizdeki en yaygın sorulardan birine yanıt verir: &quot;Ne, neyin yakınında?&quot;
-
+        <p>Bu ara&ccedil;lar mekansal analizde en yaygın sorulan sorulardan bazılarını yanıtlar: Ne, neyin yakınında? ve En uygun yol nedir?
             <ul>
-                <li> <b>Mesafeyi Hesapla</b> aracı, tek bir veya bir dizi kaynaktan &Ouml;klid uzaklığını, y&ouml;n&uuml; ve yerleşimi hesaplar.
+                <li> <b>Mesafeyi Hesapla</b> tek bir veya bir dizi kaynaktan &Ouml;klid uzaklığını, y&ouml;n&uuml; ve yerleşimi hesaplar.
                     
 
                 </li>
@@ -146,13 +148,33 @@
                     
 
                 </li>
-                <li> <b>Seyahat Masraf Yolunu &Ccedil;oklu &Ccedil;izgi Olarak Belirle</b> aracı, kaynaklar ve bilinen hedefler arasındaki en az maliyetli yol &ccedil;oklu &ccedil;izgilerini hesaplar.
+                <li> <b>Seyahat Masraf Yolunu &Ccedil;oklu &Ccedil;izgi Olarak Belirle</b> bilinen hedefler ve kaynaklar arasındaki en az maliyetli yol &ccedil;oklu &ccedil;izgilerini hesaplar.
+                    
+
+                </li>
+                <li> <b>Mesafe Birikimi</b> doğrusal mesafe, maliyet mesafesi, ger&ccedil;ek y&uuml;zey mesafesi ve dikey ve yatay fakt&ouml;rlere izin vererek her h&uuml;creden kaynaklara biriken mesafeyi hesaplar.
+                    
+
+                </li>
+                <li> <b>Mesafe Dağıtımı</b> doğrusal mesafe, maliyet mesafesi, ger&ccedil;ek y&uuml;zey mesafesi ve dikey ve yatay fakt&ouml;rleri temel alarak her h&uuml;creden verilen kaynaklara mesafe dağıtımını hesaplar.
+                    
+
+                </li>
+                <li> <b>&Ccedil;izgi Olarak En Uygun Yol</b> hedeflerden kaynaklara en uygun yolu bir &ccedil;izgi olarak hesaplar.
+                    
+
+                </li>
+                <li> <b>Raster Olarak En Uygun Yol</b> hedeflerden kaynaklara en uygun yolu bir raster olarak hesaplar.
+                    
+
+                </li>
+                <li> <b>En Uygun B&ouml;lge Bağlantıları</b> iki veya daha fazla girdi b&ouml;lgesi arasındaki en uygun bağlantı ağını hesaplar.
                 </li>
             </ul>
             
         </p>
     </div>
-        <div id="CalculateDistanceTool" class="regularsize">
+        <div id="CalculateDistanceTool" class="smallsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -163,11 +185,11 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Tek bir veya bir dizi kaynaktan &Ouml;klid uzaklığını, y&ouml;n&uuml; ve yerleşimi hesaplar. Bir konumun bir yola, binaya veya parka olan uzaklığını belirlemek i&ccedil;in bu aracı kullanabilirsiniz. Ayrıca, bir kaynağa en doğru yoldan geri d&ouml;nmek i&ccedil;in hangi y&ouml;ne gitmeniz gerektiğini de belirleyebilirsiniz. &Ccedil;alışma alanınızdaki ker konum i&ccedil;in en yakın kaynağın hangisi olduğunu g&ouml;rebilirsiniz.
+            <p>Bu ara&ccedil;, tek bir veya bir dizi kaynaktan &Ouml;klid uzaklığını, y&ouml;n&uuml; ve yerleşimi hesaplar.
             </p>
             <br/>
         </div>
-        <div id="DetermineOptimumTravelCostNetworkTool" class="smallsize">
+        <div id="DetermineOptimumTravelCostNetworkTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
@@ -178,7 +200,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Bir dizi girdi b&ouml;lgesinden optimum maliyet ağını hesaplar.
+            <p>Bu ara&ccedil;, bir dizi girdi b&ouml;lgesinden optimum maliyet ağını hesaplar.
             </p>
             <br/>
         </div>
@@ -193,18 +215,91 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>Kaynaklar ve bilinen hedefler arasındaki en az maliyetli yol &ccedil;oklu &ccedil;izgilerini hesaplar.
+            <p>Bu ara&ccedil;, hedefler ve kaynaklar arasındaki en az maliyetli yol &ccedil;oklu &ccedil;izgilerini hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAccumulationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mesafe Birikimi</h2></td>
+                    <td>
+                    <img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" class="titleImage" alt="Mesafe Birikimi aracı ill&uuml;strasyonu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, doğrusal mesafe, maliyet mesafesi, ger&ccedil;ek y&uuml;zey mesafesi ve dikey ve yatay fakt&ouml;rlere izin vererek her h&uuml;creden kaynaklara biriken mesafeyi hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="DistanceAllocationTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Mesafe Dağıtımı</h2></td>
+                    <td>
+                    <img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" class="titleImage" alt="Mesafe Dağıtımı aracı ill&uuml;strasyonu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, doğrusal mesafe, maliyet mesafesi, ger&ccedil;ek y&uuml;zey mesafesi ve dikey ve yatay fakt&ouml;rleri temel alarak her h&uuml;creden verilen kaynaklara mesafe dağıtımını hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsLineTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Çizgi Olarak En Uygun Yol</h2></td>
+                    <td>
+                    <img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" class="titleImage" alt="&Ccedil;izgi Olarak En Uygun Yol aracı ill&uuml;strasyonu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, hedeflerden kaynaklara en uygun yolu bir &ccedil;izgi olarak hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalPathAsRasterTool" class="smallsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>Raster Olarak En Uygun Yol</h2></td>
+                    <td>
+                    <img src="../images/GUID-75C94369-AAAA-4556-8F89-9B6AA39012C9-web.png" class="titleImage" alt="Raster Olarak En Uygun Yol aracı ill&uuml;strasyonu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, hedeflerden kaynaklara en uygun yolu bir raster olarak hesaplar.
+            </p>
+            <br/>
+        </div>
+        <div id="OptimalRegionConnectionsTool" class="regularsize">
+            <table class="toolSummaryTable">
+                <thead></thead>
+                <tbody><tr>
+                    <td><h2>En Uygun Bölge Bağlantıları</h2></td>
+                    <td>
+                    <img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" class="titleImage" alt="En Uygun B&ouml;lge Bağlantıları aracı ill&uuml;strasyonu">
+                    </td>
+                </tr></tbody>
+            </table>
+<hr/>
+            <p>Bu ara&ccedil;, iki veya daha fazla girdi b&ouml;lgesi arasındaki en uygun bağlantı ağını hesaplar.
             </p>
             <br/>
         </div>
     <div id="AnalyzeImageCategory" class="regularsize">
         <h2>Görüntüyü Analiz Et</h2>
         <hr/>
-        <p>Aşağıdaki ara&ccedil;, g&ouml;r&uuml;nt&uuml;leri analiz etmenize yardımcı olur. 
+        <p>Aşağıdaki  <b>G&ouml;r&uuml;nt&uuml; Analizi</b> ara&ccedil; kategorisindeki ara&ccedil;, g&ouml;r&uuml;nt&uuml;leri analiz etmenize yardımcı olur:
             <ul>
-                <li> <b>Raster İşlev Şablonunu Uygula,</b> g&ouml;r&uuml;nt&uuml;lerinizi, raster işlev şablonu tarafından belirtildiği şekilde işlevler zinciriyle işler.
-                </li>
-                <li> <b>Bitki &Ouml;rt&uuml;s&uuml; İzleme</b>, bantlarda yapılan aritmetik işlemlere dayanarak g&ouml;r&uuml;nt&uuml; i&ccedil;indeki bitki &ouml;rt&uuml;s&uuml;n&uuml; algılar.
+                <li> <b>Bitki &Ouml;rt&uuml;s&uuml; İzleme</b> bantlarda yapılan aritmetik işlemlere dayanarak g&ouml;r&uuml;nt&uuml; i&ccedil;indeki ilgili bitki &ouml;rt&uuml;s&uuml; kapsamını algılar. &Ccedil;ok sayıda bitki &ouml;rt&uuml;s&uuml; indeksi g&ouml;r&uuml;nt&uuml; analizi i&ccedil;in kullanılabilir.
                     
 
                 </li>
@@ -212,21 +307,6 @@
             
         </p>
     </div>
-        <div id="ApplyRFxTemplateTool" class="smallsize">
-            <table class="toolSummaryTable">
-                <thead></thead>
-                <tbody><tr>
-                    <td><h2>Raster İşlev Şablonunu Uygula</h2></td>
-                    <td>
-                    <img src="../images/GUID-6464A140-88C7-4CCB-BB2A-07548ADC9981-web.png" class="titleImage" alt="Raster Fonksiyon Şablonunu Uygula">
-                    </td>
-                </tr></tbody>
-            </table>
-<hr/>
-            <p>G&ouml;r&uuml;nt&uuml;lerinizi, raster işlev şablonu tarafından belirtildiği şekilde işlevler zinciriyle işler.
-            </p>
-            <br/>
-        </div>
         <div id="MonitorVegetationTool" class="regularsize">
             <table class="toolSummaryTable">
                 <thead></thead>
@@ -238,7 +318,7 @@
                 </tr></tbody>
             </table>
 <hr/>
-            <p>&Ccedil;ok bantlı bir raster katmanının bantları &uuml;zerinde bir aritmetik işlem ger&ccedil;ekleştirerek &ccedil;alışma alanındaki bitki &ouml;rt&uuml;s&uuml; bilgilerini g&ouml;sterir.
+            <p>&Ccedil;ok bantlı bir raster katmanının bantları &uuml;zerinde bir aritmetik işlem ger&ccedil;ekleştirerek bitki &ouml;rt&uuml;s&uuml; kapsamı bilgilerini g&ouml;sterir.
             </p>
             <br/>
         </div>
@@ -420,7 +500,7 @@
                 <tbody><tr>
                     <td><h2>Örnek</h2></td>
                     <td>
-                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="&Ouml;rnekle">
+                    <img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" class="titleImage" alt="&Ouml;rnek">
                     </td>
                 </tr></tbody>
             </table>
@@ -516,7 +596,7 @@
             <table class="toolSummaryTable">
                 <thead></thead>
                 <tbody><tr>
-                    <td><h2>Çok Boyutlu Rasterı Kümele</h2></td>
+                    <td><h2>Çok Boyutlu Rasterı Topla</h2></td>
                     <td>
                     <img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" class="titleImage" alt="&Ccedil;ok Boyutlu Rasterı Topla">
                     </td>

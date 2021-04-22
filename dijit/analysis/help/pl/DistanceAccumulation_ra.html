@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Akumulacja odległości</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="Ilustracja narzędzia Akumulacja odległości"></h2>
+        <hr/>
+    <p>To narzędzie oblicza dla każdej kom&oacute;rki odległość do źr&oacute;deł, biorąc pod uwagę odległość w linii prostej, koszt odległości, rzeczywistą odległość powierzchniową, a także składniki poziome i pionowe.
+    </p>
+    <p>Przykładowe zastosowania obejmują udzielanie odpowiedzi na następujące pytania:
+        <ul>
+            <li>Jaka jest odległość do najbliższego miasta?
+                
+
+            </li>
+            <li>Jaka jest odległość kosztowa do najbliższej drogi?
+                
+
+            </li>
+            <li>Jaka jest odległość do najbliższego źr&oacute;dła wody pitnej w przypadku trasy omijającej bariery?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Jeśli zaznaczona jest opcja  <b>Użyj bieżącego zasięgu mapy</b>, analizowane będą tylko obiekty warstwy wejściowej widoczne w bieżącym zasięgu mapy. Jeśli opcja ta nie jest zaznaczona, przeanalizowane zostaną wszystkie obiekty warstwy wejściowej, nawet jeśli znajdują się one poza bieżącym zasięgiem mapy.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Wybierz raster lub obiekty źródłowe</h2></div>
+        <hr/>
+        <div>
+            <p>Warstwa rastrowa lub obiektowa definiująca źr&oacute;dła, do kt&oacute;rych będzie obliczana odległość.
+            </p>
+            <p>Jeśli dane wejściowe są rastrem, muszą składać się z kom&oacute;rek o prawidłowych wartościach (zero jest prawidłową wartością) dla tych źr&oacute;deł, a do pozostałych kom&oacute;rek musi być przypisana wartość NoData (Brak danych).
+            </p>
+            <p>Jeśli dane wejściowe to warstwa obiektowa, może być to warstwa punktowa, liniowa lub poligonowa.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Wybierz raster lub obiekty barier (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Zestaw danych definiujący bariery.
+            </p>
+            <p>W przypadku warstwy rastrowej typem wejściowym może być liczba całkowita lub zmiennoprzecinkowa. Wszystkie kom&oacute;rki, kt&oacute;re zawierają wartości (w tym wartość zero), będą traktowane jako bariery. Wszystkie kom&oacute;rki zawierające wartość NoData nie będą traktowane jako bariery.
+            </p>
+            <p>W przypadku usługi obiektowej danymi wejściowymi mogą być punkty, linie lub poligony.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Wybierz raster powierzchni (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definiujący wartości wysokości dla każdej lokalizacji kom&oacute;rki.
+            </p>
+            <p>Wartości te są używane do obliczenia rzeczywistej odległości powierzchniowej pokonywanej podczas poruszania się przez kom&oacute;rki.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Wybierz raster kosztów (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definiujący impedancję (koszt) ruchu planimetrycznego między poszczeg&oacute;lnymi kom&oacute;rkami.
+            </p>
+            <p>Wartość w każdej lokalizacji kom&oacute;rki reprezentuje odległość kosztu na jednostkę na potrzeby poruszania się przez tę kom&oacute;rkę. Wartość każdej lokalizacji kom&oacute;rki jest mnożona przez rozdzielczość kom&oacute;rki, a jednocześnie następuje kompensacja ruchu ukośnego, aby uzyskać łączny koszt poruszania się przez kom&oacute;rkę.
+            </p>
+            <p>Wartości rastra koszt&oacute;w mogą być całkowitoliczbowe lub zmiennoprzecinkowe, ale nie mogą być ujemne ani r&oacute;wne zero (koszt nie może być wartością ujemną ani mieć wartość zerową).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Wybierz raster pionowy (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definiujący wartości z dla każdej lokalizacji kom&oacute;rki.
+            </p>
+            <p>Wartości te służą do obliczania nachylenia używanego do identyfikowania składnika pionowego występującego podczas poruszania się między kom&oacute;rkami.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Składnik pionowy (opcjonalny)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Składnik pionowy</b> definiuje relację między pionowym składnikiem kosztu (VF) i pionowym względnym kątem ruchu (VRMA).
+            </p>
+            <p>Istnieje kilka składnik&oacute;w z modyfikatorami do wyboru, kt&oacute;re identyfikują wykres składnika pionowego. Wykresy służą do określania składnika pionowego używanego do obliczania łącznego kosztu przemieszczenia się do sąsiedniej kom&oacute;rki.
+            </p>
+            <p>W zamieszczonych poniżej opisach VF definiuje trudności napotkane przy ruchu w pionie podczas przemieszczania się z jednej kom&oacute;rki do kom&oacute;rki następnej, a modyfikator VRMA oznacza kąt nachylenia między kom&oacute;rką  <b>Ze źr&oacute;dła</b> i kom&oacute;rką <b>Do źr&oacute;dła</b>.
+                <ul>
+                    <li> <b>Binarny</b> &mdash; jeśli kąt VRMA jest większy niż dolny kąt odcinania i mniejszy niż g&oacute;rny kąt odcinania, składnik VF jest konfigurowany na wartość powiązaną ze składnikiem o wartości zerowej. W przeciwnym razie jest dla niego ustawiana nieskończoność.
+                    </li>
+                    <li> <b>Liniowa</b> &mdash; składnik VF jest funkcją liniową kąta VRMA.
+                    </li>
+                    <li> <b>Liniowa odwrotna</b> &mdash; składnik VF jest odwrotną funkcją liniową kąta VRMA.
+                    </li>
+                    <li> <b>Symetryczna liniowa</b> &mdash; składnik VF jest funkcją liniową kąta VRMA dla ujemnej i dodatniej wartości kąta VRMA, a te dwie funkcje linowe są symetryczne w odniesieniu do osi składnika VF (oś y).
+                    </li>
+                    <li> <b>Symetryczna liniowa odwrotna</b> &mdash; składnik VF jest odwrotną funkcją liniową kąta VRMA dla ujemnej i dodatniej wartości kąta VRMA, a te dwie funkcje linowe są symetryczne w odniesieniu do osi składnika VF (oś y).
+                    </li>
+                    <li> <b>Cos</b> &mdash; składnik VF jest funkcją cosinusową kąta VRMA.
+                    </li>
+                    <li> <b>Sec</b> &mdash; składnik VF jest funkcją sieczną kąta VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b> &mdash; składnik VF jest funkcją cosinusową kąta VRMA, gdy kąt VRMA ma wartość ujemną i jest funkcją sieczną kąta VRMA, gdy kąt VRMA ma wartość nieujemną.
+                    </li>
+                    <li> <b>Sec-Cos</b> &mdash; składnik VF jest funkcją sieczną kąta VRMA, gdy kąt VRMA ma wartość ujemną i jest funkcją cosinusową kąta VRMA, gdy kąt VRMA ma wartość nieujemną.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modyfikatory parametr&oacute;w składnika pionowego są następujące:
+                <ul>
+                    <li> <b>Składnik o wartości zerowej</b> &mdash; składnik pionowy używany, gdy kąt VRMA ma wartość zero. Ten składnik ustawia pozycję przecięcia osi y dla podanej funkcji. Zgodnie z definicją składnik o wartości zerowej nie ma zastosowania do żadnych trygonometrycznych funkcji pionowych (Cos, Sec, Cos-Sec ani Sec-Cos). Pozycja przecięcia osi y jest definiowana przez te funkcje.
+                    </li>
+                    <li> <b>Dolny kąt odcinania</b> &mdash; kąt VRMA, poniżej kt&oacute;rego składnik VF zostanie skonfigurowany na nieskończoność.
+                    </li>
+                    <li> <b>G&oacute;rny kąt odcinania</b> &mdash; kąt VRMA, powyżej kt&oacute;rego składnik VF zostanie skonfigurowany na nieskończoność.
+                    </li>
+                    <li> <b>Nachylenie</b> &mdash; nachylenie linii prostej używane z parametrami <b>Liniowa</b> i <b>Liniowa odwrotna</b>. Nachylenie jest określone jako ułamek przedstawiający stosunek r&oacute;żnicy wysokości do długości (na przykład nachylenie wynoszące 45 procent to 1/45, kt&oacute;re wprowadza się jako 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Wybierz raster poziomy (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster definiujący kierunek poziomy w każdej kom&oacute;rce.
+            </p>
+            <p>Wartościami rastra muszą być liczby całkowitoliczbowe z zakresu od 0 do 360, przy czym 0 stopni wskazuje p&oacute;łnoc lub kierunek ku g&oacute;rze ekranu, a wartości wzrastają zgodnie z kierunkiem ruchu wskaz&oacute;wek zegara. Obszary o płaskim ukształtowaniu powinny mieć wartość -1. Wartości w każdej lokalizacji będą używane w połączeniu ze  <b>składnikiem poziomym</b>, aby określić koszt poziomy ponoszony podczas poruszania się z kom&oacute;rki do jej sąsiad&oacute;w.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Składnik poziomy (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>Składnik poziomy</b> definiuje relację między poziomym składnikiem kosztu i poziomym względnym kątem ruchu.
+            </p>
+            <p>Istnieje kilka składnik&oacute;w z modyfikatorami do wyboru, kt&oacute;re identyfikują wykres składnika poziomego. Wykresy służą do określania składnika poziomego używanego do obliczania łącznego kosztu przemieszczenia się do sąsiedniej kom&oacute;rki.
+            </p>
+            <p>W zamieszczonych poniżej opisach składnik poziomy (HF) definiuje trudności napotkane przy ruchu w poziomie podczas przemieszczania się z jednej kom&oacute;rki do kom&oacute;rki następnej, a poziomy względny kąt ruchu (HRMA) określa kąt między kierunkiem poziomym z kom&oacute;rki i kierunkiem ruchu.
+            </p>
+            <p>Definicje i parametry tych składnik&oacute;w poziomych są następujące:
+                <ul>
+                    <li> <b>Binarny</b> &mdash; jeśli kąt HRMA jest mniejszy niż kąt odcinania, składnik HF jest konfigurowany na wartość powiązaną ze składnikiem o wartości zerowej. W przeciwnym razie jest dla niego ustawiana nieskończoność.
+                        
+
+                    </li>
+                    <li> <b>Do przodu</b> &mdash; dozwolony jest wyłącznie ruch do przodu. Kąt HRMA musi być większy lub r&oacute;wny 0 i mniejszy niż 90 (0 &lt;= HRMA &lt; 90). Jeśli kąt HRMA jest większy niż 0 i mniejszy niż 45 stopni, składnik HF dla kom&oacute;rki jest ustawiany na wartość powiązaną ze składnikiem o wartości zerowej. Jeśli kąt HRMA jest większy niż 45 stopni lub jest r&oacute;wny tej wartości, używana jest wartość modyfikatora wartości pobocznej. W przypadku kąta HRMA większego lub r&oacute;wnego 90 stopni składnik HF jest ustawiany na nieskończoność.
+                        
+
+                    </li>
+                    <li> <b>Liniowa</b> &mdash; składnik HF jest funkcją liniową kąta HRMA.
+                        
+
+                    </li>
+                    <li> <b>Liniowa odwrotna</b> &mdash; składnik HF jest odwrotną funkcją liniową kąta HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>Modyfikatory sł&oacute;w kluczowych składnika poziomego są następujące:
+                <ul>
+                    <li> <b>Składnik o wartości zerowej</b> &mdash; składnik poziomy, kt&oacute;ry jest używany, gdy kąt HRMA ma wartość zero. Ten składnik ustawia pozycję przecięcia osi y dla wszystkich funkcji składnika poziomego.
+                        
+
+                    </li>
+                    <li> <b>Kąt odcinania</b> &mdash; kąt HRMA, po kt&oacute;rego przekroczeniu jako wartość składnika HF zostanie skonfigurowana nieskończoność.
+                        
+
+                    </li>
+                    <li> <b>Nachylenie</b> &mdash; nachylenie linii prostej używanej ze słowami kluczowymi składnik&oacute;w poziomych <b>Liniowa</b> i <b>Liniowa odwrotna</b>. Nachylenie jest określone jako ułamek przedstawiający stosunek r&oacute;żnicy wysokości do długości (na przykład nachylenie wynoszące 45 procent to 1/45, kt&oacute;re wprowadza się jako 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Wartość poboczna</b> &mdash; składnik HF, gdy kąt HRMA jest większy niż 45 stopni lub jest r&oacute;wny tej wartości i jest mniejszy niż 90 stopni, gdy podano słowo kluczowe składnika poziomego <b>Do przodu</b>.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Akumulacja początkowa</h2></div>
+        <hr/>
+        <div>
+            <p>Akumulowany koszt początkowy służący do rozpoczęcia obliczania kosztu.
+            </p>
+            <p>Pozwala określić stały koszt powiązany ze źr&oacute;dłem. Zamiast rozpoczynać od kosztu r&oacute;wnego zero, algorytm kosztu rozpocznie od wartości skonfigurowanej w opcji  <b>Akumulacja początkowa</b>.
+            </p>
+            <p>Wartości muszą wynosić zero lub więcej. Domyślna wartość to 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Akumulacja maksymalna</h2></div>
+        <hr/>
+        <div>
+            <p>Akumulacja maksymalna dla danego podr&oacute;żnego i źr&oacute;dła.
+            </p>
+            <p>Obliczenia koszt&oacute;w są kontynuowane dla każdego źr&oacute;dła do momentu osiągnięcia określonej akumulacji.
+            </p>
+            <p>Wartości muszą być większe niż zero. Domyślna akumulacja to krawędź rastra wynikowego.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Mnożnik kosztów</h2></div>
+        <hr/>
+        <div>
+            <p>Mnożnik do zastosowania do wartości koszt&oacute;w.
+            </p>
+            <p>Umożliwia sterowanie trybem podr&oacute;żowania lub wielkością w źr&oacute;dle. Im wyższy mnożnik, tym większy koszt ruchu przez każdą kom&oacute;rkę.
+            </p>
+            <p>Wartości muszą być większe niż zero. Wartość domyślna to 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Kierunek podróży</h2></div>
+        <hr/>
+        <div>
+            <p>Określa kierunek osoby podr&oacute;żującej podczas stosowania składnik&oacute;w poziomych i pionowych.
+            </p>
+            <p> <b>Ze źr&oacute;dła</b> &mdash; składnik pionowy i składnik poziomy zostaną zastosowane, począwszy od wejściowego źr&oacute;dła przy ruchu w kierunku kom&oacute;rek innych niż źr&oacute;dłowe. Jest to opcja domyślna.
+            </p>
+            <p> <b>Do źr&oacute;dła</b> &mdash; składnik pionowy i składnik poziomy zostaną zastosowane, począwszy od każdej kom&oacute;rki innej niż źr&oacute;dłowa przy ruchu z powrotem w kierunku źr&oacute;dła wejściowego.
+            </p>
+            <p>Podaj słowo kluczowe  <b>Ze źr&oacute;dła</b> lub <b>Do źr&oacute;dła</b>, kt&oacute;re zostanie zastosowane do wszystkich źr&oacute;deł lub podaj pole w danych źr&oacute;dłowych zawierające słowa kluczowe identyfikujące kierunek podr&oacute;żowania dla każdego źr&oacute;dła. To pole musi zawierać ciąg znakowy <code>FROM_SOURCE</code> lub <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metoda wyznaczania odległości (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Wskazuje, czy odległości mają być obliczane przy użyciu metody planarnej (płaska powierzchnia Ziemi), czy geodezyjnej (elipsoida).
+            </p>
+            <ul>
+                <li> <b>Planarna</b> &ndash; obliczenia odległości będą wykonywane na odwzorowanej płaskiej powierzchni przy użyciu 2-wymiarowego kartezjańskiego układu wsp&oacute;łrzędnych. To jest metoda domyślna.
+                    
+
+                </li>
+                <li> <b>Geodezyjna</b> &ndash; obliczenia odległości będą wykonywane na elipsoidzie. Dzięki temu wyniki nie zmieniają się w zależności od wejściowego lub wynikowego odwzorowania.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Nazwa wynikowego rastra akumulacji odległości</h2></div>
+        <hr/>
+        <div>
+            <p>Raster akumulacji odległości zawiera zakumulowaną odległość dla każdej kom&oacute;rki z lub do źr&oacute;dła o najmniejszym koszcie.
+            </p>
+            <p>Raster wynikowy ma typ zmiennoprzecinkowy.
+            </p>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Nazwa wynikowego rastra kierunku wstecz (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster kierunk&oacute;w powrotnych zawiera obliczony kierunek w stopniach. Kierunek identyfikuje sąsiednią kom&oacute;rkę znajdującą się na najkr&oacute;tszej ścieżce powrotnej prowadzącej do najbliższego źr&oacute;dła z ominięciem barier.
+            </p>
+            <p>Wartości należą do zakresu od 0 do 360 stopni, przy czym wartość 0 jest zarezerwowana dla kom&oacute;rek źr&oacute;dłowych. Dla kierunku wschodniego (na prawo) wartość wynosi 90, a wartości wzrastają zgodnie z kierunkiem ruchu wskaz&oacute;wek zegara (180 wskazuje południe, 270 &mdash; zach&oacute;d, a 360 &mdash; p&oacute;łnoc).
+            </p>
+            <p>Raster wynikowy ma typ zmiennoprzecinkowy.
+            </p>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie  <b>Moje zasoby</b>. Należy podać nazwę, kt&oacute;ra nie istnieje aktualnie w obszarze <b>Moje zasoby</b>.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Nazwa wynikowego rastra kierunku do źródła (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster kierunku do źr&oacute;dła identyfikuje kierunek najmniej zakumulowanej kom&oacute;rki źr&oacute;dła koszt&oacute;w jako azymut w stopniach.
+            </p>
+            <p>Wartości należą do zakresu od 0 do 360 stopni, przy czym wartość 0 jest zarezerwowana dla kom&oacute;rek źr&oacute;dłowych. Dla kierunku wschodniego (na prawo) wartość wynosi 90, a wartości wzrastają zgodnie z kierunkiem ruchu wskaz&oacute;wek zegara (180 wskazuje południe, 270 &mdash; zach&oacute;d, a 360 &mdash; p&oacute;łnoc).
+            </p>
+            <p>Raster wynikowy ma typ zmiennoprzecinkowy.
+            </p>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie  <b>Moje zasoby</b>. Należy podać nazwę, kt&oacute;ra nie istnieje aktualnie w obszarze <b>Moje zasoby</b>.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Nazwa wynikowego rastra lokalizacji źródła (opcjonalnie)</h2></div>
+        <hr/>
+        <div>
+            <p>Raster lokalizacji źr&oacute;dła to wielopasmowy raster wynikowy. Pierwsze pasmo zawiera indeks wiersza, a drugie pasmo zawiera indeks kolumny. Te indeksy wskazują lokalizację kom&oacute;rki źr&oacute;dłowej, kt&oacute;ra jest odległa o najmniejszy akumulowany koszt.
+            </p>
+            <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w oknie  <b>Moje zasoby</b>. Należy podać nazwę, kt&oacute;ra nie istnieje aktualnie w obszarze <b>Moje zasoby</b>.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

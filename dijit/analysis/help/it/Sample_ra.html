@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Esempio</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Esempio"></h2>
+        <h2>Campione</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Campione"></h2>
         <hr/>
     <p>Questo strumento crea una tabella o una feature class puntuale che mostra i valori di celle da un raster, o un insieme di raster, per posizioni definite. Le posizioni sono definite da celle raster, feature poligonali, feature polilinee o da un insieme di punti.
     </p>
@@ -112,7 +112,6 @@
             <p>Specificare il tempo, la profondit&agrave;, o altri dati di acquisizione associati alle celle di posizione o alle feature.
             </p>
             <p>Per ogni dimensione, ci sono tre opzioni per specificare le informazioni di acquisizione associate alle celle di posizione o alle feature:
-
                 <ul>
                     <li> <b>Singolo campo o valore</b>: quando si seleziona questa opzione, &egrave; necessario specificare le seguenti informazioni:
                         <ul>
@@ -206,11 +205,11 @@
             <p>Algoritmo di ricampionamento utilizzato per il campionamento di un raster.
             </p>
             <ul>
-                <li> <b>Pi&ugrave; vicino</b>: vicino pi&ugrave; vicino. Questa &egrave; l'impostazione predefinita.
+                <li> <b>Pi&ugrave; vicino</b>&mdash;Il vicino pi&ugrave; prossimo utilizza il valore della cella pi&ugrave; vicina per assegnare un valore alla cella di output durante il ricampionamento. Si tratta dell'impostazione predefinita.
                 </li>
-                <li> <b>Bilineare</b>: interpolazione bilineare
+                <li> <b>Bilineare</b>&mdash;Esegue un'interpolazione bilineare e determina il nuovo valore di una cella in base a una distanza media pesata dei quattro centri delle celle di input pi&ugrave; vicine.
                 </li>
-                <li> <b>Cubica</b>: convoluzione cubica
+                <li> <b>Cubica</b>&mdash;Convoluzione cubica determina il nuovo valore di una cella in base all'adattamento di una curva smussata attraverso i 16 centri delle celle di input pi&ugrave; vicine.
                 </li>
             </ul>
             
@@ -223,7 +222,7 @@
             <p>Specifica se i valori campionati appaiono in righe o colonne nella tabella di output. Questa opzione &egrave; disponibile solo quando il raster multidimensionale di input contiene una variabile e una dimensione e ogni sezione &egrave; un raster a banda singola.
             </p>
             <ul>
-                <li> <b>I valori campionati appaiono in riga</b>: i valori campionati appaiono in righe separate nella tabella di output. Questa &egrave; l'impostazione predefinita.
+                <li> <b>I valori campionati appaiono in riga</b>: i valori campionati appaiono in righe separate nella tabella di output. Si tratta dell'impostazione predefinita.
                 </li>
                 <li> <b>I valori campionati appaiono in colonna</b>: i valori campionati appaiono in colonne separate nella tabella di output. Questa opzione &egrave; valida solo quando il raster multidimensionale di input contiene una variabile e una dimensione, e ogni sezione &egrave; un raster a banda singola.
                 </li>
@@ -238,7 +237,7 @@
             <p>Specifica se generare una feature class puntuale con valori campionati nella sua tabella, o solo una tabella con valori campionati.
             </p>
             <ul>
-                <li> <b>Tabella</b>: generare una tabella con i valori campionati. Questa &egrave; l'impostazione predefinita.
+                <li> <b>Tabella</b>: generare una tabella con i valori campionati. Si tratta dell'impostazione predefinita.
                 </li>
                 <li> <b>Feature</b>: generare una feature class puntuale con valori campionati nella sua tabella. Se le feature di posizione di input sono polilinee o poligonali, ogni punto di output &egrave; il centroide di ogni geometria delle feature di posizione di input.
                 </li>
@@ -247,9 +246,10 @@
         </div>
     </div>
     <div id="outputName">
-        <div><h2>Nome del layer dei risultati</h2></div>
+        <div><h2>Nome layer risultati</h2></div>
         <hr/>
         <div>
+            
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
             <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.

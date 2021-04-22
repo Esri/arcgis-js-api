@@ -44,7 +44,7 @@
         <h2>Generuoti daugiamatę anomaliją</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generuoti daugiamatę anomaliją"></h2>
         <hr/>
-    <p>Generuoja daugiamačių rastrinių duomenų rinkinį, apjungdamas esamus daugiamačius rastrinius kintamuosius pagal matmenį.
+    <p>Apskaičiuoja kiekvienos esamo daugiamačio rastro skilties anomaliją ir sugeneruoja naują daugiamatį rastrą.
     </p>
     <p>Anomalija yra stebėjimo nukrypimas nuo jo standartinės, vidutinės arba medianos reik&scaron;mės.
     </p>
@@ -59,7 +59,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Pasirinkite daugiamatį vaizdų sluoksnį anomalijai generuoti</h2></div>
+        <div><h2>Pasirinkite daugiamatį vaizdų sluoksnį, iš kurio generuosite anomaliją</h2></div>
         <hr/>
         <div>
             <p>Daugiamačio rastrinio duomenų rinkinio įvesties vaizdų sluoksnis.
@@ -67,7 +67,7 @@
         </div>
     </div>
     <div id="variables">
-        <div><h2>Pasirinkite kintamąjį (-uosius), kuriam bus sugeneruotos anomalijos</h2></div>
+        <div><h2>Pasirinkite kintamąjį (kintamuosius), kurio (kurių) anomalijas generuoti</h2></div>
         <hr/>
         <div>
             <p>Kintamasis arba kintamieji, kurio (kurių) anomalijos bus skaičiuojamos. Jei kintamasis nenurodytas, bus analizuojami visi laiko matmens kintamieji.
@@ -75,12 +75,12 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Pasirinkite anomalijos generavimo būdą</h2></div>
+        <div><h2>Pasirinkite anomalijų generavimo metodą.</h2></div>
         <hr/>
         <div>
-            <p>Nurodo metodą, kurį naudojant bus generuojamos anomalijos. 
+            <p>Nurodo metodą, kurį naudojant bus generuojamos anomalijos.
                 <ul>
-                    <li> <b>Skirtumas nuo vidurkio</b> &ndash; bus skaičiuojamas skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių vidurkio pagal intervalą apibrėžtose skiltyse. Tai numatytasis nustatymas.
+                    <li> <b>Skirtumas nuo vidurkio</b> &ndash; bus skaičiuojamas skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių vidurkio pagal intervalą apibrėžtose skiltyse. Tai yra numatytasis nustatymas.
                     </li>
                     <li> <b>Procentinis skirtumas nuo vidurkio</b> &ndash; bus skaičiuojamas procentinis skirtumas tarp pikselio reik&scaron;mės ir to pikselio reik&scaron;mių vidurkio pagal intervalą apibrėžtose skiltyse.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>Skirtumas nuo vidurkio = x - &micro;
-
                         <ul>
                             <li>x = pikselio reik&scaron;mė skiltyje
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentinis skirtumas nuo vidurkio = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pikselio reik&scaron;mė skiltyje
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Vidurkio procentinė reik&scaron;mė = x - &micro;
-
                         <ul>
                             <li>x = pikselio reik&scaron;mė skiltyje
                                 
@@ -180,7 +177,7 @@
                         </ul>
                         
                     </li>
-                    <li>Z įvertis  = (x - &micro;) / S
+                    <li>Z įvertis = (x - &micro;) / S
                         <ul>
                             <li>x = pikselio reik&scaron;mė skiltyje
                             </li>
@@ -199,10 +196,10 @@
         </div>
     </div>
     <div id="calculationInterval">
-        <div><h2>Pasirinkite laiko intervalą vidurkiui apskaičiuoti</h2></div>
+        <div><h2>Vidurkiui skaičiuoti pasirinkite laiko intervalą</h2></div>
         <hr/>
         <div>
-            <p>Nurodo laiko intervalą, kurį naudojant bus skaičiuojamas vidurkis. 
+            <p>Nurodo laiko intervalą, kurį naudojant bus skaičiuojamas vidurkis.
                 <ul>
                     <li> <b>Viskas</b> &ndash; skaičiuoja kiekvieno pikselio vidurkį per visas skiltis.
                     </li>
@@ -235,9 +232,9 @@
         <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės. 
+            <p>Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
                 <ul>
-                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai numatytasis nustatymas.
+                    <li>Pažymėta &ndash; analizėje bus įtraukti visi nurodyto matmens tinkami pikseliai ir neįtraukti visi NoData pikseliai. Tai yra numatytasis nustatymas.
                     </li>
                     <li>Nepažymėta &ndash; analizė pateiks rezultatą NoData, jei nurodytame matmenyje pikselis turi bent vieną NoData reik&scaron;mę.
                     </li>
@@ -250,7 +247,8 @@
         <div><h2>Rezultatų sluoksnio pavadinimas</h2></div>
         <hr/>
         <div>
-            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas pagal įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            
+            <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
             <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>

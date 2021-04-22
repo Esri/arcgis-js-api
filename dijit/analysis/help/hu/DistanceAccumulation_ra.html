@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>Távolságakkumuláció</h2><p/>
+        <h2><img src="../images/GUID-758B6DFA-6820-45B8-8089-5A2B7AB20A0D-web.png" alt="T&aacute;vols&aacute;gakkumul&aacute;ci&oacute; eszk&ouml;z illusztr&aacute;ci&oacute;ja"></h2>
+        <hr/>
+    <p>Ez az eszk&ouml;z az egyes cell&aacute;k forr&aacute;st&oacute;l vett kumulat&iacute;v t&aacute;vols&aacute;g&aacute;t sz&aacute;m&iacute;tja ki, megengedve az egyenes vonal&uacute; t&aacute;vols&aacute;g, a k&ouml;lts&eacute;gt&aacute;vols&aacute;g, a val&oacute;di felsz&iacute;ni t&aacute;vols&aacute;g, valamint a f&uuml;ggőleges &eacute;s v&iacute;zszintes t&eacute;nyezők haszn&aacute;lat&aacute;t.
+    </p>
+    <p>Az alkalmaz&aacute;sra p&eacute;lda lehet az al&aacute;bbihoz hasonl&oacute; k&eacute;rd&eacute;sek megv&aacute;laszol&aacute;sa:
+        <ul>
+            <li>Mekkora a t&aacute;vols&aacute;g a legk&ouml;zelebbi v&aacute;roshoz?
+                
+
+            </li>
+            <li>Mekkora t&aacute;vols&aacute;gra van a legk&ouml;zelebbi &uacute;t?
+                
+
+            </li>
+            <li>Mekkora t&aacute;vols&aacute;gra van a legk&ouml;zelebbi v&iacute;zforr&aacute;s az akad&aacute;lyokat megker&uuml;lve?
+            </li>
+        </ul>
+        
+    </p>
+    <p>Az  <b>Aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;s haszn&aacute;lata</b> bejel&ouml;l&eacute;s&eacute;vel az elemz&eacute;s csak azokat a bemenő r&eacute;tegen l&eacute;vő vektoros elemeket foglalja mag&aacute;ban, amelyek l&aacute;that&oacute;k az aktu&aacute;lis t&eacute;rk&eacute;pkiterjed&eacute;sen. Ha nincs bejel&ouml;lve, akkor a bemenő r&eacute;teg &ouml;sszes vektoros elem&eacute;t elemzi, akkor is, ha azok k&iacute;v&uuml;l esnek az aktu&aacute;lisan megjelen&iacute;tett t&eacute;rk&eacute;pkiterjed&eacute;sen.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Forrásraszter vagy vektoros elemek kiválasztása</h2></div>
+        <hr/>
+        <div>
+            <p>Azokat a kiindul&oacute;pontokat meghat&aacute;roz&oacute; r&eacute;teg, amelyektől a t&aacute;vols&aacute;got sz&aacute;m&iacute;tani kell.
+            </p>
+            <p>Ha a bemenet egy raszter, akkor &eacute;rv&eacute;nyes &eacute;rt&eacute;kekkel rendelkező cell&aacute;kb&oacute;l kell &aacute;llnia (a nulla &eacute;rv&eacute;nyes &eacute;rt&eacute;k), m&iacute;g a t&ouml;bbi cell&aacute;hoz a NoData &eacute;rt&eacute;ket kell rendelni.
+            </p>
+            <p>Ha a bemenet vektoros r&eacute;teg, akkor lehet pont, vonal vagy soksz&ouml;g.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Határoló vektoros elemek kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az akad&aacute;lyokat meghat&aacute;roz&oacute; adathalmaz.
+            </p>
+            <p>Raszteres r&eacute;teg eset&eacute;ben a bemeneti t&iacute;pus integer vagy lebegőpontos lehet. Minden &eacute;rt&eacute;kkel rendelkező cell&aacute;t (a nulla &eacute;rt&eacute;kűt is) akad&aacute;lyk&eacute;nt kezel. A NoData &eacute;rt&eacute;kű cell&aacute;kat nem tekinti akad&aacute;lynak.
+            </p>
+            <p>Vektoros adatszolg&aacute;ltat&aacute;s eset&eacute;n a bemenet lehet pont, vonal vagy polygon.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Felszínraszter kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az egyes cellahelyeken a magass&aacute;g&eacute;rt&eacute;keket meghat&aacute;roz&oacute; raszter.
+            </p>
+            <p>Az &eacute;rt&eacute;kek a cell&aacute;k k&ouml;z&ouml;tti mozg&aacute;sok sor&aacute;n t&eacute;nylegesen megtett felsz&iacute;ni t&aacute;vols&aacute;g kisz&aacute;m&iacute;t&aacute;s&aacute;hoz lesznek felhaszn&aacute;lva.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Költségraszter kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az egyes cell&aacute;kon t&ouml;rt&eacute;nő, s&iacute;krajzi &eacute;rtelemben vett &aacute;thalad&aacute;s impedanci&aacute;j&aacute;t meghat&aacute;roz&oacute; raszter.
+            </p>
+            <p>Az egyes cellahelyeken szereplő &eacute;rt&eacute;kek az adott cell&aacute;n t&ouml;rt&eacute;nő &aacute;thalad&aacute;s egys&eacute;gnyi t&aacute;vols&aacute;gra eső k&ouml;lts&eacute;g&eacute;t jelentik. Az eszk&ouml;z a cell&aacute;n t&ouml;rt&eacute;nő &aacute;thalad&aacute;s teljes k&ouml;lts&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz megszorozza az egyes cellahelyek &eacute;rt&eacute;k&eacute;t a cellafelbont&aacute;ssal, &eacute;s &aacute;tl&oacute;s mozg&aacute;s eset&eacute;n kompenz&aacute;lja az &eacute;rt&eacute;ket.
+            </p>
+            <p>A k&ouml;lts&eacute;graszter &eacute;rt&eacute;kei lehetnek integer vagy lebegőpontos &eacute;rt&eacute;kek, de nem lehetnek negat&iacute;vak vagy null&aacute;k (a k&ouml;lts&eacute;g nem lehet negat&iacute;v vagy nulla).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Függőleges raszter kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az egyes cellahelyeken a z &eacute;rt&eacute;keket meghat&aacute;roz&oacute; raszter.
+            </p>
+            <p>A f&uuml;ggv&eacute;ny az &eacute;rt&eacute;keket az egyik cell&aacute;b&oacute;l egy m&aacute;sikba t&ouml;rt&eacute;nő mozg&aacute;s sor&aacute;n felmer&uuml;lt f&uuml;ggőleges t&eacute;nyező azonos&iacute;t&aacute;s&aacute;ra haszn&aacute;lt lejt&eacute;s kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lja.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Függőleges tényező (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>F&uuml;ggőleges t&eacute;nyező</b> a f&uuml;ggőleges k&ouml;lts&eacute;gt&eacute;nyező (VF) &eacute;s a f&uuml;ggőleges relat&iacute;v mozg&aacute;si sz&ouml;g (VRMA) k&ouml;z&ouml;tti kapcsolatot hat&aacute;rozza meg.
+            </p>
+            <p>Sz&aacute;mos, meghat&aacute;rozott f&uuml;ggőlegest&eacute;nyező-grafikont azonos&iacute;t&oacute;, m&oacute;dos&iacute;t&oacute;val rendelkező t&eacute;nyező k&ouml;z&uuml;l v&aacute;laszthat. A grafikonok szerepe a szomsz&eacute;dos cell&aacute;ba mozg&aacute;s teljes k&ouml;lts&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt f&uuml;ggőleges t&eacute;nyező azonos&iacute;t&aacute;sa.
+            </p>
+            <p>Az al&aacute;bbi le&iacute;r&aacute;sokban a VF jelent&eacute;se f&uuml;ggőleges t&eacute;nyező, amely a k&eacute;t cella k&ouml;z&ouml;tti mozg&aacute;s f&uuml;ggőleges neh&eacute;zs&eacute;g&eacute;t hat&aacute;rozza meg, a VRMA m&oacute;dos&iacute;t&oacute; pedig a  <b>Forr&aacute;st&oacute;l</b> cella &eacute;s a <b>Forr&aacute;shoz</b> cella k&ouml;z&ouml;tti lejtősz&ouml;get jelenti.
+                <ul>
+                    <li> <b>Bin&aacute;ris</b> &ndash; Azt jelzi, hogy ha a VRMA nagyobb, mint az als&oacute; lev&aacute;g&aacute;si sz&ouml;g, &eacute;s kisebb, mint a felső lev&aacute;g&aacute;si sz&ouml;g, a VF a nullt&eacute;nyezőh&ouml;z t&aacute;rs&iacute;tott &eacute;rt&eacute;kre lesz &aacute;ll&iacute;tva, ellenkező esetben v&eacute;gtelenre.
+                    </li>
+                    <li> <b>Line&aacute;ris</b> &ndash; Azt jelzi, hogy a VF a VRMA line&aacute;ris f&uuml;ggv&eacute;nye.
+                    </li>
+                    <li> <b>Inverz line&aacute;ris</b> &ndash; Azt jelzi, hogy a VF a VRMA inverz line&aacute;ris f&uuml;ggv&eacute;nye.
+                    </li>
+                    <li> <b>Szimmetrikus line&aacute;ris</b> &ndash; Azt jelzi, hogy a VF a VRMA line&aacute;ris f&uuml;ggv&eacute;nye a VRMA negat&iacute;v vagy pozit&iacute;v oldal&aacute;n, &eacute;s a k&eacute;t line&aacute;ris f&uuml;ggv&eacute;ny a VF (y) tengelyre n&eacute;zve szimmetrikus.
+                    </li>
+                    <li> <b>Szimmetrikus inverz line&aacute;ris</b> &ndash; Azt jelzi, hogy a VF a VRMA inverz line&aacute;ris f&uuml;ggv&eacute;nye a VRMA negat&iacute;v vagy pozit&iacute;v oldal&aacute;n, &eacute;s a k&eacute;t line&aacute;ris f&uuml;ggv&eacute;ny a VF (y) tengelyre n&eacute;zve szimmetrikus.
+                    </li>
+                    <li> <b>Cos</b> &ndash; Azt jelzi, hogy a VF a VRMA koszinuszalap&uacute; f&uuml;ggv&eacute;nye.
+                    </li>
+                    <li> <b>Sec</b> &ndash; Azt jelzi, hogy a VF a VRMA szek&aacute;nsalap&uacute; f&uuml;ggv&eacute;nye.
+                    </li>
+                    <li> <b>Cos-Sec</b> &ndash; Azt jelzi, hogy a VF a VRMA koszinuszalap&uacute; f&uuml;ggv&eacute;nye, amikor a VRMA negat&iacute;v, &eacute;s a VRMA szek&aacute;nsalap&uacute; f&uuml;ggv&eacute;nye, amikor a VRMA nem negat&iacute;v.
+                    </li>
+                    <li> <b>Sec-Cos</b> &ndash; Azt jelzi, hogy a VF a VRMA szek&aacute;nsalap&uacute; f&uuml;ggv&eacute;nye, amikor a VRMA negat&iacute;v, &eacute;s a VRMA koszinuszalap&uacute; f&uuml;ggv&eacute;nye, amikor a VRMA nem negat&iacute;v.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>A f&uuml;ggőleges param&eacute;terek m&oacute;dos&iacute;t&oacute;i a k&ouml;vetkezők:
+                <ul>
+                    <li> <b>Nullt&eacute;nyező</b> &ndash; Azt a f&uuml;ggőleges t&eacute;nyezőt adja meg, amelyet akkor kell haszn&aacute;lni, amikor a VRMA nulla. Ez a t&eacute;nyező a megadott f&uuml;ggv&eacute;ny y tengelymetszet&eacute;nek helyzet&eacute;t hat&aacute;rozza meg. Defin&iacute;ci&oacute; szerint a nullt&eacute;nyező nem alkalmazhat&oacute; a trigonometrikus f&uuml;ggőleges f&uuml;ggv&eacute;nyekre (Cos, Sec, Cos-Sec vagy Sec-Cos). Az y tengelymetszetet ezek a f&uuml;ggv&eacute;nyek hat&aacute;rozz&aacute;k meg.
+                    </li>
+                    <li> <b>Als&oacute; lev&aacute;g&aacute;si sz&ouml;g</b> &ndash; A VRMA azon sz&ouml;g&eacute;t hat&aacute;rozza meg, amely alatt a VF v&eacute;gtelenre lesz &aacute;ll&iacute;tva.
+                    </li>
+                    <li> <b>Felső lev&aacute;g&aacute;si sz&ouml;g</b> &ndash; A VRMA azon sz&ouml;g&eacute;t hat&aacute;rozza meg, amely felett a VF v&eacute;gtelenre lesz &aacute;ll&iacute;tva.
+                    </li>
+                    <li> <b>Meredeks&eacute;g</b> &ndash; A <b>Line&aacute;ris</b> &eacute;s az <b>Inverz line&aacute;ris</b> param&eacute;terrel haszn&aacute;lt egyenes vonal lejt&eacute;s&eacute;t hat&aacute;rozza meg. A lejt&eacute;s az adott t&aacute;vols&aacute;gon m&eacute;rt emelked&eacute;s &eacute;s a t&aacute;vols&aacute;g h&aacute;nyadosak&eacute;nt van megadva (p&eacute;ld&aacute;ul a 45 sz&aacute;zal&eacute;kos lejt&eacute;s 1/45, amely a 0,02222 &eacute;rt&eacute;kkel adhat&oacute; meg).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Vízszintes raszter kiválasztása (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Az egyes cell&aacute;kban a v&iacute;zszintes ir&aacute;nyt meghat&aacute;roz&oacute; raszter.
+            </p>
+            <p>A raszteren l&eacute;vő &eacute;rt&eacute;keknek 0 &eacute;s 360 k&ouml;z&ouml;tt l&eacute;vő eg&eacute;sz sz&aacute;moknak kell lenni&uuml;k, ahol a 0 jelenti az &eacute;szakot vagy a k&eacute;pernyő tetej&eacute;t, &eacute;s az &eacute;rt&eacute;kek az &oacute;ra j&aacute;r&aacute;s&aacute;val megegyező ir&aacute;nyban nőnek. A lapos ter&uuml;letek &eacute;rt&eacute;ke -1. Az egyes helyeken tal&aacute;lhat&oacute; &eacute;rt&eacute;kek a  <b>V&iacute;zszintes t&eacute;nyező</b> param&eacute;terrel egy&uuml;tt lesznek haszn&aacute;lva az egyik cell&aacute;b&oacute;l egy szomsz&eacute;dos cell&aacute;ba t&ouml;rt&eacute;nő mozg&aacute;s sor&aacute;n felmer&uuml;lő v&iacute;zszintes k&ouml;lts&eacute;g meg&aacute;llap&iacute;t&aacute;s&aacute;hoz.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Vízszintes tényező (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A  <b>V&iacute;zszintes t&eacute;nyező</b> a v&iacute;zszintes k&ouml;lts&eacute;gt&eacute;nyező &eacute;s a v&iacute;zszintes relat&iacute;v mozg&aacute;si sz&ouml;g k&ouml;z&ouml;tti kapcsolatot hat&aacute;rozza meg.
+            </p>
+            <p>Sz&aacute;mos, meghat&aacute;rozott v&iacute;zszintest&eacute;nyező-grafikont azonos&iacute;t&oacute;, m&oacute;dos&iacute;t&oacute;val rendelkező t&eacute;nyező k&ouml;z&uuml;l v&aacute;laszthat. A grafikonok szerepe a szomsz&eacute;dos cell&aacute;ba mozg&aacute;s teljes k&ouml;lts&eacute;g&eacute;nek kisz&aacute;m&iacute;t&aacute;s&aacute;hoz haszn&aacute;lt v&iacute;zszintes t&eacute;nyező azonos&iacute;t&aacute;sa.
+            </p>
+            <p>Az al&aacute;bbi le&iacute;r&aacute;sokban a v&iacute;zszintes t&eacute;nyező (HF) a k&eacute;t cella k&ouml;z&ouml;tti mozg&aacute;s v&iacute;zszintes neh&eacute;zs&eacute;g&eacute;t hat&aacute;rozza meg, a v&iacute;zszintes relat&iacute;v mozg&aacute;si sz&ouml;g (HRMA) pedig a cell&aacute;t&oacute;l vett v&iacute;zszintes ir&aacute;ny &eacute;s a mozg&aacute;s ir&aacute;nya &aacute;ltal bez&aacute;rt sz&ouml;get jelenti.
+            </p>
+            <p>A v&iacute;zszintes t&eacute;nyezők meghat&aacute;roz&aacute;sai &eacute;s param&eacute;terei a k&ouml;vetkezők:
+                <ul>
+                    <li> <b>Bin&aacute;ris</b> &ndash; Azt jelzi, hogy ha a HRMA kisebb, mint a lev&aacute;g&aacute;si sz&ouml;g, a HF a nullt&eacute;nyezőh&ouml;z t&aacute;rs&iacute;tott &eacute;rt&eacute;kre lesz &aacute;ll&iacute;tva, ellenkező esetben v&eacute;gtelenre.
+                        
+
+                    </li>
+                    <li> <b>Előre</b> &ndash; Azt jelenti, hogy csak az előrefel&eacute; mozg&aacute;s megengedett. A HRMA &eacute;rt&eacute;k&eacute;nek legal&aacute;bb 0 foknak &eacute;s 90 fokn&aacute;l kisebbnek kell lennie (0 &lt;= HRMA &lt; 90). Ha a HRMA nagyobb, mint 0 &eacute;s kisebb, mint 45 fok, a cella HF t&eacute;nyezője a nullt&eacute;nyezőh&ouml;z t&aacute;rs&iacute;tott &eacute;rt&eacute;kre lesz &aacute;ll&iacute;tva. Ha a HRMA nagyobb vagy egyenlő, mint 45 fok, a f&uuml;ggv&eacute;ny az oldal&eacute;rt&eacute;k m&oacute;dos&iacute;t&oacute; &eacute;rt&eacute;ket haszn&aacute;lja. 90 fokkal egyenlő vagy ann&aacute;l nagyobb HRMA &eacute;rt&eacute;k eset&eacute;n a HF v&eacute;gtelenre lesz &aacute;ll&iacute;tva.
+                        
+
+                    </li>
+                    <li> <b>Line&aacute;ris</b> &ndash; Azt jelenti, hogy a HF a HRMA line&aacute;ris f&uuml;ggv&eacute;nye.
+                        
+
+                    </li>
+                    <li> <b>Inverz line&aacute;ris</b> &ndash; Azt jelenti, hogy a HF a HRMA inverz line&aacute;ris f&uuml;ggv&eacute;nye.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>A v&iacute;zszintes kulcsszavak m&oacute;dos&iacute;t&oacute;i a k&ouml;vetkezők:
+                <ul>
+                    <li> <b>Nullt&eacute;nyező</b> &ndash; Azt a v&iacute;zszintes t&eacute;nyezőt adja meg, amelyet akkor kell haszn&aacute;lni, amikor a HRMA 0 (nulla). Ez a t&eacute;nyező az y tengelymetszet helyzet&eacute;t hat&aacute;rozza meg a v&iacute;zszintest&eacute;nyező-f&uuml;ggv&eacute;nyek eset&eacute;n.
+                        
+
+                    </li>
+                    <li> <b>Lev&aacute;g&aacute;si sz&ouml;g</b> &ndash; A HRMA azon sz&ouml;g&eacute;t hat&aacute;rozza meg, amelyen t&uacute;l a HF v&eacute;gtelenre lesz &aacute;ll&iacute;tva.
+                        
+
+                    </li>
+                    <li> <b>Meredeks&eacute;g</b> &ndash; A <b>Line&aacute;ris</b> &eacute;s az <b>Inverz line&aacute;ris</b> v&iacute;zszintest&eacute;nyező-kulcssz&oacute;val haszn&aacute;lt egyenes vonal lejt&eacute;s&eacute;t hat&aacute;rozza meg. A lejt&eacute;s az adott t&aacute;vols&aacute;gon m&eacute;rt emelked&eacute;s &eacute;s a t&aacute;vols&aacute;g h&aacute;nyadosak&eacute;nt van megadva (p&eacute;ld&aacute;ul a 45 sz&aacute;zal&eacute;kos lejt&eacute;s 1/45, amely a 0,02222 &eacute;rt&eacute;kkel adhat&oacute; meg).
+                        
+
+                    </li>
+                    <li> <b>Oldal&eacute;rt&eacute;k</b> &ndash; Az <b>Előre</b> v&iacute;zszintest&eacute;nyező-kulcssz&oacute; megad&aacute;sakor a HF-et adja meg, ha HRMA nagyobb vagy egyenlő, mint 45 fok &eacute;s kisebb, mint 90 fok.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Kezdeti akkumuláció</h2></div>
+        <hr/>
+        <div>
+            <p>A kiindul&oacute; kumulat&iacute;v k&ouml;lts&eacute;g, ahonnan kezdeni kell a k&ouml;lts&eacute;gsz&aacute;m&iacute;t&aacute;st.
+            </p>
+            <p>Ez lehetőv&eacute; teszi a forr&aacute;shoz kapcsol&oacute;d&oacute; fix k&ouml;lts&eacute;g megad&aacute;s&aacute;t. A k&ouml;lts&eacute;gsz&aacute;m&iacute;t&aacute;si algoritmus ekkor nem 0-t&oacute;l, hanem a  <b>Kezdeti akkumul&aacute;ci&oacute;</b> &aacute;ltal megadott &eacute;rt&eacute;ktől kezdi a sz&aacute;m&iacute;t&aacute;st.
+            </p>
+            <p>Az &eacute;rt&eacute;keknek null&aacute;nak vagy null&aacute;n&aacute;l nagyobbaknak kell lenni&uuml;k. Az alap&eacute;rtelmezett &eacute;rt&eacute;k 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Maximális akkumuláció</h2></div>
+        <hr/>
+        <div>
+            <p>A maxim&aacute;lis akkumul&aacute;ci&oacute; az utaz&oacute; sz&aacute;m&aacute;ra a forr&aacute;shoz.
+            </p>
+            <p>A k&ouml;lts&eacute;gsz&aacute;m&iacute;t&aacute;s minden egyes forr&aacute;sn&aacute;l addig folytat&oacute;dik, am&iacute;g el nem &eacute;ri a meghat&aacute;rozott akkumul&aacute;ci&oacute;t.
+            </p>
+            <p>Az &eacute;rt&eacute;keknek null&aacute;n&aacute;l nagyobbaknak kell lenni&uuml;k. Az alap&eacute;rtelmezett akkumul&aacute;ci&oacute; a kimeneti raszter &eacute;l&eacute;n&eacute;l van.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Költségszorzó</h2></div>
+        <hr/>
+        <div>
+            <p>A k&ouml;lts&eacute;g&eacute;rt&eacute;kekre alkalmazand&oacute; szorz&oacute;t&eacute;nyező.
+            </p>
+            <p>Ez lehetőv&eacute; teszi az utaz&aacute;s m&oacute;dj&aacute;nak vagy a nagys&aacute;gnak a szab&aacute;lyoz&aacute;s&aacute;t egy forr&aacute;sn&aacute;l. Min&eacute;l nagyobb a szorz&oacute;, ann&aacute;l nagyobb az egyes cell&aacute;kon val&oacute; &aacute;thalad&aacute;s k&ouml;lts&eacute;ge.
+            </p>
+            <p>Az &eacute;rt&eacute;keknek null&aacute;n&aacute;l nagyobbaknak kell lenni&uuml;k. Az alap&eacute;rtelmezett &eacute;rt&eacute;k 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Utazás iránya</h2></div>
+        <hr/>
+        <div>
+            <p>Az utaz&oacute; ir&aacute;ny&aacute;t hat&aacute;rozza meg a f&uuml;ggőleges t&eacute;nyező &eacute;s a v&iacute;zszintes t&eacute;nyező alkalmaz&aacute;sakor.
+            </p>
+            <p> <b>Forr&aacute;st&oacute;l</b> &ndash; A v&iacute;zszintes t&eacute;nyezőt &eacute;s a f&uuml;ggőleges t&eacute;nyezőt a bemeneti forr&aacute;st&oacute;l indulva &eacute;s a nem forr&aacute;scell&aacute;k fel&eacute; haladva alkalmazza. Ez az alap&eacute;rtelmez&eacute;s.
+            </p>
+            <p> <b>Forr&aacute;shoz</b> &ndash; A v&iacute;zszintes t&eacute;nyezőt &eacute;s a f&uuml;ggőleges t&eacute;nyezőt az egyes nem forr&aacute;scell&aacute;kt&oacute;l indulva &eacute;s a bemeneti forr&aacute;s fel&eacute; haladva alkalmazza.
+            </p>
+            <p>Adja meg a  <b>Forr&aacute;st&oacute;l</b> vagy a <b>Forr&aacute;shoz</b> kulcsszav&aacute;t, amelyeket a rendszer valamennyi forr&aacute;sra alkalmazni fog, vagy pedig adjon meg olyan mezőt a forr&aacute;sadatokban, amely az egyes forr&aacute;sokhoz tartoz&oacute; utaz&aacute;si ir&aacute;nyokat jel&ouml;lő kulcsszavakat tartalmazza. A mezőnek tartalmaznia kell a k&ouml;vetkező karakterl&aacute;ncok egyik&eacute;t: <code>FROM_SOURCE</code> vagy <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Távolság módszere (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>Megadja, hogy a t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa s&iacute;kbeli (lapos f&ouml;ld) vagy geod&eacute;ziai (ellipszoid) m&oacute;dszerrel t&ouml;rt&eacute;njen.
+            </p>
+            <ul>
+                <li> <b>S&iacute;kbeli</b> &ndash; A t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa lapos vet&uuml;leti s&iacute;kon t&ouml;rt&eacute;nik 2D Descartes-f&eacute;le koordin&aacute;ta-rendszerben. Ez az alap&eacute;rtelmezett m&oacute;dszer.
+                    
+
+                </li>
+                <li> <b>Geod&eacute;ziai</b> &ndash; A t&aacute;vols&aacute;g sz&aacute;m&iacute;t&aacute;sa az ellipszoidon t&ouml;rt&eacute;nik. Az eredm&eacute;nyek nem v&aacute;ltoznak, f&uuml;ggetlen&uuml;l a bemeneti vagy kimeneti vet&uuml;lettől.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Eredményül kapott távolságakkumulációs raszter neve</h2></div>
+        <hr/>
+        <div>
+            <p>A t&aacute;vols&aacute;gakkumul&aacute;ci&oacute;s raszter a kumulat&iacute;v t&aacute;vols&aacute;got tartalmazza a legkisebb k&ouml;lts&eacute;gű forr&aacute;st&oacute;l vagy forr&aacute;s fel&eacute;.
+            </p>
+            <p>A kimeneti raszter lebegőpontos t&iacute;pus&uacute;.
+            </p>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Eredményül visszakapott irányraszter neve (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A visszir&aacute;nyraszter fokokban tartalmazza a sz&aacute;m&iacute;tott ir&aacute;nyokat. Az ir&aacute;ny azonos&iacute;tja a szomsz&eacute;dos cell&aacute;t a legr&ouml;videbb &uacute;t ment&eacute;n, vissza a legk&ouml;zelebbi forr&aacute;sig, elker&uuml;lve az akad&aacute;lyokat.
+            </p>
+            <p>Az &eacute;rt&eacute;ktartom&aacute;ny 0 fokt&oacute;l 360 fokig terjed, a 0 a forr&aacute;scell&aacute;k sz&aacute;m&aacute;ra van fenntartva. Egyenesen kelet fel&eacute; (jobbra) 90, &eacute;s az &eacute;rt&eacute;kek az &oacute;ramutat&oacute; j&aacute;r&aacute;s&aacute;val megegyező ir&aacute;nyban emelkednek (180 d&eacute;l, 270 nyugat, 360 pedig &eacute;szak).
+            </p>
+            <p>A kimeneti raszter lebegőpontos t&iacute;pus&uacute;.
+            </p>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő r&eacute;teg neve. Olyan nevet kell megadnia, amely m&eacute;g nem l&eacute;tezik a <b>Saj&aacute;t tartalomban</b>.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Eredményül kapott forrásirányraszter neve (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A forr&aacute;sir&aacute;nyraszter azonos&iacute;tja a legkisebb kumul&aacute;lt k&ouml;lts&eacute;gt&aacute;vols&aacute;gnyira l&eacute;vő cella ir&aacute;ny&aacute;t azimutk&eacute;nt, fokban.
+            </p>
+            <p>Az &eacute;rt&eacute;ktartom&aacute;ny 0 fokt&oacute;l 360 fokig terjed, a 0 a forr&aacute;scell&aacute;k sz&aacute;m&aacute;ra van fenntartva. Egyenesen kelet fel&eacute; (jobbra) 90, &eacute;s az &eacute;rt&eacute;kek az &oacute;ramutat&oacute; j&aacute;r&aacute;s&aacute;val megegyező ir&aacute;nyban emelkednek (180 d&eacute;l, 270 nyugat, 360 pedig &eacute;szak).
+            </p>
+            <p>A kimeneti raszter lebegőpontos t&iacute;pus&uacute;.
+            </p>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő r&eacute;teg neve. Olyan nevet kell megadnia, amely m&eacute;g nem l&eacute;tezik a <b>Saj&aacute;t tartalomban</b>.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Eredményül kapott forráshelyraszter neve (opcionális)</h2></div>
+        <hr/>
+        <div>
+            <p>A forr&aacute;shelyraszter t&ouml;bbs&aacute;vos kimenet. Az első s&aacute;v a sorindexet, a m&aacute;sodik s&aacute;v pedig az oszlopindexet tartalmazza. Ezek az indexek azonos&iacute;tj&aacute;k annak a forr&aacute;scell&aacute;nak a hely&eacute;t, amely a legkisebb kumul&aacute;lt k&ouml;lts&eacute;gt&aacute;vols&aacute;gnyira van.
+            </p>
+            <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő r&eacute;teg neve. Olyan nevet kell megadnia, amely m&eacute;g nem l&eacute;tezik a <b>Saj&aacute;t tartalomban</b>.
+            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Ruta óptima como línea</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustraci&oacute;n de la herramienta Ruta &oacute;ptima como l&iacute;nea"></h2>
+        <hr/>
+    <p>Esta herramienta calcula la ruta &oacute;ptima de destinos a or&iacute;genes como l&iacute;nea.
+    </p>
+    <p>A continuaci&oacute;n se indican algunas aplicaciones de ejemplo:
+        <ul>
+            <li>Hallar la ruta mejor para una nueva carretera en t&eacute;rminos de costes de construcci&oacute;n.
+                
+
+
+            </li>
+            <li>Encuentre la mejor ruta de navegaci&oacute;n entre un destino y la ubicaci&oacute;n actual.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Elegir ráster o entidades de destino</h2></div>
+        <hr/>
+        <div>
+            <p>Capa de r&aacute;ster o de entidades que identifica las celdas desde donde se determina la ruta &oacute;ptima al origen &oacute;ptimo.
+            </p>
+            <p>Si la entrada es un r&aacute;ster, debe constar de celdas con valores v&aacute;lidos (cero es un valor v&aacute;lido) para los destinos y se debe asignar NoData a las celdas restantes. El r&aacute;ster de entrada debe ser de tipo entero.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Campo de ubicaciones de los destinos</h2></div>
+        <hr/>
+        <div>
+            <p>El campo que se utiliza para obtener valores para las ubicaciones de destino.
+            </p>
+            <p>Este campo debe ser de tipo entero.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Elegir ráster de acumulación de distancia</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de acumulaci&oacute;n de distancia se utiliza para determinar la ruta &oacute;ptima desde los destinos hasta los or&iacute;genes.
+            </p>
+            <p>El r&aacute;ster de acumulaci&oacute;n de distancia se suele crear con las herramientas Acumulaci&oacute;n de distancia o Asignaci&oacute;n de distancia. Cada celda del r&aacute;ster de acumulaci&oacute;n de distancia representa el coste-distancia acumulativo m&iacute;nimo sobre una superficie desde cada celda hasta un conjunto de celdas de origen.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Elegir ráster de dirección del flujo o de dirección hacia atrás</h2></div>
+        <hr/>
+        <div>
+            <p>El r&aacute;ster de direcci&oacute;n hacia atr&aacute;s contiene direcciones calculadas en grados. La direcci&oacute;n identifica la siguiente celda a lo largo de la ruta &oacute;ptima, de vuelta al origen de menor coste-distancia acumulado, a la vez que se evitan barreras.
+            </p>
+            <p>El r&aacute;ster de direcci&oacute;n hacia atr&aacute;s se suele crear con las herramientas Acumulaci&oacute;n de distancia o Asignaci&oacute;n de distancia. En este caso, el rango de valores es de 0 a 360 grados. El valor 0 se reserva para las celdas de origen. Hacia el este (derecha) es 90 grados, y los valores aumentan en el sentido de las agujas del reloj (180 es sur, 270 es oeste y 360 es norte).
+            </p>
+            <p>La ruta &oacute;ptima que se crea puede ser una ruta de flujo basada en la direcci&oacute;n del flujo D8. Para generar una ruta &oacute;ptima de esta forma, utilice el r&aacute;ster de direcci&oacute;n del flujo D8 como entrada para este par&aacute;metro.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tipo de ruta (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica una palabra clave que define c&oacute;mo se interpretar&aacute;n los valores y las zonas de los datos de destino de entrada en los c&aacute;lculos de coste de la ruta.
+                <ul>
+                    <li> <b>A cada zona</b>: por cada zona en los datos de destino de entrada, se determina una ruta de menor coste. Con esta opci&oacute;n, la ruta de menor coste de cada zona comienza en la celda con la ponderaci&oacute;n de distancia de coste m&aacute;s baja de la zona. Esta es la opci&oacute;n predeterminada.
+                         
+                    </li>
+                    <li> <b>Mejor simple</b>: para todas las celdas en los datos de destino de entrada, la ruta de menor coste deriva de la celda con las rutas de menor coste m&iacute;nimas a las celdas de origen.
+                    </li>
+                    <li> <b>A cada celda</b>: por cada celda con valores v&aacute;lidos en los datos de destino de entrada se determina la ruta de menor coste. Con esta opci&oacute;n, cada celda de los datos de destino de entrada se trata de forma separada y se determina una ruta de menor coste para cada celda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nombre de capa de entidad resultante</h2></div>
+        <hr/>
+        <div>
+            <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
+            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

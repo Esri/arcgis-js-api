@@ -33,6 +33,7 @@
     "fields": "fields",
     "numList": "numlist",
     "bandIndex": "bandIndex",
+    "bandName": "bandName",
     "switchable": "switchable",
     "linearUnit": "linearUnit",
     "rasterDimensions": "rasterDimensions",
@@ -819,6 +820,10 @@
         "label": "${rasterFunctions.enumLabels.minority}"
       },
       {
+        "key": "PERCENTILE",
+        "label": "${rasterFunctions.enumLabels.percentile}"
+      },
+      {
         "key": "RANGE",
         "label": "${rasterFunctions.enumLabels.range}"
       },
@@ -833,6 +838,20 @@
       {
         "key": "VARIETY",
         "label": "${rasterFunctions.enumLabels.variety}"
+      }
+    ],
+    "gpsaZonalPercentileInterpolationTypes": [
+      {
+        "key": "AUTO_DETECT",
+        "label": "${rasterFunctions.enumLabels.autoDetect}"
+      },
+      {
+        "key": "NEAREST",
+        "label": "${rasterFunctions.enumLabels.nearest}"
+      },
+      {
+        "key": "LINEAR",
+        "label": "${rasterFunctions.enumLabels.linear}"
       }
     ],
     "bandArithmeticMethods": [
@@ -1143,8 +1162,12 @@
         "label": "${rasterFunctions.enumLabels.localNotEqual}"
       },
       {
-        "key": 41,
+        "key": 61,
         "label": "${rasterFunctions.enumLabels.localATan2}"
+      },
+      {
+        "key": 50,
+        "label": "${rasterFunctions.enumLabels.localSetNull}"
       }
     ],
 
@@ -1538,6 +1561,10 @@
         "label": "${rasterFunctions.enumLabels.minority}"
       },
       {
+        "key": 12,
+        "label": "${rasterFunctions.enumLabels.percentile}"
+      },
+      {
         "key": 7,
         "label": "${rasterFunctions.enumLabels.range}"
       },
@@ -1717,6 +1744,20 @@
       {
         "key": "MORPHOLOGICAL",
         "label": "${rasterFunctions.enumLabels.expandMorphological}"
+      }
+    ],
+    "gpsaSortType": [
+      {
+        "key": "NO_SORT",
+        "label": "${rasterFunctions.enumLabels.noSort}"
+      },
+      {
+        "key": "DESCEND",
+        "label": "${rasterFunctions.enumLabels.descend}"
+      },
+      {
+        "key": "ASCEND",
+        "label": "${rasterFunctions.enumLabels.ascend}"
       }
     ],
     "spectralProfileFileTypes": [
@@ -2197,6 +2238,10 @@
     },
     "rfxArgCat_FilterByAttributes": {
       "title": "${rasterFunctions.categoryLabels.filterByAttributes}",
+      "visible": true
+    },
+    "rfxArgCat_Percentile": {
+      "title": "${rasterFunctions.categoryLabels.percentileName}",
       "visible": true
     }
   }

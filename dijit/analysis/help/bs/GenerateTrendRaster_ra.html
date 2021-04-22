@@ -52,8 +52,6 @@
         <div><h2>Odaberite sloj višedimenzionalnih snimki za analiziranje trenda</h2></div>
         <hr/>
         <div>
-            <p>
-            </p>
             <p>Sloj ulaznih snimki vi&scaron;edimenzionalnog rastera koji će se analizirati.
             </p>
         </div>
@@ -78,13 +76,32 @@
         <div><h2>Odaberite vrstu linije za postavljanje vrijednosti varijable duž dimenzije</h2></div>
         <hr/>
         <div>
-            <p>Određuje vrstu linije koja će se koristiti za postavljanje vrijednosti piksela duž dimenzije. 
+            <p>Određuje vrstu linije koja će se koristiti za postavljanje vrijednosti piksela duž dimenzije.
                 <ul>
                     <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela postavit će se duž linearne linije trenda. To je zadano.
                     </li>
                     <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela smjestit će se duž linije trenda polinoma drugog reda.
                     </li>
                     <li> <b>Linearno</b>&mdash;Promjenjive vrijednosti piksela postavit će se duž harmonijske linije trenda.
+                    </li>
+                    <li> <b>Mann-Kendall</b>&mdash;Promjenjive vrijednosti piksela bit će vrednovane pomoću Mann-Kendall testa trenda.
+                    </li>
+                    <li> <b>Seasonal-Kendall</b>&mdash;Promjenjive vrijednosti piksela bit će vrednovane pomoću Seasonal-Kendall testa trenda.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="seasonalPeriod">
+        <div><h2>Odredite jedinicu vremena za duljinu sezonskog perioda</h2></div>
+        <hr/>
+        <div>
+            <p>Određuje vremensku jedinicu koja će se koristiti za duljinu sezonskog razdoblja prilikom izvođenja Seasonal-Kendall testa.
+                <ul>
+                    <li> <b>Dani</b>&mdash;Jedinica za duljinu sezonskog perioda su dani. To je zadano.
+                    </li>
+                    <li> <b>Mjeseci</b>&mdash;Jedinica za duljinu sezonskog perioda su mjeseci.
                     </li>
                 </ul>
                 
@@ -95,7 +112,7 @@
         <div><h2>Odredite duljinu harmonijskog ciklusa</h2></div>
         <hr/>
         <div>
-            <p>Duljina periodične varijacije do modela. Ovaj je parametar potreban kada je postavljena  <b>Harmonijski</b>vrsta linije trenda. Na primjer, zelenilo listova često ima jedan snažni ciklus varijacija u jednoj godini, tako da je duljina ciklusa 1 godina. Podaci o temperaturi u satu imaju jedan jak ciklus promjene tijekom jednog dana, tako da je dužina ciklusa jedan dan.
+            <p>Duljina periodične varijacije do modela. Ovaj je parametar potreban kada je vrsta linije trenda postavljena na  <b>Harmonijska</b>. Na primjer, zelenilo listova često ima jedan snažni ciklus varijacija u jednoj godini, tako da je duljina ciklusa 1 godina. Podaci o temperaturi u satu imaju jedan jak ciklus promjene tijekom jednog dana, tako da je dužina ciklusa jedan dan.
             </p>
             <p>Zadana dužina je 1 godina za podatke koji variraju u godi&scaron;njem ciklusu.
             </p>
@@ -207,6 +224,7 @@
         <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
+            
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
             <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.

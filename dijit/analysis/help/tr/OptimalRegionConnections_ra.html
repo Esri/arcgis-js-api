@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="largesize">
+        <h2>En Uygun Bölge Bağlantıları</h2><p/>
+        <h2><img src="../images/GUID-85027C62-D35A-428B-B050-4F52D2B4ADE4-web.png" alt="En Uygun B&ouml;lge Bağlantıları aracı ill&uuml;strasyonu"></h2>
+        <hr/>
+    <p>Bu ara&ccedil;, iki veya daha fazla girdi b&ouml;lgesi arasındaki en uygun bağlantı ağını hesaplar.
+    </p>
+    <p>&Ouml;rnek uygulamalar arasında şunlar yer alır:
+        <ul>
+            <li>Uygunluk modelleme&mdash;Bir uygunluk modelinden vaşaklar i&ccedil;in en iyi yaşam alanlarından 10 tanesini tanımladınız. Vaşakların meta pop&uuml;lasyon i&ccedil;inde genetik &ccedil;eşitliliği korumak i&ccedil;in en etkin vahşi yaşam koridoru ağındaki ara alanlardan ge&ccedil;ebilmesini istiyorsunuz.
+                
+
+            </li>
+            <li>K&uuml;t&uuml;k kesimi&mdash;K&uuml;t&uuml;k kesimi faaliyetinde odunların &ccedil;ıkarılacağı en d&uuml;ş&uuml;k maliyetli taşıma yolu ağını oluşturmak istiyorsunuz.
+                
+
+            </li>
+            <li>Barış koruma&mdash;Askeri barış koruma dağıtımında, birliklerin ve personelin yerleştirilebileceği beş alan tanımladınız. &Uuml;sler arasında en uygun bağlantılı tedarik rotalarını geliştirmek istiyorsunuz.
+                
+
+            </li>
+        </ul>
+        
+    </p>
+    <p> <b>Ge&ccedil;erli harita yayılımını kullan</b> işaretli ise, yalnızca ge&ccedil;erli harita yayılımında g&ouml;r&uuml;n&uuml;r olan girdi katmanlarındaki konumlar analiz edilir. İşaretli değilse, her iki girdi katmanındaki t&uuml;m konumlar, ge&ccedil;erli harita yayılımının dışında bile olsa analiz edilir.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputRegionRasterOrFeatures">
+        <div><h2>Bölge rasterı ya da detayı seçin</h2></div>
+        <hr/>
+        <div>
+            <p>En uygun ağ tarafından bağlanacak olan girdi b&ouml;lgeleri.
+            </p>
+            <p>Eğer b&ouml;lge girdisi bir raster ise, b&ouml;lgeler aynı değere sahip bitişik (komşu) h&uuml;crelerden oluşan gruplar tarafından tanımlanır. Her b&ouml;lge benzersiz bir şekilde numaralandırılmalıdır. Herhangi bir b&ouml;lgenin par&ccedil;ası olmayan h&uuml;creler Verisiz olmalıdır. Raster t&uuml;r&uuml; tam sayı olmalıdır ve değerler pozitif veya negatif olabilir.
+            </p>
+            <p>Eğer b&ouml;lge girdisi bir detay ise, noktalar, &ccedil;izgiler veya &ccedil;okgenler olabilir. &Ccedil;okgen b&ouml;lgeleri &ccedil;ok par&ccedil;alı &ccedil;okgenlerden oluşamaz.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Engel rasterı ya da detayı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Engelleri tanımlayan veri k&uuml;mesi.
+            </p>
+            <p>Bir raster i&ccedil;in, girdi t&uuml;r&uuml; tamsayı ya da y&uuml;zen olabilir. Değeri olan (sıfır dahil) herhangi bir h&uuml;cre bir engel olarak kabul edilecektir. NoData (Verisiz) olan herhangi bir h&uuml;cre bir engel olarak kabul edilmeyecektir.
+            </p>
+            <p>Bir detay i&ccedil;in girdi nokta, &ccedil;izgi veya &ccedil;okgen olabilir.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Maliyet rasterı seçin (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Her bir h&uuml;crenin i&ccedil;inden planimetrik olarak hareket etmek i&ccedil;in empedansı veya maliyeti tanımlayan bir raster.
+            </p>
+            <p>Her h&uuml;cre konumundaki değer, h&uuml;cre i&ccedil;inde hareket etmek i&ccedil;in birim başına maliyet mesafesini temsil eder. Her h&uuml;cre konumu değeri h&uuml;cre &ccedil;&ouml;z&uuml;n&uuml;rl&uuml;ğ&uuml; ile &ccedil;arpılırken, aynı zamanda h&uuml;cre i&ccedil;inden ge&ccedil;menin toplam maliyetini elde etmek i&ccedil;in &ccedil;apraz (diyagonal) hareketi dengeler.
+            </p>
+            <p>Maliyet rasterının değerleri tamsayı veya kayan nokta olabilir, ancak negatif veya sıfır olamaz (negatif veya sıfır maliyete sahip olamazsınız).
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Mesafe yöntemi (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Mesafenin bir d&uuml;zlem (d&uuml;z d&uuml;nya) ya da bir jeodezik (elipsoid) y&ouml;ntemi kullanarak hesaplanacağını tanımlar.
+            </p>
+            <ul>
+                <li> <b>D&uuml;zlem</b>&mdash;Mesafe hesaplaması, 2B Kartezyen koordinat sistemi kullanılarak izd&uuml;ş&uuml;mlendirilen d&uuml;z bir d&uuml;zlemde ger&ccedil;ekleştirilir. Bu varsayılan y&ouml;ntemdir.
+                    
+
+                </li>
+                <li> <b>Jeodezik</b>&mdash;Mesafe hesaplaması elipsoid &uuml;zerinde ger&ccedil;ekleştirilir. Bu nedenle girdi veya &ccedil;ıktı izd&uuml;ş&uuml;m&uuml;nden bağımsız olarak sonu&ccedil;lar değişmez.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="connectionsWithinRegions">
+        <div><h2>Bölgeler içerisindeki bağlantılar (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p>Yolların devam edip etmeyeceğini ve girdi b&ouml;lgeleri i&ccedil;erisinde bağlanıp bağlanmayacaklarını belirler.
+            </p>
+            <ul>
+                <li> <b>Bağlantılar oluşturma</b>&mdash;Yollar, bir b&ouml;lgeye giren b&uuml;t&uuml;n yolları bağlamak i&ccedil;in girdi b&ouml;lgeleri i&ccedil;erisinde devam edecektir. Varsayılan değerdir.
+                    
+
+                </li>
+                <li> <b>Bağlantı yok</b>&mdash;Yollar, girdi b&ouml;lgelerinin sınırlarında duracaktır ve b&ouml;lgeler i&ccedil;erisinde devam etmeyecek ya da bağlanmayacaktır.
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputOptimalLinesName">
+        <div><h2>Sonuç en uygun bağlantı çizgileri detay katmanı adı</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p>Bu katman, her girdi b&ouml;lgesini bağlayan bir &ccedil;ıktı &ccedil;izgisi detayıdır.
+            </p>
+            <p>Her yol (ya da &ccedil;izgi) benzersiz bir şekilde numaralandırılır ve &ouml;znitelik tablosundaki ek alanlar yolla ilgili belirli bilgileri saklar. Bu ek alanlar aşağıdaki şekildedir:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Yolun benzersiz tanımlayıcısı
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Yolun toplam birikim mesafesi ya da maliyeti
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Yolun bağladığı ilk b&ouml;lge
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Yolun bağladığı diğer b&ouml;lge
+                    
+
+                </li>
+            </ul>
+            
+            <p>Her yol benzersiz bir &ccedil;izgiyle temsil edildiği i&ccedil;in, yolların aynı rotayı takip ettiği konumlarda birden fazla &ccedil;izgi olacaktır.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+    <div id="outputNeighborConnectionsName">
+        <div><h2>Sonuç komşu bağlantılar detay katmanı adı (isteğe bağlı)</h2></div>
+        <hr/>
+        <div>
+            <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p>Bu katman, her b&ouml;lgeden en yakın ya da en d&uuml;ş&uuml;k maliyetli komşularının her birine giden b&uuml;t&uuml;n yolları tanımlayan bir &ccedil;ıktı &ccedil;izgisi detayıdır.
+            </p>
+            <p>Her yol (ya da &ccedil;izgi) benzersiz bir şekilde numaralandırılır ve &ouml;znitelik tablosundaki ek alanlar yolla ilgili belirli bilgileri saklar. Bu ek alanlar aşağıdaki şekildedir:
+            </p>
+            <ul>
+                <li> <i>PATHID</i>&mdash;Yolun benzersiz tanımlayıcısı
+                    
+
+                </li>
+                <li> <i>PATHCOST</i>&mdash;Yolun toplam birikim mesafesi veya maliyeti
+                    
+
+                </li>
+                <li> <i>REGION1</i>&mdash;Yolun bağladığı ilk b&ouml;lge
+                    
+
+                </li>
+                <li> <i>REGION2</i>&mdash;Yolun bağladığı diğer b&ouml;lge
+                    
+
+                </li>
+            </ul>
+            
+            <p>Her yol benzersiz bir &ccedil;izgiyle temsil edildiği i&ccedil;in, yolların aynı rotayı takip ettiği konumlarda birden fazla &ccedil;izgi olacaktır.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

@@ -44,7 +44,7 @@
         <h2>Generuj anomalię wielowymiarową</h2><p/>
         <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Generuj anomalię wielowymiarową"></h2>
         <hr/>
-    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
+    <p>Computes the anomaly for each slice in an existing multidimensional raster to generate a new multidimensional raster.
     </p>
     <p>Anomalia to odchylenie obserwacji od jej wartości standardowej, średniej lub mediany.
     </p>
@@ -78,7 +78,7 @@
         <div><h2>Wybierz metodę generowania anomalii</h2></div>
         <hr/>
         <div>
-            <p>Określa metodę, kt&oacute;ra zostanie użyta do obliczenia anomalii. 
+            <p>Określa metodę, kt&oacute;ra zostanie użyta do obliczenia anomalii.
                 <ul>
                     <li> <b>R&oacute;żnica w stosunku do średniej</b> &mdash; zostanie obliczona r&oacute;żnica między wartością piksela i średnią wartości tego piksela na przekrojach zdefiniowanych przez przedział. Jest to opcja domyślna.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>R&oacute;żnica w stosunku do średniej = x - &micro;
-
                         <ul>
                             <li>x = wartość piksela w przekroju
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentowa r&oacute;żnica w stosunku do średniej = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = wartość piksela w przekroju
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Procent średniej = x / &micro;
-
                         <ul>
                             <li>x = wartość piksela w przekroju
                                 
@@ -202,7 +199,7 @@
         <div><h2>Wybierz przedział czasu do obliczenia średniej</h2></div>
         <hr/>
         <div>
-            <p>Określa przedział czasu, kt&oacute;ry zostanie użyty do obliczenia średniej. 
+            <p>Określa przedział czasu, kt&oacute;ry zostanie użyty do obliczenia średniej.
                 <ul>
                     <li> <b>Wszystko</b> &mdash; oblicza średnią na wszystkich przekrojach dla każdego piksela.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
         <hr/>
         <div>
-            <p>Określa, czy w analizie są ignorowane brakujące wartości. 
+            <p>Określa, czy w analizie są ignorowane brakujące wartości.
                 <ul>
                     <li>Zaznaczone &mdash; analiza obejmie wszystkie poprawne piksele w danym wymiarze i zignoruje piksele o wartości NoData. Jest to opcja domyślna.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Nazwa warstwy wynikowej</h2></div>
         <hr/>
         <div>
+            
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
             <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.

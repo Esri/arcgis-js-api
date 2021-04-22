@@ -41,85 +41,106 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Summarize Raster Within</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summarize Raster Within tool"></h2>
+        <h2>Підсумувати растр в межах</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Інструмент &laquo;Підсумувати растр в межах&raquo;"></h2>
         <hr/>
-    <p>Цей інструмент підсумовує растр на основі областей (зон), визначених першим вхідним шаром.
+    <p>Цей інструмент підсумовує значення растру в межах зон іншого набору даних.
     </p>
-    <p>Some example applications include the following:
+    <p>Деякі з прикладів застосування:
     </p>
     <p>
         <ul>
-            <li>Given a layer of watershed boundaries and a layer of land-use boundaries by land-use type, calculate total acreage of land-use type for each watershed.
+            <li>З урахуванням шару водозбірних кордонів та шару кордонів землекористування за типом землекористування, обчисліть загальну площу типу землекористування для кожної водозбірної області.
                 
 
             </li>
-            <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city boundary.
+            <li>З урахуванням шару ділянок в окрузі та шару кордонів міста підсумуйте середнє значення вільних ділянок в межах кордону кожного міста.
                 
 
             </li>
         </ul>
         
     </p>
-    <p>If  <b>Use current map extent</b> is checked, only those features in the input layer and the layer to be summarized that are visible within the current map extent will be analyzed. If unchecked, all features in both the input layer and the layer to be summarized will be analyzed, even if they are outside the current map extent.
+    <p>Якщо вибрано опцію  <b>Використовувати поточний екстент карти</b>, будуть аналізуватись тільки ті об&rsquo;єкти у вхідному шарі та шарі для підсумування, які видимі в межах поточного екстенту карти. Якщо цю опцію не вибрано, будуть використовуватись всі об'єкти у вхідному шарі та шарі для підсумування, навіть якщо вони знаходяться за межами поточного екстенту карти.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Choose area layer to summarize a raster layer within defined boundaries</h2></div>
+        <div><h2>Вибрати шар областей для підсумування растрового шару в визначених кордонах</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the boundaries of the areas, or zones, that will be summarized.
+            <p>Шар, який визначає кордони областей або зон для підсумування.
             </p>
-            <p>The layer can be a raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. The areas do not have to be contiguous.
+            <p>Шар може представляти собою растр або векторні дані. Для растрів зони визначаються всіма місцями розташування у вхідних даних, назви осередків яких співпадають. Області не обов'язково повинні бути неперервними.
             </p>
         </div>
     </div>
     <div id="zoneField">
-        <div><h2>Choose field to define the boundaries</h2></div>
+        <div><h2>Вибрати поле для визначення кордонів</h2></div>
         <hr/>
         <div>
-            <p>This is the attribute of the layer that will be used to define the boundaries of the areas.
+            <p>Це атрибут шару, який буде використаний для визначення кордонів областей.
             </p>
-            <p>For example, suppose the first input layer defines the management unit boundaries, with attributes that define the region, the district, and the parcel ID of each unit. You also have a raster layer defining a biodiversity index for each location. With the field you select, you can decide to calculate the average biodiversity at local, district, or regional levels.
+            <p>Наприклад, припустимо, перший вхідний шар визначає кордони одиниці управління і має атрибути, які визначають регіон, район і ідентифікатор ділянки кожної одиниці. Також є растровий шар, який визначає індекс біорізноманіття для кожного місця розташування. Обравши відповідне поле, можна обчислити середнє біорізноманіття на локальному, районному або регіональному рівні.
             </p>
         </div>
     </div>
     <div id="sumRasterLayer">
-        <div><h2>Choose raster layer to summarize</h2></div>
+        <div><h2>Вибрати растровий шар для підсумування</h2></div>
         <hr/>
         <div>
-            <p>The raster cells in this layer will be summarized by the areas (zones) that they fall within.
+            <p>Осередки растру у цьому шарі будуть підсумовані за областями (зони), в які вони укладаються.
             </p>
         </div>
     </div>
     <div id="sumStatistic">
-        <div><h2>Choose statistic to calculate</h2></div>
+        <div><h2>Вибрати статистику для обчислення</h2></div>
         <hr/>
         <div>
-            <p>Once you choose a layer to summarize, you can optionally calculate statistics of any numerical attribute of the points, lines, or areas within the input area layer.
+            <p>Після вибору шару для підсумування ви можете додаткового обчислити статистику для будь-яких числового атрибуту точок, ліній або областей в межах вхідного шару областей.
             </p>
-            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Range, Standard deviation, Sum, and Variety.
+            <p>Якщо обране поле містить ціле значення, доступні такі типи статистики як Середнє значення, Більшість, Максимум, Мінімум, Меншість, Процентиль, Діапазон, Стандартне відхилення, Сума і Дисперсія.
             </p>
-            <p>If the field is floating point, the options are Average, Maximum, Minimum, Range, Standard deviation, and Sum.
+            <p>Якщо поле містить дані з плаваючою точкою, доступні такі опції як Середнє значення, Максимум, Мінімум, Діапазон, Стандартне відхилення і Сума.
+            </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Процентильне значення</h2></div>
+        <hr/>
+        <div>
+            <p>Процентиль, який треба розрахувати. За замовчуванням: 90, означає 90-й процентиль.
+            </p>
+            <p>Значення можуть знаходитися в діапазоні від 0 до 100. 0-й процентиль по суті еквівалентний статистиці &laquo;Мінімум&raquo;, а 100-й процентиль еквівалентний максимуму. Значення 50 по суті даватиме такий самий результат, що й статистика &laquo;Медіана&raquo;.
+            </p>
+            <p>Ця опція підтримується тільки якщо для параметру  <b>Обрати статистику для розрахунку</b> задано <b>Процентиль</b>.
             </p>
         </div>
     </div>
     <div id="missingValues">
-        <div><h2>Ignore missing values in calculation</h2></div>
+        <div><h2>Ігнорувати відсутні значення в обчисленні</h2></div>
         <hr/>
         <div>
-            <p>If you choose to ignore missing values, only the cells that have a value in the layer to be summarized will be used in determining the output value for that area. Otherwise, if there are missing values anywhere in an area, it is deemed that there is insufficient information to perform statistical calculations for all the cells in that zone, and that area will receive a null (NoData) value in the output.
+            <p>Якщо обрати ігнорування відсутніх значень, при визначенні вихідного значення для цієї області будуть підсумовуватися тільки осередки зі значенням у шарі. У протилежному випадку, якщо будь-де в області є відсутні значення, буде вважатися, що інформації для статистичного обчислення всіх осередків у цій зоні недостатньо, і результатом для цієї зони буде нульове значення (NoData).
+            </p>
+        </div>
+    </div>
+    <div id="processAsMultidimensional">
+        <div><h2>Обробляти як багатовимірний</h2></div>
+        <hr/>
+        <div>
+            <p>Указує, як будуть оброблятися вхідні растри, якщо вони є багатовимірними. Якщо обрана обробка багатовимірних даних, статистика розраховуватиметься для всіх вимірів вхідного набору багатовимірних даних. В іншому випадку статистика розраховуватиметься, виходячи з поточного зрізу вхідного набору багатовимірних даних. Даний спосіб обраний за замовчуванням.
             </p>
         </div>
     </div>
     <div id="resultLayer">
-        <div><h2>Result layer name</h2></div>
+        <div><h2>Ім'я шару результатів</h2></div>
         <hr/>
         <div>
-            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Назва за замовчуванням базується на назві інструменту та назві вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
+            
+            <p>Назва шару, який буде створено в  <b>Мої ресурси</b> і додано до карти. Ім'я за замовчуванням визначається на основі імені інструменту та імені вхідного шару. Якщо шар уже існує, вам буде запропоновано вказати іншу назву.
             </p>
-            <p>За допомогою розкривного списку  <b>Зберегти результат в</b> можна вказати назву папки в <b>Мої ресурси</b>, куди буде збережено результат.
+            <p>Використовуючи розкривний список  <b>Зберегти результат у</b>, можна вказати ім'я папки в <b>Мій вміст</b>, де зберігатиметься результат.
             </p>
         </div>
     </div>

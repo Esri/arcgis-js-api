@@ -41,33 +41,33 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Ģenerēt multidimensiju anomāliju</h2><p/>
-        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ģenerēt multidimensiju anomāliju"></h2>
+        <h2>Ģenerēt daudzdimensiju anomāliju</h2><p/>
+        <h2><img src="../images/GUID-8D54C66F-5C16-4EE5-93E9-80722D10AF12-web.png" alt="Ģenerēt daudzdimensiju anomāliju"></h2>
         <hr/>
-    <p>Ģenerē multidimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os multidimensiju rastra mainīgos.
+    <p>Aprēķina katra sektora anomāliju eso&scaron;ajā daudzdimensiju rastrā, lai ģenerētu jaunu daudzdimensiju rastru.
     </p>
     <p>Anomālija ir novērojuma novirze no standarta, vidējā aritmētiskā vai mediānas vērtības.
     </p>
-    <p>&Scaron;is rīks aprēķina anomālijas laika griezumā vienam vai vairākiem mainīgajiem multidimensiju rastrā. Ja jums papildus laika dimensijai ir arī ne-laika dimensija, anomālija tiks aprēķināta katrā papildu dimensijas solī.
+    <p>&Scaron;is rīks aprēķina anomālijas laika griezumā vienam vai vairākiem mainīgajiem daudzdimensiju rastrā. Ja jums papildus laika dimensijai ir arī ne-laika dimensija, anomālija tiks aprēķināta katrā papildu dimensijas solī.
     </p>
-    <p>Piemēram, jūsu rīcībā ir ikmēne&scaron;a okeāna temperatūras dati, kas apkopoti ik pēc 1 metra dziļuma, līdz pat 100 metriem, un jūs vēlaties aprēķināt temperatūras anomālijas kā novirzes no gada vidējā rādītāja. &Scaron;is rīks noteiks temperatūras anomālijas, balstoties uz gada vidējo rādītāju, ja jūs iestatīsiet vienību <b>Gada</b> kā <b>temporālo intervālu, lai aprēķinātu vidējo rādītāju</b>, un tas parādīs anomālijas vērtības katriem 100 dziļumiem.
+    <p>Piemēram, jūsu rīcībā ir ikmēne&scaron;a okeāna temperatūras dati, kas apkopoti ik pēc 1 metra dziļuma, līdz pat 100 metriem, un jūs vēlaties aprēķināt temperatūras anomālijas kā novirzes no gada vidējā rādītāja. &Scaron;is rīks noteiks temperatūras anomālijas, balstoties uz gada vidējo rādītāju, ja jūs iestatīsiet vienumu  <b>Gada</b> kā <b>temporālo intervālu, lai aprēķinātu vidējo rādītāju</b>, un tas parādīs anomālijas vērtības katriem 100 dziļumiem.
     </p>
-    <p>&Scaron;is rīks atbalsta tikai multidimensiju rastra datu kopas ar laika dimensiju.
+    <p>&Scaron;is rīks atbalsta tikai daudzdimensiju rastra datu kopas ar laika dimensiju.
     </p>
     <p>Ja ir izvēlēts  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tad tiks analizēti tikai tā slāņa mainīgie , kas ir redzami pa&scaron;reizējā kartes pārklājumā. Ja &scaron;ī opcija nav atzīmēta, tiks analizēti pilna slāņa mainīgie, pat ja tie atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputMultidimensionalRaster">
-        <div><h2>Izvēlēties vairāku dimensiju attēlu slāni anomālijas ģenerēšanai</h2></div>
+        <div><h2>Lai ģenerētu anomāliju, izvēlieties daudzdimensiju attēlu slāni</h2></div>
         <hr/>
         <div>
-            <p>Multidimensiju rastra datu kopas ievades attēlu slānis.
+            <p>Daudzdimensiju rastra datu kopas ievades attēlu slānis.
             </p>
         </div>
     </div>
     <div id="variables">
-        <div><h2>Izvēlēties mainīgos, kuriem tiks ģenerētas anomālijas</h2></div>
+        <div><h2>Izvēlieties mainīgo(s), kuriem tiks ģenerētas anomālijas</h2></div>
         <hr/>
         <div>
             <p>Mainīgais vai mainīgie, kam tiks aprēķinātas anomālijas. Ja nav norādīts mainīgais, tiks analizēti visi mainīgie laika dimensijā.
@@ -75,10 +75,10 @@
         </div>
     </div>
     <div id="method">
-        <div><h2>Izvēlieties anomālijas ģenerēšanas paņēmienu</h2></div>
+        <div><h2>Izvēlieties anomālijas ģenerēšanas metodi</h2></div>
         <hr/>
         <div>
-            <p>Norāda metodi, kas tiks izmantota, lai aprēķinātu anomāliju. 
+            <p>Norāda metodi, kas tiks izmantota, lai aprēķinātu anomāliju.
                 <ul>
                     <li> <b>At&scaron;ķirība no vidējās vērtības</b>&nbsp;&mdash; tiks aprēķināta at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības vidējo vērtību dažādos sektoros, ko nosaka intervāls. Tā ir noklusējuma vērtība.
                     </li>
@@ -86,7 +86,7 @@
                     </li>
                     <li> <b>Procentuālā vērtība no vidējās</b>&nbsp;&mdash; tiks aprēķināta vērtība procentuālā izteiksmē no vidējās vērtības.
                     </li>
-                    <li> <b>Z&nbsp;vērtējums</b>&nbsp;&mdash; tiks aprēķināts katra pikseļa z&nbsp;vērtējums. Ja z&nbsp;vērtējums ir 0, tas norāda, ka pikseļa vērtība ir vienāda ar vidējo vērtību. Ja z&nbsp;vērtējums ir 1, tas norāda, ka pikseļa vērtība ir vienāda ar 1 standartnovirzi no vidējās vērtības. Ja z&nbsp;vērtējums ir 2, tas norāda, ka pikseļa vērtība ir vienāda ar 2 standartnovirzēm no vidējās vērtības utt.
+                    <li> <b>Z&nbsp;vērtējums</b>&nbsp;&mdash; tiks aprēķināts katra pikseļa z&nbsp;vērtējums. Ja z&nbsp;vērtējums ir 0, tas norāda, ka pikseļa vērtība ir vienāda ar vidējo aritmētisko. Ja z&nbsp;vērtējums ir 1, tas norāda, ka pikseļa vērtība ir vienāda ar 1 standartnovirzi no vidējā aritmētiskā. Ja z&nbsp;vērtējums ir 2, tas norāda, ka pikseļa vērtība ir vienāda ar 2 standartnovirzēm no vidējā aritmētiskā utt.
                     </li>
                     <li> <b>At&scaron;ķirība no mediānas</b>&nbsp;&mdash; tiks aprēķināta at&scaron;ķirība starp pikseļa vērtību un &scaron;ī pikseļa vērtības matemātisko mediānu dažādos sektoros, ko nosaka intervāls.
                     </li>
@@ -102,7 +102,6 @@
             <p>
                 <ul>
                     <li>At&scaron;ķirība no vidējā aritmētiskā = x - &micro;
-
                         <ul>
                             <li>x = pikseļa vērtība sektorā
                                 
@@ -118,7 +117,6 @@
 
                     </li>
                     <li>Procentuālā at&scaron;ķirība no vidējā aritmētiskā = |x - &micro;| / [(x + &micro;)/2]
-
                         <ul>
                             <li>x = pikseļa vērtība sektorā
                                 
@@ -138,7 +136,6 @@
 
                     </li>
                     <li>Vidējais aritmētiskais procentuālā izteiksmē = x/ &micro;
-
                         <ul>
                             <li>x = pikseļa vērtība sektorā
                                 
@@ -180,7 +177,7 @@
                         </ul>
                         
                     </li>
-                    <li>Z&nbsp;vērtējums  = (x - &micro;) / S
+                    <li>Z&nbsp;vērtējums = (x - &micro;) / S
                         <ul>
                             <li>x = pikseļa vērtība sektorā
                             </li>
@@ -199,10 +196,10 @@
         </div>
     </div>
     <div id="calculationInterval">
-        <div><h2>Izvēlēties pagaidu intervālu vidējā aritmētiskā aprēķināšanai</h2></div>
+        <div><h2>Lai aprēķinātu vidējo aritmētisko, izvēlieties temporālo intervālu</h2></div>
         <hr/>
         <div>
-            <p>Norāda temporālo intervālu, kas tiks izmantots, lai aprēķinātu vidējo vērtību jeb vidējo aritmētisko. 
+            <p>Norāda temporālo intervālu, kas tiks izmantots, lai aprēķinātu vidējo aritmētisko.
                 <ul>
                     <li> <b>Visi</b>&nbsp;&mdash; aprēķina vidējo vērtību no katra pikseļa visiem sektoriem.
                     </li>
@@ -235,7 +232,7 @@
         <div><h2>Ignorēt aprēķinā trūkstošās vērtības</h2></div>
         <hr/>
         <div>
-            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības. 
+            <p>Norāda, vai analīzē tiek ignorētas trūksto&scaron;ās vērtības.
                 <ul>
                     <li>Atzīmēts &mdash; analīze ietver visus derīgos pikseļus konkrētajā dimensijā un ignorē jebkurus NoData pikseļus. Tā ir noklusējuma vērtība.
                     </li>
@@ -250,6 +247,7 @@
         <div><h2>Rezultātu slāņa nosaukums</h2></div>
         <hr/>
         <div>
+            
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
             <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="regularsize">
+        <h2>Assegnazione della distanza</h2><p/>
+        <h2><img src="../images/GUID-2843B88C-B69A-43FB-A93B-B8D7ABCF95EA-web.png" alt="Illustrazione strumento di assegnazione della distanza"></h2>
+        <hr/>
+    <p>Questo strumento calcola l'allocazione della distanza per ciascuna cella alle sorgenti fornite in base alla distanza in linea retta, alla distanza del costo, alla distanza della superficie effettiva e ai fattori verticali e orizzontali.
+    </p>
+    <p>Le applicazioni di esempio includono risposte a domande come le seguenti:
+        <ul>
+            <li>Identifica le aree allocate per la cui copertura sono responsabili gli operatori.
+                
+
+            </li>
+            <li>Identifica le aree che sono allocate a patch di habitat per linci rosse.
+            </li>
+        </ul>
+        
+    </p>
+    <p>Se l'opzione  <b>Usa estensione mappa corrente</b> &egrave; selezionata, verranno analizzate solo le feature nel layer di input visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate tutte le feature del layer di input, anche se esterne all'estensione dello schermo mappa corrente.
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputSourceRasterOrFeatures">
+        <div><h2>Scegliere raster di origine o feature</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster o layer feature che identifica le origini dalle quali la distanza verr&agrave; calcolata.
+            </p>
+            <p>Se l'input &egrave; un raster, deve consistere di celle che hanno valori validi (zero &egrave; un valore valido) per le origini e le celle rimanenti devono essere assegnate NoData.
+            </p>
+            <p>Se l'input &egrave; un layer feature, pu&ograve; essere un punto, una linea o un poligono.
+            </p>
+        </div>
+    </div>
+    <div id="sourceField">
+        <div><h2>Campo di origine (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il campo usato per assegnare valori alle posizioni di origine. Deve essere di tipo intero.
+            </p>
+        </div>
+    </div>
+    <div id="inputBarrierRasterOrFeatures">
+        <div><h2>Scegliere un raster barriera o feature (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il dataset che definisce le barriere.
+            </p>
+            <p>Per un layer raster, il tipo di input pu&ograve; essere intero o mobile. Ogni cella che dispone di un valore (incluso lo zero) sar&agrave; trattata come barriera. Ogni cella che sia un NoData non verr&agrave; trattata come una barriera.
+            </p>
+            <p>Per un feature service, l'input pu&ograve; essere puntuale, lineare o poligonale.
+            </p>
+        </div>
+    </div>
+    <div id="inputSurfaceRaster">
+        <div><h2>Scegliere un raster di superficie (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster che definisce i valori di elevazione su ogni posizione della cella.
+            </p>
+            <p>I valori vengono utilizzati per calcolare l&rsquo;effettiva distanza della superficie percorsa durante il passaggio tra celle.
+            </p>
+        </div>
+    </div>
+    <div id="inputCostRaster">
+        <div><h2>Scegliere un raster di costo (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster che definisce l'impedenza o il costo dello spostamento planimetrico attraverso ciascuna cella.
+            </p>
+            <p>Il valore ad ogni posizione di cella rappresenta la distanza costo per unit&agrave; per lo spostamento attraverso di essa. Ogni valore di posizione di una cella viene moltiplicato per la risoluzione della cella, compensando al contempo il movimento diagonale per ottenere il costo totale dell'attraversamento della cella.
+            </p>
+            <p>I valori del raster di costo possono essere a numero intero o a virgola mobile, ma non possono essere negativi o zero (non &egrave; possibile disporre di un costo negativo o zero).
+            </p>
+        </div>
+    </div>
+    <div id="inputVerticalRaster">
+        <div><h2>Scegliere un raster verticale (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster che definisce i valori z su ogni posizione della cella.
+            </p>
+            <p>I valori utilizzati per calcolare la pendenza che &egrave; utilizzata per identificare il fattore verticale previsto quando si trasferisce da una cella all'altra.
+            </p>
+        </div>
+    </div>
+    <div id="verticalFactor">
+        <div><h2>Fattore verticale (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il  <b>Fattore verticale</b> definisce la relazione tra il fattore del costo verticale e l'angolo di movimento relativo verticale.
+            </p>
+            <p>Vi sono diversi fattori con modificatori da cui selezionare l&rsquo;identificazione di un grafico di fattore verticale definito. I grafici vengono utilizzati per identificare il fattore verticale utilizzato nel calcolo del costo totale per lo spostamento in una cella adiacente.
+            </p>
+            <p>Nelle descrizioni seguenti, il fattore verticale (VF) definisce la difficolt&agrave; verticale incontrata quando si passa da una cella all'latra, e il modificatore dell'angolo di movimento relativo verticale (VRMA) identifica l'angolo di pendenza tra la cella  <b>Da origine</b> e la cella <b>A origine</b>.
+                <ul>
+                    <li> <b>Binario</b>: se il VRMA &egrave; superiore all'angolo di taglio basso e inferiore all'angolo di taglio alto, il VF &egrave; impostato sul valore associato al fattore zero; altrimenti, &egrave; infinito.
+                    </li>
+                    <li> <b>Lineare</b>: il VF &egrave; una funzione lineare del VRMA.
+                    </li>
+                    <li> <b>Lineare inverso</b>: Il VF &egrave; una funzione lineare inversa del VRMA.
+                    </li>
+                    <li> <b>Lineare simmetrico</b>: il VF &egrave; una funzione lineare del VRMA sia nei lati positivi che negativi del VRMA e due funzioni lineari sono simmetriche rispetto all'asse VF (y).
+                    </li>
+                    <li> <b>Lineare inverso simmetrico</b>: il VF &egrave; una funzione lineare inversa del VRMA sia nei lati negativi che positivi del VRMA, e due funzioni lineari sono simmetriche rispetto all'asse VF (y).
+                    </li>
+                    <li> <b>Cos</b>: il VF &egrave; la funzione basata sul coseno del VRMA.
+                    </li>
+                    <li> <b>Sec</b>: il VF &egrave; la funzione basata sulla secante del VRMA.
+                    </li>
+                    <li> <b>Cos-Sec</b>: il VF &egrave; la funzione basata sul coseno del VRMA quando il VRMA &egrave; negativo e la funzione basata sulla secante del VRMA quando il VRMA non &egrave; negativo.
+                        
+
+                    </li>
+                    <li> <b>Sec-Cos</b>: il VF &egrave; la funzione basata sulla secante del VRMA quando il VRMA &egrave; negativo ed &egrave; la funzione basata sul coseno del VRMA quando il VRMA non &egrave; negativo.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>I modificatori ai parametri verticali sono i seguenti:
+                <ul>
+                    <li> <b>Fattore zero</b>: il fattore verticale utilizzato quando il VRMA &egrave; zero. Questo fattore posiziona l&rsquo;intercettazione y della funzione specificata. Per definizione, il fattore zero non &egrave; applicabile ad alcuna funzione verticale trigonometrica (Cos, Sec, Cos-Sec o Sec-Cos). L&rsquo;intercettazione y &egrave; definita dalla seguenti funzioni.
+                    </li>
+                    <li> <b>Angolo di taglio basso</b>: l'angolo VRMA sotto il quale il VF sar&agrave; impostato su infinito.
+                    </li>
+                    <li> <b>Angolo di taglio alto</b>: l'angolo di taglio VRMA sopra il quale il VF sar&agrave; impostato su infinito.
+                    </li>
+                    <li> <b>Pendenza</b>: la pendenza della linea retta utilizzata con i parametri <b>Lineare</b> e <b>Lineare inverso</b>. La pendenza viene specificata come una frazione di pendenza (ad esempio, la pendenza del 45% &egrave; 1/45, che viene immessa come 0,02222).
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="inputHorizontalRaster">
+        <div><h2>Scegliere un raster orizzontale (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Un raster che definisce la direzione orizzontale su ogni cella.
+            </p>
+            <p>I valori sul raster devono essere numeri interi compresi tra 0 e 360 con 0 gradi che indica il nord o verso la parte superiore dello schermo e con aumento in senso orario. Alle aree piane deve essere fornito un valore di -1. I valori in ogni posizione vengono utilizzati insieme a  <b>Fattore orizzontale</b> per determinare i costi orizzontali durante lo spostamento da una cella a quelle vicine.
+            </p>
+        </div>
+    </div>
+    <div id="horizontalFactor">
+        <div><h2>Fattore orizzontale (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il  <b>Fattore orizzontale</b> definisce la relazione tra il fattore di costo orizzontale e l'angolo di movimento relativo orizzontale.
+            </p>
+            <p>Vi sono diversi fattori con modificatori da cui selezionare l&rsquo;identificazione di un grafico di fattore orizzontale definito. I grafici sono utilizzati per identificare il fattore orizzontale utilizzato nel calcolo del costo totale di movimento in una cella vicina.
+            </p>
+            <p>Nelle descrizioni seguenti, il fattore orizzontale (HF) definisce la difficolt&agrave; orizzontale incontrata quando si passa da una cella all'altra e l'angolo di movimento orizzontale relativo (HRMA) identifica l'angolo tra la direzione orizzontale e una cella e la direzione di movimento.
+            </p>
+            <p>Le definizioni e i parametri di questi HF sono le seguenti:
+                <ul>
+                    <li> <b>Binario</b>: se l'HRMA &egrave; inferiore all'angolo di taglio, l'HF &egrave; impostato sul valore associato al fattore zero; altrimenti, &egrave; infinito.
+                        
+
+                    </li>
+                    <li> <b>Avanti</b>: &egrave; consentito solo il movimento in avanti. L'HRMA deve essere superiore o pari a 0 e inferiore a 90 (0 &lt;= HRMA &lt; 90). Se l'HRMA &egrave; superiore a 0 e inferiore a 45 gradi, l'HF per la cella viene impostato sul valore associato al fattore zero. Se l'HRMA &egrave; superiore o pari a 45 gradi, viene utilizzato il valore del modificatore del valore laterale. L'HF per qualsiasi HRMA pari o superiore a 90 gradi viene impostato su infinito.
+                    </li>
+                    <li> <b>Lineare</b>: l'HF &egrave; una funzione lineare dell'HRMA.
+                        
+
+                    </li>
+                    <li> <b>Lineare inverso</b>: l'HF &egrave; una funzione lineare inversa del HRMA.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+            <p>I modificatori delle parole chiave orizzontali sono i seguenti:
+                <ul>
+                    <li> <b>Fattore zero</b>: il fattore orizzontale utilizzato quando l'HRMA &egrave; 0. Questo fattore posiziona l&rsquo;intercettazione y per qualsiasi funzione del fattore orizzontale.
+                        
+
+                    </li>
+                    <li> <b>Angolo di taglio</b>: l'angolo HRMA oltre il quale l'HF viene impostato su infinito.
+                        
+
+                    </li>
+                    <li> <b>Pendenza</b>: la pendenza della linea retta utilizzata con le parole chiave di fattori orizzontali <b>Lineare</b> e <b>Lineare inverso</b>. La pendenza viene specificata come una frazione di pendenza (ad esempio, la pendenza del 45% &egrave; 1/45, che viene immessa come 0,02222).
+                        
+
+                    </li>
+                    <li> <b>Valore laterale</b>: l'HF quando l'HRMA &egrave; maggiore o uguale a 45 gradi e minore di 90 gradi quando il fattore orizzontale <b>Avanti</b> &egrave; specificato.
+                        
+
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="sourceInitialAccumulation">
+        <div><h2>Accumulo iniziale</h2></div>
+        <hr/>
+        <div>
+            <p>Il costo cumulativo iniziale per avviare il calcolo del costo.
+            </p>
+            <p>Questo permette la specificazione del costo fissato associato con un'origine. Invece di cominciare un costo di zero, l'algoritmo del costo inizier&agrave; con il valore impostato da  <b>Accumulazione iniziale</b>.
+            </p>
+            <p>I valori devono essere pari o superiori a zero. L'impostazione predefinita &egrave; 0.
+            </p>
+        </div>
+    </div>
+    <div id="sourceMaximumAccumulation">
+        <div><h2>Accumulo massimo</h2></div>
+        <hr/>
+        <div>
+            <p>L'accumulazione massima per il viaggiatore per un'origine.
+            </p>
+            <p>I calcoli di costo continuano per ogni origine fino a che l'accumulazione specifica viene raggiunta.
+            </p>
+            <p>I valori devono essere maggiori di zero. L'accumulazione predefinita &egrave; al bordo del raster di output.
+            </p>
+        </div>
+    </div>
+    <div id="sourceCostMultiplier">
+        <div><h2>Moltiplicatore costo</h2></div>
+        <hr/>
+        <div>
+            <p>Il moltiplicatore da applicare ai valori di costo.
+            </p>
+            <p>Questo consente il controllo della modalit&agrave; di spostamento o della grandezza all'origine. Maggiore &egrave; il moltiplicatore, maggiore &egrave; il costo per lo spostamento attraverso ogni cella.
+            </p>
+            <p>I valori devono essere maggiori di zero. Il valore predefinito &egrave; 1.
+            </p>
+        </div>
+    </div>
+    <div id="sourceDirection">
+        <div><h2>Direzione di viaggio</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica la direzione del viaggiatore quando si applicano fattori orizzontali e verticali.
+            </p>
+            <p> <b>Da origine</b>: il fattore orizzontale e il fattore verticale saranno applicati all'inizio dell'origine di input e spostandosi verso le celle non-origine. Si tratta dell'impostazione predefinita.
+            </p>
+            <p> <b>A origine</b>: il fattore orizzontale e il fattore verticale saranno applicati all'inizio di ogni cella non-origine, spostandosi verso le celle origine.
+            </p>
+            <p>Specifica la parola chiave  <b>Da origine</b> o <b>A origine</b>, che sar&agrave; applicata a tutte le origini, o specifica un campo nei dati di origine che contiene le parole chiave per identificare la direzione di movimento per ogni origine. That field must contain the string <code>FROM_SOURCE</code> or <code>TO_SOURCE</code>.
+            </p>
+        </div>
+    </div>
+    <div id="distanceMethod">
+        <div><h2>Metodo di distanza (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Specifica se calcolare la distanza con un metodo planare (terra piatta) o geodetico (ellissoide).
+            </p>
+            <ul>
+                <li> <b>Planare</b>: Il calcolo della distanza verr&agrave; eseguito su un piano piatto proiettato utilizzando un sistema di coordinate cartesiane 2D. Questo &egrave; il metodo predefinito.
+                    
+
+                </li>
+                <li> <b>Planare</b>: Il calcolo della distanza verr&agrave; eseguito su un piano piatto proiettato utilizzando un sistema di coordinate cartesiane 2D. Pertanto, indipendentemente dalla proiezione di input o output, i risultati non cambiano.
+                    
+
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    <div id="outputDistanceAllocationRasterName">
+        <div><h2>Risultato nome raster di allocazione distanza</h2></div>
+        <hr/>
+        <div>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputDistanceAccumulationRasterName">
+        <div><h2>Risultato nome raster di accumulazione distanza</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di accumulazione distanza contiene la distanza accumulativa per ogni cella da o verso l'origine di costo minore.
+            </p>
+            <p>Il raster di output &egrave; di tipo virgola mobile.
+            </p>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputBackDirectionRasterName">
+        <div><h2>Risultato nome di raster di direzione contraria (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>La back direction raster contiene la direzione calcolata in gradi. La direzione identifica la cella successiva seguendo il percorso pi&ugrave; breve fino alla fonte pi&ugrave; vicina evitando barriere.
+            </p>
+            <p>L'intervallo di valori &egrave; compreso tra 0 gradi e 360 gradi, con 0 riservato per le celle di origine. Verso est (destra) &egrave; di 90 e i valori aumentano in senso orario (180 &egrave; sud, 270 &egrave; ovest e 360 &egrave; nord).
+            </p>
+            <p>Il raster di output &egrave; di tipo virgola mobile.
+            </p>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b>. &Egrave; necessario fornire un nome che non &egrave; attualmente presente in <b>I miei contenuti</b>.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceDirectionRasterName">
+        <div><h2>Risultato nome di raster di direzione all'origine (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di direzione all'origine identifica la direzione della cella di origine con costo di accumulazione minore come un azimut in gradi.
+            </p>
+            <p>L'intervallo di valori &egrave; compreso tra 0 gradi e 360 gradi, con 0 riservato per le celle di origine. Verso est (destra) &egrave; di 90 e i valori aumentano in senso orario (180 &egrave; sud, 270 &egrave; ovest e 360 &egrave; nord).
+            </p>
+            <p>Il raster di output &egrave; di tipo virgola mobile.
+            </p>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b>. &Egrave; necessario fornire un nome che non &egrave; attualmente presente in <b>I miei contenuti</b>.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+    <div id="outputSourceLocationRasterName">
+        <div><h2>Risultato nome di raster di posizione all'origine (opzionale)</h2></div>
+        <hr/>
+        <div>
+            <p>Il raster di posizione di origine &egrave; un output multibanda. La prima banda contiene un indice di riga e la seconda banda contiene un indice di colonna. Questi indici identificano la posizione della cella di origine che &egrave; lontana dalla distanza di costo accumulato minore,
+            </p>
+            <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b>. &Egrave; necessario fornire un nome che non &egrave; attualmente presente in <b>I miei contenuti</b>.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

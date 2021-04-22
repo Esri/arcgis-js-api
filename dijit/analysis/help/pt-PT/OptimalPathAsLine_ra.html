@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="Stylesheet" href="../css/analysis.css" />
+    <script type="text/javascript">
+        function init() {
+            if (window.location.hash) {
+                var parentDiv, nodes, i, helpInfo, helpId, helpInfoArr, helpEnvFilter, envContent, hideEnvClass, hideNodes;
+                helpInfo = window.location.hash.substring(1);
+                    if(helpInfo.indexOf("-")) {
+                        helpInfoArr = helpInfo.split("-");
+                        helpId = helpInfoArr[0];
+                        helpEnvFilter = helpInfoArr[1];
+                    }
+                    else {
+                        helpId = helpInfo;
+                    }
+                parentDiv = document.getElementById("topics");
+                nodes = parentDiv.children;
+                    hideEnvClass = (helpEnvFilter === "OnlineOnly"? "PortalOnly": "OnlineOnly");
+                    if(document.getElementsByClassName) {
+                        hideNodes = document.getElementsByClassName(hideEnvClass);
+                    }
+                    else {
+                        hideNodes = document.querySelectorAll(hideEnvClass);
+                    }
+                for(i=0; i < nodes.length; i++) {
+                    if(nodes[i].id !== helpId) {
+                        nodes[i].style.display ="none";
+                    }
+                    }
+                    for(i=0; i < hideNodes.length; i++) {
+                        hideNodes[i].style.display ="none";
+                    }
+                }
+            }
+    </script>
+</head>
+<body onload="init()">
+<div id="topics">
+    <div id="toolDescription" class="smallsize">
+        <h2>Melhor Percurso Como Linha</h2><p/>
+        <h2><img src="../images/GUID-754B49AB-28D7-4758-A24C-5C67339666BA-web.png" alt="Ilustra&ccedil;&atilde;o da ferramenta Melhor Percurso Como Linha"></h2>
+        <hr/>
+    <p>Esta ferramenta calcula o percurso ideal dos destinos &agrave;s origens como uma linha.
+    </p>
+    <p>Como exemplos de aplica&ccedil;&otilde;es, incluem-se as seguintes:
+        <ul>
+            <li>Encontre o melhor percurso para uma nova estrada em termos de custos de constru&ccedil;&atilde;o.
+                
+
+
+            </li>
+            <li>Encontre a melhor rota de navega&ccedil;&atilde;o entre um destino e a localiza&ccedil;&atilde;o atual.
+            </li>
+        </ul>
+        
+    </p>
+    </div>
+    <!--Parameter divs for each param-->
+    <div id="inputDestinationRasterOrFeatures">
+        <div><h2>Selecione o raster ou elementos de destino</h2></div>
+        <hr/>
+        <div>
+            <p>Uma camada raster ou de elemento que identifica as c&eacute;lulas a partir das quais o percurso ideal &eacute; determinado at&eacute; a origem ideal.
+            </p>
+            <p>Se a entrada for um raster, a mesma tem de consistir em c&eacute;lulas com valores v&aacute;lidos (zero &eacute; um valor v&aacute;lido) para os destinos e &agrave;s c&eacute;lulas restantes tem de ser atribu&iacute;do o valor NoData. O tipo de raster de entrada tem de ser de tipo n&uacute;mero inteiro.
+            </p>
+        </div>
+    </div>
+    <div id="destinationField">
+        <div><h2>Campo de destino</h2></div>
+        <hr/>
+        <div>
+            <p>O campo utilizado para obter valores para os locais de destino.
+            </p>
+            <p>Este campo tem de ser de tipo n&uacute;mero inteiro.
+            </p>
+        </div>
+    </div>
+    <div id="inputDistanceAccumulationRaster">
+        <div><h2>Selecionar o raster de acumulação de distância</h2></div>
+        <hr/>
+        <div>
+            <p>O raster de acumula&ccedil;&atilde;o de dist&acirc;ncia &eacute; utilizado para determinar o melhor percurso desde os destinos at&eacute; &agrave;s origens.
+            </p>
+            <p>O raster de acumula&ccedil;&atilde;o de dist&acirc;ncia geralmente &eacute; criado com as ferramentas de Acumula&ccedil;&atilde;o de Dist&acirc;ncia ou Atribui&ccedil;&atilde;o de Dist&acirc;ncia. Cada c&eacute;lula no raster de acumula&ccedil;&atilde;o de dist&acirc;ncia representa a dist&acirc;ncia m&iacute;nima do custo acumulado sobre a superf&iacute;cie de cada c&eacute;lula para um conjunto de c&eacute;lulas de origem.
+            </p>
+        </div>
+    </div>
+    <div id="inputBackDirectionRaster">
+        <div><h2>Selecionar raster de direção de retorno ou de direção de fluxo</h2></div>
+        <hr/>
+        <div>
+            <p>O raster da dire&ccedil;&atilde;o de retorno cont&eacute;m as dire&ccedil;&otilde;es calculadas em graus. A dire&ccedil;&atilde;o identifica a pr&oacute;xima c&eacute;lula ao longo do melhor percurso de volta &agrave; origem de menor custo acumulado, evitando ao mesmo tempo as barreiras.
+            </p>
+            <p>O raster de dire&ccedil;&atilde;o de retorno geralmente &eacute; criado com as ferramentas de Acumula&ccedil;&atilde;o de Dist&acirc;ncia ou Atribui&ccedil;&atilde;o de Dist&acirc;ncia. Neste caso, o intervalo de valores vai dos 0 graus at&eacute; aos 360 graus. O valor 0 &eacute; reservado para as c&eacute;lulas de origem. A dire&ccedil;&atilde;o para Este (direita) &eacute; 90 graus, e os valores aumentam no sentido dos ponteiros do rel&oacute;gio (180 &eacute; sul, 270 &eacute; oeste, e 360 &eacute; norte).
+            </p>
+            <p>O percurso ideal criado pode ser um percurso de fluxo com base na dire&ccedil;&atilde;o de fluxo D8. Para gerar um percurso ideal desta forma, use um raster de dire&ccedil;&atilde;o de fluxo D8 como entrada para este par&acirc;metro.
+            </p>
+        </div>
+    </div>
+    <div id="pathType">
+        <div><h2>Tipo de percurso (opcional)</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica uma palavra-chave que define como os valores e zonas nos dados de destino de entrada ser&atilde;o interpretados nos c&aacute;lculos do percurso de custo.
+                <ul>
+                    <li> <b>Para Cada Zona</b> &mdash; Para cada zona nos dados de destino de entrada, &eacute; determinado um percurso de menor custo. Com esta op&ccedil;&atilde;o, o caminho de menor custo para cada zona come&ccedil;a na c&eacute;lula com a menor pondera&ccedil;&atilde;o de dist&acirc;ncia de custo na zona. Isto &eacute; por omiss&atilde;o.
+                         
+                    </li>
+                    <li> <b>Melhor &Uacute;nico</b> &mdash; Para todas as c&eacute;lulas nos dados de destino de entrada, o caminho de menor custo deriva da c&eacute;lula com o m&iacute;nimo de caminhos de menor custo at&eacute; &agrave;s c&eacute;lulas de origem.
+                    </li>
+                    <li> <b>Para Cada C&eacute;lula</b> &mdash; Para cada c&eacute;lula com valores v&aacute;lidos nos dados de destino de entrada &eacute; determinado um percurso de menor custo. Com esta op&ccedil;&atilde;o, cada c&eacute;lula dos dados de destino de entrada &eacute; tratada separadamente e &eacute; determinado um caminho de menor custo para cada c&eacute;lula.
+                    </li>
+                </ul>
+                
+            </p>
+        </div>
+    </div>
+    <div id="outputFeatureName">
+        <div><h2>Nome da camada de elementos de resultado</h2></div>
+        <hr/>
+        <div>
+            <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
+            </p>
+        </div>
+    </div>
+</div>
+</html>

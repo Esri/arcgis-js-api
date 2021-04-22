@@ -1,4 +1,4 @@
-// COPYRIGHT © 2020 Esri
+// COPYRIGHT © 2021 Esri
 //
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.34/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/_base/json","dojo/has","../kernel","../geometry/jsonUtils"],(function(e,t,i,o,s,n,a){var r=e(null,{declaredClass:"esri.tasks.GeneralizeParameters",geometries:null,deviationUnit:null,maxDeviation:null,toJson:function(){var e=i.map(this.geometries,(function(e){return e.toJson()})),t={};return this.geometries&&this.geometries.length>0&&(t.geometries=o.toJson({geometryType:a.getJsonType(this.geometries[0]),geometries:e}),t.sr=o.toJson(this.geometries[0].spatialReference.toJson())),this.deviationUnit&&(t.deviationUnit=this.deviationUnit),this.maxDeviation&&(t.maxDeviation=this.maxDeviation),t}});return s("extend-esri")&&t.setObject("tasks.GeneralizeParameters",r,n),r}));
