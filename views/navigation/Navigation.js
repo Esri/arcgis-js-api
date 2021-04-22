@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor","./gamepad/GamepadSettings"],(function(e,o,r,t,a,s,p,n,c,u,l,i){"use strict";let d=function(o){function r(e){var r;return(r=o.call(this,e)||this).browserTouchPanEnabled=!0,r.gamepad=new i,r.momentumEnabled=!0,r.mouseWheelZoomEnabled=!0,r}return e._inheritsLoose(r,o),r}(l);return o.__decorate([s.property({type:Boolean})],d.prototype,"browserTouchPanEnabled",void 0),o.__decorate([s.property({type:i,nonNullable:!0})],d.prototype,"gamepad",void 0),o.__decorate([s.property({type:Boolean})],d.prototype,"momentumEnabled",void 0),o.__decorate([s.property({type:Boolean})],d.prototype,"mouseWheelZoomEnabled",void 0),d=o.__decorate([p.subclass("esri.views.navigation.Navigation")],d),d}));

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./AnalyticalSkyModel.glsl"],(function(e,o,n,t){"use strict";e.PhysicallyBasedRendering=function(e,a){const l=e.fragment.code;e.include(n.PiUtils),3===a.pbrMode||4===a.pbrMode?(l.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./AnalyticalSkyModel.glsl"],(function(e,o,n,t){"use strict";function a(e,a){const l=e.fragment.code;e.include(n.PiUtils),3===a.pbrMode||4===a.pbrMode?(l.add(o.glsl`
     struct PBRShadingWater
     {
         float NdotL;   // cos angle between normal and light direction
@@ -119,4 +119,4 @@ define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./Analytica
       outColor.z = gamutMapChanel(inColor.z, p) ;
       return outColor;
     }
-    `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `))}e.PhysicallyBasedRendering=a,Object.defineProperty(e,"__esModule",{value:!0})}));

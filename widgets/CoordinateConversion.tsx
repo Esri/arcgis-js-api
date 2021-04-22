@@ -3,7 +3,7 @@
  * as any of several popular coordinate notations.  Additionally, the widget provides a way to convert
  * user input coordinates into a {@link module:esri/geometry/Point}.
  *
- * [![coordinate-conversion](../../assets/img/apiref/widgets/coordinate-conversion.png)](../sample-code/widgets-coordinateconversion/index.html)
+ * [![coordinate-conversion](../assets/img/apiref/widgets/coordinate-conversion-annotated.png)](../sample-code/widgets-coordinateconversion/index.html)
  *
  * Several common [formats](esri-widgets-CoordinateConversion-support-Format.html) are included by default:
  * * XY - Longitude, Latitude (WGS84)
@@ -44,7 +44,7 @@ import global from "esri/core/global";
 import Logger from "esri/core/Logger";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.geometry
 import Point from "esri/geometry/Point";
@@ -56,8 +56,8 @@ import PictureMarkerSymbol from "esri/symbols/PictureMarkerSymbol";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { Mode } from "esri/widgets/interfaces";
@@ -76,16 +76,16 @@ import CoordinateConversionMessages from "esri/widgets/CoordinateConversion/t9n/
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import {
-  accessibleHandler,
-  isRTL,
-  messageBundle,
-  renderable,
-  storeNode,
-  tsx
-} from "esri/widgets/support/widget";
+import { accessibleHandler, isRTL, messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
 
 type Orientation = "expand-up" | "expand-down" | "auto";
+
+interface VisibleElements {
+  settingsButton?: boolean;
+  inputButton?: boolean;
+  captureButton?: boolean;
+  expandButton?: boolean;
+}
 
 const CSS: any = {
   base: "esri-coordinate-conversion esri-widget",
@@ -137,6 +137,13 @@ const CSS: any = {
   refresh: "esri-icon-refresh",
   removeConversion: "esri-icon-close",
   settingsButton: "esri-icon-settings2"
+};
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  settingsButton: true,
+  inputButton: true,
+  captureButton: true,
+  expandButton: true
 };
 
 const logger = Logger.getLogger("esri.widgets.CoordinateConversion");
@@ -225,7 +232,6 @@ class CoordinateConversion extends Widget {
    * @since 4.7
    */
   @aliasOf("viewModel.currentLocation")
-  @renderable()
   currentLocation: Point = null;
 
   //----------------------------------
@@ -243,7 +249,6 @@ class CoordinateConversion extends Widget {
    * @type {module:esri/core/Collection<module:esri/widgets/CoordinateConversion/support/Format>}
    */
   @aliasOf("viewModel.formats")
-  @renderable()
   formats: Collection<Format> = null;
 
   //----------------------------------
@@ -284,7 +289,6 @@ class CoordinateConversion extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/CoordinateConversion/t9n/CoordinateConversion")
   messages: CoordinateConversionMessages = null;
 
@@ -301,7 +305,6 @@ class CoordinateConversion extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -323,7 +326,6 @@ class CoordinateConversion extends Widget {
    * @since 4.7
    */
   @aliasOf("viewModel.mode")
-  @renderable()
   mode: Mode = null;
 
   //----------------------------------
@@ -341,7 +343,6 @@ class CoordinateConversion extends Widget {
    * @since 4.7
    */
   @property()
-  @renderable()
   orientation: Orientation = "auto";
 
   //----------------------------------
@@ -377,7 +378,6 @@ class CoordinateConversion extends Widget {
    * @since 4.7
    */
   @property()
-  @renderable()
   set multipleConversions(value: boolean) {
     if (value === false) {
       this._expanded = false;
@@ -417,8 +417,7 @@ class CoordinateConversion extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -435,8 +434,48 @@ class CoordinateConversion extends Widget {
   @property({
     type: CoordinateViewModel
   })
-  @renderable(["viewModel.state", "viewModel.waitingForConversions"])
   viewModel: CoordinateViewModel = new CoordinateViewModel();
+
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/CoordinateConversion~VisibleElements
+   *
+   * @property {boolean} [settingsButton] - Indicates whether the settings button will be displayed. Default is `true`.
+   * @property {boolean} [editButton] - Indicates whether the input coordinate button will be displayed. Default is `true`.
+   * @property {boolean} [expandButton] - Indicates whether the expand and retract buttons will be displayed. Default is `true`.
+   * @property {boolean} [captureButton] - Indicates whether the capture mode button will be displayed. Default is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/CoordinateConversion~VisibleElements}
+   * @autocast
+   *
+   * @since 4.19
+   *
+   * @example
+   * coordinateWidget.visibleElements = {
+   *   settingsButton: false,
+   *   captureButton: false
+   * };
+   */
+  @property()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
 
   //--------------------------------------------------------------------------
   //
@@ -741,7 +780,7 @@ class CoordinateConversion extends Widget {
       [CSS.collapseButton]: this._expanded
     };
 
-    const { messages, messagesCommon } = this;
+    const { messages, messagesCommon, multipleConversions, visibleElements } = this;
 
     const modeTitle = this.mode === "live" ? messages.captureMode : messages.liveMode,
       buttonTitle = !this._expanded ? messagesCommon.expand : messagesCommon.collapse,
@@ -749,7 +788,7 @@ class CoordinateConversion extends Widget {
         conversion.displayCoordinate && this.mode === "capture"
           ? this._renderCopyButton(conversion)
           : null,
-      modeButtonOrExpandButton = this.multipleConversions ? (
+      expandButton = multipleConversions && visibleElements.expandButton && (
         <li
           aria-controls={`${widgetId}__${CSS.conversionList}`}
           aria-label={buttonTitle}
@@ -764,7 +803,8 @@ class CoordinateConversion extends Widget {
         >
           <span aria-hidden="true" class={this.classes(expandButtonClasses)} />
         </li>
-      ) : (
+      ),
+      captureButton = !multipleConversions && visibleElements.captureButton && (
         <li
           aria-label={modeTitle}
           bind={this}
@@ -783,7 +823,8 @@ class CoordinateConversion extends Widget {
     return (
       <ul class={CSS.toolDisplay}>
         {copyButton}
-        {modeButtonOrExpandButton}
+        {expandButton}
+        {captureButton}
       </ul>
     );
   }
@@ -978,46 +1019,56 @@ class CoordinateConversion extends Widget {
   }
 
   private _renderPrimaryTools(): VNode {
-    const { messages } = this;
+    const { messages, visibleElements } = this;
     const modeTitle = this.mode === "live" ? messages.captureMode : messages.liveMode;
+
+    const inputButton = visibleElements.inputButton && (
+      <li
+        bind={this}
+        class={CSS.widgetButton}
+        onclick={this._toggleInputVisibility}
+        onkeydown={this._toggleInputVisibility}
+        role="button"
+        tabindex="0"
+        title={messages.inputCoordTitle}
+      >
+        <span aria-hidden="true" class={CSS.editButton} />
+      </li>
+    );
+
+    const captureButton = visibleElements.captureButton && (
+      <li
+        bind={this}
+        class={this.classes(CSS.widgetButton, CSS.modeToggle)}
+        onclick={this._toggleMode}
+        onkeydown={this._toggleMode}
+        role="button"
+        tabindex="0"
+        title={modeTitle}
+      >
+        <span aria-hidden="true" class={CSS.captureButton} />
+      </li>
+    );
+
+    const settingsButton = visibleElements.settingsButton && (
+      <li
+        bind={this}
+        class={CSS.widgetButton}
+        onclick={this._toggleSettingsVisibility}
+        onkeydown={this._toggleSettingsVisibility}
+        role="button"
+        tabindex="0"
+        title={messages.settingsTitle}
+      >
+        <span aria-hidden="true" class={CSS.settingsButton} />
+      </li>
+    );
 
     return (
       <ul class={CSS.toolDisplay}>
-        <li
-          bind={this}
-          class={CSS.widgetButton}
-          onclick={this._toggleInputVisibility}
-          onkeydown={this._toggleInputVisibility}
-          role="button"
-          tabindex="0"
-          title={messages.inputCoordTitle}
-        >
-          <span aria-hidden="true" class={CSS.editButton} />
-        </li>
-
-        <li
-          bind={this}
-          class={this.classes(CSS.widgetButton, CSS.modeToggle)}
-          onclick={this._toggleMode}
-          onkeydown={this._toggleMode}
-          role="button"
-          tabindex="0"
-          title={modeTitle}
-        >
-          <span aria-hidden="true" class={CSS.captureButton} />
-        </li>
-
-        <li
-          bind={this}
-          class={CSS.widgetButton}
-          onclick={this._toggleSettingsVisibility}
-          onkeydown={this._toggleSettingsVisibility}
-          role="button"
-          tabindex="0"
-          title={messages.settingsTitle}
-        >
-          <span aria-hidden="true" class={CSS.settingsButton} />
-        </li>
+        {inputButton}
+        {captureButton}
+        {settingsButton}
       </ul>
     );
   }

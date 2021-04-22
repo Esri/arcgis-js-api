@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../state/controllers/RotateController"],(function(e,t,r,n,o){"use strict";let a=function(e){function n(t,r=!1){var n;return(n=e.call(this,!0)||this).view=t,n.invert=r,n.registerIncoming("vertical-two-finger-drag",(e=>n.handleTwoFinger(e))),n}return t._inheritsLoose(n,e),n.prototype.handleTwoFinger=function(e){const t=this.invert?-1:1,n=r.createScreenPointArray(0,e.data.delta*t);switch(e.data.action){case"begin":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.cameraController=new o.RotateController({view:this.view,pivot:"center"}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(n);break;case"update":this.cameraController&&this.cameraController.update(n);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}},n}(n.InputHandler);e.TwoFingerTilt=a,Object.defineProperty(e,"__esModule",{value:!0})}));

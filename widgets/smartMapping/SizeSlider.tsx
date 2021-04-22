@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![SizeSlider with annotations](../../assets/img/apiref/widgets/sliders/sizeslider-labels.png "SizeSlider with annotations")
+ * ![SizeSlider with annotations](../assets/img/apiref/widgets/sliders/sizeslider-labels.png "SizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
@@ -71,25 +71,25 @@
  */
 
 // esri
-import Color from "esri/Color";
+import Color from "esri/../Color";
 
 // esri.core
-import { isSome } from "esri/core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables
-import SizeVariable from "esri/renderers/visualVariables/SizeVariable";
+import SizeVariable from "esri/../renderers/visualVariables/SizeVariable";
 
 // esri.renderers.visualVariables.support
-import SizeStop from "esri/renderers/visualVariables/support/SizeStop";
+import SizeStop from "esri/../renderers/visualVariables/support/SizeStop";
 
 // esri.smartMapping.renderers
-import { ContinuousRendererResult } from "esri/smartMapping/renderers/size";
+import { ContinuousRendererResult } from "esri/../smartMapping/renderers/size";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -111,7 +111,7 @@ import {
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-size-slider",
@@ -250,9 +250,42 @@ class SizeSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/SizeSlider/t9n/SizeSlider")
   messages: SizeSliderMessages = null;
+
+  //----------------------------------
+  //  persistSizeRangeEnabled
+  //----------------------------------
+
+  /**
+   * Only applicable when three thumbs (i.e. handles) are set on the
+   * slider (i.e. when [primaryHandleEnabled](#primaryHandleEnabled) is `true`).
+   * This property is typically used in diverging, or `above-and-below` renderer configurations.
+   *
+   * When `true`, ensures symbol sizes in the `above` range
+   * are consistent with symbol sizes in the `below` range for all slider thumb positions.
+   * In other words, the size values in the [stops](#stops) will adjust
+   * proportionally according to the positions of the data values within the
+   * constraints of the size range (maxSize - minSize) as the slider thumbs update.
+   * When `false`, size values in the stops will remain the same even when slider thumb values
+   * change.
+   *
+   * In most cases, this should be set to `true` to keep sizes in the `above` range consistent with
+   * sizes in the `below` range to avoid map misinterpretation.
+   *
+   * @name persistSizeRangeEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.19
+   *
+   * @see [primaryHandleEnabled](#primaryHandleEnabled)
+   *
+   * @example
+   * slider.primaryHandleEnabled = true;
+   * slider.persistSizeRangeEnabled = true;
+   */
+  @aliasOf("viewModel.persistSizeRangeEnabled") persistSizeRangeEnabled: boolean = null;
 
   //----------------------------------
   //  primaryHandleEnabled
@@ -271,11 +304,13 @@ class SizeSlider extends SmartMappingSliderBase {
    * @since 4.18
    *
    * @see [handlesSyncedToPrimary](#handlesSyncedToPrimary)
+   * @see [persistSizeRangeEnabled](#persistSizeRangeEnabled)
    *
    * @example
    * // enables the primary handles and syncs it with the others
    * slider.primaryHandleEnabled = true;
    * slider.handlesSyncedToPrimary = true;
+   * slider.persistSizeRangeEnabled = true;
    */
   @aliasOf("viewModel.primaryHandleEnabled") primaryHandleEnabled: boolean = null;
 
@@ -334,7 +369,6 @@ class SizeSlider extends SmartMappingSliderBase {
    * };
    */
   @property()
-  @renderable()
   style: SizeSliderStyle = { ...DEFAULT_STYLE };
 
   @cast("style")
@@ -357,17 +391,6 @@ class SizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/SizeSlider/SizeSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.stops",
-    "viewModel.values",
-    "viewModel.zoomOptions"
-  ])
   viewModel: SizeSliderViewModel = new SizeSliderViewModel();
 
   //----------------------------------

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../input/InputHandler","../../../input/DragEventSeparator"],(function(t,n,e,a){"use strict";let i=function(t){function e(n){var e;(e=t.call(this,!0)||this).view=n,e.registerIncoming("drag",(t=>e._handleDrag(t))),e.registerIncoming("pointer-down",(()=>e.stopMomentumNavigation()));const i=e.view.mapViewNavigation;return e.dragEventSeparator=new a.DragEventSeparator({start:(t,n)=>{i.pinch.begin(e.view,n.data),n.stopPropagation()},update:(t,n)=>{i.pinch.update(e.view,n.data),n.stopPropagation()},end:(t,n)=>{i.pinch.end(e.view),n.stopPropagation()},condition:t=>t>=2}),e}n._inheritsLoose(e,t);var i=e.prototype;return i._handleDrag=function(t){this.dragEventSeparator.handle(t)},i.stopMomentumNavigation=function(){this.view.mapViewNavigation.pinch.stopMomentumNavigation()},e}(e.InputHandler);t.PinchRotateAndZoom=i,Object.defineProperty(t,"__esModule",{value:!0})}));

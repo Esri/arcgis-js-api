@@ -8,16 +8,16 @@
  * and [content](#content) properties.
  * When  content is set directly on the Popup instance it is not tied to a specific feature or layer.
  *
- * [![popup-basic-example](../../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=intro-popup)
+ * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=intro-popup)
  *
  * In the image above, the text "Marriage in NY, Zip Code: 11385" is the popup's `title`. The remaining text is
- * its `content`. A dock button ![popup-dock-btn](../../assets/img/apiref/widgets/popup-dock.png) may also be available in the
+ * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
  * top right corner of the popup. This allows the user to dock the popup to one of the sides or corners of the view.
  * The options for docking may be set in the [dockOptions](#dockOptions) property.
  *
  * Popups can also contain [actions](#actions) that act like buttons,
  * which execute a function defined by the developer when clicked.
- * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../../assets/img/apiref/widgets/popuptemplate-zoom-action.png)
+ * By default, every popup has a "Zoom in" action ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png)
  * that allows users to zoom to the selected feature. See the [actions](#actions)
  * property for information about adding custom actions to a popup.
  *
@@ -61,6 +61,7 @@ import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles from "esri/core/Handles";
 import Logger from "esri/core/Logger";
+import { isNone, Maybe } from "esri/core/maybe";
 import { ScreenPoint } from "esri/core/screenUtils";
 import { throttle } from "esri/core/throttle";
 import * as watchUtils from "esri/core/watchUtils";
@@ -75,10 +76,9 @@ import Point from "esri/geometry/Point";
 import type CommonMessages from "esri/t9n/common";
 
 // esri.views
-import { Breakpoints } from "esri/views/interfaces";
+import { Breakpoints, FetchPopupFeaturesResult } from "esri/views/interfaces";
+import { IPopup, ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import { FetchPopupFeaturesResult } from "esri/views/PopupView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Feature from "esri/widgets/Feature";
@@ -115,7 +115,7 @@ import type PopupMessages from "esri/widgets/Popup/t9n/Popup";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+import { accessibleHandler, tsx, vmEvent, messageBundle, storeNode } from "esri/widgets/support/widget";
 import * as widgetUtils from "esri/widgets/support/widgetUtils";
 
 interface DividedActions {
@@ -219,6 +219,8 @@ const CSS = {
   featureMenuSelected: "esri-popup__feature-menu-item--selected",
   featureMenuButton: "esri-popup__feature-menu-button",
   featureMenuTitle: "esri-popup__feature-menu-title",
+  featureMenuObserver: "esri-popup__feature-menu-observer",
+  featureMenuLoader: "esri-popup__feature-menu-loader",
   // collapse button
   collapseButton: "esri-popup__collapse-button"
 };
@@ -292,7 +294,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 @subclass(declaredClass)
-class Popup extends FeatureContentMixin(Widget) {
+class Popup extends FeatureContentMixin(Widget) implements IPopup {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -348,7 +350,7 @@ class Popup extends FeatureContentMixin(Widget) {
         this._updateDockEnabledForViewSize(newSize, oldSize)
       ),
 
-      watchUtils.watch<MapView | SceneView>(this, "viewModel.view", (newView, oldView) =>
+      watchUtils.watch<MapView | ISceneView>(this, "viewModel.view", (newView, oldView) =>
         this._viewChange(newView, oldView)
       ),
 
@@ -387,14 +389,19 @@ class Popup extends FeatureContentMixin(Widget) {
       }),
 
       watchUtils.on(this, "viewModel.allActions", "change", () => this._watchActions()),
-      watchUtils.init(this, "viewModel.allActions", () => this._watchActions())
+      watchUtils.init(this, "viewModel.allActions", () => this._watchActions()),
+      watchUtils.watch(this, "viewModel.featureViewModels", () =>
+        this._featureMenuViewportScrollTop()
+      )
     ]);
   }
 
   destroy(): void {
     this._destroySelectedFeatureWidget();
     this._destroySpinner();
-    this._handles && this._handles.destroy();
+    this._handles?.destroy();
+    this._unobserveFeatureMenuObserver();
+    this._featureMenuIntersectionObserver?.disconnect();
     this._handles = null;
   }
 
@@ -438,67 +445,51 @@ class Popup extends FeatureContentMixin(Widget) {
 
   private _feature: Feature = null;
 
+  private _featureMenuIntersectionObserverNode: HTMLDivElement;
+
+  private _featureMenuViewportNode: HTMLElement;
+
+  private _featureMenuIntersectionObserverCallback = ([entry]: IntersectionObserverEntry[]) => {
+    if (entry?.isIntersecting) {
+      this.viewModel.featurePage++;
+    }
+  };
+
+  private _featureMenuIntersectionObserver = new IntersectionObserver(
+    this._featureMenuIntersectionObserverCallback
+  );
+
   private _displaySpinnerThrottled = throttle(
     () => this._displaySpinner(),
     SPINNER_THROTTLE_INTERVAL_IN_MS
   );
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get actionsMenuId(): string {
     return `${this.id}-actions-menu`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get actionsMenuButtonId(): string {
     return `${this.id}-actions-menu-button`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get featureMenuId(): string {
     return `${this.id}-feature-menu`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get titleId(): string {
     return `${this.id}-popup-title`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get contentId(): string {
     return `${this.id}-popup-content`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: [
-      "selectedFeatureWidget",
-      "selectedFeatureWidget.viewModel",
-      "selectedFeatureWidget.viewModel.waitingForContent",
-      "selectedFeatureWidget.viewModel.content",
-      "viewModel.content"
-    ]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get hasContent(): boolean {
     return !!(this.selectedFeatureWidget
       ? this.selectedFeatureWidget?.viewModel?.waitingForContent ||
@@ -506,11 +497,7 @@ class Popup extends FeatureContentMixin(Widget) {
       : this.viewModel?.content);
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["viewModel.active", "viewModel.featureCount", "visibleElements.featureNavigation"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get featureNavigationVisible(): boolean {
     return (
       this.viewModel.active &&
@@ -519,43 +506,22 @@ class Popup extends FeatureContentMixin(Widget) {
     );
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["collapseEnabled", "viewModel.title", "hasContent"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get collapsible(): boolean {
     return !!(this.collapseEnabled && this.viewModel.title && this.hasContent);
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["featureNavigationVisible", "featureMenuOpen"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get featureMenuVisible(): boolean {
     return this.featureNavigationVisible && this.featureMenuOpen;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["collapsible", "featureMenuVisible", "collapsed"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get contentCollapsed(): boolean {
     return this.collapsible && !this.featureMenuVisible && this.collapsed;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: [
-      "featureNavigationVisible",
-      "maxInlineActions",
-      "viewModel.allActions",
-      "viewModel.allActions.length"
-    ]
-  })
-  @renderable()
+  @property({ readOnly: true })
   get dividedActions(): DividedActions {
     return this._divideActions();
   }
@@ -624,10 +590,10 @@ class Popup extends FeatureContentMixin(Widget) {
    * Defines actions that may be executed by clicking the icon
    * or image symbolizing them in the popup. By default, every popup has a `zoom-to`
    * action styled with a magnifying glass icon
-   * ![popupTemplate-zoom-action](../../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
+   * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
    * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
    *
-   * You may override this action by removing it from the `actions` array or by setting the
+   * You may remove this action from the default popup actions by setting [includeDefaultActions](#includeDefaultActions) to `false`, or by setting the
    * [overwriteActions](esri-PopupTemplate.html#overwriteActions) property to `true` in a
    * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
    * they appear in the array.
@@ -683,7 +649,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * });
    */
   @aliasOf("viewModel.actions")
-  @renderable()
   actions: Collection<Action> = null;
 
   //----------------------------------
@@ -696,10 +661,7 @@ class Popup extends FeatureContentMixin(Widget) {
    * @private
    */
 
-  @property({
-    dependsOn: ["viewModel.active"]
-  })
-  @renderable()
+  @property()
   set actionsMenuOpen(value: boolean) {
     this._set("actionsMenuOpen", !!value);
   }
@@ -833,7 +795,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * view.popup.content = "Click a feature on the map to view its attributes";
    */
   @aliasOf("viewModel.content")
-  @renderable()
   content: string | HTMLElement | Widget = null;
 
   //----------------------------------
@@ -851,7 +812,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @default false
    */
   @property()
-  @renderable()
   collapsed = false;
 
   //----------------------------------
@@ -868,7 +828,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @default true
    */
   @property()
-  @renderable()
   collapseEnabled = true;
 
   //----------------------------------
@@ -882,10 +841,8 @@ class Popup extends FeatureContentMixin(Widget) {
    * @ignore
    */
   @property({
-    readOnly: true,
-    dependsOn: ["dockEnabled", "alignment", "viewModel.active"]
+    readOnly: true
   })
-  @renderable()
   get currentAlignment(): Alignment {
     return this._getCurrentAlignment();
   }
@@ -903,10 +860,8 @@ class Popup extends FeatureContentMixin(Widget) {
    * @readonly
    */
   @property({
-    readOnly: true,
-    dependsOn: ["viewModel.view.ready", "dockEnabled", "dockOptions", "viewModel.active"]
+    readOnly: true
   })
-  @renderable()
   get currentDockPosition(): PositionResult {
     return this._getCurrentDockPosition();
   }
@@ -967,7 +922,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * };
    */
   @property()
-  @renderable()
   get dockOptions(): DockOptions {
     return this._get("dockOptions") || DOCK_OPTIONS;
   }
@@ -1022,7 +976,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * view.popup.dockEnabled = true;
    */
   @property()
-  @renderable()
   dockEnabled = false;
 
   //----------------------------------
@@ -1040,7 +993,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @readonly
    */
   @aliasOf("viewModel.featureCount")
-  @renderable()
   featureCount: number = null;
 
   //----------------------------------
@@ -1049,8 +1001,20 @@ class Popup extends FeatureContentMixin(Widget) {
 
   // This property works when used as a param of the `popup.open()` method.
 
+  /**
+   * When enabled, the popup displays a list of all available [features](#features)
+   * (using each feature's popup template title) rather than displaying
+   * the popup template of the first selected feature. Users can scroll through the
+   * list and select a feature to display the desired popup template.
+   *
+   * @name featureMenuOpen
+   * @instance
+   * @since 4.19
+   *
+   * @type {boolean}
+   * @default false
+   */
   @property()
-  @renderable()
   featureMenuOpen = false;
 
   //----------------------------------
@@ -1091,7 +1055,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * view.popup.features = graphics;
    */
   @aliasOf("viewModel.features")
-  @renderable()
   features: Graphic[] = null;
 
   //----------------------------------
@@ -1103,11 +1066,11 @@ class Popup extends FeatureContentMixin(Widget) {
    * scroll through various [selected features](#features) using either
    * arrows
    *
-   * ![popup-pagination-arrows](../../assets/img/apiref/widgets/popup-pagination-arrows.png)
+   * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
    *
    * or a menu.
    *
-   * ![popup-feature-menu](../../assets/img/apiref/widgets/popup-pagination-menu.png)
+   * ![popup-feature-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
    *
    * @name featureNavigationEnabled
    * @instance
@@ -1116,7 +1079,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @deprecated since version 4.15. Use {@link module:esri/widgets/Popup#visibleElements Popup.visibleElements.featureNavigation} instead.
    */
   @property()
-  @renderable()
   set featureNavigationEnabled(value: boolean) {
     deprecatedProperty(logger, "featureNavigationEnabled", {
       replacement: "visibleElements.featureNavigation",
@@ -1188,7 +1150,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * });
    */
   @aliasOf("viewModel.location")
-  @renderable()
   location: Point = null;
 
   //----------------------------------
@@ -1220,7 +1181,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @default 3
    */
   @property()
-  @renderable()
   maxInlineActions: number | null = 3;
 
   //----------------------------------
@@ -1238,7 +1198,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Popup/t9n/Popup")
   messages: PopupMessages = null;
 
@@ -1255,7 +1214,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -1293,7 +1251,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @readonly
    */
   @aliasOf("viewModel.selectedFeature")
-  @renderable()
   selectedFeature: Graphic = null;
 
   //----------------------------------
@@ -1310,7 +1267,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @type {Number}
    */
   @aliasOf("viewModel.selectedFeatureIndex")
-  @renderable()
   selectedFeatureIndex: number = null;
 
   //----------------------------------
@@ -1328,10 +1284,8 @@ class Popup extends FeatureContentMixin(Widget) {
    * @readonly
    */
   @property({
-    readOnly: true,
-    dependsOn: ["viewModel.selectedFeatureViewModel", "visibleElements"]
+    readOnly: true
   })
-  @renderable()
   get selectedFeatureWidget(): Feature {
     const { _feature, visibleElements } = this;
     const { selectedFeatureViewModel } = this.viewModel;
@@ -1391,7 +1345,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * view.popup.title = "Population by zip codes in Southern California";
    */
   @aliasOf("viewModel.title")
-  @renderable()
   title: string = null;
 
   //----------------------------------
@@ -1423,7 +1376,7 @@ class Popup extends FeatureContentMixin(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1441,17 +1394,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @autocast
    */
   @property({ type: PopupViewModel })
-  @renderable([
-    "viewModel.active",
-    "viewModel.view.widthBreakpoint",
-    "viewModel.allActions",
-    "viewModel.screenLocation",
-    "viewModel.screenLocationEnabled",
-    "viewModel.state",
-    "viewModel.pendingPromisesCount",
-    "viewModel.promiseCount",
-    "viewModel.waitingForResult"
-  ])
   @vmEvent(["triggerAction", "trigger-action"])
   viewModel = new PopupViewModel();
 
@@ -1467,7 +1409,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * @type {boolean}
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean = null;
 
   //----------------------------------
@@ -1501,7 +1442,6 @@ class Popup extends FeatureContentMixin(Widget) {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -1935,7 +1875,7 @@ class Popup extends FeatureContentMixin(Widget) {
         class={this.classes(CSS.button, CSS.featureMenuButton)}
         aria-haspopup="true"
         aria-controls={featureMenuId}
-        aria-expanded={featureMenuOpen}
+        aria-expanded={featureMenuOpen.toString()}
         aria-label={messagesCommon.menu}
         title={messagesCommon.menu}
       >
@@ -2216,7 +2156,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
   protected renderFeatureMenuContainer(): VNode {
     const { messages } = this;
-    const { featureViewModels } = this.viewModel;
+    const { featureViewModels, isLoadingFeature } = this.viewModel;
 
     const infoText = substitute(messages.selectedFeatures, {
       total: featureViewModels.length
@@ -2226,11 +2166,20 @@ class Popup extends FeatureContentMixin(Widget) {
       <section key={buildKey("menu")} class={CSS.featureMenu}>
         <h2 class={CSS.featureMenuHeader}>{infoText}</h2>
         <nav
+          bind={this}
           class={CSS.featureMenuViewport}
-          afterCreate={this._featureMenuViewportNodeUpdated}
-          afterUpdate={this._featureMenuViewportNodeUpdated}
+          data-node-ref="_featureMenuViewportNode"
+          afterCreate={storeNode}
         >
           {this.renderFeatureMenu()}
+          <div
+            class={CSS.featureMenuObserver}
+            bind={this}
+            afterCreate={this._featureMenuIntersectionObserverCreated}
+          />
+          {isLoadingFeature ? (
+            <div class={CSS.featureMenuLoader}>{this.renderLoadingIcon()}</div>
+          ) : null}
         </nav>
       </section>
     );
@@ -2459,7 +2408,9 @@ class Popup extends FeatureContentMixin(Widget) {
         onkeyup={this._handleFeatureMenuKeyup}
         role="menu"
       >
-        {featureViewModels.map((featureVM, index) => this.renderFeatureMenuItem(featureVM, index))}
+        {featureViewModels
+          .filter((featureVM) => !!featureVM.graphic)
+          .map((featureVM, index) => this.renderFeatureMenuItem(featureVM, index))}
       </ol>
     ) : null;
   }
@@ -2481,6 +2432,10 @@ class Popup extends FeatureContentMixin(Widget) {
         ? substitute(action.title, { messages })
         : id === "remove-selected-feature"
         ? substitute(action.title, { messages: messagesCommon })
+        : id === "zoom-to-clustered-features"
+        ? substitute(action.title, { messages })
+        : id === "browse-clustered-features"
+        ? substitute(action.title, { messages })
         : action.title;
 
     return actionTitle && selectedFeatureAttributes
@@ -2596,6 +2551,18 @@ class Popup extends FeatureContentMixin(Widget) {
     if (selectedFeatureWidget) {
       this.viewModel.content = selectedFeatureWidget;
     }
+  }
+
+  private _unobserveFeatureMenuObserver(): void {
+    if (this._featureMenuIntersectionObserverNode) {
+      this._featureMenuIntersectionObserver.unobserve(this._featureMenuIntersectionObserverNode);
+    }
+  }
+
+  private _featureMenuIntersectionObserverCreated(el: HTMLDivElement): void {
+    this._unobserveFeatureMenuObserver();
+    this._featureMenuIntersectionObserver.observe(el);
+    this._featureMenuIntersectionObserverNode = el;
   }
 
   private _handleFeatureMenuKeyup(event: KeyboardEvent): void {
@@ -2733,7 +2700,7 @@ class Popup extends FeatureContentMixin(Widget) {
       return;
     }
 
-    const view = this.get<MapView | SceneView>("viewModel.view");
+    const view = this.get<MapView | ISceneView>("viewModel.view");
     this._createSpinner(view);
   }
 
@@ -2808,7 +2775,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
   private _isScreenLocationWithinView(
     screenLocation: ScreenPoint,
-    view: MapView | SceneView
+    view: MapView | ISceneView
   ): boolean {
     return (
       screenLocation.x > -1 &&
@@ -2860,7 +2827,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
     const { screenLocation, view } = viewModel;
 
-    if (!screenLocation || !view || !containerNode) {
+    if (isNone(screenLocation) || !view || !containerNode) {
       return "top-center";
     }
 
@@ -3053,7 +3020,7 @@ class Popup extends FeatureContentMixin(Widget) {
   private _calculateAlignmentPosition(
     x: number,
     y: number,
-    view: MapView | SceneView,
+    view: MapView | ISceneView,
     width: number
   ): PopupPosition {
     const { currentAlignment, _pointerOffsetInPx: pointerOffset } = this;
@@ -3108,7 +3075,7 @@ class Popup extends FeatureContentMixin(Widget) {
   }
 
   private _calculatePositionStyle(
-    screenLocation: ScreenPoint,
+    screenLocation: Maybe<ScreenPoint>,
     domWidth: number
   ): PopupPositionStyle {
     const { dockEnabled, view } = this;
@@ -3126,7 +3093,7 @@ class Popup extends FeatureContentMixin(Widget) {
       };
     }
 
-    if (!screenLocation || !domWidth) {
+    if (isNone(screenLocation) || !domWidth) {
       return undefined;
     }
 
@@ -3150,7 +3117,7 @@ class Popup extends FeatureContentMixin(Widget) {
     };
   }
 
-  private _viewChange(newView: MapView | SceneView, oldView: MapView | SceneView): void {
+  private _viewChange(newView: MapView | ISceneView, oldView: MapView | ISceneView): void {
     if (newView && oldView) {
       this.close();
       this.clear();
@@ -3159,7 +3126,7 @@ class Popup extends FeatureContentMixin(Widget) {
 
   private _viewReadyChange(isReady: boolean, wasReady: boolean): void {
     if (isReady) {
-      const view = this.get<MapView | SceneView>("viewModel.view");
+      const view = this.get<MapView | ISceneView>("viewModel.view");
       this._wireUpView(view);
       return;
     }
@@ -3170,7 +3137,7 @@ class Popup extends FeatureContentMixin(Widget) {
     }
   }
 
-  private _wireUpView(view?: MapView | SceneView): void {
+  private _wireUpView(view?: MapView | ISceneView): void {
     this._destroySpinner();
 
     if (!view) {
@@ -3322,12 +3289,10 @@ class Popup extends FeatureContentMixin(Widget) {
     element.focus();
   }
 
-  private _featureMenuViewportNodeUpdated(element: HTMLElement): void {
-    if (!element) {
-      return;
+  private _featureMenuViewportScrollTop(): void {
+    if (this._featureMenuViewportNode) {
+      this._featureMenuViewportNode.scrollTop = 0;
     }
-
-    element.scrollTop = 0;
   }
 
   private _toggleScreenLocationEnabled(): void {
@@ -3386,7 +3351,7 @@ class Popup extends FeatureContentMixin(Widget) {
     }
   }
 
-  private _createSpinner(view: MapView | SceneView): void {
+  private _createSpinner(view: MapView | ISceneView): void {
     if (!view) {
       return;
     }

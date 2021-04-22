@@ -11,7 +11,7 @@
  * far apart from one another; the feature furthest from the {@link module:esri/Camera} will appear smaller than
  * the feature closer to the camera. The color variable can help the user understand that both features have similar values.
  *
- * ![ColorSizeSlider with perspective](../../assets/img/apiref/widgets/sliders/colorsizeslider-perspective.png "ColorSizeSlider with perspective")
+ * ![ColorSizeSlider with perspective](../assets/img/apiref/widgets/sliders/colorsizeslider-perspective.png "ColorSizeSlider with perspective")
  *
  * At a minimum you must set the [min](#min), [max](#max), and [stops](#stops) properties
  * of the widget. The stops are used to render a color gradient on the track of the slider.
@@ -19,7 +19,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![ColorSizeSlider with annotations](../../assets/img/apiref/widgets/sliders/colorsizeslider-labels.png "ColorSizeSlider with annotations")
+ * ![ColorSizeSlider with annotations](../assets/img/apiref/widgets/sliders/colorsizeslider-labels.png "ColorSizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer createContinuousRenderer}
@@ -82,29 +82,29 @@
  */
 
 // esri.core
-import EsriError from "esri/core/Error";
-import { isSome } from "esri/core/maybe";
+import EsriError from "esri/../core/Error";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers
-import ClassBreaksRenderer from "esri/renderers/ClassBreaksRenderer";
+import ClassBreaksRenderer from "esri/../renderers/ClassBreaksRenderer";
 
 // esri.renderers.visualVariables
-import ColorVariable from "esri/renderers/visualVariables/ColorVariable";
-import SizeVariable from "esri/renderers/visualVariables/SizeVariable";
+import ColorVariable from "esri/../renderers/visualVariables/ColorVariable";
+import SizeVariable from "esri/../renderers/visualVariables/SizeVariable";
 
 // esri.renderers.visualVariables.support
-import ColorSizeStop from "esri/renderers/visualVariables/support/ColorSizeStop";
-import ColorStop from "esri/renderers/visualVariables/support/ColorStop";
-import SizeStop from "esri/renderers/visualVariables/support/SizeStop";
+import ColorSizeStop from "esri/../renderers/visualVariables/support/ColorSizeStop";
+import ColorStop from "esri/../renderers/visualVariables/support/ColorStop";
+import SizeStop from "esri/../renderers/visualVariables/support/SizeStop";
 
 // esri.smartMapping.renderers
-import { RendererResult } from "esri/smartMapping/renderers/univariateColorSize";
+import { RendererResult } from "esri/../smartMapping/renderers/univariateColorSize";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -121,7 +121,7 @@ import { getDynamicPathForSizeStops, getPathForSizeStops } from "esri/widgets/su
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-size-slider",
@@ -218,6 +218,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    * // enables the primary handles and syncs it with the others
    * slider.primaryHandleEnabled = true;
    * slider.handlesSyncedToPrimary = true;
+   * slider.persistSizeRangeEnabled = true;
    */
   @aliasOf("viewModel.handlesSyncedToPrimary") handlesSyncedToPrimary: boolean = null;
 
@@ -254,22 +255,42 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/ColorSizeSlider/t9n/ColorSizeSlider")
   messages: ColorSizeSliderMessages = null;
 
+  //----------------------------------
+  //  persistSizeRangeEnabled
+  //----------------------------------
+
   /**
-   * Defines the object specification for each [stops](#stops).
+   * Only applicable when three thumbs (i.e. handles) are set on the
+   * slider (i.e. when [primaryHandleEnabled](#primaryHandleEnabled) is `true`).
+   * This property is typically used in diverging, or `above-and-below` renderer configurations.
    *
-   * @typedef module:esri/widgets/smartMapping/ColorSizeSlider~ColorSizeStop
+   * When `true`, ensures symbol sizes in the `above` range
+   * are consistent with symbol sizes in the `below` range for all slider thumb positions.
+   * In other words, the size values in the [stops](#stops) will adjust
+   * proportionally according to the positions of the data values within the
+   * constraints of the size range (maxSize - minSize) as the slider thumbs update.
+   * When `false`, size values in the stops will remain the same even when slider thumb values
+   * change.
    *
-   * @property {module:esri/Color} color - Features with the given stop `value` will be rendered with
-   *   the associated color.
-   * @property {string} [label] - Label describing the given `value`.
-   * @property {number} size - Features with the given stop `value` will be rendered with
-   *   the associated size.
-   * @property {number} value - The data value associated with the given `color` and `size`.
+   * In most cases, this should be set to `true` to keep sizes in the `above` range consistent with
+   * sizes in the `below` range to avoid map misinterpretation.
+   *
+   * @name persistSizeRangeEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.19
+   *
+   * @see [primaryHandleEnabled](#primaryHandleEnabled)
+   *
+   * @example
+   * slider.primaryHandleEnabled = true;
+   * slider.persistSizeRangeEnabled = true;
    */
+  @aliasOf("viewModel.persistSizeRangeEnabled") persistSizeRangeEnabled: boolean = null;
 
   //----------------------------------
   //  primaryHandleEnabled
@@ -293,11 +314,13 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    * @since 4.18
    *
    * @see [handlesSyncedToPrimary](#handlesSyncedToPrimary)
+   * @see [persistSizeRangeEnabled](#persistSizeRangeEnabled)
    *
    * @example
    * // enables the primary handles and syncs it with the others
    * slider.primaryHandleEnabled = true;
    * slider.handlesSyncedToPrimary = true;
+   * slider.persistSizeRangeEnabled = true;
    */
   @aliasOf("viewModel.primaryHandleEnabled") primaryHandleEnabled: boolean = null;
 
@@ -321,7 +344,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    *
    * @name stops
    * @instance
-   * @type {module:esri/widgets/smartMapping/ColorSizeSlider~ColorSizeStop[]}
+   * @type {module:esri/renderers/visualVariables/support/ColorSizeStop[]}
    *
    * @see [fromRendererResult()](#fromRendererResult)
    * @see [updateVisualVariables()](#updateVisualVariables)
@@ -349,19 +372,6 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ColorSizeSlider/ColorSizeSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.handlesSyncedToPrimary",
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.primaryHandleEnabled",
-    "viewModel.stops",
-    "viewModel.values",
-    "viewModel.zoomOptions"
-  ])
   viewModel: ColorSizeSliderViewModel = new ColorSizeSliderViewModel();
 
   //----------------------------------
@@ -492,6 +502,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       stops,
       primaryHandleEnabled,
       handlesSyncedToPrimary: primaryHandleEnabled,
+      persistSizeRangeEnabled: primaryHandleEnabled,
       histogramConfig: {
         average: avg,
         standardDeviation: stddev,
@@ -605,6 +616,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       stops,
       primaryHandleEnabled,
       handlesSyncedToPrimary: primaryHandleEnabled,
+      persistSizeRangeEnabled: primaryHandleEnabled,
       histogramConfig: {
         average: avg,
         standardDeviation: stddev,
@@ -837,7 +849,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
           pathHeight: offsetHeight,
           pathWidth: offsetWidth,
           stops,
-          padding: topWidth
+          padding: _minRampFillWidth
         })
       : getPathForSizeStops({
           bottomValue,

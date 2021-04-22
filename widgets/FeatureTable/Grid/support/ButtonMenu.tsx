@@ -2,15 +2,10 @@
  * This widget provides the underlying menu functionality when working with the
  * {@link module:esri/widgets/FeatureTable} widget.
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- * [Dark themed](../guide/styling/#themes) CSS is currently not supported.
- * :::
- *
  * The following image displays the default `ButtonMenu` alongside a custom
  * `ButtonMenu` widget within a {@link module:esri/widgets/FeatureTable}.
  *
- * ![default and custom feature table menus](../../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
+ * ![default and custom feature table menus](../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
  *
  * The table below details accessibility keys that can be used when working with the menu.
  *
@@ -38,16 +33,16 @@
  */
 
 // esri.core
-import { eventKey } from "esri/core/events";
-import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import { isSome } from "esri/core/maybe";
-import { watch } from "esri/core/watchUtils";
+import { eventKey } from "esri/../../../core/events";
+import { HandleOwnerMixin } from "esri/../../../core/HandleOwner";
+import { isSome } from "esri/../../../core/maybe";
+import { watch } from "esri/../../../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../../Widget";
 
 // esri.widgets.FeatureTable.Grid.support
 import ButtonMenuItem from "esri/widgets/ButtonMenuItem";
@@ -55,9 +50,9 @@ import ButtonMenuViewModel from "esri/widgets/ButtonMenuViewModel";
 import { ButtonMenuConfig } from "esri/widgets/interfaces";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import Popover from "esri/support/Popover";
-import { isRTL, renderable, tsx } from "esri/support/widget";
+import { VNode } from "esri/../../support/interfaces";
+import Popover from "esri/../../support/Popover";
+import { isRTL, tsx } from "esri/../../support/widget";
 
 const CSS = {
   base: "esri-button-menu",
@@ -118,28 +113,31 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
 
   constructor(params?: ButtonMenuConfig, parentNode?: string | Element) {
     super(params, parentNode);
+
+    this._handleOutsideClick = this._handleOutsideClick.bind(this);
   }
 
-  initialize(): void {
-    // #28536
-    this.when(() => {
-      this._popover = new Popover({
-        owner: this,
-        placement: isRTL() ? "bottom-start" : "bottom-end",
-        renderContentFunction: this.renderMenuContent,
-        anchorElement: this._rootNode
-      });
-      // Sync properties
-      this.handles.add([watch(this, "open", (isOpen) => this._popover.set("open", isOpen))]);
+  postInitialize(): void {
+    // #28536 #34479
+    this._popover = new Popover({
+      owner: this,
+      open: !!this.open,
+      placement: isRTL() ? "bottom-start" : "bottom-end",
+      renderContentFunction: this.renderMenuContent,
+      anchorElement: this._rootNode
     });
 
-    document.addEventListener("click", (event) => this._handleOutsideClick(event));
+    // Sync properties
+    this.handles.add([watch(this, "open", (isOpen) => this._popover.set("open", isOpen))]);
+
+    // Close menu when clicking elsewhere on the page
+    document.addEventListener("click", this._handleOutsideClick);
   }
 
   destroy(): void {
     this._popover?.destroy();
     this._popover = null;
-    document.removeEventListener("click", (event) => this._handleOutsideClick(event));
+    document.removeEventListener("click", this._handleOutsideClick);
   }
 
   private _handleOutsideClick(event: MouseEvent): void {
@@ -178,14 +176,13 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
   /**
    *  Adds a CSS class to the menu button's DOM node.
    *
-   * ![featuretable widget menu items](../../assets/img/apiref/widgets/featuretable/button-menu-icon-class.png)
+   * ![featuretable widget menu items](../assets/img/apiref/widgets/featuretable/button-menu-icon-class.png)
    *
    * @name iconClass
    * @instance
    * @type {string}
    */
   @property()
-  @renderable()
   iconClass: string = null;
 
   //----------------------------------
@@ -240,7 +237,6 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * @type {string}
    */
   @property()
-  @renderable()
   label: string = null;
 
   //----------------------------------
@@ -248,7 +244,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
   //----------------------------------
 
   /**
-   * Indicates if the menu content is visible.
+   * Indicates if the menu content is open and visible.
    *
    * @name open
    * @instance
@@ -266,7 +262,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * The view model for this widget. This is a class that contains all the logic
    * (properties and methods) that controls this widget's behavior. See the
    * {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel} class to access
-   * all properties and methods on the widget.
+   * all the properties and methods on the widget.
    *
    * @name viewModel
    * @instance
@@ -274,7 +270,6 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  @renderable(["viewModel.items", "viewModel.open"])
   viewModel: ButtonMenuViewModel = new ButtonMenuViewModel();
 
   //--------------------------------------------------------------------------
@@ -309,7 +304,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
       <button
         aria-pressed={open.toString()}
         aria-controls={`${id}-menu`}
-        aria-expanded={open}
+        aria-expanded={open.toString()}
         aria-haspopup="true"
         aria-label={label}
         bind={this}
@@ -394,7 +389,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
           for={itemId}
           id={labelId}
         >
-          <span class={this.classes(CSS.icon, item.iconClass)} aria-hidden={true} />
+          <span class={this.classes(CSS.icon, item.iconClass)} aria-hidden="true" />
           <span class={CSS.itemLabelContent}>{item.label}</span>
         </label>
         <ul

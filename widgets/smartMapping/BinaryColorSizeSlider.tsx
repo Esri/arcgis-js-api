@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![BinaryColorSizeSlider with annotations](../../assets/img/apiref/widgets/sliders/sizeslider-labels.png "BinaryColorSizeSlider with annotations")
+ * ![BinaryColorSizeSlider with annotations](../assets/img/apiref/widgets/sliders/sizeslider-labels.png "BinaryColorSizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/size#createContinuousRenderer createContinuousRenderer}
@@ -71,36 +71,36 @@
  */
 
 // esri
-import Color from "esri/Color";
+import Color from "esri/../Color";
 
 // esri.core
-import { isSome } from "esri/core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers
-import ClassBreaksRenderer from "esri/renderers/ClassBreaksRenderer";
+import ClassBreaksRenderer from "esri/../renderers/ClassBreaksRenderer";
 
 // esri.renderers.visualVariables
-import SizeVariable from "esri/renderers/visualVariables/SizeVariable";
+import SizeVariable from "esri/../renderers/visualVariables/SizeVariable";
 
 // esri.renderers.visualVariables.support
-import SizeStop from "esri/renderers/visualVariables/support/SizeStop";
+import SizeStop from "esri/../renderers/visualVariables/support/SizeStop";
 
 // esri.smartMapping.renderers
-import { RendererResult } from "esri/smartMapping/renderers/univariateColorSize";
+import { RendererResult } from "esri/../smartMapping/renderers/univariateColorSize";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.symbols
-import CIMSymbol from "esri/symbols/CIMSymbol";
-import Symbol from "esri/symbols/Symbol";
-import Symbol3D from "esri/symbols/Symbol3D";
+import CIMSymbol from "esri/../symbols/CIMSymbol";
+import Symbol from "esri/../symbols/Symbol";
+import Symbol3D from "esri/../symbols/Symbol3D";
 
 // esri.symbols.support
-import { getCIMSymbolColor } from "esri/symbols/support/cimSymbolUtils";
+import { getCIMSymbolColor } from "esri/../symbols/support/cimSymbolUtils";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -121,7 +121,7 @@ import {
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-binary-color-size-slider",
@@ -210,12 +210,10 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
   //----------------------------------
 
   /**
-   * Only applicable when three thumbs (i.e. handles) are set on the slider [values](#values). This property
+   * This property
    * indicates whether the position of the outside handles are synced with the middle, or primary,
    * handle. When enabled, if the primary handle is moved then the outside handle positions are updated
    * while maintaining a fixed distance from the primary handle.
-   *
-   * Only applicable when [primaryHandleEnabled](#primaryHandleEnabled) is `true`.
    *
    * @name handlesSyncedToPrimary
    * @instance
@@ -265,9 +263,35 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/SizeSlider/t9n/SizeSlider")
   messages: SizeSliderMessages = null;
+
+  //----------------------------------
+  //  persistSizeRangeEnabled
+  //----------------------------------
+
+  /**
+   * When `true`, ensures symbol sizes in the `above` range
+   * are consistent with symbol sizes in the `below` range for all slider thumb positions.
+   * In other words, the size values in the [stops](#stops) will adjust
+   * proportionally according to the positions of the data values within the
+   * constraints of the size range (maxSize - minSize) as the slider thumbs update.
+   * When `false`, size values in the stops will remain the same even when slider thumb values
+   * change.
+   *
+   * In most cases, this should be set to `true` to keep sizes in the `above` range consistent with
+   * sizes in the `below` range to avoid map misinterpretation.
+   *
+   * @name persistSizeRangeEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.19
+   *
+   * @example
+   * slider.persistSizeRangeEnabled = true;
+   */
+  @aliasOf("viewModel.persistSizeRangeEnabled") persistSizeRangeEnabled: boolean = null;
 
   //----------------------------------
   //  stops
@@ -329,7 +353,6 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
    * };
    */
   @property()
-  @renderable()
   style: BinaryColorSizeSliderStyle = { ...DEFAULT_STYLE };
 
   @cast("style")
@@ -352,17 +375,6 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/BinaryColorSizeSlider/BinaryColorSizeSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.stops",
-    "viewModel.values",
-    "viewModel.zoomOptions"
-  ])
   viewModel: BinaryColorSizeSliderViewModel = new BinaryColorSizeSliderViewModel();
 
   //----------------------------------
@@ -496,7 +508,8 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
         trackBelowFillColor,
         trackFillColor
       },
-      handlesSyncedToPrimary: true
+      handlesSyncedToPrimary: true,
+      persistSizeRangeEnabled: true
     });
   }
 
@@ -601,7 +614,8 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
         trackBelowFillColor,
         trackFillColor
       },
-      handlesSyncedToPrimary: true
+      handlesSyncedToPrimary: true,
+      persistSizeRangeEnabled: true
     });
   }
 

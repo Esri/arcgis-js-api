@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces","../../../../../../chunks/vec3f32","../attributes/VertexTextureCoordinates.glsl"],(function(e,s,o,t){"use strict";const r=o.fromValues(0,.6,.2);function a(e,o){const r=e.fragment,a=o.hasMetalnessAndRoughnessTexture||o.hasEmissionTexture||o.hasOcclusionTexture;1===o.pbrMode&&a&&e.include(t.VertexTextureCoordinates,o),2!==o.pbrMode?(0===o.pbrMode&&r.code.add(s.glsl`
       float getBakedOcclusion() { return 1.0; }
@@ -45,4 +45,4 @@ define(["exports","../../shaderModules/interfaces","../../../../../../chunks/vec
       void applyPBRFactors() {}
 
       float getBakedOcclusion() { return 1.0; }
-    `)}!function(e){e.bindUniforms=function(e,s,o=!1){o||(e.setUniform3fv("mrrFactors",s.mrrFactors),e.setUniform3fv("emissionFactor",s.emissiveFactor))}}(a||(a={})),e.PBRSchematicMRRValues=r,e.PhysicallyBasedRenderingParameters=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}!function(e){function s(e,s,o=!1){o||(e.setUniform3fv("mrrFactors",s.mrrFactors),e.setUniform3fv("emissionFactor",s.emissiveFactor))}e.bindUniforms=s}(a||(a={})),e.PBRSchematicMRRValues=r,e.PhysicallyBasedRenderingParameters=a,Object.defineProperty(e,"__esModule",{value:!0})}));

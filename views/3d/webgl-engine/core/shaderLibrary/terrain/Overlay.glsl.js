@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../shading/Water.glsl","../shading/EvaluateMainLighting.glsl"],(function(e,o,r,t){"use strict";e.Overlay=function(e,a){3!==a.pbrMode&&4!==a.pbrMode||e.include(r.Water,a),e.vertex.uniforms.add("overlayTexOffset","vec4"),e.vertex.uniforms.add("overlayTexScale","vec4"),e.varyings.add("vtcOverlay","vec4"),e.vertex.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","../shading/Water.glsl","../shading/EvaluateMainLighting.glsl"],(function(e,o,r,t){"use strict";function a(e,a){3!==a.pbrMode&&4!==a.pbrMode||e.include(r.Water,a),e.vertex.uniforms.add("overlayTexOffset","vec4"),e.vertex.uniforms.add("overlayTexScale","vec4"),e.varyings.add("vtcOverlay","vec4"),e.vertex.code.add(o.glsl`
     void setOverlayVTC(in vec2 uv) {
       vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;
     }
@@ -38,4 +38,4 @@ define(["exports","../../shaderModules/interfaces","../shading/Water.glsl","../s
       // the terrain renderer assumes a premultiplied color output without gamma.
       return vec4(final, colorInput.w);
     }
-    `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `))}e.Overlay=a,Object.defineProperty(e,"__esModule",{value:!0})}));

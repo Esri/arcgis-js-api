@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color"],(function(r,o,e,t,s,c,p,u,n,i,l,a){"use strict";var d;let y=d=function(o){function e(r){var e;return(e=o.call(this,r)||this).color=null,e.ratio=null,e}return r._inheritsLoose(e,o),e.prototype.clone=function(){return new d({color:this.color,ratio:this.ratio})},e}(l.JSONSupport);return o.__decorate([c.property({type:a,json:{write:!0}})],y.prototype,"color",void 0),o.__decorate([c.property({type:Number,json:{write:!0}})],y.prototype,"ratio",void 0),y=d=o.__decorate([p.subclass("esri.renderers.support.HeatmapColorStop")],y),y}));

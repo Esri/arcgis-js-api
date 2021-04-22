@@ -43,6 +43,11 @@
   [dir="rtl"] {
     .esri-histogram {
       direction: rtl;
+
+      .esri-histogram__average-label {
+        direction: rtl;
+        unicode-bidi: plaintext;
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";e.TextureAtlasLookup=function(e){e.extensions.add("GL_EXT_shader_texture_lod"),e.extensions.add("GL_OES_standard_derivatives"),e.fragment.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function a(e){e.extensions.add("GL_EXT_shader_texture_lod"),e.extensions.add("GL_OES_standard_derivatives"),e.fragment.code.add(t.glsl`
     #ifndef GL_EXT_shader_texture_lod
       float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {
         float deltaMaxSqr = max(dot(ddx, ddx), dot(ddy, ddy));
@@ -17,8 +17,10 @@ define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";
 
       // calculate derivative of continuous texture coordinate
       // to avoid mipmapping artifacts caused by manual wrapping in shader
-      vec2 dUVdx = dFdx(textureCoordinates) * atlasScale;
-      vec2 dUVdy = dFdy(textureCoordinates) * atlasScale;
+      // clamp the derivatives to avoid discoloring when zooming out.
+      float maxdUV = 0.125; // Emprirically tuned compromise between discoloring and aliasing noise.
+      vec2 dUVdx = clamp(dFdx(textureCoordinates), -maxdUV, maxdUV) * atlasScale;
+      vec2 dUVdy = clamp(dFdy(textureCoordinates), -maxdUV, maxdUV) * atlasScale;
 
       #ifdef GL_EXT_shader_texture_lod
         return texture2DGradEXT(texture, uvAtlas, dUVdx, dUVdy);
@@ -32,4 +34,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";
         return texture2D(texture, uvAtlas, mipMapLevel - autoMipMapLevel);
       #endif
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.TextureAtlasLookup=a,Object.defineProperty(e,"__esModule",{value:!0})}));

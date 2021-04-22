@@ -27,6 +27,7 @@ $background-color--offset-subtle: offset-background-color($background-color, 3.5
 
 // Buttons
 $button-color: $Calcite_Highlight_Blue_350 !default;
+$button-color--active: $Calcite_Highlight_Blue_400 !default;
 $button-color--bright: $Calcite_Blue_a100 !default;
 $button-color--hover: darken($button-color, 10%) !default;
 $button-color--inverse: $interactive-font-color--inverse !default;

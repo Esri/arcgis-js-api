@@ -7,14 +7,14 @@
  */
 
 // esri
-import Color from "esri/Color";
+import Color from "esri/../Color";
 
 // esri.core
-import { isSome } from "esri/core/maybe";
-import * as watchUtils from "esri/core/watchUtils";
+import { isSome } from "esri/../core/maybe";
+import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import Histogram from "esri/Histogram";
@@ -148,6 +148,13 @@ export abstract class SmartMappingSliderBase extends Widget {
 
     const slider = this.slider;
 
+    // #34053 #34463 - disable editing of dates unless
+    // ... user provides a custom parser. Will be refactored
+    // ... when date support is added to the default slider
+    if (props?.hasTimeData && !props?.inputParseFunction && !props?.inputFormatFunction) {
+      slider.set({ labelInputsEnabled: false, rangeLabelInputsEnabled: false });
+    }
+
     this.own(
       slider.on("max-change", (event) => this.emit("max-change", event)),
       slider.on("min-change", (event) => this.emit("min-change", event)),
@@ -168,6 +175,11 @@ export abstract class SmartMappingSliderBase extends Widget {
         const { histogram, labelFormatFunction } = this;
 
         histogram.set({ labelFormatFunction });
+      }),
+      // Reactivate inputs if formatters are present
+      watchUtils.watch(this, "hasTimeData", (newValue) => {
+        const showInputs = !newValue || (this.inputFormatFunction && this.inputParseFunction);
+        slider.set({ labelInputsEnabled: showInputs, rangeLabelInputsEnabled: showInputs });
       })
     );
 
@@ -307,12 +319,12 @@ export abstract class SmartMappingSliderBase extends Widget {
    * The image below demonstrates how slider input values resemble corresponding slider values by default
    * and won't match the formatting set in `labelFormatFunction`.
    *
-   * ![Slider without input formatter](../../assets/img/apiref/widgets/sliders/slider-no-input-formatter.png "Slider without input formatter")
+   * ![Slider without input formatter](../assets/img/apiref/widgets/sliders/slider-no-input-formatter.png "Slider without input formatter")
    *
    * If you want to format slider input values so they match thumb labels, you can pass the same function set in `labelFormatFunction` to
    * `inputFormatFunction` for consistent formatting.
    *
-   * ![Slider with input formatter](../../assets/img/apiref/widgets/sliders/slider-input-formatter.png "Slider with input formatter")
+   * ![Slider with input formatter](../assets/img/apiref/widgets/sliders/slider-input-formatter.png "Slider with input formatter")
    *
    * However, if an `inputFormatFunction` is specified, you must also write a corresponding
    * [inputParseFunction](#inputParseFunction) to parse user inputs to understandable slider values. In most cases, if
@@ -442,9 +454,7 @@ export abstract class SmartMappingSliderBase extends Widget {
    * @example
    * slider.max = 150;
    */
-  @property({
-    dependsOn: ["viewModel.max", "viewModel.zoomOptions"]
-  })
+  @property()
   get max(): number {
     return this.viewModel ? this.viewModel.getUnzoomedMax() : null;
   }
@@ -470,9 +480,7 @@ export abstract class SmartMappingSliderBase extends Widget {
    * @example
    * slider.min = -150;
    */
-  @property({
-    dependsOn: ["viewModel.min", "viewModel.zoomOptions"]
-  })
+  @property()
   get min(): number {
     return this.viewModel ? this.viewModel.getUnzoomedMin() : null;
   }
@@ -609,7 +617,7 @@ export abstract class SmartMappingSliderBase extends Widget {
    * top thumb cannot be moved past the zoom max of `31` even though the slider
    * max is `200`.
    *
-   * ![slider-zoom](../../assets/img/apiref/widgets/sliders/slider-zoomed.png)
+   * ![slider-zoom](../assets/img/apiref/widgets/sliders/slider-zoomed.png)
    *
    * To exit a zoomed state, the user can click the
    * jagged line or the developer can set the `zoomOptions` to `null`. It
@@ -619,7 +627,7 @@ export abstract class SmartMappingSliderBase extends Widget {
    * Setting the `zoomOptions` is useful when the slider is tied to heavily skewed
    * datasets where the histogram renders only one or two bars because of outliers.
    *
-   * ![slider-not-zoomed](../../assets/img/apiref/widgets/sliders/slider-skewed-not-zoomed.png)
+   * ![slider-not-zoomed](../assets/img/apiref/widgets/sliders/slider-skewed-not-zoomed.png)
    *
    * You can remove the influence of outliers by zooming the slider and regenerating
    * a histogram based on the zoomed min and max. This will provide a better view of the data

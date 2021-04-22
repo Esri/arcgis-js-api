@@ -30,12 +30,12 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![Histogram with annotations](../../assets/img/apiref/widgets/histogram-basic-labels.png "Histogram with annotations")
+ * ![Histogram with annotations](../assets/img/apiref/widgets/histogram-basic-labels.png "Histogram with annotations")
  *
  * The [barCreatedFunction](#barCreatedFunction) property may be used to style the histogram bins based on the color
  * of features in the renderer of a layer associated with the histogram.
  *
- * ![Histogram with color](../../assets/img/apiref/widgets/histogram-colors.png "Histogram with color")
+ * ![Histogram with color](../assets/img/apiref/widgets/histogram-colors.png "Histogram with color")
  *
  * @module esri/widgets/Histogram
  * @since 4.12
@@ -73,7 +73,7 @@ import HistogramMessages from "esri/widgets/Histogram/t9n/Histogram";
 
 // esri.widgets.support
 import { LabelFormatFunction, VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-histogram",
@@ -248,7 +248,6 @@ class Histogram extends Widget {
    * };
    */
   @property()
-  @renderable()
   barCreatedFunction: BarCreatedFunction = null;
 
   /**
@@ -338,7 +337,6 @@ class Histogram extends Widget {
    * });
    */
   @property()
-  @renderable()
   dataLines: DataLineInfos[] = null;
 
   /**
@@ -374,7 +372,6 @@ class Histogram extends Widget {
    * };
    */
   @property()
-  @renderable()
   dataLineCreatedFunction: DataLineCreatedFunction = null;
 
   //----------------------------------
@@ -396,7 +393,6 @@ class Histogram extends Widget {
    * };
    */
   @property()
-  @renderable()
   dataLineUpdatedFunction: DataLineUpdatedFunction = null;
 
   //----------------------------------
@@ -510,7 +506,6 @@ class Histogram extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Histogram/t9n/Histogram")
   messages: HistogramMessages = null;
 
@@ -565,14 +560,6 @@ class Histogram extends Widget {
    * @type {module:esri/widgets/Histogram/HistogramViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.average",
-    "viewModel.bins",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.state"
-  ])
   viewModel: HistogramViewModel = new HistogramViewModel();
 
   //--------------------------------------------------------------------------

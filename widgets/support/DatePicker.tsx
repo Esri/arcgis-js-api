@@ -11,17 +11,17 @@
  */
 
 // esri
-import { formatDate } from "esri/intl";
+import { formatDate } from "esri/../intl";
 
 // esri.core
-import { eventKey } from "esri/core/events";
-import Logger from "esri/core/Logger";
+import { eventKey } from "esri/../core/events";
+import Logger from "esri/../core/Logger";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.intl
-import { loadMoment } from "esri/intl/moment";
+import { loadMoment } from "esri/../intl/moment";
 
 // esri.widgets
 import Widget from "esri/Widget";
@@ -31,7 +31,7 @@ import { parseDateIntoParts } from "esri/widgets/datePickerUtils";
 import DatePickerViewModel from "esri/widgets/DatePickerViewModel";
 import { VNode } from "esri/widgets/interfaces";
 import Popover from "esri/widgets/Popover";
-import { accessibleHandler, isRTL, messageBundle, renderable, storeNode, tsx } from "esri/widgets/widget";
+import { accessibleHandler, isRTL, messageBundle, storeNode, tsx } from "esri/widgets/widget";
 
 // esri.widgets.support.t9n
 import DatePickerMessages from "esri/widgets/t9n/DatePicker";
@@ -196,7 +196,6 @@ class DatePicker extends Widget {
    * @private
    */
   @property()
-  @renderable()
   dateInputEnabled = false;
 
   //----------------------------------
@@ -231,7 +230,6 @@ class DatePicker extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/support/t9n/DatePicker")
   messages: DatePickerMessages = null;
 
@@ -281,7 +279,6 @@ class DatePicker extends Widget {
   @property({
     type: DatePickerViewModel
   })
-  @renderable("viewModel.value")
   viewModel = new DatePickerViewModel();
 
   //--------------------------------------------------------------------------

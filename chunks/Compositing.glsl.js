@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass"],(function(e,r,a,o){"use strict";function t(e){const t=new a.ShaderBuilder;return t.include(o.ScreenSpacePass),t.fragment.uniforms.add("tex","sampler2D"),0===e.function&&(e.hasOpacityFactor?(t.fragment.uniforms.add("opacity","float"),t.fragment.code.add(r.glsl`
       void main() {
@@ -16,6 +16,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       vec4 srcColor = texture2D(colorTexture, uv);
       float srcAlpha = texture2D(alphaTexture, uv).r;
       vec4 frontFace = texture2D(frontFaceTexture, uv);
-
+      if(srcColor.a <= 1e-5){
+        discard;
+      }
       gl_FragColor = vec4(mix(srcColor.rgb/srcColor.a, frontFace.rgb, frontFace.a), 1.0 - srcAlpha);
     }`)),t}var n=Object.freeze({__proto__:null,build:t});e.CompositingShader=n,e.build=t}));

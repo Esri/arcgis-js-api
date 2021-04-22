@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl"],(function(e,a,t,r){"use strict";function n(e){const n=new t.ShaderBuilder;return n.attributes.add("position","vec2"),n.attributes.add("uv0","vec2"),n.varyings.add("worldRay","vec3"),n.varyings.add("vtc","vec2"),e.haze&&n.varyings.add("eyeDir","vec3"),n.vertex.uniforms.add("projectionInverse","mat4"),n.vertex.uniforms.add("viewInverse","mat4"),n.vertex.code.add(a.glsl`
     void main(void) {

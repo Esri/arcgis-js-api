@@ -1,11 +1,11 @@
 // esri.core
-import * as watchUtils from "esri/core/watchUtils";
+import * as watchUtils from "esri/../../core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.BuildingExplorer
 import BuildingDisciplinesViewModel from "esri/BuildingDisciplinesViewModel";
@@ -14,8 +14,8 @@ import BuildingDisciplinesViewModel from "esri/BuildingDisciplinesViewModel";
 import BuildingDisciplinesNode from "esri/widgets/BuildingDisciplinesNode";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx } from "esri/../support/widget";
 
 interface ConstructionParameters {
   toggleSiblingsVisibility?: boolean;
@@ -93,7 +93,6 @@ class BuildingDisciplinesTree extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingDisciplinesViewModel })
-  @renderable()
   viewModel = this._defaultViewModel;
 
   /**
@@ -106,7 +105,6 @@ class BuildingDisciplinesTree extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   messages: Messages = DEFAULT_MESSAGES;
 
   /**
@@ -116,7 +114,6 @@ class BuildingDisciplinesTree extends Widget {
    * @ignore
    */
   @property({ nonNullable: true })
-  @renderable()
   toggleSiblingsVisibility: boolean = false;
 
   //--------------------------------------------------------------------------
@@ -129,7 +126,6 @@ class BuildingDisciplinesTree extends Widget {
    * Widgets which render the children of the tree's root (i.e. the categories).
    */
   @property()
-  @renderable()
   private _childWidgets: BuildingDisciplinesNode[] = [];
 
   //--------------------------------------------------------------------------

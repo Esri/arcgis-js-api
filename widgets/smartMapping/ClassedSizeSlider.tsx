@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![ClassedSizeSlider with annotations](../../assets/img/apiref/widgets/sliders/classedsizeslider-labels.png "ClassedSizeSlider with annotations")
+ * ![ClassedSizeSlider with annotations](../assets/img/apiref/widgets/sliders/classedsizeslider-labels.png "ClassedSizeSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/size#createClassBreaksRenderer createClassBreaksRenderer}
@@ -72,22 +72,22 @@
  */
 
 // esri
-import Color from "esri/Color";
+import Color from "esri/../Color";
 
 // esri.core
-import { isSome } from "esri/core/maybe";
+import { isSome } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.support
-import ClassBreakInfo from "esri/renderers/support/ClassBreakInfo";
+import ClassBreakInfo from "esri/../renderers/support/ClassBreakInfo";
 
 // esri.smartMapping.renderers
-import { ClassBreaksRendererResult } from "esri/smartMapping/renderers/color";
+import { ClassBreaksRendererResult } from "esri/../smartMapping/renderers/color";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -104,7 +104,7 @@ import { getFillFromColor } from "esri/widgets/support/utils";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-classed-size-slider",
@@ -235,7 +235,6 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/ClassedSizeSlider/t9n/ClassedSizeSlider")
   messages: ClassedSizeSliderMessages = null;
 
@@ -266,7 +265,6 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
    * };
    */
   @property()
-  @renderable()
   style: ClassedSizeSliderStyle = { ...DEFAULT_STYLE };
 
   @cast("style")
@@ -289,15 +287,6 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ClassedSizeSlider/ClassedSizeSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.values"
-  ])
   viewModel: ClassedSizeSliderViewModel = new ClassedSizeSliderViewModel();
 
   //--------------------------------------------------------------------------

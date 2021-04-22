@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport"],(function(o,e,r,t,n,s,a,i,c,u,p,l,d){"use strict";var v;o.NavigationConstraint=v=function(o){function r(e){var r;return(r=o.call(this,e)||this).type="none",r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new v({type:this.type})},r}(d.JSONSupport),r.__decorate([i.enumeration({none:"none",stayAbove:"stay-above"})],o.NavigationConstraint.prototype,"type",void 0),o.NavigationConstraint=v=r.__decorate([c.subclass("esri.ground.NavigationConstraint")],o.NavigationConstraint),Object.defineProperty(o,"__esModule",{value:!0})}));

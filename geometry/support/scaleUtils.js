@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../core/unitUtils"],(function(e,t){"use strict";function n(e,n){return e/(t.getMetersPerUnitForSR(n)*t.inchesPerMeter*96)}e.getExtentForScale=function(e,t){const r=e.extent,i=e.width,o=n(t,r.spatialReference);return r.clone().expand(o*i/r.width)},e.getResolutionForScale=n,e.getScale=function(e,n){const r=n||e.extent,i=e.width,o=t.getMetersPerUnitForSR(r&&r.spatialReference);return r&&i?r.width/i*o*t.inchesPerMeter*96:0},e.getScaleForResolution=function(e,n){return e*(t.getMetersPerUnitForSR(n)*t.inchesPerMeter*96)},Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../core/unitUtils"],(function(e,t){"use strict";const n=96;function r(e,r){const i=r||e.extent,o=e.width,c=t.getMetersPerUnitForSR(i&&i.spatialReference);return i&&o?i.width/o*c*t.inchesPerMeter*n:0}function i(e,r){return e/(t.getMetersPerUnitForSR(r)*t.inchesPerMeter*n)}function o(e,r){return e*(t.getMetersPerUnitForSR(r)*t.inchesPerMeter*n)}function c(e,t){const n=e.extent,r=e.width,o=i(t,n.spatialReference);return n.clone().expand(o*r/n.width)}e.getExtentForScale=c,e.getResolutionForScale=i,e.getScale=r,e.getScaleForResolution=o,Object.defineProperty(e,"__esModule",{value:!0})}));

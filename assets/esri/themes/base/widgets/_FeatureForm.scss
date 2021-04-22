@@ -12,6 +12,7 @@
   }
 
   .esri-feature-form__label {
+    @include wordbreak();
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -95,6 +96,20 @@
     color: $interactive-font-color;
     font-size: $font-size--small;
     padding: 0.5em 0.5em 0 0.5em;
+  }
+
+  .esri-feature-form__input--radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .esri-feature-form__input--radio-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .esri-feature-form__input--radio {
+    margin: $side-spacing--half;
   }
 
   .esri-feature-form__group-description {

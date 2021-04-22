@@ -3,17 +3,17 @@
  */
 
 // esri.core
-import { Maybe, isNone } from "esri/core/maybe";
+import { Maybe, isNone } from "esri/../../core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable, storeNode } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx, storeNode } from "esri/../support/widget";
 
 type Callback = () => void;
 
@@ -48,14 +48,12 @@ export class LevelItem extends Widget {
    * @type {boolean}
    */
   @property({ nonNullable: true })
-  @renderable()
   level: number;
 
   /**
    * The label for the level.
    */
   @property()
-  @renderable()
   label: string;
 
   /**
@@ -64,7 +62,6 @@ export class LevelItem extends Widget {
    * @type {boolean}
    */
   @property({ nonNullable: true })
-  @renderable()
   active: boolean = false;
 
   /**
@@ -73,21 +70,18 @@ export class LevelItem extends Widget {
    * @type {boolean}
    */
   @property({ nonNullable: true })
-  @renderable()
   hovering: boolean = false;
 
   /**
    * The width of the widget.
    */
   @property({ nonNullable: true })
-  @renderable()
   width: number = 0;
 
   /**
    * The height of the widget.
    */
   @property({ nonNullable: true })
-  @renderable()
   height: number = 0;
 
   /**

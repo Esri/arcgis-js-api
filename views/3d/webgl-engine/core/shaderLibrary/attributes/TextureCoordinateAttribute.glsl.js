@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";e.TextureCoordinateAttribute=function(e,d){1===d.attributeTextureCoordinates&&(e.attributes.add("uv0","vec2"),e.varyings.add("vuv0","vec2"),e.vertex.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function d(e,d){1===d.attributeTextureCoordinates&&(e.attributes.add("uv0","vec2"),e.varyings.add("vuv0","vec2"),e.vertex.code.add(t.glsl`
       void forwardTextureCoordinates() {
         vuv0 = uv0;
       }
@@ -13,4 +13,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";
       }
     `)),0===d.attributeTextureCoordinates&&e.vertex.code.add(t.glsl`
       void forwardTextureCoordinates() {}
-    `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}e.TextureCoordinateAttribute=d,Object.defineProperty(e,"__esModule",{value:!0})}));

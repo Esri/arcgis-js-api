@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../../input/handlers/support","../../state/controllers/global/ZoomStepController","../../state/controllers/local/ZoomStepController"],(function(e,t,o,n,l,i,r){"use strict";let a=function(e){function n(t,o){var n;return(n=e.call(this,!0)||this).view=t,n.registerIncoming("double-click",o,(e=>n.handleDoubleClick(e))),n}return t._inheritsLoose(n,e),n.prototype.handleDoubleClick=function(e){const t=e.data;if(l.eventMatchesPointerAction(t,"primary")){const n=this.view.state.isGlobal?new i.ZoomStepController({view:this.view,mode:"animation"}):new r.ZoomStepController({view:this.view,mode:"animation"});this.view.state.switchCameraController(n),n.zoomStep(Math.log(.5)/Math.log(.6),o.createScreenPointArray(t.x,t.y)),e.stopPropagation()}},n}(n.InputHandler);e.DoubleClickZoom=a,Object.defineProperty(e,"__esModule",{value:!0})}));

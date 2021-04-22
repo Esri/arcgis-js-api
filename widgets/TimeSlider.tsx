@@ -41,7 +41,7 @@
  * console.log(`The stop interval is every ${value} {$unit}.`); // output: "This stop interval is every 3 weeks."
  * ```
  *
- * [![widgets-timeSlider](../../assets/img/apiref/widgets/widgets-timeSlider.png)](../sample-code/sandbox/sandbox.html?sample=widgets-timeslider)
+ * [![widgets-timeSlider](../assets/img/apiref/widgets/widgets-timeSlider.png)](../sample-code/sandbox/sandbox.html?sample=widgets-timeslider)
  *
  * The TimeSlider widget can be configured to manipulate your time aware data in two different ways
  * as outlined below:
@@ -171,8 +171,8 @@ import { offsetDate, truncateDate } from "esri/layers/support/timeUtils";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { PersistableWidget } from "esri/widgets/interfaces";
@@ -184,7 +184,7 @@ import { TickConfig } from "esri/widgets/Slider/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 // esri.widgets.TimeSlider
 import { Stops, TimeSliderMode } from "esri/widgets/TimeSlider/interfaces";
@@ -671,7 +671,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.effectiveStops")
-  @renderable()
   readonly effectiveStops: Date[] = null;
 
   //----------------------------------
@@ -705,7 +704,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.fullTimeExtent")
-  @renderable()
   fullTimeExtent: TimeExtent = null;
 
   //----------------------------------
@@ -737,10 +735,8 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @ignore
    */
   @property({
-    dependsOn: ["disabled", "viewModel.state"],
     readOnly: true
   })
-  @renderable()
   get interactive(): boolean {
     return !this.disabled && this.viewModel && this.viewModel.state !== "disabled";
   }
@@ -772,7 +768,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * The image below demonstrates how the date format, color, size, and font family of the label can be customized.
    * The code for this specific configuration is shown in the following example.
    *
-   * ![timeslider-custom-labels](../../assets/img/apiref/widgets/timeslider-custom-labels.png)
+   * ![timeslider-custom-labels](../assets/img/apiref/widgets/timeslider-custom-labels.png)
    *
    * @name labelFormatFunction
    * @instance
@@ -821,7 +817,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @property()
-  @renderable()
   labelFormatFunction: DateLabelFormatter = null;
 
   //----------------------------------
@@ -849,7 +844,6 @@ class TimeSlider extends Widget implements PersistableWidget {
   @property({
     value: "auto"
   })
-  @renderable()
   set layout(value: Layout) {
     const layouts: Layout[] = ["auto", "compact", "wide"];
 
@@ -899,7 +893,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/TimeSlider/t9n/TimeSlider")
   messages: TimeSliderMessages = null;
 
@@ -916,7 +909,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -931,10 +923,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *
    * Possible Values       | Description   | Example |
    * ----------------------|-------------- | ------- |
-   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [values](#values) property to an array with one date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
-   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [values](#values) property to an array with two dates. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
-   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [values](#values) property to have one date, which is the end date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
-   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [values](#values) property to have one date, which is the start date. | <img alt="mode-instance" src="../../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
+   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [values](#values) property to an array with one date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
+   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [values](#values) property to an array with two dates. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
+   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [values](#values) property to have one date, which is the end date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
+   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [values](#values) property to have one date, which is the start date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
    *
    * @name mode
    * @instance
@@ -955,7 +947,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.mode")
-  @renderable()
   mode: TimeSliderMode = "time-window";
 
   //----------------------------------
@@ -1126,7 +1117,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * }
    */
   @property()
-  @renderable()
   tickConfigs: TickConfig[] = null;
 
   //----------------------------------
@@ -1203,7 +1193,6 @@ class TimeSlider extends Widget implements PersistableWidget {
   @property({
     nonNullable: true
   })
-  @renderable()
   timeVisible: boolean = false;
 
   //----------------------------------
@@ -1238,7 +1227,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.values")
-  @renderable()
   values: Date[] = null;
 
   //----------------------------------
@@ -1274,7 +1262,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1310,7 +1298,6 @@ class TimeSlider extends Widget implements PersistableWidget {
   @property({
     type: TimeSliderViewModel
   })
-  @renderable(["viewModel.state"])
   viewModel: TimeSliderViewModel = new TimeSliderViewModel();
 
   //--------------------------------------------------------------------------

@@ -32,6 +32,10 @@
       pointer-events: none;
       opacity: $opacity--disabled;
     }
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
   .esri-widget__header {
     align-items: center;
@@ -48,6 +52,7 @@
       display: flex;
       margin: 0;
       padding: 0;
+      text-align: initial;
       width: calc(100% - #{$header-button-width});
     }
     &-button {
@@ -244,10 +249,10 @@
     font-size: $font-size;
     min-height: $button-height;
     justify-content: center;
+    word-break: normal;
+    white-space: normal;
     overflow: hidden;
     padding: $cap-spacing--half $side-spacing--half;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     width: 100%;
     transition: background-color 125ms ease-in-out, border 125ms ease-in-out;
     &:hover {

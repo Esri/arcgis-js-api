@@ -5,7 +5,7 @@
  * {@link module:esri/views/SceneView}. It has no effect on touch navigation and it should not be used
  * with 2D mouse interaction in a {@link module:esri/views/MapView}.
  *
- * ![navigation-toggle](../../assets/img/apiref/widgets/navigation-toggle.png)
+ * ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
  *
  * The default navigation mode of the {@link module:esri/views/SceneView} is always
  * `pan`. The various mouse interactions of this mode are outlined
@@ -41,8 +41,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -55,7 +55,7 @@ import NavigationToggleMessages from "esri/widgets/NavigationToggle/t9n/Navigati
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
@@ -147,8 +147,8 @@ class NavigationToggle extends Widget {
    *
    * Possible Value | Example
    * ---------------|--------
-   * vertical | ![navigation-toggle](../../assets/img/apiref/widgets/navigation-toggle.png)
-   * horizontal | ![navigation-toggle-horizontal](../../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
+   * vertical | ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
+   * horizontal | ![navigation-toggle-horizontal](../assets/img/apiref/widgets/navigation-toggle-horizontal.png)
    *
    * @name layout
    * @instance
@@ -162,10 +162,7 @@ class NavigationToggle extends Widget {
    *   layout: "horizontal"  // makes the layout horizontal
    * });
    */
-  @property({
-    value: "vertical"
-  })
-  @renderable()
+  @property({ value: "vertical" })
   set layout(value: LayoutMode) {
     if (value !== "horizontal") {
       value = "vertical";
@@ -189,7 +186,6 @@ class NavigationToggle extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/NavigationToggle/t9n/NavigationToggle")
   messages: NavigationToggleMessages = null;
 
@@ -206,8 +202,7 @@ class NavigationToggle extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -227,7 +222,6 @@ class NavigationToggle extends Widget {
   @property({
     type: NavigationToggleViewModel
   })
-  @renderable(["viewModel.state", "viewModel.navigationMode"])
   viewModel = new NavigationToggleViewModel();
 
   //--------------------------------------------------------------------------

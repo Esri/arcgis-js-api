@@ -311,7 +311,7 @@
     padding: 0;
     border-top: 1px solid $border-color;
   }
-  
+
   .esri-directions__maneuver-list {
     padding: 0;
     margin: 0;
@@ -348,7 +348,7 @@
       padding-top: $cap-spacing;
     }
   }
-  
+
   .esri-directions__maneuver-section-header {
     display: flex;
     padding: 0 $side-spacing--half;
@@ -431,6 +431,29 @@
   .esri-directions .esri-search .esri-search__container:after {
     top: auto;
     bottom: -2px;
+  }
+
+  .esri-ui-bottom-left,
+  .esri-ui-bottom-right {
+    .esri-directions {
+      .esri-search {
+        .esri-search__sources-button--up {
+          display: none;
+        }
+        .esri-search__sources-button--down {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .esri-ui-bottom-right,
+  .esri-ui-bottom-left {
+    .esri-directions .esri-menu {
+      top: 100%;
+      bottom: auto;
+      margin: $cap-spacing--eighth 0 0 0;
+    }
   }
 }
 

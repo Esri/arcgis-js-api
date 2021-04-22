@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../core/date"],(function(r,e,o,t,s,c,p,a,u,i,d,l){"use strict";let n=function(e){function o(r){var o;return(o=e.call(this,r)||this).digitSeparator=!1,o.dateFormat=null,o.places=null,o}return r._inheritsLoose(o,e),o}(d.JSONSupport);return e.__decorate([c.property()],n.prototype,"digitSeparator",void 0),e.__decorate([c.property({json:{read:{source:"dateFormat",reader:l.fromJSON}}})],n.prototype,"dateFormat",void 0),e.__decorate([c.property()],n.prototype,"places",void 0),n=e.__decorate([p.subclass("esri.widgets.FeatureForm.Format")],n),n}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../../layers/support/fieldUtils"],(function(e,i){"use strict";e.defineFieldProperties=function(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,dependsOn:["layer.fields","layer.outFields","requiredFields"],get:function(){const{layer:e,layer:{fields:l},requiredFields:r}=this;return e.outFields?i.fixFields(l,[...i.unpackFieldNames(l,e.outFields),...r]):i.fixFields(l,r)}}}},Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../../../layers/support/fieldUtils"],(function(e,i){"use strict";function r(){return{requiredFields:{type:[String],readOnly:!0},availableFields:{type:[String],readOnly:!0,get:function(){const{layer:e,layer:{fields:r},requiredFields:t}=this;return e.outFields?i.fixFields(r,[...i.unpackFieldNames(r,e.outFields),...t]):i.fixFields(r,t)}}}}e.defineFieldProperties=r,Object.defineProperty(e,"__esModule",{value:!0})}));

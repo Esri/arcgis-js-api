@@ -15,7 +15,7 @@
  * widget. For example, there is currently no support editing related feature attributes.
  * :::
  *
- * ![editor](../../assets/img/apiref/widgets/editor_in_action.gif)
+ * ![editor](../assets/img/apiref/widgets/editor_in_action.gif)
  *
  * @module esri/widgets/Editor
  * @amdalias Editor
@@ -35,9 +35,11 @@
  * @see module:esri/widgets/Editor/UpdateWorkflowData
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
+ * @see module:esri/views/interactive/snapping/SnappingOptions
  *
  * @example
- * var editor = new Editor({
+ * // At the very minimum, set the Editor's view
+ * const editor = new Editor({
  *   view: view
  * });
  *
@@ -68,8 +70,11 @@ import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
+
+// esri.views.interactive.snapping
+import SnappingOptions from "esri/views/interactive/snapping/SnappingOptions";
 
 // esri.widgets
 import Attachments from "esri/widgets/Attachments";
@@ -105,14 +110,7 @@ import { CreateEvent } from "esri/widgets/Sketch/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import {
-  accessibleHandler,
-  isRTL,
-  messageBundle,
-  renderable,
-  tsx,
-  vmEvent
-} from "esri/widgets/support/widget";
+import { accessibleHandler, isRTL, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-editor esri-widget esri-widget--panel",
@@ -224,9 +222,9 @@ class Editor extends HandleOwnerMixin(Widget) {
    *                              that may be passed into the constructor.
    *
    * @example
-   * // Typical usage for Editor widget. This will recognize all editable layers in the map.
+   * // Typical usage for Editor widget. Be default, this will recognize all editable layers in the map.
    * const editor = new Editor({
-   *   view: viewDiv
+   *   view: view
    * });
    *
    */
@@ -245,8 +243,6 @@ class Editor extends HandleOwnerMixin(Widget) {
   }
 
   initialize(): void {
-    const { messages, messagesCommon } = this;
-
     this.own([
       init(this, "viewModel", (viewModel) => {
         this._featureForm.viewModel = viewModel ? viewModel.featureFormViewModel : null;
@@ -275,6 +271,8 @@ class Editor extends HandleOwnerMixin(Widget) {
       }),
 
       on(this, "viewModel.activeWorkflow", "cancel-request", ({ controller }) => {
+        const { messages, messagesCommon } = this;
+
         this._prompt = {
           title: messages.cancelRequestTitle,
           message: messages.cancelRequestWarningMessage,
@@ -317,6 +315,8 @@ class Editor extends HandleOwnerMixin(Widget) {
           return;
         }
 
+        const { messages, messagesCommon } = this;
+
         this._prompt = {
           title: messages.errorWarningTitle,
           message: error.message,
@@ -337,6 +337,7 @@ class Editor extends HandleOwnerMixin(Widget) {
           return;
         }
 
+        const { messages } = this;
         const [{ error, retry, cancel }] = failures;
 
         this._prompt = {
@@ -550,8 +551,8 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    * Possible Value | Description | Example
    * ---------------|------------|----------
-   * create | Indicated in the widget via the `Add feature` option. This allows the end user to create new features in the feature service. | ![combinedcreate](../../assets/img/apiref/widgets/editor_combined_create.png)
-   * update | Indicated in the widget via the `Edit feature` option. This allows the end user to update and/or delete features in the feature service. | ![combinedupdate](../../assets/img/apiref/widgets/editor_combined_update.png)
+   * create | Indicated in the widget via the `Add feature` option. This allows the end user to create new features in the feature service. | ![combinedcreate](../assets/img/apiref/widgets/editor_combined_create.png)
+   * update | Indicated in the widget via the `Edit feature` option. This allows the end user to update and/or delete features in the feature service. | ![combinedupdate](../assets/img/apiref/widgets/editor_combined_update.png)
    *
    * ::: esri-md class="panel trailer-1"
    * These workflows are only enabled if the feature service allows these operations.
@@ -660,7 +661,6 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Editor/t9n/Editor")
   messages: EditorMessages = null;
 
@@ -677,7 +677,6 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -694,9 +693,34 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/FeatureTemplates/t9n/FeatureTemplates")
   messagesTemplates: FeatureTemplatesMessages = null;
+
+  /**
+   * The {@link module:esri/views/interactive/snapping/SnappingOptions} for editing. Supports self snapping and feature snapping.
+   *
+   * :::esri-md class="panel trailer-1"
+   * Currently, the snapping functionality offered in the Editor widget does not provide a UI similar to that of the {@link module:esri/widgets/Sketch Sketch widget}. This is because the Editor currently works with the {@link module:esri/widgets/Sketch/SketchViewModel Sketch widget's viewModel}.
+   * This behavior will change in upcoming releases with an updated UI to help with configuring snapping options. Once `snappingOptions` is set, the ability to dynamically disable/enable snapping should be handled via the `CRTL` key. In addition, please refer to the {@link module:esri/views/interactive/snapping/SnappingOptions} documentation for any additional considerations when setting up the Editor's snapping configurations.
+   * :::
+   *
+   * @name snappingOptions
+   * @instance
+   * @since 4.19
+   * @type {module:esri/views/interactive/snapping/SnappingOptions}
+   * @see [Sample - Editor widget with configurations](../sample-code/widgets-editor-configurable/index.html)
+   *
+   * @example
+   * const editor = new Editor({
+   *   view: view,
+   *   snappingOptions: { // autocasts to SnappingOptions()
+   *     enabled: true,
+   *     featureSources: [{layer: streetsLayer}] // autocasts to FeatureSnappingLayerSource()
+   *   }
+   * });
+   */
+  @aliasOf("viewModel.snappingOptions")
+  snappingOptions = new SnappingOptions();
 
   //----------------------------------
   //  supportingWidgetDefaults
@@ -737,7 +761,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -755,14 +779,6 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  @renderable([
-    "viewModel.canCreate",
-    "viewModel.canUpdate",
-    "viewModel.failures",
-    "viewModel.state",
-    "viewModel.syncing",
-    "viewModel.activeWorkflow.data.edits.modified"
-  ])
   @vmEvent(["workflow-cancel", "workflow-commit"])
   viewModel: EditorViewModel = new EditorViewModel();
 

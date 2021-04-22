@@ -8,10 +8,10 @@
  * and {@link module:esri/geometry/Polygon circle} geometries.
  *
  * Discover the Sketch widget in MapView with [this sample](../sample-code/sketch-geometries/index.html):<br>
- * [![sketch-geometries](../../assets/img/apiref/widgets/sketch/sketch-widget.gif)](../sample-code/sketch-geometries/index.html)
+ * [![sketch-geometries](../assets/img/apiref/widgets/sketch/sketch-widget.gif)](../sample-code/sketch-geometries/index.html)
  *
  * Discover the Sketch widget in SceneView with [this sample](../sample-code/sketch-3d/index.html):<br>
- * [![sketch-geometries-3D](../../assets/img/apiref/widgets/sketch/sketch-widget-3D.gif)](../sample-code/sketch-3d/index.html)
+ * [![sketch-geometries-3D](../assets/img/apiref/widgets/sketch/sketch-widget-3D.gif)](../sample-code/sketch-3d/index.html)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -64,38 +64,38 @@
  *
  * Gesture | Action | Example |
  * ---------|---------|----------|
- * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-box-mode.gif" width="400px"> |
- * Shift+Left-click graphics | Select or deselect multiple graphics to move, rotate or scale.| <img alt="Select graphics" src="../../assets/img/apiref/widgets/sketch/sketch-graphics.gif" width="400px"> |
- * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-box-move.gif" width="400px"> |
- * Drag rotate handle | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-rotate.gif" width="400px"> |
- * Drag scale handle | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-scale.gif" width="400px"> |
- * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Undo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
- * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Redo update" src="../../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
- * Left-click on view (not the graphic) | Complete the graphic update. | <img alt="Sketch update complete" src="../../assets/img/apiref/widgets/sketch/sketch-update-complete.gif" width="400px"> |
- * Press `Delete` key | Remove the selected graphic(s) from the [layer](#layer). | <img alt="Sketch delete graphic" src="../../assets/img/apiref/widgets/sketch/sketch-delete-graphic.gif" width="400px">
+ * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../assets/img/apiref/widgets/sketch/sketch-box-mode.gif" width="400px"> |
+ * Shift+Left-click graphics | Select or deselect multiple graphics to move, rotate or scale.| <img alt="Select graphics" src="../assets/img/apiref/widgets/sketch/sketch-graphics.gif" width="400px"> |
+ * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../assets/img/apiref/widgets/sketch/sketch-box-move.gif" width="400px"> |
+ * Drag rotate handle | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../assets/img/apiref/widgets/sketch/sketch-rotate.gif" width="400px"> |
+ * Drag scale handle | Scale the selected graphic.| <img alt="Scale the graphic" src="../assets/img/apiref/widgets/sketch/sketch-scale.gif" width="400px"> |
+ * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Undo update" src="../assets/img/apiref/widgets/sketch/sketch-update-undo.gif" width="400px"> |
+ * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Redo update" src="../assets/img/apiref/widgets/sketch/sketch-update-redo.gif" width="400px"> |
+ * Left-click on view (not the graphic) | Complete the graphic update. | <img alt="Sketch update complete" src="../assets/img/apiref/widgets/sketch/sketch-update-complete.gif" width="400px"> |
+ * Press `Delete` key | Remove the selected graphic(s) from the [layer](#layer). | <img alt="Sketch delete graphic" src="../assets/img/apiref/widgets/sketch/sketch-delete-graphic.gif" width="400px">
  *
  * The following update operations can be performed on a single polyline or polygon graphic:
  *
  * Gesture | Action | Example |
  * ---------|---------|----------|
- * Left-click on a graphic | Select a graphic to move or reshape.| <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-reshape-mode.gif" width="400px"> |
- * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-drag.gif" width="400px"> |
- * Left-click on a ghost vertex| Add a new vertex. | <img alt="Add a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif" width="400px"> |
- * Left-click on a vertex| Select a vertex. | <img alt="Select a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif" width="400px"> |
- * Shift+Left-click on vertices | Select or deselect multiple vertices. | <img alt="Select vertices" src="../../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
- * Drag vertex | Move the selected vertex or vertices. | <img alt="Drag vertices" src="../../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif" width="400px"> |
- * Right-click on a vertex | Delete a vertex. | <img alt="Delete a vertex" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif" width="400px"> |
- * Select multiple vertices and press `Backspace` or `Delete` key | Delete multiple vertices. | <img alt="Delete vertices" src="../../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
+ * Left-click on a graphic | Select a graphic to move or reshape.| <img alt="Select a graphic" src="../assets/img/apiref/widgets/sketch/sketch-reshape-mode.gif" width="400px"> |
+ * Drag graphic | Move the selected graphic.| <img alt="Drag the graphic" src="../assets/img/apiref/widgets/sketch/sketch-drag.gif" width="400px"> |
+ * Left-click on a ghost vertex| Add a new vertex. | <img alt="Add a vertex" src="../assets/img/apiref/widgets/sketch/sketch-add-vertices.gif" width="400px"> |
+ * Left-click on a vertex| Select a vertex. | <img alt="Select a vertex" src="../assets/img/apiref/widgets/sketch/sketch-selectvertex.gif" width="400px"> |
+ * Shift+Left-click on vertices | Select or deselect multiple vertices. | <img alt="Select vertices" src="../assets/img/apiref/widgets/sketch/sketch-selectvertices.gif" width="400px"> |
+ * Drag vertex | Move the selected vertex or vertices. | <img alt="Drag vertices" src="../assets/img/apiref/widgets/sketch/sketch-dragvertices.gif" width="400px"> |
+ * Right-click on a vertex | Delete a vertex. | <img alt="Delete a vertex" src="../assets/img/apiref/widgets/sketch/sketch-delete-vertex.gif" width="400px"> |
+ * Select multiple vertices and press `Backspace` or `Delete` key | Delete multiple vertices. | <img alt="Delete vertices" src="../assets/img/apiref/widgets/sketch/sketch-delete-vertices.gif" width="400px"> |
  *
  * The following update operations can be performed on a single graphic with point geometry in a {@link module:esri/views/SceneView}, if the graphic uses a {@link module:esri/symbols/ObjectSymbol3DLayer 3D object symbol layer}:
  *
  * Gesture | Action | Example |
  * ---------|---------|----------|
- * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../../assets/img/apiref/widgets/sketch/sketch-update-point-3D.gif" width="400px"> |
- * Drag inner handle | Move the selected graphic.| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-move-point.gif" width="400px"> |
- * Drag height handle | Move the selected graphic vertically (on the z axis).| <img alt="Drag the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-movez-point.gif" width="400px"> |
- * Drag outer handle sideways | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-rotate-point.gif" width="400px"> |
- * Drag outer handle inwards or outwards | Scale the selected graphic.| <img alt="Scale the graphic" src="../../assets/img/apiref/widgets/sketch/sketch-transform-scale-point.gif" width="400px"> |
+ * Left-click on a graphic | Select a graphic to move, rotate or scale. | <img alt="Select a graphic" src="../assets/img/apiref/widgets/sketch/sketch-update-point-3D.gif" width="400px"> |
+ * Drag inner handle | Move the selected graphic.| <img alt="Drag the graphic" src="../assets/img/apiref/widgets/sketch/sketch-transform-move-point.gif" width="400px"> |
+ * Drag height handle | Move the selected graphic vertically (on the z axis).| <img alt="Drag the graphic" src="../assets/img/apiref/widgets/sketch/sketch-transform-movez-point.gif" width="400px"> |
+ * Drag outer handle sideways | Rotate the selected graphic.| <img alt="Rotate the graphic" src="../assets/img/apiref/widgets/sketch/sketch-transform-rotate-point.gif" width="400px"> |
+ * Drag outer handle inwards or outwards | Scale the selected graphic.| <img alt="Scale the graphic" src="../assets/img/apiref/widgets/sketch/sketch-transform-scale-point.gif" width="400px"> |
  *
  * Sketch 3D
  * ---------
@@ -141,6 +141,7 @@
  * @see [Sample - Sketch temporary geometries](../sample-code/sketch-geometries/index.html)
  * @see [Sample - Sketch update validation](../sample-code/sketch-update-validation/index.html)
  * @see [Sample - Query statistics by geometry](../sample-code/featurelayerview-query-geometry/index.html)
+ * @see [Sample - Snapping with Sketch widget and Magnifier](../sample-code/sketch-snapping-magnifier/index.html)
  *
  * @example
  * // Create a new instance of sketch widget and set
@@ -171,6 +172,7 @@ import Graphic from "esri/widgets/../Graphic";
 
 // esri.core
 import Collection from "esri/core/Collection";
+import { eventKey } from "esri/core/events";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, subclass, property } from "esri/core/accessorSupport/decorators";
@@ -179,8 +181,11 @@ import { aliasOf, cast, subclass, property } from "esri/core/accessorSupport/dec
 import GraphicsLayer from "esri/widgets/../layers/GraphicsLayer";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
+
+// esri.views.interactive.snapping
+import SnappingOptions from "esri/views/interactive/snapping/SnappingOptions";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -206,7 +211,7 @@ import SketchMessages from "esri/widgets/Sketch/t9n/Sketch";
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import Selector from "esri/widgets/support/Selector";
-import { isRTL, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { isRTL, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 // esri.widgets.support.Selector
 import { SelectionCompleteEventInfo } from "esri/widgets/support/Selector/interfaces";
@@ -227,12 +232,14 @@ interface SketchEvents {
 interface VisibleElements {
   createTools?: CreateToolVisibilityMap;
   selectionTools?: SelectionToolVisibilityMap;
-  undoRedoMenu: boolean;
+  undoRedoMenu?: boolean;
+  settingsMenu?: boolean;
 }
 
 const CSS = {
   // sketch classes
   base: "esri-sketch",
+
   verticalLayout: "esri-sketch--vertical",
   panel: "esri-sketch__panel",
   infoPanel: "esri-sketch__info-panel",
@@ -240,6 +247,15 @@ const CSS = {
   toolSection: "esri-sketch__tool-section",
   infoSection: "esri-sketch__info-section",
   infoCountSection: "esri-sketch__info-count-section",
+
+  // settings menu
+  menuContainer: "esri-sketch__menu-container",
+  menuHeader: "esri-sketch__menu-header",
+  menuTitle: "esri-sketch__menu-title",
+  menuContent: "esri-sketch__menu-content",
+  menuItem: "esri-sketch__menu-item",
+  menuItemWrapper: "esri-sketch__menu-item-wrapper",
+
   featureCountBadge: "esri-sketch__feature-count-badge",
   featureCountText: "esri-sketch__feature-count-text",
   featureCountNumber: "esri-sketch__feature-count-number",
@@ -258,14 +274,21 @@ const CSS = {
   resetIcon: "esri-icon-trash",
   undoIcon: "esri-icon-undo",
   redoIcon: "esri-icon-redo",
+  settingsIcon: "esri-icon-settings",
+
+  actionToggle: "esri-sketch__action-toggle",
+  actionToggleOn: "esri-sketch__action-toggle--on",
+  actionTitle: "esri-sketch__item-action-title",
+  actionIcon: "esri-sketch__item-action-icon",
 
   rectangleSelectIcon: "esri-icon-cursor-marquee",
   lassoSelectIcon: "esri-icon-lasso", // TODO
 
   // common
+  disabled: "esri-disabled",
   esriWidget: "esri-widget",
-  widgetIcon: "esri-icon-edit",
-  disabled: "esri-disabled"
+  rotating: "esri-rotating",
+  widgetIcon: "esri-icon-edit"
 };
 
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
@@ -280,7 +303,8 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
     "rectangle-selection": true,
     "lasso-selection": true
   },
-  undoRedoMenu: true
+  undoRedoMenu: true,
+  settingsMenu: true
 };
 
 interface ActiveSelectionInfo {
@@ -490,12 +514,10 @@ class Sketch extends Widget<SketchEvents> {
    *
    * @property {"vertex-add"} type - Type is always `vertex-add`.
    *
-   * @property {module:esri/Graphic[]} added - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
-   * representing the vertices that were added.
+   * @property {number[]} added - An array of x,y coordinates representing the vertices added.
    *
    * @property {Object[]} vertices - Contains the details of the added vertices to track changes in topology of the geometry.
-   * @property {module:esri/Graphic[]} vertices.coordinates - The {@link module:esri/Graphic graphic} with {@link module:esri/geometry/Point point} geometries
-   * representing the vertices that were added.
+   * @property {number[]} vertices.coordinates - An array of x,y coordinates representing the vertices added.
    * @property {number} vertices.componentIndex - The ring/path index of the added vertex.
    * @property {number} vertices.vertexIndex - The index of the vertex position.
    *
@@ -518,12 +540,10 @@ class Sketch extends Widget<SketchEvents> {
    *
    * @property {"vertex-remove"} type - Type is always `vertex-remove`.
    *
-   * @property {module:esri/Graphic[]} removed - An array of {@link module:esri/Graphic graphics} with {@link module:esri/geometry/Point point} geometries
-   * representing the vertices that were removed.
+   * @property {number[]} removed - An array of x,y coordinates representing the vertices removed.
    *
    * @property {Object[]} vertices - Contains the details of the removed vertices to track changes in topology of the geometry.
-   * @property {module:esri/Graphic[]} vertices.coordinates - The {@link module:esri/Graphic graphic} with {@link module:esri/geometry/Point point} geometries
-   * representing the vertices that were added.
+   * @property {number[]} vertices.coordinates - An array of x,y coordinates representing the vertices removed.
    * @property {number} vertices.componentIndex - The ring/path index of the removed vertex.
    * @property {number} vertices.vertexIndex - The index of the vertex position.
    *
@@ -620,9 +640,9 @@ class Sketch extends Widget<SketchEvents> {
    * @example
    * // listen to update event
    * sketch.on("update", function(event){
-   *   if (evt.tool === "transform") {
+   *   if (event.tool === "transform") {
    *     if (event.toolEventInfo) {
-   *       const info = evt.toolEventInfo,
+   *       const info = event.toolEventInfo,
    *       type = info.type;
    *
    *       // rotate events only
@@ -736,6 +756,8 @@ class Sketch extends Widget<SketchEvents> {
   @property()
   private _activeSelectionInfo: ActiveSelectionInfo = null;
 
+  private _menuOpen: boolean = false;
+
   private _selector: Selector = new Selector();
 
   //--------------------------------------------------------------------------
@@ -755,9 +777,7 @@ class Sketch extends Widget<SketchEvents> {
    * @type {"point" | "polyline" | "polygon" | "circle" | "rectangle" | "move" | "transform" | "reshape" | "rectangle-selection" | "lasso-selection" }
    * @readonly
    */
-  @property({
-    dependsOn: ["_activeSelectionInfo", "viewModel.activeTool"]
-  })
+  @property()
   get activeTool(): SketchTool | SelectionTool {
     return this._activeSelectionInfo?.tool || this.viewModel.activeTool;
   }
@@ -785,7 +805,6 @@ class Sketch extends Widget<SketchEvents> {
       return tools.filter((toolName) => validTools.has(toolName)) as CreateTool[];
     }
   })
-  @renderable()
   availableCreateTools: CreateTool[] = ["point", "polyline", "polygon", "rectangle", "circle"];
 
   //----------------------------------
@@ -801,7 +820,6 @@ class Sketch extends Widget<SketchEvents> {
    * @readonly
    */
   @aliasOf("viewModel.createGraphic")
-  @renderable()
   createGraphic: Graphic = null;
 
   //----------------------------------
@@ -855,7 +873,6 @@ class Sketch extends Widget<SketchEvents> {
    * @type {Object}
    */
   @aliasOf("viewModel.defaultCreateOptions")
-  @renderable()
   defaultCreateOptions: CreateOptions = null;
 
   //----------------------------------
@@ -883,7 +900,6 @@ class Sketch extends Widget<SketchEvents> {
    * @type {Object}
    */
   @aliasOf("viewModel.defaultUpdateOptions")
-  @renderable()
   defaultUpdateOptions: UpdateOptions = null;
 
   //----------------------------------
@@ -929,7 +945,6 @@ class Sketch extends Widget<SketchEvents> {
    *
    */
   @aliasOf("viewModel.layer")
-  @renderable()
   layer: GraphicsLayer = null;
 
   //----------------------------------
@@ -946,7 +961,6 @@ class Sketch extends Widget<SketchEvents> {
    * @type {"vertical"|"horizontal"}
    */
   @property({ value: "horizontal" })
-  @renderable()
   set layout(value: Layout) {
     if (value !== "vertical") {
       value = "horizontal";
@@ -970,9 +984,20 @@ class Sketch extends Widget<SketchEvents> {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Sketch/t9n/Sketch")
   messages: SketchMessages = null;
+
+  /**
+   * The {@link module:esri/views/interactive/snapping/SnappingOptions} for sketching. Supports self snapping and feature
+   * snapping.
+   *
+   * @name snappingOptions
+   * @instance
+   * @type {module:esri/views/interactive/snapping/SnappingOptions}
+   *
+   */
+  @aliasOf("viewModel.snappingOptions")
+  snappingOptions = new SnappingOptions();
 
   //----------------------------------
   //  state
@@ -987,10 +1012,7 @@ class Sketch extends Widget<SketchEvents> {
    * @readonly
    *
    */
-  @property({
-    dependsOn: ["_activeSelectionInfo", "viewModel.state"]
-  })
-  @renderable()
+  @property()
   get state(): State {
     return this._activeSelectionInfo ? "active" : this.viewModel.state;
   }
@@ -1008,7 +1030,6 @@ class Sketch extends Widget<SketchEvents> {
    * @readonly
    */
   @aliasOf("viewModel.updateGraphics")
-  @renderable(["updateGraphics", "updateGraphics.length"])
   updateGraphics: Collection<Graphic> = new Collection();
 
   //----------------------------------
@@ -1023,8 +1044,7 @@ class Sketch extends Widget<SketchEvents> {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1041,7 +1061,6 @@ class Sketch extends Widget<SketchEvents> {
    * @type {module:esri/widgets/Sketch/SketchViewModel}
    */
   @property()
-  @renderable("viewModel.state")
   @vmEvent(["create", "update", "undo", "redo"])
   viewModel: SketchViewModel = new SketchViewModel();
 
@@ -1075,12 +1094,12 @@ class Sketch extends Widget<SketchEvents> {
    *
    * The image below displays the default Sketch widget with selection tools.
    *
-   * ![sketch-selection-default](../../assets/img/apiref/widgets/selection/default-selection-sketch.png)
+   * ![sketch-selection-default](../assets/img/apiref/widgets/selection/default-selection-sketch.png)
    *
    * In comparison, this image shows how the widget displays with some of its tools not visible as
    * set in the example code snippet below.
    *
-   * ![sketch-selection-default](../../assets/img/apiref/widgets/selection/visible-elements-selection-sketch.png)
+   * ![sketch-selection-default](../assets/img/apiref/widgets/selection/visible-elements-selection-sketch.png)
    *
    * @name visibleElements
    * @instance
@@ -1103,7 +1122,6 @@ class Sketch extends Widget<SketchEvents> {
    * }
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -1330,7 +1348,9 @@ class Sketch extends Widget<SketchEvents> {
           [CSS.verticalLayout]: layout === "vertical"
         })}
       >
-        <div class={CSS.panel}>{this.renderTopPanelContents()}</div>
+        <div role="toolbar" class={CSS.panel}>
+          {this.renderTopPanelContents()}
+        </div>
         <div class={this.classes(CSS.panel, CSS.infoPanel)}>{this.renderInfoPanelContents()}</div>
       </div>
     );
@@ -1341,21 +1361,33 @@ class Sketch extends Widget<SketchEvents> {
     const { availableCreateTools, visibleElements } = this;
 
     return [
-      <div key="selection-button-container" class={sectionClasses}>
+      <div role="menu" key="selection-button-container" class={sectionClasses}>
         {this.renderSelectionTools()}
       </div>,
       availableCreateTools && availableCreateTools.length ? (
-        <div class={sectionClasses}>{this.renderDrawButtons()}</div>
+        <div role="menu" class={sectionClasses}>
+          {this.renderDrawButtons()}
+        </div>
       ) : null,
       visibleElements.undoRedoMenu ? (
-        <div key="menu-button-container" class={sectionClasses}>
-          {this.renderMenuButtons()}
+        <div role="menu" key="undo-redo-menu-button-container" class={sectionClasses}>
+          {this.renderUndoRedoMenuButtons()}
+        </div>
+      ) : null,
+      visibleElements.settingsMenu ? (
+        <div key="settings-menu-button-container" class={CSS.section}>
+          {this.renderSettingsMenuButton()}
         </div>
       ) : null
     ];
   }
 
   protected renderInfoPanelContents(): VNode {
+    // Menu takes visual priority
+    if (this._menuOpen) {
+      return this.renderSettingsMenu();
+    }
+
     if (this.updateGraphics.length) {
       return [
         <div
@@ -1371,6 +1403,81 @@ class Sketch extends Widget<SketchEvents> {
     }
 
     return undefined;
+  }
+
+  protected renderSettingsMenu(): VNode {
+    const { settings } = this.messages;
+
+    return [
+      <div role="menu" class={CSS.menuContainer} key="settings-menu-container">
+        <header class={CSS.menuHeader} key="settings-menu-header">
+          <span class={CSS.menuTitle}>{settings}</span>
+        </header>
+        <div class={CSS.menuContent} key="settings-menu-content" aria-label={settings}>
+          <div class={CSS.menuItemWrapper}>{this.renderSnappingToggleMenuItem()}</div>
+        </div>
+      </div>
+    ];
+  }
+
+  protected renderSnappingToggleMenuItem(): VNode {
+    return (
+      <div
+        class={CSS.menuItem}
+        aria-label={this.messages?.snappingEnabled}
+        key="sketch-snapping-action-toggle"
+        role="menuitem"
+      >
+        {this.renderSnappingToggle()}
+      </div>
+    );
+  }
+
+  protected renderSnappingToggle(): VNode {
+    const {
+      messages: { snappingEnabled },
+      viewModel: {
+        snappingOptions: { enabled }
+      }
+    } = this;
+
+    const classes = this.classes(CSS.actionToggle, {
+      [CSS.actionToggleOn]: enabled
+    });
+
+    return (
+      <div
+        bind={this}
+        role="button"
+        onclick={this._onSnappingToggleClick}
+        onkeydown={this._onSnappingToggleKeyDown}
+        class={classes}
+        tabindex="0"
+        title={snappingEnabled}
+        aria-label={snappingEnabled}
+      >
+        {this.renderActionIcon()}
+        <span class={CSS.actionTitle}>{snappingEnabled}</span>
+      </div>
+    );
+  }
+
+  private _onSnappingToggleKeyDown(event: KeyboardEvent): void {
+    const key = eventKey(event);
+
+    if (key === "Enter" || key === " ") {
+      event.preventDefault();
+      this._toggleSnapping();
+    }
+  }
+
+  private _onSnappingToggleClick(event: Event): void {
+    event.stopPropagation();
+    this._toggleSnapping();
+  }
+
+  protected renderActionIcon(): VNode {
+    return <span key="action-icon" aria-hidden="true" class={this.classes(CSS.actionIcon)} />;
   }
 
   protected renderFeatureCount(): VNode {
@@ -1429,6 +1536,7 @@ class Sketch extends Widget<SketchEvents> {
           [CSS.selectedButton]: this.state === "ready"
         })}
         onclick={this.cancel}
+        role="menuitemradio"
         title={title}
       />
     );
@@ -1449,6 +1557,7 @@ class Sketch extends Widget<SketchEvents> {
           [CSS.selectedButton]: this._activeSelectionInfo?.tool === "rectangle-selection"
         })}
         onclick={this._activateRectangleSelectTool}
+        role="menuitemradio"
         title={title}
       />
     );
@@ -1469,6 +1578,7 @@ class Sketch extends Widget<SketchEvents> {
           [CSS.selectedButton]: this._activeSelectionInfo?.tool === "lasso-selection"
         })}
         onclick={this._activateLassoSelectTool}
+        role="menuitemradio"
         title={title}
       />
     );
@@ -1517,6 +1627,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         data-tool-name={toolName}
         onclick={this._activateCreateTool}
+        role="menuitemradio"
         title={title}
         type="button"
       />
@@ -1539,6 +1650,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         data-tool-name={toolName}
         onclick={this._activateCreateTool}
+        role="menuitemradio"
         title={title}
         type="button"
       />
@@ -1561,6 +1673,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         data-tool-name={toolName}
         onclick={this._activateCreateTool}
+        role="menuitemradio"
         title={title}
         type="button"
       />
@@ -1583,6 +1696,7 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         data-tool-name={toolName}
         onclick={this._activateCreateTool}
+        role="menuitemradio"
         title={title}
         type="button"
       />
@@ -1605,13 +1719,14 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(classes)}
         data-tool-name={toolName}
         onclick={this._activateCreateTool}
+        role="menuitemradio"
         title={title}
         type="button"
       />
     );
   }
 
-  protected renderMenuButtons(): VNode {
+  protected renderUndoRedoMenuButtons(): VNode {
     return [this.renderUndoButton(), this.renderRedoButton()];
   }
 
@@ -1645,6 +1760,26 @@ class Sketch extends Widget<SketchEvents> {
         class={this.classes(CSS.button, icon)}
         disabled={isDisabled}
         onclick={this.redo}
+        title={title}
+        type="button"
+      />
+    );
+  }
+
+  protected renderSettingsMenuButton(): VNode {
+    const title = this.messages.settings;
+    const classes = [CSS.button, CSS.settingsIcon];
+
+    if (this._menuOpen) {
+      classes.push(CSS.selectedButton);
+    }
+
+    return (
+      <button
+        aria-label={title}
+        bind={this}
+        class={this.classes(classes)}
+        onclick={this._toggleMenu}
         title={title}
         type="button"
       />
@@ -1698,6 +1833,20 @@ class Sketch extends Widget<SketchEvents> {
         this.update([graphic]);
       }
     }
+  }
+
+  private _toggleMenu(): void {
+    this._menuOpen = !this._menuOpen;
+    this.scheduleRender();
+  }
+
+  private _toggleSnapping(): void {
+    const {
+      viewModel: { snappingOptions }
+    } = this;
+
+    this.viewModel.snappingOptions.enabled = !snappingOptions.enabled;
+    this.scheduleRender();
   }
 
   //--------------------------------------------------------------------------

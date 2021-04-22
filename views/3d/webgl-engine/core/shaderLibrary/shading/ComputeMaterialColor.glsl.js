@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../attributes/VertexColor.glsl","../util/MixExternalColor.glsl"],(function(e,o,r,a){"use strict";e.ComputeMaterialColor=function(e,t){e.include(r.VertexColor,t),e.fragment.include(a.MixExternalColor);const l=e.fragment;l.uniforms.add("uBaseColor","vec4"),l.uniforms.add("uObjectOpacity","float"),t.attributeColor?l.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","../attributes/VertexColor.glsl","../util/MixExternalColor.glsl"],(function(e,o,r,a){"use strict";function t(e,t){e.include(r.VertexColor,t),e.fragment.include(a.MixExternalColor);const l=e.fragment;l.uniforms.add("uBaseColor","vec4"),l.uniforms.add("uObjectOpacity","float"),t.attributeColor?l.code.add(o.glsl`
       vec3 _baseColor() {
         // combine the old material parameters into a single one
         return uBaseColor.rgb * vColor.rgb;
@@ -40,4 +40,4 @@ define(["exports","../../shaderModules/interfaces","../attributes/VertexColor.gl
 
       return vec4(color, opacity);
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.ComputeMaterialColor=t,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -7,7 +7,7 @@
  * to enable an end user to update a feature's attribute on a specified
  * editable feature layer(s).
  *
- * ![featureForm](../../assets/img/apiref/widgets/featureForm.png)
+ * ![featureForm](../assets/img/apiref/widgets/featureForm.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -75,7 +75,7 @@ import FeatureFormMessages from "esri/widgets/FeatureForm/t9n/FeatureForm";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 interface FormattedDateParts {
   date: string;
@@ -102,6 +102,9 @@ const CSS = {
   inputField: "esri-feature-form__input",
   inputDate: "esri-feature-form__input--date",
   inputTime: "esri-feature-form__input--time",
+  inputRadioGroup: "esri-feature-form__input--radio-group",
+  inputRadio: "esri-feature-form__input--radio",
+  inputRadioLabel: "esri-feature-form__input--radio-label",
   inputDisabled: "esri-feature-form__input--disabled",
   inputInvalid: "esri-feature-form__input--invalid",
   inputIconInvalid: "esri-feature-form__input-icon--invalid",
@@ -228,7 +231,7 @@ class FeatureForm extends Widget {
     this._handleOptionChange = this._handleOptionChange.bind(this);
     this._handleGroupClick = this._handleGroupClick.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
-    this._afterScrollerCreateOrUpdate = this._afterScrollerCreateOrUpdate.bind(this);
+    this._afterInputCreateOrUpdate = this._afterInputCreateOrUpdate.bind(this);
   }
 
   protected async loadLocale(): Promise<void> {
@@ -241,6 +244,7 @@ class FeatureForm extends Widget {
         const groupOrInput = this._getFocusableInput("forward");
         this._activeInputName = groupOrInput && groupOrInput.name;
         this._userUpdatedInputFieldNames.clear();
+        this._fieldToInitialIncompatibleDomainValue.clear();
 
         this._fieldFocusNeeded = true;
       }),
@@ -276,6 +280,8 @@ class FeatureForm extends Widget {
 
   private _fieldFocusNeeded: boolean = false;
 
+  private _fieldToInitialIncompatibleDomainValue = new Map<string, FieldValue>();
+
   private _moment: typeof import("moment") = null;
 
   private _userUpdatedInputFieldNames = new Set<string>();
@@ -309,7 +315,6 @@ class FeatureForm extends Widget {
    */
 
   @aliasOf("viewModel.description")
-  @renderable()
   description: string = null;
 
   //----------------------------------
@@ -486,7 +491,6 @@ class FeatureForm extends Widget {
    * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
    */
   @property()
-  @renderable()
   groupDisplay: "all" | "sequential" = "all";
 
   //----------------------------------
@@ -543,7 +547,6 @@ class FeatureForm extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/FeatureForm/t9n/FeatureForm")
   messages: FeatureFormMessages = null;
 
@@ -588,7 +591,6 @@ class FeatureForm extends Widget {
    * @since 4.16
    */
   @aliasOf("viewModel.title")
-  @renderable()
   title: string = null;
 
   //----------------------------------
@@ -607,7 +609,6 @@ class FeatureForm extends Widget {
    * @autocast
    */
   @property()
-  @renderable(["viewModel.inputFields", "viewModel.state"])
   @vmEvent(["value-change", "submit"])
   viewModel: FeatureFormViewModel = new FeatureFormViewModel();
 
@@ -843,7 +844,18 @@ class FeatureForm extends Widget {
     const readOnly = !editable;
     const props = this.getCommonInputProps(inputField);
 
-    if (domain && domain.type === "coded-value" && !readOnly) {
+    if (domain?.type === "coded-value" && !readOnly) {
+      if (inputField.editorType === "radio-buttons") {
+        return this.renderRadioButtonsInputField(
+          value,
+          domain.codedValues.map(({ code: value, name }) => ({
+            value,
+            name
+          })),
+          props
+        );
+      }
+
       return this.renderSelectInputField(
         value,
         domain.codedValues.map(({ code: value, name }) => ({
@@ -930,37 +942,32 @@ class FeatureForm extends Widget {
     values: { value: FieldValue; name: string }[],
     props: ReturnType<FeatureForm["getCommonInputProps"]>
   ): VNode {
-    let isNotOutlierValue = false;
+    const options = values.map((v) => (
+      <option value={`${v.value}`} key={v.name}>
+        {v.name}
+      </option>
+    ));
 
-    const options = values.map((v) => {
-      if (v.value === value) {
-        isNotOutlierValue = true;
-      }
+    const inputField = props["data-field"];
 
-      return (
-        <option value={`${v.value}`} key={v.name}>
-          {v.name}
+    this.registerIncompatibleValue(value, values, inputField, (incompatibleValue) => {
+      options.unshift(
+        <option value={`${incompatibleValue}`} key="incompatible-option" disabled={true}>
+          {incompatibleValue}
         </option>
       );
     });
 
-    if (value != null && value !== "" && !isNotOutlierValue) {
-      // non-matching value
-      options.unshift(
-        <option value={`${value}`} key="outlier-option">
-          {value}
-        </option>
-      );
-    }
+    if (
+      !inputField.required &&
+      (inputField.editorType !== "combo-box" || inputField.config.showNoValueOption)
+    ) {
+      const emptyOptionValue = ""; // "" is treated as null
+      const emptyOptionLabel = inputField.config?.noValueOptionLabel || this.messages.empty;
 
-    const inputField = props["data-field"];
-
-    // only show empty option if existing value not previously set
-    if (!inputField.required) {
-      // "" is treated as null
       options.unshift(
-        <option value={""} key="empty-option">
-          {this.messages.empty}
+        <option value={emptyOptionValue} key="empty-option">
+          {emptyOptionLabel}
         </option>
       );
     }
@@ -973,6 +980,104 @@ class FeatureForm extends Widget {
       >
         {options}
       </select>
+    );
+  }
+
+  private registerIncompatibleValue(
+    value: FieldValue,
+    values: { value: FieldValue; name: string }[],
+    inputField: InputField,
+    handleIncompatibleValue?: (incompatibleValue: FieldValue) => void
+  ): void {
+    const incompatibleValueLookup = this._fieldToInitialIncompatibleDomainValue;
+    const hasRegisteredIncompatibleValue = incompatibleValueLookup.has(inputField.name);
+
+    if (
+      hasRegisteredIncompatibleValue ||
+      (value != null && value !== "" && !values.find((v) => v.value === value)) ||
+      hasRegisteredIncompatibleValue
+    ) {
+      if (!hasRegisteredIncompatibleValue) {
+        incompatibleValueLookup.set(inputField.name, value);
+      }
+
+      handleIncompatibleValue?.(incompatibleValueLookup.get(inputField.name));
+    }
+  }
+
+  protected renderRadioButtonsInputField(
+    value: FieldValue,
+    values: { value: FieldValue; name: string }[],
+    props: ReturnType<FeatureForm["getCommonInputProps"]>
+  ): VNode {
+    const inputField = props["data-field"];
+
+    const radios = values.map((v) =>
+      this.renderRadioButton({
+        key: v.name,
+        label: v.name,
+        name: inputField.name,
+        value: v.value,
+        selected: v.value === value,
+        props
+      })
+    );
+
+    // incompatible value option is intentionally not rendered
+    this.registerIncompatibleValue(value, values, inputField);
+
+    if (!inputField.required && (!inputField.config || inputField.config.showNoValueOption)) {
+      const emptyOptionValue = ""; // "" is treated as null
+      const emptyOptionLabel = inputField.config?.noValueOptionLabel || this.messages.empty;
+      const emptyOptionSelected = value === emptyOptionValue || value === null;
+
+      radios.unshift(
+        this.renderRadioButton({
+          key: "empty-option",
+          label: emptyOptionLabel,
+          name: inputField.name,
+          value: emptyOptionValue,
+          selected: emptyOptionSelected,
+          props
+        })
+      );
+    }
+
+    return (
+      <div key={`${props.key}-radio`} class={CSS.inputRadioGroup}>
+        {radios}
+      </div>
+    );
+  }
+
+  protected renderRadioButton({
+    key,
+    name,
+    value,
+    selected,
+    label,
+    props
+  }: {
+    key: string;
+    name: string;
+    value: any;
+    selected: boolean;
+    label: string;
+    props: any;
+  }): VNode {
+    return (
+      <label key={key} class={CSS.inputRadioLabel}>
+        <input
+          {...props}
+          class={CSS.inputRadio}
+          name={name}
+          type="radio"
+          value={value}
+          checked={selected}
+          onchange={this._handleRadioInputChange}
+        />
+        {label}
+      </label>
     );
   }
 
@@ -1007,8 +1112,8 @@ class FeatureForm extends Widget {
     const shouldPreventTabbing = groupDisplay === "all" && group?.state === "collapsed";
 
     return {
-      "afterCreate": this._afterScrollerCreateOrUpdate,
-      "afterUpdate": this._afterScrollerCreateOrUpdate,
+      "afterCreate": this._afterInputCreateOrUpdate,
+      "afterUpdate": this._afterInputCreateOrUpdate,
       "aria-invalid": valid ? "false" : "true",
       "class": this.classes(
         CSS.input,
@@ -1027,9 +1132,9 @@ class FeatureForm extends Widget {
       "onblur": this._handleInputBlur,
       "onkeydown": this._handleInputKeyDown,
       "onmousedown": type === "number" ? this._handleNumberInputMouseDown : null,
+      "placeholder": type === "number" || type === "text" ? hint : "",
       required,
-      "tabIndex": shouldPreventTabbing ? -1 : 0,
-      "title": hint
+      "tabIndex": shouldPreventTabbing ? -1 : 0
     };
   }
 
@@ -1077,12 +1182,19 @@ class FeatureForm extends Widget {
     return constraints;
   }
 
-  private _afterScrollerCreateOrUpdate(node: HTMLElement): void {
+  private _afterInputCreateOrUpdate(node: HTMLElement): void {
     const inputField: InputField = node["data-field"];
     const activeInput = this.viewModel.findField(this._activeInputName);
+    const incompatibleValueSelected =
+      this._fieldToInitialIncompatibleDomainValue.get(inputField.name) === inputField.value;
 
     const shouldAutoFocusField =
-      inputField.editable && this._fieldFocusNeeded && activeInput === inputField;
+      inputField.editable &&
+      this._fieldFocusNeeded &&
+      activeInput === inputField &&
+      (inputField.editorType !== "radio-buttons" ||
+        incompatibleValueSelected ||
+        (node as HTMLInputElement).checked);
 
     if (shouldAutoFocusField) {
       this._fieldFocusNeeded = false;
@@ -1122,10 +1234,17 @@ class FeatureForm extends Widget {
       return;
     }
 
-    this._commitValue(input);
+    if (inputField.editorType === "radio-buttons" && !input.checked) {
+      return;
+    }
 
+    this._commitValue(input);
     this.scheduleRender();
   }
+
+  private _handleRadioInputChange = (event: Event): void => {
+    this._updateFieldValue(event.target as HTMLInputElement);
+  };
 
   private _commitValue(input: HTMLInputElement): void {
     const inputField: InputField = input["data-field"] as InputField;
@@ -1283,10 +1402,20 @@ class FeatureForm extends Widget {
     const inputField: InputField = input["data-field"];
     const valueAsText = input.value;
 
+    const unselectedRadioGroup =
+      inputField.editorType === "radio-buttons" &&
+      input.type === "radio" &&
+      !(input as HTMLInputElement).checked;
+
+    if (unselectedRadioGroup) {
+      // return the field's value since we don't render this option for parsing
+      return inputField.value;
+    }
+
     const { type } = inputField;
 
     if (type === "number") {
-      return parseFloat(valueAsText);
+      return valueAsText ? parseFloat(valueAsText) : null;
     }
 
     if (type === "date") {

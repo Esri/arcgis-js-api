@@ -37,9 +37,6 @@ import * as watchUtils from "esri/core/watchUtils";
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
-// esri.libs.sortablejs
-import Sortable from "esri/libs/sortablejs/Sortable";
-
 // esri.support.actions
 import ActionButton from "esri/support/actions/ActionButton";
 import ActionToggle from "esri/support/actions/ActionToggle";
@@ -48,8 +45,8 @@ import ActionToggle from "esri/support/actions/ActionToggle";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -73,7 +70,10 @@ import LayerListMessages from "esri/widgets/LayerList/t9n/LayerList";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+import { accessibleHandler, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+
+// sortablejs
+import Sortable from "sortablejs";
 
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
@@ -288,7 +288,6 @@ class LayerList extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   errorsVisible: false;
 
   //----------------------------------
@@ -366,7 +365,6 @@ class LayerList extends Widget {
    * });
    */
   @aliasOf("viewModel.listItemCreatedFunction")
-  @renderable()
   listItemCreatedFunction: ListItemModifier = null;
 
   //----------------------------------
@@ -384,7 +382,6 @@ class LayerList extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/LayerList/t9n/LayerList")
   messages: LayerListMessages = null;
 
@@ -401,7 +398,6 @@ class LayerList extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -449,7 +445,6 @@ class LayerList extends Widget {
    * @see {@link module:esri/layers/Layer#listMode Layer.listMode}
    */
   @aliasOf("viewModel.operationalItems")
-  @renderable()
   operationalItems: Collection<ListItem> = null;
 
   //----------------------------------
@@ -475,7 +470,6 @@ class LayerList extends Widget {
    * layerList.selectionEnabled = true;
    */
   @property()
-  @renderable()
   selectionEnabled = false;
 
   //----------------------------------
@@ -493,7 +487,6 @@ class LayerList extends Widget {
    * @see [selectionEnabled](#selectionEnabled)
    */
   @property()
-  @renderable()
   selectedItems: Collection<ListItem> = new ListItemCollection();
 
   //----------------------------------
@@ -517,7 +510,6 @@ class LayerList extends Widget {
    * layerList.statusIndicatorsVisible = false;
    */
   @property()
-  @renderable()
   set statusIndicatorsVisible(value: boolean) {
     deprecatedProperty(logger, "statusIndicatorsVisible", {
       replacement: "visibleElements.statusIndicators",
@@ -538,8 +530,7 @@ class LayerList extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -560,7 +551,6 @@ class LayerList extends Widget {
   @property({
     type: LayerListViewModel
   })
-  @renderable("viewModel.state")
   viewModel: LayerListViewModel = new LayerListViewModel();
 
   //----------------------------------
@@ -573,7 +563,7 @@ class LayerList extends Widget {
    *
    * @typedef module:esri/widgets/LayerList~VisibleElements
    *
-   * @property {boolean} [statusIndicators] - Indicates whether to the status indicators will be displayed. Default is `true`.
+   * @property {boolean} [statusIndicators] - Indicates whether the status indicators will be displayed. Default is `true`.
    */
 
   /**
@@ -593,7 +583,6 @@ class LayerList extends Widget {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -1614,7 +1603,7 @@ class LayerList extends Widget {
     const singleMatch = found && length === 1;
 
     if (allowMultipleSelected) {
-      found ? selectedItems.remove(found) : selectedItems.add(item);
+      found ? selectedItems.remove?.(found) : selectedItems.add(item);
       return;
     }
 
@@ -1624,7 +1613,7 @@ class LayerList extends Widget {
       return;
     }
 
-    found ? selectedItems.remove(found) : selectedItems.add(item);
+    found ? selectedItems.remove?.(found) : selectedItems.add(item);
   }
 }
 

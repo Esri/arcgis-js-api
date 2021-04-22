@@ -6,7 +6,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![Slider with annotations](../../assets/img/apiref/widgets/sliders/slider-labels.png "Slider with annotations")
+ * ![Slider with annotations](../assets/img/apiref/widgets/sliders/slider-labels.png "Slider with annotations")
  *
  * At a minimum, the slider's [container](#container) or parent container must have a `width` set in CSS for it to render.
  *
@@ -71,7 +71,7 @@ import {
   LabelFormatFunction,
   VNode
 } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-slider",
@@ -348,7 +348,6 @@ class Slider extends Widget<SliderEvents> {
    * @default false
    */
   @property()
-  @renderable()
   disabled = false;
 
   //----------------------------------
@@ -382,7 +381,6 @@ class Slider extends Widget<SliderEvents> {
    * slider.draggableSegmentsEnabled = false;
    */
   @property()
-  @renderable()
   draggableSegmentsEnabled = true;
 
   //----------------------------------
@@ -436,12 +434,12 @@ class Slider extends Widget<SliderEvents> {
    * The image below demonstrates how slider input values resemble corresponding slider values by default
    * and won't match the formatting set in `labelFormatFunction`.
    *
-   * ![Slider without input formatter](../../assets/img/apiref/widgets/sliders/slider-no-input-formatter.png "Slider without input formatter")
+   * ![Slider without input formatter](../assets/img/apiref/widgets/sliders/slider-no-input-formatter.png "Slider without input formatter")
    *
    * If you want to format slider input values so they match thumb labels, you can pass the same function set in `labelFormatFunction` to
    * `inputFormatFunction` for consistent formatting.
    *
-   * ![Slider with input formatter](../../assets/img/apiref/widgets/sliders/slider-input-formatter.png "Slider with input formatter")
+   * ![Slider with input formatter](../assets/img/apiref/widgets/sliders/slider-input-formatter.png "Slider with input formatter")
    *
    * However, if an `inputFormatFunction` is specified, you must also write a corresponding
    * [inputParseFunction](#inputParseFunction) to parse user inputs to understandable slider values. In most cases, if
@@ -554,7 +552,7 @@ class Slider extends Widget<SliderEvents> {
    * when the user clicks a label. This allows the user to move the slider
    * thumb to precise values without sliding the thumbs.
    *
-   * ![Slider editable labels](../../assets/img/apiref/widgets/sliders/slider-edit-label.png "Slider with editable labels")
+   * ![Slider editable labels](../assets/img/apiref/widgets/sliders/slider-edit-label.png "Slider with editable labels")
    *
    * @name labelInputsEnabled
    * @instance
@@ -646,7 +644,6 @@ class Slider extends Widget<SliderEvents> {
    * slider.labelsVisible = true;
    */
   @property()
-  @renderable()
   set labelsVisible(value: boolean) {
     deprecatedProperty(logger, "labelsVisible", {
       replacement: "visibleElements.labels",
@@ -666,28 +663,28 @@ class Slider extends Widget<SliderEvents> {
    *
    * **`horizontal`**
    *
-   * ![Slider horizontal not reversed](../../assets/img/apiref/widgets/sliders/slider-horizontal-not-reversed.png "default horizontal slider")
+   * ![Slider horizontal not reversed](../assets/img/apiref/widgets/sliders/slider-horizontal-not-reversed.png "default horizontal slider")
    *
    * **`horizontal-reversed`**
    *
    * When the slider is set to `horizontal-reversed`, the max value will render on the
    * left side and the min on the right.
    *
-   * ![Slider horizontal reversed](../../assets/img/apiref/widgets/sliders/slider-horizontal-reversed.png "reversed horizontal slider")
+   * ![Slider horizontal reversed](../assets/img/apiref/widgets/sliders/slider-horizontal-reversed.png "reversed horizontal slider")
    *
    * **`vertical`**
    *
    * When the slider is set to `vertical`, the max value will render on the
    * top of the track and the min on the bottom.
    *
-   * ![Slider vertical not reversed](../../assets/img/apiref/widgets/sliders/slider-vertical-not-reversed.png "default vertical slider")
+   * ![Slider vertical not reversed](../assets/img/apiref/widgets/sliders/slider-vertical-not-reversed.png "default vertical slider")
    *
    * **`vertical-reversed`**
    *
    * When the slider is set to `vertical-reversed`, the max value will render on the
    * bottom of the track and the min on the top.
    *
-   * ![Slider vertical reversed](../../assets/img/apiref/widgets/sliders/slider-vertical-reversed.png "reversed vertical slider")
+   * ![Slider vertical reversed](../assets/img/apiref/widgets/sliders/slider-vertical-reversed.png "reversed vertical slider")
    *
    * @name layout
    * @instance
@@ -697,7 +694,6 @@ class Slider extends Widget<SliderEvents> {
    * slider.layout = "vertical";
    */
   @property({ value: "horizontal" })
-  @renderable()
   set layout(value: Layout) {
     const layouts: Layout[] = [
       "vertical",
@@ -757,7 +753,6 @@ class Slider extends Widget<SliderEvents> {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Slider/t9n/Slider")
   messages: SliderMessages = null;
 
@@ -850,7 +845,7 @@ class Slider extends Widget<SliderEvents> {
    * when the user clicks a [min](#min) or [max](#max) label.
    * This allows the user to increase or decrease the data range of the slider.
    *
-   * ![Slider editable range labels](../../assets/img/apiref/widgets/sliders/slider-edit-range-label.png "Slider with editable range labels")
+   * ![Slider editable range labels](../assets/img/apiref/widgets/sliders/slider-edit-range-label.png "Slider with editable range labels")
    *
    * @name rangeLabelInputsEnabled
    * @instance
@@ -881,7 +876,6 @@ class Slider extends Widget<SliderEvents> {
    * slider.viewModel.rangeLabelInputsEnabled = true;
    */
   @property()
-  @renderable()
   set rangeLabelsVisible(value: boolean) {
     deprecatedProperty(logger, "rangeLabelsVisible", {
       replacement: "visibleElements.rangeLabels",
@@ -921,10 +915,8 @@ class Slider extends Widget<SliderEvents> {
    * @readonly
    */
   @property({
-    dependsOn: ["viewModel.state"],
     readOnly: true
   })
-  @renderable()
   get state(): State {
     const {
       _activeLabelInputIndex,
@@ -973,7 +965,6 @@ class Slider extends Widget<SliderEvents> {
    */
 
   @property()
-  @renderable()
   steps: number | number[] = null;
 
   /**
@@ -1238,7 +1229,6 @@ class Slider extends Widget<SliderEvents> {
    * }];
    */
   @property()
-  @renderable()
   tickConfigs: TickConfig[] = null;
 
   //----------------------------------
@@ -1301,15 +1291,6 @@ class Slider extends Widget<SliderEvents> {
    * @type {module:esri/widgets/Slider/SliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.thumbsConstrained",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.precision",
-    "viewModel.labelFormatFunction",
-    "viewModel.labels",
-    "viewModel.values"
-  ])
   viewModel: SliderViewModel = new SliderViewModel();
 
   //----------------------------------
@@ -1348,7 +1329,6 @@ class Slider extends Widget<SliderEvents> {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -1650,7 +1630,7 @@ class Slider extends Widget<SliderEvents> {
       <span
         afterCreate={this._afterLabelCreate}
         afterRemoved={this._afterLabelRemoved}
-        aria-hidden={!labelsVisible}
+        aria-hidden={(!labelsVisible).toString()}
         bind={this}
         class={classes}
         data-thumb-index={index}
@@ -1696,7 +1676,7 @@ class Slider extends Widget<SliderEvents> {
 
     return (
       <div
-        aria-hidden={!rangeLabelsVisible}
+        aria-hidden={(!rangeLabelsVisible).toString()}
         bind={this}
         class={classes}
         onclick={this._onMaxLabelClick}
@@ -1720,7 +1700,7 @@ class Slider extends Widget<SliderEvents> {
 
     return (
       <div
-        aria-hidden={!rangeLabelsVisible}
+        aria-hidden={(!rangeLabelsVisible).toString()}
         bind={this}
         class={classes}
         onclick={this._onMinLabelClick}

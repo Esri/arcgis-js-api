@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../attributes/VertexTextureCoordinates.glsl"],(function(e,t,n){"use strict";e.ComputeNormalTexture=function(e,a){const o=e.fragment;o.uniforms.add("normalTexture","sampler2D"),o.uniforms.add("normalTextureSize","vec2"),a.vertexTangets?(e.attributes.add("tangent","vec4"),e.varyings.add("vTangent","vec4"),2===a.doubleSidedMode?o.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces","../attributes/VertexTextureCoordinates.glsl"],(function(e,t,n){"use strict";function a(e,a){const o=e.fragment;o.uniforms.add("normalTexture","sampler2D"),o.uniforms.add("normalTextureSize","vec2"),a.vertexTangets?(e.attributes.add("tangent","vec4"),e.varyings.add("vTangent","vec4"),2===a.doubleSidedMode?o.code.add(t.glsl`
       mat3 computeTangentSpace(vec3 normal) {
         float tangentHeadedness = gl_FrontFacing ? vTangent.w : -vTangent.w;
         vec3 tangent = normalize(gl_FrontFacing ? vTangent.xyz : -vTangent.xyz);
@@ -40,4 +40,4 @@ define(["exports","../../shaderModules/interfaces","../attributes/VertexTextureC
       vec3 rawNormal = textureLookup(normalTexture, vtc).rgb * 2.0 - 1.0;
       return tangentSpace * rawNormal;
     }
-  `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `))}e.ComputeNormalTexture=a,Object.defineProperty(e,"__esModule",{value:!0})}));

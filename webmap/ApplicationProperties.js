@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport","../webdoc/applicationProperties/Viewing"],(function(e,o,r,t,i,n,p,s,c,l,u,a,d){"use strict";var f;let g=f=function(o){function r(e){var r;return(r=o.call(this,e)||this).editing=null,r.offline=null,r.viewing=null,r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new f(t.clone({editing:this.editing,offline:this.offline,viewing:this.viewing}))},r}(a.JSONSupport);return o.__decorate([p.property({json:{write:!0}})],g.prototype,"editing",void 0),o.__decorate([p.property({json:{write:!0}})],g.prototype,"offline",void 0),o.__decorate([p.property({type:d,json:{write:!0}})],g.prototype,"viewing",void 0),g=f=o.__decorate([s.subclass("esri.webmap.ApplicationProperties")],g),g}));

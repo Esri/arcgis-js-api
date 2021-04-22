@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor"],(function(e,o,r,t,n,s,a,c,i,p,u){"use strict";var l;let d=l=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).enabled=!0,e.rotationEnabled=!0,e}e._inheritsLoose(r,o);var t=r.prototype;return t.constrain=function(e,o){return this.enabled&&o?(this.rotationEnabled||(e.rotation=o.rotation),e):e},t.clone=function(){return new l({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},r}(u);return o.__decorate([s.property()],d.prototype,"enabled",void 0),o.__decorate([s.property()],d.prototype,"rotationEnabled",void 0),d=l=o.__decorate([a.subclass("esri.views.2d.constraints.RotationConstraint")],d),d}));

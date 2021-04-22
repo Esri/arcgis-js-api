@@ -43,8 +43,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -59,12 +59,11 @@ import ExpandMessages from "esri/widgets/Expand/t9n/Expand";
 import { VNode } from "esri/widgets/support/interfaces";
 import {
   accessibleHandler,
-  isWidget,
-  hasDomNode,
-  renderable,
-  tsx,
   DomNodeOwner,
-  messageBundle
+  hasDomNode,
+  isWidget,
+  messageBundle,
+  tsx
 } from "esri/widgets/support/widget";
 
 type ContentSource = string | HTMLElement | Widget | DomNodeOwner;
@@ -116,20 +115,12 @@ class Expand extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get contentId(): string {
     return `${this.id}_controls_content`;
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["expanded", "messagesCommon", "collapseTooltip", "expandTooltip"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get expandTitle(): string {
     const { expanded, messagesCommon, collapseTooltip, expandTooltip } = this;
 
@@ -137,6 +128,8 @@ class Expand extends Widget {
       ? collapseTooltip || messagesCommon.collapse
       : expandTooltip || messagesCommon.expand;
   }
+
+  private _toggleButtonEl: HTMLDivElement;
 
   //--------------------------------------------------------------------------
   //
@@ -161,6 +154,41 @@ class Expand extends Widget {
   autoCollapse: boolean = null;
 
   //----------------------------------
+  //  closeOnEsc
+  //----------------------------------
+
+  /**
+   * When true, the Expand widget will close after the Escape key is pressed when the keyboard focus is within its content.
+   * This property can also be set to a function that returns a boolean, allowing for more customization for when to allow the Expand widget
+   * to be closed from the `esc` key.
+   *
+   * @name closeOnEsc
+   * @instance
+   * @type {boolean | Function}
+   * @default true
+   *
+   * @example
+   * var expand = new Expand({
+   *    view: view,
+   *    content: searchWidget,
+   *    // widget will not be able to be closed from the ESC key
+   *    closeOnEsc: false
+   * });
+   *
+   * @example
+   * var expand = new Expand({
+   *    view: view,
+   *    content: searchWidget,
+   *    // widget will close on ESC when the search widget has no active menu
+   *    closeOnEsc: function() {
+   *      return searchWidget.activeMenu === "none"
+   *    }
+   * });
+   */
+  @property()
+  closeOnEsc: boolean | ((event: KeyboardEvent) => boolean) = true;
+
+  //----------------------------------
   //  collapseIconClass
   //----------------------------------
 
@@ -174,10 +202,7 @@ class Expand extends Widget {
    * @instance
    * @type {string}
    */
-  @property({
-    dependsOn: ["content"]
-  })
-  @renderable()
+  @property()
   get collapseIconClass(): string {
     return CSS.collapseIcon;
   }
@@ -203,7 +228,6 @@ class Expand extends Widget {
    * @default "Collapse" (English locale)
    */
   @property()
-  @renderable()
   collapseTooltip: string = "";
 
   //----------------------------------
@@ -259,7 +283,6 @@ class Expand extends Widget {
    * @type {Node | string | module:esri/widgets/Widget}
    */
   @property()
-  @renderable()
   content: ContentSource = "";
 
   //----------------------------------
@@ -275,7 +298,6 @@ class Expand extends Widget {
    * @default false
    */
   @aliasOf("viewModel.expanded")
-  @renderable()
   expanded: boolean = null;
 
   //----------------------------------
@@ -292,10 +314,7 @@ class Expand extends Widget {
    * @instance
    * @type {string}
    */
-  @property({
-    dependsOn: ["content"]
-  })
-  @renderable()
+  @property()
   get expandIconClass(): string {
     return isWidget(this.content) ? this.content.iconClass : CSS.expandIcon;
   }
@@ -321,7 +340,6 @@ class Expand extends Widget {
    * @default "Expand" (English locale)
    */
   @property()
-  @renderable()
   expandTooltip: string = "";
 
   //----------------------------------
@@ -369,14 +387,13 @@ class Expand extends Widget {
   /**
    * A number to display at the corner of the widget to indicate the number of, for example, open issues or unread notices.
    *
-   * ![expand widget icon number](../../assets/img/apiref/widgets/expand-with-iconnumber.png)
+   * ![expand widget icon number](../assets/img/apiref/widgets/expand-with-iconnumber.png)
    *
    * @name iconNumber
    * @instance
    * @type {number}
    */
   @property()
-  @renderable()
   iconNumber: number = 0;
 
   //----------------------------------
@@ -410,7 +427,6 @@ class Expand extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Expand/t9n/Expand")
   messages: ExpandMessages = null;
 
@@ -427,7 +443,6 @@ class Expand extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -451,7 +466,6 @@ class Expand extends Widget {
    * @type {"auto" | "floating" | "drawer"}
    */
   @property()
-  @renderable()
   mode: "auto" | "floating" | "drawer" = "auto";
 
   //----------------------------------
@@ -466,8 +480,7 @@ class Expand extends Widget {
    * @type {(module:esri/views/MapView | module:esri/views/SceneView)}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -487,7 +500,6 @@ class Expand extends Widget {
   @property({
     type: ExpandViewModel
   })
-  @renderable("viewModel.state")
   viewModel: ExpandViewModel = new ExpandViewModel();
 
   //--------------------------------------------------------------------------
@@ -533,7 +545,7 @@ class Expand extends Widget {
     };
 
     return (
-      <div class={this.classes(CSS.base, baseClasses)}>
+      <div class={this.classes(CSS.base, baseClasses)} onkeydown={this._handleKeyDown}>
         {this.renderMask()}
         {this.renderContainer()}
       </div>
@@ -621,15 +633,16 @@ class Expand extends Widget {
 
     return (
       <div
-        bind={this}
-        onclick={this._toggle}
-        onkeydown={this._toggle}
+        afterCreate={this._storeToggleButtonEl}
         aria-controls={contentId}
         aria-expanded={expanded ? "true" : "false"}
-        title={expandTitle}
+        bind={this}
+        class={CSS.button}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
         role="button"
         tabindex="0"
-        class={CSS.button}
+        title={expandTitle}
       >
         {this.renderBadgeNumber()}
         {this.renderIcon()}
@@ -696,6 +709,25 @@ class Expand extends Widget {
   private _attachToNode(this: HTMLElement, node: HTMLElement): void {
     const content: HTMLElement = this;
     node.appendChild(content);
+  }
+
+  private _handleKeyDown = (event: KeyboardEvent): void => {
+    const { closeOnEsc, _toggleButtonEl, expanded } = this;
+
+    if (!expanded || !closeOnEsc || event.target === _toggleButtonEl || event.key !== "Escape") {
+      return;
+    }
+
+    const willClose = typeof closeOnEsc === "function" ? closeOnEsc(event) : closeOnEsc;
+
+    if (willClose) {
+      this.expanded = false;
+      _toggleButtonEl?.focus();
+    }
+  };
+
+  private _storeToggleButtonEl(el: HTMLDivElement): void {
+    this._toggleButtonEl = el;
   }
 }
 

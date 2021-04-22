@@ -41,9 +41,6 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 // esri.layers
 import Layer from "esri/layers/Layer";
 
-// esri.libs.sortablejs
-import Sortable from "esri/libs/sortablejs/Sortable";
-
 // esri.support.actions
 import ActionButton from "esri/support/actions/ActionButton";
 import ActionToggle from "esri/support/actions/ActionToggle";
@@ -52,8 +49,8 @@ import ActionToggle from "esri/support/actions/ActionToggle";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -75,7 +72,10 @@ import { findSelectedItem } from "esri/widgets/LayerList/support/layerListUtils"
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
+
+// sortablejs
+import Sortable from "sortablejs";
 
 const ListItemCollection = Collection.ofType<ListItem>(ListItem);
 
@@ -354,7 +354,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * })
    */
   @aliasOf("viewModel.baseListItemCreatedFunction")
-  @renderable()
   baseListItemCreatedFunction: ListItemModifier = null;
 
   //----------------------------------
@@ -376,7 +375,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * basemapLayerList.editingEnabled = true;
    */
   @property()
-  @renderable()
   editingEnabled = false;
 
   //----------------------------------
@@ -389,7 +387,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @ignore
    */
   @property()
-  @renderable()
   errorsVisible: false;
 
   //----------------------------------
@@ -437,7 +434,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/BasemapLayerList/t9n/BasemapLayerList")
   messages: BasemapLayerListMessages = null;
 
@@ -454,7 +450,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -511,7 +506,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * })
    */
   @aliasOf("viewModel.referenceListItemCreatedFunction")
-  @renderable()
   referenceListItemCreatedFunction: ListItemModifier = null;
 
   //----------------------------------
@@ -527,7 +521,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @readonly
    */
   @aliasOf("viewModel.baseItems")
-  @renderable()
   baseItems: Collection<ListItem> = null;
 
   //----------------------------------
@@ -543,7 +536,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @readonly
    */
   @aliasOf("viewModel.referenceItems")
-  @renderable()
   referenceItems: Collection<ListItem> = null;
 
   //----------------------------------
@@ -559,7 +551,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
    */
   @property()
-  @renderable()
   selectedItems: Collection<ListItem> = new ListItemCollection();
 
   //----------------------------------
@@ -581,7 +572,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * basemapLayerList.statusIndicatorsVisible = false;
    */
   @property()
-  @renderable()
   set statusIndicatorsVisible(value: boolean) {
     deprecatedProperty(logger, "statusIndicatorsVisible", {
       replacement: "visibleElements.statusIndicators",
@@ -602,8 +592,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -622,7 +611,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    */
   @vmEvent("trigger-action")
   @property({ type: BasemapLayerListViewModel })
-  @renderable("viewModel.state")
   viewModel: BasemapLayerListViewModel = new BasemapLayerListViewModel();
 
   //----------------------------------
@@ -657,7 +645,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")

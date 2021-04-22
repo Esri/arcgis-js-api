@@ -11,7 +11,7 @@
  *  - a layer's `renderer`, `opacity`, or `title` is changed
  *  - the `legendEnabled` property is changed (set to `true` or `false` on the layer)
  *
- * [![widgets-legend-basic](../../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
+ * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -66,8 +66,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import { cast } from "esri/core/accessorSupport/decorators/cast";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { LayerInfo } from "esri/widgets/interfaces";
@@ -88,7 +88,7 @@ import LegendMessages from "esri/widgets/Legend/t9n/Legend";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-legend",
@@ -182,7 +182,6 @@ class Legend extends Widget {
    * @autocast { "value": "Object[]" }
    */
   @aliasOf("viewModel.activeLayerInfos")
-  @renderable()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
 
   //----------------------------------
@@ -203,7 +202,6 @@ class Legend extends Widget {
    * legend.basemapLegendVisible = true;
    */
   @aliasOf("viewModel.basemapLegendVisible")
-  @renderable()
   basemapLegendVisible = false;
 
   //----------------------------------
@@ -218,7 +216,6 @@ class Legend extends Widget {
    * @private
    */
   @aliasOf("viewModel.groundLegendVisible")
-  @renderable()
   groundLegendVisible = false;
 
   //----------------------------------
@@ -260,7 +257,6 @@ class Legend extends Widget {
    * legend.respectLayerVisibility = false;
    */
   @aliasOf("viewModel.respectLayerVisibility")
-  @renderable()
   respectLayerVisibility = true;
 
   //----------------------------------
@@ -318,7 +314,6 @@ class Legend extends Widget {
    *                                    even if they are visible in the map.
    */
   @aliasOf("viewModel.layerInfos")
-  @renderable()
   layerInfos: LayerInfo[] = null;
 
   //----------------------------------
@@ -336,7 +331,6 @@ class Legend extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Legend/t9n/Legend")
   messages: LegendMessages = null;
 
@@ -387,7 +381,6 @@ class Legend extends Widget {
    * legend.style = "classic";
    */
   @property()
-  @renderable()
   style: LegendStyle = new Classic();
 
   @cast("style")
@@ -424,8 +417,7 @@ class Legend extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -444,7 +436,6 @@ class Legend extends Widget {
    * @autocast
    */
   @property()
-  @renderable(["view.size"])
   viewModel: LegendViewModel = new LegendViewModel();
 
   //-------------------------------------------------------------------

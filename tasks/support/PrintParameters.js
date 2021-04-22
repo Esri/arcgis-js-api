@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor"],(function(e,r,t,o,p,s,c,a,u,l,n){"use strict";let i=function(r){function t(e){var t;return(t=r.call(this,e)||this).extent=null,t.extraParameters=null,t.outSpatialReference=null,t.template=null,t.view=null,t}return e._inheritsLoose(t,r),t}(n);return r.__decorate([s.property()],i.prototype,"extent",void 0),r.__decorate([s.property()],i.prototype,"extraParameters",void 0),r.__decorate([s.property()],i.prototype,"outSpatialReference",void 0),r.__decorate([s.property()],i.prototype,"template",void 0),r.__decorate([s.property()],i.prototype,"view",void 0),i=r.__decorate([c.subclass("esri.tasks.support.PrintParameters")],i),i}));

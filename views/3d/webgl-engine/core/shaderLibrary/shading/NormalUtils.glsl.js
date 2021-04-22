@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,n){"use strict";e.NormalUtils=function(e,t){1===t.viewingMode?e.vertex.code.add(n.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,n){"use strict";function t(e,t){1===t.viewingMode?e.vertex.code.add(n.glsl`
       vec3 getLocalUp(in vec3 pos, in vec3 origin) {
           return normalize(pos + origin);
       }
@@ -22,4 +22,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,n){"use strict";
             vec3 b = normalize(cross(n, t));
             return mat3(t, b, n);
         }
-    `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}e.NormalUtils=t,Object.defineProperty(e,"__esModule",{value:!0})}));

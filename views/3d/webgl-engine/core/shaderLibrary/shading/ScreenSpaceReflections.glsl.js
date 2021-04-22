@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.glsl","./Reprojection.glsl"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.include(o.ReadLinearDepth),e.include(r.Reprojection),e.fragment.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.glsl","./Reprojection.glsl"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.fragment.include(o.ReadLinearDepth),e.include(r.Reprojection),e.fragment.code.add(t.glsl`
   const int maxSteps = ${a.highStepCount?"150;":"75;"}
 
   vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
@@ -101,4 +101,4 @@ define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.gl
     }
     return vec3(P, 0.0);
   }
-  `)}!function(e){e.bindUniforms=function(e,t,o){o.ssrEnabled&&(e.setUniform1i("depthMapView",o.linearDepthTextureID),t.bindTexture(o.linearDepthTexture,o.linearDepthTextureID),e.setUniform2fv("nearFar",o.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",o.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/o.camera.height),r.Reprojection.bindUniforms(e,t,o))}}(a||(a={})),e.ScreenSpaceReflections=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}!function(e){function t(e,t,o){o.ssrEnabled&&(e.setUniform1i("depthMapView",o.linearDepthTextureUnit),t.bindTexture(o.linearDepthTexture,o.linearDepthTextureUnit),e.setUniform2fv("nearFar",o.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",o.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/o.camera.height),r.Reprojection.bindUniforms(e,t,o))}e.bindUniforms=t}(a||(a={})),e.ScreenSpaceReflections=a,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";let e=function(){function t(){this._store=new Map,this._byteSize=0}var e=t.prototype;return e.set=function(t,e){this.delete(t),this._store.set(t,e),this._byteSize+=e.byteSize},e.delete=function(t){const e=this._store.get(t);return!!this._store.delete(t)&&(this._byteSize-=e.byteSize,!0)},e.get=function(t){return this.used(t),this._store.get(t)},e.has=function(t){return this.used(t),this._store.has(t)},e.clear=function(){this._store.clear()},e.applyByteSizeLimit=function(t,e){for(const[s,i]of this._store){if(this._byteSize<=t)break;this.delete(s),e(i)}},e.values=function(){return this._store.values()},e[Symbol.iterator]=function(){return this._store[Symbol.iterator]()},e.used=function(t){const e=this._store.get(t);e&&(this._store.delete(t),this._store.set(t,e))},t}();t.FeatureServiceTileCache=e,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -1,18 +1,18 @@
 // esri.core
-import * as watchUtils from "esri/core/watchUtils";
+import * as watchUtils from "esri/../../core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.BuildingExplorer.support
 import { LayerTreeNode } from "esri/support/LayerTreeNode";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable, isRTL } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx, isRTL } from "esri/../support/widget";
 
 interface ConstructionParameters {
   node: LayerTreeNode;
@@ -97,7 +97,6 @@ class BuildingDisciplinesNode extends Widget {
    * The node which is to be rendered by this widget. Acts as a sort of VM.
    */
   @property({ type: LayerTreeNode })
-  @renderable(["node.hasChildren", "node.isDiscipline", "node.level", "node.title", "node.visible"])
   node: LayerTreeNode;
 
   /**
@@ -110,7 +109,6 @@ class BuildingDisciplinesNode extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   messages: Messages = DEFAULT_MESSAGES;
 
   /**
@@ -132,7 +130,6 @@ class BuildingDisciplinesNode extends Widget {
    * Widgets which render the children of this node.
    */
   @property()
-  @renderable()
   private _childWidgets: BuildingDisciplinesNode[] = [];
 
   //--------------------------------------------------------------------------

@@ -6,7 +6,7 @@
  * {@link module:esri/widgets/DistanceMeasurement2D/DistanceMeasurement2DViewModel#geodesicDistanceThreshold geodesicDistanceThreshold}.
  * Distances equivalent to and beyond the threshold will be computed geodetically. By default the threshold is set to 100km.
  *
- * [![measurement-line-2d](../../assets/img/apiref/widgets/DistanceMeasurement2D_widget.png)](../sample-code/widgets-measurement-2d/index.html)
+ * [![measurement-line-2d](../assets/img/apiref/widgets/DistanceMeasurement2D_widget.png)](../sample-code/widgets-measurement-2d/index.html)
  *
  * ### Undo / Redo
  *
@@ -49,8 +49,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -63,38 +63,43 @@ import DistanceMeasurement2DMessages from "esri/widgets/DistanceMeasurement2D/t9
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+const BASE = "esri-distance-measurement-2d";
 
 const CSS = {
   // common
-  button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
   widgetIcon: "esri-icon-measure-line",
+
   // base
-  base: "esri-distance-measurement-2d",
-  widget: "esri-widget",
-  panel: "esri-widget--panel",
+  base: `${BASE} esri-widget esri-widget--panel`,
+
   // container
-  container: "esri-distance-measurement-2d__container",
+  container: `${BASE}__container`,
+
   // hint
-  hint: "esri-distance-measurement-2d__hint",
-  hintText: "esri-distance-measurement-2d__hint-text",
-  panelError: "esri-distance-measurement-2d__panel--error",
+  hint: `${BASE}__hint`,
+  hintText: `${BASE}__hint-text`,
+  panelError: `${BASE}__panel--error`,
+
   // measurement
-  measurement: "esri-distance-measurement-2d__measurement",
-  measurementItem: "esri-distance-measurement-2d__measurement-item",
-  measurementItemDisabled: "esri-distance-measurement-2d__measurement-item--disabled",
-  measurementItemTitle: "esri-distance-measurement-2d__measurement-item-title",
-  measurementItemValue: "esri-distance-measurement-2d__measurement-item-value",
+  measurement: `${BASE}__measurement`,
+  measurementItem: `${BASE}__measurement-item`,
+  measurementItemDisabled: `${BASE}__measurement-item--disabled`,
+  measurementItemTitle: `${BASE}__measurement-item-title`,
+  measurementItemValue: `${BASE}__measurement-item-value`,
+
   // units
-  settings: "esri-distance-measurement-2d__settings",
-  units: "esri-distance-measurement-2d__units",
-  unitsLabel: "esri-distance-measurement-2d__units-label",
-  unitsSelect: "esri-distance-measurement-2d__units-select esri-select",
-  unitsSelectWrapper: "esri-distance-measurement-2d__units-select-wrapper",
-  // clear
-  actionSection: "esri-distance-measurement-2d__actions",
-  clearButton: "esri-distance-measurement-2d__clear-button"
+  settings: `${BASE}__settings`,
+  units: `${BASE}__units`,
+  unitsLabel: `${BASE}__units-label`,
+  unitsSelect: `${BASE}__units-select esri-select`,
+  unitsSelectWrapper: `${BASE}__units-select-wrapper`,
+
+  // actions
+  actionSection: `${BASE}__actions`,
+  newMeasurementButton: `${BASE}__clear-button esri-button esri-button--primary`
 };
 
 @subclass("esri.widgets.DistanceMeasurement2D")
@@ -141,7 +146,6 @@ class DistanceMeasurement2D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.active")
-  @renderable()
   active: boolean;
 
   //----------------------------------
@@ -189,7 +193,6 @@ class DistanceMeasurement2D extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/DistanceMeasurement2D/t9n/DistanceMeasurement2D")
   messages: DistanceMeasurement2DMessages = null;
 
@@ -206,7 +209,6 @@ class DistanceMeasurement2D extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -275,7 +277,7 @@ class DistanceMeasurement2D extends Widget {
    * view.ui.add(measurementWidget, "top-right");
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -302,15 +304,7 @@ class DistanceMeasurement2D extends Widget {
    * });
    * view.ui.add(measurementWidget, "top-right");
    */
-  @property({
-    type: DistanceMeasurement2DViewModel
-  })
-  @renderable([
-    "viewModel.state",
-    "viewModel.unitOptions",
-    "viewModel.unit",
-    "viewModel.measurementLabel"
-  ])
+  @property({ type: DistanceMeasurement2DViewModel })
   viewModel: DistanceMeasurement2DViewModel = new DistanceMeasurement2DViewModel();
 
   //----------------------------------
@@ -326,7 +320,6 @@ class DistanceMeasurement2D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean;
 
   //--------------------------------------------------------------------------
@@ -416,7 +409,7 @@ class DistanceMeasurement2D extends Widget {
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}
-            class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
+            class={this.classes(CSS.newMeasurementButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
             title={messages.newMeasurement}
@@ -438,7 +431,7 @@ class DistanceMeasurement2D extends Widget {
       </div>
     ) : null;
 
-    return <div class={this.classes(CSS.base, CSS.widget, CSS.panel)}>{containerNode}</div>;
+    return <div class={CSS.base}>{containerNode}</div>;
   }
 
   //--------------------------------------------------------------------------

@@ -1,5 +1,6 @@
 // esri.core
-import * as promiseUtils from "esri/core/promiseUtils";
+import { isNone } from "esri/core/maybe";
+import { after } from "esri/core/promiseUtils";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -9,8 +10,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import Point from "esri/geometry/Point";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -20,7 +21,7 @@ import SpinnerViewModel from "esri/widgets/Spinner/SpinnerViewModel";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx } from "esri/widgets/support/widget";
+import { tsx } from "esri/widgets/support/widget";
 
 interface SpinnerShowOptions {
   promise?: Promise<any>;
@@ -77,16 +78,13 @@ class Spinner extends Widget {
   //----------------------------------
 
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
   //----------------------------------
 
-  @property({
-    type: SpinnerViewModel
-  })
-  @renderable(["viewModel.screenLocation", "viewModel.screenLocationEnabled"])
+  @property({ type: SpinnerViewModel })
   viewModel = new SpinnerViewModel();
 
   //----------------------------------
@@ -152,7 +150,7 @@ class Spinner extends Widget {
       return;
     }
 
-    const animationPromise = promiseUtils.after(this._animationDelay);
+    const animationPromise = after(this._animationDelay);
 
     this._animationPromise = animationPromise;
 
@@ -171,7 +169,7 @@ class Spinner extends Widget {
   private _getPositionStyles(): HashMap<string> {
     const { screenLocation, view } = this.viewModel;
 
-    if (!view || !screenLocation) {
+    if (!view || isNone(screenLocation)) {
       return {};
     }
 

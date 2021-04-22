@@ -29,12 +29,12 @@
  */
 
 // esri.core
-import Handles from "esri/core/Handles";
-import { IdentifiableMixin } from "esri/core/Identifiable";
-import * as watchUtils from "esri/core/watchUtils";
+import Handles from "esri/../core/Handles";
+import { IdentifiableMixin } from "esri/../core/Identifiable";
+import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/core/accessorSupport/decorators";
+import { property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import Legend from "esri/Legend";
@@ -45,7 +45,7 @@ import ListItem from "esri/widgets/ListItem";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
-import { isWidget, renderable, tsx } from "esri/support/widget";
+import { isWidget, tsx } from "esri/support/widget";
 
 type ListItemPanelContent = "legend" | Widget | HTMLElement | String;
 type ListItemPanelContents = ListItemPanelContent | ListItemPanelContent[];
@@ -120,9 +120,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * @instance
    * @default esri-icon-layer-list
    */
-  @property({
-    dependsOn: ["content", "image"]
-  })
+  @property()
   get className(): string {
     const { image } = this;
     const firstWidget = this._getFirstWidget();
@@ -166,7 +164,6 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * });
    */
   @property()
-  @renderable()
   content: ListItemPanelContents = null;
 
   //----------------------------------
@@ -177,7 +174,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * The URL or data URI of an image used to represent the panel.
    * This property will be used as a background image for the node.
    * If neither `image` nor `className` are specified, a default icon
-   * ![default icon](../../assets/img/guide/whats-new/41/default-action.png) will display.
+   * ![default icon](../assets/img/guide/whats-new/41/default-action.png) will display.
    *
    * @name image
    * @instance
@@ -213,9 +210,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * @instance
    * @type {string}
    */
-  @property({
-    dependsOn: ["content"]
-  })
+  @property()
   get title(): string {
     const firstWidget = this._getFirstWidget();
     return this._get("title") || firstWidget ? firstWidget.label : "";
@@ -261,7 +256,6 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * });
    */
   @property()
-  @renderable()
   open = false;
 
   //----------------------------------

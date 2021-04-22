@@ -1,11 +1,11 @@
 // esri
-import Graphic from "esri/Graphic";
+import Graphic from "esri/../Graphic";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.popup
-import { PopupTemplateContentCreator } from "esri/popup/interfaces";
+import { PopupTemplateContentCreator } from "esri/../popup/interfaces";
 
 // esri.widgets
 import Widget from "esri/Widget";
@@ -18,7 +18,7 @@ import { shouldOpenInNewTab } from "esri/widgets/support/featureUtils";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
-import { renderable, isWidget, tsx } from "esri/support/widget";
+import { isWidget, tsx } from "esri/support/widget";
 
 const CSS = {
   base: "esri-feature-content",
@@ -62,7 +62,6 @@ class FeatureContent extends Widget {
   //  viewModel
   //----------------------------------
 
-  @renderable(["viewModel.created", "viewModel.state"])
   @property({ type: FeatureContentViewModel })
   viewModel: FeatureContentViewModel = null;
 

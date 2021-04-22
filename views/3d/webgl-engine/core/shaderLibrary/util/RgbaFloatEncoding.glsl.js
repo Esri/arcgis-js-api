@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(t,e){"use strict";t.RgbaFloatEncoding=function(t){t.code.add(e.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(t,e){"use strict";function o(t){t.code.add(e.glsl`
     // This is the maximum float value representable as 32bit fixed point,
     // it is rgba2float(vec4(1)) inlined.
     const float MAX_RGBA_FLOAT =
@@ -45,4 +45,4 @@ define(["exports","../../shaderModules/interfaces"],(function(t,e){"use strict";
       // fixed point factors, i.e. (256^1, 256^2, 256^3, 256^4)
       return dot(rgba, RGBA_2_FLOAT_FACTORS);
     }
-  `)},Object.defineProperty(t,"__esModule",{value:!0})}));
+  `)}t.RgbaFloatEncoding=o,Object.defineProperty(t,"__esModule",{value:!0})}));

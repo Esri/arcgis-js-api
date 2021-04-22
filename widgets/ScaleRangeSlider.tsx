@@ -7,7 +7,7 @@
  * The user can also change the `minScale` and `maxScale` by using the dropdowns underneath the [minScaleLimit](#minScaleLimit)
  * and [maxScaleLimit](#maxScaleLimit). The thumbnail shows a preview of the scale based on the [region](#region) specified.
  *
- * ![widgets-scaleRangeSlider](../../assets/img/apiref/widgets/widgets-scaleRangeSlider.png)
+ * ![widgets-scaleRangeSlider](../assets/img/apiref/widgets/widgets-scaleRangeSlider.png)
  *
  * @module esri/widgets/ScaleRangeSlider
  * @since 4.13
@@ -34,7 +34,7 @@
 
 // esri
 import { formatNumber, substitute } from "esri/intl";
-import { Layer } from "esri/layers";
+import { LayerUnion } from "esri/layers";
 
 // esri.core
 import { closest } from "esri/core/domUtils";
@@ -46,8 +46,8 @@ import { init, whenTrue } from "esri/core/watchUtils";
 import { cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Slider from "esri/widgets/Slider";
@@ -68,14 +68,7 @@ import ScaleRangeSliderMessages from "esri/widgets/ScaleRangeSlider/t9n/ScaleRan
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import Popover from "esri/widgets/support/Popover";
-import {
-  accessibleHandler,
-  isRTL,
-  messageBundle,
-  renderable,
-  storeNode,
-  tsx
-} from "esri/widgets/support/widget";
+import { accessibleHandler, isRTL, messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
 
 interface ScaleMenuProps {
   type: ScaleType;
@@ -419,9 +412,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * Convenience property to get effective max scale.
    * @ignore
    */
-  @property({
-    dependsOn: ["viewModel.maxScaleLimit", "viewModel.maxScale"]
-  })
+  @property()
   private get _effectiveMaxScale(): number {
     return this.maxScale === 0 ? this.maxScaleLimit : this.maxScale;
   }
@@ -434,9 +425,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * Convenience property to get effective min scale.
    * @ignore
    */
-  @property({
-    dependsOn: ["viewModel.minScaleLimit", "viewModel.minScale"]
-  })
+  @property()
   private get _effectiveMinScale(): number {
     return this.minScale === 0 ? this.minScaleLimit : this.minScale;
   }
@@ -450,7 +439,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * @private
    */
   @property({
-    dependsOn: ["disabled", "viewModel.state"],
     readOnly: true
   })
   private get _interactive(): boolean {
@@ -471,7 +459,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    */
 
   @property()
-  @renderable()
   disabled = false;
 
   //----------------------------------
@@ -505,7 +492,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: "viewModel.layer"
   })
-  layer: Layer = null;
+  layer: LayerUnion = null;
 
   //----------------------------------
   //  maxScale
@@ -558,7 +545,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/ScaleRangeSlider/t9n/ScaleRangeSlider")
   messages: ScaleRangeSliderMessages = null;
 
@@ -612,7 +598,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    */
 
   @property()
-  @renderable()
   region: SupportedRegion = "US";
 
   //----------------------------------
@@ -630,7 +615,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: "viewModel.view"
   })
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -648,7 +633,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  @renderable("viewModel.state")
   viewModel: ScaleRangeSliderViewModel = new ScaleRangeSliderViewModel();
 
   //----------------------------------
@@ -681,7 +665,6 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    */
 
   @property()
-  @renderable()
   visibleElements: VisibleElements = DEFAULT_VISIBLE_ELEMENTS;
 
   @cast("visibleElements")
@@ -1106,6 +1089,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
     }
 
     this._setActiveMenu(null);
+    this._activeMenuToggleNode.focus();
   }
 
   private _setActiveMenu(type: ScaleType | null): void {

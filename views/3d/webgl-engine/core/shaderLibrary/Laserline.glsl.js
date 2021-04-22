@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../shaderModules/interfaces","./output/ReadLinearDepth.glsl","./util/CameraSpace.glsl"],(function(e,o,r,a){"use strict";e.Laserline=function(e,l){e.extensions.add("GL_OES_standard_derivatives"),e.include(r.ReadLinearDepth),e.include(a.CameraSpace),e.fragment.uniforms.add("glowColor","vec3"),e.fragment.uniforms.add("glowWidth","float"),e.fragment.uniforms.add("glowFalloff","float"),e.fragment.uniforms.add("innerColor","vec3"),e.fragment.uniforms.add("innerWidth","float"),e.fragment.uniforms.add("depthMap","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("frameColor","sampler2D"),l.contrastControlEnabled&&e.fragment.uniforms.add("globalAlphaContrastBoost","float"),e.fragment.code.add(o.glsl`
+define(["exports","../shaderModules/interfaces","./output/ReadLinearDepth.glsl","./util/CameraSpace.glsl"],(function(e,o,r,a){"use strict";function l(e,l){e.extensions.add("GL_OES_standard_derivatives"),e.fragment.include(r.ReadLinearDepth),e.include(a.CameraSpace),e.fragment.uniforms.add("glowColor","vec3"),e.fragment.uniforms.add("glowWidth","float"),e.fragment.uniforms.add("glowFalloff","float"),e.fragment.uniforms.add("innerColor","vec3"),e.fragment.uniforms.add("innerWidth","float"),e.fragment.uniforms.add("depthMap","sampler2D"),e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("frameColor","sampler2D"),l.contrastControlEnabled&&e.fragment.uniforms.add("globalAlphaContrastBoost","float"),e.fragment.code.add(o.glsl`
   vec4 blendPremultiplied(vec4 source, vec4 dest) {
     float oneMinusSourceAlpha = 1.0 - source.a;
 
@@ -60,4 +60,4 @@ define(["exports","../shaderModules/interfaces","./output/ReadLinearDepth.glsl",
     vec4 laserlineOutput(vec4 color) {
       return color * globalAlpha;
     }
-    `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}e.Laserline=l,Object.defineProperty(e,"__esModule",{value:!0})}));

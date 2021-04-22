@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,o,t,s,c,n,p,u,a,i,l,d){"use strict";const S=new n.JSONMap({inherited:"inherited",codedValue:"coded-value",range:"range"});let y=function(r){function o(e){var o;return(o=r.call(this,e)||this).name=null,o.type=null,o}return e._inheritsLoose(o,r),o}(d.JSONSupport);return r.__decorate([c.property({type:String,json:{write:!0}})],y.prototype,"name",void 0),r.__decorate([p.enumeration(S)],y.prototype,"type",void 0),y=r.__decorate([u.subclass("esri.layers.support.Domain")],y),y}));

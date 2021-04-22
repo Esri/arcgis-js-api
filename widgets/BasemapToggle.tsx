@@ -3,7 +3,7 @@
  * two basemaps. The toggled basemap is set inside the [view's](#view)
  * {@link module:esri/views/View#map map} object.
  *
- * ![basemap-toggle](../../assets/img/apiref/widgets/basemap-toggle.png)
+ * ![basemap-toggle](../assets/img/apiref/widgets/basemap-toggle.png)
  *
  * @module esri/widgets/BasemapToggle
  * @since 4.0
@@ -35,16 +35,12 @@
 // esri
 import Basemap from "esri/Basemap";
 
-// esri.core
-import { deprecatedProperty } from "esri/core/deprecate";
-import Logger from "esri/core/Logger";
-
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -57,7 +53,7 @@ import BasemapToggleMessages from "esri/widgets/BasemapToggle/t9n/BasemapToggle"
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS: any = {
   base: "esri-basemap-toggle esri-widget",
@@ -79,8 +75,6 @@ function getThumbnailStyles(basemap: Basemap): HashMap<string> {
 
   return thumbnailUrl ? { backgroundImage: "url(" + thumbnailUrl + ")" } : { backgroundImage: "" };
 }
-
-const logger = Logger.getLogger("esri.widgets.BasemapToggle");
 
 interface VisibleElements {
   title?: boolean;
@@ -151,7 +145,6 @@ class BasemapToggle extends Widget {
    * @instance
    */
   @aliasOf("viewModel.activeBasemap")
-  @renderable()
   activeBasemap: Basemap = null;
 
   //----------------------------------
@@ -185,7 +178,6 @@ class BasemapToggle extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/BasemapToggle/t9n/BasemapToggle")
   messages: BasemapToggleMessages = null;
 
@@ -205,32 +197,7 @@ class BasemapToggle extends Widget {
    * @autocast { "value": "String | Object" }
    */
   @aliasOf("viewModel.nextBasemap")
-  @renderable()
   nextBasemap: Basemap = null;
-
-  //----------------------------------
-  //  titleVisible
-  //----------------------------------
-
-  /**
-   * Indicates if the title of the basemap is visible in the widget.
-   *
-   * @name titleVisible
-   * @instance
-   *
-   * @type {boolean}
-   * @default false
-   * @deprecated since version 4.15. Use {@link module:esri/widgets/BasemapToggle#visibleElements BasemapToggle.visibleElements.title} instead.
-   */
-  @property()
-  @renderable()
-  set titleVisible(value: boolean) {
-    deprecatedProperty(logger, "titleVisible", {
-      replacement: "visibleElements.title",
-      version: "4.15"
-    });
-    this.visibleElements = { ...this.visibleElements, title: value };
-  }
 
   //----------------------------------
   //  view
@@ -247,8 +214,7 @@ class BasemapToggle extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -266,10 +232,7 @@ class BasemapToggle extends Widget {
    * @autocast
    */
   @vmEvent("toggle")
-  @property({
-    type: BasemapToggleViewModel
-  })
-  @renderable(["viewModel.nextBasemap.loadStatus", "viewModel.state"])
+  @property({ type: BasemapToggleViewModel })
   viewModel: BasemapToggleViewModel = new BasemapToggleViewModel();
 
   //----------------------------------
@@ -302,7 +265,6 @@ class BasemapToggle extends Widget {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")

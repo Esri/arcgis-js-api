@@ -40,7 +40,6 @@
  */
 
 // esri
-import { getAssetUrl } from "esri/assets";
 import Graphic from "esri/Graphic";
 import { formatDate, formatNumber, substitute } from "esri/intl";
 
@@ -60,9 +59,6 @@ import UnitsMessages from "esri/core/t9n/Units";
 // esri.intl
 import { loadMoment } from "esri/intl/moment";
 
-// esri.libs.sortablejs
-import Sortable from "esri/libs/sortablejs/Sortable";
-
 // esri.symbols
 import Symbol from "esri/symbols/Symbol";
 
@@ -73,9 +69,9 @@ import CommonMessages from "esri/t9n/common";
 import RouteResultsContainer from "esri/tasks/support/RouteResultsContainer";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import { IViewCursor } from "esri/views/IView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
-import View from "esri/views/View";
 
 // esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "esri/widgets/interfaces";
@@ -96,6 +92,7 @@ import {
 } from "esri/widgets/Directions/support/directionsUtils";
 import { Maneuver, PlaceholderStop, StopSymbols } from "esri/widgets/Directions/support/interfaces";
 import { toIconName } from "esri/widgets/Directions/support/maneuverUtils";
+import { CSS, DepartureTime, getManeuversIconDir } from "esri/widgets/Directions/support/resources";
 import RouteSections from "esri/widgets/Directions/support/RouteSections";
 
 // esri.widgets.Directions.t9n
@@ -106,107 +103,14 @@ import DatePicker from "esri/widgets/support/DatePicker";
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
 import TimePicker from "esri/widgets/support/TimePicker";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
-const NOW = "now";
-const DEPART_BY = "depart-by";
-
-const CSS = {
-  base: "esri-directions esri-widget esri-widget--panel",
-  directionsButton: "esri-directions__button",
-  clearRouteButton: "esri-directions__clear-route-button",
-  scroller: "esri-directions__scroller",
-  panelContent: "esri-directions__panel-content",
-  panelContentLoading: "esri-directions__panel-content--loading",
-  panelContentError: "esri-directions__panel-content--error",
-  panelContentSignIn: "esri-directions__panel-content--sign-in",
-  loader: "esri-directions__loader",
-  message: "esri-directions__message",
-  travelModeSelect: "esri-directions__travel-modes-select",
-  departureTime: "esri-directions__departure-time",
-  departureTimeSelect: "esri-directions__departure-time-select",
-  directionsSection: "esri-directions__directions-section",
-  departureTimeControls: "esri-directions__departure-time-controls",
-  section: "esri-directions__section",
-  summary: "esri-directions__summary",
-  stopIcon: "esri-directions__stop-icon",
-  interactiveStopIcon: "esri-directions__stop-icon--interactive",
-  removeStopButton: "esri-directions__remove-stop",
-  removeStop: "esri-directions__remove-stop-icon",
-  reverseStops: "esri-directions__reverse-stops",
-  stopIconContainer: "esri-directions__stop-icon-container",
-  lastStopIconContainer: "esri-directions__stop-icon-container--last",
-  stopHandle: "esri-directions__stop-handle",
-  stopInput: "esri-directions__stop-input",
-  stopOptions: "esri-directions__stop-options",
-  stopHandleIcon: "esri-directions__stop-handle-icon",
-  verticalSplitter: "esri-directions__vertical-splitter",
-  stopRow: "esri-directions__stop-row",
-  stopRowGhost: "esri-directions__stop-row-ghost",
-  validStopRow: "esri-directions__stop-row--valid",
-  stops: "esri-directions__stops",
-  addStop: "esri-directions__add-stop",
-  addStopText: "esri-directions__add-stop-text",
-  directionCosts: "esri-directions__costs",
-  costsDetails: "esri-directions__costs-details",
-  primaryCosts: "esri-directions__costs-value",
-  secondaryCosts: "esri-directions__other-costs-total",
-  routeActions: "esri-directions__route-actions",
-  maneuvers: "esri-directions__maneuvers",
-  maneuverList: "esri-directions__maneuver-list",
-  maneuverSection: "esri-directions__maneuver-section",
-  maneuverSectionHeader: "esri-directions__maneuver-section-header",
-  maneuverSectionHeaderButton: "esri-directions__maneuver-section-header-toggle-button",
-  maneuverSectionTitle: "esri-directions__maneuver-section-title",
-  collapsibleSection: "esri-directions__maneuver-section--collapsible",
-  maneuverSectionToggle: "esri-directions__maneuver-section-toggle",
-  maneuver: "esri-directions__maneuver",
-  maneuverActive: "esri-directions__maneuver--active",
-  maneuverCosts: "esri-directions__maneuver-costs",
-  maneuverCostsContainer: "esri-directions__maneuver-costs-container",
-  maneuverIcon: "esri-directions__maneuver-icon",
-  cumulativeCost: "esri-directions__cost--cumulative",
-  intermediateCost: "esri-directions__cost--intermediate",
-  horizontalSplitter: "esri-directions__horizontal-splitter",
-  sectionSplitter: "esri-directions__section-splitter",
-  disclaimer: "esri-directions__disclaimer",
-  signInContent: "esri-directions__sign-in-content",
-  signInButton: "esri-directions__sign-in-button",
-  contentTitle: "esri-directions__content-title",
-  warningCard: "esri-directions__warning-card",
-  warningHeader: "esri-directions__warning-header",
-  warningHeading: "esri-directions__warning-heading",
-  warningMessage: "esri-directions__warning-message",
-
-  // icons
-  stopsIcon: "esri-icon-radio-unchecked",
-  lastStopIcon: "esri-icon-radio-checked",
-  handleIcon: "esri-icon-handle-vertical",
-  addStopIcon: "esri-icon-plus",
-  removeStopIcon: "esri-icon-trash",
-  reverseStopIcon: "esri-icon-up-down-arrows",
-  openIcon: "esri-icon-down",
-  closeIcon: "esri-icon-up",
-  warningIcon: "esri-icon-notice-triangle",
-  widgetIcon: "esri-icon-directions",
-
-  // common
-  anchor: "esri-widget__anchor",
-  button: "esri-button",
-  buttonSecondary: "esri-button--secondary",
-  buttonTertiary: "esri-button--tertiary",
-  emptyContent: "esri-widget__content--empty",
-  emptyIllustration: "esri-widget__content-illustration--empty",
-  heading: "esri-widget__heading",
-  select: "esri-select",
-  screenReaderText: "esri-icon-font-fallback-text"
-};
+// sortablejs
+import Sortable from "sortablejs";
 
 const REGISTRY_KEYS = {
   awaitingViewClickStop: "awaiting-view-click-stop"
 };
-
-const MANEUVER_ICON_DIR = getAssetUrl("esri/themes/base/images/maneuvers/");
 
 function getFirstResult(response: SearchResponse<SearchResults<SearchResult>>): SearchResult {
   return response.results[0].results[0];
@@ -286,7 +190,7 @@ class Directions extends Widget {
         }
       }),
 
-      when<MapView | SceneView>(this, "view", (value, oldValue) => {
+      when<MapView | ISceneView>(this, "view", (value, oldValue) => {
         if (oldValue) {
           this._viewClickHandle = null;
           this._handles.remove(oldValue);
@@ -358,7 +262,7 @@ class Directions extends Widget {
 
   private _costSummary = new CostSummary();
 
-  private _departureTime: "now" | "depart-by" = NOW;
+  private _departureTime: DepartureTime = DepartureTime.NOW;
 
   private _datePicker: DatePicker = new DatePicker();
 
@@ -374,7 +278,7 @@ class Directions extends Widget {
 
   private _pointerPressedSearchSuggestionStop: PlaceholderStop = null;
 
-  private _previousCursor: View.Cursor;
+  private _previousCursor: IViewCursor;
 
   private _routeSections: RouteSections = new RouteSections();
 
@@ -393,6 +297,35 @@ class Directions extends Widget {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  apiKey
+  //----------------------------------
+
+  /**
+   * An authorization string used to access a resource or service.
+   * [API keys](/documentation/security-and-authentication/api-keys/) are generated and managed in the
+   * [ArcGIS Developer dashboard](/api-keys). An API key is tied explicitly to an ArcGIS account; it is also used to
+   * monitor service usage.
+   *
+   * @instance
+   * @name apiKey
+   * @type {string}
+   * @since 4.19
+   * @example
+   * const directionsWidget = new Directions({
+   *   view: view,
+   *   apiKey: "abcdefghijklmnopqrstuvwxyz",
+   *   routeServiceUrl: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
+   * });
+   * // Add the Directions widget to the top right corner of the view
+   * view.ui.add(directionsWidget, {
+   *   position: "top-right"
+   * });
+   *
+   */
+  @aliasOf("viewModel.apiKey")
+  apiKey: string = null;
 
   //----------------------------------
   //  goToOverride
@@ -503,7 +436,6 @@ class Directions extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Directions/t9n/Directions")
   messages: DirectionsMessages = null;
 
@@ -522,7 +454,6 @@ class Directions extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -539,7 +470,6 @@ class Directions extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -557,7 +487,7 @@ class Directions extends Widget {
    * @autocast
    */
   @aliasOf("viewModel.routeServiceUrl")
-  routeServiceUrl: string = null;
+  routeServiceUrl: string = undefined;
 
   //----------------------------------
   //  routeSymbol
@@ -608,6 +538,8 @@ class Directions extends Widget {
    * @property {string} [allPlaceholder] - String value used as a hint for input text when searching on multiple sources.
    * @property {boolean} [autoNavigate=true] - Indicates whether to automatically navigate to the selected result once selected.
    * @property {boolean} [autoSelect] - Indicates whether to automatically select and zoom to the first geocoded result.
+   * @property {boolean | Function} [includeDefaultSources] - Indicates whether or not to include {@link module:esri/widgets/Search/SearchViewModel#defaultSources defaultSources} in the Search UI.
+   * This can be a boolean value or a function that returns an array of Search {@link module:esri/widgets/Search/SearchViewModel#sources sources}.
    * @property {string} [locationType] - Define the type of location, either `"street"` or `"rooftop"`.
    * The default value will be `"street"` for any locator source that does not define a locationType.
    * @property {number} [maxResults=6] - Indicates the maximum number of search results to return.
@@ -659,7 +591,7 @@ class Directions extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -678,7 +610,6 @@ class Directions extends Widget {
    * @autocast
    *
    */
-  @renderable(["lastRoute", "state", "travelModes"])
   @property({
     type: DirectionsViewModel
   })
@@ -830,7 +761,7 @@ class Directions extends Widget {
   }
 
   private _renderDepartureTimeControls(): VNode {
-    const startTimeIsNow = this._departureTime === NOW;
+    const departureTime = this._departureTime;
     const { messages } = this;
     const title = messages.departureTime;
 
@@ -843,14 +774,23 @@ class Directions extends Widget {
           onchange={this._handleDepartureOptionChange}
           title={title}
         >
-          <option value={NOW} selected={startTimeIsNow}>
+          <option value={DepartureTime.NOW} selected={departureTime === DepartureTime.NOW}>
             {messages.leaveNow}
           </option>
-          <option value={DEPART_BY} selected={!startTimeIsNow}>
+          <option
+            value={DepartureTime.DEPART_BY}
+            selected={departureTime === DepartureTime.DEPART_BY}
+          >
             {messages.departBy}
           </option>
+          <option
+            value={DepartureTime.UNSPECIFIED}
+            selected={departureTime === DepartureTime.UNSPECIFIED}
+          >
+            {messages.timeUnspecified}
+          </option>
         </select>
-        {startTimeIsNow ? null : this._renderTimeControls()}
+        {departureTime === DepartureTime.DEPART_BY ? this._renderTimeControls() : null}
       </div>
     );
   }
@@ -1164,7 +1104,7 @@ class Directions extends Widget {
 
     this._handles.add(
       init(search, "searchTerm", (term) => {
-        view.cursor = term.length === 0 ? ("copy" as View.Cursor) : previousCursor;
+        view.cursor = term.length === 0 ? ("copy" as IViewCursor) : previousCursor;
       }),
       REGISTRY_KEYS.awaitingViewClickStop
     );
@@ -1173,7 +1113,7 @@ class Directions extends Widget {
   }
 
   private _prepViewClick(): PausableHandle {
-    const view = this.get<MapView | SceneView>("viewModel.view");
+    const view = this.get<MapView | ISceneView>("viewModel.view");
     const viewClickHandle = pausable(view, "click", this._handleViewClick.bind(this));
     const surfaceClickHandle = pausable(view.surface, "click", () => {
       clearTimeout(this._autoStopRemovalTimeoutId);
@@ -1319,16 +1259,16 @@ class Directions extends Widget {
     this._processStops();
   };
 
-  private _handleDepartureOptionChange(): void {
+  private _handleDepartureOptionChange(event: Event): void {
     const select = event.currentTarget as HTMLSelectElement;
     const option = select.item(select.selectedIndex) as HTMLOptionElement;
 
-    if (option.value === NOW) {
-      this._departureTime = NOW;
-      this.viewModel.departureTime = NOW;
+    if (option.value === DepartureTime.NOW) {
+      this._departureTime = DepartureTime.NOW;
+      this.viewModel.departureTime = DepartureTime.NOW;
       this._handles.remove("departure-time-controls");
-    } else if (option.value === DEPART_BY) {
-      this._departureTime = DEPART_BY;
+    } else if (option.value === DepartureTime.DEPART_BY) {
+      this._departureTime = DepartureTime.DEPART_BY;
 
       this._handles.add(
         [
@@ -1337,6 +1277,9 @@ class Directions extends Widget {
         ],
         "departure-time-controls"
       );
+    } else {
+      this._departureTime = DepartureTime.UNSPECIFIED;
+      this.viewModel.departureTime = null;
     }
   }
 
@@ -1511,7 +1454,7 @@ class Directions extends Widget {
                 key="esri-directions__maneuver-section-header"
               >
                 <div
-                  aria-expanded={open}
+                  aria-expanded={open.toString()}
                   aria-label={title}
                   bind={this}
                   class={CSS.maneuverSectionHeaderButton}
@@ -1658,7 +1601,7 @@ class Directions extends Widget {
   }
 
   private _acquireSearch(stop: PlaceholderStop): Search {
-    const view: MapView | SceneView = this.get("viewModel.view");
+    const view: MapView | ISceneView = this.get("viewModel.view");
 
     if (this._stopsToSearches.has(stop)) {
       const search = this._stopsToSearches.get(stop);
@@ -1736,7 +1679,7 @@ class Directions extends Widget {
         messages,
         attributes.arriveTimeUTC,
         attributes.ETA,
-        this._departureTime === NOW
+        this._departureTime === DepartureTime.NOW
       );
     } else if (length) {
       intermediateCosts = time ? `${length}&nbsp;&middot;&nbsp;${time}` : length;
@@ -1807,7 +1750,7 @@ class Directions extends Widget {
     const iconName = toIconName(maneuverType);
     const iconFormat = window.devicePixelRatio === 2 ? "@2x" : "";
 
-    return `${MANEUVER_ICON_DIR}${iconName}${iconFormat}.png`;
+    return `${getManeuversIconDir()}${iconName}${iconFormat}.png`;
   }
 
   @accessibleHandler()

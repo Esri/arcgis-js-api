@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Loadable"],(function(e,r,o,t,p,s,c,a,i,u,d){"use strict";let n=function(r){function o(e){return r.call(this,e)||this}return e._inheritsLoose(o,r),o}(d);return r.__decorate([s.property({constructOnly:!0})],n.prototype,"layer",void 0),r.__decorate([s.property()],n.prototype,"geometryType",void 0),r.__decorate([s.property()],n.prototype,"objectIdField",void 0),r.__decorate([s.property()],n.prototype,"supportsSQLExpression",void 0),r.__decorate([s.property()],n.prototype,"hasQueryEngine",void 0),r.__decorate([s.property()],n.prototype,"minScale",void 0),r.__decorate([s.property()],n.prototype,"maxScale",void 0),r.__decorate([s.property()],n.prototype,"fullExtent",void 0),n=r.__decorate([c.subclass("esri.smartMapping.support.adapters.LayerAdapter")],n),n}));

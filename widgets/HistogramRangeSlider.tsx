@@ -9,7 +9,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![HistogramRangeSlider with annotations](../../assets/img/apiref/widgets/sliders/histogramrangeslider-labels.png "HistogramRangeSlider with annotations")
+ * ![HistogramRangeSlider with annotations](../assets/img/apiref/widgets/sliders/histogramrangeslider-labels.png "HistogramRangeSlider with annotations")
  *
  * At a minimum, the slider's [container](#container) or parent container must have a `width` set in CSS for it to render.
  *
@@ -57,7 +57,7 @@ import { getDeviationValues } from "esri/widgets/smartMapping/support/utils";
 
 // esri.widgets.support
 import { LabelFormatFunction, VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-histogram-range-slider",
@@ -326,7 +326,6 @@ class HistogramRangeSlider extends Widget {
    * };
    */
   @property()
-  @renderable()
   barCreatedFunction: BarCreatedFunction = null;
 
   //----------------------------------
@@ -402,7 +401,6 @@ class HistogramRangeSlider extends Widget {
    * });
    */
   @property()
-  @renderable()
   dataLines: DataLineInfos[] = null;
 
   //----------------------------------
@@ -424,7 +422,6 @@ class HistogramRangeSlider extends Widget {
    * };
    */
   @property()
-  @renderable()
   dataLineCreatedFunction: DataLineCreatedFunction = null;
 
   //----------------------------------
@@ -603,7 +600,6 @@ class HistogramRangeSlider extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/HistogramRangeSlider/t9n/HistogramRangeSlider")
   messages: HistogramRangeSliderMessages = null;
 
@@ -761,7 +757,6 @@ class HistogramRangeSlider extends Widget {
    * slider.standardDeviationCount = 2;
    */
   @property()
-  @renderable()
   standardDeviationCount = 1;
 
   //----------------------------------
@@ -787,7 +782,6 @@ class HistogramRangeSlider extends Widget {
    *   container: "sliderDiv"
    * });
    */
-  @renderable()
   @aliasOf("viewModel.values")
   values: number[] = null;
 
@@ -806,17 +800,6 @@ class HistogramRangeSlider extends Widget {
    * @type {module:esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.average",
-    "viewModel.hasTimeData",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.precision",
-    "viewModel.rangeType",
-    "viewModel.standardDeviation",
-    "viewModel.values"
-  ])
   viewModel: HistogramRangeSliderViewModel = new HistogramRangeSliderViewModel();
 
   //--------------------------------------------------------------------------

@@ -8,7 +8,7 @@
  * {@link module:esri/layers/FeatureLayer#applyEdits FeatureLayer.applyEdits} to enable an end user to
  * update one of its feature layers.
  *
- * [![featureTemplates](../../assets/img/apiref/widgets/featureTemplates.png)](../sample-code/editing-applyedits/index.html)
+ * [![featureTemplates](../assets/img/apiref/widgets/featureTemplates.png)](../sample-code/editing-applyedits/index.html)
  *
  *
  * @module esri/widgets/FeatureTemplates
@@ -58,7 +58,7 @@ import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureT
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-feature-templates",
@@ -315,7 +315,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   /**
    * When `true`, displays the template [filter](#filterFunction).
    *
-   * ![featureTemplatesFilter](../../assets/img/apiref/widgets/featureTemplatesFilter.png)
+   * ![featureTemplatesFilter](../assets/img/apiref/widgets/featureTemplatesFilter.png)
    *
    * @name filterEnabled
    * @type {boolean}
@@ -324,7 +324,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * @deprecated since version 4.15. Use {@link module:esri/widgets/FeatureTemplates#visibleElements FeatureTemplates.visibleElements.filter} instead.
    */
   @property()
-  @renderable()
   set filterEnabled(value: boolean) {
     deprecatedProperty(logger, "filterEnabled", {
       replacement: "visibleElements.filter",
@@ -344,7 +343,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * an object containing a {@link module:esri/widgets/FeatureTemplates/TemplateItem#label name}
    * property of the {@link module:esri/widgets/FeatureTemplates/TemplateItem template item}.
    *
-   * ![featureTemplatesFilterFunction](../../assets/img/apiref/widgets/featureTemplatesFilterFunction.png)
+   * ![featureTemplatesFilterFunction](../assets/img/apiref/widgets/featureTemplatesFilterFunction.png)
    *
    * @name filterFunction
    * @type {module:esri/widgets/FeatureTemplates~FilterFunction}
@@ -382,7 +381,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * @type string
    */
   @property()
-  @renderable()
   filterText: string = "";
 
   //----------------------------------
@@ -395,10 +393,10 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    *
    * Type | Description | Example
    * ----- | ----------- | -------
-   * layer | This is the *default* grouping. Groups template items by layers. | ![featureTemplatesGroupByLayer](../../assets/img/apiref/widgets/groupByLayers.png)
-   * geometry | Groups template items by geometry type. | ![FeatureTemplatesGroupByGeometry](../../assets/img/apiref/widgets/groupByGeometry.png)
-   * none | The widget displays everything in one list with no grouping. | ![featureTemplatesGroupByLayer](../../assets/img/apiref/widgets/groupByNone.png)
-   * {@link module:esri/widgets/FeatureTemplates~GroupByFunction} | Custom function that takes an object containing a {@link module:esri/layers/support/FeatureTemplate} and {@link module:esri/layers/FeatureLayer}. | ![FeatureTemplatesGroupByCustomGroupFunction](../../assets/img/apiref/widgets/groupCustomGroup.png)
+   * layer | This is the *default* grouping. Groups template items by layers. | ![featureTemplatesGroupByLayer](../assets/img/apiref/widgets/groupByLayers.png)
+   * geometry | Groups template items by geometry type. | ![FeatureTemplatesGroupByGeometry](../assets/img/apiref/widgets/groupByGeometry.png)
+   * none | The widget displays everything in one list with no grouping. | ![featureTemplatesGroupByLayer](../assets/img/apiref/widgets/groupByNone.png)
+   * {@link module:esri/widgets/FeatureTemplates~GroupByFunction} | Custom function that takes an object containing a {@link module:esri/layers/support/FeatureTemplate} and {@link module:esri/layers/FeatureLayer}. | ![FeatureTemplatesGroupByCustomGroupFunction](../assets/img/apiref/widgets/groupCustomGroup.png)
    *
    * @name groupBy
    * @type {string | module:esri/widgets/FeatureTemplates~GroupByFunction}
@@ -498,7 +496,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/FeatureTemplates/t9n/FeatureTemplates")
   messages: FeatureTemplatesMessages = null;
 
@@ -518,7 +515,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  @renderable(["viewModel.items", "viewModel.state"])
   @vmEvent("select")
   viewModel: FeatureTemplatesViewModel = new FeatureTemplatesViewModel();
 
@@ -548,7 +544,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")

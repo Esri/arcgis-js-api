@@ -1,22 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./ScreenSpaceReflections.glsl","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl"],(function(e,o,t,r,i,a){"use strict";e.Water=function(e,n){e.include(a.PhysicallyBasedRendering,n),e.include(i.Gamma),e.include(r.FoamColor),n.ssrEnabled&&e.include(t.ScreenSpaceReflections,n),e.fragment.code.add(o.glsl`
-    const vec3 fresnelSky =  vec3(0.02, 1.0, 15.0); // f0, f0max, exp
-    const vec2 fresnelMaterial =  vec2(0.02, 0.1); // f0, f0max for specular term
-    const float roughness = 0.015;
-    const float foamIntensityExternal = 1.7;
-    const float ssrIntensity = 0.65;
-    const float ssrHeightFadeStart = 300000.0;
-    const float ssrHeightFadeEnd = 500000.0;
-    const float waterDiffusion = 0.775;
-    const float waterSeeColorMod = 0.8;
-    const float correctionViewingPowerFactor = 0.4;
-
-    const vec3 skyZenitColor = vec3(0.52, 0.68, 0.90);
-    const vec3 skyColor = vec3(0.67, 0.79, 0.9);
-
+define(["exports","../../shaderModules/interfaces","./ScreenSpaceReflections.glsl","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl"],(function(e,o,t,r,i,a){"use strict";function n(e,n){e.include(a.PhysicallyBasedRendering,n),e.include(i.Gamma),e.include(r.FoamColor),n.ssrEnabled&&e.include(t.ScreenSpaceReflections,n),e.fragment.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.775).add("waterSeeColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]),e.fragment.code.add(o.glsl`
     PBRShadingWater shadingInfo;
 
     /*
@@ -142,4 +128,4 @@ define(["exports","../../shaderModules/interfaces","./ScreenSpaceReflections.gls
       // combining reflected sky, reflected sea, specular highlight and SSR reflections.
       return tonemapACES(reflSky + reflSea * waterSeeColorMod + specular + foam);
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.Water=n,Object.defineProperty(e,"__esModule",{value:!0})}));

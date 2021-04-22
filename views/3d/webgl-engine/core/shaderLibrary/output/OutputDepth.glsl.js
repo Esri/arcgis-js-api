@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../util/RgbaFloatEncoding.glsl"],(function(t,e,a){"use strict";t.OutputDepth=function(t,l){t.fragment.include(a.RgbaFloatEncoding),3===l.output?(t.extensions.add("GL_OES_standard_derivatives"),t.fragment.code.add(e.glsl`
+define(["exports","../../shaderModules/interfaces","../util/RgbaFloatEncoding.glsl"],(function(t,e,a){"use strict";function l(t,l){t.fragment.include(a.RgbaFloatEncoding),3===l.output?(t.extensions.add("GL_OES_standard_derivatives"),t.fragment.code.add(e.glsl`
       float _calculateFragDepth(const in float depth) {
         // calc polygon offset
         const float SLOPE_SCALE = 2.0;
@@ -19,4 +19,4 @@ define(["exports","../../shaderModules/interfaces","../util/RgbaFloatEncoding.gl
       void outputDepth(float _linearDepth) {
         gl_FragColor = float2rgba(_linearDepth);
       }
-    `)},Object.defineProperty(t,"__esModule",{value:!0})}));
+    `)}t.OutputDepth=l,Object.defineProperty(t,"__esModule",{value:!0})}));

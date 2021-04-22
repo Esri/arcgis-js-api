@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./ColorConversion.glsl"],(function(e,t,i){"use strict";e.MixExternalColor=function(e){e.include(i.ColorConversion),e.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces","./ColorConversion.glsl"],(function(e,t,i){"use strict";function r(e){e.include(i.ColorConversion),e.code.add(t.glsl`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {
       // workaround for artifacts in OSX using Intel Iris Pro
       // see: https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/10475
@@ -44,4 +44,4 @@ define(["exports","../../shaderModules/interfaces","./ColorConversion.glsl"],(fu
         return allMixed;
       }
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.MixExternalColor=r,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";e.Gamma=function(e){e.fragment.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";function c(e){e.fragment.code.add(o.glsl`
     const float GAMMA = 2.2;
     const float INV_GAMMA = 0.4545454545;
 
@@ -13,4 +13,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";
     vec3 linearizeGamma(vec3 color) {
       return pow(color, vec3(GAMMA));
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.Gamma=c,Object.defineProperty(e,"__esModule",{value:!0})}));

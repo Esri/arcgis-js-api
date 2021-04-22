@@ -1,15 +1,15 @@
 // esri.core
-import { Maybe, isNone } from "esri/core/maybe";
+import { Maybe, isNone } from "esri/../../core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx } from "esri/../support/widget";
 
 const BASE = "esri-building-level-picker-label";
 
@@ -77,28 +77,24 @@ export class Label extends Widget implements LabelCtrParams {
    * The level represented by the label.
    */
   @property()
-  @renderable()
   level: Maybe<number | string> = null;
 
   /**
    * Whether the level shown on the label is the currently selected level.
    */
   @property({ nonNullable: true })
-  @renderable()
   active: boolean = false;
 
   /**
    * Whether the user is hovering over a level.
    */
   @property({ nonNullable: true })
-  @renderable()
   hovering: boolean = false;
 
   /**
    * Translated messages to be used in the label.
    */
   @property()
-  @renderable()
   messages: Messages = { clearLevel: "", selectLevel: "" };
 
   /**

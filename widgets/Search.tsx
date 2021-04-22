@@ -1,7 +1,10 @@
 /**
  * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)},
  * {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
- * layer(s), and/or {@link module:esri/webdoc/applicationProperties/SearchTable table(s)}. If using a locator with a geocoding service, the
+ * layer(s), {@link module:esri/layers/SceneLayer SceneLayers} with an associated feature layer,
+ * {@link module:esri/layers/buildingSublayers/BuildingComponentSublayer} with an associated feature layer,
+ * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/OGCFeatureLayer}, and/or
+ * {@link module:esri/webdoc/applicationProperties/SearchTable table(s)}. If using a locator with a geocoding service, the
  * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
  * operation is used, whereas {@link module:esri/tasks/support/Query queries} are used on feature layers.
  *
@@ -11,7 +14,13 @@
  * of the {@link module:esri/widgets/Search/LocatorSearchSource#zoomScale LocatorSearchSource}
  * or {@link module:esri/widgets/Search/LayerSearchSource#zoomScale LayerSearchSource}.
  *
- * ![search](../../assets/img/apiref/widgets/search.png)
+ * Search widget results are typically sorted according to their relevance to the search and their relative importance.
+ * However, when the scale of the {@link module:esri/views/MapView#scale MapView} or
+ * {@link module:esri/views/SceneView#scale SceneView} is less than or equal to 300,000, the operations
+ * support prioritization of candidates based on their distance from a specified point (the center of the view)
+ * by passing in the `location` parameter. Features closest to the input location show up higher in the list of results.
+ *
+ * ![search](../assets/img/apiref/widgets/search.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets to the view's user interface via the
  * {@link module:esri/views/View#ui ui} property on the view. See the example below.
@@ -32,13 +41,13 @@
  *
  * @see [Search.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Search.tsx)
  * @see [Search.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Search.scss)
- * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
- * @see [Sample - Search widget with multiple sources](../sample-code/widgets-search-multiplesource/index.html)
- * @see module:esri/tasks/Locator
- * @see module:esri/layers/FeatureLayer
  * @see module:esri/widgets/Search/SearchViewModel
+ * @see module:esri/tasks/Locator
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
+ * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
+ * @see [Sample - Search widget with multiple sources](../sample-code/widgets-search-multiplesource/index.html)
+ * @see [Proximity searches](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm#ESRI_SECTION1_6B80D672B3F74F4697212696D890CFE1)
  */
 
 // esri
@@ -64,8 +73,8 @@ import Portal from "esri/portal/Portal";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import {
@@ -89,14 +98,7 @@ import SearchMessages from "esri/widgets/Search/t9n/Search";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import {
-  keepMenuItemWithinView,
-  messageBundle,
-  renderable,
-  storeNode,
-  tsx,
-  vmEvent
-} from "esri/widgets/support/widget";
+import { keepMenuItemWithinView, messageBundle, storeNode, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-search esri-widget",
@@ -377,6 +379,7 @@ class Search extends Widget {
         }
       }),
       watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges()),
+      watchUtils.init(this, "activeMenu", () => this._resetActiveMenuItemIndex()),
       watchUtils.init(
         this,
         "viewModel.defaultPopupTemplate",
@@ -409,6 +412,7 @@ class Search extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  @property()
   private _activeMenuItemIndex = -1;
 
   private _handles = new Handles();
@@ -433,28 +437,29 @@ class Search extends Widget {
 
   private _locateFailed: boolean = null;
 
-  @property({ dependsOn: ["viewModel.searchTerm"] })
-  @renderable()
+  @property()
   protected get displayedSearchTerm(): string {
     return `${this.viewModel.searchTerm}`.trim();
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
+  protected get inputId(): string {
+    return this._buildId("input");
+  }
+
+  @property({ readOnly: true })
   protected get suggestionsMenuId(): string {
     return this._buildId("suggest-menu");
   }
 
-  @property({
-    readOnly: true,
-    dependsOn: ["id"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   protected get sourceMenuId(): string {
     return this._buildId("source-menu");
+  }
+
+  @property({ readOnly: true })
+  protected get sourceMenuButtonId(): string {
+    return this._buildId("source-menu-button");
   }
 
   //--------------------------------------------------------------------------
@@ -476,7 +481,6 @@ class Search extends Widget {
    * @default none
    */
   @property()
-  @renderable()
   activeMenu: ActiveMenu = "none";
 
   //----------------------------------
@@ -494,7 +498,6 @@ class Search extends Widget {
    * @readonly
    */
   @aliasOf("viewModel.activeSource")
-  @renderable()
   activeSource: SupportedSearchSource = null;
 
   //----------------------------------
@@ -510,7 +513,6 @@ class Search extends Widget {
    * @default 0
    */
   @aliasOf("viewModel.activeSourceIndex")
-  @renderable()
   activeSourceIndex: number = null;
 
   //----------------------------------
@@ -521,7 +523,7 @@ class Search extends Widget {
    * String value used as a hint for input text when searching on multiple sources. See
    * the image below to view the location and style of this text in the context of the widget.
    *
-   * ![search-allPlaceholder](../../assets/img/apiref/widgets/search-allplaceholder.png)
+   * ![search-allPlaceholder](../assets/img/apiref/widgets/search-allplaceholder.png)
    *
    * @name allPlaceholder
    * @instance
@@ -529,7 +531,6 @@ class Search extends Widget {
    * @default "Find address or place"
    */
   @aliasOf("viewModel.allPlaceholder")
-  @renderable()
   allPlaceholder: string = null;
 
   //----------------------------------
@@ -624,7 +625,6 @@ class Search extends Widget {
    * @since 4.15
    * @default false
    */
-  @renderable()
   @property()
   disabled = false;
 
@@ -708,7 +708,7 @@ class Search extends Widget {
   /**
    * Enables location services within the widget.
    *
-   * ![locationEnabled](../../assets/img/apiref/widgets/search-locationEnabled.png)
+   * ![locationEnabled](../assets/img/apiref/widgets/search-locationEnabled.png)
    *
    * ::: esri-md class="panel trailer-1"
    * The use of this property is only supported on secure origins.
@@ -725,7 +725,6 @@ class Search extends Widget {
    * @default true
    *
    */
-  @renderable()
   @aliasOf("viewModel.locationEnabled")
   locationEnabled: boolean = null;
 
@@ -778,7 +777,6 @@ class Search extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Search/t9n/Search")
   messages: SearchMessages = null;
 
@@ -797,7 +795,6 @@ class Search extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -916,7 +913,6 @@ class Search extends Widget {
    * @readonly
    */
   @aliasOf("viewModel.results")
-  @renderable()
   results: SearchResults<SearchResult>[] = null;
 
   //----------------------------------
@@ -927,11 +923,11 @@ class Search extends Widget {
    * Indicates whether to display the option to search all sources. When `true`, the "All" option
    * is displayed by default:
    *
-   * ![search-searchAllEnabled-true](../../assets/img/apiref/widgets/search-enablesearchingall-true.png)
+   * ![search-searchAllEnabled-true](../assets/img/apiref/widgets/search-enablesearchingall-true.png)
    *
    * When `false`, no option to search all sources at once is available:
    *
-   * ![search-searchAllEnabled-false](../../assets/img/apiref/widgets/search-enablesearchingall-false.png)
+   * ![search-searchAllEnabled-false](../assets/img/apiref/widgets/search-enablesearchingall-false.png)
    *
    * @name searchAllEnabled
    * @instance
@@ -939,7 +935,6 @@ class Search extends Widget {
    * @default true
    */
   @aliasOf("viewModel.searchAllEnabled")
-  @renderable()
   searchAllEnabled: boolean = null;
 
   //----------------------------------
@@ -954,7 +949,6 @@ class Search extends Widget {
    * @type {string}
    */
   @aliasOf("viewModel.searchTerm")
-  @renderable()
   searchTerm: string = null;
 
   //----------------------------------
@@ -981,7 +975,11 @@ class Search extends Widget {
 
   /**
    * The Search widget may be used to search features in a
-   * {@link module:esri/layers/FeatureLayer} or {@link module:esri/webdoc/applicationProperties/SearchTable table},
+   * {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
+   * layer(s), {@link module:esri/layers/SceneLayer SceneLayers} with an associated feature layer,
+   * {@link module:esri/layers/buildingSublayers/BuildingComponentSublayer} with an associated feature layer,
+   * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer} or
+   * {@link module:esri/layers/OGCFeatureLayer}, or {@link module:esri/webdoc/applicationProperties/SearchTable table},
    * or geocode locations with a {@link module:esri/tasks/Locator}. The `sources` property defines the sources from which
    * to search for the [view](#view) specified by the Search widget instance. There are two types of sources:
    *
@@ -1103,7 +1101,6 @@ class Search extends Widget {
    * @readonly
    */
   @aliasOf("viewModel.suggestions")
-  @renderable()
   suggestions: SearchResults<SuggestResult>[] = null;
 
   //----------------------------------
@@ -1136,8 +1133,7 @@ class Search extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1162,15 +1158,7 @@ class Search extends Widget {
     "suggest-start",
     "suggest-complete"
   ])
-  @property({
-    type: SearchViewModel
-  })
-  @renderable([
-    "viewModel.allSources",
-    "viewModel.activeSource.placeholder",
-    "viewModel.activeSource.name",
-    "viewModel.state"
-  ])
+  @property({ type: SearchViewModel })
   viewModel = new SearchViewModel();
 
   //--------------------------------------------------------------------------
@@ -1346,7 +1334,7 @@ class Search extends Widget {
         onclick={this._handleSearchButtonClick}
         title={messages.searchButtonTitle}
       >
-        <span aria-hidden="true" role="presentation" class={CSS.searchIcon} />
+        <span aria-hidden="true" class={CSS.searchIcon} />
       </button>
     );
   }
@@ -1360,31 +1348,27 @@ class Search extends Widget {
   }
 
   protected renderSourceMenuButton(): VNode {
-    const { messages, activeMenu, sourceMenuId } = this;
+    const { messages, activeMenu, sourceMenuId, sourceMenuButtonId } = this;
     const { activeSourceIndex, allSources } = this.viewModel;
-
-    const activeDescendantId =
-      activeMenu === "source" ? this._buildId("source-item", activeSourceIndex) : null;
 
     return allSources.length > 1 ? (
       <button
-        aria-activedescendant={activeDescendantId}
+        id={sourceMenuButtonId}
         key="esri-search__source-menu-button"
         bind={this}
+        aria-label={messages.searchIn}
         title={messages.searchIn}
         aria-haspopup="true"
-        aria-expanded={activeMenu === "source"}
+        aria-expanded={(activeMenu === "source").toString()}
         aria-controls={sourceMenuId}
         class={this.classes(CSS.sourcesButton, CSS.button)}
-        onkeydown={this._handleSourceMenuButtonKeydown}
         onclick={this._handleSourcesMenuToggleClick}
-        onkeyup={this._handleSourceMenuButtonKeyup}
         onblur={this._sourcesButtonBlur}
         afterCreate={storeNode}
         data-node-ref="_sourceMenuButtonNode"
       >
-        <span aria-hidden="true" role="presentation" class={CSS.dropdownIcon} />
-        <span aria-hidden="true" role="presentation" class={CSS.dropupIcon} />
+        <span aria-hidden="true" class={CSS.dropdownIcon} />
+        <span aria-hidden="true" class={CSS.dropupIcon} />
         <span class={CSS.sourceName}>{this._getSourceName(activeSourceIndex)}</span>
       </button>
     ) : null;
@@ -1392,15 +1376,26 @@ class Search extends Widget {
 
   protected renderSourcesList(): VNode {
     const { allSources, searchAllEnabled } = this.viewModel;
+    const { _activeMenuItemIndex, activeMenu, sourceMenuId, sourceMenuButtonId } = this;
+
+    const activeDescendantId =
+      activeMenu === "source" && _activeMenuItemIndex > -1
+        ? this._buildId("source-item", _activeMenuItemIndex)
+        : null;
 
     return allSources.length > 1 ? (
       <ul
-        id={this.sourceMenuId}
+        aria-activedescendant={activeDescendantId}
+        aria-labelledby={sourceMenuButtonId}
+        id={sourceMenuId}
         role="menu"
         bind={this}
         afterCreate={storeNode}
+        onkeydown={this._handleSourceMenuKeydown}
+        onkeyup={this._handleSourceMenuKeyup}
         data-node-ref="_sourceListNode"
         class={CSS.menuList}
+        tabIndex={-1}
       >
         {searchAllEnabled ? this.renderSource(SearchViewModel.ALL_INDEX) : null}
         {allSources.map((_source, sourceIndex) => this.renderSource(sourceIndex)).toArray()}
@@ -1422,8 +1417,8 @@ class Search extends Widget {
     const { messages, messagesCommon } = this;
 
     return (
-      <div role="presentation" class={CSS.loader} key="base-loader">
-        <span aria-hidden="true" role="presentation" class={CSS.loaderAnimation} />
+      <div class={CSS.loader} key="base-loader">
+        <span aria-hidden="true" class={CSS.loaderAnimation} />
         <span class={CSS.fallbackText}>{messages.searchButtonTitle}</span>
         <span class={CSS.loaderText}>{messagesCommon.loading}</span>
       </div>
@@ -1444,11 +1439,7 @@ class Search extends Widget {
     };
 
     return (
-      <div
-        role="presentation"
-        class={this.classes(containerNodeClasses, CSS.container)}
-        key="base-container"
-      >
+      <div class={this.classes(containerNodeClasses, CSS.container)} key="base-container">
         {this.renderSourceMenuButton()}
         {this.renderSourcesMenu()}
         {this.renderInputContainer()}
@@ -1476,11 +1467,11 @@ class Search extends Widget {
   protected renderLocationGroup(): VNode {
     const { messages, locationEnabled, displayedSearchTerm } = this;
     const showLocationOption = locationEnabled && !displayedSearchTerm;
-    const focused = this._activeMenuItemIndex === 0;
+    const focused = this.activeMenu === "suggestion" && this._activeMenuItemIndex === 0;
 
     return showLocationOption ? (
       <ul
-        role="presentation"
+        role="group"
         key={`esri-search__suggestion-list-current-location`}
         class={this.classes(CSS.menuList, CSS.suggestionList, CSS.suggestionListCurrentLocation)}
       >
@@ -1488,11 +1479,14 @@ class Search extends Widget {
           bind={this}
           data-current-location-item={true}
           onclick={this._handleUseCurrentLocationClick}
-          role="menuitem"
+          id={this._buildId("suggestion-item", 0)}
+          aria-selected={(
+            this.activeMenu === "suggestion" && this._activeMenuItemIndex === 0
+          ).toString()}
+          role="option"
           class={this.classes(CSS.menuItem, focused ? CSS.menuItemFocus : null)}
         >
-          <span aria-hidden="true" role="presentation" class={CSS.locate} />{" "}
-          {messages.useCurrentLocation}
+          <span aria-hidden="true" class={CSS.locate} /> {messages.useCurrentLocation}
         </li>
       </ul>
     ) : null;
@@ -1500,35 +1494,41 @@ class Search extends Widget {
 
   protected renderInput(): VNode {
     const {
-      _activeMenuItemIndex,
       activeMenu,
       locationEnabled,
       displayedSearchTerm,
       messages,
-      suggestionsMenuId
+      suggestionsMenuId,
+      inputId,
+      _activeMenuItemIndex
     } = this;
     const { maxInputLength, placeholder, searchTerm, suggestionCount } = this.viewModel;
 
     const showLocationOption = locationEnabled && !displayedSearchTerm;
-    const hasSuggestions = showLocationOption || suggestionCount;
+    const hasSuggestions = !!(showLocationOption || suggestionCount);
     const activeDescendantId =
-      activeMenu === "suggestion" ? this._buildId("suggestion-item", _activeMenuItemIndex) : null;
+      activeMenu === "suggestion" && _activeMenuItemIndex > -1
+        ? this._buildId("suggestion-item", _activeMenuItemIndex)
+        : null;
 
     return (
       <input
         aria-activedescendant={activeDescendantId}
+        aria-autocomplete="list"
+        aria-expanded={(hasSuggestions && activeMenu === "suggestion").toString()}
+        aria-controls={hasSuggestions ? suggestionsMenuId : null}
+        aria-owns={hasSuggestions ? suggestionsMenuId : null}
+        aria-haspopup="listbox"
+        aria-label={messages.searchButtonTitle}
         bind={this}
         placeholder={placeholder}
-        aria-label={messages.searchButtonTitle}
         maxlength={maxInputLength}
         autocomplete="off"
         type="text"
         class={this.classes(CSS.esriInput, CSS.input)}
-        aria-autocomplete="list"
         value={searchTerm}
-        aria-haspopup="true"
-        aria-owns={hasSuggestions ? suggestionsMenuId : null}
-        role="textbox"
+        id={inputId}
+        role="combobox"
         onkeyup={this._handleInputKeyup}
         onclick={this._handleInputClick}
         oninput={this._handleInputPaste}
@@ -1565,7 +1565,7 @@ class Search extends Widget {
 
     return suggestResultCount ? (
       <ul
-        role="presentation"
+        role="group"
         key={`esri-search__suggestion-list-${sourceIndex}`}
         class={this.classes(CSS.menuList, CSS.suggestionList)}
       >
@@ -1586,7 +1586,7 @@ class Search extends Widget {
   }
 
   protected renderSuggestionsMenu(): VNode {
-    const { activeMenu, displayedSearchTerm, locationEnabled, suggestionsMenuId } = this;
+    const { displayedSearchTerm, locationEnabled, suggestionsMenuId, inputId } = this;
     const { suggestionCount } = this.viewModel;
     const showLocationOption = locationEnabled && !displayedSearchTerm;
     const hasSuggestions = showLocationOption || suggestionCount;
@@ -1595,10 +1595,10 @@ class Search extends Widget {
     return hasSuggestions ? (
       <div
         id={suggestionsMenuId}
-        aria-expanded={activeMenu === "suggestion"}
         key="esri-search__suggestions-menu"
         class={this.classes(CSS.menu, CSS.suggestionsMenu)}
-        role="menu"
+        role="listbox"
+        aria-labelledby={inputId}
         bind={this}
         afterCreate={storeNode}
         data-node-ref="_suggestionListNode"
@@ -1658,16 +1658,19 @@ class Search extends Widget {
         });
       }
 
-      const focused = _activeMenuItemIndex === suggestionIndex;
+      const focused = this.activeMenu === "suggestion" && _activeMenuItemIndex === suggestionIndex;
 
       return (
         <li
           bind={this}
           id={this._buildId("suggestion-item", suggestionIndex)}
+          aria-selected={(
+            this.activeMenu === "suggestion" && this._activeMenuItemIndex === suggestionIndex
+          ).toString()}
           onclick={this._handleSuggestionClick}
           key={`esri-search__suggestion_${suggestionIndex}`}
           data-suggestion={suggestion}
-          role="menuitem"
+          role="option"
           class={this.classes(CSS.menuItem, focused ? CSS.menuItemFocus : null)}
         >
           {matches}
@@ -1684,18 +1687,22 @@ class Search extends Widget {
     const itemClasses = {
       [CSS.menuItemActive]: sourceIndex === activeSourceIndex,
       [CSS.menuItemFocus]:
+        this.activeMenu === "source" &&
         sourceIndex ===
-        (searchAllEnabled ? this._activeMenuItemIndex - 1 : this._activeMenuItemIndex)
+          (searchAllEnabled ? this._activeMenuItemIndex - 1 : this._activeMenuItemIndex)
     };
+
+    const activeItemIndex = searchAllEnabled ? sourceIndex + 1 : sourceIndex;
 
     return (
       <li
         bind={this}
         key={`esri-search__source-${sourceIndex}`}
-        id={this._buildId("source-item", sourceIndex)}
+        id={this._buildId("source-item", activeItemIndex)}
+        aria-checked={(sourceIndex === activeSourceIndex).toString()}
         onclick={this._handleSourceClick}
         data-source-index={sourceIndex}
-        role="menuitem"
+        role="menuitemradio"
         class={this.classes(CSS.source, CSS.menuItem, itemClasses)}
       >
         {this._getSourceName(sourceIndex)}
@@ -1763,6 +1770,10 @@ class Search extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  private _resetActiveMenuItemIndex(): void {
+    this._activeMenuItemIndex = -1;
+  }
+
   private _buildId(type: string, index?: number): string {
     return `${this.id}-${type}${index === undefined ? "" : `-${index}`}`;
   }
@@ -1787,21 +1798,13 @@ class Search extends Widget {
   private _handleSourcesMenuToggleClick(): void {
     const isSourceActive = this.activeMenu === "source";
 
-    if (isSourceActive) {
-      const list = this._sourceListNode.getElementsByTagName("li");
-      const item = list[this._activeMenuItemIndex];
-      this._setSourceFromMenuItem(item);
+    this.activeMenu = isSourceActive ? "none" : "source";
 
-      return;
-    }
-
-    this.activeMenu = "source";
     this.renderNow();
 
-    this._sourceMenuButtonNode && this._sourceMenuButtonNode.focus();
-    this._activeMenuItemIndex = this.searchAllEnabled
-      ? this.activeSourceIndex + 1
-      : this.activeSourceIndex;
+    if (this.activeMenu === "source") {
+      this._sourceListNode?.focus();
+    }
   }
 
   private _handleClearButtonClick(): void {
@@ -1853,9 +1856,14 @@ class Search extends Widget {
   }
 
   private _setSourceFromMenuItem(item: HTMLElement): void {
+    if (!item) {
+      return;
+    }
+
     const sourceIndex = item["data-source-index"] as number;
     this.viewModel.activeSourceIndex = sourceIndex;
-    this._focus("none");
+    this.activeMenu = "none";
+    this._sourceMenuButtonNode?.focus();
   }
 
   private _sourcesButtonBlur(event: FocusEvent): void {
@@ -1924,12 +1932,16 @@ class Search extends Widget {
         this.activeMenu = "none";
       }
 
-      this._activeMenuItemIndex = -1;
       return;
     }
 
     const isNavigationKey =
       key === "Home" || key === "End" || key === "ArrowUp" || key === "ArrowDown";
+
+    if (key === "Enter" && this._activeMenuItemIndex < 0) {
+      this._cancelSuggest();
+      return;
+    }
 
     const list = this._suggestionListNode?.getElementsByTagName("li");
 
@@ -1985,7 +1997,7 @@ class Search extends Widget {
 
     if (key === "ArrowUp") {
       this._activeMenuItemIndex =
-        this._activeMenuItemIndex === 0 ? items.length - 1 : this._activeMenuItemIndex - 1;
+        this._activeMenuItemIndex <= 0 ? items.length - 1 : this._activeMenuItemIndex - 1;
     }
 
     if (key === "ArrowDown") {
@@ -2022,16 +2034,25 @@ class Search extends Widget {
     this.suggest();
   }
 
-  private _handleSourceMenuButtonKeydown(event: KeyboardEvent): void {
+  private _handleSourceMenuKeydown(event: KeyboardEvent): void {
     const key = eventKey(event);
+
+    if (key === " " || key === "Enter") {
+      event.preventDefault();
+      const list = this._sourceListNode.getElementsByTagName("li");
+      const item = list[this._activeMenuItemIndex];
+      this._setSourceFromMenuItem(item);
+      return;
+    }
 
     if (key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home") {
       event.preventDefault();
     }
   }
 
-  private _handleSourceMenuButtonKeyup(event: KeyboardEvent): void {
+  private _handleSourceMenuKeyup(event: KeyboardEvent): void {
     const key = eventKey(event);
+
     const isNavigationKey =
       key === "ArrowUp" || key === "ArrowDown" || key === "End" || key === "Home";
 
@@ -2040,7 +2061,8 @@ class Search extends Widget {
     }
 
     if (key === "Escape") {
-      this._focus("none");
+      this.activeMenu = "none";
+      this._sourceMenuButtonNode?.focus();
       return;
     }
 
@@ -2062,7 +2084,6 @@ class Search extends Widget {
 
   private _focus(activeMenu?: ActiveMenu): void {
     this.focus();
-    this._activeMenuItemIndex = -1;
 
     if (!activeMenu) {
       return;

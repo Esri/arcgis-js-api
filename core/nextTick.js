@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["./global"],(function(e){"use strict";const o=e.queueMicrotask?e.queueMicrotask:o=>{e.Promise.resolve().then(o)},t=[];let n=[];function r(e){t.push(e),1===t.length&&o((()=>{for(const e of n)e();const e=t.slice();t.length=0;for(const o of e)o()}))}return function(e){e.before=function(e){return n.push(e),{remove(){n=n.filter((o=>o!==e))}}}}(r||(r={})),r}));
+define(["./global"],(function(e){"use strict";function n(){return e.queueMicrotask?e.queueMicrotask:n=>{e.Promise.resolve().then(n)}}const t=n(),o=[];let r=[];function u(e){o.push(e),1===o.length&&t((()=>{for(const n of r)n();const e=o.slice();o.length=0;for(const n of e)n()}))}return function(e){function n(e){return r.push(e),{remove(){r=r.filter((n=>n!==e))}}}e.before=n}(u||(u={})),u}));

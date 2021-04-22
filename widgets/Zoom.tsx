@@ -32,15 +32,15 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 // esri.widgets.Zoom
 import IconButton from "esri/widgets/Zoom/IconButton";
@@ -159,10 +159,7 @@ class Zoom extends Widget {
    * @default vertical
    * @type {"vertical" | "horizontal"}
    */
-  @property({
-    value: "vertical"
-  })
-  @renderable()
+  @property({ value: "vertical" })
   set layout(value: Layout) {
     if (value !== "horizontal") {
       value = "vertical";
@@ -184,7 +181,6 @@ class Zoom extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Zoom/t9n/Zoom")
   messages: ZoomMessages = null;
 
@@ -201,8 +197,7 @@ class Zoom extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -222,7 +217,6 @@ class Zoom extends Widget {
   @property({
     type: ZoomViewModel
   })
-  @renderable(["viewModel.canZoomIn", "viewModel.canZoomOut", "viewModel.state"])
   viewModel = new ZoomViewModel();
 
   //--------------------------------------------------------------------------

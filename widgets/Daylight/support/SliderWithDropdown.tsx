@@ -1,19 +1,19 @@
 // esri.core
-import { eventKey } from "esri/core/events";
-import { isSome, Maybe } from "esri/core/maybe";
+import { eventKey } from "esri/../../core/events";
+import { isSome, Maybe } from "esri/../../core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Slider from "esri/Slider";
+import Slider from "esri/../Slider";
 
 // esri.widgets.Daylight.support
 import { Item, SliderWithDropdownViewModel } from "esri/widgets/SliderWithDropdownViewModel";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx } from "esri/../support/widget";
 
 const CSS = {
   interactive: "esri-interactive",
@@ -57,31 +57,24 @@ class SliderWithDropdown<T extends Item> extends Slider {
   //--------------------------------------------------------------------------
 
   @property()
-  @renderable()
   viewModel: SliderWithDropdownViewModel<T> = new SliderWithDropdownViewModel();
 
   @property()
-  @renderable()
   buttonTooltip = "";
 
   @property()
-  @renderable()
   showDropDown = true;
 
   @property({ aliasOf: "viewModel.items" })
-  @renderable()
   items: T[];
 
   @property({ aliasOf: "viewModel.currentIndex" })
-  @renderable()
   currentIndex: number = 0;
 
   @property({ aliasOf: "viewModel.currentItem" })
-  @renderable()
   readonly currentItem: T;
 
   @property({ aliasOf: "viewModel.isDropdownOpen" })
-  @renderable()
   isDropdownOpen: boolean;
 
   //--------------------------------------------------------------------------
@@ -120,7 +113,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
               onpointerdown={this._killEvent}
               aria-label={this.buttonTooltip}
               title={this.buttonTooltip}
-              aria-expanded={this.isDropdownOpen}
+              aria-expanded={this.isDropdownOpen.toString()}
               aria-haspopup="listbox"
               type="button"
             >
@@ -155,7 +148,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
                     data-result={index}
                     aria-label={item.label.join(" ")}
                     role="option"
-                    aria-selected={index === this.currentIndex}
+                    aria-selected={(index === this.currentIndex).toString()}
                     onkeydown={this._onLiKeyDown}
                     onblur={this._onDropdownBlur}
                     tabindex="0"

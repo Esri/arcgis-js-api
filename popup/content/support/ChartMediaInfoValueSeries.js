@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/aliasOf","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor"],(function(o,e,r,t,s,c,p,l,u,a,i,n){"use strict";var d;let _=d=function(e){function r(o){var r;return(r=e.call(this,o)||this).tooltip=null,r.value=null,r.x=null,r.y=null,r}return o._inheritsLoose(r,e),r.prototype.clone=function(){return new d({tooltip:this.tooltip,value:this.value})},r}(n);return e.__decorate([c.property()],_.prototype,"tooltip",void 0),e.__decorate([c.property()],_.prototype,"value",void 0),e.__decorate([p.aliasOf("value")],_.prototype,"x",void 0),e.__decorate([p.aliasOf("tooltip")],_.prototype,"y",void 0),_=d=e.__decorate([l.subclass("esri.popup.content.support.ChartMediaInfoValueSeries")],_),_}));

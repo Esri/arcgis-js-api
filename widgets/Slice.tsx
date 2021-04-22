@@ -3,7 +3,7 @@
  * module:esri/views/SceneView}. The slice widget can be applied to any layer type, making it possible
  * to see inside buildings or to explore geological surfaces.
  *
- * [![slice-widget](../../assets/img/apiref/widgets/slice.gif)](../sample-code/building-scene-layer-slice/index.html)
+ * [![slice-widget](../assets/img/apiref/widgets/slice.gif)](../sample-code/building-scene-layer-slice/index.html)
  *
  * To use the widget, instantiate it and add it to the view:
  * ```js
@@ -28,7 +28,7 @@
  * interior elements inside a {@link module:esri/layers/BuildingSceneLayer}, the windows or
  * furniture layers can be excluded from the slice widget.
  *
- * [![slice-widget-exclude](../../assets/img/apiref/widgets/slice-exclude.png)](../sample-code/building-scene-layer-slice/index.html)
+ * [![slice-widget-exclude](../assets/img/apiref/widgets/slice-exclude.png)](../sample-code/building-scene-layer-slice/index.html)
  *
  * Slice only works with {@link module:esri/views/SceneView}. The visualizations created using slices are temporary and
  * cannot be persisted in a {@link module:esri/WebScene} or in {@link module:esri/webscene/Slide slides}.
@@ -56,7 +56,7 @@ import Layer from "esri/layers/Layer";
 import BuildingComponentSublayer from "esri/layers/buildingSublayers/BuildingComponentSublayer";
 
 // esri.views
-import SceneView from "esri/views/SceneView";
+import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -69,29 +69,35 @@ import SliceMessages from "esri/widgets/Slice/t9n/Slice";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
+
+const BASE = "esri-slice";
 
 const CSS = {
   // common
-  button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
   layerIncludeButton: "esri-icon-close esri-slice__cross",
+  widgetIcon: "esri-icon-slice",
+
   // base
-  base: "esri-slice esri-widget esri-widget--panel",
+  base: `${BASE} esri-widget esri-widget--panel`,
+
   // container
-  layerList: "esri-slice__settings",
+  layerList: `${BASE}__settings`,
   layerListHeading: "esri-slice__settings-title esri-widget__heading",
-  layerItem: "esri-slice__layer-item",
-  container: "esri-slice__container",
+  layerItem: `${BASE}__layer-item`,
+  container: `${BASE}__container`,
   actionSection: "esri-slice__actions",
+
   // hint
-  hint: "esri-slice__hint",
-  hintText: "esri-slice__hint-text",
-  panelError: "esri-slice__panel--error",
-  // clear
-  excludeButton: "esri-slice__exclude-button",
-  cancelButton: "esri-slice__cancel-button",
-  clearButton: "esri-slice__clear-button"
+  hint: `${BASE}__hint`,
+  hintText: `${BASE}__hint-text`,
+  panelError: `${BASE}__panel--error`,
+
+  // actions
+  newSliceButton: `${BASE}__clear-button esri-button esri-button--primary`,
+  excludeButton: `${BASE}__exclude-button esri-button esri-button--secondary`,
+  cancelButton: `${BASE}__cancel-button esri-button esri-button--secondary`
 };
 
 @subclass("esri.widgets.Slice")
@@ -126,6 +132,37 @@ class Slice extends Widget {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   */
+  @property()
+  @messageBundle("esri/widgets/Slice/t9n/Slice")
+  messages: SliceMessages = null;
+
+  //------------------------
+  // iconClass
+  //------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -144,25 +181,6 @@ class Slice extends Widget {
   label: string = undefined;
 
   //----------------------------------
-  //  messages
-  //----------------------------------
-
-  /**
-   * The widget's message bundle
-   *
-   * @instance
-   * @name messages
-   * @type {Object}
-   *
-   * @ignore
-   * @todo revisit doc
-   */
-  @property()
-  @renderable()
-  @messageBundle("esri/widgets/Slice/t9n/Slice")
-  messages: SliceMessages = null;
-
-  //----------------------------------
   //  view
   //----------------------------------
   /**
@@ -173,7 +191,7 @@ class Slice extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: SceneView = null;
+  view: ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -187,7 +205,6 @@ class Slice extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean;
 
   //----------------------------------
@@ -202,7 +219,6 @@ class Slice extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.active")
-  @renderable()
   active: boolean;
 
   //----------------------------------
@@ -224,11 +240,9 @@ class Slice extends Widget {
   viewModel: SliceViewModel = new SliceViewModel();
 
   @aliasOf("viewModel.excludedLayers")
-  @renderable()
   excludedLayers: Collection<Layer | BuildingComponentSublayer>;
 
   @aliasOf("viewModel.excludeGroundSurface")
-  @renderable()
   excludeGroundSurface: boolean;
 
   //--------------------------------------------------------------------------
@@ -245,14 +259,14 @@ class Slice extends Widget {
     const isSlicing = this.viewModel.state === "slicing" || this.viewModel.state === "sliced";
     const isExcludeMode = this.viewModel.layersMode === "exclude";
 
-    const buttonClasses = [CSS.button, isDisabled && CSS.buttonDisabled];
     const { messages } = this;
+    const disabledClass = isDisabled && CSS.buttonDisabled;
 
     const newSliceNode =
       (!isActive || isSlicing) && !isExcludeMode ? (
         <button
           disabled={isDisabled}
-          class={this.classes(CSS.clearButton, ...buttonClasses)}
+          class={this.classes(CSS.newSliceButton, disabledClass)}
           bind={this}
           onclick={this._onNewSliceClick}
           key="esri-slice__clear"
@@ -265,7 +279,7 @@ class Slice extends Widget {
     const excludeLayerNode =
       isSlicing && !isExcludeMode ? (
         <button
-          class={this.classes(CSS.excludeButton, ...buttonClasses)}
+          class={this.classes(CSS.excludeButton, disabledClass)}
           bind={this}
           onclick={() => {
             this.viewModel.enterExcludeLayerMode();
@@ -280,7 +294,7 @@ class Slice extends Widget {
     const cancelExcludeNode =
       isActive && isExcludeMode ? (
         <button
-          class={this.classes(CSS.cancelButton, ...buttonClasses)}
+          class={this.classes(CSS.cancelButton, disabledClass)}
           bind={this}
           onclick={() => {
             this.viewModel.exitExcludeLayerMode();

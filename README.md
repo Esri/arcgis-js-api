@@ -2,15 +2,15 @@
 
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
 ## Features
 
-You can install these modules via [npm](http://npmjs.org/) and create your own custom builds, for example, with [Webpack](https://webpackjs.org), [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](http://dojotoolkit.org/).
+You can install these modules via [npm](https://npmjs.org/) and create your own custom builds, for example, with [Webpack](https://webpackjs.org), [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
 
 ## Instructions
 
-Additional instructions are available in the [jsapi-resources repoistory](https://github.com/Esri/jsapi-resources/tree/master/4.x/npm).
+Additional instructions and examples are available in the SDK's [Build with AMD modules](https://developers.arcgis.com/javascript/latest/amd-build/) Guide page.
 
 ```
 npm install arcgis-js-api
@@ -18,19 +18,20 @@ npm install arcgis-js-api
 
 ## TypeScript Typings
 
-You can use the typings included with `arcgis-js-api` two ways.
+You can use the typings included with `arcgis-js-api` two ways. The first way is to include a `///` directive in your main TypeScript file:
 
-### Include a `///` directive in your main TypeScript file.
+*main.ts*
+
 ```ts
-// main.ts
 /// <reference types="arcgis-js-api" />
 ```
 
-### Or add to the `include` of your `tsconfig.json`.
+Or, add a reference to the declaration file in the `include` of your `tsconfig.json`:
+
+*tsconfig.json*
+
 ```json
-// tsconfig.json
 {
-  "compilerOptions": {},
   "include": [
     "node_modules/arcgis-js-api/index.d.ts",
     "src/**/*.ts",
@@ -47,17 +48,17 @@ Building apps with the ArcGIS API for JavaScript requires signing up for a [ArcG
 ## Resources
 
 * [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
-* [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
+* [http://blogs.esri.com/esri/arcgis/tag/javascript/](https://blogs.esri.com/esri/arcgis/tag/javascript/)
 * [twitter@ArcGISJSAPI](https://twitter.com/ArcGISJSAPI)
 
 ## Issues
 
-- General questions about using these modules or the ArcGIS API for JavaScript? See the [GeoNet developer community](https://community.esri.com/t5/arcgis-api-for-javascript/bd-p/arcgis-api-for-javascript-questions).
-- [Technical support](http://support.esri.com/).
+- General questions about using these modules or the ArcGIS API for JavaScript? See the [Esri developer community](https://community.esri.com/t5/arcgis-api-for-javascript/ct-p/arcgis-api-for-javascript).
+- [Technical support](https://support.esri.com/).
 
 ## Licensing
 
-COPYRIGHT © 2020 Esri
+COPYRIGHT © 2021 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../Manipulator3D"],(function(t,a,n){"use strict";let i=function(){function t(){this._available=!0}var i=t.prototype;return i.hasManipulator=function(t){return this.someManipulator((a=>a===t))},i.someManipulator=function(t){let a=!1;return this.forEachManipulator((n=>{!a&&t(n)&&(a=!0)})),a},i.forEachManipulator3D=function(t){this.forEachManipulator(((a,i)=>{a instanceof n.Manipulator3D&&t(a,i)}))},a._createClass(t,[{key:"location",set:function(t){this.forEachManipulator3D((a=>a.location=t))}},{key:"elevationAlignedLocation",set:function(t){this.forEachManipulator3D((a=>a.elevationAlignedLocation=t))}},{key:"elevationInfo",set:function(t){this.forEachManipulator3D((a=>a.elevationInfo=t))}},{key:"available",get:function(){return this._available},set:function(t){this._available=t,this.forEachManipulator3D((a=>a.available=t))}},{key:"grabbing",get:function(){return this.someManipulator((t=>t.grabbing))}},{key:"dragging",get:function(){return this.someManipulator((t=>t.dragging))}}]),t}();t.Manipulation=i,Object.defineProperty(t,"__esModule",{value:!0})}));

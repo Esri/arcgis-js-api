@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports"],(function(i){"use strict";i.isMultiOriginJSONMixin=function(i){return i&&"getAtOrigin"in i&&"originOf"in i},Object.defineProperty(i,"__esModule",{value:!0})}));
+define(["exports"],(function(i){"use strict";function e(i){return i&&"getAtOrigin"in i&&"originOf"in i}i.isMultiOriginJSONMixin=e,Object.defineProperty(i,"__esModule",{value:!0})}));

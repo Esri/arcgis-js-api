@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces","./FoamRendering.glsl"],(function(e,t,a){"use strict";function r(e){e.fragment.uniforms.add("texWaveNormal","sampler2D"),e.fragment.uniforms.add("texWavePerturbation","sampler2D"),e.fragment.uniforms.add("waveParams","vec4"),e.fragment.uniforms.add("waveDirection","vec2"),e.include(a.FoamIntensity),e.fragment.code.add(t.glsl`
       const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
@@ -79,4 +79,4 @@ define(["exports","../../shaderModules/interfaces","./FoamRendering.glsl"],(func
         float foam  = normals2FoamIntensity(normal, waveParams[0]);
         return vec4(normal, foam);
       }
-    `)}!function(e){e.bindUniforms=function(e,t){e.setUniform1i("texWaveNormal",0),e.setUniform1i("texWavePerturbation",1),e.setUniform4f("waveParams",t.waveStrength,t.waveTextureRepeat,t.flowStrength,t.flowOffset),e.setUniform2f("waveDirection",t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)}}(r||(r={})),e.WaterDistortion=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}!function(e){function t(e,t){e.setUniform1i("texWaveNormal",0),e.setUniform1i("texWavePerturbation",1),e.setUniform4f("waveParams",t.waveStrength,t.waveTextureRepeat,t.flowStrength,t.flowOffset),e.setUniform2f("waveDirection",t.waveDirection[0]*t.waveVelocity,t.waveDirection[1]*t.waveVelocity)}e.bindUniforms=t}(r||(r={})),e.WaterDistortion=r,Object.defineProperty(e,"__esModule",{value:!0})}));

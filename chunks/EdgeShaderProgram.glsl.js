@@ -1,12 +1,12 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/AdjustProjectedPosition.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardByCoverage.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardNonSilhouetteEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardShortEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/EdgeUtil.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/UnpackAttributes.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineAmplitude.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineOffset.glsl"],(function(e,i,o,n,s,t,d,a,l,r,c,u){"use strict";const p={position0:0,position1:1,componentIndex:2,packedAttributes:3,variantOffset:4,variantStroke:5,variantExtension:6,normal:7,normalA:7,normalB:8,sideness:9};function P(e){const p=new o.ShaderBuilder,P=p.vertex,g=p.fragment;return e.legacy&&P.uniforms.add("uModel","mat4"),e.antialiasing&&(P.code.add(i.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/AdjustProjectedPosition.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardByCoverage.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardNonSilhouetteEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/DiscardShortEdges.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/EdgeUtil.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/UnpackAttributes.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineAmplitude.glsl","../views/3d/webgl-engine/shaders/sources/edgeRenderer/LineOffset.glsl"],(function(e,i,o,s,n,t,d,a,l,r,c,u,p,P){"use strict";const g={position0:0,position1:1,componentIndex:2,packedAttributes:3,variantOffset:4,variantStroke:5,variantExtension:6,normal:7,normalA:7,normalB:8,sideness:9};function v(e){const g=new o.ShaderBuilder,v=g.vertex,f=g.fragment;return e.legacy&&v.uniforms.add("uModel","mat4"),e.antialiasing&&(v.code.add(i.glsl`
       #define ANTIALIASING 1
-    `),g.code.add(i.glsl`
+    `),f.code.add(i.glsl`
       #define ANTIALIASING 1
-    `)),p.include(s.AdjustProjectedPosition,e),p.include(c.LineAmplitude,e),p.include(l.EdgeUtil,e),p.include(r.UnpackAttributes,e),p.include(u.LineOffset,e),p.include(n.Slice,e),p.include(d.DiscardNonSilhouetteEdges,e),p.include(t.DiscardByCoverage,e),p.include(a.DiscardShortEdges,e),p.varyings.add("vColor","vec4"),p.varyings.add("vRadius","float"),p.varyings.add("vPosition","vec3"),p.varyings.add("vWorldPosition","vec3"),p.varyings.add("vLineLengthPixels","float"),p.varyings.add("vSizeFalloffFactor","float"),P.uniforms.add("uPixelToNDC","vec2"),P.uniforms.add("uNDCToPixel","vec2"),P.uniforms.add("uPixelRatio","float"),p.attributes.add("position0","vec3"),p.attributes.add("position1","vec3"),p.attributes.add("variantOffset","float"),p.attributes.add("variantStroke","float"),p.attributes.add("variantExtension","float"),P.code.add(i.glsl`
+    `)),g.include(d.AdjustProjectedPosition,e),g.include(p.LineAmplitude,e),g.include(c.EdgeUtil,e),g.include(u.UnpackAttributes,e),g.include(P.LineOffset,e),g.include(s.Slice,e),g.include(l.DiscardNonSilhouetteEdges,e),g.include(a.DiscardByCoverage,e),g.include(r.DiscardShortEdges,e),g.varyings.add("vColor","vec4"),g.varyings.add("vRadius","float"),g.varyings.add("vPosition","vec3"),g.varyings.add("vWorldPosition","vec3"),g.varyings.add("vViewPos","vec3"),g.varyings.add("vLineLengthPixels","float"),g.varyings.add("vSizeFalloffFactor","float"),v.uniforms.add("uPixelToNDC","vec2"),v.uniforms.add("uNDCToPixel","vec2"),v.uniforms.add("uPixelRatio","float"),g.attributes.add("position0","vec3"),g.attributes.add("position1","vec3"),g.attributes.add("variantOffset","float"),g.attributes.add("variantStroke","float"),g.attributes.add("variantExtension","float"),v.code.add(i.glsl`
     const float opaqueCutoff = 1.0 / 255.0;
 
     void calculateGeometricOutputs(vec3 viewPosV0, vec3 viewPosV1, vec3 worldPosV0, vec3 worldPosV1, vec3 worldNormal, UnpackedAttributes unpackedAttributes) {
@@ -16,6 +16,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       vWorldPosition = mix(worldPosV0, worldPosV1, sidenessNorm.y).xyz;
 
       vec3 viewPos = mix(viewPosV0, viewPosV1, sidenessNorm.y);
+      vViewPos = viewPos;
 
       vec4 projPosV0 = projFromViewPosition(viewPosV0);
       vec4 projPosV1 = projFromViewPosition(viewPosV1);
@@ -121,7 +122,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       // Specific computation for different edge styles
       calculateStyleOutputs(unpackedAttributes);
     }
-  `),p.fragment.code.add(i.glsl`
+  `),e.multipassTerrainEnabled&&(g.fragment.include(n.ReadLinearDepth),g.include(t.multipassTerrainTest,e)),g.fragment.code.add(i.glsl`
     vec2 lineWithCapsDistance(float radius, vec2 position, float lineLength) {
       float lineOffset = calculateLineOffset();
       float positionX = position.x - lineOffset;
@@ -149,6 +150,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
     }
 
     void main() {
+      ${e.multipassTerrainEnabled?"terrainDepthTest(gl_FragCoord, vViewPos.z);":""}
       float radius = vRadius * calculateLinePressure();
 
       vec2 distance = lineWithCapsDistance(radius, vPosition.xy, vLineLengthPixels);
@@ -162,4 +164,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       gl_FragColor = vec4(vColor.rgb, alpha);
 
     }
-  `),p}var g=Object.freeze({__proto__:null,attributeLocations:p,build:P});e.EdgeShaderProgram=g,e.attributeLocations=p,e.build=P}));
+  `),g}var f=Object.freeze({__proto__:null,attributeLocations:g,build:v});e.EdgeShaderProgram=f,e.attributeLocations=g,e.build=v}));

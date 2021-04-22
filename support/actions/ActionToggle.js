@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./ActionBase"],(function(e,t,r,o,s,i,c,a,l,u,n){"use strict";var p;let d=p=function(t){function r(e){var r;return(r=t.call(this,e)||this).image=null,r.type="toggle",r.value=!1,r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new p({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible,image:this.image,value:this.value})},r}(n);return t.__decorate([i.property()],d.prototype,"image",void 0),t.__decorate([i.property()],d.prototype,"value",void 0),d=p=t.__decorate([c.subclass("esri.support.Action.ActionToggle")],d),d}));

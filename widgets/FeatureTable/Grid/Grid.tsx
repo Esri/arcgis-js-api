@@ -1,18 +1,18 @@
 // esri.core
-import Collection from "esri/core/Collection";
-import { on } from "esri/core/events";
-import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import { isSome } from "esri/core/maybe";
-import * as watchUtils from "esri/core/watchUtils";
+import Collection from "esri/../../core/Collection";
+import { on } from "esri/../../core/events";
+import { HandleOwnerMixin } from "esri/../../core/HandleOwner";
+import { isSome } from "esri/../../core/maybe";
+import * as watchUtils from "esri/../../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../../core/accessorSupport/decorators";
 
 // esri.libs.vaadin-grid
 import "./../../../libs/vaadin-grid/index";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.FeatureTable.Grid
 import Column from "esri/widgets/Column";
@@ -34,8 +34,8 @@ import { SortOrder, Store, StoreItem } from "esri/widgets/support/interfaces";
 import FeatureTableMessages from "esri/t9n/FeatureTable";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { isRTL, messageBundle, renderable, tsx } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { isRTL, messageBundle, tsx } from "esri/../support/widget";
 
 interface VisibleElements {
   selectionColumn?: boolean;
@@ -73,6 +73,8 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
 
   initialize(): void {
     this.handles.add([
+      // Ensure current ColumnElements aren't using destroyed Column(s)
+      this.columns.on("change", () => this._syncColumnRenderers()),
       // Vaadin-grid must be provided an accurate count/size
       watchUtils.watch(this, "viewModel.size", () => this._updateGridSize()),
       // Vaadin-grid's cache must be refreshed when the store is reloaded
@@ -80,8 +82,24 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
         if (newValue === "ready" && oldValue === "loaded") {
           this.refreshCache();
         }
+      }),
+      // #34480 - hide column menus after scroll
+      // Inspired by: https://vaadin.com/forum/thread/18388019/vaadin-grid-detect-scroll-listener
+      watchUtils.on(this, "_grid.$.table", "scroll", () => {
+        this.viewModel?.closeColumnMenus();
       })
     ]);
+  }
+
+  destroy(): void {
+    this.handles.removeAll();
+    this.resetColumns();
+    this.columns?.destroy();
+  }
+
+  resetColumns(): void {
+    this.columns.items.forEach((c) => c.destroy());
+    this.columns.removeAll();
   }
 
   //--------------------------------------------------------------------------
@@ -95,9 +113,12 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
 
   private _headerStyles = `display: flex; font-weight: 400;`;
 
-  private _hostStyles = `font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em;`;
+  private _hostStyles = `font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em; background-color: inherit; color: inherit;`;
 
-  private _rowHoverStyles = `background: #e2f1fb;`;
+  // Connected to calcite variable(s) in widget stylesheet
+  private _rowHoverStyles = `background-color: var(--lumo-row-background-hover);`;
+
+  private _columnElements: ColumnElement[] = [];
 
   //--------------------------------------------------------------------------
   //
@@ -171,7 +192,6 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/FeatureTable/t9n/FeatureTable")
   messages: FeatureTableMessages = null;
 
@@ -198,7 +218,6 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
   @property({
     readOnly: true
   })
-  @renderable()
   readonly selectedItems: Collection<StoreItem> = new Collection();
 
   //----------------------------------
@@ -237,17 +256,6 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
    * @autocast
    */
   @property()
-  @renderable([
-    "viewModel.cellClassNameGenerator",
-    "viewModel.columnReorderingEnabled",
-    "viewModel.columns",
-    "viewModel.dataProvider",
-    "viewModel.pageSize",
-    "viewModel.rowDetailsRenderer",
-    "viewModel.size",
-    "viewModel.state",
-    "viewModel.store"
-  ])
   viewModel: GridViewModel = new GridViewModel();
 
   //----------------------------------
@@ -265,7 +273,6 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
    *
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -370,8 +377,8 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
       "text-align": textAlign,
       "width": computedWidth,
       "bind": this,
-      "afterCreate": this._afterColumnCreateOrUpdate,
-      "afterUpdate": this._afterColumnCreateOrUpdate
+      "afterCreate": this._afterColumnCreate,
+      "afterRemoved": this._afterColumnRemoved
     };
   }
 
@@ -381,7 +388,7 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
   }
 
   clearSort(): void {
-    this.columns.forEach((c) => (c.direction = null));
+    this.columns?.forEach((c) => (c.direction = null));
 
     if (this._grid) {
       this._grid._sorters = [];
@@ -428,10 +435,14 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
 
   // Server-side refresh
   async refresh(): Promise<void> {
+    // Selected rows may have been deleted
     this._clearSelection();
-    this.store?.reset();
-    await this.store?.load();
-    this.refreshCache();
+    // Triggers watcher via 'store.state' which empties local VaadinGrid cache
+    // This causes a new 'dataProvider' call which also loads the store
+    await this.store?.reset();
+    // Prevent issue with vaadin scrolling to
+    // the fourth row after a refresh
+    this.scrollToTop();
   }
 
   // Client-side refresh
@@ -459,6 +470,14 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
   // Name must remain as such
   sort({ path, direction }: SortOrder): void {
     this.viewModel?.sortColumn(path, direction);
+  }
+
+  scrollToIndex(index: number): void {
+    this._grid?.scrollToIndex(index);
+  }
+
+  scrollToTop(): void {
+    this._grid?.scrollToIndex(0);
   }
 
   //--------------------------------------------------------------------------
@@ -489,8 +508,22 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
     }
   }
 
-  private _afterColumnCreateOrUpdate(element: ColumnElement): void {
-    this._syncColumnRenderers(element);
+  private _afterColumnCreate(element: ColumnElement): void {
+    this._applyRenderersToColumnElement(element);
+    this._columnElements.push(element);
+  }
+
+  private _afterColumnRemoved(element: ColumnElement): void {
+    const index = this._columnElements.indexOf(element, 0);
+
+    if (index > -1) {
+      this._columnElements.splice(index, 1);
+    }
+  }
+
+  // Causes a re-render of every cell in the table
+  private _syncColumnRenderers(): void {
+    this._columnElements.forEach((element) => this._applyRenderersToColumnElement(element));
   }
 
   private _appendStyles(): void {
@@ -587,7 +620,7 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
     this._grid && this.selectedItems.addMany(this._grid.selectedItems as StoreItem[]);
   }
 
-  private _syncColumnRenderers(element: ColumnElement): void {
+  private _applyRenderersToColumnElement(element: ColumnElement): void {
     const path = element.getAttribute("path");
     const col = this.viewModel.findColumn(path);
 

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./ReadShadowMap.glsl","./PhysicallyBasedRendering.glsl","./EvaluateAmbientOcclusion.glsl","./EvaluateAmbientLighting.glsl","./EvaluateMainLighting.glsl"],(function(e,i,t,a,n,o,l,r){"use strict";e.EvaluateSceneLighting=function(e,c){const d=e.fragment;e.include(r.EvaluateMainLighting),e.include(o.EvaluateAmbientOcclusion,c),0!==c.pbrMode&&e.include(n.PhysicallyBasedRendering,c),e.include(l.EvaluateAmbientLighting,c),c.receiveShadows&&e.include(a.ReadShadowMap,c),d.uniforms.add("lightingGlobalFactor","float"),d.uniforms.add("ambientBoostFactor","float"),e.include(t.PiUtils),d.code.add(i.glsl`
+define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./ReadShadowMap.glsl","./PhysicallyBasedRendering.glsl","./EvaluateAmbientOcclusion.glsl","./EvaluateAmbientLighting.glsl","./EvaluateMainLighting.glsl"],(function(e,i,t,a,n,o,l,r){"use strict";function c(e,c){const d=e.fragment;e.include(r.EvaluateMainLighting),e.include(o.EvaluateAmbientOcclusion,c),0!==c.pbrMode&&e.include(n.PhysicallyBasedRendering,c),e.include(l.EvaluateAmbientLighting,c),c.receiveShadows&&e.include(a.ReadShadowMap,c),d.uniforms.add("lightingGlobalFactor","float"),d.uniforms.add("ambientBoostFactor","float"),e.include(t.PiUtils),d.code.add(i.glsl`
     const float GAMMA_SRGB = 2.1;
     const float INV_GAMMA_SRGB = 0.4761904;
     ${0===c.pbrMode?"":"const vec3 GROUND_REFLECTANCE = vec3(0.2);"}
@@ -147,4 +147,4 @@ define(["exports","../../shaderModules/interfaces","./PiUtils.glsl","./ReadShado
         ${2===c.pbrMode?i.glsl`vec3 outColor = pow(max(vec3(0.0), outColorLinear - 0.005 * inputs.averageAmbientRadiance), vec3(INV_GAMMA_SRGB));`:i.glsl`vec3 outColor = pow(blackLevelSoftCompression(outColorLinear, inputs), vec3(INV_GAMMA_SRGB));`}
         return outColor;
       }
-    `)))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)))}e.EvaluateSceneLighting=c,Object.defineProperty(e,"__esModule",{value:!0})}));

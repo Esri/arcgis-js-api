@@ -3,7 +3,7 @@
  * to the user's current location. The view rotates according to the direction
  * where the tracked device is heading towards. By default the widget looks like the following:
  *
- * ![locate-button](../../assets/img/apiref/widgets/widgets-locate.png)
+ * ![locate-button](../assets/img/apiref/widgets/widgets-locate.png)
  *
  * ::: esri-md class="panel trailer-1"
  * The Locate widget is not supported on insecure origins.
@@ -64,8 +64,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -79,7 +79,7 @@ import LocateMessages from "esri/widgets/Locate/t9n/Locate";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-locate esri-widget--button esri-widget",
@@ -259,7 +259,6 @@ class Locate extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Locate/t9n/Locate")
   messages: LocateMessages = null;
 
@@ -276,9 +275,26 @@ class Locate extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
+
+  //----------------------------------
+  //  popupEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether to display the {@link module:esri/widgets/Popup} of the result graphic from the
+   * {@link module:esri/widgets/Locate/LocateViewModel#locate locate()} method.
+   *
+   * @name popupEnabled
+   * @instance
+   * @type {boolean}
+   * @default true
+   * @see {@link module:esri/widgets/Search#popupEnabled Search.popupEnabled}
+   * @since 4.19
+   */
+  @aliasOf("viewModel.popupEnabled")
+  popupEnabled: boolean = null;
 
   //----------------------------------
   //  scale
@@ -354,7 +370,7 @@ class Locate extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -374,7 +390,6 @@ class Locate extends Widget {
   @property({
     type: LocateViewModel
   })
-  @renderable("viewModel.state")
   @vmEvent(["locate", "locate-error"])
   viewModel = new LocateViewModel();
 

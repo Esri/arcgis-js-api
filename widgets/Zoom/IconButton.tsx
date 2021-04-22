@@ -1,12 +1,12 @@
 // esri.core.accessorSupport
-import { property, subclass } from "esri/core/accessorSupport/decorators";
+import { property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
-import { accessibleHandler, renderable, tsx } from "esri/support/widget";
+import { accessibleHandler, tsx } from "esri/support/widget";
 
 const CSS = {
   button: "esri-widget--button esri-widget",
@@ -36,7 +36,6 @@ class IconButton extends Widget {
   //----------------------------------
 
   @property()
-  @renderable()
   enabled = true;
 
   //----------------------------------
@@ -44,7 +43,6 @@ class IconButton extends Widget {
   //----------------------------------
 
   @property()
-  @renderable()
   iconClass = "";
 
   //----------------------------------
@@ -52,7 +50,6 @@ class IconButton extends Widget {
   //----------------------------------
 
   @property()
-  @renderable()
   title = "";
 
   //--------------------------------------------------------------------------

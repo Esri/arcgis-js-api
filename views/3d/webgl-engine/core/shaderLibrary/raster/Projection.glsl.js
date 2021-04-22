@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(r,e){"use strict";r.Projection=function(r){r.fragment.uniforms.add("u_transformGrid","sampler2D"),r.fragment.uniforms.add("u_transformSpacing","vec2"),r.fragment.uniforms.add("u_transformGridSize","vec2"),r.fragment.uniforms.add("u_targetImageSize","vec2"),r.fragment.code.add(e.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(r,e){"use strict";function o(r){r.fragment.uniforms.add("u_transformGrid","sampler2D"),r.fragment.uniforms.add("u_transformSpacing","vec2"),r.fragment.uniforms.add("u_transformGridSize","vec2"),r.fragment.uniforms.add("u_targetImageSize","vec2"),r.fragment.code.add(e.glsl`
     vec2 projectPixelLocation(vec2 coords) {
       // pixel index in row/column, corresponds to upperleft corner, e.g. [100, 20]
       vec2 index_image = floor(coords * u_targetImageSize);
@@ -32,4 +32,4 @@ define(["exports","../../shaderModules/interfaces"],(function(r,e){"use strict";
       }
       return srcLocation;;
     }
-  `)},Object.defineProperty(r,"__esModule",{value:!0})}));
+  `)}r.Projection=o,Object.defineProperty(r,"__esModule",{value:!0})}));

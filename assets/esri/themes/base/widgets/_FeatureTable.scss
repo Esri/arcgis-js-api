@@ -32,16 +32,19 @@
 
   .esri-feature-table__menu {
     height: 40px;
+    order: 3;
     padding: 4px;
     width: 40px;
 
     .esri-button-menu {
       bottom: auto;
+      position: relative;
     }
   }
 
   .esri-feature-table__header {
     display: flex;
+    flex-direction: row;
     font-weight: $font-weight;
     height: 40px;
     line-height: 40px;
@@ -51,12 +54,14 @@
 
   .esri-feature-table__title {
     flex-grow: 1;
+    order: 2;
   }
 
   .esri-feature-table__loader-container {
     height: 40px;
-    width: 32px;
     margin: 0 8px;
+    order: 1;
+    width: 32px;
   }
 
   .esri-feature-table__loader {

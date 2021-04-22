@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl"],(function(e,a,r,t,o,n){"use strict";function i(e){const i=new r.ShaderBuilder;return i.include(o.ScreenSpacePass),1===e.output&&(i.include(t.ReadLinearDepth),i.fragment.code.add(a.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl"],(function(e,a,r,t,o,n){"use strict";function i(e){const i=new r.ShaderBuilder;return i.include(o.ScreenSpacePass),1===e.output&&(i.fragment.include(t.ReadLinearDepth),i.fragment.code.add(a.glsl`
       #ifndef RADIUS
         #define RADIUS `+e.radius+"\n      #endif\n    "),i.fragment.uniforms.add("normalMap","sampler2D").add("depthMap","sampler2D").add("tex","sampler2D").add("blurSize","vec2").add("g_BlurFalloff","float").add("projScale","float").add("nearFar","vec2").add("zScale","vec2"),i.fragment.code.add(a.glsl`
       float blurFunction(vec2 uv, float r, float center_d, inout float w_total, float sharpness) {
@@ -33,7 +33,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
         gl_FragColor = vec4(b/w_total);
       }
-    `)),0===e.output&&(i.include(t.ReadLinearDepth),i.include(n.CameraSpace),i.fragment.uniforms.add("projMatrixInv","mat4").add("normalMap","sampler2D").add("depthMap","sampler2D").add("intensity","float").add("projScale","float").add("radius","float").add("nearFar","vec2").add("screenDimensions","vec2").add("rnmScale","vec2").add("rnm","sampler2D"),i.fragment.code.add(a.glsl`
+    `)),0===e.output&&(i.fragment.include(t.ReadLinearDepth),i.include(n.CameraSpace),i.fragment.uniforms.add("projMatrixInv","mat4").add("normalMap","sampler2D").add("depthMap","sampler2D").add("intensity","float").add("projScale","float").add("radius","float").add("nearFar","vec2").add("screenDimensions","vec2").add("rnmScale","vec2").add("rnm","sampler2D"),i.fragment.code.add(a.glsl`
       #ifndef SAMPLES
         #define SAMPLES `+e.samples+"\n      #endif\n      uniform vec3 pSphere[SAMPLES]; //tap position\n    "),i.fragment.code.add(a.glsl`
       float fallOffFunction(float vv, float vn, float bias) {

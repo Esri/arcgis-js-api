@@ -1,25 +1,60 @@
 /**
- * The ElevationProfile widget is used to generate and display an elevation profile from an input path.
- * The input path can be set interactively by drawing a single or multi-segment line, or by selecting a line feature.
- * Alternatively the widget allows to set an input path programmatically on creation, or at runtime.
+ * The ElevationProfile widget is used to generate and display an elevation profile from an [input line graphic](#input).
+ * The input graphic can be set interactively by drawing a single or multi-segment line, or by selecting a line feature in the view.
+ * Alternatively the widget allows to set an input graphic programmatically on creation, or at runtime, by setting the
+ * [input](#input) property.
  *
- * [![elevation-profile](../../assets/img/apiref/widgets/elevation-profile/elevation-profile-city.png)](../sample-code/widgets-elevation-profile/index.html)
+ * [![elevation-profile](../assets/img/apiref/widgets/elevation-profile/elevation-profile-city.png)](../sample-code/widgets-elevation-profile/index.html)
  * _ElevationProfile widget used in a city scene, displaying ground and building profiles. See [Sample - ElevationProfile widget](../sample-code/widgets-elevation-profile/index.html)_
  *
- * Once all profiles are refined to their maximum resolution, the corresponding 3D profile lines appear in the scene view (no lines in map view),
- * and profile statistics display in the widget. Note that certain statistics fields display only when a single profile is active.
+ * The widget can visualize multiple profile lines, depending on the environment (2D versus 3D) and elevation source data:
+ *
+ * * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineGround} can be used in both {@link module:esri/views/MapView}
+ * and {@link module:esri/views/SceneView}. In this case, the elevation is sampled directly from
+ * {@link module:esri/Map#ground Map.ground}. Whether your map is displayed in 2D or 3D, the ground property needs to be set on the map.
+ *
+ * * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineInput} samples elevation data from the geometry of
+ * the input graphic. It is typically used with input line data with z values. If the input line data doesn't have z values, a profile line
+ * is also computed if the line is displayed with a non-draped elevation mode. An elevation offset can also be applied.
+ * Currently in 2D z values are not fetched from feature based layers, so in a {@link module:esri/views/MapView}
+ * this profile line can only be used with client-side graphics with z values.
+ *
+ * * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineQuery} samples elevation data from the elevation source set in the
+ * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineQuery#source source} property. The elevation source can be an
+ * {@link module:esri/layers/ElevationLayer} or any object with a method called `queryElevation`, with the same signature as
+ * {@link mdoule:esri/layers/ElevationLayer#queryElevation queryElevation}.
+ *
+ * * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineView} is available only in a
+ * {@link module:esri/views/SceneView} and it displays the elevation sampled directly from the view along the input graphic.
+ * All volumetric objects in a {@link module:esri/views/SceneView} contribute to the resulting profile.
+ *
+ * You can choose to display one or several profile lines in the chart, by setting them in the [profiles](#profiles) property.
+ *
+ * Once all profiles are refined to their maximum resolution, the corresponding 3D profile lines appear in the
+ * {@link module:esri/views/SceneView} (currently no lines are displayed in a {@link module:esri/views/MapView}),
+ * and {@link module:esri/widgets/ElevationProfile/ElevationProfileLine~ElevationProfileStatistics profile statistics} display in the legend for each profile line.
  * Hovering on the chart shows an overlayed tooltip with elevation values of all profiles,
  * and displays colored dot markers in the 3D view on the matching positions.
  *
- * Checkboxes in the legend allow hiding individual profiles.
+ * Checkboxes in the legend allow to hide individual profiles.
  * Chart units can be set via the settings menu to metric, imperial or a specific unit.
  * Click-and-drag on the chart zooms in to a specific part of the profile chart. When zoomed in, click on the minus button to reset zoom.
  *
- * ![elevation-profile-draw](../../assets/img/apiref/widgets/elevation-profile/elevation-profile-draw.gif)
+ * ![elevation-profile-draw](../assets/img/apiref/widgets/elevation-profile/elevation-profile-draw.gif)
  * _Drawing a path to get a ground profile._
  *
- * ![elevation-profile-zline](../../assets/img/apiref/widgets/elevation-profile/elevation-profile-zline.png)
+ * ![elevation-profile-zline](../assets/img/apiref/widgets/elevation-profile/elevation-profile-zline.png)
  * _Profile generated from a line feature with z-values shows a paraglide track above ground._
+ *
+ * ::: esri-md class="panel trailer-1"
+ * **Known Limitations**
+ *
+ * * In 3D {@link module:esri/widgets/ElevationProfile/ElevationProfileLineInput} is not taking into consideration
+ * the `featureExpression` set on the {@link module:esri/layers/GraphicsLayer#elevationInfo elevation mode} of the layer.
+ * * In 2D z values are not fetched from feature based layers. Therefore,
+ * {@link module:esri/widgets/ElevationProfile/ElevationProfileLineInput} can only be used with client-side graphics with z values
+ * in a {@link module:esri/views/MapView}.
+ * :::
  *
  * @example
  * const elevationProfile = new ElevationProfile({
@@ -27,6 +62,40 @@
  * });
  * // adds the ElevationProfile to the top right corner of the view
  * view.ui.add(elevationProfile, "top-right");
+ *
+ * @example
+ * // elevation profile with all the line profiles
+ * const elevationProfile = new ElevationProfile({
+ *   view: view,
+ *   profiles: [{
+ *     // displays elevation values from Map.ground
+ *     type: "ground", //autocasts as new ElevationProfileLineGround()
+ *     color: "#61d4a4",
+ *     title: "Ground elevation"
+ *   }, {
+ *     // displays elevation values from the input line graphic
+ *     type: "input", //autocasts as new ElevationProfileLineInput()
+ *     color: "#f57e42",
+ *     title: "Line elevation"
+ *   }, {
+ *     // displays elevation values from a SceneView
+ *     type: "view", //autocasts as new ElevationProfileLineView()
+ *     color: "#8f61d4",
+ *     title: "View elevation"
+ *     // by default ground and all layers are used to compute elevation, but
+ *     // you can define which elements should be included/excluded from the computation
+ *     exclude: [map.ground]
+ *   }, {
+ *     // displays elevation values from a custom source
+ *     type: "query",
+ *     source: new ElevationLayer({
+ *       url: "https://elevation3d.arcgis.com/arcgis/rest/../Terrain3D/ImageServer"
+ *     }),
+ *     color: "#d46189",
+ *     title: "Custom elevation"
+ *   }]
+ * });
+ * view.ui.add(elevationProfile, "bottom-right");
  *
  * @module esri/widgets/ElevationProfile
  * @since 4.18
@@ -47,10 +116,11 @@ import Graphic from "esri/Graphic";
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { Maybe, isSome, isNone } from "esri/core/maybe";
-import * as promiseUtils from "esri/core/promiseUtils";
+import { Maybe, isSome, isNone, destroyMaybe, applySome } from "esri/core/maybe";
+import { memoize } from "esri/core/memoize";
+import { createTask, Task } from "esri/core/promiseUtils";
 import { SystemOrLengthUnit } from "esri/core/unitUtils";
-import * as watchUtils from "esri/core/watchUtils";
+import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { property, subclass, aliasOf } from "esri/core/accessorSupport/decorators";
@@ -63,14 +133,13 @@ import UnitsMessages from "esri/core/t9n/Units";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
 
 // esri.widgets.ElevationProfile
-import ChartLegend from "esri/widgets/ElevationProfile/ChartLegend";
 import { CSS } from "esri/widgets/ElevationProfile/css";
 import {
   ElevationProfileLineArrayOrCollection,
@@ -78,16 +147,25 @@ import {
 } from "esri/widgets/ElevationProfile/elevationProfileLineTypes";
 import ElevationProfileViewModel from "esri/widgets/ElevationProfile/ElevationProfileViewModel";
 import ElevationProfileVisibleElements from "esri/widgets/ElevationProfile/ElevationProfileVisibleElements";
-import { ChartData } from "esri/widgets/ElevationProfile/interfaces";
-import { SettingsButton } from "esri/widgets/ElevationProfile/SettingsButton";
-import { Statistics } from "esri/widgets/ElevationProfile/Statistics";
+import { ChartData, IElevationProfileLine } from "esri/widgets/ElevationProfile/interfaces";
+
+// esri.widgets.ElevationProfile.components
+import {
+  Legend,
+  ConstructionParameters as LegendProps
+} from "esri/widgets/ElevationProfile/components/Legend";
+import {
+  SettingsButton,
+  ConstructionParameters as SettingsButtonProps
+} from "esri/widgets/ElevationProfile/components/SettingsButton";
 
 // esri.widgets.ElevationProfile.support
 import { Chart, createChart } from "esri/widgets/ElevationProfile/support/chartUtils";
 import {
   PORTRAIT_MODE_PIXEL_BREAKPOINT,
   ElevationProfileState,
-  ElevationProfileErrorState
+  ElevationProfileErrorState,
+  LARGE_CHART_SAMPLES
 } from "esri/widgets/ElevationProfile/support/constants";
 
 // esri.widgets.ElevationProfile.t9n
@@ -95,10 +173,13 @@ import ElevationProfileMessages from "esri/widgets/ElevationProfile/t9n/Elevatio
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, renderable, messageBundle } from "esri/widgets/support/widget";
+import { tsx, messageBundle } from "esri/widgets/support/widget";
 
-interface ConstructionParameters {
-  view: MapView | SceneView;
+interface RequiredConstructionParameters {
+  view: Maybe<MapView | ISceneView>;
+}
+
+interface OptionalConstructionParameters {
   viewModel: Castable<ElevationProfileViewModel>;
   input: Maybe<Graphic>;
   profiles: ElevationProfileLineArrayOrCollection;
@@ -108,27 +189,49 @@ interface ConstructionParameters {
   visibleElements: Partial<ElevationProfileVisibleElements>;
 }
 
+type ConstructionParameters = RequiredConstructionParameters &
+  Partial<OptionalConstructionParameters>;
+
 interface ChartUpdateParams {
   chart: Maybe<Chart>;
   stationary: boolean;
   data: Maybe<ChartData>;
-  elevationUnitsPerPixel: Maybe<number>;
   messages: UnitsMessages & ElevationProfileMessages;
 }
 
 const enum Action {
-  Sketch,
-  SketchCancel,
-  SketchDone,
-  SketchDoneDisabled,
-  Select,
-  SelectCancel
+  Sketch = "sketch",
+  SketchCancel = "sketch-cancel",
+  SketchDone = "sketch-done",
+  Select = "select",
+  SelectCancel = "select-cancel"
 }
 
-const MAIN_ACTIONS: Action[] = [Action.Select, Action.Sketch];
+interface ActionConfig {
+  type: Action;
+  disabled?: boolean;
+}
+
+const MAIN_ACTIONS: ActionConfig[] = [{ type: Action.Select }, { type: Action.Sketch }];
+
+const ERROR_MESSAGES: Record<
+  ElevationProfileErrorState,
+  keyof ElevationProfileMessages["errors"] | null
+> = {
+  [ElevationProfileErrorState.None]: null,
+  [ElevationProfileErrorState.NoValidInput]: "noProfile",
+  [ElevationProfileErrorState.NoVisibleProfiles]: "noProfile",
+  [ElevationProfileErrorState.RefinedButNoChartData]: "noProfile",
+  [ElevationProfileErrorState.TooComplex]: "tooComplex",
+  [ElevationProfileErrorState.UnknownError]: "unknown",
+  [ElevationProfileErrorState.InvalidGeometry]: "invalidGeometry",
+  [ElevationProfileErrorState.InvalidElevationInfo]: "invalidElevationInfo"
+};
 
 @subclass("esri.widgets.ElevationProfile")
-class ElevationProfile extends Widget {
+class ElevationProfile
+  extends Widget
+  implements RequiredConstructionParameters, OptionalConstructionParameters {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -142,21 +245,34 @@ class ElevationProfile extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(
-    params: Partial<ConstructionParameters> & Pick<ConstructionParameters, "view">,
-    parentNode?: string | Element
-  ) {
+  constructor(params: ConstructionParameters, parentNode?: string | Element) {
     super(params, parentNode);
 
-    if (!params.viewModel) {
-      this._defaultViewModel = new ElevationProfileViewModel({ view: params.view });
+    if (!params?.viewModel) {
+      this._defaultViewModel = new ElevationProfileViewModel({ view: params?.view });
       this.viewModel = this._defaultViewModel;
     }
   }
 
+  initialize(): void {
+    this._settingsButton = new SettingsButton(this._settingsButtonProps);
+    this.own(
+      this.watch("_detailsProps", (props: LegendProps) => {
+        this._legend.set(props);
+      })
+    );
+
+    this._legend = new Legend(this._detailsProps);
+    this.own(
+      this.watch("_settingsButtonProps", (props: SettingsButtonProps) => {
+        this._settingsButton.set(props);
+      })
+    );
+  }
+
   postInitialize(): void {
     this.own([
-      watchUtils.init(this, "_chartContainer", () => {
+      init(this, "_chartContainer", () => {
         this._destroyChart(); // Make sure we don't have an old chart.
 
         const container = this._chartContainer;
@@ -164,16 +280,9 @@ class ElevationProfile extends Widget {
           return;
         }
 
-        this._chartInitTask = promiseUtils.createTask((signal) =>
-          this._initializeChart(container, signal)
-        );
+        this._chartInitTask = createTask((signal) => this._initializeChart(container, signal));
       }),
-      watchUtils.init(this, "viewModel", (vm) => {
-        this._settingsButton.viewModel = vm;
-        this._statisticsWidget.viewModel = vm;
-        this._legend.viewModel = vm;
-      }),
-      watchUtils.init(this, "_chartUpdateParams", () => this._updateChart())
+      init(this, "_chartUpdateParams", () => this._updateChart())
     ]);
   }
 
@@ -184,14 +293,8 @@ class ElevationProfile extends Widget {
       this._defaultViewModel.destroy();
     }
 
-    this._statisticsWidget.destroy();
-    this._statisticsWidget = null;
-
-    this._legend.destroy();
-    this._legend = null;
-
-    this._settingsButton.destroy();
-    this._settingsButton = null;
+    this._legend = destroyMaybe(this._legend);
+    this._settingsButton = destroyMaybe(this._settingsButton);
 
     if (isSome(this._resizeObserver)) {
       this._resizeObserver.disconnect();
@@ -220,7 +323,6 @@ class ElevationProfile extends Widget {
    * @autocast
    */
   @property({ type: ElevationProfileViewModel })
-  @renderable(["chartData", "progress", "statistics", "canStopCreating"])
   viewModel: ElevationProfileViewModel = null;
 
   //------------------------
@@ -235,15 +337,14 @@ class ElevationProfile extends Widget {
    * @type {module:esri/views/SceneView | module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: Maybe<MapView | ISceneView> = null;
 
   //------------------------
   // input
   //------------------------
 
   /**
-   * The input path along which elevation will be queried in order to generate an elevation profile.
+   * The input line graphic along which elevation will be queried in order to generate an elevation profile.
    *
    * Typically not set when creating the widget. In this case the widget starts empty,
    * and waits for the user to either draw a new profile or generate a profile from selecting a line feature.
@@ -259,7 +360,6 @@ class ElevationProfile extends Widget {
    * @autocast
    */
   @aliasOf("viewModel.input")
-  @renderable()
   input: Maybe<Graphic> = null;
 
   //------------------------
@@ -271,10 +371,11 @@ class ElevationProfile extends Widget {
    * chart. See the different profile line types for details on usage and behavior.
    *
    * Once an elevation profile is generated, each line will contain the raw data used to
-   * generate the chart and statistics.
+   * generate the chart and {@link module:esri/widgets/ElevationProfile/ElevationProfileLine~ElevationProfileStatistics profile statistics}.
    * The order of the profiles within the collection determines the drawing order on the chart.
    *
-   * In a {@link module:esri/views/MapView} `ground` is the only supported profile line type.
+   * In a {@link module:esri/views/MapView} {@link module:esri/widgets/ElevationProfile/ElevationProfileLineView}
+   * is not supported.
    *
    * @name profiles
    * @instance
@@ -289,18 +390,22 @@ class ElevationProfile extends Widget {
    * const elevationProfile = new ElevationProfile({
    *   view: view,
    *   profiles: [{
+   *     // displays elevation values from Map.ground
    *     type: "ground", //autocasts as new ElevationProfileLineGround()
    *   }, {
-   *     type: "input",  //autocasts as new ElevationProfileLineInput()
+   *     // displays elevation values from the input line graphic
+   *     type: "input", //autocasts as new ElevationProfileLineInput()
    *   }, {
-   *     type: "query",  //autocasts as new ElevationProfileLineQuery()
+   *     // displays elevation values from an elevation source
+   *     type: "query", //autocasts as new ElevationProfileLineQuery()
+   *     source: elevationLayer
    *   }, {
-   *     type: "view"    //autocasts as new ElevationProfileLineView()
+   *     // displays elevation values from a SceneView
+   *     type: "view" //autocasts as new ElevationProfileLineView()
    *   }]
    * });
    */
   @aliasOf("viewModel.profiles")
-  @renderable()
   profiles: Collection<ElevationProfileLine> = null;
 
   //------------------------
@@ -315,7 +420,6 @@ class ElevationProfile extends Widget {
    * @type {module:esri/core/units~SystemOrLengthUnit[]}
    */
   @aliasOf("viewModel.unitOptions")
-  @renderable()
   unitOptions: SystemOrLengthUnit[] = [];
 
   //------------------------
@@ -329,8 +433,8 @@ class ElevationProfile extends Widget {
    * @instance
    * @type {module:esri/core/units~SystemOrLengthUnit}
    */
+
   @aliasOf("viewModel.unit")
-  @renderable()
   unit: SystemOrLengthUnit = "metric";
 
   /**
@@ -344,7 +448,6 @@ class ElevationProfile extends Widget {
    * @default 100000
    */
   @aliasOf("viewModel.geodesicDistanceThreshold")
-  @renderable()
   geodesicDistanceThreshold: number = 100_000;
 
   //------------------------
@@ -354,13 +457,14 @@ class ElevationProfile extends Widget {
   /**
    * The visible elements that are displayed within the widget.
    * This provides the ability to turn individual elements of the widget's display on/off.
-   * The visual elements in this widget are statistics, legend, sketchButton, and selectButton.
+   * The visual elements in this widget are the legend, chart, settingsButton, sketchButton, and selectButton.
    * These are all set to true by default.
    *
    * @typedef module:esri/widgets/ElevationProfile~VisibleElements
    *
-   * @property {boolean} [statistics=true] When set to `false`, the statistics are not displayed.
-   * @property {boolean} [legend=true] When set to `false`, chart legend is not displayed.
+   * @property {boolean} [legend=true] When set to `false`, the legend (which includes statistics) is not displayed.
+   * @property {boolean} [chart=true] When set to `false`, the chart is not displayed.
+   * @property {boolean} [settingsButton=true] When set to `false`, the button used to open the settings popup is not displayed.
    * @property {boolean} [sketchButton=true] When set to `false`, the button used to start drawing/sketchinng is not displayed.
    * @property {boolean} [selectButton=true] When set to `false`, the button used to select a path is not displayed.
    */
@@ -373,14 +477,17 @@ class ElevationProfile extends Widget {
    * @type {module:esri/widgets/ElevationProfile~VisibleElements}
    * @example
    * elevationProfile.visibleElements = {
-   *    statistics: true,
    *    legend: true,
+   *    chart: true,
+   *    settingsButton: true,
    *    sketchButton: true,
    *    selectButton: true
    * }
    */
-  @property({ type: ElevationProfileVisibleElements })
-  @renderable()
+  @property({
+    type: ElevationProfileVisibleElements,
+    nonNullable: true
+  })
   visibleElements: Partial<ElevationProfileVisibleElements> = new ElevationProfileVisibleElements();
 
   //------------------------
@@ -395,7 +502,6 @@ class ElevationProfile extends Widget {
    * @type {string}
    */
   @property()
-  @renderable()
   iconClass = CSS.widgetIcon;
 
   //------------------------
@@ -410,8 +516,22 @@ class ElevationProfile extends Widget {
    * @type {string}
    */
   @aliasOf("messages.widgetLabel", { overridable: true })
-  @renderable()
   label: string = undefined;
+
+  //----------------------------------
+  //  visible
+  //----------------------------------
+
+  /**
+   * Indicates whether the widget is visible.
+   *
+   * @name visible
+   * @instance
+   * @type {boolean}
+   * @ignore
+   */
+  @aliasOf("viewModel.visible")
+  visible: boolean;
 
   //----------------------------------------------------------------------------
   //
@@ -433,7 +553,6 @@ class ElevationProfile extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/ElevationProfile/t9n/ElevationProfile")
   messages: ElevationProfileMessages = null;
 
@@ -449,7 +568,6 @@ class ElevationProfile extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -465,7 +583,6 @@ class ElevationProfile extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -483,17 +600,21 @@ class ElevationProfile extends Widget {
   @property()
   private _chart: Maybe<Chart> = null;
 
-  private _settingsButton = new SettingsButton({ viewModel: this.viewModel });
-  private _statisticsWidget = new Statistics({ viewModel: this.viewModel });
-  private _legend = new ChartLegend({ viewModel: this.viewModel });
+  @property()
+  private _settingsButton: SettingsButton;
+
+  @property()
+  private _legend: Legend;
 
   private _resizeObserver: Maybe<ResizeObserver> = null;
 
   @property()
-  @renderable()
   private _portrait: boolean = false;
 
-  private _chartInitTask: Maybe<promiseUtils.Task<any>> = null;
+  @property()
+  private _zoomOutButtonVisible: boolean = false;
+
+  private _chartInitTask: Maybe<Task<any>> = null;
 
   /**
    * Property which collects all the parameters needed to update the chart. This
@@ -504,14 +625,77 @@ class ElevationProfile extends Widget {
    */
   @property()
   private get _chartUpdateParams(): ChartUpdateParams {
-    return {
-      chart: this._chart,
-      data: this.viewModel.chartData,
-      stationary: this.view.stationary,
-      elevationUnitsPerPixel: this.viewModel.elevationUnitsPerPixel,
-      messages: { ...this.messagesUnits, ...this.messages }
-    };
+    const view = this.view;
+
+    return this._getChartUpdateParamsMemoized(
+      this._chart,
+      this.viewModel.chartData,
+      isSome(view) ? view.stationary : true,
+      this._chartMessages
+    );
   }
+
+  private _getChartUpdateParamsMemoized = memoize(
+    (
+      chart: ChartUpdateParams["chart"],
+      data: ChartUpdateParams["data"],
+      stationary: ChartUpdateParams["stationary"],
+      messages: ChartUpdateParams["messages"]
+    ): ChartUpdateParams => ({
+      chart,
+      data,
+      stationary,
+      messages
+    })
+  );
+
+  @property()
+  private get _chartMessages(): UnitsMessages & ElevationProfileMessages {
+    return { ...this.messagesUnits, ...this.messages };
+  }
+
+  @property()
+  private get _detailsProps(): LegendProps {
+    return this._getDetailsPropsMemoized(
+      this.viewModel.effectiveUnits,
+      // Read from a compute property so we always return the same array unless
+      // the collection changes. Otherwise we trigger unnecessary rebuilds of
+      // the DetailsItem widgets.
+      this._profilesArray
+    );
+  }
+
+  private _getDetailsPropsMemoized = memoize(
+    (
+      effectiveUnits: LegendProps["effectiveUnits"],
+      profiles: LegendProps["profiles"]
+    ): LegendProps => ({
+      effectiveUnits,
+      profiles
+    })
+  );
+
+  @property()
+  private get _profilesArray(): IElevationProfileLine[] {
+    return this.profiles.toArray();
+  }
+
+  @property()
+  private get _settingsButtonProps(): SettingsButtonProps {
+    return this._getSettingsButtonPropsMemoized(this.unit, this.unitOptions, this._onUnitChange);
+  }
+
+  private _getSettingsButtonPropsMemoized = memoize(
+    (
+      unit: SettingsButtonProps["unit"],
+      unitOptions: SettingsButtonProps["unitOptions"],
+      onUnitChange: SettingsButtonProps["onUnitChange"]
+    ): SettingsButtonProps => ({ unit, unitOptions, onUnitChange })
+  );
+
+  private _onUnitChange = (selectedUnit: SystemOrLengthUnit) => {
+    this.unit = selectedUnit;
+  };
 
   //----------------------------------------------------------------------------
   //
@@ -520,30 +704,23 @@ class ElevationProfile extends Widget {
   //----------------------------------------------------------------------------
 
   render(): VNode {
-    const { viewModel } = this;
-    const progress = viewModel.progress;
+    const { viewModel, visible } = this;
 
     return (
       <div
         key={this}
-        class={this.classes(CSS.base, CSS.esriWidget, {
-          [CSS.esriWidgetDisabled]: viewModel.state === "disabled",
-          [CSS.portrait]: this._portrait
+        class={this.classes({
+          [CSS.base]: visible,
+          [CSS.esriWidget]: visible,
+          [CSS.esriWidgetDisabled]: visible && viewModel.state === "disabled",
+          [CSS.portrait]: this._portrait,
+          [CSS.refined]: this.viewModel.progress === 1
         })}
-        aria-label={this.messages.widgetLabel}
         bind={this}
         afterCreate={this._onAfterCreate}
+        aria-label={this.messages.widgetLabel}
       >
-        <div
-          key="progress-bar"
-          class={this.classes(CSS.progressBar, { [CSS.progressBarVisible]: progress < 1 })}
-          styles={{ width: `${progress * 100}%` }}
-          role="presentation"
-          aria-hidden="true"
-          title={this.messagesCommon.loading}
-        ></div>
-
-        {this._renderContentForState()}
+        {visible && this._renderContentForState()}
       </div>
     );
   }
@@ -563,152 +740,169 @@ class ElevationProfile extends Widget {
       case ElevationProfileState.Creating:
         return this._renderContentForCreatingState();
       case ElevationProfileState.Selected:
+        return this._renderContentForSelectedState();
       case ElevationProfileState.Created:
         return this._renderContentForCreatedState();
       case ElevationProfileState.Disabled:
-        return null;
+        return this._renderContentForReadyState(); // Same as ready, but user won't be able to interact with the widget.
     }
   }
 
   private _renderContentForReadyState(): VNode {
-    return this._renderContent({
-      prompt: this.messages.readyPrompt,
-      statistics: false,
-      chart: false,
-      legend: false,
-      actions: MAIN_ACTIONS
-    });
+    const { sketchButton, selectButton } = this.visibleElements;
+    const msgs = this.messages;
+
+    let prompt: string;
+    if (sketchButton && selectButton) {
+      prompt = msgs.readyPrompt;
+    } else if (sketchButton) {
+      prompt = msgs.readyPromptCreateOnly;
+    } else if (selectButton) {
+      prompt = msgs.readyPromptSelectOnly;
+    } else {
+      prompt = msgs.errors?.noProfile;
+    }
+
+    return this._renderContent({ prompt, chart: false, actions: MAIN_ACTIONS });
   }
 
   private _renderContentForSelectingState(): VNode {
+    const view = this.view;
+    if (isNone(view)) {
+      return null;
+    }
+
+    const prompt = this.messages[`selectingPrompt-${view.type}`];
     return this._renderContent({
-      prompt: this.messages.selectingPrompt,
-      statistics: false,
+      prompt,
       chart: false,
-      legend: false,
-      actions: [Action.SelectCancel]
+      actions: [{ type: Action.SelectCancel }]
     });
   }
 
   private _renderContentForCreatingState(): VNode {
-    const errorActions = [Action.SketchCancel, Action.SketchDoneDisabled];
-    const errorOptions = {
-      statistics: false,
-      chart: false,
-      legend: false,
-      actions: errorActions
-    };
+    const { view, viewModel } = this;
 
-    switch (this.viewModel.errorState) {
-      case ElevationProfileErrorState.NoValidInput:
-        return this._renderContent({ ...errorOptions, prompt: this.messages.creatingPrompt });
-      case ElevationProfileErrorState.MultiPathInput:
-        return this._renderContent({ ...errorOptions, prompt: this.messages.noMultiPathSupport });
-      case ElevationProfileErrorState.NoVisibleProfiles:
-      case ElevationProfileErrorState.RefinedButNoChartData:
-        return this._renderContent({
-          ...errorOptions,
-          prompt: this.messages.noProfile,
-          legend: true // Show legend so that profiles can be made visible.
-        });
-      case ElevationProfileErrorState.None: {
-        const doneAction = this.viewModel.canStopCreating
-          ? Action.SketchDone
-          : Action.SketchDoneDisabled;
-
-        return this._renderContent({
-          statistics: true,
-          chart: true,
-          legend: true,
-          actions: [Action.SketchCancel, doneAction]
-        });
-      }
+    if (isNone(view)) {
+      return null;
     }
+
+    const actions = viewModel.hasVertices
+      ? [
+          { type: Action.SketchCancel },
+          { type: Action.SketchDone, disabled: !viewModel.tool.interaction.canStopCreating }
+        ]
+      : [{ type: Action.Select }, { type: Action.Sketch, disabled: true }];
+
+    if (viewModel.errorState === ElevationProfileErrorState.NoValidInput) {
+      const prompt = this.messages[`creatingPrompt-${view.type}`];
+      return this._renderContent({
+        chart: false,
+        actions,
+        prompt
+      });
+    }
+
+    const errorMessage = this._getErrorMessage();
+    return errorMessage
+      ? this._renderContent({ chart: false, actions, prompt: errorMessage })
+      : this._renderContent({ chart: true, actions });
+  }
+
+  private _renderContentForSelectedState(): VNode {
+    const errorMessage = this._getErrorMessage();
+    return errorMessage
+      ? this._renderContent({ chart: false, actions: MAIN_ACTIONS, prompt: errorMessage })
+      : this._renderContent({ chart: true, actions: MAIN_ACTIONS });
   }
 
   private _renderContentForCreatedState(): VNode {
-    const errorActions = MAIN_ACTIONS;
-    const errorOptions = {
-      statistics: false,
-      chart: false,
-      legend: false,
-      actions: errorActions
-    };
-
-    switch (this.viewModel.errorState) {
-      case ElevationProfileErrorState.NoValidInput:
-        return this._renderContent({ ...errorOptions, prompt: this.messages.noProfile });
-      case ElevationProfileErrorState.MultiPathInput:
-        return this._renderContent({ ...errorOptions, prompt: this.messages.noMultiPathSupport });
-      case ElevationProfileErrorState.NoVisibleProfiles:
-      case ElevationProfileErrorState.RefinedButNoChartData:
-        return this._renderContent({
-          ...errorOptions,
-          prompt: this.messages.noProfile,
-          legend: true // Show legend so that profiles can be made visible.
-        });
-      case ElevationProfileErrorState.None:
-        return this._renderContent({
-          statistics: true,
-          chart: true,
-          legend: true,
-          actions: MAIN_ACTIONS
-        });
-    }
+    const errorMessage = this._getErrorMessage();
+    return errorMessage
+      ? this._renderContent({ chart: false, actions: MAIN_ACTIONS, prompt: errorMessage })
+      : this._renderContent({ chart: true, actions: MAIN_ACTIONS });
   }
 
-  private _renderContent({
-    statistics,
-    prompt,
-    chart,
-    legend,
-    actions
-  }: {
+  private _getErrorMessage(): string | null {
+    const key = ERROR_MESSAGES[this.viewModel.errorState];
+    return this.messages?.errors?.[key];
+  }
+
+  private _renderContent(props: {
     prompt?: Maybe<string>;
-    statistics: boolean;
     chart: boolean;
-    legend: boolean;
-    actions: Action[];
+    actions: ActionConfig[];
   }): VNode {
+    const mainContainerNodes: VNode[] = isSome(props.prompt)
+      ? this._renderPrompt(props.prompt)
+      : props.chart && this._renderChart();
+
     return [
-      this._renderHeader({ statistics }),
-      isSome(prompt) ? this._renderPrompt(prompt) : chart && this._renderChart(),
-      this._renderActions({ legend, actions })
+      <header key="header" class={CSS.header}>
+        {this._zoomOutButtonVisible && this._renderZoomOutButton()}
+        {this.visibleElements.settingsButton && this._settingsButton.render()}
+      </header>,
+
+      <div class={CSS.mainContainer}>{...mainContainerNodes}</div>,
+
+      this.visibleElements.legend && this._legend.render(),
+      this._renderActions(props)
     ];
   }
 
-  private _renderHeader(props: { statistics: boolean }): VNode {
-    const { progress } = this.viewModel;
-    const showStatistics = progress === 1 && props.statistics && this.visibleElements.statistics;
-    const loading = progress > 0 && progress < 1;
-
+  private _renderZoomOutButton(): VNode {
     return (
-      <header key="header" class={CSS.header}>
-        {loading && (
-          <div key="loading-message" class={CSS.loadingMessage}>
-            {this.messages.loading}
-          </div>
-        )}
-        {showStatistics ? (
-          this._statisticsWidget.render()
-        ) : (
-          <div key="header-spacer" class={CSS.headerSpacer}></div>
-        )}
-        {this._settingsButton.render()}
-      </header>
+      <button
+        key="zoom-out"
+        class={CSS.zoomOutButton}
+        bind={this}
+        onclick={this._onZoomOutButtonClick}
+        title={this.messages.zoomOut}
+      ></button>
     );
   }
 
-  private _renderPrompt(message: string): VNode {
-    return (
+  private _onZoomOutButtonClick(): void {
+    applySome(this._chart, (chart) => chart.zoomOut());
+  }
+
+  private _renderPrompt(message: string): VNode[] {
+    return [
       <div key="prompt-container" bind={this} class={CSS.promptContainer}>
         <p>{message}</p>
       </div>
-    );
+    ];
   }
 
-  private _renderChart(): VNode {
-    return (
+  private _renderChart(): VNode[] {
+    if (!this.visibleElements.chart) {
+      return [<div key="empty-chart-container" class={CSS.chartContainer}></div>];
+    }
+
+    const { chartData, progress } = this.viewModel;
+    const chartVisible = this._canRenderChart(chartData);
+
+    if (!chartVisible) {
+      // Chart is not visible either because the initial preview hasn't arrived
+      // or because it's too complex to render progressively. In such case we
+      // show a large spinner instead of the chart, with a delay so that it's
+      // only really seen by the user if the chart doesn't appear within a
+      // reasonable amount of time.
+      return [
+        this._renderSpinner({ size: "large" }),
+        <div key="chart-container-empty" class={CSS.chartContainer} />
+      ];
+    }
+
+    // When we do display the chart, it can happen that the profile is still
+    // being refined. In such cases we display a smaller spinner to indicate
+    // that things are still happening. As with the large spinner above, this
+    // one also appears with a delay so it shouldn't be visible when the profile
+    // refines quickly enough.
+    const spinnerVisible = isSome(chartData) && progress > 0 && progress < 1;
+
+    return [
+      spinnerVisible && this._renderSpinner({ size: chartVisible ? "small" : "large" }),
       <div
         key="chart-container"
         bind={this}
@@ -716,104 +910,144 @@ class ElevationProfile extends Widget {
         afterCreate={this._onChartContainerAfterCreate}
         afterRemoved={this._onChartContainerRemoved}
       ></div>
+    ];
+  }
+
+  private _renderSpinner(props: { size: "small" | "large" }): VNode {
+    return (
+      <div
+        key="spinner"
+        class={this.classes(CSS.chartSpinner, { [CSS.chartSpinnerSmall]: props.size === "small" })}
+        enterAnimation={this._spinnerEnterAnimation}
+        exitAnimation={this._spinnerExitAnimation}
+      />
     );
   }
 
-  private _renderActions({ legend, actions }: { legend: boolean; actions: Action[] }): VNode {
-    const actionNodes = actions.map(
-      (action): VNode => {
-        switch (action) {
-          case Action.Sketch:
-            return (
-              this.visibleElements.sketchButton && (
-                <button
-                  key="sketch"
-                  class={this.classes(CSS.actionButton, CSS.sketchButton)}
-                  bind={this}
-                  onclick={this._onSketchButtonClick}
-                >
-                  {this.messages.sketchButtonLabel}
-                </button>
-              )
-            );
-          case Action.SketchCancel:
-            return (
-              this.visibleElements.sketchButton && (
-                <button
-                  key="sketch-cancel"
-                  class={this.classes(CSS.actionButton, CSS.sketchCancelButton)}
-                  bind={this}
-                  onclick={this._onCancelButtonClick}
-                >
-                  {this.messagesCommon.cancel}
-                </button>
-              )
-            );
-          case Action.SketchDone: {
-            return (
-              this.visibleElements.sketchButton && (
-                <button
-                  key="sketch-done"
-                  class={this.classes(CSS.actionButton, CSS.sketchDoneButton)}
-                  bind={this}
-                  onclick={this._onDoneButtonClick}
-                >
-                  {this.messagesCommon.done}
-                </button>
-              )
-            );
-          }
-          case Action.SketchDoneDisabled: {
-            return (
-              this.visibleElements.sketchButton && (
-                <button
-                  key="sketch-done-disabled"
-                  class={this.classes(CSS.actionButton, CSS.sketchDoneButton, CSS.buttonDisabled)}
-                  bind={this}
-                  disabled={true}
-                >
-                  {this.messagesCommon.done}
-                </button>
-              )
-            );
-          }
-          case Action.Select:
-            return (
-              this.visibleElements.selectButton && (
-                <button
-                  key="select"
-                  class={this.classes(CSS.actionButton, CSS.selectButton)}
-                  bind={this}
-                  onclick={this._onSelectButtonClick}
-                >
-                  {this.messages.selectButtonLabel}
-                </button>
-              )
-            );
-          case Action.SelectCancel:
-            return (
-              this.visibleElements.selectButton && (
-                <button
-                  key="select-cancel"
-                  class={this.classes(CSS.actionButton, CSS.selectCancelButton)}
-                  bind={this}
-                  onclick={this._onCancelButtonClick}
-                >
-                  {this.messagesCommon.cancel}
-                </button>
-              )
-            );
-        }
-      }
+  private _spinnerEnterAnimation(domNode: HTMLElement): void {
+    // Apply the visible class on the next frame so that the CSS transition-delay
+    // gets applied and the spinner smoothly fades in.
+    requestAnimationFrame(() => domNode.classList.add(CSS.chartSpinnerVisible));
+  }
+
+  public _spinnerExitAnimation(domNode: HTMLElement, removeDomNodeFunction: () => void): void {
+    domNode.classList.remove(CSS.chartSpinnerVisible);
+    setTimeout(removeDomNodeFunction, 200); // Wait for the animation to complete before telling Maquette remove the node.
+  }
+
+  private _canRenderChart(data: Maybe<ChartData>): boolean {
+    if (isNone(data)) {
+      return false;
+    }
+
+    // When the input path was selected we only show the chart once it's fully
+    // generated. No point in showing graudal refinement in such cases and it
+    // would only slow down the generation.
+    if (!this.viewModel.inputIsSketched) {
+      return data.fullyRefined;
+    }
+
+    // When we have too many samples to display in the chart, we also don't show
+    // the chart until it is fully refined so that we don't block the main thread.
+    const totalNumSamples = data.lines.reduce(
+      (total, { samples }) => (isSome(samples) ? total + samples.length : total),
+      0
     );
 
+    return data.fullyRefined || totalNumSamples <= LARGE_CHART_SAMPLES;
+  }
+
+  private _renderActions({ actions }: { actions: ActionConfig[] }): VNode {
+    const actionNodes = actions
+      .map(
+        (action): VNode => {
+          switch (action.type) {
+            case Action.Sketch:
+              return (
+                this.visibleElements.sketchButton &&
+                this._renderAction({
+                  action,
+                  onClick: this._onSketchButtonClick,
+                  className: CSS.sketchButton,
+                  label: this.messages.sketchButtonLabel
+                })
+              );
+            case Action.SketchCancel:
+              return (
+                this.visibleElements.sketchButton &&
+                this._renderAction({
+                  action,
+                  onClick: this._onCancelButtonClick,
+                  className: CSS.sketchCancelButton,
+                  label: this.messagesCommon.cancel
+                })
+              );
+            case Action.SketchDone: {
+              return (
+                this.visibleElements.sketchButton &&
+                this._renderAction({
+                  action,
+                  onClick: this._onDoneButtonClick,
+                  className: CSS.sketchDoneButton,
+                  label: this.messagesCommon.done
+                })
+              );
+            }
+            case Action.Select:
+              return (
+                this.visibleElements.selectButton &&
+                this._renderAction({
+                  action,
+                  onClick: this._onSelectButtonClick,
+                  className: CSS.selectButton,
+                  label: this.messages.selectButtonLabel
+                })
+              );
+            case Action.SelectCancel:
+              return (
+                this.visibleElements.selectButton &&
+                this._renderAction({
+                  action,
+                  onClick: this._onCancelButtonClick,
+                  className: CSS.selectCancelButton,
+                  label: this.messagesCommon.cancel
+                })
+              );
+          }
+        }
+      )
+      .filter(Boolean); // Make sure we exclude any actions which rendered to null/undefined
+
+    return actionNodes.length ? (
+      <footer key="footer" class={CSS.footer}>
+        {...actionNodes}
+      </footer>
+    ) : null;
+  }
+
+  private _renderAction({
+    action,
+    onClick,
+    className,
+    label
+  }: {
+    action: ActionConfig;
+    onClick: (e: Event) => void;
+    className: string;
+    label: string;
+  }): VNode {
     return (
-      <div class={CSS.footer}>
-        <div class={CSS.legendContainer}>
-          {this.visibleElements.legend && legend && this._legend.render()}
-        </div>
-        <div class={CSS.actionsContainer}>{...actionNodes}</div>
-      </div>
+      <button
+        key={`action-${action.type}`}
+        class={this.classes(CSS.actionButton, className, {
+          [CSS.buttonDisabled]: action.disabled
+        })}
+        bind={this}
+        disabled={action.disabled}
+        onclick={onClick}
+      >
+        {label}
+      </button>
     );
   }
 
@@ -853,7 +1087,10 @@ class ElevationProfile extends Widget {
     this._chart = await createChart({
       container,
       abortOptions: { signal },
-      onCursorPositionChange: (x: number) => {
+      onRangeChange: (zoomFactor: number) => {
+        this._zoomOutButtonVisible = zoomFactor !== 1;
+      },
+      onCursorPositionChange: (x: Maybe<number>) => {
         this.viewModel.hoveredChartPosition = x;
       }
     });

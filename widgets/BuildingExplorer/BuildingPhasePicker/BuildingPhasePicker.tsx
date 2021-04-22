@@ -1,18 +1,18 @@
 // esri.core
-import { Maybe, isSome, unwrap, isNone } from "esri/core/maybe";
+import { Maybe, isSome, unwrap, isNone } from "esri/../../core/maybe";
 
 // esri.core.accessorSupport
-import { subclass, property, aliasOf } from "esri/core/accessorSupport/decorators";
+import { subclass, property, aliasOf } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.BuildingExplorer
 import BuildingPhase from "esri/BuildingPhase";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable, storeNode, isRTL } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx, storeNode, isRTL } from "esri/../support/widget";
 
 interface ButtonProps {
   phase: number;
@@ -87,7 +87,6 @@ class BuildingPhasePicker extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingPhase })
-  @renderable(["viewModel.layers.length", "viewModel.hasNext", "viewModel.hasPrevious"])
   viewModel = this._defaultViewModel;
 
   /**
@@ -100,7 +99,6 @@ class BuildingPhasePicker extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   messages: Messages = DEFAULT_MESSAGES;
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -115,7 +113,6 @@ class BuildingPhasePicker extends Widget {
    * @private
    */
   @aliasOf("viewModel.allowedValues")
-  @renderable()
   private _phases: readonly number[];
 
   /**
@@ -123,8 +120,7 @@ class BuildingPhasePicker extends Widget {
    *
    * @private
    */
-  @property({ readOnly: true, dependsOn: ["viewModel.enabled", "viewModel.value"] })
-  @renderable()
+  @property({ readOnly: true })
   private get _currentPhase(): Maybe<number> {
     return this.viewModel.enabled ? this.viewModel.value : null;
   }

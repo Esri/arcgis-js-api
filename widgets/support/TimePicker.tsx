@@ -11,16 +11,16 @@
  */
 
 // esri
-import { formatDate } from "esri/intl";
+import { formatDate } from "esri/../intl";
 
 // esri.core
-import { eventKey } from "esri/core/events";
+import { eventKey } from "esri/../core/events";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.intl
-import { loadMoment } from "esri/intl/moment";
+import { loadMoment } from "esri/../intl/moment";
 
 // esri.widgets
 import Widget from "esri/Widget";
@@ -28,7 +28,7 @@ import Widget from "esri/Widget";
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
 import TimePickerViewModel from "esri/widgets/TimePickerViewModel";
-import { messageBundle, renderable, tsx } from "esri/widgets/widget";
+import { messageBundle, tsx } from "esri/widgets/widget";
 
 // esri.widgets.support.t9n
 import TimePickerMessages from "esri/widgets/t9n/TimePicker";
@@ -149,7 +149,6 @@ class TimePicker extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/support/t9n/TimePicker")
   messages: TimePickerMessages = null;
 
@@ -185,7 +184,6 @@ class TimePicker extends Widget {
   @property({
     type: TimePickerViewModel
   })
-  @renderable("viewModel.value")
   viewModel = new TimePickerViewModel();
 
   //--------------------------------------------------------------------------

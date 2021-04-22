@@ -3,7 +3,7 @@
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the vertical, horizontal,
  * and direct distance between two points.
  *
- * [![measurement-line-3d](../../assets/img/apiref/widgets/3D_DirectLineMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../assets/img/apiref/widgets/3D_DirectLineMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -14,7 +14,7 @@
  * DirectLineMeasurement3D widget switches to displaying only the Horizontal and Vertical distances taking into consideration
  * the curvature of the earth (i.e. ellipsoid-based geodesic distance).
  *
- * ![measurement-line-3d](../../assets/img/apiref/widgets/direct-line-measurement-3d.png)
+ * ![measurement-line-3d](../assets/img/apiref/widgets/direct-line-measurement-3d.png)
  *
  * This widget is designed to work with 3D SceneViews. For measurements with 2D MapViews, use
  * {@link module:esri/widgets/DistanceMeasurement2D}.
@@ -49,8 +49,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -63,37 +63,43 @@ import DirectLineMeasurement3DMessages from "esri/widgets/DirectLineMeasurement3
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+const BASE = "esri-direct-line-measurement-3d";
 
 const CSS = {
   // common
-  button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
+
   // base
-  base: "esri-direct-line-measurement-3d",
-  widget: "esri-widget",
-  panel: "esri-widget--panel",
+  base: `${BASE} esri-widget esri-widget--panel`,
+
   // container
-  container: "esri-direct-line-measurement-3d__container",
+  container: `${BASE}__container`,
+
   // hint
-  hint: "esri-direct-line-measurement-3d__hint",
-  hintText: "esri-direct-line-measurement-3d__hint-text",
-  panelError: "esri-direct-line-measurement-3d__panel--error",
+  hint: `${BASE}__hint`,
+  hintText: `${BASE}__hint-text`,
+  panelError: `${BASE}__panel--error`,
+
   // measurement
-  measurement: "esri-direct-line-measurement-3d__measurement",
-  measurementItem: "esri-direct-line-measurement-3d__measurement-item",
-  measurementItemDisabled: "esri-direct-line-measurement-3d__measurement-item--disabled",
-  measurementItemTitle: "esri-direct-line-measurement-3d__measurement-item-title",
-  measurementItemValue: "esri-direct-line-measurement-3d__measurement-item-value",
+  measurement: `${BASE}__measurement`,
+  measurementItem: `${BASE}__measurement-item`,
+  measurementItemDisabled: `${BASE}__measurement-item--disabled`,
+  measurementItemTitle: `${BASE}__measurement-item-title`,
+  measurementItemValue: `${BASE}__measurement-item-value`,
+
   // units
-  settings: "esri-direct-line-measurement-3d__settings",
-  units: "esri-direct-line-measurement-3d__units",
-  unitsLabel: "esri-direct-line-measurement-3d__units-label",
-  unitsSelect: "esri-direct-line-measurement-3d__units-select esri-select",
-  unitsSelectWrapper: "esri-direct-line-measurement-3d__units-select-wrapper",
-  // clear
-  actionSection: "esri-direct-line-measurement-3d__actions",
-  clearButton: "esri-direct-line-measurement-3d__clear-button",
+  settings: `${BASE}__settings`,
+  units: `${BASE}__units`,
+  unitsLabel: `${BASE}__units-label`,
+  unitsSelect: `${BASE}__units-select esri-select`,
+  unitsSelectWrapper: `${BASE}__units-select-wrapper`,
+
+  // actions
+  actionSection: `${BASE}__actions`,
+  newMeasurementButton: `${BASE}__clear-button esri-button esri-button--primary`,
+
   // icon
   widgetIcon: "esri-icon-measure-line"
 };
@@ -140,7 +146,7 @@ class DirectLineMeasurement3D extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -155,7 +161,6 @@ class DirectLineMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean = null;
 
   //----------------------------------
@@ -171,7 +176,6 @@ class DirectLineMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.active")
-  @renderable()
   active: boolean;
 
   //----------------------------------
@@ -219,7 +223,6 @@ class DirectLineMeasurement3D extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/DirectLineMeasurement3D/t9n/DirectLineMeasurement3D")
   messages: DirectLineMeasurement3DMessages = null;
 
@@ -236,7 +239,6 @@ class DirectLineMeasurement3D extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -256,15 +258,7 @@ class DirectLineMeasurement3D extends Widget {
    * @type {module:esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel}
    * @autocast
    */
-  @property({
-    type: DirectLineMeasurement3DViewModel
-  })
-  @renderable([
-    "viewModel.state",
-    "viewModel.unitOptions",
-    "viewModel.unit",
-    "viewModel.measurement"
-  ])
+  @property({ type: DirectLineMeasurement3DViewModel })
   viewModel: DirectLineMeasurement3DViewModel = new DirectLineMeasurement3DViewModel();
 
   //----------------------------------
@@ -401,7 +395,7 @@ class DirectLineMeasurement3D extends Widget {
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}
-            class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
+            class={this.classes(CSS.newMeasurementButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
             type="button"
@@ -422,7 +416,7 @@ class DirectLineMeasurement3D extends Widget {
     ) : null;
 
     return (
-      <div key="" class={this.classes(CSS.base, CSS.widget, CSS.panel)} role="presentation">
+      <div key={this} class={CSS.base} role="presentation">
         {containerNode}
       </div>
     );
@@ -448,6 +442,22 @@ class DirectLineMeasurement3D extends Widget {
     if (selected) {
       this.unit = selected.value as SystemOrLengthUnit;
     }
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * We overload this to allow the viewmodel to preload some modules before we
+   * present ui to the user. This is to avoid things like module loading during
+   * user interaction.
+   * @private
+   */
+  protected beforeFirstRender(): Promise<void> {
+    return DirectLineMeasurement3DViewModel.preload().then(() => super.beforeFirstRender());
   }
 }
 

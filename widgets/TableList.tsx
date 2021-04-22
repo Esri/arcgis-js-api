@@ -15,7 +15,7 @@
  * The TableList widget is not supported with {@link module:esri/WebScene web scenes}.
  * :::
  *
- * ![tablelist widget](../../assets/img/apiref/widgets/tablelist-widget.png)
+ * ![tablelist widget](../assets/img/apiref/widgets/tablelist-widget.png)
  *
  * @module esri/widgets/TableList
  * @since 4.17
@@ -65,9 +65,6 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 // esri.layers
 import Layer from "esri/layers/Layer";
 
-// esri.libs.sortablejs
-import Sortable from "esri/libs/sortablejs/Sortable";
-
 // esri.support.actions
 import ActionButton from "esri/support/actions/ActionButton";
 import ActionToggle from "esri/support/actions/ActionToggle";
@@ -83,7 +80,7 @@ import { Action, Actions, Sections } from "esri/widgets/LayerList/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, renderable, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+import { accessibleHandler, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
 
 // esri.widgets.TableList
 import { ListItemModifier } from "esri/widgets/TableList/interfaces";
@@ -95,6 +92,9 @@ import { findSelectedItem } from "esri/widgets/TableList/support/tableListUtils"
 
 // esri.widgets.TableList.t9n
 import TableListMessages from "esri/widgets/TableList/t9n/TableList";
+
+// sortablejs
+import Sortable from "sortablejs";
 
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
@@ -271,7 +271,6 @@ class TableList extends Widget {
    * @ignore
    */
   @property()
-  @renderable()
   errorsVisible: false;
 
   //----------------------------------
@@ -333,7 +332,6 @@ class TableList extends Widget {
    * });
    */
   @aliasOf("viewModel.listItemCreatedFunction")
-  @renderable()
   listItemCreatedFunction: ListItemModifier = null;
 
   //----------------------------------
@@ -389,7 +387,6 @@ class TableList extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/TableList/t9n/TableList")
   messages: TableListMessages = null;
 
@@ -406,7 +403,6 @@ class TableList extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -457,7 +453,6 @@ class TableList extends Widget {
    * tableList.selectionEnabled = true;
    */
   @property()
-  @renderable()
   selectionEnabled = false;
 
   //----------------------------------
@@ -475,7 +470,6 @@ class TableList extends Widget {
    * @see [selectionEnabled](#selectionEnabled)
    */
   @property()
-  @renderable()
   selectedItems: Collection<ListItem> = new ListItemCollection();
 
   //----------------------------------
@@ -491,7 +485,6 @@ class TableList extends Widget {
    * @readonly
    */
   @aliasOf("viewModel.tableItems")
-  @renderable()
   tableItems: Collection<ListItem> = null;
 
   //----------------------------------
@@ -514,7 +507,6 @@ class TableList extends Widget {
   @property({
     type: TableListViewModel
   })
-  @renderable("viewModel.state")
   viewModel: TableListViewModel = new TableListViewModel();
 
   //--------------------------------------------------------------------------

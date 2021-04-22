@@ -4,7 +4,7 @@
  * layers are removed and replaced with the basemap layers of the associated basemap selected in the gallery. By default,
  * the BasemapGallery widget looks like the following image.
  *
- * ![basemap-gallery](../../assets/img/apiref/widgets/basemap-gallery.png)
+ * ![basemap-gallery](../assets/img/apiref/widgets/basemap-gallery.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -44,8 +44,8 @@ import { on, whenOnce } from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -62,9 +62,7 @@ import BasemapGalleryMessages from "esri/widgets/BasemapGallery/t9n/BasemapGalle
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
-
-const DEFAULT_BASEMAP_IMAGE = getAssetUrl("esri/themes/base/images/basemap-toggle-64.svg");
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-basemap-gallery esri-widget esri-widget--panel-height-only",
@@ -155,7 +153,6 @@ class BasemapGallery extends Widget {
    * @instance
    */
   @aliasOf("viewModel.activeBasemap")
-  @renderable()
   activeBasemap: Basemap = null;
 
   //----------------------------------
@@ -172,7 +169,6 @@ class BasemapGallery extends Widget {
    * @since 4.15
    */
   @property()
-  @renderable()
   disabled: boolean = false;
 
   //----------------------------------
@@ -222,7 +218,6 @@ class BasemapGallery extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/BasemapGallery/t9n/BasemapGallery")
   messages: BasemapGalleryMessages = null;
 
@@ -265,7 +260,6 @@ class BasemapGallery extends Widget {
    * @todo doc custom BasemapSource (interface) also supported
    */
   @aliasOf("viewModel.source")
-  @renderable("source.state")
   source: BasemapsSource = null;
 
   //----------------------------------
@@ -283,8 +277,7 @@ class BasemapGallery extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -302,7 +295,6 @@ class BasemapGallery extends Widget {
    * @autocast
    */
   @property()
-  @renderable(["viewModel.state"])
   viewModel = new BasemapGalleryViewModel();
 
   //-------------------------------------------------------------------
@@ -362,7 +354,8 @@ class BasemapGallery extends Widget {
 
   private _renderBasemapGalleryItem(item: BasemapGalleryItem): VNode {
     const thumbnailUrl = item.get<string>("basemap.thumbnailUrl");
-    const thumbnailSource = thumbnailUrl || DEFAULT_BASEMAP_IMAGE;
+    const thumbnailSource =
+      thumbnailUrl || getAssetUrl("esri/themes/base/images/basemap-toggle-64.svg");
     const title = item.get<string>("basemap.title");
     const snippet = item.get<string>("basemap.portalItem.snippet");
     const tooltip = item.get<string>("error.message") || snippet || title;
@@ -379,7 +372,7 @@ class BasemapGallery extends Widget {
 
     return (
       <li
-        aria-selected={isSelected}
+        aria-selected={isSelected.toString()}
         bind={this}
         class={this.classes(CSS.item, itemClasses)}
         data-item={item}

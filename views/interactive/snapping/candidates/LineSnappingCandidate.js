@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/mathUtils","../../../../chunks/vec2f64","../../../../chunks/vec2","../hints/LineSnappingHint","./SnappingCandidate","../SnappingConstraint"],(function(n,t,e,i,r,s,a,o){"use strict";let c=function(n){function i({coordinateHelper:t,lineStart:e,lineEnd:i,targetPoint:r}){var a;return(a=n.call(this,t,r,new o.LineConstraint(t,e,i))||this).referenceLineHint=new s.LineSnappingHint(2,e,i),a}return t._inheritsLoose(i,n),i.prototype.lineEndClosestToTarget=function(){const n=this.constraint.start,t=this.constraint.end;return e.sign(r.dot(r.subtract(l,t,n),r.subtract(p,this.targetPoint,n)))>0?t:n},t._createClass(i,[{key:"hints",get:function(){return[this.referenceLineHint,new s.LineSnappingHint(0,this.lineEndClosestToTarget(),this.targetPoint)]}}]),i}(a.SnappingCandidate);const p=i.create(),l=i.create();n.LineSnappingCandidate=c,Object.defineProperty(n,"__esModule",{value:!0})}));

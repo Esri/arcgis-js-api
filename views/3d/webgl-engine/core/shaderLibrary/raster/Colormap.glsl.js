@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";e.Colormap=function(e){e.fragment.uniforms.add("u_colormap","sampler2D"),e.fragment.uniforms.add("u_colormapOffset","float"),e.fragment.uniforms.add("u_colormapMaxIndex","float"),e.fragment.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";function r(e){e.fragment.uniforms.add("u_colormap","sampler2D"),e.fragment.uniforms.add("u_colormapOffset","float"),e.fragment.uniforms.add("u_colormapMaxIndex","float"),e.fragment.code.add(o.glsl`
     vec4 colormap(vec4 currentPixel, bool isFloat) {
       // colormap is only applicable to integer data but could be already normalized to 0-1 float
       float clrIndex = isFloat ? currentPixel.r - u_colormapOffset : currentPixel.r * 255.0 - u_colormapOffset;
@@ -18,4 +18,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";
       }
       return result;
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.Colormap=r,Object.defineProperty(e,"__esModule",{value:!0})}));

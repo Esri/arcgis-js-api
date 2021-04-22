@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","./maybe","./Collection","./Loadable","./asyncUtils"],(function(l,o,a,e,n){"use strict";async function t(l,o){return await l.load(),r(l,o)}async function r(l,t){const r=[],i=(...l)=>{for(const n of l)o.isNone(n)||(Array.isArray(n)?i(...n):a.isCollection(n)?n.forEach((l=>i(l))):e.isLoadable(n)&&r.push(n))};t(i);let s=null;if(await n.map(r,(async l=>{var o;!1!==(await n.result((o=l,"loadAll"in o&&"function"==typeof o.loadAll?l.loadAll():l.load()))).ok||s||(s=l)})),s)throw s.loadError;return l}l.default=t,l.loadAll=t,l.loadAllChildren=r,Object.defineProperty(l,"__esModule",{value:!0})}));
+define(["exports","./maybe","./Collection","./Loadable","./asyncUtils"],(function(l,o,a,n,t){"use strict";async function e(l,o){return await l.load(),r(l,o)}async function r(l,e){const r=[],s=(...l)=>{for(const t of l)o.isNone(t)||(Array.isArray(t)?s(...t):a.isCollection(t)?t.forEach((l=>s(l))):n.isLoadable(t)&&r.push(t))};e(s);let c=null;if(await t.map(r,(async l=>{!1!==(await t.result(i(l)?l.loadAll():l.load())).ok||c||(c=l)})),c)throw c.loadError;return l}function i(l){return"loadAll"in l&&"function"==typeof l.loadAll}l.default=e,l.loadAll=e,l.loadAllChildren=r,Object.defineProperty(l,"__esModule",{value:!0})}));

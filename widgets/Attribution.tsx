@@ -10,7 +10,7 @@
  * {@link module:esri/views/MapView} and {@link module:esri/views/SceneView} by default.
  * See {@link module:esri/views/ui/DefaultUI} for more details.
  *
- * ![attribution](../../assets/img/apiref/widgets/attribution.png)
+ * ![attribution](../assets/img/apiref/widgets/attribution.png)
  *
  * ::: esri-md class="panel trailer-1"
  * Esri requires that when you use an ArcGIS Online basemap in your app, the map must include Esri attribution and you must be licensed to use the content.
@@ -35,8 +35,8 @@ import * as watchUtils from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -49,7 +49,7 @@ import AttributionMessages from "esri/widgets/Attribution/t9n/Attribution";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-attribution esri-widget",
@@ -119,11 +119,9 @@ class Attribution extends Widget {
    * @readonly
    */
   @property({
-    dependsOn: ["viewModel.items.length", "itemDelimiter"],
     readOnly: true,
-    autoTracked: false
+    dependsOn: ["viewModel.items.length", "itemDelimiter"]
   })
-  @renderable()
   get attributionText(): string {
     return this.viewModel.items
       .reduce((unique, item) => {
@@ -164,7 +162,6 @@ class Attribution extends Widget {
    * @default |
    */
   @property()
-  @renderable()
   itemDelimiter = " | ";
 
   //----------------------------------
@@ -199,7 +196,6 @@ class Attribution extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Attribution/t9n/Attribution")
   messages: AttributionMessages = null;
 
@@ -215,7 +211,7 @@ class Attribution extends Widget {
    * @instance
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -232,10 +228,7 @@ class Attribution extends Widget {
    * @autocast
    * @type {module:esri/widgets/Attribution/AttributionViewModel}
    */
-  @property({
-    type: AttributionViewModel
-  })
-  @renderable(["state", "view.size"])
+  @property({ type: AttributionViewModel })
   viewModel: AttributionViewModel = new AttributionViewModel();
 
   //--------------------------------------------------------------------------

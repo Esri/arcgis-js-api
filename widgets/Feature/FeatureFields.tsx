@@ -1,9 +1,12 @@
+// esri.core
+import { init } from "esri/../core/watchUtils";
+
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.popup
-import ExpressionInfo from "esri/popup/ExpressionInfo";
-import FieldInfo from "esri/popup/FieldInfo";
+import ExpressionInfo from "esri/../popup/ExpressionInfo";
+import FieldInfo from "esri/../popup/FieldInfo";
 
 // esri.widgets
 import Widget from "esri/Widget";
@@ -11,13 +14,16 @@ import Widget from "esri/Widget";
 // esri.widgets.Feature.FeatureFields
 import FeatureFieldsViewModel from "esri/widgets/FeatureFields/FeatureFieldsViewModel";
 
+// esri.widgets.Feature.support
+import FeatureElementInfo from "esri/widgets/support/FeatureElementInfo";
+
 // esri.widgets.Feature.t9n
 import type FeatureMessages from "esri/widgets/t9n/Feature";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
 import * as uriUtils from "esri/support/uriUtils";
-import { renderable, tsx, messageBundle } from "esri/support/widget";
+import { tsx, messageBundle } from "esri/support/widget";
 
 // esri.widgets.support.t9n
 import UriUtilsMessages from "esri/support/t9n/uriUtils";
@@ -43,24 +49,72 @@ class FeatureFields extends Widget {
     super(params, parentNode);
   }
 
+  initialize(): void {
+    this._featureElementInfo = new FeatureElementInfo();
+
+    init(this, ["viewModel.description", "viewModel.title"], () => this._setupFeatureElementInfo());
+  }
+
+  destroy(): void {
+    this._featureElementInfo.destroy();
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  //--------------------------------------------------------------------------
+
+  private _featureElementInfo: FeatureElementInfo = null;
+
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  // attributes
+  //----------------------------------
+
   @aliasOf("viewModel.attributes")
   attributes: HashMap<any> = null;
+
+  //----------------------------------
+  // description
+  //----------------------------------
+
+  @aliasOf("viewModel.description")
+  description: string = null;
+
+  //----------------------------------
+  // expressionInfos
+  //----------------------------------
 
   @aliasOf("viewModel.expressionInfos")
   expressionInfos: ExpressionInfo[] = null;
 
+  //----------------------------------
+  // fieldInfos
+  //----------------------------------
+
   @aliasOf("viewModel.fieldInfos")
   fieldInfos: FieldInfo[] = null;
+
+  //----------------------------------
+  // title
+  //----------------------------------
+
+  @aliasOf("viewModel.title")
+  title: string = null;
+
+  //----------------------------------
+  // viewModel
+  //----------------------------------
 
   @property({
     type: FeatureFieldsViewModel
   })
-  @renderable(["viewModel.attributes", "viewModel.formattedFieldInfos"])
   viewModel = new FeatureFieldsViewModel();
 
   //----------------------------------
@@ -76,7 +130,6 @@ class FeatureFields extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Feature/t9n/Feature")
   messages: FeatureMessages = null;
 
@@ -93,7 +146,6 @@ class FeatureFields extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/support/t9n/uriUtils")
   messagesURIUtils: UriUtilsMessages = null;
 
@@ -151,7 +203,12 @@ class FeatureFields extends Widget {
   }
 
   render(): VNode {
-    return <div class={CSS.base}>{this.renderFields()}</div>;
+    return (
+      <div class={CSS.base}>
+        {this._featureElementInfo?.render()}
+        {this.renderFields()}
+      </div>
+    );
   }
 
   //--------------------------------------------------------------------------
@@ -159,6 +216,12 @@ class FeatureFields extends Widget {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _setupFeatureElementInfo(): void {
+    const { description, title } = this;
+
+    this._featureElementInfo.set({ description, title });
+  }
 
   private _forceLTR(value: number | string): string {
     /*

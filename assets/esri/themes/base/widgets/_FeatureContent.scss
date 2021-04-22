@@ -36,6 +36,19 @@ $content-height--loading: 150px !default;
   .esri-feature-content h6 {
     font-size: $font-size__lt-h2;
   }
+  .esri-feature-element-info__title {
+    color: $font-color;
+    font-size: $font-size__h1;
+    font-weight: $font-weight--regular;
+    margin-bottom: 0.2em;
+    margin-top: 0;
+  }
+
+  .esri-feature-element-info__description {
+    font-size: $font-size__body;
+    font-weight: $font-weight--regular;
+    margin-bottom: $cap-spacing--three-quarters;
+  }
   .esri-feature-content p {
     font-size: $font-size;
     line-height: normal;

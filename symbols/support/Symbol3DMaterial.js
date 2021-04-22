@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./materialUtils"],(function(r,o,e,t,l,s,c,a,p,u,i,n,y,S){"use strict";var b;r.Symbol3DMaterial=b=function(r){function e(){var o;return(o=r.apply(this,arguments)||this).color=null,o}return o._inheritsLoose(e,r),e.prototype.clone=function(){return new b({color:l.isSome(this.color)?this.color.clone():null})},e}(y.JSONSupport),e.__decorate([a.property(S.colorAndTransparencyProperty)],r.Symbol3DMaterial.prototype,"color",void 0),r.Symbol3DMaterial=b=e.__decorate([p.subclass("esri.symbols.support.Symbol3DMaterial")],r.Symbol3DMaterial);var d=r.Symbol3DMaterial;r.default=d,Object.defineProperty(r,"__esModule",{value:!0})}));

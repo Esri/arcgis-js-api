@@ -3,7 +3,7 @@
  * initial {@link module:esri/Viewpoint} or a previously defined [viewpoint](#viewpoint).
  * By default this button looks like the following:
  *
- * ![home-button](../../assets/img/apiref/widgets/widgets-home.png)
+ * ![home-button](../assets/img/apiref/widgets/widgets-home.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -38,8 +38,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -53,7 +53,7 @@ import HomeMessages from "esri/widgets/Home/t9n/Home";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-home esri-widget--button esri-widget",
@@ -127,11 +127,7 @@ class Home extends Widget {
   /**
    * @todo document.
    */
-  @property({
-    readOnly: true,
-    dependsOn: ["viewModel.state", "messages", "messagesCommon"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   get homeTitle(): string {
     const state = this.viewModel?.state;
     const { messagesCommon, messages } = this;
@@ -186,7 +182,6 @@ class Home extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Home/t9n/Home")
   messages: HomeMessages = null;
 
@@ -203,7 +198,6 @@ class Home extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -220,8 +214,7 @@ class Home extends Widget {
    * @instance
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -242,7 +235,6 @@ class Home extends Widget {
   @property({
     type: HomeViewModel
   })
-  @renderable("viewModel.state")
   @vmEvent("go")
   viewModel = new HomeViewModel();
 

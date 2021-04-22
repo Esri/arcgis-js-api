@@ -2,7 +2,7 @@
  * The AreaMeasurement3D widget calculates and displays the area and perimeter of a polygon.
  * This widget can be used in a {@link module:esri/views/SceneView} to measure the area and perimeter of a polygon.
  *
- * [![measurement-line-3d](../../assets/img/apiref/widgets/3D_AreaMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
+ * [![measurement-line-3d](../assets/img/apiref/widgets/3D_AreaMeasurement_widget.png)](../sample-code/widgets-measurement-3d/index.html)
  *
  * When the widget is active, a horizontal "laser" line is drawn which indicates the height at the current mouse position.
  * This line can help in analyzing the heights of objects relative to each other and the terrain.
@@ -40,8 +40,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -54,37 +54,43 @@ import AreaMeasurement3DMessages from "esri/widgets/AreaMeasurement3D/t9n/AreaMe
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+const BASE = "esri-area-measurement-3d";
 
 const CSS = {
   // common
-  button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
+
   // base
-  base: "esri-area-measurement-3d",
-  widget: "esri-widget",
-  panel: "esri-widget--panel",
+  base: `${BASE} esri-widget esri-widget--panel`,
+
   // container
-  container: "esri-area-measurement-3d__container",
+  container: `${BASE}__container`,
+
   // hint
-  hint: "esri-area-measurement-3d__hint",
-  hintText: "esri-area-measurement-3d__hint-text",
-  panelError: "esri-area-measurement-3d__panel--error",
+  hint: `${BASE}__hint`,
+  hintText: `${BASE}__hint-text`,
+  panelError: `${BASE}__panel--error`,
+
   // measurement
-  measurement: "esri-area-measurement-3d__measurement",
-  measurementItem: "esri-area-measurement-3d__measurement-item",
-  measurementItemDisabled: "esri-area-measurement-3d__measurement-item--disabled",
-  measurementItemTitle: "esri-area-measurement-3d__measurement-item-title",
-  measurementItemValue: "esri-area-measurement-3d__measurement-item-value",
+  measurement: `${BASE}__measurement`,
+  measurementItem: `${BASE}__measurement-item`,
+  measurementItemDisabled: `${BASE}__measurement-item--disabled`,
+  measurementItemTitle: `${BASE}__measurement-item-title`,
+  measurementItemValue: `${BASE}__measurement-item-value`,
+
   // units
-  settings: "esri-area-measurement-3d__settings",
-  units: "esri-area-measurement-3d__units",
-  unitsLabel: "esri-area-measurement-3d__units-label",
-  unitsSelect: "esri-area-measurement-3d__units-select esri-select",
-  unitsSelectWrapper: "esri-area-measurement-3d__units-select-wrapper",
-  // clear
-  actionSection: "esri-area-measurement-3d__actions",
-  clearButton: "esri-area-measurement-3d__clear-button",
+  settings: `${BASE}__settings`,
+  units: `${BASE}__units`,
+  unitsLabel: `${BASE}__units-label`,
+  unitsSelect: `${BASE}__units-select esri-select`,
+  unitsSelectWrapper: `${BASE}__units-select-wrapper`,
+
+  // actions
+  actionSection: `${BASE}__actions`,
+  newMeasurementButton: `${BASE}__clear-button esri-button esri-button--primary`,
+
   // icon
   widgetIcon: "esri-icon-measure-area"
 };
@@ -131,7 +137,7 @@ class AreaMeasurement3D extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -146,7 +152,6 @@ class AreaMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean = null;
 
   //----------------------------------
@@ -162,7 +167,6 @@ class AreaMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.active")
-  @renderable()
   active: boolean;
 
   //----------------------------------
@@ -210,7 +214,6 @@ class AreaMeasurement3D extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/AreaMeasurement3D/t9n/AreaMeasurement3D")
   messages: AreaMeasurement3DMessages = null;
 
@@ -227,7 +230,6 @@ class AreaMeasurement3D extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -246,15 +248,7 @@ class AreaMeasurement3D extends Widget {
    * @type {module:esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel}
    * @autocast
    */
-  @property({
-    type: AreaMeasurement3DViewModel
-  })
-  @renderable([
-    "viewModel.state",
-    "viewModel.unitOptions",
-    "viewModel.unit",
-    "viewModel.measurement"
-  ])
+  @property({ type: AreaMeasurement3DViewModel })
   viewModel: AreaMeasurement3DViewModel = new AreaMeasurement3DViewModel();
 
   //----------------------------------
@@ -403,7 +397,7 @@ class AreaMeasurement3D extends Widget {
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}
-            class={this.classes(CSS.button, CSS.clearButton, isDisabled && CSS.buttonDisabled)}
+            class={this.classes(CSS.newMeasurementButton, isDisabled && CSS.buttonDisabled)}
             bind={this}
             onclick={this._newMeasurement}
             type="button"
@@ -424,7 +418,7 @@ class AreaMeasurement3D extends Widget {
     ) : null;
 
     return (
-      <div key="" class={this.classes(CSS.base, CSS.widget, CSS.panel)} role="presentation">
+      <div key={this} class={CSS.base} role="presentation">
         {containerNode}
       </div>
     );

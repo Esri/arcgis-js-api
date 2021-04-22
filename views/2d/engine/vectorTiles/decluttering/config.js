@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";e.COLLISION_GRID_CELL_SIZE=32,e.DECLUTTER_BUDGET=1.5,e.DECLUTTER_TILES=!0,e.FADE_DURATION=200,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";const E=!0,_=32,t=1.5,L=200;e.COLLISION_GRID_CELL_SIZE=_,e.DECLUTTER_BUDGET=t,e.DECLUTTER_TILES=E,e.FADE_DURATION=L,Object.defineProperty(e,"__esModule",{value:!0})}));

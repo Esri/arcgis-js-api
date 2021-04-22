@@ -1,28 +1,28 @@
 // esri
-import { substitute } from "esri/intl";
+import { substitute } from "esri/../../intl";
 
 // esri.core
-import Collection from "esri/core/Collection";
-import Handles from "esri/core/Handles";
-import { pt2px } from "esri/core/screenUtils";
+import Collection from "esri/../../core/Collection";
+import Handles from "esri/../../core/Handles";
+import { pt2px } from "esri/../../core/screenUtils";
 
 // esri.core.accessorSupport
-import { subclass, property } from "esri/core/accessorSupport/decorators";
+import { subclass, property } from "esri/../../core/accessorSupport/decorators";
 
 // esri.layers
-import ImageryLayer from "esri/layers/ImageryLayer";
-import Layer from "esri/layers/Layer";
+import ImageryLayer from "esri/../../layers/ImageryLayer";
+import Layer from "esri/../../layers/Layer";
 
 // esri.symbols.support
-import { Descriptor } from "esri/symbols/support/interfaces";
-import { renderSVG } from "esri/symbols/support/svgUtils";
+import { Descriptor } from "esri/../../symbols/support/interfaces";
+import { renderSVG } from "esri/../../symbols/support/svgUtils";
 
 // esri.t9n
-import CommonMessages from "esri/t9n/common";
+import CommonMessages from "esri/../../t9n/common";
 
 // esri.views
-import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
+import { ISceneView } from "esri/../../views/ISceneView";
+import MapView from "esri/../../views/MapView";
 
 // esri.widgets
 import {
@@ -32,20 +32,21 @@ import {
   OpacityRampElement,
   HeatmapRampElement,
   SizeRampElement,
-  UnivariateAboveAndBelowRampElement,
+  UnivariateColorSizeRampElement,
   ImageSymbolTableElementInfo
-} from "esri/interfaces";
-import Widget from "esri/Widget";
+} from "esri/../interfaces";
+import Widget from "esri/../Widget";
 
 // esri.widgets.Legend.styles.support
+import { renderRelationshipRamp } from "esri/widgets/support/relationshipUtils";
 import {
-  renderRelationshipRamp,
-  getUnivariateAboveAndBelowColorRampPreview,
-  getUnivariateAboveAndBelowColorRampSize,
-  getUnivariateAboveAndBelowSizeRampSize,
-  getUnivariateAboveAndBelowColorRampMargin,
-  getUnivariateAboveAndBelowRampElements
-} from "esri/widgets/support/utils";
+  getUnivariateColorRampPreview,
+  getUnivariateColorRampSize,
+  getUnivariateSizeRampSize,
+  getUnivariateColorRampMargin,
+  getUnivariateAboveAndBelowRampElements,
+  getUnivariateColorSizeRampElements
+} from "esri/widgets/support/univariateUtils";
 
 // esri.widgets.Legend.support
 import ActiveLayerInfo from "esri/support/ActiveLayerInfo";
@@ -55,8 +56,8 @@ import { attachToNode, getTitle, isImageryStretchedLegend } from "esri/support/s
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { accessibleHandler, tsx, renderable, messageBundle } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { accessibleHandler, tsx, messageBundle } from "esri/../support/widget";
 
 const CSS = {
   activated: "esri-legend--card__carousel-indicator--activated",
@@ -103,8 +104,7 @@ const CSS = {
   header: "esri-widget__heading"
 };
 
-const KEY = "esri-legend--card__",
-  GRADIENT_WIDTH = 25,
+const GRADIENT_WIDTH = 25,
   GRADIENT_HEIGHT = 25,
   IPAD_WIDTH = 768,
   MIN_RAMP_WIDTH = 100;
@@ -218,7 +218,6 @@ class Card extends Widget {
   //  activeLayerInfos
   //----------------------------------
 
-  @renderable()
   @property()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
 
@@ -251,7 +250,6 @@ class Card extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Legend/t9n/Legend")
   messages: LegendMessages = null;
 
@@ -270,7 +268,6 @@ class Card extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -294,7 +291,7 @@ class Card extends Widget {
   //----------------------------------
 
   @property()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //-------------------------------------------------------------------
   //
@@ -332,14 +329,21 @@ class Card extends Widget {
         index: index + 1,
         total
       });
+
+      // Followed accessibility rules from
+      // https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html
       return (
         <div
           key={name}
+          role="tab"
+          id={name}
           aria-label={label}
+          aria-controls={`${name}-panel`}
+          aria-selected={(this._selectedSectionName === name).toString()}
+          tabIndex={this._selectedSectionName === name ? 0 : -1}
           title={label}
-          tabIndex={0}
           onclick={this._selectSection}
-          onkeydown={this._selectSection}
+          onkeydown={this._focusSection}
           bind={this}
           class={this.classes(CSS.indicator, {
             [CSS.activated]: this._selectedSectionName === name
@@ -351,7 +355,7 @@ class Card extends Widget {
 
     const carouselNavigationBar =
       this._hasIndicators && total > 1 ? (
-        <div class={CSS.indicatorContainer} key="carousel-navigation">
+        <div class={CSS.indicatorContainer} key="carousel-navigation" role="tablist">
           {carouselIndicators}
         </div>
       ) : null;
@@ -368,19 +372,58 @@ class Card extends Widget {
 
     return (
       <div class={this.classes(CSS.base, rootClasses)}>
-        {carouselNavigationBar}
         {content ? content : <div class={CSS.message}>{this.messages.noLegend}</div>}
+        {carouselNavigationBar}
       </div>
     );
   }
 
   @accessibleHandler()
   private _selectSection(e: Event): void {
-    const target = e.target as HTMLInputElement;
+    const target = e.target as HTMLElement;
     const targetProperty = target.getAttribute("data-section-name");
 
     if (targetProperty) {
       this._selectedSectionName = targetProperty;
+    }
+  }
+
+  private _focusSection(event: KeyboardEvent): void {
+    const key = event.key;
+
+    switch (key) {
+      case "ArrowLeft":
+      case "ArrowRight":
+        this._switchSectionOnArrowPress(event);
+        break;
+      case "Enter":
+      case " ": // space
+        this._selectSection(event);
+        break;
+    }
+  }
+
+  private _switchSectionOnArrowPress(event: KeyboardEvent): void {
+    const key = event.key;
+    const direction = key === "ArrowLeft" ? -1 : 1;
+    const target = event.target as HTMLElement;
+    const targetName = target.getAttribute("data-section-name");
+    const targetIndex = this._sectionNames.indexOf(targetName);
+    const sectionNames = this._sectionNames;
+    let element: HTMLElement = null;
+
+    if (targetIndex !== -1) {
+      if (sectionNames[targetIndex + direction]) {
+        element = document.getElementById(sectionNames[targetIndex + direction]);
+      } else if (key === "ArrowLeft") {
+        element = document.getElementById(sectionNames[sectionNames.length - 1]);
+      } else if (key === "ArrowRight") {
+        element = document.getElementById(sectionNames[0]);
+      }
+
+      if (element) {
+        element.focus();
+      }
     }
   }
 
@@ -410,10 +453,15 @@ class Card extends Widget {
 
   private _generateSectionNames(): void {
     this._sectionNames.length = 0;
+    this._selectedSectionName = null;
 
     if (this.activeLayerInfos) {
       this.activeLayerInfos.forEach(this._generateSectionNamesForActiveLayerInfo, this);
     }
+  }
+
+  private _getSectionName(layer: Layer, legendElement: LegendElement, index: number): string {
+    return `${this.id}${layer.uid}-type-${legendElement.type}-${index}`;
   }
 
   private _generateSectionNamesForActiveLayerInfo(activeLayerInfo: ActiveLayerInfo): void {
@@ -421,9 +469,7 @@ class Card extends Widget {
 
     if (activeLayerInfo.legendElements) {
       activeLayerInfo.legendElements.forEach((legendElement, index) => {
-        this._sectionNames.push(
-          `${KEY}${activeLayerInfo.layer.uid}-type-${legendElement.type}-${index}`
-        );
+        this._sectionNames.push(this._getSectionName(activeLayerInfo.layer, legendElement, index));
       });
     }
   }
@@ -506,7 +552,7 @@ class Card extends Widget {
       }
     }
 
-    const key = `${KEY}${layer.uid}-type-${legendElement.type}-${index}`;
+    const key = this._getSectionName(layer, legendElement, index);
     const titleSection = this._hasIndicators ? (
       <div>
         <h3 class={this.classes(CSS.header, CSS.carouselTitle)}>{activeLayerInfo.title}</h3>
@@ -516,7 +562,7 @@ class Card extends Widget {
       <h4 class={this.classes(CSS.header, CSS.layerCaption)}>{title}</h4>
     ) : null;
 
-    let content: VNode = null;
+    let rampContent: VNode = null;
 
     // build symbol table
     if (legendElement.type === "symbol-table") {
@@ -533,50 +579,40 @@ class Card extends Widget {
           [CSS.relationshipLabelContainer]: isRelationshipLegend
         };
 
-        content = (
-          <div key={key} class={CSS.section}>
-            {titleSection}
-            <div class={this.classes(labelContainerClasses)}>{rows}</div>
-          </div>
-        );
+        rampContent = <div class={this.classes(labelContainerClasses)}>{rows}</div>;
       }
     } else if (
       legendElement.type === "color-ramp" ||
       legendElement.type === "opacity-ramp" ||
       legendElement.type === "heatmap-ramp"
     ) {
-      content = (
-        <div key={key} class={CSS.section}>
-          {titleSection}
-          {this._renderLegendForRamp(legendElement, layer.opacity)}
-        </div>
-      );
+      rampContent = this._renderLegendForRamp(legendElement, layer.opacity);
     } else if (isSizeRamp) {
-      content = (
-        <div key={key} class={CSS.section}>
-          {titleSection}
-          {this._renderSizeRamp(legendElement as SizeRampElement, layer.opacity)}
-        </div>
-      );
+      rampContent = this._renderSizeRamp(legendElement as SizeRampElement, layer.opacity);
     } else if (legendElement.type === "relationship-ramp") {
-      content = (
-        <div key={key} class={this.classes(CSS.section, CSS.relationshipSection)}>
-          {titleSection}
-          {renderRelationshipRamp(legendElement, this.id, layer.opacity)}
-        </div>
-      );
+      rampContent = renderRelationshipRamp(legendElement, this.id, layer.opacity);
     } else if (legendElement.type === "univariate-above-and-below-ramp") {
-      content = (
-        <div key={key} class={CSS.section}>
-          {titleSection}
-          {this._renderUnivariateAboveAndBelowRamp(legendElement, layer.opacity)}
-        </div>
-      );
+      rampContent = this._renderUnivariateAboveAndBelowRamp(legendElement, layer.opacity);
+    } else if (legendElement.type === "univariate-color-size-ramp") {
+      rampContent = this._renderUnivariateColorSizeRamp(legendElement, layer.opacity);
     }
 
-    if (!content) {
+    if (!rampContent) {
       return null;
     }
+
+    const content = (
+      <div
+        key={key}
+        class={CSS.section}
+        id={`${key}-panel`}
+        role="tabpanel"
+        aria-labelledby={key}
+        tabIndex={0}
+      >
+        {[titleSection, rampContent]}
+      </div>
+    );
 
     this._sectionMap.set(key, content);
 
@@ -584,7 +620,7 @@ class Card extends Widget {
   }
 
   private _renderUnivariateAboveAndBelowRamp(
-    legendElement: UnivariateAboveAndBelowRampElement,
+    legendElement: UnivariateColorSizeRampElement,
     opacity: number
   ): VNode {
     const { sizeRampElement, colorRampElement } = getUnivariateAboveAndBelowRampElements(
@@ -593,40 +629,39 @@ class Card extends Widget {
       "horizontal"
     );
 
-    const sizeRampWidth = getUnivariateAboveAndBelowSizeRampSize(
-      sizeRampElement,
-      "full",
-      "horizontal"
-    );
-    const colorRampAboveWidth = getUnivariateAboveAndBelowColorRampSize(
+    const sizeRampWidth = getUnivariateSizeRampSize(sizeRampElement, "full", true, "horizontal");
+    const colorRampAboveWidth = getUnivariateColorRampSize(
       sizeRampElement,
       "above",
+      true,
       "horizontal"
     );
-    const colorRampBelowWidth = getUnivariateAboveAndBelowColorRampSize(
+    const colorRampBelowWidth = getUnivariateColorRampSize(
       sizeRampElement,
       "below",
+      true,
       "horizontal"
     );
     const colorRampHeight = 12;
-    const colorRampAbovePreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+    const colorRampAbovePreview = getUnivariateColorRampPreview(colorRampElement, {
       width: colorRampAboveWidth,
       height: colorRampHeight,
       rampAlignment: "horizontal",
       opacity,
       type: "above"
     });
-    const colorRampBelowPreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+    const colorRampBelowPreview = getUnivariateColorRampPreview(colorRampElement, {
       width: colorRampBelowWidth,
       height: colorRampHeight,
       rampAlignment: "horizontal",
       opacity,
       type: "below"
     });
-    const colorRampLeftMargin = getUnivariateAboveAndBelowColorRampMargin(sizeRampElement, "card");
+    const colorRampLeftMargin = getUnivariateColorRampMargin(sizeRampElement, "card");
     const labels = sizeRampElement.infos.map((stop) => stop.label);
+    const endIndex = labels.length - 1;
     const labelsContent = labels.map((label, index) =>
-      index === 0 || index === 4 ? <div key={index}>{label}</div> : null
+      index === 0 || index === endIndex ? <div key={index}>{label}</div> : null
     );
 
     const layerRowStyles = { display: "flex", flexDirection: "column" };
@@ -672,6 +707,71 @@ class Card extends Widget {
     );
   }
 
+  private _renderUnivariateColorSizeRamp(
+    legendElement: UnivariateColorSizeRampElement,
+    opacity: number
+  ): VNode {
+    const { sizeRampElement, colorRampElement } = getUnivariateColorSizeRampElements(
+      legendElement,
+      "horizontal"
+    );
+
+    const sizeRampWidth = getUnivariateSizeRampSize(sizeRampElement, "full", false, "horizontal");
+    const colorRampWidth = getUnivariateColorRampSize(sizeRampElement, "full", false, "horizontal");
+    const colorRampHeight = 12;
+    const colorRampPreview = getUnivariateColorRampPreview(colorRampElement, {
+      width: colorRampWidth,
+      height: colorRampHeight,
+      rampAlignment: "horizontal",
+      opacity,
+      type: "full"
+    });
+    const colorRampLeftMargin = getUnivariateColorRampMargin(sizeRampElement, "card");
+    const endIndex = sizeRampElement.infos.length - 1;
+    const labelsContent = sizeRampElement.infos.map((stop, index) =>
+      index === 0 || index === endIndex ? <div key={index}>{stop.label}</div> : null
+    );
+
+    const layerRowStyles = { display: "flex", flexDirection: "column" };
+    const sizeRampStyles = { display: "flex", flexDirection: "row" };
+    const colorRampStyles = {
+      marginTop: "3px",
+      marginLeft: `${colorRampLeftMargin}px`,
+      display: "flex"
+    };
+    const labelStyles = {
+      width: `${sizeRampWidth}px`,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between"
+    };
+
+    return (
+      <div class={CSS.layerRow} key="size-ramp-preview" styles={layerRowStyles}>
+        <div
+          class={this.classes(CSS.symbolContainer, CSS.sizeRampHorizontal)}
+          styles={sizeRampStyles}
+        >
+          {sizeRampElement.infos.map((info, i) => (
+            <div key={i} class={CSS.symbol} bind={info.preview} afterCreate={attachToNode} />
+          ))}
+        </div>
+        <div
+          class={CSS.univariateAboveAndBelowColorRamp}
+          styles={colorRampStyles}
+          key="color-ramp-preview"
+        >
+          <div bind={colorRampPreview} afterCreate={attachToNode} />
+        </div>
+        <div class={CSS.layerInfo}>
+          <div class={CSS.rampLabelsContainer} styles={labelStyles}>
+            {labelsContent}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   private _renderLegendForElementInfo(
     elementInfo: any,
     activeLayerInfo: ActiveLayerInfo,
@@ -687,7 +787,7 @@ class Card extends Widget {
     const isStretched = isImageryStretchedLegend(layer as ImageryLayer, legendType);
 
     if (elementInfo.preview) {
-      if (elementInfo.symbol.type.indexOf("simple-fill") === -1) {
+      if (!elementInfo.symbol || elementInfo.symbol.type.indexOf("simple-fill") === -1) {
         if (!elementInfo.label) {
           return <div key={rowIndex} bind={elementInfo.preview} afterCreate={attachToNode} />;
         }

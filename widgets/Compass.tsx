@@ -9,8 +9,8 @@
  * or WGS84 a dial icon will be used, however when the spatial reference is Web Mercator or WGS84 the
  * icon will be a north arrow.
  *
- * ![Compass for Web Mercator and WGS84](../../assets/img/apiref/widgets/compass.png)
- * ![Compass for other spatial references](../../assets/img/apiref/widgets/compass-other-sr.png)
+ * ![Compass for Web Mercator and WGS84](../assets/img/apiref/widgets/compass.png)
+ * ![Compass for other spatial references](../assets/img/apiref/widgets/compass-other-sr.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add the compass widget
  * to a 2D application via the {@link module:esri/views/MapView#ui ui} property on the view.
@@ -46,8 +46,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import { Axes } from "esri/widgets/interfaces";
@@ -62,7 +62,7 @@ import CompassMessages from "esri/widgets/Compass/t9n/Compass";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-compass esri-widget--button esri-widget",
@@ -157,7 +157,6 @@ class Compass extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Compass/t9n/Compass")
   messages: CompassMessages = null;
 
@@ -175,7 +174,7 @@ class Compass extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -192,10 +191,7 @@ class Compass extends Widget {
    * @type {module:esri/widgets/Compass/CompassViewModel}
    * @autocast
    */
-  @property({
-    type: CompassViewModel
-  })
-  @renderable(["viewModel.orientation", "viewModel.state"])
+  @property({ type: CompassViewModel })
   viewModel: CompassViewModel = new CompassViewModel();
 
   //--------------------------------------------------------------------------

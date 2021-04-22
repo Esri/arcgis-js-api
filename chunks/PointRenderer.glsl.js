@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl"],(function(e,i,o,t,a,r){"use strict";function n(e){const n=new o.ShaderBuilder,l=0===e.output,d=1===e.output,c=4===e.output;return n.extensions.add("GL_OES_standard_derivatives"),n.include(t.Slice,e),n.attributes.add("position","vec3"),n.attributes.add("color","vec3"),n.vertex.uniforms.add("uModelViewMatrix","mat4").add("uProjectionMatrix","mat4").add("uScreenMinMaxSize","vec2").add("uPointScale","vec2").add("uClipMin","vec3").add("uClipMax","vec3"),d?(n.vertex.uniforms.add("nearFar","vec2"),n.varyings.add("depth","float")):4!==e.output&&n.varyings.add("vColor","vec3"),n.vertex.code.add(i.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl"],(function(e,i,o,t,a,r){"use strict";function n(e){const n=new o.ShaderBuilder,l=0===e.output,d=1===e.output,c=4===e.output;return n.extensions.add("GL_OES_standard_derivatives"),n.include(t.Slice,e),n.attributes.add("position","vec3"),n.attributes.add("color","vec3"),n.vertex.uniforms.add("uModelViewMatrix","mat4").add("uProjectionMatrix","mat4").add("uScreenMinMaxSize","vec2").add("uPointScale","vec2").add("uClipMin","vec3").add("uClipMax","vec3"),d?(n.vertex.uniforms.add("nearFar","vec2"),n.varyings.add("depth","float")):4!==e.output&&n.varyings.add("vColor","vec3"),n.vertex.code.add(i.glsl`
     void main(void) {
       // Move clipped points outside of clipspace
       if (position.x < uClipMin.x || position.y < uClipMin.y || position.z < uClipMin.z ||
@@ -45,7 +45,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
      ${d?i.glsl`depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);`:""}
      ${l?i.glsl`vColor = color;`:""}
     }
-  `),n.fragment.include(r.RgbaFloatEncoding,e),c&&n.include(a.OutputHighlight),n.fragment.code.add(i.glsl`
+  `),n.fragment.include(a.RgbaFloatEncoding,e),c&&n.include(r.OutputHighlight),n.fragment.code.add(i.glsl`
     void main(void) {
       vec2 vOffset = gl_PointCoord - vec2(0.5, 0.5);
       float r2 = dot(vOffset, vOffset);

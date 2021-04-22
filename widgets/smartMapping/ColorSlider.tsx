@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![ColorSlider with annotations](../../assets/img/apiref/widgets/sliders/colorslider-2-labels.png "ColorSlider with annotations")
+ * ![ColorSlider with annotations](../assets/img/apiref/widgets/sliders/colorslider-2-labels.png "ColorSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/color#createContinuousRenderer createContinuousRenderer}
@@ -74,16 +74,16 @@
  */
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
-import ColorStop from "esri/renderers/visualVariables/support/ColorStop";
+import ColorStop from "esri/../renderers/visualVariables/support/ColorStop";
 
 // esri.smartMapping.renderers
-import { ContinuousRendererResult } from "esri/smartMapping/renderers/color";
+import { ContinuousRendererResult } from "esri/../smartMapping/renderers/color";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -99,7 +99,7 @@ import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-color-slider",
@@ -223,7 +223,6 @@ class ColorSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/ColorSlider/t9n/ColorSlider")
   messages: ColorSliderMessages = null;
 
@@ -301,19 +300,6 @@ class ColorSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ColorSlider/ColorSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.handlesSyncedToPrimary",
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.primaryHandleEnabled",
-    "viewModel.stops",
-    "viewModel.values",
-    "viewModel.zoomOptions"
-  ])
   viewModel: ColorSliderViewModel = new ColorSliderViewModel();
 
   //----------------------------------

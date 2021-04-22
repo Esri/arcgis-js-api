@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![HeatmapSlider with annotations](../../assets/img/apiref/widgets/sliders/heatmapslider-labels.png "HeatmapSlider with annotations")
+ * ![HeatmapSlider with annotations](../assets/img/apiref/widgets/sliders/heatmapslider-labels.png "HeatmapSlider with annotations")
  *
  * The [fromRendererResult](#fromRendererResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/heatmap#createRenderer createRenderer}
@@ -61,13 +61,13 @@
  */
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.support
-import HeatmapColorStop from "esri/renderers/support/HeatmapColorStop";
+import HeatmapColorStop from "esri/../renderers/support/HeatmapColorStop";
 
 // esri.smartMapping.renderers
-import { HeatmapRendererResult } from "esri/smartMapping/renderers/heatmap";
+import { HeatmapRendererResult } from "esri/../smartMapping/renderers/heatmap";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -80,7 +80,7 @@ import HeatmapSliderMessages from "esri/widgets/HeatmapSlider/t9n/HeatmapSlider"
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-heatmap-slider",
@@ -226,7 +226,6 @@ class HeatmapSlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/HeatmapSlider/t9n/HeatmapSlider")
   messages: HeatmapSliderMessages = null;
 
@@ -280,15 +279,6 @@ class HeatmapSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/HeatmapSlider/HeatmapSliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.max",
-    "viewModel.stops",
-    "viewModel.values"
-  ])
   viewModel: HeatmapSliderViewModel = new HeatmapSliderViewModel();
 
   //--------------------------------------------------------------------------

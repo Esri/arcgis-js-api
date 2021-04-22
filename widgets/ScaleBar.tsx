@@ -56,7 +56,7 @@ import ScaleBarMessages from "esri/widgets/ScaleBar/t9n/ScaleBar";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 type ScaleBarStyle = "line" | "ruler";
 type ScaleBarUnit = MapUnitType | "dual";
@@ -161,7 +161,6 @@ class ScaleBar extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/ScaleBar/t9n/ScaleBar")
   messages: ScaleBarMessages = null;
 
@@ -177,10 +176,7 @@ class ScaleBar extends Widget {
    * @instance
    * @type {"ruler" | "line"}
    */
-  @property({
-    dependsOn: ["unit"]
-  })
-  @renderable()
+  @property()
   set style(value: ScaleBarStyle) {
     // ruler + dual not allowed
     const style = this.unit === "dual" ? "line" : value;
@@ -208,7 +204,6 @@ class ScaleBar extends Widget {
    * @default non-metric
    */
   @property()
-  @renderable()
   unit: ScaleBarUnit = "non-metric";
 
   @cast("unit")
@@ -230,7 +225,6 @@ class ScaleBar extends Widget {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
   view: MapView = null;
 
   //----------------------------------
@@ -249,7 +243,6 @@ class ScaleBar extends Widget {
    * @autocast
    */
   @property()
-  @renderable(["viewModel.state"])
   viewModel = new ScaleBarViewModel();
 
   //--------------------------------------------------------------------------
@@ -388,12 +381,21 @@ class ScaleBar extends Widget {
   private _handleRootCreateOrUpdate(node: Element): void {
     const vm = this.viewModel;
 
-    if (vm) {
-      const rect = node.getBoundingClientRect();
-      const x = rect.left + window.pageXOffset;
-      const y = rect.top + window.pageYOffset;
+    if (!vm) {
+      return;
+    }
 
-      vm.scaleComputedFrom = createScreenPoint(x, y);
+    const rect = node.getBoundingClientRect();
+    const x = rect.left + window.pageXOffset;
+    const y = rect.top + window.pageYOffset;
+    const futureScreenPoint = createScreenPoint(x, y);
+
+    const referenceScreenPointChanged =
+      futureScreenPoint.x !== vm.scaleComputedFrom.x ||
+      futureScreenPoint.y !== vm.scaleComputedFrom.y;
+
+    if (referenceScreenPointChanged) {
+      vm.scaleComputedFrom = futureScreenPoint;
     }
   }
 }

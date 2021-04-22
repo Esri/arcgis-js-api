@@ -1,12 +1,12 @@
 // esri.core.accessorSupport
-import { subclass } from "esri/core/accessorSupport/decorators";
+import { subclass } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, isWidget, hasDomNode } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx, isWidget, hasDomNode } from "esri/../support/widget";
 
 export const FeatureContentMixin = <TBase extends Constructor<Widget>>(Base: TBase) => {
   @subclass("esri.widgets.Feature.ContentMixin")

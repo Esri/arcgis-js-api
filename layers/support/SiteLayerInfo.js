@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,o,t,s,i,n,p,c,u,l){"use strict";let a=function(r){function o(e){var o;return(o=r.call(this,e)||this).layerId=null,o.siteIdField=null,o.nameField=null,o}return e._inheritsLoose(o,r),o}(l.JSONSupport);return r.__decorate([i.property({type:String,json:{write:!0,origins:{"web-scene":{write:!1}}}})],a.prototype,"layerId",void 0),r.__decorate([i.property({type:String,json:{write:!0,origins:{"web-scene":{write:!1}}}})],a.prototype,"siteIdField",void 0),r.__decorate([i.property({type:String,json:{write:!0,origins:{"web-scene":{write:!1}}}})],a.prototype,"nameField",void 0),a=r.__decorate([n.subclass("esri.layers.support.SiteLayerInfo")],a),a}));

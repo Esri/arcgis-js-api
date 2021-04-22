@@ -124,6 +124,7 @@
     font-size: 100%;
     font-family: inherit;
     color: inherit;
+    text-align: initial;
   }
   .esri-popup__header-container--button:hover {
     background-color: $background-color--hover;
@@ -189,7 +190,7 @@
     font-size: $font-size--small;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex: 0 0 auto;
   }
   /* ACTIONS MENU */
@@ -286,30 +287,30 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 70%;
+    width: 100%;
+    margin: 0 $side-spacing--half;
     position: relative;
     &:only-child {
       width: 100%;
       max-width: unset;
       justify-content: flex-start;
-      > .esri-popup__action,
-      > .esri-popup__action-toggle {
-        max-width: 24%;
-      }
       .esri-popup__actions-menu-button {
         margin-left: auto;
       }
     }
     > .esri-popup__action,
     > .esri-popup__action-toggle {
-      margin: 0 $side-spacing--half;
-      max-width: 36%;
+      flex: 0 1 auto;
     }
     .esri-popup__icon,
     [class*="esri-icon"] {
       margin: 0 $side-spacing--quarter;
     }
   }
+  .esri-popup__footer--has-pagination .esri-popup__inline-actions-container {
+    width: 70%;
+  }
+
   .esri-popup__action-toggle.esri-popup__action-toggle--on {
     background-color: $background-color--active;
     color: $interactive-font-color--hover;
@@ -326,7 +327,7 @@
     position: absolute;
     width: 100%;
     background-color: $background-color;
-    color: $interactive-font-color;
+    color: $font-color;
     z-index: $page-menu-z;
     margin: $cap-spacing--half 0;
     max-height: 0;
@@ -429,6 +430,20 @@
     max-height: 175px;
     opacity: 1;
     padding-top: 1px;
+  }
+  .esri-popup__feature-menu-loader {
+    position: sticky;
+    z-index: 2;
+    padding: 6px;
+    bottom: 10px;
+    text-align: center;
+    pointer-events: none;
+  }
+  .esri-popup__feature-menu-observer {
+    position: relative;
+    z-index: 2;
+    bottom: 20px;
+    text-align: center;
   }
   .esri-popup__loading-container {
     margin: 0 $side-spacing--half;

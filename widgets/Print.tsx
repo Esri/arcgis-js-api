@@ -27,6 +27,7 @@
  * * There is no current support for printing renderers generated from {@link module:esri/smartMapping/renderers/univariateColorSize#createContinuousRenderer univariateColorSize.createContinuousRenderer()}
  * with an above-and-below theme.
  * * There is no current support for printing legend items for layers that are sent as a client-side image in the printout.
+ * * There is no current support for printing features when using a renderer with `above-and-below` theme.
  *
  * Versioned support
  *
@@ -39,6 +40,7 @@
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
  * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
  * This has some limitations related to large size printing quality and a dependency on browser window height/width ratio.
+ * * Printing the background color of a {@link module:esri/views/MapView#background MapView} or {@link module:esri/webmap/background/ColorBackground WebMap} requires ArcGIS Server 10.9 or later.
  *
  * Behavior notes
  *
@@ -113,7 +115,7 @@ import type PrintMessages from "esri/widgets/Print/t9n/Print";
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import Popover from "esri/widgets/support/Popover";
-import { keepMenuItemWithinView, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { keepMenuItemWithinView, messageBundle, tsx } from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -234,6 +236,10 @@ function dimensionsFromDPI(dpi: number): Pick<PrintTemplate["exportOptions"], "w
     width: Math.round(dpi * dpiUnitToWidth),
     height: Math.round(dpi * dpiUnitToHeight)
   };
+}
+
+function isValidInputNumber(value: number): boolean {
+  return !isNaN(value) && value > 0;
 }
 
 interface PrintEvent {
@@ -555,10 +561,7 @@ class Print extends Widget<PrintEvents> {
    *     });
    *   });
    */
-  @property({
-    type: FileLinkCollection
-  })
-  @renderable()
+  @property({ type: FileLinkCollection })
   exportedLinks: Collection<FileLink> = new FileLinkCollection();
 
   //----------------------------------
@@ -630,7 +633,6 @@ class Print extends Widget<PrintEvents> {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Print/t9n/Print")
   messages: PrintMessages;
 
@@ -647,7 +649,6 @@ class Print extends Widget<PrintEvents> {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages;
 
@@ -716,7 +717,6 @@ class Print extends Widget<PrintEvents> {
    * @type {module:esri/widgets/Print/TemplateOptions}
    * @autocast
    */
-  @renderable()
   @property({
     type: TemplateOptions
   })
@@ -738,7 +738,6 @@ class Print extends Widget<PrintEvents> {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
   view: MapView = null;
 
   //----------------------------------
@@ -759,7 +758,6 @@ class Print extends Widget<PrintEvents> {
   @property({
     type: PrintViewModel
   })
-  @renderable(["viewModel.defaultTemplates", "viewModel.templatesInfo", "viewModel.state"])
   viewModel: PrintViewModel = new PrintViewModel();
 
   //--------------------------------------------------------------------------
@@ -1087,7 +1085,7 @@ class Print extends Widget<PrintEvents> {
         aria-labelledby={`${this.id}__layoutTab`}
         class={CSS.layoutSection}
         role="tabpanel"
-        aria-selected={this._layoutTabSelected}
+        aria-selected={this._layoutTabSelected.toString()}
       >
         <div class={CSS.panelContainer}>
           {titleOrFileNameSection}
@@ -1133,7 +1131,7 @@ class Print extends Widget<PrintEvents> {
       <section
         key="esri-print__mapOnlyContent"
         id={`${this.id}__mapOnlyContent`}
-        aria-selected={!this._layoutTabSelected}
+        aria-selected={(!this._layoutTabSelected).toString()}
         aria-labelledby={`${this.id}__mapOnlyTab`}
         class={CSS.mapOnlySection}
         role="tabpanel"
@@ -1623,10 +1621,24 @@ class Print extends Widget<PrintEvents> {
   }
 
   private _updateInputValue(e: Event): void {
-    const target = e.target as HTMLInputElement;
-    const targetProperty = target.getAttribute("data-input-name");
+    const input = e.target as HTMLInputElement;
+    const targetProperty = input.getAttribute("data-input-name");
 
-    this.templateOptions[targetProperty] = target.value;
+    let value: string | number;
+
+    if (input.type === "number") {
+      if (!isValidInputNumber(input.valueAsNumber)) {
+        const prevValue = this.templateOptions[targetProperty];
+        input.value = `${prevValue}`;
+        return;
+      }
+
+      value = input.valueAsNumber;
+    } else {
+      value = input.value;
+    }
+
+    this.templateOptions[targetProperty] = value;
   }
 
   private _handleDPIChange(event: Event): void {

@@ -22,7 +22,8 @@ $button-color: $Calcite_Vibrant_Blue_150;
 $button-color--inverse: $background-color;
 
 // Inverse
-$interactive-font-color--inverse: $interactive-font-color;
+$interactive-font-color--inverse: $background-color;
+$background-color--inverse: $interactive-font-color;
 
 // Selected
 $border-color--active: $interactive-font-color;

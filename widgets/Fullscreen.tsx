@@ -37,8 +37,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -51,7 +51,7 @@ import FullscreenMessages from "esri/widgets/Fullscreen/t9n/Fullscreen";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-fullscreen esri-widget--button esri-widget",
@@ -111,11 +111,7 @@ class Fullscreen extends Widget {
   /**
    * @todo document.
    */
-  @property({
-    readOnly: true,
-    dependsOn: ["viewModel.state", "messages"]
-  })
-  @renderable()
+  @property({ readOnly: true })
   get fullscreenTitle(): string {
     const state = this.viewModel?.state;
 
@@ -153,7 +149,6 @@ class Fullscreen extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Fullscreen/t9n/Fullscreen")
   messages: FullscreenMessages = null;
 
@@ -170,7 +165,7 @@ class Fullscreen extends Widget {
    * @instance
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -190,7 +185,6 @@ class Fullscreen extends Widget {
   @property({
     type: FullscreenViewModel
   })
-  @renderable("viewModel.state")
   viewModel = new FullscreenViewModel();
 
   //--------------------------------------------------------------------------

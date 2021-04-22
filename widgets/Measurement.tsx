@@ -9,7 +9,7 @@
  * interfaces or other customized UI. See the [Measurement widget sample](../sample-code/widgets-measurement/index.html)
  * for an example of this flexibility.
  *
- * [![measurement-widget](../../assets/img/apiref/widgets/measurement_widget_2D_distance_3D_area.png)](../sample-code/widgets-measurement/index.html)
+ * [![measurement-widget](../assets/img/apiref/widgets/measurement_widget_2D_distance_3D_area.png)](../sample-code/widgets-measurement/index.html)
  *
  * For 2D MapViews, distances are computed geodetically for geographic coordinate systems and web mercator.
  * For non-web mercator projected coordinate systems, computations will be performed planimetrically for distances
@@ -70,8 +70,8 @@ import { SystemOrAreaUnit, SystemOrLengthUnit } from "esri/core/unitUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import AreaMeasurement2D from "esri/widgets/AreaMeasurement2D";
@@ -89,7 +89,7 @@ import MeasurementMessages from "esri/widgets/Measurement/t9n/Measurement";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-measurement",
@@ -238,10 +238,7 @@ class Measurement extends Widget {
    * view.ui.add(measurement, "top-right");
    * console.log("Active Widget: ", measurement.activeWidget);
    */
-  @property({
-    readOnly: true
-  })
-  @renderable()
+  @property({ readOnly: true })
   readonly activeWidget: MeasurementWidget = null;
 
   // ----------------------------------
@@ -341,7 +338,6 @@ class Measurement extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Measurement/t9n/Measurement")
   messages: MeasurementMessages = null;
 
@@ -365,8 +361,7 @@ class Measurement extends Widget {
    * });
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -396,7 +391,6 @@ class Measurement extends Widget {
   @property({
     type: MeasurementViewModel
   })
-  @renderable(["viewModel.state"])
   viewModel: MeasurementViewModel = new MeasurementViewModel();
 
   //--------------------------------------------------------------------------

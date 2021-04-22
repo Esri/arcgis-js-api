@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../../../core/promiseUtils"],(function(e,r){"use strict";let t=function(){function e(){this._resolver=null}var t=e.prototype;return t.isHeld=function(){return!!this._resolver},t.acquire=function(){return this._resolver?this._resolver.promise.then((()=>this.acquire())):(this._resolver=r.createResolver(),r.resolve())},t.release=function(){const e=this._resolver;this._resolver=null,e.resolve()},e}();e.default=t,e.withLock=function(e,r,t){return e.acquire().then((()=>r(t))).then((()=>e.release())).catch((r=>{throw e.release(),r}))},Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../../../../core/promiseUtils"],(function(e,r){"use strict";let t=function(){function e(){this._resolver=null}var t=e.prototype;return t.isHeld=function(){return!!this._resolver},t.acquire=async function(){if(!this._resolver)return this._resolver=r.createResolver(),Promise.resolve();await this._resolver.promise,await this.acquire()},t.release=function(){const e=this._resolver;this._resolver=null,e.resolve()},e}();async function s(e,r,t){try{await e.acquire(),await r(t),e.release()}catch(s){throw e.release(),s}}e.default=t,e.withLock=s,Object.defineProperty(e,"__esModule",{value:!0})}));

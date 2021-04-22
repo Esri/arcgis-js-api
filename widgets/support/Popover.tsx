@@ -7,26 +7,26 @@
  * @private
  */
 
+// @popperjs
+import { createPopper } from "@popperjs/core";
+
 // esri.core
-import { byId, remove } from "esri/core/domUtils";
-import { isNone, isSome, Maybe } from "esri/core/maybe";
-import { init } from "esri/core/watchUtils";
+import { byId, remove } from "esri/../core/domUtils";
+import { isNone, isSome, Maybe } from "esri/../core/maybe";
+import { init } from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/core/accessorSupport/decorators";
+import { property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.libs.maquette
-import { VNode as MaquetteVNode } from "esri/libs/maquette/index";
-
-// esri.libs.popper
-import { createPopper } from "esri/libs/popper/index";
+import { VNode as MaquetteVNode } from "esri/../libs/maquette/index";
 
 // esri.widgets
 import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
-import { renderable, tsx } from "esri/widgets/widget";
+import { tsx } from "esri/widgets/widget";
 
 type NodeReference = HTMLElement | string;
 type GetNodeReferenceFunction = () => NodeReference;
@@ -165,7 +165,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @todo revisit description and type (Fn)
    */
   @property()
-  @renderable()
   anchorElement: NodeReference | GetNodeReferenceFunction | null = null;
 
   //----------------------------------
@@ -194,7 +193,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @private
    */
   @property()
-  @renderable()
   offset = [0, 0];
 
   //----------------------------------
@@ -209,7 +207,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @instance
    */
   @property()
-  @renderable()
   open = false;
 
   //----------------------------------
@@ -226,7 +223,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   set owner(value: W) {
     this._set("owner", value);
   }
@@ -246,7 +242,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   get placement(): Placement {
     return "top";
   }
@@ -273,7 +268,6 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @todo revisit description and type
    */
   @property()
-  @renderable()
   renderContentFunction: () => VNode = null;
 
   //--------------------------------------------------------------------------

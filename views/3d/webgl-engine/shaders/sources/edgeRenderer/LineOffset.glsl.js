@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,a,l,r){"use strict";e.LineOffset=function(e,u){const s=e.vertex;e.include(r.UnpackAttributes,u);const c=e.fragment;switch(l.EdgeUtil.usesSketchLogic(u)&&(s.uniforms.add("uStrokesTextureScale","vec2"),s.uniforms.add("uStrokesLog2Resolution","float"),s.uniforms.add("uStrokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),c.uniforms.add("uStrokesTexture","sampler2D"),c.uniforms.add("uStrokesNormalizationScale","float"),s.code.add(t.glsl`
+define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,a,l,r){"use strict";function u(e,u){const s=e.vertex;e.include(r.UnpackAttributes,u);const c=e.fragment;switch(l.EdgeUtil.usesSketchLogic(u)&&(s.uniforms.add("uStrokesTextureScale","vec2"),s.uniforms.add("uStrokesLog2Resolution","float"),s.uniforms.add("uStrokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),c.uniforms.add("uStrokesTexture","sampler2D"),c.uniforms.add("uStrokesNormalizationScale","float"),s.code.add(t.glsl`
       void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
         vec2 sidenessNorm = unpackedAttributes.sidenessNorm;
 
@@ -70,4 +70,4 @@ define(["exports","../../../core/shaderModules/interfaces","../../../core/shader
             return 1.0;
           }
         }
-      `)}},Object.defineProperty(e,"__esModule",{value:!0})}));
+      `)}}e.LineOffset=u,Object.defineProperty(e,"__esModule",{value:!0})}));

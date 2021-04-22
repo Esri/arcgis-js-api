@@ -1,39 +1,40 @@
 // esri
-import * as intl from "esri/intl";
+import * as intl from "esri/../../intl";
 
 // esri.core
-import Collection from "esri/core/Collection";
+import Collection from "esri/../../core/Collection";
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/core/accessorSupport/decorators";
+import { property, subclass } from "esri/../../core/accessorSupport/decorators";
 
 // esri.layers
-import ImageryLayer from "esri/layers/ImageryLayer";
-import Layer from "esri/layers/Layer";
+import ImageryLayer from "esri/../../layers/ImageryLayer";
+import Layer from "esri/../../layers/Layer";
 
 // esri.widgets
 import {
   ColorRampElement,
   StretchRampElement,
   HeatmapRampElement,
-  UnivariateAboveAndBelowRampElement,
+  UnivariateColorSizeRampElement,
   LegendElement,
   OpacityRampElement,
   RendererTitle,
   SymbolTableElement,
   ImageSymbolTableElementInfo,
   ColorRampStop
-} from "esri/interfaces";
-import Widget from "esri/Widget";
+} from "esri/../interfaces";
+import Widget from "esri/../Widget";
 
 // esri.widgets.Legend.styles.support
+import { renderRelationshipRamp } from "esri/widgets/support/relationshipUtils";
 import {
-  renderRelationshipRamp,
-  getUnivariateAboveAndBelowColorRampPreview,
-  getUnivariateAboveAndBelowColorRampSize,
-  getUnivariateAboveAndBelowColorRampMargin,
-  getUnivariateAboveAndBelowRampElements
-} from "esri/widgets/support/utils";
+  getUnivariateColorRampPreview,
+  getUnivariateColorRampSize,
+  getUnivariateColorRampMargin,
+  getUnivariateAboveAndBelowRampElements,
+  getUnivariateColorSizeRampElements
+} from "esri/widgets/support/univariateUtils";
 
 // esri.widgets.Legend.support
 import ActiveLayerInfo from "esri/support/ActiveLayerInfo";
@@ -48,8 +49,8 @@ import {
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { messageBundle, tsx } from "esri/../support/widget";
 
 const CSS = {
   service: "esri-legend__service",
@@ -116,7 +117,6 @@ class Classic extends Widget {
   //  activeLayerInfos
   //----------------------------------
 
-  @renderable()
   @property()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
 
@@ -135,7 +135,6 @@ class Classic extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Legend/t9n/Legend")
   messages: LegendMessages = null;
 
@@ -230,7 +229,7 @@ class Classic extends Widget {
       };
 
       return (
-        <div key={key} class={this.classes(CSS.service, layerClasses)}>
+        <div key={key} class={this.classes(CSS.service, layerClasses)} tabIndex={0}>
           {labelNode}
           <div class={CSS.layer}>{filteredElements}</div>
         </div>
@@ -276,6 +275,8 @@ class Classic extends Widget {
       content = renderRelationshipRamp(legendElement, this.id, layer.opacity);
     } else if (legendElement.type === "univariate-above-and-below-ramp") {
       content = this._renderUnivariateAboveAndBelowRamp(legendElement, layer.opacity);
+    } else if (legendElement.type === "univariate-color-size-ramp") {
+      content = this._renderUnivariateColorSizeRamp(legendElement, layer.opacity);
     }
 
     if (!content) {
@@ -313,31 +314,31 @@ class Classic extends Widget {
   }
 
   private _renderUnivariateAboveAndBelowRamp(
-    legendElement: UnivariateAboveAndBelowRampElement,
+    legendElement: UnivariateColorSizeRampElement,
     opacity: number
   ): VNode {
     const { sizeRampElement, colorRampElement } = getUnivariateAboveAndBelowRampElements(
       legendElement,
       opacity
     );
-    const colorRampAboveHeight = getUnivariateAboveAndBelowColorRampSize(sizeRampElement, "above");
-    const colorRampBelowHeight = getUnivariateAboveAndBelowColorRampSize(sizeRampElement, "below");
+    const colorRampAboveHeight = getUnivariateColorRampSize(sizeRampElement, "above", true);
+    const colorRampBelowHeight = getUnivariateColorRampSize(sizeRampElement, "below", true);
     const colorRampWidth = 12;
-    const colorRampAbovePreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+    const colorRampAbovePreview = getUnivariateColorRampPreview(colorRampElement, {
       width: colorRampWidth,
       height: colorRampAboveHeight,
       rampAlignment: "vertical",
       opacity,
       type: "above"
     });
-    const colorRampBelowPreview = getUnivariateAboveAndBelowColorRampPreview(colorRampElement, {
+    const colorRampBelowPreview = getUnivariateColorRampPreview(colorRampElement, {
       width: colorRampWidth,
       height: colorRampBelowHeight,
       rampAlignment: "vertical",
       opacity,
       type: "below"
     });
-    const colorRampTopMargin = getUnivariateAboveAndBelowColorRampMargin(sizeRampElement);
+    const colorRampTopMargin = getUnivariateColorRampMargin(sizeRampElement);
 
     const labels = sizeRampElement.infos.map((stop) => stop.label);
     const aboveRampLabels = labels.map((label, index) => {
@@ -361,9 +362,11 @@ class Classic extends Widget {
         <div />
       ) : null;
     });
+    const endIndex = labels.length - 1;
+    const midIndex = Math.floor(labels.length / 2);
     const belowRampLabels = labels.map((label, index) => {
-      const isEndLabel = index === 4;
-      const isMidLabel = index === 2;
+      const isEndLabel = index === endIndex;
+      const isMidLabel = index === midIndex;
 
       return isMidLabel || isEndLabel ? (
         <div
@@ -435,6 +438,72 @@ class Classic extends Widget {
             </div>
           </div>
         ) : null}
+      </div>
+    );
+  }
+
+  private _renderUnivariateColorSizeRamp(
+    legendElement: UnivariateColorSizeRampElement,
+    opacity: number
+  ): VNode {
+    const { sizeRampElement, colorRampElement } = getUnivariateColorSizeRampElements(legendElement);
+    const colorRampTopMargin = getUnivariateColorRampMargin(sizeRampElement);
+    const colorRampWidth = 12;
+    const colorRampHeight = getUnivariateColorRampSize(sizeRampElement, "full", false);
+    const colorRampPreview = getUnivariateColorRampPreview(colorRampElement, {
+      width: colorRampWidth,
+      height: colorRampHeight,
+      rampAlignment: "vertical",
+      opacity,
+      type: "full"
+    });
+    const endIndex = sizeRampElement.infos.length - 1;
+    const labels = sizeRampElement.infos.map((stop, index) =>
+      index === 0 || index === endIndex ? (
+        <div
+          key={index}
+          class={
+            stop.label
+              ? colorRampElement
+                ? CSS.univariateAboveAndBelowLabel
+                : CSS.rampLabel
+              : null
+          }
+        >
+          {stop.label}
+        </div>
+      ) : null
+    );
+    const sizeRampPreviewStyles = { display: "table-cell", verticalAlign: "middle" };
+    const colorRampPreviewStyles = { marginTop: `${colorRampTopMargin}px` };
+    const colorRampLabelStyles = { height: `${colorRampHeight}px` };
+
+    return (
+      <div key="univariate-above-and-below-ramp-preview" styles={univariateRampContainerStyles}>
+        <div class={CSS.layerBody}>
+          {sizeRampElement.infos.map((info) => (
+            <div class={this.classes(CSS.layerRow, CSS.sizeRamp)}>
+              <div
+                class={CSS.symbol}
+                styles={sizeRampPreviewStyles}
+                bind={info.preview}
+                afterCreate={attachToNode}
+              />
+            </div>
+          ))}
+        </div>
+        <div styles={colorRampPreviewStyles} key="color-ramp-preview">
+          <div styles={univariateColorRampContainerStyles}>
+            <div styles={univariateColorRampStyles}>
+              <div class={CSS.rampContainer} bind={colorRampPreview} afterCreate={attachToNode} />
+            </div>
+            <div styles={univariateColorRampStyles}>
+              <div class={CSS.rampLabelsContainer} styles={colorRampLabelStyles}>
+                {labels}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

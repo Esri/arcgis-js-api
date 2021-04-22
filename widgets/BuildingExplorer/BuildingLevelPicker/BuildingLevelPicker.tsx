@@ -1,15 +1,15 @@
 // esri.core
-import { on } from "esri/core/events";
-import Handles from "esri/core/Handles";
-import { clamp } from "esri/core/mathUtils";
-import { Maybe, isSome } from "esri/core/maybe";
-import * as watchUtils from "esri/core/watchUtils";
+import { on } from "esri/../../core/events";
+import Handles from "esri/../../core/Handles";
+import { clamp } from "esri/../../core/mathUtils";
+import { Maybe, isSome } from "esri/../../core/maybe";
+import * as watchUtils from "esri/../../core/watchUtils";
 
 // esri.core.accessorSupport
-import { subclass, property, aliasOf } from "esri/core/accessorSupport/decorators";
+import { subclass, property, aliasOf } from "esri/../../core/accessorSupport/decorators";
 
 // esri.widgets
-import Widget from "esri/Widget";
+import Widget from "esri/../Widget";
 
 // esri.widgets.BuildingExplorer
 import BuildingLevel from "esri/BuildingLevel";
@@ -20,8 +20,8 @@ import { Label } from "esri/widgets/Label";
 import { LevelItem } from "esri/widgets/LevelItem";
 
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
-import { tsx, renderable, storeNode } from "esri/support/widget";
+import { VNode } from "esri/../support/interfaces";
+import { tsx, storeNode } from "esri/../support/widget";
 
 interface Messages {
   selectLevel: string;
@@ -98,7 +98,6 @@ class BuildingLevelPicker extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingLevel })
-  @renderable(["viewModel.hasNext", "viewModel.hasPrevious"])
   viewModel = this._defaultViewModel;
 
   /**
@@ -126,14 +125,12 @@ class BuildingLevelPicker extends Widget {
    * The widgets which represent the levels in the level stack visualization.
    */
   @property()
-  @renderable()
   private _levelWidgets: LevelItem[] = [];
 
   /**
    * Widget used to display the currently selected level or a label asking the user to select one.
    */
   @property()
-  @renderable()
   private _labelWidget: Label = new Label({
     onClear: () => this.viewModel.clear()
   });
@@ -142,28 +139,24 @@ class BuildingLevelPicker extends Widget {
    * The level item which is currently being hovered/focused.
    */
   @property()
-  @renderable()
   private _hoveredLevel: Maybe<number> = null;
 
   /**
    * How information about the levels which are to be displayed.
    */
   @aliasOf("viewModel.allowedValues")
-  @renderable()
   private readonly _levels: readonly number[];
 
   /**
    * The number of levels to be displayed in the widget.
    */
   @aliasOf("_levels.length")
-  @renderable()
   private _numLevels: number;
 
   /**
    * The height of the levels container when no level is hovered.
    */
-  @property({ readOnly: true, dependsOn: ["_numLevels", "_levelHeight"] })
-  @renderable()
+  @property({ readOnly: true })
   private get _levelsHeight(): number {
     return Math.round(this._levelHeight * this._numLevels);
   }
@@ -173,15 +166,13 @@ class BuildingLevelPicker extends Widget {
    * the size of the levels when expanded.
    */
   @property()
-  @renderable()
   private _expandedLevelsHeight: number = undefined;
 
   /**
    * Margin we need to apply to the levels in order to compensate for their
    * expansion such that they are still properly aligned.
    */
-  @property({ readOnly: true, dependsOn: ["_expandedLevelsHeight", "_levelsHeight"] })
-  @renderable()
+  @property({ readOnly: true })
   private get _expandedLevelsMargin(): number {
     return Math.round((this._expandedLevelsHeight - this._levelsHeight) / 2);
   }
@@ -189,7 +180,7 @@ class BuildingLevelPicker extends Widget {
   /**
    * The width of each level item.
    */
-  @property({ readOnly: true, dependsOn: ["_numLevels"] })
+  @property({ readOnly: true })
   private get _levelWidth(): number {
     const { LEVEL_WIDTH_NOMINATOR: x, LEVEL_WIDTH_CONSTANT: c } = constants;
     const width = x / Math.sqrt(this._numLevels) + c;
@@ -200,7 +191,7 @@ class BuildingLevelPicker extends Widget {
   /**
    * The height of each level item.
    */
-  @property({ readOnly: true, dependsOn: ["_numLevels"] })
+  @property({ readOnly: true })
   private get _levelHeight(): number {
     const defaultHeight = constants.LEVEL_HEIGHT_DEFAULT;
     const height = (defaultHeight * 2) / Math.sqrt(this._numLevels);
@@ -211,7 +202,7 @@ class BuildingLevelPicker extends Widget {
    * Property that determines how many levels after and before the hovered level have their size changed, according
    * to the gaussian size function.
    */
-  @property({ readOnly: true, dependsOn: ["_numLevels"] })
+  @property({ readOnly: true })
   private get _gaussianFactor(): number {
     const n = this._numLevels;
     return (
@@ -224,8 +215,7 @@ class BuildingLevelPicker extends Widget {
    * Note that this isn't necessarily the hovered/focused level because we can also tab into levels.
    */
   @property({
-    readOnly: true,
-    dependsOn: ["_levels", "_numLevels", "_hovering", "_normalizedPointerPosition"]
+    readOnly: true
   })
   private get _levelClosestToPointer(): Maybe<number> {
     if (!this._hovering) {
@@ -242,7 +232,6 @@ class BuildingLevelPicker extends Widget {
    * Pointer position relative to the levels container (0 at the top and 1 at the bottom).
    */
   @property({ type: Number, range: { min: 0, max: 1 } })
-  @renderable()
   private _normalizedPointerPosition: number = 0;
 
   /**

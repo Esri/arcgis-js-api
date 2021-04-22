@@ -12,7 +12,7 @@
  * it will be displayed with a gray color. This happens when either the target or the observer
  * are not in the view, or when neither of them are in the view.
  *
- * ![line-of-sight](../../assets/img/apiref/widgets/line-of-sight.png)
+ * ![line-of-sight](../assets/img/apiref/widgets/line-of-sight.png)
  *
  * To use the widget, instantiate it and add it to the view:
  * ```js
@@ -55,7 +55,7 @@ import { ignoreAbortErrors } from "esri/core/promiseUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import SceneView from "esri/views/SceneView";
+import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -68,12 +68,13 @@ import LineOfSightMessages from "esri/widgets/LineOfSight/t9n/LineOfSight";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   // common
   button: "esri-button esri-button--secondary",
   buttonDisabled: "esri-button--disabled",
+  widgetIcon: "esri-icon-line-of-sight",
   // base
   base: "esri-line-of-sight esri-widget esri-widget--panel",
   // container
@@ -120,6 +121,38 @@ class LineOfSight extends Widget {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/LineOfSight/t9n/LineOfSight")
+  messages: LineOfSightMessages = null;
+
+  //------------------------
+  // iconClass
+  //------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -137,25 +170,6 @@ class LineOfSight extends Widget {
   label: string = undefined;
 
   //----------------------------------
-  //  messages
-  //----------------------------------
-
-  /**
-   * The widget's message bundle
-   *
-   * @instance
-   * @name messages
-   * @type {Object}
-   *
-   * @ignore
-   * @todo revisit doc
-   */
-  @property()
-  @renderable()
-  @messageBundle("esri/widgets/LineOfSight/t9n/LineOfSight")
-  messages: LineOfSightMessages = null;
-
-  //----------------------------------
   //  view
   //----------------------------------
   /**
@@ -166,7 +180,7 @@ class LineOfSight extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: SceneView = null;
+  view: ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -180,7 +194,6 @@ class LineOfSight extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  @renderable()
   visible: boolean;
 
   //----------------------------------
@@ -195,7 +208,6 @@ class LineOfSight extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.active")
-  @renderable()
   active: boolean;
 
   //----------------------------------
@@ -215,7 +227,6 @@ class LineOfSight extends Widget {
   @property({
     type: LineOfSightViewModel
   })
-  @renderable(["viewModel.state", "viewModel.isSupported"])
   viewModel: LineOfSightViewModel = new LineOfSightViewModel();
 
   //--------------------------------------------------------------------------

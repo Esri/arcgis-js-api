@@ -3,7 +3,7 @@
  * It displays a list of {@link module:esri/webmap/Bookmark bookmarks},
  * which are typically defined inside the {@link module:esri/WebMap#bookmarks WebMap}.
  *
- * ![bookmarks](../../assets/img/apiref/widgets/bookmarks.png)
+ * ![bookmarks](../assets/img/apiref/widgets/bookmarks.png)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -36,9 +36,6 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 // esri.core.t9n
 import UnitsMessages from "esri/core/t9n/Units";
 
-// esri.libs.sortablejs
-import Sortable from "esri/libs/sortablejs/Sortable";
-
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
@@ -69,7 +66,10 @@ import ButtonMenuItem from "esri/widgets/FeatureTable/Grid/support/ButtonMenuIte
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+import { tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+
+// sortablejs
+import Sortable from "sortablejs";
 
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
@@ -299,12 +299,10 @@ class Bookmarks extends Widget {
   @property({
     type: BookmarksUserState
   })
-  @renderable(["state", "editedBookmark", "loading", "validationState"])
   private _userState: BookmarksUserState = null;
 
   @property({
-    readOnly: true,
-    dependsOn: ["messages", "_userState.editedBookmark.thumbnail.url"]
+    readOnly: true
   })
   get _editMenuItems(): ButtonMenuItem[] {
     const { messages, _userState } = this;
@@ -336,8 +334,7 @@ class Bookmarks extends Widget {
   }
 
   @property({
-    readOnly: true,
-    dependsOn: ["messages", "_editMenuItems"]
+    readOnly: true
   })
   get _editMenu(): ButtonMenu {
     const { _editMenuItems, messages } = this;
@@ -398,9 +395,7 @@ class Bookmarks extends Widget {
    * });
    *
    */
-  @property({
-    dependsOn: ["viewModel.defaultCreateOptions"]
-  })
+  @property()
   get bookmarkCreationOptions(): BookmarkOptions {
     deprecatedProperty(logger, "bookmarkCreationOptions", {
       replacement: "defaultCreateOptions",
@@ -507,7 +502,6 @@ class Bookmarks extends Widget {
    * @since 4.15
    * @default false
    */
-  @renderable()
   @property()
   disabled = false;
 
@@ -520,12 +514,12 @@ class Bookmarks extends Widget {
    * When `true`, allows bookmarks to be added, edited,
    * reordered, or deleted from within the widget.
    *
-   * ![bookmarks-editing1](../../assets/img/apiref/widgets/bookmarks-editing1.png)
+   * ![bookmarks-editing1](../assets/img/apiref/widgets/bookmarks-editing1.png)
    *
    * When the "edit" icon is clicked, the scale, rotation, and extent of the view will update to match the bookmark's viewpoint.
    * The following form opens to allow the user to edit the bookmark's title, thumbnail, and viewpoint.
    *
-   * ![bookmarks-editing2](../../assets/img/apiref/widgets/bookmarks-editing2.png)
+   * ![bookmarks-editing2](../assets/img/apiref/widgets/bookmarks-editing2.png)
    *
    * **Since 4.17:** The thumbnail can be "refreshed" (updated to a screenshot of the view's current extent), added from a URL (HTTPS protocol required), or removed.
    * When the "Save" button is clicked, the bookmark's viewpoint is updated to match the current scale, rotation, and extent of the view.
@@ -540,7 +534,6 @@ class Bookmarks extends Widget {
    * @since 4.13
    * @default false
    */
-  @renderable()
   @property()
   editingEnabled = false;
 
@@ -596,7 +589,6 @@ class Bookmarks extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Bookmarks/t9n/Bookmarks")
   messages: BookmarksMessages = null;
 
@@ -613,7 +605,6 @@ class Bookmarks extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -630,7 +621,6 @@ class Bookmarks extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -664,7 +654,6 @@ class Bookmarks extends Widget {
    * @autocast
    */
   @property({ type: BookmarksViewModel })
-  @renderable(["activeBookmark", "state", "bookmarks"])
   @vmEvent(["select-bookmark", "bookmark-edit", "bookmark-select"])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
@@ -700,7 +689,6 @@ class Bookmarks extends Widget {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -1184,8 +1172,6 @@ class Bookmarks extends Widget {
   }
 
   private _dragHandleKeydown(event: KeyboardEvent): void {
-    event.stopPropagation();
-
     const { _sortableSavedItems } = this;
 
     const SELECTION_KEYS = ["ArrowDown", "ArrowUp", "Escape", "Tab", " ", "Enter"];
@@ -1219,6 +1205,7 @@ class Bookmarks extends Widget {
     }
 
     if (key === "Escape" && _sortableSavedItems) {
+      event.stopPropagation();
       this._selectedSortUid = null;
       this._updateSortItems(_sortableSavedItems, _sortable, uid);
       this.scheduleRender();

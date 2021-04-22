@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../core/Collection"],(function(e,r,o,t,s,l,c,p,i,n,u,a){"use strict";let d=function(r){function o(e){var o;return(o=r.call(this,e)||this).floorField=null,o.viewAllMode=!1,o.viewAllLevelIds=new a,o}return e._inheritsLoose(o,r),o}(u.JSONSupport);return r.__decorate([l.property({type:String,json:{write:!0,origins:{"web-scene":{write:!1}}}})],d.prototype,"floorField",void 0),r.__decorate([l.property({json:{read:!1,write:!1}})],d.prototype,"viewAllMode",void 0),r.__decorate([l.property({json:{read:!1,write:!1}})],d.prototype,"viewAllLevelIds",void 0),d=r.__decorate([c.subclass("esri.layers.support.LayerFloorInfo")],d),d}));

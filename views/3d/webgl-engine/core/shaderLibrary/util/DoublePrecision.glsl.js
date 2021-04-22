@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../core/has","../../shaderModules/interfaces","../../../lib/WebGLDriverTest"],(function(e,c,i,o){"use strict";e.DoublePrecision=function({code:e},c){c.doublePrecisionRequiresObfuscation?e.add(i.glsl`
+define(["exports","../../../../../../core/has","../../shaderModules/interfaces","../../../lib/WebGLDriverTest"],(function(e,c,i,o){"use strict";function r({code:e},c){c.doublePrecisionRequiresObfuscation?e.add(i.glsl`
       vec3 dpPlusFrc(vec3 a, vec3 b) {
         return mix(a, a + b, vec3(notEqual(b, vec3(0))));
       }
@@ -25,4 +25,4 @@ define(["exports","../../../../../../core/has","../../shaderModules/interfaces",
         vec3 t2 = ((hiB - e) + (hiA - (t1 - e))) + loA + loB;
         return t1 + t2;
       }
-    `)},e.doublePrecisionRequiresObfuscation=function(e){return!!c("force-double-precision-obfuscation")||o.testWebGLDriver(e).doublePrecisionRequiresObfuscation},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}function t(e){return!!c("force-double-precision-obfuscation")||o.testWebGLDriver(e).doublePrecisionRequiresObfuscation}e.DoublePrecision=r,e.doublePrecisionRequiresObfuscation=t,Object.defineProperty(e,"__esModule",{value:!0})}));

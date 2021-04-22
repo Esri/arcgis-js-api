@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/NormalUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/HeaderComment.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexTangent.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Overlay.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Skirts.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/TerrainTexture.glsl"],(function(e,o,r,a,i,l,t,n,s,v,c,d,g,m){"use strict";function u(e){const u=new a.ShaderBuilder;if(u.include(v.HeaderComment,{name:"Terrain Shader",output:e.output}),u.include(g.Skirts),u.attributes.add("position","vec3"),u.attributes.add("uv0","vec2"),u.vertex.uniforms.add("proj","mat4").add("view","mat4").add("origin","vec3").add("skirtScale","float"),0===e.output){u.include(r.Transform,{linearDepth:!1}),u.include(n.NormalUtils,e),u.include(m.TerrainTexture,e);const a=0!==e.overlayMode,l=2===e.overlayMode;a&&u.include(d.Overlay,{pbrMode:3,useCustomDTRExponentForWater:!1,ssrEnabled:e.ssrEnabled,highStepCount:e.highStepCount}),l&&u.include(c.VertexTangent,e),u.varyings.add("vnormal","vec3"),u.varyings.add("vpos","vec3"),u.vertex.uniforms.add("viewNormal","mat4"),e.receiveShadows&&u.varyings.add("linearDepth","float"),e.tileBorders&&u.varyings.add("vuv","vec2"),e.atmosphere&&(u.vertex.uniforms.add("lightingMainDirection","vec3"),u.varyings.add("wnormal","vec3"),u.varyings.add("wlight","vec3")),e.screenSizePerspective&&(u.vertex.uniforms.add("screenSizePerspective","vec4"),u.varyings.add("screenSizeDistanceToCamera","float"),u.varyings.add("screenSizeCosAngle","float")),u.vertex.code.add(o.glsl`
       void main(void) {
@@ -10,7 +10,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
         vec2 uv = uv0;
         vpos = applySkirts(uv, vpos, vnormal, skirtScale);
         ${e.atmosphere?o.glsl`
-        wnormal = (viewNormal * vec4(normalize(vpos+origin), 1.0)).xyz;
+        wnormal = (viewNormal * vec4(normalize(vpos + origin), 1.0)).xyz;
         wlight = (view  * vec4(-lightingMainDirection, 1.0)).xyz;`:""}
         ${e.tileBorders?o.glsl`vuv = uv;`:""}
         ${e.screenSizePerspective?o.glsl`

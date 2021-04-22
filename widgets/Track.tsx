@@ -3,7 +3,7 @@
  * to the user's location when clicked. The view rotates according to the direction where the
  * tracked device is heading towards. While tracking, the default button looks like the following:
  *
- * ![track-button](../../assets/img/apiref/widgets/widgets-track.png)
+ * ![track-button](../assets/img/apiref/widgets/widgets-track.png)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view. The snippet below demonstrates this.
@@ -48,8 +48,8 @@ import Graphic from "esri/Graphic";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -57,7 +57,7 @@ import Widget from "esri/widgets/Widget";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx, vmEvent } from "esri/widgets/support/widget";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 // esri.widgets.Track
 import TrackViewModel from "esri/widgets/Track/TrackViewModel";
@@ -241,7 +241,6 @@ class Track extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Track/t9n/Track")
   messages: TrackMessages = null;
 
@@ -337,8 +336,7 @@ class Track extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -358,7 +356,6 @@ class Track extends Widget {
   @property({
     type: TrackViewModel
   })
-  @renderable("viewModel.state")
   @vmEvent(["track", "track-error"])
   viewModel = new TrackViewModel();
 

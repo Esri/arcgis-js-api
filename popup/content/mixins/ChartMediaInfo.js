@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","./MediaInfo","../support/ChartMediaInfoValue"],(function(e,r,o,t,s,c,p,a,n,u,i,l){"use strict";let d=function(r){function o(e){var o;return(o=r.call(this,e)||this).type=null,o.value=null,o}return e._inheritsLoose(o,r),o}(i);return r.__decorate([c.property({type:["bar-chart","column-chart","line-chart","pie-chart"],readOnly:!0,json:{read:!1,write:!0}})],d.prototype,"type",void 0),r.__decorate([c.property({type:l,json:{write:!0}})],d.prototype,"value",void 0),d=r.__decorate([p.subclass("esri.popup.content.mixins.ChartMediaInfo")],d),d}));

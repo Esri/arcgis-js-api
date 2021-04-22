@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderModules/interfaces"],(function(e,o){"use strict";e.DiscardNonSilhouetteEdges=function(e,l){const r=e.vertex;l.silhouette?(r.code.add(o.glsl`
+define(["exports","../../../core/shaderModules/interfaces"],(function(e,o){"use strict";function l(e,l){const r=e.vertex;l.silhouette?(r.code.add(o.glsl`
       bool isSilhouetteEdge(vec3 viewDir, vec3 normalA, vec3 normalB) {
         float faceAVisible = dot(viewDir, normalA);
         float faceBVisible = dot(viewDir, normalB);
@@ -38,4 +38,4 @@ define(["exports","../../../core/shaderModules/interfaces"],(function(e,o){"use 
       bool discardNonSilhouetteEdges(vec3 viewPos, vec3 worldPos) {
         return false;
       }
-    `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}e.DiscardNonSilhouetteEdges=l,Object.defineProperty(e,"__esModule",{value:!0})}));

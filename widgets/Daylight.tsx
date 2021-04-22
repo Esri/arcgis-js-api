@@ -5,7 +5,7 @@
  * shadows in the scene. This widget modifies the `date` and `directShadowsEnabled` properties of
  * {@link module:esri/views/SceneView#environment SceneView.environment.lighting}.
  *
- * [![daylight-default](../../assets/img/apiref/widgets/daylight/daylight-default.png)](../sample-code/widgets-daylight/index.html)
+ * [![daylight-default](../assets/img/apiref/widgets/daylight/daylight-default.png)](../sample-code/widgets-daylight/index.html)
  *
  * The daytime slider has an option to select the timezone. When the user changes the timezone, a new time
  * in that timezone is calculated and displayed in the slider. The timezone selector can be disabled
@@ -22,7 +22,7 @@
  * });
  * ```
  *
- * ![daylight-seasons](../../assets/img/apiref/widgets/daylight/daylight-seasons.png)
+ * ![daylight-seasons](../assets/img/apiref/widgets/daylight/daylight-seasons.png)
  *
  * There are two play buttons, one corresponds to the daytime slider and it animates the time as
  * it cycles through the minutes of the day. The second button corresponds to the date picker
@@ -36,7 +36,7 @@
  * });
  * ```
  *
- * ![daylight-animation](../../assets/img/apiref/widgets/daylight/daylight-animation.gif)
+ * ![daylight-animation](../assets/img/apiref/widgets/daylight/daylight-animation.gif)
  *
  * Except for the daytime slider, all the elements in the daylight widget can be hidden by using the
  * [visibleElements](#visibleElements) property:
@@ -55,7 +55,7 @@
  *
  * With these settings, the widget looks like this:
  *
- * ![daylight-no-elements](../../assets/img/apiref/widgets/daylight/daylight-no-elements.png)
+ * ![daylight-no-elements](../assets/img/apiref/widgets/daylight/daylight-no-elements.png)
  *
  * @example
  * // basic usage of the daylight widget using the default settings
@@ -83,7 +83,7 @@ import * as watchUtils from "esri/core/watchUtils";
 import { subclass, property, aliasOf, cast } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import SceneView from "esri/views/SceneView";
+import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
 import { DateOrSeason, Season } from "esri/widgets/interfaces";
@@ -107,10 +107,11 @@ import DaylightMessages from "esri/widgets/Daylight/t9n/Daylight";
 // esri.widgets.support
 import DatePicker from "esri/widgets/support/DatePicker";
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, renderable, messageBundle } from "esri/widgets/support/widget";
+import { tsx, messageBundle } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-daylight",
+  widgetIcon: "esri-icon-environment-settings",
   button: "esri-button",
   checkbox: "esri-daylight__checkbox",
   checked: "esri-icon-checkbox-checked",
@@ -187,8 +188,7 @@ class Daylight extends Widget {
   //--------------------------------------------------------------------------
 
   @property({
-    readOnly: true,
-    dependsOn: ["messages"]
+    readOnly: true
   })
   get gmtOffsets(): Maybe<GMTOffset[]> {
     return this.messages ? getGMTOffsets(this.messages) : null;
@@ -203,9 +203,40 @@ class Daylight extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Daylight/t9n/Daylight")
   messages: DaylightMessages;
+
+  //------------------------
+  // iconClass
+  //------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label. This label displays when it is
+   * used within another widget, such as the {@link module:esri/widgets/Expand}
+   * or {@link module:esri/widgets/LayerList} widgets.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.title", overridable: true }
+  })
+  label: string = undefined;
 
   /**
    * Controls the speed of the daytime and date animation.
@@ -260,7 +291,7 @@ class Daylight extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: SceneView = null;
+  view: ISceneView = null;
 
   /**
    * The view model for the Daylight widget. This is a class that contains all the logic
@@ -272,16 +303,7 @@ class Daylight extends Widget {
    * @type {module:esri/widgets/Daylight/DaylightViewModel}
    * @autocast
    */
-  @property({
-    type: DaylightViewModel
-  })
-  @renderable([
-    "viewModel.directShadowsEnabled",
-    "viewModel.timeSliderPosition",
-    "viewModel.currentSeason",
-    "viewModel.localDate",
-    "viewModel.utcOffset"
-  ])
+  @property({ type: DaylightViewModel })
   viewModel: DaylightViewModel = new DaylightViewModel();
 
   /**
@@ -318,7 +340,6 @@ class Daylight extends Widget {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -352,7 +373,6 @@ class Daylight extends Widget {
       return DEFAULT_DATE_OR_SEASON;
     }
   })
-  @renderable()
   dateOrSeason: DateOrSeason = DEFAULT_DATE_OR_SEASON;
 
   //--------------------------------------------------------------------------
@@ -362,7 +382,6 @@ class Daylight extends Widget {
   //--------------------------------------------------------------------------
 
   @property()
-  @renderable()
   private _timeSlider = new SliderWithDropdown<GMTOffset>({
     viewModel: this.viewModel.timeSliderViewModel,
     labelFormatFunction: formatSliderLabel,
@@ -390,7 +409,6 @@ class Daylight extends Widget {
   });
 
   @property()
-  @renderable()
   private _datePicker: DatePicker = new DatePicker({
     viewModel: this.viewModel.datePickerViewModel,
     commitOnMonthChange: true
@@ -398,7 +416,7 @@ class Daylight extends Widget {
 
   //--------------------------------------------------------------------------
   //
-  //  Public Methods
+  //  Internal Methods
   //
   //--------------------------------------------------------------------------
 

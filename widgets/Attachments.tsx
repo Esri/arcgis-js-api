@@ -21,7 +21,7 @@
  * :::
  *
  * The following image displays the various displays of the attachment widget.
- * ![attachments](../../assets/img/apiref/widgets/attachments-merged.png)
+ * ![attachments](../assets/img/apiref/widgets/attachments-merged.png)
  *
  * @module esri/widgets/Attachments
  * @amdalias Attachments
@@ -37,7 +37,7 @@
  * @see module:esri/popup/content/AttachmentsContent
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
- * @see module:esri/layers/support/AttachmentInfo
+ * @see module:esri/rest/query/support/AttachmentInfo
  * @see [ArcGIS REST API - Attachment Infos (Feature Service)](https://developers.arcgis.com/rest/services-reference/attachment-infos-feature-service-.htm)
  */
 
@@ -55,8 +55,8 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 // esri.core.t9n
 import UnitsMessages from "esri/core/t9n/Units";
 
-// esri.layers.support
-import AttachmentInfo from "esri/layers/support/AttachmentInfo";
+// esri.rest.query.support
+import AttachmentInfo from "esri/rest/query/support/AttachmentInfo";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -73,7 +73,7 @@ import type AttachmentsMessages from "esri/widgets/Attachments/t9n/Attachments";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { isRTL, renderable, tsx, storeNode, discardNode, messageBundle } from "esri/widgets/support/widget";
+import { isRTL, tsx, storeNode, discardNode, messageBundle } from "esri/widgets/support/widget";
 
 interface VisibleElements {
   addButton?: boolean;
@@ -252,7 +252,6 @@ class Attachments extends Widget {
    * @default "list"
    */
   @property()
-  @renderable()
   displayType: AttachmentsDisplay = "list";
 
   //----------------------------------
@@ -298,7 +297,6 @@ class Attachments extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Attachments/t9n/Attachments")
   messages: AttachmentsMessages = null;
 
@@ -315,7 +313,6 @@ class Attachments extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
 
@@ -332,9 +329,7 @@ class Attachments extends Widget {
    * @type {File}
    * @readonly
    */
-  @property({
-    readOnly: true
-  })
+  @property({ readOnly: true })
   selectedFile: File = null;
 
   //----------------------------------
@@ -350,10 +345,7 @@ class Attachments extends Widget {
    * @readonly
    * @default false
    */
-  @renderable()
-  @property({
-    readOnly: true
-  })
+  @property({ readOnly: true })
   readonly submitting: boolean = false;
 
   //----------------------------------
@@ -369,10 +361,7 @@ class Attachments extends Widget {
    * @readonly
    *
    */
-  @renderable()
-  @property({
-    readOnly: true
-  })
+  @property({ readOnly: true })
   readonly error: EsriError;
 
   //----------------------------------
@@ -391,20 +380,7 @@ class Attachments extends Widget {
    * @autocast
    */
 
-  @property({
-    type: AttachmentsViewModel
-  })
-  @renderable([
-    "viewModel.activeAttachmentInfo",
-    "viewModel.mode",
-    "viewModel.state",
-    "viewModel.supportsResizeAttachments",
-    "viewModel.attachmentInfos",
-    "viewModel.graphic",
-    "viewModel.abilities",
-    "viewModel.abilities.editing",
-    "viewModel.abilities.operations"
-  ])
+  @property({ type: AttachmentsViewModel })
   viewModel: AttachmentsViewModel = new AttachmentsViewModel();
 
   //----------------------------------
@@ -423,7 +399,6 @@ class Attachments extends Widget {
    */
 
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -457,7 +432,7 @@ class Attachments extends Widget {
    * @method addAttachment
    * @instance
    *
-   * @return {Promise<module:esri/layers/support/AttachmentInfo>} When resolved, returns the {@link module:esri/layers/support/AttachmentInfo}
+   * @return {Promise<module:esri/rest/query/support/AttachmentInfo>} When resolved, returns the {@link module:esri/rest/query/support/AttachmentInfo}
    * of a feature layer.
    */
   addAttachment(): Promise<AttachmentInfo> {
@@ -491,9 +466,9 @@ class Attachments extends Widget {
    * @method deleteAttachment
    * @instance
    *
-   * @param {module:esri/layers/support/AttachmentInfo} attachmentInfo - The attachment to delete.
+   * @param {module:esri/rest/query/support/AttachmentInfo} attachmentInfo - The attachment to delete.
    *
-   * @return {Promise<module:esri/layers/support/AttachmentInfo>} When resolved, returns the {@link module:esri/layers/support/AttachmentInfo}
+   * @return {Promise<module:esri/rest/query/support/AttachmentInfo>} When resolved, returns the {@link module:esri/rest/query/support/AttachmentInfo}
    * of a feature layer.
    */
   deleteAttachment(attachmentInfo: AttachmentInfo): Promise<AttachmentInfo> {
@@ -526,7 +501,7 @@ class Attachments extends Widget {
    * @method updateAttachment
    * @instance
    *
-   * @return {Promise<module:esri/layers/support/AttachmentInfo>} When resolved, returns the {@link module:esri/layers/support/AttachmentInfo}
+   * @return {Promise<module:esri/rest/query/support/AttachmentInfo>} When resolved, returns the {@link module:esri/rest/query/support/AttachmentInfo}
    * of a feature layer.
    */
   updateAttachment(): Promise<AttachmentInfo> {
@@ -801,7 +776,7 @@ class Attachments extends Widget {
 
     return (
       <div key="edit-form-container" class={CSS.formNode}>
-        <a class={CSS.itemLink} href={url} rel="noreferrer" target="_blank" alt={name}>
+        <a class={CSS.itemLink} href={url} rel="noreferrer" target="_blank">
           {this.renderImageMask({
             attachmentInfo,
             size: 400
@@ -828,7 +803,7 @@ class Attachments extends Widget {
     size: number;
   }): VNode {
     const { supportsResizeAttachments } = this.viewModel;
-    const { contentType, url } = attachmentInfo;
+    const { contentType, name, url } = attachmentInfo;
 
     const hasSupportedImageFormat =
       supportsResizeAttachments && attachmentUtils.isSupportedImage(contentType);
@@ -852,7 +827,7 @@ class Attachments extends Widget {
       <div class={this.classes(itemMaskClasses, CSS.itemMask)}>
         <img
           styles={imageStyles}
-          alt=""
+          alt={name}
           src={thumbnail}
           class={this.classes(itemImageClasses, CSS.itemImage)}
         />

@@ -1,22 +1,22 @@
 // esri
-import PopupTemplate from "esri/PopupTemplate";
+import PopupTemplate from "esri/../PopupTemplate";
 
 // esri.core
-import { eventKey } from "esri/core/events";
-import * as watchUtils from "esri/core/watchUtils";
+import { eventKey } from "esri/../core/events";
+import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.popup
-import FieldInfo from "esri/popup/FieldInfo";
+import FieldInfo from "esri/../popup/FieldInfo";
 
 // esri.popup.content
-import ImageMediaInfo from "esri/popup/content/ImageMediaInfo";
+import ImageMediaInfo from "esri/../popup/content/ImageMediaInfo";
 
 // esri.popup.content.support
-import ChartMediaInfoValueSeries from "esri/popup/content/support/ChartMediaInfoValueSeries";
-import { MediaInfo, MediaChartInfo } from "esri/popup/content/support/mediaInfoTypes";
+import ChartMediaInfoValueSeries from "esri/../popup/content/support/ChartMediaInfoValueSeries";
+import { MediaInfo, MediaChartInfo } from "esri/../popup/content/support/mediaInfoTypes";
 
 // esri.widgets
 import Widget from "esri/Widget";
@@ -28,6 +28,7 @@ import { FeatureSupportedLayer, RelatedInfo } from "esri/widgets/interfaces";
 import FeatureMediaViewModel from "esri/widgets/FeatureMedia/FeatureMediaViewModel";
 
 // esri.widgets.Feature.support
+import FeatureElementInfo from "esri/widgets/support/FeatureElementInfo";
 import { shouldOpenInNewTab } from "esri/widgets/support/featureUtils";
 
 // esri.widgets.Feature.t9n
@@ -37,7 +38,7 @@ import type FeatureMessages from "esri/widgets/t9n/Feature";
 import { AM4Charts, PieChart, XYChart, AM4Tooltip, AM4Core, ColorSet } from "esri/support/chartTypes";
 import { loadChartsModule, getColorSet } from "esri/support/chartUtils";
 import { VNode } from "esri/support/interfaces";
-import { renderable, tsx, messageBundle } from "esri/support/widget";
+import { tsx, messageBundle } from "esri/support/widget";
 import { isRTL, isDarkTheme } from "esri/support/widgetUtils";
 
 const CSS = {
@@ -91,15 +92,21 @@ class FeatureMedia extends Widget {
   }
 
   initialize(): void {
+    this._featureElementInfo = new FeatureElementInfo();
+
     this.own(
       watchUtils.init(this, ["viewModel.activeMediaInfo", "viewModel.activeMediaInfoIndex"], () =>
         this._setupMediaRefreshTimer()
+      ),
+      watchUtils.init(this, ["viewModel.description", "viewModel.title"], () =>
+        this._setupFeatureElementInfo()
       )
     );
   }
 
   destroy(): void {
     this._clearMediaRefreshTimer();
+    this._featureElementInfo.destroy();
   }
 
   //--------------------------------------------------------------------------
@@ -110,6 +117,7 @@ class FeatureMedia extends Widget {
 
   private _refreshTimer: number = null;
   private _refreshIntervalInfo: RefreshIntervalInfo = null;
+  private _featureElementInfo: FeatureElementInfo = null;
 
   //--------------------------------------------------------------------------
   //
@@ -117,35 +125,74 @@ class FeatureMedia extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  //----------------------------------
+  // attributes
+  //----------------------------------
+
   @aliasOf("viewModel.attributes")
   attributes: HashMap<any> = null;
+
+  //----------------------------------
+  // activeMediaInfoIndex
+  //----------------------------------
 
   @aliasOf("viewModel.activeMediaInfoIndex")
   activeMediaInfoIndex: number = null;
 
+  //----------------------------------
+  // description
+  //----------------------------------
+
+  @aliasOf("viewModel.description")
+  description: string = null;
+
+  //----------------------------------
+  // fieldInfoMap
+  //----------------------------------
+
   @aliasOf("viewModel.fieldInfoMap")
   fieldInfoMap: Map<string, FieldInfo> = null;
+
+  //----------------------------------
+  // layer
+  //----------------------------------
 
   @aliasOf("viewModel.layer")
   layer: FeatureSupportedLayer = null;
 
+  //----------------------------------
+  // mediaInfos
+  //----------------------------------
+
   @aliasOf("viewModel.mediaInfos")
   mediaInfos: MediaInfo[] = null;
+
+  //----------------------------------
+  // popupTemplate
+  //----------------------------------
 
   @aliasOf("viewModel.popupTemplate")
   popupTemplate: PopupTemplate = null;
 
+  //----------------------------------
+  // relatedInfos
+  //----------------------------------
+
   @aliasOf("viewModel.relatedInfos")
   relatedInfos: Map<string, RelatedInfo> = null;
 
-  @property({
-    type: FeatureMediaViewModel
-  })
-  @renderable([
-    "viewModel.formattedMediaInfos",
-    "viewModel.activeMediaInfoIndex",
-    "viewModel.activeMediaInfo"
-  ])
+  //----------------------------------
+  // title
+  //----------------------------------
+
+  @aliasOf("viewModel.title")
+  title: string = null;
+
+  //----------------------------------
+  // viewModel
+  //----------------------------------
+
+  @property({ type: FeatureMediaViewModel })
   viewModel = new FeatureMediaViewModel();
 
   //----------------------------------
@@ -161,7 +208,6 @@ class FeatureMedia extends Widget {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Feature/t9n/Feature")
   messages: FeatureMessages = null;
 
@@ -174,6 +220,7 @@ class FeatureMedia extends Widget {
   render(): VNode {
     return (
       <div bind={this} class={CSS.base} onkeyup={this._handleMediaKeyup}>
+        {this._featureElementInfo?.render()}
         {this.renderMedia()}
       </div>
     );
@@ -271,11 +318,11 @@ class FeatureMedia extends Widget {
 
     return (
       <div key={"media-container"} class={CSS.mediaItemContainer}>
-        {titleNode}
-        {captionNode}
         <div key={"media-item-container"} class={CSS.mediaItem}>
           {this.renderMediaInfoType()}
         </div>
+        {titleNode}
+        {captionNode}
       </div>
     );
   }
@@ -321,6 +368,12 @@ class FeatureMedia extends Widget {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _setupFeatureElementInfo(): void {
+    const { description, title } = this;
+
+    this._featureElementInfo.set({ description, title });
+  }
 
   private _next(): void {
     this.viewModel.next();

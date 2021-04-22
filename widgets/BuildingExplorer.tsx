@@ -8,7 +8,7 @@
  * the Level element, the Construction phases element and the Disciplines are Categories list.
  * The visibility of these elements can be configured using the widget's [visibleElements](#visibleElements).
  *
- * [![building-explorer](../../assets/img/apiref/widgets/building-explorer.png)](../sample-code/building-scene-layer-filter/index.html)
+ * [![building-explorer](../assets/img/apiref/widgets/building-explorer.png)](../sample-code/building-scene-layer-filter/index.html)
  *
  * The {@link module:esri/layers/BuildingSceneLayer BuildingSceneLayers} to be explored
  * have to be set on the [layers](#layers) property of the widget. When setting multiple layers, the filters set
@@ -70,7 +70,7 @@ import BuildingSceneLayer from "esri/layers/BuildingSceneLayer";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import SceneView from "esri/views/SceneView";
+import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -92,7 +92,7 @@ import BuildingExplorerMessages from "esri/widgets/BuildingExplorer/t9n/Building
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, renderable, messageBundle } from "esri/widgets/support/widget";
+import { tsx, messageBundle } from "esri/widgets/support/widget";
 
 interface VisibleElements {
   levels?: boolean;
@@ -107,7 +107,7 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 };
 
 interface ConstructionParameters {
-  view: SceneView;
+  view: ISceneView;
   viewModel?: BuildingExplorerViewModel;
   toggleSiblingsVisibility?: boolean;
 }
@@ -203,7 +203,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @autocast
    */
   @property({ type: BuildingExplorerViewModel })
-  @renderable(["state", "level.state", "phase.state", "disciplines.state"])
   viewModel: BuildingExplorerViewModel = this._defaultViewModel;
 
   /**
@@ -214,8 +213,7 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: SceneView = null;
+  view: ISceneView = null;
 
   /**
    * A {@link module:esri/core/Collection collection} of layers of type {@link module:esri/layers/BuildingSceneLayer}
@@ -260,7 +258,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * };
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -298,7 +295,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/BuildingExplorer/t9n/BuildingExplorer")
   messages: BuildingExplorerMessages = null;
 
@@ -310,7 +306,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/t9n/common")
   messagesCommon: CommonMessages = null;
 
@@ -321,7 +316,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @ignore
    */
   @property({ nonNullable: true })
-  @renderable()
   toggleSiblingsVisibility: boolean = false;
 
   //--------------------------------------------------------------------------
@@ -338,7 +332,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @private
    */
   @property()
-  @renderable()
   private _levelPicker = new BuildingLevelPicker();
 
   /**
@@ -347,7 +340,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @private
    */
   @property()
-  @renderable()
   private _phasePicker = new BuildingPhasePicker();
 
   /**
@@ -357,7 +349,6 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @private
    */
   @property()
-  @renderable()
   private _disciplinesTree = new BuildingDisciplinesTree();
 
   //--------------------------------------------------------------------------

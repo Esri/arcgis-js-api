@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";e.Skirts=function(e){e.vertex.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function c(e){e.vertex.code.add(t.glsl`
     vec3 applySkirts(inout vec2 uv, vec3 vpos, vec3 vnormal, float skirtScale) {
       float skirtLength = 0.0;
 
@@ -15,4 +15,4 @@ define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";
 
       return vpos - vnormal * skirtLength;
     }
-    `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `)}e.Skirts=c,Object.defineProperty(e,"__esModule",{value:!0})}));

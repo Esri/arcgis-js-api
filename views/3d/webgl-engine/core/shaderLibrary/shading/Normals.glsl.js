@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(a,e){"use strict";a.Normals=function(a,r){const o=a.fragment;o.code.add(e.glsl`
+define(["exports","../../shaderModules/interfaces"],(function(a,e){"use strict";function r(a,r){const o=a.fragment;o.code.add(e.glsl`
     struct ShadingNormalParameters {
       vec3 normalView;
       vec3 viewDirection;
@@ -19,4 +19,4 @@ define(["exports","../../shaderModules/interfaces"],(function(a,e){"use strict";
       vec3 shadingNormal(ShadingNormalParameters params) {
         return normalize(params.normalView);
       }
-    `)},Object.defineProperty(a,"__esModule",{value:!0})}));
+    `)}a.Normals=r,Object.defineProperty(a,"__esModule",{value:!0})}));

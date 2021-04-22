@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["exports","../../core/urlUtils","../../kernel","../../request","./urlUtils","../../layers/support/AttachmentInfo"],(function(e,t,o,n,r,s){"use strict";function a(e){const t=e.toJSON();return t.attachmentTypes&&(t.attachmentTypes=t.attachmentTypes.join(",")),t.keywords&&(t.keywords=t.keywords.join(",")),t.globalIds&&(t.globalIds=t.globalIds.join(",")),t.objectIds&&(t.objectIds=t.objectIds.join(",")),t.size&&(t.size=t.size.join(",")),t}e.executeAttachmentQuery=function(e,t,o){let s={query:r.mapParameters({...e.query,f:"json",...a(t)})};return o&&(s={...o,...s,query:{...o.query,...s.query}}),n(e.path+"/queryAttachments",s)},e.processAttachmentQueryResult=function(e,n){const r={};for(const a of e){const{parentObjectId:e,parentGlobalId:c,attachmentInfos:u}=a;for(const a of u){const{id:u}=a,d=t.addProxy(o.addTokenParameter(`${n}/${e}/attachments/${u}`)),l=s.fromJSON(a);l.set({url:d,parentObjectId:e,parentGlobalId:c}),r[e]?r[e].push(l):r[e]=[l]}}return r},Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Collection","./BuildingFilterAuthoringInfo","./BuildingFilterAuthoringInfoBlock"],(function(e,o,r,t,c,s,i,n,p,l,u,a,y,h){"use strict";var d;const f=a.ofType(h);let g=d=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).type="checkbox",e}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new d({filterBlocks:t.clone(this.filterBlocks)})},r}(y);return o.__decorate([i.property({type:["checkbox"]})],g.prototype,"type",void 0),o.__decorate([i.property({type:f,json:{write:!0}})],g.prototype,"filterBlocks",void 0),g=d=o.__decorate([n.subclass("esri.layers.support.BuildingFilterAuthoringInfoCheckbox")],g),g}));

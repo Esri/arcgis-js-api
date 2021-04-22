@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'CalciteWebCoreIcons';
   src:
-    url('fonts/CalciteWebCoreIcons.ttf?8m1z5l') format('truetype'),
-    url('fonts/CalciteWebCoreIcons.woff?8m1z5l') format('woff'),
-    url('fonts/CalciteWebCoreIcons.svg?8m1z5l#CalciteWebCoreIcons') format('svg');
+    url('fonts/CalciteWebCoreIcons.ttf?qt9ftt') format('truetype'),
+    url('fonts/CalciteWebCoreIcons.woff?qt9ftt') format('woff'),
+    url('fonts/CalciteWebCoreIcons.svg?qt9ftt#CalciteWebCoreIcons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -743,3 +743,24 @@
   content: "\e910";
   color: inherit;
 }
+.esri-icon-elevation-profile:before {
+  content: "\e911";
+  color: inherit;
+}
+.esri-icon-slice:before {
+  content: "\e913";
+  color: inherit;
+}
+.esri-icon-line-of-sight:before {
+  content: "\e912";
+  color: inherit;
+}
+.esri-icon-zoom-to-object:before {
+  content: "\e914";
+  color: inherit;
+}
+.esri-icon-urban-model:before {
+  content: "\e915";
+  color: inherit;
+}
+

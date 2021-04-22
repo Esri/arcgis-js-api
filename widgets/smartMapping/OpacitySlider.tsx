@@ -7,7 +7,7 @@
  * <a name="image-annotations"></a>
  * See the image below for a summary of the configurable options available on this slider.
  *
- * ![OpacitySlider with annotations](../../assets/img/apiref/widgets/sliders/opacityslider-labels.png "OpacitySlider with annotations")
+ * ![OpacitySlider with annotations](../assets/img/apiref/widgets/sliders/opacityslider-labels.png "OpacitySlider with annotations")
  *
  * The [fromVisualVariableResult](#fromVisualVariableResult) method can be used to conveniently create this slider
  * from the result of the {@link module:esri/smartMapping/renderers/opacity#createVisualVariable createVisualVariable}
@@ -72,19 +72,19 @@
  */
 
 // esri
-import Color from "esri/Color";
+import Color from "esri/../Color";
 
 // esri.core.accessorSupport
-import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.renderers.visualVariables.support
-import OpacityStop from "esri/renderers/visualVariables/support/OpacityStop";
+import OpacityStop from "esri/../renderers/visualVariables/support/OpacityStop";
 
 // esri.smartMapping.renderers
-import { VisualVariableResult } from "esri/smartMapping/renderers/opacity";
+import { VisualVariableResult } from "esri/../smartMapping/renderers/opacity";
 
 // esri.smartMapping.statistics
-import { HistogramResult } from "esri/smartMapping/statistics/interfaces";
+import { HistogramResult } from "esri/../smartMapping/statistics/interfaces";
 
 // esri.widgets.smartMapping
 import { SmartMappingSliderBase } from "esri/widgets/SmartMappingSliderBase";
@@ -100,7 +100,7 @@ import { ZoomOptions } from "esri/widgets/support/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/../support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/../support/widget";
+import { messageBundle, tsx } from "esri/widgets/../support/widget";
 
 const CSS = {
   base: "esri-opacity-slider",
@@ -201,7 +201,6 @@ class OpacitySlider extends SmartMappingSliderBase {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/smartMapping/OpacitySlider/t9n/OpacitySlider")
   messages: OpacitySliderMessages = null;
 
@@ -255,7 +254,6 @@ class OpacitySlider extends SmartMappingSliderBase {
    * slider.style.trackFillColor = new Color("dodgerblue");
    */
   @property()
-  @renderable()
   style: OpacitySliderStyle = { ...DEFAULT_STYLE };
 
   @cast("style")
@@ -278,17 +276,6 @@ class OpacitySlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/OpacitySlider/OpacitySliderViewModel}
    */
   @property()
-  @renderable([
-    "viewModel.hasTimeData",
-    "viewModel.inputFormatFunction",
-    "viewModel.inputParseFunction",
-    "viewModel.labelFormatFunction",
-    "viewModel.max",
-    "viewModel.min",
-    "viewModel.stops",
-    "viewModel.values",
-    "viewModel.zoomOptions"
-  ])
   viewModel: OpacitySliderViewModel = new OpacitySliderViewModel();
 
   //----------------------------------

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl"],(function(e,o,t,r){"use strict";e.AdjustProjectedPosition=function(e,a){e.vertex.include(r.IsNaN),e.include(t.VertexPosition,a);const s=e.vertex;s.uniforms.add("uDepthBias","vec2"),s.uniforms.add("uViewportDimInv","vec2"),a.legacy?(s.uniforms.add("uView","mat4"),s.uniforms.add("uProj","mat4")):s.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),a.legacy?s.code.add(o.glsl`
+define(["exports","../../../core/shaderModules/interfaces","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl"],(function(e,o,t,r){"use strict";function a(e,a){e.vertex.include(r.IsNaN),e.include(t.VertexPosition,a);const s=e.vertex;s.uniforms.add("uDepthBias","vec2"),s.uniforms.add("uViewportDimInv","vec2"),a.legacy?(s.uniforms.add("uView","mat4"),s.uniforms.add("uProj","mat4")):s.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),a.legacy?s.code.add(o.glsl`
       vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
         float offsetXY = uDepthBias.x;
         float offsetZ  = uDepthBias.y;
@@ -50,4 +50,4 @@ define(["exports","../../../core/shaderModules/interfaces","../../../core/shader
 
       return projPos;
     }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}e.AdjustProjectedPosition=a,Object.defineProperty(e,"__esModule",{value:!0})}));

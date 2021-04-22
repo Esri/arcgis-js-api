@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
-*/
-define(["exports"],(function(e){"use strict";let n=function(){function e(){}return e.parse=function(n){if(n.length>1)throw new Error('"id" does not expect arguments');return new e},e.prototype.evaluate=function(e,n){return e.id},e}(),t=function(){function e(){}return e.parse=function(n){if(n.length>1)throw new Error('"geometry-type" does not expect arguments');return new e},e.prototype.evaluate=function(e,n){switch(e.type){case 0:return"Unknown";case 1:return"Point";case 2:return"LineString";case 3:return"Polygon"}},e}(),r=function(){function e(){}return e.parse=function(n){if(n.length>1)throw new Error('"properties" does not expect arguments');return new e},e.prototype.evaluate=function(e,n){return e.values},e}(),o=function(){function e(){}return e.parse=function(n){if(n.length>1)throw new Error('"zoom" does not expect arguments');return new e},e.prototype.evaluate=function(e,n){return n},e}();e.GeomType=t,e.ID=n,e.Properties=r,e.Zoom=o,Object.defineProperty(e,"__esModule",{value:!0})}));

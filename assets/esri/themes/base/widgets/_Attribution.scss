@@ -2,7 +2,7 @@
   .esri-attribution {
     font-size: $font-size--small;
     line-height: 16px; // TODO: refactor to let Attribution inherit line-height.
-    background-color: rgba($background-color, 0.65);
+    background-color: rgba($background-color, 0.8);
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -10,13 +10,14 @@
   }
 
   .esri-attribution__link {
+    color: currentColor;
+
     &:hover,
     &:active,
     &:visited,
     &:focus {
       color: currentColor;
     }
-    color: currentColor;
   }
 
   .esri-attribution__sources {

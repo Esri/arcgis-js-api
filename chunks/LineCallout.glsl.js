@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl"],(function(e,i,o,l,r,t){"use strict";function n(e){const n=new o.ShaderBuilder;return n.include(l.AlignPixel),n.include(t.HUD,e),n.include(r.Slice,e),n.attributes.add("uv0","vec2"),n.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),n.varyings.add("coverageSampling","vec4"),n.varyings.add("lineSizes","vec2"),n.vertex.code.add(i.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl"],(function(e,i,o,t,r,l,n){"use strict";function a(e){const a=new o.ShaderBuilder;return a.include(t.AlignPixel),a.include(l.HUD,e),a.include(r.Slice,e),a.attributes.add("uv0","vec2"),a.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),a.varyings.add("coverageSampling","vec4"),a.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&a.varyings.add("depth","float"),a.vertex.code.add(i.glsl`
     void main(void) {
       ProjectHUDAux projectAux;
       vec4 endPoint = projectPositionHUD(projectAux);
@@ -27,6 +27,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       // Add view dependent polygon offset to get exact same original starting point. This is mostly
       // used to get the correct depth value
       vec3 posView = (view * vec4(position, 1.0)).xyz;
+      ${e.multipassGeometryEnabled?"depth = posView.z;":""}
+
       applyHUDViewDependentPolygonOffset(auxpos1.w, projectAux.absCosAngle, posView);
       vec4 startPoint = proj * vec4(posView, 1.0);
       // Apply screen offset to both start and end point
@@ -99,8 +101,10 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       gl_Position = projectedPosition;
     }
-  `),n.fragment.uniforms.add("color","vec4"),n.fragment.uniforms.add("borderColor","vec4"),n.fragment.code.add(i.glsl`
+  `),a.fragment.uniforms.add("color","vec4"),a.fragment.uniforms.add("borderColor","vec4"),e.multipassGeometryEnabled&&(a.fragment.include(n.multipassGeometryTest,e),a.fragment.uniforms.add("inverseViewport","vec2")),a.fragment.code.add(i.glsl`
     void main() {
+      ${e.multipassGeometryEnabled?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
+
       // Mix between line and border coverage offsets depending on whether we need
       // a border (based on the sidedness).
       vec2 coverage = min(1.0 - clamp(abs(coverageSampling.xy) - coverageSampling.zw, 0.0, 1.0), lineSizes);
@@ -127,4 +131,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       gl_FragColor = vec4(finalRgb, finalAlpha);
       `}
   }
-  `),n}function a(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}(e.LineCallout||(e.LineCallout={})).bindUniforms=function(e,i,o){a(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(a(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))};var d=Object.freeze({__proto__:null,build:n,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=d,e.build=n}));
+  `),a}function d(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}!function(e){function i(e,i,o){d(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(d(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}e.bindUniforms=i}(e.LineCallout||(e.LineCallout={}));var s=Object.freeze({__proto__:null,build:a,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=s,e.build=a}));

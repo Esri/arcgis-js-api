@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["exports","../../../../../core/maybe","../../../../../chunks/vec3f64","../../../../../chunks/vec3","../shaderModules/interfaces"],(function(e,s,i,a,l){"use strict";function c(e,s){if(s.slicePlaneEnabled){e.extensions.add("GL_OES_standard_derivatives"),s.sliceEnabledForVertexPrograms&&(e.vertex.uniforms.add("slicePlaneOrigin","vec3"),e.vertex.uniforms.add("slicePlaneBasis1","vec3"),e.vertex.uniforms.add("slicePlaneBasis2","vec3")),e.fragment.uniforms.add("slicePlaneOrigin","vec3"),e.fragment.uniforms.add("slicePlaneBasis1","vec3"),e.fragment.uniforms.add("slicePlaneBasis2","vec3");const i=l.glsl`
       struct SliceFactors {
@@ -83,4 +83,4 @@ define(["exports","../../../../../core/maybe","../../../../../chunks/vec3f64",".
       #define rejectBySlice(_pos_) false
       #define discardBySlice(_pos_) {}
       #define highlightSlice(_color_, _pos_) (_color_)
-    `;s.sliceEnabledForVertexPrograms&&e.vertex.code.add(i),e.fragment.code.add(i)}}!function(e){e.bindUniformsWithOrigin=function(s,i,a){e.bindUniforms(s,i,a.slicePlane,a.origin)},e.bindUniforms=function(e,l,c,r){l.slicePlaneEnabled&&(s.isSome(c)?(r?(a.subtract(o,c.origin,r),e.setUniform3fv("slicePlaneOrigin",o)):e.setUniform3fv("slicePlaneOrigin",c.origin),e.setUniform3fv("slicePlaneBasis1",c.basis1),e.setUniform3fv("slicePlaneBasis2",c.basis2)):(e.setUniform3fv("slicePlaneBasis1",i.ZEROS),e.setUniform3fv("slicePlaneBasis2",i.ZEROS),e.setUniform3fv("slicePlaneOrigin",i.ZEROS)))}}(c||(c={}));const o=i.create();e.Slice=c,Object.defineProperty(e,"__esModule",{value:!0})}));
+    `;s.sliceEnabledForVertexPrograms&&e.vertex.code.add(i),e.fragment.code.add(i)}}!function(e){function l(s,i,a){e.bindUniforms(s,i,a.slicePlane,a.origin)}function c(e,l,c,r){l.slicePlaneEnabled&&(s.isSome(c)?(r?(a.subtract(o,c.origin,r),e.setUniform3fv("slicePlaneOrigin",o)):e.setUniform3fv("slicePlaneOrigin",c.origin),e.setUniform3fv("slicePlaneBasis1",c.basis1),e.setUniform3fv("slicePlaneBasis2",c.basis2)):(e.setUniform3fv("slicePlaneBasis1",i.ZEROS),e.setUniform3fv("slicePlaneBasis2",i.ZEROS),e.setUniform3fv("slicePlaneOrigin",i.ZEROS)))}e.bindUniformsWithOrigin=l,e.bindUniforms=c}(c||(c={}));const o=i.create();e.Slice=c,Object.defineProperty(e,"__esModule",{value:!0})}));

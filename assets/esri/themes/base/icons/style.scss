@@ -2,10 +2,12 @@
 
 @font-face {
   font-family: "#{$icomoon-font-family}";
-  src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?jh02rn') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?jh02rn') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?jh02rn##{$icomoon-font-family}') format('svg');
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?#{$icomoon-font-version}")
+      format("truetype"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?#{$icomoon-font-version}")
+      format("woff"),
+    url("#{$icomoon-font-path}/#{$icomoon-font-family}.svg?#{$icomoon-font-version}##{$icomoon-font-family}")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -26,8 +28,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@function unicode($str) {	
-  @return unquote("\"") + $str + unquote("\"");	
+@function unicode($str) {
+  @return unquote('"') + $str + unquote('"');
 }
 
 .esri-icon-close {
@@ -1101,13 +1103,44 @@
 .esri-icon-cursor-marquee {
   &:before {
     content: unicode($esri-icon-cursor-marquee);
-    color: $fill-color; 
+    color: $fill-color;
   }
 }
 .esri-icon-lasso {
   &:before {
     content: unicode($esri-icon-lasso);
-    color: $fill-color; 
+    color: $fill-color;
+  }
+}
+
+.esri-icon-elevation-profile {
+  &:before {
+    content: unicode($esri-icon-elevation-profile);
+    color: $fill-color;
+  }
+}
+.esri-icon-slice {
+  &:before {
+    content: unicode($esri-icon-slice);
+    color: $fill-color;
+  }
+}
+.esri-icon-line-of-sight {
+  &:before {
+    content: unicode($esri-icon-line-of-sight);
+    color: $fill-color;
+  }
+}
+.esri-icon-zoom-to-object {
+  &:before {
+    content: unicode($esri-icon-zoom-to-object);
+    color: $fill-color;
+  }
+}
+.esri-icon-urban-model {
+  &:before {
+    content: unicode($esri-icon-urban-model);
+    color: $fill-color;
   }
 }
 

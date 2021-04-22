@@ -8,7 +8,7 @@
  * is not set, then the Swipe widget will overlay the existing map. The [visibleElements](#visibleElements)
  * separate the leading and trailing layers, as shown in the image below.
  *
- * [![widgets-swipe-leadingLayers](../../assets/img/apiref/widgets/swipe.png)](../sample-code/widgets-swipe/index.html)
+ * [![widgets-swipe-leadingLayers](../assets/img/apiref/widgets/swipe.png)](../sample-code/widgets-swipe/index.html)
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -51,7 +51,7 @@ import Widget from "esri/widgets/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 // esri.widgets.Swipe
 import { LayerCollection, Direction, VisibleElements } from "esri/widgets/Swipe/interfaces";
@@ -132,7 +132,7 @@ class Swipe extends Widget {
    *
    * | horizontal | vertical |
    * |------------|----------|
-   * |[![widgets-swipe-horizontal](../../assets/img/apiref/widgets/widgets-swipe-horizontal.png)](../sample-code/widgets-swipe/index.html) |[![widgets-swipe-vertical](../../assets/img/apiref/widgets/widgets-swipe-vertical.png)](../sample-code/widgets-swipe/index.html)|
+   * |[![widgets-swipe-horizontal](../assets/img/apiref/widgets/widgets-swipe-horizontal.png)](../sample-code/widgets-swipe/index.html) |[![widgets-swipe-vertical](../assets/img/apiref/widgets/widgets-swipe-vertical.png)](../sample-code/widgets-swipe/index.html)|
    *
    *
    * @name direction
@@ -159,7 +159,6 @@ class Swipe extends Widget {
    */
 
   @property()
-  @renderable()
   disabled = false;
 
   //----------------------------------
@@ -178,7 +177,6 @@ class Swipe extends Widget {
   @property({
     aliasOf: { source: "messages.dragLabel", overridable: true }
   })
-  @renderable()
   dragLabel: string = undefined;
 
   //----------------------------------
@@ -248,7 +246,6 @@ class Swipe extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Swipe/t9n/Swipe")
   messages: SwipeMessages = null;
 
@@ -302,7 +299,6 @@ class Swipe extends Widget {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
   view: MapView = null;
 
   //----------------------------------
@@ -324,7 +320,6 @@ class Swipe extends Widget {
   @property({
     type: SwipeViewModel
   })
-  @renderable(["viewModel.state", "viewModel.position", "viewModel.direction"])
   viewModel = new SwipeViewModel();
 
   //----------------------------------
@@ -365,7 +360,6 @@ class Swipe extends Widget {
    */
 
   @property()
-  @renderable()
   set visibleElements(value: VisibleElements) {
     this._set("visibleElements", {
       ...DEFAULT_VISIBLE_ELEMENTS,

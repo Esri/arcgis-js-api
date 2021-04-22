@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor","../../../core/Collection","../../../Basemap"],(function(e,r,o,s,t,c,a,p,u,n,l,i,y){"use strict";const d=i.ofType(y);let _=function(r){function o(e){var o;return(o=r.call(this,e)||this).basemaps=new d,o}return e._inheritsLoose(o,r),o.prototype.refresh=function(){},e._createClass(o,[{key:"state",get:function(){return"ready"}}]),o}(l);return r.__decorate([c.property({type:d})],_.prototype,"basemaps",void 0),r.__decorate([c.property({readOnly:!0})],_.prototype,"state",null),_=r.__decorate([a.subclass("esri.widgets.BasemapGallery.support.LocalBasemapsSource")],_),_}));

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(function(e,o,i){"use strict";e.PathVertexPosition=function(e,t){e.attributes.add("featureValue","vec4"),e.vertex.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(function(e,o,i){"use strict";function t(e,t){e.attributes.add("featureValue","vec4"),e.vertex.code.add(o.glsl`
   bool isCapVertex() {
     return featureValue.w == 1.0;
   }
@@ -14,9 +14,9 @@ define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(
     vec2 getSize(){
       return size.xy;
     }
-    `),t.vvOpacity?(e.vertex.defines.addInt("VV_OPACITY_N",8),e.vertex.code.add(o.glsl`
-    uniform float vvOpacityValues[VV_OPACITY_N];
-    uniform float vvOpacityOpacities[VV_OPACITY_N];
+    `),t.vvOpacity?(e.vertex.constants.add("vvOpacityNumber","int",8),e.vertex.code.add(o.glsl`
+    uniform float vvOpacityValues[vvOpacityNumber];
+    uniform float vvOpacityOpacities[vvOpacityNumber];
 
     vec4 applyOpacity(vec4 color) {
       float value = featureValue.z;
@@ -24,22 +24,22 @@ define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(
         return vec4( color.xyz, vvOpacityOpacities[0]);
       }
 
-      for (int i = 1; i < VV_OPACITY_N; ++i) {
+      for (int i = 1; i < vvOpacityNumber; ++i) {
         if (vvOpacityValues[i] >= value) {
           float f = (value - vvOpacityValues[i-1]) / (vvOpacityValues[i] - vvOpacityValues[i-1]);
           return vec4( color.xyz, mix(vvOpacityOpacities[i-1], vvOpacityOpacities[i], f));
         }
       }
 
-      return vec4( color.xyz, vvOpacityOpacities[VV_OPACITY_N - 1]);
+      return vec4( color.xyz, vvOpacityOpacities[vvOpacityNumber - 1]);
     }
     `)):e.vertex.code.add(o.glsl`
     vec4 applyOpacity(vec4 color){
       return color;
     }
-    `),t.vvColor?(e.vertex.defines.addInt("VV_COLOR_N",8),e.vertex.code.add(o.glsl`
-    uniform float vvColorValues[VV_COLOR_N];
-    uniform vec4 vvColorColors[VV_COLOR_N];
+    `),t.vvColor?(e.vertex.constants.add("vvColorNumber","int",8),e.vertex.code.add(o.glsl`
+    uniform float vvColorValues[vvColorNumber];
+    uniform vec4 vvColorColors[vvColorNumber];
 
     vec4 getColor() {
       float value = featureValue.y;
@@ -47,14 +47,14 @@ define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(
         return applyOpacity(vvColorColors[0]);
       }
 
-      for (int i = 1; i < VV_COLOR_N; ++i) {
+      for (int i = 1; i < vvColorNumber; ++i) {
         if (vvColorValues[i] >= value) {
           float f = (value - vvColorValues[i-1]) / (vvColorValues[i] - vvColorValues[i-1]);
           return applyOpacity(mix(vvColorColors[i-1], vvColorColors[i], f));
         }
       }
 
-      return applyOpacity(vvColorColors[VV_COLOR_N - 1]);
+      return applyOpacity(vvColorColors[vvColorNumber - 1]);
     }
     `)):e.vertex.code.add(o.glsl`
     vec4 getColor(){
@@ -112,4 +112,4 @@ define(["exports","../../shaderModules/interfaces","./PositionAttribute.glsl"],(
 
     return normal;
   }
-  `)},e.setVVUniforms=function(e,o){o.vvSizeEnabled&&(e.setUniform3fv("vvSizeMinSize",o.vvSizeMinSize),e.setUniform3fv("vvSizeMaxSize",o.vvSizeMaxSize),e.setUniform3fv("vvSizeOffset",o.vvSizeOffset),e.setUniform3fv("vvSizeFactor",o.vvSizeFactor)),o.vvColorEnabled&&(e.setUniform1fv("vvColorValues",o.vvColorValues),e.setUniform4fv("vvColorColors",o.vvColorColors)),o.vvOpacityEnabled&&(e.setUniform1fv("vvOpacityValues",o.vvOpacityValues),e.setUniform1fv("vvOpacityOpacities",o.vvOpacityOpacities))},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}function r(e,o){o.vvSizeEnabled&&(e.setUniform3fv("vvSizeMinSize",o.vvSizeMinSize),e.setUniform3fv("vvSizeMaxSize",o.vvSizeMaxSize),e.setUniform3fv("vvSizeOffset",o.vvSizeOffset),e.setUniform3fv("vvSizeFactor",o.vvSizeFactor)),o.vvColorEnabled&&(e.setUniform1fv("vvColorValues",o.vvColorValues),e.setUniform4fv("vvColorColors",o.vvColorColors)),o.vvOpacityEnabled&&(e.setUniform1fv("vvOpacityValues",o.vvOpacityValues),e.setUniform1fv("vvOpacityOpacities",o.vvOpacityOpacities))}e.PathVertexPosition=t,e.setVVUniforms=r,Object.defineProperty(e,"__esModule",{value:!0})}));

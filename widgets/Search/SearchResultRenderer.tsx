@@ -13,7 +13,7 @@
  */
 
 // esri.core.accessorSupport
-import { property, subclass } from "esri/core/accessorSupport/decorators";
+import { property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import { SearchResult, SearchResults, SupportedSearchSource } from "esri/interfaces";
@@ -28,7 +28,7 @@ import SearchMessages from "esri/widgets/t9n/Search";
 
 // esri.widgets.support
 import { VNode } from "esri/support/interfaces";
-import { accessibleHandler, messageBundle, renderable, tsx } from "esri/support/widget";
+import { accessibleHandler, messageBundle, tsx } from "esri/support/widget";
 
 const CSS = {
   base: "esri-search-result-renderer esri-widget",
@@ -81,7 +81,6 @@ class SearchResultRenderer extends Widget {
    * @todo revisit doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Search/t9n/Search")
   messages: SearchMessages = null;
 
@@ -111,7 +110,6 @@ class SearchResultRenderer extends Widget {
    *   position: "bottom-right"
    * });
    */
-  @renderable()
   @property()
   showMoreResultsOpen = false;
 
@@ -144,7 +142,6 @@ class SearchResultRenderer extends Widget {
    * });
    */
   @property()
-  @renderable(["viewModel.results", "viewModel.selectedResult", "viewModel.resultCount"])
   viewModel: SearchViewModel = null;
 
   //--------------------------------------------------------------------------

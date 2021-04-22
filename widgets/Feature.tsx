@@ -60,14 +60,14 @@ import Customcontent from "esri/popup/content/CustomContent";
 import TextContent from "esri/popup/content/TextContent";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
-import Attachments from "esri/widgets/Attachments";
 import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Feature
+import FeatureAttachments from "esri/widgets/Feature/FeatureAttachments";
 import FeatureContent from "esri/widgets/Feature/FeatureContent";
 import FeatureFields from "esri/widgets/Feature/FeatureFields";
 import FeatureMedia from "esri/widgets/Feature/FeatureMedia";
@@ -81,7 +81,7 @@ import type FeatureMessages from "esri/widgets/Feature/t9n/Feature";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { renderable, tsx, messageBundle } from "esri/widgets/support/widget";
+import { tsx, messageBundle } from "esri/widgets/support/widget";
 
 // esri.widgets.support.t9n
 import UriUtilsMessages from "esri/widgets/support/t9n/uriUtils";
@@ -117,8 +117,6 @@ const CSS = {
   contentElement: "esri-feature__content-element",
   text: "esri-feature__text",
   lastEditedInfo: "esri-feature__last-edited-info",
-  // attachment element
-  attachments: "esri-feature__attachments",
   // fields element
   fields: "esri-feature__fields",
   fieldHeader: "esri-feature__field-header",
@@ -135,7 +133,7 @@ const DEFAULT_VISIBLE_ELEMENTS = {
   lastEditedInfo: true
 };
 
-type ContentWidget = Attachments | FeatureContent | FeatureFields | FeatureMedia;
+type ContentWidget = FeatureAttachments | FeatureContent | FeatureFields | FeatureMedia;
 
 @subclass("esri.widgets.Feature")
 class Feature extends FeatureContentMixin(Widget) {
@@ -292,7 +290,6 @@ class Feature extends FeatureContentMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/Feature/t9n/Feature")
   messages: FeatureMessages = null;
 
@@ -309,7 +306,6 @@ class Feature extends FeatureContentMixin(Widget) {
    * @todo intl doc
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/support/t9n/uriUtils")
   messagesURIUtils: UriUtilsMessages = null;
 
@@ -381,7 +377,6 @@ class Feature extends FeatureContentMixin(Widget) {
    * @see [PopupTemplate.content](esri-PopupTemplate.html#content)
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -425,7 +420,7 @@ class Feature extends FeatureContentMixin(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -443,15 +438,7 @@ class Feature extends FeatureContentMixin(Widget) {
    * @autocast
    */
 
-  @property({
-    type: FeatureViewModel
-  })
-  @renderable([
-    "viewModel.waitingForContent",
-    "viewModel.content",
-    "viewModel.lastEditInfo",
-    "viewModel.contentViewModels"
-  ])
+  @property({ type: FeatureViewModel })
   viewModel = new FeatureViewModel();
 
   //--------------------------------------------------------------------------
@@ -601,22 +588,23 @@ class Feature extends FeatureContentMixin(Widget) {
   }
 
   protected renderAttachments(contentElementIndex: number): VNode {
-    const attachmentsWidget = this._contentWidgets[contentElementIndex] as Attachments;
+    const featureAttachmentsWidget = this._contentWidgets[
+      contentElementIndex
+    ] as FeatureAttachments;
 
-    if (!attachmentsWidget || attachmentsWidget.destroyed) {
+    if (!featureAttachmentsWidget || featureAttachmentsWidget.destroyed) {
       return null;
     }
 
-    const { state, attachmentInfos } = attachmentsWidget.viewModel;
+    const { state, attachmentInfos } = featureAttachmentsWidget.viewModel;
     const displaySection = state === "loading" || attachmentInfos.length > 0;
 
     return displaySection ? (
       <div
         key={this._buildKey("attachments-element", contentElementIndex)}
-        class={this.classes(CSS.attachments, CSS.contentElement)}
+        class={this.classes(CSS.contentElement)}
       >
-        <h2>{this.messages.attach}</h2>
-        {attachmentsWidget.render()}
+        {featureAttachmentsWidget.render()}
       </div>
     ) : null;
   }
@@ -743,7 +731,7 @@ class Feature extends FeatureContentMixin(Widget) {
     if (Array.isArray(content)) {
       content.forEach((contentElement, contentElementIndex) => {
         if (contentElement.type === "attachments") {
-          this._contentWidgets[contentElementIndex] = new Attachments({
+          this._contentWidgets[contentElementIndex] = new FeatureAttachments({
             displayType: contentElement.displayType,
             viewModel: contentViewModels[contentElementIndex]
           });

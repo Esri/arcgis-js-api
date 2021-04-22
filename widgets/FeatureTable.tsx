@@ -9,21 +9,16 @@
  * * Viewing related records is currently not supported.
  * * Viewing attachments is currently not supported, although if a feature contains
  * attachments, the total count per feature will display.
- * * Visible features from a map and having only these rows reflected in the table is
- * currently not implemented but will be in an upcoming release. Although it is
- * possible to select rows within the table and have their corresponding feature selected.
- * * Currently, if a map feature falls outside what is currently being viewed,
- * it still displays within the feature table. Restricting the rows to match visible features
- * is in current development plans.
- * * [Dark themed](../guide/styling/#themes) CSS is currently not supported.
  * :::
  *
  * The following image displays the standalone `FeatureTable` widget
  * without any associated map.
- * ![standalone featuretable widget](../../assets/img/apiref/widgets/featuretable/featuretable-standalone.png)
+ *
+ * ![standalone featuretable widget](../assets/img/apiref/widgets/featuretable/featuretable-standalone.png)
  *
  * The following image displays the `FeatureTable` widget with an associated map.
- * ![standalone featuretable widget](../../assets/img/apiref/widgets/featuretable/featuretable-map.png)
+ *
+ * ![standalone featuretable widget](../assets/img/apiref/widgets/featuretable/featuretable-map.png)
  *
  *
  * @module esri/widgets/FeatureTable
@@ -43,6 +38,7 @@
  */
 
 // esri
+import { Geometry } from "esri/geometry";
 import { fetchMessageBundle, onLocaleChange, substitute } from "esri/intl";
 
 // esri.core
@@ -58,8 +54,8 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.views
+import { ISceneView } from "esri/views/ISceneView";
 import MapView from "esri/views/MapView";
-import SceneView from "esri/views/SceneView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -91,7 +87,7 @@ import FeatureTableMessages from "esri/widgets/FeatureTable/t9n/FeatureTable";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, renderable, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   header: true,
@@ -170,8 +166,8 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @property {Object[]} added - An array of objects containing row (feature) data added to the table selection.
    * @property {module:esri/Graphic} added.feature - The associated row (feature)
    * added to the feature table selection.
-   * @property {module:esri/layers/support/AttachmentInfo[]} added.attachments - If applicable,
-   * an array of {@link module:esri/layers/support/AttachmentInfo}
+   * @property {module:esri/rest/query/support/AttachmentInfo[]} added.attachments - If applicable,
+   * an array of {@link module:esri/rest/query/support/AttachmentInfo}
    * associated with the row (feature) added to the
    * feature table selection.
    * @property {module:esri/Graphic[]} added.relatedRecords - (Currently not implemented). If
@@ -180,8 +176,8 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @property {Object[]} removed - An array of objects containing row (feature) data removed in the table selection.
    * @property {module:esri/Graphic} removed.feature - The associated row (feature)
    * removed from the feature table selection.
-   * @property {module:esri/layers/support/AttachmentInfo[]} removed.attachments - If applicable,
-   * an array of {@link module:esri/layers/support/AttachmentInfo}
+   * @property {module:esri/rest/query/support/AttachmentInfo[]} removed.attachments - If applicable,
+   * an array of {@link module:esri/rest/query/support/AttachmentInfo}
    * associated with the row (feature) removed from the
    * feature table selection.
    * @property {module:esri/Graphic[]} removed.relatedRecords - (Currently not implemented). If
@@ -195,9 +191,9 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @example
    * // This function will fire each time a row (feature) is either added
    * // or removed from the feature table's selection
-   * featureTable.on("selection-change", function(event){
-   *   const addedRows = event.added; // An array of rows (features) added to the selection
-   *   const removedRows = event.removed;  // An array of rows (features) removed from the selection
+   * featureTable.on("selection-change", (event) => {
+   *   let addedRows = event.added; // An array of features added to the selection
+   *   let removedRows = event.removed;  // An array of features removed from the selection
    * });
    */
 
@@ -238,18 +234,21 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
         () => this.scheduleRender()
       ),
       watchUtils.on(this, "viewModel.columns", "change", () => this._updateMenuItems()),
-      watchUtils.watch(this, "menuConfig", () => this._updateMenuItems()),
+      watchUtils.watch(this, "menuConfig", () => this._syncMenuConfig()),
       watchUtils.watch(this, "messages", () => {
-        this._menu.label = this.messages?.options;
+        this.menu.label = this.messages?.options;
         this._updateMenuItems();
       })
     ]);
 
-    this._menu = new ButtonMenu({
-      label: this.messages?.options,
-      iconClass: CSS.menuIcon,
-      ...this.menuConfig
-    });
+    this._set(
+      "menu",
+      new ButtonMenu({
+        label: this.messages?.options,
+        iconClass: CSS.menuIcon,
+        ...this.menuConfig
+      })
+    );
 
     const { attachmentsEnabled, relatedRecordsEnabled } = this;
 
@@ -262,6 +261,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   destroy(): void {
     this.clearSelection();
     this.handles.removeAll();
+    this.menu?.destroy();
   }
 
   //--------------------------------------------------------------------------
@@ -284,10 +284,10 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *
    * @property {HTMLElement} [container] - The DOM Element containing the menu.
    * @property {boolean} [iconClass] - Adds a CSS class to the menu button's DOM node.<br></br>
-   * ![menu items iconClass](../../assets/img/apiref/widgets/featuretable/button-menu-icon-class.png)
+   * ![menu items iconClass](../assets/img/apiref/widgets/featuretable/button-menu-icon-class.png)
    * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem[]} [items] - An array of {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem ButtonMenuItems}.
    * The following image shows the default menu with two additional items.<br></br>
-   * ![ButtonMenuItems array](../../assets/img/apiref/widgets/featuretable/custom-menu-items.png)
+   * ![ButtonMenuItems array](../assets/img/apiref/widgets/featuretable/custom-menu-items.png)
    * @property {boolean} [open] - Indicates if the menu content is visible. Default is `false`.
    * @property {module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel} [viewModel] - The associated viewModel for the {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenu}.
    *
@@ -346,10 +346,10 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @property {Object} [menuItems] - The menu items within the feature table menu.
    * This image shows the individual items within the widget's menu.
    *
-   * ![featuretable widget menu items](../../assets/img/apiref/widgets/featuretable/menuitems.png)
+   * ![featuretable widget menu items](../assets/img/apiref/widgets/featuretable/menuitems.png)
    * @property {boolean} [menuItems.clearSelection] - Indicates whether to display the `Clear selection` menu item. Default value is `true`.
    * @property {boolean} [menuItems.refreshData] - Indicates whether to display the `Refresh data` menu item. Default value is `true`.
-   * @property {toggleColums} [menuItems.toggleColumns] - Indicates whether to enable toggling column visibility within the menu. Default value is `true`.
+   * @property {toggleColumns} [menuItems.toggleColumns] - Indicates whether to enable toggling column visibility within the menu. Default value is `true`.
    */
 
   //--------------------------------------------------------------------------
@@ -357,8 +357,6 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   //  Variables
   //
   //--------------------------------------------------------------------------
-
-  private _menu: ButtonMenu = null;
 
   //--------------------------------------------------------------------------
   //
@@ -375,7 +373,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * applicable if the feature layer supports attachments. Currently, this field only
    * displays the count of attachments per feature.
    *
-   * ![featuretable attachmentenabled](../../assets/img/apiref/widgets/featuretable/attachments-enabled.png)
+   * ![featuretable attachmentsEnabled](../assets/img/apiref/widgets/featuretable/attachments-enabled.png)
    *
    * @name attachmentsEnabled
    * @type {boolean}
@@ -391,7 +389,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   //----------------------------------
 
   /**
-   * When 'true', columns can be reordered by dragging a column's header.
+   * When `true`, columns can be reordered by dragging a column's header.
    *
    * @name columnReorderingEnabled
    * @type {boolean}
@@ -449,14 +447,14 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * using one of the options above.
    * :::
    *
-   * ![featuretable editing](../../assets/img/apiref/widgets/featuretable/editing.png)
+   * ![featuretable editing](../assets/img/apiref/widgets/featuretable/editing.png)
    *
    * @name editingEnabled
    * @type {boolean}
    * @instance
    * @default false
    * @since 4.16
-   * @see [Sample - FeatureTable with editing enabled]
+   * @see [Sample - FeatureTable with editing enabled](../sample-code/widgets-featuretable-editing/)
    *
    */
   @aliasOf("viewModel.editingEnabled")
@@ -478,10 +476,43 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @instance
    * @type {module:esri/widgets/FeatureTable/FieldColumnConfig[]}
    * @default null
+   * @autocast
    *
    */
   @aliasOf("viewModel.fieldConfigs")
   fieldConfigs: FieldConfig[] = null;
+
+  //----------------------------------
+  //  filterGeometry
+  //----------------------------------
+
+  /**
+   *
+   * Set this property to filter the features displayed in the table. It accepts a {@link module:esri/geometry/Geometry}, e.g. {@link module:esri/geometry/Extent}, and uses it as a spatial filter. When modifying this property, the FeatureTable will completely refresh and re-query for all features.
+   *
+   * @name filterGeometry
+   * @instance
+   * @type {module:esri/geometry/Geometry}
+   * @since 4.19
+   * @autocast
+   *
+   * @see [Sample - FeatureTable widget using a map](../sample-code/widgets-featuretable-map/index.html)
+   *
+   * @example
+   * // Filter the table to only display the associated feature(s) that fall within the filterGeometry's geometry, (e.g. Extent)
+   * featureLayer.watch("loaded", () => {
+   *   watchUtils.whenFalse(view, "updating", () => {
+   *     // Get the new extent of view/map whenever map is updated
+   *     if (view.extent) {
+   *       // Filter and show only the visible features in the feature table
+   *       featureTable.filterGeometry = view.extent;
+   *     }
+   *   });
+   * });
+   *
+   */
+  @aliasOf("viewModel.filterGeometry")
+  filterGeometry: Geometry = null;
 
   //----------------------------------
   //  grid
@@ -565,9 +596,34 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @ignore
    */
   @property()
-  @renderable()
   @messageBundle("esri/widgets/FeatureTable/t9n/FeatureTable")
   messages: FeatureTableMessages = null;
+
+  //----------------------------------
+  //  menu
+  //----------------------------------
+
+  /**
+   * Reference to the FeatureTable's primary menu.
+   *
+   * :::esri-md class="panel trailer-1"
+   * The menu's items are regenerated when a column's visibility changes. Use the FeatureTable's [menuConfig](#menuConfig) and {@link module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem menuConfig.items} to customize menu items. These options are recommended, rather than updating The table's `items` directly off of its `menu`. This helps ensure the menu always shows the correct items.
+   * :::
+   *
+   * @name menu
+   * @type {module:esri/widgets/FeatureTable/Grid/support/ButtonMenu}
+   * @instance
+   * @since 4.19
+   * @readonly
+   *
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
+   * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
+   *
+   */
+  @property({
+    readOnly: true
+  })
+  readonly menu: ButtonMenu = null;
 
   //----------------------------------
   //  menuConfig
@@ -576,7 +632,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   /**
    * Set this object to customize the feature table's menu content.
    *
-   * ![default and custom feature table menus](../../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
+   * ![default and custom feature table menus](../assets/img/apiref/widgets/featuretable/combined-menu-items.jpg)
    *
    * @name menuConfig
    * @type {module:esri/widgets/FeatureTable~ButtonMenuConfig}
@@ -593,19 +649,26 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   menuConfig: ButtonMenuConfig = null;
 
   //----------------------------------
-  //  pageSize - virtual doc from GridVM
+  //  pageSize
   //----------------------------------
 
   /**
-   * The default page size used when displaying rows (features) within the table. By default,
-   * the page loads the first 50 rows (features).
+   * The default page size used when displaying features within the table. By default, the page loads the first 50 features returned by the service.
+   *
+   * ::: esri-md class="panel trailer-1"
+   * It is not possible to overwrite the maximum page size on the server, ie. `maxRecordCount`, as this property only applies to set values less than the maximum page size, i.e. `maxRecordCount`, set on the service.
+   * :::
    *
    * @name pageSize
-   * @type {number}
-   * @default 50
    * @instance
-   * @since 4.16
+   * @type {number}
+   * @since 4.19
+   * @default 50
+   * @see [ArcGIS REST API - FeatureLayer - maxRecordCount](https://developers.arcgis.com/rest/services-reference/feature-layer.htm)
+   *
    */
+  @aliasOf("viewModel.pageSize")
+  pageSize = 50;
 
   //----------------------------------
   //  relatedRecordsEnabled
@@ -613,7 +676,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
 
   /**
    *
-   * Indicates whether to display any related records associated with rows (features) within the table.
+   * Indicates whether to display any related records associated with rows within the table.
    *
    * @ignore
    * @name relatedRecordsEnabled
@@ -646,8 +709,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   //----------------------------------
 
   /**
-   * A reference to the {@link module:esri/views/MapView}. This property must be set for
-   * the select/highlight in the map to work.
+   * A reference to the {@link module:esri/views/MapView}. This property must be set for select/highlighting in the map to work.
    *
    * @name view
    * @instance
@@ -655,7 +717,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *
    */
   @aliasOf("viewModel.view")
-  view: MapView | SceneView = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -673,14 +735,6 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * @autocast
    */
   @property()
-  @renderable([
-    "viewModel.attachmentsEnabled",
-    "viewModel.columns",
-    "viewModel.editingEnabled",
-    "viewModel.layer",
-    "viewModel.relatedRecordsEnabled",
-    "viewModel.state"
-  ])
   viewModel: FeatureTableViewModel = new FeatureTableViewModel();
 
   //----------------------------------
@@ -709,7 +763,6 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * }
    */
   @property()
-  @renderable()
   visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
 
   @cast("visibleElements")
@@ -793,6 +846,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *
    * @param {string} fieldName - The `fieldName` of the column to find.
    *
+   * @return {module:esri/widgets/FeatureTable/FieldColumn} The returned {@link module:esri/widgets/FeatureTable/FieldColumn column} from the table.
    */
 
   //----------------------------------
@@ -844,7 +898,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    */
 
   //----------------------------------
-  //  showColumn
+  //  showColumn - virtual doc from GridVM
   //----------------------------------
 
   /**
@@ -907,6 +961,22 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   selectRows(): void {}
 
   //----------------------------------
+  //  scrollToIndex
+  //----------------------------------
+
+  /**
+   *
+   * Scrolls the table to a row based on specified index.
+   *
+   * @method scrollToIndex
+   * @instance
+   * @since 4.19
+   *
+   */
+  @aliasOf("viewModel.scrollToIndex")
+  scrollToIndex(): void {}
+
+  //----------------------------------
   //  render
   //----------------------------------
 
@@ -938,7 +1008,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
       <div key="header" class={CSS.header}>
         {this._renderLoader()}
         {this._renderTitle()}
-        {this._renderMenu()}
+        {this.visibleElements.menu ? this._renderMenu() : null}
       </div>
     );
   }
@@ -986,7 +1056,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   //--------------------------------------------------------------------------
 
   private _renderMenu(): VNode {
-    return <div class={CSS.menuContainer}>{this._menu.render()}</div>;
+    return <div class={CSS.menuContainer}>{this.menu.render()}</div>;
   }
 
   //--------------------------------------------------------------------------
@@ -1002,7 +1072,15 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
     });
   }
 
+  private _syncMenuConfig(): void {
+    this.menu?.set({ ...this.menuConfig, items: this._getMenuItems() });
+  }
+
   private _updateMenuItems(): void {
+    this.menu?.set("items", this._getMenuItems());
+  }
+
+  private _getMenuItems(): ButtonMenuItem[] {
     const configItems = this.menuConfig?.items;
     const defaultItems = this._getDefaultMenuItems();
     const items = [];
@@ -1010,7 +1088,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
     defaultItems?.length && items.push(...defaultItems);
     configItems?.length && items.push(...configItems);
 
-    items.length && this._menu?.set("items", items);
+    return items;
   }
 
   private _getDefaultMenuItems(): ButtonMenuItem[] {
@@ -1066,12 +1144,13 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
   }
 
   private _toggleColumnFromMenuItem(path: string): void {
-    const col = this.viewModel?.findColumn(path);
+    const { grid, viewModel } = this;
+    const column = viewModel.findColumn(path);
 
-    if (col?.hidden) {
-      this.showColumn(path);
+    if (column?.hidden) {
+      grid.showColumn(path);
     } else {
-      this.hideColumn(path);
+      grid.hideColumn(path);
     }
   }
 }

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl"],(function(e,t,r,u){"use strict";e.VertexTextureCoordinates=function(e,a){e.include(r.TextureCoordinateAttribute,a),e.fragment.code.add(t.glsl`
+define(["exports","../../shaderModules/interfaces","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl"],(function(e,t,r,u){"use strict";function a(e,a){e.include(r.TextureCoordinateAttribute,a),e.fragment.code.add(t.glsl`
   struct TextureLookupParameter {
     vec2 uv;
     ${a.supportsTextureAtlas?"vec2 size;":""}
@@ -15,4 +15,4 @@ define(["exports","../../shaderModules/interfaces","./TextureCoordinateAttribute
     vec4 textureLookup(sampler2D tex, TextureLookupParameter params) {
         return textureAtlasLookup(tex, params.size, params.uv, vuvRegion);
       }
-    `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `))}e.VertexTextureCoordinates=a,Object.defineProperty(e,"__esModule",{value:!0})}));

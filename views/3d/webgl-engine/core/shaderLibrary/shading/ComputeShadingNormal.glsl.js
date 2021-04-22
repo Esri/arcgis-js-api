@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../attributes/VertexPosition.glsl","../attributes/VertexNormal.glsl"],(function(e,o,d,r){"use strict";e.ComputeShadingNormal=function(e,a){const i=e.fragment;0===a.doubleSidedMode?i.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","../attributes/VertexPosition.glsl","../attributes/VertexNormal.glsl"],(function(e,o,d,r){"use strict";function a(e,a){const i=e.fragment;0===a.doubleSidedMode?i.code.add(o.glsl`
       vec3 _adjustDoublesided(vec3 normal) {
         return normal;
       }
@@ -47,4 +47,4 @@ define(["exports","../../shaderModules/interfaces","../attributes/VertexPosition
       vec3 shadingNormal_view() {
         return normalize(cross(dFdx(vPosition_view),dFdy(vPosition_view))).xyz;
       }
-    `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `))}e.ComputeShadingNormal=a,Object.defineProperty(e,"__esModule",{value:!0})}));

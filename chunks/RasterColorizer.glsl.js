@@ -1,8 +1,21 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/BasicGrid.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl"],(function(e,a,t,l,o,i,r){"use strict";function u(e){const u=new t.ShaderBuilder;return u.include(o.BasicGrid),u.include(r.Common),u.include(i.Colormap),0===e.output?function(e,t){e.fragment.uniforms.add("u_bandCount","int"),e.fragment.uniforms.add("u_minCutOff","float",3),e.fragment.uniforms.add("u_maxCutOff","float",3),e.fragment.uniforms.add("u_factor","float",3),e.fragment.uniforms.add("u_minOutput","float"),e.fragment.uniforms.add("u_maxOutput","float"),e.fragment.uniforms.add("u_useGamma","bool"),e.fragment.uniforms.add("u_gamma","float",3),e.fragment.uniforms.add("u_gammaCorrection","float",3),e.fragment.code.add(a.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/BasicGrid.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl"],(function(e,a,t,l,o,i,r){"use strict";function u(e){const a=new t.ShaderBuilder;return a.include(o.BasicGrid),a.include(r.Common),a.include(i.Colormap),0===e.output?c(a,e.applyColormap):1===e.output?n(a):2===e.output&&f(a,e.applyColormap),a}function n(e){e.fragment.code.add(a.glsl`
+      void main() {
+        // get pixel location
+        vec2 pixelLocation = getPixelLocation(v_texcoord);
+        if (isOutside(pixelLocation)) {
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+          return;
+        }
+
+        vec4 currentPixel = getPixel(pixelLocation);
+        // apply colormap we use float texture here
+        gl_FragColor = colormap(currentPixel, true);
+      }
+    `)}function c(e,t){e.fragment.uniforms.add("u_bandCount","int"),e.fragment.uniforms.add("u_minCutOff","float",3),e.fragment.uniforms.add("u_maxCutOff","float",3),e.fragment.uniforms.add("u_factor","float",3),e.fragment.uniforms.add("u_minOutput","float"),e.fragment.uniforms.add("u_maxOutput","float"),e.fragment.uniforms.add("u_useGamma","bool"),e.fragment.uniforms.add("u_gamma","float",3),e.fragment.uniforms.add("u_gammaCorrection","float",3),e.fragment.code.add(a.glsl`
       float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
         // clamp values
         if (val >= maxCutOff) {
@@ -50,20 +63,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
           gl_FragColor = vec4(redVal, greenVal, blueVal, 1.0) * currentPixel.a * u_opacity;
         }
       }
-    `)}(u,e.applyColormap):1===e.output?function(e){e.fragment.code.add(a.glsl`
-      void main() {
-        // get pixel location
-        vec2 pixelLocation = getPixelLocation(v_texcoord);
-        if (isOutside(pixelLocation)) {
-          gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
-          return;
-        }
-
-        vec4 currentPixel = getPixel(pixelLocation);
-        // apply colormap we use float texture here
-        gl_FragColor = colormap(currentPixel, true);
-      }
-    `)}(u):2===e.output&&function(e,t){e.fragment.uniforms.add("u_hillshadeType","int"),e.fragment.uniforms.add("u_sinZcosAs","float",6),e.fragment.uniforms.add("u_sinZsinAs","float",6),e.fragment.uniforms.add("u_cosZs","float",6),e.fragment.uniforms.add("u_weights","float",6),e.fragment.uniforms.add("u_factor","vec2"),e.fragment.uniforms.add("u_applyColormap","bool"),e.fragment.uniforms.add("u_minValue","float"),e.fragment.uniforms.add("u_maxValue","float"),e.fragment.uniforms.add("u_srcImageSize","vec2"),e.fragment.include(l.ColorConversion),e.fragment.code.add(a.glsl`
+    `)}function f(e,t){e.fragment.uniforms.add("u_hillshadeType","int"),e.fragment.uniforms.add("u_sinZcosAs","float",6),e.fragment.uniforms.add("u_sinZsinAs","float",6),e.fragment.uniforms.add("u_cosZs","float",6),e.fragment.uniforms.add("u_weights","float",6),e.fragment.uniforms.add("u_factor","vec2"),e.fragment.uniforms.add("u_applyColormap","bool"),e.fragment.uniforms.add("u_minValue","float"),e.fragment.uniforms.add("u_maxValue","float"),e.fragment.uniforms.add("u_srcImageSize","vec2"),e.fragment.include(l.ColorConversion),e.fragment.code.add(a.glsl`
   vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
     val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
     vec4 rgb = colormap(vec4(val, val, val, 1.0), false);
@@ -166,4 +166,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       alpha *= u_opacity;
       ${o}
     }
-  `)}(u,e.applyColormap),u}var n=Object.freeze({__proto__:null,build:u});e.RasterColorizerShader=n,e.build=u}));
+  `)}var m=Object.freeze({__proto__:null,build:u});e.RasterColorizerShader=m,e.build=u}));

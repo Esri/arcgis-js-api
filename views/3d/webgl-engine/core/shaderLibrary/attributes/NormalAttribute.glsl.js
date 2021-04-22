@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../util/DecodeNormal.glsl"],(function(e,r,o){"use strict";e.NormalAttribute=function(e,d){0===d.normalType&&(e.attributes.add("normal","vec3"),e.vertex.code.add(r.glsl`
+define(["exports","../../shaderModules/interfaces","../util/DecodeNormal.glsl"],(function(e,r,o){"use strict";function d(e,d){0===d.normalType&&(e.attributes.add("normal","vec3"),e.vertex.code.add(r.glsl`
       vec3 normalModel() {
         return normal;
       }
@@ -14,4 +14,4 @@ define(["exports","../../shaderModules/interfaces","../util/DecodeNormal.glsl"],
       vec3 screenDerivativeNormal(vec3 positionView) {
         return normalize(cross(dFdx(positionView), dFdy(positionView)));
       }
-    `))},Object.defineProperty(e,"__esModule",{value:!0})}));
+    `))}e.NormalAttribute=d,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.18/esri/copyright.txt for details.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";(e.HUDOcclusion||(e.HUDOcclusion={})).bindUniforms=function(e){e.setUniform4f("color",1,1,1,1)},e.HUDOcclusionPass=function(e){const t=e;t.vertex.code.add(o.glsl`
+define(["exports","../../shaderModules/interfaces","../shading/MultipassGeometryTest.glsl"],(function(e,o,t){"use strict";function r(e,r){r.multipassGeometryEnabled&&e.vertex.include(t.multipassGeometryTest),e.vertex.code.add(o.glsl`
   void main(void) {
     vec4 posProjCenter;
     if (dot(position, position) > 0.0) {
@@ -12,11 +12,18 @@ define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";
       vec4 posProj = projectPositionHUD(projectAux);
       posProjCenter = alignToPixelCenter(posProj, viewport.zw);
 
+      ${r.multipassGeometryEnabled?o.glsl`
+        // Don't draw vertices behind geometry
+        if(geometryDepthTest(.5 + .5 * posProjCenter.xy / posProjCenter.w, projectAux.posView.z)){
+          posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
+        }`:""}
+
       vec3 vpos = projectAux.posModel;
       if (rejectBySlice(vpos)) {
         // Project out of clip space
         posProjCenter = vec4(1e038, 1e038, 1e038, 1.0);
       }
+
     }
     else {
       // Project out of clip space
@@ -26,8 +33,8 @@ define(["exports","../../shaderModules/interfaces"],(function(e,o){"use strict";
     gl_Position = posProjCenter;
     gl_PointSize = 1.0;
   }
-  `),t.fragment.uniforms.add("color","vec4"),t.fragment.code.add(o.glsl`
+  `),e.fragment.uniforms.add("color","vec4"),e.fragment.code.add(o.glsl`
   void main() {
     gl_FragColor = color;
   }
-  `)},Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}!function(e){function o(e){e.setUniform4f("color",1,1,1,1)}e.bindUniforms=o}(e.HUDOcclusion||(e.HUDOcclusion={})),e.HUDOcclusionPass=r,Object.defineProperty(e,"__esModule",{value:!0})}));
