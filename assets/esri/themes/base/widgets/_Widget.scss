@@ -323,7 +323,7 @@
     }
   }
 
-  [class*="esri-icon"] {
+  [class^="esri-icon"] {
     font-size: $icon-size;
     display: inline-block;
   }
