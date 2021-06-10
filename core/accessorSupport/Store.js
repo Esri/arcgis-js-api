@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./PropertyOrigin"],function(t,e,n){Object.defineProperty(e,"__esModule",{value:!0});var r=function(){function t(){this._values={}}return t.prototype.get=function(t){return this._values[t]},t.prototype.originOf=function(t){return n.OriginId.USER},t.prototype.keys=function(){return Object.keys(this._values)},t.prototype.set=function(t,e){this._values[t]=e},t.prototype.clear=function(t){delete this._values[t]},t.prototype.has=function(t){return t in this._values},t}();e["default"]=r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../lang"],(function(e,t){"use strict";let n=function(){function e(){this._values=new Map}var n=e.prototype;return n.clone=function(n){const s=new e;return this._values.forEach(((e,u)=>{n&&n.has(u)||s.set(u,t.clone(e))})),s},n.get=function(e){return this._values.get(e)},n.originOf=function(){return 6},n.keys=function(){return[...this._values.keys()]},n.set=function(e,t){this._values.set(e,t)},n.delete=function(e){this._values.delete(e)},n.has=function(e){return this._values.has(e)},n.forEach=function(e){this._values.forEach(e)},e}();e.Store=n,Object.defineProperty(e,"__esModule",{value:!0})}));

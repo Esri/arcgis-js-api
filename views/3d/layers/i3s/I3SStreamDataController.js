@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/promiseUtils"],(function(e,t,r){"use strict";let l=function(){function e(e){this.requester=e,this.activeRequests=new Set}var l=e.prototype;return l.request=function(e,t,l){const o=r.createAbortController(),n=r.onAbortOrThrow(l,(()=>o.abort()));l={...l,signal:o.signal};const s=this.requester.request(e,t,l),a={response:s,abortController:o,abortHandle:n};return this.activeRequests.add(a),r.always(s,(()=>{var e;a.abortController=null,null==(e=a.abortHandle)||e.remove(),a.abortHandle=null,this.activeRequests.delete(a)})),s},l.cancelAll=function(){this.activeRequests.forEach((e=>{var t,r;null==(t=e.abortController)||t.abort(),e.abortController=null,null==(r=e.abortHandle)||r.remove()})),this.activeRequests.clear()},t._createClass(e,[{key:"busy",get:function(){return this.requester.busy}}]),e}();e.I3SStreamDataController=l,e.default=l,Object.defineProperty(e,"__esModule",{value:!0})}));

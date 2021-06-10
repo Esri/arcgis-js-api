@@ -1,0 +1,7 @@
+@mixin classedColorSlider() {
+  @include smartMappingSlider(esri-classed-color-slider);
+}
+
+@if $include_ClassedColorSlider == true {
+  @include classedColorSlider();
+}

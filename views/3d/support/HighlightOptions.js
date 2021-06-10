@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/typescript","../../../core/Accessor","../../../Color"],function(t,o,r,l,p,e,c){var i=function(t){function o(){var o=null!==t&&t.apply(this,arguments)||this;return o.color=null,o.haloOpacity=null,o.fillOpacity=null,o}return r(o,t),o.prototype.getDefaults=function(){return{color:new c([0,255,255]),haloOpacity:1,fillOpacity:.25}},o.toEngineOptions=function(t){return{color:new Float32Array(c.toUnitRGBA(t.color)),haloOpacity:t.haloOpacity,haloOpacityOccluded:.25*t.haloOpacity,fillOpacity:t.fillOpacity,fillOpacityOccluded:.25*t.fillOpacity}},o}(e);return l([p.property({type:c})],i.prototype,"color",void 0),l([p.property()],i.prototype,"haloOpacity",void 0),l([p.property()],i.prototype,"fillOpacity",void 0),i=l([p.subclass()],i)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor","../../../Color","../../../chunks/vec4f32"],(function(o,e,r,t,c,p,a,i,l,s,d,y,n,h){"use strict";let u=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).color=new n([0,255,255]),o.haloColor=null,o.haloOpacity=1,o.fillOpacity=.25,o.shadowOpacity=.4,o.shadowColor=new n([0,0,0]),o.shadowDifference=.2,o}return o._inheritsLoose(r,e),r.toEngineOptions=function(o){const e=n.toUnitRGBA(o.color),r=t.isSome(o.haloColor)?n.toUnitRGBA(o.haloColor):e,c=n.toUnitRGBA(o.shadowColor);return{color:h.fromValues(e[0],e[1],e[2],e[3]),haloColor:h.fromValues(r[0],r[1],r[2],r[3]),haloOpacity:o.haloOpacity,haloOpacityOccluded:.25*o.haloOpacity,fillOpacity:o.fillOpacity,fillOpacityOccluded:.25*o.fillOpacity,shadowOpacity:o.shadowOpacity,shadowColor:h.fromValues(c[0],c[1],c[2],c[3]),occludedShadowOpacity:o.shadowOpacity*(1-o.shadowDifference)}},r}(y);return e.__decorate([a.property({type:n})],u.prototype,"color",void 0),e.__decorate([a.property({type:n})],u.prototype,"haloColor",void 0),e.__decorate([a.property()],u.prototype,"haloOpacity",void 0),e.__decorate([a.property()],u.prototype,"fillOpacity",void 0),e.__decorate([a.property()],u.prototype,"shadowOpacity",void 0),e.__decorate([a.property({type:n})],u.prototype,"shadowColor",void 0),e.__decorate([a.property()],u.prototype,"shadowDifference",void 0),u=e.__decorate([i.subclass("esri.views.3d.support.HighlightOptions")],u),u}));

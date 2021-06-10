@@ -1,0 +1,83 @@
+$content-height--loading: 150px !default;
+
+@mixin featureContent() {
+  .esri-feature-content__loader-container {
+    height: $content-height--loading;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .esri-feature-content__loader {
+    height: 64px;
+    width: 100%;
+    background: url(../base/images/loading-throb.gif) no-repeat center center;
+  }
+  .esri-feature-content h1,
+  .esri-feature-content h2,
+  .esri-feature-content h3,
+  .esri-feature-content h4,
+  .esri-feature-content h5,
+  .esri-feature-content h6 {
+    margin: 0.5em 0 0.5em 0;
+    letter-spacing: 0;
+    font-weight: $font-weight__heading;
+    line-height: normal;
+  }
+  .esri-feature-content h1 {
+    font-size: $font-size__h1;
+  }
+  .esri-feature-content h2 {
+    font-size: $font-size__h2;
+  }
+  .esri-feature-content h3,
+  .esri-feature-content h4,
+  .esri-feature-content h5,
+  .esri-feature-content h6 {
+    font-size: $font-size__lt-h2;
+  }
+  .esri-feature-element-info__title {
+    color: $font-color;
+    font-size: $font-size__h1;
+    font-weight: $font-weight--regular;
+    margin-bottom: 0.2em;
+    margin-top: 0;
+  }
+
+  .esri-feature-element-info__description {
+    font-size: $font-size__body;
+    font-weight: $font-weight--regular;
+    margin-bottom: $cap-spacing--three-quarters;
+  }
+  .esri-feature-content p {
+    font-size: $font-size;
+    line-height: normal;
+    margin: 0 0 1.2em;
+  }
+  .esri-feature-content img {
+    max-width: 100%;
+    max-height: 100%;
+    image-orientation: from-image;
+  }
+  .esri-feature-content figcaption {
+    font-size: $font-size--small;
+    font-style: italic;
+    padding: 0;
+    margin: 0.2em 0 0;
+    display: block;
+  }
+  .esri-feature-content ul {
+    margin-bottom: 1rem;
+  }
+  .esri-feature-content a {
+    color: $interactive-font-color;
+    &:hover,
+    &:focus {
+      color: $interactive-font-color--hover;
+    }
+  }
+}
+
+@if $include_FeatureContent == true {
+  @include featureContent();
+}

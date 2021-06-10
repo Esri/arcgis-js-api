@@ -1,0 +1,36 @@
+@mixin featureTemplates() {
+  $icon_size: 48px;
+  $border: 1px solid $border-color;
+
+  .esri-feature-templates {
+    background: $background-color--offset;
+  }
+
+  .esri-feature-templates__list-item-icon {
+    flex: 0;
+    width: $icon_size;
+    min-width: $icon_size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .esri-feature-templates__list-item-icon > div {
+    // TemplateItem thumbnail uses plain div as wrapper
+    display: flex;
+  }
+
+  .esri-feature-templates__loader {
+    margin: 0 auto;
+    height: $icon_size;
+    width: 32px;
+    background: url(../base/images/loading-throb.gif) no-repeat center;
+  }
+  .esri-ui .esri-feature-templates {
+    width: $panel_width;
+  }
+}
+
+@if $include_FeatureTemplates == true {
+  @include featureTemplates();
+}

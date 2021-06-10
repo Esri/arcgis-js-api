@@ -1,0 +1,7 @@
+@mixin colorSizeSlider() {
+  @include smartMappingSlider(esri-color-size-slider);
+}
+
+@if $include_ColorSizeSlider == true {
+  @include colorSizeSlider();
+}

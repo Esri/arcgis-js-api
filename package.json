@@ -1,27 +1,31 @@
 {
   "name": "arcgis-js-api",
-  "version": "4.4.0",
-  "description": "Minified, unbuilt version of the ArcGIS API for JavaScript",
-  "license": "SEE LICENSE IN copyright.txt",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Esri/arcgis-js-api.git"
-  },
+  "version": "4.19.1",
+  "homepage": "https://js.arcgis.com",
+  "description": "ArcGIS API for JavaScript: A complete 2D and 3D mapping and data visualization API",
   "keywords": [
-    "esrijs",
-    "esri",
-    "arcgis",
-    "gis"
+    "ArcGIS",
+    "javascript",
+    "map",
+    "3D",
+    "2D",
+    "visualization",
+    "analytics",
+    "spatial",
+    "data-driven",
+    "gis",
+    "Esri"
   ],
-  "dependencies": {
-    "dgrid": "Esri/dgrid#v1.1.0/esri-3.20.0",
-    "dijit": "Esri/dijit#v1.12.2/esri-3.21.0",
-    "dojo": "Esri/dojo#v1.12.2/esri-3.21.0",
-    "dojo-dstore": "^1.1.1",
-    "dojo-util": "^1.12.2",
-    "dojox": "Esri/dojox#v1.12.2/esri-3.21.0",
-    "moment": "2.18.1"
+  "license": "SEE LICENSE IN copyright.txt",
+  "browser": {
+    "buffer": false,
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "process": false
   },
-  "homepage": "https://developers.arcgis.com/javascript",
-  "dojoBuild": "esri.profile.js"
+  "dependencies": {},
+  "dojoBuild": "esri.profile.js",
+  "repository": "Esri/arcgis-js-api",
+  "types": "index.d.ts"
 }

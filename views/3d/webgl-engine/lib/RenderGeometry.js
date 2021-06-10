@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./gl-matrix"],function(t,r,n){var a=n.vec3d,i=n.mat4d,e=function(){function t(t,r,n,i,e,s,o,h,f,d,u){this.shaderTransformationDirty=!0,this.data=t.toRenderData(),this.componentOffsets=t.componentOffsets,this.boundingInfo=r,this.material=n,this.origin=null,this.center=a.create(),this.bsRadius=0,this.transformation=null,this.calculateShaderTransformation=e,i&&this.updateTransformation(i,s),this.castShadow=o,this.singleUse=h,this.name=f,this.uniqueName=d,this.idx=u,this.canBeMerged=!0,this.instanceParameters={}}return t.prototype.updateTransformation=function(t,r){this.transformation=t,this.shaderTransformationDirty=!0,this.bsRadius=this.getBoundingSphere(t,r,this.center)},t.prototype.shaderTransformationChanged=function(){this.shaderTransformationDirty=!0},t.prototype.getBoundingSphere=function(t,r,n){return r=r||i.maxScale(t),i.multiplyVec3(t,this.boundingInfo.getCenter(),n),this.boundingInfo.getBSRadius()*r},Object.defineProperty(t.prototype,"hasShaderTransformation",{get:function(){return!!this.calculateShaderTransformation},enumerable:!0,configurable:!0}),t.prototype.getShaderTransformation=function(){return this.calculateShaderTransformation?(this.shaderTransformationDirty&&(this.shaderTransformation||(this.shaderTransformation=i.create()),i.set(this.calculateShaderTransformation(this.transformation),this.shaderTransformation),this.shaderTransformationDirty=!1),this.shaderTransformation):this.transformation},t}();return e});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../chunks/vec3","../../support/mathUtils","../../../../chunks/mat4","../../../../chunks/mat4f64","../../../../chunks/vec4f64","./geometryDataUtils","./Object3DStateID","../materials/renderers/utils"],(function(t,i,n,e,r,a,s,o,h,u,c){"use strict";let m=function(){function t(t,i,n=null,e=null,r,a,s,h,u){this.data=t,this.material=i,this.layerUid=n,this.graphicUid=e,this.boundingSphere=o.create(),this.instanceParameters={highlights:null,occludees:null,visible:!0},this.shaderTransformationDirty=!0,this.boundingInfo=r,this.material=i,this.origin=null,this.transformation=null,this.calculateShaderTransformation=s,a&&this.updateTransformation(a,h),this.castShadow=u}var m=t.prototype;return m.updateTransformation=function(t,i){this.transformation=t,this.shaderTransformationDirty=!0,this.computeBoundingSphere(t,i,this.boundingSphere)},m.shaderTransformationChanged=function(){this.shaderTransformationDirty=!0},m.computeBoundingSphere=function(t,i,a){n.isNone(this.boundingInfo)||(i=i||r.maxScale(t),e.transformMat4(a,this.boundingInfo.getCenter(),t),a[3]=this.boundingInfo.getBSRadius()*i)},m.getShaderTransformation=function(){return n.isNone(this.calculateShaderTransformation)?n.unwrapOr(this.transformation,s.IDENTITY):(this.shaderTransformationDirty&&(this.shaderTransformation||(this.shaderTransformation=s.create()),a.copy(this.shaderTransformation,this.calculateShaderTransformation(n.unwrapOr(this.transformation,s.IDENTITY))),this.shaderTransformationDirty=!1),this.shaderTransformation)},m.computeAttachmentOrigin=function(t){if(this.material.computeAttachmentOrigin)return!!this.material.computeAttachmentOrigin(this,t)&&(n.isSome(this.transformation)&&e.transformMat4(t,t,this.transformation),!0);const i=this.indices.get("position"),r=this.vertexAttributes.get("position");return!!h.computeAttachmentOriginTriangles(r,i,t)&&(n.isSome(this.transformation)&&e.transformMat4(t,t,this.transformation),!0)},m.addHighlight=function(){const t=new u.Object3DStateID(0),i=this.instanceParameters;return i.highlights=c.addObject3DStateID(i.highlights,t),t},m.removeHighlight=function(t){const i=this.instanceParameters;i.highlights=c.removeObject3DStateID(i.highlights,t)},i._createClass(t,[{key:"hasShaderTransformation",get:function(){return n.isSome(this.calculateShaderTransformation)}},{key:"primitiveType",get:function(){return this.data.primitiveType}},{key:"indices",get:function(){return this.data.indices}},{key:"vertexAttributes",get:function(){return this.data.vertexAttributes}}]),t}();t.RenderGeometry=m,Object.defineProperty(t,"__esModule",{value:!0})}));

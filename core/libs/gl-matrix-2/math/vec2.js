@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/common","../../../../chunks/vec2"],(function(e,t,s){"use strict";e.add=s.add,e.angle=s.angle,e.ceil=s.ceil,e.copy=s.copy,e.cross=s.cross,e.dist=s.dist,e.distance=s.distance,e.div=s.div,e.divide=s.divide,e.dot=s.dot,e.equals=s.equals,e.exactEquals=s.exactEquals,e.floor=s.floor,e.inverse=s.inverse,e.len=s.len,e.length=s.length,e.lerp=s.lerp,e.max=s.max,e.min=s.min,e.mul=s.mul,e.multiply=s.multiply,e.negate=s.negate,e.normalize=s.normalize,e.random=s.random,e.rotate=s.rotate,e.round=s.round,e.scale=s.scale,e.scaleAndAdd=s.scaleAndAdd,e.set=s.set,e.sqrDist=s.sqrDist,e.sqrLen=s.sqrLen,e.squaredDistance=s.squaredDistance,e.squaredLength=s.squaredLength,e.str=s.str,e.sub=s.sub,e.subtract=s.subtract,e.transformMat2=s.transformMat2,e.transformMat2d=s.transformMat2d,e.transformMat3=s.transformMat3,e.transformMat4=s.transformMat4,Object.defineProperty(e,"__esModule",{value:!0})}));

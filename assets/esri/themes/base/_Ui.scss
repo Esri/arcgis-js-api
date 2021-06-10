@@ -1,0 +1,149 @@
+.esri-ui {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  overflow: hidden;
+  font-size: $font-size;
+  z-index: 0; // creates root stacking context
+
+  .esri-component {
+    pointer-events: auto;
+  }
+
+  /* attribution's position is a special case */
+  .esri-attribution {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.esri-ui-corner {
+  position: absolute;
+  display: flex;
+}
+
+.esri-ui-inner-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.esri-ui-manual-container {
+  & > .esri-component {
+    position: absolute;
+  }
+
+  /* swipe needs to be placed behind all UI components */
+  .esri-swipe {
+    z-index: -1;
+  }
+}
+
+// Top Corners
+.esri-ui-top-left,
+.esri-ui-top-right {
+  flex-flow: column;
+}
+
+.esri-ui-top-left {
+  align-items: flex-start;
+}
+
+.esri-ui-top-right {
+  align-items: flex-end;
+}
+
+//  Bottom Corners
+.esri-ui-bottom-left,
+.esri-ui-bottom-right {
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.esri-ui-bottom-right {
+  flex-flow: row-reverse;
+}
+
+.esri-ui-top-left {
+  top: 0;
+  left: 0;
+}
+
+.esri-ui-top-right {
+  top: 0;
+  right: 0;
+}
+
+.esri-ui-top-right .esri-component,
+.esri-ui-top-left .esri-component {
+  margin-bottom: $view-ui-spacing;
+}
+
+.esri-ui-bottom-left {
+  bottom: 0;
+  left: 0;
+
+  .esri-component {
+    margin-right: $view-ui-spacing;
+  }
+}
+
+.esri-ui-bottom-right {
+  bottom: 0;
+  right: 0;
+
+  .esri-component {
+    margin-left: $view-ui-spacing;
+  }
+}
+
+html[dir="rtl"] {
+  .esri-ui-top-left {
+    align-items: flex-end;
+  }
+  .esri-ui-top-right {
+    align-items: flex-start;
+  }
+  .esri-ui-bottom-left {
+    flex-direction: row-reverse;
+  }
+  .esri-ui-bottom-right {
+    flex-direction: row;
+  }
+}
+
+/* ZoomBox */
+
+.esri-zoom-box__container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.esri-zoom-box__overlay {
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.esri-zoom-box__overlay-background {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.esri-zoom-box__outline {
+  fill: transparent;
+  stroke: dodgerblue;
+  stroke-dasharray: 1, 1;
+  stroke-width: 2px;
+}

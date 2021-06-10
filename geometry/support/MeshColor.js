@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,o,s,t,c,p,u,n,l,i,a){"use strict";e.MeshColor=function(e){function o(r){return e.call(this,r)||this}return r._inheritsLoose(o,e),o.prototype.clone=function(){throw new Error("not implemented")},o}(a.JSONSupport),o.__decorate([p.property({readOnly:!0,json:{read:!1,write:{isRequired:!0,ignoreOrigin:!0,enabled:!0}}})],e.MeshColor.prototype,"type",void 0),e.MeshColor=o.__decorate([u.subclass("esri.geometry.support.MeshColor")],e.MeshColor);var d=e.MeshColor;e.default=d,Object.defineProperty(e,"__esModule",{value:!0})}));

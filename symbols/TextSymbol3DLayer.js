@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3DLayer","./support/Symbol3DHalo","./support/materialUtils","../core/accessorSupport/decorators"],function(t,e,o,r,i,n,p,l,a){var s=y=function(t){function e(e){var o=t.call(this)||this;return o.font=null,o.halo=null,o.material=null,o.size=void 0,o.text=void 0,o.type="text",o}return o(e,t),e.prototype.writeFont=function(t,e){t&&(e.font=i.clone(t))},e.prototype.clone=function(){return new y({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),font:this.font&&i.clone(this.font),halo:this.halo&&i.clone(this.halo),material:this.material&&this.material.clone(),size:this.size,text:this.text})},e}(a.declared(n));r([a.property()],s.prototype,"font",void 0),r([a.writer("font")],s.prototype,"writeFont",null),r([a.property({type:p["default"],json:{write:!0}})],s.prototype,"halo",void 0),r([a.property()],s.prototype,"material",void 0),r([a.property(l.screenSizeProperty)],s.prototype,"size",void 0),r([a.property({json:{write:!0}})],s.prototype,"text",void 0),r([a.property()],s.prototype,"type",void 0),s=y=r([a.subclass("esri.symbols.TextSymbol3DLayer")],s);var y;return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/maybe","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Symbol3DLayer","./support/materialUtils","./support/Symbol3DMaterial","./Font","./support/Symbol3DHalo"],(function(e,t,o,r,s,n,i,l,c,a,u,p,h,y,f,_,d,z,S){"use strict";var m;let b=m=function(t){function o(e){var o;return(o=t.call(this,e)||this)._userSize=void 0,o.halo=null,o.material=null,o.text=void 0,o.type="text",o}e._inheritsLoose(o,t);var n=o.prototype;return n.writeFont=function(e,t,o,r){const s={...r,textSymbol3D:!0};t.font=e.write({},s),delete t.font.size},n.clone=function(){return new m({enabled:this.enabled,font:this.font&&r.clone(this.font),halo:this.halo&&r.clone(this.halo),material:s.isSome(this.material)?this.material.clone():null,size:this.size,text:this.text})},o.fromTextSymbol=function(e){const t=x(e.haloColor,e.haloSize),o=e.font?e.font.clone():new z;return new m({size:o.size,font:o,halo:t,material:e.color?{color:e.color.clone()}:null,text:e.text})},e._createClass(o,[{key:"font",get:function(){return this._get("font")||null},set:function(e){e&&this._userSize&&(e.size=this._userSize),this._set("font",e)}},{key:"size",get:function(){return null!=this._userSize?this._userSize:this.font&&null!=this.font.size?this.font.size:9},set:function(e){this._userSize=e,this.font&&(this.font.size=this._userSize),this.notifyChange("size")}}]),o}(f);function x(e,t){return e&&t>0?{color:r.clone(e),size:t}:null}return t.__decorate([l.property({type:z,json:{write:!0}})],b.prototype,"font",null),t.__decorate([u.writer("font")],b.prototype,"writeFont",null),t.__decorate([l.property({type:S.default,json:{write:!0}})],b.prototype,"halo",void 0),t.__decorate([l.property({type:d.default,json:{write:!0}})],b.prototype,"material",void 0),t.__decorate([l.property(_.screenSizeProperty),l.property()],b.prototype,"size",null),t.__decorate([l.property({type:String,json:{write:!0}})],b.prototype,"text",void 0),t.__decorate([c.enumeration({Text:"text"},{readOnly:!0})],b.prototype,"type",void 0),b=m=t.__decorate([a.subclass("esri.symbols.TextSymbol3DLayer")],b),b}));

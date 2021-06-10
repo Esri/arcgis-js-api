@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./core/tsSupport/declareExtendsHelper","./core/tsSupport/decorateHelper","./core/Accessor","./core/CollectionFlattener","./core/Evented","./support/LayersMixin","./Ground","./support/basemapUtils","./support/groundUtils","./core/accessorSupport/decorators"],function(e,r,t,o,a,s,p,n,c,u,l,i){var y=function(e){function r(r){var t=e.call(this)||this;return t.basemap=null,t.ground=new c,t._basemapCache=u.createCache(),t}return t(r,e),Object.defineProperty(r.prototype,"allLayers",{get:function(){return new s({root:this,rootCollectionNames:["basemap.baseLayers","ground.layers","layers","basemap.referenceLayers"],getChildrenFunction:function(e){return e.layers}})},enumerable:!0,configurable:!0}),r.prototype.castBasemap=function(e){return u.ensureType(e,this._basemapCache)},r}(i.declared(a,p,n));return o([i.property({readOnly:!0})],y.prototype,"allLayers",null),o([i.property()],y.prototype,"basemap",void 0),o([i.cast("basemap")],y.prototype,"castBasemap",null),o([i.property(),i.cast(l.ensureType)],y.prototype,"ground",void 0),y=o([i.subclass("esri.Map")],y)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["./chunks/_rollupPluginBabelHelpers","./chunks/tslib.es6","./core/has","./core/Logger","./core/accessorSupport/decorators/property","./core/accessorSupport/decorators/cast","./core/accessorSupport/decorators/subclass","./core/urlUtils","./core/uuid","./portal/support/resourceExtension","./core/Accessor","./core/Evented","./Basemap","./Ground","./core/CollectionFlattener","./support/basemapUtils","./support/groundUtils","./support/LayersMixin","./support/TablesMixin"],(function(e,r,t,a,s,o,n,l,i,p,c,u,d,y,b,h,_,g,f){"use strict";const m=a.getLogger("esri.Map");let L=function(r){function t(t){var a;return(a=r.call(this,t)||this).allLayers=new b({root:e._assertThisInitialized(a),rootCollectionNames:["basemap.baseLayers","ground.layers","layers","basemap.referenceLayers"],getChildrenFunction:e=>e.layers}),a.allTables=a._createTablesFlattener(e._assertThisInitialized(a)),a.basemap=null,a.ground=new y,a._basemapCache=h.createCache(),a}e._inheritsLoose(t,r);var a=t.prototype;return a.destroy=function(){var e,r;this.allLayers.destroy(),this.allTables.destroy(),null==(e=this.ground)||e.destroy(),null==(r=this.basemap)||r.destroy(),h.destroyCache(this._basemapCache),this._basemapCache=null},a.castBasemap=function(e){return h.ensureType(e,this._basemapCache)},a.castGround=function(e){const r=_.ensureType(e);return r||(m.error("Map.ground may not be set to null or undefined"),this._get("ground"))},a.findLayerById=function(e){return this.allLayers.find((r=>r.id===e))},a.findTableById=function(e){return this.allTables.find((r=>r.id===e))},a._createTablesFlattener=function(e){return new b({root:e,rootCollectionNames:["tables","layers"],getChildrenFunction:e=>e&&"group"===e.type?this._createTablesFlattener(e):null,itemFilterFunction:e=>this._isMapOrGroupLayer(e.parent)&&e.parent.tables.includes(e)})},a._isMapOrGroupLayer=function(e){return e&&(e===this||this._isGroupLayer(e))},a._isGroupLayer=function(e){return e&&"group"===e.type},t}(f.TablesMixin(g.LayersMixin(u.EventedMixin(c))));return r.__decorate([s.property({readOnly:!0,dependsOn:[]})],L.prototype,"allLayers",void 0),r.__decorate([s.property({readOnly:!0})],L.prototype,"allTables",void 0),r.__decorate([s.property({type:d})],L.prototype,"basemap",void 0),r.__decorate([o.cast("basemap")],L.prototype,"castBasemap",null),r.__decorate([s.property({type:y,nonNullable:!0})],L.prototype,"ground",void 0),r.__decorate([o.cast("ground")],L.prototype,"castGround",null),L=r.__decorate([n.subclass("esri.Map")],L),L}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","./support"],function(e,t,n,r,i){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,n,r){var i=e.call(this,"esri.views.3d.input.handlers.DragZoom"+n,!0)||this;return i.view=t,i.pointerType=n,i.registerIncoming("drag",r,function(e){return i._handleDrag(e)}),i}return n(t,e),t.prototype._handleDrag=function(e){var t=e.data;if(!(t.pointers.length>1)){var n=t.pointers[0];if(i.eventMatchesPointerType(n.startEvent["native"],this.pointerType)){var r=[n.currentEvent.x,this.view.height-n.currentEvent.y],a=this.view.navigation.zoom;switch(t.action){case"start":a.begin(r);break;case"update":a.update(r);break;case"end":a.end(r)}e.stopPropagation()}}},t}(r.InputHandler);t.DragZoom=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../../input/handlers/support","../../state/controllers/global/ZoomController","../../state/controllers/local/ZoomController"],(function(e,t,r,o,n,a,l){"use strict";let i=function(e){function o(t,r,o){var n;return(n=e.call(this,!0)||this).view=t,n.pointerAction=r,n.registerIncoming("drag",o,(e=>n.handleDrag(e))),n}return t._inheritsLoose(o,e),o.prototype.handleDrag=function(e){const t=e.data;if(t.pointers.size>1)return;if(!n.eventMatchesMousePointerAction(e.data,this.pointerAction))return;const o=r.createScreenPointArray(t.center.x,t.center.y);switch(t.action){case"start":this.cameraController&&(this.cameraController.end(),this.cameraController=null),this.view.state.isGlobal?this.cameraController=new a.ZoomController({view:this.view}):this.cameraController=new l.ZoomController({view:this.view}),this.view.state.switchCameraController(this.cameraController),this.cameraController.begin(o);break;case"update":this.cameraController&&this.cameraController.update(o);break;case"end":this.cameraController&&(this.cameraController.end(),this.cameraController=null)}e.stopPropagation()},o}(o.InputHandler);e.DragZoom=i,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,177 @@
+/* Esri Calcite Gray Colors - Last Updated 04/16/15 */
+/*
+{
+name: "Calcite Gray Colors",
+tags: "Calcite Gray,Calcite"
+}
+*/
+/* -- Calcite Gray -- */
+.Calcite_Gray_050 {
+  background-color: #ffffff;
+  /*
+   {
+  Hex:"#FFFFFF",
+  RGB:"r0 g0 b0",
+  guid:"ce3816ba-9d1f-4868-9741-923892cf8359",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_100 {
+  background-color: #f8f8f8;
+  /*
+   {
+  Hex:"#F8F8F8",
+  RGB:"r248 g248 b248",
+  guid:"d985a8fd-7fje-4c8e-9af4-dbda932b8cfe",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_150 {
+  background-color: #f4f4f4;
+  /*
+   {
+  Hex:"#F4F4F4",
+  RGB:"r244 g244 b244",
+  guid:"2844bcc7-292d-40fd-9fe8-cfb44729dd2d",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_200 {
+  background-color: #efefef;
+  /*
+   {
+  Hex:"#EFEFEF",
+  RGB:"r239 g239 b239",
+  guid:"32d31fab-4659-4b9f-926f-5fcc0735acaf",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_250 {
+  background-color: #e7e7e7;
+  /*
+   {
+  Hex:"#E7E7E7",
+  RGB:"r231 g231 b231",
+  guid:"2cf7c448-98d5-4d8f-9ce4-9bfcccd6e973",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_300 {
+  background-color: #e0e0e0;
+  /*
+   {
+  Hex:"#E0E0E0",
+  RGB:"r224 g224 b224",
+  guid:"9ffbb3ee-4a62-4a28-989a-443b47bf6a72",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_350 {
+  background-color: #cccccc;
+  /*
+   {
+  Hex:"#CCCCCC",
+  RGB:"204 g204 b204",
+  guid:"1dcd7c34-ccc5-4dde-82fa-e79ae93eee91",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_400 {
+  background-color: #a9a9a9;
+  /*
+   {
+  Hex:"#A9A9A9",
+  RGB:"r169 g169 b169",
+  guid:"d07d2783-274b-4e08-965d-7745b9bf6f4e",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_450 {
+  background-color: #959595;
+  /*
+   {
+  Hex:"#959595",
+  RGB:"r149 g149 b149",
+  guid:"172ca0df-3ace-4f3a-b00d-81b65b16b517",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_500 {
+  background-color: #828282;
+  /*
+   {
+  Hex:"#828282",
+  RGB:"r130 g130 b130",
+  guid:"6661ca1b-50d1-40d4-b232-1f2833191e8e",
+  accessibility_white_text:"AA",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Gray_550 {
+  background-color: #6e6e6e;
+  /*
+   {
+  Hex:"#6E6E6E",
+  RGB:"r110 g110 b110",
+  guid:"bbe54a4f-b5f3-4d9c-860a-cb9231acd5bb",
+  accessibility_white_text:"AAaa",
+  accessibility_black_text:"AA"
+  }
+  */ }
+
+.Calcite_Gray_600 {
+  background-color: #595959;
+  /*
+   {
+  Hex:"#595959",
+  RGB:"r89 g89 b89",
+  guid:"7549be08-fad2-41ac-973a-977f6dbd8359",
+  accessibility_white_text:"AAaa",
+  accessibility_black_text:""
+  }
+  */ }
+
+.Calcite_Gray_650 {
+  background-color: #4c4c4c;
+  /*
+   {
+  Hex:"#4C4C4C",
+  RGB:"r76 g76 b76",
+  guid:"22c404ce-81f7-4e71-9546-704b35497f83",
+  accessibility_white_text:"AAaa",
+  accessibility_black_text:""
+  }
+  */ }
+
+.Calcite_Gray_700 {
+  background-color: #323232;
+  /*
+   {
+  Hex:"#323232",
+  RGB:"r51 g51 b51",
+  guid:"6776d7ab-2580-4c96-af05-18f006b2818f",
+  accessibility_white_text:"AAaa",
+  accessibility_black_text:""
+  }
+  */ }
+
+/*# sourceMappingURL=calcite_gray_colors.css.map */

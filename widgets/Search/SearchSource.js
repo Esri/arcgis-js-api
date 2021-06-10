@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/Identifiable"],function(e,p,o,t,r,i,l){var a=function(e){function p(p){var o=e.call(this)||this;return o.autoNavigate=!0,o.filter=null,o.maxResults=6,o.maxSuggestions=6,o.minSuggestCharacters=1,o.name="",o.outFields=null,o.placeholder="",o.popup=null,o.popupEnabled=!0,o.popupTemplate=null,o.popupOpenOnSelect=!0,o.prefix="",o.resultGraphicEnabled=!0,o.resultSymbol=null,o.searchExtent=null,o.suggestionsEnabled=!0,o.suffix="",o.withinViewEnabled=!1,o.zoomScale=null,o}return o(p,e),p}(r.declared(i,l));return t([r.property()],a.prototype,"autoNavigate",void 0),t([r.property()],a.prototype,"filter",void 0),t([r.property()],a.prototype,"maxResults",void 0),t([r.property()],a.prototype,"maxSuggestions",void 0),t([r.property()],a.prototype,"minSuggestCharacters",void 0),t([r.property()],a.prototype,"name",void 0),t([r.property()],a.prototype,"outFields",void 0),t([r.property()],a.prototype,"placeholder",void 0),t([r.property()],a.prototype,"popup",void 0),t([r.property()],a.prototype,"popupEnabled",void 0),t([r.property()],a.prototype,"popupTemplate",void 0),t([r.property()],a.prototype,"popupOpenOnSelect",void 0),t([r.property()],a.prototype,"prefix",void 0),t([r.property()],a.prototype,"resultGraphicEnabled",void 0),t([r.property()],a.prototype,"resultSymbol",void 0),t([r.property()],a.prototype,"searchExtent",void 0),t([r.property()],a.prototype,"suggestionsEnabled",void 0),t([r.property()],a.prototype,"suffix",void 0),t([r.property()],a.prototype,"withinViewEnabled",void 0),t([r.property()],a.prototype,"zoomScale",void 0),a=t([r.subclass("esri.widgets.Search.SearchSource")],a)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../core/Identifiable"],(function(e,o,t,r,p,l,s,i,a,u,c,d){"use strict";let n=function(o){function t(e){var t;return(t=o.call(this,e)||this).autoNavigate=null,t.filter=null,t.getResults=null,t.getSuggestions=null,t.maxResults=null,t.maxSuggestions=null,t.minSuggestCharacters=null,t.outFields=null,t.placeholder="",t.popupEnabled=null,t.popupTemplate=null,t.prefix="",t.resultGraphicEnabled=null,t.resultSymbol=null,t.suggestionsEnabled=null,t.suffix="",t.withinViewEnabled=!1,t.zoomScale=null,t}return e._inheritsLoose(t,o),t}(d.IdentifiableMixin(c.JSONSupport));return o.__decorate([l.property()],n.prototype,"autoNavigate",void 0),o.__decorate([l.property()],n.prototype,"filter",void 0),o.__decorate([l.property()],n.prototype,"getResults",void 0),o.__decorate([l.property()],n.prototype,"getSuggestions",void 0),o.__decorate([l.property()],n.prototype,"maxResults",void 0),o.__decorate([l.property()],n.prototype,"maxSuggestions",void 0),o.__decorate([l.property()],n.prototype,"minSuggestCharacters",void 0),o.__decorate([l.property()],n.prototype,"outFields",void 0),o.__decorate([l.property()],n.prototype,"placeholder",void 0),o.__decorate([l.property()],n.prototype,"popupEnabled",void 0),o.__decorate([l.property()],n.prototype,"popupTemplate",void 0),o.__decorate([l.property()],n.prototype,"prefix",void 0),o.__decorate([l.property()],n.prototype,"resultGraphicEnabled",void 0),o.__decorate([l.property()],n.prototype,"resultSymbol",void 0),o.__decorate([l.property()],n.prototype,"suggestionsEnabled",void 0),o.__decorate([l.property()],n.prototype,"suffix",void 0),o.__decorate([l.property()],n.prototype,"withinViewEnabled",void 0),o.__decorate([l.property()],n.prototype,"zoomScale",void 0),n=o.__decorate([s.subclass("esri.widgets.Search.SearchSource")],n),n}));

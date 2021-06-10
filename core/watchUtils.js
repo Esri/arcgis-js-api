@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/Deferred","dojo/promise/Promise"],function(n,e,r,t){function u(n,e,r,t,u){var o=n.watch(e,function(e,u,o,c){(!t||t(e))&&r.call(n,e,u,o,c)},u),c=n.get(e);return t&&t(c)&&r.call(n,c,c,e,n),o}function o(n,e,o,c,i){function f(){l&&(l.remove(),l=null)}var l,a=!1,d=new r(f),s=new t;return s.cancel=d.cancel,s.isCanceled=d.isCanceled,s.isFulfilled=d.isFulfilled,s.isRejected=d.isRejected,s.isResolved=d.isResolved,s.then=d.then,s.remove=f,Object.freeze(s),l=u(n,e,function(e,r,t,u){a=!0,f(),o&&o.call(n,e,r,t,u),d.resolve({value:e,oldValue:r,propertyName:t,target:u})},c,i),a&&l.remove(),s}function c(n){return!!n}function i(n){return!n}function f(n){return n===!0}function l(n){return n===!1}function a(n){return void 0!==n}function d(n){return void 0===n}function s(n,e,r,t){var u=Array.isArray(e)?e:e.indexOf(",")>-1?e.split(","):[e];return u.forEach(function(e){e=e.trim();var t=n.get(e);r.call(n,t,t,e,n)}),v(n,e,r,t)}function v(n,e,r,t){return n.watch(e,r,t)}function h(n,e,r,t){return o(n,e,r,null,t)}function w(n,e,r,t){return u(n,e,r,c,t)}function m(n,e,r,t){return o(n,e,r,c,t)}function O(n,e,r,t){return u(n,e,r,i,t)}function p(n,e,r,t){return o(n,e,r,i,t)}function j(n,e,r,t){return u(n,e,r,f,t)}function y(n,e,r,t){return o(n,e,r,f,t)}function F(n,e,r,t){return u(n,e,r,l,t)}function R(n,e,r,t){return o(n,e,r,l,t)}function b(n,e,r,t){return u(n,e,r,a,t)}function g(n,e,r,t){return o(n,e,r,a,t)}function D(n,e,r,t){return u(n,e,r,d,t)}function N(n,e,r,t){return o(n,e,r,d,t)}function x(n,e,r,t){var u=!1,o=n.watch(e,function(e,t,o,c){u||r.call(n,e,t,o,c)},t);return{remove:o.remove,pause:function(){u=!0},resume:function(){u=!1}}}function A(n,e,r,t,u,o,c){function i(){l&&(o&&o(f,e,n,r),l.remove(),l=null,f=null)}var f=null,l=null,a=s(n,e,function(o){i(),o&&o.on&&(f=o,l=o.on(r,t),u&&u(f,e,n,r))},c);return{remove:function(){a.remove(),i()}}}Object.defineProperty(e,"__esModule",{value:!0}),e.init=s,e.watch=v,e.once=h,e.when=w,e.whenOnce=m,e.whenNot=O,e.whenNotOnce=p,e.whenTrue=j,e.whenTrueOnce=y,e.whenFalse=F,e.whenFalseOnce=R,e.whenDefined=b,e.whenDefinedOnce=g,e.whenUndefined=D,e.whenUndefinedOnce=N,e.pausable=x,e.on=A});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./lang","./events","./promiseUtils"],(function(n,e,t,r){"use strict";function o(n,e,t,r,o){const u=n.watch(e,((e,o,u,c)=>{t&&!t(e)||null==r||r.call(n,e,o,u,c)}),o);if(Array.isArray(e))for(const c of e){const o=n.get(c);t&&t(o)&&(null==r||r.call(n,o,o,e,n))}else{const o=n.get(e);t&&t(o)&&(null==r||r.call(n,o,o,e,n))}return u}function u(n,e,t,u,c){const i="function"==typeof u?u:null,l="object"==typeof u?u:null;"boolean"==typeof u&&(c=u);let f,a=!1;function s(){f&&(f.remove(),f=null)}const h=r.createDeferred();r.onAbort(l,(()=>{s(),h.reject(r.createAbortError())}));const d={then:h.promise.then.bind(h.promise),catch:h.promise.catch.bind(h.promise),remove:s};return Object.freeze(d),f=o(n,e,t,((e,t,r,o)=>{a=!0,s(),i&&i.call(n,e,t,r,o),h.resolve({value:e,oldValue:t,propertyName:r,target:o})}),c),a&&s(),d}function c(n){return!!n}function i(n){return!n}function l(n){return!0===n}function f(n){return!1===n}function a(n){return void 0!==n}function s(n){return void 0===n}const h=/\?(\.|$)/g;function d(n,e,t,r){const o=Array.isArray(e)?e:e.indexOf(",")>-1?e.split(","):[e],u=w(n,e,t,r);for(const c of o){const e=c.trim().replace(h,"$1"),r=n.get(e);t.call(n,r,r,e,n)}return u}function w(n,e,t,r){return n.watch(e,t,r)}function p(n,e,t,r){return u(n,e,null,t,r)}function m(n,e,t,r){return o(n,e,c,t,r)}function v(n,e,t,r){return u(n,e,c,t,r)}function O(n,e,t,r){return o(n,e,i,t,r)}function b(n,e,t,r){return u(n,e,i,t,r)}function g(n,e,t,r){return o(n,e,l,t,r)}function y(n,e,t,r){return u(n,e,l,t,r)}function A(n,e,t,r){return o(n,e,f,t,r)}function j(n,e,t,r){return u(n,e,f,t,r)}function q(n,e,t,r){return o(n,e,a,t,r)}function E(n,e,t,r){return u(n,e,a,t,r)}function D(n,e,t,r){return o(n,e,s,t,r)}function N(n,e,t,r){return u(n,e,s,t,r)}function T(n,t,r,u,c){return o(n,t,(n=>e.equals(r,n)),u,c)}function U(n,t,r,o,c){return u(n,t,(n=>e.equals(r,n)),o,c)}function x(n,e,t,r){let o=!1;const u=n.watch(e,((e,r,u,c)=>{o||t.call(n,e,r,u,c)}),r);return{remove(){u.remove()},pause(){o=!0},resume(){o=!1}}}function F(n,e,r,o,u,c,i){const l={};function f(e){const t=l[e];t&&(c&&c(t.target,e,n,r),t.handle.remove(),delete l[e])}const a=d(n,e,((e,c,i)=>{f(i),t.isEventTarget(e)&&(l[i]={handle:t.on(e,r,o),target:e},u&&u(e,i,n,r))}),i);return{remove(){a.remove();for(const n in l)f(n)}}}n.init=d,n.on=F,n.once=p,n.pausable=x,n.watch=w,n.when=m,n.whenDefined=q,n.whenDefinedOnce=E,n.whenEqual=T,n.whenEqualOnce=U,n.whenFalse=A,n.whenFalseOnce=j,n.whenNot=O,n.whenNotOnce=b,n.whenOnce=v,n.whenTrue=g,n.whenTrueOnce=y,n.whenUndefined=D,n.whenUndefinedOnce=N,n.whenValidOnce=u,Object.defineProperty(n,"__esModule",{value:!0})}));

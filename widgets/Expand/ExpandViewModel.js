@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/HandleRegistry","../../core/watchUtils"],function(e,t,n,o,r,i,a,p){var l=function(e){function t(t){var n=e.call(this,t)||this;return n._viewpointHandle=null,n._handles=new a,n}return n(t,e),t.prototype.destroy=function(){this._viewpointHandle=null,this.view=null,this._handles.destroy(),this._handles=null},Object.defineProperty(t.prototype,"autoCollapse",{set:function(e){this._set("autoCollapse",e),this._watchViewpoint()},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"state",{get:function(){return this.get("view.ready")?"ready":"disabled"},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"expanded",{set:function(e){var t=!!e;this._set("expanded",t),this._viewpointHandleChange(t)},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"view",{set:function(e){this._set("view",e),this._watchViewpoint()},enumerable:!0,configurable:!0}),t.prototype._viewpointHandleChange=function(e){var t=this;this._viewpointHandle&&(e?p.whenTrueOnce(this.view,"stationary",function(){return t._viewpointHandle.resume()}):this._viewpointHandle.pause())},t.prototype._watchViewpoint=function(){var e=this;this._handles.removeAll(),this._viewpointHandle=null;var t=this,n=t.autoCollapse,o=t.view;o&&n&&o.then(function(){var t="3d"===o.type?"camera":"viewpoint",n=p.pausable(o,t,function(){return e._collapse()});e._handles.add(n),e._viewpointHandle=n})},t.prototype._collapse=function(){this.expanded=!1},t}(r.declared(i));return o([r.property()],l.prototype,"autoCollapse",null),o([r.property({dependsOn:["view.ready"],readOnly:!0})],l.prototype,"state",null),o([r.property({value:!1})],l.prototype,"expanded",null),o([r.property({value:null})],l.prototype,"view",null),l=o([r.subclass("esri.widgets.Expand.ExpandViewModel")],l)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor","../../core/Handles","../../core/watchUtils"],(function(e,t,i,o,s,n,r,a,l,p,c,u,d){"use strict";let h=function(t){function i(e){var i;return(i=t.call(this,e)||this)._viewpointHandle=null,i._handles=new u,i.group=null,i}e._inheritsLoose(i,t);var o=i.prototype;return o.initialize=function(){this._handles.add(d.on(this,"view.ui","expand",(e=>{const{target:t}=e;t&&t!==this&&t.expanded&&t.group&&t.group===this.group&&this._collapse()})))},o.destroy=function(){this._viewpointHandle=null,this.view=null,this._handles.destroy(),this._handles=null},o._viewpointHandleChange=function(e){this._viewpointHandle&&(e?d.whenTrueOnce(this.view,"stationary",(()=>this._viewpointHandle.resume())):this._viewpointHandle.pause())},o._watchViewpoint=function(){const e="viewpoint";this._handles.remove(e),this._viewpointHandle=null;const{autoCollapse:t,view:i}=this;if(i&&t){const t="3d"===i.type?"camera":"viewpoint",o=d.pausable(i,t,(()=>this._collapse()));this._handles.add(o,e),this._viewpointHandle=o}},o._collapse=function(){this.expanded=!1},e._createClass(i,[{key:"autoCollapse",set:function(e){this._set("autoCollapse",e),this._watchViewpoint()}},{key:"expanded",set:function(e){const t=!!e;this._set("expanded",t);const i=this.get("view.ui");i&&i.emit("expand",{target:this}),this._viewpointHandleChange(t)}},{key:"state",get:function(){return this.get("view.ready")?"ready":"disabled"}},{key:"view",set:function(e){this._get("view")!==e&&(this._set("view",e),e&&d.whenTrueOnce(e,"ready",(()=>{this.view===e&&this._watchViewpoint()})))}}]),i}(c);return t.__decorate([n.property({value:!1})],h.prototype,"autoCollapse",null),t.__decorate([n.property({value:!1})],h.prototype,"expanded",null),t.__decorate([n.property()],h.prototype,"group",void 0),t.__decorate([n.property({readOnly:!0})],h.prototype,"state",null),t.__decorate([n.property({value:null})],h.prototype,"view",null),h=t.__decorate([r.subclass("esri.widgets.Expand.ExpandViewModel")],h),h}));

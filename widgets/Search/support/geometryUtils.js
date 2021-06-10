@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/Error","../../../core/promiseUtils","../../../geometry/Point","../../../geometry/Extent","../../../geometry/Polygon","../../../geometry/Polyline","../../../geometry/Multipoint","../../../geometry/support/scaleUtils","../../../views/MapView"],function(e,t,n,r,i,o,s,a,c,m,f){function u(e,t){if(!t)return r.reject(new n("searchgeometryutils:missing-parameter","view is missing."));if(!e)return r.reject(new n("searchgeometryutils:missing-parameter","point is missing."));if(e.hasZ||t instanceof f)return r.resolve(e);var i=t.get("map.ground");return i&&i.layers.length?i.queryElevation(e).then(function(e){return e.geometry}):r.resolve(e)}function g(e){return e instanceof i?e:e instanceof o?e.center:e instanceof s?e.centroid:e instanceof c?e.getPoint(0):e instanceof a?e.getPoint(0,0):void 0}function l(e,t,n,r){return e?e instanceof o?e:e instanceof c||e instanceof s||e instanceof a?e.extent:e instanceof i?y(e,t,n,r):void 0:void 0}function y(e,t,n,r){if(t&&t.map){var i=!isNaN(r)&&n>r?m.getExtentForScale(t,r):t.extent;return i.clone().centerAt(e)}return new o({xmin:e.x-.25,ymin:e.y-.25,xmax:e.x+.25,ymax:e.y+.25,spatialReference:e.spatialReference})}Object.defineProperty(t,"__esModule",{value:!0}),t.getPointWithElevation=u,t.getPointFromGeometry=g,t.createExtentFromGeometry=l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/maybe","../../../core/Logger","../../../core/Error","../../../geometry/Extent","../../../geometry","../../../geometry/support/scaleUtils"],(function(e,t,r,n,i,o,s){"use strict";const a=r.getLogger("esri.widgets.Search.support.geometryUtils");function l(e,t){var r,i;if(!t)return a.error("missing-parameter: view is missing."),Promise.reject(new n("searchgeometryutils:missing-parameter","view is missing."));if(!e)return a.error("missing-parameter: point is missing."),Promise.reject(new n("searchgeometryutils:missing-parameter","point is missing."));if(e.hasZ||"2d"===t.type)return Promise.resolve(e);const o=null==t||null==(r=t.map)?void 0:r.ground;return o&&o.layers.length?o.queryElevation(e,{cache:null==(i=t.basemapTerrain)?void 0:i.elevationQueryCache}).then((e=>e.geometry)):Promise.resolve(e)}function m(e){if(t.isNone(e))return null;switch(e.type){case"point":return e;case"extent":return e.center;case"polygon":return e.centroid;case"multipoint":return e.getPoint(0);case"polyline":return e.getPoint(0,0)}return null}function u(e,r,n){return t.isNone(e)?null:"extent"===e.type?e:"multipoint"===e.type||"polygon"===e.type||"polyline"===e.type?e.extent:"point"===e.type?p(e,r,n):void 0}function c(e,r,n){return t.isNone(e)||t.isNone(r)?null:p(e.center,r,n)}function p(e,t,r){const n=e.hasZ?e.z:void 0;if(t&&t.map){return(r?s.getExtentForScale(t,r):t.extent).clone().centerAt(e).set({zmax:n,zmin:n})}return new i({xmin:e.x-.25,ymin:e.y-.25,xmax:e.x+.25,ymax:e.y+.25,spatialReference:e.spatialReference,zmin:n,zmax:n})}e.createExtentFromGeometry=u,e.getPointFromGeometry=m,e.getPointWithElevation=l,e.scaleExtent=c,Object.defineProperty(e,"__esModule",{value:!0})}));

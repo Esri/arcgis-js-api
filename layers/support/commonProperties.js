@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/accessorSupport/write","../../core/accessorSupport/utils","../../core/accessorSupport/PropertyOrigin"],function(e,r,i,t,s){Object.defineProperty(r,"__esModule",{value:!0}),r.screenSizePerspectiveEnabled={type:Boolean,value:!0,json:{origins:{webScene:{read:{source:["id","url","layerType"],reader:function(e,r){return null==r.screenSizePerspective&&"defaults"===this.originOf("screenSizePerspectiveEnabled")?void t.getProperties(this).store.set("screenSizePerspectiveEnabled",!1,s.OriginId.DEFAULTS):r.screenSizePerspective}},write:{ignoreOrigin:!0,target:"screenSizePerspective",writer:function(e,r,t,s){"defaults"===this.originOf("screenSizePerspectiveEnabled")&&e?r[t]=e:i.willPropertyWrite(this,"screenSizePerspectiveEnabled",{},s)&&(r[t]=e)}}}}}}});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/accessorSupport/utils","../../chunks/persistableUrlUtils","../../core/accessorSupport/write","../../geometry/SpatialReference","../../geometry/Extent","../../webdoc/support/opacityUtils","../../TimeExtent","../../symbols/support/ElevationInfo"],(function(e,r,i,n,t,a,o,s,l){"use strict";const c={type:Boolean,value:!0,json:{origins:{"web-scene":{read:{source:["id","url","layerType"],reader(e,i){if(null!=i.screenSizePerspective||"defaults"!==this.originOf("screenSizePerspectiveEnabled"))return i.screenSizePerspective;r.getProperties(this).store.set("screenSizePerspectiveEnabled",!1,0)}},write:{ignoreOrigin:!0,target:"screenSizePerspective",writer(e,r,i,t){("defaults"===this.originOf("screenSizePerspectiveEnabled")&&e||n.willPropertyWrite(this,"screenSizePerspectiveEnabled",{},t))&&(r[i]=e)}}}}}},p={type:Boolean,value:!0,json:{name:"disablePopup",read:{reader:(e,r)=>!r.disablePopup},write:{enabled:!0,writer(e,r,i){r[i]=!e}}}},d={type:Boolean,value:!0,json:{name:"showLabels",write:!0}},y={type:String,json:{origins:{"portal-item":{write:!1}},write:{isRequired:!0,ignoreOrigin:!0,writer:i.write}}},u={type:Boolean,value:!0,json:{origins:{service:{read:{enabled:!1}}},name:"showLegend",write:!0}},f={value:null,type:l,json:{origins:{service:{name:"elevationInfo",write:!0}},name:"layerDefinition.elevationInfo",write:!0}};function g(e){return{type:e,readOnly:!0,json:{origins:{service:{read:!0}},read:!1}}}const w={type:Number,json:{origins:{"web-document":{default:1,write:!0,read:!0},"portal-item":{write:!0}}}},m={...w,json:{...w.json,origins:{"web-document":{...w.json.origins["web-document"],write:{enabled:!0,target:{opacity:{type:Number},"layerDefinition.drawingInfo.transparency":{type:Number}}}}},read:{source:["layerDefinition.drawingInfo.transparency","drawingInfo.transparency"],reader:(e,r,i)=>i&&"service"!==i.origin||!r.drawingInfo||void 0===r.drawingInfo.transparency?r.layerDefinition&&r.layerDefinition.drawingInfo&&void 0!==r.layerDefinition.drawingInfo.transparency?o.transparencyToOpacity(r.layerDefinition.drawingInfo.transparency):void 0:o.transparencyToOpacity(r.drawingInfo.transparency)}}},v={type:s,readOnly:!0,get(){var e,r;if(null==(e=this.layer)||!e.timeInfo)return null;const i=null==(r=this.view)?void 0:r.timeExtent,n=this.layer.timeExtent,t=this.layer.useViewTime?i&&n?i.intersection(n):i||n:n;if(!t||t.isEmpty)return t;const a=this.layer.timeOffset,o=a?t.offset(-a.value,a.unit):t,s=this._get("timeExtent");return o.equals(s)?s:o}},b={type:a,readOnly:!0,json:{origins:{service:{read:{source:["fullExtent","spatialReference"],reader:(e,r)=>{const i=a.fromJSON(e);return null!=r.spatialReference&&"object"==typeof r.spatialReference&&(i.spatialReference=t.fromJSON(r.spatialReference)),i}}}},read:!1}},S={type:String,json:{origins:{service:{read:!1},"portal-item":{read:!1}}}},j={type:Number,json:{origins:{service:{write:{enabled:!1}}},read:{source:"layerDefinition.minScale"},write:{target:"layerDefinition.minScale"}}},E={type:Number,json:{origins:{service:{write:{enabled:!1}}},read:{source:"layerDefinition.maxScale"},write:{target:"layerDefinition.maxScale"}}};e.combinedViewLayerTimeExtentProperty=v,e.elevationInfo=f,e.id=S,e.labelsVisible=d,e.legendEnabled=u,e.maxScale=E,e.minScale=j,e.opacity=w,e.opacityDrawingInfo=m,e.popupEnabled=p,e.readOnlyService=g,e.sceneLayerFullExtent=b,e.screenSizePerspectiveEnabled=c,e.url=y,Object.defineProperty(e,"__esModule",{value:!0})}));

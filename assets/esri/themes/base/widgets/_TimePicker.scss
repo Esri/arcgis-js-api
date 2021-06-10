@@ -1,0 +1,15 @@
+@mixin timePicker() {
+  .esri-time-picker {
+    display: inline-block;
+    border: 1px solid $border-color;
+    padding: 0 0.5em;
+  }
+
+  .esri-time-picker__input {
+    border: none;
+  }
+}
+
+@if $include_TimePicker == true {
+  @include timePicker();
+}

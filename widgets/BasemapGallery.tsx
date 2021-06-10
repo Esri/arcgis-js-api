@@ -15,8 +15,8 @@
  * @module esri/widgets/BasemapGallery
  * @since 4.3
  *
- * @see [BasemapGallery.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/BasemapGallery.tsx)
- * @see [BasemapGallery.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_BasemapGallery.scss)
+ * @see [BasemapGallery.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapGallery.tsx)
+ * @see [BasemapGallery.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapGallery.scss)
  * @see [Sample - BasemapGallery widget](../sample-code/widgets-basemapgallery/index.html)
  * @see module:esri/widgets/BasemapGallery/BasemapGalleryViewModel
  *
@@ -24,43 +24,50 @@
  * var basemapGallery = new BasemapGallery({
  *   view: view
  * });
- * // Add widget to the bottom left corner of the view
+ * // Add widget to the top right corner of the view
  * view.ui.add(basemapGallery, {
  *   position: "top-right"
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri
+import { getAssetUrl } from "esri/assets";
+import Basemap from "esri/Basemap";
 
-import { BasemapsSource } from "./BasemapGallery/interfaces";
-import { accessibleHandler, tsx, renderable } from "./support/widget";
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-import { on } from "../core/watchUtils";
+// esri.core
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
+import { CollectionChangeEvent } from "esri/core/interfaces";
+import { on, whenOnce } from "esri/core/watchUtils";
 
-import BasemapGalleryViewModel = require("./BasemapGallery/BasemapGalleryViewModel");
-import BasemapGalleryItem = require("./BasemapGallery/support/BasemapGalleryItem");
-import Widget = require("./Widget");
-import Basemap = require("../Basemap");
-import Collection = require("../core/Collection");
-import HandleRegistry = require("../core/HandleRegistry");
-import MapView = require("../views/MapView");
-import SceneView = require("../views/SceneView");
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import * as i18n from "dojo/i18n!./BasemapGallery/nls/BasemapGallery";
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-interface CollectionChangeEventPayload<T> {
-  added: T[];
-  removed: T[];
-  moved: T[];
-}
+// esri.widgets
+import Widget from "esri/widgets/Widget";
 
-const DEFAULT_BASEMAP_IMAGE = require.toUrl("../themes/base/images/basemap-toggle-64.svg");
+// esri.widgets.BasemapGallery
+import BasemapGalleryViewModel from "esri/widgets/BasemapGallery/BasemapGalleryViewModel";
+import { BasemapsSource } from "esri/widgets/BasemapGallery/interfaces";
+
+// esri.widgets.BasemapGallery.support
+import BasemapGalleryItem from "esri/widgets/BasemapGallery/support/BasemapGalleryItem";
+
+// esri.widgets.BasemapGallery.t9n
+import BasemapGalleryMessages from "esri/widgets/BasemapGallery/t9n/BasemapGallery";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-basemap-gallery esri-widget",
+  base: "esri-basemap-gallery esri-widget esri-widget--panel-height-only",
   sourceLoading: "esri-basemap-gallery--source-loading",
-  loadingIndicator: "esri-basemap-gallery_loading-indicator",
+  loader: "esri-basemap-gallery__loader",
   item: "esri-basemap-gallery__item",
   itemContainer: "esri-basemap-gallery__item-container",
   itemTitle: "esri-basemap-gallery__item-title",
@@ -68,15 +75,16 @@ const CSS = {
   selectedItem: "esri-basemap-gallery__item--selected",
   itemLoading: "esri-basemap-gallery__item--loading",
   itemError: "esri-basemap-gallery__item--error",
-  emptyMessage: "esri-basemap-gallery__empty-message",
+  emptyMessage: "esri-widget__content--empty",
+  widgetIcon: "esri-icon-basemap",
 
   // common
-  disabled: "esri-disabled"
+  disabled: "esri-disabled",
+  header: "esri-widget__heading"
 };
 
 @subclass("esri.widgets.BasemapGallery")
-class BasemapGallery extends declared(Widget) {
-
+class BasemapGallery extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -96,26 +104,26 @@ class BasemapGallery extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize() {
+  initialize(): void {
+    const handles = this._handles;
+
     this.own([
-      on<CollectionChangeEventPayload<BasemapGalleryItem>>(this, "viewModel.items", "change", event => {
+      on<CollectionChangeEvent<BasemapGalleryItem>>(this, "viewModel.items", "change", (event) => {
         const key = "basemap-gallery-item-changes";
-
-        this._handleRegistry.remove(key);
-
-        this._handleRegistry.add(
-          event.added.map(item => {
-            return item.watch("state", () => this.scheduleRender());
-          }),
+        const { added, moved } = event;
+        handles.remove(key);
+        handles.add(
+          [...added, ...moved].map((item) => item.watch("state", () => this.scheduleRender())),
           key
         );
+        this.scheduleRender();
       }),
-
-      this._handleRegistry
+      handles,
+      whenOnce(this, "source", () => this.viewModel.load())
     ]);
   }
 
@@ -125,7 +133,7 @@ class BasemapGallery extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _handleRegistry = new HandleRegistry();
+  private _handles = new Handles();
 
   //--------------------------------------------------------------------------
   //
@@ -145,8 +153,73 @@ class BasemapGallery extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.activeBasemap")
-  @renderable()
   activeBasemap: Basemap = null;
+
+  //----------------------------------
+  //  disabled
+  //----------------------------------
+
+  /**
+   * When `true`, sets the widget to a disabled state so the user cannot interact with it.
+   *
+   * @name disabled
+   * @instance
+   * @type {Boolean}
+   * @default false
+   * @since 4.15
+   */
+  @property()
+  disabled: boolean = false;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/BasemapGallery/t9n/BasemapGallery")
+  messages: BasemapGalleryMessages = null;
 
   //----------------------------------
   //  source
@@ -154,20 +227,39 @@ class BasemapGallery extends declared(Widget) {
 
   /**
    * The source for basemaps that the widget will display.
-   * This property can be autocast with an array or {@link module:esri/core/Collection} of {@link module:esri/Basemap}s,
-   * a {@link module:esri/portal/Portal} instance, or a URL to a portal instance.
+   * This property can be autocast with an array or {@link module:esri/core/Collection} of {@link module:esri/Basemap}s, or
+   * a {@link module:esri/portal/Portal} instance.
    * The default source is a {@link module:esri/widgets/BasemapGallery/support/PortalBasemapsSource} that points to
    * the default portal instance set in {@link module:esri/config#portalUrl esriConfig.portalUrl}.
    *
    * @type {module:esri/widgets/BasemapGallery/support/LocalBasemapsSource | module:esri/widgets/BasemapGallery/support/PortalBasemapsSource}
    * @name source
    * @instance
-   * @autocast
+   * @autocast {"value": "module:esri/core/Collection<module:esri/Basemap> | module:esri/Basemap[] | module:esri/portal/Portal | Object"}
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: [Basemap.fromId("topo-vector"), Basemap.fromId("hybrid")] // autocasts to LocalBasemapsSource
+   * });
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: { // autocasts to PortalBasemapsSource
+   *      portal: "https://www.yourportal.arcgis.com"
+   *    }
+   * });
+   *
+   * @example
+   * const basemapGallery = new BasemapGallery({
+   *    view: view,
+   *    source: new Portal({url: "https://www.yourportal.arcgis.com"}) // autocasts to PortalBasemapsSource
+   * });
    *
    * @todo doc custom BasemapSource (interface) also supported
    */
   @aliasOf("viewModel.source")
-  @renderable("source.state")
   source: BasemapsSource = null;
 
   //----------------------------------
@@ -185,8 +277,7 @@ class BasemapGallery extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: MapView | SceneView =  null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -204,9 +295,6 @@ class BasemapGallery extends declared(Widget) {
    * @autocast
    */
   @property()
-  @renderable([
-    "viewModel.state"
-  ])
   viewModel = new BasemapGalleryViewModel();
 
   //-------------------------------------------------------------------
@@ -215,10 +303,11 @@ class BasemapGallery extends declared(Widget) {
   //
   //-------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const sourceLoading = this.get("source.state") === "loading";
-    const isDisabled = this.get("viewModel.state") === "disabled";
-    const items = this.get<Collection<BasemapGalleryItem>>("viewModel.items").toArray()
+    const isDisabled = this.disabled || this.get("viewModel.state") === "disabled";
+    const items = this.get<Collection<BasemapGalleryItem>>("viewModel.items")
+      .toArray()
       .map(this._renderBasemapGalleryItem, this);
 
     const rootClasses = {
@@ -226,18 +315,23 @@ class BasemapGallery extends declared(Widget) {
       [CSS.disabled]: isDisabled
     };
 
-    const loadingIndicator = sourceLoading ?
-      <div class={CSS.loadingIndicator} key="esri-basemap-gallery_loading-indicator" /> :
-      null;
+    const loader = sourceLoading ? (
+      <div class={CSS.loader} key="esri-basemap-gallery__loader" />
+    ) : null;
 
-    const content = sourceLoading ? null :
-      items.length > 0 ?
-        <ul class={CSS.itemContainer} key="esri-basemap-gallery__item-container" role="menu">{items}</ul> :
-        <div class={CSS.emptyMessage} key="esri-basemap-gallery__empty-message">{i18n.noBasemaps}</div>;
+    const content = sourceLoading ? null : items.length > 0 ? (
+      <ul class={CSS.itemContainer} key="esri-basemap-gallery__item-container" role="menu">
+        {items}
+      </ul>
+    ) : (
+      <div class={CSS.emptyMessage} key="esri-basemap-gallery__empty-message">
+        <h2 class={CSS.header}>{this.messages.noBasemaps}</h2>
+      </div>
+    );
 
     return (
-      <div class={CSS.base} classes={rootClasses}>
-        {loadingIndicator}
+      <div class={this.classes(CSS.base, rootClasses)}>
+        {loader}
         {content}
       </div>
     );
@@ -250,7 +344,7 @@ class BasemapGallery extends declared(Widget) {
   //-------------------------------------------------------------------
 
   @accessibleHandler()
-  private _handleClick(event: Event) {
+  private _handleClick(event: Event): void {
     const item = event.currentTarget["data-item"] as BasemapGalleryItem;
 
     if (item.state === "ready") {
@@ -258,13 +352,17 @@ class BasemapGallery extends declared(Widget) {
     }
   }
 
-  private _renderBasemapGalleryItem(item: BasemapGalleryItem): any {
+  private _renderBasemapGalleryItem(item: BasemapGalleryItem): VNode {
     const thumbnailUrl = item.get<string>("basemap.thumbnailUrl");
-    const thumbnailSource = thumbnailUrl || DEFAULT_BASEMAP_IMAGE;
+    const thumbnailSource =
+      thumbnailUrl || getAssetUrl("esri/themes/base/images/basemap-toggle-64.svg");
     const title = item.get<string>("basemap.title");
-    const tooltip = item.get<string>("error.message") || title;
-    const tabIndex = item.state === "ready" ? 0 : -1;
-    const isSelected = this.viewModel.basemapEquals(item.basemap, this.activeBasemap);
+    const snippet = item.get<string>("basemap.portalItem.snippet");
+    const tooltip = item.get<string>("error.message") || snippet || title;
+    const { viewModel } = this;
+    const selectable = !this.disabled && viewModel.state === "ready" && item.state === "ready";
+    const tabIndex = selectable ? 0 : -1;
+    const isSelected = viewModel.basemapEquals(item.basemap, this.activeBasemap);
 
     const itemClasses = {
       [CSS.selectedItem]: isSelected,
@@ -272,21 +370,23 @@ class BasemapGallery extends declared(Widget) {
       [CSS.itemError]: item.state === "error"
     };
 
-    const loadingIndicator = item.state === "loading" ?
-      <div class={CSS.loadingIndicator} key="esri-basemap-gallery_loading-indicator" /> :
-      null;
-
     return (
-      <li aria-selected={isSelected} bind={this} class={CSS.item} classes={itemClasses}
-           data-item={item} onkeydown={this._handleClick} onclick={this._handleClick}
-           role="menuitem" tabIndex={tabIndex} title={tooltip}>
-        {loadingIndicator}
+      <li
+        aria-selected={isSelected.toString()}
+        bind={this}
+        class={this.classes(CSS.item, itemClasses)}
+        data-item={item}
+        onkeydown={this._handleClick}
+        onclick={this._handleClick}
+        role="menuitem"
+        tabIndex={tabIndex}
+        title={tooltip}
+      >
         <img alt="" class={CSS.itemThumbnail} src={thumbnailSource} />
         <div class={CSS.itemTitle}>{title}</div>
       </li>
     );
   }
-
 }
 
-export = BasemapGallery;
+export default BasemapGallery;

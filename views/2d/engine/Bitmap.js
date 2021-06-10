@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","./DisplayObject"],function(t,o,r,e){function i(t){return null!=t.context}var n=[0,0],s=function(t){function o(o){var r=t.call(this)||this;return r.source=o,r.coords=[0,0],r.resolution=0,r.rotation=0,r.width=0,r.height=0,r}return r(o,t),o.prototype.doRender=function(t){this.source&&this.source.ready&&i(t)&&this.renderCanvas2D(t)},o.prototype.renderCanvas2D=function(t){var o=this.source,r=t.context,e=t.state,i=e.resolution,s=e.rotation,h=this.resolution/i*e.pixelRatio;if(!(.05>h)){r.save();var a=e.toScreen(n,this.coords),u=a[0],d=a[1];if(h>.99&&1.01>h?r.translate(Math.round(u),Math.round(d)):(r.translate(u,d),r.scale(h,h)),s){var c=s*Math.PI/180;r.rotate(c)}o.rotation&&(r.translate(.5*o.width,.5*o.height),r.rotate(-o.rotation*Math.PI/180),r.translate(.5*-o.width,.5*-o.height));var l=(this.coords[0]-o.coords[0])/o.resolution,p=-(this.coords[1]-o.coords[1])/o.resolution,f=o.width*(this.resolution/o.resolution),v=o.height*(this.resolution/o.resolution);r.clearRect(0,0,this.width,this.height),o.draw(r,Math.round(l),Math.round(p),Math.round(f),Math.round(v),0,0,this.width,this.height),r.restore()}},o}(e);return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/has","../../../chunks/mat3","../../../chunks/mat3f32","../../../chunks/vec2f32","../../../chunks/builtins","../../webgl/checkWebGLError","../../webgl/Texture","../../webgl/FramebufferObject","./DisplayObject","./ImageryBitmapSource"],(function(t,e,i,s,r,n,u,h,o,a,c,d){"use strict";function l(t){return t&&"render"in t}function f(t){return t&&!("render"in t)}function _(t){const e=document.createElement("canvas");return e.width=t.width,e.height=t.height,t.render(e.getContext("2d")),e}function x(t,e,i){const s={target:3553,pixelFormat:6408,internalFormat:6408,dataType:5121,wrapMode:33071};return e&&i&&(s.width=e,s.height=i),new o(t,s)}let g=function(t){function i(i=null,s,n=!0){var u;return(u=t.call(this)||this).requestRenderOnSourceChangedEnabled=n,u._textureInvalidated=!0,u.stencilRef=0,u.coordScale=[1,1],u._height=void 0,u.pixelRatio=1,u.resolution=0,u.rotation=0,u._source=null,u._width=void 0,u.x=0,u.y=0,u.transforms={dvs:r.create()},u.blendFunction=s,u.source=i,u.requestRender=u.requestRender.bind(e._assertThisInitialized(u)),u}e._inheritsLoose(i,t);var u=i.prototype;return u.destroy=function(){this._texture&&(this._texture.dispose(),this._texture=null)},u.beforeRender=function(e){t.prototype.beforeRender.call(this,e),this.updateTexture(e)},u.invalidateTexture=function(){this._textureInvalidated||(this._textureInvalidated=!0,this.requestRenderOnSourceChangedEnabled&&this.requestRender())},u.setTransform=function(t){const e=s.identity(this.transforms.dvs),[i,r]=t.toScreenNoRotation([0,0],this.x,this.y),u=this.resolution/this.pixelRatio/t.resolution,h=u*this.width,o=u*this.height,a=Math.PI*this.rotation/180;s.translate(e,e,n.fromValues(i,r)),s.translate(e,e,n.fromValues(h/2,o/2)),s.rotate(e,e,-a),s.translate(e,e,n.fromValues(-h/2,-o/2)),s.scaleByVec2(e,e,n.fromValues(h,o)),s.multiply(this.transforms.dvs,t.displayViewMat3,e)},u.setSamplingProfile=function(t){this._texture&&(t.mips&&!this._texture.descriptor.hasMipmap&&this._texture.generateMipmap(),this._texture.setSamplingMode(t.samplingMode))},u.bind=function({context:t},e){this._texture&&t.bindTexture(this._texture,e)},u.updateTexture=function({context:t}){var e;if(!this.stage)return null==(e=this._texture)||e.dispose(),void(this._texture=null);if(!this._textureInvalidated)return;this._textureInvalidated=!1,this._texture||(this.source?this._texture=x(t,this.sourceWidth,this.sourceHeight):this._texture=x(t));const i=this.source;if(i){if(this._texture.resize(this.sourceWidth,this.sourceHeight),l(i))if(i instanceof d){const t=i.getRenderedRasterPixels();this._texture.setData(t.renderedRasterPixels)}else this._texture.setData(_(i));else f(i)&&this._texture.setData(i);this.ready()}else this._texture.setData(null)},u.onAttach=function(){this.invalidateTexture()},u.onDetach=function(){this.invalidateTexture()},e._createClass(i,[{key:"isSourceScaled",get:function(){return this.width!==this.sourceWidth||this.height!==this.sourceHeight}},{key:"height",get:function(){return void 0!==this._height?this._height:this.sourceHeight},set:function(t){this._height=t}},{key:"source",get:function(){return this._source},set:function(t){this._source=t,this.invalidateTexture()}},{key:"sourceHeight",get:function(){return this._source instanceof HTMLImageElement?this._source.naturalHeight:this._source.height}},{key:"sourceWidth",get:function(){return this._source instanceof HTMLImageElement?this._source.naturalWidth:this._source.width}},{key:"width",get:function(){return void 0!==this._width?this._width:this.sourceWidth},set:function(t){this._width=t}}]),i}(c.DisplayObject);t.Bitmap=g,Object.defineProperty(t,"__esModule",{value:!0})}));

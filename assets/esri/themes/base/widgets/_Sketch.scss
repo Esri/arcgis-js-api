@@ -1,0 +1,277 @@
+@mixin sketch() {
+  $border: 1px solid $border-color;
+
+  .esri-sketch {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .esri-sketch__menu-header {
+    margin: $cap-spacing--half;
+    border-bottom: $border;
+    display: flex;
+    align-items: center;
+  }
+
+  .esri-sketch__menu-title {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .esri-sketch__panel {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0;
+  }
+
+  .esri-sketch__info-panel {
+    background-color: $background-color--offset;
+    opacity: 1;
+    transition: opacity 250ms ease-in-out;
+    &:empty {
+      opacity: 0;
+      padding: 0;
+      visibility: hidden;
+    }
+  }
+
+  .esri-sketch__menu-container {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .esri-sketch__menu-content {
+    background-color: $background-color--offset;
+    padding: 0 $side-spacing--half;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 1 auto;
+    min-height: 6vh;
+    display: flex;
+    flex-direction: row;
+    animation: esri-fade-in 250ms ease-in-out;
+    transition: min-height 250ms ease-in-out;
+  }
+
+  .esri-sketch__menu-item-wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .esri-sketch__section {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 0 $side-spacing--half;
+    margin: $cap-spacing--half 0;
+  }
+
+  .esri-sketch__tool-section {
+    border-right: $border;
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .esri-sketch__button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: $interactive-font-color;
+    display: flex;
+    font-size: $icon-size;
+    height: $button-height;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 125ms ease-in-out;
+    width: $button-width;
+
+    &:disabled {
+      cursor: default;
+      color: $interactive-font-color--disabled;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+      color: $interactive-font-color--hover;
+      cursor: pointer;
+    }
+
+    &.esri-sketch__button--selected,
+    &.esri-sketch__button--selected:hover {
+      background: $background-color--inverse;
+      color: $interactive-font-color--inverse;
+    }
+  }
+
+  .esri-sketch__menu-item {
+    @include cardBoxShadow();
+    padding: 3px;
+    background-color: $background-color;
+    cursor: pointer;
+    margin: 3px 0;
+    border: $border;
+    border-color: transparent;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    transition: border-color 125ms ease-in-out;
+  }
+
+  .esri-sketch__item-action-icon {
+    flex: 0 0 $icon-size;
+    font-size: $icon-size;
+    display: inline-block;
+    width: $icon-size;
+    height: $icon-size;
+    margin-top: 0.1em;
+  }
+
+  .esri-sketch__item-action-image {
+    flex: 0 0 $icon-size;
+    width: $icon-size;
+    height: $icon-size;
+    font-size: $font-size;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  .esri-sketch__action-toggle {
+    align-items: flex-start;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row-reverse;
+    font-size: $font-size--small;
+    justify-content: space-between;
+    margin: 0;
+    opacity: 1;
+    padding: $cap-spacing--half $side-spacing;
+    transition: opacity 250ms ease-in-out 250ms, background-color 250ms ease-in-out;
+    width: 100%;
+
+    .esri-sketch__item-action-title {
+      margin-left: 0;
+    }
+    .esri-sketch__item-action-icon {
+      background-color: $background-color--hover;
+      border-radius: $toggle-height;
+      box-shadow: 0 0 0 1px $interactive-font-color;
+      flex: 0 0 $toggle-width;
+      height: $toggle-height;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      transition: background-color 125ms ease-in-out;
+      width: $icon-size;
+
+      &:before {
+        // Toggle handle. Overrides any icon class
+        background-color: $interactive-font-color;
+        box-shadow: 0 0 0 1px $interactive-font-color--inverse;
+        border-radius: 100%;
+        content: "";
+        display: block;
+        height: $toggle-handle-size;
+        left: 0;
+        margin: 2px;
+        position: absolute;
+        top: 0;
+        transition: background-color 125ms ease-in-out, left 125ms ease-in-out;
+        width: $toggle-handle-size;
+      }
+    }
+    &.esri-disabled-element {
+      pointer-events: none;
+      opacity: $opacity--disabled;
+    }
+  }
+
+  .esri-sketch__action-toggle--on .esri-sketch__item-action-icon {
+    // Toggle on
+    background-color: $button-color;
+    box-shadow: 0 0 0 1px $button-color;
+
+    &:before {
+      background-color: $interactive-font-color--inverse;
+      left: $toggle-handle-size;
+    }
+  }
+
+  .esri-sketch__feature-count-badge {
+    align-items: center;
+    background: $background-color;
+    border-bottom: $border;
+    border-radius: $border-radius;
+    display: flex;
+    font-size: $font-size--small;
+    justify-content: center;
+    margin: 0;
+    padding: 0.25em 0.75em;
+  }
+
+  html[dir="rtl"] {
+    .esri-sketch__tool-section {
+      border-left: $border;
+      border-right: none;
+
+      &:last-child {
+        border: none;
+      }
+    }
+    .esri-expand__content {
+      .esri-sketch--vertical {
+        .esri-sketch__tool-section {
+          border-left: none;
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  .esri-sketch--vertical {
+    flex-direction: row-reverse;
+
+    .esri-sketch__panel {
+      flex-flow: column;
+    }
+    .esri-sketch__section {
+      flex-flow: column;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: $side-spacing--half;
+      margin-right: $side-spacing--half;
+    }
+    .esri-sketch__tool-section {
+      border-right: none;
+      border-bottom: $border;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    .esri-sketch__info-panel {
+      padding-top: $cap-spacing--half;
+      &:empty {
+        padding: 0;
+      }
+    }
+    .esri-sketch__info-section {
+      margin-top: $cap-spacing--quarter;
+      width: $button-width;
+    }
+    .esri-sketch__menu-container {
+      min-width: 30vh;
+    }
+  }
+}
+
+@if $include_Sketch == true {
+  @include sketch();
+}

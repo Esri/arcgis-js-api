@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/maybe","../../tasks/support/Query"],(function(e,t,r){"use strict";async function u(e,r,u){r=r.clone(),e.capabilities.query.supportsMaxRecordCountFactor&&(r.maxRecordCountFactor=n(e));const o=a(e),i=e.capabilities.query.supportsPagination;r.start=0,r.num=o;let c=null;for(;;){const a=await e.source.queryFeaturesJSON(r,u);if(t.isNone(c)?c=a:c.features=c.features.concat(a.features),c.exceededTransferLimit=a.exceededTransferLimit,!i||!a.exceededTransferLimit)break;r.start+=o}return c}function a(e){return n(e)*o(e)}function o(e){return e.capabilities.query.maxRecordCount||2e3}function n(e){return e.capabilities.query.supportsMaxRecordCountFactor?r.MAX_MAX_RECORD_COUNT_FACTOR:1}e.getMaxRecordCountFactor=n,e.getMaximumQuerySize=a,e.getMaximumRecordCount=o,e.queryAllJSON=u,Object.defineProperty(e,"__esModule",{value:!0})}));

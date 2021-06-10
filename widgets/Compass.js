@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./support/widget","./Widget","./Compass/CompassViewModel","dojo/i18n!./Compass/nls/Compass"],function(e,t,o,s,r,i,n,a,c){var l={base:"esri-compass esri-widget-button esri-widget",text:"esri-icon-font-fallback-text",icon:"esri-compass__icon",rotationIcon:"esri-icon-dial",northIcon:"esri-icon-compass",interactive:"esri-interactive",disabled:"esri-disabled"},d=function(e){function t(t){var o=e.call(this)||this;return o.view=null,o.viewModel=new a,o}return o(t,e),t.prototype.reset=function(){},t.prototype.render=function(){var e=this.viewModel.orientation,t=this.viewModel.state,o="disabled"===t,s="rotation"===t?"rotation":"compass",r="compass"===s,n=o?-1:0,a=(p={},p[l.disabled]=o,p[l.interactive]=!o,p),d=(u={},u[l.northIcon]=r,u[l.rotationIcon]=!r,u);return i.tsx("div",{bind:this,"class":l.base,classes:a,onclick:this._reset,onkeydown:this._reset,role:"button",tabIndex:n},i.tsx("span",{"aria-hidden":"true","class":l.icon,classes:d,styles:this._toRotationTransform(e),title:c.reset}),i.tsx("span",{"class":l.text},c.reset));var p,u},t.prototype._reset=function(){this.reset()},t.prototype._toRotationTransform=function(e){return{transform:"rotateZ("+e.z+"deg)"}},t}(r.declared(n));return s([r.aliasOf("viewModel.view")],d.prototype,"view",void 0),s([r.property({type:a}),i.renderable(["viewModel.orientation","viewModel.state"])],d.prototype,"viewModel",void 0),s([r.aliasOf("viewModel.reset")],d.prototype,"reset",null),s([i.accessibleHandler()],d.prototype,"_reset",null),d=s([r.subclass("esri.widgets.Compass")],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/aliasOf","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./support/widgetUtils","./support/decorators/accessibleHandler","./support/decorators/messageBundle","../chunks/index","./Widget","./Compass/CompassViewModel"],(function(e,s,o,t,r,i,a,c,n,l,d,p,u,v,_,b,g){"use strict";const w={base:"esri-compass esri-widget--button esri-widget",text:"esri-icon-font-fallback-text",icon:"esri-compass__icon",rotationIcon:"esri-icon-dial",northIcon:"esri-icon-compass",widgetIcon:"esri-icon-locate-circled",interactive:"esri-interactive",disabled:"esri-disabled"};let h=function(s){function o(e,o){var t;return(t=s.call(this,e,o)||this).goToOverride=null,t.iconClass=w.widgetIcon,t.label=void 0,t.messages=null,t.view=null,t.viewModel=new g,t}e._inheritsLoose(o,s);var t=o.prototype;return t.reset=function(){return this.viewModel.reset()},t.render=function(){const{orientation:e,state:s}=this.viewModel,o="disabled"===s,t="compass"===("rotation"===s?"rotation":"compass"),r=o?-1:0,i={[w.disabled]:o,[w.interactive]:!o},a={[w.northIcon]:t,[w.rotationIcon]:!t},{messages:c}=this;return _.jsx("div",{bind:this,class:this.classes(w.base,i),onclick:this._reset,onkeydown:this._reset,role:"button",tabIndex:r,"aria-label":c.reset,title:c.reset},_.jsx("span",{"aria-hidden":"true",class:this.classes(w.icon,a),styles:this._toRotationTransform(e)}),_.jsx("span",{class:w.text},c.reset))},t._reset=function(){this.viewModel.reset()},t._toRotationTransform=function(e){return{transform:`rotateZ(${e.z}deg)`}},o}(b);return s.__decorate([a.aliasOf("viewModel.goToOverride")],h.prototype,"goToOverride",void 0),s.__decorate([i.property()],h.prototype,"iconClass",void 0),s.__decorate([i.property({aliasOf:{source:"messages.widgetLabel",overridable:!0}})],h.prototype,"label",void 0),s.__decorate([i.property(),v.messageBundle("esri/widgets/Compass/t9n/Compass")],h.prototype,"messages",void 0),s.__decorate([a.aliasOf("viewModel.view")],h.prototype,"view",void 0),s.__decorate([i.property({type:g})],h.prototype,"viewModel",void 0),s.__decorate([u.accessibleHandler()],h.prototype,"_reset",null),h=s.__decorate([c.subclass("esri.widgets.Compass")],h),h}));

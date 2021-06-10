@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/promiseUtils","../../core/Accessor","../../core/Error","../../core/Evented"],function(e,t,i,o,n,r,s,p,l){var a=function(e){function t(t){var i=e.call(this,t)||this;return i._initialViewpoint=null,i._goingHome=null,i.go=i.go.bind(i),i}return i(t,e),t.prototype.destroy=function(){this._stopGoingHome(),this.view=null},Object.defineProperty(t.prototype,"state",{get:function(){return this.get("view.ready")?this._goingHome?"going-home":"ready":"disabled"},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"view",{set:function(e){var t=this;this._initialViewpoint=null,e&&e.then(function(){t._initialViewpoint=e.viewpoint.clone(),t.notifyChange("viewpoint")}),this._set("view",e)},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"viewpoint",{get:function(){return this._get("viewpoint")||this._initialViewpoint},set:function(e){this._set("viewpoint",e)},enumerable:!0,configurable:!0}),t.prototype.go=function(){var e=this;if(!this.get("view.ready"))return r.reject(new p("home:disabled-state","Cannot go when disabled."));this._stopGoingHome(),this.emit("go");var t=this.view,i=t.goTo(this.viewpoint).always(function(){e.notifyChange("state"),e._goingHome=null});return this._goingHome=i,this.notifyChange("state"),i},t.prototype._stopGoingHome=function(){this._goingHome&&(this._goingHome.cancel(),this._goingHome=null)},t}(n.declared(s,l));return o([n.property({dependsOn:["view.ready"],readOnly:!0})],a.prototype,"state",null),o([n.property()],a.prototype,"view",null),o([n.property()],a.prototype,"viewpoint",null),a=o([n.subclass("esri.widgets.Home.HomeViewModel")],a)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/Error","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../core/Evented","../../Viewpoint","../support/GoTo"],(function(e,o,t,i,r,n,s,l,c,a,p,u,h,_,g){"use strict";let d=function(o){function t(t){var i;return(i=o.call(this,t)||this)._initialViewpoint=null,i._goingHomeController=null,i.go=i.go.bind(e._assertThisInitialized(i)),i}e._inheritsLoose(t,o);var i=t.prototype;return i.destroy=function(){this._cancelGo(),this.view=null},i.go=async function(){if(!this.get("view.ready"))throw new l("home:disabled-state","Cannot go when disabled.");this._cancelGo(),this.emit("go");const e=u.createAbortController();this._goingHomeController=e;try{await this.view.when(),await this.callGoTo({target:this.viewpoint,options:{signal:e.signal}})}catch(o){}this._goingHomeController=null},i.cancelGo=function(){this._cancelGo()},i._cancelGo=function(){const{_goingHomeController:e}=this;e&&e.abort(),this._goingHomeController=null},e._createClass(t,[{key:"state",get:function(){return this.get("view.ready")?this._goingHomeController?"going-home":"ready":"disabled"}},{key:"view",set:function(e){this._initialViewpoint=null,this._set("view",e),e&&e.when().then((()=>{this.view===e&&(this._initialViewpoint=e.viewpoint.clone(),this.notifyChange("viewpoint"))}))}},{key:"viewpoint",get:function(){return this._get("viewpoint")||this._initialViewpoint},set:function(e){this._set("viewpoint",e)}}]),t}(g.GoToMixin(h.EventedAccessor));return o.__decorate([n.property()],d.prototype,"_goingHomeController",void 0),o.__decorate([n.property({readOnly:!0})],d.prototype,"state",null),o.__decorate([n.property()],d.prototype,"view",null),o.__decorate([n.property({type:_})],d.prototype,"viewpoint",null),o.__decorate([n.property()],d.prototype,"go",null),o.__decorate([n.property()],d.prototype,"cancelGo",null),d=o.__decorate([s.subclass("esri.widgets.Home.HomeViewModel")],d),d}));

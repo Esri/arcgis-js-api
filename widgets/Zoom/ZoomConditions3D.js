@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor"],(function(e,o,r,t,s,c,n,u,p,i,a){"use strict";let l=function(o){function r(){return o.apply(this,arguments)||this}return e._inheritsLoose(r,o),e._createClass(r,[{key:"canZoomIn",get:function(){return!!this.get("view.ready")}},{key:"canZoomOut",get:function(){return!!this.get("view.ready")}}]),r}(a);return o.__decorate([c.property({readOnly:!0})],l.prototype,"canZoomIn",null),o.__decorate([c.property({readOnly:!0})],l.prototype,"canZoomOut",null),o.__decorate([c.property()],l.prototype,"view",void 0),l=o.__decorate([n.subclass("esri.widgets.Zoom.ZoomConditions3D")],l),l}));

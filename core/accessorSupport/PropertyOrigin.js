@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,r){function n(e){switch(e){case"defaults":return i.DEFAULTS;case"service":return i.SERVICE;case"portal-item":return i.PORTAL_ITEM;case"web-scene":return i.WEB_SCENE;case"web-map":return i.WEB_MAP;case"user":return i.USER}}function E(e){switch(e){case i.DEFAULTS:return"defaults";case i.SERVICE:return"service";case i.PORTAL_ITEM:return"portal-item";case i.WEB_SCENE:return"web-scene";case i.WEB_MAP:return"web-map";case i.USER:return"user"}}function t(e){return n(e)}function a(e){return E(e)}function u(e){return n(e)}function c(e){return E(e)}Object.defineProperty(r,"__esModule",{value:!0});var i;!function(e){e[e.DEFAULTS=0]="DEFAULTS",e[e.COMPUTED=1]="COMPUTED",e[e.SERVICE=2]="SERVICE",e[e.PORTAL_ITEM=3]="PORTAL_ITEM",e[e.WEB_SCENE=4]="WEB_SCENE",e[e.WEB_MAP=5]="WEB_MAP",e[e.USER=6]="USER",e[e.NUM=7]="NUM"}(i=r.OriginId||(r.OriginId={})),r.nameToId=n,r.idToName=E,r.readableNameToId=t,r.idToReadableName=a,r.writableNameToId=u,r.idToWritableName=c});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../maybe"],(function(e,r){"use strict";const t=7;function n(e){switch(e){case"defaults":return 0;case"service":return 2;case"portal-item":return 3;case"web-scene":return 4;case"web-map":return 5;case"user":return 6}}function u(e){switch(e){case 0:return"defaults";case 2:return"service";case 3:return"portal-item";case 4:return"web-scene";case 5:return"web-map";case 6:return"user"}return r.assumeNonNull(void 0)}function a(e){return n(e)}function s(e){return u(e)}function c(e){return n(e)}function i(e){return u(e)}e.OriginIdNum=t,e.idToName=u,e.idToReadableName=s,e.idToWritableName=i,e.nameToId=n,e.readableNameToId=a,e.writableNameToId=c,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,105 @@
+@mixin histogramRangeSlider() {
+  .esri-histogram-range-slider {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    .esri-slider .esri-slider__label {
+      top: 24px;
+      display: none;
+    }
+
+    .esri-slider__anchor--moving .esri-slider__label {
+      display: inline;
+    }
+
+    .esri-slider {
+      font-size: 12px;
+    }
+
+    .esri-slider__content {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .esri-slider__max {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+
+      .esri-slider__range-input {
+        text-align: right;
+      }
+    }
+
+    .esri-slider__min {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      text-align: left;
+
+      .esri-slider__range-input {
+        text-align: left;
+      }
+    }
+
+    .esri-slider--horizontal {
+      .esri-slider__max,
+      .esri-slider__min {
+        display: inline;
+        min-width: 50%;
+      }
+    }
+
+    .esri-histogram {
+      display: flex;
+      align-self: flex-end;
+    }
+
+    .esri-histogram__bar {
+      touch-action: none;
+    }
+
+    .esri-slider__max {
+      .esri-slider__range-input {
+        float: right;
+      }
+    }
+  }
+
+  .esri-histogram-range-slider__slider-container {
+    align-self: flex-end;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .esri-histogram-range-slider__histogram-container {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .esri-histogram-range-slider__range-type--less-than,
+  .esri-histogram-range-slider__range-type--at-most {
+    .esri-slider__segment-0 {
+      background-color: #0079c1;
+    }
+  }
+  .esri-histogram-range-slider__range-type--greater-than,
+  .esri-histogram-range-slider__range-type--at-least,
+  .esri-histogram-range-slider__range-type--between,
+  .esri-histogram-range-slider__range-type--not-between {
+    .esri-slider__segment-1 {
+      background-color: #0079c1;
+    }
+  }
+}
+
+@if $include_HistogramRangeSlider == true {
+  @include histogramRangeSlider();
+}

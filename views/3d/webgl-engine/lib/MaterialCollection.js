@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./ModelContentType"],function(t,e,i){var r=function(){function t(t){this.materials={},this.stage=t}return t.prototype.getMaterial=function(t){return this.materials[t]},t.prototype.addMaterial=function(t,e){this.materials[t]=e,this.stage.add(i.MATERIAL,e)},t.prototype.dispose=function(){for(var t in this.materials)this.stage.remove(i.MATERIAL,this.materials[t].getId());this.materials={}},t}();return r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";let e=function(){function t(t){this._stage=t,this._materials=new Map}var e=t.prototype;return e.get=function(t){return this._materials.get(t)},e.add=function(t,e){this._materials.set(t,e),this._stage.add(e)},e.dispose=function(){this._stage.removeMany(Array.from(this._materials.values())),this._materials.clear()},t}();t.MaterialCollection=e,Object.defineProperty(t,"__esModule",{value:!0})}));

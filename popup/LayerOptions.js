@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport"],(function(o,r,e,t,s,p,c,n,u,a,i){"use strict";var l;let d=l=function(r){function e(o){var e;return(e=r.call(this,o)||this).returnTopmostRaster=null,e.showNoDataRecords=null,e}return o._inheritsLoose(e,r),e.prototype.clone=function(){return new l({showNoDataRecords:this.showNoDataRecords,returnTopmostRaster:this.returnTopmostRaster})},e}(i.JSONSupport);return r.__decorate([p.property({type:Boolean,json:{write:!0}})],d.prototype,"returnTopmostRaster",void 0),r.__decorate([p.property({type:Boolean,json:{write:!0}})],d.prototype,"showNoDataRecords",void 0),d=l=r.__decorate([c.subclass("esri.popup.LayerOptions")],d),d}));

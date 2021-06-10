@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../Utils"],(function(e,t){"use strict";let r=function(){function e(e,t){this.data=e,this.stride=t}return e.decode=function(r){return new e(t.allocateTypedArrayBufferwithData(r.data,r.stride),r.stride)},e.fromVertexVector=function(r){return new e(t.allocateTypedArrayBufferwithData(r.data.buffer(),r.stride),r.stride)},e}(),n=function(){function e(e,t,r){this.geometryType=e,this.indexBuffer=new Uint32Array(t),this.namedBuffers=r}return e.decode=function(t){const n=t.geometryType,f=t.indexBuffer,o={};for(const e in t.namedBuffers)o[e]=r.decode(t.namedBuffers[e]);return new e(n,f,o)},e.fromVertexData=function(n,f){const o=n.indices,i=t.allocateTypedArrayBufferwithData(n.vertices,n.stride),d=n.stride;return new e(f,o,{geometry:new r(i,d)})},e.fromVertexVectors=function(t){const n=t.geometryType,f=t.indexVector.buffer(),o={};for(const e in t.namedVectors)o[e]=r.fromVertexVector(t.namedVectors[e]);return new e(n,f,o)},e}();e.VertexBuffers=n,e.default=r,Object.defineProperty(e,"__esModule",{value:!0})}));

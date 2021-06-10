@@ -1,11 +1,16 @@
 /**
- * The LayerList widget provides a way to display a list of layers, and switching on/off their visibility.
+ * The LayerList widget provides a way to display a list of layers, and switch on/off their visibility.
+ * The {@link module:esri/widgets/LayerList/ListItem} API provides access to each layer's properties, allows
+ * the developer to configure actions related to the layer, and allows the developer to add content to the item related to the layer.
+ *
+ * To hide layers in the map from the LayerList widget, you must set the
+ * {@link module:esri/layers/Layer#listMode listMode} property on the desired layers to `hide`.
  *
  * @module esri/widgets/LayerList
  * @since 4.2
  *
- * @see [LayerList.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/LayerList.tsx)
- * @see [LayerList.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_LayerList.scss)
+ * @see [LayerList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LayerList.tsx)
+ * @see [LayerList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_LayerList.scss)
  * @see [Sample - LayerList widget](../sample-code/widgets-layerlist/index.html)
  * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
  * @see module:esri/widgets/LayerList/LayerListViewModel
@@ -20,39 +25,72 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core
+import Collection from "esri/core/Collection";
+import { deprecatedProperty } from "esri/core/deprecate";
+import { eventKey } from "esri/core/events";
+import Handles from "esri/core/Handles";
+import has from "esri/core/has";
+import Logger from "esri/core/Logger";
+import * as watchUtils from "esri/core/watchUtils";
 
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
+// esri.core.accessorSupport
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import Widget = require("./Widget");
+// esri.support.actions
+import ActionButton from "esri/support/actions/ActionButton";
+import ActionToggle from "esri/support/actions/ActionToggle";
 
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
+
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
+
+// esri.widgets
+import Widget from "esri/widgets/Widget";
+
+// esri.widgets.LayerList
+import { Action, Actions, ListItemModifier, Sections } from "esri/widgets/LayerList/interfaces";
+import LayerListViewModel from "esri/widgets/LayerList/LayerListViewModel";
+import ListItem from "esri/widgets/LayerList/ListItem";
+import ListItemPanel from "esri/widgets/LayerList/ListItemPanel";
+
+// esri.widgets.LayerList.support
 import {
-  vmEvent,
-  renderable,
-  tsx,
-  accessibleHandler,
-  join
-} from "./support/widget";
+  canSortSublayers,
+  sortLayersToIds,
+  sortChildLayersToIds,
+  findSelectedItem
+} from "esri/widgets/LayerList/support/layerListUtils";
 
-import {
-  ListItemModifier
-} from "./LayerList/interfaces";
+// esri.widgets.LayerList.t9n
+import LayerListMessages from "esri/widgets/LayerList/t9n/LayerList";
 
-import * as i18nCommon from "dojo/i18n!../nls/common";
-import * as i18n from "dojo/i18n!./LayerList/nls/LayerList";
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
 
-import Action = require("../support/Action");
-import Collection = require("../core/Collection");
-import HandleRegistry = require("../core/HandleRegistry");
-import LayerListViewModel = require("./LayerList/LayerListViewModel");
-import ListItem = require("./LayerList/ListItem");
-import View = require("../views/View");
-import watchUtils = require("../core/watchUtils");
+// sortablejs
+import Sortable from "sortablejs";
+
+function moveItem(data: any[], from: number, to: number): void {
+  data.splice(to, 0, data.splice(from, 1)[0]);
+}
+
+const NEW_UI_FLAG = "esri-layerlist-new-ui";
+
+const ListItemCollection = Collection.ofType<ListItem>(ListItem);
+
+const SORT_FILTER_DATA_ATTR = "data-sort-filter";
+const SORT_DATA_ATTR = "data-layer-uid";
+const SORT_DATASET_ID = "layerUid";
 
 const CSS = {
   // layerlist classes
-  base: "esri-layer-list esri-widget",
+  base: "esri-layer-list esri-widget esri-widget--panel",
+  newUI: "esri-layer-list--new-ui",
   noItems: "esri-layer-list__no-items",
   list: "esri-layer-list__list",
   listRoot: "esri-layer-list__list--root",
@@ -60,36 +98,46 @@ const CSS = {
   listInherited: "esri-layer-list__list--inherited",
   listIndependent: "esri-layer-list__list--independent",
   item: "esri-layer-list__item",
+  itemContent: "esri-layer-list__item-content",
   itemError: "esri-layer-list__item--error",
+  itemInvisible: "esri-layer-list__item--invisible",
   itemInvisibleAtScale: "esri-layer-list__item--invisible-at-scale",
   itemUpdating: "esri-layer-list__item--updating",
   itemChildren: "esri-layer-list__item--has-children",
+  itemSelectable: "esri-layer-list__item--selectable",
   itemContainer: "esri-layer-list__item-container",
   actionsMenu: "esri-layer-list__item-actions-menu",
   actionsMenuItem: "esri-layer-list__item-actions-menu-item",
+  actionsMenuItemActive: "esri-layer-list__item-actions-menu-item--active",
   actions: "esri-layer-list__item-actions",
   actionsList: "esri-layer-list__item-actions-list",
   action: "esri-layer-list__item-action",
   actionIcon: "esri-layer-list__item-action-icon",
   actionImage: "esri-layer-list__item-action-image",
   actionTitle: "esri-layer-list__item-action-title",
+  actionToggle: "esri-layer-list__action-toggle",
+  actionToggleOn: "esri-layer-list__action-toggle--on",
   label: "esri-layer-list__item-label",
   errorMessage: "esri-layer-list__item-error-message",
   title: "esri-layer-list__item-title",
   toggleVisible: "esri-layer-list__item-toggle",
   toggleVisibleIcon: "esri-layer-list__item-toggle-icon",
+  toggleIcon: "esri-layer-list__item-toggle-icon",
+  radioIcon: "esri-layer-list__item-radio-icon",
   childToggle: "esri-layer-list__child-toggle",
   childToggleOpen: "esri-layer-list__child-toggle--open",
   childOpened: "esri-layer-list__child-toggle-icon--opened",
   childClosed: "esri-layer-list__child-toggle-icon--closed",
   childClosed_RTL: "esri-layer-list__child-toggle-icon--closed-rtl",
+  sortableChosen: "esri-layer-list--chosen",
 
   // common
   disabled: "esri-disabled",
+  disabledElement: "esri-disabled-element",
   hidden: "esri-hidden",
+  rotating: "esri-rotating",
 
   // icon classes
-  iconClose: "esri-icon-close",
   iconEllipses: "esri-icon-handle-horizontal",
   iconVisible: "esri-icon-visible",
   iconInvisible: "esri-icon-non-visible",
@@ -99,7 +147,10 @@ const CSS = {
   iconChildrenOpen: "esri-icon-down-arrow",
   iconDownArrow: "esri-icon-down-arrow",
   iconRightArrow: "esri-icon-right-triangle-arrow",
-  iconLeftArrow: "esri-icon-left-triangle-arrow"
+  iconLeftArrow: "esri-icon-left-triangle-arrow",
+  iconLoading: "esri-icon-loading-indicator",
+  iconDefaultAction: "esri-icon-default-action",
+  widgetIcon: "esri-icon-layers"
 };
 
 const REGISTRY_KEYS = {
@@ -114,20 +165,39 @@ const VISIBILITY_MODES = {
   independent: "independent"
 };
 
-const DEFAULT_ACTION_IMAGE = require.toUrl("./LayerList/images/default-action.svg");
+function closeItemActions(item: ListItem): void {
+  const { actionsOpen, children } = item;
+
+  if (actionsOpen) {
+    item.actionsOpen = false;
+  }
+
+  children.forEach((child) => closeItemActions(child));
+}
+
+const SORTABLE_ROOT = "root";
 
 /**
- * Fires after the user clicks on an {@link module:esri/support/Action action} inside the LayerList widget.
+ * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the LayerList widget.
  * This event may be used to define a custom function to execute when particular
  * actions are clicked.
  *
  * @event module:esri/widgets/LayerList#trigger-action
- * @property {module:esri/support/Action} action - The action clicked by the user.
+ * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
  * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
  */
+const logger = Logger.getLogger("esri.widgets.LayerList");
+
+interface VisibleElements {
+  statusIndicators?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  statusIndicators: true
+};
 
 @subclass("esri.widgets.LayerList")
-class LayerList extends declared(Widget) {
+class LayerList extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -147,21 +217,24 @@ class LayerList extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor() {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize() {
+  initialize(): void {
     const operationalItems = this.operationalItems;
+    this._setVisibleItems(operationalItems);
 
     this.own(
-      watchUtils.on(this, "operationalItems", "change", () => this._itemsChanged(operationalItems))
+      watchUtils.on(this, "operationalItems", "change", () => this._itemsChanged(operationalItems)),
+      watchUtils.init(this, "selectionEnabled", () => this._toggleAllSorting())
     );
   }
 
-  destroy() {
-    this._handleRegistry.destroy();
-    this._handleRegistry = null;
+  destroy(): void {
+    this._destroySortables();
+    this._handles.destroy();
+    this._handles = null;
   }
 
   //--------------------------------------------------------------------------
@@ -170,7 +243,18 @@ class LayerList extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _handleRegistry: HandleRegistry = new HandleRegistry();
+  private _handles: Handles = new Handles();
+
+  private _sortableNodes: Map<string, HTMLUListElement> = new Map();
+
+  private _sortableMap: Map<string, Sortable> = new Map();
+
+  private _focusSortUid: string = null;
+
+  private _newUI = has(NEW_UI_FLAG);
+
+  @property()
+  protected visibleItems: Collection<ListItem> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -179,63 +263,71 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
-  //  createActionsFunction
+  //  iconClass
   //----------------------------------
 
   /**
-   * **Use [listItemCreatedFunction](#listItemCreatedFunction) instead.**
+   * The widget's default CSS icon class.
    *
-   * Specify the function that will create actions for {@link module:esri/widgets/LayerList/ListItem ListItems}.
-   * Actions are defined with the properties listed in the {@link module:esri/support/Action Action class}. This function must return a two-dimensional array of
-   * {@link module:esri/support/Action Actions}.
-   *
-   * @deprecated Since version 4.4.
-   *
-   * @name createActionsFunction
+   * @since 4.7
+   * @name iconClass
    * @instance
-   * @type {function}
-   * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
-   */
-  @aliasOf("viewModel.createActionsFunction")
-  @renderable()
-  createActionsFunction: ListItemModifier = null;
-
-  //----------------------------------
-  //  statusIndicatorsVisible
-  //----------------------------------
-
-  /**
-   * @todo document statusIndicatorsVisible property
-   * @type {boolean}
-   * @default true
-   * @ignore
+   * @type {string}
    */
   @property()
-  @renderable()
-  statusIndicatorsVisible = true;
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  errorsVisible
   //----------------------------------
 
   /**
-   * @todo document errorsVisible property
+   *
    * @type {boolean}
    * @default false
    * @ignore
    */
   @property()
-  @renderable()
   errorsVisible: false;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  listItemCreatedFunction
   //----------------------------------
 
   /**
+   * Function definition for the [listItemCreatedFunction](#listItemCreatedFunction) property.
+   * See the example snippet in the  [listItemCreatedFunction](#listItemCreatedFunction)
+   * documentation for more details.
+   *
+   * @callback module:esri/widgets/LayerList~ListItemCreatedHandler
+   * @param {Object} event - An object containing a list item created by the LayerList.
+   * @param {module:esri/widgets/LayerList/ListItem} event.item - A list item
+   *   created by the LayerList. You can modify the properties of this item to customize
+   *   the text, actions, panel content, and visibility of the list item. See the
+   *   documentation for the [listItemCreatedFunction](#listItemCreatedFunction) for more details.
+   */
+
+  /**
    * Specifies a function that accesses each {@link module:esri/widgets/LayerList/ListItem}.
    * Each list item can be modified
-   * according to its modifiable propeties. Actions can be added to list items
+   * according to its modifiable properties. Actions can be added to list items
    * using the {@link module:esri/widgets/LayerList/ListItem#actionsSections actionsSections}
    * property of the ListItem.
    *
@@ -243,7 +335,7 @@ class LayerList extends declared(Widget) {
    *
    * @name listItemCreatedFunction
    * @instance
-   * @type {function}
+   * @type {module:esri/widgets/LayerList~ListItemCreatedHandler}
    * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
    *
    * @example
@@ -252,28 +344,89 @@ class LayerList extends declared(Widget) {
    *   // executes for each ListItem in the LayerList
    *   listItemCreatedFunction: function (event) {
    *
-   *    // The event object contains properties of the
-   *    // layer in the LayerList widget.
+   *     // The event object contains properties of the
+   *     // layer in the LayerList widget.
    *
-   *    var item = event.item;
+   *     var item = event.item;
    *
-   *    if (item.title === "US Demographics") {
-   *      // open the list item in the LayerList
-   *      item.open = true;
-   *      // change the title to something more descriptive
-   *      item.title = "Population by county";
-   *      // set an action for zooming to the full extent of the layer
-   *      item.actionsSections = [[{
-   *        title: "Go to full extent",
-   *        className: "esri-icon-zoom-out-fixed",
-   *        id: "full-extent"
-   *      }]];
-   *    }
+   *     if (item.title === "US Demographics") {
+   *       // open the list item in the LayerList
+   *       item.open = true;
+   *       // change the title to something more descriptive
+   *       item.title = "Population by county";
+   *       // set an action for zooming to the full extent of the layer
+   *       item.actionsSections = [[{
+   *         title: "Go to full extent",
+   *         className: "esri-icon-zoom-out-fixed",
+   *         id: "full-extent"
+   *       }]];
+   *     }
+   *   }
    * });
    */
   @aliasOf("viewModel.listItemCreatedFunction")
-  @renderable()
-  listItemCreatedFunction: Function = null;
+  listItemCreatedFunction: ListItemModifier = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/LayerList/t9n/LayerList")
+  messages: LayerListMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
+
+  //----------------------------------
+  //  multipleSelectionEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether more than one list item may be selected by the user at a single time.
+   * You must first set [selectionEnabled](#selectionEnabled) to `true` for this property
+   * to have an effect on the widget.
+   *
+   * Selected items are available in the [selectedItems](#selectedItems)
+   * property.
+   *
+   * @name multipleSelectionEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   *
+   * @see [selectionEnabled](#selectionEnabled)
+   * @see [selectedItems](#selectedItems)
+   *
+   * @example
+   * layerList.selectionEnabled = true;
+   * layerList.multipleSelectionEnabled = true;
+   */
+  @property()
+  multipleSelectionEnabled = false;
 
   //----------------------------------
   //  operationalItems
@@ -281,14 +434,89 @@ class LayerList extends declared(Widget) {
 
   /**
    * A collection of {@link module:esri/widgets/LayerList/ListItem}s representing operational layers.
+   * To hide layers from the LayerList widget, set the
+   * {@link module:esri/layers/Layer#listMode listMode} property on the layer(s) to `hide`.
+   *
    * @name operationalItems
    * @instance
-   * @type {module:esri/core/Collection}
+   * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   * @readonly
    *
+   * @see {@link module:esri/layers/Layer#listMode Layer.listMode}
    */
   @aliasOf("viewModel.operationalItems")
-  @renderable()
   operationalItems: Collection<ListItem> = null;
+
+  //----------------------------------
+  //  selectionEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether list items may be selected by the user. Selected items
+   * may be reordered in the list by dragging gestures with the
+   * mouse or touch screen, or with arrow keys on the keyboard.
+   *
+   * Selected items are available in the [selectedItems](#selectedItems)
+   * property.
+   *
+   * @name selectionEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   *
+   * @see [selectedItems](#selectedItems)
+   *
+   * @example
+   * layerList.selectionEnabled = true;
+   */
+  @property()
+  selectionEnabled = false;
+
+  //----------------------------------
+  //  selectedItems
+  //----------------------------------
+
+  /**
+   * A collection of selected {@link module:esri/widgets/LayerList/ListItem}s representing operational layers
+   * selected by the user.
+   *
+   * @name selectedItems
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/widgets/LayerList/ListItem>}
+   *
+   * @see [selectionEnabled](#selectionEnabled)
+   */
+  @property()
+  selectedItems: Collection<ListItem> = new ListItemCollection();
+
+  //----------------------------------
+  //  statusIndicatorsVisible
+  //----------------------------------
+
+  /**
+   * Option for enabling status indicators, which indicate whether or not each layer
+   * is loading resources.
+   *
+   * @name statusIndicatorsVisible
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   * @since 4.5
+   * @deprecated since version 4.15. Use {@link module:esri/widgets/LayerList#visibleElements LayerList.visibleElements.statusIndicators} instead.
+   *
+   * @example
+   * // disable status indicators for all layers listed in LayerList
+   * layerList.statusIndicatorsVisible = false;
+   */
+  @property()
+  set statusIndicatorsVisible(value: boolean) {
+    deprecatedProperty(logger, "statusIndicatorsVisible", {
+      replacement: "visibleElements.statusIndicators",
+      version: "4.15"
+    });
+    this.visibleElements = { ...this.visibleElements, statusIndicators: value };
+  }
 
   //----------------------------------
   //  view
@@ -302,8 +530,7 @@ class LayerList extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -324,8 +551,44 @@ class LayerList extends declared(Widget) {
   @property({
     type: LayerListViewModel
   })
-  @renderable("viewModel.state")
   viewModel: LayerListViewModel = new LayerListViewModel();
+
+  //----------------------------------
+  //  visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @typedef module:esri/widgets/LayerList~VisibleElements
+   *
+   * @property {boolean} [statusIndicators] - Indicates whether the status indicators will be displayed. Default is `true`.
+   */
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {module:esri/widgets/LayerList~VisibleElements}
+   * @autocast
+   *
+   * @since 4.15
+   *
+   * @example
+   * layerList.visibleElements = {
+   *   statusIndicators: false
+   * };
+   */
+  @property()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
 
   //--------------------------------------------------------------------------
   //
@@ -334,60 +597,125 @@ class LayerList extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
-   * Triggers the [trigger-action](#event:trigger-action) event and executes
-   * the given {@link module:esri/support/Action action}.
+   * Triggers the [trigger-action](#event-trigger-action) event and executes
+   * the given {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle}.
    *
-   * @param {module:esri/support/Action} - The action to execute.
+   * @param {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} - The action to execute.
    * @param {module:esri/widgets/LayerList/ListItem} - An item associated with the action.
    */
   @aliasOf("viewModel.triggerAction")
-  triggerAction(action: Action, item: ListItem): void { }
+  triggerAction(action: Action, item: ListItem): void {
+    this.viewModel.triggerAction(action, item);
+  }
 
-  render() {
-    const items = this._getItems();
-    const state = this.get("viewModel.state");
-
-    const content = items.length === 0 ?
-      (<div class={CSS.noItems}>{i18n.noItemsToDisplay}</div>) :
-      (<ul class={join(CSS.list, CSS.listRoot, CSS.listIndependent)}>{items.map((item, key) => this._renderItem(item, null))}</ul>);
+  render(): VNode {
+    const { visibleItems, _newUI } = this;
+    const state = this.viewModel?.state;
 
     const baseClasses = {
+      [CSS.newUI]: _newUI,
       [CSS.hidden]: state === "loading",
       [CSS.disabled]: state === "disabled"
     };
 
     return (
-      <div class={CSS.base}
-        classes={baseClasses}>{content}</div>
+      <div class={this.classes(CSS.base, baseClasses)}>
+        {visibleItems?.length ? this.renderItems() : this.renderNoItems()}
+      </div>
     );
   }
 
   //--------------------------------------------------------------------------
   //
-  //  Private Methods
+  //  Protected Methods
   //
   //--------------------------------------------------------------------------
 
-  private _getItems() {
-    return this.operationalItems.toArray().filter(item => this.errorsVisible || !item.error);
+  protected renderNoItems(): VNode {
+    return <div class={CSS.noItems}>{this.messages.noItemsToDisplay}</div>;
   }
 
-  private _renderItem(item: ListItem, parent: ListItem): any {
-    const widgetId = this.id;
-    const uid = `${widgetId}_${item.uid}`;
-    const actionsUid = `${uid}_actions`;
-    const listUid = `${uid}__list`;
-    const titleKey = `${uid}__title`;
+  protected renderItems(): VNode {
+    const { visibleItems, selectionEnabled, messages } = this;
 
-    const childrenLen = item.children.length;
-    const hasChildren = !!childrenLen;
+    return (
+      <ul
+        aria-label={messages.widgetLabel}
+        role={selectionEnabled ? "listbox" : undefined}
+        afterCreate={this._sortNodeCreated}
+        afterUpdate={this._sortNodeCreated}
+        afterRemoved={this._sortNodeRemoved}
+        data-group={SORTABLE_ROOT}
+        bind={this}
+        class={this.classes(CSS.list, CSS.listRoot, CSS.listIndependent)}
+      >
+        {visibleItems?.map((item) => this.renderItem(item, null)).toArray()}
+      </ul>
+    );
+  }
+
+  protected renderActionsMenuIcon(item: ListItem, actionsUid: string): VNode {
+    const { messages } = this;
+
+    const actionsMenuClasses = {
+      [CSS.actionsMenuItemActive]: item.actionsOpen
+    };
+
+    const actionsMenuTitle = item.actionsOpen ? messages.closeActions : messages.openActions;
+
+    return (
+      <div
+        key="actions-menu-toggle"
+        data-item={item}
+        bind={this}
+        onclick={this._toggleActionsOpen}
+        onkeydown={this._toggleActionsOpen}
+        class={this.classes(CSS.actionsMenuItem, actionsMenuClasses)}
+        tabindex="0"
+        role="button"
+        aria-controls={actionsUid}
+        aria-label={actionsMenuTitle}
+        title={actionsMenuTitle}
+      >
+        <span aria-hidden="true" class={CSS.iconEllipses} />
+      </div>
+    );
+  }
+
+  protected renderActionsMenu(
+    item: ListItem,
+    fitleredSections: Sections,
+    actionsCount: number,
+    actionsUid: string
+  ): VNode {
+    const { panel } = item;
+
+    const panelActionNode = panel && panel.visible ? this.renderPanelButton(panel) : null;
+
+    const singleAction = actionsCount === 1 && this._getSingleActionButton(fitleredSections);
+
+    const singleActionNode = singleAction
+      ? this.renderAction({ item, action: singleAction, singleAction: true })
+      : null;
+
+    const actionsMenuIcon =
+      !singleAction && actionsCount ? this.renderActionsMenuIcon(item, actionsUid) : null;
+
+    return actionsMenuIcon || panelActionNode || singleAction ? (
+      <div key="actions-menu" class={CSS.actionsMenu}>
+        {panelActionNode}
+        {singleActionNode}
+        {actionsMenuIcon}
+      </div>
+    ) : null;
+  }
+
+  protected renderChildList(item: ListItem, listUid: string): VNode {
+    const { selectionEnabled } = this;
+    const { visibilityMode, children } = item;
     const hasError = !!item.error;
-
-    const errorMessage = hasError ? i18n.layerError : "";
-
-    const visibilityMode = item.visibilityMode;
-
-    const childItems = item.children && item.children.toArray();
+    const hasChildren = !!children.length && !hasError;
+    const showEmptyGroup = !hasChildren && selectionEnabled && item.layer?.type === "group";
 
     const { exclusive, inherited } = VISIBILITY_MODES;
 
@@ -397,216 +725,669 @@ class LayerList extends declared(Widget) {
       [CSS.listIndependent]: visibilityMode !== inherited && visibilityMode !== exclusive
     };
 
-    const itemClasses = {
-      [CSS.itemChildren]: hasChildren,
-      [CSS.itemError]: !!errorMessage,
-      [CSS.itemUpdating]: item.updating && !parent && this.statusIndicatorsVisible,
-      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale
-    };
-
-    const actionsCount = this._countActions(item.actionsSections);
-
-    const firstActionButton = actionsCount ? this._renderActionMenuItem(item, item.actionsSections) : null;
-
-    const actionsMenuIconClasses = {
-      [CSS.iconEllipses]: !item.actionsOpen,
-      [CSS.iconClose]: item.actionsOpen
-    };
-
-    const actionsMenuTitle = item.actionsOpen ? i18nCommon.close : i18nCommon.open;
-
-    const actionsMenuIcon = actionsCount > 1 ? (
-      <div key={`${uid}__actions-menu-toggle`}
-        data-item={item}
-        onclick={this._toggleActionsOpen}
-        onkeydown={this._toggleActionsOpen}
-        class={CSS.actionsMenuItem}
-        tabindex="0"
-        role="button"
-        aria-controls={actionsUid}
-        aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}>
-        <span aria-hidden="true" classes={actionsMenuIconClasses} />
-      </div>
-    ) : null;
-
-    const actionsMenu = actionsCount ? (
-      <div key={`${uid}__actions-menu`}
-        class={CSS.actionsMenu}>
-        {firstActionButton}
-        {actionsMenuIcon}
-      </div>
-    ) : null;
-
-    const actions = actionsCount > 1 ? this._renderActionsSections(item, item.actionsSections, actionsUid) : null;
-
-    const children: any = hasChildren ? (
-      <ul key={listUid}
+    return hasChildren || showEmptyGroup ? (
+      <ul
+        bind={this}
+        key="list-items"
         id={listUid}
-        class={CSS.list}
-        classes={childClasses}
+        data-group={item.uid}
+        data-item={item}
+        afterCreate={this._sortNodeCreated}
+        afterUpdate={this._sortNodeCreated}
+        afterRemoved={this._sortNodeRemoved}
+        class={this.classes(CSS.list, childClasses)}
         aria-expanded={item.open ? "true" : "false"}
-        role={visibilityMode === exclusive ? "radiogroup" : "group"}
-        hidden={item.open ? null : true}>
-        {
-          childItems.map((childItem, childKey) => this._renderItem(childItem, item))
-        }
+        role={selectionEnabled ? "listbox" : visibilityMode === exclusive ? "radiogroup" : "group"}
+        hidden={item.open || showEmptyGroup ? null : true}
+      >
+        {children?.map((childItem) => this.renderItem(childItem, item)).toArray()}
       </ul>
     ) : null;
+  }
+
+  protected renderChildrenToggle(item: ListItem, listUid: string): VNode {
+    const { messagesCommon } = this;
+    const { children } = item;
+    const hasError = !!item.error;
+    const hasChildren = !!children.length && !hasError;
 
     const childToggleClasses = {
       [CSS.childToggleOpen]: item.open
     };
 
-    const toggleChildrenTitle = item.open ? i18nCommon.collapse : i18nCommon.expand;
+    const toggleChildrenTitle = item.open ? messagesCommon.collapse : messagesCommon.expand;
 
-    const toggleChildren = hasChildren ? (
+    return hasChildren ? (
       <span
         onclick={this._toggleChildrenClick}
         onkeydown={this._toggleChildrenClick}
         data-item={item}
-        key={`${uid}__toggle-children`}
-        class={CSS.childToggle}
-        classes={childToggleClasses}
+        key="toggle-children"
+        class={this.classes(CSS.childToggle, childToggleClasses)}
         tabindex="0"
         role="button"
         aria-controls={listUid}
         aria-label={toggleChildrenTitle}
-        title={toggleChildrenTitle}>
-        <span aria-hidden="true" class={join(CSS.childClosed, CSS.iconRightArrow)} />
-        <span aria-hidden="true" class={join(CSS.childOpened, CSS.iconDownArrow)} />
-        <span aria-hidden="true" class={join(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
+        title={toggleChildrenTitle}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.childClosed, CSS.iconRightArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childOpened, CSS.iconDownArrow)} />
+        <span aria-hidden="true" class={this.classes(CSS.childClosed_RTL, CSS.iconLeftArrow)} />
       </span>
     ) : null;
+  }
 
-    const itemLabel = this._createLabelNode(item, parent, uid, titleKey);
-
-    const errorBlock = hasError ? (
-      <div key={`${uid}__error`}
-        class={CSS.errorMessage}
-        role="alert">
-        <span aria-hidden="true"
-          class={CSS.iconNoticeTriangle} />
-        <span>{errorMessage}</span>
+  protected renderError(item: ListItem): VNode {
+    return item.error ? (
+      <div key="esri-layer-list__error" class={CSS.errorMessage} role="alert">
+        <span>{this.messages.layerError}</span>
       </div>
     ) : null;
+  }
+
+  protected renderItemContent(item: ListItem, parent: ListItem, titleKey: string): VNode[] {
+    const { id } = this;
+    const uid = `${id}_${item.uid}`;
+    const actionsUid = `${uid}_actions`;
+    const listUid = `${uid}__list`;
+
+    const { panel } = item;
+
+    const filteredSections = this._filterActions(item.actionsSections);
+    const actionsCount = this._countActions(filteredSections);
+
+    return [
+      <div key="list-item-container" class={CSS.itemContainer}>
+        {this.renderChildrenToggle(item, listUid)}
+        {this.renderLabel(item, parent, titleKey)}
+        {this.renderActionsMenu(item, filteredSections, actionsCount, actionsUid)}
+      </div>,
+      this.renderError(item),
+      actionsCount ? this.renderActionsSections(item, filteredSections, actionsUid) : null,
+      panel && panel.open ? panel.render() : null,
+      this.renderChildList(item, listUid)
+    ];
+  }
+
+  protected renderItem(item: ListItem, parent: ListItem): VNode {
+    const { _newUI, id, selectionEnabled, selectedItems, visibleElements } = this;
+    const { children } = item;
+
+    const uid = `${id}_${item.uid}`;
+    const titleKey = `${uid}__title`;
+
+    const hasError = !!item.error;
+    const hasChildren = !!children.length && !hasError;
+
+    const itemClasses = {
+      [CSS.itemChildren]: hasChildren,
+      [CSS.itemError]: !!hasError,
+      [CSS.itemUpdating]: item.updating && !parent && visibleElements.statusIndicators,
+      [CSS.itemInvisible]: _newUI && !item.visible,
+      [CSS.itemInvisibleAtScale]: !item.visibleAtCurrentScale,
+      [CSS.itemSelectable]: selectionEnabled
+    };
+
+    if (selectionEnabled) {
+      const itemProps = {
+        [SORT_DATA_ATTR]: item.layer?.uid,
+        [SORT_FILTER_DATA_ATTR]: (!item.sortable).toString()
+      };
+
+      return (
+        <li
+          key={`item-with-selection-${item.uid}`}
+          bind={this}
+          afterCreate={this._focusListItem}
+          afterUpdate={this._focusListItem}
+          class={this.classes(CSS.item, itemClasses)}
+          aria-labelledby={titleKey}
+          onclick={this._toggleSelection}
+          onkeydown={this._selectionKeydown}
+          data-item={item}
+          data-group={parent ? parent.uid : SORTABLE_ROOT}
+          tabIndex={0}
+          aria-selected={findSelectedItem(item, selectedItems) ? "true" : "false"}
+          role="option"
+          {...itemProps}
+        >
+          {this.renderItemContent(item, parent, titleKey)}
+        </li>
+      );
+    }
 
     return (
-      <li key={`${uid}__list-item`}
-        class={CSS.item}
-        classes={itemClasses}
-        aria-labelledby={titleKey}>
-        <div key={`${uid}__list-item-container`}
-          class={CSS.itemContainer}>
-          {toggleChildren}
-          {itemLabel}
-          {actionsMenu}
-        </div>
-        {errorBlock}
-        {actions}
-        {children}
+      <li
+        key={`item-no-selection-${item.uid}`}
+        bind={this}
+        afterCreate={this._focusListItem}
+        afterUpdate={this._focusListItem}
+        class={this.classes(CSS.item, itemClasses)}
+        aria-labelledby={titleKey}
+      >
+        {this.renderItemContent(item, parent, titleKey)}
       </li>
     );
   }
 
-  private _createLabelNode(item: ListItem, parent: ListItem, uid: string, titleKey: string): any {
-    const labelKey = `${uid}__label`;
-    const { exclusive, inherited } = VISIBILITY_MODES;
+  protected renderItemTitle(item: ListItem, titleKey: string): VNode {
+    const { messages } = this;
+
+    const title = item.title || messages.untitledLayer;
+    const label = !item.visibleAtCurrentScale
+      ? `${title} (${messages.layerInvisibleAtScale})`
+      : title;
+
+    return (
+      <span
+        key="layer-title-container"
+        id={titleKey}
+        title={label}
+        aria-label={label}
+        class={CSS.title}
+      >
+        {title}
+      </span>
+    );
+  }
+
+  protected renderItemToggleIcon(item: ListItem, parent: ListItem): VNode {
+    const { _newUI } = this;
+    const { exclusive } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
 
     const toggleIconClasses = {
+      [CSS.toggleVisibleIcon]: _newUI,
+      [CSS.toggleIcon]: _newUI && parentVisibilityMode !== exclusive,
+      [CSS.radioIcon]: _newUI && parentVisibilityMode === exclusive,
       [CSS.iconRadioSelected]: parentVisibilityMode === exclusive && item.visible,
       [CSS.iconRadioUnselected]: parentVisibilityMode === exclusive && !item.visible,
       [CSS.iconVisible]: parentVisibilityMode !== exclusive && item.visible,
       [CSS.iconInvisible]: parentVisibilityMode !== exclusive && !item.visible
     };
 
-    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "checkbox";
-    const inheritedTitle = !item.visibleAtCurrentScale ? i18n.layerInvisibleAtScale : "";
-    const title = item.title || i18n.untitledLayer;
-    const titleNode = (
-      <span id={titleKey}
-        class={CSS.title}><span
-          title={inheritedTitle}
-          aria-label={inheritedTitle}></span>{title}</span>
+    return (
+      <span key="item-toggle-icon" class={this.classes(toggleIconClasses)} aria-hidden="true" />
     );
+  }
 
-    return parentVisibilityMode === inherited ?
-      (
-        <div key={labelKey}
-          class={CSS.label}>
-          {titleNode}
-        </div>
-      ) :
-      (
-        <div key={labelKey}
-          onclick={this._labelClick}
-          onkeydown={this._labelClick}
+  protected renderItemToggle(item: ListItem, parent: ListItem, titleKey: string): VNode {
+    const { selectionEnabled } = this;
+    const { exclusive } = VISIBILITY_MODES;
+    const parentVisibilityMode = parent && parent.visibilityMode;
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
+
+    if (selectionEnabled) {
+      return (
+        <span
+          key="item-toggle-selection-enabled"
+          class={CSS.toggleVisible}
+          bind={this}
+          onclick={this._toggleVisibility}
+          onkeydown={this._toggleVisibility}
           data-item={item}
           data-parent-visibility={parentVisibilityMode}
-          tabindex="0"
+          tabIndex={0}
           aria-checked={item.visible ? "true" : "false"}
           role={toggleRole}
           aria-labelledby={titleKey}
-          class={CSS.label}>
-          <span class={CSS.toggleVisible}>
-            <span class={CSS.toggleVisibleIcon}
-              aria-hidden="true"
-              classes={toggleIconClasses} />
-          </span>
-          {titleNode}
-        </div>
+        >
+          {this.renderItemToggleIcon(item, parent)}
+        </span>
       );
+    }
+    return (
+      <span key="item-toggle" class={CSS.toggleVisible}>
+        {this.renderItemToggleIcon(item, parent)}
+      </span>
+    );
   }
 
-  private _renderActionMenuItem(item: ListItem, actionsSections: Collection<Collection<Action>>): any {
-    const actionSection = actionsSections.getItemAt(0);
-    const action = actionSection && actionSection.getItemAt(0);
+  protected renderItemError(item: ListItem): VNode {
+    return !!item.error ? (
+      <span key="notice-triangle" aria-hidden="true" class={CSS.iconNoticeTriangle} />
+    ) : null;
+  }
 
-    if (action) {
+  protected renderLabel(item: ListItem, parent: ListItem, titleKey: string): VNode {
+    const { selectionEnabled, _newUI } = this;
+    const { inherited, exclusive } = VISIBILITY_MODES;
+    const parentVisibilityMode = parent?.visibilityMode;
+    const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
 
-      const actionStyles = this._getActionImageStyles(action);
+    const labelContentNodes = [
+      this.renderItemToggle(item, parent, titleKey),
+      this.renderItemTitle(item, titleKey)
+    ];
 
-      const iconClasses = {
-        [action.className]: action.className,
-        [CSS.actionImage]: actionStyles["background-image"]
-      };
+    if (_newUI) {
+      labelContentNodes.reverse();
+    }
 
-      const actionTitle = action.title;
+    const labelNode = !selectionEnabled ? (
+      <div
+        key={`item-label-with-selection-${item.uid}`}
+        class={CSS.label}
+        bind={this}
+        onclick={this._toggleVisibility}
+        onkeydown={this._toggleVisibility}
+        data-item={item}
+        data-parent-visibility={parentVisibilityMode}
+        tabIndex={0}
+        aria-checked={item.visible ? "true" : "false"}
+        role={toggleRole}
+        aria-labelledby={titleKey}
+      >
+        {labelContentNodes}
+      </div>
+    ) : (
+      <div key={`item-label-no-selection-${item.uid}`} class={CSS.label}>
+        {labelContentNodes}
+      </div>
+    );
 
+    return parentVisibilityMode === inherited || !!item.error ? (
+      <div key={`item-label-container-${item.uid}`} class={CSS.label}>
+        {this.renderItemError(item)}
+        {this.renderItemTitle(item, titleKey)}
+      </div>
+    ) : (
+      labelNode
+    );
+  }
+
+  protected renderPanelButton(panel: ListItemPanel): VNode {
+    const { className, open, title, image } = panel;
+
+    const actionClass = !image && !className ? CSS.iconDefaultAction : className;
+
+    const iconStyles = this._getIconImageStyles(panel);
+
+    const buttonClasses = {
+      [CSS.actionsMenuItemActive]: open
+    };
+
+    const iconClasses = {
+      [CSS.actionImage]: !!iconStyles["background-image"]
+    };
+
+    if (actionClass) {
+      iconClasses[actionClass] = !!actionClass;
+    }
+
+    return (
+      <div
+        key={`panel-${panel.uid}`}
+        bind={this}
+        data-panel={panel}
+        onclick={this._triggerPanel}
+        onkeydown={this._triggerPanel}
+        class={this.classes(CSS.actionsMenuItem, buttonClasses)}
+        role="button"
+        tabindex="0"
+        title={title}
+        aria-label={title}
+      >
+        <span class={this.classes(iconClasses)} styles={iconStyles} />
+      </div>
+    );
+  }
+
+  protected renderActionsSections(
+    item: ListItem,
+    actionsSections: Sections,
+    actionsUid: string
+  ): VNode {
+    const actionSectionsArray = actionsSections.toArray();
+
+    const actionSection = actionSectionsArray.map((actionSection, index) => (
+      <ul key={`${item}-action-section-${index}`} class={CSS.actionsList}>
+        {this.renderActionSection(item, actionSection)}
+      </ul>
+    ));
+
+    return (
+      <div
+        role="group"
+        aria-expanded={item.actionsOpen ? "true" : "false"}
+        key="actions-section"
+        id={actionsUid}
+        class={CSS.actions}
+        hidden={item.actionsOpen ? null : true}
+      >
+        {actionSection}
+      </div>
+    );
+  }
+
+  protected renderActionSection(item: ListItem, actionSection: Actions): VNode {
+    const actionSectionArray = actionSection && actionSection.toArray();
+    return actionSectionArray.map((action) => this.renderAction({ item, action }));
+  }
+
+  protected renderActionIcon(action: Action): VNode {
+    const { active, className } = action;
+    const iconStyles = this._getIconImageStyles(action);
+
+    const actionClass =
+      action.type === "button" && !action.image && !className ? CSS.iconDefaultAction : className;
+
+    const iconClasses = {
+      [CSS.actionImage]: !active && !!iconStyles["background-image"],
+      [CSS.iconLoading]: active,
+      [CSS.rotating]: active
+    };
+
+    if (actionClass && !active) {
+      iconClasses[actionClass] = true;
+    }
+
+    return (
+      <span
+        key="action-icon"
+        aria-hidden="true"
+        class={this.classes(CSS.actionIcon, iconClasses)}
+        styles={iconStyles}
+      />
+    );
+  }
+
+  protected renderActionTitle(title: string, singleAction: boolean): VNode {
+    return !singleAction ? (
+      <span key="action-title" class={CSS.actionTitle}>
+        {title}
+      </span>
+    ) : null;
+  }
+
+  protected renderAction(options: {
+    item: ListItem;
+    action: Action;
+    singleAction?: boolean;
+  }): VNode {
+    const { item, action, singleAction } = options;
+    const { active, disabled, title } = action;
+
+    const buttonClasses = {
+      [CSS.actionsMenuItem]: singleAction && action.type === "button",
+      [CSS.action]: active || (!singleAction && action.type !== "toggle"),
+      [CSS.actionToggle]: !active && action.type === "toggle",
+      [CSS.actionToggleOn]: !active && action.type === "toggle" && action.value,
+      [CSS.disabledElement]: disabled
+    };
+
+    const actionContentNodes = [
+      this.renderActionIcon(action),
+      this.renderActionTitle(title, singleAction)
+    ];
+
+    if (singleAction) {
       return (
-        <div key={`${action.uid}__action-menu-item`}
+        <div
           bind={this}
           data-item={item}
           data-action={action}
+          role="button"
+          key={`single-action-${action.uid}`}
           onclick={this._triggerAction}
           onkeydown={this._triggerAction}
-          class={CSS.actionsMenuItem}
-          role="button"
+          classes={buttonClasses}
           tabindex="0"
-          title={actionTitle}
-          aria-label={actionTitle}>
-          <span classes={iconClasses}
-            styles={actionStyles} />
+          title={title}
+          aria-label={title}
+        >
+          {actionContentNodes}
         </div>
       );
     }
+
+    return (
+      <li
+        bind={this}
+        data-item={item}
+        data-action={action}
+        key={`action-${action.uid}`}
+        onclick={this._triggerAction}
+        onkeydown={this._triggerAction}
+        classes={buttonClasses}
+        tabindex="0"
+        role="button"
+        title={title}
+        aria-label={title}
+      >
+        {actionContentNodes}
+      </li>
+    );
   }
 
-  private _watchActionSectionChanges(actionSection: Collection<Action>, itemId: string): void {
+  //--------------------------------------------------------------------------
+  //
+  //  Private Methods
+  //
+  //--------------------------------------------------------------------------
+
+  private _sortNodeRemoved(el: HTMLUListElement): void {
+    const { _sortableMap } = this;
+    const key = el.dataset.group;
+    const sortable = _sortableMap.get(key);
+
+    if (sortable) {
+      sortable.destroy();
+    }
+
+    _sortableMap.delete(key);
+  }
+
+  private _destroySortables(): void {
+    const { _sortableMap, _sortableNodes } = this;
+    _sortableMap.forEach((item) => item && item.destroy());
+    _sortableMap.clear();
+    _sortableNodes.clear();
+  }
+
+  private _moveLayerFromChildList({
+    to,
+    from,
+    item,
+    newIndex
+  }: {
+    to: HTMLElement;
+    from: HTMLElement;
+    item: HTMLElement;
+    newIndex: number;
+  }): void {
+    const targetItem = item["data-item"] as ListItem;
+    const toItem = to["data-item"] as ListItem;
+    const fromItem = from["data-item"] as ListItem;
+
+    this.viewModel.moveListItem(targetItem, fromItem, toItem, newIndex);
+  }
+
+  private _onSortableSort = ({ to, from, item, newIndex }: Sortable.SortableEvent): void => {
+    if (!from || !to) {
+      return;
+    }
+
+    if (from === to) {
+      this._sortLayers(this._sortableMap.get(from.dataset.group));
+    } else {
+      this._moveLayerFromChildList({ to, from, item, newIndex });
+    }
+  };
+
+  private _sortLayers(sortable: Sortable): void {
+    if (!sortable) {
+      return;
+    }
+
+    const item = sortable.el["data-item"] as ListItem;
+    const items = sortable.toArray();
+
+    if (!item) {
+      sortLayersToIds(this.view?.map?.layers, items);
+    } else {
+      sortChildLayersToIds(item, items);
+    }
+  }
+
+  private _sortableCanPut = (to: Sortable, from: Sortable, dragEl: HTMLElement): boolean => {
+    const toGroup = to.el.dataset.group;
+    const fromGroup = from.el.dataset.group;
+    const toItem = to.el["data-item"] as ListItem;
+    const targetItem = dragEl["data-item"] as ListItem;
+    const dragLayerType = targetItem?.layer?.type;
+    const toLayerType = toItem?.layer?.type;
+    const groupLayerInception = toLayerType === "group" && dragLayerType === "group";
+
+    return toGroup && fromGroup && dragLayerType && !groupLayerInception;
+  };
+
+  private _sortableCanPull = (to: Sortable, from: Sortable, dragEl: HTMLElement): boolean => {
+    const toGroup = to.el.dataset.group;
+    const fromGroup = from.el.dataset.group;
+    const targetItem = dragEl["data-item"] as ListItem;
+    const dragLayerType = targetItem?.layer?.type;
+
+    return toGroup && fromGroup && !!dragLayerType;
+  };
+
+  private _toggleSorting(node: HTMLUListElement, group: string): void {
+    const { _sortableMap, selectionEnabled } = this;
+
+    const instance = _sortableMap.get(group);
+    const item = node["data-item"] as ListItem;
+    const childrenSortable =
+      group === SORTABLE_ROOT ? true : item.childrenSortable && canSortSublayers(item);
+    const enabled = childrenSortable && selectionEnabled;
+
+    if (instance) {
+      instance.option("disabled", !enabled);
+    } else if (enabled) {
+      const sortableInstance = Sortable.create(node, {
+        dataIdAttr: SORT_DATA_ATTR,
+        group: {
+          name: group,
+          pull: this._sortableCanPull,
+          put: this._sortableCanPut
+        },
+        filter: `[${SORT_FILTER_DATA_ATTR}="true"]`,
+        fallbackTolerance: 4, // Note: some phones with very sensitive touch displays like the Samsung Galaxy S8 will fire unwanted touchmove events even when your finger is not moving, resulting in the sort not triggering. Only needed when the item can also be clicked/touched. #25015
+        onSort: this._onSortableSort,
+        onEnd: this._onSortableEnd,
+        disabled: !enabled,
+        chosenClass: CSS.sortableChosen
+      });
+
+      _sortableMap.set(group, sortableInstance);
+    }
+  }
+
+  private _onSortableEnd = ({ oldIndex, from, to, item }: Sortable.SortableEvent): void => {
+    if (from === to) {
+      return;
+    }
+
+    // revert DOM changes -> VDOM will handle this for us
+    from.insertBefore(item, from.children[oldIndex]);
+  };
+
+  private _toggleAllSorting(): void {
+    this._sortableNodes.forEach((node, group) => this._toggleSorting(node, group));
+  }
+
+  private _sortNodeCreated(el: HTMLUListElement): void {
+    const key = el.dataset.group;
+
+    if (!key) {
+      return;
+    }
+
+    this._sortableNodes.set(key, el);
+    this._toggleSorting(el, key);
+  }
+
+  private _setVisibleItems(items: Collection<ListItem>): void {
+    this.visibleItems = items?.filter((item) => this.errorsVisible || !item.error);
+  }
+
+  private _getSingleActionButton(sections: Sections): ActionButton {
+    return sections
+      .reduce((item) => item)
+      .filter((item) => item && item.type === "button")
+      .getItemAt(0) as ActionButton;
+  }
+
+  private _focusListItem(element: HTMLElement): void {
+    const { _focusSortUid } = this;
+
+    if (!element || !_focusSortUid) {
+      return;
+    }
+
+    const item = element["data-item"] as ListItem;
+
+    if (item.layer?.uid === _focusSortUid) {
+      element.focus();
+      this._focusSortUid = null;
+    }
+  }
+
+  private _watchActionSectionChanges(actionSection: Actions, itemId: string): void {
     const registryKey = REGISTRY_KEYS.actionSection + itemId;
 
-    this._handleRegistry.add(actionSection.on("change", this.scheduleRender.bind(this)), registryKey);
+    this._handles.add(actionSection.on("change", this.scheduleRender.bind(this)), registryKey);
 
-    actionSection.forEach(action => this._renderOnActionChanges(action, itemId));
+    actionSection.forEach((action) => this._renderOnActionChanges(action, itemId));
   }
 
   private _renderOnActionChanges(action: Action, itemId: string): void {
     const registryKey = REGISTRY_KEYS.actions + itemId;
 
-    this._handleRegistry.add([
-      watchUtils.init(action, "className, image, id, title, visible", () => this.scheduleRender())
-    ], registryKey);
+    if (action.type === "toggle") {
+      this._handles.add(
+        [
+          watchUtils.init(action, ["className", "image", "id", "title", "visible", "value"], () =>
+            this.scheduleRender()
+          )
+        ],
+        registryKey
+      );
+
+      return;
+    }
+
+    if (action.type === "slider") {
+      this._handles.add(
+        [
+          watchUtils.init(
+            action,
+            [
+              "className",
+              "id",
+              "title",
+              "visible",
+              "value",
+              "displayValueEnabled",
+              "max",
+              "min",
+              "step"
+            ],
+            () => this.scheduleRender()
+          )
+        ],
+        registryKey
+      );
+      return;
+    }
+
+    this._handles.add(
+      [
+        watchUtils.init(action, ["className", "image", "id", "title", "visible"], () =>
+          this.scheduleRender()
+        )
+      ],
+      registryKey
+    );
   }
 
   private _renderOnItemChanges(item: ListItem): void {
@@ -614,101 +1395,165 @@ class LayerList extends declared(Widget) {
 
     const registryKey = REGISTRY_KEYS.items + itemId;
 
-    this._handleRegistry.add([
-      watchUtils.init(item, "actionsOpen, visible, open, updating, title, visibleAtCurrentScale, error, visibilityMode", () => this.scheduleRender()),
-      item.actionsSections.on("change", () => this.scheduleRender()),
-      item.children.on("change", () => this.scheduleRender())
-    ], registryKey);
+    this._handles.add(
+      [
+        watchUtils.init(
+          item,
+          [
+            "actionsOpen",
+            "visible",
+            "open",
+            "updating",
+            "title",
+            "visibleAtCurrentScale",
+            "error",
+            "visibilityMode",
+            "panel",
+            "panel.title",
+            "panel.content",
+            "panel.className",
+            "sortable",
+            "childrenSortable"
+          ],
+          () => this.scheduleRender()
+        ),
+        item.actionsSections.on("change", () => this.scheduleRender()),
+        item.children.on("change", () => this.scheduleRender())
+      ],
+      registryKey
+    );
 
-    item.children.forEach(child => this._renderOnItemChanges(child));
-    item.actionsSections.forEach(actionSection => this._watchActionSectionChanges(actionSection, itemId));
+    item.children.forEach((child) => this._renderOnItemChanges(child));
+    item.actionsSections.forEach((actionSection) =>
+      this._watchActionSectionChanges(actionSection, itemId)
+    );
   }
 
   private _itemsChanged(items: Collection<ListItem>): void {
-    this._handleRegistry.removeAll();
+    this._handles.removeAll();
 
-    items.forEach(item => this._renderOnItemChanges(item));
+    items.forEach((item) => this._renderOnItemChanges(item));
+
+    this._setVisibleItems(items);
 
     this.scheduleRender();
   }
 
-  private _renderActionsSections(item: ListItem, actionsSections: Collection<Collection<Action>>, actionsUid: string): any {
-    const widgetId = this.id;
-    const uid = `${widgetId}_${item.uid}`;
-    const actionSectionsArray = actionsSections.toArray();
-
-    const actionSection = actionSectionsArray.map(actionSection => {
-      return (
-        <ul key={`${uid}__actions-list`}
-          class={CSS.actionsList}>
-          {this._renderActionSection(item, actionSection)}
-        </ul>
-      );
-    });
-
-    return (
-      <div role="group"
-        aria-expanded={item.actionsOpen ? "true" : "false"}
-        key={`${uid}__actions-section`}
-        id={actionsUid}
-        class={CSS.actions}
-        hidden={item.actionsOpen ? null : true}>
-        {actionSection}
-      </div>
-    );
+  private _filterActions(actionSections: Sections): Sections {
+    return actionSections.map((section) => section.filter((action) => action.visible));
   }
 
-  private _renderActionSection(item: ListItem, actionSection: Collection<Action>): any {
-    const actionSectionArray = actionSection && actionSection.toArray();
-    return actionSectionArray.map(action => this._renderAction(item, action));
-  }
-
-  private _renderAction(item: ListItem, action: Action): any {
-    const actionStyles = this._getActionImageStyles(action);
-
-    const iconClasses = {
-      [action.className]: action.className,
-      [CSS.actionImage]: actionStyles["background-image"]
-    };
-
-    return (
-      <li key={`${action.uid}__action`}
-        bind={this}
-        data-item={item}
-        data-action={action}
-        onclick={this._triggerAction}
-        onkeydown={this._triggerAction}
-        class={CSS.action}
-        tabindex="0"
-        role="button"
-        title={action.title}
-        aria-label={action.title}>
-        <span aria-hidden="true" class={CSS.actionIcon} classes={iconClasses} styles={actionStyles} />
-        <span class={CSS.actionTitle}>{action.title}</span>
-      </li>
-    );
-  }
-
-  private _countActions(actionSections: Collection<Collection<Action>>): number {
+  private _countActions(actionSections: Sections): number {
     return actionSections.reduce((count, section) => count + section.length, 0);
   }
 
-  private _getActionImageStyles(action: Action): HashMap<string | null> {
-    let image = action.image || null;
-    if (!action.className && !image) {
-      image = DEFAULT_ACTION_IMAGE;
-    }
+  private _getIconImageStyles(source: Action | ListItemPanel): HashMap<string> {
+    const image =
+      source.declaredClass === "esri.widgets.LayerList.ListItemPanel" ||
+      source.declaredClass === "esri.support.Action.ActionButton" ||
+      source.declaredClass === "esri.support.Action.ActionToggle"
+        ? (source as ActionButton | ActionToggle | ListItemPanel).image
+        : null;
 
     return {
       "background-image": image ? `url("${image}")` : null
     };
   }
 
+  private _selectionKeydown(event: KeyboardEvent): void {
+    const SELECTION_KEYS = ["ArrowDown", "ArrowUp"];
+
+    const key = eventKey(event);
+
+    if (SELECTION_KEYS.indexOf(key) === -1) {
+      this._toggleSelection(event);
+      return;
+    }
+
+    event.stopPropagation();
+
+    const node = event.currentTarget as HTMLLIElement;
+    const item = node["data-item"] as ListItem;
+
+    const { _sortableMap, selectedItems } = this;
+    const group = node.dataset.group;
+    const sortable = _sortableMap.get(group);
+
+    if (!sortable) {
+      return;
+    }
+
+    const isSelected = findSelectedItem(item, selectedItems);
+    const items = sortable.toArray();
+    const target = event.target as HTMLElement;
+    const index = items.indexOf(target.dataset[SORT_DATASET_ID]);
+
+    if (index === -1) {
+      return;
+    }
+
+    if (key === "ArrowDown") {
+      const newIndex = index + 1;
+
+      if (newIndex >= items.length) {
+        return;
+      }
+
+      if (isSelected) {
+        moveItem(items, index, newIndex);
+        sortable.sort(items);
+        this._sortLayers(sortable);
+        this._focusSortUid = item.layer?.uid;
+      } else {
+        this._focusSortUid = item.layer?.uid;
+        this.scheduleRender();
+      }
+    }
+
+    if (key === "ArrowUp") {
+      const newIndex = index - 1;
+
+      if (newIndex <= -1) {
+        return;
+      }
+
+      if (isSelected) {
+        moveItem(items, index, newIndex);
+        sortable.sort(items);
+        this._sortLayers(sortable);
+        this._focusSortUid = item.layer?.uid;
+      } else {
+        this._focusSortUid = item.layer?.uid;
+        this.scheduleRender();
+      }
+    }
+  }
+
   @accessibleHandler()
   private _toggleActionsOpen(event: Event): void {
     const node = event.currentTarget as Element;
-    const item = node["data-item"];
-    item.actionsOpen = !item.actionsOpen;
+    const item = node["data-item"] as ListItem;
+    const { actionsOpen } = item;
+    const toggledValue = !actionsOpen;
+
+    if (toggledValue) {
+      this.operationalItems.forEach((item) => closeItemActions(item));
+    }
+
+    item.actionsOpen = toggledValue;
+    event.stopPropagation();
+  }
+
+  @accessibleHandler()
+  private _triggerPanel(event: Event): void {
+    const node = event.currentTarget as Element;
+    const panel = node["data-panel"] as ListItemPanel;
+
+    if (panel) {
+      panel.open = !panel.open;
+    }
+
+    event.stopPropagation();
   }
 
   @accessibleHandler()
@@ -716,26 +1561,60 @@ class LayerList extends declared(Widget) {
     const node = event.currentTarget as Element;
     const action = node["data-action"] as Action;
     const item = node["data-item"] as ListItem;
+
+    if (action.type === "toggle") {
+      action.value = !action.value;
+    }
+
     this.triggerAction(action, item);
+    event.stopPropagation();
   }
 
   @accessibleHandler()
-  private _labelClick(event: Event): void {
+  private _toggleVisibility(event: Event): void {
     const node = event.currentTarget as Element;
     const parentVisibilityMode = node.getAttribute("data-parent-visibility");
-    const item = node["data-item"];
+    const item = node["data-item"] as ListItem;
     if (!(parentVisibilityMode === VISIBILITY_MODES.exclusive && item.visible)) {
       item.visible = !item.visible;
     }
+    event.stopPropagation();
   }
 
   @accessibleHandler()
   private _toggleChildrenClick(event: Event): void {
     const node = event.currentTarget as Element;
-    const item = node["data-item"];
+    const item = node["data-item"] as ListItem;
     item.open = !item.open;
+    event.stopPropagation();
   }
 
+  @accessibleHandler()
+  private _toggleSelection(event: MouseEvent | KeyboardEvent): void {
+    event.stopPropagation();
+    const { multipleSelectionEnabled, selectedItems } = this;
+
+    const allowMultipleSelected = multipleSelectionEnabled && (event.metaKey || event.ctrlKey);
+    const node = event.currentTarget as Element;
+    const item = node["data-item"] as ListItem;
+    const found = findSelectedItem(item, selectedItems);
+
+    const { length } = selectedItems;
+    const singleMatch = found && length === 1;
+
+    if (allowMultipleSelected) {
+      found ? selectedItems.remove?.(found) : selectedItems.add(item);
+      return;
+    }
+
+    if (length && !singleMatch) {
+      selectedItems.removeAll();
+      selectedItems.add(item);
+      return;
+    }
+
+    found ? selectedItems.remove?.(found) : selectedItems.add(item);
+  }
 }
 
-export = LayerList;
+export default LayerList;

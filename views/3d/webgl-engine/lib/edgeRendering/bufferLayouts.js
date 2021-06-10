@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../support/buffer/glUtil","../../../support/buffer/InterleavedLayout"],(function(e,n,t){"use strict";const o=t.newLayout().vec3f("position").u16("componentIndex").u16("u16padding"),a=t.newLayout().vec2u8("sideness"),u=n.glLayout(a),i=t.newLayout().vec3f("position0").vec3f("position1").u16("componentIndex").u8("variantOffset",{glNormalized:!0}).u8("variantStroke").u8("variantExtension",{glNormalized:!0}).u8("u8padding",{glPadding:!0}).u16("u16padding",{glPadding:!0}),r=i.clone().vec3f("normal"),s=i.clone().vec3f("normalA").vec3f("normalB"),d={position0:0,position1:1,componentIndex:2,variantOffset:4,variantStroke:5,variantExtension:6,normal:7,normalA:7,normalB:8,sideness:9};e.CommonInstancesLayout=i,e.EdgeInputBufferLayout=o,e.EdgeShaderAttributeLocations=d,e.RegularEdgeInstancesLayout=r,e.SilhouetteEdgeInstancesLayout=s,e.VertexLayout=a,e.glVertexLayout=u,Object.defineProperty(e,"__esModule",{value:!0})}));

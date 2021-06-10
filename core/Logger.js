@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/has"],function(e,t,r){var n={info:0,warn:1,error:2},o=function(){function e(t){void 0===t&&(t={}),this.module=t.module||"",this.writer=t.writer||null,this.level=t.level||null,null!=t.enabled&&(this.enabled=!!t.enabled),e._loggers[this.module]=this;var r=this.module.lastIndexOf(".");-1!==r&&(this.parent=e.getLogger(this.module.slice(0,r)))}return e.prototype.log=function(e){for(var t=[],r=1;r<arguments.length;r++)t[r-1]=arguments[r];if(this._isEnabled()&&this._matchLevel(e)){var n=this._inheritedWriter();n&&n.apply(void 0,[e,this.module].concat(t))}},e.prototype.error=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log.apply(this,["error"].concat(e))},e.prototype.warn=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log.apply(this,["warn"].concat(e))},e.prototype.info=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];this.log.apply(this,["info"].concat(e))},e.prototype.getLogger=function(t){return e.getLogger(this.module+"."+t)},e.getLogger=function(t){var r=e._loggers[t];return r||(r=new e({module:t})),r},e.prototype._parentWithMember=function(e,t){for(var r=this;r&&null==r[e];)r=r.parent;return r?r[e]:t},e.prototype._inheritedWriter=function(){return this._parentWithMember("writer",this._consoleWriter)},e.prototype._consoleWriter=function(e,t){for(var r=[],n=2;n<arguments.length;n++)r[n-2]=arguments[n];console[e].apply(console,["["+t+"]"].concat(r))},e.prototype._matchLevel=function(e){return n[this._parentWithMember("level","error")]<=n[e]},e.prototype._isEnabled=function(){return this._parentWithMember("enabled",!0)},e}();o._loggers={};var i=o.getLogger("esri");return r("dojo-debug-messages")?i.level="info":i.level="warn",o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","./has","../config","./maybe","./string"],(function(e,t,n,r,o){"use strict";const i={info:0,warn:1,error:2,none:3};let s=function(){function t(e){this.level=null,this._module="",this._parent=null,this.writer=null,this._loggedMessages={error:new Map,warn:new Map,info:new Map},null!=e.level&&(this.level=e.level),null!=e.writer&&(this.writer=e.writer),this._module=e.module,t._loggers[this.module]=this;const n=this.module.lastIndexOf(".");-1!==n&&(this._parent=t.getLogger(this.module.slice(0,n)))}var s=t.prototype;return s.error=function(...e){this._log("error","always",...e)},s.warn=function(...e){this._log("warn","always",...e)},s.info=function(...e){this._log("info","always",...e)},s.errorOnce=function(...e){this._log("error","once",...e)},s.warnOnce=function(...e){this._log("warn","once",...e)},s.infoOnce=function(...e){this._log("info","once",...e)},s.errorOncePerTick=function(...e){this._log("error","oncePerTick",...e)},s.warnOncePerTick=function(...e){this._log("warn","oncePerTick",...e)},s.infoOncePerTick=function(...e){this._log("info","oncePerTick",...e)},t.getLogger=function(e){let n=t._loggers[e];return n||(n=new t({module:e})),n},s._log=function(e,r,...o){if(!this._matchLevel(e))return;if("always"!==r&&!t._throttlingDisabled){const n=this._argsToKey(o),i=this._loggedMessages[e].get(n);if("once"===r&&null!=i||"oncePerTick"===r&&i&&i>=t._tickCounter)return;this._loggedMessages[e].set(n,t._tickCounter),t._scheduleTickCounterIncrement()}for(const t of n.log.interceptors)if(t(e,this.module,...o))return;this._inheritedWriter()(e,this.module,...o)},s._parentWithMember=function(e,t){let n=this;for(;r.isSome(n);){const t=n[e];if(r.isSome(t))return t;n=n.parent}return t},s._inheritedWriter=function(){return this._parentWithMember("writer",this._consoleWriter)},s._consoleWriter=function(e,t,...n){console[e](`[${t}]`,...n)},s._matchLevel=function(e){const t=n.log.level?n.log.level:"warn";return i[this._parentWithMember("level",t)]<=i[e]},s._argsToKey=function(...e){const t=(e,t)=>"object"!=typeof t||Array.isArray(t)?t:"[Object]";return o.numericHash(JSON.stringify(e,t))},t._scheduleTickCounterIncrement=function(){t._tickCounterScheduled||(t._tickCounterScheduled=!0,Promise.resolve().then((()=>{t._tickCounter++,t._tickCounterScheduled=!1})))},e._createClass(t,[{key:"module",get:function(){return this._module}},{key:"parent",get:function(){return this._parent}},{key:"test",get:function(){const e=this;return{loggedMessages:e._loggedMessages,clearLoggedWarnings:()=>e._loggedMessages.warn.clear()}}}],[{key:"testSingleton",get:function(){return{resetLoggers(e={}){const n=t._loggers;return t._loggers=e,n},set throttlingDisabled(e){t._throttlingDisabled=e}}}}]),t}();return s._loggers={},s._tickCounter=0,s._tickCounterScheduled=!1,s._throttlingDisabled=!1,s}));

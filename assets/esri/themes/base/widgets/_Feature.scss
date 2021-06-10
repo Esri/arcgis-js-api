@@ -1,0 +1,63 @@
+@mixin feature() {
+  .esri-feature__title {
+    font-size: $font-size;
+    display: block;
+    word-break: break-word;
+    word-wrap: break-word;
+  }
+
+  .esri-feature__attachments {
+    display: flex;
+  }
+  .esri-feature__loading-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    padding: $cap-spacing 0;
+  }
+
+  .esri-icon-loading-indicator {
+    display: inline-block;
+  }
+
+  .esri-feature {
+    width: 100%;
+  }
+  .esri-feature__main-container {
+    line-height: normal;
+  }
+
+  .esri-feature__content-element {
+    padding: 0 $side-spacing--half;
+    margin-bottom: $cap-spacing--double;
+  }
+
+  .esri-feature__content-element:last-child {
+    margin-bottom: 0;
+  }
+  // ATTACHMENTS
+  .esri-feature-attachments {
+    flex-flow: column wrap;
+    align-items: flex-start;
+  }
+
+  .esri-feature__last-edited-info {
+    font-size: $font-size--small;
+    padding-top: $cap-spacing--half;
+  }
+
+  //  RTL
+  html[dir="rtl"] {
+    .esri-feature__attachments-title {
+      margin: 0 0 0 auto;
+    }
+    .esri-feature__attachments--list .esri-feature__attachment-item-mask {
+      margin-right: 0;
+      margin-left: $side-spacing--half;
+    }
+  }
+}
+
+@if $include_Feature==true {
+  @include feature();
+}

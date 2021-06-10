@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../../core/declare","../../../core/urlUtils","dojo/Deferred","dojo/_base/lang","../webgl-engine/Stage","../webgl-engine/lib/Texture","../webgl-engine/lib/Util"],function(e,t,r,n,i,o,s){var d=s.assert,u=e(null,{constructor:function(e,t,r){this._streamDataSupplier=e,this._stage=t,this._textureRecords={},this._loadedHandler=this._loadedHandler.bind(this),this._errorHandler=this._errorHandler.bind(this),this._textureOptions=r||{}},acquire:function(e,t,n){var o,s=this._textureRecords[e];if(s)return s.referenceCount++,s.texture||s.clientDfd;if(t){var d=t(e);return this._stage.add(i.ModelContentType.TEXTURE,d),s={texture:d,referenceCount:1},this._textureRecords[e]=s,d}o=new r;var u=this._streamDataSupplier.request(e,"image");return this._textureRecords[e]={clientDfd:o,loaderDfd:u,texture:null,size:Math.ceil(n||0),referenceCount:1},u.then(this._loadedHandler,this._errorHandler),o.promise},release:function(e){var t=this._textureRecords[e];t?(t.referenceCount<1&&console.warn("TextureCollection: reference count is < 1 for "+e),t.referenceCount--,t.referenceCount<1&&(t.texture?(this._stage.remove(i.ModelContentType.TEXTURE,t.texture.getId()),t.texture=null):this._streamDataSupplier.cancelRequest(t.loaderDfd),delete this._textureRecords[e])):console.warn("TextureCollection: texture doesn't exist: "+e)},isInUse:function(e){var t=this._textureRecords[e];return d(!t||t.referenceCount>0,"texture record with zero reference count"),!!t},_loadedHandler:function(e,r,s){var u=this._textureRecords[e];if(d(u&&!u.texture),t.isSVG(e)&&(u.size||0===r.width&&0===r.height)){var a=r.width?r.height/r.width:1,l=u.size||64;a>1?(r.width=Math.round(l/a),r.height=l):(r.width=l,r.height=Math.round(l*a))}var h=n.mixin({width:r.width,height:r.height},this._textureOptions),c=new o(r,"symbol",h);this._stage.add(i.ModelContentType.TEXTURE,c),u.texture=c,u.clientDfd.resolve(c)},_errorHandler:function(e){var t=this._textureRecords[e];d(t&&!t.texture),t.clientDfd.reject()}});return u});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/maybe","../../../core/urlUtils","../../../core/promiseUtils","../../support/Scheduler","../webgl-engine/lib/WebGLDriverTest","../webgl-engine/lib/Texture"],(function(e,t,r,s,u,n,o,i){"use strict";let l=function(){function e(e,t,s,u){this._streamDataRequester=e,this._stage=t,this._textureOptions=s,this._textureRequests=new Map,this._frameTask=r.isSome(u)?u.registerTask(n.Task.TEXTURE_UNLOAD,(e=>this._frameTask.processQueue(e)),(()=>!1)):n.ImmediateTask}var l=e.prototype;return l.destroy=function(){this._frameTask.remove(),this._textureRequests.forEach((e=>this.releaseTextureRequest(e))),this._textureRequests.clear()},l.fromUrl=async function(e,t,s){u.throwIfAborted(s);const n=r.isSome(s)&&s.signal,o=this.makeUid(e,t);let i=this._textureRequests.get(o);if(!i){const r=u.createAbortController(),s=this._streamDataRequester.request(e,"image",{uid:o,signal:r.signal});i={referenceCount:0,texture:null,textureAsync:null,abortController:r},this._textureRequests.set(o,i),i.textureAsync=s.then((r=>{const s=this.createTexture(e,r,t);return i.texture=s,i.abortController=null,this.addToStage(s),{uid:o,texture:s}}),(e=>{throw i.abortController=null,e}))}return i.referenceCount++,new Promise(((e,t)=>{u.onAbort(n,(()=>{t(u.createAbortError())})),i.textureAsync.then(e,t)})).catch((e=>{throw this.release(o),e}))},l.fromData=function(e,t){const r=this.makeUid(e);let s=this._textureRequests.get(r);return s||(s={referenceCount:0,texture:t(),textureAsync:null,abortController:null},this.addToStage(s.texture),this._textureRequests.set(r,s)),s.referenceCount++,{uid:r,texture:s.texture}},l.release=function(e){if(!this._textureRequests)return;const t=this._textureRequests.get(e);t?(t.referenceCount<1&&console.warn("TextureCollection: reference count is < 1 for "+e),t.referenceCount--,t.referenceCount<1&&this._frameTask.schedule((()=>this.releaseNow(e)))):console.warn(`TextureCollection: texture doesn't exist: '${e}'`)},l.releaseNow=function(e){if(!this._textureRequests)return;const t=this._textureRequests.get(e);!t||t.referenceCount>0||(this.releaseTextureRequest(t),this._textureRequests.delete(e))},l.releaseTextureRequest=function(e){e.texture?this.removeFromStage(e.texture):e.abortController&&(e.abortController.abort(),e.abortController=null)},l.createTexture=function(e,t,r){const u={...this._textureOptions,powerOfTwoResizeMode:2};if(s.isSVG(e)){if(r||0===t.width&&0===t.height){const e=t.width?t.height/t.width:1;r=r||64,e>1?(t.width=Math.round(r/e),t.height=r):(t.width=r,t.height=Math.round(r*e))}this._stage.renderView&&o.testWebGLDriver(this._stage.renderView.renderingContext).svgAlwaysPremultipliesAlpha&&(u.preMultiplyAlpha=!1)}return u.width=t.width,u.height=t.height,new i.Texture(t,u)},l.addToStage=function(e){this._stage.add(e)},l.removeFromStage=function(e){this._stage.remove(e)},l.makeUid=function(e,t){return null!=t?`${e}.${t}px`:e},t._createClass(e,[{key:"test",get:function(){return{textureRequests:this._textureRequests}}}]),e}();e.TextureCollection=l,e.default=l,Object.defineProperty(e,"__esModule",{value:!0})}));

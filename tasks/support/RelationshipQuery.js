@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/Accessor"],function(e){var t=e.createSubclass({declaredClass:"esri.tasks.support.RelationshipQuery",properties:{definitionExpression:"",geometryPrecision:null,maxAllowableOffset:null,objectIds:null,outFields:null,outSpatialReference:null,relationshipId:null,returnGeometry:!1},toJSON:function(){var e={definitionExpression:this.definitionExpression,relationshipId:this.relationshipId,returnGeometry:this.returnGeometry,maxAllowableOffset:this.maxAllowableOffset,geometryPrecision:this.geometryPrecision},t=this.objectIds,i=this.outFields,s=this.outSpatialReference;return t&&(e.objectIds=t.join(",")),i&&(e.outFields=i.join(",")),s&&(e.outSR=s.wkid||JSON.stringify(s.toJSON())),e._ts=this._ts,e}});return t});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/SpatialReference","../../geometry","../../layers/support/source/DataLayerSource"],(function(e,r,t,o,i,s,p,n,a,c,u,d,l,y,h,_){"use strict";var m;let w=m=function(r){function t(e){var t;return(t=r.call(this,e)||this).dynamicDataSource=void 0,t.gdbVersion=null,t.geometryPrecision=void 0,t.historicMoment=null,t.maxAllowableOffset=void 0,t.objectIds=null,t.orderByFields=null,t.outFields=null,t.outSpatialReference=null,t.relationshipId=void 0,t.start=void 0,t.num=void 0,t.returnGeometry=!1,t.returnM=void 0,t.returnZ=void 0,t.where=null,t}e._inheritsLoose(t,r);var i=t.prototype;return i._writeHistoricMoment=function(e,r){r.historicMoment=e&&e.getTime()},i.writeStart=function(e,r){r.resultOffset=this.start,r.resultRecordCount=this.num||10,r.where="1=1"},i.clone=function(){return new m(o.clone({dynamicDataSource:this.dynamicDataSource,gdbVersion:this.gdbVersion,geometryPrecision:this.geometryPrecision,historicMoment:this.historicMoment&&new Date(this.historicMoment.getTime()),maxAllowableOffset:this.maxAllowableOffset,objectIds:this.objectIds,orderByFields:this.orderByFields,outFields:this.outFields,outSpatialReference:this.outSpatialReference,relationshipId:this.relationshipId,start:this.start,num:this.num,returnGeometry:this.returnGeometry,where:this.where,returnZ:this.returnZ,returnM:this.returnM}))},t}(l.JSONSupport);return r.__decorate([p.property({type:_.DataLayerSource,json:{write:!0}})],w.prototype,"dynamicDataSource",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],w.prototype,"gdbVersion",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],w.prototype,"geometryPrecision",void 0),r.__decorate([p.property({type:Date})],w.prototype,"historicMoment",void 0),r.__decorate([a.writer("historicMoment")],w.prototype,"_writeHistoricMoment",null),r.__decorate([p.property({type:Number,json:{write:!0}})],w.prototype,"maxAllowableOffset",void 0),r.__decorate([p.property({type:[Number],json:{write:!0}})],w.prototype,"objectIds",void 0),r.__decorate([p.property({type:[String],json:{write:!0}})],w.prototype,"orderByFields",void 0),r.__decorate([p.property({type:[String],json:{write:!0}})],w.prototype,"outFields",void 0),r.__decorate([p.property({type:y,json:{read:{source:"outSR"},write:{target:"outSR"}}})],w.prototype,"outSpatialReference",void 0),r.__decorate([p.property({json:{write:!0}})],w.prototype,"relationshipId",void 0),r.__decorate([p.property({type:Number,json:{read:{source:"resultOffset"}}})],w.prototype,"start",void 0),r.__decorate([a.writer("start"),a.writer("num")],w.prototype,"writeStart",null),r.__decorate([p.property({type:Number,json:{read:{source:"resultRecordCount"}}})],w.prototype,"num",void 0),r.__decorate([p.property({json:{write:!0}})],w.prototype,"returnGeometry",void 0),r.__decorate([p.property({type:Boolean,json:{write:{overridePolicy:e=>({enabled:e})}}})],w.prototype,"returnM",void 0),r.__decorate([p.property({type:Boolean,json:{write:{overridePolicy:e=>({enabled:e})}}})],w.prototype,"returnZ",void 0),r.__decorate([p.property({type:String,json:{read:{source:"definitionExpression"},write:{target:"definitionExpression"}}})],w.prototype,"where",void 0),w=m=r.__decorate([n.subclass("esri.tasks.support.RelationshipQuery")],w),w.from=s.ensureType(w),w}));

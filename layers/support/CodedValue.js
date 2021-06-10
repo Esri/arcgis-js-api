@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,o,r,t,s,u,c,p,n,a,d,l){"use strict";var i;e.CodedValue=i=function(e){function r(o){var r;return(r=e.call(this,o)||this).name=null,r.code=null,r}return o._inheritsLoose(r,e),r.prototype.clone=function(){return new i({name:this.name,code:this.code})},r}(l.JSONSupport),r.__decorate([c.property({type:String,json:{write:!0}})],e.CodedValue.prototype,"name",void 0),r.__decorate([c.property({type:[String,Number],json:{write:!0}})],e.CodedValue.prototype,"code",void 0),e.CodedValue=i=r.__decorate([p.subclass("esri.layers.support.CodedValue")],e.CodedValue);var y=e.CodedValue;e.default=y,Object.defineProperty(e,"__esModule",{value:!0})}));

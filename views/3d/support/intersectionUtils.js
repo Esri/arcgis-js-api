@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../lib/glMatrix"],function(r){function n(r,n){return-u.dot(n,r)-r[3]}function e(r,e,t){var i=u.dot(r,t.dir),c=n(r,e);if(0>c&&i>=0)return!1;if(i>-1e-6&&1e-6>i)return!0;if((0>c||0>i)&&!(0>c&&0>i))return!0;var f=c/i;return i>0?f<t.clip[1]&&(t.clip[1]=f):f>t.clip[0]&&(t.clip[0]=f),t.clip[0]<=t.clip[1]}function t(r,n,t,i){i.clip[0]=0,i.clip[1]=t?i.len:Number.MAX_VALUE;for(var u=0;u<r.length;u++)if(!e(r[u],n,i))return!1;return!0}function i(r,n,e,t){return r?(e&&t&&(f.len=u.dist(n,e)),u.set(r,f.dir)):t?(f.len=u.dist(n,e),u.scale(u.subtract(e,n,f.dir),1/f.len)):u.normalize(u.subtract(e,n,f.dir)),f}var u=r.vec3d,c=r.vec2d,f={dir:u.create(),len:0,clip:c.create()},l={planeSphere:function(r,n,e){return r[0]*n[0]+r[1]*n[1]+r[2]*n[2]+r[3]<e},frustumSphere:function(r,n,e){for(var t=0;6>t;t++)if(!l.planeSphere(r[t],n,e))return!1;return!0},frustumRay:function(r,n,e,u){var c=i(u,n,e,!1);return t(r,n,null,c)},frustumPoint:function(r,e){for(var t=0;6>t;t++){var i=n(r[t],e);if(0>i)return!1}return!0},frustumLineSegment:function(r,n,e,u){var c=i(u,n,e,!0);return t(r,n,e,c)}};return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/vec3f64","../../../chunks/vec3","../../../chunks/vec2f64","./geometryUtils"],(function(n,e,t,r,i){"use strict";function c(n,e,t){return n[0]*e[0]+n[1]*e[1]+n[2]*e[2]+n[3]<t}function u(n,e,t){const r=e[0],i=e[1],c=e[2];return!(n[0][0]*r+n[0][1]*i+n[0][2]*c+n[0][3]>t)&&(!(n[1][0]*r+n[1][1]*i+n[1][2]*c+n[1][3]>t)&&(!(n[2][0]*r+n[2][1]*i+n[2][2]*c+n[2][3]>t)&&(!(n[3][0]*r+n[3][1]*i+n[3][2]*c+n[3][3]>t)&&(!(n[4][0]*r+n[4][1]*i+n[4][2]*c+n[4][3]>t)&&!(n[5][0]*r+n[5][1]*i+n[5][2]*c+n[5][3]>t)))))}function l(n,e,t,r){return m(n,e,null,d(r,e,t,!1))}function s(n,e){for(let t=0;t<6;t++){if(i.plane.signedDistance(n[t],e)>0)return!1}return!0}function o(n,e,t,r){return m(n,e,t,d(r,e,t,!0))}function f(n,e,r,i){const c=t.dot(e,t.subtract(i,r,n));return t.add(i,n,t.scale(i,e,c)),i}const a={dir:e.create(),len:0,clip:r.create()};function d(n,e,r,i){const c=a;return n?(r&&i&&(c.len=t.distance(e,r)),t.copy(c.dir,n)):i?(c.len=t.distance(e,r),t.subtract(c.dir,r,e),t.scale(c.dir,c.dir,1/c.len)):(t.subtract(c.dir,r,e),t.normalize(c.dir,c.dir)),c}function p(n,e,r){const c=t.dot(i.plane.normal(n),r.dir),u=-i.plane.signedDistance(n,e);if(u<0&&c>=0)return!1;if(c>-1e-6&&c<1e-6)return u>0;if((u<0||c<0)&&!(u<0&&c<0))return!0;const l=u/c;return c>0?l<r.clip[1]&&(r.clip[1]=l):l>r.clip[0]&&(r.clip[0]=l),r.clip[0]<=r.clip[1]}function m(n,e,t,r){r.clip[0]=0,r.clip[1]=t?r.len:Number.MAX_VALUE;for(let i=0;i<n.length;i++)if(!p(n[i],e,r))return!1;return!0}n.closestPointOnRay=f,n.frustumLineSegment=o,n.frustumPoint=s,n.frustumRay=l,n.frustumSphere=u,n.planeSphere=c,Object.defineProperty(n,"__esModule",{value:!0})}));

@@ -1,36 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-//  copyright
-
-/**
-             * The copyright text as defined by the map service.
-             *
-             * @name copyright
-             * @memberof module:esri/layers/mixins/ArcGISMapService
-             *
-             * @type {string}
-             */
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","./ArcGISService","./ScaleRangeLayer","../../geometry/Extent","../../geometry/SpatialReference"],function(e,r,t,o,p,n,a,i,l){var d=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.copyright=null,r.fullExtent=null,r.spatialReference=null,r.version=null,r}return t(r,e),r.prototype.readCapabilities=function(e,r){return e&&e.split(",").map(function(e){return e.trim()})},r.prototype.readCopyright=function(e,r){return r.copyrightText},r.prototype.readLegendEnabled=function(e,r){return r.showLegend},r.prototype.writeLegendEnabled=function(e,r){r.showLegend=!!e},r.prototype.readPopupEnabled=function(e,r){return!r.disablePopup},r.prototype.readVersion=function(e,r){var t=r.currentVersion;return t||(t=r.hasOwnProperty("capabilities")||r.hasOwnProperty("tables")?10:r.hasOwnProperty("supportedImageFormatTypes")?9.31:9.3),t},r}(p.declared(n,a));return o([p.property()],d.prototype,"capabilities",void 0),o([p.reader("service","capabilities")],d.prototype,"readCapabilities",null),o([p.property()],d.prototype,"copyright",void 0),o([p.reader("copyright",["copyrightText"])],d.prototype,"readCopyright",null),o([p.property({type:i})],d.prototype,"fullExtent",void 0),o([p.property({json:{origins:{service:{read:!1},portalItem:{read:!1}}}})],d.prototype,"id",void 0),o([p.property()],d.prototype,"legendEnabled",void 0),o([p.reader("legendEnabled",["showLegend"])],d.prototype,"readLegendEnabled",null),o([p.writer("legendEnabled")],d.prototype,"writeLegendEnabled",null),o([p.reader("popupEnabled",["disablePopup"])],d.prototype,"readPopupEnabled",null),o([p.property({type:l})],d.prototype,"spatialReference",void 0),o([p.property()],d.prototype,"version",void 0),o([p.reader("version",["currentVersion","capabilities","tables","supportedImageFormatTypes"])],d.prototype,"readVersion",null),d=o([p.subclass("esri.layers.mixins.ArcGISMapService")],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../geometry/SpatialReference","../../geometry/Extent","../../request","../../core/Version","../support/commonProperties"],(function(e,r,t,o,s,p,a,i,l,n,c,u,d,y,b,h,_,f){"use strict";const x=e=>{let o=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).capabilities=void 0,r.copyright=null,r.fullExtent=null,r.legendEnabled=!0,r.spatialReference=null,r.version=null,r}r._inheritsLoose(t,e);var o=t.prototype;return o.readCapabilities=function(e,r){const t=r.capabilities&&r.capabilities.split(",").map((e=>e.toLowerCase().trim()));if(!t)return{operations:{supportsQuery:!1,supportsExportMap:!1,supportsExportTiles:!1,supportsTileMap:!1},exportMap:null,exportTiles:null};const o=this.type,s=-1!==t.indexOf("query"),p=-1!==t.indexOf("map"),a=!!r.exportTilesAllowed,i=-1!==t.indexOf("tilemap"),l="tile"!==o&&!!r.supportsDynamicLayers,n="tile"!==o&&(!r.tileInfo||l),c="tile"!==o&&(!r.tileInfo||l),u="tile"!==o,d=!!r.cimVersion&&_.Version.parse(r.cimVersion).since(1,4);return{operations:{supportsQuery:s,supportsExportMap:p,supportsExportTiles:a,supportsTileMap:i},exportMap:p?{supportsArcadeExpressionForLabeling:d,supportsSublayersChanges:u,supportsDynamicLayers:l,supportsSublayerVisibility:n,supportsSublayerDefinitionExpression:c}:null,exportTiles:a?{maxExportTilesCount:+r.maxExportTilesCount}:null}},o.readVersion=function(e,r){let t=r.currentVersion;return t||(t=r.hasOwnProperty("capabilities")||r.hasOwnProperty("tables")?10:r.hasOwnProperty("supportedImageFormatTypes")?9.31:9.3),t},o.fetchSublayerInfo=async function(e,r){return await this.fetchAllLayersAndTables(r),this._allLayersAndTablesMap.get(e)},o.fetchAllLayersAndTables=async function(e){await this.load(e),this._allLayersAndTablesPromise||(this._allLayersAndTablesPromise=h(n.urlToObject(this.url).path+"/layers",{responseType:"json",query:{f:"json",...this.customParameters}}).then((e=>{this._allLayersAndTablesMap=new Map;for(const r of e.data.layers)this._allLayersAndTablesMap.set(r.id,r);return{result:e.data}}),(e=>({error:e}))));const r=await this._allLayersAndTablesPromise;if(d.throwIfAborted(e),"result"in r)return r.result;throw r.error},t}(e);return t.__decorate([a.property({readOnly:!0})],o.prototype,"capabilities",void 0),t.__decorate([i.reader("service","capabilities",["capabilities","exportTilesAllowed","maxExportTilesCount","supportsDynamicLayers","tileInfo"])],o.prototype,"readCapabilities",null),t.__decorate([a.property({json:{read:{source:"copyrightText"}}})],o.prototype,"copyright",void 0),t.__decorate([a.property({type:b})],o.prototype,"fullExtent",void 0),t.__decorate([a.property(f.id)],o.prototype,"id",void 0),t.__decorate([a.property({type:Boolean,json:{origins:{service:{read:{enabled:!1}}},read:{source:"showLegend"},write:{target:"showLegend"}}})],o.prototype,"legendEnabled",void 0),t.__decorate([a.property(f.popupEnabled)],o.prototype,"popupEnabled",void 0),t.__decorate([a.property({type:y})],o.prototype,"spatialReference",void 0),t.__decorate([a.property()],o.prototype,"version",void 0),t.__decorate([i.reader("version",["currentVersion","capabilities","tables","supportedImageFormatTypes"])],o.prototype,"readVersion",null),o=t.__decorate([l.subclass("esri.layers.mixins.ArcGISMapService")],o),o};e.ArcGISMapService=x,Object.defineProperty(e,"__esModule",{value:!0})}));

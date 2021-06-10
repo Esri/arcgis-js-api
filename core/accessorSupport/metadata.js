@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,a){function t(e){return null!=e.__accessorMetadata__}function r(e){return t(e)&&null!=o(e).properties}function n(e,a){return r(e)&&null!=s(e)[a]}function u(e,a){return t(e)&&null!=o(e).parameters&&null!=o(e).parameters[a]}function o(e){return e.__accessorMetadata__||Object.defineProperty(e,"__accessorMetadata__",{value:{},enumerable:!0,configurable:!0,writable:!0}),e.__accessorMetadata__}function s(e){var a=o(e),t=a.properties;return t||(t=a.properties={}),t}function i(e,a){var t=s(e),r=t[a];return r||(r=t[a]={}),r}function c(e,a,t){var r=s(e);r[a]=t}function d(e,a){var t=o(e),r=t.parameters;r||(r=t.parameters={});var n=r[a];return n||(n=[],r[a]=n),n}function p(e,a,t){var r=d(e,a)[t];return r||(d(e,a)[t]=r={index:t}),r}Object.defineProperty(a,"__esModule",{value:!0}),a.hasMetadata=t,a.hasPropertiesMetadata=r,a.hasPropertyMetadata=n,a.hasParametersMetadata=u,a.getMetadata=o,a.getPropertiesMetadata=s,a.getPropertyMetadata=i,a.setPropertyMetadata=c,a.getParametersMetadata=d,a.getParameterMetadata=p});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../lang","../maybe","./utils"],(function(e,t,r,o){"use strict";let n=function(e){this.autoDestroy=!1,this.properties=e};function a(e){let o=e.constructor.__accessorMetadata__;const a=Object.prototype.hasOwnProperty.call(e.constructor,"__accessorMetadata__");if(o){if(!a){const r=Object.create(o.properties),a=o.autoDestroy;for(const e in r)r[e]=t.clone(r[e]);o=new n(r),o.autoDestroy=a,Object.defineProperty(e.constructor,"__accessorMetadata__",{value:o,enumerable:!1,configurable:!0,writable:!0})}}else o=new n({}),Object.defineProperty(e.constructor,"__accessorMetadata__",{value:o,enumerable:!1,configurable:!0,writable:!0});return r.assumeNonNull(e.constructor.__accessorMetadata__)}function s(e){return a(e).properties}function c(e,t){const r=s(e);let o=r[t];return o||(o=r[t]={}),o}function u(e,t,r){s(e)[t]=r}function i(e,t){return o.merge(e,t,d)}function l(e,t){return o.merge(e,t,_)}const p=/^(?:[^.]+\.)?(?:value|type|(?:json\.type|json\.origins\.[^.]\.type))$/;function _(e){return p.test(e)?"replace":"merge"}const f=/^properties\./;function d(e){return f.test(e)?_(e.slice(11)):"merge"}e.ClassMetadata=n,e.getOwnClassMetadata=a,e.getOwnPropertiesMetadata=s,e.getOwnPropertyMetadata=c,e.merge=i,e.mergeProperty=l,e.setPropertyMetadata=u,Object.defineProperty(e,"__esModule",{value:!0})}));

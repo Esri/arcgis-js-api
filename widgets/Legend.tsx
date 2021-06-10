@@ -9,7 +9,7 @@
  *  - the visibility of a layer or sublayer changes
  *  - a layer is added or removed from the map
  *  - a layer's `renderer`, `opacity`, or `title` is changed
- *  - the `legendEnabled` property is set to `false` on the layer
+ *  - the `legendEnabled` property is changed (set to `true` or `false` on the layer)
  *
  * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
  *
@@ -19,18 +19,18 @@
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
  *
- * * There are no legends available for the following layer types:
+ * * Currently, the legend widget does not support the following layer types:
  * {@link module:esri/layers/ElevationLayer},
+ * {@link module:esri/layers/GraphicsLayer},
  * {@link module:esri/layers/IntegratedMeshLayer},
+ * {@link module:esri/layers/KMLLayer},
+ * {@link module:esri/layers/MapNotesLayer},
  * {@link module:esri/layers/OpenStreetMapLayer},
- * {@link module:esri/layers/PointCloudLayer},
  * {@link module:esri/layers/VectorTileLayer}, and
- * {@link module:esri/layers/WebTileLayer}, so these will not display in the Legend widget.
- * * At 4.4, {@link module:esri/layers/MapNotesLayer} is not supported by Legend widget.
+ * {@link module:esri/layers/WebTileLayer}.
  * * {@link module:esri/symbols/Symbol3D  3D symbols} with more than one
  * {@link module:esri/symbols/Symbol3DLayer symbol layer} are not supported.
- * * Size in volumetric {@link module:esri/symbols/Symbol3D  3D symbols}, such as
- * polygon extrusion, is not depicted by Legend.
+ * * {@link module:esri/renderers/DictionaryRenderer} is not supported.
  * :::
  *
  * @example
@@ -48,101 +48,65 @@
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.js (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Legend.js)
- * @see [Legend.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Legend.scss)
+ * @see [Legend.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Legend.tsx)
+ * @see [Legend.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core
+import Collection from "esri/core/Collection";
+import Handles from "esri/core/Handles";
+import * as watchUtils from "esri/core/watchUtils";
 
-import Widget = require("./Widget");
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import HandleRegistry = require("../core/HandleRegistry");
-import Collection = require("../core/Collection");
-import watchUtils = require("../core/watchUtils");
+// esri.core.accessorSupport.decorators
+import { cast } from "esri/core/accessorSupport/decorators/cast";
 
-import View = require("../views/View");
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import LegendViewModel = require("./Legend/LegendViewModel");
-import ActiveLayerInfo = require("./Legend/support/ActiveLayerInfo");
+// esri.widgets
+import { LayerInfo } from "esri/widgets/interfaces";
+import Widget from "esri/widgets/Widget";
 
-import Layer = require("../layers/Layer");
-import ImageryLayer = require("../layers/ImageryLayer");
+// esri.widgets.Legend
+import LegendViewModel from "esri/widgets/Legend/LegendViewModel";
 
-import Color = require("../Color");
+// esri.widgets.Legend.styles
+import Card from "esri/widgets/Legend/styles/Card";
+import Classic from "esri/widgets/Legend/styles/Classic";
 
-import * as i18n from "dojo/i18n!./Legend/nls/Legend";
-import {substitute} from "../core/lang";
-import {join} from "./support/widgetUtils";
-import {createSurface} from "dojox/gfx";
-import {
-  ColorOpacityRampElement, LayerInfo, LegendElement, RampTitle, RendererTitle,
-  SymbolTableElement
-} from "./interfaces";
-import { aliasOf, subclass, declared, property } from "../core/accessorSupport/decorators";
-import { tsx, renderable } from "./support/widget";
+// esri.widgets.Legend.support
+import ActiveLayerInfo from "esri/widgets/Legend/support/ActiveLayerInfo";
 
-import Element = JSX.Element;
+// esri.widgets.Legend.t9n
+import LegendMessages from "esri/widgets/Legend/t9n/Legend";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
-  widget: "esri-widget",
   base: "esri-legend",
-  service: "esri-legend__service",
-  label: "esri-legend__service-label",
-  layer: "esri-legend__layer",
-  groupLayer: "esri-legend__group-layer",
-  groupLayerChild: "esri-legend__group-layer-child",
-  layerTable: "esri-legend__layer-table",
-  layerChildTable: "esri-legend__layer-child-table",
-  layerCaption: "esri-legend__layer-caption",
-  layerBody: "esri-legend__layer-body",
-  layerRow: "esri-legend__layer-row",
-  layerCell: "esri-legend__layer-cell",
-  layerInfo: "esri-legend__layer-cell esri-legend__layer-cell--info",
-  imageryLayerStretchedImage: "esri-legend__imagery-layer-image--stretched",
-  imageryLayerCellStretched: "esri-legend__imagery-layer-cell--stretched",
-  imageryLayerInfoStretched: "esri-legend__imagery-layer-info--stretched",
-  symbolContainer: "esri-legend__layer-cell esri-legend__layer-cell--symbols",
-  symbol: "esri-legend__symbol",
-  rampContainer: "esri-legend__ramps",
-  sizeRamp: "esri-legend__size-ramp",
-  colorRamp: "esri-legend__color-ramp",
-  opacityRamp: "esri-legend__opacity-ramp",
-  borderlessRamp: "esri-legend__borderless-ramp",
-  rampTick: "esri-legend__ramp-tick",
-  rampFirstTick: "esri-legend__ramp-tick-first",
-  rampLastTick: "esri-legend__ramp-tick-last",
-  rampLabelsContainer: "esri-legend__ramp-labels",
-  rampLabel: "esri-legend__ramp-label",
-  message: "esri-legend__message",
-
-  // common
-  hidden: "esri-hidden"
+  widget: "esri-widget",
+  panel: "esri-widget--panel",
+  widgetIcon: "esri-icon-layer-list"
 };
 
-const KEY = "esri-legend__",
-  GRADIENT_WIDTH = 24,
-  GRADIENT_HEIGHT = 25,
-  MIN_RAMP_HEIGHT = 50;
-
-function isRendererTitle(titleInfo: any, isRamp: boolean): titleInfo is RendererTitle {
-  return !isRamp;
-}
-
-function isRampTitle(titleInfo: any, isRamp: boolean): titleInfo is RampTitle {
-  return isRamp;
-}
+type StyleType = Card["type"] | Classic["type"];
+type LegendStyle = Card | Classic;
 
 @subclass("esri.widgets.Legend")
-class Legend extends declared(Widget) {
-
-//--------------------------------------------------------------------------
-//
-//  Lifecycle
-//
-//--------------------------------------------------------------------------
+class Legend extends Widget {
+  //--------------------------------------------------------------------------
+  //
+  //  Lifecycle
+  //
+  //--------------------------------------------------------------------------
 
   /**
    * @extends module:esri/widgets/Widget
@@ -157,19 +121,35 @@ class Legend extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize() {
+  initialize(): void {
     this.own(
-      watchUtils.on(this, "activeLayerInfos", "change", () => this._refreshActiveLayerInfos(this.activeLayerInfos))
+      watchUtils.on(this, "activeLayerInfos", "change", () =>
+        this._refreshActiveLayerInfos(this.activeLayerInfos)
+      ),
+
+      watchUtils.init<LegendStyle>(this, "style", (value, oldValue) => {
+        if (oldValue && value !== oldValue) {
+          oldValue.destroy();
+        }
+
+        if (value) {
+          value.activeLayerInfos = this.activeLayerInfos;
+
+          if (value.type === "card") {
+            value.view = this.view;
+          }
+        }
+      })
     );
   }
 
-  destroy() {
-    this._handleRegistry.destroy();
-    this._handleRegistry = null;
+  destroy(): void {
+    this._handles.destroy();
+    this._handles = null;
   }
 
   //--------------------------------------------------------------------------
@@ -178,7 +158,7 @@ class Legend extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _handleRegistry = new HandleRegistry();
+  private _handles = new Handles();
 
   //--------------------------------------------------------------------------
   //
@@ -192,18 +172,16 @@ class Legend extends declared(Widget) {
 
   /**
    * Collection of {@link module:esri/widgets/Legend/support/ActiveLayerInfo} objects used by the legend view to
-   * display data in the legend. The legend widget watches this property to hide or display the layer legend when
+   * display data in the legend. The legend widget watches this property to hide or display the layer's legend when
    * an {@link module:esri/widgets/Legend/support/ActiveLayerInfo} is removed from or added to this collection.
    *
    * @name activeLayerInfos
    * @instance
    *
-   * @type {module:esri/core/Collection}
-   * @autocast
-   * @ignore
+   * @type {module:esri/core/Collection<module:esri/widgets/Legend/support/ActiveLayerInfo>}
+   * @autocast { "value": "Object[]" }
    */
   @aliasOf("viewModel.activeLayerInfos")
-  @renderable()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
 
   //----------------------------------
@@ -211,14 +189,19 @@ class Legend extends declared(Widget) {
   //----------------------------------
 
   /**
-   * boolean that tells to show the basemaps or not in the legend
+   * Indicates whether to show the {@link module:esri/Basemap} layers in the Legend. If you set this property to
+   * `true` and specify [layerInfos](#layerInfos), the basemap layers you want included in the legend must also be
+   * specified in `layerInfos`.
    *
+   * @name basemapLegendVisible
+   * @instance
    * @type {boolean}
    * @default false
-   * @private
+   *
+   * @example
+   * legend.basemapLegendVisible = true;
    */
   @aliasOf("viewModel.basemapLegendVisible")
-  @renderable()
   basemapLegendVisible = false;
 
   //----------------------------------
@@ -233,35 +216,193 @@ class Legend extends declared(Widget) {
    * @private
    */
   @aliasOf("viewModel.groundLegendVisible")
-  @renderable()
   groundLegendVisible = false;
+
+  //----------------------------------
+  //  keepCacheOnDestroy
+  //----------------------------------
+
+  @aliasOf("viewModel.keepCacheOnDestroy")
+  keepCacheOnDestroy = false;
+
+  //----------------------------------
+  //  respectLayerVisibility
+  //----------------------------------
+
+  /**
+   * Determines whether to respect the properties of the layers in the map that
+   * control the legend's visibility (`minScale`, `maxScale`, `legendEnabled`).
+   * By default, a layer's legend elements **will
+   * not render** in the legend given the following conditions:
+   *
+   * - The layer's {@link module:esri/layers/FeatureLayer#legendEnabled legendEnabled} property
+   * is set to `false`.
+   * - If the view's scale is outside the visibility range
+   * defined by the layer's {@link module:esri/layers/FeatureLayer#minScale minScale} and
+   * {@link module:esri/layers/FeatureLayer#maxScale maxScale} properties.
+   *
+   * When the `respectLayerVisibility` property of the legend is set to `false`, the legend elements for each
+   * layer in the map will always display, thus disregarding the `minScale`, `maxScale`,
+   * and `legendEnabled` properties for each layer in the map.
+   *
+   * @since 4.13
+   * @name respectLayerVisibility
+   * @instance
+   * @type {boolean}
+   * @default true
+   *
+   * @example
+   * // Always displays legend elements for the map's layers
+   * // regardless of their minScale, maxScale, and legendEnabled properties
+   * legend.respectLayerVisibility = false;
+   */
+  @aliasOf("viewModel.respectLayerVisibility")
+  respectLayerVisibility = true;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layerInfos
   //----------------------------------
 
   /**
-   * Specifies a subset of the layers to display in the legend.
-   * If this property is not set, all layers in the map will display in the legend.
+   * Specifies a subset of the layers to display in the legend. This includes any [basemap layers](#basemapLegendVisible)
+   * you want to be visible in the legend.
+   * If this property is not set, all layers in the map will display in the legend, including
+   * basemap layers if [basemapLegendVisible](#basemapLegendVisible) is `true`.
    * Objects in this array are defined with the properties listed below.
    *
    * @name layerInfos
    * @instance
    *
-   * @type {object[]}
+   * @type {Object[]}
    *
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
    * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-   * @todo @property {boolean} defaultSymbol - When `false`, the default symbol for the renderer will
-   * not display in the legend. The default value is `true`. Only applicable to
-   * {@link module:esri/layers/FeatureLayer}.
-   * @todo @property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
+   * @todo doc later \@property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
    *                                    even if they are visible in the map.
    */
   @aliasOf("viewModel.layerInfos")
-  @renderable()
   layerInfos: LayerInfo[] = null;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/Legend/t9n/Legend")
+  messages: LegendMessages = null;
+
+  //----------------------------------
+  //  style
+  //----------------------------------
+
+  /**
+   * Indicates the style of the legend. The style determines the legend's layout and behavior.
+   * You can either specify a string or an object to indicate the style. The known string values are the same values listed in
+   * the table within the `type` property.
+   *
+   * @property {"classic" | "card"} type - Specifies the style of the legend. There are two possible values listed in the table below:
+   *
+   * Value | Description
+   * ------|------------
+   * classic | The legend has a portrait orientation. The user can scroll vertically when many elements are included in the legend's content.
+   * card | In wide views, the legend has a landscape orientation that allows users to scroll horizontally to view all legend elements. This style can be responsive, making it ideal for mobile web apps. In smaller views, the legend collapses to occupy less space. One element is shown at a time in a card-style layout, which the user can navigate horizontally.
+   *
+   * @property {"auto" | "side-by-side" | "stack"} [layout=stack] - When a `card` type is specified, you can specify one of the following layout options.
+   *
+   * Value | Description
+   * ------|------------
+   * auto | This layout is responsive so that in wide views the legend has a `side-by-side` layout, and a `stack` layout in smaller (mobile) views.
+   * side-by-side | The legend has a landscape orientation that allows users to scroll horizontally to view multiple legend cards at a time.
+   * stack | The legend cards are stacked, which conserves space, but restricts the user to seeing only one card at a time.
+   *
+   * @name style
+   * @instance
+   * @type {Object | string}
+   * @default classic
+   * @since 4.7
+   *
+   * @example
+   * // renders the legend in the card style with a "stack" layout
+   * legend.style = "card";
+   *
+   * @example
+   * // renders the legend in the card style with a responsive
+   * // layout that toggles between "stack" and "side-by-side"
+   * legend.style = {
+   *   type: "card",
+   *   layout: "auto"
+   * };
+   *
+   * @example
+   * // renders the legend in the classic layout
+   * legend.style = "classic";
+   */
+  @property()
+  style: LegendStyle = new Classic();
+
+  @cast("style")
+  protected castStyle(value: StyleType | LegendStyle | { type: StyleType }): LegendStyle {
+    if (value instanceof Card || value instanceof Classic) {
+      return value;
+    }
+
+    if (typeof value === "string") {
+      return value === "card" ? new Card() : new Classic();
+    }
+
+    if (value && typeof value.type === "string") {
+      const options = { ...value };
+      delete options.type;
+      const StyleClass = value.type === "card" ? Card : Classic;
+
+      return new StyleClass(options);
+    }
+
+    return new Classic();
+  }
 
   //----------------------------------
   //  view
@@ -276,8 +417,7 @@ class Legend extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -291,13 +431,11 @@ class Legend extends declared(Widget) {
    *
    * @name viewModel
    * @instance
-   * @ignore
    *
    * @type {module:esri/widgets/Legend/LegendViewModel}
    * @autocast
    */
   @property()
-  @renderable()
   viewModel: LegendViewModel = new LegendViewModel();
 
   //-------------------------------------------------------------------
@@ -306,19 +444,13 @@ class Legend extends declared(Widget) {
   //
   //-------------------------------------------------------------------
 
-  render() {
-    const activeLayerInfos = this.activeLayerInfos,
-      baseClasses = join(CSS.base, CSS.widget),
-      filteredLayers = activeLayerInfos && activeLayerInfos.toArray()
-          .map(activeLayerInfo => this._renderLegendForLayer(activeLayerInfo))
-          .filter(layer => !!layer);
-
+  render(): VNode {
     return (
-      <div class={baseClasses}>{
-        filteredLayers && filteredLayers.length ?
-          filteredLayers :
-          <div class={CSS.message}>{i18n.noLegend}</div>
-      }</div>
+      <div
+        class={this.classes(CSS.base, CSS.widget, this.style instanceof Classic ? CSS.panel : null)}
+      >
+        {this.style.render()}
+      </div>
     );
   }
 
@@ -329,280 +461,30 @@ class Legend extends declared(Widget) {
   //-------------------------------------------------------------------
 
   private _refreshActiveLayerInfos(activeLayerInfos: Collection<ActiveLayerInfo>): void {
-    this._handleRegistry.removeAll();
-    activeLayerInfos.forEach(activeLayerInfo => this._renderOnActiveLayerInfoChange(activeLayerInfo));
+    this._handles.removeAll();
+    activeLayerInfos.forEach((activeLayerInfo) =>
+      this._renderOnActiveLayerInfoChange(activeLayerInfo)
+    );
     this.scheduleRender();
   }
 
   private _renderOnActiveLayerInfoChange(activeLayerInfo: ActiveLayerInfo): void {
-    const infoVersionHandle = watchUtils.init(activeLayerInfo, "version", () => this.scheduleRender());
-    this._handleRegistry.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
+    const infoVersionHandle = watchUtils.init(activeLayerInfo, "version", () =>
+      this.scheduleRender()
+    );
+    this._handles.add(infoVersionHandle, `version_${activeLayerInfo.layer.uid}`);
 
-    activeLayerInfo.children.forEach(childActiveLayerInfo => this._renderOnActiveLayerInfoChange(childActiveLayerInfo));
-  }
-
-  private _renderLegendForLayer(activeLayerInfo: ActiveLayerInfo): any {
-    if (!activeLayerInfo.ready) {
-      return null;
-    }
-
-    const hasChildren = !!activeLayerInfo.children.length;
-    const key = `${KEY}${activeLayerInfo.layer.uid}-version-${activeLayerInfo.version}`;
-
-    if (hasChildren) {
-      const layers = activeLayerInfo.children.map(childActiveLayerInfo => this._renderLegendForLayer(childActiveLayerInfo)).toArray();
-
-      const layerClasses = {
-        [CSS.groupLayer]: hasChildren
-      };
-
-      return (
-        <div key={key} class={CSS.service} classes={layerClasses}>
-          <p class={CSS.label}>{activeLayerInfo.title}</p>
-          {layers}
-        </div>
+    const childrenChangeHandle = watchUtils.on(activeLayerInfo, "children", "change", () => {
+      activeLayerInfo.children.forEach((childActiveLayerInfo) =>
+        this._renderOnActiveLayerInfoChange(childActiveLayerInfo)
       );
-    }
-    else {
-      const legendElements = activeLayerInfo.legendElements;
+    });
+    this._handles.add(childrenChangeHandle, `children_${activeLayerInfo.layer.uid}`);
 
-      if (legendElements && !legendElements.length) {
-        return null;
-      }
-
-      const filteredElements = legendElements
-        .map(legendElement => this._renderLegendForElement(legendElement, activeLayerInfo.layer))
-        .filter(element => !!element);
-
-      if (!filteredElements.length) {
-        return null;
-      }
-
-      const layerClasses = {
-        [CSS.groupLayerChild]: !!activeLayerInfo.parent
-      };
-
-      return (
-        <div key={key} class={CSS.service} classes={layerClasses}>
-          <p class={CSS.label}>{activeLayerInfo.title}</p>
-          <div class={CSS.layer}>{filteredElements}</div>
-        </div>
-      );
-    }
-  }
-
-  private _renderLegendForElement(legendElement: LegendElement, layer: Layer, isChild?: boolean): any {
-    const isColorRamp = legendElement.type === "color-ramp",
-      isOpacityRamp = legendElement.type === "opacity-ramp",
-      isSizeRamp = legendElement.type === "size-ramp";
-
-    let content: Element = null;
-
-    // build symbol table or size ramp
-    if (legendElement.type === "symbol-table" || isSizeRamp) {
-      const rows = (legendElement.infos as any)
-        .map((info: any) => this._renderLegendForElementInfo(info, layer, isSizeRamp, (legendElement as SymbolTableElement).legendType))
-        .filter((row: any) => !!row);
-
-      if (rows.length) {
-        content = (<div class={CSS.layerBody}>{rows}</div>);
-      }
-    }
-    else if (isColorRamp || isOpacityRamp) {
-      content = this._renderLegendForRamp(legendElement.infos, (legendElement as ColorOpacityRampElement).overlayColor, isOpacityRamp);
-    }
-
-    if (!content) {
-      return null;
-    }
-
-    const titleObj = legendElement.title;
-    let title: string = null;
-
-    if (typeof titleObj === "string") {
-      title = titleObj;
-    }
-    else if (titleObj) {
-      const genTitle = this._getTitle(titleObj, isColorRamp || isOpacityRamp);
-      if ((titleObj as RendererTitle).title) {
-        title = `${(titleObj as RendererTitle).title} (${genTitle})`;
-      }
-      else {
-        title = genTitle;
-      }
-    }
-
-    const tableClass = isChild ? CSS.layerChildTable : CSS.layerTable,
-      caption = title ? (<div class={CSS.layerCaption}>{title}</div>) : null;
-
-    return (
-      <div class={tableClass}>
-        {caption}
-        {content}
-      </div>
+    activeLayerInfo.children.forEach((childActiveLayerInfo) =>
+      this._renderOnActiveLayerInfoChange(childActiveLayerInfo)
     );
-  }
-
-  private _renderLegendForRamp(rampStops: any[], overlayColor: Color, isOpacityRamp: boolean): any {
-    const numGradients = rampStops.length - 1;
-
-    const rampWidth = "100%";
-    let rampHeight: number = null;
-
-    if (numGradients > 2) {
-      rampHeight = GRADIENT_HEIGHT * numGradients;
-    }
-    else {
-      rampHeight = MIN_RAMP_HEIGHT;
-    }
-
-    const rampDiv = document.createElement("div");
-    const opacityRampClass = isOpacityRamp ? CSS.opacityRamp : "";
-    rampDiv.className = `${CSS.colorRamp} ${opacityRampClass}`;
-    rampDiv.style.height = `${rampHeight}px`;
-
-    const surface = createSurface(rampDiv, rampWidth, rampHeight);
-
-    try {
-      // TODO: When HeatmapRenderer is supported, stop offsets should not be adjusted.
-      // equalIntervalStops will be true for sizeInfo, false for heatmap.
-      // Heatmaps tend to have lots of colors, we don't want a giant color ramp.
-      // Hence equalIntervalStops = false.
-
-      // Adjust the stop offsets so that we have stops at fixed/equal interval.
-      rampStops.forEach((stop, index) => { stop.offset = index / numGradients; });
-
-      surface
-        .createRect({ x: 0, y: 0, width: rampWidth as any, height: rampHeight })
-        .setFill({ type: "linear", x1: 0, y1: 0, x2: 0, y2: rampHeight, colors: rampStops })
-        .setStroke(null);
-
-      if (overlayColor && overlayColor.a > 0) {
-        surface
-          .createRect({ x: 0, y: 0, width: rampWidth as any, height: rampHeight })
-          .setFill(overlayColor)
-          .setStroke(null);
-      }
-
-    }
-    catch (e) {
-      surface.clear();
-      surface.destroy();
-    }
-
-    if (!surface) {
-      return null;
-    }
-
-    const labelsContent = rampStops
-      .filter(stop => !!stop.label)
-      .map(stop => (<div class={CSS.rampLabel}>{stop.label}</div>));
-
-    const symbolContainerStyles = { width: `${GRADIENT_WIDTH}px` },
-      rampLabelsContainerStyles = { height: `${rampHeight}px` };
-
-    return (
-      <div class={CSS.layerRow}>
-        <div class={CSS.symbolContainer} styles={symbolContainerStyles}>
-          <div class={CSS.rampContainer} bind={rampDiv} afterCreate={this._attachToNode}></div>
-        </div>
-        <div class={CSS.layerInfo}>
-          <div class={CSS.rampLabelsContainer} styles={rampLabelsContainerStyles}>{labelsContent}</div>
-        </div>
-      </div>
-    );
-  }
-
-  private _renderLegendForElementInfo(elementInfo: any, layer: Layer, isSizeRamp: boolean, legendType: string): any {
-    // nested
-    if (elementInfo.type) {
-      return this._renderLegendForElement(elementInfo, layer, true);
-    }
-
-    let content: Element = null;
-    const isStretched = this._isImageryStretchedLegend(layer as ImageryLayer, legendType);
-
-    if (elementInfo.symbol && elementInfo.preview) {
-      content = (<div class={CSS.symbol} bind={elementInfo.preview} afterCreate={this._attachToNode}></div>);
-    }
-    else if (elementInfo.src) {
-      content = this._renderImage(elementInfo, layer, isStretched);
-    }
-
-    if (!content) {
-      return null;
-    }
-
-    const labelClasses = {
-      [CSS.imageryLayerInfoStretched]: isStretched
-    };
-
-    const symbolClasses = {
-      [CSS.imageryLayerInfoStretched]: isStretched,
-      [CSS.sizeRamp]: !isStretched && isSizeRamp
-    };
-
-    return (
-      <div class={CSS.layerRow}>
-        <div class={CSS.symbolContainer} classes={symbolClasses}>{content}</div>
-        <div class={CSS.layerInfo} classes={labelClasses}>{elementInfo.label || ""}</div>
-      </div>
-    );
-  }
-
-  private _attachToNode(this: HTMLElement, node: HTMLElement): void {
-    const content: HTMLElement = this;
-    node.appendChild(content);
-  }
-
-  private _renderImage(elementInfo: any, layer: Layer, isStretched: boolean): any {
-    const { src, opacity } = elementInfo;
-
-    const stretchedClasses = {
-      [CSS.imageryLayerStretchedImage]: isStretched,
-      [CSS.symbol]: !isStretched
-    };
-
-    const dynamicStyles = {
-      opacity: `${(opacity != null) ? opacity : layer.opacity}`
-    };
-
-    return (
-      <img src={src} border={0}
-           width={elementInfo.width} height={elementInfo.height}
-           classes={stretchedClasses} styles={dynamicStyles} />
-    );
-  }
-
-  private _isImageryStretchedLegend(layer: ImageryLayer, legendType: string): boolean {
-    return !!(
-      legendType &&
-      legendType === "Stretched" &&
-      layer.version >= 10.3 &&
-      layer.declaredClass === "esri.layers.ImageryLayer"
-    );
-  }
-
-  private _getTitle(titleInfo: RendererTitle | RampTitle, isRamp: boolean): string {
-    let bundleKey: string = null;
-
-    if (isRampTitle(titleInfo, isRamp)) {
-      bundleKey = titleInfo.ratioPercentTotal ? "showRatioPercentTotal" :
-        titleInfo.ratioPercent ? "showRatioPercent" :
-          titleInfo.ratio ? "showRatio" :
-            titleInfo.normField ? "showNormField" :
-              titleInfo.field ? "showField" :
-        null;
-    }
-    else if (isRendererTitle(titleInfo, isRamp)) {
-      bundleKey = titleInfo.normField ? "showNormField" :
-        titleInfo.normByPct ? "showNormPct" :
-          titleInfo.field ? "showField" :
-            null;
-    }
-
-    return bundleKey ? substitute({ field: titleInfo.field, normField: titleInfo.normField }, i18n[bundleKey]) : null;
   }
 }
 
-export = Legend;
+export default Legend;

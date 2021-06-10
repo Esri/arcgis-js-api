@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./Accessor","./declare","./accessorSupport/read","./accessorSupport/write","./accessorSupport/decorators"],function(r,t,e,o,n,u,s,i,a){function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");var e=this,o=new e;return o.read(r,t),o}var p=function(r){function t(){return null!==r&&r.apply(this,arguments)||this}return e(t,r),t.prototype.read=function(r,t){return s["default"](this,r,t),this},t.prototype.write=function(r,t){return i["default"](this,r||{},t)},t.prototype.toJSON=function(r){return this.write(null,r)},t}(a.declared(n));return p=o([a.subclass("esri.core.JSONSupport")],p),p.prototype.toJSON.isDefaultToJSON=!0,u.after(function(r){u.hasMixin(r,p)&&(r.fromJSON=c.bind(r))}),p});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/subclass","./Accessor","./accessorSupport/read","./accessorSupport/write"],(function(r,t,e,o,n,s,i){"use strict";const u=r=>{let n=function(r){function e(...t){return r.call(this,...t)||this}t._inheritsLoose(e,r);var o=e.prototype;return o.read=function(r,t){s.read(this,r,t)},o.write=function(r={},t){return i.write(this,r,t)},o.toJSON=function(r){return this.write({},r)},e.fromJSON=function(r,t){return c.call(this,r,t)},e}(r);return n=e.__decorate([o.subclass("esri.core.JSONSupport")],n),n.prototype.toJSON.isDefaultToJSON=!0,n};function c(r,t){if(!r)return null;if(r.declaredClass)throw new Error("JSON object is already hydrated");const e=new this;return e.read(r,t),e}function p(r){return r&&"read"in r&&"write"in r&&"toJSON"in r}r.JSONSupport=function(r){function e(){return r.apply(this,arguments)||this}return t._inheritsLoose(e,r),e}(u(n)),r.JSONSupport=e.__decorate([o.subclass("esri.core.JSONSupport")],r.JSONSupport),r.JSONSupportMixin=u,r.isJSONSupport=p,Object.defineProperty(r,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","./LayerView2D","./support/GraphicsView2D"],function(e,t,r,i,o,n,p){var c=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.graphicsView=new p,t.container=t.graphicsView.container,t}return r(t,e),t.prototype.hitTest=function(e,t){return this.graphicsView.hitTest(e,t)},t.prototype.attach=function(){var e=this;this.layer.createGraphicsController({layerView:this}).then(function(t){e.graphicsView.view=e.view,e.graphicsView.graphics=t.graphics})},t.prototype.detach=function(){this.graphicsView.graphics=null},t.prototype.update=function(e){},t.prototype.moveStart=function(){},t.prototype.viewChange=function(){},t.prototype.moveEnd=function(){},t}(o.declared(n));return c=i([o.subclass("esri.views.2d.layers.GraphicsLayerView2D")],c)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Collection","../../../Graphic","../../layers/LayerView","./graphics/GraphicsView2D","./graphics/GraphicContainer","./LayerView2D"],(function(e,i,r,t,s,a,c,n,o,h,p,u,l,g,d,w){"use strict";const y={remove(){},pause(){},resume(){}};let f=function(i){function r(){return i.apply(this,arguments)||this}e._inheritsLoose(r,i);var t=r.prototype;return t.initialize=function(){this.graphicsView=new g({requestUpdateCallback:()=>this.requestUpdate(),view:this.view,graphics:this.layer.graphics,container:new d(this.view.featuresTilingScheme)})},t.attach=function(){this.container.addChild(this.graphicsView.container),this.handles.add(this.layer.on("graphic-update",this.graphicsView.graphicUpdateHandler),"graphicslayerview2d")},t.detach=function(){this.container.removeAllChildren(),this.graphicsView.destroy(),this.handles.remove("graphicslayerview2d")},t.hitTest=function(e,i){return this.suspended||!this.graphicsView?Promise.resolve(null):this.graphicsView.hitTest(e,i)},t.fetchPopupFeatures=async function(e){if(this.graphicsView)return this.graphicsView.searchFeatures(e).then((e=>e.filter((e=>!!e.popupTemplate))))},t.update=function(e){this.graphicsView.processUpdate(e)},t.moveStart=function(){},t.viewChange=function(){this.graphicsView.viewChange()},t.moveEnd=function(){},t.isUpdating=function(){return!this.graphicsView||this.graphicsView.updating},t.highlight=function(e){let i;return"number"==typeof e?i=[e]:e instanceof u?i=[e.uid]:Array.isArray(e)&&e.length>0?i="number"==typeof e[0]?e:e.map((e=>e&&e.uid)):p.isCollection(e)&&(i=e.map((e=>e&&e.uid)).toArray()),i=i.filter((e=>null!=e)),i.length?(this.graphicsView.addHighlight(i),{remove:()=>this.graphicsView.removeHighlight(i)}):y},t.queryGraphics=function(){return Promise.resolve(this.graphicsView.graphics)},r}(w.LayerView2DMixin(l));return i.__decorate([a.property()],f.prototype,"graphicsView",void 0),i.__decorate([a.property()],f.prototype,"updating",void 0),f=i.__decorate([c.subclass("esri.views.2d.layers.GraphicsLayerView2D")],f),f}));

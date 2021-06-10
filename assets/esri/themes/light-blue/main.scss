@@ -1,0 +1,28 @@
+/*
+  Theme: Light Blue
+*/
+
+body {
+  --esri-calcite-theme-name: "light-blue";
+}
+
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$font-color: $Calcite_Gray_700;
+$background-color: $Calcite_Highlight_Blue_150;
+$interactive-font-color: $Calcite_Gray_650;
+$interactive-font-color--hover: $Calcite_Gray_700;
+
+$button-color: $Calcite_Highlight_Blue_300;
+$button-color--bright: #fff;
+
+// Inverse
+$interactive-font-color--inverse: darken($font-color, 12%);
+$background-color--inverse: $Calcite_Highlight_Blue_250;
+
+// Selected
+$border-color--active: $interactive-font-color;
+$background-color--active: $Calcite_Highlight_Blue_100;
+
+@import "../base/core";

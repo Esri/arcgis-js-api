@@ -1,0 +1,62 @@
+@mixin attribution() {
+  .esri-attribution {
+    font-size: $font-size--small;
+    line-height: 16px; // TODO: refactor to let Attribution inherit line-height.
+    background-color: rgba($background-color, 0.8);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .esri-attribution__link {
+    color: currentColor;
+
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+      color: currentColor;
+    }
+  }
+
+  .esri-attribution__sources {
+    font-weight: $font-weight--light;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+    align-self: flex-start;
+    flex: 1 0;
+  }
+
+  .esri-attribution__sources[role="button"] {
+    font-size: 1em;
+  }
+
+  .esri-attribution__powered-by {
+    font-weight: $font-weight;
+    padding: 0 5px;
+    text-align: right;
+    white-space: nowrap;
+    align-self: flex-end;
+  }
+
+  .esri-attribution--open {
+    z-index: 2;
+  }
+
+  .esri-attribution__sources--open {
+    white-space: normal;
+  }
+
+  html[dir="rtl"] {
+    .esri-attribution__powered-by {
+      text-align: left;
+    }
+  }
+}
+
+@if $include_Attribution == true {
+  @include attribution();
+}

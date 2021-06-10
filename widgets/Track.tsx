@@ -1,6 +1,7 @@
 /**
  * Provides a simple button that animates the {@link module:esri/views/View}
- * to the user's location when clicked. While tracking, the default button looks like the following:
+ * to the user's location when clicked. The view rotates according to the direction where the
+ * tracked device is heading towards. While tracking, the default button looks like the following:
  *
  * ![track-button](../assets/img/apiref/widgets/widgets-track.png)
  *
@@ -17,7 +18,7 @@
  * As of version 4.2, the Track Button no longer displays in non-secure web apps. At version
  * [4.1](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/)
  * this only applied to Google Chrome.
- * :::
+ *
  * For additional information regarding this, visit the ArcGIS blog,
  * [Increased web API security in Google Chrome](https://blogs.esri.com/esri/arcgis/2016/04/14/increased-web-api-security-in-google-chrome/).
  * :::
@@ -25,8 +26,8 @@
  * @module esri/widgets/Track
  * @since 4.0
  *
- * @see [Track.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Track.tsx)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
+ * @see [Track.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Track.tsx)
+ * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see module:esri/widgets/Track/TrackViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
@@ -40,27 +41,39 @@
  * view.ui.add(trackWidget, "top-left");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri
+import Graphic from "esri/Graphic";
 
-import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import Widget = require("./Widget");
-import TrackViewModel = require("./Track/TrackViewModel");
-import Graphic = require("../Graphic");
-import View = require("../views/View");
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import * as i18n from "dojo/i18n!./Track/nls/Track";
+// esri.widgets
+import Widget from "esri/widgets/Widget";
+
+// esri.widgets.support
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
+
+// esri.widgets.Track
+import TrackViewModel from "esri/widgets/Track/TrackViewModel";
+
+// esri.widgets.Track.t9n
+import TrackMessages from "esri/widgets/Track/t9n/Track";
 
 const CSS = {
-  base: "esri-track esri-widget-button esri-widget",
+  base: "esri-track esri-widget--button esri-widget",
   text: "esri-icon-font-fallback-text",
   icon: "esri-icon",
   loading: "esri-icon-loading-indicator",
   rotating: "esri-rotating",
   startTrackingIcon: "esri-icon-tracking",
   stopTrackingIcon: "esri-icon-pause",
+  widgetIcon: "esri-icon-tracking",
 
   // common
   disabled: "esri-disabled",
@@ -68,17 +81,16 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Track")
-class Track extends declared(Widget) {
-
+class Track extends Widget {
   /**
-   * Fires after the [track()](#track) method is called and a position is found.
+   * Fires after the [start()](#start) method is called and a position is found.
    *
    * @event module:esri/widgets/Track#track
    * @property {Object} position - Geoposition returned from the [Geolocation API](#geolocationOptions).
    */
 
   /**
-   * Fires after the [track()](#track) method is called and an error is returned.
+   * Fires after the [start()](#start) method is called and an error is returned.
    *
    * @event module:esri/widgets/Track#track-error
    * @property {Error} error - The Error object returned if an error occurred while tracking.
@@ -94,6 +106,7 @@ class Track extends declared(Widget) {
    * @constructor
    * @alias module:esri/widgets/Track
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/widgets/support/GoTo
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    *
@@ -103,8 +116,8 @@ class Track extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -150,6 +163,13 @@ class Track extends declared(Widget) {
   goToLocationEnabled: boolean = null;
 
   //----------------------------------
+  //  goToOverride
+  //----------------------------------
+
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
+
+  //----------------------------------
   //  graphic
   //----------------------------------
 
@@ -166,13 +186,105 @@ class Track extends declared(Widget) {
    * var trackWidget = new Track({
    *   view: view,  // Assigns the track widget to a view
    *     graphic: new Graphic({
-   *       symbol: new SimpleMarkerSymbol()  // Overwrites the default symbol used for the
+   *       symbol: { type: "simple-marker" }  // Overwrites the default symbol used for the
    *       // graphic placed at the location of the user when found
    *     })
    * });
    */
   @aliasOf("viewModel.graphic")
   graphic: Graphic = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/Track/t9n/Track")
+  messages: TrackMessages = null;
+
+  //----------------------------------
+  //  scale
+  //----------------------------------
+  /**
+   * Indicates the scale to set on the view when navigating to the position of the geolocated
+   * result once a location is returned from the [track](#event-track) event.
+   * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
+   * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
+   * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
+   *
+   * @since 4.7
+   * @name scale
+   * @instance
+   * @type {number}
+   * @default null
+   *
+   * @example
+   * mapView.watch("scale", function (currentScale){
+   *   console.log("scale: %s", currentScale);
+   * });
+   *
+   * mapView.when(function(){
+   *   // Create an instance of the Track widget
+   *   var track = new Track({
+   *     view: mapView,
+   *     scale: 5000
+   *   });
+   *
+   *   // and add it to the view's UI
+   *   mapView.ui.add(track, "top-left");
+   *
+   *   track.start();
+   *
+   *   track.on("track", function(trackEvent){
+   *     console.log(trackEvent);
+   *     console.log("track: %s", mapView.scale);
+   *   })
+   * });
+   */
+  @aliasOf("viewModel.scale")
+  scale: number = null;
 
   //----------------------------------
   //  tracking
@@ -193,6 +305,25 @@ class Track extends declared(Widget) {
   tracking: boolean = null;
 
   //----------------------------------
+  //  useHeadingEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether the widget will automatically [rotate to user's direction](https://www.w3.org/TR/geolocation-API/#coordinates_interface).
+   * Set to `false` to disable this behavior.
+   *
+   * @since 4.6
+   *
+   * @name useHeadingEnabled
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   */
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -205,8 +336,7 @@ class Track extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -226,7 +356,6 @@ class Track extends declared(Widget) {
   @property({
     type: TrackViewModel
   })
-  @renderable("viewModel.state")
   @vmEvent(["track", "track-error"])
   viewModel = new TrackViewModel();
 
@@ -255,7 +384,7 @@ class Track extends declared(Widget) {
   @aliasOf("viewModel.stop")
   stop(): void {}
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
 
     const rootClasses = {
@@ -271,16 +400,22 @@ class Track extends declared(Widget) {
       [CSS.loading]: state === "waiting"
     };
 
-    const text = isTracking ? i18n.stopTracking : i18n.startTracking;
+    const { messages } = this;
+    const text = isTracking ? messages.stopTracking : messages.startTracking;
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           hidden={state === "feature-unsupported"}
-           onclick={this._toggleTracking} onkeydown={this._toggleTracking}
-           role="button" tabIndex={0}>
-        <span classes={iconClasses} aria-hidden="true"
-              class={join(CSS.icon, CSS.startTrackingIcon)}
-              title={text} />
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
+        hidden={state === "feature-unsupported"}
+        onclick={this._toggleTracking}
+        onkeydown={this._toggleTracking}
+        role="button"
+        tabIndex={0}
+        aria-label={text}
+        title={text}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.icon, iconClasses)} />
         <span class={CSS.text}>{text}</span>
       </div>
     );
@@ -293,21 +428,19 @@ class Track extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggleTracking() {
+  private _toggleTracking(): void {
     const vm = this.viewModel;
-    if (!vm) {
+    if (!vm || vm.state === "feature-unsupported" || vm.state === "disabled") {
       return;
     }
 
-    if (vm.tracking) {
+    if (vm.state === "tracking" || vm.state === "waiting") {
       this.viewModel.stop();
       return;
     }
 
     this.viewModel.start();
   }
-
 }
 
-export = Track;
-
+export default Track;

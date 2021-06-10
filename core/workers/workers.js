@@ -1,25 +1,8 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/Deferred","dojo/promise/all","../promiseUtils","./Connection","./JobProxy"],function(e,n,r,o,t,i,u){function a(e,n){if(x===!1){for(var r=0;m>r;++r){var o=new u(k,r,d);w.push(o),j.push(!1)}x=!0}return h(e).then(function(e){return s(n,e.id).then(function(){return e}).otherwise(function(e){return t.reject(e)})})}function f(){for(var e=0;e<w.length;e++)w[e].terminate();w=[],j=[],g=!1}function c(e){if(e)if(k[e.id]&&delete k[e.id],g)for(var n=0;n<w.length;n++)w[n].closeConnection(e.id);else{var r=y[e.id];r&&(r.promise.cancel(),delete y[e.id])}}function l(e,n,r,o,i){var u=null;if(o&&(u=o.id),null===u&&(u=C=(C+1)%w.length,!j[u]&&!w.some(function(e,n,r){return u=(u+1)%r.length,j[u]})))return t.reject(new Error("No worker available"));var a=w[u].invoke(e,n,r,i);return o&&(o.id=u),a}function v(e,n,r,o){for(var t=[],i=0;i<w.length;i++)j[i]&&t.push(w[i].invoke(e,n,r,o));return t}function s(e,n){for(var r=[],t=0;t<w.length;t++)r.push(w[t].openConnection(e,n));return o(r).then(function(e){})}function d(e){if(j[e]=!0,!g){var n=j.every(function(e){return e});if(n){for(var r in y){var o=k[r];o&&y[r].resolve(o)}y={},g=!0}}}function h(e){var n=b++,o=new i(e,n),t=new r;return k[n]=o,g?t.resolve(o):y[n]=t,t.promise}Object.defineProperty(n,"__esModule",{value:!0});var p=navigator.hardwareConcurrency||2,m=Math.max(p-1,2),g=!1,w=[],j=[],C=0,b=0,k={},y={},x=!1;n.open=a,n.terminate=f,n.closeConnection=c,n.invoke=l,n.broadcast=v});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","exports","../has","../Error","../promiseUtils","./RemoteClient","./Connection","./WorkerOwner"],(function(e,t,r,n,o,i,a,c){"use strict";function s(e){if(e&&e.__esModule)return e;var t=Object.create(null);return e&&Object.keys(e).forEach((function(r){if("default"!==r){var n=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,n.get?n:{enumerable:!0,get:function(){return e[r]}})}})),t.default=e,Object.freeze(t)}let u=r("esri-workers-debug")?1:r("host-browser")?navigator.hardwareConcurrency-1:0;u||(u=r("safari")&&r("mac")||r("trident")?7:2);let l=0;const f=[];function d(){y()}function w(e,t){return m(e,{client:t})}async function m(e,t){const r=new a;return await r.open(e,t),r}async function b(t,a={}){if("string"!=typeof t)throw new n("workers:undefined-module","modulePath is missing");let c=a.strategy||"distributed";if(r("host-webworker")&&!r("esri-workers")&&(c="local"),"local"===c){let r=await i.loadWorker(t);r||(r=await new Promise((function(r,n){e([
+/* @vite-ignore */
+/* webpackIgnore: true */
+t],(function(e){r(s(e))}),n)}))),o.throwIfAborted(a.signal);const n=a.client||r;return m([i.connect(r)],{...a,client:n})}if(await y(),o.throwIfAborted(a.signal),"dedicated"===c){const e=l++%u;return m([await f[e].open(t,a)],a)}if(a.maxNumWorkers&&a.maxNumWorkers>0){const e=Math.min(a.maxNumWorkers,u);if(e<u){const r=new Array(e);for(let n=0;n<e;++n){const e=l++%u;r[n]=f[e].open(t,a)}return m(r,a)}}return m(f.map((e=>e.open(t,a))),a)}function h(){g&&(p.abort(),g=null);for(let e=0;e<f.length;e++)f[e]&&f[e].terminate();f.length=0}let p,g=null;async function y(){if(g)return g;p=o.createAbortController();const e=[];for(let t=0;t<u;t++){const r=c.create(t).then((e=>(f[t]=e,e)));e.push(r)}return g=Promise.all(e),g}t.RemoteClient=i,t.Connection=a,t.initialize=d,t.open=b,t.openWithPorts=w,t.terminate=h,Object.defineProperty(t,"__esModule",{value:!0})}));

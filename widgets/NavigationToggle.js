@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./support/widget","./Widget","./NavigationToggle/NavigationToggleViewModel","dojo/i18n!./NavigationToggle/nls/NavigationToggle"],function(t,e,o,i,n,a,r,l,s){var g={base:"esri-navigation-toggle esri-widget",button:"esri-navigation-toggle__button esri-widget-button",activeButton:"esri-navigation-toggle__button--active",panButton:"esri-navigation-toggle__button--pan",rotateButton:"esri-navigation-toggle__button--rotate",isLayoutHorizontal:"esri-navigation-toggle--horizontal",rotationIcon:"esri-icon-rotate",panIcon:"esri-icon-pan",disabled:"esri-disabled"},d=function(t){function e(e){var o=t.call(this)||this;return o.view=null,o.viewModel=new l,o}return o(e,t),Object.defineProperty(e.prototype,"layout",{set:function(t){"horizontal"!==t&&(t="vertical"),this._set("layout",t)},enumerable:!0,configurable:!0}),e.prototype.toggle=function(){},e.prototype.render=function(){var t="disabled"===this.get("viewModel.state"),e="pan"===this.get("viewModel.navigationMode"),o=(l={},l[g.disabled]=t,l),i=(d={},d[g.activeButton]=e,d),n=(c={},c[g.activeButton]=!e,c),r=t?-1:0;return a.tsx("div",{bind:this,"class":g.base,classes:o,onclick:this._toggle,onkeydown:this._toggle,tabIndex:r,title:s.toggle},a.tsx("div",{"class":a.join(g.button,g.panButton),classes:i},a.tsx("span",{"class":g.panIcon})),a.tsx("div",{"class":a.join(g.button,g.rotateButton),classes:n},a.tsx("span",{"class":g.rotationIcon})));var l,d,c},e.prototype._toggle=function(){this.toggle()},e}(n.declared(r));return i([n.property({value:"vertical"}),a.renderable()],d.prototype,"layout",null),i([n.aliasOf("viewModel.view"),a.renderable()],d.prototype,"view",void 0),i([n.property({type:l}),a.renderable(["viewModel.state","viewModel.navigationMode"])],d.prototype,"viewModel",void 0),i([n.aliasOf("viewModel.toggle")],d.prototype,"toggle",null),i([a.accessibleHandler()],d.prototype,"_toggle",null),d=i([n.subclass("esri.widgets.NavigationToggle")],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/aliasOf","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./support/widgetUtils","./support/decorators/accessibleHandler","./support/decorators/messageBundle","../chunks/index","./Widget","./NavigationToggle/NavigationToggleViewModel"],(function(e,t,o,s,i,a,r,n,l,c,g,u,d,p,v,_,b){"use strict";const y={base:"esri-navigation-toggle esri-widget",button:"esri-navigation-toggle__button esri-widget--button",activeButton:"esri-navigation-toggle__button--active",panButton:"esri-navigation-toggle__button--pan",rotateButton:"esri-navigation-toggle__button--rotate",isLayoutHorizontal:"esri-navigation-toggle--horizontal",rotationIcon:"esri-icon-rotate",panIcon:"esri-icon-pan",widgetIcon:"esri-icon-pan2",disabled:"esri-disabled"};let h=function(t){function o(e,o){var s;return(s=t.call(this,e,o)||this).iconClass=y.widgetIcon,s.label=void 0,s.messages=null,s.view=null,s.viewModel=new b,s}e._inheritsLoose(o,t);var s=o.prototype;return s.toggle=function(){return this.viewModel.toggle()},s.render=function(){const e="disabled"===this.get("viewModel.state"),t="pan"===this.get("viewModel.navigationMode"),o={[y.disabled]:e,[y.isLayoutHorizontal]:"horizontal"===this.layout},s={[y.activeButton]:t},i={[y.activeButton]:!t},a=e?-1:0,r=this.messages.toggle;return v.jsx("div",{bind:this,class:this.classes(y.base,o),onclick:this._toggle,onkeydown:this._toggle,tabIndex:a,"aria-label":r,title:r},v.jsx("div",{class:this.classes(y.button,y.panButton,s)},v.jsx("span",{class:y.panIcon})),v.jsx("div",{class:this.classes(y.button,y.rotateButton,i)},v.jsx("span",{class:y.rotationIcon})))},s._toggle=function(){this.toggle()},e._createClass(o,[{key:"layout",set:function(e){"horizontal"!==e&&(e="vertical"),this._set("layout",e)}}]),o}(_);return t.__decorate([a.property()],h.prototype,"iconClass",void 0),t.__decorate([a.property({aliasOf:{source:"messages.widgetLabel",overridable:!0}})],h.prototype,"label",void 0),t.__decorate([a.property({value:"vertical"})],h.prototype,"layout",null),t.__decorate([a.property(),p.messageBundle("esri/widgets/NavigationToggle/t9n/NavigationToggle")],h.prototype,"messages",void 0),t.__decorate([r.aliasOf("viewModel.view")],h.prototype,"view",void 0),t.__decorate([a.property({type:b})],h.prototype,"viewModel",void 0),t.__decorate([d.accessibleHandler()],h.prototype,"_toggle",null),h=t.__decorate([n.subclass("esri.widgets.NavigationToggle")],h),h}));

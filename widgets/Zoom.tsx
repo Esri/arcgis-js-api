@@ -19,8 +19,8 @@
  * @module esri/widgets/Zoom
  * @since 4.0
  *
- * @see [Zoom.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Zoom.tsx)
- * @see [Zoom.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Zoom.scss)
+ * @see [Zoom.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Zoom.tsx)
+ * @see [Zoom.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Zoom.scss)
  * @see module:esri/views/MapView
  * @see module:esri/views/SceneView
  * @see module:esri/widgets/Zoom/ZoomViewModel
@@ -28,31 +28,39 @@
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import {aliasOf, subclass, declared, property} from "../core/accessorSupport/decorators";
-import {tsx, renderable} from "./support/widget";
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import Widget = require("./Widget");
-import IconButton = require("./Zoom/IconButton");
-import ZoomViewModel = require("./Zoom/ZoomViewModel");
-import View = require("../views/View");
+// esri.widgets
+import Widget from "esri/widgets/Widget";
 
-import * as i18n from "dojo/i18n!./Zoom/nls/Zoom";
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
+
+// esri.widgets.Zoom
+import IconButton from "esri/widgets/Zoom/IconButton";
+import ZoomViewModel from "esri/widgets/Zoom/ZoomViewModel";
+
+// esri.widgets.Zoom.t9n
+import type ZoomMessages from "esri/widgets/Zoom/t9n/Zoom";
 
 const CSS = {
   base: "esri-zoom esri-widget",
   horizontalLayout: "esri-zoom--horizontal",
   zoomInIcon: "esri-icon-plus",
-  zoomOutIcon: "esri-icon-minus"
+  zoomOutIcon: "esri-icon-minus",
+  widgetIcon: "esri-icon-zoom-in-magnifying-glass"
 };
 
 type Layout = "vertical" | "horizontal";
 
 @subclass("esri.widgets.Zoom")
-class Zoom extends declared(Widget) {
-
+class Zoom extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -66,22 +74,28 @@ class Zoom extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize() {
+  initialize(): void {
     this._zoomInButton = new IconButton({
       action: this.zoomIn.bind(this),
-      iconClass: CSS.zoomInIcon,
-      title: i18n.zoomIn
+      iconClass: CSS.zoomInIcon
     });
 
     this._zoomOutButton = new IconButton({
       action: this.zoomOut.bind(this),
-      iconClass: CSS.zoomOutIcon,
-      title: i18n.zoomOut
+      iconClass: CSS.zoomOutIcon
     });
+  }
+
+  destroy(): void {
+    this._zoomInButton.destroy();
+    this._zoomOutButton.destroy();
+
+    this._zoomInButton = null;
+    this._zoomOutButton = null;
   }
 
   //--------------------------------------------------------------------------
@@ -101,15 +115,74 @@ class Zoom extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
   //  layout
   //----------------------------------
 
   /**
-   * @todo
+   * Determines the layout/orientation of the Zoom widget.
+   *
+   * @name layout
+   * @since 4.5
+   * @instance
+   * @default vertical
+   * @type {"vertical" | "horizontal"}
+   */
+  @property({ value: "vertical" })
+  set layout(value: Layout) {
+    if (value !== "horizontal") {
+      value = "vertical";
+    }
+
+    this._set("layout", value);
+  }
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * @name messages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
    */
   @property()
-  @renderable()
-  layout: Layout = "vertical";
+  @messageBundle("esri/widgets/Zoom/t9n/Zoom")
+  messages: ZoomMessages = null;
 
   //----------------------------------
   //  view
@@ -124,8 +197,7 @@ class Zoom extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -145,11 +217,6 @@ class Zoom extends declared(Widget) {
   @property({
     type: ZoomViewModel
   })
-  @renderable([
-    "viewModel.canZoomIn",
-    "viewModel.canZoomOut",
-    "viewModel.state"
-  ])
   viewModel = new ZoomViewModel();
 
   //--------------------------------------------------------------------------
@@ -158,7 +225,7 @@ class Zoom extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const vm = this.viewModel;
     const rootClasses = {
       [CSS.horizontalLayout]: this.layout === "horizontal"
@@ -167,8 +234,11 @@ class Zoom extends declared(Widget) {
     this._zoomInButton.enabled = vm.state === "ready" && vm.canZoomIn;
     this._zoomOutButton.enabled = vm.state === "ready" && vm.canZoomOut;
 
+    this._zoomInButton.title = this.messages.zoomIn;
+    this._zoomOutButton.title = this.messages.zoomOut;
+
     return (
-      <div class={CSS.base} classes={rootClasses}>
+      <div class={this.classes(CSS.base, rootClasses)}>
         {this._zoomInButton.render()}
         {this._zoomOutButton.render()}
       </div>
@@ -180,16 +250,18 @@ class Zoom extends declared(Widget) {
    *
    * @method
    */
-  @aliasOf("viewModel.zoomIn")
-  zoomIn(): void {}
+  zoomIn(): void {
+    return this.viewModel.zoomIn();
+  }
 
   /**
    * Zooms the view out by an LOD factor of 2.
    *
    * @method
    */
-  @aliasOf("viewModel.zoomOut")
-  zoomOut(): void {}
+  zoomOut(): void {
+    return this.viewModel.zoomOut();
+  }
 }
 
-export = Zoom;
+export default Zoom;

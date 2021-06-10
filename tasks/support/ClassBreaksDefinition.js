@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","./ClassificationDefinition"],function(i,a){var e=a.createSubclass({declaredClass:"esri.tasks.support.ClassBreaksDefinition",properties:{breakCount:null,classificationField:null,classificationMethod:null,normalizationField:null,normalizationType:null,standardDeviationInterval:null,type:"classBreaksDef"},toJSON:function(){var a,e=this.inherited(arguments);switch(this.classificationMethod.toLowerCase()){case"natural-breaks":a="esriClassifyNaturalBreaks";break;case"equal-interval":a="esriClassifyEqualInterval";break;case"quantile":a="esriClassifyQuantile";break;case"standard-deviation":a="esriClassifyStandardDeviation";break;case"geometrical-interval":a="esriClassifyGeometricalInterval";break;default:a=this.classificationMethod}if(i.mixin(e,{type:this.type,classificationField:this.classificationField,classificationMethod:a,breakCount:this.breakCount}),this.normalizationType){var t;switch(this.normalizationType.toLowerCase()){case"field":t="esriNormalizeByField";break;case"log":t="esriNormalizeByLog";break;case"percent-of-total":t="esriNormalizeByPercentOfTotal";break;default:t=this.normalizationType}i.mixin(e,{normalizationType:t})}return this.normalizationField&&i.mixin(e,{normalizationField:this.normalizationField}),this.standardDeviationInterval&&i.mixin(e,{standardDeviationInterval:this.standardDeviationInterval}),e}});return e});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./ClassificationDefinition"],(function(e,t,r,i,o,a,s,n,l,d,p,c){"use strict";const u=new s.JSONMap({esriClassifyEqualInterval:"equal-interval",esriClassifyManual:"manual",esriClassifyNaturalBreaks:"natural-breaks",esriClassifyQuantile:"quantile",esriClassifyStandardDeviation:"standard-deviation",esriClassifyDefinedInterval:"defined-interval"}),y=new s.JSONMap({esriNormalizeByLog:"log",esriNormalizeByPercentOfTotal:"percent-of-total",esriNormalizeByField:"field"});let f=function(t){function r(){var e;return(e=t.apply(this,arguments)||this).breakCount=null,e.classificationField=null,e.classificationMethod=null,e.normalizationField=null,e.normalizationType=null,e.type="class-breaks-definition",e}return e._inheritsLoose(r,t),e._createClass(r,[{key:"standardDeviationInterval",set:function(e){"standard-deviation"===this.classificationMethod&&this._set("standardDeviationInterval",e)}},{key:"definedInterval",set:function(e){"defined-interval"===this.classificationMethod&&this._set("definedInterval",e)}}]),r}(c);return t.__decorate([a.property({json:{write:!0}})],f.prototype,"breakCount",void 0),t.__decorate([a.property({json:{write:!0}})],f.prototype,"classificationField",void 0),t.__decorate([a.property({type:String,json:{read:u.read,write:u.write}})],f.prototype,"classificationMethod",void 0),t.__decorate([a.property({json:{write:!0}})],f.prototype,"normalizationField",void 0),t.__decorate([a.property({json:{read:y.read,write:y.write}})],f.prototype,"normalizationType",void 0),t.__decorate([a.property({value:null,json:{write:!0}})],f.prototype,"standardDeviationInterval",null),t.__decorate([a.property({value:null,json:{write:!0}})],f.prototype,"definedInterval",null),t.__decorate([a.property()],f.prototype,"type",void 0),f=t.__decorate([n.subclass("esri.tasks.support.ClassBreaksDefinition")],f),f}));

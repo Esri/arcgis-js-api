@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../easing","./Definition","./Settings","./apex/Path"],function(t,i,e,n,a,o){Object.defineProperty(i,"__esModule",{value:!0});var s={zoom:0,pan:0,rotate:0},r=function(){function t(t){this.createCamera=t,this.time=0,this.definition=new n.Definition(t),this.path=new o.Path}return t.prototype.update=function(t,i,e){this.definition.update(t,i,e),this.path.update(this.definition,e),this.time=this._applyTimeSettings(this.path.time,e),this.settings=e},t.prototype.cameraAt=function(t,i){i||(i=this.createCamera()),t=Math.min(Math.max(0,t),1),t=this.settings.easing?this.settings.easing(t,1e3*this.time):this.time>=1?e.inOutCoastQuad(t):e.outExpo(t);var n=this.path.interpolateComponentsAt(t,s);return i.interpolate(this.definition.source,this.definition.target,n),i},t.prototype._applyTimeSettings=function(t,i){var e=null!=i.speedFactor?i.speedFactor:1;null!=i.duration?t=i.duration:null!=i.speedFactor&&(t/=e);var n=null!=i.minDuration?i.minDuration:a.defaultSettings.minDuration/e,o=null!=i.maxDuration?i.maxDuration:a.defaultSettings.maxDuration/e;return t=Math.min(Math.max(n,t),o)},t}();i.Animation=r,i["default"]=r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../easing","./Settings","./Definition","./apex/Path"],(function(t,i,n,e,a){"use strict";const s={zoom:0,pan:0,rotate:0};let o=function(){function t(t){this.createCamera=t,this.time=0,this.definition=new e.Definition(t),this.path=new a.Path}var o=t.prototype;return o.update=function(t,i,n){this.definition.update(t,i,n),this.path.update(this.definition,n),this.time=this._applyTimeSettings(this.path.time,n),this.settings=n},o.cameraAt=function(t,n){n=n||this.createCamera(),t=Math.min(Math.max(0,t),1),t=this.settings.easing?this.normalizedEasing(this.settings.easing,t):this.time>=1?this.normalizedEasing(i.inOutCoastQuad,t):this.normalizedEasing(i.outExpo,t);const e=this.path.interpolateComponentsAt(t,s);return n.interpolate(this.definition.source,this.definition.target,e),n},o.normalizedEasing=function(t,i){const n=t(0),e=t(1);return(t(i)-n)/(e-n)},o._applyTimeSettings=function(t,i){const e=null!=i.speedFactor?i.speedFactor:1;null!=i.duration?t=i.duration:null!=i.speedFactor&&(t/=e);const a=null!=i.minDuration?i.minDuration:n.defaultSettings.minDuration/e,s=null!=i.maxDuration?i.maxDuration:n.defaultSettings.maxDuration/e;return t=Math.min(Math.max(a,t),s)},t}();t.Animation=o,t.default=o,Object.defineProperty(t,"__esModule",{value:!0})}));

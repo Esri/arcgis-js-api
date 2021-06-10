@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./accessorSupport/decorators","./Collection","./HandleRegistry"],function(t,e,o,r,n,i,s){function l(){return i}var c=function(t){function e(e){var o=t.call(this)||this;return o._handles=new s,o.root=null,o.refresh=o.refresh.bind(o),o.updateCollections=o.updateCollections.bind(o),o}return o(e,t),e.prototype.initialize=function(){var t=this;this._handles.add(this.rootCollectionNames.map(function(e){return t.watch("root."+e,t.updateCollections,!0)})),this.updateCollections()},e.prototype.destroy=function(){this.root=null,this.refresh(),this._handles.destroy(),this._handles=null},e.prototype.updateCollections=function(){var t=this;this._collections=this.rootCollectionNames.map(function(e){return t.get("root."+e)}).filter(function(t){return null!=t}),this.refresh()},e.prototype.refresh=function(){var t=this._handles;t.remove("collections"),this.removeAll();for(var e=this._collections.slice(),o=0,r=this._collections;o<r.length;o++){var n=r[o];this._processCollection(e,this,n)}for(var i=0,s=e;i<s.length;i++){var l=s[i];t.add(l.on("after-changes",this.refresh),"collections")}},e.prototype._createNewInstance=function(t){return new i(t)},e.prototype._processCollection=function(t,e,o){var r=this;o&&(t.push(o),o.forEach(function(o){o&&(e.push(o),r._processCollection(t,e,r.getChildrenFunction(o)))}))},e}(n.declared(l()));return r([n.property()],c.prototype,"rootCollectionNames",void 0),r([n.property()],c.prototype,"root",void 0),r([n.property()],c.prototype,"getChildrenFunction",void 0),c=r([n.subclass("esri.core.CollectionFlattener")],c)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass","./Collection","./Handles"],(function(t,e,o,i,s,r){"use strict";let n=function(e){function o(t){var o;return(o=e.call(this,t)||this)._handles=new r,o.root=null,o}t._inheritsLoose(o,e);var i=o.prototype;return i.initialize=function(){this._handles.add(this.rootCollectionNames.map((t=>this.watch("root."+t,(()=>this.updateCollections()),!0)))),this.updateCollections()},i.destroy=function(){this.root=null,this.refresh(),this._handles.destroy(),this._handles=null},i.updateCollections=function(){this._collections=this.rootCollectionNames.map((t=>this.get("root."+t))).filter((t=>null!=t)),this.refresh()},i.refresh=function(){const t=this._handles;t.remove("collections");const e=new Array;let o=0;for(const i of this._collections)o=this._processCollection(e,o,i);this.splice(o,this.length);for(const i of e)t.add(i.on("after-changes",(()=>this.refresh())),"collections")},i._createNewInstance=function(t){return new s(t)},i._processCollection=function(t,e,o){return o?(t.push(o),o.forEach((o=>{if(o){if(!this.itemFilterFunction||this.itemFilterFunction(o)){const t=this.indexOf(o,e);t>=0?t!==e&&this.reorder(o,e):this.add(o,e),++e}this.getChildrenFunction&&(e=this._processCollection(t,e,this.getChildrenFunction(o)))}})),e):e},o}(s);return e.__decorate([o.property()],n.prototype,"rootCollectionNames",void 0),e.__decorate([o.property()],n.prototype,"root",void 0),e.__decorate([o.property()],n.prototype,"getChildrenFunction",void 0),e.__decorate([o.property()],n.prototype,"itemFilterFunction",void 0),n=e.__decorate([i.subclass("esri.core.CollectionFlattener")],n),n}));

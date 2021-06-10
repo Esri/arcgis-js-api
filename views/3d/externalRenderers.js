@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./externalRenderers/ExternalRendererStore","./support/projectionUtils","./webgl-engine/lib/gl-matrix"],function(e,r,n,t,o){function i(e,r){p.add(e,r)}function d(e,r){p.remove(e,r)}function a(e){e._stage.setNeedsRender()}function s(e,r,n,o,i,d,a){return o=o||e.spatialReference,t.bufferToBuffer(r,o,n,i,e.renderCoordsHelper.spatialReference,d,a)?i:null}function f(e,r,n,o,i,d,a){return d=d||e.spatialReference,t.bufferToBuffer(r,e.renderCoordsHelper.spatialReference,n,o,d,i,a)?o:null}function u(e,r,n,o){return o||(o=c.create()),n=n||e.spatialReference,t.computeLinearTransformation(n,r,o,e.renderCoordsHelper.spatialReference)?o:null}function l(e){return{add:i.bind(this,e),remove:d.bind(this,e),requestRender:a.bind(this,e),toRenderCoordinates:s.bind(this,e),fromRenderCoordinates:f.bind(this,e),renderCoordinateTransformAt:u.bind(this,e)}}Object.defineProperty(r,"__esModule",{value:!0});var c=o.mat4d,p=new n;r.add=i,r.remove=d,r.requestRender=a,r.toRenderCoordinates=s,r.fromRenderCoordinates=f,r.renderCoordinateTransformAt=u,r.bind=l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../geometry/projection","../../chunks/mat4f64","./externalRenderers/ExternalRendererStore"],(function(e,r,n,t){"use strict";const o=new t;function d(e,r){o.add(e,r)}function i(e,r){o.remove(e,r)}function a(e){e._stage.renderView.setNeedsRender()}function s(e,n,t,o,d,i,a){return o=o||e.spatialReference,r.projectBuffer(n,o,t,d,e.renderCoordsHelper.spatialReference,i,a)?d:null}function f(e,n,t,o,d,i,a){return i=i||e.spatialReference,r.projectBuffer(n,e.renderCoordsHelper.spatialReference,t,o,i,d,a)?o:null}function c(e,t,o,d){return d||(d=n.create()),o=o||e.spatialReference,r.computeLinearTransformation(o,t,d,e.renderCoordsHelper.spatialReference)?d:null}function u(e){return e.state.camera.clone()}function l(e){return{add:d.bind(this,e),remove:i.bind(this,e),requestRender:a.bind(this,e),toRenderCoordinates:s.bind(this,e),fromRenderCoordinates:f.bind(this,e),renderCoordinateTransformAt:c.bind(this,e)}}e.add=d,e.bind=l,e.fromRenderCoordinates=f,e.getRenderCamera=u,e.remove=i,e.renderCoordinateTransformAt=c,e.requestRender=a,e.toRenderCoordinates=s,Object.defineProperty(e,"__esModule",{value:!0})}));

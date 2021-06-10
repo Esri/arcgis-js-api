@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension"],(function(e,r,s,o,t,c,n,u,i,p,a){"use strict";const l=e=>{let o=function(e){function s(){var r;return(r=e.apply(this,arguments)||this).refreshInterval=0,r}return r._inheritsLoose(s,e),s.prototype.refresh=function(){this.emit("refresh")},s}(e);return s.__decorate([n.property({type:Number,cast:e=>e>=.1?e:e<=0?0:.1,json:{write:!0,origins:{"web-document":{write:!0}}}})],o.prototype,"refreshInterval",void 0),o=s.__decorate([u.subclass("esri.layers.mixins.RefreshableLayer")],o),o};e.RefreshableLayer=l,Object.defineProperty(e,"__esModule",{value:!0})}));

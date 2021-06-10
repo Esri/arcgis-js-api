@@ -1,0 +1,173 @@
+@mixin basemapGallery() {
+  $basemap-thumbnail-size: $button-height--double !default;
+
+  .esri-basemap-gallery {
+    color: $font-color;
+    background-color: $background-color;
+    overflow-y: auto;
+    position: relative;
+    width: auto;
+  }
+
+  .esri-basemap-gallery__item-container {
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    transition: opacity 250ms ease-in-out;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .esri-basemap-gallery--source-refreshing .esri-basemap-gallery__item-container,
+  .esri-basemap-gallery.esri-disabled .esri-basemap-gallery__item {
+    opacity: $opacity--disabled;
+    pointer-events: none;
+    animation: none;
+  }
+
+  .esri-basemap-gallery__empty-message {
+    padding: $cap-spacing $side-spacing;
+    animation: esri-fade-in 500ms ease-in-out;
+  }
+
+  .esri-basemap-gallery__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: $cap-spacing--half $side-spacing--half;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    animation: esri-fade-in 500ms ease-in-out;
+    transition: background-color 250ms ease-in-out;
+  }
+
+  .esri-basemap-gallery__item:first-child {
+    margin-top: $cap-spacing--half;
+  }
+
+  .esri-basemap-gallery__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    width: 100%;
+    animation: esri-fade-in 500ms ease-in-out;
+  }
+
+  @include loopingProgressBar(".esri-basemap-gallery__loader");
+
+  .esri-basemap-gallery__item--loading {
+    cursor: auto;
+    background-color: $background-color--offset;
+    border-color: $background-color;
+  }
+
+  .esri-basemap-gallery__item--error {
+    cursor: auto;
+    opacity: $opacity--disabled;
+  }
+
+  .esri-basemap-gallery__item-thumbnail {
+    height: $basemap-thumbnail-size;
+    width: auto;
+    box-shadow: 0 0 0 1px $border-color;
+  }
+
+  @supports (object-fit: cover) {
+    .esri-basemap-gallery__item-thumbnail {
+      height: $basemap-thumbnail-size;
+      width: $basemap-thumbnail-size;
+      object-fit: cover;
+    }
+  }
+
+  .esri-basemap-gallery__item-title {
+    font-size: $font-size--small;
+    word-break: break-word;
+    color: $interactive-font-color;
+    padding: 0 $side-spacing--half;
+  }
+
+  .esri-basemap-gallery__item--selected,
+  .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:hover,
+  .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:focus {
+    cursor: auto;
+    border-left-color: $border-color--active;
+    background-color: $background-color--active;
+
+    .esri-basemap-gallery__item-title {
+      color: $font-color;
+    }
+  }
+
+  .esri-basemap-gallery__item:hover,
+  .esri-basemap-gallery__item:focus {
+    outline: none;
+    background-color: $background-color--hover;
+    border-left-color: $background-color--hover;
+
+    .esri-basemap-gallery__item-title {
+      color: $interactive-font-color;
+    }
+  }
+
+  .esri-basemap-gallery__item.esri-basemap-gallery__item--error:hover,
+  .esri-basemap-gallery__item.esri-basemap-gallery__item--error:focus {
+    background-color: $background-color;
+    border-color: transparent;
+  }
+
+  .esri-view .esri-basemap-gallery {
+    min-width: $panel-width--three-quarters;
+    max-width: $panel-width;
+  }
+
+  .esri-view-width-greater-than-large .esri-ui-corner {
+    .esri-basemap-gallery.esri-component {
+      width: $panel-width--plus-half;
+      max-width: initial;
+      .esri-basemap-gallery__item-container {
+        flex-flow: row wrap;
+        align-items: baseline;
+      }
+      .esri-basemap-gallery__item {
+        border: 1px solid rgba(0, 0, 0, 0);
+        flex-flow: column wrap;
+        width: 29.333%;
+        margin: $cap-spacing--quarter 2%;
+        padding: $cap-spacing 0;
+        text-align: center;
+      }
+      .esri-basemap-gallery__item-thumbnail {
+        max-width: 100%;
+        margin-bottom: $cap-spacing--half;
+      }
+      .esri-basemap-gallery__item-title {
+        margin-top: $cap-spacing--half;
+
+        width: 100%; // ie11 needs this for title to wrap
+      }
+      .esri-basemap-gallery__item--selected,
+      .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:hover,
+      .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:focus {
+        border-color: $border-color--active;
+      }
+    }
+  }
+
+  html[dir="rtl"] {
+    .esri-basemap-gallery__item--selected,
+    .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:hover,
+    .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:focus {
+      border-left-color: transparent;
+      border-right-color: $border-color--active;
+    }
+  }
+}
+
+@if $include_BasemapGallery == true {
+  @include basemapGallery();
+}

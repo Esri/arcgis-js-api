@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/declare","dojo/_base/lang","../../TimeExtent","./TimeReference","./LayerTimeOptions"],function(e,i,t,n,s){var r=e(null,{declaredClass:"esri.layers.support.TimeInfo",constructor:function(e){null!==e&&(i.mixin(this,e),e.exportOptions&&(this.exportOptions=new s(e.exportOptions)),this.timeExtent=null,e.timeExtent&&2===e.timeExtent.length&&(this.timeExtent=new t(e.timeExtent)),this.timeReference=new n(e.timeReference))}});return i.mixin(r,{UNIT_CENTURIES:"esriTimeUnitsCenturies",UNIT_DAYS:"esriTimeUnitsDays",UNIT_DECADES:"esriTimeUnitsDecades",UNIT_HOURS:"esriTimeUnitsHours",UNIT_MILLISECONDS:"esriTimeUnitsMilliseconds",UNIT_MINUTES:"esriTimeUnitsMinutes",UNIT_MONTHS:"esriTimeUnitsMonths",UNIT_SECONDS:"esriTimeUnitsSeconds",UNIT_UNKNOWN:"esriTimeUnitsUnknown",UNIT_WEEKS:"esriTimeUnitsWeeks",UNIT_YEARS:"esriTimeUnitsYears"}),r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./timeUtils","../../TimeExtent","../../TimeInterval","./TimeReference"],(function(e,t,r,i,l,n,o,a,u,s,p,c,d,m,v,y,T,f){"use strict";var _;let w=_=function(t){function r(e){var r;return(r=t.call(this,e)||this).cumulative=!1,r.endField=null,r.fullTimeExtent=null,r.hasLiveData=!1,r.interval=null,r.startField=null,r.timeReference=null,r.trackIdField=null,r.useTime=!0,r}e._inheritsLoose(r,t);var l=r.prototype;return l.readFullTimeExtent=function(e,t){if(!t.timeExtent||!Array.isArray(t.timeExtent)||2!==t.timeExtent.length)return null;const r=new Date(t.timeExtent[0]),i=new Date(t.timeExtent[1]);return new y({start:r,end:i})},l.writeFullTimeExtent=function(e,t){e&&e.start&&e.end?t.timeExtent=[e.start.getTime(),e.end.getTime()]:t.timeExtent=null},l.readInterval=function(e,t){return t.timeInterval&&t.timeIntervalUnits?new T({value:t.timeInterval,unit:v.timeUnitKebabDictionary.fromJSON(t.timeIntervalUnits)}):t.defaultTimeInterval&&t.defaultTimeIntervalUnits?new T({value:t.defaultTimeInterval,unit:v.timeUnitKebabDictionary.fromJSON(t.defaultTimeIntervalUnits)}):null},l.writeInterval=function(e,t){if(e){const r=e.toJSON();t.timeInterval=r.value,t.timeIntervalUnits=r.unit}else t.timeInterval=null,t.timeIntervalUnits=null},l.clone=function(){const{cumulative:e,endField:t,hasLiveData:r,interval:l,startField:n,timeReference:o,fullTimeExtent:a,trackIdField:u,useTime:s}=this;return new _({cumulative:e,endField:t,hasLiveData:r,interval:l,startField:n,timeReference:i.clone(o),fullTimeExtent:i.clone(a),trackIdField:u,useTime:s})},r}(m.JSONSupport);return t.__decorate([o.property({type:Boolean,json:{read:{source:"exportOptions.timeDataCumulative"},write:{target:"exportOptions.timeDataCumulative"}}})],w.prototype,"cumulative",void 0),t.__decorate([o.property({type:String,json:{read:{source:"endTimeField"},write:{target:"endTimeField",allowNull:!0}}})],w.prototype,"endField",void 0),t.__decorate([o.property({type:y,json:{write:{enabled:!0,allowNull:!0}}})],w.prototype,"fullTimeExtent",void 0),t.__decorate([a.reader("fullTimeExtent",["timeExtent"])],w.prototype,"readFullTimeExtent",null),t.__decorate([s.writer("fullTimeExtent")],w.prototype,"writeFullTimeExtent",null),t.__decorate([o.property({type:Boolean,json:{write:!0}})],w.prototype,"hasLiveData",void 0),t.__decorate([o.property({type:T,json:{write:{enabled:!0,allowNull:!0}}})],w.prototype,"interval",void 0),t.__decorate([a.reader("interval",["timeInterval","timeIntervalUnits","defaultTimeInterval","defaultTimeIntervalUnits"])],w.prototype,"readInterval",null),t.__decorate([s.writer("interval")],w.prototype,"writeInterval",null),t.__decorate([o.property({type:String,json:{read:{source:"startTimeField"},write:{target:"startTimeField",allowNull:!0}}})],w.prototype,"startField",void 0),t.__decorate([o.property({type:f,json:{write:{enabled:!0,allowNull:!0}}})],w.prototype,"timeReference",void 0),t.__decorate([o.property({type:String,json:{write:{enabled:!0,allowNull:!0}}})],w.prototype,"trackIdField",void 0),t.__decorate([o.property({type:Boolean,json:{read:{source:"exportOptions.useTime"},write:{target:"exportOptions.useTime"}}})],w.prototype,"useTime",void 0),w=_=t.__decorate([u.subclass("esri.layers.support.TimeInfo")],w),w}));

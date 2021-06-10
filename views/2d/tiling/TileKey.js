@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/ObjectPool"],function(t,o,e){var l=function(){function t(t,o,e,l){if("string"==typeof t){var r=t.split("/"),i=r[0],s=r[1],h=r[2],n=r[3];this.level=+i,this.row=+s,this.col=+h,this.world=+n||0}else t&&"object"==typeof t?(this.level=t.level||0,this.row=t.row||0,this.col=t.col||0,this.world=t.world||0):(this.level=+t||0,this.row=+o||0,this.col=+e||0,this.world=+l||0)}return t.from=function(o,e,l,r){return t.pool.acquire(o,e,l,r)},t.getId=function(t,o,e,l){return"object"==typeof t?t.level+"/"+t.row+"/"+t.col+"/"+t.world:t+"/"+o+"/"+e+"/"+l},Object.defineProperty(t.prototype,"id",{get:function(){return t.getId(this)},enumerable:!0,configurable:!0}),t.prototype.equals=function(t){return this.level===t.level&&this.row===t.row&&this.col===t.col&&this.world===t.world},t.prototype.release=function(){this.level=0,this.row=0,this.col=0,this.world=0},t.prototype.set=function(t,o,e,l){var r=typeof t;if("object"===r)this.level=t.level||0,this.row=t.row||0,this.col=t.col||0,this.world=t.world||0;else if("string"===r){var i=t.split("/"),s=i[0],h=i[1],n=i[2],c=i[3];this.level=parseFloat(s),this.row=parseFloat(h),this.col=parseFloat(n),this.world=parseFloat(c)}else this.level=t,this.row=o,this.col=e,this.world=l;return this},t.prototype.toString=function(){return this.level+"/"+this.row+"/"+this.col+"/"+this.world},t}();return l.pool=new e(l,!0,null,25,50),l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../core/ObjectPool"],(function(t,e){"use strict";let o=function(){function e(t,e,o,l){this.set(t,e,o,l)}e.getId=function(t,e,o,l){return"object"==typeof t?`${t.level}/${t.row}/${t.col}/${t.world}`:`${t}/${e}/${o}/${l}`};var o=e.prototype;return o.acquire=function(t,e,o,l){this.set(t,e,o,l)},o.contains=function(t){const e=t.level-this.level;return this.row===t.row>>e&&this.col===t.col>>e&&this.world===t.world},o.equals=function(t){return this.level===t.level&&this.row===t.row&&this.col===t.col&&this.world===t.world},o.clone=function(){return new e(this)},o.release=function(){this.level=0,this.row=0,this.col=0,this.world=0},o.set=function(t,e,o,l){if(null==t)this.level=0,this.row=0,this.col=0,this.world=0;else if("object"==typeof t)this.level=t.level||0,this.row=t.row||0,this.col=t.col||0,this.world=t.world||0;else if("string"==typeof t){const[e,o,l,i]=t.split("/");this.level=parseFloat(e),this.row=parseFloat(o),this.col=parseFloat(l),this.world=parseFloat(i)}else this.level=+t,this.row=+e,this.col=+o,this.world=+l||0;return this},o.toString=function(){return`${this.level}/${this.row}/${this.col}/${this.world}`},o.getParentKey=function(){return this.level<=0?null:new e(this.level-1,this.row>>1,this.col>>1,this.world)},o.getChildKeys=function(){const t=this.level+1,o=this.row<<1,l=this.col<<1,i=this.world;return[new e(t,o,l,i),new e(t,o,l+1,i),new e(t,o+1,l,i),new e(t,o+1,l+1,i)]},o.compareRowMajor=function(t){return this.row<t.row?-1:this.row>t.row?1:this.col<t.col?-1:this.col>t.col?1:0},t._createClass(e,[{key:"key",get:function(){return this}},{key:"id",get:function(){return this.toString()},set:function(t){this.set(t)}}]),e}();return o.pool=new e(o,null,null,25,50),o}));

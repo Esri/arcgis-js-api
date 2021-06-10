@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./treeAnalysis","./lib/esprima"],function(e,r,n,t){function o(e){var r=t.parse("function _() { "+e+"\n}");if(null===r.body||void 0===r.body)throw new Error("No formula provided.");if(0===r.body.length)throw new Error("No formula provided.");if(0===r.body.length)throw new Error("No formula provided.");if("BlockStatement"!==r.body[0].body.type)throw new Error("Invalid formula content.");var o=n.validateLanguage(r);if(""!==o)throw new Error(o);return r}function i(e,r,o,i){var c=[];try{var a=t.parse("function _() { "+e+"\n}",{tolerant:!0,loc:!0}),l=a.errors;if(l.length>0)for(var u=0;u<l.length;u++)c.push({line:l[u].lineNumber,character:l[u].column,reason:l[u].description});for(var d=n.checkScript(a,r,o,i),f=0;f<d.length;f++)c.push(d[f])}catch(s){try{"Unexpected token }"===s.description&&(s.index=("function _() { "+e+"\n}").length-1)?c.push({line:s.lineNumber,character:s.column,reason:"Unexpected end of script"}):c.push({line:s.lineNumber,character:s.column,reason:s.description})}catch(p){}}return c}function c(e,r){return void 0===r&&(r=!1),n.findFieldLiterals(e,r)}function a(e,r,t){return void 0===t&&(t="full"),n.validateScript(e,r,t)}function l(e,r){return n.referencesMember(e,r)}function u(e,r){return n.referencesFunction(e,r)}Object.defineProperty(r,"__esModule",{value:!0}),r.parseScript=o,r.scriptCheck=i,r.extractFieldLiterals=c,r.validateScript=a,r.referencesMember=l,r.referencesFunction=u});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./treeAnalysis","./lib/esprima"],(function(e,n,r){"use strict";function t(e,t=[]){const o=r.parse("function _() { "+e+"\n}");if(null===o.body||void 0===o.body)throw new Error("No formula provided.");if(0===o.body.length)throw new Error("No formula provided.");if(0===o.body.length)throw new Error("No formula provided.");if("BlockStatement"!==o.body[0].body.type)throw new Error("Invalid formula content.");const i=n.validateLanguage(o);if(""!==i)throw new Error(i);return n.findScriptDependencies(o,t),o}function o(e,t,o,i,c){const l=[],a="function _() { \n".length-1,s="function _() { \n"+e+"\n}";try{const e=r.parse(s,{tolerant:!0,loc:!0,range:!0}),u=e.errors;if(u.length>0)for(let n=0;n<u.length;n++)l.push({line:u[n].lineNumber-2,character:u[n].column,reason:u[n].description});const d=n.checkScript(e,t,o,i,c);for(let n=0;n<d.length;n++)d[n].line=d[n].line-2,d[n].range&&(d[n].range=[d[n][0]-a,d[n][1]-a]),d[n].loc&&(d[n].loc.start.line=d[n].loc.start.line-2,d[n].loc.end.line=d[n].loc.end.line-2),l.push(d[n])}catch(u){try{if("Unexpected token }"===u.description){const e=s.split("\n").length;u.lineNumber===e?(u.index=s.length-1,l.push({line:u.lineNumber-4,character:u.column,reason:"Unexpected end of script"})):(u.index=s.length-1,l.push({line:u.lineNumber-2,character:u.column,reason:"Unexpected end of script"}))}else l.push({line:u.lineNumber-2,character:u.column,reason:u.description})}catch(d){}}return l}function i(e,r){return n.findFieldLiterals(e)}function c(e,r,t){return n.validateScript(e,r,t)}function l(e,r){return n.referencesMember(e,r)}function a(e,r){return n.referencesFunction(e,r)}e.extractFieldLiterals=i,e.parseScript=t,e.referencesFunction=a,e.referencesMember=l,e.scriptCheck=o,e.validateScript=c,Object.defineProperty(e,"__esModule",{value:!0})}));

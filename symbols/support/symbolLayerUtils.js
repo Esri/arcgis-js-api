@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../request","../../core/promiseUtils","../../core/Error","../../core/LRUCache","../../views/3d/support/aaBoundingBox","../../views/3d/layers/graphics/graphicUtils","../../views/3d/layers/graphics/Graphics3DIconSymbolLayer","../../views/3d/layers/graphics/Graphics3DObjectSymbolLayer","../../views/3d/layers/graphics/objectResourceUtils"],function(e,r,i,n,t,o,u,c,s,a,h){function f(){var e=50;return new o(e)}function p(){I=f()}function v(e){return"icon"===e.type?d(e):"object"===e.type?g(e):void 0}function l(e){return"icon"===e.type?y(e):"object"===e.type?z(e):void 0}function d(e){return e.resource.href?m(e.resource.href).then(function(e){return[e.width,e.height]}):e.resource.primitive?n.resolve(s.PRIMITIVE_SIZE):void 0}function y(e){return d(e).then(function(r){if(null==e.size)return r;var i=r[0]/r[1];return i>1?[e.size,e.size/i]:[e.size*i,e.size]})}function m(e){return i(e,{responseType:"image"}).then(function(e){return e.data})}function g(e){return b(e).then(function(e){return u.size(e)})}function z(e){return g(e).then(function(r){return c.computeSizeWithResourceSize(r,e)})}function b(e){if(e.isPrimitive){var r=null;return e.resource&&e.resource.primitive&&(r=a.PRIMITIVE_BOUNDING_BOX[e.resource.primitive]),r?n.resolve(r):n.reject(new t("symbol:invalid-resource","The symbol does not have a valid resource"))}var i=e.resource.href;return I.has(i)?n.resolve(I.use(i)):h.fetch(i).then(function(e){var r=h.computeBoundingBox(e);return I.insert(i,r),r})}Object.defineProperty(r,"__esModule",{value:!0});var I=f();r.clearBoundingBoxCache=p,r.computeLayerResourceSize=v,r.computeLayerSize=l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","exports","../../core/maybe","../../core/Error","../../request","../../core/ItemCache","../../geometry/support/aaBoundingBox","./symbolLayerUtils3D"],(function(e,r,o,t,i,n,s,c){"use strict";let u=a();function a(){return new n(50)}function y(){u=a()}function l(e,r){if("icon"===e.type)return f(e,r);if("object"===e.type)return b(e,r);throw new t("symbol3d:unsupported-symbol-layer","computeLayerSize only works with symbol layers of type Icon and Object")}async function m(e,r){if("icon"===e.type)return p(e,r);if("object"===e.type)return d(e,r);throw new t("symbol3d:unsupported-symbol-layer","computeLayerSize only works with symbol layers of type Icon and Object")}async function f(e,r){if(e.resource.href)return h(e.resource.href).then((e=>[e.width,e.height]));if(e.resource.primitive)return o.isSome(r)?[r,r]:[256,256];throw new t("symbol3d:invalid-symbol-layer","symbol layers of type Icon must have either an href or a primitive resource")}function p(e,r){return f(e,r).then((r=>{if(null==e.size)return r;const o=r[0]/r[1];return o>1?[e.size,e.size/o]:[e.size*o,e.size]}))}function h(e){return i(e,{responseType:"image"}).then((e=>e.data))}function b(e,r){return w(e,r).then((e=>s.size(e)))}async function d(e,r){const o=await b(e,r);return c.objectSymbolLayerSizeWithResourceSize(o,e)}async function w(r,i){if(!r.isPrimitive){const o=r.resource.href,t=u.get(o);if(void 0!==t)return Promise.resolve(t);const i=await new Promise((function(r,o){e(["../../views/3d/layers/graphics/objectResourceUtils"],r,o)})),n=await i.fetch(o,{disableTextures:!0});return u.put(o,n.referenceBoundingBox),n.referenceBoundingBox}let n=null;if(r.resource&&r.resource.primitive&&(n=s.create(c.objectSymbolLayerPrimitiveBoundingBox(r.resource.primitive)),o.isSome(i)))for(let e=0;e<n.length;e++)n[e]*=i;return n?Promise.resolve(n):Promise.reject(new t("symbol:invalid-resource","The symbol does not have a valid resource"))}r.clearBoundingBoxCache=y,r.computeIconLayerResourceSize=f,r.computeLayerResourceSize=l,r.computeLayerSize=m,r.computeObjectLayerResourceSize=b,Object.defineProperty(r,"__esModule",{value:!0})}));

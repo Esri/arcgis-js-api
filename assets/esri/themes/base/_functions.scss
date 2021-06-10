@@ -1,0 +1,23 @@
+//////////////////////////////
+//  Calculations
+@function offset-background-color($color, $percent) {
+  @if (lightness($color) < 50) {
+    @return lighten($color, $percent);
+  } @else {
+    @return darken($color, $percent);
+  }
+}
+@function offset-foreground-color($color, $percent) {
+  @if (lightness($color) > 50) {
+    @return lighten($color, $percent);
+  } @else {
+    @return darken($color, $percent);
+  }
+}
+@function fade-foreground-color($color, $percent) {
+  @if (lightness($color) < 50) {
+    @return lighten($color, $percent);
+  } @else {
+    @return darken($color, $percent);
+  }
+}

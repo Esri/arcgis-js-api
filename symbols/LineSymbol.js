@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/declare","../core/screenUtils","./Symbol"],function(e,r,l){var o=e(l,{declaredClass:"esri.symbols.LineSymbol",properties:{color:{},type:"simple-line-symbol",width:{value:.75,cast:r.toPt,json:{write:!0}}}});return o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Symbol","../core/screenUtils"],(function(e,r,o,t,s,c,i,n,p,u,l,a,d){"use strict";let y=function(r){function o(e){var o;return(o=r.call(this,e)||this).type="simple-line",o.width=.75,o}return e._inheritsLoose(o,r),o.prototype.hash=function(){return`${this.type}.${this.width}`},o}(a);return r.__decorate([i.enumeration({esriSLS:"simple-line"},{readOnly:!0})],y.prototype,"type",void 0),r.__decorate([c.property({type:Number,cast:d.toPt,json:{write:!0}})],y.prototype,"width",void 0),y=r.__decorate([n.subclass("esri.symbols.LineSymbol")],y),y}));

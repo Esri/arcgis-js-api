@@ -1,0 +1,99 @@
+$earmark_size: 6px !default;
+
+@mixin navigationToggle() {
+  .esri-navigation-toggle {
+    display: flex;
+    flex-flow: column nowrap;
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+      .esri-navigation-toggle__button {
+        color: $interactive-font-color--hover;
+      }
+    }
+  }
+
+  .esri-navigation-toggle--horizontal {
+    flex-flow: row nowrap;
+    .esri-navigation-toggle__button--rotate {
+      border-top: none;
+      border-left: solid 1px $border-color;
+    }
+  }
+
+  .esri-navigation-toggle__button {
+    box-shadow: none;
+    position: relative;
+    background-color: transparent;
+    &:before {
+      @include earmarkStem();
+      opacity: 0;
+      border-width: 0 $earmark_size $earmark_size 0;
+      border-color: transparent $interactive-font-color--hover transparent transparent;
+    }
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+  .esri-navigation-toggle__button--rotate {
+    border-top: solid 1px $border-color;
+  }
+
+  .esri-navigation-toggle__button--pan {
+    margin-bottom: 0;
+  }
+
+  .esri-navigation-toggle__button--active {
+    color: $interactive-font-color--hover;
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  .esri-navigation-toggle.esri-disabled {
+    .esri-navigation-toggle__button {
+      background-color: $background-color;
+      color: $interactive-font-color--disabled;
+      cursor: auto;
+      &:before {
+        opacity: 0;
+      }
+    }
+  }
+
+  html[dir="rtl"] {
+    .esri-navigation-toggle--horizontal {
+      .esri-navigation-toggle__button--rotate {
+        border-left: none;
+        border-right: solid 1px $border-color;
+      }
+    }
+
+    .esri-navigation-toggle__button {
+      &:before {
+        border-width: $earmark_size $earmark_size 0 0;
+        border-color: $interactive-font-color--hover transparent transparent transparent;
+        right: auto;
+        left: 1px;
+      }
+    }
+  }
+}
+
+@mixin earmarkStem() {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  z-index: 0;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  transition: opacity 125ms ease-in-out;
+}
+
+@if $include_NavigationToggle == true {
+  @include navigationToggle();
+}

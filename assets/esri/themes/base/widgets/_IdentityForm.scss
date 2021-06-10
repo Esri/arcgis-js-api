@@ -1,0 +1,22 @@
+@mixin identityForm() {
+  .esri-identity-form {
+    display: flex;
+    flex-flow: column;
+  }
+  .esri-identity-form__group {
+    margin-bottom: $cap-spacing;
+  }
+  .esri-identity-form__label {
+    display: flex;
+    flex-flow: column;
+  }
+  .esri-identity-form__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $cap-spacing;
+  }
+}
+
+@if $include_IdentityForm == true {
+  @include identityForm();
+}

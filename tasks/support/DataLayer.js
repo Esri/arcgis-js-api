@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/Accessor","../../core/kebabDictionary","../../core/lang","../../geometry/support/jsonUtils"],function(e,t,s,i){var r=t({esriSpatialRelIntersects:"intersects",esriSpatialRelContains:"contains",esriSpatialRelCrosses:"crosses",esriSpatialRelEnvelopeIntersects:"envelope-intersects",esriSpatialRelIndexIntersects:"index-intersects",esriSpatialRelOverlaps:"overlaps",esriSpatialRelTouches:"touches",esriSpatialRelWithin:"within",esriSpatialRelRelation:"relation"}),a=e.createSubclass({declaredClass:"esri.tasks.support.DataLayer",properties:{geometry:null,name:null,spatialRelationship:null,where:null},toJSON:function(){var e={type:"layer",layerName:this.name,where:this.where,spatialRel:r.toJSON(this.spatialRelationship)},t=this.geometry;return t&&(e.geometryType=i.getJsonType(t),e.geometry=t.toJSON()),s.filter(e,function(e){return null!==e?!0:void 0})}});return a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/jsonUtils","../../geometry"],(function(e,r,t,o,s,a,p,i,l,n,c,u,y,d){"use strict";const S=new p.JSONMap({esriSpatialRelIntersects:"intersects",esriSpatialRelContains:"contains",esriSpatialRelCrosses:"crosses",esriSpatialRelEnvelopeIntersects:"envelope-intersects",esriSpatialRelIndexIntersects:"index-intersects",esriSpatialRelOverlaps:"overlaps",esriSpatialRelTouches:"touches",esriSpatialRelWithin:"within",esriSpatialRelRelation:"relation"});let g=function(r){function t(e){var t;return(t=r.call(this,e)||this).geometry=null,t.name=null,t.spatialRelationship=null,t.type="layer",t.where=null,t}return e._inheritsLoose(t,r),t}(u.JSONSupport);return r.__decorate([a.property({types:d.geometryTypes,json:{read:y.fromJSON,write:!0}})],g.prototype,"geometry",void 0),r.__decorate([a.property({type:String,json:{read:{source:"layerName"},write:{target:"layerName"}}})],g.prototype,"name",void 0),r.__decorate([a.property({type:String,json:{read:{source:"spatialRel",reader:S.read},write:{target:"spatialRel",writer:S.write}}})],g.prototype,"spatialRelationship",void 0),r.__decorate([a.property({type:String,json:{write:!0}})],g.prototype,"type",void 0),r.__decorate([a.property({type:String,json:{write:!0}})],g.prototype,"where",void 0),g=r.__decorate([i.subclass("esri.tasks.support.DataLayer")],g),g}));

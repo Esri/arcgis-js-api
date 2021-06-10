@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./tsSupport/declareExtendsHelper","./tsSupport/decorateHelper","./accessorSupport/decorators","./Accessor","./accessorSupport/read","./accessorSupport/write","./accessorSupport/utils","./accessorSupport/MultiOriginStore","./accessorSupport/PropertyOrigin"],function(t,r,e,o,i,n,s,a,p,c,u){function f(t){return p.getProperties(t).store}var d=function(t){function r(){var r=t.call(this)||this,e=p.getProperties(r),o=e.metadatas,i=e.store,n=new c["default"];return e.store=n,i.keys().forEach(function(t){n.set(t,i.get(t),u.OriginId.DEFAULTS)}),Object.keys(o).forEach(function(t){e.internalGet(t)&&n.set(t,e.internalGet(t),u.OriginId.DEFAULTS)}),r}return e(r,t),r.prototype.clear=function(t,r){return void 0===r&&(r="user"),f(this).clear(t,u.nameToId(r))},r.prototype.read=function(t,r){return s["default"](this,t,r),this},r.prototype.write=function(t,r){return t=t||{},a["default"](this,t,r),t},r.prototype.getAtOrigin=function(t,r){var e=f(this),o=u.nameToId(r);if("string"==typeof t)return e.get(t,o);var i={};return t.forEach(function(t){i[t]=e.get(t,o)}),i},r.prototype.originOf=function(t){var r=f(this);if("string"==typeof t)return u.idToName(r.originOf(t));var e={};t.forEach(function(t){e[t]=u.idToName(r.originOf(t))})},r.prototype.revert=function(t,r){var e,o=f(this),i=u.nameToId(r),n=p.getProperties(this);e="string"==typeof t?"*"===t?Object.keys(o.getAll(i)):[t]:t,e.forEach(function(t){n.propertyInvalidated(t),o.revert(t,i),n.propertyCommitted(t)})},r.prototype.removeOrigin=function(t){var r=f(this),e=u.nameToId(t),o=r.getAll(e);for(var i in o)r.originOf(i)===e&&r.set(i,o[i],u.OriginId.USER)},r.prototype.updateOrigin=function(t,r){var e=f(this),o=u.nameToId(r),i=this.get(t);e.clear(t),e.set(t,i,o)},r}(i.declared(n));return d=o([i.subclass("esri.core.MultiOriginJSONSupport")],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/utils","./accessorSupport/decorators/subclass","./accessorSupport/PropertyOrigin","./Accessor","./accessorSupport/write","./ReadOnlyMultiOriginJSONSupport"],(function(t,r,e,i,n,o,s,u,c){"use strict";const l=t=>{let s=function(t){function e(...r){return t.call(this,...r)||this}r._inheritsLoose(e,t);var n=e.prototype;return n.clear=function(t,r="user"){return p(this).delete(t,o.nameToId(r))},n.write=function(t={},r){return t=t||{},u.write(this,t,r),t},n.setAtOrigin=function(t,r,e){i.getProperties(this).setAtOrigin(t,r,o.nameToId(e))},n.removeOrigin=function(t){const r=p(this),e=o.nameToId(t),i=r.keys(e);for(const n of i)r.originOf(n)===e&&r.set(n,r.get(n,e),6)},n.updateOrigin=function(t,r){const e=p(this),i=o.nameToId(r),n=this.get(t);for(let s=i+1;s<o.OriginIdNum;++s)e.delete(t,s);e.set(t,n,i)},n.toJSON=function(t){return this.write({},t)},e}(t);return s=e.__decorate([n.subclass("esri.core.WriteableMultiOriginJSONSupport")],s),s.prototype.toJSON.isDefaultToJSON=!0,s};function p(t){return i.getProperties(t).store}const O=t=>{let i=function(t){function e(...r){return t.call(this,...r)||this}return r._inheritsLoose(e,t),e}(l(c.ReadOnlyMultiOriginJSONMixin(t)));return i=e.__decorate([n.subclass("esri.core.MultiOriginJSONSupport")],i),i};t.MultiOriginJSONSupport=function(t){function e(){return t.apply(this,arguments)||this}return r._inheritsLoose(e,t),e}(O(s)),t.MultiOriginJSONSupport=e.__decorate([n.subclass("esri.core.MultiOriginJSONSupport")],t.MultiOriginJSONSupport),t.MultiOriginJSONMixin=O,Object.defineProperty(t,"__esModule",{value:!0})}));

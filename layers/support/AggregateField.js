@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./OutStatistic"],(function(t,e,r,o,s,c,p,i,u,n,a,l){"use strict";var S;let y=S=function(e){function r(){var t;return(t=e.apply(this,arguments)||this).name=null,t}return t._inheritsLoose(r,e),r.prototype.clone=function(){return new S({name:this.name,outStatistic:this.outStatistic.clone()})},r}(a.JSONSupport);return e.__decorate([c.property({type:String,json:{write:!0}})],y.prototype,"name",void 0),e.__decorate([c.property({type:l,json:{write:!0}})],y.prototype,"outStatistic",void 0),y=S=e.__decorate([p.subclass("esri.layers.support.AggregateField")],y),y}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/Accessor","./Evented"],function(e,r,t,i,n,o,s){var a=function(e){function r(r){var t=e.call(this)||this;return t.providers={im:[],ground:[],scene:[]},t.handles=new Map,t.elevationChange=function(e){t.emit("elevation-change",e)},t.view=r,t}return t(r,e),r.prototype.getElevation=function(e,r){var t=-(1/0),i=!1;if("scene"===r)for(var n=0,o=this.providers.im;n<o.length;n++){var s=o[n],a=s.getElevation(e,r);null!=a&&(t=Math.max(a,t),!i&&isFinite(t)&&(i=!0))}if(!i)for(var l=0,p=this.providers.ground;l<p.length;l++){var s=p[l],a=s.getElevation(e,r);null!=a&&(t=Math.max(a,t))}if("scene"===r)for(var v=0,d=this.providers.scene;v<d.length;v++){var s=d[v],a=s.getElevation(e,r);null!=a&&(t=Math.max(a,t))}return isFinite(t)?t:null},r.prototype.register=function(e,r){this.handles.set(r,r.on("elevation-change",this.elevationChange)),this.providers[e].push(r)},r.prototype.unregister=function(e){this.handles.has(e)&&(this.handles.get(e).remove(),this.handles["delete"](e));for(var r=0,t=Object.keys(this.providers);r<t.length;r++){var i=t[r],n=this.providers[i].indexOf(e);n>-1&&this.providers[i].splice(n,1)}},r}(n.declared(o,s.Evented));return i([n.property({readOnly:!0})],a.prototype,"view",void 0),i([n.property({readOnly:!0,aliasOf:"view.basemapTerrain.spatialReference"})],a.prototype,"spatialReference",void 0),a=i([n.subclass("esri.views.3d.support.CombinedElevationProvider")],a)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/promiseUtils","../../../core/Accessor","../../../core/Evented","../layers/graphics/ElevationQuery"],(function(e,r,t,o,i,s,n,a,c,l,u,v,h,d,p,y){"use strict";function m(e,r,t,o,s,n,a){for(const c of r){const r=c.getElevation(t,o,s,n,a);i.isSome(r)&&(e=i.isSome(e)?Math.max(r,e):r)}return e}e.CombinedElevationProvider=function(e){function t(r){var t;return(t=e.call(this,r)||this).im=new Array,t.ground=new Array,t.scene=new Array,t.handles=new Map,t}r._inheritsLoose(t,e);var o=t.prototype;return o.destroy=function(){this._elevationQuery=i.destroyMaybe(this._elevationQuery)},o.getElevation=function(e,r,t,o,s){let n=null;return n=m(n,this.im,e,r,t,o,s),i.isNone(n)&&(n=m(n,this.ground,e,r,t,o,s)),"scene"===s&&(n=m(n,this.scene,e,r,t,o,s)),n},o.queryElevation=function(e,r,t,o,i,s=null,n=0){const a=h.createResolver();return this.elevationQuery.queryElevation(e,r,s,n).then((s=>{"scene"===i&&(s=m(s,this.scene,e,r,t,o,i)),a.resolve(s)})).catch((s=>{h.isAbortError(s)?a.reject(s):a.resolve(this.getElevation(e,r,t,o,i))})),a.promise},o.register=function(e,r){this.handles.set(r,r.on("elevation-change",(e=>this.emit("elevation-change",e)))),this[e].push(r)},o.unregister=function(e){this.handles.has(e)&&(this.handles.get(e).remove(),this.handles.delete(e));for(const r of[this.im,this.ground,this.scene]){const t=r.indexOf(e);t>-1&&r.splice(t,1)}},r._createClass(t,[{key:"elevationQuery",get:function(){return i.isNone(this._elevationQuery)&&(this._elevationQuery=new y.ElevationQuery(this.view.resourceController.scheduler,this.view.spatialReference,(()=>this.view.map&&this.view.map.ground),{maximumAutoTileRequests:4})),this._elevationQuery}}]),t}(p.EventedMixin(d)),t.__decorate([a.property({constructOnly:!0})],e.CombinedElevationProvider.prototype,"view",void 0),t.__decorate([a.property({readOnly:!0,aliasOf:"view.basemapTerrain.spatialReference"})],e.CombinedElevationProvider.prototype,"spatialReference",void 0),e.CombinedElevationProvider=t.__decorate([c.subclass("esri.views.3d.support.CombinedElevationProvider")],e.CombinedElevationProvider),Object.defineProperty(e,"__esModule",{value:!0})}));

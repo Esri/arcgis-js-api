@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/Warning","../SimpleRenderer","../UniqueValueRenderer","../ClassBreaksRenderer"],function(e,n,r,u){function t(e){return e?s[e.type]||null:null}var s={simple:n,uniqueValue:r,classBreaks:u},o={fromJson:function(e){try{throw new Error("fromJson is deprecated, use fromJSON instead")}catch(n){console.warn(n.stack)}return o.fromJSON(e)},read:function(n,r,u){if(n&&(n.styleName||n.styleUrl)&&"uniqueValue"!==n.type)return u&&u.messages&&u.messages.push(new e("renderer:unsupported","Only UniqueValueRenderer can be referenced from a web style, but found '"+n.type+"'",{definition:n,context:u})),null;var s=t(n);if(s){var o=new s;return o.read(n,u),o}return u&&u.messages&&n&&u.messages.push(new e("renderer:unsupported","Renderers of type '"+(n.type||"unknown")+"' are not supported",{definition:n,context:u})),null},fromJSON:function(e){var n=t(e);return n?n.fromJSON(e):null}};return o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/has","../../core/object","../../core/Warning","../../core/accessorSupport/extensions/serializableProperty/reader","../../core/Error","./types"],(function(e,r,n,s,t,u,a){"use strict";function o(e,r,s,t){const u=i(e,t);u&&n.setDeepValue(s,u,r)}function c(e,r){if(!r||"web-scene"!==r.origin)return!0;switch(e.type){case"simple":case"unique-value":case"class-breaks":return!0;case"heatmap":case"dictionary":case"dot-density":default:return!1}}function i(e,r){return e?c(e,r)?e.write({},r):(r.messages&&r.messages.push(new u("renderer:unsupported",`Renderer of type '${e.declaredClass}' are not supported in scenes.`,{renderer:e,context:r})),null):null}function l(e,r){return p(e,null,r)}const d=t.createTypeReader({types:a.rendererTypes});function p(e,r,n){return e?e&&(e.styleName||e.styleUrl)&&"uniqueValue"!==e.type?(n&&n.messages&&n.messages.push(new s("renderer:unsupported","Only UniqueValueRenderer can be referenced from a web style, but found '"+e.type+"'",{definition:e,context:n})),null):d(e,r,n):null}e.fromJSON=l,e.read=p,e.write=o,Object.defineProperty(e,"__esModule",{value:!0})}));

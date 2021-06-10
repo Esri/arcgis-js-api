@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/declare","dojo/Deferred","../core/Accessor","../core/Promise","../core/Scheduler","../core/Error"],function(e,t,i,s,n,r){var o={RUNNING:"running",FINISHED:"finished",STOPPED:"stopped"},d=e([i,s],{declaredClass:"esri.views.ViewAnimation",properties:{state:{value:null},target:{value:null}},constructor:function(){this._dfd=new t,this.addResolvingPromise(this._dfd.promise)},initialize:function(){this.state=o.RUNNING},stop:function(){this.state!==o.STOPPED&&this.state!==o.FINISHED&&(this.state=o.STOPPED,n.schedule(this._dfd.reject.bind(this._dfd,new r("ViewAnimation stopped"))))},finish:function(){this.state!==o.STOPPED&&this.state!==o.FINISHED&&(this.state=o.FINISHED,n.schedule(this._dfd.resolve))}});return d.State=o,d});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/promiseUtils","../core/Promise"],(function(e,t,s,r,i,o,n,a,p,c,u,d,h){"use strict";let l=function(t){function s(e){var s;return(s=t.call(this,e)||this).state="running",s.target=null,s}e._inheritsLoose(s,t);var r=s.prototype;return r.initialize=function(){this.addResolvingPromise(new Promise(((e,t)=>this._dfd={resolve:e,reject:t})))},r.stop=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","stopped"),this._dfd.reject(new a("ViewAnimation stopped")))},r.finish=function(){"stopped"!==this.state&&"finished"!==this.state&&(this._set("state","finished"),this._dfd.resolve())},r.update=function(e,t){t||(t=d.isPromiseLike(e)?"waiting-for-target":"running"),this._set("target",e),this._set("state",t)},e._createClass(s,[{key:"done",get:function(){return"finished"===this.state||"stopped"===this.state}}]),s}(h.EsriPromise);return t.__decorate([o.property({readOnly:!0})],l.prototype,"done",null),t.__decorate([o.property({readOnly:!0,type:String})],l.prototype,"state",void 0),t.__decorate([o.property()],l.prototype,"target",void 0),l=t.__decorate([n.subclass("esri.views.ViewAnimation")],l),function(e){e.State={RUNNING:"running",STOPPED:"stopped",FINISHED:"finished",WAITING_FOR_TARGET:"waiting-for-target"}}(l||(l={})),l}));

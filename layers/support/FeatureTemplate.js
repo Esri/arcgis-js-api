@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../core/kebabDictionary","../../core/lang"],function(o,e,r,t,i,l,n,p){var a=n({esriFeatureEditToolAutoCompletePolygon:"auto-complete-polygon",esriFeatureEditToolCircle:"circle",esriFeatureEditToolEllipse:"ellipse",esriFeatureEditToolFreehand:"freehand",esriFeatureEditToolLine:"line",esriFeatureEditToolNone:"none",esriFeatureEditToolPoint:"point",esriFeatureEditToolPolygon:"polygon",esriFeatureEditToolRectangle:"rectangle",esriFeatureEditToolArrow:"arrow",esriFeatureEditToolTriangle:"triangle",esriFeatureEditToolLeftArrow:"left-arrow",esriFeatureEditToolRightArrow:"right-arrow",esriFeatureEditToolUpArrow:"up-arrow",esriFeatureEditToolDownArrow:"down-arrow"}),u=function(o){function e(e){var r=o.call(this,e)||this;return r.name=null,r.description=null,r.drawingTool=null,r.prototype=null,r.thumbnail=null,r}return r(e,o),e.prototype.writeDrawingTool=function(o,e){e.drawingTool=a.toJSON(o)},e.prototype.writePrototype=function(o,e){e.prototype=p.fixJson(p.clone(o),!0)},e.prototype.writeThumbnail=function(o,e){e.thumbnail=p.fixJson(p.clone(o))},e}(i.declared(l));return t([i.property({json:{write:!0}})],u.prototype,"name",void 0),t([i.property({json:{write:!0}})],u.prototype,"description",void 0),t([i.property({json:{read:a.fromJSON,write:!0}})],u.prototype,"drawingTool",void 0),t([i.writer("drawingTool")],u.prototype,"writeDrawingTool",null),t([i.property({json:{write:!0}})],u.prototype,"prototype",void 0),t([i.writer("prototype")],u.prototype,"writePrototype",null),t([i.property({json:{write:!0}})],u.prototype,"thumbnail",void 0),t([i.writer("thumbnail")],u.prototype,"writeThumbnail",null),u=t([i.subclass("esri.layers.support.FeatureTemplate")],u)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,o,r,t,i,l,n,p,a,s,u,c,d,w){"use strict";const y=new p.JSONMap({esriFeatureEditToolAutoCompletePolygon:"auto-complete-polygon",esriFeatureEditToolCircle:"circle",esriFeatureEditToolEllipse:"ellipse",esriFeatureEditToolFreehand:"freehand",esriFeatureEditToolLine:"line",esriFeatureEditToolNone:"none",esriFeatureEditToolPoint:"point",esriFeatureEditToolPolygon:"polygon",esriFeatureEditToolRectangle:"rectangle",esriFeatureEditToolArrow:"arrow",esriFeatureEditToolTriangle:"triangle",esriFeatureEditToolLeftArrow:"left-arrow",esriFeatureEditToolRightArrow:"right-arrow",esriFeatureEditToolUpArrow:"up-arrow",esriFeatureEditToolDownArrow:"down-arrow"});let T=function(o){function r(e){var r;return(r=o.call(this,e)||this).name=null,r.description=null,r.drawingTool=null,r.prototype=null,r.thumbnail=null,r}e._inheritsLoose(r,o);var i=r.prototype;return i.writeDrawingTool=function(e,o){o.drawingTool=y.toJSON(e)},i.writePrototype=function(e,o){o.prototype=t.fixJson(t.clone(e),!0)},i.writeThumbnail=function(e,o){o.thumbnail=t.fixJson(t.clone(e))},r}(w.JSONSupport);return o.__decorate([n.property({json:{write:!0}})],T.prototype,"name",void 0),o.__decorate([n.property({json:{write:!0}})],T.prototype,"description",void 0),o.__decorate([n.property({json:{read:y.read,write:y.write}})],T.prototype,"drawingTool",void 0),o.__decorate([s.writer("drawingTool")],T.prototype,"writeDrawingTool",null),o.__decorate([n.property({json:{write:!0}})],T.prototype,"prototype",void 0),o.__decorate([s.writer("prototype")],T.prototype,"writePrototype",null),o.__decorate([n.property({json:{write:!0}})],T.prototype,"thumbnail",void 0),o.__decorate([s.writer("thumbnail")],T.prototype,"writeThumbnail",null),T=o.__decorate([a.subclass("esri.layers.support.FeatureTemplate")],T),T}));

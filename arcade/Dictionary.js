@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./languageUtils","../geometry/Geometry","./ImmutableArray"],function(t,i,r,e,s){var n=function(){function t(i){this.attributes=null,this.plain=!1,this.immutable=!0,i instanceof t?this.attributes=i.attributes:void 0===i?this.attributes={}:null===i?this.attributes={}:this.attributes=i}return t.prototype.field=function(t){var i=t.toLowerCase(),r=this.attributes[t];if(void 0!==r)return r;for(var e in this.attributes)if(e.toLowerCase()===i)return this.attributes[e];throw new Error("Field not Found")},t.prototype.setField=function(t,i){if(this.immutable)throw new Error("Dictionary is Immutable");var r=t.toLowerCase(),e=this.attributes[t];if(void 0!==e)return void(this.attributes[t]=i);for(var s in this.attributes)if(s.toLowerCase()===r)return void(this.attributes[s]=i);this.attributes[t]=i},t.prototype.hasField=function(t){var i=t.toLowerCase(),r=this.attributes[t];if(void 0!==r)return!0;for(var e in this.attributes)if(e.toLowerCase()===i)return!0;return!1},t.prototype.keys=function(){var t=[];for(var i in this.attributes)t.push(i);return t=t.sort()},t.prototype.castToText=function(){var t="";for(var i in this.attributes){""!==t&&(t+=",");var n=this.attributes[i];null==n?n="null":r.isBoolean(n)||r.isNumber(n)||r.isString(n)?t+=JSON.stringify(i)+":"+JSON.stringify(n):n instanceof e?t+=JSON.stringify(i)+":"+r.toStringExplicit(n):n instanceof s?t+=JSON.stringify(i)+":"+r.toStringExplicit(n):n instanceof Array?t+=JSON.stringify(i)+":"+r.toStringExplicit(n):n instanceof Date?t+=JSON.stringify(i)+":"+JSON.stringify(n):null!==n&&"object"==typeof n&&void 0!==n.castToText&&(t+=JSON.stringify(i)+":"+n.castToText())}return"{"+t+"}"},t}();return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../geometry/Geometry","./ImmutableArray","../chunks/languageUtils"],(function(t,i,e){"use strict";function s(t){let i=null;if(null===t);else if(e.isNumber(t))i=e.toNumber(t);else if(e.isBoolean(t))i=e.toBoolean(t);else if(e.isString(t))i=e.toString(t);else if(e.isDate(t))i=e.toDate(t);else if(e.isArray(t)){i=[];for(const e of t)i.push(s(e))}else{if(0===Object.keys(t).length)return null;const e=new n;e.immutable=!1;for(const i of Object.keys(t)){const n=t[i];void 0!==n&&e.setField(i,s(n))}e.immutable=!0,i=e}return i}let n=function(){function n(t){this.declaredClass="esri.arcade.Dictionary",this.attributes=null,this.plain=!1,this.immutable=!0,this.attributes=t instanceof n?t.attributes:null==t?{}:t}var r=n.prototype;return r.field=function(t){const i=t.toLowerCase(),e=this.attributes[t];if(void 0!==e)return e;for(const s in this.attributes)if(s.toLowerCase()===i)return this.attributes[s];throw new Error("Field not Found : "+t)},r.setField=function(t,i){if(this.immutable)throw new Error("Dictionary is Immutable");const e=t.toLowerCase();if(void 0===this.attributes[t]){for(const t in this.attributes)if(t.toLowerCase()===e)return void(this.attributes[t]=i);this.attributes[t]=i}else this.attributes[t]=i},r.hasField=function(t){const i=t.toLowerCase();if(void 0!==this.attributes[t])return!0;for(const e in this.attributes)if(e.toLowerCase()===i)return!0;return!1},r.keys=function(){let t=[];for(const i in this.attributes)t.push(i);return t=t.sort(),t},r.castToText=function(){let s="";for(const n in this.attributes){""!==s&&(s+=",");const r=this.attributes[n];null==r?s+=JSON.stringify(n)+":null":e.isBoolean(r)||e.isNumber(r)||e.isString(r)?s+=JSON.stringify(n)+":"+JSON.stringify(r):r instanceof t||r instanceof i||r instanceof Array?s+=JSON.stringify(n)+":"+e.toStringExplicit(r):r instanceof Date?s+=JSON.stringify(n)+":"+JSON.stringify(r):null!==r&&"object"==typeof r&&void 0!==r.castToText&&(s+=JSON.stringify(n)+":"+r.castToText())}return"{"+s+"}"},n.convertObjectToArcadeDictionary=function(t){const i=new n;i.immutable=!1;for(const e in t){const n=t[e];void 0!==n&&i.setField(e.toString(),s(n))}return i.immutable=!0,i},n}();return n}));

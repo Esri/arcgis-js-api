@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../../core/Accessor"],function(t){var e=t.createSubclass({properties:{quality:{}},quality:"low",_qualitySetter:function(t){var e=["low","high"];-1!==e.indexOf(t)&&this._set("quality",t)},clone:function(){return new this.constructor({quality:this.quality})}});return e});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor"],(function(e,r,o,t,s,c,i,n,u,p,l,a){"use strict";var h;e.SceneViewAtmosphere=h=function(e){function o(){return e.apply(this,arguments)||this}return r._inheritsLoose(o,e),o.prototype.clone=function(){return new h({quality:this.quality})},r._createClass(o,[{key:"quality",set:function(e){-1!==["low","high"].indexOf(e)&&this._set("quality",e)}}]),o}(a),o.__decorate([i.property({type:["low","high"],value:"low"})],e.SceneViewAtmosphere.prototype,"quality",null),e.SceneViewAtmosphere=h=o.__decorate([n.subclass("esri.views.3d.environment.SceneViewAtmosphere")],e.SceneViewAtmosphere);var y=e.SceneViewAtmosphere;e.default=y,Object.defineProperty(e,"__esModule",{value:!0})}));

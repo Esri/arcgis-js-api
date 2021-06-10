@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,l,s,y){var n=a=function(e){function r(r){var o=e.call(this)||this;return o.type="polygon-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new a({styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},r.fromJSON=function(e){var r=new a;if(r.read(e),2===r.symbolLayers.length&&"fill"===r.symbolLayers.getItemAt(0).type&&"line"===r.symbolLayers.getItemAt(1).type){var o=r.symbolLayers.getItemAt(0),t=r.symbolLayers.getItemAt(1);!t.enabled||e.symbolLayers&&e.symbolLayers[1]&&e.symbolLayers[1].enable===!1||(o.outline={size:t.size,color:t.material.color}),r.symbolLayers.removeAt(1)}return r},r}(y.declared(s));t([y.property()],n.prototype,"type",void 0),t([y.shared(["extrude","fill","line","icon","object","text"])],n.prototype,"_allowedLayerTypes",void 0),n=a=t([y.subclass("esri.symbols.PolygonSymbol3D")],n);var a;return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/maybe","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","./ExtrudeSymbol3DLayer","./FillSymbol3DLayer","./IconSymbol3DLayer","./LineSymbol3DLayer","./ObjectSymbol3DLayer","./TextSymbol3DLayer","./WaterSymbol3DLayer","./Symbol3D"],(function(e,o,r,t,l,s,y,n,a,c,i,m,p,b,u,L,S,d,f,g,h,w,D,_){"use strict";var x;const v=L.ofType({base:null,key:"type",typeMap:{extrude:S,fill:d,icon:f,line:g,object:h,text:w,water:D}}),A=L.ofType({base:null,key:"type",typeMap:{extrude:S,fill:d,icon:f,line:g,object:h,water:D}});let I=x=function(o){function r(e){var r;return(r=o.call(this,e)||this).symbolLayers=new v,r.type="polygon-3d",r}e._inheritsLoose(r,o);var s=r.prototype;return s.writeSymbolLayers=function(e,o,r,t){const l=e.filter((e=>"text"!==e.type));if(t&&t.messages&&l.length<e.length){const o=e.find((e=>"text"===e.type));t.messages.push(new m("symbol-layer:unsupported","Symbol layers of type 'text' cannot be persisted in PolygonSymbol3D",{symbolLayer:o}))}o[r]=l.map((e=>e.write({},t))).toArray()},s.clone=function(){return new x({styleOrigin:t.clone(this.styleOrigin),symbolLayers:t.clone(this.symbolLayers),thumbnail:t.clone(this.thumbnail)})},r.fromJSON=function(e){const o=new x;if(o.read(e),2===o.symbolLayers.length&&"fill"===o.symbolLayers.getItemAt(0).type&&"line"===o.symbolLayers.getItemAt(1).type){const r=o.symbolLayers.getItemAt(0),t=o.symbolLayers.getItemAt(1);!t.enabled||e.symbolLayers&&e.symbolLayers[1]&&!1===e.symbolLayers[1].enable||(r.outline={size:t.size,color:l.isSome(t.material)?t.material.color:null}),o.symbolLayers.removeAt(1)}return o},r.fromSimpleFillSymbol=function(e){return new x({symbolLayers:[d.fromSimpleFillSymbol(e)]})},r}(_);return o.__decorate([n.property({type:v,json:{type:A}})],I.prototype,"symbolLayers",void 0),o.__decorate([i.writer("web-scene","symbolLayers")],I.prototype,"writeSymbolLayers",null),o.__decorate([a.enumeration({PolygonSymbol3D:"polygon-3d"},{readOnly:!0})],I.prototype,"type",void 0),I=x=o.__decorate([c.subclass("esri.symbols.PolygonSymbol3D")],I),I}));

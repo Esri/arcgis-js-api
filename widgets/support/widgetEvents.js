@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,o){function u(e){var o={};return t.forEach(function(u){o["on"+u]=function(o){e.emit.call(e,u,o)}}),o}function n(e){return!!t[e]}Object.defineProperty(o,"__esModule",{value:!0});var t=["blur","change","click","dblclick","focus","input","keydown","keypress","keyup","load","mousedown","mouseenter","mouseleave","mousemove","mouseout","mouseover","mouseup","mousewheel","scroll","submit","touchcancel","touchend","touchmove","touchstart"];o.domEvents=u,o.isVNodeEvent=n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";const o=["blur","change","click","dblclick","focus","input","keydown","keypress","keyup","load","mousedown","mouseenter","mouseleave","mousemove","mouseout","mouseover","mouseup","mousewheel","scroll","submit","touchcancel","touchend","touchmove","touchstart"];function u(e){const u={};return o.forEach((o=>{u[`on${o}`]=function(u){e.emit.call(e,o,u)}})),u}function t(e){return!!o[e]}e.domEvents=u,e.isVNodeEvent=t,Object.defineProperty(e,"__esModule",{value:!0})}));

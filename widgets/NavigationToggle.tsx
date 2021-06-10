@@ -8,7 +8,7 @@
  * ![navigation-toggle](../assets/img/apiref/widgets/navigation-toggle.png)
  *
  * The default navigation mode of the {@link module:esri/views/SceneView} is always
- * `pan`. The various mouse interations of this mode are outlined
+ * `pan`. The various mouse interactions of this mode are outlined
  * [here](../api-reference/esri-views-SceneView.html#navigation).
  * The alternate navigation mode to toggle to is `rotate`. This allows the user to
  * rotate the view with a mouse drag and pan the view with a right-click and drag
@@ -21,7 +21,7 @@
  * @module esri/widgets/NavigationToggle
  * @since 4.0
  *
- * @see [NavigationToggle.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/NavigationToggle.tsx)
+ * @see [NavigationToggle.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/NavigationToggle.tsx)
  * @see module:esri/widgets/NavigationToggle/NavigationToggleViewModel
  * @see [SceneView navigation](../api-reference/esri-views-SceneView.html)
  * @see {@link module:esri/views/View#ui View.ui}
@@ -37,21 +37,29 @@
  * view.ui.add(navigationToggle, "top-right");
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import {aliasOf, declared, property, subclass} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable} from "./support/widget";
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import Widget = require("./Widget");
-import NavigationToggleViewModel = require("./NavigationToggle/NavigationToggleViewModel");
-import View = require("../views/View");
+// esri.widgets
+import Widget from "esri/widgets/Widget";
 
-import * as i18n from "dojo/i18n!./NavigationToggle/nls/NavigationToggle";
+// esri.widgets.NavigationToggle
+import NavigationToggleViewModel from "esri/widgets/NavigationToggle/NavigationToggleViewModel";
+
+// esri.widgets.NavigationToggle.t9n
+import NavigationToggleMessages from "esri/widgets/NavigationToggle/t9n/NavigationToggle";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-navigation-toggle esri-widget",
-  button: "esri-navigation-toggle__button esri-widget-button",
+  button: "esri-navigation-toggle__button esri-widget--button",
   activeButton: "esri-navigation-toggle__button--active",
   panButton: "esri-navigation-toggle__button--pan",
   rotateButton: "esri-navigation-toggle__button--rotate",
@@ -59,6 +67,7 @@ const CSS = {
   // icons
   rotationIcon: "esri-icon-rotate",
   panIcon: "esri-icon-pan",
+  widgetIcon: "esri-icon-pan2",
   // common
   disabled: "esri-disabled"
 };
@@ -66,8 +75,7 @@ const CSS = {
 type LayoutMode = "vertical" | "horizontal";
 
 @subclass("esri.widgets.NavigationToggle")
-class NavigationToggle extends declared(Widget) {
-
+class NavigationToggle extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -87,8 +95,8 @@ class NavigationToggle extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -96,6 +104,38 @@ class NavigationToggle extends declared(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
 
   //----------------------------------
   //  layout
@@ -112,7 +152,7 @@ class NavigationToggle extends declared(Widget) {
    *
    * @name layout
    * @instance
-   * @type {string}
+   * @type {"vertical" | "horizontal"}
    * @default vertical
    *
    * @example
@@ -122,10 +162,7 @@ class NavigationToggle extends declared(Widget) {
    *   layout: "horizontal"  // makes the layout horizontal
    * });
    */
-  @property({
-    value: "vertical"
-  })
-  @renderable()
+  @property({ value: "vertical" })
   set layout(value: LayoutMode) {
     if (value !== "horizontal") {
       value = "vertical";
@@ -133,6 +170,24 @@ class NavigationToggle extends declared(Widget) {
 
     this._set("layout", value);
   }
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/NavigationToggle/t9n/NavigationToggle")
+  messages: NavigationToggleMessages = null;
 
   //----------------------------------
   //  view
@@ -147,8 +202,7 @@ class NavigationToggle extends declared(Widget) {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -168,10 +222,6 @@ class NavigationToggle extends declared(Widget) {
   @property({
     type: NavigationToggleViewModel
   })
-  @renderable([
-    "viewModel.state",
-    "viewModel.navigationMode"
-  ])
   viewModel = new NavigationToggleViewModel();
 
   //--------------------------------------------------------------------------
@@ -187,15 +237,17 @@ class NavigationToggle extends declared(Widget) {
    * @method toggle
    * @instance
    */
-  @aliasOf("viewModel.toggle")
-  toggle(): void {}
+  toggle(): void {
+    return this.viewModel.toggle();
+  }
 
-  render() {
+  render(): VNode {
     const disabled = this.get<string>("viewModel.state") === "disabled";
     const panSelected = this.get<string>("viewModel.navigationMode") === "pan";
 
     const rootClasses = {
-      [CSS.disabled]: disabled
+      [CSS.disabled]: disabled,
+      [CSS.isLayoutHorizontal]: this.layout === "horizontal"
     };
 
     const panButtonClasses = {
@@ -207,15 +259,22 @@ class NavigationToggle extends declared(Widget) {
     };
 
     const tabIndex = disabled ? -1 : 0;
+    const title = this.messages.toggle;
 
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           onclick={this._toggle} onkeydown={this._toggle}
-           tabIndex={tabIndex} title={i18n.toggle}>
-        <div class={join(CSS.button, CSS.panButton)} classes={panButtonClasses}>
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
+        onclick={this._toggle}
+        onkeydown={this._toggle}
+        tabIndex={tabIndex}
+        aria-label={title}
+        title={title}
+      >
+        <div class={this.classes(CSS.button, CSS.panButton, panButtonClasses)}>
           <span class={CSS.panIcon} />
         </div>
-        <div class={join(CSS.button, CSS.rotateButton)} classes={rotateButtonClasses}>
+        <div class={this.classes(CSS.button, CSS.rotateButton, rotateButtonClasses)}>
           <span class={CSS.rotationIcon} />
         </div>
       </div>
@@ -229,10 +288,9 @@ class NavigationToggle extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _toggle() {
+  private _toggle(): void {
     this.toggle();
   }
-
 }
 
-export = NavigationToggle;
+export default NavigationToggle;

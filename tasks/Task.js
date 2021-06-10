@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","../core/Accessor","../core/urlUtils"],function(e,r,t){var l=r.createSubclass({declaredClass:"esri.tasks.Task",normalizeCtorArgs:function(r,t){if("string"!=typeof r)return r;var l={};return r&&(l.url=r),t&&e.mixin(l,t),l},properties:{normalization:{value:!0},parsedUrl:{value:null,readOnly:!0,dependsOn:["url"],get:function(){return this._parseUrl(this.url)}},requestOptions:{value:null},url:{value:null,type:String}},_parseUrl:function(e){return e?t.urlToObject(e):null},_useSSL:function(){var e=this.parsedUrl,r=/^http:/i,t="https:";this.url&&this.set("url",this.url.replace(r,t)),e&&e.path&&(e.path=e.path.replace(r,t))},_encode:function(r,t,l){var s,n,a,i,u,o={};for(a in r)if("declaredClass"!==a&&(s=r[a],n=typeof s,null!==s&&void 0!==s&&"function"!==n))if(e.isArray(s))for(o[a]=[],u=s.length,i=0;u>i;i++)o[a][i]=this._encode(s[i]);else if("object"===n){if(s.toJSON){var c=s.toJSON(l&&l[a]);"esri.tasks.support.FeatureSet"===s.declaredClass&&c.spatialReference&&(c.sr=c.spatialReference,delete c.spatialReference),o[a]=t?c:JSON.stringify(c)}}else o[a]=s;return o}});return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Accessor"],(function(r,e,t,o,s,n,c,u,l,i,p){"use strict";let a=function(e){function t(...r){var t;return(t=e.call(this,...r)||this).requestOptions=null,t.url=null,t}r._inheritsLoose(t,e);var o=t.prototype;return o.normalizeCtorArgs=function(r,e){return"string"!=typeof r?r:{url:r,...e}},o._parseUrl=function(r){return r?u.urlToObject(r):null},o._encode=function(r,e,t){const o={};for(const s in r){if("declaredClass"===s)continue;const n=r[s];if(null!=n&&"function"!=typeof n)if(Array.isArray(n)){o[s]=[];for(let r=0;r<n.length;r++)o[s][r]=this._encode(n[r])}else if("object"==typeof n)if(n.toJSON){const r=n.toJSON(t&&t[s]);o[s]=e?r:JSON.stringify(r)}else o[s]=e?n:JSON.stringify(n);else o[s]=n}return o},r._createClass(t,[{key:"parsedUrl",get:function(){return this._parseUrl(this.url)}}]),t}(p);return e.__decorate([n.property({readOnly:!0})],a.prototype,"parsedUrl",null),e.__decorate([n.property()],a.prototype,"requestOptions",void 0),e.__decorate([n.property({type:String})],a.prototype,"url",void 0),a=e.__decorate([c.subclass("esri.tasks.Task")],a),a}));

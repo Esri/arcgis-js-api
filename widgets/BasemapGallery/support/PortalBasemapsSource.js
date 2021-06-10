@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/watchUtils","../../../Basemap","../../../core/Collection","../../../core/HandleRegistry","../../../portal/Portal","./LocalBasemapsSource"],function(t,e,r,a,o,s,n,l,i,p,u){var c=l.ofType(n),h=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._handles=new i,e.basemaps=new c,e.filterFunction=null,e.portal=null,e}return r(e,t),e.prototype.initialize=function(){var t=this;this._handles.add([s.init(this,["filterFunction","portal.basemapGalleryGroupQuery","portal.user"],function(){return t.refresh()})])},e.prototype.destroy=function(){this._handles.destroy(),this._handles=null,this.filterFunction=null,this.portal=null},Object.defineProperty(e.prototype,"state",{get:function(){return this._get("state")},enumerable:!0,configurable:!0}),e.prototype.refresh=function(){var t=this;this._set("state","loading"),this._lastPortalBasemapFetch&&(this._lastPortalBasemapFetch.cancel(),this._lastPortalBasemapFetch=null);var e=this.portal;if(!e)return this.basemaps.removeAll(),void this._set("state","ready");var r=!1,a=function(){return r=!0};this._lastPortalBasemapFetch={cancel:function(){a()}},e.load().then(function(){return r?void 0:e.fetchBasemaps()}).then(function(e){if(!r){var a=t.filterFunction?e.filter(t.filterFunction):e;t.basemaps.removeAll(),t.basemaps.addMany(a)}}).otherwise(function(){r||t.basemaps.removeAll()}).then(function(){r||t._set("state","ready")})},e}(o.declared(u));return a([o.property({readOnly:!0,type:c})],h.prototype,"basemaps",void 0),a([o.property()],h.prototype,"filterFunction",void 0),a([o.property({type:p})],h.prototype,"portal",void 0),a([o.property({readOnly:!0,value:"loading"})],h.prototype,"state",null),h=a([o.subclass("esri.widgets.BasemapGallery.support.PortalBasemapsSource")],h)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/Error","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/promiseUtils","../../../core/Collection","../../../core/Promise","../../../core/Loadable","../../../portal/Portal","../../../Basemap","../../../core/Handles","../../../core/watchUtils","./LocalBasemapsSource"],(function(t,e,r,a,o,s,l,i,n,p,c,u,h,d,y,m,f,_,b,B){"use strict";const g=h.ofType(f),C="esri.widgets.BasemapGallery.support.PortalBasemapsSource",P=a.getLogger(C);let F=function(e){function r(t){var r;return(r=e.call(this,t)||this)._handles=new _,r.basemaps=new g,r.filterFunction=null,r.portal=m.getDefault(),r.query=null,r.updateBasemapsCallback=null,r}t._inheritsLoose(r,e);var a=r.prototype;return a.initialize=function(){this._handles.add([b.init(this,["filterFunction","loadStatus","portal.basemapGalleryGroupQuery","portal.user","query","updateBasemapsCallback"],(()=>this.refresh()))])},a.destroy=function(){this._handles.destroy(),this._handles=null,this.filterFunction=null,this.portal=null},a.load=function(t){return this.addResolvingPromise(this.portal.load(t)),this.notifyChange("state"),Promise.resolve(this)},a.refresh=async function(){if("ready"!==this.state)return;this._lastPortalBasemapFetchController&&(this._lastPortalBasemapFetchController.abort(),this._lastPortalBasemapFetchController=null);const t=this.portal,e=new AbortController;this._lastPortalBasemapFetchController=e,this.notifyChange("state");try{const r=await t.fetchBasemaps(this._toQueryString(this.query),e);this._updateBasemaps(r)}catch(r){if(u.isAbortError(r))throw r;P.warn(new i("basemap-source:fetch-basemaps-error","Could not fetch basemaps from portal.",{error:r})),this._updateBasemaps()}this._lastPortalBasemapFetchController=null,this.notifyChange("state")},a._toQueryString=function(t){return t&&"string"!=typeof t?Object.keys(t).map((e=>`${e}:${t[e]}`)).join(" AND "):t},a._updateBasemaps=function(t=[]){let e=this.filterFunction?t.filter(this.filterFunction):t;e=this.updateBasemapsCallback?this.updateBasemapsCallback(e):e,this.basemaps.removeAll(),this.basemaps.addMany(e)},t._createClass(r,[{key:"state",get:function(){return"not-loaded"===this.loadStatus?"not-loaded":"loading"===this.loadStatus||this._lastPortalBasemapFetchController?"loading":"ready"}}]),r}(y.LoadableMixin(d.EsriPromiseMixin(B)));return e.__decorate([s.property({readOnly:!0,type:g})],F.prototype,"basemaps",void 0),e.__decorate([s.property()],F.prototype,"filterFunction",void 0),e.__decorate([s.property({type:m})],F.prototype,"portal",void 0),e.__decorate([s.property()],F.prototype,"query",void 0),e.__decorate([s.property({readOnly:!0})],F.prototype,"state",null),e.__decorate([s.property()],F.prototype,"updateBasemapsCallback",void 0),F=e.__decorate([l.subclass(C)],F),F}));

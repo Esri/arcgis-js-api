@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,n,i,o){Object.defineProperty(t,"__esModule",{value:!0});var a=function(e){function t(t,n){var i=e.call(this,"esri.views.2d.input.handlers.DoubleClickZoom",!0)||this;return i.view=t,i.registerIncoming("double-click",n,function(e){return i._handleDoubleClick(e,n)}),i}return n(t,e),t.prototype._handleDoubleClick=function(e,t){o.eventMatchesPointerType(e.data["native"],"primary")&&(e.stopPropagation(),t?this.view.navigation.zoomOut([e.data.x,e.data.y]):this.view.navigation.zoomIn([e.data.x,e.data.y]))},t}(i.InputHandler);t.DoubleClickZoom=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../input/InputHandler","../../../input/handlers/support"],(function(e,t,i,n){"use strict";let o=function(e){function i(t,i){var n;return(n=e.call(this,!0)||this).view=t,n.registerIncoming("double-click",i,(e=>n._handleDoubleClick(e,i))),n}return t._inheritsLoose(i,e),i.prototype._handleDoubleClick=function(e,t){n.eventMatchesPointerAction(e.data,"primary")&&(e.stopPropagation(),t?this.view.mapViewNavigation.zoomOut([e.data.x,e.data.y]):this.view.mapViewNavigation.zoomIn([e.data.x,e.data.y]))},i}(i.InputHandler);e.DoubleClickZoom=o,Object.defineProperty(e,"__esModule",{value:!0})}));

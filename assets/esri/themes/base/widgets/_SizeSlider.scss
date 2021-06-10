@@ -1,0 +1,7 @@
+@mixin sizeSlider() {
+  @include smartMappingSlider(esri-size-slider);
+}
+
+@if $include_SizeSlider == true {
+  @include sizeSlider();
+}

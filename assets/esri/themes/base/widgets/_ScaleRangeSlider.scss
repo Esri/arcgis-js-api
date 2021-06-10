@@ -1,0 +1,179 @@
+@mixin scaleRangeSlider() {
+  $slider-track-thickness: 2px;
+  $slider-bounds-offset: 9px;
+  $scale-indicator-half-size: 4px;
+
+  .esri-scale-range-slider {
+    background-color: transparent;
+    min-width: 310px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .esri-slider {
+      background-color: transparent;
+      // account for thumbs in wrapper
+      padding: $slider-bounds-offset ($slider-bounds-offset + 2) $slider-bounds-offset $slider-bounds-offset;
+
+      &__segment-1 {
+        // active scale range segment
+        background-color: $button-color;
+        height: 4px;
+      }
+    }
+
+    &.esri-widget {
+      box-shadow: none;
+    }
+
+    &.esri-disabled {
+      opacity: $opacity--disabled;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  .esri-scale-range-slider__scale-indicator-container {
+    position: absolute;
+    left: $slider-bounds-offset;
+    right: $slider-bounds-offset + 2;
+  }
+
+  .esri-scale-range-slider__scale-indicator {
+    top: $slider-track-thickness + $slider-bounds-offset;
+    margin-left: -$scale-indicator-half-size;
+    width: 1px;
+    position: relative;
+    transition-property: left;
+    transition-duration: 0.2s;
+  }
+
+  .esri-scale-range-slider__scale-indicator-icon {
+    fill: #323232;
+  }
+
+  .esri-scale-range-slider__scale-menu-container {
+    margin-top: $cap-spacing;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .esri-scale-range-slider__scale-menu-toggle {
+    color: $button-color;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: $font-size;
+    white-space: nowrap;
+  }
+
+  .esri-scale-range-slider__scale-menu-toggle--active {
+    font-weight: $font-weight--bold;
+  }
+
+  .esri-scale-range-slider__scale-menu-toggle-icon {
+    font-size: $font-size--small;
+    margin: 0 $side-spacing--half;
+  }
+
+  .esri-scale-range-slider__scale-preview {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: $background-color;
+    padding: $cap-spacing--half $side-spacing--half;
+    @include defaultBoxShadow();
+  }
+
+  .esri-scale-range-slider__scale-preview-thumbnail {
+    display: block;
+    box-sizing: border-box;
+
+    /*
+      workaround to prevent webkit from adding a border
+
+      padding: 64px;
+
+      instead of
+
+      height: 128px;
+      width: 128px;
+
+      see: http://stackoverflow.com/questions/4743127/chrome-safari-display-border-around-image
+    */
+    padding: 64px;
+  }
+
+  .esri-scale-range-slider__scale-menu {
+    @include defaultBoxShadow();
+    font-family: $font-family;
+    font-size: $font-size;
+    border-radius: $border-radius;
+    background-color: $background-color;
+    color: $font-color;
+  }
+
+  .esri-scale-range-slider__scale-menu-list {
+    min-width: 200px;
+    padding: $cap-spacing--half 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+  }
+
+  .esri-scale-range-slider__scale-menu-item {
+    display: flex;
+    flex-direction: column;
+    padding: $cap-spacing--half $side-spacing--half;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .esri-scale-range-slider__scale-menu-item:hover,
+  .esri-scale-range-slider__scale-menu-item:focus {
+    background-color: $background-color--hover;
+  }
+
+  .esri-scale-range-slider__scale-menu-scroller {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .esri-scale-range-slider__scale-item-label {
+    padding-bottom: 4px;
+  }
+
+  .esri-scale-range-slider__scale-item-label::before {
+    content: "•";
+    color: transparent;
+    margin: 0 $side-spacing--half 0;
+  }
+
+  .esri-scale-range-slider__scale-menu-item--current-scale {
+    .esri-scale-range-slider__scale-item-label::before {
+      color: $button-color;
+    }
+  }
+
+  .esri-scale-range-slider__scale-menu-item:hover {
+    .esri-scale-range-slider__scale-item-label::before {
+      color: $interactive-font-color--disabled;
+    }
+  }
+
+  .esri-scale-range-slider__scale-item-value {
+    color: $interactive-font-color;
+    font-size: $font-size--small;
+    margin: 0 $side-spacing--double;
+  }
+
+  .esri-scale-range-slider__scale-item-value--editable {
+    width: 14ch;
+  }
+}
+
+@if $include_ScaleRangeSlider == true {
+  @include scaleRangeSlider();
+}

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/HandleRegistry","./LayerView2D","./support/ExportStrategy","../engine/BitmapSource","../engine/Canvas2DContainer"],function(t,e,n,r,i,o,a,s,p,u){var c=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._handles=new o,e.container=new u,e}return n(e,t),e.prototype.hitTest=function(t,e){return null},e.prototype.update=function(t){this._strategy.update(t),this.notifyChange("updating")},e.prototype.attach=function(){this._strategy=new s({container:this.container,fetchImage:this.fetchBitmapSource.bind(this),requestUpdate:this.requestUpdate.bind(this)})},e.prototype.detach=function(){this.container.removeAllChildren(),this._strategy.destroy(),this._handles.removeAll(),this._strategy=null},e.prototype.moveStart=function(){},e.prototype.viewChange=function(){},e.prototype.moveEnd=function(){this.requestUpdate()},e.prototype.fetchBitmapSource=function(t,e,n){var r=this;return this.layer.fetchImage(t,e,n).then(function(t){return r.notifyChange("updating"),new p(t)})},e.prototype.isUpdating=function(){return this.attached&&(this._strategy.updating||this.updateRequested)},e}(i.declared(a));return c=r([i.subclass("esri.views.2d.layers.BaseDynamicLayerView2D")],c)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/promiseUtils","../../layers/RefreshableLayerView","../../layers/LayerView","../engine/BitmapContainer","./LayerView2D","./support/ExportStrategy"],(function(e,t,r,i,s,a,n,o,c,p,u,h,d,y,l,f){"use strict";const g=i.getLogger("esri.views.2d.layers.BaseDynamicLayerView2D");let m=function(t){function r(){return t.apply(this,arguments)||this}e._inheritsLoose(r,t);var i=r.prototype;return i.hitTest=function(){return null},i.update=function(e){this.strategy.update(e).catch((e=>{u.isAbortError(e)||g.error(e)})),this.notifyChange("updating")},i.attach=function(){this._bitmapContainer=new y.BitmapContainer,this.container.addChild(this._bitmapContainer),this.strategy=new f({container:this._bitmapContainer,fetchSource:this.fetchBitmapData.bind(this),requestUpdate:this.requestUpdate.bind(this)})},i.detach=function(){this.strategy.destroy(),this.strategy=null,this.container.removeChild(this._bitmapContainer),this._bitmapContainer.removeAllChildren()},i.moveStart=function(){},i.viewChange=function(){},i.moveEnd=function(){this.requestUpdate()},i.fetchBitmapData=function(e,t,r){return this.layer.fetchImage(e,t,r,{timestamp:this.refreshTimestamp})},i.doRefresh=async function(){this.requestUpdate()},i.isUpdating=function(){return this.strategy.updating||this.updateRequested},r}(h.RefreshableLayerView(l.LayerView2DMixin(d)));return t.__decorate([a.property()],m.prototype,"strategy",void 0),t.__decorate([a.property()],m.prototype,"updating",void 0),m=t.__decorate([n.subclass("esri.views.2d.layers.BaseDynamicLayerView2D")],m),m}));

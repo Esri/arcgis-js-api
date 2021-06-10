@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","./TileKey"],function(e,t,i,r){function l(e,t){e["delete"](t)}var a=new r(0,0,0,0),n=new Map,s=[],o=[],h=function(){function e(e){this._previousResolution=Number.POSITIVE_INFINITY,this.cachePolicy="keep",this.tileIndex=new Map,this.tiles=[],this.acquireTile=e.acquireTile,this.releaseTile=e.releaseTile,this.tileInfoView=e.tileInfoView,e.cachePolicy&&(this.cachePolicy=e.cachePolicy)}return e.prototype.destroy=function(){this.tileIndex.clear()},e.prototype.update=function(e){var t=this,i=this.tileIndex,r=this.tileInfoView.getTileCoverage(e.state);if(r){var h=r.spans,c=r.lodInfo,u=c.level,f=e.state.resolution,d=!e.stationary&&f>this._previousResolution;this._previousResolution=f,this.tiles.length=0,n.clear();var p=0,v=0;if(h.length>0)for(var g=0,I=h;g<I.length;g++)for(var T=I[g],y=T.row,P=T.colFrom,w=T.colTo,x=P;w>=x;x++){p++;var _=a.set(u,y,c.normalizeCol(x),c.getWorldForColumn(x)).id;if(i.has(_)){var V=i.get(_);if(V.attached){n.set(_,V),v++;continue}V.attached||d||this._addParentTile(_,n)}else{var V=this.acquireTile(a);this.tileIndex.set(_,V),d||this._addParentTile(_,n)}}var k=v===p;o.length=0,s.length=0,i.forEach(function(e,i){if(a.set(i),!n.has(i)){var l=t.tileInfoView.intersects(r,a);!l||!d&&k?"purge"===t.cachePolicy?s.push(i):(a.level>u||!l)&&s.push(i):e.attached?o.push(i):d&&s.push(i)}});for(var m=0,q=o;m<q.length;m++){var _=q[m],V=i.get(_);V&&V.attached&&n.set(_,V)}for(var C=0,E=s;C<E.length;C++){var _=E[C],V=i.get(_);this.releaseTile(V),l(i,_)}n.forEach(function(e){return t.tiles.push(e)}),o.length=0,s.length=0,n.clear()}},e.prototype._addParentTile=function(e,t){for(var i=e,r=null;i=this.tileInfoView.getTileParentId(i);)if(this.tileIndex.has(i)&&(r=this.tileIndex.get(i),r&&r.attached)){t.has(r.key.id)||t.set(r.key.id,r);break}},e}();return h});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["./TileKey","./TileCoverage","./TileCache"],(function(e,i,t){"use strict";const s=new e(0,0,0,0),l=new Map,a=[],h=[];return function(){function e(e){this._previousScale=Number.POSITIVE_INFINITY,this.cachePolicy="keep",this.coveragePolicy="closest",this.resampling=!0,this.tileIndex=new Map,this.tiles=[],this.buffer=192,this.acquireTile=e.acquireTile,this.releaseTile=e.releaseTile,this.tileInfoView=e.tileInfoView,this.resampling=null==e.resampling||!!e.resampling,e.cachePolicy&&(this.cachePolicy=e.cachePolicy),e.coveragePolicy&&(this.coveragePolicy=e.coveragePolicy),null!=e.buffer&&(this.buffer=e.buffer),e.cacheSize&&(this._tileCache=new t(e.cacheSize,this.tileInfoView,(e=>{this.releaseTile(e)})))}var c=e.prototype;return c.destroy=function(){this.tileIndex.clear()},c.update=function(e){const{resampling:t,tileIndex:c}=this,o=this.tileInfoView.getTileCoverage(e.state,this.buffer,this.coveragePolicy);if(h.length=0,a.length=0,l.clear(),!o)return;const{minScale:n,maxScale:r}=this.tileInfoView.tileInfo,{spans:f,lodInfo:u}=o,{level:d}=u,{scale:p,center:g,resolution:y}=e.state,I=!e.stationary&&p>this._previousScale;if(this._previousScale=p,this.tiles.length=0,!t&&(p>n||p<r))return this.tiles.length=0,l.clear(),c.forEach((e=>{this.releaseTile(e)})),c.clear(),h.length=0,a.length=0,l.clear(),i.pool.release(o),!0;c.forEach((e=>e.visible=!0));let T=0,_=0;if(f.length>0)for(const{row:i,colFrom:a,colTo:h}of f)for(let e=a;e<=h;e++){T++;const t=s.set(d,i,u.normalizeCol(e),u.getWorldForColumn(e)).id;if(c.has(t)){const e=c.get(t);e.isReady?(l.set(t,e),_++):I||this._addParentTile(t,l)}else{let e;if(this._tileCache&&this._tileCache.has(t)){if(e=this._tileCache.pop(t),this.tileIndex.set(t,e),e.isReady){l.set(t,e),_++;continue}}else e=this.acquireTile(s),this.tileIndex.set(t,e);I||this._addParentTile(t,l)}}const C=_===T;c.forEach(((e,i)=>{if(s.set(i),l.has(i))return;const t=this.tileInfoView.intersects(o,s),c="purge"===this.cachePolicy?s.level!==d:s.level>d;!t||!I&&C?!c&&t||a.push(i):e.isReady?h.push(i):c&&a.push(i)}));for(const i of h){const e=c.get(i);e&&e.isReady&&l.set(i,e)}for(const i of a){const e=c.get(i);this._tileCache?this._tileCache.add(e):this.releaseTile(e),c.delete(i)}return l.forEach((e=>this.tiles.push(e))),c.forEach((e=>{l.has(e.key.id)||(e.visible=!1)})),this._tileCache&&this._tileCache.prune(d,g,y),i.pool.release(o),l.clear(),C},c.clear=function(e=!0){const{tileIndex:i}=this;e&&i.forEach((e=>{this.releaseTile(e)})),i.clear()},c.updateCacheSize=function(e){this._tileCache&&(this._tileCache.maxSize=e)},c._addParentTile=function(e,i){let t=e,s=null;for(;t=this.tileInfoView.getTileParentId(t),t;)if(this.tileIndex.has(t)){if(s=this.tileIndex.get(t),s&&s.isReady){i.has(s.key.id)||i.set(s.key.id,s);break}}else if(this._tileCache&&this._tileCache.has(t)&&(s=this._tileCache.pop(t),this.tileIndex.set(t,s),s&&s.isReady)){i.has(s.key.id)||i.set(s.key.id,s);break}},e}()}));

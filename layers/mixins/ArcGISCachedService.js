@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","dojo/io-query","./ArcGISService","./ScaleRangeLayer","../support/TileInfo","../support/TilemapCache"],function(e,i,r,a,n,s){var l=r.createSubclass([a],{declaredClass:"esri.layers.mixins.ArcGISCachedService",properties:{minScale:{json:{origins:{service:{read:!1}}}},maxScale:{json:{origins:{service:{read:!1}}}},resampling:!0,supportsBlankTile:{value:!1,readOnly:!0,dependsOn:["version"],get:function(){return this.version>=10.2}},tileInfo:{value:null,type:n,json:{read:function(e,i){var r=i.minScale?i.minScale:+(1/0),a=i.maxScale?i.maxScale:-(1/0);return e?(e.lods=e.lods.filter(function(e){return e.scale<=r&&e.scale>=a}),n.fromJSON(e)):null}}},tilemapCache:{value:null,json:{read:{source:["capabilities"],reader:function(e,i){var r=i.capabilities&&i.capabilities.indexOf("Tilemap")>-1;return r?new s({layer:this}):null}}}},refreshTimestamp:null,version:{}},refresh:function(){this.refreshTimestamp=Date.now(),this.inherited(arguments)},getTileUrl:function(r,a,n){var s=!this.tilemapCache&&this.resampling&&this.supportsBlankTile,l=e.mixin({},this.parsedUrl.query,{token:this.token,blankTile:s?!1:null,_ts:this.refreshTimestamp}),t=this.parsedUrl.path+"/tile/"+r+"/"+a+"/"+n;return l=i.objectToQuery(l),t+=l?"?"+l:""}});return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../geometry/SpatialReference","../../geometry","../support/serviceTileInfoProperty","../support/TilemapCache"],(function(e,r,o,t,a,p,c,i,l,n,s,u,d,y,_,m){"use strict";const h=e=>{let t=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).copyright=null,r.minScale=0,r.maxScale=0,r.spatialReference=null,r.tileInfo=null,r.tilemapCache=null,r}r._inheritsLoose(o,e);var t=o.prototype;return t.readMinScale=function(e,r){return null!=r.minLOD&&null!=r.maxLOD?e:0},t.readMaxScale=function(e,r){return null!=r.minLOD&&null!=r.maxLOD?e:0},t.readTilemapCache=function(e,r){return r.capabilities&&r.capabilities.indexOf("Tilemap")>-1?new m.TilemapCache({layer:this}):null},r._createClass(o,[{key:"supportsBlankTile",get:function(){return this.version>=10.2}}]),o}(e);return o.__decorate([c.property({json:{read:{source:"copyrightText"}}})],t.prototype,"copyright",void 0),o.__decorate([c.property()],t.prototype,"minScale",void 0),o.__decorate([i.reader("service","minScale")],t.prototype,"readMinScale",null),o.__decorate([c.property()],t.prototype,"maxScale",void 0),o.__decorate([i.reader("service","maxScale")],t.prototype,"readMaxScale",null),o.__decorate([c.property({type:d})],t.prototype,"spatialReference",void 0),o.__decorate([c.property({readOnly:!0})],t.prototype,"supportsBlankTile",null),o.__decorate([c.property(_.serviceTileInfoProperty)],t.prototype,"tileInfo",void 0),o.__decorate([c.property()],t.prototype,"tilemapCache",void 0),o.__decorate([i.reader("service","tilemapCache",["capabilities"])],t.prototype,"readTilemapCache",null),o.__decorate([c.property()],t.prototype,"version",void 0),t=o.__decorate([l.subclass("esri.layers.mixins.ArcGISCachedService")],t),t};e.ArcGISCachedService=h,Object.defineProperty(e,"__esModule",{value:!0})}));

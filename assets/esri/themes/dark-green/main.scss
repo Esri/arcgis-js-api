@@ -1,0 +1,37 @@
+/*
+  Theme: Green
+*/
+
+body {
+  --esri-calcite-theme-name: "dark-green";
+}
+
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$Calcite_Dark_Gray_050: #242424;
+
+$font-color: $Calcite_Gray_150;
+$background-color: $Calcite_Dark_Gray_050;
+$interactive-font-color: $Calcite_Vibrant_Green_150;
+$interactive-font-color--hover: $Calcite_Vibrant_Green_150;
+$border-color: rgba($Calcite_Vibrant_Green_150, 0.2);
+
+$heading-color: $font-color;
+
+$button-color: $Calcite_Vibrant_Green_150;
+$button-color--inverse: $background-color;
+$button-color--bright: $font-color;
+
+// Inverse
+$interactive-font-color--inverse: $background-color;
+$background-color--inverse: $interactive-font-color;
+
+// Selected
+$border-color--active: $interactive-font-color;
+$background-color--active: #000000;
+
+// Error
+$font-color--error: #eb7953;
+
+@import "../base/core";

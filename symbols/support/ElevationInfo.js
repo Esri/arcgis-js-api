@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/JSONSupport","../../core/kebabDictionary"],function(e,r,t,o,n,s,i){var p=i({onTheGround:"on-the-ground",relativeToGround:"relative-to-ground",relativeToScene:"relative-to-scene",absoluteHeight:"absolute-height"}),u=l=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r.prototype.clone=function(){return new l({value:this.value})},r}(n.declared(s));o([n.property({type:Number,json:{write:!0}})],u.prototype,"value",void 0),u=l=o([n.subclass("esri.layers.support.FeatureExpression")],u);var a=c=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return t(r,e),r.prototype.write=function(e,r){return this.offset||this.mode||this.featureExpression?this.inherited(arguments):null},r.prototype.clone=function(){return new c({mode:this.mode,offset:this.offset,featureExpression:this.featureExpression?this.featureExpression.clone():void 0})},r}(n.declared(s));o([n.property({type:u,json:{write:!0}})],a.prototype,"featureExpression",void 0),o([n.property({type:String,json:{read:p.read,write:p.write}})],a.prototype,"mode",void 0),o([n.property({type:Number,json:{write:!0}})],a.prototype,"offset",void 0),a=c=o([n.subclass("esri.layers.support.ElevationInfo")],a);var l,c;return a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./FeatureExpressionInfo","./unitConversionUtils"],(function(e,r,t,o,s,n,i,u,p,a,c,f,l,d,y,h,x){"use strict";var E;const _=u.strict()({onTheGround:"on-the-ground",relativeToGround:"relative-to-ground",relativeToScene:"relative-to-scene",absoluteHeight:"absolute-height"}),v=new u.JSONMap({foot:"feet",kilometer:"kilometers",meter:"meters",mile:"miles","us-foot":"us-feet",yard:"yards"});let m=E=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).offset=null,e}e._inheritsLoose(t,r);var s=t.prototype;return s.readFeatureExpressionInfo=function(e,r){return null!=e?e:r.featureExpression&&0===r.featureExpression.value?{expression:"0"}:void 0},s.writeFeatureExpressionInfo=function(e,r,t,o){r[t]=e.write(null,o),"0"===e.expression&&(r.featureExpression={value:0})},s.write=function(e,t){return this.offset||this.mode||this.featureExpressionInfo||this.unit?r.prototype.write.call(this,e,t):null},s.clone=function(){return new E({mode:this.mode,offset:this.offset,featureExpressionInfo:this.featureExpressionInfo?this.featureExpressionInfo.clone():void 0,unit:this.unit})},e._createClass(t,[{key:"mode",get:function(){const{offset:e,featureExpressionInfo:r}=this;return this._isOverridden("mode")?this._get("mode"):o.isSome(e)||r?"relative-to-ground":"on-the-ground"},set:function(e){this._override("mode",e)}},{key:"unit",set:function(e){this._set("unit",e)}}]),t}(y.JSONSupport);return r.__decorate([i.property({type:h,json:{write:!0}})],m.prototype,"featureExpressionInfo",void 0),r.__decorate([p.reader("featureExpressionInfo",["featureExpressionInfo","featureExpression"])],m.prototype,"readFeatureExpressionInfo",null),r.__decorate([c.writer("featureExpressionInfo",{featureExpressionInfo:{type:h},"featureExpression.value":{type:[0]}})],m.prototype,"writeFeatureExpressionInfo",null),r.__decorate([i.property({type:_.apiValues,nonNullable:!0,json:{type:_.jsonValues,read:_.read,write:{writer:_.write,isRequired:!0}}})],m.prototype,"mode",null),r.__decorate([i.property({type:Number,json:{write:!0}})],m.prototype,"offset",void 0),r.__decorate([i.property({type:x.supportedUnits,json:{type:String,read:v.read,write:v.write}})],m.prototype,"unit",null),m=E=r.__decorate([a.subclass("esri.layers.support.ElevationInfo")],m),m}));

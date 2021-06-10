@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","../core/Accessor","../core/kebabDictionary","../geometry/Extent","../geometry/support/webMercatorUtils","../geometry/SpatialReference","dojo/_base/lang"],function(t,r,e,o,s,i,n,a,u,p,l){var y=n({avgRating:"avg-rating",numRatings:"num-ratings",numComments:"num-comments",numViews:"num-views"}),d=c=function(t){function r(r){var e=t.call(this)||this;return e.disableExtraQuery=!1,e.extent=null,e.num=10,e.query=null,e.sortField=null,e.start=1,e}return e(r,t),Object.defineProperty(r.prototype,"sortOrder",{get:function(){return this._get("sortOrder")||"asc"},set:function(t){("asc"===t||"desc"===t)&&this._set("sortOrder",t)},enumerable:!0,configurable:!0}),r.prototype.clone=function(){return new c({disableExtraQuery:this.disableExtraQuery,extent:this.extent?this.extent.clone():null,num:this.num,query:this.query,sortField:this.sortField,sortOrder:this.sortOrder,start:this.start})},r.prototype.toRequestOptions=function(t,r){var e;if(this.extent){var o=u.project(this.extent,p.WGS84);o&&(e=o.xmin+","+o.ymin+","+o.xmax+","+o.ymax)}var s=this.query;!this.disableExtraQuery&&t.extraQuery&&(s="("+s+")"+t.extraQuery);var i={bbox:e,q:s,num:this.num,sortField:null,sortOrder:null,start:this.start};return this.sortField&&(i.sortField=y.toJSON(this.sortField),i.sortOrder=this.sortOrder),{query:l.mixin(r,i)}},r}(s.declared(i));o([s.property()],d.prototype,"disableExtraQuery",void 0),o([s.property({type:a})],d.prototype,"extent",void 0),o([s.property()],d.prototype,"num",void 0),o([s.property()],d.prototype,"query",void 0),o([s.property()],d.prototype,"sortField",void 0),o([s.property()],d.prototype,"sortOrder",null),o([s.property()],d.prototype,"start",void 0),d=c=o([s.subclass("esri.portal.PortalQueryParams")],d);var c;return d});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/jsonMap","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","./support/resourceExtension","../core/Accessor","../geometry/SpatialReference","../geometry/support/webMercatorUtils","../geometry/Extent"],(function(t,e,r,o,s,i,n,a,u,c,p,l,d,y,h,m){"use strict";var g;const _=new a.JSONMap({avgRating:"avg-rating",numRatings:"num-ratings",numComments:"num-comments",numViews:"num-views"});let x=g=function(e){function r(t){var r;return(r=e.call(this,t)||this).categories=null,r.disableExtraQuery=!1,r.extent=null,r.num=10,r.query=null,r.sortField=null,r.start=1,r}t._inheritsLoose(r,e);var s=r.prototype;return s.clone=function(){return new g({categories:this.categories?o.clone(this.categories):null,disableExtraQuery:this.disableExtraQuery,extent:this.extent?this.extent.clone():null,num:this.num,query:this.query,sortField:this.sortField,sortOrder:this.sortOrder,start:this.start})},s.toRequestOptions=function(t,e){let r,o;if(this.categories&&(r=this.categories.map((t=>Array.isArray(t)?JSON.stringify(t):t))),this.extent){const t=h.project(this.extent,y.WGS84);t&&(o=`${t.xmin},${t.ymin},${t.xmax},${t.ymax}`)}let s=this.query;!this.disableExtraQuery&&t.extraQuery&&(s="("+s+")"+t.extraQuery);const i={categories:r,bbox:o,q:s,num:this.num,sortField:null,sortOrder:null,start:this.start};return this.sortField&&(i.sortField=this.sortField.split(",").map((t=>_.toJSON(t.trim()))).join(","),i.sortOrder=this.sortOrder),{query:{...e,...i}}},t._createClass(r,[{key:"sortOrder",get:function(){return this._get("sortOrder")||"asc"},set:function(t){"asc"!==t&&"desc"!==t||this._set("sortOrder",t)}}]),r}(d);return e.__decorate([n.property()],x.prototype,"categories",void 0),e.__decorate([n.property()],x.prototype,"disableExtraQuery",void 0),e.__decorate([n.property({type:m})],x.prototype,"extent",void 0),e.__decorate([n.property()],x.prototype,"num",void 0),e.__decorate([n.property()],x.prototype,"query",void 0),e.__decorate([n.property()],x.prototype,"sortField",void 0),e.__decorate([n.property()],x.prototype,"sortOrder",null),e.__decorate([n.property()],x.prototype,"start",void 0),x=g=e.__decorate([u.subclass("esri.portal.PortalQueryParams")],x),x}));

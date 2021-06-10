@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../request","../core/Error","../geometry/Extent","../geometry/SpatialReference","./Layer","./support/TileInfo","../core/accessorSupport/decorators"],function(e,t,r,o,n,l,a,i,p,s,c){var u={id:"0/0/0",level:0,row:0,col:0,extent:null},y=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.tileInfo=s.create({spatialReference:i.WebMercator,size:256}),t.type="base-tile",t.fullExtent=new a(-20037508.342787,-20037508.34278,20037508.34278,20037508.342787,i.WebMercator),t.spatialReference=i.WebMercator,t}return r(t,e),t.prototype.getTileBounds=function(e,t,r,o){var n=o||[0,0,0,0];return u.level=e,u.row=t,u.col=r,u.extent=n,this.tileInfo.updateTileInfo(u),u.extent=null,n},t.prototype.getTileUrl=function(e,t,r){throw new l("basetilelayer:gettileurl-not-implemented","getTileUrl() is not implemented")},t.prototype.fetchTile=function(e,t,r,o){var l=this.getTileUrl(e,t,r);return"string"==typeof l?n(l,{responseType:"image",allowImageDataAccess:o&&o.allowImageDataAccess||!1}).then(function(e){return e.data}):l.then(function(e){return n(e,{responseType:"image"})}).then(function(e){return e.data})},t}(c.declared(p));return o([c.shared({"2d":"../views/2d/layers/TiledLayerView2D","3d":"../views/3d/layers/TiledLayerView3D"})],y.prototype,"viewModulePaths",void 0),o([c.property({type:s})],y.prototype,"tileInfo",void 0),o([c.property({readOnly:!0,value:"base-tile"})],y.prototype,"type",void 0),o([c.property()],y.prototype,"fullExtent",void 0),o([c.property()],y.prototype,"spatialReference",void 0),y=o([c.subclass("esri.layers.BaseTileLayer")],y)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../geometry/SpatialReference","../geometry/Extent","../request","./Layer","../geometry/support/aaBoundingRect","./mixins/BlendLayer","./mixins/RefreshableLayer","./mixins/ScaleRangeLayer","./support/TileInfo"],(function(e,t,r,o,l,n,s,a,i,p,c,u,y,d,f,g,h,m,_,b){"use strict";const v={id:"0/0/0",level:0,row:0,col:0,extent:null};let x=function(t){function r(){var e;return(e=t.apply(this,arguments)||this).tileInfo=b.create({spatialReference:u.WebMercator,size:256}),e.type="base-tile",e.fullExtent=new y(-20037508.342787,-20037508.34278,20037508.34278,20037508.342787,u.WebMercator),e.spatialReference=u.WebMercator,e}e._inheritsLoose(r,t);var o=r.prototype;return o.getTileBounds=function(e,t,r,o){const l=o||g.create();return v.level=e,v.row=t,v.col=r,v.extent=l,this.tileInfo.updateTileInfo(v),v.extent=null,l},o.fetchTile=function(e,t,r,o={}){const{signal:l,timestamp:n}=o,s=this.getTileUrl(e,t,r),a={responseType:"image",signal:l};return null!=n&&(a.query={_ts:o.timestamp}),d(s,a).then((e=>e.data))},o.getTileUrl=function(){throw new a("basetilelayer:gettileurl-not-implemented","getTileUrl() is not implemented")},r}(h.BlendLayer(_.ScaleRangeLayer(m.RefreshableLayer(f))));return t.__decorate([n.property({type:b})],x.prototype,"tileInfo",void 0),t.__decorate([n.property({type:["show","hide"]})],x.prototype,"listMode",void 0),t.__decorate([n.property({readOnly:!0,value:"base-tile"})],x.prototype,"type",void 0),t.__decorate([n.property()],x.prototype,"fullExtent",void 0),t.__decorate([n.property()],x.prototype,"spatialReference",void 0),x=t.__decorate([s.subclass("esri.layers.BaseTileLayer")],x),x}));

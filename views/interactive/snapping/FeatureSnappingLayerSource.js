@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/Accessor"],(function(e,r,o,t,c,s,p,a,i,n,u){"use strict";let l=function(r){function o(e){var o;return(o=r.call(this,e)||this).layer=null,o.enabled=!0,o.updating=!1,o.availability=1,o}return e._inheritsLoose(o,r),o}(u);return r.__decorate([s.property({constructOnly:!0})],l.prototype,"layer",void 0),r.__decorate([s.property()],l.prototype,"enabled",void 0),r.__decorate([s.property()],l.prototype,"updating",void 0),r.__decorate([s.property()],l.prototype,"availability",void 0),l=r.__decorate([p.subclass("esri.views.interactive.snapping.SnappingLayerSource")],l),l}));

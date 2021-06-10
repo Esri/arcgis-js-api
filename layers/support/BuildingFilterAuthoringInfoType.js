@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,t,o,s,p,i,l,u,n,c,a){"use strict";var y;let f=y=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).filterType=null,e.filterValues=null,e}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new y({filterType:this.filterType,filterValues:o.clone(this.filterValues)})},t}(a.JSONSupport);return r.__decorate([i.property({type:String,json:{write:!0}})],f.prototype,"filterType",void 0),r.__decorate([i.property({type:[String],json:{write:!0}})],f.prototype,"filterValues",void 0),f=y=r.__decorate([l.subclass("esri.layers.support.BuildingFilterAuthoringInfoType")],f),f}));

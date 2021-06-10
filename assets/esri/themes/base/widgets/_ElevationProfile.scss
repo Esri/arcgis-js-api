@@ -1,0 +1,393 @@
+@mixin elevationProfile() {
+  $width: 550px;
+  $chart-height: 180px;
+
+  $header-height: 30px;
+  $header-icon-height: 16px;
+  $header-button-width: 34px;
+
+  $loading-spinner-size: 30px;
+  $loading-spinner-size-small: $header-icon-height;
+
+  $actions-spacing-h: $side-spacing--half;
+  $actions-spacing-v: $cap-spacing--half;
+
+  $statistics-font-size: $font-size--tiny;
+  $statistics-slope-values-spacing: $side-spacing--half;
+
+  $popover-padding: $cap-spacing $side-spacing;
+  $popover-border: 1px solid $border-color;
+  $popover-background-color: $background-color;
+
+  $legend-font-size: $font-size--small;
+  $legend-label-spacing: $side-spacing--plus-half;
+
+  $checkbox-size: 14px;
+  $checkbox-border-size: 1px;
+  $checkbox-icon-size: 10px;
+
+  $color-indicator-width: 8px;
+  $color-indicator-height: 8px;
+  $color-indicator-spacing: $side-spacing--half;
+
+  //----------------------------------------------------------------------------
+  // Widget
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile {
+    position: relative;
+    padding: $cap-spacing $side-spacing;
+
+    &.esri-component.esri-widget--panel {
+      width: $width;
+      max-width: 100%; // Don't overflow parent container, especially on mobile
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      height: $header-height;
+      align-items: center;
+      justify-content: flex-end;
+
+      button {
+        @extend .esri-button;
+        @extend .esri-button--tertiary;
+
+        width: $header-button-width;
+        flex-shrink: 0;
+        flex-grow: 0;
+        z-index: 1; // Above chart.
+
+        &:focus:not(:focus-visible) {
+          outline: none;
+          border: none;
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: $cap-spacing;
+    }
+
+    &__action-button {
+      width: auto;
+      margin-inline-start: $actions-spacing-h;
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+        border: none;
+      }
+    }
+
+    &__main-container {
+      position: relative;
+      width: 100%;
+      height: $chart-height;
+      margin-top: -$header-height; // Compensate for chart padding (used to show spinner)
+    }
+
+    &__chart-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-top: $header-icon-height / 2; // Align top of the chart with icon of header buttons
+    }
+
+    &__prompt-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0;
+      padding: $cap-spacing $side-spacing;
+      padding-top: $cap-spacing--double + $cap-spacing;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+
+      > p {
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    &__chart-spinner {
+      font-size: $loading-spinner-size;
+      color: $border-color--active;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+      pointer-events: none;
+
+      // Position it in the middle of the container
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -$loading-spinner-size / 2; // center horizontally
+
+      // We show a spinner with a delay so that it is only visible if a preview
+      // takes too long to be generated.
+      &--visible {
+        transition-delay: 1000ms;
+        opacity: 1;
+      }
+
+      &--small {
+        font-size: $loading-spinner-size-small;
+        top: 0;
+        left: 0;
+        margin-left: 0;
+      }
+    }
+
+    // Portrait mode
+    // We have vertical space so we'll size the chart and let the widget scale vertically.
+
+    &--portrait,
+    &--portrait.esri-component.esri-widget--panel {
+      height: auto;
+    }
+
+    &--portrait &__footer {
+      flex-direction: column;
+    }
+
+    &--portrait &__action-button {
+      align-self: stretch;
+      margin-inline-start: 0;
+
+      &:not(:last-of-type) {
+        margin-bottom: $actions-spacing-v;
+      }
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Settings
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-settings {
+    &__popover-content {
+      font-family: $font-family;
+      padding: $popover-padding;
+      color: $font-color;
+      border: $popover-border;
+      background-color: $popover-background-color;
+    }
+
+    &__select {
+      min-width: 150px;
+    }
+
+    &__select-label {
+      display: block;
+      margin-bottom: $cap-spacing--eighth;
+      font-size: $font-size__body;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Legend
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-legend {
+    margin-top: $cap-spacing--half;
+  }
+
+  //----------------------------------------------------------------------------
+  // Legend Item
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-legend-item {
+    position: relative;
+    background: $background-color--offset;
+
+    &:not(:last-of-type) {
+      margin-bottom: $cap-spacing--eighth;
+    }
+
+    &--disabled {
+      filter: grayscale(1);
+      opacity: $opacity--disabled;
+    }
+
+    &__color-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &__content {
+      display: block;
+      padding: $cap-spacing $side-spacing;
+      padding-top: 0;
+    }
+
+    &__collapse-toggle {
+      width: auto;
+      color: $interactive-font-color;
+      flex-shrink: 0;
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+        border: none;
+      }
+    }
+
+    &__collapse-toggle__icon {
+      margin: 0 $side-spacing--quarter;
+      transform: rotate(0);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    &--expanded &__collapse-toggle__icon {
+      transform: rotate(180deg);
+    }
+
+    &__label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-shrink: 1;
+      flex-grow: 1;
+      min-width: 0; // allow the legend to shrink as much as needed.
+      padding-inline-start: $side-spacing;
+
+      // Only change the cursor when the checkbox is not disabled
+      &:not(&--disabled) {
+        cursor: pointer;
+      }
+
+      > span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    &__checkbox {
+      font-size: $checkbox-icon-size;
+      line-height: $checkbox-icon-size;
+      display: inline-block;
+      width: $checkbox-size;
+      height: $checkbox-size;
+      margin-inline-end: $side-spacing--half;
+      padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) / 2;
+      transition: all 0.1s ease-in-out;
+      border: solid 1px $border-color;
+      background: none;
+      flex-shrink: 0;
+      appearance: none;
+
+      &:before {
+        color: $interactive-font-color--inverse;
+      }
+
+      &--checked {
+        background: $border-color--active;
+        border-color: $border-color--active;
+
+        &:before {
+          color: $interactive-font-color--inverse;
+        }
+      }
+
+      // Only change the cursor when the checkbox is not disabled
+      &:not(:disabled) {
+        cursor: pointer;
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // Statistics
+  //----------------------------------------------------------------------------
+
+  .esri-elevation-profile-statistics {
+    --max-width: 1px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--max-width), 1fr));
+    gap: $cap-spacing--eighth $side-spacing--plus-half;
+    width: 100%;
+    contain: layout paint style;
+
+    &__statistic {
+      display: block;
+      width: max-content;
+      white-space: nowrap;
+      text-align: start;
+
+      &__label {
+        font-size: $font-size--tiny;
+        font-weight: $font-weight--regular;
+      }
+
+      &__value {
+        font-size: $font-size--tiny;
+        font-weight: $font-weight--bold;
+        line-height: 0.95em; // condense things slightly
+      }
+    }
+
+    &__slope-value {
+      > [class^="esri-icon"] {
+        font-size: $statistics-font-size; // Keep the icon small.
+
+        &:not(:first-child) {
+          margin-inline-start: $statistics-slope-values-spacing;
+        }
+      }
+    }
+  }
+
+  .esri-elevation-profile--portrait {
+    .esri-elevation-profile-statistics {
+      gap: ($cap-spacing--eighth * 3) $side-spacing--plus-half;
+      margin-bottom: $cap-spacing;
+    }
+
+    .esri-elevation-profile-statistics__statistic__value {
+      margin-top: 2px;
+    }
+  }
+
+  //----------------------------------------------------------------------------
+  // RTL
+  //----------------------------------------------------------------------------
+
+  html[dir="rtl"] {
+    .esri-elevation-profile-legend-item {
+      &__color-indicator {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .esri-elevation-profile {
+      &__chart-spinner--small {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}
+
+@if $include_ElevationProfile == true {
+  @include elevationProfile();
+}

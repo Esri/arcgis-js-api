@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./PropertyOrigin","./utils","./extensions/serializableProperty"],function(r,e,i,t,n){function o(r,e,i,t,n){var o={};return e.write.writer.call(r,t,o,i,n),o}function a(r,e,t,n,o,a){if(!n||!n.write)return!1;var f=r.get(t);if(void 0===f)return!1;if(!o&&n.write.overridePolicy){var l=n.write.overridePolicy.call(r,f,t,a);void 0!==l&&(o=l)}if(o||(o=n.write),!o||o.enabled===!1)return!1;if(!o.allowNull&&null===f)return!1;if(!o.ignoreOrigin&&a&&a.origin){var u=e.store.originOf(t);if(u<i.nameToId(a.origin))return!1}return!0}function f(r,e,i,o){var f=t.getProperties(r),l=f.metadatas,u=n.originSpecificWritePropertyDefinition(l[e],o);return u?a(r,f,e,u,i,o):!1}function l(r,e,f){if(r&&"function"==typeof r.toJSON&&(!r.toJSON.isDefaultToJSON||!r.write))return t.merge(e,r.toJSON());var l=t.getProperties(r),u=l.metadatas;for(var g in u){var p=n.originSpecificWritePropertyDefinition(u[g],f);if(a(r,l,g,p,null,f)){var s=r.get(g),c=p.write.target||g,d=o(r,p,c,s,f);Object.keys(d).length>0&&(e=t.merge(e,d),f&&f.writtenProperties&&f.writtenProperties.push({target:r,propName:g,oldOrigin:i.idToReadableName(l.store.originOf(g)),newOrigin:f.origin}))}}return e}Object.defineProperty(e,"__esModule",{value:!0}),e.willPropertyWrite=f,e.write=l,e["default"]=l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../Logger","./utils","./extensions/serializableProperty","../Error","./PropertyOrigin","../arrayUtils"],(function(e,r,t,i,n,o,s){"use strict";const u=r.getLogger("esri.core.accessorSupport.write");function l(e,r,t,i,n){var o,s;const u={};return null==(o=r.write)||null==(s=o.writer)||s.call(e,i,u,t,n),u}function a(e,r,t,i,s,l){if(!i||!i.write)return!1;const a=e.get(t);if(!s&&i.write.overridePolicy){const r=i.write.overridePolicy.call(e,a,t,l);void 0!==r&&(s=r)}if(s||(s=i.write),!s||!1===s.enabled)return!1;if((null===a&&!s.allowNull||void 0===a)&&s.isRequired){const r=new n("web-document-write:property-required",`Missing value for required property '${t}' on '${e.declaredClass}'`,{propertyName:t,target:e});return r&&l&&l.messages?l.messages.push(r):r&&!l&&u.error(r.name,r.message),!1}if(void 0===a)return!1;if(null===a&&!s.allowNull)return!1;if(f(e,t,l,i,a))return!1;if(void 0!==i.default)return!0;if(!s.ignoreOrigin&&l&&l.origin){if(r.store.originOf(t)<o.nameToId(l.origin))return!1}return!0}function f(e,r,t,i,n){const o=i.default;if(void 0===o)return!1;if(null!=i.defaultEquals)return i.defaultEquals(n);if("function"==typeof o){if(Array.isArray(n)){const i=o.call(e,r,t);return s.equals(i,n)}return!1}return o===n}function c(e,r,n,o){const s=t.getProperties(e),u=s.metadatas,l=i.originSpecificWritePropertyDefinition(u[r],o);return!!l&&a(e,s,r,l,n,o)}function g(e,r,n){if(e&&"function"==typeof e.toJSON&&(!e.toJSON.isDefaultToJSON||!e.write))return t.merge(r,e.toJSON());const s=t.getProperties(e),u=s.metadatas;for(const g in u){const p=i.originSpecificWritePropertyDefinition(u[g],n);if(!a(e,s,g,p,void 0,n))continue;const d=e.get(g),w=l(e,p,p.write&&"string"==typeof p.write.target?p.write.target:g,d,n);var f,c;if(Object.keys(w).length>0)r=t.merge(r,w),null!=n&&null!=(f=n.resources)&&null!=(c=f.pendingOperations)&&c.length&&Promise.all(n.resources.pendingOperations).then((()=>t.merge(r,w))),n&&n.writtenProperties&&n.writtenProperties.push({target:e,propName:g,oldOrigin:o.idToReadableName(s.store.originOf(g)),newOrigin:n.origin})}return r}e.default=g,e.willPropertyWrite=c,e.write=g,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,0 +1,172 @@
+@mixin featureTable() {
+  .esri-feature-table {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .esri-feature-table__content {
+      flex: 1 1 0;
+      flex-grow: 1;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .esri-grid__grid {
+      height: 100%;
+      width: 100%;
+
+      .esri-column__menu-container.esri-button-menu {
+        height: 28px;
+        width: 28px;
+        position: inherit;
+
+        .esri-button-menu__button {
+          height: 26px;
+          width: 16px;
+        }
+      }
+    }
+  }
+
+  .esri-feature-table__menu {
+    height: 40px;
+    order: 3;
+    padding: 4px;
+    width: 40px;
+
+    .esri-button-menu {
+      bottom: auto;
+      position: relative;
+    }
+  }
+
+  .esri-feature-table__header {
+    display: flex;
+    flex-direction: row;
+    font-weight: $font-weight;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .esri-feature-table__title {
+    flex-grow: 1;
+    order: 2;
+  }
+
+  .esri-feature-table__loader-container {
+    height: 40px;
+    margin: 0 8px;
+    order: 1;
+    width: 32px;
+  }
+
+  .esri-feature-table__loader {
+    height: 40px;
+    width: 32px;
+    background: url(../base/images/loading-throb.gif) no-repeat center;
+  }
+
+  .esri-field-column__header-content {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    min-width: 0px;
+    overflow: visible;
+  }
+
+  .esri-field-column__cell-content {
+    font-size: 0.9em;
+  }
+
+  .esri-field-column__cell__date-input-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .esri-field-column__cell__date-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .esri-date-picker {
+      flex: 1 1 0;
+
+      .esri-date-picker__text-input.esri-input {
+        width: 100%;
+      }
+
+      .esri-date-picker__calendar-toggle {
+        height: 26px;
+      }
+    }
+
+    .esri-time-picker {
+      display: inline-flex;
+      flex: 1 1 0;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .esri-field-column__button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: $button-color;
+    display: flex;
+    font-size: $icon-size;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 125ms ease-in-out;
+    width: 26px;
+
+    &:disabled {
+      cursor: default;
+      color: $interactive-font-color--disabled;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $background-color--hover;
+      color: $interactive-font-color--hover;
+      cursor: pointer;
+    }
+  }
+
+  .esri-field-column__cell__input-container {
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .esri-field-column__cell-input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0 5px;
+    flex: 1 1 0;
+  }
+
+  [dir="rtl"] {
+    .esri-feature-table__menu-content {
+      left: 2px;
+      right: auto;
+    }
+  }
+}
+
+@if $include_FeatureTable == true {
+  @include featureTable();
+}

@@ -1,0 +1,76 @@
+$spinner_size: 24px;
+@mixin spinner() {
+  .esri-ui {
+    .esri-spinner {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      overflow: visible;
+      width: $spinner_size;
+      height: $spinner_size;
+      position: absolute;
+      left: -999em;
+      top: -999em;
+      z-index: 2;
+      pointer-events: none;
+      display: none;
+      opacity: 0;
+      transform-origin: 0 0;
+    }
+    .esri-spinner::before {
+      position: absolute;
+      margin: -50% 0 0 -50%;
+      width: 100%;
+      height: 100%;
+      background: url("../base/images/Loading_Indicator_double_32.svg") no-repeat center;
+      display: block;
+      content: "";
+      animation: esri-spinner--rotate-animation 750ms linear infinite;
+    }
+    .esri-spinner--start {
+      display: block;
+      animation: esri-spinner--start-animation 250ms cubic-bezier(0.17, 0.67, 0.36, 0.99) forwards;
+    }
+    .esri-spinner--finish {
+      display: block;
+      opacity: 1;
+      animation: esri-spinner--finish-animation 125ms ease-in forwards;
+      animation-delay: 75ms;
+    }
+  }
+}
+
+@keyframes esri-spinner--start-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes esri-spinner--finish-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes esri-spinner--rotate-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@if $include_Spinner==true {
+  @include spinner();
+}

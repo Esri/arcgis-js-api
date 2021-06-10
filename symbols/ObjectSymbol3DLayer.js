@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/kebabDictionary","./Symbol3DLayer","./support/Symbol3DMaterial","./support/Symbol3DResource","../core/accessorSupport/decorators"],function(e,t,r,o,i,p,n,s,l){var a=i({center:"center",bottom:"bottom",origin:"origin"},{ignoreUnknown:!0}),d=h=function(e){function t(t){var r=e.call(this)||this;return r.material=null,r.resource=null,r.type="object",r.width=void 0,r.height=void 0,r.depth=void 0,r.anchor=void 0,r.heading=void 0,r.tilt=void 0,r.roll=void 0,r}return r(t,e),t.prototype.clone=function(){return new h({heading:this.heading,tilt:this.tilt,roll:this.roll,anchor:this.anchor,depth:this.depth,enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),height:this.height,material:this.material&&this.material.clone(),resource:this.resource&&this.resource.clone(),width:this.width})},Object.defineProperty(t.prototype,"isPrimitive",{get:function(){return!this.resource||"string"!=typeof this.resource.href},enumerable:!0,configurable:!0}),t}(l.declared(p));o([l.property({type:n["default"]})],d.prototype,"material",void 0),o([l.property({type:s["default"],json:{write:!0}})],d.prototype,"resource",void 0),o([l.property()],d.prototype,"type",void 0),o([l.property({json:{write:!0}})],d.prototype,"width",void 0),o([l.property({json:{write:!0}})],d.prototype,"height",void 0),o([l.property({json:{write:!0}})],d.prototype,"depth",void 0),o([l.property({type:String,json:{read:a.read,write:a.write}})],d.prototype,"anchor",void 0),o([l.property({json:{write:!0}})],d.prototype,"heading",void 0),o([l.property({json:{write:!0}})],d.prototype,"tilt",void 0),o([l.property({json:{write:!0}})],d.prototype,"roll",void 0),o([l.property({readOnly:!0,dependsOn:["resource","resource.href"]})],d.prototype,"isPrimitive",null),d=h=o([l.subclass("esri.symbols.ObjectSymbol3DLayer")],d);var h;return d});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/maybe","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Symbol3DLayer","./support/Symbol3DMaterial","./support/ObjectSymbol3DLayerResource","./support/Symbol3DAnchorPosition3D"],(function(e,o,t,r,i,s,p,n,a,c,l,d,h,y,u,b){"use strict";var _;let m=_=function(o){function t(e){var t;return(t=o.call(this,e)||this).material=null,t.castShadows=!0,t.resource=null,t.type="object",t.width=void 0,t.height=void 0,t.depth=void 0,t.anchor=void 0,t.anchorPosition=void 0,t.heading=void 0,t.tilt=void 0,t.roll=void 0,t}return e._inheritsLoose(t,o),t.prototype.clone=function(){return new _({heading:this.heading,tilt:this.tilt,roll:this.roll,anchor:this.anchor,anchorPosition:this.anchorPosition&&this.anchorPosition.clone(),depth:this.depth,enabled:this.enabled,height:this.height,material:r.isSome(this.material)?this.material.clone():null,castShadows:this.castShadows,resource:this.resource&&this.resource.clone(),width:this.width})},e._createClass(t,[{key:"isPrimitive",get:function(){return!this.resource||"string"!=typeof this.resource.href}}]),t}(h);return o.__decorate([p.property({type:y.default,json:{write:!0}})],m.prototype,"material",void 0),o.__decorate([p.property({type:Boolean,nonNullable:!0,json:{write:!0,default:!0}})],m.prototype,"castShadows",void 0),o.__decorate([p.property({type:u.default,json:{write:!0}})],m.prototype,"resource",void 0),o.__decorate([n.enumeration({Object:"object"},{readOnly:!0})],m.prototype,"type",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"width",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"height",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"depth",void 0),o.__decorate([n.enumeration({center:"center",top:"top",bottom:"bottom",origin:"origin",relative:"relative"}),p.property({json:{default:"origin"}})],m.prototype,"anchor",void 0),o.__decorate([p.property({type:b.Symbol3DAnchorPosition3D,json:{type:[Number],read:{reader:e=>new b.Symbol3DAnchorPosition3D({x:e[0],y:e[1],z:e[2]})},write:{writer:(e,o)=>{o.anchorPosition=[e.x,e.y,e.z]},overridePolicy(){return{enabled:"relative"===this.anchor}}}}})],m.prototype,"anchorPosition",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"heading",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"tilt",void 0),o.__decorate([p.property({type:Number,json:{write:!0}})],m.prototype,"roll",void 0),o.__decorate([p.property({readOnly:!0})],m.prototype,"isPrimitive",null),m=_=o.__decorate([a.subclass("esri.symbols.ObjectSymbol3DLayer")],m),m}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/kebabDictionary","../../core/JSONSupport","./CodedValueDomain","./RangeDomain"],function(e,i,l,r){var n=e({esriFieldTypeSmallInteger:"small-integer",esriFieldTypeInteger:"integer",esriFieldTypeSingle:"single",esriFieldTypeDouble:"double",esriFieldTypeLong:"long",esriFieldTypeString:"string",esriFieldTypeDate:"date",esriFieldTypeOID:"oid",esriFieldTypeGeometry:"geometry",esriFieldTypeBlob:"blob",esriFieldTypeRaster:"raster",esriFieldTypeGUID:"guid",esriFieldTypeGlobalID:"global-id",esriFieldTypeXML:"xml"}),t=i.createSubclass({declaredClass:"esri.layers.support.Field",properties:{alias:null,domain:{value:null,json:{read:function(e,i){var n=e&&e.type;return"range"===n?new r(e):"codedValue"===n?new l(e):null}}},editable:!1,length:-1,name:null,nullable:!0,type:{json:{read:n.fromJSON}}},clone:function(){return t.fromJSON(this.toJSON())},toJSON:function(){return{alias:this.alias,domain:this.domain&&this.domain.toJSON(),editable:this.editable,length:this.length,name:this.name,nullable:this.nullable,type:n.toJSON(this.type)}}});return t});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./domains","./fieldType"],(function(e,r,t,o,a,n,i,p,l,s,c,d,u,y,_,m){"use strict";var h;const v=new i.JSONMap({binary:"binary",coordinate:"coordinate",countOrAmount:"count-or-amount",dateAndTime:"date-and-time",description:"description",locationOrPlaceName:"location-or-place-name",measurement:"measurement",nameOrTitle:"name-or-title",none:"none",orderedOrRanked:"ordered-or-ranked",percentageOrRatio:"percentage-or-ratio",typeOrCategory:"type-or-category",uniqueIdentifier:"unique-identifier"});let b=h=function(r){function t(e){var t;return(t=r.call(this,e)||this).alias=null,t.defaultValue=void 0,t.description=null,t.domain=null,t.editable=!0,t.length=-1,t.name=null,t.nullable=!0,t.type=null,t.valueType=null,t}e._inheritsLoose(t,r);var o=t.prototype;return o.readDescription=function(e,{description:r}){let t;try{t=JSON.parse(r)}catch(o){}return t?t.value:null},o.readValueType=function(e,{description:r}){let t;try{t=JSON.parse(r)}catch(o){}return t?v.fromJSON(t.fieldValueType):null},o.clone=function(){return new h({alias:this.alias,defaultValue:this.defaultValue,description:this.description,domain:this.domain&&this.domain.clone()||null,editable:this.editable,length:this.length,name:this.name,nullable:this.nullable,type:this.type,valueType:this.valueType})},t}(y.JSONSupport);return r.__decorate([n.property({type:String,json:{write:!0}})],b.prototype,"alias",void 0),r.__decorate([n.property({type:[String,Number],json:{write:{allowNull:!0}}})],b.prototype,"defaultValue",void 0),r.__decorate([n.property()],b.prototype,"description",void 0),r.__decorate([l.reader("description")],b.prototype,"readDescription",null),r.__decorate([n.property({types:_.types,json:{read:{reader:_.fromJSON},write:!0}})],b.prototype,"domain",void 0),r.__decorate([n.property({type:Boolean,json:{write:!0}})],b.prototype,"editable",void 0),r.__decorate([n.property({type:a.Integer,json:{write:!0}})],b.prototype,"length",void 0),r.__decorate([n.property({type:String,json:{write:!0}})],b.prototype,"name",void 0),r.__decorate([n.property({type:Boolean,json:{write:!0}})],b.prototype,"nullable",void 0),r.__decorate([p.enumeration(m.kebabDict)],b.prototype,"type",void 0),r.__decorate([n.property()],b.prototype,"valueType",void 0),r.__decorate([l.reader("valueType",["description"])],b.prototype,"readValueType",null),b=h=r.__decorate([s.subclass("esri.layers.support.Field")],b),b}));

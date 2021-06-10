@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","./Symbol3DLayer","./support/materialUtils","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,a){var l=p=function(e){function r(r){var t=e.call(this)||this;return t.material=null,t.type="line",t.size=1,t}return t(r,e),r.prototype.clone=function(){return new p({enabled:this.enabled,elevationInfo:this.elevationInfo&&this.elevationInfo.clone(),material:this.material&&this.material.clone(),size:this.size})},r}(a.declared(i));o([a.property()],l.prototype,"material",void 0),o([a.property()],l.prototype,"type",void 0),o([a.property(n.screenSizeProperty)],l.prototype,"size",void 0),l=p=o([a.subclass("esri.symbols.LineSymbol3DLayer")],l);var p;return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/maybe","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../Color","./Symbol3DLayer","../core/screenUtils","./support/materialUtils","./support/Symbol3DMaterial","./support/colors"],(function(e,t,r,o,p,i,s,l,n,a,c,u,y,d,m,f,h,_){"use strict";var b;let S=b=function(t){function r(e){var r;return(r=t.call(this,e)||this).material=null,r.type="line",r.join="miter",r.cap="butt",r.size=m.px2pt(1),r.stipplePattern=null,r.stippleOffColor=null,r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new b({enabled:this.enabled,material:o.isSome(this.material)?this.material.clone():null,size:this.size,join:this.join,cap:this.cap,stipplePattern:this.stipplePattern?this.stipplePattern.slice():null,stippleOffColor:this.stippleOffColor?this.stippleOffColor.clone():null})},r.fromSimpleLineSymbol=function(e){return new b({size:e.width||1,cap:e.cap||"butt",join:e.join||"miter",material:{color:(e.color||_.white).clone()}})},r}(d);return t.__decorate([s.property({type:h.default,json:{write:!0}})],S.prototype,"material",void 0),t.__decorate([l.enumeration({Line:"line"},{readOnly:!0})],S.prototype,"type",void 0),t.__decorate([s.property({type:["miter","bevel","round"],json:{write:!0,default:"miter"}})],S.prototype,"join",void 0),t.__decorate([s.property({type:["butt","square","round"],json:{write:!0,default:"butt"}})],S.prototype,"cap",void 0),t.__decorate([s.property(f.screenSizeProperty)],S.prototype,"size",void 0),t.__decorate([s.property(f.stipplePatternProperty)],S.prototype,"stipplePattern",void 0),t.__decorate([s.property({type:y})],S.prototype,"stippleOffColor",void 0),S=b=t.__decorate([n.subclass("esri.symbols.LineSymbol3DLayer")],S),S}));

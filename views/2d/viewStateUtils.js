@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(t,n){function r(t){return t*i}function e(t,n,r){var e=r.resolution,o=r.size;return t[0]=e*(Math.round(n[0]/e)+o[0]%2*.5),t[1]=e*(Math.round(n[1]/e)+o[1]%2*.5),t}function o(t,n){var e=r(n.rotation),o=Math.abs(Math.cos(e)),u=Math.abs(Math.sin(e)),a=n.size,i=a[0],s=a[1];return t[0]=Math.round(s*u+i*o),t[1]=Math.round(s*o+i*u),t}function u(t,n,r,e){var o=n[0],u=n[1],a=e[0],i=e[1],s=.5*r;return t[0]=o-s*a,t[1]=u-s*i,t[2]=o+s*a,t[3]=u+s*i,t}function a(t,n){var r=t[0],e=t[1],o=t[2],u=t[3],a=n[0],i=n[1],s=n[2],M=n[3];return!(r>s||a>o||e>M||i>u)}Object.defineProperty(n,"__esModule",{value:!0});var i=Math.PI/180;n.snapToPixel=e,n.getOuterSize=o,n.getBBox=u,n.bboxIntersects=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports"],(function(t){"use strict";const n=Math.PI/180;function e(t){return t*n}function o(t,n,e){const{resolution:o,size:r}=e;return t[0]=o*(Math.round(n[0]/o)+r[0]%2*.5),t[1]=o*(Math.round(n[1]/o)+r[1]%2*.5),t}function r(t,n){const o=e(n.rotation),r=Math.abs(Math.cos(o)),u=Math.abs(Math.sin(o)),[s,i]=n.size;return t[0]=Math.round(i*u+s*r),t[1]=Math.round(i*r+s*u),t}function u(t,n,e,o){const[r,u]=n,[s,i]=o,c=.5*e;return t[0]=r-c*s,t[1]=u-c*i,t[2]=r+c*s,t[3]=u+c*i,t}function s(t,n){const[e,o,r,u]=t,[s,i,c,a]=n;return!(e>c||r<s||o>a||u<i)}t.bboxIntersects=s,t.getBBox=u,t.getOuterSize=r,t.snapToPixel=o,Object.defineProperty(t,"__esModule",{value:!0})}));

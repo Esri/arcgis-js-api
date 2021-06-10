@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/_base/lang","./property"],function(r,e,o,a){function t(r,e,t){var c,d;return void 0===e||Array.isArray(e)?(d=r,t=e,c=[void 0]):(d=e,c=Array.isArray(r)?r:[r]),function(r,e,n){var i=r.constructor.prototype;c.forEach(function(c){var n=a.propertyJSONMeta(r,c,d);n.read&&"object"!=typeof n.read&&(n.read={}),o.setObject("read.reader",i[e],n),t&&(n.read.source=(n.read.source||[]).concat(t))})}}Object.defineProperty(e,"__esModule",{value:!0}),e.reader=t});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../object","./property"],(function(e,r,t){"use strict";function o(e,o,a){let c,d;return void 0===o||Array.isArray(o)?(d=e,a=o,c=[void 0]):(d=o,c=Array.isArray(e)?e:[e]),(e,o)=>{const s=e.constructor.prototype;c.forEach((c=>{const n=t.propertyJSONMeta(e,c,d);n.read&&"object"!=typeof n.read&&(n.read={}),r.setDeepValue("read.reader",s[o],n),a&&(n.read.source=(n.read.source||[]).concat(a))}))}}e.reader=o,Object.defineProperty(e,"__esModule",{value:!0})}));

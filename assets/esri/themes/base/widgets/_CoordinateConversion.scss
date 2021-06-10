@@ -1,0 +1,220 @@
+@mixin coordinateConversion() {
+  .esri-coordinate-conversion {
+    cursor: default;
+    font-size: $font-size--small;
+    position: relative;
+    width: 400px;
+    .esri-select option[disabled] {
+      color: $interactive-font-color--disabled;
+    }
+  }
+  .esri-coordinate-conversion.esri-disabled {
+    pointer-events: none;
+    color: $interactive-font-color--disabled;
+    [class*="esri-icon-"]:before {
+      color: $interactive-font-color--disabled;
+    }
+  }
+  .esri-coordinate-conversion--no-basemap {
+    padding: 1em;
+    width: auto;
+  }
+  .esri-coordinate-conversion--capture-mode {
+    .esri-coordinate-conversion__mode-toggle {
+      color: $interactive-font-color;
+      background: $background-color--offset;
+    }
+  }
+  .esri-coordinate-conversion__conversion-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .esri-coordinate-conversion__display {
+    flex: 1 1 auto;
+    min-height: 2em;
+    padding: 0.5em;
+    @include wordbreak();
+  }
+  .esri-coordinate-conversion__display:hover,
+  .esri-coordinate-conversion__select-row:hover {
+    background-color: $background-color--hover;
+  }
+  .esri-coordinate-conversion__button {
+    color: $interactive-font-color;
+    border-color: $interactive-font-color;
+    background-color: $background-color;
+    width: 30%;
+  }
+  .esri-coordinate-conversion__button:hover {
+    color: $background-color;
+    background-color: $interactive-font-color;
+    border-color: $interactive-font-color;
+  }
+  .esri-coordinate-conversion__input-group {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: $cap-spacing auto $cap-spacing auto;
+    label {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .esri-coordinate-conversion .esri-coordinate-conversion__input-coordinate[type="text"] {
+    width: 100%;
+    margin: 0;
+    padding: 0 0.5em;
+    border: 1px solid $border-color;
+    font-size: $font-size--small;
+    height: 2em;
+  }
+  .esri-coordinate-conversion__input-coordinate--rejected {
+    text-decoration: underline red;
+  }
+  .esri-coordinate__settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .esri-select {
+      font-size: inherit;
+    }
+  }
+  .esri-coordinate-conversion__settings-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin-top: $cap-spacing;
+  }
+  .esri-coordinate-conversion__settings-group > * {
+    margin-bottom: 0.5em;
+  }
+  .esri-coordinate-conversion__settings-group-horizontal {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .esri-coordinate-conversion__settings-group:last-child {
+    margin-bottom: $cap-spacing--half;
+    text-align: center;
+    width: 100%;
+  }
+  .esri-coordinate-conversion__preview-coordinate {
+    min-height: 1.25em;
+  }
+  .esri-coordinate-conversion__row {
+    padding: 0 $side-spacing 0 $side-spacing;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+
+    .esri-coordinate-conversion__row-button {
+      display: none;
+    }
+  }
+  .esri-coordinate-conversion__row:hover .esri-coordinate-conversion__row-button {
+    display: flex;
+  }
+  .esri-coordinate-conversion__row:focus-within .esri-coordinate-conversion__row-button {
+    display: flex;
+  }
+  .esri-coordinate-conversion__pattern-input {
+    padding: 4px;
+    width: 100%;
+    height: $button-height;
+  }
+  .esri-coordinate-conversion__tools {
+    flex: 0 0 auto;
+    display: flex;
+    position: relative;
+    padding: 0;
+  }
+  .esri-coordinate-conversion__select-primary {
+    font-size: inherit;
+    margin: 0;
+    padding: 0 2.5em 0 0.5em;
+    width: auto;
+  }
+  .esri-coordinate-conversion__select-row {
+    font-size: inherit;
+    background: $background-color;
+    height: 2em;
+    margin: 0;
+    text-align-last: center;
+    flex: 0 0 75px;
+    padding: 0 0.5em 0 0.5em;
+  }
+  .esri-coordinate-conversion__conversions-view {
+    margin: $cap-spacing--half 0 $cap-spacing--half 0;
+  }
+  .esri-ui-top-right .esri-coordinate-conversion__conversions-view,
+  .esri-ui-top-left .esri-coordinate-conversion__conversions-view,
+  .esri-coordinate-conversion div.esri-coordinate-conversion__conversions-view--expand-down {
+    display: flex;
+    flex-direction: column;
+    .esri-coordinate-conversion__conversion-list {
+      flex-direction: column;
+    }
+  }
+  .esri-ui-bottom-right .esri-coordinate-conversion__conversions-view,
+  .esri-ui-bottom-left .esri-coordinate-conversion__conversions-view,
+  .esri-coordinate-conversion div.esri-coordinate-conversion__conversions-view--expand-up {
+    display: flex;
+    flex-direction: column-reverse;
+    .esri-coordinate-conversion__conversion-list {
+      flex-direction: column-reverse;
+    }
+    .esri-widget--button {
+      .esri-icon-up,
+      .esri-icon-down {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .esri-coordinate-conversion__heading {
+    width: 100%;
+    height: $button-height;
+    background-color: $background-color--offset;
+    display: flex;
+    align-items: center;
+    .esri-widget__heading {
+      margin: 0 auto 0 auto;
+    }
+    .esri-coordinate-conversion__back-button {
+      position: absolute;
+      margin-left: 0;
+      top: 0;
+      left: 0;
+      background-color: $background-color--offset;
+    }
+    .esri-coordinate-conversion__back-button:hover {
+      background-color: $background-color;
+    }
+  }
+  .esri-coordinate-conversion__popup {
+    animation: esri-fade-in 250ms linear;
+    color: $interactive-font-color--inverse;
+    white-space: nowrap;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    white-space: inherit;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background-color: $background-color--inverse;
+    opacity: 0.8;
+    padding: 1em;
+  }
+}
+
+@if $include_CoordinateConversion == true {
+  @include coordinateConversion();
+}

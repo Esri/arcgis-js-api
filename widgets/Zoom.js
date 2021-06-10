@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/accessorSupport/decorators","./support/widget","./Widget","./Zoom/IconButton","./Zoom/ZoomViewModel","dojo/i18n!./Zoom/nls/Zoom"],function(o,t,e,n,i,r,s,a,l,u){var d={base:"esri-zoom esri-widget",horizontalLayout:"esri-zoom--horizontal",zoomInIcon:"esri-icon-plus",zoomOutIcon:"esri-icon-minus"},c=function(o){function t(t){var e=o.call(this)||this;return e.layout="vertical",e.view=null,e.viewModel=new l,e}return e(t,o),t.prototype.postInitialize=function(){this._zoomInButton=new a({action:this.zoomIn.bind(this),iconClass:d.zoomInIcon,title:u.zoomIn}),this._zoomOutButton=new a({action:this.zoomOut.bind(this),iconClass:d.zoomOutIcon,title:u.zoomOut})},t.prototype.render=function(){var o=this.viewModel,t=(e={},e[d.horizontalLayout]="horizontal"===this.layout,e);return this._zoomInButton.enabled="ready"===o.state&&o.canZoomIn,this._zoomOutButton.enabled="ready"===o.state&&o.canZoomOut,r.tsx("div",{"class":d.base,classes:t},this._zoomInButton.render(),this._zoomOutButton.render());var e},t.prototype.zoomIn=function(){},t.prototype.zoomOut=function(){},t}(i.declared(s));return n([i.property(),r.renderable()],c.prototype,"layout",void 0),n([i.aliasOf("viewModel.view"),r.renderable()],c.prototype,"view",void 0),n([i.property({type:l}),r.renderable(["viewModel.canZoomIn","viewModel.canZoomOut","viewModel.state"])],c.prototype,"viewModel",void 0),n([i.aliasOf("viewModel.zoomIn")],c.prototype,"zoomIn",null),n([i.aliasOf("viewModel.zoomOut")],c.prototype,"zoomOut",null),c=n([i.subclass("esri.widgets.Zoom")],c)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/aliasOf","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./support/widgetUtils","./support/decorators/messageBundle","../chunks/index","./Widget","./Zoom/IconButton","./Zoom/ZoomViewModel"],(function(o,t,e,s,i,n,r,u,a,c,l,d,p,m,h,z,_){"use strict";const y={base:"esri-zoom esri-widget",horizontalLayout:"esri-zoom--horizontal",zoomInIcon:"esri-icon-plus",zoomOutIcon:"esri-icon-minus",widgetIcon:"esri-icon-zoom-in-magnifying-glass"};let v=function(t){function e(o,e){var s;return(s=t.call(this,o,e)||this).iconClass=y.widgetIcon,s.label=void 0,s.messages=null,s.view=null,s.viewModel=new _,s}o._inheritsLoose(e,t);var s=e.prototype;return s.initialize=function(){this._zoomInButton=new z({action:this.zoomIn.bind(this),iconClass:y.zoomInIcon}),this._zoomOutButton=new z({action:this.zoomOut.bind(this),iconClass:y.zoomOutIcon})},s.destroy=function(){this._zoomInButton.destroy(),this._zoomOutButton.destroy(),this._zoomInButton=null,this._zoomOutButton=null},s.render=function(){const o=this.viewModel,t={[y.horizontalLayout]:"horizontal"===this.layout};return this._zoomInButton.enabled="ready"===o.state&&o.canZoomIn,this._zoomOutButton.enabled="ready"===o.state&&o.canZoomOut,this._zoomInButton.title=this.messages.zoomIn,this._zoomOutButton.title=this.messages.zoomOut,m.jsx("div",{class:this.classes(y.base,t)},this._zoomInButton.render(),this._zoomOutButton.render())},s.zoomIn=function(){return this.viewModel.zoomIn()},s.zoomOut=function(){return this.viewModel.zoomOut()},o._createClass(e,[{key:"layout",set:function(o){"horizontal"!==o&&(o="vertical"),this._set("layout",o)}}]),e}(h);return t.__decorate([n.property()],v.prototype,"iconClass",void 0),t.__decorate([n.property({aliasOf:{source:"messages.widgetLabel",overridable:!0}})],v.prototype,"label",void 0),t.__decorate([n.property({value:"vertical"})],v.prototype,"layout",null),t.__decorate([n.property(),p.messageBundle("esri/widgets/Zoom/t9n/Zoom")],v.prototype,"messages",void 0),t.__decorate([r.aliasOf("viewModel.view")],v.prototype,"view",void 0),t.__decorate([n.property({type:_})],v.prototype,"viewModel",void 0),v=t.__decorate([u.subclass("esri.widgets.Zoom")],v),v}));

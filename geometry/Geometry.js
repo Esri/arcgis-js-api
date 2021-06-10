@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/JSONSupport","./SpatialReference"],function(e,n){var t=e.createSubclass({declaredClass:"esri.geometry.Geometry",type:null,properties:{cache:{value:null,readOnly:!0,dependsOn:["spatialReference"],get:function(){return{}}},extent:{value:null,readOnly:!0,dependsOn:["spatialReference"]},hasM:!1,hasZ:!1,spatialReference:n.WGS84},isSR:function(e){return e&&("esri.SpatialReference"===e.declaredClass||null!=e.wkid)},clone:function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},toJSON:function(){return console.warn(".toJSON() is not implemented for "+this.declaredClass),null},clearCache:function(){this.notifyChange("cache")},getCacheValue:function(e){return this.cache[e]},setCacheValue:function(e,n){this.cache[e]=n}});return t});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/reader","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport","./SpatialReference"],(function(e,r,t,o,c,n,a,p,s,l,i,u,d){"use strict";let y=function(r){function t(...e){var t;return(t=r.call(this,...e)||this).type=null,t.hasM=!1,t.hasZ=!1,t.spatialReference=d.WGS84,t}e._inheritsLoose(t,r);var o=t.prototype;return o.readSpatialReference=function(e,r){if(e instanceof d)return e;if(null!=e){const t=new d;return t.read(e,r),t}return e},o.clone=function(){return console.warn(".clone() is not implemented for "+this.declaredClass),null},o.clearCache=function(){this.notifyChange("cache")},o.getCacheValue=function(e){return this.cache[e]},o.setCacheValue=function(e,r){this.cache[e]=r},e._createClass(t,[{key:"cache",get:function(){return this.commitProperty("spatialReference"),{}}},{key:"extent",get:function(){return null}}]),t}(u.JSONSupport);return r.__decorate([n.property()],y.prototype,"type",void 0),r.__decorate([n.property({readOnly:!0})],y.prototype,"cache",null),r.__decorate([n.property({readOnly:!0})],y.prototype,"extent",null),r.__decorate([n.property({type:Boolean,json:{write:{overridePolicy:e=>({enabled:e})}}})],y.prototype,"hasM",void 0),r.__decorate([n.property({type:Boolean,json:{write:{overridePolicy:e=>({enabled:e})}}})],y.prototype,"hasZ",void 0),r.__decorate([n.property({type:d,json:{write:!0}})],y.prototype,"spatialReference",void 0),r.__decorate([a.reader("spatialReference")],y.prototype,"readSpatialReference",null),y=r.__decorate([p.subclass("esri.geometry.Geometry")],y),y}));

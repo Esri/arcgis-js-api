@@ -3,7 +3,7 @@
  * The widget respects various coordinate systems and displays units in metric or non-metric values.
  * Metric values shows either kilometers or meters depending on the scale, and likewise non-metric values shows miles and feet depending on the scale.
  * When working with Web Mercator or geographic coordinate systems the scale bar takes into account projection distortion and dynamically adjusts the scale bar.
- * The ScaleBar sample, which uses a map using the Web Mercator projection, shows this behavior.
+ * The [ScaleBar widget sample](../sample-code/widgets-scalebar/index.html), which uses a map that has the Web Mercator projection, shows this behavior.
  * Open the sample and note that as you pan the map south towards the equator the scale bar gets shorter and as you pan north it gets longer.
  *
  * When the scale bar is inside the map, the actual location of the scale bar is used to calculate the scale.
@@ -19,8 +19,8 @@
  * @module esri/widgets/ScaleBar
  * @since 4.3
  *
- * @see [ScaleBar.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/ScaleBar.tsx)
- * @see [ScaleBar.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_ScaleBar.scss)
+ * @see [ScaleBar.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleBar.tsx)
+ * @see [ScaleBar.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ScaleBar.scss)
  * @see [Sample - ScaleBar widget](../sample-code/widgets-scalebar/index.html)
  * @see module:esri/widgets/ScaleBar/ScaleBarViewModel
  *
@@ -34,26 +34,29 @@
  * });
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core
+import { createScreenPoint } from "esri/core/screenUtils";
+import { watch, whenTrue } from "esri/core/watchUtils";
 
-import { join, tsx, renderable } from "./support/widget";
-import { aliasOf, cast, declared, property, subclass } from "../core/accessorSupport/decorators";
-import { whenTrue } from "../core/watchUtils";
+// esri.core.accessorSupport
+import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import {
-  MapUnitType,
-  ScaleBarProperties
-} from "./interfaces";
+// esri.views
+import MapView from "esri/views/MapView";
 
-import Widget = require("./Widget");
-import ScaleBarViewModel = require("./ScaleBar/ScaleBarViewModel");
-import ScreenPoint = require("../geometry/ScreenPoint");
-import MapView = require("../views/MapView");
+// esri.widgets
+import { MapUnitType, ScaleBarProperties } from "esri/widgets/interfaces";
+import Widget from "esri/widgets/Widget";
 
-import domGeometry = require("dojo/dom-geometry");
+// esri.widgets.ScaleBar
+import ScaleBarViewModel from "esri/widgets/ScaleBar/ScaleBarViewModel";
 
-import * as i18n from "dojo/i18n!./ScaleBar/nls/ScaleBar";
+// esri.widgets.ScaleBar.t9n
+import ScaleBarMessages from "esri/widgets/ScaleBar/t9n/ScaleBar";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { messageBundle, tsx } from "esri/widgets/support/widget";
 
 type ScaleBarStyle = "line" | "ruler";
 type ScaleBarUnit = MapUnitType | "dual";
@@ -61,7 +64,10 @@ type ScaleBarUnit = MapUnitType | "dual";
 const CSS = {
   base: "esri-scale-bar esri-widget",
   labelContainer: "esri-scale-bar__label-container",
+  rulerLabelContainer: "esri-scale-bar__label-container--ruler",
   lineLabelContainer: "esri-scale-bar__label-container--line",
+  topLabelContainer: "esri-scale-bar__label-container--top",
+  bottomLabelContainer: "esri-scale-bar__label-container--bottom",
   label: "esri-scale-bar__label",
   line: "esri-scale-bar__line",
   topLine: "esri-scale-bar__line--top",
@@ -69,6 +75,8 @@ const CSS = {
   ruler: "esri-scale-bar__ruler",
   rulerBlock: "esri-scale-bar__ruler-block",
   barContainer: "esri-scale-bar__bar-container",
+  rulerBarContainer: "esri-scale-bar__bar-container--ruler",
+  lineBarContainer: "esri-scale-bar__bar-container--line",
 
   // common
   disabled: "esri-disabled"
@@ -79,8 +87,7 @@ function double(value: number): number {
 }
 
 @subclass("esri.widgets.ScaleBar")
-class ScaleBar extends declared(Widget) {
-
+class ScaleBar extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -100,13 +107,20 @@ class ScaleBar extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
-  postInitialize() {
+  initialize(): void {
     this.own([
-       whenTrue(this, "view.stationary", () => this.scheduleRender())
+      whenTrue(this, "view.stationary", () => this.scheduleRender()),
+
+      watch(this, ["view.center", "view.scale", "view.zoom"], () => {
+        if (!this.view.stationary) {
+          return;
+        }
+        this.scheduleRender();
+      })
     ]);
   }
 
@@ -117,28 +131,55 @@ class ScaleBar extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/ScaleBar/t9n/ScaleBar")
+  messages: ScaleBarMessages = null;
+
+  //----------------------------------
   //  style
   //----------------------------------
 
   /**
    * The style for the scale bar.
-   * Valid values are `ruler` or `line`.
    * When `unit` is set to `dual`, the style will always be `line`.
    *
    * @name style
    * @instance
-   * @type {string}
+   * @type {"ruler" | "line"}
    */
-  @property({
-    dependsOn: ["unit"]
-  })
-  @renderable()
+  @property()
   set style(value: ScaleBarStyle) {
-
     // ruler + dual not allowed
-    const style = this.unit === "dual" ?
-      "line" :
-      value;
+    const style = this.unit === "dual" ? "line" : value;
 
     this._set("style", style);
   }
@@ -154,17 +195,15 @@ class ScaleBar extends declared(Widget) {
 
   /**
    * Units to use for the scale bar.
-   * Valid values are `non-metric`, `metric` or `dual`.
    * When using `dual`, the scale bar displays both metric and non-metric units.
-   * Metric values shows either kilometers or meters depending on the scale, and similarly non-metric values shows miles and feet depending on the scale.
+   * Metric values show either kilometers or meters depending on the scale, and non-metric values show either miles or feet depending on the scale.
    *
    * @name unit
    * @instance
-   * @type {string}
-   * @default non-metric (i.e. miles and feet)
+   * @type {"non-metric" | "metric" | "dual"}
+   * @default non-metric
    */
   @property()
-  @renderable()
   unit: ScaleBarUnit = "non-metric";
 
   @cast("unit")
@@ -186,7 +225,6 @@ class ScaleBar extends declared(Widget) {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  @renderable()
   view: MapView = null;
 
   //----------------------------------
@@ -205,9 +243,6 @@ class ScaleBar extends declared(Widget) {
    * @autocast
    */
   @property()
-  @renderable([
-    "viewModel.state"
-  ])
   viewModel = new ScaleBarViewModel();
 
   //--------------------------------------------------------------------------
@@ -216,7 +251,7 @@ class ScaleBar extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const isDisabled = this.get("viewModel.state") === "disabled";
 
     const baseClasses = {
@@ -233,25 +268,38 @@ class ScaleBar extends declared(Widget) {
       const baseLengthInPixels = 50;
 
       if (useNonMetric) {
-        const nonMetricScale = this.viewModel.getScaleBarProperties(baseLengthInPixels, "non-metric");
+        const nonMetricScale = this.viewModel.getScaleBarProperties(
+          baseLengthInPixels,
+          "non-metric"
+        );
 
-        nonMetricScaleBar = style === "ruler" ?
-          this._renderRuler(nonMetricScale) :
-          this._renderLine(nonMetricScale, "bottom");
+        if (nonMetricScale) {
+          nonMetricScaleBar =
+            style === "ruler"
+              ? this._renderRuler(nonMetricScale)
+              : this._renderLine(nonMetricScale, "bottom");
+        }
       }
 
       if (useMetric) {
         const metricScale = this.viewModel.getScaleBarProperties(baseLengthInPixels, "metric");
 
-        metricScaleBar = style === "ruler" ?
-          this._renderRuler(metricScale) :
-          this._renderLine(metricScale, "top");
+        if (metricScale) {
+          metricScaleBar =
+            style === "ruler"
+              ? this._renderRuler(metricScale)
+              : this._renderLine(metricScale, "top");
+        }
       }
     }
 
     return (
-      <div afterCreate={this._handleRootCreation} bind={this}
-           class={CSS.base} classes={baseClasses}>
+      <div
+        afterCreate={this._handleRootCreateOrUpdate}
+        afterUpdate={this._handleRootCreateOrUpdate}
+        bind={this}
+        class={this.classes(CSS.base, baseClasses)}
+      >
         {metricScaleBar}
         {nonMetricScaleBar}
       </div>
@@ -264,34 +312,44 @@ class ScaleBar extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderRuler(scaleBarProps: ScaleBarProperties): any {
+  private _renderRuler(scaleBarProps: ScaleBarProperties): VNode {
     const length = double(Math.round(scaleBarProps.length));
-    const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+    const { messages } = this;
+    const unit = messages[scaleBarProps.unit] || messages.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
 
     return (
-      <div class={CSS.barContainer} styles={{"width": `${length}px`}} key="esri-scale-bar__ruler">
-        <div class={CSS.ruler}>
+      <div
+        class={this.classes(CSS.barContainer, CSS.rulerBarContainer)}
+        key="esri-scale-bar__ruler"
+      >
+        <div class={CSS.ruler} styles={{ width: `${length}px` }}>
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
           <div class={CSS.rulerBlock} />
         </div>
-        <div class={CSS.labelContainer}>
+        <div class={this.classes(CSS.labelContainer, CSS.rulerLabelContainer)}>
           <div class={CSS.label}>0</div>
-          <div class={CSS.label}>{scaleBarProps.value}</div>
           <div class={CSS.label}>{unitLabel}</div>
         </div>
       </div>
     );
   }
 
-  private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): any {
-    const unit = i18n[scaleBarProps.unit] || i18n.unknownUnit;
+  private _renderLine(scaleBarProps: ScaleBarProperties, labelPosition: "top" | "bottom"): VNode {
+    const { messages } = this;
+    const unit = messages[scaleBarProps.unit] || messages.unknownUnit;
     const unitLabel = `${double(scaleBarProps.value)} ${unit}`;
-
+    const labelContainerClasses = {
+      [CSS.topLabelContainer]: labelPosition === "top",
+      [CSS.bottomLabelContainer]: labelPosition === "bottom"
+    };
     const label = (
-      <div class={join(CSS.labelContainer, CSS.lineLabelContainer)} key="esri-scale-bar__label">
+      <div
+        class={this.classes(CSS.labelContainer, CSS.lineLabelContainer, labelContainerClasses)}
+        key="esri-scale-bar__label"
+      >
         <div class={CSS.label}>{unitLabel}</div>
       </div>
     );
@@ -301,30 +359,45 @@ class ScaleBar extends declared(Widget) {
       [CSS.bottomLine]: labelPosition === "bottom"
     };
 
-    const line = (
-      <div class={CSS.line} classes={lineClasses} key="esri-scale-bar__line" />
-    );
-
     const length = double(Math.round(scaleBarProps.length));
+    const line = (
+      <div
+        class={this.classes(CSS.line, lineClasses)}
+        key="esri-scale-bar__line"
+        styles={{ width: `${length}px` }}
+      />
+    );
 
     return (
-      <div class={CSS.barContainer} styles={{"width": `${length}px`}} key="esri-scale-bar__line-container">{
-        labelPosition === "top" ?
-          [label, line] :
-          [line, label]
-      }</div>
+      <div
+        class={this.classes(CSS.barContainer, CSS.lineBarContainer)}
+        key="esri-scale-bar__line-container"
+      >
+        {[line, label]}
+      </div>
     );
   }
 
-  private _handleRootCreation(node: Element): void {
+  private _handleRootCreateOrUpdate(node: Element): void {
     const vm = this.viewModel;
 
-    if (vm) {
-      const { x, y } = domGeometry.position(node, true);
-      vm.scaleComputedFrom = new ScreenPoint({ x, y });
+    if (!vm) {
+      return;
+    }
+
+    const rect = node.getBoundingClientRect();
+    const x = rect.left + window.pageXOffset;
+    const y = rect.top + window.pageYOffset;
+    const futureScreenPoint = createScreenPoint(x, y);
+
+    const referenceScreenPointChanged =
+      futureScreenPoint.x !== vm.scaleComputedFrom.x ||
+      futureScreenPoint.y !== vm.scaleComputedFrom.y;
+
+    if (referenceScreenPointChanged) {
+      vm.scaleComputedFrom = futureScreenPoint;
     }
   }
-
 }
 
-export = ScaleBar;
+export default ScaleBar;

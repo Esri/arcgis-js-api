@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["./core/JSONSupport","./Camera","./core/lang","./geometry/support/jsonUtils"],function(e,t,r,a){var o=e.createSubclass({declaredClass:"esri.Viewpoint",properties:{rotation:{value:0,cast:function(e){return e%=360,0>e&&(e+=360),e}},scale:0,targetGeometry:{value:null,json:{read:function(e){return a.fromJSON(e)}}},camera:{value:null,type:t}},toJSON:function(){var e={scale:this.scale,rotation:this.rotation,targetGeometry:this.targetGeometry?this.targetGeometry.toJSON():void 0,camera:this.camera?this.camera.toJSON():void 0};return e.camera&&delete e.camera.fov,r.fixJson(e)},clone:function(){return new o({rotation:this.rotation,scale:this.scale,targetGeometry:this.targetGeometry?this.targetGeometry.clone():null,camera:this.camera?this.camera.clone():null})}});return o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["./chunks/_rollupPluginBabelHelpers","./chunks/tslib.es6","./core/has","./core/maybe","./core/Logger","./core/accessorSupport/decorators/property","./core/accessorSupport/decorators/cast","./core/accessorSupport/decorators/subclass","./core/urlUtils","./core/uuid","./portal/support/resourceExtension","./core/JSONSupport","./geometry/support/jsonUtils","./geometry","./Camera"],(function(e,r,t,o,s,a,i,c,n,p,u,l,y,m,d){"use strict";var w;let g=w=function(r){function t(e){var t;return(t=r.call(this,e)||this).rotation=0,t.scale=0,t.targetGeometry=null,t.camera=null,t}e._inheritsLoose(t,r);var s=t.prototype;return s.castRotation=function(e){return(e%=360)<0&&(e+=360),e},s.clone=function(){return new w({rotation:this.rotation,scale:this.scale,targetGeometry:o.isSome(this.targetGeometry)?this.targetGeometry.clone():null,camera:o.isSome(this.camera)?this.camera.clone():null})},t}(l.JSONSupport);function _(){return{enabled:!this.camera}}return r.__decorate([a.property({type:Number,json:{write:!0,origins:{"web-map":{default:0,write:!0},"web-scene":{write:{overridePolicy:_}}}}})],g.prototype,"rotation",void 0),r.__decorate([i.cast("rotation")],g.prototype,"castRotation",null),r.__decorate([a.property({type:Number,json:{write:!0,origins:{"web-map":{default:0,write:!0},"web-scene":{write:{overridePolicy:_}}}}})],g.prototype,"scale",void 0),r.__decorate([a.property({types:m.geometryTypes,json:{read:y.fromJSON,write:!0,origins:{"web-scene":{read:y.fromJSON,write:{overridePolicy:_}}}}})],g.prototype,"targetGeometry",void 0),r.__decorate([a.property({type:d,json:{write:!0}})],g.prototype,"camera",void 0),g=w=r.__decorate([c.subclass("esri.Viewpoint")],g),g}));

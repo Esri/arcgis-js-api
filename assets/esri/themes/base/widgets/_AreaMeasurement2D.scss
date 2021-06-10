@@ -1,0 +1,14 @@
+@mixin areaMeasurement2D() {
+  .esri-area-measurement-2d__measurement {
+    padding: $cap-spacing $side-spacing;
+    margin: $cap-spacing 0;
+    background-color: $background-color--offset;
+    animation: esri-fade-in 250ms ease-in-out;
+  }
+
+  @include measurementWidgetStyles("esri-area-measurement-2d");
+}
+
+@if $include_AreaMeasurement2D == true {
+  @include areaMeasurement2D();
+}

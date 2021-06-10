@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","./support/Symbol3DVerticalOffset","./callouts/calloutUtils","../core/accessorSupport/decorators"],function(t,e,o,r,l,s,i,a,c){var n=p=function(t){function e(e){var o=t.call(this)||this;return o.verticalOffset=null,o.callout=null,o.type="point-symbol-3d",o}return o(e,t),e.prototype.supportsCallout=function(){var t=this.symbolLayers?this.symbolLayers.length:0;if(1!==t)return!1;var e=this.symbolLayers.getItemAt(0);switch(e.type){case"icon":case"text":case"object":return!0}return!1},e.prototype.hasVisibleCallout=function(){return a.hasVisibleCallout(this)},e.prototype.hasVisibleVerticalOffset=function(){return a.hasVisibleVerticalOffset(this)},e.prototype.clone=function(){return new p({verticalOffset:l.clone(this.verticalOffset),callout:l.clone(this.callout),styleOrigin:l.clone(this.styleOrigin),symbolLayers:l.clone(this.symbolLayers),thumbnail:l.clone(this.thumbnail)})},e}(c.declared(s));r([c.property({type:i["default"],json:{write:!0}})],n.prototype,"verticalOffset",void 0),r([c.property(a.calloutProperty)],n.prototype,"callout",void 0),r([c.property()],n.prototype,"type",void 0),r([c.shared(["icon","object","text"])],n.prototype,"_allowedLayerTypes",void 0),n=p=r([c.subclass("esri.symbols.PointSymbol3D")],n);var p;return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","./IconSymbol3DLayer","./ObjectSymbol3DLayer","./TextSymbol3DLayer","./Symbol3D","./callouts/calloutUtils","./support/Symbol3DVerticalOffset"],(function(e,t,o,r,s,l,n,c,a,i,y,u,p,b,m,f,h,S,d,L,w){"use strict";var _;const g=m.ofType({base:null,key:"type",typeMap:{icon:f,object:h,text:S}}),v=m.ofType({base:null,key:"type",typeMap:{icon:f,object:h}});let O=_=function(t){function o(e){var o;return(o=t.call(this,e)||this).verticalOffset=null,o.callout=null,o.symbolLayers=new g,o.type="point-3d",o}e._inheritsLoose(o,t);var s=o.prototype;return s.writeSymbolLayers=function(e,t,o,r){const s=e.filter((e=>"text"!==e.type));if(r&&r.messages&&s.length<e.length){const t=e.find((e=>"text"===e.type));r.messages.push(new y("symbol-layer:unsupported","Symbol layers of type 'text' cannot be persisted in PointSymbol3D",{symbolLayer:t}))}t[o]=s.map((e=>e.write({},r))).toArray()},s.supportsCallout=function(){if((this.symbolLayers?this.symbolLayers.length:0)<1)return!1;for(const e of this.symbolLayers.items)switch(e.type){case"icon":case"text":case"object":continue;default:return!1}return!0},s.hasVisibleCallout=function(){return L.hasVisibleCallout(this)},s.hasVisibleVerticalOffset=function(){return L.hasVisibleVerticalOffset(this)},s.clone=function(){return new _({verticalOffset:r.clone(this.verticalOffset),callout:r.clone(this.callout),styleOrigin:r.clone(this.styleOrigin),symbolLayers:r.clone(this.symbolLayers),thumbnail:r.clone(this.thumbnail)})},o.fromSimpleMarkerSymbol=function(e){return new _({symbolLayers:[f.fromSimpleMarkerSymbol(e)]})},o.fromPictureMarkerSymbol=function(e){return new _({symbolLayers:[f.fromPictureMarkerSymbol(e)]})},o.fromCIMSymbol=function(e){if(e.data&&e.data.symbol){const t=e.data.symbol;if("CIMPointSymbol"===t.type&&t.callout)return new _({symbolLayers:[f.fromCIMSymbol(e)],callout:{type:"line",size:.5,color:[0,0,0]},verticalOffset:{screenLength:40}})}return new _({symbolLayers:[f.fromCIMSymbol(e)]})},o.fromTextSymbol=function(e){return new _({symbolLayers:[S.fromTextSymbol(e)]})},o}(d);return t.__decorate([n.property({type:w.default,json:{write:!0}})],O.prototype,"verticalOffset",void 0),t.__decorate([n.property(L.calloutProperty)],O.prototype,"callout",void 0),t.__decorate([n.property({type:g,json:{type:v,origins:{"web-scene":{type:v}}}})],O.prototype,"symbolLayers",void 0),t.__decorate([i.writer("web-scene","symbolLayers")],O.prototype,"writeSymbolLayers",null),t.__decorate([c.enumeration({PointSymbol3D:"point-3d"},{readOnly:!0})],O.prototype,"type",void 0),O=_=t.__decorate([a.subclass("esri.symbols.PointSymbol3D")],O),O}));

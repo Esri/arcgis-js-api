@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/array","../../Graphic","../../core/JSONSupport","./DirectionsFeatureSet"],function(e,r,t,a){var n=t.createSubclass({declaredClass:"esri.tasks.support.RouteResult",properties:{directions:{value:null,type:a},route:{value:null,json:{read:function(e,t){return e.geometry&&(e.geometry.spatialReference=t.spatialReference),r.fromJSON(e)}}},routeName:null,stops:{value:null,json:{read:function(t,a){var n=[],o=a.spatialReference;return e.forEach(t,function(e){e.geometry&&(e.geometry.spatialReference=o),n[e.attributes.Sequence-1]=r.fromJSON(e)}),n}}}}});return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Graphic","./DirectionsFeatureSet"],(function(e,r,o,t,s,p,u,c,i,n,l,a,d){"use strict";let y=function(r){function o(e){var o;return(o=r.call(this,e)||this).directions=null,o.route=null,o.routeName=null,o.stops=null,o}return e._inheritsLoose(o,r),o}(l.JSONSupport);return r.__decorate([p.property({type:d,json:{write:!0}})],y.prototype,"directions",void 0),r.__decorate([p.property({type:a,json:{write:!0}})],y.prototype,"route",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],y.prototype,"routeName",void 0),r.__decorate([p.property({type:[a],json:{write:!0}})],y.prototype,"stops",void 0),y=r.__decorate([u.subclass("esri.tasks.support.RouteResult")],y),y}));

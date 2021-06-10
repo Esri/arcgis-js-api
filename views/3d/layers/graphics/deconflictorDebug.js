@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../lib/glMatrix","../../support/debugFlags"],function(e,t,i,a,l){function n(e,t){if(d&&s){for(var i=s,a=[u.create(),u.create(),u.create(),u.create()],l=0,n=0;n<e.accBinsNumX;n++)for(var r=0;r<e.accBinsNumY;r++){var c=e.accBins[n][r];l+=c.length;var p=n*e.accBinsSizeX,f=(n+1)*e.accBinsSizeX,h=r*e.accBinsSizeY,v=(r+1)*e.accBinsSizeY;a[0][0]=p,a[0][1]=h,a[1][0]=f,a[1][1]=h,a[2][0]=f,a[2][1]=v,a[3][0]=p,a[3][1]=v,i.fillText(c.length.toFixed(),p+5,h+15),o(a,"blue")}i.fillText("total totalShownLabels: "+l,70,40),i.fillText("total visible labels: "+t.length,70,50),i.fillText("total numTests: "+e.accNumTests,70,30)}}function r(e){p=l.DECONFLICTOR_SHOW_OUTLINES,d=l.DECONFLICTOR_SHOW_GRID,(p||d)&&(null==c&&(c=document.createElement("canvas"),c.setAttribute("id","canvas2d"),e.surface.parentElement.style.position="relative",e.surface.parentElement.appendChild(c)),c.setAttribute("width",e.width+"px"),c.setAttribute("height",e.height+"px"),c.setAttribute("style","position:absolute;left:0px;top:0px;display:block;pointer-events:none;"),s=c.getContext("2d"),s.clearRect(0,0,e.width,e.height),s.font="8px Arial")}function o(e,t){if(p){var i=c.height,a=s;a.beginPath(),a.lineWidth=1,a.strokeStyle=t,a.moveTo(e[0][0],i-e[0][1]);for(var l=1;4>l;l++)a.lineTo(e[l][0],i-e[l][1]),a.stroke();a.lineTo(e[0][0],i-e[0][1]),a.stroke(),a.closePath()}}Object.defineProperty(t,"__esModule",{value:!0});var c,s,u=a.vec2d,p=!1,d=!1;t.drawAccelerationStruct=n,t.prepare=r,t.drawPoly=o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../support/debugFlags"],(function(e,t){"use strict";let i,n,l=!1,o=!1,a=!1,s=!1,c=null;function r(e,t){if(!o||!n)return;h();const i=n;let l=0;for(let n=0;n<e.accBinsNumX;n++)for(let t=0;t<e.accBinsNumY;t++){const o=e.accBins[n][e.accBinsNumY-1-t];l+=o.length;const a=n*e.accBinsSizeX,s=(n+1)*e.accBinsSizeX,c=t*e.accBinsSizeY,r=(t+1)*e.accBinsSizeY;i.fillText(o.length.toFixed(),a+5,c+15),d(a,s,c,r,"blue")}i.fillText("total totalShownLabels: "+l,70,40),i.fillText("total visible labels: "+t.size,70,50),i.fillText("total numTests: "+e.accNumTests,70,30)}function u(e){a=t.DECONFLICTOR_SHOW_VISIBLE,s=t.DECONFLICTOR_SHOW_INVISIBLE,l=a||s,o=t.DECONFLICTOR_SHOW_GRID,c=null,l||o?c=()=>p(e):i&&(i.parentElement.removeChild(i),i=null)}function h(){c&&(c(),c=null)}function p(e){null==i&&(i=document.createElement("canvas"),i.setAttribute("id","canvas2d"),e.surface.parentElement.style.position="relative",e.surface.parentElement.appendChild(i));const t=e.width*e.pixelRatio,l=e.height*e.pixelRatio;i.setAttribute("width",`${t}px`),i.setAttribute("height",`${l}px`),i.setAttribute("style",`position:absolute;left:0px;top:0px;display:block;pointer-events:none;width:${e.width}px;height:${e.height}px`),n=i.getContext("2d"),n.clearRect(0,0,e.width,e.height),n.font="12px Arial"}function d(e,t,l,o,a){h();const s=i.height,c=n;c.beginPath(),c.lineWidth=1,c.strokeStyle=a,c.moveTo(e,s-l),c.lineTo(t,s-l),c.stroke(),c.lineTo(t,s-o),c.stroke(),c.lineTo(t,s-l),c.stroke(),c.lineTo(e,s-l),c.stroke(),c.lineTo(e,s-l),c.stroke(),c.closePath()}function f(e,t){l&&(t&&a||!t&&s)&&d(e.aabr[0],e.aabr[2],e.aabr[1],e.aabr[3],t?"green":"red")}e.drawAccelerationStruct=r,e.drawPoly=f,e.prepare=u,Object.defineProperty(e,"__esModule",{value:!0})}));

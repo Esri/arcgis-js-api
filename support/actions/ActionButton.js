@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./ActionBase"],(function(e,t,r,s,i,o,c,a,n,u,l){"use strict";var p;let d=p=function(t){function r(e){var r;return(r=t.call(this,e)||this).image=null,r.type="button",r}return e._inheritsLoose(r,t),r.prototype.clone=function(){return new p({active:this.active,className:this.className,disabled:this.disabled,id:this.id,indicator:this.indicator,title:this.title,visible:this.visible,image:this.image})},r}(l);return t.__decorate([o.property()],d.prototype,"image",void 0),d=p=t.__decorate([c.subclass("esri.support.Action.ActionButton")],d),d}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(t,i){function e(t){return t&&t.release&&"function"==typeof t.release}function o(t){return t&&t.acquire&&"function"==typeof t.acquire}var n=function(){function t(){}return t}(),s=function(){function t(t,i,e,o,n){void 0===o&&(o=1),void 0===n&&(n=0),this.classConstructor=t,this.acquireFunctionOrWithConstructor=i,this.releaseFunction=e,this.growthSize=o,i===!0?this.acquireFunction=this._constructorAcquireFunction:"function"==typeof i&&(this.acquireFunction=i),this._pool=new Array(n),this._set=new Set,this._initialSize=n;for(var s=0;n>s;s++)this._pool[s]=new this.classConstructor;this.growthSize=Math.max(o,1)}return t.prototype.acquire=function(){for(var t=[],i=0;i<arguments.length;i++)t[i]=arguments[i];var e,s=this.classConstructor||n;if(0===this._pool.length)for(var r=this.growthSize,u=0;r>u;u++)this._pool[u]=new s;return e=this._pool.shift(),this.acquireFunction?this.acquireFunction.apply(this,[e].concat(t)):o(e)&&e.acquire.apply(e,t),this._set["delete"](e),e},t.prototype.release=function(t){t&&!this._set.has(t)&&(this.releaseFunction?this.releaseFunction(t):e(t)&&t.release(),this._pool.push(t),this._set.add(t))},t.prototype.prune=function(){if(!(this._pool.length<=this._initialSize))for(var t;this._initialSize>this._pool.length;)t=this._pool.shift(),this._set["delete"](t),t.dispose&&"function"==typeof t.dispose&&t.dispose()},t.prototype._constructorAcquireFunction=function(t){for(var i=[],e=1;e<arguments.length;e++)i[e-1]=arguments[e];(o=this.classConstructor).call.apply(o,[t].concat(i));var o},t}();return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define((function(){"use strict";function t(t){return t&&t.release&&"function"==typeof t.release}function i(t){return t&&t.acquire&&"function"==typeof t.acquire}let e=function(){function e(t,i,e,o=1,n=0){if(this.ctor=t,this.acquireFunction=i,this.releaseFunction=e,this.allocationSize=o,this._pool=new Array(n),this._initialSize=n,this.ctor)for(let s=0;s<n;s++)this._pool[s]=new this.ctor;this.allocationSize=Math.max(o,1)}var o=e.prototype;return o.destroy=function(){this.prune(0)},o.acquire=function(...t){let o;if(e.test.disabled)o=new this.ctor;else{if(0===this._pool.length){const t=this.allocationSize;for(let i=0;i<t;i++)this._pool[i]=new this.ctor}o=this._pool.pop()}return this.acquireFunction?this.acquireFunction(o,...t):i(o)&&o.acquire(...t),o},o.release=function(i){i&&!e.test.disabled&&(this.releaseFunction?this.releaseFunction(i):t(i)&&i.release(),this._pool.push(i))},o.prune=function(t=this._initialSize){if(!(t>=this._pool.length)){for(let i=t;i<this._pool.length;++i){const t=this._pool[i];this._dispose(t)}this._pool.length=t}},o._dispose=function(t){t.dispose&&"function"==typeof t.dispose&&t.dispose()},e}();return e.test={disabled:!1},e}));

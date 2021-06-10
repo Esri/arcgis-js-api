@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["./declare"],function(e){var t=0;return e(null,{constructor:function(){Object.defineProperty(this,"uid",{writable:!1,configurable:!1,value:Date.now().toString(16)+"-object-"+t++})}})});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./accessorSupport/decorators/subclass"],(function(e,t,i,n){"use strict";let r=0;const s=e=>{let s=function(e){function i(...i){var n;return n=e.call(this,...i)||this,Object.defineProperty(t._assertThisInitialized(n),"uid",{writable:!1,configurable:!1,value:Date.now().toString(16)+"-object-"+r++}),n}return t._inheritsLoose(i,e),i}(e);return s=i.__decorate([n.subclass("esri.core.Identifiable")],s),s};e.Identifiable=function(e){function i(){return e.apply(this,arguments)||this}return t._inheritsLoose(i,e),i}(s(function(){function e(){}return e}())),e.Identifiable=i.__decorate([n.subclass("esri.core.Identifiable")],e.Identifiable),e.IdentifiableMixin=s,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./tsSupport/extendsHelper","./Message"],function(e,r,t,n){var o=function(e){function r(t,n,o){var i=e.call(this,t,n,o)||this;return i instanceof r?i:new r(t,n,o)}return t(r,e),r}(n);return o.prototype.type="error",o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","./lang","./Logger","./Message"],(function(e,t,r,s){"use strict";let i=function(s){function i(t,r,n){var a;return a=s.call(this,t,r,n)||this,e._assertThisInitialized(a)instanceof i?a:new i(t,r,n)||e._assertThisInitialized(a)}return e._inheritsLoose(i,s),i.prototype.toJSON=function(){if(null!=this.details)try{return{name:this.name,message:this.message,details:JSON.parse(JSON.stringify(this.details,((e,r)=>{if(r&&"object"==typeof r&&"function"==typeof r.toJSON)return r;try{return t.clone(r)}catch(s){return"[object]"}})))}}catch(e){throw r.getLogger("esri.core.Error").error(e),e}return{name:this.name,message:this.message,details:this.details}},i.fromJSON=function(e){return new i(e.name,e.message,e.details)},i}(s);return i.prototype.type="error",i}));

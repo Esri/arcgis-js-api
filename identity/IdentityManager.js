@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["./IdentityManagerDialog","../kernel","./OAuthSignInHandler","../core/declare"],function(e,n,i,r){var a=new e;return n.id=r.safeMixin(a,i),n.id});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/accessorSupport/decorators/subclass","../kernel","./IdentityManagerBase"],(function(e,t,s,n,r){"use strict";let i=function(t){function s(){return t.apply(this,arguments)||this}return e._inheritsLoose(s,t),s}(r.IdentityManagerBase);i=t.__decorate([s.subclass("esri.identity.IdentityManager")],i);const a=new i;return n.setId(a),a}));

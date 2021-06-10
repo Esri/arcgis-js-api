@@ -1,0 +1,7 @@
+@mixin directLineMeasurement3D() {
+  @include measurementWidgetStyles("esri-direct-line-measurement-3d");
+}
+
+@if $include_DirectLineMeasurement3D == true {
+  @include directLineMeasurement3D();
+}

@@ -1,0 +1,51 @@
+@mixin grid() {
+  .esri-grid {
+    width: 100%;
+    height: 100%;
+
+    // Sets 'primary' color that other properties inherit from
+    --lumo-base-color: #{$background-color};
+    --lumo-primary-color: #{$button-color};
+    --lumo-primary-text-color: var(--lumo-primary-color);
+
+    // Uses shade of primary theme color for highlight
+    $row-selected-color: rgba($button-color, 0.2);
+    --lumo-primary-color-10pct: #{$row-selected-color};
+
+    // grid and checkbox background color(s) default and hover
+    --lumo-contrast-20pct: #{$interactive-font-color};
+    --lumo-contrast-30pct: #{$interactive-font-color--hover};
+
+    // grid border color(s)
+    --lumo-contrast-10pct: #{$background-color--hover};
+
+    // row hover
+    --lumo-row-background-hover: #{$background-color--hover};
+
+    .esri-grid__content {
+      width: 100%;
+      height: 100%;
+      background-color: inherit;
+    }
+
+    .esri-grid__grid {
+      height: 100%;
+      width: 100%;
+    }
+
+    .esri-column__sorter {
+      flex-grow: 1;
+      margin: 0 5px;
+      overflow: auto;
+    }
+
+    .esri-column__menu-container {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+}
+
+@if $include_Grid == true {
+  @include grid();
+}

@@ -1,0 +1,128 @@
+// Animations
+@keyframes esri-fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translate3D(0, -5px, 0);
+  }
+  25% {
+    opacity: 0;
+    transform: translate3D(0, -5px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3D(0, 0, 0);
+  }
+}
+
+@keyframes esri-fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translate3D(0, 5px, 0);
+  }
+  25% {
+    opacity: 0;
+    transform: translate3D(0, 5px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3D(0, 0, 0);
+  }
+}
+
+@keyframes esri-fade-in {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes esri-fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale3D(0.95, 0.95, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3D(1, 1, 1);
+  }
+}
+
+@keyframes looping-progresss-bar-ani {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  #{$looping-progress-bar-width} {
+    left: 0%;
+    width: $looping-progress-bar-width;
+  }
+  #{100-$looping-progress-bar-width} {
+    left: 100% - $looping-progress-bar-width;
+    width: $looping-progress-bar-width;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}
+
+@keyframes esri-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes panel-advance {
+  0% {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes panel-retreat {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   RTL
+   ========================================================================== */
+@keyframes panel-advance--rtl {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes panel-retreat--rtl {
+  0% {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}

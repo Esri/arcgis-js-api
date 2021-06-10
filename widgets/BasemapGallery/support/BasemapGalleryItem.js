@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../core/watchUtils","../../../core/Accessor","../../../core/HandleRegistry"],function(t,e,i,r,o,a,s,n){var l=function(t){function e(){var e=null!==t&&t.apply(this,arguments)||this;return e._handles=new n,e.compatibilityFunction=null,e.error=null,e.state="loading",e.view=null,e}return i(e,t),e.prototype.initialize=function(){var t=this;this._handles.add(a.init(this,["basemap.loadStatus","compatibilityFunction","view.basemapTerrain.tilingScheme","view.ready","view.spatialReference"],function(){return t.refresh()}))},e.prototype.destroy=function(){this._cancelCompatibilityCheck(),this._handles.destroy(),this._handles=null,this.basemap=null,this.compatibilityFunction=null,this.view=null},Object.defineProperty(e.prototype,"basemap",{set:function(t){var e=this._get("basemap");e&&e.cancelLoad(),t&&t.load(),this._set("basemap",t)},enumerable:!0,configurable:!0}),e.prototype.refresh=function(){var t=this;this._cancelCompatibilityCheck(),this._set("state","loading");var e=this.get("basemap.loadStatus");if("loaded"===e||"failed"===e){if(!this.compatibilityFunction)return void("loaded"===e?(this._set("state","ready"),this._set("error",null)):(this._set("state","error"),this._set("error",this.basemap.loadError)));var i=!1,r=function(){return i=!0},o=this.compatibilityFunction(this).then(function(){i||(t._set("state","ready"),t._set("error",null))}).otherwise(function(e){i||(t._set("state","error"),t._set("error",e))});this._lastCompatibilityCheck={cancel:function(){r(),o.cancel()}}}},e.prototype._cancelCompatibilityCheck=function(){this._lastCompatibilityCheck&&(this._lastCompatibilityCheck.cancel(),this._lastCompatibilityCheck=null)},e}(o.declared(s));return r([o.property()],l.prototype,"basemap",null),r([o.property()],l.prototype,"compatibilityFunction",void 0),r([o.property({readOnly:!0})],l.prototype,"error",void 0),r([o.property({readOnly:!0})],l.prototype,"state",void 0),r([o.property()],l.prototype,"view",void 0),l=r([o.subclass("esri.widgets.BasemapGallery.support.BasemapGalleryItem")],l)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/promiseUtils","../../../core/Accessor","../../../core/Handles","../../../core/watchUtils"],(function(t,e,r,i,o,s,a,l,n,c,p,h,u,d){"use strict";let _=function(e){function r(t){var r;return(r=e.call(this,t)||this)._handles=new u,r.compatibilityFunction=null,r.error=null,r.state="loading",r.view=null,r}t._inheritsLoose(r,e);var i=r.prototype;return i.initialize=function(){this._handles.add(d.init(this,["basemap.loadStatus","compatibilityFunction","view.basemapTerrain?.tilingScheme","view.ready","view.spatialReference"],(()=>this.refresh())))},i.destroy=function(){this._cancelCompatibilityCheck(),this._handles.destroy(),this._handles=null,this.basemap=null,this.compatibilityFunction=null,this.view=null},i.refresh=function(){this._cancelCompatibilityCheck(),this._set("state","loading");const t=this.get("basemap.loadStatus");if("loaded"!==t&&"failed"!==t)return;if(!this.compatibilityFunction)return void("loaded"===t?(this._set("state","ready"),this._set("error",null)):(this._set("state","error"),this._set("error",this.basemap.loadError)));const e=new AbortController,{signal:r}=e;this.compatibilityFunction(this,{signal:r}).then((()=>{this._set("state","ready"),this._set("error",null)})).catch((t=>{p.isAbortError(t)||(this._set("state","error"),this._set("error",t))})),this._lastCompatibilityCheckController=e},i._cancelCompatibilityCheck=function(){this._lastCompatibilityCheckController&&(this._lastCompatibilityCheckController.abort(),this._lastCompatibilityCheckController=null)},t._createClass(r,[{key:"basemap",set:function(t){const e=this._get("basemap");e&&e.cancelLoad(),t&&t.load().catch((()=>{})),this._set("basemap",t)}}]),r}(h);return e.__decorate([s.property()],_.prototype,"basemap",null),e.__decorate([s.property()],_.prototype,"compatibilityFunction",void 0),e.__decorate([s.property({readOnly:!0})],_.prototype,"error",void 0),e.__decorate([s.property({readOnly:!0})],_.prototype,"state",void 0),e.__decorate([s.property()],_.prototype,"view",void 0),_=e.__decorate([a.subclass("esri.widgets.BasemapGallery.support.BasemapGalleryItem")],_),_}));

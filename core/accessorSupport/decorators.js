@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./decorators/aliasOf","./decorators/cast","./decorators/declared","./decorators/property","./decorators/reader","./decorators/shared","./decorators/subclass","./decorators/writer"],function(r,e,o,a,s,t,d,c,i,n){function f(r){for(var o in r)e.hasOwnProperty(o)||(e[o]=r[o])}Object.defineProperty(e,"__esModule",{value:!0}),f(o),f(a),f(s),f(t),f(d),f(c),f(i),f(n)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./decorators/property","./decorators/aliasOf","./decorators/autoDestroy","./decorators/cast","./decorators/declared","./decorators/enumeration","./decorators/reader","./decorators/shared","./decorators/subclass","./decorators/writer","./decorators/persistable"],(function(e,r,s,a,o,t,d,c,p,i,l,u){"use strict";e.ensureRange=r.ensureRange,e.property=r.property,e.propertyJSONMeta=r.propertyJSONMeta,e.aliasOf=s.aliasOf,e.autoDestroy=a.autoDestroy,e.cast=o.cast,e.declared=t.declared,e.enumeration=d.enumeration,e.reader=c.reader,e.shared=p.shared,e.processClass=i.processClass,e.subclass=i.subclass,e.writer=l.writer,e.persistable=u.persistable,Object.defineProperty(e,"__esModule",{value:!0})}));

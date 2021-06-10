@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/declare","../core/screenUtils","./Symbol"],function(e,t,r){var o=e(r,{declaredClass:"esri.symbols.MarkerSymbol",properties:{angle:{value:0,json:{read:function(e){return e&&-1*e},write:function(e,t){t.angle=e&&-1*e}}},type:{},xoffset:{value:0,cast:t.toPt,json:{write:!0}},yoffset:{value:0,cast:t.toPt,json:{write:!0}},size:{value:9,cast:function(e){return"auto"===e?e:t.toPt(e)},json:{write:!0}}}});return o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Symbol","../core/screenUtils"],(function(e,t,r,o,s,p,c,i,a,n,u,y){"use strict";let l=function(t){function r(e){var r;return(r=t.call(this,e)||this).angle=0,r.type=null,r.xoffset=0,r.yoffset=0,r.size=9,r}return e._inheritsLoose(r,t),r.prototype.hash=function(){return`${this.type}.${this.angle}.${this.size}.${this.xoffset}.${this.yoffset}`},r}(u);return t.__decorate([p.property({type:Number,json:{read:e=>e&&-1*e,write:(e,t)=>t.angle=e&&-1*e}})],l.prototype,"angle",void 0),t.__decorate([p.property({type:["simple-marker","picture-marker"],readOnly:!0})],l.prototype,"type",void 0),t.__decorate([p.property({type:Number,cast:y.toPt,json:{write:!0}})],l.prototype,"xoffset",void 0),t.__decorate([p.property({type:Number,cast:y.toPt,json:{write:!0}})],l.prototype,"yoffset",void 0),t.__decorate([p.property({type:Number,cast:e=>"auto"===e?e:y.toPt(e),json:{write:!0}})],l.prototype,"size",void 0),l=t.__decorate([c.subclass("esri.symbols.MarkerSymbol")],l),l}));

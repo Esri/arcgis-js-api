@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/Evented","dojo/Deferred","../../../core/declare","../../../portal/support/geometryServiceUtils","../../../tasks/support/ProjectParameters","../../../geometry/SpatialReference","../../../geometry/Point","../../../geometry/support/scaleUtils"],function(e,t,r,i,n,o,c,s){var a=r(e,{unitInMeters:1,spatialReference:null,constructor:function(e,t,r){this.spatialReference=t,this.unitInMeters=s.getUnitValueForSR(this.spatialReference),this.geometryService=r,this.geometryService||i.create(e&&e.portalItem).then(function(e){this.geometryService=e}.bind(this)).otherwise(function(){})},toGeographic:function(e){var r=new t,i=!0,s=this.spatialReference;if(!this.geometryService)return r.reject("Must specify geometryService in esri/config"),r;Array.isArray(e[0])&&"number"!=typeof e[0]||(e=[e],i=!1),e.forEach(function(t,r){t instanceof c||(e[r]=new c(t,s))});var a=new n({geometries:e,outSR:o.WGS84});return this.geometryService.project(a).then(function(e){try{e=e.map(function(e){return[e.x,e.y]}),r.resolve(i?e:e[0])}catch(t){r.reject(t)}},function(e){r.reject(e)}),r.promise},canProject:function(){return!!this.geometryService}});return a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/Error","../../../geometry/SpatialReference","../../../geometry/Point","../../../geometry","../../../core/asyncUtils","../../../tasks/support/ProjectParameters","../../../geometry/projectionEllipsoid","../../../core/unitUtils","../../../portal/support/geometryServiceUtils"],(function(e,t,r,i,o,s,n,a,c,p){"use strict";let l=function(){function e(e,t,r=null){this.spatialReference=t,this.unitInMeters=c.getMetersPerUnitForSR(this.spatialReference,a.getReferenceEllipsoid(this.spatialReference).metersPerDegree),this._geometryServicePromise=s.result(this.loadGeometryService(e,r))}var o=e.prototype;return o.loadGeometryService=async function(e,r){if(r)return r;try{return await p.create(e&&e.get("portalItem"))}catch{throw new t("mapcoordshelper:missing-geometry-service","Must specify geometryService in esri/config")}},o.awaitGeometryService=async function(){const e=await this._geometryServicePromise;if(!0===e.ok)return e.value;throw e.error},o.toGeographic=async function(e){const t=await this.awaitGeometryService();let o,s=!0;Array.isArray(e[0])&&"number"!=typeof e[0]?o=e:(o=[e],s=!1);const a=o.map((e=>e instanceof i?e:new i(e,this.spatialReference))),c=new n({geometries:a,outSpatialReference:r.WGS84}),p=(await t.project(c)).map((e=>"point"===e.type?[e.x,e.y]:void 0));return s?p:p[0]},e}();e.MapCoordsHelper=l,e.default=l,Object.defineProperty(e,"__esModule",{value:!0})}));

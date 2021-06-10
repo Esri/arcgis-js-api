@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/Logger","./Graphics3DIconSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DFillSymbolLayer","./Graphics3DExtrudeSymbolLayer","./Graphics3DTextSymbolLayer"],function(e,r,a,o,i,y,t,c,l,n){function p(e,r,a,o){var i=b[r.type];return i?new i(e,r,a,o):(s.error("GraphicsLayerFactory#make","unknown symbol type "+r.type),null)}Object.defineProperty(r,"__esModule",{value:!0});var s=a.getLogger("esri.views.3d.graphics");r.make=p;var b={icon:o,object:i,line:y,path:t,fill:c,extrude:l,text:n}});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer","./Graphics3DWaterSymbolLayer"],(function(e,r,a,y,o,l,c,i,s,t,p){"use strict";const h=r.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");function n(e,r,a,y){const o=L[e.type]&&L[e.type][r.type]||b[r.type];return o?new o(e,r,a,y):(h.error("GraphicsLayerFactory#make",`unknown symbol type ${r.type}`),null)}const b={icon:y.Graphics3DIconSymbolLayer,object:c.Graphics3DObjectSymbolLayer,line:o.Graphics3DLineSymbolLayer,path:i.Graphics3DPathSymbolLayer,fill:s.Graphics3DPolygonFillSymbolLayer,extrude:a.Graphics3DExtrudeSymbolLayer,text:t.Graphics3DTextSymbolLayer,water:p.Graphics3DWaterSymbolLayer};function m(e,r){b[e]=r}const L={"mesh-3d":{fill:l.Graphics3DMeshFillSymbolLayer}};e.make=n,e.setSymbolClass=m,Object.defineProperty(e,"__esModule",{value:!0})}));

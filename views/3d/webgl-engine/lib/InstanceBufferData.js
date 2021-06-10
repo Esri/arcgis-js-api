@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./Util"],function(t,s,e){var r=function(){function t(t,s){null==s&&(s=4);var r=e.nextHighestPowerOfTwo(s*t);this.array=new Float32Array(r),this.zeroItem=new Float32Array(t),this.endSlot=0,this.perInstanceDataSize=t,this.emptySlots=[],this.emptySlotsIdx=0,this.id2slot={},this.slot2id=new Array(s)}return t.prototype.prepareFree=function(t){this.emptySlots.length+=t},t.prototype.free=function(t){var s=this.id2slot[t];null!=s&&(this.emptySlots[this.emptySlotsIdx++]=s,this.slot2id[s]=void 0)},t.prototype.prepareAllocate=function(t){var s=t-this.emptySlotsIdx;s>0&&this._resizeArray((this.endSlot+s)*this.perInstanceDataSize)},t.prototype.allocate=function(t){var s;return s=this.emptySlotsIdx>0?this.emptySlots[--this.emptySlotsIdx]:this.endSlot++,this.id2slot[t]=s,this.slot2id[s]=t,s},t.prototype.getSlot=function(t){return this.id2slot[t]},t.prototype.getOffset=function(t){return t*this.perInstanceDataSize},t.prototype.getArray=function(){return this.array},t.prototype.fill=function(t,s,e){this.array.set(e,t*this.perInstanceDataSize+s)},t.prototype.compact=function(){if(this.emptySlotsIdx>0){for(this.emptySlots.length=this.emptySlotsIdx,this.emptySlots.sort(function(t,s){return t-s});this.emptySlotsIdx>0&&this.emptySlots[this.emptySlotsIdx-1]===this.endSlot;)this.emptySlotsIdx--,this.endSlot--;for(;this.emptySlotsIdx>0;){this.emptySlotsIdx--;var t=this.endSlot-1,s=this.emptySlots[this.emptySlotsIdx],e=t*this.perInstanceDataSize,r=s*this.perInstanceDataSize;this.array.set(this.array.subarray(e,e+this.perInstanceDataSize),r),this.array.set(this.zeroItem,e);var i=this.slot2id[t];this.slot2id[t]=void 0,this.slot2id[s]=i,this.id2slot[i]=s,this.endSlot--}}return this._resizeArray(this.endSlot*this.perInstanceDataSize),this.emptySlots.length=0,this.array},t.prototype._resizeArray=function(t){var s,e;if(t>this.array.length){for(s=this.array.length||1;t>s;)s*=2;e=new Float32Array(s),e.set(this.array),this.array=e}else if(t<=this.array.length/2){s=this.array.length;for(var r=2*t;s>=r;)s/=2;e=new Float32Array(s),e.set(this.array.subarray(0,s)),this.array=e}},t}();return r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../../core/mathUtils"],(function(t){"use strict";return function(){function s(t,s=0){this.capacity=0,this.count=0,this.emptySlots=[],this.emptySlotCount=0,this.id2slot=new Map,this.slot2id=[],this.layout=t,this.resize(s)}var i=s.prototype;return i.prepareAllocate=function(t){const s=this.count+t;s>this.capacity&&this.resize(s)},i.allocate=function(t){this.count>=this.capacity&&this.resize(this.count+1);const s=this.emptySlotCount>0?this.emptySlots[--this.emptySlotCount]:this.count;return this.id2slot.set(t,s),this.slot2id[s]=t,this.count++,s},i.prepareFree=function(t){this.emptySlots.length+=t},i.free=function(t){const s=this.id2slot.get(t);null!=s&&(this.emptySlots.length<=this.emptySlotCount&&(this.emptySlots.length=this.emptySlotCount+1),this.emptySlots[this.emptySlotCount++]=s,this.id2slot.delete(t),this.slot2id[s]=null,this.count--)},i.getCount=function(){return this.count},i.getSlot=function(t){return this.id2slot.get(t)},i.hasSlot=function(t){return this.id2slot.has(t)},i.getBuffer=function(){return this.buffer},i.compact=function(){if(this.emptySlotCount>0){const t=this.emptySlots;let s=this.emptySlotCount,i=this.count+s;for(t.length=s,t.sort(((t,s)=>t-s));s>0;){if(t[s-1]!==i-1){const o=i-1,e=t[s-1];this.buffer.copyFrom(this.buffer,o,e,1);const h=this.slot2id[o];this.slot2id[o]=null,this.slot2id[e]=h,this.id2slot.set(h,e)}s--,i--}}this.emptySlotCount=0,this.emptySlots.length=0,this.resize(this.count)},i.resize=function(s){const i=this.capacity;if((s=Math.max(0,s))>0&&(s=t.nextHighestPowerOfTwo(s)),s>i){const t=this.layout.createBuffer(s);this.buffer&&t.copyFrom(this.buffer,0,0,i),this.buffer=t}else if(s<i){const t=this.layout.createBuffer(s);t.copyFrom(this.buffer,0,0,s),this.buffer=t}this.buffer||(this.buffer=this.layout.createBuffer(0)),this.capacity=s,this.slot2id.length=s},s}()}));

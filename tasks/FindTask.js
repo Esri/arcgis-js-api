@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","../request","./Task","./support/FindResult"],function(e,r,s,t){var n=s.createSubclass({declaredClass:"esri.tasks.FindTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/find",e}},gdbVersion:{value:null,type:String},url:{}},execute:function(s,t){var n=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON()));this.gdbVersion&&(n.gdbVersion=this.gdbVersion);var a={query:n,callbackParamName:"callback"};return(this.requestOptions||t)&&(a=e.mixin({},this.requestOptions,t,a)),r(this.parsedUrl.path,a).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){var r=e.data,s=r.results||[];return r.results=s.map(function(e){return t.fromJSON(e)}),r}});return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Task","../rest/find"],(function(r,e,o,s,t,n,c,i,u,p,l,a){"use strict";let d=function(e){function o(r){var o;return(o=e.call(this,r)||this).gdbVersion=null,o.url=null,o}return r._inheritsLoose(o,e),o.prototype.execute=function(r,e){return this.gdbVersion&&!r.gdbVersion&&(r.gdbVersion=this.gdbVersion),a.find(this.url,r,e)},o}(l);return e.__decorate([n.property()],d.prototype,"gdbVersion",void 0),e.__decorate([n.property()],d.prototype,"url",void 0),d=e.__decorate([c.subclass("esri.tasks.FindTask")],d),d}));

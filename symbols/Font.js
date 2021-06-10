@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","../core/JSONSupport","../core/lang","../core/screenUtils"],function(t,i,e,n){var r={STYLE_NORMAL:"normal",STYLE_ITALIC:"italic",STYLE_OBLIQUE:"oblique",VARIANT_NORMAL:"normal",VARIANT_SMALLCAPS:"small-caps",WEIGHT_NORMAL:"normal",WEIGHT_BOLD:"bold",WEIGHT_BOLDER:"bolder",WEIGHT_LIGHTER:"lighter"},a={style:"normal",variant:"normal",weight:"normal",size:9,family:"serif",decoration:"none"},l=i.createSubclass({declaredClass:"esri.symbols.Font",properties:{decoration:{},family:{},size:{cast:n.toPt},style:{},variant:{},weight:{}},getDefaults:function(){return a},normalizeCtorArgs:function(t,i,e,r,a){if(t&&"string"!=typeof t)return t;var l={};return null!=t&&(l.size=n.toPt(t)),null!=i&&(l.style=i),null!=e&&(l.variant=e),null!=r&&(l.weight=r),a&&(l.family=a),l},toJSON:function(){return e.fixJson({size:this.size,style:this.style,variant:this.variant,decoration:this.decoration,weight:this.weight,family:this.family})},clone:function(){return new l({decoration:this.decoration,family:this.family,size:this.size,style:this.style,variant:this.variant,weight:this.weight})}});return l.defaultProps=a,t.mixin(l,r),l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/cast","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport","../core/screenUtils"],(function(e,t,o,r,i,s,n,c,a,l,p,u){"use strict";var y;let d=y=function(t){function o(e){var o;return(o=t.call(this,e)||this).decoration="none",o.family="sans-serif",o.size=9,o.style="normal",o.weight="normal",o}e._inheritsLoose(o,t);var r=o.prototype;return r.castSize=function(e){return u.toPt(e)},r.clone=function(){return new y({decoration:this.decoration,family:this.family,size:this.size,style:this.style,weight:this.weight})},r.hash=function(){return`${this.decoration}.${this.family}.${this.size}.${this.style}.${this.weight}`},o}(p.JSONSupport);return t.__decorate([i.property({type:["underline","line-through","none"],json:{default:"none",write:!0}})],d.prototype,"decoration",void 0),t.__decorate([i.property({type:String,json:{write:!0}})],d.prototype,"family",void 0),t.__decorate([i.property({type:Number,json:{write:{overridePolicy:(e,t,o)=>({enabled:!o||!o.textSymbol3D})}}})],d.prototype,"size",void 0),t.__decorate([s.cast("size")],d.prototype,"castSize",null),t.__decorate([i.property({type:["normal","italic","oblique"],json:{default:"normal",write:!0}})],d.prototype,"style",void 0),t.__decorate([i.property({type:["normal","bold","bolder","lighter"],json:{default:"normal",write:!0}})],d.prototype,"weight",void 0),d=y=t.__decorate([n.subclass("esri.symbols.Font")],d),d}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./IdGen"],function(t,n,r){var i=function(){function t(n,r,i,o,e,s){this.id=t._idGen.gen(n.getId()),this.geometry=n,this.materials=r,this.transformation=i,this.instanceParameters=o,this.origin=e,this.customTransformation=s}return t.prototype.getId=function(){return this.id},t.prototype.getStaticTransformation=function(){return this.transformation},t.prototype.getShaderTransformation=function(){return this.customTransformation?this.customTransformation(this.transformation):this.transformation},t}();return i._idGen=new r,i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/maybe","../../../../core/ObjectPool","../../../../core/uid","../../../../chunks/vec3"],(function(t,e,i,r,n,s){"use strict";let o=function(){function t(){this._disposed=!1}var r=t.prototype;return r.acquire=function(t,e,i,r,s,o){this.id=n.generateUID(),this.geometry=t,this.material=e,this.transformation=i,this.instanceParameters=r,this.origin=s,this._shaderTransformation=o,this._disposed=!1},r.release=function(){this._disposed=!1},r.dispose=function(){this._disposed=!0},r.getStaticTransformation=function(){return this.transformation},r.getShaderTransformation=function(){return i.isSome(this._shaderTransformation)?this._shaderTransformation(this.transformation):this.transformation},r.computeAttachmentOrigin=function(t){return!!(this.material.computeAttachmentOrigin?this.material.computeAttachmentOrigin(this.geometry,t):this.geometry.computeAttachmentOrigin(t))&&(s.transformMat4(t,t,this.getStaticTransformation()),!0)},e._createClass(t,[{key:"disposed",get:function(){return this._disposed}},{key:"shaderTransformation",get:function(){return this._shaderTransformation}}]),t}();o.pool=new r(o),t.GeometryRecord=o,Object.defineProperty(t,"__esModule",{value:!0})}));

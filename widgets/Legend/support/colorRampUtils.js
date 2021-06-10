@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../Color","./utils","../../../core/numberUtils","../../../symbols/support/gfxUtils"],function(e,r,o,t,n,l){function a(e){var r=null;if("simple"===e.type)r=e.symbol;else if("uniqueValue"===e.type||"classBreaks"===e.type){var o=e.classBreakInfos||e.uniqueValueInfos,t=o&&o[0];r=t&&t.symbol}var n=r&&-1===r.type.indexOf("line-symbol")?l.getStroke(r):null,a=n&&n.color,u=a&&a.a>0&&!(a.r>=240&&a.g>=240&&a.b>=240);return u?a:null}function u(e){var r=new o(v);return r.a=1-e,r}function i(e,r,o){var l=!1,a=[],u=[];if(r.colors||r.opacityValues)a=f(r.minDataValue,r.maxDataValue);else if(r.stops){var i=r.stops;a=i.map(function(e){return e.value}),l=i.some(function(e){return!!e.label}),l&&(u=i.map(function(e){return e.label}))}var s=a[0],p=a[a.length-1];if(null==s&&null==p)return null;var v=p-s,m=a.map(function(i,f){var p="opacity"===r.type?c(i,r,e,o):e.getColor(i,{colorInfo:r}),m=l?u[f]:t.getLabelPrefix(f,a.length-1)+n.format(i);return{value:i,color:p,label:m,offset:v?1-(i-s)/v:1}});return m.reverse()}function f(e,r){var o=r-e,t=[0,.25,.5,.75,1].map(function(r){var t=e+r*o;return Number(t.toFixed(6))});return s(0,4,t),t}function s(e,r,o){var t=e+(r-e)/2,n=o[0],l=o[1],a=o[2],u=Math.floor(n),i=Math.floor(l),f=Math.floor(a);u===n&&f===a&&i!==l&&u!==i&&f!==i&&(o[t]=i),e+1!==t&&s(e,t,o),t+1!==r&&s(t,r,o)}function c(e,r,t,n){void 0===n&&(n=p);var l=new o(n),a=t.getOpacity(e,{opacityInfo:r});return null!=a&&(l.a=a),l}Object.defineProperty(r,"__esModule",{value:!0});var p=[64,64,64],v=[255,255,255];r.getRampBorderColor=a,r.getRampOverlayColor=u,r.getRampStops=i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","exports","../../../Color","./utils"],(function(e,l,o,t){"use strict";const n=new o([64,64,64]);function r(e,l){const o=[],n=e.length-1;return 5===e.length?o.push(0,2,4):o.push(0,n),e.map(((e,r)=>o.indexOf(r)>-1?t.createStopLabel(e,r,n,l):null))}async function a(l,o,t){let n=!1,a=[],s=[];if(l.stops){const e=l.stops;a=e.map((e=>e.value)),n=e.some((e=>!!e.label)),n&&(s=e.map((e=>e.label)))}const i=a[0],c=a[a.length-1];if(null==i&&null==c)return null;const p=n?null:r(a,t);return(await Promise.all(a.map((async(t,r)=>({value:t,color:"opacity"===l.type?await u(t,l,o):(await new Promise((function(l,o){e(["../../../renderers/visualVariables/support/visualVariableUtils"],l,o)}))).getColor(l,t),label:n?s[r]:p[r]}))))).reverse()}async function u(l,t,r=n){const a=new o(r),u=(await new Promise((function(l,o){e(["../../../renderers/visualVariables/support/visualVariableUtils"],l,o)}))).getOpacity(t,l);return null!=u&&(a.a=u),a}function s(e){let l=!1,o=[],t=[];o=e.map((e=>e.value)),l=e.some((e=>!!e.label)),l&&(t=e.map((e=>e.label)));const n=o[0],a=o[o.length-1];if(null==n&&null==a)return null;const u=l?null:r(o,!1);return o.map(((o,n)=>({value:o,color:i(o,e),label:l?t[n]:u[n]}))).reverse()}function i(e,l){const{startIndex:t,endIndex:n,weight:r}=c(e,l);if(t===n)return l[t].color;const a=o.blendColors(l[t].color,l[n].color,r);return new o(a)}function c(e,l){let o=0,t=l.length-1;return l.some(((l,n)=>e<l.value?(t=n,!0):(o=n,!1))),{startIndex:o,endIndex:t,weight:(e-l[o].value)/(l[t].value-l[o].value)}}function p(e,l){let t=[];if(e&&"multipart"===e.type)e.colorRamps.reverse().forEach((function(n,r){0===r?t.push({value:l.max,color:new o(n.toColor),label:"high"}):t.push({value:null,color:new o(n.toColor),label:""}),r===e.colorRamps.length-1?t.push({value:l.min,color:new o(n.fromColor),label:"low"}):t.push({value:null,color:new o(n.fromColor),label:""})}));else{let n,r;e&&"algorithmic"===e.type?(n=e.fromColor,r=e.toColor):(n=[0,0,0,1],r=[255,255,255,1]),t=[{value:l.max,color:new o(r),label:"high"},{value:l.min,color:new o(n),label:"low"}]}return t}l.getColorFromPointCloudStops=i,l.getRampStops=a,l.getRampStopsForPointCloud=s,l.getStrectchRampStops=p,Object.defineProperty(l,"__esModule",{value:!0})}));

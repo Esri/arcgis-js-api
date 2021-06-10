@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../global","dojo/_base/lang"],function(e,r,t,o){function n(e,r){void 0===r&&(r={});var n=r.responseType;return n?"json"!==n&&"text"!==n&&"blob"!==n&&"array-buffer"!==n&&(n="text"):n="json",t.invokeStaticMessage("request",{url:e,options:r}).then(function(t){var a,l,i,u=t.data;if(u&&("json"===n||"text"===n||"blob"===n)&&(a=new Blob([u]),("json"===n||"text"===n)&&(s||(s=new FileReaderSync),l=s.readAsText(a),"json"===n&&(i=JSON.parse(l||null),i.error))))throw o.mixin(new Error,i.error);var b;switch(n){case"json":b=i;break;case"text":b=l;break;case"blob":b=a;break;default:b=u}return{data:b,requestOptions:r,ssl:t.ssl,url:e}})}Object.defineProperty(r,"__esModule",{value:!0});var s;r.execute=n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../global","../Error"],(function(e,t,r){"use strict";let s;function n(e,n={}){let o=n.responseType;o?"json"!==o&&"text"!==o&&"blob"!==o&&"array-buffer"!==o&&(o="text"):o="json";const a=n&&n.signal;return delete n.signal,t.invokeStaticMessage("request",{url:e,options:n},{signal:a}).then((t=>{const a=t.data;let l,u,i,c;if(a&&!("json"!==o&&"text"!==o&&"blob"!==o||(l=new Blob([a]),"json"!==o&&"text"!==o||(s||(s=new FileReaderSync),u=s.readAsText(l),"json"!==o)))){try{i=JSON.parse(u||null)}catch(b){const t={...b,url:e,requestOptions:n};throw new r("request:server",b.message,t)}if(i.error){const t={...i.error,url:e,requestOptions:n};throw new r("request:server",i.error.message,t)}}switch(o){case"json":c=i;break;case"text":c=u;break;case"blob":c=l;break;default:c=a}return{data:c,requestOptions:n,ssl:t.ssl,url:e}}))}e.execute=n,Object.defineProperty(e,"__esModule",{value:!0})}));

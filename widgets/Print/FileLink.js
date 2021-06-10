@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/HandleRegistry","../../core/watchUtils"],function(t,e,o,r,i,n,s,p){var a=function(t){function e(e){var o=t.call(this)||this;return o._handles=new s,o.state="pending",o.url="",o}return o(e,t),e.prototype.initialize=function(){var t=this;this._handles.add([p.init(this,["extension","name"],function(){return t._setFormattedFileName()})])},e.prototype.destroy=function(){this._handles.destroy()},e.prototype._setFormattedFileName=function(){if(this.name&&this.extension){var t=this.name+"."+this.extension,e=t;this.count&&(e=this.name+"("+this.count+")."+this.extension),this.formattedName=e}},e}(i.declared(n));return r([i.property()],a.prototype,"count",void 0),r([i.property()],a.prototype,"extension",void 0),r([i.property()],a.prototype,"formattedName",void 0),r([i.property()],a.prototype,"name",void 0),r([i.property()],a.prototype,"state",void 0),r([i.property()],a.prototype,"url",void 0),a=r([i.subclass("esri.widgets.print.FileLink")],a)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/Accessor","../../core/Handles","../../core/watchUtils"],(function(e,t,o,r,s,i,n,p,c,a,d,u,l){"use strict";let h=function(t){function o(e){var o;return(o=t.call(this,e)||this)._handles=new u,o.state="pending",o.url="",o}e._inheritsLoose(o,t);var r=o.prototype;return r.initialize=function(){this._handles.add([l.init(this,["extension","name"],(()=>this._setFormattedFileName()))])},r.destroy=function(){this._handles.destroy()},r._setFormattedFileName=function(){if(!this.name||!this.extension)return;let e=this.name+"."+this.extension;this.count&&(e=this.name+"("+this.count+")."+this.extension),this.formattedName=e},o}(d);return t.__decorate([i.property()],h.prototype,"count",void 0),t.__decorate([i.property()],h.prototype,"error",void 0),t.__decorate([i.property()],h.prototype,"extension",void 0),t.__decorate([i.property()],h.prototype,"formattedName",void 0),t.__decorate([i.property()],h.prototype,"name",void 0),t.__decorate([i.property()],h.prototype,"state",void 0),t.__decorate([i.property()],h.prototype,"url",void 0),h=t.__decorate([n.subclass("esri.widgets.print.FileLink")],h),h}));

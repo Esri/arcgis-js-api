@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../lang"],function(r,n,t){function e(r){return r?r.__accessor__?r.__accessor__:r.propertyInvalidated?r:null:null}function i(r,n){return r&&r.metadatas&&null!=r.metadatas[n]}function a(r,n){return n?Object.keys(n).reduce(function(r,e){if("value"===e)return r[e]=n[e],r;if(void 0===r[e])return r[e]=t.clone(n[e]),r;var i=r[e],u=n[e];return i===u?r:(Array.isArray(u)||Array.isArray(r)?(i=i?Array.isArray(i)?r[e]=i.concat():r[e]=[i]:r[e]=[],u&&(Array.isArray(u)||(u=[u]),u.forEach(function(r){-1===i.indexOf(r)&&i.push(r)}))):u&&"object"==typeof u?r[e]=a(i,u):(!r.hasOwnProperty(e)||n.hasOwnProperty(e))&&(r[e]=u),r)},r||{}):r}function u(r){return r?"string"==typeof r&&-1===r.indexOf(".")?r:o(r):r}function o(r){return Array.isArray(r)?r:r.split(".")}function c(r){if(Array.isArray(r)||r.indexOf(",")>-1){for(var n=Array.isArray(r)?r:r.split(","),t=0;t<n.length;t++)n[t]=n[t].trim();return 1===n.length?n[0]:n}return r.trim()}function f(r,n,t,e){var i=c(n);if(Array.isArray(i)){var a=i.map(function(n){return e(r,n.trim(),t)});return{remove:s(function(){return a.forEach(function(r){return r.remove()})})}}return e(r,i.trim(),t)}function s(r){var n=!1;return function(){n||(n=!0,r())}}function y(r){if(null==r)return l++;var n=e(r);return null==n.uid&&(n.uid=l++),n.uid}Object.defineProperty(n,"__esModule",{value:!0}),n.getProperties=e,n.isPropertyDeclared=i,n.merge=a,n.pathToStringOrArray=u,n.pathToArray=o,n.splitPath=c,n.parse=f,n.once=s;var l=0;n.uid=y});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../lang","../maybe","../handleUtils"],(function(r,n,t,e){"use strict";function i(r){return r?r.__accessor__?r.__accessor__:r.propertyInvalidated?r:null:null}function o(r,n){return null!=r&&r.metadatas&&null!=r.metadatas[n]}function a(r,n){const t=i(r);return t?t.getDependsInfo(r,n,""):""}function u(r,n,t){if(t){return l(r,n,{policy:t,path:""})}return l(r,n,null)}function l(r,e,i){return e?Object.keys(e).reduce((function(r,o){let a=null,u="merge";if(i&&(a=i.path?`${i.path}.${o}`:o,u=i.policy(a)),"replace"===u)return r[o]=e[o],r;if(void 0===r[o])return r[o]=n.clone(e[o]),r;let s=r[o],c=e[o];if(s===c)return r;if(Array.isArray(c)||Array.isArray(r))s=s?Array.isArray(s)?r[o]=s.concat():r[o]=[s]:r[o]=[],c&&(Array.isArray(c)||(c=[c]),c.forEach((r=>{-1===s.indexOf(r)&&s.push(r)})));else if(c&&"object"==typeof c)if(i){const n=i.path;i.path=t.assumeNonNull(a),r[o]=l(s,c,i),i.path=n}else r[o]=l(s,c,null);else r.hasOwnProperty(o)&&!e.hasOwnProperty(o)||(r[o]=c);return r}),r||{}):r}function s(r){return r?"string"==typeof r&&-1===r.indexOf(".")?r:c(r):r}function c(r){return Array.isArray(r)?r:r.split(".")}function f(r){return r.indexOf(",")>-1?r.split(",").map((r=>r.trim())):[r.trim()]}function p(r){if(Array.isArray(r)){const n=[];for(const t of r)n.push(...f(t));return n}return f(r)}function y(r){if(-1===r.indexOf("?"))return null;const n=c(r),t=new Array(n.length);for(let e=0;e<n.length;e++){const r=n[e];t[e]="?"===r[r.length-1],t[e]&&(n[e]=r.slice(0,-1))}return{fullPath:n.join("."),conditional:t}}function h(r,n,t,i){const o=p(n);if(1!==o.length){const n=o.map((n=>i(r,n,t)));return e.handlesGroup(n)}return i(r,o[0],t)}function d(r){let n=!1;return()=>{n||(n=!0,r())}}r.getDependsInfo=a,r.getProperties=i,r.isPropertyDeclared=o,r.merge=u,r.once=d,r.parse=h,r.parseConditionalPath=y,r.pathToArray=c,r.pathToStringOrArray=s,r.splitPath=p,Object.defineProperty(r,"__esModule",{value:!0})}));

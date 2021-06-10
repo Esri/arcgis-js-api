@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/declareExtendsHelper","../../../core/tsSupport/decorateHelper","../../../core/accessorSupport/decorators","../../../layers/graphics/controllers/StreamController","../../layers/StreamLayerView","./GraphicLayerView3DBase","../../../core/Error","../../../core/promiseUtils"],function(r,e,t,o,a,l,n,c,i,s){var p=function(r){function e(){var e=r.call(this)||this;return e.labelingEnabled=!0,e}return t(e,r),e.prototype.createController=function(){var r=this;return this.layer.createGraphicsController({layerView:this}).then(function(e){if(e instanceof l)return r.controller=e,e;throw new Error("Invalid controller created.")}).otherwise(function(r){return s.reject(new i("streamlayerview3d:create-controller",r.message))})},e}(a.declared(n,c));return o([a.property()],p.prototype,"controller",void 0),o([a.property({aliasOf:"controller.graphics",readOnly:!0})],p.prototype,"graphics",void 0),p=o([a.subclass("esri.views.3d.layers.StreamLayerView3D")],p)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/maybe","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/Error","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../tasks/support/Query","./LayerView3D","../../layers/LayerView","../../layers/StreamLayerView","../../../layers/graphics/controllers/StreamController","./FeatureLikeLayerView3D"],(function(e,r,t,o,s,a,n,c,i,p,u,l,y,d,h,_,w,L){"use strict";let f=function(r){function t(){var e;return(e=r.apply(this,arguments)||this).asyncGraphicsUpdates=!0,e.hasZ=!0,e.hasM=!1,e}e._inheritsLoose(t,r);var s=t.prototype;return s.createQuery=function(){return new y({outFields:["*"],returnGeometry:!0,outSpatialReference:this.view.spatialReference})},s.queryLatestObservations=function(e,r){return this.queryEngine.executeQueryForLatestObservations(this._ensureQuery(e),o.get(r,"signal"))},s.createController=function(){return new w({layer:this.layer,layerView:this})},s.beforeSetController=function(){},e._createClass(t,[{key:"connectionError",get:function(){const e=this.get("controller.connection.errorString");if(e)return new i("stream-controller",e)}}]),t}(_.StreamLayerView(L.FeatureLikeLayerView3D(d.LayerView3D(h))));return r.__decorate([n.property({readOnly:!0})],f.prototype,"asyncGraphicsUpdates",void 0),r.__decorate([n.property({readOnly:!0})],f.prototype,"connectionError",null),r.__decorate([n.property()],f.prototype,"controller",void 0),r.__decorate([n.property({readOnly:!0})],f.prototype,"hasZ",void 0),r.__decorate([n.property({readOnly:!0})],f.prototype,"hasM",void 0),f=r.__decorate([c.subclass("esri.views.3d.layers.StreamLayerView3D")],f),f}));

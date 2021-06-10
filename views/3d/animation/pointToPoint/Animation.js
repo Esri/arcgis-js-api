@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../animation/pointToPoint/Animation","./Camera","../../lib/glMatrix","../../webgl-engine/lib/Camera"],function(e,t,i,n,r,o,a){Object.defineProperty(t,"__esModule",{value:!0});var c=o.vec3d,u=c.create(),m=function(){function e(e){this.animation=new n.Animation(function(){return new r["default"](e)}),this._current=new r["default"](e)}return Object.defineProperty(e.prototype,"finished",{get:function(){return this.currentTime>=this.animation.time},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"time",{get:function(){return this.animation.time},enumerable:!0,configurable:!0}),e.prototype.update=function(e,t,i){var n=this.animation.definition.source,r=this.animation.definition.target,o=c.subtract(t.center,e.center,u),a=c.length(o);a>=1e-5?(o[0]/=a,o[1]/=a,o[2]/=a):(o[0]=0,o[1]=1,o[0]=0),c.set(o,n.lookAtDirection),c.set(o,r.lookAtDirection),n.copyFromRenderCamera(e),r.copyFromRenderCamera(t),this._current.copyFrom(n),this.animation.update(n,r,i),this.currentTime=0},e.prototype.cameraAt=function(e,t){var i=this.animation.cameraAt(e,this._current);return t||(t=new a),i.copyToRenderCamera(t),t},e.prototype.step=function(e,t){return this.finished||(this.currentTime+=e,this.currentTime>=this.time&&(this.currentTime=this.time)),this.cameraAt(this.currentTime/this.time,t)},e}();t.Animation=m,t["default"]=m});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/vec3f64","../../../../chunks/vec3","./Camera","../../webgl-engine/lib/Camera","../../../animation/pointToPoint/Animation"],(function(t,e,i,n,r,o,a){"use strict";const c=i.create();let s=function(){function t(t){this.currentTime=0,this.animation=new a.Animation((()=>new r(t))),this._current=new r(t)}var i=t.prototype;return i.update=function(t,e,i){const r=this.animation.definition.source,o=this.animation.definition.target,a=n.subtract(c,e.center,t.center),s=n.length(a);s>=1e-5?(a[0]/=s,a[1]/=s,a[2]/=s):(a[0]=0,a[1]=1,a[0]=0),n.copy(r.lookAtDirection,a),n.copy(o.lookAtDirection,a),r.copyFromRenderCamera(t),o.copyFromRenderCamera(e),this._current.copyFrom(r),this.animation.update(r,o,i),this.currentTime=0,t.almostEquals(e)&&(this.currentTime=this.animation.time)},i.cameraAt=function(t,e){return this.animation.cameraAt(t,this._current),e=e||new o,this._current.copyToRenderCamera(e),e},i.step=function(t,e){return this.finished||(this.currentTime+=t,this.currentTime>=this.time&&(this.currentTime=this.time)),this.cameraAt(this.currentTime/this.time,e)},e._createClass(t,[{key:"finished",get:function(){return this.currentTime>=this.animation.time}},{key:"time",get:function(){return this.animation.time}}]),t}();t.Animation=s,t.default=s,Object.defineProperty(t,"__esModule",{value:!0})}));

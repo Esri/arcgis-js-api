@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/JSONSupport","./ClassificationDefinition"],function(e,i){var r=e.createSubclass({declaredClass:"esri.tasks.support.GenerateRendererParameters",properties:{classificationDefinition:{value:null,type:i,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}},where:{value:null,type:String,json:{write:!0}}}});return r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","./ClassificationDefinition"],(function(e,r,o,t,s,i,c,n,p,a,u,l){"use strict";let f=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).classificationDefinition=null,e.where=null,e}return e._inheritsLoose(o,r),o}(u.JSONSupport);return r.__decorate([i.property({type:l,json:{read:{source:"classificationDef"},write:{target:"classificationDef"}}})],f.prototype,"classificationDefinition",void 0),r.__decorate([i.property({type:String,json:{write:!0}})],f.prototype,"where",void 0),f=r.__decorate([c.subclass("esri.tasks.support.GenerateRendererParameters")],f),f}));

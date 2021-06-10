@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,t,o,u,s,c,p,n,a,i,l){"use strict";e.FeatureReduction=function(e){function t(){var r;return(r=e.apply(this,arguments)||this).type=null,r}return r._inheritsLoose(t,e),t}(l.JSONSupport),t.__decorate([c.property({type:["selection","cluster"],readOnly:!0,json:{read:!1,write:!0}})],e.FeatureReduction.prototype,"type",void 0),e.FeatureReduction=t.__decorate([p.subclass("esri.layers.support.FeatureReduction")],e.FeatureReduction);var d=e.FeatureReduction;e.default=d,Object.defineProperty(e,"__esModule",{value:!0})}));

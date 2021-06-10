@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,r){function t(e,r){if(!e||e.symbol)return null;var t=r.renderer;return e&&t&&t.getObservationRenderer?t.getObservationRenderer(e):t}function i(e,r){if(e.symbol)return e.symbol;var i=t(e,r);return i&&i.getSymbol(e,r)}function o(e,r){var o=t(e,r),n=i(e,r);if(!n)return null;var l={renderer:o,symbol:n};if(o){if(o.colorInfo&&(l.color=o.getColor(e).toRgba()),o.sizeInfo){var a=o.getSize(e);l.size=[a,a,a]}if(o.visualVariables){for(var s=o.getVisualVariableValues(e,r),a=["proportional","proportional","proportional"],u=0,f=s;u<f.length;u++){var p=f[u],y=p.variable,b=p.value;if("color"===y.type)l.color=b.toRgba();else if("size"===y.type)if("outline"===y.target)l.outlineSize=b;else{var g=y.axis,d=y.useSymbolValue?"symbolValue":b;"width"===g?a[0]=d:"depth"===g?a[1]=d:"height"===g?a[2]=d:"width-and-depth"===g?a[0]=a[1]=d:a[0]=a[1]=a[2]=d}else"opacity"===y.type?l.opacity=b:"rotation"===y.type&&"tilt"===y.axis?l.tilt=b:"rotation"===y.type&&"roll"===y.axis?l.roll=b:"rotation"===y.type&&(l.heading=b)}(isFinite(a[0])||isFinite(a[1])||isFinite(a[2]))&&(l.size=a)}}return l}Object.defineProperty(r,"__esModule",{value:!0}),r.getRenderer=t,r.getSymbol=i,r.getRenderingInfo=o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/maybe","../../Color","../visualVariables/support/visualVariableUtils"],(function(e,t,i,o){"use strict";function r(e,i){if(!e||e.symbol)return null;const o=i&&i.renderer;return e&&t.isSome(o)&&o.getObservationRenderer?o.getObservationRenderer(e):o}function n(e,i){if(t.isSome(e.symbol))return e.symbol;const o=r(e,i);return t.isSome(o)&&"dot-density"!==o.type?o.getSymbol(e,i):null}function a(e,i){const a=r(e,i),s=n(e,i);if(t.isNone(s))return null;const l={renderer:a,symbol:s};if(t.isNone(a)||!("visualVariables"in a)||!a.visualVariables)return l;const u=o.getVisualVariableValues(a,e,i),c=["proportional","proportional","proportional"];for(const{variable:t,value:o}of u)switch(t.type){case"color":l.color=o.toRgba();break;case"size":if("outline"===t.target)l.outlineSize=o;else{const e=t.axis,i=t.useSymbolValue?"symbol-value":o;switch(e){case"width":c[0]=i;break;case"depth":c[1]=i;break;case"height":c[2]=i;break;case"width-and-depth":c[0]=c[1]=i;break;default:c[0]=c[1]=c[2]=i}}break;case"opacity":l.opacity=o;break;case"rotation":switch(t.axis){case"tilt":l.tilt=o;break;case"roll":l.roll=o;break;default:l.heading=o}}return"proportional"===c[0]&&"proportional"===c[1]&&"proportional"===c[2]||(l.size=c),l}async function s(e,i){if(t.isSome(e.symbol))return e.symbol;const o=r(e,i);return t.isSome(o)&&o.getSymbolAsync(e,{...i,abortOptions:{signal:i.signal}})}async function l(e,t){const n=r(e,t),a=await s(e,t);if(!a)return null;const l={renderer:n,symbol:a};if(!n||!("visualVariables"in n)||!n.visualVariables)return l;const u=o.getVisualVariableValues(n,e,t),c=["proportional","proportional","proportional"];for(const{variable:o,value:r}of u)if("color"===o.type)l.color=i.toUnitRGBA(r);else if("size"===o.type)if("outline"===o.target)l.outlineSize=r;else{const e=o.axis,t=o.useSymbolValue?"symbol-value":r;"width"===e?c[0]=t:"depth"===e?c[1]=t:"height"===e?c[2]=t:c[0]=c[1]="width-and-depth"===e?t:c[2]=t}else"opacity"===o.type?l.opacity=r:"rotation"===o.type&&"tilt"===o.axis?l.tilt=r:"rotation"===o.type&&"roll"===o.axis?l.roll=r:"rotation"===o.type&&(l.heading=r);return(isFinite(c[0])||isFinite(c[1])||isFinite(c[2]))&&(l.size=c),l}function u(e,t=0){const i=e[t];return"number"==typeof i&&isFinite(i)?i:null}function c(e){for(let t=0;t<3;t++){const i=e[t];if("number"==typeof i)return isFinite(i)?i:0}return 0}e.getDriverAxisSizeValue=u,e.getDriverAxisSizeValueAny=c,e.getRenderer=r,e.getRenderingInfo=a,e.getRenderingInfoAsync=l,e.getSymbolAsync=s,Object.defineProperty(e,"__esModule",{value:!0})}));

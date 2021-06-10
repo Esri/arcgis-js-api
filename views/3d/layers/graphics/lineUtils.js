@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../webgl-engine/materials/RibbonLineMaterial","../../webgl-engine/materials/NativeLineMaterial","../../webgl-engine/lib/GeometryData","../../webgl-engine/lib/Util"],function(e,n,t,r,i,a){function o(e){var n={width:e.width,color:e.color,miterLimit:e.miterLimit,polygonOffset:!0};return"miter"===e.join||"bevel"===e.join?n.join=e.join:(n.join="miter",e.join&&console.warn("unsupported join type for line symbol: "+e.join)),new t(n,e.idHint+"_ribbonlinemat")}function l(e){return new r(e.width,e.color,e.idHint+"_nativelinemat")}function s(e,n){for(var t=[],r=0;r<n.length;r++)for(var i=e[r],a=0;a<n[r].length;a++){for(var o=n[r][a],l=[],s=o[0];s<o[1];s++)l.push(i[s]);l.length>0&&t.push(l)}return t}function f(e){var n=e.length;return e[0]===e[n-3]&&e[1]===e[n-2]&&e[2]===e[n-1]}function u(e,n,t,r,a){var o,l,s,u;if(t=t&&!f(e)){for(var m=new Float32Array(e.length+3),v=0;v<e.length;v++)m[v]=e[v];var w=m.length;m[w-3]=e[0],m[w-2]=e[1],m[w-1]=e[2],l=m,o=e.length/3+1,s=new Uint32Array(2*(o-1)),u=new Uint32Array(2*(o-1))}else o=e.length/3,s=new Uint32Array(2*(o-1)),u=new Uint32Array(2*(o-1)),l=e;var b=new Float32Array(1);b[0]=a;for(var c=0,d=0,h=0;o-1>h;h++)s[c++]=h,s[c++]=h+1,u[d++]=0,u[d++]=0;var y={},O={};y[g.POSITION]=s,y[g.COLOR]=u,y[g.SIZE]=u,O[g.POSITION]={size:3,data:l},O[g.COLOR]={size:4,data:r},O[g.SIZE]={size:1,data:b},n&&(y.mapPos=s,O.mapPos={size:3,data:n});var p=new i(O,y,i.DefaultOffsets,"line");return p}Object.defineProperty(n,"__esModule",{value:!0});var g=a.VertexAttrConstants;n.createRibbonMaterial=o,n.createNativeMaterial=l,n.createOutlineGeometryFromSegments=s,n.isClosed=f,n.createPolylineGeometry=u});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../core/typedArrayUtil","../../../../core/maybe","../../../../core/mathUtils","../../../../chunks/vec3f64","../../../../chunks/vec3","../../../../geometry/projection","../../../../geometry/support/triangulationUtils","../../webgl-engine/lib/Geometry","./elevationAlignmentUtils","../../terrain/OverlayRenderer","./constants"],(function(t,e,n,o,r,a,i,s,u,c,l,p){"use strict";function f(t){const e=[],n=[];g(t,n,e);const o=n[0][1].data,r=e[0][1].length,a=new Uint16Array(r);return m(t,n,e),b(t,n,e,a),A(t,n,e,a),z(t,n,e,a),F(t,n,e,a),w(t,n,e,a),D(t,n,e,o),new u.Geometry(n,e,2)}function h(t,e,n,o){const r="polygon"===t.type?1:0,a="polygon"===t.type?t.rings:t.paths,{position:i,outlines:u}=s.pathsToTriangulationInfo(a,t.hasZ,r),l=new Float64Array(i.length),p=c.applyPerVertexElevationAlignment(i,t.spatialReference,0,l,0,i,0,i.length/3,e,n,o),f=null!=p;return{lines:f?y(u,i,l):[],projectionSuccess:f,sampledElevation:p}}function y(t,e,n){const o=new Array;for(const{index:r,count:a}of t){if(a<=1)continue;const t=3*r,i=t+3*a;o.push({position:e.subarray(t,i),mapPosition:n?n.subarray(t,i):void 0})}return o}function d(t,e){const n="polygon"===t.type?1:0,o="polygon"===t.type?t.rings:t.paths,{position:r,outlines:a}=s.pathsToTriangulationInfo(o,!1,n),u=i.projectBuffer(r,t.spatialReference,0,r,e,0,r.length/3);for(let i=2;i<r.length;i+=3)r[i]=l.DRAPED_Z;return{lines:u?y(a,r):[],projectionSuccess:u}}function g(t,n,o){const{attributeData:{position:r},removeDuplicateStartEnd:a}=t,i=P(r)&&1===a,s=r.length/3-(i?1:0),u=new Uint32Array(2*(s-1)),c=i?e.slice(r,0,r.length-3):r;let l=0;for(let e=0;e<s-1;e++)u[l++]=e,u[l++]=e+1;n.push(["position",{size:3,data:c,exclusive:i}]),o.push(["position",u])}function m(t,e,o){const r=t.attributeData.mapPosition;n.isNone(r)||(o.push(["mapPos",o[0][1]]),e.push(["mapPos",{size:3,data:r}]))}function b(t,e,o,r){if(n.isSome(t.attributeData.colorFeature))return;const a=t.attributeData.color;e.push(["color",{size:4,data:n.unwrapOr(a,p.WHITE_UNIT)}]),o.push(["color",r])}function z(t,e,o,r){const a=t.attributeData.colorFeature;n.isNone(a)||(e.push(["colorFeatureAttribute",{size:1,data:new Float32Array([a])}]),o.push(["color",r]))}function A(t,e,o,r){if(n.isSome(t.attributeData.sizeFeature))return;const a=t.attributeData.size;e.push(["size",{size:1,data:[n.unwrapOr(a,1)]}]),o.push(["size",r])}function F(t,e,o,r){const a=t.attributeData.sizeFeature;n.isNone(a)||(e.push(["sizeFeatureAttribute",{size:1,data:new Float32Array([a])}]),o.push(["sizeFeatureAttribute",r]))}function w(t,e,o,r){const a=t.attributeData.opacityFeature;n.isNone(a)||(e.push(["opacityFeatureAttribute",{size:1,data:new Float32Array([a])}]),o.push(["opacityFeatureAttribute",r]))}function D(t,e,r,i){if("round"!==t.join)return;const s=i.length/3,u=new Float32Array(s),c=I,l=T;a.set(c,0,0,0);const p=n.unwrapOr(t.uniformSize,1);for(let n=-1;n<s;++n){const t=n<0?s+n:n,e=(n+1)%s;if(a.set(l,i[3*e+0]-i[3*t+0],i[3*e+1]-i[3*t+1],i[3*e+2]-i[3*t+2]),a.normalize(l,l),n>=0){const t=1*((Math.PI-o.acosClamped(a.dot(c,l)))*U)*v(p);u[n]=Math.max(Math.floor(t),0)}a.scale(c,l,-1)}e.push(["subdivisions",{size:1,data:u}]),r.push(["subdivisions",r[0][1]])}function v(t){return 1.863798+-2.0062872/(1+t/18.2313)**.8856294}function P(t){const e=t.length;return t[0]===t[e-3]&&t[1]===t[e-2]&&t[2]===t[e-1]}const I=r.create(),T=r.create(),U=4/Math.PI;t.createGeometry=f,t.geometryToRenderInfo=h,t.geometryToRenderInfoDraped=d,Object.defineProperty(t,"__esModule",{value:!0})}));

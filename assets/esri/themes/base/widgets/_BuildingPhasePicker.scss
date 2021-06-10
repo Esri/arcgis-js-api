@@ -1,0 +1,92 @@
+/**
+ * Adds all the styles for the phase picker used in the building explorer.
+ */
+@mixin buildingPhasePicker() {
+  $container: "esri-building-phase-picker";
+  $phases-container: "#{$container}__phases-container";
+  $phase: "#{$container}__phase";
+  $phase-active: "#{$container}__phase--active";
+  $phase-current: "#{$container}__phase--current";
+  $divider: "#{$container}__divider";
+  $divider-active: "#{$container}__divider--active";
+  $arrow-left: "#{$container}__arrow-left";
+  $arrow-right: "#{$container}__arrow-right";
+
+  $phase-size: 32px;
+  $border-width: 1px;
+  $divider-min-width: $side-spacing;
+
+  .#{$container},
+  .#{$phases-container} {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+  }
+
+  .#{$phases-container} {
+    flex-grow: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    padding: 5px;
+  }
+
+  .#{$phase} {
+    width: $phase-size;
+    height: $phase-size;
+
+    font-weight: $font-weight;
+
+    cursor: pointer;
+    transition: all 250ms;
+
+    color: $font-color;
+    border: solid $border-width $border-color;
+    border-radius: 100%;
+    background: $background-color;
+
+    appearance: none;
+    flex-shrink: 0;
+
+    &:hover {
+      box-shadow: 0 0 2px 1px $border-color--active;
+      transform: scale(1.1); // Make it slightly bigger w/o affecting layout
+    }
+
+    &.#{$phase-active} {
+      border-color: $border-color--active;
+      background-color: $background-color--active;
+    }
+
+    &.#{$phase-current} {
+      color: $interactive-font-color--inverse;
+      background-color: $border-color--active;
+    }
+  }
+
+  .#{$divider} {
+    height: $border-width;
+    min-width: $divider-min-width;
+
+    background: $border-color;
+
+    flex-grow: 0;
+
+    &.#{$divider-active} {
+      background-color: $border-color--active;
+    }
+  }
+
+  .#{$arrow-left},
+  .#{$arrow-right} {
+    @include arrowButton();
+  }
+
+  .#{$arrow-left} {
+    @extend .esri-arrow-left;
+  }
+
+  .#{$arrow-right} {
+    @extend .esri-arrow-right;
+  }
+}

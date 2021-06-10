@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/Accessor","../../viewpointUtils","../../libs/gl-matrix/vec2"],function(e,t,r,o,i,n,p,a){var c=function(e){function t(t){var r=e.call(this)||this;return r.animationTime=0,r.viewpoint=p.create(),r}return r(t,e),t.prototype.begin=function(e,t){this.navigation.begin()},t.prototype.update=function(e,t){var r=t.pointers[0],o=a.create();o=a.set(o,r.currentEvent.x,e.height-r.currentEvent.y);var i=r.previousEvent,n=a.create();a.set(n,i.x,e.height-i.y);var c=e.state.paddedScreenCenter,s=p.angleBetween(c,o,n);e.viewpoint=p.rotateBy(this.viewpoint,e.content.viewpoint,s)},t.prototype.end=function(e,t){this.navigation.end()},t}(i.declared(n));return o([i.property()],c.prototype,"viewpoint",void 0),o([i.property()],c.prototype,"navigation",void 0),c=o([i.subclass("esri.views.2d.actions.Rotate")],c)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/has","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/decorators/subclass","../../../../core/urlUtils","../../../../core/uuid","../../../../portal/support/resourceExtension","../../../../core/Accessor","../../../../geometry/Point","../../../../geometry","../../../../Viewpoint","../../../../chunks/vec2f64","../../../../chunks/vec2","../../viewpointUtils"],(function(e,t,o,r,n,i,s,c,p,a,u,v,d,l,h,g,y){"use strict";const w=h.create(),_=h.create();let f=function(t){function o(e){var o;return(o=t.call(this,e)||this)._previousCenter=h.create(),o.viewpoint=new l({targetGeometry:new v,scale:0,rotation:0}),o}e._inheritsLoose(o,t);var r=o.prototype;return r.begin=function(e,t){this.navigation.begin(),g.set(this._previousCenter,t.center.x,t.center.y)},r.update=function(e,t){const{state:{size:o,padding:r}}=e;g.set(w,t.center.x,t.center.y),y.getAnchor(_,o,r),e.viewpoint=y.rotateBy(this.viewpoint,e.state.paddedViewState.viewpoint,y.angleBetween(_,this._previousCenter,w)),g.copy(this._previousCenter,w)},r.end=function(){this.navigation.end()},o}(u);return t.__decorate([i.property()],f.prototype,"viewpoint",void 0),t.__decorate([i.property()],f.prototype,"navigation",void 0),f=t.__decorate([s.subclass("esri.views.2d.actions.Rotate")],f),f}));

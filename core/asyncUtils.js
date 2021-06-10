@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./tsSupport/generatorHelper","./tsSupport/awaiterHelper","./promiseUtils"],function(e,t,r,n,u){function i(e,t,i){return n(this,void 0,void 0,function(){return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return r.sent(),[2]}})})}function a(e,t,i){return n(this,void 0,void 0,function(){var n;return r(this,function(r){switch(r.label){case 0:return[4,u.eachAlways(e.map(function(e,r){return t.apply(i,[e,r])}))];case 1:return n=r.sent(),[2,n.map(function(e){return e.value})]}})})}Object.defineProperty(t,"__esModule",{value:!0}),t.forEach=i,t.map=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./promiseUtils"],(function(r,e){"use strict";function t(r,t,o){return e.eachAlways(r.map(((r,e)=>t.apply(o,[r,e]))))}function o(r,t,o){return e.eachAlways(r.map(((r,e)=>t.apply(o,[r,e])))).then((r=>r.map((r=>r.value))))}function n(r){return r.then((r=>({ok:!0,value:r}))).catch((r=>({ok:!1,error:r})))}function u(r){return r.then((r=>({ok:!0,value:r}))).catch((r=>{e.throwIfAbortError(r);return{ok:!1,error:r}}))}function a(r){if(!0===r.ok)return r.value;throw r.error}r.assertResult=a,r.forEach=t,r.map=o,r.result=n,r.resultOrAbort=u,Object.defineProperty(r,"__esModule",{value:!0})}));

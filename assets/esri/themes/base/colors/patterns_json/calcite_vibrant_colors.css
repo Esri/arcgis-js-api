@@ -1,0 +1,273 @@
+/* Esri Calcite Vibrant Colors - Last Updated 04/16/15 */
+/*
+{
+name: "Calcite Vibrant Colors",
+tags: "Calcite Vibrant,Calcite"
+}
+*/
+/* -- Calcite Vibrant_Blue -- */
+.Calcite_Vibrant_Blue_100 {
+  background-color: #c7e9ff;
+  /*
+   {
+  Hex:"#C7E9FF",
+  RGB:"r199 g233 b255",
+    guid:"f16ccaa6-04ab-4987-a1ec-4f3237839027",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Blue_150 {
+  background-color: #69dcff;
+  /*
+   {
+  Hex:"#69DCFF",
+  RGB:"r105 g220 b255",
+    guid:"6f2a2e80-a057-4a0c-82d7-4cfd61c879a1",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Blue_200 {
+  background-color: #00dee7;
+  /*
+   {
+  Hex:"#00DEE7",
+  RGB:"r0 g222 b231",
+    guid:"c601933c-ce51-41b6-b673-d806dc3f3e70",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Blue_250 {
+  background-color: #b3e9f9;
+  /*
+   {
+  Hex:"#B3E9F9",
+  RGB:"r179 g233 b249",
+    guid:"04e45f44-5d64-4fd1-89e0-bfaa370ec07f",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Yellow_100 {
+  background-color: #ffefb7;
+  /*
+   {
+  Hex:"#FFEFB7",
+  RGB:"r255 g239 b183",
+    guid:"a6c30ee4-200a-41f6-9aef-ad61262df6ad",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Yellow_150 {
+  background-color: #fad817;
+  /*
+   {
+  Hex:"#FAD817",
+  RGB:"r250 g216 b23",
+    guid:"44e4a34c-79ae-4c80-872b-8931e39f3519",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Yellow_200 {
+  background-color: #fff000;
+  /*
+   {
+  Hex:"#FFF000",
+  RGB:"r255 g240 b0",
+  guid:"584c655a-ab63-45eb-b900-51d2541f0404",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Orange_100 {
+  background-color: #ffdab6;
+  /*
+   {
+  Hex:"#FFDAB6",
+  RGB:"r255 g217 b181",
+  guid:"97aade8f-6471-4d29-adb7-a51440e04ac5",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Orange_150 {
+  background-color: #ffbc6b;
+  /*
+   {
+  Hex:"#FFBC6D",
+  RGB:"r255 g187 b106",
+  guid:"725e3a5a-dd72-4189-a64b-bc904d3ab4e2",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Orange_200 {
+  background-color: #ffcc00;
+  /*
+   {
+  Hex:"#FFCC00",
+  RGB:"r255 g203 b0",
+  guid:"a360d6ed-89b0-420b-b7a6-a7bda9e0eed3",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Green_100 {
+  background-color: #daffd9;
+  /*
+   {
+  Hex:"#DAFFD9",
+  RGB:"r218 g255 b217",
+    guid:"5b12373e-3bb1-4334-93fb-8bab6264e79e",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Green_150 {
+  background-color: #71de6e;
+  /*
+   {
+  Hex:"#71DE6E",
+  RGB:"r113 g222 b110",
+    guid:"71c4d11c-1a9a-41b9-a3fd-988c3da79b8c",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Green_200 {
+  background-color: #a5e800;
+  /*
+   {
+  Hex:"#A5E800",
+  RGB:"r165 g232 b0",
+    guid:"2a8512c5-beae-4889-b75a-9146e178dce1",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Red_100 {
+  background-color: #ffc0b3;
+  /*
+   {
+  Hex:"#FFC0B3",
+  RGB:"r255 g192 b179",
+    guid:"463b658b-c27b-4323-a9f1-307a4aeec38e",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Red_150 {
+  background-color: #ff642e;
+  /*
+   {
+  Hex:"#FF642E",
+  RGB:"r255 g100 b46",
+    guid:"a8f0ff9b-3205-4b82-be41-6c184c7bc3a6",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Red_200 {
+  background-color: #de2900;
+  /*
+   {
+  Hex:"#DE2900",
+  RGB:"r222 g41 b0",
+    guid:"2144446b-9b48-46ba-a006-1c435c401d9b",
+  accessibility_white_text:"AAaa",
+  accessibility_black_text:"AA"
+  }
+  */ }
+
+.Calcite_Vibrant_Purple_100 {
+  background-color: #daccff;
+  /*
+   {
+  Hex:"#DACCFF",
+  RGB:"r218 g204 b255",
+    guid:"6dae4600-41dd-4239-bae6-ea589fbe0183",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Purple_150 {
+  background-color: #b096ff;
+  /*
+   {
+  Hex:"#B096FF",
+  RGB:"r176 g150 b255",
+    guid:"0679b073-7f94-42db-99cf-9b2608501e0a",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Purple_200 {
+  background-color: #f185ff;
+  /*
+   {
+  Hex:"#F185FF",
+  RGB:"r241 g133 b255",
+    guid:"124bfbab-0bba-4d05-9163-40f34a372f5f",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Brown_100 {
+  background-color: #ffdbb3;
+  /*
+   {
+  Hex:"#FFDBB3",
+  RGB:"r255 g219 b179",
+    guid:"8a4fc6ef-b831-4c85-9c81-06686baad81b",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Brown_150 {
+  background-color: #db8d2f;
+  /*
+   {
+  Hex:"#DB8D2F",
+  RGB:"r219 g141 b47",
+    guid:"45efb8bb-fdba-41d8-8e35-b8fe77869d81",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+.Calcite_Vibrant_Brown_200 {
+  background-color: #ffbc6b;
+  /*
+   {
+  Hex:"#FFBC6B",
+  RGB:"r255 g188 b107",
+    guid:"a59cae25-9fce-459e-80b0-eafdff499a00",
+  accessibility_white_text:"",
+  accessibility_black_text:"AAaa"
+  }
+  */ }
+
+/*# sourceMappingURL=calcite_vibrant_colors.css.map */

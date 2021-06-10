@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["./mathUtils","../lib/glMatrix"],function(t,a){function e(a,e,n,o,l){var c=d;r.normalize(a,c);var s=Math.abs(r.dot(c,o));s>.99&&(s=Math.abs(r.dot(e,o)),.99>s?r.set(e,c):c=null);var g=0;if(c){r.scale(o,r.dot(o,c),i),r.subtract(c,i);var h=r.dot(c,l),v=h/(r.length(c)*r.length(l));r.cross(c,l,i);var u=r.dot(i,o)>0?1:-1;g=u*t.rad2deg(t.acos(v))}var b=t.rad2deg(t.acos(-r.dot(o,a)/r.length(a)));return n?(n.heading=g,n.tilt=b,n):{heading:g,tilt:b}}var r=a.vec3d,d=r.create(),i=r.create();return{directionToHeadingTilt:e}});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../core/mathUtils","../../../chunks/vec3f64","../../../chunks/vec3"],(function(e,t,c,n){"use strict";const o=c.create(),a=c.create();function r(){return{direction:c.create(),up:c.create()}}function i(e,c,r,i,d){let s=n.normalize(o,e),l=n.dot(s,i);const u=l>0;l=Math.abs(l),l>.99&&(l=Math.abs(n.dot(c,i)),l<.99?(n.copy(s,c),u&&n.scale(s,s,-1)):s=null);let h=0;if(s){n.scale(a,i,n.dot(i,s)),n.subtract(s,s,a);const e=n.dot(s,d)/(n.length(s)*n.length(d));n.cross(a,s,d);h=(n.dot(a,i)>0?1:-1)*t.rad2deg(t.acosClamped(e))}const g=t.rad2deg(t.acosClamped(-n.dot(i,e)/n.length(e)));return r?(r.heading=h,r.tilt=g,r):{heading:h,tilt:g}}e.createDirectionUp=r,e.directionToHeadingTilt=i,Object.defineProperty(e,"__esModule",{value:!0})}));

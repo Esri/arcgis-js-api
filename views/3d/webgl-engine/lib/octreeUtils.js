@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./Octree","./gl-matrix"],function(e,n,t,r){function s(e){var n={numNodes:0,numObjects:0,numTerminals:0,numResidents:0,numOutsiders:0,numInnerNodes:0,numTerminalNodes:0,maximumDepth:0,maxNumTerminals:0,maxNumResidents:0,maxNumObjects:0};return n.numOutsiders=e.outsiders.length,e.forEachNode(function(t,r,s){null===t.residents?n.numInnerNodes++:n.numTerminalNodes++,n.numTerminals+=t.terminals.length,n.maxNumTerminals=Math.max(t.terminals.length,n.maxNumTerminals);var i=t.terminals.length;null!==t.residents&&(n.numResidents+=t.residents.length,n.maxNumResidents=Math.max(t.residents.length,n.maxNumResidents),i+=t.residents.length),n.maxNumObjects=Math.max(i,n.maxNumObjects);var a=Math.round(Math.log(e.size/s)*Math.LOG2E);return n.maximumDepth=Math.max(n.maximumDepth,a),!0}),n.numObjects=n.numOutsiders+n.numTerminals+n.numResidents,n.numNodes=n.numInnerNodes+n.numTerminalNodes,n}function i(e,n){void 0===n&&(n=!1);var r,s=e instanceof t?e.root:e;return r={},e instanceof t&&(n&&(r.center=o.create(e.center),r.size=e.size),0!==e.outsiders.length&&(r.outsiders=e.outsiders.map(function(e){return e.getId()}))),s.terminals.length>0&&(r.terminals=s.terminals.map(function(e){return e.getId()})),null!==s.residents&&s.residents.length>0&&(r.residents=s.residents.map(function(e){return e.getId()})),null===s.residents&&s.children.forEach(function(e,n){e&&(r["child"+n]=i(e))}),r}function a(e){return e.forEachNode(function(n,t,r){var s=u(t,-r/2,o.create()),i=u(t,r/2,o.create());if(n.terminals.forEach(function(e){return m(e,s,i,!0)}),null!==n.residents){if(n.residents.length>e.maximumObjectsPerNode)throw new Error("[Octree Validation] Number of objects "+n.residents.length+" exceeds maximum allowed ("+e.maximumObjectsPerNode+")");n.residents.forEach(function(e){return m(e,s,i,!1)})}var a=!1;if(n.children.forEach(function(e){if(e&&(a=!0,null!==n.residents))throw new Error("[Octree Validation] Node has residents and children")}),!a&&(null===n.residents||0===n.residents.length)&&0===n.terminals.length)throw new Error("[Octree Validation] dangling empty node");return!0}),!0}function m(e,n,t,r){for(var s=e.getCenter(),i=0;3>i;i++)if(s[i]<n[i]||s[i]>t[i])throw new Error("[Octree Validation] Object is not within node bounds");var a=.25*(t[0]-n[0]),m=e.getBSRadius();if(r&&a>m)throw new Error("[Octree Validation] Object is too small to be a terminal");if(!r&&m>a)throw new Error("[Octree Validation] Object is too large to be a resident")}function u(e,n,t){return t=t||e,t[0]=e[0]+n,t[1]=e[1]+n,t[2]=e[2]+n,t}Object.defineProperty(n,"__esModule",{value:!0});var o=r.vec3d;n.stats=s,n.debugDump=i,n.assert=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3f64","../../../../chunks/sphere","./Octree"],(function(e,n,t,r){"use strict";function s(e){const n={numNodes:0,numObjects:0,numTerminals:0,numResidents:0,numOutsiders:0,numInnerNodes:0,numTerminalNodes:0,maximumDepth:0,maxNumTerminals:0,maxNumResidents:0,maxNumObjects:0};return e.forEachNode(((t,r,s)=>{null===t.residents?n.numInnerNodes++:n.numTerminalNodes++,n.numTerminals+=t.terminals.length,n.maxNumTerminals=Math.max(t.terminals.length,n.maxNumTerminals);let i=t.terminals.length;null!==t.residents&&(n.numResidents+=t.residents.length,n.maxNumResidents=Math.max(t.residents.length,n.maxNumResidents),i+=t.residents.length),n.maxNumObjects=Math.max(i,n.maxNumObjects);const m=Math.round(Math.log(2*e.halfSize/s)*Math.LOG2E);return n.maximumDepth=Math.max(n.maximumDepth,m),!0})),n.numObjects=n.numOutsiders+n.numTerminals+n.numResidents,n.numNodes=n.numInnerNodes+n.numTerminalNodes,n}function i(e,s=!1){const m=e instanceof r?e.root:e,a={};return e instanceof r&&s&&(a.center=n.clone(t.getCenter(e.bounds)),a.size=2*e.halfSize),m.terminals.length>0&&(a.terminals=m.terminals.map((e=>e.id))),null!==m.residents&&m.residents.length>0&&(a.residents=m.residents.map((e=>e.id))),null===m.residents&&m.children.forEach((function(e,n){e&&(a["child"+n]=i(e))})),a}function m(e,r){return e.forEachNode(((s,i,m)=>{const l=o(t.getCenter(i),-m,n.create()),u=o(t.getCenter(i),m,n.create());if(s.terminals.forAll((e=>a(r(e),l,u,!0))),null!==s.residents){if(s.residents.length>e.maximumObjectsPerNode)throw new Error("[Octree Validation] Number of objects "+s.residents.length+" exceeds maximum allowed ("+e.maximumObjectsPerNode+")");s.residents.forAll((e=>a(r(e),l,u,!1)))}let d=!1;if(s.children.forEach((e=>{if(e&&(d=!0,null!==s.residents))throw new Error("[Octree Validation] Node has residents and children")})),!d&&(null===s.residents||0===s.residents.length)&&0===s.terminals.length)throw new Error("[Octree Validation] dangling empty node");return!0})),!0}function a(e,n,t,r){for(let i=0;i<3;i++)if(e[i]<n[i]||e[i]>t[i])throw new Error("[Octree Validation] Object is not within node bounds");const s=.25*(t[0]-n[0]);if(r&&e[3]<s)throw new Error("[Octree Validation] Object is too small to be a terminal");if(!r&&e[3]>s)throw new Error("[Octree Validation] Object is too large to be a resident")}function o(e,n,t){return t[0]=e[0]+n,t[1]=e[1]+n,t[2]=e[2]+n,t}e.assert=m,e.debugDump=i,e.stats=s,Object.defineProperty(e,"__esModule",{value:!0})}));

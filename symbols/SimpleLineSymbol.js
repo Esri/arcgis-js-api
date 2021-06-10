@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/declare","dojo/_base/lang","../core/lang","../core/screenUtils","./LineSymbol"],function(t,o,s,e,i){var r={STYLE_SOLID:"solid",STYLE_DASH:"dash",STYLE_DOT:"dot",STYLE_DASHDOT:"dash-dot",STYLE_DASHDOTDOT:"long-dash-dot-dot",STYLE_NULL:"none",STYLE_SHORTDASH:"short-dash",STYLE_SHORTDOT:"short-dot",STYLE_SHORTDASHDOT:"short-dash-dot",STYLE_SHORTDASHDOTDOT:"short-dash-dot-dot",STYLE_LONGDASH:"long-dash",STYLE_LONGDASHDOT:"long-dash-dot",CAP_BUTT:"butt",CAP_ROUND:"round",CAP_SQUARE:"square",JOIN_MITER:"miter",JOIN_ROUND:"round",JOIN_BEVEL:"bevel"},n={color:[0,0,0,1],style:r.STYLE_SOLID,width:.75,cap:r.CAP_BUTT,join:r.JOIN_MITER,miterLimit:7.5},S=t(i,{declaredClass:"esri.symbols.SimpleLineSymbol",properties:{type:"simple-line-symbol",style:{value:r.STYLE_SOLID,json:{read:function(t,o){return s.valueOf(this._jsonStyles,t)||void 0},write:function(t,o){o.style=this._jsonStyles[t]}}},cap:{value:r.CAP_BUTT,json:{read:!1,write:!1}},join:{value:r.JOIN_MITER,json:{read:!1,write:!1}},miterLimit:{value:7.5,cast:e.toPt,json:{read:!1,write:!1}}},_jsonStyles:{solid:"esriSLSSolid",dash:"esriSLSDash",dot:"esriSLSDot","dash-dot":"esriSLSDashDot","long-dash-dot-dot":"esriSLSDashDotDot",none:"esriSLSNull","inside-frame":"esriSLSInsideFrame","short-dash":"esriSLSShortDash","short-dot":"esriSLSShortDot","short-dash-dot":"esriSLSShortDashDot","short-dash-dot-dot":"esriSLSShortDashDotDot","long-dash":"esriSLSLongDash","long-dash-dot":"esriSLSLongDashDot"},getDefaults:function(){return o.mixin(this.inherited(arguments),n)},normalizeCtorArgs:function(t,o,s,i,r,n){if(t&&"string"!=typeof t)return t;var S={};return null!=t&&(S.style=t),null!=o&&(S.color=o),null!=s&&(S.width=e.toPt(s)),null!=i&&(S.cap=i),null!=r&&(S.join=r),null!=n&&(S.miterLimit=e.toPt(n)),S},clone:function(){return new S({color:s.clone(this.color),style:this.style,width:this.width,cap:this.cap,join:this.join,miterLimit:this.miterLimit})}});return o.mixin(S,r),S.defaultProps=n,S});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/jsonMap","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/screenUtils","./LineSymbol","./LineSymbolMarker"],(function(e,r,o,t,i,s,n,l,a,p,c,d,u,h,S,y){"use strict";var m;const L=new l.JSONMap({esriSLSSolid:"solid",esriSLSDash:"dash",esriSLSDot:"dot",esriSLSDashDot:"dash-dot",esriSLSDashDotDot:"long-dash-dot-dot",esriSLSNull:"none",esriSLSInsideFrame:"inside-frame",esriSLSShortDash:"short-dash",esriSLSShortDot:"short-dot",esriSLSShortDashDot:"short-dash-dot",esriSLSShortDashDotDot:"short-dash-dot-dot",esriSLSLongDash:"long-dash",esriSLSLongDashDot:"long-dash-dot"});let v=m=function(r){function o(...e){var o;return(o=r.call(this,...e)||this).type="simple-line",o.style="solid",o.cap="round",o.join="round",o.marker=null,o.miterLimit=2,o}e._inheritsLoose(o,r);var i=o.prototype;return i.normalizeCtorArgs=function(e,r,o,t,i,s){if(e&&"string"!=typeof e)return e;const n={};return null!=e&&(n.style=e),null!=r&&(n.color=r),null!=o&&(n.width=h.toPt(o)),null!=t&&(n.cap=t),null!=i&&(n.join=i),null!=s&&(n.miterLimit=h.toPt(s)),n},i.clone=function(){var e;return new m({color:t.clone(this.color),style:this.style,width:this.width,cap:this.cap,join:this.join,miterLimit:this.miterLimit,marker:null==(e=this.marker)?void 0:e.clone()})},i.hash=function(){var e,o;return`${r.prototype.hash.call(this)}.${null==(e=this.color)?void 0:e.hash()}.${this.style}.${this.cap}.${this.join}.${this.miterLimit}.${null==(o=this.marker)?void 0:o.hash()}`},o}(S);return r.__decorate([a.enumeration({esriSLS:"simple-line"},{readOnly:!0})],v.prototype,"type",void 0),r.__decorate([n.property({type:L.apiValues,json:{read:L.read,write:L.write}})],v.prototype,"style",void 0),r.__decorate([n.property({type:["butt","round","square"],json:{write:{overridePolicy:(e,r,o)=>({enabled:"round"!==e&&(null==o||null==o.origin)})}}})],v.prototype,"cap",void 0),r.__decorate([n.property({type:["miter","round","bevel"],json:{write:{overridePolicy:(e,r,o)=>({enabled:"round"!==e&&(null==o||null==o.origin)})}}})],v.prototype,"join",void 0),r.__decorate([n.property({types:{key:"type",base:null,defaultKeyValue:"line-marker",typeMap:{"line-marker":y}},json:{write:!0,origins:{"web-scene":{write:!1}}}})],v.prototype,"marker",void 0),r.__decorate([n.property({type:Number,json:{read:!1,write:!1}})],v.prototype,"miterLimit",void 0),v=m=r.__decorate([p.subclass("esri.symbols.SimpleLineSymbol")],v),v}));

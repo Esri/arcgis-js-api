@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/Accessor","../../core/kebabDictionary","../../geometry/support/jsonUtils","dojo/_base/array"],function(e,t,i,r){var o=t({esriGeometryRelationCross:"cross",esriGeometryRelationDisjoint:"disjoint",esriGeometryRelationIn:"in",esriGeometryRelationInteriorIntersection:"interior-intersection",esriGeometryRelationIntersection:"intersection",esriGeometryRelationLineCoincidence:"line-coincidence",esriGeometryRelationLineTouch:"line-touch",esriGeometryRelationOverlap:"overlap",esriGeometryRelationPointTouch:"point-touch",esriGeometryRelationTouch:"touch",esriGeometryRelationWithin:"within",esriGeometryRelationRelation:"relation"}),n=e.createSubclass({declaredClass:"esri.tasks.support.RelationParameters",properties:{geometries1:null,geometries2:null,relation:null,relationParam:null},toJSON:function(){var e=r.map(this.geometries1,function(e){return e.toJSON()}),t=r.map(this.geometries2,function(e){return e.toJSON()}),n={},s=this.geometries1;if(s&&s.length>0){n.geometries1=JSON.stringify({geometryType:i.getJsonType(s[0]),geometries:e});var a=this.geometries1[0].spatialReference;n.sr=a.wkid?a.wkid:JSON.stringify(a.toJSON())}var l=this.geometries2;return l&&l.length>0&&(n.geometries2=JSON.stringify({geometryType:i.getJsonType(l[0]),geometries:t})),this.relation&&(n.relation=o.toJSON(this.relation)),this.relationParam&&(n.relationParam=this.relationParam),n}});return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/jsonUtils"],(function(e,r,o,t,s,p,i,a,n,u,l,c){"use strict";let d=function(r){function o(e){var o;return(o=r.call(this,e)||this).geometries1=null,o.geometries2=null,o.relation=null,o.relationParameter=null,o}return e._inheritsLoose(o,r),o}(l.JSONSupport);return r.__decorate([p.property({json:{read:{reader:e=>e?e.map((e=>c.fromJSON(e))):null},write:{writer:(e,r)=>{r.geometries1=e.map((e=>e.toJSON()))}}}})],d.prototype,"geometries1",void 0),r.__decorate([p.property({json:{read:{reader:e=>e?e.map((e=>c.fromJSON(e))):null},write:{writer:(e,r)=>{r.geometries2=e.map((e=>e.toJSON()))}}}})],d.prototype,"geometries2",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],d.prototype,"relation",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],d.prototype,"relationParameter",void 0),d=r.__decorate([i.subclass("esri.tasks.support.RelationParameters")],d),d.from=s.ensureType(d),d}));

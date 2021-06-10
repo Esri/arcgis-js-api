@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../declare","../metadata"],function(e,r,t,n){function o(e){return function(r){var n=f(r),o=p(r);null!=e&&(n.declaredClass=e);var a=t(r.__bases__,n);for(var i in o)a[i]=o[i];return a}}function a(e,r){e.read&&("function"==typeof e.read?r.push(e.read):"object"==typeof e.read&&e.read.reader&&r.push(e.read.reader))}function i(e,r){e.write&&("function"==typeof e.write?r.push(e.write):"object"==typeof e.write&&e.write.writer&&r.push(e.write.writer))}function u(e){var r=[],t=n.getPropertiesMetadata(e.prototype);if(!t)return r;for(var o in t){var u=t[o];u.cast&&r.push(u.cast),u.copy&&r.push(u.copy);var f=u.json;if(f){a(f,r),i(f,r);var p=f.origins;if(p)for(var c in p){var s=p[c];a(s,r),i(s,r)}}}return r}function f(e){var r={},t=["__bases__"],o=n.getPropertiesMetadata(e.prototype),a=u(e),i=Object.getOwnPropertyNames(e.prototype);return i.filter(function(r){return-1!==t.indexOf(r)?!1:o&&o.hasOwnProperty(r)?!1:-1!==a.indexOf(e.prototype[r])?!1:!0}).forEach(function(t){r[t]=e.prototype[t]}),r}function p(e){var r=Object.getOwnPropertyNames(e),t=Object.getPrototypeOf(e.prototype).constructor,n=Object.getOwnPropertyNames(Function);n.push("__bases__");var o=Object.getOwnPropertyNames(t),a={};return r.filter(function(r){return-1!==n.indexOf(r)?!1:-1===o.indexOf(r)?!0:t[r]!==e[r]?!0:!1}).forEach(function(r){a[r]=e[r]}),a}Object.defineProperty(r,"__esModule",{value:!0}),r.subclass=o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../has","../metadata","../extensions"],(function(e,t,r,s,o){"use strict";const a=new Set,n=new Set;function i(e){return r=>{r.prototype.declaredClass=e,o.processPrototypeMetadatas(s.getOwnClassMetadata(r.prototype).properties,e),l(r);const i=[],c=[];let p=r.prototype;for(;p;)p.hasOwnProperty("initialize")&&!a.has(p.initialize)&&(a.add(p.initialize),i.push(p.initialize)),p.hasOwnProperty("destroy")&&!n.has(p.destroy)&&(n.add(p.destroy),c.push(p.destroy)),p=Object.getPrototypeOf(p);a.clear(),n.clear();let u=function(e){function r(...s){var o;if((o=e.call(this,...s)||this).constructor===r&&"function"==typeof o.postscript){if(i.length&&Object.defineProperty(t._assertThisInitialized(o),"initialize",{enumerable:!1,configurable:!0,value(){for(let e=i.length-1;e>=0;e--)i[e].call(this)}}),c.length){let e=!1;Object.defineProperty(t._assertThisInitialized(o),"destroy",{enumerable:!1,configurable:!0,value(){if(!e){e=!0;for(let e=0;e<c.length;e++)c[e].call(this)}}})}o.postscript(...s)}return o}return t._inheritsLoose(r,e),r}(r);return u.__accessorMetadata__=s.getOwnClassMetadata(r.prototype),u.prototype.declaredClass=e,u}}function c(e,t){return null==t.get?function(){return this.__accessor__.getterStatic(e)}:function(){return this.__accessor__.getterComputed(e)}}function l(e){const t=e.prototype,r=t.declaredClass,a=s.getOwnClassMetadata(t).properties;o.processClassMetadatas(a,r);const n={};for(const s of Object.getOwnPropertyNames(a)){const e=a[s];n[s]={enumerable:!0,configurable:!0,get:c(s,e),set(t){const r=this.__accessor__;if(void 0!==r){if(!Object.isFrozen(this)){if(r.initialized&&e.readOnly)throw new TypeError(`[accessor] cannot assign to read-only property '${s}' of ${this.declaredClass}`);if(2===r.lifecycle&&e.constructOnly)throw new TypeError(`[accessor] cannot assign to construct-only property '${s}' of ${this.declaredClass}`);r.set(s,t)}}else Object.defineProperty(this,s,{enumerable:!0,configurable:!0,writable:!0,value:t})}}}Object.defineProperties(e.prototype,n)}e.processClass=l,e.subclass=i,Object.defineProperty(e,"__esModule",{value:!0})}));

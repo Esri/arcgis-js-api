@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","dojo/_base/lang","./Layer","../core/promiseUtils","../core/Error","../core/MultiOriginJSONSupport","./mixins/PortalLayer","../core/accessorSupport/decorators"],function(e,r,t,o,i,n,p,s,u,a,l){var d=function(e){function r(r){var t=e.call(this)||this;return t.resourceInfo=null,t.type="unsupported",t}return t(r,e),r.prototype.initialize=function(){var e=this.resourceInfo&&(this.resourceInfo.layerType||this.resourceInfo.type),r="Unsupported layer type";e&&(r+=" "+e),this.addResolvingPromise(p.reject(new s("layer:unsupported-layer-type",r,{layerType:e})))},r.prototype.read=function(e,r){var t={resourceInfo:e};return null!=e.id&&(t.id=e.id),null!=e.title&&(t.title=e.title),this.inherited(arguments,[t,r]),this},r.prototype.write=function(e,r){return i.mixin(e||{},this.resourceInfo,{id:this.id})},r}(l.declared(n,u,a));return o([l.shared("esri.layers.UnsupportedLayer")],d.prototype,"declaredClass",void 0),o([l.property({readOnly:!0})],d.prototype,"resourceInfo",void 0),o([l.property({json:{read:!1},readOnly:!0,value:"unsupported"})],d.prototype,"type",void 0),d=o([l.subclass()],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/Error","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/scheduling","./Layer","../core/MultiOriginJSONSupport","./mixins/PortalLayer"],(function(e,r,o,t,s,i,n,p,u,c,l,a,d,y,h){"use strict";let f=function(r){function o(e){var o;return(o=r.call(this,e)||this).resourceInfo=null,o.type="unsupported",o}e._inheritsLoose(o,r);var t=o.prototype;return t.initialize=function(){this.addResolvingPromise(new Promise(((e,r)=>{a.schedule((()=>{const e=this.resourceInfo&&(this.resourceInfo.layerType||this.resourceInfo.type);let o="Unsupported layer type";e&&(o+=" "+e),r(new p("layer:unsupported-layer-type",o,{layerType:e}))}))})))},t.read=function(e,o){const t={resourceInfo:e};null!=e.id&&(t.id=e.id),null!=e.title&&(t.title=e.title),r.prototype.read.call(this,t,o)},t.write=function(e){return Object.assign(e||{},this.resourceInfo,{id:this.id})},o}(h.PortalLayer(y.MultiOriginJSONMixin(d)));return r.__decorate([i.property({readOnly:!0})],f.prototype,"resourceInfo",void 0),r.__decorate([i.property({type:["show","hide"]})],f.prototype,"listMode",void 0),r.__decorate([i.property({json:{read:!1},readOnly:!0,value:"unsupported"})],f.prototype,"type",void 0),f=r.__decorate([n.subclass("esri.layers.UnsupportedLayer")],f),f}));

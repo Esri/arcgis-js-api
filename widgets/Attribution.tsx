@@ -21,48 +21,52 @@
  * @module esri/widgets/Attribution
  * @since 4.0
  *
- * @see [Attribution.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Attribution.tsx)
- * @see [Attribution.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Attribution.scss)
+ * @see [Attribution.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attribution.tsx)
+ * @see [Attribution.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Attribution.scss)
  * @see module:esri/widgets/Attribution/AttributionViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  */
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core
+import * as watchUtils from "esri/core/watchUtils";
 
-import {
-  aliasOf,
-  subclass,
-  property,
-  declared
-} from "../core/accessorSupport/decorators";
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import {
-  tsx,
-  renderable,
-  accessibleHandler
-} from "./support/widget";
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import Widget = require("./Widget");
-import AttributionViewModel = require("./Attribution/AttributionViewModel");
-import View = require("../views/View");
+// esri.widgets
+import Widget from "esri/widgets/Widget";
+
+// esri.widgets.Attribution
+import AttributionViewModel from "esri/widgets/Attribution/AttributionViewModel";
+
+// esri.widgets.Attribution.t9n
+import AttributionMessages from "esri/widgets/Attribution/t9n/Attribution";
+
+// esri.widgets.support
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-attribution esri-widget",
+  anchor: "esri-widget__anchor",
   poweredBy: "esri-attribution__powered-by",
   sources: "esri-attribution__sources",
   open: "esri-attribution--open",
   sourcesOpen: "esri-attribution__sources--open",
   link: "esri-attribution__link",
+  widgetIcon: "esri-icon-description",
 
   // common.css
   interactive: "esri-interactive"
 };
 
 @subclass("esri.widgets.Attribution")
-class Attribution extends declared(Widget) {
-
+class Attribution extends Widget {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -76,8 +80,12 @@ class Attribution extends declared(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
+  }
+
+  initialize(): void {
+    this.own(watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender()));
   }
 
   //--------------------------------------------------------------------------
@@ -99,6 +107,99 @@ class Attribution extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  attributionText
+  //----------------------------------
+
+  /**
+   * Full attribution text.
+   *
+   * @name attributionText
+   * @instance
+   * @type {string}
+   * @readonly
+   */
+  @property({
+    readOnly: true,
+    dependsOn: ["viewModel.items.length", "itemDelimiter"]
+  })
+  get attributionText(): string {
+    return this.viewModel.items
+      .reduce((unique, item) => {
+        if (unique.indexOf(item.text) === -1) {
+          unique.push(item.text);
+        }
+
+        return unique;
+      }, [])
+      .join(this.itemDelimiter);
+  }
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  itemDelimiter
+  //----------------------------------
+
+  /**
+   * Text used to split attribution by {@link module:esri/layers/Layer layers}
+   *
+   * @name itemDelimiter
+   * @instance
+   * @type {string}
+   * @default |
+   */
+  @property()
+  itemDelimiter = " | ";
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.7
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/Attribution/t9n/Attribution")
+  messages: AttributionMessages = null;
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -110,7 +211,7 @@ class Attribution extends declared(Widget) {
    * @instance
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -127,14 +228,7 @@ class Attribution extends declared(Widget) {
    * @autocast
    * @type {module:esri/widgets/Attribution/AttributionViewModel}
    */
-  @property({
-    type: AttributionViewModel
-  })
-  @renderable([
-    "attributionText",
-    "state",
-    "view.size"
-  ])
+  @property({ type: AttributionViewModel })
   viewModel: AttributionViewModel = new AttributionViewModel();
 
   //--------------------------------------------------------------------------
@@ -143,22 +237,68 @@ class Attribution extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render() {
+  render(): VNode {
     const classes = {
       [CSS.open]: this._isOpen
     };
 
     return (
-      <div bind={this}
-           class={CSS.base}
-           classes={classes}
-           onclick={this._toggleState}
-           onkeydown={this._toggleState}>
-        {this._renderSourcesNode()}
-        <div class={CSS.poweredBy}>Powered by <a target="_blank"
-                                                 href="http://www.esri.com/"
-                                                 class={CSS.link}>Esri</a></div>
+      <div
+        bind={this}
+        class={this.classes(CSS.base, classes)}
+        onclick={this._toggleState}
+        onkeydown={this._toggleState}
+      >
+        {this.renderSourcesNode()}
+        {this.renderPoweredBy()}
       </div>
+    );
+  }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Protected Methods
+  //
+  //--------------------------------------------------------------------------
+
+  protected renderPoweredBy(): VNode {
+    return (
+      <div class={CSS.poweredBy}>
+        Powered by{" "}
+        <a
+          class={this.classes(CSS.link, CSS.anchor)}
+          href="http://www.esri.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Esri
+        </a>
+      </div>
+    );
+  }
+
+  protected renderSourcesNode(): VNode {
+    const isOpen = this._isOpen;
+    const interactive = this._isInteractive();
+    const sourceTabIndex = interactive ? 0 : -1;
+    const { attributionText } = this;
+    const role = interactive ? "button" : undefined;
+
+    const sourceClasses = {
+      [CSS.sourcesOpen]: isOpen,
+      [CSS.interactive]: interactive
+    };
+
+    return (
+      <div
+        afterCreate={this._afterSourcesNodeCreate}
+        afterUpdate={this._afterSourcesNodeUpdate}
+        bind={this}
+        class={this.classes(CSS.sources, sourceClasses)}
+        innerHTML={attributionText}
+        role={role}
+        tabIndex={sourceTabIndex}
+      />
     );
   }
 
@@ -167,28 +307,6 @@ class Attribution extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
-
-  private _renderSourcesNode(): any {
-    const isOpen = this._isOpen;
-    const interactive = this._isInteractive();
-    const sourceTabIndex = interactive ? 0 : -1;
-    const attributionText = this.get<string>("viewModel.attributionText");
-    const role = interactive ? "button" : undefined;
-
-    const sourceClasses = {
-      [CSS.sourcesOpen]: isOpen,
-      [CSS.interactive]: interactive
-    };
-
-    return <div afterCreate={this._afterSourcesNodeCreate}
-                afterUpdate={this._afterSourcesNodeUpdate}
-                bind={this}
-                class={CSS.sources}
-                classes={sourceClasses}
-                innerHTML={attributionText}
-                role={role}
-                tabIndex={sourceTabIndex} />;
-  }
 
   private _afterSourcesNodeCreate(element: Element): void {
     this._prevSourceNodeHeight = element.clientWidth;
@@ -200,7 +318,8 @@ class Attribution extends declared(Widget) {
     const { clientHeight, clientWidth, scrollWidth } = element;
 
     const attributionTextOverflowed = scrollWidth >= clientWidth;
-    const attributionTextOverflowChanged = this._attributionTextOverflowed !== attributionTextOverflowed;
+    const attributionTextOverflowChanged =
+      this._attributionTextOverflowed !== attributionTextOverflowed;
     this._attributionTextOverflowed = attributionTextOverflowed;
 
     if (attributionTextOverflowChanged) {
@@ -232,7 +351,6 @@ class Attribution extends declared(Widget) {
   private _isInteractive(): boolean {
     return this._isOpen || this._attributionTextOverflowed;
   }
-
 }
 
-export = Attribution;
+export default Attribution;

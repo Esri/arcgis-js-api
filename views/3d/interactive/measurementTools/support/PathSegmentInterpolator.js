@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/vec3f64","../../../../../chunks/vec3","../../../support/mathUtils","../../../../../geometry/projectionEllipsoid","../../../../../geometry/projection"],(function(t,o,i,e,s){"use strict";var n;return function(n){let r=function(){function i(i,e){this._startPosition=t.create(),this._endPosition=t.create(),o.copy(this._startPosition,i),o.copy(this._endPosition,e)}return i.prototype.eval=function(t,i){o.lerp(i,this._startPosition,this._endPosition,t)},i}();n.Linear=r;let c=function(){function o(o,i,n,r){this._startPosition=t.create(),this._endPosition=t.create();const c=e.getSphericalPCPF(n);s.projectVectorToVector(o,n,this._startPosition,c),s.projectVectorToVector(i,n,this._endPosition,c),this._destSR=e.getSphericalPCPF(r)}return o.prototype.eval=function(t,o){i.slerp(this._startPosition,this._endPosition,t,o),s.projectVectorToVector(o,this._destSR,o,this._destSR)},o}();n.Spherical=c}(n||(n={})),n}));

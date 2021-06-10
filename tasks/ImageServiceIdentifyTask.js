@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","../request","../geometry/support/normalizeUtils","./Task","./support/ImageServiceIdentifyResult"],function(e,t,r,s,n){var a=s.createSubclass({declaredClass:"esri.tasks.ImageServiceIdentifyTask",properties:{parsedUrl:{get:function(){var e=this._parseUrl(this.url);return e.path+="/identify",e}},url:{}},execute:function(s,n){var a=s.geometry?[s.geometry]:[];return r.normalizeCentralMeridian(a).then(function(r){var a=this._encode(e.mixin({},this.parsedUrl.query,{f:"json"},s.toJSON({geometry:r&&r[0]}))),i={query:a,callbackParamName:"callback"};return(this.requestOptions||n)&&(i=e.mixin({},this.requestOptions,n,i)),t(this.parsedUrl.path,i)}.bind(this)).then(this._handleExecuteResponse)},_handleExecuteResponse:function(e){return n.fromJSON(e.data)}});return a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/deprecate","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Task","../rest/imageServiceIdentify"],(function(e,r,s,t,c,o,i,a,n,u,p,l,d){"use strict";const g=t.getLogger("esri.tasks.ImageServiceIdentifyTask");i.deprecatedModule(g,"esri/tasks/ImageServiceIdentifyTask",{replacement:"esri/tasks/ImageIdentifyTask"});let f=function(r){function s(){return r.apply(this,arguments)||this}return e._inheritsLoose(s,r),s.prototype.execute=function(e,r){return d.imageServiceIdentify(this.url,e,r)},s}(l);return f=r.__decorate([a.subclass("esri.tasks.ImageServiceIdentifyTask")],f),f}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/declareExtendsHelper","../../../../core/tsSupport/decorateHelper","../../../../core/accessorSupport/decorators","../../../../core/Accessor","../../viewpointUtils","../../../navigation/Momentum","../../../3d/lib/glMatrix"],function(t,e,i,n,o,m,a,r,s){var u=function(t){function e(e){var i=t.call(this)||this;return i.animationTime=0,i.momentumEstimator=new r.ScreenspaceMomentumEstimator(.05,600,6,.92),i.momentum=null,i.momentumVelocityX=0,i.momentumVelocityY=0,i.momentumFinished=!1,i.viewpoint=a.create(),i.watch("momentumFinished",function(t){t&&i.navigation.stop()}),i}return i(e,t),e.prototype.begin=function(t,e){this.navigation.begin(),this.momentumEstimator.reset(),this.addToEstimator(e)},e.prototype.update=function(t,e){this.addToEstimator(e);var i=e.pointers[0],n=i.currentEvent.x,o=i.currentEvent.y,m=i.previousEvent;n=m?m.x-n:-n,o=m?o-m.y:o,t.viewpoint=a.translateBy(this.viewpoint,t.viewpoint,[n||0,o||0])},e.prototype.end=function(t,e){this.addToEstimator(e),this.momentum=this.momentumEstimator.evaluateMomentum(),this.animationTime=0,this.momentum&&(this.momentumVelocityX=(this.momentum.dataNewest[0]-this.momentum.dataOldest[0])/this.momentum.dataTimeDelta,this.momentumVelocityY=(this.momentum.dataNewest[1]-this.momentum.dataOldest[1])/this.momentum.dataTimeDelta,this.onAnimationUpdate(t)),this.navigation.end()},e.prototype.addToEstimator=function(t){var e=t.pointers[0],i=e.currentEvent.x,n=e.currentEvent.y;this.momentumEstimator.add(i,n,s.vec3.createFrom(i,n,0),.001*t.currentState.timestamp)},e.prototype.onAnimationUpdate=function(t){var e=this;this.navigation.animationManager.animateContinous(t.viewpoint,function(i,n){e.momentumFinished=!e.momentum||e.momentum.isFinished(e.animationTime);var o=.001*n;if(e.notifyChange("momentumFinished"),!e.momentumFinished){var m=e.momentum.velocityFactor(e.animationTime),r=m*e.momentumVelocityX*o,s=m*e.momentumVelocityY*o;t.viewpoint=a.translateBy(i,i,[-r,s])}e.animationTime+=o})},e.prototype.stopMomentumNavigation=function(){this.momentum&&(this.momentumEstimator.reset(),this.momentum=null,this.navigation.stop())},e}(o.declared(m));return n([o.property()],u.prototype,"viewpoint",void 0),n([o.property()],u.prototype,"navigation",void 0),u=n([o.subclass("esri.views.2d.navigation.actions.Pan")],u)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../core/has","../../../../core/Logger","../../../../core/accessorSupport/ensureType","../../../../core/accessorSupport/decorators/property","../../../../core/accessorSupport/decorators/subclass","../../../../core/urlUtils","../../../../core/uuid","../../../../portal/support/resourceExtension","../../../../core/Accessor","../../../../geometry/Point","../../../../geometry","../../../../core/screenUtils","../../../../chunks/vec3f64","../../../../chunks/vec3","../../../../Viewpoint","../../viewpointUtils","../../../navigation/PanPlanarMomentumEstimator"],(function(t,e,i,n,o,s,m,a,r,u,c,p,h,l,d,v,g,y,f){"use strict";let w=function(e){function i(t){var i;return(i=e.call(this,t)||this).animationTime=0,i.momentumEstimator=new f.PanPlanarMomentumEstimator(500,6,.92),i.momentum=null,i.tmpMomentum=d.create(),i.momentumFinished=!1,i.viewpoint=new g({targetGeometry:new p,scale:0,rotation:0}),i.watch("momentumFinished",(t=>{t&&i.navigation.stop()})),i}t._inheritsLoose(i,e);var n=i.prototype;return n.begin=function(t,e){this.navigation.begin(),this.momentumEstimator.reset(),this.addToEstimator(e),this.previousDrag=e},n.update=function(t,e){this.addToEstimator(e);let i=e.center.x,n=e.center.y;const o=this.previousDrag;i=o?o.center.x-i:-i,n=o?n-o.center.y:n,t.viewpoint=y.translateBy(this.viewpoint,t.viewpoint,[i||0,n||0]),this.previousDrag=e},n.end=function(t,e){this.addToEstimator(e);const i=t.navigation.momentumEnabled;this.momentum=i?this.momentumEstimator.evaluateMomentum():null,this.animationTime=0,this.momentum&&this.onAnimationUpdate(t),this.previousDrag=null,this.navigation.end()},n.addToEstimator=function(t){const e=t.center.x,i=t.center.y,n=l.createScreenPointArray(-e,i),o=d.fromValues(-e,i,0);this.momentumEstimator.add(n,o,.001*t.timestamp)},n.onAnimationUpdate=function(t){this.navigation.animationManager.animateContinous(t.viewpoint,((e,i)=>{this.momentumFinished=!this.momentum||this.momentum.isFinished(this.animationTime);const n=.001*i;if(!this.momentumFinished){const i=this.momentum.valueDelta(this.animationTime,n);v.scale(this.tmpMomentum,this.momentum.direction,i),y.translateBy(e,e,this.tmpMomentum),t.constraints.constrainByGeometry(e)}this.animationTime+=n}))},n.stopMomentumNavigation=function(){this.momentum&&(this.momentumEstimator.reset(),this.momentum=null,this.navigation.stop())},i}(c);return e.__decorate([s.property()],w.prototype,"momentumFinished",void 0),e.__decorate([s.property()],w.prototype,"viewpoint",void 0),e.__decorate([s.property()],w.prototype,"navigation",void 0),w=e.__decorate([m.subclass("esri.views.2d.navigation.actions.Pan")],w),w}));

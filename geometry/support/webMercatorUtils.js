@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../SpatialReference"],function(e,n,t){function r(e){return e*y}function i(e){return e*g}function o(e){return null!=e.wkid}function a(e,n,t,r,i){if(e=e,"point"===e.type)v=n(e.x,e.y,r,d),i.x=v[0],i.y=v[1];else if("extent"===e.type)y=n(e.xmin,e.ymin,r,d),i.xmin=y[0],i.ymin=y[1],g=n(e.xmax,e.ymax,r,d),i.xmax=g[0],i.ymax=g[1];else if("polyline"===e.type||"polygon"===e.type){for(var o="polyline"===e.type,a=o?e.paths:e.rings,l=[],u=void 0,c=0;c<a.length;c++){var p=a[c];u=[],l.push(u);for(var s=0;s<p.length;s++)u.push(n(p[s][0],p[s][1],r)),p[s].length>2&&u[s].push(p[s][2]),p[s].length>3&&u[s].push(p[s][3])}o?i.paths=l:i.rings=l}else if("multipoint"===e.type){for(var f=e.points,h=[],c=0;c<f.length;c++)h[c]=n(f[c][0],f[c][1],r),f[c].length>2&&h[c].push(f[c][2]),f[c].length>3&&h[c].push(f[c][3]);i.points=h}return i.spatialReference=t,i;var v,y,g}function l(e,n){var t=e&&(o(e)?e:e.spatialReference),r=n&&(o(n)?n:n.spatialReference);return t&&r?r.equals(t)?!0:r.isWebMercator&&4326===t.wkid||t.isWebMercator&&4326===r.wkid:!1}function u(e,n){var r=e&&e.spatialReference,i=n&&(o(n)?n:n.spatialReference);return l(r,i)?r.equals(i)?e.clone():i.isWebMercator?a(e,c,t.WebMercator,!1,e.clone()):4326===i.wkid?a(e,p,t.WGS84,!1,e.clone()):null:null}function c(e,n,t,r){void 0===r&&(r=[0,0]),n>89.99999?n=89.99999:-89.99999>n&&(n=-89.99999);var o=i(n);return r[0]=i(e)*h,r[1]=.5*h*Math.log((1+Math.sin(o))/(1-Math.sin(o))),r}function p(e,n,t,i){void 0===t&&(t=!1),void 0===i&&(i=[0,0]);var o=r(e/h);return i[0]=t?o:o-360*Math.floor((o+180)/360),i[1]=r(v/2-2*Math.atan(Math.exp(-1*n/h))),i}function s(e,n,r){return void 0===n&&(n=!1),void 0===r&&(r=e.clone()),a(e,c,t.WebMercator,n,r)}function f(e,n,r){return void 0===n&&(n=!1),void 0===r&&(r=e.clone()),a(e,p,t.WGS84,n,r)}Object.defineProperty(n,"__esModule",{value:!0});var h=6378137,v=3.141592653589793,y=57.29577951308232,g=.017453292519943,d=[0,0];n.canProject=l,n.project=u,n.lngLatToXY=c,n.xyToLngLat=p,n.geographicToWebMercator=s,n.webMercatorToGeographic=f});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/lang","./spatialReferenceUtils","../SpatialReference","./Ellipsoid"],(function(n,e,t,i,r){"use strict";const a=57.29577951308232,s=.017453292519943;function o(n){return n*a}function c(n){return n*s}function l(n){return n/r.earth.radius}function u(n){return Math.PI/2-2*Math.atan(Math.exp(-1*n/r.earth.radius))}function h(n){return null!=n.wkid||null!=n.wkt}const p=[0,0];function f(n,e,t,i,r){const a=n,s=r;if(s.spatialReference=t,"x"in a&&"x"in s)[s.x,s.y]=e(a.x,a.y,p,i);else if("xmin"in a&&"xmin"in s)[s.xmin,s.ymin]=e(a.xmin,a.ymin,p,i),[s.xmax,s.ymax]=e(a.xmax,a.ymax,p,i);else if("paths"in a&&"paths"in s||"rings"in a&&"rings"in s){const n="paths"in a?a.paths:a.rings,t=[];let r;for(let a=0;a<n.length;a++){const s=n[a];r=[],t.push(r);for(let n=0;n<s.length;n++)r.push(e(s[n][0],s[n][1],[0,0],i)),s[n].length>2&&r[n].push(s[n][2]),s[n].length>3&&r[n].push(s[n][3])}"paths"in s?s.paths=t:s.rings=t}else if("points"in a&&"points"in s){const n=a.points,t=[];for(let r=0;r<n.length;r++)t[r]=e(n[r][0],n[r][1],[0,0],i),n[r].length>2&&t[r].push(n[r][2]),n[r].length>3&&t[r].push(n[r][3]);s.points=t}return r}function x(n,e){const i=n&&(h(n)?n:n.spatialReference),r=e&&(h(e)?e:e.spatialReference);return!(n&&"type"in n&&"mesh"===n.type||e&&"type"in e&&"mesh"===e.type||!i||!r)&&(!!t.equals(r,i)||(t.isWebMercator(r)&&t.isWGS84(i)||t.isWebMercator(i)&&t.isWGS84(r)))}function M(n,r){const a=n&&n.spatialReference,s=r&&(h(r)?r:r.spatialReference);return x(a,s)?t.equals(a,s)?e.clone(n):t.isWebMercator(s)?f(n,g,i.WebMercator,!1,e.clone(n)):t.isWGS84(s)?f(n,m,i.WGS84,!1,e.clone(n)):null:null}function g(n,e,t=[0,0]){e>89.99999?e=89.99999:e<-89.99999&&(e=-89.99999);const i=c(e);return t[0]=c(n)*r.earth.radius,t[1]=r.earth.halfSemiMajorAxis*Math.log((1+Math.sin(i))/(1-Math.sin(i))),t}function m(n,e,t=[0,0],i=!1){const a=o(n/r.earth.radius);return t[0]=i?a:a-360*Math.floor((a+180)/360),t[1]=o(Math.PI/2-2*Math.atan(Math.exp(-1*e/r.earth.radius))),t}function y(n,t=!1,r=e.clone(n)){return f(n,g,i.WebMercator,t,r)}function W(n,t=!1,r=e.clone(n)){return f(n,m,i.WGS84,t,r)}n.canProject=x,n.geographicToWebMercator=y,n.lngLatToXY=g,n.project=M,n.webMercatorToGeographic=W,n.x2lon=l,n.xyToLngLat=m,n.y2lat=u,Object.defineProperty(n,"__esModule",{value:!0})}));

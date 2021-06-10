@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../core/declare","../core/lang","../symbols/support/jsonUtils","./Renderer"],function(e,l,n,r){var s=e(r,{declaredClass:"esri.renderers.SimpleRenderer",properties:{description:{value:null,json:{write:!0}},label:{value:null,json:{write:!0}},symbol:{value:null,json:{read:n.read,write:function(e,l,r,s){l.symbol=n.write(e,{},s)}}},type:"simple"},getSymbol:function(e,l){return this.symbol},clone:function(){return new s({description:this.description,label:this.label,symbol:this.symbol&&this.symbol.clone(),visualVariables:l.clone(this.visualVariables),authoringInfo:l.clone(this.authoringInfo)})}});return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./Renderer","./mixins/VisualVariablesMixin","./support/commonProperties"],(function(e,r,t,o,s,i,l,n,c,a,u,p,y,d,b){"use strict";var h;let m=h=function(r){function t(e){var t;return(t=r.call(this,e)||this).description=null,t.label=null,t.symbol=null,t.type="simple",t}e._inheritsLoose(t,r);var s=t.prototype;return s.collectRequiredFields=async function(e,r){await Promise.all([this.collectSymbolFields(e,r),this.collectVVRequiredFields(e,r)])},s.collectSymbolFields=async function(e,r){await Promise.all(this.getSymbols().map((t=>t.collectRequiredFields(e,r))))},s.getSymbol=function(e,r){return this.symbol},s.getSymbolAsync=async function(e,r){return this.symbol},s.getSymbols=function(){return this.symbol?[this.symbol]:[]},s.getAttributeHash=function(){return this.visualVariables&&this.visualVariables.reduce(((e,r)=>e+r.getAttributeHash()),"")},s.getMeshHash=function(){return this.getSymbols().reduce(((e,r)=>e+JSON.stringify(r)),"")},s.clone=function(){return new h({description:this.description,label:this.label,symbol:this.symbol&&this.symbol.clone(),visualVariables:o.clone(this.visualVariables),authoringInfo:this.authoringInfo&&this.authoringInfo.clone()})},e._createClass(t,[{key:"arcadeRequired",get:function(){return this.arcadeRequiredForVisualVariables}}]),t}(d.VisualVariablesMixin(y));return r.__decorate([l.property({type:String,json:{write:!0}})],m.prototype,"description",void 0),r.__decorate([l.property({type:String,json:{write:!0}})],m.prototype,"label",void 0),r.__decorate([l.property(b.rendererSymbolProperty)],m.prototype,"symbol",void 0),r.__decorate([n.enumeration({simple:"simple"})],m.prototype,"type",void 0),m=h=r.__decorate([c.subclass("esri.renderers.SimpleRenderer")],m),m}));

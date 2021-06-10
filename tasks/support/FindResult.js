@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/JSONSupport","../../Graphic"],function(e,r){var t=e.createSubclass({declaredClass:"esri.tasks.support.FindResult",properties:{displayFieldName:null,feature:{value:null,type:r,json:{read:{source:["attributes","geometry"],reader:function(e,t){var a={};return t.attributes&&(a.attributes=t.attributes),t.geometry&&(a.geometry=t.geometry),r.fromJSON(a)}}}},foundFieldName:null,layerId:null,layerName:null,value:{value:null}}});return t});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/support/typeUtils","../../geometry","../../Graphic"],(function(e,r,t,o,p,a,s,u,i,c,n,y,l,d,_,m,S){"use strict";let b=function(r){function t(e){var t;return(t=r.call(this,e)||this).displayFieldName=null,t.feature=null,t.foundFieldName=null,t.layerId=null,t.layerName=null,t.value=void 0,t}e._inheritsLoose(t,r);var p=t.prototype;return p.readFeature=function(e,r){const t={attributes:{}};return r.attributes&&(t.attributes=r.attributes),r.geometry&&(t.geometry=r.geometry),S.fromJSON(t)},p.writeFeature=function(e,r){if(!e)return;const{attributes:t,geometry:p}=e;t&&(r.attributes={...t}),o.isSome(p)&&(r.geometry=p.toJSON(),r.geometryType=_.typeKebabDictionary.toJSON(p.type))},t}(d.JSONSupport);return r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"displayFieldName",void 0),r.__decorate([s.property({type:S})],b.prototype,"feature",void 0),r.__decorate([u.reader("feature",["attributes","geometry"])],b.prototype,"readFeature",null),r.__decorate([c.writer("feature")],b.prototype,"writeFeature",null),r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"foundFieldName",void 0),r.__decorate([s.property({type:Number,json:{write:!0}})],b.prototype,"layerId",void 0),r.__decorate([s.property({type:String,json:{write:!0}})],b.prototype,"layerName",void 0),r.__decorate([s.property({json:{write:!0}})],b.prototype,"value",void 0),b=r.__decorate([i.subclass("esri.tasks.support.FindResult")],b),b}));

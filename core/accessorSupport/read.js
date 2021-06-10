@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/_base/lang","./utils","./get","./extensions/serializableProperty"],function(e,r,i,n,t,a){function o(e,r,i){if(!e||!e.read||e.read.enabled===!1||!e.read.source)return!1;var n=e.read.source;if("string"==typeof n){if(n===r)return!0;if(n.indexOf(".")>-1&&0===n.indexOf(r)&&t.exists(n,i))return!0}else for(var a=0,o=n;a<o.length;a++){var s=o[a];if(s===r)return!0;if(s.indexOf(".")>-1&&0===s.indexOf(r)&&t.exists(s,i))return!0}return!1}function s(e,r){return e&&(!e.read||e.read.enabled!==!1&&!e.read.source)}function f(e,r,i,n,t){var f=a.originSpecificReadPropertyDefinition(r[i],t);s(f,t)&&(e[i]=!0);for(var d=0,u=Object.getOwnPropertyNames(r);d<u.length;d++){var c=u[d];f=a.originSpecificReadPropertyDefinition(r[c],t),o(f,i,n)&&(e[c]=!0)}}function d(e,r,i){void 0===i&&(i=c);for(var o=n.getProperties(e),s=o.metadatas,d={},u=0,g=Object.getOwnPropertyNames(r);u<g.length;u++){var l=g[u];f(d,s,l,r,i)}o.setDefaultOrigin(i.origin);for(var v=0,p=Object.getOwnPropertyNames(d);v<p.length;v++){var O=p[v],y=a.originSpecificReadPropertyDefinition(s[O],i),b=y.read,x=b&&b.source,P=void 0;P=x&&"string"==typeof x?t.valueOf(r,x):r[O],b&&b.reader&&(P=b.reader.call(e,P,r,i)),void 0!==P&&o.set(O,P)}o.setDefaultOrigin("user")}function u(e,r,n,t){void 0===t&&(t=c);var a=i.mixin({},t,{messages:[]});n(a),a.messages.forEach(function(r){"warning"!==r.type||e.loaded?t&&t.messages.push(r):e.loadWarnings.push(r)})}Object.defineProperty(r,"__esModule",{value:!0});var c={origin:"service"};r.read=d,r.readLoadable=u,r["default"]=d});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./utils","./get","./extensions/serializableProperty"],(function(e,t,r,i){"use strict";function n(e,t,i){if(!e||!e.read||!1===e.read.enabled||!e.read.source)return!1;const n=e.read.source;if("string"==typeof n){if(n===t)return!0;if(n.indexOf(".")>-1&&0===n.indexOf(t)&&r.exists(n,i))return!0}else for(const o of n){if(o===t)return!0;if(o.indexOf(".")>-1&&0===o.indexOf(t)&&r.exists(o,i))return!0}return!1}function o(e){return e&&(!e.read||!1!==e.read.enabled&&!e.read.source)}function s(e,t,r,s,f){let a=i.originSpecificReadPropertyDefinition(t[r],f);o(a)&&(e[r]=!0);for(const o of Object.getOwnPropertyNames(t))a=i.originSpecificReadPropertyDefinition(t[o],f),n(a,r,s)&&(e[o]=!0)}function f(e,t,r,n){const o=r.metadatas,s=i.originSpecificPropertyDefinition(o[t],"any",n),f=s&&s.default;if(void 0===f)return;const a="function"==typeof f?f.call(e,t,n):f;void 0!==a&&r.set(t,a)}const a={origin:"service"};function c(e,n,o=a){if(!n||"object"!=typeof n)return;const c=t.getProperties(e),d=c.metadatas,u={};for(const t of Object.getOwnPropertyNames(n))s(u,d,t,n,o);c.setDefaultOrigin(o.origin);for(const t of Object.getOwnPropertyNames(u)){const s=i.originSpecificReadPropertyDefinition(d[t],o).read,f=s&&s.source;let a;a=f&&"string"==typeof f?r.valueOf(n,f):n[t],s&&s.reader&&(a=s.reader.call(e,a,n,o)),void 0!==a&&c.set(t,a)}if(!o||!o.ignoreDefaults)for(const t of Object.getOwnPropertyNames(d))u[t]||f(e,t,c,o);c.setDefaultOrigin("user")}function d(e,t,r,i=a){var n;const o={...i,messages:[]};r(o),null==(n=o.messages)||n.forEach((t=>{"warning"!==t.type||e.loaded?i&&i.messages&&i.messages.push(t):e.loadWarnings.push(t)}))}e.default=c,e.read=c,e.readLoadable=d,Object.defineProperty(e,"__esModule",{value:!0})}));

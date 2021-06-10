@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../Portal","../PortalItem","../../config","../../tasks/GeometryService","../../core/promiseUtils","../../core/Error"],function(e,r,t,n,o,i,l,c){function u(e){return l.resolve(new i({url:e}))}function s(e){if(void 0===e&&(e=null),o.geometryServiceUrl)return u(o.geometryServiceUrl);if(!e)return l.reject(new c("internal:geometry-service-url-not-configured"));var r;return e.isInstanceOf(n)?r=e.portal||t.getDefault():e.isInstanceOf(t)&&(r=e),r.load().then(function(e){if(e.helperServices&&e.helperServices.geometry&&e.helperServices.geometry.url)return u(e.helperServices.geometry.url);throw new c("internal:geometry-service-url-not-configured")})}Object.defineProperty(r,"__esModule",{value:!0}),r.create=s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","exports","../../config","../../core/Error","../Portal","../../tasks/support/ProjectParameters"],(function(e,r,t,n,o,i){"use strict";function a(e){return Object.freeze({__proto__:null,default:e})}async function l(r=null,i){if(t.geometryServiceUrl){return new(0,(await new Promise((function(r,t){e(["../../tasks/GeometryService"],(function(e){r(a(e))}),t)}))).default)({url:t.geometryServiceUrl})}if(!r)throw new n("internal:geometry-service-url-not-configured");let l;if(l="portal"in r?r.portal||o.getDefault():r,await l.load({signal:i}),l.helperServices&&l.helperServices.geometry&&l.helperServices.geometry.url){return new(0,(await new Promise((function(r,t){e(["../../tasks/GeometryService"],(function(e){r(a(e))}),t)}))).default)({url:l.helperServices.geometry.url})}throw new n("internal:geometry-service-url-not-configured")}async function c(e,r,t=null,o){const a=await l(t,o),c=new i;c.geometries=[e],c.outSpatialReference=r;const u=await a.project(c,{signal:o});if(u&&Array.isArray(u)&&1===u.length)return u[0];throw new n("internal:geometry-service-projection-failed")}r.create=l,r.projectGeometry=c,Object.defineProperty(r,"__esModule",{value:!0})}));

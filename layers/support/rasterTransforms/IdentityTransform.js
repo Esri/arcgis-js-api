@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport"],(function(r,e,o,t,s,n,c,p,u,i,a,d){"use strict";let l=function(e){function o(){var r;return(r=e.apply(this,arguments)||this).type="identity",r}r._inheritsLoose(o,e);var t=o.prototype;return t.forwardTransform=function(r){return r},t.inverseTransform=function(r){return r},o}(d.JSONSupport);return e.__decorate([n.property({json:{write:!0}})],l.prototype,"spatialReference",void 0),e.__decorate([c.enumeration({IdentityXform:"identity"})],l.prototype,"type",void 0),l=e.__decorate([p.subclass("esri.layers.support.rasterTransforms.IdentityTransform")],l),l}));

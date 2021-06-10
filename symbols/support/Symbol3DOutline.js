@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/JSONSupport","../../Color","./materialUtils","../../core/accessorSupport/decorators"],function(e,r,o,t,l,p,s,n){Object.defineProperty(r,"__esModule",{value:!0});var c=i=function(e){function r(){var r=null!==e&&e.apply(this,arguments)||this;return r.color=new p([0,0,0,1]),r.size=1,r}return o(r,e),r.prototype.clone=function(){return new i({color:this.color?this.color.clone():null,size:this.size})},r}(n.declared(l));t([n.property(s.colorAndTransparencyProperty)],c.prototype,"color",void 0),t([n.property(s.screenSizeProperty)],c.prototype,"size",void 0),c=i=t([n.subclass("esri.symbols.support.Symbol3DOutline")],c),r.Symbol3DOutline=c,r["default"]=c;var i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../Color","../../core/screenUtils","./materialUtils"],(function(e,o,r,t,l,p,s,i,n,c,u,a,y,S,d,f){"use strict";var O;e.Symbol3DOutline=O=function(e){function r(){var o;return(o=e.apply(this,arguments)||this).color=new S([0,0,0,1]),o.size=d.px2pt(1),o.stipplePattern=null,o.stippleOffColor=null,o}return o._inheritsLoose(r,e),r.prototype.clone=function(){return new O({color:l.isSome(this.color)?this.color.clone():null,size:this.size,stipplePattern:this.stipplePattern?this.stipplePattern.slice():null,stippleOffColor:this.stippleOffColor?this.stippleOffColor.clone():null})},r}(y.JSONSupport),r.__decorate([i.property(f.colorAndTransparencyProperty)],e.Symbol3DOutline.prototype,"color",void 0),r.__decorate([i.property(f.screenSizeProperty)],e.Symbol3DOutline.prototype,"size",void 0),r.__decorate([i.property(f.stipplePatternProperty)],e.Symbol3DOutline.prototype,"stipplePattern",void 0),r.__decorate([i.property({type:S})],e.Symbol3DOutline.prototype,"stippleOffColor",void 0),e.Symbol3DOutline=O=r.__decorate([n.subclass("esri.symbols.support.Symbol3DOutline")],e.Symbol3DOutline);var b=e.Symbol3DOutline;e.default=b,Object.defineProperty(e,"__esModule",{value:!0})}));

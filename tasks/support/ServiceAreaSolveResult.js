@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../Graphic","../../core/JSONSupport","../../geometry/SpatialReference","./NAMessage"],function(r,e,s,n){var a=e.createSubclass({declaredClass:"esri.tasks.support.ServiceAreaSolveResult",properties:{facilities:{value:null,json:{read:function(r){return r&&this._graphicsFromJson(r)}}},messages:{value:null,type:[n]},pointBarriers:{value:null,json:{read:function(r){return r&&this._graphicsFromJson(r)}}},polylineBarriers:{value:null,json:{read:function(r){return r&&this._graphicsFromJson(r)}}},polygonBarriers:{value:null,json:{read:function(r){return r&&this._graphicsFromJson(r)}}},serviceAreaPolylines:{value:null,json:{read:{source:["saPolylines"],reader:function(r,e){return this._graphicsFromJson(e.saPolylines)}}}},serviceAreaPolygons:{value:null,json:{read:{source:["saPolygons"],reader:function(r,e){return this._graphicsFromJson(e.saPolygons)}}}}},_graphicsFromJson:function(e){if(!e)return null;var n=s.fromJSON(e.spatialReference),a=e.features;return Array.isArray(a)&&a.map(a,function(e){var s=r.fromJSON(e);return s.geometry.spatialReference=n,s}),a}});return a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/maybe","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/SpatialReference","../../geometry/Point","../../geometry/Polygon","../../geometry/Polyline","../../geometry/support/jsonUtils","../../geometry","../../Graphic","./NAMessage"],(function(e,r,o,t,a,s,i,n,p,l,c,y,u,d,_,g,f,P,v,m,B){"use strict";function S(e){return e.features.map((r=>{const o=d.fromJSON(e.spatialReference),a=m.fromJSON(r);return t.unwrap(a.geometry).spatialReference=o,a}))}function A(e){return e.features.map((r=>(r.geometry.spatialReference=e.spatialReference,P.fromJSON(r.geometry))))}let b=function(r){function o(e){var o;return(o=r.call(this,e)||this).facilities=null,o.messages=null,o.pointBarriers=null,o.polylineBarriers=null,o.polygonBarriers=null,o.serviceAreaPolylines=null,o.serviceAreaPolygons=null,o}e._inheritsLoose(o,r);var t=o.prototype;return t.readFacilities=function(e){return A(e)},t.readPointBarriers=function(e,r){return A(r.barriers)},t.readPolylineBarriers=function(e){return A(e)},t.readPolygonBarriers=function(e){return A(e)},t.readIncidents=function(e,r){return S(r.saPolylines)},t.readServiceAreaPolygons=function(e,r){return S(r.saPolygons)},o}(u.JSONSupport);return r.__decorate([i.property({type:[_]})],b.prototype,"facilities",void 0),r.__decorate([n.reader("facilities")],b.prototype,"readFacilities",null),r.__decorate([i.property({type:[B]})],b.prototype,"messages",void 0),r.__decorate([i.property({type:[_]})],b.prototype,"pointBarriers",void 0),r.__decorate([n.reader("pointBarriers",["barriers"])],b.prototype,"readPointBarriers",null),r.__decorate([i.property({type:[f]})],b.prototype,"polylineBarriers",void 0),r.__decorate([n.reader("polylineBarriers")],b.prototype,"readPolylineBarriers",null),r.__decorate([i.property({type:[g]})],b.prototype,"polygonBarriers",void 0),r.__decorate([n.reader("polygonBarriers")],b.prototype,"readPolygonBarriers",null),r.__decorate([i.property({type:[m]})],b.prototype,"serviceAreaPolylines",void 0),r.__decorate([n.reader("serviceAreaPolylines",["saPolylines"])],b.prototype,"readIncidents",null),r.__decorate([i.property({type:[m]})],b.prototype,"serviceAreaPolygons",void 0),r.__decorate([n.reader("serviceAreaPolygons",["saPolygons"])],b.prototype,"readServiceAreaPolygons",null),b=r.__decorate([p.subclass("esri.tasks.support.ServiceAreaSolveResult")],b),b}));

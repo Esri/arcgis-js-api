@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./workers"],function(t,n,o){var i=function(){function t(t,n){this.client=t,this.id=n}return t.prototype.invoke=function(t,n,i,e){return o.invoke(t,n,i,e,this.id)},t.prototype.broadcast=function(t,n,i){return o.broadcast(t,n,i,this.id)},t.prototype.close=function(){o.closeConnection(this)},t}();return i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../Logger","../handleUtils","../promiseUtils","./RemoteClient"],(function(e,t,n,i,s){"use strict";const r=t.getLogger("esri.core.workers.Connection");return function(){function t(){this._clients=new Array,this._clientPromises=new Array,this._clientIdx=0}var l=t.prototype;return l.destroy=function(){this.close()},l.open=function(e,t){return new Promise(((n,r)=>{let l=!0;const o=e=>{i.throwIfAborted(t.signal),l&&(l=!1,e())};this._clients.length=e.length,this._clientPromises.length=e.length;for(let c=0;c<e.length;++c){const l=e[c];i.isPromiseLike(l)?this._clientPromises[c]=l.then((e=>(this._clients[c]=new s(e,t),o(n),this._clients[c])),(()=>(o(r),null))):(this._clients[c]=new s(l,t),this._clientPromises[c]=Promise.resolve(this._clients[c]),o(n))}}))},l.broadcast=function(e,t,n){const i=new Array(this._clientPromises.length);for(let s=0;s<this._clientPromises.length;++s){const r=this._clientPromises[s];i[s]=r.then((i=>i.invoke(e,t,n)))}return i},l.close=function(){for(const e of this._clientPromises)e.then((e=>e.close()));this._clients.length=0,this._clientPromises.length=0},l.getAvailableClient=function(){let e;for(let t=0;t<this._clients.length;++t){const n=this._clients[t];if(n){if(!n.isBusy())return Promise.resolve(n)}else e=e||[],e.push(this._clientPromises[t])}return e?Promise.race(e):(this._clientIdx=(this._clientIdx+1)%this._clients.length,Promise.resolve(this._clients[this._clientIdx]))},l.invoke=function(e,t,n){let i=null;if(Array.isArray(n)?(r.warn("invoke()","The transferList parameter is deprecated, use the options object instead"),i={transferList:n}):i=n,this.closed)return Promise.reject(new Error("Connection closed"));return this.getAvailableClient().then((n=>n.invoke(e,t,i)))},l.on=function(e,t){return Promise.all(this._clientPromises).then((()=>n.handlesGroup(this._clients.map((n=>n.on(e,t))))))},l.openPorts=function(){return new Promise((e=>{const t=new Array(this._clientPromises.length);let n=t.length;for(let i=0;i<this._clientPromises.length;++i){this._clientPromises[i].then((s=>{t[i]=s.openPort(),0==--n&&e(t)}))}}))},e._createClass(t,[{key:"closed",get:function(){return!this._clients||!this._clients.length}},{key:"test",get:function(){return{numClients:this._clients.length}}}]),t}()}));

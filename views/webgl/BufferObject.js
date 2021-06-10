@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,t){var i=function(){function e(t,i,n,r){this._context=null,this._glName=null,this._bufferType=void 0,this._usage=35044,this._size=-1,this._indexType=void 0,this._context=t,this._bufferType=i,this._usage=n,this._id=e._nextId++,this._glName=this._context.gl.createBuffer(),r&&this.setData(r)}return e.createIndex=function(t,i,n){return new e(t,34963,i,n)},e.createVertex=function(t,i,n){return new e(t,34962,i,n)},Object.defineProperty(e.prototype,"id",{get:function(){return this._id},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"glName",{get:function(){return this._glName},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"size",{get:function(){return this._size},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"usage",{get:function(){return this._usage},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"bufferType",{get:function(){return this._bufferType},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"indexType",{get:function(){return this._indexType},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"byteSize",{get:function(){return 34962===this._bufferType?this._size:5125===this._indexType?4*this._size:2*this._size},enumerable:!0,configurable:!0}),e.prototype.dispose=function(){if(this._context){if(this._glName){var e=this._context.gl;e.deleteBuffer(this._glName),this._glName=null}this._context=null}},e.prototype.setData=function(e){if(e){if("number"==typeof e)0>e&&console.error("Buffer size cannot be negative!"),this._size=e;else{var t=e.byteLength;e instanceof Uint16Array&&(t/=2,this._indexType=5123),e instanceof Uint32Array&&(t/=4,this._indexType=5125),this._size=t}var i=this._context.getBoundVAO();this._context.bindVAO(null),this._context.bindBuffer(this);var n=this._context.gl;n.bufferData(this._bufferType,e,this._usage),this._context.bindVAO(i)}},e.prototype.setSubData=function(e,t,i,n){if(void 0===t&&(t=0),void 0===i&&(i=0),e){(0>t||t>=this._size)&&console.error("offset is out of range!");var r=t,o=i,s=n,f=e.byteLength;e instanceof Uint16Array&&(f/=2,r*=2,o*=2,s*=2),e instanceof Uint32Array&&(f/=4,r*=4,o*=4,s*=2),void 0===n&&(n=f-1),i>=n&&console.error("end must be bigger than start!"),t+i-n>this._size&&console.error("An attempt to write beyond the end of the buffer!");var u=this._context.getBoundVAO();this._context.bindVAO(null),this._context.bindBuffer(this);var a=this._context.gl,c=e instanceof ArrayBuffer?e:e.buffer;a.bufferSubData(this._bufferType,r,c.slice(o,s)),this._context.bindVAO(u)}},e}();return i._nextId=0,i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../core/typedArrayUtil","./checkWebGLError"],(function(e,t,i){"use strict";return function(){function n(e,t,n,s,r){this._context=e,this.bufferType=t,this.usage=n,this._glName=null,this._size=-1,this._indexType=void 0,e.instanceCounter.increment(1,this),this._glName=this._context.gl.createBuffer(),i.checkWebGLError(this._context.gl),s&&this.setData(s,r)}n.createIndex=function(e,t,i,s){return new n(e,34963,t,i,s)},n.createVertex=function(e,t,i){return new n(e,34962,t,i)};var s=n.prototype;return s.dispose=function(){if(this._context){if(this._glName){this._context.gl.deleteBuffer(this._glName),this._glName=null}this._context.instanceCounter.decrement(1,this),this._context=null}},s.setData=function(e,i){if(!e)return;if("number"==typeof e){if(e<0&&console.error("Buffer size cannot be negative!"),34963===this.bufferType&&i)switch(this._indexType=i,this._size=e,i){case 5123:e*=2;break;case 5125:e*=4}}else{let i=e.byteLength;t.isUint16Array(e)&&(i/=2,this._indexType=5123),t.isUint32Array(e)&&(i/=4,this._indexType=5125),this._size=i}const n=this._context.getBoundVAO();this._context.bindVAO(null),this._context.bindBuffer(this);this._context.gl.bufferData(this.bufferType,e,this.usage),this._context.bindVAO(n)},s.setSubData=function(e,i=0,n=0,s=e.byteLength){if(!e)return;(i<0||i>=this._size)&&console.error("offset is out of range!");let r=i,o=n,h=s,u=e.byteLength;t.isUint16Array(e)&&(u/=2,r*=2,o*=2,h*=2),t.isUint32Array(e)&&(u/=4,r*=4,o*=4,h*=4),void 0===s&&(s=u-1),n>=s&&console.error("end must be bigger than start!"),i+n-s>this._size&&console.error("An attempt to write beyond the end of the buffer!");const c=this._context.getBoundVAO();this._context.bindVAO(null),this._context.bindBuffer(this);const f=this._context.gl,a=ArrayBuffer.isView(e)?e.buffer:e,_=0===o&&h===e.byteLength?a:a.slice(o,h);f.bufferSubData(this.bufferType,r,_),this._context.bindVAO(c)},e._createClass(n,[{key:"glName",get:function(){return this._glName}},{key:"size",get:function(){return this._size}},{key:"indexType",get:function(){return this._indexType}},{key:"byteSize",get:function(){return 34962===this.bufferType?this._size:5125===this._indexType?4*this._size:2*this._size}}]),n}()}));

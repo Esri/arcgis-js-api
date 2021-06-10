@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/arrayUtils","./UpdateVertices"],(function(t,e,n,i){"use strict";let a=function(t){function i(e,n,i,a=0){var o;return(o=t.call(this,e)||this).origin=n,o.angle=i,o.accumulationType=a,o}e._inheritsLoose(i,t);var a=i.prototype;return a.rotate=function(t,e){this.helper.rotate(t.pos,this.origin,e)},a.apply=function(t){this.rotate(t,this.angle)},a.undo=function(t){this.rotate(t,-this.angle)},a.canAccumulate=function(t){return t instanceof i&&n.equals(this.origin,t.origin)},a.accumulate=function(t,e){const n=1===e.accumulationType;this.rotate(t,n?e.angle-this.angle:e.angle)},a.accumulateParams=function(t){const e=1===t.accumulationType;this.angle=e?t.angle:this.angle+t.angle},i}(i.PerVertexOperation);t.RotateVertex=a,Object.defineProperty(t,"__esModule",{value:!0})}));

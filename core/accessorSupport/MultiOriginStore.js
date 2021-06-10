@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./PropertyOrigin"],function(i,r,t){Object.defineProperty(r,"__esModule",{value:!0});var e=function(){function i(){this._propertyOriginMap={},this._originStores=new Array(t.OriginId.NUM),this._values={}}return i.prototype.get=function(i,r){var t=void 0===r?this._values:this._originStores[r];return t?t[i]:void 0},i.prototype.keys=function(){return Object.keys(this._values)},i.prototype.set=function(i,r,e){void 0===e&&(e=t.OriginId.USER);var o=this._originStores[e];if(o||(o={},this._originStores[e]=o),o[i]=r,!(i in this._values)||this._propertyOriginMap[i]<=e){var n=this._values[i];return this._values[i]=r,this._propertyOriginMap[i]=e,n!==r}return!1},i.prototype.clear=function(i,r){void 0===r&&(r=t.OriginId.USER);var e=this._originStores[r];if(e){var o=e[i];if(delete e[i],i in this._values&&this._propertyOriginMap[i]===r){delete this._values[i];for(var n=r-1;n>=0;n--){var s=this._originStores[n];if(s&&i in s){this._values[i]=s[i],this._propertyOriginMap[i]=n;break}}}return o}},i.prototype.has=function(i,r){var t=void 0===r?this._values:this._originStores[r];return t?i in t:!1},i.prototype.revert=function(i,r){for(;r>0&&!this.has(i,r);)--r;var t=this._originStores[r],e=t&&t[i],o=this._values[i];return this._values[i]=e,this._propertyOriginMap[i]=r,o!==e},i.prototype.originOf=function(i,r){return this._propertyOriginMap[i]||t.OriginId.DEFAULTS},i.prototype.getAll=function(i){return this._originStores[i]},i}();r["default"]=e});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../lang","../maybe","./PropertyOrigin"],(function(t,i,e){"use strict";return function(){function s(){this._propertyOriginMap=new Map,this._originStores=new Array(e.OriginIdNum),this._values=new Map}var r=s.prototype;return r.clone=function(i){const r=new s,n=this._originStores[0];n&&n.forEach(((i,e)=>{r.set(e,t.clone(i),0)}));for(let s=2;s<e.OriginIdNum;s++){const e=this._originStores[s];e&&e.forEach(((e,n)=>{i&&i.has(n)||r.set(n,t.clone(e),s)}))}return r},r.get=function(t,i){const e=void 0===i?this._values:this._originStores[i];return e?e.get(t):void 0},r.keys=function(t){const i=null==t?this._values:this._originStores[t];return i?[...i.keys()]:[]},r.set=function(t,e,s=6){let r=this._originStores[s];if(r||(r=new Map,this._originStores[s]=r),r.set(t,e),!this._values.has(t)||i.assumeNonNull(this._propertyOriginMap.get(t))<=s){const i=this._values.get(t);return this._values.set(t,e),this._propertyOriginMap.set(t,s),i!==e}return!1},r.delete=function(t,i=6){const e=this._originStores[i];if(!e)return;const s=e.get(t);if(e.delete(t),this._values.has(t)&&this._propertyOriginMap.get(t)===i){this._values.delete(t);for(let e=i-1;e>=0;e--){const i=this._originStores[e];if(i&&i.has(t)){this._values.set(t,i.get(t)),this._propertyOriginMap.set(t,e);break}}}return s},r.has=function(t,i){const e=void 0===i?this._values:this._originStores[i];return!!e&&e.has(t)},r.revert=function(t,i){for(;i>0&&!this.has(t,i);)--i;const e=this._originStores[i],s=e&&e.get(t),r=this._values.get(t);return this._values.set(t,s),this._propertyOriginMap.set(t,i),r!==s},r.originOf=function(t){return this._propertyOriginMap.get(t)||0},r.forEach=function(t){this._values.forEach(t)},s}()}));

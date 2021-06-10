@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","../../../core/tsSupport/decorateHelper","./TileKey","./TileInfoView"],function(e,r,o,l,t,n){var i=function(e){function r(){return null!==e&&e.apply(this,arguments)||this}return o(r,e),r.prototype.getTileParentId=function(e){var r=t.pool.acquire(e),o=0===r.level?null:t.getId(r.level-1,r.row>>1,r.col>>1,r.world);return t.pool.release(r),o},r.prototype.getTileIdAtParent=function(e,r){var o=t.pool.acquire(r),l=this._infoByLevel[o.level];if(e.resolution<l.resolution)throw t.pool.release(o),new Error("Cannot calculate parent tile. destination LOD's resolution "+e.resolution+" is not a parent resolution of "+l.resolution);if(e.resolution===l.resolution){var n=o.id;return t.pool.release(o),n}var i=o.level-e.level;if(0>i)throw t.pool.release(o),new Error("Wrong way...!");var u=t.getId(e.level,o.row>>i,o.col>>i,o.world);return t.pool.release(o),u},r}(n);return i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../layers/support/TileInfo","./TileKey","./TileInfoView"],(function(e,l,t,n){"use strict";return function(n){function o(){var e;return(e=n.apply(this,arguments)||this)._fullCacheLodInfos=null,e._levelByScale={},e}e._inheritsLoose(o,n);var s=o.prototype;return s.getTileParentId=function(e){const l=t.pool.acquire(e),n=0===l.level?null:t.getId(l.level-1,l.row>>1,l.col>>1,l.world);return t.pool.release(l),n},s.getTileCoverage=function(e,l,t){const o=n.prototype.getTileCoverage.call(this,e,l,t);if(!o)return o;const s=1<<o.lodInfo.level;return o.spans=o.spans.filter((e=>e.row>=0&&e.row<s)),o},s.scaleToLevel=function(e){if(this._fullCacheLodInfos||this._initializeFullCacheLODs(this._lodInfos),this._levelByScale[e])return this._levelByScale[e];{const l=this._fullCacheLodInfos;if(e>l[0].scale)return l[0].level;let t,n;for(let o=0;o<l.length-1;o++)if(n=l[o+1],e>n.scale)return t=l[o],t.level+(t.scale-e)/(t.scale-n.scale);return l[l.length-1].level}},s._initializeFullCacheLODs=function(e){let t;if(0===e[0].level)t=e.map((e=>({level:e.level,resolution:e.resolution,scale:e.scale})));else{const e=this.tileInfo.size[0],n=this.tileInfo.spatialReference;t=l.create({size:e,spatialReference:n}).lods.map((e=>({level:e.level,resolution:e.resolution,scale:e.scale})))}for(let l=0;l<t.length;l++)this._levelByScale[t[l].scale]=t[l].level;this._fullCacheLodInfos=t},o}(n)}));

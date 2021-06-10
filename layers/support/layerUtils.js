@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/array"],function(e){var r={_serializeLayerDefinitions:function(r){var n=[],i=!1,t=/[:;]/;if(r&&(e.forEach(r,function(e,r){e&&(n.push([r,e]),!i&&t.test(e)&&(i=!0))}),n.length>0)){var a;return i?(a={},e.forEach(n,function(e){a[e[0]]=e[1]}),a=JSON.stringify(a)):(a=[],e.forEach(n,function(e){a.push(e[0]+":"+e[1])}),a=a.join(";")),a}return null},_serializeTimeOptions:function(r,n){if(r){var i=[];return e.forEach(r,function(r,t){if(r){var a=r.toJSON();n&&-1!==e.indexOf(n,t)&&(a.useTime=!1),i.push('"'+t+'":'+JSON.stringify(a))}}),i.length?"{"+i.join(",")+"}":void 0}},_getVisibleLayers:function(r,n){var i,t,a,f=[];if(!r)return f;if(n)for(f=n.concat(),a=0;a<r.length;a++)i=r[a],t=e.indexOf(r,i.id),i.subLayerIds&&t>-1&&(f.splice(t,1),f=f.concat(i.subLayerIds));else f=this._getDefaultVisibleLayers(r);return f},_getDefaultVisibleLayers:function(r){var n,i=[];if(!r)return i;for(n=0;n<r.length;n++)r[n].parentLayerId>=0&&-1===e.indexOf(i,r[n].parentLayerId)&&e.some(r,function(e){return e.id===r[n].parentLayerId})||r[n].defaultVisibility&&i.push(r[n].id);return i},_getLayersForScale:function(r,n){var i=[];if(r>0&&n){var t;for(t=0;t<n.length;t++)if(!(n[t].parentLayerId>=0&&-1===e.indexOf(i,n[t].parentLayerId)&&e.some(n,function(e){return e.id===n[t].parentLayerId}))&&n[t].id>=0){var a=!0,f=n[t].maxScale,u=n[t].minScale;(f>0||u>0)&&(f>0&&u>0?a=r>=f&&u>=r:f>0?a=r>=f:u>0&&(a=u>=r)),a&&i.push(n[t].id)}}return i}};return r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports"],(function(e){"use strict";function t(e){return e&&"base-tile"===e.type||"tile"===e.type||"elevation"===e.type||"imagery-tile"===e.type||"base-elevation"===e.type||"open-street-map"===e.type||"wcs"===e.type||"web-tile"===e.type||"wmts"===e.type||"vector-tile"===e.type}function n(e){return e.parent&&"esri.Basemap"===e.parent.declaredClass&&e.parent.baseLayers.indexOf(e)>-1}function i(e){const t=/[:;]/,n=[];let i=!1;if(e&&(e.forEach((function(e,r){n.push([r,e]),!i&&t.test(e)&&(i=!0)})),n.length>0)){let e;if(i){const t={};n.forEach((e=>{t[e[0]]=e[1]})),e=JSON.stringify(t)}else{const t=[];n.forEach((e=>{t.push(e[0]+":"+e[1])})),e=t.join(";")}return e}return null}function r(e){if(!e)return;const t=[];return e.forEach((function(e,n){t.push('"'+n+'":'+JSON.stringify(e))})),t.length?"{"+t.join(",")+"}":void 0}function a(e,t){const n=[];if(e>0&&t)for(let i=0;i<t.length;i++)if(!(t[i].parentLayerId>=0&&-1===n.indexOf(t[i].parentLayerId)&&t.some((function(e){return e.id===t[i].parentLayerId})))&&t[i].id>=0){let r=!0;const a=t[i].maxScale,s=t[i].minScale;(a>0||s>0)&&(a>0&&s>0?r=a<=e&&e<=s:a>0?r=a<=e:s>0&&(r=e<=s)),r&&n.push(t[i].id)}return n}function s(e){return!0===e.labelsVisible&&null!=e.labelingInfo&&e.labelingInfo.length>0}e.areLabelsVisible=s,e.getLayersForScale=a,e.isBaseLayer=n,e.isTiledLayer=t,e.serializeLayerDefinitions=i,e.serializeTimeOptions=r,Object.defineProperty(e,"__esModule",{value:!0})}));

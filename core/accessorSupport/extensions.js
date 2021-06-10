@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./extensions/aliasedProperty","./extensions/computedProperty","./extensions/serializableProperty"],function(e,t,r,a,o){function s(e,t){for(var r=Object.getOwnPropertyNames(e),a=0,o=c;a<o.length;a++){var s=o[a];if(s.processPrototypePropertyMetadata)for(var n=0,p=r;n<p.length;n++){var i=p[n],d=e[i];s.processPrototypePropertyMetadata(i,d,e,t)}}}function n(e,t){for(var r=Object.getOwnPropertyNames(e),a=0,o=c;a<o.length;a++){var s=o[a];if(s.processClassPropertyMetadata)for(var n=0,p=r;n<p.length;n++){var i=p[n],d=e[i];s.processClassPropertyMetadata(i,d,e,t)}}}function p(e,t){for(var r=Object.getOwnPropertyNames(t),a=0,o=c;a<o.length;a++){var s=o[a];s.instanceCreated&&s.instanceCreated(e,t,r)}}Object.defineProperty(t,"__esModule",{value:!0});var c=[r["default"],a["default"],o["default"]];t.processPrototypeMetadatas=s,t.processClassMetadatas=n,t.instanceCreated=p});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","./extensions/serializableProperty"],(function(t,e){"use strict";const o=[e.SerializablePropertyExtension];function s(t,e){for(const s of o)if(s.processPrototypePropertyMetadata)for(const o in t){const r=t[o];s.processPrototypePropertyMetadata(o,r,t,e)}}function r(t,e){for(const s of o)if(s.processClassPropertyMetadata)for(const o in t){const r=t[o];s.processClassPropertyMetadata(o,r,t,e)}}function a(t,e){const s=Object.getOwnPropertyNames(e);for(const r of o)r.instanceCreated&&r.instanceCreated(t,e,s)}t.instanceCreated=a,t.processClassMetadatas=r,t.processPrototypeMetadatas=s,Object.defineProperty(t,"__esModule",{value:!0})}));

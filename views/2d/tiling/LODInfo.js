@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./TileKey","../../../geometry/support/spatialReferenceUtils"],function(o,t,r,i){function e(o,t){return[o,t]}function n(o,t,r){return o[0]=t,o[1]=r,o}function s(o,t,r,i,e){return o[0]=t,o[1]=r,o[2]=i,o[3]=e,o}var l=function(){function o(o,t,r,i,e,n,s,l,u,h,a,p){this.level=o,this.resolution=t,this.scale=r,this.origin=i,this.first=e,this.last=n,this.size=s,this.norm=l,this.worldStart=u,this.worldEnd=h,this.worldSize=a,this.wrap=p}return o.create=function(t,r,s){var l=i.getInfo(t.spatialReference),u=e(t.origin.x,t.origin.y),h=e(t.size[0]*r.resolution,t.size[1]*r.resolution),a=e(-(1/0),-(1/0)),p=e(+(1/0),+(1/0)),f=e(+(1/0),+(1/0));s&&(n(a,Math.max(0,Math.floor((s.xmin-u[0])/h[0])),Math.max(0,Math.floor((u[1]-s.ymax)/h[1]))),n(p,Math.max(0,Math.floor((s.xmax-u[0])/h[0])),Math.max(0,Math.floor((u[1]-s.ymin)/h[1]))),n(f,p[0]-a[0]+1,p[1]-a[1]+1));var c,m,g,w;return l?(c=e(Math.ceil(Math.round(2*l.origin[1]/r.resolution)/t.size[0]),f[1]),m=e(Math.floor((l.origin[0]-u[0])/h[0]),a[1]),g=e(c[0]-m[0]-1,p[1]),w=!0):(m=a,g=p,c=f,w=!1),new o(r.level,r.resolution,r.scale,u,a,p,f,h,m,g,c,w)},o.prototype.normalizeCol=function(o){if(!this.wrap)return o;var t=this.worldSize[0];return 0>o?t-1-Math.abs((o+1)%t):o%t},o.prototype.denormalizeCol=function(o,t){return this.wrap?this.worldSize[0]*t+o:o},o.prototype.getWorldForColumn=function(o){return this.wrap?Math.floor(o/this.worldSize[0]):0},o.prototype.getFirstColumnForWorld=function(o){return o*this.worldSize[0]+this.first[0]},o.prototype.getLastColumnForWorld=function(o){return o*this.worldSize[0]+this.first[0]+this.size[0]-1},o.prototype.getColumnForX=function(o){return(o-this.origin[0])/this.norm[0]},o.prototype.getXForColumn=function(o){return this.origin[0]+o*this.norm[0]},o.prototype.getRowForY=function(o){return(this.origin[1]-o)/this.norm[1]},o.prototype.getYForRow=function(o){return this.origin[1]-o*this.norm[1]},o.prototype.getTileBounds=function(o,t){var i=r.pool.acquire(t);return s(o,this.getXForColumn(this.denormalizeCol(i.col,i.world)),this.getYForRow(i.row+1),this.getXForColumn(this.denormalizeCol(i.col,i.world)+1),this.getYForRow(i.row)),r.pool.release(i),o},o.prototype.getTileCoords=function(o,t){var i=r.pool.acquire(t);return n(o,this.getXForColumn(this.denormalizeCol(i.col,i.world)),this.getYForRow(i.row)),r.pool.release(i),o},o}();return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../../geometry/support/spatialReferenceUtils","./TileKey"],(function(t,o){"use strict";function r(t,o){return[t,o]}function i(t,o,r){return t[0]=o,t[1]=r,t}function n(t,o,r,i,n){return t[0]=o,t[1]=r,t[2]=i,t[3]=n,t}const e=new o("0/0/0/0");return function(){function o(t,o,r,i,n,e,s,l,h,u,a,c){this.level=t,this.resolution=o,this.scale=r,this.origin=i,this.first=n,this.last=e,this.size=s,this.norm=l,this.worldStart=h,this.worldEnd=u,this.worldSize=a,this.wrap=c}o.create=function(n,e,s){const l=t.getInfo(n.spatialReference),h=r(n.origin.x,n.origin.y),u=r(n.size[0]*e.resolution,n.size[1]*e.resolution),a=r(-1/0,-1/0),c=r(1/0,1/0),f=r(1/0,1/0);let g,m,w,d;return s&&(i(a,Math.max(0,Math.floor((s.xmin-h[0])/u[0])),Math.max(0,Math.floor((h[1]-s.ymax)/u[1]))),i(c,Math.max(0,Math.floor((s.xmax-h[0])/u[0])),Math.max(0,Math.floor((h[1]-s.ymin)/u[1]))),i(f,c[0]-a[0]+1,c[1]-a[1]+1)),n.isWrappable?(g=r(Math.ceil(Math.round((l.valid[1]-l.valid[0])/e.resolution)/n.size[0]),f[1]),m=r(Math.floor((l.origin[0]-h[0])/u[0]),a[1]),w=r(g[0]+m[0]-1,c[1]),d=!0):(m=a,w=c,g=f,d=!1),new o(e.level,e.resolution,e.scale,h,a,c,f,u,m,w,g,d)};var s=o.prototype;return s.normalizeCol=function(t){if(!this.wrap)return t;const o=this.worldSize[0];return t<0?o-1-Math.abs((t+1)%o):t%o},s.denormalizeCol=function(t,o){return this.wrap?this.worldSize[0]*o+t:t},s.getWorldForColumn=function(t){return this.wrap?Math.floor(t/this.worldSize[0]):0},s.getFirstColumnForWorld=function(t){return t*this.worldSize[0]+this.first[0]},s.getLastColumnForWorld=function(t){return t*this.worldSize[0]+this.first[0]+this.size[0]-1},s.getColumnForX=function(t){return(t-this.origin[0])/this.norm[0]},s.getXForColumn=function(t){return this.origin[0]+t*this.norm[0]},s.getRowForY=function(t){return(this.origin[1]-t)/this.norm[1]},s.getYForRow=function(t){return this.origin[1]-t*this.norm[1]},s.getTileBounds=function(t,o,r=!1){e.set(o);const i=r?e.col:this.denormalizeCol(e.col,e.world),s=e.row;return n(t,this.getXForColumn(i),this.getYForRow(s+1),this.getXForColumn(i+1),this.getYForRow(s)),t},s.getTileCoords=function(t,o,r=!1){e.set(o);const n=r?e.col:this.denormalizeCol(e.col,e.world);return Array.isArray(t)?i(t,this.getXForColumn(n),this.getYForRow(e.row)):(t.x=this.getXForColumn(n),t.y=this.getYForRow(e.row)),t},o}()}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/has","../../lang","../metadata"],function(r,e,t,o,n){function s(r){return void 0===r&&(r={}),function(e,t){var s=e.constructor.prototype;if(s===Function.prototype)return void(i&&console.error("[accessor] inappropriate use of @property() on a static field: "+e.name+"."+t+". Accessor does not support static properties."));var a=Object.getOwnPropertyDescriptor(e,t);a&&(a.get||a.set)&&(r=o.clone(r),a.set&&(r.set=a.set),a.get&&(r.get=a.get));var p=n.getPropertyMetadata(s,t);for(var c in r){var u=r[c];Array.isArray(u)?p[c]=(p[c]||[]).concat(u):p[c]=u}}}function a(r,e,t){var o=n.getPropertyMetadata(r.constructor.prototype,t);o.json||(o.json={});var s=o.json;return void 0!==e&&(s.origins||(s.origins={}),s.origins[e]||(s.origins[e]={}),s=s.origins[e]),s}Object.defineProperty(e,"__esModule",{value:!0});var i=t("dojo-debug-messages");e.property=s,e.propertyJSONMeta=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../Logger","../ensureType","../get","../metadata","../set"],(function(e,r,t,n,o,s){"use strict";const i=r.getLogger("esri.core.accessorSupport.decorators.property");function a(e={}){return(r,a,u)=>{if(r===Function.prototype)throw new Error(`Inappropriate use of @property() on a static field: ${r.name}.${a}. Accessor does not support static properties.`);const y=o.getOwnPropertyMetadata(r,a);u&&(u.get||u.set?(y.get=u.get||y.get,y.set=u.set||y.set):"value"in u&&("value"in e&&i.warn(`@property() will redefine the value of "${a}" on "${r.constructor.name}" already defined in the metadata`,e),y.value=e.value=u.value)),null!=e.readOnly&&(y.readOnly=e.readOnly);const f=e.aliasOf;if(f){const e="string"==typeof f?f:f.source,r="string"==typeof f?null:!0===f.overridable;let t;y.dependsOn=[e],y.get=function(){let r=n.get(this,e);if("function"==typeof r){t||(t=e.split(".").slice(0,-1).join("."));const o=n.get(this,t);o&&(r=r.bind(o))}return r},y.readOnly||(y.set=r?function(e){void 0!==e?this._override(a,e):this._clearOverride(a)}:function(r){s.set(this,e,r)})}const l=e.type,g=e.types;y.cast||(l?y.cast=p(l):g&&(Array.isArray(g)?y.cast=t.ensureArrayTyped(t.ensureOneOfType(g[0])):y.cast=t.ensureOneOfType(g))),e.range&&(y.cast=c(y.cast,e.range)),o.mergeProperty(y,e)}}function u(e,r,t){const n=o.getOwnPropertyMetadata(e,t);n.json||(n.json={});let s=n.json;return void 0!==r&&(s.origins||(s.origins={}),s.origins[r]||(s.origins[r]={}),s=s.origins[r]),s}function p(e){let r=0,n=e;if(t.isLongFormType(e))return t.ensureLongFormType(e);for(;Array.isArray(n)&&1===n.length&&"string"!=typeof n[0]&&"number"!=typeof n[0];)n=n[0],r++;const o=n;if(t.isOneOf(o))return 0===r?t.ensureOneOf(o):t.ensureNArrayTyped(t.ensureOneOf(o),r);if(1===r)return t.ensureArray(o);if(r>1)return t.ensureNArray(o,r);const s=e;return s.from?s.from:t.ensureType(s)}function c(e,r){return t=>{let n=+e(t);return null!=r.step&&(n=Math.round(n/r.step)*r.step),null!=r.min&&(n=Math.max(r.min,n)),null!=r.max&&(n=Math.min(r.max,n)),n}}e.ensureRange=c,e.property=a,e.propertyJSONMeta=u,Object.defineProperty(e,"__esModule",{value:!0})}));

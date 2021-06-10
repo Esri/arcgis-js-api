@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/JSONSupport","../../core/kebabDictionary","./GPMessage"],function(e,o,i){var b=o({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"}),s=e.createSubclass({declaredClass:"esri.tasks.support.JobInfo",properties:{jobId:"",jobStatus:{value:"",json:{read:b.fromJSON}},messages:{value:[],type:[i]}}});return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../core/JSONSupport","../../request","../../rest/utils","./GPMessage","../../rest/geoprocessor/GPOptions","../../rest/geoprocessor/utils"],(function(e,t,r,s,o,i,n,a,c,u,l,p,b,d,h,j,m,f,g){"use strict";function _(e){return Object.freeze({__proto__:null,default:e})}var S;const y=new a.JSONMap({esriJobCancelled:"job-cancelled",esriJobCancelling:"job-cancelling",esriJobDeleted:"job-deleted",esriJobDeleting:"job-deleting",esriJobTimedOut:"job-timed-out",esriJobExecuting:"job-executing",esriJobFailed:"job-failed",esriJobNew:"job-new",esriJobSubmitted:"job-submitted",esriJobSucceeded:"job-succeeded",esriJobWaiting:"job-waiting"});let J=S=function(r){function s(e){var t;return(t=r.call(this,e)||this).jobId=null,t.jobStatus=null,t.messages=null,t.requestOptions=null,t.sourceUrl=null,t._timer=null,t}t._inheritsLoose(s,r);var o=s.prototype;return o.cancelJob=function(e){const{jobId:t,sourceUrl:r}=this,{path:s}=j.parseUrl(r),o={...this.requestOptions,...e,query:{f:"json"}};this._clearTimer();return h(`${s}/jobs/${t}/cancel`,o).then((e=>{const t=S.fromJSON(e.data);return this.messages=t.messages,this.jobStatus=t.jobStatus,this}))},o.destroy=function(){clearInterval(this._timer)},o.checkJobStatus=function(e){const{path:t}=j.parseUrl(this.sourceUrl),r={...this.requestOptions,...e,query:{f:"json"}},s=`${t}/jobs/${this.jobId}`;return h(s,r).then((({data:e})=>{const t=S.fromJSON(e);return this.messages=t.messages,this.jobStatus=t.jobStatus,this}))},o.fetchResultData=function(e,t,r){t=f.from(t);const{returnFeatureCollection:s,returnM:o,returnZ:i,outSpatialReference:n}=t,{path:a}=j.parseUrl(this.sourceUrl),c={returnFeatureCollection:s||void 0,returnM:o||void 0,returnZ:i||void 0,outSR:n,returnType:"data",f:"json"},u=g.gpEncode(c,null),l={...this.requestOptions,...r,query:u},p=`${a}/jobs/${this.jobId}/results/${e}`;return h(p,l).then((e=>g.decode(e.data)))},o.fetchResultImage=function(e,t,r){const{path:s}=j.parseUrl(this.sourceUrl),o={...t.toJSON(),f:"json"},i=g.gpEncode(o),n={...this.requestOptions,...r,query:i},a=`${s}/jobs/${this.jobId}/results/${e}`;return h(a,n).then((e=>g.decode(e.data)))},o.fetchResultMapImageLayer=async function(){const{path:t}=j.parseUrl(this.sourceUrl),r=t.indexOf("/GPServer/"),s=`${t.substring(0,r)}/MapServer/jobs/${this.jobId}`;return new(0,(await new Promise((function(t,r){e(["../../layers/MapImageLayer"],(function(e){t(_(e))}),r)}))).default)({url:s})},o.waitForJobCompletion=async function(e={}){const{interval:t=1e3,signal:r,statusCallback:s}=e;return new Promise(((e,o)=>{b.onAbort(r,(()=>{this._clearTimer(),o(b.createAbortError())})),this._clearTimer();const i=setInterval((()=>{this._timer||o(b.createAbortError()),this.checkJobStatus(this.requestOptions).then((t=>{const{jobStatus:r}=t;switch(this.jobStatus=r,r){case"job-succeeded":this._clearTimer(),e(this);break;case"job-submitted":case"job-executing":case"job-waiting":case"job-new":s&&s(this);break;case"job-cancelled":case"job-cancelling":case"job-deleted":case"job-deleting":case"job-timed-out":case"job-failed":this._clearTimer(),o(this)}}))}),t);this._timer=i}))},o._clearTimer=function(){this._timer&&(clearInterval(this._timer),this._timer=null)},s}(d.JSONSupport);return r.__decorate([n.property()],J.prototype,"jobId",void 0),r.__decorate([n.property({json:{read:y.read}})],J.prototype,"jobStatus",void 0),r.__decorate([n.property({type:[m]})],J.prototype,"messages",void 0),r.__decorate([n.property()],J.prototype,"requestOptions",void 0),r.__decorate([n.property({json:{write:!0}})],J.prototype,"sourceUrl",void 0),J=S=r.__decorate([c.subclass("esri.tasks.support.JobInfo")],J),J}));

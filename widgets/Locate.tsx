@@ -1,6 +1,7 @@
 /**
  * Provides a simple widget that animates the {@link module:esri/views/View}
- * to the user's current location. By default the widget looks like the following:
+ * to the user's current location. The view rotates according to the direction
+ * where the tracked device is heading towards. By default the widget looks like the following:
  *
  * ![locate-button](../assets/img/apiref/widgets/widgets-locate.png)
  *
@@ -34,47 +35,60 @@
  * @module esri/widgets/Locate
  * @since 4.0
  *
- * @see [Locate.tsx (widget view)]({{ JSAPI_BOWER_URL }}/widgets/Locate.tsx)
- * @see [button.scss]({{ JSAPI_BOWER_URL }}/themes/base/widgets/_Widget.scss)
+ * @see [Locate.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Locate.tsx)
+ * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - locate widget](../sample-code/widgets-locate/index.html)
  * @see module:esri/widgets/Locate/LocateViewModel
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  *
  * @example
- * // This graphics layer will store the graphic used to display the user's location
- * var gl = new GraphicsLayer();
- * map.add(gl);
- *
  * var locateWidget = new Locate({
  *   view: view,   // Attaches the Locate button to the view
- *   graphicsLayer: gl  // The layer the locate graphic is assigned to
+ *   graphic: new Graphic({
+ *     symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
+ *     // graphic placed at the location of the user when found
+ *   })
  * });
  *
  * view.ui.add(locateWidget, "top-right");
  */
 
+// esri
+import Graphic from "esri/Graphic";
 
-/// <amd-dependency path="../core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="../core/tsSupport/decorateHelper" name="__decorate" />
+// esri.core.accessorSupport
+import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
-import {aliasOf, subclass, property, declared} from "../core/accessorSupport/decorators";
-import {accessibleHandler, join, tsx, renderable, vmEvent} from "./support/widget";
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
-import Widget = require("./Widget");
-import LocateViewModel = require("./Locate/LocateViewModel");
-import Graphic = require("../Graphic");
-import View = require("../views/View");
+// esri.views
+import { ISceneView } from "esri/views/ISceneView";
+import MapView from "esri/views/MapView";
 
-import * as i18n from "dojo/i18n!./Locate/nls/Locate";
+// esri.widgets
+import Widget from "esri/widgets/Widget";
+
+// esri.widgets.Locate
+import LocateViewModel from "esri/widgets/Locate/LocateViewModel";
+
+// esri.widgets.Locate.t9n
+import LocateMessages from "esri/widgets/Locate/t9n/Locate";
+
+// esri.widgets.support
+import { GoToOverride } from "esri/widgets/support/GoTo";
+import { VNode } from "esri/widgets/support/interfaces";
+import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
-  base: "esri-locate esri-widget-button esri-widget",
+  base: "esri-locate esri-widget--button esri-widget",
   text: "esri-icon-font-fallback-text",
   icon: "esri-icon",
   locate: "esri-icon-locate",
   loading: "esri-icon-loading-indicator",
   rotating: "esri-rotating",
+  widgetIcon: "esri-icon-north-navigation",
 
   // common
   disabled: "esri-disabled",
@@ -82,8 +96,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.Locate")
-class Locate extends declared(Widget) {
-
+class Locate extends Widget {
   /**
    * Fires after the [locate()](#locate) method is called and succeeds.
    *
@@ -112,6 +125,7 @@ class Locate extends declared(Widget) {
    * @constructor
    * @alias module:esri/widgets/Locate
    * @extends module:esri/widgets/Widget
+   * @mixes module:esri/widgets/support/GoTo
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    *
@@ -121,8 +135,8 @@ class Locate extends declared(Widget) {
    *   view: view
    * });
    */
-  constructor(params?: any) {
-    super();
+  constructor(params?: any, parentNode?: string | Element) {
+    super(params, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -165,6 +179,13 @@ class Locate extends declared(Widget) {
   goToLocationEnabled: boolean = null;
 
   //----------------------------------
+  //  goToOverride
+  //----------------------------------
+
+  @aliasOf("viewModel.goToOverride")
+  goToOverride: GoToOverride = null;
+
+  //----------------------------------
   //  graphic
   //----------------------------------
 
@@ -181,8 +202,8 @@ class Locate extends declared(Widget) {
    * var locateWidget = new Locate({
    *   viewModel: { // autocasts as new LocateViewModel()
    *     view: view,  // assigns the locate widget to a view
-   *     graphic: Graphic({
-   *       symbol: new SimpleMarkerSymbol()  // overwrites the default symbol used for the
+   *     graphic: new Graphic({
+   *       symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
    *       // graphic placed at the location of the user when found
    *     })
    *   }
@@ -190,6 +211,151 @@ class Locate extends declared(Widget) {
    */
   @aliasOf("viewModel.graphic")
   graphic: Graphic = null;
+
+  //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  /**
+   * The widget's default CSS icon class.
+   *
+   * @since 4.7
+   * @name iconClass
+   * @instance
+   * @type {string}
+   */
+  @property()
+  iconClass = CSS.widgetIcon;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  /**
+   * The widget's default label.
+   *
+   * @since 4.8
+   * @name label
+   * @instance
+   * @type {string}
+   */
+  @property({
+    aliasOf: { source: "messages.widgetLabel", overridable: true }
+  })
+  label: string = undefined;
+
+  //----------------------------------
+  //  messages
+  //----------------------------------
+
+  /**
+   * The widget's message bundle
+   *
+   * @instance
+   * @name messages
+   * @type {Object}
+   *
+   * @ignore
+   * @todo revisit doc
+   */
+  @property()
+  @messageBundle("esri/widgets/Locate/t9n/Locate")
+  messages: LocateMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
+
+  //----------------------------------
+  //  popupEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether to display the {@link module:esri/widgets/Popup} of the result graphic from the
+   * {@link module:esri/widgets/Locate/LocateViewModel#locate locate()} method.
+   *
+   * @name popupEnabled
+   * @instance
+   * @type {boolean}
+   * @default true
+   * @see {@link module:esri/widgets/Search#popupEnabled Search.popupEnabled}
+   * @since 4.19
+   */
+  @aliasOf("viewModel.popupEnabled")
+  popupEnabled: boolean = null;
+
+  //----------------------------------
+  //  scale
+  //----------------------------------
+  /**
+   * Indicates the scale to set on the view when navigating to the position of the geolocated
+   * result once a location is returned from the [track](#event-track) event.
+   * If a scale value is not explicitly set, then the view will navigate to a default scale of `2500`.
+   * For 2D views the value should be within the {@link module:esri/views/MapView#constraints effectiveMinScale}
+   * and {@link module:esri/views/MapView#constraints effectiveMaxScale}.
+   *
+   * @since 4.7
+   * @name scale
+   * @instance
+   * @type {number}
+   * @default null
+   *
+   * @example
+   * mapView.watch("scale", function (currentScale){
+   *   console.log("scale: %s", currentScale);
+   * });
+   *
+   * mapView.when(function(){
+   *   // Create an instance of the Locate widget
+   *   var locateWidget = new Locate({
+   *     view: mapView,
+   *     scale: 5000
+   *   });
+   *
+   *   // and add it to the view's UI
+   *   mapView.ui.add(locateWidget, "top-left");
+   *
+   *   locateWidget.locate();
+   *
+   *   locateWidget.on("locate", function(locateEvent){
+   *     console.log(locateEvent);
+   *     console.log("locate: %s", mapView.scale);
+   *   })
+   * });
+   */
+  @aliasOf("viewModel.scale")
+  scale: number = null;
+
+  //----------------------------------
+  //  useHeadingEnabled
+  //----------------------------------
+
+  /**
+   * Indicates whether the widget will automatically [rotate to user's direction](https://www.w3.org/TR/geolocation-API/#coordinates_interface).
+   * Set to `false` to disable this behavior.
+   *
+   * @since 4.6
+   *
+   * @name useHeadingEnabled
+   * @instance
+   *
+   * @type {boolean}
+   * @default true
+   */
+  @aliasOf("viewModel.useHeadingEnabled")
+  useHeadingEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -204,7 +370,7 @@ class Locate extends declared(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -224,7 +390,6 @@ class Locate extends declared(Widget) {
   @property({
     type: LocateViewModel
   })
-  @renderable("viewModel.state")
   @vmEvent(["locate", "locate-error"])
   viewModel = new LocateViewModel();
 
@@ -235,17 +400,29 @@ class Locate extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   /**
+   * This function provides the ability to interrupt and cancel the process of
+   * programmatically obtaining the location of the user's device.
+   *
+   * @since 4.9
+   *
+   * @method
+   */
+  @aliasOf("viewModel.cancelLocate")
+  cancelLocate(): void {}
+
+  /**
    * Animates the view to the user's location.
    *
-   * @return {Promise} Resolves to an object with the same specification as the event
-   *                   object defined in the [locate event](#event:locate).
+   * @return {Promise<Object>} Resolves to an object with the same specification as the event
+   *                   object defined in the [locate event](#event-locate).
    *
    * @method
    *
    * @example
    * var locateWidget = new Locate({
-   *   view: view
-   * }, "locateDiv");
+   *   view: view,
+   *   container: "locateDiv"
+   * });
    *
    * locateWidget.locate().then(function(){
    *   // Fires after the user's location has been found
@@ -254,7 +431,7 @@ class Locate extends declared(Widget) {
   @aliasOf("viewModel.locate")
   locate(): void {}
 
-  render() {
+  render(): VNode {
     const state = this.get("viewModel.state");
     const isLocating = state === "locating";
 
@@ -269,14 +446,22 @@ class Locate extends declared(Widget) {
       [CSS.locate]: !isLocating
     };
 
+    const title = state === "locating" ? this.messagesCommon.cancel : this.messages.title;
+
     return (
-      <div bind={this} class={CSS.base} classes={rootClasses}
-           hidden={state === "feature-unsupported"}
-           onclick={this._locate} onkeydown={this._locate}
-           role="button" tabIndex={0}>
-        <span classes={iconClasses} aria-hidden="true"
-              class={join(CSS.icon, CSS.locate)} title={i18n.title} />
-        <span class={CSS.text}>{i18n.title}</span>
+      <div
+        bind={this}
+        class={this.classes(CSS.base, rootClasses)}
+        hidden={state === "feature-unsupported"}
+        onclick={this._locate}
+        onkeydown={this._locate}
+        role="button"
+        tabIndex={0}
+        aria-label={title}
+        title={title}
+      >
+        <span aria-hidden="true" class={this.classes(CSS.icon, iconClasses)} />
+        <span class={CSS.text}>{this.messages.title}</span>
       </div>
     );
   }
@@ -288,10 +473,11 @@ class Locate extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   @accessibleHandler()
-  private _locate() {
-    this.locate();
-  }
+  private _locate(): void {
+    const { viewModel } = this;
 
+    viewModel.state === "locating" ? viewModel.cancelLocate() : viewModel.locate();
+  }
 }
 
-export = Locate;
+export default Locate;

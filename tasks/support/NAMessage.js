@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/JSONSupport","../../core/kebabDictionary"],function(e,r){var t=r({0:"informative",1:"process-definition",2:"process-start",3:"process-stop",50:"warning",100:"error",101:"empty",200:"abort"}),s=e.createSubclass({declaredClass:"esri.tasks.support.NAMessage",properties:{description:{value:null,type:String,json:{write:!0}},type:{value:null,json:{read:t.fromJSON,write:function(e,r){r.type=t.toJSON(e)}}}}});return s});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./GPMessage"],(function(e,r,s,o,t,c,p,n,a,i,u,l){"use strict";const d=new p.JSONMap({0:"informative",1:"process-definition",2:"process-start",3:"process-stop",50:"warning",100:"error",101:"empty",200:"abort"});let y=function(r){function s(e){var s;return(s=r.call(this,e)||this).type=null,s}return e._inheritsLoose(s,r),s}(l);return r.__decorate([c.property({type:String,json:{read:d.read,write:d.write}})],y.prototype,"type",void 0),y=r.__decorate([n.subclass("esri.tasks.support.NAMessage")],y),y}));

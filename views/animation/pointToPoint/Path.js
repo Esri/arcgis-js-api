@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports"],function(e,t){Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(){this.segments=[]}return Object.defineProperty(e.prototype,"time",{get:function(){return this.segments.reduce(function(e,t){return e+t.time},0)},enumerable:!0,configurable:!0}),e.prototype.interpolateComponentsAt=function(e,t){e=Math.min(Math.max(e,0),1),e*=this.time;for(var o=0,n=0,r=this.definition,a=0;a<this.segments.length;a++){var i=this.segments[a],m=i.definition;if(e<=i.time||a===this.segments.length-1){t=this.segmentInterpolateComponentsAt(i,e/i.time,t),r.hasPan?t.pan=(o+m.compared.pan*t.pan)/r.compared.pan:t.pan=1,r.hasRotate?t.rotate=(n+m.compared.rotate*t.rotate)/r.compared.rotate:t.rotate=1;var s=t.zoom*(m.compared.targetZoom-m.compared.sourceZoom)+m.compared.sourceZoom,p=this.segments[0].definition.compared.sourceZoom,c=this.segments[this.segments.length-1].definition.compared.targetZoom;return r.hasZoom?t.zoom=(s-p)/(c-p):t.zoom=1,t}e-=i.time,o+=m.compared.pan,n+=m.compared.rotate}},e.prototype.segmentInterpolateComponentsAt=function(e,t,o){return e.interpolateComponentsAt(t,o)},e}();t.Path=o,t["default"]=o});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers"],(function(e,t){"use strict";let o=function(){function e(){this.segments=[]}var o=e.prototype;return o.interpolateComponentsAt=function(e,t){e=Math.min(Math.max(e,0),1),e*=this.time;let o=0,n=0;const s=this.definition;for(let r=0;r<this.segments.length;r++){const a=this.segments[r],i=a.definition;if(e<=a.time||r===this.segments.length-1){t=this.segmentInterpolateComponentsAt(a,e/a.time,t),s.hasPan?t.pan=(o+i.compared.pan*t.pan)/s.compared.pan:t.pan=1,s.hasRotate?t.rotate=(n+i.compared.rotate*t.rotate)/s.compared.rotate:t.rotate=1;const r=t.zoom*(i.compared.targetZoom-i.compared.sourceZoom)+i.compared.sourceZoom,m=this.segments[0].definition.compared.sourceZoom,p=this.segments[this.segments.length-1].definition.compared.targetZoom;return s.hasZoom?t.zoom=(r-m)/(p-m):t.zoom=1,t}e-=a.time,o+=i.compared.pan,n+=i.compared.rotate}},o.segmentInterpolateComponentsAt=function(e,t,o){return e.interpolateComponentsAt(t,o)},t._createClass(e,[{key:"time",get:function(){return this.segments.reduce(((e,t)=>e+t.time),0)}}]),e}();e.Path=o,e.default=o,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,t,o,n,s,l){var i=p=function(e){function r(r){var t=e.call(this)||this;return t.type="line-symbol-3d",t}return t(r,e),r.prototype.clone=function(){return new p({styleOrigin:n.clone(this.styleOrigin),symbolLayers:n.clone(this.symbolLayers),thumbnail:n.clone(this.thumbnail)})},r}(l.declared(s));o([l.property()],i.prototype,"type",void 0),o([l.shared(["line","path","text"])],i.prototype,"_allowedLayerTypes",void 0),i=p=o([l.subclass("esri.symbols.LineSymbol3D")],i);var p;return i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","./LineSymbol3DLayer","./PathSymbol3DLayer","./Symbol3D"],(function(e,o,r,t,s,n,l,c,i,y,p,a,u,b,m,h){"use strict";var L;const d=u.ofType({base:null,key:"type",typeMap:{line:b,path:m}}),S=u.ofType({base:null,key:"type",typeMap:{line:b,path:m}});let f=L=function(o){function r(e){var r;return(r=o.call(this,e)||this).symbolLayers=new d,r.type="line-3d",r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new L({styleOrigin:t.clone(this.styleOrigin),symbolLayers:t.clone(this.symbolLayers),thumbnail:t.clone(this.thumbnail)})},r.fromSimpleLineSymbol=function(e){return new L({symbolLayers:[b.fromSimpleLineSymbol(e)]})},r}(h);return o.__decorate([l.property({type:d,json:{type:S}})],f.prototype,"symbolLayers",void 0),o.__decorate([c.enumeration({LineSymbol3D:"line-3d"},{readOnly:!0})],f.prototype,"type",void 0),f=L=o.__decorate([i.subclass("esri.symbols.LineSymbol3D")],f),f}));

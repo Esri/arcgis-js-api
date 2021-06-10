@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./serializableProperty/shorthands","./serializableProperty/originAliases","./serializableProperty/reader","./serializableProperty/writer"],function(r,e,i,o,n,t){function a(r,e){return p(r,"read",e)}function s(r,e){return p(r,"write",e)}function p(r,e,i){var o=r&&r.json;if(r&&r.json&&r.json.origins&&i){var n=r.json.origins[i.origin];n&&e in n&&(o=n)}return o}function c(r,e){var i=Array.isArray(e.type),o=i?e.type[0]:e.type;if(e.json.origins)for(var a in e.json.origins){var s=e.json.origins[a];n.create(o,i,r,s),t.create(o,i,r,s)}n.create(o,i,r,e.json),t.create(o,i,r,e.json)}Object.defineProperty(e,"__esModule",{value:!0}),e.originSpecificReadPropertyDefinition=a,e.originSpecificWritePropertyDefinition=s,e.SerializablePropertyExtension={processPrototypePropertyMetadata:function(r,e,n,t){i.process(e)&&(o.process(e),c(r,e))}},e["default"]=e.SerializablePropertyExtension});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../ensureType","./serializableProperty/originAliases","./serializableProperty/reader","./serializableProperty/shorthands","./serializableProperty/writer"],(function(r,e,i,n,t,o){"use strict";function s(r,e){return c(r,"read",e)}function a(r,e){return c(r,"write",e)}function c(r,e,i){let n=r&&r.json;if(r&&r.json&&r.json.origins&&i){const t=r.json.origins[i.origin];t&&("any"===e||e in t)&&(n=t)}return n}function p(r){const e=y(r);if(r.json.origins)for(const i in r.json.origins){const t=r.json.origins[i];n.create(e,t,!1),o.create(e,t)}n.create(e,r.json,!0),o.create(e,r.json)}function y(r){return r.type?f(r):u(r)}function f(r){if(!r.type)return;let i=0,n=r.type;for(;Array.isArray(n)&&!e.isOneOf(n);)n=n[0],i++;return{type:n,ndimArray:i}}function u(r){if(!r.types)return;let e=0,i=r.types;for(;Array.isArray(i);)i=i[0],e++;return{types:i,ndimArray:e}}const l={processPrototypePropertyMetadata(r,e){t.process(e)&&(i.process(e),p(e))}};r.SerializablePropertyExtension=l,r.default=l,r.originSpecificPropertyDefinition=c,r.originSpecificReadPropertyDefinition=s,r.originSpecificWritePropertyDefinition=a,Object.defineProperty(r,"__esModule",{value:!0})}));

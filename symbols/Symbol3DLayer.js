@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/JSONSupport","../core/kebabDictionary","./support/Symbol3DMaterial","./support/ElevationInfo","../core/accessorSupport/decorators"],function(e,t,r,o,p,n,i,l,a){var c=n({Icon:"icon",Object:"object",Line:"line",Path:"path",Fill:"fill",Extrude:"extrude",Text:"text"}),d=function(e){function t(t){var r=e.call(this)||this;return r.enabled=!0,r.material=null,r.type=null,r}return r(t,e),t.prototype.writeEnabled=function(e,t){e||(t.enabled=e)},t}(a.declared(p));return o([a.property()],d.prototype,"enabled",void 0),o([a.writer("enabled")],d.prototype,"writeEnabled",null),o([a.property({type:l,json:{read:!1,write:!1}})],d.prototype,"elevationInfo",void 0),o([a.property({type:i["default"],json:{write:!0}})],d.prototype,"material",void 0),o([a.property({type:String,readOnly:!0,json:{read:!1,write:{ignoreOrigin:!0,writer:c.write}}})],d.prototype,"type",void 0),d=o([a.subclass("esri.symbols.Symbol3DLayer")],d),function(e){e.typeJSONDictionary=c}(d||(d={})),d});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/JSONSupport"],(function(e,r,o,t,s,c,p,n,a,l,u,i){"use strict";let d=function(r){function o(e){var o;return(o=r.call(this,e)||this).enabled=!0,o.type=null,o}return e._inheritsLoose(o,r),o.prototype.writeEnabled=function(e,r,o){e||(r[o]=e)},o}(i.JSONSupport);return r.__decorate([c.property({type:Boolean,json:{read:{source:"enable"},write:{target:"enable"}}})],d.prototype,"enabled",void 0),r.__decorate([n.writer("enabled")],d.prototype,"writeEnabled",null),r.__decorate([c.property({type:["icon","object","line","path","fill","water","extrude","text"],readOnly:!0})],d.prototype,"type",void 0),d=r.__decorate([p.subclass("esri.symbols.Symbol3DLayer")],d),d}));

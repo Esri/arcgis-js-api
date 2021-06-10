@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/tsSupport/declareExtendsHelper","../../core/tsSupport/decorateHelper","../../core/accessorSupport/decorators","../../core/Accessor","../../core/Error","../../core/Logger","../../core/requireUtils","../../core/promiseUtils","../../core/urlUtils","../../portal/PortalItem","../../portal/Portal"],function(t,e,r,o,a,s,i,l,p,n,u,c,h){var m=l.getLogger("esri.layers.Layer"),d=function(e){function o(){return null!==e&&e.apply(this,arguments)||this}return r(o,e),Object.defineProperty(o.prototype,"portalItem",{set:function(t){t!==this._get("portalItem")&&(this.removeOrigin("portal-item"),this._set("portalItem",t))},enumerable:!0,configurable:!0}),o.prototype.writePortalItem=function(t,e){t&&t.id&&(e.itemId=t.id)},o.prototype.loadFromPortal=function(e){var r=this;return this.portalItem&&this.portalItem.id?p.when(t,"../../portal/support/layersLoader").then(function(t){return t.load({instance:r,supportedTypes:e.supportedTypes,validateItem:e.validateItem,supportsData:e.supportsData}).otherwise(function(t){throw m.warn("Failed to load layer ("+r.title+", "+r.id+") portal item ("+r.portalItem.id+")\n  "+t),t})}):n.resolve()},o.prototype.read=function(t,e){var r=arguments;return e&&(e.layer=this),this.inherited(r)},o.prototype.write=function(t,e){var r=e&&e.portal,o=this.portalItem&&this.portalItem.id&&(this.portalItem.portal||h.getDefault());return r&&o&&!u.hasSamePortal(o.restUrl,r.restUrl)?(e.messages&&e.messages.push(new i("layer:cross-portal","The layer '"+this.title+" ("+this.id+")' cannot be persisted because it refers to an item on a different portal than the one being saved to. To save the scene, set the layer.portalItem to null or save the scene to the same portal as the item associated with the layer",{layer:this})),null):this.inherited(arguments)},o}(a.declared(s));return o([a.property({type:c})],d.prototype,"portalItem",null),o([a.writer("portalItem")],d.prototype,"writePortalItem",null),d=o([a.subclass("esri.layers.mixins.PortalLayer")],d)});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/reader","../../core/accessorSupport/decorators/subclass","../../core/accessorSupport/decorators/writer","../../core/Error","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/promiseUtils","../../portal/Portal","../../portal/PortalItem"],(function(t,e,r,o,a,s,i,l,p,n,c,u,d,m,h,y,I,f){"use strict";const w=s.getLogger("esri.layers.mixins.PortalLayer"),_=e=>{let a=function(e){function o(){var t;return(t=e.apply(this,arguments)||this).resourceReferences={portalItem:null,paths:[]},t}r._inheritsLoose(o,e);var a=o.prototype;return a.destroy=function(){var t;null==(t=this.portalItem)||t.destroy(),this.portalItem=null},a.readPortalItem=function(t,e,r){if(e.itemId)return new f({id:e.itemId,portal:r&&r.portal})},a.writePortalItem=function(t,e){t&&t.id&&(e.itemId=t.id)},a.loadFromPortal=async function(e,r){if(this.portalItem&&this.portalItem.id)try{const o=await new Promise((function(e,r){t(["../../portal/support/layersLoader"],e,r)}));return y.throwIfAborted(r),await o.load({instance:this,supportedTypes:e.supportedTypes,validateItem:e.validateItem,supportsData:e.supportsData},r)}catch(o){throw y.isAbortError(o)||w.warn(`Failed to load layer (${this.title}, ${this.id}) portal item (${this.portalItem.id})\n  ${o}`),o}},a.read=function(t,r){r&&(r.layer=this),e.prototype.read.call(this,t,r)},a.write=function(t,r){const o=r&&r.portal,a=this.portalItem&&this.portalItem.id&&(this.portalItem.portal||I.getDefault());return o&&a&&!d.hasSamePortal(a.restUrl,o.restUrl)?(r.messages&&r.messages.push(new u("layer:cross-portal",`The layer '${this.title} (${this.id})' cannot be persisted because it refers to an item on a different portal than the one being saved to. To save the scene, set the layer.portalItem to null or save the scene to the same portal as the item associated with the layer`,{layer:this})),null):e.prototype.write.call(this,t,{...r,layer:this})},r._createClass(o,[{key:"portalItem",set:function(t){t!==this._get("portalItem")&&(this.removeOrigin("portal-item"),this._set("portalItem",t))}}]),o}(e);return o.__decorate([l.property({type:f})],a.prototype,"portalItem",null),o.__decorate([p.reader("web-document","portalItem",["itemId"])],a.prototype,"readPortalItem",null),o.__decorate([c.writer("web-document","portalItem",{itemId:{type:String}})],a.prototype,"writePortalItem",null),o.__decorate([l.property()],a.prototype,"resourceReferences",void 0),a=o.__decorate([n.subclass("esri.layers.mixins.PortalLayer")],a),a};e.PortalLayer=_,Object.defineProperty(e,"__esModule",{value:!0})}));

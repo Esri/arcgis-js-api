@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["dojo/_base/lang","../../core/Accessor"],function(o,s){var i=s.createSubclass({declaredClass:"esri.tasks.support.ClassificationDefinition",properties:{baseSymbol:null,colorRamp:null,type:null},toJSON:function(){var s={};return this.baseSymbol&&o.mixin(s,{baseSymbol:this.baseSymbol.toJSON()}),this.colorRamp&&!o.isString(this.colorRamp)&&o.mixin(s,{colorRamp:this.colorRamp.toJSON()}),s}});return i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../symbols/Symbol","./colorRamps"],(function(e,r,o,s,t,p,c,a,i,n,u,l,y,d){"use strict";const S=new c.JSONMap({classBreaksDef:"class-breaks-definition",uniqueValueDef:"unique-value-definition"});let b=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).baseSymbol=null,e.colorRamp=null,e.type=null,e}return e._inheritsLoose(o,r),o}(l.JSONSupport);return r.__decorate([p.property({type:y,json:{write:!0}})],b.prototype,"baseSymbol",void 0),r.__decorate([p.property({types:d.types,json:{read:{reader:d.fromJSON},write:!0}})],b.prototype,"colorRamp",void 0),r.__decorate([p.property({json:{read:S.read,write:S.write}})],b.prototype,"type",void 0),b=r.__decorate([a.subclass("esri.tasks.support.ClassificationDefinition")],b),b}));

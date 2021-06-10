@@ -1,0 +1,29 @@
+/*
+  Theme: Light Red
+*/
+
+body {
+  --esri-calcite-theme-name: "light-red";
+}
+
+@import "../base/colors/scss/variables.scss";
+// ↳ https://github.com/Esri/calcite-colors.git
+
+$font-color: $Calcite_Gray_700;
+$background-color: $Calcite_Red_150;
+$interactive-font-color: $Calcite_Gray_700;
+$interactive-font-color--hover: $Calcite_Gray_700;
+
+$button-color: $Calcite_Red_200;
+$button-color--inverse: #000;
+$button-color--bright: #fff;
+
+// Inverse
+$interactive-font-color--inverse: darken($font-color, 12%);
+$background-color--inverse: $Calcite_Red_200;
+
+// Selected
+$border-color--active: $interactive-font-color;
+$background-color--active: $Calcite_Red_100;
+
+@import "../base/core";

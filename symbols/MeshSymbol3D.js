@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../core/tsSupport/declareExtendsHelper","../core/tsSupport/decorateHelper","../core/lang","./Symbol3D","../core/accessorSupport/decorators"],function(e,r,o,t,s,l,n){var i=c=function(e){function r(r){var o=e.call(this)||this;return o.type="mesh-symbol-3d",o}return o(r,e),r.prototype.clone=function(){return new c({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},r}(n.declared(l));t([n.property()],i.prototype,"type",void 0),t([n.shared(["fill"])],i.prototype,"_allowedLayerTypes",void 0),i=c=t([n.subclass("esri.symbols.MeshSymbol3D")],i);var c;return i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/lang","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","../core/Collection","./FillSymbol3DLayer","./Symbol3D"],(function(e,o,r,s,t,c,l,n,i,a,p,u,y,b,h){"use strict";var m;const d=y.ofType({base:null,key:"type",typeMap:{fill:b}});let S=m=function(o){function r(e){var r;return(r=o.call(this,e)||this).symbolLayers=new d,r.type="mesh-3d",r}return e._inheritsLoose(r,o),r.prototype.clone=function(){return new m({styleOrigin:s.clone(this.styleOrigin),symbolLayers:s.clone(this.symbolLayers),thumbnail:s.clone(this.thumbnail)})},r}(h);return o.__decorate([l.property({type:d})],S.prototype,"symbolLayers",void 0),o.__decorate([n.enumeration({MeshSymbol3D:"mesh-3d"},{readOnly:!0})],S.prototype,"type",void 0),S=m=o.__decorate([i.subclass("esri.symbols.MeshSymbol3D")],S),S}));

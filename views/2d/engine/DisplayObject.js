@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../core/tsSupport/extendsHelper","./Evented"],function(e,t,r,i){var n=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t._renderRequestedCalled=!1,t._attached=!1,t._opacity=1,t.renderRequested=!1,t._visible=!0,t}return r(t,e),Object.defineProperty(t.prototype,"attached",{get:function(){return this._attached},set:function(e){this._attached!==e&&(this._attached=e,e?this.hasEventListener("attach")&&this.emit("attach"):this.hasEventListener("detach")&&this.emit("detach"))},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"opacity",{get:function(){return this._opacity},set:function(e){this._opacity!==e&&(this._opacity=e,this.requestRender())},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"visible",{get:function(){return this._visible},set:function(e){this._visible!==e&&(this._visible=e,this.requestRender())},enumerable:!0,configurable:!0}),t.prototype.attach=function(e){return!0},t.prototype.detach=function(e){},t.prototype.processRender=function(e){this._renderRequestedCalled=!1,this.doRender(e),this._renderRequestedCalled||(this.renderRequested=!1),this.hasEventListener("post-render")&&this.emit("post-render")},t.prototype.requestRender=function(){var e=this.renderRequested;this._renderRequestedCalled=!0,this.renderRequested=!0,this.parent&&this.parent.requestChildRender(this),e!==this.renderRequested&&this.hasEventListener("will-render")&&this.emit("will-render")},t.prototype.dispose=function(){},t}(i.Evented);return n});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../core/has","../../../core/promiseUtils","../../../core/Evented"],(function(e,t,i,s,n){"use strict";const a=1/i("mapview-transitions-duration");let o=function(e){function i(){var t;return(t=e.apply(this,arguments)||this)._fadeOutResolver=null,t._fadeInResolver=null,t._clips=null,t.computedVisible=!0,t.computedOpacity=1,t.fadeTransitionEnabled=!1,t.inFadeTransition=!1,t._isReady=!1,t._opacity=1,t._stage=null,t._visible=!0,t}t._inheritsLoose(i,e);var n=i.prototype;return n.fadeIn=function(){return this._fadeInResolver||(this._fadeOutResolver&&(this._fadeOutResolver(),this._fadeOutResolver=null),this.computedOpacity=0,this.fadeTransitionEnabled=!0,this._fadeInResolver=s.createResolver(),this.requestRender()),this._fadeInResolver.promise},n.fadeOut=function(){return this._fadeOutResolver||(this._fadeInResolver&&(this._fadeInResolver(),this._fadeInResolver=null),this.fadeTransitionEnabled=!0,this._fadeOutResolver=s.createResolver(),this.requestRender()),this._fadeOutResolver.promise},n.beforeRender=function(e){this.updateTransitionProperties(e.deltaTime,e.state.scale)},n.afterRender=function(e){this._fadeInResolver&&this.computedOpacity===this.opacity?(this._fadeInResolver(),this._fadeInResolver=null):this._fadeOutResolver&&0===this.computedOpacity&&(this._fadeOutResolver(),this._fadeOutResolver=null)},n.remove=function(){var e;null==(e=this.parent)||e.removeChild(this)},n.setTransform=function(e){},n.processRender=function(e){this.stage&&this.computedVisible&&this.doRender(e)},n.requestRender=function(){this.stage&&this.stage.requestRender()},n.processDetach=function(){this.onDetach(),this.emit("detach")},n.updateTransitionProperties=function(e,t){if(this.fadeTransitionEnabled){const t=this._fadeOutResolver||!this.visible?0:this.opacity,i=this.computedOpacity;if(i===t)this.computedVisible=this.visible;else{const s=e*a;this.computedOpacity=i>t?Math.max(t,i-s):Math.min(t,i+s),this.computedVisible=this.computedOpacity>0;const n=t===this.computedOpacity;this.inFadeTransition=!n,n||this.requestRender()}}else this.computedOpacity=this.opacity,this.computedVisible=this.visible},n.onAttach=function(){},n.onDetach=function(){},n.doRender=function(e){},n.ready=function(){this._isReady||(this._isReady=!0,this.emit("isReady"),this.requestRender())},t._createClass(i,[{key:"clips",get:function(){return this._clips},set:function(e){this._clips=e,this.requestRender()}},{key:"isReady",get:function(){return this._isReady}},{key:"opacity",get:function(){return this._opacity},set:function(e){this._opacity!==e&&(this._opacity=Math.min(1,Math.max(e,0)),this.requestRender())}},{key:"stage",get:function(){return this._stage},set:function(e){if(this._stage===e)return;const t=this._stage;this._stage=e,e?this._stage.untrashDisplayObject(this)||(this.onAttach(),this.emit("attach")):t.trashDisplayObject(this)}},{key:"visible",get:function(){return this._visible},set:function(e){this._visible!==e&&(this._visible=e,this.requestRender())}}]),i}(n);e.DisplayObject=o,Object.defineProperty(e,"__esModule",{value:!0})}));

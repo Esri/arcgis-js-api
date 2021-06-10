@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../lib/glMatrix"],function(e,r,n){function t(e,r,n){for(var t=e.map(function(){return!1}),l=e.map(function(){return null}),a=r.map(function(){return!1}),u=r.map(function(){return null}),d=0;d<r.length;d++){var v=o(r[d],e,n);v>=0&&(a[d]=!0,null!=l[v]?l[v].push(r[d]):l[v]=[r[d]])}for(var d=0;d<e.length;d++){var v=o(e[d],r,n);v>=0&&(t[d]=!0,null!=u[v]?u[v].push(e[d]):u[v]=[e[d]])}for(var f=[],d=0;d<e.length;d++)null!=l[d]||t[d]||f.push({load:[],remove:[e[d]]});for(var d=0;d<r.length;d++)null!=u[d]||a[d]||f.push({load:[r[d]],remove:[]});for(var d=0;d<r.length;d++)null!=u[d]&&(u[d].length>1||u[d][0]!==r[d])&&f.push({load:[r[d]],remove:u[d]});for(var d=0;d<e.length;d++)null!=l[d]&&(l[d].length>1||l[d][0]!==e[d])&&f.push({load:l[d],remove:[e[d]]});return f}function o(e,r,n){for(var t=e;t>0;){var o=r.indexOf(t);if(o>=0)return o;t=n.getParentId(t)}return r.indexOf(t)}function l(e,r,t){return e.sort(function(e,o){if(0===e.load.length&&0===o.load.length)return 0;if(0===e.load.length)return-1;if(0===o.load.length)return 1;if(0===e.remove.length&&0===o.remove.length){var l=t.getRenderCenter(e.load[0]),a=t.getRenderCenter(o.load[0]);return n.vec3d.dot(l,r)-n.vec3d.dot(a,r)}if(0===e.remove.length)return-1;if(0===o.remove.length)return 1;if(1===e.load.length&&1===o.load.length){var l=t.getRenderCenter(e.load[0]),a=t.getRenderCenter(o.load[0]);return n.vec3d.dot(l,r)-n.vec3d.dot(a,r)}if(1===e.load.length)return-1;if(1===o.load.length)return 1;var l=t.getRenderCenter(e.remove[0]),a=t.getRenderCenter(o.remove[0]);return n.vec3d.dot(l,r)-n.vec3d.dot(a,r)})}function a(e,r){for(var n=[e.remove[0]],t=[];1===n.length;){var o=n.pop();t.length=0;for(var l=0;l<e.load.length;l++){for(var a=e.load[l],u=r.getParentId(a);u!==o;)a=u,u=r.getParentId(a);var d=n.indexOf(a);0>d&&(d=n.length,n.push(a),t.push([])),t[d].push(e.load[l])}}var v=[];v.push({remove:e.remove,load:n});for(var l=0;l<n.length;l++)t[l].length>1?v.push({remove:[n[l]],load:t[l]}):n[l]=t[l][0];return v}Object.defineProperty(r,"__esModule",{value:!0}),r.nodeDiff=t,r.sortFrontToBack=l,r.splitWorkEntry=a});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/vec3"],(function(e,t){"use strict";function n(e,t,n){for(let l=0;l<t.length;l++)r[l]=!1,d[l]=null;for(let r=0;r<e.length;r++)l[r]=!1,o[r]=null;for(let l=0;l<t.length;l++){const d=u(t[l],e,n);d>=0&&(r[l]=!0,null!=o[d]?o[d].push(t[l]):o[d]=[t[l]])}for(let o=0;o<e.length;o++){const r=u(e[o],t,n);r>=0&&(l[o]=!0,null!=d[r]?d[r].push(e[o]):d[r]=[e[o]])}const h=[];for(let r=0;r<e.length;r++)null!=o[r]||l[r]||h.push({load:[],remove:[e[r]]});for(let l=0;l<t.length;l++)null!=d[l]||r[l]||h.push({load:[t[l]],remove:[]});for(let l=0;l<t.length;l++)null!=d[l]&&(d[l].length>1||d[l][0]!==t[l])&&h.push({load:[t[l]],remove:d[l]});for(let l=0;l<e.length;l++)null!=o[l]&&(o[l].length>1||o[l][0]!==e[l])&&h.push({load:o[l],remove:[e[l]]});return h}const l=[!1],o=[null],r=[!1],d=[null];function u(e,t,n){let l=e;for(;l>0;){const e=t.indexOf(l);if(e>=0)return e;l=n.getParentId(l)}return t.indexOf(l)}function h(e,n,l){return e.sort(((e,o)=>{if(0===e.load.length&&0===o.load.length)return 0;if(0===e.load.length)return-1;if(0===o.load.length)return 1;if(0===e.remove.length&&0===o.remove.length){const r=l.getRenderCenter(e.load[0]),d=l.getRenderCenter(o.load[0]);return t.dot(r,n)-t.dot(d,n)}if(0===e.remove.length)return-1;if(0===o.remove.length)return 1;if(1===e.load.length&&1===o.load.length){const r=l.getRenderCenter(e.load[0]),d=l.getRenderCenter(o.load[0]);return t.dot(r,n)-t.dot(d,n)}if(1===e.load.length)return-1;if(1===o.load.length)return 1;{const r=l.getRenderCenter(e.remove[0]),d=l.getRenderCenter(o.remove[0]);return t.dot(r,n)-t.dot(d,n)}}))}function g(e,t,n){for(let l=0;l<e.length;++l){const o=e[l];o.load.length>t&&1===o.remove.length&&f(e,o,n)}}function f(e,t,n){const l=[t.remove[0]],o=[];for(;1===l.length;){const e=l.pop();o.length=0;for(let r=0;r<t.load.length;r++){let d=t.load[r],u=n.getParentId(d);for(;u!==e;)d=u,u=n.getParentId(d);let h=l.indexOf(d);h<0&&(h=l.length,l.push(d),o.push([])),o[h].push(t.load[r])}}t.load=l;for(let r=0;r<l.length;r++)o[r].length>1?e.push({remove:[l[r]],load:o[r]}):l[r]=o[r][0]}e.nodeDiff=n,e.sortFrontToBack=h,e.splitWorkEntries=g,e.splitWorkEntry=f,Object.defineProperty(e,"__esModule",{value:!0})}));

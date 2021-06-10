@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../core/JSONSupport","../../geometry/Extent"],function(e,t){var l=e.createSubclass({declaredClass:"esri.layers.support.MapImage",properties:{extent:{type:t},height:null,href:null,scale:null,width:null,visible:!0,opacity:1}});return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport","../../geometry/Extent"],(function(e,o,r,t,p,c,s,i,a,u,l,n){"use strict";let y=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).extent=null,e.height=null,e.href=null,e.opacity=1,e.rotation=0,e.scale=null,e.visible=!0,e.width=null,e}return e._inheritsLoose(r,o),r}(l.JSONSupport);return o.__decorate([c.property({type:n})],y.prototype,"extent",void 0),o.__decorate([c.property()],y.prototype,"height",void 0),o.__decorate([c.property()],y.prototype,"href",void 0),o.__decorate([c.property()],y.prototype,"opacity",void 0),o.__decorate([c.property()],y.prototype,"rotation",void 0),o.__decorate([c.property()],y.prototype,"scale",void 0),o.__decorate([c.property()],y.prototype,"visible",void 0),o.__decorate([c.property()],y.prototype,"width",void 0),y=o.__decorate([s.subclass("esri.layer.support.MapImage")],y),y}));

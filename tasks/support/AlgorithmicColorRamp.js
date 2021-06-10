@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["../../Color","./ColorRamp"],function(o,r){var l=r.createSubclass({declaredClass:"esri.tasks.support.AlgorithmicColorRamp",properties:{algorithm:null,fromColor:{value:null,type:o},toColor:{value:null,type:o},type:"algorithmic"},toJSON:function(){var r;switch(this.algorithm.toLowerCase()){case"cie-lab":r="esriCIELabAlgorithm";break;case"hsv":r="esriHSVAlgorithm";break;case"lab-lch":r="esriLabLChAlgorithm"}var l={type:"algorithmic",algorithm:r};return l.fromColor=o.toJSON(this.fromColor),l.toColor=o.toJSON(this.toColor),l}});return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../Color","./ColorRamp"],(function(o,r,e,t,l,s,c,i,p,a,n,u,h,m){"use strict";var y;let g=y=function(r){function e(o){var e;return(e=r.call(this,o)||this).algorithm=null,e.fromColor=null,e.toColor=null,e.type="algorithmic",e}return o._inheritsLoose(e,r),e.prototype.clone=function(){return new y({fromColor:t.clone(this.fromColor),toColor:t.clone(this.toColor),algorithm:this.algorithm})},e}(m);return r.__decorate([i.enumeration({esriCIELabAlgorithm:"cie-lab",esriHSVAlgorithm:"hsv",esriLabLChAlgorithm:"lab-lch"})],g.prototype,"algorithm",void 0),r.__decorate([c.property({type:h,json:{type:[s.Integer],write:!0}})],g.prototype,"fromColor",void 0),r.__decorate([c.property({type:h,json:{type:[s.Integer],write:!0}})],g.prototype,"toColor",void 0),r.__decorate([c.property({type:["algorithmic"]})],g.prototype,"type",void 0),g=y=r.__decorate([p.subclass("esri.tasks.support.AlgorithmicColorRamp")],g),g}));

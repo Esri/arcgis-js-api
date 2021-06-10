@@ -1,65 +1,73 @@
+![Current version](https://img.shields.io/github/package-json/v/Esri/arcgis-js-api/4master?label=Current%20version)
+
 # arcgis-js-api
 
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) to be used with [bower](http://bower.io).
+A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
 
 ## Features
-A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
-You can install this repo via [bower](http://bower.io/) and create your own custom builds with [Dojo](http://dojotoolkit.org/) or [RequireJS](http://requirejs.org/).
+
+You can install these modules via [npm](https://npmjs.org/) and create your own custom builds, for example, with [Webpack](https://webpackjs.org), [RequireJS](https://requirejs.org/) or the [Dojo Toolkit](https://dojotoolkit.org/).
 
 ## Instructions
 
-Building an ArcGIS API for JavaScript application requires signing up for an [ArcGIS account](https://developers.arcgis.com).
+Additional instructions and examples are available in the SDK's [Build with AMD modules](https://developers.arcgis.com/javascript/latest/amd-build/) Guide page.
 
-`bower install arcgis-js-api`
+```
+npm install arcgis-js-api
+```
+
+## TypeScript Typings
+
+You can use the typings included with `arcgis-js-api` two ways. The first way is to include a `///` directive in your main TypeScript file:
+
+*main.ts*
+
+```ts
+/// <reference types="arcgis-js-api" />
+```
+
+Or, add a reference to the declaration file in the `include` of your `tsconfig.json`:
+
+*tsconfig.json*
+
+```json
+{
+  "include": [
+    "node_modules/arcgis-js-api/index.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ]
+}
+```
 
 ## Requirements
 
-To install and use as a `bower` installation:
+Building apps with the ArcGIS API for JavaScript requires signing up for a [ArcGIS Developer Subscription](https://developers.arcgis.com/sign-up/).
 
-* [node](http://nodejs.org/)
-* [git](http://git-scm.org/)
-* [bower](http://bower.io/)
-
-This repo has dependencies on the following repos.
-
-| Library | Repo | Submodule path |
-| :------ |:---- |:-------------- |
-| dojo  | https://github.com/Esri/dojo/tree/1.12.2-esri   | /dojo |
-| dijit | https://github.com/Esri/dijit/tree/1.12.2-esri  | /dijit |
-| dojox | https://github.com/Esri/dojox/tree/1.12.2-esri  | /dojox |
-| util | https://github.com/Esri/dojo-util/tree/1.12.2-esri    | /util |
-| dgrid | https://github.com/Esri/dgrid/tree/1.1.0-esri  | /dgrid |
-| dstore | https://github.com/SitePen/dstore/tree/v1.1.1 | /dstore |
-| moment | https://github.com/moment/moment/tree/2.18.1 | /moment |
-
-Please see our [recommended guide](https://developers.arcgis.com/javascript/latest/guide/using-bower/index.html).
 
 ## Resources
 
 * [ArcGIS for JavaScript](https://developers.arcgis.com/javascript/)
-* [http://blogs.esri.com/esri/arcgis/tag/javascript/](http://blogs.esri.com/esri/arcgis/tag/javascript/)
-* [twitter@esri](http://twitter.com/esri)
+* [http://blogs.esri.com/esri/arcgis/tag/javascript/](https://blogs.esri.com/esri/arcgis/tag/javascript/)
+* [twitter@ArcGISJSAPI](https://twitter.com/ArcGISJSAPI)
 
 ## Issues
 
-Find a bug or want to request a new feature?  Please refer to [support.esri.com](http://support.esri.com/) or visit [GeoNet](https://geonet.esri.com/community/developers/web-developers/arcgis-api-for-javascript).
-
-## Support
-For assistance, please refer to [support.esri.com](http://support.esri.com/).
+- General questions about using these modules or the ArcGIS API for JavaScript? See the [Esri developer community](https://community.esri.com/t5/arcgis-api-for-javascript/ct-p/arcgis-api-for-javascript).
+- [Technical support](https://support.esri.com/).
 
 ## Licensing
-COPYRIGHT © 2017 Esri
+
+COPYRIGHT © 2021 Esri
 
 All rights reserved under the copyright laws of the United States
 and applicable international laws, treaties, and conventions.
 
-This material is licensed for use under the Esri Master License
-Agreement (MLA), and is bound by the terms of that agreement.
+This material is licensed for use under the [Esri Master License
+Agreement (MLA)](https://www.esri.com/content/dam/esrisites/en-us/media/legal/ma-full/ma-full.pdf), and is bound by the terms of that agreement.
 You may redistribute and use this code without modification,
 provided you adhere to the terms of the MLA and include this
 copyright notice.
-
-See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
 
 For additional information, contact:
 Environmental Systems Research Institute, Inc.
@@ -69,5 +77,3 @@ Redlands, California, USA 92373
 USA
 
 email: contracts@esri.com
-
-See [copyright.txt](copyright.txt) for details.

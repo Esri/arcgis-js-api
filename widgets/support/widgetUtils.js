@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../core/Logger"],function(e,r,t){function n(){var e=t.getLogger("esri.widgets.support.widgetUtils");return e.warn("classes is deprecated, use join instead."),s.apply(this,arguments)}function s(){for(var e=[],r=0;r<arguments.length;r++)e[r]=arguments[r];return e.join(" ")}function i(){return"rtl"===document.head.dir}Object.defineProperty(r,"__esModule",{value:!0}),r.classes=n,r.join=s,r.isRtl=i});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/has","../../core/Logger","../../core/ArrayPool","../../chunks/index2"],(function(e,t,n,i,r){"use strict";var s,o,a=function(e){if("WebkitTransition"in e.style)s="webkitTransitionEnd",o="webkitAnimationEnd";else{if(!("transition"in e.style))throw new Error("Your browser is not supported!");s="transitionend",o="animationend"}},c=function(e){s||a(e)},l=function(e,t){return void 0===t&&(t=e+"-active"),function(n){c(n);var i=!1,r=function(a){i||(i=!0,n.removeEventListener(s,r),n.removeEventListener(o,r),n.classList.remove(e),n.classList.remove(t))};n.classList.add(e),n.addEventListener(s,r),n.addEventListener(o,r),requestAnimationFrame((function(){n.classList.add(t)}))}},d=function(e,t){return void 0===t&&(t=e+"-active"),function(n,i){c(n);var r=!1,a=function(e){r||(r=!0,n.removeEventListener(s,a),n.removeEventListener(o,a),i())};n.classList.add(e),n.addEventListener(s,a),n.addEventListener(o,a),requestAnimationFrame((function(){n.classList.add(t)}))}};n.getLogger("esri.widgets.support.widgetUtils");function u(e){const t=i.acquire();for(let i=0;i<arguments.length;i++){const e=arguments[i],n=typeof e;if("string"===n)t.push(e);else if(Array.isArray(e))t.push.apply(t,e);else if("object"===n)for(const i in e)e[i]&&t.push(i)}const n=t.join(" ");return i.release(t),n}function p(){return"rtl"===document.dir}function g(e){const t="data-node-ref";this[e.getAttribute(t)]=null}function h(e){const t="data-node-ref";this[e.getAttribute(t)]=e}function f(e,t){return("enter"===e?l:d)(t)}const m=["dd","dl","dt","h1","h2","h3","h4","h5","h6","sub","sup",...["animate","animatetransform","circle","clippath","defs","ellipse","g","image","line","lineargradient","marker","mask","path","pattern","polygon","polyline","radialgradient","rect","stop","svg","switch","symbol","text","textpath","tspan","use"]],v=m.reduce(((e,t)=>(e[t]=[],e)),{}),w=["align","alink","alt","bgcolor","border","cellpadding","cellspacing","class","color","cols","colspan","coords","dir","face","height","hspace","ismap","lang","marginheight","marginwidth","multiple","nohref","noresize","noshade","nowrap","ref","rel","rev","rows","rowspan","scrolling","shape","span","summary","tabindex","title","usemap","valign","value","vlink","vspace","width"],L=(e,t,n)=>{const i=`${t}="${n}"`;if(w.includes(t))return i},y=new r.Sanitizer({whiteList:v,onTagAttr:L,stripIgnoreTag:!0,stripIgnoreTagBody:["script","style"]},!0);function b(e,t){const n=e.getBoundingClientRect(),i=t.getBoundingClientRect(),r=n.top+n.height,s=i.top+i.height,o=n.top,a=i.top;(r>s||o<a)&&e.scrollIntoView({block:"end"})}function k(){return getComputedStyle(document.body).getPropertyValue("--esri-calcite-theme-name").replace(/\s|'|"/g,"")}function A(){return k().startsWith("dark")}e.additionalAllowedTags=m,e.classes=u,e.cssTransition=f,e.discardNode=g,e.getThemeName=k,e.isDarkTheme=A,e.isRTL=p,e.keepMenuItemWithinView=b,e.renderingSanitizer=y,e.safeAttrs=w,e.storeNode=h,Object.defineProperty(e,"__esModule",{value:!0})}));

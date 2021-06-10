@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","dojo/_base/lang","dojo/Deferred","dojox/gfx/matrix","dojox/gfx","../../request","../../core/sniff","../../core/Error","../../core/promiseUtils","../../core/urlUtils"],function(e,t,r,a,i,n,o,h,c,d,l){function s(e){return e.map(function(e){return e.command+" "+e.values.join(",")}).join(" ").trim()}function u(e,t,a,o){var h=o&&o.node||document.createElement("div"),c=n.createSurface(h,t,a);null!=o.opacity&&(h.style.opacity=o.opacity.toString());try{e.forEach(function(e){var n=c.createGroup(),h=0;e.forEach(function(e){var t=e.shape,r=e.fill,a=e.stroke;h+=a&&a.width||0;var i=null;t&&("path"===t.type&&"string"!=typeof t.path&&(t.path=s(t.path)),"image"===t.type&&t.src&&"data:"!==t.src.substr(0,5)&&(t.src+=(-1===t.src.indexOf("?")?"?":"&")+"legend=1"),i=n.createShape(t).setFill(r).setStroke(a?a:{width:0}),"text"===t.type&&i.setFont(e.font))});var d=n.getBoundingBox(),l=d.width,u=d.height,g=-(d.x+l/2),f=-(d.y+u/2),m=c.getDimensions(),p={dx:g+m.width/2,dy:f+m.height/2},v=!1;if(o.scale&&0!==d.width&&0!==d.height){var w=d.width/d.height,y=(t>a?t:a)-2*h,x=1,j=1;isNaN(y)||(w>1?(x=y/d.width,j=y/w/d.height):(j=y/d.height,x=y*w/d.width)),n.applyTransform(i.scaleAt(x,j,m.width/2,m.height/2)),v=!0}if(!v&&(l>t||u>a)){var M=l/t>u/a,D=M?l:u,I=M?t:a,S=(I-5)/D;r.mixin(p,{xx:S,yy:S})}n.applyTransform(p)})}catch(d){return c.clear(),c.destroy(),null}return h}function g(e,t,r){var a=Math.ceil(t[0]),i=Math.ceil(t[1]),n=e.some(function(e){return!!e.length});return n?u(e,a,i,r):null}function f(e,t){e=Math.ceil(e),t=Math.ceil(t);var r=document.createElement("canvas");r.width=e,r.height=t,r.style.width=e+"px",r.style.height=t+"px";var a=r.getContext("2d");return a.clearRect(0,0,e,t),a}function m(e,t,r,i){if(!e)return d.reject(new c("renderUtils: imageDataSize","href not provided."));var n;if(l.isDataProtocol(e)){var h=new Image;if(h.src=e,h.complete)n=d.resolve({data:h});else{var s=new a;n=s.promise,h.onload=function(){s.resolve({data:h})},h.onerror=s.reject}}else r||(e+=(-1===e.indexOf("?")?"?":"&")+"legend=1"),n=o(e,{responseType:"image",allowImageDataAccess:r});return n.then(function(e){var a=e.data,n=a.width,o=a.height,h=n/o,c=t;if(i){var d=Math.max(n,o);c=Math.min(c,d)}return{image:r?a:null,width:1>=h?Math.ceil(c*h):c,height:1>=h?c:Math.ceil(c/h)}}).otherwise(function(a){if(r)return m(e,t,!1,i);throw a})}function p(e,t,r,a){return m(e,t,!!r,a).then(function(a){var i=a.width?a.width:t,n=a.height?a.height:t;if(a.image&&r){var o=a.image.width,c=a.image.height;(h("edge")||h("ie"))&&/\.svg$/i.test(e)&&(o-=1,c-=1);var d=f(i,n);d.drawImage(a.image,0,0,o,c,0,0,i,n);for(var l=d.getImageData(0,0,i,n),s=r.r/255,u=r.g/255,g=r.b/255,m=r.a,p=0;p<l.data.length;p+=4)l.data[p+0]*=s,l.data[p+1]*=u,l.data[p+2]*=g,l.data[p+3]*=m;d.putImageData(l,0,0),e=d.canvas.toDataURL("image/png")}return{url:e,width:i,height:n}}).otherwise(function(){return{url:e,width:t,height:t}})}Object.defineProperty(t,"__esModule",{value:!0}),t.renderSymbol=g,t.tintImageWithColor=p});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../core/has","../../core/Error","../../kernel","../../request","../../core/colorUtils","../../libs/maquette/projection","../../libs/maquette/projector","./svgUtils"],(function(t,e,n,i,r,o,a,c,h){"use strict";const l=c.createProjector();function s(t,e,n){const i=Math.ceil(e[0]),r=Math.ceil(e[1]);if(!t.some((t=>!!t.length)))return null;const o=n&&n.node||document.createElement("div");return null!=n.opacity&&(o.style.opacity=n.opacity.toString()),l.append(o,h.renderSVG.bind(null,t,i,r,n)),o}function d(t,e){t=Math.ceil(t),e=Math.ceil(e);const n=document.createElement("canvas");n.width=t,n.height=e,n.style.width=t+"px",n.style.height=e+"px";const i=n.getContext("2d");return i.clearRect(0,0,t,e),i}function g(t,e,i){return t?r(t,{responseType:"image"}).then((t=>{const n=t.data,r=n.width,o=n.height,a=r/o;let c=e;if(i){const t=Math.max(r,o);c=Math.min(c,t)}return{image:n,width:a<=1?Math.ceil(c*a):c,height:a<=1?c:Math.ceil(c/a)}})):Promise.reject(new n("renderUtils: imageDataSize","href not provided."))}function u(t,e){return!(!t||"ignore"===e)&&("multiply"!==e||255!==t.r||255!==t.g||255!==t.b||1!==t.a)}function m(t,e,n,i,r){switch(r){case"multiply":t[e+0]*=n[0],t[e+1]*=n[1],t[e+2]*=n[2],t[e+3]*=n[3];break;default:{const r=o.toHSV({r:t[e+0],g:t[e+1],b:t[e+2]});r.h=i.h,r.s=i.s,r.v=r.v/100*i.v;const a=o.toRGB(r);t[e+0]=a.r,t[e+1]=a.g,t[e+2]=a.b,t[e+3]*=n[3];break}}}function f(t,n,r,a,c){return g(t,n,c).then((c=>{const h=c.width?c.width:n,l=c.height?c.height:n;if(c.image&&u(r,a)){let n=c.image.width,i=c.image.height;(e("edge")||e("ie"))&&/\.svg$/i.test(t)&&(n-=1,i-=1);const s=d(h,l);s.drawImage(c.image,0,0,n,i,0,0,h,l);const g=s.getImageData(0,0,h,l),u=[r.r/255,r.g/255,r.b/255,r.a],f=o.toHSV(r);for(let t=0;t<g.data.length;t+=4)m(g.data,t,u,f,a);s.putImageData(g,0,0),t=s.canvas.toDataURL("image/png")}else{const e=i.id&&i.id.findCredential(t);if(e&&e.token){const n=-1===t.indexOf("?")?"?":"&";t=`${t}${n}token=${e.token}`}}return{url:t,width:h,height:l}})).catch((function(){return{url:t,width:n,height:n}}))}t.renderSymbol=s,t.tintImageWithColor=f,Object.defineProperty(t,"__esModule",{value:!0})}));

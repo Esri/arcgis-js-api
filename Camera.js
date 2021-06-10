@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","./core/tsSupport/declareExtendsHelper","./core/tsSupport/decorateHelper","./core/JSONSupport","./core/lang","./geometry/Point","./views/3d/support/mathUtils","./core/accessorSupport/decorators"],function(t,o,i,r,e,n,p,s,a){var l=u=function(t){function o(o){var i=t.call(this)||this;return i.position=null,i.heading=0,i.tilt=0,i.fov=55,i}return i(o,t),o.prototype.getDefaults=function(t){return t.position?void 0:{position:new p([0,0,0])}},o.prototype.normalizeCtorArgs=function(t,o,i,r){var e=t&&"object"==typeof t&&("x"in t||Array.isArray(t));if(e){var n={position:t};return null!=o&&(n.heading=o),null!=i&&(n.tilt=i),null!=r&&(n.fov=r),n}return t},o.prototype.equals=function(t){return t?this.tilt===t.tilt&&this.heading===t.heading&&this.fov===t.fov&&this.position.equals(t.position):!1},o.prototype.clone=function(){return new u({position:this.position.clone(),heading:this.heading,tilt:this.tilt,fov:this.fov})},o.prototype.toJSON=function(){var t={position:this.position.toJSON(),heading:this.heading,tilt:this.tilt};return n.fixJson(t)},o}(a.declared(e));r([a.property({type:p})],l.prototype,"position",void 0),r([a.property(),a.cast(s.cyclicalDeg.normalize)],l.prototype,"heading",void 0),r([a.property(),a.cast(function(t){return s.clamp(t,-180,180)})],l.prototype,"tilt",void 0),r([a.property({json:{read:!1,write:!1}})],l.prototype,"fov",void 0),l=u=r([a.subclass("esri.Camera")],l);var u;return l});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["./chunks/_rollupPluginBabelHelpers","./chunks/tslib.es6","./core/has","./core/Logger","./core/accessorSupport/ensureType","./core/accessorSupport/decorators/property","./core/accessorSupport/decorators/cast","./core/accessorSupport/decorators/reader","./core/accessorSupport/decorators/subclass","./core/accessorSupport/decorators/writer","./core/urlUtils","./core/uuid","./portal/support/resourceExtension","./core/JSONSupport","./geometry/Point","./core/mathUtils","./views/3d/support/mathUtils"],(function(e,r,o,t,i,s,n,u,c,p,a,l,d,y,h,b,f){"use strict";var m;let N=m=function(r){function o(...e){var o;return(o=r.call(this,...e)||this).position=new h([0,0,0]),o.heading=0,o.tilt=0,o.fov=55,o}e._inheritsLoose(o,r);var t=o.prototype;return t.normalizeCtorArgs=function(e,r,o,t){if(e&&"object"==typeof e&&("x"in e||Array.isArray(e))){const i={position:e};return null!=r&&(i.heading=r),null!=o&&(i.tilt=o),null!=t&&(i.fov=t),i}return e},t.writePosition=function(e,r,o,t){const s=e.clone();s.x=i.ensureNumber(e.x||0),s.y=i.ensureNumber(e.y||0),s.z=e.hasZ?i.ensureNumber(e.z||0):e.z,r[o]=s.write(null,t)},t.readPosition=function(e,r){const o=new h;return o.read(e,r),o.x=i.ensureNumber(o.x||0),o.y=i.ensureNumber(o.y||0),o.z=o.hasZ?i.ensureNumber(o.z||0):o.z,o},t.equals=function(e){return!!e&&(this.tilt===e.tilt&&this.heading===e.heading&&this.fov===e.fov&&this.position.equals(e.position))},t.clone=function(){return new m({position:this.position.clone(),heading:this.heading,tilt:this.tilt,fov:this.fov})},o}(y.JSONSupport);return r.__decorate([s.property({type:h,json:{write:{isRequired:!0}}})],N.prototype,"position",void 0),r.__decorate([p.writer("position")],N.prototype,"writePosition",null),r.__decorate([u.reader("position")],N.prototype,"readPosition",null),r.__decorate([s.property({type:Number,nonNullable:!0,json:{write:{isRequired:!0}}}),n.cast((e=>f.cyclicalDeg.normalize(i.ensureNumber(e))))],N.prototype,"heading",void 0),r.__decorate([s.property({type:Number,nonNullable:!0,json:{write:{isRequired:!0}}}),n.cast((e=>b.clamp(i.ensureNumber(e),-180,180)))],N.prototype,"tilt",void 0),r.__decorate([s.property({type:Number,nonNullable:!0,json:{read:!1,write:!1}})],N.prototype,"fov",void 0),N=m=r.__decorate([c.subclass("esri.Camera")],N),N}));

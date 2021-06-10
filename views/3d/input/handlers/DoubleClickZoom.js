@@ -1,25 +1,5 @@
-// COPYRIGHT © 2017 Esri
-//
-// All rights reserved under the copyright laws of the United States
-// and applicable international laws, treaties, and conventions.
-//
-// This material is licensed for use under the Esri Master License
-// Agreement (MLA), and is bound by the terms of that agreement.
-// You may redistribute and use this code without modification,
-// provided you adhere to the terms of the MLA and include this
-// copyright notice.
-//
-// See use restrictions at http://www.esri.com/legal/pdfs/mla_e204_e300/english
-//
-// For additional information, contact:
-// Environmental Systems Research Institute, Inc.
-// Attn: Contracts and Legal Services Department
-// 380 New York Street
-// Redlands, California, USA 92373
-// USA
-//
-// email: contracts@esri.com
-//
-// See http://js.arcgis.com/4.4/esri/copyright.txt for details.
-
-define(["require","exports","../../../../core/tsSupport/extendsHelper","../../../input/InputHandler","../../../input/handlers/support"],function(e,t,n,i,o){Object.defineProperty(t,"__esModule",{value:!0});var r=function(e){function t(t,n){var i=e.call(this,"esri.views.3d.input.handlers.DoubleClickZoom",!0)||this;return i.view=t,i.registerIncoming("double-click",n,function(e){return i._handleDoubleClick(e)}),i}return n(t,e),t.prototype._handleDoubleClick=function(e){var t=e.data;o.eventMatchesPointerType(t["native"],"primary")&&(this.view.navigation.zoom.stepScreen(Math.log(.5)/Math.log(.6),[t.x,this.view.height-t.y]),e.stopPropagation())},t}(i.InputHandler);t.DoubleClickZoom=r});
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+*/
+define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/screenUtils","../../../input/InputHandler","../../../input/handlers/support","../../state/controllers/global/ZoomStepController","../../state/controllers/local/ZoomStepController"],(function(e,t,o,n,l,i,r){"use strict";let a=function(e){function n(t,o){var n;return(n=e.call(this,!0)||this).view=t,n.registerIncoming("double-click",o,(e=>n.handleDoubleClick(e))),n}return t._inheritsLoose(n,e),n.prototype.handleDoubleClick=function(e){const t=e.data;if(l.eventMatchesPointerAction(t,"primary")){const n=this.view.state.isGlobal?new i.ZoomStepController({view:this.view,mode:"animation"}):new r.ZoomStepController({view:this.view,mode:"animation"});this.view.state.switchCameraController(n),n.zoomStep(Math.log(.5)/Math.log(.6),o.createScreenPointArray(t.x,t.y)),e.stopPropagation()}},n}(n.InputHandler);e.DoubleClickZoom=a,Object.defineProperty(e,"__esModule",{value:!0})}));
