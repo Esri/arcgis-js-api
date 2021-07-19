@@ -40,6 +40,9 @@
  * });
  */
 
+// @esri.calcite-components.dist.custom-elements.bundles
+import "@esri/calcite-components/dist/custom-elements/bundles/switch";
+
 // esri
 import Graphic from "esri/Graphic";
 import { getLocale } from "esri/intl";
@@ -58,7 +61,8 @@ import FeatureLayer from "esri/layers/FeatureLayer";
 
 // esri.layers.support
 import { getDomainRange } from "esri/layers/support/domains";
-import { FieldValue, getFieldRange, NumericRange } from "esri/layers/support/fieldUtils";
+import { FieldValue, getFieldRange } from "esri/layers/support/fieldUtils";
+import { NumericRange } from "esri/layers/support/NumericRange";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -74,6 +78,7 @@ import { Attributes } from "esri/widgets/FeatureForm/interfaces";
 import FeatureFormMessages from "esri/widgets/FeatureForm/t9n/FeatureForm";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
@@ -106,6 +111,7 @@ const CSS = {
   inputRadio: "esri-feature-form__input--radio",
   inputRadioLabel: "esri-feature-form__input--radio-label",
   inputDisabled: "esri-feature-form__input--disabled",
+  inputSwitch: "esri-feature-form__input--switch",
   inputInvalid: "esri-feature-form__input--invalid",
   inputIconInvalid: "esri-feature-form__input-icon--invalid",
   errorMessage: "esri-feature-form__field-error-message",
@@ -135,8 +141,7 @@ const CSS = {
   widget: "esri-widget",
   panel: "esri-widget--panel",
   input: "esri-input",
-  select: "esri-select",
-  heading: "esri-widget__heading"
+  select: "esri-select"
 };
 
 const defaultDateFormat = {
@@ -147,6 +152,23 @@ const defaultDateFormat = {
 function isGroupField(value: any): value is InputFieldGroup {
   return value && value.inputFields;
 }
+
+type FeatureFormProperties = Partial<
+  Pick<
+    FeatureForm,
+    | "container"
+    | "description"
+    | "feature"
+    | "fieldConfig"
+    | "formTemplate"
+    | "groupDisplay"
+    | "headingLevel"
+    | "label"
+    | "layer"
+    | "title"
+    | "viewModel"
+  >
+>;
 
 @subclass("esri.widgets.FeatureForm")
 class FeatureForm extends Widget {
@@ -220,8 +242,8 @@ class FeatureForm extends Widget {
    *   formTemplate: template
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: FeatureFormProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._handleFormKeyDown = this._handleFormKeyDown.bind(this);
     this._handleInputBlur = this._handleInputBlur.bind(this);
@@ -245,6 +267,7 @@ class FeatureForm extends Widget {
         this._activeInputName = groupOrInput && groupOrInput.name;
         this._userUpdatedInputFieldNames.clear();
         this._fieldToInitialIncompatibleDomainValue.clear();
+        this._switchFieldsWithInitialIncompatibleValue.clear();
 
         this._fieldFocusNeeded = true;
       }),
@@ -282,6 +305,8 @@ class FeatureForm extends Widget {
 
   private _fieldToInitialIncompatibleDomainValue = new Map<string, FieldValue>();
 
+  private _switchFieldsWithInitialIncompatibleValue = new Set<string>();
+
   private _moment: typeof import("moment") = null;
 
   private _userUpdatedInputFieldNames = new Set<string>();
@@ -301,17 +326,14 @@ class FeatureForm extends Widget {
    * defaults to what is set within the {@link module:esri/form/FormTemplate}.
    *
    * This property was added at 4.16 to provide parity with the {@link module:esri/form/FormTemplate FormTemplate}.
-   * The preferred way to set this property is via
+   * The recommended way to set this property is via
    * the form template's {@link module:esri/form/FormTemplate#description description} property.
-   * The `description` property on the {@link module:esri/widgets/FeatureForm form} or its
-   * {@link module:esri/widgets/FeatureForm/FeatureFormViewModel view model} will eventually
-   * be deprecated in a later release in favor of the setting it within the form
-   * {@link module:esri/form/FormTemplate template}.
    *
    * @name description
    * @instance
    * @type {string}
    * @since 4.16
+   * @deprecated since version 4.20. Set it via the {@link module:esri/form/FormTemplate#description FormTemplate.description}.
    */
 
   @aliasOf("viewModel.description")
@@ -350,20 +372,11 @@ class FeatureForm extends Widget {
   //----------------------------------
 
   /**
-   * Array of individual or grouped field configuration objects. This is where you specify what fields to
-   * display and how you wish to display them. It is possible to configure individual
-   * or {@link module:esri/widgets/FeatureForm/FieldGroupConfig grouped fields}. For an example of individual field configurations,
-   * please refer to the [Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
-   * sample.
+   * Array of individual or grouped field configuration objects. This is where you can specify which fields to display and how you wish to display them.
    *
-   * Starting with version 4.16, the preferred way to set the field or grouped field configurations is via
+   * It is recommended to set field configurations via
    * {@link module:esri/form/elements/FieldElement FieldElement(s)} or {@link module:esri/form/elements/GroupElement GroupElement(s)}
-   * set within the form's {@link module:esri/widgets/FeatureForm#formTemplate template}.
-   *
-   * Currently, the field configuration settings take precedence over any {@link module:esri/form/elements/FieldElement FieldElement(s)}
-   * that may be set within the form's {@link module:esri/form/FormTemplate template}. The `fieldConfigs` property
-   * will be fully deprecated at a future release in favor of setting elements within the form's {@link module:esri/form/FormTemplate template}.
-   *
+   * within the form's {@link module:esri/widgets/FeatureForm#formTemplate template}.
    *
    * ::: esri-md class="panel trailer-1"
    * When not set, all fields except for `editor`, `globalID`, `objectID`, and system maintained area and length fields will be included.
@@ -376,52 +389,6 @@ class FeatureForm extends Widget {
    * @autocast
    * @deprecated since version 4.16. Use {@link module:esri/form/elements/FieldElement esri/form/elements/FieldElement} and/or {@link module:esri/form/elements/GroupElement GroupElement} instead.
    *
-   * @example
-   * // Individual field configurations without grouping
-   * const featureForm = new FeatureForm({
-   *   container: "formDiv",
-   *   feature: graphic, // Pass in feature
-   *   // Configure fields to display without grouping
-   *   fieldConfig: [ // Autocasts as FieldConfig
-   *     {
-   *       name: "Incident_desc",
-   *       label: "Description"
-   *     },{
-   *       name: "Incident_Address",
-   *       label: "Contact"
-   *    }]
-   * });
-   *
-   * @example
-   * // Grouped field configurations
-   * const featureForm = new FeatureForm({
-   *   container: "formDiv",
-   *   feature: graphic,
-   *   fieldConfig: [{ // Autocasts to FieldGroupConfig
-   *     label: "Inspector", // Group 1
-   *     description: "Inspector information",
-   *     // Individual field configurations within the group
-   *     fieldConfig: [{
-   *       name: "inspector",
-   *       label: "Name"
-   *     },
-   *     {
-   *       name: "inspemail",
-   *       label: "Email address"
-   *     }]
-   *    }, {
-   *     label: "Business", // Group 2
-   *     description: "Business information",
-   *     // Individual field configurations within the group
-   *     fieldConfig: [{
-   *       name: "placename",
-   *       label: "Business name"
-   *     }, {
-   *       name: "firstname",
-   *       label: "First name"
-   *     }]
-   *   }]
-   * });
    */
   @aliasOf("viewModel.fieldConfig")
   fieldConfig: FieldConfig[] = null;
@@ -433,12 +400,11 @@ class FeatureForm extends Widget {
   /**
    * The associated {@link module:esri/form/FormTemplate template} used for the form.
    *
-   *
    * The {@link module:esri/form/FormTemplate formTemplate} is where you configure
    * how the form should display. Properties, i.e. `title`, `description`, `fieldConfigs`, etc,
    * set directly within the {@link module:esri/widgets/FeatureForm} take precedence
    * over any similar properties set within the `formTemplate`. This will change in a future release
-   * as the preferred way to set the form's properties is via it's {@link module:esri/widgets/FeatureForm#formTemplate template}.
+   * as the recommended way to set the form's properties is via its {@link module:esri/widgets/FeatureForm#formTemplate template}.
    *
    *
    * @name formTemplate
@@ -492,6 +458,33 @@ class FeatureForm extends Widget {
    */
   @property()
   groupDisplay: "all" | "sequential" = "all";
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the [title](#title) of the form.
+   * By default, the title is rendered as a level 2 heading (e.g. `<h2>Form title</h2>`).
+   * In addition, group element labels default to a level 3 heading (e.g. `<h3>Group element label</h3>`).
+   * Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // form title will render as an <h3>
+   * // group element labels will render as an <h4>
+   * featureForm.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   //  label
@@ -578,17 +571,15 @@ class FeatureForm extends Widget {
    * defaults to what is set within the {@link module:esri/form/FormTemplate}.
    *
    * This property was added at 4.16 to provide parity with the {@link module:esri/form/FormTemplate FormTemplate}.
-   * The preferred way to set this property is via
+   * The recommended way to set this property is via
    * the form template's {@link module:esri/form/FormTemplate#title title} property.
-   * The `title` property on the {@link module:esri/widgets/FeatureForm form} or its
-   * {@link module:esri/widgets/FeatureForm/FeatureFormViewModel view model} will eventually
-   * be deprecated in a later release in favor of the setting it within the form
-   * {@link module:esri/form/FormTemplate template}.
    *
    * @name title
    * @instance
    * @type {string}
    * @since 4.16
+   * @see [headingLevel](#headingLevel)
+   * @deprecated since version 4.20. Set it via the {@link module:esri/form/FormTemplate#title FormTemplate.title}.
    */
   @aliasOf("viewModel.title")
   title: string = null;
@@ -684,9 +675,9 @@ class FeatureForm extends Widget {
 
   protected renderForm(): VNode {
     const titleNode = this.title ? (
-      <h2 class={CSS.heading} key="title">
+      <Heading key="title" level={this.headingLevel}>
         {this.title}
-      </h2>
+      </Heading>
     ) : null;
 
     const descriptionNode = this.description ? (
@@ -729,7 +720,7 @@ class FeatureForm extends Widget {
   }
 
   protected renderGroup(inputFieldGroup: InputFieldGroup, index: number): VNode {
-    const { description, label, inputFields: inputs, state } = inputFieldGroup;
+    const { description, inputFields: inputs, label, state } = inputFieldGroup;
 
     const activeInput = this.viewModel.findField(this._activeInputName);
     const isGroupActive = !!(activeInput && activeInput.group === inputFieldGroup);
@@ -771,9 +762,13 @@ class FeatureForm extends Widget {
           tabIndex={sequential ? -1 : 0}
         >
           <div class={CSS.groupTitle}>
-            <h4 class={this.classes(CSS.groupLabel, CSS.heading)} id={labelId}>
+            <Heading
+              class={CSS.groupLabel}
+              id={labelId}
+              level={this.headingLevel + (this.title ? 1 : 0)}
+            >
               {label}
-            </h4>
+            </Heading>
             {descriptionNode}
           </div>
           {!sequential ? <span class={this.classes(toggleIcon, CSS.groupToggleIcon)} /> : null}
@@ -845,6 +840,18 @@ class FeatureForm extends Widget {
     const props = this.getCommonInputProps(inputField);
 
     if (domain?.type === "coded-value" && !readOnly) {
+      if (inputField.editorType === "switch") {
+        if (
+          this._switchFieldsWithInitialIncompatibleValue.has(name) ||
+          value == null ||
+          (inputField.config.onValue !== value && inputField.config.offValue !== value)
+        ) {
+          this._switchFieldsWithInitialIncompatibleValue.add(name);
+        } else {
+          return this.renderSwitchInputField(value, props);
+        }
+      }
+
       if (inputField.editorType === "radio-buttons") {
         return this.renderRadioButtonsInputField(
           value,
@@ -1047,6 +1054,24 @@ class FeatureForm extends Widget {
       <div key={`${props.key}-radio`} class={CSS.inputRadioGroup}>
         {radios}
       </div>
+    );
+  }
+
+  protected renderSwitchInputField(
+    value: FieldValue,
+    props: ReturnType<FeatureForm["getCommonInputProps"]>
+  ): VNode {
+    const inputField = props["data-field"];
+
+    return (
+      <calcite-switch
+        {...props}
+        class={CSS.inputSwitch}
+        switched={value === inputField.config.onValue}
+        onCalciteSwitchChange={(event: CustomEvent) => {
+          this._parseValue(event.currentTarget as HTMLCalciteSwitchElement);
+        }}
+      />
     );
   }
 
@@ -1398,13 +1423,21 @@ class FeatureForm extends Widget {
     this.viewModel.setValue(inputField.name, this._parseDateTimeValue(dateInput, timeInput));
     this._userUpdatedInputFieldNames.add(inputField.name);
   }
-  private _parseValue(input: HTMLInputElement | HTMLSelectElement): FieldValue {
+  private _parseValue(
+    input: HTMLInputElement | HTMLSelectElement | HTMLCalciteSwitchElement
+  ): FieldValue {
     const inputField: InputField = input["data-field"];
     const valueAsText = input.value;
 
+    if (inputField.editorType === "switch" && !(input instanceof HTMLSelectElement)) {
+      return (input as HTMLCalciteSwitchElement).switched
+        ? inputField.config.onValue
+        : inputField.config.offValue;
+    }
+
     const unselectedRadioGroup =
       inputField.editorType === "radio-buttons" &&
-      input.type === "radio" &&
+      (input as Exclude<typeof input, HTMLCalciteSwitchElement>).type === "radio" &&
       !(input as HTMLInputElement).checked;
 
     if (unselectedRadioGroup) {

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/jsonMap","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","../../core/JSONSupport"],(function(e,r,s,o,t,i,c,n,p,u,a,l){"use strict";const d=new c.JSONMap({esriMeters:"meters",esriFeet:"feet",esriKilometers:"kilometers",esriMiles:"miles",esriNauticalMiles:"nautical-miles",esriYards:"yards"},{ignoreUnknown:!1});let S=function(r){function s(e){var s;return(s=r.call(this,e)||this).distance=0,s.units=null,s}return e._inheritsLoose(s,r),s}(l.JSONSupport);return r.__decorate([i.property({json:{write:!0}})],S.prototype,"distance",void 0),r.__decorate([i.property({json:{read:d.read,write:d.write}})],S.prototype,"units",void 0),S=r.__decorate([n.subclass("esri/tasks/support/LinearUnit")],S),S}));
+define(["../../core/deprecate","../../core/Logger","../../rest/support/LinearUnit"],(function(e,r,t){"use strict";const n=r.getLogger("esri.tasks.support.LinearUnit");return e.deprecatedModule(n,"esri.tasks.support.LinearUnit",{replacement:"esri.rest.support.LinearUnit",version:"4.20",warnOnce:!0}),t}));

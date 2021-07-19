@@ -1143,5 +1143,9 @@
     color: $fill-color;
   }
 }
-
-
+.esri-icon-measure-building-height-shadow {
+  &:before {
+    content: unicode($esri-icon-measure-building-height-shadow);
+    color: $fill-color;
+  }
+}

@@ -6,7 +6,7 @@
  * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/OGCFeatureLayer}, and/or
  * {@link module:esri/webdoc/applicationProperties/SearchTable table(s)}. If using a locator with a geocoding service, the
  * [findAddressCandidates](https://developers.arcgis.com/rest/geocode/api-reference/geocoding-find-address-candidates.htm)
- * operation is used, whereas {@link module:esri/tasks/support/Query queries} are used on feature layers.
+ * operation is used, whereas {@link module:esri/rest/support/Query queries} are used on feature layers.
  *
  * By default, the Search widget sets the view on the [Search result](#SearchResult). The level of detail (LOD)
  * at the center of the view depends on the data source, with higher quality data sources returning extents closer to the
@@ -73,8 +73,8 @@ import Portal from "esri/portal/Portal";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import {
@@ -98,7 +98,14 @@ import SearchMessages from "esri/widgets/Search/t9n/Search";
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
 import { VNode } from "esri/widgets/support/interfaces";
-import { keepMenuItemWithinView, messageBundle, storeNode, tsx, vmEvent } from "esri/widgets/support/widget";
+import {
+  isActivationKey,
+  keepMenuItemWithinView,
+  messageBundle,
+  storeNode,
+  tsx,
+  vmEvent
+} from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-search esri-widget",
@@ -375,7 +382,7 @@ class Search extends Widget {
           (!value && !this.get("viewModel.selectedSuggestion.location"));
 
         if (hideActiveMenu) {
-          this.activeMenu = "none";
+          this._clearActiveMenu();
         }
       }),
       watchUtils.on(this, "viewModel.allSources", "change", () => this._watchSourceChanges()),
@@ -429,13 +436,13 @@ class Search extends Widget {
 
   private _searchResultRenderer = new SearchResultRenderer();
 
-  private _relatedTarget: HTMLElement = null;
-
   private _suggestController: AbortController;
 
   private _searchController: AbortController;
 
   private _locateFailed: boolean = null;
+
+  private _container: HTMLDivElement = null;
 
   @property()
   protected get displayedSearchTerm(): string {
@@ -1133,7 +1140,7 @@ class Search extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1180,12 +1187,7 @@ class Search extends Widget {
    * @method
    */
   focus(): void {
-    if (!this._inputNode) {
-      return;
-    }
-
-    this.activeMenu = "suggestion";
-    this._inputNode.focus();
+    this._inputNode?.focus();
     this.emit("search-focus");
   }
 
@@ -1194,13 +1196,8 @@ class Search extends Widget {
    *
    * @method
    */
-  blur(event?: FocusEvent): void {
-    if (!this._inputNode) {
-      return;
-    }
-
-    this._inputNode.blur();
-    this._inputBlur(event);
+  blur(): void {
+    this._inputNode?.blur();
     this.emit("search-blur");
   }
 
@@ -1219,8 +1216,7 @@ class Search extends Widget {
    */
 
   search(searchItem?: SearchItem): Promise<SearchResponse<SearchResults<SearchResult>>> {
-    this.activeMenu = "none";
-
+    this._clearActiveMenu();
     this._cancelSuggest();
     this._cancelSearch();
 
@@ -1236,7 +1232,7 @@ class Search extends Widget {
           return undefined;
         }
 
-        this.activeMenu = "none";
+        this._clearActiveMenu();
         this._searchController = null;
         return response;
       })
@@ -1284,7 +1280,7 @@ class Search extends Widget {
         this._suggestController = null;
 
         if (suggestResponse.numResults) {
-          this.activeMenu = "suggestion";
+          this._openSuggestionMenu();
         }
 
         this._scrollToTopSuggestion();
@@ -1363,7 +1359,7 @@ class Search extends Widget {
         aria-controls={sourceMenuId}
         class={this.classes(CSS.sourcesButton, CSS.button)}
         onclick={this._handleSourcesMenuToggleClick}
-        onblur={this._sourcesButtonBlur}
+        onfocus={this._clearActiveMenu}
         afterCreate={storeNode}
         data-node-ref="_sourceMenuButtonNode"
       >
@@ -1439,7 +1435,18 @@ class Search extends Widget {
     };
 
     return (
-      <div class={this.classes(containerNodeClasses, CSS.container)} key="base-container">
+      <div
+        tabIndex={-1}
+        afterCreate={(el: HTMLDivElement) => {
+          this._container = el;
+          el.addEventListener("focusout", this._removeActiveMenu);
+        }}
+        afterRemoved={(el: HTMLInputElement) => {
+          el.removeEventListener("focusout", this._removeActiveMenu);
+        }}
+        class={this.classes(containerNodeClasses, CSS.container)}
+        key="base-container"
+      >
         {this.renderSourceMenuButton()}
         {this.renderSourcesMenu()}
         {this.renderInputContainer()}
@@ -1456,7 +1463,7 @@ class Search extends Widget {
         class={this.classes(CSS.clearButton, CSS.button)}
         key="esri-search__clear-button"
         onclick={this._handleClearButtonClick}
-        onfocus={this._clearButtonFocus}
+        onfocus={this._clearActiveMenu}
         title={this.messages.clearButtonTitle}
       >
         <span aria-hidden="true" class={CSS.clearIcon} />
@@ -1517,7 +1524,6 @@ class Search extends Widget {
         aria-autocomplete="list"
         aria-expanded={(hasSuggestions && activeMenu === "suggestion").toString()}
         aria-controls={hasSuggestions ? suggestionsMenuId : null}
-        aria-owns={hasSuggestions ? suggestionsMenuId : null}
         aria-haspopup="listbox"
         aria-label={messages.searchButtonTitle}
         bind={this}
@@ -1530,12 +1536,11 @@ class Search extends Widget {
         id={inputId}
         role="combobox"
         onkeyup={this._handleInputKeyup}
-        onclick={this._handleInputClick}
+        onclick={this._openSuggestionMenu}
         oninput={this._handleInputPaste}
         onpaste={this._handleInputPaste}
         afterCreate={storeNode}
         data-node-ref="_inputNode"
-        onfocusout={this._storeRelatedTarget}
         onfocus={this.focus}
         onblur={this.blur}
         title={searchTerm ? "" : placeholder}
@@ -1862,38 +1867,23 @@ class Search extends Widget {
 
     const sourceIndex = item["data-source-index"] as number;
     this.viewModel.activeSourceIndex = sourceIndex;
-    this.activeMenu = "none";
+    this._clearActiveMenu();
     this._sourceMenuButtonNode?.focus();
   }
 
-  private _sourcesButtonBlur(event: FocusEvent): void {
-    const relatedTarget = event && (event.relatedTarget as HTMLElement);
-    this._removeActiveMenu(relatedTarget, this._sourceListNode);
-  }
-
-  private _inputBlur(event: FocusEvent): void {
-    const relatedTarget = event && (event.relatedTarget as HTMLElement);
-    this._removeActiveMenu(
-      relatedTarget ? relatedTarget : this._relatedTarget,
-      this._suggestionListNode
-    );
-  }
-
-  private _storeRelatedTarget(event: FocusEvent): void {
-    this._relatedTarget = event.relatedTarget as HTMLElement;
-  }
-
-  private _clearButtonFocus(): void {
+  private _clearActiveMenu = (): void => {
     this.activeMenu = "none";
-  }
+  };
 
-  private _removeActiveMenu(targetNode: HTMLElement, parentNode: HTMLElement): void {
-    if (!targetNode || (targetNode && parentNode && parentNode.contains(targetNode))) {
+  private _removeActiveMenu = (event: FocusEvent): void => {
+    const relatedTarget = event.relatedTarget as HTMLElement;
+
+    if (relatedTarget && this._container?.contains(relatedTarget)) {
       return;
     }
 
-    this.activeMenu = "none";
-  }
+    this._clearActiveMenu();
+  };
 
   private _cancelSuggest(): void {
     if (this._suggestController) {
@@ -1929,7 +1919,7 @@ class Search extends Widget {
       this._cancelSuggest();
 
       if (key === "Escape") {
-        this.activeMenu = "none";
+        this._clearActiveMenu();
       }
 
       return;
@@ -1947,7 +1937,7 @@ class Search extends Widget {
 
     if (list?.length) {
       if (this.activeMenu !== "suggestion") {
-        this.activeMenu = "suggestion";
+        this._openSuggestionMenu();
       }
 
       if (isNavigationKey) {
@@ -2016,7 +2006,7 @@ class Search extends Widget {
     }
   }
 
-  private _handleInputClick(): void {
+  private _openSuggestionMenu(): void {
     this.activeMenu = "suggestion";
   }
 
@@ -2037,7 +2027,7 @@ class Search extends Widget {
   private _handleSourceMenuKeydown(event: KeyboardEvent): void {
     const key = eventKey(event);
 
-    if (key === " " || key === "Enter") {
+    if (isActivationKey(key)) {
       event.preventDefault();
       const list = this._sourceListNode.getElementsByTagName("li");
       const item = list[this._activeMenuItemIndex];
@@ -2061,7 +2051,7 @@ class Search extends Widget {
     }
 
     if (key === "Escape") {
-      this.activeMenu = "none";
+      this._clearActiveMenu();
       this._sourceMenuButtonNode?.focus();
       return;
     }

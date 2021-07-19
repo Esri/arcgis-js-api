@@ -8,7 +8,7 @@
  * and [content](#content) properties.
  * When  content is set directly on the Popup instance it is not tied to a specific feature or layer.
  *
- * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/sandbox.html?sample=intro-popup)
+ * [![popup-basic-example](../assets/img/apiref/widgets/popup-basic.png)](../sample-code/sandbox/?sample=intro-popup)
  *
  * In the image above, the text "Marriage in NY, Zip Code: 11385" is the popup's `title`. The remaining text is
  * its `content`. A dock button ![popup-dock-btn](../assets/img/apiref/widgets/popup-dock.png) may also be available in the
@@ -57,7 +57,6 @@ import { substitute } from "esri/intl";
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles from "esri/core/Handles";
 import Logger from "esri/core/Logger";
@@ -76,12 +75,13 @@ import Point from "esri/geometry/Point";
 import type CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { IMapView } from "esri/views/IMapView";
 import { Breakpoints, FetchPopupFeaturesResult } from "esri/views/interfaces";
-import { IPopup, ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
+import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
 import Feature from "esri/widgets/Feature";
+import { IPopup } from "esri/widgets/IPopup";
 import Spinner from "esri/widgets/Spinner";
 import Widget from "esri/widgets/Widget";
 
@@ -114,6 +114,7 @@ import type PopupMessages from "esri/widgets/Popup/t9n/Popup";
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, tsx, vmEvent, messageBundle, storeNode } from "esri/widgets/support/widget";
 import * as widgetUtils from "esri/widgets/support/widgetUtils";
@@ -256,7 +257,7 @@ function buildKey(element: string, index?: number): string {
  * @see [actions](#actions)
  * @example
  * // Defines an action to zoom out from the selected feature
- * var zoomOutAction = {
+ * let zoomOutAction = {
  *  // This text is displayed as a tooltip
  *  title: "Zoom out",
  *  // The ID used to reference this action in the event handler
@@ -310,8 +311,8 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._addSelectedFeatureIndexHandle();
 
@@ -350,7 +351,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
         this._updateDockEnabledForViewSize(newSize, oldSize)
       ),
 
-      watchUtils.watch<MapView | ISceneView>(this, "viewModel.view", (newView, oldView) =>
+      watchUtils.watch<IMapView | ISceneView>(this, "viewModel.view", (newView, oldView) =>
         this._viewChange(newView, oldView)
       ),
 
@@ -620,7 +621,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    *
    * @example
    * // Defines an action to zoom out from the selected feature
-   * var zoomOutAction = {
+   * let zoomOutAction = {
    *   // This text is displayed as a tooltip
    *   title: "Zoom out",
    *   // The ID by which to reference the action in the event handler
@@ -1043,7 +1044,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * @example
    * // When setting the features property, the graphics pushed to this property
    * // must have a PopupTemplate set.
-   * var g1 = new Graphic();
+   * let g1 = new Graphic();
    * g1.popupTemplate = new PopupTemplate({
    *   title: "Results title",
    *   content: "Results: {ATTRIBUTE_NAME}"
@@ -1051,41 +1052,11 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * // Set the graphics as an array to the popup instance. The content and title of
    * // the popup will be set depending on the PopupTemplate of the graphics.
    * // Each graphic may share the same PopupTemplate or have a unique PopupTemplate
-   * var graphics = [g1, g2, g3, g4, g5];
+   * let graphics = [g1, g2, g3, g4, g5];
    * view.popup.features = graphics;
    */
   @aliasOf("viewModel.features")
   features: Graphic[] = null;
-
-  //----------------------------------
-  //  featureNavigationEnabled
-  //----------------------------------
-
-  /**
-   * Shows pagination for the popup if available. This allows the user to
-   * scroll through various [selected features](#features) using either
-   * arrows
-   *
-   * ![popup-pagination-arrows](../assets/img/apiref/widgets/popup-pagination-arrows.png)
-   *
-   * or a menu.
-   *
-   * ![popup-feature-menu](../assets/img/apiref/widgets/popup-pagination-menu.png)
-   *
-   * @name featureNavigationEnabled
-   * @instance
-   * @type {Boolean}
-   * @default
-   * @deprecated since version 4.15. Use {@link module:esri/widgets/Popup#visibleElements Popup.visibleElements.featureNavigation} instead.
-   */
-  @property()
-  set featureNavigationEnabled(value: boolean) {
-    deprecatedProperty(logger, "featureNavigationEnabled", {
-      replacement: "visibleElements.featureNavigation",
-      version: "4.15"
-    });
-    this.visibleElements = { ...this.visibleElements, featureNavigation: value };
-  }
 
   //----------------------------------
   //  goToOverride
@@ -1093,6 +1064,31 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the [title](#title) of the popup.
+   * By default, the title is rendered
+   * as a level 2 heading (e.g. `<h2>Popup title</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // popup title will render as an <h3>
+   * popup.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   //  highlightEnabled
@@ -1287,7 +1283,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     readOnly: true
   })
   get selectedFeatureWidget(): Feature {
-    const { _feature, visibleElements } = this;
+    const { _feature, visibleElements, headingLevel } = this;
     const { selectedFeatureViewModel } = this.viewModel;
     const modifiedVisibleElements = { ...visibleElements, ...{ title: false } };
 
@@ -1300,6 +1296,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
       _feature.visibleElements = modifiedVisibleElements;
     } else {
       this._feature = new Feature({
+        headingLevel: headingLevel + 1,
         viewModel: selectedFeatureViewModel,
         visibleElements: modifiedVisibleElements
       });
@@ -1336,6 +1333,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    *
    * @name title
    * @instance
+   * @see [headingLevel](#headingLevel)
    *
    * @type {String}
    *
@@ -1376,7 +1374,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1419,9 +1417,10 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * The visible elements that are displayed within the widget.
    * This provides the ability to turn individual elements of the widget's display on/off.
    *
+   *
    * @typedef module:esri/widgets/Popup~VisibleElements
    *
-   * @property {boolean} [featureNavigation] - Indicates whether to the feature navigation will be displayed. Default value is `true`.
+   * @property {boolean} [featureNavigation] - Indicates whether pagination for feature navigation will be displayed. Default value is `true`. This allows the user to scroll through various [selected features](#features) using pagination arrows.
    * @property {boolean} [closeButton] - Indicates whether to display a close button on the popup dialog. Default value is `true`.
    */
 
@@ -1944,7 +1943,9 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
       [CSS.headerContainerButton]: collapsible
     };
 
-    const titleNode = <h2 class={CSS.headerTitle} innerHTML={title} />;
+    const titleNode = (
+      <Heading level={this.headingLevel} class={CSS.headerTitle} innerHTML={title} />
+    );
 
     const containerNode = collapsible ? (
       <button
@@ -2029,13 +2030,8 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   }
 
   protected renderActionsMenuButton(): VNode {
-    const {
-      actionsMenuId,
-      actionsMenuButtonId,
-      actionsMenuOpen,
-      dividedActions,
-      messagesCommon
-    } = this;
+    const { actionsMenuId, actionsMenuButtonId, actionsMenuOpen, dividedActions, messagesCommon } =
+      this;
 
     const actionsMenuLabel = actionsMenuOpen ? messagesCommon.close : messagesCommon.open;
 
@@ -2164,7 +2160,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
 
     return (
       <section key={buildKey("menu")} class={CSS.featureMenu}>
-        <h2 class={CSS.featureMenuHeader}>{infoText}</h2>
+        <strong class={CSS.featureMenuHeader}>{infoText}</strong>
         <nav
           bind={this}
           class={CSS.featureMenuViewport}
@@ -2700,7 +2696,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
       return;
     }
 
-    const view = this.get<MapView | ISceneView>("viewModel.view");
+    const view = this.get<IMapView | ISceneView>("viewModel.view");
     this._createSpinner(view);
   }
 
@@ -2775,7 +2771,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
 
   private _isScreenLocationWithinView(
     screenLocation: ScreenPoint,
-    view: MapView | ISceneView
+    view: IMapView | ISceneView
   ): boolean {
     return (
       screenLocation.x > -1 &&
@@ -3020,7 +3016,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   private _calculateAlignmentPosition(
     x: number,
     y: number,
-    view: MapView | ISceneView,
+    view: IMapView | ISceneView,
     width: number
   ): PopupPosition {
     const { currentAlignment, _pointerOffsetInPx: pointerOffset } = this;
@@ -3117,7 +3113,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     };
   }
 
-  private _viewChange(newView: MapView | ISceneView, oldView: MapView | ISceneView): void {
+  private _viewChange(newView: IMapView | ISceneView, oldView: IMapView | ISceneView): void {
     if (newView && oldView) {
       this.close();
       this.clear();
@@ -3126,7 +3122,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
 
   private _viewReadyChange(isReady: boolean, wasReady: boolean): void {
     if (isReady) {
-      const view = this.get<MapView | ISceneView>("viewModel.view");
+      const view = this.get<IMapView | ISceneView>("viewModel.view");
       this._wireUpView(view);
       return;
     }
@@ -3137,7 +3133,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     }
   }
 
-  private _wireUpView(view?: MapView | ISceneView): void {
+  private _wireUpView(view?: IMapView | ISceneView): void {
     this._destroySpinner();
 
     if (!view) {
@@ -3351,7 +3347,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     }
   }
 
-  private _createSpinner(view: MapView | ISceneView): void {
+  private _createSpinner(view: IMapView | ISceneView): void {
     if (!view) {
       return;
     }

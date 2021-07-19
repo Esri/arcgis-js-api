@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../geometry/support/jsonUtils","../../request","../utils","./utils"],(function(e,t,s,r,i){"use strict";async function n(e,n,o,a){const p=n[0].spatialReference,y=r.parseUrl(e),c={...y.query,f:"json",sr:JSON.stringify(p.toJSON()),geometries:JSON.stringify(i.encodeGeometries(n)),geometry:JSON.stringify({geometryType:t.getJsonType(o),geometry:o.toJSON()})},f=r.asValidOptions(c,a);return s(y.path+"/intersect",f).then((({data:e})=>(e.geometries||[]).map((e=>t.fromJSON(e).set({spatialReference:p})))))}e.intersect=n,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../geometry/support/jsonUtils","../utils","./utils"],(function(e,t,r,s,n,i){"use strict";function o(e,t,r,s){return p.apply(this,arguments)}function p(){return(p=t._asyncToGenerator((function*(e,t,o,p){const u=t[0].spatialReference,a=n.parseUrl(e),l={...a.query,f:"json",sr:JSON.stringify(u.toJSON()),geometries:JSON.stringify(i.encodeGeometries(t)),geometry:JSON.stringify({geometryType:s.getJsonType(o),geometry:o.toJSON()})},c=n.asValidOptions(l,p);return r(a.path+"/intersect",c).then((({data:e})=>(e.geometries||[]).map((e=>s.fromJSON(e).set({spatialReference:u})))))}))).apply(this,arguments)}e.intersect=o,Object.defineProperty(e,"__esModule",{value:!0})}));

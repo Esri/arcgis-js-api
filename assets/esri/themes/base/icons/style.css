@@ -1,16 +1,17 @@
 @font-face {
-  font-family: 'CalciteWebCoreIcons';
-  src:
-    url('fonts/CalciteWebCoreIcons.ttf?qt9ftt') format('truetype'),
-    url('fonts/CalciteWebCoreIcons.woff?qt9ftt') format('woff'),
-    url('fonts/CalciteWebCoreIcons.svg?qt9ftt#CalciteWebCoreIcons') format('svg');
+  font-family: "CalciteWebCoreIcons";
+  src: url("fonts/CalciteWebCoreIcons.ttf?qt9ftt") format("truetype"),
+    url("fonts/CalciteWebCoreIcons.woff?qt9ftt") format("woff"),
+    url("fonts/CalciteWebCoreIcons.svg?qt9ftt#CalciteWebCoreIcons")
+      format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="esri-icon-"], [class*=" esri-icon-"] {
+[class^="esri-icon-"],
+[class*=" esri-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'CalciteWebCoreIcons' !important;
+  font-family: "CalciteWebCoreIcons" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -513,16 +514,16 @@
 }
 .esri-icon-zoom-in-magnifying-glass:before {
   content: "\e67a";
-  color: #6e6e6e; }
-
+  color: #6e6e6e;
+}
 .esri-icon-search:before {
   content: "\e67b";
   color: inherit;
 }
 .esri-icon-zoom-out-magnifying-glass:before {
   content: "\e67c";
-  color: #6e6e6e; }
-
+  color: #6e6e6e;
+}
 .esri-icon-locked:before {
   content: "\e67d";
   color: inherit;
@@ -763,4 +764,7 @@
   content: "\e915";
   color: inherit;
 }
-
+.esri-icon-measure-building-height-shadow:before {
+  content: "\e916";
+  color: inherit;
+}

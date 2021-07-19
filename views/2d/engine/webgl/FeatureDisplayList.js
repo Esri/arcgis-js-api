@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers"],(function(t,e){"use strict";let n=function(){function t(t,e,n,i,s){this.target=t,this.geometryType=e,this.materialKey=n,this.indexFrom=i,this.indexCount=s}var n=t.prototype;return n.extend=function(t){this.indexCount+=t},n.draw=function(t,e,n){this.target.draw(t,e,n,this.indexFrom,this.indexCount)},e._createClass(t,[{key:"indexEnd",get:function(){return this.indexFrom+this.indexCount}}]),t}(),i=function(){function t(t){this._infos=new Array,this._target=t}t.from=function(e,n){const i=new t(e);for(;n.next();)i.add(n);return i};var i=t.prototype;return i.add=function(t){const{materialKey:e,indexFrom:i,indexCount:s}=t;if(this._infos.length&&t.materialKey===this._last.materialKey&&t.indexFrom===this._last.indexEnd)this._last.extend(s);else{const t=new n(this._target,this.geometryType,e,i,s);this._infos.push(t)}},i.forEach=function(t){for(const e of this._infos)t(e)},e._createClass(t,[{key:"_last",get:function(){return this._infos[this._infos.length-1]}}]),t}();t.FeatureDisplayList=i,t.FeatureDisplayListInfo=n,Object.defineProperty(t,"__esModule",{value:!0})}));

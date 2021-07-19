@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl"],(function(e,i,o,t,a,r){"use strict";function n(e){const n=new o.ShaderBuilder,l=0===e.output,d=1===e.output,c=4===e.output;return n.extensions.add("GL_OES_standard_derivatives"),n.include(t.Slice,e),n.attributes.add("position","vec3"),n.attributes.add("color","vec3"),n.vertex.uniforms.add("uModelViewMatrix","mat4").add("uProjectionMatrix","mat4").add("uScreenMinMaxSize","vec2").add("uPointScale","vec2").add("uClipMin","vec3").add("uClipMax","vec3"),d?(n.vertex.uniforms.add("nearFar","vec2"),n.varyings.add("depth","float")):4!==e.output&&n.varyings.add("vColor","vec3"),n.vertex.code.add(i.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,o,t,a,r){"use strict";function n(e){const n=new r.ShaderBuilder,l=0===e.output,d=1===e.output,c=4===e.output;return n.extensions.add("GL_OES_standard_derivatives"),n.include(i.Slice,e),n.attributes.add("position","vec3"),n.attributes.add("color","vec3"),n.vertex.uniforms.add("uModelViewMatrix","mat4").add("uProjectionMatrix","mat4").add("uScreenMinMaxSize","vec2").add("uPointScale","vec2").add("uClipMin","vec3").add("uClipMax","vec3"),d?(n.vertex.uniforms.add("nearFar","vec2"),n.varyings.add("depth","float")):4!==e.output&&n.varyings.add("vColor","vec3"),n.vertex.code.add(a.glsl`
     void main(void) {
       // Move clipped points outside of clipspace
       if (position.x < uClipMin.x || position.y < uClipMin.y || position.z < uClipMin.z ||
@@ -23,8 +23,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       float pointSize = uPointScale.x;
       vec4 position = uProjectionMatrix * camera;
-     ${e.drawScreenSize?i.glsl`
-      float clampedScreenSize = pointSize;`:i.glsl`
+     ${e.drawScreenSize?a.glsl`
+      float clampedScreenSize = pointSize;`:a.glsl`
       float pointRadius = 0.5 * pointSize;
       vec4 cameraOffset = camera + vec4(0.0, pointRadius, 0.0, 0.0);
       vec4 positionOffset = uProjectionMatrix * cameraOffset;
@@ -42,10 +42,10 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
      gl_PointSize = clampedScreenSize;
      gl_Position = position;
 
-     ${d?i.glsl`depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);`:""}
-     ${l?i.glsl`vColor = color;`:""}
+     ${d?a.glsl`depth = (-camera.z - nearFar[0]) / (nearFar[1] - nearFar[0]);`:""}
+     ${l?a.glsl`vColor = color;`:""}
     }
-  `),n.fragment.include(a.RgbaFloatEncoding,e),c&&n.include(r.OutputHighlight),n.fragment.code.add(i.glsl`
+  `),n.fragment.include(t.RgbaFloatEncoding,e),c&&n.include(o.OutputHighlight),n.fragment.code.add(a.glsl`
     void main(void) {
       vec2 vOffset = gl_PointCoord - vec2(0.5, 0.5);
       float r2 = dot(vOffset, vOffset);
@@ -53,8 +53,8 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       if (r2 > 0.25) {
         discard;
       }
-      ${d?i.glsl`gl_FragColor = float2rgba(depth);`:""}
-      ${c?i.glsl`outputHighlight();`:""}
-      ${l?i.glsl`gl_FragColor = vec4(vColor, 1.0);`:""}
+      ${d?a.glsl`gl_FragColor = float2rgba(depth);`:""}
+      ${c?a.glsl`outputHighlight();`:""}
+      ${l?a.glsl`gl_FragColor = vec4(vColor, 1.0);`:""}
     }
   `),n}var l=Object.freeze({__proto__:null,build:n});e.PointRendererShader=l,e.build=n}));

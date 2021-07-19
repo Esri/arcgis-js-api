@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../core/jsonMap"],(function(e,n){"use strict";const o=new n.JSONMap({PDF:"pdf",PNG32:"png32",PNG8:"png8",JPG:"jpg",GIF:"gif",EPS:"eps",SVG:"svg",SVGZ:"svgz"}),p=o.fromJSON.bind(o),s=o.toJSON.bind(o);e.fromJSON=p,e.toJSON=s,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../rest/support/fileFormat"],(function(e,t){"use strict";e.fromJSON=t.fromJSON,e.toJSON=t.toJSON,Object.defineProperty(e,"__esModule",{value:!0})}));

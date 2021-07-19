@@ -1,0 +1,223 @@
+@mixin shadowAccumulation() {
+  $width: 200;
+  $slider-thumb-size: 8px;
+  $tooltip-arrow-size: 8px;
+
+  .esri-shadow-accumulation {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: $width;
+    padding: $cap-spacing $side-spacing;
+    gap: $cap-spacing;
+
+    &__time-range {
+      display: flex;
+      flex-direction: column;
+      font-size: $font-size--tiny-daylight;
+
+      .esri-slider {
+        // Fit slider content since default API slider doesn't do it for us.
+        padding-top: $slider-thumb-size;
+        padding-bottom: 48px;
+        padding-inline: $side-spacing;
+
+        .esri-slider__label,
+        .esri-slider__tick-label {
+          font-size: $font-size--tiny-daylight;
+        }
+
+        .esri-slider__tick {
+          width: 2px;
+        }
+
+        .esri-slider__segment--interactive {
+          background: $button-color;
+        }
+      }
+
+      .esri-slider .esri-slider__tick-label &__ampm {
+        font-size: $font-size--tinier-daylight;
+      }
+
+      .esri-slider--horizontal &__primary-tick.esri-slider__tick {
+        height: 8px;
+      }
+
+      .esri-slider--horizontal &__primary-tick-label {
+        line-height: normal;
+        margin-top: 14px;
+        text-align: center;
+      }
+
+      &__indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $side-spacing--half;
+        margin-bottom: $cap-spacing--half;
+      }
+    }
+
+    &__tz-picker {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      &__select {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        z-index: 0;
+        font-size: $font-size--tiny;
+        font-weight: $font-weight--medium;
+        gap: $side-spacing--eighth;
+        padding: $cap-spacing--eighth $side-spacing--eighth;
+        padding-inline-start: $cap-spacing--half; // More padding at the start because at the end we already have the chevron icon
+        border: solid 1px var(--calcite-ui-border-1);
+
+        calcite-icon {
+          vertical-align: text-top;
+        }
+      }
+
+      &__hidden-select:focus ~ &__select {
+        outline: 2px solid var(--calcite-ui-brand);
+        outline-offset: -2px;
+      }
+
+      // Hidden and focusable select above the one where we display the short
+      // timezone name.
+      // TBD: should be replaced once we can use the a calcite-dropdown
+      &__hidden-select {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        cursor: pointer;
+      }
+    }
+
+    &__date-picker-container:not(:first-of-type) {
+      margin-top: $cap-spacing--half;
+    }
+
+    &__date-picker-container .esri-date-picker {
+      display: block;
+      flex-grow: 1;
+    }
+
+    &__visualization {
+      display: flex;
+      flex-direction: column;
+      margin-top: $cap-spacing;
+
+      &__select {
+        margin-bottom: $cap-spacing;
+      }
+
+      &__config--hidden {
+        display: none;
+      }
+    }
+
+    &__threshold-config,
+    &__duration-config,
+    &__discrete-config {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+
+      calcite-label {
+        // Don't make the labels full width so that one can't click in white space to focus elements.
+        width: max-content;
+        display: block;
+
+        // Labels shouldn't really be focusable, but we had to make the color
+        // picker label focusable with tabindex=-1 (not tabbable). Without it,
+        // Safari does not include the label in FocusEvent.relatedTarget which
+        // we use to determine whether the color picker popover should be closed
+        // right away or not.
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
+    &__threshold-config {
+      .esri-slider {
+        // Fit slider content since default API slider doesn't do it for us.
+        padding-top: $slider-thumb-size;
+        padding-inline: $slider-thumb-size;
+        padding-bottom: 25px;
+
+        .esri-slider__label,
+        .esri-slider__tick-label {
+          font-size: $font-size--tiny;
+        }
+
+        // Move labels and ticks up to make slider more compact.
+        .esri-slider__tick-label {
+          margin-top: 12px;
+        }
+        .esri-slider__tick {
+          top: -4px;
+        }
+      }
+    }
+
+    &__duration-config {
+      &__radio-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        calcite-button {
+          height: 35px; // Match height of `<calcite-select>`
+        }
+      }
+    }
+
+    &__tooltip {
+      font-size: $font-size--small;
+      color: $font-color;
+
+      &__content {
+        position: absolute;
+        width: max-content;
+        padding: $cap-spacing--half $side-spacing--half;
+        background: $background-color;
+
+        // center horizontally and place it above the mouse pointer
+        transform: translate(-50%, -100%);
+        margin-top: -$tooltip-arrow-size - $cap-spacing--third;
+
+        // Tooltip arrow
+        &:after {
+          position: absolute;
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+
+          border-top: $tooltip-arrow-size solid $background-color;
+          border-bottom: $tooltip-arrow-size solid transparent;
+          border-right: $tooltip-arrow-size solid transparent;
+          border-left: $tooltip-arrow-size solid transparent;
+
+          // Place arrow below the tooltip
+          bottom: 1px; // make the arrow overlap so the "seam" isn't noticeable
+          left: 50%;
+          transform: translate(-50%, 100%);
+        }
+      }
+    }
+  }
+}
+
+@if $include_ShadowAccumulation==true {
+  @include shadowAccumulation();
+}

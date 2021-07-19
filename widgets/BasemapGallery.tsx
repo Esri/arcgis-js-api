@@ -21,7 +21,7 @@
  * @see module:esri/widgets/BasemapGallery/BasemapGalleryViewModel
  *
  * @example
- * var basemapGallery = new BasemapGallery({
+ * let basemapGallery = new BasemapGallery({
  *   view: view
  * });
  * // Add widget to the top right corner of the view
@@ -44,8 +44,8 @@ import { on, whenOnce } from "esri/core/watchUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -61,6 +61,7 @@ import BasemapGalleryItem from "esri/widgets/BasemapGallery/support/BasemapGalle
 import BasemapGalleryMessages from "esri/widgets/BasemapGallery/t9n/BasemapGallery";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
@@ -79,9 +80,23 @@ const CSS = {
   widgetIcon: "esri-icon-basemap",
 
   // common
-  disabled: "esri-disabled",
-  header: "esri-widget__heading"
+  disabled: "esri-disabled"
 };
+
+type BasemapGalleryProperties = Partial<
+  Pick<
+    BasemapGallery,
+    | "activeBasemap"
+    | "container"
+    | "disabled"
+    | "headingLevel"
+    | "iconClass"
+    | "label"
+    | "source"
+    | "view"
+    | "viewModel"
+  >
+>;
 
 @subclass("esri.widgets.BasemapGallery")
 class BasemapGallery extends Widget {
@@ -100,12 +115,12 @@ class BasemapGallery extends Widget {
    *
    * @example
    * // typical usage
-   * var basemapGallery = new BasemapGallery({
+   * let basemapGallery = new BasemapGallery({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: BasemapGalleryProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -170,6 +185,31 @@ class BasemapGallery extends Widget {
    */
   @property()
   disabled: boolean = false;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the message "No basemaps available" when no basemaps
+   * are available in the BasemapGallery. By default, this message is rendered
+   * as level 2 headings (e.g. `<h2>No basemaps available</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // "No basemaps available" will render as an <h3>
+   * basemapGallery.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   //  iconClass
@@ -277,7 +317,7 @@ class BasemapGallery extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -325,7 +365,7 @@ class BasemapGallery extends Widget {
       </ul>
     ) : (
       <div class={CSS.emptyMessage} key="esri-basemap-gallery__empty-message">
-        <h2 class={CSS.header}>{this.messages.noBasemaps}</h2>
+        <Heading level={this.headingLevel}>{this.messages.noBasemaps}</Heading>
       </div>
     );
 

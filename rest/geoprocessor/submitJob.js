@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./GPOptions","./utils","../../tasks/support/JobInfo"],(function(t,e,o,s){"use strict";async function n(t,n,r,u){return r=e.from(r),o.constructRequest(t,"submitJob",r,n,u).then((e=>{const o=s.fromJSON(e.data);return o.sourceUrl=t,o}))}t.submitJob=n,Object.defineProperty(t,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","./GPOptions","./utils","../support/JobInfo"],(function(t,e,n,r,o){"use strict";function u(t,e,n,r){return s.apply(this,arguments)}function s(){return(s=e._asyncToGenerator((function*(t,e,u,s){return u=n.from(u||{}),r.constructRequest(t,"submitJob",u,e,s).then((e=>{const n=o.fromJSON(e.data);return n.sourceUrl=t,n}))}))).apply(this,arguments)}t.submitJob=u,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -1,0 +1,1 @@
+{"widgetLabel":"累積陰影","timeLabel":"時間範圍","timeRange":"{start} - {end}","visualizationLabel":"視覺化","threshold":{"label":"高於閾值的區域","colorLabel":"顏色","valueLabel":"閾值"},"duration":{"label":"陰影持續總時間","colorLabel":"顏色","modeLabel":"模式","continuousLabel":"連續","hourlyLabel":"每小時"},"discrete":{"label":"分離陰影","colorLabel":"顏色","intervalLabel":"時間間隔"},"timeInShadow":"陰影中的總時間: {duration}"}

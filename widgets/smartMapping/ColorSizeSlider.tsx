@@ -128,6 +128,8 @@ const CSS = {
   rampElement: "esri-color-size-slider__ramp",
   sliderContainer: "esri-color-size-slider__slider-container",
   histogramContainer: "esri-color-size-slider__histogram-container",
+  primaryHandle: "esri-color-size-slider--primary-handle",
+  track: "esri-color-size-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -163,8 +165,8 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    *   ]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -410,7 +412,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    *   it a valid [container](#container).
    *
    * @example
-   * var params = {
+   * let params = {
    *   layer: layer,
    *   basemap: map.basemap,
    *   field: "POP",
@@ -435,7 +437,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    *     });
    *   })
    *   .then(function(histogramResult) {
-   *     var slider = ColorSizeSlider.fromRendererResult(rendererResult, histogramResult);
+   *     let slider = ColorSizeSlider.fromRendererResult(rendererResult, histogramResult);
    *     slider.container = "slider";
    *   });
    */
@@ -528,7 +530,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    *   method.
    *
    * @example
-   * var params = {
+   * let params = {
    *   layer: layer,
    *   basemap: map.basemap,
    *   field: "POP",
@@ -777,10 +779,12 @@ class ColorSizeSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { label, primaryHandleEnabled, state, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.primaryHandle]: primaryHandleEnabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (
@@ -839,8 +843,9 @@ class ColorSizeSlider extends SmartMappingSliderBase {
       widths.reverse();
     }
 
+    const valuesClone = values.slice().sort((a, b) => (a > b ? 1 : -1));
     const [bottomWidth, topWidth] = widths;
-    const [bottomValue, topValue] = values;
+    const [bottomValue, topValue] = valuesClone;
 
     const path = primaryHandleEnabled
       ? getDynamicPathForSizeStops({

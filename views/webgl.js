@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./webgl/context-util","./webgl/Program","./webgl/BufferObject","./webgl/Texture","./webgl/VertexArrayObject","./webgl/Renderbuffer","./webgl/FramebufferObject","./webgl/programUtils","./webgl/ProgramCache","./webgl/RenderingContext","./webgl/ShaderCompiler"],(function(e,r,t,a,b,g,l,o,f,n,c,i){"use strict";e.createContextOrErrorHTML=r.createContextOrErrorHTML,e.Program=t,e.BufferObject=a,e.Texture=b,e.VertexArrayObject=g,e.Renderbuffer=l,e.FramebufferObject=o,e.createProgram=f.createProgram,e.glslifyDefineMap=f.glslifyDefineMap,e.ProgramCache=n,e.RenderingContext=c,e.ShaderCompiler=i,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./webgl/BufferObject","./webgl/FramebufferObject","./webgl/Program","./webgl/ProgramCache","./webgl/Renderbuffer","./webgl/RenderingContext","./webgl/ShaderCompiler","./webgl/Texture","./webgl/VertexArrayObject","./webgl/programUtils","./webgl/context-util"],(function(e,r,t,a,g,b,l,o,f,n,c,i){"use strict";e.BufferObject=r,e.FramebufferObject=t,e.Program=a.Program,e.ProgramCache=g,e.Renderbuffer=b,e.RenderingContext=l.default,e.ShaderCompiler=o,e.Texture=f,e.VertexArrayObject=n,e.createProgram=c.createProgram,e.glslifyDefineMap=c.glslifyDefineMap,e.createContextOrErrorHTML=i.createContextOrErrorHTML,Object.defineProperty(e,"__esModule",{value:!0})}));

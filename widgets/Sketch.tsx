@@ -29,7 +29,7 @@
  * Gesture | Action |
  * ---------|---------|
  * Left-click | Adds a point graphic at the pointer location. |
- * C | Adds a point graphic at the pointer location. |
+ * Enter | Adds a point graphic at the pointer location. |
  *
  * #### Creating polyline and polygon graphics
  *
@@ -37,10 +37,11 @@
  * ---------|---------|
  * Left-click | Adds a vertex at the pointer location.|
  * Left-drag | Adds a vertex for each pointer move. |
- * F | Adds a vertex to the polyline or polygon graphic. |
- * C | Completes the polyline or polygon graphic sketch. |
+ * F | Adds a vertex to the polyline or polygon graphic. Completes the `rectangle` or `circle` polygon graphic in [`click`](#defaultCreateOptions) mode.|
+ * Enter | Completes the polyline or polygon graphic sketch. |
  * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
  * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
+ * Ctrl | Toggle snapping dependent on the configuration in {@link  module:esri/widgets/Sketch/SketchViewModel#snappingOptions snappingOptions}. |
  * Spacebar+Left-drag | Pan the view while creating a polyline or polygon graphic.
  * Left-click on the first vertex | Completes the polygon graphic sketch. |
  *
@@ -51,9 +52,9 @@
  * Gesture | Action |
  * ------- | ------ |
  * Left-click+Drag | Creates a `rectangle` graphic with dimensions based on the bounding box between initial click and cursor location. Creates a `circle` graphic with radius based on the distance between initial click and cursor location. |
- * Ctrl+Left-click+Drag | Changes the shape from a `rectangle` to a `square` or from a `circle` to an `ellipse`. |
+ * Shift+Left-click+Drag | Changes the shape from a `rectangle` to a `square` or from a `circle` to an `ellipse`. |
  * Alt+Left-click+Drag | Creates a `rectangle` graphic with a center at initial click, and dimensions based on the distance between the initial click to the cursor location. Creates a `circle` graphic with a radius based on the bounding box between the initial click and the cursor location.
- * Ctrl+Alt+Left-click+Drag | Combines the behavior described above. |
+ * Shift+Alt+Left-click+Drag | Combines the behavior described above. |
  *
  * <a name="update-graphics"></a>
  * #### Updating graphics
@@ -146,7 +147,7 @@
  * @example
  * // Create a new instance of sketch widget and set
  * // its required parameters
- * var sketch = new Sketch({
+ * let sketch = new Sketch({
  *   layer: graphicsLayer,
  *   view: view
  * });
@@ -173,6 +174,8 @@ import Graphic from "esri/widgets/../Graphic";
 // esri.core
 import Collection from "esri/core/Collection";
 import { eventKey } from "esri/core/events";
+import { handlesGroup } from "esri/core/handleUtils";
+import { destroyMaybe, isNone, Maybe, removeMaybe } from "esri/core/maybe";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, subclass, property } from "esri/core/accessorSupport/decorators";
@@ -181,8 +184,8 @@ import { aliasOf, cast, subclass, property } from "esri/core/accessorSupport/dec
 import GraphicsLayer from "esri/widgets/../layers/GraphicsLayer";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.views.interactive.snapping
 import SnappingOptions from "esri/views/interactive/snapping/SnappingOptions";
@@ -211,7 +214,7 @@ import SketchMessages from "esri/widgets/Sketch/t9n/Sketch";
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import Selector from "esri/widgets/support/Selector";
-import { isRTL, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
+import { isRTL, messageBundle, tsx, vmEvent, WidgetProperties } from "esri/widgets/support/widget";
 
 // esri.widgets.support.Selector
 import { SelectionCompleteEventInfo } from "esri/widgets/support/Selector/interfaces";
@@ -312,8 +315,23 @@ interface ActiveSelectionInfo {
   operation: SelectionOperation;
 }
 
+interface OptionalConstructProperties extends WidgetProperties<SketchViewModel> {
+  availableCreateTools: CreateTool[];
+  createGraphic: Graphic;
+  creationMode: CreationMode;
+  defaultCreateOptions: CreateOptions;
+  defaultUpdateOptions: UpdateOptions;
+  layer: GraphicsLayer;
+  layout: Layout;
+  snappingOptions: Partial<SnappingOptions>;
+  view: IMapView | ISceneView;
+  visibleElements: VisibleElements;
+}
+
+type ConstructProperties = Partial<OptionalConstructProperties>;
+
 @subclass("esri.widgets.Sketch")
-class Sketch extends Widget<SketchEvents> {
+class Sketch extends Widget<ConstructProperties, SketchEvents> implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -717,32 +735,28 @@ class Sketch extends Widget<SketchEvents> {
    *
    * @example
    * // typical usage
-   * var sketch = new Sketch({
+   * let sketch = new Sketch({
    *   layer: layer,
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._activateCreateTool = this._activateCreateTool.bind(this);
+
+    if (!properties?.viewModel) {
+      this._defaultViewModel = new SketchViewModel();
+      this.viewModel = this._defaultViewModel;
+    }
   }
 
   initialize(): void {
-    const { view } = this;
+    this._selector.view = this.view;
+  }
 
-    this._selector.view = view;
-
-    this.own([
-      this.viewModel.on("create", () => this.scheduleRender()),
-      this.viewModel.on("update", () => this.scheduleRender()),
-      this.viewModel.on("create", (event) => this._onCreateOperation(event)),
-      this.viewModel.on("delete", (event) => this.emit("delete", event)),
-      this.viewModel.on("undo", () => this.scheduleRender()),
-      this.viewModel.on("redo", () => this.scheduleRender()),
-      this.viewModel.watch("view", (view) => this._selector.set({ view })),
-      this.viewModel.watch("state", () => this.notifyChange("state"))
-    ]);
+  destroy(): void {
+    this._cleanupViewModel();
   }
 
   //--------------------------------------------------------------------------
@@ -755,6 +769,9 @@ class Sketch extends Widget<SketchEvents> {
 
   @property()
   private _activeSelectionInfo: ActiveSelectionInfo = null;
+
+  private _defaultViewModel: Maybe<SketchViewModel> = null;
+  private _viewModelHandlesGroup: Maybe<IHandle> = null;
 
   private _menuOpen: boolean = false;
 
@@ -913,7 +930,8 @@ class Sketch extends Widget<SketchEvents> {
    * @instance
    * @type {string}
    */
-  @property() iconClass = CSS.widgetIcon;
+  @property()
+  iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -960,14 +978,8 @@ class Sketch extends Widget<SketchEvents> {
    * @default horizontal
    * @type {"vertical"|"horizontal"}
    */
-  @property({ value: "horizontal" })
-  set layout(value: Layout) {
-    if (value !== "vertical") {
-      value = "horizontal";
-    }
-
-    this._set("layout", value);
-  }
+  @property({ type: ["horizontal", "vertical"] })
+  layout: Layout = "horizontal";
 
   //----------------------------------
   //  messages
@@ -1044,7 +1056,7 @@ class Sketch extends Widget<SketchEvents> {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1062,7 +1074,37 @@ class Sketch extends Widget<SketchEvents> {
    */
   @property()
   @vmEvent(["create", "update", "undo", "redo"])
-  viewModel: SketchViewModel = new SketchViewModel();
+  // @ts-expect-error
+  set viewModel(value: SketchViewModel) {
+    if (value === this._get("viewModel")) {
+      // do nothing on self-assignment
+      return;
+    }
+
+    // #34489 - only cleanup if changing from '_defaultViewModel'
+    // or changing from custom 'viewModel' to another custom 'viewModel'
+    // Avoid calling if using '_defaultViewModel' to avoid lifecycle issues
+    if (isNone(this._defaultViewModel) || this._defaultViewModel !== value) {
+      this._cleanupViewModel();
+    }
+
+    this._set("viewModel", value);
+
+    if (this.viewModel) {
+      this._viewModelHandlesGroup = handlesGroup([
+        this.viewModel.on("create", (event) => {
+          this.scheduleRender();
+          this._onCreateOperation(event);
+        }),
+        this.viewModel.on("update", () => this.scheduleRender()),
+        this.viewModel.on("delete", (event) => this.emit("delete", event)),
+        this.viewModel.on("undo", () => this.scheduleRender()),
+        this.viewModel.on("redo", () => this.scheduleRender()),
+        this.viewModel.watch("view", (view) => this._selector.set({ view })),
+        this.viewModel.watch("state", () => this.notifyChange("state"))
+      ]);
+    }
+  }
 
   //----------------------------------
   // visibleElements
@@ -1072,7 +1114,7 @@ class Sketch extends Widget<SketchEvents> {
    * The visible elements that are displayed within the widget.
    * This provides the ability to turn individual elements of the widget's display on/off.
    *
-   * @typedef module:esri/widgets/Sketch~VisibleElements
+   * @typedef {Object} module:esri/widgets/Sketch~VisibleElements
    *
    * @property {Object} [createTools] - The available sketch tools within the widget.
    * @property {boolean} [createTools.point] - Indicates whether to display the point sketch tool. Default is `true`.
@@ -1086,13 +1128,15 @@ class Sketch extends Widget<SketchEvents> {
    * @property {boolean} [selectionTools."lasso-selection"] - Indicates whether to display the `"lasso-selection"` tool. Default is `true`.
    *
    * @property {boolean} [undoRedoMenu] - Indicates whether to display the undo/redo menu within the widget. Default is `true`.
+   *
+   * @property {boolean} [settingsMenu] - Indicates whether to display the settings menu. Currently this menu contains snapping options. Default value is `true`.
    */
 
   /**
    * The visible elements that are displayed within the widget.
    * This property provides the ability to turn individual elements of the widget's display on/off.
    *
-   * The image below displays the default Sketch widget with selection tools.
+   * The image below displays the default Sketch widget with selection, undo/redo, and settings menu tools.
    *
    * ![sketch-selection-default](../assets/img/apiref/widgets/selection/default-selection-sketch.png)
    *
@@ -1109,16 +1153,16 @@ class Sketch extends Widget<SketchEvents> {
    * @example
    * // Setting the sketch's visible elements as below would result
    * // in removing the point and circle tools. It also removes the
-   * // lasso-selection tool.
+   * // lasso-selection tool and settings menu.
    * sketch.visibleElements = {
-   *   visibleElements: {
-   *     createTools: {
+   *   createTools: {
    *     point: false,
    *     circle: false
    *   },
    *   selectionTools:{
    *     "lasso-selection": false
-   *   }
+   *   },
+   *   settingsMenu: false
    * }
    */
   @property()
@@ -1306,8 +1350,10 @@ class Sketch extends Widget<SketchEvents> {
    * @instance
    *
    */
-  @aliasOf("viewModel.undo")
-  undo(): void {}
+  undo(): void {
+    this.viewModel.undo();
+    this.view?.focus();
+  }
 
   /**
    * Incrementally redo actions recorded in the stack. Calling this method will fire the
@@ -1318,8 +1364,10 @@ class Sketch extends Widget<SketchEvents> {
    * @instance
    *
    */
-  @aliasOf("viewModel.redo")
-  redo(): void {}
+  redo(): void {
+    this.viewModel.redo();
+    this.view?.focus();
+  }
 
   /**
    * Deletes the selected graphics used in the update workflow. Calling this method will fire the
@@ -1862,7 +1910,7 @@ class Sketch extends Widget<SketchEvents> {
     this._activeSelectionInfo = null;
 
     if (!event.aborted && selection.length) {
-      // Reshape not supported
+      // Reshaping multiple graphics is not supported
       // Instead of erroring out, we'll replace the tool
       // Still required to pass all other options
       const tool = defaultUpdateOptions.tool;
@@ -1934,6 +1982,15 @@ class Sketch extends Widget<SketchEvents> {
 
   private _getSelectionCandidates(): Graphic[] {
     return (this.layer?.graphics?.toArray() as Graphic[]) || [];
+  }
+
+  /**
+   * Destroy potential default view model and remove potential view model handles
+   * @ignore
+   */
+  private _cleanupViewModel(): void {
+    this._defaultViewModel = destroyMaybe(this._defaultViewModel);
+    this._viewModelHandlesGroup = removeMaybe(this._viewModelHandlesGroup);
   }
 }
 

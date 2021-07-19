@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD. MM. YYYY.",
+  "weekStart": 7,
+  "placeholder": "DD. MM. YYYY.",
+  "days": {
+    "abbreviated": ["ned", "pon", "uto", "sri", "čet", "pet", "sub"],
+    "narrow": ["N", "P", "U", "S", "Č", "P", "S"],
+    "short": ["ned", "pon", "uto", "sri", "čet", "pet", "sub"],
+    "wide": ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"],
+    "narrow": ["j", "f", "m", "a", "m", "j", "j", "a", "s", "o", "n", "d"],
+    "wide": [
+      "januar",
+      "februar",
+      "mart",
+      "april",
+      "maj",
+      "juni",
+      "juli",
+      "august",
+      "septembar",
+      "oktobar",
+      "novembar",
+      "decembar"
+    ]
+  }
+}

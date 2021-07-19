@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD. MM. YYYY",
+  "weekStart": 1,
+  "placeholder": "DD. MM. YYYY",
+  "days": {
+    "abbreviated": ["ne", "po", "ut", "st", "št", "pi", "so"],
+    "narrow": ["n", "p", "u", "s", "š", "p", "s"],
+    "short": ["ne", "po", "ut", "st", "št", "pi", "so"],
+    "wide": ["nedeľa", "pondelok", "utorok", "streda", "štvrtok", "piatok", "sobota"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["jan", "feb", "mar", "apr", "máj", "jún", "júl", "aug", "sep", "okt", "nov", "dec"],
+    "narrow": ["j", "f", "m", "a", "m", "j", "j", "a", "s", "o", "n", "d"],
+    "wide": [
+      "január",
+      "február",
+      "marec",
+      "apríl",
+      "máj",
+      "jún",
+      "júl",
+      "august",
+      "september",
+      "október",
+      "november",
+      "december"
+    ]
+  }
+}

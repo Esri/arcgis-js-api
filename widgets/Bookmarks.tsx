@@ -40,7 +40,7 @@ import UnitsMessages from "esri/core/t9n/Units";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
-import MapView from "esri/views/MapView";
+import IMapView from "esri/views/IMapView";
 
 // esri.webdoc.support
 import Thumbnail from "esri/webdoc/support/Thumbnail";
@@ -65,8 +65,9 @@ import ButtonMenuItem from "esri/widgets/FeatureTable/Grid/support/ButtonMenuIte
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, vmEvent, messageBundle } from "esri/widgets/support/widget";
+import { tsx, vmEvent, messageBundle, isActivationKey } from "esri/widgets/support/widget";
 
 // sortablejs
 import Sortable from "sortablejs";
@@ -143,6 +144,13 @@ interface VisibleElements {
   thumbnail?: boolean;
 }
 
+type BookmarksLocaleStrings = Partial<
+  Pick<
+    BookmarksMessages,
+    "addBookmark" | "goToBookmark" | "title" | "titlePlaceholder" | "invalidTitle" | "widgetLabel"
+  >
+>;
+
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   addBookmark: true,
   thumbnail: true
@@ -161,32 +169,6 @@ class Bookmarks extends Widget {
   //  Events
   //
   //--------------------------------------------------------------------------
-
-  /**
-   * Fires when a {@link module:esri/webmap/Bookmark} is selected.
-   *
-   * @event module:esri/widgets/Bookmarks#select-bookmark
-   *
-   * @property {module:esri/webmap/Bookmark} bookmark - The bookmark selected by the user.
-   *
-   * @deprecated since version 4.17. Use [bookmark-select](#event-bookmark-select) instead.
-   * @example
-   * const bookmarksWidget = new Bookmarks({
-   *   view: view
-   * });
-   *
-   * const bookmarksExpand = new Expand({
-   *   view: view,
-   *   content: bookmarksWidget
-   * });
-   * view.ui.add(bookmarksExpand, "top-right");
-   *
-   * // collapses the associated Expand instance
-   * // when the user selects a bookmark
-   * bookmarksWidget.on("select-bookmark", function(event){
-   *   bookmarksExpand.expanded = false;
-   * });
-   */
 
   /**
    * Fires when a {@link module:esri/webmap/Bookmark} is selected.
@@ -244,8 +226,8 @@ class Bookmarks extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -405,12 +387,6 @@ class Bookmarks extends Widget {
     return this.viewModel.defaultCreateOptions;
   }
   set bookmarkCreationOptions(value: BookmarkOptions) {
-    if (typeof value.captureExtent !== "undefined") {
-      deprecatedProperty(logger, "bookmarkCreationOptions.captureExtent", {
-        replacement: "defaultCreateOptions.captureViewpoint",
-        version: "4.17"
-      });
-    }
     deprecatedProperty(logger, "bookmarkCreationOptions", {
       replacement: "defaultCreateOptions",
       version: "4.18"
@@ -538,6 +514,31 @@ class Bookmarks extends Widget {
   editingEnabled = false;
 
   //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the message "No bookmarks" when no bookmarks
+   * are available in this widget. By default, this message is rendered
+   * as a level 2 heading (e.g. `<h2>No bookmarks</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // "No bookmarks" will render as an <h3>
+   * bookmarks.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
+
+  //----------------------------------
   //  goToOverride
   //----------------------------------
 
@@ -573,6 +574,16 @@ class Bookmarks extends Widget {
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
   label: string = undefined;
+
+  //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  localeStrings?: BookmarksLocaleStrings;
 
   //----------------------------------
   //  messages
@@ -636,7 +647,7 @@ class Bookmarks extends Widget {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  view: MapView = null;
+  view: IMapView = null;
 
   //----------------------------------
   //  viewModel
@@ -770,9 +781,9 @@ class Bookmarks extends Widget {
     return (
       <div class={CSS.noBookmarksContainer} key="no-bookmarks">
         <span aria-hidden="true" class={this.classes(CSS.noBookmarksIcon, CSS.widgetIcon)} />
-        <h1 class={this.classes(CSS.header, CSS.noBookmarksHeader)}>
+        <Heading level={this.headingLevel} class={this.classes(CSS.header, CSS.noBookmarksHeader)}>
           {messages?.noBookmarksHeading}
-        </h1>
+        </Heading>
         <p class={CSS.noBookmarksDescription}>{messages?.noBookmarksDescription}</p>
       </div>
     );
@@ -1189,7 +1200,7 @@ class Bookmarks extends Widget {
     const uid = node.getAttribute(SORT_DATA_ATTR) as string;
     const index = items.indexOf(uid);
 
-    if (key === " " || key === "Enter") {
+    if (isActivationKey(key)) {
       const pressed = _selectedSortUid && _selectedSortUid === uid;
 
       this._selectedSortUid = pressed ? null : uid;
@@ -1486,7 +1497,6 @@ class Bookmarks extends Widget {
 
     await viewModel.editBookmark(this._userState.editedBookmark, {
       takeScreenshot: true,
-      captureExtent: false,
       captureViewpoint: false,
       captureRotation: false,
       captureScale: false

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../DefaultUI"],(function(e,o,r,s,t,c,u,n,i,p,a){"use strict";let l=function(o){function r(e){var r;return(r=o.call(this,e)||this).components=["attribution","zoom","navigation-toggle","compass"],r}return e._inheritsLoose(r,o),r}(a);return o.__decorate([c.property()],l.prototype,"components",void 0),l=o.__decorate([u.subclass("esri.views.ui.3d.DefaultUI3D")],l),l}));
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass","../DefaultUI"],(function(e,o,r,s,t,c,n,u){"use strict";let a=function(o){function r(e){var r;return(r=o.call(this,e)||this).components=["attribution","zoom","navigation-toggle","compass"],r}return e._inheritsLoose(r,o),r}(u);return o.__decorate([r.property()],a.prototype,"components",void 0),a=o.__decorate([n.subclass("esri.views.ui.3d.DefaultUI3D")],a),a}));

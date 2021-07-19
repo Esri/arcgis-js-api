@@ -20,9 +20,6 @@
     }
   }
 
-  $font-size--tiny-daylight: round($font-size--small * 0.857) !default;
-  $font-size--tinier-daylight: round($font-size--tiny-daylight * 0.857 * 0.857) !default;
-
   .esri-daylight {
     padding: $cap-spacing;
     width: 350px;

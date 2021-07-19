@@ -17,12 +17,12 @@
  * See the sample below.
  *
  * @example
- * var view = new MapView({
+ * let view = new MapView({
  *   container: "viewDiv",
  *   map: map
  * });
  *
- * var compass = new Compass({
+ * let compass = new Compass({
  *   view: view
  * });
  *
@@ -46,8 +46,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import { Axes } from "esri/widgets/interfaces";
@@ -93,8 +93,8 @@ class Compass extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -174,7 +174,7 @@ class Compass extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

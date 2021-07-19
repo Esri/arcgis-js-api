@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../core/maybe","../request","../geometry/support/normalizeUtils","./utils","../tasks/support/ImageServiceIdentifyResult"],(function(e,t,r,n,o,i){"use strict";async function s(e,s,a){const u=o.parseUrl(e),c=s.geometry?[s.geometry]:[];return n.normalizeCentralMeridian(c).then((e=>{const n=s.toJSON(),i=e&&e[0];t.isSome(i)&&(n.geometry=JSON.stringify(i.toJSON()));const c=o.encode({...u.query,f:"json",...n}),y=o.asValidOptions(c,a);return r(u.path+"/identify",y)})).then((e=>i.fromJSON(e.data)))}e.imageServiceIdentify=s,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../chunks/_rollupPluginBabelHelpers","../request","../core/maybe","../geometry/support/normalizeUtils","./utils","./support/ImageServiceIdentifyResult"],(function(e,t,r,n,o,i,s){"use strict";function u(e,t,r){return a.apply(this,arguments)}function a(){return(a=t._asyncToGenerator((function*(e,t,u){const a=i.parseUrl(e),l=t.geometry?[t.geometry]:[];return o.normalizeCentralMeridian(l).then((e=>{const o=t.toJSON(),s=e&&e[0];n.isSome(s)&&(o.geometry=JSON.stringify(s.toJSON()));const l=i.encode({...a.query,f:"json",...o}),c=i.asValidOptions(l,u);return r(a.path+"/identify",c)})).then((e=>s.fromJSON(e.data)))}))).apply(this,arguments)}e.imageServiceIdentify=u,Object.defineProperty(e,"__esModule",{value:!0})}));

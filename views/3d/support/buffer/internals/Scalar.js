@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
-*/
-define(["exports","../../../../../chunks/_rollupPluginBabelHelpers"],(function(t,e){"use strict";let r=function(){function t(t,e,r=0,i,u){this.TypedArrayConstructor=t,this.elementCount=1;const f=this.TypedArrayConstructor;void 0===i&&(i=f.BYTES_PER_ELEMENT);const n=0===e.byteLength?0:r;this.typedBuffer=null==u?new f(e,n):new f(e,n,(u-r)/f.BYTES_PER_ELEMENT),this.typedBufferStride=i/f.BYTES_PER_ELEMENT,this.count=Math.ceil(this.typedBuffer.length/this.typedBufferStride),this.stride=this.typedBufferStride*this.TypedArrayConstructor.BYTES_PER_ELEMENT}var r=t.prototype;return r.get=function(t){return this.typedBuffer[t*this.typedBufferStride]},r.set=function(t,e){this.typedBuffer[t*this.typedBufferStride]=e},e._createClass(t,[{key:"buffer",get:function(){return this.typedBuffer.buffer}}]),t}();r.ElementCount=1,t.BufferViewScalarImpl=r,Object.defineProperty(t,"__esModule",{value:!0})}));

@@ -9,7 +9,7 @@ import * as watchUtils from "esri/../../core/watchUtils";
 import { aliasOf, cast, property, subclass } from "esri/../../core/accessorSupport/decorators";
 
 // esri.libs.vaadin-grid
-import "./../../../libs/vaadin-grid/index";
+import "../../../libs/vaadin-grid/index";
 
 // esri.widgets
 import Widget from "esri/../Widget";
@@ -60,15 +60,15 @@ interface GridEvents {
 }
 
 @subclass("esri.widgets.FeatureTable.Grid.Grid")
-class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
+class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -451,6 +451,40 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
     this._grid?.clearCache();
   }
 
+  selectRows(items: StoreItem[]): void {
+    const currentItems = this._grid.selectedItems.slice();
+
+    // Avoid adding duplicates to selection set
+    items.forEach((item) => {
+      const idx = currentItems.findIndex((cItem) => cItem.objectId === item.objectId);
+
+      if (idx < 0) {
+        this._grid.selectedItems.push(item);
+      }
+    });
+
+    this._updateSelectionProps();
+    this._grid.render();
+  }
+
+  deselectRows(items: StoreItem[]): void {
+    const currentItems = this._grid.selectedItems.slice();
+
+    // Ensure item is actually selected before attempting to remove
+    // Required to deselect rows that may not be loaded, but were selected via API
+    items.forEach((item) => {
+      const idx = currentItems.findIndex((cItem) => cItem.objectId === item.objectId);
+
+      if (idx > -1) {
+        currentItems.splice(idx, 1);
+      }
+    });
+
+    this._grid.selectedItems = currentItems;
+    this._updateSelectionProps();
+    this._grid.render();
+  }
+
   selectItem(item: StoreItem): void {
     this._selectRowByItem(item);
   }
@@ -589,10 +623,10 @@ class Grid extends HandleOwnerMixin(Widget)<GridEvents> {
   }
 
   private _clearSelection(): void {
-    if (this._grid?.selectedItems) {
-      //  Clone required; 'selectedItems' is mutated by '_grid.deselectItem()' during loop
-      this._grid.selectedItems.slice().forEach((i) => this._deselectRowByItem(i));
+    if (this._grid?.selectedItems?.length) {
+      this._grid.selectedItems = [];
       this._updateSelectionProps();
+      this._grid.render();
     }
   }
 

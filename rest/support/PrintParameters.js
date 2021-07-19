@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/Accessor","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass"],(function(e,r,t,o,p,a,s,c){"use strict";let l=function(r){function t(e){var t;return(t=r.call(this,e)||this).extent=null,t.extraParameters=null,t.outSpatialReference=null,t.template=null,t.updateDelay=1e3,t.view=null,t}return e._inheritsLoose(t,r),t}(t);return r.__decorate([o.property()],l.prototype,"extent",void 0),r.__decorate([o.property()],l.prototype,"extraParameters",void 0),r.__decorate([o.property()],l.prototype,"outSpatialReference",void 0),r.__decorate([o.property()],l.prototype,"template",void 0),r.__decorate([o.property()],l.prototype,"updateDelay",void 0),r.__decorate([o.property()],l.prototype,"view",void 0),l=r.__decorate([c.subclass("esri.rest.support.PrintParameters")],l),l}));

@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": "/",
+  "unitOrder": "DD/MM/YYYY",
+  "weekStart": 7,
+  "placeholder": "DD/MM/YYYY",
+  "days": {
+    "abbreviated": ["dg.", "dl.", "dt.", "dc.", "dj.", "dv.", "ds."],
+    "narrow": ["dg", "dl", "dt", "dc", "dj", "dv", "ds"],
+    "short": ["dg.", "dl.", "dt.", "dc.", "dj.", "dv.", "ds."],
+    "wide": ["diumenge", "dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["gen.", "febr.", "març", "abr.", "maig", "juny", "jul.", "ag.", "set.", "oct.", "nov.", "des."],
+    "narrow": ["GN", "FB", "MÇ", "AB", "MG", "JN", "JL", "AG", "ST", "OC", "NV", "DS"],
+    "wide": [
+      "gener",
+      "febrer",
+      "març",
+      "abril",
+      "maig",
+      "juny",
+      "juliol",
+      "agost",
+      "setembre",
+      "octubre",
+      "novembre",
+      "desembre"
+    ]
+  }
+}

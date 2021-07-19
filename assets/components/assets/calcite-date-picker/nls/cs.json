@@ -1,0 +1,32 @@
+{
+  "default-calendar": "gregorian",
+  "separator": ".",
+  "unitOrder": "DD.MM.YYYY",
+  "weekStart": 7,
+  "placeholder": "DD.MM.YYYY",
+  "days": {
+    "abbreviated": ["ne", "po", "út", "st", "čt", "pá", "so"],
+    "narrow": ["N", "P", "Ú", "S", "Č", "P", "S"],
+    "short": ["ne", "po", "út", "st", "čt", "pá", "so"],
+    "wide": ["neděle", "pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota"]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["led", "úno", "bře", "dub", "kvě", "čvn", "čvc", "srp", "zář", "říj", "lis", "pro"],
+    "narrow": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "wide": [
+      "leden",
+      "únor",
+      "březen",
+      "duben",
+      "květen",
+      "červen",
+      "červenec",
+      "srpen",
+      "září",
+      "říjen",
+      "listopad",
+      "prosinec"
+    ]
+  }
+}

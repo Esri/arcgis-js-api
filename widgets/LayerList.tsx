@@ -16,7 +16,7 @@
  * @see module:esri/widgets/LayerList/LayerListViewModel
  *
  * @example
- * var layerList = new LayerList({
+ * let layerList = new LayerList({
  *   view: view
  * });
  * // Adds widget below other elements in the top left corner of the view
@@ -45,8 +45,8 @@ import ActionToggle from "esri/support/actions/ActionToggle";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -74,6 +74,8 @@ import { accessibleHandler, tsx, vmEvent, messageBundle } from "esri/widgets/sup
 
 // sortablejs
 import Sortable from "sortablejs";
+
+type LayerListLocaleStrings = Partial<Pick<LayerListMessages, "closeActions" | "openActions">>;
 
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
@@ -213,12 +215,12 @@ class LayerList extends Widget {
    *
    * @example
    * // typical usage
-   * var layerlist = new LayerList({
+   * let layerlist = new LayerList({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -339,7 +341,7 @@ class LayerList extends Widget {
    * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
    *
    * @example
-   * var layerList = new LayerList({
+   * let layerList = new LayerList({
    *   view: view,
    *   // executes for each ListItem in the LayerList
    *   listItemCreatedFunction: function (event) {
@@ -347,7 +349,7 @@ class LayerList extends Widget {
    *     // The event object contains properties of the
    *     // layer in the LayerList widget.
    *
-   *     var item = event.item;
+   *     let item = event.item;
    *
    *     if (item.title === "US Demographics") {
    *       // open the list item in the LayerList
@@ -366,6 +368,63 @@ class LayerList extends Widget {
    */
   @aliasOf("viewModel.listItemCreatedFunction")
   listItemCreatedFunction: ListItemModifier = null;
+
+  //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  /**
+   * Allows you to override default tooltip text prompting users to open or close actions in the LayerList widget.
+   *
+   * @name localeStrings
+   * @instance
+   * @since 4.20
+   * @ignore
+   *
+   * @type {Object}
+   * @property {string} [closeActions="Close actions"] - The tooltip text prompting the user to close a list item's
+   *    {@link module:esri/widgets/LayerList/ListItem#actionsSections actions sections} when the actions are open.
+   *    In English, the default value is "Close actions".
+   * @property {string} [openActions="Open actions"] - The tooltip text prompting the user to open a list item's
+   *    {@link module:esri/widgets/LayerList/ListItem#actionsSections actions sections} when the actions are closed.
+   *    In English, the default value is "Open actions".
+   *
+   * @see {@link module:esri/widgets/LayerList/ListItem#actionsSections ListItem.actionsSections}
+   *
+   * @example
+   * // Overrides the default "Open/Close actions" tooltip with
+   * // "Show/Hide options" Without regard for app locale
+   *
+   * layerList.localeStrings = {
+   *   openActions: "Show options",
+   *   closeActions: "Hide options"
+   * };
+   *
+   * @example
+   * // Overrides the default "Open/Close actions" tooltip with "Show/Hide options"
+   * // The text will display in either English or Spanish depending on the locale
+   * const layerListStrings = {
+   *   "en-US": {
+   *     openActions: "Show options",
+   *     closeActions: "Hide options"
+   *   },
+   *   "es": {
+   *     openActions: "Abrir opciones",
+   *     closeActions: "Cerrar opciones"
+   *   }
+   * };
+   *
+   * // import { getLocale } from "esri/intl"
+   * const appLocale = getLocale();
+   * const localeStrings =
+   *   Object.keys(layerListStrings).includes(appLocale) ?
+   *     layerListStrings[appLocale] :
+   *     layerListStrings["en-US"];
+   *
+   * layerList.localeStrings = localeStrings;
+   */
+  @property()
+  localeStrings?: LayerListLocaleStrings = null;
 
   //----------------------------------
   //  messages
@@ -530,7 +589,7 @@ class LayerList extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -1594,7 +1653,6 @@ class LayerList extends Widget {
     event.stopPropagation();
     const { multipleSelectionEnabled, selectedItems } = this;
 
-    const allowMultipleSelected = multipleSelectionEnabled && (event.metaKey || event.ctrlKey);
     const node = event.currentTarget as Element;
     const item = node["data-item"] as ListItem;
     const found = findSelectedItem(item, selectedItems);
@@ -1602,7 +1660,7 @@ class LayerList extends Widget {
     const { length } = selectedItems;
     const singleMatch = found && length === 1;
 
-    if (allowMultipleSelected) {
+    if (multipleSelectionEnabled) {
       found ? selectedItems.remove?.(found) : selectedItems.add(item);
       return;
     }

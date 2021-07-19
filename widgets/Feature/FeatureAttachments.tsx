@@ -21,6 +21,7 @@ import FeatureAttachmentsViewModel from "esri/widgets/FeatureAttachments/Feature
 import FeatureElementInfo from "esri/widgets/support/FeatureElementInfo";
 
 // esri.widgets.support
+import { HeadingLevel } from "esri/support/Heading";
 import { VNode } from "esri/support/interfaces";
 import { tsx } from "esri/support/widget";
 
@@ -36,14 +37,16 @@ class FeatureAttachments extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
     this._featureElementInfo = new FeatureElementInfo();
 
-    init(this, ["viewModel.description", "viewModel.title"], () => this._setupFeatureElementInfo());
+    init(this, ["viewModel.description", "viewModel.title", "headingLevel"], () =>
+      this._setupFeatureElementInfo()
+    );
     init(
       this,
       "viewModel.graphic",
@@ -101,6 +104,13 @@ class FeatureAttachments extends Widget {
   graphic: Graphic = null;
 
   //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  @property()
+  headingLevel: HeadingLevel = 2;
+
+  //----------------------------------
   // title
   //----------------------------------
 
@@ -140,9 +150,9 @@ class FeatureAttachments extends Widget {
   //--------------------------------------------------------------------------
 
   private _setupFeatureElementInfo(): void {
-    const { description, title } = this;
+    const { description, title, headingLevel } = this;
 
-    this._featureElementInfo.set({ description, title });
+    this._featureElementInfo.set({ description, title, headingLevel });
   }
 }
 

@@ -102,6 +102,7 @@ const CSS = {
   rampElement: "esri-classed-color-slider__ramp",
   sliderContainer: "esri-classed-color-slider__slider-container",
   histogramContainer: "esri-classed-color-slider__histogram-container",
+  track: "esri-classed-color-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -148,8 +149,8 @@ class ClassedColorSlider extends SmartMappingSliderBase {
    *   }]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -473,10 +474,11 @@ class ClassedColorSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

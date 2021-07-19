@@ -20,7 +20,7 @@
  * {@link module:esri/widgets/DistanceMeasurement2D}.
  *
  * @example
- * var measurementWidget = new DirectLineMeasurement3D({
+ * let measurementWidget = new DirectLineMeasurement3D({
  *   view: view
  * });
  *
@@ -49,8 +49,11 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
+
+// esri.views.3d.layers
+import "../views/3d/layers/DirectLineMeasurementLayerView3D";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -64,6 +67,10 @@ import DirectLineMeasurement3DMessages from "esri/widgets/DirectLineMeasurement3
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+type DirectLineMeasurement3DLocaleStrings = Partial<
+  Pick<DirectLineMeasurement3DMessages, "widgetLabel" | "hint" | "newMeasurement">
+>;
 
 const BASE = "esri-direct-line-measurement-3d";
 
@@ -121,12 +128,12 @@ class DirectLineMeasurement3D extends Widget {
    *
    * @example
    * // typical usage
-   * var measurementWidget = new DirectLineMeasurement3D({
+   * let measurementWidget = new DirectLineMeasurement3D({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -146,7 +153,7 @@ class DirectLineMeasurement3D extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -207,6 +214,16 @@ class DirectLineMeasurement3D extends Widget {
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
   label: string = undefined;
+
+  //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  localeStrings?: DirectLineMeasurement3DLocaleStrings;
 
   //----------------------------------
   //  messages
@@ -442,22 +459,6 @@ class DirectLineMeasurement3D extends Widget {
     if (selected) {
       this.unit = selected.value as SystemOrLengthUnit;
     }
-  }
-
-  //--------------------------------------------------------------------------
-  //
-  //  Protected Methods
-  //
-  //--------------------------------------------------------------------------
-
-  /**
-   * We overload this to allow the viewmodel to preload some modules before we
-   * present ui to the user. This is to avoid things like module loading during
-   * user interaction.
-   * @private
-   */
-  protected beforeFirstRender(): Promise<void> {
-    return DirectLineMeasurement3DViewModel.preload().then(() => super.beforeFirstRender());
   }
 }
 

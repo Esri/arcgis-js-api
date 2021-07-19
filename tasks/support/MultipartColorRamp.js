@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/lang","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./ColorRamp","./AlgorithmicColorRamp"],(function(r,o,e,t,s,p,c,l,u,a,n,i,y){"use strict";var m;let d=m=function(o){function e(r){var e;return(e=o.call(this,r)||this).colorRamps=null,e.type="multipart",e}return r._inheritsLoose(e,o),e.prototype.clone=function(){return new m({colorRamps:t.clone(this.colorRamps)})},e}(i);return o.__decorate([c.property({type:[y],json:{write:!0}})],d.prototype,"colorRamps",void 0),o.__decorate([c.property({type:["multipart"]})],d.prototype,"type",void 0),d=m=o.__decorate([l.subclass("esri.tasks.support.MultipartColorRamp")],d),d}));
+define(["../../core/deprecate","../../core/Logger","../../rest/support/MultipartColorRamp"],(function(r,e,t){"use strict";const o=e.getLogger("esri.tasks.support.MultipartColorRamp");return r.deprecatedModule(o,"esri.tasks.support.MultipartColorRamp",{replacement:"esri.rest.support.MultipartColorRamp",version:"4.20",warnOnce:!0}),t}));

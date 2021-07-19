@@ -1,7 +1,10 @@
+// esri.libs
+import { VNode, VNodeChild } from "esri/../libs/maquette";
+
 // esri.widgets.support
-import { VNode } from "esri/support/interfaces";
+import { Heading, HeadingLevel } from "esri/support/Heading";
 import { tsx } from "esri/support/jsxFactory";
-import { classes } from "esri/support/widgetUtils";
+import { classes, isActivationKey } from "esri/support/widgetUtils";
 
 const CSS = {
   base: "esri-item-list",
@@ -25,7 +28,6 @@ const CSS = {
 
   // common
   widget: "esri-widget",
-  heading: "esri-widget__heading",
   input: "esri-input"
 };
 
@@ -37,8 +39,10 @@ interface Group<T extends Item> {
 
 type RenderItemsProps<T extends Item> = Pick<
   ListProperties<T>,
+  | "headingLevel"
   | "identify"
   | "items"
+  | "selectedItem"
   | "messages"
   | "filterText"
   | "renderIcon"
@@ -49,6 +53,7 @@ type RenderItemsProps<T extends Item> = Pick<
 type RenderItemProps<T extends Item> = Pick<
   ListProperties<T>,
   | "identify"
+  | "selectedItem"
   | "onItemMouseLeave"
   | "onItemMouseEnter"
   | "onItemSelect"
@@ -61,11 +66,13 @@ type RenderItemProps<T extends Item> = Pick<
 type RenderGroupProps<T extends Item> = Pick<
   ListProperties<T>,
   | "filterText"
+  | "headingLevel"
   | "identify"
   | "renderIcon"
   | "onItemMouseLeave"
   | "onItemMouseEnter"
   | "onItemSelect"
+  | "selectedItem"
 > & { group: Group<T> };
 type RenderLabelProps = { match: string; text: string };
 type RenderIconProps<T extends Item> = { item: T };
@@ -82,9 +89,11 @@ interface Item {
 interface ListProperties<T extends Item = Item> {
   filterText?: string;
   filterEnabled?: boolean;
-  items: (T | Group<T>)[];
+  selectedItem?: T;
+  headingLevel?: HeadingLevel;
   id: string;
   identify?: (item: T | Group<T>) => string;
+  items: (T | Group<T>)[];
 
   messages: {
     filterPlaceholder: string;
@@ -105,7 +114,9 @@ export function ItemList<T extends Item>(props: ListProperties<T>): VNode {
     id,
     identify,
     filterEnabled = true,
+    headingLevel = 4,
     items,
+    selectedItem,
     messages,
     filterText = "",
     onFilterChange,
@@ -116,13 +127,15 @@ export function ItemList<T extends Item>(props: ListProperties<T>): VNode {
   } = props;
 
   return (
-    <div class={classes(CSS.base, CSS.widget)}>
+    <div class={classes(CSS.base, CSS.widget)} key={id}>
       {filterEnabled ? renderFilter({ filterText, messages, onFilterChange, id }) : null}
       {renderItems({
         identify,
         items,
+        selectedItem,
         messages,
         filterText,
+        headingLevel,
         renderIcon,
         onItemMouseLeave,
         onItemMouseEnter,
@@ -138,13 +151,15 @@ function isGroup<T extends Item>(itemOrGroup: any): itemOrGroup is Group<T> {
 
 function renderItems<T extends Item | Group<T>>(props: RenderItemsProps<T>): VNode {
   const {
+    headingLevel,
     identify,
     items,
     renderIcon,
     filterText,
     onItemMouseLeave,
     onItemMouseEnter,
-    onItemSelect
+    onItemSelect,
+    selectedItem
   } = props;
 
   if (items.length === 0) {
@@ -160,13 +175,15 @@ function renderItems<T extends Item | Group<T>>(props: RenderItemsProps<T>): VNo
       <div class={CSS.scroller} key="item-container">
         {items.map((group: Group<T>) =>
           renderGroup({
-            group,
             filterText,
+            group,
+            headingLevel,
             identify,
-            renderIcon,
             onItemMouseLeave,
             onItemMouseEnter,
-            onItemSelect
+            onItemSelect,
+            renderIcon,
+            selectedItem
           })
         )}
       </div>
@@ -184,7 +201,8 @@ function renderItems<T extends Item | Group<T>>(props: RenderItemsProps<T>): VNo
           onItemMouseEnter,
           onItemSelect,
           renderIcon,
-          filterText
+          filterText,
+          selectedItem
         })
       )}
     </ul>
@@ -220,6 +238,7 @@ export function renderItem<T extends Item>(props: RenderItemProps<T>): VNode {
   const {
     identify,
     item,
+    selectedItem,
     grouped,
     filterText,
     onItemSelect,
@@ -228,12 +247,15 @@ export function renderItem<T extends Item>(props: RenderItemProps<T>): VNode {
     renderIcon
   } = props;
 
-  const key = `${(identify && identify(item)) || item.id}__${item.label}`;
+  const key = `${identify?.(item) || item.id}__${item.label}`;
+  const selectedKey = selectedItem
+    ? `${identify?.(selectedItem) || selectedItem.id}__${selectedItem.label}`
+    : "";
 
   return (
     <li
       aria-level={grouped ? "2" : ""}
-      class={CSS.item}
+      class={classes(CSS.item, key === selectedKey && CSS.itemSelected)}
       data-item={item}
       key={key}
       onclick={(event: Event) => {
@@ -247,7 +269,7 @@ export function renderItem<T extends Item>(props: RenderItemProps<T>): VNode {
         onItemMouseEnter && onItemMouseEnter(item);
       }}
       onkeydown={(event: KeyboardEvent) => {
-        if (event.key !== "Enter" && event.key !== "Space") {
+        if (!isActivationKey(event.key)) {
           return;
         }
 
@@ -273,21 +295,23 @@ export function renderItem<T extends Item>(props: RenderItemProps<T>): VNode {
 export function renderGroup<T extends Item>(props: RenderGroupProps<T>): VNode {
   const {
     group,
+    headingLevel,
     identify,
     onItemMouseLeave,
     onItemMouseEnter,
     onItemSelect,
     filterText,
-    renderIcon
+    renderIcon,
+    selectedItem
   } = props;
 
   const headingId = `${(identify && identify(group)) || group.id}-heading`;
 
   return (
     <section aria-labelledby={headingId} class={CSS.group} key={group.label}>
-      <h4 aria-level="1" id={headingId} class={classes(CSS.groupHeader)}>
+      <Heading id={headingId} class={CSS.groupHeader} level={headingLevel}>
         {renderLabel({ text: group.label, match: filterText })}
-      </h4>
+      </Heading>
       <ul class={CSS.list}>
         {group.items.map((item) =>
           renderItem({
@@ -298,7 +322,8 @@ export function renderGroup<T extends Item>(props: RenderGroupProps<T>): VNode {
             onItemMouseEnter,
             onItemSelect,
             renderIcon,
-            filterText
+            filterText,
+            selectedItem
           })
         )}
       </ul>
@@ -309,7 +334,7 @@ export function renderGroup<T extends Item>(props: RenderGroupProps<T>): VNode {
 export function renderLabel(props: RenderLabelProps): VNode {
   const { match, text } = props;
 
-  let content: VNode = null;
+  let content: VNodeChild = null;
 
   if (!match) {
     content = text;

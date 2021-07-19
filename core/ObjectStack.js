@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","./maybe","./nextTick"],(function(t,i,e){"use strict";let s=function(){function t(t){this.allocator=t,this.items=[],this.itemsPtr=0,this.tickHandle=e.before((()=>this.reset())),this.grow()}var s=t.prototype;return s.destroy=function(){this.tickHandle&&(this.tickHandle.remove(),this.tickHandle=i.nullifyNonnullableForDispose(this.tickHandle)),this.items=i.nullifyNonnullableForDispose(this.items)},s.get=function(){return 0===this.itemsPtr&&e((()=>{})),this.itemsPtr===this.items.length&&this.grow(),this.items[this.itemsPtr++]},s.reset=function(){const t=Math.min(3*Math.max(8,this.itemsPtr),this.itemsPtr+3*n);this.items.length=Math.min(t,this.items.length),this.itemsPtr=0},s.grow=function(){for(let t=0;t<Math.max(8,Math.min(this.items.length,n));t++)this.items.push(this.allocator())},t}();const n=1024;t.ObjectStack=s,t.default=s,Object.defineProperty(t,"__esModule",{value:!0})}));

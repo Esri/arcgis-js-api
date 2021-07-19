@@ -99,7 +99,6 @@
  *
  * @module esri/widgets/ElevationProfile
  * @since 4.18
- * @beta
  *
  * @see [Sample - ElevationProfile widget](../sample-code/widgets-elevation-profile/index.html)
  * @see [ElevationProfile.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ElevationProfile.tsx)
@@ -116,7 +115,7 @@ import Graphic from "esri/Graphic";
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { Maybe, isSome, isNone, destroyMaybe, applySome } from "esri/core/maybe";
+import { Maybe, isSome, isNone, destroyMaybe, applySome, abortMaybe } from "esri/core/maybe";
 import { memoize } from "esri/core/memoize";
 import { createTask, Task } from "esri/core/promiseUtils";
 import { SystemOrLengthUnit } from "esri/core/unitUtils";
@@ -129,12 +128,15 @@ import { Castable } from "esri/core/accessorSupport/ensureType";
 // esri.core.t9n
 import UnitsMessages from "esri/core/t9n/Units";
 
+// esri.libs.resize-observer
+import ResizeObserver from "esri/libs/resize-observer/ResizeObserver";
+
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -150,13 +152,10 @@ import ElevationProfileVisibleElements from "esri/widgets/ElevationProfile/Eleva
 import { ChartData, IElevationProfileLine } from "esri/widgets/ElevationProfile/interfaces";
 
 // esri.widgets.ElevationProfile.components
-import {
-  Legend,
-  ConstructionParameters as LegendProps
-} from "esri/widgets/ElevationProfile/components/Legend";
+import { Legend, ConstructProperties as LegendProps } from "esri/widgets/ElevationProfile/components/Legend";
 import {
   SettingsButton,
-  ConstructionParameters as SettingsButtonProps
+  ConstructProperties as SettingsButtonProps
 } from "esri/widgets/ElevationProfile/components/SettingsButton";
 
 // esri.widgets.ElevationProfile.support
@@ -173,14 +172,10 @@ import ElevationProfileMessages from "esri/widgets/ElevationProfile/t9n/Elevatio
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { tsx, messageBundle } from "esri/widgets/support/widget";
+import { tsx, messageBundle, WidgetProperties } from "esri/widgets/support/widget";
 
-interface RequiredConstructionParameters {
-  view: Maybe<MapView | ISceneView>;
-}
-
-interface OptionalConstructionParameters {
-  viewModel: Castable<ElevationProfileViewModel>;
+interface OptionalConstructProperties {
+  view: Maybe<IMapView | ISceneView>;
   input: Maybe<Graphic>;
   profiles: ElevationProfileLineArrayOrCollection;
   unitOptions: SystemOrLengthUnit[];
@@ -189,8 +184,8 @@ interface OptionalConstructionParameters {
   visibleElements: Partial<ElevationProfileVisibleElements>;
 }
 
-type ConstructionParameters = RequiredConstructionParameters &
-  Partial<OptionalConstructionParameters>;
+type ConstructProperties = Partial<OptionalConstructProperties> &
+  WidgetProperties<Castable<ElevationProfileViewModel>>;
 
 interface ChartUpdateParams {
   chart: Maybe<Chart>;
@@ -229,9 +224,7 @@ const ERROR_MESSAGES: Record<
 };
 
 @subclass("esri.widgets.ElevationProfile")
-class ElevationProfile
-  extends Widget
-  implements RequiredConstructionParameters, OptionalConstructionParameters {
+class ElevationProfile extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -245,29 +238,25 @@ class ElevationProfile
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
-    if (!params?.viewModel) {
-      this._defaultViewModel = new ElevationProfileViewModel({ view: params?.view });
+    if (!properties?.viewModel) {
+      this._defaultViewModel = new ElevationProfileViewModel({ view: properties?.view });
       this.viewModel = this._defaultViewModel;
     }
   }
 
   initialize(): void {
+    this._legend = new Legend(this._legendProps);
     this._settingsButton = new SettingsButton(this._settingsButtonProps);
-    this.own(
-      this.watch("_detailsProps", (props: LegendProps) => {
-        this._legend.set(props);
-      })
-    );
 
-    this._legend = new Legend(this._detailsProps);
-    this.own(
-      this.watch("_settingsButtonProps", (props: SettingsButtonProps) => {
-        this._settingsButton.set(props);
-      })
-    );
+    this.own([
+      this.watch("_legendProps", (props: LegendProps) => this._legend.set(props)),
+      this.watch("_settingsButtonProps", (props: SettingsButtonProps) =>
+        this._settingsButton.set(props)
+      )
+    ]);
   }
 
   postInitialize(): void {
@@ -282,13 +271,15 @@ class ElevationProfile
 
         this._chartInitTask = createTask((signal) => this._initializeChart(container, signal));
       }),
-      init(this, "_chartUpdateParams", () => this._updateChart())
+      init(this, "_chartUpdateParams", () => this._updateChart(this._chartUpdateParams))
     ]);
   }
 
   destroy(): void {
     this._destroyChart();
 
+    // Only destroy the default VM if it's not the current `viewModel`. Otherwise
+    // the Widget will destroy it.
     if (isSome(this._defaultViewModel) && this.viewModel !== this._defaultViewModel) {
       this._defaultViewModel.destroy();
     }
@@ -337,7 +328,7 @@ class ElevationProfile
    * @type {module:esri/views/SceneView | module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  view: Maybe<MapView | ISceneView> = null;
+  view: Maybe<IMapView | ISceneView> = null;
 
   //------------------------
   // input
@@ -464,9 +455,12 @@ class ElevationProfile
    *
    * @property {boolean} [legend=true] When set to `false`, the legend (which includes statistics) is not displayed.
    * @property {boolean} [chart=true] When set to `false`, the chart is not displayed.
+   * @property {boolean} [clearButton=true] When set to `false` the button used to clear the current elevation profile is not displayed.
    * @property {boolean} [settingsButton=true] When set to `false`, the button used to open the settings popup is not displayed.
    * @property {boolean} [sketchButton=true] When set to `false`, the button used to start drawing/sketchinng is not displayed.
    * @property {boolean} [selectButton=true] When set to `false`, the button used to select a path is not displayed.
+   * @property {boolean} [unitSelector=true] When set to `false`, the dropdown used to select the units is not displayed.
+   * @property {boolean} [uniformChartScalingToggle=true] When set to `false`, the element used to toggle uniform chart scaling on or off is not displayed.
    */
 
   /**
@@ -479,9 +473,11 @@ class ElevationProfile
    * elevationProfile.visibleElements = {
    *    legend: true,
    *    chart: true,
+   *    clearButton: true,
    *    settingsButton: true,
    *    sketchButton: true,
    *    selectButton: true
+   *    uniformChartScalingToggle: true
    * }
    */
   @property({
@@ -601,6 +597,12 @@ class ElevationProfile
   private _chart: Maybe<Chart> = null;
 
   @property()
+  private _chartInitTask: Maybe<Task<any>> = null;
+
+  @property()
+  private _chartIsRefined: boolean = false;
+
+  @property()
   private _settingsButton: SettingsButton;
 
   @property()
@@ -613,8 +615,6 @@ class ElevationProfile
 
   @property()
   private _zoomOutButtonVisible: boolean = false;
-
-  private _chartInitTask: Maybe<Task<any>> = null;
 
   /**
    * Property which collects all the parameters needed to update the chart. This
@@ -655,7 +655,7 @@ class ElevationProfile
   }
 
   @property()
-  private get _detailsProps(): LegendProps {
+  private get _legendProps(): LegendProps {
     return this._getDetailsPropsMemoized(
       this.viewModel.effectiveUnits,
       // Read from a compute property so we always return the same array unless
@@ -682,20 +682,11 @@ class ElevationProfile
 
   @property()
   private get _settingsButtonProps(): SettingsButtonProps {
-    return this._getSettingsButtonPropsMemoized(this.unit, this.unitOptions, this._onUnitChange);
+    return {
+      viewModel: this.viewModel,
+      visibleElements: this.visibleElements
+    };
   }
-
-  private _getSettingsButtonPropsMemoized = memoize(
-    (
-      unit: SettingsButtonProps["unit"],
-      unitOptions: SettingsButtonProps["unitOptions"],
-      onUnitChange: SettingsButtonProps["onUnitChange"]
-    ): SettingsButtonProps => ({ unit, unitOptions, onUnitChange })
-  );
-
-  private _onUnitChange = (selectedUnit: SystemOrLengthUnit) => {
-    this.unit = selectedUnit;
-  };
 
   //----------------------------------------------------------------------------
   //
@@ -837,9 +828,12 @@ class ElevationProfile
       ? this._renderPrompt(props.prompt)
       : props.chart && this._renderChart();
 
+    const hasProfile = isSome(this.viewModel.input);
+
     return [
       <header key="header" class={CSS.header}>
         {this._zoomOutButtonVisible && this._renderZoomOutButton()}
+        {this.visibleElements.clearButton && hasProfile && this._renderClearButton()}
         {this.visibleElements.settingsButton && this._settingsButton.render()}
       </header>,
 
@@ -866,6 +860,22 @@ class ElevationProfile
     applySome(this._chart, (chart) => chart.zoomOut());
   }
 
+  private _renderClearButton(): VNode {
+    return (
+      <button
+        key="clear-profile"
+        class={CSS.clearButton}
+        bind={this}
+        onclick={this._onClearButtonClick}
+        title={this.messages.clearProfile}
+      ></button>
+    );
+  }
+
+  private _onClearButtonClick(): void {
+    this.viewModel.clear();
+  }
+
   private _renderPrompt(message: string): VNode[] {
     return [
       <div key="prompt-container" bind={this} class={CSS.promptContainer}>
@@ -879,8 +889,7 @@ class ElevationProfile
       return [<div key="empty-chart-container" class={CSS.chartContainer}></div>];
     }
 
-    const { chartData, progress } = this.viewModel;
-    const chartVisible = this._canRenderChart(chartData);
+    const chartVisible = this._chartIsRefined || this._canRenderChart();
 
     if (!chartVisible) {
       // Chart is not visible either because the initial preview hasn't arrived
@@ -899,6 +908,7 @@ class ElevationProfile
     // that things are still happening. As with the large spinner above, this
     // one also appears with a delay so it shouldn't be visible when the profile
     // refines quickly enough.
+    const { chartData, progress } = this.viewModel;
     const spinnerVisible = isSome(chartData) && progress > 0 && progress < 1;
 
     return [
@@ -918,24 +928,25 @@ class ElevationProfile
       <div
         key="spinner"
         class={this.classes(CSS.chartSpinner, { [CSS.chartSpinnerSmall]: props.size === "small" })}
-        enterAnimation={this._spinnerEnterAnimation}
-        exitAnimation={this._spinnerExitAnimation}
+        afterCreate={this._onSpinnerAfterCreate}
+        exitAnimation={this._onSpinnerExit}
       />
     );
   }
 
-  private _spinnerEnterAnimation(domNode: HTMLElement): void {
+  private _onSpinnerAfterCreate(domNode: HTMLElement): void {
     // Apply the visible class on the next frame so that the CSS transition-delay
     // gets applied and the spinner smoothly fades in.
     requestAnimationFrame(() => domNode.classList.add(CSS.chartSpinnerVisible));
   }
 
-  public _spinnerExitAnimation(domNode: HTMLElement, removeDomNodeFunction: () => void): void {
+  public _onSpinnerExit(domNode: HTMLElement, removeDomNodeFunction: () => void): void {
     domNode.classList.remove(CSS.chartSpinnerVisible);
     setTimeout(removeDomNodeFunction, 200); // Wait for the animation to complete before telling Maquette remove the node.
   }
 
-  private _canRenderChart(data: Maybe<ChartData>): boolean {
+  private _canRenderChart(): boolean {
+    const data = this.viewModel.chartData;
     if (isNone(data)) {
       return false;
     }
@@ -944,78 +955,76 @@ class ElevationProfile
     // generated. No point in showing graudal refinement in such cases and it
     // would only slow down the generation.
     if (!this.viewModel.inputIsSketched) {
-      return data.fullyRefined;
+      return data.refined;
     }
 
     // When we have too many samples to display in the chart, we also don't show
     // the chart until it is fully refined so that we don't block the main thread.
-    const totalNumSamples = data.lines.reduce(
-      (total, { samples }) => (isSome(samples) ? total + samples.length : total),
-      0
-    );
+    let totalNumSamples = 0;
+    for (const { samples } of data.lines) {
+      totalNumSamples += isSome(samples) ? samples.length : 0;
+    }
 
-    return data.fullyRefined || totalNumSamples <= LARGE_CHART_SAMPLES;
+    return data.refined || totalNumSamples <= LARGE_CHART_SAMPLES;
   }
 
   private _renderActions({ actions }: { actions: ActionConfig[] }): VNode {
     const actionNodes = actions
-      .map(
-        (action): VNode => {
-          switch (action.type) {
-            case Action.Sketch:
-              return (
-                this.visibleElements.sketchButton &&
-                this._renderAction({
-                  action,
-                  onClick: this._onSketchButtonClick,
-                  className: CSS.sketchButton,
-                  label: this.messages.sketchButtonLabel
-                })
-              );
-            case Action.SketchCancel:
-              return (
-                this.visibleElements.sketchButton &&
-                this._renderAction({
-                  action,
-                  onClick: this._onCancelButtonClick,
-                  className: CSS.sketchCancelButton,
-                  label: this.messagesCommon.cancel
-                })
-              );
-            case Action.SketchDone: {
-              return (
-                this.visibleElements.sketchButton &&
-                this._renderAction({
-                  action,
-                  onClick: this._onDoneButtonClick,
-                  className: CSS.sketchDoneButton,
-                  label: this.messagesCommon.done
-                })
-              );
-            }
-            case Action.Select:
-              return (
-                this.visibleElements.selectButton &&
-                this._renderAction({
-                  action,
-                  onClick: this._onSelectButtonClick,
-                  className: CSS.selectButton,
-                  label: this.messages.selectButtonLabel
-                })
-              );
-            case Action.SelectCancel:
-              return (
-                this.visibleElements.selectButton &&
-                this._renderAction({
-                  action,
-                  onClick: this._onCancelButtonClick,
-                  className: CSS.selectCancelButton,
-                  label: this.messagesCommon.cancel
-                })
-              );
+      .map((action): VNode => {
+        switch (action.type) {
+          case Action.Sketch:
+            return (
+              this.visibleElements.sketchButton &&
+              this._renderAction({
+                action,
+                onClick: this._onSketchButtonClick,
+                className: CSS.sketchButton,
+                label: this.messages.sketchButtonLabel
+              })
+            );
+          case Action.SketchCancel:
+            return (
+              this.visibleElements.sketchButton &&
+              this._renderAction({
+                action,
+                onClick: this._onCancelButtonClick,
+                className: CSS.sketchCancelButton,
+                label: this.messagesCommon.cancel
+              })
+            );
+          case Action.SketchDone: {
+            return (
+              this.visibleElements.sketchButton &&
+              this._renderAction({
+                action,
+                onClick: this._onDoneButtonClick,
+                className: CSS.sketchDoneButton,
+                label: this.messagesCommon.done
+              })
+            );
           }
+          case Action.Select:
+            return (
+              this.visibleElements.selectButton &&
+              this._renderAction({
+                action,
+                onClick: this._onSelectButtonClick,
+                className: CSS.selectButton,
+                label: this.messages.selectButtonLabel
+              })
+            );
+          case Action.SelectCancel:
+            return (
+              this.visibleElements.selectButton &&
+              this._renderAction({
+                action,
+                onClick: this._onCancelButtonClick,
+                className: CSS.selectCancelButton,
+                label: this.messagesCommon.cancel
+              })
+            );
         }
-      )
+      })
       .filter(Boolean); // Make sure we exclude any actions which rendered to null/undefined
 
     return actionNodes.length ? (
@@ -1067,12 +1076,15 @@ class ElevationProfile
     this.viewModel.stop();
   }
 
-  private _updateChart(): void {
-    const params = this._chartUpdateParams;
+  private _updateChart(params: ChartUpdateParams): void {
+    const { data, chart, messages, stationary } = params;
 
-    if (params.stationary && isSome(params.chart) && params.messages) {
-      params.chart.update(params);
+    if (isNone(chart) || isNone(messages) || !stationary || !this._canRenderChart()) {
+      return;
     }
+
+    chart.update(params);
+    this._chartIsRefined = isSome(data) && data.refined;
   }
 
   private _onChartContainerAfterCreate(element: HTMLElement): void {
@@ -1087,27 +1099,21 @@ class ElevationProfile
     this._chart = await createChart({
       container,
       abortOptions: { signal },
-      onRangeChange: (zoomFactor: number) => {
-        this._zoomOutButtonVisible = zoomFactor !== 1;
+      onRangeChange: (zoomFactorX: number, zoomFactorY: number) => {
+        this._zoomOutButtonVisible = zoomFactorX !== 1 || zoomFactorY !== 1;
       },
       onCursorPositionChange: (x: Maybe<number>) => {
         this.viewModel.hoveredChartPosition = x;
       }
     });
 
-    this._updateChart();
+    this._updateChart(this._chartUpdateParams);
   }
 
   private _destroyChart(): void {
-    if (isSome(this._chartInitTask)) {
-      this._chartInitTask.abort();
-      this._chartInitTask = null;
-    }
-
-    if (isSome(this._chart)) {
-      this._chart.destroy();
-      this._chart = null;
-    }
+    this._chartInitTask = abortMaybe(this._chartInitTask);
+    this._chart = destroyMaybe(this._chart);
+    this._chartIsRefined = false;
   }
 
   private _onAfterCreate(element: HTMLElement): void {

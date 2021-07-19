@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl"],(function(e,i,o,t,r,l,n){"use strict";function a(e){const a=new o.ShaderBuilder;return a.include(t.AlignPixel),a.include(l.HUD,e),a.include(r.Slice,e),a.attributes.add("uv0","vec2"),a.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),a.varyings.add("coverageSampling","vec4"),a.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&a.varyings.add("depth","float"),a.vertex.code.add(i.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,o,t,l,r,n){"use strict";function a(e){const a=new n.ShaderBuilder;return a.include(o.AlignPixel),a.include(t.HUD,e),a.include(i.Slice,e),a.attributes.add("uv0","vec2"),a.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),a.varyings.add("coverageSampling","vec4"),a.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&a.varyings.add("depth","float"),a.vertex.code.add(r.glsl`
     void main(void) {
       ProjectHUDAux projectAux;
       vec4 endPoint = projectPositionHUD(projectAux);
@@ -12,16 +12,16 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }
-    ${e.occlusionTestEnabled?i.glsl`
+    ${e.occlusionTestEnabled?r.glsl`
       if (!testVisibilityHUD(endPoint)) {
         gl_Position = vec4(1e38, 1e38, 1e38, 1.0);
         return;
       }`:""}
 
-    ${e.screenSizePerspectiveEnabled?i.glsl`
+    ${e.screenSizePerspectiveEnabled?r.glsl`
       vec4 perspectiveFactor = screenSizePerspectiveScaleFactor(projectAux.absCosAngle, projectAux.distanceToCamera, screenSizePerspectiveAlignment);
       vec2 screenOffsetScaled = applyScreenSizePerspectiveScaleFactorVec2(screenOffset, perspectiveFactor);
-        `:i.glsl`
+        `:r.glsl`
       vec2 screenOffsetScaled = screenOffset;
         `}
       // Add view dependent polygon offset to get exact same original starting point. This is mostly
@@ -38,15 +38,15 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       // Align start and end to pixel origin
       vec4 startAligned = alignToPixelOrigin(startPoint, viewport.zw);
       vec4 endAligned = alignToPixelOrigin(endPoint, viewport.zw);
-    ${e.depthHudEnabled?e.depthHudAlignStartEnabled?i.glsl`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:i.glsl`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
+    ${e.depthHudEnabled?e.depthHudAlignStartEnabled?r.glsl`endAligned = vec4(endAligned.xy / endAligned.w * startAligned.w, startAligned.zw);`:r.glsl`startAligned = vec4(startAligned.xy / startAligned.w * endAligned.w, endAligned.zw);`:""}
       vec4 projectedPosition = mix(startAligned, endAligned, uv0.y);
       // The direction of the line in screen space
       vec2 screenSpaceDirection = normalize(endAligned.xy / endAligned.w - startAligned.xy / startAligned.w);
       vec2 perpendicularScreenSpaceDirection = vec2(screenSpaceDirection.y, -screenSpaceDirection.x);
-    ${e.screenSizePerspectiveEnabled?i.glsl`
+    ${e.screenSizePerspectiveEnabled?r.glsl`
       float lineSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(lineSize, perspectiveFactor);
       float borderSizeScaled = applyScreenSizePerspectiveScaleFactorFloat(borderSize, perspectiveFactor);
-        `:i.glsl`
+        `:r.glsl`
       float lineSizeScaled = lineSize;
       float borderSizeScaled = borderSize;
         `}
@@ -101,7 +101,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       gl_Position = projectedPosition;
     }
-  `),a.fragment.uniforms.add("color","vec4"),a.fragment.uniforms.add("borderColor","vec4"),e.multipassGeometryEnabled&&(a.fragment.include(n.multipassGeometryTest,e),a.fragment.uniforms.add("inverseViewport","vec2")),a.fragment.code.add(i.glsl`
+  `),a.fragment.uniforms.add("color","vec4"),a.fragment.uniforms.add("borderColor","vec4"),e.multipassGeometryEnabled&&(a.fragment.include(l.multipassGeometryTest,e),a.fragment.uniforms.add("inverseViewport","vec2")),a.fragment.code.add(r.glsl`
     void main() {
       ${e.multipassGeometryEnabled?"if( geometryDepthTest(gl_FragCoord.xy * inverseViewport, depth) ){ discard; }":""}
 
@@ -119,11 +119,11 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
       float finalAlpha = mix(borderAlpha, 1.0, colorAlpha);
 
-    ${e.depthHudEnabled?i.glsl`
+    ${e.depthHudEnabled?r.glsl`
       if (finalAlpha < 0.01) {
         discard;
       }
-      `:i.glsl`
+      `:r.glsl`
       // Compute the finalRgb, but keep it pre-multiplied (for unpre-multiplied you
       // need to divide by finalAlpha). We avoid the division here by setting the
       // appropriate blending function in the material.
@@ -131,4 +131,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       gl_FragColor = vec4(finalRgb, finalAlpha);
       `}
   }
-  `),a}function d(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}!function(e){function i(e,i,o){d(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(d(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}e.bindUniforms=i}(e.LineCallout||(e.LineCallout={}));var s=Object.freeze({__proto__:null,build:a,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=s,e.build=a}));
+  `),a}function d(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}e.LineCallout=void 0,function(e){function i(e,i,o){d(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(d(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}e.bindUniforms=i}(e.LineCallout||(e.LineCallout={}));var s=Object.freeze({__proto__:null,build:a,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=s,e.build=a}));

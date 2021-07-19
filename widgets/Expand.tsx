@@ -43,8 +43,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -105,8 +105,8 @@ class Expand extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ class Expand extends Widget {
    * @default true
    *
    * @example
-   * var expand = new Expand({
+   * let expand = new Expand({
    *    view: view,
    *    content: searchWidget,
    *    // widget will not be able to be closed from the ESC key
@@ -176,7 +176,7 @@ class Expand extends Widget {
    * });
    *
    * @example
-   * var expand = new Expand({
+   * let expand = new Expand({
    *    view: view,
    *    content: searchWidget,
    *    // widget will close on ESC when the search widget has no active menu
@@ -250,11 +250,11 @@ class Expand extends Widget {
    *
    * @example
    * // A. specify content with a widget
-   *    var searchWidget = new Search({
+   *    let searchWidget = new Search({
    *      view: view
    *    });
    *
-   *    var expand = new Expand({
+   *    let expand = new Expand({
    *      expandIconClass: "esri-icon-search",
    *      view: view,
    *      content: searchWidget
@@ -267,11 +267,11 @@ class Expand extends Widget {
    *
    * @example
    * // C. specify content with a DOM node
-   *    var node = domConstruct.create("div", {
+   *    let node = domConstruct.create("div", {
    *      innerHTML: "I'm a real node!"
    *    });
    *
-   *    var expand = new Expand({
+   *    let expand = new Expand({
    *      expandIconClass: "esri-icon-right-arrow",
    *      view: view,
    *      content: node
@@ -362,13 +362,13 @@ class Expand extends Widget {
    * @type {string}
    *
    * @example
-   * var expand1 = new Expand({
+   * let expand1 = new Expand({
    *   view: view,
    *   content: document.getElementById("bg-gallery"),
    *   expandIconClass: "esri-icon-basemap",
    *   group: "bottom-right"
    * });
-   * var expand2 = new Expand({
+   * let expand2 = new Expand({
    *   view: view,
    *   content: document.getElementById("legend"),
    *   expandIconClass: "esri-icon-key",
@@ -480,7 +480,7 @@ class Expand extends Widget {
    * @type {(module:esri/views/MapView | module:esri/views/SceneView)}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

@@ -169,8 +169,8 @@ class Attachments extends Widget {
    *                              that may be passed into the constructor.
    */
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {

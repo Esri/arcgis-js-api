@@ -49,6 +49,7 @@ import {
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/../support/Heading";
 import { VNode } from "esri/../support/interfaces";
 import { messageBundle, tsx } from "esri/../support/widget";
 
@@ -103,8 +104,8 @@ class Classic extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -119,6 +120,13 @@ class Classic extends Widget {
 
   @property()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  @property()
+  headingLevel: HeadingLevel = 3;
 
   //----------------------------------
   //  messages
@@ -193,9 +201,12 @@ class Classic extends Widget {
     const hasChildren = !!activeLayerInfo.children.length;
     const key = `${KEY}${activeLayerInfo.layer.uid}-version-${activeLayerInfo.version}`;
 
-    const labelNode = activeLayerInfo.title ? (
-      <h3 class={this.classes(CSS.header, CSS.label)}>{activeLayerInfo.title}</h3>
-    ) : null;
+    const labelNode = activeLayerInfo.title
+      ? Heading(
+          { level: this.headingLevel, class: this.classes(CSS.header, CSS.label) },
+          activeLayerInfo.title
+        )
+      : null;
 
     if (hasChildren) {
       const layers = activeLayerInfo.children
@@ -556,10 +567,12 @@ class Classic extends Widget {
     return stop.label
       ? this.messages[stop.label] +
           ": " +
-          intl.formatNumber(stop.value, {
-            style: "decimal",
-            notation: stop.value.toString().indexOf("e") > -1 ? "scientific" : "standard"
-          })
+          (typeof stop.value === "string"
+            ? stop.value
+            : intl.formatNumber(stop.value, {
+                style: "decimal",
+                notation: stop.value.toString().indexOf("e") > -1 ? "scientific" : "standard"
+              }))
       : "";
   }
 

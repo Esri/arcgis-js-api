@@ -91,6 +91,7 @@ import BuildingPhasePicker from "esri/widgets/BuildingExplorer/BuildingPhasePick
 import BuildingExplorerMessages from "esri/widgets/BuildingExplorer/t9n/BuildingExplorer";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { tsx, messageBundle } from "esri/widgets/support/widget";
 
@@ -100,13 +101,19 @@ interface VisibleElements {
   disciplines?: boolean;
 }
 
+type BuildingExplorerLocaleStrings = DeepPartial<{
+  level: BuildingExplorerMessages["level"];
+  phase: BuildingExplorerMessages["phase"];
+  disciplines: Pick<BuildingExplorerMessages["disciplines"], "title">;
+}>;
+
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   levels: true,
   phases: true,
   disciplines: true
 };
 
-interface ConstructionParameters {
+interface ConstructProperties {
   view: ISceneView;
   viewModel?: BuildingExplorerViewModel;
   toggleSiblingsVisibility?: boolean;
@@ -117,7 +124,6 @@ const BASE = "esri-building-explorer";
 const CSS = {
   esriWidget: "esri-widget",
   esriWidgetDisabled: "esri-widget--disabled",
-  esriHeading: "esri-widget__heading",
   esriIconLoadingIndicator: "esri-icon-loading-indicator",
   esriRotating: "esri-rotating",
   widgetIcon: "esri-icon-organization",
@@ -133,7 +139,7 @@ const CSS = {
 };
 
 @subclass("esri.widgets.BuildingExplorer")
-class BuildingExplorer extends Widget implements ConstructionParameters {
+class BuildingExplorer extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -147,8 +153,8 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -266,6 +272,25 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
   }
 
   /**
+   * Indicates the heading level to use for the headings in the widget. By default, they are rendered
+   * as level 3 headings (e.g. `<h3>Disciplines & categories</h3>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 3
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * buildingExplorer.headingLevel = 4;
+   */
+  @property()
+  headingLevel: HeadingLevel = 3;
+
+  /**
    * The widget's default CSS icon class.
    *
    * @name iconClass
@@ -284,6 +309,12 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
    */
   @aliasOf("messages.widgetLabel", { overridable: true })
   label: string = undefined;
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  localeStrings?: BuildingExplorerLocaleStrings;
 
   /**
    * The widget's message bundle.
@@ -446,7 +477,7 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
 
     return (
       <div key="levels" class={this.classes(CSS.section, CSS.levels)}>
-        <h4 class={CSS.esriHeading}>{this.messages.level.title}</h4>
+        <Heading level={this.headingLevel}>{this.messages.level.title}</Heading>
         {this._levelPicker.render()}
       </div>
     );
@@ -467,7 +498,7 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
 
     return (
       <div key="phases" class={this.classes(CSS.section, CSS.phases)}>
-        <h4 class={CSS.esriHeading}>{this.messages.phase.title}</h4>
+        <Heading level={this.headingLevel}>{this.messages.phase.title}</Heading>
         {this._phasePicker.render()}
       </div>
     );
@@ -489,7 +520,7 @@ class BuildingExplorer extends Widget implements ConstructionParameters {
 
     return (
       <div key="disciplines" class={this.classes(CSS.section, CSS.disciplines)}>
-        <h4 class={CSS.esriHeading}>{this.messages.disciplines.title}</h4>
+        <Heading level={this.headingLevel}>{this.messages.disciplines.title}</Heading>
         {this._disciplinesTree.render()}
       </div>
     );

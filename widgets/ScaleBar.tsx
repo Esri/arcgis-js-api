@@ -25,7 +25,7 @@
  * @see module:esri/widgets/ScaleBar/ScaleBarViewModel
  *
  * @example
- * var scaleBar = new ScaleBar({
+ * let scaleBar = new ScaleBar({
  *   view: view
  * });
  * // Add widget to the bottom left corner of the view
@@ -42,7 +42,7 @@ import { watch, whenTrue } from "esri/core/watchUtils";
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView from "esri/views/MapView";
+import IMapView from "esri/views/IMapView";
 
 // esri.widgets
 import { MapUnitType, ScaleBarProperties } from "esri/widgets/interfaces";
@@ -103,12 +103,12 @@ class ScaleBar extends Widget {
    *
    * @example
    * // typical usage
-   * var scalebar = new ScaleBar({
+   * let scalebar = new ScaleBar({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -225,7 +225,7 @@ class ScaleBar extends Widget {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  view: MapView = null;
+  view: IMapView = null;
 
   //----------------------------------
   //  viewModel

@@ -107,6 +107,7 @@ const CSS = {
   rampElement: "esri-opacity-slider__ramp",
   sliderContainer: "esri-opacity-slider__slider-container",
   histogramContainer: "esri-opacity-slider__histogram-container",
+  track: "esri-opacity-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -144,8 +145,8 @@ class OpacitySlider extends SmartMappingSliderBase {
    *   stops: response.visualVariable.stops,  // opacity visual variable generated from the opacityVariableCreator
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     // For SVG fills
     this._rampFillId = `${this.id}-ramp-fill`;
@@ -451,10 +452,11 @@ class OpacitySlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.glsl","./Reprojection.glsl"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.fragment.include(o.ReadLinearDepth),e.include(r.Reprojection),e.fragment.code.add(t.glsl`
+define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../shaderModules/interfaces"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.fragment.include(t.ReadLinearDepth),e.include(o.Reprojection),e.fragment.code.add(r.glsl`
   const int maxSteps = ${a.highStepCount?"150;":"75;"}
 
   vec4 applyProjectionMat(mat4 projectionMat, vec3 x)
@@ -101,4 +101,4 @@ define(["exports","../../shaderModules/interfaces","../output/ReadLinearDepth.gl
     }
     return vec3(P, 0.0);
   }
-  `)}!function(e){function t(e,t,o){o.ssrEnabled&&(e.setUniform1i("depthMapView",o.linearDepthTextureUnit),t.bindTexture(o.linearDepthTexture,o.linearDepthTextureUnit),e.setUniform2fv("nearFar",o.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",o.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/o.camera.height),r.Reprojection.bindUniforms(e,t,o))}e.bindUniforms=t}(a||(a={})),e.ScreenSpaceReflections=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+  `)}function i(e,t){t.ssrEnabled&&(e.bindTexture(t.linearDepthTexture,"depthMapView"),e.setUniform2fv("nearFar",t.camera.nearFar),e.setUniformMatrix4fv("ssrViewMat",t.camera.viewMatrix),e.setUniform1f("invResolutionHeight",1/t.camera.height),o.bindReprojectionUniforms(e,t))}e.ScreenSpaceReflections=a,e.bindSSRUniforms=i,Object.defineProperty(e,"__esModule",{value:!0})}));

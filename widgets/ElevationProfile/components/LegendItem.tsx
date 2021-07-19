@@ -15,7 +15,7 @@ import { LEGEND_ITEM_CSS as CSS } from "esri/css";
 import { IElevationProfileLine, EffectiveUnits } from "esri/interfaces";
 
 // esri.widgets.ElevationProfile.components
-import { Statistics, ConstructionParameters as StatisticsProps } from "esri/widgets/Statistics";
+import { Statistics, ConstructProperties as StatisticsProps } from "esri/widgets/Statistics";
 
 // esri.widgets.ElevationProfile.support
 import { getTranslatedLineTitle } from "esri/support/intlUtils";
@@ -27,7 +27,7 @@ import ElevationProfileMessages from "esri/t9n/ElevationProfile";
 import { VNode } from "esri/../support/interfaces";
 import { messageBundle, tsx } from "esri/../support/widget";
 
-export interface ConstructionParameters {
+export interface ConstructProperties {
   effectiveUnits: EffectiveUnits;
   line: IElevationProfileLine;
   expanded?: boolean;
@@ -41,15 +41,15 @@ export interface ConstructionParameters {
  * the line.
  */
 @subclass("esri.widgets.ElevationProfile.LegendItem")
-export class LegendItem extends Widget implements ConstructionParameters {
+export class LegendItem extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -214,18 +214,17 @@ export class LegendItem extends Widget implements ConstructionParameters {
     const label = substitute(labelTemplate, { name });
 
     return (
-      <button
+      <input
         key="checkbox"
         id={id}
-        class={this.classes(CSS.checkbox, { [CSS.checkboxChecked]: checked })}
+        type="checkbox"
+        class={CSS.checkbox}
         title={label}
         checked={checked}
         disabled={disabled}
-        role="checkbox"
-        aria-checked={checked ? "true" : "false"}
         aria-label={label}
         bind={this}
-        onclick={(e) => this._onCheckboxToggle(e, line)}
+        onchange={(e) => this._onCheckboxToggle(e, line)}
       />
     );
   }

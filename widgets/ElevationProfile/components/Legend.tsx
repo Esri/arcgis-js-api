@@ -20,7 +20,7 @@ import { LegendItem } from "esri/widgets/LegendItem";
 import { VNode } from "esri/../support/interfaces";
 import { tsx } from "esri/../support/widget";
 
-export interface ConstructionParameters {
+export interface ConstructProperties {
   profiles: IElevationProfileLine[];
   effectiveUnits: EffectiveUnits;
 }
@@ -30,15 +30,15 @@ export interface ConstructionParameters {
  * profile line, a checkbox to toggle its visibility and its statistics.
  */
 @subclass("esri.widgets.ElevationProfile.Legend")
-export class Legend extends Widget implements ConstructionParameters {
+export class Legend extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {

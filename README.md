@@ -1,5 +1,3 @@
-![Current version](https://img.shields.io/github/package-json/v/Esri/arcgis-js-api/4master?label=Current%20version)
-
 # arcgis-js-api
 
 A minified, unbuilt version of the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) AMD modules.
@@ -42,7 +40,7 @@ Or, add a reference to the declaration file in the `include` of your `tsconfig.j
 
 ## Requirements
 
-Building apps with the ArcGIS API for JavaScript requires signing up for a [ArcGIS Developer Subscription](https://developers.arcgis.com/sign-up/).
+Use of the ArcGIS API for JavaScript is subject to the terms described in the product-specific [terms of use.](https://www.esri.com/en-us/legal/terms/product-specific-scope-of-use) Learn more about licensing [here](https://developers.arcgis.com/javascript/latest/licensing/).
 
 
 ## Resources

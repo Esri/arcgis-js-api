@@ -86,13 +86,13 @@ class TimePicker extends Widget {
    *
    * @example
    * // typical usage
-   * var TimePicker = new TimePicker({
+   * let TimePicker = new TimePicker({
    *   container: "timePicker", // DOM element for widget
    *   value: "20130208T0809" // This will display time as 8:09 AM
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   async loadLocale(): Promise<void> {

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./operations/AppendVertex","./operations/UpdateVertices","./operations/RemoveVertices","./operations/SplitEdge","./operations/SetVertexPosition"],(function(e,t,i,o,r,p){"use strict";e.AppendVertex=t.AppendVertex,e.UpdateVertices=i.UpdateVertices,e.RemoveVertices=o.RemoveVertices,e.SplitEdge=r.SplitEdge,e.SetVertexPosition=p.SetVertexPosition,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./operations/AppendVertex","./operations/UpdateVertices","./operations/RemoveVertices","./operations/SplitEdge","./operations/SetVertexPosition","./operations/CloseComponent"],(function(e,t,o,i,p,n,r){"use strict";e.AppendVertex=t.AppendVertex,e.UpdateVertices=o.UpdateVertices,e.RemoveVertices=i.RemoveVertices,e.SplitEdge=p.SplitEdge,e.SetVertexPosition=n.SetVertexPosition,e.CloseComponent=r.CloseComponent,Object.defineProperty(e,"__esModule",{value:!0})}));

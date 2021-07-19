@@ -123,6 +123,8 @@ const CSS = {
   zoomCapLine: "esri-size-slider__zoom-cap-line",
   zoomCapMask: "esri-size-slider__zoom-cap-mask",
   zoomCapUnderline: "esri-size-slider__zoom-cap-underline",
+  primaryHandle: "esri-size-slider--primary-handle",
+  track: "esri-size-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -168,8 +170,8 @@ class SizeSlider extends SmartMappingSliderBase {
    *   ]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -673,10 +675,12 @@ class SizeSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { label, primaryHandleEnabled, state, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.primaryHandle]: primaryHandleEnabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (
@@ -738,8 +742,9 @@ class SizeSlider extends SmartMappingSliderBase {
       widths.reverse();
     }
 
+    const valuesClone = values.slice().sort((a, b) => (a > b ? 1 : -1));
     const [bottomWidth, topWidth] = widths;
-    const [bottomValue, topValue] = values;
+    const [bottomValue, topValue] = valuesClone;
 
     const path = primaryHandleEnabled
       ? getDynamicPathForSizeStops({

@@ -1,1 +1,1 @@
-{"buttons":{"browse":"Examinar","zoomTo":"Acercar a"},"selector":{"selectSite":"Seleccionar un sitio","selectFacility":"Seleccionar una instalación"},"noResults":"No se encontraron resultados."}
+{"buttons":{"browse":"Examinar","zoomTo":"Acercar a"},"selector":{"selectSite":"Seleccionar un sitio","selectFacility":"Seleccionar una instalación","sitesLabel":"Lista de sitios","siteFacilitiesLabel":"Lista de instalaciones en {name}","facilitiesLabel":"Lista de instalaciones","levelsLabel":"Lista de niveles en {name}"},"noResults":"No se encontraron resultados."}

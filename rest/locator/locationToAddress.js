@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../request","../utils","../../tasks/support/AddressCandidate","../../tasks/support/LocationToAddressParameters"],(function(e,t,s,r,o){"use strict";async function a(e,r,a){r=o.from(r);const d=s.parseUrl(e),c={...r.toJSON(),f:"json"},i=s.encode({...d.query,...c}),u=s.asValidOptions(i,a),f=`${d.path}/reverseGeocode`;return t(f,u).then(n)}function n({data:e}){if(!e)return;const{address:t,location:s}=e,o=t&&t.Match_addr||"";return r.fromJSON({address:o,attributes:t||{},location:s,score:100})}e.locationToAddress=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","../support/AddressCandidate","../support/LocationToAddressParameters"],(function(e,t,r,o,s,n){"use strict";function a(e,t,r){return u.apply(this,arguments)}function u(){return(u=t._asyncToGenerator((function*(e,t,s){t=n.from(t);const a=o.parseUrl(e),u={...t.toJSON(),f:"json"},i=o.encode({...a.query,...u}),c=o.asValidOptions(i,s),l=`${a.path}/reverseGeocode`;return r(l,c).then(d)}))).apply(this,arguments)}function d({data:e}){if(!e)return;const{address:t,location:r}=e,o=t&&t.Match_addr||"";return s.fromJSON({address:o,attributes:t||{},location:r,score:100})}e.locationToAddress=a,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -10,8 +10,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import Point from "esri/geometry/Point";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -42,8 +42,8 @@ class Spinner extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -78,7 +78,7 @@ class Spinner extends Widget {
   //----------------------------------
 
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

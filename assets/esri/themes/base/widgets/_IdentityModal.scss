@@ -87,6 +87,16 @@
       width: 75vw;
     }
   }
+
+  html[dir="rtl"] {
+    .esri-identity-modal--open .esri-identity-modal__dialog {
+      text-align: right;
+    }
+    .esri-identity-modal__close-button {
+      right: unset;
+      left: $side-spacing--half;
+    }
+  }
 }
 
 @if $include_IdentityModal == true {

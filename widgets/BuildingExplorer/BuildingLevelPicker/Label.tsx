@@ -29,7 +29,7 @@ export interface Messages {
 
 type OnClickFn = () => void;
 
-export interface LabelCtrParams {
+export interface ConstructProperties {
   /**
    * The level represented by the label.
    */
@@ -56,15 +56,15 @@ export interface LabelCtrParams {
  * Label widget for a single building level.
  */
 @subclass("esri.widgets.BuildingExplorer.BuildingLevelPicker.Label")
-export class Label extends Widget implements LabelCtrParams {
+export class Label extends Widget implements ConstructProperties {
   //------------------------------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //------------------------------------------------------------------------------------------------
 
-  constructor(args: LabelCtrParams, parentNode?: string | Element) {
-    super(args, parentNode);
+  constructor(properties: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //------------------------------------------------------------------------------------------------

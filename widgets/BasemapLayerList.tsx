@@ -17,7 +17,7 @@
  *
  *
  * @example
- * var basemapLayerList = new BasemapLayerList({
+ * let basemapLayerList = new BasemapLayerList({
  *   view: view
  * });
  * // Adds the widget below other elements in the top left corner of the view
@@ -49,8 +49,8 @@ import ActionToggle from "esri/support/actions/ActionToggle";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -71,6 +71,7 @@ import ListItemPanel from "esri/widgets/LayerList/ListItemPanel";
 import { findSelectedItem } from "esri/widgets/LayerList/support/layerListUtils";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
@@ -236,12 +237,12 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    *
    * @example
    * // typical usage
-   * var BasemapLayerList = new BasemapLayerList({
+   * let BasemapLayerList = new BasemapLayerList({
    *   view: view
    * });
    */
-  constructor(params?: BasemapLayerListParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: BasemapLayerListParams, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -339,7 +340,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    *
    * @example
    *
-   * var bmLayerList = new BasemapLayerList({
+   * let bmLayerList = new BasemapLayerList({
    *   view: view,
    *   editingEnabled: true,
    *   baseListItemCreatedFunction: function(event){
@@ -390,6 +391,31 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   errorsVisible: false;
 
   //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the widget title (i.e. "Basemap").
+   * By default, this is rendered
+   * as a level 2 heading (e.g. `<h2>Basemap</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // the widget title will render as an <h3>
+   * basemapLayerList.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
+
+  //----------------------------------
   //  iconClass
   //----------------------------------
 
@@ -397,7 +423,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * The widget's default CSS icon class.
    *
    * @name iconClass
-   * @istance
+   * @instance
    * @type {string}
    */
   @property()
@@ -491,7 +517,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    *
    * @example
    *
-   * var bmLayerList = new BasemapLayerList({
+   * let bmLayerList = new BasemapLayerList({
    *   view: view,
    *   editingEnabled: true,
    *   referenceListItemCreatedFunction: function(event){
@@ -592,7 +618,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -773,7 +799,11 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   protected renderBasemapTitle(): VNode {
     const { basemapTitle } = this.viewModel;
 
-    return <h2 class={this.classes(CSS.heading, CSS.mainHeading)}>{basemapTitle}</h2>;
+    return (
+      <Heading level={this.headingLevel} class={this.classes(CSS.heading, CSS.mainHeading)}>
+        {basemapTitle}
+      </Heading>
+    );
   }
 
   protected renderEditTitleButton(): VNode {
@@ -837,9 +867,13 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
 
   protected renderBaseHeader(): VNode {
     return (
-      <h3 key="base-heading" class={this.classes(CSS.heading, CSS.listHeading)}>
+      <Heading
+        key="base-heading"
+        level={this.headingLevel + 1}
+        class={this.classes(CSS.heading, CSS.listHeading)}
+      >
         {this.messages.baseHeading}
-      </h3>
+      </Heading>
     );
   }
 
@@ -865,9 +899,13 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
 
   protected renderReferenceHeader(): VNode {
     return (
-      <h3 key="reference-heading" class={this.classes(CSS.heading, CSS.listHeading)}>
+      <Heading
+        key="reference-heading"
+        level={this.headingLevel + 1}
+        class={this.classes(CSS.heading, CSS.listHeading)}
+      >
         {this.messages.referenceHeading}
-      </h3>
+      </Heading>
     );
   }
 

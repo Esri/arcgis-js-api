@@ -1,1 +1,1 @@
-{"buttons":{"browse":"Selaa","zoomTo":"Tarkenna kohteeseen"},"selector":{"selectSite":"Valitse sivusto","selectFacility":"Valitse palvelu"},"noResults":"Tuloksia ei löytynyt."}
+{"buttons":{"browse":"Selaa","zoomTo":"Tarkenna kohteeseen"},"selector":{"selectSite":"Valitse sivusto","selectFacility":"Valitse palvelu","sitesLabel":"Sivustojen luettelo","siteFacilitiesLabel":"Luettelo palveluista kohteessa {name}","facilitiesLabel":"Luettelo palveluista","levelsLabel":"Luettelo tasoista kohteesta {name}"},"noResults":"Tuloksia ei löytynyt."}

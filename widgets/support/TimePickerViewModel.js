@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/has","../../core/Logger","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/property","../../core/accessorSupport/decorators/subclass","../../core/urlUtils","../../core/uuid","../../portal/support/resourceExtension","./MomentElementViewModel"],(function(e,r,o,s,t,c,u,i,n,l,p){"use strict";let a=function(r){function o(e){return r.call(this,e)||this}return e._inheritsLoose(o,r),o}(p);return a=r.__decorate([u.subclass("esri.widgets.support.TimePickerViewModel")],a),a}));
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass","./MomentElementViewModel"],(function(e,r,s,o,c,t,u,i){"use strict";let n=function(r){function s(e){return r.call(this,e)||this}return e._inheritsLoose(s,r),s}(i);return n=r.__decorate([u.subclass("esri.widgets.support.TimePickerViewModel")],n),n}));

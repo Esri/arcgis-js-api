@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","./support/TraceResult"],(function(e,t,r,n,a){"use strict";function o(e,t,r){return c.apply(this,arguments)}function c(){return(c=t._asyncToGenerator((function*(e,t,a){const o=n.parseUrl(e),c=t.toJSON();c.traceLocations=JSON.stringify(t.traceLocations);const l={...c,f:"json"},s=n.encode({...o.query,...l}),u=n.asValidOptions(s,a),g=`${o.path}/trace`;return r(g,u).then((e=>i(e,t.outSpatialReference)))}))).apply(this,arguments)}function i(e,t){const{data:r}=e;if(!r)return null;const n=a.fromJSON(r.traceResults);return n.aggregatedGeometry&&t&&(n.aggregatedGeometry.line&&(n.aggregatedGeometry.line.spatialReference=t.clone()),n.aggregatedGeometry.multipoint&&(n.aggregatedGeometry.multipoint.spatialReference=t.clone()),n.aggregatedGeometry.polygon&&(n.aggregatedGeometry.polygon.spatialReference=t.clone())),n}e.trace=o,Object.defineProperty(e,"__esModule",{value:!0})}));

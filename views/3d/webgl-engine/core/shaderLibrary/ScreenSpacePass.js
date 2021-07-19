@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","../shaderModules/interfaces"],(function(e,i){"use strict";function o(e){e.attributes.add("position","vec2"),e.varyings.add("uv","vec2"),e.vertex.code.add(i.glsl`
     void main(void) {

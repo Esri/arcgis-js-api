@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../request","../utils","../../tasks/support/SuggestionCandidate","../../tasks/support/SuggestLocationsParameters"],(function(t,s,e,n,o){"use strict";async function r(t,n,r){const a=e.parseUrl(t),i={...(n=o.from(n)).toJSON(),f:"json"},c=e.encode({...a.query,...i}),g=e.asValidOptions(c,r),p=`${a.path}/suggest`;return s(p,g).then(u)}function u(t){const{data:s}=t;if(!s)return[];const{suggestions:e}=s;return e?e.map((t=>new n(t))):[]}t.suggestLocations=r,Object.defineProperty(t,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","../support/SuggestionCandidate","../support/SuggestLocationsParameters"],(function(t,e,n,s,o,r){"use strict";function u(t,e,n){return i.apply(this,arguments)}function i(){return(i=e._asyncToGenerator((function*(t,e,o){const u=s.parseUrl(t),i={...(e=r.from(e)).toJSON(),f:"json"},p=s.encode({...u.query,...i}),c=s.asValidOptions(p,o),l=`${u.path}/suggest`;return n(l,c).then(a)}))).apply(this,arguments)}function a(t){const{data:e}=t;if(!e)return[];const{suggestions:n}=e;return n?n.map((t=>new o(t))):[]}t.suggestLocations=u,Object.defineProperty(t,"__esModule",{value:!0})}));

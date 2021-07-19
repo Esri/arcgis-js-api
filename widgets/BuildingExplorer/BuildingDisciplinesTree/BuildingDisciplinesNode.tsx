@@ -14,7 +14,7 @@ import { LayerTreeNode } from "esri/support/LayerTreeNode";
 import { VNode } from "esri/../support/interfaces";
 import { tsx, isRTL } from "esri/../support/widget";
 
-interface ConstructionParameters {
+interface ConstructProperties {
   node: LayerTreeNode;
   messages?: Messages;
   toggleSiblingsVisibility?: boolean;
@@ -65,7 +65,7 @@ class BuildingDisciplinesNode extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(properties: ConstructionParameters) {
+  constructor(properties: ConstructProperties) {
     super(properties as any);
   }
 

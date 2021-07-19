@@ -17,7 +17,7 @@ import BuildingDisciplinesNode from "esri/widgets/BuildingDisciplinesNode";
 import { VNode } from "esri/../support/interfaces";
 import { tsx } from "esri/../support/widget";
 
-interface ConstructionParameters {
+interface ConstructProperties {
   toggleSiblingsVisibility?: boolean;
 }
 
@@ -55,7 +55,7 @@ class BuildingDisciplinesTree extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(properties?: ConstructionParameters) {
+  constructor(properties?: ConstructProperties) {
     super(properties as any);
   }
 

@@ -11,7 +11,7 @@
  * {@link module:esri/widgets/AreaMeasurement2D}.
  *
  * @example
- * var measurementWidget = new AreaMeasurement3D({
+ * let measurementWidget = new AreaMeasurement3D({
  *   view: view
  * });
  *
@@ -40,8 +40,11 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
+
+// esri.views.3d.layers
+import "../views/3d/layers/AreaMeasurementLayerView3D";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -55,6 +58,10 @@ import AreaMeasurement3DMessages from "esri/widgets/AreaMeasurement3D/t9n/AreaMe
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+type AreaMeasurement3DLocaleStrings = Partial<
+  Pick<AreaMeasurement3DMessages, "widgetLabel" | "hint" | "newMeasurement">
+>;
 
 const BASE = "esri-area-measurement-3d";
 
@@ -112,12 +119,12 @@ class AreaMeasurement3D extends Widget {
    *
    * @example
    * // typical usage
-   * var measurementWidget = new AreaMeasurement3D({
+   * let measurementWidget = new AreaMeasurement3D({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -137,7 +144,7 @@ class AreaMeasurement3D extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  visible
@@ -198,6 +205,16 @@ class AreaMeasurement3D extends Widget {
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
   label: string = undefined;
+
+  //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  localeStrings?: AreaMeasurement3DLocaleStrings;
 
   //----------------------------------
   //  messages

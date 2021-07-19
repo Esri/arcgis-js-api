@@ -106,6 +106,8 @@ const CSS = {
   rampElement: "esri-color-slider__ramp",
   sliderContainer: "esri-color-slider__slider-container",
   histogramContainer: "esri-color-slider__histogram-container",
+  primaryHandle: "esri-color-slider--primary-handle",
+  track: "esri-color-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -139,10 +141,8 @@ class ColorSlider extends SmartMappingSliderBase {
    *   stops: rendererResponse.visualVariable.stops
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
-
-    this.viewModel && this.viewModel.set("thumbsConstrained", false);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     // For SVG fills
     this._bgFillId = `${this.id}-bg-fill`;
@@ -275,7 +275,7 @@ class ColorSlider extends SmartMappingSliderBase {
    *   field: "fieldName",
    *   basemap: "gray"
    * }).then(function(colorResponse){
-   *   var slider = new ColorSlider({
+   *   let slider = new ColorSlider({
    *     stops: colorResponse.visualVariable.stops,
    *     min: colorResponse.statistics.min,
    *     max: colorResponse.statistics.max,
@@ -489,10 +489,12 @@ class ColorSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { label, primaryHandleEnabled, state, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.primaryHandle]: primaryHandleEnabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

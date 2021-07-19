@@ -7,12 +7,12 @@
  * in other parts of the view.
  *
  * @example
- * var view = new MapView({
+ * let view = new MapView({
  *    container: "viewDiv",
  *    map: map
  * });
  *
- * var zoom = new Zoom({
+ * let zoom = new Zoom({
  *   view: view
  * });
  *
@@ -32,8 +32,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -74,8 +74,8 @@ class Zoom extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -197,7 +197,7 @@ class Zoom extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

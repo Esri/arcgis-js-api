@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+*/
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass"],(function(e,r,t,s,i,o,n,c){"use strict";function p(e){return"portalItem"in e}const a=e=>{let i=function(e){function t(){return e.apply(this,arguments)||this}return r._inheritsLoose(t,e),r._createClass(t,[{key:"apiKey",get:function(){var e;return this._isOverridden("apiKey")?this._get("apiKey"):p(this)?null==(e=this.portalItem)?void 0:e.apiKey:null},set:function(e){null!=e?this._override("apiKey",e):(this._clearOverride("apiKey"),this.clear("apiKey","user"))}}]),t}(e);return t.__decorate([s.property({type:String})],i.prototype,"apiKey",null),i=t.__decorate([c.subclass("esri.layers.mixins.APIKeyMixin")],i),i};e.APIKeyMixin=a,Object.defineProperty(e,"__esModule",{value:!0})}));

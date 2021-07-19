@@ -32,9 +32,7 @@
  */
 
 // esri.core
-import { deprecatedProperty } from "esri/core/deprecate";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
-import Logger from "esri/core/Logger";
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -42,6 +40,9 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 
 // esri.layers
 import FeatureLayer from "esri/layers/FeatureLayer";
+
+// esri.libs
+import { VNode } from "esri/libs/maquette";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -57,7 +58,7 @@ import TemplateItemGroup from "esri/widgets/FeatureTemplates/TemplateItemGroup";
 import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureTemplates";
 
 // esri.widgets.support
-import { VNode } from "esri/widgets/support/interfaces";
+import { HeadingLevel } from "esri/widgets/support/Heading";
 import { messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
 const CSS = {
@@ -69,11 +70,14 @@ const CSS = {
   widget: "esri-widget"
 };
 
-function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string {
-  return itemOrGroup.label;
+function isGroup(itemOrGroup: TemplateItem | TemplateItemGroup): itemOrGroup is TemplateItemGroup {
+  return "items" in itemOrGroup;
 }
 
-const logger = Logger.getLogger("esri.widgets.FeatureTemplates");
+function getItemOrGroupId(itemOrGroup: TemplateItem | TemplateItemGroup): string {
+  const { label } = itemOrGroup;
+  return isGroup(itemOrGroup) ? label : `${label}–${itemOrGroup.layer.id}`;
+}
 
 interface VisibleElements {
   filter?: boolean;
@@ -83,8 +87,31 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   filter: true
 };
 
+type FeatureTemplatesProperties = Partial<
+  Pick<
+    FeatureTemplates,
+    | "container"
+    | "filterFunction"
+    | "filterText"
+    | "groupBy"
+    | "headingLevel"
+    | "label"
+    | "layers"
+    | "viewModel"
+    | "visibleElements"
+  >
+>;
+
 @subclass("esri.widgets.FeatureTemplates")
 class FeatureTemplates extends HandleOwnerMixin(Widget) {
+  // ------------------------
+  //  Typedefs
+  // ------------------------
+
+  // ------------------------
+  //  FilterFunction typedef
+  // ------------------------
+
   /**
    * The filter used when setting the [filterFunction](#filterFunction)
    * property. It takes an object containing a {@link module:esri/widgets/FeatureTemplates/TemplateItem#label name}
@@ -117,6 +144,10 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    *   filterFunction: myFilterFunction
    * });
    */
+
+  // ------------------------
+  //  GroupByFunction typedef
+  // ------------------------
 
   /**
    * The function used when setting the [groupBy](#groupBy) property. It is
@@ -154,9 +185,9 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * });
    *
    * @example
-   * // group template items by layers.
-   * // this function is as same as setting
-   * // groupBy property to "layer" option.
+   * // Group template items by layers.
+   * // This function is as same as setting
+   * // the groupBy property to "layer" option.
    * function groupByLayer (grouping) {
    *   const group = {
    *     key: grouping.layer,
@@ -166,12 +197,16 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * }
    *
    * // Create the FeatureTemplates widget
-   * templates = new FeatureTemplates({
+   * const templates = new FeatureTemplates({
    *   container: "templatesDiv",
    *   layers: layers,
    *   groupBy: groupByLayer
    * });
    */
+
+  // ---------------------
+  // select event
+  // ---------------------
 
   /**
    * Fires when a {@link module:esri/widgets/FeatureTemplates/TemplateItem template item} is selected.
@@ -192,7 +227,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    *   // Create a new feature with the selected template at cursor location
    *   const handler = view.on("click", function(event) {
    *     handler.remove(); // remove click event handler.
-   *     event.stopPropagation(); // stop click event propagation
+   *     event.stopPropagation(); // Stop click event propagation
    *
    *     if (event.mapPoint) {
    *       // Create a new feature with the selected template item.
@@ -237,8 +272,8 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    *   layers: layers
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: FeatureTemplatesProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this.renderItemIcon = this.renderItemIcon.bind(this);
     this._afterItemCreateOrUpdate = this._afterItemCreateOrUpdate.bind(this);
@@ -307,30 +342,6 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   //  Properties
   //
   //--------------------------------------------------------------------------
-
-  //----------------------------------
-  //  filterEnabled
-  //----------------------------------
-
-  /**
-   * When `true`, displays the template [filter](#filterFunction).
-   *
-   * ![featureTemplatesFilter](../assets/img/apiref/widgets/featureTemplatesFilter.png)
-   *
-   * @name filterEnabled
-   * @type {boolean}
-   * @instance
-   * @default true
-   * @deprecated since version 4.15. Use {@link module:esri/widgets/FeatureTemplates#visibleElements FeatureTemplates.visibleElements.filter} instead.
-   */
-  @property()
-  set filterEnabled(value: boolean) {
-    deprecatedProperty(logger, "filterEnabled", {
-      replacement: "visibleElements.filter",
-      version: "4.15"
-    });
-    this.visibleElements = { ...this.visibleElements, filter: value };
-  }
 
   //----------------------------------
   //  filterFunction
@@ -427,6 +438,31 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   groupBy: GroupByType = null;
 
   //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the labels of grouped feature templates.
+   * By default, the group label is rendered
+   * as a level 4 heading (e.g. `<h4>Group label</h4>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 4
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // Group label will render as an <h3>
+   * featureTemplates.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 4;
+
+  //----------------------------------
   //  label
   //----------------------------------
 
@@ -500,6 +536,22 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   messages: FeatureTemplatesMessages = null;
 
   //----------------------------------
+  //  selectedItem
+  //----------------------------------
+
+  /**
+   * The selected template item.
+   *
+   * @name selectedItem
+   * @instance
+   * @type {module:esri/widgets/FeatureTemplates/TemplateItem}
+   * @ignore
+   * @todo doc after 4.20
+   */
+  @aliasOf("viewModel.selectedItem")
+  selectedItem: TemplateItem = null;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -531,6 +583,8 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    * The visible elements that are displayed within the widget.
    * This property provides the ability to turn individual elements of the widget's display on/off.
    *
+   * ![featureTemplatesFilter](../assets/img/apiref/widgets/featureTemplatesFilter.png)
+   *
    * @name visibleElements
    * @instance
    * @type {module:esri/widgets/FeatureTemplates~VisibleElements}
@@ -557,40 +611,60 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
+  /**
+   * Selects the {@link module:esri/widgets/FeatureTemplates/TemplateItem template item} to use.
+   *
+   * @method select
+   * @instance
+   * @see [event:select](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-FeatureTemplates.html#event-select)
+   *
+   * @param {module:esri/widgets/FeatureTemplates/TemplateItem} [item] - The {@link module:esri/widgets/FeatureTemplates/TemplateItem template item} to select.
+   *
+   * @ignore
+   * @todo doc after 4.20
+   */
+  @aliasOf("viewModel.select")
+  select(_item: TemplateItem): void {
+    return null;
+  }
+
   render(): VNode {
     const {
       filterText,
+      headingLevel,
       messages,
-      viewModel: { items, state }
+      viewModel: { items, selectedItem, state }
     } = this;
     const filterEnabled = this.visibleElements.filter;
 
     return (
       <div class={this.classes(CSS.base, CSS.widget)} aria-label={messages.widgetLabel}>
-        {state === "loading"
-          ? this.renderLoader()
-          : state === "ready"
-          ? ItemList<TemplateItem>({
-              id: this.id,
-              identify: getItemOrGroupId,
-              filterText,
-              items,
-              messages: {
-                filterPlaceholder: messages.filterPlaceholder,
-                noItems: messages.noItems,
-                noMatches: messages.noMatches
-              },
-              filterEnabled,
-              onItemSelect: (item) => {
-                this.viewModel.select(item);
-              },
-              onFilterChange: (value) => {
-                this.filterText = value;
-                this.viewModel.refresh();
-              },
-              renderIcon: this.renderItemIcon
-            })
-          : null}
+        {state === "loading" ? (
+          this.renderLoader()
+        ) : state === "ready" ? (
+          <ItemList
+            id={this.id}
+            identify={getItemOrGroupId}
+            filterText={filterText}
+            items={items}
+            headingLevel={headingLevel}
+            messages={{
+              filterPlaceholder: messages.filterPlaceholder,
+              noItems: messages.noItems,
+              noMatches: messages.noMatches
+            }}
+            filterEnabled={filterEnabled}
+            onItemSelect={(item) => {
+              this.viewModel.select(item);
+            }}
+            onFilterChange={(value) => {
+              this.filterText = value;
+              this.viewModel.refresh();
+            }}
+            renderIcon={this.renderItemIcon}
+            selectedItem={selectedItem}
+          />
+        ) : null}
       </div>
     );
   }

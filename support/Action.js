@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/has","../core/Logger","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/property","../core/accessorSupport/decorators/subclass","../core/urlUtils","../core/uuid","../portal/support/resourceExtension","./actions/ActionButton"],(function(r,o,e,s,t,c,n,u,i,p,a){"use strict";const l="esri.support.Action",d=s.getLogger(l);let g=function(o){function e(r){var e;return e=o.call(this,r)||this,d.warn("DEPRECATED: 'esri/support/Action' -- use 'esri/support/actions/ActionButton' instead."),e}return r._inheritsLoose(e,o),e}(a);return g=o.__decorate([n.subclass(l)],g),g}));
+define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/Logger","../core/accessorSupport/decorators/property","../core/has","../core/accessorSupport/ensureType","../core/accessorSupport/decorators/subclass","./actions/ActionButton"],(function(r,s,e,o,t,c,n,u){"use strict";const i="esri.support.Action",p=e.getLogger(i);let a=function(s){function e(r){var e;return e=s.call(this,r)||this,p.warn("DEPRECATED: 'esri/support/Action' -- use 'esri/support/actions/ActionButton' instead."),e}return r._inheritsLoose(e,s),e}(u);return a=s.__decorate([n.subclass(i)],a),a}));

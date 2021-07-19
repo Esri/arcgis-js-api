@@ -46,8 +46,8 @@ import { init, whenTrue } from "esri/core/watchUtils";
 import { cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Slider from "esri/widgets/Slider";
@@ -167,8 +167,8 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    */
-  constructor(params?: ScaleRangeSliderParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ScaleRangeSliderParams, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -615,7 +615,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: "viewModel.view"
   })
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

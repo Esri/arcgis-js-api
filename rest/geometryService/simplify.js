@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../core/urlUtils","../../geometry/support/jsonUtils","../../request","./utils"],(function(e,t,i,s,r){"use strict";async function o(e,o,n){const u="string"==typeof e?t.urlToObject(e):e,c=o[0].spatialReference,f=i.getJsonType(o[0]),y={...n,query:{...u.query,f:"json",sr:c.wkid?c.wkid:JSON.stringify(c),geometries:JSON.stringify(r.encodeGeometries(o))}},{data:l}=await s(u.path+"/simplify",y);return r.decodeGeometries(l.geometries,f,c)}e.simplify=o,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../core/urlUtils","../../geometry/support/jsonUtils","./utils"],(function(e,t,r,i,s,n){"use strict";function o(e,t,r){return u.apply(this,arguments)}function u(){return(u=t._asyncToGenerator((function*(e,t,o){const u="string"==typeof e?i.urlToObject(e):e,l=t[0].spatialReference,p=s.getJsonType(t[0]),c={...o,query:{...u.query,f:"json",sr:l.wkid?l.wkid:JSON.stringify(l),geometries:JSON.stringify(n.encodeGeometries(t))}},{data:y}=yield r(u.path+"/simplify",c);return n.decodeGeometries(y.geometries,p,l)}))).apply(this,arguments)}e.simplify=o,Object.defineProperty(e,"__esModule",{value:!0})}));

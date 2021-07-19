@@ -70,7 +70,7 @@ const CORE_STYLES = {
   "z-index": "1000"
 };
 
-type PopoverParams = Partial<
+type ConstructProperties = Partial<
   Pick<
     Popover,
     "owner" | "offset" | "open" | "placement" | "anchorElement" | "renderContentFunction"
@@ -92,8 +92,8 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: PopoverParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {

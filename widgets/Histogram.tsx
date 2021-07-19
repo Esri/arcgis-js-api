@@ -162,8 +162,10 @@ class Histogram extends Widget {
    *   average: 44
    * });
    */
-  constructor(params?: HistogramParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: HistogramParams, parentNode?: string | Element) {
+    super(properties, parentNode);
+
+    this._bgFillId = `${this.id}-bg-fill`;
   }
 
   //--------------------------------------------------------------------------
@@ -171,6 +173,8 @@ class Histogram extends Widget {
   //  Variables
   //
   //--------------------------------------------------------------------------
+
+  private _bgFillId: string = null;
 
   private _containerNode: HTMLElement = null;
 
@@ -238,12 +242,12 @@ class Histogram extends Widget {
    *
    * @example
    * histogram.barCreatedFunction = function(index, element){
-   *   var bin = histogram.bins[index];
-   *   var midValue = ((bin.maxValue - bin.minValue) / 2) + bin.minValue;
+   *   let bin = histogram.bins[index];
+   *   let midValue = ((bin.maxValue - bin.minValue) / 2) + bin.minValue;
    *   // colors the histogram bins with a custom function
    *   // (not defined here for brevity of the snippet) for interpolating
    *   // colors from data values to match the legend
-   *   var color = getColorFromValue(midValue);
+   *   let color = getColorFromValue(midValue);
    *   element.setAttribute("fill", color.toHex());
    * };
    */
@@ -583,7 +587,7 @@ class Histogram extends Widget {
    *   returned from {@link module:esri/smartMapping/statistics/histogram}.
    *
    * @example
-   * var colorParams = {
+   * let colorParams = {
    *   layer: povLayer,
    *   basemap: map.basemap,
    *   field: "POP_POVERTY",
@@ -591,7 +595,7 @@ class Histogram extends Widget {
    *   theme: "above-and-below"
    * };
    *
-   * var stats = null;
+   * let stats = null;
    *
    * colorRendererCreator
    *   .createContinuousRenderer(colorParams)
@@ -608,7 +612,7 @@ class Histogram extends Widget {
    *    })
    *    .then(function(histogramResult) {
    *
-   *      var histogram = Histogram.fromHistogramResult(histogramResult);
+   *      let histogram = Histogram.fromHistogramResult(histogramResult);
    *      histogram.container = "histogram";
    *      histogram.average = stats.avg;
    *    })
@@ -649,10 +653,14 @@ class Histogram extends Widget {
       return undefined;
     }
 
+    const _bgFillId = this._bgFillId;
+    const style = `clip-path: url(#${_bgFillId})`;
+
     return (
       <div class={CSS.content}>
         <svg class={CSS.svg} xmlns="http://www.w3.org/2000/svg">
-          {this.renderBarsGroup()}
+          <defs>{this.renderFillDefinition(_bgFillId)}</defs>
+          <g style={style}>{this.renderBarsGroup()}</g>
           {this.renderLinesGroup()}
         </svg>
       </div>
@@ -766,6 +774,7 @@ class Histogram extends Widget {
         bind={this}
         class={this.classes(CSS.dataLinesSubgroup)}
       >
+        <title key="title">{average}</title>
         {this.renderLine(average, this.classes(CSS.averageDataLine))}
         {this.renderLabel(average, labelNodes)}
       </g>
@@ -792,6 +801,7 @@ class Histogram extends Widget {
         class={this.classes(CSS.dataLinesSubgroup)}
         data-index={index}
       >
+        <title key="title">{value}</title>
         {this.renderLine(value)}
         {this.renderLabel(value, label)}
       </g>
@@ -827,6 +837,16 @@ class Histogram extends Widget {
       >
         {label}
       </text>
+    );
+  }
+
+  protected renderFillDefinition(id: string): VNode {
+    const [totalHeight, totalWidth] = this._getContainerDimensions();
+
+    return (
+      <clipPath id={id}>
+        <rect x="0" y="0" width={totalWidth} height={totalHeight} />
+      </clipPath>
     );
   }
 

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function n(e,n){if(!n||!e||!e.map)return;const{map:t}=e;t.layers.find((e=>e===n))||t.add(n)}e.addUniqueLayer=n,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports"],(function(e){"use strict";function r(e,r,n){if(!r||!e||!e.map)return;const{map:d}=e,t=d.layers.find((e=>e===r));t||d.add(r,n),null!=n&&d.layers.reorder(t,n)}e.addUniqueLayer=r,Object.defineProperty(e,"__esModule",{value:!0})}));

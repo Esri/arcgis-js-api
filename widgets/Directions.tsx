@@ -18,7 +18,7 @@
  * Any types of customizations made to the underlying functionality of the widget should be handled via its [viewModel](#viewModel) property.
  *
  * @example
- * var directionsWidget = new Directions({
+ * let directionsWidget = new Directions({
  *   view: view
  * });
  * // Adds the Directions widget below other elements in
@@ -56,8 +56,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 // esri.core.t9n
 import UnitsMessages from "esri/core/t9n/Units";
 
-// esri.intl
-import { loadMoment } from "esri/intl/moment";
+// esri.rest.support
+import RouteResultsContainer from "esri/rest/support/RouteResultsContainer";
 
 // esri.symbols
 import Symbol from "esri/symbols/Symbol";
@@ -65,13 +65,10 @@ import Symbol from "esri/symbols/Symbol";
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
-// esri.tasks.support
-import RouteResultsContainer from "esri/tasks/support/RouteResultsContainer";
-
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import { IViewCursor } from "esri/views/IView";
-import MapView from "esri/views/MapView";
+import { ViewCursor } from "esri/views/IViewBase";
 
 // esri.widgets
 import { SearchProperties, SearchResponse, SearchResult, SearchResults } from "esri/widgets/interfaces";
@@ -98,9 +95,13 @@ import RouteSections from "esri/widgets/Directions/support/RouteSections";
 // esri.widgets.Directions.t9n
 import DirectionsMessages from "esri/widgets/Directions/t9n/Directions";
 
+// esri.widgets.Search.support
+import { isArcGISWorldGeocoder, meteredArcGISLocatorUrl } from "esri/widgets/Search/support/locatorUtils";
+
 // esri.widgets.support
 import DatePicker from "esri/widgets/support/DatePicker";
 import { GoToOverride } from "esri/widgets/support/GoTo";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import TimePicker from "esri/widgets/support/TimePicker";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
@@ -123,11 +124,11 @@ function getDefaultStops(): [PlaceholderStop, PlaceholderStop] {
 const etaTimeFormatOptions = {
   hour: "numeric",
   minute: "numeric"
-};
+} as const;
 
 const gmtOffsetFormatOptions = {
   minimumIntegerDigits: 2
-};
+} as const;
 
 function formatGMTOffset(date: Date): string {
   const timeZoneOffset = date.getTimezoneOffset();
@@ -151,6 +152,24 @@ function isPointerOnSuggestion(event: PointerEvent): boolean {
     .find((el: HTMLElement) => el.classList?.contains("esri-search__suggestions-list"));
 }
 
+type DirectionsProperties = Partial<
+  Pick<
+    Directions,
+    | "apiKey"
+    | "goToOverride"
+    | "headingLevel"
+    | "iconClass"
+    | "label"
+    | "maxStops"
+    | "routeServiceUrl"
+    | "routeSymbol"
+    | "searchProperties"
+    | "stopSymbols"
+    | "view"
+    | "viewModel"
+  >
+>;
+
 @subclass("esri.widgets.Directions")
 class Directions extends Widget {
   //--------------------------------------------------------------------------
@@ -167,12 +186,8 @@ class Directions extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
-  }
-
-  async loadLocale(): Promise<void> {
-    this._moment = await loadMoment();
+  constructor(properties?: DirectionsProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -190,7 +205,7 @@ class Directions extends Widget {
         }
       }),
 
-      when<MapView | ISceneView>(this, "view", (value, oldValue) => {
+      when<IMapView | ISceneView>(this, "view", (value, oldValue) => {
         if (oldValue) {
           this._viewClickHandle = null;
           this._handles.remove(oldValue);
@@ -270,15 +285,13 @@ class Directions extends Widget {
 
   private _handles = new Handles<any>();
 
-  private _moment: typeof import("moment");
-
   private _newPlaceholderStop: PlaceholderStop = null;
 
   private _pointerDownUpHandle: PausableHandle;
 
   private _pointerPressedSearchSuggestionStop: PlaceholderStop = null;
 
-  private _previousCursor: IViewCursor;
+  private _previousCursor: ViewCursor;
 
   private _routeSections: RouteSections = new RouteSections();
 
@@ -304,9 +317,18 @@ class Directions extends Widget {
 
   /**
    * An authorization string used to access a resource or service.
-   * [API keys](/documentation/security-and-authentication/api-keys/) are generated and managed in the
-   * [ArcGIS Developer dashboard](/api-keys). An API key is tied explicitly to an ArcGIS account; it is also used to
-   * monitor service usage.
+   * [API keys](/documentation/security-and-authentication/api-keys/) are generated
+   * and managed in the [ArcGIS Developer dashboard](/api-keys). An API key is tied
+   * explicitly to an ArcGIS account; it is also used to monitor service usage.
+   * Setting a fine-grained API key on a specific class overrides the [global API key](esri-config.html#apiKey).
+   *
+   * By default, if this property is defined in the widget, or if using the
+   * {@link module:esri/config#apiKey esriConfig.apiKey} property instead, the following URLs
+   * will be used (unless overwritten in the app, or if using different defaults from a portal):
+   *
+   * Geocoding URL: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+   *
+   * Routing URL: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
    *
    * @instance
    * @name apiKey
@@ -315,8 +337,7 @@ class Directions extends Widget {
    * @example
    * const directionsWidget = new Directions({
    *   view: view,
-   *   apiKey: "abcdefghijklmnopqrstuvwxyz",
-   *   routeServiceUrl: "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World"
+   *   apiKey: "abcdefghijklmnopqrstuvwxyz"
    * });
    * // Add the Directions widget to the top right corner of the view
    * view.ui.add(directionsWidget, {
@@ -333,6 +354,31 @@ class Directions extends Widget {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the origin and destination addresses (i.e. "380 New York Street").
+   * By default, this is rendered
+   * as a level 2 heading (e.g. `<h2>380 New York Street</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // address text will render as an <h3>
+   * directions.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   //  iconClass
@@ -372,7 +418,7 @@ class Directions extends Widget {
 
   /**
    * The most recent route result. Returns an object containing properties for any barriers used when generating the route, messages
-   * that may arise when solving the route, and finally an array of returned {@link module:esri/tasks/support/RouteResult RouteResults}.
+   * that may arise when solving the route, and finally an array of returned {@link module:esri/rest/support/RouteResult RouteResults}.
    *
    * @name lastRoute
    * @instance
@@ -401,7 +447,7 @@ class Directions extends Widget {
    * see the [barriers](https://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/barriers.htm) help documentation.
    * @property {module:esri/Graphic[]} polylineBarriers - Array of graphics representing the polygon barriers. For a list of properties returned for each barrier,
    * see the [barriers](https://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/barriers.htm) help documentation.
-   * @property {module:esri/tasks/support/RouteResult} routeResults - An array of {@link module:esri/tasks/support/RouteResult RouteResults}.
+   * @property {module:esri/rest/support/RouteResult} routeResults - An array of {@link module:esri/rest/support/RouteResult RouteResults}.
    */
   @aliasOf("viewModel.lastRoute")
   lastRoute: RouteResultsContainer = null;
@@ -480,6 +526,10 @@ class Directions extends Widget {
   /**
    * The URL of the REST endpoint of the Route service.
    *
+   * If an [apiKey](#apiKey) is defined in the widget, the default URL is:
+   *
+   * "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World".
+   *
    * @name routeServiceUrl
    * @instance
    * @type {string}
@@ -546,7 +596,6 @@ class Directions extends Widget {
    * @property {number} [maxSuggestions=6] - Indicates the maximum number of suggestions to return for the widget's input.
    * @property {number} [minSuggestCharacters=1] - Indicates the minimum number of characters required before querying for a suggestion.
    * @property {boolean} [popupEnabled=false] - Indicates whether to display a {@link module:esri/widgets/Popup Popup} when a selected result is clicked.
-   * @property {boolean} [popupOpenOnSelect=true] - Indicates whether to show the {@link module:esri/widgets/Popup Popup} when a result is selected.
    * @property {module:esri/PopupTemplate} [popupTemplate] - A customized PopupTemplate for the selected feature.
    * @property {boolean} [resultGraphicEnabled=false] - Indicates whether to show a graphic on the map for the selected source.
    * @property {boolean} [searchAllEnabled] - Indicates whether to display the option to search all sources.
@@ -591,7 +640,7 @@ class Directions extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -626,7 +675,7 @@ class Directions extends Widget {
    *
    * @method
    *
-   * @return {Promise<module:esri/tasks/support/RouteResult>} When resolved, returns an object containing the calculated {@link module:esri/tasks/support/RouteResult}.
+   * @return {Promise<module:esri/rest/support/RouteResult>} When resolved, returns an object containing the calculated {@link module:esri/rest/support/RouteResult}.
    *
    */
   @aliasOf("viewModel.getDirections")
@@ -695,9 +744,11 @@ class Directions extends Widget {
   private _renderSignIn(): VNode {
     return (
       <div key="sign-in" class={CSS.signInContent}>
-        <h2 class={this.classes(CSS.heading, CSS.contentTitle)}>{this.messages.widgetLabel}</h2>
+        <Heading class={CSS.contentTitle} level={this.headingLevel}>
+          {this.messages.widgetLabel}
+        </Heading>
         {this._renderPlaceholder()}
-        <h3 class={CSS.heading}>{this.messages.signInRequired}</h3>
+        <Heading level={this.headingLevel + 1}>{this.messages.signInRequired}</Heading>
         <button
           class={this.classes(CSS.button, CSS.buttonSecondary, CSS.signInButton)}
           tabIndex={0}
@@ -1104,7 +1155,7 @@ class Directions extends Widget {
 
     this._handles.add(
       init(search, "searchTerm", (term) => {
-        view.cursor = term.length === 0 ? ("copy" as IViewCursor) : previousCursor;
+        view.cursor = term.length === 0 ? ("copy" as ViewCursor) : previousCursor;
       }),
       REGISTRY_KEYS.awaitingViewClickStop
     );
@@ -1113,7 +1164,7 @@ class Directions extends Widget {
   }
 
   private _prepViewClick(): PausableHandle {
-    const view = this.get<MapView | ISceneView>("viewModel.view");
+    const view = this.get<IMapView | ISceneView>("viewModel.view");
     const viewClickHandle = pausable(view, "click", this._handleViewClick.bind(this));
     const surfaceClickHandle = pausable(view.surface, "click", () => {
       clearTimeout(this._autoStopRemovalTimeoutId);
@@ -1284,18 +1335,15 @@ class Directions extends Widget {
   }
 
   private _updateDepartureTime(): void {
-    const date = this._moment(this._datePicker.value);
-    const time = this._moment(this._timePicker.value);
-
-    const joinedTime = this._moment({
-      date: date.date(),
-      month: date.month(),
-      year: date.year(),
-      hour: time.hour(),
-      minute: time.minute()
-    });
-
-    this.viewModel.departureTime = joinedTime.toDate();
+    const date = this._datePicker.value;
+    const time = this._timePicker.value;
+    this.viewModel.departureTime = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      time.getHours(),
+      time.getMinutes()
+    );
   }
 
   private _renderTimeControls(): VNode {
@@ -1339,9 +1387,9 @@ class Directions extends Widget {
       <div class={CSS.warningCard} role="alert">
         <div class={CSS.warningHeader}>
           <span class={CSS.warningIcon} aria-hidden="true" />
-          <div class={this.classes(CSS.heading, CSS.warningHeading)}>
+          <Heading class={CSS.warningHeading} level={this.headingLevel}>
             {this.messagesCommon.warning}
-          </div>
+          </Heading>
         </div>
         <div class={CSS.warningMessage}>{this._getErrorMessage()}</div>
       </div>
@@ -1374,9 +1422,9 @@ class Directions extends Widget {
     return (
       <div key="esri-directions__placeholder" class={CSS.emptyContent}>
         {this._renderPlaceholder()}
-        <h3 class={this.classes(CSS.message, CSS.heading)}>
+        <Heading class={CSS.message} level={this.headingLevel}>
           {this.messages.directionsPlaceholder}
-        </h3>
+        </Heading>
       </div>
     );
   }
@@ -1393,7 +1441,7 @@ class Directions extends Widget {
   }
 
   private _renderMessage(text: string): VNode {
-    return <h3>{text}</h3>;
+    return <Heading level={this.headingLevel}>{text}</Heading>;
   }
 
   private _renderRouteActions(): VNode {
@@ -1465,9 +1513,9 @@ class Directions extends Widget {
                   tabIndex={0}
                   title={title}
                 >
-                  <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>
+                  <Heading class={CSS.maneuverSectionTitle} level={this.headingLevel}>
                     {section.name}
-                  </h2>
+                  </Heading>
                   <span aria-hidden="true" class={this.classes(sectionHeaderIconClasses)} />
                 </div>
               </header>
@@ -1478,7 +1526,9 @@ class Directions extends Widget {
                 class={CSS.maneuverSectionHeader}
                 key="esri-directions__maneuver-section-header"
               >
-                <h2 class={this.classes(CSS.heading, CSS.maneuverSectionTitle)}>{section.name}</h2>
+                <Heading class={CSS.maneuverSectionTitle} level={this.headingLevel}>
+                  {section.name}
+                </Heading>
               </header>
             );
           }
@@ -1577,7 +1627,7 @@ class Directions extends Widget {
 
   private _normalizeSearchSources(search: Search): void {
     this._overrideDefaultSources(search);
-    this._ensureLocationTypeOnLocatorSources(search);
+    this._applyLocatorSourceOverrides(search);
   }
 
   private _overrideDefaultSources(search: Search): void {
@@ -1586,22 +1636,29 @@ class Directions extends Widget {
     });
   }
 
-  private _ensureLocationTypeOnLocatorSources({ allSources }: Search): void {
+  private _applyLocatorSourceOverrides({ allSources }: Search): void {
     if (allSources.length === 0) {
       return;
     }
 
-    // ensuring route-appropriate locationType default
-    // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/20496
     allSources.forEach((source) => {
-      if ("locator" in source && source.locator && source.locationType === null) {
-        source.locationType = "street";
+      if ("locator" in source && source.locator) {
+        // ensuring route-appropriate locationType default
+        // see https://devtopia.esri.com/WebGIS/arcgis-js-api/issues/20496
+        if (source.locationType === null) {
+          source.locationType = "street";
+        }
+
+        if (isArcGISWorldGeocoder(source.locator.url) && this.apiKey && source.apiKey == null) {
+          source.apiKey = this.apiKey;
+          source.locator.url = meteredArcGISLocatorUrl;
+        }
       }
     });
   }
 
   private _acquireSearch(stop: PlaceholderStop): Search {
-    const view: MapView | ISceneView = this.get("viewModel.view");
+    const view: IMapView | ISceneView = this.get("viewModel.view");
 
     if (this._stopsToSearches.has(stop)) {
       const search = this._stopsToSearches.get(stop);

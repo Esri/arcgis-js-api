@@ -111,6 +111,7 @@ const CSS = {
   rampElement: "esri-classed-size-slider__ramp",
   sliderContainer: "esri-classed-size-slider__slider-container",
   histogramContainer: "esri-classed-size-slider__histogram-container",
+  track: "esri-classed-size-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -144,8 +145,8 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                            that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -537,10 +538,11 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

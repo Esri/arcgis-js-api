@@ -1,45 +1,35 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/BasicGrid.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl"],(function(e,a,t,l,o,i,r){"use strict";function u(e){const a=new t.ShaderBuilder;return a.include(o.BasicGrid),a.include(r.Common),a.include(i.Colormap),0===e.output?c(a,e.applyColormap):1===e.output?n(a):2===e.output&&f(a,e.applyColormap),a}function n(e){e.fragment.code.add(a.glsl`
-      void main() {
-        // get pixel location
-        vec2 pixelLocation = getPixelLocation(v_texcoord);
-        if (isOutside(pixelLocation)) {
-          gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
-          return;
-        }
-
-        vec4 currentPixel = getPixel(pixelLocation);
-        // apply colormap we use float texture here
-        gl_FragColor = colormap(currentPixel, true);
-      }
-    `)}function c(e,t){e.fragment.uniforms.add("u_bandCount","int"),e.fragment.uniforms.add("u_minCutOff","float",3),e.fragment.uniforms.add("u_maxCutOff","float",3),e.fragment.uniforms.add("u_factor","float",3),e.fragment.uniforms.add("u_minOutput","float"),e.fragment.uniforms.add("u_maxOutput","float"),e.fragment.uniforms.add("u_useGamma","bool"),e.fragment.uniforms.add("u_gamma","float",3),e.fragment.uniforms.add("u_gammaCorrection","float",3),e.fragment.code.add(a.glsl`
-      float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
-        // clamp values
-        if (val >= maxCutOff) {
-          return maxOutput;
-        } else if (val <= minCutOff) {
-          return minOutput;
-        }
-
-        // stretch a single value based on whether to use gamma
-        float stretchedVal;
-        if (useGamma) {
-          float tempf = 1.0;
-          float outRange = maxOutput - minOutput;
-          float relativeVal = (val - minCutOff) / (maxCutOff - minCutOff);
-          if (gamma > 1.0) {
-            tempf -= pow(1.0 / outRange, relativeVal * gammaCorrection);
-          }
-          stretchedVal = (tempf * outRange * pow(relativeVal, 1.0 / gamma) + minOutput) / 255.0;
-        } else {
-          stretchedVal = minOutput + (val - minCutOff) * factor;
-        }
-        return stretchedVal;
-      }
-    `);const l=t?a.glsl`gl_FragColor = colormap(vec4(grayVal, grayVal, grayVal, currentPixel.a), !u_useGamma);`:a.glsl`gl_FragColor = vec4(grayVal, grayVal, grayVal, 1.0) * currentPixel.a * u_opacity;`;e.fragment.code.add(a.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/raster/BasicGrid.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Colormap.glsl","../views/3d/webgl-engine/core/shaderLibrary/raster/Common.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(a,e,t,l,o,i,r){"use strict";function u(a){const o=new r.ShaderBuilder;return o.include(e.BasicGrid),o.include(l.Common),o.include(t.Colormap),0===a.output?f(o,a.applyColormap):1===a.output?n(o):2===a.output&&c(o,a.applyColormap),o}function n(a){a.fragment.code.add(i.glsl`void main() {
+vec2 pixelLocation = getPixelLocation(v_texcoord);
+if (isOutside(pixelLocation)) {
+gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+return;
+}
+vec4 currentPixel = getPixel(pixelLocation);
+gl_FragColor = colormap(currentPixel, true);
+}`)}function f(a,e){a.fragment.uniforms.add("u_bandCount","int"),a.fragment.uniforms.add("u_minCutOff","float",3),a.fragment.uniforms.add("u_maxCutOff","float",3),a.fragment.uniforms.add("u_factor","float",3),a.fragment.uniforms.add("u_minOutput","float"),a.fragment.uniforms.add("u_maxOutput","float"),a.fragment.uniforms.add("u_useGamma","bool"),a.fragment.uniforms.add("u_gamma","float",3),a.fragment.uniforms.add("u_gammaCorrection","float",3),a.fragment.code.add(i.glsl`float stretchOneValue(float val, float minCutOff, float maxCutOff, float minOutput, float maxOutput, float factor, bool useGamma, float gamma, float gammaCorrection) {
+if (val >= maxCutOff) {
+return maxOutput;
+} else if (val <= minCutOff) {
+return minOutput;
+}
+float stretchedVal;
+if (useGamma) {
+float tempf = 1.0;
+float outRange = maxOutput - minOutput;
+float relativeVal = (val - minCutOff) / (maxCutOff - minCutOff);
+if (gamma > 1.0) {
+tempf -= pow(1.0 / outRange, relativeVal * gammaCorrection);
+}
+stretchedVal = (tempf * outRange * pow(relativeVal, 1.0 / gamma) + minOutput) / 255.0;
+} else {
+stretchedVal = minOutput + (val - minCutOff) * factor;
+}
+return stretchedVal;
+}`);const t=e?i.glsl`gl_FragColor = colormap(vec4(grayVal, grayVal, grayVal, currentPixel.a), !u_useGamma);`:i.glsl`gl_FragColor = vec4(grayVal, grayVal, grayVal, 1.0) * currentPixel.a * u_opacity;`;a.fragment.code.add(i.glsl`
       void main() {
         vec2 pixelLocation = getPixelLocation(v_texcoord);
         if (isOutside(pixelLocation)) {
@@ -55,7 +45,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
         if (u_bandCount == 1) {
           float grayVal = stretchOneValue(currentPixel.r, u_minCutOff[0], u_maxCutOff[0], u_minOutput, u_maxOutput, u_factor[0], u_useGamma, u_gamma[0], u_gammaCorrection[0]);
-          ${l}
+          ${t}
         } else {
           float redVal = stretchOneValue(currentPixel.r, u_minCutOff[0], u_maxCutOff[0], u_minOutput, u_maxOutput, u_factor[0], u_useGamma, u_gamma[0], u_gammaCorrection[0]);
           float greenVal = stretchOneValue(currentPixel.g, u_minCutOff[1], u_maxCutOff[1], u_minOutput, u_maxOutput, u_factor[1], u_useGamma, u_gamma[1], u_gammaCorrection[1]);
@@ -63,26 +53,20 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
           gl_FragColor = vec4(redVal, greenVal, blueVal, 1.0) * currentPixel.a * u_opacity;
         }
       }
-    `)}function f(e,t){e.fragment.uniforms.add("u_hillshadeType","int"),e.fragment.uniforms.add("u_sinZcosAs","float",6),e.fragment.uniforms.add("u_sinZsinAs","float",6),e.fragment.uniforms.add("u_cosZs","float",6),e.fragment.uniforms.add("u_weights","float",6),e.fragment.uniforms.add("u_factor","vec2"),e.fragment.uniforms.add("u_applyColormap","bool"),e.fragment.uniforms.add("u_minValue","float"),e.fragment.uniforms.add("u_maxValue","float"),e.fragment.uniforms.add("u_srcImageSize","vec2"),e.fragment.include(l.ColorConversion),e.fragment.code.add(a.glsl`
-  vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
-    val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
-    vec4 rgb = colormap(vec4(val, val, val, 1.0), false);
-    vec3 hsv = rgb2hsv(rgb.xyz);
-    hsv.z = hillshade;
-    return vec4(hsv2rgb(hsv) * alpha, alpha);
-  }
-`),e.fragment.code.add(a.glsl`
-    float getNeighborHoodAlpha(float a, float b, float c, float d, float e, float f, float g, float h, float i){
-      if (a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0) {
-        return 0.0;
-      }  else {
-        return e;
-      }
-    }
-  `);const o=t?a.glsl`gl_FragColor = overlay(ve.r, u_minValue, u_maxValue, hillshade, alpha);`:a.glsl`
-       hillshade *= alpha;
-       gl_FragColor = vec4(hillshade, hillshade, hillshade, alpha);
-       `;e.fragment.code.add(a.glsl`
+    `)}function c(a,e){a.fragment.uniforms.add("u_hillshadeType","int"),a.fragment.uniforms.add("u_sinZcosAs","float",6),a.fragment.uniforms.add("u_sinZsinAs","float",6),a.fragment.uniforms.add("u_cosZs","float",6),a.fragment.uniforms.add("u_weights","float",6),a.fragment.uniforms.add("u_factor","vec2"),a.fragment.uniforms.add("u_applyColormap","bool"),a.fragment.uniforms.add("u_minValue","float"),a.fragment.uniforms.add("u_maxValue","float"),a.fragment.uniforms.add("u_srcImageSize","vec2"),a.fragment.include(o.ColorConversion),a.fragment.code.add(i.glsl`vec4 overlay(float val, float minValue, float maxValue, float hillshade, float alpha) {
+val = clamp((val - minValue) / (maxValue - minValue), 0.0, 1.0);
+vec4 rgb = colormap(vec4(val, val, val, 1.0), false);
+vec3 hsv = rgb2hsv(rgb.xyz);
+hsv.z = hillshade;
+return vec4(hsv2rgb(hsv) * alpha, alpha);
+}`),a.fragment.code.add(i.glsl`float getNeighborHoodAlpha(float a, float b, float c, float d, float e, float f, float g, float h, float i){
+if (a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0 || a == 0.0 || a == 0.0 || a==0.0) {
+return 0.0;
+}  else {
+return e;
+}
+}`);const t=e?i.glsl`gl_FragColor = overlay(ve.r, u_minValue, u_maxValue, hillshade, alpha);`:i.glsl`hillshade *= alpha;
+gl_FragColor = vec4(hillshade, hillshade, hillshade, alpha);`;a.fragment.code.add(i.glsl`
     void main() {
       vec2 pixelLocation = getPixelLocation(v_texcoord);
       if (isOutside(pixelLocation)) {
@@ -164,6 +148,6 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
       // set color
       float alpha = getNeighborHoodAlpha(va.a, vb.a, vc.a, vd.a, ve.a, vf.a, vg.a, vh.a, vi.a);
       alpha *= u_opacity;
-      ${o}
+      ${t}
     }
-  `)}var m=Object.freeze({__proto__:null,build:u});e.RasterColorizerShader=m,e.build=u}));
+  `)}var m=Object.freeze({__proto__:null,build:u});a.RasterColorizerShader=m,a.build=u}));

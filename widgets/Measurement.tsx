@@ -70,8 +70,8 @@ import { SystemOrAreaUnit, SystemOrLengthUnit } from "esri/core/unitUtils";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import AreaMeasurement2D from "esri/widgets/AreaMeasurement2D";
@@ -101,6 +101,15 @@ type MeasurementProperties = Partial<
     Measurement,
     "activeTool" | "activeWidget" | "areaUnit" | "linearUnit" | "view" | "viewModel"
   >
+>;
+
+type MeasurementLocaleStrings = DeepPartial<
+  Pick<MeasurementMessages, "widgetLabel"> & {
+    "area-2d": AreaMeasurement2D["localeStrings"];
+    "distance-2d": DistanceMeasurement2D["localeStrings"];
+    "area-3d": AreaMeasurement3D["localeStrings"];
+    "direct-line-3d": DirectLineMeasurement3D["localeStrings"];
+  }
 >;
 
 type MeasurementWidget =
@@ -134,8 +143,8 @@ class Measurement extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: MeasurementProperties, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: MeasurementProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -161,7 +170,9 @@ class Measurement extends Widget {
           oldWidget.visible = false;
         }
       }),
-      this.watch(["areaUnit", "linearUnit"], () => this._updateWidgetUnits())
+      this.watch(["areaUnit", "linearUnit", "localeStrings"], () =>
+        this._updateSubWidgetProperties()
+      )
     ]);
   }
 
@@ -175,7 +186,7 @@ class Measurement extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private _widgets: Map<string, MeasurementWidget> = new Map<string, MeasurementWidget>();
+  private _widgets = new Map<MeasurementComponentType, MeasurementWidget>();
 
   //--------------------------------------------------------------------------
   //
@@ -324,6 +335,13 @@ class Measurement extends Widget {
   linearUnit: SystemOrLengthUnit = null;
 
   //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  @property()
+  localeStrings: MeasurementLocaleStrings;
+
+  //----------------------------------
   //  messages
   //----------------------------------
 
@@ -361,7 +379,7 @@ class Measurement extends Widget {
    * });
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -455,14 +473,16 @@ class Measurement extends Widget {
             const AreaMeasurement2D = (await import("./AreaMeasurement2D")).default;
             return new AreaMeasurement2D({
               view,
-              unit: areaUnit
+              unit: areaUnit,
+              localeStrings: this._createLocaleStringsForWidget(activeTool)
             });
           }
           case "3d": {
             const AreaMeasurement3D = (await import("./AreaMeasurement3D")).default;
             return new AreaMeasurement3D({
               view,
-              unit: areaUnit
+              unit: areaUnit,
+              localeStrings: this._createLocaleStringsForWidget(activeTool)
             });
           }
           default:
@@ -474,14 +494,16 @@ class Measurement extends Widget {
         const DistanceMeasurement2D = (await import("./DistanceMeasurement2D")).default;
         return new DistanceMeasurement2D({
           view,
-          unit: linearUnit
+          unit: linearUnit,
+          localeStrings: this._createLocaleStringsForWidget(activeTool)
         });
       }
       case "direct-line": {
         const DirectLineMeasurement3D = (await import("./DirectLineMeasurement3D")).default;
         return new DirectLineMeasurement3D({
           view,
-          unit: linearUnit
+          unit: linearUnit,
+          localeStrings: this._createLocaleStringsForWidget(activeTool)
         });
       }
       default:
@@ -518,10 +540,30 @@ class Measurement extends Widget {
     return widget;
   }
 
-  private _updateWidgetUnits(): void {
-    this._widgets.forEach((widget) => {
+  private _createLocaleStringsForWidget(
+    type: MeasurementComponentType
+  ):
+    | AreaMeasurement2D["localeStrings"]
+    | AreaMeasurement3D["localeStrings"]
+    | DirectLineMeasurement3D["localeStrings"]
+    | DistanceMeasurement2D["localeStrings"] {
+    if (!this.localeStrings) {
+      return null;
+    }
+    const key = (type + "-" + this.view.type) as
+      | "area-2d"
+      | "distance-2d"
+      | "area-3d"
+      | "direct-line-3d";
+
+    return this.localeStrings[key];
+  }
+
+  private _updateSubWidgetProperties(): void {
+    this._widgets.forEach((widget, type) => {
       const { areaUnit, linearUnit } = this;
       widget.unit = isAreaMeasurement(widget) ? areaUnit : linearUnit;
+      widget.localeStrings = this._createLocaleStringsForWidget(type);
     });
   }
 }

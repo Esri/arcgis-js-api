@@ -86,6 +86,7 @@ const CSS = {
   base: "esri-heatmap-slider",
   rampElement: "esri-heatmap-slider__ramp",
   sliderContainer: "esri-heatmap-slider__slider-container",
+  track: "esri-heatmap-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -164,8 +165,8 @@ class HeatmapSlider extends SmartMappingSliderBase {
    *   ]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this.slider.set({
       visibleElements: {
@@ -304,7 +305,7 @@ class HeatmapSlider extends SmartMappingSliderBase {
    *   it a valid [container](#container).
    *
    * @example
-   * var params = {
+   * let params = {
    *   layer: layer,
    *   basemap: map.basemap,
    *   field: "POP",
@@ -317,7 +318,7 @@ class HeatmapSlider extends SmartMappingSliderBase {
    *     rendererResult = response;
    *     layer.renderer = response.renderer;
    *
-   *     var slider = HeatmapSlider.fromHeatmapRendererResult(response);
+   *     let slider = HeatmapSlider.fromHeatmapRendererResult(response);
    *     slider.container = "slider";
    *   });
    */
@@ -326,10 +327,11 @@ class HeatmapSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

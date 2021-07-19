@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","../../core/has","../../chunks/vec3f64","../../geometry/support/aaBoundingBox"],(function(e,r,t,n){"use strict";function o(e,{isPrimitive:r,width:n,depth:o,height:u}){const c=r?10:1;if(null==n&&null==u&&null==o)return[c*e[0],c*e[1],c*e[2]];const i=t.fromValues(n,o,u);let s;for(let t=0;t<3;t++){const r=i[t];if(null!=r){s=r/e[t];break}}for(let t=0;t<3;t++)null==i[t]&&(i[t]=e[t]*s);return i}const u=n.fromValues(-.5,-.5,-.5,.5,.5,.5),c=n.fromValues(-.5,-.5,0,.5,.5,1),i=n.fromValues(-.5,-.5,0,.5,.5,.5);function s(e){switch(e){case"sphere":case"cube":case"diamond":return u;case"cylinder":case"cone":case"inverted-cone":return c;case"tetrahedron":return i;default:return}}e.OBJECT_SYMBOL_LAYER_BOUNDING_BOX_TETRAHEDRON=i,e.OBJECT_SYMBOL_LAYER_BOUNDING_BOX_UNIT_CUBE=u,e.OBJECT_SYMBOL_LAYER_BOUNDING_BOX_UNIT_CYLINDER=c,e.objectSymbolLayerPrimitiveBoundingBox=s,e.objectSymbolLayerSizeWithResourceSize=o,Object.defineProperty(e,"__esModule",{value:!0})}));

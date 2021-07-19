@@ -26,7 +26,7 @@ import ElevationProfileMessages from "esri/t9n/ElevationProfile";
 import { VNode } from "esri/../support/interfaces";
 import { messageBundle, tsx } from "esri/../support/widget";
 
-export interface ConstructionParameters {
+export interface ConstructProperties {
   effectiveUnits: EffectiveUnits;
   line: IElevationProfileLine;
 }
@@ -44,8 +44,8 @@ export class Statistics extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {

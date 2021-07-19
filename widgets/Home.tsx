@@ -20,7 +20,7 @@
  * @see module:esri/views/ui/DefaultUI
  *
  * @example
- * var homeWidget = new Home({
+ * let homeWidget = new Home({
  *   view: view
  * });
  *
@@ -38,8 +38,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -98,13 +98,13 @@ class Home extends Widget {
    *
    * @example
    * // typical usage
-   * var homeButton = new Home({
+   * let homeButton = new Home({
    *   view: view,
    *   viewpoint: new Viewpoint()
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -214,7 +214,7 @@ class Home extends Widget {
    * @instance
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -257,7 +257,7 @@ class Home extends Widget {
    *
    * @example
    * // Creates a viewpoint centered on the extent of a polygon geometry
-   * var vp = new Viewpoint({
+   * let vp = new Viewpoint({
    *   targetGeometry: geom.extent
    * });
    *

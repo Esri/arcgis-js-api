@@ -1,10 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl"],(function(e,a,r,t,o,n){"use strict";function i(e){const i=new r.ShaderBuilder;return i.include(o.ScreenSpacePass),1===e.output&&(i.fragment.include(t.ReadLinearDepth),i.fragment.code.add(a.glsl`
-      #ifndef RADIUS
-        #define RADIUS `+e.radius+"\n      #endif\n    "),i.fragment.uniforms.add("normalMap","sampler2D").add("depthMap","sampler2D").add("tex","sampler2D").add("blurSize","vec2").add("g_BlurFalloff","float").add("projScale","float").add("nearFar","vec2").add("zScale","vec2"),i.fragment.code.add(a.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,a,t,o,n){"use strict";function l(e){const l=new n.ShaderBuilder;return l.include(r.ScreenSpacePass),1===e.output&&(l.fragment.include(a.ReadLinearDepth),l.fragment.uniforms.add("normalMap","sampler2D").add("depthMap","sampler2D").add("tex","sampler2D").add("blurSize","vec2").add("g_BlurFalloff","float").add("projScale","float").add("nearFar","vec2").add("zScale","vec2"),l.fragment.code.add(o.glsl`
       float blurFunction(vec2 uv, float r, float center_d, inout float w_total, float sharpness) {
         float c = texture2D(tex, uv).r;
         float d = linearDepthFromTexture(depthMap, uv, nearFar);
@@ -25,7 +23,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
         float center_d = linearDepthFromTexture(depthMap, uv, nearFar);
 
         float sharpness = -0.05 * projScale/(center_d*zScale.x+zScale.y);
-        for (int r = -RADIUS; r <= RADIUS; ++r) {
+        for (int r = -${o.glsl.int(e.radius)}; r <= ${o.glsl.int(e.radius)}; ++r) {
           float rf = float(r);
           vec2 uvOffset = uv + rf*blurSize;
           b += blurFunction(uvOffset, rf, center_d, w_total, sharpness);
@@ -33,42 +31,22 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
         gl_FragColor = vec4(b/w_total);
       }
-    `)),0===e.output&&(i.fragment.include(t.ReadLinearDepth),i.include(n.CameraSpace),i.fragment.uniforms.add("projMatrixInv","mat4").add("normalMap","sampler2D").add("depthMap","sampler2D").add("intensity","float").add("projScale","float").add("radius","float").add("nearFar","vec2").add("screenDimensions","vec2").add("rnmScale","vec2").add("rnm","sampler2D"),i.fragment.code.add(a.glsl`
-      #ifndef SAMPLES
-        #define SAMPLES `+e.samples+"\n      #endif\n      uniform vec3 pSphere[SAMPLES]; //tap position\n    "),i.fragment.code.add(a.glsl`
-      float fallOffFunction(float vv, float vn, float bias) {
-        float radius2 = radius * radius;
+    `)),0===e.output&&(l.fragment.include(a.ReadLinearDepth),l.include(t.CameraSpace),l.fragment.uniforms.add("projMatrixInv","mat4").add("normalMap","sampler2D").add("depthMap","sampler2D").add("intensity","float").add("projScale","float").add("radius","float").add("nearFar","vec2").add("screenDimensions","vec2").add("rnmScale","vec2").add("rnm","sampler2D"),l.fragment.code.add(o.glsl`
+    uniform vec3 pSphere[${o.glsl.int(e.samples)}];
 
-        // A: From the HPG12 paper
-        // Note large epsilon to avoid overdarkening within cracks
-        // return float(vv < radius2) * max((vn - bias) / (epsilon + vv), 0.0) * radius2 * 0.6;
-
-        // B: Smoother transition to zero (lowers contrast, smoothing out corners). [Recommended]
-        float f = max(radius2 - vv, 0.0); return f * f * f * max(vn-bias, 0.0);
-
-        // C: Medium contrast (which looks better at high radii), no division.  Note that the
-        // contribution still falls off with radius^2, but we've adjusted the rate in a way that is
-        // more computationally efficient and happens to be aesthetically pleasing.
-        // return 4.0 * max(1.0 - vv * invRadius2, 0.0) * max(vn - bias, 0.0);
-
-        // D: Low contrast, no division operation
-        // return 2.0 * float(vv < radius * radius) * max(vn - bias, 0.0);
-      }
-    `),i.fragment.code.add(a.glsl`
-      float aoValueFromPositionsAndNormal(vec3 C, vec3 n_C, vec3 Q) {
-        vec3 v = Q - C;
-        float vv = dot(v, v);
-        float vn = dot(normalize(v), n_C);
-        return fallOffFunction(vv, vn, 0.1);
-      }
-    `),i.fragment.code.add(a.glsl`
+    float fallOffFunction(float vv, float vn, float bias) {
+      float radius2 = radius * radius;
+      float f = max(radius2 - vv, 0.0);
+      return f * f * f * max(vn-bias, 0.0);
+    }
+    `),l.fragment.code.add(o.glsl`float aoValueFromPositionsAndNormal(vec3 C, vec3 n_C, vec3 Q) {
+vec3 v = Q - C;
+float vv = dot(v, v);
+float vn = dot(normalize(v), n_C);
+return fallOffFunction(vv, vn, 0.1);
+}`),l.fragment.code.add(o.glsl`
       void main(void) {
-        //Hash function used in the HPG12 AlchemyAO paper
-        //Not supported in WebGL -> using texture lookup as in old SSAO shader instead
-        //ivec2 ssC = ivec2(gl_FragCoord.xy);
-        //float randomPatternRotationAngle = float((3 * ssC.x ^ ssC.y + ssC.x * ssC.y) * 10);
         vec3 fres = normalize((texture2D(rnm, uv * rnmScale).xyz * 2.0) - vec3(1.0));
-
         float currentPixelDepth = linearDepthFromTexture(depthMap, uv, nearFar);
 
         if (-currentPixelDepth>nearFar.y || -currentPixelDepth<nearFar.x) {
@@ -94,7 +72,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
         // bug or deviation from CE somewhere else?
         float ps = projScale/(2.0*currentPixelPos.z*zScale.x+zScale.y);
 
-        for(int i = 0; i < SAMPLES; ++i) {
+        for(int i = 0; i < ${o.glsl.int(e.samples)}; ++i) {
           // get a vector (randomized inside of a sphere with radius 1.0) from a texture and reflect it
           //float ssR;
           //vec2 unitOffset = tapLocation(i, randomPatternRotationAngle, ssR);
@@ -126,7 +104,7 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
 
         // output the result
 
-        float A = max(1.0-sum*intensity/float(SAMPLES),0.0);
+        float A = max(1.0-sum*intensity/float(${o.glsl.int(e.samples)}),0.0);
 
         // Anti-tone map to reduce contrast and drag dark region farther
         // (x^0.2 + 1.2 * x^4)/2.2
@@ -137,4 +115,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../v
         //gl_FragColor = vec4(tapPixelPos.x/100.0);
         gl_FragColor = vec4(A);
       }
-    `)),i}var l=Object.freeze({__proto__:null,build:i});e.SSAOShader=l,e.build=i}));
+    `)),l}var s=Object.freeze({__proto__:null,build:l});e.SSAOShader=s,e.build=l}));

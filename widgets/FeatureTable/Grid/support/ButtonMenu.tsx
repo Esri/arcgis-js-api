@@ -52,7 +52,7 @@ import { ButtonMenuConfig } from "esri/widgets/interfaces";
 // esri.widgets.support
 import { VNode } from "esri/../../support/interfaces";
 import Popover from "esri/../../support/Popover";
-import { isRTL, tsx } from "esri/../../support/widget";
+import { isActivationKey, isRTL, tsx } from "esri/../../support/widget";
 
 const CSS = {
   base: "esri-button-menu",
@@ -111,8 +111,8 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    *
    */
 
-  constructor(params?: ButtonMenuConfig, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ButtonMenuConfig, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._handleOutsideClick = this._handleOutsideClick.bind(this);
   }
@@ -431,7 +431,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
   private _handleMenuItemKeydown(event: KeyboardEvent, item: ButtonMenuItem): void {
     const key = eventKey(event);
 
-    if (key === "Enter" || key === " ") {
+    if (isActivationKey(key)) {
       this._handleMenuItemInteraction(event, item);
     }
 

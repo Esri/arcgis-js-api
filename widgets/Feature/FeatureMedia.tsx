@@ -87,8 +87,8 @@ class FeatureMedia extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -307,6 +307,10 @@ class FeatureMedia extends Widget {
 
   protected renderMediaInfo(): VNode {
     const { activeMediaInfo } = this.viewModel;
+
+    if (!activeMediaInfo) {
+      return null;
+    }
 
     const titleNode = activeMediaInfo.title ? (
       <div key={"media-title"} class={CSS.mediaItemTitle} innerHTML={activeMediaInfo.title} />

@@ -21,7 +21,7 @@
  * @since 4.13
  *
  * @example
- * var swipe = new Swipe({
+ * let swipe = new Swipe({
  *   view: view,
  *   leadingLayers: [layer1, layer2],
  *   trailingLayers: [layer3],
@@ -44,7 +44,7 @@ import { eventKey } from "esri/core/events";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
-import MapView from "esri/views/MapView";
+import IMapView from "esri/views/IMapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -101,8 +101,8 @@ class Swipe extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                              that may be passed into the constructor.
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._onContainerPointerDown = this._onContainerPointerDown.bind(this);
     this._onContainerPointerMove = this._onContainerPointerMove.bind(this);
@@ -299,7 +299,7 @@ class Swipe extends Widget {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  view: MapView = null;
+  view: IMapView = null;
 
   //----------------------------------
   //  viewModel

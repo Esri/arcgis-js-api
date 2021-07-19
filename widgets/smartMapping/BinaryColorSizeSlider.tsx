@@ -133,6 +133,8 @@ const CSS = {
   zoomCapLine: "esri-binary-color-size-slider__zoom-cap-line",
   zoomCapMask: "esri-binary-color-size-slider__zoom-cap-mask",
   zoomCapUnderline: "esri-binary-color-size-slider__zoom-cap-underline",
+  primaryHandle: "esri-binary-color-size-slider--primary-handle",
+  track: "esri-binary-color-size-slider--interactive-track",
 
   // common
   esriWidget: "esri-widget",
@@ -180,8 +182,8 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
    *   ]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     // For SVG fills
     this._rampFillId = `${this.id}-linear-gradient`;
@@ -692,10 +694,17 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
   }
 
   render(): VNode {
-    const { state, label } = this;
+    const {
+      label,
+      state,
+      viewModel: { primaryHandleEnabled },
+      visibleElements
+    } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {
-      [CSS.disabled]: isDisabled
+      [CSS.disabled]: isDisabled,
+      [CSS.primaryHandle]: primaryHandleEnabled,
+      [CSS.track]: visibleElements.interactiveTrack
     });
 
     return (

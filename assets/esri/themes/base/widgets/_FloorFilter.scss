@@ -146,6 +146,14 @@ $floor-filter-scrollbar-track--color: #fafafa;
       height: $button-height--plus-half;
     }
 
+    .esri-floor-filter__level-button:focus {
+      background-color: $background-color--hover;
+    }
+
+    .esri-floor-filter__level-button.esri-widget--button-active:focus {
+      background-color: $background-color--active;
+    }
+
     .esri-floor-filter__levels-container {
       list-style-type: none;
       overflow: auto;
@@ -169,7 +177,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
     .esri-floor-filter__levels-container::-webkit-scrollbar-track {
       background: $floor-filter-scrollbar-track--color;
     }
-    
+
     .esri-floor-filter__levels-container::-webkit-scrollbar-thumb {
       background-color: $floor-filter-scrollbar-thumb--color;
       border-radius: 20px;
@@ -193,7 +201,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
       flex-direction: column;
       align-items: stretch;
       @include defaultBoxShadow();
-      
+
       .esri-floor-filter__filter-menu-header {
         align-items: stretch;
         display: flex;
@@ -298,7 +306,9 @@ $floor-filter-scrollbar-track--color: #fafafa;
         max-height: 300px;
 
         .esri-floor-filter__filter-menu-site:hover,
-        .esri-floor-filter__filter-menu-facility:hover {
+        .esri-floor-filter__filter-menu-site:focus,
+        .esri-floor-filter__filter-menu-facility:hover,
+        .esri-floor-filter__filter-menu-facility:focus {
           background: $background-color--hover;
           cursor: pointer;
         }

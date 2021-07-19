@@ -57,6 +57,9 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 // esri.views
 import { ISceneView } from "esri/views/ISceneView";
 
+// esri.views.3d.layers
+import "../views/3d/layers/LineOfSightLayerView3D";
+
 // esri.widgets
 import Widget from "esri/widgets/Widget";
 
@@ -110,8 +113,8 @@ class LineOfSight extends Widget {
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------

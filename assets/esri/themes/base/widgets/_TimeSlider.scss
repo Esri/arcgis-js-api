@@ -2,6 +2,7 @@
   $widget-min-width: 375px;
   $primary-color: $border-color--contrast;
   $highlight-color: $button-color;
+  $invalid-color: #d83020;
 
   .esri-time-slider {
     cursor: default;
@@ -52,6 +53,16 @@
           &__next {
             width: 42px;
           }
+
+          &__warning {
+            font-size: $font-size__h1;
+            margin: 0 0 4px 0;
+
+            &-text {
+              margin: 0 3px 0 3px;
+              text-align: center;
+            }
+          }
         }
       }
 
@@ -85,7 +96,7 @@
             justify-content: center;
 
             &-separator {
-              margin: 0 15px 0 15px;
+              margin: 0 7px 0 7px;
             }
           }
 
@@ -108,6 +119,11 @@
           &__previous,
           &__next {
             width: 35px;
+          }
+
+          &__warning {
+            line-height: $font-size__body;
+            margin: 0 4px 0 0;
           }
         }
       }
@@ -135,6 +151,16 @@
             background-color: $primary-color;
           }
         }
+
+        &.esri-time-slider {
+          &--out-of-bounds {
+            .esri-slider {
+              &__segment-1 {
+                background-color: $invalid-color;
+              }
+            }
+          }
+        }
       }
 
       &--cumulative-from-start {
@@ -148,6 +174,16 @@
             background-color: $primary-color;
           }
         }
+
+        &.esri-time-slider {
+          &--out-of-bounds {
+            .esri-slider {
+              &__segment-0 {
+                background-color: $invalid-color;
+              }
+            }
+          }
+        }
       }
 
       &--cumulative-from-end {
@@ -159,6 +195,16 @@
             background-color: $highlight-color;
             height: 6px;
             margin-top: -1px;
+          }
+        }
+
+        &.esri-time-slider {
+          &--out-of-bounds {
+            .esri-slider {
+              &__segment-1 {
+                background-color: $invalid-color;
+              }
+            }
           }
         }
       }
@@ -180,6 +226,7 @@
     &__time-extent {
       font-size: $font-size__body;
       line-height: $font-size__body;
+      color: $highlight-color;
 
       &-group {
         display: flex;
@@ -187,19 +234,9 @@
         align-items: center;
       }
 
-      &-date {
-        font-weight: $font-weight--bold;
-        color: $highlight-color;
-      }
-
-      &-time {
-        color: $highlight-color;
-      }
-
+      &-date,
       &-separator {
-        font-size: $font-size__h2;
         font-weight: $font-weight--bold;
-        line-height: $font-size__h2;
       }
     }
 
@@ -273,6 +310,20 @@
         .esri-icon-reverse,
         .esri-icon-forward {
           font-size: 24px;
+        }
+      }
+    }
+
+    &--out-of-bounds {
+      .esri-slider {
+        &__thumb {
+          border-color: $invalid-color;
+        }
+      }
+
+      .esri-time-slider {
+        &__time-extent {
+          color: $invalid-color;
         }
       }
     }

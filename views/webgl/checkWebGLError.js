@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../core/has","../../core/Logger","../../core/Error"],(function(e,r,o,c){"use strict";o.getLogger("esri/views/webgl");function t(e){}e.checkWebGLError=t,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../core/Error","../../core/Logger","./RenderingContext"],(function(e,r,n,t){"use strict";const o=n.getLogger("esri/views/webgl");function a(e,r){switch(r){case e.INVALID_ENUM:return"Invalid Enum. An unacceptable value has been specified for an enumerated argument.";case e.INVALID_VALUE:return"Invalid Value. A numeric argument is out of range.";case e.INVALID_OPERATION:return"Invalid Operation. The specified command is not allowed for the current state.";case e.INVALID_FRAMEBUFFER_OPERATION:return"Invalid Framebuffer operation. The currently bound framebuffer is not framebuffer complete when trying to render to or to read from it.";case e.OUT_OF_MEMORY:return"Out of memory. Not enough memory is left to execute the command.";case e.CONTEXT_LOST_WEBGL:return"WebGL context has been lost";default:return"Unknown error"}}function c(e){if(t.webglDebugEnabled()){const n=e.getError();if(n){const t=a(e,n),c=(new Error).stack;o.error(new r("webgl-error","WebGL error occured",{message:t,stack:c}))}}}e.checkWebGLError=c,Object.defineProperty(e,"__esModule",{value:!0})}));

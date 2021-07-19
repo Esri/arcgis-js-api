@@ -29,7 +29,7 @@
  *
  * @example
  * // creates a new instance of the NavigationToggle widget
- * var navigationToggle = new NavigationToggle({
+ * let navigationToggle = new NavigationToggle({
  *   view: view
  * });
  *
@@ -41,8 +41,8 @@
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -91,12 +91,12 @@ class NavigationToggle extends Widget {
    *
    * @example
    * // typical usage
-   * var navigationToggle = new NavigationToggle({
+   * let navigationToggle = new NavigationToggle({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -157,7 +157,7 @@ class NavigationToggle extends Widget {
    *
    * @example
    * // creates a new instance of the NavigationToggle widget
-   * var navigationToggle = new NavigationToggle({
+   * let navigationToggle = new NavigationToggle({
    *   view: view,
    *   layout: "horizontal"  // makes the layout horizontal
    * });
@@ -202,7 +202,7 @@ class NavigationToggle extends Widget {
    * @type {module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

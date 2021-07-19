@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports"],(function(e){"use strict";function t(e,t,r){const d=e.typedBuffer,f=e.typedBufferStride,n=t.typedBuffer,c=t.typedBufferStride,o=r?r.count:t.count;let u=(r&&r.dstIndex?r.dstIndex:0)*f,p=(r&&r.srcIndex?r.srcIndex:0)*c;for(let s=0;s<o;++s)d[u]=n[p],d[u+1]=n[p+1],d[u+2]=n[p+2],u+=f,p+=c}var r=Object.freeze({__proto__:null,copy:t});e.copy=t,e.vec3=r}));
+define(["exports"],(function(e){"use strict";function t(e,t,n){const f=e.typedBuffer,d=e.typedBufferStride,r=t.typedBuffer,u=t.typedBufferStride,l=n?n.count:t.count;let o=(n&&n.dstIndex?n.dstIndex:0)*d,c=(n&&n.srcIndex?n.srcIndex:0)*u;for(let i=0;i<l;++i)f[o]=r[c],f[o+1]=r[c+1],f[o+2]=r[c+2],o+=d,c+=u}function n(e,t,n,f,d){var r,u;const l=e.typedBuffer,o=e.typedBufferStride,c=null!=(r=null==d?void 0:d.count)?r:e.count;let i=(null!=(u=null==d?void 0:d.dstIndex)?u:0)*o;for(let p=0;p<c;++p)l[i]=t,l[i+1]=n,l[i+2]=f,i+=o}var f=Object.freeze({__proto__:null,copy:t,fill:n});e.copy=t,e.fill=n,e.vec3=f}));

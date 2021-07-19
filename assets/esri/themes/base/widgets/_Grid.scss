@@ -31,6 +31,15 @@
     .esri-grid__grid {
       height: 100%;
       width: 100%;
+
+      a {
+        color: $interactive-font-color;
+
+        &:hover,
+        &:focus {
+          color: $interactive-font-color--hover;
+        }
+      }
     }
 
     .esri-column__sorter {

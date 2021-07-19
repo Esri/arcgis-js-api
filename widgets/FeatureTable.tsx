@@ -9,6 +9,7 @@
  * * Viewing related records is currently not supported.
  * * Viewing attachments is currently not supported, although if a feature contains
  * attachments, the total count per feature will display.
+ * * SceneLayers are supported only starting with version 4.20. SceneLayer are only supported if they have an associated FeatureLayer.
  * :::
  *
  * The following image displays the standalone `FeatureTable` widget
@@ -52,10 +53,11 @@ import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/dec
 
 // esri.layers
 import FeatureLayer from "esri/layers/FeatureLayer";
+import SceneLayer from "esri/layers/SceneLayer";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -87,7 +89,7 @@ import FeatureTableMessages from "esri/widgets/FeatureTable/t9n/FeatureTable";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { messageBundle, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx, WidgetProperties } from "esri/widgets/support/widget";
 
 const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   header: true,
@@ -132,11 +134,11 @@ interface VisibleElements {
 
 type SelectionChangeEvent = Partial<Pick<CollectionChangeEvent, "added" | "removed">>;
 
-interface FeatureTableEvents {
+interface Events {
   "selection-change": SelectionChangeEvent;
 }
 
-type FeatureTableParams = Partial<
+type ConstructProperties = Partial<
   Pick<
     FeatureTable,
     | "attachmentsEnabled"
@@ -148,10 +150,11 @@ type FeatureTableParams = Partial<
     | "viewModel"
     | "visibleElements"
   >
->;
+> &
+  Partial<WidgetProperties>;
 
 @subclass("esri.widgets.FeatureTable")
-class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
+class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -213,8 +216,8 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    * });
    *
    */
-  constructor(params?: FeatureTableParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -570,17 +573,18 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
 
   /**
    *
-   * The associated {@link module:esri/layers/FeatureLayer} containing the fields and attributes to display within the widget.
+   * The associated {@link module:esri/layers/FeatureLayer} or {@link module:esri/layers/SceneLayer} containing the fields and
+   * attributes to display within the widget.
    * The table's pagination defaults to `50` records at a time. If the layer contains less than 50 records, it will use whatever
    * count it has. Note that 0 records do not apply.
    *
    * @name layer
-   * @type {module:esri/layers/FeatureLayer}
+   * @type {module:esri/layers/FeatureLayer|module:esri/layers/SceneLayer}
    * @instance
    *
    */
   @aliasOf("viewModel.layer")
-  layer: FeatureLayer = null;
+  layer: FeatureLayer | SceneLayer = null;
 
   //----------------------------------
   //  messages
@@ -717,7 +721,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<FeatureTableEvents> {
    *
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

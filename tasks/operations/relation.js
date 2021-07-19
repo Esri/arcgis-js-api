@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","../../core/jsonMap","../../geometry/support/jsonUtils"],(function(e,t,i){"use strict";const o=new t.JSONMap({esriGeometryRelationCross:"cross",esriGeometryRelationDisjoint:"disjoint",esriGeometryRelationIn:"in",esriGeometryRelationInteriorIntersection:"interior-intersection",esriGeometryRelationIntersection:"intersection",esriGeometryRelationLineCoincidence:"line-coincidence",esriGeometryRelationLineTouch:"line-touch",esriGeometryRelationOverlap:"overlap",esriGeometryRelationPointTouch:"point-touch",esriGeometryRelationTouch:"touch",esriGeometryRelationWithin:"within",esriGeometryRelationRelation:"relation"});function r(e){const{geometries1:t,geometries2:r,relation:n,relationParameter:s}=e.toJSON(),a={};if(t&&t.length){a.geometries1=JSON.stringify({geometryType:i.getJsonType(t[0]),geometries:t});const e=t[0].spatialReference;a.sr=e.wkid?e.wkid:JSON.stringify(e)}return r&&r.length>0&&(a.geometries2=JSON.stringify({geometryType:i.getJsonType(r[0]),geometries:r})),n&&(a.relation=o.toJSON(n)),s&&(a.relationParam=s),a}e.relationToRESTParameters=r,Object.defineProperty(e,"__esModule",{value:!0})}));

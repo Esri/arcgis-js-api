@@ -35,6 +35,7 @@
 import { substitute } from "esri/intl";
 
 // esri.core
+import Collection from "esri/core/Collection";
 import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Logger from "esri/core/Logger";
@@ -42,6 +43,9 @@ import { isSome } from "esri/core/maybe";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
+
+// esri.libs.resize-observer
+import ResizeObserver from "esri/libs/resize-observer/ResizeObserver";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -52,10 +56,15 @@ import {
   InputCreatedFunction,
   InputType,
   LabelInfos,
+  RangeLabelClickEvent,
+  SegmentClickEvent,
   SegmentDragEvent,
   ThumbChangeEvent,
+  ThumbClickEvent,
   ThumbCreatedFunction,
   ThumbDragEvent,
+  TickClickEvent,
+  TrackClickEvent,
   TickConfig,
   ValueChangeEvent
 } from "esri/widgets/Slider/interfaces";
@@ -69,9 +78,10 @@ import {
   InputFormatFunction,
   InputParseFunction,
   LabelFormatFunction,
+  SliderFormatType,
   VNode
 } from "esri/widgets/support/interfaces";
-import { messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
+import { messageBundle, tsx, WidgetProperties } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-slider",
@@ -97,10 +107,13 @@ const CSS = {
   anchorElement: "esri-slider__anchor",
   movingAnchorElement: "esri-slider__anchor--moving",
   lastMovedAnchorElement: "esri-slider__anchor--moved",
+  anchorElementActive: "esri-slider__anchor--active",
+
   anchorElementIndexPrefix: "esri-slider__anchor-",
   segmentElement: "esri-slider__segment",
   segmentElementIndexPrefix: "esri-slider__segment-",
   segmentElementInteractive: "esri-slider__segment--interactive",
+  segmentElementActive: "esri-slider__segment--active",
   thumbElement: "esri-slider__thumb",
   labelElement: "esri-slider__label",
   labelElementInteractive: "esri-slider__label--interactive",
@@ -156,12 +169,24 @@ interface AnchorDetails {
   value: number;
 }
 
+interface TickElementGroup {
+  groupElement?: HTMLElement;
+  tickElement?: HTMLElement;
+  labelElement?: HTMLElement;
+}
+
 interface SliderEvents {
   "max-change": ValueChangeEvent;
+  "max-click": RangeLabelClickEvent;
   "min-change": ValueChangeEvent;
+  "min-click": RangeLabelClickEvent;
+  "segment-click": SegmentClickEvent;
   "segment-drag": SegmentDragEvent;
   "thumb-change": ThumbChangeEvent;
+  "thumb-click": ThumbClickEvent;
   "thumb-drag": ThumbDragEvent;
+  "tick-click": TickClickEvent;
+  "track-click": TrackClickEvent;
 }
 
 const logger = Logger.getLogger("esri.widgets.Slider");
@@ -176,8 +201,37 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   rangeLabels: false
 };
 
+interface OptionalConstructProperties extends WidgetProperties<SliderViewModel> {
+  disabled: boolean;
+  extraNodes: VNode[];
+  draggableSegmentsEnabled: boolean;
+  inputCreatedFunction: InputCreatedFunction;
+  inputFormatFunction: InputFormatFunction;
+  inputParseFunction: InputParseFunction;
+  labelInputsEnabled: boolean;
+  labelFormatFunction: LabelFormatFunction;
+  labels: LabelInfos;
+  labelsVisible: boolean;
+  layout: Layout;
+  max: number;
+  min: number;
+  precision: number;
+  rangeLabelInputsEnabled: boolean;
+  rangeLabelsVisible: boolean;
+  snapOnClickEnabled: boolean;
+  steps: number | number[];
+  syncedSegmentsEnabled: boolean;
+  thumbsConstrained: boolean;
+  thumbCreatedFunction: ThumbCreatedFunction;
+  tickConfigs: TickConfig[];
+  values: number[];
+  visibleElements: VisibleElements;
+}
+
+type ConstructProperties = Partial<OptionalConstructProperties>;
+
 @subclass(declaredClass)
-class Slider extends Widget<SliderEvents> {
+class Slider extends Widget<ConstructProperties, SliderEvents> implements ConstructProperties {
   //-----------------------------------------------------------s---------------
   //
   //  Lifecycle
@@ -205,7 +259,21 @@ class Slider extends Widget<SliderEvents> {
    */
 
   /**
-   * Fires when a user drags a segment of the slider. A segment is the portion
+   * Fires when a user clicks a [segment element](#segmentElements) on the slider. A segment is a portion
+   * of the track that lies between two thumbs. This only applies when
+   * two or more thumbs are set on the slider.
+   *
+   * @event module:esri/widgets/Slider#segment-click
+   * @since 4.20
+   *
+   * @property {number} index - The 1-based index of the segment on the slider.
+   * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
+   * @property {"segment-click"} type - The type of the event.
+   * @property {number} value - The approximate value of the slider at the location of the click event.
+   */
+
+  /**
+   * Fires when a user drags a [segment](#segmentElements) of the slider. A segment is the portion
    * of the track that lies between two thumbs. Therefore, this only applies when
    * two or more thumbs are set on the slider.
    *
@@ -229,6 +297,17 @@ class Slider extends Widget<SliderEvents> {
    */
 
   /**
+   * Fires when a user clicks a [thumb element](#thumbElements).
+   *
+   * @event module:esri/widgets/Slider#thumb-click
+   * @since 4.20
+   *
+   * @property {number} index - The 0-based index of the thumb.
+   * @property {"thumb-click"} type - The type of the event.
+   * @property {number} value - The value of the thumb when the event is emitted.
+   */
+
+  /**
    * Fires when a user drags a thumb on the Slider widget.
    *
    * @event module:esri/widgets/Slider#thumb-drag
@@ -237,6 +316,48 @@ class Slider extends Widget<SliderEvents> {
    * @property {"drag" | "start" | "stop"} state - The state of the drag.
    * @property {"thumb-drag"} type - The type of the event.
    * @property {number} value - The value of the thumb when the event is emitted.
+   */
+
+  /**
+   * Fires when a user clicks the [track element](#trackElement).
+   *
+   * @event module:esri/widgets/Slider#track-click
+   * @since 4.20
+   *
+   * @property {"track-click"} type - The type of the event.
+   * @property {number} value - The approximate value of the slider at the location of the click event.
+   */
+
+  /**
+   * Fires when a user clicks the [max label element](#maxLabelElement).
+   *
+   * @event module:esri/widgets/Slider#max-click
+   * @since 4.20
+   *
+   * @property {"max-click"} type - The type of the event.
+   * @property {number} value - The max value of the slider.
+   */
+
+  /**
+   * Fires when a user clicks the [min label element](#minLabelElement).
+   *
+   * @event module:esri/widgets/Slider#min-click
+   * @since 4.20
+   *
+   * @property {"min-click"} type - The type of the event.
+   * @property {number} value - The  min value of the slider.
+   */
+
+  /**
+   * Fires when a user clicks a [tick or its associated label](#tickElements).
+   *
+   * @event module:esri/widgets/Slider#tick-click
+   * @since 4.20
+   *
+   * @property {"tick-click"} type - The type of the event.
+   * @property {number} value - The approximate value that the tick represents on the slider track.
+   * @property {number} configIndex - The 0-based index of the associated configuration provided in [tickConfigs](#tickConfigs).
+   * @property {number} groupIndex - The 0-based index of the tick and/or group (associated label) relative to other ticks in the same configuration.
    */
 
   /**
@@ -255,8 +376,8 @@ class Slider extends Widget<SliderEvents> {
    *   values: [ 50 ]
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._observer = new ResizeObserver(() => this.scheduleRender());
 
@@ -272,6 +393,8 @@ class Slider extends Widget<SliderEvents> {
     this._onSegmentPointerUp = this._onSegmentPointerUp.bind(this);
 
     this._onTrackPointerDown = this._onTrackPointerDown.bind(this);
+    this._onTrackPointerMove = this._onTrackPointerMove.bind(this);
+    this._onTrackPointerUp = this._onTrackPointerUp.bind(this);
   }
 
   destroy(): void {
@@ -280,6 +403,18 @@ class Slider extends Widget<SliderEvents> {
     document.removeEventListener("pointermove", this._onLabelPointerMove);
     document.removeEventListener("pointerup", this._onAnchorPointerUp);
     document.removeEventListener("pointermove", this._onAnchorPointerMove);
+
+    this.labelElements.removeAll();
+    this.labelElements.destroy();
+
+    this.segmentElements.removeAll();
+    this.segmentElements.destroy();
+
+    this.thumbElements.removeAll();
+    this.thumbElements.destroy();
+
+    this.tickElements.removeAll();
+    this.tickElements.destroy();
   }
 
   //--------------------------------------------------------------------------
@@ -304,8 +439,6 @@ class Slider extends Widget<SliderEvents> {
 
   private _isMaxInputActive: boolean = false;
 
-  private _labelElements: HTMLElement[] = [];
-
   private _lastMovedHandleIndex: number = null;
 
   private _observer: ResizeObserver = null;
@@ -313,12 +446,6 @@ class Slider extends Widget<SliderEvents> {
   private _positionPrecision: number = 5;
 
   private _segmentDragStartInfo: SegmentDragStartInfo = null;
-
-  private _segmentElements: HTMLElement[] = [];
-
-  private _thumbElements: HTMLElement[] = [];
-
-  private _tickElements: { line?: HTMLElement; label?: HTMLElement }[][] = [];
 
   private _trackHeight: number = null;
 
@@ -362,7 +489,8 @@ class Slider extends Widget<SliderEvents> {
    * @type {VNode[]}
    * @ignore
    */
-  @property() extraNodes: VNode[] = [];
+  @property()
+  extraNodes: VNode[] = [];
 
   //----------------------------------
   //  draggableSegmentsEnabled
@@ -420,7 +548,8 @@ class Slider extends Widget<SliderEvents> {
    *   input.setAttribute("pattern", "[0-9]*");
    * };
    */
-  @property() inputCreatedFunction: InputCreatedFunction = null;
+  @property()
+  inputCreatedFunction: InputCreatedFunction = null;
 
   //----------------------------------
   //  inputFormatFunction
@@ -469,7 +598,8 @@ class Slider extends Widget<SliderEvents> {
    *   return value.toFixed(0);
    * }
    */
-  @aliasOf("viewModel.inputFormatFunction") inputFormatFunction: InputFormatFunction = null;
+  @aliasOf("viewModel.inputFormatFunction")
+  inputFormatFunction: InputFormatFunction = null;
 
   /**
    * Function definition for the
@@ -507,9 +637,9 @@ class Slider extends Widget<SliderEvents> {
    * // For example, if the input is 1.5k this function will parse
    * // it to a value of 1500
    * slider.inputParseFunction = function(value, type, index){
-   *   var charLength = value.length;
-   *   var valuePrefix = parseFloat(value.substring(0,charLength-1));
-   *   var finalChar = value.substring(charLength-1);
+   *   let charLength = value.length;
+   *   let valuePrefix = parseFloat(value.substring(0,charLength-1));
+   *   let finalChar = value.substring(charLength-1);
    *
    *   if(parseFloat(finalChar) >= 0){
    *     return parseFloat(value);
@@ -523,7 +653,8 @@ class Slider extends Widget<SliderEvents> {
    *   return value;
    * }
    */
-  @aliasOf("viewModel.inputParseFunction") inputParseFunction: InputParseFunction = null;
+  @aliasOf("viewModel.inputParseFunction")
+  inputParseFunction: InputParseFunction = null;
 
   //----------------------------------
   //  label
@@ -542,6 +673,27 @@ class Slider extends Widget<SliderEvents> {
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
   label: string = undefined;
+
+  //----------------------------------
+  //  labelElements
+  //----------------------------------
+
+  /**
+   * The HTML Element nodes representing [labels](#labels) attached to slider thumbs. You can use this property to customize the style of labels and attach event handlers to each element.
+   *
+   * @name labelElements
+   * @instance
+   * @type {module:esri/core/Collection<HTMLElement>}
+   * @since 4.20
+   * @readonly
+   *
+   * @example
+   * slider.labelElements.forEach( labelElement => labelElement.classList.add("newStyle") );
+   */
+  @property({
+    readOnly: true
+  })
+  readonly labelElements: Collection<HTMLElement> = new Collection();
 
   //----------------------------------
   //  labelInputsEnabled
@@ -607,7 +759,8 @@ class Slider extends Widget<SliderEvents> {
    *   return (type === "value") ? value.toFixed(0) : value;
    * }
    */
-  @aliasOf("viewModel.labelFormatFunction") labelFormatFunction: LabelFormatFunction = null;
+  @aliasOf("viewModel.labelFormatFunction")
+  labelFormatFunction: LabelFormatFunction = null;
 
   //----------------------------------
   //  labels
@@ -622,7 +775,8 @@ class Slider extends Widget<SliderEvents> {
    * @type {String[]}
    * @readonly
    */
-  @aliasOf("viewModel.labels") labels: LabelInfos = null;
+  @aliasOf("viewModel.labels")
+  labels: LabelInfos = null;
 
   //----------------------------------
   //  labelsVisible
@@ -736,7 +890,35 @@ class Slider extends Widget<SliderEvents> {
    *   values: [ 50 ]
    * });
    */
-  @aliasOf("viewModel.max") max: number = null;
+  @aliasOf("viewModel.max")
+  max: number = null;
+
+  //----------------------------------
+  //  maxLabelElement
+  //----------------------------------
+
+  /**
+   * The HTML Element node representing the [max](#max) value label. You can use this property
+   * to customize the style and attach event handlers.
+   *
+   * @name maxLabelElement
+   * @instance
+   * @type {HTMLElement}
+   * @readonly
+   * @since 4.20
+   *
+   * @example
+   * slider.maxLabelElement.classList.add('maxClass');
+   *
+   * @example
+   * slider.maxLabelElement.addEventListener('click', () => {
+   *   slider.values = [ slider.max ];
+   * });
+   */
+  @property({
+    readOnly: true
+  })
+  readonly maxLabelElement: HTMLElement = null;
 
   //----------------------------------
   //  messages
@@ -783,7 +965,35 @@ class Slider extends Widget<SliderEvents> {
    *   values: [ 50 ]
    * });
    */
-  @aliasOf("viewModel.min") min: number = null;
+  @aliasOf("viewModel.min")
+  min: number = null;
+
+  //----------------------------------
+  //  minLabelElement
+  //----------------------------------
+
+  /**
+   * The HTML Element node representing the [min](#min) value label. You can use this property
+   * to customize the style and attach event handlers.
+   *
+   * @name minLabelElement
+   * @instance
+   * @type {HTMLElement}
+   * @readonly
+   * @since 4.20
+   *
+   * @example
+   * slider.minLabelElement.classList.add('minClass');
+   *
+   * @example
+   * slider.minLabelElement.addEventListener('click', () => {
+   *   slider.values = [ slider.min ];
+   * });
+   */
+  @property({
+    readOnly: true
+  })
+  readonly minLabelElement: HTMLElement = null;
 
   //----------------------------------
   //  precision
@@ -834,7 +1044,8 @@ class Slider extends Widget<SliderEvents> {
    * @example
    * slider.precision = 7;
    */
-  @aliasOf("viewModel.precision") precision = 4;
+  @aliasOf("viewModel.precision")
+  precision = 4;
 
   //----------------------------------
   //  rangeLabelInputsEnabled
@@ -885,6 +1096,27 @@ class Slider extends Widget<SliderEvents> {
   }
 
   //----------------------------------
+  //  segmentElements
+  //----------------------------------
+
+  /**
+   * The HTML Element nodes representing interactive slider segments. Segments are interactive when situated between two thumbs. You can use this property to customize the style and attach event handlers to segments.
+   *
+   * @name segmentElements
+   * @instance
+   * @type {module:esri/core/Collection<HTMLElement>}
+   * @readonly
+   * @since 4.20
+   *
+   * @example
+   * slider.segmentElements.forEach( segmentElement => segmentElement.classList.add("thickLine") );
+   */
+  @property({
+    readOnly: true
+  })
+  readonly segmentElements: Collection<HTMLElement> = new Collection();
+
+  //----------------------------------
   //  snapOnClickEnabled
   //----------------------------------
 
@@ -924,13 +1156,14 @@ class Slider extends Widget<SliderEvents> {
       _isMinInputActive,
       _dragStartInfo,
       _segmentDragStartInfo,
+      disabled,
       viewModel
     } = this;
 
     const dragging = isSome(_dragStartInfo) || isSome(_segmentDragStartInfo);
     const editing = !!(_activeLabelInputIndex !== null || _isMaxInputActive || _isMinInputActive);
 
-    return editing ? "editing" : dragging ? "dragging" : viewModel.state;
+    return disabled ? "disabled" : editing ? "editing" : dragging ? "dragging" : viewModel.state;
   }
 
   //----------------------------------
@@ -966,6 +1199,27 @@ class Slider extends Widget<SliderEvents> {
 
   @property()
   steps: number | number[] = null;
+
+  //----------------------------------
+  //  syncedSegmentsEnabled
+  //----------------------------------
+
+  /**
+   * When `true`, all segments will sync together in updating thumb values when the user drags any segment. This maintains the interval between all thumbs when any segment is dragged.
+   * Only applicable when [draggableSegmentsEnabled](#draggableSegmentsEnabled) is `true`.
+   *
+   * @name syncedSegmentsEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.20
+   *
+   * @example
+   * slider.draggableSegmentsEnabled = true;
+   * slider.syncedSegmentsEnabled = true;
+   */
+  @property()
+  syncedSegmentsEnabled = false;
 
   /**
    * Function that executes each time a thumb is created on the slider. This function should be set to the
@@ -1025,10 +1279,32 @@ class Slider extends Widget<SliderEvents> {
    *   thumbElement.classList.add("change-color");
    *   thumbElement.addEventListener("focus", function() {
    *     // add custom behavior here...tooltips, fire other actions, etc.
-   *   };
-   * };
+   *   });
+   * });
    */
-  @property() thumbCreatedFunction: ThumbCreatedFunction = null;
+  @property()
+  thumbCreatedFunction: ThumbCreatedFunction = null;
+
+  //----------------------------------
+  //  thumbElements
+  //----------------------------------
+
+  /**
+   * The HTML Element nodes representing slider thumbs. You can use this property to customize the style of thumbs and attach event handlers to each thumb.
+   *
+   * @name thumbElements
+   * @instance
+   * @type {module:esri/core/Collection<HTMLElement>}
+   * @readonly
+   * @since 4.20
+   *
+   * @example
+   * slider.thumbElements.forEach( thumbElement => thumbElement.classList.add("greenThumb") );
+   */
+  @property({
+    readOnly: true
+  })
+  readonly thumbElements: Collection<HTMLElement> = new Collection();
 
   /**
    * Function that fires each time a tick is created. It provides you access to each tick
@@ -1229,7 +1505,51 @@ class Slider extends Widget<SliderEvents> {
    * }];
    */
   @property()
-  tickConfigs: TickConfig[] = null;
+  set tickConfigs(config: TickConfig[]) {
+    this._set("tickConfigs", config);
+    this.scheduleRender();
+  }
+
+  //----------------------------------
+  //  tickElements
+  //----------------------------------
+
+  /**
+   * The HTML Element nodes representing a single slider tick and its associated label.
+   *
+   * @typedef module:esri/widgets/Slider~TickElementGroup
+   * @since 4.20
+   *
+   * @property {HTMLElement} [tickElement] - The HTMLElement representing a tick. You can add or modify the style of a tick by adding CSS classes to this element. You can also attach event listeners to this element.
+   * @property {HTMLElement} [labelElement] - The HTMLElement representing the label associated with the tick element. You can add or modify the style of a tick label by adding CSS classes to this element. You can also attach event listeners to this element.
+   */
+
+  /**
+   * The HTML Element nodes representing slider ticks and their associated labels. These elements are created in [TickCreatedFunction](#TickCreatedFunction) and configured in [tickConfigs](#tickConfigs).
+   *
+   * @name tickElements
+   * @instance
+   * @type {module:esri/core/Collection<module:esri/core/Collection<module:esri/widgets/Slider~TickElementGroup>>}
+   * @readonly
+   * @since 4.20
+   *
+   * @example
+   * slider.tickElements.getItemAt(0).forEach((tickElementGroup) => {
+   *   const { tickElement, labelElement } = tickElementGroup;
+   *   const newValue = labelElement["data-value"];
+   *   const setValue = () => {
+   *     slider.values = [ newValue ];
+   *   };
+   *   tickElement.addEventListener("click", setValue);
+   *   tickElement.style.cursor = "pointer";
+   *   labelElement.addEventListener("click", setValue);
+   *   labelElement.style.cursor = "pointer";
+   * });
+   */
+  @property({
+    readOnly: true
+  })
+  readonly tickElements: Collection<Collection<TickElementGroup>> = new Collection();
 
   //----------------------------------
   //  trackElement
@@ -1247,8 +1567,10 @@ class Slider extends Widget<SliderEvents> {
    * // Add CSS class to the track
    * slider.trackElement.classList.add("thickTrack");
    */
-  @property()
-  trackElement: HTMLElement = null;
+  @property({
+    readOnly: true
+  })
+  readonly trackElement: HTMLElement = null;
 
   //----------------------------------
   //  values
@@ -1274,7 +1596,8 @@ class Slider extends Widget<SliderEvents> {
    *   container: "sliderDiv"
    * });
    */
-  @aliasOf("viewModel.values") values: number[] = null;
+  @aliasOf("viewModel.values")
+  values: number[] = null;
 
   //----------------------------------
   //  viewModel
@@ -1387,7 +1710,7 @@ class Slider extends Widget<SliderEvents> {
     const { max, min } = this;
 
     // Check for invalid range configuration
-    if (!isSome(min) || !isSome(max) || min > max) {
+    if (!isSome(min) || !isSome(max) || min >= max) {
       return undefined;
     }
 
@@ -1408,6 +1731,7 @@ class Slider extends Widget<SliderEvents> {
     return (
       <div
         afterCreate={this._afterTrackCreate}
+        afterRemoved={this._afterTrackRemoved}
         bind={this}
         class={CSS.trackElement}
         data-node-ref="trackElement"
@@ -1677,6 +2001,7 @@ class Slider extends Widget<SliderEvents> {
     return (
       <div
         aria-hidden={(!rangeLabelsVisible).toString()}
+        afterCreate={this._afterMaxLabelCreate}
         bind={this}
         class={classes}
         onclick={this._onMaxLabelClick}
@@ -1701,6 +2026,7 @@ class Slider extends Widget<SliderEvents> {
     return (
       <div
         aria-hidden={(!rangeLabelsVisible).toString()}
+        afterCreate={this._afterMinLabelCreate}
         bind={this}
         class={classes}
         onclick={this._onMinLabelClick}
@@ -1776,7 +2102,9 @@ class Slider extends Widget<SliderEvents> {
   protected renderTicks(config: TickConfig, configIndex: number): VNode {
     const { mode, values } = config;
 
-    this._tickElements[configIndex] = [];
+    if (!this.tickElements.getItemAt(configIndex)) {
+      this.tickElements.add(new Collection(), configIndex);
+    }
 
     if (mode === "position") {
       const valuesArray = Array.isArray(values) ? values : [values];
@@ -1832,12 +2160,14 @@ class Slider extends Widget<SliderEvents> {
     return (
       <div
         afterCreate={this._afterTickGroupCreate}
+        afterRemoved={this._afterTickGroupRemoved}
         bind={this}
         data-config={config}
         data-position={position}
         data-tick-config-index={configIndex}
         data-tick-group-index={groupIndex}
         data-value={value}
+        onclick={this._onTickGroupClick}
         key={`tick-group-${groupIndex}`}
       >
         {this.renderTickLine(config, groupIndex, configIndex, value)}
@@ -1847,7 +2177,7 @@ class Slider extends Widget<SliderEvents> {
   }
 
   protected renderTickLine(
-    _config: TickConfig,
+    config: TickConfig,
     groupIndex: number,
     configIndex: number,
     value: number
@@ -1858,6 +2188,7 @@ class Slider extends Widget<SliderEvents> {
         aria-valuenow={value.toString()}
         bind={this}
         class={CSS.tickElement}
+        data-config={config}
         data-tick-config-index={configIndex}
         data-tick-group-index={groupIndex}
         data-value={value}
@@ -1885,6 +2216,7 @@ class Slider extends Widget<SliderEvents> {
         aria-valuetext={label}
         bind={this}
         class={CSS.tickLabelElement}
+        data-config={config}
         data-tick-config-index={configIndex}
         data-tick-group-index={groupIndex}
         data-value={value}
@@ -1912,7 +2244,7 @@ class Slider extends Widget<SliderEvents> {
   }
 
   private _afterTrackCreate(element: HTMLElement): void {
-    storeNode.call(this, element);
+    this._set("trackElement", element);
 
     element.addEventListener("pointerdown", this._onTrackPointerDown);
 
@@ -1921,19 +2253,19 @@ class Slider extends Widget<SliderEvents> {
     this.scheduleRender();
   }
 
-  private _afterSegmentCreate(element: HTMLElement): void {
-    this._segmentElements.push(element);
+  private _afterTrackRemoved(element: HTMLElement): void {
+    element.removeEventListener("pointerdown", this._onTrackPointerDown);
+    document.removeEventListener("pointermove", this._onTrackPointerMove);
+    document.removeEventListener("pointerup", this._onTrackPointerUp);
+  }
 
+  private _afterSegmentCreate(element: HTMLElement): void {
+    this.segmentElements.add(element);
     element.addEventListener("pointerdown", this._onSegmentPointerDown);
   }
 
   private _afterSegmentRemoved(element: HTMLElement): void {
-    const index = this._segmentElements.indexOf(element, 0);
-
-    if (index > -1) {
-      this._segmentElements.splice(index, 1);
-    }
-
+    this.segmentElements.remove(element);
     element.removeEventListener("pointerdown", this._onSegmentPointerDown);
   }
 
@@ -1945,8 +2277,8 @@ class Slider extends Widget<SliderEvents> {
     if (this.thumbCreatedFunction) {
       const index = element["data-thumb-index"];
       const value = element["data-value"];
-      const thumbElement = this._thumbElements[index] || null;
-      const labelElement = this._labelElements[index] || null;
+      const thumbElement = this.thumbElements.getItemAt(index) || null;
+      const labelElement = this.labelElements.getItemAt(index) || null;
 
       this.thumbCreatedFunction(index, value, thumbElement, labelElement);
     }
@@ -1974,30 +2306,22 @@ class Slider extends Widget<SliderEvents> {
   }
 
   private _afterThumbCreate(element: HTMLElement): void {
-    this._thumbElements.push(element);
+    this.thumbElements.add(element);
   }
 
   private _afterThumbRemoved(element: HTMLElement): void {
-    const index = this._thumbElements.indexOf(element, 0);
-
-    if (index > -1) {
-      this._thumbElements.splice(index, 1);
-    }
+    this.thumbElements.remove(element);
   }
 
   private _afterLabelCreate(element: HTMLElement): void {
-    this._labelElements.push(element);
+    this.labelElements.add(element);
 
     element.addEventListener("pointerdown", this._onLabelPointerDown);
     element.addEventListener("pointerup", this._onLabelPointerUp);
   }
 
   private _afterLabelRemoved(element: HTMLElement): void {
-    const index = this._labelElements.indexOf(element, 0);
-
-    if (index > -1) {
-      this._labelElements.splice(index, 1);
-    }
+    this.labelElements.remove(element);
 
     element.removeEventListener("pointerdown", this._onLabelPointerDown);
     element.removeEventListener("pointerup", this._onLabelPointerUp);
@@ -2018,25 +2342,34 @@ class Slider extends Widget<SliderEvents> {
   private _afterTickLineCreate(element: HTMLElement): void {
     const configIndex = element["data-tick-config-index"];
     const groupIndex = element["data-tick-group-index"];
-    const configGroup = this._tickElements[configIndex];
+    const configGroup = this.tickElements.getItemAt(configIndex);
 
-    if (configGroup[groupIndex]) {
-      configGroup[groupIndex].line = element;
+    if (configGroup.getItemAt(groupIndex)) {
+      configGroup.getItemAt(groupIndex).tickElement = element;
     } else {
-      configGroup[groupIndex] = { line: element, label: null };
+      configGroup.add({ groupElement: null, tickElement: element, labelElement: null }, groupIndex);
     }
   }
 
   private _afterTickLabelCreate(element: HTMLElement): void {
     const configIndex = element["data-tick-config-index"];
     const groupIndex = element["data-tick-group-index"];
-    const configGroup = this._tickElements[configIndex];
+    const configGroup = this.tickElements.getItemAt(configIndex);
 
-    if (configGroup[groupIndex]) {
-      configGroup[groupIndex].label = element;
+    if (configGroup.getItemAt(groupIndex)) {
+      configGroup.getItemAt(groupIndex).labelElement = element;
     } else {
-      configGroup[groupIndex] = { label: element, line: null };
+      configGroup.add({ groupElement: null, labelElement: element, tickElement: null }, groupIndex);
     }
+  }
+
+  private _afterTickGroupRemoved(element: HTMLElement): void {
+    // groupIndex may have dynamically changed from earlier removal
+    const configIndex = element["data-tick-config-index"];
+    const configCollection = this.tickElements.items[configIndex];
+    const group = configCollection?.find((item) => item.groupElement === element);
+
+    group && configCollection.remove(group);
   }
 
   private _afterTickGroupCreate(element: HTMLElement): void {
@@ -2046,15 +2379,26 @@ class Slider extends Widget<SliderEvents> {
       const configIndex = element["data-tick-config-index"];
       const groupIndex = element["data-tick-group-index"];
       const value = element["data-value"];
-      const children = this._tickElements[configIndex][groupIndex];
+      const group = this.tickElements?.getItemAt(configIndex)?.getItemAt(groupIndex);
 
-      if (children) {
-        const line = children.line || null;
-        const label = children.label || null;
+      if (group) {
+        // Used to keep 'tickElements' in sync
+        group.groupElement = element;
+
+        const line = group.tickElement || null;
+        const label = group.labelElement || null;
 
         config.tickCreatedFunction(value, line, label);
       }
     }
+  }
+
+  private _afterMaxLabelCreate(element: HTMLElement): void {
+    this._set("maxLabelElement", element);
+  }
+
+  private _afterMinLabelCreate(element: HTMLElement): void {
+    this._set("minLabelElement", element);
   }
 
   //--------------------------------------------------------------------------
@@ -2259,17 +2603,23 @@ class Slider extends Widget<SliderEvents> {
 
     const { index } = this._dragStartInfo;
     const dragged = this._dragged;
+    const value = this.values[index];
 
     this._dragged = false;
     this._dragStartInfo = null;
     this._lastMovedHandleIndex = index;
+    this.notifyChange("state");
 
     // Only update after thumb moves
     if (dragged) {
-      this.notifyChange("state");
-      this._emitThumbDragEvent({ index, state: "stop", value: this.values[index] });
+      this._emitThumbDragEvent({ index, state: "stop", value });
     } else {
       this.scheduleRender();
+
+      // Label may have been primary target
+      if (this.state !== "editing") {
+        this._emitThumbClickEvent({ index, value });
+      }
     }
   }
 
@@ -2283,13 +2633,16 @@ class Slider extends Widget<SliderEvents> {
     const { _dragStartInfo, snapOnClickEnabled, state, values } = this;
 
     // widget/behavior is disabled, an input is open, a handle was targetted
-    if (
-      this._isDisabled() ||
-      state === "editing" ||
-      _dragStartInfo ||
-      !snapOnClickEnabled ||
-      !values.length
-    ) {
+    if (this._isDisabled() || state === "editing" || _dragStartInfo) {
+      return;
+    }
+
+    // For 'track-click' event
+    document.addEventListener("pointermove", this._onTrackPointerMove);
+    document.addEventListener("pointerup", this._onTrackPointerUp);
+
+    // Handle positions remain the same
+    if (!snapOnClickEnabled || !values.length) {
       return;
     }
 
@@ -2300,7 +2653,15 @@ class Slider extends Widget<SliderEvents> {
     // Use value to find the nearest anchor to move
     const cursorPosition = this._getCursorPositionFromEvent(event);
     const value = this._valueFromPosition(cursorPosition);
-    const index = this._getIndexOfNearestValue(value);
+    const potentialIndex = this._getIndexOfNearestValue(value);
+    const nearestValue = values[potentialIndex];
+
+    // Account for duplicate values (return higher index)
+    // Otherwise the lowest index is always returned
+    const index =
+      values.some((v, i) => v === nearestValue && i !== potentialIndex) && value > nearestValue
+        ? this.values.lastIndexOf(nearestValue)
+        : potentialIndex;
 
     if (!isSome(index)) {
       return;
@@ -2347,6 +2708,29 @@ class Slider extends Widget<SliderEvents> {
     document.addEventListener("pointermove", this._onAnchorPointerMove);
   }
 
+  private _onTrackPointerMove(event: PointerEvent): void {
+    event.preventDefault();
+    this._dragged = true;
+  }
+
+  private _onTrackPointerUp(event: PointerEvent): void {
+    event.preventDefault();
+    document.removeEventListener("pointermove", this._onTrackPointerMove);
+    document.removeEventListener("pointerup", this._onTrackPointerUp);
+
+    if (!this.snapOnClickEnabled) {
+      this._dragged = false;
+    }
+
+    // Because '_dragged' is updated in '_onThumbPointerMove'
+    // the 'track-click' event will not fire when 'snapOnClickEnabled' is true
+    if (!this._dragged) {
+      const cursorPosition = this._getCursorPositionFromEvent(event);
+      const value = this._valueFromPosition(cursorPosition);
+      this._emitTrackClickEvent({ value });
+    }
+  }
+
   //--------------------------------------------------------------------------
   //  Segment Event Handlers
   //--------------------------------------------------------------------------
@@ -2356,13 +2740,13 @@ class Slider extends Widget<SliderEvents> {
   private _onSegmentPointerDown(event: PointerEvent): void {
     event.preventDefault();
 
-    const { draggableSegmentsEnabled } = this;
     const element = event.target as HTMLElement;
     const index = element["data-segment-index"];
     const minIndex = element["data-min-thumb-index"] as number;
     const maxIndex = element["data-max-thumb-index"] as number;
 
-    if (this._isDisabled() || !draggableSegmentsEnabled || !isSome(minIndex) || !isSome(maxIndex)) {
+    // Segments support events only when positioned between thumbs
+    if (this._isDisabled() || !isSome(minIndex) || !isSome(maxIndex)) {
       return;
     }
 
@@ -2371,6 +2755,21 @@ class Slider extends Widget<SliderEvents> {
 
     // Update references
     this._storeTrackDimensions();
+
+    // Required for 'segment-click' event
+    document.addEventListener("pointerup", this._onSegmentPointerUp);
+
+    const minDetails = this._getAnchorDetails(minIndex);
+    const maxDetails = this._getAnchorDetails(maxIndex);
+
+    if (this.syncedSegmentsEnabled) {
+      this.segmentElements.forEach((element) => element.classList.add(CSS.segmentElementActive));
+      this._anchorElements.forEach((element) => element.classList.add(CSS.anchorElementActive));
+    } else {
+      this.segmentElements.getItemAt(index).classList.add(CSS.segmentElementActive);
+      this._anchorElements[minDetails.index]?.classList.add(CSS.anchorElementActive);
+      this._anchorElements[maxDetails.index]?.classList.add(CSS.anchorElementActive);
+    }
 
     // Store information about the segment
     // Used to calculate new handle positions based on total changes
@@ -2381,17 +2780,18 @@ class Slider extends Widget<SliderEvents> {
       cursorPosition: this._getCursorPositionFromEvent(event),
       index,
       details: this._normalizeSegmentDetails({
-        min: this._getAnchorDetails(minIndex),
-        max: this._getAnchorDetails(maxIndex)
+        min: minDetails,
+        max: maxDetails
       })
     };
 
-    // 'dragging'
-    this.notifyChange("state");
-    this._emitSegmentDragEvent({ index, state: "start", thumbIndices: [minIndex, maxIndex] });
+    if (this.draggableSegmentsEnabled) {
+      document.addEventListener("pointermove", this._onSegmentPointerMove);
 
-    document.addEventListener("pointerup", this._onSegmentPointerUp);
-    document.addEventListener("pointermove", this._onSegmentPointerMove);
+      // 'dragging'
+      this.notifyChange("state");
+      this._emitSegmentDragEvent({ index, state: "start", thumbIndices: [minIndex, maxIndex] });
+    }
   }
 
   // Logic related to movement of handles while dragging the segment
@@ -2457,8 +2857,16 @@ class Slider extends Widget<SliderEvents> {
       const bound = this._isPositionInverted() ? max : min;
       const newMin = bound;
       const newMax = maxValue + (bound - minValue);
+      const oldMax = this.values[maxIndex];
+      const diff = newMax - oldMax;
 
-      this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      // Move anchors to proposed values
+      // Final values may be adjusted (e.g. steps)
+      if (this.syncedSegmentsEnabled) {
+        this._updateAnchorValuesByDifference(diff);
+      } else {
+        this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      }
       return;
     }
 
@@ -2468,8 +2876,16 @@ class Slider extends Widget<SliderEvents> {
       const bound = this._isPositionInverted() ? min : max;
       const newMax = bound;
       const newMin = minValue + (bound - maxValue);
+      const oldMin = this.values[minIndex];
+      const diff = newMin - oldMin;
 
-      this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      // Move anchors to proposed values
+      // Final values may be adjusted (e.g. steps)
+      if (this.syncedSegmentsEnabled) {
+        this._updateAnchorValuesByDifference(diff);
+      } else {
+        this._updateAnchorValues([minIndex, maxIndex], [newMin, newMax]);
+      }
       return;
     }
 
@@ -2486,7 +2902,11 @@ class Slider extends Widget<SliderEvents> {
 
     // Move anchors to proposed values
     // Final values may be adjusted (e.g. steps)
-    this._updateAnchorValues([minIndex, maxIndex], [newMinValue, newMaxValue]);
+    if (this.syncedSegmentsEnabled) {
+      this._updateAnchorValuesByDifference(newMinValue - oldValues[0]);
+    } else {
+      this._updateAnchorValues([minIndex, maxIndex], [newMinValue, newMaxValue]);
+    }
 
     // Calculate new values
     const newValues = [this.values[minIndex], this.values[maxIndex]];
@@ -2513,7 +2933,7 @@ class Slider extends Widget<SliderEvents> {
       return;
     }
 
-    const { max, min, values } = this;
+    const { _dragged, max, min, values } = this;
     const {
       index,
       details: {
@@ -2522,27 +2942,62 @@ class Slider extends Widget<SliderEvents> {
       }
     } = this._segmentDragStartInfo;
 
-    const range = max - min;
-    const minHandleValue = values[minIndex];
-    const maxHandleValue = values[maxIndex];
+    this.segmentElements.forEach((element) => element.classList.remove(CSS.segmentElementActive));
+    this._anchorElements.forEach((element) => element.classList.remove(CSS.anchorElementActive));
 
-    // Overlapping handles...
-    if (minHandleValue === maxHandleValue) {
-      // Depending on handle position compared to slider center
-      // ... we want to store an index that allows handle movement, to avoid dead-ends
-      this._lastMovedHandleIndex = minHandleValue > range / 2 ? minIndex : maxIndex;
-    } else {
-      this._lastMovedHandleIndex = null;
+    if (this.draggableSegmentsEnabled) {
+      const range = max - min;
+      const minHandleValue = values[minIndex];
+      const maxHandleValue = values[maxIndex];
+
+      // Overlapping handles...
+      if (minHandleValue === maxHandleValue) {
+        // Depending on handle position compared to slider center
+        // ... we want to store an index that allows handle movement, to avoid dead-ends
+        this._lastMovedHandleIndex = minHandleValue > range / 2 ? minIndex : maxIndex;
+      } else {
+        this._lastMovedHandleIndex = null;
+      }
+
+      this._dragged = false;
+      this._segmentDragStartInfo = null;
+      this.notifyChange("state");
+
+      this._emitSegmentDragEvent({
+        index,
+        state: "stop",
+        thumbIndices: [minIndex, maxIndex]
+      });
     }
 
-    this._dragged = false;
-    this._segmentDragStartInfo = null;
-    this.notifyChange("state");
-    this._emitSegmentDragEvent({
-      index,
-      state: "stop",
-      thumbIndices: [minIndex, maxIndex]
-    });
+    // Fire click after drag stop
+    if (!_dragged) {
+      const cursorPosition = this._getCursorPositionFromEvent(event);
+      const value = this._valueFromPosition(cursorPosition);
+
+      this._emitSegmentClickEvent({
+        index,
+        value,
+        thumbIndices: [minIndex, maxIndex]
+      });
+    }
+  }
+
+  //--------------------------------------------------------------------------
+  //  Tick Event Handlers
+  //--------------------------------------------------------------------------
+
+  private _onTickGroupClick(event: MouseEvent): void {
+    const element = event.target;
+    const config = element["data-config"];
+
+    if (config) {
+      const configIndex = element["data-tick-config-index"];
+      const groupIndex = element["data-tick-group-index"];
+      const value = element["data-value"];
+
+      this._emitTickClickEvent({ configIndex, groupIndex, value });
+    }
   }
 
   //--------------------------------------------------------------------------
@@ -2671,7 +3126,13 @@ class Slider extends Widget<SliderEvents> {
 
   // Triggers display of the 'max' Editor on next render
   private _onMaxLabelClick(): void {
-    if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
+    if (this._isDisabled()) {
+      return;
+    }
+
+    this._emitRangeLabelClickEvent({ type: "max-click", value: this.max });
+
+    if (!this.rangeLabelInputsEnabled) {
       return;
     }
 
@@ -2718,7 +3179,13 @@ class Slider extends Widget<SliderEvents> {
 
   // Triggers display of the 'min' Editor on next render
   private _onMinLabelClick(): void {
-    if (this._isDisabled() || !this.rangeLabelInputsEnabled) {
+    if (this._isDisabled()) {
+      return;
+    }
+
+    this._emitRangeLabelClickEvent({ type: "min-click", value: this.min });
+
+    if (!this.rangeLabelInputsEnabled) {
       return;
     }
 
@@ -2871,7 +3338,7 @@ class Slider extends Widget<SliderEvents> {
   }
 
   // Uses user defined formatting function if available
-  private _formatInputValue(value: number, type: string, index?: number): string {
+  private _formatInputValue(value: number, type: SliderFormatType, index?: number): string {
     return this.inputFormatFunction
       ? this.inputFormatFunction(value, type, index)
       : this.viewModel.defaultInputFormatFunction(value);
@@ -2882,10 +3349,13 @@ class Slider extends Widget<SliderEvents> {
   //--------------------------------------------------------------------------
 
   private _getAnchorDetails(index: number): AnchorDetails {
-    const position = this._getPositionOfElement(this._anchorElements[index]);
-    const value = this.values[index];
+    // 'values' may not be ascending
+    const sortedValues = [...this.values].sort((n1, n2) => n1 - n2);
+    const value = sortedValues[index];
+    const actualIndex = this.values.indexOf(value);
+    const position = this._getPositionOfElement(this._anchorElements[actualIndex]);
 
-    return { index, position, value };
+    return { index: actualIndex, position, value };
   }
 
   // Utility to update an anchor element's style
@@ -2950,6 +3420,11 @@ class Slider extends Widget<SliderEvents> {
   private _updateAnchorValues(indices: number[], values: number[]): void {
     // Update anchor position using provided values
     indices.forEach((index, i) => this._toValue(index, values[i]));
+  }
+
+  private _updateAnchorValuesByDifference(diff: number): void {
+    const { min, max, values } = this;
+    values.forEach((value, i) => this._toValue(i, Math.max(Math.min(value + diff, max), min)));
   }
 
   private _toValue(index: number, value: number): void {
@@ -3237,6 +3712,16 @@ class Slider extends Widget<SliderEvents> {
   //
   //--------------------------------------------------------------------------
 
+  private _emitTrackClickEvent(params: Pick<TrackClickEvent, "value">): void {
+    this.emit("track-click", { ...params, type: "track-click" });
+  }
+
+  private _emitTickClickEvent(
+    params: Pick<TickClickEvent, "value" | "configIndex" | "groupIndex">
+  ): void {
+    this.emit("tick-click", { ...params, type: "tick-click" });
+  }
+
   private _emitMaxChangeEvent(params: Pick<ValueChangeEvent, "oldValue" | "value">): void {
     this.emit("max-change", { ...params, type: "max-change" });
   }
@@ -3251,14 +3736,28 @@ class Slider extends Widget<SliderEvents> {
     this.emit("thumb-change", { ...params, type: "thumb-change" });
   }
 
+  private _emitThumbClickEvent(params: Pick<ThumbClickEvent, "index" | "value">): void {
+    this.emit("thumb-click", { ...params, type: "thumb-click" });
+  }
+
   private _emitThumbDragEvent(params: Pick<ThumbDragEvent, "index" | "state" | "value">): void {
     this.emit("thumb-drag", { ...params, type: "thumb-drag" });
+  }
+
+  private _emitSegmentClickEvent(
+    params: Pick<SegmentClickEvent, "index" | "thumbIndices" | "value">
+  ): void {
+    this.emit("segment-click", { ...params, type: "segment-click" });
   }
 
   private _emitSegmentDragEvent(
     params: Pick<SegmentDragEvent, "index" | "state" | "thumbIndices">
   ): void {
     this.emit("segment-drag", { ...params, type: "segment-drag" });
+  }
+
+  private _emitRangeLabelClickEvent(params: Pick<RangeLabelClickEvent, "type" | "value">): void {
+    this.emit(params.type, { ...params });
   }
 }
 

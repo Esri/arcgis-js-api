@@ -43,7 +43,7 @@
  * @see module:esri/views/ui/DefaultUI
  *
  * @example
- * var locateWidget = new Locate({
+ * let locateWidget = new Locate({
  *   view: view,   // Attaches the Locate button to the view
  *   graphic: new Graphic({
  *     symbol: { type: "simple-marker" }  // overwrites the default symbol used for the
@@ -64,8 +64,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -131,12 +131,12 @@ class Locate extends Widget {
    *
    * @example
    * // typical usage
-   * var locate = new Locate({
+   * let locate = new Locate({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -199,7 +199,7 @@ class Locate extends Widget {
    * @type {module:esri/Graphic}
    *
    * @example
-   * var locateWidget = new Locate({
+   * let locateWidget = new Locate({
    *   viewModel: { // autocasts as new LocateViewModel()
    *     view: view,  // assigns the locate widget to a view
    *     graphic: new Graphic({
@@ -319,7 +319,7 @@ class Locate extends Widget {
    *
    * mapView.when(function(){
    *   // Create an instance of the Locate widget
-   *   var locateWidget = new Locate({
+   *   let locateWidget = new Locate({
    *     view: mapView,
    *     scale: 5000
    *   });
@@ -370,7 +370,7 @@ class Locate extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -419,7 +419,7 @@ class Locate extends Widget {
    * @method
    *
    * @example
-   * var locateWidget = new Locate({
+   * let locateWidget = new Locate({
    *   view: view,
    *   container: "locateDiv"
    * });

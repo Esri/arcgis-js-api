@@ -5,6 +5,7 @@ import { property, subclass } from "esri/../../core/accessorSupport/decorators";
 import Widget from "esri/../Widget";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/../support/Heading";
 import { VNode } from "esri/../support/interfaces";
 import { tsx } from "esri/../support/widget";
 
@@ -22,8 +23,8 @@ class FeatureElementInfo extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -38,6 +39,13 @@ class FeatureElementInfo extends Widget {
 
   @property()
   description: string = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   // title
@@ -69,10 +77,11 @@ class FeatureElementInfo extends Widget {
 
   protected renderTitle(): VNode {
     const { title } = this;
+
     return title ? (
-      <h2 key="title" class={CSS.title}>
+      <Heading level={this.headingLevel} class={CSS.title}>
         {title}
-      </h2>
+      </Heading>
     ) : null;
   }
 

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/mathUtils"],(function(t,r,e){"use strict";let s=function(){function t(t){null==t?t=16:t<65536&&(t=e.nextHighestPowerOfTwo(t)),this._array=new Float32Array(t),this._size=0}var s=t.prototype;return s.resize=function(t,r){if(this._size=t,this._size>this._array.length){let t=this._array.length||1;for(;t<this._size;)t*=2;const e=new Float32Array(t);return r&&e.set(this._array),this._array=e,!0}const e=2*this._size;if(e<=this._array.length){let t=this._array.length;for(;t>=e;)t=Math.floor(t/2);const s=new Float32Array(t);return r&&s.set(this._array.subarray(0,t)),this._array=s,!0}return!1},s.append=function(t){const r=this._size;this.resize(this._size+t.length,!0),this._array.set(t,r)},s.erase=function(t,r){for(let e=t;e<r;++e)this._array[e]=0},r._createClass(t,[{key:"array",get:function(){return this._array}},{key:"size",get:function(){return this._size}}]),t}();t.ResizableFloat32Array=s,Object.defineProperty(t,"__esModule",{value:!0})}));

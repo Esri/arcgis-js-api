@@ -1,5 +1,5 @@
 /**
- * The Print widget connects your application with a [printing service](https://server.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm) to allow the map to be printed.
+ * The Print widget connects your application with a [printing service](https://enterprise.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm) to allow the map to be printed.
  * It takes advantage of server-side, high-quality, full cartographic print functionality using the ExportWebMap service of ArcGIS,
  * which can be configured with custom layout templates. One is provided that shows the map only, while another provides a layout with legend, etc.
  * The Print widget works with the {@link module:esri/tasks/PrintTask} which generates a printer-ready version of the map.
@@ -7,12 +7,12 @@
  * The Print widget has two required properties:
  * [view](#view) (reference to the MapView) and [printServiceUrl](#printServiceUrl) (URL of the REST endpoint of the Export Web Map Task).
  *
- * By default, the Print widget prints a localized date for all {@link module:esri/tasks/support/PrintTemplate#layout layouts}
+ * By default, the Print widget prints a localized date for all {@link module:esri/rest/support/PrintTemplate#layout layouts}
  * except `map-only`. This can be customized using the `customTextElements` property of
- * {@link module:esri/tasks/support/PrintTemplate#layoutOptions PrintTemplate.layoutOptions}.
+ * {@link module:esri/rest/support/PrintTemplate#layoutOptions PrintTemplate.layoutOptions}.
  *
  * For more information about printing with the `MAP_ONLY` layout, please see
- * {@link module:esri/tasks/support/PrintTemplate#exportOptions exportOptions}.
+ * {@link module:esri/rest/support/PrintTemplate#exportOptions exportOptions}.
  *
  * ::: esri-md class="panel trailer-1"
  * **Known Limitations**
@@ -59,8 +59,8 @@
  * @see [Print.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Print.scss)
  * @see [Sample - Print widget](../sample-code/widgets-print/index.html)
  * @see module:esri/widgets/Print/PrintViewModel
- * @see [Printing in web applications](https://server.arcgis.com/en/server/latest/create-web-apps/windows/printing-in-web-applications.htm)
- * @see [Configure the portal to print maps](https://server.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm)
+ * @see [Printing in web applications](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/printing-in-web-applications.htm)
+ * @see [Configure the portal to print maps](https://enterprise.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm)
  * @see [Export Web Map Task (Geoprocessing service) [REST doc]](https://developers.arcgis.com/rest/services-reference/export-web-map-task.htm)
  *
  * @example
@@ -91,14 +91,14 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 // esri.portal
 import Portal from "esri/portal/Portal";
 
+// esri.rest.support
+import PrintTemplate from "esri/rest/support/PrintTemplate";
+
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
-// esri.tasks.support
-import PrintTemplate from "esri/tasks/support/PrintTemplate";
-
 // esri.views
-import MapView from "esri/views/MapView";
+import IMapView from "esri/views/IMapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -113,9 +113,16 @@ import TemplateOptions from "esri/widgets/Print/TemplateOptions";
 import type PrintMessages from "esri/widgets/Print/t9n/Print";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import Popover from "esri/widgets/support/Popover";
-import { keepMenuItemWithinView, messageBundle, tsx } from "esri/widgets/support/widget";
+import {
+  isActivationKey,
+  keepMenuItemWithinView,
+  messageBundle,
+  tsx,
+  WidgetProperties
+} from "esri/widgets/support/widget";
 
 interface TemplateInfo {
   choiceList: string[];
@@ -189,7 +196,6 @@ const CSS = {
   buttonSecondary: "esri-button--secondary",
   buttonTertiary: "esri-button--tertiary",
   select: "esri-select",
-  header: "esri-widget__heading",
   input: "esri-input",
   disabled: "esri-disabled",
   anchorDisabled: "esri-widget__anchor--disabled",
@@ -251,8 +257,20 @@ interface PrintEvents {
   complete: PrintEvent;
 }
 
+interface OptionalConstructProperties extends WidgetProperties<PrintViewModel> {
+  allowedFormats: any;
+  allowedLayouts: any;
+  includeDefaultTemplates: boolean;
+  portal: Portal;
+  printServiceUrl: string;
+  templateOptions: Partial<TemplateOptions>;
+  view: IMapView;
+}
+
+type ConstructProperties = Partial<OptionalConstructProperties>;
+
 @subclass("esri.widgets.Print")
-class Print extends Widget<PrintEvents> {
+class Print extends Widget<ConstructProperties, PrintEvents> implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -268,13 +286,13 @@ class Print extends Widget<PrintEvents> {
    *
    * @example
    * // typical usage
-   * var print = new Print({
+   * let print = new Print({
    *   view: view,
    *   printServiceUrl: "https://www.example.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._focusOnTabChange = this._focusOnTabChange.bind(this);
   }
@@ -565,6 +583,45 @@ class Print extends Widget<PrintEvents> {
   exportedLinks: Collection<FileLink> = new FileLinkCollection();
 
   //----------------------------------
+  //  extraParameters
+  //----------------------------------
+
+  /**
+   * This option allows passing extra parameters (in addition to [templateOptions](#templateOptions)) to the print (export webmap) requests.
+   *
+   * @name extraParameters
+   * @type {Object}
+   * @since 4.20
+   */
+  @aliasOf("viewModel.extraParameters")
+  extraParameters: any = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the "Exported files" text where users can
+   * access the exported map printout. By default, this text is rendered
+   * as a level 3 heading (e.g. `<h3>Exported files</h3>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 3
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // "Exported files" will render as an <h4>
+   * print.headingLevel = 4;
+   */
+  @property()
+  headingLevel: HeadingLevel = 3;
+
+  //----------------------------------
   //  iconClass
   //----------------------------------
 
@@ -738,7 +795,7 @@ class Print extends Widget<PrintEvents> {
    * @type {module:esri/views/MapView}
    */
   @aliasOf("viewModel.view")
-  view: MapView = null;
+  view: IMapView = null;
 
   //----------------------------------
   //  viewModel
@@ -1284,7 +1341,9 @@ class Print extends Widget<PrintEvents> {
           afterUpdate={this._scrollExportIntoView}
           bind={this}
         >
-          <h3 class={this.classes(CSS.exportedFilesTitle, CSS.header)}>{messages.exportText}</h3>
+          <Heading class={CSS.exportedFilesTitle} level={this.headingLevel}>
+            {messages.exportText}
+          </Heading>
           {exportedLinksArray.length > 0 ? null : (
             <div>
               <div>{messages.exportHint}</div>
@@ -1344,7 +1403,9 @@ class Print extends Widget<PrintEvents> {
 
     return (
       <div class={this.classes(CSS.templateList, CSS.widget, CSS.panel)} id={id}>
-        <h3 class={this.classes(CSS.menuHeader, CSS.header)}>{messages.selectTemplate}</h3>
+        <Heading class={CSS.menuHeader} level={this.headingLevel}>
+          {messages.selectTemplate}
+        </Heading>
         <div class={CSS.templateListScroller}>
           <ul
             afterCreate={this.handleTemplateListCreation}
@@ -1423,7 +1484,7 @@ class Print extends Widget<PrintEvents> {
   };
 
   protected handleTemplateListKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Enter" || event.key === " ") {
+    if (isActivationKey(event.key)) {
       this.applyTemplate(this.viewModel.defaultTemplates.getItemAt(this._focusedTemplateIndex));
       event.preventDefault();
       return;
@@ -1854,7 +1915,7 @@ class Print extends Widget<PrintEvents> {
     const target = event.target as HTMLLIElement;
     const currentTab = target.getAttribute("data-tab-id") as TabId;
 
-    if (key === "Enter" || key === " ") {
+    if (isActivationKey(key)) {
       this._toggleTab(currentTab);
       event.preventDefault();
       event.stopPropagation();

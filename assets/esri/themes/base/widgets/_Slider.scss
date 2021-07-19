@@ -332,6 +332,11 @@
       direction: rtl;
       unicode-bidi: plaintext;
     }
+
+    .esri-slider__range-input,
+    .esri-slider__label-input {
+      unicode-bidi: plaintext;
+    }
   }
 }
 

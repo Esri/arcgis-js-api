@@ -1,0 +1,70 @@
+@mixin colorPicker() {
+  $checkerboard-dark: $background-color;
+  $checkerboard-light: $font-color;
+
+  .esri-color-picker {
+    display: inline-block;
+    position: relative;
+    width: max-content;
+    height: max-content;
+
+    &__toggle-button {
+      position: relative;
+      z-index: 1;
+      background: var(--esri-color-picker-value);
+      border: solid 1px var(--calcite-ui-border-1);
+    }
+
+    &__bg-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+
+      // Checkerboard pattern (see https://www.magicpattern.design/tools/css-backgrounds)
+      background-color: $checkerboard-light;
+      opacity: 0.3;
+      background-image: repeating-linear-gradient(
+          45deg,
+          $checkerboard-dark 25%,
+          transparent 25%,
+          transparent 75%,
+          $checkerboard-dark 75%,
+          $checkerboard-dark
+        ),
+        repeating-linear-gradient(
+          45deg,
+          $checkerboard-dark 25%,
+          $checkerboard-light 25%,
+          $checkerboard-light 75%,
+          $checkerboard-dark 75%,
+          $checkerboard-dark
+        );
+      background-position: 0 0, calc(100% / 2) calc(100% / 2);
+      background-size: calc(100% / 2) calc(100% / 2);
+    }
+
+    &__popover {
+      background: var(--calcite-ui-foreground-1); //  match color picker background
+      width: 272px; // calcite-color-picker may not render immediately, so we make sure we have the right width right away.
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: 70vh;
+      @include defaultBoxShadow();
+    }
+
+    &__opacity-slider-container {
+      padding: $cap-spacing $side-spacing;
+    }
+
+    &__opacity-slider {
+      margin-inline: 8px; // Align slider handles
+    }
+  }
+}
+
+@if $include_ColorPicker == true {
+  @include colorPicker();
+}

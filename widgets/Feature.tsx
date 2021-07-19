@@ -21,7 +21,7 @@
  * @example
  * // Create graphic
  *
- * var graphic = new Graphic({
+ * let graphic = new Graphic({
  *   geometry: view.center,
  *   popupTemplate: {
  *     content: [{
@@ -30,7 +30,7 @@
  *   }
  * });
  *
- * var feature = new Feature({
+ * let feature = new Feature({
  *   graphic: graphic,
  *   map: map,
  *   spatialReference: spatialReference
@@ -60,8 +60,8 @@ import Customcontent from "esri/popup/content/CustomContent";
 import TextContent from "esri/popup/content/TextContent";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -80,6 +80,7 @@ import { FeatureContentMixin } from "esri/widgets/Feature/support/FeatureContent
 import type FeatureMessages from "esri/widgets/Feature/t9n/Feature";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { tsx, messageBundle } from "esri/widgets/support/widget";
 
@@ -151,8 +152,8 @@ class Feature extends FeatureContentMixin(Widget) {
    *                                that may be passed into the constructor.
    */
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -208,7 +209,7 @@ class Feature extends FeatureContentMixin(Widget) {
    * @see [PopupTemplate.content](esri-PopupTemplate.html#content)
    *
    * @example
-   * var graphic = new Graphic({
+   * let graphic = new Graphic({
    *   geometry: view.center,
    *   attributes: {
    *     "name": "Spruce",
@@ -260,6 +261,31 @@ class Feature extends FeatureContentMixin(Widget) {
 
   @aliasOf("viewModel.defaultPopupTemplateEnabled")
   defaultPopupTemplateEnabled: boolean = false;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the [title](#title) of the feature widget.
+   * By default, the title is rendered
+   * as a level 2 heading (e.g. `<h2>Title of content</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // feature title will render as an <h3>
+   * feature.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //----------------------------------
   //  label
@@ -340,7 +366,7 @@ class Feature extends FeatureContentMixin(Widget) {
    * @type {string}
    * @readonly
    * @default null
-   *
+   * @see [headingLevel](#headingLevel)
    */
   @aliasOf("viewModel.title")
   title: string = null;
@@ -420,7 +446,7 @@ class Feature extends FeatureContentMixin(Widget) {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -526,7 +552,9 @@ class Feature extends FeatureContentMixin(Widget) {
   protected renderTitle(): VNode {
     const { visibleElements, title } = this;
 
-    return visibleElements.title ? <h4 class={CSS.title} innerHTML={title} /> : null;
+    return visibleElements.title ? (
+      <Heading level={this.headingLevel} class={CSS.title} innerHTML={title} />
+    ) : null;
   }
 
   protected renderContent(): VNode {
@@ -725,6 +753,7 @@ class Feature extends FeatureContentMixin(Widget) {
   private _setupContentWidgets(): void {
     this._destroyContentWidgets();
 
+    const { headingLevel, visibleElements } = this;
     const content = this.get<ContentElement[]>("viewModel.content");
     const { contentViewModels } = this.viewModel;
 
@@ -733,6 +762,7 @@ class Feature extends FeatureContentMixin(Widget) {
         if (contentElement.type === "attachments") {
           this._contentWidgets[contentElementIndex] = new FeatureAttachments({
             displayType: contentElement.displayType,
+            headingLevel: visibleElements.title ? headingLevel + 1 : headingLevel,
             viewModel: contentViewModels[contentElementIndex]
           });
         }

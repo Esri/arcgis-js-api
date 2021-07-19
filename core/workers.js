@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./workers/RemoteClient","./workers/Connection","./workers/workers"],(function(e,t,i,n){"use strict";e.RemoteClient=t,e.Connection=i,e.initialize=n.initialize,e.open=n.open,e.openWithPorts=n.openWithPorts,e.terminate=n.terminate,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./workers/workers","./workers/Connection","./workers/RemoteClient"],(function(e,t,i,n){"use strict";e.initialize=t.initialize,e.open=t.open,e.openWithPorts=t.openWithPorts,e.terminate=t.terminate,e.Connection=i,e.RemoteClient=n,Object.defineProperty(e,"__esModule",{value:!0})}));

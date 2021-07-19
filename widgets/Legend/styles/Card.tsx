@@ -21,8 +21,8 @@ import { renderSVG } from "esri/../../symbols/support/svgUtils";
 import CommonMessages from "esri/../../t9n/common";
 
 // esri.views
+import IMapView from "esri/../../views/IMapView";
 import { ISceneView } from "esri/../../views/ISceneView";
-import MapView from "esri/../../views/MapView";
 
 // esri.widgets
 import {
@@ -56,6 +56,7 @@ import { attachToNode, getTitle, isImageryStretchedLegend } from "esri/support/s
 import LegendMessages from "esri/t9n/Legend";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/../support/Heading";
 import { VNode } from "esri/../support/interfaces";
 import { accessibleHandler, tsx, messageBundle } from "esri/../support/widget";
 
@@ -100,8 +101,7 @@ const CSS = {
   layerInfo: "esri-legend__layer-cell esri-legend__layer-cell--info",
   univariateAboveAndBelowColorRamp: "esri-univariate-above-and-below-ramp__color--card",
   // common
-  hidden: "esri-hidden",
-  header: "esri-widget__heading"
+  hidden: "esri-hidden"
 };
 
 const GRADIENT_WIDTH = 25,
@@ -174,8 +174,8 @@ class Card extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -220,6 +220,13 @@ class Card extends Widget {
 
   @property()
   activeLayerInfos: Collection<ActiveLayerInfo> = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  @property()
+  headingLevel: HeadingLevel = 3;
 
   //----------------------------------
   //  layout
@@ -291,7 +298,7 @@ class Card extends Widget {
   //----------------------------------
 
   @property()
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //-------------------------------------------------------------------
   //
@@ -538,12 +545,12 @@ class Card extends Widget {
       isSizeRamp = legendElement.type === "size-ramp";
 
     const layer = activeLayerInfo.layer;
-    const titleObj = legendElement.title;
     let title: string = null;
 
-    if (typeof titleObj === "string") {
-      title = titleObj;
-    } else if (titleObj) {
+    if (typeof legendElement.title === "string") {
+      title = legendElement.title;
+    } else if (legendElement.title) {
+      const titleObj = legendElement.title;
       const genTitle = getTitle(this.messages, titleObj, isColorRamp || isOpacityRamp);
       if ((titleObj as RendererTitle).title) {
         title = `${(titleObj as RendererTitle).title} (${genTitle})`;
@@ -555,11 +562,17 @@ class Card extends Widget {
     const key = this._getSectionName(layer, legendElement, index);
     const titleSection = this._hasIndicators ? (
       <div>
-        <h3 class={this.classes(CSS.header, CSS.carouselTitle)}>{activeLayerInfo.title}</h3>
-        <h4 class={this.classes(CSS.header, CSS.layerCaption)}>{title}</h4>
+        <Heading level={this.headingLevel} class={CSS.carouselTitle}>
+          {activeLayerInfo.title}
+        </Heading>
+        <Heading level={this.headingLevel + 1} class={CSS.layerCaption}>
+          {title}
+        </Heading>
       </div>
     ) : title ? (
-      <h4 class={this.classes(CSS.header, CSS.layerCaption)}>{title}</h4>
+      <Heading level={this.headingLevel} class={CSS.layerCaption}>
+        {title}
+      </Heading>
     ) : null;
 
     let rampContent: VNode = null;

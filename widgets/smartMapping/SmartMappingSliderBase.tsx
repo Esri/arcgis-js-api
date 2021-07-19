@@ -14,7 +14,7 @@ import { isSome } from "esri/../core/maybe";
 import * as watchUtils from "esri/../core/watchUtils";
 
 // esri.core.accessorSupport
-import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { aliasOf, cast, property, subclass } from "esri/../core/accessorSupport/decorators";
 
 // esri.widgets
 import Histogram from "esri/Histogram";
@@ -54,6 +54,14 @@ const CSS = {
   zoomCapUnderline: "zoom-cap--underline"
 };
 
+interface VisibleElements {
+  interactiveTrack?: boolean;
+}
+
+const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
+  interactiveTrack: false
+};
+
 type State = "ready" | "disabled";
 
 @subclass("esri.widgets.smartMapping.SmartMappingSliderBase")
@@ -78,6 +86,17 @@ export abstract class SmartMappingSliderBase extends Widget {
    */
 
   /**
+   * Fires when a user clicks the max label element.
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#max-click
+   * @since 4.20
+   * @ignore
+   *
+   * @property {"max-click"} type - The type of the event.
+   * @property {number} value - The max value of the slider.
+   */
+
+  /**
    * Fires when a user changes the [min](#min) of the slider.
    *
    * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#min-change
@@ -88,6 +107,57 @@ export abstract class SmartMappingSliderBase extends Widget {
    *
    * @example
    * slider.on("min-change", function() {
+   *   const renderer = layer.renderer.clone();
+   *   const visualVariable = renderer.visualVariables[0].clone();
+   *   colorVariable.stops = slider.stops;
+   *   renderer.visualVariables = [ visualVariable ];
+   *   layer.renderer = renderer;
+   * });
+   */
+
+  /**
+   * Fires when a user clicks the min label element.
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#min-click
+   * @since 4.20
+   * @ignore
+   *
+   * @property {"min-click"} type - The type of the event.
+   * @property {number} value - The  min value of the slider.
+   */
+
+  /**
+   * Fires when a user clicks a segment element on the slider. A segment is a portion
+   * of the track that lies between two thumbs. This only applies when
+   * two or more thumbs are set on the slider.
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#segment-click
+   * @since 4.20
+   * @ignore
+   *
+   * @property {number} index - The 1-based index of the segment on the slider.
+   * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
+   * @property {"segment-click"} type - The type of the event.
+   * @property {number} value - The approximate value of the slider at the location of the click event.
+   */
+
+  /**
+   * Fires when a user drags a segment of the slider. A segment is the portion
+   * of the track that lies between two thumbs. This is only applicable when
+   * [visibleElements.interactiveTrack](#visibleElements) is `true`.
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#segment-drag
+   * @since 4.20
+   *
+   * @property {number} index - The 1-based index of the segment in the slider.
+   * @property {"start" | "drag"} state - The state of the drag.
+   * @property {"segment-drag"} type - The type of the event.
+   * @property {number[]} thumbIndices - The indices of the thumbs on each end of the segment.
+   *
+   * @see [visibleElements](#visibleElements)
+   *
+   * @example
+   * slider.on("segment-drag", () => {
    *   const renderer = layer.renderer.clone();
    *   const visualVariable = renderer.visualVariables[0].clone();
    *   colorVariable.stops = slider.stops;
@@ -117,6 +187,18 @@ export abstract class SmartMappingSliderBase extends Widget {
    */
 
   /**
+   * Fires when a user clicks a [thumb element](#thumbElements).
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#thumb-click
+   * @since 4.20
+   * @ignore
+   *
+   * @property {number} index - The 0-based index of the thumb.
+   * @property {"thumb-click"} type - The type of the event.
+   * @property {number} value - The value of the thumb when the event is emitted.
+   */
+
+  /**
    * Fires when a user drags a thumb on the widget.
    *
    * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#thumb-drag
@@ -137,29 +219,53 @@ export abstract class SmartMappingSliderBase extends Widget {
    */
 
   /**
+   * Fires when a user clicks the [track element](#trackElement).
+   *
+   * @event module:esri/widgets/smartMapping/SmartMappingSliderBase#track-click
+   * @since 4.20
+   * @ignore
+   *
+   * @property {"track-click"} type - The type of the event.
+   * @property {number} value - The approximate value of the slider at the location of the click event.
+   */
+
+  /**
    * @extends module:esri/widgets/Widget
    * @constructor
    * @alias module:esri/widgets/smartMapping/SmartMappingSliderBase
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                            that may be passed into the constructor.
    */
-  constructor(props?: any, parentNode?: string | Element) {
-    super(props, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     const slider = this.slider;
 
     // #34053 #34463 - disable editing of dates unless
     // ... user provides a custom parser. Will be refactored
     // ... when date support is added to the default slider
-    if (props?.hasTimeData && !props?.inputParseFunction && !props?.inputFormatFunction) {
+    if (
+      properties?.hasTimeData &&
+      !properties?.inputParseFunction &&
+      !properties?.inputFormatFunction
+    ) {
       slider.set({ labelInputsEnabled: false, rangeLabelInputsEnabled: false });
     }
 
+    // Prevent dragging segments when track isn't visible
+    slider.draggableSegmentsEnabled = !!properties?.visibleElements?.interactiveTrack;
+
     this.own(
       slider.on("max-change", (event) => this.emit("max-change", event)),
+      slider.on("max-click", (event) => this.emit("max-click", event)),
       slider.on("min-change", (event) => this.emit("min-change", event)),
+      slider.on("min-click", (event) => this.emit("min-click", event)),
+      slider.on("segment-click", (event) => this.emit("segment-click", event)),
+      slider.on("segment-drag", (event) => this.emit("segment-drag", event)),
       slider.on("thumb-change", (event) => this.emit("thumb-change", event)),
+      slider.on("thumb-click", (event) => this.emit("thumb-click", event)),
       slider.on("thumb-drag", (event) => this.emit("thumb-drag", event)),
+      slider.on("track-click", (event) => this.emit("track-click", event)),
 
       watchUtils.watch(this, ["histogramConfig", "max", "min", "zoomOptions"], () => {
         const {
@@ -178,8 +284,15 @@ export abstract class SmartMappingSliderBase extends Widget {
       }),
       // Reactivate inputs if formatters are present
       watchUtils.watch(this, "hasTimeData", (newValue) => {
+        const { labelInputsEnabled, rangeLabelInputsEnabled } = this.slider;
         const showInputs = !newValue || (this.inputFormatFunction && this.inputParseFunction);
-        slider.set({ labelInputsEnabled: showInputs, rangeLabelInputsEnabled: showInputs });
+        slider.set({
+          labelInputsEnabled: labelInputsEnabled && showInputs,
+          rangeLabelInputsEnabled: rangeLabelInputsEnabled && showInputs
+        });
+      }),
+      watchUtils.watch(this, "visibleElements.interactiveTrack", (newValue) => {
+        slider.draggableSegmentsEnabled = !!newValue;
       })
     );
 
@@ -381,9 +494,9 @@ export abstract class SmartMappingSliderBase extends Widget {
    * // For example, if the input is 1.5k this function will parse
    * // it to a value of 1500
    * slider.inputParseFunction = function(value, type, index){
-   *   var charLength = value.length;
-   *   var valuePrefix = parseFloat(value.substring(0,charLength-1));
-   *   var finalChar = value.substring(charLength-1);
+   *   let charLength = value.length;
+   *   let valuePrefix = parseFloat(value.substring(0,charLength-1));
+   *   let finalChar = value.substring(charLength-1);
    *
    *   if(parseFloat(finalChar) >= 0){
    *     return parseFloat(value);
@@ -548,6 +661,8 @@ export abstract class SmartMappingSliderBase extends Widget {
 
   @property()
   slider: Slider = new Slider({
+    syncedSegmentsEnabled: true,
+    thumbsConstrained: false,
     layout: "vertical",
     visibleElements: {
       labels: true,
@@ -570,6 +685,35 @@ export abstract class SmartMappingSliderBase extends Widget {
    * @readonly
    */
   @aliasOf("viewModel.state") state: State = null;
+
+  //----------------------------------
+  //  syncedSegmentsEnabled
+  //----------------------------------
+
+  /**
+   * When `true`, all segments will sync together in updating thumb values when the user drags any segment. This maintains the interval between all thumbs when any segment is dragged.
+   * Only applicable when [visibleElements.interactiveTrack](#visibleElements) is `true`.
+   *
+   * In sliders where the [primary handle is enabled](#primaryHandleEnabled), this allows you to disable [handlesSyncedToPrimary](#handlesSyncedToPrimary) to keep handle movements independent of the middle (primary) handle,
+   * but still provide an option for the end user to sync handles with the primary handle via slider drag events.
+   *
+   * @name syncedSegmentsEnabled
+   * @instance
+   * @type {boolean}
+   * @default false
+   * @since 4.20
+   * @see [visibleElements](#visibleElements)
+   * @see [handlesSyncedToPrimary](#handlesSyncedToPrimary)
+   *
+   * @example
+   * slider.visibleElements = {
+   *   interactiveTrack: true
+   * };
+   * slider.primaryHandleEnabled = true;
+   * slider.handlesSyncedToPrimary = false;
+   * slider.syncedSegmentsEnabled = true;
+   */
+  @aliasOf("slider.syncedSegmentsEnabled") syncedSegmentsEnabled = false;
 
   //----------------------------------
   //  values
@@ -599,6 +743,39 @@ export abstract class SmartMappingSliderBase extends Widget {
    */
   @property()
   viewModel: SmartMappingSliderViewModel = null;
+
+  //----------------------------------
+  // visibleElements
+  //----------------------------------
+
+  /**
+   * The visible elements that are displayed within the widget.
+   * This property provides the ability to turn individual elements of the widget's display on/off.
+   *
+   * @name visibleElements
+   * @instance
+   * @type {Object}
+   *
+   * @property {boolean} [interactiveTrack=false] - When `true`, displays interactive segments on the track that maintain the
+   *   interval between two slider thumbs/handles.
+   *
+   * @since 4.20
+   * @see [syncedSegmentsEnabled](#syncedSegmentsEnabled)
+   * @see [segment-drag event](#event-segment-drag)
+   *
+   * @example
+   * slider.visibleElements = {
+   *   interactiveTrack: true
+   * };
+   * slider.syncedSegmentsEnabled = true;
+   */
+  @property()
+  visibleElements: VisibleElements = { ...DEFAULT_VISIBLE_ELEMENTS };
+
+  @cast("visibleElements")
+  protected castVisibleElements(value: Partial<VisibleElements>): VisibleElements {
+    return { ...DEFAULT_VISIBLE_ELEMENTS, ...value };
+  }
 
   //----------------------------------
   //  zoomOptions
@@ -704,7 +881,9 @@ export abstract class SmartMappingSliderBase extends Widget {
 
   protected renderHistogram(className: string): VNode {
     return this.histogramConfig ? (
-      <div class={className ? className : null}>{this.histogram.render()}</div>
+      <div key="histogram" class={className ? className : null}>
+        {this.histogram.render()}
+      </div>
     ) : null;
   }
 
@@ -842,13 +1021,8 @@ export abstract class SmartMappingSliderBase extends Widget {
       return null;
     }
 
-    const {
-      average,
-      barCreatedFunction,
-      bins,
-      dataLineCreatedFunction,
-      dataLineUpdatedFunction
-    } = config;
+    const { average, barCreatedFunction, bins, dataLineCreatedFunction, dataLineUpdatedFunction } =
+      config;
 
     return {
       average,
@@ -886,6 +1060,7 @@ export abstract class SmartMappingSliderBase extends Widget {
 
   private _getDataLines(config: HistogramConfig): DataLineInfos[] {
     const { average, standardDeviation, standardDeviationCount } = config;
+    const { max, min } = this;
 
     return [
       ...this._getStandardDeviationDataLines(
@@ -894,14 +1069,33 @@ export abstract class SmartMappingSliderBase extends Widget {
         standardDeviationCount || 1
       ),
       ...(config.dataLines || [])
-    ];
+    ].filter(({ value }) => value <= max && value >= min);
   }
 
+  // (#24080) Standard deviation lines that are
+  // positioned within 2.5% of the total range, on
+  // either side of the average line, are not displayed
   private _getStandardDeviationDataLines(
     standardDeviation: number,
     average: number,
     count: number
   ): DataLineInfos[] {
-    return getDeviationValues(standardDeviation, average, count).map((value) => ({ value }));
+    const { max, min } = this.viewModel;
+    const tolerance = 0.06 * (max - min);
+
+    return getDeviationValues(standardDeviation, average, count)
+      .filter((value) => Math.abs(average - value) > tolerance)
+      .map((value, i, values) => {
+        const formattedValue = this.labelFormatFunction ? this.labelFormatFunction(value) : value;
+        const countPerSign = values.length / 2;
+        const sign = value > average ? "+" : "-";
+        const count = i >= countPerSign ? i - countPerSign + 1 : countPerSign - i;
+        const label = `${sign}${count === 1 ? "" : count}σ ${formattedValue}`;
+
+        return {
+          value,
+          label
+        };
+      });
   }
 }

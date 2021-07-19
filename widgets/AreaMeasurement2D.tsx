@@ -21,7 +21,7 @@
  * @example
  *
  * // To add the AreaMeasurement2D widget to your map
- * var measurementWidget = new AreaMeasurement2D({
+ * let measurementWidget = new AreaMeasurement2D({
  *   view: view
  * });
  * view.ui.add(measurementWidget, "top-right");
@@ -49,8 +49,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import UnitsMessages from "esri/core/t9n/Units";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -64,6 +64,10 @@ import AreaMeasurement2DMessages from "esri/widgets/AreaMeasurement2D/t9n/AreaMe
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+
+type AreaMeasurement2DLocaleStrings = Partial<
+  Pick<AreaMeasurement2DMessages, "widgetLabel" | "hint" | "newMeasurement">
+>;
 
 const BASE = "esri-area-measurement-2d";
 
@@ -118,13 +122,13 @@ class AreaMeasurement2D extends Widget {
    * @example
    *
    * // Typical usage
-   * var measurementWidget = new AreaMeasurement2D({
+   * let measurementWidget = new AreaMeasurement2D({
    *   view: view
    * });
    * view.ui.add(measurementWidget, "top-right");
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -179,6 +183,16 @@ class AreaMeasurement2D extends Widget {
   label: string = undefined;
 
   //----------------------------------
+  //  localeStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  localeStrings?: AreaMeasurement2DLocaleStrings;
+
+  //----------------------------------
   //  messages
   //----------------------------------
 
@@ -225,7 +239,7 @@ class AreaMeasurement2D extends Widget {
    * @example
    *
    * // To create the AreaMeasurement2D widget that displays area in square US feet
-   * var measurementWidget = new AreaMeasurement2D({
+   * let measurementWidget = new AreaMeasurement2D({
    *   view: view,
    *   unit: "square-us-feet"
    * });
@@ -249,7 +263,7 @@ class AreaMeasurement2D extends Widget {
    * @example
    *
    * // To display the available units to the console
-   * var measurementWidget = new AreaMeasurement2D({
+   * let measurementWidget = new AreaMeasurement2D({
    *   view: view
    * });
    * console.log("All units: ", measurementWidget.unitOptions.join(", "));
@@ -271,13 +285,13 @@ class AreaMeasurement2D extends Widget {
    * @example
    *
    * // Typical usage
-   * var measurementWidget = new DistanceMeasurement2D({
+   * let measurementWidget = new DistanceMeasurement2D({
    *   view: view
    * });
    * view.ui.add(measurementWidget, "top-right");
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -296,7 +310,7 @@ class AreaMeasurement2D extends Widget {
    * @example
    *
    * // Use the ViewModel to access and set advanced settings
-   * var measurementWidget = new AreaMeasurement2D({
+   * let measurementWidget = new AreaMeasurement2D({
    *   viewModel: {
    *     view: view,
    *     unit: "square-us-feet"

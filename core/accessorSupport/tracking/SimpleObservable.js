@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./ObservationHandle"],(function(e,t){"use strict";let r=function(){function e(){this._observers=new Set}var r=e.prototype;return r.observe=function(e){return new t.ObservationHandle(this._observers.add(e),e)},r.notify=function(){const e=this._observers,t=this._observers.size,r=new Array(t);let n=0;for(const o of e)r[n++]=o;for(let o=0;o<t;o++)r[o].notify()},e}();e.SimpleObservable=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./ObservationHandle"],(function(e,t){"use strict";let s=function(){function e(){this._observers=[]}var s=e.prototype;return s.observe=function(e){return this._observers.includes(e)||this._observers.push(e),new t.ObservationHandle(this._observers,e)},s.notify=function(){const e=this._observers.slice();for(let t=0;t<e.length;++t){const s=e[t];s.onInvalidated(),s.onCommitted()}},e}();e.SimpleObservable=s,Object.defineProperty(e,"__esModule",{value:!0})}));

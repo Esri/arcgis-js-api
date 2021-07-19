@@ -15,18 +15,18 @@
  *
  * @example
  * // Create a map with an initial basemap
- * var map = new Map({
+ * let map = new Map({
  *   basemap: "streets-vector",  // The initial basemap to toggle from
  *   ground: "world-elevation"
  * });
  *
  * // Reference the map in the view instance
- * var view = new SceneView({
+ * let view = new SceneView({
  *   container: "viewDiv",
  *   map: map
  * });
  *
- * var basemapToggle = new BasemapToggle({
+ * let basemapToggle = new BasemapToggle({
  *   view: view,  // The view that provides access to the map's "streets-vector" basemap
  *   nextBasemap: "hybrid"  // Allows for toggling to the "hybrid" basemap
  * });
@@ -39,8 +39,8 @@ import Basemap from "esri/Basemap";
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -117,13 +117,13 @@ class BasemapToggle extends Widget {
    *
    * @example
    * // typical usage
-   * var basemapToggle = new BasemapToggle({
+   * let basemapToggle = new BasemapToggle({
    *   view: view,
    *   nextBasemap: "satellite"
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -214,7 +214,7 @@ class BasemapToggle extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

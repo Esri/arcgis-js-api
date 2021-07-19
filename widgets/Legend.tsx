@@ -11,7 +11,7 @@
  *  - a layer's `renderer`, `opacity`, or `title` is changed
  *  - the `legendEnabled` property is changed (set to `true` or `false` on the layer)
  *
- * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/sandbox.html?sample=widgets-legend)
+ * [![widgets-legend-basic](../assets/img/apiref/widgets/widgets-legend-basic.png)](../sample-code/sandbox/?sample=widgets-legend)
  *
  * You can use the view's {@link module:esri/views/ui/DefaultUI} to add widgets
  * to the view's user interface via the {@link module:esri/views/View#ui ui} property on the view.
@@ -34,7 +34,7 @@
  * :::
  *
  * @example
- * var legend = new Legend({
+ * let legend = new Legend({
  *   view: view,
  *   layerInfos: [{
  *     layer: featureLayer,
@@ -66,8 +66,8 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 import { cast } from "esri/core/accessorSupport/decorators/cast";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import { LayerInfo } from "esri/widgets/interfaces";
@@ -87,6 +87,7 @@ import ActiveLayerInfo from "esri/widgets/Legend/support/ActiveLayerInfo";
 import LegendMessages from "esri/widgets/Legend/t9n/Legend";
 
 // esri.widgets.support
+import { HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { messageBundle, tsx } from "esri/widgets/support/widget";
 
@@ -117,12 +118,12 @@ class Legend extends Widget {
    *
    * @example
    * // typical usage
-   * var legend = new Legend({
+   * let legend = new Legend({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
@@ -130,6 +131,14 @@ class Legend extends Widget {
       watchUtils.on(this, "activeLayerInfos", "change", () =>
         this._refreshActiveLayerInfos(this.activeLayerInfos)
       ),
+
+      watchUtils.watch(this, "headingLevel", (headingLevel: HeadingLevel) => {
+        const { style } = this;
+
+        if (style) {
+          style.headingLevel = headingLevel;
+        }
+      }),
 
       watchUtils.init<LegendStyle>(this, "style", (value, oldValue) => {
         if (oldValue && value !== oldValue) {
@@ -142,6 +151,8 @@ class Legend extends Widget {
           if (value.type === "card") {
             value.view = this.view;
           }
+
+          value.headingLevel = this.headingLevel;
         }
       })
     );
@@ -217,6 +228,30 @@ class Legend extends Widget {
    */
   @aliasOf("viewModel.groundLegendVisible")
   groundLegendVisible = false;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the legend title. By default, legend titles
+   * are rendered as level 3 headings (e.g. `<h3>Legend title</h3>`). Depending on the legend placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 3
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // legend title will render as an <h2>
+   * legend.headingLevel = 2;
+   */
+  @property()
+  headingLevel: HeadingLevel = 3;
 
   //----------------------------------
   //  keepCacheOnDestroy
@@ -417,7 +452,7 @@ class Legend extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

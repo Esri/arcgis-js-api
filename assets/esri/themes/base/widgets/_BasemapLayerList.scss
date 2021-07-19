@@ -432,6 +432,20 @@
       margin-right: 0;
       margin-left: 0.3rem;
     }
+
+    .esri-basemap-layer-list__item--selectable .esri-basemap-layer-list__item-container {
+      border-left: none;
+      border-right: $border-size--active solid transparent;
+      &:hover {
+        border-right-color: $border-color;
+      }
+    }
+    .esri-basemap-layer-list__item[aria-selected="true"] > .esri-basemap-layer-list__item-container {
+      border-right-color: $border-color--active;
+      &:hover {
+        border-right-color: $border-color--active;
+      }
+    }
   }
 }
 

@@ -14,11 +14,14 @@
 import { formatDate } from "esri/../intl";
 
 // esri.core
-import { eventKey } from "esri/../core/events";
+import { eventKey, pausable } from "esri/../core/events";
+import { PausableHandle } from "esri/../core/interfaces";
 import Logger from "esri/../core/Logger";
+import { isNone, Maybe } from "esri/../core/maybe";
 
 // esri.core.accessorSupport
 import { aliasOf, property, subclass } from "esri/../core/accessorSupport/decorators";
+import { reaction } from "esri/../core/accessorSupport/trackingUtils";
 
 // esri.intl
 import { loadMoment } from "esri/../intl/moment";
@@ -31,7 +34,15 @@ import { parseDateIntoParts } from "esri/widgets/datePickerUtils";
 import DatePickerViewModel from "esri/widgets/DatePickerViewModel";
 import { VNode } from "esri/widgets/interfaces";
 import Popover from "esri/widgets/Popover";
-import { accessibleHandler, isRTL, messageBundle, storeNode, tsx } from "esri/widgets/widget";
+import {
+  accessibleHandler,
+  isActivationKey,
+  isRTL,
+  messageBundle,
+  storeNode,
+  tsx,
+  WidgetProperties
+} from "esri/widgets/widget";
 
 // esri.widgets.support.t9n
 import DatePickerMessages from "esri/widgets/t9n/DatePicker";
@@ -77,7 +88,7 @@ const DATE_PICKER_FORMAT = {
   year: "numeric",
   month: "2-digit",
   day: "2-digit"
-};
+} as const;
 
 const DAY_PICKER_NAVIGATION_KEYS = [
   " ",
@@ -104,13 +115,17 @@ interface DayLabel {
   abbr: string;
 }
 
-// IE11 needs onfocusout for `relatedTarget` event property, else we can use blur
-const supportsOnFocusOut = "onfocusout" in HTMLElement.prototype;
+interface OptionalConstructProperties extends WidgetProperties {
+  value: Date;
+  commitOnMonthChange: boolean;
+  dateInputEnabled: boolean;
+  onChange: (value: Date) => void;
+}
 
-const supportsFormatToParts = "formatToParts" in Intl.DateTimeFormat.prototype;
+type ConstructProperties = Partial<OptionalConstructProperties>;
 
 @subclass(declaredClass)
-class DatePicker extends Widget {
+class DatePicker extends Widget<ConstructProperties> {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
@@ -126,15 +141,33 @@ class DatePicker extends Widget {
    *
    * @example
    * // typical usage
-   * var DatePicker = new DatePicker({
+   * let DatePicker = new DatePicker({
    *   container: "date-picker", // DOM element for widget
    *   value: "2019-12-25", // value that will initially display
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._toggle = this._toggle.bind(this);
+  }
+
+  initialize(): void {
+    this.own(
+      reaction(
+        () => ({
+          viewModel: this.viewModel,
+          value: this.viewModel?.value
+        }),
+        ({ viewModel, value }) => {
+          if (this.destroyed || !viewModel || isNone(this.onChange)) {
+            return;
+          }
+
+          this.onChange(value);
+        }
+      )
+    );
   }
 
   async loadLocale(): Promise<void> {
@@ -166,11 +199,13 @@ class DatePicker extends Widget {
     renderContentFunction: this._renderCalendar
   });
 
-  private _closedByUserAction = false;
+  private _inputOrButtonNode: HTMLElement = null;
 
   private _isOpen = false;
 
   private _moment: Moment;
+
+  private pageClickHandler: PausableHandle;
 
   private _requestDayPickerFocusOnCreate = false;
 
@@ -178,7 +213,7 @@ class DatePicker extends Widget {
 
   //--------------------------------------------------------------------------
   //
-  //  Properties
+  //  Public Properties
   //
   //--------------------------------------------------------------------------
 
@@ -283,6 +318,20 @@ class DatePicker extends Widget {
 
   //--------------------------------------------------------------------------
   //
+  //  Internal Properties
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Called when the current date is changed.
+   *
+   * @ignore
+   */
+  @property()
+  onChange: Maybe<(value: Date) => void>;
+
+  //--------------------------------------------------------------------------
+  //
   //  Public Methods
   //
   //--------------------------------------------------------------------------
@@ -295,9 +344,7 @@ class DatePicker extends Widget {
         class={this.classes(CSS.base, CSS.widget)}
         data-node-ref="_rootNode"
       >
-        {supportsFormatToParts && this.dateInputEnabled
-          ? this.renderInputAndButtonMode()
-          : this.renderButtonOnlyMode()}
+        {this.dateInputEnabled ? this.renderInputAndButtonMode() : this.renderButtonOnlyMode()}
       </div>
     );
   }
@@ -308,15 +355,17 @@ class DatePicker extends Widget {
 
     return (
       <div
-        afterUpdate={this._focusSelectedOrClosed}
+        afterCreate={storeNode}
         aria-controls={open ? this._getCalendarId() : null}
         aria-expanded={open.toString()}
         aria-haspopup="true"
         aria-label={messages.setDate}
         aria-pressed={open.toString()}
+        bind={this}
         class={this.classes(CSS.button, CSS.select, CSS.datePickerToggle)}
+        data-node-ref="_inputOrButtonNode"
         onclick={this._toggle}
-        onkeydown={this._toggle}
+        onkeydown={this._handleDateButtonKeyDown}
         role="button"
         tabIndex={0}
       >
@@ -332,6 +381,8 @@ class DatePicker extends Widget {
     return (
       <div class={this.classes(CSS.dateInput)}>
         <input
+          afterCreate={storeNode}
+          data-node-ref="_inputOrButtonNode"
           aria-controls={open ? this._getCalendarId() : null}
           aria-haspopup="true"
           aria-label={messages.setDate}
@@ -339,7 +390,7 @@ class DatePicker extends Widget {
           class={this.classes(CSS.dateTextInput, CSS.input)}
           key="date-input"
           onblur={this._handleDateInputBlur}
-          onfocus={this._handleDateInputFocus}
+          onclick={this._handleDateInputClick}
           onkeydown={this._handleDateInputKeyDown}
           type="text"
           value={date}
@@ -355,22 +406,46 @@ class DatePicker extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  private _handleDateInputClick(): void {
+    this._open(this.viewModel.value, false);
+  }
+
   private _handleDateInputKeyDown(event: KeyboardEvent): void {
-    if (event.key === "Enter") {
-      this._handleDateText(event);
+    const { key } = event;
+
+    if (this._isOpen) {
+      if (key === "Enter") {
+        this._handleDateText(event);
+      } else if (key === "Escape") {
+        this._close();
+      }
+
+      return;
+    }
+
+    if (key === "ArrowDown") {
+      this._open(this.viewModel.value);
+      event.preventDefault();
+    }
+  }
+
+  private _handleDateButtonKeyDown(event: KeyboardEvent): void {
+    const { key, shiftKey } = event;
+
+    if (this._isOpen && key === "Tab" && shiftKey) {
+      this._close();
+      return;
+    }
+
+    if (isActivationKey(key)) {
+      this._toggle();
     }
   }
 
   private _handleDateInputBlur(event: FocusEvent): void {
-    this._handleDatePickerBlurOrFocusOut(event);
-
     if (!this._isOpen) {
       this._handleDateText(event);
     }
-  }
-
-  private _handleDateInputFocus(): void {
-    this._open(this.viewModel.value, false);
   }
 
   private _handleDateText(event: Event): void {
@@ -396,18 +471,10 @@ class DatePicker extends Widget {
     this._activeDate = date;
   }
 
-  private _focusSelectedOrClosed(node: HTMLElement): void {
-    if (this._closedByUserAction) {
-      this._closedByUserAction = false;
-      node.focus();
-    }
-  }
-
   private _handleDatePickerKeydown(event: KeyboardEvent): void {
     const key = eventKey(event);
 
     if (key === "Escape") {
-      this._closedByUserAction = true;
       this._close();
       event.preventDefault();
       event.stopPropagation();
@@ -439,26 +506,6 @@ class DatePicker extends Widget {
     return `date-picker__calendar--${this.id}`;
   }
 
-  private _handleDatePickerBlurOrFocusOut(event: FocusEvent): void {
-    const bubbled = event.currentTarget !== event.target;
-
-    if (bubbled) {
-      return;
-    }
-
-    const element = event.relatedTarget as HTMLElement;
-
-    if (!this._calendarNode.contains(element) && !this._rootNode.contains(element)) {
-      this._close();
-    }
-  }
-
-  private _handleDatePickerBlur = supportsOnFocusOut ? null : this._handleDatePickerBlurOrFocusOut;
-
-  private _handleDatePickerFocusOut = supportsOnFocusOut
-    ? this._handleDatePickerBlurOrFocusOut
-    : null;
-
   private _renderMonthPicker(activeDate: MomentInstance): VNode {
     const rtl = isRTL();
     const prevIconClass = rtl ? CSS.nextIcon : CSS.previousIcon;
@@ -477,10 +524,8 @@ class DatePicker extends Widget {
           aria-label={messages.goToPreviousMonth}
           bind={this}
           class={CSS.button}
-          onblur={this._handleDatePickerBlur}
           onclick={this._setPreviousMonth}
-          onfocusout={this._handleDatePickerFocusOut}
-          onkeydown={this._setPreviousMonth}
+          onkeydown={this._handlePreviousMonthKeyDown}
           role="button"
           tabIndex={0}
           title={messages.goToPreviousMonth}
@@ -493,9 +538,7 @@ class DatePicker extends Widget {
           bind={this}
           class={this.classes(CSS.monthDropdown, CSS.select)}
           id={`${this.id}__month-picker`}
-          onblur={this._handleDatePickerBlur}
           onchange={this._setMonth}
-          onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setMonth}
           title={messages.selectMonth}
         >
@@ -505,9 +548,7 @@ class DatePicker extends Widget {
           aria-label={messages.goToNextMonth}
           bind={this}
           class={CSS.button}
-          onblur={this._handleDatePickerBlur}
           onclick={this._setNextMonth}
-          onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setNextMonth}
           role="button"
           tabIndex={0}
@@ -534,8 +575,6 @@ class DatePicker extends Widget {
         bind={this}
         class={CSS.dayPicker}
         id={`${this.id}__day-picker`}
-        onblur={this._handleDatePickerBlur}
-        onfocusout={this._handleDatePickerFocusOut}
         onkeydown={this._handleDayPickerKeydown}
         role="grid"
         tabIndex={0}
@@ -570,8 +609,8 @@ class DatePicker extends Widget {
 
   private _getWeekLabels(firstDayOfWeek: MomentInstance): DayLabel[] {
     const dayLetters: DayLabel[] = [];
-    const fullDayNameFormat = { weekday: "long" };
-    const abbreviatedDayNameFormat = { weekday: "narrow" };
+    const fullDayNameFormat = { weekday: "long" } as const;
+    const abbreviatedDayNameFormat = { weekday: "narrow" } as const;
 
     for (let i = 0; i < 7; i++) {
       dayLetters.push({
@@ -618,9 +657,8 @@ class DatePicker extends Widget {
     } else if (key === "End") {
       const yearOrMonth = ctrlKey ? "year" : "month";
       activeDate.endOf(yearOrMonth);
-    } else if (key === "Enter" || key === " ") {
+    } else if (isActivationKey(key)) {
       this.viewModel.value = activeDate.toDate();
-      this._closedByUserAction = true;
       this._close();
     }
 
@@ -687,7 +725,7 @@ class DatePicker extends Widget {
   }
 
   private _renderYearPicker(activeDate: MomentInstance): VNode {
-    const yearFormat = { year: "numeric" };
+    const yearFormat = { year: "numeric" } as const;
     const date = activeDate.clone();
     const currYear = formatDate(date.valueOf(), yearFormat);
     const nextYear = formatDate(date.add(1, "year").valueOf(), yearFormat);
@@ -700,9 +738,7 @@ class DatePicker extends Widget {
           aria-label={messages.goToPreviousYear}
           bind={this}
           class={CSS.year}
-          onblur={this._handleDatePickerBlur}
           onclick={this._setPreviousYear}
-          onfocusout={this._handleDatePickerFocusOut}
           onkeydown={this._setPreviousYear}
           tabIndex={0}
           title={messages.goToPreviousYear}
@@ -716,10 +752,8 @@ class DatePicker extends Widget {
           aria-label={messages.goToNextYear}
           bind={this}
           class={CSS.year}
-          onblur={this._handleDatePickerBlur}
           onclick={this._setNextYear}
-          onfocusout={this._handleDatePickerFocusOut}
-          onkeydown={this._setNextYear}
+          onkeydown={this._handleNextYearKeyDown}
           tabIndex={0}
           title={messages.goToNextYear}
         >
@@ -729,7 +763,6 @@ class DatePicker extends Widget {
     );
   }
 
-  @accessibleHandler()
   private _toggle(): void {
     if (this._isOpen) {
       this._close();
@@ -748,10 +781,14 @@ class DatePicker extends Widget {
     }
   }
 
-  private _close(): void {
+  private _close(focusInput = true): void {
     this._activeDate = null;
     this._isOpen = false;
     this._calendarPopover.open = false;
+    this.pageClickHandler.pause();
+    if (focusInput) {
+      this._inputOrButtonNode.focus();
+    }
   }
 
   private _open(activeDate: Date, focused: boolean = true): void {
@@ -759,13 +796,41 @@ class DatePicker extends Widget {
     this._isOpen = true;
     this._calendarPopover.open = true;
     this._requestDayPickerFocusOnCreate = focused;
+
+    if (!this.pageClickHandler) {
+      this.pageClickHandler = pausable(document, "click", ({ target }) => {
+        const clickedWithin =
+          this._calendarNode?.contains(target) || this._rootNode?.contains(target);
+
+        if (!clickedWithin) {
+          this._close();
+        }
+      });
+
+      this.own(this.pageClickHandler);
+    }
+
+    this.pageClickHandler.resume();
   }
 
-  @accessibleHandler()
   private _setPreviousMonth(): void {
     this._activeDate.subtract(1, "month");
     if (this.commitOnMonthChange) {
       this.viewModel.value = this._activeDate.toDate();
+    }
+  }
+
+  private _handlePreviousMonthKeyDown(event: KeyboardEvent): void {
+    const willTabOut = event.key === "Tab" && event.shiftKey;
+
+    if (willTabOut) {
+      event.preventDefault();
+      this._close();
+      return;
+    }
+
+    if (isActivationKey(event.key)) {
+      this._setPreviousMonth();
     }
   }
 
@@ -782,16 +847,28 @@ class DatePicker extends Widget {
     this._activeDate.subtract(1, "year");
   }
 
-  @accessibleHandler()
   private _setNextYear(): void {
     this._activeDate.add(1, "year");
+  }
+
+  private _handleNextYearKeyDown(event: KeyboardEvent): void {
+    const willTabOut = event.key === "Tab" && !event.shiftKey;
+
+    if (willTabOut) {
+      event.preventDefault();
+      this._close();
+      return;
+    }
+
+    if (isActivationKey(event.key)) {
+      this._setNextYear();
+    }
   }
 
   @accessibleHandler()
   private _handleSelectedDate(event: Event): void {
     const div = event.target as HTMLDivElement;
     this.viewModel.value = this._moment(div.getAttribute("data-iso-date")).toDate();
-    this._closedByUserAction = true;
     this._close();
   }
 }

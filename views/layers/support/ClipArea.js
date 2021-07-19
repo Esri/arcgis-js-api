@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/has","../../../core/Logger","../../../core/accessorSupport/ensureType","../../../core/accessorSupport/decorators/property","../../../core/accessorSupport/decorators/subclass","../../../core/urlUtils","../../../core/uuid","../../../portal/support/resourceExtension","../../../core/JSONSupport"],(function(r,e,s,o,t,c,u,p,i,n,l){"use strict";let a=function(e){function s(){return e.apply(this,arguments)||this}return r._inheritsLoose(s,e),s}(l.JSONSupport);return a=e.__decorate([u.subclass("esri.views.layers.support.ClipArea")],a),a}));
+define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/JSONSupport","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass"],(function(r,e,s,o,c,t,p,u){"use strict";let n=function(e){function s(){return e.apply(this,arguments)||this}return r._inheritsLoose(s,e),s}(s.JSONSupport);return n=e.__decorate([u.subclass("esri.views.layers.support.ClipArea")],n),n}));

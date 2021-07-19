@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../../core/Logger","../../../core/deprecate","../../../chunks/type"],(function(e,r,t){"use strict";const o=e.getLogger("esri.renderers.smartMapping.symbology.type");return r.deprecatedModule(o,"esri/renderers/smartMapping/symbology/type",{replacement:"esri/smartMapping/symbology/type"}),t.typeSymbology}));
+define(["../../../core/deprecate","../../../core/Logger","../../../chunks/type"],(function(e,r,t){"use strict";const o=r.getLogger("esri.renderers.smartMapping.symbology.type");return e.deprecatedModule(o,"esri/renderers/smartMapping/symbology/type",{replacement:"esri/smartMapping/symbology/type"}),t.typeSymbology}));

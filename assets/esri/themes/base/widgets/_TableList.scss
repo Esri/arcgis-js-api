@@ -272,6 +272,19 @@
       margin-right: 0;
       margin-left: 0.3rem;
     }
+    .esri-table-list__item--selectable .esri-table-list__item-container {
+      border-left: none;
+      border-right: $border-size--active solid transparent;
+      &:hover {
+        border-right-color: $border-color;
+      }
+    }
+    .esri-table-list__item[aria-selected="true"] > .esri-table-list__item-container {
+      border-right-color: $border-color--active;
+      &:hover {
+        border-right-color: $border-color--active;
+      }
+    }
   }
 }
 

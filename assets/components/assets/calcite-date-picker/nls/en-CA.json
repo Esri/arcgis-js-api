@@ -1,0 +1,14 @@
+{
+  "default-calendar": "gregorian",
+  "separator": "-",
+  "unitOrder": "YYYY-MM-DD",
+  "weekStart": 7,
+  "placeholder": "YYYY-MM-DD",
+  "days": {
+    "abbreviated": ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+  },
+  "numerals": "0123456789",
+  "months": {
+    "abbreviated": ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+  }
+}

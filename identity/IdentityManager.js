@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/accessorSupport/decorators/subclass","../kernel","./IdentityManagerBase"],(function(e,t,s,n,r){"use strict";let i=function(t){function s(){return t.apply(this,arguments)||this}return e._inheritsLoose(s,t),s}(r.IdentityManagerBase);i=t.__decorate([s.subclass("esri.identity.IdentityManager")],i);const a=new i;return n.setId(a),a}));
+define(["../chunks/_rollupPluginBabelHelpers","../kernel","./IdentityManagerBase"],(function(e,t,n){"use strict";let r=function(t){function n(){return t.apply(this,arguments)||this}return e._inheritsLoose(n,t),n}(n.IdentityManagerBase);r.prototype.declaredClass="esri.identity.IdentityManager";const i=new r;return t.setId(i),i}));

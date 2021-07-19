@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../request","../utils","../../tasks/operations/lengths","../../tasks/support/LengthsParameters"],(function(e,t,s,n,r){"use strict";async function a(e,a,o){a=r.from(a);const u=n.lengthsToRESTParameters(a),i=s.parseUrl(e),l={...i.query,f:"json",...u},p=s.asValidOptions(l,o);return t(i.path+"/lengths",p).then((({data:e})=>e))}e.lengths=a,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../utils","../support/LengthsParameters","../../tasks/operations/lengths"],(function(e,t,n,s,r,a){"use strict";function o(e,t,n){return u.apply(this,arguments)}function u(){return(u=t._asyncToGenerator((function*(e,t,o){t=r.from(t);const u=a.lengthsToRESTParameters(t),l=s.parseUrl(e),i={...l.query,f:"json",...u},p=s.asValidOptions(i,o);return n(l.path+"/lengths",p).then((({data:e})=>e))}))).apply(this,arguments)}e.lengths=o,Object.defineProperty(e,"__esModule",{value:!0})}));

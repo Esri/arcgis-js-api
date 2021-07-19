@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["../../core/screenUtils","../../views/2d/support/engineHelpers"],(function(e,t){"use strict";async function n(n,s){await s.when();const i=n.clone();i.text="9";const c=await t.getTextBounds(i,s),r=4;return e.px2pt(c.width)*r}return n}));
+define(["../../chunks/_rollupPluginBabelHelpers","../../core/screenUtils","../../views/2d/support/engineHelpers"],(function(e,n,t){"use strict";function r(e,n){return i.apply(this,arguments)}function i(){return(i=e._asyncToGenerator((function*(e,r){yield r.when();const i=e.clone();i.text="9";const s=yield t.getTextBounds(i,r),u=4;return n.px2pt(s.width)*u}))).apply(this,arguments)}return r}));

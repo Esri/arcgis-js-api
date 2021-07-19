@@ -42,6 +42,10 @@
  * @see module:esri/widgets/Slice/SliceViewModel
  */
 
+// @esri.calcite-components.dist.custom-elements.bundles
+import "@esri/calcite-components/dist/custom-elements/bundles/button";
+import "@esri/calcite-components/dist/custom-elements/bundles/icon";
+
 // esri.core
 import Collection from "esri/core/Collection";
 import { ignoreAbortErrors } from "esri/core/promiseUtils";
@@ -58,6 +62,9 @@ import BuildingComponentSublayer from "esri/layers/buildingSublayers/BuildingCom
 // esri.views
 import { ISceneView } from "esri/views/ISceneView";
 
+// esri.views.3d.layers
+import "../views/3d/layers/SliceLayerView3D";
+
 // esri.widgets
 import Widget from "esri/widgets/Widget";
 
@@ -68,6 +75,7 @@ import SliceViewModel from "esri/widgets/Slice/SliceViewModel";
 import SliceMessages from "esri/widgets/Slice/t9n/Slice";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { messageBundle, tsx } from "esri/widgets/support/widget";
 
@@ -76,7 +84,7 @@ const BASE = "esri-slice";
 const CSS = {
   // common
   buttonDisabled: "esri-button--disabled",
-  layerIncludeButton: "esri-icon-close esri-slice__cross",
+  layerIncludeButton: "esri-slice__cross",
   widgetIcon: "esri-icon-slice",
 
   // base
@@ -84,8 +92,9 @@ const CSS = {
 
   // container
   layerList: `${BASE}__settings`,
-  layerListHeading: "esri-slice__settings-title esri-widget__heading",
+  layerListHeading: "esri-slice__settings-title",
   layerItem: `${BASE}__layer-item`,
+  layerItemTitle: `${BASE}__layer-item__title`,
   container: `${BASE}__container`,
   actionSection: "esri-slice__actions",
 
@@ -121,8 +130,8 @@ class Slice extends Widget {
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -130,10 +139,6 @@ class Slice extends Widget {
   //  Properties
   //
   //--------------------------------------------------------------------------
-
-  //----------------------------------
-  //  messages
-  //----------------------------------
 
   /**
    * The widget's message bundle
@@ -148,9 +153,24 @@ class Slice extends Widget {
   @messageBundle("esri/widgets/Slice/t9n/Slice")
   messages: SliceMessages = null;
 
-  //------------------------
-  // iconClass
-  //------------------------
+  /**
+   * Indicates the heading level to use for the "Excluded layers" heading. By default, this is rendered
+   * as a level 3 heading (e.g. `<h3>Excluded layers</h3>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 3
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * slice.headingLevel = 2;
+   */
+  @property()
+  headingLevel: HeadingLevel = 3;
 
   /**
    * The widget's default CSS icon class.
@@ -161,10 +181,6 @@ class Slice extends Widget {
    */
   @property()
   iconClass = CSS.widgetIcon;
-
-  //----------------------------------
-  //  label
-  //----------------------------------
 
   /**
    * The widget's default label. This label displays when it is
@@ -179,10 +195,6 @@ class Slice extends Widget {
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
   label: string = undefined;
-
-  //----------------------------------
-  //  view
-  //----------------------------------
   /**
    * A reference to the {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
    *
@@ -193,9 +205,6 @@ class Slice extends Widget {
   @aliasOf("viewModel.view")
   view: ISceneView = null;
 
-  //----------------------------------
-  //  visible
-  //----------------------------------
   /**
    * Indicates whether the widget is visible.
    *
@@ -207,9 +216,6 @@ class Slice extends Widget {
   @aliasOf("viewModel.visible")
   visible: boolean;
 
-  //----------------------------------
-  //  active
-  //----------------------------------
   /**
    * Indicates whether the widget is active.
    *
@@ -220,10 +226,6 @@ class Slice extends Widget {
    */
   @aliasOf("viewModel.active")
   active: boolean;
-
-  //----------------------------------
-  //  viewModel
-  //----------------------------------
 
   /**
    * The view model for this widget. This is a class that contains the properties
@@ -322,43 +324,37 @@ class Slice extends Widget {
     ) : null;
 
     const layerListItemNodes: VNode[] = this.excludedLayers
-      ? this.excludedLayers.toArray().map((l) => (
-          <li class={CSS.layerItem} key={l.uid}>
-            <a
-              href=""
-              onclick={() => {
-                this.excludedLayers.remove(l);
-                return false;
-              }}
-              class={CSS.layerIncludeButton}
-              title={messages.includeLayer}
-            />
-            {l.title}
-          </li>
-        ))
+      ? this.excludedLayers.toArray().map((l) =>
+          this._renderLayerItem({
+            uid: l.uid,
+            title: l.title,
+            onClick: () => {
+              this.excludedLayers.remove(l);
+              return false;
+            }
+          })
+        )
       : [];
 
     if (this.excludeGroundSurface) {
       layerListItemNodes.push(
-        <li class={CSS.layerItem} key="ground">
-          <a
-            href=""
-            onclick={() => {
-              this.excludeGroundSurface = false;
-              return false;
-            }}
-            class={CSS.layerIncludeButton}
-            title={messages.includeLayer}
-          />
-          {messages.ground}
-        </li>
+        this._renderLayerItem({
+          uid: "ground",
+          title: messages.ground,
+          onClick: () => {
+            this.excludeGroundSurface = false;
+            return false;
+          }
+        })
       );
     }
 
     const layerListNode =
       !isExcludeMode && isSlicing && layerListItemNodes.length > 0 ? (
         <div class={CSS.layerList} key="esri-slice__settings">
-          <h3 class={CSS.layerListHeading}>{messages.excludedLayers}</h3>
+          <Heading class={CSS.layerListHeading} level={this.headingLevel}>
+            {messages.excludedLayers}
+          </Heading>
           <ul>{layerListItemNodes}</ul>
         </div>
       ) : null;
@@ -395,6 +391,23 @@ class Slice extends Widget {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _renderLayerItem(info: { uid: string; title: string; onClick: () => void }): VNode {
+    return (
+      <li class={CSS.layerItem} key={info.uid}>
+        <calcite-button
+          appearance="transparent"
+          class={CSS.layerIncludeButton}
+          icon-start="x"
+          scale="s"
+          title={this.messages.includeLayer}
+          bind={this}
+          onclick={info.onClick}
+        />
+        <div class={CSS.layerItemTitle}>{info.title}</div>
+      </li>
+    );
+  }
 
   private _onNewSliceClick(): void {
     ignoreAbortErrors(this.viewModel.removeSliceAndStart());

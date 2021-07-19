@@ -95,13 +95,19 @@
 
     display: flex;
     justify-content: space-between;
-  }
-  .esri-item-list__list-item:hover,
-  .esri-item-list__list-item:focus {
-    border-color: $font-color;
-  }
-  .esri-item-list__list-item[class^="esri-icon"] {
-    padding-right: $font-size * 0.2;
+
+    &:hover,
+    &:focus {
+      border-color: $font-color;
+    }
+
+    &[class^="esri-icon"] {
+      padding-right: $font-size * 0.2;
+    }
+
+    &#{&}--selected {
+      border-color: $border-color--active;
+    }
   }
 
   .esri-item-list__list-item-label {
@@ -109,6 +115,7 @@
     margin: 0;
     display: flex;
     align-items: center;
+    word-break: break-word;
   }
 
   .esri-item-list__no-matches-message {

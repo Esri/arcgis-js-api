@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../tasks/support/GPMessage","./GPOptions","./utils"],(function(e,s,t,u){"use strict";async function r(e,r,n,a){return n=t.from(n),u.constructRequest(e,"execute",n,r,a).then((e=>{const t=e.data.results||[],r=e.data.messages||[];return{results:t.map(u.decode),messages:r.map((e=>s.fromJSON(e)))}}))}e.execute=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","./GPOptions","./utils","../support/GPMessage"],(function(e,t,s,n,r){"use strict";function u(e,t,s,n){return o.apply(this,arguments)}function o(){return(o=t._asyncToGenerator((function*(e,t,u,o){return u=s.from(u||{}),n.constructRequest(e,"execute",u,t,o).then((e=>{const t=e.data.results||[],s=e.data.messages||[];return{results:t.map(n.decode),messages:s.map((e=>r.fromJSON(e)))}}))}))).apply(this,arguments)}e.execute=u,Object.defineProperty(e,"__esModule",{value:!0})}));

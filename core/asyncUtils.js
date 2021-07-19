@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","./promiseUtils"],(function(r,e){"use strict";function t(r,t,o){return e.eachAlways(r.map(((r,e)=>t.apply(o,[r,e]))))}function o(r,t,o){return e.eachAlways(r.map(((r,e)=>t.apply(o,[r,e])))).then((r=>r.map((r=>r.value))))}function n(r){return r.then((r=>({ok:!0,value:r}))).catch((r=>({ok:!1,error:r})))}function u(r){return r.then((r=>({ok:!0,value:r}))).catch((r=>{e.throwIfAbortError(r);return{ok:!1,error:r}}))}function a(r){if(!0===r.ok)return r.value;throw r.error}r.assertResult=a,r.forEach=t,r.map=o,r.result=n,r.resultOrAbort=u,Object.defineProperty(r,"__esModule",{value:!0})}));
+define(["exports","./maybe","./promiseUtils"],(function(e,r,t){"use strict";function o(e,r,o){return t.eachAlways(e.map(((e,t)=>r.apply(o,[e,t]))))}function n(e,r,o){return t.eachAlways(e.map(((e,t)=>r.apply(o,[e,t])))).then((e=>e.map((e=>e.value))))}function u(e){return r.isNone(e)?t.resolve():e.then((e=>({ok:!0,value:e}))).catch((e=>({ok:!1,error:e})))}function a(e){return e.then((e=>({ok:!0,value:e}))).catch((e=>(t.throwIfAbortError(e),{ok:!1,error:e})))}function c(e){if(!0===e.ok)return e.value;throw e.error}e.assertResult=c,e.forEach=o,e.map=n,e.result=u,e.resultOrAbort=a,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -7,8 +7,8 @@
  *
  * Several common [formats](esri-widgets-CoordinateConversion-support-Format.html) are included by default:
  * * XY - Longitude, Latitude (WGS84)
- * * MGRS - [Military Grid Reference System](http://earth-info.nga.mil/GandG/publications/tm8358.1/tr83581b.html)
- * * UTM - [Universal Transverse Mercator](http://earth-info.nga.mil/GandG/coordsys/grids/utm.html)
+ * * MGRS - [Military Grid Reference System](https://earth-info.nga.mil/index.php?dir=coordsys&action=coordsys#mgrs)
+ * * UTM - [Universal Transverse Mercator](https://earth-info.nga.mil/index.php?dir=coordsys&action=coordsys#utm)
  * * DD - Decimal Degrees
  * * DDM - Degrees Decimal Minutes
  * * DMS - Degrees Minutes Seconds
@@ -29,7 +29,7 @@
  * @see module:esri/geometry/coordinateFormatter
  *
  * @example
- * var ccWidget = new CoordinateConversion({
+ * let ccWidget = new CoordinateConversion({
  *   view: view
  * });
  *
@@ -56,8 +56,8 @@ import PictureMarkerSymbol from "esri/symbols/PictureMarkerSymbol";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import { Mode } from "esri/widgets/interfaces";
@@ -75,6 +75,7 @@ import CoordinateConversionMessages from "esri/widgets/CoordinateConversion/t9n/
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, isRTL, messageBundle, storeNode, tsx } from "esri/widgets/support/widget";
 
@@ -166,12 +167,12 @@ class CoordinateConversion extends Widget {
    *
    * @example
    * // typical usage
-   * var ccWidget = new CoordinateConversion({
+   * let ccWidget = new CoordinateConversion({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -257,6 +258,29 @@ class CoordinateConversion extends Widget {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the coordinate input and coordinate settings headings. By default,
+   * these headings are rendered as level 4 headings (e.g. `<h4>Input coordinate</h4>`). Depending on the coordinate conversion widget's
+   * placement in your app, you may need to adjust this heading for proper semantics. This is important for meeting
+   * accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 4
+   *
+   * @example
+   * // coordinate conversion heading will render as an <h2>
+   * coordinateConversion.headingLevel = 2;
+   */
+  @property()
+  headingLevel: HeadingLevel = 4;
 
   //----------------------------------
   //  label
@@ -403,7 +427,24 @@ class CoordinateConversion extends Widget {
    * @type {module:esri/symbols/SimpleMarkerSymbol | module:esri/symbols/PictureMarkerSymbol}
    */
   @aliasOf("viewModel.locationSymbol")
-  locationSymbol: PictureMarkerSymbol;
+  locationSymbol: PictureMarkerSymbol = null;
+
+  //----------------------------------
+  //  storageEnabled
+  //----------------------------------
+
+  /**
+   * If this property is set to `true`, sessionStorage will be used to hydrate and persist the CoordinateConversion widget's state
+   * within the same session.
+   *
+   * @name storageEnabled
+   * @instance
+   * @default true
+   * @type {boolean}
+   * @since 4.20
+   */
+  @aliasOf("viewModel.storageEnabled")
+  storageEnabled: boolean = null;
 
   //----------------------------------
   //  view
@@ -417,7 +458,7 @@ class CoordinateConversion extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -842,7 +883,7 @@ class CoordinateConversion extends Widget {
       [CSS.rejectInput]: this._badInput
     };
 
-    const { messages, messagesCommon } = this;
+    const { messages, messagesCommon, headingLevel } = this;
 
     return (
       <div
@@ -864,9 +905,9 @@ class CoordinateConversion extends Widget {
           >
             {this._renderBackIcon()}
           </div>
-          <h4 class={CSS.header} id={headerId}>
+          <Heading level={headingLevel} class={CSS.header} id={headerId}>
             {messages.inputCoordTitle}
-          </h4>
+          </Heading>
         </div>
 
         <div class={CSS.inputFormGroup}>
@@ -1085,7 +1126,7 @@ class CoordinateConversion extends Widget {
 
     const displayPattern = format.get<string>("currentPattern");
 
-    const { messages, messagesCommon } = this;
+    const { messages, messagesCommon, headingLevel } = this;
 
     return (
       <div
@@ -1105,9 +1146,9 @@ class CoordinateConversion extends Widget {
           >
             {this._renderBackIcon()}
           </div>
-          <h4 class={CSS.header} id={headerId}>
+          <Heading level={headingLevel} class={CSS.header} id={headerId}>
             {messages.settingsTitle}
-          </h4>
+          </Heading>
         </div>
 
         <div class={CSS.settingsFormGroup}>

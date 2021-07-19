@@ -76,7 +76,7 @@
 
 // esri.core
 import Logger from "esri/core/Logger";
-import { Maybe, isSome } from "esri/core/maybe";
+import { Maybe, isSome, applySome } from "esri/core/maybe";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -86,19 +86,18 @@ import { subclass, property, aliasOf, cast } from "esri/core/accessorSupport/dec
 import { ISceneView } from "esri/views/ISceneView";
 
 // esri.widgets
-import { DateOrSeason, Season } from "esri/widgets/interfaces";
 import Widget from "esri/widgets/Widget";
 
 // esri.widgets.Daylight
-import {
-  getGMTOffsets,
-  GMTOffset,
-  formatSliderLabel,
-  ORDERED_SEASONS
-} from "esri/widgets/Daylight/daylightUtils";
 import DaylightViewModel from "esri/widgets/Daylight/DaylightViewModel";
 
 // esri.widgets.Daylight.support
+import {
+  ORDERED_SEASONS,
+  DateOrSeason,
+  Season,
+  SliderDropdownItem
+} from "esri/widgets/Daylight/support/daylightUtils";
 import SliderWithDropdown from "esri/widgets/Daylight/support/SliderWithDropdown";
 
 // esri.widgets.Daylight.t9n
@@ -106,8 +105,13 @@ import DaylightMessages from "esri/widgets/Daylight/t9n/Daylight";
 
 // esri.widgets.support
 import DatePicker from "esri/widgets/support/DatePicker";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
+import { formatSliderLabel, getTimezoneInfos, TimezoneInfo } from "esri/widgets/support/timeWidgetUtils";
 import { tsx, messageBundle } from "esri/widgets/support/widget";
+
+// esri.widgets.support.t9n
+import TimezoneMessages from "esri/widgets/support/t9n/timezone";
 
 const CSS = {
   base: "esri-daylight",
@@ -117,7 +121,6 @@ const CSS = {
   checked: "esri-icon-checkbox-checked",
   dayContainer: "esri-daylight__container esri-daylight__day-container",
   dateContainer: "esri-daylight__container esri-daylight__date-container",
-  header: "esri-widget__heading",
   interactive: "esri-interactive",
   label: " esri-widget__anchor",
   labelledTick: "esri-daylight__container__labelled-tick",
@@ -177,8 +180,8 @@ class Daylight extends Widget {
    *
    * view.ui.add(daylightWidget, "top-right");
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -187,11 +190,9 @@ class Daylight extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  @property({
-    readOnly: true
-  })
-  get gmtOffsets(): Maybe<GMTOffset[]> {
-    return this.messages ? getGMTOffsets(this.messages) : null;
+  @property({ readOnly: true })
+  get gmtOffsets(): Maybe<TimezoneInfo[]> {
+    return applySome(this.timezoneMessages, getTimezoneInfos);
   }
 
   /**
@@ -200,15 +201,40 @@ class Daylight extends Widget {
    * @type {Object}
    *
    * @ignore
-   * @todo intl doc
    */
   @property()
   @messageBundle("esri/widgets/Daylight/t9n/Daylight")
   messages: DaylightMessages;
 
-  //------------------------
-  // iconClass
-  //------------------------
+  /**
+   * @name timezoneMessages
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   */
+  @property()
+  @messageBundle("esri/widgets/support/t9n/timezone")
+  timezoneMessages: TimezoneMessages;
+
+  /**
+   * Indicates the heading level to use for the widget title. By default, the title is rendered
+   * as a level 3 heading (e.g. `<h3>Daylight</h3>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 3
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * daylight.headingLevel = 2;
+   */
+  @property()
+  headingLevel: HeadingLevel = 3;
 
   /**
    * The widget's default CSS icon class.
@@ -219,10 +245,6 @@ class Daylight extends Widget {
    */
   @property()
   iconClass = CSS.widgetIcon;
-
-  //----------------------------------
-  //  label
-  //----------------------------------
 
   /**
    * The widget's default label. This label displays when it is
@@ -382,7 +404,7 @@ class Daylight extends Widget {
   //--------------------------------------------------------------------------
 
   @property()
-  private _timeSlider = new SliderWithDropdown<GMTOffset>({
+  private _timeSlider = new SliderWithDropdown<SliderDropdownItem>({
     viewModel: this.viewModel.timeSliderViewModel,
     labelFormatFunction: formatSliderLabel,
     inputFormatFunction: formatSliderLabel,
@@ -437,15 +459,19 @@ class Daylight extends Widget {
 
       // Keep the time slider updated.
       watchUtils.init(this, "messages", () => {
-        this._timeSlider.buttonTooltip = this.messages.chooseTimezone;
+        this._timeSlider.buttonTooltip = this.timezoneMessages.chooseTimezone;
       }),
       watchUtils.init(this, "visibleElements", () => {
         this._timeSlider.showDropDown = this.visibleElements.timezone;
       }),
 
-      watchUtils.init(this, "gmtOffsets", (offsets: Maybe<GMTOffset[]>) => {
+      watchUtils.init(this, "gmtOffsets", (offsets: Maybe<TimezoneInfo[]>) => {
         if (isSome(offsets)) {
-          this._timeSlider.items = offsets;
+          this._timeSlider.items = offsets.map((o) => ({
+            utcOffset: o.utcOffset,
+            name: o.short,
+            label: [o.shortWithUTC, o.long]
+          }));
         }
       }),
 
@@ -464,7 +490,7 @@ class Daylight extends Widget {
 
     return isSupported ? (
       <div class={this.classes(CSS.base, CSS.widget)}>
-        <h3 class={CSS.header}>{this.messages.title}</h3>
+        <Heading level={this.headingLevel}>{this.messages.title}</Heading>
         {this.renderTimeOptions()}
         {this.visibleElements.datePicker
           ? this.dateOrSeason === "date"
@@ -614,14 +640,14 @@ class Daylight extends Widget {
 
   private _onUTCOffsetChange(): void {
     const currentViewUtcOffset = this.viewModel.utcOffset;
-    const timeSliderUtcOffset = this._timeSlider.currentItem?.abbr;
+    const timeSliderUtcOffset = this._timeSlider.currentItem?.utcOffset;
     const allOffsets = this.gmtOffsets;
     if (!isSome(allOffsets) || timeSliderUtcOffset === currentViewUtcOffset) {
       return;
     }
 
     // Update the time slider based on the view's UTC offset.
-    const index = allOffsets.findIndex(({ abbr }) => abbr === currentViewUtcOffset);
+    const index = allOffsets.findIndex(({ utcOffset }) => utcOffset === currentViewUtcOffset);
     if (index > -1) {
       this._timeSlider.currentIndex = index;
     }

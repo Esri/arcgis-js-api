@@ -70,8 +70,8 @@ import { getDisplayFieldName } from "esri/layers/support/fieldUtils";
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.views.interactive.snapping
 import SnappingOptions from "esri/views/interactive/snapping/SnappingOptions";
@@ -87,12 +87,12 @@ import Widget from "esri/widgets/Widget";
 import EditorViewModel from "esri/widgets/Editor/EditorViewModel";
 import {
   CancelWorkflowOptions,
-  CreateWorkflow,
+  ICreateWorkflow,
   CreationInfo,
   FailedOperation,
   LayerInfo,
   SupportingWidgetDefaults,
-  UpdateWorkflow,
+  IUpdateWorkflow,
   WorkflowType
 } from "esri/widgets/Editor/interfaces";
 
@@ -109,8 +109,16 @@ import FeatureTemplatesMessages from "esri/widgets/FeatureTemplates/t9n/FeatureT
 import { CreateEvent } from "esri/widgets/Sketch/support/interfaces";
 
 // esri.widgets.support
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, isRTL, messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  isActivationKey,
+  isRTL,
+  messageBundle,
+  tsx,
+  vmEvent
+} from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-editor esri-widget esri-widget--panel",
@@ -162,7 +170,6 @@ const CSS = {
   buttonTertiary: "esri-button--tertiary",
   buttonDrillIn: "esri-button--drill-in",
   buttonDrillInTitle: "esri-button--drill-in__title",
-  heading: "esri-heading",
   input: "esri-input",
   interactive: "esri-interactive",
   select: "esri-select"
@@ -199,7 +206,7 @@ function focusOnCreate(node: HTMLElement): void {
   node.focus();
 }
 
-type EditorParams = Partial<
+type EditorProperties = Partial<
   Pick<
     Editor,
     "allowedWorkflows" | "layerInfos" | "supportingWidgetDefaults" | "view" | "viewModel"
@@ -228,8 +235,8 @@ class Editor extends HandleOwnerMixin(Widget) {
    * });
    *
    */
-  constructor(params?: EditorParams, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: EditorProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
 
     this._handleSave = this._handleSave.bind(this);
     this._handleBack = this._handleBack.bind(this);
@@ -244,6 +251,11 @@ class Editor extends HandleOwnerMixin(Widget) {
 
   initialize(): void {
     this.own([
+      init(this, "headingLevel", (level) => {
+        this._featureForm.headingLevel = level + 1;
+        this._featureTemplates.headingLevel = level + 1;
+      }),
+
       init(this, "viewModel", (viewModel) => {
         this._featureForm.viewModel = viewModel ? viewModel.featureFormViewModel : null;
         this._attachments.viewModel = viewModel ? viewModel.attachmentsViewModel : null;
@@ -536,7 +548,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    */
   @aliasOf("viewModel.activeWorkflow")
-  activeWorkflow: CreateWorkflow | UpdateWorkflow = null;
+  activeWorkflow: ICreateWorkflow | IUpdateWorkflow = null;
 
   //----------------------------------
   //  allowedWorkflows
@@ -573,6 +585,30 @@ class Editor extends HandleOwnerMixin(Widget) {
    */
   @aliasOf("viewModel.allowedWorkflows")
   allowedWorkflows: WorkflowType[] = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for title of the widget. By default, the title (i.e. "Editor") is rendered
+   * as a level 4 heading (e.g. `<h4>Editor</h4>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 4
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // "Editor" will render as an <h3>
+   * editor.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 4;
 
   //----------------------------------
   //  iconClass
@@ -761,7 +797,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -982,7 +1018,8 @@ class Editor extends HandleOwnerMixin(Widget) {
   }
 
   protected renderAttributeEditing(): VNode {
-    const { activeWorkflow: workflow, featureFormViewModel } = this.viewModel;
+    const featureFormViewModel = this.viewModel.featureFormViewModel;
+    const workflow = this._assertActiveCreateOrUpdateWorklow();
     const feature = workflow.data.edits.feature;
 
     const disabled =
@@ -1008,7 +1045,7 @@ class Editor extends HandleOwnerMixin(Widget) {
         showAttachments = true;
       }
 
-      if (workflow.data.editableItem.supports.indexOf("delete") > -1) {
+      if (workflow.data.editableItem.supports.includes("delete")) {
         controls.push({
           label: messagesCommon.delete,
           type: "tertiary",
@@ -1112,7 +1149,7 @@ class Editor extends HandleOwnerMixin(Widget) {
   protected renderFeatureCreation(): VNode {
     const { messages, viewModel } = this;
     const sketchVM = viewModel.sketchViewModel;
-    const workflow = viewModel.activeWorkflow as CreateWorkflow;
+    const workflow = this._assertActiveCreateWorkflow();
     const layer = workflow.data.creationInfo.layer;
     const validInProgressGraphic =
       sketchVM.canUndo() && sketchVM.createGraphic ? sketchVM.createGraphic : null;
@@ -1159,7 +1196,9 @@ class Editor extends HandleOwnerMixin(Widget) {
       <div class={CSS.warningCard} role="alert">
         <div class={CSS.warningHeader}>
           <span class={CSS.warningIcon} aria-hidden="true" />
-          <h4 class={this.classes(CSS.heading, CSS.warningHeading)}>{title}</h4>
+          <Heading class={CSS.warningHeading} level={this.headingLevel}>
+            {title}
+          </Heading>
         </div>
         <div class={CSS.warningMessage}>{message}</div>
         <div class={CSS.warningDivider} />
@@ -1183,7 +1222,7 @@ class Editor extends HandleOwnerMixin(Widget) {
               onkeydown={(event: KeyboardEvent) => {
                 const key = eventKey(event);
 
-                if (key === "Enter" || key === " ") {
+                if (isActivationKey(key)) {
                   event.preventDefault();
                   action.call(null);
                 }
@@ -1245,7 +1284,9 @@ class Editor extends HandleOwnerMixin(Widget) {
             <span aria-hidden="true" class={isRTL() ? CSS.rightArrowIcon : CSS.leftArrowIcon} />
           </div>
         ) : null}
-        <h4 class={this.classes(CSS.title, CSS.heading)}>{title}</h4>
+        <Heading class={CSS.title} level={this.headingLevel}>
+          {title}
+        </Heading>
       </header>
     );
   }
@@ -1317,10 +1358,10 @@ class Editor extends HandleOwnerMixin(Widget) {
     const {
       messages,
       messagesTemplates,
-      viewModel: { editableItems, activeWorkflow }
+      viewModel: { editableItems }
     } = this;
 
-    const workflow = activeWorkflow as UpdateWorkflow;
+    const workflow = this._assertActiveUpdateWorkflow();
     const candidates = workflow.data.candidates;
     const title = substitute(messages.multipleFeaturesTemplate, { total: candidates.length });
 
@@ -1407,7 +1448,7 @@ class Editor extends HandleOwnerMixin(Widget) {
       return;
     }
 
-    const workflow = this.viewModel.activeWorkflow as UpdateWorkflow;
+    const workflow = this._assertActiveUpdateWorkflow();
     workflow.data.edits.feature = feature;
 
     if (commit) {
@@ -1558,12 +1599,12 @@ class Editor extends HandleOwnerMixin(Widget) {
   @accessibleHandler()
   private _handleBack(): void {
     const { messages } = this;
-    const { activeWorkflow: workflow } = this.viewModel;
+    const workflow = this._assertActiveCreateOrUpdateWorklow();
     const { stepId, data, type } = workflow;
 
     const goBack = () => {
       if (workflow.hasPreviousStep) {
-        workflow.previous();
+        workflow.previous({ cancelCurrentStep: true });
         return;
       }
 
@@ -1604,6 +1645,30 @@ class Editor extends HandleOwnerMixin(Widget) {
     }
 
     goBack();
+  }
+
+  private _assertActiveCreateWorkflow(): ICreateWorkflow {
+    if (this.viewModel.activeWorkflow.type === "create") {
+      return this.viewModel.activeWorkflow;
+    }
+    throw Error("Expected activeWorkflow to be a CreateWorkflow");
+  }
+
+  private _assertActiveUpdateWorkflow(): IUpdateWorkflow {
+    if (this.viewModel.activeWorkflow.type === "update") {
+      return this.viewModel.activeWorkflow;
+    }
+    throw Error("Expected activeWorkflow to be an UpdateWorkflow");
+  }
+
+  private _assertActiveCreateOrUpdateWorklow(): ICreateWorkflow | IUpdateWorkflow {
+    switch (this.viewModel.activeWorkflow.type) {
+      case "create":
+      case "update":
+        return this.viewModel.activeWorkflow;
+    }
+
+    throw Error("Expected activeWorkflow to be either CreateWorkflow or UpdateWorkflow");
   }
 }
 

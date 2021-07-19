@@ -34,7 +34,7 @@
  * @see [Sample - track widget](../sample-code/widgets-track/index.html)
  *
  * @example
- * var trackWidget = new Track({
+ * let trackWidget = new Track({
  *   view: view
  * });
  *
@@ -48,8 +48,8 @@ import Graphic from "esri/Graphic";
 import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorators";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import Widget from "esri/widgets/Widget";
@@ -112,12 +112,12 @@ class Track extends Widget {
    *
    * @example
    * // typical usage
-   * var track = new Track({
+   * let track = new Track({
    *   view: view
    * });
    */
-  constructor(params?: any, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: any, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   //--------------------------------------------------------------------------
@@ -183,7 +183,7 @@ class Track extends Widget {
    * @type {module:esri/Graphic}
    *
    * @example
-   * var trackWidget = new Track({
+   * let trackWidget = new Track({
    *   view: view,  // Assigns the track widget to a view
    *     graphic: new Graphic({
    *       symbol: { type: "simple-marker" }  // Overwrites the default symbol used for the
@@ -267,7 +267,7 @@ class Track extends Widget {
    *
    * mapView.when(function(){
    *   // Create an instance of the Track widget
-   *   var track = new Track({
+   *   let track = new Track({
    *     view: mapView,
    *     scale: 5000
    *   });
@@ -336,7 +336,7 @@ class Track extends Widget {
    * @type {module:esri/views/MapView | module:esri/views/SceneView}
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel

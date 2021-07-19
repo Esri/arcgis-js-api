@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.19/esri/copyright.txt for details.
+See https://js.arcgis.com/4.20/esri/copyright.txt for details.
 */
-define(["exports","../../geometry/support/jsonUtils","../../request","../utils"],(function(e,t,s,n){"use strict";async function r(e,r,i){const o=r.geometries[0].spatialReference,a=n.parseUrl(e),f={...a.query,f:"json",...r.toJSON()},p=n.asValidOptions(f,i);return s(a.path+"/densify",p).then((({data:e})=>(e.geometries||[]).map((e=>t.fromJSON(e).set({spatialReference:o})))))}e.densify=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../chunks/_rollupPluginBabelHelpers","../../request","../../geometry/support/jsonUtils","../utils"],(function(e,t,n,s,r){"use strict";function i(e,t,n){return o.apply(this,arguments)}function o(){return(o=t._asyncToGenerator((function*(e,t,i){const o=t.geometries[0].spatialReference,a=r.parseUrl(e),u={...a.query,f:"json",...t.toJSON()},p=r.asValidOptions(u,i);return n(a.path+"/densify",p).then((({data:e})=>(e.geometries||[]).map((e=>s.fromJSON(e).set({spatialReference:o})))))}))).apply(this,arguments)}e.densify=i,Object.defineProperty(e,"__esModule",{value:!0})}));

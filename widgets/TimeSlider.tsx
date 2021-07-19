@@ -9,11 +9,127 @@
  * at an instant of time, or from data that falls within a time range by setting the [mode](#mode) property.
  * The [stops](#stops) property defines specific locations on the TimeSlider where thumbs will snap to when
  * manipulated. You can set this property to be either an array of dates, a number of evenly spaced stops
- * or a specific time interval (e.g. days). The [values](#values) property defines the
+ * or a specific time interval (e.g. days). The [timeExtent](#timeExtent) property defines the
  * current location of the thumbs.
  *
- * TimeSlider will automatically import settings from a WebMap if that WebMap contains a timeSlider definition and is indirectly associated with
- * the widget. For example, consider the following snippet.
+ * [![widgets-timeSlider](../assets/img/apiref/widgets/widgets-timeSlider.png)](../sample-code/sandbox/?sample=widgets-timeslider)
+ *
+ * If the time slider widget settings are invalid, the current time segment and thumbs will be drawn in a red color with a message indicating the issue.
+ * [![widgets-timeSlider-invalid](../assets/img/apiref/widgets/timeslider/widgets-timeslider-invalid.png)](../sample-code/sandbox/?sample=widgets-timeslider)
+ *
+ * ### Configuring your time aware data
+ *
+ * The TimeSlider widget can be configured to manipulate your time aware data in two different ways
+ * as outlined below:
+ *
+ * #### Update the view's timeExtent
+ *
+ * The TimeSlider widget can be configured to update the view's {@link module:esri/views/View#timeExtent timeExtent}
+ * when the [view](#view) property is set on the widget. Use this approach if your service has been published with `timeInfo` information.
+ * This approach requires less code.
+ *
+ * >>> esri-read-more
+ * With this approach, whenever a TimeSlider's [timeExtent](#timeExtent) is updated, the assigned view's
+ * {@link module:esri/views/View#timeExtent timeExtent} will also be updated. All time-aware layers will automatically update to conform to the view's timeExtent.
+ * Check out the [Set time properties on data (ArcGIS Pro)](https://pro.arcgis.com/en/pro-app/help/mapping/time/set-the-time-properties-on-data.htm) and
+ * [Configure time settings on a layer (ArcGIS Online)](https://doc.arcgis.com/en/arcgis-online/create-maps/configure-time-mv.htm) documents to learn how to enable time on your service.
+ *
+ * ```js
+ * // Create a TimeSlider for the first decade of the 21st century.
+ * // set the TimeSlider's view property.
+ * // Only show content for the 1st year of the decade for all
+ * // time aware layers in the view.
+ * const timeSlider = new TimeSlider({
+ *   container: "timeSliderDiv",
+ *   view: view,
+ *   // show data within a given time range
+ *   // in this case data within one year
+ *   mode: "time-window",
+ *   fullTimeExtent: { // entire extent of the timeSlider
+ *     start: new Date(2000, 0, 1),
+ *     end: new Date(2010, 0, 1)
+ *   },
+ *   timeExtent: { // location of timeSlider thumbs
+ *     start: new Date(2000, 0, 1),
+ *     end: new Date(2001, 1, 1)
+ *   }
+ * });
+ * view.ui.add(timeSlider, "manual");
+ * ```
+ * >>>
+ *
+ * #### Watch TimeSlider's timeExtent
+ *
+ * The TimeSlider widget can also be configured to apply a custom logic whenever the TimeSlider's [timeExtent](#timeExtent) property changes.
+ * This approach can be used if your service has a date field but does not have time enabled. You can
+ * also use this approach if you want to have a complete control over the logic whenever the timeSlider's timeExtent updates.
+ *
+ * >>> esri-read-more
+ * For example, when the TimeSlider's [timeExtent](#timeExtent) is updated,
+ * you may want to update the {@link module:esri/views/layers/support/FeatureFilter#timeExtent timeExtent}
+ * property of client-side {@link module:esri/views/layers/FeatureLayerView#filter filters} and
+ * {@link module:esri/views/layers/FeatureLayerView#effect effects} on a
+ * {@link module:esri/views/layers/FeatureLayerView#filter},
+ * {@link module:esri/views/layers/CSVLayerView#filter},
+ * {@link module:esri/views/layers/GeoJSONLayerView#filter} or
+ * {@link module:esri/views/layers/OGCFeatureLayerView#filter}.
+ * A {@link module:esri/views/layers/support/FeatureFilter} can be used to filter out data that is not included in the current timeExtent,
+ * and a {@link module:esri/views/layers/support/FeatureEffect} can be used to apply a visual effect to features that
+ * are included in or excluded from the current timeExtent. The {@link module:esri/views/layers/support/FeatureEffect} can only be used in a
+ * {@link module:esri/views/MapView 2D MapView}.
+ *
+ * ::: esri-md class="panel trailer-1"
+ * **Warning:** When watching the [timeExtent](#timeExtent) property, the [view](#view) should not be set on the TimeSlider widget instance.
+ * Setting both the TimeSlider's [view](#view) property (explained above) and applying a
+ * {@link module:esri/views/layers/support/FeatureFilter#timeExtent timeExtent} to a client-side
+ * {@link module:esri/views/layers/FeatureLayerView#effect effect} may result in excluded features not being rendered to the view.
+ * This is because excluded features have been filtered out by the view's timeExtent, so the effect will not show.
+ *
+ * :::
+ *
+ * ```js
+ * // Create a time slider to update layerView filter
+ * const timeSlider = new TimeSlider({
+ *   container: "timeSliderDiv",
+ *   mode: "cumulative-from-start",
+ * });
+ * view.ui.add(timeSlider, "manual");
+ *
+ * // wait until the layer view is loaded
+ * let timeLayerView;
+ * view.whenLayerView(layer).then((layerView) => {
+ *   timeLayerView = layerView;
+ *   const fullTimeExtent = layer.timeInfo.fullTimeExtent;
+ *   const end = fullTimeExtent.start;
+ *
+ *   // set up time slider properties based on layer timeInfo
+ *   timeSlider.fullTimeExtent = fullTimeExtent;
+ *   timeSlider.timeExtent = {
+ *     start: null,
+ *     end: end
+ *   };
+ *   timeSlider.stops = {
+ *     interval: layer.timeInfo.interval
+ *   };
+ * });
+ *
+ * timeSlider.watch("timeExtent", (value) => {
+ *   // update layer view filter to reflect current timeExtent
+ *   timeLayerView.filter = {
+ *     timeExtent: value
+ *   };
+ * });
+ * ```
+ * >>>
+ *
+ * ### Set TimeSlider widget from a WebMap
+ *
+ * The TimeSlider widget will automatically import settings from a {@link module:esri/WebMap} if that WebMap contains a timeSlider definition
+ * and is indirectly associated with the widget.
+ *
+ * >>> esri-read-more
+ * For example, the following snippet shows how a WebMap with timeslider settings can be loaded into a view.
+ *
  * ```js
  * const view = new MapView({
  *   map: WebMap.fromJSON({
@@ -34,98 +150,40 @@
  *      }
  *   }
  * });
+ *
+ * // set the timeslider widget to honor the timeslider settings
+ * // from the webmap.
  * const timeSlider = new TimeSlider({
  *   view
  * });
  * const { unit, value } = timeSlider.stops.interval;
  * console.log(`The stop interval is every ${value} {$unit}.`); // output: "This stop interval is every 3 weeks."
+ *
  * ```
  *
- * [![widgets-timeSlider](../assets/img/apiref/widgets/widgets-timeSlider.png)](../sample-code/sandbox/sandbox.html?sample=widgets-timeslider)
- *
- * The TimeSlider widget can be configured to manipulate your time aware data in two different ways
- * as outlined below:
- *
- * #### Update the view's timeExtent
- *
- * The TimeSlider widget can be configured to update the view's {@link module:esri/views/View#timeExtent timeExtent}
- * when the [view](#view) property is set on the widget. Whenever a TimeSlider's [timeExtent](#timeExtent) is updated, the assigned view's
- * timeExtent will also be updated. All time-aware layers will automatically update to conform to the view's timeExtent.
+ * It is important to note that any settings that you define will take precedence of those imported from a webmap
+ * that may be associated with the assigned View. In the example above, the timeSlider definition in the
+ * webmap has a play rate (or `thumbMovingRate`) of 2 seconds. The following snippet overrides this setting.
  *
  * ```js
- * // Create a TimeSlider for the first decade of the 21st century.
- * // set the TimeSlider's view property.
- * // Only show content for the 1st year of the decade for all
- * // time aware layers in the view.
- * var timeSlider = new TimeSlider({
- *   container: "timeSliderDiv",
- *   view: view,
- *   // show data within a given time range
- *   // in this case data within one year
- *   mode: "time-window",
- *   fullTimeExtent: { // entire extent of the timeSlider
- *     start: new Date(2000, 0, 1),
- *     end: new Date(2010, 0, 1)
- *   },
- *   values:[ // location of timeSlider thumbs
- *     new Date(2000, 0, 1),
- *     new Date(2001, 1, 1)
- *   ]
+ * const timeSlider = new TimeSlider({
+ *   view,
+ *   playRate: 1000
  * });
- * view.ui.add(timeSlider, "manual");
+ * console.log(`The playback rate is ${timeSlider.playRate} ms.`); // output: "The playback rate is 1000 ms."
  * ```
  *
- * #### Watching the TimeSlider's timeExtent
- *
- * The TimeSlider widget can also be configured to apply custom logic whenever the TimeSlider is manipulated by watching
- * its [timeExtent](#timeExtent) property. For example, when the TimeSlider's [timeExtent](#timeExtent) is updated,
- * you may want to update the {@link module:esri/views/layers/support/FeatureFilter#timeExtent timeExtent}
- * property of client-side {@link module:esri/views/layers/FeatureLayerView#filter filters} and
- * {@link module:esri/views/layers/FeatureLayerView#effect effects} on a
- * {@link module:esri/views/layers/FeatureLayerView#filter},
- * {@link module:esri/views/layers/CSVLayerView#filter},
- * {@link module:esri/views/layers/GeoJSONLayerView#filter} or
- * {@link module:esri/views/layers/OGCFeatureLayerView#filter}.
- * A {@link module:esri/views/layers/support/FeatureFilter} can be used to filter out data that is not included in the current timeExtent,
- * and a {@link module:esri/views/layers/support/FeatureEffect} can be used to apply a visual effect to features that
- * are included in or excluded from the current timeExtent. The {@link module:esri/views/layers/support/FeatureEffect} can only be used in a
- * {@link module:esri/views/MapView 2D MapView}.
- *
- * Warning: Setting both the TimeSlider's [view](#view) property (explained above) and applying a
- * {@link module:esri/views/layers/support/FeatureFilter#timeExtent timeExtent} to a client-side
- * {@link module:esri/views/layers/FeatureLayerView#effect effect} may result in excluded features not being rendered to the view.
- * This is because excluded features have been filtered out by the view's timeExtent, so the effect will not show.
+ * It may be necessary to examine or adjust settings after they have been imported from a webmap. To determine when the
+ * import has completed you can watch for the `ready` {@link module:esri/widgets/TimeSlider/TimeSliderViewModel#state state}
+ * of the [viewModel](#viewModel). The snippet expands or snaps the [fullTimeExtent](#fullTimeExtent) after the property
+ * has been computed from an associated webmap.
  *
  * ```js
- * // Create a time slider to update layerView filter
- * var timeSlider = new TimeSlider({
- *   container: "timeSliderDiv",
- *   mode: "cumulative-from-start",
- * });
- * view.ui.add(timeSlider, "manual");
- *
- * // wait until the layer view is loaded
- * let timeLayerView;
- * view.whenLayerView(layer).then(function(layerView) {
- *   timeLayerView = layerView;
- *   const fullTimeExtent = layer.timeInfo.fullTimeExtent;
- *   const start = fullTimeExtent.start;
- *
- *   // set up time slider properties based on layer timeInfo
- *   timeSlider.fullTimeExtent = fullTimeExtent;
- *   timeSlider.values = [start];
- *   timeSlider.stops = {
- *     interval: layer.timeInfo.interval
- *   };
- * });
- *
- * timeSlider.watch("timeExtent", function(value){
- *   // update layer view filter to reflect current timeExtent
- *   timeLayerView.filter = {
- *     timeExtent: value
- *   };
+ * watchUtils.whenEqualOnce(timeSlider.viewModel, "state", "ready", () => {
+ *   timeSlider.fullTimeExtent = timeSlider.fullTimeExtent.expandTo("years");
  * });
  * ```
+ * >>>
  *
  * @module esri/widgets/TimeSlider
  * @since 4.12
@@ -135,8 +193,11 @@
  * @see module:esri/widgets/TimeSlider/TimeSliderViewModel
  * @see [Sample - TimeSlider widget](../sample-code/widgets-timeslider/index.html)
  * @see [Sample - Filter features with TimeSlider](../sample-code/timeslider-filter/index.html)
+ * @see [Sample - TimeSlider with offset](../sample-code/widgets-timeslider-offset/index.html)
+ * @see [Sample - Visualizing wind data with VectorFieldRenderer](../sample-code/layers-imagery-vfrenderer/index.html)
  * @see [Temporal data (ArcGIS Pro)](https://pro.arcgis.com/en/pro-app/help/mapping/time/temporal-data.htm)
  * @see [Set time properties on data (ArcGIS Pro)](https://pro.arcgis.com/en/pro-app/help/mapping/time/set-the-time-properties-on-data.htm)
+ * @see [Configure time settings on a layer (ArcGIS Online)](https://doc.arcgis.com/en/arcgis-online/create-maps/configure-time-mv.htm)
  * @see {@link module:esri/layers/GeoJSONLayer#timeInfo Set GeoJSONLayer timeInfo}
  * @see {@link module:esri/layers/CSVLayer#timeInfo Set CSVLayer timeInfo}
  * @see module:esri/views/ui/DefaultUI
@@ -152,10 +213,10 @@ import WebScene from "esri/WebScene";
 import { equals } from "esri/core/arrayUtils";
 import Collection from "esri/core/Collection";
 import { neverReached } from "esri/core/compilerUtils";
-import EsriError from "esri/core/Error";
 import { on } from "esri/core/events";
-import { clamp } from "esri/core/mathUtils";
+import { isSome, Maybe, isNone, andThen } from "esri/core/maybe";
 import { throttle } from "esri/core/throttle";
+import { offsetDate, truncateDate } from "esri/core/timeUtils";
 import { init } from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -164,15 +225,12 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 // esri.intl
 import { convertDateFormatToIntlOptions, formatDate } from "esri/intl/date";
 
-// esri.layers.support
-import { offsetDate, truncateDate } from "esri/layers/support/timeUtils";
-
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import IMapView from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.widgets
 import { PersistableWidget } from "esri/widgets/interfaces";
@@ -202,6 +260,7 @@ const CSS = {
   esriDisabled: "esri-disabled",
 
   timeSlider: "esri-time-slider",
+  timeSliderOutOfBounds: "esri-time-slider--out-of-bounds",
   timeSliderMode: "esri-time-slider__mode--", // + mode (eg "instant", "time-extent")
   timeSliderLayout: "esri-time-slider__layout--", // + layout (eg "wide", "compact")
   timeSliderRow: "esri-time-slider__row",
@@ -233,7 +292,11 @@ const CSS = {
 
   next: "esri-time-slider__next",
   nextButton: "esri-time-slider__next-button",
-  nextIcon: "esri-icon-forward"
+  nextIcon: "esri-icon-forward",
+
+  warning: "esri-time-slider__warning",
+  warningIcon: "esri-icon-notice-triangle",
+  warningText: "esri-time-slider__warning-text"
 };
 
 const MINIMUM_MINOR_TICK_SPACING = 3; // pixels
@@ -244,7 +307,12 @@ type LabelType = "min" | "max" | "extent";
 type Layout = "auto" | "compact" | "wide";
 
 interface DateLabelFormatter {
-  (value: Date | Date[], type: LabelType, element: Element, layout: Exclude<Layout, "auto">): void;
+  (
+    value: Date | [Date, Date],
+    type: LabelType,
+    element: Element,
+    layout: Exclude<Layout, "auto">
+  ): void;
 }
 
 interface TickFormat {
@@ -422,6 +490,7 @@ type TimeSliderProperties = Partial<
     | "playRate"
     | "stops"
     | "tickConfigs"
+    | "timeExtent"
     | "timeVisible"
     | "values"
     | "view"
@@ -440,22 +509,19 @@ class TimeSlider extends Widget implements PersistableWidget {
   /**
    * This function is used by the [labelFormatFunction](#labelFormatFunction)
    * property to specify custom formatting and styling of the min, max and
-   * extent labels.
+   * extent labels of the time slider widget.
    *
    * @callback module:esri/widgets/TimeSlider~DateLabelFormatter
    *
-   * @param {Date | Date[]} value - The date(s) that the corresponding label represents. When the label
+   * @param {Date | Date[]} value - The date(s) that correspond to labels. When the label
    *     type is `min` or `max` a single date value will be parsed. When the
-   *     type is `extent` value will be an array of dates. The array will
-   *     contain one date if the [mode](#mode) is `instant`,
-   *     `cumulative-from-start` or `cumulative-from-end` and two dates if
-   *     the [mode](#mode) is `time-window`.
+   *     type is `extent` value will be a date array with two values.
+   *     The first and second date in the array correspond the time extent's start and end values.
    * @param {"min" | "max" | "extent"} [type] - The label type that you want to format.
    * @param {HTMLElement} [element] - The HTML element corresponding to the label type. You can add or modify the
    *     default style of individual labels by adding CSS classes to this element.
-   *     You can also add custom behavior to labels by attaching event listeners.
-   *     to individual elements.
-   * @param {"compact" | "wide"} [layout] - The current TimeSlider [layout](#layout).
+   *     You can also add custom behavior to labels by attaching event listeners to individual elements.
+   * @param {"compact" | "wide"} [layout] - The TimeSlider [layout](#layout).
    */
 
   /**
@@ -473,10 +539,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2004, 2, 19)
    *   },
-   *   values: [
-   *     new Date(2000, 0, 1),
-   *     new Date(2001, 3, 8)
-   *   ],
+   *   timeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2001, 3, 8)
+   *   },
    *   stops: {
    *     dates: [
    *       new Date(2000, 0, 1),
@@ -505,10 +571,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2015, 2, 19)
    *   },
-   *   values: [
-   *     new Date(2000, 0, 1),
-   *     new Date(2001, 0, 1)
-   *   ],
+   *   timeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2001, 0, 1)
+   *   },
    *   stops: {
    *     interval: {
    *       value: 1,
@@ -538,10 +604,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2004, 2, 19)
    *   },
-   *   values: [
-   *     new Date(2000, 0, 1),
-   *     new Date(2000, 3, 8)
-   *   ],
+   *   timeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2000, 3, 8)
+   *   },
    *   stops: {
    *     count: 10
    *   }
@@ -555,19 +621,30 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: TimeSliderProperties, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: TimeSliderProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   initialize(): void {
     this.own([
-      this._slider.watch("values", (newValues) => {
-        const oldValues = this.values?.map((date) => date.getTime());
-        if (!equals(newValues, oldValues)) {
-          this.set(
-            "values",
-            newValues.map((value) => new Date(value))
-          );
+      this._slider.watch("values", (newValues: [number] | [number, number]) => {
+        if (this._ignoreNextSliderUpdate) {
+          this._ignoreNextSliderUpdate = false;
+          return;
+        }
+        const newTimeExtent = this.viewModel.valuesToTimeExtent(newValues);
+        if (isSome(this.timeExtent)) {
+          if (isSome(newTimeExtent)) {
+            if (!this.timeExtent.equals(newTimeExtent)) {
+              this.timeExtent = newTimeExtent;
+            }
+          } else {
+            this.timeExtent = null;
+          }
+        } else {
+          if (isSome(newTimeExtent)) {
+            this.timeExtent = newTimeExtent;
+          }
         }
       }),
       on(
@@ -577,8 +654,6 @@ class TimeSlider extends Widget implements PersistableWidget {
       ),
       init(this, "effectiveStops", () => this._updateSliderSteps())
     ]);
-
-    this._validateTimeExtent();
   }
 
   destroy(): void {
@@ -588,18 +663,21 @@ class TimeSlider extends Widget implements PersistableWidget {
 
   //--------------------------------------------------------------------------
   //
-  //  Variables
+  //  Private Properties
   //
   //--------------------------------------------------------------------------
 
-  private _slider: Slider = new Slider({
+  private _ignoreNextSliderUpdate = false;
+
+  private readonly _slider = new Slider({
     precision: 0,
     visibleElements: {
       rangeLabels: false
     },
     rangeLabelInputsEnabled: false
   });
-  private _tickFormat: TickFormat = null;
+
+  private _tickFormat: Maybe<TickFormat> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -648,30 +726,12 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @readonly
    *
    * @example
-   * // Add yearly stops starting from the beginning of 2001.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 5, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   stops: {
-   *     interval: {
-   *       value: 1,
-   *       unit: "years"
-   *     },
-   *     timeExtent: {
-   *       start: new Date(2001, 0, 1),
-   *       end: new Date(2010, 0, 1)
-   *    }
-   *   }
-   * });
    * timeSlider.effectiveStops.forEach((stop) => {
    *   console.log(stop);
    * });
    */
   @aliasOf("viewModel.effectiveStops")
-  readonly effectiveStops: Date[] = null;
+  readonly effectiveStops: Maybe<Date[]> = null;
 
   //----------------------------------
   //  fullTimeExtent
@@ -689,13 +749,13 @@ class TimeSlider extends Widget implements PersistableWidget {
    *
    * @example
    * // Create a new TimeSlider with set dates
-   * var timeSlider = new TimeSlider({
+   * const timeSlider = new TimeSlider({
    *   container: "timeSliderDiv",
    *   view: view
    * });
    *
    * // wait for the time-aware layer to load
-   * layer.when(function() {
+   * layer.when(() => {
    *   // set up time slider properties based on layer timeInfo
    *   timeSlider.fullTimeExtent = layer.timeInfo.fullTimeExtent;
    *   timeSlider.stops = {
@@ -704,7 +764,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @aliasOf("viewModel.fullTimeExtent")
-  fullTimeExtent: TimeExtent = null;
+  fullTimeExtent: Maybe<TimeExtent> = null;
 
   //----------------------------------
   //  iconClass
@@ -817,7 +877,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * });
    */
   @property()
-  labelFormatFunction: DateLabelFormatter = null;
+  labelFormatFunction: Maybe<DateLabelFormatter> = null;
 
   //----------------------------------
   //  layout
@@ -923,10 +983,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *
    * Possible Values       | Description   | Example |
    * ----------------------|-------------- | ------- |
-   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [values](#values) property to an array with one date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
-   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [values](#values) property to an array with two dates. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
-   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [values](#values) property to have one date, which is the end date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
-   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [values](#values) property to have one date, which is the start date. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
+   * instant               | The slider will show temporal data that falls on a single instance in time. Set the [timeExtent](#timeExtent) property's `start` and `end` dates to same date: `{start: sameDate, end: sameDate}` | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-instance.png"> |
+   * time-window           | The slider will show temporal data that falls within a given time range. This is the default. Set [timeExtent](#timeExtent) property's `start` and `date` properties to desired dates. | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-time-window.png"> |
+   * cumulative-from-start | Similar to `time-window` with the start time is always pinned to the start of the slider. Set the [timeExtent](#timeExtent) property's `start` date to `null` and set `end` date to a desired date: `{start: null, end: date}` | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-start.png"> |
+   * cumulative-from-end   | Also, similar to the `time-window` with the end time pinned to the end of the slider. Set the [timeExtent](#timeExtent) property's `start` date to a desired date and set `end` date to `null`: `{start: date, end: null}` | <img alt="mode-instance" src="../assets/img/apiref/widgets/timeslider/mode-from-end.png"> |
    *
    * @name mode
    * @instance
@@ -943,7 +1003,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2010, 0, 1)
    *   },
-   *   values: [new Date(2001, 0, 1)] //end date
+   *   timeExtent: {
+   *     start: null,
+   *     end: new Date(2001, 0, 1) //end date
+   *   }
    * });
    */
   @aliasOf("viewModel.mode")
@@ -988,14 +1051,70 @@ class TimeSlider extends Widget implements PersistableWidget {
    * Defines specific locations on the time slider where thumbs will snap to when manipulated.
    * If unspecified, ten evenly spaced stops will be added.
    *
-   * To define regularly spaced stops based on specified {@link module:esri/TimeInterval time interval} and
-   * {@link module:esri/TimeExtent time extent}, use {@link module:esri/widgets/TimeSlider~StopsByInterval}.
-   * Use {@link module:esri/widgets/TimeSlider~StopsByCount} to define evenly spaced timeline stops. Lastly,
-   * for irregular dates use {@link module:esri/widgets/TimeSlider~StopsByDates}. Please refer below for examples
-   * of each of these objects.
+   * For continuous sliding, set `stops` to `null`:
+   * ```js
+   * timeSlider.stops = null;
+   * ```
    *
-   * If a declaration using {@link module:esri/widgets/TimeSlider~StopsByInterval} will result in excess of
-   * 10,000 stops then TimeSlider will default to generating ten evenly spaced stops.
+   * To define regularly spaced stops, parse an object with `interval` and `timeExtent` properties
+   * with types {@link module:esri/TimeInterval} and {@link module:esri/TimeExtent} respectively.
+   * The [timeExtent](#timeExtent) property is optional and used to confine stops to a certain date range.
+   * This property is useful to commence stops on a specific day of the week or month.
+   * If a stop definition by interval results in excess of 10,000 stops, then the view model
+   * will default to ten evenly spaced stops.
+   *
+   * ```js
+   * // Add yearly intervals starting from the beginning of the TimeSlider.
+   * timeSlider.stops = {
+   *   interval: {
+   *     value: 1,
+   *     unit: "years"
+   *   }
+   * };
+   * ```
+   * Rather than setting the stops as time intervals, the TimeSlider can be divided into evenly spaced
+   * stops using the `count` property. Similar to the previous method, divisions can be confined to a specific date range
+   * using the optional timeExtent property.
+   * ```js
+   * // Add stops at 15 evenly spaced intervals.
+   * timeSlider.stops = {
+   *   count: 15
+   * };
+   * ```
+   * For irregularly spaced stops, simply assign an array of dates as demonstrated below.
+   * ```js
+   * // Add nine irregular stops.
+   * timeSlider.stops = {
+   *   dates: [
+   *     new Date(2000, 0, 1), new Date(2001, 3, 8), new Date(2002, 0, 10),
+   *     new Date(2003, 12, 8), new Date(2004, 2, 19), new Date(2005, 7, 5),
+   *     new Date(2006, 9, 11), new Date(2007, 11, 21), new Date(2008, 1, 10)
+   *   ]
+   * };
+   * ```
+   * Lastly, to constrain or offset division by count or interval use the optional timeExtent property.
+   * ```js
+   * // Add yearly stops from Christmas 2019 to Christmas 2029 only
+   * timeSlider.stops = {
+   *   interval: {
+   *     value: 1,
+   *     unit: "years"
+   *   },
+   *   timeExtent: {
+   *     start: new Date(2019, 11, 25),
+   *     end: new Date(2029, 11, 25)
+   *   }
+   * };
+   *
+   * // Likewise, add stops that represent quarters of 2019 only.
+   * timeSlider.stops = {
+   *   count: 4,
+   *   timeExtent: {
+   *     start: new Date(2019, 0, 1),
+   *     end: new Date(2020, 0, 1)
+   *   }
+   * };
+   * ```
    *
    * @name stops
    * @instance
@@ -1003,60 +1122,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @autocast { "value": "Object" }
    * @default { count : 10 }
    *
-   * @example
-   * // Add yearly stops starting from the beginning of 2001.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 5, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   stops: {
-   *     interval: {
-   *       value: 1,
-   *       unit: "years"
-   *     },
-   *     timeExtent: {
-   *       start: new Date(2001, 0, 1),
-   *       end: new Date(2010, 0, 1)
-   *     }
-   *   }
-   * });
-   *
-   * // Add ten stops that are evenly distributed for the year 2005 only.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 5, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   stops: {
-   *     count: 10,
-   *     timeExtent: {
-   *       start: new Date(2005, 0, 1),
-   *       end: new Date(2006, 0, 1)
-   *     }
-   *   }
-   * });
-   *
-   * // Explicitly define nine stops.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 0, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   values: [
-   *     new Date(2000, 0, 1),
-   *     new Date(2000, 0, 1)],
-   *   stops: {
-   *     dates: [
-   *       new Date(2000, 0, 1), new Date(2001, 3, 8), new Date(2002, 0, 10),
-   *       new Date(2003, 12, 8), new Date(2004, 2, 19), new Date(2005, 7, 5),
-   *       new Date(2006, 9, 11), new Date(2007, 11, 21), new Date(2008, 1, 10)
-   *     ]
-   *   }
-   * });
    */
   @aliasOf("viewModel.stops")
   stops: Stops = { count: 10 };
@@ -1117,7 +1182,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * }
    */
   @property()
-  tickConfigs: TickConfig[] = null;
+  tickConfigs: Maybe<TickConfig[]> = null;
 
   //----------------------------------
   //  timeExtent
@@ -1137,7 +1202,6 @@ class TimeSlider extends Widget implements PersistableWidget {
    *
    * @name timeExtent
    * @instance
-   * @readonly
    * @type {module:esri/TimeExtent}
    * @default null
    *
@@ -1150,17 +1214,17 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2019, 2, 3),
    *     end: new Date(2019, 2, 5)
    *   },
-   *   values: [
-   *     new Date(2019, 2, 1),
-   *     new Date(2019, 2, 28)
-   *   ]
+   *   timeExtent: {
+   *     start: new Date(2019, 2, 1),
+   *     end: new Date(2019, 2, 28)
+   *   }
    * });
-   * timeSlider.watch("timeExtent", function(timeExtent){
+   * timeSlider.watch("timeExtent", (timeExtent) => {
    *   console.log("Time extent now starts at", timeExtent.start, "and finishes at:", timeExtent.end);
    * });
    */
   @aliasOf("viewModel.timeExtent")
-  readonly timeExtent: TimeExtent = null;
+  timeExtent: Maybe<TimeExtent> = null;
 
   //----------------------------------
   //  timeVisible
@@ -1184,10 +1248,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2019, 2, 3),
    *     end: new Date(2019, 2, 5)
    *   },
-   *   values: [
-   *     new Date(2019, 2, 1),
-   *     new Date(2019, 2, 28)
-   *   ]
+   *   timeExtent: {
+   *     start: new Date(2019, 2, 1),
+   *     end: new Date(2019, 2, 28)
+   *   }
    * });
    */
   @property({
@@ -1207,27 +1271,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @instance
    * @type {Date[]}
    * @default null
-   *
-   * @example
-   * // Create a time slider and print handle positions to the console whenever they change.
-   * const timeSlider = new TimeSlider({
-   *   container: "timeSliderDiv",
-   *   view: view,
-   *   mode: "instant",
-   *   fullTimeExtent: {
-   *     start: new Date(2000, 0, 1),
-   *     end: new Date(2010, 0, 1)
-   *   },
-   *   values: [
-   *     new Date(2000, 0, 1) // Initialize the current time for the beginning of the fullTimeExtent.
-   *   ]
-   * });
-   * timeSlider.watch("values", function(values){
-   *   console.log("The current time is: ", values[0]);
-   * });
+   * @deprecated since version 4.20. Use [timeExtent](#timeExtent) instead.
    */
   @aliasOf("viewModel.values")
-  values: Date[] = null;
+  values: Maybe<Date[]> = null;
 
   //----------------------------------
   //  view
@@ -1253,16 +1300,19 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2010, 0, 1)
    *   },
-   *   values: [new Date(2000, 0, 1)]
+   *   timeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2000, 0, 1)
+   *   }
    * });
    * view.ui.add(timeSlider, "top-left");
    *
-   * view.watch("timeExtent", function(timeExtent){
+   * view.watch("timeExtent", (timeExtent) => {
    *   console.log("New view time is: ", timeExtent.start);
    * });
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: Maybe<IMapView | ISceneView> = null;
 
   //----------------------------------
   //  viewModel
@@ -1291,8 +1341,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *       start: new Date(2000, 0, 1),
    *       end: new Date(2010, 0, 1)
    *     },
-   *     values: [new Date(2000, 0, 1)]
-   *   }
+   *     timeExtent: {
+   *       start: new Date(2000, 0, 1),
+   *       end: new Date(2000, 0, 1)
+   *     }
    * });
    */
   @property({
@@ -1321,7 +1373,10 @@ class TimeSlider extends Widget implements PersistableWidget {
    *     start: new Date(2000, 0, 1),
    *     end: new Date(2010, 0, 1)
    *   },
-   *   values: [new Date(2000, 0, 1)]
+   *   timeExtent: {
+   *     start: new Date(2000, 0, 1),
+   *     end: new Date(2000, 0, 1)
+   *   }
    * });
    * timeSlider.next();
    */
@@ -1382,15 +1437,15 @@ class TimeSlider extends Widget implements PersistableWidget {
       messagesCommon,
       mode,
       tickConfigs,
+      timeExtent,
       timeVisible,
-      values,
-      viewModel
+      viewModel: { state, timeExtentValues }
     } = this;
 
-    if (fullTimeExtent != null) {
+    if (isSome(fullTimeExtent)) {
       const { start, end } = fullTimeExtent;
 
-      if (start != null && end != null) {
+      if (isSome(start) && isSome(end)) {
         const startTime = start.getTime();
         const endTime = end.getTime();
 
@@ -1400,12 +1455,12 @@ class TimeSlider extends Widget implements PersistableWidget {
           _slider.max = endTime;
         }
 
-        if (tickConfigs != null) {
+        if (isSome(tickConfigs)) {
           if (_slider.tickConfigs !== tickConfigs) {
             _slider.tickConfigs = tickConfigs;
           }
         } else {
-          const sliderWidth = _slider.trackElement?.offsetWidth ?? 400;
+          const sliderWidth = _slider.trackElement?.offsetWidth || 400;
           const millisecondsPerPixel = (endTime - startTime) / sliderWidth;
 
           const tickFormat = TickFormats.find((tickFormat) => {
@@ -1445,29 +1500,48 @@ class TimeSlider extends Widget implements PersistableWidget {
       }
     }
 
-    const thumbs = values?.map((date) => date.getTime());
-    if (!equals(_slider.values, thumbs)) {
-      _slider.values = thumbs;
+    const isOutOfBounds =
+      isNone(this.fullTimeExtent) ||
+      isNone(this.timeExtent) ||
+      this.timeExtent.isAllTime ||
+      this.timeExtent.isEmpty ||
+      (isSome(this.timeExtent.start) &&
+        (this.timeExtent.start < this.fullTimeExtent.start ||
+          this.timeExtent.start > this.fullTimeExtent.end)) ||
+      (isSome(this.timeExtent.end) &&
+        (this.timeExtent.end > this.fullTimeExtent.end ||
+          this.timeExtent.end < this.fullTimeExtent.start));
+
+    if (isOutOfBounds) {
+      this._ignoreNextSliderUpdate = true;
+      switch (mode) {
+        case "time-window":
+          _slider.values = [_slider.min, _slider.max];
+          break;
+        case "instant":
+        case "cumulative-from-end":
+          _slider.values = [_slider.min];
+          break;
+        case "cumulative-from-start":
+          _slider.values = [_slider.max];
+          break;
+      }
+    } else {
+      if (isSome(timeExtentValues)) {
+        if (!equals(_slider.values, timeExtentValues)) {
+          _slider.values = timeExtentValues;
+        }
+      } else {
+        _slider.values = null;
+      }
     }
 
     _slider.disabled = !interactive;
 
-    const fullStart = fullTimeExtent?.start;
-    const fullEnd = fullTimeExtent?.end;
-
-    const valueLength = values?.length ?? 0;
-
-    const timeExtentStartDate = valueLength && this._formatDate(values[0]);
-    const timeExtentStartTime = valueLength && timeVisible && this._formatTime(values[0]);
-    const timeExtentEndDate =
-      valueLength > 1 && mode === "time-window" && this._formatDate(values[1]);
-    const timeExtentEndTime =
-      valueLength > 1 && mode === "time-window" && timeVisible && this._formatTime(values[1]);
-
-    const { state } = viewModel;
     const isReady = state === "ready";
     const isPlaying = state === "playing";
-    const isDisabled = !interactive || effectiveStops.length === 0;
+    const isDisabled =
+      isOutOfBounds || !interactive || isNone(effectiveStops) || effectiveStops.length === 0;
 
     const layout: Exclude<Layout, "auto"> =
       this.layout === "auto"
@@ -1502,48 +1576,65 @@ class TimeSlider extends Widget implements PersistableWidget {
       </div>
     );
 
-    const timeContent = this.labelFormatFunction ? (
+    const timeContent = isSome(this.labelFormatFunction) ? (
       <div
         key="extent"
         bind={this}
         class={CSS.timeExtentDate}
         data-type="extent"
         data-layout={layout}
-        data-date={values}
+        data-date={andThen(timeExtent, (t) => [t.start, t.end])}
         afterCreate={this._createLabel}
         afterUpdate={this._createLabel}
-      ></div>
+      />
+    ) : isNone(timeExtent) || (isSome(timeExtent) && timeExtent.isAllTime) ? (
+      [
+        <div class={this.classes(CSS.warning, CSS.warningIcon)} />,
+        <div key="warning-text" class={CSS.warningText}>
+          {this.messages.noTimeExtent}
+        </div>
+      ]
+    ) : timeExtent.isEmpty ? (
+      [
+        <div class={this.classes(CSS.warning, CSS.warningIcon)} />,
+        <div key="warning-text" class={CSS.warningText}>
+          {this.messages.emptyTimeExtent}
+        </div>
+      ]
     ) : (
       [
-        timeExtentStartDate && (
+        isSome(timeExtent.start) && (
           <div key="start-date-group" class={CSS.timeExtentGroup}>
             <div key="start-date" class={CSS.timeExtentDate}>
-              {timeExtentStartDate}
+              {this._formatDate(timeExtent.start)}
             </div>
-            {timeExtentStartTime && (
+            {timeVisible && (
               <div key="start-time" class={CSS.timeExtentTime}>
-                {timeExtentStartTime}
+                {this._formatTime(timeExtent.start)}
               </div>
             )}
           </div>
         ),
-        timeExtentEndDate && (
-          <div key="separator" class={CSS.timeExtentSeparator}>
-            –
-          </div>
-        ),
-        timeExtentStartDate && (
-          <div key="end-date-group" class={CSS.timeExtentGroup}>
-            <div key="end-date" class={CSS.timeExtentDate}>
-              {timeExtentEndDate}
+        isSome(timeExtent.start) &&
+          isSome(timeExtent.end) &&
+          timeExtent.start.getTime() !== timeExtent.end.getTime() && (
+            <div key="separator" class={CSS.timeExtentSeparator}>
+              –
             </div>
-            {timeExtentEndTime && (
-              <div key="end-time" class={CSS.timeExtentTime}>
-                {timeExtentEndTime}
+          ),
+        isSome(timeExtent.end) &&
+          (isNone(timeExtent.start) || timeExtent.start.getTime() !== timeExtent.end.getTime()) && (
+            <div key="end-date-group" class={CSS.timeExtentGroup}>
+              <div key="end-date" class={CSS.timeExtentDate}>
+                {this._formatDate(timeExtent.end)}
               </div>
-            )}
-          </div>
-        )
+              {timeVisible && (
+                <div key="end-time" class={CSS.timeExtentTime}>
+                  {this._formatTime(timeExtent.end)}
+                </div>
+              )}
+            </div>
+          )
       ]
     );
 
@@ -1553,25 +1644,24 @@ class TimeSlider extends Widget implements PersistableWidget {
       </div>
     );
 
-    const minContent = this.labelFormatFunction ? (
+    const minContent = isSome(this.labelFormatFunction) ? (
       <div
         key="min-date"
         bind={this}
         class={CSS.minDate}
-        data-date={fullStart}
+        data-date={andThen(fullTimeExtent, (t) => t.start)}
         data-type="min"
         data-layout={layout}
         afterCreate={this._createLabel}
         afterUpdate={this._createLabel}
       ></div>
     ) : (
-      [
-        fullStart && (
-          <div key="min-date" class={CSS.minDate}>
-            {this._formatDate(fullStart)}
-          </div>
-        ),
-        fullStart && timeVisible && <div key="min-time">{this._formatTime(fullStart)}</div>
+      isSome(fullTimeExtent) &&
+      isSome(fullTimeExtent.start) && [
+        <div key="min-date" class={CSS.minDate}>
+          {this._formatDate(fullTimeExtent.start)}
+        </div>,
+        timeVisible && <div key="min-time">{this._formatTime(fullTimeExtent.start)}</div>
       ]
     );
 
@@ -1583,25 +1673,24 @@ class TimeSlider extends Widget implements PersistableWidget {
 
     const slider = <div class={CSS.slider}>{_slider.render()}</div>;
 
-    const maxContent = this.labelFormatFunction ? (
+    const maxContent = isSome(this.labelFormatFunction) ? (
       <div
         key="max-date"
         bind={this}
         class={CSS.maxDate}
-        data-date={fullEnd}
+        data-date={andThen(fullTimeExtent, (t) => t.end)}
         data-type="max"
         data-layout={layout}
         afterCreate={this._createLabel}
         afterUpdate={this._createLabel}
       ></div>
     ) : (
-      [
-        fullEnd && (
-          <div key="max-date" class={CSS.maxDate}>
-            {this._formatDate(fullEnd)}
-          </div>
-        ),
-        fullEnd && timeVisible && <div key="max-time">{this._formatTime(fullEnd)}</div>
+      isSome(fullTimeExtent) &&
+      isSome(fullTimeExtent.end) && [
+        <div key="max-date" class={CSS.maxDate}>
+          {this._formatDate(fullTimeExtent.end)}
+        </div>,
+        timeVisible && <div key="max-time">{this._formatTime(fullTimeExtent.end)}</div>
       ]
     );
 
@@ -1660,7 +1749,8 @@ class TimeSlider extends Widget implements PersistableWidget {
           CSS.esriWidget,
           `${CSS.timeSliderMode}${mode}`,
           `${CSS.timeSliderLayout}${layout}`,
-          !interactive && CSS.esriDisabled
+          !interactive && CSS.esriDisabled,
+          isOutOfBounds && CSS.timeSliderOutOfBounds
         )}
       >
         {layout === "wide" && (
@@ -1726,14 +1816,20 @@ class TimeSlider extends Widget implements PersistableWidget {
   //--------------------------------------------------------------------------
 
   private _createLabel(element: Element): void {
+    if (isNone(this.labelFormatFunction)) {
+      return;
+    }
     const type = element.getAttribute("data-type") as LabelType;
     const layout = element.getAttribute("data-layout") as Exclude<Layout, "auto">;
-    const dates = element["data-date"] as Date | Date[];
+    const dates = element["data-date"] as Date | [Date, Date];
     this.labelFormatFunction(dates, type, element, layout);
   }
 
   private _getTickPositions(interval: TimeInterval): number[] {
     const { fullTimeExtent } = this;
+    if (isNone(fullTimeExtent) || isNone(fullTimeExtent.start) || isNone(fullTimeExtent.end)) {
+      return [];
+    }
     const { start, end } = fullTimeExtent;
     const values: number[] = [];
     const { value, unit } = interval;
@@ -1750,63 +1846,24 @@ class TimeSlider extends Widget implements PersistableWidget {
   }
 
   private _formatDate(date: Date): string {
+    if (!date) {
+      return null;
+    }
     return formatDate(date, convertDateFormatToIntlOptions("short-date"));
   }
 
   private _formatTime(date: Date): string {
+    if (!date) {
+      return null;
+    }
     return formatDate(date, convertDateFormatToIntlOptions("long-time"));
   }
 
   private _updateSliderSteps(): void {
     this._slider.steps =
-      this.effectiveStops && this.effectiveStops.length > 0
+      isSome(this.effectiveStops) && this.effectiveStops.length > 0
         ? this.effectiveStops.map((date) => date.getTime())
         : null;
-  }
-
-  private _validateTimeExtent(): void {
-    // Detect and/or attempt to repair invalid values.
-    if (this.fullTimeExtent && this.mode && this.values) {
-      // Throw error if array is invalid.
-      if (!Array.isArray(this.values)) {
-        throw new EsriError("time-slider:invalid-values", "Values must be an array of dates.");
-      }
-      if (this.values.length === 0 || this.values.some((value) => !(value instanceof Date))) {
-        throw new EsriError("time-slider:invalid-values", "Values must be an array of dates.");
-      }
-
-      // Clamp values to the full time extent.
-      this.values = this.values.map((value) => {
-        const time = value.getTime();
-        const clamped = clamp(
-          time,
-          this.fullTimeExtent.start.getTime(),
-          this.fullTimeExtent.end.getTime()
-        );
-        return new Date(clamped);
-      });
-
-      // Ensure that the value count is correct relative to the slider mode.
-      switch (this.mode) {
-        case "instant":
-        case "cumulative-from-start":
-        case "cumulative-from-end":
-          if (this.values.length > 1) {
-            this.values.splice(1);
-          }
-          break;
-        case "time-window":
-          if (this.values.length === 1) {
-            this.values.push(this.fullTimeExtent.end);
-          } else if (this.values.length > 2) {
-            this.values.splice(2);
-          }
-          this.values.sort((a, b) => a.getTime() - b.getTime());
-          break;
-        default:
-          neverReached(this.mode);
-      }
-    }
   }
 
   @accessibleHandler()

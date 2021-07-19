@@ -1,7 +1,6 @@
 // esri.core
 import * as events from "esri/../../core/events";
-import { handlesGroup } from "esri/../../core/handleUtils";
-import { applySome, destroyMaybe, isSome, Maybe } from "esri/../../core/maybe";
+import { applySome, destroyMaybe, isSome, Maybe, removeMaybe } from "esri/../../core/maybe";
 import { isMeasurementSystem, SystemOrLengthUnit } from "esri/../../core/unitUtils";
 
 // esri.core.accessorSupport
@@ -15,6 +14,8 @@ import Widget from "esri/../Widget";
 
 // esri.widgets.ElevationProfile
 import { SETTINGS_CSS as CSS } from "esri/css";
+import ElevationProfileVisibleElements from "esri/ElevationProfileVisibleElements";
+import { IElevationProfileViewModel } from "esri/interfaces";
 
 // esri.widgets.ElevationProfile.t9n
 import ElevationProfileMessages from "esri/t9n/ElevationProfile";
@@ -24,25 +25,24 @@ import { VNode } from "esri/../support/interfaces";
 import Popover from "esri/../support/Popover";
 import { messageBundle, tsx } from "esri/../support/widget";
 
-export interface ConstructionParameters {
-  unit: SystemOrLengthUnit;
-  unitOptions: SystemOrLengthUnit[];
-  onUnitChange: (selectedUnit: SystemOrLengthUnit) => void;
+export interface ConstructProperties {
+  viewModel: IElevationProfileViewModel;
+  visibleElements: Partial<ElevationProfileVisibleElements>;
 }
 
 /**
  * Button which toggles the elevation profile settings popover.
  */
 @subclass("esri.widgets.ElevationProfile.SettingsButton")
-export class SettingsButton extends Widget {
+export class SettingsButton extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
   //
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
 
-  constructor(params: ConstructionParameters, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties: ConstructProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
   }
 
   destroy(): void {
@@ -50,6 +50,12 @@ export class SettingsButton extends Widget {
   }
 
   render(): VNode {
+    // When there is nothing to render in the popup, don't even render the button.
+    const { unitSelector, uniformChartScalingToggle } = this.visibleElements;
+    if (!unitSelector && !uniformChartScalingToggle) {
+      return <div key={`${this.id}-empty`}></div>;
+    }
+
     const label =
       isSome(this._popover) && this._popover.open
         ? this._messages.hideSettings
@@ -74,13 +80,10 @@ export class SettingsButton extends Widget {
   //--------------------------------------------------------------------------
 
   @property()
-  unit: SystemOrLengthUnit;
+  viewModel: IElevationProfileViewModel;
 
   @property()
-  unitOptions: SystemOrLengthUnit[];
-
-  @property()
-  onUnitChange: (selectedUnit: SystemOrLengthUnit) => void;
+  visibleElements: Partial<ElevationProfileVisibleElements>;
 
   //--------------------------------------------------------------------------
   //
@@ -97,8 +100,8 @@ export class SettingsButton extends Widget {
   private _messagesUnits: UnitsMessages = null;
 
   private _popover: Maybe<Popover> = null;
-  private _buttonElement: Maybe<HTMLElement> = null;
-  private _clickOutsideHandle: Maybe<IHandle> = null;
+  private _buttonElement: Maybe<HTMLButtonElement> = null;
+  private _focusOutElement: Maybe<IHandle> = null;
   // When true, we'll focus on the unit select element after the popover is opened.
   private _requestFocusOnCreate = false;
 
@@ -108,7 +111,7 @@ export class SettingsButton extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private _initializePopover(buttonElement: HTMLElement): void {
+  private _initializePopover(buttonElement: HTMLButtonElement): void {
     this._destroyPopover();
 
     this._buttonElement = buttonElement;
@@ -123,22 +126,28 @@ export class SettingsButton extends Widget {
   }
 
   private _destroyPopover(): void {
-    applySome(this._clickOutsideHandle, (handle) => handle.remove());
-    destroyMaybe(this._popover);
+    this._focusOutElement = removeMaybe(this._focusOutElement);
+    this._popover = destroyMaybe(this._popover);
   }
 
   private _renderPopoverContent(): VNode {
-    const messagesUnits = this._messagesUnits;
-    const { unit, unitOptions } = this;
+    const { unitSelector, uniformChartScalingToggle } = this.visibleElements;
 
     return (
-      <div
-        class={CSS.popoverContent}
-        bind={this}
-        onkeydown={this._onPopoverKeyDown}
-        afterCreate={this._onPopoverContentAfterCreate}
-      >
-        <label class={CSS.selectLabel}>{this._messages.unitSelectLabel}</label>
+      <div class={CSS.popoverContent} bind={this} afterCreate={this._onPopoverContentAfterCreate}>
+        {unitSelector && this._renderUnitSelector()}
+        {uniformChartScalingToggle && this._renderUniformChartScalingToggle()}
+      </div>
+    );
+  }
+
+  private _renderUnitSelector(): VNode {
+    const { unit, unitOptions } = this.viewModel;
+    const messagesUnits = this._messagesUnits;
+
+    return (
+      <label key="unit-selector-label" class={CSS.selectLabel}>
+        {this._messages.unitSelectLabel}
         <select
           class={CSS.select}
           value={unit}
@@ -154,15 +163,12 @@ export class SettingsButton extends Widget {
             </option>
           ))}
         </select>
-      </div>
+      </label>
     );
   }
 
   private _onUnitChange(event: InputEvent): void {
-    const selectElement = event.target as HTMLSelectElement;
-    this.onUnitChange(selectElement.value as SystemOrLengthUnit);
-
-    this._closePopover();
+    this.viewModel.unit = (event.target as HTMLSelectElement).value as SystemOrLengthUnit;
   }
 
   private _onUnitSelectAfterCreate(element: HTMLElement): void {
@@ -172,18 +178,35 @@ export class SettingsButton extends Widget {
     }
   }
 
-  private _onPopoverKeyDown(event: KeyboardEvent): void {
-    switch (event.key) {
-      case "Enter":
-      case "Escape":
-        // We need to stop the event so that it doesn't trigger `_togglePopover`
-        // by triggering a click on the button.
-        event.stopPropagation();
-        event.preventDefault();
+  private _renderUniformChartScalingToggle(): VNode {
+    const messages = this._messages;
+    const checked = this.viewModel.uniformChartScaling;
+    const label = checked
+      ? messages.uniformChartScalingDisable
+      : messages.uniformChartScalingEnable;
 
-        this._closePopover();
-        break;
-    }
+    return (
+      <label
+        key="uniform-chart-scaling-label"
+        class={CSS.checkboxLabel}
+        onmousedown={preventDefault} // prevent clicking on the label from triggering a focusout which would close the popover
+      >
+        <input
+          class={this.classes(CSS.checkbox, CSS.uniformChartScalingCheckbox)}
+          type="checkbox"
+          checked={checked}
+          title={label}
+          aria-label={label}
+          bind={this}
+          onchange={this._onUniformChartScalingChange}
+        />
+        {messages.uniformChartScalingLabel}
+      </label>
+    );
+  }
+
+  private _onUniformChartScalingChange(event: Event): void {
+    this.viewModel.uniformChartScaling = (event.target as HTMLInputElement).checked;
   }
 
   private _togglePopover(_: MouseEvent): void {
@@ -203,7 +226,6 @@ export class SettingsButton extends Widget {
 
   private _closePopover({ focusOnButton = true }: { focusOnButton?: boolean } = {}): void {
     applySome(this._popover, (popover) => (popover.open = false));
-    applySome(this._clickOutsideHandle, (handle) => handle.remove());
 
     if (focusOnButton) {
       // Switch focus back to the button to make keyboard navigation easier.
@@ -212,13 +234,23 @@ export class SettingsButton extends Widget {
   }
 
   private _onPopoverContentAfterCreate(element: HTMLElement): void {
-    applySome(this._clickOutsideHandle, (handle) => handle.remove());
+    removeMaybe(this._focusOutElement);
 
-    // If the user clicks inside the popover, we stop propagation and if they
-    // click outside, the event propagates to the window and we'll close the popover.
-    this._clickOutsideHandle = handlesGroup([
-      events.on(element, "click", (e) => e.stopPropagation()),
-      events.on(window, "click", () => this._closePopover({ focusOnButton: false }))
-    ]);
+    // If the popover loses focus we need to close it. Note that we don't close
+    // it when the user clicked the toggle button since that would simply cause
+    // the popover to show up again right after.
+    this._focusOutElement = events.on(element, "focusout", ({ relatedTarget }: FocusEvent) => {
+      const stillInPopover = element.contains(relatedTarget as Node);
+      const targetIsButton = relatedTarget === this._buttonElement;
+      if (stillInPopover || targetIsButton) {
+        return;
+      }
+
+      this._closePopover({ focusOnButton: false });
+    });
   }
+}
+
+function preventDefault(e: Event): void {
+  e.preventDefault();
 }

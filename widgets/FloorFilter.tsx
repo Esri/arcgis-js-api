@@ -14,6 +14,13 @@
  * For example, you may want to visualize all of the features on a specific level in a facility,
  * or all the office units within a range of levels in a facility.
  *
+ * ::: esri-md class="panel trailer-1"
+ * **Known Limitations**
+ * * Floor-aware maps are only supported in ArcGIS Online. Support for publishing floor-aware maps to ArcGIS Enterprise is coming soon.
+ * * The FloorFilter widget currently supports {@link module:esri/layers/FeatureLayer FeatureLayers} and {@link module:esri/layers/SceneLayer SceneLayers}.
+ *  A future release will support floor filtering of {@link module:esri/layers/MapImageLayer MapImageLayers} (map services).
+ * :::
+ *
  * @module esri/widgets/FloorFilter
  * @since 4.19
  *
@@ -30,22 +37,28 @@
  */
 
 // esri
-import EsriMap from "esri/Map";
+import { IMap } from "esri/IMap";
+import { substitute } from "esri/intl";
 import WebMap from "esri/WebMap";
 import WebScene from "esri/WebScene";
 
 // esri.core
+import { eventKey } from "esri/core/events";
 import { Maybe } from "esri/core/maybe";
+import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { subclass, property, aliasOf } from "esri/core/accessorSupport/decorators";
+
+// esri.libs.resize-observer
+import ResizeObserver from "esri/libs/resize-observer/ResizeObserver";
 
 // esri.t9n
 import CommonMessages from "esri/t9n/common";
 
 // esri.views
+import { IMapView } from "esri/views/IMapView";
 import { ISceneView } from "esri/views/ISceneView";
-import MapView from "esri/views/MapView";
 
 // esri.views.ui
 import { UIPosition } from "esri/views/ui/interfaces";
@@ -62,9 +75,10 @@ import FloorFilterMessages from "esri/widgets/FloorFilter/t9n/FloorFilter";
 
 // esri.widgets.support
 import { GoToOverride } from "esri/widgets/support/GoTo";
+import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { tsx, messageBundle } from "esri/widgets/support/widget";
-import { isRTL } from "esri/widgets/support/widgetUtils";
+import { isRTL, storeNode } from "esri/widgets/support/widgetUtils";
 
 const CSS = {
   esriWidget: "esri-widget",
@@ -133,10 +147,16 @@ type FloorFilterProperties = Partial<
     | "site"
     | "facility"
     | "level"
+    | "headingLevel"
     | "view"
     | "viewModel"
   >
 >;
+
+type ActiveMenu = "sites" | "facilities";
+type ActiveMenuType = "levels" | "menuItems";
+type NavigationKey = "ArrowUp" | "ArrowDown" | "End" | "Home";
+const navigationKeys: NavigationKey[] = ["ArrowUp", "ArrowDown", "End", "Home"];
 
 @subclass("esri.widgets.FloorFilter")
 class FloorFilter extends Widget {
@@ -147,9 +167,11 @@ class FloorFilter extends Widget {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-  constructor(params?: FloorFilterProperties, parentNode?: string | Element) {
-    super(params, parentNode);
+  constructor(properties?: FloorFilterProperties, parentNode?: string | Element) {
+    super(properties, parentNode);
     this._resizeObserver = new ResizeObserver(() => this.scheduleRender());
+
+    this.own(watchUtils.watch(this, "_searchInput", () => this._focusSearch()));
   }
 
   destroy(): void {
@@ -162,8 +184,18 @@ class FloorFilter extends Widget {
   //
   //--------------------------------------------------------------------------
 
+  private _activeMenu: ActiveMenu = null;
+  private _activeMenuIndex: { [id: string]: number } = {
+    levels: -1,
+    menuItems: -1
+  };
   private _baseNode: HTMLElement = null;
+  private _facilitiesListNode: HTMLUListElement = null;
+  private _levelsListNode: HTMLUListElement = null;
+  private _sitesListNode: HTMLUListElement = null;
   private _resizeObserver: ResizeObserver;
+  @property()
+  private _searchInput: HTMLInputElement = null;
 
   //--------------------------------------------------------------------------
   //
@@ -265,7 +297,7 @@ class FloorFilter extends Widget {
    * @type { module:esri/views/MapView | module:esri/views/SceneView }
    */
   @aliasOf("viewModel.view")
-  view: MapView | ISceneView = null;
+  view: IMapView | ISceneView = null;
 
   //----------------------------------
   //  viewModel
@@ -325,6 +357,31 @@ class FloorFilter extends Widget {
 
   @aliasOf("viewModel.goToOverride")
   goToOverride: GoToOverride = null;
+
+  //----------------------------------
+  //  headingLevel
+  //----------------------------------
+
+  /**
+   * Indicates the heading level to use for the headings separating floors in buildings.
+   * By default, the building name is rendered
+   * as a level 2 heading (e.g. `<h2>Building name</h2>`). Depending on the widget's placement
+   * in your app, you may need to adjust this heading for proper semantics. This is
+   * important for meeting accessibility standards.
+   *
+   * @name headingLevel
+   * @instance
+   * @since 4.20
+   * @type {number}
+   * @default 2
+   * @see [Heading Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements)
+   *
+   * @example
+   * // building headings will render as an <h3>
+   * floorFilter.headingLevel = 3;
+   */
+  @property()
+  headingLevel: HeadingLevel = 2;
 
   //--------------------------------------------------------------------------
   //
@@ -446,12 +503,19 @@ class FloorFilter extends Widget {
     if (!this.viewModel?.filterFeatures?.levels?.levelsInfo || !this.facility) {
       return null;
     }
-    const { facility, messagesCommon } = this;
+    const { facility, messagesCommon, messages } = this;
+    const activeFacility = this.viewModel?.getFacility(facility);
     const sortedLevels = this.viewModel?.getFacilityLevels(facility);
     const renderLevels = sortedLevels.map((level) => this.renderLevelButton(level));
     if (!renderLevels.length) {
       return null;
     }
+
+    const ariaLabel =
+      activeFacility &&
+      substitute(messages.selector.levelsLabel, {
+        name: `"${activeFacility.name}"`
+      });
 
     if (this._isWebScene(this.view.map) && renderLevels?.length > 1) {
       const allLevel: Level = {
@@ -466,7 +530,16 @@ class FloorFilter extends Widget {
       renderLevels.push(allButton);
     }
     return (
-      <ul key="levels-button-container" class={this.classes(CSS.levelsContainer)}>
+      <ul
+        key="levels-button-container"
+        class={this.classes(CSS.levelsContainer)}
+        bind={this}
+        data-id={"levels"}
+        afterCreate={storeNode}
+        data-node-ref="_levelsListNode"
+        aria-label={ariaLabel}
+        onkeydown={this._handleListKeydown}
+      >
         {renderLevels}
       </ul>
     );
@@ -485,6 +558,7 @@ class FloorFilter extends Widget {
       <li key={key}>
         <button
           data-id={levelId}
+          data-list-id={"levels"}
           bind={this}
           class={this.classes(
             CSS.esriWidgetButton,
@@ -493,6 +567,7 @@ class FloorFilter extends Widget {
             CSS.levelButton
           )}
           onclick={this._levelSelected}
+          onfocus={this._onItemFocus}
         >
           {displayName}
         </button>
@@ -613,7 +688,9 @@ class FloorFilter extends Widget {
     const header = (
       <div key="filter-menu-site-header" class={this.classes(`${CSS.filterMenuHeader}`)}>
         <div class={this.classes(CSS.filterMenuHeaderTextGroup)}>
-          <h2 class={this.classes(CSS.filterMenuHeaderText)}>{title}</h2>
+          <Heading level={this.headingLevel} class={this.classes(CSS.filterMenuHeaderText)}>
+            {title}
+          </Heading>
         </div>
         <button
           bind={this}
@@ -653,14 +730,18 @@ class FloorFilter extends Widget {
     ) : null;
 
     const subtext = this.viewModel.hasMultipleSites ? (
-      <h3 class={this.classes(CSS.filterMenuHeaderSubtext)}>{siteName}</h3>
+      <Heading level={this.headingLevel + 1} class={this.classes(CSS.filterMenuHeaderSubtext)}>
+        {siteName}
+      </Heading>
     ) : null;
 
     const header = (
       <div key="filter-menu-site-header" class={this.classes(CSS.filterMenuHeader)}>
         {backButton}
         <div class={this.classes(CSS.filterMenuHeaderTextGroup)}>
-          <h2 class={this.classes(CSS.filterMenuHeaderText)}>{title}</h2>
+          <Heading level={this.headingLevel} class={this.classes(CSS.filterMenuHeaderText)}>
+            {title}
+          </Heading>
           {subtext}
         </div>
         <button
@@ -690,10 +771,13 @@ class FloorFilter extends Widget {
         <input
           bind={this}
           key="filter-menu-search__input"
+          afterCreate={storeNode}
+          data-node-ref="_searchInput"
           class={this.classes(CSS.filterMenuSearchInput)}
           placeholder={messagesCommon.search}
           oninput={this._onSearchChange}
           onpaste={this._onSearchChange}
+          value={this.viewModel.searchTerm}
         />
       </div>
     );
@@ -719,7 +803,17 @@ class FloorFilter extends Widget {
     );
 
     return (
-      <ul key="filter-menu-items--sites" class={this.classes(CSS.filterMenuItems)}>
+      <ul
+        key="filter-menu-items--sites"
+        class={this.classes(CSS.filterMenuItems)}
+        bind={this}
+        afterCreate={storeNode}
+        data-node-ref="_sitesListNode"
+        data-id="sites"
+        onkeydown={this._handleListKeydown}
+        tabIndex={-1}
+        aria-label={messages.selector.sitesLabel}
+      >
         {renderSites}
         {emptyContent}
       </ul>
@@ -734,9 +828,11 @@ class FloorFilter extends Widget {
       <li key={key}>
         <button
           data-id={siteId}
+          data-list-id={"sites"}
           bind={this}
           class={this.classes(CSS.filterMenuSite)}
           onclick={this._siteSelected}
+          onfocus={this._onItemFocus}
         >
           {selected && this.renderBlueCircle()}
           <span
@@ -754,7 +850,8 @@ class FloorFilter extends Widget {
     if (!this.viewModel?.filterFeatures?.facilities?.facilitiesInfo) {
       return null;
     }
-    const { messages } = this;
+    const { messages, site } = this;
+    const activeSite = this.viewModel.getSite(site);
     const facilities = this.viewModel.filterFeatures.facilities.facilitiesInfo;
     const sortedFacilities = this.viewModel.filterFacilities(facilities);
     const renderFacilities = sortedFacilities.map((facility: Facility) =>
@@ -763,9 +860,24 @@ class FloorFilter extends Widget {
     const emptyContent = renderFacilities.length === 0 && this.viewModel?.searchTerm && (
       <div class={this.classes(CSS.esriWidgetContentEmpty)}>{messages.noResults}</div>
     );
+    const ariaLabel = activeSite
+      ? substitute(messages.selector.siteFacilitiesLabel, {
+          name: `"${activeSite.name}"`
+        })
+      : messages.selector.facilitiesLabel;
 
     return (
-      <ul key="filter-menu-items--facilities" class={this.classes(CSS.filterMenuItems)}>
+      <ul
+        key="filter-menu-items--facilities"
+        class={this.classes(CSS.filterMenuItems)}
+        bind={this}
+        afterCreate={storeNode}
+        data-node-ref="_facilitiesListNode"
+        data-id="facilities"
+        onkeydown={this._handleListKeydown}
+        tabIndex={-1}
+        aria-label={ariaLabel}
+      >
         {renderFacilities}
         {emptyContent}
       </ul>
@@ -780,9 +892,11 @@ class FloorFilter extends Widget {
       <li key={key}>
         <button
           data-id={facilityId}
+          data-list-id={"facilities"}
           bind={this}
           class={this.classes(CSS.filterMenuFacility)}
           onclick={this._facilitySelected}
+          onfocus={this._onItemFocus}
         >
           {selected && this.renderBlueCircle()}
           <span
@@ -851,7 +965,7 @@ class FloorFilter extends Widget {
   }
 
   private _backClicked(): void {
-    this.viewModel.filterMenuType = "site";
+    this._setFilterMenuType("site");
     this.viewModel.searchTerm = null;
   }
 
@@ -910,6 +1024,10 @@ class FloorFilter extends Widget {
         this.viewModel.levelsExpanded = true;
       }
     }
+
+    setTimeout(() => {
+      this._focusActiveLevel();
+    }, 50);
   }
 
   private _levelSelected(event: Event): void {
@@ -922,7 +1040,7 @@ class FloorFilter extends Widget {
     this.viewModel.levelsExpanded = false;
   }
 
-  private _isWebScene(document: EsriMap | WebMap | WebScene): document is WebScene {
+  private _isWebScene(document: IMap | WebMap | WebScene): document is WebScene {
     return document.declaredClass === "esri.WebScene";
   }
 
@@ -938,6 +1056,197 @@ class FloorFilter extends Widget {
       default:
         return "top";
     }
+  }
+
+  private _handleListKeydown(event: KeyboardEvent): void {
+    const node = event.currentTarget as Element;
+    const dataId = node.getAttribute("data-id");
+    let indexProperty: ActiveMenuType = null;
+
+    if (dataId === "sites" || dataId === "facilities") {
+      if (this._activeMenu !== dataId) {
+        this._activeMenuIndex["menuItems"] = -1;
+      }
+      this._activeMenu = dataId;
+      indexProperty = "menuItems";
+    } else if (dataId === "levels") {
+      indexProperty = "levels";
+    }
+
+    const listNode =
+      dataId === "sites"
+        ? this._sitesListNode
+        : dataId === "facilities"
+        ? this._facilitiesListNode
+        : dataId === "levels"
+        ? this._levelsListNode
+        : null;
+
+    const key = eventKey(event);
+
+    const isTabKey = key === "Tab";
+    const isNavigationKey = navigationKeys.includes(key as NavigationKey);
+
+    if (isNavigationKey) {
+      event.preventDefault();
+    }
+
+    const list = listNode?.getElementsByTagName("li");
+
+    if (!list || list.length === 0) {
+      return;
+    }
+
+    if (isNavigationKey || isTabKey) {
+      this.handleItemNavigation(key, event.shiftKey, list, isTabKey, indexProperty);
+      return;
+    }
+  }
+
+  private handleItemNavigation(
+    key: string,
+    shiftKey: boolean,
+    items: HTMLCollectionOf<HTMLLIElement>,
+    isTab: boolean,
+    indexProperty: ActiveMenuType
+  ): void {
+    if (!indexProperty) {
+      return;
+    }
+
+    if (this._activeMenuIndex[indexProperty] === items.length) {
+      this._activeMenuIndex[indexProperty]--;
+    }
+    if (this._activeMenuIndex[indexProperty] === -1) {
+      this._activeMenuIndex[indexProperty]++;
+    }
+    const originalIndex = this._activeMenuIndex[indexProperty];
+
+    switch (key as NavigationKey) {
+      case "Home":
+        this._activeMenuIndex[indexProperty] = 0;
+        break;
+      case "End":
+        this._activeMenuIndex[indexProperty] = items.length - 1;
+        break;
+      case "ArrowUp":
+        this._activeMenuIndex[indexProperty] =
+          this._activeMenuIndex[indexProperty] <= 0
+            ? items.length - 1
+            : this._activeMenuIndex[indexProperty] - 1;
+        break;
+      case "ArrowDown":
+        this._activeMenuIndex[indexProperty] =
+          this._activeMenuIndex[indexProperty] === items.length - 1
+            ? 0
+            : this._activeMenuIndex[indexProperty] + 1;
+        break;
+    }
+
+    if (key === "Tab" && shiftKey && this._activeMenuIndex[indexProperty] >= 0) {
+      this._activeMenuIndex[indexProperty]--;
+    }
+
+    if (key === "Tab" && !shiftKey && this._activeMenuIndex[indexProperty] < items.length) {
+      this._activeMenuIndex[indexProperty]++;
+    }
+
+    if (
+      originalIndex !== this._activeMenuIndex[indexProperty] &&
+      this._activeMenuIndex[indexProperty] > -1 &&
+      this._activeMenuIndex[indexProperty] < items.length &&
+      !isTab
+    ) {
+      const elements = items[this._activeMenuIndex[indexProperty]].getElementsByTagName("button");
+      const button = elements?.length === 1 && elements[0];
+      button?.focus();
+    }
+  }
+
+  private _focusSearch(): void {
+    this._searchInput?.focus();
+  }
+
+  private _focusActiveLevel(): void {
+    const { level } = this;
+    const listNode = this._levelsListNode;
+    const items = listNode?.getElementsByTagName("li");
+    if (!level || !listNode || !items) {
+      return;
+    }
+    const tag = this._facilitiesListNode?.getElementsByTagName("li");
+    this._activeMenuIndex["menuItems"] = tag ? tag.length - 1 : -1;
+
+    const buttons = [];
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const elements = item.getElementsByTagName("button");
+      if (elements?.length === 1) {
+        buttons.push(elements[0]);
+      }
+    }
+
+    buttons.forEach((button, index) => {
+      const id = button.getAttribute("data-id");
+      if (id === level) {
+        button.focus();
+        this._activeMenuIndex["levels"] = index;
+      }
+    });
+  }
+
+  private _onItemFocus(event: FocusEvent): void {
+    const node = event.currentTarget as Element;
+    const listId = node.getAttribute("data-list-id");
+    const dataId = node.getAttribute("data-id");
+
+    const listNode =
+      listId === "sites"
+        ? this._sitesListNode
+        : listId === "facilities"
+        ? this._facilitiesListNode
+        : listId === "levels"
+        ? this._levelsListNode
+        : null;
+
+    if (!listNode) {
+      return;
+    }
+
+    const list = listNode?.getElementsByTagName("li");
+    if (!list) {
+      return;
+    }
+
+    const buttons: HTMLButtonElement[] = [];
+    Array.from(list).forEach((item) => {
+      const elements = item.getElementsByTagName("button");
+      if (elements?.length === 1) {
+        buttons.push(elements[0]);
+      }
+    });
+
+    let menuType: ActiveMenuType = null;
+    switch (listId) {
+      case "sites":
+      case "facilities":
+        menuType = "menuItems";
+        break;
+      case "levels":
+        menuType = "levels";
+        break;
+    }
+
+    if (!menuType) {
+      return;
+    }
+
+    buttons.forEach((button, index) => {
+      const id = button.getAttribute("data-id");
+      if (id === dataId && this._activeMenuIndex[menuType] !== index) {
+        this._activeMenuIndex[menuType] = index;
+      }
+    });
   }
 }
 
