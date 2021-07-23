@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Velg det flerb&aring;nds rasterlaget. S&oslash;rg for at inndatarasteret har de riktige b&aring;ndene tilgjengelig.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Velg metode for overvåking av vegetasjon</h2></div>
         <hr/>
         <div>
-            <p>Velg metoden som skal brukes til &aring; opprette vegetasjonsindekslaget. De ulike vegetasjonsindeksene kan bidra til &aring; fremheve enkelte geoobjekter eller redusere ulike former for st&oslash;y.
+            <p>Velg metoden som skal brukes til &aring; beregne vegetasjonsindekslaget. De ulike vegetasjonsindeksene kan bidra til &aring; fremheve enkelte geoobjekter eller redusere ulike former for st&oslash;y.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 er en vegetasjonsindeks som fors&oslash;ker &aring; minimere &aring;pen j
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI er en standardisert indeks som gj&oslash;r at du kan generere et bilde som viser gr&oslash;nnhet, eller relativ biomasse. Denne indeksen drar nytte av kontrasten fra karakteristikken av to b&aring;nd fra et multispektralt rasterdatasett. Klorofyllpigmentabsorpsjonene i det r&oslash;de b&aring;ndet og den h&oslash;ye refleksjonen av plantemateriale i det n&aelig;r infrar&oslash;de (NIR) b&aring;ndet.
+NDVI er en standardisert indeks som gj&oslash;r at du kan generere et bilde som viser gr&oslash;nnhet, eller relativ biomasse. Denne indeksen drar nytte av kontrasten fra karakteristikken av to b&aring;nd fra et multispektralt rasterdatasett: klorofyllpigmentabsorpsjonene i det r&oslash;de b&aring;ndet og den h&oslash;ye refleksjonen av plantemateriale i det n&aelig;r infrar&oslash;de (NIR) b&aring;ndet.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Sultans formel-prosessen tar et seksb&aring;nds 8-bits bilde og benytter en best
 Transformed-SAVI er en vegetasjonsindeks som fors&oslash;ker &aring; minimalisere p&aring;virkning fra jordlysstyrke ved &aring; anta at jordlinjen har en vilk&aring;rlig helning og brytning.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI er en vegetasjonsindeks som har estimert forekomst av vegetasjon kun ved bruk av informasjon fra det synlige spekteret. Denne metoden krever b&aring;nd i de r&oslash;de, gr&oslash;nne og bl&aring; delene av spekteret.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Spesifiser indekser for NIR-bånd og Rød-båndet</h2></div>
+        <div><h2>Oppgi indekser for NIR-båndet og Red-båndet</h2></div>
         <hr/>
         <div>
-            <p>Angi b&aring;ndindeksene for NIR-b&aring;ndet og R&oslash;d-b&aring;ndet.
+            <p>Oppgi b&aring;ndindeksene for NIR-b&aring;ndet og Red-b&aring;ndet.
             </p>
-            <p>Hver satellittsensor og et flykamera fanger opp informasjon som er delt opp i b&aring;ndindekser. Hver b&aring;ndindeks inneholder informasjon for en bestemt del av det elektromagnetiske spekteret. Denne vegetasjonsoverv&aring;kingsmetoden krever at du oppgir b&aring;ndindeksen som fanget opp NIR- og R&oslash;d-b&oslash;lgelengdene.
+            <p>Satellitt- eller luftsensorer med flere b&aring;nd fanger opp informasjon som deles inn i b&oslash;lgelengdeb&aring;nd og identifiseres med b&aring;ndindekser. Denne vegetasjonsoverv&aring;kingsmetoden krever at du oppgir b&aring;ndindeksene for NIR- og Red-b&oslash;lgelengdeb&aring;ndene.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Oppgi indekser for de røde, grønne og blå båndene</h2></div>
+        <hr/>
+        <div>
+            <p>Oppgi b&aring;ndindeksene for de r&oslash;de, gr&oslash;nne og bl&aring; b&aring;ndene.
+            </p>
+            <p>Satellitt- eller luftsensorer med flere b&aring;nd fanger opp informasjon som deles inn i b&oslash;lgelengdeb&aring;nd og identifiseres med b&aring;ndindekser. Visible Atmospherically Resistant Index (VARI) krever at du oppgir b&aring;ndindeksen for de r&oslash;de, gr&oslash;nne og bl&aring; b&oslash;lgelengdeb&aring;ndene.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Oppgi indekser for de blå, røde, NIR-, SWIR -1, og termiske båndene</h2></div>
+        <hr/>
+        <div>
+            <p>Oppgi b&aring;ndindekser for de bl&aring;, r&oslash;de, NIR-, SWIR- og termiske b&aring;ndene.
+            </p>
+            <p>Satellitt- eller luftsensorer med flere b&aring;nd fanger opp informasjon som deles inn i b&oslash;lgelengdeb&aring;nd og identifiseres med b&aring;ndindekser. Sultans formelindeks krever at du oppgir b&aring;ndindekser for de bl&aring;, r&oslash;de, NIR-, SWIR- og termiske b&oslash;lgelengdeb&aring;ndene.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Oppgi indekser for blå, grønne, røde, NIR-, SWIR-1-og SWIR-2-båndene</h2></div>
+        <hr/>
+        <div>
+            <p>Oppgi b&aring;ndindekser for de bl&aring;, gr&oslash;nne r&oslash;de, NIR-, SWIR -1 og SWIR-2-b&aring;ndene.
+            </p>
+            <p>Satellitt- eller luftsensorer med flere b&aring;nd fanger opp informasjon som deles inn i b&oslash;lgelengdeb&aring;nd og identifiseres med b&aring;ndindekser. Green Vegetation Index krever at du oppgir b&aring;ndindekser for de bl&aring;, gr&oslash;nne, r&oslash;de, NIR-, SWIR-1- og SWIR-2-b&oslash;lgelengdeb&aring;ndene.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed-SAVI er en vegetasjonsindeks som fors&oslash;ker &aring; minimaliser
         <div><h2>Mengde grønn vegetasjonsdekning</h2></div>
         <hr/>
         <div>
-            <p>Angir mengden av gr&oslash;nn vegetasjonsdekning, slik SAVI-metoden krever.
+            <p>Angir mengden av gr&oslash;nn vegetasjonsdekning slik Soil Adjusted Vegetation Index-metoden krever.
             </p>
             <p>Gyldige verdier er f&oslash;lgende:
                 <ul>
@@ -161,7 +195,7 @@ Transformed-SAVI er en vegetasjonsindeks som fors&oslash;ker &aring; minimaliser
         <div>
             <p>Angir justeringsfaktoren som bidrar til &aring; minimere jordeffekten, slik Transformed Soil-Adjusted Vegetation Index-metoden krever. Standardverdien er 0,08.
             </p>
-            <p>En lav verdi betyr at du ignorerer jordeffekten. En h&oslash;y verdi betyr at jorden vil p&aring;virke resultatet.
+            <p>En lav verdi betyr du ignorerer jordeffekten. En h&oslash;y verdi betyr at jorden vil p&aring;virke resultatet.
             </p>
         </div>
     </div>
@@ -172,8 +206,7 @@ Transformed-SAVI er en vegetasjonsindeks som fors&oslash;ker &aring; minimaliser
             
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
             </p>
-            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
-            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>. Hvis du har tillatelse til å opprette både flisinndelte og dynamiske bildelag, kan du også angi hvilken lagtype du vil generere i utdataene ved hjelp av rullegardinlisten Lagre resultat som. </p>
         </div>
     </div>
 </div>

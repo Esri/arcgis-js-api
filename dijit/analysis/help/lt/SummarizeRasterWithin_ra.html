@@ -46,9 +46,7 @@
         <hr/>
     <p>&Scaron;is įrankis apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes.
     </p>
-    <p>Taikymo pavyzdžiai:
-    </p>
-    <p>
+    <p>Įrankio taikymo pavyzdžiai:
         <ul>
             <li>Suskaičiuoti kiekvienos žemėnaudos dalį procentais upės baseine.
                 
@@ -69,9 +67,9 @@
         <div><h2>Pasirinkite plotų sluoksnį, kurio apibrėžtose ribose sumuoti rastro sluoksnį</h2></div>
         <hr/>
         <div>
-            <p>Sumuojamų plotų arba zonų ribas apibrėžiantis sluoksnis.
+            <p>Sumuojamų zonų arba plotų ribas apibrėžianti įvestis.
             </p>
-            <p>Sluoksnį gali sudaryti rastriniai arba elementų duomenys. Rastro atveju zonas apibrėžia visos įvesties vietos, turinčios tą pačią gardelės reik&scaron;mę. Plotai neprivalo susisiekti.
+            <p>Įvestį gali sudaryti sveikieji rastriniai arba elementų duomenys. Rastro atveju zonas apibrėžia visos įvesties vietos, turinčios tą pačią gardelės reik&scaron;mę. Elementų atžvilgiu zonos gali sutapti. Plotai neprivalo susisiekti.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Pasirinkite lauką, kad apibrėžtumėte ribas</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;is sluoksnio atributas naudojamas plotų riboms apibrėžti.
+            <p>Laukas, kuriame yra kiekvieną zoną apra&scaron;ančios reik&scaron;mės.
             </p>
-            <p>Pavyzdžiui, pirmasis įvesčių sluoksnis apibrėžia valdomų vienetų ribas, su atributais, nurodančiais regioną, rajoną ir kiekvieno vieneto sklypo ID. Taip pat turite rastrų sluoksnį, apibrėžiantį kiekvienos vietos biologinės įvairovės rodiklį. Galite pasirinktame lauke apskaičiuoti vidutinę biologinę įvairovę vietiniu, rajono arba regioniniu lygmeniu.
+            <p>Tai gali būti sveikasis skaičius arba tekstinis zonos duomenų rinkinio laukas.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Pasirinkite rastro sluoksnį sumavimui</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;io sluoksnio rastro gardelės bus sumuojamos pagal plotus (zonas), kurios yra viduje.
+            <p>Rastras, kuriame yra reik&scaron;mės, pagal kurias skaičiuojama statistika.
+            </p>
+            <p>Jis gali būti sveikojo skaičiaus arba skaičiaus su slankiuoju kableliu tipo. Tačiau kai jis yra skaičiaus arba skaičiaus su slankiuoju kableliu tipo, daugumos, mažumos ir įvairovės skaičiavimo parinktys nėra pasiekiamos.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Pasirinkite norimą skaičiuoti statistiką</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkę sumuojamą sluoksnį, taip pat galite apskaičiuoti bet kurių ta&scaron;kų, linijų ar plotų įvesties ploto sluoksnyje skaitinių atributų statistinius rodiklius.
+            <p>Nurodo skaičiuotiną statistikos tipą.
             </p>
-            <p>Kai pasirinktas laukas yra sveikasis skaičius, galima apskaičiuoti &scaron;iuos statistinius duomenis: vidurkį, daugumą, maksimumą, medianą, minimumą, mažumą, procentinę dalį, imtį, standartinį nuokrypį, sumą ir dispersiją.
-            </p>
-            <p>Jeigu lauką sudaro slankiojo kablelio skaičius, galima apskaičiuoti vidurkį, maksimumą, minimumą, diapazoną, standartinį nuokrypį ir sumą.
+            <p> Įvestis gali būti viena i&scaron; &scaron;ių: <b>Vidurkis</b>, <b>Dauguma</b>, <b>Maksimumas</b>, <b>Mediana</b>, <b>Minimumas</b>, <b>Mažuma</b>, <b>Procentinė dalis</b>, <b>Intervalas</b>, <b>Standartinis nuokrypis</b>, <b>Suma</b> arba <b>Įvairovė</b>. Numatytoji reik&scaron;mė yra <b>Vidurkis</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Apskaičiuotina procentinė dalis. Numatytoji reik&scaron;mė yra 90, nurodanti 90-ąją procentinę dalį.
             </p>
-            <p>Tinkami reik&scaron;mių intervalai yra nuo 0 iki 100. 0-inė procentinė dalis i&scaron; esmės atitinka Minimumo statistiką, o 100 procentų ekvivalentas yra Maksimumas. 50 lygi reik&scaron;mė i&scaron; esmės pateiks analogi&scaron;kus rezultatus kaip ir Medianos statistika.
+            <p>Tinkamas reik&scaron;mės intervalas yra nuo 0 iki 100. Rezultatas, nurodant 0-inę procentinę dalį, i&scaron; esmės atitinka minimumo statistiką, o 100 procentų ekvivalentas yra maksimumas. 50 lygi reik&scaron;mė i&scaron; esmės pateiks analogi&scaron;kus rezultatus kaip ir Medianos statistika.
             </p>
-            <p>&Scaron;i parinktis palaikoma tik tuo atveju, jei parametras  <b>Pasirinkite norimą skaičiuoti statistiką</b> nustatytas kaip <b>Procentinė dalis</b>.
+            <p> &Scaron;is parametras palaikomas tik tuo atveju, jei parametras <b>Pasirinkite norimą skaičiuoti statistiką</b> nustatytas kaip <b>Procentinė dalis</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Nepaisyti trūkstamų reikšmių skaičiuojant</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkus nepaisyti trūkstamų reik&scaron;mių, ploto i&scaron;vesties reik&scaron;mei apskaičiuoti bus naudojamos tik sumuojamo sluoksnio reik&scaron;mę turinčios gardelės. Prie&scaron;ingu atveju, jeigu plote yra trūkstamų reik&scaron;mių, laikoma, kad nepakanka informacijos visų zonos gardelių statistiniams skaičiavimams atlikti ir i&scaron;vestyje plotui priskiriama nulinė (NoData) reik&scaron;mė.
+            <p> Nurodo, ar analizuojant ignoruojamos trūkstamos reik&scaron;mės.
             </p>
+            <ul>
+                <li>Pažymėta &ndash; Į analizę įtraukiamos gardelės, kurių įvesties reik&scaron;mės rastro reik&scaron;mė yra bet kurioje konkrečioje zonoje, kad būtų galima nustatyti tos zonos i&scaron;vesties reik&scaron;mę. NoData gardelės reik&scaron;mės rastre atliekant statistinius skaičiavimus nebus paisomos. Tai yra numatytasis nustatymas.
+                </li>
+                <li>Nepažymėta &ndash; Analizės rezultatas bus NoData, jei tam tikroje zonoje reik&scaron;mių rastro gardelės turi NoData reik&scaron;mių.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Apdoroti kaip daugiamatį</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, kaip bus apdorojami įvesties rastrai, jei jie yra daugiamačiai. Jei duomenis pasirinksite apdoroti kaip daugiamačius, statistika bus apskaičiuojama naudojat visus įvesties daugiamačio duomenų rinkinio matmenis. Prie&scaron;ingu atveju statistika bus apskaičiuojama naudojant įvesties daugiamačio duomenų rinkinio dabartinę skiltį. Tai yra numatytasis nustatymas.
+            <p>Nurodo, kaip bus apdorojami įvesties daugiamatės vaizdų paslaugos, jei jos yra daugiamatės.
             </p>
+            <ul>
+                <li>Pažymėta &ndash; Statistika bus apskaičiuojama naudojant įvesties daugiamačio duomenų rinkinio dabartinę skiltį. Tai yra numatytasis nustatymas.
+                    
+
+                </li>
+                <li>Nepažymėta &ndash; Bus apskaičiuojama visų įvesties daugiamačio duomenų rinkinio matmenų statistika.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
-            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
-            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą. Jei turite teises kurti išklotinių ir dinaminių vaizdų sluoksnius, naudodami išskleidžiamąjį laukelį Įrašyti rezultatą kaip galite nurodyti, kokį sluoksnio tipą generuoti išvestyje. </p>
         </div>
     </div>
 </div>

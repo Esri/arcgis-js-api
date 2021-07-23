@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Valitse maailmankartaston analyysikarttataso",customAnalysisLayerTitle:"Valitse analyysikarttataso",searchPlaceholderText:"Etsi maailmankartaston analyysikarttatasoja",searchCustomPlaceholderText:"Etsi analyysikarttatasoja",mainActionTitle:"Valitse",customActionName:"Valitse ja lisää karttaan",customeSectionName:"Living Atlas -maailmankartaston analyysikarttatasot",Categories:"Luokat",boundaries:"Rajat",places:"Paikat",boundariesAndPlaces:"Rajat ja paikat",hexbins:"Kuusikulmaiset säiliöt",transportation:"Kuljetus",point:"Pistekarttatasot",line:"Taiteviivakarttatasot",polygon:"Aluekarttatasot",pointFilterName:"Piste",lineFilterName:"Taiteviiva",polygonFilterName:"Aluekohde",multiPointFilterName:"Monipisteet",geometryFilterName:"Geometria",featureLayerName:"Kohdekarttataso",tableLayerName:"Taulu",itemTypeFilterName:"Kohteen tyyppi",instantFilterName:"Hetki",intervalFilterName:"Aikaväli",timeFilterName:"Kellonaika",edit:"Muokkaa",boundaryLayers:"Esrin rajakarttatasot",customAnalysisGroupName:"Organisaation analyysiryhmät"});

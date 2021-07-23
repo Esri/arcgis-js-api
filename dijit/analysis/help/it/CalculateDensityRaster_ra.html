@@ -46,13 +46,9 @@
         <hr/>
     <p>Questo strumento consente di creare una mappa di densit&agrave; a partire da feature puntuali o lineari diffondendo nella mappa quantit&agrave; note di alcuni fenomeni (rappresentati come attributi di punti o linee). Il risultato &egrave; un layer di aree classificate a partire da quella meno densa a quella pi&ugrave; densa.
     </p>
-    <p>Per l'input di punti, ogni punto deve rappresentare la posizione di un evento, mentre il layer dei risultati rappresenta il conteggio degli eventi per area unitaria. Un valore di densit&agrave; maggiore in una nuova localit&agrave; indica che sono presenti pi&ugrave; punti in prossimit&agrave; di tale localit&agrave;. In molti casi il layer dei risultati pu&ograve; essere interpretato come una superficie di rischio per eventi futuri. Se ad esempio i punti di input rappresentano le localit&agrave; in cui si sono verificati fulmini, il layer dei risultati pu&ograve; essere interpretato come una superficie a rischio fulmini in futuro.
-    </p>
-    <p>Per l'input lineare la superficie di densit&agrave; lineare rappresenta il numero totale di linee in prossimit&agrave; di ciascuna localit&agrave;. Le unit&agrave; dei valori di densit&agrave; calcolati costituiscono la lunghezza della linea per area unitaria. Se ad esempio le linee rappresentano fiumi, il layer dei risultati rappresenter&agrave; la lunghezza totale dei fiumi compresi nel raggio di ricerca. &Egrave; quindi possibile utilizzare questo risultato per identificare le aree idonee ad ospitare animali da pascolo.
-    </p>
-    <p>&Egrave; inoltre possibile utilizzare questo strumento nei seguenti casi:
+    <p>Alcune applicazioni d'esempio di questo strumenti includono il seguente:
         <ul>
-            <li>Per creare mappe della densit&agrave; dei reati e consentire alle stazioni di polizia di allocare correttamente le risorse per le aree ad elevato rischio di criminalit&agrave;
+            <li>Per creare mappe della densit&agrave; dei reati e consentire alle stazioni di polizia di allocare correttamente le risorse per le aree ad elevato rischio di criminalit&agrave;.
                 
  
             </li>
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Per individuare le comunit&agrave; pi&ugrave; lontane dalle principali autostrade e pianificare le aree in cui costruire nuove strade.
+            <li>Individuare le comunit&agrave; pi&ugrave; lontane dalle principali autostrade per pianificare le aree in cui costruire nuove strade.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Scegli il layer di punti o di linea di input in base al quale calcolare la densità</h2></div>
         <hr/>
         <div>
-            <p>Il layer di punti di input o di linea che verr&agrave; utilizzato per calcolare il layer di densit&agrave;.
+            <p>Il punto di input o linea che verr&agrave; usato per calcolare la densit&agrave;.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Consente di visualizzare un campo in cui specificare il numero di incidenti in ogni localit&agrave;. Se ad esempio sono presenti punti che rappresentano citt&agrave;, &egrave; possibile utilizzare un campo per rappresentare la popolazione della citt&agrave; come campo conteggio, in modo che nel layer della densit&agrave; di popolazione risultante vengano calcolate le densit&agrave; di popolazione maggiori in prossimit&agrave; di citt&agrave; con popolazioni pi&ugrave; numerose.
             </p>
-            <p>Se si utilizza il valore predefinito  <b>Nessuno</b>, ogni localit&agrave; verr&agrave; considerata singolarmente.
+            <p>Se la scelta predefinita di  <b>Nessuno</b> viene usata, ogni posizione verr&agrave; considerata per rappresentare un singolo conteggio.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>La dimensione della cella e l'unit&agrave; per i raster di output.
             </p>
+            <p>Le unit&agrave; possono essere chilometri, metri, miglia o piedi.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
-            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
-            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>. Se si dispone dei privilegi per creare entrambi i layer di immagini dinamiche e tile, è possibile specificare quale tipo di layer generare nell'output usando la casella a discesa Salva risultato come. </p>
         </div>
     </div>
 </div>

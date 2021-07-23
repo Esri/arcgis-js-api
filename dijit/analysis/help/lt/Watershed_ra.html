@@ -40,29 +40,23 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>Baseinas</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Baseino užduotis"></h2>
         <hr/>
     <p>&Scaron;is įrankis nustato priklausantį plotą vir&scaron; gardelių rinkinio rastre.
     </p>
-    <p>Baseinas yra nuolydį turinti teritorija, kuri nukreipia tėkmę (paprastai vandens) į bendrą i&scaron;vestį, pavyzdžiui, koncentruotą tėkmę. Tai gali būti didesnio baseino dalis, taip pat gali turėti mažesnius baseinus, vadinamus antriniais baseinais.
-    </p>
-    <p>Kiekvieno baseino reik&scaron;mė bus atimta i&scaron; &scaron;altinio reik&scaron;mės įvesties rastre arba elementų liejimo ta&scaron;ko sluoksnyje. Jei nutekėjimo ta&scaron;kas yra rastrinis duomenų rinkinys, pagal numatytuosius nustatymus naudojamos gardelių reik&scaron;mės. Jei nutekėjimo ta&scaron;kas yra ta&scaron;kinis duomenų rinkinys, reik&scaron;mės bus imamos i&scaron; nurodyto lauko.
-    </p>
-    <p>Baseino įrankis palaiko tik D8 įvesties tėkmės krypties rastro sluoksnį.
-    </p>
-    <p>Nurodant įvesties nutekėjimo ta&scaron;kų padėtis kaip elementų duomenis, numatytasis laukas bus pirmasis pasiekiamas tinkamas laukas. Jei nėra tinkamų laukų, kaip numatytasis bus naudojamas ObjectID laukas (pavyzdžiui, OID arba FID).
+    <p> Įvesties ta&scaron;kas, pažymėtas vir&scaron; Misisipės upės Luizianoje, sukurs baseino funkciją, apimančią teritorijas nuo Niujorko iki Montanos ir Kanados.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputFlowDirectionRaster">
-        <div><h2>Pasirinkite srovės krypties sluoksnį</h2></div>
+        <div><h2>Pasirinkite tėkmės krypties sluoksnį</h2></div>
         <hr/>
         <div>
             <p>Įvesties rastras, rodantis tėkmės i&scaron; kiekvienos gardelės kryptį.
             </p>
-            <p>Tėkmės krypties rastrą galima sukurti naudojant įrankį Tėkmės kryptis arba RasterAnalysisTools paslaugos užduotį FlowDirection, paleidžiama naudojant numatytąjį tėkmės krypties tipą  <b>D8</b>.
+            <p>Srauto krypties rastrą galima sukurti naudojant srauto krypties rastro funkciją ir numatytąjį srauto krypties tipą  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Įvesties nutekėjimo ta&scaron;kų padėtys.
             </p>
-            <p>Rastre tai yra gardelės, vir&scaron; kurių esantis plotas, arba upių baseinas, bus nustatomas. Kaip &scaron;altinio gardelės bus naudojamos visos, i&scaron;skyrus gardeles be duomenų. Ta&scaron;ko įvesčiai tai yra padėtys, vir&scaron; kurių esantis plotas, arba upių baseinas, bus nustatomas.
+            <p>Tai gali būti rastras arba ta&scaron;kinis elementas. Rastre tai yra gardelės, vir&scaron; kurių esantis plotas, arba upių baseinas, bus nustatomas. Kaip &scaron;altinio gardelės bus naudojamos visos, i&scaron;skyrus gardeles be duomenų. Ta&scaron;ko įvesčiai tai yra padėtys, vir&scaron; kurių esantis plotas, arba upių baseinas, bus nustatomas.
             </p>
         </div>
     </div>
@@ -82,7 +76,7 @@
         <div>
             <p>Laukas, naudojamas priskirti reik&scaron;mes nutekėjimo ta&scaron;ko padėtims.
             </p>
-            <p>Jei įvesties nutekėjimo ta&scaron;ko sluoksnis yra rastras, naudojama reik&scaron;mė. Jei elementas &ndash; naudojamas skaitinis laukas. Jei lauke yra slankiojo kablelio reik&scaron;mių, jos supaprastinamos iki sveikųjų skaičių.
+            <p>Jei įvesties nutekėjimo ta&scaron;ko sluoksnis yra rastras, naudojama  <i>Value</i>. Jei elementas &ndash; naudojamas skaitinis laukas. Jei lauke yra slankiojo kablelio reik&scaron;mių, jos supaprastinamos iki sveikųjų skaičių.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
-            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
-            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą. Jei turite teises kurti išklotinių ir dinaminių vaizdų sluoksnius, naudodami išskleidžiamąjį laukelį Įrašyti rezultatą kaip galite nurodyti, kokį sluoksnio tipą generuoti išvestyje. </p>
         </div>
     </div>
 </div>

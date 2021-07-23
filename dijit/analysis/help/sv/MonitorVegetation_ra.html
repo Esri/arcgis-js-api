@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>V&auml;lj multibandsrasterlagret. Kontrollera att indatarastret har r&auml;tt band tillg&auml;ngliga.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Välj metod för att övervaka vegetation</h2></div>
         <hr/>
         <div>
-            <p>V&auml;lj den metod som ska anv&auml;ndas f&ouml;r att skapa vegetationsindexlagret. De olika vegetationsindexen kan hj&auml;lpa till att belysa vissa geoobjekt eller minska brus.
+            <p>V&auml;lj den metod som ska anv&auml;ndas f&ouml;r att ber&auml;kna vegetationsindexlagret. De olika vegetationsindexen kan hj&auml;lpa till att belysa vissa geoobjekt eller minska brus.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,6 +95,10 @@ Processen Sultans formel tar en 8-bitarsbild med sex band och anv&auml;nder en s
 Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera inflytanden av markens ljusstyrka genom att anta att marklinjen har en godtycklig lutning och sk&auml;rningspunkt.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI &auml;r ett vegetationsindex som ber&auml;knar vegetationsf&ouml;rekomst endast med hj&auml;lp av information fr&aring;n det synliga spektrat. Den h&auml;r metoden kr&auml;ver band i r&ouml;da, gr&ouml;na och bl&aring; delar av spektrat.
+
+                </li>
             </ul>
         </div>
     </div>
@@ -104,7 +108,37 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div>
             <p>Ange bandindexen f&ouml;r NIR- och Red-banden.
             </p>
-            <p>Varje satellitsensor och flygfoto samlar in information som delas upp i bandindex. Varje bandindex inneh&aring;ller information f&ouml;r en viss del av det elektromagnetiska spektrat. Den h&auml;r metoden f&ouml;r vegetations&ouml;vervakning kr&auml;ver att du anger det bandindex som f&aring;ngade in NIR- och r&ouml;dv&aring;gl&auml;ngderna.
+            <p>Flerbandssatellit eller luftsensorer samlar in information som delas upp i v&aring;gl&auml;ngdsband, som identifieras med bandindex. Den h&auml;r metoden f&ouml;r att &ouml;vervaka vegetation kr&auml;ver att du anger bandindex f&ouml;r de n&auml;ra infrar&ouml;da- (NIR) och Red-v&aring;gl&auml;ngdsbanden.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Ange index för röda, gröna och blå band</h2></div>
+        <hr/>
+        <div>
+            <p>Ange bandindex f&ouml;r r&ouml;da, gr&ouml;na och bl&aring; band
+            </p>
+            <p>Flerbandssatellit eller luftsensorer samlar in information som delas upp i v&aring;gl&auml;ngdsband, som identifieras med bandindex. Visible Atmospherically Resistant Index kr&auml;ver att du anger bandindex f&ouml;r r&ouml;da, gr&ouml;na och bl&aring; v&aring;gl&auml;ngdsband.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Ange index för blå, röda, NIR-, SWIR- och termiska band</h2></div>
+        <hr/>
+        <div>
+            <p>Ange bandindex f&ouml;r bl&aring;, r&ouml;da, n&auml;ra infrar&ouml;da- (NIR), kortv&aring;gs infrar&ouml;da- (SWIR) och termiska band.
+            </p>
+            <p>Flerbandssatellit eller luftsensorer samlar in information som delas upp i v&aring;gl&auml;ngdsband, som identifieras med bandindex. Indexet Sultans formel kr&auml;ver att du anger bandindex f&ouml;r bl&aring;, r&ouml;da, n&auml;ra infrar&ouml;da- (NIR), kortv&aring;gs infrar&ouml;da- (SWIR) och termiska band.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Ange index för blå, gröna, röda, NIR-, SWIR-1- och SWIR-2-band.</h2></div>
+        <hr/>
+        <div>
+            <p>Ange bandindex f&ouml;r bl&aring;, gr&ouml;na, r&ouml;da, NIR-, SWIR-1- och SWIR-2-band.
+            </p>
+            <p>Flerbandssatellit eller luftsensorer samlar in information som delas upp i v&aring;gl&auml;ngdsband, som identifieras med bandindex. Green Vegetation Index kr&auml;ver att du anger bandindex f&ouml;r bl&aring;, r&ouml;da, n&auml;ra infrar&ouml;da- (NIR), kortv&aring;gs infrar&ouml;d 1- (SWIR-1) och kortv&aring;gs infrar&ouml;d 2- (SWIR-2) v&aring;gl&auml;ngdsband.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
         <div><h2>Mängden grönt växttäcke</h2></div>
         <hr/>
         <div>
-            <p>Anger m&auml;ngden gr&ouml;nt vegetationst&auml;cke, som kr&auml;vs av SAVI-metoden.
+            <p>Anger m&auml;ngden gr&ouml;nt v&auml;xtt&auml;cke, vilket kr&auml;vs av Soil-Adjusted Vegetation Index-metoden.
             </p>
             <p>F&ouml;ljande &auml;r giltiga v&auml;rden:
                 <ul>
@@ -172,8 +206,7 @@ Transformed SAVI &auml;r ett vegetationsindex som f&ouml;rs&ouml;ker minimera in
             
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
-            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
-            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>. Om du har behörigheter att skapa både tilelager och dynamiska bildlager kan du ange vilken lagertyp som ska genereras i utdata med hjälp av listrutan Spara resultat som. </p>
         </div>
     </div>
 </div>

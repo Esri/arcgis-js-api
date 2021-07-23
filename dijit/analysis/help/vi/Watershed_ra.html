@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Lưu vực sông</h2><p/>
+    <div id="toolDescription" class="smallsize">
+        <h2>Watershed (Lưu vực sông)</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="T&aacute;c vụ lưu vực s&ocirc;ng"></h2>
         <hr/>
     <p>C&ocirc;ng cụ n&agrave;y x&aacute;c định khu vực hợp lưu ph&iacute;a tr&ecirc;n một tập hợp c&aacute;c cell trong một raster.
     </p>
-    <p>Lưu vực s&ocirc;ng l&agrave; một khu vực chảy hướng l&ecirc;n đ&oacute;ng g&oacute;p v&agrave;o d&ograve;ng chảy&mdash;thường l&agrave; v&ugrave;ng nước&mdash;đến một lối tho&aacute;t chung như l&agrave; hệ thống tho&aacute;t nước tập trung. Đ&oacute; c&oacute; thể l&agrave; một phần của một lưu vực s&ocirc;ng lớn hơn v&agrave; cũng c&oacute; thể chứa c&aacute;c lưu vực s&ocirc;ng nhỏ hơn, gọi l&agrave; tiểu lưu vực.
-    </p>
-    <p>Gi&aacute; trị của mỗi lưu vực s&ocirc;ng sẽ được lấy từ gi&aacute; trị của nguồn trong raster đầu v&agrave;o hoặc lớp điểm chảy đối tượng. Khi điểm chảy l&agrave; một bộ dữ liệu raster, c&aacute;c gi&aacute; trị &ocirc; được sử dụng theo mặc định. Khi điểm chảy l&agrave; một bộ dữ liệu đối tượng, c&aacute;c gi&aacute; trị sẽ đến từ trường cụ thể.
-    </p>
-    <p>C&ocirc;ng cụ Lưu vực s&ocirc;ng chỉ hỗ trợ lớp raster hướng d&ograve;ng chảy đầu v&agrave;o D8.
-    </p>
-    <p>Khi x&aacute;c định c&aacute;c vị tr&iacute; điểm chảy đầu v&agrave;o l&agrave;m dữ liệu đối tượng, trường mặc định sẽ l&agrave; trường hợp lệ khả dụng đầu ti&ecirc;n. Nếu kh&ocirc;ng c&oacute; trường hợp lệ tồn tại, trường ObjectID (v&iacute; dụ: OID hoặc FID) sẽ l&agrave; mặc định.
+    <p> Một điểm đầu v&agrave;o tr&ecirc;n s&ocirc;ng Mississippi ở Louisiana sẽ tạo ra một đối tượng lưu vực s&ocirc;ng mở rộng bao gồm c&aacute;c khu vực từ New York đến Montana v&agrave; v&agrave;o Canada.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Raster đầu v&agrave;o hiển thị hướng d&ograve;ng chảy ra từ mỗi &ocirc;.
             </p>
-            <p>C&oacute; thể tạo raster hướng d&ograve;ng chảy bằng c&ocirc;ng cụ Hướng d&ograve;ng chảy hoặc t&aacute;c vụ FlowDirection trong dịch vụ RasterAnalysisTools, chạy sử dụng loại hướng d&ograve;ng chảy mặc định  <b>D8</b>.
+            <p>C&oacute; thể tạo raster hướng d&ograve;ng chảy bằng chức năng raster Hướng D&ograve;ng chảy, với kiểu hướng d&ograve;ng chảy mặc định  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Vị tr&iacute; điểm chảy đầu v&agrave;o.
             </p>
-            <p>Đối với một raster, phần n&agrave;y đại diện cho c&aacute;c &ocirc; m&agrave; ph&iacute;a tr&ecirc;n n&oacute;, khu vực hợp lưu hoặc lưu vực, sẽ được x&aacute;c định. Tất cả c&aacute;c &ocirc; NoData sẽ được d&ugrave;ng l&agrave;m &ocirc; nguồn. Đối với một đầu v&agrave;o điểm, phần n&agrave;y đại diện cho c&aacute;c vị tr&iacute; m&agrave; ph&iacute;a tr&ecirc;n n&oacute;, khu vực hợp lưu hoặc lưu vực, sẽ được x&aacute;c định.
+            <p>Đ&acirc;y c&oacute; thể l&agrave; đối tượng raster hoặc điểm. Đối với một raster, phần n&agrave;y đại diện cho c&aacute;c &ocirc; m&agrave; ph&iacute;a tr&ecirc;n n&oacute;, khu vực hợp lưu hoặc lưu vực, sẽ được x&aacute;c định. Tất cả c&aacute;c &ocirc; NoData sẽ được d&ugrave;ng l&agrave;m &ocirc; nguồn. Đối với một đầu v&agrave;o điểm, phần n&agrave;y đại diện cho c&aacute;c vị tr&iacute; m&agrave; ph&iacute;a tr&ecirc;n n&oacute;, khu vực hợp lưu hoặc lưu vực, sẽ được x&aacute;c định.
             </p>
         </div>
     </div>
@@ -82,7 +76,7 @@
         <div>
             <p>Trường được sử dụng để g&aacute;n gi&aacute; trị cho c&aacute;c vị tr&iacute; điểm chảy.
             </p>
-            <p>Nếu lớp điểm chảy đầu v&agrave;o l&agrave; một raster, Gi&aacute; trị được sử dụng. Nếu l&agrave; một đối tượng, trường số được sử dụng. Nếu trường c&oacute; chứa c&aacute;c gi&aacute; trị điểm nổi, ch&uacute;ng sẽ được r&uacute;t gọn th&agrave;nh c&aacute;c số nguy&ecirc;n.
+            <p>Nếu lớp điểm chảy đầu v&agrave;o l&agrave; một raster,  <i>Value</i> được sử dụng. Nếu l&agrave; một đối tượng, trường số được sử dụng. Nếu trường c&oacute; chứa c&aacute;c gi&aacute; trị điểm nổi, ch&uacute;ng sẽ được r&uacute;t gọn th&agrave;nh c&aacute;c số nguy&ecirc;n.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
-            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
-            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>. Nếu bạn có quyền tạo cả lớp hình ảnh động và hình ảnh dạng tile, bạn có thể chỉ định loại lớp hình ảnh đầu ra bằng cách sử dụng thanh thả xuống Lưu kết quả thành. </p>
         </div>
     </div>
 </div>

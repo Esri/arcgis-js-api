@@ -40,15 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="largesize">
         <h2>Summér raster inden for</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Summ&eacute;r raster inden for-v&aelig;rkt&oslash;j"></h2>
         <hr/>
     <p>Dette v&aelig;rkt&oslash;j giver en oversigt over v&aelig;rdierne for en raster inden for et andet datas&aelig;ts zoner.
     </p>
-    <p>Her er nogle eksempelanvendelser:
-    </p>
-    <p>
+    <p>Nogle eksempler p&aring; anvendelse af dette v&aelig;rkt&oslash;j omfatter f&oslash;lgende:
         <ul>
             <li>Ved angivelse af et lag med afvandingsomr&aring;der og et lag med gr&aelig;nser for arealanvendelse efter arealanvendelsestype beregnes f.eks. det samlede areal for anvendelsestype pr. afvandingsomr&aring;de.
                 
@@ -69,9 +67,9 @@
         <div><h2>Vælg områdelag for at summere et rasterlag inden for definerede grænser</h2></div>
         <hr/>
         <div>
-            <p>Det lag, der definerer gr&aelig;nser for de omr&aring;der, eller zoner, som skal summeres.
+            <p>Det input, der definerer gr&aelig;nserne for de zoner, eller omr&aring;der, der skal opsummeres.
             </p>
-            <p>Laget kan v&aelig;re et raster- eller vektorlag. For rasterlag defineres zonerne af alle de positioner i inputtet, som har samme cellev&aelig;rdi. Omr&aring;derne beh&oslash;ver ikke at st&oslash;de op til hinanden.
+            <p>Inputtet kan v&aelig;re en heltalsraster eller objektdata. For rasterlag defineres zonerne af alle de positioner i inputtet, som har samme cellev&aelig;rdi. For objekter kan zonerne v&aelig;re overlappende. Omr&aring;derne beh&oslash;ver ikke at st&oslash;de op til hinanden.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Vælg felt for at definere grænser</h2></div>
         <hr/>
         <div>
-            <p>Dette er den attribut i laget, der vil blive brugt til at definere gr&aelig;nserne for omr&aring;derne.
+            <p>Det felt, der indeholder de v&aelig;rdier, der definerer hver zone.
             </p>
-            <p>Forestil dig f.eks., at det f&oslash;rste inputlag definerer gr&aelig;nserne for administrationsenheden ved hj&aelig;lp af attributter, der definerer regionen, distriktet samt parcel-ID for hver enhed. Du kan ogs&aring; have et rasterlag, der definerer et biodiversitetsindeks for hver position. N&aring;r dette felt er valgt, kan du beslutte at beregne den gennemsnitlige biodiversitet p&aring; lokalt-, distrikts- og regionalt niveau.
+            <p>Det kan v&aelig;re et heltal eller et strengfelt i zonedatas&aelig;ttet.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Vælg rasterlag at summere</h2></div>
         <hr/>
         <div>
-            <p>Rastercellerne i dette lag vil blive summeret efter de omr&aring;der (zoner), som de falder inden for.
+            <p>Den raster, der indeholder de v&aelig;rdier, der skal beregnes en statistik p&aring;.
+            </p>
+            <p>Den kan enten v&aelig;re heltal eller flydende komma. Men hvis rasteren er af typen flydende komma, vil mulighederne for at beregne majoritet, minoritet og variation ikke v&aelig;re tilg&aelig;ngelige.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Vælg statistik, der skal beregnes:</h2></div>
         <hr/>
         <div>
-            <p>N&aring;r du har valgt et lag, der skal summeres, kan du v&aelig;lge at beregne statistik for eventuelle numeriske attributter best&aring;ende af punkter, linjer eller omr&aring;der inden for inputomr&aring;delaget.
+            <p>Angiver den statistiktype, der skal beregnes.
             </p>
-            <p>N&aring;r det valgte felt udg&oslash;res af et heltal, er de tilg&aelig;ngelige statistikttyper Gennemsnit, Majoritet, Maksimum, Median, Minimum, Minoritet, Percentil, Omr&aring;de, Standardafvigelse, Sum og Variation.
-            </p>
-            <p>Hvis feltet er et flydende punkt, er valgmulighederne Gennemsnit, Maksimum, Minimum, Omr&aring;de, Standardafvigelse og Sum.
+            <p> Inputtet kan v&aelig;re &eacute;n af f&oslash;lgende: <b>Gennemsnit</b>, <b>Majoritet</b>, <b>Maksimum</b>, Median <b>,</b> <b>Minimum</b>, <b>Minoritet</b>, <b>Percentil</b>, <b>Omr&aring;de</b>, <b>Standardafvigelse</b>, <b>Sum</b> og <b>Variation</b>. Standardv&aelig;rdien er <b>Gennemsnit</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Percentil, der skal beregnes. Standardv&aelig;rdien er 90, hvilket angiver den 90. percentil.
             </p>
-            <p>V&aelig;rdierne kan v&aelig;re fra 0 til 100. Den 0. percentil svarer stort set til minimum-statistikken, og den 100. percentil svarer til maksimum. En v&aelig;rdi p&aring; 50 vil stort set give det samme resultat som median-statistikken.
+            <p>V&aelig;rdien kan v&aelig;re fra 0 til 100. Resultatet af at angive den 0. percentil svarer stort set til minimumsstatistikken, og den 100. percentil svarer til maksimum. En v&aelig;rdi p&aring; 50 vil stort set give det samme resultat som median-statistikken.
             </p>
-            <p>Denne indstilling underst&oslash;ttes kun, hvis parameteren  <b>V&aelig;lg statistik, der skal beregnes</b> er indstillet til <b>Percentil</b>.
+            <p> Denne parameter underst&oslash;ttes kun, hvis parameteren <b>V&aelig;lg statistik, der skal beregnes</b> er indstillet til <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignorér manglende værdier i beregning</h2></div>
         <hr/>
         <div>
-            <p>Hvis du v&aelig;lger at ignorere manglende v&aelig;rdier, er det kun de celler, der har en v&aelig;rdi i det lag, der skal summeres, der benyttes til at bestemme outputv&aelig;rdien for det p&aring;g&aelig;ldende omr&aring;de. Hvis der i &oslash;vrigt mangler v&aelig;rdier noget sted i et omr&aring;de, vurderes det, at der er utilstr&aelig;kkelige oplysninger til at udf&oslash;re statistiske beregninger for alle cellerne i den p&aring;g&aelig;ldende zone, og omr&aring;det vil modtage en nul-v&aelig;rdi (NoData) i outputtet.
+            <p> Angiver, om manglende v&aelig;rdier ignoreres i analysen.
             </p>
+            <ul>
+                <li>Markeret &ndash; Analysen vil inkludere de celler, der har en v&aelig;rdi i inputv&aelig;rdirasteren inden for en bestemt zone med henblik p&aring; at bestemme outputv&aelig;rdien for den p&aring;g&aelig;ldende zone. NoData-celler i v&aelig;rdirasteren vil blive tilsidesat i statistikberegningen. Dette er standardv&aelig;rdien.
+                </li>
+                <li>Ikke markeret &ndash; Analysen vil resultere i NoData, hvis der er NoData-v&aelig;rdier for v&aelig;rdirasterens celler inden for en bestemt zone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Behandl som flerdimensional</h2></div>
         <hr/>
         <div>
-            <p>Angiver, hvordan input-rastere skal behandles, hvis de er flerdimensionale. Hvis du v&aelig;lger &quot;Behandl som flerdimensional&quot;, vil der blive beregnet statistik ud fra alle dimensioner af det indsatte flerdimensionale datas&aelig;t. Ellers vil statistikken blive beregnet ud fra det aktuelle udsnit af det indsatte flerdimensionale datas&aelig;t, hvilket er standardv&aelig;rdien.
+            <p>Angiver, hvordan input-billedtjenester skal behandles, hvis de er flerdimensionale.
             </p>
+            <ul>
+                <li>Markeret &ndash; Statistiske data beregnes ud fra det aktuelle udsnit af det flerdimensionale inputdatas&aelig;t. Dette er standardv&aelig;rdien.
+                    
+
+                </li>
+                <li>Ikke markeret &ndash; Statistiske data beregnes for alle dimensioner af det flerdimensionale inputdatas&aelig;t.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
-            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
-            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>. Hvis du har rettigheder til at oprette både tile-billedlag og dynamiske billedlag, kan du angive, hvilken type lag der skal genereres i outputtet ved hjælp af Gem resultat som-rullelisten. </p>
         </div>
     </div>
 </div>

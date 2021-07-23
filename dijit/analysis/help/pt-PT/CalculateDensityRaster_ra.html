@@ -46,11 +46,7 @@
         <hr/>
     <p>Esta ferramenta cria um mapa de densidade a partir de elementos de ponto ou linha, espalhando quantidades conhecidas de determinado fen&oacute;meno (representados como atributos dos pontos ou linhas) pelo do mapa. O resultado &eacute; uma camada de &aacute;reas classificadas da menos densa para a mais densa.
     </p>
-    <p>Para a entrada de ponto, cada ponto deve representar a localiza&ccedil;&atilde;o de algum evento ou incidente, e a camada resultado representa uma contagem do incidente por unidade de &aacute;rea. Um valor de densidade mais elevado numa nova localiza&ccedil;&atilde;o significa que existem mais pontos perto dessa localiza&ccedil;&atilde;o. Em muitos casos, a camada de resultado pode ser interpretada como uma superf&iacute;cie de risco para futuros eventos. Por exemplo, se os pontos de entrada representam locais de queda de rel&acirc;mpagos, a camada resultado pode ser interpretada como uma superf&iacute;cie de risco para quedas de raios futuras.
-    </p>
-    <p>Para a entrada de linha, a superf&iacute;cie da linha de densidade representa o valor total da linha que est&aacute; perto de cada local. As unidades dos valores de densidade calculados s&atilde;o o comprimento da &aacute;rea de linhas-por-unidade. Por exemplo, se as linhas representam rios, a camada resultado representar&aacute; o comprimento total dos rios que se encontram dentro do raio de busca. Este resultado pode ser usado para identificar as &aacute;reas que s&atilde;o hospitaleiras para animais de pasto.
-    </p>
-    <p>Outros casos de uso desta ferramenta incluem o seguinte:
+    <p>Alguns exemplos de aplica&ccedil;&otilde;es desta ferramenta incluem:
         <ul>
             <li>Cria&ccedil;&atilde;o de mapas de densidade de crime para ajudar os departamentos de pol&iacute;cia a alocar adequadamente os recursos para &aacute;reas de alta criminalidade.
                 
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Localizar as comunidades que est&atilde;o longe de auto-estradas, a fim de planejar onde as novas estradas devem ser constru&iacute;das.
+            <li>Localizar as comunidades que est&atilde;o longe de vias rodovi&aacute;rias importantes para planear onde as novas estradas devem ser constru&iacute;das.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Selecionar ponto de entrada ou camada de linhas a partir da qual calcular densidade</h2></div>
         <hr/>
         <div>
-            <p>A camada de entrada, de pontos ou de linhas, que ser&aacute; utilizada para calcular a densidade.
+            <p>O ponto ou a linha de entrada que ser&aacute; utilizada para calcular a densidade.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Fornecer um campo especificando o n&uacute;mero de incidentes em cada local. Por exemplo, se tem pontos que representam as cidades, pode usar um campo que representa a popula&ccedil;&atilde;o da cidade, como o campo de contagem, e a camada de densidade populacional resultante ir&aacute; calcular as densidades populacionais maiores perto de cidades com popula&ccedil;&otilde;es maiores.
             </p>
-            <p>No caso de a op&ccedil;&atilde;o predefinida  <b>Nenhum</b> ser utilizada, assumir-se-&aacute; que cada local representa uma &uacute;nica contagem.
+            <p>Se a op&ccedil;&atilde;o predefinida  <b>Nenhum</b> ser utilizada, assumir-se-&aacute; que cada local representa uma &uacute;nica contagem.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>O tamanho da c&eacute;lula e unidade para os rasters de sa&iacute;da.
             </p>
+            <p>As unidades podem ser quil&oacute;metros, metros, milhas, ou p&eacute;s.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
-            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
-            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa. Se tiver os privilégios para criar camadas de imagens em mosaico e dinâmicas, pode especificar o tipo de camada que será gerado na saída utilizando a caixa pendente Guardar resultado como. </p>
         </div>
     </div>
 </div>

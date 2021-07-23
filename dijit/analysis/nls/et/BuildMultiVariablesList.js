@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Valige sisendkiht",addAVar:"Lisa muutuja",distToNearest:"Kaugus lähima objektini",attrOfInterest:"Lähima objekti atribuut",summaryNearby:"Lähima objekti kokkuvõte",summaryIntersecting:"Lõikuva objekti kokkuvõte",distToNearestLabel:"Kaugus salve keskpunktist sisendkihis lähima objektini",attrOfInterestLabel:"Määratud välja väärtus sisendkihi lähimast objektist",summaryNearbyLabel:"Statistiline näitaja, mis on arvutatud kõigi objektide kohta, mis asuvad salve keskpunktist määratud kaugusel",summaryIntersectingLabel:"Statistik, mis on arvutatud kõigi salvega lõikuvate objektide kohta",maxDistancefromCtr:"Maksimumkaugus salve keskpunktist",fieldToIncude:"Kaasatav väli",statstoCalculate:"Arvutatav statistik",summFeatuesWithin:"Summeeri objektid vahemikus",layerChangeWarnMsg:"Sisendkihi muutmise korral eemaldatakse selle sisendkihi jaoks lisatud muutujad",validationErrorMsg:"Enne uue muutuja lisamist lahendage valideerimisega seotud tõrked",atleastOneVarMsg:"Lisage sellele valitud kihile vähemalt üks muutuja"});

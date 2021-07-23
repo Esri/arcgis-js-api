@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Pasirinkite daugiakanalį rastrinį sluoksnį. Įsitikinkite, kad įvesties rastre yra tinkami kanalai.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Pasirinkti augmenijos stebėjimo metodą</h2></div>
         <hr/>
         <div>
-            <p>Pasirinkite metodą augmenijos indekso sluoksnio sukūrimui. Skirtingi augmenijos indeksai gali padėti i&scaron;ry&scaron;kinti tam tikrus elementus arba sumažinti įvairų triuk&scaron;mą.
+            <p>Pasirinkite metodą augmenijos indekso sluoksnio apskaičiavimui. Skirtingi augmenijos indeksai gali padėti i&scaron;ry&scaron;kinti tam tikrus elementus arba sumažinti įvairų triuk&scaron;mą.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Sultan formulė paima &scaron;e&scaron;ių kanalų 8 bitų vaizdą ir pritaiko j
 Transformuotas SAVI &ndash; tai augmenijos indeksas, kuris bando sumažinti dirvožemio ry&scaron;kumo poveikį, atsižvelgdamas į tai, kad dirvožemio linija turi sutartą nuolydį ir susikirtimą.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI yra augmenijos indeksas, įvertinantis augmenijos buvimą naudodamas tik informaciją i&scaron; matomo spektro. &Scaron;iam metodui reikalingi kanalai spektro raudonoje, žalioje ir mėlynoje dalyse.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Nurodykite NIR ir Red kanalo indeksus</h2></div>
+        <div><h2>Nurodykite NIR ir raudonojo kanalų indeksus</h2></div>
         <hr/>
         <div>
-            <p>Nurodykite NIR ir raudonųjų spindulių kanalų indeksus.
+            <p>Nurodykite NIR ir raudonojo kanalų indeksus.
             </p>
-            <p>Visi palydovų jutikliai ir kameros fiksuoja informaciją, kuri padalijama į kanalų indeksus. Kiekvieno kanalo indeksas pateikia informaciją apie tam tikrą elektromagnetinių bangų spektro dalį. Jei norite naudoti &scaron;į augmenijos stebėjimo metodą, turite nurodyti kanalo indeksą, kuris užfiksavo NIR ir raudonųjų spindulių bangų ilgius.
+            <p>Kelių kanalų palydoviniai arba erdviniai jutikliai fiksuoja informaciją, suskaidytą į bangos ilgio kanalus, kurie identifikuojami pagal kanalų indeksus. &Scaron;is augmenijos stebėjimo metodas reikalauja nurodyti artimosios infraraudonųjų spindulių srities (NIR) ir raudonųjų bangų ilgio kanalų indeksus.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Nurodykite raudonojo, žaliojo ir mėlynojo kanalų indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite raudonojo, žaliojo ir mėlynojo kanalų indeksus.
+            </p>
+            <p>Kelių kanalų palydoviniai arba erdviniai jutikliai fiksuoja informaciją, suskaidytą į bangos ilgio kanalus, kurie identifikuojami pagal kanalų indeksus. Matomas atmosferos atsparumo indeksas reikalauja nurodyti raudonojo, žaliojo ir mėlynojo bangų ilgio kanalų indeksus.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Nurodykite mėlynojo, raudonojo, NIR, SWIR-1 ir šiluminio kanalų indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite mėlynojo, raudonojo, artimosios infraraudonųjų spindulių srities (NIR), trumpųjų bangų infraraudonųjų spindulių srities (SWIR) ir &scaron;iluminio kanalų indeksus.
+            </p>
+            <p>Kelių kanalų palydoviniai arba erdviniai jutikliai fiksuoja informaciją, suskaidytą į bangos ilgio kanalus, kurie identifikuojami pagal kanalų indeksus. Indeksas Sultan's Formula reikalauja nurodyti mėlynojo, raudonojo, artimosios infraraudonųjų spindulių srities (NIR), trumpųjų bangų infraraudonųjų spindulių srities (SWIR) ir &scaron;iluminio bangų ilgio kanalų indeksus.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Nurodykite mėlynojo, žaliojo, raudonojo, NIR, SWIR-1 ir SWIR-2 kanalų indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Nurodykite mėlynojo, žaliojo, raudonojo, NIR, SWIR-1 ir SWIR-2 kanalų indeksus.
+            </p>
+            <p>Kelių kanalų palydoviniai arba erdviniai jutikliai fiksuoja informaciją, suskaidytą į bangos ilgio kanalus, kurie identifikuojami pagal kanalų indeksus. Žaliosios augmenijos indeksas reikalauja nurodyti mėlynojo, žaliojo, raudonojo, artimosios infraraudonųjų spindulių srities (NIR), trumpųjų bangų infraraudonųjų spindulių srities 1 (SWIR-1), trumpųjų bangų infraraudonųjų spindulių srities 2 (SWIR-2) ir &scaron;iluminio bangų ilgio kanalų indeksus.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformuotas SAVI &ndash; tai augmenijos indeksas, kuris bando sumažinti dirv
         <div><h2>Žaliosios augmenijos dangos kiekis</h2></div>
         <hr/>
         <div>
-            <p>Nurodo žalios augmenijos dangos kiekį, reikalingą SAVI indekso metodui.
+            <p>Nurodo žaliosios augmenijos dangos kiekį, kuris reikalingas dėl pagal dirvožemį koreguoto augmenijos indekso metodo.
             </p>
             <p>Galimos reik&scaron;mės:
                 <ul>
@@ -172,8 +206,7 @@ Transformuotas SAVI &ndash; tai augmenijos indeksas, kuris bando sumažinti dirv
             
             <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
             </p>
-            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
-            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą. Jei turite teises kurti išklotinių ir dinaminių vaizdų sluoksnius, naudodami išskleidžiamąjį laukelį Įrašyti rezultatą kaip galite nurodyti, kokį sluoksnio tipą generuoti išvestyje. </p>
         </div>
     </div>
 </div>

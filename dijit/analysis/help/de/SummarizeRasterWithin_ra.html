@@ -41,16 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Zusammenfassen (innerhalb)</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Werkzeug &quot;Zusammenfassen (innerhalb)&quot;"></h2>
+        <h2>Raster zusammenfassen (innerhalb)</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Werkzeug &quot;Raster zusammenfassen (innerhalb)&quot;"></h2>
         <hr/>
     <p>Mit diesem Werkzeug werden die Werte eines Rasters innerhalb der Zonen eines anderen Datasets zusammengefasst.
     </p>
-    <p>Folgende Beispielanwendungen stehen zur Verf&uuml;gung:
-    </p>
-    <p>
+    <p>Dieses Werkzeug umfasst das folgende Anwendungsgebiet:
         <ul>
-            <li>Anhand eines Layers mit Grenzen von Wassereinzugsgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Wassereinzugsgebiet ermitteln.
+            <li>Anhand eines Layers mit Grenzen von Wassereinzugsgebieten und eines Layers mit Grenzen von Landnutzungsfl&auml;chen nach Landnutzungstyp die Gesamtlandwirtschaftsfl&auml;che des Landnutzungstyps f&uuml;r jedes Ablussgebiet ermitteln.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Flächen-Layer auswählen, um einen Raster-Layer innerhalb definierter Grenzen zusammenzufassen</h2></div>
         <hr/>
         <div>
-            <p>Der Layer, der die Grenzen der Fl&auml;chen bzw. Zonen definiert, wird zusammengefasst.
+            <p>Die Eingabe, die die Grenzen der zusammenzufassenden Zonen bzw. Fl&auml;chen definiert.
             </p>
-            <p>Bei dem Layer kann es sich um ein Raster oder um Feature-Daten handeln. F&uuml;r Raster werden die Zonen durch alle Positionen in der Eingabe definiert, die denselben Zellenwert haben. Die Fl&auml;chen m&uuml;ssen nicht zusammenh&auml;ngend sein.
+            <p>Bei der Eingabe kann es sich um ein Integer-Raster oder um Feature-Daten handeln. F&uuml;r Raster werden die Zonen durch alle Positionen in der Eingabe definiert, die denselben Zellenwert haben. Bei Features kann es sich um &uuml;berlappende Zonen handeln. Die Fl&auml;chen m&uuml;ssen nicht zusammenh&auml;ngend sein.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Feld zum Definieren der Grenzen auswählen</h2></div>
         <hr/>
         <div>
-            <p>Dies ist das Attribut des Layers zum Definieren der Grenzen der Fl&auml;chen.
+            <p>Das Feld, das die Werte enth&auml;lt, die die einzelnen Zonen definieren.
             </p>
-            <p>Angenommen, der erste Eingabe-Layer definiert die Grenzen der Verwaltungseinheit, wobei Attribute die Region, den Bezirk und die Flurst&uuml;cks-ID der jeweiligen Einheit definieren. Au&szlig;erdem verf&uuml;gen Sie &uuml;ber einen Raster-Layer, der einen Biodiversit&auml;tsindex f&uuml;r jede Position definiert. Anhand des ausgew&auml;hlten Feldes k&ouml;nnen Sie die durchschnittliche Biodiversit&auml;t auf lokalen, Bezirks- und regionalen Ebenen berechnen.
+            <p>Es kann sich dabei um ein Ganzzahl- oder ein Zeichenfolgefeld des Zonen-Datasets handeln.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Zusammenzufassenden Raster-Layer auswählen</h2></div>
         <hr/>
         <div>
-            <p>Die Raster-Zellen in diesem Layer werden nach den Fl&auml;chen (Zonen) zusammengefasst, in denen sie sich befinden.
+            <p>Das Raster, das die Werte f&uuml;r die Berechnung der Statistik enth&auml;lt.
+            </p>
+            <p>Dies kann eine ganze Zahl oder ein Gleitkommawert sein. Bei Gleitkomma-Rastern sind jedoch die Optionen f&uuml;r die Berechnung von Mehrheit, Minderheit und Varianz nicht verf&uuml;gbar.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Zu berechnende Statistik auswählen</h2></div>
         <hr/>
         <div>
-            <p>Nachdem Sie einen Layer ausgew&auml;hlt haben, der zusammengefasst werden soll, k&ouml;nnen Sie optional Statistiken aller numerischen Attribute der Punkte, Linien oder Fl&auml;chen innerhalb des Eingabe-Fl&auml;chen-Layers berechnen.
+            <p>Gibt den zu berechnenden Statistiktyp an.
             </p>
-            <p>Bei einem ganzzahligen Feld stehen folgende Statistiktypen zur Auswahl: Durchschnitt, Mehrheit, Maximum, Medianwert, Minimum, Minderheit, Perzentil, Bereich, Standardabweichung, Summe und Varianz.
-            </p>
-            <p>Wenn das Feld den Typ &quot;Gleitkomma&quot; aufweist, sind folgende Optionen verf&uuml;gbar: Durchschnitt, Maximum, Minimum, Bereich, Standardabweichung und Summe.
+            <p> Als Eingabe sind folgende Optionen m&ouml;glich: <b>Durchschnitt</b>, <b>Mehrheit</b>, <b>Maximum</b>, <b>Medianwert</b>, <b>Minimum</b>, <b>Minderheit</b>, <b>Perzentil</b>, <b>Bereich</b>, <b>Standardabweichung</b>, <b>Summe</b> oder <b>Varianz</b>. Die Standardeinstellung ist <b>Durchschnitt</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Das zu berechnende Perzentil. Der Standardwert ist 90 und steht f&uuml;r das 90.&nbsp;Perzentil.
             </p>
-            <p>Zul&auml;ssige Werte k&ouml;nnen zwischen 0 und 100 liegen. Grunds&auml;tzlich entspricht der Perzentilwert&nbsp;0 statistisch gesehen dem Minimum und der Perzentilwert&nbsp;100 dem Maximum. Der Wert&nbsp;50 ergibt im Wesentlichen dasselbe Ergebnis wie der Medianwert der Statistik.
+            <p>Zul&auml;ssiger Wert kann zwischen 0 und 100 liegen. Grunds&auml;tzlich entspricht die Angabe eines Perzentilwertes von 0 dem Statistiktyp &quot;Minimum&quot; und ein Perzentilwert von 100 dem Typ &quot;Maximum&quot;. Der Wert&nbsp;50 ergibt im Wesentlichen dasselbe Ergebnis wie der Medianwert der Statistik.
             </p>
-            <p>Diese Option wird nur unterst&uuml;tzt, wenn f&uuml;r den Parameter  <b>Zu berechnende Statistik ausw&auml;hlen</b> die Option <b>Perzentil</b> festgelegt wurde.
+            <p> Dieser Parameter wird nur unterst&uuml;tzt, wenn f&uuml;r den Parameter <b>Zu berechnende Statistik ausw&auml;hlen</b> die Option <b>Perzentil</b> festgelegt wurde.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Fehlende Werte in Berechnung ignorieren</h2></div>
         <hr/>
         <div>
-            <p>Wenn fehlende Werte ignoriert werden sollen, werden nur die Zellen, die &uuml;ber einen Wert im zusammenzufassenden Layer verf&uuml;gen, verwendet, um den Ausgabewert f&uuml;r diesen Bereich zu bestimmen. Andernfalls, also bei fehlenden Werten in einem Bereich, wird davon ausgegangen, dass nicht gen&uuml;gend Informationen vorhanden sind, um statistische Berechnungen f&uuml;r alle Zellen in dieser Zone durchzuf&uuml;hren, und dieser Bereich erh&auml;lt in der Ausgabe den Wert NULL (NoData).
+            <p> Gibt an, ob fehlende Werte bei der Analyse ignoriert werden.
             </p>
+            <ul>
+                <li>Aktiviert: In die Analyse werden die Zellen einbezogen, die in einer Zone &uuml;ber einen Wert im Eingabe-Werte-Raster verf&uuml;gen, um den Ausgabewert f&uuml;r die entsprechende Zone zu bestimmen. NoData-Zellen im Werte-Raster werden bei der Statistikberechnung ignoriert. Dies ist die Standardeinstellung.
+                </li>
+                <li>Deaktiviert: Wenn in einer der Zonen NoData-Werte f&uuml;r die Zellen im Werte-Raster vorhanden sind, wird bei der Analyse &quot;NoData&quot; zur&uuml;ckgegeben.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Als mehrdimensional verarbeiten</h2></div>
         <hr/>
         <div>
-            <p>Gibt an, wie die Eingabe-Raster verarbeitet werden, wenn es sich um multidimensionale Raster handelt. Wenn Sie &quot;Als mehrdimensional verarbeiten&quot; ausw&auml;hlen, werden Statistiken anhand aller Dimensionen des multidimensionalen Eingabe-Datasets berechnet. Andernfalls werden Statistiken anhand des aktuellen Segments des multidimensionalen Eingabe-Datasets berechnet. Dies ist die Standardeinstellung.
+            <p>Gibt an, wie die Eingabe-Image-Services verarbeitet werden, wenn sie multidimensional sind.
             </p>
+            <ul>
+                <li>Aktiviert: Die Statistiken werden anhand des aktuellen Segments eines mehrdimensionalen Eingabe-Datasets berechnet. Dies ist die Standardeinstellung.
+                    
+
+                </li>
+                <li>Deaktiviert: Die Statistiken werden f&uuml;r alle Dimensionen des mehrdimensionalen Eingabe-Datasets berechnet.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
-            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird. Wenn Sie über Berechtigungen zum Erstellen gekachelter und dynamischer Bilddaten-Layer verfügen, können Sie angeben, welcher Layer-Typ in der Ausgabe generiert werden soll, indem Sie das Dropdown-Feld "Ergebnis speichern als" verwenden. </p>
         </div>
     </div>
 </div>

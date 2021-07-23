@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Pasirinkti paskirties rastrą arba elementus",destinationField:"Paskirties vietos laukas (neprivaloma)",inputDistanceAccumulationRaster:"Pasirinkti atstumo kaupimo rastrą",inputBackDirectionRaster:"Pasirinkti atgalinės krypties arba tėkmės krypties rastrą",pathType:"Maršruto tipas (neprivaloma)",bestSingle:"Geriausias atskiras",eachCell:"Kiekviena gardelė",eachZone:"Kiekviena zona",outputRasterName:"Rezultatų rastro sluoksnio pavadinimas",outputLayerName:"Optimalus kelias kaip ${layername} rastras",drawSourcePointLayerName:"Šaltinio taškai",itemDescription:"Elementų sluoksnis sukurtas paleidus optimalų kelią kaip rastrą sluoksnyje ${layername}. ",itemTags:"Analizės rezultatas, Optimalus kelias kaip rastras, ${layername} ${fieldname}",itemSnippet:"Elementų sluoksnis, sugeneruotas funkcijos Optimalus kelias kaip rastras."});

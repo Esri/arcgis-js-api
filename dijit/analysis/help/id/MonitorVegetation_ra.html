@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Pilih layer raster multiband. Pastikan raster input memiliki pita yang sesuai.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Pilih metode untuk memantau vegetasi</h2></div>
         <hr/>
         <div>
-            <p>Pilih metode untuk membuat layer indeks vegetasi. Indeks vegetasi yang berbeda dapat membantu menyorot fitur tertentu atau mengurangi berbagai kebisingan.
+            <p>Pilih metode yang akan digunakan untuk menghitung layer indeks vegetasi. Indeks vegetasi yang berbeda dapat membantu menyorot fitur tertentu atau mengurangi berbagai kebisingan.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Proses Formula Sultan mengambil gambar 8-bit enam-pita dan menerapkan algoritma 
 SAVI yang telah bertransformasi adalah indeks vegetasi yang berusaha untuk meminimalkan pengaruh kecerahan tanah dengan mengasumsikan garis tanah memiliki lereng dan pemotongan acak.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI adalah indeks vegetasi yang memperkirakan keberadaan vegetasi menggunakan satu-satunya informasi dari spektrum yang terlihat. Metode ini memerlukan pita di bagian spektrum merah, hijau, dan biru.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Tentukan indeks pita NIR dan pita Merah</h2></div>
+        <div><h2>Tentukan indeks untuk pita NIR dan pita Merah</h2></div>
         <hr/>
         <div>
-            <p>Tentukan indeks pita untuk pita NIR dan pita merah.
+            <p>Tentukan indeks pita untuk pita NIR dan Merah.
             </p>
-            <p>Setiap sensor satelit dan kamera udara menangkap informasi yang dibedakan menjadi beberapa indeks pita. Setiap indeks pita berisi informasi untuk bagian khusus spektrum elektromagnetik. Metode pemantauan tanaman ini memerlukan Anda untuk menentukan indeks pita yang menangkap panjang gelombang NIR dan merah.
+            <p>Satelit multiband atau sensor udara menangkap informasi yang dibedakan menjadi pita panjang gelombang, yang diidentifikasi dengan indeks pita. Metode pemantauan vegetasi ini mengharuskan Anda untuk menentukan indeks pita untuk pita panjang gelombang Near Infrared (NIR) dan Merah.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Tentukan indeks untuk pita Merah, Hijau, dan Biru</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan indeks pita untuk pita Merah, Hijau, dan Biru.
+            </p>
+            <p>Satelit multiband atau sensor udara menangkap informasi yang dibedakan menjadi pita panjang gelombang, yang diidentifikasi dengan indeks pita. Indeks Tahan Atmosfer yang Terlihat mengharuskan Anda untuk menentukan indeks pita untuk pita panjang gelombang Merah, Hijau, dan Biru.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Tentukan indeks untuk pita Biru, Merah, SWIR-1, dan Termal</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan indeks pita untuk pita Biru, Merah, Near Infrared (NIR), Shortwave Infrared (SWIR), dan Termal.
+            </p>
+            <p>Satelit multiband atau sensor udara menangkap informasi yang dibedakan menjadi pita panjang gelombang, yang diidentifikasi dengan indeks pita. Indeks Formula Sultan mengharuskan Anda untuk menentukan indeks pita untuk pita panjang gelombang Biru, Merah, Near Infrared (NIR), Shortwave Infrared (SWIR), dan Termal.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Tentukan indeks pita Biru, Hijau, Merah, NIR< SWIR-1, dan SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Tentukan indeks pita untuk pita Biru, Hijau, Merah, NIR, SWIR-1, dan SWIR-2.
+            </p>
+            <p>Satelit multiband atau sensor udara menangkap informasi yang dibedakan menjadi pita panjang gelombang, yang diidentifikasi dengan indeks pita. Indeks Vegetasi Hijau mengharuskan Anda menentukan indeks pita untuk pita panjang gelombang Biru, Hijau, Merah, Near Infrared (NIR), Shortwave Infrared 1 (SWIR-1), dan Shortwave Infrared 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ SAVI yang telah bertransformasi adalah indeks vegetasi yang berusaha untuk memin
         <div><h2>Jumlah cakupan vegetasi hijau</h2></div>
         <hr/>
         <div>
-            <p>Menentukan jumlah cakupan vegetasi hijau, yang diperlukan oleh metode SAVI.
+            <p>Menentukan jumlah cakupan vegetasi hijau, yang diperlukan oleh metode Transformed Soil-Adjusted Vegetation.
             </p>
             <p>Nilai yang valid adalah sebagai berikut:
                 <ul>
@@ -172,8 +206,7 @@ SAVI yang telah bertransformasi adalah indeks vegetasi yang berusaha untuk memin
             
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
-            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>. Jika Anda memiliki hak istimewa untuk membuat layer citra dinamis dan tile, Anda dapat menentukan jenis layer yang akan dihasilkan dalam output menggunakan kotak drop-down Simpan hasil sebagai. </p>
         </div>
     </div>
 </div>

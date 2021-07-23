@@ -40,38 +40,22 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Sampel</h2><p/>
         <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Sampel"></h2>
         <hr/>
     <p>Alat ini membuat feature class titik atau tabel yang menunjukkan nilai sel dari raster, atau rangkaian raster, untuk lokasi yang ditentukan. Lokasi ditentukan oleh sel raster, fitur poligon, fitur polyline, atau oleh serangkaian titik.
     </p>
-    <p>Nilai piksel akan diekstrak dari semua raster input di setiap lokasi. Feature class titik atau tabel akan dibuat dengan kolom yang berisi nilai piksel untuk setiap raster input. Atribut tambahan dari tabel raster input tidak akan dimasukkan dalam tabel output.
-    </p>
-    <p>Kombinasi raster apa pun, seperti band tunggal, multiband, multidimensional, atau multivarian, dapat ditentukan sebagai raster input. Struktur tabel output berubah saat raster input bersifat multidimensional. Ketika raster multiband ditentukan sebagai salah satu raster input, semua band dalam input itu akan digunakan. Untuk memproses pilihan band dari raster multiband input, pertama-tama buatlah set data raster baru yang terdiri dari band-band tertentu. Gunakan hasilnya dalam daftar raster input.
-    </p>
-    <p>Lokasi input dapat berupa fitur raster atau titik:
+    <p>Beberapa contoh aplikasi alat ini meliputi hal berikut:
         <ul>
-            <li>Raster&mdash;Piksel yang berisi nilai yang valid (bukan NoData) digunakan untuk mengekstraksi nilai piksel dari semua raster input, dan pusat piksel digunakan untuk lokasi titik.
+            <li> Ekstrak atribut dari lokasi menara seluler dari beberapa raster, seperti penggunaan lahan, jenis tanah, elevasi, dan jarak ke jalan.
             </li>
-            <li>Poin&mdash;Nilai akan diambil sampelnya di setiap lokasi titik.
+            <li>Ekstrak suhu tanah di kedalaman yang berbeda untuk set titik tertentu.
             </li>
-            <li>Polyline atau poligon&mdash;Nilai akan diambil sampelnya pada poligon atau centroid polyline. Jika raster input multidimensional, nilainya akan diagregasi berdasarkan jenis  <b>Statistik</b>.
+            <li>Dari data suhu permukaan laut bulanan selama 30 tahun, rangkum di lokasi hewan atau dalam wilayah jelajah untuk waktu tertentu saat spesies hewan diamati.
             </li>
         </ul>
         
-    </p>
-    <p>Raster input diambil sampelnya dalam referensi dan resolusi spasial asli mereka. Jika ada beberapa raster input dengan referensi spasial yang berbeda, lokasi input diproyeksikan ke masing-masing referensi spasial raster individu yang nilainya diekstrak. Lingkungan analisis diterapkan ke lokasi input, tetapi raster input tidak akan menaati lingkungan analisis.
-    </p>
-    <p>Lokasi yang mengekstrak nilai dari sel NoData di raster input akan diberi nilai &lt;null&gt; di tabel output.
-    </p>
-    <p>Untuk melakukan analisis dengan fitur multititik, pertama-tama ubahlah ke fitur titik tunggal sebelum menggunakannya dalam alat ini.
-    </p>
-    <p>Referensi spasial dari koordinat x, y dalam tabel sampel output sama dengan raster lokasi input atau fitur titik, kecuali jika ditentukan dalam lingkungan <b>Sistem Koordinat Output</b>. Jika referensi spasial dari data lokasi input tidak diketahui, referensi spasial dari koordinat x, y juga tidak diketahui.
-    </p>
-    <p>Referensi spasial dari feature class output sama dengan raster lokasi input atau fitur titik, kecuali jika ditentukan dalam lingkungan  <b>Sistem Koordinat Output</b>.
-    </p>
-    <p>Lingkungan  <b>Faktor Pemrosesan Paralel</b> hanya didukung bila inputnya adalah raster multidimensional.
     </p>
     <p>Jika  <b>Gunakan jangkauan peta saat ini</b> dicentang, variabel atau band layer yang terlihat dalam jangkauan peta saat ini akan dianalisis. Jika tidak dicentang, variabel atau band layer penuh akan dianalisis, bahkan jika mereka berada di luar jangkauan peta saat ini.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Pilih layer citra untuk sampel</h2></div>
         <hr/>
         <div>
-            <p>Layer citra tunggal atau daftar layer citra yang nilainya akan diambil sampel berdasarkan data lokasi input.
+            <p>Satu gambar atau daftar gambar yang nilainya akan diambil sampel berdasarkan data lokasi input. 
             </p>
             <p>Untuk mengambil sampel semua irisan dari layer citra multidimensional, irisan tersebut harus menjadi satu-satunya raster input.
             </p>
@@ -112,40 +96,42 @@
             <p>Tentukan waktu, kedalaman, atau data akuisisi lainnya yang terkait dengan sel atau fitur lokasi.
             </p>
             <p>Untuk setiap dimensi, ada tiga opsi untuk menentukan informasi akuisisi yang terkait dengan sel atau fitur lokasi:
-                <ul>
-                    <li> <b>Kolom atau nilai tunggal</b>&mdash;Bila opsi ini dipilih, informasi berikut perlu ditentukan:
-                        <ul>
-                            <li> <b>Nilai atau kolom dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Kolom atau nilai tunggal</b>&mdash;Jika opsi ini dipilih, informasi berikut ini harus ditentukan:
+                    <ul>
+                        <li> <b>Kolom atau nilai dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Nilai atau kolom tunggal dengan nilai relatif</b>&mdash;Jika opsi ini dipilih, informasi di bawah ini perlu ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
-                        <ul>
-                            <li> <b>Nilai atau kolom dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi.
-                            </li>
-                            <li> <b>Nilai relatif sebelumnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk dikurangi dari <b>Kolom dimensi atau nilai</b> untuk menentukan awal rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
-                            </li>
-                            <li> <b>Nilai relatif setelahnya</b>&mdash;tentukan angka non-negatif yang digunakan untuk ditambahkan ke <b>Kolom dimensi atau nilai</b> untuk menentukan akhir rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Nilai atau kolom awal dan akhir</b>&mdash;Jika opsi ini dipilih, informasi di bawah ini perlu ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
-                        <ul>
-                            <li> <b>Nilai atau kolom awal</b>&mdash;pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan awal rentang nilai dimensi.
-                            </li>
-                            <li> <b>Nilai atau kolom akhir</b>&mdash;pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan akhir rentang nilai dimensi.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Nilai atau kolom tunggal dengan nilai relatif</b>&mdash;Jika opsi ini dipilih, informasi berikut ini harus ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
+                    <ul>
+                        <li> <b>Kolom atau nilai dimensi</b>&mdash;Pilih kolom nilai dimensi dari data lokasi.
+                        </li>
+                        <li> <b>Nilai relatif sebelumnya</b>&mdash;Tentukan angka non-negatif yang digunakan untuk dikurangi dari <b>Kolom atau nilai dimensi</b> untuk menentukan awal rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                        </li>
+                        <li> <b>Nilai relatif setelahnya</b>&mdash;Tentukan angka non-negatif yang digunakan untuk ditambahkan ke <b>Kolom atau nilai dimensi</b> untuk menentukan akhir rentang nilai dimensi. Nilai ini mewakili jumlah hari jika dimensinya adalah waktu.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Kolom atau nilai awal dan akhir</b>&mdash;Jika opsi ini dipilih, informasi di bawah ini perlu ditentukan bersama untuk menentukan rentang di mana statistik akan dihitung untuk variabel:
+                    <ul>
+                        <li> <b>Kolom atau nilai awal</b>&mdash;Pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan awal rentang nilai dimensi.
+                        </li>
+                        <li> <b>Nilai kolom akhir</b>&mdash;Pilih kolom nilai dimensi dari data lokasi, atau masukkan nilai dimensi tertentu, untuk menentukan akhir rentang nilai dimensi.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Parameter ini hanya tersedia jika parameter  <b>Pilih layer citra untuk diambil sampel</b> merupakan raster multidimensional.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Jarak yang ditentukan di sekitar fitur data lokasi. Jarak buffer ditentukan dalam unit linear dari referensi spasial fitur lokasi. Jika fitur menggunakan referensi geografis, unit akan berupa derajat.
             </p>
             <p>Statistik akan dihitung dalam area buffer ini.
+            </p>
+            <p>Parameter ini hanya tersedia saat  <b>Pilih layer citra untuk diambil sampel</b> merupakan raster multidimensional.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Parameter ini hanya tersedia saat parameter  <b>Pilih layer citra untuk diambil sampel</b> merupakan raster multidimensional, dan parameter <b>Pilih layer lokasi</b> merupakan polyline atau poligon, atau <b>Tentukan kolom atau nilai jarak buffer (Opsional)</b> ditentukan.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Nilai Persentil</h2></div>
         <hr/>
         <div>
-            <p>Persentil yang akan dihitung saat parameter  <b>Jenis Statistik</b> diatur ke <b>Persentil</b>.
-            </p>
             <p>Nilai ini dapat memiliki rentang dari 0 hingga 100. Defaultnya adalah 90.
+            </p>
+            <p>Parameter ini hanya tersedia jika parameter  <b>Pilih Jenis statistik</b> diatur ke <b>Persentil</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Algoritme pengambilan ulang sampel digunakan saat mengambil sampel raster.
             </p>
             <ul>
-                <li> <b>Terdekat</b>&mdash;Lingkungan terdekat, menggunakan nilai dari sel terdekat untuk menetapkan nilai ke sel output saat pengambilan sampel ulang. Ini adalah default.
+                <li> <b>Terdekat</b>&mdash;Lingkungan terdekat, yang menggunakan sel terdekat untuk menetapkan nilai ke sel output saat pengambilan sampel ulang. Ini adalah default.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Interpolasi bilinear, menentukan nilai baru sebuah sel berdasarkan rata-rata jarak tertimbang dari empat pusat sel input terdekat.
+                <li> <b>Bilinear</b>&mdash;Interpolasi bilinear, yang menentukan nilai baru sel berdasarkan rata-rata jarak tertimbang dari empat pusat sel input terdekat.
                 </li>
-                <li> <b>Kubik</b>&mdash;Konvolusi kubik, menentukan nilai baru dari sebuah sel berdasarkan pemasangan kurva halus melalui 16 pusat sel input terdekat.
+                <li> <b>Kubik</b>&mdash;Konvolusi kubik, yang menentukan nilai baru sel berdasarkan pemasangan kurva halus melalui 16 pusat sel input terdekat.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Tentukan tata letak output</h2></div>
         <hr/>
         <div>
-            <p>Menentukan apakah nilai sampel muncul dalam baris atau kolom di tabel output. Opsi ini hanya tersedia saat raster multidimensional input berisi satu variabel dan satu dimensi, dan setiap irisan adalah raster band tunggal.
+            <p>Menentukan apakah nilai sampel muncul dalam baris atau kolom di tabel output.
             </p>
             <ul>
                 <li> <b>Nilai sampel muncul dalam baris</b>&mdash;Nilai sampel muncul dalam baris terpisah di tabel output. Ini adalah default.
                 </li>
-                <li> <b>Nilai sampel muncul dalam kolom</b>&mdash;Nilai sampel muncul dalam kolom terpisah di tabel output. Opsi ini hanya valid bila raster multidimensional input berisi satu variabel dan satu dimensi, dan setiap irisan adalah raster band tunggal.
+                <li> <b>Nilai sampel muncul dalam kolom</b>&mdash;Nilai sampel muncul dalam kolom terpisah di tabel output.
                 </li>
             </ul>
             
+            <p>Parameter ini hanya tersedia jika parameter  <b>Pilih layer citra untuk diambil sampel</b> merupakan raster multidimensional dan berisi satu variabel dan satu dimensi, dan setiap irisan merupakan raster band tunggal.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabel</b>&mdash;Buat tabel dengan nilai sampel. Ini adalah default.
                 </li>
-                <li> <b>Fitur</b>&mdash;Buat feature class titik dengan nilai sampel dalam tabelnya. Jika fitur lokasi input adalah polyline atau poligon, setiap titik dalam output adalah centroid setiap geometri dari fitur lokasi input.
+                <li> <b>Fitur</b>&mdash;Buat feature class titik dengan nilai sampel dalam tabelnya. Jika <b>Pilih layer lokasi</b> merupakan polyline atau poligon, setiap poin di output adalah centroid setiap geometri dari fitur lokasi input. 
                 </li>
             </ul>
             

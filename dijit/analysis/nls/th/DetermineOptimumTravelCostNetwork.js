@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"เลือกแรสเตอร์หรือชั้นข้อมูลที่ตั้งของฟีเจอร์เพื่อกำหนดเส้นทางการเดินทางระหว่าง",inputCostRasterLabel:"เลือกชั้นข้อมูลแรสเตอร์ต้นทุนการเดินทาง",outputOptimumNetworkName:"ชื่อชั้นข้อมูลโพลีไลน์ของเส้นทางที่เหมาะสมของผลลัพธ์",outputNeighborNetworkName:"ชื่อชั้นข้อมูลโพลีไลน์ของเส้นทางที่ใกล้เคียงของผลลัพธ์ (ไม่บังคับ)",outputLayerName:"กำหนดต้นทุนการเดินทางที่เหมาะสมของ ${layername}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้กำหนดเครือข่ายต้นทุนการเดินทางที่เหมาะสมใน ${layerName} ",itemTags:"ผลการวิเคราะห์, กำหนดเครือข่ายต้นทุนการเดินทางที่เหมาะสม, ${layername} ${fieldname}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากกำหนดเครือข่ายต้นทุนการเดินทางที่เหมาะสม"});

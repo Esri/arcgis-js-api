@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
-define(["../GridLayoutCalculatorQueryUtil","./RowDataUtil","./_RowModifierLoose","./_RowModifierNormal"],(function(t,e,a,i){var o={},n=function(t,a,i,o){if(t.getMaxHeight()){var n=0;t.store.data.forEach((function(o){o!==a&&(n+=e.getDataHeight(t,o,i))})),o=Math.min(t.getMaxHeight()-n,o)}return o},r=function(a,i,o,n){var r=t.getMovableData(a,i,o);r&&(n-=e.calcDataHeight(a,i,o,r.index));return{data:r||i,height:n}},l=function(t){t.getFieldCells().forEach((function(a){a.setHeight(e.calcDataHeight(t,a.gridData,a.column.field))}))};return o.adjustRowHeight=function(t,e,o,f){f=n(t,e,o,f);var u=r(t,e,o,f);(t.looseResize?a:i).adjustRowHeight(t,u.data,o,u.height),l(t)},o.getAffectedCells=function(t,e,i){return t.looseResize?a.getAffectedCells(t,r(t,e,i).data,i):null},o}));
+define(["../GridLayoutCalculatorQueryUtil","./RowDataUtil","./_RowModifierLoose","./_RowModifierNormal"],(function(t,e,a,i){var o={},n=function(t,a,i,o){if(t.getMaxHeight()){var n=0;t.rows.forEach((function(o){o!==a&&(n+=e.getDataHeight(t,o,i))})),o=Math.min(t.getMaxHeight()-n,o)}return o},r=function(a,i,o,n){var r=t.getMovableData(a,i,o);r&&(n-=e.calcDataHeight(a,i,o,r.index));return{data:r||i,height:n}},l=function(t){t.getCells().forEach((function(a){a.setHeight(e.calcDataHeight(t,a.row,a.column.field))}))};return o.adjustRowHeight=function(t,e,o,f){f=n(t,e,o,f);var u=r(t,e,o,f);(t.looseResize?a:i).adjustRowHeight(t,u.data,o,u.height),l(t)},o.getAffectedCells=function(t,e,i){return t.looseResize?a.getAffectedCells(t,r(t,e,i).data,i):null},o}));

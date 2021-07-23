@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="smallsize">
         <h2>Sliv</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Zadatak za sliv"></h2>
         <hr/>
     <p>Ovaj alat određuje uzvodno područje iznad skupa ćelija u rasteru.
     </p>
-    <p>Sliv je područje odakle vode otječu do zajedničkog odredi&scaron;ta. Može biti dio većeg slive te također može sadržavati manje slivove koji se nazivaju podslivovima.
-    </p>
-    <p>Vrijednost svakog sliva uzima se iz vrijednosti izvora u ulaznom rasteru ili odvodne točke sloja geoobjekata. Kada je odvodna točka rasterski skup podataka, prema zadanim se postavkama upotrebljavaju vrijednosti ćelija. Kada je odvodna točka skup podataka točkastih geoobjekata, vrijednosti dolaze iz navedenog polja.
-    </p>
-    <p>Alat Sliv podržava samo rasterski sloj ulaznog sloja protoka D8.
-    </p>
-    <p>Kada navodite lokacije za ulazne odvodne točke kao podatke geoobjekata, zadano će polje biti prvo dostupno valjano polje. Ako nema valjanog polja, zadano će polje biti ID objekta (na primjer OID ili FID).
+    <p> Ulazna točka na rijeci Mississippi u Louisiani stvorit će geoobjekt sliva koji se prostire na područja od New Yorka do Montane i do Kanade.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Ulazni raster koji pokazuje smjer protoka iz svake ćelije.
             </p>
-            <p>Raster smjera protoka može se izraditi upotrebom alata Smjer protoka ili zadatka Smjer Protoka u usluzi alata za analizu rastera koje se mogu pokrenuti kori&scaron;tenjem zadane vrste smjera protoka  <b>D8</b>.
+            <p>Raster smjera protoka može se stvoriti pomoću rasterske funkcije Smjer protoka, sa zadanim tipom smjera protoka  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Ulazne lokacije odvodnih točaka.
             </p>
-            <p>Za raster to predstavlja ćelije iznad kojih se određuje područje razvođa odnosno područja odakle se slijeva voda. Sve ćelije koje nisu bez podataka upotrijebit će se kao ćelije izvora. Za unos točaka to predstavlja lokacije iznad kojih se određuje područje razvođa odnosno područja odakle se slijeva voda.
+            <p>To može biti raster ili točkasti geoobjekat. Za raster to predstavlja ćelije iznad kojih se određuje područje razvođa odnosno područja odakle se slijeva voda. Sve ćelije koje nisu bez podataka upotrijebit će se kao ćelije izvora. Za unos točaka to predstavlja lokacije iznad kojih se određuje područje razvođa odnosno područja odakle se slijeva voda.
             </p>
         </div>
     </div>
@@ -82,19 +76,18 @@
         <div>
             <p>Polje se upotrebljava za dodjeljivanje vrijednosti do lokacija odvnodnih točaka.
             </p>
-            <p>Ako je ulazna odvodna točka raster, upotrebljava se vrijednost. Ako je geoobjekt, upotrebljava se brojčano polje. Ako polje sadrži vrijednosti plutajuće točke, skratit će se u cijele brojeve.
+            <p>Ako je ulazna odvodna točka raster, upotrebljava se  <i>Value</i>. Ako je geoobjekt, upotrebljava se brojčano polje. Ako polje sadrži vrijednosti plutajuće točke, skratit će se u cijele brojeve.
             </p>
         </div>
     </div>
     <div id="resultLayer">
-        <div><h2>Naziv sloja rezultata</h2></div>
+        <div><h2>Naziva sloja rezultata</h2></div>
         <hr/>
         <div>
             
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
-            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
-            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>. Ako imate privilegije za stvaranje slojeva pločica i dinamičkih slika, možete odrediti koju vrstu sloja želite generirati u izlazu pomoću Spremi rezultat kao padajućeg okvira. </p>
         </div>
     </div>
 </div>

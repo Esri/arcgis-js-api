@@ -42,15 +42,11 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Dichte berechnen</h2><p/>
-        <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Das Werkzeug &quot;Dichte berechnen&quot;"></h2>
+        <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Werkzeug &quot;Dichte berechnen&quot;"></h2>
         <hr/>
     <p>Dieses Werkzeug erstellt eine Dichtekarte aus Punkt- oder Linien-Features, indem bekannte Mengen eines Ph&auml;nomens (als Attribute der Punkte oder Linien dargestellt) auf der Karte verteilt werden. Das Resultat ist ein Layer mit Fl&auml;chen, die von geringster bis h&ouml;chster Dichte klassifiziert sind.
     </p>
-    <p>Bei der Punkteingabe stellt jeder Punkt die Position eines Ereignisses und der Ergebnis-Layer die Anzahl der Ereignisse pro Fl&auml;cheneinheit dar. Ein h&ouml;herer Dichtewert an einer neuen Position bedeutet, dass sich mehr Punkte in der N&auml;he dieser Position befinden. In vielen F&auml;llen kann der Ergebnis-Layer als Risikoprognose f&uuml;r zuk&uuml;nftige Ereignisse interpretiert werden. Wenn die Eingabepunkte beispielsweise Positionen mit Blitzeinschl&auml;gen darstellen, kann der Ergebnis-Layer als Risikooberfl&auml;che f&uuml;r zuk&uuml;nftige Blitzeinschl&auml;ge interpretiert werden.
-    </p>
-    <p>Bei der Linieneingabe stellt die Oberfl&auml;che der Liniendichte die Gesamtzahl der Linien dar, die sich in der N&auml;he einer Position befinden. Die Einheit der berechneten Dichtewerte ist die Linienl&auml;nge pro Fl&auml;cheneinheit. Wenn die Linien beispielsweise Fl&uuml;sse darstellen, stellt der Ergebnis-Layer die Gesamtl&auml;nge von Fl&uuml;ssen innerhalb des Suchradius dar. Anhand dieses Ergebnisses k&ouml;nnen Fl&auml;chen identifiziert werden, die f&uuml;r Weidetiere geeignet sind.
-    </p>
-    <p>Nachfolgend finden Sie weitere Anwendungsf&auml;lle dieses Werkzeugs:
+    <p>Dieses Werkzeug umfasst die folgenden Anwendungsgebiete:
         <ul>
             <li>Erstellung von Kriminalit&auml;tsdichtekarten, um Polizeidienststellen bei der entsprechenden Zuteilung von Ressourcen zu unterst&uuml;tzen.
                 
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Ermitteln von Gemeinden, die weit von wichtigen Fernstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen
+            <li>Ermittlung von Gemeinden, die weit von Hauptverkehrsstra&szlig;en entfernt sind, um zu planen, wo neue Stra&szlig;en gebaut werden m&uuml;ssen.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Eingabepunkt- oder Linien-Layer zum Berechnen der Dichte auswählen</h2></div>
         <hr/>
         <div>
-            <p>Der Eingabepunkt- oder -linien-Layer, der zur Berechnung des Dichte-Layers verwendet wird.
+            <p>Der Eingabepunkt oder die Eingabelinie zur Berechnung der Dichte.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>Die Zellengr&ouml;&szlig;e und Einheit f&uuml;r die Ausgabe-Raster.
             </p>
+            <p>Die Einheiten k&ouml;nnen Kilometer, Meter, Meilen oder Fu&szlig; sein.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
-            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird. Wenn Sie über Berechtigungen zum Erstellen gekachelter und dynamischer Bilddaten-Layer verfügen, können Sie angeben, welcher Layer-Typ in der Ausgabe generiert werden soll, indem Sie das Dropdown-Feld "Ergebnis speichern als" verwenden. </p>
         </div>
     </div>
 </div>

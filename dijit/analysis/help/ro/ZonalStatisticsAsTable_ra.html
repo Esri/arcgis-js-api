@@ -46,15 +46,13 @@
         <hr/>
     <p>Acest instrument rezumă valorile unui raster &icirc;n cadrul zonelor unui alt set de date și raportează rezultatele &icirc;ntr-un tabel.
     </p>
-    <p>Printre exemplele de aplicaţii se numără:
-    </p>
-    <p>
+    <p>Printre exemplele de aplicație ale acestui instrument se numără:
         <ul>
-            <li>Lu&acirc;nd &icirc;n considerare un strat tematic de granițe statale și distribuția precipitațiilor medii &icirc;n Statele Unite continentale, calculați distribuția la nivel de stat a evenimentelor de ploi extreme utiliz&acirc;nd o listă a valorilor de percentilă.
+            <li>Av&acirc;nd un strat tematic de graniţe de cumpănă de ape şi un strat tematic cu graniţe de utilizare a terenurilor &icirc;n funcţie de tipul utilizărilor, calculaţi suprafaţa totală pentru fiecare tip de utilizare a terenului pentru fiecare cumpănă de ape.
                 
 
             </li>
-            <li>Lu&acirc;nd &icirc;n considerare un strat tematic al zonelor ecologice suprapuse și un strat tematic de tip raster a umidității solului, calculați toate statisticile acceptate &icirc;n cadrul fiecărei zone pentru a asocia zonele cu disponibilitatea umidității solului.
+            <li>Av&acirc;nd un strat tematic de parcele dintr-un judeţ şi un strat tematic de limite ale localităţilor, rezumaţi valoarea medie a parcelelor libere dintre graniţele fiecărei localităţi.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Alegeți rasterul sau obiectele spațiale de zonă</h2></div>
         <hr/>
         <div>
-            <p>Stratul tematic care definește limitele zonelor sau ale suprafețelor care vor fi rezumate.
+            <p>Intrarea care definește limitele zonelor sau ale suprafețelor care vor fi rezumate.
             </p>
-            <p>Stratul tematic poate fi un raster de tip număr &icirc;ntreg sau date de obiecte spațiale. Pentru rastere, zonele sunt definite de toate locaţiile din intrare care au aceeaşi valoare a celulelor. Pentru obiectele spațiale, zonele pot fi suprapuse. Suprafeţele nu trebuie să fie continue.
+            <p>Intrarea poate fi un raster de tip număr &icirc;ntreg sau date de obiecte spațiale. Pentru rastere, zonele sunt definite de toate locaţiile din intrare care au aceeaşi valoare a celulelor. Pentru obiectele spațiale, zonele pot fi suprapuse. Suprafeţele nu trebuie să fie continue.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Câmp zonă</h2></div>
         <hr/>
         <div>
-            <p>Acesta este atributul stratului tematic care va fi utilizat pentru a defini limitele zonelor (suprafețelor).
+            <p>C&acirc;mpul care include valorile care definesc fiecare zonă.
             </p>
-            <p>De exemplu, să presupunem că primul strat tematic de intrare defineşte limitele unităţii de administrare, cu atribute care definesc regiunea, districtul şi ID-ul de parcelă pentru fiecare unitate. De asemenea, aveţi un strat tematic raster care defineşte un index de biodiversitate pentru fiecare locaţie. Cu c&acirc;mpul pe care &icirc;l selectaţi, puteţi decide să calculaţi biodiversitatea medie la nivel local, districtual sau regional.
+            <p>Poate fi un număr &icirc;ntreg sau un c&acirc;mp șir al setului de date de zonă.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Alegeți raster valoare</h2></div>
         <hr/>
         <div>
-            <p>Celulele raster din acest strat tematic vor fi rezumate după suprafeţele (zonele) &icirc;n care sunt incluse.
+            <p>Rasterul care conține valorile pe baza cărora se calculează o statistică.
+            </p>
+            <p>Poate fi de tip număr &icirc;ntreg sau punct flotant. Dacă este de tip punct flotant, opțiunile de calculare a majorității, minorității și varietății nu vor fi disponibile.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignorați NoData în calcule (opțional)</h2></div>
         <hr/>
         <div>
-            <p>Specifică dacă valorile NoData sunt ignorate &icirc;n analiză.
-                <ul>
-                    <li>Bifat &ndash; analiza va include celulele care au o valoare &icirc;n rasterul de valoare de intrare &icirc;ntr-o anumită zonă pentru a determina valoarea de ieșire pentru acea zonă. Celulele NoData din rasterul de valoare vor fi ignorate &icirc;n calcularea statisticii. Aceasta este acţiunea implicită.
-                    </li>
-                    <li>Nebifat &ndash; analiza va avea ca rezultat NoData dacă există orice valori NoData pentru celulele rasterului de valoare dintr-o anumită zonă.
-                    </li>
-                </ul>
-                
+            <p> Specifică dacă valorile NoData sunt ignorate &icirc;n analiză.
             </p>
+            <ul>
+                <li>Bifat &ndash; analiza va include celulele care au o valoare &icirc;n rasterul de valoare de intrare &icirc;ntr-o anumită zonă pentru a determina valoarea de ieșire pentru acea zonă. Celulele NoData din rasterul de valoare vor fi ignorate la calcularea statisticii. Aceasta este acţiunea implicită.
+                </li>
+                <li>Nebifat &ndash; analiza va avea ca rezultat NoData dacă există orice valori NoData pentru celulele rasterului de valoare dintr-o anumită zonă.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Specifică tipul de statistică care trebuie să se calculeze.
             </p>
-            <p>Intrarea poate fi una dintre următoarele:  <b>Toate</b>, <b>Medie</b>, <b>Majoritate</b>, <b>Maxim</b>, <b>Mediană</b>, <b>Minim</b>, <b>Minoritate</b>, <b>Percentilă</b>, <b>Interval</b>, <b>Abatere standard</b>, <b>Sumă</b>, <b>Varietate</b>, <b>Minim și Maxim</b>, <b>Abatere medie și standard</b> sau <b>Minimă, maximă și medie</b>. Intrarea implicită este <b>Toate</b>.
-            </p>
-            <p>Dacă rasterul de valoare de intrare este număr &icirc;ntreg, &icirc;n mod implicit, vor fi calculate toate statisticile. Dacă rasterul de valoare este de tip virgulă mobilă, &icirc;n mod implicit, vor fi calculate toate statisticile, cu excepția  <b>Mediană</b> și <b>Percentilă</b>. 
-            </p>
-            <p>Dacă rasterul de valoare de intrare este de tip virgulă mobilă, calculele zonale pentru  <b>Majoritate</b>, <b>Minoritate</b> și <b>Varietate</b> nu pot fi terminate.
+            <p> Intrarea poate fi una dintre următoarele: <b>Toate</b>, <b>Medie</b>, <b>Majoritate</b>, <b>Maxim</b>, <b>Mediană</b>, <b>Minim</b>, <b>Minoritate</b>, <b>Percentilă</b>, <b>Interval</b>, <b>Abatere standard</b>, <b>Sumă</b>, <b>Varietate</b>, <b>Minim și Maxim</b>, <b>Abatere medie și standard</b> sau <b>Minimă, maximă și medie</b>. Intrarea implicită este <b>Toate</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Valori percentilă (opțional)</h2></div>
         <hr/>
         <div>
-            <p>Percentilele ce trebuie calculate. Poate fi specificată o singură valoare sau o listă a valorilor. Valoarea implicită este 90 și indică cea de-a 90-a percentilă.
+            <p>Percentila de calculat. Valoarea implicită este 90 și indică cea de-a 90-a percentilă.
             </p>
-            <p>Valorile variază &icirc;ntre 0 și 100. &Icirc;n principiu, rezultatul ce specifică percentila 0 este echivalent cu statistica minimă, iar cea de-a 100-a percentilă este echivalentă cu maxima. &Icirc;n principiu, valoarea 50 are același rezultat ca statistica mediană.
+            <p>Valoarea variază &icirc;ntre 0 și 100. &Icirc;n principiu, rezultatul ce specifică percentila 0 este echivalent cu statistica minimă, iar cea de-a 100-a percentilă este echivalentă cu maxima. &Icirc;n principiu, valoarea 50 are același rezultat ca statistica mediană.
             </p>
-            <p>Această opțiune este acceptată doar dacă parametrul  <b>Tip statistici</b> este setat la <b>Percentilă</b> sau la <b>Toate</b>.
+            <p> Acest parametru este acceptat doar dacă parametrul <b>Tip statistici</b> este setat la <b>Percentilă</b> sau la <b>Toate</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Tip de interpolare a percentilei (opțional)</h2></div>
         <hr/>
         <div>
-            
             <p>Specifică metoda de interpolare a percentilei de folosit atunci c&acirc;nd numărul valorilor din rasterul de intrare de calculat este par.
-            </p> 
-            <p>Dacă rasterul valorii de intrare este de tipul pixelului cu număr &icirc;ntreg, se folosește metoda  <b>Cel mai apropiat</b>. Dacă rasterul valorii de intrare este de tipul pixelului cu virgulă mobilă, se folosește metoda <b>Liniară</b>. Aceasta este acţiunea implicită.
             </p>
-            <p>Pentru metoda  <b>Cea mai apropiată</b>, se folosește cea mai apropiată valoare disponibilă de percentila dorită. Pentru metoda <b>Liniar</b>, se folosește media ponderată a celor două valori &icirc;nconjurătoare de la percentila dorită.
-            </p> 
+            <ul>
+                <li>  <b>Detectare automată</b>&mdash;Dacă rasterul valorii de intrare este de tipul pixelului cu număr &icirc;ntreg, se folosește metoda <b>Cel mai apropiat</b>. Dacă rasterul valorii de intrare este de tipul pixelului cu virgulă mobilă, se folosește metoda <b>Liniară</b>. Aceasta este acţiunea implicită.
+                </li>
+                <li> <b>Cea mai apropiată</b>&mdash;se folosește cea mai apropiată valoare disponibilă de percentila dorită.
+                </li>
+                <li> <b>Liniar</b>&mdash;se folosește media ponderată a celor două valori &icirc;nconjurătoare de la percentila dorită.
+                </li>
+            </ul>
+            
+            <p> Acest parametru este acceptat doar dacă parametrul <b>Tip statistici</b> este setat la <b>Percentilă</b> sau la <b>Toate</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Procesați ca multidimensional (opțional)</h2></div>
         <hr/>
         <div>
-            <p>Specifică modul &icirc;n care rasterele de intrare vor fi prelucrate dacă acestea sunt multidimensionale.
+            <p>Specifică modul &icirc;n care serviciile de imagine multidimensionale de intrare vor fi procesate dacă acestea sunt multidimensionale.
             </p>
             <ul>
                 <li>Bifat &ndash; statisticile vor fi calculate din &icirc;mpărțirea actuală a setului de date multidimensional de intrare. Aceasta este acţiunea implicită.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
+            </p>
+            <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>.
             </p>
         </div>
     </div>

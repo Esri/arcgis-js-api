@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="smallsize">
         <h2>Zlewnia</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Zadanie Zlewnia"></h2>
         <hr/>
     <p>To narzędzie oblicza obszar spływu powyżej zestawu kom&oacute;rek w rastrze.
     </p>
-    <p>Zlewnia jest wznoszącym się obszarem wywołującym spływ &mdash; najczęściej wody &mdash; w kierunku ujścia, w postaci skoncentrowanej. Może być ona częścią większej zlewni, może też mieścić w sobie mniejsze zlewnie, nazywane basenami podrzędnymi.
-    </p>
-    <p>Wartość każdej zlewni będzie pobierana z wartości źr&oacute;dła w rastrze wejściowym lub warstwie obiektowej punktu wylewu. Gdy punkt wylewu jest zestawem danych rastrowych, domyślnie stosowane są wartości kom&oacute;rek. Gdy punkt wylewu jest zestawem danych obiekt&oacute;w punktowych, stosowane będą wartości z określonego pola.
-    </p>
-    <p>Narzędzie Zlewnia obsługuje tylko wejściową warstwę rastrową kierunku przepływu typu D8.
-    </p>
-    <p>Podczas określania lokalizacji wejściowego punktu wylewu jako danej obiektowej domyślnym polem będzie pierwsze dostępne poprawne pole. Jeśli nie istnieją poprawne pola, domyślnym polem będzie pole z identyfikatorem obiektu (na przykład OID lub FID).
+    <p> Punkt wejściowy na Missisipi w Luizjanie utworzy obiekt zlewni rozciągający się na obszary od Nowego Jorku do Montany i Kanady.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Raster wejściowy, kt&oacute;ry pokazuje kierunek przepływu od każdej kom&oacute;rki.
             </p>
-            <p>Raster kierunku przepływu można utworzyć za pomocą narzędzia Kierunek przepływu lub zadania FlowDirection w usłudze RasterAnalysisTools uruchomionej przy użyciu domyślnego typu kierunku przepływu  <b>D8</b>.
+            <p>Raster kierunku przepływu można utworzyć za pomocą funkcji Kierunek przepływu, używając domyślnego kierunku przepływu o typie  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Lokalizacje wejściowych punkt&oacute;w wylewu.
             </p>
-            <p>W przypadku rastra reprezentuje kom&oacute;rki, powyżej kt&oacute;rych zostanie określony obszar spływu (zlewnia). Jako kom&oacute;rki źr&oacute;dłowe zostaną użyte wszystkie kom&oacute;rki, kt&oacute;re nie mają wartości Brak danych. W przypadku danych wejściowych w postaci punkt&oacute;w reprezentuje lokalizacje, powyżej kt&oacute;rych zostanie określony obszar spływu (zlewnia).
+            <p>Może to być raster lub obiekt punktowy. W przypadku rastra reprezentuje kom&oacute;rki, powyżej kt&oacute;rych zostanie określony obszar spływu (zlewnia). Jako kom&oacute;rki źr&oacute;dłowe zostaną użyte wszystkie kom&oacute;rki, kt&oacute;re nie mają wartości Brak danych. W przypadku danych wejściowych w postaci punkt&oacute;w reprezentuje lokalizacje, powyżej kt&oacute;rych zostanie określony obszar spływu (zlewnia).
             </p>
         </div>
     </div>
@@ -82,7 +76,7 @@
         <div>
             <p>Pole służące do przypisywania wartości do lokalizacji punkt&oacute;w wylewu.
             </p>
-            <p>Jeśli punktowa warstwa wejściowa wylewu jest warstwą rastrową, używana jest wartość. Jeśli jest warstwą obiektową, używane jest pole liczbowe. Jeśli pole zawiera wartości zmiennoprzecinkowe, zostaną one obcięte do liczb całkowitych.
+            <p>Jeśli punktowa warstwa wejściowa wylewu jest warstwą rastrową, używane jest pole  <i>Value</i>. Jeśli jest warstwą obiektową, używane jest pole liczbowe. Jeśli pole zawiera wartości zmiennoprzecinkowe, zostaną one obcięte do liczb całkowitych.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
-            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
-            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik. Jeśli masz uprawnienia do tworzenia zarówno kafelkowych, jak i dynamicznych warstw zobrazowań, możesz zdecydować, który typ warstwy ma być używany go generowania danych wynikowych, używając pola rozwijanego Zapisz wyniki jako. </p>
         </div>
     </div>
 </div>

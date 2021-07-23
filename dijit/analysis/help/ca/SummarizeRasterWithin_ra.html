@@ -41,14 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Resumir el ràster dins de</h2><p/>
-        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Eina Resumir el r&agrave;ster dins de"></h2>
+        <h2>Resumir ráster dentro de</h2><p/>
+        <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Herramienta Resumir r&aacute;ster dentro de"></h2>
         <hr/>
     <p>Aquesta eina resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset.
     </p>
-    <p>Alguns exemples d'aplicacions s&oacute;n:
-    </p>
-    <p>
+    <p>Exemples d'aplicacions d'aquesta eina:
         <ul>
             <li>Donada una capa de l&iacute;mits de conques hidrogr&agrave;fiques i una capa de l&iacute;mits d'&uacute;s del s&ograve;l per tipus d'&uacute;s, calcular la superf&iacute;cie total del tipus d'&uacute;s del s&ograve;l per a cada conca hidrogr&agrave;fica.
                 
@@ -69,9 +67,9 @@
         <div><h2>Trieu una capa d'àrea per resumir una capa de ràster dins dels límits definits</h2></div>
         <hr/>
         <div>
-            <p>Capa que defineix els l&iacute;mits de les &agrave;rees o zones que es resumiran.
+            <p>Entrada que defineix els l&iacute;mits de les zones o &agrave;rees que es resumiran.
             </p>
-            <p>La capa pot ser de dades de r&agrave;ster o entitat. Per als r&agrave;sters, les zones es defineixen mitjan&ccedil;ant totes les ubicacions de l'entrada que tenen el mateix valor de cel&middot;la. No &eacute;s necessari que les &agrave;rees siguin contig&uuml;es.
+            <p>L'entrada pot ser de dades de r&agrave;ster o entitat de tipus enter. Per als r&agrave;sters, les zones es defineixen mitjan&ccedil;ant totes les ubicacions de l'entrada que tenen el mateix valor de cel&middot;la. En el cas de les entitats, les zones es poden superposar. No &eacute;s necessari que les &agrave;rees siguin contig&uuml;es.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Trieu un camp per definir els límits</h2></div>
         <hr/>
         <div>
-            <p>Atribut de la capa que s'utilitzar&agrave; per definir els l&iacute;mits de les &agrave;rees.
+            <p>Camp que cont&eacute; els valors que defineixen cada zona.
             </p>
-            <p>Per exemple, suposem que la primera capa d'entrada defineix els l&iacute;mits de les unitats d'administraci&oacute;, amb atributs que defineixen la regi&oacute;, el districte i l'identificador de parcel&middot;la de cada unitat. Tamb&eacute; teniu una capa r&agrave;ster que defineix un &iacute;ndex de biodiversitat per a cada ubicaci&oacute;. Amb el camp que seleccioneu, podeu decidir calcular la biodiversitat mitjana als nivells local, regional o de districte.
+            <p>Puede ser un campo de enteros o de cadenas de caracteres del dataset zonal.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Trieu una capa de ràster per resumir</h2></div>
         <hr/>
         <div>
-            <p>Les cel&middot;les de r&agrave;ster d'aquesta capa es resumiran per les &agrave;rees (zones) on es trobin.
+            <p>R&agrave;ster que cont&eacute; els valors sobre els quals es calcula una estad&iacute;stica.
+            </p>
+            <p>Pot ser un enter o un punt flotant. Aix&ograve; no obstant, si &eacute;s un punt flotant, les opcions per calcular els valors de majoria, minoria i varietat no estaran disponibles.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Trieu una estadística per calcular</h2></div>
         <hr/>
         <div>
-            <p>Quan h&agrave;giu triat una capa per resumir-la, tindreu l'opci&oacute; de calcular les estad&iacute;stiques de qualsevol atribut num&egrave;ric dels punts, les l&iacute;nies o les &agrave;rees que estiguin dins de la capa d'&agrave;rees d'entrada.
+            <p>Especifica el tipus d'estad&iacute;stica que es calcular&agrave;.
             </p>
-            <p>Els tipus d'estad&iacute;stiques disponibles quan el camp seleccionat &eacute;s un enter s&oacute;n Mitjana, Majoria, M&agrave;xim, Mediana, M&iacute;nim, Minoria, Percentil, Interval, Desviaci&oacute; est&agrave;ndard, Suma i Varietat.
-            </p>
-            <p>Si el camp &eacute;s un punt flotant, les opcions s&oacute;n Mitjana, M&agrave;xim, M&iacute;nim, Interval, Desviaci&oacute; est&agrave;ndard i Suma.
+            <p> L'entrada pot ser una de les seg&uuml;ents: <b>Normal</b>, <b>Majoria</b>, <b>M&agrave;xim</b>, <b>Mitjana</b>, <b>M&iacute;nim</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Interval</b>, <b>Desviaci&oacute; est&agrave;ndard</b>, <b>Suma</b> o <b>Varietat</b>. El valor per defecte &eacute;s <b>Normal</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Percentil que es calcular&agrave;. El valor per defecte &eacute;s 90, que indica el percentil 90.
             </p>
-            <p>Els valors poden anar de 0 a 100. El percentil 0 &eacute;s b&agrave;sicament equivalent a l'estad&iacute;stica m&iacute;nima i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
+            <p>El valor pot ser de 0 a 100. El resultat d'especificar el percentil 0 &eacute;s b&agrave;sicament equivalent al de l'estad&iacute;stica m&iacute;nima, i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
             </p>
-            <p>Aquesta opci&oacute; nom&eacute;s s'admet si el par&agrave;metre  <b>Trieu una estad&iacute;stica per calcular</b> es defineix com a <b>Percentil</b>.
+            <p> Aquest par&agrave;metre nom&eacute;s s'admet si el par&agrave;metre <b>Trieu una estad&iacute;stica per calcular</b> es defineix com a <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignora els valors que falten al càlcul</h2></div>
         <hr/>
         <div>
-            <p>Si opteu per ignorar els valors que falten, nom&eacute;s les cel&middot;les que tinguin un valor a la capa per resumir s'utilitzaran per determinar el valor de sortida de l'&agrave;rea. Altrament, si falten valors en qualsevol lloc d'una &agrave;rea, es considerar&agrave; insuficient la informaci&oacute; per realitzar c&agrave;lculs estad&iacute;stics a totes les cel&middot;les de la zona, i l'&agrave;rea rebr&agrave; un valor nul (NoData) a la sortida.
+            <p> Especifica si els valors que falten s'ignoren a l'an&agrave;lisi.
             </p>
+            <ul>
+                <li>Activat: l'an&agrave;lisi inclour&agrave; les cel&middot;les que tinguin un valor al r&agrave;ster de valor d'entrada en una zona concreta per determinar el valor de sortida de la zona. Les cel&middot;les NoData del r&agrave;ster de valor s'ignoraran al c&agrave;lcul estad&iacute;stic. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li>Desactivat: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per a les cel&middot;les del r&agrave;ster de valor en una zona concreta.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Processa com a multidimensional</h2></div>
         <hr/>
         <div>
-            <p>Especifica com es processaran els r&agrave;sters d'entrada si s&oacute;n multidimensionals. Si trieu processar-los com a multidimensionals, les estad&iacute;stiques es calcularan a partir de totes les dimensions del dataset multidimensional d'entrada. Si no, les estad&iacute;stiques es calcularan a partir del sector actual del dataset multidimensional d'entrada (aquesta &eacute;s l'opci&oacute; per defecte).
+            <p>Especifica com es processaran els serveis d'imatges multidimensionals d'entrada si s&oacute;n multidimensionals.
             </p>
+            <ul>
+                <li>Activat: les estad&iacute;stiques es calcularan a partir del sector actual del dataset multidimensional d'entrada. Esta es la opci&oacute;n predeterminada.
+                    
+
+                </li>
+                <li>Desactivat: les estad&iacute;stiques es calcularan per a totes les dimensions del dataset multidimensional d'entrada.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -138,10 +152,9 @@
         <hr/>
         <div>
             
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
-            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
-            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>. Si teniu permisos per crear capes d'imatges tant de tessel·les com dinàmiques, podeu especificar des de la llista desplegable Anomena i desa el resultat el tipus de capa que cal generar. </p>
         </div>
     </div>
 </div>

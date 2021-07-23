@@ -46,32 +46,16 @@
         <hr/>
     <p>Det h&auml;r verktyget skapar en tabell eller punktgeoobjektklass som visar v&auml;rdena f&ouml;r celler fr&aring;n ett raster, eller ett rasterset, f&ouml;r definierade platser. Platserna definieras av rasterceller, polygongeoobjekt, polylinjegeoobjekt eller av en upps&auml;ttning punkter.
     </p>
-    <p>Pixelv&auml;rden extraheras fr&aring;n alla indataraster p&aring; varje plats. En tabell eller punktgeoobjektklass skapas med f&auml;lt som inneh&aring;ller pixelv&auml;rdena f&ouml;r varje indataraster. Ytterligare attribut fr&aring;n indatarastertabellen inkluderas inte i utdatatabellen.
-    </p>
-    <p>Alla kombinationer av raster, t.ex. singelband, flerband, flerdimensionellt eller multivariat, kan specificeras som indataraster. Strukturen f&ouml;r utdatatabell&auml;ndringarna n&auml;r indatarastren &auml;r flerdimensionella. N&auml;r ett flerbandsraster anges som ett av indatarastren, anv&auml;nds alla band i indata. F&ouml;r att bearbeta ett urval band fr&aring;n ett indataflerbandsraster, m&aring;ste f&ouml;rst ett nytt rasterdataset skapas som best&aring;r av de specifika banden. Anv&auml;nd resultatet i listan &ouml;ver indataraster.
-    </p>
-    <p>Platsen f&ouml;r indata kan vara ett raster eller punktgeoobjekt:
+    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar av det h&auml;r verktyget:
         <ul>
-            <li>Raster &ndash; Pixlar som inneh&aring;ller giltiga v&auml;rden (inte NoData) anv&auml;nds f&ouml;r att extrahera pixelv&auml;rdena fr&aring;n alla indataraster, och centrum av pixeln anv&auml;nds f&ouml;r punktplatser.
+            <li> Extrahera attribut f&ouml;r mobilmastplatsen fr&aring;n flera raster, som markanv&auml;ndning, jordtyp, h&ouml;jd och avst&aring;nd till v&auml;g.
             </li>
-            <li>Punkt &ndash; V&auml;rden samplas p&aring; varje punktplats.
+            <li>Extrahera jordtemperatur p&aring; olika djup f&ouml;r en given upps&auml;ttning punkter.
             </li>
-            <li>Polylinje eller polygon &ndash; V&auml;rden samplas vid polygonens eller polylinjens centroid. Om indatarastret &auml;r flerdimensionellt aggregeras v&auml;rdena baserat p&aring; typen  <b>Statistik</b>.
+            <li>Med utg&aring;ngspunkt fr&aring;n 30 &aring;rs m&aring;nadsbaserade temperaturdata f&ouml;r havsytan, summerar du vid platser d&auml;r djur befinner sig eller inom hemomr&aring;den under en viss tid n&auml;r en djurart observerades.
             </li>
         </ul>
         
-    </p>
-    <p>Indatarastren samplas i sin inbyggda geografiska referens och uppl&ouml;sning. Om det finns flera indataraster med olika geografiska referenser, projiceras indataplatserna till varje enskilt rasters geografiska referens som v&auml;rden extraheras fr&aring;n. Analysmilj&ouml;n till&auml;mpas p&aring; indataplatserna, men indatarastren tar inte h&auml;nsyn till analysmilj&ouml;n.
-    </p>
-    <p>Platser som extraherar data fr&aring;n NoData-celler i indatarastret ges v&auml;rdet &lt;null&gt; i utdatatabellen.
-    </p>
-    <p>F&ouml;r att utf&ouml;ra analys med multipunktgeoobjekt, ska de f&ouml;rst konverteras till enpunktgeoobjekt innan de anv&auml;nds i det h&auml;r verktyget.
-    </p>
-    <p>Den geografiska referensen f&ouml;r x,y-koordinaterna i utdatasamplingstabellen &auml;r samma som indataplatsrastret eller punktgeoobjekten, om den inte anges i milj&ouml;n <b>Utdatakoordinatsystem</b>. Om den geografiska referensen f&ouml;r indataplatsdata &auml;r ok&auml;nd, &auml;r den geografiska referensen f&ouml;r x,y-koordinaterna ocks&aring; ok&auml;nd.
-    </p>
-    <p>Den geografiska referensen f&ouml;r utdatageoobjektklassen &auml;r samma som indataplatsrastret eller punktgeoobjekten, om den inte anges i milj&ouml;n  <b>Utdatakoordinatsystem</b>.
-    </p>
-    <p>Milj&ouml;n  <b>Parallellbearbetningsfaktor</b> st&ouml;ds endast n&auml;r indata &auml;r ett flerdimensionellt raster.
     </p>
     <p>Om  <b>Anv&auml;nd aktuell kartutbredning</b> &auml;r markerat analyseras variabler eller band f&ouml;r de lager som &auml;r synliga i den aktuella kartutbredningen. Om alternativet inte markeras analyseras variablerna eller banden i hela lagret, &auml;ven om de ligger utanf&ouml;r den aktuella kartutbredningen.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Välj bildlager att sampla</h2></div>
         <hr/>
         <div>
-            <p>Ett enda bildlager eller en lista &ouml;ver bildlager vars v&auml;rden ska samplas baserat p&aring; platsdata f&ouml;r indata.
+            <p>En enda bild eller en lista &ouml;ver bilder vars v&auml;rden ska samplas baserat p&aring; platsdata f&ouml;r indata. 
             </p>
             <p>F&ouml;r att sampla alla sektorer fr&aring;n ett flerdimensionellt bildlager, m&aring;ste det vara det enda indatarastret.
             </p>
@@ -112,40 +96,42 @@
             <p>Ange tid, djup eller andra inh&auml;mtningsdata kopplade till platscellerna eller geoobjekten.
             </p>
             <p>F&ouml;r varje dimension finns det tre alternativ f&ouml;r att ange inh&auml;mtningsinformationen kopplad till platsceller eller geoobjekt:
-                <ul>
-                    <li> <b>Ett f&auml;lt eller v&auml;rde</b> &ndash; N&auml;r det h&auml;r alternativet &auml;r markerat m&aring;ste f&ouml;ljande information anges:
-                        <ul>
-                            <li> <b>Dimensionsf&auml;lt eller v&auml;rde</b> &ndash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Ett f&auml;lt eller v&auml;rde</b> &mdash; N&auml;r det h&auml;r alternativet &auml;r markerat m&aring;ste f&ouml;ljande information anges:
+                    <ul>
+                        <li> <b>Dimensionsf&auml;lt eller v&auml;rde</b> &mdash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Ett f&auml;lt eller v&auml;rde med relativa v&auml;rden</b> &ndash; Om det h&auml;r alternativet &auml;r valt, m&aring;ste informationen nedan anges tillsammans f&ouml;r att definiera det intervall inom vilket statistiken ber&auml;knas f&ouml;r variabler:
-                        <ul>
-                            <li> <b>Dimensionsf&auml;lt eller v&auml;rde</b> &ndash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata.
-                            </li>
-                            <li> <b>Relativt v&auml;rde f&ouml;re</b> &ndash; Ange ett icke-negativt tal som ska anv&auml;ndas f&ouml;r att subtrahera fr&aring;n <b>Dimensionsf&auml;lt eller v&auml;rde</b> f&ouml;r att definiera starten av ett dimensionsv&auml;rdesintervall. Detta v&auml;rde motsvarar antalet dagar om dimensionen &auml;r tid.
-                            </li>
-                            <li> <b>Relativt v&auml;rde efter</b> &ndash; Ange ett icke-negativt tal som ska anv&auml;ndas f&ouml;r att l&auml;gga till <b>Dimensionsf&auml;lt eller v&auml;rde</b> f&ouml;r att definiera slutet av ett dimensionsv&auml;rdesintervall. Detta v&auml;rde motsvarar antalet dagar om dimensionen &auml;r tid.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Start- och slutf&auml;lt eller -v&auml;rden</b> &ndash; Om det h&auml;r alternativet &auml;r valt, m&aring;ste informationen nedan anges tillsammans f&ouml;r att definiera det intervall inom vilket statistiken ber&auml;knas f&ouml;r variabler:
-                        <ul>
-                            <li> <b>Startf&auml;lt eller -v&auml;rden</b> &ndash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde f&ouml;r att definiera starten av ett dimensionsv&auml;rdesintervall.
-                            </li>
-                            <li> <b>Slutf&auml;lt eller -v&auml;rden</b> &ndash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde f&ouml;r att definiera slutet av ett dimensionsv&auml;rdesintervall.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Ett f&auml;lt eller v&auml;rde med relativa v&auml;rden</b> &mdash; Om det h&auml;r alternativet &auml;r valt, m&aring;ste informationen nedan anges tillsammans f&ouml;r att definiera det intervall inom vilket statistiken ber&auml;knas f&ouml;r variabler:
+                    <ul>
+                        <li> <b>Dimensionsf&auml;lt eller v&auml;rde</b> &mdash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata.
+                        </li>
+                        <li> <b>Relativt v&auml;rde f&ouml;re</b> &mdash; Ange ett icke-negativt tal som ska anv&auml;ndas f&ouml;r att subtrahera fr&aring;n <b>Dimensionsf&auml;lt eller v&auml;rde</b> f&ouml;r att definiera starten av ett dimensionsv&auml;rdesintervall. Detta v&auml;rde motsvarar antalet dagar om dimensionen &auml;r tid.
+                        </li>
+                        <li> <b>Relativt v&auml;rde efter</b> &mdash; Ange ett icke-negativt tal som ska anv&auml;ndas f&ouml;r att l&auml;gga till <b>Dimensionsf&auml;lt eller v&auml;rde</b> f&ouml;r att definiera slutet av ett dimensionsv&auml;rdesintervall. Detta v&auml;rde motsvarar antalet dagar om dimensionen &auml;r tid.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Start- och slutf&auml;lt eller -v&auml;rden</b> &mdash; Om det h&auml;r alternativet &auml;r valt, m&aring;ste informationen nedan anges tillsammans f&ouml;r att definiera det intervall inom vilket statistiken ber&auml;knas f&ouml;r variabler:
+                    <ul>
+                        <li> <b>Startf&auml;lt eller -v&auml;rden</b> &mdash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde f&ouml;r att definiera starten av ett dimensionsv&auml;rdesintervall.
+                        </li>
+                        <li> <b>Slutf&auml;lt eller -v&auml;rden</b> &mdash; V&auml;lj ett f&auml;lt med dimensionsv&auml;rden fr&aring;n platsdata eller ange ett specifikt dimensionsv&auml;rde f&ouml;r att definiera slutet av ett dimensionsv&auml;rdesintervall.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Den h&auml;r parametern &auml;r endast tillg&auml;nglig n&auml;r parametern  <b>V&auml;lj bildlager att sampla</b> &auml;r ett flerdimensionellt raster.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Det angivna avst&aring;ndet runt platsdatageoobjekten. Buffertavst&aring;ndet anges i de linj&auml;ra enheterna f&ouml;r platsgeoobjektets geografiska referens. Om geoobjektet anv&auml;nder en geografisk referens blir enheten grader.
             </p>
             <p>Statistik ber&auml;knas inom detta buffertomr&aring;de.
+            </p>
+            <p>Den h&auml;r parametern &auml;r endast tillg&auml;nglig n&auml;r  <b>V&auml;lj bildlager att sampla </b> &auml;r ett flerdimensionellt raster.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Den h&auml;r parametern &auml;r endast tillg&auml;nglig n&auml;r parametern  <b>V&auml;lj bildlager att sampla</b> &auml;r ett flerdimensionellt raster och parametrarna <b>V&auml;lj platslager</b> &auml;r polylinjer eller polygoner eller <b>Ange buffertavst&aring;ndsf&auml;lt eller v&auml;rde (valfritt)</b> &auml;r angivet.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Percentilvärde</h2></div>
         <hr/>
         <div>
-            <p>Percentilen att ber&auml;kna n&auml;r parametern  <b>Statistiktyp</b> &auml;r inst&auml;lld p&aring; <b>Percentil</b>.
-            </p>
             <p>V&auml;rdet kan vara fr&aring;n 0 till 100. Standard &auml;r 90.
+            </p>
+            <p>Den h&auml;r parametern &auml;r endast tillg&auml;nglig n&auml;r parametern  <b>V&auml;lj statistiktyp</b> &auml;r inst&auml;lld p&aring; <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Omsamplingsalgoritm som anv&auml;nds n&auml;r ett raster samplas.
             </p>
             <ul>
-                <li> <b>N&auml;rmast</b> &ndash; N&auml;rmaste granne, anv&auml;nder v&auml;rdet i den n&auml;rmaste cellen f&ouml;r att tilldela ett v&auml;rde till utdatacellen vid omsampling. Det h&auml;r &auml;r standardinst&auml;llningen.
+                <li> <b>N&auml;rmast</b> &mdash; N&auml;rmaste granne, som anv&auml;nder v&auml;rdet i den n&auml;rmaste cellen f&ouml;r att tilldela ett v&auml;rde till utdatacellen vid omsampling. Det h&auml;r &auml;r standardinst&auml;llningen.
                 </li>
-                <li> <b>Bilinj&auml;r</b> &ndash; Bilinj&auml;r interpolation, fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; ett viktat avst&aring;ndsgenomsnitt f&ouml;r de fyra n&auml;rmaste indatacellcentren.
+                <li> <b>Bilinj&auml;r</b> &mdash; Bilinj&auml;r interpolation, som fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; ett viktat avst&aring;ndsgenomsnitt f&ouml;r de fyra n&auml;rmaste indatacellcentren.
                 </li>
-                <li> <b>Kubisk</b> &ndash; Kubisk interpolation, fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; inpassningen av en mjuk kurva genom de 16 n&auml;rmaste indatacellcentren.
+                <li> <b>Kubisk</b> &mdash; Kubisk interpolation, som fastst&auml;ller det nya v&auml;rdet i en cell baserat p&aring; inpassningen av en mjuk kurva genom de 16 n&auml;rmaste indatacellcentren.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Ange utdatalayout</h2></div>
         <hr/>
         <div>
-            <p>Anger om samplade v&auml;rden f&ouml;rekommer i rader eller kolumner i utdatatabellen. Alternativet &auml;r bara tillg&auml;ngligt n&auml;r det flerdimensionella indatarastret inneh&aring;ller en variabel och en dimension, och varje sektor &auml;r ett enbandsraster.
+            <p>Anger om samplade v&auml;rden f&ouml;rekommer i rader eller kolumner i utdatatabellen.
             </p>
             <ul>
                 <li> <b>Samplade v&auml;rden visas i rad</b> &ndash; Samplade v&auml;rden visas i separata rader i utdatatabellen. Det h&auml;r &auml;r standardinst&auml;llningen.
                 </li>
-                <li> <b>Samplade v&auml;rden visas i kolumn</b> &ndash; Samplade v&auml;rden visas i separata kolumner i utdatatabellen. Alternativet &auml;r bara giltigt n&auml;r det flerdimensionella indatarastret inneh&aring;ller en variabel och en dimension, och varje sektor &auml;r ett enbandsraster.
+                <li> <b>Samplade v&auml;rden visas i kolumn</b> &ndash; Samplade v&auml;rden visas i separata kolumner i utdatatabellen.
                 </li>
             </ul>
             
+            <p>Den h&auml;r parametern &auml;r endast tillg&auml;nglig n&auml;r parametern  <b>V&auml;lj bildlager att sampla</b> &auml;r ett flerdimensionellt raster och inneh&aring;ller en variabel och en dimension, och varje sektor &auml;r ett enbandsraster.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabell</b> &ndash; Generera en tabell med samplade v&auml;rden. Det h&auml;r &auml;r standardinst&auml;llningen.
                 </li>
-                <li> <b>Geoobjekt</b> &ndash; Generera en punktgeoobjektklass med samplade v&auml;rden i tabellen. Om indataplatsegoobjekten &auml;r polylinjer eller polygoner, &auml;r varje punkt i utdata centroiden f&ouml;r varje geometri i indataplatsgeoobjekten.
+                <li> <b>Geoobjekt</b> &ndash; Generera en punktgeoobjektklass med samplade v&auml;rden i tabellen. Om parametrarna <b>V&auml;lj platslager</b> &auml;r polylinjer eller polygoner &auml;r varje punkt i utdata centroiden f&ouml;r varje geometri i indataplatsgeoobjekten. 
                 </li>
             </ul>
             

@@ -40,21 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Gebiedstatistieken als tabel</h2><p/>
-        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Gebiedstatistieken als tabeldiagram"></h2>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Gebiedstatistieken als tabel diagram"></h2>
         <hr/>
     <p>Deze tool vat de waarden van een raster samen binnen de zones van een andere dataset en rapporteert de resultaten aan een tabel.
     </p>
-    <p>Enkele voorbeelden van de toepassingen zijn onder meer het volgende:
-    </p>
-    <p>
+    <p>Enkele voorbeelden van de toepassingen van deze tool zijn de volgende:
         <ul>
-            <li>Bereken aan de hand van een laag met grenzen van staten en de verdeling van de gemiddelde neerslag over de continentale Verenigde Staten de provinciale verdeling van extreme regen met behulp van een lijst van percentiele waarden.
+            <li>Er is een kaartlaag met stroomgebiedgrenzen en een laag met landgebruikgrenzen per type landgebruik; bereken het totale oppervlak aan landgebruik voor elk stroomgebied.
                 
 
             </li>
-            <li>Bereken aan de hand van een laag met overlappende ecologische zones en een rasterlaag van bodemtemperatuur alle ondersteunde statistieken binnen elke zone om zones te verhouden met de vochtigheid van de bodem.
+            <li>Er is een kaartlaag met percelen in een provincie en een kaartlaag met stadsgrenzen; maak een samenvatting van de gemiddelde waarde van lege percelen binnen elke stadsgrens.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Kies zoneraster of objecten</h2></div>
         <hr/>
         <div>
-            <p>De laag die de grenzen van de gebieden of zones definieert, die worden samengevat.
+            <p>De invoer die de grenzen van de gebieden of zones definieert, die worden samengevat.
             </p>
-            <p>De laag kan een integer raster of objectdata zijn. Voor rasters worden de zones gedefinieerd door alle locaties in de invoer die dezelfde celwaarde hebben. Voor objecten kunnen de zones elkaar overlappen. De gebieden hoeven niet aaneengesloten te zijn.
+            <p>De invoer kan een integer raster of objectdata zijn. Voor rasters worden de zones gedefinieerd door alle locaties in de invoer die dezelfde celwaarde hebben. Voor objecten kunnen de zones elkaar overlappen. De gebieden hoeven niet aaneengesloten te zijn.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Zoneveld</h2></div>
         <hr/>
         <div>
-            <p>Dit is het attribuut van de laag dat wordt gebruikt om de grenzen van de gebieden vast te leggen.
+            <p>Het veld dat de waarden bevat die elke zone defini&euml;ren.
             </p>
-            <p>Stel bijvoorbeeld dat de eerste invoerlaag de grenzen van de managementunit definieert, met attributen die de regio, het district en het perceel-ID van elke eenheid defini&euml;ren. U hebt ook een rasterlaag die de biodiversiteitsindex voor elke locatie definieert. Met het veld dat u selecteert, kunt u besluiten om de gemiddelde biodiversiteit te berekenen op lokaal, districts- of regionaal niveau.
+            <p>Het kan een integer of tekstveld van de zone-dataset zijn.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Kies waarderaster</h2></div>
         <hr/>
         <div>
-            <p>De rastercellen in deze laag worden samengevat door de gebieden (zones) waar ze in vallen.
+            <p>Het raster dat de waarden bevat waarop een statistiek berekend moet worden.
+            </p>
+            <p>Het kan een integer of een zwevend punt zijn. Wanneer het echter een zwevend punttype is, zijn de opties voor het berekenen van de meerderheid, minderheid en vari&euml;teit niet beschikbaar.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>NoData negeren in berekeningen (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Specificeert of NoData-waarden worden genegeerd in de analyse.
-                <ul>
-                    <li>Aangevinkt&mdash;De analyse bevat de cellen die een waarde hebben in het invoerwaarderaster binnen een bepaalde zone om de outputwaarde voor die zone te bepalen. NoData cellen in het waarderaster worden genegeerd in de statistische berekening. Dit is de standaardinstelling.
-                    </li>
-                    <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de cellen van het waarderaster in de gegeven afmeting.
-                    </li>
-                </ul>
-                
+            <p> Specificeert of NoData-waarden worden genegeerd in de analyse.
             </p>
+            <ul>
+                <li>Aangevinkt&mdash;De analyse bevat de cellen die een waarde hebben in het invoerwaarderaster binnen een bepaalde zone om de outputwaarde voor die zone te bepalen. NoData cellen in het waarderaster worden genegeerd in de statistische berekening. Dit is de standaardinstelling.
+                </li>
+                <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de cellen van het waarderaster in de gegeven afmeting.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Specificeert het statistiektype om te berekenen.
             </p>
-            <p>De input kan het volgende zijn:  <b>Alles</b>, <b>Gemiddelde</b>, <b>Meerderheid</b>, <b>Maximum</b>, <b>Mediaan</b>, <b>minimum</b>, <b>Minderheid</b>, <b>Percentiel</b>, <b>Reeks</b>, <b>Standaardafwijking</b>, <b>Som</b>, <b>Vari&euml;teit</b>, <b>Minimum en Maximum</b>, <b>Gemiddelde en Standaardafwijking</b>, of <b>Minimum, Maximum en Gemiddelde</b>. De standaard is <b>Alles</b>.
-            </p>
-            <p>Als het invoerwaarderaster integer is, worden standaard alle statistieken berekend. Als het waarderaster een kommagetaltype is, worden standaard alle statistieken berekend, behalve  <b>Mediaan</b> en <b>Percentiel</b>. 
-            </p>
-            <p>Als het invoerwaarderaster een kommagetaltype is, kunnen de zoneberekeningen voor  <b>Meerderheid</b>, <b>Minderheid</b> en <b>Vari&euml;teit</b> niet worden berekend.
+            <p> De input kan het volgende zijn: <b>Alles</b>, <b>Gemiddelde</b>, <b>Meerderheid</b>, <b>Maximum</b>, <b>Mediaan</b>, <b>minimum</b>, <b>Minderheid</b>, <b>Percentiel</b>, <b>Reeks</b>, <b>Standaardafwijking</b>, <b>Som</b>, <b>Vari&euml;teit</b>, <b>Minimum en Maximum</b>, <b>Gemiddelde en Standaardafwijking</b>, of <b>Minimum, Maximum en Gemiddelde</b>. De standaard is <b>Alles</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Percentielwaarden (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Het te berekenen percentiel. Er kan een enkele waarde of een lijst met waarden worden opgegeven. De standaard is 90, wijzend op het 90e percentiel.
+            <p>Het percentiel om te berekenen. De standaard is 90, wijzend op het 90e percentiel.
             </p>
-            <p>De waardes kunnen tussen de 0 en 100 liggen. Het resultaat van het specificeren van het 0e percentiel is in wezen gelijk aan de minimumstatistiek en het 100e percentiel is gelijk aan de maximumstatistiek. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
+            <p>De waarde kan tussen de 0 en 100 liggen. Het resultaat van het specificeren van het 0e percentiel is in wezen gelijk aan de minimumstatistiek en het 100e percentiel is gelijk aan de maximumstatistiek. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
             </p>
-            <p>Deze optie wordt alleen ondersteund als de parameter  <b>Statistiekentype</b> is ingesteld op <b>Percentiel</b> of <b>Alles</b>.
+            <p> Deze parameter wordt alleen ondersteund als de parameter <b>Statistiekentype</b> is ingesteld op <b>Percentiel</b> of <b>Alles</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Percentielinterpolatietype (optioneel)</h2></div>
         <hr/>
         <div>
-            
             <p>Specificeert de methode van percentielinterpolatie die moet worden gebruikt wanneer het aantal te berekenen waarden uit het invoerraster gelijk is.
-            </p> 
-            <p>Als het invoerwaarde raster van het type geheel pixel is, dan wordt de methode  <b>Dichtstbijzijnde</b> gebruikt. Als het invoerwaarde raster van het type zwevend puntpixel is, dan wordt de methode <b>Lineair</b> gebruikt. Dit is de standaardinstelling.
             </p>
-            <p>Voor de  <b>dichtstbijzijnde</b> methode wordt de dichtstbijzijnde beschikbare waarde van het gewenste percentiel gebruikt. Voor de <b>lineaire</b> methode wordt het gewogen gemiddelde van de twee omliggende waarden van het gewenste percentiel gebruikt.
-            </p> 
+            <ul>
+                <li>  <b>Autodetectie</b>&mdash;Als het invoerwaarderaster van het type integerpixel is, dan wordt de methode <b>Dichtstbijzijnde</b> gebruikt. Als het invoerwaarderaster van het type zwevend puntpixel is, dan wordt de methode <b>Lineair</b> gebruikt. Dit is de standaardinstelling.
+                </li>
+                <li> <b>Dichtstbijzijnde</b>&mdash;Voor de dichtstbijzijnde methode wordt de dichtstbijzijnde beschikbare waarde van het gewenste percentiel gebruikt.
+                </li>
+                <li> <b>Lineair</b>&mdash;Voor de lineaire methode wordt het gewogen gemiddelde van de twee omliggende waarden van het gewenste percentiel gebruikt.
+                </li>
+            </ul>
+            
+            <p> Deze parameter wordt alleen ondersteund als de parameter <b>Statistiekentype</b> is ingesteld op <b>Percentiel</b> of <b>Alles</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Proces als multidimensionaal (optioneel)</h2></div>
         <hr/>
         <div>
-            <p>Specificeert hoe de invoerrasters worden verwerkt als deze multidimensionaal zijn.
+            <p>Specificeert hoe de multidimensionale invoer afbeeldings diensten worden verwerkt als deze multidimensionaal zijn.
             </p>
             <ul>
                 <li>Aangevinkt&mdash;De statistieken worden berekend op basis van het huidige segment van de ingevoerde multidimensionale dataset. Dit is de standaardinstelling.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
+            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
             </p>
         </div>
     </div>

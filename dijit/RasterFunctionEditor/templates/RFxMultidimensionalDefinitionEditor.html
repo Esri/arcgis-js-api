@@ -1,11 +1,82 @@
 <div class="esri-rfx-multidimensionalDefinition-editor">
-  <div class="esri-rfx-raster-variable-grid">
-    <div data-dojo-attach-point="_rasterVariableDiv"></div>
-  </div>
-  <div data-dojo-attach-point="_dimensionDefinitionDivContainer"></div>
-  <div data-dojo-attach-point="_byValuesGridDivContainer" class="esri-rfx-mdimdef-byValues-grid hidden"></div>
-  <div data-dojo-attach-point="_byRangesGridDivContainer" class="esri-rfx-mdimdef-byRanges-grid hidden"></div>
-  <div data-dojo-attach-point="_byIterationDivContainer" class="esri-rfx-mdimdef-byIteration-form hidden">
-    <div data-dojo-attach-point="_byIterationFormDiv"></div>
-  </div>
+  <table class="esri-rfx-args-editor__table">
+    <tr>
+      <td class="esri-rfx-raster-variable-grid">
+        <div data-dojo-attach-point="_rasterVariableDiv"></div>
+      </td>
+    </tr>
+  </table>
+  <table class="esri-rfx-args-editor__table">
+    <tr>
+      <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.mdimDefinition}</td>
+    </tr>
+    <tr>
+      <td data-dojo-attach-point="_dimensionDefinitionDivContainer"></td>
+    </tr>
+    <tr>
+      <td class="esri-rfx-args-editor__tr--arg-name hidden" data-dojo-attach-point="_byValuesGridLabel">
+        ${_i18n.predictDimensionValues}</td>
+    </tr>
+    <tr>
+      <td class="esri-rfx-mdimdef-byValues-grid hidden" data-dojo-attach-point="_byValuesGridDivContainer"></td>
+    </tr>
+    <tr>
+      <td class="esri-rfx-args-editor__tr--arg-name hidden" data-dojo-attach-point="_byRangesGridLabel">
+        ${_i18n.rangesName}</td>
+    </tr>
+    <tr>
+      <td class="esri-rfx-mdimdef-byRanges-grid hidden" data-dojo-attach-point="_byRangesGridDivContainer"></td>
+    </tr>
+    <tr>
+      <td class="esri-rfx-mdimdef-byIteration-form hidden" data-dojo-attach-point="_byIterationDivContainer">
+        <div data-dojo-attach-point="_byIterationFormDiv">
+          <table class="esri-rfx-args-editor__table">
+            <tr>
+              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.dimensionName}</td>
+            </tr>
+            <tr>
+              <td>
+                <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_iterationFormDimensionSelect"
+                  data-dojo-attach-props="labelAttr: 'label'"></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.iterationStart}</td>
+            </tr>
+            <tr>
+              <td>
+                <div data-dojo-type="dijit/form/Select"
+                  data-dojo-attach-point="_iterationFormStartOfFirstIterationSelect"
+                  data-dojo-attach-props="labelAttr: 'label'"></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.iterationEnd}</td>
+            </tr>
+            <tr>
+              <td>
+                <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="_iterationFormEndOfFirstIterationSelect"
+                  data-dojo-attach-props="labelAttr: 'label'"></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="esri-rfx-args-editor__tr--arg-name">${_i18n.stepName}</td>
+            </tr>
+            <tr>
+              <td>
+                <div data-dojo-type="dijit/form/NumberTextBox" data-dojo-attach-point="_iterationFormStepTextbox"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div data-dojo-attach-point="_iterationFormTimeUnitsContainer" class="hidden">
+                  <p class="esri-rfx-args-editor__tr--arg-name">${_i18n.dimensionUnit}</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
 </div>

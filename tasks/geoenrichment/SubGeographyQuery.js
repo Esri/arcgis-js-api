@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["../../declare","./GeographyQueryBase"],(function(e,r){return e("esri.tasks.geoenrichment.SubGeographyQuery",[r],{filterGeographyLayerID:null,filterGeographyIDs:null,filterGeographyWhere:null,subGeographyLayerID:null,subGeographyWhere:null,constructor:function(e){e&&(this.filterGeographyLayerID=e.filterGeographyLayerID||e.geographyLayers,this.filterGeographyIDs=e.filterGeographyIDs||e.geographyIDs,this.filterGeographyWhere=e.filterGeographyWhere||e.geographyQuery,this.subGeographyLayerID=e.subGeographyLayerID||e.subGeographyLayer,this.subGeographyWhere=e.subGeographyWhere||e.subGeographyQuery)},toJson:function(){var e=this.inherited(arguments);return e.returnSubGeographyLayer=!0,this.filterGeographyLayerID&&(e.geographyLayers=this.filterGeographyLayerID),this.filterGeographyIDs&&(e.geographyIDs=this.filterGeographyIDs),this.filterGeographyWhere&&(e.geographyQuery=this.filterGeographyWhere),this.subGeographyLayerID&&(e.subGeographyLayer=this.subGeographyLayerID),this.subGeographyWhere&&(e.subGeographyQuery=this.subGeographyWhere),e}})}));

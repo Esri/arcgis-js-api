@@ -46,32 +46,16 @@
         <hr/>
     <p>Acest instrument creează un tabel sau o clasă de obiecte spațiale cu punct care prezintă valorile celulelor dintr-un raster, sau set de rastere, pentru localizări definite. Localizările sunt definite de celule de raster, obiecte spațiale poligonale, obiecte spațiale cu linii poligonale sau cu un set de puncte.
     </p>
-    <p>Valorile pixel vor fi extrase din toate rasterele de intrare de la fiecare localizare. Un tabel sau o clasă de obiecte spațiale vor fi create cu c&acirc;mpuri care să includă valorile pixelilor pentru fiecare raster de intrare. Atribute suplimentare din tabelul de raster de intrare nu vor fi incluse &icirc;n tabelul de ieșire.
-    </p>
-    <p>Orice combinație de rastere, cum ar fi cu bandă individuală, multibandă, multidimensional sau multivariată poate fi specificată ca rastere de intrare. Structura tabelului rezultant se modifică atunci c&acirc;nd rasterele de intrare sunt multidimensionale. Atunci c&acirc;nd un raster multibandă este specificat ca unul dintre rasterele de intrare, toate benzile acelei intrări vor fi folosite. Pentru a procesa o selecție de benzi dintr-un raster multibandă de intrare, mai &icirc;nt&acirc;i creați un nou set de date raster alcătuit din acele benzi specifice. Utilizați rezultatul &icirc;n lista rasterelor de intrare.
-    </p>
-    <p>Localizarea de intrare poate fi un raster sau un obiect spațial cu punct:
+    <p>Printre exemplele de aplicații ale acestui instrument se numără:
         <ul>
-            <li>Raster&mdash;Pixeli care includ valori valabile (care nu sunt NoData) sunt folosiți pentru a extrage valorile pixelilor din toate rasterele de intrare, iar centrul pixelului este folosit pentru localizările cu punct.
+            <li> Extrageți atributele pentru locația turnului de telefonie de la mai multe rastere precum utilizarea terenului, tipul solului, elevație, distanța p&acirc;nă la drum.
             </li>
-            <li>Punct&mdash;Valorile vor fi prelevate &icirc;n fiecare localizare a punctului.
+            <li>Extrageți temperatura solului de la anumite ad&acirc;ncimi pentru un set de puncte dat.
             </li>
-            <li>Linie poligonală sau un poligon&mdash;Valorile vor fi prelevate la centroidul poligonului sau liniei poligonale. Dacă rasterul de intrare este multidimensional, valorile vor fi agregate pe baza tipului de  <b>Statistici</b>.
+            <li>Din datele privind temperatura suprafeței mării colectate pe o perioadă de 30 de ani, creați un rezumat privind momentul &icirc;n care a fost observată o anumită specie de animale, fie la locația animalelor, fie &icirc;ntr-o zonă de habitat, la un moment dat.
             </li>
         </ul>
         
-    </p>
-    <p>Rasterele de intrare sunt prelevate &icirc;n referința și rezoluția lor spațială nativă. Dacă există rastere de intrare multiple cu referințe spațiale diferite, locurile de intrare sunt proiectate pe referința spațială a fiecărui raster individual din care sunt extrase valorile. Mediul de analiză este aplicat locurilor de intrare, dar rasterele de intrare nu vor onora mediul de analiză.
-    </p>
-    <p>Locurile care extrag valori din celulele NoData din rasteril de intrare vor primi o valoare &lt;nulă&gt; &icirc;n tabelul de ieșire.
-    </p>
-    <p>Pentru a efectua analiza cu obiecte spațiale &icirc;n puncte multiple, mai &icirc;nt&acirc;i convertiți-le &icirc;n obiecte spațiale cu punct singular &icirc;nainte de a le folosi &icirc;n acest instrument.
-    </p>
-    <p>Referința spațială a coordonatelor x,y din tabelul de probe de ieșire este aceeași cu rasterul de localizare de intrare sau obiectele spațiale cu punct, dacă nu se specifică &icirc;n mediul <b>Sistem de Coordonate de Ieșire</b>. Dacă referința spațială a datelor locurilor de intrare este necunoscută, și referința spațială a coordonatelor x,y este necunoscută.
-    </p>
-    <p>Referința spațială a clasei de obiecte spațiale de ieșire este aceeași cu rasterul locului de intrare sau obiectele spațiale cu punct, dacă nu este specificat &icirc;n mediul  <b>Sistem de Coordonate de Ieșire</b>.
-    </p>
-    <p>Mediul  <b>Factor de Procesare Paralelă</b> este acceptat doar atunci c&acirc;nd intrarea este un raster multidimensional.
     </p>
     <p>Dacă este bifat  <b>Utilizați acoperirea actuală a hărții</b>, variabilele sau benzile stratului tematic care sunt vizibile din acoperirea actuală a hărții vor fi analizate. Dacă sunt nebifate, variabilele sau benzile stratului tematic complet vor fi analizate, chiar dacă acestea sunt &icirc;n afara acoperirii actuale a hărții.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Alegeți stratul(rile) tematic(e) cu imagini de probat</h2></div>
         <hr/>
         <div>
-            <p>Un strat tematic de imagini singular sau o listă de straturi tematice de imagini ale căror valori vor fi prelevate pe baza datelor de localizare a intrării.
+            <p>O imagine unică sau o listă de imagini ale căror valori vor fi prelevate pe baza datelor de localizare a intrării. 
             </p>
             <p>Pentru prelevarea tuturor &icirc;mpărțitilor dintr-un strat tematic de imagini multidimensionale, acesta trebuie să fie singurul raster de intrare.
             </p>
@@ -112,40 +96,42 @@
             <p>Specificați ora, ad&acirc;ncimea sau alte date de achiziție asociate cu celulele de localizatre sau obiectele spațiale.
             </p>
             <p>Pentru fiecare dimensiune, există trei opțiuni de specificare a informațiilor de achiziție asociate cu celulele de localizare sau obiectele spațiale:
-                <ul>
-                    <li> <b>C&acirc;mp sau valoare singulară</b>&mdash;C&acirc;nd este selectată această opțiune, trebuie specificate următoarele informații:
-                        <ul>
-                            <li> <b>C&acirc;mp sau valoare dimensională</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare sau introduceți o valoare specifică a dimensiunii.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>C&acirc;mp sau valoare singulară</b>&mdash;C&acirc;nd este selectată această opțiune, trebuie specificate următoarele informații:
+                    <ul>
+                        <li> <b>C&acirc;mp sau valoare dimensională</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare sau introduceți o valoare specifică a dimensiunii.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>C&acirc;mp sau valoare singulară cu valori relative</b>&mdash;Dacă această opțiune este selectată, informațiile de mai jos trebuie specificate &icirc;mpreună pentru a defini intervalul &icirc;n care vor fi calculate statisticile pentru variabile:
-                        <ul>
-                            <li> <b>C&acirc;mp sau valoare dimensională</b>&mdash;selectați un c&acirc;mp cu valori dimensiomnale din datele de localizare.
-                            </li>
-                            <li> <b>Valoare relativă &icirc;nainte</b>&mdash;specificați un număr non-negativ folosit pentru scăderea din <b>C&acirc;mpul sau valoarea dimensională</b> pentru a defini &icirc;nceputul unui interval de valoare dimensională. Această valoare reprezintă numărul de zile dacă dimensiunea este timpul.
-                            </li>
-                            <li> <b>Valoare relativă după</b>&mdash;specificați un număr non-negativ folosit pentru adăugarea la <b>C&acirc;mpul sau valoarea dimensională</b> pentru a defini capătul unui interval de valori ale dimensiunii. Această valoare reprezintă numărul de zile dacă dimensiunea este timpul.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>C&acirc;mpuri sau valori de &icirc;nceput și sf&acirc;rșit</b>&mdash;Dacă se selectează această opțiune, informațiile de mai jos trebuie specificate &icirc;mpreună pentru a defini intervalul &icirc;n care vor fi calculate statisticile pentru variabile:
-                        <ul>
-                            <li> <b>C&acirc;mp sau valori de &icirc;nceput</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare sau introduceți o valoare dimensională specifică pentru a defini &icirc;nceputul unui interval de valori dimensionale.
-                            </li>
-                            <li> <b>C&acirc;mp sau valori de sf&acirc;rșit</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare, sau introduceți o valoare dimensională specifică, pentru a defini sf&acirc;rșitul unui interval de valori dimensionale.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>C&acirc;mp sau valoare singulară cu valori relative</b>&mdash;Dacă această opțiune este selectată, informațiile de mai jos trebuie specificate &icirc;mpreună pentru a defini intervalul &icirc;n care vor fi calculate statisticile pentru variabile:
+                    <ul>
+                        <li> <b>C&acirc;mp sau valoare dimensională</b>&mdash;selectați un c&acirc;mp cu valori dimensionale din datele de localizare.
+                        </li>
+                        <li> <b>Valoare relativă &icirc;nainte</b>&mdash;specificați un număr non-negativ folosit pentru scăderea din <b>C&acirc;mpul sau valoarea dimensională</b> pentru a defini &icirc;nceputul unui interval de valoare dimensională. Această valoare reprezintă numărul de zile dacă dimensiunea este timpul.
+                        </li>
+                        <li> <b>Valoare relativă după</b>&mdash;specificați un număr non-negativ folosit pentru adăugarea la <b>C&acirc;mpul sau valoarea dimensională</b> pentru a defini capătul unui interval de valori ale dimensiunii. Această valoare reprezintă numărul de zile dacă dimensiunea este timpul.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>C&acirc;mpuri sau valori de &icirc;nceput și sf&acirc;rșit</b>&mdash;Dacă se selectează această opțiune, informațiile de mai jos trebuie specificate &icirc;mpreună pentru a defini intervalul &icirc;n care vor fi calculate statisticile pentru variabile:
+                    <ul>
+                        <li> <b>C&acirc;mp sau valori de &icirc;nceput</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare sau introduceți o valoare dimensională specifică pentru a defini &icirc;nceputul unui interval de valori dimensionale.
+                        </li>
+                        <li> <b>C&acirc;mp sau valori de sf&acirc;rșit</b>&mdash;selectați un c&acirc;mp de valori dimensionale din datele de localizare, sau introduceți o valoare dimensională specifică, pentru a defini sf&acirc;rșitul unui interval de valori dimensionale.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Parametrul este disponibil numai c&acirc;nd parametrul  <b>Alegere straturi tematice ale imaginilor de eșantionat</b> este un raster multidimensional.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Distanța specificată &icirc;n jurul obiectelor spațiale privind datele de localizare. Distanța buffer este specificată &icirc;n unitățile liniare ale referinței spațiale ale obiectului spațial de localizare. Dacă obiectul spațial folosește o referință geografică, unitatea va fi reprezentată de grade.
             </p>
             <p>Statisticile vor fi calculate &icirc;n această zonă buffer.
+            </p>
+            <p>Parametrul este disponibil numai c&acirc;nd  <b>Alegere straturi tematice ale imaginilor de eșantionat</b> este un raster multidimensional.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Parametrul este disponibil numai c&acirc;nd parametrul  <b>Alegere straturi tematice ale imaginilor de eșantionat</b> este un raster multidimensional și parametrii <b>Alegere locație strat tematic</b> sunt linii poligonale sau poligoane sau este specificat <b>Specificați c&acirc;mpul sau valoarea distanței buffer (opțional)</b>.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Valoarea percentilei</h2></div>
         <hr/>
         <div>
-            <p>Percentila de calculat atunci c&acirc;nd parametrul  <b>Tipul Statisticii</b> este setat la <b>Percentilă</b>.
-            </p>
             <p>Această valoare poate fi de la 0 la 100. Valoarea implicită este de 90.
+            </p>
+            <p>Parametrul este disponibil atunci c&acirc;nd parametrul  <b>Alegere tip statistică</b> este setat la <b>Percentilă</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Algoritmul de re-prelevare folosit la prelevarea probelor unui raster.
             </p>
             <ul>
-                <li> <b>Cel mai apropiat</b>&mdash;Cel mai apropiat vecin utilizează valoarea celei mai apropiate celule pentru a aloca o valoare la celula de ieșire la reeșantionare. Aceasta este acţiunea implicită.
+                <li> <b>Cel mai apropiat</b>&mdash;Cel mai apropiat vecin care utilizează valoarea celei mai apropiate celule pentru a aloca o valoare la celula de ieșire la reeșantionare. Aceasta este acţiunea implicită.
                 </li>
-                <li> <b>Biliniar</b>&mdash;Interpolare biliniară, respectiv determină valoarea nouă a unei celule pe baza unei medii de distanță ponderată a celor mai apropiate patru centre ale celulelor de intrare.
+                <li> <b>Biliniar</b>&mdash;Interpolare biliniară, care determină valoarea nouă a unei celule pe baza unei medii de distanță ponderată a celor mai apropiate patru centre ale celulelor de intrare.
                 </li>
-                <li> <b>Cubic</b>&mdash;Convoluție, respectiv determină noua valoare a unui pixel la &icirc;ncadrarea unei curbe netede prin cele mai apropiate 16 centre ale pixelilor de intrare.
+                <li> <b>Cubic</b>&mdash;Convoluție, care determină noua valoare a unui pixel la &icirc;ncadrarea unei curbe netede prin cele mai apropiate 16 centre ale pixelilor de intrare.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Specificați configurația rezultatului</h2></div>
         <hr/>
         <div>
-            <p>Specifică dacă valorile prelevate apar &icirc;n r&acirc;nduri sau coloane &icirc;n tabelul rezultant. Această opțiune este disponibilă doar atunci c&acirc;nd rasterul multidimensional de intrare include o variabilă și o dimensiune, iar fiecare &icirc;mpărțire este un raster cu o bandă singulară.
+            <p>Specifică dacă valorile prelevate apar &icirc;n r&acirc;nduri sau coloane &icirc;n tabelul rezultant.
             </p>
             <ul>
                 <li> <b>Valorile prelevate apar &icirc;n r&acirc;nd</b>&mdash;Valorile prelevate apar &icirc;n r&acirc;nduri separate &icirc;n tabelul rezultant. Aceasta este acţiunea implicită.
                 </li>
-                <li> <b>Valorile prelevate apar &icirc;n coloană</b>&mdash;Valorile prelevate apar &icirc;n coloane separate din tabelul rezultant. Această opțiune este valabilă doar atunci c&acirc;nd rasterul multidimensional de intrare include o variabilă și o dimensiune, iar fiecare &icirc;mpărțire este un raster cu o bandă singulară.
+                <li> <b>Valorile prelevate apar &icirc;n coloană</b>&mdash;Valorile prelevate apar &icirc;n coloane separate din tabelul rezultant.
                 </li>
             </ul>
             
+            <p>Acest parametru este disponibil doar atunci c&acirc;nd parametrul  <b>Alegere straturi tematice imagini de eșantionat</b> este un raster multidimensional și include o variabilă și o dimensiune, iar fiecare &icirc;mpărțire este un raster cu o bandă singulară.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabel</b>&mdash;Generează un tabel cu valori prelevate. Aceasta este acţiunea implicită.
                 </li>
-                <li> <b>Obiecte spațiale</b>&mdash;Generează o clasă de obiecte spațiale cu punct cu valorile prelevate &icirc;n tabelul său. Dacă obiectele spațiale ale localizării intrării sunt linii poligonale sau poligoane, fiecare punct din rezultat este centroidul fiecărei geometrii a obiectelor spațiale ale localizării intrării.
+                <li> <b>Obiecte spațiale</b>&mdash;Generează o clasă de obiecte spațiale cu punct cu valorile prelevate &icirc;n tabelul său. Dacă parametrii <b>Alegere strat tematic de locații</b> sunt linii poligonale sau poligoane, fiecare punct din rezultat este centroidul fiecărei geometrii a obiectelor spațiale ale localizării intrării. 
                 </li>
             </ul>
             

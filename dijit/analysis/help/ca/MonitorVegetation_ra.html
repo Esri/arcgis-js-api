@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Trieu la capa r&agrave;ster multibanda. Assegureu-vos que el r&agrave;ster d'entrada tingui les bandes adequades disponibles.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Trieu el mètode per supervisar la vegetació</h2></div>
         <hr/>
         <div>
-            <p>Trieu el m&egrave;tode per crear la capa d'&iacute;ndexs de vegetaci&oacute;. Els &iacute;ndexs de vegetaci&oacute; diferents poden ajudar a destacar determinades entitats o a reduir sorolls diversos.
+            <p>Trieu el m&egrave;tode que cal utilitzar per calcular la capa d'&iacute;ndexs de vegetaci&oacute;. Els &iacute;ndexs de vegetaci&oacute; diferents poden ajudar a destacar determinades entitats o a reduir sorolls diversos.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -80,31 +80,65 @@ NDVI &eacute;s un &iacute;ndex estandarditzat que us permet generar una imatge q
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
-PVI &eacute;s similar a un &iacute;ndex diferencial de vegetaci&oacute;; aix&ograve; no obstant, &eacute;s sensible a les variacions atmosf&egrave;riques. Si s'utilitza aquest m&egrave;tode per comparar imatges diferents, nom&eacute;s s'ha de fer amb imatges que s'han corregit atmosf&egrave;ricament. Aquesta informaci&oacute; us la pot proporcionar el prove&iuml;dor de dades.
+PVI &eacute;s similar a un &iacute;ndex diferencial de vegetaci&oacute;; aix&ograve; no obstant, &eacute;s sensible a les variacions atmosf&egrave;riques. Al utilizar este m&eacute;todo para comparar diferentes im&aacute;genes, s&oacute;lo se debe utilizar en im&aacute;genes que se han corregido atmosf&eacute;ricamente. Aquesta informaci&oacute; us la pot proporcionar el prove&iuml;dor de dades.
 
                 </li>
                 <li>Soil-Adjusted Vegetation Index &mdash; 
-SAVI &eacute;s un &iacute;ndex de vegetaci&oacute; que intenta minimitzar les influ&egrave;ncies de la brillantor del s&ograve;l mitjan&ccedil;ant un factor de correcci&oacute; de la brillantor del s&ograve;l. Sovint s'utilitza en regions &agrave;rides on la cobertura de vegetaci&oacute; &eacute;s baixa.
+SAVI &eacute;s un &iacute;ndex de vegetaci&oacute; que intenta minimitzar les influ&egrave;ncies de la brillantor del s&ograve;l mitjan&ccedil;ant un factor de correcci&oacute; de la brillantor del s&ograve;l. Esto con frecuencia se utiliza en regiones &aacute;ridas en donde la cubierta de vegetaci&oacute;n es baja.
 
                 </li>
                 <li>Sultan's Formula &mdash; 
-El proc&eacute;s F&oacute;rmula de Sultan utilitza una imatge de 8 bits de sis bandes i li aplica un algoritme espec&iacute;fic per generar una imatge de 8 bits i tres bandes. La imatge resultant destaca les formacions de roca anomenades ofiolites en zones costeres. Aquesta f&oacute;rmula es va dissenyar segons les bandes TM i ETM d'una escena Landsat 5 o 7.
+El proc&eacute;s F&oacute;rmula de Sultan utilitza una imatge de 8 bits de sis bandes i li aplica un algoritme espec&iacute;fic per generar una imatge de 8 bits i tres bandes. La imagen que resulta resalta las formaciones de roca denominadas ofiol&iacute;ticos en zonas costeras. Aquesta f&oacute;rmula es va dissenyar segons les bandes TM i ETM d'una escena Landsat 5 o 7.
 
                 </li>
                 <li>Transformed Soil-Adjusted Vegetation Index &mdash; 
 El SAVI transformat &eacute;s un &iacute;ndex de vegetaci&oacute; que intenta minimitzar les influ&egrave;ncies de la brillantor del s&ograve;l mitjan&ccedil;ant la suposici&oacute; que la l&iacute;nia de terra t&eacute; una intercepci&oacute; i un pendent arbitrari.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+El VARI &eacute;s un &iacute;ndex de vegetaci&oacute; que estima la pres&egrave;ncia de vegetaci&oacute; utilitzant nom&eacute;s informaci&oacute; de l'espectre visible. Aquest m&egrave;tode necessita bandes en les parts vermella, verda i blava de l'espectre.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Especifiqueu els índexs de la banda NIR i de la banda vermella</h2></div>
+        <div><h2>Especifiqueu els índexs per a la banda NIR i la banda vermella</h2></div>
         <hr/>
         <div>
-            <p>Especifiqueu els &iacute;ndexs de banda de les bandes NIR i vermella.
+            <p>Especifiqueu els &iacute;ndexs de banda per a les bandes NIR i vermella.
             </p>
-            <p>Cada sensor de sat&egrave;l&middot;lit i c&agrave;mera a&egrave;ria captura informaci&oacute; desglossada en &iacute;ndexs de banda. Cada &iacute;ndex de banda cont&eacute; la informaci&oacute; d'una part espec&iacute;fica de l'espectre electromagn&egrave;tic. Aquest m&egrave;tode de supervisi&oacute; de vegetaci&oacute; requereix que especifiqueu l'&iacute;ndex de banda que ha capturat les longituds d'ona de NIR i vermella.
+            <p>Els sensors aeris o de sat&egrave;l&middot;lit multibanda capturen informaci&oacute; desglossada en bandes de longitud d'onda, que s'identifiquen mitjan&ccedil;ant &iacute;ndexs de banda. En aquest m&egrave;tode de supervisi&oacute; de vegetaci&oacute; cal especificar els &iacute;ndexs de banda per a les bandes de longitud d'ona NIR (infraroig proper) i vermella.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Especifiqueu els índexs per a les bandes vermella, verda i blava</h2></div>
+        <hr/>
+        <div>
+            <p>Especifiqueu els &iacute;ndexs de banda per a les bandes vermella, verda i blava.
+            </p>
+            <p>Els sensors aeris o de sat&egrave;l&middot;lit multibanda capturen informaci&oacute; desglossada en bandes de longitud d'onda, que s'identifiquen mitjan&ccedil;ant &iacute;ndexs de banda. Pera a l'&iacute;ndex de resist&egrave;ncia atmosf&egrave;rica visible, cal especificar els &iacute;ndexs per a les bandes de longitud d'ona vermella, verda i blava.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Especifiqueu els índexs per a les bandes blava, vermella, NIR, SWIR i tèrmica</h2></div>
+        <hr/>
+        <div>
+            <p>Especifiqueu els &iacute;ndexs de banda per a les bandes blava, vermella, infraroig proper (NIR), infraroig d'ona curta (SWIR) i t&egrave;rmica.
+            </p>
+            <p>Els sensors aeris o de sat&egrave;l&middot;lit multibanda capturen informaci&oacute; desglossada en bandes de longitud d'onda, que s'identifiquen mitjan&ccedil;ant &iacute;ndexs de banda. Per a l'&iacute;ndex de la forma de Sultan cal especificar els &iacute;ndexs de banda per a les bandes de longitud d'ona blava, vermella, infraroig proper (NIR), infraroig d'ona curta (SWIR) i t&egrave;rmica.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Especifiqueu els índexs per a les bandes blava, verda, vermella, NIR, SWIR-1 i SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Especifiqueu els &iacute;ndexs de banda per a les bandes blava, verda, vermella, NIR, SWIR-1 i SWIR-2.
+            </p>
+            <p>Els sensors aeris o de sat&egrave;l&middot;lit multibanda capturen informaci&oacute; desglossada en bandes de longitud d'onda, que s'identifiquen mitjan&ccedil;ant &iacute;ndexs de banda. Per a l'&iacute;ndex de vegetaci&oacute; verda cal especificar els &iacute;ndexs de banda per a les bandes de longitud d'ona blava, verda, vermella, infraroig proper (NIR), infraroig d'ona curta 1 (SWIR-1) i infraroig d'ona curta 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ El SAVI transformat &eacute;s un &iacute;ndex de vegetaci&oacute; que intenta mi
         <div><h2>Quantitat de cobertura de vegetació verda</h2></div>
         <hr/>
         <div>
-            <p>Especifica la quantitat de cobertura de vegetaci&oacute; verda, necess&agrave;ria per al m&egrave;tode SAVI.
+            <p>Especifica la quantitat de cobertura de vegetaci&oacute; verda, necess&agrave;ria per al m&egrave;tode de l'&iacute;ndex de vegetaci&oacute; ajustat al s&ograve;l.
             </p>
             <p>Els valors v&agrave;lids s&oacute;n els seg&uuml;ents:
                 <ul>
@@ -170,10 +204,9 @@ El SAVI transformat &eacute;s un &iacute;ndex de vegetaci&oacute; que intenta mi
         <hr/>
         <div>
             
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
-            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
-            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>. Si teniu permisos per crear capes d'imatges tant de tessel·les com dinàmiques, podeu especificar des de la llista desplegable Anomena i desa el resultat el tipus de capa que cal generar. </p>
         </div>
     </div>
 </div>

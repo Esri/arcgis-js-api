@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang"],(function(t,a){return t(null,{cleanGroup:function(t,h){if(this.inherited(arguments),!h&&this.chart._nativeClip){var i=this.chart.offsets,e=this.chart.dim;(i=a.mixin({},i)).l=Math.max(0,i.l-10),i.t=Math.max(0,i.t-10),i.r=Math.max(0,i.r-10),i.b=Math.max(0,i.b-10);var r=Math.max(0,e.width-i.l-i.r),n=Math.max(0,e.height-i.t-i.b);this.group.setClip({x:i.l,y:i.t,width:r,height:n})}}})}));

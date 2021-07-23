@@ -46,13 +46,9 @@
         <hr/>
     <p>Esta herramienta crea un mapa de densidad a partir de entidades de punto o de l&iacute;nea mediante la extensi&oacute;n de cantidades conocidas de alg&uacute;n fen&oacute;meno (representado como atributos de los puntos o las l&iacute;neas) a todo el mapa. El resultado es una capa de &aacute;reas clasificadas de menor a mayor densidad.
     </p>
-    <p>En una entrada de punto, cada punto debe representar la ubicaci&oacute;n de un evento o un incidente, y la capa de resultados representa un recuento del incidente por unidad de &aacute;rea. Un valor de densidad m&aacute;s grande en una nueva ubicaci&oacute;n significa que hay m&aacute;s puntos cerca de esa ubicaci&oacute;n. En muchos casos, la capa de resultados se puede interpretar como una superficie de riesgo para eventos futuros. Por ejemplo, si los puntos de entrada representan ubicaciones en las que ha ca&iacute;do un rayo, la capa de resultados se puede interpretar como una superficie de riesgo para la ca&iacute;da de rayos en el futuro.
-    </p>
-    <p>En el caso de la entrada de l&iacute;nea, la superficie de densidad de l&iacute;nea representa la cantidad total de la l&iacute;nea que est&aacute; cerca de cada ubicaci&oacute;n. Las unidades de los valores de la densidad calculada corresponden a la longitud del &aacute;rea de l&iacute;nea por unidad. Por ejemplo, si las l&iacute;neas representan r&iacute;os, la capa de resultados representar&aacute; la longitud total de los r&iacute;os que est&aacute;n dentro del radio de b&uacute;squeda. Este resultado se puede usar para identificar las &aacute;reas que son adecuadas como pastos para animales.
-    </p>
-    <p>Se describen a continuaci&oacute;n otros ejemplos de uso de esta herramienta:
+    <p>Estas son algunas aplicaciones de ejemplo de esta herramienta:
         <ul>
-            <li>Crear mapas de densidad de delitos para ayudar a los departamentos de polic&iacute;a a asignar los recursos adecuados a las zonas con un alto nivel de delitos.
+            <li>Crear mapas de densidad de delitos para ayudar a los departamentos de polic&iacute;a a asignar los recursos adecuados a las &aacute;reas con un alto nivel de delitos.
                 
  
             </li>
@@ -74,10 +70,10 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputPointOrLineFeatures">
-        <div><h2>Elija la capa de puntos o líneas de entrada a partir de la cual se debe calcular la densidad</h2></div>
+        <div><h2>Elegir la capa de puntos o líneas de entrada a partir de la cual se debe calcular la densidad</h2></div>
         <hr/>
         <div>
-            <p>Capa de puntos o l&iacute;neas de entrada que se utilizar&aacute; para calcular la capa de densidad.
+            <p>La l&iacute;nea o punto de entrada que se utilizar&aacute; para calcular la densidad.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>El tama&ntilde;o de celda y las unidades para los r&aacute;steres de salida.
             </p>
+            <p>Las unidades pueden estar en kil&oacute;metros, metros, millas o pies.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
-            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
-            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>. Si tiene privilegios para crear capas de imágenes tanto en teselas como dinámicas, también puede especificar qué tipo de capa se va a generar para la salida utilizando el cuadro desplegable Guardar el resultado como. </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/Color","esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol","esri/renderers/UniqueValueRenderer"],(function(e,t,l,S){return{_defaultStdSymbol:null,_defaultStdSymbolHighlighted:null,getDefaultStdSymbol:function(){return this._defaultStdSymbol||(this._defaultStdSymbol=new t(t.STYLE_SOLID,new l(l.STYLE_SOLID,new e([105,134,68,1]),2),new e([105,134,68,.1]))),this._defaultStdSymbol},getDefaultStdSymbolHighlighted:function(){return this._defaultStdSymbolHighlighted||(this._defaultStdSymbolHighlighted=new t(t.STYLE_SOLID,new l(l.STYLE_SOLID,new e([0,255,255,1]),2),new e([0,200,0,.1]))),this._defaultStdSymbolHighlighted},getDefaultStdRenderer:function(){return new S(this.getDefaultStdSymbol(),"StdGeographyLevel")}}}));

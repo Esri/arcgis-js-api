@@ -53,7 +53,7 @@
         <hr/>
         <div>
             <p>Valige mitme lainepikkusega rasterkiht. Veenduge, et sisendrastril oleks olemas &otilde;iged lainepikkused.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
@@ -95,6 +95,10 @@ Sultani valem on protsess, milles v&otilde;etakse kuue lainepikkusega 8-bitine p
 Teisendatud SAVI on vegetatsiooniindeks, milles proovitakse v&auml;hendada pinnase heleduse m&otilde;ju l&auml;htudes eeldusest, et pinnasejoonel on juhuslik kalle ja sirgl&otilde;ik.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI on vegetatsiooniindeks, mis hindas taimestiku esinemist ainult n&auml;htavast spektrist p&auml;rit teabe alusel. See meetod n&otilde;uab spektri punase, rohelise ja sinise osa ribasid.
+
+                </li>
             </ul>
         </div>
     </div>
@@ -104,7 +108,37 @@ Teisendatud SAVI on vegetatsiooniindeks, milles proovitakse v&auml;hendada pinna
         <div>
             <p>Sisestage infrapunal&auml;hedase (NIR) lainepikkuse ja punase lainepikkuse indeksid.
             </p>
-            <p>Iga satelliidiandur ja &otilde;hukaamera j&auml;&auml;dvustab teavet, mis jaguneb lainepikkuse indeksiteks. Iga lainepikkuse indeks sisaldab teavet elektromagnetilise spektri kindla osa kohta. Selle taimestiku seire meetodi puhul peate sisestama lainepikkuse indeksi, milles j&auml;&auml;dvustati infrapunal&auml;hedane (NIR) ja punane lainepikkus.
+            <p>Mitmeribalised satelliit- v&otilde;i &otilde;husensorid koguvad lainepikkuste ribadeks jaotatud teavet, mis on identifitseeritud ribaindeksitega. Selle taimkatte seiremeetodi jaoks peate m&auml;&auml;rama sagedusribade indeksid l&auml;hiinfrapuna (NIR) ja punase lainepikkuse jaoks.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Määrake punase, rohelise ja sinise lainepikkuse indeksid</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake punase, rohelise ja sinise lainepikkuse indeksid
+            </p>
+            <p>Mitmeribalised satelliit- v&otilde;i &otilde;husensorid koguvad lainepikkuste ribadeks jaotatud teavet, mis on identifitseeritud ribaindeksitega. N&auml;htav atmosf&auml;&auml;rikindel register n&otilde;uab lainepikkuste ribadel punase, rohelise ja sinise ribaindeksi m&auml;&auml;ramist.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Määratlege järgmiste alade indeksid – Blue, Red, NIR, SWIR-1 ja Thermal</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rake sagedusribade indeksid sinise, punase, l&auml;hiinfrapuna (NIR), l&uuml;hilaine infrapuna (SWIR) ja termilise sageduse jaoks.
+            </p>
+            <p>Mitmeribalised satelliit- v&otilde;i &otilde;husensorid koguvad lainepikkuste ribadeks jaotatud teavet, mis on identifitseeritud ribaindeksitega. Sultani vormeli indeks n&otilde;uab siniste, punaste, l&auml;hiinfrapuna (NIR), l&uuml;hilaine infrapuna (SWIR) ja termilise lainepikkuse ribade indeksite m&auml;&auml;ramist.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Määratlege järgmiste alade indeksid – Blue, Green, Red, NIR, SWIR-1 ja SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;ratlege j&auml;rgmiste alade indeksid &ndash; Blue, Green, Red, NIR, SWIR-1 ja SWIR-2
+            </p>
+            <p>Mitmeribalised satelliit- v&otilde;i &otilde;husensorid koguvad lainepikkuste ribadeks jaotatud teavet, mis on identifitseeritud ribaindeksitega. Rohelise vegetatsiooni indeks n&otilde;uab, et m&auml;&auml;raksite lainepikkuste ribade indeksid sinise, rohelise, punase, l&auml;hiinfrapuna (NIR), l&uuml;hilaine infrapuna 1 (SWIR-1) ja l&uuml;hilaine infrapuna 2 (SWIR-2) ribade jaoks.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Teisendatud SAVI on vegetatsiooniindeks, milles proovitakse v&auml;hendada pinna
         <div><h2>Rohelise taimestikuga ala suurus</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rab rohelise taimestiku hulga, mida n&otilde;uab SAVI-meetod.
+            <p>M&auml;&auml;rab rohelise taimkatte hulga, mida n&otilde;uab mullaga kohandatud taimestiku indeksi meetod.
             </p>
             <p>Kehtivad v&auml;&auml;rtused on j&auml;rgmised:
                 <ul>
@@ -172,8 +206,7 @@ Teisendatud SAVI on vegetatsiooniindeks, milles proovitakse v&auml;hendada pinna
             
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
-            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box. Kui teil on õigused nii paanitud kui ka dünaamiliste pildikihtide loomiseks, saate määrata, millist kihitüüpi soovite väljundis kasutada, rakendades ripploendit Salvesta tulemus nimega. </p>
         </div>
     </div>
 </div>

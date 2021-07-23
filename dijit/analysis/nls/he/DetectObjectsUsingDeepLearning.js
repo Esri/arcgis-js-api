@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"הגדר אובייקטים באמצעות למידה לעומק",outputLayerName:"‎${layername}_detected",modelLabel:"בחר מודל של למידה לעומק (deep learning) המשמש לזיהוי אובייקטים",modelArgsLabel:"ציין ארגומנטים למודל של למידה לעומק",nameLabel:"שם",valueLabel:"ערך",removeDuplicatesLable:"הסר ישויות כפולות מהפלט (אופציונלי)",queryModelArgsMsg:"מבוצעת שאילתה של ארגומנטים למודל...",queryModelArgsErrMsg:"תשאול ארגומנטים של מודל נכשל.",nonMaxSuppressionLabel:"הנחתת ערכים שאינם מקסימום",options:"אפשרויות",confidenceLabel:"שדה ציון ביטחון",classValueLabel:"שדה ערך קבוצה",maxOverlapLabel:"יחס חפיפה מקסימאלית",numberOnlyMsg:"מותר להכניס רק ערכים נומריים.",processingModeLabel:"מצב עיבוד",processAsMosaicLabel:"עיבוד כתמונת מוזאיקה",processAsItemsLabel:"עיבוד כל פריטי הרסטר בנפרד",analysisLayerLabel:"בחר תמונה המשמשת לזיהוי אובייקטים",itemDescription:"ניתוח של שירות תמונות הנוצר מזיהוי אובייקטים באמצעות למידה לעומק",itemTags:"תוצאת ניתוח רסטר, זיהוי אובייקטים באמצעות למידה לעומק, ${layername}",itemSnippet:"ניתוח של שירות תמונות הנוצר מזיהוי אובייקטים באמצעות למידה לעומק"});

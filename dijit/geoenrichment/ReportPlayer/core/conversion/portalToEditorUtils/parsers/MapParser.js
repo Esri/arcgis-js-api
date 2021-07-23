@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["../../ConversionUtil","./AlignParser"],(function(a,e){var t={getElement:function(t,s){var p=t.attributes,n=s.templateJson.metadata.mapImageInfosHash[p.name],o={id:"map",isMap:!0,style:{top:a.ptToPx(p.top)||0,left:a.ptToPx(p.left)||0,width:a.ptToPx(p.width||n&&n.width||0),height:a.ptToPx(p.height||n&&n.height||0)}};return n||p.webMapId||p.defaultBasemapId||(o.isMissing=!0),o.defaultBasemapId=n?n.defaultBasemapId:p.defaultBasemapId,o.defaultBasemapName=n&&n.defaultBasemapName,o.webMapId=n?n.webMapId:p.webMapId,o.webMapName=n&&n.webMapName,o.mapScale=n?n.mapScale:null,o.calculatorFieldName=n&&n.fieldName,o.additionalLayerInfos=n&&n.additionalLayerInfos,o.pinSymbolJson=n&&n.pinSymbolJson,o.areaSymbolJsons=n&&n.areaSymbolJsons,o.areaSymbolRamp=n&&n.areaSymbolRamp,o.showMapLegend=p.showMapLegend,e.parseAlign(p,o.style),s.postProcessMapJson&&s.postProcessMapJson(t,o),o},parseMapImageDField:function(a,e){return t.getElement({name:"mapImage",attributes:{name:a}},e)}};return t}));

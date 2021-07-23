@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Prever através da Utilização de um Raster de Tendência",outputLayerName:"${layername}_predict",variablesLabel:"Escolher variável(is) para previsão",variablesListLabel:"Variáveis [Info da Dimensão] (Descrição)",dimensionDefinitionLabel:"Escolher o método utilizado para facultar os valores de dimensão de previsão",dimensionValuesLabel:"Especificar valor(es) de dimensão para previsão",dimensionIntervalLabel:"Especificar intervalo de dimensão para previsão",intervalValueLabel:"Especificar o número de passos entre os valores inicial e final",intervalUnitLabel:"Escolher a unidade que será utilizada para o intervalo de valor de tempo",startLabel:"Valor Inicial",endLabel:"Valor Final",byValueLabel:"Por Valor",byIntervalLabel:"Por Intervalo",hours:"Horas",days:"Dias",weeks:"Semanas",months:"Meses",years:"Anos",custom:"Personalizar",itemDescription:"Serviço de Imagem de Análise gerado a partir de Prever através da Utilização de um Raster de Tendência",itemTags:"Resultado de Análise Raster, Prever através da Utilização de um Raster de Tendência, ${layername}",itemSnippet:"Serviço de Imagem de Análise gerado a partir de Prever através da Utilização de um Raster de Tendência"});

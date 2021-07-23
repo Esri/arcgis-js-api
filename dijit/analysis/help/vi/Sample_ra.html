@@ -46,34 +46,18 @@
         <hr/>
     <p>C&ocirc;ng cụ n&agrave;y tạo một loại đối tượng bảng hoặc điểm hiển thị gi&aacute; trị của c&aacute;c &ocirc; từ một raster hoặc tập hợp c&aacute;c raster cho vị tr&iacute; đ&atilde; x&aacute;c định. Vị tr&iacute; được x&aacute;c định bởi c&aacute;c &ocirc; raster, đối tượng dạng v&ugrave;ng, đối tượng dạng đường hoặc bởi một tập hợp c&aacute;c điểm.
     </p>
-    <p>Gi&aacute; trị pixel sẽ được tr&iacute;ch xuất từ tất cả raster đầu v&agrave;o tại mỗi vị tr&iacute;. Một lớp đối tượng dạng điểm hoặc một bảng sẽ được tạo ra c&oacute; c&aacute;c trường chứa c&aacute;c gi&aacute; trị pixel cho mỗi raster đầu v&agrave;o. Thuộc t&iacute;nh bổ sung từ bảng raster đầu v&agrave;o sẽ kh&ocirc;ng được đưa v&agrave;o bảng đầu ra.
-    </p>
-    <p>Bất kỳ c&aacute;ch kết hợp raster n&agrave;o, chẳng hạn như đơn dải, đa dải, đa chiều hoặc đa biến, đều c&oacute; thể được chỉ định l&agrave;m raster đầu v&agrave;o. Cấu tr&uacute;c của bảng đầu ra thay đổi khi raster đầu v&agrave;o l&agrave; đa chiều. Khi raster đa dải được chỉ định l&agrave;m một trong c&aacute;c raster đầu v&agrave;o, tất cả c&aacute;c dải trong đầu v&agrave;o đ&oacute; sẽ được sử dụng. Để xử l&yacute; lựa chọn dải từ một raster đa dải đầu v&agrave;o, trước ti&ecirc;n h&atilde;y tạo một bộ dữ liệu raster mới bao gồm c&aacute;c dải đ&oacute;. Sử dụng kết quả trong danh s&aacute;ch c&aacute;c raster đầu v&agrave;o.
-    </p>
-    <p>Vị tr&iacute; đầu v&agrave;o c&oacute; thể l&agrave; đối tượng raster hoặc điểm:
+    <p>Một số ứng dụng mẫu của c&ocirc;ng cụ n&agrave;y bao gồm:
         <ul>
-            <li>Raster&mdash;C&aacute;c pixel chứa gi&aacute; trị hợp lệ (kh&ocirc;ng phải NoData) được sử dụng để tr&iacute;ch xuất gi&aacute; trị pixel từ tất cả c&aacute;c raster đầu v&agrave;o v&agrave; t&acirc;m của pixel được sử dụng cho c&aacute;c vị tr&iacute; điểm.
+            <li> Tr&iacute;ch xuất c&aacute;c thuộc t&iacute;nh vị tr&iacute; th&aacute;p ph&aacute;t s&oacute;ng từ nhiều raster, chẳng hạn như sử dụng đất, loại đất, độ cao v&agrave; khoảng c&aacute;ch đến đường.
             </li>
-            <li>Điểm&mdash;Gi&aacute; trị sẽ được lấy mẫu tại mỗi vị tr&iacute; điểm.
+            <li>Tr&iacute;ch xuất nhiệt độ đất ở c&aacute;c độ s&acirc;u kh&aacute;c nhau cho một tập hợp c&aacute;c điểm đ&atilde; cho.
             </li>
-            <li>V&ugrave;ng hoặc đường&mdash;Gi&aacute; trị sẽ được lấy mẫu tại t&acirc;m v&ugrave;ng hoặc đường. Nếu raster đầu v&agrave;o l&agrave; đa chiều, c&aacute;c gi&aacute; trị sẽ được tổng hợp dựa tr&ecirc;n loại  <b>Thống k&ecirc;</b>.
+            <li>Từ dữ liệu nhiệt độ bề mặt biển h&agrave;ng th&aacute;ng trong 30 năm, t&oacute;m tắt tại c&aacute;c vị tr&iacute; động vật hoặc trong phạm vi ng&ocirc;i nh&agrave; trong một khoảng thời gian nhất định khi một lo&agrave;i động vật được quan s&aacute;t.
             </li>
         </ul>
         
     </p>
-    <p>Raster đầu v&agrave;o được lấy mẫu trong tham chiếu v&agrave; độ ph&acirc;n giải kh&ocirc;ng gian ri&ecirc;ng của ch&uacute;ng. Nếu c&oacute; nhiều raster đầu v&agrave;o c&oacute; c&aacute;c tham chiếu kh&ocirc;ng gian kh&aacute;c nhau th&igrave; vị tr&iacute; đầu v&agrave;o được chiếu đến từng tham chiếu kh&ocirc;ng gian của từng raster m&agrave; từ đ&oacute; gi&aacute; trị được tr&iacute;ch xuất. M&ocirc;i trường ph&acirc;n t&iacute;ch được &aacute;p dụng cho c&aacute;c vị tr&iacute; đầu v&agrave;o, nhưng raster đầu v&agrave;o sẽ kh&ocirc;ng theo m&ocirc;i trường ph&acirc;n t&iacute;ch.
-    </p>
-    <p>C&aacute;c vị tr&iacute; tr&iacute;ch xuất gi&aacute; trị từ c&aacute;c &ocirc; NoData trong raster đầu v&agrave;o sẽ được cho một gi&aacute; trị &lt;null&gt; trong bảng đầu ra.
-    </p>
-    <p>Để thực hiện ph&acirc;n t&iacute;ch với đối tượng đa điểm, trước ti&ecirc;n h&atilde;y chuyển đổi ch&uacute;ng th&agrave;nh đối tượng đơn điểm trước khi sử dụng trong c&ocirc;ng cụ n&agrave;y.
-    </p>
-    <p>Tham chiếu kh&ocirc;ng gian của tọa độ x, y trong bảng mẫu đầu ra giống c&aacute;c đối tượng raster vị tr&iacute; hoặc điểm đầu v&agrave;o, trừ khi được chỉ định trong m&ocirc;i trường  <b>Hệ tọa độ Đầu ra</b>. Nếu tham chiếu kh&ocirc;ng gian của dữ liệu vị tr&iacute; đầu v&agrave;o l&agrave; kh&ocirc;ng x&aacute;c định, tham chiếu kh&ocirc;ng gian của tọa độ x, y cũng kh&ocirc;ng x&aacute;c định.
-    </p>
-    <p>Tham chiếu kh&ocirc;ng gian của loại đối tượng đầu ra giống c&aacute;c đối tượng raster vị tr&iacute; hoặc điểm đầu v&agrave;o, trừ khi được chỉ định trong m&ocirc;i trường  <b>Hệ tọa độ Đầu ra</b>.
-    </p>
-    <p>M&ocirc;i trường  <b>Hệ số xử l&yacute; song song</b> chỉ được hỗ trợ khi đầu v&agrave;o l&agrave; một raster đa chiều.
-    </p>
-    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; c&aacute;c biến hoặc dải trong lớp nh&igrave;n thấy được trong phạm vi bản đồ hiện tại sẽ được ph&acirc;n t&iacute;ch. Nếu kh&ocirc;ng được chọn, c&aacute;c biến hoặc dải trong lớp đầy đủ sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
+    <p>Nếu chọn  <b>Sử dụng phạm vi bản đồ hiện tại</b>, th&igrave; c&aacute;c biến hoặc dải trong lớp nh&igrave;n thấy được ở phạm vi bản đồ hiện tại sẽ được ph&acirc;n t&iacute;ch. Nếu kh&ocirc;ng được chọn, c&aacute;c biến hoặc dải trong lớp đầy đủ sẽ được ph&acirc;n t&iacute;ch, ngay cả khi ch&uacute;ng nằm ngo&agrave;i phạm vi bản đồ hiện tại.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -81,7 +65,7 @@
         <div><h2>Chọn (các) lớp hình ảnh để lấy mẫu</h2></div>
         <hr/>
         <div>
-            <p>Một lớp h&igrave;nh ảnh duy nhất hoặc một danh s&aacute;ch c&aacute;c lớp h&igrave;nh ảnh c&oacute; gi&aacute; trị sẽ được lấy mẫu dựa tr&ecirc;n dữ liệu vị tr&iacute; đầu v&agrave;o.
+            <p>Một h&igrave;nh ảnh duy nhất hoặc một danh s&aacute;ch c&aacute;c h&igrave;nh ảnh c&oacute; gi&aacute; trị sẽ được lấy mẫu dựa tr&ecirc;n dữ liệu vị tr&iacute; đầu v&agrave;o. 
             </p>
             <p>Để lấy mẫu tất cả c&aacute;c l&aacute;t cắt từ một lớp h&igrave;nh ảnh đa chiều th&igrave; n&oacute; phải l&agrave; raster đầu v&agrave;o duy nhất.
             </p>
@@ -112,40 +96,42 @@
             <p>Chỉ định thời gian, độ s&acirc;u hoặc dữ liệu thu thập kh&aacute;c được li&ecirc;n kết với c&aacute;c &ocirc; hoặc đối tượng vị tr&iacute;.
             </p>
             <p>Mỗi chiều c&oacute; ba t&ugrave;y chọn chỉ định th&ocirc;ng tin thu thập được li&ecirc;n kết với c&aacute;c &ocirc; hoặc đối tượng vị tr&iacute;:
-                <ul>
-                    <li> <b>Trường hoặc gi&aacute; trị đơn</b>&mdash;Khi chọn t&ugrave;y chọn n&agrave;y, cần chỉ định th&ocirc;ng tin sau:
-                        <ul>
-                            <li> <b>Trường hoặc gi&aacute; trị chiều</b>&mdash;chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Trường hoặc gi&aacute; trị đơn</b>&mdash;Khi chọn t&ugrave;y chọn n&agrave;y, phải chỉ định th&ocirc;ng tin sau:
+                    <ul>
+                        <li> <b>Trường hoặc gi&aacute; trị chiều</b>&mdash;Chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Trường hoặc gi&aacute; trị đơn c&oacute; c&aacute;c gi&aacute; trị tương đối</b>&mdash;Nếu chọn t&ugrave;y chọn n&agrave;y, cần chỉ định th&ocirc;ng tin sau c&ugrave;ng nhau để x&aacute;c định phạm vi t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c biến:
-                        <ul>
-                            <li> <b>Trường hoặc gi&aacute; trị chiều</b>&mdash;chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute;.
-                            </li>
-                            <li> <b>Gi&aacute; trị tương đối trước</b>&mdash;chỉ định một số kh&ocirc;ng &acirc;m d&ugrave;ng để trừ đi <b>Trường hoặc gi&aacute; trị chiều</b> nhằm x&aacute;c định điểm bắt đầu một phạm vi gi&aacute; trị chiều. Gi&aacute; trị n&agrave;y biểu thị số ng&agrave;y nếu chiều l&agrave; thời gian.
-                            </li>
-                            <li> <b>Gi&aacute; trị tương đối sau</b>&mdash;chỉ định một số kh&ocirc;ng &acirc;m d&ugrave;ng để cộng th&ecirc;m <b>Trường hoặc gi&aacute; trị chiều</b> nhằm x&aacute;c định điểm kết th&uacute;c một phạm vi gi&aacute; trị chiều. Gi&aacute; trị n&agrave;y biểu thị số ng&agrave;y nếu chiều l&agrave; thời gian.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Trường hoặc gi&aacute; trị bắt đầu v&agrave; kết th&uacute;c</b>&mdash;Nếu chọn t&ugrave;y chọn n&agrave;y, cần chỉ định th&ocirc;ng tin sau c&ugrave;ng nhau để x&aacute;c định phạm vi t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c biến:
-                        <ul>
-                            <li> <b>Trường hoặc gi&aacute; trị bắt đầu</b>&mdash;chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể để x&aacute;c định điểm bắt đầu một phạm vi gi&aacute; trị chiều.
-                            </li>
-                            <li> <b>Trường hoặc gi&aacute; trị kết th&uacute;c</b>&mdash;chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể để x&aacute;c định điểm kết th&uacute;c một phạm vi gi&aacute; trị chiều.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Trường hoặc gi&aacute; trị đơn c&oacute; c&aacute;c gi&aacute; trị tương đối</b>&mdash;Nếu chọn t&ugrave;y chọn n&agrave;y, phải chỉ định th&ocirc;ng tin sau c&ugrave;ng nhau để x&aacute;c định phạm vi t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c biến:
+                    <ul>
+                        <li> <b>Trường hoặc gi&aacute; trị chiều</b>&mdash;Chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute;.
+                        </li>
+                        <li> <b>Gi&aacute; trị tương đối trước</b>&mdash;Chỉ định một số kh&ocirc;ng &acirc;m d&ugrave;ng để trừ đi <b>Trường hoặc gi&aacute; trị chiều</b> nhằm x&aacute;c định điểm bắt đầu một phạm vi gi&aacute; trị chiều. Gi&aacute; trị n&agrave;y biểu thị số ng&agrave;y nếu chiều l&agrave; thời gian.
+                        </li>
+                        <li> <b>Gi&aacute; trị tương đối sau</b>&mdash;Chỉ định một số kh&ocirc;ng &acirc;m d&ugrave;ng để cộng th&ecirc;m <b>Trường hoặc gi&aacute; trị chiều</b> nhằm x&aacute;c định điểm kết th&uacute;c một phạm vi gi&aacute; trị chiều. Gi&aacute; trị n&agrave;y biểu thị số ng&agrave;y nếu chiều l&agrave; thời gian.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Trường hoặc gi&aacute; trị bắt đầu v&agrave; kết th&uacute;c</b>&mdash;Nếu chọn t&ugrave;y chọn n&agrave;y, phải chỉ định th&ocirc;ng tin dưới đ&acirc;y c&ugrave;ng nhau để x&aacute;c định phạm vi t&iacute;nh to&aacute;n số liệu thống k&ecirc; cho c&aacute;c biến:
+                    <ul>
+                        <li> <b>Trường hoặc gi&aacute; trị bắt đầu</b>&mdash;Chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể để x&aacute;c định điểm bắt đầu một phạm vi gi&aacute; trị chiều.
+                        </li>
+                        <li> <b>Trường hoặc gi&aacute; trị kết th&uacute;c</b>&mdash;Chọn trường gi&aacute; trị chiều từ dữ liệu vị tr&iacute; hoặc nhập gi&aacute; trị chiều cụ thể để x&aacute;c định điểm kết th&uacute;c một phạm vi gi&aacute; trị chiều.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Th&ocirc;ng số n&agrave;y chỉ c&oacute; sẵn khi th&ocirc;ng số  <b>Chọn lớp h&igrave;nh ảnh để lấy mẫu</b> l&agrave; một raster đa chiều.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Khoảng c&aacute;ch được chỉ định xung quanh c&aacute;c đối tượng dữ liệu vị tr&iacute;. Khoảng c&aacute;ch đệm được chỉ định trong c&aacute;c đơn vị tuyến t&iacute;nh của tham chiếu kh&ocirc;ng gian của đối tượng vị tr&iacute;. Nếu đối tượng sử dụng tham chiếu địa l&yacute;, đơn vị sẽ l&agrave; độ.
             </p>
             <p>Số liệu thống k&ecirc; sẽ được t&iacute;nh to&aacute;n trong v&ugrave;ng đệm n&agrave;y.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ c&oacute; sẵn khi  <b>Chọn lớp h&igrave;nh ảnh để lấy mẫu</b> l&agrave; một raster đa chiều.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Th&ocirc;ng số n&agrave;y chỉ c&oacute; sẵn khi th&ocirc;ng số  <b>Chọn lớp h&igrave;nh ảnh để lấy mẫu</b> l&agrave; một raster đa chiều v&agrave; th&ocirc;ng số <b>Chọn lớp vị tr&iacute;</b> l&agrave; đối tượng dạng v&ugrave;ng hoặc đường, hoặc <b>Chỉ định trường hoặc gi&aacute; trị khoảng c&aacute;ch v&ugrave;ng đệm (T&ugrave;y chọn)</b> được chỉ định.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Giá trị phân vị</h2></div>
         <hr/>
         <div>
-            <p>Tỷ lệ phần trăm cần t&iacute;nh khi th&ocirc;ng số  <b>Loại thống k&ecirc;</b> được thiết lập th&agrave;nh <b>Ph&acirc;n vị</b>.
-            </p>
             <p>Gi&aacute; trị n&agrave;y c&oacute; thể nằm trong khoảng từ 0 đến 100. Gi&aacute; trị mặc định l&agrave; 90.
+            </p>
+            <p>Th&ocirc;ng số n&agrave;y chỉ c&oacute; sẵn khi th&ocirc;ng số  <b>Chọn loại số liệu thống k&ecirc;</b> được thiết lập về <b>Ph&acirc;n vị</b>.
             </p>
         </div>
     </div>
@@ -219,15 +209,17 @@
         <div><h2>Chỉ định bố cục đầu ra</h2></div>
         <hr/>
         <div>
-            <p>Chỉ định xem c&aacute;c gi&aacute; trị được lấy mẫu c&oacute; xuất hiện trong h&agrave;ng hoặc cột trong bảng đầu ra hay kh&ocirc;ng. T&ugrave;y chọn n&agrave;y chỉ &aacute;p dụng khi raster đa chiều đầu v&agrave;o chứa một biến v&agrave; một chiều v&agrave; mỗi l&aacute;t cắt l&agrave; một raster đơn dải.
+            <p>Chỉ định xem c&aacute;c gi&aacute; trị được lấy mẫu c&oacute; xuất hiện trong h&agrave;ng hoặc cột trong bảng đầu ra hay kh&ocirc;ng.
             </p>
             <ul>
                 <li> <b>Gi&aacute; trị được lấy mẫu xuất hiện trong h&agrave;ng</b>&mdash;C&aacute;c gi&aacute; trị được lấy mẫu xuất hiện trong c&aacute;c h&agrave;ng ri&ecirc;ng trong bảng đầu ra. Đ&acirc;y l&agrave; mặc định.
                 </li>
-                <li> <b>Gi&aacute; trị được lấy mẫu xuất hiện trong cột</b>&mdash;C&aacute;c gi&aacute; trị được lấy mẫu xuất hiện trong c&aacute;c cột ri&ecirc;ng trong bảng đầu ra. T&ugrave;y chọn n&agrave;y chỉ &aacute;p dụng khi raster đa chiều đầu v&agrave;o chứa một biến v&agrave; một chiều v&agrave; mỗi l&aacute;t cắt l&agrave; một raster band đơn.
+                <li> <b>Gi&aacute; trị được lấy mẫu xuất hiện trong cột</b>&mdash;C&aacute;c gi&aacute; trị được lấy mẫu xuất hiện trong c&aacute;c cột ri&ecirc;ng trong bảng đầu ra.
                 </li>
             </ul>
             
+            <p>Th&ocirc;ng số n&agrave;y chỉ c&oacute; sẵn khi th&ocirc;ng số  <b>Chọn lớp h&igrave;nh ảnh để lấy mẫu</b> l&agrave; một raster đa chiều v&agrave; chứa một biến v&agrave; một chiều, mỗi l&aacute;t cắt l&agrave; một raster dải s&oacute;ng đơn.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Bảng</b>&mdash;Tạo một bảng với c&aacute;c gi&aacute; trị được lấy mẫu. Đ&acirc;y l&agrave; mặc định.
                 </li>
-                <li> <b>Đối tượng</b>&mdash;Tạo một lớp đối tượng điểm với c&aacute;c gi&aacute; trị được lấy mẫu trong bảng của n&oacute;. Nếu đối tượng vị tr&iacute; đầu v&agrave;o l&agrave; dạng v&ugrave;ng hoặc đường th&igrave; mỗi điểm trong lớp đầu ra sẽ l&agrave; t&acirc;m của mỗi h&igrave;nh dạng của c&aacute;c đối tượng vị tr&iacute; đầu v&agrave;o.
+                <li> <b>Đối tượng</b>&mdash;Tạo một lớp đối tượng điểm với c&aacute;c gi&aacute; trị được lấy mẫu trong bảng của n&oacute;. Nếu th&ocirc;ng số <b>Chọn lớp vị tr&iacute;</b> l&agrave; đối tượng đường hoặc v&ugrave;ng, mỗi điểm trong lớp đầu ra sẽ l&agrave; trọng t&acirc;m của mỗi h&igrave;nh học của c&aacute;c đối tượng vị tr&iacute; đầu v&agrave;o. 
                 </li>
             </ul>
             

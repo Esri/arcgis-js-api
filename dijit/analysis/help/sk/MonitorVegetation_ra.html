@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Vybrať vrstvu viacp&aacute;smov&eacute;ho rastra. Uistite sa, že vstupn&yacute; raster m&aacute; spr&iacute;stupnen&eacute; vhodn&eacute; p&aacute;sma.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Vybrať metódu monitorovania vegetácie</h2></div>
         <hr/>
         <div>
-            <p>Vyberte met&oacute;du na vytvorenie vrstvy vegetačn&eacute;ho indexu. Rozdielne vegetačn&eacute; indexy m&ocirc;žu napom&ocirc;cť zv&yacute;razniť určit&eacute; prvky alebo redukovať r&ocirc;zne &scaron;umy.
+            <p>Vyberte met&oacute;du na v&yacute;počet vrstvy vegetačn&eacute;ho indexu. Rozdielne vegetačn&eacute; indexy m&ocirc;žu napom&ocirc;cť zv&yacute;razniť určit&eacute; prvky alebo redukovať r&ocirc;zne &scaron;umy.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je vegetačn&yacute; index, ktor&yacute; sa snaž&iacute; minimalizovať 
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je &scaron;tandardizovan&yacute; index, ktor&yacute; umožňuje vygenerovať sn&iacute;mku zobrazuj&uacute;cu zeleň alebo relat&iacute;vnu biomasu. Tento index čerp&aacute; v&yacute;hodu z kontrastu charakterist&iacute;k dvoch p&aacute;siem z multispektr&aacute;lneho rastrov&eacute;ho datasetu: absorpcia chlorofylov&eacute;ho farbiva v červenom p&aacute;sme a vysok&aacute; odrazovosť rastlinn&yacute;ch materi&aacute;lov je bl&iacute;zko infračerven&eacute; (NIR) p&aacute;smo.
+NDVI je &scaron;tandardizovan&yacute; index, ktor&yacute; umožňuje vygenerovať sn&iacute;mku zobrazuj&uacute;cu zeleň alebo relat&iacute;vnu biomasu. Tento index čerp&aacute; v&yacute;hodu z kontrastu charakterist&iacute;k dvoch p&aacute;siem z multispektr&aacute;lneho rastrov&eacute;ho datasetu: absorpcia chlorofylov&eacute;ho farbiva v červenom p&aacute;sme a vysok&aacute; odrazivosť rastlinn&yacute;ch materi&aacute;lov v bl&iacute;zko infračervenom p&aacute;sme (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Proces Sultanov vzorec vezme &scaron;esťp&aacute;smov&uacute; 8-bitov&uacute; s
 Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&scaron;a minimalizovať vplyvy jasu p&ocirc;dy predpokladom, že l&iacute;nia p&ocirc;dy m&aacute; voľn&yacute; sklon a priesečn&iacute;k.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI je vegetačn&yacute; index, ktor&yacute; odhaduje pr&iacute;tomnosť veget&aacute;cie iba pomocou inform&aacute;ci&iacute; z viditeľn&eacute;ho spektra. T&aacute;to met&oacute;da vyžaduje p&aacute;sma v červenej, zelenej a modrej časti spektra.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Špecifikovať indexy pásma NIR a červeného pásma</h2></div>
+        <div><h2>Špecifikovať indexy pre pásmo NIR a červené pásmo</h2></div>
         <hr/>
         <div>
             <p>&Scaron;pecifikovať indexy p&aacute;siem pre NIR a červen&eacute; p&aacute;sma.
             </p>
-            <p>Každ&yacute; satelitn&yacute; senzor a leteck&aacute; kamera zachyt&aacute;va inform&aacute;cie, ktor&eacute; s&uacute; rozložen&eacute; na p&aacute;smov&eacute; indexy. Každ&eacute; p&aacute;smo obsahuje inform&aacute;cie pre &scaron;pecifick&uacute; časť elektromagnetick&eacute;ho spektra. T&aacute;to met&oacute;da monitorovania veget&aacute;cia vyžaduje, aby ste &scaron;pecifikovali index p&aacute;sma, ktor&yacute; zachytil NIT a červen&eacute; vlnov&eacute; dĺžky.
+            <p>Viacp&aacute;smov&eacute; satelity alebo leteck&eacute; senzory zachyt&aacute;vaj&uacute; &uacute;daje rozdelen&eacute; do vlnov&yacute;ch p&aacute;siem, ktor&eacute; s&uacute; označovan&eacute; p&aacute;smov&yacute;mi indexami. T&aacute;to met&oacute;da monitorovania vyžaduje, aby ste &scaron;pecifikovali p&aacute;smov&eacute; indexy pre Bl&iacute;zko infračerven&eacute; (NIR) a Červen&eacute; vlnov&eacute; p&aacute;sma.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Špecifikovať indexy pre Červené, Zelené a Modré pásma</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať indexy p&aacute;siem pre Červen&eacute;, Zelen&eacute; a Modr&eacute; p&aacute;sma.
+            </p>
+            <p>Viacp&aacute;smov&eacute; satelity alebo leteck&eacute; senzory zachyt&aacute;vaj&uacute; &uacute;daje rozdelen&eacute; do vlnov&yacute;ch p&aacute;siem, ktor&eacute; s&uacute; označovan&eacute; p&aacute;smov&yacute;mi indexami. Viditeľn&yacute; index atmosferick&eacute;ho odporu vyžaduje, aby ste &scaron;pecifikovali indexy pre Červen&eacute;, Zelen&eacute; a Modr&eacute; vlnov&eacute; p&aacute;sma.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Špecifikovať indexy pre Modré, Červené, NIR, SWIR-1 a termálne pásma</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať indexy p&aacute;siem pre Modr&eacute;, Červen&eacute;, Near Infrared (NIR), Shortwave Infrared (SWIR) a term&aacute;lne p&aacute;sma.
+            </p>
+            <p>Viacp&aacute;smov&eacute; satelity alebo leteck&eacute; senzory zachyt&aacute;vaj&uacute; &uacute;daje rozdelen&eacute; do vlnov&yacute;ch p&aacute;siem, ktor&eacute; s&uacute; označovan&eacute; p&aacute;smov&yacute;mi indexami. Index Sultanov vzorec vyžaduje, aby ste &scaron;pecifikovali indexy p&aacute;siem pre Modr&eacute;, Červen&eacute;, Bl&iacute;zko infračerven&eacute; (NIR), Kr&aacute;tkovlnn&eacute; infračerven&eacute; (SWIR) a term&aacute;lne vlnov&eacute; p&aacute;sma.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Špecifikovať indexy pre Modré, Zelené, Červené, NIR, SWIR-1 a SWIR-2 pásma</h2></div>
+        <hr/>
+        <div>
+            <p>&Scaron;pecifikovať indexy p&aacute;siem pre Modr&eacute;, Zelen&eacute;, Červen&eacute;, NIR, SWIR-1 a SWIR-2 p&aacute;sma.
+            </p>
+            <p>Viacp&aacute;smov&eacute; satelity alebo leteck&eacute; senzory zachyt&aacute;vaj&uacute; &uacute;daje rozdelen&eacute; do vlnov&yacute;ch p&aacute;siem, ktor&eacute; s&uacute; označovan&eacute; p&aacute;smov&yacute;mi indexami. Index Zelenej veget&aacute;cie vyžaduje, aby ste &scaron;pecifikovali indexy p&aacute;siem pre Modr&eacute;, Zelen&eacute;, Červen&eacute;, Near Infrared (NIR), Shortwave Infrared 1 (SWIR-1) a Shortwave Infrared 2 (SWIR-2) vlnov&eacute; p&aacute;sma.
             </p>
         </div>
     </div>
@@ -112,9 +146,9 @@ Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&
         <div><h2>Sklon pôdnej línie</h2></div>
         <hr/>
         <div>
-            <p>Sklon p&ocirc;dnej l&iacute;nie. Sklon je približn&aacute; line&aacute;rna relačn&aacute; v&auml;zba medzi NIR a červen&yacute;mi p&aacute;smami v grafe rozptylu.
+            <p>Sklon p&ocirc;dnej l&iacute;nie. Sklon je približn&yacute; line&aacute;rny vzťah medzi NIR a červen&yacute;mi p&aacute;smami v grafe rozptylu.
             </p>
-            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de- prisp&ocirc;soben&yacute; vegetačn&yacute; index.
+            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de-prisp&ocirc;soben&yacute; vegetačn&yacute; index.
             </p>
         </div>
     </div>
@@ -126,7 +160,7 @@ Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&
             </p>
             <p> <code>(a = NIR - sČerven&eacute;)</code>, keď je Červen&eacute; 0.
             </p> 
-            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de- prisp&ocirc;soben&yacute; vegetačn&yacute; index.
+            <p>Tento parameter je platn&yacute; len pre met&oacute;du Transformovan&yacute; p&ocirc;de-prisp&ocirc;soben&yacute; vegetačn&yacute; index.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&
         <div><h2>Množstvo pokrytia zelenej vegetácie</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;pecifikuje množstvo pokrytia zelenej veget&aacute;cie, čo je vyžadovan&eacute; met&oacute;dou SAVI.
+            <p>&Scaron;pecifikuje množstvo zelenej vegetačnej pokr&yacute;vky, ktor&aacute; je vyžadovan&aacute; met&oacute;dou Zemi prisp&ocirc;soben&yacute; vegetačn&yacute; index.
             </p>
             <p>Platn&eacute; hodnoty s&uacute; nasledovn&eacute;:
                 <ul>
@@ -172,8 +206,7 @@ Transformovan&yacute; vegetačn&yacute; index SAVI, ktor&yacute; sa pok&uacute;&
             
             <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
             </p>
-            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
-            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu. Ak máte oprávnenia na vytváranie dlaždicových a dynamických snímkových vrstiev, môžete špecifikovať, ktorý typ vrstvy generovať vo výstupe pri použití rozbaľovacieho boxu Uložiť výsledok ako. </p>
         </div>
     </div>
 </div>

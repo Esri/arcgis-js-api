@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Pixelek meghatározása Deep Learning használatával",outputLayerName:"${layername}_felismerve",modelLabel:"Válassza ki a pixelek felismeréséhez használt Deep Learning modellt",modelArgsLabel:"Adja meg a Deep Learning modell argumentumait",nameLabel:"Név",valueLabel:"Érték",removeDuplicatesLable:"Ismétlődő vektoros elemek eltávolítása a kimenetből (választható)",queryModelArgsMsg:"Modell argumentumainak lekérdezése...",queryModelArgsErrMsg:"Nem sikerült a modell argumentumainak lekérdezése.",nonMaxSuppressionLabel:"Nem maximális tiltás",options:"Beállítások",confidenceLabel:"Konfidencia pontszáma mező",classValueLabel:"Osztály értéke mező",maxOverlapLabel:"Maximális átfedési arány",numberOnlyMsg:"Csak numerikus értékek engedélyezettek.",processingModeLabel:"Feldolgozó mód",processAsMosaicLabel:"Feldolgozás mozaikos képként",processAsItemsLabel:"Valamennyi raszteres elem külön-külön feldolgozása",analysisLayerLabel:"Válassza ki az objektumok felismeréséhez használt képet",itemDescription:"Deep Learning használatával történő objektumfelismerésből létrehozott elemzési raszteres szolgáltatás",itemTags:"Raszteres elemzés végeredménye, Objektumok felismerése Deep Learning használatával, ${layername}",itemSnippet:"Deep Learning használatával történő objektumfelismerésből létrehozott elemzési raszteres szolgáltatás"});

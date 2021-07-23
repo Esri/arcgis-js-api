@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({_widgetLabel:"Геообработка",_featureAction_ReceiveFeatureSet:"Установить как входные данные для ",requiredInfo:"требуется.",drawnOnMap:"Результат отображается на карте.",noToolConfig:"Нет доступных предварительно настроенных задач геообработки.",useUrlForGPInput:"URL",useUploadForGPInput:"Загрузить файл",useImageServiceLayer:"Слой сервиса изображений",useBrowseLayerPortal:"Найти / Выбрать на портале",selectFileToUpload:"Выбрать файл...",rasterFormat:"Формат растровых данных",noFileSelected:"Нет выбранных файлов!",uploadSuccess:"Выгрузка файла выполнена успешно!",showLayerContent:"Показать ресурсы слоя",invalidUrl:"Неверный url-адрес сервиса объектов",urlPlaceholder:"URL-адрес группы объектов",addShapefile:"Добавить шейп-файл",generateShapefileError:"Ошибка построения шейп-файла, проверьте: ",cleared:"Результат очищен.",enlargeView:"Увеличить вид",exportOutput:"Экспорт",emptyResult:"Результат пуст.",useSelectedFeatureset:"Использовать полученные объекты.",closeSelectedFeatureset:"Очистить и использовать настроенную опцию входных данных."});

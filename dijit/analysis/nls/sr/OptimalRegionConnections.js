@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Odaberite raster ili geoobjekat regiona",inputCostRaster:"Odaberite raster troškova (opciono)",inputBarrierRasterOrFeatures:"Odaberite raster ili geoobjekat barijera (opciono)",distanceMethod:"Metod rastojanja (opciono)",connectionsWithinRegions:"Veze unutar regiona (opciono)",generateConnections:"Kreiranje veza",noConnections:"Nema veze",planar:"Planarno",geoDesic:"Geodetski",outputOptimalLinesName:"Naziv sloja geoobjekata optimalnih linija povezanosti sa rezultatima",outputNeighborConnectionsName:"Naziv sloja susednih veza sa rezultatima (opciono)",outputLayerName:"Optimalne veze regiona za ${layername}",drawSourcePointLayerName:"Izvorne tačke",itemDescription:"Sloj geoobjekata nastao usled pokretanja optimalne regionalne veze na ${layername}. ",itemTags:"Rezultat analize, Optimalne regionalne veze, ${layername} ${fieldname}",itemSnippet:"Sloj geoobjekata nastao iz optimalnih regionalnih veza.",noValueMessage:"Ova vrednost je obavezna"});

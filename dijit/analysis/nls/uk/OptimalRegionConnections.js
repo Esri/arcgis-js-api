@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Вибрати растр регіону або об'єкт",inputCostRaster:"Вибрати растр вартості (необов'язково)",inputBarrierRasterOrFeatures:"Вибрати растр або об'єкт бар'єру (необов'язково)",distanceMethod:"Метод відстані (необов'язково)",connectionsWithinRegions:"Зв'язки в межах регіонів (необов'язково)",generateConnections:"Створити підключення",noConnections:"Немає підключень",planar:"Планарний",geoDesic:"Геодезичний",outputOptimalLinesName:"Ім'я векторного шару результатів оптимальних ліній з'єднання",outputNeighborConnectionsName:"Ім'я векторного шару сусідніх зв'язків результатів (необов'язково)",outputLayerName:"Оптимальні регіональні зв'язки ${layername}",drawSourcePointLayerName:"Точки джерела",itemDescription:"Векторний шар, згенерований в результаті виконання оптимальних регіональних зв'язків на${layername}. ",itemTags:"Результат аналізу, оптимальні регіональні зв'язки, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований на основі оптимальних регіональних зв'язків.",noValueMessage:"Це значення є обов'язковим"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Chọn khu vực raster hoặc đối tượng",outputTableName:"Tên bảng kết quả",zoneField:"Trường khu vực",inputValueRaster:"Chọn raster giá trị",ignoreNodata:"Bỏ qua NoData trong các tính toán (tùy chọn)",ignore:"Bỏ qua",statisticType:"Loại số liệu thống kê (tùy chọn)",percentileValues:"Giá trị phân vị (tùy chọn)",percentileInterpolationType:"Loại nội suy phân vị (tùy chọn)",processAsMultidimensional:"Xử lý dưới dạng đa chiều (tùy chọn)",allSlices:"Tất cả lát cắt",outputZonalStatsName:"Thống kê khu vực cho ${valuelayername} trong ${layername}",itemDescription:"Phân tích bảng đối tượng được tạo ra từ Thống kê Khu vực dưới dạng Bảng",itemTags:"Kết quả Phân tích Raster, Thống kê Khu vực dưới dạng Bảng, ${layername}, ${valuelayername}",autoDetect:"Tự động phát hiện",nearest:"Gần nhất",linear:"Tuyến tính"});

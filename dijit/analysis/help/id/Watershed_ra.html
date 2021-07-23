@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
-        <h2>Batas Air</h2><p/>
-        <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Tugas batas air"></h2>
+    <div id="toolDescription" class="smallsize">
+        <h2>Daerah Aliran Sungai</h2><p/>
+        <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Tugas Daerah Aliran Sungai"></h2>
         <hr/>
     <p>Alat ini menentukan area kontribusi di atas rangkaian sel dalam raster.
     </p>
-    <p>Batas air adalah daerah dataran tinggi yang menyumbang aliran air &mdash; umumnya air &mdash; ke saluran umum sebagai drainase terkonsentrasi. Ini dapat menjadi bagian dari batas air yang lebih besar dan juga dapat berisi batas air yang lebih kecil, yang disebut subbasin.
-    </p>
-    <p>Nilai setiap batas air akan diambil dari nilai sumber di raster input atau layer titik tuang fitur. Ketika titik tuang adalah kumpulan raster, nilai sel digunakan secara default. Ketika titik tuang adalah set data fitur titik, nilainya akan berasal dari kolom yang ditentukan.
-    </p>
-    <p>Alat Watershed hanya mendukung layer raster arah aliran input D8.
-    </p>
-    <p>Saat menentukan lokasi input titik tuang sebagai data fitur, kolom default akan menjadi kolom valid pertama yang tersedia. Jika tidak ada kolom yang valid, kolom ObjectID (misalnya, OID atau FID) akan menjadi default.
+    <p> Titik input di Sungai Mississippi di Louisiana akan membuat fitur batas air yang mencakup area dari New York ke Montana dan ke Kanada.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Input raster yang menunjukkan arah aliran keluar dari setiap sel.
             </p>
-            <p>Raster arah aliran dapat dibuat menggunakan alat Flow Direction atau tugas FlowDirection dalam layanan RasterAnalysisTools, jalankan menggunakan tipe arah aliran default  <b>D8</b>.
+            <p>Raster arah aliran dapat dibuat menggunakan fungsi raster Arah Aliran, dengan jenis arah aliran default  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Input lokasi titik tuang.
             </p>
-            <p>Untuk raster, ini menunjukkan sel-sel di atas mana area kontribusi, atau tangkapan, akan ditentukan. Semua sel yang bukan NoData akan digunakan sebagai sel sumber. Untuk input titik, ini mewakili lokasi di atas mana area kontribusi, atau tangkapan, akan ditentukan.
+            <p>Ini dapat berupa raster atau fitur titik. Untuk raster, ini menunjukkan sel-sel di atas mana area kontribusi, atau tangkapan, akan ditentukan. Semua sel yang bukan NoData akan digunakan sebagai sel sumber. Untuk input titik, ini mewakili lokasi di atas mana area kontribusi, atau tangkapan, akan ditentukan.
             </p>
         </div>
     </div>
@@ -82,7 +76,7 @@
         <div>
             <p>Kolom yang digunakan untuk menetapkan nilai ke lokasi titik tuang.
             </p>
-            <p>Jika layer input pour point adalah raster, Value digunakan. Jika fitur, kolom numerik digunakan. Jika kolom berisi nilai-nilai floating-point, mereka akan dipotong menjadi bilangan bulat.
+            <p>Jika layer titik tuang input adalah raster,  <i>Value</i> akan digunakan. Jika layer input titik tuang adalah fitur, kolom numerik akan digunakan. Jika kolom berisi nilai-nilai floating-point, mereka akan dipotong menjadi bilangan bulat.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
-            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>. Jika Anda memiliki hak istimewa untuk membuat layer citra dinamis dan tile, Anda dapat menentukan jenis layer yang akan dihasilkan dalam output menggunakan kotak drop-down Simpan hasil sebagai. </p>
         </div>
     </div>
 </div>

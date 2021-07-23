@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({chooseShape:"쉐이프 선택",defineExtent:"범위 정의",defineBin:"지정하여 그룹 크기 정의",area:"영역",distance:"거리",resultLayerName:"결과 레이어 이름",hexagon:"육각형",transverseHexagon:"가로축 육각형",square:"제곱",triangle:"삼각형",diamond:"마름모",sameAsDisplay:"표시 범위와 동일함",emptyBinSize:"그룹 크기는 비워둘 수 없음",currentExtent:"현재 범위",intersectExtent:"교차하는 공간 분할만 유지",outputLayerName:"${extentLayerName}에 공간 분할 생성",itemDescription:"${extentLayerName}의 범위가 사용되었습니다.",itemTags:"분석 결과, 공간 분할 생성, ${extentLayerName}",itemSnippet:"공간 분할 생성에서 생성된 피처 레이어입니다."});

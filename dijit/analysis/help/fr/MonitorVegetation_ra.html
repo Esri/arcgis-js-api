@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Choisissez la couche raster multicanal. V&eacute;rifiez que les canaux appropri&eacute;s sont disponibles sur le raster en entr&eacute;e.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Choisir la méthode permettant de surveiller la végétation</h2></div>
         <hr/>
         <div>
-            <p>Choisir la m&eacute;thode pour cr&eacute;er la couche d&rsquo;indice de v&eacute;g&eacute;tation. Les diff&eacute;rents indices de v&eacute;g&eacute;tation permettent de mettre en &eacute;vidence certaines entit&eacute;s ou de r&eacute;duire diff&eacute;rents bruits.
+            <p>Choisissez la m&eacute;thode &agrave; utiliser pour calculer la couche d&rsquo;indice de v&eacute;g&eacute;tation. Les diff&eacute;rents indices de v&eacute;g&eacute;tation permettent de mettre en &eacute;vidence certaines entit&eacute;s ou de r&eacute;duire diff&eacute;rents bruits.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Le processus de la formule de Sultan utilise une image 8&nbsp;bits de six canaux
 L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui tente de minimiser les influences de la luminosit&eacute; du sol en supposant que la ligne du sol pr&eacute;sente une pente et une interception arbitraires.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+L&rsquo;indice VARI est un indice de v&eacute;g&eacute;tation permettant d&rsquo;estimer la pr&eacute;sence de v&eacute;g&eacute;tation uniquement &agrave; partir de la plage visible&nbsp;du spectre. Cette m&eacute;thode n&eacute;cessite les canaux rouge, bleu et vert du spectre.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Spécifier les indices canal NIR et du canal rouge</h2></div>
+        <div><h2>Spécifier les indices pour le canal NIR et le canal rouge</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifiez les indices des canaux proche NIR et rouge.
+            <p>Sp&eacute;cifiez les indices des canaux proche infrarouge (NIR) et rouge.
             </p>
-            <p>Chaque capteur satellitaire et cam&eacute;ra a&eacute;rienne capturent des informations qui sont d&eacute;compos&eacute;es en indices de canaux. Chaque indice de canal contient les informations propres &agrave; une partie sp&eacute;cifique du spectre &eacute;lectromagn&eacute;tique. Pour recourir &agrave; cette m&eacute;thode de surveillance de la v&eacute;g&eacute;tation, vous devez sp&eacute;cifier l&rsquo;indice de canal qui a captur&eacute; les longueurs d&rsquo;onde NIR et rouge.
+            <p>Les capteurs a&eacute;riens ou satellitaires multicanaux capturent des informations qui sont d&eacute;compos&eacute;es en canaux de longueur d&rsquo;onde, identifi&eacute;s par des indices de canaux. Cette m&eacute;thode de surveillance de la v&eacute;g&eacute;tation implique que vous sp&eacute;cifiez les indices des canaux de longueur d&rsquo;onde proche infrarouge (NIR) et rouge.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Spécifier les indices des canaux rouge, vert et bleu</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifiez l&rsquo;indice de canal pour les canaux rouge, vert et bleu.
+            </p>
+            <p>Les capteurs a&eacute;riens ou satellitaires multicanaux capturent des informations qui sont d&eacute;compos&eacute;es en canaux de longueur d&rsquo;onde, identifi&eacute;s par des indices de canaux. L&rsquo;indice visible de r&eacute;duction des effets atmosph&eacute;riques (VARI) implique que vous sp&eacute;cifiez l&rsquo;indice de canal pour les canaux rouge, vert et bleu.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Spécifier les indices des canaux bleu, rouge, proche infrarouge (NIR), SWIR-1 et thermique</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifiez les indices des canaux bleu, rouge, proche infrarouge (NIR), infrarouge &agrave; ondes courtes (SWIR) et thermique.
+            </p>
+            <p>Les capteurs a&eacute;riens ou satellitaires multicanaux capturent des informations qui sont d&eacute;compos&eacute;es en canaux de longueur d&rsquo;onde, identifi&eacute;s par des indices de canaux. L&rsquo;indice de la formule de Sultan implique que vous sp&eacute;cifiez les indices des canaux de longueur d&rsquo;onde bleu, rouge, proche infrarouge (NIR), infrarouge &agrave; ondes courtes (SWIR) et thermique.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Spécifier les indices des canaux bleu, vert, rouge, proche infrarouge (NIR), SWIR-1 et SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Sp&eacute;cifiez l&rsquo;indice de canal pour les canaux bleu, vert, rouge, proche infrarouge (NIR), SWIR-1 et SWIR-2.
+            </p>
+            <p>Les capteurs a&eacute;riens ou satellitaires multicanaux capturent des informations qui sont d&eacute;compos&eacute;es en canaux de longueur d&rsquo;onde, identifi&eacute;s par des indices de canaux. L&rsquo;indice de v&eacute;g&eacute;tation verte implique que vous sp&eacute;cifiez les indices des canaux de longueur d&rsquo;onde bleu, vert, rouge, proche infrarouge (NIR), infrarouge &agrave; ondes courtes&nbsp;1 (SWIR-1) et infrarouge &agrave; ondes courtes&nbsp;2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
         <div><h2>Surface de couvert végétal</h2></div>
         <hr/>
         <div>
-            <p>Indique la surface verte de couvert v&eacute;g&eacute;tal requise par la m&eacute;thode SAVI.
+            <p>Sp&eacute;cifie la surface de couvert v&eacute;g&eacute;tal requise pour la m&eacute;thode SAVI (Indice de v&eacute;g&eacute;tation ajust&eacute; au sol et modifi&eacute;).
             </p>
             <p>Les valeurs valides sont les suivantes&nbsp;:
                 <ul>
@@ -172,8 +206,7 @@ L'indice transform&eacute; SAVI est un indice de v&eacute;g&eacute;tation qui te
             
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
-            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>. Si vous avez les privilèges permettant de créer des couches tuilées et d’images dynamiques, vous pouvez spécifier le type de couche à générer en sortie à l’aide de la zone déroulante Save result as (Enregistrer le résultat sous). </p>
         </div>
     </div>
 </div>

@@ -46,9 +46,7 @@
         <hr/>
     <p>T&auml;m&auml; ty&ouml;kalu laskee yhteen rasterin arvot toisen aineistoryhm&auml;n vy&ouml;hykkeill&auml;.
     </p>
-    <p>Seuraavassa on luettelo joistakin sovelluksista:
-    </p>
-    <p>
+    <p>Seuraavassa on luettelo joistakin t&auml;m&auml;n ty&ouml;kalun sovelluksista:
         <ul>
             <li>Jos k&auml;yt&ouml;ss&auml; ovat vesijakoalueiden rajojen karttataso ja maank&auml;ytt&ouml;tyypin mukaisten kaavoitusrajojen karttataso, ty&ouml;kalu laskee tietyn maank&auml;ytt&ouml;aluetyypin kokonaispinta-alan eekkerein&auml; kullekin vesijakoalueelle.
                 
@@ -69,9 +67,9 @@
         <div><h2>Valitse aluekarttataso, jonka rajojen sisällä olevasta rasterikarttatasosta haluat laatia yhteenvedon</h2></div>
         <hr/>
         <div>
-            <p>Yhteenveto laaditaan karttatasosta, joka m&auml;&auml;ritt&auml;&auml; alueiden (tai vy&ouml;hykkeiden) rajat.
+            <p>L&auml;ht&ouml;aineisto, joka m&auml;&auml;ritt&auml;&auml; yhteenvedett&auml;vien vy&ouml;hykkeiden tai alueiden rajat.
             </p>
-            <p>Karttataso voi olla rasteri- tai kohdeaineistoryhm&auml;. Rastereissa vy&ouml;hykkeet m&auml;&auml;r&auml;ytyv&auml;t kaikkien niiden l&auml;ht&ouml;aineiston sijaintien mukaan, joilla on sama soluarvo. Alueiden ei tarvitse olla vierekk&auml;isi&auml;.
+            <p>L&auml;ht&ouml;aineisto voi olla kokonaislukurasteri tai kohdeaineisto. Rastereissa vy&ouml;hykkeet m&auml;&auml;r&auml;ytyv&auml;t kaikkien niiden l&auml;ht&ouml;aineiston sijaintien mukaan, joilla on sama soluarvo. Kohteissa vy&ouml;hykkeet voivat olla p&auml;&auml;llekk&auml;isi&auml;. Alueiden ei tarvitse olla vierekk&auml;isi&auml;.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Määritä rajat valitsemalla kenttä</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; on sen karttatason ominaisuustieto, jota k&auml;ytet&auml;&auml;n alueiden rajojen m&auml;&auml;ritt&auml;miseen.
+            <p>Kentt&auml;, joka sis&auml;lt&auml;&auml; kunkin vy&ouml;hykkeen m&auml;&auml;ritt&auml;v&auml;t arvot.
             </p>
-            <p>Oletetaan esimerkiksi, ett&auml; ensimm&auml;inen l&auml;ht&ouml;aineiston karttataso m&auml;&auml;ritt&auml;&auml; hallintoyksik&ouml;n rajat ominaisuustiedoilla, jotka m&auml;&auml;ritt&auml;v&auml;t kunkin yksik&ouml;n alueen, piirin ja kiinteist&ouml;n tunnuksen. Sinulla on my&ouml;s rasterikarttataso, joka m&auml;&auml;ritt&auml;&auml; kunkin sijainnin biodiversiteetti-indeksin. Valitsemasi kent&auml;n mukaan voit laskea keskim&auml;&auml;r&auml;isen biodiversiteetin paikallis-, piiri- tai aluetasolla.
+            <p>T&auml;m&auml; voi olla vy&ouml;hykeaineistoryhm&auml;n kokonaisluku tai merkkijonokentt&auml;.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Valitse rasterikarttataso, josta haluat laatia yhteenvedon</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml;n karttatason rasterisoluista laaditaan yhteenveto niiden alueiden (vy&ouml;hykkeiden) mukaan, joiden sis&auml;ll&auml; solut ovat.
+            <p>Rasteri, joka sis&auml;lt&auml;&auml; arvot, joista tilastotiedot lasketaan.
+            </p>
+            <p>Sen tyyppi voi olla joko kokonaisluku tai liukuluku. Jos tyyppin&auml; on liukuluku, enemmist&ouml;-, v&auml;hemmist&ouml;- tai diversiteettilaskuja ei voi laskea.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Valitse laskettava tilastotieto</h2></div>
         <hr/>
         <div>
-            <p>Valittuasi tason, josta yhteenveto laaditaan, voit vaihtoehtoisesti laskea tilastotietoja l&auml;ht&ouml;aineiston aluekarttatason pisteiden, viivojen tai alueiden kaikille numeromuotoisille ominaisuustiedoille.
+            <p>M&auml;&auml;ritt&auml;&auml; laskettavan tilastotyypin.
             </p>
-            <p>Kun valittu kentt&auml; on kokonaisluku, k&auml;ytett&auml;viss&auml; ovat seuraavat tilastotietojen tyypit: Keskiarvo, Enemmist&ouml;, Maksimi, Mediaani, Minimi, V&auml;hemmist&ouml;, Prosenttipiste, Vaihteluv&auml;li, Keskihajonta, Summa ja Diversiteetti.
-            </p>
-            <p>Jos kentt&auml; on liukuluku, k&auml;ytett&auml;viss&auml; ovat seuraavat tyypit: Keskiarvo, Maksimi, Minimi, Vaihteluv&auml;li, Keskihajonta ja Summa.
+            <p> L&auml;ht&ouml;aineisto voi olla jokin seuraavista: <b>Keskiarvo</b>, <b>Enemmist&ouml;</b>, <b>Maksimi</b>, <b>Mediaani</b>, <b>Minimi</b>, <b>V&auml;hemmist&ouml;</b>, <b>Prosenttipiste</b>, <b>Vaihteluv&auml;li</b>, <b>Keskihajonta</b>, <b>Summa</b> tai <b>Diversiteetti</b>. Oletusarvo on <b>Keskiarvo</b>.
             </p>
         </div>
     </div>
@@ -109,11 +107,11 @@
         <div><h2>Prosenttiarvo</h2></div>
         <hr/>
         <div>
-            <p>Laskettava prosenttipiste. Oletusarvo on 90, joka tarkoittaa 90. prosenttipistett&auml;.
+            <p>Laskettava prosenttipiste. Oletusarvo on 90, joka tarkoittaa 90. prosenttiarvoa.
             </p>
-            <p>Arvot voivat olla 0&ndash;100. 0. prosenttipiste vastaa periaatteessa Minimi-tilastotietoa, ja 100. prosenttipiste Maksimi-tilastotietoa. Arvo 50 tuottaa saman tuloksen kuin Mediaani-tilastotieto.
+            <p>Arvo voi olla v&auml;lilt&auml; 0&ndash;100. 0. prosenttipisteen m&auml;&auml;ritt&auml;minen vastaa periaatteessa Minimi-tilastotietoa, ja 100. prosenttipiste vastaa Maksimi-tilastotietoa. Arvo 50 tuottaa saman tuloksen kuin Mediaani-tilastotieto.
             </p>
-            <p>T&auml;t&auml; vaihtoehtoa tuetaan vain, jos  <b>Valitse laskettava tilastotieto</b> -parametrin arvoksi on m&auml;&auml;ritetty <b>Prosenttipiste</b>.
+            <p> T&auml;t&auml; parametria tuetaan vain, jos <b>Valitse laskettava tilastotieto</b> -parametrin arvoksi on m&auml;&auml;ritetty <b>Prosenttipiste</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ohita puuttuvat arvot laskelmassa</h2></div>
         <hr/>
         <div>
-            <p>Jos valitset arvojen ohittamisen, kyseisen alueen tulosaineiston arvon m&auml;&auml;ritt&auml;miseen k&auml;ytet&auml;&auml;n vain soluja, joilla on arvo karttatasossa yhteenvedon laatimista varten. Muutoin jos arvoja puuttuu mist&auml; tahansa alueelta tulosaineistossa, kyseisen vy&ouml;hykkeen kaikkien solujen tilastotietojen laskemiseen on liian v&auml;h&auml;n tietoja, ja tulosaineistossa kyseisen alueen arvoksi m&auml;&auml;ritet&auml;&auml;n NoData.
+            <p> M&auml;&auml;ritt&auml;&auml;, ohitetaanko puuttuvat arvot analyysissa.
             </p>
+            <ul>
+                <li>Valittu &ndash; analyysi sis&auml;lt&auml;&auml; solut, joiden l&auml;ht&ouml;arvorasterin arvo on mill&auml; tahansa tietyll&auml; vy&ouml;hykkeell&auml;, jotta voidaan m&auml;&auml;ritt&auml;&auml; kyseisen vy&ouml;hykkeen tulosarvo. Arvorasterin NoData-solut ohitetaan tilastollisessa laskennassa. T&auml;m&auml; on oletusarvo.
+                </li>
+                <li>Ei valittu &ndash; analyysin tuloksena on NoData, jos arvorasterin solujen arvona on NoData-arvoja tietyll&auml; vy&ouml;hykkeell&auml;.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Käsittele moniulotteisena</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;ritt&auml;&auml;, miten l&auml;ht&ouml;aineiston rasterit k&auml;sitell&auml;&auml;n, jos ne ovat moniulotteisia. Jos valitset niiden k&auml;sittelemisen moniulotteisina, tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n kaikista ulottuvuuksista. Muuten tilastotiedot lasketaan oletuksena l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n nykyisest&auml; viipaleesta.
+            <p>M&auml;&auml;ritt&auml;&auml;, miten l&auml;ht&ouml;aineiston kuvapalvelut k&auml;sitell&auml;&auml;n, jos ne ovat moniulotteisia.
             </p>
+            <ul>
+                <li>Valittu &ndash; tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n nykyisest&auml; viipaleesta. T&auml;m&auml; on oletusarvo.
+                    
+
+                </li>
+                <li>Ei valittu &ndash; tilastotiedot lasketaan l&auml;ht&ouml;aineiston moniulotteisen aineistoryhm&auml;n kaikille ulottuvuuksille.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
-            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
-            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla. Jos sinulla on käyttöoikeudet, jotka sallivat sekä tiilitettyjen että dynaamisten kuva-aineistokarttatasojen luonnin, voit määrittää tulosaineiston karttatasotyypin avattavan Tallenna tulos nimellä -ruudun avulla. </p>
         </div>
     </div>
 </div>

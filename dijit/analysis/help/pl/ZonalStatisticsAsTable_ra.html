@@ -40,21 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Statystyka strefowa jako tabela</h2><p/>
         <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagram narzędzia Statystyka strefowa jako tabela"></h2>
         <hr/>
     <p>To narzędzie tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych, a wyniki wyświetla w postaci tabeli.
     </p>
-    <p>Poniżej przedstawiono następujące przykładowe zastosowania:
-    </p>
-    <p>
+    <p>Poniżej przedstawiono przykładowe zastosowania tego narzędzia:
         <ul>
-            <li>Dysponując warstwą granic stan&oacute;w i rozkładem średnich opad&oacute;w atmosferycznych w kontynentalnych Stanach Zjednoczonych, oblicz rozkład występowania bardzo silnych opad&oacute;w deszczu według stan&oacute;w przy użyciu listy wartości percentylowych.
+            <li>Mając warstwę zlewni i warstwę granic użytkowania terenu według typu użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni.
                 
 
             </li>
-            <li>Dysponując warstwą nakładających się stref ekologicznych i warstwą rastrową wilgotności gleby, oblicz wszystkie obsługiwane statystyki w każdej ze stref, aby powiązać strefy z dostępnością wilgotnych gleb.
+            <li>Uwzględniając warstwę działek w powiecie i warstwę granic miast, podsumuj średnią wartość działek wystawionych na sprzedaż w granicach każdego miasta.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Wybierz raster lub obiekty stref</h2></div>
         <hr/>
         <div>
-            <p>Warstwa definiująca granice stref lub obszar&oacute;w, kt&oacute;re zostaną podsumowane.
+            <p>Dane wejściowe definiujące granice stref lub obszar&oacute;w, kt&oacute;re zostaną podsumowane.
             </p>
-            <p>Warstwa może zawierać całkowitoliczbowe dane rastrowe lub obiektowe. W przypadku rastr&oacute;w strefy są definiowane przez wszystkie lokalizacje w danych wejściowych, kt&oacute;re mają tą samą wartość kom&oacute;rki. W przypadku obiekt&oacute;w strefy te mogą się nakładać. Obszary nie muszą być ciągłe.
+            <p>Dane wejściowe mogą zawierać całkowitoliczbowe dane rastrowe lub obiektowe. W przypadku rastr&oacute;w strefy są definiowane przez wszystkie lokalizacje w danych wejściowych, kt&oacute;re mają tą samą wartość kom&oacute;rki. W przypadku obiekt&oacute;w strefy te mogą się nakładać. Obszary nie muszą być ciągłe.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Pole strefy</h2></div>
         <hr/>
         <div>
-            <p>To jest atrybut warstwy, kt&oacute;ry będzie używany do definiowania granic stref (obszar&oacute;w).
+            <p>Pole zawierające wartości definiujące poszczeg&oacute;lne strefy.
             </p>
-            <p>Zał&oacute;żmy na przykład, że pierwsza warstwa wejściowa definiuje granice jednostki administracyjnej i zawiera atrybuty definiujące region, okręg i identyfikator działki każdej jednostki. Istnieje także warstwa rastrowa definiująca indeks bior&oacute;żnorodności dla każdej lokalizacji. Wybierając odpowiednie pole, można zdecydować, czy obliczyć średnią bior&oacute;żnorodność na poziomie lokalnym, poziomie okręgu czy poziomie regionalnym.
+            <p>Może to być pole całkowitoliczbowe lub znakowe zestawu danych strefy.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Wybierz raster wartości</h2></div>
         <hr/>
         <div>
-            <p>Kom&oacute;rki rastrowe w tej warstwie zostaną zsumowane według obszar&oacute;w (stref), do kt&oacute;rych należą.
+            <p>Raster zawierający wartości, na podstawie kt&oacute;rych są obliczane statystyki.
+            </p>
+            <p>Może być typu całkowitoliczbowego lub zmiennoprzecinkowego. Jednak jeśli jest on typu zmiennoprzecinkowego, opcje obliczania większości, mniejszości i zr&oacute;żnicowania strefy nie będą dostępne.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignoruj w obliczeniach wartości NoData (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Określa, czy w analizie są ignorowane wartości NoData.
-                <ul>
-                    <li>Zaznaczone &mdash; podczas przeprowadzania tej analizy zostaną dołączone kom&oacute;rki, kt&oacute;re mają wartość w wejściowym rastrze wartości w obrębie każdej strefy, aby określić wartość wynikową dla tej strefy. Kom&oacute;rki z wartościami NoData w rastrze wartości będą ignorowane podczas obliczeń statystyk. Jest to opcja domyślna.
-                    </li>
-                    <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla kom&oacute;rek rastra wartości w ramach określonej strefy występują jakiekolwiek wartości NoData.
-                    </li>
-                </ul>
-                
+            <p> Określa, czy w analizie są ignorowane wartości NoData.
             </p>
+            <ul>
+                <li>Zaznaczone &mdash; podczas przeprowadzania tej analizy zostaną dołączone kom&oacute;rki, kt&oacute;re mają wartość w wejściowym rastrze wartości w obrębie każdej strefy, aby określić wartość wynikową dla tej strefy. Kom&oacute;rki z wartościami NoData w rastrze wartości będą ignorowane podczas obliczeń statystyk. Jest to opcja domyślna.
+                </li>
+                <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla kom&oacute;rek rastra wartości w ramach określonej strefy występują jakiekolwiek wartości NoData.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Wskazuje typ statystyki do obliczenia.
             </p>
-            <p>Można używać następujących wartości wejściowych:  <b>Wszystkie</b>, <b>Średnia</b>, <b>Większość</b>, <b>Maksimum</b>, <b>Mediana</b>, <b>Minimum</b>, <b>Mniejszość</b>, <b>Percentyl</b>, <b>Zakres</b>, <b>Odchylenie standardowe</b>, <b>Suma</b>, <b>Zr&oacute;żnicowanie</b>, <b>Minimum i maksimum</b>, <b>Średnia i odchylenie standardowe</b> lub <b>Minimum, maksimum i średnia</b>. Wartość domyślna to <b>Wszystkie</b>.
-            </p>
-            <p>Jeśli raster wartości wejściowych zawiera wartości całkowite, domyślnie zostaną obliczone wszystkie statystyki. Jeśli raster wartości zawiera wartości zmiennoprzecinkowe, domyślnie zostaną obliczone wszystkie statystyki z wyjątkiem  <b>mediany</b> i <b>percentyla</b>. 
-            </p>
-            <p>Jeśli raster wartości zawiera wartości zmiennoprzecinkowe, nie można dokonać obliczeń strefowych dla statystyk  <b>Większość</b>, <b>Mniejszość</b> i <b>Zr&oacute;żnicowanie</b>.
+            <p> Można używać następujących wartości wejściowych: <b>Wszystkie</b>, <b>Średnia</b>, <b>Większość</b>, <b>Maksimum</b>, <b>Mediana</b>, <b>Minimum</b>, <b>Mniejszość</b>, <b>Percentyl</b>, <b>Zakres</b>, <b>Odchylenie standardowe</b>, <b>Suma</b>, <b>Zr&oacute;żnicowanie</b>, <b>Minimum i maksimum</b>, <b>Średnia i odchylenie standardowe</b> lub <b>Minimum, maksimum i średnia</b>. Wartość domyślna to <b>Wszystkie</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Wartości percentylowe (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Wartości percentylowe do obliczenia. Można podać pojedynczą wartość lub listę wartości. Wartość domyślna to 90. Oznacza ona 90. percentyl.
+            <p>Percentyl do obliczenia. Wartość domyślna to 90. Oznacza ona 90. percentyl.
             </p>
-            <p>Wartości należą do zakresu od 0 do 100. Wynik podania zerowego percentyla jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
+            <p>Wartość należy do zakresu od 0 do 100. Wynik podania zerowego percentyla jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
             </p>
-            <p>Ta opcja jest obsługiwana tylko wtedy, gdy parametr  <b>Typ statystyki</b> jest ustawiony na wartość <b>Percentyl</b> lub <b>Wszystkie</b>.
+            <p> Ten parametr jest obsługiwany tylko wtedy, gdy parametr <b>Typ statystyki</b> jest ustawiony na wartość <b>Percentyl</b> lub <b>Wszystkie</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Typ interpolacji percentylowej (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            
             <p>Wskazuje metodę interpolacji percentylowej, kt&oacute;ra ma być używana, gdy liczba wartości z rastra wejściowego do obliczenia jest parzysta.
-            </p> 
-            <p>Jeśli wejściowy raster wartości ma całkowitoliczbowy typ pikseli, używana jest metoda  <b>Najbliższy</b>. Jeśli wejściowy raster wartości ma zmiennoprzecinkowy typ pikseli, używana jest metoda <b>Liniowy</b>. Jest to opcja domyślna.
             </p>
-            <p>W przypadku metody  <b>Najbliższa</b> używana jest najbliższa dostępna wartość do żądanego percentyla. W przypadku metody <b>Liniowe</b> używana jest średnia ważona dw&oacute;ch otaczających wartości z żądanego percentyla.
-            </p> 
+            <ul>
+                <li>  <b>Automatyczne wykrywanie</b> &mdash; jeśli wejściowy raster wartości ma całkowitoliczbowy typ pikseli, używana jest metoda <b>Najbliższy</b>. Jeśli wejściowy raster wartości ma zmiennoprzecinkowy typ pikseli, używana jest metoda <b>Liniowy</b>. Jest to opcja domyślna.
+                </li>
+                <li> <b>Najbliższy</b> &mdash; używana jest najbliższa dostępna wartość do żądanego percentyla.
+                </li>
+                <li> <b>Liniowy</b> &mdash; używana jest średnia ważona dw&oacute;ch otaczających wartości z żądanego percentyla.
+                </li>
+            </ul>
+            
+            <p> Ten parametr jest obsługiwany tylko wtedy, gdy parametr <b>Typ statystyki</b> jest ustawiony na wartość <b>Percentyl</b> lub <b>Wszystkie</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Przetwarzaj jako wielowymiarowe (opcjonalnie)</h2></div>
         <hr/>
         <div>
-            <p>Decyduje o tym, jak będą przetwarzane rastry wejściowe, jeśli są to rastry wielowymiarowe.
+            <p>Decyduje o tym, jak będą przetwarzane wejściowe wielowymiarowe usługi obrazowe (jeśli są one wielowymiarowe).
             </p>
             <ul>
                 <li>Zaznaczone &ndash; statystyki zostaną obliczone z bieżącego przekroju zestawu danych wielowymiarowych. Jest to opcja domyślna.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
+            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
             </p>
         </div>
     </div>

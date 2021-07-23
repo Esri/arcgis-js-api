@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Chọn lớp raster đa băng tần. Đảm bảo rằng raster đầu v&agrave;o c&oacute; c&aacute;c dải s&oacute;ng ph&ugrave; hợp.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Chọn phương pháp để theo dõi thảm thực vật</h2></div>
         <hr/>
         <div>
-            <p>Chọn phương ph&aacute;p để tạo lớp chỉ số thảm thực vật. C&aacute;c chỉ số thảm thực vật kh&aacute;c nhau c&oacute; thể gi&uacute;p l&agrave;m nổi bật c&aacute;c đối tượng nhất định hoặc giảm độ nhiễu.
+            <p>Chọn phương ph&aacute;p để t&iacute;nh to&aacute;n lớp chỉ số thảm thực vật. C&aacute;c chỉ số thảm thực vật kh&aacute;c nhau c&oacute; thể gi&uacute;p l&agrave;m nổi bật c&aacute;c đối tượng nhất định hoặc giảm độ nhiễu.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 l&agrave; chỉ số thảm thực vật gi&uacute;p giảm thiểu ảnh
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI l&agrave; chỉ số ti&ecirc;u chuẩn cho ph&eacute;p bạn tạo một ảnh hiển thị độ bao phủ xanh, hoặc sinh khối tương đối. Chỉ số n&agrave;y tận dụng độ tương phản về đặc điểm của hai dải s&oacute;ng từ tập dữ liệu raster đa phổ: độ hấp thu chất diệp lục trong dải s&oacute;ng đỏ v&agrave; hệ số phản xạ cao của nguy&ecirc;n liệu thực vật trong dải s&oacute;ng cận hồng ngoại (NIR).
+NDVI l&agrave; chỉ số ti&ecirc;u chuẩn cho ph&eacute;p bạn tạo một ảnh hiển thị độ bao phủ xanh, hoặc sinh khối tương đối. Chỉ số n&agrave;y tận dụng độ tương phản về đặc điểm của hai dải s&oacute;ng từ bộ dữ liệu raster đa phổ: độ hấp thu chất diệp lục trong dải s&oacute;ng đỏ v&agrave; hệ số phản xạ cao của nguy&ecirc;n liệu thực vật trong dải s&oacute;ng cận hồng ngoại (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Quy tr&igrave;nh C&ocirc;ng thức của Sultan sử dụng một ảnh 8-bit s&
 SAVI chuyển đổi l&agrave; chỉ số thảm thực vật gi&uacute;p giảm thiểu ảnh hưởng về độ s&aacute;ng của đất bằng c&aacute;ch giả định rằng đường đất c&oacute; độ dốc v&agrave; phần chắn t&ugrave;y &yacute;.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI l&agrave; chỉ số thảm thực vật ước t&iacute;nh sự hiện diện của thực vật bằng c&aacute;ch sử dụng th&ocirc;ng tin từ quang phổ hiển thị. Phương ph&aacute;p n&agrave;y y&ecirc;u cầu dải s&oacute;ng ở c&aacute;c phần m&agrave;u đỏ, lục v&agrave; xanh dương của quang phổ.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Xác định chỉ số của dải sóng NIR và dải sóng Đỏ</h2></div>
+        <div><h2>Xác định chỉ số cho dải sóng NIR và dải sóng Đỏ</h2></div>
         <hr/>
         <div>
-            <p>X&aacute;c định chỉ số dải s&oacute;ng cho NIR v&agrave; c&aacute;c dải s&oacute;ng đỏ.
+            <p>X&aacute;c định chỉ số dải s&oacute;ng cho dải s&oacute;ng NIR v&agrave; dải s&oacute;ng Đỏ.
             </p>
-            <p>Mỗi cảm biến vệ tinh v&agrave; camera tr&ecirc;n kh&ocirc;ng chụp th&ocirc;ng tin, th&ocirc;ng tin sẽ được ph&acirc;n th&agrave;nh c&aacute;c chỉ số dải s&oacute;ng. Mỗi chỉ số dải s&oacute;ng chứa th&ocirc;ng tin d&agrave;nh cho một phần cụ thể của quang phổ điện từ. Phương ph&aacute;p theo d&otilde;i thảm thực vật n&agrave;y y&ecirc;u cầu bạn x&aacute;c định chỉ số dải s&oacute;ng đ&atilde; chụp bước s&oacute;ng NIR v&agrave; bước s&oacute;ng đỏ.
+            <p>C&aacute;c cảm biến tr&ecirc;n kh&ocirc;ng hoặc vệ tinh đa dải thu thập th&ocirc;ng tin được ph&acirc;n th&agrave;nh c&aacute;c dải chiều d&agrave;i bước s&oacute;ng, được x&aacute;c định bằng c&aacute;c chỉ số dải s&oacute;ng. Phương ph&aacute;p theo d&otilde;i thảm thực vật n&agrave;y y&ecirc;u cầu bạn chỉ định chỉ số dải s&oacute;ng cho c&aacute;c dải chiều d&agrave;i bước s&oacute;ng Cận hồng ngoại (NIR) v&agrave; Đỏ.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Xác định các chỉ số cho dải sóng Đỏ, Lục và Xanh dương</h2></div>
+        <hr/>
+        <div>
+            <p>X&aacute;c định c&aacute;c chỉ số dải s&oacute;ng cho dải s&oacute;ng Đỏ, Lục v&agrave; Xanh dương.
+            </p>
+            <p>C&aacute;c cảm biến tr&ecirc;n kh&ocirc;ng hoặc vệ tinh đa dải thu thập th&ocirc;ng tin được ph&acirc;n th&agrave;nh c&aacute;c dải chiều d&agrave;i bước s&oacute;ng, được x&aacute;c định bằng c&aacute;c chỉ số dải s&oacute;ng. Chỉ số Đối kh&aacute;ng Kh&iacute; quyển Hiển thị y&ecirc;u cầu bạn chỉ định c&aacute;c chỉ số dải s&oacute;ng cho dải s&oacute;ng Đỏ, Lục v&agrave; Xanh dương.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Chỉ định chỉ số cho các dải sóng Lục, Đỏ, NIR, SWIR-1 và Nhiệt</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định chỉ số dải s&oacute;ng cho c&aacute;c dải s&oacute;ng Lục, Đỏ, Cận Hồng ngoại (NIR), Hồng ngoại S&oacute;ng ngắn (SWIR) v&agrave; Nhiệt.
+            </p>
+            <p>C&aacute;c cảm biến tr&ecirc;n kh&ocirc;ng hoặc vệ tinh đa dải thu thập th&ocirc;ng tin được ph&acirc;n th&agrave;nh c&aacute;c dải chiều d&agrave;i bước s&oacute;ng, được x&aacute;c định bằng c&aacute;c chỉ số dải s&oacute;ng. Chỉ số C&ocirc;ng thức của Sultan y&ecirc;u cầu bạn chỉ định chỉ số dải s&oacute;ng cho c&aacute;c dải s&oacute;ng chiều d&agrave;i bước s&oacute;ng Xanh dương, Đỏ, Cận Hồng ngoại (NIR), Hồng ngoại S&oacute;ng ngắn (SWIR) v&agrave; Nhiệt.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Chỉ định chỉ số các dải sóng Xanh dương, Lục, Đỏ, NIR, SWIR-1 và SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Chỉ định chỉ số c&aacute;c dải s&oacute;ng cho dải s&oacute;ng Xanh dương, Lục, Đỏ, NIR, SWIR-1 v&agrave; SWIR-2.
+            </p>
+            <p>C&aacute;c cảm biến tr&ecirc;n kh&ocirc;ng hoặc vệ tinh đa dải thu thập th&ocirc;ng tin được ph&acirc;n th&agrave;nh c&aacute;c dải chiều d&agrave;i bước s&oacute;ng, được x&aacute;c định bằng c&aacute;c chỉ số dải s&oacute;ng. Chỉ số Thảm thực vật Xanh y&ecirc;u cầu bạn chỉ định chỉ số dải s&oacute;ng cho c&aacute;c dải s&oacute;ng chiều d&agrave;i bước s&oacute;ng Xanh dương, Lục, Đỏ, Cận Hồng ngoại (NIR), Hồng ngoại S&oacute;ng ngắn 1 (SWIR-1) v&agrave; Hồng ngoại S&oacute;ng ngắn 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ SAVI chuyển đổi l&agrave; chỉ số thảm thực vật gi&uacute;p giảm
         <div><h2>Số lượng bao phủ của thảm thực vật xanh</h2></div>
         <hr/>
         <div>
-            <p>X&aacute;c định số lượng bao phủ của thảm thực vật xanh, vốn l&agrave; yếu tố bắt buộc của phương ph&aacute;p SAVI.
+            <p>Chỉ định số lượng bao phủ của thảm thực vật xanh, theo y&ecirc;u cầu của phương ph&aacute;p Chỉ số Thảm thực vật Được điều chỉnh theo Đất.
             </p>
             <p>C&aacute;c gi&aacute; trị hợp lệ như sau:
                 <ul>
@@ -172,8 +206,7 @@ SAVI chuyển đổi l&agrave; chỉ số thảm thực vật gi&uacute;p giảm
             
             <p>T&ecirc;n lớp sẽ được tạo trong  <b>Nội dung của t&ocirc;i</b> v&agrave; được th&ecirc;m v&agrave;o bản đồ. T&ecirc;n mặc định dựa v&agrave;o t&ecirc;n c&ocirc;ng cụ v&agrave; t&ecirc;n lớp đầu v&agrave;o. Nếu lớp đ&atilde; tồn tại, bạn sẽ được y&ecirc;u cầu cung cấp t&ecirc;n kh&aacute;c.
             </p>
-            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>.
-            </p>
+            <p>Bạn c&oacute; thể chỉ định t&ecirc;n của một thư mục trong  <b>Nội dung của t&ocirc;i</b> m&agrave; tại đ&oacute; kết quả sẽ được lưu bằng c&aacute;ch sử dụng hộp xổ xuống <b>Lưu kết quả v&agrave;o</b>. Nếu bạn có quyền tạo cả lớp hình ảnh động và hình ảnh dạng tile, bạn có thể chỉ định loại lớp hình ảnh đầu ra bằng cách sử dụng thanh thả xuống Lưu kết quả thành. </p>
         </div>
     </div>
 </div>

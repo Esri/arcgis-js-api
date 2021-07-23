@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/when","esri/dijit/geoenrichment/promise/all","esri/dijit/geoenrichment/utils/DataUtil","esri/dijit/geoenrichment/utils/ImageUtil","esri/dijit/geoenrichment/utils/ImageInfoUtil"],(function(e,i,t,n,r){return{collectImageResources:function(a,o,s){a&&a.files&&a.files.forEach((function(e){var i=t.getContentType(e.name);i&&"image/"===i.substr(0,6)&&(o[s(e.name)]=n.base64DataToDataURL(e.data,i))}));var l=[];function u(i){return e(r.getImageInfo(o[i],i),null,(function(){/\.svg$/.test(i)||delete o[i]}))}for(var c in o)l.push(u(c));return i(l)}}}));

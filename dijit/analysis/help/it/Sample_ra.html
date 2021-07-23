@@ -46,32 +46,16 @@
         <hr/>
     <p>Questo strumento crea una tabella o una feature class puntuale che mostra i valori di celle da un raster, o un insieme di raster, per posizioni definite. Le posizioni sono definite da celle raster, feature poligonali, feature polilinee o da un insieme di punti.
     </p>
-    <p>I valori dei pixel saranno estratti da tutti i raster di input in ogni posizione. Verr&agrave; creata una tabella o una feature class puntuale con campi contenenti i valori dei pixel per ogni raster di input. Gli attributi aggiuntivi della tabella raster di input non saranno inclusi nella tabella di output.
-    </p>
-    <p>Qualsiasi combinazione di raster, ad esempio a banda singola, multibanda, multidimensionale o multivariato, pu&ograve; essere specificata come raster di input. La struttura della tabella di output cambia quando i raster di input sono multidimensionali. Quando viene specificato un raster multibanda come uno dei raster di input, verranno utilizzate tutte le bande di tale input. Per elaborare una selezione di bande da un raster multibanda di input, creare prima un nuovo dataset raster composto da quelle bande particolari. Utilizzare il risultato nell'elenco dei raster di input.
-    </p>
-    <p>La posizione di input pu&ograve; essere un raster o una feature puntuale:
+    <p>Alcuni esempi di applicazioni di questo strumento includono quanto segue:
         <ul>
-            <li>Raster: i pixel contenenti valori validi (non NoData) vengono utilizzati per estrarre i valori dei pixel da tutti i raster di input, e il centro del pixel viene utilizzato per le posizioni dei punti.
+            <li> Estrarre gli attributi per la posizione del ripetitore da pi&ugrave; raster, ad esempio uso del suolo, tipo di terreno, elevazione e distanza dalla strada.
             </li>
-            <li>Punto: i valori saranno campionati in ogni posizione del punto.
+            <li>Estrarre la temperatura del terreno a diverse profondit&agrave; per un dato insieme di punti.
             </li>
-            <li>Polilinea o poligono: i valori saranno campionati al poligono o al centroide polilinea. Se il raster di input &egrave; multidimensionale, i valori saranno aggregati in base al tipo di  <b>Statistica</b>.
+            <li>Partendo da 30 anni di dati mensili sulla temperatura della superficie marina, riassumere quando una specie animale &egrave; stata osservata, in funzione delle posizioni degli animali o all'interno del loro territorio.
             </li>
         </ul>
         
-    </p>
-    <p>I raster di input sono campionati nel loro riferimento spaziale e risoluzione nativi. Se ci sono pi&ugrave; raster di input con diversi riferimenti spaziali, le posizioni di input sono proiettate al riferimento spaziale di ogni singolo raster da cui vengono estratti i valori. L'ambiente di analisi viene applicato alle posizioni di input, ma i raster di input non rispettano l'ambiente di analisi.
-    </p>
-    <p>Le posizioni che estraggono i valori dalle celle NoData nel raster di input riceveranno un valore &lt;null&gt; nella tabella di output.
-    </p>
-    <p>Per eseguire analisi con feature multipuntuali, prima di utilizzarle in questo strumento &egrave; necessario convertirle in singole feature puntuali.
-    </p>
-    <p>Il riferimento spaziale delle coordinate x,y nella tabella di campionamento di output &egrave; lo stesso del raster della posizione di input o delle feature puntuali, a meno che non sia specificato nell'ambiente del <b>Sistema di coordinate di output</b>. Se il riferimento spaziale dei dati relativi alle posizioni di input &egrave; sconosciuto, anche il riferimento spaziale delle coordinate x,y &egrave; sconosciuto.
-    </p>
-    <p>Il riferimento spaziale della feature class di output &egrave; lo stesso del raster della posizione di input o delle feature puntuali, a meno che non sia specificato nell'ambiente del  <b>Sistema di coordinate di output</b>.
-    </p>
-    <p>L'ambiente del  <b>Fattore di elaborazione parallela</b> &egrave; supportato solo quando l'input &egrave; un raster multidimensionale.
     </p>
     <p>Se si seleziona  <b>Usa estensione mappa corrente</b>, verranno analizzate le variabili o le bande del layer visibili nell'estensione mappa corrente. Se questa opzione &egrave; deselezionata, verranno analizzate le variabili o le bande del layer, anche se esterne all'estensione mappa corrente.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Scegliere il layer o i layer di immagini da campionare</h2></div>
         <hr/>
         <div>
-            <p>Un singolo layer di immagini o un elenco di layer di immagini i cui valori saranno campionati in base ai dati di posizione di input.
+            <p>Una singola immagine o un elenco di immagini i cui valori saranno campionati in base ai dati di posizione di input. 
             </p>
             <p>Per campionare tutte le sezioni da un layer di immagini multidimensionale, deve essere l'unico raster di input.
             </p>
@@ -112,40 +96,42 @@
             <p>Specificare il tempo, la profondit&agrave;, o altri dati di acquisizione associati alle celle di posizione o alle feature.
             </p>
             <p>Per ogni dimensione, ci sono tre opzioni per specificare le informazioni di acquisizione associate alle celle di posizione o alle feature:
-                <ul>
-                    <li> <b>Singolo campo o valore</b>: quando si seleziona questa opzione, &egrave; necessario specificare le seguenti informazioni:
-                        <ul>
-                            <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Singolo campo o valore</b>: quando si seleziona questa opzione, &egrave; necessario specificare le seguenti informazioni:
+                    <ul>
+                        <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Singolo campo o valore con valori relativi</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
-                        <ul>
-                            <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione.
-                            </li>
-                            <li> <b>Valore relativo prima</b>: specificare un numero non negativo usato per sottrarre dal <b>Campo o valore dimensionale</b> per definire l'inizio di un intervallo di valori della dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
-                            </li>
-                            <li> <b>Valore relativo dopo</b>: specificare un numero non negativo usato per aggiungere al <b>Campo o valore dimensionale</b> per definire la fine di un intervallo di valori di dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Campi o valori di inizio e fine</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
-                        <ul>
-                            <li> <b>Campo o valori di inizio</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire l'inizio di un intervallo di valori di dimensione.
-                            </li>
-                            <li> <b>Campo o valori di fine</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire la fine di un intervallo di valori di dimensione.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Singolo campo o valore con valori relativi</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
+                    <ul>
+                        <li> <b>Campo o valore dimensionale</b>: selezionare un campo di valori dimensionali dai dati di posizione.
+                        </li>
+                        <li> <b>Valore relativo prima</b>: specificare un numero non negativo usato per sottrarre dal <b>Campo o valore dimensionale</b> per definire l'inizio di un intervallo di valori della dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
+                        </li>
+                        <li> <b>Valore relativo dopo</b>: specificare un numero non negativo usato per aggiungere al <b>Campo o valore dimensionale</b> per definire la fine di un intervallo di valori di dimensione. Questo valore rappresenta il numero di giorni se la dimensione &egrave; il tempo.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Campi o valori di inizio e fine</b>: se questa opzione &egrave; selezionata, le informazioni sottostanti devono essere specificate insieme per definire l'intervallo entro il quale le statistiche saranno calcolate per le variabili:
+                    <ul>
+                        <li> <b>Campo o valori di inizio</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire l'inizio di un intervallo di valori di dimensione.
+                        </li>
+                        <li> <b>Campo o valori di fine</b>: selezionare un campo di valori dimensionali dai dati di posizione, oppure immettere un valore dimensionale specifico, per definire la fine di un intervallo di valori di dimensione.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Questo parametro &egrave; disponibile solo quando il parametro  <b>Scegli layer di immagini da campionare</b> &egrave; un raster multidimensionale.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>La distanza specificata intorno alle feature dei dati relativi alla posizione. La distanza di buffer &egrave; specificata nelle unit&agrave; lineari del riferimento spaziale della feature di posizione. Se la feature utilizza un riferimento geografico, l'unit&agrave; sar&agrave; costituita da gradi.
             </p>
             <p>Le statistiche saranno calcolate all'interno di questa area di buffer.
+            </p>
+            <p>Questo parametro &egrave; disponibile solo quando il parametro  <b>Scegli layer di immagini da campionare</b> &egrave; un raster multidimensionale.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Questo parametro &egrave; disponibile solo quando il parametro  <b>Scegli layer di immagini da campionare</b> &egrave; un raster multidimensionale e i parametri <b>Scegli layer di posizione</b> sono polilinee o poligonali, oppure se <b>Specificare campo distanza buffer o valore (facoltativo)</b> &egrave; specificato.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Valore percentile</h2></div>
         <hr/>
         <div>
-            <p>Il percentile da calcolare quando il parametro  <b>Tipo di statistiche</b> &egrave; impostato su <b>Percentile</b>.
-            </p>
             <p>Questo valore pu&ograve; variare da 0 a 100. L'impostazione predefinita &egrave; 90.
+            </p>
+            <p>Questo parametro &egrave; disponibile solo quando il parametro  <b>Scegli tipo statistiche</b> &egrave; impostato su <b>Percentile</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Algoritmo di ricampionamento utilizzato per il campionamento di un raster.
             </p>
             <ul>
-                <li> <b>Pi&ugrave; vicino</b>&mdash;Il vicino pi&ugrave; prossimo utilizza il valore della cella pi&ugrave; vicina per assegnare un valore alla cella di output durante il ricampionamento. Si tratta dell'impostazione predefinita.
+                <li> <b>Pi&ugrave; vicino</b>: il vicino pi&ugrave; prossimo utilizza il valore della cella pi&ugrave; vicina per assegnare un valore alla cella di output durante il ricampionamento. Si tratta dell'impostazione predefinita.
                 </li>
-                <li> <b>Bilineare</b>&mdash;Esegue un'interpolazione bilineare e determina il nuovo valore di una cella in base a una distanza media pesata dei quattro centri delle celle di input pi&ugrave; vicine.
+                <li> <b>Bilineare</b>: esegue un'interpolazione bilineare che determina il nuovo valore di una cella in base a una distanza media pesata dei quattro centri delle celle di input pi&ugrave; vicine.
                 </li>
-                <li> <b>Cubica</b>&mdash;Convoluzione cubica determina il nuovo valore di una cella in base all'adattamento di una curva smussata attraverso i 16 centri delle celle di input pi&ugrave; vicine.
+                <li> <b>Cubica</b>: convoluzione cubica che determina il nuovo valore di una cella in base all'adattamento di una curva smussata attraverso i 16 centri delle celle di input pi&ugrave; vicine.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Specificare il layout di output</h2></div>
         <hr/>
         <div>
-            <p>Specifica se i valori campionati appaiono in righe o colonne nella tabella di output. Questa opzione &egrave; disponibile solo quando il raster multidimensionale di input contiene una variabile e una dimensione e ogni sezione &egrave; un raster a banda singola.
+            <p>Specifica se i valori campionati appaiono in righe o colonne nella tabella di output.
             </p>
             <ul>
                 <li> <b>I valori campionati appaiono in riga</b>: i valori campionati appaiono in righe separate nella tabella di output. Si tratta dell'impostazione predefinita.
                 </li>
-                <li> <b>I valori campionati appaiono in colonna</b>: i valori campionati appaiono in colonne separate nella tabella di output. Questa opzione &egrave; valida solo quando il raster multidimensionale di input contiene una variabile e una dimensione, e ogni sezione &egrave; un raster a banda singola.
+                <li> <b>I valori campionati appaiono in colonna</b>: i valori campionati appaiono in colonne separate nella tabella di output.
                 </li>
             </ul>
             
+            <p>Questo parametro &egrave; disponibile solo quando il parametro  <b>Scegli un layer di immmagini da campionare</b> &egrave; un raster multidimensionale e contiene una variabile e una dimensione, e ciascuna sezione &egrave; un raster a banda singola.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabella</b>: generare una tabella con i valori campionati. Si tratta dell'impostazione predefinita.
                 </li>
-                <li> <b>Feature</b>: generare una feature class puntuale con valori campionati nella sua tabella. Se le feature di posizione di input sono polilinee o poligonali, ogni punto di output &egrave; il centroide di ogni geometria delle feature di posizione di input.
+                <li> <b>Feature</b>: generare una feature class puntuale con valori campionati nella sua tabella. Se i parametri <b>Scegli layer posizione</b> sono polilinee o poligonali, ogni punto nell'output &egrave; il centroide di ogni geometria delle feature di posizione di input. 
                 </li>
             </ul>
             

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({chooseLayer:"Odaberite sloj za analizu",chooseField:"Odaberite polja za izradu modela",chooseExplanatoryField:"Odaberite polja za objašnjenje",chooseNeighborhood:"Odaberite način određivanja susjedstva",distanceBand:"Pojas udaljenosti",numNeighbors:"Broj susjeda",chooseWeighted:"Odaberite kako se ponderiraju susjedni geoobjekti",bisquare:"Bisquare",gaussian:"Gaussian",resultLayerName:"Naziva sloja rezultata",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Vrijednost pojasa udaljenosti mora biti između ${min} i ${max}",numNeighborsWarning:"Broj susjeda mora biti između ${min} i ${max}",explanatoryFieldsWarning:"Odaberite najmanje 1 polje za obrazloženje",explanatoryLayerWarning:"Odabrani sloj ne sadrži nijedno ispravno polje za obrazloženje, molimo da odaberete drugi sloj",inputLayerWarning:"Odabrani sloj ne sadrži brojčana polja za oblikovanje, molimo da odaberete drugi sloj",itemDescription:"Sloj geoobjekta koji je generiran pokretanjem rješenja za Geografski ponderiranu regresiju.",itemTags:"Rezultat analize, Geografski ponderirana regresija, ${inputLayerName}, odgovaranje",itemSnippet:"Sloj geoobjekta generiran alatom za Geografski ponderiranu regresiju"});

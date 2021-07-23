@@ -46,9 +46,7 @@
         <hr/>
     <p>Ovaj alat rezimira vrijednosti rastera unutar zona drugog skupa podataka.
     </p>
-    <p>Neki primjeri primjena uključuju sljedeće:
-    </p>
-    <p>
+    <p>Neki primjeri primjene ovog alata uključuju sljedeće:
         <ul>
             <li>Ako imate sloj granica sliva i sloja granica zemlji&scaron;ta prema načinu kori&scaron;tenja zemlji&scaron;ta, izračunajte ukupnu poljoprivrednu povr&scaron;inu načina kori&scaron;tenja zemlji&scaron;ta za svaki sliv.
                 
@@ -69,9 +67,9 @@
         <div><h2>Odaberite sloj područja za sažimanje ostalih rasterskih slojeva unutar definiranih granica</h2></div>
         <hr/>
         <div>
-            <p>Sloj koji određuje granice područja ili zona koji će se sažeti.
+            <p>Ulaz koji definira granice zona ili područja koja će se sažeti.
             </p>
-            <p>Sloj može biti raster ili podaci geoobjekata. Za rastere, zone se određuju prema svim lokacijama u unosu koje imaju istu vrijednost ćelije. Područja ne moraju biti susjedna.
+            <p>Ulaz može biti cjeloviti raster ili podaci geoobjekata. Za rastere, zone se određuju prema svim lokacijama u unosu koje imaju istu vrijednost ćelije. Zbog geoobjekata, zone se mogu preklapati. Područja ne moraju biti susjedna.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Odaberite polje za definiranje ograničenja</h2></div>
         <hr/>
         <div>
-            <p>Ovo je atribut sloja koji će se koristiti za određivanje granica područja.
+            <p>Polje koje sadrži vrijednosti koje definiraju svaku zonu.
             </p>
-            <p>Na primjer, pretpostavimo da prvi ulazni sloj određuje upravljanje granicama jedinice s atributima koji određuju regiju, okrug i ID parcele za svaku jedinicu. Također imate sloj rastera koji određuje indeks biolo&scaron;ke raznolikosti za svaku lokaciju. S poljem koje odaberete možete odlučiti izračunati prosječnu biolo&scaron;ku raznolikost na lokalnoj, okružnoj ili regionalnoj razini.
+            <p>Može biti cijeli broj ili polje teksta skupa podataka zone.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Odaberite rasterski sloj za sažimanje</h2></div>
         <hr/>
         <div>
-            <p>Ćelije rastera u ovom sloju sažet će se prema područjima (zonama) u koje spadaju.
+            <p>Raster koji sadrži vrijednosti na temelju koji se izračunava statistika.
+            </p>
+            <p>Može biti ili cijeli broj ili plutajuća točka. Međutim, kada je plutajuća točka, opcije za izračunavanje većine, manjine i raznolikosti neće biti dostupne.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Odaberite statistiku za izračun</h2></div>
         <hr/>
         <div>
-            <p>Kada odaberete sloj za sažimanje, dodatno možete izračunati statistiku bilo kojeg brojčanog atributa točaka, linija ili poligona u ulaznom sloju poligona.
+            <p>Odeđuje vrstu statistike koja se izračunava.
             </p>
-            <p>Dostupne vrste statistika kad je odabrano polje cijeli broj jesu prosjek, većina, maksimum, srednja vrijednost, minimum, manjina, postotak, raspon, standardno odstupanje, zbroj i raznolikost.
-            </p>
-            <p>Ako je polje plutajuća točka, opcije su prosjek, maksimum, minimum, raspon, standardno odstupanje i zbroj.
+            <p> Ulaz može biti jedan od sljedećih: <b>Prosjek</b>, <b>Većina</b>, <b>Maksimum</b>, <b>Srednja vrijednost</b>, <b>Minimum</b>, <b>Manjina</b>, <b>Postotak</b>, <b>Raspon</b>, <b>Standardna devijacija</b>, <b>Zbroj</b> ili <b>Raznolikost</b>. Zadano je <b>Prosjek</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Postotak koji treba izračunati. Zadana je vrijednost devedeset (90), &scaron;to označava devedeseti (90) postotak.
             </p>
-            <p>Vrijednosti se mogu kretati od nula (0) do sto (100). Nulti (0) postotak u osnovi je jednak minimalnoj statistici, dok je stoti (100) postotak jednak maksimumu. Vrijednost od pedeset (50) rezultirat će u osnovi istim rezultatom kao i srednja vrijednost statistike.
+            <p>Vrijednost se mo\e kretati od 0 do 100. Nulti (0) postotak u osnovi je jednak minimalnoj statistici, dok je stoti (100) postotak jednak maksimumu. Vrijednost od pedeset (50) rezultirat će u osnovi istim rezultatom kao i srednja vrijednost statistike.
             </p>
-            <p>Ova opcija je jedino podržana kada je parametar  <b>Odaberi statistiku za izračun</b> postavljen na <b>Postotak</b>.
+            <p> Ovaj je parametar podržan samo ako je parametar <b>Odaberi statistiku za izračun</b> postavljen na <b>Postotak</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Zanemari vrijednosti koje nedostaju u izračunu</h2></div>
         <hr/>
         <div>
-            <p>Ako odlučite zanemariti vrijednosti koje nedostaju, upotrijebit će se samo ćelije koje imaju vrijednost u sloju koji se sažima za određivanje vrijednosti rezultata za to područje. U suprotnom, ako neke vrijednosti nedostaju za područje, smatra se da nema dovoljno informacija za statistički izračun za sve ćelije u toj zoni, a to će područje dobiti nultu vrijednost (nema podataka) u rezultatu.
+            <p> Određuje ignoriraju li se u analizi vrijednosti koje nedostaju.
             </p>
+            <ul>
+                <li>Označeno - Analiza će obuhvatiti stanice koje imaju vrijednost u rasteru ulazne vrijednosti unutar bilo koje određene zone kako bi se utvrdila izlazna vrijednost za tu zonu. Ćelije NoData u rasteru vrijednosti zanemarit će se u statističkom izračunu. To je zadano.
+                </li>
+                <li>Nije potvrđeno - Analiza će rezultirati NoData ako postoje vrijednosti NoData za ćelije rastera vrijednosti unutar određene zone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Procesuiraj kao multidimenzionalno</h2></div>
         <hr/>
         <div>
-            <p>Određuje kako će se obrađivati ulazni rasteri ako su vi&scaron;edimenzionalni. Ako odlučite obraditi kao vi&scaron;edimenzionalne, statistika će se izračunavati iz svih dimenzija ulaznog vi&scaron;edimenzionalnog skupa podataka. U suprotnom će se statistika izračunati iz trenutnog isječka ulaznog vi&scaron;edimenzionalnog skupa podataka, ovo je zadana vrijednost.
+            <p>Određuje kako će se obrađivati ulazne vi&scaron;edimenzionalne usluge slike ako su vi&scaron;edimenzionalne.
             </p>
+            <ul>
+                <li>Provjereno - statistika će se izračunati iz trenutne kri&scaron;ke ulaznog vi&scaron;edimenzionalnog skupa podataka. To je zadano.
+                    
+
+                </li>
+                <li>Nije označeno - statistika će se izračunati za sve dimenzije ulaznog vi&scaron;edimenzionalnog skupa podataka.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
-            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
-            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>. Ako imate privilegije za stvaranje slojeva pločica i dinamičkih slika, možete odrediti koju vrstu sloja želite generirati u izlazu pomoću Spremi rezultat kao padajućeg okvira. </p>
         </div>
     </div>
 </div>

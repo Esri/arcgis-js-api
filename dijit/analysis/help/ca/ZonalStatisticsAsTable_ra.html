@@ -46,15 +46,13 @@
         <hr/>
     <p>Aquesta eina resumeix els valors d'un r&agrave;ster dins de les zones d'un altre dataset o informa dels resultats en una taula.
     </p>
-    <p>Alguns exemples d'aplicacions s&oacute;n:
-    </p>
-    <p>
+    <p>Exemples d'aplicacions d'aquesta eina:
         <ul>
-            <li>Donada una capa de l&iacute;mits d'estat i la distribuci&oacute; de la precipitaci&oacute; mitjana a la part continental dels Estats Units, calculeu la distribuci&oacute; estatal d'esdeveniments de pluja extrema mitjan&ccedil;ant una llista de valors de percentil.
+            <li>Donada una capa de l&iacute;mits de conques hidrogr&agrave;fiques i una capa de l&iacute;mits d'&uacute;s del s&ograve;l per tipus d'&uacute;s, calcular la superf&iacute;cie total del tipus d'&uacute;s del s&ograve;l per a cada conca hidrogr&agrave;fica.
                 
 
             </li>
-            <li>Donada una capa de zones ecol&ograve;giques que se superposen i una capa r&agrave;ster d'humitat del s&ograve;l, calculeu totes les estad&iacute;stiques admeses en cada zona per relacionar les zones amb la disponibilitat d'humitat del s&ograve;l.
+            <li>Donada una capa de parcel&middot;les d'un comtat i una capa de l&iacute;mits de ciutats, resumir el valor mitj&agrave; de les parcel&middot;les buides en cada l&iacute;mit de la ciutat.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Trieu les entitats o el ràster de zona</h2></div>
         <hr/>
         <div>
-            <p>Capa que defineix els l&iacute;mits de les zones o &agrave;rees que es resumiran.
+            <p>Entrada que defineix els l&iacute;mits de les zones o &agrave;rees que es resumiran.
             </p>
-            <p>La capa pot ser de dades de r&agrave;ster o entitat de tipus enter. Per als r&agrave;sters, les zones es defineixen mitjan&ccedil;ant totes les ubicacions de l'entrada que tenen el mateix valor de cel&middot;la. En el cas de les entitats, les zones es poden superposar. No &eacute;s necessari que les &agrave;rees siguin contig&uuml;es.
+            <p>L'entrada pot ser de dades de r&agrave;ster o entitat de tipus enter. Per als r&agrave;sters, les zones es defineixen mitjan&ccedil;ant totes les ubicacions de l'entrada que tenen el mateix valor de cel&middot;la. En el cas de les entitats, les zones es poden superposar. No &eacute;s necessari que les &agrave;rees siguin contig&uuml;es.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Campo de zona</h2></div>
         <hr/>
         <div>
-            <p>Atribut de la capa que s'utilitzar&agrave; per definir els l&iacute;mits de les zones (&agrave;rees).
+            <p>Camp que cont&eacute; els valors que defineixen cada zona.
             </p>
-            <p>Per exemple, suposem que la primera capa d'entrada defineix els l&iacute;mits de les unitats d'administraci&oacute;, amb atributs que defineixen la regi&oacute;, el districte i l'identificador de parcel&middot;la de cada unitat. Tamb&eacute; teniu una capa r&agrave;ster que defineix un &iacute;ndex de biodiversitat per a cada ubicaci&oacute;. Amb el camp que seleccioneu, podeu decidir calcular la biodiversitat mitjana als nivells local, regional o de districte.
+            <p>Puede ser un campo de enteros o de cadenas de caracteres del dataset zonal.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Trieu el ràster de valor</h2></div>
         <hr/>
         <div>
-            <p>Les cel&middot;les de r&agrave;ster d'aquesta capa es resumiran per les &agrave;rees (zones) on es trobin.
+            <p>R&agrave;ster que cont&eacute; els valors sobre els quals es calcula una estad&iacute;stica.
+            </p>
+            <p>Pot ser un enter o un punt flotant. Aix&ograve; no obstant, si &eacute;s un punt flotant, les opcions per calcular els valors de majoria, minoria i varietat no estaran disponibles.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignora NoData als càlculs (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Especifica si els valors NoData s'ignoraran a l'an&agrave;lisi.
-                <ul>
-                    <li>Activat: l'an&agrave;lisi inclour&agrave; les cel&middot;les que tinguin un valor al r&agrave;ster de valor d'entrada en una zona concreta per determinar el valor de sortida de la zona. Les cel&middot;les NoData del r&agrave;ster de valor s'ignoraran al c&agrave;lcul estad&iacute;stic. Aquesta &eacute;s l'opci&oacute; per defecte.
-                    </li>
-                    <li>Desactivat: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per a les cel&middot;les del r&agrave;ster de valor en una zona concreta.
-                    </li>
-                </ul>
-                
+            <p> Especifica si els valors NoData s'ignoraran a l'an&agrave;lisi.
             </p>
+            <ul>
+                <li>Activat: l'an&agrave;lisi inclour&agrave; les cel&middot;les que tinguin un valor al r&agrave;ster de valor d'entrada en una zona concreta per determinar el valor de sortida de la zona. Les cel&middot;les NoData del r&agrave;ster de valor s'ignoraran al c&agrave;lcul estad&iacute;stic. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li>Desactivat: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per a les cel&middot;les del r&agrave;ster de valor en una zona concreta.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Especifica el tipus d'estad&iacute;stica que es calcular&agrave;.
             </p>
-            <p>L'entrada pot ser una de les opcions seg&uuml;ents:  <b>Tot</b>, <b>Mitjana</b>, <b>Majoria</b>, <b>M&agrave;xim</b>, <b>Mediana</b>, <b>M&iacute;nim</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Interval</b>, <b>Desviaci&oacute; est&agrave;ndard</b>, <b>Suma</b>, <b>Varietat</b>, <b>M&iacute;nim i m&agrave;xim</b>, <b>Mitjana i desviaci&oacute; est&agrave;ndard</b> o <b>M&iacute;nim, m&agrave;xim i mitjana</b>. El valor per defecte &eacute;s <b>Tot</b>.
-            </p>
-            <p>Si el r&agrave;ster de valor d'entrada &eacute;s un enter, per defecte es calcularan totes les estad&iacute;stiques. Si el r&agrave;ster de valor &eacute;s de tipus punt flotant, per defecte es calcularan totes les estad&iacute;stiques excepte  <b>Mediana</b> i <b>Percentil</b>. 
-            </p>
-            <p>Si el r&agrave;ster de valor d'entrada &eacute;s de tipus punt flotant, no es podran dur a terme els c&agrave;lculs zonals de  <b>Majoria</b>, <b>Minoria</b> i <b>Varietat</b>.
+            <p> L'entrada pot ser una de les opcions seg&uuml;ents: <b>Tot</b>, <b>Mitjana</b>, <b>Majoria</b>, <b>M&agrave;xim</b>, <b>Mediana</b>, <b>M&iacute;nim</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Interval</b>, <b>Desviaci&oacute; est&agrave;ndard</b>, <b>Suma</b>, <b>Varietat</b>, <b>M&iacute;nim i m&agrave;xim</b>, <b>Mitjana i desviaci&oacute; est&agrave;ndard</b> o <b>M&iacute;nim, m&agrave;xim i mitjana</b>. El valor per defecte &eacute;s <b>Tot</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Valors de percentil (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Percentils que es calcularan (opcional) Es pot especificar un sol valor o una llista de valors. El valor per defecte &eacute;s 90, que indica el percentil 90.
+            <p>Percentil que es calcular&agrave;. El valor per defecte &eacute;s 90, que indica el percentil 90.
             </p>
-            <p>Els valors poden anar de 0 a 100. El resultat d'especificar el percentil 0 &eacute;s b&agrave;sicament equivalent al de l'estad&iacute;stica m&iacute;nima, i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
+            <p>El valor pot ser de 0 a 100. El resultat d'especificar el percentil 0 &eacute;s b&agrave;sicament equivalent al de l'estad&iacute;stica m&iacute;nima, i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
             </p>
-            <p>Aquesta opci&oacute; nom&eacute;s s'admet si el par&agrave;metre  <b>Tipus d'estad&iacute;stica</b> es defineix com a <b>Percentil</b> o <b>Tots</b>.
+            <p> Aquest par&agrave;metre nom&eacute;s s'admet si el par&agrave;metre <b>Tipus d'estad&iacute;stica</b> es defineix com a <b>Percentil</b> o <b>Tots</b>.
             </p>
         </div>
     </div>
@@ -138,23 +134,29 @@
         <div><h2>Tipus d'interpolació del percentil (opcional)</h2></div>
         <hr/>
         <div>
-            
             <p>Especifica el m&egrave;tode d'interpolaci&oacute; del percentil que es far&agrave; servir quan el nombre de valors del r&agrave;ster d'entrada que s'hagin de calcular sigui parell.
-            </p> 
-            <p>Si el r&agrave;ster de valor d'entrada &eacute;s de tipus de p&iacute;xel enter, es fa servir el m&egrave;tode  <b>M&eacute;s proper</b>. Si el r&agrave;ster de valor d'entrada &eacute;s de tipus de p&iacute;xel de punt flotant, es fa servir el m&egrave;tode <b>Lineal</b>. Aquesta &eacute;s l'opci&oacute; per defecte.
             </p>
-            <p>Per al m&egrave;tode  <b>M&eacute;s proper</b>, es fa servir el valor disponible m&eacute;s proper al percentil desitjat. Per al m&egrave;tode <b>Lineal</b>, es fa servir la mitjana ponderada dels dos valors ve&iuml;ns del percentil desitjat.
-            </p> 
+            <ul>
+                <li>  <b>Detecta autom&agrave;ticament</b>: si el r&agrave;ster de valor d'entrada &eacute;s de tipus de p&iacute;xel enter, es fa servir el m&egrave;tode <b>M&eacute;s proper</b>. Si el r&agrave;ster de valor d'entrada &eacute;s de tipus de p&iacute;xel de punt flotant, es fa servir el m&egrave;tode <b>Lineal</b>. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li> <b>M&eacute;s proper</b>: es fa servir el valor disponible m&eacute;s proper al percentil desitjat.
+                </li>
+                <li> <b>Lineal</b>: es fa servir la mitjana ponderada dels dos valors ve&iuml;ns del percentil desitjat.
+                </li>
+            </ul>
+            
+            <p> Aquest par&agrave;metre nom&eacute;s s'admet si el par&agrave;metre <b>Tipus d'estad&iacute;stica</b> es defineix com a <b>Percentil</b> o <b>Tots</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Processa com a multidimensional (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Especifica com es processaran els r&agrave;sters d'entrada si s&oacute;n multidimensionals.
+            <p>Especifica com es processaran els serveis d'imatges multidimensionals d'entrada si s&oacute;n multidimensionals.
             </p>
             <ul>
-                <li>Activat: les estad&iacute;stiques es calcularan a partir del sector actual del dataset multidimensional d'entrada. Aquesta &eacute;s l'opci&oacute; per defecte.
+                <li>Activat: les estad&iacute;stiques es calcularan a partir del sector actual del dataset multidimensional d'entrada. Esta es la opci&oacute;n predeterminada.
                     
 
                 </li>
@@ -168,7 +170,9 @@
         <div><h2>Nom de la taula de resultats</h2></div>
         <hr/>
         <div>
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
             </p>
         </div>
     </div>

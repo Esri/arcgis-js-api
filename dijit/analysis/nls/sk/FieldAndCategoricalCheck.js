@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({fields:"Pole",categorical:"Kategorický",requiredMessage:"Musí byť vybraná aspoň 1 nezávislá premenná."});

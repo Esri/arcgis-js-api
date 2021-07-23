@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/dom-construct"],(function(e,r){var d={renderBackground:function(e,r,o){return d._renderSection(e,r,o,!0)},renderForeground:function(e,r,o){return d._renderSection(e,r,o,!1)},_renderSection:function(r,o,n,i){var t=i?r.backgroundNode:r.foregroundNode;if(t&&(t.innerHTML=""),!o)return null;var u={};return u.class="esriGEAbsoluteStretched "+(i?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection"),u.initialWidth=r.getAllowedWidth(),u.initialHeight=r.getHeight(),u.json=o,u.viewModel=r.viewModel,u.theme=r.theme,u.parentWidget=r,u.currentFeatureIndex=r.currentFeatureIndex,u.initialViewMode=r.getViewMode(),u.initialSpecificViewMode=r.getSpecificViewMode(),e.mixin(u,n),r.viewModel.layoutBuilder.createElement("section",u,d._provideNode(r,i))},_provideNode:function(e,d){return d?e.backgroundNode=e.backgroundNode||r.create("div",{class:"adjustableGridBackgroundNode"},e.domNode,"first"):e.foregroundNode=e.foregroundNode||r.create("div",{class:"adjustableGridForegroundNode"},e.domNode)}};return d}));

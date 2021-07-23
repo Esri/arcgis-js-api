@@ -40,20 +40,15 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Calculate Density</h2><p/>
         <h2><img src="./images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Calculate Density tool"></h2>
         <hr/>
     <p>This tool creates a density map from point or line features by spreading known quantities of some phenomenon (represented as attributes of the points or lines) across the map. The result is a layer of areas classified from least dense to most dense.
     </p>
-    <p>For point input, each point should represent the location of some event or incident, and the result layer represents a count of the incident per unit area. A larger density value in a new location means that there are more points near that location. In many cases, the result layer can be interpreted as a risk surface for future events. For example, if the input points represent locations of lightning strikes, the result layer can be interpreted as a risk surface for future lightning strikes.
-    </p>
-    <p>For line input, the line density surface represents the total amount of line that is near each location. The units of the calculated density values are the length of line-per-unit area. For example, if the lines represent rivers, the result layer will represent the total length of rivers that are within the search radius. This result can be used to identify areas that are hospitable to grazing animals.
-    </p>
-    <p>Other use cases of this tool include the following:
-
+    <p>Some example applications of this tool include the following:
         <ul>
-            <li>Creating crime density maps to help police departments properly allocate resources to high crime areas.
+            <li>Creating crime density maps to help police departments properly allocate resources to high-crime areas.
                 
  
             </li>
@@ -65,7 +60,7 @@
                 
  
             </li>
-            <li>Locating communities that are far from major highways in order to plan where new roads should be constructed.
+            <li>Locating communities that are far from major highways to plan where new roads should be constructed.
                 
 
             </li>
@@ -78,7 +73,7 @@
         <div><h2>Choose input point or line layer from which to calculate density</h2></div>
         <hr/>
         <div>
-            <p>The input point or line layer that will be used to calculate the density layer.
+            <p>The input point or line that will be used to calculate density.
             </p>
         </div>
     </div>
@@ -88,7 +83,7 @@
         <div>
             <p>Provide a field specifying the number of incidents at each location. For example, if you have points that represent cities, you can use a field representing the population of the city as the count field, and the resulting population density layer will calculate larger population densities near cities with larger populations.
             </p>
-            <p>If the default choice of  <b>None</b> is used, then each location will be assumed to represent a single count.
+            <p>If the default choice of  <b>None</b> is used, each location will be assumed to represent a single count.
             </p>
         </div>
     </div>
@@ -118,6 +113,8 @@
         <div>
             <p>The cell size and unit for the output rasters.
             </p>
+            <p>The units can be kilometers, meters, miles, or feet.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -137,8 +134,7 @@
             
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
-            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box. If you have the privileges to create both tiled and dynamic imagery layers, you can specify which layer type to generate in the output using the Save result as drop-down box. </p>
         </div>
     </div>
 </div>

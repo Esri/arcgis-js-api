@@ -46,9 +46,7 @@
         <hr/>
     <p>To narzędzie tworzy podsumowanie wartości rastra w obrębie stref z innego zestawu danych.
     </p>
-    <p>Poniżej przedstawiono następujące przykładowe zastosowania:
-    </p>
-    <p>
+    <p>Poniżej przedstawiono przykładowe zastosowania tego narzędzia:
         <ul>
             <li>Mając warstwę zlewni i warstwę granic użytkowania terenu według typu użytkowania terenu, oblicz całkowity areał typ&oacute;w użytkowania terenu dla każdej zlewni.
                 
@@ -69,9 +67,9 @@
         <div><h2>Wybierz warstwę powierzchniową do zsumowania warstwy rastrowej w obrębie zdefiniowanych granic</h2></div>
         <hr/>
         <div>
-            <p>Warstwa definiująca granice obszar&oacute;w lub stref, kt&oacute;re zostaną podsumowane.
+            <p>Dane wejściowe definiujące granice stref lub obszar&oacute;w, kt&oacute;re zostaną podsumowane.
             </p>
-            <p>Warstwa może zawierać dane rastrowe lub obiektowe. W przypadku rastr&oacute;w strefy są definiowane przez wszystkie lokalizacje w danych wejściowych, kt&oacute;re mają tą samą wartość kom&oacute;rki. Obszary nie muszą być ciągłe.
+            <p>Dane wejściowe mogą zawierać całkowitoliczbowe dane rastrowe lub obiektowe. W przypadku rastr&oacute;w strefy są definiowane przez wszystkie lokalizacje w danych wejściowych, kt&oacute;re mają tą samą wartość kom&oacute;rki. W przypadku obiekt&oacute;w strefy te mogą się nakładać. Obszary nie muszą być ciągłe.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Wybierz pole do zdefiniowania granic</h2></div>
         <hr/>
         <div>
-            <p>Jest to atrybut warstwy, kt&oacute;ry będzie używany do definiowania granic obszar&oacute;w.
+            <p>Pole zawierające wartości definiujące poszczeg&oacute;lne strefy.
             </p>
-            <p>Zał&oacute;żmy na przykład, że pierwsza warstwa wejściowa definiuje granice jednostki administracyjnej i zawiera atrybuty definiujące region, okręg i identyfikator działki każdej jednostki. Istnieje także warstwa rastrowa definiująca indeks bior&oacute;żnorodności dla każdej lokalizacji. Wybierając odpowiednie pole, można zdecydować, czy obliczyć średnią bior&oacute;żnorodność na poziomie lokalnym, poziomie okręgu czy poziomie regionalnym.
+            <p>Może to być pole całkowitoliczbowe lub znakowe zestawu danych strefy.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Wybierz warstwę rastrową do sumowania</h2></div>
         <hr/>
         <div>
-            <p>Kom&oacute;rki rastrowe w tej warstwie zostaną zsumowane według obszar&oacute;w (stref), do kt&oacute;rych należą.
+            <p>Raster zawierający wartości, na podstawie kt&oacute;rych są obliczane statystyki.
+            </p>
+            <p>Może być typu całkowitoliczbowego lub zmiennoprzecinkowego. Jednak jeśli jest on typu zmiennoprzecinkowego, opcje obliczania większości, mniejszości i zr&oacute;żnicowania strefy nie będą dostępne.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Wybierz statystykę do obliczenia</h2></div>
         <hr/>
         <div>
-            <p>Po wybraniu warstwy do zsumowania można także obliczyć dane statystyczne dowolnych atrybut&oacute;w liczbowych punkt&oacute;w, linii lub obszar&oacute;w znajdujących się w wejściowej warstwie powierzchniowej.
+            <p>Wskazuje typ statystyki do obliczenia.
             </p>
-            <p>W przypadku wybrania pola typu całkowitego dostępne są następujące typy obliczeń statystycznych: średnia, większość, maksimum, mediana, minimum, mniejszość, percentyl, zakres, odchylenie standardowe, suma i zr&oacute;żnicowanie.
-            </p>
-            <p>W przypadku pola zmiennoprzecinkowego dostępne opcje to: średnia, maksimum, minimum, zakres, odchylenie standardowe i suma.
+            <p> Można używać następujących wartości wejściowych: <b>Średnia</b>, <b>Większość</b>, <b>Maksimum</b>, <b>Mediana</b>, <b>Minimum</b>, <b>Mniejszość</b>, <b>Percentyl</b>, <b>Zakres</b>, <b>Odchylenie standardowe</b>, <b>Sum</b> lub <b>Zr&oacute;żnicowanie</b>. Wartością domyślną jest <b>Średnia</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Percentyl do obliczenia. Wartość domyślna to 90. Oznacza ona 90. percentyl.
             </p>
-            <p>Wartości należą do zakresu od 0 do 100. Zerowy percentyl jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
+            <p>Wartość należy do zakresu od 0 do 100. Wynik podania zerowego percentyla jest właściwie r&oacute;wnoważny statystyce Minimum, a setny percentyl odpowiada statystyce Maksimum. Wartość 50 da praktycznie taki sam wynik jak statystyka Mediana.
             </p>
-            <p>Ta opcja jest obsługiwana tylko wtedy, gdy parametr  <b>Wybierz statystykę do obliczenia</b> jest ustawiony na wartość <b>Percentyl</b>.
+            <p> Ten parametr jest obsługiwany tylko wtedy, gdy parametr <b>Wybierz statystykę do obliczenia</b> jest ustawiony na wartość <b>Percentyl</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>W obliczeniach ignoruj brakujące wartości</h2></div>
         <hr/>
         <div>
-            <p>Jeśli zostanie wybrana opcja ignorowania brakujących wartości, podczas ustalania wartości wynikowej dla tego obszaru będą używane tylko te kom&oacute;rki, kt&oacute;re mają wartość w warstwie do zsumowania. W przeciwnym razie, jeśli gdziekolwiek w obszarze brakuje wartości, uznaje się, że nie ma wystarczających informacji do przeprowadzenia obliczeń statystycznych dla wszystkich kom&oacute;rek w tej strefie, a w danych wynikowych temu obszarowi zostanie przypisana wartość pusta (NoData).
+            <p> Określa, czy w analizie są ignorowane brakujące wartości.
             </p>
+            <ul>
+                <li>Zaznaczone &mdash; podczas przeprowadzania tej analizy zostaną dołączone kom&oacute;rki, kt&oacute;re mają wartość w wejściowym rastrze wartości w obrębie każdej strefy, aby określić wartość wynikową dla tej strefy. Kom&oacute;rki z wartościami NoData w rastrze wartości będą ignorowane podczas obliczeń statystyk. Jest to opcja domyślna.
+                </li>
+                <li>Niezaznaczone &mdash; wynikiem analizy będzie wartość NoData, jeśli dla kom&oacute;rek rastra wartości w ramach określonej strefy występują jakiekolwiek wartości NoData.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Przetwarzaj jako wielowymiarowe</h2></div>
         <hr/>
         <div>
-            <p>Decyduje o tym, jak będą przetwarzane rastry wejściowe, jeśli są to rastry wielowymiarowe. Jeśli zostanie wybrana opcja przetwarzania rastr&oacute;w jako wielowymiarowych, zostaną obliczone statystyki ze wszystkich wymiar&oacute;w wejściowego zestawu danych wielowymiarowych. W przeciwnym razie zostaną obliczone statystyki z bieżącego przekroju zestawu danych wielowymiarowych. Jest to opcja domyślna.
+            <p>Decyduje o tym, jak będą przetwarzane wejściowe wielowymiarowe usługi obrazowe (jeśli są one wielowymiarowe).
             </p>
+            <ul>
+                <li>Zaznaczone &ndash; statystyki zostaną obliczone z bieżącego przekroju zestawu danych wielowymiarowych. Jest to opcja domyślna.
+                    
+
+                </li>
+                <li>Niezaznaczone &ndash; statystyki zostaną obliczone dla wszystkich wymiar&oacute;w wejściowego zestawu danych wielowymiarowych.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
-            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
-            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik. Jeśli masz uprawnienia do tworzenia zarówno kafelkowych, jak i dynamicznych warstw zobrazowań, możesz zdecydować, który typ warstwy ma być używany go generowania danych wynikowych, używając pola rozwijanego Zapisz wyniki jako. </p>
         </div>
     </div>
 </div>

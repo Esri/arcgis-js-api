@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Odaberite rasterski sloj sa vi&scaron;e opsega. Postarajte se da ulazni raster ima dostupne odgovarajuće opsege.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Izaberite metod za nadgledanje vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Izaberite metod za kreiranje sloja indeksa vegetacije. Različiti indeksi vegetacije mogu da pomognu u isticanju određenih geoobjekata ili u smanjenju raznovrsne buke.
+            <p>Izaberite metod za izračunavanje sloja indeksa vegetacije. Različiti indeksi vegetacije mogu da pomognu u isticanju određenih geoobjekata ili u smanjenju raznovrsne buke.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je indeks vegetacije koji poku&scaron;ava da smanji uticaje golog zemlji&
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je standardizovan indeks koji vam omogućava da generi&scaron;ete snimak koji prikazuje zelenilo ili relativnu biomasu. Ovaj indeks koristi prednosti kontrasta karakteristika dva opsega iz vi&scaron;espektralnog rasterskog skupa podataka: apsorpcije pigmenta hlorofila u crvenom opsegu i velika reflektivnost materijala biljaka u blizu infracrvenom (NIR) opsegu.
+NDVI je standardizovan indeks koji vam omogućava da generi&scaron;ete snimak koji prikazuje zelenilo ili relativnu biomasu. Ovaj indeks koristi prednosti kontrasta karakteristika dva opsega iz vi&scaron;espektralnog rasterskog skupa podataka; apsorpcije pigmenta hlorofila u crvenom opsegu i velika reflektivnost materijala biljaka u blizu infracrvenom (NIR) opsegu.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Proces Sultanove formule koristi 8-bitni snimak sa &scaron;est opsega i primenju
 Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje osvetljenosti zemlji&scaron;ta pretpostavljajući da linija zemlji&scaron;ta ima proizvoljan nagib i prekid.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI je indeks vegetacije koji je procenjivao prisustvo vegetacije koristeći samo informacije iz vidljivog spektra. Ova metoda zahteva opsege u crvenom, zelenom i plavom delu spektra.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Navedite indekse NIR opsega i Red opsega</h2></div>
+        <div><h2>Navedite indekse NIR (blizu infracrveni) opsega i crvenog opsega</h2></div>
         <hr/>
         <div>
-            <p>Navedite indekse opsega za NIR (blizu infracrveni) i Red (vidljivi) opseg.
+            <p>Navedite indekse opsega za NIR (blizu infracrveni) i crvene opsege.
             </p>
-            <p>Svaki satelitski senzor i vazdu&scaron;na kamera snimaju informacije koje se rastavljaju u indekse opsega. Svaki indeks opsega sadrži informacije za specifični deo elektromagnetnog spektra. Ovaj metod nadgledanja vegetacije zahteva da navedete indeks opsega koji je uhvatio NIR i Red talasne dužine.
+            <p>Vi&scaron;epojasni satelitski ili vazdu&scaron;ni senzori prikupljaju informacije koje se rastavljaju u opsege talasne dužine, koji se identifikuju indeksima opsega. Ovaj metod praćenja vegetacije zahteva da navedete indekse opsega za blizu infracrvene (NIR) i crvene opsege talasne dužine.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Navedite indekse za crvene, zelene i plave opsege</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite indekse opsega za crvene, zelene i plave opsege.
+            </p>
+            <p>Vi&scaron;epojasni satelitski ili vazdu&scaron;ni senzori prikupljaju informacije koje se rastavljaju u opsege talasne dužine, koji se identifikuju indeksima opsega. Vidljivi atmosferski otporan indeks zahteva da navedete indekse opsega za crvene, zelene i plave opsege talasne dužine.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Navedite indekse za plave, crvene, NIR, SWIR-1 i termalne opsege</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite indekse opsega za plave, crvene, blizu infracrvene (NIR), kratkotalasne infracrvene (SWIR) i termalne opsege.
+            </p>
+            <p>Vi&scaron;epojasni satelitski ili vazdu&scaron;ni senzori prikupljaju informacije koje se rastavljaju u opsege talasne dužine, koji se identifikuju indeksima opsega. Sultanov indeks formule zahteva da navedete indekse opsega za plave, crvene, blizu infracrvene (NIR), kratkotalasne infracrvene (SWIR) i termalne opsege talasne dužine.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Navedite indekse plavih, zelenih, crvenih, NIR, SWIR-1 i SWIR-2 opsega</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite indekse opsega za plave, zelene, crvene, NIR, SWIR-1 i SWIR-2 opsege.
+            </p>
+            <p>Vi&scaron;epojasni satelitski ili vazdu&scaron;ni senzori prikupljaju informacije koje se rastavljaju u opsege talasne dužine, koji se identifikuju indeksima opsega. Indeks zelene vegetacije zahteva da navedete indekse opsega za plave, zelene, crvene, blizu infracrvene (NIR), kratkotalasne infracrvene 1 (SWIR-1) i kratkotalasne infracrvene 2 (SWIR-2) opsege talasne dužine.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
         <div><h2>Količina zelenog pokrivača</h2></div>
         <hr/>
         <div>
-            <p>Određuje količinu pokrivača zelene vegetacije, koji je obavezan prema SAVI metodi.
+            <p>Određuje količinu zelenog pokrivača vegetacije, koja je zahtevana metodom indeksa vegetacije prilagođene zemlji&scaron;tu.
             </p>
             <p>Validne vrednosti su kako sledi:
                 <ul>
@@ -172,8 +206,7 @@ Transformisani-SAVI je indeks vegetacije koji poku&scaron;ava da smanji uticaje 
             
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
-            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
-            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>. Ako imate privilegije za kreiranje pločastih i dinamičkih slojeva snimaka, mozete da odredite koji tip sloja želite da generišete za izlaz pomoću Sačuvaj rezultat kao padajući okvir. </p>
         </div>
     </div>
 </div>

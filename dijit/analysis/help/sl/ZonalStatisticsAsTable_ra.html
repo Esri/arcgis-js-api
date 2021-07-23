@@ -40,21 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Območna statistika kot tabela</h2><p/>
-        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagram Območna statistika kot tabela"></h2>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagram orodja Območna statistika kot tabela"></h2>
         <hr/>
     <p>To orodje povzema vrednosti rastra znotraj območij drugega sklopa podatkov in poroča rezultate v tabelo.
     </p>
-    <p>Nekaj primerov uporabe vključuje naslednje:
-    </p>
-    <p>
+    <p>Nekaj primerov uporabe tega orodja vključuje naslednje:
         <ul>
-            <li>S podanim slojem državnih mej in porazdelitvijo srednje vrednosti padavin po kontinentalnem delu Združenih držav izračunajte porazdelitev ekstremnih pojavov dežja po celotni državi s pomočjo seznama vrednosti precentila.
+            <li>Podana sta sloja razvodnic in rabe tal. Izračunajte skupno kmetijsko povr&scaron;ino po tipu rabe tal za vsako razvodje.
                 
 
             </li>
-            <li>S podanim slojem prekrivajočih se ekolo&scaron;kih območij in rastrskim slojem vlage tal izračunajte vso podprto statistiko znotraj vsakega območja, ki bo povezala območja z razpoložljivo vlago prsti.
+            <li>Podana sta sloj parcel v okrožju in sloj mej mesta. Povzemite povprečno vrednost nepozidanih parcel znotraj vsake meje mesta.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Izberite raster območja ali geoobjektov</h2></div>
         <hr/>
         <div>
-            <p>Sloj, ki določa meje območij ali povr&scaron;in, ki bodo povzete.
+            <p>Vnos, ki določa meje območij ali povr&scaron;in, ki bodo povzete.
             </p>
-            <p>Sloje je lahko raster celega &scaron;tevila ali geoobjektni podatki. Za rastre se cone določajo glede na vse lokacije v vhodu, ki imajo enako vrednost celice. Za geoobjekte se lahko območja prekrivajo. Območja ne morejo biti sosednja.
+            <p>Vnos je lahko raster celega &scaron;tevila ali geoobjektni podatki. Za rastre se cone določajo glede na vse lokacije v vhodnem sloju, ki imajo enako vrednost celice. Za geoobjekte se lahko območja prekrivajo. Za povr&scaron;ine ni nujno, da so sosednje.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Polje območja</h2></div>
         <hr/>
         <div>
-            <p>Gre za atribut sloja, ki se bo uporabil za določanje mej območij (povr&scaron;in).
+            <p>Polje, ki vsebuje vrednosti, ki določajo vsako območje.
             </p>
-            <p>Na primer, predpostavimo, da prvi vhodni sloj določa upravljanje mej enote z atributi, ki določajo regijo, okrožje in ID parcele za vsako enoto. Imate tudi rastrski sloj, ki določa indeks biotske raznovrstnosti za vsako lokacijo. S poljem, ki ga izberete, se lahko odločite za izračun povprečne biotske raznovrstnosti na lokalni, okrožni ali regionalni ravni.
+            <p>To je lahko polje s celim &scaron;tevilom ali besedilno polje območnega sklopa podatkov.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Izberite raster vrednosti</h2></div>
         <hr/>
         <div>
-            <p>Rastrske celice v tem sloju bodo povzete po območjih (conah), v katera spadajo.
+            <p>Raster, ki vsebuje vrednosti za izračun statistike.
+            </p>
+            <p>Lahko je celo &scaron;tevilo ali plavajoča vejica. Vendar pri plavajoči vejici možnosti za izračun večine, manj&scaron;ine in razlike niso na voljo.
             </p>
         </div>
     </div>
@@ -97,28 +97,24 @@
         <div><h2>Prezri vrednosti NoData v izračunih (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Določi ali se bo v analizi prezrlo vrednosti brez podatkov.
-                <ul>
-                    <li>Potrjeno &ndash; Analiza bo vključevala celice, ki imajo vrednost v vhodnem rastru vrednosti znotraj katerega koli določenega območja za določanje izhodne vrednosti za to območje. Celice z vrednostjo NoData v rastru vrednosti bodo v statističnem izračunu prezrte. To je privzeto.
-                    </li>
-                    <li>Nepotrjeno &ndash; Rezultat analize bo brez podatkov, če so znotraj katerega določenega območja kakr&scaron;ne koli vrednosti NoDara za celice rastra vrednosti.
-                    </li>
-                </ul>
-                
+            <p> Določi ali se bo v analizi prezrlo vrednosti brez podatkov.
             </p>
+            <ul>
+                <li>Potrjeno &ndash; Analiza bo vključevala celice, ki imajo vrednost v vhodnem rastru vrednosti znotraj katerega koli določenega območja za določanje izhodne vrednosti za to območje. Celice z vrednostjo Brez podatkov v rastru vrednosti bodo v statističnem izračunu prezrte. To je privzeto.
+                </li>
+                <li>Nepotrjeno &ndash; Rezultat analize bo brez podatkov, če so znotraj katerega določenega območja kakr&scaron;ne koli vrednosti Brez podatkov za celice rastra vrednosti.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
         <div><h2>Tip statistike (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Določi vrsto statistike, ki bo izračunana.
+            <p>Določi tip statistike, ki bo izračunana.
             </p>
-            <p>Vnos je lahko katero koli od sledečih:  <b>vse</b>, <b>srednja vrednost</b>, <b>večina</b>, <b>maksimum</b>, <b>mediana</b>, <b>minimum</b>, <b>manj&scaron;ina</b>, <b>percentil</b>, <b>razpon</b>, <b>standardni odklon</b>, <b>vsota</b>, <b>raznolikost</b>, <b>minimum in maksimum</b>, <b>srednja vrednost in standardni odklon</b> ali <b>minimum, maksimum in srednja vrednost</b>. Privzeta nastavitev je <b>vse</b>.
-            </p>
-            <p>Če je vhodni raster vrednosti celo &scaron;tevilo, bo privzeto izračunana vsa statistika. Če je raster vrednosti vrste plavajoče vejice, bo privzeto izračunana vsa statistika razen  <b>mediane</b> in <b>percentila</b>. 
-            </p>
-            <p>Če je vhodni raster vrednosti vrste plavajoče vejice, območnih izračunov za  <b>večino</b>, <b>manj&scaron;ino</b> in <b>raznolikost</b> ni mogoče izračunati.
+            <p> Vnos je lahko katero koli od sledečih: <b>vse</b>, <b>srednja vrednost</b>, <b>večina</b>, <b>maksimum</b>, <b>mediana</b>, <b>minimum</b>, <b>manj&scaron;ina</b>, <b>percentil</b>, <b>razpon</b>, <b>standardni odklon</b>, <b>vsota</b>, <b>raznolikost</b>, <b>minimum in maksimum</b>, <b>srednja vrednost in standardni odklon</b> ali <b>minimum, maksimum in srednja vrednost</b>. Privzeta nastavitev je <b>vse</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Vrednosti percentila (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Percentili za izračun. Določite lahko en samo vrednost ali seznam vrednosti. Privzeta vrednost je 90, ki označuje 90. percentil.
+            <p>Percentil za izračun. Privzeta vrednost je 90, ki označuje 90. percentil.
             </p>
-            <p>Vrednosti se gibljejo od 0 do 100. Rezultat določitve percentila 0 je pravzaprav enakovreden najmanj&scaron;i, percentil 100 pa največji statistični vrednosti. Vrednost 50 bo pravzaprav ustvarila enak rezultat kot srednja statistična vrednost.
+            <p>Vrednost se giblje od 0 do 100. Rezultat določitve percentila 0 je pravzaprav enakovreden najmanj&scaron;i, percentil 100 pa največji statistični vrednosti. Vrednost 50 bo pravzaprav ustvarila enak rezultat kot srednja statistična vrednost.
             </p>
-            <p>Ta možnost je podprta samo, če je parameter  <b>Tip statistike</b> nastavljen na <b>percentil</b> ali <b>vse</b>.
+            <p> Ta parameter je podprt samo, če je parameter <b>Tip statistike</b> nastavljen na <b>Percentil</b> ali <b>Vse</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Tip interpolacije percentila (izbirno)</h2></div>
         <hr/>
         <div>
-            
             <p>Določa metodo interpolacije percentila, ki bo uporabljena, ko je &scaron;tevilo vrednosti iz vhodnega rastra, ki bo izračunano, sodo.
-            </p> 
-            <p>Če je vhodni raster tipa piksla celega &scaron;tevila, potem se uporabi metoda  <b>Najbližje</b>. Če je vhodni raster vrednosti tipa plavajočega točkovnega piksla, potem se uporabi metoda <b>Linearno</b>. To je privzeto.
             </p>
-            <p>Pri metodi  <b>Najbližje</b> je uporabljena nabližja razpoložljiva vrednost do želenega percentila. Pri metodi <b>Linearno</b> je uporabljeno uravnoteženo povprečje dveh sosednjih vrednosti iz želenega percentila.
-            </p> 
+            <ul>
+                <li>  <b>Samodejno zaznavanje</b> &mdash; Če je vhodni raster tipa piksla celega &scaron;tevila, potem se uporabi metoda <b>Najbližje</b>. Če je vhodni raster vrednosti tipa plavajočega točkovnega piksla, potem se uporabi metoda <b>Linearno</b>. To je privzeto.
+                </li>
+                <li> <b>Najbližje</b> &mdash; Uporabljena je nabližja razpoložljiva vrednost do želenega percentila.
+                </li>
+                <li> <b>Linearno</b> &mdash; Uporabljeno je uravnoteženo povprečje dveh sosednjih vrednosti iz želenega percentila.
+                </li>
+            </ul>
+            
+            <p> Ta parameter je podprt samo, če je parameter <b>Tip statistike</b> nastavljen na <b>Percentil</b> ali <b>Vse</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Obdelaj kot večdimenzionalno (izbirno)</h2></div>
         <hr/>
         <div>
-            <p>Določi, kako bodo vhodni rastri obdelani, če bodo večdimenzionalni.
+            <p>Določi, kako bodo vhodne storitve večdimenzionalne slike obdelane, če bodo večdimenzionalne.
             </p>
             <ul>
                 <li>Potrjeno &ndash; Statistika bo izračunana iz trenutnega izseka vhodnega večdimenzionalnega sklopa podatkov. To je privzeto.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
+            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
             </p>
         </div>
     </div>

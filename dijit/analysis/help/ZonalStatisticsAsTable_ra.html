@@ -46,15 +46,13 @@
         <hr/>
     <p>This tool summarizes the values of a raster within the zones of another dataset and reports the results to a table.
     </p>
-    <p>Some example applications include the following:
-    </p>
-    <p>
+    <p>Some example application of this tool includes the following:
         <ul>
-            <li>Given a layer of state boundaries and the distribution of mean precipitation over the continental United States, calculate the state-wise distribution of extreme rain events using a list of percentile values.
+            <li>Given a layer of watershed boundaries and a layer of land-use boundaries by land-use type, calculate total acreage of land-use type for each watershed.
                 
 
             </li>
-            <li>Given a layer of overlapping ecological zones and a raster layer of soil moisture, calculate all supported statistics within each zone to relate zones with soil moisture availability.
+            <li>Given a layer of parcels in a county and a layer of city boundaries, summarize the average value of vacant parcels within each city boundary.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Choose zone raster or features</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the boundaries of the zones, or areas, that will be summarized.
+            <p>The input that defines the boundaries of the zones, or areas, that will be summarized.
             </p>
-            <p>The layer can be an integer raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. For features, the zones can be overlapping. The areas do not have to be contiguous.
+            <p>The input can be an integer raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. For features, the zones can be overlapping. The areas do not have to be contiguous.
             </p>
         </div>
     </div>
@@ -79,9 +77,11 @@
         <div><h2>Zone field</h2></div>
         <hr/>
         <div>
-            <p>This is the attribute of the layer that will be used to define the boundaries of the zones (areas).
+            <p>The
+field that contains the values that define each zone.
             </p>
-            <p>For example, suppose the first input layer defines the management unit boundaries, with attributes that define the region, the district, and the parcel ID of each unit. You also have a raster layer defining a biodiversity index for each location. With the field you select, you can decide to calculate the average biodiversity at local, district, or regional levels.
+            <p>It can
+be an integer or a string field of the zone dataset.
             </p>
         </div>
     </div>
@@ -89,7 +89,9 @@
         <div><h2>Choose value raster</h2></div>
         <hr/>
         <div>
-            <p>The raster cells in this layer will be summarized by the areas (zones) that they fall within.
+            <p>The raster that contains the values on which to calculate a statistic.
+            </p>
+            <p>It can be either integer or floating point. However, when it is floating-point type, the options for calculating majority, minority, and variety will not be available.
             </p>
         </div>
     </div>
@@ -97,16 +99,15 @@
         <div><h2>Ignore NoData in calculations (optional)</h2></div>
         <hr/>
         <div>
-            <p>Specifies whether NoData values are ignored in the analysis.
-
-                <ul>
-                    <li>Checked&mdash;The analysis will include the cells that have a value in the input value raster within any particular zone to determine the output value for that zone. NoData cells in the value raster will be ignored in the statistic calculation. This is the default.
-                    </li>
-                    <li>Unchecked&mdash;The analysis will result in NoData if there are any NoData values for the cells of the value raster within a particular zone.
-                    </li>
-                </ul>
-                
+            <p> Specifies whether NoData values are ignored in the analysis.
             </p>
+            <ul>
+                <li>Checked&mdash;The analysis will include the cells that have a value in the input value raster within any particular zone to determine the output value for that zone. NoData cells in the value raster will be ignored in the statistic calculation. This is the default.
+                </li>
+                <li>Unchecked&mdash;The analysis will result in NoData if there are any NoData values for the cells of the value raster within a particular zone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -115,11 +116,7 @@
         <div>
             <p>Specifies the statistic type to be calculated.
             </p>
-            <p>The input can be one of the following:  <b>All</b>, <b>Mean</b>, <b>Majority</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minority</b>, <b>Percentile</b>, <b>Range</b>, <b>Standard deviation</b>, <b>Sum</b>, <b>Variety</b>, <b>Minimum and Maximum</b>, <b>Mean and Standard deviation</b>, or <b>Minimum, Maximum and Mean</b>. The default is <b>All</b>.
-            </p>
-            <p>If the input value raster is integer, by default, all statistics will be calculated. If the value raster is floating-point type, by default, all statistics except  <b>Median</b> and <b>Percentile</b> will be calculated. 
-            </p>
-            <p>If the input value raster is floating-point type, the zonal calculations for  <b>Majority</b>, <b>Minority</b>, and <b>Variety</b> cannot be computed.
+            <p> The input can be one of the following: <b>All</b>, <b>Mean</b>, <b>Majority</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minority</b>, <b>Percentile</b>, <b>Range</b>, <b>Standard deviation</b>, <b>Sum</b>, <b>Variety</b>, <b>Minimum and Maximum</b>, <b>Mean and Standard deviation</b>, or <b>Minimum, Maximum and Mean</b>. The default is <b>All</b>.
             </p>
         </div>
     </div>
@@ -127,11 +124,11 @@
         <div><h2>Percentile values (optional)</h2></div>
         <hr/>
         <div>
-            <p>The percentiles to calculate. A single value or a list of values can be specified. The default is 90, indicating the 90th percentile.
+            <p>The percentile to calculate. The default is 90, indicating the 90th percentile.
             </p>
-            <p>The values can range from 0 to 100. The result of specifying the 0th percentile is essentially equivalent to that of the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
+            <p>The value can range from 0 to 100. The result of specifying the 0th percentile is essentially equivalent to that of the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
             </p>
-            <p>This option is only supported if the  <b>Statistics type</b> parameter is set to <b>Percentile</b> or <b>All</b>.
+            <p> This parameter is only supported if the <b>Statistics type</b> parameter is set to <b>Percentile</b> or <b>All</b>.
             </p>
         </div>
     </div>
@@ -139,20 +136,26 @@
         <div><h2>Percentile interpolation type (optional)</h2></div>
         <hr/>
         <div>
-            
             <p>Specifies the method of percentile interpolation to be used when the number of values from the input raster to be calculated is even.
-            </p> 
-            <p>If the input value raster is of integer pixel type, the  <b>Nearest</b> method is used. If the input value raster is of floating point pixel type, the <b>Linear</b> method is used. This is the default.
             </p>
-            <p>For the  <b>Nearest</b> method, the nearest available value to the desired percentile is used. For the <b>Linear</b> method, the weighted average of the two surrounding values from the desired percentile is used.
-            </p> 
+            <ul>
+                <li>  <b>Auto Detect</b>&mdash;If the input value raster is of integer pixel type, the <b>Nearest</b> method is used. If the input value raster is of floating-point pixel type, the <b>Linear</b> method is used. This is the default.
+                </li>
+                <li> <b>Nearest</b>&mdash;The nearest available value to the desired percentile is used.
+                </li>
+                <li> <b>Linear</b>&mdash;The weighted average of the two surrounding values from the desired percentile is used.
+                </li>
+            </ul>
+            
+            <p> This parameter is only supported if the <b>Statistics type</b> parameter is set to <b>Percentile</b> or <b>All</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Process as multidimensional (optional)</h2></div>
         <hr/>
         <div>
-            <p>Specifies how the input rasters will be processed if they are multidimensional.
+            <p>Specifies how the input multidimensional image services will be processed if they are multidimensional.
             </p>
             <ul>
                 <li>Checked&mdash;The statistics will be calculated from the current slice of the input multidimensional dataset. This is the default.
@@ -170,6 +173,8 @@
         <hr/>
         <div>
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
             </p>
         </div>
     </div>

@@ -46,11 +46,7 @@
         <hr/>
     <p>Ovaj alat stvara kartu gustoće iz točkastih ili linijskih geoobjekata &scaron;irenjem poznatih količina određenog fenomena (predstavljenih kao atributi točaka ili linija) &scaron;irom karte. Rezultat je poligonalni sloj klasificiran od najveće do najmanje gustoće.
     </p>
-    <p>Za ulazne točke svaka bi točka trebala predstavljati lokaciju nekog događaja ili incidenta, a sloj rezultata predstavlja zbroj incidenata po jediničnom području. Vrijednost veće gustoće na novoj lokaciji znači da ima vi&scaron;e točaka blizu te lokacije. U mnogo slučajeva, sloj rezultata može se protumačiti kao područje rizika za buduće događaje. Na primjer, ako unesene točke predstavljaju lokacije udara munje, sloj rezultata može se protumačiti kao područje rizika za buduće udare munje.
-    </p>
-    <p>Za ulazne linije povr&scaron;ina gustoće linija predstavlja ukupnu količinu linija koje se nalaze blizu određene lokacije. Jedinice izračunatih vrijednosti gustoće su dužina linije po jedinici povr&scaron;ine. Na primjer, ako linije predstavljaju rijeke, sloj rezultata predstavljat će ukupnu duljinu rijeka koje se nalaze unutar radijusa pretraživanja. Rezultat se može upotrijebiti za određivanje područja koja su pristupačna za ispa&scaron;u životinja.
-    </p>
-    <p>Ostali slučajevi upotrebe za ovaj alat uključuju sljedeće:
+    <p>Neki primjeri primjena ovog alata uključuju sljedeće:
         <ul>
             <li>Stvaranje karata gustoće zločina kako bi se pomoglo policiji da pravilno raspodijele resurse u područja s visokom stopom zločina.
                 
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Lociranje zajednica koje se nalaze daleko od velikih prometnica kako bi se planirala izgradnja novih cesta.
+            <li>Lociranje zajednica koje se nalaze daleko od velikih prometnica kako bi se planirale lokacije izgradnje novih cesta.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Odaberite ulazni točkasti ili linijski sloj za izračun gustoće</h2></div>
         <hr/>
         <div>
-            <p>Ulazni točkasti ili linijski sloj koji će se koristiti za izračun sloja gustoće.
+            <p>Ulazna točka ili linija koja će se koristiti za izračunavanje gustoće.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Unesite polje koje određuje broj incidenata na svakoj lokaciji. Na primjer, ako imate točke koje predstavljaju gradove, možete upotrijebiti polje koje predstavlja stanovni&scaron;tvo grada kao polje brojača, a sloj rezultata gustoće stanovni&scaron;tva izračunat će veće gustoće stanovni&scaron;tva blizu gradova s većim brojem stanovni&scaron;tva.
             </p>
-            <p>Ako se koristi zadana vrijednost  <b>Ni&scaron;ta</b>, tada će se pretpostaviti da svaka lokacija predstavlja jedan zbroj.
+            <p>Ako se upotrijebi zadani odabir  <b>Nema</b>, za svaku će se lokaciju pretpostaviti da predstavlja jedan broj.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>Veličina ćelije i jedinica za rezultate rastera.
             </p>
+            <p>Jedinice mogu biti u kilometrima, metrima, miljama ili stopama.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
-            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
-            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>. Ako imate privilegije za stvaranje slojeva pločica i dinamičkih slika, možete odrediti koju vrstu sloja želite generirati u izlazu pomoću Spremi rezultat kao padajućeg okvira. </p>
         </div>
     </div>
 </div>

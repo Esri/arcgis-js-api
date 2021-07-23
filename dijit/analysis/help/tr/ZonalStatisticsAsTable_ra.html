@@ -46,15 +46,13 @@
         <hr/>
     <p>Bu ara&ccedil;, bir rasterın başka bir veri k&uuml;mesinin b&ouml;lgeleri dahilindeki değerlerini &ouml;zetler ve sonu&ccedil;ları bir tablo halinde bildirir.
     </p>
-    <p>Bazı &ouml;rnek uygulamalar aşağıda verilmiştir:
-    </p>
-    <p>
+    <p>Bu aracın bazı &ouml;rnek uygulamaları aşağıdakileri i&ccedil;erir:
         <ul>
-            <li>ABD &uuml;zerindeki eyalet sınırları katmanı ve ortalama yağış dağılımı g&ouml;z &ouml;n&uuml;ne alındığı zaman, y&uuml;zdelik değerlerin bir listesini kullanarak eyalet bazında aşırı yağışların dağılımını hesaplayın.
+            <li>Boşaltma havzası sınırları katmanı ve arazi kullanım t&uuml;r&uuml;ne g&ouml;re bir arazi kullanım sınırları katmanı verildiğinde, her boşaltma havzası i&ccedil;in arazi kullanım t&uuml;r&uuml;n&uuml;n toplam y&uuml;z &ouml;l&ccedil;&uuml;m&uuml;n&uuml; hesaplayın.
                 
 
             </li>
-            <li>&Ccedil;akışan bir ekolojik b&ouml;lgeler katmanı ve toprak neminin raster katmanı g&ouml;z &ouml;n&uuml;ne alındığı zaman, b&ouml;lgeleri toprak nemi bulunurluğuyla ilişkilendirmek i&ccedil;in her b&ouml;lgede desteklenen b&uuml;t&uuml;n istatistikleri hesaplayın.
+            <li>Bir il&ccedil;edeki parsellerin bir katmanı ve şehir sınırlarının bir katmanı verildiğinde, her bir şehir sınırı dahilindeki boş parsellerin ortalama değerini &ouml;zetleyin.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Bölge rasterı veya detaylarını seç</h2></div>
         <hr/>
         <div>
-            <p>&Ouml;zetlenecek b&ouml;lgelerin ya da alanların sınırlarını tanımlayan katman.
+            <p>&Ouml;zetlenecek b&ouml;lgelerin ya da alanların sınırlarını tanımlayan girdi.
             </p>
-            <p>Katman, bir tam sayı rasterı veya detay verileri olabilir. Rasterlar s&ouml;z konusu olduğunda b&ouml;lgeler, girdi i&ccedil;inde aynı h&uuml;cre değerine sahip olan t&uuml;m konumlar tarafından tanımlanır. Detaylar i&ccedil;in, b&ouml;lgeler &ccedil;akışabilir. Alanların s&uuml;rekli olması gerekmez.
+            <p>Girdi, bir tamsayı raster veya detay verisi olabilir. Rasterlar s&ouml;z konusu olduğunda b&ouml;lgeler, girdi i&ccedil;inde aynı h&uuml;cre değerine sahip olan t&uuml;m konumlar tarafından tanımlanır. Detaylar i&ccedil;in, b&ouml;lgeler &ccedil;akışabilir. Alanların s&uuml;rekli olması gerekmez.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Bölge alanı</h2></div>
         <hr/>
         <div>
-            <p>Bu, b&ouml;lgelerin (alanların) sınırlarını tanımlamak i&ccedil;in kullanılacak katmanın &ouml;zniteliğidir.
+            <p>Her bir b&ouml;lgeyi tanımlayan değerleri i&ccedil;eren alan.
             </p>
-            <p>&Ouml;rneğin, ilk girdi katmanının her birimin b&ouml;lgesini, &uuml;st b&ouml;lgesini ve parsel kimliğini tanımlayan &ouml;zniteliklerle y&ouml;netim birimi sınırlarını tanımladığını varsayalım. Ayrıca her konum i&ccedil;in bir biyo&ccedil;eşitlilik indeksi tanımlayan bir raster katmanınız olsun. Se&ccedil;tiğiniz alanla birlikte; yerel ve b&ouml;lgesel d&uuml;zeyde ortalama biyo&ccedil;eşitliliği hesaplamak isteyebilirsiniz.
+            <p>B&ouml;lge veri k&uuml;mesinin bir dizi alanı veya bir tamsayı olabilir.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Değer rasterını seç</h2></div>
         <hr/>
         <div>
-            <p>Bu katmandaki raster h&uuml;creleri, dahil oldukları alanlar (b&ouml;lgeler) tarafından &ouml;zetlenir.
+            <p>Bir istatistiğin hesaplanacağı değerleri i&ccedil;eren raster.
+            </p>
+            <p>Bu, bir tamsayı veya kayan nokta olabilir. Bununla birlikte kayan noktalı t&uuml;r olduğunda, &ccedil;oğunluk, azınlık ve &ccedil;eşitlilik hesaplama se&ccedil;enekleri kullanılabilir olmayacaktır.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Hesaplamalarda NoData'yı yoksay (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>NoData değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir.
-                <ul>
-                    <li>İşaretlendi&mdash;Analiz, ilgili b&ouml;lgenin &ccedil;ıktı değerini belirlemek &uuml;zere herhangi bir belirli b&ouml;lge i&ccedil;erisindeki girdi değeri rasterında bir değere sahip h&uuml;creleri kapsayacaktır. Değer rasterı i&ccedil;indeki NoData h&uuml;creleri, istatistik hesaplamasında g&ouml;z ardı edilecektir. Varsayılan değerdir.
-                    </li>
-                    <li>İşaretlenmedi&mdash;Belirli bir b&ouml;lge i&ccedil;erisindeki değer rasterının h&uuml;creleri i&ccedil;in herhangi bir NoData değerinin mevcut olması halinde, analiz NoData olarak sonu&ccedil;lanacaktır.
-                    </li>
-                </ul>
-                
+            <p> NoData değerlerin analizde g&ouml;z ardı edilip edilmeyeceğini belirtir.
             </p>
+            <ul>
+                <li>İşaretlendi&mdash;Analiz, ilgili b&ouml;lgenin &ccedil;ıktı değerini belirlemek &uuml;zere herhangi bir belirli b&ouml;lge i&ccedil;erisindeki girdi değeri rasterında bir değere sahip h&uuml;creleri kapsayacaktır. Değer rasterı i&ccedil;indeki NoData h&uuml;creleri, istatistik hesaplamasında g&ouml;z ardı edilecektir. Varsayılan değerdir.
+                </li>
+                <li>İşaretlenmedi&mdash;Belirli bir b&ouml;lge i&ccedil;erisindeki değer rasterının h&uuml;creleri i&ccedil;in herhangi bir NoData değerinin mevcut olması halinde, analiz NoData olarak sonu&ccedil;lanacaktır.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Hesaplanacak istatistik t&uuml;r&uuml;n&uuml; belirtir.
             </p>
-            <p>Girdi, aşağıdakilerden biri olabilir:  <b>T&uuml;m&uuml;</b>, <b>Ortalama</b>, <b>&Ccedil;oğunluk</b>, <b>Maksimum</b>, <b>Ortanca</b>, <b>Minimum</b>, <b>Azınlık</b>, <b>Y&uuml;zde</b>, <b>Aralık</b>, <b>Standart sapma</b>, <b>&Ouml;zet</b>, <b>&Ccedil;eşitli</b>, <b>Minimum ve Maksimum</b>, <b>Ortalama ve Standart sapma</b> veya <b>Minimum, Maksimum ve Ortalama</b>. Varsayılan değer <b>T&uuml;m&uuml;</b> şeklindedir.
-            </p>
-            <p>Eğer girdi değeri rasterı bir tamsayı ise, varsayılan olarak t&uuml;m istatistikler hesaplanacaktır. Eğer değer rasterı kayan noktalı t&uuml;r ise,  <b>Ortanca</b> ve <b>Y&uuml;zde</b> hari&ccedil; olmak &uuml;zere varsayılan olarak b&uuml;t&uuml;n istatistikler hesaplanacaktır. 
-            </p>
-            <p>Eğer girdi değeri rasterı kayan noktalı t&uuml;r ise,  <b>&Ccedil;oğunluk</b>, <b>Azınlık</b> ve <b>&Ccedil;eşitli</b> i&ccedil;in b&ouml;lgesel hesaplamalar yapılamaz.
+            <p> Girdi, aşağıdakilerden biri olabilir: <b>T&uuml;m&uuml;</b>, <b>Ortalama</b>, <b>&Ccedil;oğunluk</b>, <b>Maksimum</b>, <b>Ortanca</b>, <b>Minimum</b>, <b>Azınlık</b>, <b>Y&uuml;zde</b>, <b>Aralık</b>, <b>Standart sapma</b>, <b>&Ouml;zet</b>, <b>&Ccedil;eşitli</b>, <b>Minimum ve Maksimum</b>, <b>Ortalama ve Standart sapma</b> veya <b>Minimum, Maksimum ve Ortalama</b>. Varsayılan değer <b>T&uuml;m&uuml;</b> şeklindedir.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Yüzde değerleri (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>Hesaplanacak y&uuml;zdeler. Tek bir değer ya da bir değerler listesi belirtilebilir. Varsayılan 90'dır ve 90. y&uuml;zdelik dilimi g&ouml;sterir.
+            <p>Hesaplanacak olan y&uuml;zde. Varsayılan 90'dır ve 90. y&uuml;zdelik dilimi g&ouml;sterir.
             </p>
-            <p>Değerler 0 ile 100 arasında değişebilir. Temelde y&uuml;zde 0 hesaplamasının sonucu minimum istatistiğin sonucuna eşittir ve y&uuml;zde 100 ise maksimuma eşittir. 50 değeri temelde ortanca istatistiğiyle aynı sonucu &uuml;retir.
+            <p>Değer, 0 - 100 arasında değişebilir. Temelde y&uuml;zde 0 hesaplamasının sonucu minimum istatistiğin sonucuna eşittir ve y&uuml;zde 100 ise maksimuma eşittir. 50 değeri temelde ortanca istatistiğiyle aynı sonucu &uuml;retir.
             </p>
-            <p>Bu se&ccedil;enek sadece  <b>İstatistik t&uuml;r&uuml;</b> parametresi <b>Y&uuml;zde</b> ya da <b>T&uuml;m&uuml;</b> olarak ayarlanmışsa desteklenir.
+            <p> Bu parametre sadece <b>İstatistik t&uuml;r&uuml;</b> parametresi <b>Y&uuml;zde</b> ya da <b>T&uuml;m&uuml;</b> olarak ayarlanmışsa desteklenir.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Yüzde enterpolasyon türü (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            
             <p>Hesaplanacak girdi rasterından gelen değerlerin sayısı &ccedil;ift olduğunda kullanılacak y&uuml;zdelik enterpolasyon y&ouml;ntemini belirtir.
-            </p> 
-            <p>Girdi değer rasterı tamsayı piksel t&uuml;r&uuml;yse,  <b>En yakın</b> y&ouml;ntemi kullanılır. Girdi değer rasterı kayan noktalı piksel t&uuml;r&uuml;ndeyse, <b>Lineer</b> y&ouml;ntemi kullanılır. Varsayılan değerdir.
             </p>
-            <p> <b>En Yakın</b> y&ouml;ntemi i&ccedil;in, istenilen y&uuml;zdeye en yakın mevcut değer kullanılır. <b>Lineer</b> y&ouml;ntemi i&ccedil;in, istenilen y&uuml;zdeden iki &ccedil;evreleyen değerin ağırlıklı ortalaması kullanılır.
-            </p> 
+            <ul>
+                <li>  <b>Otomatik Algılama</b>&mdash;Girdi değer rasterı tamsayı piksel t&uuml;r&uuml;ndeyse, <b>En yakın</b> y&ouml;ntemi kullanılır. Girdi değer rasterı kayan noktalı piksel t&uuml;r&uuml;ndeyse, <b>Lineer</b> y&ouml;ntemi kullanılır. Varsayılan değerdir.
+                </li>
+                <li> <b>En Yakın</b>&mdash;İstenilen y&uuml;zdeye en yakın mevcut değer kullanılır.
+                </li>
+                <li> <b>Lineer</b>&mdash;İstenilen y&uuml;zdeden iki &ccedil;evreleyen değerin ağırlıklı ortalaması kullanılır.
+                </li>
+            </ul>
+            
+            <p> Bu parametre sadece <b>İstatistik t&uuml;r&uuml;</b> parametresi <b>Y&uuml;zde</b> ya da <b>T&uuml;m&uuml;</b> olarak ayarlanmışsa desteklenir.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Çok boyutlu olarak işle (isteğe bağlı)</h2></div>
         <hr/>
         <div>
-            <p>&Ccedil;ok boyutlu olduklarında girdi rasterlarının nasıl işleneceğini belirtir.
+            <p>&Ccedil;ok boyutlu olduklarında, girdi &ccedil;ok boyutlu g&ouml;r&uuml;nt&uuml; servislerinin nasıl işleneceğini belirtir.
             </p>
             <ul>
                 <li>İşaretlendi&mdash;İstatistikler girdi &ccedil;ok boyutlu veri k&uuml;mesinin ge&ccedil;erli diliminden hesaplanacaktır. Varsayılan değerdir.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
+            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
             </p>
         </div>
     </div>

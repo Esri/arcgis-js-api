@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať vrstvu na pripojenie k",inputWarningLabel:"Upozornenie: Vrstva, ktorú pripájate, bude upravená.",inputHostedLayerWarning:"Vybraná vrstva nebola hostovaná vrstva prvkov. Vyberte hostovanú vrstvu prvkov na pripojenie.",appendLayerLabel:"Vybrať vrstvu na pripojenie",filterLabel:"Pripojiť všetky prvky alebo definovať podmnožinu (voliteľné)",fieldMappingLabel:"Vybrať, ako pripojiť polia (voliteľné)",inputField:"Vstupné pole",appendValue:"Hodnota pripojenia",expression:"Výraz"});

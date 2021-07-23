@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/_base/array","dojo/has","../kernel","../support/expressionUtils"],(function(e,r,t,n,a){var s=/(\/(MapServer|FeatureServer)).*/gi;var o={hasGeometryOperations:function(e){return r.some(e,(function(e){return e.hasGeometryOperations?e.hasGeometryOperations():a.hasGeometryOperations(e)}))},hasFeatureSetOperations:function(e){return r.some(e,(function(e){return e.hasFeatureSetOperations?e.hasFeatureSetOperations():a.hasFeatureSetOperations(e)}))},hasVariables:function(e,t){return r.some(e,(function(e){return r.some(t,(function(r){return e.hasVariable?e.hasVariable(r):a.hasVariable(e,r)}))}))},isAsync:function(e){return r.some(e,(function(e){return e.async}))},getServiceUrl:function(e){return function(e){return s.test(e)}(e)?e.replace(s,"$1"):null}};return t("extend-esri")&&e.setObject("arcadeProfiles.utils",o,n),o}));

@@ -46,32 +46,16 @@
         <hr/>
     <p>Esta herramienta crea una tabla o una clase de entidad de punto que muestra los valores de las celdas de un r&aacute;ster, o conjunto de r&aacute;steres, para ubicaciones definidas. Las ubicaciones se definen por celdas, r&aacute;ster, entidades de pol&iacute;gono, entidades de polil&iacute;nea o un conjunto de puntos.
     </p>
-    <p>Los valores de p&iacute;xel se extraer&aacute;n de todos los r&aacute;steres de entrada en cada ubicaci&oacute;n. Se crear&aacute; una tabla o una clase de entidad de punto con campos que contienen los valores de p&iacute;xel para cada r&aacute;ster de entrada. En caso de que la tabla de r&aacute;ster de entrada contenga atributos adicionales, estos no se incluir&aacute;n en la tabla de salida.
-    </p>
-    <p>Cualquier combinaci&oacute;n de r&aacute;steres, como por ejemplo de banda &uacute;nica, multibanda, multidimensional o multivariante, se puede especificar como r&aacute;steres de entrada. La estructura de la tabla de salida cambia cuando los r&aacute;steres de entrada son multidimensionales. Cuando se especifica un r&aacute;ster multibanda como uno de los r&aacute;steres de entrada, se utilizan todas las bandas de esa entrada. Para procesar una selecci&oacute;n de bandas a partir de un r&aacute;ster multibanda de entrada, cree primero un dataset r&aacute;ster nuevo formado por esas bandas concretas. Utilice el resultado en la lista de r&aacute;steres de entrada.
-    </p>
-    <p>La ubicaci&oacute;n de entrada puede ser un r&aacute;ster o una entidad de punto:
+    <p>Estas son algunas aplicaciones de ejemplo de esta herramienta:
         <ul>
-            <li>R&aacute;ster: los p&iacute;xeles que contienen valores v&aacute;lidos (que no sean NoData) se utilizan para extraer valores de p&iacute;xel de todos los r&aacute;steres de entrada, y el centro del p&iacute;xel se utiliza para ubicaciones de punto.
+            <li> Extraer atributos para la ubicaci&oacute;n de la torre de telefon&iacute;a m&oacute;vil desde varios r&aacute;steres, como el uso del suelo, el tipo de suelo, la elevaci&oacute;n y la distancia a la carretera.
             </li>
-            <li>Punto: valores que se muestrear&aacute;n en cada ubicaci&oacute;n de punto.
+            <li>Extraer la temperatura del suelo a distintas profundidades para un conjunto de puntos determinado.
             </li>
-            <li>Polil&iacute;nea o un pol&iacute;gono: valores que se muestrear&aacute;n en el centroide de pol&iacute;gono o polil&iacute;nea. Si el r&aacute;ster de entrada es multidimensional, los valores se agregar&aacute;n en funci&oacute;n del tipo de  <b>Estad&iacute;sticas</b>.
+            <li>A partir de 30 a&ntilde;os de datos mensuales de temperatura de la superficie del mar, se resumen en ubicaciones de animales o dentro de zonas de residencia para un momento determinado en el que se observ&oacute; una especie animal.
             </li>
         </ul>
         
-    </p>
-    <p>Los r&aacute;steres de entrada se muestrean en su referencia y resoluci&oacute;n espaciales nativas. Si hubiera varios r&aacute;steres de entrada con diferentes referencias espaciales, las ubicaciones de entrada se proyectan en la referencia espacial de cada r&aacute;ster individual desde la que se extraen los valores. El entorno de an&aacute;lisis se aplica a las ubicaciones de entrada, aunque los r&aacute;steres de entrada no respetar&aacute;n el entorno de an&aacute;lisis.
-    </p>
-    <p>A las ubicaciones que extraen valores de celdas NoData en el r&aacute;ster de entrada se les proporcionar&aacute; un valor &lt;null&gt; en la tabla de salida.
-    </p>
-    <p>Para realizar an&aacute;lisis con entidades multipunto, convi&eacute;rtalas primero a entidades de un solo punto antes de usarlas en esta herramienta.
-    </p>
-    <p>La referencia espacial de las coordenadas x,y de la tabla de muestra de salida es la misma que la de las entidades de puntos o r&aacute;ster de ubicaci&oacute;n de entrada salvo que se especifique en el entorno  <b>Sistema de coordenadas de salida</b>. Si no se conoce la referencia espacial de los datos de ubicaci&oacute;n de entrada, la referencia espacial de las coordenadas x,y tampoco se conoce.
-    </p>
-    <p>La referencia espacial de la clase de entidad de salida es la misma que la de las entidades de puntos o r&aacute;ster de ubicaci&oacute;n de entrada, salvo que se especifique en el entorno  <b>Sistema de coordenadas de salida</b>.
-    </p>
-    <p>El entorno  <b>Factor de procesamiento en paralelo</b> solo se admite cuando la entrada es un r&aacute;ster multidimensional.
     </p>
     <p>Si  <b>Usar la extensi&oacute;n de mapa actual</b> est&aacute; activado, se analizar&aacute;n las variables o bandas de la capa que est&eacute;n visibles en la extensi&oacute;n de mapa actual. Si no est&aacute; activado, se analizar&aacute;n las variables o bandas de la capa completa, incluso si se encuentran fuera de la extensi&oacute;n de mapa actual.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Elegir capas de imágenes para muestreo</h2></div>
         <hr/>
         <div>
-            <p>Una &uacute;nica capa de im&aacute;genes o una lista de capas de im&aacute;genes cuyos valores se muestrear&aacute;n seg&uacute;n los datos de ubicaci&oacute;n de entrada.
+            <p>Una &uacute;nica imagen o una lista de im&aacute;genes cuyos valores se van a muestrear partiendo de los datos de ubicaciones de entrada. 
             </p>
             <p>Para muestrear todas las porciones de una capa de im&aacute;genes multidimensional, debe ser el &uacute;nico r&aacute;ster de entrada.
             </p>
@@ -112,40 +96,42 @@
             <p>Especifique la hora, profundidad u otros datos de adquisici&oacute;n asociados con las entidades o celdas de ubicaci&oacute;n.
             </p>
             <p>Para cada dimensi&oacute;n, existen tres opciones para especificar la informaci&oacute;n de adquisici&oacute;n asociada con celdas o entidades de ubicaci&oacute;n:
-                <ul>
-                    <li> <b>Campo o valor &uacute;nico</b>: cuando se selecciona esta opci&oacute;n, debe especificarse la siguiente informaci&oacute;n:
-                        <ul>
-                            <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Campo o valor &uacute;nico</b>: cuando se selecciona esta opci&oacute;n, debe especificarse la siguiente informaci&oacute;n:
+                    <ul>
+                        <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n de los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Campo o valor &uacute;nico con valores relativos</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para variables:
-                        <ul>
-                            <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n.
-                            </li>
-                            <li> <b>Valor relativo anterior</b>: especifique un n&uacute;mero no negativo utilizado que se restar&aacute; de <b>Campo o valor de dimensi&oacute;n</b> para definir el inicio de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
-                            </li>
-                            <li> <b>Valor relativo posterior</b>: especifique un n&uacute;mero no negativo utilizado para sumarlo a <b>Campo o valor de dimensi&oacute;n</b> para definir el final de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Campos o valores de inicio y fin</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para variables:
-                        <ul>
-                            <li> <b>Campo o valores de inicio</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el inicio de un rango de valores de dimensi&oacute;n.
-                            </li>
-                            <li> <b>Campo o valores de finalizaci&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el final de un rango de valores de dimensi&oacute;n.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Campo o valor &uacute;nico con valores relativos</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para las variables:
+                    <ul>
+                        <li> <b>Campo o valor de dimensi&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n de los datos de ubicaci&oacute;n.
+                        </li>
+                        <li> <b>Valor relativo anterior</b>: especifique un n&uacute;mero no negativo que se utiliza para restarlo de <b>Campo o valor de dimensi&oacute;n</b> a fin de definir el inicio de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
+                        </li>
+                        <li> <b>Valor relativo posterior</b>: especifique un n&uacute;mero no negativo que se utiliza para sumarlo a <b>Campo o valor de dimensi&oacute;n</b> a fin de definir el final de un rango de valores de dimensi&oacute;n. Este valor representa el n&uacute;mero de d&iacute;as si la dimensi&oacute;n es tiempo.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Campos o valores de inicio y fin</b>: si se selecciona esta opci&oacute;n, la informaci&oacute;n siguiente debe especificarse junta para definir el rango en el que se calcular&aacute;n las estad&iacute;sticas para variables:
+                    <ul>
+                        <li> <b>Campo o valores de inicio</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el inicio de un rango de valores de dimensi&oacute;n.
+                        </li>
+                        <li> <b>Campo o valores de finalizaci&oacute;n</b>: seleccione un campo de valores de dimensi&oacute;n desde los datos de ubicaci&oacute;n o introduzca un valor de dimensi&oacute;n espec&iacute;fico para definir el final de un rango de valores de dimensi&oacute;n.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Este par&aacute;metro solo est&aacute; disponible cuando el par&aacute;metro  <b>Elegir capa(s) de im&aacute;genes a muestrear</b> es un r&aacute;ster multidimensional.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>La distancia especificada que rodea las entidades de datos de ubicaci&oacute;n. La distancia de zona de influencia se especifica en las unidades lineales de la referencia espacial de la entidad de ubicaci&oacute;n. Si la entidad utiliza una referencia geogr&aacute;fica, la unidad estar&aacute; en grados.
             </p>
             <p>Se calcular&aacute;n las estad&iacute;sticas dentro de esta &aacute;rea de zona de influencia.
+            </p>
+            <p>Este par&aacute;metro solo est&aacute; disponible cuando  <b>Elegir capa(s) de im&aacute;genes a muestrear</b> es un r&aacute;ster multidimensional.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Este par&aacute;metro solo est&aacute; disponible cuando el par&aacute;metro  <b>Elegir capa(s) de im&aacute;genes a muestrear</b> es un r&aacute;ster multidimensional y los par&aacute;metros <b>Elegir capa de ubicaci&oacute;n</b> son polil&iacute;neas o pol&iacute;gonos o se especifica <b>Especificar valor o campo de distancia de zona de influencia (opcional)</b>.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Valor de percentil</h2></div>
         <hr/>
         <div>
-            <p>El percentil que se va a calcular cuando el par&aacute;metro  <b>Tipo de estad&iacute;sticas</b> est&aacute; establecido en <b>Percentil</b>.
-            </p>
             <p>El valor puede variar del 0 al 100. El valor predeterminado es 90.
+            </p>
+            <p>Este par&aacute;metro solo est&aacute; disponible cuando el par&aacute;metro  <b>Elegir tipo de estad&iacute;sticas</b> est&aacute; establecido en <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>El algoritmo de remuestreo utilizado para muestrear un r&aacute;ster.
             </p>
             <ul>
-                <li> <b>Vecino</b>: utiliza el valor de la celda m&aacute;s cercana para asignar un valor a la celda de salida durante el remuestreo. Esta es la opci&oacute;n predeterminada.
+                <li> <b>M&aacute;s cercano</b>: Vecino m&aacute;s cercano, que utiliza el valor de la celda m&aacute;s cercana para asignar un valor a la celda de salida durante el remuestreo. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Interpolaci&oacute;n bilinear</b>: determina el nuevo valor de una celda bas&aacute;ndose en el promedio de distancia ponderada de los cuatro centros de celdas de entrada m&aacute;s cercanos.
+                <li> <b>Bilineal</b>: Interpolaci&oacute;n bilineal, que determina el nuevo valor de una celda bas&aacute;ndose en el promedio de distancia ponderada de los cuatro centros de celdas de entrada m&aacute;s cercanos.
                 </li>
-                <li> <b>Convoluci&oacute;n c&uacute;bica</b>: determina el nuevo valor de una celda bas&aacute;ndose en el ajuste de una curva suave a trav&eacute;s de los 16 centros de celdas de entrada m&aacute;s cercanos.
+                <li> <b>C&uacute;bica</b>: Convoluci&oacute;n c&uacute;bica, que determina el nuevo valor de una celda bas&aacute;ndose en el ajuste de una curva suave a trav&eacute;s de los 16 centros de celdas de entrada m&aacute;s cercanos.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Especificar diseño de salida</h2></div>
         <hr/>
         <div>
-            <p>Especifica si los valores de muestra aparecen en filas o columnas de la tabla de salida. Esta opci&oacute;n solo est&aacute; disponible cuando el r&aacute;ster multidimensional de entrada contiene una variable y una dimensi&oacute;n y cada porci&oacute;n es un r&aacute;ster de una sola banda.
+            <p>Especifica si los valores de muestra aparecen en filas o columnas de la tabla de salida.
             </p>
             <ul>
                 <li> <b>Valores muestreados aparecen en fila</b>: los valores muestreados aparecen en filas separadas en la tabla de salida. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Aparecen valores muestreados en columna</b>: los valores muestreados aparecen en columnas separadas en la tabla de salida. Esta opci&oacute;n solo es v&aacute;lida cuando el r&aacute;ster multidimensional de entrada contiene una variable y una dimensi&oacute;n y cada porci&oacute;n es un r&aacute;ster de una sola banda.
+                <li> <b>Aparecen valores muestreados en columna</b>: los valores muestreados aparecen en columnas separadas en la tabla de salida.
                 </li>
             </ul>
             
+            <p>Este par&aacute;metro solo est&aacute; disponible cuando el par&aacute;metro  <b>Elegir capa(s) de im&aacute;genes a muestrear</b> es un r&aacute;ster multidimensional, contiene una variable y una dimensi&oacute;n y cada divisi&oacute;n es un r&aacute;ster de banda &uacute;nica.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabla</b>: genere una tabla con valores muestreados. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Entidades</b>: genere una clase de entidad de punto con valores muestreados en su tabla. Si las entidades de ubicaci&oacute;n de entrada son polil&iacute;neas o pol&iacute;gonos, cada punto de la salida es el centroide de cada geometr&iacute;a de las entidades de ubicaci&oacute;n de entrada.
+                <li> <b>Entidades</b>: genere una clase de entidad de punto con valores muestreados en su tabla. Si los par&aacute;metros de <b>Elegir capa de ubicaci&oacute;n</b> son polil&iacute;neas o pol&iacute;gonos, cada punto de la salida es el centroide de cada geometr&iacute;a de las entidades de ubicaci&oacute;n de entrada. 
                 </li>
             </ul>
             

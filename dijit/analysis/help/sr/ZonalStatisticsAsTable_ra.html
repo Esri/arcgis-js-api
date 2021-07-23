@@ -40,21 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Zonska statistika kao tabela</h2><p/>
-        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Dijagram za &acute;Zonska statistika kao tabela&acute;"></h2>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Dijagram za zonsku statistiku kao tabelu"></h2>
         <hr/>
     <p>Ovaj alat sumira vrednosti rastera unutar zona drugog skupa podataka i &scaron;alje izve&scaron;taj o rezultatima tabeli.
     </p>
-    <p>Neki primeri primene obuhvataju sledeće:
-    </p>
-    <p>
+    <p>Neki primeri primene ove alatke uključuju sledeće:
         <ul>
-            <li>S obzirom na sloj državnih granica i raspodelu srednje količine padavina u kontinentalnom delu SAD, izračunajte raspodelu ekstremnih ki&scaron;nih događaja u državi koristeći listu percentilnih vrednosti.
+            <li>S obzirom na dati sloj granica vododelnice i sloj granica upotrebe zemlji&scaron;ta po tipu upotrebe zemlji&scaron;ta, izračunajte ukupnu povr&scaron;inu tipa upotrebe zemlji&scaron;ta za svaku vododelnicu.
                 
 
             </li>
-            <li>S obzirom na sloj preklapajućih ekolo&scaron;kih zona i rasterski sloj vlage u zemlji&scaron;tu, izračunajte sve podržane statistike u svakoj zoni kako biste povezali zone sa prisutno&scaron;ću vlage u zemlji&scaron;tu.
+            <li>S obzirom na dati sloj sa parcelama u okrugu i sloj granica grada, sumirajte prosečnu vrednost praznih parcela unutar granica svakog grada.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Odaberite raster ili geoobjekte zone</h2></div>
         <hr/>
         <div>
-            <p>Sloj koji defini&scaron;e granice zona ili oblasti koje će biti sumirane.
+            <p>Ulaz koji defini&scaron;e granice zona ili oblasti koje će biti sumirane.
             </p>
-            <p>Sloj može da bude celobrojni raster ili podatak geoobjekta. Za rastere, zone su definisane prema svim lokacijama u ulazu koje imaju istu vrednost ćelije. Za geoobjekte, zone mogu da se preklapaju. Oblasti ne moraju da budu susedne.
+            <p>Ulaz može da bude celobrojni raster ili podatak geoobjekta. Za rastere, zone su definisane prema svim lokacijama u ulazu koje imaju istu vrednost ćelije. Za geoobjekte, zone mogu da se preklapaju. Oblasti ne moraju da budu susedne.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Polje zone</h2></div>
         <hr/>
         <div>
-            <p>To je atribut sloja koji će se koristiti za definisanje granica zona (oblasti).
+            <p>Polje koje sadrži vrednosti koje određuju svaku zonu.
             </p>
-            <p>Na primer, pretpostavimo da prvi ulazni sloj defini&scaron;e granice jedinica upravljanja, sa atributima koji defini&scaron;u region, okrug i ID parcele svake jedinice. Takođe imate i rasterski sloj koji defini&scaron;e indeks biodiverziteta za svaku lokaciju. Sa poljem koje izaberete, možete da odlučite da izračunate prosečni biodiverzitet na lokalnim, okružnim ili regionalnim nivoima.
+            <p>Može da bude ceo broj ili polje niza skupa podataka zone.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Odaberite raster vrednosti</h2></div>
         <hr/>
         <div>
-            <p>Ćelije rastera u ovom sloju će biti sumirane po oblastima (zonama) u koje upadnu.
+            <p>Raster koji sadrži vrednosti za koje se proračunava statistika.
+            </p>
+            <p>To može biti ceo broj ili pokretni zarez. Međutim, kada je tip sa pokretnim zarezom, opcije za izračunavanje većine, manjine i raznovrsnosti neće biti dostupne.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Zanemari tip NoData (bez podataka) u izračunavanjima (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Određuje da li se vrednosti NoData zanemaruju u analizi.
-                <ul>
-                    <li>Označeno&mdash;Analiza će sadržati ćelije koje imaju vrednost u ulaznom rasteru vrednosti unutar bilo koje određene zone kako bi se odredila izlazna vrednost za tu zonu. NoData ćelije u rasteru vrednosti će biti zanemarene u statističkom proračunu. Ovo je podrazumevano.
-                    </li>
-                    <li>Neoznačeno&mdash;Analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za ćelije rastera vrednosti unutar određene zone.
-                    </li>
-                </ul>
-                
+            <p> Određuje da li se vrednosti NoData zanemaruju u analizi.
             </p>
+            <ul>
+                <li>Označeno&mdash;Analiza će sadržati ćelije koje imaju vrednost u ulaznom rasteru vrednosti unutar bilo koje određene zone kako bi se odredila izlazna vrednost za tu zonu. NoData ćelije u rasteru vrednosti će biti zanemarene u statističkom proračunu. Ovo je podrazumevano.
+                </li>
+                <li>Neoznačeno&mdash;Analiza će rezultirati sa NoData ako postoje bilo koje NoData vrednosti za ćelije rastera vrednosti unutar određene zone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Navodi tip statistike koja će biti izračunata.
             </p>
-            <p>Ulazni podatak može da bude jedno od sledećeg:  <b>Sve</b>, <b>Srednja vrednost</b>, <b>Većina</b>, <b>Maksimum</b>, <b>Medijana</b>, <b>Minimum</b>, <b>Manjina</b>, <b>Procenat</b>, <b>Opseg</b>, <b>Standardna devijacija</b>, <b>Zbir</b>, <b>Raznovrsnost</b>, <b>Minimum i maksimum</b>, <b>Srednja devijacija i standardna devijacija</b> ili <b>Minimum, maksimum i srednja vrednost</b>. Podrazumevano je <b>All</b>.
-            </p>
-            <p>Ako je ulazni raster vrednosti celobrojan, podrazumevano, sva statistika će biti izračunata. Ako je raster vrednosti tip sa pokretnim zarezom, podrazumevano, sva statistika, osim  <b>Medijana</b> i <b>Procenat</b> će biti izračunata. 
-            </p>
-            <p>Ako je ulazni raster vrednosti tip sa pokretnim zarezom, zonski proračuni za  <b>Većina</b>, <b>Manjina</b> i <b>Raznovrsnost</b> ne mogu biti izračunati.
+            <p> Unos može da bude jedno od sledećeg: <b>Sve</b>, <b>Srednja vrednost</b>, <b>Većina</b>, <b>Maksimum</b>, <b>Medijana</b>, <b>Minimum</b>, <b>Manjina</b>, <b>Percentil</b>, <b>Opseg</b>, <b>Standardna devijacija</b>, <b>Zbir</b>, <b>Raznovrsnost</b>, <b>Minimum i maksimum</b>, <b>Srednja devijacija i standardna devijacija</b> ili <b>Minimum, maksimum i srednja vrednost</b>. Podrazumevano je <b>Sve</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Percentilne vrednosti (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Procenti koje treba izračunati. Može da bude navedena jedna vrednost ili lista vrednosti. Podrazumevano je 90 &scaron;to označava 90-i procenat.
+            <p>Percentili za kalkulaciju. Podrazumevano je 90 &scaron;to označava 90-i procenat.
             </p>
-            <p>Opseg se kreće od 0 do 100. Rezultat navođenja procenta 0 je su&scaron;tinski ekvivalentan minimalnoj statistici, a procenat 100 je ekvivalent maksimumu. Vrednost od 50 proizve&scaron;će u su&scaron;tini iste rezultate kao srednja statistika.
+            <p>Vrednost se može kretati od 0 do 100. Rezultat navođenja 0-og percentila je su&scaron;tinski ekvivalentan minimalnoj statistici, dok je 100-i percentil ekvivalentan maksimumu. Vrednost od 50 proizve&scaron;će u su&scaron;tini iste rezultate kao srednja statistika.
             </p>
-            <p>Ova opcija je samo podržana ako je parametar  <b>Tip statistike</b> pode&scaron;en na <b>Procenat</b> ili <b>Sve</b>.
+            <p> Ovaj parametar je samo podržan ako je parametar <b>Tip statistike</b> pode&scaron;en na <b>Percentil</b> ili <b>Sve</b>.
             </p>
         </div>
     </div>
@@ -138,23 +134,29 @@
         <div><h2>Tip percentilne interpolacije (opciono)</h2></div>
         <hr/>
         <div>
-            
             <p>Određuje metod za percentilnu interpolaciju koja će se koristiti kada je paran broj vrednosti iz ulaznog rastera koji se proračunava.
-            </p> 
-            <p>Ako je vrednost ulaznog rastera tipa integralnog piksela, koristi se metoda  <b>Najbliži</b>. Ako je raster ulazne vrednosti tip piksela plutajućeg zareza, koristi se metoda <b>Linearno</b>. Ovo je podrazumevano.
             </p>
-            <p>Za metod  <b>Najbliže</b>, koristi se najbliža dostupna vrednost za željeni percentil. Za metod <b>Linearno</b>, koristi se izmereni prosek dve okružujuće vrednosti iz željenog percentila.
-            </p> 
+            <ul>
+                <li>  <b>Automatsko otkrivanje</b>&mdash;Ako je vrednost ulaznog rastera tipa piksela celog broja, koristi se metoda <b>Najbliži</b>. Ako je vrednost ulaznog rastera tipa piksela plutajućeg zareza, koristi se metoda <b>Linearno</b>. Ovo je podrazumevano.
+                </li>
+                <li> <b>Najbliži</b>&mdash;Najbliža dostupna vrednost za željeni percentil se koristi.
+                </li>
+                <li> <b>Linearno</b>&mdash;Izmereni prosek dve okružujuće vrednosti iz željenog percentila se koristi.
+                </li>
+            </ul>
+            
+            <p> Ovaj parametar je samo podržan ako je parametar <b>Tip statistike</b> pode&scaron;en na <b>Percentil</b> ili <b>Sve</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Obradi kao višedimenzionalno (opciono)</h2></div>
         <hr/>
         <div>
-            <p>Navodi kako će unosni rasteri biti obrađeni ako su vi&scaron;edimenzionalni.
+            <p>Navodi kako će usluge ulaza vi&scaron;edimenzionalnih snimaka biti obrađeni ako su vi&scaron;edimenzionalni.
             </p>
             <ul>
-                <li>Označeno&mdash;Statistika će biti izračunata iz trenutnog isečka za ulazni vi&scaron;edimenzionalni set podataka. Ovo je podrazumevano.
+                <li>Označeno&mdash;Statistika će biti izračunata iz trenutnog isečka ulaznog vi&scaron;edimenzionalnog skupa podataka. Ovo je podrazumevano.
                     
 
                 </li>
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
+            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
             </p>
         </div>
     </div>

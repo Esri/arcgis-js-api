@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
-define(["dojo/_base/lang","../../sections/SectionTypes","esri/dijit/geoenrichment/utils/FieldUtil"],(function(e,t,a){var i={buildSummaryFooterSectionJson:function(i){var n=i.dataSectionJson,d=e.clone(n.stack[0]);d.data.data.length=1;var o=d.data.data[0].fieldInfos;return d.data.columns.forEach((function(e){var t=o[e.field];t&&!a.isNumericField(t)&&(delete o[e.field],delete d.data.data[0][e.field])})),{type:t.INFOGRAPHIC_SUMMARY_FOOTER,stack:[d]}}};return i}));
+define(["dojo/_base/lang","../../sections/SectionTypes","esri/dijit/geoenrichment/utils/FieldUtil"],(function(e,i,n){var o={buildSummaryFooterSectionJson:function(o){var t=o.dataSectionJson,r=e.clone(t.stack[0]);r.rows.length=1;var s=r.rows[0].fieldInfos;return r.columns.forEach((function(e){var i=s[e.field];i&&!n.isNumericField(i)&&(delete s[e.field],delete r.rows[0][e.field])})),{type:i.INFOGRAPHIC_SUMMARY_FOOTER,stack:[r]}}};return o}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/string","dojo/text!esri/dijit/geoenrichment/ReportPlayer/themes/images/longArrows/upArrowLong.svg.txt","dojo/text!esri/dijit/geoenrichment/ReportPlayer/themes/images/longArrows/downArrowLong.svg.txt"],(function(t,e,i){var n={createBenchmarkedValue:function(n){var o="<div class='dijitInline' style='font-size:0px;"+(n.nowrap?"white-space:nowrap;":"")+"'>";n.text&&(o+="<div class='dijitInline' style='font-size:"+n.fontSize+"px;'>"+n.text+"</div>");var r=Math.min(n.noTextLimit?100:16,n.fontSize,Math.max(n.noTextLimit?6:10,Math.round(.7*n.fontSize))),s=Math.min(n.noTextLimit?100:15,n.fontSize,Math.max(n.noTextLimit?6:10,Math.round(.6*n.fontSize)));return o+="<div class='dijitInline' style='margin-left:"+(n.text?2:0)+"px;font-size:0px;'>"+t.substitute(n.isGreater?e:i,{fillColor:n.color||"",size:r})+"</div>",o+="<div class='dijitInline' style='margin-left:2px;font-size:"+s+"px;color:"+n.color+"'>"+n.formattedValue+"</div>"}};return n}));

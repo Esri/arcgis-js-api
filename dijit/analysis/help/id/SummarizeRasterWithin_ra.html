@@ -46,9 +46,7 @@
         <hr/>
     <p>Alat ini merangkum nilai raster di dalam zona set data lain.
     </p>
-    <p>Beberapa aplikasi contoh termasuk hal berikut:
-    </p>
-    <p>
+    <p>Beberapa contoh aplikasi alat ini meliputi hal berikut:
         <ul>
             <li>Dengan layer batas Daerah Aliran Sungai dan batas penggunaan lahan berdasarkan jenis penggunaannya, dapat dihitung luas total penggunaan lahan untuk setiap Daerah Aliran Sungai.
                 
@@ -69,9 +67,9 @@
         <div><h2>Pilih area layer untuk meringkas layer raster di dalam batas yang ditentukan</h2></div>
         <hr/>
         <div>
-            <p>Layer yang menentukan perbatasan area atau zona yang akan diringkas.
+            <p>Input yang menentukan perbatasan zona, atau area, yang nantinya akan diringkas.
             </p>
-            <p>Layer dapat berupa raster atau data fitur. Untuk raster, zona ditentukan oleh semua lokasi di input yang memiliki nilai sel yang sama. Area tersebut tidak perlu berdampingan.
+            <p>Input dapat berupa raster bilangan bulat atau data fitur. Untuk raster, zona ditentukan oleh semua lokasi di input yang memiliki nilai sel yang sama. Untuk fitur, zona dapat tumpang-tindih. Area tersebut tidak perlu berdampingan.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Pilih kolom untuk menentukan batas</h2></div>
         <hr/>
         <div>
-            <p>Ini adalah artibut layer yang akan digunakan untuk menentukan perbatasan area.
+            <p>Kolom yang berisi nilai yang menentukan setiap zona.
             </p>
-            <p>Contoh, misalnya layer input pertama menentukan batas unit manajemen, dengan atribut yang menentukan wilayah, distrik, dan ID persil setiap unit. Anda pun memiliki layer raster yang menentukan indeks hayati untuk setiap lokasi. Dengan kolom yang Anda pilih, Anda dapat memutuskan untuk menghitung rata-rata hayati di tingkat lokal, distrik, atau wilayah.
+            <p>Dapat berupa bilangan bulat atau kolom string set data zona.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Pilih layer raster untuk diringkas</h2></div>
         <hr/>
         <div>
-            <p>Sel raster di layer ini akan diringkas berdasarkan area (zona) tempat posisi sel tersebut.
+            <p>Raster yang berisi nilai untuk menghitung statistik.
+            </p>
+            <p>Dapat berupa bilangan bulat atau titik ambang. Akan tetapi, jika raster adalah jenis titik ambang, opsi untuk menghitung mayoritas, minoritas, dan keragaman tidak akan tersedia.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Pilih statistik yang akan dihitung</h2></div>
         <hr/>
         <div>
-            <p>Setelah Anda memilih layer untuk diringkas, Anda dapat memilih untuk menghitung statistik dari setiap atribut numerik dari titik, garis, atau area di dalam layer area input.
+            <p>Menentukan jenis statistik yang akan dihitung.
             </p>
-            <p>Tipe statistik yang tersedia ketika kolom yang dipilih adalah bilangan bulat adalah Rata-rata, Mayoritas, Maksimal, Median, Minoritas, Persentil, Rentang, Standar deviasi, Jumlah, dan Keragaman.
-            </p>
-            <p>Jika kolom adalah bilangan titik mengambang, opsinya adalah Rata-rata, Maksimal, Minimal, Rentang, Standar deviasi, dan Jumlah.
+            <p> Input dapat berupa salah satu dari berikut: <b>Rata-rata</b>, <b>Mayoritas</b>, <b>Maksimal</b>, <b>Median</b>, <b>Minimal</b>, <b>Minoritas</b>, <b>Persentil</b>, <b>Rentang</b>, <b>Simpangan baku</b>, <b>Jumlah</b>, atau <b>Keragaman</b>. Defaultnya adalah <b>Rata-rata</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Persentil yang dihitung. Defaultnya adalah 90, yang menunjukkan persentil ke-90.
             </p>
-            <p>Nilai dapat berkisar antara 0 hingga 100. Persentil ke-0 pada dasarnya setara dengan statistik minimal, dan persentil ke-100 setara dengan statistik maksimal. Nilai 50 pada dasarnya akan menghasilkan hasil yang sama dengan statistik median.
+            <p>Nilai dapat berkisar antara 0 hingga 100. Hasil dari menentukan persentil ke-0 pada intinya setara dengan hasil statistik minimal, dan persentil ke-100 setara dengan hasil statistik maksimal. Nilai 50 pada dasarnya akan menghasilkan hasil yang sama dengan statistik median.
             </p>
-            <p>Opsi ini hanya didukung jika parameter  <b>Pilih statistik yang akan dihitung</b> diatur ke <b>Persentil</b>.
+            <p> Parameter ini hanya akan didukung jika parameter <b>Pilih statistik untuk menghitung</b> diatur ke <b>Persentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Abaikan nilai yang hilang dalam penghitungan</h2></div>
         <hr/>
         <div>
-            <p>Jika Anda memilih untuk mengabaikan nilai yang hilang, hanya sel yang memiliki nilai di dalam layer yang akan diringkas yang akan digunakan untuk menentukan nilai output untuk area tersebut. Jika tidak, jika ada nilai yang hilang di mana pun di dalam area, maka akan diasumsikan bahwa informasi tidak memadai untuk melakukan perhitungan statistik untuk semua sel di zona itu, dan area itu akan menerima nilai null (NoData) di output.
+            <p> Menentukan apakah nilai yang hilang diabaikan dalam analisis.
             </p>
+            <ul>
+                <li>Dicentang&mdash;Analisis akan menyertakan sel yang memiliki nilai di raster nilai input dalam zona tertentu untuk menentukan nilai output zona tersebut. Sel NoData di raster nilai akan diabaikan di dalam penghitungan statistik. Ini adalah default.
+                </li>
+                <li>Tidak dicentang&mdash;Analisis akan menghasilkan NoData, jika ada nilai NoData untuk sel raster nilai di dalam zona tertentu.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Proses sebagai multidimensional</h2></div>
         <hr/>
         <div>
-            <p>Menentukan cara pemrosesan raster input jika raster input tersebut bersifat multidimensional. Jika Anda memilih untuk memproses sebagai multidimensional, statistik akan dihitung dari semua dimensi set data multidimensional input. Jika tidak, maka statistik akan dihitung dari irisan set data multidimensional input saat ini, ini defaultnya.
+            <p>Menentukan cara pemrosesan layanan gambar multidimensional input jika layanan tersebut bersifat multidimensional.
             </p>
+            <ul>
+                <li>Dicentang&mdash;Statistik akan dihitung dari irisan set data multidimensional input saat ini. Ini adalah default.
+                    
+
+                </li>
+                <li>Tidak Dicentang&mdash;Statistik akan dihitung untuk semua dimensi set data multidimensional input.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
-            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>. Jika Anda memiliki hak istimewa untuk membuat layer citra dinamis dan tile, Anda dapat menentukan jenis layer yang akan dihasilkan dalam output menggunakan kotak drop-down Simpan hasil sebagai. </p>
         </div>
     </div>
 </div>

@@ -46,11 +46,7 @@
         <hr/>
     <p>Alat ini membuat peta kepadatan dari fitur titik atau garis dengan menyebarkan jumlah beberapa fenomena yang diketahui (disajikan sebagai atribut titik atau garis) pada peta. Hasilnya adalah layer area yang diklasifikasikan dari yang paling tidak padat hingga paling padat.
     </p>
-    <p>Untuk input titik, setiap titik harus mewakili lokasi dari beberapa peristiwa atau insiden, dan layer hasil mewakili jumlah insiden per unit area. Nilai kepadatan yang lebih besar di lokasi baru berarti ada lebih banyak titik di dekat lokasi tersebut. Pada banyak kasus, layer hasil dapat diinterpretasikan sebagai risiko yang muncul untuk peristiwa di masa mendatang. Misalnya, jika titik input mewakili lokasi sambaran petir, layer hasil dapat diinterpretasikan sebagai risiko yang muncul untuk sambaran petir di masa mendatang.
-    </p>
-    <p>Untuk input garis, permukaan kepadatan garis mewakili jumlah total garis yang berada di dekat setiap lokasi. Satuan nilai kepadatan yang dihitung adalah panjang area garis-per-satuan luas. Misalnya, jika garis menggambarkan sungai, layer hasil tersebut akan menggambarkan total panjang sungai yang berada di dalam radius pencarian. Hasil ini dapat digunakan untuk mengenali area yang ramah terhadap hewan pemakan rumput.
-    </p>
-    <p>Contoh lain penggunaan alat ini mencakup hal berikut:
+    <p>Beberapa contoh aplikasi alat ini meliputi hal berikut:
         <ul>
             <li>Membuat peta kepadatan kejahatan untuk membantu kepolisian mengalokasikan sumber daya secara tepat ke area dengan tingkat kejahatan tinggi.
                 
@@ -77,7 +73,7 @@
         <div><h2>Pilih titik input atau layer garis untuk menghitung kepadatan</h2></div>
         <hr/>
         <div>
-            <p>Titik input atau layer garis yang akan digunakan untuk menghitung layer kepadatan.
+            <p>Titik input atau garis yang akan digunakan untuk menghitung kepadatan.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Sediakan kolom yang menentukan jumlah insiden di setiap lokasi. Misalnya, jika Anda memiliki titik yang menggambarkan kota, Anda dapat menggunakan kolom yang berisi populasi kota sebagai kolom hitung, dan layer kepadatan populasi yang dihasilkan akan menunjukkan kepadatan populasi lebih besar dekat kota-kota dengan populasi yang lebih besar.
             </p>
-            <p>Jika pilihan default  <b>Tidak Ada</b> digunakan, setiap lokasi akan diasumsikan mewakili hitungan tunggal.
+            <p>Jika pilihan default  <b>Tidak Ada</b> digunakan, setiap lokasi akan diasumsikan mewakili jumlah tunggal.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>Ukuran dan unit sel untuk raster output.
             </p>
+            <p>Unit bisa jadi kilometer, meter, mil, atau kaki.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
-            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>.
-            </p>
+            <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>. Jika Anda memiliki hak istimewa untuk membuat layer citra dinamis dan tile, Anda dapat menentukan jenis layer yang akan dihasilkan dalam output menggunakan kotak drop-down Simpan hasil sebagai. </p>
         </div>
     </div>
 </div>

@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>W&auml;hlen Sie den Multiband-Raster-Layer aus. Stellen Sie sicher, dass das Eingabe-Raster &uuml;ber die entsprechenden B&auml;nder verf&uuml;gt.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Methode zum Überwachen der Vegetation auswählen</h2></div>
         <hr/>
         <div>
-            <p>W&auml;hlen Sie die Methode zum Erstellen des Vegetationsindex-Layers aus. Mit den unterschiedlichen Vegetationsindizes k&ouml;nnen bestimmte Features hervorgehoben oder verschiedene Arten von Rauschen reduziert werden.
+            <p>W&auml;hlen Sie die Methode zum Berechnen des Vegetationsindex-Layers aus. Mit den unterschiedlichen Vegetationsindizes k&ouml;nnen bestimmte Features hervorgehoben oder verschiedene Arten von Rauschen reduziert werden.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Bei der Sultan-Formel wird ein bestimmter Algorithmus auf ein Sechsband-8-Bit-Bi
 Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitseinfl&uuml;sse zu minimieren, indem angenommen wird, dass die Bodenlinie eine beliebige Neigung und einen beliebigen Schnittpunkt hat.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+Der VARI ist ein Vegetationsindex, mit dem der Vegetationsanteil ausschlie&szlig;lich anhand von Informationen des sichtbaren Spektrums gesch&auml;tzt wird. F&uuml;r diese Methode sind B&auml;nder im roten, gr&uuml;nen und blauen Bereich des Spektrums erforderlich.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Index des NIR- und des roten Bands angeben</h2></div>
+        <div><h2>Indizes für das NIR- und rote Band angeben</h2></div>
         <hr/>
         <div>
-            <p>Geben Sie die Bandindizes f&uuml;r das NIR- und das rote Band ein.
+            <p>Geben Sie die Bandindizes f&uuml;r das NIR- und das rote Band an.
             </p>
-            <p>Jeder Satellitensensor und jede Luftbildkamera erfasst Informationen, die in Bandindizes unterteilt sind. Jeder Bandindex enth&auml;lt die Informationen f&uuml;r einen bestimmten Teil des elektromagnetischen Spektrums. F&uuml;r diese Methode zur &Uuml;berwachung der Vegetation ist es erforderlich, den Bandindex anzugeben, der die NIR- und die roten Wellenl&auml;ngen erfasst hat.
+            <p>Multiband-Satelliten- und Luftbildsensoren erfassen Informationen, die in Wellenl&auml;ngenb&auml;nder unterteilt werden, welche wiederum durch Bandindizes identifiziert werden. F&uuml;r diese Methode der Vegetations&uuml;berwachung m&uuml;ssen Sie die Bandindizes f&uuml;r das Nahinfrarot-Wellenl&auml;ngenband (NIR) und das rote Wellenl&auml;ngenband angeben.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Indizes für das rote, grüne und blaue Band angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Geben Sie die Bandindizes f&uuml;r das rote, gr&uuml;ne und blaue Band an.
+            </p>
+            <p>Multiband-Satelliten- und Luftbildsensoren erfassen Informationen, die in Wellenl&auml;ngenb&auml;nder unterteilt werden, welche wiederum durch Bandindizes identifiziert werden. F&uuml;r den Visible Atmospherically Resistant Index m&uuml;ssen Sie die Bandindizes f&uuml;r das rote, gr&uuml;ne und blaue Wellenl&auml;ngenband angeben.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Indizes für das blaue, rote, NIR-, SWIR-1- und Wärmeinfrarot-Band angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Geben Sie die Bandindizes f&uuml;r das blaue Band, das rote Band, das Nahinfrarot-Band (NIR), das Kurzwelleninfrarot-Band (SWIR) und das W&auml;rmeinfrarot-Band an.
+            </p>
+            <p>Multiband-Satelliten- und Luftbildsensoren erfassen Informationen, die in Wellenl&auml;ngenb&auml;nder unterteilt werden, welche wiederum durch Bandindizes identifiziert werden. F&uuml;r den Index nach der Sultan-Formel m&uuml;ssen Sie die Bandindizes f&uuml;r das blaue Band, das rote Band, das Nahinfrarot-Band (NIR), das Kurzwelleninfrarot-Band (SWIR) und das W&auml;rmeinfrarot-Band angeben.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Indizes für das blaue, grüne, rote, NIR-, SWIR-1- und SWIR-2-Band angeben</h2></div>
+        <hr/>
+        <div>
+            <p>Geben Sie die Bandindizes f&uuml;r das blaue, gr&uuml;ne, rote, NIR-, SWIR-1- und SWIR-2-Band an.
+            </p>
+            <p>Multiband-Satelliten- und Luftbildsensoren erfassen Informationen, die in Wellenl&auml;ngenb&auml;nder unterteilt werden, welche wiederum durch Bandindizes identifiziert werden. F&uuml;r den Green Vegetation Index m&uuml;ssen Sie die Bandindizes f&uuml;r das blaue Band, das gr&uuml;ne Band, das rote Band, das Nahinfrarot-Band (NIR), das Kurzwelleninfrarot-1-Band (SWIR-1) und das Kurzwelleninfrarot-2-Band (SWIR-2) angeben.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
         <div><h2>Grüne vegetative Bodenbedeckung</h2></div>
         <hr/>
         <div>
-            <p>Gibt den Anteil der gr&uuml;nen Vegetations-Bodendeckung an, der f&uuml;r die SAVI-Methode erforderlich ist.
+            <p>Legt den Anteil an gr&uuml;ner vegetativer Bodenbedeckung fest, der f&uuml;r den Soil-Adjusted Vegetation Index erforderlich ist.
             </p>
             <p>Zul&auml;ssige Werte:
                 <ul>
@@ -172,8 +206,7 @@ Der Transformed-SAVI ist ein Vegetationsindex, der versucht, Bodenhelligkeitsein
             
             <p>Der Name des Layers, der in  <b>Eigene Inhalte</b> erstellt und der Karte hinzugef&uuml;gt wird. Der Standardname basiert auf dem Werkzeugnamen und dem Namen des Eingabe-Layers. Wenn der Layer bereits vorhanden ist, werden Sie aufgefordert, einen anderen Namen einzugeben.
             </p>
-            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird.
-            </p>
+            <p>Sie k&ouml;nnen den Namen eines Ordners in  <b>Eigene Inhalte</b> angeben, in dem das Ergebnis &uuml;ber das Dropdown-Feld <b>Ergebnis speichern in</b> gespeichert wird. Wenn Sie über Berechtigungen zum Erstellen gekachelter und dynamischer Bilddaten-Layer verfügen, können Sie angeben, welcher Layer-Typ in der Ausgabe generiert werden soll, indem Sie das Dropdown-Feld "Ergebnis speichern als" verwenden. </p>
         </div>
     </div>
 </div>

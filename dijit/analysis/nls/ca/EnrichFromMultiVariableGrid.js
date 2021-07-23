@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Trieu les entitats de punts que voleu enriquir",chooseMVgridLyrLabel:"Trieu la quadrícula de diverses variables des de la qual voleu realitzar l'enriquiment",chooseVariables:"Trieu les variables que voleu afegir",outputLayerName:"${inputFeatures} s'han enriquit de ${gridLayer}",itemDescription:"Capa d'entitats que ha generat l'execució de la solució Enriqueix des de la quadrícula de diverses variables per a ${inputFeatures}.",itemTags:"Resultat de l'anàlisi, Enriqueix des de la quadrícula de diverses variables, ${inputFeatures}, ${gridLayer}",itemSnippet:"Capa d'entitats que ha generat Enriqueix des de la quadrícula de diverses variables."});

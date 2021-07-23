@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../kernel","../lang","../symbols/jsonUtils","./FeatureTemplate","./support/domainUtils"],(function(s,e,t,o,n,a,r,i,l){var m=s(null,{declaredClass:"esri.layers.FeatureType",constructor:function(s){if(s&&e.isObject(s)){this.id=s.id,this.name=s.name;var t=s.symbol;t&&(this.symbol=r.fromJson(t));var o,n=s.domains,a=this.domains={};for(o in n)n.hasOwnProperty(o)&&(a[o]=l.fromJson(n[o]));var m=s.templates;if(m){var d,h=this.templates=[];for(d=0;d<m.length;d++)h.push(new i(m[d]))}}},toJson:function(){var s,e={id:this.id,name:this.name,symbol:this.symbol&&this.symbol.toJson()},o=this.domains,n=this.templates,r=a.fixJson;if(o){var i=e.domains={};for(s in o)o.hasOwnProperty(s)&&(i[s]=o[s]&&o[s].toJson());r(i)}return n&&(e.templates=t.map(n,(function(s){return s.toJson()}))),r(e)}});return o("extend-esri")&&e.setObject("layers.FeatureType",m,n),m}));

@@ -49,18 +49,18 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputLayer">
-        <div><h2>Seleccione los datos de entrada</h2></div>
+        <div><h2>Seleccionar los datos de entrada</h2></div>
         <hr/>
         <div>
             <p>Elija la capa r&aacute;ster multibanda. Aseg&uacute;rese de que la capa r&aacute;ster tenga disponibles las bandas apropiadas.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
-        <div><h2>Elija el método para supervisar la vegetación</h2></div>
+        <div><h2>Elegir el método para supervisar la vegetación</h2></div>
         <hr/>
         <div>
-            <p>Elija el m&eacute;todo para crear la capa de &iacute;ndice de vegetaci&oacute;n. Los diferentes &iacute;ndices de vegetaci&oacute;n pueden ayudar a resaltar determinadas entidades o a reducir el ruido.
+            <p>Elija el m&eacute;todo a utilizar para calcular la capa de &iacute;ndice de vegetaci&oacute;n. Los diferentes &iacute;ndices de vegetaci&oacute;n pueden ayudar a resaltar determinadas entidades o a reducir el ruido.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ El proceso F&oacute;rmula de Sultan utiliza una imagen de 8 bits de seis bandas 
 El SAVI transformado es un &iacute;ndice de vegetaci&oacute;n que intenta minimizar las influencias de brillo del suelo al asumir que la l&iacute;nea del suelo tiene una intercepci&oacute;n y pendiente arbitraria.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI es un &iacute;ndice de vegetaci&oacute;n que estima la presencia de vegetaci&oacute;n &uacute;nicamente con informaci&oacute;n del espectro visible. Este m&eacute;todo requiere bandas en las partes roja, verde y azul del espectro.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Especificar los índices de la banda NIR y la banda roja</h2></div>
+        <div><h2>Especificar los índices para la banda NIR y la banda roja</h2></div>
         <hr/>
         <div>
             <p>Especifique los &iacute;ndices de banda para las bandas NIR y roja.
             </p>
-            <p>Cada sensor de sat&eacute;lite y c&aacute;mara a&eacute;rea capturan informaci&oacute;n que se desglosa en &iacute;ndices de banda. Cada &iacute;ndice de banda contiene la informaci&oacute;n para una parte espec&iacute;fica del espectro electromagn&eacute;tico. Para este m&eacute;todo de supervisi&oacute;n de la vegetaci&oacute;n, es necesario que especifique el &iacute;ndice de banda que captur&oacute; las longitudes de onda de NIR y roja.
+            <p>Los sensores de sat&eacute;lite o a&eacute;reos multibanda captan informaci&oacute;n que se desglosa en bandas de longitud de onda, que se identifican con &iacute;ndices de banda. Este m&eacute;todo de vigilancia de la vegetaci&oacute;n requiere que se especifiquen los &iacute;ndices de banda para las bandas de longitud de onda infrarroja cercana (NIR) y roja.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Especificar índices para las bandas roja, verde y azul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique los &iacute;ndices de banda para las bandas roja, verde y azul
+            </p>
+            <p>Los sensores de sat&eacute;lite o a&eacute;reos multibanda captan informaci&oacute;n que se desglosa en bandas de longitud de onda, que se identifican con &iacute;ndices de banda. El &iacute;ndice de resistencia atmosf&eacute;rica visible requiere que se especifiquen los &iacute;ndices de banda para las bandas de longitud de onda roja, verde y azul.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Especifique los índices para las bandas azul, roja, NIR, SWIR-1 y térmica</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique los &iacute;ndices de banda para las bandas azul, roja, infrarroja cercana (NIR), infrarroja de onda corta (SWIR) y t&eacute;rmica.
+            </p>
+            <p>Los sensores de sat&eacute;lite o a&eacute;reos multibanda captan informaci&oacute;n que se desglosa en bandas de longitud de onda, que se identifican con &iacute;ndices de banda. El &iacute;ndice de la f&oacute;rmula de Sult&aacute;n requiere que se especifiquen los &iacute;ndices de banda para las bandas de longitud de onda azul, roja, infrarroja cercana (NIR), infrarroja de onda corta (SWIR) y t&eacute;rmica.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Especifique los índices de las bandas azul, verde, roja, NIR, SWIR-1 y SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique los &iacute;ndices de banda para las bandas azul, verde, roja, NIR, SWIR-1 y SWIR-2
+            </p>
+            <p>Los sensores de sat&eacute;lite o a&eacute;reos multibanda captan informaci&oacute;n que se desglosa en bandas de longitud de onda, que se identifican con &iacute;ndices de banda. El &iacute;ndice de vegetaci&oacute;n verde requiere que se especifiquen los &iacute;ndices de banda para las bandas de longitud de onda azul, verde, roja, infrarroja cercana (NIR), infrarroja de onda corta 1 (SWIR-1) e infrarroja de onda corta 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ El SAVI transformado es un &iacute;ndice de vegetaci&oacute;n que intenta minimi
         <div><h2>Cantidad de cobertura de vegetación verde</h2></div>
         <hr/>
         <div>
-            <p>Especifica la cantidad de cobertura de vegetaci&oacute;n verde, requerida por el m&eacute;todo SAVI.
+            <p>Especifica la cantidad de cubierta vegetal verde, requerida por el m&eacute;todo del &iacute;ndice de vegetaci&oacute;n ajustado al suelo.
             </p>
             <p>Los valores v&aacute;lidos son los siguientes:
                 <ul>
@@ -159,7 +193,7 @@ El SAVI transformado es un &iacute;ndice de vegetaci&oacute;n que intenta minimi
         <div><h2>Factor de ajuste</h2></div>
         <hr/>
         <div>
-            <p>Especifica el factor de ajuste para ayudar a minimizar el efecto del suelo, lo cual se requiere para el m&eacute;todo &Iacute;ndice de vegetaci&oacute;n ajustado al suelo transformado. El valor predeterminado es 0.08.
+            <p>Especifica el factor de ajuste para ayudar a minimizar el efecto del suelo, lo cual se requiere para el m&eacute;todo &Iacute;ndice de vegetaci&oacute;n ajustado al suelo transformado. El valor predeterminado es 0,08.
             </p>
             <p>Un valor bajo significa que est&aacute; ignorando el efecto del suelo. Un valor alto significa que el suelo afecta al resultado.
             </p>
@@ -172,8 +206,7 @@ El SAVI transformado es un &iacute;ndice de vegetaci&oacute;n que intenta minimi
             
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
-            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
-            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>. Si tiene privilegios para crear capas de imágenes tanto en teselas como dinámicas, también puede especificar qué tipo de capa se va a generar para la salida utilizando el cuadro desplegable Guardar el resultado como. </p>
         </div>
     </div>
 </div>

@@ -46,13 +46,9 @@
         <hr/>
     <p>Cet outil permet de cr&eacute;er une carte de densit&eacute; &agrave; partir d'entit&eacute;s ponctuelles ou lin&eacute;aires en r&eacute;partissant des quantit&eacute;s connues de certains ph&eacute;nom&egrave;nes (repr&eacute;sent&eacute;s sous forme d'attributs des points ou des lignes) sur la carte. Il en r&eacute;sulte une couche de surfaces class&eacute;es des moins denses aux plus denses.
     </p>
-    <p>Pour le point en entr&eacute;e, chaque point doit repr&eacute;senter l&rsquo;emplacement d&rsquo;un &eacute;v&eacute;nement ou incident, et la couche de r&eacute;sultat repr&eacute;sente un nombre d&rsquo;incidents par zone unitaire. Une valeur de densit&eacute; sup&eacute;rieure dans un nouvel emplacement indique qu'il existe plus de points &agrave; proximit&eacute; de cet emplacement. Dans de nombreux cas, la couche de r&eacute;sultat peut &ecirc;tre interpr&eacute;t&eacute;e comme une zone &agrave; risque pour des &eacute;v&eacute;nements futurs. Par exemple, si les points en entr&eacute;e repr&eacute;sentent les emplacements d'&eacute;clairs, la couche de r&eacute;sultat peut &ecirc;tre interpr&eacute;t&eacute;e comme une zone &agrave; risque pour les &eacute;clairs &agrave; venir.
-    </p>
-    <p>Pour la ligne en entr&eacute;e, la surface de densit&eacute; lin&eacute;aire repr&eacute;sente la quantit&eacute; totale de lignes &agrave; proximit&eacute; de chaque emplacement. Les unit&eacute;s des valeurs de densit&eacute; calcul&eacute;es correspondent &agrave; la longueur de ligne par zone unitaire. Par exemple, si les lignes repr&eacute;sentent des rivi&egrave;res, la couche de r&eacute;sultat repr&eacute;sente la longueur totale des rivi&egrave;res qui se trouvent au sein du rayon de recherche. Ce r&eacute;sultat peut servir &agrave; identifier les zones d'accueil pour les animaux de p&acirc;turage.
-    </p>
-    <p>Voici les autres cas d'utilisation de cet outil :
+    <p>Voici les quelques exemples d&rsquo;applications de cet outil&nbsp;:
         <ul>
-            <li>Cr&eacute;ation de cartes de densit&eacute; criminelle afin d'aider les services de police &agrave; allouer convenablement les ressources sur les zones &agrave; forte criminalit&eacute;.
+            <li>Cr&eacute;ation de cartes de densit&eacute; criminelle afin d&rsquo;aider les services de police &agrave; allouer convenablement les ressources sur les zones &agrave; forte criminalit&eacute;.
                 
  
             </li>
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Localisation des communaut&eacute;s qui se trouvent &agrave; l'&eacute;cart des principaux axes routiers en vue de planifier la construction de nouvelles routes.
+            <li>Localisation des communaut&eacute;s qui se trouvent &agrave; l&rsquo;&eacute;cart des principaux axes routiers en vue de planifier la construction de nouvelles routes.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Choisissez la couche de points ou linéaire en entrée à partir de laquelle calculer la densité</h2></div>
         <hr/>
         <div>
-            <p>Le point en entr&eacute;e ou la couche de lignes qui servira &agrave; calculer la couche de densit&eacute;.
+            <p>Point ou ligne en entr&eacute;e qui servira &agrave; calculer la densit&eacute;.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Fournissez un champ sp&eacute;cifiant le nombre d'incidents &agrave; chaque emplacement. Par exemple, si des points repr&eacute;sentent des villes, vous pouvez utiliser un champ repr&eacute;sentant la population de la ville sous forme de champ de nombre. La couche de densit&eacute; de la population r&eacute;sultant calcule alors les densit&eacute;s de population sup&eacute;rieures &agrave; proximit&eacute; des villes dont la population est plus &eacute;lev&eacute;e.
             </p>
-            <p>Si la valeur par d&eacute;faut  <b>Aucun</b> est utilis&eacute;e, chaque emplacement est suppos&eacute; repr&eacute;senter un seul nombre.
+            <p>Si la valeur par d&eacute;faut  <b>None (Aucun)</b> est utilis&eacute;e, chaque emplacement est cens&eacute; repr&eacute;senter un seul nombre.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>Taille de cellule et unit&eacute; des rasters en sortie.
             </p>
+            <p>Les unit&eacute;s peuvent &ecirc;tre les kilom&egrave;tres, les m&egrave;tres, les miles ou les pieds.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
-            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>. Si vous avez les privilèges permettant de créer des couches tuilées et d’images dynamiques, vous pouvez spécifier le type de couche à générer en sortie à l’aide de la zone déroulante Save result as (Enregistrer le résultat sous). </p>
         </div>
     </div>
 </div>

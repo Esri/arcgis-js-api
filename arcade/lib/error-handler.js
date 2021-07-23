@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["require","exports"],(function(r,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.ErrorHandler=void 0;var e=function(){function r(){this.errors=[],this.tolerant=!1}return r.prototype.recordError=function(r){this.errors.push(r)},r.prototype.tolerate=function(r){if(!this.tolerant)throw r;this.recordError(r)},r.prototype.constructError=function(r,t){var e=new Error(r);try{throw e}catch(r){Object.create&&Object.defineProperty&&(e=Object.create(r),Object.defineProperty(e,"column",{value:t}))}return e},r.prototype.createError=function(r,t,e,o){var n="Line "+t+": "+o,i=this.constructError(n,e);return i.index=r,i.lineNumber=t,i.description=o,i},r.prototype.throwError=function(r,t,e,o){throw this.createError(r,t,e,o)},r.prototype.tolerateError=function(r,t,e,o){var n=this.createError(r,t,e,o);if(!this.tolerant)throw n;this.recordError(n)},r}();t.ErrorHandler=e}));

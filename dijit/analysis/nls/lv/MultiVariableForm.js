@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({distToNearest:"Attālums līdz vistuvākajam",attrOfInterest:"Atribūts līdz vistuvākajam",summaryNearby:"Kopsavilkums līdz tuvāk esošajam",summaryIntersecting:"Šķērsojumu kopsavilkums",distToNearestLabel:"Attālums no nodalījuma centra līdz vistuvākajam elementam ievades slānī",attrOfInterestLabel:"Vērtība no norādītā lauka no vistuvākā elementa ievades slānī",summaryNearbyLabel:"Atrasts visu elementu statistikas aprēķins ar nodalījuma centra norādīto attālumu",summaryIntersectingLabel:"Aprēķinātā statistika visiem elementiem, kas šķērso nodalījumu",maxDistancefromCtr:"Maksimālais attālums no nodalījuma centra",fieldToIncude:"Iekļaujamais lauks",statstoCalculate:"Aprēķināmā statistika",summFeatuesWithin:"Apkopot elementus:",smallMaxDistErrorMsg:"Maksimālajam attālumam no nodalījuma centra jābūt lielākam par nodalījuma lielumu.",smallSumFeaturesErrorMsg:"Maksimālajam attālumam no nodalījuma centra jābūt lielākam par nodalījuma lielumu."});

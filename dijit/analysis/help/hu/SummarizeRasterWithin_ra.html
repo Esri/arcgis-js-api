@@ -46,9 +46,7 @@
         <hr/>
     <p>Ez az eszk&ouml;z egy raszter &eacute;rt&eacute;keit &ouml;sszegzi egy m&aacute;sik adathalmaz z&oacute;n&aacute;iban.
     </p>
-    <p>Az alkalmaz&aacute;s&aacute;ra az al&aacute;bbi n&eacute;h&aacute;ny p&eacute;lda hozhat&oacute;:
-    </p>
-    <p>
+    <p>Az eszk&ouml;z alkalmaz&aacute;s&aacute;ra az al&aacute;bbi n&eacute;h&aacute;ny p&eacute;lda hozhat&oacute;:
         <ul>
             <li>V&iacute;zv&aacute;laszt&oacute;kat &eacute;s egy felsz&iacute;nhaszn&aacute;lati hat&aacute;rokat tartalmaz&oacute; r&eacute;teg eset&eacute;n kisz&aacute;m&iacute;thatja a felsz&iacute;nhaszn&aacute;lati t&iacute;pusok nagys&aacute;g&aacute;t mindegyik v&iacute;zgyűjtő ter&uuml;letre.
                 
@@ -69,9 +67,9 @@
         <div><h2>Válassza ki azt a területréteget, amely egy raszteres réteg összegzésére szolgál megadott határokon belül</h2></div>
         <hr/>
         <div>
-            <p>Az &ouml;sszes&iacute;tendő ter&uuml;letek vagy z&oacute;n&aacute;k hat&aacute;rvonalait meghat&aacute;roz&oacute; r&eacute;teg.
+            <p>Az &ouml;sszes&iacute;tendő z&oacute;n&aacute;k vagy ter&uuml;letek hat&aacute;rvonalait meghat&aacute;roz&oacute; bemenet.
             </p>
-            <p>A r&eacute;teg lehet raszteres vagy vektoros adat. Raszterek eset&eacute;n a z&oacute;n&aacute;kat a bemenetben szereplő, azonos cella&eacute;rt&eacute;kkel rendelkező helyek hat&aacute;rozz&aacute;k meg. Ezeknek a ter&uuml;leteknek nem kell folytonosnak lenni&uuml;k.
+            <p>A bemenet lehet raszteres vagy vektoros adat. Raszterek eset&eacute;n a z&oacute;n&aacute;kat a bemenetben szereplő, azonos cella&eacute;rt&eacute;kkel rendelkező helyek hat&aacute;rozz&aacute;k meg. A vektoros elemek eset&eacute;ben a z&oacute;n&aacute;k &aacute;tfedhetik egym&aacute;st. Ezeknek a ter&uuml;leteknek nem kell folytonosnak lenni&uuml;k.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Válassza ki a mezőt a határok definiálásához</h2></div>
         <hr/>
         <div>
-            <p>Ez a r&eacute;teg ter&uuml;letek hat&aacute;rvonalainak meghat&aacute;roz&aacute;s&aacute;ra haszn&aacute;lt attrib&uacute;tuma.
+            <p>Az egyes z&oacute;n&aacute;kat meghat&aacute;roz&oacute; &eacute;rt&eacute;keket tartalmaz&oacute; mező.
             </p>
-            <p>Tegy&uuml;k fel p&eacute;ld&aacute;ul, hogy az első bemenő r&eacute;teg hat&aacute;rozza meg az igazgat&aacute;si egys&eacute;gek hat&aacute;rvonalait a r&eacute;gi&oacute;t, a ker&uuml;letet &eacute;s az egyes egys&eacute;gek parcellaazonos&iacute;t&oacute;j&aacute;t meghat&aacute;roz&oacute; attrib&uacute;tumokkal. Ezenk&iacute;v&uuml;l rendelkez&eacute;sre &aacute;ll egy raszteres r&eacute;teg, amely megadja az egyes helyek biodiverzit&aacute;si index&eacute;t. A kiv&aacute;lasztott mezővel d&ouml;nthet a helyi, ker&uuml;leti vagy region&aacute;lis szintű &aacute;tlagos biodiverzit&aacute;s kisz&aacute;m&iacute;t&aacute;sa mellett.
+            <p>Lehet a z&oacute;naadathalmaz eg&eacute;szsz&aacute;m- vagy karakterl&aacute;ncmezője.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Válassza ki az összegezni kívánt raszteres réteget</h2></div>
         <hr/>
         <div>
-            <p>A r&eacute;tegben tal&aacute;lhat&oacute; raszteres cell&aacute;kat azok alapj&aacute;n a ter&uuml;letek (z&oacute;n&aacute;k) alapj&aacute;n &ouml;sszegzi, amelybe esnek.
+            <p>Azokat az &eacute;rt&eacute;keket tartalmaz&oacute; raszter, amelyekből a statisztik&aacute;t sz&aacute;m&iacute;tani kell.
+            </p>
+            <p>Lehet integer vagy lebegőpontos. Ha azonban lebegőpontos t&iacute;pus&uacute;, akkor a t&ouml;bbs&eacute;g, a kisebbs&eacute;g &eacute;s a sokf&eacute;les&eacute;g kisz&aacute;m&iacute;t&aacute;s&aacute;nak lehetős&eacute;gei nem &aacute;llnak rendelkez&eacute;sre.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Válassza ki a kiszámítandó statisztikát</h2></div>
         <hr/>
         <div>
-            <p>Az &ouml;sszes&iacute;tendő r&eacute;teg kiv&aacute;laszt&aacute;sa ut&aacute;n opcion&aacute;lisan kisz&aacute;m&iacute;thatja a bemenő ter&uuml;let r&eacute;teg pontjainak, vonalainak vagy ter&uuml;leteinek b&aacute;rmely numerikus attrib&uacute;tum&aacute;t.
+            <p>Megadja a kisz&aacute;m&iacute;tand&oacute; statisztikat&iacute;pust.
             </p>
-            <p>A k&ouml;vetkező statisztikat&iacute;pusok &eacute;rhetők el, ha a kiv&aacute;lasztott mező integer: &aacute;tlag, t&ouml;bbs&eacute;g, maximum, medi&aacute;n, minimum, kisebbs&eacute;g, percentilis, terjedelem, sz&oacute;r&aacute;s, &ouml;sszeg &eacute;s v&aacute;ltozatoss&aacute;g.
-            </p>
-            <p>Ha a mező lebegőpontos, a k&ouml;vetkező lehetős&eacute;gek &aacute;llnak rendelkez&eacute;sre: &aacute;tlag, maximum, minimum, terjedelem, sz&oacute;r&aacute;s &eacute;s &ouml;sszeg.
+            <p> A bemenet a k&ouml;vetkezők valamelyik lehet: <b>&Aacute;tlag</b>, <b>T&ouml;bbs&eacute;g</b>, <b>Maximum</b>, <b>Medi&aacute;n</b>, <b>Minimum</b>, <b>Kisebbs&eacute;g</b>, <b>Percentilis</b>, <b>Tartom&aacute;ny</b>, <b>Sz&oacute;r&aacute;s</b>, <b>&Ouml;sszeg</b> vagy <b>Sokf&eacute;les&eacute;g</b>. Az alap&eacute;rtelmezett az <b>&Aacute;tlag</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>A kisz&aacute;m&iacute;tand&oacute; percentilis. Az alap&eacute;rtelmezett &eacute;rt&eacute;k 90, amely a 90. percentilist jelzi.
             </p>
-            <p>Az &eacute;rt&eacute;kek 0 &eacute;s 100 k&ouml;z&eacute; eshetnek. A 0. percentilis l&eacute;nyeg&eacute;ben a Minimum statisztik&aacute;val, m&iacute;g a 100. percentilis a Maximum statisztik&aacute;val egyezik meg. Az 50-es &eacute;rt&eacute;k l&eacute;nyeg&eacute;ben ugyanazt az eredm&eacute;nyt adja, mint a Medi&aacute;n statisztika.
+            <p>Az &eacute;rt&eacute;k 0 &eacute;s 100 k&ouml;z&eacute; eshet. A 0. percentilis megad&aacute;s&aacute;nak eredm&eacute;nye l&eacute;nyeg&eacute;ben a minimum statisztik&aacute;val, m&iacute;g a 100. percentilis&eacute; a maximum statisztik&aacute;val egyezik meg. Az 50-es &eacute;rt&eacute;k l&eacute;nyeg&eacute;ben ugyanazt az eredm&eacute;nyt adja, mint a Medi&aacute;n statisztika.
             </p>
-            <p>Ezt a be&aacute;ll&iacute;t&aacute;st csak akkor t&aacute;mogatja a rendszer, ha a  <b>Kisz&aacute;m&iacute;tand&oacute; statisztika kiv&aacute;laszt&aacute;sa</b> param&eacute;ter be&aacute;ll&iacute;t&aacute;sa <b>Percentilis</b>.
+            <p> Ezt a param&eacute;tert csak akkor t&aacute;mogatja a rendszer, ha a <b>Kisz&aacute;m&iacute;tand&oacute; statisztika kiv&aacute;laszt&aacute;sa</b> param&eacute;ter be&aacute;ll&iacute;t&aacute;sa <b>Percentilis</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Hiányzó értékek figyelmen kívül hagyása a számításban</h2></div>
         <hr/>
         <div>
-            <p>Ha a hi&aacute;nyz&oacute; &eacute;rt&eacute;kek figyelmen k&iacute;v&uuml;l hagy&aacute;s&aacute;t v&aacute;lasztja, a program csak azokat a cell&aacute;kat haszn&aacute;lja egy adott ter&uuml;let kimeneti &eacute;rt&eacute;k&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz, amelyek rendelkeznek &eacute;rt&eacute;kkel az &ouml;sszegzendő r&eacute;tegben. M&aacute;sk&uuml;l&ouml;nben, ha egy ter&uuml;leten b&aacute;rhol hi&aacute;nyz&oacute; &eacute;rt&eacute;kek vannak, &uacute;gy tekinti, mintha az adott z&oacute;n&aacute;ban az &ouml;sszes cell&aacute;hoz nem lenne elegendő inform&aacute;ci&oacute; a statisztikai sz&aacute;m&iacute;t&aacute;sok elv&eacute;gz&eacute;s&eacute;hez, &eacute;s az adott ter&uuml;let null (NoData) &eacute;rt&eacute;ket kap a kimenetben.
+            <p> Megadhat&oacute;, hogy az alkalmaz&aacute;s hagyja figyelmen k&iacute;v&uuml;l a hi&aacute;nyz&oacute; &eacute;rt&eacute;keket az elemz&eacute;sben.
             </p>
+            <ul>
+                <li>Bejel&ouml;lve &mdash; Az elemz&eacute;s figyelembe veszi azokat a cell&aacute;kat, amelyhez &eacute;rt&eacute;k tartozik a bemeneti &eacute;rt&eacute;kek raszter&eacute;ben b&aacute;rmelyik z&oacute;n&aacute;n bel&uuml;l az adott z&oacute;na kimeneti &eacute;rt&eacute;k&eacute;nek meghat&aacute;roz&aacute;s&aacute;hoz. Az &eacute;rt&eacute;kraszterben tal&aacute;lhat&oacute; NoData cell&aacute;k nem lesznek figyelembe v&eacute;ve a statisztikai sz&aacute;m&iacute;t&aacute;sban. Ez az alap&eacute;rtelmez&eacute;s.
+                </li>
+                <li>Nincs bejel&ouml;lve &ndash; Az elemz&eacute;s eredm&eacute;nye NoData lesz, ha az &eacute;rt&eacute;kraszter b&aacute;rmelyik cell&aacute;j&aacute;ban NoData &eacute;rt&eacute;k tal&aacute;lhat&oacute; egy adott z&oacute;n&aacute;n bel&uuml;l.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Feldolgozás többdimenziósként</h2></div>
         <hr/>
         <div>
-            <p>Azt hat&aacute;rozza meg, hogy mik&eacute;nt t&ouml;rt&eacute;njen a bemeneti raszterek feldolgoz&aacute;sa, amennyiben azok t&ouml;bbdimenzi&oacute;sak. Ha a t&ouml;bbdimenzi&oacute;sk&eacute;nt val&oacute; feldolgoz&aacute;st v&aacute;lasztja, a rendszer a statisztik&aacute;kat a t&ouml;bbdimenzi&oacute;s adathalmaz valamennyi dimenzi&oacute;j&aacute;ra fogja kisz&aacute;m&iacute;tani. Egy&eacute;b esetben a rendszer a statisztik&aacute;kat a adathalmaz aktu&aacute;lis szelet&eacute;ből fogja kisz&aacute;m&iacute;tani (ez az alap&eacute;rtelmezett be&aacute;ll&iacute;t&aacute;s).
+            <p>Azt hat&aacute;rozza meg, hogy mik&eacute;nt t&ouml;rt&eacute;njen a bemeneti t&ouml;bbdimenzi&oacute;s raszteres adatszolg&aacute;ltat&aacute;sok feldolgoz&aacute;sa, ha azok t&ouml;bbdimenzi&oacute;sak.
             </p>
+            <ul>
+                <li>Bejel&ouml;lve &ndash; A statisztika a bemeneti t&ouml;bbdimenzi&oacute;s adathalmaz aktu&aacute;lis szelet&eacute;ből lesz kisz&aacute;m&iacute;tva. Ez az alap&eacute;rtelmez&eacute;s.
+                    
+
+                </li>
+                <li>Nincs bejel&ouml;lve &ndash; A statisztika a t&ouml;bbdimenzi&oacute;s adathalmaz valamennyi dimenzi&oacute;j&aacute;ra ki lesz sz&aacute;m&iacute;tva.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>A  <b>Saj&aacute;t tartalom</b> alatt l&eacute;trej&ouml;vő &eacute;s a t&eacute;rk&eacute;phez hozz&aacute;adott r&eacute;teg neve. Az alap&eacute;rtelmezett n&eacute;v az eszk&ouml;z nev&eacute;n &eacute;s a bemenő r&eacute;teg nev&eacute;n alapul. Ha a r&eacute;teg m&aacute;r l&eacute;tezik, akkor a program megk&eacute;ri, hogy adjon meg egy m&aacute;sik nevet.
             </p>
-            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>.
-            </p>
+            <p>Az Eredm&eacute;ny ment&eacute;si helye leg&ouml;rd&uuml;lő mezőben megadhatja a  <b>Saj&aacute;t tartalom</b>mapp&aacute;j&aacute;nak nev&eacute;t, ahov&aacute; az eszk&ouml;z <b>menti az eredm&eacute;nyt</b>. Ha mind csempézett, mind dinamikus távérzékelési réteg létrehozására van jogosultsága, akkor az Eredmény mentése másképp legördülő mezőben azt is megadhatja, hogy milyen rétegtípust hozzon létre a kimeneten. </p>
         </div>
     </div>
 </div>

@@ -40,21 +40,19 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="regularsize">
         <h2>Tsoonipõhine statistika tabelina</h2><p/>
         <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagramm Tsoonip&otilde;hine statistika tabelina"></h2>
         <hr/>
     <p>See t&ouml;&ouml;riist v&otilde;tab kokku rastri v&auml;&auml;rtused teise andmestiku tsoonides ja esitab tulemused tabelisse.
     </p>
-    <p>M&otilde;ned n&auml;ited kasutusaladest:
-    </p>
-    <p>
+    <p>M&otilde;ned n&auml;ited selle t&ouml;&ouml;riista kasutusaladest:
         <ul>
-            <li>Arvestades osariigi piiride kihti ja keskmise sademete jaotust Ameerika &Uuml;hendriikide mandriosas, arvutage protsentiili v&auml;&auml;rtuste loendi abil &auml;&auml;rmuslike vihmas&uuml;ndmuste osariigiline jaotus.
+            <li>&Uuml;leujutusalade ulatuse ja maakasutuse piirkondade v&otilde;rdluse tulemusena on leitav iga &uuml;leujutuspiirkonna alla j&auml;&auml;va konkreetse kasutatava maa-ala kogupindala.
                 
 
             </li>
-            <li>Arvestades kattuvate &ouml;koloogiliste tsoonide kihti ja mulla niiskuse rasterkihti, arvutage igas tsoonis kogu toetatud statistika, et seostada tsoonid mulla niiskuse k&auml;ttesaadavusega.
+            <li>Omavalitsuse piirides paiknevate katastri&uuml;ksuste keskmine maamaksu suurus asustus&uuml;ksuste kaupa.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Valige tsooni raster või objektid</h2></div>
         <hr/>
         <div>
-            <p>Summeeritavate tsoonide v&otilde;i alade piire m&auml;&auml;ratlev kiht.
+            <p>Summeeritavate tsoonide v&otilde;i alade piire m&auml;&auml;ratlev sisend.
             </p>
-            <p>Kiht v&otilde;ib olla t&auml;isarvuline raster v&otilde;i vektorandmed. Rastrite puhul on tsoonid m&auml;&auml;ratletud k&otilde;ikide asukohtadega sisendis, millel on sama piksliv&auml;&auml;rtus. Objektide puhul v&otilde;ivad tsoonid kattuda. Alad ei pea olema omavahel &uuml;hendatud.
+            <p>Sisend v&otilde;ib olla t&auml;isarvuline raster v&otilde;i vektorandmed. Rastrite puhul on tsoonid m&auml;&auml;ratletud k&otilde;ikide asukohtadega sisendis, millel on sama piksliv&auml;&auml;rtus. Objektide puhul v&otilde;ivad tsoonid kattuda. Alad ei pea olema omavahel &uuml;hendatud.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Tsooni väli</h2></div>
         <hr/>
         <div>
-            <p>See on kihi atribuut, mida kasutatakse tsoonide (alade) piiride m&auml;&auml;ratlemiseks.
+            <p>V&auml;li, mis sisaldab iga tsooni m&auml;&auml;ratlevaid v&auml;&auml;rtusi.
             </p>
-            <p>V&otilde;tame n&auml;iteks olukorra, kus esimene sisendkiht m&auml;&auml;ratleb haldus&uuml;ksuse piirid, mille atribuudid m&auml;&auml;ratlevad iga &uuml;ksuse regiooni, rajooni ja katastri&uuml;ksuse ID. Lisaks on teil rasterkiht, mis m&auml;&auml;ratleb iga asukoha jaoks bioloogilise mitmekesisuse indeksi. Valitava v&auml;ljaga saate otsustada, kas soovite arvutada keskmise bioloogilise mitmekesisuse kohalikul, rajooni v&otilde;i regiooni tasemel.
+            <p>See v&otilde;ib olla t&auml;isarv v&otilde;i tsooni andmekogumi stringiv&auml;li.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Valige väärtusraster</h2></div>
         <hr/>
         <div>
-            <p>Selle kihi rasterpikslid summeeritakse vastavalt aladele (tsoonidele), millesse need kuuluvad.
+            <p>Raster, mis sisaldab v&auml;&auml;rtusi, mille alusel arvutatakse statistika.
+            </p>
+            <p>See v&otilde;ib olla t&auml;isarv v&otilde;i ujukomat&uuml;&uuml;pi arv. Kui sisendv&auml;&auml;rtuse raster on ujukomaga t&uuml;&uuml;pi, ei saa teha sisendite Enamus, V&auml;hemus ja Variatsioon p&otilde;hiseid arvutusi.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Eira arvutustes väärtust NoData (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rab &auml;ra, kas NoData v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida.
-                <ul>
-                    <li>M&auml;rgitud &mdash; anal&uuml;&uuml;s h&otilde;lmab piksleid, millel on v&auml;&auml;rtus sisendv&auml;&auml;rtuse rastris mis tahes konkreetses tsoonis, et m&auml;&auml;rata selle tsooni v&auml;ljundv&auml;&auml;rtus. V&auml;&auml;rtuse rastris olevaid NoData-piksleid eiratakse statistilises arvutuses. See on vaikevalik.
-                    </li>
-                    <li>M&auml;rkimata -- kui konkreetses tsoonis on v&auml;&auml;rtusrastri pikslites NoData-v&auml;&auml;rtusi, on anal&uuml;&uuml;si tulemuseks NoData.
-                    </li>
-                </ul>
-                
+            <p> M&auml;&auml;rab &auml;ra, kas NoData v&auml;&auml;rtusi anal&uuml;&uuml;sis ignoreerida.
             </p>
+            <ul>
+                <li>M&auml;rgitud &mdash; anal&uuml;&uuml;s h&otilde;lmab lahtreid, millel on v&auml;&auml;rtus sisendv&auml;&auml;rtuse rastris mis tahes konkreetses tsoonis, et m&auml;&auml;rata selle tsooni v&auml;ljundv&auml;&auml;rtus. V&auml;&auml;rtuse rastris olevaid NoData-lahtreid eiratakse statistilises arvutuses. See on vaikevalik.
+                </li>
+                <li>M&auml;rkimata -- kui konkreetses tsoonis on v&auml;&auml;rtusrastri lahtrites NoData-v&auml;&auml;rtusi, on anal&uuml;&uuml;si tulemuseks NoData.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>M&auml;&auml;rab arvutatava statistika t&uuml;&uuml;bi.
             </p>
-            <p>Sisend v&otilde;ib olla &uuml;ks j&auml;rgmistest:  <b>K&otilde;ik</b>, <b>Keskmine</b>, <b>Enamus</b>, <b>Maksimum</b>, <b>Mediaan</b>, <b>Miinimum</b>, <b>V&auml;hemus</b>, <b>Protsentiil</b>, <b>Vahemik</b>, <b>Standardh&auml;lve</b>, <b>Summa</b>, <b>Variatsioon</b>, <b>Miinimum ja maksimum</b>, <b>Keskmine ja standardh&auml;lve</b> v&otilde;i <b>Miinimum, maksimum ja keskmine</b>. Vaikev&auml;&auml;rtus on <b>K&otilde;ik</b>.
-            </p>
-            <p>Kui sisendv&auml;&auml;rtuse raster on t&auml;isarvuline, arvutatakse vaikimisi kogu statistika. Kui v&auml;&auml;rtusraster on ujukomaga t&uuml;&uuml;pi, arvutatakse vaikimisi kogu statistika, v&auml;lja arvatud  <b>Mediaan</b> ja <b>Protsentiil</b>. 
-            </p>
-            <p>Kui sisendv&auml;&auml;rtuse raster on ujukomaga t&uuml;&uuml;pi, ei saa teha sisendite  <b>Enamus</b>, <b>V&auml;hemus</b> ja <b>Variatsioon</b> tsoonip&otilde;hiseid arvutusi.
+            <p> Sisend v&otilde;ib olla &uuml;ks j&auml;rgmistest: <b>K&otilde;ik</b>, <b>Keskmine</b>, <b>Enamus</b>, <b>Maksimum</b>, <b>Mediaan</b>, <b>Miinimum</b>, <b>V&auml;hemus</b>, <b>Protsentiil</b>, <b>Vahemik</b>, <b>Standardh&auml;lve</b>, <b>Summa</b>, <b>Variatsioon</b>, <b>Miinimum ja maksimum</b>, <b>Keskmine ja standardh&auml;lve</b> v&otilde;i <b>Miinimum, maksimum ja keskmine</b>. Vaikev&auml;&auml;rtus on <b>K&otilde;ik</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Protsentiili väärtused (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>Arvutatavad protsentiilid. M&auml;&auml;rata saab &uuml;ksikv&auml;&auml;rtuse v&otilde;i v&auml;&auml;rtuste loendi. Vaikev&auml;&auml;rtus on 90, mis n&auml;itab 90. protsentiili.
+            <p>Arvutatav protsentiil. Vaikev&auml;&auml;rtus on 90, mis n&auml;itab 90. protsentiili.
             </p>
-            <p>V&auml;&auml;rtused v&otilde;ivad olla vahemikus 0 kuni 100. 0. protsentiili m&auml;&auml;ramise tulemus on sisuliselt v&otilde;rdne miinimumstatistikaga ja 100. protsentiil on v&otilde;rdne maksimumiga. V&auml;&auml;rtus 50 annab sisuliselt sama tulemuse kui mediaanstatistika.
+            <p>V&auml;&auml;rtus v&otilde;ib olla vahemikus 0 kuni 100. 0. protsentiili m&auml;&auml;ramise tulemus on sisuliselt v&otilde;rdne miinimumstatistikaga ja 100. protsentiil on v&otilde;rdne maksimumiga. V&auml;&auml;rtus 50 annab sisuliselt sama tulemuse kui mediaanstatistika.
             </p>
-            <p>See valik on toetatud ainult siis, kui parameetri  <b>Statistika t&uuml;&uuml;p</b> v&auml;&auml;rtuseks on m&auml;&auml;ratud <b>Protsentiil</b> v&otilde;i <b>K&otilde;ik</b>.
+            <p> Seda parameetrit toetatakse ainult juhul, kui parameetri <b>Statistika t&uuml;&uuml;p</b> v&auml;&auml;rtuseks on m&auml;&auml;ratud <b>Protsentiil</b> v&otilde;i <b>K&otilde;ik</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Protsentiili interpoleerimise tüüp (valikuline)</h2></div>
         <hr/>
         <div>
-            
             <p>M&auml;&auml;rab protsentiili interpoleerimise meetodi, mida kasutatakse juhul, kui sisendrastri arvutatavate v&auml;&auml;rtuste arv on &uuml;htlane.
-            </p> 
-            <p>Kui sisendv&auml;&auml;rtuse raster on t&auml;isarvuga piksli t&uuml;&uuml;pi, kasutatakse meetodit  <b>L&auml;him</b> . Kui sisendv&auml;&auml;rtuse raster on ujukomaga t&uuml;&uuml;pi, kasutatakse meetodit <b>Lineaarne</b>. See on vaikevalik.
             </p>
-            <p>Meetodi  <b>L&auml;him</b> korral kasutatakse soovitud protsentiili l&auml;himat saadaolevat v&auml;&auml;rtust. Meetodi <b>Lineaarne</b> korral kasutatakse soovitud protsentiili kahe &uuml;mbritseva v&auml;&auml;rtuse kaalutud keskmist.
-            </p> 
+            <ul>
+                <li>  <b>Automaatne tuvastamine</b>&mdash;Kui sisendv&auml;&auml;rtuse raster on t&auml;isarvuga piksli t&uuml;&uuml;pi, kasutatakse meetodit <b>L&auml;him</b>. Kui sisendv&auml;&auml;rtuse raster on ujukomaga t&uuml;&uuml;pi, kasutatakse meetodit <b>Lineaarne</b>. See on vaikevalik.
+                </li>
+                <li> <b>L&auml;him</b>&mdash;Kasutatakse soovitud protsentiili l&auml;himat saadaolevat v&auml;&auml;rtust.
+                </li>
+                <li> <b>Lineaarne</b>&mdash; Kasutatakse soovitud protsentiili kahe &uuml;mbritseva v&auml;&auml;rtuse kaalutud keskmist.
+                </li>
+            </ul>
+            
+            <p> Seda parameetrit toetatakse ainult juhul, kui parameetri <b>Statistika t&uuml;&uuml;p</b> v&auml;&auml;rtuseks on m&auml;&auml;ratud <b>Protsentiil</b> v&otilde;i <b>K&otilde;ik</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Töötle mitmemõõtmelisena (valikuline)</h2></div>
         <hr/>
         <div>
-            <p>M&auml;&auml;rab, kuidas sisendrastreid t&ouml;&ouml;deldakse, kui need on mitmem&otilde;&otilde;tmelised.
+            <p>M&auml;&auml;rab, kuidas mitmem&otilde;&otilde;tmelise pildi teenuseid t&ouml;&ouml;deldakse, kui need on mitmem&otilde;&otilde;tmelised.
             </p>
             <ul>
                 <li>M&auml;rgitud - statistika arvutatakse sisendi mitmem&otilde;&otilde;tmelise andmestiku praegusest l&otilde;igust. See on vaikevalik.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Selle kihi nimi, mis luuakse jaotises  <b>Minu sisu</b> ja lisatakse kaardile. Vaikimisi nimi p&otilde;hineb t&ouml;&ouml;riista nimel ja sisendkihi nimel. Kui kiht on juba olemas, palutakse teil sisestada m&otilde;ni muu nimi.
+            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
             </p>
         </div>
     </div>

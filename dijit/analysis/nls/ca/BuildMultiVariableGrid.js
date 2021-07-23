@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({binsLabel:"Trieu el tipus de bins que s'utilitzaran per crear la quadrícula de diverses variables",layersAttrLabel:"Trieu les capes i variables d'entrada que voleu incloure a la quadrícula",itemDescription:"Capa d'entitats generada en executar Crea una quadrícula de diverses variables.",itemTags:"Resultat de l'anàlisi, Crea una quadrícula de diverses variables",itemSnippet:"Capa d'entitats generada amb Crea una quadrícula de diverses variables",addVariables:"Afegeix variables"});

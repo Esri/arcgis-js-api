@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
-define(["esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/DocumentOptions","./TemplateJsonModificationUtil"],(function(t,e){var n={createBlankTemplate:function(n){var o={},i=n.documentOptions||t.getDefaultDocumentOptionsGraphicReport(),a=i.left+i.right+n.layout.numColumns*n.elementWidth,l=i.top+i.bottom+n.layout.numRows*n.elementHeight;i.pagesize=t.combineCustomSizeString(a,l,"px"),o.documentOptions=i;for(var s={style:{width:n.layout.numColumns*n.elementWidth},data:{columns:[],data:[]}},u=0;u<n.layout.numColumns;u++)s.data.columns.push({field:"field"+u,style:{width:n.elementWidth}});for(var m=0;m<n.layout.numRows;m++)s.data.data.push({style:{height:n.elementHeight},fieldInfos:{}});return o.sectionsTables=[s],e.adjustDocumentOptions(o),o}};return n}));
+define(["esri/dijit/geoenrichment/ReportPlayer/core/supportClasses/DocumentOptions","./TemplateJsonModificationUtil"],(function(e,t){var o={createBlankTemplate:function(o){var n={},i=o.documentOptions||e.getDefaultDocumentOptionsGraphicReport(),s=i.left+i.right+o.layout.numColumns*o.elementWidth,l=i.top+i.bottom+o.layout.numRows*o.elementHeight;i.pagesize=e.combineCustomSizeString(s,l,"px"),n.documentOptions=i;for(var u={style:{width:o.layout.numColumns*o.elementWidth},columns:[],rows:[]},m=0;m<o.layout.numColumns;m++)u.columns.push({field:"field"+m,style:{width:o.elementWidth}});for(var r=0;r<o.layout.numRows;r++)u.rows.push({style:{height:o.elementHeight},fieldInfos:{}});return n.sectionsTables=[u],t.adjustDocumentOptions(n),n}};return o}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","dojo/_base/array","dojo/has","../../kernel"],(function(e,t,n,r){var o=!1,a=n("esri-webgl-max-contexts");a=null!=a?a:n("esri-mobile")?8:16;var s={isWebGLSupported:function(){return!!o},isWebGLEnabled:function(){return this.isWebGLSupported()&&!!n("esri-featurelayer-webgl")},createCanvas:function(e,t){var n=document.createElement("canvas");return n.style.width=e+"px",n.style.height=t+"px",n},createWebGLContext:function(e){var n;return t.some(["webgl","experimental-webgl","webkit-3d","moz-webgl"],(function(t){try{n=e.getContext?e.getContext(t):null}catch(e){n=null}return!!n})),n},_contextOwners:[],isContextAvailable:function(){return-1===a||a>0&&s._contextOwners.length<a},acquireContext:function(e){return-1!==t.indexOf(s._contextOwners,e)||!!s.isContextAvailable()&&(s._contextOwners.push(e),!0)},releaseContext:function(e){var n=t.indexOf(s._contextOwners,e);-1!==n&&s._contextOwners.splice(n,1)}};return o=s.createWebGLContext(s.createCanvas()),n("extend-esri")&&e.setObject("layers.support.webglUtils",s,r),s}));

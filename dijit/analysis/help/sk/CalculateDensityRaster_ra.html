@@ -46,13 +46,9 @@
         <hr/>
     <p>Tento n&aacute;stroj vytv&aacute;ra mapu hustoty z bodov&yacute;ch alebo l&iacute;niov&yacute;ch prvkov pomocou rozvinutia zn&aacute;mych početnost&iacute; vybran&eacute;ho javu (reprezentovan&eacute;ho forme atrib&uacute;tov bodov alebo čiar) naprieč mapou. V&yacute;sledkom je vrstva oblast&iacute; klasifikovan&yacute;ch od najmenej hustej po najhustej&scaron;iu.
     </p>
-    <p>Pri zad&aacute;van&iacute; bodov by mal každ&yacute; bod predstavovať umiestnenie nejakej udalosti alebo incidentu a v&yacute;sledn&aacute; vrstva predstavuje počet incidentov na jednotku plochy. V&auml;č&scaron;ia hodnota hustoty na novej lokalite znamen&aacute;, že pri tom mieste existuje viac bodov. V mnoh&yacute;ch pr&iacute;padoch m&ocirc;že byť v&yacute;sledn&aacute; vrstva interpretovan&aacute; ako rizikov&yacute; povrch pre bud&uacute;ce udalosti. Ak napr&iacute;klad vstupn&eacute; body reprezentuj&uacute; lokality &uacute;derov blesku, v&yacute;sledn&aacute; vrstva m&ocirc;že byť interpretovan&aacute; ako rizikov&yacute; povrch pre &uacute;dery blesku do bud&uacute;cnosti.
-    </p>
-    <p>Pre l&iacute;niov&yacute; vstup reprezentuje povrch hustoty l&iacute;ni&iacute; celkov&eacute; množstvo l&iacute;ni&iacute; v bl&iacute;zkosti každej lokality. Jednotky vypoč&iacute;tan&yacute;ch hodn&ocirc;t hustoty s&uacute; dĺžkou l&iacute;nie na jednotku plochy. Napr&iacute;klad, ak l&iacute;nie predstavuj&uacute; rieky, v&yacute;sledn&aacute; vrstva bude reprezentovať celkov&uacute; dĺžku riek v rozsahu vyhľad&aacute;vacej vzdialenosti. Tento v&yacute;sledok m&ocirc;že byť použit&yacute; na identifik&aacute;ciu oblast&iacute;, ktor&eacute; s&uacute; ob&yacute;vateľn&eacute; bylinožravcami.
-    </p>
-    <p>In&eacute; využitie pre tento n&aacute;stroj zahŕňa naslednovn&eacute;:
+    <p>Niektor&eacute; pr&iacute;klady aplik&aacute;ci&iacute; tohto n&aacute;stroja obsahuj&uacute; nasledovn&eacute;:
         <ul>
-            <li>Vytv&aacute;ranie m&aacute;p hustoty zločinnosti pre pomoc pol&iacute;ci&iacute; spr&aacute;vne prideliť zdroje oblastiach s vysokou kriminalitou.
+            <li>Tvorba m&aacute;p hustoty zločinnosti pre pomoc pol&iacute;ci&iacute; spr&aacute;vne prideliť zdroje v oblastiach s vysokou kriminalitou.
                 
  
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Vybrať vstupnú bodovú alebo líniovú vrstvu, z ktorej bude vypočítaná hustota</h2></div>
         <hr/>
         <div>
-            <p>Vstupn&aacute; bodov&aacute; alebo l&iacute;niov&aacute; vrstva, ktor&aacute; bude použit&aacute; na v&yacute;počet vrstvy hustoty.
+            <p>Vstupn&yacute; bod alebo l&iacute;nia, ktor&aacute; bude použit&aacute; na vypoč&iacute;tanie hustoty.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Poskytnite pole &scaron;pecifikuj&uacute;ce počet incidentov na každej lokalite. Napr&iacute;klad, ak m&aacute;te body reprezentuj&uacute;ce mest&aacute;, m&ocirc;žete použiť pole reprezentuj&uacute;ce popul&aacute;ciu ako pole počtu a v&yacute;sledn&aacute; vrstva hustoty popul&aacute;cie bude mať v&auml;č&scaron;ie hustoty pri mest&aacute;ch s v&auml;č&scaron;ou popul&aacute;ciou.
             </p>
-            <p>Ak je použit&yacute; predvolen&yacute; v&yacute;ber  <b>None</b>, potom sa bude predpokladať, že každ&aacute; lokalita reprezentuje počet jeden.
+            <p>Ak je použit&yacute; predvolen&yacute; v&yacute;ber  <b>None</b>, bude sa predpokladať, že každ&aacute; lokalita reprezentuje počet jeden.
             </p>
         </div>
     </div>
@@ -117,15 +113,17 @@
         <div>
             <p>Veľkosť bunky a jednotka pre v&yacute;stupn&eacute; rastre.
             </p>
+            <p>Jednotky m&ocirc;žu byť kilometre, metre, m&iacute;le a stopy.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
-        <div><h2>Vyberte vlastnosti bariéry (nepovinné)</h2></div>
+        <div><h2>Vyberte prvky bariér (nepovinné)</h2></div>
         <hr/>
         <div>
-            <p>Dataset, ktor&yacute; reprezentuje bar&eacute;ry.
+            <p>Dataset, ktor&yacute; reprezentuje bari&eacute;ry.
             </p>
-            <p>Bari&eacute;ry m&ocirc;žu byť vrstvou funkcie na vlastnostiach lomen&yacute;ch čiar alebo mnohouholn&iacute;kov.
+            <p>Bari&eacute;ry m&ocirc;žu byť prvkovou vrstvou obsahuj&uacute;cou l&iacute;niov&eacute; alebo polyg&oacute;nov&eacute; prvky.
             </p>
         </div>
     </div>
@@ -136,8 +134,7 @@
             
             <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
             </p>
-            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
-            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu. Ak máte oprávnenia na vytváranie dlaždicových a dynamických snímkových vrstiev, môžete špecifikovať, ktorý typ vrstvy generovať vo výstupe pri použití rozbaľovacieho boxu Uložiť výsledok ako. </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Izvēlieties reģiona rastru vai elementu",inputCostRaster:"Izvēlieties izmaksu rastru (pēc izvēles)",inputBarrierRasterOrFeatures:"Izvēlieties barjeras rastru vai elementu (pēc izvēles)",distanceMethod:"Attāluma metode (pēc izvēles)",connectionsWithinRegions:"Savienojumi ar reģioniem (pēc izvēles)",generateConnections:"Veidot savienojumus",noConnections:"Nav savienojumu",planar:"Planārs",geoDesic:"Ģeodēzisks",outputOptimalLinesName:"Nosaukums rezultāta elementu slānim optimālās savienojamības līnijas",outputNeighborConnectionsName:"Nosaukums rezultāta elementu slānim iegūtie tuvumā esošie savienojumi (pēc izvēles)",outputLayerName:"Optimāli ${layername} reģiona savienojumi",drawSourcePointLayerName:"Avota punkti",itemDescription:"Elementu slānis, kas ģenerēts, palaižot risinājumu Optimāli reģiona savienojumi ${layername}. ",itemTags:"Analīžu rezultāti, Optimāli reģiona savienojumi, ${layername} ${fieldname}",itemSnippet:"Elementu slānis, kas ģenerēts no optimāliem reģiona savienojumiem.",noValueMessage:"Šī vērtība ir obligāta"});

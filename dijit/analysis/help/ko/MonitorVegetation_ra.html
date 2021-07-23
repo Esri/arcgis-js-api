@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>멀티밴드 래스터 레이어를 선택합니다. 입력 래스터에 적합한 밴드가 있는지 확인합니다.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>식생을 모니터링할 방법 선택</h2></div>
         <hr/>
         <div>
-            <p>식생 색인 레이어를 생성하는 방법을 선택합니다. 다양한 식생 색인을 통해 특정 피처를 쉽게 강조하거나 여러 노이즈를 줄일 수 있습니다.
+            <p>식생 색인 레이어를 계산하는 데 사용할 방법을 선택합니다. 다양한 식생 색인을 통해 특정 피처를 쉽게 강조하거나 여러 노이즈를 줄일 수 있습니다.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2는 SAVI 방법의 나지 영향력을 최소화하기 위해 시도되는
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI는 녹색 또는 비교 생물량이 표시된 이미지를 생성할 수 있는 표준화된 색인입니다. 이 색인은 다중스펙트럼 래스터 데이터셋의 두 밴드에 대한 특성 비교를 활용합니다. Red 밴드의 엽록소 색소 흡수율과 NIR 밴드의 높은 식물 재료 반사율을 비교합니다.
+NDVI는 녹색 또는 비교 생물량이 표시된 이미지를 생성할 수 있는 표준화된 색인입니다. 이 색인은 다중스펙트럼 래스터 데이터셋의 두 밴드에 대한 특성 비교를 활용합니다. Red 밴드의 엽록소 색소 흡수율과 NIR(Near Infrared) 밴드의 높은 식물 재료 반사율을 비교합니다.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ SAVI는 토지 밝기 보정 계수를 사용하여 토지 밝기 영향을 최�
 변환된 SAVI는 토양 라인에 임의의 경사 및 차단이 있는 것으로 간주하여 토양 밝기 영향을 최소화하기 위해 사용되는 식생 색인입니다.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI는 가시 스펙트럼의 정보만으로 식생을 예측하는 식생 지수입니다. 이 방법에는 스펙트럼의 Red, Green, Blue 밴드가 필요합니다.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>NIR 밴드 및 RED 밴드의 색인 지정</h2></div>
+        <div><h2>NIR 밴드 및 Red 밴드의 색인 지정</h2></div>
         <hr/>
         <div>
             <p>NIR 및 Red 밴드의 밴드 색인을 지정합니다.
             </p>
-            <p>각 위성 센서 및 항공 카메라에서는 밴드 색인으로 분산되는 정보를 캡처합니다. 각 밴드 색인에는 전자기 스펙트럼의 특정 부분에 대한 정보가 포함됩니다. 이 식생 모니터링 방법을 사용하려면 NIR 및 Red 파장이 캡처된 밴드 색인을 지정해야 합니다.
+            <p>다중밴드 위성 또는 항공 센서에서는 밴드 색인으로 식별된 파장 밴드로 분산되는 정보를 캡처합니다. 이 식생 모니터링 방법을 사용하려면 NIR(Near Infrared) 및 Red 파장 밴드의 밴드 색인을 지정해야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Red, Green, Blue 밴드의 색인 지정</h2></div>
+        <hr/>
+        <div>
+            <p>Red, Green, Blue 밴드의 색인을 지정합니다.
+            </p>
+            <p>다중밴드 위성 또는 항공 센서에서는 밴드 색인으로 식별된 파장 밴드로 분산되는 정보를 캡처합니다. 가시적 대기 저항 지수를 사용하려면 Red, Green, Blue 파장 밴드의 색인을 지정해야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Blue, Red, NIR, SWIR-1, Thermal 밴드의 색인 지정</h2></div>
+        <hr/>
+        <div>
+            <p>Blue, Red, NIR(Near Infrared), SWIR(Shortwave Infrared), Thermal 밴드의 색인을 지정합니다.
+            </p>
+            <p>다중밴드 위성 또는 항공 센서에서는 밴드 색인으로 식별된 파장 밴드로 분산되는 정보를 캡처합니다. 술탄의 공식 지수를 사용하려면 Blue, Red, NIR(Near Infrared), SWIR(Shortwave Infrared), Thermal 파장 밴드의 색인을 지정해야 합니다.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Blue, Green, Red, NIR, SWIR-1, SWIR-2 밴드의 색인 지정</h2></div>
+        <hr/>
+        <div>
+            <p>Blue, Green, Red, NIR, SWIR-1, SWIR-2 밴드의 색인을 지정합니다.
+            </p>
+            <p>다중밴드 위성 또는 항공 센서에서는 밴드 색인으로 식별된 파장 밴드로 분산되는 정보를 캡처합니다. 녹색 식생 색인을 사용하려면 Blue, Green, Red, NIR(Near Infrared), SWIR-1(Shortwave Infrared 1), SWIR-2(Shortwave Infrared 2) 파장 밴드의 색인을 지정해야 합니다.
             </p>
         </div>
     </div>
@@ -131,10 +165,10 @@ SAVI는 토지 밝기 보정 계수를 사용하여 토지 밝기 영향을 최�
         </div>
     </div>
     <div id="greenVegetativeCover">
-        <div><h2>녹색 초목 커버의 양</h2></div>
+        <div><h2>녹색 식생 커버의 양</h2></div>
         <hr/>
         <div>
-            <p>SAVI 방법에 필요한 녹색 식생 커버의 양을 지정합니다.
+            <p>녹색 식생 커버의 양을 지정합니다. 이는 토양 보정 식생 지수 방법에 필요합니다.
             </p>
             <p>유효한 값은 다음과 같습니다.
                 <ul>
@@ -172,8 +206,7 @@ SAVI는 토지 밝기 보정 계수를 사용하여 토지 밝기 영향을 최�
             
             <p> <b>내 콘텐츠</b>에 생성되고 맵에 추가되는 레이어의 이름입니다. 기본 이름은 도구 이름과 입력 레이어 이름을 기반으로 합니다. 레이어가 이미 있는 경우 다른 이름을 입력하라는 메시지가 나타납니다.
             </p>
-            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다.
-            </p>
+            <p> <b>결과 저장:</b> 드롭다운 상자를 사용하여 결과가 저장될 <b>내 콘텐츠</b>에서 폴더 이름을 지정할 수 있습니다. 타일 형태 및 동적 영상 레이어를 모두 생성할 수 있는 권한이 있는 경우 다른 이름으로 결과 저장 드롭다운 상자를 사용하여 출력에서 생성할 레이어 유형을 지정할 수 있습니다. </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elija las entidades que desea recortar",filterSelectLabel:"Recortar todas las entidades o definir un subconjunto (opcional)",targetArea:"Elegir el área de recorte",outputLayerName:"Recortar ${inputLayerName} a ${clipLayerName}",itemDescription:"Capa de entidades generada al ejecutar las soluciones de recorte. Las entidades de ${inputLayerName} se recortaron a ${clipLayerName}.",itemTags:"Resultado de análisis, Recortar capa, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Capa de entidades generada a partir de Recortar capa"});

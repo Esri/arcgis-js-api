@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Valitse määränpäärasteri tai -kohteet",destinationField:"Määränpääkenttä (valinnainen)",inputDistanceAccumulationRaster:"Valitse etäisyyskertymärasteri",inputBackDirectionRaster:"Valitse paluusuunnan tai virtaussuunnan rasteri",pathType:"Reitin tyyppi (valinnainen)",bestSingle:"Paras yksittäinen",eachCell:"Jokainen solu",eachZone:"Jokainen vyöhyke",outputRasterName:"Tulosrasterikarttatason nimi",outputLayerName:"Karttatason ${layername} optimaalinen reitti rasterina",drawSourcePointLayerName:"Lähteen pisteet",itemDescription:"Kohdekarttataso on luotu suorittamalla optimaalinen reitti rasterina karttatasolla ${layername}. ",itemTags:"Analyysin tulos, optimaalinen reitti rasterina, ${layername} ${fieldname}",itemSnippet:"Kohdekarttataso on luotu optimaalisesta reitistä rasterina."});

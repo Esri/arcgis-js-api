@@ -42,19 +42,17 @@
 <div id="topics">
     <div id="toolDescription" class="largesize">
         <h2>Estatísticas de Zona como Tabela</h2><p/>
-        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagrama Ferramenta Estat&iacute;sticas de Zona como Tabela"></h2>
+        <h2><img src="../images/GUID-2847466F-BF22-4545-BDCE-7EB7B1D15F2D-web.png" alt="Diagrama Estat&iacute;sticas de Zona como Tabela"></h2>
         <hr/>
     <p>Esta ferramenta resume os valores de um raster dentro das zonas de outro conjunto de dados e comunica os resultados numa tabela.
     </p>
-    <p>Alguns exemplos de aplica&ccedil;&otilde;es incluem as seguintes:
-    </p>
-    <p>
+    <p>Alguns exemplos de aplica&ccedil;&otilde;es desta ferramenta incluem:
         <ul>
-            <li>Dada uma camada de limites estaduais e a distribui&ccedil;&atilde;o da precipita&ccedil;&atilde;o m&eacute;dia sobre o territ&oacute;rio continental dos Estados Unidos, calcule a distribui&ccedil;&atilde;o estadual de eventos de chuva extrema usando uma lista de valores percentuais.
+            <li>Dada uma camada com os limites das bacias hidrogr&aacute;ficas e uma camada de uso do solo com os limites por tipo de uso, calcular &aacute;rea total do tipo de uso do solo para cada bacia hidrogr&aacute;fica.
                 
 
             </li>
-            <li>Dada uma camada de zonas ecol&oacute;gicas sobrepostas e uma camada raster de humidade do solo, calcule todas as estat&iacute;sticas suportadas dentro de cada zona para relacionar as zonas com a disponibilidade de humidade do solo.
+            <li>Dada uma camada de parcelas num munic&iacute;pio e uma camada com o limite das freguesias pertencentes a esse munic&iacute;pio , resumir o valor m&eacute;dio das parcelas vagas dentro de cada freguesia.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Selecionar raster ou elementos de zona</h2></div>
         <hr/>
         <div>
-            <p>A camada que define os limites das zonas, ou &aacute;reas, que ser&atilde;o resumidas.
+            <p>A entrada que define os limites das zonas, ou &aacute;reas, que ser&atilde;o resumidas.
             </p>
-            <p>A camada pode ser de dados raster ou de elementos de n&uacute;mero inteiro. Para rasters, as zonas s&atilde;o definidas com base em todas as localiza&ccedil;&otilde;es na entrada que possuem o mesmo valor de c&eacute;lula. Para elementos, as zonas podem ser sobrepostas. As &aacute;reas n&atilde;o t&ecirc;m de ser cont&iacute;guas.
+            <p>A entrada pode ser de dados raster ou de elementos de n&uacute;mero inteiro. Para rasters, as zonas s&atilde;o definidas com base em todas as localiza&ccedil;&otilde;es na entrada que possuem o mesmo valor de c&eacute;lula. Para elementos, as zonas podem ser sobrepostas. As &aacute;reas n&atilde;o t&ecirc;m de ser cont&iacute;guas.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Campo de zona</h2></div>
         <hr/>
         <div>
-            <p>Este &eacute; o atributo da camada que ser&aacute; utilizado para definir os limites das zona (&aacute;reas).
+            <p>O campo que cont&eacute;m os valores que definem cada zona.
             </p>
-            <p>Por exemplo, suponha que a primeira camada de entrada define os limites de unidades de gest&atilde;o, com atributos que definem a regi&atilde;o, o distrito e a ID de parcela de cada unidade. Tem ainda uma camada raster que define um &iacute;ndice de biodiversidade para cada local. Com o campo que selecionar, pode decidir calcular a biodiversidade m&eacute;dia a n&iacute;vel local, distrital ou regional.
+            <p>Pode ser um n&uacute;mero inteiro ou um campo de string do conjunto de dados de zona.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Selecionar raster de valor</h2></div>
         <hr/>
         <div>
-            <p>As c&eacute;lulas raster nesta camada ser&atilde;o resumidas pelas &aacute;reas (zonas) em que se incluem.
+            <p>O raster que cont&eacute;m os valores nos quais se deve calcular uma estat&iacute;stica.
+            </p>
+            <p>Pode ser n&uacute;mero inteiro ou ponto flutuante. No entanto, quando &eacute; do tipo ponto flutuante, as op&ccedil;&otilde;es para calcular maioria, minoria e variedade n&atilde;o estar&atilde;o dispon&iacute;veis.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignorar NoData em cálculos (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Especifica se os valores em NoData s&atilde;o ou n&atilde;o ignorados na an&aacute;lise.
-                <ul>
-                    <li>Selecionado &mdash; A an&aacute;lise incluir&aacute; as c&eacute;lulas que possuem um valor no raster de valor de entrada dentro de qualquer zona particular para determinar o valor de sa&iacute;da para aquela zona. As c&eacute;lulas NoData no raster de valor ser&atilde;o ignoradas no c&aacute;lculo estat&iacute;stico. Isto &eacute; por omiss&atilde;o.
-                    </li>
-                    <li>N&atilde;o Selecionado &mdash; A an&aacute;lise resultar&aacute; em NoData se existirem valores NoData para as c&eacute;lulas do raster de valor dentro de uma zona particular.
-                    </li>
-                </ul>
-                
+            <p> Especifica se os valores em NoData s&atilde;o ou n&atilde;o ignorados na an&aacute;lise.
             </p>
+            <ul>
+                <li>Selecionado &mdash; A an&aacute;lise incluir&aacute; as c&eacute;lulas que possuem um valor no raster de valor de entrada dentro de qualquer zona particular para determinar o valor de sa&iacute;da para aquela zona. As c&eacute;lulas NoData no raster de valor ser&atilde;o ignoradas no c&aacute;lculo estat&iacute;stico. Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li>N&atilde;o Selecionado &mdash; A an&aacute;lise resultar&aacute; em NoData se existirem valores NoData para as c&eacute;lulas do raster de valor dentro de uma zona particular.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Especifica o tipo estat&iacute;stico a calcular.
             </p>
-            <p>A entrada pode ser uma das seguintes:  <b>Tudo</b>, <b>M&eacute;dia</b>, <b>Maioria</b>, <b>M&aacute;ximo</b>, <b>Mediana</b>, <b>M&iacute;nimo</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Intervalo</b>, <b>Desvio Padr&atilde;o</b>, <b>Soma</b>, <b>Variedade</b>, <b>M&iacute;nimo e M&aacute;ximo</b>, <b>M&eacute;dia e Desvio Padr&atilde;o</b> ou <b>M&iacute;nimo, M&aacute;ximo e M&eacute;dia</b>. A predefini&ccedil;&atilde;o &eacute; <b>Tudo</b>.
-            </p>
-            <p>Se o raster de valor de entrada for um n&uacute;mero inteiro, por predefini&ccedil;&atilde;o, todas as estat&iacute;sticas ser&atilde;o calculadas. Se o raster de valor for do tipo ponto flutuante, por predefini&ccedil;&atilde;o, todas as estat&iacute;sticas exceto  <b>Mediana</b> e <b>Percentil</b> ser&atilde;o calculadas. 
-            </p>
-            <p>Se o raster de valor de entrada for do tipo ponto flutuante, os c&aacute;lculos de zona para  <b>Maioria</b>, <b>Minoria</b> e <b>Variedade</b> n&atilde;o podem ser calculados.
+            <p> A entrada pode ser uma das seguintes: <b>Tudo</b>, <b>M&eacute;dia</b>, <b>Maioria</b>, <b>M&aacute;ximo</b>, <b>Mediana</b>, <b>M&iacute;nimo</b>, <b>Minoria</b>, <b>Percentil</b>, <b>Intervalo</b>, <b>Desvio Padr&atilde;o</b>, <b>Soma</b>, <b>Variedade</b>, <b>M&iacute;nimo e M&aacute;ximo</b>, <b>M&eacute;dia e Desvio Padr&atilde;o</b> ou <b>M&iacute;nimo, M&aacute;ximo e M&eacute;dia</b>. A predefini&ccedil;&atilde;o &eacute; <b>Tudo</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Valores de percentil (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Os percentis a calcular. Um &uacute;nico valor ou uma lista de valores podem ser especificados. A predefini&ccedil;&atilde;o &eacute; 90, indicando o 90.&ordm; percentil.
+            <p>O percentil a calcular. A predefini&ccedil;&atilde;o &eacute; 90, indicando o 90.&ordm; percentil.
             </p>
-            <p>O intervalo dos valores &eacute; de 0 a 100. O resultado da especifica&ccedil;&atilde;o do 0.&ordm; percentil &eacute; essencialmente equivalente &agrave; estat&iacute;stica m&iacute;nimo e o 100.&ordm; percentil &eacute; equivalente a m&aacute;ximo. Um valor de 50 ir&aacute; essencialmente produzir o mesmo resultado que a estat&iacute;stica mediana.
+            <p>O intervalo pode variar entre 0 e 100. O resultado da especifica&ccedil;&atilde;o do 0.&ordm; percentil &eacute; essencialmente equivalente &agrave; estat&iacute;stica m&iacute;nimo e o 100.&ordm; percentil &eacute; equivalente a m&aacute;ximo. Um valor de 50 ir&aacute; essencialmente produzir o mesmo resultado que a estat&iacute;stica mediana.
             </p>
-            <p>sta op&ccedil;&atilde;o s&oacute; &eacute; suportada se o par&acirc;metro  <b>Tipo de Estat&iacute;stica</b> estiver definido como <b>Percentil</b> ou <b>Tudo</b>.
+            <p> Este par&acirc;metro s&oacute; &eacute; suportado se o par&acirc;metro <b>Tipo de estat&iacute;stica</b> estiver definido como <b>Percentil</b> ou <b>Tudo</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Tipo de interpolação de percentil (opcional)</h2></div>
         <hr/>
         <div>
-            
             <p>Especifica o m&eacute;todo de interpola&ccedil;&atilde;o de percentil a ser usado quando o n&uacute;mero de valores do raster de entrada a ser calculado &eacute; par.
-            </p> 
-            <p>Se o raster de valor de entrada for do tipo p&iacute;xel inteiro, o m&eacute;todo  <b>Mais pr&oacute;ximo</b> &eacute; usado. Se o raster de valor de entrada for do tipo p&iacute;xel de ponto flutuante, o m&eacute;todo <b>Linear</b> &eacute; usado. Isto &eacute; por omiss&atilde;o.
             </p>
-            <p>Para o m&eacute;todo  <b>Mais pr&oacute;ximo</b>, &eacute; usado o valor dispon&iacute;vel mais pr&oacute;ximo do percentil pretendido. Para o m&eacute;todo <b>Linear</b>, &eacute; usada a m&eacute;dia ponderada dos dois valores circundantes do percentil.
-            </p> 
+            <ul>
+                <li>  <b>Detetar Automaticamente</b> &mdash; Se o raster de valor de entrada for do tipo p&iacute;xel inteiro, o m&eacute;todo <b>Mais pr&oacute;ximo</b> ser&aacute; usado. Se o raster de valor de entrada for do tipo p&iacute;xel de ponto flutuante, o m&eacute;todo <b>Linear</b> ser&aacute; usado. Isto &eacute; por omiss&atilde;o.
+                </li>
+                <li> <b>Mais pr&oacute;ximo</b> &mdash; O valor dispon&iacute;vel mais pr&oacute;ximo do percentil pretendido.
+                </li>
+                <li> <b>Linear</b> &mdash; A m&eacute;dia ponderada dos dois valores circundantes do percentil pretendido.
+                </li>
+            </ul>
+            
+            <p> Este par&acirc;metro s&oacute; &eacute; suportado se o par&acirc;metro <b>Tipo de estat&iacute;stica</b> estiver definido como <b>Percentil</b> ou <b>Tudo</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Processar como multidimensional (opcional)</h2></div>
         <hr/>
         <div>
-            <p>Especifica como os rasters de entrada ser&atilde;o processados se forem multidimensionais.
+            <p>Especifica como os servi&ccedil;os de imagem multidimensional de entrada ser&atilde;o processados se forem multidimensionais.
             </p>
             <ul>
                 <li>Selecionado &mdash; as estat&iacute;sticas ser&atilde;o calculadas a partir da sec&ccedil;&atilde;o atual do conjunto de dados multidimensional de entrada. Isto &eacute; por omiss&atilde;o.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
+            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
             </p>
         </div>
     </div>

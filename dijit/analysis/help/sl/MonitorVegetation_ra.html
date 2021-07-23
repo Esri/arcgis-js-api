@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Izberi večpasovni rastrski sloj. Prepričajte se, da ima vhodni raster na voljo ustrezne pasove.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Izberi način za monitoring vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Izberite metodo za ustvarjanje sloja indeksa vegetacije. Različni indeksi vegetacije lahko pomagajo poudariti določene značilnosti ali zmanj&scaron;ati različne &scaron;ume.
+            <p>Izberite metodo za izračun sloja indeksa vegetacije. Različni indeksi vegetacije lahko pomagajo poudariti določene značilnosti ali zmanj&scaron;ati različne &scaron;ume.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Proces Sultanove formule vzame &scaron;estpasovno 8-bitno sliko in na njej upora
 Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive svetlosti tal ob predpostavki, da ima linija tal poljuben naklon in odsek.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI je indeks vegetacije, ki ocenjuje prisotnost vegetacije z uporabo informacij samo iz vidnega spekta. Ta metoda zahteva pasove v rdečih, zelenih in modrih delih spektra.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Določi indekse pasu NIR in rdečega pasu</h2></div>
+        <div><h2>Določite indekse pasu NIR in rdečega pasu</h2></div>
         <hr/>
         <div>
-            <p>Določi pasovne indekse za NIR in rdeče pasove.
+            <p>Določite pasovne indekse za NIR in rdeče pasove.
             </p>
-            <p>Vsak satelitski senzor in zračna kamera zajemajo informacije, ki so razčlenjene v pasovne indekse. Vsak pasovni indeks vsebuje informacije za določen del elektromagnetnega spektra. Ta metoda za opazovanje vegetacije zahteva določitev pasovnega indeksa, ki je zajel NIR in rdeče valovne dolžine.
+            <p>Večpasovni satelit ali zračni senzorji zajemajo informacije, ki so razdeljene v pasove valovne dolžine, ki so identificirani s pasovnimi indeksi. Ta metoda nadzora vegetacije zahteva, da določite pasovne indekse za pasove valovne dolžine bližnjega infrardečega (NIR) in rdečega spektra.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Določite indekse rdečega, zelenega in modrega pasu</h2></div>
+        <hr/>
+        <div>
+            <p>Določite pasovne indekse rdečega, zelenega in modrega pasu.
+            </p>
+            <p>Večpasovni satelit ali zračni senzorji zajemajo informacije, ki so razdeljene v pasove valovne dolžine, ki so identificirani s pasovnimi indeksi. Vidni atmosfersko odporni indeks zahteva, da določite pasovne indekse za rdeče, zelene in modre pasovne valovne dolžine.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Določite indekse za modre, rdeče, NIR, SWIR-1 in toplotne pasove</h2></div>
+        <hr/>
+        <div>
+            <p>Določite pasovne indekse za morde, rdeče, bližnje infrardeče (NIR), kratkovalovne infrardeče (SWIR) in toplotne pasove.
+            </p>
+            <p>Večpasovni satelit ali zračni senzorji zajemajo informacije, ki so razdeljene v pasove valovne dolžine, ki so identificirani s pasovnimi indeksi. Indeks sultanove formule zahteva, da določite pasovne indekse za modre, rdeče, bližnje infrardeče (NIR), kratkovalovne infrardeče (SWIR) in toplotne pasove valovne dolžine.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Določite indekse za modre, zelene, rdeče, NIR, SWIR-1 in SWIR-2 pasove</h2></div>
+        <hr/>
+        <div>
+            <p>Določite pasovne indekse za modre, zelene, rdeče, NIR, SWIR-1 in SWIR-2 pasove.
+            </p>
+            <p>Večpasovni satelit ali zračni senzorji zajemajo informacije, ki so razdeljene v pasove valovne dolžine, ki so identificirani s pasovnimi indeksi. Indeks zelene vegetacije zahteva, da določite pasovne indekse za modre, rdeče, bližnje infrardeče (NIR), kratkovalovne infrardeče 1 (SWIR) in kratkovalovne infrardeče 2 (SWIR-2) pasove valovne dolžine.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
         <div><h2>Količina pokrova zelene vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Določi količino pokrova zelene vegetacije, ki je zahtevana za metodo SAVI.
+            <p>Navaja količino pokritosti zelene vegetacije, ki je potrebna za metodo indeksa s prstjo prilagojene vegetacije.
             </p>
             <p>Veljavne vrednosti so naslednje:
                 <ul>
@@ -172,8 +206,7 @@ Transformed-SAVI je vegetacijski indeks, ki posku&scaron;a minimizirati vplive s
             
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
-            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
-            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>. Če imate pravice za ustvarjanje slojev s ploščicami in dinamičnimi slikami, lahko določite tudi katero vrsto sloja želite ustvariti v izhodu z uporabo spustnega menija Shrani rezultat kot. </p>
         </div>
     </div>
 </div>

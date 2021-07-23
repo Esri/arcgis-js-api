@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","dojox/gfx/_base","../kernel","./Symbol"],(function(s,t,e,i,o,n){var f=s(n,{declaredClass:"esri.symbol.MarkerSymbol",angle:0,xoffset:0,yoffset:0,size:12,constructor:function(s){s&&t.isObject(s)&&(this.size="auto"===this.size?this.size:i.pt2px(this.size),this.xoffset=i.pt2px(this.xoffset),this.yoffset=i.pt2px(this.yoffset),this.angle&&(this.angle=-1*this.angle))},setAngle:function(s){return this.angle=s,this},setSize:function(s){return this.size=s,this},setOffset:function(s,t){return this.xoffset=s,this.yoffset=t,this},toJson:function(){var s=i.px2pt(this.size);s=isNaN(s)?void 0:s;var e=i.px2pt(this.xoffset);e=isNaN(e)?void 0:e;var o=i.px2pt(this.yoffset);return o=isNaN(o)?void 0:o,t.mixin(this.inherited("toJson",arguments),{size:"auto"===this.size?this.size:s,angle:this.angle&&-1*this.angle,xoffset:e,yoffset:o})}});return e("extend-esri")&&t.setObject("symbol.MarkerSymbol",f,o),f}));

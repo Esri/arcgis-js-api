@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({clustersLabel:"Klaszterek keresése a(z) ${inputLayerName} réteghez.",chooseLayerLabel:"Válassza ki a réteget, amelyhez meg szeretné találni a klasztereket",minClusterPtsLabel:"A pontok minimális száma a klaszterként történő értelmezéshez",minClustersPtsGAXLbl:"A pontok minimális száma klaszter létrehozásához",limitSearchLabel:"Keresési tartomány korlátozása erre (opcionális):",limitSearchReqLabel:"Keresési tartomány korlátozása erre:",outputLayerName:"Klaszterek keresése a(z) ${inputLayerName} réteghez",itemDescription:"A Pontklaszterek keresése függvény futtatásából létrehozott vektoros réteg a(z) ${inputLayerName} réteghez.",itemTags:"Elemzés végeredménye, Pontklaszterek keresése, ${inputLayerName}",itemSnippet:"Pontklaszterek keresése függvény alapján létrehozott vektoros réteg",chooseClusteringMethod:"Válassza ki a használandó klaszterezési módszert",dbscanLabel:"Meghatározott távolság (DBSCAN)",hdbscanLabel:"Önbeállítás (HDBSCAN)",useTimeToFindCLusters:"Idő használata klaszter keresésére",limitSearchDurLabel:"Keresés időtartamának korlátozása erre:"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Raster- oder Feature-Quell-Layer auswählen, von dem ausgehend Pfade ermittelt werden sollen",inputCostRasterLabel:"Reisekosten-Raster-Layer auswählen",inputDestinationLayerLabel:"Raster- oder Feature-Ziel-Layer auswählen, zu dem Pfade ermittelt werden sollen",pathTypeLabel:"Typ der zu ermittelnden Pfade auswählen (optional)",bestSingle:"Der Beste",eachCell:"Zu jeder Zelle",eachZone:"Zu jeder Zone",destinationField:"Feld zum Abrufen von Werten für die Zielpositionen auswählen",outputPolylineName:"Name der Ergebnis-Polylinie",outputLayerName:"Optimale Reisekosten als Polylinie von ${layername}",drawDestinationPointLayerName:"Zielpunkte",drawSourcePointLayerName:"Quellpunkte",itemDescription:'Über "Reisekostenpfad als Polylinie ermitteln" für ${layername} erstellter Feature-Layer. ',itemTags:"Analyseergebnis, Reisekostenpfad als Polylinie ermitteln, ${layername} ${fieldname}",itemSnippet:"Über 'Reisekostenpfad als Polylinie ermitteln' erstellter Feature-Layer.",missingMessage:"Ziel-Layer und Quell-Layer dürfen nicht identisch sein",noValueMessage:"Dieser Wert muss angegeben werden",placeHolder:"--Layer auswählen--"});

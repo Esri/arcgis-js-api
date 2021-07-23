@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Monitorovat vegetaci</h2><p/>
+        <h2>Monitorovat vegetaci (Monitor Vegetation)</h2><p/>
         <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="N&aacute;stroj Monitorovat vegetaci pro port&aacute;l"></h2>
         <hr/>
     <p>Tento n&aacute;stroj provede aritmetickou operaci s&nbsp;p&aacute;smy v&iacute;cep&aacute;smov&eacute; rastrov&eacute; vrstvy, aby zjistil informace o pokryt&iacute; vegetac&iacute; v&nbsp;z&aacute;jmov&eacute; oblasti.
@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Zvolte v&iacute;cep&aacute;smovou rastrovou vrstvu. Ujistěte se, že vstupn&iacute; vrstva m&aacute; k&nbsp;dispozici př&iacute;slu&scaron;n&aacute; p&aacute;sma.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Zvolte způsob monitorování vegetace</h2></div>
         <hr/>
         <div>
-            <p>Vyberte metodu vytvořen&iacute; vrstvy vegetačn&iacute;ho indexu. Různ&eacute; vegetačn&iacute; indexy mohou pomoci zv&yacute;raznit určit&eacute; prvky nebo omezit různ&eacute; druhy &scaron;umu.
+            <p>Zvolte metodu v&yacute;počtu vrstvy vegetačn&iacute;ho indexu. Různ&eacute; vegetačn&iacute; indexy mohou pomoci zv&yacute;raznit určit&eacute; prvky nebo omezit různ&eacute; druhy &scaron;umu.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 je vegetačn&iacute; index, kter&yacute; se snaž&iacute; minimalizovat v
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI je standardizovan&yacute; index, kter&yacute; v&aacute;m umožňuje vygenerovat obr&aacute;zek zobrazuj&iacute;c&iacute; zelenost či relativn&iacute; biomasu. Tento index využ&iacute;v&aacute; kontrastu charakteristik dvou p&aacute;sem z&nbsp;multispektr&aacute;ln&iacute; rastrov&eacute; datov&eacute; sady: absorpce chlorofylov&eacute;ho barviva v&nbsp;červen&eacute;m p&aacute;smu a vysok&eacute; odrazivosti rostlinn&yacute;ch materi&aacute;lů v&nbsp;bl&iacute;zk&eacute;m infračerven&eacute;m (NIR) p&aacute;smu.
+NDVI je standardizovan&yacute; index, kter&yacute; v&aacute;m umožňuje vygenerovat obr&aacute;zek zobrazuj&iacute;c&iacute; zelenost či relativn&iacute; biomasu. Tento index využ&iacute;v&aacute; kontrastu charakteristik dvou p&aacute;sem z&nbsp;multispektr&aacute;ln&iacute; rastrov&eacute; datov&eacute; sady: absorpce chlorofylov&eacute;ho barviva v&nbsp;červen&eacute;m p&aacute;smu a&nbsp;vysok&eacute; odrazivosti rostlinn&yacute;ch materi&aacute;lů v&nbsp;bl&iacute;zk&eacute;m infračerven&eacute;m (NIR) p&aacute;smu.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Proces Sultanův vzorec vytvoř&iacute; z&nbsp;&scaron;estip&aacute;smov&eacute;
 Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iacute; minimalizovat vlivy na jas půdy t&iacute;m, že předpokl&aacute;d&aacute;, že linie půdy m&aacute; arbitr&aacute;rn&iacute; svažitost a intercepci.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI je vegetačn&iacute; index, kter&yacute; odhadnul př&iacute;tomnost vegetace pouze za použit&iacute; informac&iacute; z&nbsp;viditeln&eacute;ho spektra. Tato metoda vyžaduje p&aacute;sma v&nbsp;červen&yacute;ch, zelen&yacute;ch a&nbsp;modr&yacute;ch č&aacute;stech spektra.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Určete indexy pro pásmo NIR a Red</h2></div>
+        <div><h2>Určete indexy pro pásmo NIR a červené pásmo</h2></div>
         <hr/>
         <div>
-            <p>Zadejte indexy p&aacute;sem pro NIR a červen&eacute; p&aacute;smo.
+            <p>Zadejte indexy pro p&aacute;sma NIR a&nbsp;červen&eacute; (R) p&aacute;smo.
             </p>
-            <p>Každ&yacute; satelitn&iacute; senzor a leteck&yacute; fotoapar&aacute;t zachycuje informace, kter&eacute; se děl&iacute; na indexy p&aacute;sem. Každ&yacute; index p&aacute;sma obsahuje informace pro konkr&eacute;tn&iacute; č&aacute;st elektromagnetick&eacute;ho spektra. Tato metoda monitorov&aacute;n&iacute; vegetace vyžaduje, abyste zadali index p&aacute;sma, kter&yacute; zachytil vlnov&eacute; d&eacute;lky NIR a červen&eacute;ho p&aacute;sma.
+            <p>V&iacute;cep&aacute;smov&eacute; satelitn&iacute; nebo leteck&eacute; senzory zachycuj&iacute; informace, kter&eacute; jsou rozloženy do vlnov&yacute;ch d&eacute;lek, kter&eacute; jsou identifikov&aacute;ny pomoc&iacute; indexů p&aacute;sem. Tato metoda monitorov&aacute;n&iacute; vegetace vyžaduje, abyste určili indexy p&aacute;sem pro bl&iacute;zk&eacute; infračerven&eacute; (NIR) a&nbsp;červen&eacute; p&aacute;smo.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Určete indexy červeného, zeleného a modrého pásma</h2></div>
+        <hr/>
+        <div>
+            <p>Zadejte indexy červen&eacute;ho (R), zelen&eacute;ho (G) a&nbsp;modr&eacute;ho (B) p&aacute;sma.
+            </p>
+            <p>V&iacute;cep&aacute;smov&eacute; satelitn&iacute; nebo leteck&eacute; senzory zachycuj&iacute; informace, kter&eacute; jsou rozloženy do vlnov&yacute;ch d&eacute;lek, kter&eacute; jsou identifikov&aacute;ny pomoc&iacute; indexů p&aacute;sem. Viditeln&yacute; atmosf&eacute;ricky resistentn&iacute; index vyžaduje, abyste určili indexy p&aacute;sem pro p&aacute;sma červen&yacute;ch, zelen&yacute;ch a&nbsp;modr&yacute;ch vlnov&yacute;ch d&eacute;lek.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Určete indexy pro následující pásma - modré, červené, NIR, SWIR-1 a termální</h2></div>
+        <hr/>
+        <div>
+            <p>Zadejte indexy p&aacute;sem pro n&aacute;sleduj&iacute;c&iacute; p&aacute;sma - modr&eacute;, červen&eacute;, bl&iacute;zk&eacute; infračerven&eacute; (NIR), kr&aacute;tkovlnn&eacute; infračerven&eacute; (SWIR) a&nbsp;term&aacute;ln&iacute;.
+            </p>
+            <p>V&iacute;cep&aacute;smov&eacute; satelitn&iacute; nebo leteck&eacute; senzory zachycuj&iacute; informace, kter&eacute; jsou rozloženy do vlnov&yacute;ch d&eacute;lek, kter&eacute; jsou identifikov&aacute;ny pomoc&iacute; indexů p&aacute;sem. Index Sultanova vzorce vyžaduje, abyste určili indexy p&aacute;sem pro modr&eacute;, červen&eacute;, bl&iacute;zk&eacute; infračerven&eacute; (NIR), kr&aacute;tkovlnn&eacute; infračerven&eacute; (SWIR) a&nbsp;term&aacute;ln&iacute; vlnov&eacute; d&eacute;lky.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Určete indexy pro následující pásma - modré, zelené, červené, NIR, SWIR-1 a SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Zadejte indexy pro n&aacute;sleduj&iacute;c&iacute; p&aacute;sma - modr&eacute;, zelen&eacute;, červen&eacute;, NIR, SWIR-1 a&nbsp;SWIR-2.
+            </p>
+            <p>V&iacute;cep&aacute;smov&eacute; satelitn&iacute; nebo leteck&eacute; senzory zachycuj&iacute; informace, kter&eacute; jsou rozloženy do vlnov&yacute;ch d&eacute;lek, kter&eacute; jsou identifikov&aacute;ny pomoc&iacute; indexů p&aacute;sem. Index zelen&eacute; vegetace vyžaduje, abyste určili indexy p&aacute;sem pro modr&eacute;, zelen&eacute;, červen&eacute;, bl&iacute;zk&eacute; infračerven&eacute; (NIR), kr&aacute;tkovlnn&eacute; infračerven&eacute; 1 (SWIR-1) a&nbsp;kr&aacute;tkovlnn&eacute; infračerven&eacute; 2 (SWIR-2) vlnov&eacute; d&eacute;lky.
             </p>
         </div>
     </div>
@@ -114,19 +148,19 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div>
             <p>Svažitost linie půdy. Svažitost je přibližn&yacute; line&aacute;rn&iacute; vztah mezi p&aacute;smem NIR a červen&yacute;m p&aacute;smem na rozpt&yacute;len&eacute;m bodov&eacute;m grafu.
             </p>
-            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
+            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; SAVI.
             </p>
         </div>
     </div>
     <div id="interceptOfSoilLine">
-        <div><h2>Průsečík</h2></div>
+        <div><h2>Intercepce</h2></div>
         <hr/>
         <div>
-            <p>Hodnota NIR p&aacute;sma, když hodnota odrazu pro červen&eacute; p&aacute;smo pro konkr&eacute;tn&iacute; linie půdy je 0.
+            <p>Hodnota NIR p&aacute;sma, když hodnota odrazu pro červen&eacute; p&aacute;smo (Red) pro konkr&eacute;tn&iacute; linie půdy je 0.
             </p>
-            <p> <code>(a = NIR - sRed)</code>, když hodnota červen&eacute;ho p&aacute;sma je 0.
+            <p> <code>(a = NIR - sRed)</code>, když hodnota červen&eacute;ho p&aacute;sma (Red) je 0.
             </p> 
-            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index.
+            <p>Tento parametr je platn&yacute; pouze pro metodu Transformovan&yacute; SAVI.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div><h2>Množství zeleného vegetačního krytu</h2></div>
         <hr/>
         <div>
-            <p>Určuje množstv&iacute; zelen&eacute;ho vegetačn&iacute;ho krytu, kter&yacute; je vyžadov&aacute;n pro metodu SAVI.
+            <p>Určuje množstv&iacute; zelen&eacute;ho vegetačn&iacute;ho krytu, kter&yacute; je vyžadov&aacute;n metodou půdně přizpůsoben&eacute;ho vegetačn&iacute;ho indexu (SAVI).
             </p>
             <p>Platn&eacute; hodnoty jsou n&aacute;sleduj&iacute;c&iacute;:
                 <ul>
@@ -159,7 +193,7 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
         <div><h2>Faktor přizpůsobení</h2></div>
         <hr/>
         <div>
-            <p>Určuje faktor přizpůsoben&iacute; pro minimalizaci &uacute;činku půdy, kter&yacute; se vyžaduje metodou Transformovan&yacute; půdně přizpůsoben&yacute; vegetačn&iacute; index. V&yacute;choz&iacute; hodnota je 0,08.
+            <p>Určuje faktor přizpůsoben&iacute; pro minimalizaci &uacute;činku půdy, kter&yacute; je vyžadov&aacute;n metodou Transformovan&yacute; SAVI. V&yacute;choz&iacute; hodnota je 0,08.
             </p>
             <p>N&iacute;zk&aacute; hodnota znamen&aacute;, že &uacute;činek půdy ignorujete. Vysok&aacute; hodnota znamen&aacute;, že půda ovlivn&iacute; v&aacute;&scaron; v&yacute;sledek.
             </p>
@@ -172,8 +206,7 @@ Transformovan&yacute; SAVI je vegetačn&iacute; index, kter&yacute; se snaž&iac
             
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
-            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> . Pokud máte oprávnění k vytváření dlaždicových a dynamických vrstev obrazových dat, můžete specifikovat, jaký typ vrstvy chcete vytvořit ve výstupu pomocí rozbalovacího seznamu Uložit výsledek jako. </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu la capa d'ubicació de ràster o entitat per calcular la distància",inputRaster:"Trieu la capa d'entitats o ràster per representar les barreres (opcional)",maxDistanceLabel:"Distància màxima que es calcularà (opcional)",outputCellSize:"Mida de la cel·la de sortida (opcional)",distanceMethod:"Mètode de distància",resultDistLayerName:"Nom de la capa de distància de resultats",resultDirectionLayerName:"Nom de la capa de direcció de resultats (opcional)",resultAllocationLayerName:"Nom de la capa d'assignació de resultats (opcional)",outputBackDirectionName:"Nom de la capa de direcció inversa de resultats (opcional)",outputLayerName:"Distància calculada de ${layername}",allocationFieldLabel:"Trieu el camp d'assignació (opcional)",itemDescription:"Capa d'entitats generada en executar Calcula la distància a ${layerName}. ",itemTags:"Resultat de l'anàlisi, CalculateDistance, ${layername}, ${fieldname}",itemSnippet:"Capa d'entitats generada des de CalculateDistance.",planar:"Pla",geodesic:"Geodèsic",selectDistance:"-- seleccioneu --"});

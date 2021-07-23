@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Classifica els objectes amb Aprenentatge profund",inputFeaturesLabel:"Trieu la capa web per als objectes (opcional)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Trieu el model d'aprenentatge profund utilitzat per classificar els objectes",modelArgsLabel:"Especifiqueu els arguments del model d'aprenentatge profund",classLabelFieldLabel:"Definiu el nom del camp de l'etiqueta de la classe (opcional)",processingModeLabel:"Mode de processament",processAsMosaicLabel:"Processa com a imatge en mosaic",processAsItemsLabel:"Processa tots els elements de ràster per separat",queryModelArgsMsg:"S'estan consultant els arguments del model...",queryModelArgsErrMsg:"No s'han pogut consultar els arguments del model.",valueLabel:"Valor",nameLabel:"Nom",analysisLayerLabel:"Trieu la imatge utilitzada per classificar objectes",itemDescription:"Servei d'imatges d'anàlisi generat amb l'opció Classifica els objectes amb Aprenentatge profund",itemTags:"Resultat de l'anàlisi del ràster, Classifica els objectes amb Aprenentatge profund, ${layername}",itemSnippet:"Servei d'imatges d'anàlisi generat amb l'opció Classifica els objectes amb Aprenentatge profund"});

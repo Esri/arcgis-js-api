@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Zvolte rastr nebo prvek regionu",inputCostRaster:"Zvolte rastr nákladů (volitelné)",inputBarrierRasterOrFeatures:"Zvolte rastr nebo prvky překážek (volitelné)",distanceMethod:"Metoda výpočtu vzdálenosti (volitelné)",connectionsWithinRegions:"Propojení uvnitř regionů (volitelné)",generateConnections:"Generovat propojení",noConnections:"Žádná propojení",planar:"Rovinná",geoDesic:"Geodetická",outputOptimalLinesName:"Název výsledné vrstvy liniových prvků optimálního propojení",outputNeighborConnectionsName:"Název výsledné vrstvy sousedících spojnic prvků (volitelné)",outputLayerName:"Optimální propojení regionů ${layername}",drawSourcePointLayerName:"Zdrojové body",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Optimální propojení regionů na ${layername}. ",itemTags:"Výsledek analýzy, Optimální propojení regionů, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Optimální propojení regionů.",noValueMessage:"Tato hodnota je povinná"});

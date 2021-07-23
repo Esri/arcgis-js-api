@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Raster- oder Feature-Position-Layer auswählen, zu dem die Entfernung berechnet werden soll",inputRaster:"Raster oder Feature-Layer zum Darstellen von Barrieren auswählen (optional)",maxDistanceLabel:"Maximale Entfernung für die Berechnung (optional)",outputCellSize:"Ausgabe-Zellengröße (optional)",distanceMethod:"Entfernungsmethode",resultDistLayerName:"Name des Ergebnis-Layers für die Entfernung",resultDirectionLayerName:"Name des Ergebnis-Layers für die Richtung (optional)",resultAllocationLayerName:"Name des Ergebnis-Layers für die Allokation (optional)",outputBackDirectionName:"Name des Ergebnis-Layers für die Gegenrichtung (optional)",outputLayerName:"Berechnete Entfernung von ${layername}",allocationFieldLabel:"Zuordnungsfeld auswählen (optional)",itemDescription:"Über 'Entfernung berechnen' für ${layerName} erstellter Feature-Layer. ",itemTags:"Analyseergebnis, CalculateDistance, ${layername} ${fieldname}",itemSnippet:"Über 'CalculateDistance' erstellter Feature-Layer.",planar:"Planar",geodesic:"Geodätisch",selectDistance:"-- Auswählen --"});

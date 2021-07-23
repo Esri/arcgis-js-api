@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Wybierz wielopasmową warstwę rastrową. Upewnij się, że na wejściowej warstwie rastrowej są dostępne odpowiednie pasma.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Wybierz metodę monitorowania roślinności</h2></div>
         <hr/>
         <div>
-            <p>Pozwala wybrać metodę używaną do tworzenia warstwy wskaźnika roślinności. Poszczeg&oacute;lne wskaźniki roślinności ułatwiają wyr&oacute;żnianie określonych obiekt&oacute;w lub redukowanie r&oacute;żnych szum&oacute;w informacyjnych.
+            <p>Wybierz metodę używaną do obliczania warstwy wskaźnika roślinności. Poszczeg&oacute;lne wskaźniki roślinności ułatwiają wyr&oacute;żnianie określonych obiekt&oacute;w lub redukowanie r&oacute;żnych szum&oacute;w informacyjnych.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Proces Formuła Sułtana wykorzystuje 8-bitowy obraz zawierający sześć pasm i
 Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w przypadku kt&oacute;rego podjęto pr&oacute;bę zminimalizowania wpływu jasności obrazu gleb, przyjmując, że linia gleb ma arbitralny spadek i przecięcie.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI jest wskaźnikiem roślinności służącym do szacowania obecności roślinności przy użyciu informacji tylko ze spektrum widzialnego. Metoda ta wymaga pasm w czerwonej, zielonej i niebieskiej części widma.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Określ indeksy pasma NIR i pasma Red</h2></div>
+        <div><h2>Podaj indeksy dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red)</h2></div>
         <hr/>
         <div>
-            <p>Określa indeksy pasm dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red).
+            <p>Podaj indeksy pasm dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red).
             </p>
-            <p>Wszystkie czujniki satelitarne i kamery lotnicze przechwytują informacje podzielone na indeksy pasm. Każdy indeks pasma zawiera informacje dotyczące określonej części spektrum promieniowania elektromagnetycznego. Ta metoda monitorowania roślinności wymaga podania indeksu pasma przechwytującego fale o długości w zakresie bliskiej podczerwieni (NIR) i czerwieni (Red).
+            <p>Wielopasmowe czujniki satelitarne lub lotnicze przechwytują informacje podzielone na pasma według długości fali. Pasma te są identyfikowane za pomocą indeks&oacute;w pasm. Ta metoda monitorowania roślinności wymaga podania indeks&oacute;w pasm dla pasma bliskiej podczerwieni (NIR) i pasma czerwieni (Red).
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Podaj indeksy dla pasm czerwieni (Red), zieleni (Green) i koloru niebieskiego (Blue)</h2></div>
+        <hr/>
+        <div>
+            <p>Podaj indeksy pasm dla pasm czerwieni (Red), zieleni (Green) i koloru niebieskiego (Blue).
+            </p>
+            <p>Wielopasmowe czujniki satelitarne lub lotnicze przechwytują informacje podzielone na pasma według długości fali. Pasma te są identyfikowane za pomocą indeks&oacute;w pasm. Wskaźnik Visible Atmospherically Resistant Index wymaga podania indeks&oacute;w pasm dla pasm o długości fali czerwieni (Red), zieleni (Green) i koloru niebieskiego (Blue).
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Podaj indeksy dla pasm koloru niebieskiego (Blue), czerwonego (Red), NIR, SWIR-1 i pasma termicznego</h2></div>
+        <hr/>
+        <div>
+            <p>Podaj indeksy pasm dla pasm koloru niebieskiego (Blue), czerwonego (Red), bliskiej podczerwieni (NIR), kr&oacute;tkofalowego pasma podczerwieni (SWIR) i pasma termicznego.
+            </p>
+            <p>Wielopasmowe czujniki satelitarne lub lotnicze przechwytują informacje podzielone na pasma według długości fali. Pasma te są identyfikowane za pomocą indeks&oacute;w pasm. Indeks Formuła Sułtana wymaga podania indeks&oacute;w pasm dla pasm o długości fali koloru niebieskiego (Blue), czerwonego (Red), bliskiej podczerwieni (NIR), kr&oacute;tkofalowego pasma podczerwieni (SWIR) i pasma termicznego.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Podaj indeksy dla pasm koloru niebieskiego (Blue), zielonego (Green), czerwonego (Red), NIR, SWIR-1 i SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Podaj indeksy pasm dla pasm koloru niebieskiego (Blue), zielonego (Green), czerwonego (Red), NIR, SWIR-1 i SWIR-2.
+            </p>
+            <p>Wielopasmowe czujniki satelitarne lub lotnicze przechwytują informacje podzielone na pasma według długości fali. Pasma te są identyfikowane za pomocą indeks&oacute;w pasm. Wskaźnik roślinności zielonej (GVI) wymaga podania indeks&oacute;w pasm dla pasm o długości fali koloru niebieskiego (Blue), zielonego (Green), czerwonego (Red), bliskiej podczerwieni (NIR), kr&oacute;tkofalowego pasma podczerwieni 1 (SWIR-1) i kr&oacute;tkofalowego pasma podczerwieni 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
         <div><h2>Wielkość pokrycia roślinnością zieloną</h2></div>
         <hr/>
         <div>
-            <p>Określa stopień pokrycia roślinnością zieloną, ta wielkość jest wymagana w metodzie SAVI.
+            <p>Określa wielkość pokrycia roślinnością zieloną, kt&oacute;ra jest wymagana przez metodę Przetransformowany wskaźnik roślinności dostosowany względem gleby (Transformed Soil-Adjusted Vegetation Index).
             </p>
             <p>Poniżej podano prawidłowe wartości:
                 <ul>
@@ -172,8 +206,7 @@ Przekształcony indeks SAVI (Transformed-SAVI) jest indeksem roślinności, w pr
             
             <p>Nazwa warstwy, kt&oacute;ra zostanie utworzona w obszarze  <b>Moje zasoby</b> i dodana do mapy. Nazwa domyślna jest tworzona w oparciu o nazwę narzędzia i&nbsp;nazwę warstwy wejściowej. Jeśli warstwa już istnieje, wyświetlony zostanie komunikat z monitem o podanie innej nazwy.
             </p>
-            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik.
-            </p>
+            <p>Za pomocą listy rozwijanej  <b>Zapisz wynik w</b> można podać nazwę folderu w obszarze <b>Moje zasoby</b>, gdzie zostanie zapisany wynik. Jeśli masz uprawnienia do tworzenia zarówno kafelkowych, jak i dynamicznych warstw zobrazowań, możesz zdecydować, który typ warstwy ma być używany go generowania danych wynikowych, używając pola rozwijanego Zapisz wyniki jako. </p>
         </div>
     </div>
 </div>

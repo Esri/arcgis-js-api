@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({chooseLayer:"Valitse analysoitava karttataso",chooseField:"Valitse mallinnettava kenttä",chooseExplanatoryField:"Valitse selittävät kentät",chooseNeighborhood:"Valitse, miten naapuruus määritetään",distanceBand:"Etäisyyskaista",numNeighbors:"Naapurien määrä",chooseWeighted:"Valitse, miten vierekkäisiä kohteita painotetaan",bisquare:"Bisquare",gaussian:"Gaussin jakauma",resultLayerName:"Tulostason nimi",outputLayerName:"Maantieteellisesti painotettu regressio ${inputLayerName}",distanceBandWarning:"Etäisyyskaistan arvon on oltava ${min}–${max}",numNeighborsWarning:"Naapureiden määrän on oltava ${min}–${max}",explanatoryFieldsWarning:"Valitse vähintään yksi selittävä kenttä",explanatoryLayerWarning:"Valittu karttataso ei sisällä yhtään kelvollista selittävää kenttää. Valitse toinen karttataso.",inputLayerWarning:"Valittu karttataso ei sisällä yhtään mallinnettavaa numeerista kenttää. Valitse toinen karttataso.",itemDescription:"Kohdekarttataso, joka on luotu Maantieteellisesti painotettu regressio -ratkaisun suorituksen tuloksena.",itemTags:"Analyysin tulos, Maantieteellisesti painotettu regressio, ${inputLayerName}, sovita",itemSnippet:"Kohdekarttataso, joka on luotu Maantieteellisesti painotettu regressio -työkalun avulla"});

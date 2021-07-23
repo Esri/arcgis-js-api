@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Scegliere destinazione raster o feature",destinationField:"Campo di destinazione (opzionale)",inputDistanceAccumulationRaster:"Scegliere raster di accumulo della distanza",inputBackDirectionRaster:"Scegliere direzione contraria o raster di direzione del flusso",pathType:"Tipo percorso (facoltativo)",bestSingle:"Singolo migliore",eachCell:"Ogni cella",eachZone:"Ogni zona",outputFeatureName:"Risultato nome feature layer",outputLayerName:"Percorso ottimale come linea di ${layername}",drawSourcePointLayerName:"Punti di origine",itemDescription:"Feature layer generato dall'esecuzione del percorso ottimale come linea su ${layername}. ",itemTags:"Risultato analisi, percorso ottimale come linea,${layername} ${fieldname}",itemSnippet:"Feature layer generato dal percorso ottimale come linea."});

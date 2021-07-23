@@ -46,15 +46,13 @@
         <hr/>
     <p>Questo strumento riepiloga i valori del raster nell'ambito delle zone di un altro dataset e riporta i risultati in una tabella.
     </p>
-    <p>Di seguito sono riportate alcune applicazioni di esempio:
-    </p>
-    <p>
+    <p>Alcune applicazione d'esempio di questo strumento include il seguente:
         <ul>
-            <li>Dato un layer di confini di stato e la distribuzione di precipitazione media sugli Stati Uniti continentali, calcolare la distribuzione in tutto lo stato di eventi di pioggia estremi utilizzando una lista di valori di percentile.
+            <li>Dati un layer di confini spartiacque e un layer di confini di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ciascuno spartiacque.
                 
 
             </li>
-            <li>Dato un layer di zone ecologiche di sovrapposizione e un layer raster di umidit&agrave; del suolo, calcolare tutte le statistiche supportate all'interno di ogni zona per relazionare le zone con l'umidit&agrave; del suolo disponibile.
+            <li>Dati un layer di lotti di una regione ed un layer di confini di citt&agrave;, &egrave; possibile riepilogare il valore medio di lotti non occupati entro ciascun confine di citt&agrave;.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Scegliere raster di zona o feature</h2></div>
         <hr/>
         <div>
-            <p>Il layer che definisce i confini delle zone o aree che verranno riepilogati.
+            <p>L'input che definisce i confini delle zone o aree che verranno riepilogate.
             </p>
-            <p>Il layer pu&ograve; essere un raster intero o dati feature. Per i raster, le zone sono definite da tutte le posizioni nell'input aventi lo stesso valore di cella. Per feature, le zone possono essere sovrapposte. Le aree non devono essere contigue.
+            <p>L'input pu&ograve; essere un raster intero o dati feature. Per i raster, le zone sono definite da tutte le posizioni nell'input aventi lo stesso valore di cella. Per feature, le zone possono essere sovrapposte. Le aree non devono essere contigue.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Campo Zona</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; l'attributo del layer che verr&agrave; utilizzato per definire i confini delle zone (aree).
+            <p>Il campo che contiene i valori che definiscono ogni zona.
             </p>
-            <p>Si supponga, ad esempio, che il primo layer di input definisca i confini dell'unit&agrave; di gestione, con attributi che definiscono la regione, il distretto e l'ID particella di ciascuna unit&agrave;. Si dispone anche di un layer raster che definisce un indice di biodiversit&agrave; per ciascuna posizione. Con il campo selezionato, &egrave; possibile decidere di calcolare la biodiversit&agrave; media a livello locale, di distretto o di regione.
+            <p>Pu&ograve; essere un campo intero o stringa del dataset di zona.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Scegliere un raster valore</h2></div>
         <hr/>
         <div>
-            <p>Le celle raster in questo layer saranno riepilogate in base alle aree (zone) comprese.
+            <p>Il raster che contiene i valori su cui calcolare una statistica.
+            </p>
+            <p>Pu&ograve; essere sia intero o un punto e virgola. Tuttavia, quando &egrave; un tipo di punto e virgola, le opzioni per calcolare la maggioranza, la minoranza e la variet&agrave; sar&agrave; disponibile.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignorare i NoData nei calcoli (opzionale)</h2></div>
         <hr/>
         <div>
-            <p>Specifica se i valori NoData vengono ignorati nell'analisi.
-                <ul>
-                    <li>Selezionato: l'analisi includer&agrave; le celle che hanno un valore nel raster valore di input all'interno di ogni zona particolare per determinare il valore di output per quella zona. Le celle NoData nel raster valore saranno ignorate nel calcolo statistico. Si tratta dell'impostazione predefinita.
-                    </li>
-                    <li>Non selezionato: l'analisi risulter&agrave; in NoData se ci sono dei valori NoData per le celle del raster di valore all'interno di una zona particolare.
-                    </li>
-                </ul>
-                
+            <p> Specifica se i valori NoData vengono ignorati nell'analisi.
             </p>
+            <ul>
+                <li>Selezionato: l'analisi includer&agrave; le celle che hanno un valore nel raster valore di input all'interno di ogni zona particolare per determinare il valore di output per quella zona. Le celle NoData nel raster valore saranno ignorate nel calcolo statistico. Si tratta dell'impostazione predefinita.
+                </li>
+                <li>Non selezionato: l'analisi risulter&agrave; in NoData se ci sono dei valori NoData per le celle del raster di valore all'interno di una zona particolare.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Specifica il tipo di statistica da calcolare.
             </p>
-            <p>L'input pu&ograve; essere uno dei seguenti:  <b>Tutti</b>, <b>Medio</b>, <b>Maggioranza</b>, <b>Massimo</b>, <b>Mediano</b>, <b>Minimo</b>, <b>Minoranza</b>, <b>Percentile</b>, <b>Intervallo</b>, <b>Deviazione standard</b>, <b>Somma</b>, <b>Variet&agrave;</b>, <b>Minimo e massimo</b>, <b>Deviazione media e standard</b> o <b>Minimo, massimo e medio</b>. L'impostazione predefinita &egrave; <b>Tutti</b>.
-            </p>
-            <p>Se il raster valore di input &egrave; intero, per impostazione predefinita, tutte le statistiche verranno calcolate. Se il raster di valore &egrave; di tipo virgola mobile, per impostazione predefinita, tutte le statistiche tranne  <b>Mediano</b> e <b>Percentile</b> verranno calcolate. 
-            </p>
-            <p>Se il raster di valore input &egrave; di tipo virgola mobile, i calcoli delle zone per  <b>Maggioranza</b>, <b>Minoranza</b> e <b>Variet&agrave;</b> non pu&ograve; essere calcolato.
+            <p> L'input pu&ograve; essere uno dei seguenti: <b>Tutti</b>, <b>Medio</b>, <b>Maggioranza</b>, <b>Massimo</b>, <b>Mediano</b>, <b>Minimo</b>, <b>Minoranza</b>, <b>Percentile</b>, <b>Intervallo</b>, <b>Deviazione standard</b>, <b>Somma</b>, <b>Variet&agrave;</b>, <b>Minimo e massimo</b>, <b>Deviazione media e standard</b> o <b>Minimo, massimo e medio</b>. L'impostazione predefinita &egrave; <b>Tutti</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Valori percentile (opzionale)</h2></div>
         <hr/>
         <div>
-            <p>Le percentuali da calcolare. Un valore singolo o una lista di valori pu&ograve; essere specificata. Il valore predefinito &egrave; 90 , che indica il 90esimo percentile.
+            <p>Il percentile da calcolare. Il valore predefinito &egrave; 90 , che indica il 90esimo percentile.
             </p>
-            <p>I valori spaziano da 0 a 100. Il risultati di specificazione del percentile 0 &egrave; essenzialmente equivalente a quello della statistica minima e il percentile 100 &egrave; equivalente al massimo. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
+            <p>Il valore pu&ograve; spaziare da 0 a 100. Il risultati di specificazione del percentile 0 &egrave; essenzialmente equivalente a quello della statistica minima e il percentile 100 &egrave; equivalente al massimo. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
             </p>
-            <p>Questa opzione &egrave; supportata solamente se il parametro  <b>Tipo di statistiche</b> &egrave; impostato su <b>Percentile</b> o <b>Tutti</b>.
+            <p> Questo parametro &egrave; supportato solo se il parametro <b>Tipo statistiche</b> &egrave; impostato su <b>Percentile</b> o <b>Tutti</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Tipo di interpolazione percentile (opzionale)</h2></div>
         <hr/>
         <div>
-            
             <p>Specifica il metodo di interpolazione percentile da utilizzare quando il numero di valori dal raster di input da calcolare &egrave; pari.
-            </p> 
-            <p>Se il valore di input raster &egrave; di tipo pixel intero, viene utilizzato il metodo  <b>Pi&ugrave; vicino</b>. Se il raster di valore di input &egrave; di tipo punto pixel mobile, allora viene usare il metodo <b>Lineare</b>. Si tratta dell'impostazione predefinita.
             </p>
-            <p>Per il metodo  <b>Pi&ugrave; vicino</b>, il valore disponibile pi&ugrave; vicino al percentile desiderato &egrave; utilizzato. Per il metodo <b>Lineare</b>, la media pesata dei due valori circostanti dal percentile desiderato &egrave; utilizzata.
-            </p> 
+            <ul>
+                <li>  <b>Rileva Automaticamente</b>: se il raster valore di input &egrave; di tipo pixel intero, il metodo <b>Pi&ugrave; vicino</b> &egrave; usato. Se il raster di valore di input &egrave; di tipo punto pixel mobile, il metodo <b>Lineare</b> &egrave; usato. Si tratta dell'impostazione predefinita.
+                </li>
+                <li> <b>Pi&ugrave; vicino</b>: il valore disponibile pi&ugrave; vicino alla percentile desiderata &egrave; usato.
+                </li>
+                <li> <b>Lineare</b>: la media pesata di due valori circostanti dalla percentile desiderata &egrave; usata.
+                </li>
+            </ul>
+            
+            <p> Questo parametro &egrave; supportato solo se il parametro <b>Tipo statistiche</b> &egrave; impostato su <b>Percentile</b> o <b>Tutti</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Processo come multidimensionale (opzionale)</h2></div>
         <hr/>
         <div>
-            <p>Specifica il modo in cui vengono eleborati i raster di input se sono multidimensionali.
+            <p>Specifica come i servizi di immagine di input multidimensionale saranno processati se sono multidimensionali.
             </p>
             <ul>
                 <li>Selezionato: le statistiche verranno calcolate dalla porzione corrente del dataset multidimensionale di input. Si tratta dell'impostazione predefinita.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
+            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
             </p>
         </div>
     </div>

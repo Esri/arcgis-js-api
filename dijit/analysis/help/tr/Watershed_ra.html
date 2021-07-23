@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
-        <h2>Su Toplama</h2><p/>
+    <div id="toolDescription" class="smallsize">
+        <h2>Boşaltma Havzası</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Su Toplama g&ouml;revi"></h2>
         <hr/>
     <p>Bu ara&ccedil;, rasterdaki h&uuml;crelerin k&uuml;mesi &uuml;zerinde eklenen alanları belirler.
     </p>
-    <p>Bir su havzası, akışı - genellikle su akışı - k&uuml;melenmiş olarak ortak bir &ccedil;ıkışa doğru destekleyen yukarı eğimli bir alandır. Daha b&uuml;y&uuml;k bir su havzasının par&ccedil;ası olabilir ve ayrıca alt havza olarak adlandırılan daha k&uuml;&ccedil;&uuml;k su havzaları i&ccedil;erebilir.
-    </p>
-    <p>Her bir su havzasının değeri, girdi rasterındaki veya detay d&ouml;kme noktası katmanındaki kaynağın değerinden alınacaktır. D&ouml;kme noktası bir raster veri k&uuml;mesi olduğunda, h&uuml;cre değerleri varsayılan olarak kullanılır. D&ouml;kme noktası bir nokta detay veri k&uuml;mesi olduğunda, değerler belirtilen alandan gelir.
-    </p>
-    <p>Su Havzası aracı sadece bir D8 girdi akış y&ouml;n&uuml; raster katmanını destekler.
-    </p>
-    <p>Girdi d&ouml;kme noktası konumlarını detay verileri olarak belirtirken, varsayılan alan ge&ccedil;erli ilk alan olacaktır. Ge&ccedil;erli bir alan yoksa, ObjectID alanı (&ouml;rneğin, OID veya FID) varsayılan olacaktır.
+    <p> Louisiana'daki Mississippi Nehri &uuml;zerindeki bir girdi noktası, New York'tan Montana'ya ve Kanada'ya kadar uzanan alanları kapsayan bir su havzası detayı oluşturur.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Her h&uuml;crenin akış y&ouml;n&uuml;n&uuml; g&ouml;steren girdi rasterıdır.
             </p>
-            <p>Akış y&ouml;n&uuml; rasterı, RasterAnalysisTools servisindeki Akış Y&ouml;n&uuml; aracı veya FlowDirection (Akış Y&ouml;n&uuml;) g&ouml;revi kullanılarak oluşturulabilir, varsayılan akış y&ouml;n&uuml; t&uuml;r&uuml;  <b>D8</b> kullanılarak &ccedil;alıştırılabilir.
+            <p>Akış y&ouml;n&uuml; rasterı, Akış Y&ouml;n&uuml; rasterı fonksiyonu kullanılarak oluşturulabilir ve varsayılan akış y&ouml;n&uuml; tipi  <b>D8</b>'dir.
             </p>
         </div>
     </div>
@@ -72,17 +66,17 @@
         <div>
             <p>Girdi d&ouml;kme noktası konumları.
             </p>
-            <p>Bir raster i&ccedil;in bu, katkıda bulunan alanın veya havzanın belirleneceği yukarıdaki h&uuml;creleri temsil eder. NoData (Verisiz) olmayan t&uuml;m h&uuml;creler, kaynak h&uuml;creler olarak kullanılacaktır. Bir nokta girişi i&ccedil;in bu, katkıda bulunan alanın veya havzanın belirleneceği yukarıdaki konumları temsil eder.
+            <p>Bu bir raster veya nokta detayı olabilir. Bir raster i&ccedil;in bu, katkıda bulunan alanın veya havzanın belirleneceği yukarıdaki h&uuml;creleri temsil eder. NoData (Verisiz) olmayan t&uuml;m h&uuml;creler, kaynak h&uuml;creler olarak kullanılacaktır. Bir nokta girişi i&ccedil;in bu, katkıda bulunan alanın veya havzanın belirleneceği yukarıdaki konumları temsil eder.
             </p>
         </div>
     </div>
     <div id="pourPointField">
-        <div><h2>Dökme noktası alanını seçin</h2></div>
+        <div><h2>Akış noktası rasterını seçin</h2></div>
         <hr/>
         <div>
             <p>Alan, d&ouml;kme noktası konumlarına değer atamak i&ccedil;in kullanılır.
             </p>
-            <p>Girdi d&ouml;kme noktası katmanı bir raster ise, Değer kullanılır. Eğer detay ise sayısal bir alan kullanılır. Alan kayan noktalı değerler i&ccedil;eriyorsa, bu değerler tamsayı olacak şekilde kesilecektir.
+            <p>Girdi d&ouml;kme noktası katmanı bir raster ise,  <i>Value</i> kullanılır. Eğer detay ise sayısal bir alan kullanılır. Alan kayan noktalı değerler i&ccedil;eriyorsa, bu değerler tamsayı olacak şekilde kesilecektir.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
-            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
-            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz. Hem döşemeli hem de dinamik görüntü katmanları oluşturma ayrıcalıklarınız varsa, Sonucu farklı kaydet açılır kutusunu kullanarak çıktıda hangi katman türünün oluşturulacağını belirtebilirsiniz. </p>
         </div>
     </div>
 </div>

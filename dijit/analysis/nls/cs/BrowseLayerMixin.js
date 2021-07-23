@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Vyberte vrstvu analýzy Living Atlas",customAnalysisLayerTitle:"Zvolte vrstvu analýzy",searchPlaceholderText:"Prohledat vrstvy analýzy Living Atlas",searchCustomPlaceholderText:"Prohledat vrstvy analýzy",mainActionTitle:"Vybrat",customActionName:"Vybrat a přidat do mapy",customeSectionName:"Vrstvy analýzy Living Atlas",Categories:"Kategorie",boundaries:"Hranice",places:"Místa",boundariesAndPlaces:"Hranice a lokality světa",hexbins:"Šestnáctkové přihrádky",transportation:"Doprava",point:"Bodové vrstvy",line:"Liniové vrstvy",polygon:"Polygonové vrstvy",pointFilterName:"Bod",lineFilterName:"Polylinie",polygonFilterName:"Polygon",multiPointFilterName:"Vícenásobné body",geometryFilterName:"Geometrie",featureLayerName:"Vrstva prvků",tableLayerName:"Tabulka",itemTypeFilterName:"Typ položky",instantFilterName:"Okamžik",intervalFilterName:"Interval",timeFilterName:"Čas",edit:"Upravit",boundaryLayers:"Vrstva hranic Esri",customAnalysisGroupName:"Skupina organizace pro analýzu"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή θέματος προς περιγραφή",summaryTypes:"Τύποι σύνοψης",centralFeature:"Κεντρικό στοιχείο",meanCenter:"Μέσο κέντρο βάρους",medianCenter:"Διάμεσο κέντρο",ellipse:"Έλλειψη",weightBy:"Βάρος κατά (προαιρετικά)",groupBy:"Ομαδοποίηση κατά (προαιρετικά)",resultLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου",outputLayerName:"Περιγραφή κατανομής θεματικού επιπέδου ${layerName}",none:"Καθόλου",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της λύσης «Σύνοψη κέντρου και διασποράς» για το θεματικό επίπεδο ${layerName}. ",itemTags:"Αποτέλεσμα Ανάλυσης, Σύνοψη κέντρου και διασποράς, Θεματικό επίπεδο ${layerName}",itemSnippet:"Επιτυχής δημιουργία feature layer από την εκτέλεση της λύσης «Σύνοψη κέντρου και διασποράς»"});

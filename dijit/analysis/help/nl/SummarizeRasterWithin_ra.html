@@ -41,14 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="regularsize">
-        <h2>Raster binnenin samenvatten</h2><p/>
+        <h2>Raster samenvatten in</h2><p/>
         <h2><img src="../images/GUID-D61C156C-2B2C-488C-BF28-B6CB9277BF4B-web.png" alt="Raster binnenin tool samenvatten"></h2>
         <hr/>
     <p>Deze tool vat de waarden van een raster samen binnen de zones van een andere dataset.
     </p>
-    <p>Enkele voorbeelden van de toepassingen zijn onder meer het volgende:
-    </p>
-    <p>
+    <p>Enkele voorbeelden van de toepassingen van deze tool zijn de volgende:
         <ul>
             <li>Er is een kaartlaag met stroomgebiedgrenzen en een laag met landgebruikgrenzen per type landgebruik; bereken het totale oppervlak aan landgebruik voor elk stroomgebied.
                 
@@ -69,9 +67,9 @@
         <div><h2>Kies oppervlaktelaag om een rasterlaag samen te vatten binnen bepaalde grenzen</h2></div>
         <hr/>
         <div>
-            <p>De laag die de grenzen van de gebieden of zones definieert, die worden samengevat.
+            <p>De invoer die de grenzen van de gebieden of zones definieert, die worden samengevat.
             </p>
-            <p>De laag kan een raster- of objectdata zijn. Voor rasters worden de zones gedefinieerd door alle locaties in de invoer die dezelfde celwaarde hebben. De gebieden hoeven niet aaneengesloten te zijn.
+            <p>De invoer kan een integer raster of objectdata zijn. Voor rasters worden de zones gedefinieerd door alle locaties in de invoer die dezelfde celwaarde hebben. Voor objecten kunnen de zones elkaar overlappen. De gebieden hoeven niet aaneengesloten te zijn.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Kies een veld om de grenzen te bepalen</h2></div>
         <hr/>
         <div>
-            <p>Dit is het attribuut van de laag dat wordt gebruikt om de grenzen van de gebieden vast te leggen.
+            <p>Het veld dat de waarden bevat die elke zone defini&euml;ren.
             </p>
-            <p>Stel bijvoorbeeld dat de eerste invoerlaag de grenzen van de managementunit definieert, met attributen die de regio, het district en het perceel-ID van elke eenheid defini&euml;ren. U hebt ook een rasterlaag die de biodiversiteitsindex voor elke locatie definieert. Met het veld dat u selecteert, kunt u besluiten om de gemiddelde biodiversiteit te berekenen op lokaal, districts- of regionaal niveau.
+            <p>Het kan een integer of tekstveld van de zone-dataset zijn.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Rasterlaag kiezen voor samenvatten</h2></div>
         <hr/>
         <div>
-            <p>De rastercellen in deze laag worden samengevat door de gebieden (zones) waar ze in vallen.
+            <p>Het raster dat de waarden bevat waarop een statistiek berekend moet worden.
+            </p>
+            <p>Het kan een integer of een zwevend punt zijn. Wanneer het echter een zwevend punttype is, zijn de opties voor het berekenen van de meerderheid, minderheid en vari&euml;teit niet beschikbaar.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Kies een statistiek om te berekenen</h2></div>
         <hr/>
         <div>
-            <p>Zodra u een samen te vatten laag kiest, kunt u optioneel statistieken berekenen van alle numerieke attributen van de punten, lijnen of oppervlakten in de invoerlaag.
+            <p>Specificeert het statistiektype om te berekenen.
             </p>
-            <p>De beschikbare statistiektypes wanneer het geselecteerde veld integer is, zijn Gemiddeld, Meerderheid, Maximum, Mediaan, Minimum, Minderheid, Percentiel, Reeks, Standaardafwijking, Som en Vari&euml;teit.
-            </p>
-            <p>Als het veld floating-point is, zijn de opties Gemiddeld, Maximum, Minimum, Reeks, Standaardafwijking en Som.
+            <p> De invoer kan een van de volgende zijn: <b>gemiddeld</b>, <b>meerderheid</b>, <b>maximum</b>, <b>mediaan</b>, <b>minimum</b>, <b>minderheid</b>, <b>percentiel</b>, <b>bereik</b>, <b>standaardafwijking</b>, <b>som</b> of <b>vari&euml;teit</b>. De standaardinstelling is <b>gemiddeld</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Het percentiel om te berekenen. De standaard is 90, wijzend op het 90e percentiel.
             </p>
-            <p>De waardes kunnen tussen de 0 en 100 liggen. Het 0de percentiel is in wezen gelijk aan de minimumstatistiek en het 100ste percentiel is gelijk aan het maximum. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
+            <p>De waarde kan tussen de 0 en 100 liggen. Het resultaat van het specificeren van het 0e percentiel is in wezen gelijk aan de minimumstatistiek en het 100e percentiel is gelijk aan de maximumstatistiek. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
             </p>
-            <p>Deze optie wordt alleen ondersteun als de parameter  <b>Kies een statistiek om te berekenen</b> is ingesteld op <b>Percentiel</b>.
+            <p> Deze parameter wordt alleen ondersteund als de parameter <b>Kies een statistiek om te berekenen</b> is ingesteld op <b>Percentiel</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ontbrekende waarden in berekening negeren</h2></div>
         <hr/>
         <div>
-            <p>Als u ervoor kiest om ontbrekende waarden te negeren, worden alleen de cellen die een waarde hebben in de laag om samen te vatten gebruikt om de uitgangswaarde voor dat gebied te bepalen. Als er ontbrekende waarden zijn overal in een gebied, moet er onvoldoende informatie zijn om statistische berekeningen uit te voeren voor alle cellen in die zone en dat gebied ontvangt een nulwaarde (NoData) in de output.
+            <p> Specificeert of ontbrekende waarden worden genegeerd in de analyse.
             </p>
+            <ul>
+                <li>Aangevinkt&mdash;De analyse bevat de cellen die een waarde hebben in het invoerwaarderaster binnen een bepaalde zone om de outputwaarde voor die zone te bepalen. NoData cellen in het waarderaster worden genegeerd in de statistische berekening. Dit is de standaardinstelling.
+                </li>
+                <li>Niet aangevinkt&mdash;De analyse zal resulteren in NoData als er NoData-waarden zijn voor de cellen van het waarderaster in de gegeven afmeting.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Verwerken als multidimensionaal</h2></div>
         <hr/>
         <div>
-            <p>Specificeert hoe de invoerrasters worden verwerkt als deze multidimensionaal zijn. Als u ervoor kiest te verwerken als multidimensionaal, worden statistieken berekend van alle dimensies van de ingevoerde multidimensionale dataset. Anders worden statistieken berekend op basis van de huidige doorsnede van de ingevoerde multidimensionale dataset, dit is de standaard.
+            <p>Specificeert hoe de multidimensionale invoer afbeeldings diensten worden verwerkt als deze multidimensionaal zijn.
             </p>
+            <ul>
+                <li>Aangevinkt&mdash;De statistieken worden berekend op basis van het huidige segment van de ingevoerde multidimensionale dataset. Dit is de standaardinstelling.
+                    
+
+                </li>
+                <li>Niet aangevinkt&mdash;De statistieken worden berekend voor alle afmetingen van de ingevoerde multidimensionale dataset.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
-            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
-            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>. Als u de machtigingen hebt om zowel getegelde als dynamische beeldlagen aan te maken, kunt u specificeren welk layertype wordt gegenereerd in de uitvoer met het vervolgkeuzemenu Resultaat opslaan als. </p>
         </div>
     </div>
 </div>

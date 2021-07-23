@@ -46,9 +46,7 @@
         <hr/>
     <p>Cet outil r&eacute;capitule les valeurs d'un raster dans chaque zone d'un autre jeu de donn&eacute;es.
     </p>
-    <p>Voici quelques exemples&nbsp;:
-    </p>
-    <p>
+    <p>Voici quelques exemples d'utilisation de cet outil&nbsp;:
         <ul>
             <li>En prenant une couche de limites de bassin versant et une couche de limites d'utilisation du sol par type d'utilisation du sol, calculez la superficie totale du type d'utilisation du sol pour chaque bassin versant.
                 
@@ -69,9 +67,9 @@
         <div><h2>Choisir une couche surfacique pour synthétiser une couche raster au sein des limites définies</h2></div>
         <hr/>
         <div>
-            <p>La couche qui d&eacute;finit les limites des surfaces, ou zones, qui seront synth&eacute;tis&eacute;es.
+            <p>Entr&eacute;e qui d&eacute;finit les limites des zones, ou des surfaces, &agrave; synth&eacute;tiser.
             </p>
-            <p>La couche peut &ecirc;tre un raster ou des donn&eacute;es d'entit&eacute;. Pour les rasters, les zones sont d&eacute;finies par tous les emplacements dans l'entr&eacute;e dont la valeur de cellule est identique. Les surfaces ne sont pas n&eacute;cessairement contigu&euml;s.
+            <p>Cette entr&eacute;e peut &ecirc;tre un raster d'entiers ou des donn&eacute;es d'entit&eacute;. Pour les rasters, les zones sont d&eacute;finies par tous les emplacements dans l'entr&eacute;e dont la valeur de cellule est identique. Pour les entit&eacute;s, les zones peuvent &ecirc;tre superpos&eacute;es. Les surfaces ne sont pas n&eacute;cessairement contigu&euml;s.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Choisir un champ pour définir les limites</h2></div>
         <hr/>
         <div>
-            <p>Il s'agit de l'attribut de la couche qui sera utilis&eacute; pour d&eacute;finir les limites des surfaces.
+            <p>Champ contenant les valeurs qui d&eacute;finissent chaque zone.
             </p>
-            <p>Supposons par exemple que la premi&egrave;re couche en entr&eacute;e d&eacute;finit les limites des unit&eacute;s de gestion, avec des attributs qui d&eacute;finissent la r&eacute;gion, le secteur et l'ID de parcelle de chaque unit&eacute;. Une couche raster d&eacute;finissant l'indice de biodiversit&eacute; pour chaque emplacement est &eacute;galement pr&eacute;sente. Avec le champ que vous s&eacute;lectionnez, vous pouvez calculer la biodiversit&eacute; moyenne au niveau local, du secteur ou r&eacute;gional.
+            <p>Il peut s'agir d'un champ de type entier ou cha&icirc;ne du jeu de donn&eacute;es de zones.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Choisir la couche raster à synthétiser</h2></div>
         <hr/>
         <div>
-            <p>Les cellules raster dans cette couche seront synth&eacute;tis&eacute;es en fonction des surfaces (zones) dans lesquelles elles se trouvent.
+            <p>Raster contenant les valeurs sur lesquelles une statistique doit &ecirc;tre calcul&eacute;e.
+            </p>
+            <p>Il peut &ecirc;tre de type entier ou &agrave; virgule flottante. Toutefois, si son type est &agrave; virgule flottante, les options de calcul de la majorit&eacute;, de la minorit&eacute; et de la vari&eacute;t&eacute; ne sont pas disponibles.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Choisir les statistiques à calculer</h2></div>
         <hr/>
         <div>
-            <p>Une fois la couche &agrave; synth&eacute;tiser choisie, vous pouvez &eacute;galement calculer des statistiques pour les attributs num&eacute;riques des points, lignes ou zones au sein de la couche surfacique en entr&eacute;e.
+            <p>Sp&eacute;cifie le type de statistique &agrave; calculer.
             </p>
-            <p>Les types statistiques disponibles lorsque le champ s&eacute;lectionn&eacute; est un entier sont Moyenne, Majorit&eacute;, Maximum, M&eacute;diane, Minimum, Minorit&eacute;, Centile, Plage, &Eacute;cart type, Somme et Vari&eacute;t&eacute;.
-            </p>
-            <p>Si le champ est &agrave; virgule flottante, les options sont Moyenne, Maximum, Minimum, Plage, Ecart type et Somme.
+            <p> L'entr&eacute;e peut &ecirc;tre de type&nbsp;: <b>Average (Moyenne)</b>, <b>Majority (Majorit&eacute;)</b>, <b>Maximum (Maximum)</b>, <b>Median (M&eacute;diane)</b>, <b>Minimum (Minimum)</b>, <b>Minority (Minorit&eacute;)</b>, <b>Percentile (Centile)</b>, <b>Range (Plage)</b>, <b>Standard deviation (&Eacute;cart type)</b>, <b>Sum (Somme)</b> ou <b>Variety (Vari&eacute;t&eacute;)</b>. La valeur par d&eacute;faut est <b>Average (Moyenne)</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Pourcentage &agrave; calculer. La valeur par d&eacute;faut est de 90, soit le 90e centile.
             </p>
-            <p>Les valeurs peuvent varier entre 0 et 100. Le centile centile n&deg;&nbsp;0 est &eacute;quivalent &agrave; la statistique minimale tandis que le 100e centile &eacute;quivaut au maximum Une valeur de 50 donne le m&ecirc;me r&eacute;sultat que la statistique m&eacute;diane.
+            <p>La valeur peut &ecirc;tre comprise entre 0 et 100. Le fait de sp&eacute;cifier le centile n&deg;&nbsp;0 est &eacute;quivalent &agrave; la statistique minimale tandis que sp&eacute;cifier le 100e centile &eacute;quivaut au maximum. Une valeur de 50 donne le m&ecirc;me r&eacute;sultat que la statistique m&eacute;diane.
             </p>
-            <p>Cette option n&rsquo;est prise en charge que si le param&egrave;tre  <b>Choose statistic to calculate (Choisir les statistiques &agrave; calculer)</b> est d&eacute;fini sur <b>Percentile (Centile)</b>.
+            <p> Ce param&egrave;tre est pris en charge uniquement si le param&egrave;tre <b>Choose statistic to calculate (Choisir les statistiques &agrave; calculer)</b> est d&eacute;fini sur <b>Percentile (Centile)</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignorer les valeurs manquantes dans le calcul</h2></div>
         <hr/>
         <div>
-            <p>Si vous choisissez d'ignorer les valeurs manquantes, seules les cellules qui ont une valeur dans la couche &agrave; synth&eacute;tiser seront utilis&eacute;es pour d&eacute;terminer la valeur en sortie de cette surface. Sinon, si des valeurs manquent dans une surface, on consid&egrave;re que les informations sont insuffisantes pour ex&eacute;cuter des calculs statistiques pour l'ensemble des cellules de cette zone. Par cons&eacute;quent, cette surface recevra une valeur Null (NoData) en sortie.
+            <p> Sp&eacute;cifie si les valeurs manquantes sont ignor&eacute;es lors de l&rsquo;analyse.
             </p>
+            <ul>
+                <li>Activ&eacute;&nbsp;: l&rsquo;analyse inclut les cellules qui ont une valeur dans le raster de valeurs en entr&eacute;e au sein d&rsquo;une zone en particulier pour d&eacute;terminer la valeur en sortie de cette zone. Les cellules NoData dans le raster de valeurs seront ignor&eacute;es dans le calcul statistique. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                </li>
+                <li>D&eacute;sactiv&eacute;&nbsp;: le r&eacute;sultat de l&rsquo;analyse est NoData s&rsquo;il existe des valeurs NoData pour les cellules du raster de valeurs dans une zone en particulier.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Traiter comme multidimensionnel</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie le mode de traitement des rasters en entr&eacute;e s&rsquo;il s&rsquo;agit de rasters multidimensionnels. Si vous choisissez le traitement multidimensionnel, les statistiques sont calcul&eacute;es pour toutes les dimensions d&rsquo;un jeu de donn&eacute;es multidimensionnelles. Sinon, les statistiques sont calcul&eacute;es &agrave; partir de la tranche actuelle d&rsquo;un jeu de donn&eacute;es multidimensionnelles en entr&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+            <p>Sp&eacute;cifie la m&eacute;thode de traitement des services d'images multidimensionnels en entr&eacute;e si ces derniers sont multidimensionnels.
             </p>
+            <ul>
+                <li>Activ&eacute;&nbsp;: les statistiques sont calcul&eacute;es &agrave; partir de la tranche actuelle du jeu de donn&eacute;es multidimensionnelles en entr&eacute;e. Il s&rsquo;agit de l&rsquo;option par d&eacute;faut.
+                    
+
+                </li>
+                <li>D&eacute;sactiv&eacute;&nbsp;: les statistiques sont calcul&eacute;es pour toutes les dimensions du jeu de donn&eacute;es multidimensionnelles en entr&eacute;e.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
-            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>.
-            </p>
+            <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>. Si vous avez les privilèges permettant de créer des couches tuilées et d’images dynamiques, vous pouvez spécifier le type de couche à générer en sortie à l’aide de la zone déroulante Save result as (Enregistrer le résultat sous). </p>
         </div>
     </div>
 </div>

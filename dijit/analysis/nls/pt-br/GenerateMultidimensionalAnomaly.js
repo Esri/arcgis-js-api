@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Gerar Anomalia Multidimensional",outputLayerName:"${layername}_anomaly",variablesLabel:"Escolha variáveis para as quais serão geradas anomalias",variablesListLabel:"Variáveis [Info da Dimensão] (Descrição)",methodLabel:"Escolher método para gerar anomalia",calculationIntervalLabel:"Escolher intervalo temporal para calcular a média",differenceFromMean:"Diferença da Média",percentDifferenceFromMean:"Diferença de Porcentagem da Média",percentOfMean:"Porcentagem da Média",zScore:"Valor Z",differenceFromMedian:"Diferença da Mediana",percentDifferenceFromMedian:"Diferença de Porcentagem da Mediana",percentOfMedian:"Porcentagem da Mediana",all:"Todos",yearly:"Anualmente",recurringMonthly:"Mensalmente Recorrente",recurringWeekly:"Semanalmente Recorrente",recurringDaily:"Diariamente Recorrente",hourly:"A Cada Hora",externalRaster:"Raster Externo",meanRaster:"Escolha a camada de imagens da média como referência",ignoreNodataLabel:"Ignorar valores ausentes no cálculo",ignore:"Ignorar",analysisLayerLabel:"Escolher camada de imagens multidimensionais para gerar anomalia",itemDescription:"O Serviço de Imagem da Análise gerado de Gerar Anomalia Multidimensional",itemTags:"Resultado da Análise de Raster, Gerar Anomalia Multidimensional, ${layername}",itemSnippet:"O Serviço de Imagem da Análise gerado de Gerar Anomalia Multidimensional"});

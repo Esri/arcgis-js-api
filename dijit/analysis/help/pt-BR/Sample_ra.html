@@ -46,32 +46,16 @@
         <hr/>
     <p>Esta ferramenta cria uma tabela ou uma classe de fei&ccedil;&atilde;o de ponto que mostra os valores das c&eacute;lulas de um raster, ou conjunto de rasters, para locais definidos. Os locais s&atilde;o definidos por c&eacute;lulas de raster, fei&ccedil;&otilde;es de pol&iacute;gono, fei&ccedil;&otilde;es de polilinha ou por um conjunto de pontos.
     </p>
-    <p>Os valores de pixel ser&atilde;o extra&iacute;dos de todos os rasters de entrada em cada local. Uma tabela ou uma classe de fei&ccedil;&atilde;o de ponto ser&aacute; criada com campos contendo os valores de pixel para cada raster de entrada. Atributos adicionais da tabela do raster de entrada n&atilde;o ser&atilde;o inclu&iacute;dos na tabela de sa&iacute;da.
-    </p>
-    <p>Qualquer combina&ccedil;&atilde;o de rasters, como banda &uacute;nica, m&uacute;ltiplas bandas, multidimensional ou multivariada, pode ser especificada como rasters de entrada. A estrutura da tabela de sa&iacute;da muda quando as rasters de entrada s&atilde;o multidimensionais. Quando um raster de m&uacute;ltiplas bandas &eacute; especificado como um dos rasters de entrada, todas as bandas nesta entrada ser&atilde;o utilizadas. Para processar uma sele&ccedil;&atilde;o de bandas a partir de um raster de m&uacute;ltiplas banda de entrada, primeiro crie um novo conjunto de dados raster composto por estas bandas espec&iacute;ficas. Utilize o resultado na lista de rasters de entrada.
-    </p>
-    <p>O local de entrada pode ser um raster ou uma fei&ccedil;&atilde;o de ponto:
+    <p>Alguns exemplos de aplica&ccedil;&otilde;es desta ferramenta incluem o seguinte:
         <ul>
-            <li>Raster&mdash;Pixels contendo valores v&aacute;lidos (n&atilde;o NoData) s&atilde;o utilizados para extrair os valores de pixel de todos os rasters de entrada, e o centro do pixel &eacute; utilizado para locais de ponto.
+            <li> Extraia atributos para localiza&ccedil;&atilde;o da torre de celular de v&aacute;rios rasters, como uso do solo, tipo de solo, eleva&ccedil;&atilde;o e dist&acirc;ncia at&eacute; a estrada.
             </li>
-            <li>Ponto&mdash;Os valores ser&atilde;o amostrados em cada local de ponto.
+            <li>Extraia a temperatura do solo em diferentes profundidades para um determinado conjunto de pontos.
             </li>
-            <li>Polilinha ou um pol&iacute;gono&mdash;Os valores ser&atilde;o amostrados no centr&oacute;ide da polilinha ou do pol&iacute;gono. Se o raster de entrada for multidimensional, os valores ser&atilde;o agregados com base no tipo de  <b>Estat&iacute;stica</b> .
+            <li>A partir de 30 anos de dados mensais de temperatura da superf&iacute;cie do mar, resuma em locais de animais ou dentro de &aacute;reas de vida para um determinado momento quando uma esp&eacute;cie animal foi observada.
             </li>
         </ul>
         
-    </p>
-    <p>Os rasters de entrada s&atilde;o amostrados em sua resolu&ccedil;&atilde;o e refer&ecirc;ncia espacial nativas. Se houver m&uacute;ltiplos rasters de entrada com diferentes refer&ecirc;ncias espaciais, os locais de entrada ser&atilde;o projetados na refer&ecirc;ncia espacial de cada raster individual a partir do qual os valores s&atilde;o extra&iacute;dos. O ambiente de an&aacute;lise &eacute; aplicado aos locais de entrada, mas os rasters de entrada n&atilde;o respeitar&atilde;o o ambiente de an&aacute;lise.
-    </p>
-    <p>Os locais que extraem valores das c&eacute;lulas de NoData no raster de entrada receber&atilde;o um valor &lt;nulo&gt; na tabela de sa&iacute;da.
-    </p>
-    <p>Para executar an&aacute;lises com fei&ccedil;&otilde;es de m&uacute;ltiplos pontos, primeiro converta em fei&ccedil;&otilde;es de &uacute;nico ponto antes de utiliz&aacute;-las nesta ferramenta.
-    </p>
-    <p>A refer&ecirc;ncia espacial das coordenadas x, y na tabela de amostra de sa&iacute;da &eacute; a mesma que as fei&ccedil;&otilde;es de ponto ou raster do local de entrada, a menos que seja especificado no ambiente  <b>Sistema de Coordenadas de Sa&iacute;da</b> . Se a refer&ecirc;ncia espacial de dados dos locais de entrada for desconhecida, a refer&ecirc;ncia espacial das coordenadas x, y tamb&eacute;m ser&aacute; desconhecida.
-    </p>
-    <p>A refer&ecirc;ncia espacial da classe de fei&ccedil;&atilde;o de sa&iacute;da &eacute; a mesma que fei&ccedil;&otilde;es de ponto ou raster do local de entrada, a menos que seja especificado no ambiente  <b>Sistema de Coordenadas de Sa&iacute;da</b> .
-    </p>
-    <p>O ambiente  <b>Fator de Processamento Paralelo</b> &eacute; suportado somente quando a entrada &eacute; um raster multidimensional.
     </p>
     <p>Se  <b>Utilizar extens&atilde;o de mapa atual</b> estiver selecionado, as vari&aacute;veis ou bandas da camada que s&atilde;o vis&iacute;veis dentro da extens&atilde;o de mapa atual ser&atilde;o analisadas. Se desmarcado, as vari&aacute;veis ou bandas de toda a camada ser&atilde;o analisadas, mesmo que estiverem fora da extens&atilde;o de mapa atual.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Escolher camadas de imagens para amostrar</h2></div>
         <hr/>
         <div>
-            <p>Uma &uacute;nica camada de imagens ou uma lista de camadas de imagens cujos valores ser&atilde;o amostrados com base nos dados do local de entrada.
+            <p>Uma &uacute;nica imagem ou uma lista de imagens cujos valores ser&atilde;o amostrados com base nos dados do local de entrada. 
             </p>
             <p>Para amostrar todas as partes de uma camada de imagens multidimensional, ela deve ser o &uacute;nico raster de entrada.
             </p>
@@ -112,40 +96,42 @@
             <p>Especifique o tempo, a profundidade ou outros dados de aquisi&ccedil;&atilde;o associados a c&eacute;lulas ou fei&ccedil;&otilde;es de localiza&ccedil;&atilde;o.
             </p>
             <p>Para cada dimens&atilde;o, h&aacute; tr&ecirc;s op&ccedil;&otilde;es para especificar as informa&ccedil;&otilde;es de aquisi&ccedil;&atilde;o associadas a c&eacute;lulas ou fei&ccedil;&otilde;es de localiza&ccedil;&atilde;o:
-                <ul>
-                    <li> <b>Valor ou campo &uacute;nico</b>&mdash;Quando esta op&ccedil;&atilde;o &eacute; selecionada, as seguintes informa&ccedil;&otilde;es precisam ser especificadas:
-                        <ul>
-                            <li> <b>Valor ou campo de dimens&atilde;o</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Valor ou campo &uacute;nico</b>&mdash;Quando esta op&ccedil;&atilde;o &eacute; selecionada, as seguintes informa&ccedil;&otilde;es devem ser especificadas:
+                    <ul>
+                        <li> <b>Valor ou campo de dimens&atilde;o</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Valor ou campo &uacute;nico com valores relativos</b>&mdash;Se esta op&ccedil;&atilde;o estiver selecionada, as informa&ccedil;&otilde;es abaixo precisar&atilde;o ser especificadas juntas para definir o intervalo dentro do qual as estat&iacute;sticas ser&atilde;o calculadas para vari&aacute;veis:
-                        <ul>
-                            <li> <b>Valor ou campo de dimens&atilde;o</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o.
-                            </li>
-                            <li> <b>Valor relativo antes</b>&mdash;Especifica um n&uacute;mero n&atilde;o negativo utilizado para subtrair do <b>Valor ou campo de dimens&atilde;o</b> para definir o come&ccedil;o de um intervalo do valor de dimens&atilde;o. Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for hora.
-                            </li>
-                            <li> <b>Valor relativo ap&oacute;s</b>&mdash;Especifica um n&uacute;mero n&atilde;o negativo utilizado para adicionar ao <b>Valor ou campo de dimens&atilde;o</b> para definir o final de um intervalo do valor de dimens&atilde;o Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for hora.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Valores ou campos iniciais e finais</b>&mdash;Se esta op&ccedil;&atilde;o estiver selecionada, as informa&ccedil;&otilde;es abaixo precisar&atilde;o ser especificadas juntas para definir o intervalo dentro do qual as estat&iacute;sticas ser&atilde;o calculadas para vari&aacute;veis:
-                        <ul>
-                            <li> <b>Valores ou campo inicial</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico para definir o come&ccedil;o de um intervalo do valor de dimens&atilde;o.
-                            </li>
-                            <li> <b>Valores ou campo final</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico para definir o final de um intervalo do valor de dimens&atilde;o.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Valor ou campo &uacute;nico com valores relativos</b>&mdash;Se esta op&ccedil;&atilde;o estiver selecionada, as informa&ccedil;&otilde;es abaixo dever&atilde;o ser especificadas juntas para definir o intervalo dentro do qual as estat&iacute;sticas ser&atilde;o calculadas para vari&aacute;veis:
+                    <ul>
+                        <li> <b>Valor ou campo de dimens&atilde;o</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o.
+                        </li>
+                        <li> <b>Valor relativo antes</b>&mdash;Especifica um n&uacute;mero n&atilde;o negativo utilizado para subtrair do <b>Valor ou campo de dimens&atilde;o</b> para definir o come&ccedil;o de um intervalo do valor de dimens&atilde;o. Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for hora.
+                        </li>
+                        <li> <b>Valor relativo ap&oacute;s</b>&mdash;Especifica um n&uacute;mero n&atilde;o negativo utilizado para adicionar ao <b>Valor ou campo de dimens&atilde;o</b> para definir o final de um intervalo do valor de dimens&atilde;o. Este valor representa o n&uacute;mero de dias se a dimens&atilde;o for hora.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Valores ou campos iniciais e finais</b>&mdash;Se esta op&ccedil;&atilde;o estiver selecionada, as informa&ccedil;&otilde;es abaixo dever&atilde;o ser especificadas juntas para definir o intervalo dentro do qual as estat&iacute;sticas ser&atilde;o calculadas para vari&aacute;veis:
+                    <ul>
+                        <li> <b>Valores ou campo inicial</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico para definir o come&ccedil;o de um intervalo do valor de dimens&atilde;o.
+                        </li>
+                        <li> <b>Valores ou campo final</b>&mdash;Selecione um campo de valores de dimens&atilde;o nos dados de localiza&ccedil;&atilde;o ou insira um valor de dimens&atilde;o espec&iacute;fico para definir o final de um intervalo do valor de dimens&atilde;o.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Este par&acirc;metro est&aacute; dispon&iacute;vel somente quando o par&acirc;metro  <b>Escolher camada de imagens para amostrar</b> &eacute; um raster multidimensional.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>A dist&acirc;ncia especificada em torno das fei&ccedil;&otilde;es dos dados de localiza&ccedil;&atilde;o. A dist&acirc;ncia do buffer &eacute; especificada nas unidades lineares da refer&ecirc;ncia espacial da fei&ccedil;&atilde;o de localiza&ccedil;&atilde;o. Se a fei&ccedil;&atilde;o utilizar uma refer&ecirc;ncia geogr&aacute;fica, a unidade ser&aacute; em graus.
             </p>
             <p>As estat&iacute;sticas ser&atilde;o calculadas dentro desta &aacute;rea do buffer.
+            </p>
+            <p>Este par&acirc;metro est&aacute; dispon&iacute;vel somente quando  <b>Escolher camada de imagens para amostrar</b> &eacute; um raster multidimensional.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Este par&acirc;metro est&aacute; dispon&iacute;vel somente quando o par&acirc;metro  <b>Escolher camada de imagens para amostrar</b> &eacute; um raster multidimensional, e os par&acirc;metros <b>Escolher camada de localiza&ccedil;&atilde;o</b> s&atilde;o polilinhas ou pol&iacute;gonos, ou <b>Especificar campo ou valor de dist&acirc;ncia do buffer (Opcional)</b> &eacute; selecionado.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Valor de percentil</h2></div>
         <hr/>
         <div>
-            <p>O percentil a ser calculado quando o par&acirc;metro  <b>Tipo de Estat&iacute;stica</b> &eacute; definido para <b>Percentil</b>.
-            </p>
             <p>Este valor pode variar de 0 a 100. O padr&atilde;o &eacute; 90.
+            </p>
+            <p>Este par&acirc;metro est&aacute; dispon&iacute;vel somente quando o par&acirc;metro  <b>Escolher tipo de estat&iacute;stica</b> &eacute; configurado para <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Algoritmo de reamostragem utilizado ao amostrar um raster.
             </p>
             <ul>
-                <li> <b>Mais pr&oacute;ximo</b>&mdash;O vizinho mais pr&oacute;ximo utiliza o valor da c&eacute;lula mais pr&oacute;xima para atribuir um valor para a c&eacute;lula de sa&iacute;da durante a reamostragem. Este &eacute; o padr&atilde;o.
+                <li> <b>Mais pr&oacute;ximo</b>&mdash;O vizinho mais pr&oacute;ximo, que utiliza o valor da c&eacute;lula mais pr&oacute;xima para atribuir um valor para a c&eacute;lula de sa&iacute;da durante a reamostragem. Este &eacute; o padr&atilde;o.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Interpola&ccedil;&atilde;o bilinear, determina o novo valor de uma c&eacute;lula baseado em uma m&eacute;dia da dist&acirc;ncia ponderada dos quatro centros da c&eacute;lula de entrada mais pr&oacute;xima.
+                <li> <b>Bilinear</b>&mdash;Interpola&ccedil;&atilde;o bilinear, que determina o novo valor de uma c&eacute;lula baseado em uma m&eacute;dia da dist&acirc;ncia ponderada dos quatro centros da c&eacute;lula de entrada mais pr&oacute;xima.
                 </li>
-                <li> <b>C&uacute;bica</b>&mdash;Convolu&ccedil;&atilde;o c&uacute;bica, determina o novo valor de uma c&eacute;lula baseado no ajuste de uma curva de suaviza&ccedil;&atilde;o atrav&eacute;s de 16 centros da c&eacute;lula de entrada mais pr&oacute;xima.
+                <li> <b>C&uacute;bica</b>&mdash;Convolu&ccedil;&atilde;o c&uacute;bica, que determina o novo valor de uma c&eacute;lula baseado no ajuste de uma curva de suaviza&ccedil;&atilde;o atrav&eacute;s de 16 centros da c&eacute;lula de entrada mais pr&oacute;xima.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Especificar layout de saída</h2></div>
         <hr/>
         <div>
-            <p>Especifica se os valores amostrados aparecem em linhas ou colunas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o est&aacute; dispon&iacute;vel somente quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada parte &eacute; um raster de banda &uacute;nica.
+            <p>Especifica se os valores amostrados aparecem em linhas ou colunas na tabela de sa&iacute;da.
             </p>
             <ul>
                 <li> <b>Os valores amostrados aparecem na linha</b>&mdash;Os valores amostrados aparecem em linhas separadas na tabela de sa&iacute;da. Este &eacute; o padr&atilde;o.
                 </li>
-                <li> <b>Os valores amostrados aparecem na coluna</b>&mdash;Os valores amostrados aparecem em colunas separadas na tabela de sa&iacute;da. Esta op&ccedil;&atilde;o &eacute; v&aacute;lida somente quando o raster multidimensional de entrada cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada parte &eacute; um raster de banda &uacute;nica.
+                <li> <b>Os valores amostrados aparecem na coluna</b>&mdash;Os valores amostrados aparecem em colunas separadas na tabela de sa&iacute;da.
                 </li>
             </ul>
             
+            <p>Este par&acirc;metro est&aacute; dispon&iacute;vel somente quando o par&acirc;metro  <b>Escolher camada de imagens para amostrar</b> &eacute; um raster multidimensional e cont&eacute;m uma vari&aacute;vel e uma dimens&atilde;o, e cada parte &eacute; um raster de banda &uacute;nica.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabela</b>&mdash;Gera uma tabela com valores amostrados. Este &eacute; o padr&atilde;o.
                 </li>
-                <li> <b>Fei&ccedil;&otilde;es</b>&mdash;Gera uma classe de fei&ccedil;&atilde;o de ponto com valores amostrados em sua tabela. Se as fei&ccedil;&otilde;es do local de entrada forem polilinhas ou pol&iacute;gonos, cada ponto na sa&iacute;da ser&aacute; o centr&oacute;ide de cada geometria das fei&ccedil;&otilde;es do local de entrada.
+                <li> <b>Fei&ccedil;&otilde;es</b>&mdash;Gera uma classe de fei&ccedil;&atilde;o de ponto com valores amostrados em sua tabela. Se os par&acirc;metros <b>Escolher camada de localiza&ccedil;&atilde;o</b> forem polilinhas ou pol&iacute;gonos, cada ponto na sa&iacute;da ser&aacute; o centr&oacute;ide de cada geometria das fei&ccedil;&otilde;es do local de entrada. 
                 </li>
             </ul>
             

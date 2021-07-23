@@ -46,11 +46,7 @@
         <hr/>
     <p>Ova alatka kreira mapu gustine od tačkastih ili linijskih geoobjekata &scaron;irenjem poznatog kvantiteta neke pojave (predstavljene kao atributa tačaka ili linija) kroz mapu. Rezultat je sloj oblasti klasifikovanih od najmanje do najvi&scaron;e gustih.
     </p>
-    <p>Za unos tačaka, svaka tačka treba da predstavlja lokaciju nekog događaja ili incidenta, a sloj sa rezultatima predstavlja broj incidenata po jediničnoj oblasti. Veća vrednost gustine u novoj lokaciji znači da postoji vi&scaron;e tačaka blizu te lokacije. U mnogim slučajevima, sloj sa rezultatima može da se protumači kao povr&scaron;ina rizika za buduće događaje. Na primer, ako ulazne tačke predstavljaju lokacije udara groma, sloj sa rezultatima može da se protumači kao povr&scaron;ina rizika za buduće udare groma.
-    </p>
-    <p>Za linijski unos, povr&scaron;ina gustine linija predstavlja ukupnu količinu linija koja je blizu svake lokacije. Jedinice izračunatih vrednosti gustine su dužina oblasti linije-po-jedinici. Na primer, ako linije predstavljaju reke, sloj sa rezultatima predstavljaće ukupnu dužinu reka koje su unutar radijusa pretrage. Ovaj rezultat može da se koristi za identifikovanje oblasti koje su gostoljubive prema životinjama na ispa&scaron;i.
-    </p>
-    <p>Drugi slučajevi upotrebe ove alatke uključuju sledeće:
+    <p>Neki primeri primene ove alatke uključuju sledeće:
         <ul>
             <li>Kreiranje mapa gustine kriminalnih dela &scaron;to pomaže policijskim odeljenjima da dodele resurse u oblastima visoke stope kriminala.
                 
@@ -77,7 +73,7 @@
         <div><h2>Odaberite ulazni tačkasti ili linijski sloj iz kojeg će se izračunati gustina</h2></div>
         <hr/>
         <div>
-            <p>Ulaznu tačku ili linijski sloj koji će se koristiti za izračunavanje sloja gustine.
+            <p>Ulazna tačka ili linija koja će se koristiti za izračunavanje gustine.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Unesite polje navodeći broj incidenata na svakoj lokaciji. Na primer, ako imate tačke koje predstavljaju gradove, možete da koristite polje koje predstavlja populaciju grada kao polje brojača, a rezultujući sloj sa gustinom populacije izračunaće veće gustine populacije blizu gradova sa većim populacijama.
             </p>
-            <p>Ako se koristi podrazumevani izbor  <b>None</b>, tada će se pretpostavljati da svaka lokacija predstavlja jedan broj..
+            <p>Ako se koristi podrazumevani izbor  <b>None</b>, pretpostavljaće se da svaka lokacija predstavlja jedan broj.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>Veličina ćelije i jedinica za izlazne rastere.
             </p>
+            <p>Jedinice mogu biti kilometri, metri, milje ili stope.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>Naziv sloja koji će biti kreiran u  <b>Mom sadržaju</b> i dodat mapi. Podrazumevani naziv je zasnovan na nazivu alatke i nazivu ulaznog sloja. Ako sloj već postoji, bićete upitani da unesete drugi naziv.
             </p>
-            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>.
-            </p>
+            <p>Možete da navedete ime fascikle u  <b>Mom sadržaju</b> gde će rezultat biti sačuvan kori&scaron;ćenjem padajućeg polja <b>Sačuvaj rezultat u</b>. Ako imate privilegije za kreiranje pločastih i dinamičkih slojeva snimaka, mozete da odredite koji tip sloja želite da generišete za izlaz pomoću Sačuvaj rezultat kao padajući okvir. </p>
         </div>
     </div>
 </div>

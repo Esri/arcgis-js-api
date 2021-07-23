@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["require","exports","../../core/tsSupport/extendsHelper","../../core/tsSupport/decorateHelper","./MemoryBuffer"],(function(e,r,t,n,u){Object.defineProperty(r,"__esModule",{value:!0});var o=function(e){function r(){return e.call(this,12)||this}return t(r,e),r.prototype.add=function(e,r,t){var n=this.array;n.push(e),n.push(r),n.push(t)},r}(u);r.TriangleIndexBuffer=o;var i=function(e){function r(){return e.call(this,4)||this}return t(r,e),r.prototype.add=function(e){this.array.push(e)},r}(u);r.PointElementMemoryBuffer=i}));

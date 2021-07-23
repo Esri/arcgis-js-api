@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Choisir des entités ou un raster de destination",destinationField:"Champ de destination (facultatif)",inputDistanceAccumulationRaster:"Choisir un raster d’accumulation de distance",inputBackDirectionRaster:"Choisir un raster de direction arrière ou de sens de circulation",pathType:"Type de chemin (facultatif)",bestSingle:"Le moins coûteux",eachCell:"Chaque cellule",eachZone:"Chaque zone",outputRasterName:"Nom de la couche raster de résultat",outputLayerName:"Chemin optimal comme raster de ${layername}",drawSourcePointLayerName:"Points source",itemDescription:"Couche d’entités générée en exécutant Chemin optimal comme raster sur ${layername}. ",itemTags:"Résultat d’analyse, Chemin optimal comme raster, ${layername} ${fieldname}",itemSnippet:"Couche d’entités générée avec Chemin optimal comme raster."});

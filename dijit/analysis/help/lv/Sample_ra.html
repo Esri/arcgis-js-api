@@ -46,32 +46,16 @@
         <hr/>
     <p>&Scaron;is rīks izveido tabulu vai punktu elementu klasi, kas parāda rastra vai rastru kopas &scaron;ūnu vērtības norādītajām atra&scaron;anās vietām. Atra&scaron;anās vietas norāda rastra &scaron;ūnas, daudzstūra elementi, lauztas līnijas elementi vai punktu kopas.
     </p>
-    <p>Pikseļu vērtības tiks izgūtas no visiem ievades rastriem katrā atra&scaron;anās vietā. Tabulas vai punktu elementu klase tiks izveidota ar laukiem, kas ietver pikseļu vērtības katram ievades rastram. Papildus atribūtiem no ievades rastra tabula netiks iekļauta rezultātu tabulā.
-    </p>
-    <p>Kā ievades rastrus var norādīt jebkuru rastru, piemēram, vienas joslas, vairāku joslu, multidimensiju vai vairāku variāciju rastru kombināciju. Rezultātu tabulas struktūra mainās, ja ievades rastri ir multidimensiju rastri. Ja vairāku joslu rastrs ir norādīts kā viens no ievades rastriem, tiks izmantotas visas joslas &scaron;ajā ievadē. Lai apstrādātu joslu atlasi no ievades vairāku joslu rastra, vispirms izveidojiet jaunu rastra datu kopu, ko veido &scaron;īs konkrētās joslas. Izmantojiet rezultātu ievades rastru sarakstā.
-    </p>
-    <p>Ievades atra&scaron;anās vieta var būt rastra vai punktu elementi:
+    <p>Daži no &scaron;ī rīka pielietojumu piemēriem ietver:
         <ul>
-            <li>Rastrs&nbsp;&mdash; pikseļi, kuros ir derīgas vērtības&nbsp;(nav NoData), tiek izmantoti, lai izgūtu pikseļu vērtības no visiem ievades rastriem, bet pikseļa centru izmanto punktu novietojumiem.
+            <li> Izgūt &scaron;ūnu torņa atra&scaron;anās vietas atribūtus no vairākiem rastriem, piemēram, zemes izmanto&scaron;ana, augsnes veids, augstums un attālums līdz ceļam.
             </li>
-            <li>Punkts&nbsp;&mdash; vērtības tiks iztvertas katrā punkta atra&scaron;anās vietā.
+            <li>Izgūt augsnes temperatūru dažādos dziļumos norādītajam punktu kopumam.
             </li>
-            <li>Lauzta līnija vai daudzstūris&nbsp;&mdash; vērtības tiks iztvertas daudzstūra vai lauztas līnijas centrā. Ja ievades rastrs ir multidimensiju rastrs, vērtības tiks apkopotas, pamatojoties uz  <b>Statistikas</b> veidu.
+            <li>Izmantojot 30 gadu laikā iegūtos jūras virsmas temperatūras mēne&scaron;a datus, apkopot temperatūras datus dzīvnieku atra&scaron;anās vietās vai mājvietu teritorijās par noteiktu laiku, kurā tika novērota dzīvnieku suga.
             </li>
         </ul>
         
-    </p>
-    <p>Ievades rastri tiek iztverti ar pamata telpisko atsauci un iz&scaron;ķirtspēju. Ja ir pieejami vairāki ievades rastri ar dažādām telpiskām atsaucēm, ievades atra&scaron;anās vietas tiek projicētas katrai atsevi&scaron;ķai rastra telpiskajai atsaucei, no kuras vērtības tiek izgūtas. Ievades atra&scaron;anās vietām tiek piemērota analīzes vide, taču ievades rastri neievēros analīzes vidi.
-    </p>
-    <p>Atra&scaron;anās vietām, kas izgūst vērtības no NoData &scaron;ūnām ievades rastrā, rezultātu tabulā tiks pie&scaron;ķirta &lt;null&gt; vērtība.
-    </p>
-    <p>Lai veiktu analīzi ar vairāku punktu elementiem, pirms izmanto&scaron;anas &scaron;ajā rīkā pārveidojiet tos viena punkta elementos
-    </p>
-    <p>x, y&nbsp;koordinātu telpiskā atsauce rezultātu paraugu tabulā ir tāda pati kā ievades atra&scaron;anās vietu rastrs vai punkta elementi, ja vien tas nav norādīts vidē  <b>Izvades koordinātu sistēma</b>. Ja ievades atra&scaron;anās vietu datu telpiskā atsauce nav zināma, nav zināma arī x, y&nbsp;koordinātu telpiskā atsauce.
-    </p>
-    <p>Izvades elementu klases telpiskā atsauce ir tāda pati kā ievades atra&scaron;anās vietu rastrs vai punkta elementi, ja vien tas nav norādīts vidē  <b>Izvades koordinātu sistēma</b>.
-    </p>
-    <p>Vide  <b>Paralēlās apstrādes koeficients</b> tiek atbalstīta tikai tad, ja ievade ir multidimensiju rastrs.
     </p>
     <p>Ja ir atzīmēta iespēja  <b>Izmantot pa&scaron;reizējo kartes pārklājumu</b>, tiks analizēti tikai tā slāņa mainīgie vai joslas, kas ir redzamas pa&scaron;reizējā kartes pārklājumā. Ja &scaron;ī iespēja nav atzīmēta, tiks analizēti pilna slāņa mainīgie vai joslas, pat ja tās atrodas ārpus pa&scaron;reizējā kartes pārklājuma.
     </p>
@@ -81,9 +65,9 @@
         <div><h2>Izvēlēties iztveramos attēlu slāņus</h2></div>
         <hr/>
         <div>
-            <p>Atsevi&scaron;ķs to attēlu slānis vai attēlu slāņu saraksts, kuru vērtības tiks iztvertas, pamatojoties uz ievades atra&scaron;anās vietas datiem.
+            <p>Atsevi&scaron;ķs attēls vai attēlu saraksts, kuru vērtības tiks iztvertas, ņemot vērā ievades atra&scaron;anās vietas datus. 
             </p>
-            <p>Lai no multidimensiju attēlu slāņa iztvertu visus sektorus, tam jābūt vienīgajam ievades rastram.
+            <p>Lai no daudzdimensiju attēlu slāņa izgūtu paraugus no visiem sektoriem, tam jābūt vienīgajam ievades rastram.
             </p>
         </div>
     </div>
@@ -112,40 +96,42 @@
             <p>Norādiet laiku, dziļumu vai citus ieguves datus, kas saistīti ar atra&scaron;anās vietu &scaron;ūnām vai elementiem.
             </p>
             <p>Katrai dimensijai ir trīs iespējas, lai norādītu ieguves informāciju, kas saistīta ar atra&scaron;anās vietu &scaron;ūnām vai elementiem.
-                <ul>
-                    <li> <b>Viens lauks vai vērtība</b>&nbsp;&mdash; atlasot &scaron;o opciju, jānorāda &scaron;āda informācija:
-                        <ul>
-                            <li> <b>Dimensijas lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Viens lauks vai vērtība</b>&nbsp;&mdash; atlasot &scaron;o opciju, jānorāda &scaron;āda informācija:
+                    <ul>
+                        <li> <b>Dimensijas lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Viens lauks vai vērtība ar saistītajām vērtībām</b>&nbsp;&mdash; atlasot &scaron;o opciju, jānorāda zemāk minētā informācija, lai noteiktu diapazonu, kādā tiks aprēķināta mainīgo statistika:
-                        <ul>
-                            <li> <b>Dimensijas lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtības.
-                            </li>
-                            <li> <b>Saistītā vērtība pirms</b>&nbsp;&mdash; norādiet skaitli, kas nav negatīvs, lai to atņemtu no parametra <b>Dimensijas lauks vai vērtība</b> un norādītu dimensijas vērtību diapazona sākumu. &Scaron;ī vērtība ir dienu skaits, ja dimensija ir laiks.
-                            </li>
-                            <li> <b>Saistītā vērtība pēc</b>&nbsp;&mdash; norādiet skaitli, kas nav negatīvs, lai to pieskaitītu parametram <b>Dimensijas lauks vai vērtība</b> un norādītu dimensijas vērtību diapazona beigas. &Scaron;ī vērtība ir dienu skaits, ja dimensija ir laiks.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Sākuma un beigu lauki vai vērtības</b>&nbsp;&mdash; atlasot &scaron;o opciju, zemāk minētā informācija jānorāda kopā, lai noteiktu diapazonu, kādā tiks aprēķināta mainīgo statistika:
-                        <ul>
-                            <li> <b>Sākuma lauks vai vērtības</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību, lai norādītu dimensijas vērtību diapazona sākumu.
-                            </li>
-                            <li> <b>Beigu lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību, lai norādītu dimensijas vērtību diapazona beigas.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Viens lauks vai vērtība ar saistītajām vērtībām</b>&nbsp;&mdash; atlasot &scaron;o opciju, jānorāda zemāk minētā informācija, lai noteiktu diapazonu, kādā tiks aprēķināta mainīgo statistika:
+                    <ul>
+                        <li> <b>Dimensijas lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtības.
+                        </li>
+                        <li> <b>Saistītā vērtība pirms</b>&nbsp;&mdash; norādiet skaitli, kas nav negatīvs, lai to atņemtu no parametra <b>Dimensijas lauks vai vērtība</b> un norādītu dimensijas vērtību diapazona sākumu. &Scaron;ī vērtība ir dienu skaits, ja dimensija ir laiks.
+                        </li>
+                        <li> <b>Saistītā vērtība pēc</b>&nbsp;&mdash; norādiet skaitli, kas nav negatīvs, lai to pieskaitītu parametram <b>Dimensijas lauks vai vērtība</b> un norādītu dimensijas vērtību diapazona beigas. &Scaron;ī vērtība ir dienu skaits, ja dimensija ir laiks.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Sākuma un beigu lauki vai vērtības</b>&nbsp;&mdash; atlasot &scaron;o opciju, zemāk minētā informācija jānorāda kopā, lai noteiktu diapazonu, kādā tiks aprēķināta mainīgo statistika:
+                    <ul>
+                        <li> <b>Sākuma lauks vai vērtības</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību, lai norādītu dimensijas vērtību diapazona sākumu.
+                        </li>
+                        <li> <b>Beigu lauks vai vērtība</b>&nbsp;&mdash; no atra&scaron;anās vietas datiem atlasiet dimensijas vērtību lauku vai ievadiet konkrētu dimensijas vērtību, lai norādītu dimensijas vērtību diapazona beigas.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametrs ir pieejams tikai tad, ja parametrs  <b>Izvēlēties iztveramos attēlu slāņus</b> ir daudzdimensiju rastrs.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Norādītais attālums ap atra&scaron;anās vietas datu elementiem. Buferzonas attālums ir norādīts atra&scaron;anās vietas elementu telpiskās atsauces lineārajās mērvienībās. Ja elements izmanto ģeogrāfisku atsauci, mērvienība būs grādi.
             </p>
             <p>Statistika tiks aprēķināta &scaron;ajā buferzonā.
+            </p>
+            <p>&Scaron;is parametrs ir pieejams tikai tad, ja  <b>Izvēlēties iztveramos attēlu slāņus</b> ir daudzdimensiju rastrs.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>&Scaron;is parametrs ir pieejams tikai tad, ja parametrs  <b>Izvēlēties iztveramos attēlu slāņus</b> ir daudzdimensiju rastrs, un parametri <b>Izvēlēties atra&scaron;anās vietas slāni</b> ir lauztas līnijas vai daudzstūri, kā arī ir norādīti vai <b>Norādīt buferzonas attāluma lauku vai vērtību</b> (pēc izvēles).
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Procentiles vērtība</h2></div>
         <hr/>
         <div>
-            <p>Procentile, lai aprēķinātu, kad parametra  <b>Statistikas veids</b> iestatījums ir <b>Procentile</b>.
-            </p>
             <p>&Scaron;ī vērtība var būt diapazonā no 0&nbsp;līdz&nbsp;100. Noklusējuma vērtība ir 90.
+            </p>
+            <p>&Scaron;is parametrs ir pieejams tikai tad, ja parametra  <b>Izvēlēties statistikas veidu</b> iestatījums ir <b>Procentile</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Atkārtotas iztver&scaron;anas algoritms, iztverot rastru.
             </p>
             <ul>
-                <li> <b>Tuvākais</b>&nbsp;&mdash; tuvākā apkārtne&nbsp;&mdash; izmanto tuvākās &scaron;ūnas vērtību, lai izvades &scaron;ūnai pie&scaron;ķirtu vērtību, veicot atkārtotu iztver&scaron;anu. Tā ir noklusējuma vērtība.
+                <li> <b>Tuvākais</b>&nbsp;&mdash; tuvākā apkārtne, kas izmanto tuvākās &scaron;ūnas vērtību, lai izvades &scaron;ūnai pie&scaron;ķirtu vērtību, veicot atkārtotu iztver&scaron;anu. Tā ir noklusējuma vērtība.
                 </li>
-                <li> <b>Bilineāri</b>&nbsp;&mdash; bilineārā interpolācija&nbsp;&mdash; nosaka &scaron;ūnas jauno vērtību, pamatojoties uz četru tuvāko ievades &scaron;ūnu centru vidējo svērto attālumu.
+                <li> <b>Bilineāri</b>&nbsp;&mdash; bilineārā interpolācija, kas nosaka &scaron;ūnas jauno vērtību, ņemot vērā četru tuvāko ievades &scaron;ūnu centru vidējo svērto attālumu.
                 </li>
-                <li> <b>Kubs</b>&nbsp;&mdash; kubiskā konvolūcija&nbsp;&mdash; nosaka &scaron;ūnas jauno vērtību, pamatojoties uz lēzenu līkni, kas iet caur 16&nbsp;vistuvāko ievades pikseļu centriem.
+                <li> <b>Kubiski</b>&nbsp;&mdash; kubiskā konvolūcija, kas nosaka &scaron;ūnas jauno vērtību, ņemot vērā lēzenu līkni, kas iet caur 16&nbsp;vistuvāko ievades pikseļu centriem.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Norādīt izvades izkārtojumu</h2></div>
         <hr/>
         <div>
-            <p>Norāda, vai iztvertās vērtības būs redzamas rezultātu tabulas rindās vai kolonnās. &Scaron;ī opcija ir pieejama tikai tad, ja ievades multidimensiju rastrā ir viens mainīgais un viena dimensija un katrs sektors ir vienas joslas rastrs.
+            <p>Norāda, vai iztvertās vērtības būs redzamas rezultātu tabulas rindās vai kolonnās.
             </p>
             <ul>
                 <li> <b>Iztvertās vērtības redzamas rindā</b>&nbsp;&mdash; iztvertās vērtības tiek parādītas atsevi&scaron;ķās rezultātu tabulas rindās. Tā ir noklusējuma vērtība.
                 </li>
-                <li> <b>Iztvertās vērtības redzamas ailē</b>&nbsp;&mdash; iztvertās vērtības tiek parādītas atsevi&scaron;ķās rezultātu tabulas ailēs. &Scaron;ī opcija ir derīga tikai tad, ja ievades multidimensiju rastrā ir viens mainīgais un viena dimensija un katrs sektors ir vienas joslas rastrs.
+                <li> <b>Iztvertās vērtības redzamas ailē</b>&nbsp;&mdash; iztvertās vērtības tiek parādītas atsevi&scaron;ķās rezultātu tabulas ailēs.
                 </li>
             </ul>
             
+            <p>&Scaron;is parametrs ir pieejams tikai tad, ja parametrs  <b>Izvēlēties iztveramos attēlu slāņus</b> ir daudzdimensiju rastrs, kurā ir viens mainīgais un viena dimensija, kā arī katrs sektors ir vienas joslas rastrs.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabula</b>&nbsp;&mdash; ģenerē tabulu ar iztvertām vērtībām. Tā ir noklusējuma vērtība.
                 </li>
-                <li> <b>Elementi</b>&nbsp;&mdash; ģenerē punkta elementu klasi ar iztvertām vērtībām tās tabulā. Ja ievades atra&scaron;anās vietas elementi ir lauztas līnijas vai daudzstūri, katrs punkts rezultātā ir ievades atra&scaron;anās vietas elementu ģeometriskās figūras centrs.
+                <li> <b>Elementi</b>&nbsp;&mdash; ģenerē punkta elementu klasi ar iztvertām vērtībām tās tabulā. Ja <b>Izvēlēties atra&scaron;anās vietas slāni</b> parametri ir lauztas līnijas vai daudzstūri, katrs punkts rezultātā ir ievades atra&scaron;anās vietas elementu ģeometriskās figūras centrs. 
                 </li>
             </ul>
             

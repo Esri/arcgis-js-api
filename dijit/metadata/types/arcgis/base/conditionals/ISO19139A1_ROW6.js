@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/topic","dojo/has","../../../../../../kernel","dojo/i18n!../../../../nls/i18nArcGIS","../../../../base/Conditional"],(function(t,e,a,o,n,i,r,s){var d=t(s,{key:"ISO19139A1_ROW6",postCreate:function(){this.inherited(arguments);var t=this;this.own(o.subscribe("gxe/optional-content-toggled",(function(e){try{if(t.parentXNode&&e&&e.src&&e.src.target){var a=e.src.target;"aggrDSIdent"!==a&&"aggrDSName"!==a||t.emitInteractionOccurred()}}catch(t){console.error(t)}})))},validateConditionals:function(t){var e=this.newStatus({message:r.conditionals[this.key]}),a=!0,o=this.parentXNode.domNode;return this.isXNodeOff(this.parentXNode)||(a=!1,this.forActiveXNodes("/metadata/dataIdInfo/aggrInfo/aggrDSIdent,/metadata/dataIdInfo/aggrInfo/aggrDSName",o,(function(t){return a=!0,!0}))),e.isValid=a,this.track(e,t),e}});return n("extend-esri")&&e.setObject("dijit.metadata.types.arcgis.base.conditionals.ISO19139A1_ROW6",d,i),d}));

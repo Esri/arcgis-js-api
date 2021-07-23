@@ -376,7 +376,7 @@
         "required": true,
         "dataType": "long",
         "displayName": "${rasterFunctions.rfxArgs.colorSchemeTypeName}",
-        "hidden": false,
+        "hidden": true,
         "defaultValue": 1,
         "domain": {
           "type": "list",
@@ -431,7 +431,7 @@
         "required": true,
         "dataType": "rastercolormap",
         "displayName": "${rasterFunctions.rfxArgs.colormapName}",
-        "hidden": false
+        "hidden": true
       },
       "Azimuth": {
         "required": true,
@@ -2236,7 +2236,7 @@
       },
       "RasterInfo": {
         "required": true,
-        "dataType": "string",
+        "dataType": "rasterinfo",
         "displayName": "${rasterFunctions.rfxArgs.rasterInfoName}",
         "hidden": false
       },
@@ -4193,9 +4193,9 @@
         {
           "argumentNames": ["statistics_type"],
           "triggerArguments": ["in_value_raster"],
-          "triggerAttributes": { "in_value_raster": "MEAN|MAXIMUM|MINIMUM|RANGE|STD|SUM" },
+          "triggerAttributes": "pixelType:in_value_raster,float,MEAN|MAXIMUM|MINIMUM|RANGE|STD|SUM",
           "widget": {
-            "path": "esri/dijit/RasterFunctionEditor/RFxStatisticsPixelFilter"
+            "path": "esri/dijit/RasterFunctionEditor/RFxFilteredArgumentEditor"
           }
         }
       ]
@@ -5731,7 +5731,7 @@
       },
       "RasterInfo": {
         "required": true,
-        "dataType": "string",
+        "dataType": "rasterinfo",
         "displayName":"${rasterFunctions.rfxArgs.rasterInfoName}",
         "hidden": false
       },
@@ -6083,9 +6083,17 @@
         {
           "argumentNames": ["StatisticType"],
           "triggerArguments": ["Raster", "NeighborhoodType"],
-          "triggerAttributes": { "Raster": "3|2|4|5|12|7|8|9", "NeighborhoodType": "3|8|9" },
+          "triggerAttributes": "pixelType:Raster,float,3|2|4|5|12|7|8|9;value:NeighborhoodType,6,3|8|9",
           "widget": {
-            "path": "esri/dijit/RasterFunctionEditor/RFxStatisticsPixelFilter"
+            "path": "esri/dijit/RasterFunctionEditor/RFxFilteredArgumentEditor"
+          }
+        },
+        {
+          "argumentNames": ["NeighborhoodType"],
+          "triggerArguments": ["StatisticType"],
+          "triggerAttributes": "value:StatisticType,1|2|4|5|6|7|10,1|2|3|4|5",
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxFilteredArgumentEditor"
           }
         },
         {
@@ -7181,9 +7189,9 @@
       },
       "RasterInfo": {
         "required": true,
-        "dataType": "rasterInfo",
+        "dataType": "rasterinfo",
         "displayName": "${rasterFunctions.rfxArgs.rasterInfoName}",
-        "hidden": true
+        "hidden": false
       }
     }
   },
@@ -7521,6 +7529,18 @@
         "displayName": "${rasterFunctions.rfxArgs.dimensionlessName}",
         "defaultValue": false
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["Dimensionless"],
+          "triggerArguments": ["Raster","Filter"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxDimensionlessEditor"
+          }
+        }
+      ]
     }
   },
   "DetectChangeFunction": {

@@ -790,7 +790,7 @@
         "label": "${rasterFunctions.enumLabels.frequency}"
       },
       {
-        "key": "PERIMETER_SIGHTLINES",
+        "key": "OBSERVERS",
         "label": "${rasterFunctions.enumLabels.observers}"
       }
     ],
@@ -2243,6 +2243,18 @@
     "rfxArgCat_Percentile": {
       "title": "${rasterFunctions.categoryLabels.percentileName}",
       "visible": true
+    },
+    "rfxArgCat_RasterInfo": {
+      "title": "${rasterFunctions.categoryLabels.rasterInfo}",
+      "visible": false
+    },
+    "rfxArgCat_Extent": {
+      "title": "${rasterFunctions.categoryLabels.extent}",
+      "visible": false
+    },
+    "rfxArgCat_SpatialReference": {
+      "title": "${rasterFunctions.categoryLabels.spatialReference}",
+      "visible": false
     }
   }
 

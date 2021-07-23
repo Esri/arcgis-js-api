@@ -41,37 +41,21 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Mostra</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Mostra"></h2>
+        <h2>Muestra</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Muestra"></h2>
         <hr/>
     <p>Aquesta eina crea una taula o una classe d'entitat de punt que mostra els valors de les cel&middot;les d'un r&agrave;ster o d'un conjunt de r&agrave;sters per a ubicacions definides. Les ubicacions es defineixen amb cel&middot;les de r&agrave;ster, entitats de pol&iacute;gon, entitats de polil&iacute;nia o un conjunt de punts.
     </p>
-    <p>Els valors de p&iacute;xel s'extrauran de tots els r&agrave;sters d'entrada a cada ubicaci&oacute;. Es crear&agrave; una taula o una classe d'entitat de punt amb camps que contenguin els valors de p&iacute;xel de cada r&agrave;ster d'entrada. Els atributs addicionals de la taula de r&agrave;ster d'entrada no s'inclouran a la taula de sortida.
-    </p>
-    <p>Es pot especificar qualsevol combinaci&oacute; de r&agrave;sters, com ara d'una sola banda, multibanda, multidimensionals o multivariables, com a r&agrave;sters d'entrada. L'estructura de la taula de sortida canvia quan els r&agrave;sters d'entrada s&oacute;n multidimensionals. Quan s'especifiqui un r&agrave;ster multibanda com un dels r&agrave;sters d'entrada, s'utilitzaran totes les bandes de l'entrada. Per processar una selecci&oacute; de les bandes d'un r&agrave;ster multibanda d'entrada, primer creeu un nou dataset r&agrave;ster format per aquestes bandes. Utilitzeu el resultat a la llista de r&agrave;sters d'entrada.
-    </p>
-    <p>La ubicaci&oacute; d'entrada pot ser un r&agrave;ster o una entitat de punt:
+    <p>Exemples d'aplicacions d'aquesta eina:
         <ul>
-            <li>R&agrave;ster: s'utilitzen p&iacute;xels que contenen valors v&agrave;lids (que no s&oacute;n NoData) per extreure els valors de p&iacute;xel de tots els r&agrave;sters d'entrada, i el centre del p&iacute;xel s'utilitza per a ubicacions de punt.
+            <li> Extreure atributs per a la ubicaci&oacute; de l'antena de telefonia de diversos r&agrave;sters, com l'&uacute;s del s&ograve;l, el tipus de s&ograve;l, l'elevaci&oacute; i la dist&agrave;ncia a la carretera.
             </li>
-            <li>Punt: els valors es mostrejaran a cada ubicaci&oacute; de punt.
+            <li>Extreure la temperatura del s&ograve;l a diferents profunditats per a un conjunt de punts determinat.
             </li>
-            <li>Polil&iacute;nia o pol&iacute;gon: els valors es mostrejaran al centroide del pol&iacute;gon o la polil&iacute;nia. Si el r&agrave;ster d'entrada &eacute;s multidimensional, els valors s'agregaran en funci&oacute; del tipus d' <b>Estad&iacute;stiques</b>.
+            <li>A partir de 30 anys de dades mensuals de la temperatura de la superf&iacute;cie del mar, resumir a les ubicacions dels animals o dins de les &agrave;rees de distribuci&oacute; per a un moment determinat en el qual s'ha observat una esp&egrave;cie animal.
             </li>
         </ul>
         
-    </p>
-    <p>Els r&agrave;sters d'entrada es mostregen amb la refer&egrave;ncia espacial i la resoluci&oacute; natives. Si hi ha diversos r&agrave;sters d'entrada amb refer&egrave;ncies espacials diferents, les ubicacions d'entrada es projecten a la refer&egrave;ncia espacial de cada r&agrave;ster individual de la qual s'extreuen els valors. L'entorn d'an&agrave;lisi s'aplica a les ubicacions d'entrada, per&ograve; els r&agrave;sters d'entrada no el respectaran.
-    </p>
-    <p>Les ubicacions que extreuen valors de les cel&middot;les NoData del r&agrave;ster d'entrada tindran un valor &lt;null&gt; a la taula de sortida.
-    </p>
-    <p>Per fer an&agrave;lisis amb entitats multipunt, convertiu-les a entitats de punt &uacute;nic abans d'utilitzar-les en aquesta eina.
-    </p>
-    <p>La refer&egrave;ncia espacial de les coordenades x,y de la taula de mostra de sortida &eacute;s la mateixa que la del r&agrave;ster d'ubicaci&oacute; d'entrada o les entitats de punt, tret que s'especifiqui a l'entorn  <b>Sistema de coordenades de sortida</b>. Si no se sap la refer&egrave;ncia espacial de les dades d'ubicacions d'entrada, tampoc no se sap la refer&egrave;ncia espacial de les coordenades x,y.
-    </p>
-    <p>La refer&egrave;ncia espacial de la classe d'entitat de sortida &eacute;s la mateixa que la del r&agrave;ster d'ubicaci&oacute; d'entrada o les entitats de punt, tret que s'especifiqui a l'entorn  <b>Sistema de coordenades de sortida</b>.
-    </p>
-    <p>L'entorn  <b>Factor de processament en paral&middot;lel</b> nom&eacute;s s'admet quan l'entrada &eacute;s un r&agrave;ster multidimensional.
     </p>
     <p>Si l'opci&oacute;  <b>Utilitza l'extensi&oacute; del mapa actual</b> est&agrave; seleccionada, s'analitzaran les variables o les bandes de la capa que siguin visibles a l'extensi&oacute; de mapa actual. Si l'opci&oacute; est&agrave; desactivada, s'analitzaran les variables o les bandes de tota la capa, encara que estiguin fora de l'extensi&oacute; de mapa actual.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Trieu les capes d'imatges per mostrejar</h2></div>
         <hr/>
         <div>
-            <p>Una sola capa d'imatges o una llista de capes d'imatges els valors de les quals es mostrejaran en funci&oacute; de les dades d'ubicaci&oacute; d'entrada.
+            <p>Una sola imatge o una llista d'imatges els valors de les quals es mostrejaran en funci&oacute; de les dades d'ubicaci&oacute; d'entrada. 
             </p>
             <p>Per mostrejar tots els sectors d'una capa d'imatges multidimensionals, ha de ser l'&uacute;nic r&agrave;ster d'entrada.
             </p>
@@ -112,40 +96,42 @@
             <p>Especifiqueu el temps, la profunditat o altres dades d'adquisici&oacute; de les dades associades amb les entitats o les cel&middot;les d'ubicaci&oacute;.
             </p>
             <p>Per a cada dimensi&oacute;, hi ha tres opcions per especificar la informaci&oacute; d'adquisici&oacute; associada a les entitats o les cel&middot;les d'ubicaci&oacute;:
-                <ul>
-                    <li> <b>Camp o valor &uacute;nic</b>: si aquesta opci&oacute; est&agrave; seleccionada, s'ha d'especificar la informaci&oacute; seg&uuml;ent:
-                        <ul>
-                            <li> <b>Camp o valor de dimensi&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Camp o valor &uacute;nic</b>: si aquesta opci&oacute; est&agrave; seleccionada, s'ha d'especificar la informaci&oacute; seg&uuml;ent:
+                    <ul>
+                        <li> <b>Camp o valor de dimensi&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Camp o valor &uacute;nic amb valors relatius</b>: si aquesta opci&oacute; est&agrave; seleccionada, la informaci&oacute; seg&uuml;ent s'ha d'especificar conjuntament per definir l'interval en qu&egrave; es calcularan les estad&iacute;stiques de les variables:
-                        <ul>
-                            <li> <b>Camp o valor de dimensi&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute;.
-                            </li>
-                            <li> <b>Valor relatiu anterior</b>: especifiqueu un nombre no negatiu que es restar&agrave; de <b>Camp o valor de dimensi&oacute;</b> per definir l'inici d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
-                            </li>
-                            <li> <b>Valor relatiu posterior</b>: especifiqueu un nombre no negatiu que se sumar&agrave; a <b>Camp o valor de dimensi&oacute;</b> per definir el final d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Camps o valors d'inici i de finalitzaci&oacute;</b>: si aquesta opci&oacute; est&agrave; seleccionada, la informaci&oacute; seg&uuml;ent s'ha d'especificar conjuntament per definir l'interval en qu&egrave; es calcularan les estad&iacute;stiques de les variables:
-                        <ul>
-                            <li> <b>Camp o valors d'inici</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic per definir l'inici d'un interval de valors de dimensi&oacute;.
-                            </li>
-                            <li> <b>Camp o valors de finalitzaci&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic per definir la finalitzaci&oacute; d'un interval de valors de dimensi&oacute;.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Camp o valor &uacute;nic amb valors relatius</b>: si aquesta opci&oacute; est&agrave; seleccionada, la informaci&oacute; seg&uuml;ent s'ha d'especificar conjuntament per definir l'interval en qu&egrave; es calcularan les estad&iacute;stiques de les variables:
+                    <ul>
+                        <li> <b>Camp o valor de dimensi&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute;.
+                        </li>
+                        <li> <b>Valor relatiu anterior</b>: especifiqueu un nombre no negatiu que es restar&agrave; de <b>Camp o valor de dimensi&oacute;</b> per definir l'inici d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
+                        </li>
+                        <li> <b>Valor relatiu posterior</b>: especifiqueu un nombre no negatiu que se sumar&agrave; a <b>Camp o valor de dimensi&oacute;</b> per definir el final d'un interval de valors de dimensi&oacute;. Aquest valor representa el nombre de dies si la dimensi&oacute; &eacute;s temps.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Camps o valors d'inici i de finalitzaci&oacute;</b>: si aquesta opci&oacute; est&agrave; seleccionada, la informaci&oacute; seg&uuml;ent s'ha d'especificar conjuntament per definir l'interval en qu&egrave; es calcularan les estad&iacute;stiques de les variables:
+                    <ul>
+                        <li> <b>Camp o valors d'inici</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic per definir l'inici d'un interval de valors de dimensi&oacute;.
+                        </li>
+                        <li> <b>Camp o valors de finalitzaci&oacute;</b>: seleccioneu un camp de valors de dimensi&oacute; de les dades d'ubicaci&oacute; o introdu&iuml;u un valor de dimensi&oacute; espec&iacute;fic per definir la finalitzaci&oacute; d'un interval de valors de dimensi&oacute;.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Aquest par&agrave;metre nom&eacute;s est&agrave; disponible si el par&agrave;metre  <b>Trieu les capes d'imatges per mostrejar</b> &eacute;s un r&agrave;ster multidimensional.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Dist&agrave;ncia especificada al voltant de les entitats de dades d'ubicaci&oacute;. La dist&agrave;ncia d'&agrave;rea d'influ&egrave;ncia s'especifica en les unitats lineals de la refer&egrave;ncia espacial de l'entitat d'ubicaci&oacute;. Si l'entitat utilitza una refer&egrave;ncia geogr&agrave;fica, la unitat ser&agrave; de graus.
             </p>
             <p>Les estad&iacute;stiques es calcularan en aquesta &agrave;rea d'influ&egrave;ncia.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s est&agrave; disponible si  <b>Trieu les capes d'imatges per mostrejar</b> &eacute;s un r&agrave;ster multidimensional.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>Aquest par&agrave;metre nom&eacute;s est&agrave; disponible si el par&agrave;metre  <b>Trieu les capes d'imatges per mostrejar</b> &eacute;s un r&agrave;ster multidimensional, i els par&agrave;metres <b>Trieu la capa d'ubicacions</b> s&oacute;n polil&iacute;nies o pol&iacute;gons , o si s'especifica <b>Especifiqueu el camp o el valor de dist&agrave;ncia d'&agrave;rea d'influ&egrave;ncia (opcional)</b>.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Valor de percentil</h2></div>
         <hr/>
         <div>
-            <p>El percentil que es calcular&agrave; si el par&agrave;metre  <b>Tipus d'estad&iacute;stiques</b> es defineix en <b>Percentil</b>.
-            </p>
             <p>Aquest valor pot anar de 0 a 100. El valor per defecte &eacute;s 90.
+            </p>
+            <p>Aquest par&agrave;metre nom&eacute;s est&agrave; disponible si el valor del par&agrave;metre  <b>Trieu el tipus d'estad&iacute;stiques</b> &eacute;s <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Algoritme de remostreig que s'utilitza en mostrejar un r&agrave;ster.
             </p>
             <ul>
-                <li> <b>M&eacute;s proper</b>: ve&iacute; m&eacute;s proper, utilitza el valor de la cel&middot;la m&eacute;s propera per assignar un valor a la cel&middot;la de sortida durant el remostreig. Aquesta &eacute;s l'opci&oacute; per defecte.
+                <li> <b>M&eacute;s proper</b>: ve&iacute; m&eacute;s proper, que utilitza el valor de la cel&middot;la m&eacute;s propera per assignar un valor a la cel&middot;la de sortida durant el remostreig. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Bilineal</b>: interpolaci&oacute; bilineal, determina el nou valor d'una cel&middot;la en funci&oacute; de la mitjana de la dist&agrave;ncia ponderada dels quatre centres de cel&middot;la m&eacute;s propers.
+                <li> <b>Bilineal</b>: interpolaci&oacute; bilineal, que determina el nou valor d'una cel&middot;la en funci&oacute; de la mitjana de la dist&agrave;ncia ponderada dels quatre centres de cel&middot;la m&eacute;s propers.
                 </li>
-                <li> <b>C&uacute;bic</b>: convoluci&oacute; c&uacute;bica, determina el nou valor d'una cel&middot;la en funci&oacute; de l'ajust d'una corba suau a trav&eacute;s dels 16 centres de cel&middot;les d'entrada m&eacute;s propers.
+                <li> <b>C&uacute;bic</b>: convoluci&oacute; c&uacute;bica, que determina el nou valor d'una cel&middot;la en funci&oacute; de l'ajust d'una corba suau a trav&eacute;s dels 16 centres de cel&middot;les d'entrada m&eacute;s propers.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Especifiqueu el disseny de sortida</h2></div>
         <hr/>
         <div>
-            <p>Especifica si els valors mostrejats apareixen en files o columnes a la taula de sortida. Aquesta opci&oacute; nom&eacute;s est&agrave; disponible quan el r&agrave;ster multidimensional d'entrada cont&eacute; una variable i una dimensi&oacute;, i cada sector &eacute;s un r&agrave;ster d'una banda.
+            <p>Especifica si els valors mostrejats apareixen en files o columnes a la taula de sortida.
             </p>
             <ul>
-                <li> <b>Els valors mostrejats apareixen en files</b>: els valors mostrejats apareixen en files separades a la taula de sortida. Aquesta &eacute;s l'opci&oacute; per defecte.
+                <li> <b>Els valors mostrejats apareixen en files</b>: els valors mostrejats apareixen en files separades a la taula de sortida. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Els valors mostrejats apareixen en columnes</b>: els valors mostrejats apareixen en columnes separades a la taula de sortida. Aquesta opci&oacute; nom&eacute;s &eacute;s v&agrave;lida quan el r&agrave;ster multidimensional d'entrada cont&eacute; una variable i una dimensi&oacute;, i cada sector &eacute;s un r&agrave;ster d'una banda.
+                <li> <b>Els valors mostrejats apareixen en columnes</b>: els valors mostrejats apareixen en columnes separades a la taula de sortida.
                 </li>
             </ul>
             
+            <p>Aquest par&agrave;metre nom&eacute;s est&agrave; disponible si el par&agrave;metre  <b>Trieu les capes d'imatges per mostrejar</b> &eacute;s un r&agrave;ster multidimensional d'entrada i cont&eacute; una variable i una dimensi&oacute;, i cada sector &eacute;s un r&agrave;ster d'una banda.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -237,9 +229,9 @@
             <p>Especifica si s'ha de generar una classe d'entitat de punt amb valors mostrejats a la taula o b&eacute; nom&eacute;s una taula amb valors mostrejats.
             </p>
             <ul>
-                <li> <b>Taula</b>: es genera una taula amb valors mostrejats. Aquesta &eacute;s l'opci&oacute; per defecte.
+                <li> <b>Taula</b>: es genera una taula amb valors mostrejats. Esta es la opci&oacute;n predeterminada.
                 </li>
-                <li> <b>Entitats</b>: es genera una classe d'entitat de punt amb valors mostrejats a la taula. Si les entitats d'ubicaci&oacute; d'entrada s&oacute;n polil&iacute;nies o pol&iacute;gons, cada punt de la sortida &eacute;s un centroide de cada geometria de les entitats d'ubicaci&oacute; d'entrada.
+                <li> <b>Entitats</b>: es genera una classe d'entitat de punt amb valors mostrejats a la taula. Si els par&agrave;metres <b>Trieu la capa d'ubicacions</b> s&oacute;n polil&iacute;nies o pol&iacute;gons, cada punt de la sortida &eacute;s un centroide de cada geometria de les entitats d'ubicaci&oacute; d'entrada. 
                 </li>
             </ul>
             
@@ -250,7 +242,7 @@
         <hr/>
         <div>
             
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
             </p>

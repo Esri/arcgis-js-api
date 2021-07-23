@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/ObjectUtil","../../dataProvider/supportClasses/data/AreaDataUtil","dojo/i18n!esri/nls/jsapi"],(function(a,e,t){t=t.geoenrichment.dijit.ReportPlayer.ReportPlayer;var r={valueFormatFunction:function(e,r){return r&&r.isMissing?t.missingVariable:void 0===e||"string"==typeof e?e:a.formatNumber(e,{places:r.decimals,preserveTrailingZeroes:!0})},copyValueToCalculatorData:function(a,e){var t=r._findAttrsInCalcData(e,a);t&&(t[e.fieldName]=a[e.fieldName])},copyValueFromCalculatorData:function(a,e){var t=r._findAttrsInCalcData(e,a);t&&(a[e.fieldName]=t[e.fieldName])},_findAttrsInCalcData:function(a,t){var r,i;if(a.isMultiFeature){var l=e.combineAreaDataObjectCalculators(a.fieldData.areaData,a.calculatorName);r=l&&l.comparisonLevels||[]}else{var o=e.getAreaDataObjectCalculator(a.fieldData.areaData[a.currentFeatureIndex],a.calculatorName);r=o&&o.comparisonLevels||[]}return r.some((function(a){if(a.StdGeographyLevel&&a.StdGeographyLevel===t.StdGeographyLevel&&a.StdGeographyID===t.StdGeographyID)return i=a,!0})),i}};return r}));

@@ -41,18 +41,14 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Yoğunluğu Hesapla</h2><p/>
+        <h2>Yoğunluk Hesapla</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Yoğunluğu Hesaplama aracı"></h2>
         <hr/>
     <p>Bu ara&ccedil;, bazı olayların bilinen miktarlarını (nokta veya &ccedil;izgi &ouml;znitelikleri olarak g&ouml;sterilen) haritada dağıtarak nokta veya &ccedil;izgi detaylı bir yoğunluk haritası oluşturur. Sonu&ccedil;ta ortaya en az yoğundan en fazla yoğun olana doğru sınıflanan bir alan katmanı &ccedil;ıkar.
     </p>
-    <p>Nokta girdileri i&ccedil;in her noktanın bazı olay veya oluşumları temsil etmesi gerekir; sonu&ccedil; katmanı birim alan başına olay sayısını g&ouml;sterir. Yeni konumdaki daha y&uuml;ksek bir yoğunluk değeri, o konumda daha fazla nokta olduğu anlamına gelir. Pek &ccedil;ok durumda sonu&ccedil; katmanı gelecekteki olaylar a&ccedil;ısından bir risk y&uuml;zeyi olarak yorumlanabilir. &Ouml;rneğin, girdi noktaları yıldırım d&uuml;şen yerleri g&ouml;steriyorsa, sonu&ccedil; katmanı gelecekteki yıldırım d&uuml;şme olayları i&ccedil;in bir risk y&uuml;zeyi olarak yorumlanabilir.
-    </p>
-    <p>&Ccedil;izgi girdileri i&ccedil;in ise, &ccedil;izgi yoğunluğu y&uuml;zeyi her konumun yakınındaki toplam &ccedil;izgi miktarını g&ouml;sterir. Hesaplanan yoğunluk değerlerinin birimi, birim alan başına &ccedil;izgi uzunluğudur. &Ouml;rneğin, &ccedil;izgilerin nehirleri g&ouml;sterdiği durumda, sonu&ccedil; katmanı arama yarı&ccedil;apı i&ccedil;indeki nehirlerin toplam uzunluğunu g&ouml;sterir. Bu sonu&ccedil;, hayvanların otlatılması a&ccedil;ısından uygun alanların belirlenmesi amacıyla kullanılabilir.
-    </p>
-    <p>Bu aracın kullanıldığı diğer durumlar şunlardır:
+    <p>Bu aracın bazı &ouml;rnek uygulamaları aşağıda verilmiştir:
         <ul>
-            <li>Polis merkezlerinin y&uuml;ksek su&ccedil; oranlı alanlarda uygun kaynak bulundurmasına yardımcı olmak amacıyla su&ccedil; yoğunluğu haritaları oluşturulması.
+            <li>Polis merkezlerinin y&uuml;ksek su&ccedil; oranlı alanlara uygun kaynak tahsis etmesine yardımcı olmak amacıyla su&ccedil; yoğunluğu haritaları oluşturulması.
                 
  
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Yoğunluğun hesaplanacağı girdi noktası veya çizgi katmanını seçin</h2></div>
         <hr/>
         <div>
-            <p>Yoğunluk katmanının hesaplanması i&ccedil;in kullanılacak girdi noktası veya &ccedil;izgi katmanıdır.
+            <p>Yoğunluğu hesaplamak i&ccedil;in kullanılacak girdi noktası veya &ccedil;izgidir.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Her konumdaki olay sayısını belirten bir alan girin. &Ouml;rneğin, şehirleri g&ouml;steren noktalarınız varsa, hesaplama alanı olarak şehir n&uuml;fusunu g&ouml;steren bir alanı kullanabilirsiniz; sonu&ccedil; n&uuml;fus yoğunluğu katmanı, yoğun n&uuml;fusa sahip şehirlerin etrafındaki daha yoğun n&uuml;fus yoğunluklarını hesaplar.
             </p>
-            <p>Varsayılan se&ccedil;enek olan  <b>Hi&ccedil;biri</b> kullanılırsa, her konumun bir tek sayıyı temsil ettiği varsayılır.
+            <p>Varsayılan tercih olarak  <b>Hi&ccedil;biri</b> kullanılırsa, her konumun bir tek sayımı temsil ettiği varsayılır.
             </p>
         </div>
     </div>
@@ -112,10 +108,12 @@
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Çıktı hücre boyutu</h2></div>
+        <div><h2>Hücre boyutu çıktısı</h2></div>
         <hr/>
         <div>
             <p>&Ccedil;ıktı rasterları i&ccedil;in h&uuml;cre boyutu ve birimi.
+            </p>
+            <p>Birim, kilometre, metre, mil veya fit olarak belirtilebilir.
             </p>
         </div>
     </div>
@@ -136,8 +134,7 @@
             
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
-            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
-            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz. Hem döşemeli hem de dinamik görüntü katmanları oluşturma ayrıcalıklarınız varsa, Sonucu farklı kaydet açılır kutusunu kullanarak çıktıda hangi katman türünün oluşturulacağını belirtebilirsiniz. </p>
         </div>
     </div>
 </div>

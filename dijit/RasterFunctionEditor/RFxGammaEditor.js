@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/_base/array","dojo/has","../../kernel","./RFxArgSlider"],(function(t,a,e,i,r,s){var n=t("RFxGammaSlider",[s],{min:-1,max:10,value:1,constructor:function(t){var e;this.inherited(arguments),a.mixin(this,t),(e=this.inputArgs&&this.inputArgs.Gamma)&&(this.gammaArg=e,this.label=e.name,this.value=e.value&&e.value[0]||this.value)},_setValueAttr:function(t){var a=[];if(this.value=t,this.inputArgs&&this.inputArgs.Raster)var e=this.inputArgs.Raster.input,i=e.store&&e.store.get(e.value),r=i&&i.bandCount;if(r)for(;r--;)a.push(t);else a=[t];this.gammaArg&&(this.gammaArg.value=a)}});return i("extend-esri")&&a.setObject("dijit.RasterFunctionEditor.RFxGammaEditor",n,r),n}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
-define([],(function(){var t={};function a(a,l,e,c,r){if(!l||!e)return null;for(var i=t.calculator[r?"getFieldWidth":"calcFieldWidth"](a,l,e),n=t.calculator[r?"getDataHeight":"calcDataHeight"](a,l,e),u=0,o=0,d=t.calculator.fieldToColumn(a,e),f=0;f<d.index;f++)u+=t.calculator.getFieldWidth(a,l,a.columns[f].field);for(f=0;f<l.index;f++)o+=t.calculator.getDataHeight(a,a.store.data[f],e);function g(t){return c&&void 0!==c.places?Number(t.toFixed(c.places)):t}return{x:g(u),y:g(o),w:g(i),h:g(n)}}return t.calculator=null,t.calcCellBox=function(t,l){return a(t.parentGrid,t.gridData,t.column.field,l,!1)},t.calcDataBox=function(t,l,e,c){return a(t,l,e,c,!0)},t}));
+define([],(function(){var l={};function t(t,a,c,e,r){if(!a||!c)return null;for(var n=l.calculator[r?"getFieldWidth":"calcFieldWidth"](t,a,c),i=l.calculator[r?"getDataHeight":"calcDataHeight"](t,a,c),o=0,u=0,d=l.calculator.fieldToColumn(t,c),f=0;f<d.index;f++)o+=l.calculator.getFieldWidth(t,a,t.columns[f].field);for(f=0;f<a.index;f++)u+=l.calculator.getDataHeight(t,t.rows[f],c);function g(l){return e&&void 0!==e.places?Number(l.toFixed(e.places)):l}return{x:g(o),y:g(u),w:g(n),h:g(i)}}return l.calculator=null,l.calcCellBox=function(l,a){return t(l.parentGrid,l.row,l.column.field,a,!1)},l.calcDataBox=function(l,a,c,e){return t(l,a,c,e,!0)},l}));

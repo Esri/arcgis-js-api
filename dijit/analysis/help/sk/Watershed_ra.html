@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="largesize">
+    <div id="toolDescription" class="smallsize">
         <h2>Povodie</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="&Uacute;loha povodia"></h2>
         <hr/>
     <p>Tento n&aacute;stroj určuje pr&iacute;rastkov&uacute; oblasť nad sadou buniek v rastri.
     </p>
-    <p>Povodie je oblasť st&uacute;pania, ktor&aacute; prispieva k toku--zvyčajne vody--k spoločn&eacute;mu v&yacute;stupu ako koncentrovan&eacute;mu odvodneniu. Može byť s&uacute;časťou v&auml;č&scaron;ieho povodia a tiež m&ocirc;že obsahovať men&scaron;ie povodia, zvan&eacute; podpovodia.
-    </p>
-    <p>Vezme sa hodnota každ&eacute;ho povodia z hodnoty zdroja vo vstupnom rastri alebo prvku vrstvy odtokov&yacute;ch bodov. Ak je odtokov&yacute; bod rastrov&yacute; dataset, hodnoty buniek s&uacute; použit&eacute; tak, ako je predvolen&eacute;. Ak je odtokov&yacute; bod bodov&yacute; prvkov&yacute; dataset, hodnoty bud&uacute; poch&aacute;dzať zo &scaron;pecifikovan&eacute;ho poľa.
-    </p>
-    <p>N&aacute;stroj Povodie podporuje iba vstupn&uacute; rastrov&uacute; vrstvu D8 smeru toku.
-    </p>
-    <p>Pri &scaron;pecifikovan&iacute; vstupn&yacute;ch lokal&iacute;t odtokov&yacute;ch bodov vo forme prvkov bude predvolen&yacute;m poľom prv&eacute; dostupn&eacute; platn&eacute; pole. Ak neexistuj&uacute; žiadne platn&eacute; polia, pole ObjectID (napr&iacute;klad OID alebo FID) bude predvolen&eacute;.
+    <p> Vstupn&yacute; bod Rieky Mississippi v Louisiane vytvor&iacute; prvok povodia roz&scaron;iruj&uacute;ci sa pre zahrnutie oblast&iacute; od New Yorku do Montany a do Kanady.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,7 +56,7 @@
         <div>
             <p>Vstupn&yacute; raster, ktor&yacute; ukazuje smer toku von z každej bunky.
             </p>
-            <p>Raster smeru toku m&ocirc;že byť vytvoren&yacute; použit&iacute;m n&aacute;stroja Smer Toku alebo &uacute;lohou SmerToku v službe N&aacute;strojeAnal&yacute;zyRastra, spustenej s použit&iacute;m predvolen&eacute;ho typu smeru toku  <b>D8</b>.
+            <p>Raster smeru toku m&ocirc;že byť vytvoren&yacute; pomocou rastrovej funkcie Smer toku s predvolen&yacute;m typom smeru toku  <b>D8</b>.
             </p>
         </div>
     </div>
@@ -72,7 +66,7 @@
         <div>
             <p>Vstupn&eacute; lokality odtokov&yacute;ch bodov.
             </p>
-            <p>Pre raster toto predstavuje bunky, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť. V&scaron;etky bunky, ktor&eacute; nie s&uacute; NoData, bud&uacute; použit&eacute; ako zdrojov&eacute; bunky. Pre bodov&yacute; vstup toto predstavuje lokality, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť.
+            <p>Toto m&ocirc;že byť raster alebo bodov&yacute; prvok. Pre raster toto predstavuje bunky, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť. V&scaron;etky bunky, ktor&eacute; nie s&uacute; NoData, bud&uacute; použit&eacute; ako zdrojov&eacute; bunky. Pre bodov&yacute; vstup toto predstavuje lokality, nad ktor&yacute;mi bude určen&aacute; prispievaj&uacute;ca alebo zachyt&aacute;vacia oblasť.
             </p>
         </div>
     </div>
@@ -82,7 +76,7 @@
         <div>
             <p>Pole použit&eacute; na pridelenie hodn&ocirc;t k lokalit&aacute;m odtokov&yacute;ch bodov.
             </p>
-            <p>Aj je vstupn&aacute; vrstva odtokov&yacute;ch bodov rastrom, je použit&aacute; Hodnota. Ak ide o prvok, je použit&eacute; č&iacute;seln&eacute; pole. Ak pole obsahuje desatinn&eacute; hodnoty, bud&uacute; orezan&eacute; na cel&eacute; č&iacute;sla.
+            <p>Ak je vstupn&aacute; vrstva bodov odtoku raster, použije sa  <i>Value</i>. Ak ide o prvok, je použit&eacute; č&iacute;seln&eacute; pole. Ak pole obsahuje desatinn&eacute; hodnoty, bud&uacute; orezan&eacute; na cel&eacute; č&iacute;sla.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>N&aacute;zov vrstvy, ktor&aacute; bude vytvoren&aacute; v zložke  <b>M&ocirc;j obsah</b> a pridan&aacute; do mapy. Predvolen&yacute; n&aacute;zov je založen&yacute; na n&aacute;zve n&aacute;stroja a n&aacute;zve vstupnej vrstvy. Ak vrstva už existuje, budete požiadan&yacute; zadať in&eacute; meno.
             </p>
-            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu.
-            </p>
+            <p>M&ocirc;žete zmeniť n&aacute;zov zložky v zložke  <b>M&ocirc;j Obsah</b>, kde bude v&yacute;sledok uložen&yacute; pomocou <b>Uložiť v&yacute;sledok v</b> vo v&yacute;suvnom menu. Ak máte oprávnenia na vytváranie dlaždicových a dynamických snímkových vrstiev, môžete špecifikovať, ktorý typ vrstvy generovať vo výstupe pri použití rozbaľovacieho boxu Uložiť výsledok ako. </p>
         </div>
     </div>
 </div>

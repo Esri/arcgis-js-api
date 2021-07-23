@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Scegliere il layer raster multibanda. Assicurarsi che il raster di input abbia le bande appropriate disponibili.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Scegliere metodo per monitorare vegetazione</h2></div>
         <hr/>
         <div>
-            <p>Selezionare il metodo per creare il layer di indice della vegetazione. I differenti indici di vegetazione consentono di mettere in evidenza alcune feature o di ridurre diversi rumori.
+            <p>Scegliere il metodo da usare per calcolare il layer dell'indice di vegetazione. I differenti indici di vegetazione consentono di mettere in evidenza alcune feature o di ridurre diversi rumori.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 &egrave; un indice di vegetazione che tenta di ridurre le influenze del t
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI &egrave; un indice standardizzato che consente di generare un'immagine raffigurante aree verdi o biomassa relativa. Questo indice sfrutta le caratteristiche contrastanti di due bande di un raster dataset multispettrale: l'assorbimento dei pigmenti di clorofilla nella banda rossa e l'elevata riflettanza dei materiali vegetali nella banda dell'infrarosso vicino (NIR).
+NDVI &egrave; un indice standardizzato che consente di generare un'immagine raffigurante aree verdi o biomassa relativa. Questo indice sfrutta il contrasto delle caratteristiche di due bande di un dataset raster multispettrale: gli assorbimenti dei pigmenti di clorofilla nella banda rossa e l'alta riflettivit&agrave; dei materiali vegetali nella banda del vicino infrarosso (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Il processo della formula di Sultan utilizza un'immagine a 8 bit e a sei bande e
 L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre le influenze della luminosit&agrave; del terreno presupponendo che la linea del terreno abbia una pendenza e un'intercettazione arbitrarie.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI &egrave; un indice di vegetazione che ha stimato la presenza di vegetazione usando solo informazioni dallo spettro visibile. Questo metodo richiede bande in parti rosse, verdi e blu dello spettro.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specificare indici di banda NIR e RED</h2></div>
+        <div><h2>Specifica indici per la banda NIR e la banda Rossa</h2></div>
         <hr/>
         <div>
-            <p>Specificare gli indici per le bande del quasi infrarosso e del rosso.
+            <p>Specifica gli indici della banda per le bande NIR e Red.
             </p>
-            <p>Ciascun sensore satellitare e la fotocamera aerea catturano informazioni che vengono suddivise in indici di banda. Ciascun indice di banda contiene le informazioni per una parte specifica dello spettro elettromagnetico. Questo metodo di monitoraggio della vegetazione richiede di specificare l'indice di banda che ha acquisito le lunghezze d'onda del quasi infrarosso e del rosso.
+            <p>I sensori satellitari o aerei multibanda catturano informazioni che sono suddivise in bande di lunghezza d'onda, che sono identificate con indici di banda. Questo metodo di monitoraggio della vegetazione richiede di specificare gli indici di banda per le bande di lunghezza d'onda Near Infrared (NIR) e Red.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Specificare gli indici per le bande rosse, verdi e blu.</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare gli indici di banda per le bande rosse, verdi e blu.
+            </p>
+            <p>I sensori satellitari o aerei multibanda catturano informazioni che sono suddivise in bande di lunghezza d'onda, che sono identificate con indici di banda. L'indice di resistenza atmosferica visibile richiede di specificare gli indici di banda per le bande di lunghezza d'onda rossa, verde e blu.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Specificare gli indici per le bande blu, rosse, NIR, SWIR-1, e Thermal</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare gli indici di banda per le bande Blu, Rossa, NIR (Near Infrared), SWIR (Shortwave Infrared) e Termica.
+            </p>
+            <p>I sensori satellitari o aerei multibanda catturano informazioni che sono suddivise in bande di lunghezza d'onda, che sono identificate con indici di banda. L'indice della formula di Sultan richiede di specificare gli indici di banda per le bande di lunghezza d'onda blu, rossa, nel vicino infrarosso (NIR), nell'infrarosso a onde corte (SWIR) e termica.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Specificare gli indici delle bande blu, verde, rossa, NIR, SWIR-1 e SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Specificare gli indici della banda per le bande blu, verde, rossa NIR, SWIR-1 e SWIR-2.
+            </p>
+            <p>I sensori satellitari o aerei multibanda catturano informazioni che sono suddivise in bande di lunghezza d'onda, che sono identificate con indici di banda. L'indice di vegetazione verde richiede di specificare gli indici di banda per le bande di lunghezza d'onda blu, verde, rosso, infrarosso vicino (NIR), infrarosso a onde corte 1 (SWIR-1) e infrarosso a onde corte 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div><h2>Quantità di copertura di vegetazione verde</h2></div>
         <hr/>
         <div>
-            <p>Specifica la quantit&agrave; di copertura della vegetazione, richiesta dal metodo SAVI.
+            <p>Specifica la quantit&agrave; di copertura vegetativa verde, che &egrave; richiesta dal metodo Soil-Adjusted Vegetation Index.
             </p>
             <p>I valori validi sono i seguenti:
                 <ul>
@@ -161,7 +195,7 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
         <div>
             <p>Specifica il fattore di regolazione per ridurre l'effetto del terreno, richiesto dal metodo dell'indice di vegetazione in funzione del suolo e trasformato. Il valore predefinito &egrave; 0.08.
             </p>
-            <p>Un valore ridotto significa ignorare l'effetto del terreno. Un valore elevato significa che il terreno influenzer&agrave; il risultato.
+            <p>Un valore basso significa che si sta ignorando l'effetto del terreno. Un valore elevato significa che il terreno influenzer&agrave; il risultato.
             </p>
         </div>
     </div>
@@ -172,8 +206,7 @@ L'indice SAVI trasformato &egrave; un indice di vegetazione che tenta di ridurre
             
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
-            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
-            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>. Se si dispone dei privilegi per creare entrambi i layer di immagini dinamiche e tile, è possibile specificare quale tipo di layer generare nell'output usando la casella a discesa Salva risultato come. </p>
         </div>
     </div>
 </div>

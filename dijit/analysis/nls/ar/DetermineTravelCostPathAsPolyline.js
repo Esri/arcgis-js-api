@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"اختر طبقة مصدر بيانات نقطية أو معلم لتحديد المسارات منه",inputCostRasterLabel:"اختيار الطبقة النقطية لتكلفة السفر",inputDestinationLayerLabel:"اختر الطبقة النقطية لمصدر المعالم لأجل تحديد المسارات إلى",pathTypeLabel:"اختر نوع المسارات لتحديد (اختياري)",bestSingle:"أفضل مفرد",eachCell:"لكل خلية",eachZone:"لكل منطقة",destinationField:"اختيار حقل للحصول على القيم للوجهة",outputPolylineName:"اسم الشكل متعدد الخطوط",outputLayerName:"التكلفة المثلى للسفر في الشكل متعدد الخطوط ${layername}",drawDestinationPointLayerName:"نقاط الوجهة",drawSourcePointLayerName:"نقاط المصدر",itemDescription:"طبقة المعلم التي تم إنشاؤها من تشغيل تحديد مسارات تكلفة السفر في صورة متعدد الخطوط في ${layername}. ",itemTags:"تحليل النتيجة، مسار تحديد تكلفة السفر في الشكل متعدد الخطوط، ${layername} ${fieldname}",itemSnippet:"طبقة المعالم المنشأة من مسار تحديد تكلفة السفر في الشكل متعدد الخطوط",missingMessage:"يجب أن تكون طبقة الوجهة مختلفة عن طبقة المصدر",noValueMessage:"يتطلب وجود هذه القيمة",placeHolder:"--تحديد طبقة--"});

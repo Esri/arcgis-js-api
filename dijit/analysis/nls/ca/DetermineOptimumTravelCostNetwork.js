@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu la capa d'ubicació de ràster o entitat per determinar les rutes de viatge entre",inputCostRasterLabel:"Trieu la capa ràster de cost de viatge",outputOptimumNetworkName:"Nom de la capa de polilínia de les rutes òptimes de resultats",outputNeighborNetworkName:"Nom de la capa de polilínia de les rutes veïnes de resultats (opcional)",outputLayerName:"Determina el cost de viatge òptim de ${layername}",itemDescription:"Capa d'entitats generada en executar Determina la xarxa de cost de viatge òptima a ${layerName}. ",itemTags:"Anàlisi de resultats, Determina la xarxa de cost de viatge òptima, ${layername} ${fieldname}",itemSnippet:"Capa d'entitats generada en executar Determina la xarxa de cost de viatge òptima."});

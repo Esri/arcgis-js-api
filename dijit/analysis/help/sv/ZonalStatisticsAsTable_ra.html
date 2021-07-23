@@ -46,15 +46,13 @@
         <hr/>
     <p>Verktyget summerar v&auml;rdena i ett raster inom zonerna f&ouml;r ett annat dataset och rapporterar resultatet till en tabell.
     </p>
-    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar:
-    </p>
-    <p>
+    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar av det h&auml;r verktyget:
         <ul>
-            <li>Med ett lager med delstatsgr&auml;nser och f&ouml;rdelningen av genomsnittlig nederb&ouml;rd &ouml;ver det kontinentala USA kan du ber&auml;kna f&ouml;rdelningen av extrema regnh&auml;ndelser per delstat med hj&auml;lp av en lista med precenttilv&auml;rden.
+            <li>Med ett lager f&ouml;r avrinningsgr&auml;nser och ett lager med markanv&auml;ndningsgr&auml;nser enligt markanv&auml;ndningstyp kan du ber&auml;kna den totala arealen f&ouml;r de olika markanv&auml;ndningstyperna f&ouml;r varje avrinningsomr&aring;de.
                 
 
             </li>
-            <li>Med ett lager med &ouml;verlappande ekologiska zoner och ett rasterlager med jordfuktighet kan du ber&auml;kna all statistik som st&ouml;ds i varje zon f&ouml;r att relatera zoner med tillg&auml;nglig jordfuktighet.
+            <li>Med ett lager f&ouml;r fastigheter i ett l&auml;n och ett lager kommungr&auml;nser kan du summera snittv&auml;rdet f&ouml;r de tomma fastigheterna inom varje kommungr&auml;ns.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Välj zonraster eller geoobjekt</h2></div>
         <hr/>
         <div>
-            <p>Det lagret som definierar gr&auml;nserna f&ouml;r zonerna, eller omr&aring;dena, som ska summeras.
+            <p>Indata som definierar gr&auml;nserna f&ouml;r zonerna, eller omr&aring;dena, som ska summeras.
             </p>
-            <p>Lagret kan vara ett heltalsraster eller geoobjektdata. F&ouml;r raster definieras zonerna av alla platser i indata som har samma cellv&auml;rde. F&ouml;r geoobjekt kan zonerna &ouml;verlappas. Omr&aring;dena beh&ouml;ver inte vara sammanh&auml;ngande.
+            <p>Indata kan vara ett heltalsraster eller geoobjektdata. F&ouml;r raster definieras zonerna av alla platser i indata som har samma cellv&auml;rde. F&ouml;r geoobjekt kan zonerna &ouml;verlappas. Omr&aring;dena beh&ouml;ver inte vara sammanh&auml;ngande.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Zonfält</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r attributet f&ouml;r det lager som ska anv&auml;ndas f&ouml;r att definiera zonernas (omr&aring;denas) gr&auml;nser.
+            <p>F&auml;ltet som inneh&aring;ller de v&auml;rden som definierar varje zon.
             </p>
-            <p>Anta till exempel att det f&ouml;rsta indatalagret definierar gr&auml;nserna f&ouml;r administrativa enheter, med attribut som definierar region, distrikt och fastighets-ID f&ouml;r varje enhet. Du har ocks&aring; ett rasterlager som definierar ett index f&ouml;r biologisk m&aring;ngfald f&ouml;r varje plats. Med f&auml;ltet du v&auml;ljer kan du v&auml;lja att ber&auml;kna den genomsnittliga biologiska m&aring;ngfalden p&aring; lokal-, distrikts- eller regionniv&aring;.
+            <p>Det kan vara ett heltalsf&auml;lt eller str&auml;ngf&auml;lt i zondatasetet.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Välj värderaster</h2></div>
         <hr/>
         <div>
-            <p>Rastercellerna i det h&auml;r lagret summeras efter de omr&aring;den (zoner) som de faller inom.
+            <p>Rastret som inneh&aring;ller de v&auml;rden som statistiken ska ber&auml;knas p&aring;.
+            </p>
+            <p>Det kan vara antingen en heltalstyp eller flyttalstyp. Men n&auml;r det &auml;r en flyttalstyp kommer alternativen f&ouml;r att ber&auml;kna majoritet, minoritet och varians inte att finnas tillg&auml;ngliga.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignorera NoData i beräkningar (tillval)</h2></div>
         <hr/>
         <div>
-            <p>Anger huruvida NoData-v&auml;rden ignoreras i analysen.
-                <ul>
-                    <li>Markerat &ndash; Analysen inneh&aring;ller de celler som har ett v&auml;rde i indatav&auml;rdesrastret inom en viss zon f&ouml;r att fastst&auml;lla utdatav&auml;rdet f&ouml;r den zonen. NoData-celler i v&auml;rderaster ignoreras i statistikber&auml;kningen. Det h&auml;r &auml;r standardinst&auml;llningen.
-                    </li>
-                    <li>Avmarkerad &ndash; Analysen resulterar i NoData om det finns NoData-v&auml;rden f&ouml;r cellerna i v&auml;rderastret inom en angiven zon.
-                    </li>
-                </ul>
-                
+            <p> Anger huruvida NoData-v&auml;rden ignoreras i analysen.
             </p>
+            <ul>
+                <li>Markerat &ndash; Analysen inneh&aring;ller de celler som har ett v&auml;rde i indatav&auml;rdesrastret inom en viss zon f&ouml;r att fastst&auml;lla utdatav&auml;rdet f&ouml;r den zonen. NoData-celler i v&auml;rderaster ignoreras i statistikber&auml;kningen. Det h&auml;r &auml;r standardinst&auml;llningen.
+                </li>
+                <li>Avmarkerad &ndash; Analysen resulterar i NoData om det finns NoData-v&auml;rden f&ouml;r cellerna i v&auml;rderastret inom en angiven zon.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Statistiktypen som ska ber&auml;knas.
             </p>
-            <p>Indata kan vara n&aring;got av f&ouml;ljande:  <b>Alla</b>, <b>Medel</b>, <b>Majoritet</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Percentil</b>, <b>Intervall</b>, <b>Standardavvikelse</b>, <b>Summa</b>, <b>Varians</b>, <b>Minimum och Maximum</b>, <b>Medelv&auml;rde och standardavvikelse</b> eller <b>Minimum, Maximum och Medel</b>. Standardv&auml;rdet &auml;r <b>Alla</b>.
-            </p>
-            <p>Om indatav&auml;rdesrastret &auml;r heltal ber&auml;knas all statistik som standard. Om v&auml;rderastret &auml;r flyttalstyp ber&auml;knas all statistik f&ouml;rutom  <b>Median</b> <b>och</b> Percentil. 
-            </p>
-            <p>Om indatav&auml;rdesrastret &auml;r flyttalstyp kan zonber&auml;kningarna f&ouml;r  <b>Majoritet</b>, <b>Minoritet</b> och <b>Varians</b> inte ber&auml;knas.
+            <p> Indata kan vara n&aring;got av f&ouml;ljande: <b>Alla</b>, <b>Medel</b>, <b>Majoritet</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Percentil</b>, <b>Intervall</b>, <b>Standardavvikelse</b>, <b>Summa</b>, <b>Varians</b>, <b>Minimum och Maximum</b>, <b>Medelv&auml;rde och standardavvikelse</b> eller <b>Minimum, Maximum och Medel</b>. Standardv&auml;rdet &auml;r <b>Alla</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Percentilvärden (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Percentiler som ska ber&auml;knas. Ett enskilt v&auml;rde eller en lista med v&auml;rden kan anges. Standard &auml;r 90, som anger den nittionde percentilen.
+            <p>Percentil att ber&auml;kna. Standard &auml;r 90, som anger den nittionde percentilen.
             </p>
-            <p>V&auml;rdena kan vara fr&aring;n 0 till 100. Den 0:e percentilen &auml;r i grunden samma som statistiken Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
+            <p>V&auml;rdet kan vara fr&aring;n 0 till 100. Den 0:e percentilen &auml;r i grunden samma som statistiken Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
             </p>
-            <p>Det h&auml;r alternativet st&ouml;ds bara om parametern  <b>Statistiktyp</b> &auml;r inst&auml;lld p&aring; <b>Percentil</b> eller <b>Alla</b>.
+            <p> Denna parameter st&ouml;ds bara om parametern <b>Statistiktyp</b> &auml;r angiven till <b>Percentil</b> eller <b>Alla</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Interpoleringstyp för percentil (valfritt)</h2></div>
         <hr/>
         <div>
-            
             <p>Anger vilken metod f&ouml;r interpolering av percentil som ska anv&auml;ndas n&auml;r antalet v&auml;rden fr&aring;n indatarastret som ska ber&auml;knas &auml;r j&auml;mnt.
-            </p> 
-            <p>Om indatav&auml;rderastret &auml;r av heltalspixeltyp anv&auml;nds metoden  <b>N&auml;rmast</b>. Om indatav&auml;rderastret &auml;r av flyttalspixeltyp anv&auml;nds metoden <b>Linj&auml;r</b>. Det h&auml;r &auml;r standardinst&auml;llningen.
             </p>
-            <p>F&ouml;r metoden  <b>N&auml;rmaste</b> anv&auml;nds det n&auml;rmaste tillg&auml;ngliga v&auml;rdet till &ouml;nskad percentil. F&ouml;r metoden <b>Linj&auml;r</b> anv&auml;nds det viktade medelv&auml;rdet av de tv&aring; omgivande v&auml;rdena fr&aring;n den &ouml;nskade percentilen.
-            </p> 
+            <ul>
+                <li>  <b>Autoidentifiering</b> &mdash; Om indatav&auml;rderastret &auml;r av heltalspixeltyp anv&auml;nds metoden <b>N&auml;rmast</b>. Om indatav&auml;rderastret &auml;r av flyttalspixeltyp anv&auml;nds metoden <b>Linj&auml;r</b>. Det h&auml;r &auml;r standardinst&auml;llningen.
+                </li>
+                <li> <b>N&auml;rmast</b> &mdash; Det n&auml;rmaste tillg&auml;ngliga v&auml;rdet till &ouml;nskad percentil anv&auml;nds.
+                </li>
+                <li> <b>Linj&auml;r</b> &mdash; Det viktade medelv&auml;rdet av de tv&aring; omgivande v&auml;rdena fr&aring;n den &ouml;nskade percentilen anv&auml;nds.
+                </li>
+            </ul>
+            
+            <p> Denna parameter st&ouml;ds bara om parametern <b>Statistiktyp</b> &auml;r angiven till <b>Percentil</b> eller <b>Alla</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Bearbeta flerdimensionellt (valfritt)</h2></div>
         <hr/>
         <div>
-            <p>Anger hur indatarastren bearbetas om de &auml;r flerdimensionella.
+            <p>Anger hur de flerdimensionella indatabildtj&auml;nsterna bearbetas om de &auml;r flerdimensionella.
             </p>
             <ul>
                 <li>Markerat &ndash; Statistiken ber&auml;knas utifr&aring;n den aktuella delen av det flerdimensionella indatasetet. Det h&auml;r &auml;r standardinst&auml;llningen.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
+            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
             </p>
         </div>
     </div>

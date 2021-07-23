@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Zu beschreibendes Dataset auswählen",describeDataLabel:"Gewinnen Sie einen Überblick über Ihre Daten, indem Sie eines der folgenden Elemente erstellen (optional):",sampleLayer:"Beispiel-Layer",extentLayer:"Ausdehnungs-Layer",noOfFeaturesLabel:"Anzahl der einzubeziehenden Features",outputLayerName:"Name des Ergebnis-Layers",resultName:"Daten des Layers ${layerName} beschreiben",itemDescription:"Durch Ausführung von 'Dataset beschreiben' für ${layerName} generierter Feature-Layer ",itemTags:"Analyseergebnis, DescribeDataset, ${layerName}",itemSnippet:"Über 'Dataset beschreiben' generierter Feature-Layer"});

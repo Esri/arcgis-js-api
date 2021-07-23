@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή raster ή θεματικού επιπέδου θέσης στοιχείων για καθορισμό διαδρομών μετακίνησης μεταξύ",inputCostRasterLabel:"Επιλογή θεματικού επιπέδου raster κόστους μετακίνησης",outputOptimumNetworkName:"Όνομα εξαγόμενου θεματικού επιπέδου πολύγραμμου βέλτιστων διαδρομών",outputNeighborNetworkName:"Όνομα εξαγόμενου θεματικού επιπέδου πολύγραμμου γειτονικών διαδρομών (προαιρετικά)",outputLayerName:"Καθορισμός βέλτιστου κόστους μετακίνησης στο θεματικό επίπεδο ${layername}",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της επιλογής «Καθορισμός δικτύου βέλτιστου κόστους μετακίνησης» για το θεματικό επίπεδο ${layerName}. ",itemTags:"Αποτέλεσμα ανάλυσης, Καθορισμός δικτύου βέλτιστου κόστους μετακίνησης, ${layername} ${fieldname}",itemSnippet:"Δημιουργήθηκε feature layer από την επιλογή «Καθορισμός δικτύου βέλτιστου κόστους μετακίνησης»."});

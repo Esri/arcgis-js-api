@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Valitse monikaistainen rasterikarttataso. Varmista, ett&auml; tarvittavat kaistat ovat k&auml;ytett&auml;viss&auml; l&auml;ht&ouml;aineiston rasterissa.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Valitse karttatason tarkkailumenetelmä</h2></div>
         <hr/>
         <div>
-            <p>Valitse kasvillisuusindeksin karttatason luomiseen k&auml;ytetty menetelm&auml;. Eri kasvillisuusindeksien avulla voit korostaa tiettyj&auml; kohteita tai v&auml;hent&auml;&auml; erilaista melua.
+            <p>Valitse kasvillisuusindeksin karttatason laskentaan k&auml;ytett&auml;v&auml; menetelm&auml;. Eri kasvillisuusindeksien avulla voit korostaa tiettyj&auml; kohteita tai v&auml;hent&auml;&auml; erilaista melua.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,6 +95,10 @@ Sultanin kaava ottaa kuusikaistaisen 8-bittisen kuvan ja tuottaa kolmikaistaisen
 TSAVI yritt&auml;&auml; minimoida maaper&auml;n heijastuksen vaikutukset olettamalla, ett&auml; maanpinnan viivalla on ennalta arvaamaton kaltevuus ja leikkauspiste.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI on kasvillisuusindeksi, joka arvioi kasvillisuusesiintym&auml;n k&auml;ytt&auml;en vain n&auml;kyv&auml;n spektrin tietoja. T&auml;m&auml; menetelm&auml; edellytt&auml;&auml; spektrin punaisen, vihre&auml;n ja sinisen osan kaistoja.
+
+                </li>
             </ul>
         </div>
     </div>
@@ -102,9 +106,39 @@ TSAVI yritt&auml;&auml; minimoida maaper&auml;n heijastuksen vaikutukset olettam
         <div><h2>Määritä lähi-infrapunavalon ja punaisen valon kaistojen indeksit</h2></div>
         <hr/>
         <div>
-            <p>Anna l&auml;hi-infrapunavalon ja punaisen valon kaistojen kaistaindeksit.
+            <p>M&auml;&auml;rit&auml; l&auml;hi-infrapunavalon ja punaisen valon kaistojen kaistaindeksit.
             </p>
-            <p>Jokainen satelliittianturi ja ilmakamera tallentaa tiedot, jotka on jaettu kaistaindekseihin. Jokainen kaistaindeksi sis&auml;lt&auml;&auml; tiedot s&auml;hk&ouml;magneettisen spektrin tietylle osalle. T&auml;m&auml; kasvillisuuden tarkkailumenetelm&auml; edellytt&auml;&auml; sen kaistaindeksin m&auml;&auml;ritt&auml;mist&auml;, joka on tallentanut l&auml;hi-infrapunavalon ja punaisen valon aallonpituudet.
+            <p>Monikaistaiset satelliitti- tai ilma-anturit tallentavat tietoa, joka on jaettu kaistaindeksien mukaan tunnistettaviin aallonpituuskaistoihin. T&auml;m&auml; kasvillisuuden tarkkailun menetelm&auml; edellytt&auml;&auml;, ett&auml; l&auml;hi-infrapunavalon ja punaisen aallonpituuden kaistoille m&auml;&auml;ritet&auml;&auml;n kaistaindeksit.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Määritä punaisen, vihreän ja sinisen kaistan indeksit</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml; kaistaindeksit punaiselle, vihre&auml;lle ja siniselle kaistalle.
+            </p>
+            <p>Monikaistaiset satelliitti- tai ilma-anturit tallentavat tietoa, joka on jaettu kaistaindeksien mukaan tunnistettaviin aallonpituuskaistoihin. VARI-indeksi edellytt&auml;&auml; punaisen, vihre&auml;n ja sinisen aallonpituuskaistan m&auml;&auml;ritt&auml;mist&auml;.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Määritä seuraavien kaistojen indeksit: sininen, punainen, NIR, SWIR-1 ja terminen</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml; seuraavien kaistojen kaistaindeksit: sininen, punainen, l&auml;hi-infrapuna (NIR), lyhytaaltoinfrapuna (SWIR) ja terminen.
+            </p>
+            <p>Monikaistaiset satelliitti- tai ilma-anturit tallentavat tietoa, joka on jaettu kaistaindeksien mukaan tunnistettaviin aallonpituuskaistoihin. Sultanin kaavan indeksi edellytt&auml;&auml; seuraavien aallonpituuskaistojen kaistaindeksien m&auml;&auml;ritt&auml;mist&auml;: sininen, punainen, l&auml;hi-infrapuna (NIR), lyhytaaltoinfrapuna (SWIR) ja terminen.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Määritä seuraavien kaistojen indeksit: sininen, vihreä, punainen, NIR, SWIR-1 ja SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>M&auml;&auml;rit&auml; seuraavien kaistojen kaistaindeksit: sininen, vihre&auml;, punainen, NIR, SWIR-1 ja SWIR-2.
+            </p>
+            <p>Monikaistaiset satelliitti- tai ilma-anturit tallentavat tietoa, joka on jaettu kaistaindeksien mukaan tunnistettaviin aallonpituuskaistoihin. Vihre&auml;n kasvillisuuden indeksi edellytt&auml;&auml; seuraavien aallonpituuskaistojen kaistaindeksien m&auml;&auml;ritt&auml;mist&auml;: sininen, vihre&auml;, punainen, l&auml;hi-infrapuna (NIR), lyhytaaltoinfrapuna 1 (SWIR-1) ja lyhytaaltoinfrapuna 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ TSAVI yritt&auml;&auml; minimoida maaper&auml;n heijastuksen vaikutukset olettam
         <div><h2>Vihreän kasvillisuuspeitteen määrä</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; m&auml;&auml;ritt&auml;&auml; vihre&auml;n kasvillisuuspeitteen m&auml;&auml;r&auml;n, jota SAVI-menetelm&auml; edellytt&auml;&auml;.
+            <p>M&auml;&auml;ritt&auml;&auml; vihre&auml;n kasvillisuuspeitteen m&auml;&auml;r&auml;n, jota SAVI (maaper&auml;korjattu kasvillisuusindeksi) -menetelm&auml; edellytt&auml;&auml;
             </p>
             <p>Seuraavat ovat kelvollisia arvoja:
                 <ul>
@@ -159,7 +193,7 @@ TSAVI yritt&auml;&auml; minimoida maaper&auml;n heijastuksen vaikutukset olettam
         <div><h2>Korjauskerroin</h2></div>
         <hr/>
         <div>
-            <p>T&auml;m&auml; m&auml;&auml;ritt&auml;&auml; korjauskertoimen, jolla pienent&auml;&auml; m&auml;&auml;per&auml;n vaikutusta. Muunnettu maaper&auml;korjattu kasvillisuusindeksi edellytt&auml;&auml; t&auml;t&auml;. Oletusarvo on 0,08.
+            <p>T&auml;m&auml; m&auml;&auml;ritt&auml;&auml; korjauskertoimen, jolla voidaan pienent&auml;&auml; maaper&auml;n vaikutusta. Muunnettu maaper&auml;korjattu kasvillisuusindeksi edellytt&auml;&auml; t&auml;t&auml;. Oletusarvo on 0,08.
             </p>
             <p>Alhainen arvo tarkoittaa, ett&auml; maaper&auml;n vaikutusta ei oteta huomioon. Korkea arvo tarkoittaa, ett&auml; maaper&auml; vaikuttaa tulokseen.
             </p>
@@ -172,8 +206,7 @@ TSAVI yritt&auml;&auml; minimoida maaper&auml;n heijastuksen vaikutukset olettam
             
             <p>Sen karttatason nimi, joka luodaan  <b>Oma sis&auml;lt&ouml;</b> -kohtaan ja lis&auml;t&auml;&auml;n karttaan. Oletusnimi perustuu ty&ouml;kalun nimeen ja l&auml;ht&ouml;karttatason nimeen. Jos taso on jo luotu, sinua pyydet&auml;&auml;n antamaan toinen nimi.
             </p>
-            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla.
-            </p>
+            <p>Voit m&auml;&auml;ritt&auml;&auml; kansion nimen  <b>Oma sis&auml;lt&ouml;</b> -osiossa, johon tulos tallennetaan avattavan <b>Tallenna tulos kohteeseen</b> -valikon avulla. Jos sinulla on käyttöoikeudet, jotka sallivat sekä tiilitettyjen että dynaamisten kuva-aineistokarttatasojen luonnin, voit määrittää tulosaineiston karttatasotyypin avattavan Tallenna tulos nimellä -ruudun avulla. </p>
         </div>
     </div>
 </div>

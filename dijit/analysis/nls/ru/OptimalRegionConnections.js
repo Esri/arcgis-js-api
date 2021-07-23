@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Выбор растра или объекта региона",inputCostRaster:"Выбор растра стоимости (дополнительно)",inputBarrierRasterOrFeatures:"Выбор растра или объектов барьеров (дополнительно)",distanceMethod:"Метод расстояния (дополнительно)",connectionsWithinRegions:"Соединения внутри регионов (дополнительно)",generateConnections:"Создать соединения",noConnections:"Соединений нет",planar:"Плоскостные",geoDesic:"Геодезические",outputOptimalLinesName:"Имя итогового векторного слоя линий оптимальной связности",outputNeighborConnectionsName:"Имя итогового векторного слоя соседних соединений (дополнительно)",outputLayerName:"Оптимальные соединения регионов ${layername}",drawSourcePointLayerName:"Исходные точки",itemDescription:"Векторный слой, созданный с помощью инструмента Оптимальные соединения регионов для ${layername}. ",itemTags:"Результаты анализа, Оптимальные соединения регионов, ${layername} ${fieldname}",itemSnippet:"Векторный слой, созданный с помощью инструмента Оптимальные соединения регионов.",noValueMessage:"Это значение является обязательным"});

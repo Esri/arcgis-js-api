@@ -46,15 +46,13 @@
         <hr/>
     <p>&Scaron;is įrankis apibendrina rastro, esančio kito duomenų rinkinio zonose, reik&scaron;mes ir pateikia rezultatus lentelėje.
     </p>
-    <p>Taikymo pavyzdžiai:
-    </p>
-    <p>
+    <p>Įrankio taikymo pavyzdžiai:
         <ul>
-            <li>Atsižvelgiant į valstijų ribų sluoksnį ir vidutinių kritulių pasiskirstymą žemyninėje JAV teritorijoje, apskaičiuokite ekstremalių lietaus rei&scaron;kinių pasiskirstymą pagal valstiją naudodami procentilių reik&scaron;mių sąra&scaron;ą.
+            <li>Suskaičiuoti kiekvienos žemėnaudos dalį procentais upės baseine.
                 
 
             </li>
-            <li>Atsižvelgiant į sutampančias ekologines zonas ir rastrinį dirvožemio drėgmės sluoksnį, apskaičiuokite kiekvienos zonos galimą statistiką, kad susietumėte zonas, kuriose yra dirvožemio drėgmės.
+            <li>Turint sklypų ir savivaldybių sluoksnius apskaičiuoti neužstatytų sklypų kiekvienos savivaldybės ribose skaičių.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Pasirinkti zonos rastrą arba elementus</h2></div>
         <hr/>
         <div>
-            <p>Sumuojamų zonų arba plotų ribas apibrėžiantis sluoksnis.
+            <p>Sumuojamų zonų arba plotų ribas apibrėžianti įvestis.
             </p>
-            <p>Sluoksnį gali sudaryti sveikieji rastriniai arba elementų duomenys. Rastro atveju zonas apibrėžia visos įvesties vietos, turinčios tą pačią gardelės reik&scaron;mę. Elementų atžvilgiu zonos gali sutapti. Plotai neprivalo susisiekti.
+            <p>Įvestį gali sudaryti sveikieji rastriniai arba elementų duomenys. Rastro atveju zonas apibrėžia visos įvesties vietos, turinčios tą pačią gardelės reik&scaron;mę. Elementų atžvilgiu zonos gali sutapti. Plotai neprivalo susisiekti.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Zonos laukas</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;is sluoksnio atributas naudojamas zonų (plotų) riboms apibrėžti.
+            <p>Laukas, kuriame yra kiekvieną zoną apra&scaron;ančios reik&scaron;mės.
             </p>
-            <p>Pavyzdžiui, pirmasis įvesčių sluoksnis apibrėžia valdomų vienetų ribas, su atributais, nurodančiais regioną, rajoną ir kiekvieno vieneto sklypo ID. Taip pat turite rastrų sluoksnį, apibrėžiantį kiekvienos vietos biologinės įvairovės rodiklį. Galite pasirinktame lauke apskaičiuoti vidutinę biologinę įvairovę vietiniu, rajono arba regioniniu lygmeniu.
+            <p>Tai gali būti sveikasis skaičius arba tekstinis zonos duomenų rinkinio laukas.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Pasirinkti reikšmių rastrą</h2></div>
         <hr/>
         <div>
-            <p>&Scaron;io sluoksnio rastro gardelės bus sumuojamos pagal plotus (zonas), kurios yra viduje.
+            <p>Rastras, kuriame yra reik&scaron;mės, pagal kurias skaičiuojama statistika.
+            </p>
+            <p>Jis gali būti sveikojo skaičiaus arba skaičiaus su slankiuoju kableliu tipo. Tačiau kai jis yra skaičiaus arba skaičiaus su slankiuoju kableliu tipo, daugumos, mažumos ir įvairovės skaičiavimo parinktys nėra pasiekiamos.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Skaičiuojant nepaisyti NoData (neprivaloma)</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, ar analizuojant ignoruojamos NoData reik&scaron;mės.
-                <ul>
-                    <li>Pažymėta &ndash; Į analizę įtraukiamos gardelės, kurių įvesties reik&scaron;mės rastro reik&scaron;mė yra bet kurioje konkrečioje zonoje, kad būtų galima nustatyti tos zonos i&scaron;vesties reik&scaron;mę. NoData gardelės reik&scaron;mės rastre atliekant statistinius skaičiavimus nebus paisomos. Tai yra numatytasis nustatymas.
-                    </li>
-                    <li>Nepažymėta &ndash; Analizės rezultatas bus NoData, jei tam tikroje zonoje reik&scaron;mių rastro gardelės turi NoData reik&scaron;mių.
-                    </li>
-                </ul>
-                
+            <p> Nurodo, ar analizuojant ignoruojamos NoData reik&scaron;mės.
             </p>
+            <ul>
+                <li>Pažymėta &ndash; Į analizę įtraukiamos gardelės, kurių įvesties reik&scaron;mės rastro reik&scaron;mė yra bet kurioje konkrečioje zonoje, kad būtų galima nustatyti tos zonos i&scaron;vesties reik&scaron;mę. NoData gardelės reik&scaron;mės rastre atliekant statistinius skaičiavimus nebus paisomos. Tai yra numatytasis nustatymas.
+                </li>
+                <li>Nepažymėta &ndash; Analizės rezultatas bus NoData, jei tam tikroje zonoje reik&scaron;mių rastro gardelės turi NoData reik&scaron;mių.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Nurodo skaičiuotiną statistikos tipą.
             </p>
-            <p>Įvestis gali būti :  <b>Visi</b>, <b>Vidurkis</b>, <b>Dauguma</b>, <b>Maksimumas</b>, <b>Mediana</b>, <b>Minimumas</b>, <b>Mažuma</b>, <b>Procentinė dalis</b>, <b>Intervalas</b>, <b>Standartinis nuokrypis</b>, <b>Suma</b>, <b>Įvairovė</b>, <b>Minimumas ir maksimumas</b>, <b>Vidurkis ir standartinis nuokrypis</b>, arba <b>Minimumas, maksimumas ir vidurkis</b>. Numatytoji reik&scaron;mė <b>Visi</b>.
-            </p>
-            <p>Jei įvesties reik&scaron;mės rastras yra sveikasis skaičius, pagal numatytuosius nustatymus bus apskaičiuoti visi statistiniai duomenys. Jei reik&scaron;mės rastras yra de&scaron;imtainio (Float) tipo, pagal numatytuosius nustatymus apskaičiuojami visi statistiniai duomenys i&scaron;skyrus  <b>Medianą</b> ir <b>Procentinę dalį</b>. 
-            </p>
-            <p>Jei įvesties reik&scaron;mių rastras yra de&scaron;imtainio (Float) tipo, zonų  <b>Daugumos</b>, <b>Mažumos</b> ir <b>Įvairovės</b> reik&scaron;mės nebus apskaičiuojamos.
+            <p> Įvestis gali būti : <b>Visi</b>, <b>Vidurkis</b>, <b>Dauguma</b>, <b>Maksimumas</b>, <b>Mediana</b>, <b>Minimumas</b>, <b>Mažuma</b>, <b>Procentinė dalis</b>, <b>Intervalas</b>, <b>Standartinis nuokrypis</b>, <b>Suma</b>, <b>Įvairovė</b>, <b>Minimumas ir maksimumas</b>, <b>Vidurkis ir standartinis nuokrypis</b>, arba <b>Minimumas, maksimumas ir vidurkis</b>. Numatytoji reik&scaron;mė <b>Visi</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Procentinės reikšmės (neprivaloma)</h2></div>
         <hr/>
         <div>
-            <p>Skaičiuotinos procentinės reik&scaron;mės. Galima nurodyti vieną reik&scaron;mę arba reik&scaron;mių sąra&scaron;ą. Numatytoji reik&scaron;mė yra 90, nurodanti 90-ąją procentinę dalį.
+            <p>Apskaičiuotina procentinė dalis. Numatytoji reik&scaron;mė yra 90, nurodanti 90-ąją procentinę dalį.
             </p>
-            <p>Tinkami reik&scaron;mių intervalai yra nuo 0 iki 100. Rezultatas, nurodant 0-inę procentinę dalį, i&scaron; esmės atitinka minimumo statistiką, o 100 procentų ekvivalentas yra maksimumas. 50 lygi reik&scaron;mė i&scaron; esmės pateiks analogi&scaron;kus rezultatus kaip ir Medianos statistika.
+            <p>Tinkamas reik&scaron;mės intervalas yra nuo 0 iki 100. Rezultatas, nurodant 0-inę procentinę dalį, i&scaron; esmės atitinka minimumo statistiką, o 100 procentų ekvivalentas yra maksimumas. 50 lygi reik&scaron;mė i&scaron; esmės pateiks analogi&scaron;kus rezultatus kaip ir Medianos statistika.
             </p>
-            <p>&Scaron;i parinktis palaikoma tik tuo atveju, jei parametras  <b>Statistikos tipas</b> nustatytas kaip <b>Procentinė dalis</b> arba <b>Visi</b>.
+            <p> &Scaron;is parametras palaikomas tik tuo atveju, jei parametras <b>Statistikos tipas</b> nustatytas kaip <b>Procentinė dalis</b> arba <b>Visi</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Procentinės interpoliacijos tipas (neprivaloma)</h2></div>
         <hr/>
         <div>
-            
             <p>Nurodo, koks procentinės interpoliacijos metodas bus naudojamas, kai skaičiuotinų įvesties rastro reik&scaron;mių skaičius yra lyginis.
-            </p> 
-            <p>Jei įvesties reik&scaron;mių rastras yra sveikojo pikselio tipo, naudojamas metodas  <b>Artimiausias</b>. Jei įvesties reik&scaron;mių rastras yra slankiojo kablelio pikselio tipo, naudojamas metodas <b>Tiesinis</b>. Tai yra numatytasis nustatymas.
             </p>
-            <p>Nustačius metodą  <b>Artimiausias</b> naudojama artimiausia pageidaujamai procentinei daliai reik&scaron;mė, kuri yra pasiekiama. Pasirinkus metodą <b>Tiesinis</b>, naudojamas dviejų pageidaujamą procentinę dalį supančių reik&scaron;mių svertinis vidurkis.
-            </p> 
+            <ul>
+                <li>  <b>Automatinis nustatymas</b> &ndash; jei įvesties reik&scaron;mių rastras yra sveikojo pikselio tipo, naudojamas metodas <b>Artimiausias</b>. Jei įvesties reik&scaron;mių rastras yra skaičiaus su slankiuoju kableliu pikselių tipo, naudojamas metodas <b>Tiesinis</b>. Tai yra numatytasis nustatymas.
+                </li>
+                <li> <b>Artimiausias</b> &ndash; naudojama artimiausia pageidaujamai procentinei daliai reik&scaron;mė, kuri yra pasiekiama.
+                </li>
+                <li> <b>Tiesinis</b> &ndash; naudojamas dviejų pageidaujamą procentinę dalį supančių reik&scaron;mių svertinis vidurkis.
+                </li>
+            </ul>
+            
+            <p> &Scaron;is parametras palaikomas tik tuo atveju, jei parametras <b>Statistikos tipas</b> nustatytas kaip <b>Procentinė dalis</b> arba <b>Visi</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Apdoroti kaip daugiamatį (neprivaloma)</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, kaip bus apdorojami įvesties rastrai, jei jie yra daugiamačiai.
+            <p>Nurodo, kaip bus apdorojami įvesties daugiamatės vaizdų paslaugos, jei jos yra daugiamatės.
             </p>
             <ul>
                 <li>Pažymėta &ndash; Statistika bus apskaičiuojama naudojant įvesties daugiamačio duomenų rinkinio dabartinę skiltį. Tai yra numatytasis nustatymas.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Sluoksnio, kuris bus sukurtas puslapyje  <b>Turinys</b> ir įtrauktas į žemėlapį, pavadinimas. Numatytasis pavadinimas sukuriamas naudojant įrankio ir įvesties sluoksnio pavadinimus. Jei toks sluoksnis jau egzistuoja, būsite papra&scaron;yti pateikti kitą pavadinimą.
+            </p>
+            <p>Galite nurodyti aplanko  <b>Turinyje</b>, kuriame rezultatai bus įra&scaron;yti naudojant i&scaron;&scaron;okantįjį meniu <b>Rezultatą įra&scaron;yti į</b>, pavadinimą.
             </p>
         </div>
     </div>

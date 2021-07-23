@@ -205,6 +205,87 @@
         },
         "TraceProximityEvents_bd": {
             "toolDescription": "120002646"
+        },
+        "SummarizeRasterWithin_ra": {
+            "toolDescription": "120002758"
+        },
+        "ZonalStatisticsAsTable_ra": {
+            "toolDescription": "120002759"
+        },
+        "CalculateDensityRaster_ra": {
+            "toolDescription": "120002760"
+        },
+        "InterpolatePointsEBK_ra": {
+            "toolDescription": "120002761"
+        },
+        "DistanceAccumulation_ra": {
+            "toolDescription": "120002762"
+        },
+        "DistanceAllocation_ra": {
+            "toolDescription": "120002763"
+        },
+        "OptimalPathAsLine_ra": {
+            "toolDescription": "120002764"
+        },
+        "OptimalPathAsRaster_ra": {
+            "toolDescription": "120002765"
+        },
+        "OptimateRegionConnections_ra": {
+            "toolDescription": "120002766"
+        },
+        "MonitorVegetation_ra": {
+            "toolDescription": "120002767"
+        },
+        "CalculateSlope_ra": {
+            "toolDescription": "120002768"
+        },
+        "CreateViewshedRastr_ra": {
+            "toolDescription": "120002769"
+        },
+        "DeriveAspect_ra": {
+            "toolDescription": "120002770"
+        },
+        "Watershed_ra": {
+            "toolDescription": "120002771"
+        },
+        "ConvertFeatureToRaster_ra": {
+            "toolDescription": "120002772"
+        },
+        "ConvertRasterToFeature_ra": {
+            "toolDescription": "120002773"
+        },
+        "ExtractRaster_ra": {
+            "toolDescription": "120002774"
+        },
+        "RemapValues_ra": {
+            "toolDescription": "120002775"
+        },
+        "Sample_ra": {
+            "toolDescription": "120002776"
+        },
+        "ClassifyObjectsUsingDeepLearning_ra": {
+            "toolDescription": "120002777"
+        },
+        "ClassifyPixelsUsingDeepLearning_ra": {
+            "toolDescription": "120002778"
+        },
+        "DetectObjectsUsingDeepLearning_ra": {
+            "toolDescription": "120002779"
+        },
+        "AggregateMultidimensionalRaster_ra": {
+            "toolDescription": "120002780"
+        },
+        "FindArgumentStatistics_ra": {
+            "toolDescription": "120002781"
+        },
+        "GenerateMultidimensionalAnomaly_ra": {
+            "toolDescription": "120002782"
+        },
+        "GenerateTrendRaster_ra": {
+            "toolDescription": "120002783"
+        },
+        "PredictUsingTrendRaster_ra": {
+            "toolDescription": "120002784"
         }
     }
 }

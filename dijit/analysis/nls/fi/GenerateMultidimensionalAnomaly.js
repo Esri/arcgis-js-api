@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Luo moniulotteinen poikkeama",outputLayerName:"${layername}_poikkeama",variablesLabel:"Valitse muuttujat, joille poikkeamat luodaan",variablesListLabel:"Muuttujat [dimension tiedot] (kuvaus)",methodLabel:"Valitse poikkeaman luontimenetelmä",calculationIntervalLabel:"Laske keskiarvo valitsemalla temporaalinen väli",differenceFromMean:"Ero keskiarvosta",percentDifferenceFromMean:"Prosentuaalinen ero keskiarvosta",percentOfMean:"Prosenttiosuus keskiarvosta",zScore:"Z-tulos",differenceFromMedian:"Ero mediaanista",percentDifferenceFromMedian:"Prosentuaalinen ero mediaanista",percentOfMedian:"Prosenttiosuus mediaanista",all:"Kaikki",yearly:"Vuosittain",recurringMonthly:"Toistuu kuukausittain",recurringWeekly:"Toistuu viikoittain",recurringDaily:"Toistuu päivittäin",hourly:"Tunneittain",externalRaster:"Ulkoinen rasteri",meanRaster:"Valitse keskiarvon kuva-aineistokarttataso viitteeksi",ignoreNodataLabel:"Ohita puuttuvat arvot laskelmassa",ignore:"Ohita",analysisLayerLabel:"Valitse moniulotteinen kuva-aineistokarttataso poikkeaman luontia varten",itemDescription:"Analysointikuvapalvelu on luotu Luo moniulotteinen poikkeama -ratkaisusta",itemTags:"Rasterianalyysin tulos, Koosta moniulotteinen rasteri, ${layername}",itemSnippet:"Analysointikuvapalvelu on luotu Luo moniulotteinen poikkeama -ratkaisusta"});

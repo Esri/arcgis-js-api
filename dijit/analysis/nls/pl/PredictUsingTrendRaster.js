@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"Prognozuj na podstawie rastra trendu",outputLayerName:"${layername}_prognoza",variablesLabel:"Wybierz zmienne, których wartości mają być prognozowane",variablesListLabel:"Zmienne [Informacje o wymiarze] (Opis)",dimensionDefinitionLabel:"Wybierz metodę stosowaną do obliczania prognozowanych wartości wymiaru",dimensionValuesLabel:"Podaj wartości wymiaru na potrzeby prognozowania",dimensionIntervalLabel:"Podaj interwał wymiaru na potrzeby prognozowania",intervalValueLabel:"Podaj liczbę wartości pośrednich między wartością początkową i końcową",intervalUnitLabel:"Wybierz jednostkę, która będzie stosowana w przypadku interwału wartości czasu",startLabel:"Wartość początkowa",endLabel:"Wartość końcowa",byValueLabel:"Przez wartość",byIntervalLabel:"Według interwału",hours:"Godziny",days:"Dni",weeks:"Tygodnie",months:"Miesiące",years:"Lata",custom:"Niestandardowy",itemDescription:"Usługa rastrowa analizy wygenerowana za pomocą opcji Prognozuj na podstawie rastra trendu",itemTags:"Wynik analizy rastra, opcja Prognozuj na podstawie rastra trendu, warstwa ${layername}",itemSnippet:"Usługa rastrowa analizy wygenerowana za pomocą opcji Prognozuj na podstawie rastra trendu"});

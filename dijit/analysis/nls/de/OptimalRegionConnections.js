@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Regionen-Raster oder -Feature auswählen",inputCostRaster:"Kosten-Raster auswählen (optional)",inputBarrierRasterOrFeatures:"Barriere-Raster- oder -Feature auswählen (optional)",distanceMethod:"Entfernungsmethode (optional)",connectionsWithinRegions:"Verbindungen innerhalb von Regionen (optional)",generateConnections:"Verbindungen generieren",noConnections:"Keine Verbindungen",planar:"Planar",geoDesic:"Geodätisch",outputOptimalLinesName:"Name des Ergebnis-Feature-Layers mit optimalen Konnektivitätslinien",outputNeighborConnectionsName:"Name des Ergebnis-Feature-Layers benachbarter Verbindungen (optional)",outputLayerName:"Optimale Regionsverbindungen von ${layername}",drawSourcePointLayerName:"Ausgangspunkte",itemDescription:'Über "Optimale Regionsverbindungen" für ${layername} erstellter Feature-Layer. ',itemTags:"Analyseergebnis, Optimale Regionsverbindungen, ${layername} ${fieldname}",itemSnippet:'Über "Optimale Regionsverbindungen" erstellter Feature-Layer.',noValueMessage:"Dieser Wert muss angegeben werden"});

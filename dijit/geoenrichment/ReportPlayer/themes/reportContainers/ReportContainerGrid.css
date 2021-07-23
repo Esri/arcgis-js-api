@@ -81,6 +81,7 @@
 }
 
 .esriGEReportPlayerPrint:not(.isPlayerOnServer) .esriGEReportPlayer_reportContainerGrid.reportContainerPreviewMode .reportContainerGrid_gridZoomFillerContainer {
+    margin: 0 !important;
     width: auto !important;
     height: auto !important;
 }

@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Kies de multiband rasterlaag. Zorg ervoor dat het invoerraster over de juiste banden beschikt.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Kies methode voor controle van vegetatie</h2></div>
         <hr/>
         <div>
-            <p>Kies de methode om de vegetatie-indexlaag te maken. De verschillende vegetatie-indexen kunnen bepaalde objecten helpen benadrukken of verschillende geluiden verminderen.
+            <p>Kies de methode om de vegetatie-indexlaag mee te berekenen. De verschillende vegetatie-indexen kunnen bepaalde objecten helpen benadrukken of verschillende geluiden verminderen.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Het Sultan's Formula-proces gebruikt een zes-band 8-bits afbeelding en heeft een
 Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van de bodeminvloeden te minimaliseren door te veronderstellen dat de bodemlijn een willekeurige helling en onderschepping heeft.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI is een vegetatie-index die de vegetatie-aanwezigheid inschat door enkel informatie uit het zichtbare spectrum te gebruiken. Deze methode vereist banden in de rode, groene en blauwe delen van het spectrum.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specificeer indexen van NIR-bandbreedte en Red-bandbreedte</h2></div>
+        <div><h2>Specificeer indexen voor de NIR-band en rode band</h2></div>
         <hr/>
         <div>
-            <p>Specificeer de bandindexen voor de NIR en rode banden.
+            <p>Specificeer de bandindexen voor de NIR-band en rode banden.
             </p>
-            <p>Elke satellietsensor en luchtfotocamera legt informatie vast die is opgesplitst in bandindexen. Elke bandindex bevat de informatie voor een specifiek deel van het elektromagnetische spectrum. Deze vegetatiecontrolemethode vereist dat u de bandindex specificeert die de NIR en de rode golflengten heeft vastgelegd.
+            <p>Multiband-satelliet- of luchtsensoren vangen informatie op die is opgedeeld in golflengtebanden, die worden ge&iuml;dentificeerd met bandindexen. Deze bewakingsmethode voor vegetatie vereist dat u de bandindexen specificeert voor de Near Infrared (NIR)- en rode golflengtebanden.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Specificeer indexen voor de rode, groene en blauwe banden.</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeer de bandindexen voor de rode, groene en blauwe banden.
+            </p>
+            <p>Multiband-satelliet- of luchtsensoren vangen informatie op die is opgedeeld in golflengtebanden, die worden ge&iuml;dentificeerd met bandindexen. De Visible Atmospherically Resistant Index vereist dat u de bandindexen specificeert voor de rode, groene en blauwe golflengtebanden.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Specificeer indexen voor de blauwe, rode, NIR-, SWIR-1- en thermale banden.</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeer de bandindexen voor de blauwe, rode, Near Infrared (NIR)-, Shortwave Infrared (SWIR)- en thermale banden.
+            </p>
+            <p>Multiband-satelliet- of luchtsensoren vangen informatie op die is opgedeeld in golflengtebanden, die worden ge&iuml;dentificeerd met bandindexen. De Sultan's Formula-index vereist dat u de bandindexen specificeert voor de blauwe, rode, Near Infrared (NIR)-, Shortwave Infrared (SWIR)- en thermale golflengtebanden.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Specificeer indexen van blauwe, groene, rode, NIR-, SWIR-1- en SWIR-2-banden</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeer de bandindexen voor de blauwe, groene, rode, NIR-, SWIR-1- en SWIR-2-banden.
+            </p>
+            <p>Multiband-satelliet- of luchtsensoren vangen informatie op die is opgedeeld in golflengtebanden, die worden ge&iuml;dentificeerd met bandindexen. De Green Vegetation-index vereist dat u de bandindexen specificeert voor de blauwe, rode, Near Infrared (NIR)-, Shortwave Infrared 1 (SWIR-1)- en Shortwave Infrared 2 (SWIR-2)-golflengtebanden.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
         <div><h2>Hoeveelheid dekking groene vegetatie</h2></div>
         <hr/>
         <div>
-            <p>Specificeert de hoeveelheid groene vegetatiebedekking die vereist is volgens de SAVI-methode.
+            <p>Specificeert de hoeveelheid groene vegetatiedekking, wat is vereist door de Soil-Adjusted Vegetation Indexmethode.
             </p>
             <p>Geldige waarden zijn als volgt:
                 <ul>
@@ -172,8 +206,7 @@ Getransformeerde-SAVI is een vegetatie-index die probeert om de helderheid van d
             
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
-            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>.
-            </p>
+            <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>. Als u de machtigingen hebt om zowel getegelde als dynamische beeldlagen aan te maken, kunt u specificeren welk layertype wordt gegenereerd in de uitvoer met het vervolgkeuzemenu Resultaat opslaan als. </p>
         </div>
     </div>
 </div>

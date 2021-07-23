@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>&Ccedil;ok bantlı raster katmanı se&ccedil;in. Girdi rasterının kullanılabilir uygun bantlara sahip olduğundan emin olun.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Bitki örtüsünü izleme yöntemini seçin</h2></div>
         <hr/>
         <div>
-            <p>Bitki &ouml;rt&uuml;s&uuml; indeks katmanını oluşturmak i&ccedil;in kullanılacak y&ouml;ntemi se&ccedil;in. Farklı bitki &ouml;rt&uuml;s&uuml; indeksleri &ouml;zel detayların vurgulanmasını sağlayabilir veya &ccedil;eşitli g&uuml;r&uuml;lt&uuml;leri azaltabilir.
+            <p>Bitki &ouml;rt&uuml;s&uuml; indeks katmanını hesaplamak i&ccedil;in kullanılacak y&ouml;ntemi se&ccedil;in. Farklı bitki &ouml;rt&uuml;s&uuml; indeksleri &ouml;zel detayların vurgulanmasını sağlayabilir veya &ccedil;eşitli g&uuml;r&uuml;lt&uuml;leri azaltabilir.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2, SAVI y&ouml;ntemi &uuml;zerinde &ccedil;ıplak toprak etkisini minimize 
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI, standartlaştırılmış bir indekstir ve yeşilliği veya relatif biyok&uuml;tleyi g&ouml;steren bir g&ouml;r&uuml;nt&uuml; oluşturmanıza olanak tanır. Bu indeks, &ccedil;oklu spektral raster veri k&uuml;mesinden gelen iki bandın şu kontrast &ouml;zelliklerinin avantajını kullanır; kırmızı banttaki klorofil pigmenti emilimleri ve kızıl&ouml;tesine yakın (NIR) bandındaki bitki malzemelerinin y&uuml;ksek yansıma &ouml;zelliği.
+NDVI, standartlaştırılmış bir indekstir ve yeşilliği veya relatif biyok&uuml;tleyi g&ouml;steren bir g&ouml;r&uuml;nt&uuml; oluşturmanıza olanak tanır. Bu indeks, &ccedil;oklu spektral bir raster veri k&uuml;mesinden gelen iki bandın &ouml;zelliklerinin karşıtlığından faydalanır: kırmızı banttaki klorofil pigmenti emilimleri ve yakın kızıl&ouml;tesi (NIR) bandındaki bitki malzemelerinin y&uuml;ksek yansıma &ouml;zelliği.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Sultan Form&uuml;l&uuml; işlemi, 6 bantlı 8 bitlik bir g&ouml;r&uuml;nt&uuml;y
 D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve sınırı olduğunu varsayarak toprak parlaklığı etkilerini minimize etmeye &ccedil;alışan bir bitki &ouml;rt&uuml;s&uuml; indeksidir.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI, yalnızca g&ouml;r&uuml;n&uuml;r spektrumdaki bilgileri kullanarak bitki &ouml;rt&uuml;s&uuml; varlığını tahmin eden bir bitki &ouml;rt&uuml;s&uuml; indeksidir. Bu y&ouml;ntem, spektrumun kırmızı, yeşil ve mavi b&ouml;l&uuml;mlerindeki bantları gerektirir.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>NIR bandı ve Red bandı indekslerini belirtin</h2></div>
+        <div><h2>NIR bandı ve Kırmızı bant indekslerini belirtin</h2></div>
         <hr/>
         <div>
-            <p>Yakın kızıl&ouml;tesi (NIR) ve kızıl bantlar i&ccedil;in bant indekslerini belirtin.
+            <p>Yakın kızıl&ouml;tesi (NIR) ve Kırmızı bantlar i&ccedil;in bant indekslerini belirtin.
             </p>
-            <p>Her uydu sens&ouml;r&uuml; ve hava kamerası, bant indekslerine ayrıştırılan bilgiler yakalar. Her bant indeksinde elektromanyetik spektrumun &ouml;zel bir b&ouml;l&uuml;m&uuml; i&ccedil;in bilgiler bulunur. Bu bitki &ouml;rt&uuml;s&uuml; izleme y&ouml;ntemi, NIR ve kızıl dalga boylarını yakalayan bant indeksinin belirtilmesini gerektirir.
+            <p>&Ccedil;ok bantlı uydu veya hava sens&ouml;rleri, bant indeksleriyle tanımlanan dalga boyu bantlarına b&ouml;l&uuml;nm&uuml;ş bilgileri yakalar. Bu bitki &ouml;rt&uuml;s&uuml; izleme y&ouml;ntemi, Yakın Kızıl&ouml;tesi (NIR) ve Kırmızı dalga boyu bantları i&ccedil;in bant indekslerini belirtmenizi gerektirir.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Kırmızı, Yeşil ve Mavi bantlar için indeksleri belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Kırmızı, Yeşil ve Mavi bantlar i&ccedil;in bant indekslerini belirtin
+            </p>
+            <p>&Ccedil;ok bantlı uydu veya hava sens&ouml;rleri, bant indeksleriyle tanımlanan dalga boyu bantlarına b&ouml;l&uuml;nm&uuml;ş bilgileri yakalar. G&ouml;r&uuml;n&uuml;r Atmosferik Diren&ccedil;li İndeks, Kırmızı, Yeşil ve Mavi dalga boyu bantları i&ccedil;in bant indekslerini belirtmenizi gerektirir.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Mavi, Kırmızı, NIR, SWIR-1 ve Termal bantlar için indeksleri belirtin</h2></div>
+        <hr/>
+        <div>
+            <p>Mavi, Kırmızı, Yakın Kızıl&ouml;tesi (NIR), Kısa Dalga Kızıl&ouml;tesi (SWIR) ve Termal bantlar i&ccedil;in bant indekslerini belirtin.
+            </p>
+            <p>&Ccedil;ok bantlı uydu veya hava sens&ouml;rleri, bant indeksleriyle tanımlanan dalga boyu bantlarına b&ouml;l&uuml;nm&uuml;ş bilgileri yakalar. Sultan'ın Form&uuml;l&uuml; indeksi Mavi, Kırmızı, Yakın Kızıl&ouml;tesi (NIR), Kısa Dalga Kızıl&ouml;tesi (SWIR) ve Termal dalga boyu bantları i&ccedil;in bant indekslerini belirtmenizi gerektirir.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Mavi, Yeşil, Kırmızı, NIR, SWIR-1 ve SWIR-2 bantları için indeksleri belirtin.</h2></div>
+        <hr/>
+        <div>
+            <p>Mavi, Yeşil, Kırmızı, NIR, SWIR-1 ve SWIR-2 bantları i&ccedil;in bant indekslerini belirtin.
+            </p>
+            <p>&Ccedil;ok bantlı uydu veya hava sens&ouml;rleri, bant indeksleriyle tanımlanan dalga boyu bantlarına b&ouml;l&uuml;nm&uuml;ş bilgileri yakalar. Yeşil Bitki &Ouml;rt&uuml;s&uuml; indeksi Mavi, Yeşil, Kırmızı, Yakın Kızıl&ouml;tesi (NIR), Kısa Dalga Kızıl&ouml;tesi 1 (SWIR-1) ve Kısa Dalga Kızıl&ouml;tesi 2 (SWIR-2) dalga boyu bantları i&ccedil;in bant indekslerini belirtmenizi gerektirir.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div><h2>Yeşil bitki örtüsü miktarı</h2></div>
         <hr/>
         <div>
-            <p>SAVI y&ouml;nteminin gerektirdiği yeşil bitki &ouml;rt&uuml;s&uuml; miktarını belirtir.
+            <p>Toprağa G&ouml;re Ayarlanmış Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;nteminin gerektirdiği yeşil bitki &ouml;rt&uuml;s&uuml; miktarını belirtir.
             </p>
             <p>Ge&ccedil;erli değerler aşağıdaki gibidir:
                 <ul>
@@ -161,7 +195,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
         <div>
             <p>Toprağa G&ouml;re Ayarlanan Bitki &Ouml;rt&uuml;s&uuml; İndeksi y&ouml;nteminde gerekli olan, toprak etkisini minimize etmeye yardımcı ayarlama fakt&ouml;r&uuml;n&uuml; belirtir. Varsayılan değer 0,08'dir.
             </p>
-            <p>D&uuml;ş&uuml;k bir değer toprak etkisinin dikkate alınmadığı anlamına gelir. Y&uuml;ksek bir değer, toprağın sonucunuzu etkileyebileceği anlamına gelir.
+            <p>D&uuml;ş&uuml;k bir değer, toprak etkisinin dikkate alınmadığı anlamına gelir. Y&uuml;ksek bir değer, toprağın sonucunuzu etkileyebileceği anlamına gelir.
             </p>
         </div>
     </div>
@@ -172,8 +206,7 @@ D&ouml;n&uuml;şt&uuml;r&uuml;len SAVI, toprak hattının rastgele bir eğimi ve
             
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
-            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz.
-            </p>
+            <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz. Hem döşemeli hem de dinamik görüntü katmanları oluşturma ayrıcalıklarınız varsa, Sonucu farklı kaydet açılır kutusunu kullanarak çıktıda hangi katman türünün oluşturulacağını belirtebilirsiniz. </p>
         </div>
     </div>
 </div>

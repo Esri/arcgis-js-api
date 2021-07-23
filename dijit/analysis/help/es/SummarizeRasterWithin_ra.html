@@ -46,9 +46,7 @@
         <hr/>
     <p>Esta herramienta resume el valor de un r&aacute;ster dentro de las zonas de otro dataset.
     </p>
-    <p>A continuaci&oacute;n se indican algunas aplicaciones de ejemplo:
-    </p>
-    <p>
+    <p>Estas son algunas aplicaciones de ejemplo de esta herramienta:
         <ul>
             <li>Dada una capa de l&iacute;mites de cuencas hidrogr&aacute;ficas y una capa de l&iacute;mites de uso del suelo, calcule la superficie total del tipo de uso del suelo para cada cuenca hidrogr&aacute;fica.
                 
@@ -66,42 +64,42 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="sumWithinLayer">
-        <div><h2>Elija una capa de área para resumir una capa ráster en los límites definidos</h2></div>
+        <div><h2>Elegir una capa de área para resumir una capa ráster en los límites definidos</h2></div>
         <hr/>
         <div>
-            <p>La capa que define los l&iacute;mites de las &aacute;reas, o zonas, que se van a resumir.
+            <p>La entrada que define los l&iacute;mites de las zonas, o &aacute;reas, que se resumir&aacute;n.
             </p>
-            <p>La capa puede ser un r&aacute;ster o datos de entidad. Para los r&aacute;steres, las zonas se definen mediante todas las ubicaciones de la entrada que tienen el mismo valor de celda. No es necesario que las &aacute;reas sean contiguas.
+            <p>La entrada puede ser un r&aacute;ster entero o datos de entidades. Para los r&aacute;steres, las zonas se definen mediante todas las ubicaciones de la entrada que tienen el mismo valor de celda. En el caso de las entidades, las zonas se pueden superponer. No es necesario que las &aacute;reas sean contiguas.
             </p>
         </div>
     </div>
     <div id="zoneField">
-        <div><h2>Elija un campo para definir los límites</h2></div>
+        <div><h2>Elegir un campo para definir los límites</h2></div>
         <hr/>
         <div>
-            <p>Este es el atributo de la capa que se utilizar&aacute; para definir los l&iacute;mites de las &aacute;reas.
+            <p>El campo que contiene los valores que definen cada zona.
             </p>
-            <p>Por ejemplo, supongamos que la primera capa de entrada define los l&iacute;mites de la unidad de gesti&oacute;n, con atributos que definen la regi&oacute;n, el distrito y el ID de parcela de cada unidad. Tambi&eacute;n tiene una capa r&aacute;ster que define el &iacute;ndice de biodiversidad para cada ubicaci&oacute;n. Con el campo seleccionado, puede decidir calcular la biodiversidad media en el nivel local, de distrito o regional.
+            <p>Puede ser un campo de enteros o de cadenas de caracteres del dataset zonal.
             </p>
         </div>
     </div>
     <div id="sumRasterLayer">
-        <div><h2>Elija una capa ráster para resumir</h2></div>
+        <div><h2>Elegir una capa ráster para resumir</h2></div>
         <hr/>
         <div>
-            <p>Las celdas r&aacute;ster de esta capa se resumir&aacute;n por las &aacute;reas (zonas) en las que queden dentro.
+            <p>El r&aacute;ster que contiene los valores en los cuales se calcula una estad&iacute;stica.
+            </p>
+            <p>Puede ser de tipo entero o punto flotante. Sin embargo, si es de tipo punto flotante, las opciones para calcular la mayor&iacute;a, la minor&iacute;a y la variedad no est&aacute;n disponibles.
             </p>
         </div>
     </div>
     <div id="sumStatistic">
-        <div><h2>Elija una estadística para calcular</h2></div>
+        <div><h2>Elegir una estadística para calcular</h2></div>
         <hr/>
         <div>
-            <p>Una vez que haya elegido una capa para resumir, podr&aacute; calcular estad&iacute;sticas sobre cualquier atributo num&eacute;rico de los puntos, l&iacute;neas o &aacute;reas dentro de la capa de &aacute;rea de entrada.
+            <p>Especifica el tipo de estad&iacute;stica que se calcular&aacute;.
             </p>
-            <p>Los tipos de estad&iacute;sticas que est&aacute;n disponibles cuando el campo seleccionado es un entero son: Media, Mayor&iacute;a, M&aacute;ximo, Mediana, M&iacute;nimo, Minor&iacute;a, Percentil, Rango, Desviaci&oacute;n est&aacute;ndar, Suma y Variedad.
-            </p>
-            <p>Si el campo es de punto flotante, las opciones son: Valor medio, M&aacute;ximo, M&iacute;nimo, Rango, Desviaci&oacute;n est&aacute;ndar y Suma.
+            <p> La entrada puede ser una de las siguientes: <b>Media</b>, <b>Mayor&iacute;a</b>, <b>M&aacute;ximo</b>, <b>Mediana</b>, <b>M&iacute;nimo</b>, <b>Minor&iacute;a</b>, <b>Percentil</b>, <b>Rango</b>, <b>Desviaci&oacute;n est&aacute;ndar</b>, <b>Suma</b> o <b>Variedad</b>. El valor predeterminado es <b>Media</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>El percentil que se va a calcular. El valor predeterminado es 90, que indica el 90.&ordm; percentil.
             </p>
-            <p>Los valores pueden variar de 0 a 100. El 0.&ordm; percentil equivale en esencia a la estad&iacute;stica m&iacute;nimo, mientras que el 100.&ordm; percentil equivale a la estad&iacute;stica m&aacute;ximo. Un valor de 50 generar&aacute; en esencia el mismo resultado que la estad&iacute;stica mediana.
+            <p>El valor puede variar de 0 a 100. El resultado de especificar el percentil 0.&ordm; es esencialmente equivalente al de la estad&iacute;stica m&iacute;nima, y el percentil 100 es equivalente al m&aacute;ximo. Un valor de 50 generar&aacute; en esencia el mismo resultado que la estad&iacute;stica mediana.
             </p>
-            <p>Esta opci&oacute;n solo se admite si el valor del par&aacute;metro  <b>Elija una estad&iacute;stica para calcular</b> es <b>Percentil</b>.
+            <p> Esta opci&oacute;n solo se admite si el par&aacute;metro <b>Elija una estad&iacute;stica para calcular</b> est&aacute; establecido en <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignorar valores que faltan en cálculo</h2></div>
         <hr/>
         <div>
-            <p>Si opta por ignorar los valores que faltan, solo se utilizar&aacute;n para determinar el valor de salida de dicha &aacute;rea las celdas que tengan un valor en la capa que se va a resumir. En caso contrario, si faltan valores en alg&uacute;n lugar del &aacute;rea, se considerar&aacute; que no hay suficiente informaci&oacute;n para realizar c&aacute;lculos estad&iacute;sticos para todas las celdas de esa zona y esa &aacute;rea recibir&aacute; un valor nulo (NoData) en la salida.
+            <p> Especifica si los valores que faltan se ignorar&aacute;n en el an&aacute;lisis.
             </p>
+            <ul>
+                <li>Activado: el an&aacute;lisis incluir&aacute; las celdas que tienen un valor en el r&aacute;ster de valor de entrada dentro de una zona en particular para determinar el valor de salida de dicha zona. Las celdas NoData del r&aacute;ster de valores se ignorar&aacute;n en el c&aacute;lculo estad&iacute;stico. Esta es la opci&oacute;n predeterminada.
+                </li>
+                <li>Desactivado: el an&aacute;lisis dar&aacute; como resultado NoData si hay valores NoData para las celdas del r&aacute;ster de valores dentro de una zona determinada.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Procesar como multidimensional</h2></div>
         <hr/>
         <div>
-            <p>Especifica c&oacute;mo se procesan los r&aacute;steres de entrada si son multidimensionales. Si se opta por procesar como multidimensional, las estad&iacute;sticas se calculan a partir de todas las dimensiones del dataset multidimensional de entrada. De lo contrario, las estad&iacute;sticas se calculan a partir del fragmento actual del dataset multidimensional de entrada, que es el predeterminado.
+            <p>Especifica c&oacute;mo se procesar&aacute;n los servicios de im&aacute;genes multidimensionales de entrada si son multidimensionales.
             </p>
+            <ul>
+                <li>Activado: se calculan estad&iacute;sticas de la parte actual de un dataset multidimensional. Esta es la opci&oacute;n predeterminada.
+                    
+
+                </li>
+                <li>Desactivado: las estad&iacute;sticas se calculan a partir de todas las dimensiones del dataset multidimensional de entrada.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
-            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>.
-            </p>
+            <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>. Si tiene privilegios para crear capas de imágenes tanto en teselas como dinámicas, también puede especificar qué tipo de capa se va a generar para la salida utilizando el cuadro desplegable Guardar el resultado como. </p>
         </div>
     </div>
 </div>

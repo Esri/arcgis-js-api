@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/array","dojo/_base/declare","dojo/has","../../kernel","../../OperationBase"],(function(e,a,o,d,r){var n=a(r,{declaredClass:"esri.EditOperationBase",updateIds:function(a,o,d,r){e.forEach(o,(function(o,n){var i=o[a.objectIdField];e.forEach(d,(function(e,d){i===e&&(o[a.objectIdField]=r[d])}))}))}});return o("extend-esri")&&(d.EditOperationBase=n),n}));

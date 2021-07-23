@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({toolDefine:"จัดประเภทพิกเซลด้วยการเรียนรู้เชิงลึก",outputLayerName:"${layername}_classified",modelLabel:"เลือกโมเดลการเรียนรู้เชิงลึกที่ใช้ในการจัดประเภทพิกเซล",modelArgsLabel:"ระบุอาร์กิวเมนท์โมเดลการเรียนรู้เชิงลึก",nameLabel:"ชื่อ",valueLabel:"ค่า",queryModelArgsMsg:"กำลังคิวรีอาร์กิวเมนท์โมเดล...",queryModelArgsErrMsg:"การค้นหาอาร์กิวเมนต์ของโมเดลล้มเหลว",processingModeLabel:"โหมดการประมวลผล",processAsMosaicLabel:"ประมวลผลในรูปแบบภาพโมเสก",processAsItemsLabel:"ประมวลผลรายการแรสเตอร์ทั้งหมดแยกจากกัน",analysisLayerLabel:"เลือกภาพที่จะใช้ในการจัดประเภทพิกเซล",itemDescription:"บริการภาพการวิเคราะห์ที่สร้างจากการจัดประเภทพิกเซลด้วยการเรียนรู้เชิงลึก",itemTags:"ผลการวิเคราะห์ราสเตอร์, จัดประเภทพิกเซลด้วยการเรียนรู้เชิงลึก, ${layername}",itemSnippet:"บริการภาพการวิเคราะห์ที่สร้างจากการจัดประเภทพิกเซลด้วยการเรียนรู้เชิงลึก"});

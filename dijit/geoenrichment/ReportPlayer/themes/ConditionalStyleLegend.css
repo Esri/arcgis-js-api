@@ -5,9 +5,11 @@
 .esriGEConditionalStylingLegend_row {
     white-space: nowrap;
     position: relative;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 5px;
+    padding-right: 5px;
+    border-left: 3px solid transparent;
 }
 
 .esriGEConditionalStylingLegend_text {
@@ -30,7 +32,7 @@
 }
 
 .esriGEConditionalStylingLegend_currentValue {
-    outline: 1px solid #EEEEEE;
+    border-left: 3px solid orange;
 }
 
 

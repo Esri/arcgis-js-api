@@ -46,15 +46,13 @@
         <hr/>
     <p>Dette verkt&oslash;yet summerer verdiene for et raster innenfor sonene til et annet datasett og rapporterer resultatene til en tabell.
     </p>
-    <p>Noen eksempler p&aring; bruksomr&aring;der er f&oslash;lgende:
-    </p>
-    <p>
+    <p>Eksempler p&aring; bruksomr&aring;der for dette verkt&oslash;yet er blant annet:
         <ul>
-            <li>Med et lag som inneholder delstatsgrenser og fordelingen av gjennomsnittlig nedb&oslash;r for det kontinentale USA kan du bruke en liste med persentilverdier til &aring; beregne fordelingen av ekstremregn p&aring; delstatsniv&aring;.
+            <li>Hvis du har et lag med nedb&oslash;rsfeltgrenser og et lag med arealbruksgrenser etter arealbrukstype, kan du beregne samlet areal for arealbrukstypen for hvert nedb&oslash;rsfelt.
                 
 
             </li>
-            <li>Med et lag med overlappende gr&oslash;nne soner og et rasterlag med jordfuktighet kan du beregne all st&oslash;ttet statistikk innenfor hver sone for &aring; relatere soner med jordfuktighetsforekomst.
+            <li>Hvis du har et lag med tomtene i et fylke og et lag med bygrenser, kan du summere gjennomsnittsverdien p&aring; ledige tomter innenfor hver enkelt bygrense.
                 
 
             </li>
@@ -69,9 +67,9 @@
         <div><h2>Velg soneraster eller geoobjekter</h2></div>
         <hr/>
         <div>
-            <p>Det laget som definerer grensene for sonene, eller omr&aring;dene, som skal summeres.
+            <p>Inndataene som definerer grensene for sonene eller omr&aring;dene som skal summeres.
             </p>
-            <p>Laget kan v&aelig;re et heltallsraster eller geoobjektdata. For raster blir sonene definert av alle steder i inndataene som har samme celleverdi. Sonene kan overlappe for geoobjekter. Omr&aring;dene beh&oslash;ver ikke v&aelig;re sammenhengende.
+            <p>Inndataene kan v&aelig;re et heltallsraster eller geoobjektdata. For raster blir sonene definert av alle steder i inndataene som har samme celleverdi. Sonene kan overlappe for geoobjekter. Omr&aring;dene beh&oslash;ver ikke v&aelig;re sammenhengende.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Sonefelt</h2></div>
         <hr/>
         <div>
-            <p>Dette er attributtet som definerer laget som skal brukes til &aring; definere grensene for sonene (omr&aring;dene).
+            <p>Feltet som inneholder verdiene som definerer hver sone.
             </p>
-            <p>Sett f.eks. at det f&oslash;rste inndatalaget definerer administrative grenser, med attributter som definerer regionen, distriktet, og eiendoms-ID for hver enhet. Du har ogs&aring; et rasterlag som definerer et biologisk mangfoldsindeks for hver lokasjon. Med det feltet du velger, kan du velge &aring; beregne gjennomsnittlig biologisk mangfold p&aring; lokal-, distrikt- eller regionalniv&aring;.
+            <p>Det kan v&aelig;re et heltall eller et strengfelt i sonedatasettet.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Velg verdiraster</h2></div>
         <hr/>
         <div>
-            <p>Rastercellene i dette laget vil bli summert av omr&aring;dene (sonene) de faller innenfor.
+            <p>Rasteret som inneholder verdiene det skal beregnes statistikk p&aring;.
+            </p>
+            <p>Det kan v&aelig;re enten heltall eller flyttall. N&aring;r det er av typen flyttall, er imidlertid ikke alternativene for &aring; beregne majoritet, minoritet og variasjon tilgjengelige.
             </p>
         </div>
     </div>
@@ -97,15 +97,15 @@
         <div><h2>Ignorer NoData i beregninger (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Angir om NoData-verdier ignoreres i analysen.
-                <ul>
-                    <li>Avmerket &mdash;Analysen inkluderer cellen som har en verdi i inndata-verdirasteret innenfor en bestemt sone til &aring; bestemme utdataverdien for denne sonen. NoData-celler i verdirasteret ignoreres i statistikkberegningen. Dette er standardalternativet.
-                    </li>
-                    <li>Ikke avmerket &ndash; Analysen resulterer i NoData hvis det finnes NoData-verdier for cellene i verdirasteret innenfor en bestemt sone.
-                    </li>
-                </ul>
-                
+            <p> Angir om NoData-verdier ignoreres i analysen.
             </p>
+            <ul>
+                <li>Avmerket &mdash;Analysen inkluderer cellen som har en verdi i inndata-verdirasteret innenfor en bestemt sone til &aring; bestemme utdataverdien for denne sonen. NoData-celler i verdirasteret ignoreres i statistikkberegningen. Dette er standardalternativet.
+                </li>
+                <li>Ikke avmerket &ndash; Analysen resulterer i NoData hvis det finnes NoData-verdier for cellene i verdirasteret innenfor en bestemt sone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="statisticType">
@@ -114,11 +114,7 @@
         <div>
             <p>Angir statistikktypen som skal beregnes.
             </p>
-            <p>Inndata kan v&aelig;re ett av f&oslash;lgende:  <b>Alle</b>, <b>Gjennomsnitt</b>, <b>Majoritet</b>, <b>Maksimum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Persentil</b>, <b>Omr&aring;de</b>, <b>Standardavvik</b>, <b>Sum</b>, <b>Varians</b>, <b>Minimum og maksimum</b>, <b>Gjennomsnitt og standardavvik</b> eller <b>Minimum, maksimum og gjennomsnitt</b>. Standardinnstillingen er <b>Alle</b>.
-            </p>
-            <p>Inndataverdirasteret er et heltall og som standard beregnes all statistikk. Hvis verdirasteret er flyttall, beregnes som standard all statistikk unntatt  <b>Median</b> og <b>Persentil</b>. 
-            </p>
-            <p>Hvis inndataverdirasteret er av typen flyttall, kan ikke soneberegninger for  <b>Majoritet</b>, <b>Minoritet</b> og <b>Varians</b> utf&oslash;res.
+            <p> Inndata kan v&aelig;re ett av f&oslash;lgende: <b>Alle</b>, <b>Gjennomsnitt</b>, <b>Majoritet</b>, <b>Maksimum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Persentil</b>, <b>Omr&aring;de</b>, <b>Standardavvik</b>, <b>Sum</b>, <b>Varians</b>, <b>Minimum og maksimum</b>, <b>Gjennomsnitt og standardavvik</b> eller <b>Minimum, maksimum og gjennomsnitt</b>. Standardinnstillingen er <b>Alle</b>.
             </p>
         </div>
     </div>
@@ -126,11 +122,11 @@
         <div><h2>Persentilverdier (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Persentilene som skal beregnes. Det kan angis en enkeltverdi eller en liste med verdier. Standardverdien er 90, som angir den 90.&nbsp;persentilen.
+            <p>Persentilen som skal beregnes. Standardverdien er 90, som angir den 90.&nbsp;persentilen.
             </p>
-            <p>Verdiomr&aring;det kan v&aelig;re fra 0 til 100. Resultatet av &aring; angi 0.&nbsp;persentil er i det vesentlige lik minimumsverdien, og 100.&nbsp;persentil er lik maksimumsverdien. En verdi p&aring; 50 gir i sin vesentlighet det samme resultatet som medianverdien.
+            <p>Verdien kan v&aelig;re mellom 0 og 100. Resultatet av &aring; angi 0.&nbsp;persentil er i det vesentlige lik minimumsverdien, og 100.&nbsp;persentil er lik maksimumsverdien. En verdi p&aring; 50 gir i sin vesentlighet det samme resultatet som medianverdien.
             </p>
-            <p>Dette alternativet st&oslash;ttes bare hvis parameteren  <b>Statistikktype</b> er satt til <b>Persentil</b> eller <b>Alle</b>.
+            <p> Denne parameteren st&oslash;ttes bare n&aring;r parameteren <b>Statistikktype</b> er satt til <b>Persentil</b> eller <b>Alle</b>.
             </p>
         </div>
     </div>
@@ -138,20 +134,26 @@
         <div><h2>Type interpolasjon av persentil (valgfritt)</h2></div>
         <hr/>
         <div>
-            
             <p>Bestemmer metoden som skal brukes til interpolasjon av persentil n&aring;r antall verdier fra inndatarasteret som skal beregnes, er partall.
-            </p> 
-            <p>Hvis inndataverdirasteret er av pikseltypen heltall, brukes  <b>N&aelig;rmest</b>-metoden. Hvis inndataverdirasteret er av pikseltypen flyttall, brukes <b>Line&aelig;r</b>-metoden. Dette er standardalternativet.
             </p>
-            <p>For metoden  <b>N&aelig;rmeste</b> brukes verdien som er n&aelig;rmest &oslash;nsket persentil. For metoden <b>Line&aelig;r</b> brukes det vektede gjennomsnittet av de to verdiene som omgir &oslash;nsket persentil.
-            </p> 
+            <ul>
+                <li>  <b>Automatisk identifisering</b> &ndash;&nbsp;Hvis inndataverdirasteret er av pikseltypen heltall, brukes metoden <b>N&aelig;rmest</b>. Hvis inndataverdirasteret er av pikseltypen flyttall, brukes metoden <b>Line&aelig;r</b>. Dette er standardalternativet.
+                </li>
+                <li> <b>N&aelig;rmest</b> &ndash;&nbsp;Den tilgjengelige verdien som er n&aelig;rmest &oslash;nsket persentil, brukes.
+                </li>
+                <li> <b>Line&aelig;r</b> &ndash;&nbsp;Det vektede gjennomsnittet av de to verdiene som omgir &oslash;nsket persentil, brukes.
+                </li>
+            </ul>
+            
+            <p> Denne parameteren st&oslash;ttes bare n&aring;r parameteren <b>Statistikktype</b> er satt til <b>Persentil</b> eller <b>Alle</b>.
+            </p>
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Behandle som flerdimensjonal (valgfritt)</h2></div>
         <hr/>
         <div>
-            <p>Angir hvordan inndatarasterne blir behandlet hvis de er fleredimensjonale.
+            <p>Angir hvordan flerdimensjonale bildetjenester som inndata blir behandlet hvis de er flerdimensjonale.
             </p>
             <ul>
                 <li>Avmerket &ndash; Statistikken beregnes ut fra gjeldende sektor av det flerdimensjonale inndatasettet. Dette er standardalternativet.
@@ -169,6 +171,8 @@
         <hr/>
         <div>
             <p>Navnet p&aring; laget som opprettes i  <b>Mitt innhold</b> og legges til kartet. Standardnavnet er basert p&aring; verkt&oslash;ynavnet og navnet p&aring; inndatalaget. Hvis laget finnes allerede, blir du bedt om &aring; oppgi et annet navn.
+            </p>
+            <p>Du kan angi navnet p&aring; en mappe i  <b>Mitt innhold</b>, der resultatet blir lagret via rullegardinlisten <b>Lagre resultat i</b>.
             </p>
         </div>
     </div>

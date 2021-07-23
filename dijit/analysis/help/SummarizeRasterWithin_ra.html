@@ -46,9 +46,7 @@
         <hr/>
     <p>This tool summarizes the values of a raster within the zones of another dataset.
     </p>
-    <p>Some example applications include the following:
-    </p>
-    <p>
+    <p>Some example application of this tool includes the following:
         <ul>
             <li>Given a layer of watershed boundaries and a layer of land-use boundaries by land-use type, calculate total acreage of land-use type for each watershed.
                 
@@ -69,9 +67,9 @@
         <div><h2>Choose area layer to summarize a raster layer within defined boundaries</h2></div>
         <hr/>
         <div>
-            <p>The layer that defines the boundaries of the areas, or zones, that will be summarized.
+            <p>The input that defines the boundaries of the zones, or areas, that will be summarized.
             </p>
-            <p>The layer can be a raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. The areas do not have to be contiguous.
+            <p>The input can be an integer raster or feature data. For rasters, the zones are defined by all locations in the input that have the same cell value. For features, the zones can be overlapping. The areas do not have to be contiguous.
             </p>
         </div>
     </div>
@@ -79,9 +77,11 @@
         <div><h2>Choose field to define the boundaries</h2></div>
         <hr/>
         <div>
-            <p>This is the attribute of the layer that will be used to define the boundaries of the areas.
+            <p>The
+field that contains the values that define each zone.
             </p>
-            <p>For example, suppose the first input layer defines the management unit boundaries, with attributes that define the region, the district, and the parcel ID of each unit. You also have a raster layer defining a biodiversity index for each location. With the field you select, you can decide to calculate the average biodiversity at local, district, or regional levels.
+            <p>It can
+be an integer or a string field of the zone dataset.
             </p>
         </div>
     </div>
@@ -89,7 +89,9 @@
         <div><h2>Choose raster layer to summarize</h2></div>
         <hr/>
         <div>
-            <p>The raster cells in this layer will be summarized by the areas (zones) that they fall within.
+            <p>The raster that contains the values on which to calculate a statistic.
+            </p>
+            <p>It can be either integer or floating point. However, when it is floating-point type, the options for calculating majority, minority, and variety will not be available.
             </p>
         </div>
     </div>
@@ -97,11 +99,9 @@
         <div><h2>Choose statistic to calculate</h2></div>
         <hr/>
         <div>
-            <p>Once you choose a layer to summarize, you can optionally calculate statistics of any numerical attribute of the points, lines, or areas within the input area layer.
+            <p>Specifies the statistic type to be calculated.
             </p>
-            <p>The available statistics types when the selected field is integer are Average, Majority, Maximum, Median, Minimum, Minority, Percentile, Range, Standard deviation, Sum, and Variety.
-            </p>
-            <p>If the field is floating point, the options are Average, Maximum, Minimum, Range, Standard deviation, and Sum.
+            <p> The input can be one of the following: <b>Average</b>, <b>Majority</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minority</b>, <b>Percentile</b>, <b>Range</b>, <b>Standard deviation</b>, <b>Sum</b>, or <b>Variety</b>. The default is <b>Average</b>.
             </p>
         </div>
     </div>
@@ -111,9 +111,9 @@
         <div>
             <p>The percentile to calculate. The default is 90, indicating the 90th percentile.
             </p>
-            <p>The values can range from 0 to 100. The 0th percentile is essentially equivalent to the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
+            <p>The value can range from 0 to 100. The result of specifying the 0th percentile is essentially equivalent to that of the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
             </p>
-            <p>This option is only supported if the  <b>Choose statistic to calculate</b> parameter is set to <b>Percentile</b>.
+            <p> This parameter is only supported if the <b>Choose statistic to calculate</b> parameter is set to <b>Percentile</b>.
             </p>
         </div>
     </div>
@@ -121,16 +121,32 @@
         <div><h2>Ignore missing values in calculation</h2></div>
         <hr/>
         <div>
-            <p>If you choose to ignore missing values, only the cells that have a value in the layer to be summarized will be used in determining the output value for that area. Otherwise, if there are missing values anywhere in an area, it is deemed that there is insufficient information to perform statistical calculations for all the cells in that zone, and that area will receive a null (NoData) value in the output.
+            <p> Specifies whether missing values are ignored in the analysis.
             </p>
+            <ul>
+                <li>Checked&mdash;The analysis will include the cells that have a value in the input value raster within any particular zone to determine the output value for that zone. NoData cells in the value raster will be ignored in the statistic calculation. This is the default.
+                </li>
+                <li>Unchecked&mdash;The analysis will result in NoData if there are any NoData values for the cells of the value raster within a particular zone.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Process as multidimensional</h2></div>
         <hr/>
         <div>
-            <p>Specifies how the input rasters will be processed if they are multidimensional. If you choose to process as multidimensional, statistics will be calculated from all dimensions of the input multidimensional dataset. Otherwise, statistics will be calculated from the current slice of the input multidimensional dataset, this is the default.
+            <p>Specifies how the input multidimensional image services will be processed if they are multidimensional.
             </p>
+            <ul>
+                <li>Checked&mdash;The statistics will be calculated from the current slice of the input multidimensional dataset. This is the default.
+                    
+
+                </li>
+                <li>Unchecked&mdash;The statistics will be calculated for all dimensions of the input multidimensional dataset.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +156,7 @@
             
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
-            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box. If you have the privileges to create both tiled and dynamic imagery layers, you can specify which layer type to generate in the output using the Save result as drop-down box. </p>
         </div>
     </div>
 </div>

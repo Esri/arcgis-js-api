@@ -133,6 +133,87 @@
         },
         "TraceDownstream": {
             "toolDescription": "trace-downstream.htm"
+        },
+        "SummarizeRasterWithin_ra": {
+            "toolDescription": "summarize-raster-within-portal-tool-reference.htm"
+        },
+        "ZonalStatisticsAsTable_ra": {
+            "toolDescription": "zonal-statistics-as-table-portal-tool-reference.htm"
+        },
+        "CalculateDensityRaster_ra": {
+            "toolDescription": "calculate-density-portal-tool-reference.htm"
+        },
+        "InterpolatePointsEBK_ra": {
+            "toolDescription": "interpolate-points-portal-tool-reference.htm"
+        },
+        "DistanceAccumulation_ra": {
+            "toolDescription": "distance-accumulation-portal-tool-reference.htm"
+        },
+        "DistanceAllocation_ra": {
+            "toolDescription": "distance-allocation-portal-tool-reference.htm"
+        },
+        "OptimalPathAsLine_ra": {
+            "toolDescription": "optimal-path-as-line-portal-tool-reference.htm"
+        },
+        "OptimalPathAsRaster_ra": {
+            "toolDescription": "optimal-path-as-raster-portal-tool-reference.htm"
+        },
+        "OptimateRegionConnections_ra": {
+            "toolDescription": "optimal-region-connections-portal-tool-reference.htm"
+        },
+        "MonitorVegetation_ra": {
+            "toolDescription": "monitor-vegetation.htm"
+        },
+        "CalculateSlope_ra": {
+            "toolDescription": "calculate-slope.htm"
+        },
+        "CreateViewshedRaster_ra": {
+            "toolDescription": "create-viewshed-portal-tool-reference.htm"
+        },
+        "DeriveAspect_ra": {
+            "toolDescription": "derive-aspect.htm"
+        },
+        "Watershed_ra": {
+            "toolDescription": "watershed-portal-tool-reference.htm"
+        },
+        "ConvertFeatureToRaster_ra": {
+            "toolDescription": "convert-feature-to-raster-portal-tool-reference.htm"
+        },
+        "ConvertRasterToFeature_ra": {
+            "toolDescription": "convert-raster-to-feature-portal-tool-reference.htm"
+        },
+        "ExtractRaster_ra": {
+            "toolDescription": "extract-raster.htm"
+        },
+        "RemapValues_ra": {
+            "toolDescription": "remap-values.htm"
+        },
+        "Sample_ra": {
+            "toolDescription": "sample-portal-tool-reference.htm"
+        },
+        "ClassifyObjectsUsingDeepLearning_ra": {
+            "toolDescription": "classify-objects-using-deep-learning.htm"
+        },
+        "ClassifyPixelsUsingDeepLearning_ra": {
+            "toolDescription": "classify-pixels-using-deep-learning.htm"
+        },
+        "DetectObjectsUsingDeepLearning_ra": {
+            "toolDescription": "detect-objects-using-deep-learning.htm"
+        },
+        "AggregateMultidimensionalRaster_ra": {
+            "toolDescription": "aggregate-multidimensional-raster.htm"
+        },
+        "FindArgumentStatistics_ra": {
+            "toolDescription": "find-argument-statistics.htm"
+        },
+        "GenerateMultidimensionalAnomaly_ra": {
+            "toolDescription": "generate-multidimensional-anomaly.htm"
+        },
+        "GenerateTrendRaster_ra": {
+            "toolDescription": "generate-trend-raster.htm"
+        },
+        "PredictUsingTrendRaster_ra": {
+            "toolDescription": "predict-using-trend-raster.htm"
         }
     }
 }

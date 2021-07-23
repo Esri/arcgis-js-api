@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Velg målraster eller geoobjekter",destinationField:"Målfelt (valgfritt)",inputDistanceAccumulationRaster:"Velg raster for avstandsakkumulering",inputBackDirectionRaster:"Velg tilbakeretning- eller strømningsretningsraster",pathType:"Rutetype (valgfritt)",bestSingle:"Beste enkeltforekomst",eachCell:"Hver celle",eachZone:"Hver sone",outputRasterName:"Navn på resultatrasterlag",outputLayerName:"Optimal rute som raster av ${layername}",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Geoobjektlag generert ved å kjøre den optimale ruten som raster på ${layername}. ",itemTags:"Analyseresultat, optimal rute som raster, ${layername} ${fieldname}",itemSnippet:"Geoobjektlag generert fra optimal rute som raster."});

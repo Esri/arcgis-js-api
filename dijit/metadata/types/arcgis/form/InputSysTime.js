@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/date/locale","dojo/has","../../../../../kernel","../../../form/InputText"],(function(e,t,a,i,o,n){var r=e([n],{useNow:!1,postCreate:function(){this.inherited(arguments)},connectXNode:function(e,t){this.inherited(arguments),t||("/metadata/Esri/CreaTime"===e.gxePath||this.useNow)&&this.setInputValue(this.formatTime(e.gxeDocument.datestamp))},formatTime:function(e){return a.format(e,{timePattern:"HH:mm:ss.SS",selector:"time"})},getXmlValue:function(){return"/metadata/Esri/ModTime"===this.parentXNode.gxePath?this.formatTime(this.parentXNode.gxeDocument.datestamp):this.inherited(arguments)}});return i("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.form.InputSysTime",r,o),r}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir une couche à décrire",summaryTypes:"Types récapitulatifs",centralFeature:"Entité centrale",meanCenter:"Centre moyen",medianCenter:"Centre médian",ellipse:"Ellipse",weightBy:"Pondérer par (facultatif)",groupBy:"Regrouper par (facultatif)",resultLayerName:"Nom de la couche de résultat",outputLayerName:"Décrire la distribution de ${layerName}",none:"Aucun",itemDescription:"Couche d’entités générée en exécutant la solution Synthétiser le centre et la dispersion sur ${layerName}. ",itemTags:"Résultat d’analyse, Synthétiser le centre et la dispersion, ${layerName}",itemSnippet:"Couche d’entités générée avec Synthétiser le centre et la dispersion"});

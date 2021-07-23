@@ -46,11 +46,7 @@
         <hr/>
     <p>&Scaron;is rīks izveido blīvuma karti no punktu vai līniju elementiem, izklājot kartē kādas parādības zināmo daudzumu (attēlots kā punktu vai līniju atribūti). Rezultāts ir slānis ar laukumiem, kas klasificēti no vismazāk blīvā līdz visblīvākajam.
     </p>
-    <p>Punktu ievadē katram punktam jāattēlo kāda gadījuma vai incidenta atra&scaron;anās vieta, un rezultātu slānim jāattēlo incidentu skaits katrā teritorijā. Lielāka blīvuma vērtība jaunā izvietojumā nozīmē, ka &scaron;ī izvietojuma tuvumā ir vēl citi punkti. Daudzos gadījumos rezultātu slāni var interpretēt kā riska virsmu turpmākiem gadījumiem. Piemēram, ja ievades punkti attēlo zibens spērienu izvietojumus, rezultātu slāni var interpretēt kā riska virsmu turpmākiem zibens spērieniem.
-    </p>
-    <p>Līniju ievadē līnijas blīvuma virsma attēlo kopējo līniju skaitu, kas atrodas katra izvietojuma tuvumā. Aprēķinātā blīvuma vērtību mērvienības ir līnijas garums katrā teritorijā. Piemēram, ja līnijas attēlo upes, rezultātu slānis attēlos kopējo upju garumu, kas atrodas meklē&scaron;anas rādiusā. &Scaron;o rezultātu var izmantot, lai identificētu teritorijas, ko var apdzīvot zālēdāji.
-    </p>
-    <p>Citi &scaron;ī rīka lieto&scaron;anas gadījumi ietver:
+    <p>Daži no &scaron;ī rīka pielietojumu piemēriem ietver:
         <ul>
             <li>Noziegumu blīvuma kar&scaron;u izveide, lai palīdzētu policijai precīzi izvietot resursus teritorijās ar augstu noziedzības līmeni.
                 
@@ -64,7 +60,7 @@
                 
  
             </li>
-            <li>Apdzīvotu kopienu, kas atrodas tālu no lielajiem autoceļiem, atra&scaron;ana, lai izplānotu jaunu autoceļu būvniecību.
+            <li>Apdzīvotu teritoriju, kas atrodas tālu no lielajiem autoceļiem, atra&scaron;ana, lai izplānotu jaunu autoceļu būvniecību.
                 
 
             </li>
@@ -77,7 +73,7 @@
         <div><h2>Izvēlēties ievades punktu vai līnijas slāni, no kura aprēķināt blīvumu</h2></div>
         <hr/>
         <div>
-            <p>Ievades punkts vai līnijas slānis, kas tiks izmantots blīvuma slāņa aprēķinam.
+            <p>Ievades punkts vai līnija, kas tiks izmantots blīvuma aprēķinam.
             </p>
         </div>
     </div>
@@ -85,9 +81,9 @@
         <div><h2>Skaita lauka izmantošana</h2></div>
         <hr/>
         <div>
-            <p>Lauks, kurā norādīts incidentu skaits katrā izvietojumā. Piemēram, ja jums ir punkti, kas attēlo pilsētas, varat izmantot lauku, kurā attēlots pilsētas iedzīvotāju skaits, kā skaita lauku, un rezultātā iegūtajā iedzīvotāju skaita blīvuma slānī būs aprēķināts lielāks iedzīvotāju skaita blīvums to pilsētu tuvumā, kurās ir liels iedzīvotāju skaits.
+            <p>Lauks, kurā norādīts incidentu skaits katrā novietojumā. Piemēram, ja jums ir punkti, kas attēlo pilsētas, varat izmantot lauku, kurā attēlots pilsētas iedzīvotāju skaits, kā skaita lauku, un rezultātā iegūtajā iedzīvotāju skaita blīvuma slānī būs aprēķināts lielāks iedzīvotāju skaita blīvums to pilsētu tuvumā, kurās ir liels iedzīvotāju skaits.
             </p>
-            <p>Ja tiek izmantota noklusējuma izvēle  <b>Nav</b>, tiek pieņemts, ka katrs izvietojums attēlo atsevi&scaron;ķu skaitu.
+            <p>Ja tiek izmantota noklusējuma izvēle  <b>Neviens</b>, tiek pieņemts, ka katrs novietojums attēlo atsevi&scaron;ķu skaitu.
             </p>
         </div>
     </div>
@@ -112,10 +108,12 @@
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Izvades šūnas lielums</h2></div>
+        <div><h2>Izvades šūnas izmērs</h2></div>
         <hr/>
         <div>
             <p>&Scaron;ūnas lielums un izvades mērvienība.
+            </p>
+            <p>Vienības var būt kilometri, metri, jūdzes vai pēdas.
             </p>
         </div>
     </div>
@@ -125,7 +123,7 @@
         <div>
             <p>Datu kopa, kas nosaka barjeras.
             </p>
-            <p>Barjeras var būt lauztas līnijas vai daudzstūra elementu slānis.
+            <p>Barjeras var būt lauztas līnijas vai laukumveida elementu slānis.
             </p>
         </div>
     </div>
@@ -136,8 +134,7 @@
             
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
-            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>. Ja jums ir privilēģijas izveidot gan mozaīkas, gan dinamiskus attēlu slāņus, varat arī norādīt, kuru slāņa veidu ģenerēt izvadē, izmantojot nolaižamo lodziņu Saglabāt rezultātu kā. </p>
         </div>
     </div>
 </div>

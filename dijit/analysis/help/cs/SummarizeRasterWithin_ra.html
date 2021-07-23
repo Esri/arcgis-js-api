@@ -46,22 +46,20 @@
         <hr/>
     <p>Tento n&aacute;stroj shrne hodnoty rastru uvnitř z&oacute;n jin&eacute; datov&eacute; sady.
     </p>
-    <p>Mezi př&iacute;klady použit&iacute; patř&iacute;:
-    </p>
-    <p>
+    <p>Mezi př&iacute;klady použit&iacute; tohoto n&aacute;stroje patř&iacute;:
         <ul>
-            <li>Pomoc&iacute; vrstvy oblast&iacute; povod&iacute; a vrstvy oblast&iacute; využit&iacute; půdy podle typu využit&iacute; půdy spoč&iacute;tej celkovou rozlohu využ&iacute;van&eacute;ho typu půdy v&nbsp;každ&eacute;m povod&iacute;.
+            <li>Pomoc&iacute; vrstvy ploch povod&iacute; a vrstvy oblast&iacute; využit&iacute; půdy podle typu využit&iacute; půdy spoč&iacute;tej celkovou rozlohu využ&iacute;van&eacute;ho typu půdy v&nbsp;každ&eacute;m povod&iacute;.
                 
 
             </li>
-            <li>Pomoc&iacute; vrstvy parcel v kraji a vrstvy hranic měst spoč&iacute;tej průměrnou cenu voln&yacute;ch parcel v rozsahu hranic každ&eacute;ho města.
+            <li>Pomoc&iacute; vrstvy parcel v&nbsp;kraji a vrstvy hranic měst spoč&iacute;tej průměrnou cenu voln&yacute;ch parcel v&nbsp;rozsahu hranic každ&eacute;ho města.
                 
 
             </li>
         </ul>
         
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;vat rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze prvky ve vstupn&iacute; vrstvě a v sumarizovan&eacute; vrstvě, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy. Pokud toto pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky ve vstupn&iacute; a sumarizovan&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze prvky ve vstupn&iacute; vrstvě a v sumarizovan&eacute; vrstvě, kter&eacute; jsou viditeln&eacute; v rozsahu aktu&aacute;ln&iacute; mapy. Pokud toto pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny v&scaron;echny prvky ve vstupn&iacute; a sumarizovan&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -69,9 +67,9 @@
         <div><h2>Zvolit vrstvu plochy k sumarizaci rastrové vrstvy uvnitř definovaných hranic</h2></div>
         <hr/>
         <div>
-            <p>Vrstva definuj&iacute;c&iacute; hranice oblast&iacute;, nebo z&oacute;n, kter&eacute; budou sumarizov&aacute;ny.
+            <p>Vstup definuj&iacute;c&iacute; hranice oblast&iacute;, nebo z&oacute;n, kter&eacute; budou sumarizov&aacute;ny.
             </p>
-            <p>Tato vrstva může b&yacute;t rastr nebo obsahovat data. Z&nbsp;hlediska rastrů jsou z&oacute;ny definov&aacute;ny v&scaron;emi um&iacute;stěn&iacute;mi ve vstupu, kter&aacute; maj&iacute; stejnou hodnotu buňky. Oblasti k&nbsp;sobě nemus&iacute; přil&eacute;hat.
+            <p>Vstup může b&yacute;t celoč&iacute;seln&yacute; rastr nebo data prvků. U&nbsp;rastrů jsou z&oacute;ny definov&aacute;ny v&scaron;emi um&iacute;stěn&iacute;mi ve vstupu, kter&aacute; maj&iacute; stejnou hodnotu buňky. U&nbsp;prvků se mohou z&oacute;ny překr&yacute;vat. Oblasti k&nbsp;sobě nemus&iacute; přil&eacute;hat.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Zvolit pole pro definování hranic</h2></div>
         <hr/>
         <div>
-            <p>Toto je atribut vrstvy, kter&yacute; bude použit k&nbsp;definov&aacute;n&iacute; hranic oblast&iacute;.
+            <p>Pole obsahuj&iacute;c&iacute; hodnoty, kter&eacute; definuj&iacute; každou z&oacute;nu.
             </p>
-            <p>Předpokl&aacute;dejme např&iacute;klad, že prvn&iacute; vstupn&iacute; vrstva definuje hranice jednotek spr&aacute;vy, s&nbsp;atributy definuj&iacute;c&iacute;mi region, m&iacute;stn&iacute; oblast a ID parcely každ&eacute; jednotky. Tak&eacute; m&aacute;te rastrovou vrstvu definuj&iacute;c&iacute; index biodiverzity pro každ&eacute; um&iacute;stěn&iacute;. U vybran&eacute;ho pole se můžete rozhodnout vypoč&iacute;tat průměrnou biodiverzitu na m&iacute;stn&iacute;, oblastn&iacute; nebo region&aacute;ln&iacute; &uacute;rovni.
+            <p>Může se jednat o celoč&iacute;seln&eacute; nebo řetězcov&eacute; pole datov&eacute; sady z&oacute;ny.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Zvolit rastrovou vrstvu k sumarizaci</h2></div>
         <hr/>
         <div>
-            <p>Rastrov&eacute; buňky v t&eacute;to vrstvě budou sumarizov&aacute;ny podle oblast&iacute; (z&oacute;n), do kter&yacute;ch spadaj&iacute;.
+            <p>Rastr, kter&yacute; obsahuje hodnoty, na jejichž z&aacute;kladě se vypoč&iacute;t&aacute; statistika.
+            </p>
+            <p>Může m&iacute;t hodnoty jak v&nbsp;cel&yacute;ch č&iacute;slech, tak v&nbsp;desetinn&yacute;ch č&iacute;slech. Pokud je v&scaron;ak dan&yacute; rastr v&nbsp;desetinn&yacute;ch č&iacute;slech, možnosti pro v&yacute;počet vět&scaron;iny, men&scaron;iny a&nbsp;různorodosti nebudou k&nbsp;dispozici.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Zvolit statistiku pro výpočet</h2></div>
         <hr/>
         <div>
-            <p>Po v&yacute;běru vrstvy pro sumarizaci můžete volitelně vypoč&iacute;tat statistiku libovoln&yacute;ch č&iacute;seln&yacute;ch atributů bodů, lini&iacute; či oblast&iacute; spadaj&iacute;c&iacute;ch do vstupn&iacute; vrstvy oblast&iacute;.
+            <p>Určuje typ statistiky, kter&yacute; m&aacute; b&yacute;t vypoč&iacute;t&aacute;n.
             </p>
-            <p>Když je vybran&eacute; pole celoč&iacute;seln&eacute;, dostupn&eacute; typy statistiky jsou Průměr, Vět&scaron;ina, Maximum, Medi&aacute;n, Minimum, Men&scaron;ina, Rozpět&iacute;, Percentil, Směrodatn&aacute; odchylka, Souhrn a V&yacute;běr.
-            </p>
-            <p>Když m&aacute; vybran&eacute; pole typ desetinn&eacute;ho č&iacute;sla, možnosti jsou Průměr, Maximum, Minimum, Rozpět&iacute;, Směrodatn&aacute; odchylka a Souhrn.
+            <p> Vstup může b&yacute;t jedn&iacute;m z&nbsp;n&aacute;sleduj&iacute;c&iacute;ch: <b>Průměr</b>, <b>Vět&scaron;ina</b>, <b>Maximum</b>, <b>Medi&aacute;n</b>, <b>Minimum</b>, <b>Men&scaron;ina</b>, <b>Percentil</b>, <b>Rozsah</b>, <b>Směrodatn&aacute; odchylka</b>, <b>Součet</b> nebo <b>Varieta</b>. V&yacute;choz&iacute; hodnota je <b>Průměr</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Percentil, kter&yacute; m&aacute; b&yacute;t vypoč&iacute;t&aacute;n. V&yacute;choz&iacute; hodnota je 90, označuj&iacute;c&iacute; 90.&nbsp;percentil.
             </p>
-            <p>Hodnoty mohou b&yacute;t v rozsahu od 0 do 100. 0.&nbsp;percentil je v&nbsp;podstatě shodn&yacute; s&nbsp;minim&aacute;ln&iacute; statistikou a&nbsp;100.&nbsp;percentil je v&nbsp;podstatě shodn&yacute; s&nbsp;maxim&aacute;ln&iacute; statistikou. V&yacute;sledkem hodnoty percentilu 50 budou v&nbsp;podstatě stejn&eacute; v&yacute;sledky jako medi&aacute;nov&eacute; statistiky.
+            <p>Hodnota může b&yacute;t v&nbsp;rozsahu od 0 do 100. Zad&aacute;te-li 0.&nbsp;percentil, je v&yacute;sledek v&nbsp;podstatě shodn&yacute; s&nbsp;minim&aacute;ln&iacute; statistikou a&nbsp;zad&aacute;te-li 100.&nbsp;percentil, je v&yacute;sledek shodn&yacute; s&nbsp;maxim&aacute;ln&iacute; statistikou. V&yacute;sledkem hodnoty percentilu 50 budou v&nbsp;podstatě stejn&eacute; v&yacute;sledky jako medi&aacute;nov&eacute; statistiky.
             </p>
-            <p>Tato možnost je podporov&aacute;na pouze v&nbsp;př&iacute;padě, pokud parametr  <b>Zvolit statistiku pro v&yacute;počet</b> je nastaven&yacute; na <b>Percentil</b>.
+            <p> Tento parametr je podporov&aacute;n pouze v&nbsp;př&iacute;padě, pokud parametr <b>Zvolit statistiku pro v&yacute;počet</b> je nastaven&yacute; na <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignorovat při výpočtu chybějící hodnoty</h2></div>
         <hr/>
         <div>
-            <p>Pokud se rozhodnete ignorovat chyběj&iacute;c&iacute; hodnoty, použij&iacute; se při určov&aacute;n&iacute; v&yacute;stupn&iacute; hodnoty pro danou oblast pouze buňky s&nbsp;hodnotou ve vrstvě pro sumarizaci. V opačn&eacute;m př&iacute;padě, pokud se kdekoli v oblasti nach&aacute;zej&iacute; chyběj&iacute;c&iacute; hodnoty, bude rozhodnuto, že neexistuje dostatek informac&iacute; k&nbsp;proveden&iacute; statistick&yacute;ch v&yacute;počtů pro v&scaron;echny buňky v dan&eacute; z&oacute;ně a tato oblast ve v&yacute;stupu obdrž&iacute; nulovou (NoData) hodnotu.
+            <p> Určuje, jestli budou chyběj&iacute;c&iacute; hodnoty při anal&yacute;ze ignorov&aacute;ny.
             </p>
+            <ul>
+                <li>Za&scaron;krtnuto &mdash; Anal&yacute;za bude zahrnovat buňky, kter&eacute; maj&iacute; hodnotu ve vstupn&iacute;m rastru hodnot v&nbsp;jak&eacute;koli konkr&eacute;tn&iacute; z&oacute;ně, a&nbsp;urč&iacute; v&yacute;stupn&iacute; hodnotu pro tuto z&oacute;nu. Buňky s&nbsp;hodnotou NoData v&nbsp;rastru hodnot budou při statistick&eacute;m v&yacute;počtu ignorov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                </li>
+                <li>Neza&scaron;krtnuto &mdash; V&yacute;sledkem anal&yacute;zy bude hodnota NoData, pokud jak&eacute;koli buňky rastru hodnot v&nbsp;konkr&eacute;tn&iacute; z&oacute;ně maj&iacute; hodnotu NoData.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Zpracovat jako vícerozměrnou</h2></div>
         <hr/>
         <div>
-            <p>Určuje, jak budou zpracov&aacute;ny vstupn&iacute; rastry, pokud jsou v&iacute;cerozměrn&eacute;. Pokud se rozhodnete je zpracovat jako v&iacute;cerozměrn&eacute;, budou statistiky poč&iacute;t&aacute;ny ze v&scaron;ech rozměrů vstupn&iacute; v&iacute;cerozměrn&eacute; datov&eacute; sady. V&nbsp;opačn&eacute;m př&iacute;padě budou statistiky poč&iacute;t&aacute;ny z&nbsp;aktu&aacute;ln&iacute;ho řezu vstupn&iacute; v&iacute;cerozměrn&eacute; datov&eacute; sady, což je v&yacute;choz&iacute; nastaven&iacute;.
+            <p>Určuje, jak budou zpracov&aacute;ny vstupn&iacute; v&iacute;cerozměrn&eacute; image služby, pokud jsou v&iacute;cerozměrn&eacute;.
             </p>
+            <ul>
+                <li>Za&scaron;krtnuto &mdash; Statistiky budou poč&iacute;t&aacute;ny z&nbsp;aktu&aacute;ln&iacute;ho řezu vstupn&iacute; v&iacute;cerozměrn&eacute; datov&eacute; sady. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                    
+
+                </li>
+                <li>Neza&scaron;krtnuto &mdash; Statistiky budou poč&iacute;t&aacute;ny ze&nbsp;v&scaron;ech rozměrů vstupn&iacute; v&iacute;cerozměrn&eacute; datov&eacute; sady.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
-            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> .
-            </p>
+            <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> . Pokud máte oprávnění k vytváření dlaždicových a dynamických vrstev obrazových dat, můžete specifikovat, jaký typ vrstvy chcete vytvořit ve výstupu pomocí rozbalovacího seznamu Uložit výsledek jako. </p>
         </div>
     </div>
 </div>

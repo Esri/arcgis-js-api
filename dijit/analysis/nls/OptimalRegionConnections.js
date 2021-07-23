@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({root:{inputRegionRasterOrFeatures:"Choose region raster or feature",inputCostRaster:"Choose cost raster (optional)",inputBarrierRasterOrFeatures:"Choose barrier raster or feature (optional)",distanceMethod:"Distance method (optional)",connectionsWithinRegions:"Connections within regions (optional)",generateConnections:"Generate Connections",noConnections:"No Connections",planar:"Planar",geoDesic:"Geodesic",outputOptimalLinesName:"Result optimal connectivity lines feature layer name",outputNeighborConnectionsName:"Result neighboring connections feature layer name (optional)",outputLayerName:"Optimal region connections of ${layername}",drawSourcePointLayerName:"Source points",itemDescription:"Feature layer generated from running the Optimal Region Connections on ${layername}. ",itemTags:"Analysis Result, Optimal Region Connections, ${layername} ${fieldname}",itemSnippet:"Feature layer generated from Optimal Region Connections.",noValueMessage:"This value is required"},ar:1,bs:1,ca:1,cs:1,da:1,de:1,el:1,es:1,et:1,fi:1,fr:1,he:1,hr:1,hu:1,id:1,it:1,ja:1,ko:1,lv:1,lt:1,nl:1,nb:1,pl:1,"pt-br":1,"pt-pt":1,ro:1,ru:1,sk:1,sl:1,sr:1,sv:1,th:1,tr:1,uk:1,vi:1,"zh-cn":1,"zh-hk":1,"zh-tw":1});

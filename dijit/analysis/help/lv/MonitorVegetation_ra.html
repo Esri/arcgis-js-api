@@ -41,7 +41,7 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Pārraudzīt veģetāciju</h2><p/>
+        <h2>Veģetācijas monitorings</h2><p/>
         <h2><img src="../images/GUID-7763FCC0-2EA1-463B-98D0-4EBDF6150907-web.png" alt="Portāla veģetācijas pārraudzības rīks"></h2>
         <hr/>
     <p>&Scaron;is rīks veic aritmētisku darbību vairākjoslu rastra slāņa joslās, lai atklātu pētījumu teritorijas veģetācijas seguma informāciju.
@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Izvēlieties vairākjoslu rastra slāni. Pārliecinieties, vai ievades rastram ir pieejamas atbilsto&scaron;as joslas.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Izvēlēties veģetācijas pārraudzības metodi</h2></div>
         <hr/>
         <div>
-            <p>Izvēlieties metodi veģetācijas indeksa slāņa izveidei. Dažādie veģetācijas indeksi var palīdzēt izcelt noteiktus elementus vai samazināt dažādus trok&scaron;ņus.
+            <p>Izvēlieties metodi veģetācijas indeksa slāņa aprēķinā&scaron;anai. Dažādie veģetācijas indeksi var palīdzēt izcelt noteiktus elementus vai samazināt dažādus trok&scaron;ņus.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Process Sultan's Formula se&scaron;u joslu 8 bitu attēliem lieto noteiktu algor
 Pārveidotais SAVI ir veģetācijas indekss, kas mēģina samazināt augsnes spilgtuma ietekmi, pieņemot, ka augsnes līnijai ir brīvi noteikts slīpums, un pārtvert.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI ir veģetācijas indekss, kas novērtē veģetācijas klātbūtni, izmantojot tikai informāciju no redzamā spektra. &Scaron;ai metodei nepiecie&scaron;amas joslas spektra sarkanajās, zaļajās un zilajās daļās.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Norādīt NIR saites un sarkanās saites indeksus</h2></div>
+        <div><h2>Norādīt NIR joslas un sarkanās joslas indeksus</h2></div>
         <hr/>
         <div>
             <p>Norādīt joslu indeksus NIR un sarkanajai joslai.
             </p>
-            <p>Katrs satelīta sensors un lidojuma kamera tver informāciju, kas ir sadalīta joslu indeksos. Katrs joslas indekss ietver noteiktas elektromagnētiskā spektra daļas informāciju. &Scaron;ai veģetācijas pārraudzības metodei nepiecie&scaron;ams norādīt joslas indeksu, kas uztvēra NIR un sarkano viļņu garumus.
+            <p>Daudzjoslu satelīta vai atmosfēras sensori uztver informāciju, kas ir sadalīta viļņu garuma joslās, kuras ir apzīmētas ar joslu indeksiem. &Scaron;ai veģetācijas uzraudzības metodei nepiecie&scaron;ams norādīt joslas indeksus infrasarkano NIR un sarkano viļņu garumuma joslām.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Norādīt sarkanās, zaļās un zilās joslas indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Norādīt joslu indeksus sarkanajai, zaļajai un zilajai joslai
+            </p>
+            <p>Daudzjoslu satelīta vai atmosfēras sensori uztver informāciju, kas ir sadalīta viļņu garuma joslās, kuras ir apzīmētas ar joslu indeksiem. Redzamās pret atmosfēru izturīgās veģetācijas indeksam nepiecie&scaron;ams norādīt joslu indeksus sarkano, zaļo un zilo viļņu garuma joslām.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Norādīt zilo, sarkano, NIR, SWIR-1 un termisko joslu indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Norādīt joslu indeksus zilajām, sarkanajām, infrasarkanajām (NIR), īsviļņu infrasarkanajām (SWIR) un termiskajām joslām.
+            </p>
+            <p>Daudzjoslu satelīta vai atmosfēras sensori uztver informāciju, kas ir sadalīta viļņu garuma joslās, kuras ir apzīmētas ar joslu indeksiem. Sultāna formulas indekss pieprasa norādīt joslas indeksus zilo, sarkano, infrasarkano (NIR), īsviļņu infrasarkano staru (SWIR-1) un termisko viļņu garuma joslām.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Norādīt zilo, zaļo, sarkano, NIR, SWIR-1 un SWIR-2 joslu indeksus</h2></div>
+        <hr/>
+        <div>
+            <p>Norādīt joslu indeksus zilajām, zaļajām, sarkanajām, NIR, SWIR-1 un SWIR-2 joslām.
+            </p>
+            <p>Daudzjoslu satelīta vai atmosfēras sensori uztver informāciju, kas ir sadalīta viļņu garuma joslās, kuras ir apzīmētas ar joslu indeksiem. Zaļās veģetācijas indekss pieprasa norādīt joslas indeksus zilo, zaļo, sarkano, infrasarkano (NIR), īsviļņu infrasarkano staru 1 (SWIR-1) un īsviļņu infrasarkano staru 2 (SWIR-2) viļņu garuma joslām.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Pārveidotais SAVI ir veģetācijas indekss, kas mēģina samazināt augsnes spi
         <div><h2>Zaļās veģetācijas seguma apjoms</h2></div>
         <hr/>
         <div>
-            <p>Norāda zaļās veģetācijas seguma apjomu, ko pieprasa SAVI metode.
+            <p>Norāda zaļās veģetācijas seguma apjomu, ko pieprasa augsnei pielāgotā veģetācijas indeksa metode.
             </p>
             <p>Tālāk ir norādītas derīgās vērtības.
                 <ul>
@@ -172,8 +206,7 @@ Pārveidotais SAVI ir veģetācijas indekss, kas mēģina samazināt augsnes spi
             
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
-            </p>
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>. Ja jums ir privilēģijas izveidot gan mozaīkas, gan dinamiskus attēlu slāņus, varat arī norādīt, kuru slāņa veidu ģenerēt izvadē, izmantojot nolaižamo lodziņu Saglabāt rezultātu kā. </p>
         </div>
     </div>
 </div>

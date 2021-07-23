@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayer:"Selecionar a camada a partir da qual se encontram eventos na proximidade",entityField:"Selecionar um campo para identificar eventos",entityLayer:"Selecionar a camada para especificar as entidades de interesse",defineDistanceLabel:"Definir distância de pesquisa espacial",distMethodLabel:"Selecionar método para calcular distância",temporalSearchLabel:"Definir distância de pesquisa temporal",optionsLabel:"Opções Avançadas",maxTraceDepth:"Profundidade máxima de rastreamento",attributeMatchLabel:"Selecionar um ou mais atributos de entidade para combinar",includeTracksLayer:"Incluir camada de trilhos",itemDescription:"Camada de elementos gerada através da execução da solução Rastrear Eventos na Proximidade para ${inputLayername}.",itemTags:"Resultado da Análise, Rastrear Eventos na Proximidade, ${inputLayername}",itemSnippet:"Camada de elementos gerada a partir de Rastrear Eventos na Proximidade.",outputLayerName:"Rastrear Eventos na Proximidade para ${inputLayername}",noEntityFieldMsg:"A camada de eventos na proximidade e a camada de entidades de interesse não têm campos em comum."});

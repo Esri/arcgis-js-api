@@ -46,9 +46,7 @@
         <hr/>
     <p>Det h&auml;r verktyget summerar v&auml;rdena fr&aring;n ett raster inom zonerna f&ouml;r ett annat dataset.
     </p>
-    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar:
-    </p>
-    <p>
+    <p>H&auml;r &auml;r n&aring;gra exempel p&aring; anv&auml;ndningar av det h&auml;r verktyget:
         <ul>
             <li>Med ett lager f&ouml;r avrinningsgr&auml;nser och ett lager med markanv&auml;ndningsgr&auml;nser enligt markanv&auml;ndningstyp kan du ber&auml;kna den totala arealen f&ouml;r de olika markanv&auml;ndningstyperna f&ouml;r varje avrinningsomr&aring;de.
                 
@@ -69,9 +67,9 @@
         <div><h2>Välj områdeslager där ett rasterlager ska summeras inom definierade gränser</h2></div>
         <hr/>
         <div>
-            <p>Det lagret som definierar gr&auml;nserna f&ouml;r omr&aring;dena, eller zonerna, som ska summeras.
+            <p>Indata som definierar gr&auml;nserna f&ouml;r zonerna, eller omr&aring;dena, som ska summeras.
             </p>
-            <p>Lagret kan vara ett raster eller geoobjektsdata. F&ouml;r raster definieras zonerna av alla platser i indata som har samma cellv&auml;rde. Omr&aring;dena beh&ouml;ver inte vara sammanh&auml;ngande.
+            <p>Indata kan vara ett heltalsraster eller geoobjektdata. F&ouml;r raster definieras zonerna av alla platser i indata som har samma cellv&auml;rde. F&ouml;r geoobjekt kan zonerna &ouml;verlappas. Omr&aring;dena beh&ouml;ver inte vara sammanh&auml;ngande.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Välj ett fält för att definiera gränserna</h2></div>
         <hr/>
         <div>
-            <p>Det h&auml;r &auml;r attributet f&ouml;r det lager som ska anv&auml;ndas f&ouml;r att definiera omr&aring;denas gr&auml;nser.
+            <p>F&auml;ltet som inneh&aring;ller de v&auml;rden som definierar varje zon.
             </p>
-            <p>Anta till exempel att det f&ouml;rsta indatalagret definierar gr&auml;nserna f&ouml;r administrativa enheter, med attribut som definierar region, distrikt och fastighets-ID f&ouml;r varje enhet. Du har ocks&aring; ett rasterlager som definierar ett index f&ouml;r biologisk m&aring;ngfald f&ouml;r varje plats. Med f&auml;ltet du v&auml;ljer kan du v&auml;lja att ber&auml;kna den genomsnittliga biologiska m&aring;ngfalden p&aring; lokal-, distrikts- eller regionniv&aring;.
+            <p>Det kan vara ett heltalsf&auml;lt eller str&auml;ngf&auml;lt i zondatasetet.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Välj ett rasterlager som ska summeras</h2></div>
         <hr/>
         <div>
-            <p>Rastercellerna i det h&auml;r lagret summeras efter de omr&aring;den (zoner) som de faller inom.
+            <p>Rastret som inneh&aring;ller de v&auml;rden som statistiken ska ber&auml;knas p&aring;.
+            </p>
+            <p>Det kan vara antingen en heltalstyp eller flyttalstyp. Men n&auml;r det &auml;r en flyttalstyp kommer alternativen f&ouml;r att ber&auml;kna majoritet, minoritet och varians inte att finnas tillg&auml;ngliga.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Välj statistik som ska beräknas</h2></div>
         <hr/>
         <div>
-            <p>N&auml;r du har valt ett lager som ska summeras kan du ber&auml;kna statistik f&ouml;r valfria numeriska attribut till punkterna, linjerna och omr&aring;dena i indataomr&aring;deslagret.
+            <p>Statistiktypen som ska ber&auml;knas.
             </p>
-            <p>De tillg&auml;ngliga statistiktyperna n&auml;r det valda f&auml;ltet &auml;r heltal &auml;r Genomsnitt, Majoritet, Maximum, Median, Minimum, Minoritet, Percentil, Omf&aring;ng, Standardavvikelse, Summa och Variation.
-            </p>
-            <p>Om f&auml;ltet &auml;r flyttal &auml;r alternativen Genomsnitt, Maximum, Minimum, Omf&aring;ng, Standardavvikelse och Summa.
+            <p> Indata kan vara n&aring;got av f&ouml;ljande: <b>Genomsnitt</b>, <b>Majoritet</b>, <b>Maximum</b>, <b>Median</b>, <b>Minimum</b>, <b>Minoritet</b>, <b>Percentil</b>, <b>Omf&aring;ng</b>, <b>Standardavvikelse</b>, <b>Summa</b> eller <b>Variation</b>. Standard &auml;r <b>Genomsnitt</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Percentil att ber&auml;kna. Standard &auml;r 90, som anger den nittionde percentilen.
             </p>
-            <p>V&auml;rdena kan vara fr&aring;n 0 till 100. Percentilen 0 motsvarar i huvudsak statistikkategorin Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
+            <p>V&auml;rdet kan vara fr&aring;n 0 till 100. Den 0:e percentilen &auml;r i grunden samma som statistiken Minimum, och den 100:e percentilen motsvarar Maximum. V&auml;rdet 50 ger i huvudsak samma resultat som statistikkategorin Median.
             </p>
-            <p>Detta alternativ st&ouml;ds bara om parametern  <b>V&auml;lj statistik att ber&auml;kna</b> &auml;r angiven till <b>Percentil</b>.
+            <p> Denna parameter st&ouml;ds bara om parametern <b>V&auml;lj statistik att ber&auml;kna</b> &auml;r angiven till <b>Percentil</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignorera saknade värden i beräkningen</h2></div>
         <hr/>
         <div>
-            <p>Om du v&auml;ljer att ignorera saknade v&auml;rden anv&auml;nds endast celler som har ett v&auml;rde i lagret som ska summeras f&ouml;r att avg&ouml;ra utdatav&auml;rdet f&ouml;r omr&aring;det. Om det finns saknade v&auml;rden n&aring;gonstans i ett omr&aring;de anses det annars finnas otillr&auml;cklig information f&ouml;r att utf&ouml;ra statistiska ber&auml;kningar f&ouml;r alla cellerna i den zonen, och omr&aring;det f&aring;r ett null-v&auml;rde (NoData) i utdata.
+            <p> Anger huruvida saknade v&auml;rden ignoreras i analysen.
             </p>
+            <ul>
+                <li>Markerat &ndash; Analysen inneh&aring;ller de celler som har ett v&auml;rde i indatav&auml;rdesrastret inom en viss zon f&ouml;r att fastst&auml;lla utdatav&auml;rdet f&ouml;r den zonen. NoData-celler i v&auml;rderaster ignoreras i statistikber&auml;kningen. Det h&auml;r &auml;r standardinst&auml;llningen.
+                </li>
+                <li>Avmarkerad &ndash; Analysen resulterar i NoData om det finns NoData-v&auml;rden f&ouml;r cellerna i v&auml;rderastret inom en angiven zon.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Bearbeta flerdimensionellt</h2></div>
         <hr/>
         <div>
-            <p>Anger hur indatarastren bearbetas om de &auml;r flerdimensionella. Om du v&auml;ljer flerdimensionell bearbetning ber&auml;knas statistiken f&ouml;r alla dimensioner av det angivna flerdimensionella datasetet. Annars ber&auml;knas statistiken fr&aring;n den aktuella sektorn av det angivna flerdimensionella datasetet. Detta &auml;r standardinst&auml;llningen.
+            <p>Anger hur de flerdimensionella indatabildtj&auml;nsterna bearbetas om de &auml;r flerdimensionella.
             </p>
+            <ul>
+                <li>Markerat &ndash; Statistiken ber&auml;knas utifr&aring;n den aktuella delen av det flerdimensionella indatasetet. Det h&auml;r &auml;r standardinst&auml;llningen.
+                    
+
+                </li>
+                <li>Avmarkerat &ndash; Statistiken ber&auml;knas f&ouml;r alla dimensioner av det flerdimensionella indatasetet.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Namnet p&aring; lagret som skapas i  <b>Mitt inneh&aring;ll</b> och l&auml;ggs till i kartan. Standardnamnet baseras p&aring; verktygets namn och indatalagrets namn. Om lagret redan finns uppmanas du ange ett annat namn.
             </p>
-            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>.
-            </p>
+            <p>Du kan ange namnet p&aring; en mapp i  <b>Mitt inneh&aring;ll</b> d&auml;r resultatet sparas med listrutan <b>Spara resultat i</b>. Om du har behörigheter att skapa både tilelager och dynamiska bildlager kan du ange vilken lagertyp som ska genereras i utdata med hjälp av listrutan Spara resultat som. </p>
         </div>
     </div>
 </div>

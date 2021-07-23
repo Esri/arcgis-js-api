@@ -41,64 +41,48 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Vzorek</h2><p/>
-        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Vzorek"></h2>
+        <h2>Vzorek (Sample)</h2><p/>
+        <h2><img src="../images/GUID-3950CCA3-C1D0-493F-A33D-93673443ADD2-web.png" alt="Vzorek (Sample)"></h2>
         <hr/>
     <p>Tento n&aacute;stroj vytvoř&iacute; tabulku nebo tř&iacute;du bodov&yacute;ch prvků, kter&aacute; uvede hodnoty buněk z rastru nebo sady rastrů pro definovan&eacute; um&iacute;stěn&iacute;. Um&iacute;stěn&iacute; jsou definov&aacute;na buňkami rastru, polygonov&yacute;mi prvky, polyliniov&yacute;mi prvky nebo sadou bodů.
     </p>
-    <p>Hodnoty pixelů budou extrahov&aacute;ny ze v&scaron;ech vstupn&iacute;ch rastrů v každ&eacute;m um&iacute;stěn&iacute;. Tabulka nebo tř&iacute;da bodov&yacute;ch prvků bude vytvořena s poli obsahuj&iacute;c&iacute;mi hodnoty pixelů pro každ&yacute; vstupn&iacute; rastr. Dal&scaron;&iacute; atributy ze vstupn&iacute; tabulky rastrů nebudou zahrnuty ve v&yacute;stupn&iacute; tabulce.
-    </p>
-    <p>Jako vstupn&iacute; rastry lze určit jak&eacute;koliv kombinace rastrů, jako je jednop&aacute;smov&yacute;, v&iacute;cep&aacute;smov&yacute;, v&iacute;cerozměrn&yacute; nebo multivariačn&iacute;. Struktura v&yacute;stupn&iacute; tabulky se změn&iacute;, když jsou vstupn&iacute; rastry v&iacute;cerozměrn&eacute;. Když je jako jeden ze vstupn&iacute;ch rastrů určen v&iacute;cep&aacute;smov&yacute; rastr, budou použita v&scaron;echny p&aacute;sma v tomto vstupu. Pokud chcete zpracovat v&yacute;běr p&aacute;sem ze vstupn&iacute;ho v&iacute;cep&aacute;smov&eacute;ho rastru, nejprve vytvořte novou rastrovou datovou sadu složenou z těchto konkr&eacute;tn&iacute;ch p&aacute;sem. Použijte v&yacute;sledek v seznamu vstupn&iacute;ch rastrů.
-    </p>
-    <p>Vstupn&iacute; um&iacute;stěn&iacute; může b&yacute;t rastr nebo bodov&yacute; prvek:
+    <p>Mezi př&iacute;klady použit&iacute; tohoto n&aacute;stroje patř&iacute;:
         <ul>
-            <li>Rastr&mdash;Pixely obsahuj&iacute;c&iacute; platn&eacute; hodnoty (ž&aacute;dn&aacute; hodnota NoData) jsou použity pro extrahov&aacute;n&iacute; hodnot pixelů ze v&scaron;ech vstupn&iacute;ch rastrů a střed pixelu je použit pro um&iacute;stěn&iacute; bodů.
+            <li> Extrahovat atributy z&nbsp;v&iacute;ce rastrů pro nalezen&iacute; vhodn&yacute;ch um&iacute;stěn&iacute; mobiln&iacute;ch vys&iacute;lačů, jako např&iacute;klad využit&iacute; &uacute;zem&iacute;, typ půdy, nadmořsk&aacute; v&yacute;&scaron;ka a&nbsp;vzd&aacute;lenost od cesty.
             </li>
-            <li>Bod&mdash;Hodnoty budou vzorkov&aacute;ny v každ&eacute;m um&iacute;stěn&iacute; bodu.
+            <li>Extrahovat teploty půdy v&nbsp;rozd&iacute;ln&yacute;ch hloubk&aacute;ch pro danou sadu bodů.
             </li>
-            <li>Polylinie nebo polygon&mdash;Hodnoty budou vzorkov&aacute;ny v centroidu polygonu nebo polylinie. Pokud je vstupn&iacute; rastr v&iacute;cerozměrn&yacute;, budou hodnoty seskupeny podle typu  <b>Statistiky</b>.
+            <li>Z&nbsp;30 let měs&iacute;čně shromažďovan&yacute;ch dat teploty mořsk&eacute; hladiny sumarizujte v m&iacute;stech v&yacute;skytu živočichů nebo v&nbsp;jejich domovsk&yacute;ch are&aacute;lech za dan&eacute; obdob&iacute;, kdy byl dan&yacute; živoči&scaron;n&yacute; druh pozorov&aacute;n.
             </li>
         </ul>
         
     </p>
-    <p>Vstupn&iacute; rastry jsou vzorkov&aacute;ny v jejich nativn&iacute;m souřadnicov&eacute;m syst&eacute;mu a rozli&scaron;en&iacute;. Pokud jsou v&iacute;cen&aacute;sobn&eacute; vstupn&iacute; rastry s různ&yacute;mi souřadnicov&yacute;mi syst&eacute;my, vstupn&iacute; um&iacute;stěn&iacute; jsou prom&iacute;tnuta do každ&eacute;ho jednotliv&eacute;ho souřadnicov&eacute;ho syst&eacute;mu rastru, pro kter&yacute; jsou extrahov&aacute;ny hodnoty. Prostřed&iacute; anal&yacute;zy je použito na vstupn&iacute; um&iacute;stěn&iacute;, ale vstupn&iacute; rastry nebudou dodržovat prostřed&iacute; anal&yacute;zy.
-    </p>
-    <p>Um&iacute;stěn&iacute;, kter&aacute; extrahuj&iacute; hodnoty z buněk NoData do vstupn&iacute;ho rastru, dostanou ve v&yacute;stupn&iacute; tabulce nulovou hodnotu &lt;null&gt;.
-    </p>
-    <p>Pokud chcete prov&eacute;st anal&yacute;zu s prvky v&iacute;cen&aacute;sobn&yacute;ch bodů, nejprve je převeďte na jednobodov&eacute; prvky, než je použijete v tomto n&aacute;stroji.
-    </p>
-    <p>Souřadnicov&yacute; syst&eacute;m souřadnic x, y ve v&yacute;stupn&iacute; vzorov&eacute; tabulce je stejn&yacute; jako vstupn&iacute; um&iacute;stěn&iacute; rastru nebo bodov&yacute;ch prvků, pokud nen&iacute; zad&aacute;n v prostřed&iacute; <b>V&yacute;stupn&iacute; souřadnicov&yacute; syst&eacute;m</b>. Pokud nen&iacute; zn&aacute;m souřadnicov&yacute; syst&eacute;m dat vstupn&iacute;ho um&iacute;stěn&iacute;, nen&iacute; zn&aacute;m tak&eacute; souřadnicov&yacute; syst&eacute;m souřadnic x, y.
-    </p>
-    <p>Souřadnicov&yacute; syst&eacute;m v&yacute;stupn&iacute; tř&iacute;dy prvků je stejn&yacute; jako vstupn&iacute; um&iacute;stěn&iacute; rastru nebo bodov&yacute;ch prvků, pokud nen&iacute; zad&aacute;n v prostřed&iacute;  <b>V&yacute;stupn&iacute; souřadnicov&yacute; syst&eacute;m</b>.
-    </p>
-    <p>Prostřed&iacute;  <b>Faktor paraleln&iacute;ho zpracov&aacute;n&iacute;</b> je podporov&aacute;no pouze, když vstup je v&iacute;cerozměrn&yacute; rastr.
-    </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty proměnn&eacute; nebo p&aacute;sma vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud nen&iacute; pole za&scaron;krtnuto, budou analyzov&aacute;ny proměnn&eacute; nebo p&aacute;sma v cel&eacute; vrstvě včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou do anal&yacute;zy zahrnuty proměnn&eacute; nebo p&aacute;sma vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud nen&iacute; pole za&scaron;krtnuto, budou analyzov&aacute;ny proměnn&eacute; nebo p&aacute;sma v cel&eacute; vrstvě včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inRasters">
-        <div><h2>Zvolit vrstvu (vrstvy) obrazových dat pro vzorkování</h2></div>
+        <div><h2>Zvolte vrstvu(y) obrazových dat ke vzorkování</h2></div>
         <hr/>
         <div>
-            <p>Jedna vrstva obrazov&yacute;ch dat nebo seznam vrstev obrazov&yacute;ch dat, jejichž hodnoty budou vzorkov&aacute;ny podle dat vstupn&iacute;ho um&iacute;stěn&iacute;.
+            <p>Jeden sn&iacute;mek nebo seznam sn&iacute;mků, jejichž hodnoty budou vzorkov&aacute;ny podle dat vstupn&iacute;ho um&iacute;stěn&iacute;. 
             </p>
             <p>Pokud chcete vzorkovat v&scaron;echny řezy z v&iacute;cerozměrn&eacute; vrstvy obrazov&yacute;ch dat, mus&iacute; to b&yacute;t pouze vstupn&iacute; rastr.
             </p>
         </div>
     </div>
     <div id="inLocationData">
-        <div><h2>Zvolit vrstvu pro lokalizaci</h2></div>
+        <div><h2>Zvolte vrstvu umístění</h2></div>
         <hr/>
         <div>
             <p>Data identifikace pozic, kter&eacute; chcete vzorkovat.
             </p>
-            <p>Data vstupn&iacute;ho um&iacute;stěn&iacute; mohou b&yacute;t rastr nebo tř&iacute;da bodov&yacute;ch, liniov&yacute;ch prvků nebo tř&iacute;da prvků polygon.
+            <p>Data vstupn&iacute;ho um&iacute;stěn&iacute; mohou b&yacute;t rastr nebo tř&iacute;da bodov&yacute;ch, liniov&yacute;ch nebo polygonov&yacute;ch prvků.
             </p>
         </div>
     </div>
     <div id="uniqueIdField">
-        <div><h2>Určit pole jedinečného identifikátoru</h2></div>
+        <div><h2>Určete pole jedinečného identifikátoru</h2></div>
         <hr/>
         <div>
             <p>Pole obsahuj&iacute;c&iacute; různ&eacute; hodnoty pro každ&eacute; um&iacute;stěn&iacute; nebo prvek ve vstupn&iacute;m um&iacute;stěn&iacute; rastru nebo tř&iacute;dě prvků.
@@ -106,46 +90,48 @@
         </div>
     </div>
     <div id="acquisitionDefinition">
-        <div><h2>Určit informace o pořízení dat o umístění (volitelné)</h2></div>
+        <div><h2>Určete informace o pořízení polohových dat (volitelné)</h2></div>
         <hr/>
         <div>
             <p>Určete čas, hloubku nebo jin&aacute; data o poř&iacute;zen&iacute; spojen&aacute; s buňkami nebo prvky um&iacute;stěn&iacute;.
             </p>
             <p>Pro každ&yacute; rozměr jsou tři možnosti zad&aacute;n&iacute; informac&iacute; o poř&iacute;zen&iacute; spojen&yacute;ch s buňkami nebo prvky um&iacute;stěn&iacute;:
-                <ul>
-                    <li> <b>Jedin&eacute; pole nebo hodnota</b>&mdash;Když je vybr&aacute;na tato možnost, mus&iacute; b&yacute;t zad&aacute;ny n&aacute;sleduj&iacute;c&iacute; informace:
-                        <ul>
-                            <li> <b>Pole rozměru nebo hodnota</b>&mdash;vyberte pole hodnot rozměru z dat o um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Jedin&eacute; pole nebo hodnota</b>&mdash;Když je vybr&aacute;na tato možnost, mus&iacute; b&yacute;t zad&aacute;ny n&aacute;sleduj&iacute;c&iacute; informace:
+                    <ul>
+                        <li> <b>Pole rozměru nebo hodnota</b>&mdash;Vyberte pole hodnot rozměru z&nbsp;dat o&nbsp;um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Jedin&eacute; pole nebo hodnota s relativn&iacute;mi hodnotami</b>&mdash;Pokud je vybr&aacute;na tato možnost, informace n&iacute;že mus&iacute; b&yacute;t zad&aacute;ny společně, aby definovaly rozsah, v němž bude vypoč&iacute;t&aacute;na statistika pro proměnn&eacute;:
-                        <ul>
-                            <li> <b>Pole rozměru nebo hodnota</b>&mdash;vyberte pole hodnot rozměru z dat o um&iacute;stěn&iacute;.
-                            </li>
-                            <li> <b>Relativn&iacute; hodnota před</b>&mdash;zadejte nez&aacute;porn&eacute; č&iacute;slo použit&eacute; k odečten&iacute; od <b>Pole rozměru nebo hodnota</b> pro definov&aacute;n&iacute; zač&aacute;tku rozsahu hodnot rozměru. Tato hodnota představuje počet dnů, pokud je rozměr čas.
-                            </li>
-                            <li> <b>Relativn&iacute; hodnota po</b>&mdash;zadejte nez&aacute;porn&eacute; č&iacute;slo použit&eacute; k přičten&iacute; k <b>Pole rozměru nebo hodnota</b> pro definov&aacute;n&iacute; konce rozsahu hodnot rozměru. Tato hodnota představuje počet dnů, pokud je rozměr čas.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Poč&aacute;tečn&iacute; a koncov&aacute; pole nebo hodnoty</b>&mdash;Pokud je vybr&aacute;na tato možnost, informace n&iacute;že mus&iacute; b&yacute;t zad&aacute;ny společně, aby definovaly rozsah, v němž bude vypoč&iacute;t&aacute;na statistika pro proměnn&eacute;:
-                        <ul>
-                            <li> <b>Poč&aacute;tečn&iacute; pole nebo hodnoty</b>&mdash;vyberte pole hodnot rozměru z dat o um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru pro definov&aacute;n&iacute; poč&aacute;tku rozsahu hodnot rozměru.
-                            </li>
-                            <li> <b>Koncov&eacute; pole nebo hodnoty</b>&mdash;vyberte pole hodnot rozměru z dat o um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru pro definov&aacute;n&iacute; konce rozsahu hodnot rozměru.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Jedin&eacute; pole nebo hodnota s&nbsp;relativn&iacute;mi hodnotami</b>&mdash;Pokud je vybr&aacute;na tato možnost, informace n&iacute;že mus&iacute; b&yacute;t zad&aacute;ny společně, aby definovaly rozsah, v&nbsp;němž bude vypoč&iacute;t&aacute;na statistika pro proměnn&eacute;:
+                    <ul>
+                        <li> <b>Pole rozměru nebo hodnota</b>&mdash;Vyberte pole hodnot rozměru z&nbsp;dat o&nbsp;um&iacute;stěn&iacute;.
+                        </li>
+                        <li> <b>Relativn&iacute; hodnota před</b>&mdash;Zadejte nez&aacute;porn&eacute; č&iacute;slo použit&eacute; k&nbsp;odečten&iacute; od <b>Pole rozměru nebo hodnoty</b> pro definov&aacute;n&iacute; zač&aacute;tku rozsahu hodnot rozměru. Tato hodnota představuje počet dnů, pokud je rozměr čas.
+                        </li>
+                        <li> <b>Relativn&iacute; hodnota po</b>&mdash;Zadejte nez&aacute;porn&eacute; č&iacute;slo použit&eacute; k&nbsp;přičten&iacute; k <b>Poli rozměru nebo hodnotě</b> pro definov&aacute;n&iacute; konce rozsahu hodnot rozměru. Tato hodnota představuje počet dnů, pokud je rozměr čas.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Poč&aacute;tečn&iacute; a&nbsp;koncov&aacute; pole nebo hodnoty</b>&mdash;Pokud je vybr&aacute;na tato možnost, informace n&iacute;že mus&iacute; b&yacute;t zad&aacute;ny společně, aby definovaly rozsah, v&nbsp;němž bude vypoč&iacute;t&aacute;na statistika pro proměnn&eacute;:
+                    <ul>
+                        <li> <b>Poč&aacute;tečn&iacute; pole nebo hodnoty</b>&mdash;Vyberte pole hodnot rozměru z&nbsp;dat o&nbsp;um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru pro definov&aacute;n&iacute; poč&aacute;tku rozsahu hodnot rozměru.
+                        </li>
+                        <li> <b>Koncov&eacute; pole nebo hodnoty</b>&mdash;Vyberte pole hodnot rozměru z&nbsp;dat o&nbsp;um&iacute;stěn&iacute; nebo zadejte přesnou hodnotu rozměru pro definov&aacute;n&iacute; konce rozsahu hodnot rozměru.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>Tento parametr je k&nbsp;dispozici pouze tehdy, pokud je parametr  <b>Vybrat vrstvu obrazov&yacute;ch dat ke vzorkov&aacute;n&iacute;</b> v&iacute;cerozměrn&yacute; rastr.
             </p>
         </div>
     </div>
@@ -157,10 +143,12 @@
             </p>
             <p>Statistika bude vypoč&iacute;t&aacute;na v t&eacute;to oblasti obalov&eacute; z&oacute;ny.
             </p>
+            <p>Tento parametr je k&nbsp;dispozici pouze tehdy, pokud je parametr  <b>Vybrat vrstvu obrazov&yacute;ch dat ke vzorkov&aacute;n&iacute;</b> v&iacute;cerozměrn&yacute; rastr.
+            </p>
         </div>
     </div>
     <div id="statisticsType">
-        <div><h2>Zvolit typ statistiky</h2></div>
+        <div><h2>Zvolte typ statistiky</h2></div>
         <hr/>
         <div>
             <p>Typ statistiky, kter&aacute; bude vypoč&iacute;t&aacute;na.
@@ -186,52 +174,56 @@
                 </li>
             </ul>
             
+            <p>Tento parametr je k&nbsp;dispozici pouze tehdy, pokud je parametr  <b>Vybrat vrstvu obrazov&yacute;ch dat ke vzorkov&aacute;n&iacute;</b> v&iacute;cerozměrn&yacute; rastr a&nbsp;parametry <b>Vybrat vrstvu um&iacute;stěn&iacute;</b> jsou linie nebo polygony, nebo je zad&aacute;no <b>Zadat pole nebo hodnotu &scaron;&iacute;řky obalov&eacute; z&oacute;ny (voliteln&eacute;)</b>.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Hodnota v percentilu</h2></div>
         <hr/>
         <div>
-            <p>Percentil pro v&yacute;počet, když je parametr  <b>Typ statistiky</b> nastaven na <b>Percentil</b>.
-            </p>
             <p>Tato hodnota může b&yacute;t v rozsahu od 0 do 100. V&yacute;choz&iacute; hodnota je 90.
+            </p>
+            <p>Tento parametr je k&nbsp;dispozici pouze tehdy, pokud je parametr  <b>Vybrat typ statistiky</b> nastaven na <b>Percentil</b>.
             </p>
         </div>
     </div>
     <div id="resamplingType">
-        <div><h2>Určit techniku převzorkování</h2></div>
+        <div><h2>Určete techniku převzorkování</h2></div>
         <hr/>
         <div>
             <p>Algoritmus převzorkov&aacute;n&iacute; použit&yacute; při vzorkov&aacute;n&iacute; rastru.
             </p>
             <ul>
-                <li> <b>Nearest</b>&mdash;Nejbliž&scaron;&iacute; soused použ&iacute;v&aacute; k přiřazen&iacute; hodnoty v&yacute;stupn&iacute; buňce při převzorkov&aacute;n&iacute; hodnotu nejbliž&scaron;&iacute; buňky. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+                <li> <b>Nejbliž&scaron;&iacute;</b>&mdash;Nejbliž&scaron;&iacute; soused, kter&yacute; použ&iacute;v&aacute; k&nbsp;přiřazen&iacute; hodnoty v&yacute;stupn&iacute; buňce při převzorkov&aacute;n&iacute; hodnotu nejbliž&scaron;&iacute; buňky. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                 </li>
-                <li> <b>Bilinear</b>&mdash;Biline&aacute;rn&iacute; interpolace určuje novou hodnotu buňky na z&aacute;kladě v&aacute;žen&eacute;ho průměru vzd&aacute;lenosti čtyř nejbliž&scaron;&iacute;ch středů vstupn&iacute;ch buněk.
+                <li> <b>Biline&aacute;rn&iacute; interpolace</b>&mdash;Biline&aacute;rn&iacute; interpolace, kter&aacute; určuje novou hodnotu buňky na z&aacute;kladě v&aacute;žen&eacute;ho průměru vzd&aacute;lenosti čtyř nejbliž&scaron;&iacute;ch středů vstupn&iacute;ch buněk.
                 </li>
-                <li> <b>Cubic</b>&mdash;Kubick&aacute; interpolace určuje novou hodnotu buňky na z&aacute;kladě tvorby hladk&eacute; křivky proch&aacute;zej&iacute;c&iacute; středy 16 nejbliž&scaron;&iacute;ch vstupn&iacute;ch buněk.
+                <li> <b>Kubick&aacute; interpolace</b>&mdash;Kubick&aacute; interpolace, kter&aacute; určuje novou hodnotu buňky na z&aacute;kladě tvorby hladk&eacute; křivky proch&aacute;zej&iacute;c&iacute; středy 16 nejbliž&scaron;&iacute;ch vstupn&iacute;ch buněk.
                 </li>
             </ul>
             
         </div>
     </div>
     <div id="layout">
-        <div><h2>Určit výstupní rozvržení</h2></div>
+        <div><h2>Určete výstupní rozvržení</h2></div>
         <hr/>
         <div>
-            <p>Určuje, zda se vzorkovan&eacute; hodnoty zobraz&iacute; ve v&yacute;stupn&iacute; tabulce v ř&aacute;dc&iacute;ch nebo sloupc&iacute;ch. Tato možnost je dostupn&aacute; pouze, když vstupn&iacute; v&iacute;cerozměrn&yacute; rastr obsahuje jednu proměnnou a jeden rozměr a každ&yacute; řez je jednop&aacute;smov&yacute; rastr.
+            <p>Určuje, zda se vzorkovan&eacute; hodnoty zobraz&iacute; ve v&yacute;stupn&iacute; tabulce v ř&aacute;dc&iacute;ch nebo sloupc&iacute;ch.
             </p>
             <ul>
                 <li> <b>Vzorkovan&eacute; hodnoty se zobraz&iacute; v ř&aacute;dku</b>&mdash;Vzorkovan&eacute; hodnoty se ve v&yacute;stupn&iacute; tabulce zobraz&iacute; v samostatn&yacute;ch ř&aacute;dc&iacute;ch. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                 </li>
-                <li> <b>Vzorkovan&eacute; hodnoty se zobraz&iacute; ve sloupci</b>&mdash;Vzorkovan&eacute; hodnoty se ve v&yacute;stupn&iacute; tabulce zobraz&iacute; v samostatn&yacute;ch sloupc&iacute;ch. Tato možnost je platn&aacute; pouze, když vstupn&iacute; v&iacute;cerozměrn&yacute; rastr obsahuje jednu proměnnou a jeden rozměr a každ&yacute; řez je jednop&aacute;smov&yacute; rastr.
+                <li> <b>Vzorkovan&eacute; hodnoty se zobraz&iacute; ve sloupci</b>&mdash;Vzorkovan&eacute; hodnoty se ve v&yacute;stupn&iacute; tabulce zobraz&iacute; v samostatn&yacute;ch sloupc&iacute;ch.
                 </li>
             </ul>
             
+            <p>Tento parametr je dostupn&yacute; pouze tehdy, když je parametr  <b>Vybrat vrstvu obrazov&yacute;ch dat ke vzorkov&aacute;n&iacute;</b> v&iacute;cerozměrn&yacute; rastr a&nbsp;obsahuje jednu proměnnou a&nbsp;jeden rozměr a&nbsp;každ&yacute; řez je jednop&aacute;smov&yacute; rastr.
+            </p>
         </div>
     </div>
     <div id="outputType">
-        <div><h2>Určit typ výstupu</h2></div>
+        <div><h2>Určete typ výstupu</h2></div>
         <hr/>
         <div>
             <p>Určuje, zda generovat tř&iacute;du bodov&yacute;ch prvků se vzorkovan&yacute;mi hodnotami ve vlastn&iacute; tabulce nebo pouze tabulku se vzorkovan&yacute;mi hodnotami.
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Tabulka</b>&mdash;Generovat tabulku se vzorkovan&yacute;mi hodnotami. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
                 </li>
-                <li> <b>Prvky</b>&mdash;Generovat tř&iacute;du bodov&yacute;ch prvků se vzorkovan&yacute;mi hodnotami ve vlastn&iacute; tabulce. Pokud jsou prvky vstupn&iacute;ho um&iacute;stěn&iacute; polyliniov&eacute; nebo polygony, každ&yacute; bod ve v&yacute;stupu je centroid každ&eacute; geometrie prvků vstupn&iacute;ho um&iacute;stěn&iacute;.
+                <li> <b>Prvky</b>&mdash;Generovat tř&iacute;du bodov&yacute;ch prvků se vzorkovan&yacute;mi hodnotami ve vlastn&iacute; tabulce. Pokud jsou parametry <b>Vybrat vrstvu um&iacute;stěn&iacute;</b> linie nebo polygony, každ&yacute; bod ve v&yacute;stupu je centroid každ&eacute; geometrie prvků vstupn&iacute;ho um&iacute;stěn&iacute;. 
                 </li>
             </ul>
             

@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Selecione a camada raster multibanda. Garanta que o raster de entrada tem as bandas apropriadas dispon&iacute;veis.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Selecionar método para monitorizar vegetação</h2></div>
         <hr/>
         <div>
-            <p>Selecione o m&eacute;todo utilizado para criar a camada de &iacute;ndice de vegeta&ccedil;&atilde;o. Os diferentes &iacute;ndices de vegeta&ccedil;&atilde;o podem ajudar a destacar certos elementos, ou a reduzir v&aacute;rios ru&iacute;dos.
+            <p>Selecione o m&eacute;todo a utilizar para calcular a camada de &iacute;ndice de vegeta&ccedil;&atilde;o. Os diferentes &iacute;ndices de vegeta&ccedil;&atilde;o podem ajudar a destacar certos elementos ou a reduzir v&aacute;rios ru&iacute;dos.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que procura minimiza
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI &eacute; um &iacute;ndice estandardizado que lhe permite gerar uma imagem que apresenta verdor, ou biomassa relativa. Este &iacute;ndice tira partido do contraste entre as caracter&iacute;sticas de duas bandas de um conjunto de dados raster multiespectral; as absor&ccedil;&otilde;es de pigmento de clorofila na banda Red e a elevada reflectividade dos materiais vegetais na banda de infravermelho-pr&oacute;ximo (near-infrared - NIR).
+NDVI &eacute; um &iacute;ndice estandardizado que lhe permite gerar uma imagem que apresenta verdor, ou biomassa relativa. Este &iacute;ndice tira partido do contraste entre as caracter&iacute;sticas de duas bandas de um conjunto de dados raster multiespectral; as absor&ccedil;&otilde;es de pigmento de clorofila na banda Vermelho e a elevada refletividade dos materiais vegetais na banda de infravermelho-pr&oacute;ximo (NIR).
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ O processo Sultan's Formula recorre a uma imagem de 8 bits de seis bandas e apli
 Transformed-SAVI &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que procura minimizar as influ&ecirc;ncias da luminosidade do solo, assumindo a linha do solo como um declive e intersec&ccedil;&atilde;o arbitr&aacute;rios.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+O VARI &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que estimou a presen&ccedil;a de vegeta&ccedil;&atilde;o apenas com informa&ccedil;&otilde;es do espetro vis&iacute;vel. Este m&eacute;todo requer bandas nas partes vermelha, verde e azul do espetro.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Especifica índices de banda NIR e de banda Red</h2></div>
+        <div><h2>Especificar índices para a banda NIR e banda Vermelho</h2></div>
         <hr/>
         <div>
-            <p>Especifique os &iacute;ndices de bandas para as bandas NIR e red.
+            <p>Especifique os &iacute;ndices de banda para as bandas NIR e Vermelho.
             </p>
-            <p>Cada sensor de sat&eacute;lite e c&acirc;mara a&eacute;rea obt&eacute;m informa&ccedil;&otilde;es que s&atilde;o divididas em &iacute;ndices de banda. Cada &iacute;ndice de banda cont&eacute;m as informa&ccedil;&otilde;es referentes a uma parte espec&iacute;fica do espectro eletromagn&eacute;tico. Este m&eacute;todo de monitoriza&ccedil;&atilde;o de vegeta&ccedil;&atilde;o exige-lhe que especifique o &iacute;ndice de banda que capturou os comprimentos de onda NIR e red.
+            <p>Os sensores de sat&eacute;lite ou a&eacute;reos multibanda capturam informa&ccedil;&otilde;es que s&atilde;o divididas em bandas de comprimento de onda, que s&atilde;o identificadas com &iacute;ndices de banda. Este m&eacute;todo de monitoriza&ccedil;&atilde;o de vegeta&ccedil;&atilde;o requer que especifique os &iacute;ndices de banda para o infravermelho pr&oacute;ximo (NIR) e bandas de comprimento de onda vermelho.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Especificar índices para as bandas Vermelho, Verde e Azul</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique os &iacute;ndices de banda para as bandas Vermelho, Verde e Azul.
+            </p>
+            <p>Os sensores de sat&eacute;lite ou a&eacute;reos multibanda capturam informa&ccedil;&otilde;es que s&atilde;o divididas em bandas de comprimento de onda, que s&atilde;o identificadas com &iacute;ndices de banda. O &Iacute;ndice de Resist&ecirc;ncia Atmosf&eacute;rica Vis&iacute;vel requer que especifique os &iacute;ndices de banda para as bandas de comprimento de onda Vermelho, Verde e Azul.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Especificar índices para as bandas Azul, Vermelho, NIR, SWIR-1 e Térmico</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique os &iacute;ndices de banda para as bandas Azul, Vermelho, Infravermelho pr&oacute;ximo (NIR), Infravermelho de ondas curtas (SWIR) e T&eacute;rmico.
+            </p>
+            <p>Os sensores de sat&eacute;lite ou a&eacute;reos multibanda capturam informa&ccedil;&otilde;es que s&atilde;o divididas em bandas de comprimento de onda, que s&atilde;o identificadas com &iacute;ndices de banda. O &iacute;ndice F&oacute;rmula de Sultan requer que especifique os &iacute;ndices de banda para as bandas de comprimento de onda azul, vermelho, infravermelho pr&oacute;ximo (NIR), infravermelho de ondas curtas (SWIR) e t&eacute;rmico.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Especificar índices para as bandas Azul, Verde, Vermelho, NIR, SWIR-1 e SWIR-2</h2></div>
+        <hr/>
+        <div>
+            <p>Especifique os &iacute;ndices de banda para as bandas Azul, Verde, Vermelho, NIR, SWIR-1 e SWIR-2.
+            </p>
+            <p>Os sensores de sat&eacute;lite ou a&eacute;reos multibanda capturam informa&ccedil;&otilde;es que s&atilde;o divididas em bandas de comprimento de onda, que s&atilde;o identificadas com &iacute;ndices de banda. O &Iacute;ndice de Vegeta&ccedil;&atilde;o Verde requer que especifique os &iacute;ndices de banda para as bandas de comprimento de onda azul, verde, vermelho, infravermelho pr&oacute;ximo (NIR), infravermelho de ondas curtas 1 (SWIR-1) e infravermelho de ondas curtas 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -122,7 +156,7 @@ Transformed-SAVI &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que procur
         <div><h2>Intersecção</h2></div>
         <hr/>
         <div>
-            <p>O valor da NIR quando o valor de reflex&atilde;o da banda red (Red) &eacute; 0 para as linhas de solo espec&iacute;ficas.
+            <p>O valor da NIR quando o valor de reflex&atilde;o da banda vermelho (Red) &eacute; 0 para as linhas de solo espec&iacute;ficas.
             </p>
             <p> <code>(a = NIR - sRed)</code>, quando Red &eacute; 0.
             </p> 
@@ -134,7 +168,7 @@ Transformed-SAVI &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que procur
         <div><h2>Quantidade de cobertura de vegetação verde</h2></div>
         <hr/>
         <div>
-            <p>Especifica a quantidade de cobertura de vegeta&ccedil;&atilde;o verde, que &eacute; exigida pelo m&eacute;todo SAVI.
+            <p>Especifica a quantidade de cobertura de vegeta&ccedil;&atilde;o verde exigida pelo m&eacute;todo do &Iacute;ndice de Vegeta&ccedil;&atilde;o Ajustado ao Solo.
             </p>
             <p>Os valores v&aacute;lidos s&atilde;o como se seguem:
                 <ul>
@@ -172,8 +206,7 @@ Transformed-SAVI &eacute; um &iacute;ndice de vegeta&ccedil;&atilde;o que procur
             
             <p>O nome da camada que ser&aacute; criada em  <b>O Meu Conte&uacute;do</b> e adicionada ao mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e do nome da camada de entrada. Se a camada j&aacute; existir, ser-lhe-&aacute; pedido que introduza outro nome.
             </p>
-            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa.
-            </p>
+            <p>&Eacute; poss&iacute;vel especificar o nome de uma pasta em  <b>O Meu Conte&uacute;do</b>, onde o resultado ser&aacute; guardado utilizando a op&ccedil;&atilde;o <b>Guardar Resultado em</b> da caixa suspensa. Se tiver os privilégios para criar camadas de imagens em mosaico e dinâmicas, pode especificar o tipo de camada que será gerado na saída utilizando a caixa pendente Guardar resultado como. </p>
         </div>
     </div>
 </div>

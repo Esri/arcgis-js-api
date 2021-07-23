@@ -41,16 +41,12 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="largesize">
-        <h2>Calcula la densitat</h2><p/>
+        <h2>Calcular densidad</h2><p/>
         <h2><img src="../images/GUID-4EE4838C-E210-43CE-99C7-1A648A18C10B-web.png" alt="Eina Calcula la densitat"></h2>
         <hr/>
-    <p>Aquesta eina crea un mapa de densitat a partir de les entitats de punts o l&iacute;nies mitjan&ccedil;ant la difusi&oacute; de quantitats conegudes del mateix fenomen (que es representen com a atributs dels punts o les l&iacute;nies) al mapa. El resultat &eacute;s una capa d'&agrave;rees classificades de menor a major densitat.
+    <p>Aquesta eina crea un mapa de densitat a partir de les entitats de punts o l&iacute;nies mitjan&ccedil;ant la difusi&oacute; de quantitats conegudes del mateix fenomen (que es representen com a atributs dels punts o les l&iacute;nies) al mapa. El resultado es una capa de &aacute;reas clasificadas de menor a mayor densidad.
     </p>
-    <p>En una entrada de punts, cada punt hauria de representar la ubicaci&oacute; d'algun esdeveniment o incident; la capa de resultats representa un recompte d'incidents per &agrave;rea d'unitat. Un valor de densitat alt en una ubicaci&oacute; nova indica la pres&egrave;ncia de m&eacute;s punts a prop d'aquesta ubicaci&oacute;. En molts casos, la capa de resultats es pot interpretar com a una superf&iacute;cie de risc per a esdeveniments futurs. Per exemple, si els punts d'entrada representen ubicacions on hi ha caigut un llamp, la capa de resultats es pot interpretar com una superf&iacute;cie de risc per a la caiguda de llamps en el futur.
-    </p>
-    <p>En el cas de l'entrada de l&iacute;nia, la superf&iacute;cie de densitat de l&iacute;nia representa la quantitat total de la l&iacute;nia que est&agrave; a prop de cada ubicaci&oacute;. Les unitats dels valors de densitat calculats corresponen a la longitud de l'&agrave;rea de l&iacute;nia per unitat. Per exemple, si les l&iacute;nies representen rius, la capa de resultats representar&agrave; la longitud total dels rius que s&oacute;n dins del radi de cerca. Aquest resultat es pot utilitzar per identificar les &agrave;rees que s&oacute;n adequades com a pastures per a animals.
-    </p>
-    <p>Altres casos d'&uacute;s d'aquesta eina inclouen els seg&uuml;ents:
+    <p>Exemples d'aplicacions d'aquesta eina:
         <ul>
             <li>Creaci&oacute; de mapes de densitat de delinq&uuml;&egrave;ncia perqu&egrave; els departaments de policia puguin assignar els recursos adequats a les zones amb un alt nivell de delinq&uuml;&egrave;ncia.
                 
@@ -77,7 +73,7 @@
         <div><h2>Trieu la capa de punts o línies d'entrada a partir de la qual s'ha de calcular la densitat</h2></div>
         <hr/>
         <div>
-            <p>Capa de punts o l&iacute;nies d'entrada que s'utilitzar&agrave; per calcula la capa de densitat.
+            <p>Punt o l&iacute;nia d'entrada que s'utilitzar&agrave; per calcular la densitat.
             </p>
         </div>
     </div>
@@ -112,10 +108,12 @@
         </div>
     </div>
     <div id="outputCellSize">
-        <div><h2>Mida de la cel·la de sortida</h2></div>
+        <div><h2>Tamaño de celda de salida</h2></div>
         <hr/>
         <div>
             <p>Mida i unitat de la cel&middot;la dels r&agrave;sters de sortida.
+            </p>
+            <p>Les unitats poden ser quil&ograve;metres, metres, milles o peus.
             </p>
         </div>
     </div>
@@ -134,10 +132,9 @@
         <hr/>
         <div>
             
-            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nom per defecte es basa en el nom de l'eina i el de la capa d'entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
+            <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
-            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>.
-            </p>
+            <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>. Si teniu permisos per crear capes d'imatges tant de tessel·les com dinàmiques, podeu especificar des de la llista desplegable Anomena i desa el resultat el tipus de capa que cal generar. </p>
         </div>
     </div>
 </div>

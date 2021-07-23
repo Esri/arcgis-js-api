@@ -304,12 +304,14 @@
   }
 
   .esri-rfx-raster-variable-grid .dgrid-scroller {
+    min-height: 50px;
     max-height: 160px;
     overflow-y: auto !important;
+    margin-top: 0px;
   }
 
-  .esri-rfx-raster-variable-grid {
-    padding-bottom: 7px;
+  .esri-rfx-raster-variable-grid .dgrid-cell {
+    vertical-align: inherit;
   }
 
   .esri-rfx-mdimdef-byValues-grid .dgrid-scroller {
@@ -323,6 +325,10 @@
 
   .hidden {
     display: none;
+  }
+
+  .esriRFxArgsEditor .esriRFxRasterInfo>table {
+    width: 100%;
   }
 
   .esri-rfx-factor-function-editor .dgrid-scroller {

@@ -40,19 +40,13 @@
 </head>
 <body onload="init()">
 <div id="topics">
-    <div id="toolDescription" class="regularsize">
+    <div id="toolDescription" class="smallsize">
         <h2>Razvodje</h2><p/>
         <h2><img src="../images/GUID-AF749369-8C2D-46FF-9D74-2CF7CAB7C7B0-web.png" alt="Razvodna naloga"></h2>
         <hr/>
     <p>To orodje določi prispevno območje nad sklopom celic v rastru.
     </p>
-    <p>Razvodje je območje na hribu, ki prispeva pretok, običajno vode, do skupnega izhoda kot koncentrirano odvodnjavanje. Lahko je del večjega razvodja in lahko vsebuje tudi manj&scaron;a razvodja, ki jih imenujemo podbazeni.
-    </p>
-    <p>Vrednost posameznega razvodja bo vzeta iz vrednosti vira v vhodnem rastru ali geoobjektne sloja s točko litja. Ko je točka litja rastrski sklop podatkov, so vrednosti celic uporabljene privzeto. Ko je točka litja sklop podatkov točkovnega geoobjekta, bodo vrednosti prihajale iz določenega polja.
-    </p>
-    <p>Orodje Razvodje podpira samo rastrski sloj smeri pretoka D8.
-    </p>
-    <p>Ko navajate lokacije vhodnih točk litja kot geoobjektne podatke, bo privzeto polje prvo razpoložljivo veljavno polje. Če veljavno polje ne obstaja, bo privzeto polje ObjectID (na primer OID ali FID).
+    <p> Vhodna točka na reki Mississippi River v Louisiani bo ustvarila geoobjekt razvodja, ki se raz&scaron;iri in vključuje tudi območja od New Yorka do Montane in do Kanade.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -62,27 +56,27 @@
         <div>
             <p>Vhodni raster, ki prikazuje smer pretoka iz vsake celice.
             </p>
-            <p>Raster smeri pretoka je mogoče ustvariti z orodjem Smer pretoka ali nalogo FlowDirection v storitvi RasterAnalysisTools, zaženite privzeti tip smeri pretoka  <b>D8</b>.
+            <p>Rastrski sloj smeri toka lahko ustvarite z uporabo funkcije Smer toka, s privzeto vrsto smeri toka  <b>D8</b>.
             </p>
         </div>
     </div>
     <div id="inPourPointRasterOrFeatures">
-        <div><h2>Navedite lokacije vhodnih točk litja</h2></div>
+        <div><h2>Navedite lokacije vhodnih izlivnih točk</h2></div>
         <hr/>
         <div>
-            <p>Lokacije vhodnih točk litja.
+            <p>Lokacije vhodnih izlivnih točk.
             </p>
-            <p>Za raster to predstavlja celice, nad katerimi bo določeno prispevno območje. Vse celice, ki nimajo vrednosti NoData, bodo uporabljene kot izvirne celice. Za vhodne točke to predstavlja lokacije, nad katerimi bo določeno prispevno območje.
+            <p>To je lahko raster ali točkovni geoobjekt. Za raster to predstavlja celice, nad katerimi bo določeno prispevno območje. Vse celice, ki imajo vrednosti brez podatkov, bodo uporabljene kot izvirne celice. Za vhodne točke to predstavlja lokacije, nad katerimi bo določeno prispevno območje.
             </p>
         </div>
     </div>
     <div id="pourPointField">
-        <div><h2>Izberite polje s točko litja</h2></div>
+        <div><h2>Izberite polje z izlivnimi točkami</h2></div>
         <hr/>
         <div>
-            <p>Polje, uporabljeno za dodelitev vrednosti lokacijam točk litja.
+            <p>Polje, uporabljeno za dodelitev vrednosti lokacijam izlivnih točk.
             </p>
-            <p>Če je vhodni sloj točk litja raster, je uporabljena vrednost. Če je geoobjekt, je uporabljeno &scaron;tevilsko polje. Če polje vsebuje vrednosti s plavajočo vejico, bodo skraj&scaron;ane v cela &scaron;tevila.
+            <p>Če je vhodni sloj izlivnih točk raster, je uporabljena vrednost  <i>Value</i>. Če je geoobjekt, je uporabljeno &scaron;tevilsko polje. Če polje vsebuje vrednosti s plavajočo vejico, bodo skraj&scaron;ane v cela &scaron;tevila.
             </p>
         </div>
     </div>
@@ -93,8 +87,7 @@
             
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
-            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>.
-            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>. Če imate pravice za ustvarjanje slojev s ploščicami in dinamičnimi slikami, lahko določite tudi katero vrsto sloja želite ustvariti v izhodu z uporabo spustnega menija Shrani rezultat kot. </p>
         </div>
     </div>
 </div>

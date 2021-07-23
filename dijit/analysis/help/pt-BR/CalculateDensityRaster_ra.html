@@ -46,11 +46,7 @@
         <hr/>
     <p>Esta ferramenta cria um mapa de densidade a partir das fei&ccedil;&otilde;es de ponto ou linha, espalhando quantidades conhecidas de algum fen&ocirc;meno (representado como atributos de pontos ou linhas) ao longo do mapa. O resultado &eacute; uma camada de &aacute;reas classificada a partir da menos densa at&eacute; a mais densa.
     </p>
-    <p>Na entrada de ponto, cada ponto deve representar o local de algum evento ou incidente, e a camada resultante representa uma contagem do incidente por &aacute;rea de unidade. Um valor de densidade mais alto em um novo local significa que h&aacute; mais pontos pr&oacute;ximos deste local. Em muitos casos, a camada resultante pode ser interpretada como uma superf&iacute;cie de risco para eventos futuros. Por exemplo, se os pontos de entrada representam locais de raios, a camada resultante pode ser interpretada como uma superf&iacute;cie de risco para futuros raios.
-    </p>
-    <p>Na entrada de linha, a superf&iacute;cie de densidade de linha representa a quantidade total de linhas que est&atilde;o pr&oacute;ximas de cada local. As unidades dos valores de densidade calculados s&atilde;o o comprimento da linha por &aacute;rea de unidade. Por exemplo, se as linhas representam rios, a camada resultante representar&aacute; o comprimento total de rios que est&atilde;o dentro do raio de pesquisa. Este resultado pode ser utilizado para identificar &aacute;reas que s&atilde;o hospitaleiras para animais de pasto.
-    </p>
-    <p>Outros casos de uso desta ferramenta incluem o seguinte:
+    <p>Alguns exemplos de aplica&ccedil;&otilde;es desta ferramenta incluem o seguinte:
         <ul>
             <li>Criar mapas da densidade de crime para ajudar departamentos de pol&iacute;cia a alocar corretamente recursos para &aacute;reas de alto crime.
                 
@@ -77,7 +73,7 @@
         <div><h2>Escolher camada de ponto ou linha de entrada da qual calcular a densidade</h2></div>
         <hr/>
         <div>
-            <p>A camada de linha ou ponto de entrada que ser&aacute; utilizada para calcular a camada de densidade.
+            <p>O ponto ou a linha de entrada que ser&aacute; usado para calcular densidade.
             </p>
         </div>
     </div>
@@ -87,7 +83,7 @@
         <div>
             <p>Forne&ccedil;a um campo especificando o n&uacute;mero de incidentes em cada local. Por exemplo, se voc&ecirc; tiver pontos que representam cidades, voc&ecirc; poder&aacute; utilizar um campo representando a popula&ccedil;&atilde;o da cidade como o campo de contagem, e a camada de densidade da popula&ccedil;&atilde;o resultante calcular&aacute; densidades de popula&ccedil;&atilde;o maiores pr&oacute;ximas &agrave;s cidades com popula&ccedil;&otilde;es maiores.
             </p>
-            <p>Se a op&ccedil;&atilde;o padr&atilde;o de  <b>Nenhum</b> for utilizada, cada local ser&aacute; assumido para representar uma &uacute;nica contagem.
+            <p>Se a escolha padr&atilde;o de  <b>Nenhum</b> for utilizada, cada local ser&aacute; assumido para representar uma &uacute;nica contagem.
             </p>
         </div>
     </div>
@@ -117,6 +113,8 @@
         <div>
             <p>O tamanho da c&eacute;lula e a unidade para os rasters de sa&iacute;da.
             </p>
+            <p>As unidades podem ser quil&ocirc;metros, metros, milhas ou p&eacute;s.
+            </p>
         </div>
     </div>
     <div id="inBarriers">
@@ -136,8 +134,7 @@
             
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
-            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> .
-            </p>
+            <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> . Se você tiver os privilégios para criar camadas de imagens de mosaico e dinâmicas, será possível especificar qual tipo de camada gerar na saída usando a caixa suspensa Salvar resultado como. </p>
         </div>
     </div>
 </div>

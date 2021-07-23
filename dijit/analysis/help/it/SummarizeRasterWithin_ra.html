@@ -46,9 +46,7 @@
         <hr/>
     <p>Questo strumento riassume i valori di un raster all'interno delle zone di un altro set di dati.
     </p>
-    <p>Di seguito sono riportate alcune applicazioni di esempio:
-    </p>
-    <p>
+    <p>Alcune applicazione d'esempio di questo strumento include il seguente:
         <ul>
             <li>Dati un layer di confini spartiacque e un layer di confini di utilizzo del suolo per tipo di utilizzo, &egrave; possibile calcolare la superficie totale in acri del tipo di utilizzo del suolo per ciascuno spartiacque.
                 
@@ -69,9 +67,9 @@
         <div><h2>Scegli layer di area per riepilogare un layer raster entro confini definiti</h2></div>
         <hr/>
         <div>
-            <p>Il layer che definisce i confini delle aree, o zone, che verranno riepilogati.
+            <p>L'input che definisce i confini delle zone o aree che verranno riepilogate.
             </p>
-            <p>Il layer pu&ograve; essere un raster o dati feature. Per i raster, le zone sono definite da tutte le posizioni nell'input aventi lo stesso valore di cella. Le aree non devono essere contigue.
+            <p>L'input pu&ograve; essere un raster intero o dati feature. Per i raster, le zone sono definite da tutte le posizioni nell'input aventi lo stesso valore di cella. Per feature, le zone possono essere sovrapposte. Le aree non devono essere contigue.
             </p>
         </div>
     </div>
@@ -79,9 +77,9 @@
         <div><h2>Scegli campo per definire i confini</h2></div>
         <hr/>
         <div>
-            <p>Questo &egrave; l'attributo del layer che verr&agrave; utilizzato per definire i confini delle aree.
+            <p>Il campo che contiene i valori che definiscono ogni zona.
             </p>
-            <p>Si supponga, ad esempio, che il primo layer di input definisca i confini dell'unit&agrave; di gestione, con attributi che definiscono la regione, il distretto e l'ID particella di ciascuna unit&agrave;. Si dispone anche di un layer raster che definisce un indice di biodiversit&agrave; per ciascuna posizione. Con il campo selezionato, &egrave; possibile decidere di calcolare la biodiversit&agrave; media a livello locale, di distretto o di regione.
+            <p>Pu&ograve; essere un campo intero o stringa del dataset di zona.
             </p>
         </div>
     </div>
@@ -89,7 +87,9 @@
         <div><h2>Scegli layer raster per il riepilogo</h2></div>
         <hr/>
         <div>
-            <p>Le celle raster in questo layer saranno riepilogate in base alle aree (zone) comprese.
+            <p>Il raster che contiene i valori su cui calcolare una statistica.
+            </p>
+            <p>Pu&ograve; essere sia intero o un punto e virgola. Tuttavia, quando &egrave; un tipo di punto e virgola, le opzioni per calcolare la maggioranza, la minoranza e la variet&agrave; sar&agrave; disponibile.
             </p>
         </div>
     </div>
@@ -97,11 +97,9 @@
         <div><h2>Scegli statistiche da calcolare</h2></div>
         <hr/>
         <div>
-            <p>Dopo aver scelto un layer da riepilogare, &egrave; possibile, facoltativamente, calcolare statistiche di qualsiasi attributo numerico dei punti, delle linee o delle aree che si trovano all'interno del layer di area di input.
+            <p>Specifica il tipo di statistica da calcolare.
             </p>
-            <p>I tipi di statistiche disponibili quando il campo selezionato &egrave; un intero sono Media, Maggioranza, Massimo, Mediana, Minimo, Minoranza, Percentile, Intervallo, Deviazione standard, Somma e Variet&agrave;.
-            </p>
-            <p>Se il campo &egrave; a virgola mobile, le opzioni sono Media, Massimo, Minimo, Intervallo, Deviazione standard e Somma.
+            <p> L'input pu&ograve; essere uno dei seguenti: <b>Media</b>, <b>Maggioranza</b>, <b>Massimo</b>, <b>Mediano</b>, <b>Minimo</b>, <b>Minoranza</b>, <b>Percentile</b>, <b>Intervallo</b>, <b>Deviazione Standard</b>, <b>Somma</b> o <b>Variet&agrave;</b>. L'impostazione predefinita &egrave; <b>Media</b>.
             </p>
         </div>
     </div>
@@ -111,9 +109,9 @@
         <div>
             <p>Il percentile da calcolare. Il valore predefinito &egrave; 90 , che indica il 90esimo percentile.
             </p>
-            <p>I valori spaziano da 0 a 100. Il percentile numero 0 &egrave; essenzialmente l'equivalente della statistica minima e il percentile numero 100 &egrave; l'equivalente della statistica massima. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
+            <p>Il valore pu&ograve; spaziare da 0 a 100. Il risultati di specificazione del percentile 0 &egrave; essenzialmente equivalente a quello della statistica minima e il percentile 100 &egrave; equivalente al massimo. Un valore pari a 50 produrr&agrave; essenzialmente lo stesso risultato di una statistica mediana.
             </p>
-            <p>Questa opzione &egrave; supportata soltanto se il parametro  <b>Scegli statistiche da calcolare</b> &egrave; impostato su <b>Percentile</b>.
+            <p> Questo parametro &egrave; supportato solo se il parametro <b>Scegliere statistica da calcolare</b> &egrave; impostato su <b>Percentile</b>.
             </p>
         </div>
     </div>
@@ -121,16 +119,32 @@
         <div><h2>Ignora valori mancanti nei calcoli</h2></div>
         <hr/>
         <div>
-            <p>Se si sceglie di ignorare i valori mancanti, solo le celle che hanno un valore nel layer da riepilogare verranno utilizzate per determinare il valore di output per tale area. In caso contrario, se mancano dei valori in un punto qualunque di un'area, le informazioni non saranno sufficienti per eseguire calcoli statistici per tutte le celle in quella zona e tale area ricever&agrave; un valore null (NoData) nell'output.
+            <p> Specifica se i valori mancanti vengono ignorati nell'analisi.
             </p>
+            <ul>
+                <li>Selezionato: l'analisi includer&agrave; le celle che hanno un valore nel raster valore di input all'interno di ogni zona particolare per determinare il valore di output per quella zona. Le celle NoData nel raster valore saranno ignorate nel calcolo statistico. Si tratta dell'impostazione predefinita.
+                </li>
+                <li>Non selezionato: l'analisi risulter&agrave; in NoData se ci sono dei valori NoData per le celle del raster di valore all'interno di una zona particolare.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="processAsMultidimensional">
         <div><h2>Elabora come multidimensionale</h2></div>
         <hr/>
         <div>
-            <p>Specifica il modo in cui vengono eleborati i raster di input se sono multidimensionali. Se scegli di elaborarli come multidimensionali, si calcoleranno le statistiche per tutte le dimensioni del dataset multidimensionale di input. Altrimenti, si calcoleranno le statistiche della sezione corrente del dataset multidimensionale di input, come da impostazioni predefinite.
+            <p>Specifica come i servizi di immagine di input multidimensionale saranno processati se sono multidimensionali.
             </p>
+            <ul>
+                <li>Selezionato: le statistiche verranno calcolate dalla porzione corrente del dataset multidimensionale di input. Si tratta dell'impostazione predefinita.
+                    
+
+                </li>
+                <li>Non selezionato: le statistiche verranno calcolate per tutte le dimensioni del dataset multidimensionale dell'input.
+                </li>
+            </ul>
+            
         </div>
     </div>
     <div id="resultLayer">
@@ -140,8 +154,7 @@
             
             <p>Il nome del layer che verr&agrave; creato in  <b>I miei contenuti</b> e aggiunto alla mappa. Il nome predefinito &egrave; basato sul nome dello strumento e sul nome del layer di input. Se il layer esiste gi&agrave;, verr&agrave; chiesto di fornire un altro nome.
             </p>
-            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>.
-            </p>
+            <p>&Egrave; possibile specificare il nome di una cartella in  <b>I miei contenuti</b> in cui salvare il risultato usando la casella a discesa <b>Salva risultato in</b>. Se si dispone dei privilegi per creare entrambi i layer di immagini dinamiche e tile, è possibile specificare quale tipo di layer generare nell'output usando la casella a discesa Salva risultato come. </p>
         </div>
     </div>
 </div>

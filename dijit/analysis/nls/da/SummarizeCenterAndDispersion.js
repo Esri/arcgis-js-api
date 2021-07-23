@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vælg et lag, der skal beskrives",summaryTypes:"Oversigtstyper",centralFeature:"Centralt objekt",meanCenter:"Middel center",medianCenter:"Mediancenter",ellipse:"Ellipse",weightBy:"Vægt efter (valgfrit)",groupBy:"Gruppér efter (valgfrit)",resultLayerName:"Navn på resultatlag",outputLayerName:"Beskriv distribution af ${layerName}",none:"Ingen",itemDescription:"Vektorlag genereret ud fra kørsel af Summér center og spredning for ${layerName}. ",itemTags:"Analyseresultat, Summér center og spredning, ${layerName}",itemSnippet:"Vektorlag genereret ud fra kørsel af Summér center og spredning"});

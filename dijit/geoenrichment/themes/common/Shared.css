@@ -114,6 +114,10 @@
     text-align: center;
 }
 
+.esriGEFlexCenter {
+    justify-content: center;
+}
+
 .esriGEStart {
     text-align: left;
 }

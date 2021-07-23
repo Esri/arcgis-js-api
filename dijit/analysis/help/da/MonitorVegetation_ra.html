@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>V&aelig;lg multiband-rasterlaget. S&oslash;rg for, at de relevante b&aring;nd er tilg&aelig;ngelige for input-rasteren.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Vælg metode til at overvåge vegetation</h2></div>
         <hr/>
         <div>
-            <p>V&aelig;lg den metode, der skal bruges til oprettelse af vegetationsindekslaget. De forskellige vegetationsindekser kan hj&aelig;lpe med at fremh&aelig;ve visse objekter eller med at reducere forskellige typer st&oslash;j.
+            <p>V&aelig;lg den metode, der skal bruges til at beregne vegetationsindekslaget. De forskellige vegetationsindekser kan hj&aelig;lpe med at fremh&aelig;ve visse objekter eller med at reducere forskellige typer st&oslash;j.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -95,16 +95,50 @@ Sultans formelproces tager et seksb&aring;nds 8-bit billede og anvender en speci
 Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&aring;virkning fra jordens farve ved at antage, at jordbundslinjen har en arbitr&aelig;r h&aelig;ldning og et arbitr&aelig;rt sk&aelig;ringspunkt.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI er et vegetationsindeks, der beregner tilstedev&aelig;relse af vegetation udelukkende ved hj&aelig;lp af oplysninger fra det synlige spektrum. Denne metode kr&aelig;ver b&aring;nd i de r&oslash;de, gr&oslash;nne og bl&aring; dele af spektret.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Angiv indekser for NIR-band og RED-band</h2></div>
+        <div><h2>Angiv indekser for NIR-båndet og det røde bånd</h2></div>
         <hr/>
         <div>
-            <p>Angiv b&aring;ndindekser for de NIR-b&aring;nd og r&oslash;de b&aring;nd.
+            <p>Angiv b&aring;ndindekser for NIR-b&aring;ndet og de r&oslash;de b&aring;nd.
             </p>
-            <p>Hver satellitsensor og flykamera optager informationer, der nedbrydes i b&aring;ndindekser. Hvert b&aring;ndindeks indeholder information om en specifik del af det elektromagnetiske spektrum. Denne vegetationsoverv&aring;gningsmetode kr&aelig;ver, at du specificerer det b&aring;ndindeks, som har optaget NIR-b&oslash;lgel&aelig;ngder og r&oslash;de b&oslash;lgel&aelig;ngder.
+            <p>Multib&aring;nd-satellit- eller luftb&aring;rne sensorer indsamler oplysninger, der nedbrydes i b&oslash;lgel&aelig;ngdeb&aring;nd, som identificeres ved hj&aelig;lp af b&aring;ndindekser. Denne vegetationsoverv&aring;gningsmetode kr&aelig;ver, at du angiver b&aring;ndindekser for det n&aelig;r-infrar&aring;de b&aring;nd (Near Infrared (NIR)) og de r&oslash;de b&oslash;lgel&aelig;ngdeb&aring;nd.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Angiv indekser for de røde, grønne og blå bånd</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv indekser for de r&oslash;de, gr&oslash;nne og bl&aring; b&aring;nd.
+            </p>
+            <p>Multib&aring;nd-satellit- eller luftb&aring;rne sensorer indsamler oplysninger, der nedbrydes i b&oslash;lgel&aelig;ngdeb&aring;nd, som identificeres med b&aring;ndindekser. Visible Atmospherically Resistant Index (VARI) kr&aelig;ver, at du angiver b&aring;ndindekser for de r&oslash;de, gr&oslash;nne og bl&aring; b&oslash;lgel&aelig;ngdeb&aring;nd.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Angiv indekser for de blå og røde bånd, NIR, SWIR-1 og termiske bånd</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv b&aring;ndindekser for de bl&aring; og r&oslash;de b&aring;nd, det n&aelig;r-infrar&oslash;de b&aring;nd (NIR), det kortb&oslash;lgeinfrar&oslash;de b&aring;nd (SWIR) og de termiske b&aring;nd
+            </p>
+            <p>Multib&aring;nd-satellit- eller luftb&aring;rne sensorer indsamler oplysninger, der nedbrydes i b&oslash;lgel&aelig;ngdeb&aring;nd, som identificeres med b&aring;ndindekser. Sultan's Formula-indekset kr&aelig;ver, at du angiver b&aring;ndindekser for de bl&aring; og r&oslash;de b&aring;nd, det n&aelig;r-infrar&oslash;de b&aring;nd (NIR), det kortb&oslash;lgeinfrar&oslash;de b&aring;nd (SWIR) og de termiske b&oslash;lgel&aelig;ngdeb&aring;nd.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Angiv indekser for de blå, grønne og røde bånd og for NIR-, SWIR-1- og SWIR-2-båndene</h2></div>
+        <hr/>
+        <div>
+            <p>Angiv b&aring;ndindekser for de bl&aring;, gr&oslash;nne og r&oslash;de b&aring;nd og for NIR-, SWIR-1- og SWIR-2-b&aring;ndene.
+            </p>
+            <p>Multib&aring;nd-satellit- eller luftb&aring;rne sensorer indsamler oplysninger, der nedbrydes i b&oslash;lgel&aelig;ngdeb&aring;nd, som identificeres med b&aring;ndindekser. Det gr&oslash;nne vegetationsindeks (Green Vegetation Index - GVI) kr&aelig;ver, at du angiver b&aring;ndindekser for de bl&aring;, gr&oslash;nne og r&oslash;de b&aring;nd, det n&aelig;r-infrar&oslash;de b&aring;nd (NIR), det kortb&oslash;lgeinfrar&oslash;de b&aring;nd 1 (SWIR-1) og det kortb&oslash;lgeinfrar&oslash;de b&aring;nd 2 (SWIR-2).
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
         <div><h2>Mængde af grøn vegetation</h2></div>
         <hr/>
         <div>
-            <p>Angiver m&aelig;ngden af gr&oslash;nt vegetationsd&aelig;kke, som kr&aelig;ves af SAVI-metoden.
+            <p>Angiver den m&aelig;ngde vegetationsd&aelig;kke, der kr&aelig;ves af Soil-Adjusted Vegetation Index-metoden (SAVI).
             </p>
             <p>Gyldige v&aelig;rdier er:
                 <ul>
@@ -172,8 +206,7 @@ Transformed-SAVI er et vegetationsindeks, der fors&oslash;ger at minimere p&arin
             
             <p>Navnet p&aring; det lag, som oprettes under  <b>Mit indhold</b> og f&oslash;jes til kortet. Standardnavnet er baseret p&aring; navnet p&aring; v&aelig;rkt&oslash;jet og navnet p&aring; inputlaget. Hvis laget allerede findes, vil du blive bedt om at angive et andet navn.
             </p>
-            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>.
-            </p>
+            <p>Du kan angive navnet p&aring; en mappe i  <b>Mit indhold</b>, hvor resultatet bliver gemt ved at benytte rullelisten <b>Gem resultat i</b>. Hvis du har rettigheder til at oprette både tile-billedlag og dynamiske billedlag, kan du angive, hvilken type lag der skal genereres i outputtet ved hjælp af Gem resultat som-rullelisten. </p>
         </div>
     </div>
 </div>

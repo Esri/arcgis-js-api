@@ -53,14 +53,14 @@
         <hr/>
         <div>
             <p>Choose the multiband raster layer. Make sure the input raster has the appropriate bands available.
-            </p> 
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Choose method to monitor vegetation</h2></div>
         <hr/>
         <div>
-            <p>Choose the method to create the vegetation index layer. The different vegetation indexes can help highlight certain features or reduce various noise.
+            <p>Choose the method to use to calculate the vegetation index layer. The different vegetation indexes can help highlight certain features or reduce various noise.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -76,7 +76,7 @@ MSAVI2 is a vegetation index that tries to minimize bare soil influences of the 
 
                 </li>
                 <li>Normalized Difference Vegetation Index  &mdash; 
-NDVI is a standardized index allowing you to generate an image displaying greenness, or relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset: the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near-infrared (NIR) band.
+NDVI is a standardized index allowing you to generate an image displaying greenness, or relative biomass. This index takes advantage of the contrast of the characteristics of two bands from a multispectral raster dataset: the chlorophyll pigment absorptions in the red band and the high reflectivity of plant materials in the near infrared (NIR) band.
 
                 </li>
                 <li>Perpendicular Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ The Sultan's Formula process takes a six-band 8-bit image and applies a specific
 Transformed-SAVI is a vegetation index that attempts to minimize soil brightness influences by assuming the soil line has an arbitrary slope and intercept.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI is a vegetation index that estimated vegetation presence using only information from the visible spectrum. This method requires bands in the red, green, and blue parts of the spectrum.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Specify indexes of NIR band and Red band</h2></div>
+        <div><h2>Specify indexes for the NIR band and Red band</h2></div>
         <hr/>
         <div>
-            <p>Specify the band indexes for the NIR and red bands.
+            <p>Specify the band indexes for the NIR and Red bands.
             </p>
-            <p>Each satellite sensor and aerial camera captures information that is broken up into band indexes. Each band index contains the information for a specific part of the electromagnetic spectrum. This vegetation monitoring method requires you to specify the band index that captured the NIR and red wavelengths.
+            <p>Multiband satellite or aerial sensors capture information that is broken up into wavelength bands,  which are identified with band indexes. This vegetation monitoring method requires you to specify the band indexes for the Near Infrared (NIR) and Red wavelength bands.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Specify indexes for the Red, Green, and Blue bands</h2></div>
+        <hr/>
+        <div>
+            <p>Specify the band indexes for the Red, Green, and Blue bands.
+            </p>
+            <p>Multiband satellite or aerial sensors capture information that is broken up into wavelength bands,  which are identified with band indexes. The Visible Atmospherically Resistant Index requires you to specify the band indexes for the Red, Green, and Blue wavelength bands.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Specify indexes for the Blue, Red, NIR, SWIR-1, and Thermal bands</h2></div>
+        <hr/>
+        <div>
+            <p>Specify the band indexes for the Blue, Red, Near Infrared (NIR), Shortwave Infrared (SWIR), and Thermal bands.
+            </p>
+            <p>Multiband satellite or aerial sensors capture information that is broken up into wavelength bands,  which are identified with band indexes. The Sultan's Formula index requires you to specify the band indexes for the Blue, Red, Near Infrared (NIR), Shortwave Infrared (SWIR), and Thermal wavelength bands.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Specify indexes of Blue, Green, Red, NIR, SWIR-1 and SWIR-2 bands</h2></div>
+        <hr/>
+        <div>
+            <p>Specify the band indexes for the Blue, Green, Red, NIR, SWIR-1 and SWIR-2 bands.
+            </p>
+            <p>Multiband satellite or aerial sensors capture information that is broken up into wavelength bands,  which are identified with band indexes. The  Green Vegetation Index requires you to specify the band indexes for the Blue, Green, Red, Near Infrared (NIR), Shortwave Infrared 1 (SWIR-1), and Shortwave Infrared 2 (SWIR-2) wavelength bands.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div><h2>Amount of green vegetation cover</h2></div>
         <hr/>
         <div>
-            <p>Specifies the amount of green vegetation cover, which is required by the SAVI method.
+            <p>Specifies the amount of green vegetation cover, which is required by the Soil-Adjusted Vegetation Index  method.
             </p>
             <p>Valid values are as follows: 
 
@@ -162,7 +196,7 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
         <div>
             <p>Specifies the adjustment factor to help minimize soil effect, which is required by the Transformed Soil-Adjusted Vegetation Index method. The default value is 0.08.
             </p>
-            <p>A low value means that you are ignoring the soil effect. A high value means that the soil will affect your result.
+            <p>A low value means you are ignoring the soil effect. A high value means that the soil will affect your result.
             </p>
         </div>
     </div>
@@ -173,8 +207,7 @@ Transformed-SAVI is a vegetation index that attempts to minimize soil brightness
             
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
-            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box.
-            </p>
+            <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box. If you have the privileges to create both tiled and dynamic imagery layers, you can specify which layer type to generate in the output using the Save result as drop-down box. </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputLayer:"เลือกชั้นข้อมูลที่จะคำนวณสถิติ",trackField:"เลือกฟิลด์หนึ่งหรือมากกว่าเพื่อระบุแทร็ค",trackHistoryWindow:"เลือกจำนวนจุดที่จะใช้ในการคำนวณ",distanceMethodLabel:"เลือกวิธีการระยะทางที่จะใช้ในการคำนวณ",idleToleranceLabel:"กำหนดเกณฑ์การหยุดนิ่ง (ทางเลือก)",chooseMotionStatsLabel:"เลือกอย่างน้อยหนึ่งสถิติโมชัน",distance:"ระยะทาง",speed:"ความเร็ว",acceleration:"อัตราเร่ง",duration:"ระยะเวลา",elevation:"ความสูง",slope:"ความชัน",idle:"หยุดนิ่ง",bearing:"แบริ่ง",selectAll:"เลือกทั้งหมด",deselectAll:"ไม่เลือกทั้งหมด",trackSplitting:"การแยกการติดตาม",optionsLabel:"ตัวเลือก",metersPerSecond:"เมตรต่อวินาที",kilometersPerHour:"กิโลเมตรต่อชั่วโมง",feetPerSecond:"ฟุตต่อวินาที",milesPerHour:"ไมล์ต่อชั่วโมง",nauticalMilesPerHour:"ไมล์ทะเลต่อชั่วโมง",metersPerSecondSquared:"Meters per second squared",feetPerSecondSquared:"ฟุตต่อวินาทีกำลังสอง",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการรันโซลูชันการคำนวณสถิติโมชันสำหรับ ${inputLayername}",itemTags:"ผลการวิเคราะห์, คำนวณสถิติโมชัน ${inputLayername}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการคำนวณสถิติโมชัน ",outputLayerName:"คำนวณสถิติโมชันสำหรับ ${inputLayername}",splitTracksLabel:"แยกแทร็ก (ตัวเลือก)",timeSplit:"ขึ้นอยู่กับเวลาระหว่างอินพุต",timeIntervalSplit:"ตามช่วงเวลาที่กำหนด"});

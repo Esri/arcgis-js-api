@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalizovaná lineárna regresia - ${goal}",fit:"Prispôsobiť",fitAndPredict:"Prispôsobiť a predpovedať",selectGoal:"Čo by ste chceli urobiť?",fitGoal:"Prispôsobiť model pre hodnotenie výkonnosti modelu",fitAndPredictGoal:"Prispôsobiť model a predpovedať hodnoty",inputLayerLabel:"Vybrať vrstvu na generovanie modelu z",chooseDependentField:"Vybrať pole na modelovanie",chooseDataType:"Vybrať typ údajov, ktoré modelujete",continuousData:"Kontinuálny",binaryData:"Binárny",countData:"Počet",chooseExplanatoryField:"Vybrať polia s nezávislými premennými",chooseFeaturesToPredict:"Vybrať vrstvu na predpovedanie hodnôt pre",chooseExplainMatch:"Nastaviť ako sa zhodujú polia s nezávislými premennými",outputLayerName:"Generalizovaná lineárna regresia ${inputLayerName}",itemDescription:"Vrstvy prvkov generované nástrojom pre riešenie Generalizovanej lineárnej regresie ${goal}.",itemTags:"Výsledok analýzy, Generalizovaná lineárna regresia, ${inputLayerName}, ${goal}",itemSnippet:"Vrstvy prvkov generované nástrojom na riešenie Generalizovanej lineárnej regresie (${goal})"});

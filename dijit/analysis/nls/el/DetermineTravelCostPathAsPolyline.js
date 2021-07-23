@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Επιλογή raster ή θεματικού επιπέδου αφετηρίας στοιχείων για καθορισμό διαδρομών από",inputCostRasterLabel:"Επιλογή θεματικού επιπέδου raster κόστους μετακίνησης",inputDestinationLayerLabel:"Επιλογή raster ή θεματικού επιπέδου προορισμού στοιχείων για καθορισμό διαδρομών προς",pathTypeLabel:"Επιλογή τύπου προορισμών προς καθορισμό (προαιρετικά)",bestSingle:"Καλύτερο μεμονωμένο",eachCell:"Σε κάθε κελί",eachZone:"Σε κάθε ζώνη",destinationField:"Επιλογή πεδίου λήψης τιμών για προορισμό",outputPolylineName:"Όνομα εξαγόμενης σύνθετης γραμμής",outputLayerName:"Βέλτιστο κόστος μετακίνησης ως σύνθετη γραμμή στο θεματικό επίπεδο ${layername}",drawDestinationPointLayerName:"Σημεία προορισμού",drawSourcePointLayerName:"Σημεία προέλευσης",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση του εργαλείου «Καθορισμός Διαδρομής Κόστους Μετακίνησης Ως Γραμμής» για το θεματικό επίπεδο ${layername}. ",itemTags:"Αποτέλεσμα ανάλυσης, Καθορισμός διαδρομής κόστους μετακίνησης ως σύνθετης γραμμής, ${layername} ${fieldname}",itemSnippet:"Δημιουργήθηκε feature layer από την επιλογή «Καθορισμός διαδρομής κόστους μετακίνησης ως σύνθετης γραμμής».",missingMessage:"Το θεματικό επίπεδο προορισμού πρέπει να είναι διαφορετικό από το θεματικό επίπεδο προέλευσης.",noValueMessage:"Αυτή η τιμή είναι απαιτούμενη.",placeHolder:"--Επιλογή θεματικού επιπέδου--"});

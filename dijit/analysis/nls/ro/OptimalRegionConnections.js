@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.36/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Alegeți rasterul sau obiectul spațial al regiunii",inputCostRaster:"Alegeți raster cost (opțional)",inputBarrierRasterOrFeatures:"Alegeți raster sau obiect spațial tip barieră (opțional)",distanceMethod:"Metoda distanței (opțional)",connectionsWithinRegions:"Conexiuni în cadrul regiunilor (opțional)",generateConnections:"Generare conexiuni",noConnections:"Nicio conexiune",planar:"Planar",geoDesic:"Geodezic",outputOptimalLinesName:"Numele stratului tematic de obiecte spațiale sub formă de linii de conectivitate optime rezultate",outputNeighborConnectionsName:"Numele stratului tematic de obiecte spațiale de conexiuni apropiate rezultate (opțional)",outputLayerName:"Conexiunile regionale optime ale ${layername}",drawSourcePointLayerName:"Puncte sursă",itemDescription:"Strat tematic de obiecte spațiale generat din rularea conexiunilor regionale optime pe ${layername}. ",itemTags:"Rezultatul analizei, conexiunile regionale optime, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat din conexiunile regionale optime.",noValueMessage:"Această valoare este obligatorie"});

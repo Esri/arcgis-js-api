@@ -52,15 +52,15 @@
         <div><h2>Odaberi ulazne podatke</h2></div>
         <hr/>
         <div>
-            <p>Odaberite sloj vi&scaron;epojasnog rastera. Provjerite ima li ulazni raster dostupne odgovarajuće pojase.
-            </p> 
+            <p>Odaberite sloj vi&scaron;ekanalnog rastera. Provjerite ima li ulazni raster dostupne odgovarajuće kanale.
+            </p>
         </div>
     </div>
     <div id="vegetationIndexType">
         <div><h2>Odaberite metodu praćenja vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Odaberite metodu za izradu sloja indeksa vegetacije. Različiti indeksi vegetacije mogu pomoći istaknuti određene geoobjekte ili smanjiti razne smetnje.
+            <p>Odaberite metodu za izračunavanje sloja indeksa vegetacije. Različiti indeksi vegetacije mogu pomoći istaknuti određene geoobjekte ili smanjiti razne smetnje.
             </p>
             <ul>
                 <li>Global Environmental Monitoring Index &mdash; 
@@ -68,7 +68,7 @@ GEMI je nelinearni indeks vegetacije za globalno praćenje okoli&scaron;a putem 
 
                 </li>
                 <li>Green Vegetation Index - Landsat TM &mdash; 
-GVI je izvorno osmi&scaron;ljen od snimki satelita za snimanje zemljine povr&scaron;ine Landsat MSS, ali je izmijenjen za upotrebu sa snimkama satelita Landsat TM. Također je poznat pod nazivom Landsat TM Tasseled Cap indeks zelene vegetacije. Ovaj indeks praćenja može se također upotrijebiti sa snimkama čiji pojasi dijele iste karakteristike spektra.
+GVI je izvorno osmi&scaron;ljen od snimki satelita za snimanje zemljine povr&scaron;ine Landsat MSS, ali je izmijenjen za upotrebu sa snimkama satelita Landsat TM. Također je poznat pod nazivom Landsat TM Tasseled Cap indeks zelene vegetacije. Ovaj indeks praćenja može se također upotrijebiti sa snimkama čiji kanali dijele iste karakteristike spektra.
 
                 </li>
                 <li>Modified Soil Adjusted Vegetation Index &mdash; 
@@ -95,16 +95,50 @@ Postupku Sultan's Formula potrebna je 8-bitna slika i &scaron;est kanala te prim
 Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline tla pretpostavljajući da linija tla ima proizvoljan nagib i praćenje.
 
                 </li>
+                <li>Visible Atmospherically Resistant Index &mdash; 
+VARI je indeks vegetacije koji je procijenio prisutnost vegetacije koristeći samo podatke iz vidljivog spektra. Ova metoda zahtijeva kanale u crvenom, zelenom i plavom dijelu spektra.
+
+                </li>
             </ul>
         </div>
     </div>
     <div id="bandIndexes">
-        <div><h2>Odredite indekse kanala NIR i kanala Crvena</h2></div>
+        <div><h2>Odredite indekse za NIR kanal i Crveni kanal</h2></div>
         <hr/>
         <div>
-            <p>Navedite vrstu indeksa za blisko crveni kanal (NIR) i crvene kanale.
+            <p>Navedite indekse kanala za NIR i Crveni kanal.
             </p>
-            <p>Svaki satelitski senzor i kamera antene snimaju podatke koji se dijele u indeks kanala. Svaki indeks kanala sadrži informacije za određeni dio elektromagnetskog spektra. Ova metoda praćenja vegetacije zahtijeva da odredite indeks kanala koji hvata NIR i crvene valne duljine.
+            <p>Vi&scaron;ekanalni satelitski ili zračni senzori hvataju informacije koje su razdvojene u kanale valne duljine, koji se identificiraju indeksima kanala. Ova metoda praćenja vegetacije zahtijeva da odredite indekse kanala za kanale bliski infracrveni (NIR) i crvene valne duljine.
+            </p>
+        </div>
+    </div>
+    <div id="rgbBandIndexes">
+        <div><h2>Navedite indekse za crveni, zeleni i plavi kanal</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite indekse kanala za crveni, zeleni i plavi kanal
+            </p>
+            <p>Vi&scaron;ekanalni satelitski ili zračni senzori hvataju informacije koje su razdvojene u kanale valne duljine, koji se identificiraju indeksima kanala. Indeks vidljive atmosferske otpornosti zahtijeva da odredite indekse kanala za crvene, zelene i plave kanale valnih duljina.
+            </p>
+        </div>
+    </div>
+    <div id="sultanBandIndexes">
+        <div><h2>Odredite indekse za plavi, crveni, NIR, SWIR-1 i termalni kanal</h2></div>
+        <hr/>
+        <div>
+            <p>Navedite indekse kanala za plavi, crveni, bliski infracrveni (NIR), kratkovalni infracrveni (SWIR) i termalni kanal.
+            </p>
+            <p>Vi&scaron;ekanalni satelitski ili zračni senzori hvataju informacije koje su razdvojene u kanale valne duljine, koji se identificiraju indeksima kanala. Indeks Sultanove formule zahtijeva da odredite indekse kanala za plavi, crveni, bliski infracrveni (NIR), kratkovalni infracrveni (SWIR) i termalni kanal valne duljine.
+            </p>
+        </div>
+    </div>
+    <div id="gviBandIndexes">
+        <div><h2>Odredite indekse za plavi, zeleni, crveni, NIR, SWIR-1 i SWIR-2 kanal</h2></div>
+        <hr/>
+        <div>
+            <p>Odredite indekse kanala za plavi, zeleni, crveni, NIR, SWIR-1 i SWIR-2 kanal.
+            </p>
+            <p>Vi&scaron;ekanalni satelitski ili zračni senzori hvataju informacije koje su razdvojene u kanale valne duljine, koji se identificiraju indeksima kanala. Indeks zelene vegetacije zahtijeva da odredite indekse kanala za plavi, zeleni, crveni, bliski infracrveni (NIR), kratkovalni infracrveni 1 (SWIR-1) i kratkovalni infracrveni 2 (SWIR-2) kanal valne duljine.
             </p>
         </div>
     </div>
@@ -134,7 +168,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
         <div><h2>Količina zelenog pokrova vegetacije</h2></div>
         <hr/>
         <div>
-            <p>Označava količinu zelenog pokrova vegetacije, &scaron;to je potrebno za metodu SAVI.
+            <p>Određuje količinu zelenog vegetacijskog pokrova, koja je potrebna metodom indeksa vegetacije prilagođene tlom.
             </p>
             <p>Valjane su vrijednosti sljedeće:
                 <ul>
@@ -172,8 +206,7 @@ Transformed-SAVI je indeks vegetacije koji nastoji smanjiti utjecaje svjetline t
             
             <p>Naziv sloja koji će se stvoriti u stavci  <b>Moj sadržaj</b> i dodati karti. Zadani naziv temelji se na nazivu alata i nazivu sloja unosa. Ako sloj već postoji, od vas će se zatražiti da unesete drugi naziv.
             </p>
-            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>.
-            </p>
+            <p>Možete odrediti naziv mape u  <b>Mojem sadržaju</b> gdje će se rezultat spremiti pomoću padajućeg izbornika <b>Spremi rezultat u</b>. Ako imate privilegije za stvaranje slojeva pločica i dinamičkih slika, možete odrediti koju vrstu sloja želite generirati u izlazu pomoću Spremi rezultat kao padajućeg okvira. </p>
         </div>
     </div>
 </div>

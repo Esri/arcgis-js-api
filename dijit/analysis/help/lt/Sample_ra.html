@@ -46,32 +46,16 @@
         <hr/>
     <p>&Scaron;is įrankis sukuria lentelę arba ta&scaron;kų elementų klasę, kurioje rodomos rastro arba rastrų rinkinio gardelių reik&scaron;mės apibrėžtoms vietoms. Vietas apibrėžia rastrinės gardelės, plotiniai elementai, polilinijų elementai arba ta&scaron;kų rinkinys.
     </p>
-    <p>Pikselių reik&scaron;mės bus i&scaron;gaunamos i&scaron; visų įvesties rastrų kiekvienoje vietoje. Bus sukurta lentelė arba ta&scaron;kų elementų klasė su laukais, kuriuose yra kiekvieno įvesties rastro pikselių reik&scaron;mės. Papildomi įvesties rastrų lentelės atributai nebus įtraukti į i&scaron;vesties lentelę.
-    </p>
-    <p>Bet kokie rastrų deriniai, tokie kaip vieno kanalo, kelių kanalų, daugiamačiai ar daugiasluoksniai, gali būti nurodyti kaip įvesties rastrai. I&scaron;vesties lentelės struktūra keičiasi, kai įvesties rastrai yra daugiamačiai. Kai daugiakanalis rastras nurodomas kaip vienas i&scaron; įvesties rastrų, bus naudojami visi tos įvesties kanalai. Norėdami apdoroti kanalų pasirinkimą i&scaron; įvesties daugiakanalio rastro, pirmiausia sukurkite naują rastrų duomenų rinkinį, sudarytą i&scaron; tų konkrečių kanalų. Naudokite rezultatą įvesties rastrų sąra&scaron;e.
-    </p>
-    <p>Įvesties vietą gali sudaryti rastras arba ta&scaron;ko elementas:
+    <p>Įrankio taikymo pavyzdžiai:
         <ul>
-            <li>Rastras &ndash; pikseliai, kuriuose yra leistinos reik&scaron;mės (ne NoData), naudojami pikselių reik&scaron;mėms i&scaron;gauti i&scaron; visų įvesties rastrų, o ta&scaron;ko vieta naudojama pikselio centre.
+            <li> I&scaron;gaukite mobiliojo ry&scaron;io bok&scaron;to vietos atributus i&scaron; kelių rastrų, pvz., žemės naudojimo, dirvožemio tipo, auk&scaron;čio ir atstumo iki kelio.
             </li>
-            <li>Ta&scaron;kas &ndash; bus atrenkamos visų ta&scaron;kų vietų reik&scaron;mės.
+            <li>I&scaron;gaukite dirvožemio temperatūrą skirtingame gylyje pagal pateiktą ta&scaron;kų rinkinį.
             </li>
-            <li>Polilinija arba plotas &ndash; bus atrenkamos įtraukiamos reik&scaron;mės, patenkančios į plotą arba polilinijos centroidą. Jei įvesties rastras yra daugiamatis, reik&scaron;mės bus agreguojamos pagal  <b>Statistikos</b> tipą.
+            <li>Remdamiesi 30 metų kas mėnesį fiksuojamais jūros pavir&scaron;iaus temperatūros duomenimis, apibendrinkite duomenis pagal gyvūnų buvimo vietą ar gyvenamąją vietą tuo metu, kai buvo gyvūnų rū&scaron;is buvo stebima.
             </li>
         </ul>
         
-    </p>
-    <p>Įvesties rastrai atrenkami naudojant jų originalią erdvinę informaciją ir skiriamąją gebą. Jei yra keletas įvesties rastrų su skirtinga erdvine informacija, įvesties vietos projektuojamos pagal kiekvieno atskiro rastro erdvinę informaciją, i&scaron; kurios i&scaron;gaunamos reik&scaron;mės. Įvesties vietoms taikoma analizės aplinka, tačiau įvesties rastrai neleis naudoti analizės aplinkos.
-    </p>
-    <p>Vietoms, kuriose i&scaron;gaunamos reik&scaron;mes i&scaron; NoData gardelių įvesties rastre, i&scaron;vesties lentelėje bus suteikta &lt;null&gt; reik&scaron;mė.
-    </p>
-    <p>Norėdami atlikti analizę su daugiata&scaron;kiais elementais, prie&scaron; naudodami &scaron;iame įrankyje, pirmiausia konvertuokite juos į vieno ta&scaron;ko elementus.
-    </p>
-    <p>X, y koordinačių, esančių i&scaron;vesties atrankos lentelėje, erdvinė informacija yra tokia pati kaip įvesties vietos rastro arba ta&scaron;ko elementų, jei ji nenurodyta  <b>I&scaron;vesties koordinačių sistemos</b> aplinkoje. Jei nežinoma įvestų vietų duomenų erdvinė informacija, x, y koordinačių erdvinė informacija taip pat nėra žinoma.
-    </p>
-    <p>I&scaron;vesties elementų klasės erdvinė informacija yra tokia pati kaip įvesties vietos rastro arba ta&scaron;ko elementų, jei ji nenurodyta  <b>I&scaron;vesties koordinačių sistemos</b> aplinkoje.
-    </p>
-    <p> <b>Lygiagretaus apdorojimo veiksnio</b> aplinka palaikoma tik kai įvestis yra daugiamatis rastras.
     </p>
     <p>Jei pažymėta  <b>Naudoti esamą žemėlapio aprėptį</b>, bus analizuojami tik esamoje žemėlapio aprėptyje matomi kintamieji arba kanalai. Jei nepažymėta, bus analizuojami viso žemėlapio kintamieji arba kanalai, net jei jie nepatenka į esamą žemėlapio aprėptį.
     </p>
@@ -81,7 +65,7 @@
         <div><h2>Pasirinkite vaizdų sluoksnį (-ius), kurį norite įtraukti į imtį</h2></div>
         <hr/>
         <div>
-            <p>Vienas vaizdų sluoksnis arba vaizdų sluoksnių, kurių reik&scaron;mės bus įtraukiamos į imtį pagal įvestus vietos duomenis, sąra&scaron;as.
+            <p>Vienas vaizdas arba vaizdų, kurių reik&scaron;mės bus įtraukiamos į imtį pagal įvestus vietos duomenis, sąra&scaron;as. 
             </p>
             <p>Kad būtų atrinktos visos daugiamačio vaizdų sluoksnio skiltys, jis turi būti vienintelis įvesties rastras.
             </p>
@@ -112,40 +96,42 @@
             <p>Nurodykite laiką, gylį ar kitus duomenų rinkimo duomenis, susijusius su vietos gardelėmis ar elementais.
             </p>
             <p>Kiekvienam matmeniui yra trys parinktys nurodyti duomenų gavimo informaciją, susijusią su vietos gardelėmis ar elementais:
-                <ul>
-                    <li> <b>Vienas laukas arba reik&scaron;mė</b> &ndash; pasirinkus &scaron;ią parinktį, reikia nurodyti &scaron;ią informaciją:
-                        <ul>
-                            <li> <b>Matmens laukas arba reik&scaron;mė</b> &ndash; i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
-                            </li>
-                        </ul>
-                        
-                        
+            </p>
+            <ul>
+                <li> <b>Vienas laukas arba reik&scaron;mė</b> &ndash; pasirinkus &scaron;ią parinktį, reikia nurodyti &scaron;ią informaciją:
+                    <ul>
+                        <li> <b>Matmens laukas arba reik&scaron;mė</b> &ndash; i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                    <li> <b>Vienas laukas arba reik&scaron;mė su santykinėmis reik&scaron;mėmis</b> &ndash; pasirinkus &scaron;ią parinktį, taip pat reikia nurodyti informaciją toliau ir apibrėžti diapazoną, kuriame bus apskaičiuojama kintamųjų statistika:
-                        <ul>
-                            <li> <b>Matmens laukas arba reik&scaron;mė</b> &ndash; i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką.
-                            </li>
-                            <li> <b>Santykinė reik&scaron;mė iki</b> &ndash; apibrėžkite matmens reik&scaron;mių diapazono pradžią nurodydami ne neigiamą skaičių, atimamą i&scaron; <b>Matmens lauko arba reik&scaron;mės</b>. Jei matmuo yra laikas, &scaron;i reik&scaron;mė yra dienų skaičius.
-                            </li>
-                            <li> <b>Santykinė reik&scaron;mė po</b> &ndash; apibrėžkite matmens reik&scaron;mių diapazono pabaigą nurodydami ne neigiamą skaičių, pridedamą prie <b>Matmens lauko arba reik&scaron;mės</b>. Jei matmuo yra laikas, &scaron;i reik&scaron;mė yra dienų skaičius.
-                            </li>
-                        </ul>
-                        
-                    </li>
-                    <li> <b>Pradžios ir pabaigos laukai arba reik&scaron;mės</b> &ndash; pasirinkus &scaron;ią parinktį, taip pat reikia nurodyti informaciją toliau ir apibrėžti diapazoną, kuriame bus apskaičiuojama kintamųjų statistika:
-                        <ul>
-                            <li> <b>Pradžios laukas arba reik&scaron;mės</b> &ndash; norėdami apibrėžti matmens reik&scaron;mių diapazono pradžią, i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
-                            </li>
-                            <li> <b>Pabaigos laukas arba reik&scaron;mės</b> &ndash; norėdami apibrėžti matmens reik&scaron;mių diapazono pabaigą, i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
-                            </li>
-                        </ul>
-                        
-                        
+                </li>
+                <li> <b>Vienas laukas arba reik&scaron;mė su santykinėmis reik&scaron;mėmis</b> &ndash; pasirinkus &scaron;ią parinktį, taip pat reikia nurodyti informaciją toliau ir apibrėžti diapazoną, kuriame bus apskaičiuojama kintamųjų statistika:
+                    <ul>
+                        <li> <b>Matmens laukas arba reik&scaron;mė</b> &ndash; i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką.
+                        </li>
+                        <li> <b>Santykinė reik&scaron;mė iki</b> &ndash; apibrėžkite matmens reik&scaron;mių diapazono pradžią nurodydami ne neigiamą skaičių, atimamą i&scaron; <b>Matmens lauko arba reik&scaron;mės</b>. Jei matmuo yra laikas, &scaron;i reik&scaron;mė yra dienų skaičius.
+                        </li>
+                        <li> <b>Santykinė reik&scaron;mė po</b> &ndash; apibrėžkite matmens reik&scaron;mių diapazono pabaigą nurodydami ne neigiamą skaičių, pridedamą prie <b>Matmens lauko arba reik&scaron;mės</b>. Jei matmuo yra laikas, &scaron;i reik&scaron;mė yra dienų skaičius.
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li> <b>Pradžios ir pabaigos laukai arba reik&scaron;mės</b> &ndash; pasirinkus &scaron;ią parinktį, taip pat reikia nurodyti informaciją toliau ir apibrėžti diapazoną, kuriame bus apskaičiuojama kintamųjų statistika:
+                    <ul>
+                        <li> <b>Pradžios laukas arba reik&scaron;mės</b> &ndash; norėdami apibrėžti matmens reik&scaron;mių diapazono pradžią, i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
+                        </li>
+                        <li> <b>Pabaigos laukas arba reik&scaron;mės</b> &ndash; norėdami apibrėžti matmens reik&scaron;mių diapazono pabaigą, i&scaron; vietos duomenų pasirinkite matmens reik&scaron;mių lauką arba įveskite konkrečią matmens reik&scaron;mę.
+                        </li>
+                    </ul>
+                    
+                    
 
-                    </li>
-                </ul>
-                
+                </li>
+            </ul>
+            
+            <p>&Scaron;is parametras galimas tik tada, kai parametras  <b>Pasirinkti vaizdų sluoksnį (-ius), kurie bus atrinkti</b> yra daugiamatis rastras.
             </p>
         </div>
     </div>
@@ -156,6 +142,8 @@
             <p>Nurodytas atstumas aplink vietos duomenų elementus. Buferio atstumas yra nurodytas vietos elemento erdvinės informacijos linijinių dydžių vienetais. Jei elementas naudoja geografinę informaciją, vienetai bus laipsniai.
             </p>
             <p>Statistika bus apskaičiuota &scaron;ioje buferio srityje.
+            </p>
+            <p>&Scaron;is parametras galimas tik tada, kai parametras  <b>Pasirinkti vaizdų sluoksnį (-ius), kurie bus atrinkti</b> yra daugiamatis rastras.
             </p>
         </div>
     </div>
@@ -186,15 +174,17 @@
                 </li>
             </ul>
             
+            <p>&Scaron;is parametras galimas tik tada, kai parametras  <b>Pasirinkti vaizdų sluoksnį (-ius), kurie bus atrinkti</b> yra daugiamatis rastras, parametrai <b>Pasirinkti vietos sluoksnį</b> yra polilinijos arba poligonai arba nurodoma parinktis <b>Nurodykite buferio atstumo lauką arba reik&scaron;mę (nebūtina)</b>.
+            </p>
         </div>
     </div>
     <div id="percentileValue">
         <div><h2>Procentilinė reikšmė</h2></div>
         <hr/>
         <div>
-            <p>Apskaičiuotinas procentilis, kai parametras  <b>Statistikos tipas</b> yra nustatytas į <b>Procentilis</b>.
-            </p>
             <p>&Scaron;ios reik&scaron;mės intervalas yra nuo 0 iki 100. Numatytoji reik&scaron;mė yra 90.
+            </p>
+            <p>&Scaron;is parametras pasiekiamas tik tada, kai parametras  <b>Pasirinkti statistikos tipą</b> nustatytas į <b>Procentinė dalis</b>.
             </p>
         </div>
     </div>
@@ -205,11 +195,11 @@
             <p>Perdėstymo algoritmas, naudojamas rastro atrankai.
             </p>
             <ul>
-                <li> <b>Artimiausias</b>&mdash;Pasirinkus artimiausio kaimyno nustatymą, perskaičiuojant ir priskiriant reik&scaron;mę i&scaron;vesties gardelei, naudojama artimiausios gardelės reik&scaron;mė. Tai yra numatytasis nustatymas.
+                <li> <b>Artimiausias</b> &ndash; pasirinkus artimiausio &scaron;alia esančio nustatymą, perskaičiuojant ir priskiriant reik&scaron;mę i&scaron;vesties gardelei, naudojama artimiausios gardelės reik&scaron;mė. Tai yra numatytasis nustatymas.
                 </li>
-                <li> <b>Dvitiesis</b>&mdash;Pasirinkus dvitiesį interpoliavimą, apskaičiuojama nauja gardelės reik&scaron;mė pagal artimiausių keturių įvesties gardelių centrų pasvertą atstumo vidurkį.
+                <li> <b>Dvitiesis</b> &ndash; pasirinkus dvitiesį interpoliavimą, apskaičiuojama nauja gardelės reik&scaron;mė pagal artimiausių keturių įvesties gardelių centrų pasvertą atstumo vidurkį.
                 </li>
-                <li> <b>Kubinė</b>&mdash;Pasirinkus kubinę sąsūką, apskaičiuojama nauja gardelės reik&scaron;mė pagal glodintos kreivės tinkamumą per 16 artimiausių įvesties gardelių centrus.
+                <li> <b>Kubinė</b> &ndash; pasirinkus kubinę sąsūką, apskaičiuojama nauja gardelės reik&scaron;mė pagal glodintos kreivės tinkamumą per 16 artimiausių įvesties gardelių centrus.
                 </li>
             </ul>
             
@@ -219,15 +209,17 @@
         <div><h2>Nurodykite išvesties maketą</h2></div>
         <hr/>
         <div>
-            <p>Nurodo, ar įtrauktos reik&scaron;mės rodomos i&scaron;vesties lentelės eilutėse ar stulpeliuose. &Scaron;i parinktis galima tik tada, kai įvesties daugiamatis rastras turi vieną kintamąjį ir vieną matmenį, o kiekviena skiltis yra vieno kanalo rastras.
+            <p>Nurodo, ar įtrauktos reik&scaron;mės rodomos i&scaron;vesties lentelės eilutėse ar stulpeliuose.
             </p>
             <ul>
                 <li> <b>Atrinktos reik&scaron;mės rodomos eilutėje</b> &ndash; atrinktos reik&scaron;mės rodomos atskirose i&scaron;vesties lentelės eilutėse. Tai yra numatytasis nustatymas.
                 </li>
-                <li> <b>Atrinktos reik&scaron;mės rodomos stulpelyje</b> &ndash; atrinktos reik&scaron;mės rodomos atskiruose i&scaron;vesties lentelės stulpeliuose. &Scaron;i parinktis tinkama tik tada, kai įvesties daugiamatis rastras turi vieną kintamąjį ir vieną matmenį, o kiekviena skiltis yra vieno kanalo rastras.
+                <li> <b>Atrinktos reik&scaron;mės rodomos stulpelyje</b> &ndash; atrinktos reik&scaron;mės rodomos atskiruose i&scaron;vesties lentelės stulpeliuose.
                 </li>
             </ul>
             
+            <p>&Scaron;is parametras yra prieinamas tik tada, kai parametras  <b>Pasirinkti vaizdų sluoksnį (-ius), kurie bus atrinkti</b> yra daugiamatis rastras ir jame yra vienas kintamasis ir vienas matmuo, o kiekviena skiltis yra vieno kanalo rastras.
+            </p>
         </div>
     </div>
     <div id="outputType">
@@ -239,7 +231,7 @@
             <ul>
                 <li> <b>Lentelė</b> &ndash; generuoti lentelę su atrinktomis reik&scaron;mėmis. Tai yra numatytasis nustatymas.
                 </li>
-                <li> <b>Elementai</b> &ndash; generuoti ta&scaron;ko elementų klasę su atrinktomis reik&scaron;mėmis jų lentelėje. Jei įvesties vietos elementai yra polilinijos arba plotai, kiekvienas i&scaron;vesties ta&scaron;kas yra kiekvienos įvesties vietos elementų geometrijos centroidas.
+                <li> <b>Elementai</b> &ndash; generuoti ta&scaron;ko elementų klasę su atrinktomis reik&scaron;mėmis jų lentelėje. Jei parametrai <b>Pasirinkti vietos sluoksnį</b> yra polilinijos arba plotai, kiekvienas i&scaron;vesties ta&scaron;kas yra kiekvienos įvesties vietos elementų geometrijos centroidas. 
                 </li>
             </ul>
             
