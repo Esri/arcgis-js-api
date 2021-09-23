@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({clustersLabel:"Najdi gruče za sloj ${inputLayerName}.",chooseLayerLabel:"Izberi sloj, za katerega bodo najdene gruče",minClusterPtsLabel:"Minimalno število točk, ki jih je treba obravnavati kot gručo",minClustersPtsGAXLbl:"Minimalno število točk, ki jih je treba obravnavati kot gručo",limitSearchLabel:"Omejite iskalni doseg na (izbirno)",limitSearchReqLabel:"Omejite iskalni doseg na",outputLayerName:"Najdi gruče za ${inputLayerName}",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Najdi gruče točk za ${inputLayerName}.",itemTags:"Rezultat analize, Najdi gruče točk, ${inputLayerName}",itemSnippet:"Geoobjektni sloj, ustvarjen iz Najdi gruče točk",chooseClusteringMethod:"Izberi metodo gručenja za uporabo",dbscanLabel:"Določena razdalja (DBSCAN)",hdbscanLabel:"Samoprilagajanje (HDBSCAN)",useTimeToFindCLusters:"Čas namenite za iskanje gruč",limitSearchDurLabel:"Omejite trajanje iskanja na"});

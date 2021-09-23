@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({chooseLayer:"Vybrať vrstvu na analýzu",chooseField:"Vybrať pole na modelovanie",chooseExplanatoryField:"Vybrať polia s nezávislými premennými",chooseNeighborhood:"Vybrať, ako bude určené susediace okolie",distanceBand:"Pásmo vzdialenosti",numNeighbors:"Počet susedov",chooseWeighted:"Vybrať, ako sú vážené susediace prvky",bisquare:"Bisquare",gaussian:"Gaussovské",resultLayerName:"Názov výslednej vrstvy",outputLayerName:"Geograficky vážená regresia ${inputLayerName}",distanceBandWarning:"Hodnota pásma vzdialenosti musí byť medzi ${min} a ${max}",numNeighborsWarning:"Počet susedov musí byť medzi ${min} a ${max}",explanatoryFieldsWarning:"Vybrať aspoň 1 pole s nezávislou premennou",explanatoryLayerWarning:"Vybraná vrstva neobsahuje žiadne platné polia s nezávislými premennými, vyberte inú vrstvu",inputLayerWarning:"Vybraná vstva neobsahuje žiadne číselné polia na modelovanie, vyberte inú vrstvu",itemDescription:"Vrstvy prvkov generované spustením nástroja Geograficky váženej regresie.",itemTags:"Výsledok analýzy, Geograficky vážená regresia, ${inputLayerName}, prispôsobené",itemSnippet:"Vrstvy prvkov generované nástrojom Geograficky váženej regresie"});

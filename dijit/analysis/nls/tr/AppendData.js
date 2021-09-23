@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Üzerine eklenecek katmanı seç",inputWarningLabel:"Uyarı: Eklediğiniz katman değiştirilecek.",inputHostedLayerWarning:"Seçili katman barındırılan bir detay katmanı değil. Üzerine eklemek için lütfen bir barındırılan detay katmanı seçin.",appendLayerLabel:"Eklenecek katmanı seç",filterLabel:"Tüm detayları ekle veya bir alt küme tanımla (isteğe bağlı)",fieldMappingLabel:"Alanları nasıl ekleyeceğinizi seçin (isteğe bağlı)",inputField:"Girdi Alanı",appendValue:"Ekleme Değeri",expression:"İfade"});

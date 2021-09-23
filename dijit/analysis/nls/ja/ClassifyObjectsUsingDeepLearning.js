@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"ディープ ラーニングを使用したオブジェクトの分類",inputFeaturesLabel:"オブジェクトのフィーチャ レイヤーを選択 (オプション)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"オブジェクトの分類に使用するディープ ラーニング モデルを選択",modelArgsLabel:"ディープ ラーニング モデルの引数を指定",classLabelFieldLabel:"クラス ラベル フィールド名の定義 (オプション)",processingModeLabel:"処理モード",processAsMosaicLabel:"モザイク画像として処理",processAsItemsLabel:"すべてのラスター アイテムを別々に処理",queryModelArgsMsg:"モデルの引数を検索しています...",queryModelArgsErrMsg:"モデルの引数をクエリできませんでした。",valueLabel:"値",nameLabel:"名前",analysisLayerLabel:"オブジェクトの分類に使用する画像を選択",itemDescription:"[ディープ ラーニングを使用したオブジェクトの分類] から生成された分析イメージ サービス",itemTags:"ラスター解析結果、ディープ ラーニングを使用したオブジェクトの分類、${layername}",itemSnippet:"[ディープ ラーニングを使用したオブジェクトの分類] から生成された分析イメージ サービス"});

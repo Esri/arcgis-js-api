@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Выберите растр или объекты зон",outputTableName:"Имя итоговой таблицы",zoneField:"Поле зоны",inputValueRaster:"Выберите растр значений",ignoreNodata:"Игнорировать значение NoData при вычислениях (дополнительно)",ignore:"Игнорировать",statisticType:"Тип статистики (дополнительно)",percentileValues:"Значения процентиля (дополнительно)",percentileInterpolationType:"Тип интерполяции Процентиль (дополнительно)",processAsMultidimensional:"Обработать как многомерный (дополнительно)",allSlices:"Все срезы",outputZonalStatsName:"Зональная статистика для ${valuelayername} в пределах ${layername}",itemDescription:"Таблица анализа объектов, созданная инструментом Зональная статистика в таблицу",itemTags:"Результат Анализ растра, Зональная статистика в таблицу, ${layername} ${valuelayername}",autoDetect:"Автоматическое определение",nearest:"Ближайший",linear:"Линейный"});

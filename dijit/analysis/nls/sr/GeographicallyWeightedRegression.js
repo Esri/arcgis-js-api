@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({chooseLayer:"Odaberite sloj za analizu",chooseField:"Odaberite polje za modelovanje",chooseExplanatoryField:"Odaberite opisna polja",chooseNeighborhood:"Odaberite način određivanja susedstva",distanceBand:"Traka udaljenosti",numNeighbors:"Broj suseda",chooseWeighted:"Odaberite kako se boduju funkcije susedstva",bisquare:"Bisquare",gaussian:"Gaussian",resultLayerName:"Naziv sloja sa rezultatima",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"Vrednost za opseg distance mora da bude između ${min} i ${max}",numNeighborsWarning:"Broj suseda mora da bude između ${min} i ${max}",explanatoryFieldsWarning:"Izaberite bar jedno polje za objašnjenje",explanatoryLayerWarning:"Izabrani sloj ne sadrži bilo koje validno polje za objašnjenje, izaberite drugi sloj",inputLayerWarning:"Izabrani sloj ne sadrži nijedno numeričko polje za model, izaberite drugi sloj",itemDescription:"Sloj funkcije nastao usled pokretanja rešenja Geographically Weighted Regression.",itemTags:"Analiza rezultata, Geographically Weighted Regression, ${inputLayerName}, uklapanje",itemSnippet:"Sloj funkcije nastao iz alata Geographically Weighted Regression"});

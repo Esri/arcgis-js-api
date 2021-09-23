@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayer:"Réteg kiválasztása közeli események kereséséhez",entityField:"Események azonosítására szolgáló mező kiválasztása",entityLayer:"Vizsgálandó entitások megadására szolgáló réteg kiválasztása",defineDistanceLabel:"Térbeli keresési távolság meghatározása",distMethodLabel:"A távolság kiszámításához használt módszer kiválasztása",temporalSearchLabel:"Időbeli keresési távolság meghatározása",optionsLabel:"Speciális beállítások",maxTraceDepth:"Maximális követési mélység",attributeMatchLabel:"Egy vagy több megfeleltetendő attribútum kiválasztása",includeTracksLayer:"Tartalmazza a nyomvonalak rétegét",itemDescription:"A Közeli események követése függvény ${inputLayername} rétegen való futtatásából létrehozott vektoros réteg.",itemTags:"Elemzés eredménye, közeli események követése, ${inputLayername}",itemSnippet:"A Közeli események követése való futtatásából létrehozott vektoros réteg.",outputLayerName:"Közeli események követése: ${inputLayername}",noEntityFieldMsg:"A közeli eseményeket tartalmazó réteg és vizsgálandó entitásokat tartalmazó réteg nem rendelkezik közös mezőkkel."});

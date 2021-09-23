@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({modifiedTitle:"Generalizált lineáris regresszió – ${goal}",fit:"Illesztés",fitAndPredict:"Illesztés és előrejelzés",selectGoal:"Mit szeretne tenni?",fitGoal:"Illesszen egy modellt, hogy megállapíthassa a modell teljesítményét",fitAndPredictGoal:"Modell illesztése és értékek előrejelzése",inputLayerLabel:"Válasszon egy réteget, amelyből létrehoz egy modellt",chooseDependentField:"Válasszon egy modellezni kívánt mezőt",chooseDataType:"Válassza ki az adattípust a modellezéshez",continuousData:"Folytonos",binaryData:"Bináris",countData:"Darabszám",chooseExplanatoryField:"Válassza ki a magyarázó mezőket",chooseFeaturesToPredict:"Válasszon egy réteget az értékek előrejelzéséhez",chooseExplainMatch:"Válassza ki, hogyan egyeznek meg a magyarázó mezők",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Az generalizált lineáris regresszió ${goal} megoldások futtatásából létrehozott vektoros réteg.",itemTags:"Elemzés végeredménye, Generalizált lineáris regresszió, ${inputLayerName}, ${goal}",itemSnippet:"A generalizált lineáris regresszióból (${goal}) létrehozott vektoros réteg"});

@@ -4,15 +4,6 @@
     color: #666666;
 }
 
-.light .OneVarMultiComparison_CurrentRow {
-    color: #666666;
-    background-color: white;
-}
-
-    .light .OneVarMultiComparison_CurrentRow.AlternatingRow {
-        background-color: #eaeaea;
-    }
-
 .light .OneVarMultiComparison_Row {
     color: #666666;
     background-color: white;
@@ -20,6 +11,10 @@
 
     .light .OneVarMultiComparison_Row.AlternatingRow {
         background-color: #eaeaea;
+    }
+
+    .light .OneVarMultiComparison_Row.OneVarMultiComparison_CurrentRow {
+        color: #666666;
     }
 
 .light .OneVarMultiComparison_TextColumnHeader {

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/FieldUtil","dojo/i18n!esri/nls/jsapi"],(function(e,i){i=i.geoenrichment.dijit.ReportPlayer.FieldInfoPreview;var n={},r={BUILDING_AREA:5e3,SITE_AREA:1e4,FRONTAGE:800,PARKING:300};return n.getAttributePreviewValue=function(n){if(!n)return"";if(n.domain&&"codedValue"===n.domain.type)return n.domain.codedValues[0].name;if("esriFieldTypeString"===n.type)return i.sampleTextValue;if("esriFieldTypeDate"===n.type){var t=new Date;return n.domain&&"range"===n.domain.type&&t.setTime(n.domain.range[0]),t.getTime()}var a;return a=n.domain&&"range"===n.domain.type?n.domain.range[0]:r[n.name]||Number((100*Math.random()+50).toFixed(1)),"i"===e.isNumericField(n)?Math.round(a):a},n}));

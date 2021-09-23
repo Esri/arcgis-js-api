@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Вибрати набір даних для опису",describeDataLabel:"Отримати розуміння даних, створивши (опціонально)",sampleLayer:"Шар зразків",extentLayer:"Шар екстенту",noOfFeaturesLabel:"Число об'єктів для включення",outputLayerName:"Назва результуючого шару",resultName:"Описати дані ${layerName}",itemDescription:"Векторний шар, згенерований в результаті виконання «Описати набір даних» для ${layerName}. ",itemTags:"Результат аналізу, Описати набір даних, ${layerName}",itemSnippet:"Векторний шар, згенерований з «Описати набір даних»."});

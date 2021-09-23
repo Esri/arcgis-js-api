@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({addBarriers:"Выберите слои барьеров",pointBarrier:"Точечные барьеры",lineBarrier:"Линейные барьеры",polygonBarrier:"Полигональные барьеры",choosePointBarrier:"Выберите слой точечных барьеров",chooseLineBarrier:"Выберите слой линейных барьеров",choosePolygonBarrier:"Выберите слой полигональных барьеров",selectPointBarrier:"Выберите точечные барьеры",selectLineBarrier:"Выберите линейные барьеры",selectPolygonBarrier:"Выберите полигональные барьеры"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({fields:"Feld",categorical:"Kategorie",requiredMessage:"Es muss mindestens 1 erklärende Variable ausgewählt werden."});

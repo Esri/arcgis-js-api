@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({binsLabel:"Izberite tip celic, ki se bo uporabljal za izdelavo mreže z več spremenljivkami",layersAttrLabel:"Izberite vhodne sloje in spremenljivke, ki jih želite vključiti v mrežo",itemDescription:"Geoobjektni sloj, ustvarjen z orodjem Izdelava mreže z več spremenljivkami.",itemTags:"Rezultat analize, Izdelava mreže z več spremenljivkami",itemSnippet:"Geoobjektni sloj, ustvarjen z orodjem Izdelava mreže z več spremenljivkami",addVariables:"Dodaj spremenljivke"});

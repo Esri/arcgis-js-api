@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Mediano</b>&mdash;Calcula o valor mediano de um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
                     </li>
+                    <li> <b>Percentil</b>&mdash;O percentil de valores de um pixel ser&aacute; calculado em todas as divis&otilde;es do intervalo. O 90&ordm; percentil &eacute; calculado por padr&atilde;o. Voc&ecirc; pode especificar outros valores (de 0 a 100) usando o par&acirc;metro de <b>Valor percentil</b>.
+                    </li>
                     <li> <b>Faixa</b>&mdash;Calcula as faixas de valores de um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
                     </li>
                     <li> <b>Desvio Padr&atilde;o</b>&mdash;Calcula o desvio padr&atilde;o de valores de um pixel atrav&eacute;s de todas as divis&otilde;es no intervalo.
@@ -246,6 +248,24 @@
             <p>O nome da camada que ser&aacute; criada em  <b>Meu Conte&uacute;do</b> e adicionada no mapa. O nome padr&atilde;o &eacute; baseado no nome da ferramenta e o nome da camada de entrada. Se a camada j&aacute; existir, voc&ecirc; ser&aacute; solicitado para fornecer outro nome.
             </p>
             <p>Voc&ecirc; pode especificar o nome de uma pasta em  <b>Meu Conte&uacute;do</b> onde o resultado ser&aacute; salvo utilizando a caixa suspensa <b>Salvar resultados em</b> . Se você tiver os privilégios para criar camadas de imagens de mosaico e dinâmicas, será possível especificar qual tipo de camada gerar na saída usando a caixa suspensa Salvar resultado como. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valor de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>O percentil para calcular. O padr&atilde;o &eacute; 90, indicando o 90&ordm; percentil.
+            </p>
+            <p>Os valores podem variar de 0 at&eacute; 100. O 0&ordm; percentil &eacute; essencialmente equivalente &agrave; estat&iacute;stica m&iacute;nima e o 100&ordm; percentil &eacute; equivalente &agrave; m&aacute;xima. Um valor de 50 produzir&aacute; essencialmente o mesmo resultado que a estat&iacute;stica mediana.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tipo de interpolação de percentil</h2></div>
+        <hr/>
+        <div>
+            <p>Especifica o m&eacute;todo de interpola&ccedil;&atilde;o de percentil que ser&aacute; usado quando houver um n&uacute;mero par de valores do raster de entrada a ser calculado.
+            </p>
         </div>
     </div>
 </div>

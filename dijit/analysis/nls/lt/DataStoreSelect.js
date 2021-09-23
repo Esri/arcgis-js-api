@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({relationalDS:"Santykinis",spatialDS:"Turintis erdvės ir laiko savybių",agsDataStore:"ArcGIS duomenų saugykla",bdfsTemplates:"Didelių duomenų failo bendrinimo išvesties šablonai"});

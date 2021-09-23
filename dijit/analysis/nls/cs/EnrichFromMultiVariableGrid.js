@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Vybrat bodové prvky k obohacení",chooseMVgridLyrLabel:"Vybrat mřížku s více proměnnými, která bude použita k obohacení",chooseVariables:"Vyberte proměnné k přidání",outputLayerName:"Obohacené ${inputFeatures} z ${gridLayer}",itemDescription:"Vrstva prvků vygenerovaná spuštěním řešení Obohatit z mřížky s více proměnnými pro ${inputFeatures}.",itemTags:"Výsledek analýzy, Obohatit z mřížky s více proměnnými, ${inputFeatures}, ${gridLayer}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Obohatit z mřížky s více proměnnými."});

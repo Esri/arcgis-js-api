@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({chooseInputLayer:"Scegli un layer di input",addAVar:"Aggiungi variabile",distToNearest:"Distanza dal più vicino",attrOfInterest:"Attributo del più vicino",summaryNearby:"Riepilogo delle vicinanze",summaryIntersecting:"Riepilogo delle intersezioni",distToNearestLabel:"La distanza dal centro del bin alla feature più vicina nel layer di input",attrOfInterestLabel:"Il valore di un campo specificato dalla feature più vicina dal layer di input",summaryNearbyLabel:"Un calcolo statistico su tutte le feature trovate con la distanza specificata del centro del bin",summaryIntersectingLabel:"Una statistica calcolata su tutte le feature che intersecano il bin",maxDistancefromCtr:"Distanza massima dal centro del bin",fieldToIncude:"Campo da includere",statstoCalculate:"Statistica da calcolare",summFeatuesWithin:"Riepiloga feature entro",layerChangeWarnMsg:"Le variabili aggiunte per questo layer di input verranno rimosse se si modifica il layer di input",validationErrorMsg:"Correggere gli errori di convalida prima di aggiungere una nuova variabile",atleastOneVarMsg:"Aggiungere almeno una variabile a questo layer selezionato"});

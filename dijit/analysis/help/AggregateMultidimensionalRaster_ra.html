@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Median</b>&mdash;Calculates the median value of a pixel across all slices in the interval.
                     </li>
+                    <li> <b>Percentile</b>&mdash;The percentile of values for a pixel will be calculated across all slices in the interval. The 90th percentile is calculated by default. You can specify other values (from 0 to 100) using the <b>Percentile value</b> parameter.
+                    </li>
                     <li> <b>Range</b>&mdash;Calculates the range of values for a pixel across all slices in the interval.
                     </li>
                     <li> <b>Standard Deviation</b>&mdash;Calculates the standard deviation of a pixel's values across all slices in the interval.
@@ -246,6 +248,24 @@
             <p>The name of the layer that will be created in  <b>My Content</b> and added to the map. The default name is based on the tool name and the input layer name. If the layer already exists, you will be prompted to provide another name.
             </p>
             <p>You can specify the name of a folder in  <b>My Content</b> where the result will be saved using the <b>Save result in</b> drop-down box. If you have the privileges to create both tiled and dynamic imagery layers, you can specify which layer type to generate in the output using the Save result as drop-down box. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentile value</h2></div>
+        <hr/>
+        <div>
+            <p>The percentile to calculate. The default is 90, indicating the 90th percentile.
+            </p>
+            <p>The values can range from 0 to 100. The 0th percentile is essentially equivalent to the minimum statistic, and the 100th percentile is equivalent to maximum. A value of 50 will produce essentially the same result as the median statistic.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Percentile interpolation type</h2></div>
+        <hr/>
+        <div>
+            <p>Specifies the method of percentile interpolation that will be used when there is an even number of values from the input raster to be calculated.
+            </p>
         </div>
     </div>
 </div>

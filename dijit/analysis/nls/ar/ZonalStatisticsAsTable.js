@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"اختيار البيانات النقطية النطاقية أو المعالم",outputTableName:"اسم جدول النتائج",zoneField:"حقل المنطقة",inputValueRaster:"اختيار البيانات النقطية للقيمة",ignoreNodata:"تجاهل NoData في الحسابات (اختياري)",ignore:"تجاهل",statisticType:"نوع الإحصائيات (اختياري)",percentileValues:"القيم المئوية (اختياري)",percentileInterpolationType:"نوع استيفاء القيمة المئوية (اختياري)",processAsMultidimensional:"معالجة كمُتعدد الأبعاد (اختياري)",allSlices:"كل الشرائح",outputZonalStatsName:"إحصائيات نطاقية لـ ${valuelayername} خلال ${layername}",itemDescription:"جدول ميزات التحليل الذي تم إنشاؤه من الإحصاءات النطاقية كجدول",itemTags:"نتيجة تحليل البيانات النقطية، الإحصائيات النطاقية كجدول، ${layername}، ${valuelayername}",autoDetect:"الاكتشاف التلقائي",nearest:"مجموعة قريبة",linear:"خطي"});

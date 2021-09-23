@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({addBarriers:"Sélectionner les couches d’interruptions",pointBarrier:"Interruptions ponctuelles",lineBarrier:"Interruptions linéaires",polygonBarrier:"Interruptions surfaciques",choosePointBarrier:"Choisir une couche d’interruptions ponctuelles",chooseLineBarrier:"Choisir une couche d’interruptions linéaires",choosePolygonBarrier:"Choisir une couche d’interruptions surfaciques",selectPointBarrier:"Sélectionner des interruptions ponctuelles",selectLineBarrier:"Sélectionner des interruptions linéaires",selectPolygonBarrier:"Sélectionner des interruptions surfaciques"});

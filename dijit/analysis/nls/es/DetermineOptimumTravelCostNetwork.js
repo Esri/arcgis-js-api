@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir la capa de ubicación de entidad o ráster entre la que se determinarán rutas de viaje",inputCostRasterLabel:"Elegir capa ráster de coste de viaje",outputOptimumNetworkName:"Nombre de la capa de resultados de polilíneas de rutas óptimas",outputNeighborNetworkName:"Nombre de la capa de resultados de polilíneas de rutas vecinas (opcional)",outputLayerName:"Determinar gastos de viaje óptimos para ${layername}",itemDescription:"Capa de entidades generada al ejecutar Determinar red de gastos de viaje óptimos en ${layerName}. ",itemTags:"Resultados del análisis, Determinar red de gastos de viaje óptimos, ${layername} ${fieldname}",itemSnippet:"Capa de entidades generada a partir de Determinar red de gastos de viaje óptimos."});

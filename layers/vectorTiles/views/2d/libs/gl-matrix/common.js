@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define([],(function(){if(!r)var r=1e-6;if(!a)var a="undefined"!=typeof Float32Array?Float32Array:Array;if(!t)var t=Math.random;var e={GLMAT_EPSILON:r,GLMAT_ARRAY_TYPE:a,GLMAT_RANDOM:t,setMatrixArrayType:function(r){e.GLMAT_ARRAY_TYPE=r}},n=Math.PI/180,A=180/Math.PI;return e.toRadian=function(r){return r*n},e.toDegree=function(r){return r*A},e.setMatrixArrayType(Array),e}));

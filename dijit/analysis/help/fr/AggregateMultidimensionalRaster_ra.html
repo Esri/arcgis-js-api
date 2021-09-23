@@ -44,7 +44,7 @@
         <h2>Agréger un raster multidimensionnel</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agr&eacute;ger un raster multidimensionnel"></h2>
         <hr/>
-    <p>G&eacute;n&egrave;re un jeu de donn&eacute;es raster multidimensionnelles en associant les variables raster multidimensionnelles existantes sur une dimension.
+    <p>G&eacute;n&eacute;rer un jeu de donn&eacute;es raster multidimensionnel en associant des variables du raster multidimensionnel existant selon une dimension.
     </p>
     <p>Si vous disposez de 30&nbsp;ans de donn&eacute;es de temp&eacute;rature de surface des oc&eacute;ans, collect&eacute;es tous les mois et tous les 5&nbsp;m&egrave;tres jusqu&rsquo;&agrave; 100&nbsp;m&egrave;tres de profondeur, voici quelques exemples d&rsquo;applications&nbsp;:
         <ul>
@@ -81,7 +81,7 @@
         <div><h2>Choisir la ou les variables à agréger</h2></div>
         <hr/>
         <div>
-            <p>La variable ou les variables qui sont agr&eacute;g&eacute;es selon la dimension donn&eacute;e. Si aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, toutes les variables avec la dimension s&eacute;lectionn&eacute;e sont agr&eacute;g&eacute;es.
+            <p>La variable ou les variables sont agr&eacute;g&eacute;es sur la dimension donn&eacute;e. Si aucune variable n&rsquo;est sp&eacute;cifi&eacute;e, toutes les variables avec la dimension s&eacute;lectionn&eacute;e sont agr&eacute;g&eacute;es.
             </p>
             <p>Ainsi, pour agr&eacute;ger vos temp&eacute;ratures quotidiennes dans des valeurs moyennes mensuelles, sp&eacute;cifiez la temp&eacute;rature comme la variable &agrave; agr&eacute;ger. Si vous ne sp&eacute;cifiez aucune variable et que vous poss&eacute;dez des variables de pr&eacute;cipitation quotidiennes et des temp&eacute;ratures quotidiennes, ces deux variables sont agr&eacute;g&eacute;es en moyennes mensuelles&nbsp;; le raster multidimensionnel en sortie inclut alors les deux variables.
             </p>
@@ -104,6 +104,8 @@
                     <li> <b>Minority (Minorit&eacute;)</b>&nbsp;: calcule la valeur qui est apparue le moins fr&eacute;quemment sur toutes les tranches comprises dans l&rsquo;intervalle.
                     </li>
                     <li> <b>Median (M&eacute;diane)</b>&nbsp;: calcule la valeur m&eacute;diane d&rsquo;un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
+                    </li>
+                    <li> <b>Percentile (Centile)</b>&nbsp;: centile des valeurs d&rsquo;un pixel, calcul&eacute; sur toutes les tranches de l&rsquo;intervalle. Le 90&egrave; centile est calcul&eacute; par d&eacute;faut. Vous pouvez sp&eacute;cifier d&rsquo;autres valeurs (entre 0 et 100) &agrave; l&rsquo;aide du param&egrave;tre <b>Percentile Value (Valeur de centile)</b>.
                     </li>
                     <li> <b>Range (Plage)</b>&nbsp;: calcule la plage de valeurs pour un pixel sur toutes les tranches comprises dans l&rsquo;intervalle.
                     </li>
@@ -151,7 +153,7 @@
         <div><h2>Choisir le mot-clé de l’intervalle</h2></div>
         <hr/>
         <div>
-            <p>Sp&eacute;cifie le mot-cl&eacute; de l&rsquo;intervalle &agrave; utiliser lors de l&rsquo;agr&eacute;gation le long de la dimension. Cette entr&eacute;e est requise lorsque la valeur de  <b>Aggregation Definition (D&eacute;finition d&rsquo;agr&eacute;gation)</b> est <b>Interval Keyword (Intervalle de mot-cl&eacute;)</b> et que l&rsquo;agr&eacute;gation doit s&rsquo;effectuer sur le temps.
+            <p>Sp&eacute;cifie l&rsquo;intervalle de mot-cl&eacute; &agrave; utiliser au cours de l&rsquo;agr&eacute;gation sur la dimension. Cette entr&eacute;e est requise lorsque la valeur de  <b>Aggregation Definition (D&eacute;finition d&rsquo;agr&eacute;gation)</b> est <b>Interval Keyword (Intervalle de mot-cl&eacute;)</b> et que l&rsquo;agr&eacute;gation doit s&rsquo;effectuer sur le temps.
                 <ul>
                     <li> <b>Hourly (Horaire)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es selon des intervalles horaires et le r&eacute;sultat comprend chaque heure de la s&eacute;rie chronologique.
                     </li>
@@ -175,7 +177,7 @@
                     </li>
                     <li> <b>Dekadly (Tous les 10&nbsp;jours)</b>&nbsp;: les valeurs de donn&eacute;es sont agr&eacute;g&eacute;es en 3&nbsp;p&eacute;riodes de 10&nbsp;jours chacune. La derni&egrave;re p&eacute;riode peut contenir plus ou moins de 10&nbsp;jours. La sortie comprend 3 tranches pour chaque mois.
                     </li>
-                    <li> <b>Pentadly (Tous les 5&nbsp;jours)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es en 6&nbsp;p&eacute;riodes de 5&nbsp;jours chacune. La derni&egrave;re p&eacute;riode peut contenir plus ou moins de 5 jours. La sortie comprend 6&nbsp;tranches pour chaque mois.
+                    <li> <b>Pentadly (Tous les 5&nbsp;jours)</b>&nbsp;: les valeurs des donn&eacute;es sont agr&eacute;g&eacute;es en 6&nbsp;p&eacute;riodes de 5&nbsp;jours chacune. La derni&egrave;re p&eacute;riode peut contenir plus ou moins de 5&nbsp;jours. La sortie comprend 6&nbsp;tranches pour chaque mois.
                     </li>
                 </ul>
                 
@@ -246,6 +248,24 @@
             <p>Le nom de la couche qui sera cr&eacute;&eacute;e dans la page  <b>My Content (Mon contenu)</b> et ajout&eacute;e &agrave; la carte. Le nom par d&eacute;faut repose sur le nom de l'outil et sur le nom de la couche en entr&eacute;e. Si la couche existe d&eacute;j&agrave;, vous &ecirc;tes invit&eacute; &agrave; fournir un autre nom.
             </p>
             <p>Vous pouvez sp&eacute;cifier le nom d&rsquo;un dossier dans  <b>My Content (Mon contenu)</b>, dans lequel le r&eacute;sultat sera enregistr&eacute; via la zone de liste d&eacute;roulante <b>Save result in (Enregistrer le r&eacute;sultat dans)</b>. Si vous avez les privilèges permettant de créer des couches tuilées et d’images dynamiques, vous pouvez spécifier le type de couche à générer en sortie à l’aide de la zone déroulante Save result as (Enregistrer le résultat sous). </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valeur du percentile</h2></div>
+        <hr/>
+        <div>
+            <p>Pourcentage &agrave; calculer. La valeur par d&eacute;faut est de 90, soit le 90e centile.
+            </p>
+            <p>Les valeurs peuvent varier entre 0 et 100. Le centile n&deg;&nbsp;0 est &eacute;quivalent &agrave; la statistique minimale tandis que le 100e centile &eacute;quivaut au maximum Une valeur de 50 donne le m&ecirc;me r&eacute;sultat que la statistique m&eacute;diane.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Percentile interpolation type (Type d’interpolation en centile)</h2></div>
+        <hr/>
+        <div>
+            <p>D&eacute;finit la m&eacute;thode d&rsquo;interpolation en centile &agrave; utiliser lorsque le nombre de valeurs du raster en entr&eacute;e &agrave; calculer est pair.
+            </p>
         </div>
     </div>
 </div>

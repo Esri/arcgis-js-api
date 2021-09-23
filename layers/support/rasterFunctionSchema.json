@@ -879,7 +879,8 @@
       },
       "ClassifierDefinitionFile": {
         "required": true,
-        "dataType": "string",
+        "dataType": "file",
+        "fileExtSupported": ["ecd"],
         "displayName": "${rasterFunctions.rfxArgs.classifierDefinitionFileName}",
         "hidden": false
       },
@@ -930,6 +931,7 @@
         "dataType": "doublearray",
         "displayName": "${rasterFunctions.rfxArgs.includedRangesName}",
         "hidden": false,
+        "defaultValue": [0, 0],
         "dataTypeAttributes": {
           "type": "bandmatrix",
           "nBands": "Raster",
@@ -2384,7 +2386,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -2520,7 +2523,8 @@
           "attributes": [
             {
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -2651,7 +2655,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -2977,7 +2982,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -3181,7 +3187,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -3401,7 +3408,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -3796,7 +3804,8 @@
           "type": "switchable",
           "attributes": [{
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -4911,9 +4920,9 @@
                 "NoiseModel"
               ],
               "inactive": [
-
+                "DampFactor"
               ],
-              "autoRevert": false
+              "autoRevert": true
             },
             {
               "values": [
@@ -4924,7 +4933,6 @@
                 "DampFactor"
               ],
               "inactive": [
-                "NoiseModel",
                 "NoiseVar",
                 "AdditiveNoiseMean",
                 "MultiplicativeNoiseMean"
@@ -4939,7 +4947,6 @@
                 "DampFactor"
               ],
               "inactive": [
-                "NoiseModel",
                 "NoiseVar",
                 "AdditiveNoiseMean",
                 "MultiplicativeNoiseMean",
@@ -4955,7 +4962,6 @@
                 "NLooks"
               ],
               "inactive": [
-                "NoiseModel",
                 "NoiseVar",
                 "AdditiveNoiseMean",
                 "MultiplicativeNoiseMean",
@@ -5000,8 +5006,8 @@
               ],
               "inactive": [
                 "NoiseVar",
-                "AdditiveNoiseMean",
-                "DampFactor"
+                "AdditiveNoiseMean"
+
               ],
               "autoRevert": false
             },
@@ -5015,8 +5021,8 @@
               "inactive": [
                 "AdditiveNoiseMean",
                 "MultiplicativeNoiseMean",
-                "NLooks",
-                "DampFactor"
+                "NLooks"
+
               ],
               "autoRevert": false
             },
@@ -5030,8 +5036,7 @@
                 "MultiplicativeNoiseMean"
               ],
               "inactive": [
-                "NLooks",
-                "DampFactor"
+                "NLooks"
               ],
               "autoRevert": false
             }
@@ -5823,25 +5828,39 @@
         "dataType": "long",
         "displayName":"${rasterFunctions.rfxArgs.pansharpeningType}",
         "hidden": false,
+        "defaultValue": 2,
         "domain": {
           "type": "list",
           "enum": "pansharpeningTypes"
-        }
-      },
-      "Weights": {
-        "displayName":"${rasterFunctions.rfxArgs.weightsName}",
-        "required": true,
-        "dataType": "doublearray",
-        "hidden": false,
-        "dataTypeAttributes": {
-          "type": "bandmatrix",
-          "nBands": "Raster",
-          "cols": 4,
-          "displayNames": [
-           "${rasterFunctions.rfxArgs.redName}",
-           "${rasterFunctions.rfxArgs.greenName}",
-           "${rasterFunctions.rfxArgs.blueName}",
-           "${rasterFunctions.rfxArgs.infraredName}"
+        },
+        "editorStateTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [4],
+              "active": ["Sensor"],
+              "inactive": [],
+              "autoRevert": true
+            },
+            {
+              "values": [3],
+              "active": [],
+              "inactive": ["Weights"],
+              "autoRevert": true
+            }
+          ]
+        },
+        "editorValueTrigger": {
+          "active": true,
+          "triggers": [
+            {
+              "values": [0, 1],
+              "changedArgs": [{ "Weights": [0.334, 0.333, 0.333, 0] }]
+            },
+            {
+              "values": [2],
+              "changedArgs": [{ "Weights": [0.166, 0.167, 0.167, 0.5] }]
+            }
           ]
         }
       },
@@ -5849,8 +5868,44 @@
         "required": true,
         "dataType": "string",
         "displayName":"${rasterFunctions.rfxArgs.sensorName}",
-        "hidden": false
+        "hidden": false,
+        "domain": {
+          "type": "list",
+          "enum": "sensorTypes"
+        }
+      },
+      "Weights": {
+        "displayName":"${rasterFunctions.rfxArgs.weightsName}",
+        "required": true,
+        "dataType": "doublearray",
+        "hidden": false,
+        "defaultValue": [0.166, 0.167, 0.167, 0.5],
+        "dataTypeAttributes": {
+          "type": "bandmatrix",
+          "nBands": "Raster",
+          "cols": 4,
+          "hasIdColumn": false,
+          "isExtensible": false,
+          "displayNames": [
+           "${rasterFunctions.rfxArgs.redName}",
+           "${rasterFunctions.rfxArgs.greenName}",
+           "${rasterFunctions.rfxArgs.blueName}",
+           "${rasterFunctions.rfxArgs.infraredName}"
+          ]
+        }
       }
+    },
+    "editorArgumentOverride": {
+      "active": true,
+      "overrides": [
+        {
+          "argumentNames": ["Sensor"],
+          "triggerArguments": ["Weights"],
+          "widget": {
+            "path": "esri/dijit/RasterFunctionEditor/RFxPansharpenSensorPicker"
+          }
+        }
+      ]
     }
   },
 
@@ -6572,7 +6627,8 @@
           "attributes": [
             {
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -6694,7 +6750,7 @@
         "displayName": "${rasterFunctions.rfxArgs.horizontalFactor}",
         "hidden": false
       },
-      "generate_source_location_bands": {
+      "generate_back_direction_band": {
         "required": false,
         "dataType": "boolean",
         "displayName": "${rasterFunctions.rfxArgs.backDirectionBand}",
@@ -6780,7 +6836,8 @@
           "attributes": [
             {
               "type": "list",
-              "enum": "gpsaTravelDirections"
+              "enum": "gpsaTravelDirections",
+              "defaultValue": "FROM_SOURCE"
             },
             {
               "type": "field",
@@ -8053,7 +8110,7 @@
       "ProcessingBand": {
         "required": true,
         "dataType": "string",
-        "displayName": "${rasterFunctions.rfxArgs.processingBand}",
+        "displayName": "${rasterFunctions.rfxArgs.processingBandName}",
         "hidden": false,
         "defaultValue": "Band_1",
         "domain": {
@@ -8160,6 +8217,24 @@
           "type": "list",
           "enum": "esriResolveOverlapMethods"
         }
+      }
+    }
+  },
+  "PredictUsingRegressionFunction": {
+    "icon": "predictUsingRegression.png",
+    "rasterFunctionArguments": {
+      "Rasters": {
+        "required": true,
+        "dataType": "rasterarray",
+        "displayName": "${rasterFunctions.rfxArgs.rastersName}",
+        "hidden": false
+      },
+      "RegressionDefinitionFile": {
+        "required": true,
+        "dataType": "file",
+        "fileExtSupported": ["ecd"],
+        "displayName": "${rasterFunctions.rfxArgs.inputDefinitionFileName}",
+        "hidden": false
       }
     }
   }

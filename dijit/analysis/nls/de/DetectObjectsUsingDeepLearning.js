@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Objekte mit Deep Learning definieren",outputLayerName:"${layername}_detected",modelLabel:"Deep-Learning-Modell für die Ermittlung von Objekten auswählen",modelArgsLabel:"Argumente für das Deep-Learning-Modell angeben",nameLabel:"Name",valueLabel:"Wert",removeDuplicatesLable:"Doppelte Features aus der Ausgabe entfernen (optional)",queryModelArgsMsg:"Modellargumente werden abgefragt...",queryModelArgsErrMsg:"Fehler beim Abfragen der Modellargumente.",nonMaxSuppressionLabel:"Nicht-Maxima-Unterdrückung",options:"Optionen",confidenceLabel:"Feld für die Konfidenzpunktzahl",classValueLabel:"Klassenwertefeld",maxOverlapLabel:"Maximale Überlappungsrate",numberOnlyMsg:"Es sind nur numerische Werte zulässig.",processingModeLabel:"Verarbeitungsmodus",processAsMosaicLabel:"Als mosaikiertes Bild verarbeiten",processAsItemsLabel:"Alle Raster-Elemente separat verarbeiten",analysisLayerLabel:"Bild für die Ermittlung von Objekten auswählen",itemDescription:"Über 'Objekte mit Deep Learning ermitteln' generierter Analyse-Image-Service",itemTags:"Ergebnis der Raster-Analyse, Objekte mit Deep Learning ermitteln, ${layername}",itemSnippet:"Über 'Objekte mit Deep Learning ermitteln' generierter Analyse-Image-Service"});

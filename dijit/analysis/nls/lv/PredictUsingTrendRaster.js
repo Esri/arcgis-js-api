@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Prognozēt, izmantojot Tendenču rastru",outputLayerName:"${layername}_predict",variablesLabel:"Izvēlieties prognozējamo(s) mainīgo(s)",variablesListLabel:"Mainīgie [Izmēru informācija] (Apraksts)",dimensionDefinitionLabel:"Izvēlēties metodi, kas tiks izmantota prognozējamo dimensiju vērtību nodrošināšanai",dimensionValuesLabel:"Norādiet prognozēšanai nepieciešamās dimensijas(u) vērtības",dimensionIntervalLabel:"Norādiet prognozējamo dimensiju intervālu",intervalValueLabel:"Norādiet soļu skaitu starp sākuma un beigu vērtībām",intervalUnitLabel:"Izvēlieties mērvienību, kas tiks izmantota laika vērtību intervālam",startLabel:"Sākuma vērtība",endLabel:"Beigu vērtība",byValueLabel:"Pēc vērtības",byIntervalLabel:"Pēc intervāla",hours:"Stundas",days:"Dienas",weeks:"Nedēļas",months:"Mēneši",years:"Gadi",custom:"Pielāgots",itemDescription:"Analīzes attēlu serviss ģenerēts no Prognozēt, izmantojot Tendenču rastru",itemTags:"Rastra analīzes rezultāts, Prognozēt, izmantojot tendenču rastru, ${layername}",itemSnippet:"Analīzes attēlu serviss ģenerēts no Prognozēt, izmantojot tendenču rastru"});

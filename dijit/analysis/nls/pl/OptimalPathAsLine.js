@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Wybierz docelowy raster lub obiekty",destinationField:"Pole docelowe (opcjonalnie)",inputDistanceAccumulationRaster:"Wybierz raster akumulacji odległości",inputBackDirectionRaster:"Wybierz raster kierunku wstecz lub kierunku przepływu",pathType:"Typ ścieżki (opcjonalnie)",bestSingle:"Najlepsze pojedyncze",eachCell:"Każda komórka",eachZone:"Każda strefa",outputFeatureName:"Nazwa wynikowej warstwy obiektowej",outputLayerName:"Ścieżka optymalna jako linia w warstwie ${layername}",drawSourcePointLayerName:"Punkty źródłowe",itemDescription:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Ścieżka optymalna jako linia w warstwie ${layername}. ",itemTags:"Wyniki analizy, Ścieżka optymalna jako linia, ${layername} ${fieldname}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku użycia narzędzia Ścieżka optymalna jako linia."});

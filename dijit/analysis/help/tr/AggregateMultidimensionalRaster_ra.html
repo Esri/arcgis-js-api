@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Ortanca</b>&mdash;Bir pikselin aralıktaki t&uuml;m dilimlerdeki ortanca değerini hesaplar.
                     </li>
+                    <li> <b>Y&uuml;zdelik</b>&mdash;Bir piksele ilişkin değerlerin y&uuml;zdelik dilimi, aralıktaki t&uuml;m dilimlerde hesaplanır. Y&uuml;zde 90 varsayılan olarak hesaplanır. <b>Y&uuml;zdelik değer</b> parametresini kullanarak diğer değerleri (0'dan 100'e) belirtebilirsiniz.
+                    </li>
                     <li> <b>Aralık</b>&mdash;Bir pikselin aralıktaki t&uuml;m dilimlerdeki değer aralığını hesaplar.
                     </li>
                     <li> <b>Standart Sapma</b>&mdash;Bir pikselin değerlerinin aralıktaki t&uuml;m dilimlerdeki standart sapmasını hesaplar.
@@ -246,6 +248,24 @@
             <p> <b>İ&ccedil;eriğim</b>'de oluşturulacak ve haritaya eklenecek katmanın adı. Varsayılan ad, ara&ccedil; adına ve girdi katmanı adına dayanır. Katman zaten mevcutsa, başka bir ad sağlamanız istenir.
             </p>
             <p> <b>İ&ccedil;eriğim</b>&rsquo;de, <b>Sonu&ccedil;ları Kaydet</b> a&ccedil;ılır kutusunu kullanarak sonucun kaydedileceği klas&ouml;r&uuml;n adını belirleyebilirsiniz. Hem döşemeli hem de dinamik görüntü katmanları oluşturma ayrıcalıklarınız varsa, Sonucu farklı kaydet açılır kutusunu kullanarak çıktıda hangi katman türünün oluşturulacağını belirtebilirsiniz. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Yüzde değeri</h2></div>
+        <hr/>
+        <div>
+            <p>Hesaplanacak olan y&uuml;zde. Varsayılan 90'dır ve 90. y&uuml;zdelik dilimi g&ouml;sterir.
+            </p>
+            <p>Değerler 0 ile 100 arasında değişebilir. Y&uuml;zde 0, temelde minimum istatistiğe ve y&uuml;zde 100, maksimum istatistiğe eşittir. 50 değeri temelde ortanca istatistiğiyle aynı sonucu &uuml;retir.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Yüzde enterpolasyon türü</h2></div>
+        <hr/>
+        <div>
+            <p>Girdi rasterında &ccedil;ift sayıda değer hesaplanacak olduğunda kullanılacak olan y&uuml;zdelik enterpolasyon y&ouml;ntemini belirtir.
+            </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Chọn Lớp Phân Tích trong Living Atlas",customAnalysisLayerTitle:"Chọn Lớp Phân tích",searchPlaceholderText:"Tìm kiếm lớp phân tích Living Atlas",searchCustomPlaceholderText:"Tìm kiếm lớp phân tích",mainActionTitle:"Chọn",customActionName:"Chọn và thêm vào bản đồ",customeSectionName:"Các lớp Phân tích Living Atlas",Categories:"Danh mục",boundaries:"Ranh giới",places:"Địa điểm",boundariesAndPlaces:"Ranh giới và Địa điểm",hexbins:"Hexbin",transportation:"Giao thông vận tải",point:"Lớp Điểm",line:"Lớp Đường",polygon:"Lớp Vùng",pointFilterName:"Điểm",lineFilterName:"Đường",polygonFilterName:"Vùng",multiPointFilterName:"Đa Điểm",geometryFilterName:"Hình học",featureLayerName:"Lớp đối tượng",tableLayerName:"Bảng",itemTypeFilterName:"Loại Mục",instantFilterName:"Ngay lập tức",intervalFilterName:"Khoảng",timeFilterName:"Thời gian",edit:"Chỉnh sửa",boundaryLayers:"Lớp ranh giới Esri",customAnalysisGroupName:"Nhóm Phân tích Tổ chức"});

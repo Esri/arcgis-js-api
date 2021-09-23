@@ -20,3 +20,30 @@
     display: inline-block;
     cursor: pointer;
 }
+
+.esriGEEditButtonWhite {
+    background-image: url("./images/edit/editIconWhite.svg");
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.esriGETextBoxArea {
+    flex-grow: 1;
+    resize: none;
+    background-color: inherit;
+    color: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    border: none;
+    height: 23px;
+    min-width: 10px;
+    line-height: 23px;
+    padding: 1px 5px;
+    font-size: inherit;
+    font-family: inherit;
+}

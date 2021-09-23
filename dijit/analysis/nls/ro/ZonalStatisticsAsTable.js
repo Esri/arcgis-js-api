@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Alegeți rasterul zonei sau obiectele spațiale",outputTableName:"Numele tabelului rezultat",zoneField:"Câmp zonă",inputValueRaster:"Alegeți raster valoare",ignoreNodata:"Ignorați NoData în calculații (opțional)",ignore:"Ignorare",statisticType:"Tipul statisticii (opțional)",percentileValues:"Valori percentilă (opțional)",percentileInterpolationType:"Tip de interpolare a percentilei (opțional)",processAsMultidimensional:"Procesați ca multidimensional (opțional)",allSlices:"Toate sectoarele",outputZonalStatsName:"Statistici zonale pentru ${valuelayername} în limitele ${layername}",itemDescription:"Tabel de obiecte spațiale pentru analiză generat din statistica zonală sub formă de tabel",itemTags:"Rezultat analiză raster, statistică zonală sub formă de tabel, ${layername}, ${valuelayername}",autoDetect:"Detectare automată",nearest:"Cel mai apropiat",linear:"Liniar"});

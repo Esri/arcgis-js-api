@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Mediană</b>&mdash;Calculează valoarea mediană a unui pixel pe toate &icirc;mpărțirile din interval.
                     </li>
+                    <li> <b>Percentilă</b>&mdash;Percentila valorilor pentru un pixel va fi calculată pentru toate segmentele din interval. A 90-a percentilă este calculată &icirc;n mod implicit. Puteți specifica alte valori (de la 0 la 100) folosind parametrul <b>Valoare percentilă</b>.
+                    </li>
                     <li> <b>Gamă</b>&mdash;Calculează gama de valori pentru un pixel pe toate &icirc;mpărțirile din interval.
                     </li>
                     <li> <b>Abatere standard</b>&mdash;Calculează abaterea standard a valorilor unui pixel &icirc;n toate &icirc;mpărțirile din imterval.
@@ -246,6 +248,24 @@
             <p>Acesta este numele stratului tematic ce va fi creat &icirc;n  <b>Conținutul Meu</b> și va fi adăugat pe hartă. Numele implicit se bazează pe numele instrumentului şi numele stratului tematic de intrare. Dacă stratul tematic rezultat există deja, vi se va solicita să furnizaţi un alt nume.
             </p>
             <p>Puteți specifica numele folderului &icirc;n  <b>Resursele mele</b> unde se va salva rezultatul folosind caseta drop-down <b>Salvați rezultatele &icirc;n</b>. Dacă aveți privilegiile pentru a crea atât straturi tematice de imagine înclinate, cât și dinamice, puteți menționa ce tip de strat tematic doriți să generați la ieșire din lista derulantă Salvare rezultat ca. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Valoarea percentilei</h2></div>
+        <hr/>
+        <div>
+            <p>Percentila de calculat. Valoarea implicită este 90 și indică cea de-a 90-a percentilă.
+            </p>
+            <p>Valorile variază &icirc;ntre 0 și 100. &Icirc;n principiu, percentila 0 este echivalentă cu statistica minimă, iar cea de-a 100-a percentilă este echivalentă cu maxima. &Icirc;n principiu, valoarea 50 are același rezultat ca statistica mediană.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Tipul de interpolare a percentilei</h2></div>
+        <hr/>
+        <div>
+            <p>Specifică metoda de interpolare a percentilei care va fi folosită atunci c&acirc;nd trebuie să se calculeze un număr par al valorilor din rasterul de intrare.
+            </p>
         </div>
     </div>
 </div>

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Klassificer objekter ved hjælp af Deep Learning",inputFeaturesLabel:"Vælg vektorlag til objekter (valgfrit)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"Vælg den Deep Learning-model, der skal bruges til at klassificere objekter",modelArgsLabel:"Angiv argumenter for Deep Learning-model",classLabelFieldLabel:"Definer klasseetikettens feltnavn (valgfrit)",processingModeLabel:"Behandlingstilstand",processAsMosaicLabel:"Behandl som mosaikbillede",processAsItemsLabel:"Behandl alle raster-elementer separat",queryModelArgsMsg:"Forespørger om model-argumenter...",queryModelArgsErrMsg:"Kunne ikke forespørge på model-argumenter.",valueLabel:"Værdi",nameLabel:"Navn",analysisLayerLabel:"Vælg det billede, der bruges skal bruges til at klassificere objekter",itemDescription:"Analysebilledtjeneste genereret ud fra klassificering af objekter ved hjælp af Deep Learning",itemTags:"Rasteranalyseresultat, klassificering af objekter ved hjælp af Deep Learning, ${layername}",itemSnippet:"Analysebilledtjeneste genereret ud fra klassificering af objekter ved hjælp af Deep Learning"});

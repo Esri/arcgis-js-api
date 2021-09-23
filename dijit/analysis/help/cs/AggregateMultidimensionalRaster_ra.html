@@ -44,7 +44,7 @@
         <h2>Agregovat vícerozměrný rastr (Aggregate Multidimensional Raster)</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Agregovat v&iacute;cerozměrn&yacute; rastr (Aggregate Multidimensional Raster)"></h2>
         <hr/>
-    <p>Vytvoř&iacute; datovou sadu v&iacute;cerozměrn&eacute;ho rastru kombinac&iacute; existuj&iacute;c&iacute;ch proměnn&yacute;ch v&iacute;cerozměrn&eacute;ho rastru a rozměru.
+    <p>Generates a multidimensional raster dataset by combining existing multidimensional raster variables along a dimension.
     </p>
     <p>Pokud m&aacute;te data o teplotě mořsk&eacute; hladiny za 30 let, kter&aacute; byla sb&iacute;r&aacute;na měs&iacute;čně, v hloubce každ&yacute;ch 5 metrů až do 100 metrů, př&iacute;klady aplikac&iacute; jsou n&aacute;sleduj&iacute;c&iacute;:
         <ul>
@@ -57,7 +57,7 @@
         </ul>
         
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou do anal&yacute;zy zahrnuty pouze proměnn&eacute; vrstvy viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, budou analyzov&aacute;ny proměnn&eacute; v cel&eacute; vrstvě, včetně těch, kter&eacute; se nach&aacute;zej&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -104,6 +104,8 @@
                     <li> <b>Men&scaron;ina</b>&mdash;Vypoč&iacute;t&aacute; hodnotu, kter&aacute; se pro pixel např&iacute;č v&scaron;emi řezy objevuje nejm&eacute;ně.
                     </li>
                     <li> <b>Medi&aacute;n</b>&mdash;Vypoč&iacute;t&aacute; hodnotu medi&aacute;nu pixelů např&iacute;č v&scaron;emi řezy v intervalu.
+                    </li>
+                    <li> <b>Percentil</b>&mdash;Vypoč&iacute;t&aacute; percentil hodnot pro pixely např&iacute;č v&scaron;emi řezy v&nbsp;intervalu. Ve v&yacute;choz&iacute;m nastaven&iacute; se poč&iacute;t&aacute; 90. percentil. Pomoc&iacute; parametru <b>Hodnota percentilu</b> můžete určit dal&scaron;&iacute; hodnoty (od 0 do 100).
                     </li>
                     <li> <b>Rozsah</b>&mdash;Vypoč&iacute;t&aacute; rozsah hodnot pro pixely např&iacute;č v&scaron;emi řezy v intervalu.
                     </li>
@@ -246,6 +248,24 @@
             <p>N&aacute;zev vrstvy, kter&aacute; se vytvoř&iacute; ve složce  <b>Můj obsah</b> a přid&aacute; se do mapy. V&yacute;choz&iacute; n&aacute;zev se ř&iacute;d&iacute; n&aacute;zvem n&aacute;stroje a n&aacute;zvem vstupn&iacute; vrstvy. Pokud vrstva již existuje, budete pož&aacute;d&aacute;ni o zad&aacute;n&iacute; jin&eacute;ho n&aacute;zvu.
             </p>
             <p>Můžete zadat n&aacute;zev složky v  <b>Můj obsah</b>, kde bude v&yacute;sledek uložen pomoc&iacute; rozbalovac&iacute;ho seznamu <b>Uložit v&yacute;sledek do</b> . Pokud máte oprávnění k vytváření dlaždicových a dynamických vrstev obrazových dat, můžete specifikovat, jaký typ vrstvy chcete vytvořit ve výstupu pomocí rozbalovacího seznamu Uložit výsledek jako. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Hodnota v percentilu</h2></div>
+        <hr/>
+        <div>
+            <p>Percentil, kter&yacute; m&aacute; b&yacute;t vypoč&iacute;t&aacute;n. V&yacute;choz&iacute; hodnota je 90, označuj&iacute;c&iacute; 90.&nbsp;percentil.
+            </p>
+            <p>Hodnoty mohou b&yacute;t v rozsahu od 0 do 100. 0.&nbsp;percentil je v&nbsp;podstatě shodn&yacute; s&nbsp;minim&aacute;ln&iacute; statistikou a&nbsp;100.&nbsp;percentil je v&nbsp;podstatě shodn&yacute; s&nbsp;maxim&aacute;ln&iacute; statistikou. V&yacute;sledkem hodnoty percentilu 50 budou v&nbsp;podstatě stejn&eacute; v&yacute;sledky jako medi&aacute;nov&eacute; statistiky.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Typ interpolace percentilu</h2></div>
+        <hr/>
+        <div>
+            <p>Určuje metodu interpolace percentilu, kter&aacute; se m&aacute; použ&iacute;t, když je sud&yacute; počet hodnot ze vstupn&iacute;ho rastru, kter&eacute; se maj&iacute; poč&iacute;tat.
+            </p>
         </div>
     </div>
 </div>

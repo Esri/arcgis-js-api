@@ -201,6 +201,29 @@
   margin: 1em 0;
 }
 
+.esriRFxJsonFileUploader {
+  width: 89%;
+}
+
+.esriRFxJsonFileUploader input {
+  width: 100%;
+  height: 27px;
+  line-height: 20px;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 0 .1em;
+  padding: 0 .2em;
+  box-sizing: border-box;
+}
+
+.esriRFxJsonFileUploader #fileText {
+  border: solid 1px #BBB;
+}
+
+.esriRFxJsonFileUploader #fileInput {
+  margin: .5em 0;
+}
+
 .esriRFxArgsEditor .esri-rfx-switch-selector,
 .esriRFxArgsEditor .esri-rfx-linear-input,
 .esriRFxArgsEditor .esriRFxGridBase,
@@ -299,7 +322,7 @@
     padding: 15px 0 0;
   }
 
-  .esri-rfx-raster-variable-grid .field-Select {
+  .esri-rfx-raster-variable-grid .field-Select, .field-Delete {
     width: 60px;
   }
 

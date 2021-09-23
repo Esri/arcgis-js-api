@@ -59,3 +59,9 @@
         height: 100%;
         pointer-events: none;
     }
+
+    
+    .esriGEReportPlayer_reportContainer .esriGEAdjustableGrid .esriGEAdjustableGridValueField a {
+        color: inherit;
+        text-decoration: inherit;
+    }

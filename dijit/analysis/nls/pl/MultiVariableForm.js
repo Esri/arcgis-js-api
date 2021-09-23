@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({distToNearest:"Odległość do najbliższego",attrOfInterest:"Atrybut najbliższego",summaryNearby:"Podsumowanie dla pobliskich",summaryIntersecting:"Podsumowanie dla przecinających się",distToNearestLabel:"Odległość od środka kosza do najbliższego obiektu w warstwie wejściowej",attrOfInterestLabel:"Wartość podanego pola z najbliższego obiektu z warstwy wejściowej",summaryNearbyLabel:"Statystyka obliczona dla wszystkich obiektów znalezionych w podanej odległości od środka kosza",summaryIntersectingLabel:"Statystyka obliczona dla wszystkich obiektów przecinających kosz",maxDistancefromCtr:"Maksymalna odległość od środka kosza",fieldToIncude:"Pole do uwzględnienia",statstoCalculate:"Statystyka do obliczenia",summFeatuesWithin:"Podsumuj obiekty w ramach",smallMaxDistErrorMsg:"Maksymalna odległość od środka kosza musi być większa niż wielkość kosza.",smallSumFeaturesErrorMsg:"Maksymalna odległość od środka kosza musi być większa niż wielkość kosza."});

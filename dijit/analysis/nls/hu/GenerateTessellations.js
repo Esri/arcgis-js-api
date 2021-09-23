@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({chooseShape:"Alakzat választása",defineExtent:"Kiterjedés meghatározása",defineBin:"Gyűjtő méretének meghatározása a következő megadásával:",area:"Terület",distance:"Távolság",resultLayerName:"Eredményréteg neve",hexagon:"Hatszög",transverseHexagon:"Transzverzális hatszög",square:"Négyzet",triangle:"Háromszög",diamond:"Rombusz",sameAsDisplay:"Ugyanaz, mint a megjelenített",emptyBinSize:"A gyűjtő mérete nem lehet üres",currentExtent:"aktuális kiterjedés",intersectExtent:"Csak az átfedésben lévő tesszellációk megtartása",outputLayerName:"Tesszellációk létrehozása a(z) ${extentLayerName} rétegben",itemDescription:"A(z) ${extentLayerName} rétegbeli kiterjedés volt használva.",itemTags:"Elemzés végeredménye, Tesszelációk létrehozása, ${extentLayerName}",itemSnippet:"A tesszelációk létrehozása alapján létrehozott vektoros réteg."});

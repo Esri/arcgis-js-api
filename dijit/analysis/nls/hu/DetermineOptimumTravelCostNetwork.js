@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Raszteres vagy vektoros helyréteg kiválasztása az útvonalak meghatározásához a következők között:",inputCostRasterLabel:"Raszteres útiköltség réteg kiválasztása",outputOptimumNetworkName:"Eredményül kapott optimális útvonalak polyline rétegének neve",outputNeighborNetworkName:"Eredményül kapott szomszédos útvonalak polyline rétegének neve (opcionális)",outputLayerName:"Optimális útiköltség meghatározása a következőhöz: ${layername}",itemDescription:"Az optimális útiköltséghez tartozó hálózat ${layerName} rétegen történő futtatásából létrehozott vektoros réteg. ",itemTags:"Elemzés végeredménye, Optimális útiköltséghez tartozó hálózat meghatározása, ${layername} ${fieldname}",itemSnippet:"Az optimális útiköltséghez tartozó hálózat meghatározásából létrehozott vektoros réteg."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Επιλογή θεματικού επιπέδου Atlas Analysis",customAnalysisLayerTitle:"Επιλογή θεματικού επιπέδου ανάλυσης",searchPlaceholderText:"Επιλογή θεματικών επιπέδων ανάλυσης στο Living Atlas",searchCustomPlaceholderText:"Αναζήτηση θεματικών επιπέδων ανάλυσης",mainActionTitle:"Επιλογή",customActionName:"Επιλογή και προσθήκη στον χάρτη",customeSectionName:"Θεματικά επίπεδα ανάλυσης στο Living Atlas",Categories:"Κατηγορίες",boundaries:"Όρια",places:"Μέρη",boundariesAndPlaces:"Όρια και τοποθεσίες",hexbins:"Hexbin",transportation:"Μεταφορές",point:"Θεματικά επίπεδα σημείων",line:"Θεματικά επίπεδα γραμμών",polygon:"Θεματικά επίπεδα πολυγώνων",pointFilterName:"Σημείο",lineFilterName:"Γραμμή",polygonFilterName:"Πολύγωνο",multiPointFilterName:"Πολλαπλά σημεία",geometryFilterName:"Γεωμετρία",featureLayerName:"Feature Layer",tableLayerName:"Πίνακας",itemTypeFilterName:"Τύπος αντικειμένου",instantFilterName:"Στιγμή",intervalFilterName:"Διάστημα",timeFilterName:"Χρόνος",edit:"Επεξεργασία",boundaryLayers:"Θεματικό επίπεδο ορίων Esri",customAnalysisGroupName:"Ομάδα ανάλυσης οργανισμού"});

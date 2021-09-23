@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite sloj smera protoka",pourPointLayerLabel:"Odaberite raster tački tečenja ili sloj geoobjekata",pourPointField:"Odaberite polje za tačku tečenja",resultLayerName:"Naziv sloja sa rezultatima",outputLayerName:"Vododelnica ${layername}",itemDescription:"Sloj geoobjekata nastao usled pokretanja rešenja Sumiraj centar i disperziju na ${layerName}. ",itemTags:"Rezultat analize, vododelnica, ${layername}, ${fieldname}",itemSnippet:"Sloj geoobjekata nastao iz vododelnice."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["require","dojo/_base/declare","esri/dijit/geoenrichment/Deferred","esri/dijit/geoenrichment/when","../ReportPlayerState"],(function(n,e,i,t,r){function o(){var e=new i;return n(["../printing/PrintableContainer"],(function(n){e.resolve(n)})),e.promise}return e(null,{_getPrintableContainer:function(n){var e=this;return r.isAnimationSuspended=!0,e._showWaiting(o(),"loadPrintModules").then((function(i){var o=new i(e,e._viewModel);return n.onShowWaiting=function(n){e._showWaiting(n,"initPrintContainer")},t(o.initialize(n),(function(n){return r.isAnimationSuspended=!1,n||t(o.stop(),(function(){return null}))}))}))},_getPrintDialogSettings:function(){var n=this;return o().then((function(e){return new e(n,n._viewModel).getPrintDialogSettings()}))}})}));

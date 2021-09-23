@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Definire obiecte utilizând învățarea profundă (Deep Learning)",outputLayerName:"${layername}_detected",modelLabel:"Alegeți modelul de învățare profundă folosit pentru a detecta obiecte",modelArgsLabel:"Specificați argumentele modelului de învățare profundă",nameLabel:"Nume",valueLabel:"Valoare",removeDuplicatesLable:"Eliminare obiecte spaţiale duplicate de la ieșire (opțional)",queryModelArgsMsg:"Se analizează argumentele modelului...",queryModelArgsErrMsg:"A eșuat interogarea argumentelor modelului.",nonMaxSuppressionLabel:"Suprimarea non-maximelor",options:"Opțiuni",confidenceLabel:"Câmp scor încredere",classValueLabel:"Câmp valoare clasă",maxOverlapLabel:"Raport de suprapunere maximă",numberOnlyMsg:"Sunt permise numai valori numerice.",processingModeLabel:"Mod de procesare",processAsMosaicLabel:"Procesați ca imagine mozaicată",processAsItemsLabel:"Procesați toate elementele raster separat",analysisLayerLabel:"Alegeți imaginea utilizată pentru a detecta obiecte",itemDescription:"Serviciu de analiză a imaginilor generat de Detectare obiecte utilizând învățarea profundă",itemTags:"Rezultat analiză raster, Detectare obiecte utilizând învățarea profundă, ${layername}",itemSnippet:"Serviciu de analiză a imaginilor generat de Detectare obiecte utilizând învățarea profundă"});

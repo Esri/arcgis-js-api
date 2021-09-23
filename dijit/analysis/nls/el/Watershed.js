@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Επιλογή θεματικού επιπέδου κατεύθυνσης ροής",pourPointLayerLabel:"Επιλογή raster ή feature layer σημείου ροής",pourPointField:"Επιλογή πεδίου σημείου ροής",resultLayerName:"Όνομα εξαγόμενου θεματικού επιπέδου",outputLayerName:"Λεκάνη απορροής στο θεματικό επίπεδο ${layername}",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της λύσης «Σύνοψη κέντρου και διασποράς» για το θεματικό επίπεδο ${layerName}. ",itemTags:"Αποτέλεσμα ανάλυσης, Λεκάνη απορροής, ${layername} ${fieldname}",itemSnippet:"Δημιουργήθηκε feature layer από την επιλογή «Λεκάνη απορροής»."});

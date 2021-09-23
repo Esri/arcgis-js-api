@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dijit/_WidgetBase","dijit/_TemplatedMixin","esri/dijit/geoenrichment/TriStateItem","esri/dijit/geoenrichment/utils/MouseUtil","dojo/text!../../../templates/sectionDynamicSettings/MapSettings.html","dojo/i18n!esri/nls/jsapi"],(function(e,i,t,n,s,o,d){return e([i,t],{templateString:o,nls:d=d.geoenrichment.dijit.ReportPlayer.SectionDynamicSettingsBuilder,postCreate:function(){this.showLegendCheckbox=new n(this.showLegendCheckboxLabel),this.showLegendCheckbox.onClick=function(){this.onLegendVisibilityChanged(this.showLegendCheckbox.get("checked"))}.bind(this)},setLegendVisible:function(e){this.showLegendCheckbox.set("checked",e)},onLegendVisibilityChanged:function(e){},setVisualState:function(e){this.showLegendCheckbox.set("checked",e&&e.showLegend)},isMouseOver:function(e){return s.isMouseOver(this.domNode)}})}));

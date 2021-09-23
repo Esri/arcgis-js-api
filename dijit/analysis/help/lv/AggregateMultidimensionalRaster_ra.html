@@ -44,7 +44,7 @@
         <h2>Apkopot daudzdimensiju rastru</h2><p/>
         <h2><img src="../images/GUID-2C2320A3-EC6E-4FFC-B59B-9551BB02C545-web.png" alt="Apkopot daudzdimensiju rastru"></h2>
         <hr/>
-    <p>Ģenerē daudzdimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os multidimensiju rastra mainīgos.
+    <p>Ģenerē daudzdimensiju rastru datu kopu, dimensijā apvienojot eso&scaron;os daudzdimensiju rastra mainīgos.
     </p>
     <p>Ja jūsu rīcībā ir 30 gadu gaitā iegūti jūras virsmas temperatūras dati, kas apkopoti katru mēnesi ik pēc 5 metru dziļuma, līdz pat 100 metriem, tālāk ir redzami daži izmanto&scaron;anas piemēri:
         <ul>
@@ -104,6 +104,8 @@
                     <li> <b>Mazākums</b>&nbsp;&mdash; aprēķina visretāko pikseļa vērtību visos sektoros intervālā.
                     </li>
                     <li> <b>Mediāna</b>&nbsp;&mdash; aprēķina pikseļa mediāna vērtību starp visiem sektoriem intervālā.
+                    </li>
+                    <li> <b>Procentile</b>&nbsp;&mdash;&nbsp; &mdash; pikseļa vērtības procentīle tiks aprēķināta visos intervāla sektoros. 90.&nbsp;procentile tiek aprēķināta pēc noklusējuma. Citas vērtības (no 0 līdz 100) var norādīt, izmantojot <b>Procentiles vērtības</b> parametru.
                     </li>
                     <li> <b>Diapazons</b>&nbsp;&mdash; aprēķina pikseļa vērtību diapazonu visos sektoros intervālā.
                     </li>
@@ -246,6 +248,24 @@
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
             <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>. Ja jums ir privilēģijas izveidot gan mozaīkas, gan dinamiskus attēlu slāņus, varat arī norādīt, kuru slāņa veidu ģenerēt izvadē, izmantojot nolaižamo lodziņu Saglabāt rezultātu kā. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Procentiles vērtība</h2></div>
+        <hr/>
+        <div>
+            <p>Aprēķināmā procentile Noklusējuma vērtība ir&nbsp;90, norādot 90.&nbsp;procentili.
+            </p>
+            <p>Vērtības var būt diapazonā no 0 līdz 100. 0.&nbsp;procentile būtībā ir līdzvērtīga minimālajai statistikai, un 100.&nbsp;procentile ir līdzvērtīga maksimālajai vērtībai. Vērtība 50&nbsp;uzrādīs tādu pa&scaron;u rezultātu kā mediānas statistika.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Procentiles interpolācijas veids</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda procentiles interpolācijas metodi, kas tiks izmantota, ja aprēķināmā ievades rastra vērtību skaits ir vienāds.
+            </p>
         </div>
     </div>
 </div>

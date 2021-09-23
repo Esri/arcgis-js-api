@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["./GeometryStudyArea","./AddressStudyArea","./StandardGeographyStudyArea","../../extend"],(function(e,r,n,t){var d=function(t){return t.geometry?new e(t):t.address?new r(t):t.layer?new n(t):void 0};return t("esri.tasks.geoenrichment.studyAreaFromJson",d),d}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Elegir ráster o entidades de destino",destinationField:"Campo de destino (opcional)",inputDistanceAccumulationRaster:"Elegir ráster de acumulación de distancia",inputBackDirectionRaster:"Elegir ráster de dirección del flujo o de dirección hacia atrás",pathType:"Tipo de ruta (opcional)",bestSingle:"Mejor simple",eachCell:"Cada celda",eachZone:"Cada zona",outputRasterName:"Nombre de capa de ráster resultante",outputLayerName:"Ruta óptima como ráster de ${layername}",drawSourcePointLayerName:"Puntos de origen",itemDescription:"Capa de entidades generada al ejecutar la ruta óptima como ráster en ${layername}. ",itemTags:"Resultado del análisis, ruta óptima como ráster, ${layername} ${fieldname}",itemSnippet:"Capa de entidades generada a partir de la ruta óptima como ráster."});

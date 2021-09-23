@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolha a camada da qual encontrar locais de permanência",selectTracksLabel:"Selecione um ou mais campos para identificar caminhos",defineDistanceLabel:"Defina a distância de pesquisa espacial",distMethodLabel:"Escolha o método para calcular a distância",temporalSearchLabel:"Definir o intervalo de pesquisa temporal",outputDwellLabel:"Locais de permanência de saída como",outputLayerName:"Encontrar Locais de Permanência para ${inputLayerName}",meanCenters:"Centros médios",convexHulls:"Coberturas convexas",dwellFeatures:"Feições de permanência",allFeatures:"Todas as feições",itemDescription:"Camada de feição gerada ao executar a solução Encontrar Locais de Permanência para ${inputLayerName}.",itemTags:"Resultado da Análise, Encontrar Locais de Permanência, ${inputLayerName}",itemSnippet:"Camada de feição gerada de Encontrar Locais de Permanência",timeIntervalSplit:"Analisar dados com intervalos de tempo (opcional)",timeBoundaryValidationMsg:"O intervalo de tempo deve ser maior que o intervalo de pesquisa temporal."});

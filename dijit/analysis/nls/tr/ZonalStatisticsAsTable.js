@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Bölge rasterı veya detaylarını seç",outputTableName:"Sonuç tablosunun adı",zoneField:"Bölge alanı",inputValueRaster:"Değer rasterını seç",ignoreNodata:"Hesaplamalarda NoData'yı yoksay (isteğe bağlı)",ignore:"Yoksay",statisticType:"İstatistik türü (isteğe bağlı)",percentileValues:"Yüzde değerleri (isteğe bağlı)",percentileInterpolationType:"Yüzde enterpolasyon türü (isteğe bağlı)",processAsMultidimensional:"Çok boyutlu olarak işle (isteğe bağlı)",allSlices:"Tüm dilimler",outputZonalStatsName:"${layername} içinde ${valuelayername} için bölgesel istatistikler",itemDescription:"Tablo Olarak Bölgesel İstatistiklerden oluşturulan analiz detay tablosu",itemTags:"Raster Analiz Sonucu, Tablo Olarak Bölgesel İstatistikler, ${layername}, ${valuelayername}",autoDetect:"Otomatik algıla",nearest:"En Yakın",linear:"Doğrusal"});

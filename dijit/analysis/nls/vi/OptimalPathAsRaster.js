@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Chọn raster đích hoặc đối tượng",destinationField:"Trường đích (tùy chọn)",inputDistanceAccumulationRaster:"Chọn raster tích lũy khoảng cách",inputBackDirectionRaster:"Chọn raster thuận dòng hoặc ngược dòng",pathType:"Loại đường dẫn (tùy chọn)",bestSingle:"Đơn tốt nhất",eachCell:"Mỗi cell",eachZone:"Mỗi vùng",outputRasterName:"Tên lớp raster kết quả",outputLayerName:"Đường dẫn tối ưu dưới dạng raster của ${layername}",drawSourcePointLayerName:"Các điểm nguồn",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy đường dẫn tối ưu dưới dạng raster trên ${layername}. ",itemTags:"Kết quả Phân tích, Đường dẫn tối ưu dưới dạng raster, ${layername} ${fieldname}",itemSnippet:"Lớp đối tượng được tạo ra từ đường dẫn tối ưu dưới dạng raster."});

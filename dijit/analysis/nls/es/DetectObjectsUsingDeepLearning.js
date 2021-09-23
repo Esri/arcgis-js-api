@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Definir objetos con aprendizaje profundo",outputLayerName:"${layername}_detected",modelLabel:"Elegir el modelo de aprendizaje profundo utilizado para detectar objetos",modelArgsLabel:"Especificar los argumentos del modelo de aprendizaje profundo",nameLabel:"Nombre",valueLabel:"Valor",removeDuplicatesLable:"Eliminar entidades duplicadas de la salida (opcional)",queryModelArgsMsg:"Consultando argumentos del modelo...",queryModelArgsErrMsg:"Error al consultar argumentos de modelo.",nonMaxSuppressionLabel:"Supresión no máxima",options:"Opciones",confidenceLabel:"Campo de puntuación de confianza",classValueLabel:"Campo de valor de clase",maxOverlapLabel:"Máx. ratio de superposición",numberOnlyMsg:"Solo se permiten valores numéricos.",processingModeLabel:"Modo de procesamiento",processAsMosaicLabel:"Procesar como imagen en mosaico",processAsItemsLabel:"Procesar todos los elementos ráster por separado",analysisLayerLabel:"Elegir la imagen utilizada para detectar objetos",itemDescription:"Servicio de imágenes de análisis generado a partir de Detectar objetos con aprendizaje profundo",itemTags:"Resultado de análisis de ráster, Detectar objetos con aprendizaje profundo, ${layername}",itemSnippet:"Servicio de imágenes de análisis generado a partir de Detectar objetos con aprendizaje profundo"});

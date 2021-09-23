@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["require","exports","./tiling/TileInfoView","./tiling/TileKey","./tiling/TileQueue","./tiling/TileStrategy"],(function(e,i,l,t,n,u){Object.defineProperty(i,"__esModule",{value:!0}),i.TileInfoView=l,i.TileKey=t,i.TileQueue=n,i.TileStrategy=u}));

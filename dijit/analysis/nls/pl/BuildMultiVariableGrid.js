@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({binsLabel:"Wybierz typ koszy, który będzie używany do budowania siatki wielu wartości",layersAttrLabel:"Wybierz warstwy wejściowe i zmienne, które chcesz dołączyć do siatki",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Buduj siatkę wielu wartości.",itemTags:"Wynik analizy, Buduj siatkę wielu wartości",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Buduj siatkę wielu wartości",addVariables:"Dodaj zmienne"});

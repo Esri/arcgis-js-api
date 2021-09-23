@@ -41,8 +41,8 @@
 <body onload="init()">
 <div id="topics">
     <div id="toolDescription" class="smallsize">
-        <h2>Funkcija Noteikt objektus, izmantojot Deep Learning</h2><p/>
-        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Funkcija Noteikt objektus, izmantojot Deep Learning"></h2>
+        <h2>Funkcija Atpazīt objektus, izmantojot Deep Learning</h2><p/>
+        <h2><img src="../images/GUID-EE76A33E-0B8F-48EE-94F8-782FAD241D72-web.png" alt="Funkcija Atpazīt objektus, izmantojot Deep Learning"></h2>
         <hr/>
     <p>&Scaron;is rīks izmanto trenētu Deep Learning modeli uz ievades rastra, lai izveidotu elementu klasi, kurā ir atrastie objekti. &Scaron;ie elementi var būt lodziņi vai laukumi ap atrastajiem objektiem vai punkti objektu centros.
     </p>
@@ -82,7 +82,7 @@
         <div><h2>Noņemt elementu dublikātus no izvades (pēc izvēles)</h2></div>
         <hr/>
         <div>
-            <p>Veic nemaksimālo nomāk&scaron;anu, ja tiek identificēti dubultie objekti un tiek noņemta dublētā funkcija ar zemāku ticamības vērtību.
+            <p>Veic nemaksimālo nomāk&scaron;anu, ja tiek identificēti dubultie objekti un tiek noņemts dublētais elements ar zemāku ticamības vērtību.
                 <ul>
                     <li>Nav atzīmēts&mdash;visi noteiktie objekti būs izvades elementu klasē. Tā ir noklusējuma vērtība.
                         
@@ -98,10 +98,10 @@
         </div>
     </div>
     <div id="confidenceScoreField">
-        <div><h2>Ticamības rezultāta lauks</h2></div>
+        <div><h2>Redzamības ticamības rādītāja lauks</h2></div>
         <hr/>
         <div>
-            <p>Funkcionalitātes pakalpojuma lauks, kurā ir ticamības rādītājs kā izvade pēc objekta noteik&scaron;anas metodes.
+            <p>Lauks elementu servisā, kas ietver ticamības rādītāju kā izvadi objekta noteik&scaron;anas metodē.
             </p>
             <p>&Scaron;is parametrs ir nepiecie&scaron;ams, kad tiek pārbaudīts  <b>Nemaksimālās apslāpē&scaron;anas</b> parametrs.
             </p>
@@ -119,7 +119,7 @@
         <div><h2>Maksimālā pārklājuma attiecība</h2></div>
         <hr/>
         <div>
-            <p>Maksimālā pārklā&scaron;anās proporcija divām īpa&scaron;ībām, kas pārklājas, tiek definēta kā krustpunkta apgabala attiecība pār savienojumu apgabalu. Noklusējuma vērtība ir 0.
+            <p>Maksimālā pārklā&scaron;anās proporcija diviem elementiem, kas pārklājas, kas tiek definēta kā pārklājo&scaron;ās teritorijas attiecība pret apvienojamo teritoriju. Noklusējuma vērtība ir 0.
             </p>
         </div>
     </div>
@@ -130,8 +130,28 @@
             
             <p>Slāņa nosaukums, kas tiks izveidots sadaļā  <b>Mans saturs</b> un pievienots kartei. Noklusējuma nosaukums ir balstīts uz rīka nosaukumu un ievades slāņa nosaukumu. Ja &scaron;āds slānis jau pastāv, jums tikts lūgts norādīt citu nosaukumu.
             </p>
-            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs,</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
+            <p>Mapes nosaukumu var norādīt mapē  <b>Mans saturs</b> kur rezultāts tiks saglabāts, izmantojot nolaižamo lodziņu <b>Saglabāt rezultātu</b>.
             </p>
+        </div>
+    </div>
+    <div id="processAllRasterItems">
+        <div><h2>Apstrādes režīms</h2></div>
+        <hr/>
+        <div>
+            <p>Norāda, kā tiks apstrādātas visas rastra vienības mozaīkas datu kopā vai attēlu servisā. &Scaron;is parametrs tiek lietots, ja ievades rastrs ir mozaīkas datu kopa vai attēlu serviss.
+            </p>
+            <ul>
+                <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
+Visi mozaīkas datu kopas vai attēlu servisa rastra vienības tiks savienotas un apstrādātas. Tā ir noklusējuma vērtība.
+
+                </li>
+                <li>PROCESS_ITEMS_SEPARATELY &mdash; 
+Visas rastra vienības mozaīkas datu kopā vai attēlu servisā tiks apstrādātas kā atsevi&scaron;ķi attēli.
+
+                </li>
+            </ul>
+            <del><strong>&#60&#62</strong></del>
+            
         </div>
     </div>
 </div>

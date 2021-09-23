@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Mit Trend-Raster vorhersagen",outputLayerName:"${layername}_predict",variablesLabel:"Vorherzusagende Variable(n) auswählen",variablesListLabel:"Variablen [Dimensionsinfo] (Beschreibung)",dimensionDefinitionLabel:"Methode auswählen, die zum Bereitstellen von Vorhersagedimensionswerten verwendet wird",dimensionValuesLabel:"Dimensionswert(e) für Vorhersage angeben",dimensionIntervalLabel:"Dimensionsintervall für Vorhersage angeben",intervalValueLabel:"Anzahl an Schritten zwischen Start- und Endwert angeben",intervalUnitLabel:"Die für das Zeitwertintervall verwendete Einheit auswählen",startLabel:"Startwert",endLabel:"Endwert",byValueLabel:"Schrittweite",byIntervalLabel:"Nach Intervall",hours:"Stunden",days:"Tage",weeks:"Wochen",months:"Monate",years:"Jahre",custom:"Benutzerdefiniert",itemDescription:'Über "Mit Trend-Raster vorhersagen" erstellter Analyse-Image-Service',itemTags:"Raster-Analyseergebnis, Mit Trend-Raster vorhersagen, ${layername}",itemSnippet:'Über "Mit Trend-Raster vorhersagen" erstellter Analyse-Image-Service'});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({binsLabel:"Zvolte typ přihrádek, které budou použity pro vytvoření mřížky s více proměnnými",layersAttrLabel:"Zvolte vstupní vrstvy a proměnné, které chcete zahrnout do mřížky",itemDescription:"Vrstva prvků vygenerovaná spuštěním nástroje Vytvořit mřížku s více proměnnými.",itemTags:"Výsledek analýzy, Vytvořit mřížku s více proměnnými",itemSnippet:"Vrstva prvků vygenerovaná nástrojem Vytvořit mřížku s více proměnnými",addVariables:"Přidat proměnné"});

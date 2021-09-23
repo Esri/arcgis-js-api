@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Vybrať raster zón alebo prvkov",outputTableName:"Názov výslednej tabuľky",zoneField:"Pole zóny",inputValueRaster:"Vybrať raster hodnoty",ignoreNodata:"Ignorovať NoData vo výpočtoch (voliteľné)",ignore:"Ignorovať",statisticType:"Typ štatistiky (voliteľné)",percentileValues:"Hodnota percentilu (voliteľné)",percentileInterpolationType:"Percentilný typ interpolácie (voliteľné)",processAsMultidimensional:"Spracovať ako viacrozmerné (voliteľné)",allSlices:"Všetky segmenty",outputZonalStatsName:"Zonálna štatistika pre ${valuelayername} v rámci ${layername}",itemDescription:"Analýza prvkov tabuľky vygenerovaná zo Zonálnej štatistiky ako tabuľka",itemTags:"Výsledok rastrovej analýzy, zonálna štatistika ako tabuľka, ${layername}, ${valuelayername}",autoDetect:"Automatická detekcia",nearest:"Najbližší",linear:"Lineárny"});

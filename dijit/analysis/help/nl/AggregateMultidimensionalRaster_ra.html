@@ -105,6 +105,8 @@
                     </li>
                     <li> <b>Mediaan</b>&mdash;Berekent de mediaanwaarde van een pixel over alle stukken in het interval.
                     </li>
+                    <li> <b>Percentiel</b>&mdash;Het percentiel van waarden voor een pixel wordt berekend over alle stukken in het interval. Het 90e percentiel wordt standaard berekend. U kunt andere waarden opgeven (van 0 tot 100) met de parameter <b>Percentielwaarde</b>.
+                    </li>
                     <li> <b>Bereik</b>&mdash;Berekent het bereik van de waarden voor een pixel over alle stukken in het interval.
                     </li>
                     <li> <b>Standaardafwijking</b>&mdash;Berekent de standaardafwijking van de pixelwaarden over alle stukken in het interval.
@@ -246,6 +248,24 @@
             <p>De naam van de laag die in  <b>Mijn Content</b> wordt gemaakt en aan de kaart wordt toegevoegd. De standaardnaam is gebaseerd op de toolnaam en de naam van de invoerlaag. Als de laag al bestaat, wordt u gevraagd een nieuwe naam te geven.
             </p>
             <p>U kunt de naam van een map opgeven in  <b>Mijn Content</b>, waar het resultaat wordt opgeslagen met het vervolgkeuzemenu <b>Resultaat opslaan in</b>. Als u de machtigingen hebt om zowel getegelde als dynamische beeldlagen aan te maken, kunt u specificeren welk layertype wordt gegenereerd in de uitvoer met het vervolgkeuzemenu Resultaat opslaan als. </p>
+        </div>
+    </div>
+    <div id="percentileValue">
+        <div><h2>Percentielwaarde</h2></div>
+        <hr/>
+        <div>
+            <p>Het percentiel om te berekenen. De standaard is 90, wijzend op het 90e percentiel.
+            </p>
+            <p>De waardes kunnen tussen de 0 en 100 liggen. Het 0de percentiel is in wezen gelijk aan de minimumstatistiek en het 100ste percentiel is gelijk aan het maximum. Een waarde van 50 zal in wezen hetzelfde resultaat produceren als de mediaanstatistiek.
+            </p>
+        </div>
+    </div>
+    <div id="percentileInterpolationType">
+        <div><h2>Percentielinterpolatietype</h2></div>
+        <hr/>
+        <div>
+            <p>Specificeert de methode van percentielinterpolatie die zal worden gebruikt wanneer er een even aantal waarden uit het invoerraster moet worden berekend.
+            </p>
         </div>
     </div>
 </div>

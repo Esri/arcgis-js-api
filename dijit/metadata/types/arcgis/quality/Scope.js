@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../../../kernel","../../../base/Descriptor","dojo/text!./templates/Scope.html","../maintenance/ScopeCd","../maintenance/ScopeDscElements","../form/ExtentElement","../extent/ExtentElements"],(function(e,t,n,a,o,s){var c=e(o,{templateString:s});return n("extend-esri")&&t.setObject("dijit.metadata.types.arcgis.quality.Scope",c,a),c}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({modifiedTitle:"רגרסיה ליניארית מוכללת - ${goal}",fit:"מותאם",fitAndPredict:"מותאם וחיזוי",selectGoal:"מה ברצונך לעשות?",fitGoal:"התאמת מודל לצורך הערכת ביצועי המודל",fitAndPredictGoal:"התאמת מודל וחיזוי ערכים",inputLayerLabel:"בחר שכבה ליצירת מודל",chooseDependentField:"בחר את השדות ליצירת מודל",chooseDataType:"בחר את סוג הנתונים שעליהם מבוסס המודל",continuousData:"רציף",binaryData:"בינארי",countData:"מונה",chooseExplanatoryField:"בחר את השדות המסבירים",chooseFeaturesToPredict:"בחר שכבה לחיזוי ערכים",chooseExplainMatch:"בחר את אופן התאמת השדות המסבירים",outputLayerName:"GLR ${inputLayerName}",itemDescription:"שכבת ישויות נוצרה מהרצת פתרונות של רגרסיה ליניארית מוכללת ${goal}.",itemTags:"תוצאת הניתוח, רגרסיה ליניארית מוכללת, ${inputLayerName}, ${goal}",itemSnippet:"שכבת ישויות נוצרה מהרצת רגרסיה ליניארית מוכללת ${goal}"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Trend Rasterı Kullanarak Tahmin Et",outputLayerName:"${layername}_predict",variablesLabel:"Tahmin edilecek değişkenleri seçin",variablesListLabel:"Değişkenler [Boyut Bilgisi] (Açıklama)",dimensionDefinitionLabel:"Tahmin boyut değerleri sağlamak için kullanılacak yöntemi seçin",dimensionValuesLabel:"Tahmin için boyut değerlerini belirtin",dimensionIntervalLabel:"Tahmin için boyut aralığını belirtin",intervalValueLabel:"Başlangıç ve bitiş değerleri arasındaki adım sayısını belirtin",intervalUnitLabel:"Zaman değeri aralığı için kullanılacak birimi seçin",startLabel:"Başlangıç Değeri",endLabel:"Bitiş Değeri",byValueLabel:"Değere Göre",byIntervalLabel:"Aralığa göre",hours:"Saat",days:"Günler",weeks:"Hafta",months:"Aylar",years:"Yıl",custom:"Özel",itemDescription:"Trend Rasterı Kullanarak Tahmin Et ile oluşturulan Analiz Görüntü Servisi",itemTags:"Raster Analizi Sonucu, Trend Rasterı Kullanarak Tahmin Et, ${layername}",itemSnippet:"Trend Rasterı Kullanarak Tahmin Et ile oluşturulan Analiz Görüntü Servisi"});

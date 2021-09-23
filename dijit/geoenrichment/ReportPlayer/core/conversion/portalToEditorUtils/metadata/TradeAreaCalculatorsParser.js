@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlConverter","./VariableScriptCollector","../../../supportClasses/templateJsonUtils/fieldInfo/FieldLibrary"],(function(e,a,r){var i={parseTradeAreaCalculators:function(i,t,l){var s=e.queryJson(i,"SpecialTradeAreaFields");t.metadata.specialTradeAreaCalculatorName=s[0]&&s[0].attributes&&s[0].attributes.Name,s.forEach((function(e){l.variableProvider.isPlayerOnly&&a.getObjects(e,!0).variableObjects.forEach((function(e){e.alias=e.alias||r.getFieldLabel(e.id),l.variableProvider.addVariable(e)}))}))}};return i}));

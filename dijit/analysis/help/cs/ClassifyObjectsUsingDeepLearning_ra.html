@@ -46,7 +46,7 @@
         <hr/>
     <p>Tento n&aacute;stroj spust&iacute; naučen&yacute; model deep learningu na vstupn&iacute;m rastru a voliteln&eacute; tř&iacute;dě prvků za &uacute;čelem vytvořen&iacute; tř&iacute;dy prvků nebo tabulky, v n&iacute;ž m&aacute; každ&yacute; vstupn&iacute; objekt přiřazenou tř&iacute;du popisků.
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b> , budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
@@ -78,19 +78,19 @@
             </p>
         </div>
     </div>
-    <div id="processing_mode">
+    <div id="processAllRasterItems">
         <div><h2>Režim zpracování</h2></div>
         <hr/>
         <div>
-            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě. Tento parametr se použije v př&iacute;padě, že je vstupn&iacute;m rastrem mozaikov&aacute; datov&aacute; sada nebo obrazov&aacute; služba.
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo image služba. Tento parametr se použ&iacute;v&aacute;, když je vstupn&iacute; rastr mozaikov&aacute; datov&aacute; sada nebo image služba.
             </p>
             <ul>
                 <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
-V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou spojeny do mozaiky a zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute;&nbsp;image službě budou spojeny do mozaiky a&nbsp;zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
 
                 </li>
                 <li>PROCESS_ITEMS_SEPARATELY &mdash; 
-V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
+V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v&nbsp;image službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
 
                 </li>
             </ul>
@@ -114,7 +114,7 @@ V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obr
         <div>
             <p>N&aacute;zev pole, kter&eacute; bude obsahovat klasifikačn&iacute; popisek ve v&yacute;stupn&iacute; vrstvě prvků.
             </p>
-            <p>Pokud nen&iacute; zad&aacute;n ž&aacute;dn&yacute; n&aacute;zev pole, ve v&yacute;stupn&iacute; vrstvě prvků bude vygenerov&aacute;no nov&eacute; pole s n&aacute;zvem  <i>ClassLabel</i>.
+            <p>Pokud nen&iacute; zad&aacute;n ž&aacute;dn&yacute; n&aacute;zev pole, ve v&yacute;stupn&iacute; vrstvě prvků bude vygenerov&aacute;no nov&eacute; pole s&nbsp;n&aacute;zvem  <i>ClassLabel</i>.
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@ V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obr
                     <li> <b>Zpracovat položky odděleně</b>&mdash;V&scaron;echny položky rastru ve službě image service budou zpracov&aacute;ny jako samostatn&eacute; sn&iacute;mky.
                     </li>
                 </ul>
-                .
+                . . . . je d&aacute;n hodnotou zvolen&eacute;ho atributu děl&iacute;c&iacute; vrstvy.
             </p>
         </div>
     </div>

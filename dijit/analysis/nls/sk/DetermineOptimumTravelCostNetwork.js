@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vyberte raster alebo vrstu umiestnenia prvkov pre určenie cestovných trás medzi",inputCostRasterLabel:"Vyberte cestovnú vrstvu s rastrom nákladov",outputOptimumNetworkName:"Názov výslednej čiarovej vrstvy s optimalizovanými trasami",outputNeighborNetworkName:"Názov výslednej čiarovej vrstvy so susediacimi trasami (voliteľné)",outputLayerName:"Určiť optimálne cestovné náklady ${layername}",itemDescription:"Vrstvy prvkov generované nástrojom Určiť sieť optimálnych cestovných nákladov na ${layerName}. ",itemTags:"Výsledok analýzy, Určiť sieť optimálnych cestovných nákladov, ${layername}${fieldname}",itemSnippet:"Vrstvy prvkov generované nástrojom Určiť sieť optimálnych cestovných nákladov."});

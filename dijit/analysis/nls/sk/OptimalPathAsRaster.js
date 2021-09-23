@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Zvoliť raster destinácií alebo prvkov",destinationField:"Pole destinácie (voliteľné)",inputDistanceAccumulationRaster:"Zvoliť raster akumulácie vzdialenosti",inputBackDirectionRaster:"Zvoliť raster spätného smeru alebo smeru toku",pathType:"Typ trasy (voliteľné)",bestSingle:"Najlepšia jediná",eachCell:"Každá bunka",eachZone:"Každá zóna",outputRasterName:"Názov výslednej rastrovej vrstvy",outputLayerName:"Optimálna cesta ako raster z ${layername}",drawSourcePointLayerName:"Zdrojové body",itemDescription:"Vrstvy prvkov generované spustením optimálnej cesty ako raster z ${layername}. ",itemTags:"Výsledok analýzy, Optimálna cesta ako raster, ${layername} ${fieldname}",itemSnippet:"Vrstvy prvkov generované z optimálnej cesty ako raster."});

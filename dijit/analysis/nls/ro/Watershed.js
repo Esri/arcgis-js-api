@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Alegeți stratul direcției de curgere",pourPointLayerLabel:"Alegeți rasterul punctului de curgere sau stratul tematic de obiecte spațiale",pourPointField:"Alegeți câmpul punctului de curgere",resultLayerName:"Nume strat tematic rezultat",outputLayerName:"Bazinul hidrografic din ${layername}",itemDescription:"Strat tematic de obiecte spațiale generat de rularea instrumentului Centru de rezumare și dispersare pe ${layerName}. ",itemTags:"Rezultatul analizei, bazinul hidrografic, ${layername} ${fieldname}",itemSnippet:"Strat tematic de obiecte spațiale generat de bazinul hidrografic."});

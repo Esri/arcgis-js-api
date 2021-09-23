@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["./units","./SpatialReference","./geometry/Geometry","./geometry/Point","./geometry/ScreenPoint","./geometry/Multipoint","./geometry/Polyline","./geometry/Polygon","./geometry/Extent","./geometry/Rect","./geometry/geodesicUtils","./geometry/jsonUtils","./geometry/mathUtils","./geometry/normalizeUtils","./geometry/scaleUtils","./geometry/screenUtils","./geometry/webMercatorUtils"],(function(e,t,o,i,r,l,n,s,m,y,g,c,U,a,P,u,f){return{units:e,SpatialReference:t,Geometry:o,Point:i,ScreenPoint:r,Multipoint:l,Polyline:n,Polygon:s,Extent:m,Rect:y,geodesicUtils:g,jsonUtils:c,mathUtils:U,normalizeUtils:a,scaleUtils:P,screenUtils:u,webMercatorUtils:f}}));

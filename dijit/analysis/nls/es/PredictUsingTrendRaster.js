@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"Predecir con ráster de tendencia",outputLayerName:"${layername}_predict",variablesLabel:"Elegir las variables que se van a predecir",variablesListLabel:"Variables [Información de dimensión] (Descripción)",dimensionDefinitionLabel:"Elegir el método utilizado para proporcionar los valores de dimensión de predicción",dimensionValuesLabel:"Especificar valores de dimensión para la predicción",dimensionIntervalLabel:"Especificar intervalo de dimensiones para la predicción",intervalValueLabel:"Especificar el número de pasos entre los valores inicial y final",intervalUnitLabel:"Elegir la unidad que se utilizará para el intervalo de valores de tiempo",startLabel:"Valor inicial",endLabel:"Valor final",byValueLabel:"Por valor",byIntervalLabel:"Por intervalo",hours:"Horas",days:"Días",weeks:"Semanas",months:"Meses",years:"Años",custom:"Personalizado",itemDescription:"Servicio de imágenes de análisis generado a partir de Predecir con ráster de tendencia",itemTags:"Resultado de análisis de ráster, Predecir con ráster de tendencia, ${layername}",itemSnippet:"Servicio de imágenes de análisis generado a partir de Predecir con ráster de tendencia"});

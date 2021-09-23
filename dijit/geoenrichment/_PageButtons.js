@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["esri/declare","dojo/on","dojo/dom-construct","dijit/layout/ContentPane"],(function(t,o,n,d){return t(null,{buttonsNode:null,addButtons:function(t){if(!this.buttonsNode){for(var e,i=this.layoutGrid.getChildren(),r=0;r<i.length;r++)2==i[r].row&&(e=i[r]);e||(e=new d({row:2,class:"Wizard_BottomPane"}),this.layoutGrid.addChild(e)),this.buttonsNode=n.create("div",{class:"Wizard_Buttons"},e.domNode)}var a={};for(r=0;r<t.length;r++){var l=t[r],s=n.create("button",{class:"Wizard_Button",innerHTML:l.label||""},this.buttonsNode);l.id&&(a[l.id]=s),l.onClick&&o(s,"click",l.onClick)}return a}})}));

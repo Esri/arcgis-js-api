@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({toolDefine:"סיווג אובייקטים באמצעות למידה לעומק",inputFeaturesLabel:"בחר שכבת ישות עבור אובייקטים (אופציונלי)",outputLayerName:"${layername}_classifiedObjects",modelLabel:"בחר מודל של למידה לעומק לסיווג אובייקטים",modelArgsLabel:"ציין ארגומנטים למודל של למידה לעומק",classLabelFieldLabel:"הגדר שם שדה תווית קבוצה (אופציונלי)",processingModeLabel:"מצב עיבוד",processAsMosaicLabel:"עיבוד כתמונת פסיפס",processAsItemsLabel:"עיבוד כל פריטי הרסטר בנפרד",queryModelArgsMsg:"מבוצעת שאילתה של ארגומנטים למודל...",queryModelArgsErrMsg:"תשאול ארגומנטים של מודל נכשל.",valueLabel:"ערך",nameLabel:"שם",analysisLayerLabel:"בחר תמונה לשימוש לסיווג אובייקטים",itemDescription:"ניתוח שירות תמונה שנוצר מ'סיווג אובייקטים באמצעות למידה לעומק'",itemTags:"תוצאת ניתוח רסטר, סיווג אובייקטים באמצעות למידה לעומק, ${layername}",itemSnippet:"ניתוח של שירות תמונות הנוצר מסיווג אובייקטים באמצעות למידה לעומק"});

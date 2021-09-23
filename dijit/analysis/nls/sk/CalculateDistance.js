@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vybrať raster alebo vrstvu umiestnenia prvkov pre výpočet vzdialenosti do",inputRaster:"Vybrať raster alebo vrstvy prvkov pre reprezentovanie bariér (voliteľné)",maxDistanceLabel:"Maximálna vzdialenosť pre výpočet (voliteľné)",outputCellSize:"Veľkosť pixlov vo výstupnej vrstve (voliteľné)",distanceMethod:"Metóda vzdialenosti",resultDistLayerName:"Názov výslednej vrstvy vzdialenosti",resultDirectionLayerName:"Názov výslednej vrstvy smeru (voliteľné)",resultAllocationLayerName:"Názov výslednej vrstvy alokácie (voliteľné)",outputBackDirectionName:"Názov výslednej vrstvy spätného smeru (voliteľné)",outputLayerName:"Vypočítaná vzdialenosť ${layername}",allocationFieldLabel:"Vybrať pole alokácie (voliteľné)",itemDescription:"Vrstvy prvkov generované nástrojom Vypočítať vzdialenosť na ${layerName}. ",itemTags:"Výsledok analýzy, Vypočítať vzdialenosť, ${layername}${fieldname}",itemSnippet:"Vrstva prvkov generovaná nástrojom Vypočítať vzdialenosť",planar:"Rovinný",geodesic:"Geodetický",selectDistance:"- vybrať -"});

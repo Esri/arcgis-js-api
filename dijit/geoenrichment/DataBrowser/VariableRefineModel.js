@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/array","./KeywordFilter","./TagFilter"],(function(t,i,r,e){return t(null,{variables:null,keywordFilter:null,filters:null,idProperty:"fullName",_filterHash:null,initialize:function(t,a){this.variables=t;var h=this.variables.length,s=0;this.keywordFilter=new r,this.keywordFilter.totalCount=h,this.keywordFilter.bitIndex=s++;var l=[];for(var n in a){var o=new e(a[n]);o.totalCount=h,o.bitIndex=s++,l.push(o)}return this._filterHash={},i.forEach(t,(function(t){this._filterHash[t[this.idProperty]]=0,i.forEach(l,(function(i){i.match(t)}),this)}),this),this.applyFilter(this.keywordFilter),this.filters=[],i.forEach(l,(function(t){t.activate()&&(this.filters.push(t),this.applyFilter(t))}),this),s},applyFilter:function(t){var r=1<<t.bitIndex,e=0,a=!t.isActive();i.forEach(this.variables,(function(i){var h=t.match(i,!0);!0===h&&e++,a||h?this._filterHash[i[this.idProperty]]&=~r:this._filterHash[i[this.idProperty]]|=r}),this),t.matchCount=e},match:function(t){return!this._filterHash[t[this.idProperty]]},getMatchingVariables:function(){var t=[];return i.forEach(this.variables,(function(i){this.match(i)&&t.push(i)}),this),t}})}));

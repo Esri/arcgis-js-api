@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","./RasterRenderer","../function/ColormapFunction"],(function(o,r,e,n){return o([e],{declaredClass:"esri.layers.rasterLib.renderer.RasterColormapRenderer",rendererName:"Colormap",renderTexture:!0,constructor:function(o){o&&o.colormapInfos&&(o.colormap=o.colormapInfos.map((function(o){return[o.value].concat(o.color)}))),this._function=new n(o),this._function.outputPixelType="U8",this._function.renderTexture=!0},draw2D:function(o){return this._updateColormapParameters(),o=this._clonePixelData(o),o=this._function._colorize(o)},drawGL:function(o){this._updateColormapParameters(),this._function._colorizeGL(o)},toJson:function(){var o=this._function.toJson().rasterFunctionArguments;return{rendererName:this.rendererName,rendererArguments:o}},toCommonRendererJson:function(){return{type:"rasterColormap",colormapInfos:this.colormapInfos||this.colormap.map((function(o){return{value:o[0],color:o.slice(1),label:o[0]}}))}},_updateColormapParameters:function(){var o=this._function.functionArguments;o.colormap=this.colormap,o.colormapName=this.colormapName,o.colorRamp=this.colorRamp,o.colorRampName=this.colorRampName}})}));

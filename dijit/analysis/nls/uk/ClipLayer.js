@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Виберіть об'єкти для вирізання",filterSelectLabel:"Вирізати всі об'єкти або визначити підмножину (опціонально)",targetArea:"Виберіть область, до якої треба виконати вирізання",outputLayerName:"Вирізати ${inputLayerName} до ${clipLayerName}",itemDescription:"Векторний шар, згенерований в результаті виконання рішень «Вирізання». Об'єкти з ${inputLayerName} вирізані до ${clipLayerName}.",itemTags:"Результат аналізу, ClipLayer, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Векторний шар, згенерований в результаті вирізання шару"});

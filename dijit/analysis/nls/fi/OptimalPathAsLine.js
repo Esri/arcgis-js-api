@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Valitse määränpäärasteri tai -kohteet",destinationField:"Määränpääkenttä (valinnainen)",inputDistanceAccumulationRaster:"Valitse etäisyyskertymärasteri",inputBackDirectionRaster:"Valitse paluusuunnan tai virtaussuunnan rasteri",pathType:"Reitin tyyppi (valinnainen)",bestSingle:"Paras yksittäinen",eachCell:"Jokainen solu",eachZone:"Jokainen vyöhyke",outputFeatureName:"Tuloskohdekarttatason nimi",outputLayerName:"Karttatason ${layername} optimaalinen reitti viivana",drawSourcePointLayerName:"Lähteen pisteet",itemDescription:"Kohdekarttataso on luotu suorittamalla optimaalinen reitti viivana karttatasolla ${layername}. ",itemTags:"Analyysin tulos, optimaalinen reitti viivana, ${layername} ${fieldname}",itemSnippet:"Kohdekarttataso on luotu optimaalisesta reitistä viivana."});

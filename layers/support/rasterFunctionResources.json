@@ -25,7 +25,8 @@
     "cellSize": "cellsize",
     "propertySet": "propertyset",
     "spatialReference": "spatialReference",
-    "rfxtemplate": "rfxtemplate"
+    "rfxtemplate": "rfxtemplate",
+    "file": "file"
   },
   "domainTypes": {
     "list": "list",
@@ -926,6 +927,54 @@
       {
         "key": 17,
         "label": "${rasterFunctions.enumLabels.cig}"
+      },
+      {
+        "key": 18,
+        "label": "${rasterFunctions.enumLabels.ndwi}"
+      },
+      {
+        "key": 19,
+        "label": "${rasterFunctions.enumLabels.evi}"
+      },
+      {
+        "key": 20,
+        "label": "${rasterFunctions.enumLabels.ironOxide}"
+      },
+      {
+        "key": 21,
+        "label": "${rasterFunctions.enumLabels.ferrousMinerals}"
+      },
+      {
+        "key": 22,
+        "label": "${rasterFunctions.enumLabels.clayMinerals}"
+      },
+      {
+        "key": 23,
+        "label": "${rasterFunctions.enumLabels.wndwi}"
+      },
+      {
+        "key": 24,
+        "label": "${rasterFunctions.enumLabels.bai}"
+      },
+      {
+        "key": 25,
+        "label": "${rasterFunctions.enumLabels.nbr}"
+      },
+      {
+        "key": 26,
+        "label": "${rasterFunctions.enumLabels.ndbi}"
+      },
+      {
+        "key": 27,
+        "label": "${rasterFunctions.enumLabels.ndmi}"
+      },
+      {
+        "key": 28,
+        "label":  "${rasterFunctions.enumLabels.ndsi}"
+      },
+      {
+        "key": 29,
+        "label": "${rasterFunctions.enumLabels.mndwi}"
       }
     ],
     "pyStdTemperatureUnitTypes": [
@@ -2052,6 +2101,12 @@
       {
         "key": "MT_SUM",
         "label": "${rasterFunctions.enumLabels.mosaicOpTypeSum}"
+      }
+    ],
+    "sensorTypes": [
+      {
+        "key": "UNKNOWN",
+        "label": "${rasterFunctions.enumLabels.unknown}"
       }
     ]
   },

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["../../declare"],(function(e){return e("esri.tasks.geoenrichment.IntersectingGeography",null,{name:null,geometryType:"esriGeometryPoint",spatialRel:"esriSpatialRelIntersects",outFields:null,constructor:function(e){e&&(this.name=e.name||null,this.outFields=e.outFields||null,e.intersectionInfo?(e.intersectionInfo.geometryType&&(this.geometryType=e.intersectionInfo.geometryType),e.intersectionInfo.spatialRel&&(this.spatialRel=e.intersectionInfo.spatialRel)):(e.geometryType&&(this.geometryType=e.geometryType),e.spatialRel&&(this.spatialRel=e.spatialRel)))},toJson:function(){return{name:this.name,outFields:this.outFields,intersectionInfo:{geometryType:this.geometryType,spatialRel:this.spatialRel}}}})}));

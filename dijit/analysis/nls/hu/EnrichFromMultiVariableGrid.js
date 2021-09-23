@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Pontszerű vektorelemek kiválasztása a bővítéshez",chooseMVgridLyrLabel:"Többváltozós rácsháló kiválasztása a bővítéshez ebből:",chooseVariables:"Válassza ki a hozzáadandó változókat",outputLayerName:"${inputFeatures} bővítve ${gridLayer} rácshálórétegből",itemDescription:"A Bővítés többváltozós rácshálóból megoldás ${inputFeatures} elemekre történő futtatásából létrehozott vektoros réteg.",itemTags:"Elemzés végeredménye, Bővítés többváltozós rácshálóból, ${inputFeatures}, ${gridLayer}",itemSnippet:"A Bővítés többváltozós rácshálóból függvényből létrehozott vektoros réteg."});

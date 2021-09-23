@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputSourceLayerLabel:"Elegir la capa de origen de entidad o ráster a partir de la cual determinar rutas",inputCostRasterLabel:"Elegir capa ráster de coste de viaje",inputDestinationLayerLabel:"Elegir la capa de destino de entidad o ráster hasta la que se determinarán rutas",pathTypeLabel:"Elegir el tipo de rutas a determinar (opcional)",bestSingle:"Mejor Simple",eachCell:"A cada celda",eachZone:"A cada zona",destinationField:"Elegir el campo del que obtener valores para el destino",outputPolylineName:"Nombre de polilínea de resultados",outputLayerName:"Gastos de viaje óptimos como polilínea de ${layername}",drawDestinationPointLayerName:"Puntos de destino",drawSourcePointLayerName:"Puntos de origen",itemDescription:"Capa de entidades generada al ejecutar Determinar ruta de coste de viaje como polilínea en ${layername}. ",itemTags:"Resultados del análisis, Determinar ruta de coste de viaje como polilínea, ${layername} ${fieldname}",itemSnippet:"Capa de entidades generada a partir de Determinar ruta de coste de viaje como polilínea.",missingMessage:"La capa de destino debe ser distinta de la capa de origen",noValueMessage:"Este valor es obligatorio",placeHolder:"--Seleccionar una capa--"});

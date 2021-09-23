@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","esri/dijit/geoenrichment/utils/ObjectUtil","./ThemeLibrary","./ThemeUtil"],(function(e,i,o,t){var c={populateMissingStyles:function(c){if(c){c.table&&c.table.overrideStyles||(c.table={overrideStyles:e.mixin({},c.table)}),c.icon||(c.icon=e.clone(c.infographic.staticInfographic.icon),c.highlightedIcon=e.clone(c.infographic.staticInfographic.highlightedIcon)),c.chart.icon||(c.chart.icon=e.clone(c.infographic.staticInfographic.icon)),c.chart.xAxis.lineColor||(c.chart.xAxis.lineColor=c.chart.xAxis.axisStyle.color,c.chart.yAxis.lineColor=c.chart.yAxis.axisStyle.color);var r=t.getThemeColors(c),l=c.chart.colors.slice(),a=c.chart.colors3series&&c.chart.colors3series.slice(),n=o.getDefaultTheme({defaultFontFamilty:c.document.fontFamily,defaultFontSize:c.document.fontSize});t.applyThemeColorsToTheme({theme:n,colors:r,chartColors:l,colors3series:a}),i.populateObject(c,n,!1)}}};return c}));

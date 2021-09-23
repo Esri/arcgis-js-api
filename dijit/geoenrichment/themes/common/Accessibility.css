@@ -1,2 +1,5 @@
 
 
+.claro :focus {
+    outline: none;
+}

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
-define(["require","esri/dijit/geoenrichment/Deferred","dojo/_base/lang"],(function(e,n,r){var i,o={isAsync:!0,loadModules:function(){var r=new n;return e(["./ShapeContainer"],(function(e){i=e,o.isAsync=!1,r.resolve()})),r.promise},createShapeContainer:function(e){var n=new i(r.mixin({},e.creationParams,{shapeJson:e.json}),e.node);return"function"==typeof e.placeFunc&&e.placeFunc(n),n}};return o}));
+define(["require","esri/dijit/geoenrichment/Deferred"],(function(e,n){var r,i={isAsync:!0,loadModules:function(){var o=new n;return e(["./ShapeContainer"],(function(e){r=e,i.isAsync=!1,o.resolve()})),o.promise},createShapeContainer:function(e){var n=new r(e.creationParams,e.node);return"function"==typeof e.placeFunc&&e.placeFunc(n),n}};return i}));

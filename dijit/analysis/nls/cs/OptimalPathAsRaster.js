@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Zvolit cílový rastr nebo prvky",destinationField:"Cílové pole (volitelné)",inputDistanceAccumulationRaster:"Zvolit rastr akumulace vzdálenosti",inputBackDirectionRaster:"Zvolit rastr zpětného směru nebo směru odtoku",pathType:"Typ cesty (volitelné)",bestSingle:"Nejlepší jednoduché",eachCell:"Každá buňka",eachZone:"Každá zóna",outputRasterName:"Název výsledné rastrové vrstvy",outputLayerName:"Optimální trasa jako rastr ${layername}",drawSourcePointLayerName:"Zdrojové body",itemDescription:"Vrstva prvků vygenerovaná spuštěním optimální trasy jako rastr v ${layername}. ",itemTags:"Výsledek analýzy, optimální trasa jako rastr, ${layername} ${fieldname}",itemSnippet:"Vrstva prvků vygenerovaná z optimální trasy jako rastr."});

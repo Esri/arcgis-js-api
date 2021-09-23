@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
-define(["./GridDataUtil"],(function(e){var t={fitContentInsideCell:function(t){var i=e.getFieldInfo(t);if(i&&t.content){var n=t.content,r=t.parentGrid,a=t[r.hasRealBorders||r.isMultiDataTable()?"getContentWidth":"getWidth"](),o=t[r.hasRealBorders||r.isMultiDataTable()?"getContentHeight":"getHeight"]();i.isReportSection?(n.setHeight(o,{resizeContentProportionally:!0}),n.setWidth(a,{resizeContentProportionally:!0})):i.isChart?n.resize(a,o):i.isInfographic?n.resize(a,o):i.isMap?n.resize({w:a,h:o}):(i.isImage||i.isShape)&&n.resize({w:a,h:o},t.getFullStyle())}}};return t}));
+define(["./GridDataUtil"],(function(e){var t={fitContentInsideCell:function(t,i){var n=e.getFieldInfo(t);if(n&&t.content){var r=t.content,a=t.parentGrid,s=t[a.hasRealBorders||a.isMultiDataTable()?"getContentWidth":"getWidth"](),o=t[a.hasRealBorders||a.isMultiDataTable()?"getContentHeight":"getHeight"]();n.isReportSection?(r.setHeight(o,{resizeContentProportionally:!0}),r.setWidth(s,{resizeContentProportionally:!0})):n.isChart?r.resize(s,o):n.isInfographic?r.resize(s,o,{sync:i&&i.sync}):n.isMap?r.resize({w:s,h:o}):(n.isImage||n.isShape)&&r.resize({w:s,h:o},t.getFullStyle())}}};return t}));

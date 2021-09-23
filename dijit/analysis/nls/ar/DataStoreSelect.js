@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define({relationalDS:"ارتباطي",spatialDS:"مكانية مؤقتة",agsDataStore:"متجر بيانات ArcGIS",bdfsTemplates:"قوالب إخراج مشاركة ملف البيانات الضخمة"});

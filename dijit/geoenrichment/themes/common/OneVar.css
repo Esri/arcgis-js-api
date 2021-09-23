@@ -51,16 +51,6 @@
     text-align: right;
 }
 
-.OneVarMultiComparison_CurrentRow {
-    color: #FFFFFF;
-    font-weight: 600;
-    background-color: #6A6A6A;
-}
-
-    .OneVarMultiComparison_CurrentRow.AlternatingRow {
-        background-color: #666666;
-    }
-
 .OneVarMultiComparison_Row {
     color: #c4c4c4;
     background-color: #6A6A6A;
@@ -68,6 +58,11 @@
 
     .OneVarMultiComparison_Row.AlternatingRow {
         background-color: #666666;
+    }
+
+    .OneVarMultiComparison_Row.OneVarMultiComparison_CurrentRow {
+        color: #FFFFFF;
+        font-weight: 600;
     }
 
 .OneVarMultiComparison_Collapsed_BarFrame {

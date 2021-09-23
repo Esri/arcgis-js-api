@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.37/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/InputSelectOne","../../../form/Options","../../../form/Option","../timeinfo/timeinfo","dojo/text!./templates/timeperd.html","../../../../../kernel"],(function(e,t,o,i,n,r,d,m,a,f,s){var p=e(i,{templateString:f});return o("extend-esri")&&t.setObject("dijit.metadata.types.fgdc.idinfo.timeperd",p,s),p}));
