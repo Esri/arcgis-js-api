@@ -29,7 +29,7 @@
  * @module esri/widgets/AreaMeasurement2D
  * @since 4.10
  *
- * @see [AreaMeasurement2D.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/AreaMeasurement2D.tsx)
+ * @see [AreaMeasurement2D.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/AreaMeasurement2D.tsx)
  * @see [AreaMeasurement2D.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_AreaMeasurement3D.scss)
  * @see [Sample - Measurement in 2D](../sample-code/widgets-measurement-2d/index.html)
  * @see {@link module:esri/widgets/AreaMeasurement2D/AreaMeasurement2DViewModel}
@@ -65,7 +65,7 @@ import AreaMeasurement2DMessages from "esri/widgets/AreaMeasurement2D/t9n/AreaMe
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
-type AreaMeasurement2DLocaleStrings = Partial<
+type AreaMeasurement2DUIStrings = Partial<
   Pick<AreaMeasurement2DMessages, "widgetLabel" | "hint" | "newMeasurement">
 >;
 
@@ -164,7 +164,7 @@ class AreaMeasurement2D extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -180,17 +180,7 @@ class AreaMeasurement2D extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
-
-  //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  /**
-   * @todo documentation
-   */
-  @property()
-  localeStrings?: AreaMeasurement2DLocaleStrings;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -225,6 +215,16 @@ class AreaMeasurement2D extends Widget {
   @property()
   @messageBundle("esri/core/t9n/Units")
   messagesUnits: UnitsMessages = null;
+
+  //----------------------------------
+  //  uiStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  override uiStrings?: AreaMeasurement2DUIStrings;
 
   //----------------------------------
   //  unit
@@ -319,7 +319,7 @@ class AreaMeasurement2D extends Widget {
    * view.ui.add(measurementWidget, "top-right");
    */
   @property({ type: AreaMeasurement2DViewModel })
-  viewModel: AreaMeasurement2DViewModel = new AreaMeasurement2DViewModel();
+  override viewModel: AreaMeasurement2DViewModel = new AreaMeasurement2DViewModel();
 
   //----------------------------------
   //  visible
@@ -334,7 +334,7 @@ class AreaMeasurement2D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean;
+  override visible: boolean;
 
   //--------------------------------------------------------------------------
   //
@@ -342,9 +342,9 @@ class AreaMeasurement2D extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { id, viewModel, visible } = this;
-    const { active, isSupported, measurementLabel, state, unit, unitOptions } = viewModel;
+    const { active, supported, measurementLabel, state, unit, unitOptions } = viewModel;
 
     const isDisabled = state === "disabled";
     const isReady = state === "ready";
@@ -358,7 +358,7 @@ class AreaMeasurement2D extends Widget {
         </section>
       ) : null;
 
-    const unsupportedNode = !isSupported ? (
+    const unsupportedNode = !supported ? (
       <section key="unsupported" class={CSS.panelError}>
         <p>{messages.unsupported}</p>
       </section>
@@ -421,7 +421,7 @@ class AreaMeasurement2D extends Widget {
     ) : null;
 
     const newMeasurementNode =
-      isSupported && (!active || isMeasuring) ? (
+      supported && (!active || isMeasuring) ? (
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}

@@ -19,7 +19,7 @@
  * @see module:esri/widgets/Histogram
  * @see module:esri/widgets/Slider
  *
- * @see [HistogramRangeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/HistogramRangeSlider.tsx)
+ * @see [HistogramRangeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/HistogramRangeSlider.tsx)
  * @see [HistogramRangeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_HistogramRangeSlider.scss)
  * @see module:esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel
  */
@@ -156,7 +156,7 @@ class HistogramRangeSlider extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const { average, bins, hasTimeData, max, min, viewModel } = this;
 
     this._updateBarFill = this._updateBarFill.bind(this);
@@ -527,7 +527,7 @@ class HistogramRangeSlider extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  labelFormatFunction
@@ -800,7 +800,7 @@ class HistogramRangeSlider extends Widget {
    * @type {module:esri/widgets/HistogramRangeSlider/HistogramRangeSliderViewModel}
    */
   @property()
-  viewModel: HistogramRangeSliderViewModel = new HistogramRangeSliderViewModel();
+  override viewModel = new HistogramRangeSliderViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -841,7 +841,7 @@ class HistogramRangeSlider extends Widget {
     return this.viewModel.generateWhereClause(field);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { rangeType, viewModel, label } = this;
 
     const baseClasses = this.classes(

@@ -63,7 +63,7 @@ class FeatureContent extends Widget {
   //----------------------------------
 
   @property({ type: FeatureContentViewModel })
-  viewModel: FeatureContentViewModel = null;
+  override viewModel: FeatureContentViewModel = null;
 
   //--------------------------------------------------------------------------
   //
@@ -97,7 +97,7 @@ class FeatureContent extends Widget {
     return <div key={created} innerHTML={created} afterCreate={this._addTargetToAnchors} />;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.viewModel?.state;
 
     return (

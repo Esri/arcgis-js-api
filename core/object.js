@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","./lang"],(function(e,r){"use strict";function n(e,r,n=!1){return u(e,r,n)}function t(e,r){if(null!=r)return r[e]||i(e.split("."),!1,r)}function o(e,r,n){const t=e.split("."),o=t.pop(),u=i(t,!0,n);u&&o&&(u[o]=r)}function i(e,r,n){let t=n;for(const o of e){if(null==t)return;if(!(o in t)){if(!r)return;t[o]={}}t=t[o]}return t}function u(e,n,t){return n?Object.keys(n).reduce((function(e,o){let i=e[o],c=n[o];return i===c?e:void 0===i?(e[o]=r.clone(c),e):(Array.isArray(c)||Array.isArray(e)?(i=i?Array.isArray(i)?e[o]=i.concat():e[o]=[i]:e[o]=[],c&&(Array.isArray(c)||(c=[c]),t?c.forEach((e=>{-1===i.indexOf(e)&&i.push(e)})):e[o]=c.concat())):c&&"object"==typeof c?e[o]=u(i,c,t):e.hasOwnProperty(o)&&!n.hasOwnProperty(o)||(e[o]=c),e)}),e||{}):e}e.deepMerge=n,e.getDeepValue=t,e.setDeepValue=o,Object.defineProperty(e,"__esModule",{value:!0})}));

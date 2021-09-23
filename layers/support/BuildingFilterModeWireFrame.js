@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/has","../../core/Logger","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./BuildingFilterMode","../../symbols/edges/utils"],(function(e,r,o,s,t,c,i,n,p,u,a){"use strict";var l;let d=l=function(r){function s(){var e;return(e=r.apply(this,arguments)||this).type="wire-frame",e.edges=null,e}return e._inheritsLoose(s,r),s.prototype.clone=function(){return new l({edges:o.clone(this.edges)})},s}(u);return r.__decorate([n.enumeration({wireFrame:"wire-frame"})],d.prototype,"type",void 0),r.__decorate([s.property(a.symbol3dEdgesProperty)],d.prototype,"edges",void 0),d=l=r.__decorate([p.subclass("esri.layers.support.BuildingFilterModeWireFrame")],d),d}));

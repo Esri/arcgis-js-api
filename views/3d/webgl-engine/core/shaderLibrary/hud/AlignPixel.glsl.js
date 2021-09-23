@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(e,i){"use strict";function c(e){const c=i.glsl`vec4 alignToPixelCenter(vec4 clipCoord, vec2 widthHeight) {
 vec2 xy = vec2(0.500123) + 0.5 * clipCoord.xy / clipCoord.w;

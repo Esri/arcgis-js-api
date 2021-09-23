@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../util/DecodeNormal.glsl","../../shaderModules/interfaces"],(function(e,r,o){"use strict";function d(e,d){0===d.normalType&&(e.attributes.add("normal","vec3"),e.vertex.code.add(o.glsl`vec3 normalModel() {
 return normal;

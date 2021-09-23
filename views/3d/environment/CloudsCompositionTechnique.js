@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+*/
+define(["require","exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/CloudsComposition.glsl","../webgl-engine/core/shaderTechnique/ReloadableShaderModule","../webgl-engine/core/shaderTechnique/ShaderTechnique","../webgl-engine/lib/DefaultVertexAttributeLocations","../webgl-engine/lib/Program","../../webgl/renderState"],(function(e,i,n,r,o,t,l,u,a){"use strict";let s=function(e){function i(){return e.apply(this,arguments)||this}n._inheritsLoose(i,e);var r=i.prototype;return r.initializeProgram=function(e){const n=i.shader.get().build();return new u.Program(e.rctx,n,l.Default3D)},r.initializePipeline=function(){return a.makePipelineState({blending:a.simpleBlendingParams(1,770),depthTest:{func:515},colorWrite:a.defaultColorWriteParams})},i}(t.ShaderTechnique);s.shader=new o.ReloadableShaderModule(r.CloudsCompositionShader,(()=>new Promise((function(i,n){e(["./CloudsComposition.glsl"],i,n)})))),i.CloudsCompositionTechnique=s,Object.defineProperty(i,"__esModule",{value:!0})}));

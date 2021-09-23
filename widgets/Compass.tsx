@@ -32,7 +32,7 @@
  * @module esri/widgets/Compass
  * @since 4.0
  *
- * @see [Compass.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Compass.tsx)
+ * @see [Compass.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Compass.tsx)
  * @see [Compass.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Compass.scss)
  * @see module:esri/widgets/Compass/CompassViewModel
  * @see [Sample - Adding the Compass widget to a MapView](../sample-code/widgets-compass-2d/index.html)
@@ -123,7 +123,7 @@ class Compass extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -140,7 +140,7 @@ class Compass extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -192,7 +192,7 @@ class Compass extends Widget {
    * @autocast
    */
   @property({ type: CompassViewModel })
-  viewModel: CompassViewModel = new CompassViewModel();
+  override viewModel = new CompassViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -213,7 +213,7 @@ class Compass extends Widget {
     return this.viewModel.reset();
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { orientation, state } = this.viewModel;
 
     const disabled = state === "disabled",

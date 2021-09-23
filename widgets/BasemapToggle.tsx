@@ -8,7 +8,7 @@
  * @module esri/widgets/BasemapToggle
  * @since 4.0
  *
- * @see [BasemapToggle.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapToggle.tsx)
+ * @see [BasemapToggle.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapToggle.tsx)
  * @see [BasemapToggle.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapToggle.scss)
  * @see [Sample - Intro to widgets using BasemapToggle](../sample-code/intro-widgets/index.html)
  * @see module:esri/widgets/BasemapToggle/BasemapToggleViewModel
@@ -161,7 +161,7 @@ class BasemapToggle extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -233,7 +233,7 @@ class BasemapToggle extends Widget {
    */
   @vmEvent("toggle")
   @property({ type: BasemapToggleViewModel })
-  viewModel: BasemapToggleViewModel = new BasemapToggleViewModel();
+  override viewModel = new BasemapToggleViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -285,7 +285,7 @@ class BasemapToggle extends Widget {
   @aliasOf("viewModel.toggle")
   toggle(): void {}
 
-  render(): VNode {
+  override render(): VNode {
     const vm = this.viewModel;
     const activeBasemap = vm.state === "disabled" ? null : vm.activeBasemap;
     const nextBasemap = vm.state === "disabled" ? null : vm.nextBasemap;

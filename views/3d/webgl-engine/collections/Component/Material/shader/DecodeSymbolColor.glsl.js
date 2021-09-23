@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../core/shaderModules/interfaces"],(function(o,l){"use strict";function e(o){o.vertex.code.add(l.glsl`
     vec4 decodeSymbolColor(vec4 symbolColor, out int colorMixMode) {

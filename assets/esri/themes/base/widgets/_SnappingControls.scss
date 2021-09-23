@@ -104,6 +104,16 @@
       left: $toggle-handle-size;
     }
   }
+
+  .esri-snapping-controls__nested-container {
+    padding: 0 0 0 1em;
+  }
+
+  [dir="rtl"] {
+    .esri-snapping-controls__nested-container {
+      padding: 0 1em 0 0;
+    }
+  }
 }
 
 @if $include_SnappingControls == true {

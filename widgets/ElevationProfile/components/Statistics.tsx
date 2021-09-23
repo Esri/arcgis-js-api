@@ -48,11 +48,11 @@ export class Statistics extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(this._updateLayoutThrottled);
   }
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div
         bind={this}

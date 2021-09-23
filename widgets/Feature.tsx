@@ -6,7 +6,7 @@
  * @module esri/widgets/Feature
  * @since 4.7
  *
- * @see [Feature.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Feature.tsx)
+ * @see [Feature.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Feature.tsx)
  * @see [Feature.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Feature.scss)
  * @see [Sample - Feature widget](../sample-code/widgets-feature/index.html)
  * @see [Sample - Feature widget in a side panel](../sample-code/widgets-feature-sidepanel/index.html)
@@ -58,6 +58,9 @@ import { Content as ContentElement } from "esri/popup/content";
 // esri.popup.content
 import Customcontent from "esri/popup/content/CustomContent";
 import TextContent from "esri/popup/content/TextContent";
+
+// esri.t9n
+import CommonMessages from "esri/t9n/common";
 
 // esri.views
 import IMapView from "esri/views/IMapView";
@@ -151,18 +154,21 @@ class Feature extends FeatureContentMixin(Widget) {
    * @param {Object} [properties] - See the [properties](#properties-summary) for a list of all the properties
    *                                that may be passed into the constructor.
    */
-
   constructor(properties?: any, parentNode?: string | Element) {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       watchUtils.init(this, "viewModel.contentViewModels", () => this._setupContentWidgets())
     );
   }
 
-  destroy(): void {
+  protected override loadDependencies(): Promise<any> {
+    return import("@esri/calcite-components/dist/custom-elements/bundles/notice");
+  }
+
+  override destroy(): void {
     this._destroyContentWidgets();
   }
 
@@ -301,7 +307,7 @@ class Feature extends FeatureContentMixin(Widget) {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -318,6 +324,22 @@ class Feature extends FeatureContentMixin(Widget) {
   @property()
   @messageBundle("esri/widgets/Feature/t9n/Feature")
   messages: FeatureMessages = null;
+
+  //----------------------------------
+  //  messagesCommon
+  //----------------------------------
+
+  /**
+   * @name messagesCommon
+   * @instance
+   * @type {Object}
+   *
+   * @ignore
+   * @todo intl doc
+   */
+  @property()
+  @messageBundle("esri/t9n/common")
+  messagesCommon: CommonMessages = null;
 
   //----------------------------------
   //  messagesURIUtils
@@ -465,7 +487,7 @@ class Feature extends FeatureContentMixin(Widget) {
    */
 
   @property({ type: FeatureViewModel })
-  viewModel = new FeatureViewModel();
+  override viewModel = new FeatureViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -473,17 +495,21 @@ class Feature extends FeatureContentMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
-    const { waitingForContent } = this.viewModel;
+  override render(): VNode {
+    const { state } = this.viewModel;
 
-    return (
-      <div class={this.classes(CSS.base, CSS.esriWidget)}>
-        <div class={CSS.container}>
-          {this.renderTitle()}
-          {waitingForContent ? this.renderLoading() : this.renderContentContainer()}
-        </div>
+    const contentNode = (
+      <div class={CSS.container} key="container">
+        {this.renderTitle()}
+        {state === "error"
+          ? this.renderError()
+          : state === "loading"
+          ? this.renderLoading()
+          : this.renderContentContainer()}
       </div>
     );
+
+    return <div class={this.classes(CSS.base, CSS.esriWidget)}>{contentNode}</div>;
   }
 
   /**
@@ -532,6 +558,23 @@ class Feature extends FeatureContentMixin(Widget) {
   //  Protected Methods
   //
   //--------------------------------------------------------------------------
+
+  protected renderError(): VNode {
+    const { messagesCommon, messages, visibleElements } = this;
+
+    return (
+      <calcite-notice active color="red" icon="exclamation-mark-circle" scale="s">
+        {visibleElements.title ? (
+          <div key="error-title" slot="title">
+            {messagesCommon.errorMessage}
+          </div>
+        ) : null}
+        <div key="error-message" slot="message">
+          {messages.loadingError}
+        </div>
+      </calcite-notice>
+    );
+  }
 
   protected renderLoading(): VNode {
     return (

@@ -5,7 +5,7 @@
  * @module esri/widgets/support/TimePicker
  * @since 4.15
  *
- * @see [TimePicker.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/support/TimePicker.tsx)
+ * @see [TimePicker.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/support/TimePicker.tsx)
  * @see [TimePicker.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TimePicker.scss)
  * @see module:esri/widgets/support/DatePicker
  */
@@ -95,7 +95,7 @@ class TimePicker extends Widget {
     super(properties, parentNode);
   }
 
-  async loadLocale(): Promise<void> {
+  override async loadLocale(): Promise<void> {
     this._moment = await loadMoment();
   }
 
@@ -132,7 +132,7 @@ class TimePicker extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -184,7 +184,7 @@ class TimePicker extends Widget {
   @property({
     type: TimePickerViewModel
   })
-  viewModel = new TimePickerViewModel();
+  override viewModel = new TimePickerViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -192,7 +192,7 @@ class TimePicker extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const time = this._activeTime || this.viewModel.value;
 
     return (
@@ -205,6 +205,7 @@ class TimePicker extends Widget {
           onblur={this._handleInputBlur}
           onfocus={this._handleInputFocus}
           onkeydown={this._handleInputKeydown}
+          oninput={this._handleInputKeydown}
           onclick={this._handleInputClick}
           onpaste={this._handleInputPaste}
           onwheel={this._handleInputWheel}

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","./TextureCoordinateAttribute.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,t,r,u){"use strict";function a(e,a){e.include(t.TextureCoordinateAttribute,a),e.fragment.code.add(u.glsl`
   struct TextureLookupParameter {

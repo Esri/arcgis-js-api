@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,o,t,a,r){"use strict";function n(e){const n=new r.ShaderBuilder,l=0===e.output,d=1===e.output,c=4===e.output;return n.extensions.add("GL_OES_standard_derivatives"),n.include(i.Slice,e),n.attributes.add("position","vec3"),n.attributes.add("color","vec3"),n.vertex.uniforms.add("uModelViewMatrix","mat4").add("uProjectionMatrix","mat4").add("uScreenMinMaxSize","vec2").add("uPointScale","vec2").add("uClipMin","vec3").add("uClipMax","vec3"),d?(n.vertex.uniforms.add("nearFar","vec2"),n.varyings.add("depth","float")):4!==e.output&&n.varyings.add("vColor","vec3"),n.vertex.code.add(a.glsl`
     void main(void) {

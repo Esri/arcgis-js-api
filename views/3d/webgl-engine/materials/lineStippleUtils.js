@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
-define(["exports","../../../../core/maybe"],(function(e,t){"use strict";function n(e){return t.isNone(e)?e:e.slice()}function r(e){return[e,e]}e.createStipplePattern=n,e.createStipplePatternSimple=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../../../core/maybe"],(function(t,o){"use strict";const d={dash:[4,3],dot:[1,3],"long-dash":[8,3],"short-dash":[4,1],"short-dot":[1,1]},s={dash:d.dash,"dash-dot":[...d.dash,...d.dot],dot:d.dot,"long-dash":d["long-dash"],"long-dash-dot":[...d["long-dash"],...d.dot],"long-dash-dot-dot":[...d["long-dash"],...d.dot,...d.dot],none:null,"short-dash":d["short-dash"],"short-dash-dot":[...d["short-dash"],...d["short-dot"]],"short-dash-dot-dot":[...d["short-dash"],...d["short-dot"],...d["short-dot"]],"short-dot":d["short-dot"],solid:null};function e(t){return o.isNone(t)?t:t.slice()}function n(t){return[t,t]}function r(t,d){return o.applySome(t,(t=>t.map((t=>t*d))))}function a(t){return o.applySome(t,(t=>e(s[t])))}t.createStipplePattern=e,t.createStipplePatternSimple=n,t.getStipplePatternForLinePattern=a,t.scaleStipplePattern=r,Object.defineProperty(t,"__esModule",{value:!0})}));

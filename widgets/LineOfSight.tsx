@@ -42,7 +42,7 @@
  * @module esri/widgets/LineOfSight
  * @since 4.14
  *
- * @see [LineOfSight.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LineOfSight.tsx)
+ * @see [LineOfSight.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LineOfSight.tsx)
  * @see [LineOfSight.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_LineOfSight.scss)
  * @see module:esri/widgets/LineOfSight/LineOfSightViewModel
  * @see [Sample - Line of sight widget](../sample-code/widgets-line-of-sight/index.html)
@@ -153,7 +153,7 @@ class LineOfSight extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -170,7 +170,7 @@ class LineOfSight extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  view
@@ -197,7 +197,7 @@ class LineOfSight extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean;
+  override visible: boolean;
 
   //----------------------------------
   //  active
@@ -230,7 +230,7 @@ class LineOfSight extends Widget {
   @property({
     type: LineOfSightViewModel
   })
-  viewModel: LineOfSightViewModel = new LineOfSightViewModel();
+  override viewModel = new LineOfSightViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -238,7 +238,7 @@ class LineOfSight extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div class={CSS.base} role="presentation">
         {this.renderContainerNode()}
@@ -251,7 +251,7 @@ class LineOfSight extends Widget {
       return null;
     }
 
-    if (!this.viewModel.isSupported) {
+    if (!this.viewModel.supported) {
       return this.renderUnsupportedMessage();
     }
 

@@ -264,7 +264,7 @@
     opacity: 1;
   }
 
-  html[dir="rtl"] .esri-bookmarks {
+  [dir="rtl"] .esri-bookmarks {
     .esri-bookmarks__bookmark {
       &--active:after {
         animation: looping-progresss-bar-ani $looping-progress-bar-params reverse;

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","./enums"],(function(e,t){"use strict";return function(){function n(e,n){this._context=e,this._desc=n,this._context.instanceCounter.increment(t.ResourceType.Renderbuffer,this);const r=this._context.gl;this.glName=r.createRenderbuffer(),this._context.bindRenderbuffer(this),r.renderbufferStorage(r.RENDERBUFFER,n.internalFormat,n.width,n.height)}var r=n.prototype;return r.resize=function(e,t){const n=this._desc;if(n.width===e&&n.height===t)return;n.width=e,n.height=t;const r=this._context.gl;this._context.bindRenderbuffer(this),r.renderbufferStorage(r.RENDERBUFFER,n.internalFormat,n.width,n.height)},r.dispose=function(){this._context&&(this._context.gl.deleteRenderbuffer(this.glName),this._context.instanceCounter.decrement(t.ResourceType.Renderbuffer,this),this._context=null)},e._createClass(n,[{key:"descriptor",get:function(){return this._desc}}]),n}()}));

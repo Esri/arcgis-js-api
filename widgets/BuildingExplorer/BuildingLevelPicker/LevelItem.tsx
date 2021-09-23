@@ -54,7 +54,7 @@ export class LevelItem extends Widget {
    * The label for the level.
    */
   @property()
-  label: string;
+  override label: string;
 
   /**
    * Whether the level is active.
@@ -116,7 +116,7 @@ export class LevelItem extends Widget {
   //
   //------------------------------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div
         key={this}

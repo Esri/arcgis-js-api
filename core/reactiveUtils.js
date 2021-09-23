@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+*/
+define(["exports","./events","./handleUtils","./maybe","./accessorSupport/watch"],(function(e,n,t,r,o){"use strict";function c(e,n,t={}){return i(e,n,t,l)}function u(e,n,t={}){return i(e,n,t,s)}function i(e,n,t={},c){let u=null;const i=t.once?(e,t)=>{c(e)&&(r.removeMaybe(u),n(e,t))}:(e,t)=>{c(e)&&n(e,t)};if(u=o.watchTracked(e,i,t.sync),t.immediate){const n=e();i(n,n)}return u}function l(e){return!0}function s(e){return!!e}function a(e,c,u,i={}){let l=null,s=null,a=null;function d(){l&&s&&(s.remove(),null==i.onListenerRemove||i.onListenerRemove(l),l=null,s=null)}function f(e){i.once&&i.once&&r.removeMaybe(a),u(e)}const m=o.watchTracked(e,((e,t)=>{d(),n.isEventTarget(e)&&(l=e,s=n.on(e,c,f),null==i.onListenerAdd||i.onListenerAdd(e))}),i.sync);return a=t.makeHandle((()=>{m.remove(),d()})),a}const d={sync:!0,immediate:!0};e.SYNC_AND_IMMEDIATE=d,e.react=c,e.reactListener=a,e.reactTruthy=u,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -59,7 +59,7 @@ class BuildingDisciplinesTree extends Widget {
     super(properties as any);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       watchUtils.on(
         this,
@@ -73,7 +73,7 @@ class BuildingDisciplinesTree extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyChildWidgets();
 
     if (this.viewModel !== this._defaultViewModel) {
@@ -93,7 +93,7 @@ class BuildingDisciplinesTree extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingDisciplinesViewModel })
-  viewModel = this._defaultViewModel;
+  override viewModel = this._defaultViewModel;
 
   /**
    * The widget's message bundle.
@@ -134,7 +134,7 @@ class BuildingDisciplinesTree extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div role="tree" class={CSS.base}>
         {this._childWidgets.map((child) => child.render())}

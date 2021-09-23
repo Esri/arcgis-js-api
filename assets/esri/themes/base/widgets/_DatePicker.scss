@@ -135,7 +135,7 @@
     left: $side-spacing--half;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-date-picker__calendar {
       right: 0;
     }

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../core/shaderLibrary/util/DoublePrecision.glsl","../../../core/shaderModules/interfaces"],(function(o,e,t){"use strict";function n(o,n){const r=o.vertex;r.uniforms.add("uDistanceFalloffFactor","float"),r.code.add(t.glsl`float distanceBasedPerspectiveFactor(float distance) {
 return clamp(sqrt(uDistanceFalloffFactor / distance), 0.0, 1.0);

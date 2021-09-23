@@ -36,15 +36,11 @@
  * @module esri/widgets/Slice
  * @since 4.10
  *
- * @see [Slice.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slice.tsx)
+ * @see [Slice.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slice.tsx)
  * @see [Slice.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Slice.scss)
  * @see [Sample - Slice widget](../sample-code/building-scene-layer-slice/index.html)
  * @see module:esri/widgets/Slice/SliceViewModel
  */
-
-// @esri.calcite-components.dist.custom-elements.bundles
-import "@esri/calcite-components/dist/custom-elements/bundles/button";
-import "@esri/calcite-components/dist/custom-elements/bundles/icon";
 
 // esri.core
 import Collection from "esri/core/Collection";
@@ -134,6 +130,13 @@ class Slice extends Widget {
     super(properties, parentNode);
   }
 
+  protected override loadDependencies(): Promise<any> {
+    return Promise.all([
+      import("@esri/calcite-components/dist/custom-elements/bundles/button"),
+      import("@esri/calcite-components/dist/custom-elements/bundles/icon")
+    ]);
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Properties
@@ -180,7 +183,7 @@ class Slice extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   /**
    * The widget's default label. This label displays when it is
@@ -194,7 +197,8 @@ class Slice extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
+
   /**
    * A reference to the {@link module:esri/views/SceneView}. Set this to link the widget to a specific view.
    *
@@ -214,7 +218,7 @@ class Slice extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean;
+  override visible: boolean;
 
   /**
    * Indicates whether the widget is active.
@@ -239,7 +243,7 @@ class Slice extends Widget {
   @property({
     type: SliceViewModel
   })
-  viewModel: SliceViewModel = new SliceViewModel();
+  override viewModel = new SliceViewModel();
 
   @aliasOf("viewModel.excludedLayers")
   excludedLayers: Collection<Layer | BuildingComponentSublayer>;
@@ -253,8 +257,8 @@ class Slice extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
-    const isSupported = this.viewModel.isSupported;
+  override render(): VNode {
+    const isSupported = this.viewModel.supported;
     const isActive = this.viewModel.active;
     const isDisabled = this.viewModel.state === "disabled";
     const isReady = this.viewModel.state === "ready";

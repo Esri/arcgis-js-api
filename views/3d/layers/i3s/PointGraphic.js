@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/tslib.es6","../../../../Graphic","../../../../core/accessorSupport/decorators/property","../../../../core/has","../../../../core/accessorSupport/ensureType","../../../../core/Logger","../../../../core/accessorSupport/decorators/subclass"],(function(e,o,r,t,c,s,i,n,p){"use strict";var a;e.PointGraphic=a=function(e){function r(o){return e.call(this,o)||this}o._inheritsLoose(r,e);var t=r.prototype;return t.clone=function(){return new a(this.cloneProperties())},t.cloneProperties=function(){const{pointCloudMetadata:o}=this;return{...e.prototype.cloneProperties.call(this),pointCloudMetadata:o}},r}(t),r.__decorate([c.property({constructOnly:!0})],e.PointGraphic.prototype,"pointCloudMetadata",void 0),e.PointGraphic=a=r.__decorate([p.subclass("esri.views.3d.layers.i3s.PointGraphic")],e.PointGraphic),Object.defineProperty(e,"__esModule",{value:!0})}));

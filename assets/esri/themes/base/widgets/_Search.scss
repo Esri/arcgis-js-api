@@ -171,7 +171,7 @@ $search_width: 240px !default;
     font-size: 16px;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-search__submit-button {
       border-left: none;
       border-right: solid 1px $border-color;

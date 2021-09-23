@@ -15,7 +15,7 @@
  * @module esri/widgets/BasemapGallery
  * @since 4.3
  *
- * @see [BasemapGallery.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapGallery.tsx)
+ * @see [BasemapGallery.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapGallery.tsx)
  * @see [BasemapGallery.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapGallery.scss)
  * @see [Sample - BasemapGallery widget](../sample-code/widgets-basemapgallery/index.html)
  * @see module:esri/widgets/BasemapGallery/BasemapGalleryViewModel
@@ -123,7 +123,7 @@ class BasemapGallery extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const handles = this._handles;
 
     this.own([
@@ -224,7 +224,7 @@ class BasemapGallery extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -241,7 +241,7 @@ class BasemapGallery extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -335,7 +335,7 @@ class BasemapGallery extends Widget {
    * @autocast
    */
   @property()
-  viewModel = new BasemapGalleryViewModel();
+  override viewModel = new BasemapGalleryViewModel();
 
   //-------------------------------------------------------------------
   //
@@ -343,7 +343,7 @@ class BasemapGallery extends Widget {
   //
   //-------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const sourceLoading = this.get("source.state") === "loading";
     const isDisabled = this.disabled || this.get("viewModel.state") === "disabled";
     const items = this.get<Collection<BasemapGalleryItem>>("viewModel.items")

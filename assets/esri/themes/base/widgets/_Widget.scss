@@ -18,6 +18,8 @@
     }
 
     // Apply focus ring matching calcite components, for consistency.
+    &:focus-visible,
+    &:focus,
     *:focus-visible,
     *:focus {
       outline: 2px solid var(--calcite-ui-brand);
@@ -32,7 +34,6 @@
   }
 
   .esri-widget__anchor {
-    text-decoration: none;
     color: $button-color;
     &:hover {
       color: $button-color--hover;
@@ -188,6 +189,7 @@
     color: $font-color;
     border: none;
     border-collapse: collapse;
+    line-height: 1.3em;
     width: 100%;
     tr:nth-child(odd) {
       background-color: rgba($background-color--inverse, 0.1);
@@ -535,7 +537,7 @@
    RTL
    ========================================================================== */
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-widget__table {
       th {
         text-align: right;

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../core/mathUtils","../../chunks/quat","../../chunks/quatf64","../../chunks/vec3"],(function(n,e,t,r,u){"use strict";function c(n=x){return[n[0],n[1],n[2],n[3]]}function o(n,e,t,r){return f(n,e,t,r,k)}function i(n,e){return f(n[0],n[1],n[2],e,k)}function s(n,e=c()){return f(n[0],n[1],n[2],n[3],e)}function f(n,e,t,r,u=c()){return u[0]=n,u[1]=e,u[2]=t,u[3]=r,u}function a(n,e,t=c()){return u.copy(A(t),n),t[3]=e,t}function l(n,e,t=c()){return u.cross(t,n,e),u.normalize(t,t),t[3]=-u.angle(n,e),t}function g(n,r,u=c()){return t.setAxisAngle(h,A(n),p(n)),t.setAxisAngle(y,A(r),p(r)),t.multiply(h,y,h),m(u,e.rad2deg(t.getAxisAngle(A(u),h)))}function A(n){return n}function d(n){return n[3]}function p(n){return e.deg2rad(n[3])}function m(n,e){return n[3]=e,n}const x=[0,0,1,0],h=r.create(),y=r.create(),k=c();n.UP=x,n.angle=d,n.angleRad=p,n.axis=A,n.compose=g,n.copy=s,n.create=c,n.fromAxisAndAngle=a,n.fromPoints=l,n.fromValues=f,n.setAngle=m,n.wrap=o,n.wrapAxisAngle=i,Object.defineProperty(n,"__esModule",{value:!0})}));

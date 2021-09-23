@@ -26,7 +26,7 @@
  * @amdalias FeatureTable
  * @since 4.15
  *
- * @see [FeatureTable.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable.tsx)
+ * @see [FeatureTable.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable.tsx)
  * @see [FeatureTable.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureTable.scss)
  * @see module:esri/widgets/FeatureTable/FeatureTableViewModel
  * @see module:esri/views/ui/DefaultUI
@@ -50,10 +50,6 @@ import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, property, subclass } from "esri/core/accessorSupport/decorators";
-
-// esri.layers
-import FeatureLayer from "esri/layers/FeatureLayer";
-import SceneLayer from "esri/layers/SceneLayer";
 
 // esri.views
 import IMapView from "esri/views/IMapView";
@@ -82,7 +78,7 @@ import {
 } from "esri/widgets/FeatureTable/Grid/support/interfaces";
 
 // esri.widgets.FeatureTable.support
-import { FeatureData } from "esri/widgets/FeatureTable/support/interfaces";
+import { FeatureData, FeatureTableSupportedLayers } from "esri/widgets/FeatureTable/support/interfaces";
 
 // esri.widgets.FeatureTable.t9n
 import FeatureTableMessages from "esri/widgets/FeatureTable/t9n/FeatureTable";
@@ -220,7 +216,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const loadMessages = async (): Promise<void> =>
       (this.messages = await fetchMessageBundle("esri/widgets/FeatureTable/t9n/FeatureTable"));
 
@@ -299,7 +295,6 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenu
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
-   * @see module:esri/widgets/FeatureTable/FieldColumnConfig
    */
 
   //--------------------------------------------------------------------------
@@ -327,7 +322,6 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenu
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuViewModel
    * @see module:esri/widgets/FeatureTable/Grid/support/ButtonMenuItem
-   * @see module:esri/widgets/FeatureTable/FieldColumnConfig
    * @see module:esri/widgets/FeatureTable/Grid/Column
    */
 
@@ -565,7 +559,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -573,18 +567,23 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
 
   /**
    *
-   * The associated {@link module:esri/layers/FeatureLayer} or {@link module:esri/layers/SceneLayer} containing the fields and
+   * The associated {@link module:esri/layers/FeatureLayer}, {@link module:esri/layers/SceneLayer}, {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/ImageryLayer}, or {@link module:esri/layers/WFSLayer} containing the fields and
    * attributes to display within the widget.
    * The table's pagination defaults to `50` records at a time. If the layer contains less than 50 records, it will use whatever
    * count it has. Note that 0 records do not apply.
    *
+   * ::: esri-md class="panel trailer-1"
+   * - Support for {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer}, {@link module:esri/layers/ImageryLayer}, and {@link module:esri/layers/WFSLayer} was added at version 4.21.
+   * - For an {@link module:esri/layers/ImageryLayer} to work with FeatureTable, it must have mosaic dataset. Currently, `Map` and `FeatureTable` interaction with `ImageryLayers` is not supported.
+   * :::
+   *
    * @name layer
-   * @type {module:esri/layers/FeatureLayer|module:esri/layers/SceneLayer}
+   * @type {module:esri/layers/FeatureLayer|module:esri/layers/SceneLayer|module:esri/layers/GeoJSONLayer|module:esri/layers/CSVLayer|module:esri/layers/WFSLayer|module:esri/layers/ImageryLayer}
    * @instance
    *
    */
   @aliasOf("viewModel.layer")
-  layer: FeatureLayer | SceneLayer = null;
+  layer: FeatureTableSupportedLayers = null;
 
   //----------------------------------
   //  messages
@@ -739,7 +738,7 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
    * @autocast
    */
   @property()
-  viewModel: FeatureTableViewModel = new FeatureTableViewModel();
+  override viewModel = new FeatureTableViewModel();
 
   //----------------------------------
   // visibleElements
@@ -986,13 +985,12 @@ class FeatureTable extends HandleOwnerMixin(Widget)<ConstructProperties, Events>
 
   /**
    *
-   * @todo - we don't generally doc the render method for the widgets
    * @method render
    * @instance
    * @ignore
    *
    */
-  render(): VNode {
+  override render(): VNode {
     return (
       <div bind={this} class={this.classes(CSS.base, CSS.widget)}>
         {this.visibleElements.header ? this._renderHeader() : null}

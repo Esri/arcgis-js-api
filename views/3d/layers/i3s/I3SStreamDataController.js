@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../core/promiseUtils"],(function(e,t,r){"use strict";let l=function(){function e(e,t){this.requester=e,this.apiKey=t,this.activeRequests=new Set}var l=e.prototype;return l.request=function(e,t,l){const o=r.createAbortController(),n=r.onAbortOrThrow(l,(()=>o.abort())),s={signal:o.signal,query:{token:this.apiKey}},a=this.requester.request(e,t,s),u={response:a,abortController:o,abortHandle:n};return this.activeRequests.add(u),r.always(a,(()=>{var e;u.abortController=null,null==(e=u.abortHandle)||e.remove(),u.abortHandle=null,this.activeRequests.delete(u)})),a},l.cancelAll=function(){this.activeRequests.forEach((e=>{var t,r;null==(t=e.abortController)||t.abort(),e.abortController=null,null==(r=e.abortHandle)||r.remove()})),this.activeRequests.clear()},t._createClass(e,[{key:"busy",get:function(){return this.requester.busy}}]),e}();e.I3SStreamDataController=l,e.default=l,Object.defineProperty(e,"__esModule",{value:!0})}));

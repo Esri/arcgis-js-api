@@ -250,7 +250,7 @@
     padding: 0 0 $cap-spacing 0;
   }
 
-  html[dir="rtl"] .esri-table-list {
+  [dir="rtl"] .esri-table-list {
     .esri-table-list__list {
       margin: 0 $side-spacing 0 0;
     }

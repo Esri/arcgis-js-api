@@ -20,7 +20,7 @@
  * @module esri/widgets/TableList
  * @since 4.17
  *
- * @see [TableList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TableList.tsx)
+ * @see [TableList.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TableList.tsx)
  * @see [TableList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TableList.scss)
  * @see module:esri/widgets/TableList/TableListViewModel
  * @see {@link module:esri/Map#tables Map.tables}
@@ -209,7 +209,7 @@ class TableList extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._setVisibleItems(this.tableItems);
 
     this.own(
@@ -218,7 +218,7 @@ class TableList extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroySortable();
     this._handles.destroy();
     this._handles = null;
@@ -258,7 +258,7 @@ class TableList extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  errorsVisible
@@ -287,7 +287,7 @@ class TableList extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  listItemCreatedFunction
@@ -507,7 +507,7 @@ class TableList extends Widget {
   @property({
     type: TableListViewModel
   })
-  viewModel: TableListViewModel = new TableListViewModel();
+  override viewModel = new TableListViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -528,7 +528,7 @@ class TableList extends Widget {
     this.viewModel.triggerAction(action, item);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { visibleItems } = this;
     const state = this.viewModel?.state;
 
@@ -631,8 +631,6 @@ class TableList extends Widget {
       [CSS.actionsMenuItemActive]: item.actionsOpen
     };
 
-    const actionsMenuTitle = item.actionsOpen ? messagesCommon.close : messagesCommon.open;
-
     return (
       <div
         key="actions-menu-toggle"
@@ -644,8 +642,8 @@ class TableList extends Widget {
         tabindex="0"
         role="button"
         aria-controls={actionsUid}
-        aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}
+        aria-label={messagesCommon.options}
+        title={messagesCommon.options}
       >
         <span aria-hidden="true" class={CSS.iconEllipses} />
       </div>

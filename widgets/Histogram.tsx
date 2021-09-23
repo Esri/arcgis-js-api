@@ -415,7 +415,7 @@ class Histogram extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   /**
    * Function used to format labels. This function should be set to the
@@ -564,7 +564,7 @@ class Histogram extends Widget {
    * @type {module:esri/widgets/Histogram/HistogramViewModel}
    */
   @property()
-  viewModel: HistogramViewModel = new HistogramViewModel();
+  override viewModel = new HistogramViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -626,7 +626,7 @@ class Histogram extends Widget {
     return new Histogram({ bins, max, min });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { label, layout, state } = this;
     const baseClasses = this.classes(
       CSS.base,

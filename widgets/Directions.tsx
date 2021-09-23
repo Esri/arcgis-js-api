@@ -1,6 +1,6 @@
 /**
  * The Directions Widget provides a way to build driving and walking directions using ArcGIS Online and custom
- * Network Analysis Route services. Similar to how the {@link module:esri/tasks/RouteTask} works, this widget
+ * Network Analysis Route services. Similar to how the {@link module:esri/rest/route} works, this widget
  * generates a route finding a least-cost path between multiple points using a specified network. When searching
  * for an address, the location of the points used to navigate depends on the `locationType` of the [Search properties](#SearchProperties).
  * The default value will be `"street"` for any locator source that does not define a `locationType`. The
@@ -32,7 +32,7 @@
  * @since 4.6
  *
  * @see module:esri/widgets/Directions/DirectionsViewModel
- * @see [Directions.tsx]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Directions.tsx)
+ * @see [Directions.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Directions.tsx)
  * @see [Directions.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Directions.scss)
  * @see [Guide topic - Proxy pages](../guide/proxies/index.html)
  * @see [Sample - Directions widget](../sample-code/widgets-directions/index.html)
@@ -190,7 +190,7 @@ class Directions extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       init(this, "viewModel.lastRoute", () => {
         this._routeSections.routePath = this.get<Graphic[]>("viewModel.directionLines");
@@ -251,7 +251,7 @@ class Directions extends Widget {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._datePicker.destroy();
     this._timePicker.destroy();
     this._stopsToSearches.forEach((search) => search.destroy());
@@ -393,7 +393,7 @@ class Directions extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -410,7 +410,7 @@ class Directions extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  lastRoute
@@ -662,7 +662,7 @@ class Directions extends Widget {
   @property({
     type: DirectionsViewModel
   })
-  viewModel: DirectionsViewModel = new DirectionsViewModel();
+  override viewModel = new DirectionsViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -689,7 +689,7 @@ class Directions extends Widget {
   @aliasOf("viewModel.zoomToRoute")
   zoomToRoute(): void {}
 
-  render(): VNode {
+  override render(): VNode {
     return <div class={this.classes(CSS.base, CSS.scroller)}>{this._renderPanelContent()}</div>;
   }
 

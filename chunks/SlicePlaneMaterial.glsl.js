@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(d,e,r){"use strict";function a(){const d=new r.ShaderBuilder;return d.extensions.add("GL_OES_standard_derivatives"),d.vertex.uniforms.add("proj","mat4").add("view","mat4"),d.attributes.add("position","vec3"),d.attributes.add("uv0","vec2"),d.varyings.add("vUV","vec2"),d.vertex.code.add(e.glsl`void main(void) {
 vUV = uv0;

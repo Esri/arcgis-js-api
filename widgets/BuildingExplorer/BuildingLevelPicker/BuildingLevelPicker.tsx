@@ -67,7 +67,7 @@ class BuildingLevelPicker extends Widget {
     super(properties, parentNode);
   }
 
-  postInitialize(): void {
+  protected override postInitialize(): void {
     this.own(
       watchUtils.init(this, "_levelsContainer", () => this._onContainerChange()),
       watchUtils.init(this, "_levels", () => this._createLevelWidgets()),
@@ -75,7 +75,7 @@ class BuildingLevelPicker extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._levelHandles.destroy();
     this._levelEventHandles.destroy();
     this._levelWidgets.forEach((widget) => widget.destroy());
@@ -98,7 +98,7 @@ class BuildingLevelPicker extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingLevel })
-  viewModel = this._defaultViewModel;
+  override viewModel = this._defaultViewModel;
 
   /**
    * The widget's message bundle.
@@ -259,7 +259,7 @@ class BuildingLevelPicker extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const numLevels = this._levelWidgets.length;
     const items = numLevels > 1 ? this._levelWidgets.map((l) => l.render()) : null;
 

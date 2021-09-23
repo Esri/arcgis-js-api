@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","./EvaluateAmbientLighting.glsl","./EvaluateAmbientOcclusion.glsl","./EvaluateMainLighting.glsl","./PhysicallyBasedRendering.glsl","./PiUtils.glsl","./ReadShadowMap.glsl","../../shaderModules/interfaces"],(function(i,n,e,o,t,a,l,r){"use strict";function d(i,d){const c=i.fragment;i.include(o.EvaluateMainLighting),i.include(e.EvaluateAmbientOcclusion,d),0!==d.pbrMode&&i.include(t.PhysicallyBasedRendering,d),i.include(n.EvaluateAmbientLighting,d),d.receiveShadows&&i.include(l.ReadShadowMap,d),c.uniforms.add("lightingGlobalFactor","float"),c.uniforms.add("ambientBoostFactor","float"),i.include(a.PiUtils),c.code.add(r.glsl`
     const float GAMMA_SRGB = 2.1;

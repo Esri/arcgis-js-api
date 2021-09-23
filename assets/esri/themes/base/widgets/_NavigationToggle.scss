@@ -63,7 +63,7 @@ $earmark_size: 6px !default;
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-navigation-toggle--horizontal {
       .esri-navigation-toggle__button--rotate {
         border-left: none;

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Accessor","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass"],(function(o,e,r,t,s,n,i,c){"use strict";let a=function(e){function r(o){var r;return(r=e.call(this,o)||this).format=null,r.position={coordinate:null,location:null},r}return o._inheritsLoose(r,e),o._createClass(r,[{key:"displayCoordinate",get:function(){const o=this.get("format");return o&&o.getDisplayCoordinate(this.get("position.coordinate"))}}]),r}(r);return e.__decorate([t.property({readOnly:!0})],a.prototype,"displayCoordinate",null),e.__decorate([t.property()],a.prototype,"format",void 0),e.__decorate([t.property()],a.prototype,"position",void 0),a=e.__decorate([c.subclass("esri.widgets.CoordinateConversion.support.Conversion")],a),a}));

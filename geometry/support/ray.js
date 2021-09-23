@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../core/ObjectStack","../../chunks/vec3","../../chunks/vec3f64","./vectorStacks"],(function(n,t,i,r,e){"use strict";function o(n){return n?{origin:r.clone(n.origin),direction:r.clone(n.direction)}:{origin:r.create(),direction:r.create()}}function c(n,t){const i=p.get();return i.origin=n,i.direction=t,i}function u(n,t=o()){return d(n.origin,n.direction,t)}function s(n,t,r=o()){return i.copy(r.origin,n),i.subtract(r.direction,t,n),r}function d(n,t,r=o()){return i.copy(r.origin,n),i.copy(r.direction,t),r}function a(n,t){const r=i.cross(e.sv3d.get(),i.normalize(e.sv3d.get(),n.direction),i.subtract(e.sv3d.get(),t,n.origin));return i.dot(r,r)}function f(n,t){return Math.sqrt(a(n,t))}function g(n,t,r){const e=i.dot(n.direction,i.subtract(r,t,n.origin));return i.add(r,n.origin,i.scale(r,n.direction,e)),r}function l(){return{origin:null,direction:null}}const p=new t.ObjectStack(l);n.closestPoint=g,n.copy=u,n.create=o,n.distance=f,n.distance2=a,n.fromPoints=s,n.fromValues=d,n.wrap=c,Object.defineProperty(n,"__esModule",{value:!0})}));

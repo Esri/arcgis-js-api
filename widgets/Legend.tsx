@@ -48,7 +48,7 @@
  * @since 4.0
  *
  * @see [Sample - Legend widget](../sample-code/widgets-legend/index.html)
- * @see [Legend.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Legend.tsx)
+ * @see [Legend.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Legend.tsx)
  * @see [Legend.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Legend.scss)
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
@@ -126,7 +126,7 @@ class Legend extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       watchUtils.on(this, "activeLayerInfos", "change", () =>
         this._refreshActiveLayerInfos(this.activeLayerInfos)
@@ -158,7 +158,7 @@ class Legend extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._handles.destroy();
     this._handles = null;
   }
@@ -254,6 +254,35 @@ class Legend extends Widget {
   headingLevel: HeadingLevel = 3;
 
   //----------------------------------
+  //  hideLayersNotInCurrentView
+  //----------------------------------
+
+  /**
+   * When `true`, layers will only be shown in the legend if
+   * they are visible in the view's extent. When data from a layer
+   * is not visible in the view, the layer's legend information
+   * will be hidden.
+   *
+   * To hide layers completely
+   * from the legend, you should set the `legendEnabled` property of
+   * the layer to `false`.
+   *
+   * @name hideLayersNotInCurrentView
+   * @instance
+   * @since 4.21
+   * @type {boolean}
+   * @default false
+   * @see [respectLayerVisibility](#respectLayerVisibility)
+   *
+   * @example
+   * // layers not displayed in the view
+   * // will not be shown in the legend
+   * legend.hideLayersNotInCurrentView = true;
+   */
+  @aliasOf("viewModel.hideLayersNotInCurrentView")
+  hideLayersNotInCurrentView = false;
+
+  //----------------------------------
   //  keepCacheOnDestroy
   //----------------------------------
 
@@ -285,6 +314,7 @@ class Legend extends Widget {
    * @instance
    * @type {boolean}
    * @default true
+   * @see [hideLayersNotInCurrentView](#hideLayersNotInCurrentView)
    *
    * @example
    * // Always displays legend elements for the map's layers
@@ -307,7 +337,7 @@ class Legend extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -324,7 +354,7 @@ class Legend extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layerInfos
@@ -345,8 +375,6 @@ class Legend extends Widget {
    * @property {string} [title] - Specifies a title for the layer to display above its symbols and descriptions.
    * If no title is specified the service name is used.
    * @property {module:esri/layers/Layer} layer - A layer to display in the legend.
-   * @todo doc later \@property {number[]} hideLayers -  List of sublayer ids that will not be displayed in the legend
-   *                                    even if they are visible in the map.
    */
   @aliasOf("viewModel.layerInfos")
   layerInfos: LayerInfo[] = null;
@@ -471,7 +499,7 @@ class Legend extends Widget {
    * @autocast
    */
   @property()
-  viewModel: LegendViewModel = new LegendViewModel();
+  override viewModel = new LegendViewModel();
 
   //-------------------------------------------------------------------
   //
@@ -479,7 +507,7 @@ class Legend extends Widget {
   //
   //-------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div
         class={this.classes(CSS.base, CSS.widget, this.style instanceof Classic ? CSS.panel : null)}

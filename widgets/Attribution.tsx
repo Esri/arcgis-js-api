@@ -21,7 +21,7 @@
  * @module esri/widgets/Attribution
  * @since 4.0
  *
- * @see [Attribution.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attribution.tsx)
+ * @see [Attribution.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attribution.tsx)
  * @see [Attribution.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Attribution.scss)
  * @see module:esri/widgets/Attribution/AttributionViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -53,7 +53,6 @@ import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widg
 
 const CSS = {
   base: "esri-attribution esri-widget",
-  anchor: "esri-widget__anchor",
   poweredBy: "esri-attribution__powered-by",
   sources: "esri-attribution__sources",
   open: "esri-attribution--open",
@@ -84,7 +83,7 @@ class Attribution extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender()));
   }
 
@@ -147,7 +146,7 @@ class Attribution extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  itemDelimiter
@@ -179,7 +178,7 @@ class Attribution extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -229,7 +228,7 @@ class Attribution extends Widget {
    * @type {module:esri/widgets/Attribution/AttributionViewModel}
    */
   @property({ type: AttributionViewModel })
-  viewModel: AttributionViewModel = new AttributionViewModel();
+  override viewModel = new AttributionViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -237,7 +236,7 @@ class Attribution extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const classes = {
       [CSS.open]: this._isOpen
     };
@@ -265,12 +264,7 @@ class Attribution extends Widget {
     return (
       <div class={CSS.poweredBy}>
         Powered by{" "}
-        <a
-          class={this.classes(CSS.link, CSS.anchor)}
-          href="http://www.esri.com/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a class={CSS.link} href="http://www.esri.com/" target="_blank" rel="noreferrer">
           Esri
         </a>
       </div>

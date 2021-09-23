@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,o,t,l,r,n){"use strict";function a(e){const a=new n.ShaderBuilder;return a.include(o.AlignPixel),a.include(t.HUD,e),a.include(i.Slice,e),a.attributes.add("uv0","vec2"),a.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),a.varyings.add("coverageSampling","vec4"),a.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&a.varyings.add("depth","float"),a.vertex.code.add(r.glsl`
     void main(void) {

@@ -33,28 +33,30 @@
  *
  * #### Creating polyline and polygon graphics
  *
- * Gesture | Action |
- * ---------|---------|
- * Left-click | Adds a vertex at the pointer location.|
- * Left-drag | Adds a vertex for each pointer move. |
- * F | Adds a vertex to the polyline or polygon graphic. Completes the `rectangle` or `circle` polygon graphic in [`click`](#defaultCreateOptions) mode.|
- * Enter | Completes the polyline or polygon graphic sketch. |
- * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
- * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. |
- * Ctrl | Toggle snapping dependent on the configuration in {@link  module:esri/widgets/Sketch/SketchViewModel#snappingOptions snappingOptions}. |
- * Spacebar+Left-drag | Pan the view while creating a polyline or polygon graphic.
- * Left-click on the first vertex | Completes the polygon graphic sketch. |
+ * The following keyboard shortcuts apply when creating polyline and polygon graphics.
+ *
+ * Gesture | Action | Example |
+ * ---------|---------|---------|
+ * Left-click | Adds a vertex at the pointer location.| <img alt="Left-click" src="../assets/img/apiref/widgets/sketch/left-click-line.gif" width="400px"> |
+ * Left-drag | Adds a vertex for each pointer move in [`hybrid`](#defaultCreateOptions) or [`freehand`](#defaultCreateOptions) mode. | <img alt="Left drag" src="../assets/img/apiref/widgets/sketch/left-drag-line.gif" width="400px"> |
+ * F | Adds a vertex to the `polyline` or `polygon` graphic. Completes the `rectangle` or `circle` polygon graphic in [`click`](#defaultCreateOptions) mode. | <img alt="F vertex add" src="../assets/img/apiref/widgets/sketch/f-key-line.gif" width="400px"> |
+ * Enter | Completes the `polyline` or `polygon` graphic without the staged vertex. A `double-click` will complete the graphic at the current mouse cursor's postion. | <img alt="Enter" src="../assets/img/apiref/widgets/sketch/enter-line.gif" width="400px"> |
+ * Z | Incrementally undo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Undo" src="../assets/img/apiref/widgets/sketch/undo-line.gif" width="400px"> |
+ * R | Incrementally redo actions recorded in the stack. The undo/redo stack is for an individual sketch operation, meaning you can redo/undo actions while creating or updating a graphic. | <img alt="Redo" src="../assets/img/apiref/widgets/sketch/redo-line.gif" width="400px"> |
+ * Ctrl | Toggle snapping dependent on the configuration in {@link  module:esri/widgets/Sketch/SketchViewModel#snappingOptions snappingOptions}. | <img alt="Ctrl key" src="../assets/img/apiref/widgets/sketch/ctrl-key-polygon.gif" width="400px"> |
+ * Spacebar+Left-drag | Pan the view while creating a polyline or polygon graphic. | <img alt="Space left drag" src="../assets/img/apiref/widgets/sketch/space-left-drag.gif" width="400px"> |
+ * Left-click on the first vertex | Completes the polygon graphic sketch. | <img alt="Left-click first vertex" src="../assets/img/apiref/widgets/sketch/left-click-vertex.gif" width="400px"> |
  *
  * #### Creating polygon graphics with predefined shapes
  *
- * The following keyboard shortcuts apply when creating polygon graphics with predefined shapes.
+ * The following keyboard shortcuts apply when creating polygon graphics with predefined shapes (`rectangle` and `circle`).
  *
- * Gesture | Action |
- * ------- | ------ |
- * Left-click+Drag | Creates a `rectangle` graphic with dimensions based on the bounding box between initial click and cursor location. Creates a `circle` graphic with radius based on the distance between initial click and cursor location. |
- * Shift+Left-click+Drag | Changes the shape from a `rectangle` to a `square` or from a `circle` to an `ellipse`. |
- * Alt+Left-click+Drag | Creates a `rectangle` graphic with a center at initial click, and dimensions based on the distance between the initial click to the cursor location. Creates a `circle` graphic with a radius based on the bounding box between the initial click and the cursor location.
- * Shift+Alt+Left-click+Drag | Combines the behavior described above. |
+ * Gesture | Action | Example |
+ * ------- | ------ |---------|
+ * Left-click+Drag | Creates a `rectangle` graphic with dimensions based on the bounding box between initial click and cursor location. Creates a `circle` graphic with radius based on the distance between initial click and cursor location. | <img alt="Polygon Left-click drag" src="../assets/img/apiref/widgets/sketch/polygon-left-click-drag.gif" width="400px"> |
+ * Shift+Left-click+Drag | Changes the shape from a `rectangle` to a `square` or from a `circle` to an `ellipse`. | <img alt="Shift Left-click drag" src="../assets/img/apiref/widgets/sketch/shift-left-click-drag.gif" width="400px"> |
+ * Alt+Left-click+Drag | Creates a `rectangle` graphic with a center at initial click, and dimensions based on the distance between the initial click to the cursor location. Creates a `circle` graphic with a radius based on the bounding box between the initial click and the cursor location. | <img alt="Alt Left-click drag" src="../assets/img/apiref/widgets/sketch/alt-left-click-drag.gif" width="400px"> |
+ * Shift+Alt+Left-click+Drag | Combines the behavior described above. | <img alt="Shift Alt Left-click drag" src="../assets/img/apiref/widgets/sketch/shift-alt-left-click-drag.gif" width="400px"> |
  *
  * <a name="update-graphics"></a>
  * #### Updating graphics
@@ -136,7 +138,7 @@
  * @module module:esri/widgets/Sketch
  *
  * @since 4.10
- * @see [Sketch.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Sketch.tsx)
+ * @see [Sketch.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Sketch.tsx)
  * @see [Sketch.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Sketch.scss)
  * @see module:esri/widgets/Sketch/SketchViewModel
  * @see [Sample - Sketch temporary geometries](../sample-code/sketch-geometries/index.html)
@@ -173,9 +175,8 @@ import Graphic from "esri/widgets/../Graphic";
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { eventKey } from "esri/core/events";
 import { handlesGroup } from "esri/core/handleUtils";
-import { destroyMaybe, isNone, Maybe, removeMaybe } from "esri/core/maybe";
+import { destroyMaybe, isNone, isSome, Maybe, removeMaybe } from "esri/core/maybe";
 
 // esri.core.accessorSupport
 import { aliasOf, cast, subclass, property } from "esri/core/accessorSupport/decorators";
@@ -213,12 +214,12 @@ import SketchMessages from "esri/widgets/Sketch/t9n/Sketch";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import Selector from "esri/widgets/support/Selector";
+import SelectionToolbar from "esri/widgets/support/SelectionToolbar";
+import SnappingControls from "esri/widgets/support/SnappingControls";
 import { isRTL, messageBundle, tsx, vmEvent, WidgetProperties } from "esri/widgets/support/widget";
 
-// esri.widgets.support.Selector
-import { SelectionCompleteEventInfo } from "esri/widgets/support/Selector/interfaces";
-import SelectionOperation from "esri/widgets/support/Selector/SelectionOperation";
+// esri.widgets.support.Selector2D
+import { SelectionCompleteEventInfo } from "esri/widgets/support/Selector2D/interfaces";
 
 type CreateToolVisibilityMap = { [key in CreateTool]?: boolean };
 
@@ -226,7 +227,7 @@ type SelectionToolVisibilityMap = { [key in SelectionTool]?: boolean };
 
 type Layout = "vertical" | "horizontal";
 
-type SelectionTool = "lasso-selection" | "rectangle-selection";
+type SelectionTool = "lasso-selection" | "rectangle-selection" | "custom-selection";
 
 interface SketchEvents {
   delete: DeleteEvent;
@@ -255,37 +256,15 @@ const CSS = {
   menuContainer: "esri-sketch__menu-container",
   menuHeader: "esri-sketch__menu-header",
   menuTitle: "esri-sketch__menu-title",
-  menuContent: "esri-sketch__menu-content",
-  menuItem: "esri-sketch__menu-item",
-  menuItemWrapper: "esri-sketch__menu-item-wrapper",
 
   featureCountBadge: "esri-sketch__feature-count-badge",
   featureCountText: "esri-sketch__feature-count-text",
   featureCountNumber: "esri-sketch__feature-count-number",
 
-  // button classes
-  button: "esri-sketch__button",
-  selectedButton: "esri-sketch__button--selected",
-
-  // icon classes
-  pointIcon: "esri-icon-map-pin",
-  polygonIcon: "esri-icon-polygon",
-  polylineIcon: "esri-icon-polyline",
-  circleIcon: "esri-icon-radio-unchecked",
-  rectangleIcon: "esri-icon-checkbox-unchecked",
-  cursorIcon: "esri-icon-cursor",
-  resetIcon: "esri-icon-trash",
-  undoIcon: "esri-icon-undo",
-  redoIcon: "esri-icon-redo",
-  settingsIcon: "esri-icon-settings",
-
   actionToggle: "esri-sketch__action-toggle",
   actionToggleOn: "esri-sketch__action-toggle--on",
   actionTitle: "esri-sketch__item-action-title",
   actionIcon: "esri-sketch__item-action-icon",
-
-  rectangleSelectIcon: "esri-icon-cursor-marquee",
-  lassoSelectIcon: "esri-icon-lasso", // TODO
 
   // common
   disabled: "esri-disabled",
@@ -309,11 +288,6 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   undoRedoMenu: true,
   settingsMenu: true
 };
-
-interface ActiveSelectionInfo {
-  tool: SelectionTool;
-  operation: SelectionOperation;
-}
 
 interface OptionalConstructProperties extends WidgetProperties<SketchViewModel> {
   availableCreateTools: CreateTool[];
@@ -751,12 +725,36 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     }
   }
 
-  initialize(): void {
-    this._selector.view = this.view;
+  protected override initialize(): void {
+    const { layer, view } = this;
+
+    const toolbar = new SelectionToolbar({
+      view: view?.type === "2d" ? view : null,
+      layers: layer ? [layer] : null
+    });
+
+    this._selectionHandlesGroup = handlesGroup([
+      toolbar.watch("activeToolInfo", (info) => {
+        if (info) {
+          this.viewModel.cancel();
+        }
+      }),
+      toolbar.on("complete", (event) => this._onSelectionOperationComplete(event))
+    ]);
+
+    this._selectionToolbar = toolbar;
+    this._setUpSnappingControls();
   }
 
-  destroy(): void {
+  protected override loadDependencies(): Promise<any> {
+    return import("@esri/calcite-components/dist/custom-elements/bundles/action");
+  }
+
+  override destroy(): void {
+    this._selectionToolbar.destroy();
     this._cleanupViewModel();
+    this._selectionHandlesGroup = removeMaybe(this._selectionHandlesGroup);
+    this._snappingControls = destroyMaybe(this._snappingControls);
   }
 
   //--------------------------------------------------------------------------
@@ -767,15 +765,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
 
   private _activeCreateOptions: CreateOptions = null;
 
-  @property()
-  private _activeSelectionInfo: ActiveSelectionInfo = null;
-
   private _defaultViewModel: Maybe<SketchViewModel> = null;
-  private _viewModelHandlesGroup: Maybe<IHandle> = null;
 
   private _menuOpen: boolean = false;
 
-  private _selector: Selector = new Selector();
+  private _selectionToolbar: SelectionToolbar = null;
+
+  private _selectionHandlesGroup: Maybe<IHandle> = null;
+
+  private _snappingControls: Maybe<SnappingControls> = null;
+
+  private _viewModelHandlesGroup: Maybe<IHandle> = null;
 
   //--------------------------------------------------------------------------
   //
@@ -796,7 +796,19 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
    */
   @property()
   get activeTool(): SketchTool | SelectionTool {
-    return this._activeSelectionInfo?.tool || this.viewModel.activeTool;
+    const selectionInfo = this._selectionToolbar.activeToolInfo;
+
+    if (selectionInfo) {
+      switch (selectionInfo.toolName) {
+        case "lasso":
+          return "lasso-selection";
+        case "rectangle":
+          return "rectangle-selection";
+        case "default":
+          return "custom-selection";
+      }
+    }
+    return this.viewModel.activeTool;
   }
 
   //----------------------------------
@@ -931,7 +943,7 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -947,7 +959,7 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -999,12 +1011,16 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   @messageBundle("esri/widgets/Sketch/t9n/Sketch")
   messages: SketchMessages = null;
 
+  //----------------------------------
+  //  snappingOptions
+  //----------------------------------
+
   /**
-   * The {@link module:esri/views/interactive/snapping/SnappingOptions} for sketching. Supports self snapping and feature
-   * snapping.
+   * The {@link module:esri/views/interactive/snapping/SnappingOptions} for sketching. It supports {@link module:esri/views/interactive/snapping/SnappingOptions#selfEnabled self} and {@link module:esri/views/interactive/snapping/SnappingOptions#featureEnabled feature} snapping.
    *
    * @name snappingOptions
    * @instance
+   * @autocast
    * @type {module:esri/views/interactive/snapping/SnappingOptions}
    *
    */
@@ -1026,7 +1042,7 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
    */
   @property()
   get state(): State {
-    return this._activeSelectionInfo ? "active" : this.viewModel.state;
+    return this._selectionToolbar.activeToolInfo ? "active" : this.viewModel.state;
   }
 
   //----------------------------------
@@ -1100,7 +1116,13 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
         this.viewModel.on("delete", (event) => this.emit("delete", event)),
         this.viewModel.on("undo", () => this.scheduleRender()),
         this.viewModel.on("redo", () => this.scheduleRender()),
-        this.viewModel.watch("view", (view) => this._selector.set({ view })),
+        this.viewModel.watch("layer", (layer) => {
+          this._selectionToolbar.layers = layer ? [layer] : null;
+        }),
+        this.viewModel.watch("view", (view) => {
+          this._selectionToolbar.view = view?.type === "2d" ? view : null;
+          this._setUpSnappingControls();
+        }),
         this.viewModel.watch("state", () => this.notifyChange("state"))
       ]);
     }
@@ -1337,7 +1359,7 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
    *
    */
   cancel(): void {
-    this._cancelSelectionOperation();
+    this._selectionToolbar.cancel();
     this.viewModel.cancel();
   }
 
@@ -1381,7 +1403,7 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   @aliasOf("viewModel.delete")
   delete(): void {}
 
-  render(): VNode {
+  override render(): VNode {
     const {
       label,
       layout,
@@ -1410,7 +1432,8 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
 
     return [
       <div role="menu" key="selection-button-container" class={sectionClasses}>
-        {this.renderSelectionTools()}
+        {this.renderDefaultSelectionButton()}
+        {this.renderSelectionToolbar()}
       </div>,
       availableCreateTools && availableCreateTools.length ? (
         <div role="menu" class={sectionClasses}>
@@ -1461,71 +1484,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
         <header class={CSS.menuHeader} key="settings-menu-header">
           <span class={CSS.menuTitle}>{settings}</span>
         </header>
-        <div class={CSS.menuContent} key="settings-menu-content" aria-label={settings}>
-          <div class={CSS.menuItemWrapper}>{this.renderSnappingToggleMenuItem()}</div>
-        </div>
+        {this.renderSnappingControls()}
       </div>
     ];
   }
 
-  protected renderSnappingToggleMenuItem(): VNode {
-    return (
-      <div
-        class={CSS.menuItem}
-        aria-label={this.messages?.snappingEnabled}
-        key="sketch-snapping-action-toggle"
-        role="menuitem"
-      >
-        {this.renderSnappingToggle()}
-      </div>
-    );
-  }
-
-  protected renderSnappingToggle(): VNode {
-    const {
-      messages: { snappingEnabled },
-      viewModel: {
-        snappingOptions: { enabled }
-      }
-    } = this;
-
-    const classes = this.classes(CSS.actionToggle, {
-      [CSS.actionToggleOn]: enabled
-    });
-
-    return (
-      <div
-        bind={this}
-        role="button"
-        onclick={this._onSnappingToggleClick}
-        onkeydown={this._onSnappingToggleKeyDown}
-        class={classes}
-        tabindex="0"
-        title={snappingEnabled}
-        aria-label={snappingEnabled}
-      >
-        {this.renderActionIcon()}
-        <span class={CSS.actionTitle}>{snappingEnabled}</span>
-      </div>
-    );
-  }
-
-  private _onSnappingToggleKeyDown(event: KeyboardEvent): void {
-    const key = eventKey(event);
-
-    if (key === "Enter" || key === " ") {
-      event.preventDefault();
-      this._toggleSnapping();
+  protected renderSnappingControls(): VNode {
+    if (isSome(this._snappingControls)) {
+      return this._snappingControls.render();
     }
-  }
 
-  private _onSnappingToggleClick(event: Event): void {
-    event.stopPropagation();
-    this._toggleSnapping();
-  }
-
-  protected renderActionIcon(): VNode {
-    return <span key="action-icon" aria-hidden="true" class={this.classes(CSS.actionIcon)} />;
+    return undefined;
   }
 
   protected renderFeatureCount(): VNode {
@@ -1550,23 +1519,16 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     const title = this.messages.deleteFeature;
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
         bind={this}
-        class={this.classes(CSS.button, CSS.resetIcon)}
+        icon="trash"
+        label={title}
         onclick={this.delete}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
-  }
-
-  protected renderSelectionTools(): VNode {
-    return [
-      this.renderDefaultSelectionButton(),
-      this.renderRectangleSelectionButton(),
-      this.renderLassoSelectionButton()
-    ];
   }
 
   protected renderDefaultSelectionButton(): VNode {
@@ -1577,59 +1539,25 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     const title = this.messages.selectFeature;
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.state === "ready"}
         bind={this}
-        class={this.classes(CSS.button, CSS.cursorIcon, {
-          [CSS.selectedButton]: this.state === "ready"
-        })}
-        onclick={this.cancel}
-        role="menuitemradio"
+        icon="cursor"
+        label={title}
+        onclick={this._activateDefaultSelectTool}
+        scale="s"
+        text={title}
         title={title}
       />
     );
   }
 
-  protected renderRectangleSelectionButton(): VNode {
-    if (this.view?.type !== "2d" || !this.visibleElements.selectionTools["rectangle-selection"]) {
+  protected renderSelectionToolbar(): VNode {
+    if (this.view?.type !== "2d") {
       return undefined;
     }
 
-    const title = this.messages.selectRectangle;
-
-    return (
-      <button
-        aria-label={title}
-        bind={this}
-        class={this.classes(CSS.button, CSS.rectangleSelectIcon, {
-          [CSS.selectedButton]: this._activeSelectionInfo?.tool === "rectangle-selection"
-        })}
-        onclick={this._activateRectangleSelectTool}
-        role="menuitemradio"
-        title={title}
-      />
-    );
-  }
-
-  protected renderLassoSelectionButton(): VNode {
-    if (this.view?.type !== "2d" || !this.visibleElements.selectionTools["lasso-selection"]) {
-      return undefined;
-    }
-
-    const title = this.messages.selectLasso;
-
-    return (
-      <button
-        aria-label={title}
-        bind={this}
-        class={this.classes(CSS.button, CSS.lassoSelectIcon, {
-          [CSS.selectedButton]: this._activeSelectionInfo?.tool === "lasso-selection"
-        })}
-        onclick={this._activateLassoSelectTool}
-        role="menuitemradio"
-        title={title}
-      />
-    );
+    return this._selectionToolbar.render();
   }
 
   protected renderDrawButtons(): VNode {
@@ -1663,21 +1591,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   protected renderPointButton(): VNode {
     const toolName = "point";
     const title = this.messages.drawPoint;
-    const classes = [CSS.button, CSS.pointIcon];
 
-    if (this.activeTool === toolName) {
-      classes.push(CSS.selectedButton);
-    }
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.activeTool === toolName}
         bind={this}
-        class={this.classes(classes)}
-        data-tool-name={toolName}
-        onclick={this._activateCreateTool}
-        role="menuitemradio"
+        icon="pin"
+        label={title}
+        onclick={() => this._activateCreateTool(toolName)}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1685,22 +1609,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   protected renderPolygonButton(): VNode {
     const toolName = "polygon";
     const title = this.messages.drawPolygon;
-    const classes = [CSS.button, CSS.polygonIcon];
-
-    if (this.activeTool === toolName) {
-      classes.push(CSS.selectedButton);
-    }
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.activeTool === toolName}
         bind={this}
-        class={this.classes(classes)}
-        data-tool-name={toolName}
-        onclick={this._activateCreateTool}
-        role="menuitemradio"
+        icon="polygon"
+        label={title}
+        onclick={() => this._activateCreateTool(toolName)}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1708,22 +1627,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   protected renderPolylineButton(): VNode {
     const toolName = "polyline";
     const title = this.messages.drawPolyline;
-    const classes = [CSS.button, CSS.polylineIcon];
-
-    if (this.activeTool === toolName) {
-      classes.push(CSS.selectedButton);
-    }
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.activeTool === toolName}
         bind={this}
-        class={this.classes(classes)}
-        data-tool-name={toolName}
-        onclick={this._activateCreateTool}
-        role="menuitemradio"
+        icon="line"
+        label={title}
+        onclick={() => this._activateCreateTool(toolName)}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1731,22 +1645,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   protected renderCircleButton(): VNode {
     const toolName = "circle";
     const title = this.messages.drawCircle;
-    const classes = [CSS.button, CSS.circleIcon];
-
-    if (this.activeTool === toolName) {
-      classes.push(CSS.selectedButton);
-    }
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.activeTool === toolName}
         bind={this}
-        class={this.classes(classes)}
-        data-tool-name={toolName}
-        onclick={this._activateCreateTool}
-        role="menuitemradio"
+        icon="circle"
+        label={title}
+        onclick={() => this._activateCreateTool(toolName)}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1754,22 +1663,17 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   protected renderRectangleButton(): VNode {
     const toolName = "rectangle";
     const title = this.messages.drawRectangle;
-    const classes = [CSS.button, CSS.rectangleIcon];
-
-    if (this.activeTool === toolName) {
-      classes.push(CSS.selectedButton);
-    }
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this.activeTool === toolName}
         bind={this}
-        class={this.classes(classes)}
-        data-tool-name={toolName}
-        onclick={this._activateCreateTool}
-        role="menuitemradio"
+        icon="rectangle"
+        label={title}
+        onclick={() => this._activateCreateTool(toolName)}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1780,56 +1684,51 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
 
   protected renderUndoButton(): VNode {
     const title = this.messages.undo;
-    const isDisabled = !this.viewModel.canUndo();
-    const icon = isRTL() ? CSS.redoIcon : CSS.undoIcon;
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        disabled={!this.viewModel.canUndo()}
         bind={this}
-        class={this.classes(CSS.button, icon)}
-        disabled={isDisabled}
+        icon={isRTL(this.container) ? "redo" : "undo"}
+        label={title}
         onclick={this.undo}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
 
   protected renderRedoButton(): VNode {
     const title = this.messages.redo;
-    const isDisabled = !this.viewModel.canRedo();
-    const icon = isRTL() ? CSS.undoIcon : CSS.redoIcon;
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        disabled={!this.viewModel.canRedo()}
         bind={this}
-        class={this.classes(CSS.button, icon)}
-        disabled={isDisabled}
+        icon={isRTL(this.container) ? "undo" : "redo"}
+        label={title}
         onclick={this.redo}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
 
   protected renderSettingsMenuButton(): VNode {
     const title = this.messages.settings;
-    const classes = [CSS.button, CSS.settingsIcon];
-
-    if (this._menuOpen) {
-      classes.push(CSS.selectedButton);
-    }
 
     return (
-      <button
-        aria-label={title}
+      <calcite-action
+        active={this._menuOpen}
         bind={this}
-        class={this.classes(classes)}
+        icon="gear"
+        label={title}
         onclick={this._toggleMenu}
+        scale="s"
+        text={title}
         title={title}
-        type="button"
       />
     );
   }
@@ -1840,25 +1739,14 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   //
   //--------------------------------------------------------------------------
 
-  private _cancelSelectionOperation(): void {
-    this._activeSelectionInfo?.operation?.cancel();
-    this._activeSelectionInfo = null;
-    this._selector.candidates = null;
-  }
-
-  private _activateCreateTool(event: PointerEvent): void {
-    const element = event.target as HTMLElement;
-    const toolName = element.getAttribute("data-tool-name") as CreateTool;
-
+  // Toggles tool if currently active
+  private _activateCreateTool(toolName: CreateTool): void {
     if (this.activeTool === toolName) {
       this.cancel();
       return;
     }
 
-    if (this._activeSelectionInfo) {
-      this._cancelSelectionOperation();
-    }
-
+    this._selectionToolbar.cancel();
     this.create(toolName);
   }
 
@@ -1888,15 +1776,6 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     this.scheduleRender();
   }
 
-  private _toggleSnapping(): void {
-    const {
-      viewModel: { snappingOptions }
-    } = this;
-
-    this.viewModel.snappingOptions.enabled = !snappingOptions.enabled;
-    this.scheduleRender();
-  }
-
   //--------------------------------------------------------------------------
   //  Selection
   //--------------------------------------------------------------------------
@@ -1907,7 +1786,6 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     } = this;
 
     const { selection } = event;
-    this._activeSelectionInfo = null;
 
     if (!event.aborted && selection.length) {
       // Reshaping multiple graphics is not supported
@@ -1921,67 +1799,9 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
     this.notifyChange("state");
   }
 
-  private _activateRectangleSelectTool(): void {
-    if (this._activeSelectionInfo) {
-      const tool = this._activeSelectionInfo.tool;
-
-      this._cancelSelectionOperation();
-
-      if (tool === "rectangle-selection") {
-        return;
-      }
-    }
-    // Cancel current sketch operation
-    else if (this.state === "active") {
-      this.cancel();
-    }
-
-    this._selector.candidates = this._getSelectionCandidates();
-    const operation = this._selector.draw({
-      tool: "rectangle"
-    });
-
-    operation.once("complete", (event) => this._onSelectionOperationComplete(event));
-
-    this._activeSelectionInfo = {
-      tool: "rectangle-selection",
-      operation
-    };
-  }
-
-  private _activateLassoSelectTool(): void {
-    if (this._activeSelectionInfo) {
-      const tool = this._activeSelectionInfo.tool;
-
-      this._cancelSelectionOperation();
-
-      if (tool === "lasso-selection") {
-        return;
-      }
-    }
-    // Cancel current sketch operation
-    else if (this.state === "active") {
-      this.cancel();
-    }
-
-    this._selector.candidates = this._getSelectionCandidates();
-    const operation = this._selector.draw({
-      tool: "polygon",
-      createOptions: {
-        mode: "freehand"
-      }
-    });
-
-    operation.once("complete", (event) => this._onSelectionOperationComplete(event));
-
-    this._activeSelectionInfo = {
-      tool: "lasso-selection",
-      operation
-    };
-  }
-
-  private _getSelectionCandidates(): Graphic[] {
-    return (this.layer?.graphics?.toArray() as Graphic[]) || [];
+  private _activateDefaultSelectTool(): void {
+    this.cancel();
+    this.view?.focus();
   }
 
   /**
@@ -1991,6 +1811,26 @@ class Sketch extends Widget<ConstructProperties, SketchEvents> implements Constr
   private _cleanupViewModel(): void {
     this._defaultViewModel = destroyMaybe(this._defaultViewModel);
     this._viewModelHandlesGroup = removeMaybe(this._viewModelHandlesGroup);
+  }
+
+  private _setUpSnappingControls(): void {
+    const { snappingOptions, view } = this;
+
+    this._snappingControls = destroyMaybe(this._snappingControls);
+
+    if (!snappingOptions || !view) {
+      return;
+    }
+
+    const snappingControls = new SnappingControls({
+      snappingOptions,
+      view,
+      visibleElements: {
+        header: false
+      }
+    });
+
+    this._snappingControls = snappingControls;
   }
 }
 

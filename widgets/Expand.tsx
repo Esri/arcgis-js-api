@@ -15,7 +15,7 @@
  * @module esri/widgets/Expand
  * @since 4.3
  *
- * @see [Expand.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Expand.tsx)
+ * @see [Expand.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Expand.tsx)
  * @see [Expand.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Expand.scss)
  * @see [Sample - Expand widget](../sample-code/widgets-expand/index.html)
  * @see module:esri/widgets/Expand/ExpandViewModel
@@ -410,7 +410,7 @@ class Expand extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -500,7 +500,7 @@ class Expand extends Widget {
   @property({
     type: ExpandViewModel
   })
-  viewModel: ExpandViewModel = new ExpandViewModel();
+  override viewModel = new ExpandViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -535,7 +535,7 @@ class Expand extends Widget {
     this.viewModel.expanded = !this.viewModel.expanded;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { mode } = this;
 
     const baseClasses = {

@@ -64,7 +64,7 @@
   }
 
   //  RTL
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-feature-media__image-summary {
       margin: 0 0.5em 0 0;
     }

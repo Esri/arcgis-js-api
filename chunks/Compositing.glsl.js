@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,a,o){"use strict";function t(e){const t=new o.ShaderBuilder;return t.include(r.ScreenSpacePass),t.fragment.uniforms.add("tex","sampler2D"),0===e.function&&(e.hasOpacityFactor?(t.fragment.uniforms.add("opacity","float"),t.fragment.code.add(a.glsl`void main() {
 gl_FragColor = texture2D(tex, uv) * opacity;

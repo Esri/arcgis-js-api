@@ -461,7 +461,7 @@
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-directions__departure-time-controls .esri-time-picker {
       border-right: none;
     }

@@ -9,7 +9,7 @@
  * The Locate widget is not supported on insecure origins.
  * To use it, switch your application to a secure origin, such as HTTPS.
  * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports
- * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+ * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/isSecureContext#browser_compatibility)
  * (currently Chrome and Firefox).
  *
  * As of version 4.2, the Locate Button no longer displays in non-secure web apps. At version
@@ -20,10 +20,10 @@
  * If the spatial reference of the {@link module:esri/views/View} is not Web Mercator or WGS84,
  * the user's location must be reprojected to match the
  * {@link module:esri/views/View#spatialReference view's spatial reference}. This is done with the
- * {@link module:esri/tasks/GeometryService} URL referenced in
+ * {@link module:esri/rest/geometryService} URL referenced in
  * {@link module:esri/config#geometryServiceUrl esriConfig}. You can optionally set the
  * {@link module:esri/config#geometryServiceUrl geometryServiceUrl} in esriConfig to your own
- * {@link module:esri/tasks/GeometryService} instance.
+ * {@link module:esri/rest/geometryService} instance.
  * If not specified, however, it will refer to the service hosted in the default
  * {@link module:esri/portal/Portal portal} instance. See
  * {@link module:esri/config#geometryServiceUrl esriConfig.geometryServiceUrl} for an example.
@@ -35,7 +35,7 @@
  * @module esri/widgets/Locate
  * @since 4.0
  *
- * @see [Locate.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Locate.tsx)
+ * @see [Locate.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Locate.tsx)
  * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - locate widget](../sample-code/widgets-locate/index.html)
  * @see module:esri/widgets/Locate/LocateViewModel
@@ -225,7 +225,7 @@ class Locate extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -242,7 +242,7 @@ class Locate extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -391,7 +391,7 @@ class Locate extends Widget {
     type: LocateViewModel
   })
   @vmEvent(["locate", "locate-error"])
-  viewModel = new LocateViewModel();
+  override viewModel = new LocateViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -431,7 +431,7 @@ class Locate extends Widget {
   @aliasOf("viewModel.locate")
   locate(): void {}
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.get("viewModel.state");
     const isLocating = state === "locating";
 

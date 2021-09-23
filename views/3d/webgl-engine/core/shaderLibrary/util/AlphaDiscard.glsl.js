@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(a,d){"use strict";const e=.1,o=.001;function r(a,e){const r=a.fragment;switch(e.alphaDiscardMode){case 0:r.code.add(d.glsl`
         #define discardOrAdjustAlpha(color) { if (color.a < ${d.glsl.float(o)}) { discard; } }

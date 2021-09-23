@@ -188,7 +188,7 @@
  * @module esri/widgets/TimeSlider
  * @since 4.12
  *
- * @see [TimeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TimeSlider.tsx)
+ * @see [TimeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/TimeSlider.tsx)
  * @see [TimeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_TimeSlider.scss)
  * @see module:esri/widgets/TimeSlider/TimeSliderViewModel
  * @see [Sample - TimeSlider widget](../sample-code/widgets-timeslider/index.html)
@@ -242,15 +242,22 @@ import { TickConfig } from "esri/widgets/Slider/interfaces";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/support/interfaces";
-import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
+import {
+  accessibleHandler,
+  getCalciteThemeClass,
+  messageBundle,
+  tsx,
+  vmEvent
+} from "esri/widgets/support/widget";
 
 // esri.widgets.TimeSlider
-import { Stops, TimeSliderMode } from "esri/widgets/TimeSlider/interfaces";
+import { Action, Stops, TimeSliderMode } from "esri/widgets/TimeSlider/interfaces";
 import TimeSliderViewModel from "esri/widgets/TimeSlider/TimeSliderViewModel";
 
 // esri.widgets.TimeSlider.t9n
 import TimeSliderMessages from "esri/widgets/TimeSlider/t9n/TimeSlider";
 
+const BASE = "esri-time-slider";
 const CSS = {
   widgetIcon: "esri-icon-time-clock",
 
@@ -259,44 +266,52 @@ const CSS = {
   esriButtonDisabled: "esri-button--disabled",
   esriDisabled: "esri-disabled",
 
-  timeSlider: "esri-time-slider",
-  timeSliderOutOfBounds: "esri-time-slider--out-of-bounds",
-  timeSliderMode: "esri-time-slider__mode--", // + mode (eg "instant", "time-extent")
-  timeSliderLayout: "esri-time-slider__layout--", // + layout (eg "wide", "compact")
-  timeSliderRow: "esri-time-slider__row",
+  timeSlider: `${BASE}`,
+  timeSliderOutOfBounds: `${BASE}--out-of-bounds`,
+  timeSliderMode: `${BASE}__mode--`,
+  timeSliderLayout: `${BASE}__layout--`,
+  timeSliderRow: `${BASE}__row`,
 
-  animation: "esri-time-slider__animation",
-  animationButton: "esri-time-slider__animation-button",
+  animation: `${BASE}__animation`,
+  animationButton: `${BASE}__animation-button`,
   animationPlay: "esri-icon-play",
   animationPause: "esri-icon-pause",
 
-  timeExtent: "esri-time-slider__time-extent",
-  timeExtentGroup: "esri-time-slider__time-extent-group",
-  timeExtentDate: "esri-time-slider__time-extent-date",
-  timeExtentTime: "esri-time-slider__time-extent-time",
-  timeExtentSeparator: "esri-time-slider__time-extent-separator",
+  timeExtent: `${BASE}__time-extent`,
+  timeExtentGroup: `${BASE}__time-extent-group`,
+  timeExtentDate: `${BASE}__time-extent-date`,
+  timeExtentTime: `${BASE}__time-extent-time`,
+  timeExtentSeparator: `${BASE}__time-extent-separator`,
 
-  min: "esri-time-slider__min",
-  minDate: "esri-time-slider__min-date",
+  playbackControls: `${BASE}__playback-controls`,
 
-  slider: "esri-time-slider__slider",
+  min: `${BASE}__min`,
+  minDate: `${BASE}__min-date`,
+  minTime: `${BASE}__min-time`,
+
+  slider: `${BASE}__slider`,
   sliderMajorTick: "majorTick",
   sliderMinorTick: "minorTick",
 
-  max: "esri-time-slider__max",
-  maxDate: "esri-time-slider__max-date",
+  max: `${BASE}__max`,
+  maxDate: `${BASE}__max-date`,
+  maxTime: `${BASE}__max-time`,
 
-  previous: "esri-time-slider__previous",
-  previousButton: "esri-time-slider__previous-button",
+  previous: `${BASE}__previous`,
+  previousButton: `${BASE}__previous-button`,
   previousIcon: "esri-icon-reverse",
 
-  next: "esri-time-slider__next",
-  nextButton: "esri-time-slider__next-button",
+  next: `${BASE}__next`,
+  nextButton: `${BASE}__next-button`,
   nextIcon: "esri-icon-forward",
 
-  warning: "esri-time-slider__warning",
+  warning: `${BASE}__warning`,
   warningIcon: "esri-icon-notice-triangle",
-  warningText: "esri-time-slider__warning-text"
+  warningText: `${BASE}__warning-text`,
+
+  hasActions: `${BASE}--has-actions`,
+  actions: `${BASE}__actions`,
+  actionsButton: `${BASE}__actions-button`
 };
 
 const MINIMUM_MINOR_TICK_SPACING = 3; // pixels
@@ -482,6 +497,7 @@ const TickFormats = new Collection<TickFormat>([
 type TimeSliderProperties = Partial<
   Pick<
     TimeSlider,
+    | "actions"
     | "disabled"
     | "effectiveStops"
     | "fullTimeExtent"
@@ -625,7 +641,7 @@ class TimeSlider extends Widget implements PersistableWidget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       this._slider.watch("values", (newValues: [number] | [number, number]) => {
         if (this._ignoreNextSliderUpdate) {
@@ -656,7 +672,14 @@ class TimeSlider extends Widget implements PersistableWidget {
     ]);
   }
 
-  destroy(): void {
+  protected override loadDependencies(): Promise<any> {
+    return Promise.all([
+      import("@esri/calcite-components/dist/custom-elements/bundles/action"),
+      import("@esri/calcite-components/dist/custom-elements/bundles/action-menu")
+    ]);
+  }
+
+  override destroy(): void {
     this._slider.destroy();
     this._tickFormat = null;
   }
@@ -674,7 +697,8 @@ class TimeSlider extends Widget implements PersistableWidget {
     visibleElements: {
       rangeLabels: false
     },
-    rangeLabelInputsEnabled: false
+    rangeLabelInputsEnabled: false,
+    thumbsConstrained: false
   });
 
   private _tickFormat: Maybe<TickFormat> = null;
@@ -684,6 +708,78 @@ class TimeSlider extends Widget implements PersistableWidget {
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  actions
+  //----------------------------------
+
+  /**
+   * Defines actions that will appear in a menu when the user clicks the ellipsis button
+   * ![timeSlider-actions-menu](../assets/img/apiref/widgets/timeslider/ellipsis.png) in the widget. The
+   * ellipsis button will not display if this property is `null` or if the collection is empty.
+   * Each {@link module:esri/widgets/TimeSlider/TimeSliderViewModel#action action} is defined with a unique id, a title,
+   * and an icon.
+   *
+   * The [trigger-action](#event-trigger-action) event fires each time an action in the menu is clicked. This event
+   * can be used to execute custom code such as setting the [timeExtent](#timeExtent) to a specific date or copying the
+   * timeExtent to the browser's clipboard.
+   *
+   * [![widgets-timeSlider-actions](../assets/img/apiref/widgets/timeslider/widgets-timeslider-actions.png)](../sample-code/sandbox/?sample=widgets-timeslider-offset)
+   *
+   * @name actions
+   * @instance
+   * @since 4.21
+   * @type {module:esri/core/Collection<module:esri/widgets/TimeSlider/TimeSliderViewModel~action>}
+   * @autocast { "value": "Object[]" }
+   * @see [Sample - TimeSlider with offset](../sample-code/widgets-timeslider-offset/index.html)
+   *
+   * @example
+   * // Create a TimeSlider with two actions to snap the thumb to
+   * // two specific time extents.
+   * const timeSlider = new TimeSlider({
+   *   container: "timeSliderDiv",
+   *   fullTimeExtent: {
+   *     start: new Date(2011, 0, 1),
+   *     end: new Date(2012, 0, 1)
+   *   },
+   *   mode: "instant",
+   *   actions: [
+   *     {
+   *       id: "quake",
+   *       icon: "exclamation-mark-triangle",
+   *       title: "Jump to Earthquake"
+   *     },
+   *     {
+   *       id: "quake-plus-one-month",
+   *       icon: "organization",
+   *       title: "One month later"
+   *     }
+   *   ]
+   * });
+   *
+   * // listen to timeSlider's trigger-action event
+   * // check what action user clicked on and respond accordingly.
+   * timeSlider.on("trigger-action", (event) => {
+   *   const quake = new Date(Date.UTC(2011, 3, 11, 8, 16, 12));
+   *   const oneMonthLater = new Date(quake.getTime()).setMonth(quake.getMonth() + 1);
+   *   switch(event.action.id) {
+   *     case "quake":
+   *       timeSlider.timeExtent = {
+   *         start: quake,
+   *         end: quake
+   *       };
+   *       break;
+   *     case "quake-plus-one-month":
+   *       timeSlider.timeExtent = {
+   *         start: oneMonthLater,
+   *         end: oneMonthLater
+   *       };
+   *       break;
+   *   }
+   * });
+   */
+  @aliasOf("viewModel.actions")
+  actions: Collection<Action> = null;
 
   //----------------------------------
   //  disabled
@@ -779,7 +875,7 @@ class TimeSlider extends Widget implements PersistableWidget {
    * @readonly
    */
   @property()
-  iconClass: string = CSS.widgetIcon;
+  override iconClass: string = CSS.widgetIcon;
 
   //----------------------------------
   //  interactive
@@ -815,7 +911,7 @@ class TimeSlider extends Widget implements PersistableWidget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  labelFormatFunction
@@ -1350,7 +1446,8 @@ class TimeSlider extends Widget implements PersistableWidget {
   @property({
     type: TimeSliderViewModel
   })
-  viewModel: TimeSliderViewModel = new TimeSliderViewModel();
+  @vmEvent("trigger-action")
+  override viewModel = new TimeSliderViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -1427,9 +1524,10 @@ class TimeSlider extends Widget implements PersistableWidget {
     return null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const {
       _slider,
+      actions,
       domNode,
       effectiveStops,
       fullTimeExtent,
@@ -1661,7 +1759,11 @@ class TimeSlider extends Widget implements PersistableWidget {
         <div key="min-date" class={CSS.minDate}>
           {this._formatDate(fullTimeExtent.start)}
         </div>,
-        timeVisible && <div key="min-time">{this._formatTime(fullTimeExtent.start)}</div>
+        timeVisible && (
+          <div key="min-time" class={CSS.minTime}>
+            {this._formatTime(fullTimeExtent.start)}
+          </div>
+        )
       ]
     );
 
@@ -1690,7 +1792,11 @@ class TimeSlider extends Widget implements PersistableWidget {
         <div key="max-date" class={CSS.maxDate}>
           {this._formatDate(fullTimeExtent.end)}
         </div>,
-        timeVisible && <div key="max-time">{this._formatTime(fullTimeExtent.end)}</div>
+        timeVisible && (
+          <div key="max-time" class={CSS.maxTime}>
+            {this._formatTime(fullTimeExtent.end)}
+          </div>
+        )
       ]
     );
 
@@ -1742,6 +1848,24 @@ class TimeSlider extends Widget implements PersistableWidget {
       </div>
     );
 
+    const hasActions = actions?.length > 0;
+    const actionsDiv = hasActions && (
+      <div class={CSS.actions} title={messagesCommon.options}>
+        <calcite-action-menu label={messagesCommon.options} class={CSS.actionsButton}>
+          {actions.toArray().map((action) => (
+            <calcite-action
+              bind={this}
+              icon={action.icon}
+              id={action.id}
+              onCalciteActionClick={() => this.viewModel.triggerAction(action)}
+              text={action.title}
+              textEnabled={true}
+            />
+          ))}
+        </calcite-action-menu>
+      </div>
+    );
+
     const timeSlider = (
       <div
         class={this.classes(
@@ -1750,15 +1874,20 @@ class TimeSlider extends Widget implements PersistableWidget {
           `${CSS.timeSliderMode}${mode}`,
           `${CSS.timeSliderLayout}${layout}`,
           !interactive && CSS.esriDisabled,
-          isOutOfBounds && CSS.timeSliderOutOfBounds
+          isOutOfBounds && CSS.timeSliderOutOfBounds,
+          hasActions && CSS.hasActions,
+          getCalciteThemeClass()
         )}
       >
         {layout === "wide" && (
-          <div class={CSS.timeSliderRow}>{[play, time, min, slider, max, previous, next]}</div>
+          <div class={CSS.timeSliderRow}>
+            <div class={CSS.playbackControls}>{[play, time, min, slider, max, previous, next]}</div>
+            {actionsDiv}
+          </div>
         )}
         {layout === "compact" && [
           <div key="time-slider-row-1" class={CSS.timeSliderRow}>
-            {[time]}
+            {[time, actionsDiv]}
           </div>,
           <div key="time-slider-row-2" class={CSS.timeSliderRow}>
             {[slider]}
@@ -1808,6 +1937,34 @@ class TimeSlider extends Widget implements PersistableWidget {
   updateWebDocument(document: WebMap | WebScene): void {
     this.viewModel?.updateWebDocument(document);
   }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Events
+  //
+  //--------------------------------------------------------------------------
+
+  /**
+   * Fires when a user clicks on an {@link module:esri/widgets/TimeSlider/TimeSliderViewModel#action action} in the [actions](#actions) menu.
+   *
+   * @since 4.21
+   * @event module:esri/widgets/TimeSlider#trigger-action
+   * @property {module:esri/widgets/TimeSlider/TimeSliderViewModel~action} action - The action that was clicked.
+   * @see {@link module:esri/widgets/TimeSlider#actions TimeSlider.actions}
+   *
+   * @example
+   * // Add an action to reset the time extent to the full time extent.
+   * timeSlider.actions.add({
+   *   id: "full-extent",
+   *   icon: "content-full",
+   *   title: "Full Extent"
+   * });
+   * timeSlider.on("trigger-action", (event) => {
+   *   if (event.action.id === "full-extent") {
+   *     timeSlider.timeExtent = timeSlider.fullTimeExtent;
+   *   }
+   * });
+   */
 
   //--------------------------------------------------------------------------
   //

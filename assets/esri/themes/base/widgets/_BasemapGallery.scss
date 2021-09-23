@@ -158,7 +158,7 @@
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-basemap-gallery__item--selected,
     .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:hover,
     .esri-basemap-gallery__item.esri-basemap-gallery__item--selected:focus {

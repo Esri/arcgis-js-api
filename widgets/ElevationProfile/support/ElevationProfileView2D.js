@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../core/Handles","../../../core/maybe","../../../core/accessorSupport/trackingUtils","./constants","./HoveredPoints","./InputRepresentation2D"],(function(e,t,n,i,o,s,r){"use strict";let a=function(){function e(e,n){this._handles=new t,this._inputRepresentation=new r.InputRepresentation2D({view:e}),this._hoveredPoints=new s.HoveredPoints({view:e}),this._handles.add([i.reactionInit((()=>n.viewModel.hoveredPoints),(e=>this._hoveredPoints.update(e))),i.reactionInit((()=>{const{state:e,highlightEnabled:t,viewModel:i}=n;return{input:i.input,state:e,highlightEnabled:t}}),(e=>this._updateInputRepresentation(e)))])}var a=e.prototype;return a.destroy=function(){this._handles=n.destroyMaybe(this._handles),this._inputRepresentation=n.destroyMaybe(this._inputRepresentation),this._hoveredPoints=n.destroyMaybe(this._hoveredPoints)},a._updateInputRepresentation=function({input:e,state:t,highlightEnabled:n}){t===o.ElevationProfileState.Selected&&n?this._inputRepresentation.update(e):this._inputRepresentation.remove()},e}();e.ElevationProfileView2D=a,Object.defineProperty(e,"__esModule",{value:!0})}));

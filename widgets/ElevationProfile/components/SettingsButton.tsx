@@ -1,6 +1,6 @@
 // esri.core
 import * as events from "esri/../../core/events";
-import { applySome, destroyMaybe, isSome, Maybe, removeMaybe } from "esri/../../core/maybe";
+import { applySome, destroyMaybe, isSome, Maybe, removeMaybe, unwrap } from "esri/../../core/maybe";
 import { isMeasurementSystem, SystemOrLengthUnit } from "esri/../../core/unitUtils";
 
 // esri.core.accessorSupport
@@ -23,7 +23,7 @@ import ElevationProfileMessages from "esri/t9n/ElevationProfile";
 // esri.widgets.support
 import { VNode } from "esri/../support/interfaces";
 import Popover from "esri/../support/Popover";
-import { messageBundle, tsx } from "esri/../support/widget";
+import { getDir, messageBundle, tsx } from "esri/../support/widget";
 
 export interface ConstructProperties {
   viewModel: IElevationProfileViewModel;
@@ -45,11 +45,11 @@ export class SettingsButton extends Widget implements ConstructProperties {
     super(properties, parentNode);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyPopover();
   }
 
-  render(): VNode {
+  override render(): VNode {
     // When there is nothing to render in the popup, don't even render the button.
     const { unitSelector, uniformChartScalingToggle } = this.visibleElements;
     if (!unitSelector && !uniformChartScalingToggle) {
@@ -80,7 +80,7 @@ export class SettingsButton extends Widget implements ConstructProperties {
   //--------------------------------------------------------------------------
 
   @property()
-  viewModel: IElevationProfileViewModel;
+  override viewModel: IElevationProfileViewModel;
 
   @property()
   visibleElements: Partial<ElevationProfileVisibleElements>;
@@ -134,7 +134,12 @@ export class SettingsButton extends Widget implements ConstructProperties {
     const { unitSelector, uniformChartScalingToggle } = this.visibleElements;
 
     return (
-      <div class={CSS.popoverContent} bind={this} afterCreate={this._onPopoverContentAfterCreate}>
+      <div
+        class={CSS.popoverContent}
+        dir={getDir(unwrap(this._buttonElement))}
+        bind={this}
+        afterCreate={this._onPopoverContentAfterCreate}
+      >
         {unitSelector && this._renderUnitSelector()}
         {uniformChartScalingToggle && this._renderUniformChartScalingToggle()}
       </div>

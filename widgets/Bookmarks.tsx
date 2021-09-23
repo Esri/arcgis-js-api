@@ -16,7 +16,7 @@
  * @module esri/widgets/Bookmarks
  * @since 4.8
  *
- * @see [Bookmarks.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Bookmarks.tsx)
+ * @see [Bookmarks.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Bookmarks.tsx)
  * @see [Bookmarks.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Bookmarks.scss)
  * @see [Sample - Bookmarks widget](../sample-code/widgets-bookmarks/index.html)
  * @see module:esri/widgets/Bookmarks/BookmarksViewModel
@@ -24,10 +24,8 @@
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles from "esri/core/Handles";
-import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -144,7 +142,7 @@ interface VisibleElements {
   thumbnail?: boolean;
 }
 
-type BookmarksLocaleStrings = Partial<
+type BookmarksUIStrings = Partial<
   Pick<
     BookmarksMessages,
     "addBookmark" | "goToBookmark" | "title" | "titlePlaceholder" | "invalidTitle" | "widgetLabel"
@@ -159,8 +157,6 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
 const HTTPS_URL_RE = /^https:\/\/.*/i;
 
 const declaredClass = "esri.widgets.Bookmarks";
-
-const logger = Logger.getLogger(declaredClass);
 
 @subclass(declaredClass)
 class Bookmarks extends Widget {
@@ -230,14 +226,14 @@ class Bookmarks extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       watchUtils.init(this, "viewModel.bookmarks", () => this._bookmarksInitialized()),
       watchUtils.init(this, "editingEnabled", () => this._toggleSorting())
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroySortable();
     this._handles.destroy();
     this._handles = null;
@@ -341,59 +337,6 @@ class Bookmarks extends Widget {
   //  Properties
   //
   //--------------------------------------------------------------------------
-
-  //----------------------------------
-  //  bookmarkCreationOptions
-  //----------------------------------
-
-  /**
-   * Specifies how new bookmarks will be created if [editingEnabled](#editingEnabled) is set to `true`.
-   * Can be used to enable or disable taking screenshots or creating an extent based on the current
-   * view when a bookmark is created. See {@link module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions BookmarkOptions}
-   * for more information.
-   *
-   * @name bookmarkCreationOptions
-   * @instance
-   * @type {module:esri/widgets/Bookmarks/BookmarksViewModel~BookmarkOptions}
-   * @deprecated since 4.18. Use [`defaultCreateOptions`](#defaultCreateOptions) instead.
-   *
-   * @since 4.13
-   *
-   * @example
-   * const bookmarks = new Bookmarks({
-   *    view: view,
-   *    editingEnabled: true,
-   *    // whenever a new bookmark is created, a 100x100 px
-   *    // screenshot of the view will be taken and the rotation, scale, and extent
-   *    // of the view will not be set as the viewpoint of the new bookmark
-   *    bookmarkCreationOptions: {
-   *      takeScreenshot: true,
-   *      captureViewpoint: false,
-   *      screenshotSettings: {
-   *        width: 100,
-   *        height: 100
-   *      }
-   *    }
-   * });
-   *
-   */
-  @property()
-  get bookmarkCreationOptions(): BookmarkOptions {
-    deprecatedProperty(logger, "bookmarkCreationOptions", {
-      replacement: "defaultCreateOptions",
-      version: "4.18"
-    });
-
-    return this.viewModel.defaultCreateOptions;
-  }
-  set bookmarkCreationOptions(value: BookmarkOptions) {
-    deprecatedProperty(logger, "bookmarkCreationOptions", {
-      replacement: "defaultCreateOptions",
-      version: "4.18"
-    });
-
-    this.viewModel.defaultCreateOptions = value;
-  }
 
   //----------------------------------
   //  defaultCreateOptions
@@ -557,7 +500,7 @@ class Bookmarks extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -573,17 +516,7 @@ class Bookmarks extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
-
-  //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  /**
-   * @todo documentation
-   */
-  @property()
-  localeStrings?: BookmarksLocaleStrings;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -636,6 +569,16 @@ class Bookmarks extends Widget {
   messagesUnits: UnitsMessages = null;
 
   //----------------------------------
+  //  uiStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  override uiStrings?: BookmarksUIStrings;
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -666,7 +609,7 @@ class Bookmarks extends Widget {
    */
   @property({ type: BookmarksViewModel })
   @vmEvent(["select-bookmark", "bookmark-edit", "bookmark-select"])
-  viewModel: BookmarksViewModel = new BookmarksViewModel();
+  override viewModel = new BookmarksViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -733,7 +676,7 @@ class Bookmarks extends Widget {
     return this.viewModel.goTo(bookmark);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state } = this.viewModel;
 
     const bookmarkListNode = state === "loading" ? this.renderLoading() : this.renderBookmarks();
@@ -1082,7 +1025,7 @@ class Bookmarks extends Widget {
           data-bookmark={bookmark}
           data-node-ref="_urlEditInputNode"
           title={messages?.imageUrlTooltip}
-          placeholder={messages?.imageUrlPlaceholder}
+          placeholder={messages && `https://<${messages.imageUrlPlaceholder}>`}
         />
       </label>
     );

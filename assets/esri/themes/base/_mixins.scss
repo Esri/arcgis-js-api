@@ -1,5 +1,7 @@
 ////////////////////////////////////////
 // Widget Common Mixins
+@use "sass:math";
+
 @mixin boxShadow($arguments) {
   box-shadow: #{$arguments};
 }
@@ -33,7 +35,7 @@
   $x0: 1;
   $x1: $x0;
   @for $i from 1 through 10 {
-    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x1: $x0 - math.div($x0 * $x0 - abs($r), 2 * $x0);
     $x0: $x1;
   }
   @return $x1;
@@ -190,7 +192,7 @@
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .#{$selector}__units-select {
       padding: {
         left: 2.7em;
@@ -242,7 +244,7 @@
             }
             &:before {
               background-color: $button-color--bright;
-              transform: translate3d(-$smartmapping-slider__thumb-size--offset/4, 0, 0);
+              transform: translate3d(-$smartmapping-slider__thumb-size--offset * 0.25, 0, 0);
             }
           }
         }
@@ -260,8 +262,8 @@
         &:before {
           position: absolute;
           top: 0;
-          left: -$smartmapping-slider__thumb-size--offset/4;
-          width: $smartmapping-slider__thumb-size--offset/2;
+          left: -$smartmapping-slider__thumb-size--offset * 0.25;
+          width: $smartmapping-slider__thumb-size--offset * 0.5;
           content: "";
           height: $smartmapping-slider__thumb-size;
           background-color: $interactive-font-color;
@@ -435,7 +437,7 @@
         }
         &:before {
           background-color: $button-color--bright;
-          transform: translate3d(-$smartmapping-slider__thumb-size--offset/4, 0, 0);
+          transform: translate3d(-$smartmapping-slider__thumb-size--offset * 0.25, 0, 0);
         }
       }
     }
@@ -490,7 +492,7 @@
 @mixin arrowButton() {
   $size: 18px;
   $icon-size: 10px;
-  $padding: ($size - $icon-size) / 2;
+  $padding: ($size - $icon-size) * 0.5;
 
   font-size: $icon-size;
   line-height: $icon-size;

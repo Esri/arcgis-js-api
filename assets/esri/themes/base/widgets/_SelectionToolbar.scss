@@ -1,0 +1,18 @@
+@mixin selectionToolbar() {
+  $border: 1px solid $border-color;
+
+  .esri-selection-toolbar {
+    display: flex;
+    flex: 1 1 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .esri-selection-toolbar__container {
+    display: flex;
+  }
+}
+
+@if $include_SelectionToolbar == true {
+  @include selectionToolbar();
+}

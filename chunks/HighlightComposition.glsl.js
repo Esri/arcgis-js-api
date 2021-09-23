@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,t){"use strict";function o(e){const o=new t.ShaderBuilder,r=o.vertex.code,l=o.fragment.code;return o.attributes.add("position","vec2"),2===e.highlightStage&&(r.add(i.glsl`void main() {
 gl_Position = vec4(vec2(1.0) - position * 2.0, 0.0, 1.0);

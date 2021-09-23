@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../Color","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,c,l,u){"use strict";let a=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).color=null,e.value=null,e.enabled=!0,e.label="",e}return e._inheritsLoose(o,r),o}(t.JSONSupport);return r.__decorate([p.property({type:o,json:{type:[c.Integer],write:!0}})],a.prototype,"color",void 0),r.__decorate([p.property({type:Number,json:{write:!0}})],a.prototype,"value",void 0),r.__decorate([p.property({type:Boolean,json:{default:!0,write:!0}})],a.prototype,"enabled",void 0),r.__decorate([p.property({type:String,json:{write:!0}})],a.prototype,"label",void 0),a=r.__decorate([u.subclass("esri.layers.support.VoxelIsosurface")],a),a}));

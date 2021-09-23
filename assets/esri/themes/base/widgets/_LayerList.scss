@@ -323,7 +323,7 @@
     padding: 0 0 $cap-spacing 0;
   }
 
-  html[dir="rtl"] .esri-layer-list {
+  [dir="rtl"] .esri-layer-list {
     .esri-layer-list__item--has-children > .esri-layer-list__item-container {
       padding-left: $side-spacing + 5;
       padding-right: 5px;

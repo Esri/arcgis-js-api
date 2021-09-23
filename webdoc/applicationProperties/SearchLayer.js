@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/has","../../core/Logger","../../core/accessorSupport/decorators/subclass","./SearchLayerField"],(function(e,r,o,t,s,i,c,p,n,u){"use strict";var a;let l=a=function(r){function o(e){var o;return(o=r.call(this,e)||this).field=null,o.id=null,o.subLayer=null,o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new a(t.clone({field:this.field,id:this.id,subLayer:this.subLayer}))},o}(o.JSONSupport);return r.__decorate([s.property({type:u,json:{write:{isRequired:!0}}})],l.prototype,"field",void 0),r.__decorate([s.property({type:String,json:{write:{isRequired:!0}}})],l.prototype,"id",void 0),r.__decorate([s.property({type:i.Integer,json:{write:!0}})],l.prototype,"subLayer",void 0),l=a=r.__decorate([n.subclass("esri.webdoc.applicationProperties.SearchLayer")],l),l}));

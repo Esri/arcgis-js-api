@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/lang","../core/accessorSupport/decorators/property","../core/accessorSupport/ensureType","../core/has","../core/Logger","../core/accessorSupport/decorators/enumeration","../core/accessorSupport/decorators/subclass","./PointCloudRenderer"],(function(e,r,o,t,n,c,s,i,p,u){"use strict";var l;let d=l=function(r){function t(e){var o;return(o=r.call(this,e)||this).type="point-cloud-rgb",o.field=null,o}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new l({...this.cloneProperties(),field:o.clone(this.field)})},t}(u);return r.__decorate([i.enumeration({pointCloudRGBRenderer:"point-cloud-rgb"})],d.prototype,"type",void 0),r.__decorate([t.property({type:String,json:{write:!0}})],d.prototype,"field",void 0),d=l=r.__decorate([p.subclass("esri.renderers.PointCloudRGBRenderer")],d),d}));

@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
-*/
-define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe","../../../../../core/has","./BufferData","./DisplayRecordReader"],(function(e,r,t,o,n,s){"use strict";let i=function(){function e(){this._pools=new Map}var r=e.prototype;return r.acquire=function(e,r,t=0){const o=s.DisplayRecordReader.from(e.records,t),i=o.size();o.next();const u=o.vertexCount,c=o.indexCount,a=this._tryAcquire(e.stride,r,u,c);return n.BufferData.createPooled(a,e,r,u,c,i,this)},r.release=function(e){e.isReleased||e.destroy()},r.destroy=function(){this._pools.forEach((e=>{t.isSome(e)&&e.clear((e=>e.destroy()))}))},r._tryAcquire=function(e,r,o,n){const s=e<<3|r,i=this._pools.get(s);if(t.isNone(i))return null;const u=i.dequeue();return t.isSome(u)&&u.vertexBufferSize>=o&&u.indexBufferSize>=n?u:null},e}();e.BufferDataPool=i,Object.defineProperty(e,"__esModule",{value:!0})}));

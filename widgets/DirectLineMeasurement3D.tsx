@@ -29,7 +29,7 @@
  * @module esri/widgets/DirectLineMeasurement3D
  * @since 4.6
  *
- * @see [DirectLineMeasurement3D.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/DirectLineMeasurement3D.tsx)
+ * @see [DirectLineMeasurement3D.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/DirectLineMeasurement3D.tsx)
  * @see [DirectLineMeasurement3D.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_DirectLineMeasurement3D.scss)
  * @see [Sample - Measurement in 3D](../sample-code/widgets-measurement-3d/index.html)
  * @see {@link module:esri/widgets/DirectLineMeasurement3D/DirectLineMeasurement3DViewModel}
@@ -68,7 +68,7 @@ import DirectLineMeasurement3DMessages from "esri/widgets/DirectLineMeasurement3
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
-type DirectLineMeasurement3DLocaleStrings = Partial<
+type DirectLineMeasurement3DUIStrings = Partial<
   Pick<DirectLineMeasurement3DMessages, "widgetLabel" | "hint" | "newMeasurement">
 >;
 
@@ -168,7 +168,7 @@ class DirectLineMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean = null;
+  override visible: boolean = null;
 
   //----------------------------------
   //  active
@@ -197,7 +197,7 @@ class DirectLineMeasurement3D extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -213,17 +213,7 @@ class DirectLineMeasurement3D extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
-
-  //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  /**
-   * @todo documentation
-   */
-  @property()
-  localeStrings?: DirectLineMeasurement3DLocaleStrings;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -260,6 +250,16 @@ class DirectLineMeasurement3D extends Widget {
   messagesUnits: UnitsMessages = null;
 
   //----------------------------------
+  //  uiStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  override uiStrings?: DirectLineMeasurement3DUIStrings;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -276,7 +276,7 @@ class DirectLineMeasurement3D extends Widget {
    * @autocast
    */
   @property({ type: DirectLineMeasurement3DViewModel })
-  viewModel: DirectLineMeasurement3DViewModel = new DirectLineMeasurement3DViewModel();
+  override viewModel = new DirectLineMeasurement3DViewModel();
 
   //----------------------------------
   //  unitOptions
@@ -312,21 +312,21 @@ class DirectLineMeasurement3D extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
-    const { isSupported, active: isActive, state, measurement, unit } = this.viewModel;
+  override render(): VNode {
+    const { supported, active, state, measurement, unit } = this.viewModel;
     const isDisabled = state === "disabled";
     const isReady = state === "ready";
     const isMeasuring = state === "measuring" || state === "measured";
     const { messages, messagesUnits } = this;
 
     const hintNode =
-      isActive && isReady ? (
+      active && isReady ? (
         <section key="esri-direct-line-measurement-3d__hint" class={CSS.hint}>
           <p class={CSS.hintText}>{messages.hint}</p>
         </section>
       ) : null;
 
-    const unsupportedNode = !isSupported ? (
+    const unsupportedNode = !supported ? (
       <section key="esri-direct-line-measurement-3d__unsupported" class={CSS.panelError}>
         <p>{messages.unsupported}</p>
       </section>
@@ -408,7 +408,7 @@ class DirectLineMeasurement3D extends Widget {
     ) : null;
 
     const newMeasurementNode =
-      isSupported && (!isActive || isMeasuring) ? (
+      supported && (!active || isMeasuring) ? (
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}

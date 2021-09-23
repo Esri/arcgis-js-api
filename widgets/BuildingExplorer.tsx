@@ -50,7 +50,7 @@
  * @since 4.16
  *
  * @see [Sample - BuildingExplorer widget](../sample-code/building-scene-layer-filter/index.html)
- * @see [BuildingExplorer.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BuildingExplorer.tsx)
+ * @see [BuildingExplorer.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BuildingExplorer.tsx)
  * @see [BuildingExplorer.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BuildingExplorer.scss)
  * @see module:esri/widgets/BuildingExplorer/BuildingExplorerViewModel
  */
@@ -101,7 +101,7 @@ interface VisibleElements {
   disciplines?: boolean;
 }
 
-type BuildingExplorerLocaleStrings = DeepPartial<{
+type BuildingExplorerUIStrings = DeepPartial<{
   level: BuildingExplorerMessages["level"];
   phase: BuildingExplorerMessages["phase"];
   disciplines: Pick<BuildingExplorerMessages["disciplines"], "title">;
@@ -157,7 +157,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._handles.add([
       watchUtils.init(this, "viewModel.level", () => {
         this._levelPicker.viewModel = this.viewModel.level;
@@ -179,7 +179,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._handles.destroy();
     this._levelPicker.destroy();
     this._phasePicker.destroy();
@@ -209,7 +209,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
    * @autocast
    */
   @property({ type: BuildingExplorerViewModel })
-  viewModel: BuildingExplorerViewModel = this._defaultViewModel;
+  override viewModel: BuildingExplorerViewModel = this._defaultViewModel;
 
   /**
    * A reference to the {@link module:esri/views/SceneView}.
@@ -298,7 +298,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   /**
    * The widget's default label.
@@ -308,13 +308,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
    * @type {string}
    */
   @aliasOf("messages.widgetLabel", { overridable: true })
-  label: string = undefined;
-
-  /**
-   * @todo documentation
-   */
-  @property()
-  localeStrings?: BuildingExplorerLocaleStrings;
+  override label: string = undefined;
 
   /**
    * The widget's message bundle.
@@ -348,6 +342,12 @@ class BuildingExplorer extends Widget implements ConstructProperties {
    */
   @property({ nonNullable: true })
   toggleSiblingsVisibility: boolean = false;
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  override uiStrings?: BuildingExplorerUIStrings;
 
   //--------------------------------------------------------------------------
   //
@@ -388,7 +388,7 @@ class BuildingExplorer extends Widget implements ConstructProperties {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const disabled = this.viewModel.state === "disabled" || !this.viewModel.isSupported;
 
     return (

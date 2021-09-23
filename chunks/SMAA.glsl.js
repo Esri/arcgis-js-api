@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,o,t){"use strict";function r(e){const r=new t.ShaderBuilder;return 0===e.output&&(r.attributes.add("position","vec2"),r.vertex.uniforms.add("uResolution","vec4"),r.varyings.add("fTexCoord","vec2"),r.varyings.add("fOffset[3]","vec4"),r.vertex.code.add(o.glsl`void SMAAEdgeDetectionVS( vec2 texcoord ) {
 fOffset[0] = texcoord.xyxy + uResolution.xyxy * vec4( -1.0, 0.0, 0.0,  1.0 );

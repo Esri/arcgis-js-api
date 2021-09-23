@@ -1,5 +1,5 @@
 $floor-filter-item-width--normal: 220px;
-$floor-filter-item-width--mobile: floor($floor-filter-item-width--normal * 3/4);
+$floor-filter-item-width--mobile: floor($floor-filter-item-width--normal * 3 * 0.25);
 $floor-filter-scrollbar-thumb--color: #c1c1c1;
 $floor-filter-scrollbar-track--color: #fafafa;
 
@@ -424,7 +424,7 @@ $floor-filter-scrollbar-track--color: #fafafa;
     }
   }
 
-  html[dir="rtl"] .esri-floor-filter {
+  [dir="rtl"] .esri-floor-filter {
     &__layout--expanded {
       .esri-floor-filter__button-info {
         margin-left: auto;

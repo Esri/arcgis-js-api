@@ -71,7 +71,7 @@
   }
 
   .esri-scale-bar__line--bottom {
-    top: floor($line_thickness / 2) * -1;
+    top: floor($line_thickness * 0.5) * -1;
     border-top: $border_style;
   }
 
@@ -132,7 +132,7 @@
   }
 
   .esri-scale-bar__label-container--bottom {
-    top: floor($line_thickness / 2);
+    top: floor($line_thickness * 0.5);
   }
 
   .esri-scale-bar__label {
@@ -143,9 +143,9 @@
     font-weight: $font-weight--bold;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-scale-bar__ruler {
-      margin: 0 ($offset_for_unit_label / 4) 0 $offset_for_unit_label;
+      margin: 0 ($offset_for_unit_label * 0.25) 0 $offset_for_unit_label;
     }
 
     .esri-scale-bar__label-container--line {

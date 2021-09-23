@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/jsonMap","../../../core/JSONSupport","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass"],(function(e,o,r,t,i,s,p,n,l,c){"use strict";const u=new t.JSONMap({pointCloudFixedSizeAlgorithm:"fixed-size",pointCloudSplatAlgorithm:"splat"});e.PointSizeAlgorithm=function(e){function r(){return e.apply(this,arguments)||this}return o._inheritsLoose(r,e),r}(i.JSONSupport),r.__decorate([s.property({type:u.apiValues,readOnly:!0,nonNullable:!0,json:{type:u.jsonValues,read:!1,write:u.write}})],e.PointSizeAlgorithm.prototype,"type",void 0),e.PointSizeAlgorithm=r.__decorate([c.subclass("esri.renderers.support.pointCloud.PointSizeAlgorithm")],e.PointSizeAlgorithm);var a=e.PointSizeAlgorithm;e.default=a,e.typeKebabDictionary=u,Object.defineProperty(e,"__esModule",{value:!0})}));

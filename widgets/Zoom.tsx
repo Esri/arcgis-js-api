@@ -19,7 +19,7 @@
  * @module esri/widgets/Zoom
  * @since 4.0
  *
- * @see [Zoom.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Zoom.tsx)
+ * @see [Zoom.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Zoom.tsx)
  * @see [Zoom.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Zoom.scss)
  * @see module:esri/views/MapView
  * @see module:esri/views/SceneView
@@ -78,7 +78,7 @@ class Zoom extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._zoomInButton = new IconButton({
       action: this.zoomIn.bind(this),
       iconClass: CSS.zoomInIcon
@@ -90,7 +90,7 @@ class Zoom extends Widget {
     });
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._zoomInButton.destroy();
     this._zoomOutButton.destroy();
 
@@ -127,7 +127,7 @@ class Zoom extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -144,7 +144,7 @@ class Zoom extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layout
@@ -217,7 +217,7 @@ class Zoom extends Widget {
   @property({
     type: ZoomViewModel
   })
-  viewModel = new ZoomViewModel();
+  override viewModel = new ZoomViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -225,7 +225,7 @@ class Zoom extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const vm = this.viewModel;
     const rootClasses = {
       [CSS.horizontalLayout]: this.layout === "horizontal"

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../shading/EvaluateMainLighting.glsl","../shading/Water.glsl","../../shaderModules/interfaces"],(function(e,o,r,a){"use strict";function t(e,t){e.extensions.add("GL_OES_standard_derivatives"),3!==t.pbrMode&&4!==t.pbrMode||e.include(r.Water,t),e.vertex.uniforms.add("overlayTexOffset","vec4"),e.vertex.uniforms.add("overlayTexScale","vec4"),e.varyings.add("vtcOverlay","vec4"),e.vertex.code.add(a.glsl`void setOverlayVTC(in vec2 uv) {
 vtcOverlay = vec4(uv, uv) * overlayTexScale + overlayTexOffset;

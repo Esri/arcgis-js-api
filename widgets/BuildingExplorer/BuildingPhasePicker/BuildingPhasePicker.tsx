@@ -61,7 +61,7 @@ class BuildingPhasePicker extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       this.watch(["_currentPhase", "_container"], () => {
         this._shouldScrollCurrentPhaseIntoView = true;
@@ -69,7 +69,7 @@ class BuildingPhasePicker extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     if (this.viewModel !== this._defaultViewModel) {
       this._defaultViewModel.destroy();
     }
@@ -87,7 +87,7 @@ class BuildingPhasePicker extends Widget {
    * The view model used to control this widget.
    */
   @property({ type: BuildingPhase })
-  viewModel = this._defaultViewModel;
+  override viewModel = this._defaultViewModel;
 
   /**
    * The widget's message bundle.
@@ -149,12 +149,12 @@ class BuildingPhasePicker extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     if (this._phases.length < 2) {
       return <div></div>;
     }
 
-    const rtl = isRTL();
+    const rtl = isRTL(this.container);
     const previousPhaseLabel = this.messages.previousPhase;
     const nextPhaseLabel = this.messages.nextPhase;
 

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","./DecodeSymbolColor.glsl","../../../../core/shaderModules/interfaces"],(function(o,e,r){"use strict";function l(o,l){1===l.componentData&&(o.vertex.uniforms.add("uComponentColorTex","sampler2D"),o.vertex.uniforms.add("uComponentColorTexInvDim","vec2"),o.attributes.add("componentIndex","float"),o.varyings.add("vExternalColorMixMode","mediump float"),o.varyings.add("vExternalColor","vec4"),o.include(e.DecodeSymbolColor),o.vertex.code.add(r.glsl`vec4 _readComponentColor() {
 float normalizedIndex = (componentIndex + 0.5) * uComponentColorTexInvDim.x;

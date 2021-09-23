@@ -44,7 +44,7 @@
       height: $checkbox-size;
       margin: 0;
       margin-inline-end: $side-spacing--half;
-      padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) / 2;
+      padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) * 0.5;
       transition: all 0.1s ease-in-out;
       border: solid 1px $border-color;
       background: none;
@@ -193,8 +193,8 @@
       top: 50%;
 
       // center
-      margin-top: -$loading-spinner-size / 2;
-      margin-left: -$loading-spinner-size / 2;
+      margin-top: -$loading-spinner-size * 0.5;
+      margin-left: -$loading-spinner-size * 0.5;
 
       // We show a spinner with a delay so that it is only visible if a preview
       // takes too long to be generated.
@@ -205,7 +205,7 @@
 
       &--small {
         font-size: $loading-spinner-size-small;
-        top: -$loading-spinner-size-small - $header-icon-height / 2; // Align top of the chart with icon of header buttons;
+        top: -$loading-spinner-size-small - $header-icon-height * 0.5; // Align top of the chart with icon of header buttons;
         left: 0;
         margin-top: 0;
         margin-left: 0;
@@ -413,7 +413,7 @@
   // RTL
   //----------------------------------------------------------------------------
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-elevation-profile-legend-item {
       &__color-indicator {
         left: auto;

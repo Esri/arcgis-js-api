@@ -5,7 +5,7 @@
  * @module esri/widgets/support/DatePicker
  * @since 4.15
  *
- * @see [DatePicker.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/support/DatePicker.tsx)
+ * @see [DatePicker.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/support/DatePicker.tsx)
  * @see [DatePicker.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_DatePicker.scss)
  * @see module:esri/widgets/support/TimePicker
  */
@@ -152,7 +152,7 @@ class DatePicker extends Widget<ConstructProperties> {
     this._toggle = this._toggle.bind(this);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       reaction(
         () => ({
@@ -170,7 +170,7 @@ class DatePicker extends Widget<ConstructProperties> {
     );
   }
 
-  async loadLocale(): Promise<void> {
+  override async loadLocale(): Promise<void> {
     this._moment = await loadMoment();
 
     if (this._isOpen) {
@@ -178,7 +178,7 @@ class DatePicker extends Widget<ConstructProperties> {
     }
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._calendarPopover.destroy();
   }
 
@@ -248,7 +248,7 @@ class DatePicker extends Widget<ConstructProperties> {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -314,7 +314,7 @@ class DatePicker extends Widget<ConstructProperties> {
   @property({
     type: DatePickerViewModel
   })
-  viewModel = new DatePickerViewModel();
+  override viewModel = new DatePickerViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -336,7 +336,7 @@ class DatePicker extends Widget<ConstructProperties> {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div
         afterCreate={storeNode}
@@ -507,7 +507,7 @@ class DatePicker extends Widget<ConstructProperties> {
   }
 
   private _renderMonthPicker(activeDate: MomentInstance): VNode {
-    const rtl = isRTL();
+    const rtl = isRTL(this.container);
     const prevIconClass = rtl ? CSS.nextIcon : CSS.previousIcon;
     const nextIconClass = rtl ? CSS.previousIcon : CSS.nextIcon;
 

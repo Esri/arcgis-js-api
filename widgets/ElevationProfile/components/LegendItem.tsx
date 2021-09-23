@@ -52,7 +52,7 @@ export class LegendItem extends Widget implements ConstructProperties {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._statistics = new Statistics(this._statisticsProps);
     this.own(
       this.watch("_statisticsProps", (props: StatisticsProps) => {
@@ -61,11 +61,11 @@ export class LegendItem extends Widget implements ConstructProperties {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._statistics = destroyMaybe(this._statistics);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const expanded = this.expanded;
 
     return (

@@ -64,7 +64,7 @@
  * @module esri/widgets/smartMapping/BinaryColorSizeSlider
  * @since 4.12
  *
- * @see [BinaryColorSizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/BinaryColorSizeSlider.tsx)
+ * @see [BinaryColorSizeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/BinaryColorSizeSlider.tsx)
  * @see [BinaryColorSizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BinaryColorSizeSlider.scss)
  * @see module:esri/widgets/smartMapping/BinaryColorSizeSlider/BinaryColorSizeSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/size sizeRendererCreator}
@@ -248,7 +248,7 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -377,13 +377,14 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/BinaryColorSizeSlider/BinaryColorSizeSliderViewModel}
    */
   @property()
-  viewModel: BinaryColorSizeSliderViewModel = new BinaryColorSizeSliderViewModel();
+  override viewModel = new BinaryColorSizeSliderViewModel();
 
   //----------------------------------
   //  zoomOptions
   //----------------------------------
 
-  @aliasOf("viewModel.zoomOptions") zoomOptions: ZoomOptions = null;
+  @aliasOf("viewModel.zoomOptions")
+  override zoomOptions: ZoomOptions = null;
 
   //--------------------------------------------------------------------------
   //
@@ -693,7 +694,7 @@ class BinaryColorSizeSlider extends SmartMappingSliderBase {
     }
   }
 
-  render(): VNode {
+  override render(): VNode {
     const {
       label,
       state,

@@ -30,7 +30,7 @@
  * });
  * view.ui.add(swipe);
  *
- * @see [Swipe.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Swipe.tsx)
+ * @see [Swipe.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Swipe.tsx)
  * @see [Swipe.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Swipe.scss)
  * @see [Sample - Swipe widget](../sample-code/widgets-swipe/index.html)
  * @see [Sample - Swipe widget with scroll](../sample-code/widgets-swipe-scroll/index.html)
@@ -192,7 +192,7 @@ class Swipe extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -209,7 +209,7 @@ class Swipe extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  leadingLayers
@@ -320,7 +320,7 @@ class Swipe extends Widget {
   @property({
     type: SwipeViewModel
   })
-  viewModel = new SwipeViewModel();
+  override viewModel = new SwipeViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -386,7 +386,7 @@ class Swipe extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { state, direction } = this.viewModel;
 
     const disabled = state === "disabled" || this.disabled;

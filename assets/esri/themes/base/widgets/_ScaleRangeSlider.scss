@@ -66,10 +66,17 @@
     border: none;
     font-size: $font-size;
     white-space: nowrap;
+    max-width: 48%;
+    display: flex;
   }
 
   .esri-scale-range-slider__scale-menu-toggle--active {
     font-weight: $font-weight--bold;
+  }
+
+  .esri-scale-range-slider__scale-menu-toggle-text {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
   }
 
   .esri-scale-range-slider__scale-menu-toggle-icon {

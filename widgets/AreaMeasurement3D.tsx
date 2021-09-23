@@ -20,7 +20,7 @@
  * @module esri/widgets/AreaMeasurement3D
  * @since 4.7
  *
- * @see [AreaMeasurement3D.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/AreaMeasurement3D.tsx)
+ * @see [AreaMeasurement3D.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/AreaMeasurement3D.tsx)
  * @see [AreaMeasurement3D.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_AreaMeasurement3D.scss)
  * @see [Sample - Measurement in 3D](../sample-code/widgets-measurement-3d/index.html)
  * @see {@link module:esri/widgets/AreaMeasurement3D/AreaMeasurement3DViewModel}
@@ -59,7 +59,7 @@ import AreaMeasurement3DMessages from "esri/widgets/AreaMeasurement3D/t9n/AreaMe
 import { VNode } from "esri/widgets/support/interfaces";
 import { accessibleHandler, messageBundle, tsx } from "esri/widgets/support/widget";
 
-type AreaMeasurement3DLocaleStrings = Partial<
+type AreaMeasurement3DUIStrings = Partial<
   Pick<AreaMeasurement3DMessages, "widgetLabel" | "hint" | "newMeasurement">
 >;
 
@@ -159,7 +159,7 @@ class AreaMeasurement3D extends Widget {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean = null;
+  override visible: boolean = null;
 
   //----------------------------------
   //  active
@@ -188,7 +188,7 @@ class AreaMeasurement3D extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -204,17 +204,7 @@ class AreaMeasurement3D extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
-
-  //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  /**
-   * @todo documentation
-   */
-  @property()
-  localeStrings?: AreaMeasurement3DLocaleStrings;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -251,6 +241,16 @@ class AreaMeasurement3D extends Widget {
   messagesUnits: UnitsMessages = null;
 
   //----------------------------------
+  //  uiStrings
+  //----------------------------------
+
+  /**
+   * @todo documentation
+   */
+  @property()
+  override uiStrings?: AreaMeasurement3DUIStrings;
+
+  //----------------------------------
   //  viewModel
   //----------------------------------
 
@@ -266,7 +266,7 @@ class AreaMeasurement3D extends Widget {
    * @autocast
    */
   @property({ type: AreaMeasurement3DViewModel })
-  viewModel: AreaMeasurement3DViewModel = new AreaMeasurement3DViewModel();
+  override viewModel: AreaMeasurement3DViewModel = new AreaMeasurement3DViewModel();
 
   //----------------------------------
   //  unitOptions
@@ -303,21 +303,21 @@ class AreaMeasurement3D extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
-    const { isSupported, active: isActive, measurement, state, unit } = this.viewModel;
+  override render(): VNode {
+    const { supported, active, measurement, state, unit } = this.viewModel;
     const isDisabled = state === "disabled";
     const isReady = state === "ready";
     const isMeasuring = state === "measuring" || state === "measured";
     const { messages, messagesUnits } = this;
 
     const hintNode =
-      isActive && isReady ? (
+      active && isReady ? (
         <section key="esri-area-measurement-3d__hint" class={CSS.hint}>
           <p class={CSS.hintText}>{messages.hint}</p>
         </section>
       ) : null;
 
-    const unsupportedNode = !isSupported ? (
+    const unsupportedNode = !supported ? (
       <section key="esri-area-measurement-3d__unsupported" class={CSS.panelError}>
         <p>{messages.unsupported}</p>
       </section>
@@ -410,7 +410,7 @@ class AreaMeasurement3D extends Widget {
     ) : null;
 
     const newMeasurementNode =
-      isSupported && (!isActive || isMeasuring) ? (
+      supported && (!active || isMeasuring) ? (
         <div class={CSS.actionSection}>
           <button
             disabled={isDisabled}

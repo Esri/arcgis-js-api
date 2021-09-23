@@ -101,7 +101,7 @@
  * @since 4.18
  *
  * @see [Sample - ElevationProfile widget](../sample-code/widgets-elevation-profile/index.html)
- * @see [ElevationProfile.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ElevationProfile.tsx)
+ * @see [ElevationProfile.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ElevationProfile.tsx)
  * @see [ElevationProfile.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ElevationProfile.scss)
  * @see module:esri/widgets/ElevationProfile/ElevationProfileViewModel
  * @see module:esri/widgets/ElevationProfile/ElevationProfileLineGround
@@ -247,7 +247,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
     }
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._legend = new Legend(this._legendProps);
     this._settingsButton = new SettingsButton(this._settingsButtonProps);
 
@@ -259,7 +259,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
     ]);
   }
 
-  postInitialize(): void {
+  protected override postInitialize(): void {
     this.own([
       init(this, "_chartContainer", () => {
         this._destroyChart(); // Make sure we don't have an old chart.
@@ -275,7 +275,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyChart();
 
     // Only destroy the default VM if it's not the current `viewModel`. Otherwise
@@ -314,7 +314,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
    * @autocast
    */
   @property({ type: ElevationProfileViewModel })
-  viewModel: ElevationProfileViewModel = null;
+  override viewModel: ElevationProfileViewModel = null;
 
   //------------------------
   // view
@@ -498,7 +498,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //------------------------
   // label
@@ -512,7 +512,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
    * @type {string}
    */
   @aliasOf("messages.widgetLabel", { overridable: true })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  visible
@@ -527,7 +527,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
    * @ignore
    */
   @aliasOf("viewModel.visible")
-  visible: boolean;
+  override visible: boolean;
 
   //----------------------------------------------------------------------------
   //
@@ -694,7 +694,7 @@ class ElevationProfile extends Widget implements ConstructProperties {
   //
   //----------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { viewModel, visible } = this;
 
     return (

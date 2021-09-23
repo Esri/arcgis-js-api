@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+*/
+define(["require","exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/Clouds.glsl","../webgl-engine/core/shaderTechnique/ReloadableShaderModule","../webgl-engine/core/shaderTechnique/ShaderTechnique","../webgl-engine/lib/DefaultVertexAttributeLocations","../webgl-engine/lib/Program","../../webgl/renderState"],(function(e,n,r,i,t,l,a,o,u){"use strict";let s=function(e){function n(){return e.apply(this,arguments)||this}r._inheritsLoose(n,e);var i=n.prototype;return i.initializeProgram=function(e){const r=n.shader.get().build();return new o.Program(e.rctx,r,a.Default3D)},i.initializePipeline=function(){return u.makePipelineState({blending:u.separateBlendingParams(1,1,0,0),depthTest:{func:515},colorWrite:u.defaultColorWriteParams})},n}(l.ShaderTechnique);s.shader=new t.ReloadableShaderModule(i.CloudsShader,(()=>new Promise((function(n,r){e(["./Clouds.glsl"],n,r)})))),n.CloudsTechnique=s,Object.defineProperty(n,"__esModule",{value:!0})}));

@@ -41,7 +41,7 @@ export class Legend extends Widget implements ConstructProperties {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     // We don't support including widgets in TSX yet, so we need to wire things manually.
     this.own([
       init(this, "profiles", (lines) => {
@@ -56,11 +56,11 @@ export class Legend extends Widget implements ConstructProperties {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyItems();
   }
 
-  render(): VNode {
+  override render(): VNode {
     return <div class={CSS.base}>{this._items.toArray().map((item) => item.render())}</div>;
   }
 

@@ -26,7 +26,7 @@ import Widget from "esri/Widget";
 
 // esri.widgets.support
 import { VNode } from "esri/widgets/interfaces";
-import { tsx } from "esri/widgets/widget";
+import { getDir, tsx } from "esri/widgets/widget";
 
 type NodeReference = HTMLElement | string;
 type GetNodeReferenceFunction = () => NodeReference;
@@ -96,7 +96,7 @@ class Popover<W extends Widget = Widget> extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.when(() => {
       this._projector.append(document.body, this.render as () => MaquetteVNode);
       this._renderAttached = true;
@@ -108,7 +108,7 @@ class Popover<W extends Widget = Widget> extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this.owner = null;
     this.anchorElement = null;
     this.renderContentFunction = null;
@@ -177,7 +177,7 @@ class Popover<W extends Widget = Widget> extends Widget {
    * @private
    */
   @property()
-  set container(_value: HTMLElement) {}
+  override set container(_value: HTMLElement) {}
 
   //----------------------------------
   //  offset
@@ -276,7 +276,7 @@ class Popover<W extends Widget = Widget> extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { open, owner, renderContentFunction } = this;
 
     return (
@@ -285,7 +285,11 @@ class Popover<W extends Widget = Widget> extends Widget {
         class={this.classes(CSS.base, open ? CSS.open : null)}
         styles={CORE_STYLES}
       >
-        <div afterCreate={this._afterContentCreate} afterUpdate={this._updatePosition}>
+        <div
+          dir={getDir(this.owner?.container)}
+          afterCreate={this._afterContentCreate}
+          afterUpdate={this._updatePosition}
+        >
           {open && renderContentFunction?.call(owner)}
         </div>
       </div>

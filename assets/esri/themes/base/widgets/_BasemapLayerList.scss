@@ -397,7 +397,7 @@
     padding: 0 0 $cap-spacing 0;
   }
 
-  html[dir="rtl"] .esri-basemap-layer-list {
+  [dir="rtl"] .esri-basemap-layer-list {
     .esri-basemap-layer-list__item--has-children > .esri-basemap-layer-list__item-container {
       padding-left: $side-spacing + 5;
       padding-right: 5px;

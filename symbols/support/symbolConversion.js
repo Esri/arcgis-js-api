@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../symbols","../../core/Error","../WebStyleSymbol","../PointSymbol3D","../SimpleLineSymbol","../LineSymbol3D","../SimpleMarkerSymbol","../PictureMarkerSymbol","../SimpleFillSymbol","../PolygonSymbol3D","../TextSymbol","../LabelSymbol3D"],(function(e,o,l,i,r,m,s,n,y,t,b,f,S){"use strict";function c(e,c=!1,a=!1,p=!0){if(!e)return{symbol:null};let u;if(o.isSymbol3D(e)||e instanceof i)u=e.clone();else if("cim"===e.type)u=r.fromCIMSymbol(e);else if(e instanceof m)u=s.fromSimpleLineSymbol(e);else if(e instanceof n)u=r.fromSimpleMarkerSymbol(e);else if(e instanceof y)u=r.fromPictureMarkerSymbol(e);else if(e instanceof t)u=b.fromSimpleFillSymbol(e);else{if(!(e instanceof f))return{error:new l("symbol-conversion:unsupported-2d-symbol",`2D symbol of type '${e.type||e.declaredClass}' is unsupported in 3D`,{symbol:e})};u=p?S.fromTextSymbol(e):r.fromTextSymbol(e)}if(c&&(u.id=e.id),a&&o.isSymbol3D(u))for(let o=0;o<u.symbolLayers.length;++o)u.symbolLayers.getItemAt(o)._ignoreDrivers=!0;return{symbol:u}}e.to3D=c,Object.defineProperty(e,"__esModule",{value:!0})}));

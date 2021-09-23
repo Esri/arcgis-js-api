@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function d(e){e.extensions.add("GL_EXT_shader_texture_lod"),e.extensions.add("GL_OES_standard_derivatives"),e.fragment.code.add(t.glsl`#ifndef GL_EXT_shader_texture_lod
 float calcMipMapLevel(const vec2 ddx, const vec2 ddy) {

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../attributes/VertexTextureCoordinates.glsl","../util/TextureAtlasLookup.glsl","../../shaderModules/interfaces"],(function(e,r,t,o){"use strict";function u(e,u){const s=e.fragment;u.baseColorTexture?(e.include(r.VertexTextureCoordinates,u),s.uniforms.add("uBaseColorTexture","sampler2D"),s.uniforms.add("uBaseColorTextureSize","vec2"),2===u.attributeTextureCoordinates?(e.include(t.TextureAtlasLookup),s.code.add(o.glsl`vec4 readBaseColorTexture() {
 return textureAtlasLookup(

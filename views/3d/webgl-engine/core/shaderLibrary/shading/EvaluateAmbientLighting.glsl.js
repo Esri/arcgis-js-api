@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(i,n){"use strict";function e(i,e){const t=i.fragment,a=void 0!==e.lightingSphericalHarmonicsOrder?e.lightingSphericalHarmonicsOrder:2;0===a?(t.uniforms.add("lightingAmbientSH0","vec3"),t.code.add(n.glsl`vec3 calculateAmbientIrradiance(vec3 normal, float ambientOcclusion) {
 vec3 ambientLight = 0.282095 * lightingAmbientSH0;

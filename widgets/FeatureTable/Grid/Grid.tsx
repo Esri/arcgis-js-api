@@ -71,15 +71,16 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.handles.add([
       // Ensure current ColumnElements aren't using destroyed Column(s)
       this.columns.on("change", () => this._syncColumnRenderers()),
       // Vaadin-grid must be provided an accurate count/size
       watchUtils.watch(this, "viewModel.size", () => this._updateGridSize()),
       // Vaadin-grid's cache must be refreshed when the store is reloaded
+      // Store may also have been in an error state from an unsupported layer
       watchUtils.watch(this, "store.state", (newValue, oldValue) => {
-        if (newValue === "ready" && oldValue === "loaded") {
+        if (newValue === "ready" && (oldValue === "loaded" || oldValue === "error")) {
           this.refreshCache();
         }
       }),
@@ -91,7 +92,7 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this.handles.removeAll();
     this.resetColumns();
     this.columns?.destroy();
@@ -175,7 +176,7 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -256,7 +257,7 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
    * @autocast
    */
   @property()
-  viewModel: GridViewModel = new GridViewModel();
+  override viewModel = new GridViewModel();
 
   //----------------------------------
   // visibleElements
@@ -286,7 +287,7 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div bind={this} class={this.classes(CSS.base, CSS.widget)}>
         <div bind={this} class={CSS.content}>
@@ -318,7 +319,7 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
         bind={this}
         hidden={!this.visibleElements.selectionColumn}
         sortable={false}
-        frozen={!isRTL()}
+        frozen={!isRTL(this.container)}
       />
     );
   }
@@ -388,13 +389,28 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
   }
 
   clearSort(): void {
-    this.columns?.forEach((c) => (c.direction = null));
+    let sortDidChange = false;
 
-    if (this._grid) {
+    // Reset the sort order on the component
+    // This will also trigger a re-render
+    if (this._grid && this._grid._sorters && this._grid._sorters.length) {
       this._grid._sorters = [];
+      sortDidChange = true;
     }
 
-    this.scheduleRender();
+    // Columns must also be reset regardless of the Grid state
+    if (this.columns && this.columns.length) {
+      const hasDirection = !!this.columns.find((item) => !!item.direction);
+
+      if (hasDirection) {
+        this.columns.forEach((c) => (c.direction = null));
+        sortDidChange = true;
+      }
+    }
+
+    if (sortDidChange) {
+      this.scheduleRender();
+    }
   }
 
   deselectItem(item: StoreItem): void {
@@ -636,11 +652,11 @@ class Grid extends HandleOwnerMixin(Widget)<any, GridEvents> {
 
   private _onSelectionChange(event: Event): void {
     const e = event as SelectedItemsChangeEvent;
-    this._updateSelectionProps();
 
     if (e.detail.path === "selectedItems.splices") {
       const { removed, index, object: added } = e.detail.value.indexSplices[0];
 
+      this._updateSelectionProps();
       this.emit("selection-change", {
         index,
         added,

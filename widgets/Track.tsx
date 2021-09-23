@@ -12,7 +12,7 @@
  * The Track widget is not supported on insecure origins.
  * To use it, switch your application to a secure origin, such as HTTPS.
  * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports
- * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+ * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/isSecureContext#browser_compatibility)
  * (currently Chrome and Firefox).
  *
  * As of version 4.2, the Track Button no longer displays in non-secure web apps. At version
@@ -26,7 +26,7 @@
  * @module esri/widgets/Track
  * @since 4.0
  *
- * @see [Track.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Track.tsx)
+ * @see [Track.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Track.tsx)
  * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see module:esri/widgets/Track/TrackViewModel
  * @see {@link module:esri/views/View#ui View.ui}
@@ -207,7 +207,7 @@ class Track extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -224,7 +224,7 @@ class Track extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -357,7 +357,7 @@ class Track extends Widget {
     type: TrackViewModel
   })
   @vmEvent(["track", "track-error"])
-  viewModel = new TrackViewModel();
+  override viewModel = new TrackViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -384,7 +384,7 @@ class Track extends Widget {
   @aliasOf("viewModel.stop")
   stop(): void {}
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.get("viewModel.state");
 
     const rootClasses = {

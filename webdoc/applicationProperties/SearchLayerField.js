@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","../../layers/support/fieldType"],(function(e,r,t,o,c,p,a,s,n,i){"use strict";var u;let l=u=function(r){function t(e){var t;return(t=r.call(this,e)||this).exactMatch=!1,t.name=null,t.type=null,t}return e._inheritsLoose(t,r),t.prototype.clone=function(){return new u({exactMatch:this.exactMatch,type:this.type,name:this.name})},t}(t.JSONSupport);return r.__decorate([o.property({type:Boolean,json:{write:!0}})],l.prototype,"exactMatch",void 0),r.__decorate([o.property({type:String,json:{write:!0}})],l.prototype,"name",void 0),r.__decorate([s.enumeration(i.kebabDict)],l.prototype,"type",void 0),l=u=r.__decorate([n.subclass("esri.webdoc.applicationProperties.SearchLayerField")],l),l}));

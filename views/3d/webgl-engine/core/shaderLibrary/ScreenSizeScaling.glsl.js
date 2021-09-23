@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../shaderModules/interfaces"],(function(e,i){"use strict";function r(e){e.vertex.uniforms.add("camPos","vec3").add("perScreenPixelRatio","float").add("screenSize","float"),e.vertex.code.add(i.glsl`float computeRenderPixelSizeAt( vec3 pWorld ){
 vec3 viewForward = - vec3(view[0][2], view[1][2], view[2][2]);

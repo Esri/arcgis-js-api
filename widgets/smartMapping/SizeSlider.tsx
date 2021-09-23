@@ -64,7 +64,7 @@
  * @module esri/widgets/smartMapping/SizeSlider
  * @since 4.12
  *
- * @see [SizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/SizeSlider.tsx)
+ * @see [SizeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/SizeSlider.tsx)
  * @see [SizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_SizeSlider.scss)
  * @see module:esri/widgets/smartMapping/SizeSlider/SizeSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/size sizeRendererCreator}
@@ -235,7 +235,7 @@ class SizeSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -393,13 +393,14 @@ class SizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/SizeSlider/SizeSliderViewModel}
    */
   @property()
-  viewModel: SizeSliderViewModel = new SizeSliderViewModel();
+  override viewModel = new SizeSliderViewModel();
 
   //----------------------------------
   //  zoomOptions
   //----------------------------------
 
-  @aliasOf("viewModel.zoomOptions") zoomOptions: ZoomOptions = null;
+  @aliasOf("viewModel.zoomOptions")
+  override zoomOptions: ZoomOptions = null;
 
   //--------------------------------------------------------------------------
   //
@@ -674,7 +675,7 @@ class SizeSlider extends SmartMappingSliderBase {
     }
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { label, primaryHandleEnabled, state, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

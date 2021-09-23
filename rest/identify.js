@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../chunks/_rollupPluginBabelHelpers","../request","../geometry/support/normalizeUtils","./utils","./support/IdentifyParameters","./support/IdentifyResult","../tasks/operations/identify"],(function(e,t,r,n,s,o,i,u){"use strict";function a(e,t,r){return l.apply(this,arguments)}function l(){return(l=t._asyncToGenerator((function*(e,t,o){const i=(t=f(t)).geometry?[t.geometry]:[],a=s.parseUrl(e);return a.path+="/identify",n.normalizeCentralMeridian(i).then((e=>{const n=u.identifyToIdentifyRESTParameters(t,{geometry:e&&e[0]}),i=s.encode({...a.query,f:"json",...n}),l=s.asValidOptions(i,o);return r(a.path,l).then(p)}))}))).apply(this,arguments)}function p(e){const t=e.data;t.results=t.results||[];const r={results:[]};return r.results=t.results.map((e=>i.fromJSON(e))),r}function f(e){return e=o.from(e)}e.identify=a,Object.defineProperty(e,"__esModule",{value:!0})}));

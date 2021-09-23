@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/maybe"],(function(i,e,t){"use strict";let n=function(){function i(i,e,t=(()=>this.dispose())){this.release=t,e&&(this._config=e.snapshot()),this._program=this.initializeProgram(i),this._pipeline=this.initializePipeline(i)}var n=i.prototype;return n.dispose=function(){this._program=t.disposeMaybe(this._program),this._pipeline=this._config=null},n.reload=function(i){t.disposeMaybe(this._program),this._program=this.initializeProgram(i)},n.bindPass=function(i,e){},n.bindMaterial=function(i,e){},n.bindDraw=function(i,e,t){},n.bindPipelineState=function(i){i.setPipelineState(this.pipeline)},n.ensureAttributeLocations=function(i){this.program.assertCompatibleVertexAttributeLocations(i)},e._createClass(i,[{key:"program",get:function(){return this._program}},{key:"pipeline",get:function(){return this._pipeline}},{key:"key",get:function(){return this._config.key}},{key:"configuration",get:function(){return this._config}},{key:"primitiveType",get:function(){return 4}}]),i}();i.ShaderTechnique=n,Object.defineProperty(i,"__esModule",{value:!0})}));

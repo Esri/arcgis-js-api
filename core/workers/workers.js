@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["require","exports","../../chunks/_rollupPluginBabelHelpers","../Error","../has","../promiseUtils","./Connection","./RemoteClient","./WorkerOwner"],(function(e,t,n,r,o,i,u,l,c){"use strict";function s(e){if(e&&e.__esModule)return e;var t=Object.create(null);return e&&Object.keys(e).forEach((function(n){if("default"!==n){var r=Object.getOwnPropertyDescriptor(e,n);Object.defineProperty(t,n,r.get?r:{enumerable:!0,get:function(){return e[n]}})}})),t.default=e,Object.freeze(t)}let a=o("esri-workers-debug")?1:o("host-browser")?navigator.hardwareConcurrency-1:0;a||(a=o("safari")&&o("mac")||o("trident")?7:2);let f=0;const p=[];function d(){P()}function h(e,t){return y(e,{client:t})}function y(e,t){return m.apply(this,arguments)}function m(){return(m=n._asyncToGenerator((function*(e,t){const n=new u;return yield n.open(e,t),n}))).apply(this,arguments)}function b(e){return w.apply(this,arguments)}function w(){return(w=n._asyncToGenerator((function*(t,n={}){if("string"!=typeof t)throw new r("workers:undefined-module","modulePath is missing");let u=n.strategy||"distributed";if(o("host-webworker")&&!o("esri-workers")&&(u="local"),"local"===u){let r=yield l.loadWorker(t);r||(r=yield new Promise((function(n,r){e([
 /* @vite-ignore */

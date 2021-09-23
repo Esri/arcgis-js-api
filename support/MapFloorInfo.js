@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/JSONSupport","../core/accessorSupport/decorators/property","../core/has","../core/accessorSupport/ensureType","../core/Logger","../core/accessorSupport/decorators/subclass","../layers/support/FacilityLayerInfo","../layers/support/LevelLayerInfo","../layers/support/SiteLayerInfo"],(function(e,r,o,t,s,p,a,c,l,i,u){"use strict";let y=function(r){function o(e){var o;return(o=r.call(this,e)||this).levelLayer=null,o.facilityLayer=null,o.siteLayer=null,o}return e._inheritsLoose(o,r),o}(o.JSONSupport);return r.__decorate([t.property({type:i,json:{write:!0}})],y.prototype,"levelLayer",void 0),r.__decorate([t.property({type:l,json:{write:!0}})],y.prototype,"facilityLayer",void 0),r.__decorate([t.property({type:u,json:{write:!0}})],y.prototype,"siteLayer",void 0),y=r.__decorate([c.subclass("esri.support.MapFloorInfo")],y),y}));

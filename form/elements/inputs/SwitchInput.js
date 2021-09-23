@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass","./Input"],(function(e,r,o,t,s,n,u,p){"use strict";var c;let i=c=function(r){function o(e){var o;return(o=r.call(this,e)||this).offValue=null,o.onValue=null,o.type="switch",o}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new c({offValue:this.offValue,onValue:this.onValue})},o}(p);return r.__decorate([o.property({type:[String,Number],json:{write:!0}})],i.prototype,"offValue",void 0),r.__decorate([o.property({type:[String,Number],json:{write:!0}})],i.prototype,"onValue",void 0),r.__decorate([o.property({type:["switch"],json:{read:!1,write:!0}})],i.prototype,"type",void 0),i=c=r.__decorate([u.subclass("esri.form.elements.inputs.SwitchInput")],i),i}));

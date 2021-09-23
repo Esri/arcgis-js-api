@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
-*/
-define(["exports","./comment-handler","./parser","./tokenizer","./syntax"],(function(e,t,n,r,o){"use strict";function c(e,r,o){let c=null;const s=(e,t)=>{o&&o(e,t),c&&c.visit(e,t)};let a="function"==typeof o?s:null,i=!1;if(r){i="boolean"==typeof r.comment&&r.comment;const e="boolean"==typeof r.attachComment&&r.attachComment;(i||e)&&(c=new t.CommentHandler,c.attach=e,r.comment=!0,a=s)}const l=new n.Parser(e,r,a),m=l.parseScript();return i&&c&&(m.comments=c.comments),l.config.tokens&&(m.tokens=l.tokens),l.config.tolerant&&(m.errors=l.errorHandler.errors),m}function s(e,t,n){const r=t||{};return r.sourceType="script",c(e,r,n)}function a(e,t,n){const o=new r.Tokenizer(e,t),c=[];try{for(;;){let e=o.getNextToken();if(!e)break;n&&(e=n(e)),c.push(e)}}catch(s){o.errorHandler.tolerate(s)}return o.errorHandler.tolerant&&(c.errors=o.errors()),c}const i="4.0.0-dev";e.Syntax=o.Syntax,e.parse=c,e.parseScript=s,e.tokenize=a,e.version=i,Object.defineProperty(e,"__esModule",{value:!0})}));

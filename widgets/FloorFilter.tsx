@@ -8,23 +8,18 @@
  * Once you define your map as floor-aware in the map properties, the interactive, on-screen
  * FloorFilter widget appears and can be used to explore the floor-aware data based on the
  * configured site, facility, and levels layers.
+ * The {@link module:esri/widgets/FloorFilter} widget currently supports {@link module:esri/layers/FeatureLayer FeatureLayers}, {@link module:esri/layers/SceneLayer SceneLayers} and {@link module:esri/layers/MapImageLayer MapImageLayers} (map services).
  *
  * The widget can also be used alongside other filtering functionalities, such as definition queries,
  * selection, range, and time, to further control visualization.
  * For example, you may want to visualize all of the features on a specific level in a facility,
  * or all the office units within a range of levels in a facility.
  *
- * ::: esri-md class="panel trailer-1"
- * **Known Limitations**
- * * Floor-aware maps are only supported in ArcGIS Online. Support for publishing floor-aware maps to ArcGIS Enterprise is coming soon.
- * * The FloorFilter widget currently supports {@link module:esri/layers/FeatureLayer FeatureLayers} and {@link module:esri/layers/SceneLayer SceneLayers}.
- *  A future release will support floor filtering of {@link module:esri/layers/MapImageLayer MapImageLayers} (map services).
- * :::
  *
  * @module esri/widgets/FloorFilter
  * @since 4.19
  *
- * @see [FloorFilter.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FloorFilter.tsx)
+ * @see [FloorFilter.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FloorFilter.tsx)
  * @see [FloorFilter.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FloorFilter.scss)
  * @see module:esri/widgets/FloorFilter/FloorFilterViewModel
  * @see [Sample - FloorFilter widget](../sample-code/widgets-floorfilter/index.html)
@@ -174,7 +169,7 @@ class FloorFilter extends Widget {
     this.own(watchUtils.watch(this, "_searchInput", () => this._focusSearch()));
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._resizeObserver.disconnect();
   }
 
@@ -315,7 +310,7 @@ class FloorFilter extends Widget {
    * @autocast
    */
   @property({ type: FloorFilterViewModel })
-  viewModel: FloorFilterViewModel = new FloorFilterViewModel();
+  override viewModel = new FloorFilterViewModel();
 
   //----------------------------------
   //  messages
@@ -407,7 +402,7 @@ class FloorFilter extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { longNames } = this;
     const layout: Layout = longNames && this.viewModel.isNormalMode ? "expanded" : "collapsed";
     const buttons = this.renderButtons();
@@ -417,7 +412,7 @@ class FloorFilter extends Widget {
     const position: Position = this._getPosition(corner);
     const rightSide = corner === "top-right" || corner === "bottom-right";
     const leftSide = corner === "top-left" || corner === "bottom-left";
-    const rtl = isRTL();
+    const rtl = isRTL(this.container);
     const leadingControl = (rtl && leftSide) || (!rtl && rightSide) ? filterMenu : buttons;
     const trailingControl = (rtl && leftSide) || (!rtl && rightSide) ? buttons : filterMenu;
     return (
@@ -725,7 +720,7 @@ class FloorFilter extends Widget {
         class={this.classes(CSS.filterMenuHeaderBack)}
         onclick={this._backClicked}
       >
-        <span class={this.classes(isRTL() ? CSS.rightIcon : CSS.leftIcon)} />
+        <span class={this.classes(isRTL(this.container) ? CSS.rightIcon : CSS.leftIcon)} />
       </button>
     ) : null;
 
@@ -840,7 +835,7 @@ class FloorFilter extends Widget {
           >
             {name}
           </span>
-          <span class={this.classes(isRTL() ? CSS.leftIcon : CSS.rightIcon)} />
+          <span class={this.classes(isRTL(this.container) ? CSS.leftIcon : CSS.rightIcon)} />
         </button>
       </li>
     );

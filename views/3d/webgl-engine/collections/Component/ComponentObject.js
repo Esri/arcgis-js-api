@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
-define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","./interface","../../core/util/BucketedObjectStore","../../lib/AutoDisposable"],(function(e,t,o,i,r){"use strict";let s=function(t){function i(){return t.apply(this,arguments)||this}return e._inheritsLoose(i,t),e._createClass(i,[{key:"visible",get:function(){return!!(this.bucketKey&o.VISIBLE_BIT)}}]),i}(i.BucketStorable);return t.__decorate([r.autoDispose()],s.prototype,"renderable",void 0),t.__decorate([r.autoDispose()],s.prototype,"components",void 0),s}));
+define(["exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../chunks/tslib.es6","../../lib/AutoDisposable"],(function(e,o,t,s){"use strict";let i=function(e){function t(){var o;return(o=e.apply(this,arguments)||this).visible=0,o}return o._inheritsLoose(t,e),t}(s.AutoDisposable);t.__decorate([s.autoDispose()],i.prototype,"renderable",void 0),t.__decorate([s.autoDispose()],i.prototype,"components",void 0),e.ComponentObject=i,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../symbols","./cimAnalyzer","./ExpandedCIM","../WebStyleSymbol"],(function(e,n,r,t,a,o){"use strict";const i=function(){var e=n._asyncToGenerator((function*(e,n,r){return Promise.all(e.map((e=>l(e,n,r))))}));return function(n,r,t){return e.apply(this,arguments)}}(),u=function(){var e=n._asyncToGenerator((function*(e,n){return new a.ExpandedCIM(yield t.analyzeCIMSymbol(e.data,n),e.data,e.rendererKey,e.maxVVSize)}));return function(n,r){return e.apply(this,arguments)}}(),l=function(){var e=n._asyncToGenerator((function*(e,n,r){if(!e)return null;if("cim"===e.type)return u(e,n);if("web-style"===e.type){const t=o.fromJSON(e),a={type:"cim",data:(yield t.fetchCIMSymbol(r)).data,rendererKey:e.rendererKey,maxVVSize:e.maxVVSize};return u(a,n)}return e}));return function(n,r,t){return e.apply(this,arguments)}}();e.expandSymbol=l,e.expandSymbols=i,Object.defineProperty(e,"__esModule",{value:!0})}));

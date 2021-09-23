@@ -300,7 +300,7 @@ export abstract class SmartMappingSliderBase extends Widget {
     this._onMinZoomCapPointerDown = this._onMinZoomCapPointerDown.bind(this);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const { histogramConfig = {}, viewModel } = this;
     const { labelFormatFunction, max, min } = viewModel;
     const params = this.getParamsFromHistogramConfig(histogramConfig);
@@ -742,7 +742,7 @@ export abstract class SmartMappingSliderBase extends Widget {
    * @type {}
    */
   @property()
-  viewModel: SmartMappingSliderViewModel = null;
+  override viewModel: SmartMappingSliderViewModel = null;
 
   //----------------------------------
   // visibleElements

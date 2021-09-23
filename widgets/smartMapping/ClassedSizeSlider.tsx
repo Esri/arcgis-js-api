@@ -64,7 +64,7 @@
  * @module esri/widgets/smartMapping/ClassedSizeSlider
  * @since 4.12
  *
- * @see [ClassedSizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedSizeSlider.tsx)
+ * @see [ClassedSizeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedSizeSlider.tsx)
  * @see [ClassedSizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ClassedSizeSlider.scss)
  * @see module:esri/widgets/smartMapping/ClassedSizeSlider/ClassedSizeSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/size sizeRendererCreator}
@@ -219,7 +219,7 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -288,7 +288,7 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ClassedSizeSlider/ClassedSizeSliderViewModel}
    */
   @property()
-  viewModel: ClassedSizeSliderViewModel = new ClassedSizeSliderViewModel();
+  override viewModel = new ClassedSizeSliderViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -537,7 +537,7 @@ class ClassedSizeSlider extends SmartMappingSliderBase {
     }
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

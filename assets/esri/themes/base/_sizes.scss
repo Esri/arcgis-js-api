@@ -1,5 +1,7 @@
 // Sizes & Placement
 
+@use "sass:math";
+
 $border-size--active: 3px !default;
 $icon-size: 16px !default;
 $border-radius: 2px !default;
@@ -10,16 +12,16 @@ $button-width: 32px !default;
 $button-height: 32px !default;
 
 // button : half
-$button-width--half: floor($button-width / 2) !default;
-$button-height--half: floor($button-height / 2) !default;
+$button-width--half: floor($button-width * 0.5) !default;
+$button-height--half: floor($button-height * 0.5) !default;
 
 // button : quarter
-$button-width--quarter: floor($button-width / 4) !default;
-$button-height--quarter: floor($button-height / 4) !default;
+$button-width--quarter: floor($button-width * 0.25) !default;
+$button-height--quarter: floor($button-height * 0.25) !default;
 
 // button : fifth
-$button-width--fifth: floor($button-width / 5) !default;
-$button-height--fifth: floor($button-height / 5) !default;
+$button-width--fifth: floor($button-width * 0.2) !default;
+$button-height--fifth: floor($button-height * 0.2) !default;
 
 // button : plus half`
 $button-width--plus-half: floor($button-width * 1.5) !default;
@@ -32,7 +34,7 @@ $button-height--double: floor($button-height * 2) !default;
 /////////////////////////
 // List Items
 $list-item-height: 48px !default;
-$list-item-height--three-quarters: floor($list-item-height * 3/4) !default;
+$list-item-height--three-quarters: floor($list-item-height * 3 * 0.25) !default;
 
 /////////////////////////
 // Toggle
@@ -44,7 +46,7 @@ $toggle-handle-size: $toggle-height - $toggle-offset !default;
 /////////////////////////
 // Panel
 $panel-width: 300px !default;
-$panel-width--three-quarters: floor($panel-width * 3/4) !default;
+$panel-width--three-quarters: floor($panel-width * 3 * 0.25) !default;
 $panel-width--plus-half: floor($panel-width * 1.5) !default;
 
 $panel-min-height--large: 240px !default;
@@ -82,24 +84,24 @@ $side-spacing: 15px !default;
 $cap-spacing: 12px !default;
 
 // spacing : three quarters
-$side-spacing--three-quarters: floor($side-spacing * 3/4) !default;
-$cap-spacing--three-quarters: floor($cap-spacing * 3/4) !default;
+$side-spacing--three-quarters: floor($side-spacing * 3 * 0.25) !default;
+$cap-spacing--three-quarters: floor($cap-spacing * 3 * 0.25) !default;
 
 // spacing : half
-$side-spacing--half: floor($side-spacing / 2) !default;
-$cap-spacing--half: floor($cap-spacing / 2) !default;
+$side-spacing--half: floor($side-spacing * 0.5) !default;
+$cap-spacing--half: floor($cap-spacing * 0.5) !default;
 
 // spacing : third
-$side-spacing--third: floor($side-spacing / 3) !default;
-$cap-spacing--third: floor($cap-spacing / 3) !default;
+$side-spacing--third: floor(math.div($side-spacing, 3)) !default;
+$cap-spacing--third: floor(math.div($cap-spacing, 3)) !default;
 
 // spacing : quarter
-$side-spacing--quarter: floor($side-spacing / 4) !default;
-$cap-spacing--quarter: floor($cap-spacing / 4) !default;
+$side-spacing--quarter: floor($side-spacing * 0.25) !default;
+$cap-spacing--quarter: floor($cap-spacing * 0.25) !default;
 
 // spacing : eighth
-$side-spacing--eighth: ceil($side-spacing / 8) !default;
-$cap-spacing--eighth: ceil($cap-spacing / 8) !default;
+$side-spacing--eighth: ceil($side-spacing * 0.125) !default;
+$cap-spacing--eighth: ceil($cap-spacing * 0.125) !default;
 
 // spacing : plus half
 $side-spacing--plus-half: floor($side-spacing * 1.5) !default;
@@ -124,5 +126,5 @@ $smartmapping-slider__histogram-width: 120px !default;
 $smartmapping-slider__range-input-height: 40px !default;
 
 $smartmapping-slider__thumb-size: 12px !default;
-$smartmapping-slider__thumb-size--offset: round($smartmapping-slider__thumb-size/2) !default;
-$smartmapping-slider__thumb-pointer-size: round($smartmapping-slider__thumb-size/2) !default;
+$smartmapping-slider__thumb-size--offset: round($smartmapping-slider__thumb-size * 0.5) !default;
+$smartmapping-slider__thumb-pointer-size: round($smartmapping-slider__thumb-size * 0.5) !default;

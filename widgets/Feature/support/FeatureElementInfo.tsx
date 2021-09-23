@@ -60,7 +60,7 @@ class FeatureElementInfo extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div class={CSS.base}>
         {this.renderTitle()}

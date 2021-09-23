@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../chunks/geometryEngineBase","./geometryAdapters/json","../chunks/geometryEngineJSON"],(function(e,i,n,t){"use strict";e.buffer=t.buffer,e.clip=t.clip,e.contains=t.contains,e.convexHull=t.convexHull,e.crosses=t.crosses,e.cut=t.cut,e.densify=t.densify,e.difference=t.difference,e.disjoint=t.disjoint,e.distance=t.distance,e.equals=t.equals,e.extendedSpatialReferenceInfo=t.extendedSpatialReferenceInfo,e.flipHorizontal=t.flipHorizontal,e.flipVertical=t.flipVertical,e.generalize=t.generalize,e.geodesicArea=t.geodesicArea,e.geodesicBuffer=t.geodesicBuffer,e.geodesicDensify=t.geodesicDensify,e.geodesicLength=t.geodesicLength,e.intersect=t.intersect,e.intersects=t.intersects,e.isSimple=t.isSimple,e.nearestCoordinate=t.nearestCoordinate,e.nearestVertex=t.nearestVertex,e.nearestVertices=t.nearestVertices,e.offset=t.offset,e.overlaps=t.overlaps,e.planarArea=t.planarArea,e.planarLength=t.planarLength,e.relate=t.relate,e.rotate=t.rotate,e.simplify=t.simplify,e.symmetricDifference=t.symmetricDifference,e.touches=t.touches,e.union=t.union,e.within=t.within,Object.defineProperty(e,"__esModule",{value:!0})}));

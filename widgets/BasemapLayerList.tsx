@@ -11,7 +11,7 @@
  * @module esri/widgets/BasemapLayerList
  * @since 4.13
  *
- * @see [BasemapLayerList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapLayerList.tsx)
+ * @see [BasemapLayerList.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/BasemapLayerList.tsx)
  * @see [BasemapLayerList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_BasemapLayerList.scss)
  * @see module:esri/widgets/BasemapLayerList/BasemapLayerListViewModel
  *
@@ -28,11 +28,9 @@
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import { HandleOwnerMixin } from "esri/core/HandleOwner";
 import has from "esri/core/has";
-import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -83,6 +81,8 @@ const ListItemCollection = Collection.ofType<ListItem>(ListItem);
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
 }
+
+const NON_EMPTY_PATTERN = ".*\\S+.*";
 
 const NEW_UI_FLAG = "esri-basemaplayerlist-new-ui";
 
@@ -198,17 +198,6 @@ function closeItemActions(item: ListItem): void {
   children.forEach((child) => closeItemActions(child));
 }
 
-/**
- * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the BasemapLayerList widget.
- * This event may be used to define a custom function to execute when particular
- * actions are clicked.
- *
- * @event module:esri/widgets/BasemapLayerList#trigger-action
- * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
- * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
- */
-const logger = Logger.getLogger("esri.widgets.BasemapLayerList");
-
 interface VisibleElements {
   baseLayers?: boolean;
   referenceLayers?: boolean;
@@ -230,6 +219,16 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   //--------------------------------------------------------------------------
 
   /**
+   * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the BasemapLayerList widget.
+   * This event may be used to define a custom function to execute when particular
+   * actions are clicked.
+   *
+   * @event module:esri/widgets/BasemapLayerList#trigger-action
+   * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
+   * @property {module:esri/widgets/LayerList/ListItem} item - The ListItem associated with the action.
+   */
+
+  /**
    * @extends module:esri/widgets/Widget
    * @constructor
    * @alias module:esri/widgets/BasemapLayerList
@@ -245,7 +244,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const { baseItems, referenceItems } = this;
 
     this.own([
@@ -260,7 +259,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyBaseSortable();
     this._destroyReferenceSortable();
   }
@@ -427,7 +426,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -443,7 +442,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -580,33 +579,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   selectedItems: Collection<ListItem> = new ListItemCollection();
 
   //----------------------------------
-  //  statusIndicatorsVisible
-  //----------------------------------
-
-  /**
-   * Option for enabling status indicators, which indicate whether or not each layer
-   * is loading resources.
-   *
-   * @name statusIndicatorsVisible
-   * @instance
-   * @type {boolean}
-   * @default true
-   * @deprecated since version 4.15. Use {@link module:esri/widgets/LayerList#visibleElements BasemapLayerList.visibleElements.statusIndicators} instead.
-   *
-   * @example
-   * // disable status indicators for all layers listed in BasemapLayerList
-   * basemapLayerList.statusIndicatorsVisible = false;
-   */
-  @property()
-  set statusIndicatorsVisible(value: boolean) {
-    deprecatedProperty(logger, "statusIndicatorsVisible", {
-      replacement: "visibleElements.statusIndicators",
-      version: "4.15"
-    });
-    this.visibleElements = { ...this.visibleElements, statusIndicators: value };
-  }
-
-  //----------------------------------
   //  view
   //----------------------------------
 
@@ -637,7 +609,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
    */
   @vmEvent("trigger-action")
   @property({ type: BasemapLayerListViewModel })
-  viewModel: BasemapLayerListViewModel = new BasemapLayerListViewModel();
+  override viewModel = new BasemapLayerListViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -695,7 +667,7 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
     this.viewModel.triggerAction(action, item);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state } = this.viewModel;
 
     const baseClasses = {
@@ -740,6 +712,8 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
           placeholder={messages.basemapTitle}
           type="text"
           role="textbox"
+          required
+          pattern={NON_EMPTY_PATTERN}
           value={basemapTitle}
           afterCreate={this._storeEditTitleInput}
           afterUpdate={this._focusEditElement}
@@ -772,10 +746,9 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
       <button
         title={messagesCommon.form.submit}
         aria-label={messagesCommon.form.submit}
-        type="button"
+        type="submit"
         bind={this}
         class={CSS.button}
-        onclick={this._formSubmit}
       >
         {messagesCommon.form.ok}
       </button>
@@ -978,8 +951,6 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
       [CSS.actionsMenuItemActive]: item.actionsOpen
     };
 
-    const actionsMenuTitle = item.actionsOpen ? messagesCommon.close : messagesCommon.open;
-
     return (
       <div
         key="actions-menu-toggle"
@@ -991,8 +962,8 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
         tabindex="0"
         role="button"
         aria-controls={actionsUid}
-        aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}
+        aria-label={messagesCommon.options}
+        title={messagesCommon.options}
       >
         <span aria-hidden="true" class={CSS.iconEllipses} />
       </div>
@@ -1513,10 +1484,10 @@ class BasemapLayerList extends HandleOwnerMixin(Widget) {
   private _formSubmit(event: Event): void {
     event.preventDefault();
 
-    const { _editTitleInput } = this;
+    const value = this._editTitleInput?.value;
 
-    if (_editTitleInput) {
-      this.basemapTitle = _editTitleInput.value;
+    if (!!value?.trim()) {
+      this.basemapTitle = value;
     }
 
     this._toggleEditingTitle();

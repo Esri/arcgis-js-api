@@ -64,7 +64,7 @@
  * @module esri/widgets/smartMapping/ClassedColorSlider
  * @since 4.12
  *
- * @see [ClassedColorSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedColorSlider.tsx)
+ * @see [ClassedColorSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ClassedColorSlider.tsx)
  * @see [ClassedColorSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ClassedColorSlider.scss)
  * @see module:esri/widgets/smartMapping/ClassedColorSlider/ClassedColorSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/color colorRendererCreator}
@@ -229,7 +229,7 @@ class ClassedColorSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -264,7 +264,7 @@ class ClassedColorSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ClassedColorSlider/ClassedColorSliderViewModel}
    */
   @property()
-  viewModel: ClassedColorSliderViewModel = new ClassedColorSliderViewModel();
+  override viewModel = new ClassedColorSliderViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -473,7 +473,7 @@ class ClassedColorSlider extends SmartMappingSliderBase {
     }
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

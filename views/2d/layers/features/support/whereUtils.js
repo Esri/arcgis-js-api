@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["require","exports","../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/Error","../../../../../core/Logger"],(function(e,r,t,n,s){"use strict";const a=s.getLogger("esri.views.2d.layers.features.support.whereUtils"),i={getAttribute:(e,r)=>e.field(r)};function o(e,r){return u.apply(this,arguments)}function u(){return(u=t._asyncToGenerator((function*(r,t){const s=yield new Promise((function(r,t){e(["../../../../../core/sql/WhereClause"],r,t)}));try{const e=s.WhereClause.create(r,t);if(!e.isStandardized){const r=new n("mapview - bad input","Unable to apply filter's definition expression, as expression is not standardized.",e);a.error(r)}return r=>{const t=r.readArcadeFeature();return e.testFeature(t,i)}}catch(o){return a.warn("mapview-bad-where-clause","Encountered an error when evaluating where clause",r),e=>!0}}))).apply(this,arguments)}r.createWhereClause=o,Object.defineProperty(r,"__esModule",{value:!0})}));

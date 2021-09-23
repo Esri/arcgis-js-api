@@ -1,5 +1,5 @@
 /**
- * The Search widget provides a way to perform search operations on {@link module:esri/tasks/Locator locator service(s)},
+ * The Search widget provides a way to perform search operations on {@link module:esri/rest/locator locator service(s)},
  * {@link module:esri/layers/MapImageLayer map}/{@link module:esri/layers/FeatureLayer feature} service feature
  * layer(s), {@link module:esri/layers/SceneLayer SceneLayers} with an associated feature layer,
  * {@link module:esri/layers/buildingSublayers/BuildingComponentSublayer} with an associated feature layer,
@@ -39,10 +39,10 @@
  * @module esri/widgets/Search
  * @since 4.0
  *
- * @see [Search.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Search.tsx)
+ * @see [Search.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Search.tsx)
  * @see [Search.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Search.scss)
  * @see module:esri/widgets/Search/SearchViewModel
- * @see module:esri/tasks/Locator
+ * @see module:esri/rest/locator
  * @see {@link module:esri/views/View#ui View.ui}
  * @see module:esri/views/ui/DefaultUI
  * @see [Sample - Search widget (3D)](../sample-code/widgets-search-3d/index.html)
@@ -399,7 +399,7 @@ class Search extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._handles.destroy();
     this._handles = null;
 
@@ -655,7 +655,7 @@ class Search extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  includeDefaultSources
@@ -706,7 +706,7 @@ class Search extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  locationEnabled
@@ -721,7 +721,7 @@ class Search extends Widget {
    * The use of this property is only supported on secure origins.
    * To use it, switch your application to a secure origin, such as HTTPS.
    * Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports
-   * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility)
+   * [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/isSecureContext#browser_compatibility)
    * (currently Chrome and Firefox).
    * :::
    *
@@ -815,7 +815,7 @@ class Search extends Widget {
    * @name minSuggestCharacters
    * @instance
    * @type {number}
-   * @default 1
+   * @default 3
    */
   @aliasOf("viewModel.minSuggestCharacters")
   minSuggestCharacters: number = null;
@@ -987,7 +987,7 @@ class Search extends Widget {
    * {@link module:esri/layers/buildingSublayers/BuildingComponentSublayer} with an associated feature layer,
    * {@link module:esri/layers/GeoJSONLayer}, {@link module:esri/layers/CSVLayer} or
    * {@link module:esri/layers/OGCFeatureLayer}, or {@link module:esri/webdoc/applicationProperties/SearchTable table},
-   * or geocode locations with a {@link module:esri/tasks/Locator}. The `sources` property defines the sources from which
+   * or geocode locations with a {@link module:esri/rest/locator}. The `sources` property defines the sources from which
    * to search for the [view](#view) specified by the Search widget instance. There are two types of sources:
    *
    * * {@link module:esri/widgets/Search/LayerSearchSource}
@@ -1166,7 +1166,7 @@ class Search extends Widget {
     "suggest-complete"
   ])
   @property({ type: SearchViewModel })
-  viewModel = new SearchViewModel();
+  override viewModel = new SearchViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -1203,7 +1203,7 @@ class Search extends Widget {
 
   /**
    * Depending on the sources specified, search() queries the feature layer(s) and/or performs
-   * address matching using any specified {@link module:esri/tasks/Locator Locator(s)} and
+   * address matching using any specified {@link module:esri/rest/locator locator(s)} and
    * returns any applicable results.
    *
    * @param {string|module:esri/geometry/Geometry|module:esri/widgets/Search~SuggestResult|number[][]} [searchTerm] - This searchTerm can be
@@ -1298,7 +1298,7 @@ class Search extends Widget {
       });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state } = this.viewModel;
 
     const baseClasses = {

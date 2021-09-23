@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../output/ReadLinearDepth.glsl","../shading/MultipassGeometryTest.glsl","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,t,r,o,a){"use strict";function i(e,i){i.multipassGeometryEnabled&&e.vertex.include(r.multipassGeometryTest),i.multipassTerrainEnabled&&e.varyings.add("depth","float"),e.vertex.code.add(a.glsl`
   void main(void) {

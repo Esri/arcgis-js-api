@@ -19,7 +19,7 @@
  * @module esri/widgets/Fullscreen
  * @since 4.6
  *
- * @see [Fullscreen.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Fullscreen.tsx)
+ * @see [Fullscreen.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Fullscreen.tsx)
  * @see [Sample - Animate opacity visual variable](../sample-code/visualization-vv-opacity-animate/index.html)
  * @see [Sample - Animate color visual variable](../sample-code/visualization-vv-color-animate/index.html)
  * @see module:esri/widgets/Fullscreen/FullscreenViewModel
@@ -132,7 +132,7 @@ class Fullscreen extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -185,7 +185,7 @@ class Fullscreen extends Widget {
   @property({
     type: FullscreenViewModel
   })
-  viewModel = new FullscreenViewModel();
+  override viewModel = new FullscreenViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -193,7 +193,7 @@ class Fullscreen extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.viewModel?.state;
     const { fullscreenTitle } = this;
 

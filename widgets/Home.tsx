@@ -12,7 +12,7 @@
  * @module esri/widgets/Home
  * @since 4.0
  *
- * @see [Home.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Home.tsx)
+ * @see [Home.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Home.tsx)
  * @see [button.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Widget.scss)
  * @see [Sample - Home widget](../sample-code/widgets-home/index.html)
  * @see module:esri/widgets/Home/HomeViewModel
@@ -148,7 +148,7 @@ class Home extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -165,7 +165,7 @@ class Home extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -236,7 +236,7 @@ class Home extends Widget {
     type: HomeViewModel
   })
   @vmEvent("go")
-  viewModel = new HomeViewModel();
+  override viewModel = new HomeViewModel();
 
   //----------------------------------
   //  viewpoint
@@ -298,7 +298,7 @@ class Home extends Widget {
     return null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.viewModel?.state;
     const { homeTitle } = this;
 

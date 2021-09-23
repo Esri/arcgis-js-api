@@ -54,7 +54,7 @@
  * @module esri/widgets/smartMapping/HeatmapSlider
  * @since 4.12
  *
- * @see [HeatmapSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/HeatmapSlider.tsx)
+ * @see [HeatmapSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/HeatmapSlider.tsx)
  * @see [HeatmapSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_HeatmapSlider.scss)
  * @see module:esri/widgets/smartMapping/HeatmapSlider/HeatmapSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/heatmap heatmapRendererCreator}
@@ -210,7 +210,7 @@ class HeatmapSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -280,7 +280,7 @@ class HeatmapSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/HeatmapSlider/HeatmapSliderViewModel}
    */
   @property()
-  viewModel: HeatmapSliderViewModel = new HeatmapSliderViewModel();
+  override viewModel = new HeatmapSliderViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -326,7 +326,7 @@ class HeatmapSlider extends SmartMappingSliderBase {
     return new HeatmapSlider({ stops: result.renderer.colorStops });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

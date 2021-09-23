@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass","./PointSizeAlgorithm"],(function(e,t,o,r,i,a,l,s,p,c){"use strict";var n;e.PointSizeSplatAlgorithm=n=function(e){function o(){var t;return(t=e.apply(this,arguments)||this).type="splat",t.scaleFactor=1,t}return t._inheritsLoose(o,e),o.prototype.clone=function(){return new n({scaleFactor:this.scaleFactor})},o}(c.default),o.__decorate([s.enumeration({pointCloudSplatAlgorithm:"splat"})],e.PointSizeSplatAlgorithm.prototype,"type",void 0),o.__decorate([r.property({type:Number,value:1,nonNullable:!0,json:{write:!0}})],e.PointSizeSplatAlgorithm.prototype,"scaleFactor",void 0),e.PointSizeSplatAlgorithm=n=o.__decorate([p.subclass("esri.renderers.support.pointCloud.PointSizeSplatAlgorithm")],e.PointSizeSplatAlgorithm);var u=e.PointSizeSplatAlgorithm;e.default=u,Object.defineProperty(e,"__esModule",{value:!0})}));

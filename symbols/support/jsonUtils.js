@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../symbols","../../core/Error","../Symbol3D","../WebStyleSymbol","./symbolConversion"],(function(e,s,o,n,r,t){"use strict";function l(e,s,o,n){const r=i(e,{},n);r&&(s[o]=r)}function i(e,s,l){if(!e)return null;if(l&&"web-scene"===l.origin&&!(e instanceof n)&&!(e instanceof r)){const n="cim"!==e.type?t.to3D(e):{symbol:null,error:new o("symbol-conversion:unsupported-cim-symbol","CIM symbol is unsupported in web scenes",{symbol:e})};return n.symbol?n.symbol.write(s,l):(l.messages&&l.messages.push(new o("symbol:unsupported",`Symbols of type '${e.declaredClass}' are not supported in scenes. Use 3D symbology instead when working with WebScene and SceneView`,{symbol:e,context:l,error:n.error})),null)}return l&&"web-map"===l.origin&&"web-style"===e.type?(l.messages&&l.messages.push(new o("symbol:unsupported",`Symbols of type '${e.declaredClass}' are not supported in webmaps. Use CIMSymbol instead when working with WebMap in MapView.`,{symbol:e,context:l})),null):e.write(s,l)}function b(e,o){return s.readSymbol(e,null,o)}e.fromJSON=b,e.write=l,Object.defineProperty(e,"__esModule",{value:!0})}));

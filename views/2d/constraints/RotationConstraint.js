@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Accessor","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass"],(function(e,o,r,t,n,s,a,c){"use strict";var i;let p=i=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).enabled=!0,e.rotationEnabled=!0,e}e._inheritsLoose(r,o);var t=r.prototype;return t.constrain=function(e,o){return this.enabled&&o?(this.rotationEnabled||(e.rotation=o.rotation),e):e},t.clone=function(){return new i({enabled:this.enabled,rotationEnabled:this.rotationEnabled})},r}(r);return o.__decorate([t.property()],p.prototype,"enabled",void 0),o.__decorate([t.property()],p.prototype,"rotationEnabled",void 0),p=i=o.__decorate([c.subclass("esri.views.2d.constraints.RotationConstraint")],p),p}));

@@ -178,7 +178,7 @@ class Card extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       this.watch("activeLayerInfos", (value) => {
         this._handles.removeAll();
@@ -187,7 +187,7 @@ class Card extends Widget {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._handles.destroy();
     this._handles = null;
   }
@@ -306,7 +306,7 @@ class Card extends Widget {
   //
   //-------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     this._hasIndicators =
       (this.layout === Layout.Auto && this.view.container.clientWidth <= IPAD_WIDTH) ||
       this.layout === Layout.Stack;

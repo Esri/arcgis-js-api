@@ -142,7 +142,7 @@ class SearchResultRenderer extends Widget {
    * });
    */
   @property()
-  viewModel: SearchViewModel = null;
+  override viewModel: SearchViewModel = null;
 
   //--------------------------------------------------------------------------
   //
@@ -150,7 +150,7 @@ class SearchResultRenderer extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const moreResultsClasses = {
       [CSS.showMoreResults]: this.showMoreResultsOpen
     };

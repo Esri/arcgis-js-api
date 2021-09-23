@@ -49,13 +49,13 @@ class FeatureFields extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._featureElementInfo = new FeatureElementInfo();
 
     init(this, ["viewModel.description", "viewModel.title"], () => this._setupFeatureElementInfo());
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._featureElementInfo.destroy();
   }
 
@@ -115,7 +115,7 @@ class FeatureFields extends Widget {
   @property({
     type: FeatureFieldsViewModel
   })
-  viewModel = new FeatureFieldsViewModel();
+  override viewModel = new FeatureFieldsViewModel();
 
   //----------------------------------
   //  messages
@@ -193,7 +193,7 @@ class FeatureFields extends Widget {
   protected renderFields(): VNode {
     const { formattedFieldInfos } = this.viewModel;
 
-    return formattedFieldInfos.length ? (
+    return formattedFieldInfos?.length ? (
       <table class={CSS.esriTable} summary={this.messages.fieldsSummary}>
         <tbody>
           {formattedFieldInfos.map((fieldInfo, index) => this.renderFieldInfo(fieldInfo, index))}
@@ -202,7 +202,7 @@ class FeatureFields extends Widget {
     ) : null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div class={CSS.base}>
         {this._featureElementInfo?.render()}

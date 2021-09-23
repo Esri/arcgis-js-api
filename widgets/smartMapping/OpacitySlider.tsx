@@ -65,7 +65,7 @@
  * @module esri/widgets/smartMapping/OpacitySlider
  * @since 4.12
  *
- * @see [OpacitySlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/OpacitySlider.tsx)
+ * @see [OpacitySlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/OpacitySlider.tsx)
  * @see [OpacitySlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_OpacitySlider.scss)
  * @see module:esri/widgets/smartMapping/OpacitySlider/OpacitySliderViewModel
  * @see {@link module:esri/smartMapping/renderers/opacity opacityVariableCreator}
@@ -185,7 +185,7 @@ class OpacitySlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -277,13 +277,14 @@ class OpacitySlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/OpacitySlider/OpacitySliderViewModel}
    */
   @property()
-  viewModel: OpacitySliderViewModel = new OpacitySliderViewModel();
+  override viewModel = new OpacitySliderViewModel();
 
   //----------------------------------
   //  zoomOptions
   //----------------------------------
 
-  @aliasOf("viewModel.zoomOptions") zoomOptions: ZoomOptions = null;
+  @aliasOf("viewModel.zoomOptions")
+  override zoomOptions: ZoomOptions = null;
 
   //--------------------------------------------------------------------------
   //
@@ -451,7 +452,7 @@ class OpacitySlider extends SmartMappingSliderBase {
     });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state, label, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

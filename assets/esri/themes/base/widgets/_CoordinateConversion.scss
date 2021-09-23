@@ -213,6 +213,15 @@
     opacity: 0.8;
     padding: 1em;
   }
+  .esri-coordinate-conversion__clipboard-popup {
+    user-select: none;
+    width: auto;
+    pointer-events: none;
+    font-size: $font-size--tiny;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
 }
 
 @if $include_CoordinateConversion == true {

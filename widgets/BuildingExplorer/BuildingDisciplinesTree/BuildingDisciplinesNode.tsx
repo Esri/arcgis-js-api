@@ -69,7 +69,7 @@ class BuildingDisciplinesNode extends Widget {
     super(properties as any);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       watchUtils.on(
         this,
@@ -83,7 +83,7 @@ class BuildingDisciplinesNode extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyChildWidgets();
   }
 
@@ -138,7 +138,7 @@ class BuildingDisciplinesNode extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const node = this.node;
     const isRoot = node.isRoot;
     const isLeaf = node.isLeaf;
@@ -267,11 +267,11 @@ class BuildingDisciplinesNode extends Widget {
         break;
       case "ArrowLeft":
         event.stopPropagation();
-        this.node.toggleCollapsed(isRTL() ? false : true);
+        this.node.toggleCollapsed(isRTL(this.container) ? false : true);
         break;
       case "ArrowRight":
         event.stopPropagation();
-        this.node.toggleCollapsed(isRTL() ? true : false);
+        this.node.toggleCollapsed(isRTL(this.container) ? true : false);
         break;
     }
   }

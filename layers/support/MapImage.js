@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass","../../geometry/Extent"],(function(e,o,r,t,p,c,s,i,a){"use strict";let l=function(o){function r(){var e;return(e=o.apply(this,arguments)||this).extent=null,e.height=null,e.href=null,e.opacity=1,e.rotation=0,e.scale=null,e.visible=!0,e.width=null,e}return e._inheritsLoose(r,o),r}(r.JSONSupport);return o.__decorate([t.property({type:a})],l.prototype,"extent",void 0),o.__decorate([t.property()],l.prototype,"height",void 0),o.__decorate([t.property()],l.prototype,"href",void 0),o.__decorate([t.property()],l.prototype,"opacity",void 0),o.__decorate([t.property()],l.prototype,"rotation",void 0),o.__decorate([t.property()],l.prototype,"scale",void 0),o.__decorate([t.property()],l.prototype,"visible",void 0),o.__decorate([t.property()],l.prototype,"width",void 0),l=o.__decorate([i.subclass("esri.layer.support.MapImage")],l),l}));

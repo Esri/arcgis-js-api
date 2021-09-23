@@ -9,7 +9,7 @@
  * @module esri/widgets/LayerList
  * @since 4.2
  *
- * @see [LayerList.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LayerList.tsx)
+ * @see [LayerList.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/LayerList.tsx)
  * @see [LayerList.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_LayerList.scss)
  * @see [Sample - LayerList widget](../sample-code/widgets-layerlist/index.html)
  * @see [Sample - LayerList widget with actions](../sample-code/widgets-layerlist-actions/index.html)
@@ -27,11 +27,9 @@
 
 // esri.core
 import Collection from "esri/core/Collection";
-import { deprecatedProperty } from "esri/core/deprecate";
 import { eventKey } from "esri/core/events";
 import Handles from "esri/core/Handles";
 import has from "esri/core/has";
-import Logger from "esri/core/Logger";
 import * as watchUtils from "esri/core/watchUtils";
 
 // esri.core.accessorSupport
@@ -74,8 +72,6 @@ import { accessibleHandler, tsx, vmEvent, messageBundle } from "esri/widgets/sup
 
 // sortablejs
 import Sortable from "sortablejs";
-
-type LayerListLocaleStrings = Partial<Pick<LayerListMessages, "closeActions" | "openActions">>;
 
 function moveItem(data: any[], from: number, to: number): void {
   data.splice(to, 0, data.splice(from, 1)[0]);
@@ -179,17 +175,6 @@ function closeItemActions(item: ListItem): void {
 
 const SORTABLE_ROOT = "root";
 
-/**
- * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the LayerList widget.
- * This event may be used to define a custom function to execute when particular
- * actions are clicked.
- *
- * @event module:esri/widgets/LayerList#trigger-action
- * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
- * @property {module:esri/widgets/LayerList/ListItem} item - An item associated with the action.
- */
-const logger = Logger.getLogger("esri.widgets.LayerList");
-
 interface VisibleElements {
   statusIndicators?: boolean;
 }
@@ -205,6 +190,16 @@ class LayerList extends Widget {
   //  Lifecycle
   //
   //--------------------------------------------------------------------------
+
+  /**
+   * Fires after the user clicks on an {@link module:esri/support/actions/ActionButton action} or {@link module:esri/support/actions/ActionToggle action toggle} inside the LayerList widget.
+   * This event may be used to define a custom function to execute when particular
+   * actions are clicked.
+   *
+   * @event module:esri/widgets/LayerList#trigger-action
+   * @property {module:esri/support/actions/ActionButton | module:esri/support/actions/ActionToggle} action - The action clicked by the user.
+   * @property {module:esri/widgets/LayerList/ListItem} item - The ListItem associated with the action.
+   */
 
   /**
    * @extends module:esri/widgets/Widget
@@ -223,7 +218,7 @@ class LayerList extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const operationalItems = this.operationalItems;
     this._setVisibleItems(operationalItems);
 
@@ -233,7 +228,7 @@ class LayerList extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroySortables();
     this._handles.destroy();
     this._handles = null;
@@ -277,7 +272,7 @@ class LayerList extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  errorsVisible
@@ -307,7 +302,7 @@ class LayerList extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  listItemCreatedFunction
@@ -327,9 +322,9 @@ class LayerList extends Widget {
    */
 
   /**
-   * Specifies a function that accesses each {@link module:esri/widgets/LayerList/ListItem}.
-   * Each list item can be modified
-   * according to its modifiable properties. Actions can be added to list items
+   * A function that executes each time a {@link module:esri/widgets/LayerList/ListItem} is created or
+   * modified. Use this function to add actions and panels to list items, and to override
+   * the default settings of a list item. Actions can be added to list items
    * using the {@link module:esri/widgets/LayerList/ListItem#actionsSections actionsSections}
    * property of the ListItem.
    *
@@ -368,63 +363,6 @@ class LayerList extends Widget {
    */
   @aliasOf("viewModel.listItemCreatedFunction")
   listItemCreatedFunction: ListItemModifier = null;
-
-  //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  /**
-   * Allows you to override default tooltip text prompting users to open or close actions in the LayerList widget.
-   *
-   * @name localeStrings
-   * @instance
-   * @since 4.20
-   * @ignore
-   *
-   * @type {Object}
-   * @property {string} [closeActions="Close actions"] - The tooltip text prompting the user to close a list item's
-   *    {@link module:esri/widgets/LayerList/ListItem#actionsSections actions sections} when the actions are open.
-   *    In English, the default value is "Close actions".
-   * @property {string} [openActions="Open actions"] - The tooltip text prompting the user to open a list item's
-   *    {@link module:esri/widgets/LayerList/ListItem#actionsSections actions sections} when the actions are closed.
-   *    In English, the default value is "Open actions".
-   *
-   * @see {@link module:esri/widgets/LayerList/ListItem#actionsSections ListItem.actionsSections}
-   *
-   * @example
-   * // Overrides the default "Open/Close actions" tooltip with
-   * // "Show/Hide options" Without regard for app locale
-   *
-   * layerList.localeStrings = {
-   *   openActions: "Show options",
-   *   closeActions: "Hide options"
-   * };
-   *
-   * @example
-   * // Overrides the default "Open/Close actions" tooltip with "Show/Hide options"
-   * // The text will display in either English or Spanish depending on the locale
-   * const layerListStrings = {
-   *   "en-US": {
-   *     openActions: "Show options",
-   *     closeActions: "Hide options"
-   *   },
-   *   "es": {
-   *     openActions: "Abrir opciones",
-   *     closeActions: "Cerrar opciones"
-   *   }
-   * };
-   *
-   * // import { getLocale } from "esri/intl"
-   * const appLocale = getLocale();
-   * const localeStrings =
-   *   Object.keys(layerListStrings).includes(appLocale) ?
-   *     layerListStrings[appLocale] :
-   *     layerListStrings["en-US"];
-   *
-   * layerList.localeStrings = localeStrings;
-   */
-  @property()
-  localeStrings?: LayerListLocaleStrings = null;
 
   //----------------------------------
   //  messages
@@ -549,35 +487,6 @@ class LayerList extends Widget {
   selectedItems: Collection<ListItem> = new ListItemCollection();
 
   //----------------------------------
-  //  statusIndicatorsVisible
-  //----------------------------------
-
-  /**
-   * Option for enabling status indicators, which indicate whether or not each layer
-   * is loading resources.
-   *
-   * @name statusIndicatorsVisible
-   * @instance
-   *
-   * @type {boolean}
-   * @default true
-   * @since 4.5
-   * @deprecated since version 4.15. Use {@link module:esri/widgets/LayerList#visibleElements LayerList.visibleElements.statusIndicators} instead.
-   *
-   * @example
-   * // disable status indicators for all layers listed in LayerList
-   * layerList.statusIndicatorsVisible = false;
-   */
-  @property()
-  set statusIndicatorsVisible(value: boolean) {
-    deprecatedProperty(logger, "statusIndicatorsVisible", {
-      replacement: "visibleElements.statusIndicators",
-      version: "4.15"
-    });
-    this.visibleElements = { ...this.visibleElements, statusIndicators: value };
-  }
-
-  //----------------------------------
   //  view
   //----------------------------------
 
@@ -610,7 +519,7 @@ class LayerList extends Widget {
   @property({
     type: LayerListViewModel
   })
-  viewModel: LayerListViewModel = new LayerListViewModel();
+  override viewModel = new LayerListViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -667,7 +576,7 @@ class LayerList extends Widget {
     this.viewModel.triggerAction(action, item);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { visibleItems, _newUI } = this;
     const state = this.viewModel?.state;
 
@@ -714,13 +623,11 @@ class LayerList extends Widget {
   }
 
   protected renderActionsMenuIcon(item: ListItem, actionsUid: string): VNode {
-    const { messages } = this;
+    const { messagesCommon } = this;
 
     const actionsMenuClasses = {
       [CSS.actionsMenuItemActive]: item.actionsOpen
     };
-
-    const actionsMenuTitle = item.actionsOpen ? messages.closeActions : messages.openActions;
 
     return (
       <div
@@ -733,8 +640,8 @@ class LayerList extends Widget {
         tabindex="0"
         role="button"
         aria-controls={actionsUid}
-        aria-label={actionsMenuTitle}
-        title={actionsMenuTitle}
+        aria-label={messagesCommon.options}
+        title={messagesCommon.options}
       >
         <span aria-hidden="true" class={CSS.iconEllipses} />
       </div>
@@ -971,7 +878,7 @@ class LayerList extends Widget {
   }
 
   protected renderItemToggle(item: ListItem, parent: ListItem, titleKey: string): VNode {
-    const { selectionEnabled } = this;
+    const { selectionEnabled, messages } = this;
     const { exclusive } = VISIBILITY_MODES;
     const parentVisibilityMode = parent && parent.visibilityMode;
     const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
@@ -987,6 +894,7 @@ class LayerList extends Widget {
           data-item={item}
           data-parent-visibility={parentVisibilityMode}
           tabIndex={0}
+          title={item.visible ? messages.hideLayer : messages.showLayer}
           aria-checked={item.visible ? "true" : "false"}
           role={toggleRole}
           aria-labelledby={titleKey}
@@ -1009,7 +917,7 @@ class LayerList extends Widget {
   }
 
   protected renderLabel(item: ListItem, parent: ListItem, titleKey: string): VNode {
-    const { selectionEnabled, _newUI } = this;
+    const { selectionEnabled, _newUI, messages } = this;
     const { inherited, exclusive } = VISIBILITY_MODES;
     const parentVisibilityMode = parent?.visibilityMode;
     const toggleRole = parentVisibilityMode === exclusive ? "radio" : "switch";
@@ -1034,6 +942,7 @@ class LayerList extends Widget {
         data-parent-visibility={parentVisibilityMode}
         tabIndex={0}
         aria-checked={item.visible ? "true" : "false"}
+        title={item.visible ? messages.hideLayer : messages.showLayer}
         role={toggleRole}
         aria-labelledby={titleKey}
       >

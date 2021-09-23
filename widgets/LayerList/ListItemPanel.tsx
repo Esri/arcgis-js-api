@@ -71,7 +71,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
     super(value, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       watchUtils.init<ListItemPanelContents>(this, "content", (content) =>
         this._createLegend(content)
@@ -79,7 +79,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     const { _legend } = this;
 
     _legend && _legend.destroy();
@@ -290,7 +290,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
    * });
    */
   @property()
-  visible = true;
+  override visible = true;
 
   //--------------------------------------------------------------------------
   //
@@ -298,7 +298,7 @@ class ListItemPanel extends IdentifiableMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return <div class={CSS.base}>{this._renderContents()}</div>;
   }
 

@@ -56,7 +56,7 @@
     width: $collapse-toggle-size;
     height: $collapse-toggle-size;
     margin: 0;
-    padding: ($collapse-toggle-size - $collapse-toggle-icon-size) / 2;
+    padding: ($collapse-toggle-size - $collapse-toggle-icon-size) * 0.5;
 
     transition: transform 0.1s ease-in-out;
 
@@ -81,7 +81,7 @@
     height: $checkbox-size;
     margin: 0;
     margin-right: $side-spacing--half;
-    padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) / 2;
+    padding: ($checkbox-size - $checkbox-icon-size - $checkbox-border-size * 2) * 0.5;
 
     transition: all 0.1s ease-in-out;
 
@@ -111,7 +111,7 @@
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .#{$checkbox} {
       margin-right: 0;
       margin-left: $side-spacing--half;

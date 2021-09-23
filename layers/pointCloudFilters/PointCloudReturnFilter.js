@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/has","../../core/Logger","../../core/accessorSupport/decorators/enumeration","../../core/accessorSupport/decorators/subclass","./PointCloudFilter"],(function(e,r,t,o,n,s,u,i,c,l){"use strict";var a;let p=a=function(r){function o(e){var t;return(t=r.call(this,e)||this).includedReturns=[],t.type="return",t}return e._inheritsLoose(o,r),o.prototype.clone=function(){return new a({field:this.field,includedReturns:t.clone(this.includedReturns)})},o}(l);return r.__decorate([o.property({type:[["firstOfMany","last","lastOfMany","single"]],json:{write:{enabled:!0,isRequired:!0}}})],p.prototype,"includedReturns",void 0),r.__decorate([i.enumeration({pointCloudReturnFilter:"return"})],p.prototype,"type",void 0),p=a=r.__decorate([c.subclass("esri.layers.pointCloudFilters.PointCloudReturnFilter")],p),p}));

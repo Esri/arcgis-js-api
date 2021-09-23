@@ -15,13 +15,17 @@
  * widget. For example, there is currently no support editing related feature attributes.
  * :::
  *
+ * ::: esri-md class="panel trailer-1"
+ * Please read this [announcement](../release-notes/#an-updated-and-improved-editor-widget-is-coming) concerning upcoming Editor widget updates planned for version 4.22.
+ * :::
+ *
  * ![editor](../assets/img/apiref/widgets/editor_in_action.gif)
  *
  * @module esri/widgets/Editor
  * @amdalias Editor
  * @since 4.11
  *
- * @see [Editor.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Editor.tsx)
+ * @see [Editor.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Editor.tsx)
  * @see [Editor.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Editor.scss)
  * @see [Sample - Edit features with the Editor widget](../sample-code/widgets-editor-basic/index.html)
  * @see [Sample - Edit features in 3D with the Editor widget](../sample-code/widgets-editor-3d/index.html)
@@ -36,6 +40,7 @@
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
  * @see module:esri/views/interactive/snapping/SnappingOptions
+ * @see module:esri/widgets/support/SnappingControls
  *
  * @example
  * // At the very minimum, set the Editor's view
@@ -229,7 +234,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    *                              that may be passed into the constructor.
    *
    * @example
-   * // Typical usage for Editor widget. Be default, this will recognize all editable layers in the map.
+   * // Typical usage for Editor widget. Be default, this will recognize all editable layers in the map if no specific layers are set.
    * const editor = new Editor({
    *   view: view
    * });
@@ -249,7 +254,7 @@ class Editor extends HandleOwnerMixin(Widget) {
     this._handleAttachmentDelete = this._handleAttachmentDelete.bind(this);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       init(this, "headingLevel", (level) => {
         this._featureForm.headingLevel = level + 1;
@@ -446,10 +451,8 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    * @typedef module:esri/widgets/Editor~CreationInfo
    *
-   * @property {module:esri/layers/FeatureLayer} layer - The associated feature layer where
-   * the new feature is created.
-   * @property {module:esri/layers/support/FeatureTemplate} template - The associated feature template
-   * used to create the new feature.
+   * @property {module:esri/layers/FeatureLayer} layer - The associated feature layer where the new feature is created.
+   * @property {module:esri/layers/support/FeatureTemplate} template - The associated feature template used to create the new feature.
    */
 
   //--------------------------------------------------------------------------
@@ -463,15 +466,13 @@ class Editor extends HandleOwnerMixin(Widget) {
    *
    * @typedef module:esri/widgets/Editor~LayerInfo
    *
-   * @property {module:esri/layers/FeatureLayer} layer - The associated feature layer containing
-   * the editable fields.
-   * @property {module:esri/widgets/FeatureForm/FieldConfig[]} [fieldConfig] - The configuration options
-   * for displaying an array of fields within the widget. Take note that all fields except for `editor`,
+   * @property {module:esri/layers/FeatureLayer} layer - The associated feature layer containing the editable fields.
+   * @property {module:esri/widgets/FeatureForm/FieldConfig[]} [fieldConfig] - The configuration options for displaying an array of fields within the widget. Take note that all fields except for `editor`,
    * `globalID`, `objectID`, and system maintained area and length fields will be included.
    * Otherwise, it is up to the developer to set the right field(s) to override and display.
    *
    * ::: esri-md class="panel trailer-1"
-   * If this is set, in addition to overrides in the [supportingWidgetDefaults](#supportingWidgetDefaults), the overrides specified in
+   * If this is set in combination to overrides in the [supportingWidgetDefaults](#supportingWidgetDefaults), the overrides specified in
    * the [supportingWidgetDefaults](#supportingWidgetDefaults) property take precedence.
    * :::
    *
@@ -515,7 +516,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @property {boolean} [featureTemplates.filterEnabled] - Indicates whether the {@link module:esri/widgets/FeatureTemplates#filterEnabled templates filter}
    * displays.
    *
-   * @property {Object} [sketch] - An object containing properties specific for customizng the
+   * @property {Object} [sketch] - An object containing properties specific for customizing the
    * {@link module:esri/widgets/Sketch} widget.
    * @property {Object} [sketch.defaultUpdateOptions] - An object containing the `defaultUpdateOptions`
    * for the {@link module:esri/widgets/Sketch} widget.
@@ -623,7 +624,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    * @readonly
    */
   @property()
-  iconClass: string = CSS.widgetIcon;
+  override iconClass: string = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -639,7 +640,7 @@ class Editor extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layerInfos
@@ -651,6 +652,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    * If you have an editable feature layer but do not want
    * the end user to do any type of editing, you can limit this by
    * setting the `enabled` property to `false`.
+   *
    *
    * @name layerInfos
    * @instance
@@ -736,17 +738,18 @@ class Editor extends HandleOwnerMixin(Widget) {
    * The {@link module:esri/views/interactive/snapping/SnappingOptions} for editing. Supports self snapping and feature snapping.
    *
    * :::esri-md class="panel trailer-1"
-   * Currently, the snapping functionality offered in the Editor widget does not provide a UI similar to that of the {@link module:esri/widgets/Sketch Sketch widget}. This is because the Editor currently works with the {@link module:esri/widgets/Sketch/SketchViewModel Sketch widget's viewModel}.
-   * This behavior will change in upcoming releases with an updated UI to help with configuring snapping options. Once `snappingOptions` is set, the ability to dynamically disable/enable snapping should be handled via the `CRTL` key. In addition, please refer to the {@link module:esri/views/interactive/snapping/SnappingOptions} documentation for any additional considerations when setting up the Editor's snapping configurations.
+   * Currently, the snapping functionality offered in the Editor widget does not automatically display a default UI similar to that of the {@link module:esri/widgets/Sketch Sketch widget}. Although the snapping UI does not automatically display as part of the Editor, it is possible to add it seamlessly via the {@link module:esri/widgets/support/SnappingControls SnappingControls widget}. Please refer to the {@link module:esri/views/interactive/snapping/SnappingOptions} documentation for additional information on this.
    * :::
    *
    * @name snappingOptions
    * @instance
    * @since 4.19
+   * @autocast
    * @type {module:esri/views/interactive/snapping/SnappingOptions}
    * @see [Sample - Editor widget with configurations](../sample-code/widgets-editor-configurable/index.html)
    *
    * @example
+   * // Creates the Editor with SnappingOptions with no snapping UI
    * const editor = new Editor({
    *   view: view,
    *   snappingOptions: { // autocasts to SnappingOptions()
@@ -754,6 +757,22 @@ class Editor extends HandleOwnerMixin(Widget) {
    *     featureSources: [{layer: streetsLayer}] // autocasts to FeatureSnappingLayerSource()
    *   }
    * });
+   *
+   * @example
+   * // Creates the Editor with SnappingControls widget
+   * const editor = new Editor({
+   *   view: view
+   * });
+   *
+   * const snappingControls = new SnappingControls({
+   *   view: view,
+   *   snappingOptions: editor.snappingOptions
+   * });
+   *
+   * // Add the widgets to the view
+   * view.ui.add(editor, "top-right");
+   * view.ui.add(snappingControls, "top-left");
+   *
    */
   @aliasOf("viewModel.snappingOptions")
   snappingOptions = new SnappingOptions();
@@ -788,8 +807,7 @@ class Editor extends HandleOwnerMixin(Widget) {
   //----------------------------------
 
   /**
-   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. This view
-   * provides the editable layers for the Editor widget.
+   * A reference to the {@link module:esri/views/MapView} or {@link module:esri/views/SceneView}. This view provides the editable layers for the Editor widget.
    *
    * @name view
    * @instance
@@ -816,7 +834,7 @@ class Editor extends HandleOwnerMixin(Widget) {
    */
   @property()
   @vmEvent(["workflow-cancel", "workflow-commit"])
-  viewModel: EditorViewModel = new EditorViewModel();
+  override viewModel = new EditorViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -859,8 +877,7 @@ class Editor extends HandleOwnerMixin(Widget) {
   }
 
   /**
-   * This method starts the {@link module:esri/widgets/Editor/CreateWorkflow} where it waits for the feature
-   * to be selected.
+   * This method starts the {@link module:esri/widgets/Editor/CreateWorkflow} where it waits for the feature to be selected.
    *
    * @method startCreateWorkflowAtFeatureEdit
    * @instance
@@ -954,7 +971,7 @@ class Editor extends HandleOwnerMixin(Widget) {
     return this.viewModel.cancelWorkflow(options);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { _attachments, viewModel } = this;
 
     if (!viewModel) {
@@ -1018,12 +1035,14 @@ class Editor extends HandleOwnerMixin(Widget) {
   }
 
   protected renderAttributeEditing(): VNode {
-    const featureFormViewModel = this.viewModel.featureFormViewModel;
+    const { viewModel } = this;
+    const featureFormViewModel = viewModel.featureFormViewModel;
     const workflow = this._assertActiveCreateOrUpdateWorklow();
     const feature = workflow.data.edits.feature;
 
     const disabled =
       (workflow.type === "update" && !workflow.data.edits.modified) ||
+      viewModel.syncing ||
       (featureFormViewModel.inputFields.length > 0 && !featureFormViewModel.valid);
     const { messages, messagesCommon } = this;
     const primaryButtonLabel =
@@ -1281,7 +1300,10 @@ class Editor extends HandleOwnerMixin(Widget) {
             tabIndex={0}
             title={messagesCommon.back}
           >
-            <span aria-hidden="true" class={isRTL() ? CSS.rightArrowIcon : CSS.leftArrowIcon} />
+            <span
+              aria-hidden="true"
+              class={isRTL(this.container) ? CSS.rightArrowIcon : CSS.leftArrowIcon}
+            />
           </div>
         ) : null}
         <Heading class={CSS.title} level={this.headingLevel}>
@@ -1302,7 +1324,7 @@ class Editor extends HandleOwnerMixin(Widget) {
   protected renderLanding(): VNode {
     const { messages } = this;
     const { allowedWorkflows, canCreate, canUpdate } = this.viewModel;
-    const arrowIconClass = isRTL() ? CSS.leftArrowIcon : CSS.rightArrowIcon;
+    const arrowIconClass = isRTL(this.container) ? CSS.leftArrowIcon : CSS.rightArrowIcon;
 
     return (
       <div class={CSS.contentWrapper} key="wrapper">

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/maybe","../../rest/support/Query"],(function(e,r,t,u){"use strict";function n(e,r,t){return o.apply(this,arguments)}function o(){return(o=r._asyncToGenerator((function*(e,r,u){r=r.clone(),e.capabilities.query.supportsMaxRecordCountFactor&&(r.maxRecordCountFactor=c(e));const n=a(e),o=e.capabilities.query.supportsPagination;r.start=0,r.num=n;let i=null;for(;;){const a=yield e.source.queryFeaturesJSON(r,u);if(t.isNone(i)?i=a:i.features=i.features.concat(a.features),i.exceededTransferLimit=a.exceededTransferLimit,!o||!a.exceededTransferLimit)break;r.start+=n}return i}))).apply(this,arguments)}function a(e){return c(e)*i(e)}function i(e){return e.capabilities.query.maxRecordCount||2e3}function c(e){return e.capabilities.query.supportsMaxRecordCountFactor?u.MAX_MAX_RECORD_COUNT_FACTOR:1}e.getMaxRecordCountFactor=c,e.getMaximumQuerySize=a,e.getMaximumRecordCount=i,e.queryAllJSON=n,Object.defineProperty(e,"__esModule",{value:!0})}));

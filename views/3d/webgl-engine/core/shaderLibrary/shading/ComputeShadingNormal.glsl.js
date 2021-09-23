@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../attributes/VertexNormal.glsl","../attributes/VertexPosition.glsl","../../shaderModules/interfaces"],(function(e,o,d,r){"use strict";function a(e,a){const i=e.fragment;0===a.doubleSidedMode?i.code.add(r.glsl`vec3 _adjustDoublesided(vec3 normal) {
 return normal;

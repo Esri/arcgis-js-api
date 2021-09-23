@@ -88,7 +88,7 @@
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-identity-modal--open .esri-identity-modal__dialog {
       text-align: right;
     }

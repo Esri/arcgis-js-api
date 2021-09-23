@@ -200,7 +200,7 @@
     color: $interactive-font-color;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-feature-form__group {
       border-left: none;
       border-right: $group-border-width solid $border-color;

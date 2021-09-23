@@ -21,7 +21,7 @@
  * @module esri/widgets/NavigationToggle
  * @since 4.0
  *
- * @see [NavigationToggle.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/NavigationToggle.tsx)
+ * @see [NavigationToggle.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/NavigationToggle.tsx)
  * @see module:esri/widgets/NavigationToggle/NavigationToggleViewModel
  * @see [SceneView navigation](../api-reference/esri-views-SceneView.html)
  * @see {@link module:esri/views/View#ui View.ui}
@@ -118,7 +118,7 @@ class NavigationToggle extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -135,7 +135,7 @@ class NavigationToggle extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layout
@@ -222,7 +222,7 @@ class NavigationToggle extends Widget {
   @property({
     type: NavigationToggleViewModel
   })
-  viewModel = new NavigationToggleViewModel();
+  override viewModel = new NavigationToggleViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -241,7 +241,7 @@ class NavigationToggle extends Widget {
     return this.viewModel.toggle();
   }
 
-  render(): VNode {
+  override render(): VNode {
     const disabled = this.get<string>("viewModel.state") === "disabled";
     const panSelected = this.get<string>("viewModel.navigationMode") === "pan";
 

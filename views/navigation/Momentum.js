@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers"],(function(t,i){"use strict";let n=function(){function t(t,i,n){this._initialVelocity=t,this._stopVelocity=i,this._friction=n,this._duration=Math.abs(Math.log(Math.abs(this._initialVelocity)/this._stopVelocity)/Math.log(1-this._friction))}var n=t.prototype;return n.isFinished=function(t){return t>this.duration},n.value=function(t){return this.valueFromInitialVelocity(this._initialVelocity,t)},n.valueDelta=function(t,i){const n=this.value(t);return this.value(t+i)-n},n.valueFromInitialVelocity=function(t,i){i=Math.min(i,this.duration);const n=1-this.friction;return t*(n**i-1)/Math.log(n)},i._createClass(t,[{key:"duration",get:function(){return this._duration}},{key:"friction",get:function(){return this._friction}}]),t}();t.Momentum=n,Object.defineProperty(t,"__esModule",{value:!0})}));

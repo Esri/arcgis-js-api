@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass","./support/FeatureFilter"],(function(e,r,o,t,c,n,s,i,a){"use strict";const p=e=>{let c=function(e){function o(...r){var o;return(o=e.call(this,...r)||this).connectionError=null,o.connectionStatus="disconnected",o.filter=null,o}return r._inheritsLoose(o,e),o}(e);return o.__decorate([t.property({readOnly:!0})],c.prototype,"connectionError",void 0),o.__decorate([t.property({aliasOf:"controller.connection.connectionStatus",readOnly:!0})],c.prototype,"connectionStatus",void 0),o.__decorate([t.property({type:a})],c.prototype,"filter",void 0),c=o.__decorate([i.subclass("esri.layers.mixins.StreamLayerView")],c),c};e.StreamLayerView=p,e.default=p,Object.defineProperty(e,"__esModule",{value:!0})}));

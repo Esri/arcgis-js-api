@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(a,e){"use strict";function r(a,r){const o=a.fragment;o.code.add(e.glsl`struct ShadingNormalParameters {
 vec3 normalView;

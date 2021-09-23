@@ -167,7 +167,7 @@ class Classic extends Widget {
   //
   //-------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const activeLayerInfos = this.activeLayerInfos,
       filteredLayers =
         activeLayerInfos &&

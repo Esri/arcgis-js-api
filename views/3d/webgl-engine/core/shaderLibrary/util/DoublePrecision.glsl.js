@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../core/has","../../shaderModules/interfaces","../../../lib/WebGLDriverTest"],(function(e,c,i,r){"use strict";function o({code:e},c){c.doublePrecisionRequiresObfuscation?e.add(i.glsl`vec3 dpPlusFrc(vec3 a, vec3 b) {
 return mix(a, a + b, vec3(notEqual(b, vec3(0))));

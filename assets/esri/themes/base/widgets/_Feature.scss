@@ -48,7 +48,7 @@
   }
 
   //  RTL
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-feature__attachments-title {
       margin: 0 0 0 auto;
     }

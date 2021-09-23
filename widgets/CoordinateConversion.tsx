@@ -21,7 +21,7 @@
  * @module esri/widgets/CoordinateConversion
  * @since 4.7
  *
- * @see [CoordinateConversion.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/CoordinateConversion.tsx)
+ * @see [CoordinateConversion.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/CoordinateConversion.tsx)
  * @see [CoordinateConversion.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_CoordinateConversion.scss)
  * @see [Sample - Coordinate widget](../sample-code/widgets-coordinateconversion/index.html)
  * @see [Sample - Add custom coordinate formats](../sample-code/widgets-coordinateconversion-custom/index.html)
@@ -93,6 +93,7 @@ const CSS: any = {
   captureMode: "esri-coordinate-conversion--capture-mode",
   noBasemap: "esri-coordinate-conversion--no-basemap",
   popup: "esri-coordinate-conversion__popup",
+  clipboardPopup: "esri-coordinate-conversion__clipboard-popup",
 
   conversionList: "esri-coordinate-conversion__conversion-list",
   conversionRow: "esri-coordinate-conversion__row",
@@ -147,6 +148,9 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   expandButton: true
 };
 
+const CLIPBOARD_POPUP_DURATION = 750;
+const DEFAULT_POPUP_DURATION = 2500;
+
 const logger = Logger.getLogger("esri.widgets.CoordinateConversion");
 
 @subclass("esri.widgets.CoordinateConversion")
@@ -182,7 +186,8 @@ class CoordinateConversion extends Widget {
   //--------------------------------------------------------------------------
 
   private _popupMessage: string = null;
-  private _popupId: number = null;
+  private _popupTimeoutId: number = null;
+  private _clipboardPopupTimeoutId: number = null;
 
   private _coordinateInput: HTMLInputElement = null;
   private _badInput: boolean = false;
@@ -193,6 +198,7 @@ class CoordinateConversion extends Widget {
   private _previewConversion: Conversion = null;
 
   private _expanded: boolean = false;
+  private _clipboardPopupVisible: boolean = false;
   private _popupVisible: boolean = false;
   private _settingsVisible: boolean = false;
   private _inputVisible: boolean = false;
@@ -296,7 +302,7 @@ class CoordinateConversion extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -375,7 +381,7 @@ class CoordinateConversion extends Widget {
 
   /**
    * The number of milliseconds of delay before conversion requests will be sent
-   * to the {@link module:esri/tasks/GeometryService}.  This only affects conversions that cannot be
+   * to the {@link module:esri/rest/geometryService}.  This only affects conversions that cannot be
    * performed in the browser.
    *
    * @name requestDelay
@@ -475,7 +481,7 @@ class CoordinateConversion extends Widget {
   @property({
     type: CoordinateViewModel
   })
-  viewModel: CoordinateViewModel = new CoordinateViewModel();
+  override viewModel: CoordinateViewModel = new CoordinateViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -539,7 +545,7 @@ class CoordinateConversion extends Widget {
     return this.viewModel.reverseConvert(coordinate, format);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const state = this.get("viewModel.state"),
       noBasemapAlert =
         state === "disabled" ? (
@@ -600,12 +606,21 @@ class CoordinateConversion extends Widget {
   }
 
   private _hidePopup(): void {
-    if (this._popupId) {
-      clearTimeout(this._popupId);
-      this._popupId = null;
+    if (this._popupTimeoutId) {
+      clearTimeout(this._popupTimeoutId);
+      this._popupTimeoutId = null;
     }
     this._popupVisible = false;
     this._popupMessage = null;
+    this.scheduleRender();
+  }
+
+  private _hideClipboardPopup(): void {
+    if (this._clipboardPopupTimeoutId) {
+      clearTimeout(this._clipboardPopupTimeoutId);
+      this._clipboardPopupTimeoutId = null;
+    }
+    this._clipboardPopupVisible = false;
     this.scheduleRender();
   }
 
@@ -624,7 +639,7 @@ class CoordinateConversion extends Widget {
     } else {
       event.clipboardData.setData("text/plain", coordinate);
     }
-    this._showPopup(this.messages.copySuccessMessage);
+    this._showClipboardPopup();
     event.preventDefault();
   }
 
@@ -707,14 +722,26 @@ class CoordinateConversion extends Widget {
     this._setPreviewConversion();
   }
 
-  private _showPopup(message: string, duration: number = 2500): void {
-    this._popupMessage = message;
-
-    this._popupVisible ? clearTimeout(this._popupId) : (this._popupVisible = true);
+  private _showClipboardPopup(): void {
+    this._clipboardPopupVisible
+      ? clearTimeout(this._clipboardPopupTimeoutId)
+      : (this._clipboardPopupVisible = true);
     this.scheduleRender();
 
-    this._popupId = setTimeout(() => {
-      this._popupId = null;
+    this._popupTimeoutId = setTimeout(() => {
+      this._popupTimeoutId = null;
+      this._hideClipboardPopup();
+    }, CLIPBOARD_POPUP_DURATION);
+  }
+
+  private _showPopup(message: string, duration: number = DEFAULT_POPUP_DURATION): void {
+    this._popupMessage = message;
+
+    this._popupVisible ? clearTimeout(this._popupTimeoutId) : (this._popupVisible = true);
+    this.scheduleRender();
+
+    this._popupTimeoutId = setTimeout(() => {
+      this._popupTimeoutId = null;
       this._hidePopup();
     }, duration);
   }
@@ -795,6 +822,7 @@ class CoordinateConversion extends Widget {
   }
 
   private _renderCopyButton(conversion: Conversion): VNode {
+    const clipboardPopup = this._clipboardPopupVisible && this._renderClipboardPopup();
     return (
       <li
         aria-label={this.messagesCommon.copy}
@@ -808,6 +836,7 @@ class CoordinateConversion extends Widget {
         tabindex="0"
         title={this.messagesCommon.copy}
       >
+        {clipboardPopup}
         <span aria-hidden="true" class={CSS.copyButton} />
       </li>
     );
@@ -1059,6 +1088,14 @@ class CoordinateConversion extends Widget {
     );
   }
 
+  private _renderClipboardPopup(): VNode {
+    return (
+      <div class={this.classes(CSS.popup, CSS.clipboardPopup)} role="alert">
+        {this.messages.copySuccessMessage}
+      </div>
+    );
+  }
+
   private _renderPrimaryTools(): VNode {
     const { messages, visibleElements } = this;
     const modeTitle = this.mode === "live" ? messages.captureMode : messages.liveMode;
@@ -1205,7 +1242,9 @@ class CoordinateConversion extends Widget {
   }
 
   private _renderBackIcon(): VNode {
-    return <span aria-hidden="true" class={isRTL() ? CSS.rightArrow : CSS.leftArrow} />;
+    return (
+      <span aria-hidden="true" class={isRTL(this.container) ? CSS.rightArrow : CSS.leftArrow} />
+    );
   }
 
   private _renderTools(index: number, conversion: Conversion, rowId: string): VNode {

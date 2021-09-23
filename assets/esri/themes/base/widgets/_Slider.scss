@@ -6,7 +6,7 @@
   $slider-ticks-z-index: 0;
 
   $slider-thumb-size: 16px !default;
-  $slider-thumb-offset: ($slider-thumb-size/2) - 1 !default;
+  $slider-thumb-offset: ($slider-thumb-size * 0.5) - 1 !default;
 
   $slider-thumb-hover-scale: 1.2 !default;
 

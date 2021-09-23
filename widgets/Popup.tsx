@@ -36,7 +36,7 @@
  * @module esri/widgets/Popup
  * @since 4.0
  *
- * @see [Popup.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Popup.tsx)
+ * @see [Popup.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Popup.tsx)
  * @see [Popup.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Popup.scss)
  * @see module:esri/PopupTemplate
  * @see {@link module:esri/views/View#popup View.popup}
@@ -364,16 +364,15 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
         this._displaySpinnerThrottled();
       }),
 
-      watchUtils.watch<string>(this, "selectedFeatureWidget.viewModel.title", (title) =>
-        this._setTitleFromFeatureWidget(title)
+      watchUtils.watch<string>(
+        this,
+        ["selectedFeatureWidget.viewModel.title", "selectedFeatureWidget.viewModel.state"],
+        () => this._setTitleFromFeatureWidget()
       ),
 
       watchUtils.watch(
         this,
-        [
-          "selectedFeatureWidget.viewModel.content",
-          "selectedFeatureWidget.viewModel.waitingForContent"
-        ],
+        ["selectedFeatureWidget.viewModel.content", "selectedFeatureWidget.viewModel.state"],
         () => this._setContentFromFeatureWidget()
       ),
 
@@ -397,7 +396,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroySelectedFeatureWidget();
     this._destroySpinner();
     this._handles?.destroy();
@@ -494,6 +493,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   protected get hasContent(): boolean {
     return !!(this.selectedFeatureWidget
       ? this.selectedFeatureWidget?.viewModel?.waitingForContent ||
+        this.selectedFeatureWidget?.viewModel?.state === "error" ||
         this.selectedFeatureWidget?.viewModel?.content
       : this.viewModel?.content);
   }
@@ -594,7 +594,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * ![popupTemplate-zoom-action](../assets/img/apiref/widgets/popuptemplate-zoom-action.png).
    * When this icon is clicked, the view zooms in four LODs and centers on the selected feature.
    *
-   * You may remove this action from the default popup actions by setting [includeDefaultActions](#includeDefaultActions) to `false`, or by setting the
+   * You may remove this action from the default popup actions by setting [includeDefaultActions](esri-PopupTemplate.html#includeDefaultActions) to `false`, or by setting the
    * [overwriteActions](esri-PopupTemplate.html#overwriteActions) property to `true` in a
    * {@link module:esri/PopupTemplate}. The order of each action in the popup is the order in which
    * they appear in the array.
@@ -1162,7 +1162,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  maxInlineActions
@@ -1393,7 +1393,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    */
   @property({ type: PopupViewModel })
   @vmEvent(["triggerAction", "trigger-action"])
-  viewModel = new PopupViewModel();
+  override viewModel = new PopupViewModel();
 
   //----------------------------------
   //  visible
@@ -1407,7 +1407,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
    * @type {boolean}
    */
   @aliasOf("viewModel.visible")
-  visible: boolean = null;
+  override visible: boolean = null;
 
   //----------------------------------
   //  visibleElements
@@ -1711,7 +1711,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     this.viewModel.triggerAction(actionIndex);
   }
 
-  render(): VNode {
+  override render(): VNode {
     const {
       actionsMenuOpen,
       dockEnabled,
@@ -1795,7 +1795,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   }
 
   protected renderPreviousIcon(): VNode {
-    const isRtl = widgetUtils.isRTL();
+    const isRtl = widgetUtils.isRTL(this.container);
 
     const previousIconClasses = {
       [CSS.iconRightTriangleArrow]: isRtl,
@@ -1827,7 +1827,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   }
 
   protected renderNextIcon(): VNode {
-    const isRtl = widgetUtils.isRTL();
+    const isRtl = widgetUtils.isRTL(this.container);
 
     const nextIconClasses = {
       [CSS.iconLeftTriangleArrow]: isRtl,
@@ -2535,10 +2535,14 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     }
   }
 
-  private _setTitleFromFeatureWidget(title: string): void {
-    const { selectedFeatureWidget } = this;
+  private _setTitleFromFeatureWidget(): void {
+    const { selectedFeatureWidget, messagesCommon } = this;
+
     if (selectedFeatureWidget) {
-      this.viewModel.title = title || "";
+      this.viewModel.title =
+        selectedFeatureWidget.viewModel?.state === "error"
+          ? messagesCommon.errorMessage
+          : selectedFeatureWidget.viewModel?.title || "";
     }
   }
 
@@ -2925,7 +2929,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
   private _calculatePositionResult(position: PositionValue): PositionResult {
     const values = ["left", "right"];
 
-    if (widgetUtils.isRTL()) {
+    if (widgetUtils.isRTL(this.container)) {
       values.reverse();
     }
 
@@ -2958,7 +2962,7 @@ class Popup extends FeatureContentMixin(Widget) implements IPopup {
     }
 
     const view = this.viewModel?.view;
-    const defaultDockPosition = widgetUtils.isRTL() ? "top-left" : "top-right";
+    const defaultDockPosition = widgetUtils.isRTL(this.container) ? "top-left" : "top-right";
 
     if (!view) {
       return defaultDockPosition;

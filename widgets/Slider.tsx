@@ -26,7 +26,7 @@
  *   }
  * });
  *
- * @see [Slider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slider.tsx)
+ * @see [Slider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Slider.tsx)
  * @see [Slider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Slider.scss)
  * @see module:esri/widgets/Slider/SliderViewModel
  */
@@ -397,7 +397,7 @@ class Slider extends Widget<ConstructProperties, SliderEvents> implements Constr
     this._onTrackPointerUp = this._onTrackPointerUp.bind(this);
   }
 
-  destroy(): void {
+  override destroy(): void {
     // widget could be destroyed while dragging thumb
     document.removeEventListener("pointerup", this._onLabelPointerUp);
     document.removeEventListener("pointermove", this._onLabelPointerMove);
@@ -672,7 +672,7 @@ class Slider extends Widget<ConstructProperties, SliderEvents> implements Constr
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  labelElements
@@ -1614,7 +1614,7 @@ class Slider extends Widget<ConstructProperties, SliderEvents> implements Constr
    * @type {module:esri/widgets/Slider/SliderViewModel}
    */
   @property()
-  viewModel: SliderViewModel = new SliderViewModel();
+  override viewModel = new SliderViewModel();
 
   //----------------------------------
   // visibleElements
@@ -1665,7 +1665,7 @@ class Slider extends Widget<ConstructProperties, SliderEvents> implements Constr
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { label } = this;
     const baseClasses = this.classes(
       CSS.base,

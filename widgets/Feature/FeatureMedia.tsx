@@ -91,7 +91,7 @@ class FeatureMedia extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._featureElementInfo = new FeatureElementInfo();
 
     this.own(
@@ -104,7 +104,7 @@ class FeatureMedia extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._clearMediaRefreshTimer();
     this._featureElementInfo.destroy();
   }
@@ -193,7 +193,7 @@ class FeatureMedia extends Widget {
   //----------------------------------
 
   @property({ type: FeatureMediaViewModel })
-  viewModel = new FeatureMediaViewModel();
+  override viewModel = new FeatureMediaViewModel();
 
   //----------------------------------
   //  messages
@@ -217,7 +217,7 @@ class FeatureMedia extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div bind={this} class={CSS.base} onkeyup={this._handleMediaKeyup}>
         {this._featureElementInfo?.render()}
@@ -459,7 +459,7 @@ class FeatureMedia extends Widget {
     const { am4core, am4charts } = amCharts4Index;
 
     const chart = am4core.create(chartDiv, am4charts.PieChart);
-    chart.rtl = isRTL();
+    chart.rtl = isRTL(this.container);
 
     const series = chart.series.push(new am4charts.PieSeries());
     series.labels.template.disabled = true;
@@ -592,7 +592,7 @@ class FeatureMedia extends Widget {
     const { am4core, am4charts } = amCharts4Index;
 
     const chart = am4core.create(chartDiv, am4charts.XYChart);
-    chart.rtl = isRTL();
+    chart.rtl = isRTL(this.container);
 
     if (type === "column-chart") {
       this._createColumnChart(chart, options);

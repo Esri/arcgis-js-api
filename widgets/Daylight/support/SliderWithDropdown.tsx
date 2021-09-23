@@ -57,7 +57,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
   //--------------------------------------------------------------------------
 
   @property()
-  viewModel: SliderWithDropdownViewModel<T> = new SliderWithDropdownViewModel();
+  override viewModel = new SliderWithDropdownViewModel<T>();
 
   @property()
   buttonTooltip = "";
@@ -91,7 +91,7 @@ class SliderWithDropdown<T extends Item> extends Slider {
   //
   //--------------------------------------------------------------------------
 
-  protected renderThumbLabel(index: number): VNode {
+  protected override renderThumbLabel(index: number): VNode {
     const dynamicDropDownStateClasses = {
       [CSS.boxDropDownOn]: this.showDropDown,
       [CSS.boxDropDownOff]: !this.showDropDown

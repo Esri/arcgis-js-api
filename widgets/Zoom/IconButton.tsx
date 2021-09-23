@@ -43,7 +43,7 @@ class IconButton extends Widget {
   //----------------------------------
 
   @property()
-  iconClass = "";
+  override iconClass = "";
 
   //----------------------------------
   //  title
@@ -58,7 +58,7 @@ class IconButton extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const tabIndex = this.enabled ? 0 : -1;
     const rootClasses = {
       [CSS.disabled]: !this.enabled,

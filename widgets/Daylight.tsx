@@ -67,7 +67,7 @@
  * @module esri/widgets/Daylight
  * @since 4.14
  *
- * @see [Daylight.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Daylight.tsx)
+ * @see [Daylight.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Daylight.tsx)
  * @see [Daylight.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Daylight.scss)
  * @see [Sample - Daylight widget](../sample-code/widgets-daylight/index.html)
  * @see {@link module:esri/widgets/Daylight/DaylightViewModel}
@@ -152,6 +152,8 @@ const DEFAULT_VISIBLE_ELEMENTS: VisibleElements = {
   datePicker: true,
   timezone: true
 };
+
+const TIME_STRING_SPLIT_REGEX = /(.*)\s(.*)/;
 
 const logger = Logger.getLogger("esri.widgets.Daylight");
 
@@ -244,7 +246,7 @@ class Daylight extends Widget {
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   /**
    * The widget's default label. This label displays when it is
@@ -258,7 +260,7 @@ class Daylight extends Widget {
   @property({
     aliasOf: { source: "messages.title", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   /**
    * Controls the speed of the daytime and date animation.
@@ -326,7 +328,7 @@ class Daylight extends Widget {
    * @autocast
    */
   @property({ type: DaylightViewModel })
-  viewModel: DaylightViewModel = new DaylightViewModel();
+  override viewModel = new DaylightViewModel();
 
   /**
    * The visible elements that are displayed within the widget.
@@ -442,7 +444,7 @@ class Daylight extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  postInitialize(): void {
+  protected override postInitialize(): void {
     const isSupported = this.viewModel.isSupported;
     if (!isSupported) {
       return;
@@ -480,12 +482,12 @@ class Daylight extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._datePicker.destroy();
     this._timeSlider.destroy();
   }
 
-  render(): VNode {
+  override render(): VNode {
     const isSupported = this.viewModel.isSupported;
 
     return isSupported ? (
@@ -670,11 +672,10 @@ class Daylight extends Widget {
     labelElement.onclick = goToTime;
 
     const timeString = labelElement.innerText;
-    if (timeString.indexOf(" ") !== -1) {
-      labelElement.innerHTML = timeString.replace(
-        /(.*) (.*)/,
-        '$1<br><div class="esri-label__ampm">$2</div>'
-      );
+    const match = timeString.match(TIME_STRING_SPLIT_REGEX);
+
+    if (match) {
+      labelElement.innerHTML = `${match[1]}<br><div class="esri-label__ampm">${match[2]}</div>`;
     }
   }
 

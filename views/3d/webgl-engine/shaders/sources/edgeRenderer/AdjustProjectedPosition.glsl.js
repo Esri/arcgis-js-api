@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../core/shaderLibrary/attributes/VertexPosition.glsl","../../../core/shaderLibrary/util/IsNaN.glsl","../../../core/shaderModules/interfaces"],(function(o,e,r,a){"use strict";function t(o,t){o.vertex.include(r.IsNaN),o.include(e.VertexPosition,t);const s=o.vertex;s.uniforms.add("uDepthBias","vec2"),s.uniforms.add("uViewportDimInv","vec2"),t.legacy?(s.uniforms.add("uView","mat4"),s.uniforms.add("uProj","mat4")):s.uniforms.add("uTransformNormal_ViewFromGlobal","mat3"),t.legacy?s.code.add(a.glsl`vec2 calculateProjectedBiasXY(vec4 projPos, vec3 globalNormal) {
 float offsetXY = uDepthBias.x;

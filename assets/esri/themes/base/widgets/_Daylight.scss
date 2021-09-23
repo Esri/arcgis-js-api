@@ -285,7 +285,7 @@
     background-color: $background-color--active;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-slider-with-dropdown__dropdown-root {
       margin-left: 0;
       margin-right: 4px;
@@ -298,28 +298,25 @@
   @include sliderWithDropdown();
 }
 
-html[dir="rtl"] {
-  .esri-daylight {
-    .esri-daylight__container {
-      .esri-daylight__play-pause-button {
-        margin-right: $side-spacing;
-        margin-left: 0;
-      }
-    }
+[dir="rtl"] .esri-daylight,
+.esri-daylight[dir="rtl"] {
+  .esri-daylight__container .esri-daylight__play-pause-button {
+    margin-right: $side-spacing;
+    margin-left: 0;
+  }
 
-    .esri-daylight__checkbox {
-      margin-left: $side-spacing--half;
-      margin-right: 0;
-    }
+  .esri-daylight__checkbox {
+    margin-left: $side-spacing--half;
+    margin-right: 0;
+  }
 
-    .esri-slider--horizontal .esri-slider-with-dropdown__box--drop-down-on {
-      right: -46px;
-      left: auto;
-    }
+  .esri-slider--horizontal .esri-slider-with-dropdown__box--drop-down-on {
+    right: -46px;
+    left: auto;
+  }
 
-    .esri-slider--horizontal .esri-slider-with-dropdown__box--drop-down-off {
-      right: -30px;
-      left: auto;
-    }
+  .esri-slider--horizontal .esri-slider-with-dropdown__box--drop-down-off {
+    right: -30px;
+    left: auto;
   }
 }

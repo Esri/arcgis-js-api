@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../Color","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass","../SmartMappingSliderViewModel"],(function(t,e,o,r,s,n,c,i,p){"use strict";let l=function(e){function r(t){return e.call(this,t)||this}t._inheritsLoose(r,e);var s=r.prototype;return s.getStopInfo=function(t){const{min:e,max:r,stops:s}=this;if(!s||!s.length)return[];const n=this._getColorForStops(t).toRgb();return s.map((t=>({color:new o([...n,t.opacity]),offset:(r-t.value)/(r-e)})))},s._getColorForStops=function(t){return t?t instanceof o?t:o.fromString(t):null},t._createClass(r,[{key:"stops",get:function(){return this.stops}}]),r}(p);return e.__decorate([r.property()],l.prototype,"stops",null),l=e.__decorate([i.subclass("esri.widgets.smartMapping.OpacitySlider.OpacitySliderViewModel")],l),l}));

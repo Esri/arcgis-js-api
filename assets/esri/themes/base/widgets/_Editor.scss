@@ -256,10 +256,10 @@
 
   .esri-ui {
     .esri-editor__scroller {
-      max-height: ($panel-max-height--medium / 2);
+      max-height: ($panel-max-height--medium * 0.5);
     }
     .esri-editor .esri-item-list__scroller {
-      max-height: ($panel-max-height--medium / 2) - 80px;
+      max-height: ($panel-max-height--medium * 0.5) - 80px;
     }
   }
 

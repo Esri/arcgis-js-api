@@ -46,13 +46,13 @@ class Spinner extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       watchUtils.watch<boolean>(this, "visible", (visible) => this._visibleChange(visible))
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._animationPromise = null;
   }
 
@@ -85,14 +85,14 @@ class Spinner extends Widget {
   //----------------------------------
 
   @property({ type: SpinnerViewModel })
-  viewModel = new SpinnerViewModel();
+  override viewModel = new SpinnerViewModel();
 
   //----------------------------------
   //  visible
   //----------------------------------
 
   @aliasOf("viewModel.visible")
-  visible: boolean = false;
+  override visible: boolean = false;
 
   //--------------------------------------------------------------------------
   //
@@ -120,7 +120,7 @@ class Spinner extends Widget {
     this.visible = false;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { visible } = this;
     const { screenLocation } = this.viewModel;
     const hasScreenLocation = !!screenLocation;

@@ -56,7 +56,7 @@
     border-right: 1px solid rgba($interactive-font-color, 0.5);
     width: $divider-size;
     height: 100%;
-    margin-left: -#{$divider-size/2};
+    margin-left: -#{$divider-size * 0.5};
     top: 0;
     left: $button-width--half;
   }
@@ -66,7 +66,7 @@
     border-bottom: 1px solid rgba($interactive-font-color, 0.5);
     width: 100%;
     height: $divider-size;
-    margin-top: -#{$divider-size/2};
+    margin-top: -#{$divider-size * 0.5};
     left: 0;
     top: $button-height--half;
   }

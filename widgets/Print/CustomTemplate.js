@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass","../../rest/support/fileFormat","../../rest/support/layoutTemplate"],(function(o,r,e,t,p,s,l,u,a,c){"use strict";let n=function(r){function e(o){var e;return(e=r.call(this,o)||this).description=null,e.format=null,e.label=null,e.layout=null,e.layoutOptions=null,e}return o._inheritsLoose(e,r),e}(e.JSONSupport);return r.__decorate([t.property()],n.prototype,"description",void 0),r.__decorate([t.property({json:{read:a.fromJSON}})],n.prototype,"format",void 0),r.__decorate([t.property()],n.prototype,"label",void 0),r.__decorate([t.property({json:{read:c.fromJSON}})],n.prototype,"layout",void 0),r.__decorate([t.property()],n.prototype,"layoutOptions",void 0),n=r.__decorate([u.subclass("esri.widgets.Print.CustomTemplate")],n),n}));

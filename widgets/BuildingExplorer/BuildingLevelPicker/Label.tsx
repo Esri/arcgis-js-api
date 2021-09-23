@@ -109,7 +109,7 @@ export class Label extends Widget implements ConstructProperties {
   //
   //------------------------------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     if (isNone(this.level)) {
       return (
         <div class={CSS.empty} title={this.messages.selectLevel}>

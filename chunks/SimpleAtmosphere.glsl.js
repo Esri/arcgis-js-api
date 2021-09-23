@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,o,i,t){"use strict";function l(e){const l=new t.ShaderBuilder;if(2===e.geometry)l.attributes.add("position","vec2"),l.varyings.add("color","vec4"),l.vertex.uniforms.add("lightingMainDirection","vec3").add("cameraPosition","vec3").add("undergroundFadeAlpha","float"),l.vertex.code.add(i.glsl`void main(void) {
 float ndotl = dot(normalize(cameraPosition), lightingMainDirection);

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
-define(["exports","../../../core/Error","../../../chunks/vec3","../../../chunks/vec3f64","../../../geometry/support/aaBoundingRect","./TerrainConst","./TilingScheme","../../../chunks/terrainUtilsPlanar"],(function(e,t,n,i,r,o,c,s){"use strict";e.checkIfTileInfoSupportedForViewSR=s.checkIfTileInfoSupportedForViewSR,e.isInsideExtent=s.isInsideExtent,e.tiltToExtentEdge=s.tiltToExtentEdge,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../../core/Error","../../../core/maybe","../../../chunks/vec3","../../../chunks/vec3f64","../../../geometry/projection","../../../geometry/support/aaBoundingRect","./TerrainConst","./TilingScheme","../../../chunks/terrainUtilsPlanar"],(function(e,t,n,o,r,i,c,s,u,d){"use strict";e.checkIfTileInfoSupportedForViewSR=d.checkIfTileInfoSupportedForViewSR,e.isInsideExtent=d.isInsideExtent,e.tiltToExtentEdge=d.tiltToExtentEdge,Object.defineProperty(e,"__esModule",{value:!0})}));

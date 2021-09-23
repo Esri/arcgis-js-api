@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","./ColorConversion.glsl","../../shaderModules/interfaces"],(function(e,t,i){"use strict";function r(e){e.include(t.ColorConversion),e.code.add(i.glsl`
     vec3 mixExternalColor(vec3 internalColor, vec3 textureColor, vec3 externalColor, int mode) {

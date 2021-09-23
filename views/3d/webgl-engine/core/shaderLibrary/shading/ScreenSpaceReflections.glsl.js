@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../output/ReadLinearDepth.glsl","./Reprojection.glsl","../../shaderModules/interfaces"],(function(e,t,o,r){"use strict";function a(e,a){e.fragment.uniforms.add("nearFar","vec2"),e.fragment.uniforms.add("depthMapView","sampler2D"),e.fragment.uniforms.add("ssrViewMat","mat4"),e.fragment.uniforms.add("invResolutionHeight","float"),e.fragment.include(t.ReadLinearDepth),e.include(o.Reprojection),e.fragment.code.add(r.glsl`
   const int maxSteps = ${a.highStepCount?"150;":"75;"}

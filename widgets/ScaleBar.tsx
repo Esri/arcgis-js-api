@@ -19,7 +19,7 @@
  * @module esri/widgets/ScaleBar
  * @since 4.3
  *
- * @see [ScaleBar.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleBar.tsx)
+ * @see [ScaleBar.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleBar.tsx)
  * @see [ScaleBar.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ScaleBar.scss)
  * @see [Sample - ScaleBar widget](../sample-code/widgets-scalebar/index.html)
  * @see module:esri/widgets/ScaleBar/ScaleBarViewModel
@@ -111,7 +111,7 @@ class ScaleBar extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       whenTrue(this, "view.stationary", () => this.scheduleRender()),
 
@@ -144,7 +144,7 @@ class ScaleBar extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -243,7 +243,7 @@ class ScaleBar extends Widget {
    * @autocast
    */
   @property()
-  viewModel = new ScaleBarViewModel();
+  override viewModel = new ScaleBarViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -251,7 +251,7 @@ class ScaleBar extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const isDisabled = this.get("viewModel.state") === "disabled";
 
     const baseClasses = {

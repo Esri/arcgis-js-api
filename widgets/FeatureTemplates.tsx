@@ -14,7 +14,7 @@
  * @module esri/widgets/FeatureTemplates
  * @since 4.10
  *
- * @see [FeatureTemplates.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTemplates.tsx)
+ * @see [FeatureTemplates.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTemplates.tsx)
  * @see [FeatureTemplates.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureTemplates.scss)
  * @see [Sample - Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
  * @see module:esri/widgets/FeatureTemplates/FeatureTemplatesViewModel
@@ -280,7 +280,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
     this._afterItemRemoved = this._afterItemRemoved.bind(this);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     const nameBasedFilter: Filter = ({ label }) =>
       !this.filterText || label.toLowerCase().indexOf(this.filterText.toLowerCase()) > -1;
 
@@ -297,7 +297,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     if (this._iconIntersectionObserver) {
       this._iconIntersectionObserver.disconnect();
       this._iconIntersectionObserver = null;
@@ -476,7 +476,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layers
@@ -568,7 +568,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
    */
   @property()
   @vmEvent("select")
-  viewModel: FeatureTemplatesViewModel = new FeatureTemplatesViewModel();
+  override viewModel = new FeatureTemplatesViewModel();
 
   /**
    * The visible elements that are displayed within the widget.
@@ -628,7 +628,7 @@ class FeatureTemplates extends HandleOwnerMixin(Widget) {
     return null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const {
       filterText,
       headingLevel,

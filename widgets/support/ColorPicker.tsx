@@ -1,9 +1,3 @@
-// @esri.calcite-components.dist.custom-elements.bundles
-import "@esri/calcite-components/dist/custom-elements/bundles/button";
-import "@esri/calcite-components/dist/custom-elements/bundles/color-picker";
-import "@esri/calcite-components/dist/custom-elements/bundles/label";
-import "@esri/calcite-components/dist/custom-elements/bundles/slider";
-
 // esri
 import Color from "esri/../Color";
 
@@ -79,7 +73,7 @@ export class ColorPicker extends Widget<ConstructProperties> implements Construc
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       autorun(() => {
         applySome(this._containerElement, (container) => {
@@ -89,13 +83,22 @@ export class ColorPicker extends Widget<ConstructProperties> implements Construc
     );
   }
 
-  destroy(): void {
+  protected override loadDependencies(): Promise<any> {
+    return Promise.all([
+      import("@esri/calcite-components/dist/custom-elements/bundles/button"),
+      import("@esri/calcite-components/dist/custom-elements/bundles/color-picker"),
+      import("@esri/calcite-components/dist/custom-elements/bundles/label"),
+      import("@esri/calcite-components/dist/custom-elements/bundles/slider")
+    ]);
+  }
+
+  override destroy(): void {
     this._destroyPopover();
     this._handles = destroyMaybe(this._handles);
     this._buttonElement = null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const messages = this._messages;
     const label = isSome(this._popover) && this._popover.open ? messages.close : messages.open;
 
@@ -108,7 +111,7 @@ export class ColorPicker extends Widget<ConstructProperties> implements Construc
         <div class={CSS.backgroundPattern}></div>
         <calcite-button
           appearance="transparent"
-          aria-label={label}
+          label={label}
           class={CSS.toggleButton}
           color="neutral"
           id={this.id}
@@ -241,7 +244,7 @@ export class ColorPicker extends Widget<ConstructProperties> implements Construc
           scale="m"
           value={color.toCss()}
           bind={this}
-          onCalciteColorPickerChange={this._onColorChange}
+          onCalciteColorPickerInput={this._onColorInput}
           afterCreate={this._onColorPickerAfterCreate}
         />
         {this.alphaEnabled && (
@@ -265,7 +268,7 @@ export class ColorPicker extends Widget<ConstructProperties> implements Construc
     );
   }
 
-  private _onColorChange(e: CustomEvent): void {
+  private _onColorInput(e: CustomEvent): void {
     const target = e.target as HTMLCalciteColorPickerElement;
     const value = target.value;
 

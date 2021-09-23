@@ -12,7 +12,7 @@
  * @module esri/widgets/ScaleRangeSlider
  * @since 4.13
  *
- * @see [ScaleRangeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleRangeSlider.tsx)
+ * @see [ScaleRangeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/ScaleRangeSlider.tsx)
  * @see [ScaleRangeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ScaleRangeSlider.scss)
  * @see module:esri/widgets/ScaleRangeSlider/ScaleRangeSliderViewModel
  * @see module:esri/widgets/ScaleRangeSlider/ScaleRanges
@@ -98,6 +98,7 @@ const CSS = {
 
   scaleMenuContainer: "esri-scale-range-slider__scale-menu-container",
   scaleMenuToggle: "esri-scale-range-slider__scale-menu-toggle",
+  scaleMenuToggleText: "esri-scale-range-slider__scale-menu-toggle-text",
   scaleMenuToggleIcon: "esri-scale-range-slider__scale-menu-toggle-icon",
   scaleMenuToggleActive: "esri-scale-range-slider__scale-menu-toggle--active",
   scaleMenu: "esri-scale-range-slider__scale-menu",
@@ -171,7 +172,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       init(
         this,
@@ -475,7 +476,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -633,7 +634,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  viewModel: ScaleRangeSliderViewModel = new ScaleRangeSliderViewModel();
+  override viewModel = new ScaleRangeSliderViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -678,7 +679,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const {
       _interactive,
       _slider,
@@ -693,7 +694,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
     const maxLabel =
       messages.scaleRangeLabels[scaleRanges.findScaleRangeByIndex(_slider.values[1]).id];
 
-    _slider.layout = isRTL() ? "horizontal-reversed" : "horizontal";
+    _slider.layout = isRTL(this.container) ? "horizontal-reversed" : "horizontal";
 
     return (
       <div
@@ -901,7 +902,9 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
         disabled={!_interactive}
         type="button"
       >
-        {label}
+        <div class={CSS.scaleMenuToggleText} aria-label={label} title={label}>
+          {label}
+        </div>
         <span class={this.classes(CSS.scaleMenuToggleIcon, CSS.expandIcon)} aria-hidden="true" />
       </button>
     );
@@ -1015,7 +1018,7 @@ class ScaleRangeSlider extends HandleOwnerMixin(Widget) {
           aria-label={currentScaleLabel}
           class={CSS.scaleIndicator}
           styles={{
-            left: `${(isRTL() ? -1 : 1) * leftOffsetRatio * 100}%`
+            left: `${(isRTL(this.container) ? -1 : 1) * leftOffsetRatio * 100}%`
           }}
           title={currentScaleLabel}
         >

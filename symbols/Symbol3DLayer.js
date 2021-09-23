@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/JSONSupport","../core/accessorSupport/decorators/property","../core/has","../core/accessorSupport/ensureType","../core/Logger","../core/accessorSupport/decorators/subclass","../core/accessorSupport/decorators/writer"],(function(e,r,o,t,c,s,p,a,n){"use strict";let l=function(r){function o(e){var o;return(o=r.call(this,e)||this).enabled=!0,o.type=null,o}return e._inheritsLoose(o,r),o.prototype.writeEnabled=function(e,r,o){e||(r[o]=e)},o}(o.JSONSupport);return r.__decorate([t.property({type:Boolean,json:{read:{source:"enable"},write:{target:"enable"}}})],l.prototype,"enabled",void 0),r.__decorate([n.writer("enabled")],l.prototype,"writeEnabled",null),r.__decorate([t.property({type:["icon","object","line","path","fill","water","extrude","text"],readOnly:!0})],l.prototype,"type",void 0),l=r.__decorate([a.subclass("esri.symbols.Symbol3DLayer")],l),l}));

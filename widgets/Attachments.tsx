@@ -27,7 +27,7 @@
  * @amdalias Attachments
  * @since 4.15
  *
- * @see [Attachments.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attachments.tsx)
+ * @see [Attachments.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Attachments.tsx)
  * @see [Attachments.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Attachments.scss)
  * @see [Sample - Popup with edit action](../sample-code/popup-editaction/index.html)
  * @see module:esri/widgets/Attachments/AttachmentsViewModel
@@ -173,7 +173,7 @@ class Attachments extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       watchUtils.on(this, "viewModel.attachmentInfos", "change", () => this.scheduleRender()),
       watchUtils.init(this, "viewModel.mode", () => this._modeChanged())
@@ -282,7 +282,7 @@ class Attachments extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -381,7 +381,7 @@ class Attachments extends Widget {
    */
 
   @property({ type: AttachmentsViewModel })
-  viewModel: AttachmentsViewModel = new AttachmentsViewModel();
+  override viewModel = new AttachmentsViewModel();
 
   //----------------------------------
   //  visibleElements
@@ -529,7 +529,7 @@ class Attachments extends Widget {
       });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { submitting, viewModel } = this;
     const { state } = viewModel;
 
@@ -853,7 +853,10 @@ class Attachments extends Widget {
     const chevronNode = abilities.editing ? (
       <span
         aria-hidden="true"
-        class={this.classes(CSS.itemChevronIcon, isRTL() ? CSS.iconLeft : CSS.iconRight)}
+        class={this.classes(
+          CSS.itemChevronIcon,
+          isRTL(this.container) ? CSS.iconLeft : CSS.iconRight
+        )}
       />
     ) : null;
 

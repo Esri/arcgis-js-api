@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/lang","../../core/accessorSupport/decorators/property","../../core/accessorSupport/ensureType","../../core/has","../../core/Logger","../../core/accessorSupport/decorators/subclass"],(function(e,r,s,o,t,i,l,a,c,u){"use strict";var p;e.SlideVisibleLayer=p=function(e){function s(r){var s;return(s=e.call(this,r)||this).id="",s.sublayerIds=null,s}return r._inheritsLoose(s,e),s.prototype.clone=function(){return new p({id:this.id,sublayerIds:t.clone(this.sublayerIds)})},s}(o.JSONSupport),s.__decorate([i.property({type:String,json:{write:!0}})],e.SlideVisibleLayer.prototype,"id",void 0),s.__decorate([i.property({type:[l.Integer],json:{read:{source:"subLayerIds"},write:{target:"subLayerIds"}}})],e.SlideVisibleLayer.prototype,"sublayerIds",void 0),e.SlideVisibleLayer=p=s.__decorate([u.subclass("esri.webscene.support.SlideVisibleLayer")],e.SlideVisibleLayer);var d=e.SlideVisibleLayer;e.default=d,Object.defineProperty(e,"__esModule",{value:!0})}));

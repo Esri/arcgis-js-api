@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
-define(["exports","../../../../geometry/support/webMercatorUtils","../../../../portal/support/geometryServiceUtils"],(function(e,t,r){"use strict";function o(e){const o=e.view.spatialReference,l=e.layer.fullExtent,s=l&&l.spatialReference;return s?s.equals(o)?Promise.resolve(l.clone()):t.canProject(s,o)?Promise.resolve(t.project(l,o)):e.view.state.isLocal?r.projectGeometry(l,o,e.layer.portalItem).then((t=>!e.destroyed&&t?t:void 0)).catch((()=>null)):Promise.resolve(null):Promise.resolve(null)}e.toViewIfLocal=o,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","../../../../core/maybe","../../../../geometry/support/webMercatorUtils","../../../../portal/support/geometryServiceUtils"],(function(e,r,t,o){"use strict";function l(e){const l=e.view.spatialReference,s=e.layer.fullExtent,i=s&&s.spatialReference;if(!i)return Promise.resolve(null);if(i.equals(l))return Promise.resolve(s.clone());const n=t.project(s,l);return r.isSome(n)?Promise.resolve(n):e.view.state.isLocal?o.projectGeometry(s,l,e.layer.portalItem).then((r=>!e.destroyed&&r?r:void 0)).catch((()=>null)):Promise.resolve(null)}e.toViewIfLocal=l,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/jsonMap","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass","./colorRamps","../../symbols/Symbol"],(function(e,r,o,s,t,p,a,c,i,n,u){"use strict";const l=new o.JSONMap({classBreaksDef:"class-breaks-definition",uniqueValueDef:"unique-value-definition"});let y=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).baseSymbol=null,e.colorRamp=null,e.type=null,e}return e._inheritsLoose(o,r),o}(s.JSONSupport);return r.__decorate([t.property({type:u,json:{write:!0}})],y.prototype,"baseSymbol",void 0),r.__decorate([t.property({types:n.types,json:{read:{reader:n.fromJSON},write:!0}})],y.prototype,"colorRamp",void 0),r.__decorate([t.property({json:{read:l.read,write:l.write}})],y.prototype,"type",void 0),y=r.__decorate([i.subclass("esri.rest.support.ClassificationDefinition")],y),y}));

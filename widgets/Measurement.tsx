@@ -23,7 +23,7 @@
  * @module esri/widgets/Measurement
  * @since 4.13
  *
- * @see [Measurement.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Measurement.tsx)
+ * @see [Measurement.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Measurement.tsx)
  * @see [Measurement.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Measurement.scss)
  * @see module:esri/widgets/Measurement/MeasurementViewModel
  * @see [Sample - Measurement widget](../sample-code/widgets-measurement/index.html)
@@ -103,12 +103,12 @@ type MeasurementProperties = Partial<
   >
 >;
 
-type MeasurementLocaleStrings = DeepPartial<
+type MeasurementUIStrings = DeepPartial<
   Pick<MeasurementMessages, "widgetLabel"> & {
-    "area-2d": AreaMeasurement2D["localeStrings"];
-    "distance-2d": DistanceMeasurement2D["localeStrings"];
-    "area-3d": AreaMeasurement3D["localeStrings"];
-    "direct-line-3d": DirectLineMeasurement3D["localeStrings"];
+    "area-2d": AreaMeasurement2D["uiStrings"];
+    "distance-2d": DistanceMeasurement2D["uiStrings"];
+    "area-3d": AreaMeasurement3D["uiStrings"];
+    "direct-line-3d": DirectLineMeasurement3D["uiStrings"];
   }
 >;
 
@@ -147,7 +147,7 @@ class Measurement extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     if (this.activeWidget) {
       this.viewModel.set("activeViewModel", this.activeWidget.viewModel);
     }
@@ -170,13 +170,11 @@ class Measurement extends Widget {
           oldWidget.visible = false;
         }
       }),
-      this.watch(["areaUnit", "linearUnit", "localeStrings"], () =>
-        this._updateSubWidgetProperties()
-      )
+      this.watch(["areaUnit", "linearUnit", "uiStrings"], () => this._updateSubWidgetProperties())
     ]);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._destroyWidgets();
   }
 
@@ -290,7 +288,7 @@ class Measurement extends Widget {
    * @readonly
    */
   @property()
-  iconClass: string = CSS.widgetIcon;
+  override iconClass: string = CSS.widgetIcon;
 
   //----------------------------------
   //  label
@@ -307,7 +305,7 @@ class Measurement extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   // ----------------------------------
   //  linearUnit
@@ -335,13 +333,6 @@ class Measurement extends Widget {
   linearUnit: SystemOrLengthUnit = null;
 
   //----------------------------------
-  //  localeStrings
-  //----------------------------------
-
-  @property()
-  localeStrings: MeasurementLocaleStrings;
-
-  //----------------------------------
   //  messages
   //----------------------------------
 
@@ -358,6 +349,13 @@ class Measurement extends Widget {
   @property()
   @messageBundle("esri/widgets/Measurement/t9n/Measurement")
   messages: MeasurementMessages = null;
+
+  //----------------------------------
+  //  uiStrings
+  //----------------------------------
+
+  @property()
+  override uiStrings: MeasurementUIStrings;
 
   //----------------------------------
   //  view
@@ -409,7 +407,7 @@ class Measurement extends Widget {
   @property({
     type: MeasurementViewModel
   })
-  viewModel: MeasurementViewModel = new MeasurementViewModel();
+  override viewModel = new MeasurementViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -417,7 +415,7 @@ class Measurement extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { activeWidget } = this;
     const widget = activeWidget && !activeWidget.destroyed ? activeWidget.render() : null;
     return <div class={CSS.base}>{widget}</div>;
@@ -474,7 +472,7 @@ class Measurement extends Widget {
             return new AreaMeasurement2D({
               view,
               unit: areaUnit,
-              localeStrings: this._createLocaleStringsForWidget(activeTool)
+              uiStrings: this._createUIStringsForWidget(activeTool)
             });
           }
           case "3d": {
@@ -482,7 +480,7 @@ class Measurement extends Widget {
             return new AreaMeasurement3D({
               view,
               unit: areaUnit,
-              localeStrings: this._createLocaleStringsForWidget(activeTool)
+              uiStrings: this._createUIStringsForWidget(activeTool)
             });
           }
           default:
@@ -495,7 +493,7 @@ class Measurement extends Widget {
         return new DistanceMeasurement2D({
           view,
           unit: linearUnit,
-          localeStrings: this._createLocaleStringsForWidget(activeTool)
+          uiStrings: this._createUIStringsForWidget(activeTool)
         });
       }
       case "direct-line": {
@@ -503,7 +501,7 @@ class Measurement extends Widget {
         return new DirectLineMeasurement3D({
           view,
           unit: linearUnit,
-          localeStrings: this._createLocaleStringsForWidget(activeTool)
+          uiStrings: this._createUIStringsForWidget(activeTool)
         });
       }
       default:
@@ -540,14 +538,14 @@ class Measurement extends Widget {
     return widget;
   }
 
-  private _createLocaleStringsForWidget(
+  private _createUIStringsForWidget(
     type: MeasurementComponentType
   ):
-    | AreaMeasurement2D["localeStrings"]
-    | AreaMeasurement3D["localeStrings"]
-    | DirectLineMeasurement3D["localeStrings"]
-    | DistanceMeasurement2D["localeStrings"] {
-    if (!this.localeStrings) {
+    | AreaMeasurement2D["uiStrings"]
+    | AreaMeasurement3D["uiStrings"]
+    | DirectLineMeasurement3D["uiStrings"]
+    | DistanceMeasurement2D["uiStrings"] {
+    if (!this.uiStrings) {
       return null;
     }
     const key = (type + "-" + this.view.type) as
@@ -556,14 +554,14 @@ class Measurement extends Widget {
       | "area-3d"
       | "direct-line-3d";
 
-    return this.localeStrings[key];
+    return this.uiStrings[key];
   }
 
   private _updateSubWidgetProperties(): void {
     this._widgets.forEach((widget, type) => {
       const { areaUnit, linearUnit } = this;
       widget.unit = isAreaMeasurement(widget) ? areaUnit : linearUnit;
-      widget.localeStrings = this._createLocaleStringsForWidget(type);
+      widget.uiStrings = this._createUIStringsForWidget(type);
     });
   }
 }

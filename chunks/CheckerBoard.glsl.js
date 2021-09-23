@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,r,d,i,l){"use strict";function o(e){const o=new l.ShaderBuilder;return o.extensions.add("GL_OES_standard_derivatives"),o.attributes.add("position","vec3"),o.attributes.add("uv0","vec2"),o.vertex.uniforms.add("proj","mat4").add("view","mat4"),o.varyings.add("vUV","vec2"),e.multipassTerrainEnabled&&o.varyings.add("depth","float"),o.vertex.code.add(i.glsl`
     void main(void) {

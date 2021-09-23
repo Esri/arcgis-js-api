@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $relationship_column_size: 85px;
 
 @mixin legend() {
@@ -115,6 +117,7 @@ $relationship_column_size: 85px;
   .esri-legend__layer-caption {
     display: table-caption;
     padding: $cap-spacing--half 0;
+    word-break: break-word;
   }
 
   .esri-legend__ramp-labels {
@@ -163,10 +166,10 @@ $relationship_column_size: 85px;
       border-color: transparent rgba($font-color, 0.8) transparent transparent;
     }
     &:first-child {
-      margin-top: floor($font-size/3) * -1;
+      margin-top: floor(math.div($font-size, 3)) * -1;
     }
     &:last-child {
-      bottom: floor($font-size/4) * -1;
+      bottom: floor($font-size * 0.25) * -1;
     }
   }
 
@@ -175,7 +178,7 @@ $relationship_column_size: 85px;
     padding: $cap-spacing--half 0;
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-legend__ramp-label:before {
       border-width: 3px 0 3px 4px;
       border-color: transparent transparent transparent rgba($font-color, 0.8);
@@ -193,7 +196,6 @@ $relationship_column_size: 85px;
 
 @mixin cardLegend() {
   $legend_min_width: $panel-width;
-  $legend_min_height: 150px;
   $carousel_min_width: $legend_min_width;
   $carousel_min_height: 250px;
   $carousel_slide_side_length: $legend_min_width - 50;
@@ -208,7 +210,6 @@ $relationship_column_size: 85px;
   }
   .esri-legend--card__section {
     font-size: $font-size__body;
-    min-height: $legend_min_height;
     min-width: $legend_min_width;
     padding: $cap-spacing $side-spacing;
     border-left: 1px solid $border-color;
@@ -386,7 +387,7 @@ $relationship_column_size: 85px;
 
   //////////////////////////////
   // RTL
-  html[dir="rtl"] .esri-view-width-greater-than-small {
+  [dir="rtl"] .esri-view-width-greater-than-small {
     // scoped to view size to not interfere with carousel
     .esri-legend--card__section {
       border-left: 0;
@@ -499,10 +500,10 @@ $relationship_column_size: 85px;
       border-width: 1px 0 0 0;
     }
     &:first-child {
-      top: floor($font-size/2.2) * -1;
+      top: floor(math.div($font-size, 2.2)) * -1;
     }
     &:last-child {
-      bottom: floor($font-size/2.2) * -1;
+      bottom: floor(math.div($font-size, 2.2)) * -1;
     }
   }
 
@@ -520,7 +521,7 @@ $relationship_column_size: 85px;
     }
   }
 
-  html[dir="rtl"] {
+  [dir="rtl"] {
     .esri-univariate-above-and-below-ramp__label {
       margin-left: auto;
       margin-right: 7px;

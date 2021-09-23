@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../chunks/vec3f32","../attributes/VertexTextureCoordinates.glsl","../../shaderModules/interfaces"],(function(e,s,o,t){"use strict";const r=s.fromValues(0,.6,.2);function a(e,s){const r=e.fragment,a=s.hasMetalnessAndRoughnessTexture||s.hasEmissionTexture||s.hasOcclusionTexture;1===s.pbrMode&&a&&e.include(o.VertexTextureCoordinates,s),2!==s.pbrMode?(0===s.pbrMode&&r.code.add(t.glsl`float getBakedOcclusion() { return 1.0; }`),1===s.pbrMode&&(r.uniforms.add("emissionFactor","vec3"),r.uniforms.add("mrrFactors","vec3"),r.code.add(t.glsl`vec3 mrr;
 vec3 emission;

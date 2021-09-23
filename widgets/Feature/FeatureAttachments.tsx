@@ -41,7 +41,7 @@ class FeatureAttachments extends Widget {
     super(properties, parentNode);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this._featureElementInfo = new FeatureElementInfo();
 
     init(this, ["viewModel.description", "viewModel.title", "headingLevel"], () =>
@@ -54,7 +54,7 @@ class FeatureAttachments extends Widget {
     );
   }
 
-  destroy(): void {
+  override destroy(): void {
     this.attachmentsWidget.destroy();
     this._featureElementInfo.destroy();
   }
@@ -124,7 +124,7 @@ class FeatureAttachments extends Widget {
   @property({
     type: FeatureAttachmentsViewModel
   })
-  viewModel = new FeatureAttachmentsViewModel();
+  override viewModel = new FeatureAttachmentsViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -132,7 +132,7 @@ class FeatureAttachments extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const { attachmentsWidget } = this;
 
     return (

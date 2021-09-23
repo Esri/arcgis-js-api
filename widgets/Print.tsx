@@ -2,7 +2,7 @@
  * The Print widget connects your application with a [printing service](https://enterprise.arcgis.com/en/portal/latest/administer/windows/configure-the-portal-to-print-maps.htm) to allow the map to be printed.
  * It takes advantage of server-side, high-quality, full cartographic print functionality using the ExportWebMap service of ArcGIS,
  * which can be configured with custom layout templates. One is provided that shows the map only, while another provides a layout with legend, etc.
- * The Print widget works with the {@link module:esri/tasks/PrintTask} which generates a printer-ready version of the map.
+ * The Print widget works with the {@link module:esri/rest/print} which generates a printer-ready version of the map.
  *
  * The Print widget has two required properties:
  * [view](#view) (reference to the MapView) and [printServiceUrl](#printServiceUrl) (URL of the REST endpoint of the Export Web Map Task).
@@ -38,7 +38,7 @@
  * * Printing layers rendered with the {@link module:esri/renderers/DotDensityRenderer} will create a client-side image of the layer in the printout with ArcGIS Server 10.8.0 or earlier.
  * * For printing secure VectorTileLayers with ArcGIS Server 10.5.1 or 10.6.0,
  * or for printing VectorTileLayers with ArcGIS Server 10.5.1 or any Printing Service published with [ArcMap](https://desktop.arcgis.com/en/arcmap/),
- * the {@link module:esri/tasks/PrintTask} will create a client-side image for the VectorTileLayer to use in the printout.
+ * the {@link module:esri/rest/print} will create a client-side image for the VectorTileLayer to use in the printout.
  * This has some limitations related to large size printing quality and a dependency on browser window height/width ratio.
  * * Printing the background color of a {@link module:esri/views/MapView#background MapView} or {@link module:esri/webmap/background/ColorBackground WebMap} requires ArcGIS Server 10.9 or later.
  *
@@ -55,7 +55,7 @@
  * @module esri/widgets/Print
  * @since 4.2
  *
- * @see [Print.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Print.tsx)
+ * @see [Print.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/Print.tsx)
  * @see [Print.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_Print.scss)
  * @see [Sample - Print widget](../sample-code/widgets-print/index.html)
  * @see module:esri/widgets/Print/PrintViewModel
@@ -135,6 +135,8 @@ interface TemplatesInfo {
 }
 
 const FileLinkCollection = Collection.ofType<FileLink>(FileLink);
+
+const mapOnlyLayout = "MAP_ONLY";
 
 const enum TabId {
   layout = "layoutTab",
@@ -248,6 +250,10 @@ function isValidInputNumber(value: number): boolean {
   return !isNaN(value) && value > 0;
 }
 
+function isMapOnlyLayout(layout: string): boolean {
+  return layout?.toUpperCase() === mapOnlyLayout;
+}
+
 interface PrintEvent {
   link: FileLink;
 }
@@ -297,7 +303,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
     this._focusOnTabChange = this._focusOnTabChange.bind(this);
   }
 
-  initialize(): void {
+  protected override initialize(): void {
     this.own([
       watchUtils.init(this, "viewModel.templatesInfo", (templatesInfo: TemplatesInfo) => {
         const { format, layout } = this.templateOptions;
@@ -305,7 +311,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
         if (templatesInfo) {
           const isValidLayout =
             layout === templatesInfo.layout.defaultValue ||
-            (layout && layout.toUpperCase() === "MAP_ONLY") ||
+            isMapOnlyLayout(layout) ||
             (templatesInfo.layout.choiceList &&
               templatesInfo.layout.choiceList.indexOf(layout) > -1);
           const isValidFormat =
@@ -329,7 +335,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
             this.templateOptions.format = templatesInfo.format.defaultValue;
           }
 
-          if (layout && layout.toUpperCase() === "MAP_ONLY") {
+          if (isMapOnlyLayout(layout)) {
             this._layoutTabSelected = false;
           }
         }
@@ -365,7 +371,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
         } = this;
 
         if (templatesInfo && newValue) {
-          this._layoutTabSelected = newValue.toUpperCase() !== "MAP_ONLY";
+          this._layoutTabSelected = !isMapOnlyLayout(newValue);
           let isValidLayout = false || !this._layoutTabSelected;
 
           if (!isValidLayout) {
@@ -634,7 +640,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
    * @type {string}
    */
   @property()
-  iconClass = CSS.widgetIcon;
+  override iconClass = CSS.widgetIcon;
 
   //----------------------------------
   //  includeDefaultTemplates
@@ -675,7 +681,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -815,7 +821,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
   @property({
     type: PrintViewModel
   })
-  viewModel: PrintViewModel = new PrintViewModel();
+  override viewModel = new PrintViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -919,7 +925,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     const {
       attributionEnabled,
       author,
@@ -1423,6 +1429,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
             {defaultTemplates.toArray().map((template, index) => {
               const { description } = template;
               const focused = index === this._focusedTemplateIndex;
+              const templateLabel = template.label;
 
               return (
                 <li
@@ -1432,10 +1439,10 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
                   })}
                   data-template={template}
                   id={`${this.id}__template-item--${index}`}
-                  key={template.label}
+                  key={templateLabel}
                   title={description}
                 >
-                  {template.label}
+                  {isMapOnlyLayout(templateLabel) ? messages.mapOnlyTab : templateLabel}
                 </li>
               );
             })}
@@ -1860,7 +1867,11 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
         itemDescriptiveStatus = messages.errorMessage;
       }
 
-      const tooltip = hasError ? linkError.message : "";
+      const tooltip = hasError
+        ? linkError.name === "print-task:cim-symbol-unsupported"
+          ? messages.exportWebMapCIMError
+          : messages.exportWebMapError
+        : "";
 
       return (
         <div
@@ -1899,7 +1910,7 @@ class Print extends Widget<ConstructProperties, PrintEvents> implements Construc
     this._layoutTabSelected = targetTab === TabId.layout;
 
     if (!this._layoutTabSelected) {
-      this.templateOptions.layout = "MAP_ONLY";
+      this.templateOptions.layout = mapOnlyLayout;
     } else {
       const layoutChoices = this.get<string[]>("viewModel.templatesInfo.layout.choiceList");
       this.templateOptions.layout = layoutChoices && layoutChoices[0];

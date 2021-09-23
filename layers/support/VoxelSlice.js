@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../core/JSONSupport","../../core/accessorSupport/decorators/property","../../core/has","../../core/accessorSupport/ensureType","../../core/Logger","../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,p,s,n,c){"use strict";let l=function(r){function o(){var e;return(e=r.apply(this,arguments)||this).enabled=!0,e.label="",e.normal=null,e.point=null,e}return e._inheritsLoose(o,r),o}(o.JSONSupport);return r.__decorate([t.property({type:Boolean,json:{write:!0}})],l.prototype,"enabled",void 0),r.__decorate([t.property({type:String,json:{write:!0}})],l.prototype,"label",void 0),r.__decorate([t.property({type:[Number],json:{write:!0}})],l.prototype,"normal",void 0),r.__decorate([t.property({type:[Number],json:{write:!0}})],l.prototype,"point",void 0),l=r.__decorate([c.subclass("esri.layers.support.VoxelSlice")],l),l}));

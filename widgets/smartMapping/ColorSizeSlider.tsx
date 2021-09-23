@@ -75,7 +75,7 @@
  * @module esri/widgets/smartMapping/ColorSizeSlider
  * @since 4.12
  *
- * @see [ColorSizeSlider.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ColorSizeSlider.tsx)
+ * @see [ColorSizeSlider.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/smartMapping/ColorSizeSlider.tsx)
  * @see [ColorSizeSlider.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ColorSizeSlider.scss)
  * @see module:esri/widgets/smartMapping/ColorSizeSlider/ColorSizeSliderViewModel
  * @see {@link module:esri/smartMapping/renderers/univariateColorSize univariateColorSizeRendererCreator}
@@ -240,7 +240,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  messages
@@ -374,13 +374,14 @@ class ColorSizeSlider extends SmartMappingSliderBase {
    * @type {module:esri/widgets/smartMapping/ColorSizeSlider/ColorSizeSliderViewModel}
    */
   @property()
-  viewModel: ColorSizeSliderViewModel = new ColorSizeSliderViewModel();
+  override viewModel = new ColorSizeSliderViewModel();
 
   //----------------------------------
   //  zoomOptions
   //----------------------------------
 
-  @aliasOf("viewModel.zoomOptions") zoomOptions: ZoomOptions = null;
+  @aliasOf("viewModel.zoomOptions")
+  override zoomOptions: ZoomOptions = null;
 
   //--------------------------------------------------------------------------
   //
@@ -778,7 +779,7 @@ class ColorSizeSlider extends SmartMappingSliderBase {
     });
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { label, primaryHandleEnabled, state, visibleElements } = this;
     const isDisabled = state === "disabled";
     const baseClasses = this.classes(CSS.base, CSS.esriWidget, CSS.esriWidgetPanel, {

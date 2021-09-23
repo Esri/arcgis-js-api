@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../core/handleUtils","./hints/IntersectionSnappingHint","./hints/LineSnappingHint","./hints/ParallelSnappingHint","./hints/PointSnappingHint","./hints/RightAngleSnappingHint"],(function(n,i,t,e,s,a,o){"use strict";let p=function(){function n(){}var p=n.prototype;return p.draw=function(n,p){const u=this.getUniqueHints(n),l=[];for(const i of u)i instanceof t.IntersectionSnappingHint&&l.push(this.visualizeIntersectionPoint(i,p)),i instanceof e.LineSnappingHint&&l.push(this.visualizeLine(i,p)),i instanceof s.ParallelSnappingHint&&l.push(this.visualizeParallelSign(i,p)),i instanceof o.RightAngleSnappingHint&&l.push(this.visualizeRightAngleQuad(i,p)),i instanceof a.PointSnappingHint&&l.push(this.visualizePoint(i,p));return i.handlesGroup(l)},p.getUniqueHints=function(n){const i=[];for(const t of n){let n=!0;for(const e of i)if(t.equals(e)){n=!1;break}n&&i.push(t)}return i},n}();n.SnappingVisualizer=p,Object.defineProperty(n,"__esModule",{value:!0})}));

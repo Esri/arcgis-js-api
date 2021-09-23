@@ -23,7 +23,7 @@
  * @amdalias ButtonMenu
  * @since 4.16
  *
- * @see [ButtonMenu.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable/Grid/support/ButtonMenu.tsx)
+ * @see [ButtonMenu.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureTable/Grid/support/ButtonMenu.tsx)
  * @see [ButtonMenu.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_ButtonMenu.scss)
  * @see [Sample - FeatureTable Widget](../sample-code/widgets-featuretable/index.html)
  * @see [Sample - FeatureTable widget using a map](../sample-code/widgets-featuretable-map/index.html)
@@ -117,12 +117,12 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
     this._handleOutsideClick = this._handleOutsideClick.bind(this);
   }
 
-  postInitialize(): void {
+  protected override postInitialize(): void {
     // #28536 #34479
     this._popover = new Popover({
       owner: this,
       open: !!this.open,
-      placement: isRTL() ? "bottom-start" : "bottom-end",
+      placement: isRTL(this.container) ? "bottom-start" : "bottom-end",
       renderContentFunction: this.renderMenuContent,
       anchorElement: this._rootNode
     });
@@ -134,7 +134,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
     document.addEventListener("click", this._handleOutsideClick);
   }
 
-  destroy(): void {
+  override destroy(): void {
     this._popover?.destroy();
     this._popover = null;
     document.removeEventListener("click", this._handleOutsideClick);
@@ -183,7 +183,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * @type {string}
    */
   @property()
-  iconClass: string = null;
+  override iconClass: string = null;
 
   //----------------------------------
   //  items
@@ -237,7 +237,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * @type {string}
    */
   @property()
-  label: string = null;
+  override label: string = null;
 
   //----------------------------------
   //  open
@@ -270,7 +270,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
    * @autocast
    */
   @property()
-  viewModel: ButtonMenuViewModel = new ButtonMenuViewModel();
+  override viewModel = new ButtonMenuViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -278,7 +278,7 @@ class ButtonMenu extends HandleOwnerMixin(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  render(): VNode {
+  override render(): VNode {
     return (
       <div
         afterCreate={this._afterRootNodeCreate}

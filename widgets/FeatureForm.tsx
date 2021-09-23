@@ -2,10 +2,15 @@
  * The FeatureForm widget displays attributes of a feature. This widget
  * renders input fields based on the feature's attributes and whether
  * the field allows editing. You can configure field groupings to aid in display
- * and organization of form data. Use this widget,
- * in combination with {@link module:esri/layers/FeatureLayer#applyEdits FeatureLayer.applyEdits},
+ * and organization of form data. All of the properties and field configurations set on the form are handled via its {@link module:esri/widgets/FeatureForm#formTemplate template}.
+ *
+ * Use this widget, in combination with {@link module:esri/layers/FeatureLayer#applyEdits FeatureLayer.applyEdits},
  * to enable an end user to update a feature's attribute on a specified
  * editable feature layer(s).
+ *
+ * ::: esri-md class="panel trailer-1"
+ * Set any field configurations via {@link module:esri/form/elements/FieldElement FieldElement(s)} or {@link module:esri/form/elements/GroupElement GroupElement(s)} within the form's template {@link module:esri/widgets/FeatureForm#formTemplate elements}.
+ * :::
  *
  * ![featureForm](../assets/img/apiref/widgets/featureForm.png)
  *
@@ -21,14 +26,13 @@
  * @module esri/widgets/FeatureForm
  * @since 4.9
  *
- * @see [FeatureForm.tsx (widget view)]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureForm.tsx)
+ * @see [FeatureForm.tsx (widget view) [deprecated since 4.21]]({{ JSAPI_ARCGIS_JS_API_URL }}/widgets/FeatureForm.tsx)
  * @see [FeatureForm.scss]({{ JSAPI_ARCGIS_JS_API_URL }}/themes/base/widgets/_FeatureForm.scss)
  * @see [Sample - Update Feature Attributes](../sample-code/editing-groupedfeatureform/index.html)
  * @see [Sample - Update FeatureLayer using ApplyEdits](../sample-code/editing-applyedits/index.html)
  * @see [Sample - Advanced Attribute Editing](../sample-code/editing-featureform-fieldvisibility/index.html)
  * @see module:esri/widgets/FeatureForm/FeatureFormViewModel
  * @see module:esri/form/FormTemplate
- * @see module:esri/widgets/FeatureForm/InputField
  * @see module:esri/views/ui/DefaultUI
  * @see module:esri/layers/FeatureLayer
  *
@@ -40,9 +44,6 @@
  * });
  */
 
-// @esri.calcite-components.dist.custom-elements.bundles
-import "@esri/calcite-components/dist/custom-elements/bundles/switch";
-
 // esri
 import Graphic from "esri/Graphic";
 import { getLocale } from "esri/intl";
@@ -52,9 +53,6 @@ import { aliasOf, property, subclass } from "esri/core/accessorSupport/decorator
 
 // esri.form
 import FormTemplate from "esri/form/FormTemplate";
-
-// esri.intl
-import { loadMoment } from "esri/intl/moment";
 
 // esri.layers
 import FeatureLayer from "esri/layers/FeatureLayer";
@@ -82,17 +80,21 @@ import { Heading, HeadingLevel } from "esri/widgets/support/Heading";
 import { VNode } from "esri/widgets/support/interfaces";
 import { messageBundle, tsx, vmEvent } from "esri/widgets/support/widget";
 
-interface FormattedDateParts {
-  date: string;
-  time: string;
-}
+// luxon
+import { DateTime } from "luxon";
 
-interface DateEditParts {
-  date: InProgressEdit;
-  time: InProgressEdit;
-}
+type DatePart = "date" | "time";
+
+type FormattedDateParts = {
+  [Part in DatePart]: string;
+};
+
+type DateFieldEditParts = {
+  [Part in DatePart]: InProgressEdit;
+};
 
 interface InProgressEdit {
+  active: boolean;
   value: string;
   input: HTMLInputElement;
 }
@@ -144,9 +146,10 @@ const CSS = {
   select: "esri-select"
 };
 
+// https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 const defaultDateFormat = {
-  datePattern: "L",
-  timePattern: "LTS"
+  datePattern: "D",
+  timePattern: "tt"
 };
 
 function isGroupField(value: any): value is InputFieldGroup {
@@ -256,11 +259,7 @@ class FeatureForm extends Widget {
     this._afterInputCreateOrUpdate = this._afterInputCreateOrUpdate.bind(this);
   }
 
-  protected async loadLocale(): Promise<void> {
-    this._moment = await loadMoment();
-  }
-
-  initialize(): void {
+  protected override initialize(): void {
     this.own(
       this.watch("feature", () => {
         const groupOrInput = this._getFocusableInput("forward");
@@ -286,7 +285,11 @@ class FeatureForm extends Widget {
     );
   }
 
-  destroy(): void {
+  protected override loadDependencies(): Promise<any> {
+    return import("@esri/calcite-components/dist/custom-elements/bundles/switch");
+  }
+
+  override destroy(): void {
     this._userUpdatedInputFieldNames.clear();
     this._userUpdatedInputFieldNames = null;
   }
@@ -297,7 +300,7 @@ class FeatureForm extends Widget {
   //
   //--------------------------------------------------------------------------
 
-  private _activeDateEdit: DateEditParts = null;
+  private _activeDateFieldEdit: DateFieldEditParts = null;
 
   private _activeInputName: string = null;
 
@@ -306,8 +309,6 @@ class FeatureForm extends Widget {
   private _fieldToInitialIncompatibleDomainValue = new Map<string, FieldValue>();
 
   private _switchFieldsWithInitialIncompatibleValue = new Set<string>();
-
-  private _moment: typeof import("moment") = null;
 
   private _userUpdatedInputFieldNames = new Set<string>();
 
@@ -334,6 +335,8 @@ class FeatureForm extends Widget {
    * @type {string}
    * @since 4.16
    * @deprecated since version 4.20. Set it via the {@link module:esri/form/FormTemplate#description FormTemplate.description}.
+   *
+   * @ignore
    */
 
   @aliasOf("viewModel.description")
@@ -389,6 +392,8 @@ class FeatureForm extends Widget {
    * @autocast
    * @deprecated since version 4.16. Use {@link module:esri/form/elements/FieldElement esri/form/elements/FieldElement} and/or {@link module:esri/form/elements/GroupElement GroupElement} instead.
    *
+   * @ignore
+   *
    */
   @aliasOf("viewModel.fieldConfig")
   fieldConfig: FieldConfig[] = null;
@@ -400,12 +405,7 @@ class FeatureForm extends Widget {
   /**
    * The associated {@link module:esri/form/FormTemplate template} used for the form.
    *
-   * The {@link module:esri/form/FormTemplate formTemplate} is where you configure
-   * how the form should display. Properties, i.e. `title`, `description`, `fieldConfigs`, etc,
-   * set directly within the {@link module:esri/widgets/FeatureForm} take precedence
-   * over any similar properties set within the `formTemplate`. This will change in a future release
-   * as the recommended way to set the form's properties is via its {@link module:esri/widgets/FeatureForm#formTemplate template}.
-   *
+   * The {@link module:esri/form/FormTemplate formTemplate} is where you configure how the form should display and set any associated properties for the form, e.g. title, description, field elements, etc.
    *
    * @name formTemplate
    * @type {module:esri/form/FormTemplate}
@@ -500,7 +500,7 @@ class FeatureForm extends Widget {
   @property({
     aliasOf: { source: "messages.widgetLabel", overridable: true }
   })
-  label: string = undefined;
+  override label: string = undefined;
 
   //----------------------------------
   //  layer
@@ -516,7 +516,6 @@ class FeatureForm extends Widget {
    * @instance
    *
    * @example
-   *
    * const form = new FeatureForm({
    *   container: "formDiv", // HTML div
    *   layer: featureLayer // Feature layer
@@ -580,6 +579,8 @@ class FeatureForm extends Widget {
    * @since 4.16
    * @see [headingLevel](#headingLevel)
    * @deprecated since version 4.20. Set it via the {@link module:esri/form/FormTemplate#title FormTemplate.title}.
+   *
+   * @ignore
    */
   @aliasOf("viewModel.title")
   title: string = null;
@@ -601,7 +602,7 @@ class FeatureForm extends Widget {
    */
   @property()
   @vmEvent(["value-change", "submit"])
-  viewModel: FeatureFormViewModel = new FeatureFormViewModel();
+  override viewModel = new FeatureFormViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -657,7 +658,7 @@ class FeatureForm extends Widget {
     return null;
   }
 
-  render(): VNode {
+  override render(): VNode {
     const { state } = this.viewModel;
 
     return (
@@ -808,7 +809,7 @@ class FeatureForm extends Widget {
     for (let i = searchStartIndex; i < allInputs.length; i++) {
       const current = allInputs[i];
 
-      if (current.visible && current.editable) {
+      if (current.visible) {
         return current;
       }
     }
@@ -883,6 +884,36 @@ class FeatureForm extends Widget {
     );
   }
 
+  protected _parseDateTime(
+    valueAsText: string,
+    inputField: InputField,
+    part?: DatePart
+  ): FieldValue {
+    if (part) {
+      let parsedActivePart = DateTime.fromJSDate(this._parseDate(valueAsText, part));
+      const parsedInactivePart = DateTime.fromMillis((inputField.value as number) ?? Date.now());
+
+      if (part === "date") {
+        parsedActivePart = parsedActivePart.set({
+          hour: parsedInactivePart.hour,
+          minute: parsedInactivePart.minute,
+          second: parsedInactivePart.second
+        });
+      } else {
+        parsedActivePart = parsedActivePart.set({
+          day: parsedInactivePart.day,
+          month: parsedInactivePart.month,
+          year: parsedInactivePart.year
+        });
+      }
+
+      return parsedActivePart.isValid ? parsedActivePart.toMillis() : null;
+    }
+
+    const parsedDateTime = DateTime.fromJSDate(this._parseDate(valueAsText));
+    return parsedDateTime.isValid ? parsedDateTime.toMillis() : null;
+  }
+
   protected renderDateInputField(
     value: DateFieldValue,
     props: ReturnType<FeatureForm["getCommonInputProps"]>
@@ -893,7 +924,13 @@ class FeatureForm extends Widget {
     const timeFormatHintId = `${commonHintId}-time`;
     const inputField = props["data-field"];
     const { includeTime } = inputField;
-    const { date, time } = this._formatDate(value);
+    const { _activeDateFieldEdit } = this;
+    let { date, time } = this._formatDate(value);
+
+    if (_activeDateFieldEdit) {
+      date = _activeDateFieldEdit.date.input?.value ?? date;
+      time = _activeDateFieldEdit.time.input?.value ?? time;
+    }
 
     return (
       <div key={`${props.key}-date`} class={CSS.dateInputContainer}>
@@ -932,14 +969,19 @@ class FeatureForm extends Widget {
   }
 
   protected renderUnsupportedField(inputField: InputField): VNode {
-    const value = this.viewModel.getValue(inputField.name);
+    const props = this.getCommonInputProps(inputField);
 
     return (
       <input
+        afterCreate={props.afterCreate}
+        afterUpdate={props.afterUpdate}
         class={this.classes(CSS.input, CSS.inputField, CSS.inputDisabled)}
-        disabled={true}
+        data-field={props["data-field"]}
+        onfocus={props.onfocus}
+        readOnly={true}
+        tabIndex={props.tabIndex}
         type="text"
-        value={`${value}`}
+        value={props.value}
       />
     );
   }
@@ -959,7 +1001,7 @@ class FeatureForm extends Widget {
 
     this.registerIncompatibleValue(value, values, inputField, (incompatibleValue) => {
       options.unshift(
-        <option value={`${incompatibleValue}`} key="incompatible-option" disabled={true}>
+        <option value={`${incompatibleValue}`} key="incompatible-option" readOnly={true}>
           {incompatibleValue}
         </option>
       );
@@ -1133,7 +1175,7 @@ class FeatureForm extends Widget {
     const { editable, group, hint, maxLength, minLength, name, required, type, valid } = inputField;
     const value = viewModel.getValue(name);
     const userUpdated = this._userUpdatedInputFieldNames.has(name);
-    const disabled = !editable;
+    const readOnly = !editable;
     const shouldPreventTabbing = groupDisplay === "all" && group?.state === "collapsed";
 
     return {
@@ -1143,17 +1185,18 @@ class FeatureForm extends Widget {
       "class": this.classes(
         CSS.input,
         CSS.inputField,
-        disabled ? CSS.inputDisabled : null,
+        readOnly ? CSS.inputDisabled : null,
         userUpdated && !valid ? CSS.inputInvalid : null
       ),
       "key": name,
       "minlength": minLength > -1 ? `${minLength}` : "",
       "maxlength": maxLength > -1 ? `${maxLength}` : "",
       ...this._getNumberFieldConstraints(inputField),
-      disabled,
+      readOnly,
       "value": value == null ? "" : `${value}`,
       "data-field": inputField,
       "onfocus": this._handleInputFocus,
+      "oninput": this._handleInputInput,
       "onblur": this._handleInputBlur,
       "onkeydown": this._handleInputKeyDown,
       "onmousedown": type === "number" ? this._handleNumberInputMouseDown : null,
@@ -1182,10 +1225,8 @@ class FeatureForm extends Widget {
   private _handleNumberInputMouseDown({ target }: Event): void {
     const input = target as HTMLInputElement;
 
-    if (!input.disabled) {
-      // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1012818
-      input.focus();
-    }
+    // workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1012818
+    input.focus();
 
     this.scheduleRender();
   }
@@ -1214,7 +1255,6 @@ class FeatureForm extends Widget {
       this._fieldToInitialIncompatibleDomainValue.get(inputField.name) === inputField.value;
 
     const shouldAutoFocusField =
-      inputField.editable &&
       this._fieldFocusNeeded &&
       activeInput === inputField &&
       (inputField.editorType !== "radio-buttons" ||
@@ -1229,137 +1269,124 @@ class FeatureForm extends Widget {
 
   private _handleInputFocus(event: FocusEvent): void {
     const input = event.target as HTMLInputElement;
-    this._activeInputName = (input["data-field"] as InputField).name;
+    const inputField: InputField = input["data-field"] as InputField;
+
+    this._activeInputName = inputField.name;
+
+    if (inputField.type !== "date") {
+      return;
+    }
+
+    this._syncDateFieldEdits(input);
   }
 
   private _handleInputBlur(event: FocusEvent): void {
     const input = event.target as HTMLInputElement;
     const inputField: InputField = input["data-field"] as InputField;
-    const maybeNextInput = event.relatedTarget as HTMLInputElement;
 
-    const nextInputField: InputField = maybeNextInput && maybeNextInput["data-field"];
+    if (inputField.type === "date") {
+      const maybeNextInput = event.relatedTarget as HTMLInputElement;
+      const nextInputField: InputField = maybeNextInput && maybeNextInput["data-field"];
 
-    this._syncDateEditsBeforeValueCommit(input);
+      const willEditSameDateInputField =
+        nextInputField &&
+        inputField.type === "date" &&
+        nextInputField.type === "date" &&
+        inputField.field === nextInputField.field;
 
-    const willEditSameDate =
-      nextInputField &&
-      inputField.type === "date" &&
-      nextInputField.type === "date" &&
-      inputField.field === nextInputField.field;
+      if (willEditSameDateInputField) {
+        const fillInDate = input.value !== "" && maybeNextInput.value === "";
 
-    if (willEditSameDate) {
-      const fillInDate = input.value !== "" && maybeNextInput.value === "";
+        if (fillInDate) {
+          const part = maybeNextInput.getAttribute("data-date-part") as DatePart;
+          maybeNextInput.value = this._formatDate((inputField.value as number) ?? Date.now())[part];
 
-      if (fillInDate) {
-        const part = maybeNextInput.getAttribute("data-date-part") as keyof FormattedDateParts;
-        maybeNextInput.value = this._formatDate(Date.now())[part];
+          if (this._parseDate(input.value, input.getAttribute("data-date-part") as DatePart)) {
+            // updated value will be valid, so we skip existing value for parsing
+            this._commitInputValue(event.target as HTMLInputElement, true, false);
+          }
+        }
+
+        // we'll check date value and adjust when neither date field input is focused
+        return;
       }
-
-      // hold off on processing date until both parts are blurred
-      return;
     }
 
-    if (inputField.editorType === "radio-buttons" && !input.checked) {
-      return;
-    }
-
-    this._commitValue(input);
+    this._commitInputValue(input);
     this.scheduleRender();
   }
 
   private _handleRadioInputChange = (event: Event): void => {
-    this._updateFieldValue(event.target as HTMLInputElement);
+    this._commitInputValue(event.target as HTMLInputElement);
   };
 
-  private _commitValue(input: HTMLInputElement): void {
+  private _commitInputValue(
+    input: HTMLInputElement | HTMLSelectElement,
+    atomic = false,
+    requireExistingDateValueToParse = true /* only applicable with atomic */
+  ): void {
     const inputField: InputField = input["data-field"] as InputField;
 
-    if (this._activeDateEdit) {
-      const { date: dateEdits, time: timeEdits } = this._activeDateEdit;
-      const dateValue: string = this._getDateEditValue(inputField, "date");
-      const timeValue: string = this._getDateEditValue(inputField, "time");
-      const clearDate = dateValue === "" || timeValue === "";
+    if (this._activeDateFieldEdit) {
+      const { date: dateEdits, time: timeEdits } = this._activeDateFieldEdit;
+      const parsedDateValue = this._parseDateTime(
+        input.value,
+        inputField,
+        dateEdits.active ? "date" : "time"
+      );
 
-      if (dateEdits) {
-        const { input } = dateEdits;
-        input.value = clearDate ? "" : dateValue;
+      const hasDateValue = this.viewModel.getValue(inputField.name) !== null;
+      const bothPartsFilledOut = dateEdits.input && timeEdits.input;
+      const invalidOrNoValue = parsedDateValue === null;
+
+      if (atomic) {
+        // atomic updates never clear or commit invalid values
+        if (invalidOrNoValue) {
+          return;
+        }
+
+        const parsedValueValid =
+          bothPartsFilledOut || !requireExistingDateValueToParse || hasDateValue;
+
+        if (parsedValueValid) {
+          this._updateDateFieldValue(inputField, parsedDateValue);
+        }
+      } else {
+        const shouldClearValue = dateEdits.input?.value === "" || timeEdits.input?.value === "";
+
+        // clear
+        if (shouldClearValue) {
+          this._updateDateFieldValue(inputField, null);
+        }
+        // or discard invalid values
+        else if (bothPartsFilledOut) {
+          const dateAndTimeAsText = `${dateEdits.input.value} ${timeEdits.input.value}`;
+          const parsedDateAndTimeValue = this._parseDateTime(dateAndTimeAsText, inputField);
+          const parsedDateAndTimeValueValid = parsedDateAndTimeValue !== null;
+
+          if (parsedDateAndTimeValueValid || !hasDateValue) {
+            this._updateDateFieldValue(inputField, parsedDateAndTimeValue);
+          }
+        }
+
+        this._activeDateFieldEdit = null;
       }
 
-      if (timeEdits) {
-        const { input } = timeEdits;
-        input.value = clearDate ? "" : timeValue;
-      }
-
-      this._activeDateEdit = null;
-
-      if (dateEdits && timeEdits) {
-        this._updateDateFieldValue(dateEdits.input, timeEdits.input);
-        return;
-      }
+      return;
     }
 
     this._updateFieldValue(input);
   }
 
-  private _getDateEditValue(inputField: InputField, part: "date" | "time"): string {
-    const edits = this._activeDateEdit[part];
-
-    if (!edits) {
-      return undefined;
-    }
-
-    const { value: dateValue } = edits;
-
-    if (dateValue === "") {
-      return "";
-    }
-
-    const date = this._parseDate(edits.value, part);
-
-    if (!date) {
-      // if invalid, use previous value
-      return this._formatDate(inputField.value as DateFieldValue)[part];
-    }
-
-    return this._formatDate(date.getTime())[part];
-  }
+  private _handleInputInput = (event: InputEvent): void => {
+    this._commitInputValue(event.target as HTMLInputElement, true);
+  };
 
   private _handleInputKeyDown(event: KeyboardEvent): void {
-    const { key, altKey, ctrlKey, metaKey, shiftKey } = event;
+    const { key, altKey, ctrlKey, metaKey } = event;
 
     const input = event.target as HTMLInputElement;
     const inputField = input["data-field"] as InputField;
-
-    if (key === "Tab") {
-      const direction = shiftKey ? "backward" : "forward";
-      const datePart = input.getAttribute("data-date-part") as keyof FormattedDateParts;
-      this._syncDateEditsBeforeValueCommit(input);
-
-      const movingToRelatedDateOrTimeInputField =
-        (direction === "backward" && datePart === "time") ||
-        (direction === "forward" && datePart === "date" && inputField.includeTime);
-
-      if (movingToRelatedDateOrTimeInputField) {
-        return;
-      }
-
-      this._commitValue(input);
-      const latestInputField = this.viewModel.findField(inputField.name);
-      const nextInputFocusTarget = this._getFocusableInput(direction, latestInputField);
-      const movedBetweenGroups = latestInputField.group === nextInputFocusTarget?.group;
-
-      this._activeInputName = nextInputFocusTarget?.name;
-
-      if (nextInputFocusTarget && (this.groupDisplay === "sequential" || movedBetweenGroups)) {
-        event.preventDefault();
-        this._fieldFocusNeeded = true;
-      } else {
-        // ensure to-be-removed fields are removed to lose browser focus
-        this.renderNow();
-      }
-
-      return;
-    }
 
     if (key !== "Enter") {
       const { type } = inputField.field;
@@ -1387,24 +1414,23 @@ class FeatureForm extends Widget {
       inputField.group.state = "expanded";
       return;
     }
-
-    this._updateFieldValue(event.target as HTMLInputElement);
-    this.scheduleRender();
   }
 
-  private _syncDateEditsBeforeValueCommit(input: HTMLInputElement): void {
+  private _syncDateFieldEdits(input: HTMLInputElement): void {
     const inputField: InputField = input["data-field"] as InputField;
 
     if (inputField.type !== "date") {
       return;
     }
 
-    const datePart = input.getAttribute("data-date-part") as keyof FormattedDateParts;
+    const datePart = input.getAttribute("data-date-part") as DatePart;
+    const activePart = datePart === "date" ? "date" : "time";
+    const inactivePart = datePart === "date" ? "time" : "date";
 
-    this._activeDateEdit = {
-      ...this._activeDateEdit,
-      [datePart]: { value: input.value, input }
-    };
+    this._activeDateFieldEdit = {
+      [activePart]: { value: input.value, input, active: true },
+      [inactivePart]: { ...this._activeDateFieldEdit?.[inactivePart], active: false }
+    } as DateFieldEditParts;
   }
 
   private _updateFieldValue(input: HTMLInputElement | HTMLSelectElement): void {
@@ -1416,13 +1442,13 @@ class FeatureForm extends Widget {
   /**
    * This method helps process changes to both date and time as one edit.
    *
-   * @private
+   * @ignore
    */
-  private _updateDateFieldValue(dateInput: HTMLInputElement, timeInput: HTMLInputElement): void {
-    const inputField: InputField = dateInput["data-field"]; // only need one since both refer to the same field
-    this.viewModel.setValue(inputField.name, this._parseDateTimeValue(dateInput, timeInput));
-    this._userUpdatedInputFieldNames.add(inputField.name);
+  private _updateDateFieldValue(dateInputField: InputField, dateFieldValue: FieldValue): void {
+    this.viewModel.setValue(dateInputField.name, dateFieldValue);
+    this._userUpdatedInputFieldNames.add(dateInputField.name);
   }
+
   private _parseValue(
     input: HTMLInputElement | HTMLSelectElement | HTMLCalciteSwitchElement
   ): FieldValue {
@@ -1463,78 +1489,44 @@ class FeatureForm extends Widget {
         return utcDate;
       }
 
-      const part = input.getAttribute("data-date-part") as keyof FormattedDateParts;
+      const part = input.getAttribute("data-date-part") as DatePart;
       const parsed = this._parseDate(valueAsText, part);
 
       if (!parsed) {
         return null;
       }
 
-      const moment = this._moment;
-
-      const latest = moment(parsed);
+      let latest = DateTime.fromJSDate(parsed);
 
       const domain = inputField.domain;
-      const now = moment();
+      const now = DateTime.now();
       let defaultDate = now;
 
       if (domain && domain.type === "range") {
-        const maxDate = moment(domain.maxValue);
+        const maxDate = DateTime.fromMillis(domain.maxValue);
 
-        if (!now.isAfter(maxDate)) {
+        if (now < maxDate) {
           defaultDate = maxDate;
         }
       }
 
       const prevValue = this.viewModel.getValue(inputField.name);
-      const prev = moment(prevValue != null ? prevValue : defaultDate);
+      const prev = prevValue != null ? DateTime.fromMillis(prevValue as number) : defaultDate;
 
       if (part === "date") {
-        latest.hour(prev.hour());
-        latest.minutes(prev.minutes());
-        latest.seconds(prev.seconds());
+        latest = latest.set({ hour: prev.hour, minute: prev.minute, second: prev.second });
       } else {
-        latest.date(prev.date());
-        latest.month(prev.month());
-        latest.year(prev.year());
+        latest = latest.set({ day: prev.day, month: prev.month, year: prev.year });
       }
 
-      return latest.valueOf();
+      return latest.toMillis();
     }
 
     return valueAsText;
   }
 
-  private _parseDateTimeValue(
-    dateInput: HTMLInputElement | HTMLSelectElement,
-    timeInput?: HTMLInputElement
-  ): FieldValue {
-    const dateValueAsText = dateInput.value;
-    const timeValueAsText = timeInput.value;
-
-    if (!dateValueAsText || !timeValueAsText) {
-      return null;
-    }
-
-    const parsedDate = this._parseDate(dateValueAsText, "date");
-    const parsedTime = this._parseDate(timeValueAsText, "time");
-
-    if (!parsedDate || !parsedTime) {
-      return null;
-    }
-
-    const latestDate = this._moment(parsedDate);
-    const latestTime = this._moment(parsedTime);
-
-    latestDate.hour(latestTime.hour());
-    latestDate.minutes(latestTime.minutes());
-    latestDate.seconds(latestTime.seconds());
-
-    return latestDate.valueOf();
-  }
-
   private _handleOptionChange(event: Event): void {
-    this._updateFieldValue(event.target as HTMLSelectElement);
+    this._commitInputValue(event.target as HTMLSelectElement);
     this.scheduleRender();
   }
 
@@ -1590,27 +1582,35 @@ class FeatureForm extends Widget {
       return { date: "", time: "" };
     }
 
-    const date = this._moment(dateUTC);
+    const dt = DateTime.fromMillis(dateUTC, { locale: getLocale(), numberingSystem: "latn" });
 
     return {
-      date: date.format(defaultDateFormat.datePattern),
-      time: date.format(defaultDateFormat.timePattern)
+      // this isn't using `defaultDateFormat.datePattern` since the Luxon `D` pattern
+      // uses "numeric" for month and day, which isn't the same as the Moment `L` pattern
+      date: dt.toLocaleString({ year: "numeric", month: "2-digit", day: "2-digit" }),
+      time: dt.toFormat(defaultDateFormat.timePattern)
     };
   }
 
-  private _parseDate(dateString: string, part: "date" | "time"): Date {
+  private _parseDate(dateString: string, part?: DatePart): Date {
     if (dateString == null || dateString === "") {
       return null;
     }
 
-    const parsed = this._moment(
-      dateString,
-      part === "date" ? defaultDateFormat.datePattern : defaultDateFormat.timePattern,
-      getLocale(),
-      false
-    );
+    const { timePattern, datePattern } = defaultDateFormat;
 
-    return parsed.isValid() ? parsed.toDate() : null;
+    const format = part
+      ? part === "date"
+        ? datePattern
+        : timePattern
+      : `${datePattern} ${timePattern}`;
+
+    const parsed = DateTime.fromFormat(dateString, format, {
+      locale: getLocale(),
+      numberingSystem: "latn"
+    });
+
+    return parsed.isValid ? parsed.toJSDate() : null;
   }
 }
 

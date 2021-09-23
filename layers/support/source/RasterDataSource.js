@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/JSONSupport","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/enumeration","../../../core/accessorSupport/decorators/subclass"],(function(e,r,o,t,a,s,c,p,u,n){"use strict";var i;e.RasterDataSource=i=function(e){function o(r){var o;return(o=e.call(this,r)||this).type="raster",o}return r._inheritsLoose(o,e),o.prototype.clone=function(){const{workspaceId:e,dataSourceName:r}=this;return new i({workspaceId:e,dataSourceName:r})},o}(t.JSONSupport),o.__decorate([u.enumeration({raster:"raster"})],e.RasterDataSource.prototype,"type",void 0),o.__decorate([a.property({type:String,json:{write:!0}})],e.RasterDataSource.prototype,"dataSourceName",void 0),o.__decorate([a.property({type:String,json:{write:!0}})],e.RasterDataSource.prototype,"workspaceId",void 0),e.RasterDataSource=i=o.__decorate([n.subclass("esri.layers.support.source.RasterDataSource")],e.RasterDataSource),Object.defineProperty(e,"__esModule",{value:!0})}));

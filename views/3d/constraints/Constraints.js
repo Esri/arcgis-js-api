@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.20/esri/copyright.txt for details.
+See https://js.arcgis.com/4.21/esri/copyright.txt for details.
 */
 define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../chunks/tslib.es6","../../../core/Accessor","../../../core/accessorSupport/decorators/property","../../../core/has","../../../core/accessorSupport/ensureType","../../../core/Logger","../../../core/accessorSupport/decorators/subclass","./AltitudeConstraint","./ClipDistanceConstraint","./TiltConstraint"],(function(t,e,r,s,o,n,a,i,c,p,u,l){"use strict";t.Constraints=function(t){function r(){var e;return(e=t.apply(this,arguments)||this).tilt=new l.default,e.altitude=new p.default,e.clipDistance=new u.default,e}return e._inheritsLoose(r,t),r}(s),r.__decorate([o.property({type:l.default})],t.Constraints.prototype,"tilt",void 0),r.__decorate([o.property({type:p.default})],t.Constraints.prototype,"altitude",void 0),r.__decorate([o.property({type:u.default})],t.Constraints.prototype,"clipDistance",void 0),t.Constraints=r.__decorate([c.subclass("esri.views.3d.constraints.Constraints")],t.Constraints);var d=t.Constraints;t.default=d,Object.defineProperty(t,"__esModule",{value:!0})}));
