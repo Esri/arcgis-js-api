@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/_rollupPluginBabelHelpers","../../core/Error","../../core/maybe","../../intl/messages","./support/clusterUtils","../../views/2d/layers/support/clusterUtils"],(function(e,r,t,n,l,s,a){"use strict";function i(e){return p.apply(this,arguments)}function p(){return(p=r._asyncToGenerator((function*(e){const{layer:r,renderer:n}=e;yield r.load();const l=n||r.renderer;if(!a.isClusterCompatibleRenderer(l))throw new t("clusters-popup:invalid-parameters","'renderer' is not valid");return{layer:r,renderer:l}}))).apply(this,arguments)}function u(e){return o.apply(this,arguments)}function o(){return(o=r._asyncToGenerator((function*(e){const[{renderer:r,layer:t},a]=yield Promise.all([i(e),l.fetchMessageBundle("esri/smartMapping/t9n/smartMapping")]),p=yield s.createPopupTemplate(t,r);let u=null;return n.isSome(p)?(u={name:"clusters",title:a.clusters.templateTitle,value:p},{primaryTemplate:u,secondaryTemplates:[]}):null}))).apply(this,arguments)}e.getTemplates=u,Object.defineProperty(e,"__esModule",{value:!0})}));

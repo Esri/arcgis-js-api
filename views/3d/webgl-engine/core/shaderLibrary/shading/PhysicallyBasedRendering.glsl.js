@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","./AnalyticalSkyModel.glsl","./PiUtils.glsl","../../shaderModules/interfaces"],(function(e,o,t,a){"use strict";function n(e,n){const l=e.fragment.code;e.include(t.PiUtils),3===n.pbrMode||4===n.pbrMode?(l.add(a.glsl`
     struct PBRShadingWater

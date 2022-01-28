@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/vec2","../../../../chunks/vec2f64","../../../../chunks/vec4f64","../core/shaderLibrary/Slice.glsl","../core/shaderLibrary/hud/AlignPixel.glsl","../core/shaderLibrary/hud/HUD.glsl","../core/shaderLibrary/hud/HUDOcclusionPass.glsl","../core/shaderLibrary/output/OutputHighlight.glsl","../core/shaderLibrary/shading/VisualVariables.glsl","../core/shaderLibrary/util/AlphaDiscard.glsl","../core/shaderLibrary/util/ColorConversion.glsl","../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../core/shaderLibrary/util/ScreenSizePerspective.glsl","../core/shaderModules/interfaces","../core/shaderModules/ShaderBuilder","../../../../chunks/HUDMaterial.glsl"],(function(r,e,l,s,i,a,c,o,d,u,n,h,t,g,b,y,L){"use strict";r.bindHUDMaterialUniforms=L.bindHUDMaterialUniforms,r.build=L.build,r.calculateAnchorPosForRendering=L.calculateAnchorPosForRendering,Object.defineProperty(r,"__esModule",{value:!0})}));

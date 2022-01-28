@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","./PositionAttribute.glsl","../../shaderModules/interfaces"],(function(e,o,i){"use strict";function r(e,r){e.attributes.add("featureValue","vec4"),e.vertex.code.add(i.glsl`bool isCapVertex() {
 return featureValue.w == 1.0;

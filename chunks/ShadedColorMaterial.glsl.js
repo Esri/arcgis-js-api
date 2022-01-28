@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSizeScaling.glsl","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/AlphaDiscard.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,i,l,a,o,d,n,s,t){"use strict";function g(e){const g=new t.ShaderBuilder;return g.include(l.Transform,{linearDepth:!1}),g.include(r.ScreenSizeScaling,{}),g.include(i.Slice,e),g.fragment.include(n.ColorConversion),g.vertex.uniforms.add("proj","mat4").add("view","mat4"),g.fragment.uniforms.add("color","vec4"),g.attributes.add("position","vec3"),g.varyings.add("vWorldPosition","vec3"),e.multipassTerrainEnabled&&g.varyings.add("depth","float"),e.screenSizeEnabled&&g.attributes.add("offset","vec3"),e.shadingEnabled&&(g.vertex.uniforms.add("viewNormal","mat4"),g.fragment.uniforms.add("shadedColor","vec4").add("shadingDirection","vec3"),g.attributes.add("normal","vec3"),g.varyings.add("vViewNormal","vec3")),g.vertex.code.add(s.glsl`
     void main(void) {
@@ -24,4 +24,4 @@ vec4 finalColor = mix(color, shadedColor, shadingFactor);`):g.fragment.code.add(
 
       ${0===e.output?s.glsl`gl_FragColor = highlightSlice(finalColor, vWorldPosition); ${e.OITEnabled?"gl_FragColor = premultiplyAlpha(gl_FragColor);":""}`:""}
     }
-    `),g}var c=Object.freeze({__proto__:null,build:g});e.ShadedColorMaterialShader=c,e.build=g}));
+    `),g}const c=Object.freeze({__proto__:null,build:g});e.ShadedColorMaterialShader=c,e.build=g}));

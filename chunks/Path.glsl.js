@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ForwardLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/PathVertexPosition.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateAmbientOcclusion.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassTerrainTest.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/Normals.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/NormalUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/ColorConversion.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,i,o,r,l,d,n,t,s,c,g,v,m,u,p,h){"use strict";function b(e){const b=new h.ShaderBuilder;return b.vertex.uniforms.add("proj","mat4").add("view","mat4").add("camPos","vec3").add("localOrigin","vec3"),b.varyings.add("vpos","vec3"),b.include(r.PathVertexPosition,e),0!==e.output&&7!==e.output||(b.include(o.Transform,{linearDepth:!1}),e.receiveShadows&&b.include(m.ReadShadowMap,e),b.include(a.ForwardLinearDepth,e),b.varyings.add("vnormal","vec3"),b.varyings.add("vcolor","vec4"),e.multipassTerrainEnabled&&b.varyings.add("depth","float"),b.vertex.code.add(p.glsl`
       void main() {
@@ -64,4 +64,4 @@ gl_Position = transformPosition(proj, view, vpos);
 }`),b.include(i.Slice,e),b.include(d.OutputHighlight),b.fragment.code.add(p.glsl`void main() {
 discardBySlice(vpos);
 outputHighlight();
-}`)),b}var w=Object.freeze({__proto__:null,build:b});e.PathShader=w,e.build=b}));
+}`)),b}const w=Object.freeze({__proto__:null,build:b});e.PathShader=w,e.build=b}));

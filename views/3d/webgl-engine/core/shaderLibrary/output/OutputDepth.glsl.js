@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(t,e,a){"use strict";function l(t,l){t.fragment.include(e.RgbaFloatEncoding),3===l.output?(t.extensions.add("GL_OES_standard_derivatives"),t.fragment.code.add(a.glsl`float _calculateFragDepth(const in float depth) {
 const float SLOPE_SCALE = 2.0;

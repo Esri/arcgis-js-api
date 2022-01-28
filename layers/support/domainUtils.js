@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+*/
+define(["exports"],(function(a){"use strict";var e;function n(a,e){return null===r(a,e)}function r(e,n){switch(e.type){case"range":{const r="range"in e?e.range[0]:e.minValue,i="range"in e?e.range[1]:e.maxValue;if(+n<r||+n>i)return a.DomainValidationError.VALUE_OUT_OF_RANGE;break}case"coded-value":case"codedValue":if(null==e.codedValues||e.codedValues.every((a=>null==a||a.code!==n)))return a.DomainValidationError.INVALID_CODED_VALUE}return null}function i(a){if(!a||"range"!==a.type)return;return{min:"range"in a?a.range[0]:a.minValue,max:"range"in a?a.range[1]:a.maxValue}}a.DomainValidationError=void 0,(e=a.DomainValidationError||(a.DomainValidationError={})).VALUE_OUT_OF_RANGE="domain-validation-error::value-out-of-range",e.INVALID_CODED_VALUE="domain-validation-error::invalid-coded-value",a.getDomainRange=i,a.isValidDomainValue=n,a.validateDomainValue=r,Object.defineProperty(a,"__esModule",{value:!0})}));

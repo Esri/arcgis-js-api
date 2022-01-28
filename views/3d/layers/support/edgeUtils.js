@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../Color","../../../../core/has","../../../../core/maybe","../../../../core/screenUtils","../../../../chunks/vec4f64","./layerUtils"],(function(e,t,n,r,o,s,i){"use strict";function c(e){return e&&e.enabled&&(i.isExtrudeSymbol3DLayer(e)||i.isFillSymbol3DLayer(e))&&r.isSome(e.edges)}function l(e){return e&&e.enabled&&e.edges||null}function a(e,t){return u(l(e),t)}function u(e,n){if(r.isNone(e))return null;const i=r.isSome(e.color)?s.fromArray(t.toUnitRGBA(e.color)):s.fromValues(0,0,0,0),c=o.pt2px(e.size),l=o.pt2px(e.extensionLength);switch(e.type){case"solid":return f({color:i,size:c,extensionLength:l,...n});case"sketch":return d({color:i,size:c,extensionLength:l,...n});default:return}}function f(e){return{...y,...e,type:"solid"}}function d(e){return{...p,...e,type:"sketch"}}const y={color:s.fromValues(0,0,0,.2),size:1,extensionLength:0,opacity:1,objectTransparency:2},p={color:s.fromValues(0,0,0,.2),size:1,extensionLength:0,opacity:1,objectTransparency:2};e.createMaterial=a,e.createMaterialFromEdges=u,e.createSolidEdgeMaterial=f,e.hasEdges=c,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports"],(function(e){"use strict";function n(e){var n;return null!=(n=s(e))?n:t(e)}function t(e){const n=new Date(e).getTime();return Number.isNaN(n)?null:n}function s(e){var n,t,s,r;const o=u.exec(e);if(!o)return null;const i=o.groups,l=+i.year,f=+i.month-1,a=+i.day,d=+(null!=(n=i.hours)?n:"0"),c=+(null!=(t=i.minutes)?t:"0"),m=+(null!=(s=i.seconds)?s:"0");if(d>23)return null;if(c>59)return null;if(m>59)return null;const g=null!=(r=i.ms)?r:"0",T=g?+g.padEnd(3,"0").substring(0,3):0;let p;if(i.isUTC)p=Date.UTC(l,f,a,d,c,m,T);else if(i.offsetSign){const e=+i.offsetHours,n=+i.offsetMinutes;p=6e4*("+"===i.offsetSign?-1:1)*(60*e+n)+Date.UTC(l,f,a,d,c,m,T)}else p=new Date(l,f,a,d,c,m,T).getTime();return Number.isNaN(p)?null:p}const u=/^(?:(?<year>-?\d{4,})-(?<month>\d{2})-(?<day>\d{2}))(?:T(?<hours>\d{2}):(?<minutes>\d{2}):(?<seconds>\d{2})(?:\.(?<ms>\d+))?)?(?:(?<isUTC>Z)|(?:(?<offsetSign>\+|-)(?<offsetHours>\d{2}):(?<offsetMinutes>\d{2})))?$/;e.parseDate=n,e.parseJSDate=t,Object.defineProperty(e,"__esModule",{value:!0})}));

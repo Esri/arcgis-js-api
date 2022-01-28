@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../util/ScreenSizePerspective.glsl","../../shaderModules/interfaces"],(function(e,t,r){"use strict";function l(e,l){const c=e.vertex.code;l.verticalOffsetEnabled?(e.vertex.uniforms.add("verticalOffset","vec4"),l.screenSizePerspectiveEnabled&&(e.include(t.ScreenSizePerspective),e.vertex.uniforms.add("screenSizePerspectiveAlignment","vec4")),c.add(r.glsl`
     vec3 calculateVerticalOffset(vec3 worldPos, vec3 localOrigin) {

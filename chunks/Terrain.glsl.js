@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
-define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexTangent.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/NormalUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Overlay.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Skirts.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/TerrainTexture.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/HeaderComment.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,o,a,l,i,t,n,s,v,d,c,g,m){"use strict";function p(e){const p=new m.ShaderBuilder;if(p.include(c.HeaderComment,{name:"Terrain Shader",output:e.output}),p.include(v.Skirts),p.attributes.add("position","vec3"),p.attributes.add("uv0","vec2"),p.vertex.uniforms.add("proj","mat4").add("view","mat4").add("origin","vec3").add("skirtScale","float"),0===e.output){p.include(o.Transform,{linearDepth:!1}),p.include(n.NormalUtils,e),p.include(d.TerrainTexture,e);const l=0!==e.overlayMode,i=2===e.overlayMode;l&&p.include(s.Overlay,{pbrMode:3,useCustomDTRExponentForWater:!1,ssrEnabled:e.ssrEnabled,highStepCount:e.highStepCount}),i&&p.include(a.VertexTangent,e),p.varyings.add("vnormal","vec3"),p.varyings.add("vpos","vec3"),p.vertex.uniforms.add("viewNormal","mat4"),e.receiveShadows&&p.varyings.add("linearDepth","float"),e.tileBorders&&p.varyings.add("vuv","vec2"),e.atmosphere&&(p.vertex.uniforms.add("lightingMainDirection","vec3"),p.varyings.add("wnormal","vec3"),p.varyings.add("wlight","vec3")),e.screenSizePerspective&&(p.vertex.uniforms.add("screenSizePerspective","vec4"),p.varyings.add("screenSizeDistanceToCamera","float"),p.varyings.add("screenSizeCosAngle","float")),p.vertex.code.add(g.glsl`
+define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/Transform.glsl","../views/3d/webgl-engine/core/shaderLibrary/attributes/VertexTangent.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/EvaluateSceneLighting.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/NormalUtils.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Overlay.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/Skirts.glsl","../views/3d/webgl-engine/core/shaderLibrary/terrain/TerrainTexture.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/HeaderComment.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,o,a,i,l,t,n,s,v,d,c,g,m){"use strict";function p(e){const p=new m.ShaderBuilder;if(p.include(c.HeaderComment,{name:"Terrain Shader",output:e.output}),p.include(v.Skirts),p.attributes.add("position","vec3"),p.attributes.add("uv0","vec2"),p.vertex.uniforms.add("proj","mat4").add("view","mat4").add("origin","vec3").add("skirtScale","float"),0===e.output){p.include(o.Transform,{linearDepth:!1}),p.include(n.NormalUtils,e),p.include(d.TerrainTexture,e);const i=0!==e.overlayMode,l=2===e.overlayMode;i&&p.include(s.Overlay,{pbrMode:3,useCustomDTRExponentForWater:!1,ssrEnabled:e.ssrEnabled,highStepCount:e.highStepCount}),l&&p.include(a.VertexTangent,e),p.varyings.add("vnormal","vec3"),p.varyings.add("vpos","vec3"),p.vertex.uniforms.add("viewNormal","mat4"),e.receiveShadows&&p.varyings.add("linearDepth","float"),e.tileBorders&&p.varyings.add("vuv","vec2"),e.atmosphere&&(p.vertex.uniforms.add("lightingMainDirection","vec3"),p.varyings.add("wnormal","vec3"),p.varyings.add("wlight","vec3")),e.screenSizePerspective&&(p.vertex.uniforms.add("screenSizePerspective","vec4"),p.varyings.add("screenSizeDistanceToCamera","float"),p.varyings.add("screenSizeCosAngle","float")),p.vertex.code.add(g.glsl`
       void main(void) {
         vpos = position;
         vnormal = getLocalUp(vpos, origin);
@@ -21,10 +21,10 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
         gl_Position = transformPosition(proj, view, vpos);
         ${e.receiveShadows?g.glsl`linearDepth = gl_Position.w;`:""}
         forwardTextureCoordinates(uv);
-        ${l?g.glsl`setOverlayVTC(uv);`:""}
-        ${i?g.glsl`forwardVertexTangent(vnormal);`:g.glsl``}
+        ${i?g.glsl`setOverlayVTC(uv);`:""}
+        ${l?g.glsl`forwardVertexTangent(vnormal);`:g.glsl``}
       }
-    `),p.extensions.add("GL_OES_standard_derivatives"),p.extensions.add("GL_EXT_shader_texture_lod"),p.include(r.Slice,e),p.include(t.EvaluateSceneLighting,e),p.fragment.uniforms.add("camPos","vec3").add("viewDirection","vec3").add("ssaoTex","sampler2D").add("viewportPixelSz","vec4"),e.screenSizePerspective&&p.fragment.uniforms.add("screenSizePerspective","vec4"),i&&(p.fragment.uniforms.add("ovWaterTex","sampler2D"),p.fragment.uniforms.add("view","mat4")),p.fragment.code.add(g.glsl`const float sliceOpacity = 0.2;
+    `),p.extensions.add("GL_OES_standard_derivatives"),p.extensions.add("GL_EXT_shader_texture_lod"),p.include(r.Slice,e),p.include(t.EvaluateSceneLighting,e),p.fragment.uniforms.add("camPos","vec3").add("viewDirection","vec3").add("ssaoTex","sampler2D").add("viewportPixelSz","vec4"),e.screenSizePerspective&&p.fragment.uniforms.add("screenSizePerspective","vec4"),l&&(p.fragment.uniforms.add("ovWaterTex","sampler2D"),p.fragment.uniforms.add("view","mat4")),p.fragment.code.add(g.glsl`const float sliceOpacity = 0.2;
 float lum(vec3 c) {
 return (min(min(c.r, c.g), c.b) + max(max(c.r, c.g), c.b)) * 0.5;
 }`),p.fragment.code.add(g.glsl`
@@ -34,7 +34,7 @@ return (min(min(c.r, c.g), c.b) + max(max(c.r, c.g), c.b)) * 0.5;
 
         float ssao = viewportPixelSz.w < .0 ? 1.0 : texture2D(ssaoTex, (gl_FragCoord.xy - viewportPixelSz.xy) * viewportPixelSz.zw).a;
         vec4 tileColor = getTileColor();
-        ${l?g.glsl`
+        ${i?g.glsl`
             vec4 overlayColorOpaque = getOverlayColor(ovColorTex, vtcOverlay);
             vec4 overlayColor = overlayOpacity * overlayColorOpaque;
             vec4 groundColor = tileColor;
@@ -44,7 +44,7 @@ return (min(min(c.r, c.g), c.b) + max(max(c.r, c.g), c.b)) * 0.5;
         }
         ${e.atmosphere?g.glsl`
             float ndotl = clamp(vndl, 0.0, 1.0);
-            vec3 atm = vec3(max(0.0, dot(wlight, wnormal)) + clamp(1.0 - dot(-viewDirection, wnormal), 0.0, 1.0));
+            vec3 atm = vec3(clamp(1.0 - dot(-viewDirection, wnormal), 0.0, 1.0));
             atm *= clamp(1.0 - lum(tileColor.rgb) * 1.5, 0.0, 1.0); //avoid atmosphere on bright base maps
             atm *= clamp(ndotl * 2.0, 0.0, 1.0); // avoid atmosphere on dark side of the globe
             atm *= tileColor.a; // premultiply with tile alpha`:""}
@@ -57,7 +57,7 @@ return (min(min(c.r, c.g), c.b) + max(max(c.r, c.g), c.b)) * 0.5;
         vec3 additionalLight = ssao * lightingMainIntensity * additionalAmbientScale * ambientBoostFactor * lightingGlobalFactor;
 
         gl_FragColor = vec4(evaluateSceneLighting(normal, albedo, shadow, 1.0 - ssao, additionalLight), tileColor.a);
-        ${i?g.glsl`
+        ${l?g.glsl`
             vec4 overlayWaterMask = getOverlayColor(ovWaterTex, vtcOverlay);
             float waterNormalLength = length(overlayWaterMask);
             if (waterNormalLength > 0.95) {
@@ -90,7 +90,7 @@ return (min(min(c.r, c.g), c.b) + max(max(c.r, c.g), c.b)) * 0.5;
             gl_FragColor = mix(gl_FragColor, vec4(1.0, 0.0, 0.0, 1.0), edgeFactor);`:""}
         gl_FragColor = highlightSlice(gl_FragColor, vpos);
       }
-    `)}return 1!==e.output&&3!==e.output||(p.include(o.Transform,{linearDepth:!0}),p.include(l.OutputDepth,{output:e.output}),p.include(n.NormalUtils,e),p.varyings.add("linearDepth","float"),p.vertex.uniforms.add("nearFar","vec2"),p.vertex.code.add(g.glsl`void main(void) {
+    `)}return 1!==e.output&&3!==e.output||(p.include(o.Transform,{linearDepth:!0}),p.include(i.OutputDepth,{output:e.output}),p.include(n.NormalUtils,e),p.varyings.add("linearDepth","float"),p.vertex.uniforms.add("nearFar","vec2"),p.vertex.code.add(g.glsl`void main(void) {
 vec3 normal = getLocalUp(position, origin);
 vec2 uv = uv0;
 vec3 vpos = applySkirts(uv, position, normal.xyz, skirtScale);
@@ -115,11 +115,11 @@ vec2 uv = uv0;
 vec3 vpos = applySkirts(uv, position, vnormal, skirtScale);
 setOverlayVTC(uv);
 gl_Position = transformPosition(proj, view, vpos);
-}`),p.include(i.OutputHighlight),p.fragment.code.add(g.glsl`void main() {
+}`),p.include(l.OutputHighlight),p.fragment.code.add(g.glsl`void main() {
 vec4 overlayColor = getCombinedOverlayColor();
 if (overlayColor.a == 0.0) {
 gl_FragColor = vec4(0.0);
 return;
 }
 outputHighlight();
-}`)),p}var u=Object.freeze({__proto__:null,build:p});e.TerrainShader=u,e.build=p}));
+}`)),p}const u=Object.freeze({__proto__:null,build:p});e.TerrainShader=u,e.build=p}));

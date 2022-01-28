@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(o,e){"use strict";function t(o){o.code.add(e.glsl`const float MAX_RGBA_FLOAT =
 255.0 / 256.0 +

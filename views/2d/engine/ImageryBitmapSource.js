@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["../../../chunks/_rollupPluginBabelHelpers","../../../core/maybe"],(function(e,i){"use strict";return function(){function t(e,i,t){this.pixelBlock=e,this.extent=i,this.originalPixelBlock=t}var l=t.prototype;return l.render=function(e){const t=this.pixelBlock;if(i.isNone(t))return;const l=this.filter({pixelBlock:t});if(i.isNone(l.pixelBlock))return;const n=l.pixelBlock.getAsRGBA(),o=e.createImageData(l.pixelBlock.width,l.pixelBlock.height);o.data.set(n),e.putImageData(o,0,0)},l.getRenderedRasterPixels=function(){const e=this.filter({pixelBlock:this.pixelBlock});return i.isNone(e.pixelBlock)?null:{width:e.pixelBlock.width,height:e.pixelBlock.height,renderedRasterPixels:new Uint8Array(e.pixelBlock.getAsRGBA().buffer)}},e._createClass(t,[{key:"width",get:function(){return i.isSome(this.pixelBlock)?this.pixelBlock.width:0}},{key:"height",get:function(){return i.isSome(this.pixelBlock)?this.pixelBlock.height:0}}]),t}()}));

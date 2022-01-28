@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../Slice.glsl","../Transform.glsl","../attributes/NormalAttribute.glsl","../attributes/TextureCoordinateAttribute.glsl","../attributes/VertexNormal.glsl","../output/OutputDepth.glsl","../output/OutputHighlight.glsl","../shading/VisualVariables.glsl","../util/AlphaDiscard.glsl","../../shaderModules/interfaces"],(function(e,r,t,l,o,a,i,s,d,u,n){"use strict";function c(e,c){const v=e.vertex.code,p=e.fragment.code;1!==c.output&&3!==c.output||(e.include(t.Transform,{linearDepth:!0}),e.include(o.TextureCoordinateAttribute,c),e.include(d.VisualVariables,c),e.include(i.OutputDepth,c),e.include(r.Slice,c),e.vertex.uniforms.add("cameraNearFar","vec2"),e.varyings.add("depth","float"),c.hasColorTexture&&e.fragment.uniforms.add("tex","sampler2D"),v.add(n.glsl`void main(void) {
 vpos = calculateVPos();

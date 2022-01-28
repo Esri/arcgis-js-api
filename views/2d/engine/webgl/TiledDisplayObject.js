@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","../../../../chunks/mat3","../DisplayObject","../../tiling/TileKey"],(function(t,e,i,s,n){"use strict";let r=function(t){function s(e,i,s,r,o,l=r,u=o){var a;return(a=t.call(this)||this).triangleCountReportedInDebug=0,a.triangleCount=0,a.texture=null,a.key=new n(e),a.x=i,a.y=s,a.width=r,a.height=o,a.rangeX=l,a.rangeY=u,a}e._inheritsLoose(s,t);var r=s.prototype;return r.destroy=function(){this.texture&&(this.texture.dispose(),this.texture=null)},r.setTransform=function(t,e){const s=e/(t.resolution*t.pixelRatio),n=this.transforms.tileMat3,[r,o]=t.toScreenNoRotation([0,0],[this.x,this.y]),l=this.width/this.rangeX*s,u=this.height/this.rangeY*s;i.set(n,l,0,0,0,u,0,r,o,1),i.multiply(this.transforms.dvs,t.displayViewMat3,n)},s}(s.DisplayObject);t.TiledDisplayObject=r,Object.defineProperty(t,"__esModule",{value:!0})}));

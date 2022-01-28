@@ -58,8 +58,8 @@
 
   .esri-feature-form__input-icon--invalid {
     position: absolute;
-    top: 30px;
-    right: 4px;
+    top: 28px;
+    inset-inline-end: 4px;
     color: $font-color--error;
     background-color: $background-color;
   }
@@ -163,10 +163,10 @@
 
   .esri-feature-form__group--sequential {
     border-bottom: none;
-    border-left: $group-border-width solid $border-color;
+    border-inline-start: $group-border-width solid $border-color;
     padding-bottom: 0;
-    padding-left: $cap-spacing--half;
-    padding-right: $cap-spacing--half;
+    padding-inline-start: $cap-spacing--half;
+    padding-inline-end: $cap-spacing--half;
     .esri-feature-form__group-header {
       padding-top: 0;
     }
@@ -178,7 +178,7 @@
   }
 
   .esri-feature-form__group--active {
-    border-left-color: $border-color--active;
+    border-inline-start-color: $border-color--active;
   }
 
   .esri-feature-form__group--collapsed {
@@ -201,10 +201,6 @@
   }
 
   [dir="rtl"] {
-    .esri-feature-form__group {
-      border-left: none;
-      border-right: $group-border-width solid $border-color;
-    }
     .esri-feature-form__date-input-part {
       &:first-child .esri-feature-form__input {
         border-right: 1px solid $border-color;

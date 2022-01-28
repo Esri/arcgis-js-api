@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../chunks/quat","../../chunks/quatf64","../../chunks/vec3","./vector","./vectorStacks"],(function(n,e,t,r,u,c){"use strict";function o(n=m){return[n[0],n[1],n[2],n[3]]}function s(n,e,t,r){return a(n,e,t,r,c.sv4d.get())}function i(n,e){return a(n[0],n[1],n[2],e,c.sv4d.get())}function f(n,e=o()){return a(n[0],n[1],n[2],n[3],e)}function a(n,e,t,r,u=o()){return u[0]=n,u[1]=e,u[2]=t,u[3]=r,u}function l(n,e,t=o()){return r.copy(t,n),t[3]=e,t}function A(n,e,t=o()){return r.cross(t,n,e),r.normalize(t,t),t[3]=u.angle(n,e),t}function g(n,t,r=o()){return e.setAxisAngle(v,p(n),x(n)),e.setAxisAngle(k,p(t),x(t)),e.multiply(v,k,v),d(r,e.getAxisAngle(p(r),v))}function p(n){return n}function x(n){return n[3]}function d(n,e){return n[3]=e,n}const m=[0,0,1,0],v=t.create(),k=t.create();n.UP=m,n.angle=x,n.axis=p,n.compose=g,n.copy=f,n.create=o,n.fromAxisAndAngle=l,n.fromPoints=A,n.fromValues=a,n.setAngle=d,n.wrap=s,n.wrapAxisAngle=i,Object.defineProperty(n,"__esModule",{value:!0})}));

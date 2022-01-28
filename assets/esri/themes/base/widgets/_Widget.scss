@@ -651,6 +651,16 @@
     top: -999em;
     left: -999em;
   }
+
+  /* ==========================================================================
+   component shims
+   ========================================================================== */
+  .esri-match-height {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
 }
 
 @if $include_Widget == true {

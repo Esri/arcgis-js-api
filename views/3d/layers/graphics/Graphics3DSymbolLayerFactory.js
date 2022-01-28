@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../core/Logger","./Graphics3DExtrudeSymbolLayer","./Graphics3DIconSymbolLayer","./Graphics3DLineSymbolLayer","./Graphics3DMeshFillSymbolLayer","./Graphics3DObjectSymbolLayer","./Graphics3DPathSymbolLayer","./Graphics3DPolygonFillSymbolLayer","./Graphics3DTextSymbolLayer","./Graphics3DWaterSymbolLayer"],(function(e,r,a,y,o,l,c,i,s,t,p){"use strict";const h=r.getLogger("esri.views.3d.layers.graphics.Graphics3DSymbolLayerFactory");function n(e,r,a,y){const o=L[e.type]&&L[e.type][r.type]||b[r.type];return o?new o(e,r,a,y):(h.error("GraphicsLayerFactory#make",`unknown symbol type ${r.type}`),null)}const b={icon:y.Graphics3DIconSymbolLayer,object:c.Graphics3DObjectSymbolLayer,line:o.Graphics3DLineSymbolLayer,path:i.Graphics3DPathSymbolLayer,fill:s.Graphics3DPolygonFillSymbolLayer,extrude:a.Graphics3DExtrudeSymbolLayer,text:t.Graphics3DTextSymbolLayer,water:p.Graphics3DWaterSymbolLayer};function m(e,r){b[e]=r}const L={"mesh-3d":{fill:l.Graphics3DMeshFillSymbolLayer}};e.make=n,e.setSymbolClass=m,Object.defineProperty(e,"__esModule",{value:!0})}));

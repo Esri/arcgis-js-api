@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../attributes/VertexColor.glsl","../util/MixExternalColor.glsl","../../shaderModules/interfaces"],(function(e,o,r,l){"use strict";function t(e,t){e.include(o.VertexColor,t),e.fragment.include(r.MixExternalColor);const a=e.fragment;a.uniforms.add("uBaseColor","vec4"),a.uniforms.add("uObjectOpacity","float"),t.attributeColor?a.code.add(l.glsl`vec3 _baseColor() {
 return uBaseColor.rgb * vColor.rgb;

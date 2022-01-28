@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,r,a,t,o,n){"use strict";function l(e){const l=new n.ShaderBuilder;return l.include(r.ScreenSpacePass),1===e.output&&(l.fragment.include(a.ReadLinearDepth),l.fragment.uniforms.add("normalMap","sampler2D").add("depthMap","sampler2D").add("tex","sampler2D").add("blurSize","vec2").add("projScale","float").add("nearFar","vec2"),l.fragment.code.add(o.glsl`
       void blurFunction(vec2 uv, float r, float center_d, float sharpness, inout float wTotal, inout float bTotal) {
@@ -112,4 +112,4 @@ return fallOffFunction(vv, vn, 0.1);
         A = (pow(A, 0.2) + 1.2 * A*A*A*A) / 2.2;
         gl_FragColor = vec4(A);
       }
-    `)),l}var s=Object.freeze({__proto__:null,build:l});e.SSAOShader=s,e.build=l}));
+    `)),l}const s=Object.freeze({__proto__:null,build:l});e.SSAOShader=s,e.build=l}));

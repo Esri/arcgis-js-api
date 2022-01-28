@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["../chunks/_rollupPluginBabelHelpers","./ImmutableArray","../geometry/Point"],(function(t,e,i){"use strict";return function(e){function n(t,i,n,s,h,r){var a;return(a=e.call(this,t)||this)._lazyPt=[],a._hasZ=!1,a._hasM=!1,a._spRef=i,a._hasZ=n,a._hasM=s,a._cacheId=h,a._partId=r,a}t._inheritsLoose(n,e);var s=n.prototype;return s.get=function(t){if(void 0===this._lazyPt[t]){const e=this._elements[t];if(void 0===e)return;const n=this._hasZ,s=this._hasM;let h=null;h=n&&!s?new i(e[0],e[1],e[2],void 0,this._spRef):s&&!n?new i(e[0],e[1],void 0,e[2],this._spRef):n&&s?new i(e[0],e[1],e[2],e[3],this._spRef):new i(e[0],e[1],this._spRef),h.cache._arcadeCacheId=this._cacheId.toString()+"-"+this._partId.toString()+"-"+t.toString(),this._lazyPt[t]=h}return this._lazyPt[t]},s.equalityTest=function(t){return t===this||null!==t&&(t instanceof n!=!1&&t.getUniqueHash()===this.getUniqueHash())},s.getUniqueHash=function(){return this._cacheId.toString()+"-"+this._partId.toString()},n}(e)}));

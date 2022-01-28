@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports"],(function(a){"use strict";const e={func:513},s={func:519},n={mask:255},i={mask:0},t=a=>({function:{func:517,ref:a,mask:a},operation:{fail:7680,zFail:7680,zPass:7680}}),o=a=>({function:{func:519,ref:a,mask:a},operation:{fail:7680,zFail:7680,zPass:7681}}),r={function:{func:519,ref:2,mask:2},operation:{fail:7680,zFail:7680,zPass:0}},f={function:{func:519,ref:2,mask:2},operation:{fail:7680,zFail:7680,zPass:7681}},c={function:{func:514,ref:2,mask:2},operation:{fail:7680,zFail:7680,zPass:7680}},l={function:{func:517,ref:2,mask:2},operation:{fail:7680,zFail:7680,zPass:7680}};a.depthCompareAlways=s,a.depthCompareLess=e,a.renderWhenBitIsNotSet=t,a.replaceBitWhenDepthTestPasses=o,a.stencilBaseAllZerosParams=r,a.stencilToolMaskBaseParams=f,a.stencilToolMaskOccluderParams=c,a.stencilToolTransparentOccluderParams=l,a.stencilWriteMaskOff=i,a.stencilWriteMaskOn=n,Object.defineProperty(a,"__esModule",{value:!0})}));

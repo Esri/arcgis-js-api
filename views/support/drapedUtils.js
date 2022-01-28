@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../geometry","../../core/maybe","../../core/unitUtils","../../renderers/support/clickToleranceUtils","../../geometry/Extent"],(function(e,t,r,n,a,i){"use strict";function s(e,t,a,s=new i){let o;if("2d"===a.type)o=t*a.resolution;else if("3d"===a.type){const i=a.overlayPixelSizeInMapUnits(e),s=a.basemapSpatialReference;o=r.isSome(s)&&!s.equals(a.spatialReference)?n.getMetersPerUnitForSR(s)/n.getMetersPerUnitForSR(a.spatialReference):t*i}const c=e.x-o,l=e.y-o,m=e.x+o,p=e.y+o,{spatialReference:u}=a;return s.xmin=Math.min(c,m),s.ymin=Math.min(l,p),s.xmax=Math.max(c,m),s.ymax=Math.max(l,p),s.spatialReference=u,s}function o(e,t,n){const i=n.toMap(e);if(r.isNone(i))return!1;return s(i,a.calculateTolerance(),n,c).intersects(t)}const c=new i;e.createQueryGeometry=s,e.intersectsDrapedGeometry=o,Object.defineProperty(e,"__esModule",{value:!0})}));

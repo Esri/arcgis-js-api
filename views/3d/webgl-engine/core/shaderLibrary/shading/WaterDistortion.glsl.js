@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","./FoamRendering.glsl","../../shaderModules/interfaces"],(function(e,t,r){"use strict";function a(e){e.fragment.uniforms.add("texWaveNormal","sampler2D"),e.fragment.uniforms.add("texWavePerturbation","sampler2D"),e.fragment.uniforms.add("waveParams","vec4"),e.fragment.uniforms.add("waveDirection","vec2"),e.include(t.FoamIntensity),e.fragment.code.add(r.glsl`const vec2  FLOW_JUMP = vec2(6.0/25.0, 5.0/24.0);
 vec2 textureDenormalized2D(sampler2D _tex, vec2 _uv) {

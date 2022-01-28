@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../geometry/support/aaBoundingRect","../../../geometry/support/boundsUtils","../CIMPlacements"],(function(t,e,n,o){"use strict";function i(t){return void 0!==t.rings}let s=function(){function t(){}return t.local=function(){return null===t.instance&&(t.instance=new t),t.instance},t.prototype.execute=function(t,e,n){return new r(t,e,n)},t}();s.instance=null;let r=function(){function t(t,e,n){this._geometry=t,this._offsetX=void 0!==e.offsetX?e.offsetX*n:0,this._offsetY=void 0!==e.offsetY?e.offsetY*n:0,this._method=void 0!==e.method?e.method:"OnPolygon",this._internalPlacement=new o.Placement}var s=t.prototype;return s.next=function(){const t=this._geometry;return this._geometry=null,t&&i(t)?this._polygonCenter(t):null},s._polygonCenter=function(t){let o=!1;switch(this._method){default:{const i=e.create();n.getBoundsXY(i,t),this._internalPlacement.setTranslate((i[2]+i[0])/2+this._offsetX,(i[3]+i[1])/2-this._offsetY),o=!0;break}}return o?this._internalPlacement:null},t}();t.PlacementPolygonCenter=s,Object.defineProperty(t,"__esModule",{value:!0})}));

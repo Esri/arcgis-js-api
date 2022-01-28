@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../CSVLayerAdapter","../FeatureLayerAdapter","../LayerAdapter","../OGCFeatureLayerAdapter","../PointCloudLayerAdapter","../SceneLayerAdapter"],(function(e,a,t,r,p,y,l){"use strict";const n={0:{adapter:a,type:"csv",label:"CSVLayer"},2:{adapter:t,type:"feature",label:"FeatureLayer"},3:{adapter:p,type:"ogc-feature",label:"OGCFeatureLayer"},1:{adapter:t,type:"geojson",label:"GeoJSONLayer"},4:{adapter:l,type:"scene",label:"SceneLayer"},5:{adapter:y,type:"point-cloud",label:"PointCloudLayer"},6:{adapter:t,type:"wfs",label:"WFSLayer"}},d=[0,2,3,1,4,5,6],u=[0,2,3,4,1,6];function o(e){return e.map((e=>n[e].label))}function L(e,a=d){if(e instanceof r)return e;let t=null;return a.some((a=>{const r=e.type===n[a].type;if(r){const r=n[a].adapter;t=new r({layer:e})}return r})),t}e.createLayerAdapter=L,e.defaultSupportedLayerTypes=d,e.featureCapableLayerTypes=u,e.getLayerTypeLabels=o,Object.defineProperty(e,"__esModule",{value:!0})}));

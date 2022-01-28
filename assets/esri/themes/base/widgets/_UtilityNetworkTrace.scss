@@ -1,0 +1,47 @@
+@mixin UtilityNetworkTrace {
+  .esri-utility-trace-network {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row;
+    &.esri-component.esri-widget--panel {
+      min-height: $panel-min-height--medium;
+    }
+    calcite-icon {
+      box-sizing: initial;
+    }
+    calcite-tab {
+      background-color: $background-color--offset;
+      padding-bottom: 0;
+      padding-top: 0;
+      &:not([active]) {
+        flex: 0;
+      }
+    }
+  }
+
+  .esri-utility-trace-network__add-button-container {
+    display: flex;
+    justify-content: center;
+    margin: $cap-spacing--plus-half 0 $cap-spacing;
+  }
+
+  .esri-utility-trace-network__notice-container {
+    padding: $cap-spacing--half;
+  }
+
+  .esri-utility-trace-network__list-container {
+    background-color: $background-color;
+    padding: $cap-spacing--quarter $side-spacing--quarter;
+  }
+  .esri-utility-trace-network__flow {
+    height: 100%;
+  }
+
+  .esri-utility-trace-network__results-container {
+    height: 100%;
+  }
+}
+
+@if $include_UtilityNetworkTrace == true {
+  @include UtilityNetworkTrace();
+}

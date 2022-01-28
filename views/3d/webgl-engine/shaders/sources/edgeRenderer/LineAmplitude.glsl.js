@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,u,l){"use strict";function d(e,d){const i=e.vertex;switch(e.include(l.UnpackAttributes,d),u.EdgeUtil.usesSketchLogic(d)&&i.uniforms.add("uStrokesAmplitude","float"),d.mode){case 0:i.code.add(t.glsl`float calculateLineAmplitude(UnpackedAttributes unpackedAttributes) {
 return 0.0;

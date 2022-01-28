@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(t,e){"use strict";function o(t){t.vertex.code.add(e.glsl`const float PI = 3.141592653589793;`),t.fragment.code.add(e.glsl`const float PI = 3.141592653589793;
 const float LIGHT_NORMALIZATION = 1.0 / PI;

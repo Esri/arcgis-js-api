@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","./Accessor","./accessorSupport/decorators/property","./accessorSupport/decorators/subclass"],(function(e,s,n,t,c,i){"use strict";e.AsyncSequence=function(e){function n(){var s;return(s=e.apply(this,arguments)||this).updating=!1,s.pending=[],s}s._inheritsLoose(n,e);var t=n.prototype;return t.push=function(e,s){this.pending.push({promise:e,callback:s}),1===this.pending.length&&this.process()},t.process=function(){if(!this.pending.length)return void(this.updating=!1);this.updating=!0;const e=this.pending[0];e.promise.then((s=>e.callback(s))).catch((()=>{})).then((()=>{this.pending.shift(),this.process()}))},n}(t),n.__decorate([c.property()],e.AsyncSequence.prototype,"updating",void 0),e.AsyncSequence=n.__decorate([i.subclass("esri.core.AsyncSequence")],e.AsyncSequence),Object.defineProperty(e,"__esModule",{value:!0})}));

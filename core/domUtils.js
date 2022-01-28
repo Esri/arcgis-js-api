@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports"],(function(e){"use strict";function t(e){return"string"==typeof e?document.getElementById(e):e}function n(e){for(;e.hasChildNodes();)e.removeChild(e.firstChild)}function o(e,t){const n=t.parentNode;n&&(n.lastChild===t?n.appendChild(e):n.insertBefore(e,t.nextSibling))}function r(e,t){const n=t.parentNode;n&&n.insertBefore(e,t)}function i(e,t){for(;;){const n=e.firstChild;if(!n)break;t.appendChild(n)}}function l(e){e.parentNode&&e.parentNode.removeChild(e)}const s=(()=>{if("function"==typeof Element.prototype.closest)return(e,t)=>e.closest(t);const e=Element.prototype.matches||Element.prototype.msMatchesSelector;return(t,n)=>{let o=t;do{if(e.call(o,n))return o;o=o.parentElement}while(null!==o&&1===o.nodeType);return null}})();e.byId=t,e.closest=s,e.empty=n,e.insertAfter=o,e.insertBefore=r,e.remove=l,e.reparent=i,Object.defineProperty(e,"__esModule",{value:!0})}));

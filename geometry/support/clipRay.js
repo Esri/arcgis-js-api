@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../core/ObjectStack","../../chunks/vec3","./ray","./vectorStacks"],(function(r,c,e,t,n){"use strict";function o(r){return r?{ray:t.create(r.ray),c0:r.c0,c1:r.c1}:{ray:t.create(),c0:0,c1:Number.MAX_VALUE}}function u(r,c,e){const t=l.get();return t.ray=r,t.c0=c,t.c1=e,t}function a(r,c=o()){return i(r.ray,r.c0,r.c1,c)}function i(r,c,e,n=o()){return t.copy(r,n.ray),n.c0=c,n.c1=e,n}function f(r,c=o()){return t.copy(r,c.ray),c.c0=0,c.c1=Number.MAX_VALUE,c}function y(r,c=o()){return s(r,e.normalize(n.sv3d.get(),r.vector),c)}function s(r,c,n=o()){const u=e.length(r.vector);return t.fromValues(r.origin,c,n.ray),n.c0=0,n.c1=u,n}function g(r,c){return d(r,r.c0,c)}function m(r,c){return d(r,r.c1,c)}function d(r,c,t){return e.add(t,r.ray.origin,e.scale(t,r.ray.direction,c))}const l=new c.ObjectStack((()=>({c0:0,c1:0,ray:null})));r.copy=a,r.create=o,r.fromLineSegment=y,r.fromLineSegmentAndDirection=s,r.fromRay=f,r.fromValues=i,r.getAt=d,r.getEnd=m,r.getStart=g,r.wrap=u,Object.defineProperty(r,"__esModule",{value:!0})}));

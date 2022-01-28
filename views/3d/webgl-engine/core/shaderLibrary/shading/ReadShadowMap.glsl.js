@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(a,e,t){"use strict";function i(a){a.fragment.include(e.RgbaFloatEncoding),a.fragment.uniforms.add("uShadowMapTex","sampler2D"),a.fragment.uniforms.add("uShadowMapNum","int"),a.fragment.uniforms.add("uShadowMapDistance","vec4"),a.fragment.uniforms.add("uShadowMapMatrix","mat4",4),a.fragment.uniforms.add("uDepthHalfPixelSz","float"),a.fragment.code.add(t.glsl`int chooseCascade(float _linearDepth, out mat4 mat) {
 vec4 distance = uShadowMapDistance;

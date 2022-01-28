@@ -24,6 +24,7 @@ $relationship_column_size: 85px;
 
   .esri-legend__layer {
     margin-left: $side-spacing--half;
+    overflow: auto;
   }
 
   .esri-legend__group-layer-child {
@@ -190,6 +191,7 @@ $relationship_column_size: 85px;
     .esri-legend__layer-body {
       margin-left: 0;
       margin-right: $side-spacing--half;
+      overflow: auto;
     }
   }
 }

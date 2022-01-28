@@ -6,20 +6,16 @@ var profile = (function() {
     mobileFolderRe = /^esri\/mobile\//i,
     assetsFolderRe = /^esri\/assets\//i,
     discoveryFolderRe = /^esri\/discovery\//i,
-    amcharts4FolderRe = /^esri\/libs\/amcharts4\/(?!index)/i,
 
     copyOnly = function(filename, mid) {
       var mids = {
         "esri/package.json":          1,
         "esri/esri.profile":          1,
-        "esri/esri.js":               1,
-        "esri/core/workers/worker":   1,
-        "esri/geometry/geometryenginewebworker": 1
+        "esri/esri.js":               1
       };
 
       return (
         assetsFolderRe.test(mid) ||
-        amcharts4FolderRe.test(mid) ||
         (mid in mids)
       );
     },

@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/ScreenSpacePass","../views/3d/webgl-engine/core/shaderLibrary/output/OutputHighlight.glsl","../views/3d/webgl-engine/core/shaderLibrary/output/ReadLinearDepth.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/ReadShadowMap.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/CameraSpace.glsl","../views/3d/webgl-engine/core/shaderLibrary/util/RgbaFloatEncoding.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,a,t,i,o,r,l,d,h){"use strict";function c(e){const c=new h.ShaderBuilder;return c.include(o.ReadShadowMap),c.fragment.include(l.RgbaFloatEncoding),c.fragment.include(i.ReadLinearDepth),c.include(r.CameraSpace),c.include(a.ScreenSpacePass),c.fragment.uniforms.add("defaultDepthTex","sampler2D").add("highlightDepthTex","sampler2D").add("depthMap","sampler2D").add("highlightMap","sampler2D").add("color","vec4").add("nearFar","vec2").add("opacity","float").add("occludedOpacity","float").add("terminationFactor","float").add("inverseView","mat4").add("lightingMainDirectionView","vec3").add("texelSize","vec2"),c.fragment.constants.add("unoccludedHighlightFlag","vec4",t.unoccludedHighlightFlag).add("highlightedThreshold","float",e.highlightedThreshold).add("selfShadowThreshold","float",e.selfShadowThreshold),c.fragment.code.add(d.glsl`vec3 normalFromDepth(vec3 pixelPos, vec2 fragCoord, vec2 uv, vec2 texelSize, sampler2D depthMap, vec2 nearFar) {
 float leftPixelDepth = linearDepthFromTexture(depthMap, uv + vec2(-1.0, 0.0) * texelSize, nearFar);
@@ -59,4 +59,4 @@ float differenceOpacity = opacity;
 float bothOpacity = occludedOpacity;
 float fragOpacity = (shadowDefault || shaded) ? bothOpacity : differenceOpacity;
 gl_FragColor = vec4(color.rgb, color.a * fragOpacity * terminationFactor);
-}`),c}var n=Object.freeze({__proto__:null,build:c});e.ShadowHighlightShader=n,e.build=c}));
+}`),c}const n=Object.freeze({__proto__:null,build:c});e.ShadowHighlightShader=n,e.build=c}));

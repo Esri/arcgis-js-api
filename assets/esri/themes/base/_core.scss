@@ -71,6 +71,7 @@ $include_Swipe: $include_widgets !default;
 $include_TableList: $include_widgets !default;
 $include_TimePicker: $include_widgets !default;
 $include_TimeSlider: $include_widgets !default;
+$include_UtilityNetworkTrace: $include_widgets !default;
 $include_Zoom: $include_widgets !default;
 
 $icomoon-font-path: "../base/icons/fonts" !default; // Override for esri/themes/base/icons/style.scss
@@ -158,6 +159,7 @@ $calcite-fonts-path: "../base/fonts/fonts/" !default;
 @import "widgets/TableList";
 @import "widgets/TimePicker";
 @import "widgets/TimeSlider";
+@import "widgets/UtilityNetworkTrace";
 @import "widgets/Zoom";
 
 // animations

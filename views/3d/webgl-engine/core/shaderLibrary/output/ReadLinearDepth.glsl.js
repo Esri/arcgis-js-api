@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../util/RgbaFloatEncoding.glsl","../../shaderModules/interfaces"],(function(e,a,r){"use strict";function t(e){e.include(a.RgbaFloatEncoding),e.code.add(r.glsl`float linearDepthFromFloat(float depth, vec2 nearFar) {
 return -(depth * (nearFar[1] - nearFar[0]) + nearFar[0]);

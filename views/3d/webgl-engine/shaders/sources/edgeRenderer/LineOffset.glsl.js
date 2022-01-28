@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../core/shaderLibrary/util/RgbaFloatEncoding.glsl","../../../core/shaderModules/interfaces","./EdgeUtil.glsl","./UnpackAttributes.glsl"],(function(e,t,a,l,r){"use strict";function u(e,u){const s=e.vertex;e.include(r.UnpackAttributes,u);const c=e.fragment;switch(l.EdgeUtil.usesSketchLogic(u)&&(s.uniforms.add("uStrokesTextureScale","vec2"),s.uniforms.add("uStrokesLog2Resolution","float"),s.uniforms.add("uStrokeVariants","float"),e.varyings.add("vStrokeUV","vec2"),c.uniforms.add("uStrokesTexture","sampler2D"),c.uniforms.add("uStrokesNormalizationScale","float"),s.code.add(a.glsl`void calculateStyleOutputsSketch(float lineLength, UnpackedAttributes unpackedAttributes) {
 vec2 sidenessNorm = unpackedAttributes.sidenessNorm;

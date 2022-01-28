@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","./FoamRendering.glsl","./Gamma.glsl","./PhysicallyBasedRendering.glsl","./ScreenSpaceReflections.glsl","../../shaderModules/interfaces"],(function(e,o,t,i,a,r){"use strict";function n(e,n){e.include(i.PhysicallyBasedRendering,n),e.include(t.Gamma),e.include(o.FoamColor),n.ssrEnabled&&e.include(a.ScreenSpaceReflections,n),e.fragment.constants.add("fresnelSky","vec3",[.02,1,15]).add("fresnelMaterial","vec2",[.02,.1]).add("roughness","float",.015).add("foamIntensityExternal","float",1.7).add("ssrIntensity","float",.65).add("ssrHeightFadeStart","float",3e5).add("ssrHeightFadeEnd","float",5e5).add("waterDiffusion","float",.775).add("waterSeeColorMod","float",.8).add("correctionViewingPowerFactor","float",.4).add("skyZenitColor","vec3",[.52,.68,.9]).add("skyColor","vec3",[.67,.79,.9]),e.fragment.code.add(r.glsl`PBRShadingWater shadingInfo;
 vec3 getSkyGradientColor(in float cosTheta, in vec3 horizon, in vec3 zenit) {

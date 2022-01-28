@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Laserline.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,a,t){"use strict";function o(e){const o=new t.ShaderBuilder;return o.include(i.Laserline,e),o.vertex.uniforms.add("uModelViewMatrix","mat4"),o.vertex.uniforms.add("uProjectionMatrix","mat4"),o.attributes.add("start","vec3"),o.attributes.add("end","vec3"),o.attributes.add("up","vec3"),o.attributes.add("extrude","vec2"),o.varyings.add("uv","vec2"),o.varyings.add("vViewStart","vec3"),o.varyings.add("vViewEnd","vec3"),o.varyings.add("vViewPlane","vec4"),o.vertex.uniforms.add("glowWidth","float"),o.vertex.uniforms.add("pixelToNDC","vec2"),o.vertex.code.add(a.glsl`void main() {
 vec3 pos = mix(start, end, extrude.x);
@@ -46,4 +46,4 @@ float distance = planeDistancePixels(vViewPlane, pos, vViewStart, vViewEnd);
 vec4 color = laserlineProfile(distance);
 float alpha = 1.0 - smoothstep(0.995, 0.999, abs(dot(normal, vViewPlane.xyz)));
 gl_FragColor = laserlineOutput(color * alpha * depthDiscontinuityAlpha);
-}`),o}var r=Object.freeze({__proto__:null,build:o});e.LaserlinePathShader=r,e.build=o}));
+}`),o}const r=Object.freeze({__proto__:null,build:o});e.LaserlinePathShader=r,e.build=o}));

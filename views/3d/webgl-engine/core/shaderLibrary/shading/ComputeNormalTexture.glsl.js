@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../attributes/VertexTextureCoordinates.glsl","../../shaderModules/interfaces"],(function(e,t,n){"use strict";function a(e,a){const r=e.fragment;a.vertexTangents?(e.attributes.add("tangent","vec4"),e.varyings.add("vTangent","vec4"),2===a.doubleSidedMode?r.code.add(n.glsl`mat3 computeTangentSpace(vec3 normal) {
 float tangentHeadedness = gl_FrontFacing ? vTangent.w : -vTangent.w;

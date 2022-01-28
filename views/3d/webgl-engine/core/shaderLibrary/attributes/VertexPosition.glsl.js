@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../../../chunks/mat3f64","../../../../../../chunks/mat4f64","../../../../../../chunks/vec3f64","./PositionAttribute.glsl","../util/DoublePrecision.glsl","../../shaderModules/interfaces"],(function(r,o,e,i,t,a,m){"use strict";function n(r,o){r.include(t.PositionAttribute),r.vertex.include(a.DoublePrecision,o),r.varyings.add("vPositionWorldCameraRelative","vec3"),r.varyings.add("vPosition_view","vec3"),r.vertex.uniforms.add("uTransform_WorldFromModel_RS","mat3"),r.vertex.uniforms.add("uTransform_WorldFromModel_TH","vec3"),r.vertex.uniforms.add("uTransform_WorldFromModel_TL","vec3"),r.vertex.uniforms.add("uTransform_WorldFromView_TH","vec3"),r.vertex.uniforms.add("uTransform_WorldFromView_TL","vec3"),r.vertex.uniforms.add("uTransform_ViewFromCameraRelative_RS","mat3"),r.vertex.uniforms.add("uTransform_ProjFromView","mat4"),r.vertex.code.add(m.glsl`vec3 positionWorldCameraRelative() {
 vec3 rotatedModelPosition = uTransform_WorldFromModel_RS * positionModel();

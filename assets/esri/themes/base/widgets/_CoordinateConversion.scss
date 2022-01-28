@@ -33,6 +33,7 @@
     flex-direction: column;
   }
   .esri-coordinate-conversion__display {
+    direction: ltr;
     flex: 1 1 auto;
     min-height: 2em;
     padding: 0.5em;

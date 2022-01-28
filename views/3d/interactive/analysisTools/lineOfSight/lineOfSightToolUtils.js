@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../../Color","../../Manipulator3D","../../manipulatorUtils","../../editingTools/manipulatorUtils","../../../webgl-engine/lib/GeometryUtil"],(function(e,t,o,r,i,n){"use strict";function a(e,o,i){return{geometry:n.createSphereGeometry(e,32,32),material:r.createManipulatorMaterial(t.toUnitRGBA(o)),stateMask:i}}function l(e){const t=[];return e.customColor1&&t.push(a(e.size,e.customColor1,16)),e.customColor2&&t.push(a(e.size,e.customColor2,32)),e.customColor3&&t.push(a(e.size,e.customColor3,64)),e.color&&t.push(a(e.size,e.color)),t}function s(e,t){const r=l(t),n=new o.Manipulator3D({view:e,renderObjects:r,elevationInfo:{mode:"absolute-height",offset:0}});return i.disableDisplayOnGrab(n),n}e.createSphereManipulator=s,e.createSphereManipulatorRenderObject=a,e.createSphereManipulatorRenderObjects=l,Object.defineProperty(e,"__esModule",{value:!0})}));

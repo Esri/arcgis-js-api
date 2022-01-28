@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
-define(["../../../../chunks/_rollupPluginBabelHelpers","./AutoDisposable"],(function(e,t){"use strict";return function(t){function n(e){var n;return(n=t.call(this)||this)._material=e.material,n._techniqueRep=e.techniqueRep,n._output=e.output,n}e._inheritsLoose(n,t);var u=n.prototype;return u.getPipelineState=function(e,t){return this.technique.pipeline},u.ensureResources=function(e){return 2},u.ensureParameters=function(e){},e._createClass(n,[{key:"technique",get:function(){return this._technique}}]),n}(t.AutoDisposable)}));
+define(["../../../../chunks/_rollupPluginBabelHelpers"],(function(e){"use strict";return function(){function t(e){this._material=e.material,this._techniqueRep=e.techniqueRep,this._output=e.output}var i=t.prototype;return i.dispose=function(){this._techniqueRep.release(this._technique)},i.ensureTechnique=function(e,t,i=this._output){return this._technique=this._techniqueRep.releaseAndAcquire(e,this._material.getTechniqueConfig(i,t),this._technique),this._technique},i.ensureResources=function(e){return 2},e._createClass(t,[{key:"technique",get:function(){return this._technique}}]),t}()}));

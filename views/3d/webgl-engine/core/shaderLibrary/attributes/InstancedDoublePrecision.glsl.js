@@ -1,8 +1,8 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
-define(["exports","../../../../../../chunks/vec3f64","../util/DoublePrecision.glsl","../../shaderModules/interfaces","../../../lib/doublePrecisionUtils"],(function(e,i,n,r,o){"use strict";function t(e,i){i.instanced&&i.instancedDoublePrecision&&(e.attributes.add("modelOriginHi","vec3"),e.attributes.add("modelOriginLo","vec3"),e.attributes.add("model","mat3"),e.attributes.add("modelNormal","mat3")),i.instancedDoublePrecision&&(e.vertex.include(n.DoublePrecision,i),e.vertex.uniforms.add("viewOriginHi","vec3"),e.vertex.uniforms.add("viewOriginLo","vec3"));const o=[r.glsl`
+define(["exports","../../../../../../chunks/vec3f64","../util/DoublePrecision.glsl","../../shaderModules/interfaces","../../../../../webgl/doublePrecisionUtils"],(function(e,i,n,r,o){"use strict";function t(e,i){i.instanced&&i.instancedDoublePrecision&&(e.attributes.add("modelOriginHi","vec3"),e.attributes.add("modelOriginLo","vec3"),e.attributes.add("model","mat3"),e.attributes.add("modelNormal","mat3")),i.instancedDoublePrecision&&(e.vertex.include(n.DoublePrecision,i),e.vertex.uniforms.add("viewOriginHi","vec3"),e.vertex.uniforms.add("viewOriginLo","vec3"));const o=[r.glsl`
     vec3 calculateVPos() {
       ${i.instancedDoublePrecision?"return model * localPosition().xyz;":"return localPosition().xyz;"}
     }

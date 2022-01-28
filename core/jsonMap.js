@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","./object"],(function(t,n){"use strict";let o=function(){function t(t,o={ignoreUnknown:!1}){this.jsonToAPI=t,this.options=o,this.apiValues=[],this.jsonValues=[],this.apiToJSON=this.invertMap(t),this.apiValues=this.getKeysSorted(this.apiToJSON),this.jsonValues=this.getKeysSorted(this.jsonToAPI),this.read=t=>this.fromJSON(t),this.write=(t,o,i)=>{const s=this.toJSON(t);void 0!==s&&n.setDeepValue(i,s,o)},this.write.isJSONMapWriter=!0}var o=t.prototype;return o.toJSON=function(t){return this.apiToJSON.hasOwnProperty(t)?this.apiToJSON[t]:this.options.ignoreUnknown?void 0:t},o.fromJSON=function(t){return this.jsonToAPI.hasOwnProperty(t)?this.jsonToAPI[t]:this.options.ignoreUnknown?void 0:t},o.invertMap=function(t){const n={};for(const o in t)n[t[o]]=o;return n},o.getKeysSorted=function(t){const n=[];for(const o in t)n.push(o);return n.sort(),n},t}();function i(){return function(t){return new o(t,{ignoreUnknown:!0})}}t.JSONMap=o,t.default=o,t.strict=i,Object.defineProperty(t,"__esModule",{value:!0})}));

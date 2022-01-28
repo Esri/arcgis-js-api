@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces","../../../materials/internal/MaterialUtil"],(function(e,r,a){"use strict";function c(e){e.vertex.code.add(r.glsl`float screenSizePerspectiveMinSize(float size, vec4 factor) {
 float nonZeroSize = 1.0 - step(size, 0.0);

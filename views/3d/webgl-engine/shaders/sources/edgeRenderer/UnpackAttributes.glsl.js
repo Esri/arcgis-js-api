@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../core/shaderModules/interfaces","./EdgeUtil.glsl"],(function(e,t,n){"use strict";function s(e,s){const i=e.vertex;switch(e.include(n.EdgeUtil,s),e.attributes.add("sideness","vec2"),2===s.mode?i.code.add(t.glsl`struct UnpackedAttributes {
 vec2 sideness;

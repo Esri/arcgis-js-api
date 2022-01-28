@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,a,o){"use strict";function l(){const e=new o.ShaderBuilder;return e.attributes.add("position","vec3"),e.attributes.add("color","vec4"),e.attributes.add("size","float"),e.varyings.add("vcolor","vec4"),e.varyings.add("vsize","float"),e.vertex.uniforms.add("transform","mat4").add("viewport","vec4").add("pixelRatio","float"),e.include(i.AlignPixel),e.vertex.code.add(a.glsl`void main(void) {
 vec4 posProj = transform * vec4(position, 0);
@@ -18,4 +18,4 @@ if (vsize < 3.0) {
 intensity *= 0.5;
 }
 gl_FragColor = vec4(vcolor.xyz, intensity);
-}`),e}var t=Object.freeze({__proto__:null,build:l});e.StarsShader=t,e.build=l}));
+}`),e}const t=Object.freeze({__proto__:null,build:l});e.StarsShader=t,e.build=l}));

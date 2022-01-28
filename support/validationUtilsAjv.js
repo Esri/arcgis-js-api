@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports"],(function(e){"use strict";function t(e,t=10){const n={};let r=e.map(a).map(((e,t)=>({e,i:t}))).sort((({e,i:t},{e:a,i:n})=>{const r=e.dataPath?e.dataPath.split(".").length:0,s=a.dataPath?a.dataPath.split(".").length:0;return r===s?t-n:s-r})).map((({e})=>`${e.dataPath?e.dataPath+": ":""}${e.message}`)).filter((e=>{const t=!n[e];return n[e]=!0,t}));if(r.length>t){const e="("+(r.length-t)+" more...)";r=r.slice(0,t),r.push(e)}return r}function a(e,t=5){if(n(e.params)){let a=e.params.allowedValues;if(a){if(a=a.map((e=>JSON.stringify(e))),a.length>t){const e="("+(a.length-t)+" more...)";a=a.slice(0,t),a.push(e)}e.message="should be equal to one of: "+a.join(", ")}}else r(e.params)&&(e.message="should NOT have additional property: "+e.params.additionalProperty);return e}function n(e){return null!=(e&&e.allowedValues)}function r(e){return null!=(e&&e.additionalProperty)}e.convertAjvErrors=t,Object.defineProperty(e,"__esModule",{value:!0})}));

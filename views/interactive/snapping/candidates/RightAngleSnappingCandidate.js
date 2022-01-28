@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../../chunks/_rollupPluginBabelHelpers","./SnappingCandidate","../hints/LineSnappingHint","../hints/RightAngleSnappingHint"],(function(e,t,n,i,r){"use strict";let o=function(e){function n({coordinateHelper:t,targetPoint:n,constraint:i,previousVertex:r,otherVertex:o,otherVertexType:p,objectId:s}){var h;return(h=e.call(this,t,n,i)||this).previousVertex=r,h.otherVertex=o,h.otherVertexType=p,h.objectId=s,h}return t._inheritsLoose(n,e),t._createClass(n,[{key:"hints",get:function(){const e=this.previousVertex,t=1===this.otherVertexType?this.otherVertex:this.targetPoint,n=1===this.otherVertexType?this.targetPoint:this.otherVertex;return[new i.LineSnappingHint(0,t,n),new i.LineSnappingHint(1,e,t),new r.RightAngleSnappingHint(this.previousVertex,t,n)]}}]),n}(n.SnappingCandidate);e.RightAngleSnappingCandidate=o,Object.defineProperty(e,"__esModule",{value:!0})}));

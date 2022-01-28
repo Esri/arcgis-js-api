@@ -1,5 +1,0 @@
-/*
-All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
-*/
-define(["../chunks/_rollupPluginBabelHelpers","../chunks/tslib.es6","../core/accessorSupport/decorators/property","../core/has","../core/accessorSupport/ensureType","../core/Logger","../core/accessorSupport/decorators/subclass","./Layer"],(function(e,r,t,o,s,c,n,p){"use strict";let i=function(r){function t(e){var t;return(t=r.call(this,e)||this).type="direct-line-measurement",t.geodesicDistanceThreshold=1e5,t.startPoint=null,t.endPoint=null,t.fullExtent=null,t}return e._inheritsLoose(t,r),t}(p);return r.__decorate([t.property({json:{read:!1},readOnly:!0})],i.prototype,"type",void 0),r.__decorate([t.property()],i.prototype,"geodesicDistanceThreshold",void 0),r.__decorate([t.property()],i.prototype,"startPoint",void 0),r.__decorate([t.property()],i.prototype,"endPoint",void 0),i=r.__decorate([n.subclass("esri/layers/DirectLineMeasurementLayer")],i),i}));

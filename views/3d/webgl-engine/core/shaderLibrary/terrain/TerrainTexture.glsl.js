@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(e,t){"use strict";function o(e,o){e.varyings.add("vtc","vec2"),e.vertex.uniforms.add("texOffsetAndScale","vec4"),e.fragment.uniforms.add("tex","sampler2D"),e.fragment.uniforms.add("textureOpacities","vec3"),o.textureFadingEnabled&&(e.vertex.uniforms.add("nextTexOffsetAndScale","vec4"),e.varyings.add("nvtc","vec2"),e.fragment.uniforms.add("texNext","sampler2D"),e.fragment.uniforms.add("nextTexOpacities","vec3"),e.fragment.uniforms.add("fadeFactor","float")),e.vertex.code.add(t.glsl`
   void forwardTextureCoordinates(in vec2 uv) {

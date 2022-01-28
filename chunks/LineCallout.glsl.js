@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/AlignPixel.glsl","../views/3d/webgl-engine/core/shaderLibrary/hud/HUD.glsl","../views/3d/webgl-engine/core/shaderLibrary/shading/MultipassGeometryTest.glsl","../views/3d/webgl-engine/core/shaderModules/interfaces","../views/3d/webgl-engine/core/shaderModules/ShaderBuilder"],(function(e,i,o,t,l,r,n){"use strict";function a(e){const a=new n.ShaderBuilder;return a.include(o.AlignPixel),a.include(t.HUD,e),a.include(i.Slice,e),a.attributes.add("uv0","vec2"),a.vertex.uniforms.add("lineSize","float").add("pixelToNDC","vec2").add("borderSize","float").add("screenOffset","vec2"),a.varyings.add("coverageSampling","vec4"),a.varyings.add("lineSizes","vec2"),e.multipassGeometryEnabled&&a.varyings.add("depth","float"),a.vertex.code.add(r.glsl`
     void main(void) {
@@ -131,4 +131,4 @@ define(["exports","../views/3d/webgl-engine/core/shaderLibrary/Slice.glsl","../v
       gl_FragColor = vec4(finalRgb, finalAlpha);
       `}
   }
-  `),a}function d(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}e.LineCallout=void 0,function(e){function i(e,i,o){d(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(d(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}e.bindUniforms=i}(e.LineCallout||(e.LineCallout={}));var s=Object.freeze({__proto__:null,build:a,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=s,e.build=a}));
+  `),a}function d(e,i,o){3===o.length?e.setUniform4f(i,o[0],o[1],o[2],1):e.setUniform4fv(i,o)}e.LineCallout=void 0,function(e){function i(e,i,o){d(e,"color",i.color),e.setUniform1f("pixelRatio",o),e.setUniform2f("screenOffset",i.screenOffset[0]*o,i.screenOffset[1]*o),null!==i.borderColor?(d(e,"borderColor",i.borderColor),e.setUniform1f("borderSize",o)):(e.setUniform4f("borderColor",0,0,0,0),e.setUniform1f("borderSize",0))}e.bindUniforms=i}(e.LineCallout||(e.LineCallout={}));const s=Object.freeze({__proto__:null,build:a,get LineCallout(){return e.LineCallout}});e.LineCalloutShader=s,e.build=a}));

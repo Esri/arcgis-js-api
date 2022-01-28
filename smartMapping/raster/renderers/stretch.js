@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../../chunks/_rollupPluginBabelHelpers","../../../renderers/support/rasterRendererHelper","../support/utils"],(function(e,t,r,n){"use strict";function a(e){return s.apply(this,arguments)}function s(){return(s=t._asyncToGenerator((function*(e){const t=[(e=yield n.processRasterRendererParameters(e)).bandId||0],a={bandIds:t,stretchType:e.stretchType,includeStatisticsInStretch:e.includeStatisticsInStretch},s=e.layer,{rasterInfo:c}=s;let d=r.createStretchRenderer(c,a);return e.estimateStatisticsHistograms&&d.dynamicRangeAdjustment&&(yield s.updateRasterInfoWithEstimatedStats({renderingRule:e.renderingRule,signal:e.signal}),d=r.createStretchRenderer(c,a)),i(d,e),{renderer:d,bandId:t[0]}}))).apply(this,arguments)}function i(e,t){const{gamma:r,useGamma:n,dynamicRangeAdjustment:a,colorRamp:s}=t;null!=r&&(e.gamma=[r]),null!=n&&(e.useGamma=n),null!=a&&(e.dynamicRangeAdjustment=a),void 0!==s&&(e.colorRamp=s)}e.createRenderer=a,Object.defineProperty(e,"__esModule",{value:!0})}));

@@ -51,6 +51,7 @@
     padding: 0;
   }
   .esri-identity-modal__close-button {
+    color: $interactive-font-color;
     position: absolute;
     top: $cap-spacing;
     right: $side-spacing--half;

@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+*/
+define(["../../chunks/_rollupPluginBabelHelpers","../../chunks/tslib.es6","../../Color","../../core/JSONSupport","../../core/maybe","../../core/screenUtils","../../core/accessorSupport/decorators/property","../../core/arrayUtils","../../core/has","../../core/accessorSupport/ensureType","../../core/accessorSupport/decorators/subclass","./materialUtils"],(function(r,o,e,t,s,c,p,n,i,l,u,a){"use strict";var y;let S=y=function(o){function t(r){var t;return(t=o.call(this,r)||this).color=new e([0,0,0,1]),t.size=c.px2pt(1),t}return r._inheritsLoose(t,o),t.prototype.clone=function(){const r={color:s.isSome(this.color)?this.color.clone():null,size:this.size};return new y(r)},t}(t.JSONSupport);o.__decorate([p.property(a.colorAndTransparencyProperty)],S.prototype,"color",void 0),o.__decorate([p.property(a.screenSizeProperty)],S.prototype,"size",void 0),S=y=o.__decorate([u.subclass("esri.symbols.support.Symbol3DIconOutline")],S);return S}));

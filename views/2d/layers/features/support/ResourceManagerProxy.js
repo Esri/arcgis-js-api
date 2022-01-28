@@ -1,0 +1,5 @@
+/*
+All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
+*/
+define(["../../../../../chunks/_rollupPluginBabelHelpers","../../../../../core/promiseUtils"],(function(e,t){"use strict";let r=function(){function r(e){this._remoteClient=e,this._resourceMap=new Map,this._inFlightResourceMap=new Map}var n=r.prototype;return n.destroy=function(){},n.fetchResource=function(){var r=e._asyncToGenerator((function*(e,r){const n=this._resourceMap,i=n.get(e);if(i)return i;let u=this._inFlightResourceMap.get(e);if(u)return u;try{u=this._remoteClient.invoke("tileRenderer.fetchResource",{url:e},{...r}),this._inFlightResourceMap.set(e,u),u.then((t=>(this._inFlightResourceMap.delete(e),n.set(e,t),t)))}catch(o){return t.isAbortError(o)?null:{width:0,height:0}}return u}));function n(e,t){return r.apply(this,arguments)}return n}(),n.getResource=function(e){var t;return null!=(t=this._resourceMap.get(e))?t:null},r}();return r}));

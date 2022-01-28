@@ -1,5 +1,5 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
-define(["exports","./Pattern3D","./StylePattern3D"],(function(e,t,r){"use strict";function n(e,t,n){if(!e)return e;if("style"===e.type){const t=new r;return t.read(e,n),t}}const s={types:{key:"type",base:t,typeMap:{style:r}},json:{read:n,write:!0}};e.read=n,e.symbol3dPatternProperty=s,Object.defineProperty(e,"__esModule",{value:!0})}));
+define(["exports","./LinePattern3D","./LineStylePattern3D","./Pattern3D","./StylePattern3D"],(function(e,t,y,n,r){"use strict";const s={types:{key:"type",base:n,typeMap:{style:r}},json:{write:!0}},p={types:{key:"type",base:t,typeMap:{style:y}},json:{write:!0}};e.symbol3dLinePatternProperty=p,e.symbol3dPatternProperty=s,Object.defineProperty(e,"__esModule",{value:!0})}));

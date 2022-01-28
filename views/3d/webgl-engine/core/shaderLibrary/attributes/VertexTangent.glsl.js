@@ -1,6 +1,6 @@
 /*
 All material copyright ESRI, All Rights Reserved, unless otherwise specified.
-See https://js.arcgis.com/4.21/esri/copyright.txt for details.
+See https://js.arcgis.com/4.22/esri/copyright.txt for details.
 */
 define(["exports","../../shaderModules/interfaces"],(function(n,e){"use strict";function t(n,t){n.varyings.add("tbnTangent","vec3"),n.varyings.add("tbnBiTangent","vec3"),1===t.viewingMode?n.vertex.code.add(e.glsl`void forwardVertexTangent(vec3 n) {
 tbnTangent = normalize(cross(vec3(0.0, 0.0, 1.0), n));
