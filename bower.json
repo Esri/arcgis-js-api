@@ -11,14 +11,14 @@
     "tests"
   ],
   "dependencies": {
-    "dojo": "Esri/dojo#v1.16.3/esri-3.36.0",
-    "dojox": "Esri/dojox#v1.14.2/esri-3.28.0",
-    "dijit": "Esri/dijit#v1.16.3/esri-3.36.0",
-    "util": "Esri/dojo-util#v1.14.2/esri-3.28.0",
+    "dojo": "Esri/dojo#v1.16.4/esri-3.38.0",
+    "dojox": "Esri/dojox#v1.16.4/esri-3.38.0",
+    "dijit": "Esri/dijit#v1.16.4/esri-3.38.0",
+    "util": "Esri/dojo-util#v1.16.4/esri-3.38.0",
     "dgrid": "Esri/dgrid#0.3.17/esri-3.20.0",
     "dgrid1": "Esri/dgrid#v1.2.1/esri-3.22.0",
     "dstore": "1.1.2",
-    "dijit-themes": "https://github.com/dojo/dijit-themes.git#1.14.0",
+    "dijit-themes": "https://github.com/dojo/dijit-themes.git#1.16.4",
     "put-selector": "0.3.6",
     "xstyle": "0.3.2",
     "moment": "2.29.1"
@@ -32,8 +32,8 @@
     "gis"
   ],
   "resolutions": {
-    "dojo": "v1.16.3/esri-3.36.0",
-    "dojox": "v1.14.2/esri-3.28.0",
-    "dijit": "v1.16.3/esri-3.36.0"
+    "dojo": "v1.16.4/esri-3.38.0",
+    "dojox": "v1.16.4/esri-3.38.0",
+    "dijit": "v1.16.4/esri-3.38.0"
   }
 }
