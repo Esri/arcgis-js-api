@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/JsonXmlTypedConverter","esri/dijit/geoenrichment/utils/JsonXmlConverter"],(function(e,n){var r={parseRendererJson:function(r){return e.parseXml(n.parseJson(r))},parseLabelRendererJson:function(r){return{type:"uniqueValue",field1:"StdGeographyLevel",uniqueValueInfos:e.parseXml(n.parseJson(r)).map((function(e){return{value:e.where.match(/StdGeographyLevel='(.*?)'/)[1],symbol:e.symbol}}))}}};return r}));

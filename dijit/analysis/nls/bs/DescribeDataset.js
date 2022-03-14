@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Odaberite skup podataka za opis",describeDataLabel:"Shvatite svoje podatke stvaranjem (neobavezno)",sampleLayer:"probnog sloja",extentLayer:"sloja obuhvata",noOfFeaturesLabel:"Broj značajki za uključivanje",outputLayerName:"Naziv sloja rezultata",resultName:"Opiši podatke sloja ${layerName}",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem opcije Opiši skupo podataka na sloju ${layerName}. ",itemTags:"Rezultat analize, Opiši skup podataka, ${layerName}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Opiši skup podataka."});

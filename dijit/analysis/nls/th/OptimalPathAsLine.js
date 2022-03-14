@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"เลือกแรสเตอร์หรือฟีเจอร์ปลายทาง",destinationField:"ฟิลด์ปลายทาง (ทางเลือก)",inputDistanceAccumulationRaster:"เลือกแรสเตอร์สะสมระยะทาง",inputBackDirectionRaster:"เลือกทิศทางย้อนกลับหรือแรสเตอร์ทิศทางการไหล",pathType:"ประเภทเส้นทาง (ทางเลือก)",bestSingle:"รายการเดียวที่ดีที่สุด",eachCell:"แต่ละเซลล์",eachZone:"แต่ละโซน",outputFeatureName:"ชื่อชั้นข้อมูลฟีเจอร์ผลลัพธ์",outputLayerName:"เส้นทางที่เหมาะสมที่สุดในรูปแบบเส้นของ ${layername}",drawSourcePointLayerName:"จุดต้นทาง",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการรันเส้นทางที่เหมาะสมที่สุดในรูปแบบเส้นบน ${layername} ",itemTags:"ผลการวิเคราะห์ เส้นทางที่เหมาะสมที่สุดในรูปแบบเส้น ${layername}${fieldname}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากเส้นทางที่เหมาะสมที่สุดในรูปแบบเส้น"});

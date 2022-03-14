@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir les entités à découper",filterSelectLabel:"Découper toutes les entités ou définir un sous-ensemble (facultatif)",targetArea:"Choisir une surface de découpage",outputLayerName:"Découper ${inputLayerName} sur ${clipLayerName}",itemDescription:"Couche d’entités générée en exécutant les solutions Découper. Les entités de ${inputLayerName} ont été découpées sur ${clipLayerName}.",itemTags:"Résultat d’analyse, Découper la couche, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Couche d’entités générée avec Découper la couche"});

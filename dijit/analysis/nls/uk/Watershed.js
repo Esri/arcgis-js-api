@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Вибрати шар напрямку потоку",pourPointLayerLabel:"Вибрати растр точки гирла або векторний шар",pourPointField:"Вибрати поле точки гирла",resultLayerName:"Ім'я шару результатів",outputLayerName:"Водозбірна область ${layername}",itemDescription:"Векторний шар, згенерований в результаті підсумування центру та розкиду для ${layerName}. ",itemTags:"Результат аналізу, Водозбірна область, ${layername} ${fieldname}",itemSnippet:"Векторний шар, згенерований в результаті створення водозбірних областей."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Pilih raster atau fitur tujuan",destinationField:"Kolom tujuan (opsional)",inputDistanceAccumulationRaster:"Pilih raster akumulasi jarak",inputBackDirectionRaster:"Pilih arah balik atau raster arah aliran",pathType:"Jenis jalur (opsional)",bestSingle:"Tunggal terbaik",eachCell:"Setiap sel",eachZone:"Setiap zona",outputRasterName:"Nama layer raster hasil",outputLayerName:"Jalur optimal sebagai raster ${layername}",drawSourcePointLayerName:"Titik sumber",itemDescription:"Feature layer dibuat dari menjalankan jalur optimal sebagai raster di ${layername}. ",itemTags:"Hasil Analisis, Jalur optimal Sebagai raster, ${layername} ${fieldname}",itemSnippet:"Feature layer dibuat dari jalur optimal sebagai raster."});

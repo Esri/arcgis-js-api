@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Genereeri mitmemõõtmeline anomaalia",outputLayerName:"${layername}_anomaalia",variablesLabel:"Valige muutuja(d), mille kohta luuakse anomaaliad",variablesListLabel:"Muutujad [Mõõtmeteave] (kirjeldus)",methodLabel:"Valige anomaalia loomise meetod",calculationIntervalLabel:"Keskmise arvutamiseks valige ajaintervall",differenceFromMean:"Erinevus keskmisest",percentDifferenceFromMean:"Protsentuaalne erinevus keskmisest",percentOfMean:"Protsent keskmisest",zScore:"Z-skoor",differenceFromMedian:"Erinevus mediaanist",percentDifferenceFromMedian:"Protsentuaalne erinevus mediaanist",percentOfMedian:"Protsent mediaanist",all:"Kõik",yearly:"Kord aastas",recurringMonthly:"Kord kuus korduv",recurringWeekly:"Kord nädalas korduv",recurringDaily:"Iga päev korduv",hourly:"Kord tunnis",externalRaster:"Väline raster",meanRaster:"Valige viitevahendiks pildikiht",ignoreNodataLabel:"Eira arvutuses puuduvaid väärtusi",ignore:"Eira",analysisLayerLabel:"Valige anomaalia loomiseks mitmemõõtmeline pildikiht",itemDescription:"Analüüsipõhine pilditeenus loodi mitmemõõtmelise anomaalia loomise põhjal",itemTags:"Rasteranalüüsi tulemus, mitmemõõtmelise anomaalia loomine, ${layername}",itemSnippet:"Analüüsipõhine pilditeenus loodi mitmemõõtmelise anomaalia loomise põhjal"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({relationalDS:"リレーショナル",spatialDS:"時空間",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"ビッグ データ ファイル共有の出力テンプレート"});

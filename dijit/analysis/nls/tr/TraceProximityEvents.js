@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayer:"Yakınlık olaylarını bulmak için katman seçin",entityField:"Olayları belirlemek için bir alan seçin",entityLayer:"İlgili varlıkları belirtmek için katman seçin",defineDistanceLabel:"Mekansal arama mesafesini tanımlayın",distMethodLabel:"Mesafeyi hesaplamak için yöntemi seçin",temporalSearchLabel:"Zamansal arama mesafesini tanımlayın",optionsLabel:"Gelişmiş Seçenekler",maxTraceDepth:"Maksimum iz derinliği",attributeMatchLabel:"Eşleştirilecek bir veya daha fazla varlık özniteliği seçin",includeTracksLayer:"İz katmanını dahil et",itemDescription:"Detay katmanı ${inputLayername} için Yakınlık Olayı İzle çözümünün çalıştırılmasıyla oluşturuldu.",itemTags:"Analiz Sonucu, Yakınlık Olaylarını İzle, ${inputLayername}",itemSnippet:"Detay katmanı Yakınlık Olaylarını İzle'den oluşturuldu.",outputLayerName:"${inputLayername} için Yakınlık Olaylarını İzle",noEntityFieldMsg:"Yakınlık olayları katmanı ve ilgili katmanın varlıklarının ortak alanları yok."});

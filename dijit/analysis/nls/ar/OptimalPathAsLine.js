@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"اختيار المعالم أو البيانات النقطية للوجهة",destinationField:"حقل الوجهة (اختياري)",inputDistanceAccumulationRaster:"اختيار البيانات النقطية لتراكم المسافة",inputBackDirectionRaster:"اختيار اتجاه الرجوع أو البيانات النقطية لاتجاه التدفق",pathType:"نوع المسار (اختياري)",bestSingle:"أفضل مفرد",eachCell:"كل خلية",eachZone:"كل منطقة",outputFeatureName:"اسم طبقة معالم النتيجة",outputLayerName:"المسار الأمثل كخط ${layername}",drawSourcePointLayerName:"نقاط المصدر",itemDescription:"طبقة المعالم الصادرة عن تشغيل المسار الأمثل كخط على ${layername}. ",itemTags:"نتيجة التحليل، المسار الأمثل كخط، ${layername} ${fieldname}",itemSnippet:"طبقة المعالم الصادرة عن المسار الأمثل كخط."});

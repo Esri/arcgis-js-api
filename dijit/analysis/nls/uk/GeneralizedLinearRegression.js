@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({modifiedTitle:"Генералізована лінійна регресія - ${goal}",fit:"Підігнати",fitAndPredict:"Підгонка та прогноз",selectGoal:"Що ви бажаєте зробити?",fitGoal:"Виконати підгонку моделі для оцінки продуктивності моделі",fitAndPredictGoal:"Виконати підгонку моделі та спрогнозувати значення",inputLayerLabel:"Вибрати шар, на основі якого треба згенерувати модель",chooseDependentField:"Вибрати поля для моделювання",chooseDataType:"Вибрати тип даних, які ви моделюєте",continuousData:"Неперервні",binaryData:"Бінарні",countData:"Кількість",chooseExplanatoryField:"Вибрати пояснювальні поля",chooseFeaturesToPredict:"Вибрати шар, для котрого треба спрогнозувати значення",chooseExplainMatch:"Вибрати спосіб зіставлення пояснювальних полів",outputLayerName:"GLR ${inputLayerName}",itemDescription:"Векторний шар, згенерований на основі виконання генералізованої лінійної регресії ${goal}.",itemTags:"Результат аналізу, генералізована лінійна регресія, ${inputLayerName}, ${goal}",itemSnippet:"Векторний шар, згенерований на основі генералізованої лінійної регресії (${goal})"});

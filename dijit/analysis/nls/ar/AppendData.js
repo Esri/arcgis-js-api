@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختر الطبقة المطلوب الإلحاق بها",inputWarningLabel:"تحذير: سيتم تعديل الطبقة التي تقوم بإلحاقها.",inputHostedLayerWarning:"الطبقة المحددة ليست طبقة معلم مستضافة. يرجى تحديد طبقة معلم مستضافة لإلحاقها بها.",appendLayerLabel:"اختر الطبقة المطلوب إلحاقها",filterLabel:"إلحاق كل المعالم أو تحديد مجموعة فرعية (اختياري)",fieldMappingLabel:"اختر كيفية إلحاق الحقول (اختياري)",inputField:"حقل المدخل",appendValue:"إلحاق القيمة",expression:"تعبير"});

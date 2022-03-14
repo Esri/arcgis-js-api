@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Создать многомерную аномалию",outputLayerName:"${layername}_anomaly",variablesLabel:"Выберите переменные, для которых будут сгенерированы аномалии",variablesListLabel:"Переменные [Dimension Info] (Описание)",methodLabel:"Выбрать метод генерирования аномалии",calculationIntervalLabel:"Выбрать временной интервал для вычисления среднего",differenceFromMean:"Отличие от среднего",percentDifferenceFromMean:"Процентное отличие от среднего",percentOfMean:"Процент от среднего",zScore:"Z-Оценка",differenceFromMedian:"Отличие от медианы",percentDifferenceFromMedian:"Процентное отличие от медианы",percentOfMedian:"Процент от медианы",all:"Все",yearly:"Ежегодно",recurringMonthly:"Через каждый месяц",recurringWeekly:"Через каждую неделю",recurringDaily:"Через каждый день",hourly:"Каждый час",externalRaster:"Внешний растр",meanRaster:"Выбрать слой изображений среднего в качестве базового",ignoreNodataLabel:"Игнорировать пропущенные значения при вычислениях",ignore:"Игнорировать",analysisLayerLabel:"Выбрать слой многомерных изображений для генерирования аномалии",itemDescription:"Сервис анализа изображений, полученный после запуска Создать многомерную аномалию",itemTags:"Результат анализа растра, Создать многомерную аномалию, ${layername}",itemSnippet:"Сервис анализа изображений, полученный после запуска Создать многомерную аномалию"});

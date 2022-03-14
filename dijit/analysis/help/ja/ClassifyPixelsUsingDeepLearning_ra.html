@@ -51,7 +51,7 @@
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>ピクセルの分類に使用する画像を選択</h2></div>
+        <div><h2>ピクセルの分類に使用される画像の選択</h2></div>
         <hr/>
         <div>
             <p>分類する入力画像。
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div id="model">
-        <div><h2>ピクセルの分類に使用するディープ ラーニング モデルを選択</h2></div>
+        <div><h2>ピクセルの分類にディープ ラーニング モデルの選択</h2></div>
         <hr/>
         <div>
             <p>入力ディープ ラーニング パッケージ (* <code>.dlpk</code>) アイテム。
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div id="modelArguments">
-        <div><h2>ディープ ラーニング モデルの引数を指定</h2></div>
+        <div><h2>ディープ ラーニング モデルの引数の指定</h2></div>
         <hr/>
         <div>
             <p>関数の引数は、入力モデルによって参照される Python ラスター関数クラスで定義されます。 ここでは、実験や調整のための追加のディープ ラーニング パラメーターおよび引数 (感度を調整するための信頼性の閾値など) をリストします。
@@ -82,7 +82,7 @@
             </p>
         </div>
     </div>
-    <div id="processAllRasterItems">
+    <div id="processing_mode">
         <div><h2>処理モード</h2></div>
         <hr/>
         <div>
@@ -90,7 +90,7 @@
             </p>
             <ul>
                 <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
-モザイク データセットまたはイメージ サービス内のすべてのラスター アイテムがモザイク化され、処理されます。 これがデフォルトです。
+モザイク データセットまたはイメージ サービス内のすべてのラスター アイテムがモザイク化され、処理されます。 これがデフォルト値になります。
 
                 </li>
                 <li>PROCESS_ITEMS_SEPARATELY &mdash; 

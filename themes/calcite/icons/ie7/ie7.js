@@ -20,7 +20,7 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 /* To avoid CSS expressions while still supporting IE 7 and IE 6, use this script */
 /* The script tag referencing this file must be placed before the ending body tag. */

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"צבירת רסטר רב-ממדי",outputLayerName:"${layername}_aggregated",dimensionLabel:"בחר ממד לצבור לאורכו",variablesLabel:"בחר משתנה/ים לצבירה",variablesListLabel:"משתנים [Dimension Info] (תיאור)",aggregationMethodLabel:"בחר שיטת צבירה",aggregationFunctionLabel:"בחר תבנית פונקציית רסטר",aggregationDefinitionLabel:"בחר הגדרת צבירה",intervalKeywordLabel:"בחר מרווח מילות מפתח",intervalValueLabel:"מרווח ערך",intervalUnitLabel:"יחידה",intervalRangesLabel:"הגדר טווחים",ignoreNodataLabel:"התעלם מערכים חסרים בחישוב",ignore:"התעלם",intervalKeyword:"מילת מפתח למרווח",intervalValue:"ערך למרווח",intervalRanges:"טווחי מרווח",all:"הכל",hourly:"שעתי",daily:"יומי",weekly:"שבועי",monthly:"חודשי",quarterly:"רבעוני",recurringDaily:"חוזר כל יום",recurringWeekly:"חוזר כל שבוע",recurringMonthly:"חוזר כל חודש",recurringQuarterly:"חוזר כל רבעון",yearly:"שנתי",hours:"שעות",days:"ימים",weeks:"שבועות",months:"חודשים",years:"שנים",custom:"מותאם אישית",minimumValueLabel:"ערך מינימלי",maximumValueLabel:"ערך מקסימלי",analysisLayerLabel:"בחר שכבת תמונה רב-ממדית לצבירה",itemDescription:"ניתוח שירות תמונות נוצר מתוך רסטר רב-ממדי של צבירה",itemTags:"תוצאת ניתוח רסטר, רסטר רב-ממדי של צבירה, ${layername}",itemSnippet:"ניתוח שירות תמונות נוצר מתוך רסטר רב-ממדי של צבירה"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Vælg destinationsraster eller -objekter",destinationField:"Destinationsfelt (valgfrit)",inputDistanceAccumulationRaster:"Vælg raster til afstandsakkumulering",inputBackDirectionRaster:"Vælg tilbageretnings- eller flowretningsraster",pathType:"Stitype (valgfrit)",bestSingle:"Bedste enkelt",eachCell:"Hver celle",eachZone:"Hver zone",outputRasterName:"Navn på resultat-rasterlag",outputLayerName:"Optimal rute som raster af ${layername}",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Vektorlag genereret ud fra kørsel af den optimale rute som raster på ${layername}. ",itemTags:"Analyseresultat, optimal rute som raster, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra den optimale rute som raster."});

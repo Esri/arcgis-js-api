@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({binsLabel:"Επιλογή του τύπου των bin που θα χρησιμοποιηθούν για τη δημιουργία καννάβου πολλών μεταβλητών",layersAttrLabel:"Επιλογή θεματικών επιπέδων εισόδου και μεταβλητών που θέλετε να συμπεριληφθούν στον κάνναβο",itemDescription:"Δημιουργήθηκε feature layer από την εκτέλεση της επιλογής «Δημιουργία καννάβου πολλών μεταβλητών».",itemTags:"Αποτέλεσμα ανάλυσης, Δημιουργία καννάβου πολλών μεταβλητών",itemSnippet:"Feature layer που δημιουργήθηκε από την επιλογή «Δημιουργία καννάβου πολλών μεταβλητών»",addVariables:"Προσθήκη μεταβλητών"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Hasilkan Anomali Multidimensional",outputLayerName:"${layername}_anomaly",variablesLabel:"Pilih variabel yang akan menghasilkan anomali",variablesListLabel:"Variabel [Dimension Info] (Deskripsi)",methodLabel:"Pilih metode untuk menghasilkan anomali",calculationIntervalLabel:"Pilih interval temporal untuk menghitung rata-rata",differenceFromMean:"Perbedaan dari Rata-rata",percentDifferenceFromMean:"Perbedaan Persen dari Rata-rata",percentOfMean:"Persen Rata-rata",zScore:"Skor Z",differenceFromMedian:"Perbedaan dari Median",percentDifferenceFromMedian:"Perbedaan Persen dari Median",percentOfMedian:"Persen dari Median",all:"Semua",yearly:"Tahunan",recurringMonthly:"Berulang Setiap Bulan",recurringWeekly:"Berulang Setiap Minggu",recurringDaily:"Berulang Setiap Hari",hourly:"Setiap jam",externalRaster:"Raster Eksternal",meanRaster:"Pilih layer citra rata-rata sebagai referensi",ignoreNodataLabel:"Abaikan nilai yang hilang dalam penghitungan",ignore:"Abaikan",analysisLayerLabel:"Pilih layer citra multidimensional untuk menghasilkan anomali",itemDescription:"Layanan Gambar Analisis yang dihasilkan dari Hasilkan Anomali Multidimensional",itemTags:"Hasil Analisis Raster, Hasilkan Anomali Multidimensional, ${layername}",itemSnippet:"Layanan Gambar Analisis yang dihasilkan dari Hasilkan Anomali Multidimensional"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayer:"Επιλογή του θεματικού επιπέδου για εύρεση κοντινών γεγονότων από",entityField:"Επιλέξτε το πεδίο για την αναγνώριση συμβάντων.",entityLayer:"Επιλέξτε το επίπεδο για προσδιορισμό των οντοτήτων ενδιαφέροντος",defineDistanceLabel:"Καθορισμός της απόστασης της χωρικής αναζήτησης",distMethodLabel:"Επιλογή της μεθόδου υπολογισμού της απόστασης",temporalSearchLabel:"Καθορισμός του χρονικού εύρους της αναζήτησης",optionsLabel:"Επιλογές για προχωρημένους",maxTraceDepth:"Μέγιστο βάθος ίχνους",attributeMatchLabel:"Επιλέξτε ένα ή περισσότερα χαρακτηριστικά της οντότητας για ταυτοποίηση",includeTracksLayer:"Περιλαμβάνει θεματικό επίπεδο ιχνών",itemDescription:'Δημιουργία feature layer από την εκτέλεση της λύσης "Ιχνηλάτηση συμβάντων γειτνίασης" για το ${inputLayername}.',itemTags:"Ανάλυση αποτελέσματος, Ιχνηλάτηση συμβάντων γειτνίασης, ${inputLayername}",itemSnippet:'Δημιουργία θεματικού επιπέδου feature από την "Ιχνηλάτηση συμβάντων γειτνίασης"',outputLayerName:"Ιχνηλάτιση συμβάντων γειτνίασης για το ${inputLayername}",noEntityFieldMsg:"Το επίπεδο γεγονότων εγγύτητας και οι οντότητες του επιπέδου ενδιαφέροντος δεν έχουν κοινά πεδία."});

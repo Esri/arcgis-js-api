@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","../../rasterLib/function/AspectFunction","../../rasterLib/function/BandArithmeticFunction","../../rasterLib/function/ColormapFunction","../../rasterLib/function/CompositeBandFunction","../../rasterLib/function/ContrastBrightnessFunction","../../rasterLib/function/ConvolutionFunction","../../rasterLib/function/ExtractBandFunction","../../rasterLib/function/HillshadeFunction","../../rasterLib/function/LocalFunction","../../rasterLib/function/MaskFunction","../../rasterLib/function/NDVIFunction","../../rasterLib/function/SlopeFunction","../../rasterLib/function/StretchFunction","../../rasterLib/function/RemapFunction","../../rasterLib/function/IdentityFunction","../../rasterLib/function/ResampleFunction"],(function(n,t,o,i,r,u,c,e,a,s,f,p,b,L,F,d,l,m){return function(){var n={},t={},g={};function y(o){o.prototype.supportWebGL&&(t[o.prototype.functionName]=o),o.prototype.support2D&&(n[o.prototype.functionName]=o),g[o.prototype.functionName]=o}return y(o),y(i),y(r),y(u),y(c),y(e),y(a),y(s),y(f),y(p),y(b),y(L),y(F),y(d),y(l),y(m),{cpu:n,gpu:t,functions:g,register:y,getFunction:function(n){return g[n]},support:function(o,i){return!!("gpu"===i?t:"cpu"===i?n:g)[o]}}}()}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({_widgetLabel:"Zpracování geografických dat",_featureAction_ReceiveFeatureSet:"Nastavit jako vstup pro ",requiredInfo:"je vyžadováno.",drawnOnMap:"Výsledek je vykreslen na mapě.",noToolConfig:"Není k dispozici žádná geoprocessingová úloha.",useUrlForGPInput:"URL",useUploadForGPInput:"Nahrát soubor",useImageServiceLayer:"Vrstva image služby",useBrowseLayerPortal:"Procházet / Vybrat z portálu",selectFileToUpload:"Vybrat soubor…",rasterFormat:"Formát rastrových dat",noFileSelected:"Nebyl vybrán žádný soubor.",uploadSuccess:"Nahrání souboru proběhlo úspěšně.",showLayerContent:"Zobrazit obsah vrstvy",invalidUrl:"Neplatná adresa URL Feature služby",urlPlaceholder:"adresa URL sady prvků",addShapefile:"Přidat shapefile",generateShapefileError:"Byla vygenerována chyba shapefile, prosím zkontrolujte: ",cleared:"Výsledek byl vymazán.",enlargeView:"Zvětšit zobrazení",exportOutput:"Exportovat",emptyResult:"Výsledek je prázdný.",useSelectedFeatureset:"Umožňuje použít výsledné prvky.",closeSelectedFeatureset:"Vymaže výběr a použije konfigurovanou možnost vstupu."});

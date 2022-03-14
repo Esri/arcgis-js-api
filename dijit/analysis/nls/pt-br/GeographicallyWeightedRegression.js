@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({chooseLayer:"Escolha uma camada para analisar",chooseField:"Escolha o campo para modelar",chooseExplanatoryField:"Escolha os campos explanatórios",chooseNeighborhood:"Escolha como a vizinhança será determinada",distanceBand:"Faixa de Distância",numNeighbors:"Número de vizinhos",chooseWeighted:"Escolha como as feições vizinhas são ponderadas",bisquare:"Biquadrática",gaussian:"Gaussiana",resultLayerName:"Nome da camada resultante",outputLayerName:"GWR ${inputLayerName}",distanceBandWarning:"O valor da faixa de distância deve estar entre ${min} e ${max}",numNeighborsWarning:"O número de vizinhos deve estar entre ${min} e ${max}",explanatoryFieldsWarning:"Escolha pelo menos 1 campo explanatório",explanatoryLayerWarning:"A camada selecionada não contém campos explanatórios válidos. Escolha uma camada diferente",inputLayerWarning:"A camada selecionada não contém campos numéricos para modelar. Escolha uma camada diferente",itemDescription:"Camada de feição gerada ao executar a solução Regressão Geograficamente Ponderada.",itemTags:"Resultado da Análise, Regressão Geograficamente Ponderada, ${inputLayerName}, ajustar",itemSnippet:"Camada de feição gerada ao executar a ferramenta Regressão Geograficamente Ponderada"});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayer:"Izvēlieties slāni, no kura atrast tuvumā esošos notikumus",entityField:"Atlasiet lauku notikumu identificēšanai",entityLayer:"Izvēlieties slāni interesējošo vienumu norādīšanai",defineDistanceLabel:"Definēt telpiskās meklēšanas attālumu",distMethodLabel:"Izvēlēties attāluma aprēķināšanas metodi",temporalSearchLabel:"Norādiet laika meklēšanas attālumu",optionsLabel:"Papildu opcijas",maxTraceDepth:"Maksimālais izsekošanas dziļums",attributeMatchLabel:"Atlasiet vienu vai vairākus vienuma atribūtus, kam jāatbilst",includeTracksLayer:"Iekļaujiet maršrutu slāni",itemDescription:"Elementu slānis ir ģenerēts, palaižot risinājumu Izsekot tuvumā esošus notikumus attiecībā uz ${inputLayername}.",itemTags:"Analīzes rezultāts, Izsekot tuvumā esošus notikumus , ${inputLayername}",itemSnippet:"Elementu slānis ir ģenerēts, izmantojot Izsekot tuvumā esošus notikumus.",outputLayerName:"Izsekot tuvumā esošus notikumus attiecībā uz ${inputLayername}",noEntityFieldMsg:"Tuvumā esošu notikumu slānim un interesējošo vienumu slānim nav kopīgu lauku."});

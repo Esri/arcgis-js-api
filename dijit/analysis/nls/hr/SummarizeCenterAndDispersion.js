@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Izaberite sloj koji će se opisati",summaryTypes:"Vrste sadržaja",centralFeature:"Središnji geoobjekt",meanCenter:"Srednja sredina",medianCenter:"Prosječna sredina",ellipse:"Elipsa",weightBy:"Težina prema (neobavezno)",groupBy:"Grupiraj prema (neobavezno)",resultLayerName:"Naziv sloja rezultata",outputLayerName:"Opiši distribuciju sloja ${layerName}",none:"Nema",itemDescription:"Sloj geoobjekata koji je generiran pokretanjem opcije Sažmi sredinu i disperziju na sloju ${layerName}. ",itemTags:"Rezultat analize, Sažmi sredinu i disperziju, ${layerName}",itemSnippet:"Sloj geoobjekata koji je generiran funkcijom Sažmi sredinu i disperziju"});

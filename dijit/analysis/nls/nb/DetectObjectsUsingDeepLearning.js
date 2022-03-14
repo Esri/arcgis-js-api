@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Definer objekter ved hjelp av dyplæring",outputLayerName:"${layername}_detected",modelLabel:"Velg dyplæringsmodellen som skal brukes til å registrere objekter",modelArgsLabel:"Angi argument for dyplæringsmodell",nameLabel:"Navn",valueLabel:"Verdi",removeDuplicatesLable:"Fjern duplikate geoobjekter i utdataene (valgfritt)",queryModelArgsMsg:"Spørring i modellargumenter...",queryModelArgsErrMsg:"Kan ikke utføre spørring i modellargumenter.",nonMaxSuppressionLabel:"Ingen maksimal undertrykking",options:"Alternativer",confidenceLabel:"Felt for sikkerhetsnivå",classValueLabel:"Klasseverdifelt",maxOverlapLabel:"Største overlapp",numberOnlyMsg:"Bare numeriske verdier er tillatt.",processingModeLabel:"Behandlingsmodus",processAsMosaicLabel:"Behandle som mosaikkbilde",processAsItemsLabel:"Behandle alle rasterelemeneter separat",analysisLayerLabel:"Velg bilde som skal brukes til å registrere objekter",itemDescription:"Bildeanalysetjeneste generert fra Registrer objekter ved hjelp av dyplæring",itemTags:"Rasteranalyseresultat, Registrer objekter ved hjelp av dyplæring, ${layername}",itemSnippet:"Bildeanalysetjeneste generert fra Registrer objekter ved hjelp av dyplæring"});

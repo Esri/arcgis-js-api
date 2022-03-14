@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Choisir les entités ponctuelles à enrichir",chooseMVgridLyrLabel:"Choisir la grille multivariables à enrichir",chooseVariables:"Choisir les variables à ajouter",outputLayerName:"${inputFeatures} enrichies depuis ${gridLayer}",itemDescription:"Couche d’entités générée en exécutant la solution Enrichir à l’aide d’une grille multivariables pour ${inputFeatures}.",itemTags:"Résultat d’analyse, Enrichir à l’aide d’une grille multivariables, ${inputFeatures}, ${gridLayer}",itemSnippet:"Couche d’entités générée avec Enrichir à l’aide d’une grille multivariables"});

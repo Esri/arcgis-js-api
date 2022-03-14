@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"اختيار طبقة للعثور على مواقع السكن منها",selectTracksLabel:"حدد حقلاً واحدًا أو أكثر لتعريف المسارات",defineDistanceLabel:"تحديد مسافة البحث المكاني",distMethodLabel:"اختيار طريقة حساب المسافة",temporalSearchLabel:"تحديد نطاق البحث المؤقت",outputDwellLabel:"إخراج مواقع السكن كـ",outputLayerName:"البحث عن مواقع السكن لـ ${inputLayerName}",meanCenters:"مراكز الوسط",convexHulls:"الهياكل المحدبة",dwellFeatures:"معالم السكن",allFeatures:"كل المعالم",itemDescription:'طبقة المعالم المُنشأة من تشغيل حل "البحث عن مواقع السكن" لـ ${inputLayerName}.',itemTags:"نتيجة التحليل، البحث عن مواقع السكن، ${inputLayerName}",itemSnippet:'طبقة المعالم المُنشأة من "البحث عن مواقع السكن"',timeIntervalSplit:"تحليل البيانات بالفواصل الزمنية (اختياري)",timeBoundaryValidationMsg:"يجب أن يكون الفاصل الزمني أكبر من نطاق البحث المؤقت."});

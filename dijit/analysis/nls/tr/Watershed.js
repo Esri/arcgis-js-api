@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Akış yönü katmanını seçin",pourPointLayerLabel:"Akış noktası rasterı veya detay katmanını seçin",pourPointField:"Akış noktası rasterını seçin",resultLayerName:"Sonuç katmanı adı",outputLayerName:"${layername} katmanının su havzası",itemDescription:"Detay katmanı, ${layerName} üzerinde Merkez ve Dağılımı Özetle çalıştırılarak oluşturuldu. ",itemTags:"Analiz Sonucu, Su Havzası, ${layername}, ${fieldname}",itemSnippet:"Detay katmanı Boşaltma Havzasından oluşturuldu."});

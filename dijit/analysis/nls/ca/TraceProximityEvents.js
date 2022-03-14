@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayer:"Trieu la capa on se cercaran esdeveniments de proximitat",entityField:"Seleccioneu un camp per identificar esdeveniments",entityLayer:"Trieu la capa per especificar les entitats d'interès",defineDistanceLabel:"Defineix la distància de cerca espacial",distMethodLabel:"Trieu el mètode per calcular la distància",temporalSearchLabel:"Definiu la distància de cerca temporal",optionsLabel:"Opcions avançades",maxTraceDepth:"Profunditat màxima de rastreig",attributeMatchLabel:"Seleccioneu un o diversos atributs d'entitat que han de coincidir",includeTracksLayer:"Inclou la capa de recorreguts",itemDescription:"Capa d'entitats generada en executar la solució Rastreja esdeveniments de proximitat per a ${inputLayername}.",itemTags:"Resultat de l'anàlisi, rastreja esdeveniments de proximitat, ${inputLayername}",itemSnippet:"Capa d'entitats generada des de Rastreja esdeveniments de proximitat.",outputLayerName:"Rastreja esdeveniments de proximitat per a ${inputLayername}",noEntityFieldMsg:"La capa d'esdeveniments de proximitat i la capa d'entitats d'interès no tenen camps en comú."});

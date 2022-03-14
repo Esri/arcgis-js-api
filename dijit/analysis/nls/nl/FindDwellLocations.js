@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies de laag om woningen in te zoeken",selectTracksLabel:"Selecteer een of meer velden om track te identificeren",defineDistanceLabel:"Definieer de ruimtelijke zoekafstand",distMethodLabel:"Kies de methode om de afstand te berekenen",temporalSearchLabel:"Definieer het tijdelijke zoekbereik",outputDwellLabel:"Voer woongebieden uit als",outputLayerName:"Zoek woninglocaties voor ${inputLayerName}",meanCenters:"Gemiddelde centra",convexHulls:"Convex hulls",dwellFeatures:"Woonobjecten",allFeatures:"Alle objecten",itemDescription:"Objectlaag die is gegenereerd door de oplossing Vind woonlocaties uit te voeren voor ${inputLayerName}.",itemTags:"Analyseresultaat, Vind woonlocaties, ${inputLayerName}",itemSnippet:"Objectlaag gegenereerd door Vind woonlocaties",timeIntervalSplit:"Analyseer gegevens met tijdsintervallen (optioneel)",timeBoundaryValidationMsg:"Het tijdsinterval moet groter zijn dan het tijdelijke zoekbereik."});

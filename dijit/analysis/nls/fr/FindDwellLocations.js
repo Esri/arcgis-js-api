@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Choisir la couche dans laquelle rechercher des pauses",selectTracksLabel:"Sélectionner un ou plusieurs champs pour identifier les traces",defineDistanceLabel:"Définir la distance de recherche spatiale",distMethodLabel:"Choisir la méthode de calcul de distance",temporalSearchLabel:"Définir la plage de recherche temporelle",outputDwellLabel:"Lieux de pause en sortie en tant que",outputLayerName:"Rechercher des lieux de pause pour ${inputLayerName}",meanCenters:"Centres moyens",convexHulls:"Enveloppes convexes",dwellFeatures:"Entités Pauses",allFeatures:"Toutes les entités",itemDescription:"Couche d’entités générée à partir de l’exécution de la solution Rechercher des lieux de pause pour ${inputLayerName}.",itemTags:"Résultat d’analyse, Rechercher des lieux de pause, ${inputLayerName}",itemSnippet:"Couche d’entités générée à partir de Rechercher des lieux de pause",timeIntervalSplit:"Analyser les données selon des intervalles temporels (facultatif)",timeBoundaryValidationMsg:"L’intervalle temporel doit être supérieur à la plage de recherche temporelle."});

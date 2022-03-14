@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Kies stroomrichtingslaag",pourPointLayerLabel:"Kies uw puntraster of objectlaag",pourPointField:"Kies het gietpuntveld",resultLayerName:"Resultaat laagnaam",outputLayerName:"Watershed van ${layername}",itemDescription:"Objectlaag die is gegenereerd door uitvoering van Samenvatting centrum en spreiding op ${layerName}. ",itemTags:"Analyseresultaat, Watershed, ${layername} ${fieldname}",itemSnippet:"Objectlaag gegenereerd door Watershed."});

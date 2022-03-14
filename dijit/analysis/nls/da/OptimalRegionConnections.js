@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Vælg regionsraster eller -objekt",inputCostRaster:"Vælg omkostningsraster (valgfri)",inputBarrierRasterOrFeatures:"Vælg barriereraster eller -objekt (valgfri)",distanceMethod:"Afstandsmetode (valgfri)",connectionsWithinRegions:"Forbindelser inden for regioner (valgfri)",generateConnections:"Generér forbindelser",noConnections:"Ingen forbindelser",planar:"Plan",geoDesic:"Geodætisk",outputOptimalLinesName:"Navnet på det resulterende optimale vektorlag for forbindelseslinjer",outputNeighborConnectionsName:"Navnet på det resulterende vektorlag for tilstødende forbindelser (valgfri)",outputLayerName:"Optimale regionsforbindelser for ${layername}",drawSourcePointLayerName:"Kildepunkter",itemDescription:"Vektorlag genereret ud fra kørsel af Optimale regionsforbindelser for ${layername}. ",itemTags:"Analyseresultat, Optimale regionsforbindelser, ${layername} ${fieldname}",itemSnippet:"Vektorlag genereret ud fra Optimale regionsforbindelser.",noValueMessage:"Denne værdi er obligatorisk"});

@@ -105,8 +105,6 @@
                     </li>
                     <li> <b>Mediana</b> &ndash; Izračuna vrednost mediane piksla po vseh izsekih v intervalu.
                     </li>
-                    <li> <b>Percentil</b> - percentil Izračuna razpon vrednosti za piksel po vseh izsekih v intervalu. 90. percentil je izračunan po privzeti nastavitvi. S parametrom <b>percentil vrednost</b> lahko podate druge vrednosti (od 0 do 100).
-                    </li>
                     <li> <b>Razpon</b> &ndash; Izračuna razpon vrednosti za piksel po vseh izsekih v intervalu.
                     </li>
                     <li> <b>Standardni odklon</b> &ndash; Izračuna standardni odklon vrednosti piksla po vseh izsekih v intervalu.
@@ -126,7 +124,7 @@
         <div><h2>Izberi predlogo rastrske funkcije</h2></div>
         <hr/>
         <div>
-            <p>Rastrska funkcija po meri, ki bo uporabljena za izračun vrednosti piksla agregiranih rastrov. Vnos je element predloge rastrske funkcije v portalu. Vnos je obvezen, kadar je  <b>Metoda agregacije</b> nastavljena na <b>Po meri</b>.
+            <p>Rastrska funkcija po meri, ki bo uporabljena za izračun vrednosti piksla agregiranih rasterjev. Vnos je element predloge rastrske funkcije v portalu. Vnos je obvezen, kadar je  <b>Metoda agregacije</b> nastavljena na <b>Po meri</b>.
             </p>
         </div>
     </div>
@@ -175,7 +173,7 @@
                     </li>
                     <li> <b>Trimesečno ponavljajoče</b> &ndash; Vrednosti podatkov bodo agregirane v tedenske časovne korake in rezultat bo vključeval eno agregirano vrednost na trimesečje. Rezultat bo vključeval največ 4 trimesečne časovne izseke.
                     </li>
-                    <li> <b>Dekadno</b> &ndash; Vrednosti podatkov bodo agregirane v 3 obdobja, vsako po 10 dni. Zadnje obdobje bo morda vsebovalo manj kot 10 dni. Rezultat bo vključeval 3 izseke za vsak mesec.
+                    <li> <b>Deseterno</b> &ndash; Vrednosti podatkov bodo agregirane v 3 obdobja, vsako po 10 dni. Zadnje obdobje bo morda vsebovali manj kot 10 dni. Rezultat bo vključeval 3 izseke za vsak mesec.
                     </li>
                     <li> <b>Peterno</b> &ndash; Vrednosti podatkov bodo agregirane v 6 obdobij, vsako po 5 dni. Zadnje obdobje bo morda vsebovalo manj kot 5 dni. Rezultat bo vključeval 6 izsekov za vsak mesec.
                     </li>
@@ -200,7 +198,7 @@
         <div>
             <p>Enota, ki bo uporabljena za vrednost intervala. Ta vnos je obvezen, kadar je  <b>Dimenzija</b> časovno polje in je <b>Definicija agregacije</b> nastavljena na <b>Vrednost intervala</b>.
             </p>
-            <p>Če agregacija poteka preko česar kar ni čas, potem ta možnost ne bo na voljo in se bo enota za vrednost intervala ujemala z enoto spremenljivke vhodnih podatkov večdimenzionalnega rastra.
+            <p>Če agregacija poteka preko česar kar ni čas, potem ta možnost ne bo na voljo in se bo enota za vrednost intervala ujemala z enoto spremenljivke vhodnih podatkov večdimenzionalnega rasterja.
                 <ul>
                     <li> <b>Ure</b> &ndash; Vrednosti podatkov bodo agregirane v urne časovne izseke v navedenem intervalu.
                     </li>
@@ -221,7 +219,7 @@
         <div><h2>Določi razpone</h2></div>
         <hr/>
         <div>
-            <p>Razponi intervalov, ki bodo uporabljeni za agregacijo skupin vrednosti. Sestavljeni so iz parov minimalnih in maksimalnih vrednosti razpona s tipom podatkov Decimalno dvojno &scaron;tevilo ali Datum. Vnos je obvezen, kadar je  <b>Definicija agregacije</b> nastavljena na <b>Razponi intervalov</b>.
+            <p>Razponi intervalov, ki bodo uporabljeni za agregacijo skupin vrednosti. Sestavljeni so iz parov minimalnih in maksimalnih vrednosti razpona s tipom podatkov &Scaron;tevilo s fiksno vejico ali Datum. Vnos je obvezen, kadar je  <b>Definicija agregacije</b> nastavljena na <b>Razponi intervalov</b>.
             </p>
         </div>
     </div>
@@ -247,25 +245,7 @@
             
             <p>Ime sloja, ki bo ustvarjen v odseku  <b>Moja vsebina</b> in dodan na karto. Privzeto ime temelji na imenu orodja in imenu vhodnega sloja. Če sloj že obstaja, bo od vas zahtevano, da vnesete drugo ime.
             </p>
-            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>. Če imate pravice za ustvarjanje ploščičnih in dinamičnih slikovnih slojev, lahko določite tudi katero vrsto sloja želite ustvariti v izhodu z uporabo spustnega menija Shrani rezultat kot. </p>
-        </div>
-    </div>
-    <div id="percentileValue">
-        <div><h2>Vrednost percentila</h2></div>
-        <hr/>
-        <div>
-            <p>Percentil za izračun. Privzeta vrednost je 90, ki označuje 90. percentil.
-            </p>
-            <p>Vrednosti se gibljejo od 0 do 100. Percentil 0 je pravzaprav enakovreden najmanj&scaron;i, percentil 100 pa največji statistični vrednosti. Vrednost 50 bo pravzaprav ustvarila enak rezultat kot srednja statistična vrednost.
-            </p>
-        </div>
-    </div>
-    <div id="percentileInterpolationType">
-        <div><h2>Tip interpolacije percentila</h2></div>
-        <hr/>
-        <div>
-            <p>Določa metodo interpolacije percentila, ki bo uporabljena, ko je &scaron;tevilo vrednosti iz vhodnega rastra, ki bo izračunano, sodo.
-            </p>
+            <p>Lahko navedete ime mape v  <b>Moji vsebini</b>, kjer bo rezultat shranjen s pomočjo spustnega menija <b>Shrani rezultat v</b>. Če imate pravice za ustvarjanje slojev s ploščicami in dinamičnimi slikami, lahko določite tudi katero vrsto sloja želite ustvariti v izhodu z uporabo spustnega menija Shrani rezultat kot. </p>
         </div>
     </div>
 </div>

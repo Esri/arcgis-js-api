@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({distToNearest:"מרחק אל הישות הקרובה ביותר",attrOfInterest:"מאפיין הישות הקרובה ביותר",summaryNearby:"סיכום ישות סמוכה",summaryIntersecting:"סיכום ישויות חותכות",distToNearestLabel:"המרחק בין מרכז ה-Bin והישות הקרובה ביותר בשכבת הקלט",attrOfInterestLabel:"הערך של שדה שצוין מהישות הקרובה ביותר בשכבת הקלט",summaryNearbyLabel:"נתון סטטיסטי המחושב בכל הישויות שנמצאו במרחק שצוין ממרכז ה-Bin",summaryIntersectingLabel:"נתון סטטיסטי המחושב בכל הישויות שחותכות את ה-Bin",maxDistancefromCtr:"המרחק המרבי ממרכז ה-Bin",fieldToIncude:"שדה להכללה",statstoCalculate:"נתון סטטיסטי לחישוב",summFeatuesWithin:"סכם ישויות בתוך",smallMaxDistErrorMsg:"המרחק המרבי ממרכז ה-Bin חייב להיות גדול מגודל ה-Bin.",smallSumFeaturesErrorMsg:"המרחק המרבי ממרכז ה-Bin חייב להיות גדול מגודל ה-Bin."});

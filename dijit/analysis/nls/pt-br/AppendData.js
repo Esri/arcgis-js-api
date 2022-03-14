@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Escolher a camada a ser anexada",inputWarningLabel:"Aviso: A camada que você anexar será modificada.",inputHostedLayerWarning:"A camada selecionada não é uma camada de feição hospedada. Selecione uma camada de feição hospedada para anexar.",appendLayerLabel:"Escolher a camada para anexar",filterLabel:"Anexar todas as feições ou definir um subconjunto (opcional)",fieldMappingLabel:"Escolher como anexar campos (opcional)",inputField:"Campo de Entrada",appendValue:"Anexar Valor",expression:"Expressão"});

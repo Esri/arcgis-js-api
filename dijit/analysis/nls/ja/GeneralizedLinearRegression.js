@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({modifiedTitle:"一般化線形回帰分析 (Generalized Linear Regression) ${goal}",fit:"調整",fitAndPredict:"調整および予測",selectGoal:"操作を選択してください。",fitGoal:"モデルを調整してモデルのパフォーマンスを評価する",fitAndPredictGoal:"モデルを調整して値を予測する",inputLayerLabel:"モデルを生成するレイヤーを選択する",chooseDependentField:"モデル化するフィールドを選択する",chooseDataType:"モデル化するデータのタイプを選択する",continuousData:"連続",binaryData:"バイナリ",countData:"数",chooseExplanatoryField:"説明フィールドを選択する",chooseFeaturesToPredict:"値を予測するレイヤーを選択する",chooseExplainMatch:"説明フィールドの照合方法を選択する",outputLayerName:"GLR ${inputLayerName}",itemDescription:"一般化線形回帰分析 (Generalized Linear Regression) ${goal} ソリューションの実行から生成されるフィーチャ レイヤー。",itemTags:"解析結果、一般化線形回帰分析 (Generalized Linear Regression)、${inputLayerName}、${goal}",itemSnippet:"一般化線形回帰分析 (Generalized Linear Regression) (${goal}) から生成されるフィーチャ レイヤー。"});

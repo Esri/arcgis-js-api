@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/dom-style","dojo/on","dijit/_TemplatedMixin","dojo/text!./ResultImageLayerRenderer.html","../BaseResultRenderer"],(function(e,t,i,s,a,r,d){return e([d,a],{baseClass:"jimu-gp-resultrenderer-base jimu-gp-renderer-draw-feature",templateString:r,postCreate:function(){this.inherited(arguments),this.layer&&(this._displayText(),this._addResultLayer(this.layer))},destroy:function(){this.layer&&(this.map.removeLayer(this.layer),this.layer=null),this.inherited(arguments)},_displayText:function(){i.set(this.clearNode,"display",""),this.own(s(this.clearNode,"click",t.hitch(this,(function(){this.layer&&(this.map.infoWindow.isShowing&&this.map.infoWindow.hide(),this.map.removeLayer(this.layer),this.layer=null),i.set(this.clearNode,"display","none"),i.set(this.domNode,"display","none")}))))},_addResultLayer:function(e){this.map.addLayers([e])}})}));

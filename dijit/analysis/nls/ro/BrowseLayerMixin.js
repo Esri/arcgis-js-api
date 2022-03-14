@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({defaultAnaysisLayerTitle:"Alegeţi stratul tematic de analiză din atlasul actualizat",customAnalysisLayerTitle:"Selectare strat tematic de analiză",searchPlaceholderText:"Căutarea straturilor tematice de analiză Living Atlas",searchCustomPlaceholderText:"Căutarea straturi tematice de analiză",mainActionTitle:"Selectare",customActionName:"Selectare și adăugare la hartă",customeSectionName:"Straturi tematice de analiză Living Atlas",Categories:"Categorii",boundaries:"Graniţe",places:"Locuri",boundariesAndPlaces:"Graniţe şi locuri",hexbins:"Hexazecimale",transportation:"Transport",point:"Straturi tematice punct",line:"Straturi tematice polilinie",polygon:"Straturi tematice poligon",pointFilterName:"Punct",lineFilterName:"Linie poligonală",polygonFilterName:"Poligon",multiPointFilterName:"Puncte Multiple",geometryFilterName:"Geometrie",featureLayerName:"Strat tematic de obiecte spațiale",tableLayerName:"Tabel",itemTypeFilterName:"Tip element",instantFilterName:"Moment",intervalFilterName:"Interval",timeFilterName:"Oră",edit:"Editare",boundaryLayers:"Straturile tematice de graniţă Esri",customAnalysisGroupName:"Grup de Analiză organizațională"});

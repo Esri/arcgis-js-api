@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputZoneRasterOrFeatures:"Odaberite raster ili geoobjekte zone",outputTableName:"Naziv tabele sa rezultatima",zoneField:"Polje zone",inputValueRaster:"Odaberite raster vrednosti",ignoreNodata:"Zanemari tip NoData (bez podataka) u izračunavanjima (opciono)",ignore:"Zanemari",statisticType:"Tip statistike (opciono)",percentileValues:"Percentilne vrednosti (opciono)",percentileInterpolationType:"Tip percentilne interpolacije (opciono)",processAsMultidimensional:"Obradi kao višedimenzionalno (opciono)",allSlices:"Svi isečci",outputZonalStatsName:"Zonska statistika za ${valuelayername} u ${layername}",itemDescription:"Tabela geoobjekata za analizu generisana iz ´Zonska statistika kao tabela´",itemTags:"Rezultat analize rastera, Zonska statistika kao tabela, ${layername}, ${valuelayername}",autoDetect:"Automatsko otkrivanje",nearest:"Najbliži",linear:"Linearno"});

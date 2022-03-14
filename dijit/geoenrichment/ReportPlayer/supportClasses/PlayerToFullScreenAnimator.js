@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["esri/dijit/geoenrichment/utils/animation/AnimationUtil","esri/dijit/geoenrichment/utils/DelayUtil"],(function(e,t){var i={};return i.animateTo=function(i){if(!i._isAnimatedTo){i._isAnimatedTo=!0;var n=e.animateResize({duration:300,domNode:i.domNode,startScaleX:.3,startScaleY:.3,fromOffset:{x:"c",y:"c"},toBox:{x:0,y:0,w:document.body.clientWidth,h:document.body.clientHeight}});return e.animateFadeIn({domNode:i.domNode,duration:300}),n.then((function(){return t.delay(100)}))}},i.animateFrom=function(i){if(i._isAnimatedTo){i._isAnimatedTo=!1;var n=e.animateResize({duration:300,domNode:i.domNode,endScaleX:.3,endScaleY:.3,toOffset:{x:"c",y:"c"},toBox:{x:(document.body.clientWidth-300)/2,y:(document.body.clientHeight-200)/2,w:300,h:200}});return e.animateFadeOut({domNode:i.domNode,duration:300}),n.then((function(){return t.delay(100)}))}},i}));

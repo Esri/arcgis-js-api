@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Phân loại pixel sử dụng Deep Learning",outputLayerName:"${layername}_classified",modelLabel:"Chọn mô hình Deep Learning được dùng để phân loại pixel",modelArgsLabel:"Xác định đối số mô hình Deep Learning",nameLabel:"Tên",valueLabel:"Giá trị",queryModelArgsMsg:"Đang truy vấn đối số mô hình...",queryModelArgsErrMsg:"Truy vấn đối số mô hình thất bại.",processingModeLabel:"Chế độ xử lý",processAsMosaicLabel:"Xử lý ở dạng hình ảnh mosaic",processAsItemsLabel:"Xử lý riêng biệt tất các các mục raster",analysisLayerLabel:"Chọn hình ảnh được dùng để phân loại pixel",itemDescription:"Dịch vụ Phân tích Hình ảnh được tạo ra từ chức năng Phân loại pixel sử dụng Deep Learning",itemTags:"Kết quả Phân tích Ảnh raster, Phân loại pixel sử dụng Deep Learning, ${layername}",itemSnippet:"Dịch vụ Hình ảnh Phân tích được tạo từ chức năng Phân loại pixel sử dụng Deep Learning"});

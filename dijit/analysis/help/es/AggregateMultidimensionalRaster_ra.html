@@ -73,7 +73,7 @@
         <div><h2>Elegir dimensión a lo largo de la que se agregará</h2></div>
         <hr/>
         <div>
-            <p>La dimensi&oacute;n de consolidaci&oacute;n. Esta es la dimensi&oacute;n a lo largo de la cual se consolidan las variables.
+            <p>La dimensi&oacute;n de agregaci&oacute;n. Esta es la dimensi&oacute;n a lo largo de la cual se agregan las variables.
             </p>
         </div>
     </div>
@@ -105,8 +105,6 @@
                     </li>
                     <li> <b>Mediana</b>: calcula el valor de la mediana de un p&iacute;xel en todas las porciones del intervalo.
                     </li>
-                    <li> <b>Percentil</b>: el percentil de valores de un p&iacute;xel se calcular&aacute; en todas las porciones del intervalo. El 90.&ordm; percentil se calcula de forma predeterminada. Puede especificar otros valores (del 0 al 100) con el par&aacute;metro <b>Valor de percentil</b>.
-                    </li>
                     <li> <b>Rango</b>: calcula el rango de valores de un p&iacute;xel en todas las porciones del intervalo.
                     </li>
                     <li> <b>Desviaci&oacute;n est&aacute;ndar</b>: calcula la desviaci&oacute;n est&aacute;ndar de los valores de un p&iacute;xel en todas las porciones del intervalo.
@@ -136,13 +134,13 @@
         <div>
             <p>Especifica el intervalo de dimensi&oacute;n en el que se agregar&aacute;n los datos.
                 <ul>
-                    <li> <b>Todo</b>: los valores de datos se agregar&aacute;n en todas las divisiones. Esta es la opci&oacute;n predeterminada.
+                    <li> <b>Todo</b>: los valores de datos se agregar&aacute;n en todas las porciones. Esta es la opci&oacute;n predeterminada.
                     </li>
-                    <li> <b>Palabra clave de intervalo</b>: los datos variables se agregar&aacute;n con un intervalo com&uacute;nmente conocido.
+                    <li> <b>Palabra clave de intervalo</b>: los datos de variables se agregar&aacute;n con un intervalo com&uacute;nmente conocido.
                     </li>
                     <li> <b>Valor de intervalo</b>: los datos de variables se agregar&aacute;n con un intervalo y una unidad especificados por el usuario.
                     </li>
-                    <li> <b>Rangos de intervalos</b>: los datos variables se agregar&aacute;n entre pares de valores o fechas especificados.
+                    <li> <b>Rangos de intervalos</b>: los datos de variables se agregar&aacute;n entre pares de valores o fechas especificados.
                     </li>
                 </ul>
                 
@@ -200,17 +198,17 @@
         <div>
             <p>La unidad que se usar&aacute; para el valor del intervalo. Esta entrada es obligatoria si  <b>Dimensi&oacute;n</b> es un campo de tiempo y <b>Definici&oacute;n de agregaci&oacute;n</b> se define como <b>Valor de intervalo</b>.
             </p>
-            <p>Si consolida a lo largo de algo que no sea tiempo, esta opci&oacute;n no estar&aacute; disponible y la unidad del valor de intervalo coincidir&aacute; con la unidad de variable de los datos r&aacute;ster multidimensionales de entrada.
+            <p>Si agrega a lo largo de algo que no sea tiempo, esta opci&oacute;n no estar&aacute; disponible y la unidad del valor de intervalo coincidir&aacute; con la unidad de variable de los datos r&aacute;ster multidimensionales de entrada.
                 <ul>
-                    <li> <b>Horas</b>: los valores de datos se agregar&aacute;n en periodos de tiempo horarios en el intervalo proporcionado.
+                    <li> <b>Horas</b>: los valores de datos se agregar&aacute;n en porciones de tiempo horarios en el intervalo proporcionado.
                     </li>
-                    <li> <b>D&iacute;as</b>: los valores de datos se agregar&aacute;n en periodos de tiempo diarios en el intervalo proporcionado.
+                    <li> <b>D&iacute;as</b>: los valores de datos se agregar&aacute;n en porciones de tiempo diarios en el intervalo proporcionado.
                     </li>
-                    <li> <b>Semanas</b>: los valores de datos se agregar&aacute;n en periodos de tiempo semanales en el intervalo proporcionado.
+                    <li> <b>Semanas</b>: los valores de datos se agregar&aacute;n en porciones de tiempo semanales en el intervalo proporcionado.
                     </li>
-                    <li> <b>Meses</b>: los valores de datos se agregar&aacute;n en periodos de tiempo mensuales en el intervalo proporcionado.
+                    <li> <b>Meses</b>: los valores de datos se agregar&aacute;n en porciones de tiempo mensuales en el intervalo proporcionado.
                     </li>
-                    <li> <b>A&ntilde;os</b>: los valores de datos se agregar&aacute;n en periodos de tiempo anuales en el intervalo proporcionado.
+                    <li> <b>A&ntilde;os</b>: los valores de datos se agregar&aacute;n en porciones de tiempo anuales en el intervalo proporcionado.
                     </li>
                 </ul>
                 
@@ -248,24 +246,6 @@
             <p>El nombre de la capa que se crear&aacute; en  <b>Mi contenido</b> y que se agregar&aacute; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ya existe, se le pedir&aacute; que indique otro nombre.
             </p>
             <p>Puede especificar el nombre de una carpeta de  <b>Mi contenido</b> en la que se guardar&aacute; el resultado con el cuadro desplegable <b>Guardar el resultado en</b>. Si tiene privilegios para crear capas de imágenes tanto en teselas como dinámicas, también puede especificar qué tipo de capa se va a generar para la salida utilizando el cuadro desplegable Guardar el resultado como. </p>
-        </div>
-    </div>
-    <div id="percentileValue">
-        <div><h2>Valor de percentil</h2></div>
-        <hr/>
-        <div>
-            <p>El percentil que se va a calcular. El valor predeterminado es 90, que indica el 90.&ordm; percentil.
-            </p>
-            <p>Los valores pueden variar de 0 a 100. El 0.&ordm; percentil equivale en esencia a la estad&iacute;stica m&iacute;nimo, mientras que el 100.&ordm; percentil equivale a la estad&iacute;stica m&aacute;ximo. Un valor de 50 generar&aacute; en esencia el mismo resultado que la estad&iacute;stica mediana.
-            </p>
-        </div>
-    </div>
-    <div id="percentileInterpolationType">
-        <div><h2>Tipo de interpolación percentil</h2></div>
-        <hr/>
-        <div>
-            <p>Especifica el m&eacute;todo de interpolaci&oacute;n percentil que se utilizar&aacute; si el n&uacute;mero de valores del r&aacute;ster de entrada calculado es par.
-            </p>
         </div>
     </div>
 </div>

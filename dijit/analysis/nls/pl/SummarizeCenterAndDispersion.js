@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Wybierz warstwę, która ma zostać opisana",summaryTypes:"Typy podsumowań",centralFeature:"Obiekt centralny",meanCenter:"Średni środek",medianCenter:"Środek mediany",ellipse:"Elipsa",weightBy:"Waga wg (opcjonalnie)",groupBy:"Grupuj wg (opcjonalnie)",resultLayerName:"Nazwa warstwy wynikowej",outputLayerName:"Opisz dystrybucję w warstwie ${layerName}",none:"Brak",itemDescription:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Sumuj wyśrodkowanie i rozproszenie dla warstwy ${layerName}. ",itemTags:"Wynik analizy, Sumuj wyśrodkowanie i rozproszenie, ${layerName}",itemSnippet:"Warstwa obiektowa wygenerowana w wyniku uruchomienia narzędzia Sumuj wyśrodkowanie i rozproszenie"});

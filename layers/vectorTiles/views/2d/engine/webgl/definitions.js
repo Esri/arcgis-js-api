@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["require","exports"],(function(_,E){Object.defineProperty(E,"__esModule",{value:!0}),E.EXTRUDE_SCALE=64,E.PICTURE_FILL_COLOR=4294967295,E.TILE_SIZE=512,E.ANGLE_FACTOR_256=256/360,E.COLLISION_BUCKET_SIZE=128,E.COLLISION_MAX_ZOOM_DELTA=4,E.COLLISION_EARLY_REJECT_BUCKET_SIZE=32}));

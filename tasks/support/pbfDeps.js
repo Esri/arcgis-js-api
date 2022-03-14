@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["../../layers/vectorTiles/tasks/operations/pbfQueryUtils","../../layers/vectorTiles/layers/graphics/optimizedFeatures"],(function(e,r){return{pbfQueryUtils:e,optimizedFeatures:r}}));

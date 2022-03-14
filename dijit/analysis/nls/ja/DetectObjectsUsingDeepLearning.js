@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"ディープ ラーニングを使用したオブジェクトの定義",outputLayerName:"${layername}_detected",modelLabel:"オブジェクトの検出に使用されるディープ ラーニング モデルの選択",modelArgsLabel:"ディープ ラーニング モデルの引数の指定",nameLabel:"名前",valueLabel:"値",removeDuplicatesLable:"出力からの重複フィーチャの削除 (オプション)",queryModelArgsMsg:"モデルの引数を検索しています...",queryModelArgsErrMsg:"モデルの引数をクエリできませんでした。",nonMaxSuppressionLabel:"Non maximum suppression",options:"オプション",confidenceLabel:"信頼度スコア フィールド",classValueLabel:"クラス値フィールド",maxOverlapLabel:"最大オーバーラップ率",numberOnlyMsg:"数値を指定してください。",processingModeLabel:"処理モード",processAsMosaicLabel:"モザイク画像として処理",processAsItemsLabel:"すべてのラスター アイテムを別々に処理",analysisLayerLabel:"オブジェクトの検出に使用される画像の選択",itemDescription:"[ディープ ラーニングを使用したオブジェクトの検出] から生成された分析イメージ サービス",itemTags:"ラスター解析結果、ディープ ラーニングを使用したオブジェクトの検出、${layername}",itemSnippet:"[ディープ ラーニングを使用したオブジェクトの検出] から生成された分析イメージ サービス"});

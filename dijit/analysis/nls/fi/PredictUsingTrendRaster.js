@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({toolDefine:"Ennusta trendirasterin avulla",outputLayerName:"${layername}_predict",variablesLabel:"Valitse ennustettavat muuttujat",variablesListLabel:"Muuttujat [dimension tiedot] (kuvaus)",dimensionDefinitionLabel:"Valitse menetelmä, jota käytetään dimensioulottovuuden arvojen määrittämiseen",dimensionValuesLabel:"Määritä dimensioarvot ennustetta varten",dimensionIntervalLabel:"Määritä dimensioväli ennustetta varten",intervalValueLabel:"Määritä vaiheiden määrä alku- ja loppuarvojen välillä",intervalUnitLabel:"Valitse yksikkö, jota käytetään aika-arvon välissä",startLabel:"Alkuarvo",endLabel:"Loppuarvo",byValueLabel:"Arvon mukaan",byIntervalLabel:"Välin mukaan",hours:"Tunnit",days:"Päivää",weeks:"Viikkoa",months:"Kuukautta",years:"Vuotta",custom:"Mukautettu",itemDescription:"Ennusta trendirasterin avulla -toiminnolla luotu analysointikuvapalvelu",itemTags:"Rasterianalyysin tulos, Ennusta trendirasterin avulla, ${layername}",itemSnippet:"Ennusta trendirasterin avulla -toiminnolla luotu analysointikuvapalvelu"});

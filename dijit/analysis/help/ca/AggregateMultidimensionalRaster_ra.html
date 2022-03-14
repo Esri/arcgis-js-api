@@ -93,7 +93,7 @@
         <div>
             <p>Especifiqueu el m&egrave;tode matem&agrave;tic que s'utilitzar&agrave; per combinar els sectors agregats en un interval.
                 <ul>
-                    <li> <b>Mitjana</b>: calcula la mitjana dels valors d'un p&iacute;xel en tots els sectors de l'interval. Esta es la opci&oacute;n predeterminada.
+                    <li> <b>Mitjana</b>: calcula la mitjana dels valors d'un p&iacute;xel en tots els sectors de l'interval. Aquesta &eacute;s l'opci&oacute; per defecte.
                     </li>
                     <li> <b>M&agrave;xim</b>: calcula el valor m&agrave;xim d'un p&iacute;xel en tots els sectors de l'interval.
                     </li>
@@ -104,8 +104,6 @@
                     <li> <b>Minoria</b>: calcula el valor que s'ha donat amb menys freq&uuml;&egrave;ncia per a un p&iacute;xel en tots els sectors de l'interval.
                     </li>
                     <li> <b>Mediana</b>: calcula el valor de la mediana d'un p&iacute;xel en tots els sectors de l'interval.
-                    </li>
-                    <li> <b>Percentil</b>: el percentil de valors d'un p&iacute;xel es calcular&agrave; a tots els sectors de l'interval. El percentil 90 es calcula de manera predeterminada. Podeu especificar altres valors (del 0 al 100) mitjan&ccedil;ant el par&agrave;metre <b>Valor de percentil</b>.
                     </li>
                     <li> <b>Interval</b>: calcula l'interval de valors d'un p&iacute;xel en tots els sectors de l'interval.
                     </li>
@@ -136,7 +134,7 @@
         <div>
             <p>Especifica l'interval de dimensions per al qual s'agregaran les dades.
                 <ul>
-                    <li> <b>Tots</b>: els valors de les dades s'agregaran en tots els sectors. Esta es la opci&oacute;n predeterminada.
+                    <li> <b>Tots</b>: els valors de les dades s'agregaran en tots els sectors. Aquesta &eacute;s l'opci&oacute; per defecte.
                     </li>
                     <li> <b>Paraula clau de l'interval</b>: les dades de variables s'agregaran amb un interval conegut comunament.
                     </li>
@@ -195,7 +193,7 @@
         </div>
     </div>
     <div id="intervalUnit">
-        <div><h2>Unidad</h2></div>
+        <div><h2>Unitat</h2></div>
         <hr/>
         <div>
             <p>Unitat que s'utilitzar&agrave; per al valor de l'interval. Aquest par&agrave;metre &eacute;s necessari quan el par&agrave;metre  <b>Dimensi&oacute;</b> &eacute;s un camp de temps i <b>Definici&oacute; de l'agregaci&oacute;</b> s'ha definit en <b>Valor de l'interval</b>.
@@ -231,7 +229,7 @@
         <div>
             <p>Especifica si els valors que falten s'ignoren a l'an&agrave;lisi.
                 <ul>
-                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Esta es la opci&oacute;n predeterminada.
+                    <li>Activada: l'an&agrave;lisi inclour&agrave; tots els p&iacute;xels v&agrave;lids en una dimensi&oacute; determinada i ignorar&agrave; els p&iacute;xels NoData. Aquesta &eacute;s l'opci&oacute; per defecte.
                     </li>
                     <li>Desactivada: l'an&agrave;lisi tindr&agrave; com a resultat NoData si hi ha algun valor NoData per al p&iacute;xel a la dimensi&oacute; proporcionada.
                     </li>
@@ -248,24 +246,6 @@
             <p>Nom de la capa que es crear&agrave; a  <b>El meu contingut</b> i s'afegir&agrave; al mapa. El nombre predeterminado se basa en el nombre de la herramienta y en el nombre de la capa de entrada. Si la capa ja existeix, se us demanar&agrave; que proporcioneu un altre nom.
             </p>
             <p>Podeu especificar el nom d'una carpeta de  <b>El meu contingut</b> on es desar&agrave; el resultat mitjan&ccedil;ant el quadre desplegable <b>Desa el resultat a</b>. Si teniu permisos per crear capes d'imatges tant de tessel·les com dinàmiques, podeu especificar des de la llista desplegable Anomena i desa el resultat el tipus de capa que cal generar. </p>
-        </div>
-    </div>
-    <div id="percentileValue">
-        <div><h2>Valor de percentil</h2></div>
-        <hr/>
-        <div>
-            <p>Percentil que es calcular&agrave;. El valor per defecte &eacute;s 90, que indica el percentil 90.
-            </p>
-            <p>Els valors poden anar de 0 a 100. El percentil 0 &eacute;s b&agrave;sicament equivalent a l'estad&iacute;stica m&iacute;nima i el percentil 100 equival a la m&agrave;xima. Un valor de 50 produir&agrave; b&agrave;sicament el mateix resultat que l'estad&iacute;stica mediana.
-            </p>
-        </div>
-    </div>
-    <div id="percentileInterpolationType">
-        <div><h2>Tipus d'interpolació del percentil</h2></div>
-        <hr/>
-        <div>
-            <p>Especifica el m&egrave;tode d'interpolaci&oacute; del percentil que es far&agrave; servir quan el nombre de valors del r&agrave;ster d'entrada que s'hagin de calcular sigui parell.
-            </p>
         </div>
     </div>
 </div>

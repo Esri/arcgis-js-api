@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({addBarriers:"Pilih layer penghalang",pointBarrier:"Penghalang titik",lineBarrier:"Penghalang garis",polygonBarrier:"Penghalang poligon",choosePointBarrier:"Pilih layer penghalang titik",chooseLineBarrier:"Pilih layer penghalang garis",choosePolygonBarrier:"Pilih layer penghalang poligon",selectPointBarrier:"Pilih penghalang titik",selectLineBarrier:"Pilih penghalang garis",selectPolygonBarrier:"Pilih penghalang poligon"});

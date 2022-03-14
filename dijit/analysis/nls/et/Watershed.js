@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Voosuuna kihi valimine",pourPointLayerLabel:"Voolupunkti rasterkihi või vektorkihi valimine",pourPointField:"Väljavoolupunkti valimine",resultLayerName:"Tulemkihi nimi",outputLayerName:"Kihi ${layername} valgala",itemDescription:"Objektikiht loodi kihi ${layerName} tsentri summeerimise ja dispersiooni kaudu. ",itemTags:"Analüüsi tulemus, valgala, ${layername} ${fieldname}",itemSnippet:"Objektikiht loodi valgala abil."});

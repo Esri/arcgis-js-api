@@ -105,8 +105,6 @@
                     </li>
                     <li> <b>Median</b>&mdash;Menghitung nilai median suatu piksel di seluruh irisan dalam interval.
                     </li>
-                    <li> <b>Persentil</b>&mdash;Persentil nilai untuk piksel akan dihitung di semua irisan dalam interval. Persentil ke-90 dihitung secara default. Anda dapat menentukan nilai lain (dari 0 hingga 100) menggunakan parameter <b>Nilai persentil</b>.
-                    </li>
                     <li> <b>Rentang</b>&mdash;Menghitung rentang nilai suatu piksel di seluruh irisan dalam interval.
                     </li>
                     <li> <b>Simpangan Baku</b>&mdash;Menghitung simpangan baku dari nilai satu piksel di seluruh irisan dalam interval.
@@ -248,24 +246,6 @@
             <p>Nama layer yang akan dibuat di  <b>Konten Saya</b> dan ditambahkan ke peta. Nama default ditetapkan berdasarkan nama alat dan nama layer input. Jika layer tersebut sudah ada, Anda akan diminta untuk memberi nama lain.
             </p>
             <p>Anda dapat menentukan nama folder di  <b>Konten Saya</b> tempat hasil akan disimpan menggunakan kotak drop-down <b>Simpan hasil di</b>. Jika Anda memiliki hak istimewa untuk membuat layer citra dinamis dan tile, Anda dapat menentukan jenis layer yang akan dihasilkan dalam output menggunakan kotak drop-down Simpan hasil sebagai. </p>
-        </div>
-    </div>
-    <div id="percentileValue">
-        <div><h2>Nilai Persentil</h2></div>
-        <hr/>
-        <div>
-            <p>Persentil yang dihitung. Defaultnya adalah 90, yang menunjukkan persentil ke-90.
-            </p>
-            <p>Nilai dapat berkisar antara 0 hingga 100. Persentil ke-0 pada dasarnya setara dengan statistik minimal, dan persentil ke-100 setara dengan statistik maksimal. Nilai 50 pada dasarnya akan menghasilkan hasil yang sama dengan statistik median.
-            </p>
-        </div>
-    </div>
-    <div id="percentileInterpolationType">
-        <div><h2>Jenis interpolasi persentil</h2></div>
-        <hr/>
-        <div>
-            <p>Menentukan metode interpolasi persentil yang akan digunakan ketika ada jumlah nilai genap dari raster input yang akan dihitung.
-            </p>
         </div>
     </div>
 </div>

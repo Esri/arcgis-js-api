@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["dojo/_base/lang","../../ChartTypes","./_ComparisonUtil","./_ColumnBarChartSeriesCalculator","./_LineChartSeriesCalculator"],(function(e,r,i,s,t){return{calcSeries:function(o){if(i.updateSeriesItemsForComparisonInfo(o),r.isLineLike(o.chartType))return t.calcSeriesLine(o);if(o.seriesItemsWithComparison&&!i.isComparisonInPrimaryPlot(o.chartType,o.comparisonInfo)){for(var a=o.seriesItemsWithComparison,n=[],p=0;p<o.seriesItems.length;p++)n.push(a[2*p+1]);delete o.seriesItemsWithComparison,o.plotStats=o.plotStats||{};var c=s.calcSeriesColumnBar(o),l=e.mixin({},o);l.seriesItems=n,l.isSecondaryPlot=!0,l.primarySeries=c,l.primaryPlotStat=o.plotStats,l.reverseXY=r.isXAxisVertical(o.chartType),l.oppositeDirections=o.visualProperties.renderColumnBarsInOppositeDirections,l.reverseOrder=l.oppositeDirections&&r.isBarLike(o.chartType);var m=t.calcSeriesLine(l);return c.concat(m)}return s.calcSeriesColumnBar(o)},prettifyColumnBarYAxis:function(e){s.prettifyColumnBarYAxis(e)}}}));

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Chọn bộ dữ liệu sẽ mô tả",describeDataLabel:"Hiểu dữ liệu của bạn bằng cách tạo một (tùy chọn)",sampleLayer:"Lớp mẫu",extentLayer:"Lớp phạm vi",noOfFeaturesLabel:"Số lượng đối tượng sẽ đưa vào",outputLayerName:"Tên lớp kết quả",resultName:"Mô tả dữ liệu của ${layerName}",itemDescription:"Lớp đối tượng được tạo ra từ việc chạy công cụ Mô tả Bộ dữ liệu trên ${layerName}. ",itemTags:"Kết quả Phân tích, Mô tả Bộ dữ liệu, ${layerName}",itemSnippet:"Lớp đối tượng được tạo ra từ công cụ Mô tả Bộ dữ liệu."});

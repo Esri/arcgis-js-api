@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputRegionRasterOrFeatures:"Valitse vyöhykerasteri tai -kohde",inputCostRaster:"Valitse kustannusrasteri (valinnainen)",inputBarrierRasterOrFeatures:"Valitse esterasteri tai -kohde (valinnainen)",distanceMethod:"Etäisyysmenetelmä (valinnainen)",connectionsWithinRegions:"Yhteydet alueissa (valinnainen)",generateConnections:"Luo yhteydet",noConnections:"Ei yhteyksiä",planar:"Planaarinen",geoDesic:"Geodeettinen",outputOptimalLinesName:"Tuloksena oleva optimaalisten yhdistyvyysviivojen kohdekarttatason nimi",outputNeighborConnectionsName:"Tuloksena oleva viereisten yhteyksien kohdekarttatason nimi (valinnainen)",outputLayerName:"Optimaaliset alueen yhteydet: ${layername}",drawSourcePointLayerName:"Lähteen pisteet",itemDescription:"Kohdekarttataso on luotu suorittamalla Optimaaliset alueen yhteydet -toiminto karttatasolle ${layername}. ",itemTags:"Analyysin tulos, Optimaaliset alueen yhteydet, ${layername} ${fieldname}",itemSnippet:"Kohdekarttataso on luotu suorittamalla Optimaaliset alueen yhteydet -toiminto.",noValueMessage:"Arvo on pakollinen"});

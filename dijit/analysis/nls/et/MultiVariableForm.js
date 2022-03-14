@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({distToNearest:"Kaugus lähima objektini",attrOfInterest:"Lähima objekti atribuut",summaryNearby:"Lähima objekti kokkuvõte",summaryIntersecting:"Lõikuva objekti kokkuvõte",distToNearestLabel:"Kaugus salve keskpunktist sisendkihis lähima objektini",attrOfInterestLabel:"Määratud välja väärtus sisendkihi lähimast objektist",summaryNearbyLabel:"Statistik, mis on arvutatud kõigi objektide kohta, mis on salve keskpunktist määratud kaugusel",summaryIntersectingLabel:"Statistik, mis on arvutatud kõigi salvega lõikuvate objektide kohta",maxDistancefromCtr:"Maksimumkaugus salve keskpunktist",fieldToIncude:"Kaasatav väli",statstoCalculate:"Arvutatav statistik",summFeatuesWithin:"Summeeri objektid vahemikus",smallMaxDistErrorMsg:"Maksimumkaugus salve keskpunktist peab olema suurem kui salve suurus.",smallSumFeaturesErrorMsg:"Maksimumkaugus salve keskpunktist peab olema suurem kui salve suurus."});

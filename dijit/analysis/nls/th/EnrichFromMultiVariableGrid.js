@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"เลือกฟีเจอร์จุดที่จะปรับแต่ง",chooseMVgridLyrLabel:"เลือกตารางหลายตัวแปรเพื่อปรับแต่ง",chooseVariables:"เลือกตัวแปรที่จะเพิ่ม",outputLayerName:"เพิ่มความเข้ม ${inputFeatures} จาก ${gridLayer}",itemDescription:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจากการเรียกใช้งานโซลูชัน เพิ่มความเข้มจากตารางค่าหลากหลายของ ${inputFeatures}",itemTags:"ผลการวิเคราะห์ เพิ่มความเข้มจากตารางค่าหลากหลายของ ${inputFeatures}, ${gridLayer}",itemSnippet:"ชั้นข้อมูลฟีเจอร์ที่สร้างขึ้นจาก เพิ่มความเข้มจากตารางค่าหลากหลาย"});

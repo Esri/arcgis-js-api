@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Elegir la capa para buscar permanencias de",selectTracksLabel:"Seleccionar uno o varios campos para identificar recorridos",defineDistanceLabel:"Definir la distancia de búsqueda espacial",distMethodLabel:"Elegir el método para calcular la distancia",temporalSearchLabel:"Definir el rango de búsqueda temporal",outputDwellLabel:"Generar ubicaciones de permanencia como",outputLayerName:"Buscar ubicaciones de permanencia para ${inputLayerName}",meanCenters:"Centros medios",convexHulls:"Envolturas convexas",dwellFeatures:"Entidades de permanencia",allFeatures:"Todas las entidades",itemDescription:"Capa de entidades generada al ejecutar la solución Buscar ubicaciones de permanencia para ${inputLayerName}.",itemTags:"Resultado del análisis, Buscar ubicaciones de permanencia, ${inputLayerName}",itemSnippet:"Capa de entidades generada a partir de Buscar ubicaciones de permanencia",timeIntervalSplit:"Analizar datos con intervalos de tiempo (opcional)",timeBoundaryValidationMsg:"El intervalo de tiempo debe ser mayor que el rango de búsqueda temporal."});

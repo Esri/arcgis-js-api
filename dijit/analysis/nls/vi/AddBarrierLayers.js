@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({addBarriers:"Chọn lớp rào cản",pointBarrier:"Rào cản dạng điểm",lineBarrier:"Rào cản dạng đường",polygonBarrier:"Rào cản dạng vùng",choosePointBarrier:"Chọn lớp rào cản dạng điểm",chooseLineBarrier:"Chọn lớp rào cản dạng đường",choosePolygonBarrier:"Chọn lớp rào cản dạng vùng",selectPointBarrier:"Chọn rào cản dạng điểm",selectLineBarrier:"Chọn rào cản dạng đường",selectPolygonBarrier:"Chọn rào cản dạng vùng"});

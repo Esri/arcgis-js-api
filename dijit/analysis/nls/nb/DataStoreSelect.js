@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({relationalDS:"Relasjonell",spatialDS:"Spatiotemporal",agsDataStore:"ArcGIS Data Store",bdfsTemplates:"Utdatamaler for fildelingsområde for stordata"});

@@ -46,12 +46,12 @@
         <hr/>
     <p>Tento n&aacute;stroj spust&iacute; model učen&iacute; deep learningu na vstupn&iacute;m rastru pro vytvořen&iacute; klasifikovan&eacute;ho rastru se tř&iacute;dou popisků přiřazenou ke každ&eacute;mu platn&eacute;mu pixelu.
     </p>
-    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t rozsah aktu&aacute;ln&iacute; mapy</b>, budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i&nbsp;když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
+    <p>Pokud je za&scaron;krtnuto pole  <b>Použ&iacute;t aktu&aacute;ln&iacute; rozsah mapy</b> , budou analyzov&aacute;ny pouze rastrov&eacute; oblasti viditeln&eacute; v&nbsp;aktu&aacute;ln&iacute;m rozsahu mapy. Pokud pole za&scaron;krtnuto nen&iacute;, bude analyzov&aacute;n cel&yacute; rastr, i když se nach&aacute;z&iacute; mimo aktu&aacute;ln&iacute; rozsah mapy.
     </p>
     </div>
     <!--Parameter divs for each param-->
     <div id="inputRaster">
-        <div><h2>Vyberte snímek, který bude použit ke klasifikaci pixelů</h2></div>
+        <div><h2>Vyberte snímek, který bude použit ke klasifikování pixelů</h2></div>
         <hr/>
         <div>
             <p>Vstupn&iacute; sn&iacute;mek ke klasifikaci.
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div id="model">
-        <div><h2>Vyberte model deep learningu, který bude použit ke klasifikaci pixelů</h2></div>
+        <div><h2>Vyberte model deep learningu, který bude použit ke klasifikování pixelů</h2></div>
         <hr/>
         <div>
             <p>Vstupem je položka deep learningov&eacute;ho bal&iacute;čku ( <code>.dlpk</code>).
@@ -82,19 +82,19 @@
             </p>
         </div>
     </div>
-    <div id="processAllRasterItems">
+    <div id="processing_mode">
         <div><h2>Režim zpracování</h2></div>
         <hr/>
         <div>
-            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo image služba. Tento parametr se použ&iacute;v&aacute;, když je vstupn&iacute; rastr mozaikov&aacute; datov&aacute; sada nebo image služba.
+            <p>Určuje, jak budou zpracov&aacute;ny v&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě. Tento parametr se použije v př&iacute;padě, že je vstupn&iacute;m rastrem mozaikov&aacute; datov&aacute; sada nebo obrazov&aacute; služba.
             </p>
             <ul>
                 <li>PROCESS_AS_MOSAICKED_IMAGE &mdash; 
-V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute;&nbsp;image službě budou spojeny do mozaiky a&nbsp;zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
+V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou spojeny do mozaiky a zpracov&aacute;ny. Jedn&aacute; se o v&yacute;choz&iacute; nastaven&iacute;.
 
                 </li>
                 <li>PROCESS_ITEMS_SEPARATELY &mdash; 
-V&scaron;echny položky rastru v&nbsp;mozaikov&eacute; datov&eacute; sadě nebo v&nbsp;image službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
+V&scaron;echny položky rastru v mozaikov&eacute; datov&eacute; sadě nebo v obrazov&eacute; službě budou zpracov&aacute;ny jako jednotliv&eacute; sn&iacute;mky.
 
                 </li>
             </ul>

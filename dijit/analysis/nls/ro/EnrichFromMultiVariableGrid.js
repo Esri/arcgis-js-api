@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({choosePointLyrLabel:"Alegeți obiectele spațiale de tip punct pentru a le îmbogăți",chooseMVgridLyrLabel:"Alegeți grila cu variabile multiple de la care să îmbogăți",chooseVariables:"Alegeți variabilele pe care doriți să le adăugați",outputLayerName:"${inputFeatures} îmbogățit din ${gridLayer}",itemDescription:"Strat tematic de obiecte spațiale generat din rularea soluției Îmbogățire din grilă cu variabile multiple pentru ${inputFeatures}.",itemTags:"Rezultat analiză, Îmbogățire din grilă cu variabile multiple, ${inputFeatures}, ${gridLayer}",itemSnippet:"Strat tematic de obiecte spațiale generat din Îmbogățire din grilă cu variabile multiple."});

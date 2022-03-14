@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputDestinationRasterOrFeatures:"Hedef rasterı veya detayları seç",destinationField:"Hedef alanı (isteğe bağlı)",inputDistanceAccumulationRaster:"Mesafe birikim rasterını seç",inputBackDirectionRaster:"Geri yönü veya akış yönü rasterını seç",pathType:"Yol türü (isteğe bağlı)",bestSingle:"En iyi tek",eachCell:"Her hücre",eachZone:"Her bölge",outputFeatureName:"Sonuç detay katmanı adı",outputLayerName:"${layername} çizgisi olarak optimum yol",drawSourcePointLayerName:"Kaynak noktalar",itemDescription:"Detay katmanı ${layername} çizgisi olarak optimum yolun çalıştırılmasıyla oluşturuldu. ",itemTags:"Analiz Sonucu, Çizgi olarak Optimum Yol, ${layername} ${fieldname}",itemSnippet:"Detay katmanı çizgi olarak optimum yoldan oluşturuldu."});

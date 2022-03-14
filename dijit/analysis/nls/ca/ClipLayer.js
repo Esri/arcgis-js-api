@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Trieu les entitats que voleu retallar",filterSelectLabel:"Retalla totes les entitats o defineix un subconjunt (opcional)",targetArea:"Trieu l'àrea a la qual voleu retallar",outputLayerName:"Retalla ${inputLayerName} a ${clipLayerName}",itemDescription:"Capa d'entitats generada en executar les solucions de retall. Les entitats de ${inputLayerName} s'han retallat a ${clipLayerName}.",itemTags:"Resultat de l'anàlisi, capa de retall, ${inputLayerName}, ${clipLayerName}, ${outputLayerGeometry}",itemSnippet:"Capa d'entitats generada de la capa de retall"});

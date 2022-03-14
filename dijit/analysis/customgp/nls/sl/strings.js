@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({_widgetLabel:"Geoprocesiranje",_featureAction_ReceiveFeatureSet:"Nastavi kot vnos od ",requiredInfo:"je obvezno.",drawnOnMap:"Rezultat je izrisan na karti.",noToolConfig:"Predkonfigurirano opravilo geoprocesiranja ni na voljo.",useUrlForGPInput:"URL",useUploadForGPInput:"Naloži datoteko",useImageServiceLayer:"Sloj slikovne storitve",useBrowseLayerPortal:"Brskaj/izberi iz portala",selectFileToUpload:"Izberi datoteko...",rasterFormat:"Format rastrskih podatkov",noFileSelected:"Nobena datoteka ni izbrana!",uploadSuccess:"Datoteka je uspešno naložena!",showLayerContent:"Pokaži vsebino sloja",invalidUrl:"Neveljaven url geoobjektne storitve",urlPlaceholder:"URL nabora geoobjektov",addShapefile:"Dodaj shapefile",generateShapefileError:"Ustvarite napako shapefile, preverite: ",cleared:"Rezultat je bil počiščen.",enlargeView:"Povečaj pogled",exportOutput:"Izvoz",emptyResult:"Rezultat je prazen.",useSelectedFeatureset:"Uporabi geoobjekte rezultant.",closeSelectedFeatureset:"Počisti in uporabi možnost konfiguriranega vnosa."});

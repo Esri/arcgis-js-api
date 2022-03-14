@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Valige kirjeldatav andmestik",describeDataLabel:"Mõistke oma andmeid, luues (valikulise)",sampleLayer:"Näidiskiht",extentLayer:"Kihi ulatus",noOfFeaturesLabel:"Kaasatud objektide arv",outputLayerName:"Tulemkihi nimi",resultName:"Kirjeldage kihi ${layerName} andmeid",itemDescription:"Objektikiht loodi kihi ${layerName} andmestiku kirjelduse käitamisest. ",itemTags:"Analüüsitulemus, andmestiku kirjeldus, ${layerName}",itemSnippet:"Objektikiht loodi andmestiku kirjeldamise kaudu."});

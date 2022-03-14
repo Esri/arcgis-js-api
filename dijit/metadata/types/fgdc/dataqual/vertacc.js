@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define(["dojo/_base/declare","dojo/_base/lang","dojo/has","../../../base/Descriptor","../../../form/Element","../../../form/InputNumber","../../../form/InputTextArea","dojo/text!./templates/vertacc.html","../../../../../kernel"],(function(e,t,a,r,o,d,n,c,m){var s=e(r,{templateString:c});return a("extend-esri")&&t.setObject("dijit.metadata.types.fgdc.dataqual.vertacc",s,m),s}));

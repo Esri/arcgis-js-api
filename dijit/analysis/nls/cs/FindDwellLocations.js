@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayerLabel:"Vyberte vrstvu, ve které chcete hledat prvky dwell",selectTracksLabel:"Zvolte jedno nebo více polí k identifikaci stop",defineDistanceLabel:"Určete oblast prostorového vyhledávání",distMethodLabel:"Vyberte metodu výpočtu vzdálenosti",temporalSearchLabel:"Určete časový rozsah vyhledávání",outputDwellLabel:"Zobrazit umístění prvků dwell jako",outputLayerName:"Najít umístění prvků dwell pro ${inputLayerName}",meanCenters:"Geografický střed prvků",convexHulls:"Konvexní obaly",dwellFeatures:"Prvky dwell",allFeatures:"Všechny prvky",itemDescription:"Vrstva prvků vygenerovaná spuštěním funkce „Najít umístění prvků dwell“ pro vrstvu ${inputLayerName}.",itemTags:"Výsledek analýzy, Vyhledat prvky dwell, ${inputLayerName}",itemSnippet:"Vrstva prvků vygenerovaná nástrojem najít umístění prvků dwell",timeIntervalSplit:"Analyzovat data s časovými intervaly (volitelné)",timeBoundaryValidationMsg:"Časový interval musí být větší než časový rozsah vyhledávání."});

@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({inputLayer:"اختيار الطبقة للعثور على أحداث التقارب من",entityField:"تحديد حقل لتحديد الأحداث",entityLayer:"اختيار الطبقة لتحديد الكيانات محل الاهتمام",defineDistanceLabel:"تحديد مسافة البحث المكاني",distMethodLabel:"اختيار طريقة حساب المسافة",temporalSearchLabel:"تحديد مسافة البحث المؤقت",optionsLabel:"خيارات متقدمة",maxTraceDepth:"أقصى عمق تتبع",attributeMatchLabel:"تحديد بيانات جدولية لكيان واحد أو أكثر للمطابقة",includeTracksLayer:"تضمين طبقة المسارات",itemDescription:'تم إنشاء طبقة المعالم من تشغيل حل "تتبع الأحداث القريبة" لـ ${inputLayername}.',itemTags:"نتيجة التحليل، تتبع الأحداث القريبة، ${inputLayername}",itemSnippet:'تم إنشاء طبقة المعالم من "تتبع الأحداث القريبة".',outputLayerName:"تتبع الأحداث القريبة لـ ${inputLayername}",noEntityFieldMsg:"لا توجد حقول مشتركة بين طبقة أحداث القريبة وطبقة الكيانات ذات الأهمية."});

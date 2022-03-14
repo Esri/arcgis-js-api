@@ -20,6 +20,6 @@
 //
 // email: contracts@esri.com
 //
-// See http://js.arcgis.com/3.38/esri/copyright.txt for details.
+// See http://js.arcgis.com/3.39/esri/copyright.txt for details.
 
 define({chooseShape:"Vybrať tvar",defineExtent:"Definovať rozsah",defineBin:"Defnovať veľkosť záložky určením",area:"Oblasť",distance:"Vzdialenosť",resultLayerName:"Názov výslednej vrstvy",hexagon:"Šesťuholník",transverseHexagon:"Priečny šesťuholník",square:"Štvorec",triangle:"Trojuholník",diamond:"Diamant",sameAsDisplay:"Rovnako ako zobrazenie",emptyBinSize:"Veľkosť záložky nemôže byť prázdna",currentExtent:"aktuálny rozsah",intersectExtent:"Zachovať iba pretínajúce sa Voronoiove polygóny",outputLayerName:"Generovať Voronoiove polygóny na ${extentLayerName}",itemDescription:"Rozsah z ${extentLayerName} bol použitý.",itemTags:"Výsledok analýzy, Generovať Voronoiove polygóny, ${extentLayerName}",itemSnippet:"Vrstvy prvkov generované nástrojom Generovať Voronoiove polygóny."});
